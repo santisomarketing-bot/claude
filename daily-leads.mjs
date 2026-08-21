@@ -21,17 +21,40 @@ export const EMAIL_DESTINO = "santisomarketing@gmail.com";
 // Consultas de intención de compra (posts públicos, sin tocar el login).
 // Edita/añade libremente: cuantas más, más cobertura.
 export const QUERIES = [
+  // --- Marketing / redes / agencia general ---
   'site:linkedin.com/posts "busco agencia de marketing"',
   'site:es.linkedin.com/posts "busco agencia" (marketing OR redes OR publicidad)',
   'site:es.linkedin.com/posts "recomendáis" agencia marketing OR redes sociales',
   'site:es.linkedin.com/posts "necesito una agencia" marketing OR redes',
   'site:es.linkedin.com/posts "busco" ("community manager" OR "llevar mis redes") España',
   'site:es.linkedin.com/posts "necesito ayuda con" (redes sociales OR marketing OR mi marca)',
+  // --- Diseño / desarrollo web ---
+  'site:linkedin.com/posts ("busco" OR "necesito" OR "recomendáis") ("diseño web" OR "web design" OR "diseñador web" OR "página web" OR "desarrollo web")',
+  'site:es.linkedin.com/posts ("busco" OR "necesito") ("hacer una web" OR "rehacer la web" OR "tienda online" OR ecommerce)',
+  // --- SEO / GEO (posicionamiento en buscadores y en motores generativos/IA) ---
+  'site:linkedin.com/posts ("busco" OR "necesito" OR "recomendáis") ("agencia SEO" OR "consultor SEO" OR "posicionamiento web" OR SEO)',
+  'site:linkedin.com/posts ("busco" OR "necesito") ("GEO" OR "Generative Engine Optimization" OR "posicionamiento en IA" OR "aparecer en ChatGPT")',
+  // --- ADS / paid media ---
+  'site:linkedin.com/posts ("busco" OR "necesito" OR "recomendáis") ("Google Ads" OR "Meta Ads" OR "campañas de ads" OR "gestión de ads" OR "agencia de publicidad")',
 ];
 
-// Umbrales de frescura en días.
+// Umbrales de frescura en días (para clasificar/etiquetar en el correo).
 export const UMBRAL_FRESCO = 120; // 🟢
 export const UMBRAL_RECIENTE = 365; // 🟡
+
+// Ventana de recencia: solo se envían posts publicados dentro de estas horas.
+// 24 h de lunes a viernes; 48 h en fin de semana (sábado y domingo).
+export function ventanaHoras(ahoraMs) {
+  const dow = new Date(ahoraMs).getUTCDay(); // 0=domingo ... 6=sábado
+  const finde = dow === 0 || dow === 6;
+  return finde ? 48 : 24;
+}
+
+// Filtra una lista de leads (ya fechados con decodeActivityDate) a la ventana.
+export function filtraPorVentana(leads, ahoraMs) {
+  const limite = ventanaHoras(ahoraMs);
+  return leads.filter((l) => typeof l.horas === "number" && l.horas >= 0 && l.horas <= limite);
+}
 
 // El activity-id de LinkedIn va embebido en la URL del post:
 //   .../algo-activity-7473358870170505216-eGKW
@@ -44,9 +67,10 @@ export function extraeActivityId(url) {
 export function decodeActivityDate(id, ahoraMs) {
   if (!id) return null;
   const ts = Number(BigInt(id) >> 22n);
+  const horas = (ahoraMs - ts) / 3600000;
   const dias = Math.round((ahoraMs - ts) / 86400000);
   const fecha = new Date(ts).toISOString().slice(0, 10);
-  return { ts, fecha, dias };
+  return { ts, fecha, horas, dias };
 }
 
 export function clasifica(dias) {
@@ -94,15 +118,27 @@ export function construyeEmailHtml(leads, ahoraMs) {
 
 // Autotest al ejecutar directamente: node daily-leads.mjs
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const ahora = Date.UTC(2026, 7, 21); // fecha fija para test reproducible
-  const id = extraeActivityId(
-    "https://es.linkedin.com/posts/micaelastrahovsky_busco-agencias-o-empresas-herramientas-ai-activity-7473358870170505216-eGKW"
+  const viernes = Date.UTC(2026, 7, 21, 15); // vie 21/08/2026 → ventana 24 h
+  const sabado = Date.UTC(2026, 7, 22, 15); // sáb 22/08/2026 → ventana 48 h
+  console.log("ventana viernes:", ventanaHoras(viernes), "h  | ventana sábado:", ventanaHoras(sabado), "h");
+
+  // Un post viejo (2026-06) y uno simulado "de hace 10 h"
+  const idViejo = extraeActivityId(
+    "https://es.linkedin.com/posts/x_busco-agencia-activity-7473358870170505216-eGKW"
   );
-  const d = decodeActivityDate(id, ahora);
-  console.log("id:", id, "→", d, clasifica(d.dias));
-  const html = construyeEmailHtml(
-    [{ autor: "Micaela Strahovsky", ...d, pide: "busca agencias herramientas AI", url: "https://x" }],
-    ahora
-  );
-  console.log("html len:", html.length, "| contiene 🟢:", html.includes("🟢"));
+  const dViejo = decodeActivityDate(idViejo, viernes);
+  // Fabricamos un id "reciente": ts = ahora - 10h  →  id = ts << 22
+  const tsReciente = viernes - 10 * 3600000;
+  const idReciente = String(BigInt(tsReciente) << 22n);
+  const dReciente = decodeActivityDate(idReciente, viernes);
+
+  const leads = [
+    { autor: "Post viejo", ...dViejo, pide: "busca agencia (viejo)", url: "https://a" },
+    { autor: "Post reciente", ...dReciente, pide: "busca agencia (hoy)", url: "https://b" },
+  ];
+  const dentro = filtraPorVentana(leads, viernes);
+  console.log("total:", leads.length, "→ dentro de ventana:", dentro.length, "(debe ser 1)");
+  console.log("reciente horas:", dReciente.horas.toFixed(1), "| viejo horas:", Math.round(dViejo.horas));
+  const html = construyeEmailHtml(dentro, viernes);
+  console.log("html len:", html.length, "| solo el reciente:", html.includes("Post reciente") && !html.includes("Post viejo"));
 }
