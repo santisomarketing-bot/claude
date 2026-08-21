@@ -2,6 +2,10 @@
 
 Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportunidades comerciales** para la agencia: gente/empresas que **necesitan marketing** (buscan agencia, se quejan de su proveedor, lanzan producto, no consiguen clientes…). Descarta ofertas de empleo y ruido publicitario.
 
+> 📬 **Envío diario por correo:** además del escáner manual, hay una automatización
+> que cada día a las 17:00 (hora España) busca posts públicos de "busco agencia" y
+> te los manda por email. Ver **[DAILY_LEADS.md](./DAILY_LEADS.md)**.
+
 ## ⚠️ Aviso importante
 
 Automatizar LinkedIn va **contra sus Términos de Servicio**. Esta herramienta usa **tu propia sesión** y un ritmo lento y humano para minimizar el riesgo, pero **el riesgo de bloqueo no es cero**. Úsala con criterio y con moderación. No metas credenciales en ningún sitio: inicias sesión tú a mano en tu navegador.
