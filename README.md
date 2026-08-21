@@ -1,3 +1,75 @@
+# Herramientas de la agencia
+
+Dos utilidades que corren **en tu ordenador, con tu navegador**:
+
+1. **LinkedIn Opportunity Scanner** — encuentra oportunidades comerciales en tu feed. *(abajo)*
+2. **Buscador de imágenes de referencia** — busca en Google Imágenes referencias para portadas y contenido de LinkedIn/Instagram/blog, y te deja una **galería HTML** navegable. *(ver [`#buscador-de-imágenes-de-referencia`](#buscador-de-imágenes-de-referencia))*
+
+---
+
+## Buscador de imágenes de referencia
+
+Busca en **Google Imágenes** un tema, hace scroll para cargar resultados y te genera una **galería HTML** con las referencias para inspirarte al diseñar. Cada tarjeta enlaza a la **imagen original** (máxima resolución) y a la **página fuente** (para ver el contexto / dar crédito). Las miniaturas se descargan para que la galería se vea sin conexión.
+
+### Instalación (una vez)
+
+```bash
+npm install
+npx playwright install chromium
+```
+
+### Uso
+
+```bash
+# tema libre
+npm run imagenes -- "branding minimalista" --abrir
+
+# ajustado al formato de destino
+npm run imagenes -- "cafetería de especialidad" --para=instagram --n=60 --abrir
+npm run imagenes -- "inteligencia artificial" --para=linkedin-banner --abrir
+npm run imagenes -- "recetas saludables" --para=blog --full --abrir
+```
+
+Te deja todo en `referencias/<tema>/`:
+
+- `galeria.html` — ábrela en el navegador: rejilla de miniaturas con enlaces a original y fuente
+- `referencias.json` — los datos (título, original, fuente) para automatizar después
+- `miniaturas/` — las imágenes de la galería (y `originales/` si usas `--full`)
+
+### Presets `--para=`
+
+Ajustan las palabras clave y la **proporción** que pide a Google, según dónde vas a publicar:
+
+| `--para=` | Formato | Proporción |
+|-----------|---------|-----------|
+| `linkedin` | post apaisado (~1200×627) | apaisada |
+| `linkedin-banner` | portada / banner (1584×396) | panorámica |
+| `instagram` | post cuadrado (1080×1080) | cuadrada |
+| `instagram-story` | story / reel (1080×1920) | vertical |
+| `blog` | cabecera / hero | apaisada grande |
+
+Sin `--para` busca tal cual, sin filtro de proporción.
+
+### Flags
+
+| Flag | Qué hace | Def. |
+|------|----------|------|
+| `--para=TIPO` | preset de formato (tabla de arriba) | — |
+| `--n=N` | nº de referencias a recoger | 40 |
+| `--out=carpeta` | carpeta base de salida | `referencias` |
+| `--abrir` | abre la galería al terminar | — |
+| `--full` | intenta descargar también las imágenes a resolución original (best-effort) | — |
+| `--headless` | ejecuta el navegador oculto | visible |
+| `--scrolls=N` | tope de scrolls para cargar resultados | 12 |
+
+> La primera vez Google puede pedirte aceptar cookies (se acepta solo) o, rara vez, un captcha: ejecuta **sin** `--headless` para resolverlo a mano. Si defines `CHROME_PATH=/ruta/al/chrome`, usa ese Chromium en vez del de Playwright.
+
+### Aviso honesto
+
+Google Imágenes indexa imágenes de **terceros**. Sirven como **referencia / inspiración**: revisa la **licencia en la página fuente** antes de reutilizar una imagen en una publicación. Para stock con licencia lista para usar, tira de la skill de **Adobe Express** del equipo.
+
+---
+
 # LinkedIn Opportunity Scanner
 
 Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportunidades comerciales** para la agencia: gente/empresas que **necesitan marketing** (buscan agencia, se quejan de su proveedor, lanzan producto, no consiguen clientes…). Descarta ofertas de empleo y ruido publicitario.

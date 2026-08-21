@@ -5,6 +5,9 @@ leads.json
 *.log
 .DS_Store
 
+# imagenes de referencia descargadas (pueden pesar y son de terceros)
+referencias/
+
 # pruebas locales
 prueba*.csv
 prueba*.json
