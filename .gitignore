@@ -1,0 +1,6 @@
+node_modules/
+.chrome-profile/
+leads.csv
+leads.json
+*.log
+.DS_Store

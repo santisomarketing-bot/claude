@@ -1,0 +1,14 @@
+{
+  "name": "linkedin-opportunity-scanner",
+  "version": "0.1.0",
+  "description": "Scrollea tu feed de LinkedIn con tu propia sesion y extrae oportunidades comerciales (gente que NECESITA marketing), filtrando el ruido.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "scan": "node scan.mjs",
+    "login": "node scan.mjs --login-only"
+  },
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}
