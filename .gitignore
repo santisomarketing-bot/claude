@@ -4,3 +4,11 @@ leads.csv
 leads.json
 *.log
 .DS_Store
+
+# pruebas locales
+prueba*.csv
+prueba*.json
+control.csv
+control.json
+_*.mjs
+*.html

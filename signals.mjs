@@ -57,11 +57,13 @@ export const SIGNALS = [
     id: "lanzamiento",
     etiqueta: "Lanza producto/negocio (visibilidad justo ahora)",
     peso: 5,
+    // Solo primera persona: quien LANZA algo suyo, no quien habla de emprender.
+    // (Nada de "emprendimiento"/"nuevo proyecto"/"nueva marca" a secas: en un feed
+    //  lleno de profesionales del marketing eso son falsos positivos constantes.)
     patrones: [
-      "lanzo mi", "acabo de lanzar", "estamos lanzando", "nuevo proyecto", "emprendimiento",
-      "abro mi negocio", "he montado", "acabamos de abrir", "presentamos nuestra nueva",
-      "nueva marca", "nuevo producto", "en fase de lanzamiento", "estamos empezando",
-      "recien creada", "startup en fase",
+      "lanzo mi", "acabo de lanzar", "acabamos de lanzar", "estamos lanzando mi",
+      "abro mi negocio", "acabo de montar", "hemos montado", "acabamos de abrir",
+      "presentamos nuestra nueva marca", "en fase de lanzamiento",
     ],
   },
   {
