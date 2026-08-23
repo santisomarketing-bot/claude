@@ -19,9 +19,9 @@ Tipos reales de WEBS: **Marca/Epic `10010` · Tarea `10003` · Sub tarea `10004`
 **Corporativa:** HOME · header · footer · Sobre nosotros · Servicios · Blog ·
 Plantilla entradas · Contacto · Páginas legales
 
-**Ecommerce:** HOME · header · footer · Sobre nosotros · **Tienda/Shop ·
-Ficha de producto · Carrito/Checkout** · Blog · Plantilla entradas · Contacto ·
-Páginas legales
+**Ecommerce:** HOME · header · footer · Sobre nosotros · Servicios ·
+**Tienda/Shop · Ficha de producto · Carrito/Checkout** · Blog · Plantilla entradas ·
+Contacto · Páginas legales
 
 **Kit Digital:** añade la subtarea `JUSTIFICACIÓN KIT DIGITAL`.
 

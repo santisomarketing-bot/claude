@@ -46,6 +46,7 @@ export const PAGINAS_ECOMMERCE = [
   "header",
   "footer",
   "Sobre nosotros",
+  "Servicios",
   "Tienda/Shop",
   "Ficha de producto",
   "Carrito/Checkout",
