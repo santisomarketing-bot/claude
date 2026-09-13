@@ -6,20 +6,10 @@ Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportun
 > que cada día a las 17:00 (hora España) busca posts públicos de "busco agencia" y
 > te los manda por email. Ver **[DAILY_LEADS.md](./DAILY_LEADS.md)**.
 
-> ⭐ **Google Business Profile:** dos escenarios de Make.com, uno que responde
-> reseñas (autopublica 4-5★, borrador por email en 1-3★) y otro que publica una
-> novedad a la semana por cliente. Ver **[GOOGLE_REVIEWS.md](./GOOGLE_REVIEWS.md)**
-> y **[GOOGLE_NOVEDADES.md](./GOOGLE_NOVEDADES.md)**. Ambos ya están creados y
-> probados en Make; el plan para terminarlos de activar en producción, sesión
-> a sesión, está en **[GOOGLE_BUSINESS_PLAN.md](./GOOGLE_BUSINESS_PLAN.md)**.
-> La estructura de carpetas/Excel en Drive que alimenta el contenido (por
-> marca, con recordatorio mensual automático) está en
-> **[ESTRUCTURA_CONTENIDO_DRIVE.md](./ESTRUCTURA_CONTENIDO_DRIVE.md)**.
->
-> 💼 **LinkedIn:** publicador automático que corre a diario y publica imagen +
-> texto en la página de empresa solo cuando toca según una frecuencia
-> seleccionable directamente en el Excel maestro (sin tocar Make). Ver
-> **[LINKEDIN_PUBLICACIONES.md](./LINKEDIN_PUBLICACIONES.md)**.
+> ⭐💼 **Google Business Profile (reseñas y novedades) + LinkedIn:** esas
+> automatizaciones de Make.com se mudaron a su propio repo, separado de
+> este scanner porque no tienen relación entre sí:
+> **[GOOGLE-BUSINESS---NOVEDADES-Y-LINKEDIN](https://github.com/santisomarketing-bot/GOOGLE-BUSINESS---NOVEDADES-Y-LINKEDIN)**.
 
 ## ⚠️ Aviso importante
 
