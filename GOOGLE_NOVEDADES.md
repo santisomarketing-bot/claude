@@ -1,5 +1,30 @@
 # Publicador semanal de novedades en Google Business Profile
 
+> ✅ **Estado real (13/09/2026):** ya existe en vuestro Make (equipo Santiso
+> Marketing S.L.U., carpeta **GOOGLE BUSINESS**) el escenario
+> **`GBP PUBLICADOR SEMANAL DE NOVEDADES (PRUEBA: solo Santiso Marketing)`**
+> (id `9802376`), programado para lunes 09:00 (hora España). Encadena
+> `Search Locations` (vuestra cuenta, id `104496299100098224068`, la misma
+> que usan ECOKIL/IcebergExpo/etc.) → redacción con OpenAI → `Create a Post`.
+>
+> **Lo dejé en INACTIVO y filtrado solo a vuestra propia ficha (Santiso
+> Marketing) a propósito:** publicar de verdad es una acción pública y
+> visible en un listado real, así que no la lancé ni la activé sin
+> confirmároslo primero — ni siquiera contra vuestra propia ficha. Antes de
+> activarlo:
+> 1. Revisad/corregid la URL del botón (puse `https://www.santisomarketing.com`
+>    a modo de ejemplo — confirmad cuál es la real).
+> 2. Lanzad una ejecución de prueba manual desde Make y mirad el texto que
+>    sale antes de dejarlo en automático.
+> 3. Para ampliarlo a un cliente real, cambiad el filtro del segundo módulo
+>    (hoy solo deja pasar `locations/641459008971883916`) por el
+>    `location.name` de ese cliente (la lista completa de vuestros 16
+>    negocios en esta cuenta la tengo si la queréis).
+>
+> Por ahora usa un único ángulo "libre" (la IA varía el enfoque cada vez)
+> en vez de la rotación por Sheet descrita más abajo — es la versión mínima
+> que ya funciona; la rotación con hoja de cálculo queda como mejora futura.
+
 Escenario de **Make.com** que, **una vez por semana**, redacta y publica un
 post de "Novedades" (Updates / Local Post) para cada cliente activo, sin que
 tengáis que preparar nada de contenido a mano.

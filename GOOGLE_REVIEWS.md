@@ -1,5 +1,26 @@
 # Respondedor de reseñas de Google Business Profile
 
+> ✅ **Estado real (13/09/2026):** el escenario que redacta y decide la ruta ya
+> está **creado y probado en vuestro Make** (equipo Santiso Marketing S.L.U.,
+> carpeta **GOOGLE BUSINESS**): **`GBP REDACTAR RESPUESTA A RESEÑA`**
+> (id `9802353`). Probado en real con dos casos: una reseña de 5★ (generó
+> respuesta y la marcó para autopublicar, sin enviar nada) y una de 2★
+> (generó un borrador **y de verdad mandó el email** a
+> santisomarketing@gmail.com pidiendo aprobación). Usa vuestra conexión
+> `My Google Custom connection`, el conector OpenAI `CHAT GPT 2025` (modelo
+> `gpt-4.1-mini` — el `gpt-5-chat-latest` que usan otros escenarios vuestros
+> está deprecado, puede que os interese revisarlos) y `My Gmail connection`.
+>
+> **Falta un paso manual (2 min) que no pude completar yo:** conectar el
+> disparador real de Google Business Profile (**Watch Reviews**) para que
+> llame a este escenario con cada reseña nueva, y el módulo que publica la
+> respuesta (**Create/Update a Review Reply**) en la ruta de 4-5★. No pude
+> confirmar los nombres exactos de esos dos módulos por API porque la
+> conexión de Make de esta sesión no tiene el permiso `apps:read` — en el
+> editor visual de Make se añaden en segundos buscando "Google Business
+> Profile" en el buscador de módulos. El resto de la lógica (router,
+> prompts, email de borrador) ya está montado y probado.
+
 Escenario de **Make.com** (ya tienes Google Business Profile conectado ahí) que
 detecta reseñas nuevas en los negocios de los clientes y responde:
 
