@@ -4,6 +4,9 @@ Referencia: [agentfi.tech](https://agentfi.tech) / [docs.agentfi.tech](https://d
 "la capa SEO para la era de la búsqueda con IA". No confundir con el "AgentFi" de DeFi/cripto
 (otro producto con el mismo nombre).
 
+Para repos de GitHub, despliegue en Cloudflare y dónde entra Make, ver
+[`AGENTFI_INFRA.md`](./AGENTFI_INFRA.md).
+
 ## Por qué esto encaja aquí
 
 Ya hacéis GEO (Generative Engine Optimization) a mano con el flujo de
