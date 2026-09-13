@@ -73,6 +73,27 @@ cambiando el destinatario y los dos links por los de su propia carpeta.
   - [Excel maestro](https://docs.google.com/spreadsheets/d/1CY8eoGKUbFpdYiHYDFVMAJK4T3CvITmp7YlDnLoYH50/edit)
   - Un post de ejemplo con foto + copy real (a borrar o reemplazar)
 
+## Formato visual de los Excel maestro (13/09/2026)
+
+Los tres Sheets (Novedades GBP, Publicaciones LinkedIn, Inventario Ecokil)
+tienen formato real aplicado vía API de Google Sheets, no solo texto plano:
+
+- Encabezado con color de marca, negrita, texto blanco, fila congelada (no
+  se pierde de vista al bajar) y filtro automático en cada columna.
+- La columna **Estado** se colorea sola según el texto: verde para
+  "Listo"/publicado, naranja/rojo para "Pendiente"/"Revisar", gris para
+  "Ejemplo" o material sin post armado.
+- Columnas auto-ajustadas al contenido (excepto las de texto largo, que se
+  dejan con ancho fijo para no romper la vista).
+
+Se hizo con el módulo `google-sheets:makeAPICall` de Make (mismo patrón que
+el resto: `Make an API Call` cuando el módulo nativo no alcanza). Para
+replicarlo en un Excel nuevo hace falta el `sheetId` numérico interno de la
+pestaña (se obtiene con un `GET` a `spreadsheets/{id}`) y mandar el `body`
+del `batchUpdate` como **texto JSON**, no como objeto — el módulo de Make
+tiene un bug real: si el body se pasa como objeto, lo manda literalmente
+como el texto `[object Object]` en vez de serializarlo.
+
 ## Notas honestas
 
 - **Los posts de ejemplo son reales pero de relleno**: reutilizan un video y
