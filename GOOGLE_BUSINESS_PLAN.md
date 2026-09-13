@@ -40,13 +40,14 @@ Ver [`ESTRUCTURA_CONTENIDO_DRIVE.md`](./ESTRUCTURA_CONTENIDO_DRIVE.md) para el d
 - [ ] Revisar las respuestas publicadas (tono, precisión) y los borradores recibidos por email.
 - [ ] Ajustar `google-reviews-prompts.mjs` / el prompt en Make si hace falta.
 
-## Fase 3 — Cerrar el publicador de novedades
+## Fase 3 — Cerrar el publicador de novedades ✅ (13/09/2026)
 
-- [ ] Corregir la URL real en el módulo `Create a Post` (hoy tiene un placeholder, `https://www.santisomarketing.com`).
-- [ ] Conectar el publicador semanal con la carpeta `NOVEDADES GOOGLE BUSINESS` (Fase 0.5): que lea el Excel maestro en vez de generar el texto siempre desde cero, y priorice un post `Listo` si hay alguno en cola.
-- [ ] Ejecutar una vez a mano desde Make y revisar el texto generado.
-- [ ] Activar el escenario **solo** para Santiso Marketing (ya está filtrado así) durante 2-3 semanas.
-- [ ] Revisar los primeros posts publicados antes de sumar clientes.
+- [x] Conectado el publicador semanal con la carpeta `NOVEDADES GOOGLE BUSINESS` (Fase 0.5): lee el Excel maestro y prioriza una fila `Listo` en cola; solo genera con IA si no hay ninguna. Ver [`GOOGLE_NOVEDADES.md`](./GOOGLE_NOVEDADES.md).
+- [x] **Publicado un post real** (13/09/2026, contenido basado en un artículo real del blog) en la ficha real de Santiso Marketing. Se detectó y corrigió un bug real (el Router nunca detectaba la cola por un problema de sintaxis de Make — ver detalle en `GOOGLE_NOVEDADES.md`); el post publicado se corrigió con un `PATCH` una vez arreglada la causa.
+- [x] Dejado un segundo post en cola (`Estado = Listo`) para que la próxima ejecución automática (el próximo lunes 09:00) lo publique solo, a modo de prueba de punta a punta.
+- [x] Todos los módulos de ambos escenarios (`9802353` y `9802376`) tienen ahora un nombre descriptivo de su función en el editor de Make.
+- [ ] Revisar que el segundo post se publique correctamente el próximo lunes antes de sumar clientes.
+- [ ] Activar el escenario para un cliente real (hoy sigue filtrado solo a Santiso Marketing).
 
 ## Fase 4 — Expansión gradual a clientes reales
 

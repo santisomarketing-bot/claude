@@ -1,29 +1,60 @@
 # Publicador semanal de novedades en Google Business Profile
 
-> ✅ **Estado real (13/09/2026):** ya existe en vuestro Make (equipo Santiso
-> Marketing S.L.U., carpeta **GOOGLE BUSINESS**) el escenario
-> **`GBP PUBLICADOR SEMANAL DE NOVEDADES (PRUEBA: solo Santiso Marketing)`**
-> (id `9802376`), programado para lunes 09:00 (hora España). Encadena
-> `Search Locations` (vuestra cuenta, id `104496299100098224068`, la misma
-> que usan ECOKIL/IcebergExpo/etc.) → redacción con OpenAI → `Create a Post`.
+> ✅ **Estado real (13/09/2026):** escenario **`GBP PUBLICADOR SEMANAL DE
+> NOVEDADES (Santiso Marketing)`** (Make, id `9802376`, carpeta **GOOGLE
+> BUSINESS**), **activo**, programado lunes 09:00 (hora España). Ya no
+> genera siempre con IA: primero mira si hay contenido en cola en el
+> [Excel maestro](./ESTRUCTURA_CONTENIDO_DRIVE.md) y solo si no hay nada
+> "Listo" genera un texto nuevo con IA. Publicó de verdad un post real el
+> 13/09/2026 (ver notas) y tiene un segundo post en cola ("Listo") para la
+> próxima ejecución automática, a modo de prueba de punta a punta.
 >
-> **Lo dejé en INACTIVO y filtrado solo a vuestra propia ficha (Santiso
-> Marketing) a propósito:** publicar de verdad es una acción pública y
-> visible en un listado real, así que no la lancé ni la activé sin
-> confirmároslo primero — ni siquiera contra vuestra propia ficha. Antes de
-> activarlo:
-> 1. Revisad/corregid la URL del botón (puse `https://www.santisomarketing.com`
->    a modo de ejemplo — confirmad cuál es la real).
-> 2. Lanzad una ejecución de prueba manual desde Make y mirad el texto que
->    sale antes de dejarlo en automático.
-> 3. Para ampliarlo a un cliente real, cambiad el filtro del segundo módulo
->    (hoy solo deja pasar `locations/641459008971883916`) por el
->    `location.name` de ese cliente (la lista completa de vuestros 16
->    negocios en esta cuenta la tengo si la queréis).
+> **Lógica de cola (módulos 10/11/2):**
+> 1. `Google Sheets — Search Rows` sobre el Excel maestro, filtrando
+>    `Estado = Listo`.
+> 2. `Aggregator` cuenta cuántas filas "Listo" hay.
+> 3. `Router`: si hay ≥1 en cola → toma la más antigua, publica su
+>    `Texto del post` / `Boton / URL destino` tal cual, y marca esa fila
+>    como `Publicado` con la fecha. Si no hay ninguna → genera el texto con
+>    IA (ángulo libre) como respaldo.
 >
-> Por ahora usa un único ángulo "libre" (la IA varía el enfoque cada vez)
-> en vez de la rotación por Sheet descrita más abajo — es la versión mínima
-> que ya funciona; la rotación con hoja de cálculo queda como mejora futura.
+> Para ampliarlo a un cliente real: cambiad el filtro del segundo módulo
+> (hoy solo deja pasar `locations/641459008971883916`) por el
+> `location.name` de ese cliente, y repetid la estructura de Drive
+> (Fase 0.5 del plan) para ese cliente.
+
+## Bug real encontrado y corregido (13/09/2026)
+
+La primera ejecución real publicó el texto genérico de IA en vez del post
+en cola, a pesar de que el Excel sí tenía una fila `Listo`. Causa raíz,
+confirmada con pruebas aisladas contra datos reales:
+
+- **El `Aggregator` de Make expone el array agregado como campo `array`,
+  no `bundle`.** El campo `bundle` en el mapper del Aggregator es solo el
+  nombre que yo le puse a la plantilla de cada elemento — no es el nombre
+  del campo de salida. Todas las condiciones del Router usaban
+  `{{length(11.bundle)}}`, que siempre daba `0` (campo inexistente) por
+  más filas "Listo" que hubiera. Corregido a `{{length(11.array)}}`.
+- **Los campos de `Google Sheets — Search Rows` con nombre puramente
+  numérico ("6", "7"...) no se pueden referenciar con `{{12.6}}`** (Make lo
+  malinterpreta como el número decimal 12,6) **ni con `get(12; "6")`**
+  (devuelve un valor sin sentido). La sintaxis que sí funciona, probada
+  contra la fila real: comillas invertidas alrededor del nombre del campo,
+  `` {{12.`6`}} ``.
+- El mismo patrón (`length(aggregator.bundle)` en vez de `.array`) estaba
+  también en el control de duplicados del respondedor de reseñas
+  (`GOOGLE_REVIEWS.md`, escenario `9802353`, módulo 14) — nunca se detectó
+  porque no ha habido todavía una reseña real 1-3★ que dispare esa ruta.
+  Corregido igual, de forma preventiva.
+- El post real mal publicado el 13/09/2026 (con el texto de IA en vez del
+  de la cola) se corrigió con un `PATCH` directo al mismo post ya
+  existente en Google (mismo `name`, sin borrar ni duplicar nada) para que
+  el texto y el enlace en la ficha real coincidan con lo previsto.
+
+**Todos los módulos de Make (este escenario y el de reseñas) llevan ahora
+un nombre descriptivo de su función** (`1. Buscar ubicaciones...`, `4A.
+Publicar post de la cola...`, etc.), visible en el editor de Make, para
+que sea más fácil reconocerlos y editarlos más adelante.
 
 Escenario de **Make.com** que, **una vez por semana**, redacta y publica un
 post de "Novedades" (Updates / Local Post) para cada cliente activo, sin que
