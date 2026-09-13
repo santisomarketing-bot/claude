@@ -18,6 +18,9 @@ Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportun
 > máquina (Programador de tareas de Windows) para armar histórico sin lanzarlas a mano cada vez.
 > Ver **[SCHEDULED_SCANS.md](./SCHEDULED_SCANS.md)**.
 
+> 📇 **NAP-W (directorios locales):** en qué directorios locales aparece un negocio (y en
+> cuáles no) para priorizar altas. Ver **[NAPW_CHECK.md](./NAPW_CHECK.md)**.
+
 ## ⚠️ Aviso importante
 
 Automatizar LinkedIn va **contra sus Términos de Servicio**. Esta herramienta usa **tu propia sesión** y un ritmo lento y humano para minimizar el riesgo, pero **el riesgo de bloqueo no es cero**. Úsala con criterio y con moderación. No metas credenciales en ningún sitio: inicias sesión tú a mano en tu navegador.

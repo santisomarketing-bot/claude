@@ -5,8 +5,20 @@ leads.csv
 leads.json
 maps-*.csv
 maps-*.json
+maps-scan.csv
+maps-scan.json
 grid-*.csv
 grid-*.json
+radar-*.csv
+radar-*.json
+serp-scan.csv
+serp-scan.json
+serp-*.csv
+serp-*.json
+napw-*.csv
+napw-*.json
+prospectos*.csv
+prospectos*.json
 *.log
 .DS_Store
 

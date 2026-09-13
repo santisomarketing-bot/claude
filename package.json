@@ -9,7 +9,8 @@
     "login": "node scan.mjs --login-only",
     "maps-scan": "node maps-scan.mjs",
     "maps-login": "node maps-scan.mjs --login-only",
-    "serp-scan": "node serp-scan.mjs"
+    "serp-scan": "node serp-scan.mjs",
+    "napw-check": "node napw-check.mjs"
   },
   "dependencies": {
     "playwright": "^1.47.0"

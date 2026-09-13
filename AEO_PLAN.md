@@ -227,6 +227,19 @@ ver el punto 5 de [`MAPS_SCAN.md`](./MAPS_SCAN.md).
   es la señal más fuerte de que necesitan ayuda digital.
 - **No se pudo probar en vivo** en esta sesión, mismo motivo que la 8 y la 9.
 
+### Sesión 11 — NAP-W: presencia en directorios locales ✅ hecho
+
+Añadido a petición (inspirado en el módulo de SEO local de una herramienta de mercado, ver
+`MAPS_SCAN.md`/`NAPW_CHECK.md` para el detalle de qué se decidió no replicar y por qué).
+Implementado en [`napw-check.mjs`](./napw-check.mjs) — ver [`NAPW_CHECK.md`](./NAPW_CHECK.md).
+
+- Comprueba **presencia** (no consistencia campo a campo, ver limitación explicada en
+  `NAPW_CHECK.md`) del negocio en una lista de directorios locales, vía `site:<directorio>
+  "<nombre>"` en Google — reutiliza la misma lectura de resultados orgánicos que la Sesión 9.
+- Salida: `directorio, encontrado, url, totalResultados` — los directorios sin presencia son la
+  lista de altas a priorizar.
+- **No se pudo probar en vivo** en esta sesión, mismo motivo que las Sesiones 8-10.
+
 ---
 
 ## Orden y dependencias
@@ -237,13 +250,14 @@ ver el punto 5 de [`MAPS_SCAN.md`](./MAPS_SCAN.md).
                  └─→ 6
                           → 7
 
-8 ─┬─ 9   (independientes del resto, se pueden hacer en cualquier momento)
-   └─ 10
+8 ─┬─ 9 ─┬─ 11   (independientes del resto, se pueden hacer en cualquier momento)
+   └─ 10 ┘
 ```
 
 Sesiones 3, 4 y 6 dependen de tener la Sesión 2 (generador de contenido) lista, pero son
 independientes entre sí — se pueden hacer en el orden que convenga según qué cliente piloto se
 use primero. La Sesión 5 necesita 1 y 4. La 7 es la última, cuando el resto esté validado con al
-menos un cliente real. Las Sesiones 8, 9 y 10 no dependen de nada del resto del plan — son la
+menos un cliente real. Las Sesiones 8, 9, 10 y 11 no dependen de nada del resto del plan — son la
 pista aparte de Local SEO/Google Search que se puede abordar en paralelo o incluso primero; la 10
-reutiliza código de la 8 (`extractOne`) pero no depende de que la 8 esté "terminada".
+reutiliza código de la 8 (`extractOne`) y la 11 reutiliza la lectura de resultados orgánicos de
+la 9, pero ninguna depende de que la otra esté "terminada".
