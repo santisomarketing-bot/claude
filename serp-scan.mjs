@@ -51,6 +51,7 @@ const OUT = args.out ?? "serp-scan";
 const DELAY = parseInt(args.delay ?? "3000", 10);
 const LOGIN_ONLY = Boolean(args["login-only"]);
 const DEBUG = Boolean(args.debug);
+const HEADLESS = Boolean(args.headless);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // Frases de aviso que Google muestra junto a un AI Overview. Se usan frases de
@@ -140,9 +141,13 @@ async function main() {
     console.error("Falta --input=fichero (una busqueda por linea, ver SERP_SCAN.md)");
     process.exit(1);
   }
+  if (HEADLESS && LOGIN_ONLY) {
+    console.error("--headless no tiene sentido con --login-only (necesitas ver la ventana para iniciar sesion)");
+    process.exit(1);
+  }
 
   const ctx = await chromium.launchPersistentContext(PROFILE_DIR, {
-    headless: false,
+    headless: HEADLESS,
     viewport: { width: 1280, height: 900 },
     args: ["--disable-blink-features=AutomationControlled"],
     ...LAUNCH_BASE,

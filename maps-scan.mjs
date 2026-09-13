@@ -74,6 +74,7 @@ const OUT = args.out ?? "maps-scan";
 const DELAY = parseInt(args.delay ?? "3000", 10);
 const LOGIN_ONLY = Boolean(args["login-only"]);
 const DEBUG = Boolean(args.debug);
+const HEADLESS = Boolean(args.headless);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 // ---- UULE: simula que la busqueda se hace desde una ubicacion concreta -----
@@ -282,16 +283,17 @@ async function runHeatmap(page) {
   const centerIdx = (size - 1) / 2;
   const stepKm = radiusKm / centerIdx;
 
+  const fecha = new Date().toISOString().slice(0, 10);
   const rows = [];
   for (let row = 0; row < size; row++) {
     for (let col = 0; col < size; col++) {
       const p = puntoDeCuadricula(centerLat, centerLng, row, col, centerIdx, stepKm);
       try {
         const { posicion } = await heatmapPoint(page, term, p.lat, p.lng, target);
-        rows.push({ ...p, posicion, error: "" });
+        rows.push({ ...p, posicion, fecha, error: "" });
         if (DEBUG) console.log(`  ✓ [${p.row},${p.col}] ${p.direccion} ${p.distancia_km}km -> posicion ${posicion ?? "no encontrada"}`);
       } catch (err) {
-        rows.push({ ...p, posicion: null, error: err.message });
+        rows.push({ ...p, posicion: null, fecha, error: err.message });
         if (DEBUG) console.log(`  ✗ [${p.row},${p.col}] ${p.direccion} -> ${err.message}`);
       }
       await sleep(DELAY + Math.floor(Math.random() * 1000));
@@ -384,9 +386,13 @@ async function main() {
     console.error("Falta --input=fichero (ver MAPS_SCAN.md para el formato segun --mode)");
     process.exit(1);
   }
+  if (HEADLESS && LOGIN_ONLY) {
+    console.error("--headless no tiene sentido con --login-only (necesitas ver la ventana para iniciar sesion)");
+    process.exit(1);
+  }
 
   const ctx = await chromium.launchPersistentContext(PROFILE_DIR, {
-    headless: false,
+    headless: HEADLESS,
     viewport: { width: 1280, height: 900 },
     args: ["--disable-blink-features=AutomationControlled"],
     ...LAUNCH_BASE,
@@ -421,16 +427,32 @@ async function main() {
   const runners = { grid: runGrid, heatmap: runHeatmap, prospect: runProspect, extract: runExtract };
   const columnas = {
     grid: ["term", "location", "target", "posicion", "competidoresAntes", "totalDetectados", "error"],
-    heatmap: ["row", "col", "distancia_km", "direccion", "posicion", "lat", "lng", "error"],
+    heatmap: ["row", "col", "distancia_km", "direccion", "posicion", "fecha", "lat", "lng", "error"],
     prospect: ["categoria", "ubicacion", "nombre", "rating", "resenas", "tieneWeb", "error"],
     extract: ["query", "url", "placeFtid", "cid", "nombre", "direccion", "telefono", "web", "rating", "error"],
   };
   const rows = await (runners[MODE] ?? runExtract)(page);
   const cols = columnas[MODE] ?? columnas.extract;
 
-  writeFileSync(join(__dirname, `${OUT}.json`), JSON.stringify(rows, null, 2));
-  writeFileSync(join(__dirname, `${OUT}.csv`), toCSV(rows, cols));
-  console.log(`\n${rows.length} fila(s) procesadas. Salida: ${OUT}.csv / ${OUT}.json\n`);
+  const jsonPath = join(__dirname, `${OUT}.json`);
+  const csvPath = join(__dirname, `${OUT}.csv`);
+
+  if (MODE === "heatmap" && Boolean(args.append)) {
+    let historial = [];
+    try {
+      historial = JSON.parse(readFileSync(jsonPath, "utf8"));
+    } catch {
+      // primera corrida con --append, no hay historico todavia
+    }
+    const combinado = [...historial, ...rows];
+    writeFileSync(jsonPath, JSON.stringify(combinado, null, 2));
+    writeFileSync(csvPath, toCSV(combinado, cols));
+    console.log(`\n${rows.length} fila(s) nuevas (${combinado.length} en el histórico). Salida: ${OUT}.csv / ${OUT}.json\n`);
+  } else {
+    writeFileSync(jsonPath, JSON.stringify(rows, null, 2));
+    writeFileSync(csvPath, toCSV(rows, cols));
+    console.log(`\n${rows.length} fila(s) procesadas. Salida: ${OUT}.csv / ${OUT}.json\n`);
+  }
 
   await ctx.close();
   process.exit(0);

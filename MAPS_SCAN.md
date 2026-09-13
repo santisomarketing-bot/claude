@@ -86,14 +86,23 @@ npm run maps-scan -- --mode=heatmap \
 | `--target=TEXTO` | Nombre del negocio a ubicar en los resultados | — (opcional, sin él solo ves cuántos resultados hay) |
 | `--radius-km=N` | Radio de la cuadrícula, en km | 5 |
 | `--size=N` | Tamaño de la cuadrícula N×N (impar, para tener un punto central) | 5 |
+| `--append` | En vez de pisar `<out>.csv/.json`, agrega esta corrida al histórico existente | — (desactivado) |
+| `--headless` | Corre el navegador sin ventana visible (para rastreos programados desatendidos) | — (desactivado) |
 
-Salida (`<out>.csv` / `.json`): `row, col, distancia_km, direccion, posicion, lat, lng` — **el
-mismo formato que espera el botón "Cargar CSV real" del panel Radar Local**, subilo tal cual.
+Salida (`<out>.csv` / `.json`): `row, col, distancia_km, direccion, posicion, fecha, lat, lng` —
+**el mismo formato que espera el botón "Cargar CSV real" del panel Radar Local**, subilo tal cual.
+Con `--append`, cada fila lleva la fecha de esa corrida y el panel arma solo un gráfico de
+evolución si detecta más de una fecha en el CSV.
 
 **Ojo con el volumen**: cada punto de la cuadrícula es una navegación real a Google Maps. Una
 cuadrícula de `5×5` son 25 búsquedas (~2 minutos con el ritmo por defecto); `9×9` son 81 (~7-8
 minutos) y sube bastante el riesgo de que Google detecte el patrón. Empezá chico (`--size=5`) y
 solo subilo si de verdad necesitás más resolución.
+
+**`--headless` es más riesgoso**: un navegador sin ventana es más fácil de detectar como bot para
+Google que uno normal con `--disable-blink-features=AutomationControlled` a la vista. Usalo solo
+para rastreos programados desatendidos (ver [`SCHEDULED_SCANS.md`](./SCHEDULED_SCANS.md)) y con
+volumen moderado — para uso manual, dejá la ventana visible (el default).
 
 ## 5) Modo `prospect` — negocios con poca presencia digital (leads de SEO local)
 
