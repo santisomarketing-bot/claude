@@ -121,9 +121,13 @@ correrlo con API keys reales de al menos un motor (no hay ninguna cargada en est
 - Criterio de éxito: correr el script sobre un cliente real y obtener un CSV con citas
   detectadas por motor y fecha.
 
-### Sesión 5 — Informe mensual automatizado
+### Sesión 5 — Informe mensual automatizado ✅ hecho (falta probar con datos reales)
 
-Automatiza la fase 10, cierra el ciclo con Jira/Sheets ya existentes.
+Automatiza la fase 10, cierra el ciclo con Jira/Sheets ya existentes. Implementado en
+[`AEO-core/monthly-report.mjs`](https://github.com/santisomarketing-bot/AEO-core/blob/main/monthly-report.mjs)
+— ver [`MONTHLY_REPORT.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/MONTHLY_REPORT.md).
+Probado con datos sintéticos (audit + mentions, comparación mes a mes); falta correrlo con
+datos reales de un cliente.
 
 - Combina salidas de Sesión 1 (audit) + Sesión 4 (mentions) en un informe único por cliente
   (Markdown o HTML simple, exportable a PDF/Google Doc).
@@ -146,13 +150,11 @@ Para clientes en WordPress, cierra la fase 4-5 sin depender de subir manualmente
 - Criterio de éxito: aplicado en un post real de un sitio conectado, y el audit de la Sesión 1
   sube de puntuación tras el cambio.
 
-### Sesión 7 — Empaquetado y decisión de producto
+### Sesión 7 — Empaquetado y decisión de producto ✅ hecho
 
-- Con las 6 piezas funcionando, decidir: ¿se queda como herramienta interna de la agencia, se
-  ofrece como servicio con precio propio a clientes, o ambas?
-- Si se ofrece como servicio: definir tiers (auditoría suelta / auditoría + edge + tracking
-  mensual), y cómo se vende (landing, propuesta comercial).
-- Entregable: `AEO_PRODUCTO.md` con la decisión y next steps si aplica.
+Ver [`AEO_PRODUCTO.md`](./AEO_PRODUCTO.md): recomienda un piloto interno de punta a punta antes
+de vender esto como servicio (varias piezas solo están probadas con datos sintéticos, no en
+vivo), y deja una propuesta de tiers para cuando el piloto esté validado.
 
 ### Sesión 8 — Extracción masiva de datos de Google Maps (Local SEO) ✅ hecho (falta validar en vivo)
 
