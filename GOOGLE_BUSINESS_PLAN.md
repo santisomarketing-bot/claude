@@ -23,15 +23,14 @@ Ver [`ESTRUCTURA_CONTENIDO_DRIVE.md`](./ESTRUCTURA_CONTENIDO_DRIVE.md) para el d
 
 ## Fase 1 — Cerrar el circuito del respondedor de reseñas
 
-- [ ] En Make, añadir el trigger **Watch Reviews** (Google Business Profile) sobre la cuenta `104496299100098224068`.
-- [ ] Conectar ese trigger para que llame a `GBP REDACTAR RESPUESTA A RESEÑA` con `negocio`/`autor`/`estrellas`/`texto`.
-- [ ] En la ruta 4-5★ del propio escenario, añadir el módulo **Create/Update a Review Reply** para publicar `respuesta` de verdad.
-- [ ] Probar con una reseña real (o dejar caer una de prueba) en **un solo negocio** antes de activarlo para todos.
-- [ ] Confirmar que el email de borrador (1-3★) llega bien y con buen aspecto.
+- [x] ~~Trigger **Watch Reviews**~~ — **descartado**: confirmado con pruebas reales que este módulo de Make está roto (siempre llama a `/v4/reviews` sin cuenta/ubicación, 404 fijo, pase lo que pase en el mapeo). No es un error de configuración.
+- [x] Reemplazado por **`Make an API Call`** (GET a `v4/accounts/.../locations/.../reviews`) + un **Iterator** que recorre cada reseña + filtro "sin `reviewReply` todavía" para no reprocesar. Probado con datos reales de Ecokil (una reseña real, pipeline completo funcionando: IA + email).
+- [x] El escenario `GBP REDACTAR RESPUESTA A RESEÑA` (id `9802353`) ya corre esta lógica completa apuntando a **Santiso Marketing** (piloto acordado). Sigue en modo `on-demand` (no automático todavía).
+- [ ] **Falta el módulo real de publicación** ("Create/Update a Review Reply" o su equivalente por `makeApiCall`/PATCH) — hoy la ruta 4-5★ genera el texto pero no lo publica. Sin confirmar el nombre exacto del módulo aún.
+- [ ] **Falta control de duplicados** para la ruta 1-3★: cada vez que se sondee, si la reseña sigue sin respuesta, se reenvía el email — hoy no hay nada que lo evite. Antes de activar el sondeo automático (`indefinitely`), hay que resolver esto (ej. guardar en un Sheet qué reseñas ya generaron email).
+- [ ] Cuando ambos estén resueltos: cambiar la programación de `on-demand` a `indefinitely` (ej. cada 15 min) para que corra solo.
 
-**Decisión tuya:** ¿en qué negocio probamos primero? (Sugerencia: Santiso
-Marketing propio o Ecokil, que ya tienen todo el resto de infraestructura
-montada.)
+**Decisión ya tomada:** piloto en Santiso Marketing (propio negocio de la agencia).
 
 ## Fase 2 — Piloto del respondedor en un cliente real
 
