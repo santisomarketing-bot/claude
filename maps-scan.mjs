@@ -21,8 +21,9 @@
 //    extract:  una busqueda o URL de Maps por linea
 //              "Cliente S.L. Barcelona"
 //              "https://www.google.com/maps/place/..."
-//    grid:     "termino;ciudad;marca_objetivo" por linea (marca_objetivo opcional)
-//              "agencia de marketing;Barcelona;Santiso Marketing"
+//    grid:     "termino;ciudad;marca_objetivo;dominio" por linea (marca_objetivo y dominio opcionales;
+//              dominio agrega la posicion ORGANICA de ese dominio en la misma busqueda)
+//              "agencia de marketing;Barcelona;Santiso Marketing;santisomarketing.com"
 //    prospect: "categoria;ubicacion" por linea
 //              "gimnasio;Vigo"
 //
@@ -178,7 +179,16 @@ async function runExtract(page) {
 // La deteccion del "local pack" (los 3 resultados de Maps dentro de la busqueda
 // normal) es lo mas propenso a romperse si Google cambia el layout - mismo aviso
 // que arriba, revisar con --debug antes de correr en masa.
-async function gridOne(page, term, location, target) {
+// Posicion organica: dado el listado de hrefs de los resultados organicos en
+// orden (ver abajo), en que puesto aparece por primera vez un link a `domain`.
+export function posicionOrganicaDesdeHrefs(hrefs, domain) {
+  if (!domain) return null;
+  const host = domain.toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "");
+  const idx = hrefs.findIndex((href) => (href || "").toLowerCase().includes(host));
+  return idx === -1 ? null : idx + 1;
+}
+
+async function gridOne(page, term, location, target, domain) {
   const uule = buildUule(location);
   const url = `https://www.google.com/search?q=${encodeURIComponent(term)}&uule=${encodeURIComponent(uule)}&hl=es`;
   await page.goto(url, { waitUntil: "domcontentloaded" });
@@ -193,6 +203,15 @@ async function gridOne(page, term, location, target) {
   const posicion = target ? (lista.findIndex((n) => n.toLowerCase().includes(target.toLowerCase())) + 1 || null) : null;
   const competidoresAntes = posicion ? lista.slice(0, posicion - 1) : lista;
 
+  // Resultados organicos: en la MISMA pagina que ya cargamos para el local
+  // pack, sin request extra. #rso es el contenedor de resultados organicos,
+  // estable en Google Search desde hace anios (aunque no es oficial/documentado).
+  const hrefsOrganicos = await page
+    .locator("#rso a:has(h3)")
+    .evaluateAll((els) => els.map((el) => el.href))
+    .catch(() => []);
+  const posicionOrganica = posicionOrganicaDesdeHrefs(hrefsOrganicos, domain);
+
   return {
     term,
     location,
@@ -200,6 +219,8 @@ async function gridOne(page, term, location, target) {
     posicion,
     competidoresAntes: competidoresAntes.join(" | "),
     totalDetectados: lista.length,
+    domain: domain || "",
+    posicionOrganica,
     error: "",
   };
 }
@@ -208,13 +229,16 @@ async function runGrid(page) {
   const lineas = readLines(INPUT);
   const rows = [];
   for (const linea of lineas) {
-    const [term, location, target] = linea.split(";").map((s) => (s || "").trim());
+    const [term, location, target, domain] = linea.split(";").map((s) => (s || "").trim());
     try {
-      const row = await gridOne(page, term, location, target);
+      const row = await gridOne(page, term, location, target, domain);
       rows.push(row);
-      if (DEBUG) console.log(`  ✓ "${term}" en ${location} -> posicion ${row.posicion ?? "no detectada"}`);
+      if (DEBUG) {
+        const orgTxt = domain ? ` organica=${row.posicionOrganica ?? "no encontrada"}` : "";
+        console.log(`  ✓ "${term}" en ${location} -> posicion ${row.posicion ?? "no detectada"}${orgTxt}`);
+      }
     } catch (err) {
-      rows.push({ term, location, target: target || "", posicion: null, competidoresAntes: "", totalDetectados: 0, error: err.message });
+      rows.push({ term, location, target: target || "", posicion: null, competidoresAntes: "", totalDetectados: 0, domain: domain || "", posicionOrganica: null, error: err.message });
       if (DEBUG) console.log(`  ✗ "${term}" en ${location} -> ${err.message}`);
     }
     await sleep(DELAY + Math.floor(Math.random() * 1000));
@@ -426,7 +450,7 @@ async function main() {
 
   const runners = { grid: runGrid, heatmap: runHeatmap, prospect: runProspect, extract: runExtract };
   const columnas = {
-    grid: ["term", "location", "target", "posicion", "competidoresAntes", "totalDetectados", "error"],
+    grid: ["term", "location", "target", "posicion", "competidoresAntes", "totalDetectados", "domain", "posicionOrganica", "error"],
     heatmap: ["row", "col", "distancia_km", "direccion", "posicion", "fecha", "topNegocios", "lat", "lng", "error"],
     prospect: ["categoria", "ubicacion", "nombre", "rating", "resenas", "tieneWeb", "error"],
     extract: ["query", "url", "placeFtid", "cid", "nombre", "direccion", "telefono", "web", "rating", "error"],

@@ -44,24 +44,39 @@ npm run maps-scan -- --mode=extract --input=negocios.txt --out=cliente-maps
 Salida (`cliente-maps.csv` / `.json`): `query, url, placeFtid, cid, nombre, direccion, telefono,
 web, rating`.
 
-## 3) Modo `grid` — posición en el local pack por ciudad/barrio
+## 3) Modo `grid` — local pack **y orgánico** por ciudad/barrio
 
-`grid.txt`, una entrada por línea: `termino;ciudad;marca_objetivo` (la marca objetivo es
-opcional — sin ella, solo lista lo que sale en el local pack):
+`grid.txt`, una entrada por línea: `termino;ciudad;marca_objetivo;dominio` (marca objetivo y
+dominio son opcionales — sin marca objetivo, solo lista lo que sale en el local pack; sin
+dominio, no busca posición orgánica):
 
 ```
-agencia de marketing;Barcelona;Santiso Marketing
-agencia de marketing;Madrid;Santiso Marketing
+agencia de marketing;Barcelona;Santiso Marketing;santisomarketing.com
+agencia de marketing;Madrid;Santiso Marketing;santisomarketing.com
 ```
 
 ```bash
 npm run maps-scan -- --mode=grid --input=grid.txt --out=grid-cliente
 ```
 
-Salida: `term, location, target, posicion, competidoresAntes, totalDetectados`. `posicion` es el
-puesto de `target` en el local pack detectado para esa búsqueda simulada desde esa ubicación
-(vía [UULE](https://www.foolvpn.me/blog/what-is-google-uule-parameter/), no hay API oficial para
-esto). `competidoresAntes` son los nombres que salieron antes.
+Salida: `term, location, target, posicion, competidoresAntes, totalDetectados, domain,
+posicionOrganica`. `posicion` es el puesto de `target` en el **local pack** detectado para esa
+búsqueda simulada desde esa ubicación (vía
+[UULE](https://www.foolvpn.me/blog/what-is-google-uule-parameter/), no hay API oficial para
+esto). `competidoresAntes` son los nombres que salieron antes en el local pack.
+`posicionOrganica` es el puesto de `domain` en los resultados **orgánicos** (no de pago, no
+local pack) de esa misma búsqueda — se lee de la misma página, sin request extra.
+
+### Por qué esto (grid por ciudad) y no un heatmap geográfico fino de lo orgánico
+
+Herramientas comerciales de SEO local muestran una cuadrícula fina (lat/lng, como la de
+`--mode=heatmap`) también para lo orgánico. Eso necesita simular la búsqueda desde coordenadas
+exactas, cosa que Google Maps permite de forma real y documentada (`@lat,lng,zoom`, lo que usa
+`--mode=heatmap`) pero que la búsqueda **normal** de Google no — el mecanismo que existe (`uule`
+con coordenadas en vez de nombre de lugar) no está documentado ni verificado de forma confiable,
+así que no se implementó para no arriesgar mostrar datos que **parecen** reales pero no lo son.
+El modo `grid` por ciudad/barrio con nombre es la versión honesta de esto: menos fina que un
+heatmap de 81 puntos, pero cada dato que muestra se puede verificar a mano.
 
 ## 4) Modo `heatmap` — cuadrícula geográfica real alrededor de un negocio
 
