@@ -95,12 +95,41 @@ cuadrícula de `5×5` son 25 búsquedas (~2 minutos con el ritmo por defecto); `
 minutos) y sube bastante el riesgo de que Google detecte el patrón. Empezá chico (`--size=5`) y
 solo subilo si de verdad necesitás más resolución.
 
-### Opciones comunes (extract / grid)
+## 5) Modo `prospect` — negocios con poca presencia digital (leads de SEO local)
+
+Sesión 10 de `AEO_PLAN.md`. Busca por categoría+ubicación, lista los negocios que salen y marca
+como **prospecto** a los que tienen pocas reseñas — señal de que todavía no invirtieron en su
+presencia digital, un lead razonable para ofrecer SEO local.
+
+`categorias.txt`, una entrada por línea: `categoria;ubicacion`
+
+```
+gimnasio;Vigo
+peluqueria;Vigo
+```
+
+```bash
+npm run maps-scan -- --mode=prospect --input=categorias.txt --out=prospectos --min-reviews=15 --debug
+```
 
 | Flag | Qué hace | Def. |
 |---|---|---|
-| `--mode=extract\|grid\|heatmap` | Qué hacer | `extract` |
-| `--input=fichero` | Lista de entradas (extract/grid, formato según el modo) | — (obligatorio salvo heatmap) |
+| `--min-reviews=N` | Reseñas por debajo de las cuales se marca como prospecto | 15 |
+| `--check-website=N` | A los N prospectos con menos reseñas, les abre la ficha para confirmar si tienen web (más lento) | 0 (no comprobar) |
+
+Salida: `categoria, ubicacion, nombre, rating, resenas, tieneWeb` (`tieneWeb` es `si`/`no` solo
+para los que se comprobaron con `--check-website`; el resto queda como `sin comprobar`).
+
+**Esto es lectura del listado de resultados**, no entra a cada ficha (salvo con
+`--check-website`) — es rápido pero el `rating`/`resenas` se parsean del texto de la tarjeta tal
+como Google lo muestra en la lista, no son un dato 100% garantizado si Google cambia ese formato.
+
+### Opciones comunes (extract / grid / prospect)
+
+| Flag | Qué hace | Def. |
+|---|---|---|
+| `--mode=extract\|grid\|heatmap\|prospect` | Qué hacer | `extract` |
+| `--input=fichero` | Lista de entradas (extract/grid/prospect, formato según el modo) | — (obligatorio salvo heatmap) |
 | `--out=nombre` | Base del fichero de salida | `maps-scan` |
 | `--delay=MS` | Pausa entre negocios/búsquedas (ritmo humano) | 3000 |
 | `--debug` | Muestra el resultado de cada fila en consola | — |

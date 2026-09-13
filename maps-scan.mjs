@@ -15,22 +15,28 @@
 //    npm run maps-scan -- --mode=grid --input=grid.txt --out=grid-cliente
 //    npm run maps-scan -- --mode=heatmap --center=41.3874,2.1686 --term="peluqueria" \
 //      --target="Cliente S.L." --radius-km=5 --size=5 --out=radar-cliente
+//    npm run maps-scan -- --mode=prospect --input=categorias.txt --out=prospectos-cliente
 //
 //  Formato de --input segun --mode (heatmap no usa --input, ver flags):
-//    extract: una busqueda o URL de Maps por linea
-//             "Cliente S.L. Barcelona"
-//             "https://www.google.com/maps/place/..."
-//    grid:    "termino;ciudad;marca_objetivo" por linea (marca_objetivo opcional)
-//             "agencia de marketing;Barcelona;Santiso Marketing"
+//    extract:  una busqueda o URL de Maps por linea
+//              "Cliente S.L. Barcelona"
+//              "https://www.google.com/maps/place/..."
+//    grid:     "termino;ciudad;marca_objetivo" por linea (marca_objetivo opcional)
+//              "agencia de marketing;Barcelona;Santiso Marketing"
+//    prospect: "categoria;ubicacion" por linea
+//              "gimnasio;Vigo"
 //
 //  Flags:
-//    --mode=extract|grid|heatmap  que hacer (def. extract)
-//    --input=fichero       lista de entradas (extract/grid, obligatorio salvo --login-only)
+//    --mode=extract|grid|heatmap|prospect  que hacer (def. extract)
+//    --input=fichero       lista de entradas (extract/grid/prospect, obligatorio salvo --login-only)
 //    --center=LAT,LNG      centro de la cuadricula (heatmap, obligatorio)
 //    --term=TEXTO          termino de busqueda (heatmap, obligatorio)
 //    --target=TEXTO        nombre del negocio a ubicar en los resultados (heatmap)
 //    --radius-km=N         radio de la cuadricula en km (heatmap, def. 5)
 //    --size=N              tamano de la cuadricula NxN, impar (heatmap, def. 5)
+//    --min-reviews=N       umbral de resenas para marcar un negocio como prospecto (prospect, def. 15)
+//    --check-website=N     a cuantos prospectos (los que menos resenas tienen) confirmarles
+//                          si tienen web, abriendo su ficha (prospect, def. 0 = no comprobar)
 //    --out=nombre          base del fichero de salida (def. maps-scan)
 //    --delay=MS            pausa entre negocios/busquedas (def. 3000, ritmo humano)
 //    --login-only          solo abre el navegador para iniciar sesion y guarda la sesion
@@ -294,6 +300,84 @@ async function runHeatmap(page) {
   return rows;
 }
 
+// ---- modo prospect: negocios con poca presencia digital (leads de SEO local)
+// Lista los resultados de una busqueda de categoria+ubicacion (misma lectura
+// del panel de resultados que gridOne), parsea rating/resenas del texto de
+// cada tarjeta, y marca como "prospecto" a los que tienen pocas resenas -
+// senal de que todavia no invirtieron en su presencia digital. Opcionalmente
+// confirma si tienen web abriendo la ficha de los N con menos resenas
+// (reutiliza extractOne, mas lento, por eso es opt-in con --check-website).
+export function parseRatingYResenas(textoCrudo) {
+  const m = textoCrudo.match(/(\d[.,]\d)\s*\(?([\d.,]+)?\)?/);
+  if (!m) return { rating: null, resenas: null };
+  const rating = Number(m[1].replace(",", "."));
+  const resenas = m[2] ? Number(m[2].replace(/[.,]/g, "")) : null;
+  return { rating: Number.isNaN(rating) ? null : rating, resenas: Number.isNaN(resenas) ? null : resenas };
+}
+
+async function prospectOne(page, categoria, ubicacion) {
+  const uule = buildUule(ubicacion);
+  const url = `https://www.google.com/search?q=${encodeURIComponent(categoria)}&uule=${encodeURIComponent(uule)}&hl=es`;
+  await page.goto(url, { waitUntil: "domcontentloaded" });
+  await sleep(1500);
+
+  const bloques = await page
+    .locator('div[role="feed"] div[role="article"], div[jsname][data-cid]')
+    .allInnerTexts()
+    .catch(() => []);
+
+  return bloques
+    .map((texto) => {
+      const nombre = (texto.split("\n")[0] || "").trim();
+      const { rating, resenas } = parseRatingYResenas(texto);
+      return { nombre, rating, resenas };
+    })
+    .filter((b) => b.nombre);
+}
+
+async function runProspect(page) {
+  const lineas = readLines(INPUT);
+  const minResenas = parseInt(args["min-reviews"] ?? "15", 10);
+  const checkWebsite = parseInt(args["check-website"] ?? "0", 10);
+  const rows = [];
+
+  for (const linea of lineas) {
+    const [categoria, ubicacion] = linea.split(";").map((s) => (s || "").trim());
+    let candidatos = [];
+    try {
+      candidatos = await prospectOne(page, categoria, ubicacion);
+    } catch (err) {
+      rows.push({ categoria, ubicacion, nombre: "", rating: "", resenas: "", tieneWeb: "", error: err.message });
+      if (DEBUG) console.log(`  ✗ "${categoria}" en ${ubicacion} -> ${err.message}`);
+      await sleep(DELAY + Math.floor(Math.random() * 1000));
+      continue;
+    }
+
+    const prospectos = candidatos
+      .filter((c) => c.resenas == null || c.resenas < minResenas)
+      .sort((a, b) => (a.resenas ?? 0) - (b.resenas ?? 0));
+
+    let comprobados = 0;
+    for (const c of prospectos) {
+      let tieneWeb = "sin comprobar";
+      if (comprobados < checkWebsite) {
+        try {
+          const detalle = await extractOne(page, `${c.nombre} ${ubicacion}`);
+          tieneWeb = detalle.web ? "si" : "no";
+        } catch {
+          tieneWeb = "error";
+        }
+        comprobados++;
+        await sleep(DELAY + Math.floor(Math.random() * 1000));
+      }
+      rows.push({ categoria, ubicacion, nombre: c.nombre, rating: c.rating ?? "", resenas: c.resenas ?? "", tieneWeb, error: "" });
+      if (DEBUG) console.log(`  · ${c.nombre} — ${c.rating ?? "?"}★ (${c.resenas ?? "?"} reseñas) web=${tieneWeb}`);
+    }
+    await sleep(DELAY + Math.floor(Math.random() * 1000));
+  }
+  return rows;
+}
+
 // ---- main --------------------------------------------------------------------
 async function main() {
   if (MODE !== "heatmap" && !INPUT && !LOGIN_ONLY) {
@@ -334,13 +418,15 @@ async function main() {
 
   console.log(`\n▶ maps-scan — modo=${MODE} out=${OUT}.{csv,json}\n`);
 
-  const rows = MODE === "grid" ? await runGrid(page) : MODE === "heatmap" ? await runHeatmap(page) : await runExtract(page);
-  const cols =
-    MODE === "grid"
-      ? ["term", "location", "target", "posicion", "competidoresAntes", "totalDetectados", "error"]
-      : MODE === "heatmap"
-      ? ["row", "col", "distancia_km", "direccion", "posicion", "lat", "lng", "error"]
-      : ["query", "url", "placeFtid", "cid", "nombre", "direccion", "telefono", "web", "rating", "error"];
+  const runners = { grid: runGrid, heatmap: runHeatmap, prospect: runProspect, extract: runExtract };
+  const columnas = {
+    grid: ["term", "location", "target", "posicion", "competidoresAntes", "totalDetectados", "error"],
+    heatmap: ["row", "col", "distancia_km", "direccion", "posicion", "lat", "lng", "error"],
+    prospect: ["categoria", "ubicacion", "nombre", "rating", "resenas", "tieneWeb", "error"],
+    extract: ["query", "url", "placeFtid", "cid", "nombre", "direccion", "telefono", "web", "rating", "error"],
+  };
+  const rows = await (runners[MODE] ?? runExtract)(page);
+  const cols = columnas[MODE] ?? columnas.extract;
 
   writeFileSync(join(__dirname, `${OUT}.json`), JSON.stringify(rows, null, 2));
   writeFileSync(join(__dirname, `${OUT}.csv`), toCSV(rows, cols));

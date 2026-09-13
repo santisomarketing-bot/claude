@@ -196,6 +196,37 @@ conocidos y ajustar selectores si hace falta.
   obtener un CSV con CID + Place ID + NAP+ + (si aplica) posición en el grid, sin tocar Maps a
   mano.
 
+### Sesión 9 — Análisis de SERP de Google (AI Overview / Ads / Local Pack) ✅ hecho
+
+Añadido a petición: mientras la Sesión 8 mira Google Maps, esta mira la página de resultados
+**normal** de Google — la que ve un usuario buscando desde cualquier localidad. Independiente del
+resto del plan. Implementado en [`serp-scan.mjs`](./serp-scan.mjs) — ver
+[`SERP_SCAN.md`](./SERP_SCAN.md).
+
+- Mismo patrón que `maps-scan.mjs`/`scan.mjs`: Playwright + tu propia sesión de Google, sin API
+  de pago.
+- Por cada búsqueda detecta: si aparece **AI Overview** (por frases de disclosure, más estable
+  que un selector visual), cuántos **Ads** hay, si hay **Local Pack** y en qué posición aparece
+  una marca (opcional).
+- Salida `term, location, target, aiOverview, ads, localPack, posicionLocalPack` — histórico
+  simple por corrida (CSV/JSON), sin acumular como `ai-mentions.mjs`.
+- **No se pudo probar en vivo** en esta sesión (sin sesión de Google ni acceso de red desde acá) —
+  probar con `--debug` sobre búsquedas conocidas antes de usarlo en serio.
+
+### Sesión 10 — Prospección de clientes de SEO local ✅ hecho
+
+Añadido a petición: encontrar negocios con poca presencia digital (pocas reseñas, sin web) como
+leads para vender SEO local — mismo espíritu que el scanner de LinkedIn, apuntando a Google Maps
+en vez de posts. Implementado como `--mode=prospect` en [`maps-scan.mjs`](./maps-scan.mjs) —
+ver el punto 5 de [`MAPS_SCAN.md`](./MAPS_SCAN.md).
+
+- Busca por categoría+ubicación, lista los negocios y parsea rating/reseñas de cada tarjeta.
+- Marca como prospecto a los que tienen menos reseñas que `--min-reviews` (def. 15).
+- Opcional (`--check-website=N`): a los N prospectos con menos reseñas, les abre la ficha
+  (reutiliza `extractOne` de la Sesión 8) para confirmar si tienen web — sin web + pocas reseñas
+  es la señal más fuerte de que necesitan ayuda digital.
+- **No se pudo probar en vivo** en esta sesión, mismo motivo que la 8 y la 9.
+
 ---
 
 ## Orden y dependencias
@@ -206,11 +237,13 @@ conocidos y ajustar selectores si hace falta.
                  └─→ 6
                           → 7
 
-8 (independiente, se puede hacer en cualquier momento)
+8 ─┬─ 9   (independientes del resto, se pueden hacer en cualquier momento)
+   └─ 10
 ```
 
 Sesiones 3, 4 y 6 dependen de tener la Sesión 2 (generador de contenido) lista, pero son
 independientes entre sí — se pueden hacer en el orden que convenga según qué cliente piloto se
 use primero. La Sesión 5 necesita 1 y 4. La 7 es la última, cuando el resto esté validado con al
-menos un cliente real. La Sesión 8 no depende de nada del resto del plan — es una pista aparte de
-Local SEO que se puede abordar en paralelo o incluso primero.
+menos un cliente real. Las Sesiones 8, 9 y 10 no dependen de nada del resto del plan — son la
+pista aparte de Local SEO/Google Search que se puede abordar en paralelo o incluso primero; la 10
+reutiliza código de la 8 (`extractOne`) pero no depende de que la 8 esté "terminada".

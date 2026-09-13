@@ -7,8 +7,12 @@ Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportun
 > te los manda por email. Ver **[DAILY_LEADS.md](./DAILY_LEADS.md)**.
 
 > 📍 **Google Maps / Local SEO en masa:** mismo patrón (tu sesión, ritmo humano) pero
-> para sacar CID/Place ID/NAP+ de negocios o ver ranking en el local pack por ciudad.
+> para sacar CID/Place ID/NAP+ de negocios, ver ranking en el local pack por ciudad o cuadrícula
+> geográfica, o encontrar negocios con poca presencia digital como leads de SEO local.
 > Ver **[MAPS_SCAN.md](./MAPS_SCAN.md)**.
+
+> 🔍 **Análisis de SERP de Google:** AI Overview, Ads y Local Pack en una búsqueda normal
+> (no Maps). Ver **[SERP_SCAN.md](./SERP_SCAN.md)**.
 
 ## ⚠️ Aviso importante
 
