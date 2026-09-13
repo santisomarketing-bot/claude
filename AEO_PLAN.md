@@ -47,9 +47,11 @@ da el contexto.
 - Decidir alcance: herramienta interna para dar servicio GEO a clientes de la agencia.
 - Entregable: este documento (`AEO_PLAN.md`).
 
-### Sesión 1 — Auditor de visibilidad IA (script)
+### Sesión 1 — Auditor de visibilidad IA (script) ✅ hecho
 
-Automatiza la fase 1 de `GEO_TEMPLATES.md`.
+Automatiza la fase 1 de `GEO_TEMPLATES.md`. Implementado en
+[`AEO-core/ai-audit.mjs`](https://github.com/santisomarketing-bot/AEO-core/blob/main/ai-audit.mjs)
+— ver [`AI_AUDIT.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/AI_AUDIT.md).
 
 - Script `ai-audit.mjs` que, dado un dominio o lista de URLs:
   - Comprueba si existe `llms.txt`, `robots.txt` (y si bloquea GPTBot/ClaudeBot/PerplexityBot/
@@ -62,9 +64,11 @@ Automatiza la fase 1 de `GEO_TEMPLATES.md`.
 - Criterio de éxito: correr `npm run audit -- --url=cliente.com` sobre un cliente real y obtener
   un informe legible con qué falta (schema, llms.txt, headings, etc.).
 
-### Sesión 2 — Generador de contenido "AI-ready"
+### Sesión 2 — Generador de contenido "AI-ready" ✅ hecho
 
-Automatiza la fase 6 (schema.org) y complementa la 4 (crear contenido).
+Automatiza la fase 6 (schema.org) y complementa la 4 (crear contenido). Implementado en
+[`AEO-core/ai-content.mjs`](https://github.com/santisomarketing-bot/AEO-core/blob/main/ai-content.mjs)
+— ver [`AI_CONTENT.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/AI_CONTENT.md).
 
 - Script/módulo que, a partir de una página o de un artículo ya escrito:
   - Genera JSON-LD (Article, FAQPage, Organization, Product según el tipo de página).
@@ -76,9 +80,14 @@ Automatiza la fase 6 (schema.org) y complementa la 4 (crear contenido).
 - Criterio de éxito: para una URL del audit de la Sesión 1, generar el JSON-LD y el `llms.txt`
   listos para pegar/subir.
 
-### Sesión 3 — Entrega en el edge (Cloudflare Worker)
+### Sesión 3 — Entrega en el edge (Cloudflare Worker) 🟡 validado, falta contenido real
 
 La pieza que no existe hoy en el flujo manual: servir la versión optimizada solo a bots de IA.
+Worker de detección de bots ya desplegado y probado en
+[`AEO-edge`](https://github.com/santisomarketing-bot/AEO-edge) (responde distinto a `GPTBot` que
+a un navegador normal, validado contra `*.workers.dev`). Falta: servirle el contenido real que
+genera la Sesión 2 en vez del placeholder, y probarlo sobre un dominio real (pendiente de que
+haya un cliente piloto, o de un dominio de prueba propio).
 
 - Plantilla de Cloudflare Worker que:
   - Detecta user-agent de bots de IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended,
