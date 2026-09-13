@@ -89,10 +89,13 @@ npm run maps-scan -- --mode=heatmap \
 | `--append` | En vez de pisar `<out>.csv/.json`, agrega esta corrida al histórico existente | — (desactivado) |
 | `--headless` | Corre el navegador sin ventana visible (para rastreos programados desatendidos) | — (desactivado) |
 
-Salida (`<out>.csv` / `.json`): `row, col, distancia_km, direccion, posicion, fecha, lat, lng` —
-**el mismo formato que espera el botón "Cargar CSV real" del panel Radar Local**, subilo tal cual.
-Con `--append`, cada fila lleva la fecha de esa corrida y el panel arma solo un gráfico de
-evolución si detecta más de una fecha en el CSV.
+Salida (`<out>.csv` / `.json`): `row, col, distancia_km, direccion, posicion, fecha, topNegocios,
+lat, lng` — **el mismo formato que espera el botón "Cargar CSV real" del panel Radar Local**,
+subilo tal cual. Con `--append`, cada fila lleva la fecha de esa corrida y el panel arma solo un
+gráfico de evolución si detecta más de una fecha en el CSV. `topNegocios` es la lista completa de
+negocios detectados en ese punto (hasta 20, separados por `|`, en el orden en que salen) — el
+panel la usa para armar la tabla de "negocios detectados en la cuadrícula" (tu marca incluida, si
+aparece).
 
 **Ojo con el volumen**: cada punto de la cuadrícula es una navegación real a Google Maps. Una
 cuadrícula de `5×5` son 25 búsquedas (~2 minutos con el ritmo por defecto); `9×9` son 81 (~7-8

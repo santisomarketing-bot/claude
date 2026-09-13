@@ -267,7 +267,7 @@ async function heatmapPoint(page, term, lat, lng, target) {
   const lista = bloques.map((t) => t.split("\n")[0].trim()).filter(Boolean);
   const posicion = target ? (lista.findIndex((n) => n.toLowerCase().includes(target.toLowerCase())) + 1 || null) : null;
 
-  return { posicion, totalDetectados: lista.length };
+  return { posicion, totalDetectados: lista.length, lista };
 }
 
 async function runHeatmap(page) {
@@ -289,11 +289,11 @@ async function runHeatmap(page) {
     for (let col = 0; col < size; col++) {
       const p = puntoDeCuadricula(centerLat, centerLng, row, col, centerIdx, stepKm);
       try {
-        const { posicion } = await heatmapPoint(page, term, p.lat, p.lng, target);
-        rows.push({ ...p, posicion, fecha, error: "" });
+        const { posicion, lista } = await heatmapPoint(page, term, p.lat, p.lng, target);
+        rows.push({ ...p, posicion, fecha, topNegocios: lista.slice(0, 20).join("|"), error: "" });
         if (DEBUG) console.log(`  ✓ [${p.row},${p.col}] ${p.direccion} ${p.distancia_km}km -> posicion ${posicion ?? "no encontrada"}`);
       } catch (err) {
-        rows.push({ ...p, posicion: null, fecha, error: err.message });
+        rows.push({ ...p, posicion: null, fecha, topNegocios: "", error: err.message });
         if (DEBUG) console.log(`  ✗ [${p.row},${p.col}] ${p.direccion} -> ${err.message}`);
       }
       await sleep(DELAY + Math.floor(Math.random() * 1000));
@@ -427,7 +427,7 @@ async function main() {
   const runners = { grid: runGrid, heatmap: runHeatmap, prospect: runProspect, extract: runExtract };
   const columnas = {
     grid: ["term", "location", "target", "posicion", "competidoresAntes", "totalDetectados", "error"],
-    heatmap: ["row", "col", "distancia_km", "direccion", "posicion", "fecha", "lat", "lng", "error"],
+    heatmap: ["row", "col", "distancia_km", "direccion", "posicion", "fecha", "topNegocios", "lat", "lng", "error"],
     prospect: ["categoria", "ubicacion", "nombre", "rating", "resenas", "tieneWeb", "error"],
     extract: ["query", "url", "placeFtid", "cid", "nombre", "direccion", "telefono", "web", "rating", "error"],
   };
