@@ -1,7 +1,12 @@
 node_modules/
 .chrome-profile/
+.chrome-profile-maps/
 leads.csv
 leads.json
+maps-*.csv
+maps-*.json
+grid-*.csv
+grid-*.json
 *.log
 .DS_Store
 

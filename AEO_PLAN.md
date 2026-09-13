@@ -102,9 +102,13 @@ cliente piloto en vez del sitio de prueba.
 - Criterio de éxito: desplegado en un dominio de prueba, `curl -A "GPTBot" ...` devuelve la
   versión optimizada y un navegador normal ve el sitio intacto.
 
-### Sesión 4 — Seguimiento de menciones/citas en motores de IA
+### Sesión 4 — Seguimiento de menciones/citas en motores de IA ✅ hecho (falta probar con API keys reales)
 
-Automatiza la fase 9.
+Automatiza la fase 9. Implementado en
+[`AEO-core/ai-mentions.mjs`](https://github.com/santisomarketing-bot/AEO-core/blob/main/ai-mentions.mjs)
+— ver [`AI_MENTIONS.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/AI_MENTIONS.md).
+La lógica de detección de mención/sentimiento/citas está probada con respuestas sintéticas; falta
+correrlo con API keys reales de al menos un motor (no hay ninguna cargada en esta sesión).
 
 - Script `ai-mentions.mjs` que, dado un cliente + lista de prompts de marca (p. ej. "mejor
   agencia de marketing en [ciudad]", "alternativas a [cliente]"):
@@ -150,13 +154,17 @@ Para clientes en WordPress, cierra la fase 4-5 sin depender de subir manualmente
   mensual), y cómo se vende (landing, propuesta comercial).
 - Entregable: `AEO_PRODUCTO.md` con la decisión y next steps si aplica.
 
-### Sesión 8 — Extracción masiva de datos de Google Maps (Local SEO)
+### Sesión 8 — Extracción masiva de datos de Google Maps (Local SEO) ✅ hecho (falta validar en vivo)
 
 Añadido a petición: automatizar "en masa" lo que hoy se hace ficha a ficha a mano en Google Maps
 (sacar CID, Place ID, NAP+, simular geolocalización con UULE para ver el local pack por zona,
 exportar a CSV). Es una pista independiente del resto del plan (no depende de las sesiones de
-AEO), útil para el trabajo de Local SEO/GBP que ya hacéis. Se puede hacer en cualquier momento,
-incluso antes que las demás.
+AEO), útil para el trabajo de Local SEO/GBP que ya hacéis. Implementado en
+[`maps-scan.mjs`](./maps-scan.mjs) — ver [`MAPS_SCAN.md`](./MAPS_SCAN.md). La extracción de
+CID/Place ID desde la URL está probada (es estructura de URL, no de DOM); la lectura de NAP+ y la
+detección del local pack dependen del HTML actual de Google y **no se pudieron probar en vivo**
+en esta sesión (sin sesión de Google ni acceso de red a Maps desde acá) — antes de usarlo en
+serio, correr `--debug` sobre 2-3 casos conocidos y ajustar selectores si hace falta.
 
 - **Sí es posible**: mismo patrón que `scan.mjs` (Playwright + tu propia sesión de navegador, sin
   API de pago). En vez de hacerlo a mano ficha por ficha, un script recorre una lista de

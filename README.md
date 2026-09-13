@@ -6,6 +6,10 @@ Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportun
 > que cada día a las 17:00 (hora España) busca posts públicos de "busco agencia" y
 > te los manda por email. Ver **[DAILY_LEADS.md](./DAILY_LEADS.md)**.
 
+> 📍 **Google Maps / Local SEO en masa:** mismo patrón (tu sesión, ritmo humano) pero
+> para sacar CID/Place ID/NAP+ de negocios o ver ranking en el local pack por ciudad.
+> Ver **[MAPS_SCAN.md](./MAPS_SCAN.md)**.
+
 ## ⚠️ Aviso importante
 
 Automatizar LinkedIn va **contra sus Términos de Servicio**. Esta herramienta usa **tu propia sesión** y un ritmo lento y humano para minimizar el riesgo, pero **el riesgo de bloqueo no es cero**. Úsala con criterio y con moderación. No metas credenciales en ningún sitio: inicias sesión tú a mano en tu navegador.
