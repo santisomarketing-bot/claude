@@ -48,7 +48,15 @@ donde vive el archivo real.
 Igual que el de arriba, cambiando `Boton / URL destino` por
 `Link imagen (URL publica)` — LinkedIn necesita la URL pública de la imagen
 para publicarla vía Make (módulo `LINKEDIN SANTISOMARKETING`, ya existente
-en la cuenta).
+en la cuenta). Ver [`LINKEDIN_PUBLICACIONES.md`](./LINKEDIN_PUBLICACIONES.md)
+para el escenario que lo dispara solo.
+
+Además tiene una pestaña extra, **`Configuracion`**, con la frecuencia de
+publicación (desplegable: Diaria / Semanal / Quincenal / Mensual,
+seleccionable ahí mismo sin tocar Make), la fecha del próximo post, y una
+celda de solo lectura que cuenta cuántas filas están `Listo` en el Excel
+principal (fórmula `COUNTIF`, la usa el escenario para saber si hay algo
+que publicar).
 
 ## Recordatorio mensual (ya montado y probado)
 

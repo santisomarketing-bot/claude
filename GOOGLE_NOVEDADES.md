@@ -46,6 +46,19 @@ confirmada con pruebas aisladas contra datos reales:
   (`GOOGLE_REVIEWS.md`, escenario `9802353`, módulo 14) — nunca se detectó
   porque no ha habido todavía una reseña real 1-3★ que dispare esa ruta.
   Corregido igual, de forma preventiva.
+- **Segundo bug, más de fondo, encontrado después de "arreglar" el
+  primero:** incluso con `.array`, el `Aggregator` de Make **siempre
+  reporta un array de longitud 1 cuando su "feeder" es un `Search Rows`,
+  aunque ese `Search Rows` no haya encontrado ninguna fila real**
+  (probado con un filtro deliberadamente imposible en el Excel de
+  LinkedIn: seguía dando `length = 1`). O sea que
+  `length(aggregator.array) > 0` con este tipo de feeder **nunca da `0`**
+  — no es una señal fiable de "hay cola o no". Se quitó el `Aggregator` de
+  este escenario por completo: ahora una celda con fórmula
+  `=COUNTIF(B:B;"Listo")` (columna `L`, fuera de las columnas visibles del
+  Excel) cuenta las filas en cola de verdad, y Make solo lee esa celda. El
+  mismo patrón se usó desde el principio en
+  [`LINKEDIN_PUBLICACIONES.md`](./LINKEDIN_PUBLICACIONES.md).
 - El post real mal publicado el 13/09/2026 (con el texto de IA en vez del
   de la cola) se corrigió con un `PATCH` directo al mismo post ya
   existente en Google (mismo `name`, sin borrar ni duplicar nada) para que

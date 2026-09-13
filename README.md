@@ -15,6 +15,11 @@ Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportun
 > La estructura de carpetas/Excel en Drive que alimenta el contenido (por
 > marca, con recordatorio mensual automático) está en
 > **[ESTRUCTURA_CONTENIDO_DRIVE.md](./ESTRUCTURA_CONTENIDO_DRIVE.md)**.
+>
+> 💼 **LinkedIn:** publicador automático que corre a diario y publica imagen +
+> texto en la página de empresa solo cuando toca según una frecuencia
+> seleccionable directamente en el Excel maestro (sin tocar Make). Ver
+> **[LINKEDIN_PUBLICACIONES.md](./LINKEDIN_PUBLICACIONES.md)**.
 
 ## ⚠️ Aviso importante
 

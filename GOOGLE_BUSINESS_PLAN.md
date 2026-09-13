@@ -62,7 +62,8 @@ Repetir por lotes pequeños (2-3 clientes por sesión) para ambos escenarios:
 
 ## Fase 5 — Mejoras (cuando el resto esté estable)
 
-- [ ] Publicador de LinkedIn automático leyendo `Excel maestro - Publicaciones LinkedIn` (ya existe el tool de Make `LINKEDIN SANTISOMARKETING` que publica foto+texto; falta el escenario que lo dispare desde el Excel).
+- [x] Publicador de LinkedIn automático (13/09/2026): escenario `LINKEDIN PUBLICADOR SEGUN FRECUENCIA` (id `9802783`), activo, corre a diario y publica solo cuando toca según la `Frecuencia` elegida en el propio Excel maestro (pestaña `Configuracion`, seleccionable sin tocar Make) y hay contenido `Listo` en cola. Ver [`LINKEDIN_PUBLICACIONES.md`](./LINKEDIN_PUBLICACIONES.md).
+- [ ] **Falta el primer post real de LinkedIn**: el Excel solo tiene la fila `EJEMPLO` con una imagen "PENDIENTE" (sin enlace público real) — falta subir una imagen real con enlace público y marcarla `Listo` para la primera prueba de punta a punta.
 - [ ] Resolver de forma sistemática el enlace público de las fotos/videos de Drive (hoy hay que compartirlas a mano) — ver nota en `ESTRUCTURA_CONTENIDO_DRIVE.md`.
 - [ ] Historial/auditoría: una fila por respuesta y por post publicado, para ver todo sin entrar a Google.
 - [ ] Revisar si conviene mover el email de aprobación de reseñas 1-3★ a un canal más ágil (Slack, WhatsApp) si el volumen crece.
