@@ -14,6 +14,10 @@ Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportun
 > 🔍 **Análisis de SERP de Google:** AI Overview, Ads y Local Pack en una búsqueda normal
 > (no Maps). Ver **[SERP_SCAN.md](./SERP_SCAN.md)**.
 
+> ⏰ **Rastreos programados:** cómo automatizar corridas periódicas de estos scripts en tu propia
+> máquina (Programador de tareas de Windows) para armar histórico sin lanzarlas a mano cada vez.
+> Ver **[SCHEDULED_SCANS.md](./SCHEDULED_SCANS.md)**.
+
 ## ⚠️ Aviso importante
 
 Automatizar LinkedIn va **contra sus Términos de Servicio**. Esta herramienta usa **tu propia sesión** y un ritmo lento y humano para minimizar el riesgo, pero **el riesgo de bloqueo no es cero**. Úsala con criterio y con moderación. No metas credenciales en ningún sitio: inicias sesión tú a mano en tu navegador.
