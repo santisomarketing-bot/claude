@@ -6,14 +6,25 @@
 > genera siempre con IA: primero mira si hay contenido en cola en el
 > [Excel maestro](./ESTRUCTURA_CONTENIDO_DRIVE.md) y solo si no hay nada
 > "Listo" genera un texto nuevo con IA. Publicó de verdad un post real el
-> 13/09/2026 (ver notas) y tiene un segundo post en cola ("Listo") para la
-> próxima ejecución automática, a modo de prueba de punta a punta.
+> 13/09/2026 (ver notas).
 >
-> **Lógica de cola (módulos 10/11/2):**
-> 1. `Google Sheets — Search Rows` sobre el Excel maestro, filtrando
->    `Estado = Listo`.
-> 2. `Aggregator` cuenta cuántas filas "Listo" hay.
-> 3. `Router`: si hay ≥1 en cola → toma la más antigua, publica su
+> **Cola cargada (13/09/2026):** 16 posts en `Estado = Listo`
+> (`2026-09-P2` a `P17`) — a uno por semana (corre los lunes), van a
+> tardar unos 4 meses en salir todos. Mismo origen y mismo criterio que
+> los de LinkedIn — ver [`LINKEDIN_PUBLICACIONES.md`](./LINKEDIN_PUBLICACIONES.md)
+> para el detalle de cómo se armó el contenido; acá se usó copy más corto
+> (250-400 caracteres) y sin adjuntar imagen (esta integración solo
+> publica texto + botón, no fotos todavía). La mayoría usa
+> `https://santisomarketing.com/` como destino del botón porque no hay un
+> artículo de blog propio confirmado para ese tema — la excepción real es
+> `2026-09-P11` (marketing digital para startups), que sí enlaza a un
+> artículo real del blog.
+>
+> **Lógica de cola (módulos 10/2), ya sin Aggregator (ver bug abajo):**
+> 1. `Google Sheets — Search Rows` sobre `Configuracion`/celda `COUNTIF`
+>    (columna `L`, fuera de las columnas visibles) para saber cuántas
+>    filas dicen `Listo` sin usar el `Aggregator` de Make.
+> 2. `Router`: si hay ≥1 en cola → toma la más antigua, publica su
 >    `Texto del post` / `Boton / URL destino` tal cual, y marca esa fila
 >    como `Publicado` con la fecha. Si no hay ninguna → genera el texto con
 >    IA (ángulo libre) como respaldo.

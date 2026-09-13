@@ -7,14 +7,41 @@
 > (`Santiso Marketing S.L.`, vía el módulo ya existente en la cuenta,
 > `linkedin:CreateCompanyImagePost`).
 >
-> **Todavía no se publicó ningún post real**: el único contenido que hay
-> en el [Excel maestro](./ESTRUCTURA_CONTENIDO_DRIVE.md) es la fila
-> `EJEMPLO`, y su imagen tiene un enlace "PENDIENTE" (no es una URL
-> pública real todavía — ver nota en `ESTRUCTURA_CONTENIDO_DRIVE.md`
-> sobre compartir imágenes de Drive). En cuanto se suba una imagen real
-> con enlace público y se ponga `Estado = Listo` en una fila, el
-> escenario la publica sola en la próxima ejecución diaria si además toca
-> según la frecuencia configurada.
+> **Cola real cargada (13/09/2026):** 16 posts en `Estado = Listo`
+> (`2026-09-P1` a `P16`), cada uno con imagen real ya compartida como
+> pública. El primero (`P1`, sobre Facebook Ads) va a publicarse solo en
+> la próxima ejecución diaria; el resto va saliendo uno por semana según
+> la `Frecuencia` configurada. La fila `EJEMPLO` sigue con su imagen
+> "PENDIENTE" a propósito — no se toca sola porque su `Estado` no es
+> `Listo`.
+
+## De dónde salió el contenido de la cola (13/09/2026)
+
+Los 15 posts `P2`-`P16` se armaron a partir de fotos que ya estaban
+preparadas en `BORRADORES PUBLICACION` (subidas por el equipo, con
+títulos que ya describían el tema — ej. "Posicionamiento SEO para
+pequeñas empresas.jpg"). Por cada una:
+
+1. Se compartió la imagen como pública (permiso "cualquiera con el
+   enlace, lector") — antes solo tenía permiso de owner.
+2. Se redactó un post nativo de LinkedIn a partir del tema de la imagen
+   (no un resumen del archivo — un post pensado para LinkedIn: gancho,
+   2-4 párrafos cortos, cierre con pregunta o invitación a escribir).
+3. Se armó la URL pública de descarga directa
+   (`https://drive.google.com/uc?id=...&export=download`) para el campo
+   `Link imagen (URL publica)`.
+
+**Nota honesta:** las imágenes NO se movieron a una subcarpeta propia por
+post (rompiendo un poco la "regla de oro" del Excel maestro) porque
+pertenecen a otra cuenta de Drive (`stefan.schwarz2007@gmail.com`, quien
+subió el material original) y esta integración no tiene permiso de
+edición sobre esos archivos — solo pudo compartirlos como públicos, no
+moverlos. Quedan referenciados directamente en `BORRADORES PUBLICACION`;
+cada fila lo aclara en su columna `Notas`.
+
+De los 17 borradores disponibles, sobraron 2 sin usar (un post sobre
+análisis de keywords y otro sobre SEO on-page) — quedan como reserva para
+la próxima tanda.
 
 ## La frecuencia es seleccionable en el propio Excel (no en Make)
 
@@ -90,7 +117,8 @@ particularidad de Make.
   hace nada ese día (no manda ningún email). El recordatorio mensual de
   contenido de Novedades GBP no cubre LinkedIn — si se quiere un aviso
   parecido, es un módulo de email más, fácil de sumar.
-- Probado en real (13/09/2026) solo el camino "no hay nada que publicar"
-  (con la cola en 0): el escenario corre y no toca nada, correctamente.
-  Falta la prueba de punta a punta con un post real en cuanto haya una
-  imagen con enlace público de verdad.
+- Probado en real (13/09/2026) el camino "no hay nada que publicar" (con
+  la cola en 0): el escenario corre y no toca nada, correctamente. Con la
+  cola ya cargada (16 posts `Listo`), falta la prueba de punta a punta
+  real: confirmar que el primer post automático (`P1`) sale bien en la
+  próxima ejecución diaria.

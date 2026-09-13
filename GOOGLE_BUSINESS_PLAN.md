@@ -63,8 +63,8 @@ Repetir por lotes pequeños (2-3 clientes por sesión) para ambos escenarios:
 ## Fase 5 — Mejoras (cuando el resto esté estable)
 
 - [x] Publicador de LinkedIn automático (13/09/2026): escenario `LINKEDIN PUBLICADOR SEGUN FRECUENCIA` (id `9802783`), activo, corre a diario y publica solo cuando toca según la `Frecuencia` elegida en el propio Excel maestro (pestaña `Configuracion`, seleccionable sin tocar Make) y hay contenido `Listo` en cola. Ver [`LINKEDIN_PUBLICACIONES.md`](./LINKEDIN_PUBLICACIONES.md).
-- [ ] **Falta el primer post real de LinkedIn**: el Excel solo tiene la fila `EJEMPLO` con una imagen "PENDIENTE" (sin enlace público real) — falta subir una imagen real con enlace público y marcarla `Listo` para la primera prueba de punta a punta.
-- [ ] Resolver de forma sistemática el enlace público de las fotos/videos de Drive (hoy hay que compartirlas a mano) — ver nota en `ESTRUCTURA_CONTENIDO_DRIVE.md`.
+- [x] **Cola de contenido cargada en ambas plataformas (13/09/2026)**: 16 posts `Listo` en LinkedIn y 16 en Novedades GBP, armados a partir de las fotos que ya estaban en `BORRADORES PUBLICACION`. Van a salir de a uno por semana en cada plataforma — falta la prueba de punta a punta real (que el primer post de cada cola salga bien solo).
+- [ ] Resolver de forma sistemática el enlace público de las fotos/videos de Drive (hoy hay que compartirlas a mano, y en el caso de LinkedIn no se pudieron mover a subcarpetas propias por pertenecer a otra cuenta de Drive) — ver nota en `ESTRUCTURA_CONTENIDO_DRIVE.md`.
 - [ ] Historial/auditoría: una fila por respuesta y por post publicado, para ver todo sin entrar a Google.
 - [ ] Revisar si conviene mover el email de aprobación de reseñas 1-3★ a un canal más ágil (Slack, WhatsApp) si el volumen crece.
 
