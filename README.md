@@ -12,6 +12,9 @@ Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportun
 > y **[GOOGLE_NOVEDADES.md](./GOOGLE_NOVEDADES.md)**. Ambos ya están creados y
 > probados en Make; el plan para terminarlos de activar en producción, sesión
 > a sesión, está en **[GOOGLE_BUSINESS_PLAN.md](./GOOGLE_BUSINESS_PLAN.md)**.
+> La estructura de carpetas/Excel en Drive que alimenta el contenido (por
+> marca, con recordatorio mensual automático) está en
+> **[ESTRUCTURA_CONTENIDO_DRIVE.md](./ESTRUCTURA_CONTENIDO_DRIVE.md)**.
 
 ## ⚠️ Aviso importante
 

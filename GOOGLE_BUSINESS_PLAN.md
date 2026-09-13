@@ -11,6 +11,16 @@ que se pueden ir haciendo sesión a sesión. Marca `[x]` según se completen.
 - [x] Escenario `GBP PUBLICADOR SEMANAL DE NOVEDADES` (Make, id `9802376`) creado, programado lunes 9:00, filtrado solo a Santiso Marketing.
 - [x] Carpeta `GOOGLE BUSINESS` en Make para ambos escenarios.
 
+## Fase 0.5 — Estructura de Drive para contenido ✅ (13/09/2026, piloto Santiso Marketing)
+
+Ver [`ESTRUCTURA_CONTENIDO_DRIVE.md`](./ESTRUCTURA_CONTENIDO_DRIVE.md) para el detalle completo.
+
+- [x] Carpeta `NOVEDADES GOOGLE BUSINESS` (dentro de la carpeta de la marca en Drive) con Excel maestro, subcarpeta `BORRADORES PUBLICACION` y un post de ejemplo.
+- [x] Carpeta `PUBLICACIONES LINKEDIN` con su propio Excel maestro y un post de ejemplo.
+- [x] Escenario en Make `NOVEDADES GBP - Recordatorio mensual de contenido` (id `9802497`), activo, probado con un envío real. Manda un email el día 1 de cada mes con el link a `BORRADORES PUBLICACION` y al Excel maestro.
+- [ ] Revisar y aprobar (o borrar) los posts de ejemplo antes de que se acumule contenido real encima.
+- [ ] Decidir si el recordatorio mensual va también a un email del cliente, o solo interno.
+
 ## Fase 1 — Cerrar el circuito del respondedor de reseñas
 
 - [ ] En Make, añadir el trigger **Watch Reviews** (Google Business Profile) sobre la cuenta `104496299100098224068`.
@@ -33,6 +43,7 @@ montada.)
 ## Fase 3 — Cerrar el publicador de novedades
 
 - [ ] Corregir la URL real en el módulo `Create a Post` (hoy tiene un placeholder, `https://www.santisomarketing.com`).
+- [ ] Conectar el publicador semanal con la carpeta `NOVEDADES GOOGLE BUSINESS` (Fase 0.5): que lea el Excel maestro en vez de generar el texto siempre desde cero, y priorice un post `Listo` si hay alguno en cola.
 - [ ] Ejecutar una vez a mano desde Make y revisar el texto generado.
 - [ ] Activar el escenario **solo** para Santiso Marketing (ya está filtrado así) durante 2-3 semanas.
 - [ ] Revisar los primeros posts publicados antes de sumar clientes.
@@ -42,16 +53,17 @@ montada.)
 Repetir por lotes pequeños (2-3 clientes por sesión) para ambos escenarios:
 
 - [ ] Elegir el siguiente lote de clientes (de los 16 negocios en la cuenta: Ecokil, Why Not Barbershop (Gràcia/Senillosa/Paris/Academy), IcebergExpo, TORIVAC, DOMINA TU DISCURSO, Titan Flow, SoloRueda Torrelavega, Simply Stunning Interiors, KrtoonsEvents, Rockpull, Taller Fast Engine).
-- [ ] Por cada cliente nuevo: confirmar tono de marca, sector y (para novedades) la URL real de destino.
+- [ ] Por cada cliente nuevo: replicar la estructura de Drive de la Fase 0.5 (`<marca>/NOVEDADES GOOGLE BUSINESS/`, `<marca>/PUBLICACIONES LINKEDIN/`) dentro de su carpeta de marca.
+- [ ] Confirmar tono de marca, sector y (para novedades) la URL real de destino.
 - [ ] Ampliar el filtro del publicador de novedades para incluir su `location.name`.
 - [ ] Activar el respondedor de reseñas para ese cliente.
 - [ ] Confirmar con el cliente (o con vosotros internamente) que el tono de las primeras respuestas/posts es el correcto.
 
 ## Fase 5 — Mejoras (cuando el resto esté estable)
 
-- [ ] Rotación de temas de novedades vía Google Sheet (`GOOGLE_NOVEDADES.md` ya documenta el diseño) en vez de "libre".
+- [ ] Publicador de LinkedIn automático leyendo `Excel maestro - Publicaciones LinkedIn` (ya existe el tool de Make `LINKEDIN SANTISOMARKETING` que publica foto+texto; falta el escenario que lo dispare desde el Excel).
+- [ ] Resolver de forma sistemática el enlace público de las fotos/videos de Drive (hoy hay que compartirlas a mano) — ver nota en `ESTRUCTURA_CONTENIDO_DRIVE.md`.
 - [ ] Historial/auditoría: una fila por respuesta y por post publicado, para ver todo sin entrar a Google.
-- [ ] Imágenes en los posts de novedades (módulo de Google Drive con fotos por cliente).
 - [ ] Revisar si conviene mover el email de aprobación de reseñas 1-3★ a un canal más ágil (Slack, WhatsApp) si el volumen crece.
 
 ## Notas
