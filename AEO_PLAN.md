@@ -1,46 +1,51 @@
-# Plan por sesiones: funcionalidades tipo AgentFi (AEO/GEO automatizado)
+# Plan por sesiones: herramientas propias de AEO/GEO
 
-Referencia: [agentfi.tech](https://agentfi.tech) / [docs.agentfi.tech](https://docs.agentfi.tech) —
-"la capa SEO para la era de la búsqueda con IA". No confundir con el "AgentFi" de DeFi/cripto
-(otro producto con el mismo nombre).
+AEO/GEO = optimizar y medir la visibilidad de un cliente en motores de IA (ChatGPT, Perplexity,
+Gemini, Claude, AI Overviews de Google) en vez de (o además de) el buscador tradicional.
+
+Punto de partida: existen productos de mercado que ya ofrecen esto como servicio (auditoría de
+páginas para IA, generación de contenido optimizado, entrega distinta a bots de IA que a humanos,
+y seguimiento de menciones/citas). Este plan no busca clonar ningún producto puntual, sino
+construir el equivalente como herramienta interna de la agencia, con el mismo criterio que ya
+usamos en este repo (`scan.mjs`, `daily-leads.mjs`): scripts propios, sin depender de licencias de
+terceros.
 
 Para repos de GitHub, despliegue en Cloudflare y dónde entra Make, ver
-[`AGENTFI_INFRA.md`](./AGENTFI_INFRA.md).
+[`AEO_INFRA.md`](./AEO_INFRA.md).
 
 ## Por qué esto encaja aquí
 
 Ya hacéis GEO (Generative Engine Optimization) a mano con el flujo de
 [`GEO_TEMPLATES.md`](./GEO_TEMPLATES.md): auditoría de visibilidad IA, schema.org, seguimiento de
-citas, informe mensual — todo vía Jira + Excel. AgentFi automatiza exactamente esas piezas:
+citas, informe mensual — todo vía Jira + Excel. Este plan automatiza exactamente esas piezas:
 
-| Fase manual hoy (`GEO_TEMPLATES.md`) | Pieza de AgentFi que la automatiza |
+| Fase manual hoy (`GEO_TEMPLATES.md`) | Qué la automatiza |
 |---|---|
-| 1. Auditoría de visibilidad IA | AI Page Optimization (crawler + detección) |
-| 6. Datos estructurados / Schema.org | AI Page Optimization (genera JSON-LD) |
-| — (no existe hoy) | Edge Deployment (sirve la versión IA solo a bots) |
-| 9. Seguimiento de menciones/citaciones | AI Engine Tracking (ChatGPT/Perplexity/Gemini/Claude) |
+| 1. Auditoría de visibilidad IA | Auditor de páginas (crawler + detección de señales IA) |
+| 6. Datos estructurados / Schema.org | Generador de contenido AI-ready (genera JSON-LD) |
+| — (no existe hoy) | Entrega en el edge (sirve la versión IA solo a bots) |
+| 9. Seguimiento de menciones/citaciones | Tracking de menciones (ChatGPT/Perplexity/Gemini/Claude) |
 | 10. Informe mensual de visibilidad IA | Dashboard / reporte agregado |
 
-El objetivo de este plan **no** es clonar AgentFi como producto SaaS público, sino construir
-una herramienta interna (estilo `daily-leads.mjs` / `signals.mjs`) que la agencia use para dar
-este servicio a clientes de forma automatizada, y que después decidamos si se empaqueta como
-oferta propia.
+El objetivo **no** es vender esto como producto SaaS público desde el día uno, sino construir
+una herramienta interna que la agencia use para dar este servicio a clientes de forma
+automatizada, y después decidir si se empaqueta como oferta propia.
 
 ## Cómo usar este plan
 
 Cada sesión de abajo es el alcance de **una sesión de Claude Code** (o Claude Code Web): tiene
 un objetivo cerrado, entregables concretos y depende como mucho de la sesión anterior. No hace
 falta hacerlas todas seguidas — se puede parar entre sesiones y retomar. Al abrir una sesión
-nueva, pega el número y nombre de la sesión (p. ej. "Sesión 2 del plan AgentFi") y este documento
-le da el contexto.
+nueva, pega el número y nombre de la sesión (p. ej. "Sesión 2 del plan AEO") y este documento le
+da el contexto.
 
 ---
 
 ### Sesión 0 — Descubrimiento y alcance (ya hecha en esta sesión)
 
-- Investigar qué hace AgentFi realmente (hecho: ver tabla arriba).
+- Investigar cómo funcionan los productos de mercado de AEO/GEO (hecho: ver tabla arriba).
 - Decidir alcance: herramienta interna para dar servicio GEO a clientes de la agencia.
-- Entregable: este documento (`AGENTFI_PLAN.md`).
+- Entregable: este documento (`AEO_PLAN.md`).
 
 ### Sesión 1 — Auditor de visibilidad IA (script)
 
@@ -71,7 +76,7 @@ Automatiza la fase 6 (schema.org) y complementa la 4 (crear contenido).
 - Criterio de éxito: para una URL del audit de la Sesión 1, generar el JSON-LD y el `llms.txt`
   listos para pegar/subir.
 
-### Sesión 3 — Edge Deployment (Cloudflare Worker)
+### Sesión 3 — Entrega en el edge (Cloudflare Worker)
 
 La pieza que no existe hoy en el flujo manual: servir la versión optimizada solo a bots de IA.
 
@@ -80,8 +85,8 @@ La pieza que no existe hoy en el flujo manual: servir la versión optimizada sol
     CCBot, etc.).
   - A esos bots les sirve el HTML generado en la Sesión 2 + `llms.txt` + JSON-LD inyectado.
   - A humanos y al resto de bots, pass-through al sitio original sin tocar nada.
-- Carpeta `cloudflare-worker/` con el script del worker + `wrangler.toml` de ejemplo +
-  instrucciones de despliegue por cliente (dominio propio de cada cliente, no compartido).
+- Carpeta `worker/` con el script del worker + `wrangler.toml` de ejemplo + instrucciones de
+  despliegue por cliente (dominio propio de cada cliente, no compartido).
 - `EDGE_DEPLOYMENT.md`: cómo desplegarlo por cliente, qué credenciales hacen falta (cuenta de
   Cloudflare del cliente o de la agencia, DNS proxied).
 - Criterio de éxito: desplegado en un dominio de prueba, `curl -A "GPTBot" ...` devuelve la
@@ -133,18 +138,18 @@ Para clientes en WordPress, cierra la fase 4-5 sin depender de subir manualmente
   ofrece como servicio con precio propio a clientes, o ambas?
 - Si se ofrece como servicio: definir tiers (auditoría suelta / auditoría + edge + tracking
   mensual), y cómo se vende (landing, propuesta comercial).
-- Entregable: `AGENTFI_PRODUCTO.md` con la decisión y next steps si aplica.
+- Entregable: `AEO_PRODUCTO.md` con la decisión y next steps si aplica.
 
-### Sesión 8 — Extracción masiva estilo Collac.io (Local SEO / Google Maps)
+### Sesión 8 — Extracción masiva de datos de Google Maps (Local SEO)
 
-Añadido a petición: hacer "en masa" lo que [Collac](https://collac.io/google-chrome-extension/)
-hace ficha a ficha (CID, Place ID, NAP+, simulación de geolocalización con UULE, export CSV).
-Es una pista independiente del resto del plan (no depende de las sesiones de AgentFi), útil para
-el trabajo de Local SEO/GBP que ya hacéis. Se puede hacer en cualquier momento, incluso antes que
-las demás.
+Añadido a petición: automatizar "en masa" lo que hoy se hace ficha a ficha a mano en Google Maps
+(sacar CID, Place ID, NAP+, simular geolocalización con UULE para ver el local pack por zona,
+exportar a CSV). Es una pista independiente del resto del plan (no depende de las sesiones de
+AEO), útil para el trabajo de Local SEO/GBP que ya hacéis. Se puede hacer en cualquier momento,
+incluso antes que las demás.
 
 - **Sí es posible**: mismo patrón que `scan.mjs` (Playwright + tu propia sesión de navegador, sin
-  API de pago). En vez de un clic manual por ficha en la extensión, un script recorre una lista de
+  API de pago). En vez de hacerlo a mano ficha por ficha, un script recorre una lista de
   búsquedas/negocios y lo hace todo de una tacada.
 - Script `maps-scan.mjs` que, dada una lista de:
   - **Términos de búsqueda + ciudades/barrios** (grid de ubicaciones simuladas vía UULE, para ver
@@ -184,5 +189,5 @@ las demás.
 Sesiones 3, 4 y 6 dependen de tener la Sesión 2 (generador de contenido) lista, pero son
 independientes entre sí — se pueden hacer en el orden que convenga según qué cliente piloto se
 use primero. La Sesión 5 necesita 1 y 4. La 7 es la última, cuando el resto esté validado con al
-menos un cliente real. La Sesión 8 no depende de nada del plan AgentFi — es una pista aparte de
+menos un cliente real. La Sesión 8 no depende de nada del resto del plan — es una pista aparte de
 Local SEO que se puede abordar en paralelo o incluso primero.
