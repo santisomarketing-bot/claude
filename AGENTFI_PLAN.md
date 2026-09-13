@@ -132,6 +132,39 @@ Para clientes en WordPress, cierra la fase 4-5 sin depender de subir manualmente
   mensual), y cómo se vende (landing, propuesta comercial).
 - Entregable: `AGENTFI_PRODUCTO.md` con la decisión y next steps si aplica.
 
+### Sesión 8 — Extracción masiva estilo Collac.io (Local SEO / Google Maps)
+
+Añadido a petición: hacer "en masa" lo que [Collac](https://collac.io/google-chrome-extension/)
+hace ficha a ficha (CID, Place ID, NAP+, simulación de geolocalización con UULE, export CSV).
+Es una pista independiente del resto del plan (no depende de las sesiones de AgentFi), útil para
+el trabajo de Local SEO/GBP que ya hacéis. Se puede hacer en cualquier momento, incluso antes que
+las demás.
+
+- **Sí es posible**: mismo patrón que `scan.mjs` (Playwright + tu propia sesión de navegador, sin
+  API de pago). En vez de un clic manual por ficha en la extensión, un script recorre una lista de
+  búsquedas/negocios y lo hace todo de una tacada.
+- Script `maps-scan.mjs` que, dada una lista de:
+  - **Términos de búsqueda + ciudades/barrios** (grid de ubicaciones simuladas vía UULE, para ver
+    si un cliente sale en el local pack por zona) → guarda posición, competidores que salen antes.
+  - **Nombres de negocio o URLs de Maps** → extrae CID, Place ID, NAP+ (dirección, teléfono, web,
+    categoría, rating, nº de reseñas) de cada uno.
+  - Igual que `scan.mjs`: modo `--login` (una vez, guarda `.chrome-profile/`), luego
+    `npm run maps-scan -- --input=negocios.csv` procesando la lista con ritmo humano (`--delay`).
+- Salida: `maps-<fecha>.csv`/`.json` (mismo patrón que `leads.csv`/`leads.json`), pensado para
+  pegar en el Excel de seguimiento local o alimentar la fase 1/9 de `GEO_TEMPLATES.md` cuando el
+  cliente depende de Google Maps/GBP.
+- **Aviso igual que en el scanner de LinkedIn**: automatizar Google Maps a escala roza los
+  Términos de Servicio de Google. Usar tu propia sesión, ritmo lento, y volumen moderado (esto es
+  para uso interno de la agencia sobre clientes propios, no para scrapear terceros a gran escala).
+- Alternativa "oficial" a mencionar en `MAPS_SCAN.md` pero no como default: Google Places API
+  (Place Search + Place Details) — sin riesgo de ToS, pero de pago por request, no da ranking real
+  (Google no permite simular búsquedas vía API) y el Place ID no es exactamente el mismo dato que
+  el CID que expone la UI de Maps.
+- `MAPS_SCAN.md` con instalación, uso y las dos limitaciones de arriba.
+- Criterio de éxito: correr `maps-scan.mjs` sobre 5-10 negocios/ubicaciones de un cliente real y
+  obtener un CSV con CID + Place ID + NAP+ + (si aplica) posición en el grid, sin tocar Maps a
+  mano.
+
 ---
 
 ## Orden y dependencias
@@ -141,9 +174,12 @@ Para clientes en WordPress, cierra la fase 4-5 sin depender de subir manualmente
                  └─→ 4 → 5
                  └─→ 6
                           → 7
+
+8 (independiente, se puede hacer en cualquier momento)
 ```
 
 Sesiones 3, 4 y 6 dependen de tener la Sesión 2 (generador de contenido) lista, pero son
 independientes entre sí — se pueden hacer en el orden que convenga según qué cliente piloto se
 use primero. La Sesión 5 necesita 1 y 4. La 7 es la última, cuando el resto esté validado con al
-menos un cliente real.
+menos un cliente real. La Sesión 8 no depende de nada del plan AgentFi — es una pista aparte de
+Local SEO que se puede abordar en paralelo o incluso primero.
