@@ -80,24 +80,25 @@ Automatiza la fase 6 (schema.org) y complementa la 4 (crear contenido). Implemen
 - Criterio de éxito: para una URL del audit de la Sesión 1, generar el JSON-LD y el `llms.txt`
   listos para pegar/subir.
 
-### Sesión 3 — Entrega en el edge (Cloudflare Worker) 🟡 validado, falta contenido real
+### Sesión 3 — Entrega en el edge (Cloudflare Worker) ✅ validado (placeholder), falta contenido real
 
 La pieza que no existe hoy en el flujo manual: servir la versión optimizada solo a bots de IA.
-Worker de detección de bots ya desplegado y probado en
-[`AEO-edge`](https://github.com/santisomarketing-bot/AEO-edge) (responde distinto a `GPTBot` que
-a un navegador normal, validado contra `*.workers.dev`). Falta: servirle el contenido real que
-genera la Sesión 2 en vez del placeholder, y probarlo sobre un dominio real (pendiente de que
-haya un cliente piloto, o de un dominio de prueba propio).
+Implementado y **validado de punta a punta** en
+[`AEO-edge`](https://github.com/santisomarketing-bot/AEO-edge): el Worker distingue `GPTBot` de un
+navegador normal y hace pass-through real a un sitio de prueba (Cloudflare Pages conectado al
+mismo repo) — probado con `curl -A "GPTBot"` vs `curl -A "Mozilla/5.0"` sobre `*.workers.dev`.
+Sin Wrangler ni GitHub Actions: despliegue manual pegando el código en el dashboard (ver el
+`README.md` del repo). Falta para cerrar la sesión: que la rama de bots sirva el HTML/JSON-LD real
+que genera la Sesión 2 (hoy es un placeholder de texto) y probarlo sobre el dominio real de un
+cliente piloto en vez del sitio de prueba.
 
 - Plantilla de Cloudflare Worker que:
   - Detecta user-agent de bots de IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended,
     CCBot, etc.).
   - A esos bots les sirve el HTML generado en la Sesión 2 + `llms.txt` + JSON-LD inyectado.
   - A humanos y al resto de bots, pass-through al sitio original sin tocar nada.
-- Carpeta `worker/` con el script del worker + `wrangler.toml` de ejemplo + instrucciones de
-  despliegue por cliente (dominio propio de cada cliente, no compartido).
-- `EDGE_DEPLOYMENT.md`: cómo desplegarlo por cliente, qué credenciales hacen falta (cuenta de
-  Cloudflare del cliente o de la agencia, DNS proxied).
+- `README.md` de `AEO-edge`: cómo desplegarlo por cliente (pegar el código en el dashboard, Route
+  o Custom Domain sobre el dominio del cliente ya proxied por Cloudflare).
 - Criterio de éxito: desplegado en un dominio de prueba, `curl -A "GPTBot" ...` devuelve la
   versión optimizada y un navegador normal ve el sitio intacto.
 
