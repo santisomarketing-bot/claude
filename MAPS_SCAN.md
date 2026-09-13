@@ -63,12 +63,44 @@ puesto de `target` en el local pack detectado para esa búsqueda simulada desde 
 (vía [UULE](https://www.foolvpn.me/blog/what-is-google-uule-parameter/), no hay API oficial para
 esto). `competidoresAntes` son los nombres que salieron antes.
 
-### Opciones comunes
+## 4) Modo `heatmap` — cuadrícula geográfica real alrededor de un negocio
+
+A diferencia del modo `grid` (que compara ciudades con *nombre*, vía UULE), este modo arma una
+cuadrícula real de puntos geográficos alrededor de una ubicación (lat/lng) y para cada uno mide
+en qué posición aparece el negocio. Es el que alimenta el panel **Radar Local** (Artifact).
+
+```bash
+npm run maps-scan -- --mode=heatmap \
+  --center=41.3874,2.1686 \
+  --term="peluqueria en el centro" \
+  --target="Cliente S.L." \
+  --radius-km=5 \
+  --size=5 \
+  --out=radar-cliente
+```
 
 | Flag | Qué hace | Def. |
 |---|---|---|
-| `--mode=extract\|grid` | Qué hacer | `extract` |
-| `--input=fichero` | Lista de entradas (formato según el modo) | — (obligatorio) |
+| `--center=LAT,LNG` | Centro de la cuadrícula (la ubicación del negocio) | — (obligatorio) |
+| `--term=TEXTO` | Término de búsqueda | — (obligatorio) |
+| `--target=TEXTO` | Nombre del negocio a ubicar en los resultados | — (opcional, sin él solo ves cuántos resultados hay) |
+| `--radius-km=N` | Radio de la cuadrícula, en km | 5 |
+| `--size=N` | Tamaño de la cuadrícula N×N (impar, para tener un punto central) | 5 |
+
+Salida (`<out>.csv` / `.json`): `row, col, distancia_km, direccion, posicion, lat, lng` — **el
+mismo formato que espera el botón "Cargar CSV real" del panel Radar Local**, subilo tal cual.
+
+**Ojo con el volumen**: cada punto de la cuadrícula es una navegación real a Google Maps. Una
+cuadrícula de `5×5` son 25 búsquedas (~2 minutos con el ritmo por defecto); `9×9` son 81 (~7-8
+minutos) y sube bastante el riesgo de que Google detecte el patrón. Empezá chico (`--size=5`) y
+solo subilo si de verdad necesitás más resolución.
+
+### Opciones comunes (extract / grid)
+
+| Flag | Qué hace | Def. |
+|---|---|---|
+| `--mode=extract\|grid\|heatmap` | Qué hacer | `extract` |
+| `--input=fichero` | Lista de entradas (extract/grid, formato según el modo) | — (obligatorio salvo heatmap) |
 | `--out=nombre` | Base del fichero de salida | `maps-scan` |
 | `--delay=MS` | Pausa entre negocios/búsquedas (ritmo humano) | 3000 |
 | `--debug` | Muestra el resultado de cada fila en consola | — |
@@ -86,6 +118,10 @@ esto). `competidoresAntes` son los nombres que salieron antes.
 - **Grid/UULE**: el parámetro `uule` para simular ubicación no es oficial ni documentado por
   Google — puede dejar de funcionar sin aviso. La detección del "local pack" en los resultados de
   búsqueda es la parte más frágil de todo el script.
+- **Heatmap**: en vez de UULE, navega directo a `google.com/maps/search/<termino>/@lat,lng,zoom`
+  — esa parte de la URL (coordenadas + zoom) es formato real y documentado de Google Maps, más
+  sólido que el `uule`. Lo que sigue siendo frágil (igual que en `grid`) es leer la lista de
+  resultados del panel izquierdo para encontrar la posición del negocio — depende del DOM actual.
 
 **Antes de correr una lista grande**: probá primero con `--debug` sobre 2-3 negocios/búsquedas
 conocidas y confirmá a mano (comparando con lo que ves vos en el navegador) que los datos que

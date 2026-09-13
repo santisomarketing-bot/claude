@@ -162,11 +162,14 @@ Añadido a petición: automatizar "en masa" lo que hoy se hace ficha a ficha a m
 (sacar CID, Place ID, NAP+, simular geolocalización con UULE para ver el local pack por zona,
 exportar a CSV). Es una pista independiente del resto del plan (no depende de las sesiones de
 AEO), útil para el trabajo de Local SEO/GBP que ya hacéis. Implementado en
-[`maps-scan.mjs`](./maps-scan.mjs) — ver [`MAPS_SCAN.md`](./MAPS_SCAN.md). La extracción de
-CID/Place ID desde la URL está probada (es estructura de URL, no de DOM); la lectura de NAP+ y la
-detección del local pack dependen del HTML actual de Google y **no se pudieron probar en vivo**
-en esta sesión (sin sesión de Google ni acceso de red a Maps desde acá) — antes de usarlo en
-serio, correr `--debug` sobre 2-3 casos conocidos y ajustar selectores si hace falta.
+[`maps-scan.mjs`](./maps-scan.mjs) — ver [`MAPS_SCAN.md`](./MAPS_SCAN.md). Suma un tercer modo,
+`heatmap`, que genera una cuadrícula geográfica real (lat/lng) alrededor de un negocio — es el
+que alimenta el panel [Radar Local](https://claude.ai/code/artifact/3e5bf41d-4fe6-4fd1-a9f1-3873b6de2649)
+(Artifact, con datos de ejemplo hasta que se corra un scan real). La extracción de CID/Place ID
+desde la URL y la matemática de la cuadrícula (distancias/direcciones) están probadas; la lectura
+de NAP+/resultados en el DOM **no se pudo probar en vivo** en esta sesión (sin sesión de Google ni
+acceso de red a Maps desde acá) — antes de usarlo en serio, correr `--debug` sobre 2-3 casos
+conocidos y ajustar selectores si hace falta.
 
 - **Sí es posible**: mismo patrón que `scan.mjs` (Playwright + tu propia sesión de navegador, sin
   API de pago). En vez de hacerlo a mano ficha por ficha, un script recorre una lista de

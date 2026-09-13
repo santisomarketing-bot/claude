@@ -13,8 +13,10 @@
 //    npm run maps-login                     (abre navegador, inicias sesion a mano)
 //    npm run maps-scan -- --mode=extract --input=negocios.txt
 //    npm run maps-scan -- --mode=grid --input=grid.txt --out=grid-cliente
+//    npm run maps-scan -- --mode=heatmap --center=41.3874,2.1686 --term="peluqueria" \
+//      --target="Cliente S.L." --radius-km=5 --size=5 --out=radar-cliente
 //
-//  Formato de --input segun --mode:
+//  Formato de --input segun --mode (heatmap no usa --input, ver flags):
 //    extract: una busqueda o URL de Maps por linea
 //             "Cliente S.L. Barcelona"
 //             "https://www.google.com/maps/place/..."
@@ -22,12 +24,21 @@
 //             "agencia de marketing;Barcelona;Santiso Marketing"
 //
 //  Flags:
-//    --mode=extract|grid   que hacer (def. extract)
-//    --input=fichero       lista de entradas (obligatorio salvo --login-only)
+//    --mode=extract|grid|heatmap  que hacer (def. extract)
+//    --input=fichero       lista de entradas (extract/grid, obligatorio salvo --login-only)
+//    --center=LAT,LNG      centro de la cuadricula (heatmap, obligatorio)
+//    --term=TEXTO          termino de busqueda (heatmap, obligatorio)
+//    --target=TEXTO        nombre del negocio a ubicar en los resultados (heatmap)
+//    --radius-km=N         radio de la cuadricula en km (heatmap, def. 5)
+//    --size=N              tamano de la cuadricula NxN, impar (heatmap, def. 5)
 //    --out=nombre          base del fichero de salida (def. maps-scan)
 //    --delay=MS            pausa entre negocios/busquedas (def. 3000, ritmo humano)
 //    --login-only          solo abre el navegador para iniciar sesion y guarda la sesion
 //    --debug               muestra el resultado de cada fila en consola
+//
+//  El CSV de --mode=heatmap (row,col,distancia_km,direccion,posicion) es el
+//  formato que espera directamente el panel "Radar Local" (Artifact) — ver
+//  MAPS_SCAN.md.
 //
 //  AVISO: automatizar Google Maps/Search a escala roza sus Terminos de Servicio.
 //  Se usa TU sesion y un ritmo lento para minimizar riesgo, pero el riesgo no es
@@ -204,9 +215,88 @@ async function runGrid(page) {
   return rows;
 }
 
+// ---- modo heatmap: cuadricula geografica real alrededor de un punto --------
+// A diferencia del modo grid (que simula ciudades con nombre vía UULE, no
+// oficial), esto navega directo a una URL de Google Maps con coordenadas
+// explicitas (formato real y documentado: /maps/search/<termino>/@lat,lng,zoom).
+// Sigue dependiendo del DOM para leer la lista de resultados - mismo aviso que
+// el resto del archivo.
+const KM_POR_GRADO_LAT = 111.32;
+
+export function direccionCompass(dr, dc) {
+  if (dr === 0 && dc === 0) return "Centro";
+  const angulo = Math.atan2(-dr, dc) * (180 / Math.PI);
+  const dirs = ["E", "NE", "N", "NO", "O", "SO", "S", "SE"];
+  const idx = Math.round(((angulo + 360) % 360) / 45) % 8;
+  return dirs[idx];
+}
+
+export function puntoDeCuadricula(centerLat, centerLng, row, col, centerIdx, stepKm) {
+  const dr = row - centerIdx;
+  const dc = col - centerIdx;
+  const distanciaKm = stepKm * Math.sqrt(dr * dr + dc * dc);
+  const deltaLat = (-dr * stepKm) / KM_POR_GRADO_LAT;
+  const deltaLng = (dc * stepKm) / (KM_POR_GRADO_LAT * Math.cos((centerLat * Math.PI) / 180));
+  return {
+    row,
+    col,
+    lat: +(centerLat + deltaLat).toFixed(6),
+    lng: +(centerLng + deltaLng).toFixed(6),
+    distancia_km: +distanciaKm.toFixed(1),
+    direccion: direccionCompass(dr, dc),
+  };
+}
+
+async function heatmapPoint(page, term, lat, lng, target) {
+  const url = `https://www.google.com/maps/search/${encodeURIComponent(term)}/@${lat},${lng},15z`;
+  await page.goto(url, { waitUntil: "domcontentloaded" });
+  await sleep(1800);
+
+  const bloques = await page
+    .locator('div[role="feed"] div[role="article"], div[jsname][data-cid]')
+    .allInnerTexts()
+    .catch(() => []);
+
+  const lista = bloques.map((t) => t.split("\n")[0].trim()).filter(Boolean);
+  const posicion = target ? (lista.findIndex((n) => n.toLowerCase().includes(target.toLowerCase())) + 1 || null) : null;
+
+  return { posicion, totalDetectados: lista.length };
+}
+
+async function runHeatmap(page) {
+  if (!args.center || !args.term) {
+    console.error("Falta --center=LAT,LNG y --term=... para --mode=heatmap");
+    process.exit(1);
+  }
+  const [centerLat, centerLng] = String(args.center).split(",").map(Number);
+  const size = parseInt(args.size ?? "5", 10);
+  const radiusKm = parseFloat(args["radius-km"] ?? "5");
+  const term = String(args.term);
+  const target = args.target ? String(args.target) : "";
+  const centerIdx = (size - 1) / 2;
+  const stepKm = radiusKm / centerIdx;
+
+  const rows = [];
+  for (let row = 0; row < size; row++) {
+    for (let col = 0; col < size; col++) {
+      const p = puntoDeCuadricula(centerLat, centerLng, row, col, centerIdx, stepKm);
+      try {
+        const { posicion } = await heatmapPoint(page, term, p.lat, p.lng, target);
+        rows.push({ ...p, posicion, error: "" });
+        if (DEBUG) console.log(`  ✓ [${p.row},${p.col}] ${p.direccion} ${p.distancia_km}km -> posicion ${posicion ?? "no encontrada"}`);
+      } catch (err) {
+        rows.push({ ...p, posicion: null, error: err.message });
+        if (DEBUG) console.log(`  ✗ [${p.row},${p.col}] ${p.direccion} -> ${err.message}`);
+      }
+      await sleep(DELAY + Math.floor(Math.random() * 1000));
+    }
+  }
+  return rows;
+}
+
 // ---- main --------------------------------------------------------------------
 async function main() {
-  if (!INPUT && !LOGIN_ONLY) {
+  if (MODE !== "heatmap" && !INPUT && !LOGIN_ONLY) {
     console.error("Falta --input=fichero (ver MAPS_SCAN.md para el formato segun --mode)");
     process.exit(1);
   }
@@ -242,12 +332,14 @@ async function main() {
     }
   }
 
-  console.log(`\n▶ maps-scan — modo=${MODE} input=${INPUT} out=${OUT}.{csv,json}\n`);
+  console.log(`\n▶ maps-scan — modo=${MODE} out=${OUT}.{csv,json}\n`);
 
-  const rows = MODE === "grid" ? await runGrid(page) : await runExtract(page);
+  const rows = MODE === "grid" ? await runGrid(page) : MODE === "heatmap" ? await runHeatmap(page) : await runExtract(page);
   const cols =
     MODE === "grid"
       ? ["term", "location", "target", "posicion", "competidoresAntes", "totalDetectados", "error"]
+      : MODE === "heatmap"
+      ? ["row", "col", "distancia_km", "direccion", "posicion", "lat", "lng", "error"]
       : ["query", "url", "placeFtid", "cid", "nombre", "direccion", "telefono", "web", "rating", "error"];
 
   writeFileSync(join(__dirname, `${OUT}.json`), JSON.stringify(rows, null, 2));
