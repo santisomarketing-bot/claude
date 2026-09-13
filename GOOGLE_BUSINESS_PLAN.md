@@ -21,14 +21,15 @@ Ver [`ESTRUCTURA_CONTENIDO_DRIVE.md`](./ESTRUCTURA_CONTENIDO_DRIVE.md) para el d
 - [ ] Revisar y aprobar (o borrar) los posts de ejemplo antes de que se acumule contenido real encima.
 - [ ] Decidir si el recordatorio mensual va también a un email del cliente, o solo interno.
 
-## Fase 1 — Cerrar el circuito del respondedor de reseñas
+## Fase 1 — Cerrar el circuito del respondedor de reseñas ✅ (13/09/2026)
 
 - [x] ~~Trigger **Watch Reviews**~~ — **descartado**: confirmado con pruebas reales que este módulo de Make está roto (siempre llama a `/v4/reviews` sin cuenta/ubicación, 404 fijo, pase lo que pase en el mapeo). No es un error de configuración.
-- [x] Reemplazado por **`Make an API Call`** (GET a `v4/accounts/.../locations/.../reviews`) + un **Iterator** que recorre cada reseña + filtro "sin `reviewReply` todavía" para no reprocesar. Probado con datos reales de Ecokil (una reseña real, pipeline completo funcionando: IA + email).
-- [x] El escenario `GBP REDACTAR RESPUESTA A RESEÑA` (id `9802353`) ya corre esta lógica completa apuntando a **Santiso Marketing** (piloto acordado). Sigue en modo `on-demand` (no automático todavía).
-- [ ] **Falta el módulo real de publicación** ("Create/Update a Review Reply" o su equivalente por `makeApiCall`/PATCH) — hoy la ruta 4-5★ genera el texto pero no lo publica. Sin confirmar el nombre exacto del módulo aún.
-- [ ] **Falta control de duplicados** para la ruta 1-3★: cada vez que se sondee, si la reseña sigue sin respuesta, se reenvía el email — hoy no hay nada que lo evite. Antes de activar el sondeo automático (`indefinitely`), hay que resolver esto (ej. guardar en un Sheet qué reseñas ya generaron email).
-- [ ] Cuando ambos estén resueltos: cambiar la programación de `on-demand` a `indefinitely` (ej. cada 15 min) para que corra solo.
+- [x] Reemplazado por **`Make an API Call`** (GET a `v4/accounts/.../locations/.../reviews`) + un **Iterator** que recorre cada reseña + filtro "sin `reviewReply` todavía" para no reprocesar. Probado con datos reales de Ecokil (pipeline completo funcionando: lectura + IA).
+- [x] **Módulo de publicación** (ruta 4-5★): también por `Make an API Call` (`PATCH v4/{name}/reply`) ya que tampoco existe/funciona el módulo nativo por su nombre oficial. Mecánica de la llamada probada (URL, auth, método) contra un ID inventado — sin publicar nada real todavía.
+- [x] **Control de duplicados** (ruta 1-3★): Sheet "Control de reseñas respondidas - Santiso Marketing" + Filter Rows + Aggregator antes de mandar el email; se registra la reseña después de avisar para no repetir el email.
+- [x] El escenario `GBP REDACTAR RESPUESTA A RESEÑA` (id `9802353`) corre esta lógica completa apuntando a **Santiso Marketing** (piloto). Sigue en modo `on-demand` (no automático todavía).
+- [ ] **Falta probar con una reseña 1-3★ real**: ni Santiso Marketing (0 reseñas) ni Ecokil (todas 5★) tienen ahora mismo una negativa para validar el control de duplicados de punta a punta. Las piezas están probadas por separado con datos reales.
+- [ ] Cuando haya un caso real revisado a mano: cambiar la programación de `on-demand` a `indefinitely` (ej. cada 15 min) para que corra solo.
 
 **Decisión ya tomada:** piloto en Santiso Marketing (propio negocio de la agencia).
 
