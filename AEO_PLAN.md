@@ -162,7 +162,9 @@ Añadido a petición: automatizar "en masa" lo que hoy se hace ficha a ficha a m
 (sacar CID, Place ID, NAP+, simular geolocalización con UULE para ver el local pack por zona,
 exportar a CSV). Es una pista independiente del resto del plan (no depende de las sesiones de
 AEO), útil para el trabajo de Local SEO/GBP que ya hacéis. Implementado en
-[`maps-scan.mjs`](./maps-scan.mjs) — ver [`MAPS_SCAN.md`](./MAPS_SCAN.md). Suma un tercer modo,
+[`maps-scan.mjs`](https://github.com/santisomarketing-bot/AEO-core/blob/main/geo/maps-scan.mjs) —
+ver [`MAPS_SCAN.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/geo/MAPS_SCAN.md)
+(en `AEO-core/geo/`). Suma un tercer modo,
 `heatmap`, que genera una cuadrícula geográfica real (lat/lng) alrededor de un negocio — es el
 que alimenta el panel [Radar Local](https://claude.ai/code/artifact/3e5bf41d-4fe6-4fd1-a9f1-3873b6de2649)
 (Artifact, con datos de ejemplo hasta que se corra un scan real). La extracción de CID/Place ID
@@ -191,7 +193,7 @@ conocidos y ajustar selectores si hace falta.
   (Place Search + Place Details) — sin riesgo de ToS, pero de pago por request, no da ranking real
   (Google no permite simular búsquedas vía API) y el Place ID no es exactamente el mismo dato que
   el CID que expone la UI de Maps.
-- `MAPS_SCAN.md` con instalación, uso y las dos limitaciones de arriba.
+- `MAPS_SCAN.md` (en `AEO-core/geo/`) con instalación, uso y las dos limitaciones de arriba.
 - Criterio de éxito: correr `maps-scan.mjs` sobre 5-10 negocios/ubicaciones de un cliente real y
   obtener un CSV con CID + Place ID + NAP+ + (si aplica) posición en el grid, sin tocar Maps a
   mano.
@@ -200,8 +202,10 @@ conocidos y ajustar selectores si hace falta.
 
 Añadido a petición: mientras la Sesión 8 mira Google Maps, esta mira la página de resultados
 **normal** de Google — la que ve un usuario buscando desde cualquier localidad. Independiente del
-resto del plan. Implementado en [`serp-scan.mjs`](./serp-scan.mjs) — ver
-[`SERP_SCAN.md`](./SERP_SCAN.md).
+resto del plan. Implementado en
+[`serp-scan.mjs`](https://github.com/santisomarketing-bot/AEO-core/blob/main/geo/serp-scan.mjs) —
+ver [`SERP_SCAN.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/geo/SERP_SCAN.md)
+(en `AEO-core/geo/`).
 
 - Mismo patrón que `maps-scan.mjs`/`scan.mjs`: Playwright + tu propia sesión de Google, sin API
   de pago.
@@ -217,8 +221,10 @@ resto del plan. Implementado en [`serp-scan.mjs`](./serp-scan.mjs) — ver
 
 Añadido a petición: encontrar negocios con poca presencia digital (pocas reseñas, sin web) como
 leads para vender SEO local — mismo espíritu que el scanner de LinkedIn, apuntando a Google Maps
-en vez de posts. Implementado como `--mode=prospect` en [`maps-scan.mjs`](./maps-scan.mjs) —
-ver el punto 5 de [`MAPS_SCAN.md`](./MAPS_SCAN.md).
+en vez de posts. Implementado como `--mode=prospect` en
+[`maps-scan.mjs`](https://github.com/santisomarketing-bot/AEO-core/blob/main/geo/maps-scan.mjs) —
+ver el punto 5 de
+[`MAPS_SCAN.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/geo/MAPS_SCAN.md).
 
 - Busca por categoría+ubicación, lista los negocios y parsea rating/reseñas de cada tarjeta.
 - Marca como prospecto a los que tienen menos reseñas que `--min-reviews` (def. 15).
@@ -231,7 +237,10 @@ ver el punto 5 de [`MAPS_SCAN.md`](./MAPS_SCAN.md).
 
 Añadido a petición (inspirado en el módulo de SEO local de una herramienta de mercado, ver
 `MAPS_SCAN.md`/`NAPW_CHECK.md` para el detalle de qué se decidió no replicar y por qué).
-Implementado en [`napw-check.mjs`](./napw-check.mjs) — ver [`NAPW_CHECK.md`](./NAPW_CHECK.md).
+Implementado en
+[`napw-check.mjs`](https://github.com/santisomarketing-bot/AEO-core/blob/main/geo/napw-check.mjs) —
+ver [`NAPW_CHECK.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/geo/NAPW_CHECK.md)
+(en `AEO-core/geo/`).
 
 - Comprueba **presencia** (no consistencia campo a campo, ver limitación explicada en
   `NAPW_CHECK.md`) del negocio en una lista de directorios locales, vía `site:<directorio>

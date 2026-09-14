@@ -6,11 +6,7 @@
   "private": true,
   "scripts": {
     "scan": "node scan.mjs",
-    "login": "node scan.mjs --login-only",
-    "maps-scan": "node maps-scan.mjs",
-    "maps-login": "node maps-scan.mjs --login-only",
-    "serp-scan": "node serp-scan.mjs",
-    "napw-check": "node napw-check.mjs"
+    "login": "node scan.mjs --login-only"
   },
   "dependencies": {
     "playwright": "^1.47.0"

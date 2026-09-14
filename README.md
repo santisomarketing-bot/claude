@@ -6,20 +6,12 @@ Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportun
 > que cada día a las 17:00 (hora España) busca posts públicos de "busco agencia" y
 > te los manda por email. Ver **[DAILY_LEADS.md](./DAILY_LEADS.md)**.
 
-> 📍 **Google Maps / Local SEO en masa:** mismo patrón (tu sesión, ritmo humano) pero
-> para sacar CID/Place ID/NAP+ de negocios, ver ranking en el local pack por ciudad o cuadrícula
-> geográfica, o encontrar negocios con poca presencia digital como leads de SEO local.
-> Ver **[MAPS_SCAN.md](./MAPS_SCAN.md)**.
-
-> 🔍 **Análisis de SERP de Google:** AI Overview, Ads y Local Pack en una búsqueda normal
-> (no Maps). Ver **[SERP_SCAN.md](./SERP_SCAN.md)**.
-
-> ⏰ **Rastreos programados:** cómo automatizar corridas periódicas de estos scripts en tu propia
-> máquina (Programador de tareas de Windows) para armar histórico sin lanzarlas a mano cada vez.
-> Ver **[SCHEDULED_SCANS.md](./SCHEDULED_SCANS.md)**.
-
-> 📇 **NAP-W (directorios locales):** en qué directorios locales aparece un negocio (y en
-> cuáles no) para priorizar altas. Ver **[NAPW_CHECK.md](./NAPW_CHECK.md)**.
+> 🗺️ **Google Maps / Search / NAP-W (SEO local):** los scripts de CID/Place ID/NAP+, ranking en
+> el local pack, heatmap geográfico, AI Overview/Ads en SERP, prospección de leads y consistencia
+> en directorios locales se movieron a
+> [`AEO-core/geo/`](https://github.com/santisomarketing-bot/AEO-core/tree/main/geo) — junto con el
+> resto de las herramientas de AEO/GEO de la agencia. Este repo se quedó solo con el scanner de
+> LinkedIn de abajo.
 
 ## ⚠️ Aviso importante
 

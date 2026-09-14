@@ -14,9 +14,9 @@ despliegue — no por prolijidad.
 
 | Repo | Contenido (sesiones de `AEO_PLAN.md`) | Por qué separado |
 |---|---|---|
-| [`santisomarketing-bot/AEO-core`](https://github.com/santisomarketing-bot/AEO-core) | Sesión 1 (audit), 2 (generador contenido), 4 (mentions), 5 (informe mensual), 6 (integración WP) | Scripts Node de vida propia, se ejecutan por cliente/cron, sin despliegue web |
+| [`santisomarketing-bot/AEO-core`](https://github.com/santisomarketing-bot/AEO-core) | Sesión 1 (audit), 2 (generador contenido), 4 (mentions), 5 (informe mensual), 6 (integración WP), 8-11 (`geo/`: Maps, SERP, prospección, NAP-W) | Scripts Node de vida propia, se ejecutan por cliente/cron, sin despliegue web |
 | [`santisomarketing-bot/AEO-edge`](https://github.com/santisomarketing-bot/AEO-edge) | Sesión 3 (Cloudflare Worker) | Necesita CI/CD propio hacia Cloudflare, un despliegue por dominio de cliente |
-| `santisomarketing-bot/claude` (este mismo repo) | Sesión 8 (`maps-scan.mjs`) | Es la misma familia que `scan.mjs` (Playwright + sesión propia) ya vive acá, no necesita Cloudflare |
+| `santisomarketing-bot/claude` (este mismo repo) | — (herramientas previas a AEO: scanner de LinkedIn, templates de Jira) | No forma parte del plan de AEO/GEO, se quedó fuera a propósito |
 
 ## 2. Estructura interna de cada repo
 
@@ -29,6 +29,11 @@ AEO-core/
 ├── ai-mentions.mjs       # Sesión 4
 ├── monthly-report.mjs    # Sesión 5
 ├── wp-integration.mjs    # Sesión 6
+├── geo/                  # Sesiones 8-11: Maps, SERP, prospección, NAP-W (Playwright + sesión propia)
+│   ├── maps-scan.mjs
+│   ├── serp-scan.mjs
+│   └── napw-check.mjs
+├── scripts/               # .bat de ejemplo para rastreos programados (Programador de tareas de Windows)
 ├── clients/              # config por cliente (dominio, prompts de marca, Jira epic…), no versionar datos sensibles
 │   └── <cliente>.json
 ├── package.json
