@@ -42,7 +42,12 @@ npm run maps-scan -- --mode=extract --input=negocios.txt --out=cliente-maps
 ```
 
 Salida (`cliente-maps.csv` / `.json`): `query, url, placeFtid, cid, nombre, direccion, telefono,
-web, rating`.
+web, rating, lat, lng`.
+
+**`lat`/`lng` es de dónde sale el `--center` de `--mode=heatmap`**: corré `extract` primero sobre
+tu propio negocio (una línea con su nombre + ciudad en `negocios.txt`), y usá el `lat,lng` que te
+devuelve — son las coordenadas exactas del pin de esa ficha en Google Maps, no hay que
+adivinarlas ni sacarlas de otro lado.
 
 ## 3) Modo `grid` — local pack **y orgánico** por ciudad/barrio
 
@@ -97,25 +102,47 @@ npm run maps-scan -- --mode=heatmap \
 | Flag | Qué hace | Def. |
 |---|---|---|
 | `--center=LAT,LNG` | Centro de la cuadrícula (la ubicación del negocio) | — (obligatorio) |
-| `--term=TEXTO` | Término de búsqueda | — (obligatorio) |
+| `--term=TEXTO` | Un término de búsqueda | — (obligatorio si no usás `--terms`) |
+| `--terms=fichero` | Varios términos, uno por línea — corre la cuadrícula completa una vez por cada uno | — (alternativa a `--term`) |
 | `--target=TEXTO` | Nombre del negocio a ubicar en los resultados | — (opcional, sin él solo ves cuántos resultados hay) |
 | `--radius-km=N` | Radio de la cuadrícula, en km | 5 |
 | `--size=N` | Tamaño de la cuadrícula N×N (impar, para tener un punto central) | 5 |
 | `--append` | En vez de pisar `<out>.csv/.json`, agrega esta corrida al histórico existente | — (desactivado) |
 | `--headless` | Corre el navegador sin ventana visible (para rastreos programados desatendidos) | — (desactivado) |
 
-Salida (`<out>.csv` / `.json`): `row, col, distancia_km, direccion, posicion, fecha, topNegocios,
-lat, lng` — **el mismo formato que espera el botón "Cargar CSV real" del panel Radar Local**,
-subilo tal cual. Con `--append`, cada fila lleva la fecha de esa corrida y el panel arma solo un
-gráfico de evolución si detecta más de una fecha en el CSV. `topNegocios` es la lista completa de
-negocios detectados en ese punto (hasta 20, separados por `|`, en el orden en que salen) — el
-panel la usa para armar la tabla de "negocios detectados en la cuadrícula" (tu marca incluida, si
-aparece).
+Salida (`<out>.csv` / `.json`): `row, col, distancia_km, direccion, posicion, fecha, termino,
+topNegocios, lat, lng` — **el mismo formato que espera el botón "Cargar CSV real" del panel Radar
+Local**, subilo tal cual. Con `--append`, cada fila lleva la fecha de esa corrida y el panel arma
+solo un gráfico de evolución si detecta más de una fecha en el CSV. `termino` identifica con qué
+palabra clave se generó cada fila — con varias `--terms`, el panel te deja elegir cuál ver.
+`topNegocios` es la lista completa de negocios detectados en ese punto (hasta 20, separados por
+`|`, en el orden en que salen) — el panel la usa para armar la tabla de "negocios detectados en
+la cuadrícula" (tu marca incluida, si aparece).
 
-**Ojo con el volumen**: cada punto de la cuadrícula es una navegación real a Google Maps. Una
-cuadrícula de `5×5` son 25 búsquedas (~2 minutos con el ritmo por defecto); `9×9` son 81 (~7-8
-minutos) y sube bastante el riesgo de que Google detecte el patrón. Empezá chico (`--size=5`) y
-solo subilo si de verdad necesitás más resolución.
+### `--terms` (varias palabras clave)
+
+```bash
+npm run maps-scan -- --mode=heatmap --center=41.3874,2.1686 \
+  --terms=keywords.txt --target="Cliente S.L." --out=radar-cliente
+```
+
+`keywords.txt`, una palabra clave por línea:
+
+```
+peluqueria en el centro
+corte de pelo barato
+barberia cerca de mi
+```
+
+Corre la cuadrícula completa (todos los puntos) **una vez por cada palabra clave** — con `--terms`
+y `--size=5` (25 puntos), 3 palabras clave son 75 búsquedas, no 25. El aviso de volumen de abajo
+aplica multiplicado por la cantidad de términos.
+
+**Ojo con el volumen**: cada punto de la cuadrícula (por cada palabra clave) es una navegación
+real a Google Maps. Una cuadrícula de `5×5` son 25 búsquedas (~2 minutos con el ritmo por
+defecto); `9×9` son 81 (~7-8 minutos) y sube bastante el riesgo de que Google detecte el patrón.
+Con varias `--terms` esto se multiplica — empezá chico (`--size=5`, pocas palabras clave) y solo
+subí volumen si de verdad lo necesitás.
 
 **`--headless` es más riesgoso**: un navegador sin ventana es más fácil de detectar como bot para
 Google que uno normal con `--disable-blink-features=AutomationControlled` a la vista. Usalo solo

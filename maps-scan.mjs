@@ -13,8 +13,11 @@
 //    npm run maps-login                     (abre navegador, inicias sesion a mano)
 //    npm run maps-scan -- --mode=extract --input=negocios.txt
 //    npm run maps-scan -- --mode=grid --input=grid.txt --out=grid-cliente
+//    npm run maps-scan -- --mode=extract --input=mi-negocio.txt   (te da lat/lng exactos: usalos abajo)
 //    npm run maps-scan -- --mode=heatmap --center=41.3874,2.1686 --term="peluqueria" \
 //      --target="Cliente S.L." --radius-km=5 --size=5 --out=radar-cliente
+//    npm run maps-scan -- --mode=heatmap --center=41.3874,2.1686 --terms=keywords.txt \
+//      --target="Cliente S.L." --out=radar-cliente        (varias palabras clave de una)
 //    npm run maps-scan -- --mode=prospect --input=categorias.txt --out=prospectos-cliente
 //
 //  Formato de --input segun --mode (heatmap no usa --input, ver flags):
@@ -30,8 +33,11 @@
 //  Flags:
 //    --mode=extract|grid|heatmap|prospect  que hacer (def. extract)
 //    --input=fichero       lista de entradas (extract/grid/prospect, obligatorio salvo --login-only)
-//    --center=LAT,LNG      centro de la cuadricula (heatmap, obligatorio)
-//    --term=TEXTO          termino de busqueda (heatmap, obligatorio)
+//    --center=LAT,LNG      centro de la cuadricula (heatmap, obligatorio). Sacalo corriendo
+//                          --mode=extract sobre tu propio negocio primero (te devuelve lat/lng).
+//    --term=TEXTO          un termino de busqueda (heatmap, obligatorio si no usas --terms)
+//    --terms=fichero       varios terminos de busqueda, uno por linea (heatmap, alternativa a --term -
+//                          corre la cuadricula completa una vez por cada uno)
 //    --target=TEXTO        nombre del negocio a ubicar en los resultados (heatmap)
 //    --radius-km=N         radio de la cuadricula en km (heatmap, def. 5)
 //    --size=N              tamano de la cuadricula NxN, impar (heatmap, def. 5)
@@ -43,9 +49,9 @@
 //    --login-only          solo abre el navegador para iniciar sesion y guarda la sesion
 //    --debug               muestra el resultado de cada fila en consola
 //
-//  El CSV de --mode=heatmap (row,col,distancia_km,direccion,posicion) es el
-//  formato que espera directamente el panel "Radar Local" (Artifact) — ver
-//  MAPS_SCAN.md.
+//  El CSV de --mode=heatmap (row,col,distancia_km,direccion,posicion,fecha,termino,...) es el
+//  formato que espera directamente el panel "Radar Local" (Artifact) — ver MAPS_SCAN.md. Con
+//  varias --terms, el panel te deja elegir con cual quedarte para ver la cuadricula.
 //
 //  AVISO: automatizar Google Maps/Search a escala roza sus Terminos de Servicio.
 //  Se usa TU sesion y un ritmo lento para minimizar riesgo, pero el riesgo no es
@@ -96,6 +102,16 @@ export function extractIdsFromMapsUrl(url) {
   return { placeFtid: `${m[1]}:${m[2]}`, cid: BigInt(m[2]).toString(10) };
 }
 
+// Cuando la URL de Maps aterriza en una ficha, trae las coordenadas exactas
+// del pin en el patron "@lat,lng,zoom" - es lo que hay que usar como
+// --center en --mode=heatmap para que la cuadricula quede centrada en el
+// negocio real, en vez de adivinar coordenadas a mano.
+export function extractLatLngFromMapsUrl(url) {
+  const m = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+),/);
+  if (!m) return { lat: null, lng: null };
+  return { lat: Number(m[1]), lng: Number(m[2]) };
+}
+
 function readLines(file) {
   return readFileSync(file, "utf8")
     .split(/\r?\n/)
@@ -122,6 +138,7 @@ async function extractOne(page, query) {
 
   const url = page.url();
   const { placeFtid, cid } = extractIdsFromMapsUrl(url);
+  const { lat, lng } = extractLatLngFromMapsUrl(url);
 
   const getAttr = async (selector, attr) => {
     try {
@@ -154,6 +171,8 @@ async function extractOne(page, query) {
     telefono: telefonoLabel.replace(/^tel[eé]fono:\s*/i, "").replace(/^phone:\s*/i, ""),
     web,
     rating: ratingLabel,
+    lat: lat ?? "",
+    lng: lng ?? "",
     error: "",
   };
 }
@@ -167,7 +186,7 @@ async function runExtract(page) {
       rows.push(row);
       if (DEBUG) console.log(`  ✓ ${q} -> cid=${row.cid || "?"} ${row.nombre}`);
     } catch (err) {
-      rows.push({ query: q, url: "", placeFtid: "", cid: "", nombre: "", direccion: "", telefono: "", web: "", rating: "", error: err.message });
+      rows.push({ query: q, url: "", placeFtid: "", cid: "", nombre: "", direccion: "", telefono: "", web: "", rating: "", lat: "", lng: "", error: err.message });
       if (DEBUG) console.log(`  ✗ ${q} -> ${err.message}`);
     }
     await sleep(DELAY + Math.floor(Math.random() * 1000));
@@ -294,34 +313,49 @@ async function heatmapPoint(page, term, lat, lng, target) {
   return { posicion, totalDetectados: lista.length, lista };
 }
 
-async function runHeatmap(page) {
-  if (!args.center || !args.term) {
-    console.error("Falta --center=LAT,LNG y --term=... para --mode=heatmap");
-    process.exit(1);
-  }
-  const [centerLat, centerLng] = String(args.center).split(",").map(Number);
-  const size = parseInt(args.size ?? "5", 10);
-  const radiusKm = parseFloat(args["radius-km"] ?? "5");
-  const term = String(args.term);
-  const target = args.target ? String(args.target) : "";
-  const centerIdx = (size - 1) / 2;
-  const stepKm = radiusKm / centerIdx;
-
-  const fecha = new Date().toISOString().slice(0, 10);
+async function runHeatmapForTerm(page, term, ctx) {
+  const { centerLat, centerLng, size, centerIdx, stepKm, target, fecha } = ctx;
   const rows = [];
   for (let row = 0; row < size; row++) {
     for (let col = 0; col < size; col++) {
       const p = puntoDeCuadricula(centerLat, centerLng, row, col, centerIdx, stepKm);
       try {
         const { posicion, lista } = await heatmapPoint(page, term, p.lat, p.lng, target);
-        rows.push({ ...p, posicion, fecha, topNegocios: lista.slice(0, 20).join("|"), error: "" });
-        if (DEBUG) console.log(`  ✓ [${p.row},${p.col}] ${p.direccion} ${p.distancia_km}km -> posicion ${posicion ?? "no encontrada"}`);
+        rows.push({ ...p, posicion, fecha, termino: term, topNegocios: lista.slice(0, 20).join("|"), error: "" });
+        if (DEBUG) console.log(`  ✓ [${term}] [${p.row},${p.col}] ${p.direccion} ${p.distancia_km}km -> posicion ${posicion ?? "no encontrada"}`);
       } catch (err) {
-        rows.push({ ...p, posicion: null, fecha, topNegocios: "", error: err.message });
-        if (DEBUG) console.log(`  ✗ [${p.row},${p.col}] ${p.direccion} -> ${err.message}`);
+        rows.push({ ...p, posicion: null, fecha, termino: term, topNegocios: "", error: err.message });
+        if (DEBUG) console.log(`  ✗ [${term}] [${p.row},${p.col}] ${p.direccion} -> ${err.message}`);
       }
       await sleep(DELAY + Math.floor(Math.random() * 1000));
     }
+  }
+  return rows;
+}
+
+async function runHeatmap(page) {
+  const terms = args.terms ? readLines(args.terms) : args.term ? [String(args.term)] : [];
+  if (!args.center || !terms.length) {
+    console.error("Falta --center=LAT,LNG y --term=... (o --terms=fichero.txt) para --mode=heatmap");
+    process.exit(1);
+  }
+  const [centerLat, centerLng] = String(args.center).split(",").map(Number);
+  const size = parseInt(args.size ?? "5", 10);
+  const radiusKm = parseFloat(args["radius-km"] ?? "5");
+  const target = args.target ? String(args.target) : "";
+  const centerIdx = (size - 1) / 2;
+  const stepKm = radiusKm / centerIdx;
+  const fecha = new Date().toISOString().slice(0, 10);
+  const ctx = { centerLat, centerLng, size, centerIdx, stepKm, target, fecha };
+
+  if (terms.length > 1) {
+    console.log(`  ${terms.length} palabra(s) clave x ${size * size} puntos = ${terms.length * size * size} búsquedas totales.`);
+  }
+
+  let rows = [];
+  for (const term of terms) {
+    const filaTerm = await runHeatmapForTerm(page, term, ctx);
+    rows = rows.concat(filaTerm);
   }
   return rows;
 }
@@ -451,9 +485,9 @@ async function main() {
   const runners = { grid: runGrid, heatmap: runHeatmap, prospect: runProspect, extract: runExtract };
   const columnas = {
     grid: ["term", "location", "target", "posicion", "competidoresAntes", "totalDetectados", "domain", "posicionOrganica", "error"],
-    heatmap: ["row", "col", "distancia_km", "direccion", "posicion", "fecha", "topNegocios", "lat", "lng", "error"],
+    heatmap: ["row", "col", "distancia_km", "direccion", "posicion", "fecha", "termino", "topNegocios", "lat", "lng", "error"],
     prospect: ["categoria", "ubicacion", "nombre", "rating", "resenas", "tieneWeb", "error"],
-    extract: ["query", "url", "placeFtid", "cid", "nombre", "direccion", "telefono", "web", "rating", "error"],
+    extract: ["query", "url", "placeFtid", "cid", "nombre", "direccion", "telefono", "web", "rating", "lat", "lng", "error"],
   };
   const rows = await (runners[MODE] ?? runExtract)(page);
   const cols = columnas[MODE] ?? columnas.extract;
