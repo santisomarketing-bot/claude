@@ -156,7 +156,7 @@ Ver [`AEO_PRODUCTO.md`](./AEO_PRODUCTO.md): recomienda un piloto interno de punt
 de vender esto como servicio (varias piezas solo están probadas con datos sintéticos, no en
 vivo), y deja una propuesta de tiers para cuando el piloto esté validado.
 
-### Sesión 8 — Extracción masiva de datos de Google Maps (Local SEO) ✅ hecho (falta validar en vivo)
+### Sesión 8 — Extracción masiva de datos de Google Maps (Local SEO) ✅ hecho y validado en vivo
 
 Añadido a petición: automatizar "en masa" lo que hoy se hace ficha a ficha a mano en Google Maps
 (sacar CID, Place ID, NAP+, simular geolocalización con UULE para ver el local pack por zona,
@@ -166,12 +166,30 @@ AEO), útil para el trabajo de Local SEO/GBP que ya hacéis. Implementado en
 ver [`MAPS_SCAN.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/geo/MAPS_SCAN.md)
 (en `AEO-core/geo/`). Suma un tercer modo,
 `heatmap`, que genera una cuadrícula geográfica real (lat/lng) alrededor de un negocio — es el
-que alimenta el panel [Radar Local](https://claude.ai/code/artifact/3e5bf41d-4fe6-4fd1-a9f1-3873b6de2649)
-(Artifact, con datos de ejemplo hasta que se corra un scan real). La extracción de CID/Place ID
-desde la URL y la matemática de la cuadrícula (distancias/direcciones) están probadas; la lectura
-de NAP+/resultados en el DOM **no se pudo probar en vivo** en esta sesión (sin sesión de Google ni
-acceso de red a Maps desde acá) — antes de usarlo en serio, correr `--debug` sobre 2-3 casos
-conocidos y ajustar selectores si hace falta.
+que alimenta el panel Radar Local, en dos versiones:
+- [Artifact de Claude](https://claude.ai/code/artifact/3e5bf41d-4fe6-4fd1-a9f1-3873b6de2649) (privado, con "Cargar CSV real" manual).
+- **Dashboard en vivo público**: https://santisomarketing-bot.github.io/AEO-core/ (`AEO-core/docs/index.html`,
+  GitHub Pages) — con mapa real (Leaflet + OpenStreetMap, sin el bloqueo de CSP de los Artifacts) y
+  desplegable de marca (`docs/data/manifest.json`) que carga sola el CSV publicado de cada cliente.
+
+**Validado en vivo con un cliente real (WHY NOT Barber Shop Paris)**: CID/Place ID, NAP+, extracción
+de lat/lng, y heatmap 5×5 con 4 palabras clave — todo confirmado funcionando de punta a punta,
+incluida la publicación automática. Dos bugs reales encontrados y corregidos en el camino (no eran
+del usuario, eran del código):
+1. **Detección de entry-point ESM rota en Windows** (`file://${process.argv[1]}` arma mal la URL
+   con backslashes de Windows) — el script cargaba y salía sin hacer nada, sin error visible.
+   Corregido con `pathToFileURL()`.
+2. **`--out` escribía siempre en `geo/`** (usaba `__dirname` en vez del directorio desde donde se
+   corre el comando) — por más que apuntaras a otra carpeta, el CSV terminaba en `geo/nombre.csv`.
+   Corregido para que sea relativo al directorio de trabajo, como documenta `MAPS_SCAN.md`.
+
+**Automatización semanal end-to-end** (ver [`SCHEDULED_SCANS.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/geo/SCHEDULED_SCANS.md)
+para el detalle): un único `.bat` por cliente (`rastreo-semanal-<cliente>.bat`) programado en el
+Programador de tareas de Windows hace, sin intervención manual: 1) corre el heatmap real, 2) copia
+el CSV a la carpeta de Drive del cliente (`geo CSVs/`), 3) copia el CSV a `docs/data/<cliente>.csv`
+y hace `git push` — el dashboard de GitHub Pages sirve la versión nueva a los pocos minutos. Para
+sumar un cliente nuevo: una línea en `docs/data/manifest.json` + su propio `.bat` (mismo patrón,
+coordenadas y `--target` distintos).
 
 - **Sí es posible**: mismo patrón que `scan.mjs` (Playwright + tu propia sesión de navegador, sin
   API de pago). En vez de hacerlo a mano ficha por ficha, un script recorre una lista de
