@@ -29,6 +29,9 @@ const config = {
   smtp: { from: "Santiso Marketing <hola@santiso.test>" },
   agency: { name: "Santiso Marketing", senderName: "Equipo Santiso", websiteUrl: "https://santiso.test", newsletterUrl: "https://santiso.test/newsletter" },
   sequence: { checkIntervalMinutes: 5 },
+  publicUrl: "https://crm.test",
+  team: { notifyEmail: "equipo@test.com" },
+  notify: { digestIntervalMinutes: 240 },
 };
 
 const AUTH = "Basic " + Buffer.from(`${config.auth.user}:${config.auth.pass}`).toString("base64");
@@ -149,11 +152,45 @@ async function main() {
     assert.equal(lead.sequence[2].status, "pendiente");
   });
 
+  await step("El equipo recibe el aviso de lead nuevo (no el lead)", async () => {
+    await server.crm.dispatchNotifications();
+    const aviso = sentEmails.find((m) => m.to === "equipo@test.com" && /Lead nuevo/.test(m.subject));
+    assert.ok(aviso, "no se avisó al equipo del lead nuevo");
+    assert.match(aviso.subject, /Laura Gómez/);
+    assert.match(aviso.html, /crm\.test\/\?lead=/); // enlace directo al lead
+  });
+
+  await step("No se duplica el aviso al equipo en un segundo barrido", async () => {
+    const antes = sentEmails.length;
+    await server.crm.dispatchNotifications();
+    assert.equal(sentEmails.length, antes);
+  });
+
+  await step("GET /api/leads/:id marca 'notified' como enviado", async () => {
+    const res = await fetch(`${base}/api/leads/${webLeadId}`, { headers: { Authorization: AUTH } });
+    const lead = await res.json();
+    assert.equal(lead.notified.status, "enviado");
+    assert.ok(lead.notified.sentAt);
+  });
+
+  let pedroLeadId;
   await step("POST /webhooks/web-form urlencoded + redirect -> 302", async () => {
     const body = new URLSearchParams({ nombre: "Pedro", telefono: "600111222", redirect: "https://ejemplo.com/gracias" });
     const res = await fetch(`${base}/webhooks/web-form?key=clave-web`, { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, redirect: "manual", body });
     assert.equal(res.status, 302);
     assert.equal(res.headers.get("location"), "https://ejemplo.com/gracias");
+  });
+
+  await step("El equipo también se entera del lead sin email (Pedro)", async () => {
+    const list = await fetch(`${base}/api/leads?q=Pedro`, { headers: { Authorization: AUTH } });
+    const { items } = await list.json();
+    assert.equal(items.length, 1);
+    pedroLeadId = items[0].id;
+    assert.equal(items[0].contact.email, ""); // sin email: no entra en la secuencia de bienvenida, pero sí en el aviso
+
+    await server.crm.dispatchNotifications();
+    const aviso = sentEmails.find((m) => m.to === "equipo@test.com" && /Lead nuevo/.test(m.subject) && /Pedro/.test(m.subject));
+    assert.ok(aviso, "el aviso al equipo no debe depender de que el lead tenga email");
   });
 
   await step("GET /webhooks/meta handshake correcto -> challenge", async () => {
@@ -204,7 +241,7 @@ async function main() {
     assert.equal(stats.bySource.google, 1);
   });
 
-  let metaLeadId;
+  let metaLeadId, googleLeadId;
   await step("GET /api/leads?source=meta -> trae el lead normalizado", async () => {
     const res = await fetch(`${base}/api/leads?source=meta`, { headers: { Authorization: AUTH } });
     const { items } = await res.json();
@@ -214,14 +251,41 @@ async function main() {
     metaLeadId = items[0].id;
   });
 
-  await step("Cancelar la secuencia deja 'confirmacion' tal cual y el resto en 'cancelado'", async () => {
+  await step("GET /api/leads?source=google -> captura su id", async () => {
+    const res = await fetch(`${base}/api/leads?source=google`, { headers: { Authorization: AUTH } });
+    const { items } = await res.json();
+    assert.equal(items.length, 1);
+    googleLeadId = items[0].id;
+  });
+
+  await step("El recordatorio de pendientes lista los 4 leads abiertos", async () => {
+    const resultado = await server.crm.sendDigest();
+    assert.ok(resultado);
+    assert.equal(resultado.count, 4); // Laura, Pedro, Meta y Google: ninguno cerrado todavía
+    const digest = sentEmails.filter((m) => m.to === "equipo@test.com" && /sin cerrar/.test(m.subject)).pop();
+    assert.ok(digest);
+    assert.match(digest.subject, /^📋 4 leads/);
+    assert.match(digest.html, /Test Meta/);
+  });
+
+  await step("Cerrar el lead (status: ganado) y cancelar su secuencia pendiente", async () => {
     await server.crm.dispatchSequence(); // asegura que la confirmación del lead de Meta ya salió
-    const res = await fetch(`${base}/api/leads/${metaLeadId}`, { method: "PATCH", headers: { Authorization: AUTH, "Content-Type": "application/json" }, body: JSON.stringify({ cancelSequence: true }) });
+    const res = await fetch(`${base}/api/leads/${metaLeadId}`, { method: "PATCH", headers: { Authorization: AUTH, "Content-Type": "application/json" }, body: JSON.stringify({ status: "ganado", cancelSequence: true }) });
     assert.equal(res.status, 200);
     const lead = await res.json();
+    assert.equal(lead.status, "ganado");
     assert.equal(lead.sequence.find((s) => s.id === "confirmacion").status, "enviado");
     assert.equal(lead.sequence.find((s) => s.id === "web").status, "cancelado");
     assert.equal(lead.sequence.find((s) => s.id === "newsletter").status, "cancelado");
+  });
+
+  await step("Un lead 'ganado' desaparece del recordatorio de pendientes", async () => {
+    const resultado = await server.crm.sendDigest();
+    assert.ok(resultado);
+    assert.equal(resultado.count, 3); // ya no cuenta el de Meta
+    const digest = sentEmails.filter((m) => m.to === "equipo@test.com" && /sin cerrar/.test(m.subject)).pop();
+    assert.match(digest.subject, /^📋 3 leads/);
+    assert.doesNotMatch(digest.html, /Test Meta/);
   });
 
   await step("Un barrido muy adelantado manda los pasos con retraso, salvo los cancelados", async () => {
@@ -258,6 +322,18 @@ async function main() {
     assert.equal(del.status, 204);
     const get = await fetch(`${base}/api/leads/${webLeadId}`, { headers: { Authorization: AUTH } });
     assert.equal(get.status, 404);
+  });
+
+  await step("Con todos los leads cerrados, el recordatorio deja de mandar nada", async () => {
+    // Solo quedan Pedro y el de Google sin cerrar (Laura se borró, el de Meta ya es 'ganado').
+    for (const id of [pedroLeadId, googleLeadId]) {
+      const res = await fetch(`${base}/api/leads/${id}`, { method: "PATCH", headers: { Authorization: AUTH, "Content-Type": "application/json" }, body: JSON.stringify({ status: "perdido" }) });
+      assert.equal(res.status, 200);
+    }
+    const antes = sentEmails.length;
+    const resultado = await server.crm.sendDigest();
+    assert.equal(resultado, null, "no debe mandar un recordatorio vacío");
+    assert.equal(sentEmails.length, antes);
   });
 }
 

@@ -25,6 +25,11 @@ export const STATUS_LABELS = {
   perdido: "Perdido",
 };
 
+// Un lead "cerrado" es el único caso en que puede dejar de perseguirse: el
+// recordatorio de leads abiertos (notify.mjs) se basa en esto para decidir
+// qué sigue pendiente de cerrar.
+export const TERMINAL_STATUSES = ["ganado", "perdido"];
+
 function limpia(v) {
   if (v == null) return "";
   return String(v).trim();
@@ -59,6 +64,10 @@ export function buildLead(opts) {
     // para todos los leads; el envío en sí lo filtra sequenceRunner.mjs por
     // si el lead tiene email, y stepsDue() por si el contenido está listo.
     sequence: buildSequenceState(receivedAt),
+    // Aviso inmediato al EQUIPO (no al lead) de que ha entrado este lead,
+    // ver notify.mjs/notifyRunner.mjs. Independiente de si el lead tiene
+    // email: el equipo debe enterarse igualmente.
+    notified: { status: "pendiente", sentAt: null, error: null },
     raw: opts.raw ?? null,
   };
 }

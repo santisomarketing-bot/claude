@@ -28,6 +28,11 @@
 //  config, los pasos se quedan "pendiente" — nada se pierde ni se envía a
 //  medias, ver crm/.env.example.
 //
+//  Y avisa al EQUIPO (lib/notify.mjs), no solo al lead: un correo inmediato
+//  por cada lead nuevo, más un recordatorio periódico con TODO lead que
+//  siga sin cerrar (ni ganado ni perdido) — para que ninguno se escape sin
+//  que alguien lo cierre. El recordatorio se repite mientras quede alguno.
+//
 //  Uso: npm run crm   (lee configuración de variables de entorno, ver .env.example)
 //  Ver CRM_LEADS.md para la puesta en marcha completa.
 // ============================================================================
@@ -45,6 +50,7 @@ import { verifyGoogleKey, normalizeGoogleLead } from "./lib/sources/google.mjs";
 import { verifyWebformKey, normalizeWebformLead } from "./lib/sources/webform.mjs";
 import { createTransport } from "./lib/mailer.mjs";
 import { runDueSequenceSteps } from "./lib/sequenceRunner.mjs";
+import { notifyNewLeads, sendOpenLeadsDigest } from "./lib/notifyRunner.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = join(__dirname, "public");
@@ -149,6 +155,43 @@ export function createServer(config, overrides = {}) {
       });
   }
 
+  function dispatchNotifications() {
+    return notifyNewLeads({ store, transport, team: config.team.notifyEmail, publicUrl: config.publicUrl, from: config.smtp.from })
+      .then((resultados) => {
+        for (const r of resultados) {
+          console.log(`aviso equipo -> ${r.status}${r.error ? ` (${r.error})` : ""} [lead ${r.leadId}]`);
+        }
+        return resultados;
+      })
+      .catch((err) => {
+        console.error("Error avisando al equipo del lead nuevo:", err);
+        return [];
+      });
+  }
+
+  // Solo la llama el barrido periódico (ver setInterval más abajo): tras
+  // cada lead nuevo ya se manda su aviso individual, un digest justo
+  // entonces sería redundante.
+  function sendDigest() {
+    return sendOpenLeadsDigest({ store, transport, team: config.team.notifyEmail, publicUrl: config.publicUrl, from: config.smtp.from })
+      .then((resultado) => {
+        if (resultado) console.log(`recordatorio de pendientes -> ${resultado.count} lead(s) sin cerrar`);
+        return resultado;
+      })
+      .catch((err) => {
+        console.error("Error mandando el recordatorio de leads sin cerrar:", err);
+        return null;
+      });
+  }
+
+  // Se llama tras crear cualquier lead nuevo, sin esperar (los webhooks
+  // quieren una respuesta rápida). Ambas funciones son idempotentes: si el
+  // envío ya se hizo o SMTP no está configurado, no repiten ni fallan.
+  function afterNewLead() {
+    dispatchSequence();
+    dispatchNotifications();
+  }
+
   const server = createHttpServer(async (req, res) => {
     const started = Date.now();
     const url = new URL(req.url, "http://localhost");
@@ -188,10 +231,10 @@ export function createServer(config, overrides = {}) {
           }
           await store.addLead(lead);
         }
-        // Dispara la secuencia sin esperarla: Meta quiere un 200 rápido y si
-        // tarda/falla reintenta el aviso (duplicaríamos, aunque addLead ya
-        // deduplica por leadgen_id).
-        dispatchSequence();
+        // Dispara secuencia + aviso al equipo sin esperarlos: Meta quiere un
+        // 200 rápido y si tarda/falla reintenta el aviso (duplicaríamos,
+        // aunque addLead ya deduplica por leadgen_id).
+        afterNewLead();
         return sendText(res, 200, "EVENT_RECEIVED");
       }
 
@@ -202,7 +245,7 @@ export function createServer(config, overrides = {}) {
         if (!verifyGoogleKey(payload, config.google.webhookKey)) return sendJson(res, 401, { error: "clave inválida" });
         const lead = normalizeGoogleLead(payload);
         const { created } = await store.addLead(lead);
-        dispatchSequence();
+        afterNewLead();
         return sendJson(res, created ? 201 : 200, { success: true });
       }
 
@@ -229,7 +272,7 @@ export function createServer(config, overrides = {}) {
             return sendJson(res, 422, { error: "falta email o teléfono de contacto" });
           }
           await store.addLead(lead);
-          dispatchSequence();
+          afterNewLead();
 
           if (body.redirect) {
             res.writeHead(302, { Location: String(body.redirect) });
@@ -295,9 +338,9 @@ export function createServer(config, overrides = {}) {
     }
   });
 
-  // Enganches para el arranque (setInterval de la secuencia) y para los
-  // tests (inspeccionar el almacén / disparar la secuencia sin esperar).
-  server.crm = { store, transport, dispatchSequence };
+  // Enganches para el arranque (setInterval de la secuencia/recordatorio) y
+  // para los tests (inspeccionar el almacén / disparar avisos sin esperar).
+  server.crm = { store, transport, dispatchSequence, dispatchNotifications, sendDigest };
   return server;
 }
 
@@ -309,12 +352,15 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   }
   const server = createServer(config);
   if (!server.crm.transport) {
-    console.warn("⚠️  SMTP_HOST / SMTP_USER no configurados: la secuencia de bienvenida queda en 'pendiente' (no se manda ningún correo).");
+    console.warn("⚠️  SMTP_HOST / SMTP_USER no configurados: ni la secuencia de bienvenida ni los avisos al equipo mandan nada (se quedan 'pendiente').");
   }
   if (!config.agency.websiteUrl) console.warn("⚠️  AGENCY_WEBSITE_URL vacío: el paso 'web' de la secuencia se queda pendiente hasta rellenarlo.");
   if (!config.agency.newsletterUrl) console.warn("⚠️  AGENCY_NEWSLETTER_URL vacío: el paso 'newsletter' de la secuencia se queda pendiente hasta rellenarlo.");
+  if (!config.team.notifyEmail) console.warn("⚠️  TEAM_NOTIFY_EMAIL vacío: no se avisará a nadie de los leads nuevos ni del recordatorio de pendientes.");
+  if (!config.publicUrl) console.warn("ℹ️  CRM_PUBLIC_URL vacío: los avisos al equipo saldrán sin enlace directo al lead.");
 
   setInterval(() => server.crm.dispatchSequence(), config.sequence.checkIntervalMinutes * 60_000);
+  setInterval(() => server.crm.sendDigest(), config.notify.digestIntervalMinutes * 60_000);
 
   server.listen(config.port, () => {
     console.log(`CRM escuchando en http://localhost:${config.port}  (fuentes: ${SOURCES.join(", ")})`);

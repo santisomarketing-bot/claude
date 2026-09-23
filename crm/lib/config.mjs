@@ -71,5 +71,23 @@ export function loadConfig(env = process.env) {
     sequence: {
       checkIntervalMinutes: Number(env.SEQUENCE_CHECK_INTERVAL_MINUTES) || 5,
     },
+
+    // URL pública del CRM (si ya está desplegado) para que los correos de
+    // aviso al equipo enlacen directo al lead. Vacío = correos sin enlace.
+    publicUrl: (env.CRM_PUBLIC_URL || "").trim(),
+
+    // A quién avisar de los leads (el equipo, no el lead). Por defecto el
+    // mismo correo que ya usan otras automatizaciones de este repo
+    // (DAILY_LEADS.md). Admite varios separados por coma.
+    team: {
+      notifyEmail: env.TEAM_NOTIFY_EMAIL ?? "santisomarketing@gmail.com",
+    },
+
+    // Cada cuánto se repite el recordatorio de "leads sin cerrar" (mientras
+    // quede alguno abierto). El aviso de lead nuevo es siempre inmediato,
+    // esto es solo para el recordatorio periódico — ver notify.mjs.
+    notify: {
+      digestIntervalMinutes: Number(env.REMINDER_INTERVAL_MINUTES) || 240, // 4h
+    },
   };
 }

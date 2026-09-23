@@ -36,6 +36,8 @@ crm/
     sequence.mjs             los 3 pasos de la secuencia de bienvenida
     mailer.mjs                envío SMTP (nodemailer)
     sequenceRunner.mjs          revisa y manda los pasos que ya tocan
+    notify.mjs                    avisos al EQUIPO: lead nuevo + recordatorio
+    notifyRunner.mjs                 dispara esos dos avisos
     sources/
       meta.mjs           Meta Lead Ads: firma, handshake, Graph API, normaliza
       google.mjs         Google Ads Lead Form webhook: clave, normaliza
@@ -62,6 +64,7 @@ Todo lead, venga de donde venga, se normaliza a la misma forma (ver
   message, fields: { ... },        // resto de campos del formulario
   notes: [{ at, text }],
   sequence: [{ id, scheduledFor, sentAt, status }],  // secuencia de bienvenida, ver más abajo
+  notified: { status, sentAt, error },  // aviso al equipo de lead nuevo, ver "Aviso al equipo"
   raw: { ... }                     // payload original, para depurar
 }
 ```
@@ -200,13 +203,42 @@ paso. Los textos actuales son un borrador razonable; conviene revisarlos
 antes de activar el envío real (tono, firma, y que `AGENCY_WEBSITE_URL`/
 `AGENCY_NEWSLETTER_URL` apunten a algo real).
 
+## Aviso al equipo — que ningún lead se escape sin cerrar
+
+Esto avisa al **equipo** (no al lead — eso es la secuencia de arriba), y es
+la red de seguridad del CRM: dos correos distintos, ambos por el mismo
+SMTP propio (`SMTP_*`), a `TEAM_NOTIFY_EMAIL` (admite varios separados por
+coma; por defecto `santisomarketing@gmail.com`, el mismo buzón que ya usa
+`DAILY_LEADS.md`).
+
+1. **Lead nuevo** — inmediato, uno por lead, **sin importar si tiene email**
+   (a diferencia de la secuencia de bienvenida: el equipo debe enterarse
+   igual de un lead que solo dejó teléfono). Con enlace directo a la ficha
+   si `CRM_PUBLIC_URL` está configurada.
+2. **Recordatorio de pendientes** — periódico (`REMINDER_INTERVAL_MINUTES`,
+   4h por defecto), lista **todos** los leads que siguen sin cerrar (status
+   distinto de `ganado`/`perdido`), ordenados por cuánto llevan abiertos
+   (🟢 <4h · 🟡 <24h · 🟠 <48h · 🔴 48h o más). **Se repite en cada barrido
+   mientras quede al menos uno** — así, aunque se pase por alto el aviso
+   inmediato, el lead sigue reapareciendo hasta que alguien lo marca
+   `ganado` o `perdido`. Si no queda ninguno abierto, no manda nada (no hay
+   spam de "0 pendientes").
+
+Igual que la secuencia de bienvenida: sin `SMTP_HOST`/`SMTP_USER`
+configurados no se manda nada, pero no se pierde nada — cada lead queda con
+`notified.status: "pendiente"` y el propio barrido periódico reintenta el
+envío en cuanto haya SMTP configurado (no hace falta que el lead sea nuevo
+para que le llegue su aviso al equipo).
+
 ## Dashboard
 
 `https://TU-DOMINIO/` (Basic Auth con `CRM_USER`/`CRM_PASS`): resumen por
 fuente/estado, tabla con filtros (fuente, estado, búsqueda libre), ficha de
 detalle por lead con todos sus campos + notas, cambio de estado desde la
 propia tabla o la ficha, y exportación a CSV respetando los filtros
-activos.
+activos. `https://TU-DOMINIO/?lead=<id>` abre directamente la ficha de ese
+lead — es el enlace que llevan los avisos al equipo cuando `CRM_PUBLIC_URL`
+está configurada.
 
 ## API
 

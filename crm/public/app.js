@@ -281,3 +281,7 @@ document.getElementById("detail").addEventListener("click", (e) => {
 
 initStatusFilter();
 refreshAll();
+
+// Enlace directo desde los correos de aviso al equipo: /?lead=<id>
+const leadDesdeUrl = new URLSearchParams(location.search).get("lead");
+if (leadDesdeUrl) openDetail(leadDesdeUrl);

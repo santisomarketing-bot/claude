@@ -87,6 +87,20 @@ export class LeadStore {
     });
   }
 
+  // Marca el resultado de avisar al equipo de que este lead entró.
+  // Un lead sin `notified` (datos muy antiguos) se trata como pendiente en
+  // vez de ignorarlo, para no dejar colar un lead por no tener el campo.
+  async updateNotified(id, patch) {
+    return this._enqueue(() => {
+      const lead = this._leads.find((l) => l.id === id);
+      if (!lead) return null;
+      lead.notified = lead.notified || { status: "pendiente", sentAt: null, error: null };
+      Object.assign(lead.notified, patch);
+      this._persist();
+      return lead;
+    });
+  }
+
   // Cancela los pasos de la secuencia aún no enviados (p. ej. el lead ya se
   // cerró y no tiene sentido seguir mandando los correos de bienvenida).
   async cancelSequence(id) {
