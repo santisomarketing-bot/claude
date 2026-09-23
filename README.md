@@ -6,6 +6,11 @@ Scrollea tu feed de LinkedIn **con tu propia sesión** y te extrae las **oportun
 > que cada día a las 17:00 (hora España) busca posts públicos de "busco agencia" y
 > te los manda por email. Ver **[DAILY_LEADS.md](./DAILY_LEADS.md)**.
 
+> 🗂️ **CRM propio (Meta Ads + Google Ads + formularios web):** además de los
+> leads de LinkedIn, hay un CRM ligero y propio que centraliza los leads que
+> entran por Meta Ads, Google Ads y los formularios web de Santiso/clientes,
+> con su propio panel. Ver **[CRM_LEADS.md](./CRM_LEADS.md)**.
+
 ## ⚠️ Aviso importante
 
 Automatizar LinkedIn va **contra sus Términos de Servicio**. Esta herramienta usa **tu propia sesión** y un ritmo lento y humano para minimizar el riesgo, pero **el riesgo de bloqueo no es cero**. Úsala con criterio y con moderación. No metas credenciales en ningún sitio: inicias sesión tú a mano en tu navegador.

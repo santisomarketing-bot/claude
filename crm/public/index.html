@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CRM · Santiso Marketing</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>CRM Santiso Marketing</h1>
+    <p class="subtitle">Leads de Meta Ads, Google Ads y formularios web — en un solo sitio</p>
+  </header>
+
+  <main>
+    <section class="stats" id="stats" aria-label="Resumen"></section>
+
+    <section class="toolbar">
+      <input id="q" type="search" placeholder="Buscar por nombre, email, teléfono, campaña…" />
+      <select id="source">
+        <option value="">Todas las fuentes</option>
+        <option value="meta">Meta Ads</option>
+        <option value="google">Google Ads</option>
+        <option value="web">Formulario web</option>
+      </select>
+      <select id="status">
+        <option value="">Todos los estados</option>
+      </select>
+      <button id="refresh" type="button">Actualizar</button>
+      <a id="export" href="/api/leads/export.csv" target="_blank" rel="noopener">Exportar CSV</a>
+    </section>
+
+    <section class="table-wrap">
+      <table id="leads-table">
+        <thead>
+          <tr>
+            <th>Recibido</th>
+            <th>Origen</th>
+            <th>Contacto</th>
+            <th>Campaña / Sitio</th>
+            <th>Mensaje</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody id="leads-body">
+          <tr><td colspan="6" class="empty">Cargando…</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <nav class="pager">
+      <button id="prev" type="button">← Anteriores</button>
+      <span id="page-info"></span>
+      <button id="next" type="button">Siguientes →</button>
+    </nav>
+  </main>
+
+  <aside id="detail" class="detail hidden" aria-hidden="true">
+    <div class="detail-panel">
+      <button id="detail-close" class="close" type="button" aria-label="Cerrar">×</button>
+      <div id="detail-body"></div>
+    </div>
+  </aside>
+
+  <script src="/app.js"></script>
+</body>
+</html>

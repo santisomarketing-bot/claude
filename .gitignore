@@ -13,3 +13,11 @@ control.json
 _*.mjs
 *.html
 leads-busqueda-publica.csv
+
+# CRM propio (crm/): datos de leads (contienen datos personales) y secretos
+crm/data/
+.env
+crm/.env
+
+# el dashboard del CRM sí se versiona pese a la regla *.html de arriba
+!crm/public/*.html

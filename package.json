@@ -6,7 +6,9 @@
   "private": true,
   "scripts": {
     "scan": "node scan.mjs",
-    "login": "node scan.mjs --login-only"
+    "login": "node scan.mjs --login-only",
+    "crm": "node --env-file-if-exists=crm/.env crm/server.mjs",
+    "crm:test": "node crm/test/smoke.mjs"
   },
   "dependencies": {
     "playwright": "^1.47.0"
