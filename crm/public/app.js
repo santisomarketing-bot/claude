@@ -3,6 +3,9 @@
 const STATUSES = ["nuevo", "contactado", "respondio", "reunion", "presupuesto", "ganado", "perdido"];
 const STATUS_LABELS = { nuevo: "Nuevo", contactado: "Contactado", respondio: "Respondió", reunion: "Reunión", presupuesto: "Presupuesto", ganado: "Ganado", perdido: "Perdido" };
 const SOURCE_LABELS = { meta: "Meta Ads", google: "Google Ads", web: "Formulario web" };
+// Debe reflejar crm/lib/sequence.mjs (SEQUENCE_STEPS) y store.mjs (estados de paso).
+const SEQUENCE_LABELS = { confirmacion: "Confirmación de recepción", web: "Invitación a la web", newsletter: "Newsletter" };
+const SEQUENCE_STATUS_LABELS = { pendiente: "Pendiente", enviado: "Enviado ✓", cancelado: "Cancelado", error: "Error", omitido: "Omitido" };
 
 const state = { q: "", source: "", status: "", limit: 50, offset: 0, total: 0 };
 
@@ -162,6 +165,9 @@ async function openDetail(id) {
     <ul id="detail-notes" class="notes"></ul>
     <textarea id="detail-note-text" placeholder="Añadir nota…" rows="2"></textarea>
     <button id="detail-note-add" type="button">Añadir nota</button>
+    <h3>Secuencia de bienvenida</h3>
+    <ul id="detail-sequence" class="sequence"></ul>
+    <button id="detail-sequence-cancel" type="button" class="secondary">Cancelar secuencia</button>
     <details class="raw"><summary>Datos originales (raw)</summary><pre></pre></details>
   `;
 
@@ -194,6 +200,29 @@ async function openDetail(id) {
     if (!text) return;
     await api(`/api/leads/${lead.id}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ note: text }) });
     openDetail(id); // recarga con la nota nueva
+  });
+
+  const sequenceList = document.getElementById("detail-sequence");
+  const pasos = lead.sequence || [];
+  for (const paso of pasos) {
+    const li = document.createElement("li");
+    li.className = `seq-${paso.status}`;
+    const nombre = document.createElement("span");
+    nombre.className = "seq-nombre";
+    nombre.textContent = SEQUENCE_LABELS[paso.id] || paso.id;
+    const estado = document.createElement("span");
+    estado.className = "seq-estado";
+    const cuando = paso.sentAt ? fmtDate(paso.sentAt) : `programado ${fmtDate(paso.scheduledFor)}`;
+    estado.textContent = `${SEQUENCE_STATUS_LABELS[paso.status] || paso.status} · ${cuando}`;
+    li.append(nombre, estado);
+    sequenceList.append(li);
+  }
+  const cancelBtn = document.getElementById("detail-sequence-cancel");
+  const quedanPendientes = pasos.some((p) => p.status === "pendiente");
+  cancelBtn.disabled = !quedanPendientes;
+  cancelBtn.addEventListener("click", async () => {
+    await api(`/api/leads/${lead.id}`, { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ cancelSequence: true }) });
+    openDetail(id);
   });
 
   // Se rellena con textContent (no interpolado en el template) para evitar problemas de escapado con JSON.

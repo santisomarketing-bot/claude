@@ -33,6 +33,9 @@ crm/
     schema.mjs           forma canónica de un lead + estados del pipeline
     store.mjs             almacén en crm/data/leads.json
     auth.mjs                Basic Auth del panel/API
+    sequence.mjs             los 3 pasos de la secuencia de bienvenida
+    mailer.mjs                envío SMTP (nodemailer)
+    sequenceRunner.mjs          revisa y manda los pasos que ya tocan
     sources/
       meta.mjs           Meta Lead Ads: firma, handshake, Graph API, normaliza
       google.mjs         Google Ads Lead Form webhook: clave, normaliza
@@ -41,6 +44,11 @@ crm/
   test/smoke.mjs         prueba end-to-end de todas las rutas
   data/leads.json         (se crea solo; no se versiona — datos personales)
 ```
+
+Única dependencia añadida sobre el "cero dependencias" inicial:
+**`nodemailer`**, para el envío SMTP de la secuencia de bienvenida — hacer
+SMTP a mano (MIME, TLS, auth) no compensaba el riesgo de reinventarlo mal.
+Todo lo demás sigue siendo Node puro.
 
 Todo lead, venga de donde venga, se normaliza a la misma forma (ver
 `buildLead` en `crm/lib/schema.mjs`):
@@ -53,6 +61,7 @@ Todo lead, venga de donde venga, se normaliza a la misma forma (ver
   campaign: { ... },               // ids de campaña/anuncio/formulario según la fuente
   message, fields: { ... },        // resto de campos del formulario
   notes: [{ at, text }],
+  sequence: [{ id, scheduledFor, sentAt, status }],  // secuencia de bienvenida, ver más abajo
   raw: { ... }                     // payload original, para depurar
 }
 ```
@@ -149,6 +158,48 @@ inglés — ver `ALIAS` en `crm/lib/sources/webform.mjs`); cualquier otro
 campo del formulario se guarda igualmente en `fields`. Se exige al menos
 email o teléfono para aceptar el lead (si no, `422`).
 
+## Secuencia de bienvenida (3 correos automáticos)
+
+Todo lead con email, venga de la fuente que venga, dispara al crearse una
+secuencia de 3 correos (definidos en `crm/lib/sequence.mjs`):
+
+| Paso | Cuándo | Contenido |
+|---|---|---|
+| `confirmacion` | Al momento | Confirma que hemos recibido su solicitud |
+| `web` | +1 día | Invita a conocer la web (`AGENCY_WEBSITE_URL`) |
+| `newsletter` | +4 días | Comparte la newsletter/contenido reciente (`AGENCY_NEWSLETTER_URL`) |
+
+**Cómo funciona:** al crear el lead se calculan las 3 fechas
+(`sequence` en el propio lead, estado inicial `pendiente`). El servidor
+manda cada paso en cuanto se cumplen dos condiciones:
+
+1. **Ya tocaba** — pasó su fecha (`scheduledFor`). El paso `confirmacion`
+   siempre está listo (retraso 0); se dispara justo al crear el lead, sin
+   esperar al barrido periódico.
+2. **Hay contenido** — `web` necesita `AGENCY_WEBSITE_URL` relleno,
+   `newsletter` necesita `AGENCY_NEWSLETTER_URL`. Sin esos datos el paso se
+   queda `pendiente` en vez de mandarse con un enlace vacío; en cuanto se
+   rellenan, el siguiente barrido lo manda con normalidad.
+
+**Envío:** por SMTP propio (`SMTP_*` en `crm/.env.example` — p. ej. el Gmail
+de la agencia con una contraseña de aplicación, no un proveedor de email
+marketing). **Sin `SMTP_HOST`/`SMTP_USER` configurados, el servidor arranca
+igual pero no manda nada** — todos los pasos se quedan `pendiente` hasta que
+se configure, sin perderse ni enviarse a medias. Es el estado esperado
+mientras se termina de armar la estructura (ver `CRM_ROADMAP.md`).
+
+**Por lead, desde el dashboard:** la ficha de cada lead muestra el estado de
+sus 3 pasos (pendiente/enviado/cancelado/error, con fecha) y tiene un botón
+**"Cancelar secuencia"** para los casos en que ya no tiene sentido seguir
+(p. ej. el lead llamó y ya se cerró el tema). Cancelar dos veces, o cancelar
+cuando ya no queda ningún paso pendiente, no hace nada raro.
+
+**Textos y tiempos:** todo editable en `crm/lib/sequence.mjs` sin miedo —
+un array `SEQUENCE_STEPS` con `delayMinutes`, `asunto()` y `html()` por
+paso. Los textos actuales son un borrador razonable; conviene revisarlos
+antes de activar el envío real (tono, firma, y que `AGENCY_WEBSITE_URL`/
+`AGENCY_NEWSLETTER_URL` apunten a algo real).
+
 ## Dashboard
 
 `https://TU-DOMINIO/` (Basic Auth con `CRM_USER`/`CRM_PASS`): resumen por
@@ -165,7 +216,7 @@ Todo bajo Basic Auth salvo `/health` y los `/webhooks/*`.
 |---|---|
 | `GET /api/leads?source=&status=&q=&from=&to=&limit=&offset=` | Lista/filtra |
 | `GET /api/leads/:id` | Detalle |
-| `PATCH /api/leads/:id` `{status?, note?}` | Cambia estado / añade nota |
+| `PATCH /api/leads/:id` `{status?, note?, cancelSequence?}` | Cambia estado / añade nota / cancela la secuencia pendiente |
 | `DELETE /api/leads/:id` | Borra (p. ej. solicitud de baja RGPD) |
 | `GET /api/leads/export.csv` | Exporta (mismos filtros que el listado) |
 | `GET /api/stats` | Totales por fuente y por estado |

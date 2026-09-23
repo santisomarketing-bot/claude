@@ -183,6 +183,16 @@ select.status-select { font-size: 13px; padding: 5px 8px; }
 .notes time { color: var(--text-muted); font-size: 12px; display: block; margin-bottom: 2px; }
 #detail-note-text { width: 100%; margin-top: 4px; resize: vertical; }
 #detail-note-add { margin-top: 8px; }
+
+.sequence { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.sequence li { display: flex; justify-content: space-between; gap: 10px; font-size: 13px; padding: 7px 10px; border-radius: 8px; background: var(--bg); }
+.seq-nombre { font-weight: 600; }
+.seq-estado { color: var(--text-muted); text-align: right; }
+.seq-enviado .seq-estado { color: var(--badge-web); }
+.seq-error .seq-estado { color: var(--badge-google); }
+button.secondary { background: var(--surface); color: var(--text); border-color: var(--border); font-weight: 500; margin-top: 10px; }
+#detail-sequence-cancel { display: block; width: 100%; }
+
 .raw { margin-top: 20px; }
 .raw pre { white-space: pre-wrap; word-break: break-word; font-size: 12px; background: var(--bg); padding: 10px; border-radius: 8px; max-height: 240px; overflow: auto; }
 

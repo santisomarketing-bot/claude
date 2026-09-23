@@ -15,11 +15,18 @@
 //      GET    /api/leads          listar (filtros: source, status, q, from, to, limit, offset)
 //      GET    /api/leads/export.csv
 //      GET    /api/leads/:id
-//      PATCH  /api/leads/:id      { status?, note? }
+//      PATCH  /api/leads/:id      { status?, note?, cancelSequence? }
 //      DELETE /api/leads/:id
 //      GET    /api/stats
 //
 //    GET /health                  sin auth, para monitorización
+//
+//  Al crear un lead se programa además una secuencia de bienvenida de 3
+//  correos (confirmación / web / newsletter, ver lib/sequence.mjs). Este
+//  servidor la dispara solo cuando toca (al momento tras crear el lead, y
+//  con un barrido periódico para los pasos con retraso). Sin SMTP_* en la
+//  config, los pasos se quedan "pendiente" — nada se pierde ni se envía a
+//  medias, ver crm/.env.example.
 //
 //  Uso: npm run crm   (lee configuración de variables de entorno, ver .env.example)
 //  Ver CRM_LEADS.md para la puesta en marcha completa.
@@ -36,6 +43,8 @@ import { checkBasicAuth } from "./lib/auth.mjs";
 import { verifyMetaHandshake, verifyMetaSignature, parseMetaChanges, fetchMetaLeadData, normalizeMetaLead, buildPendingMetaLead } from "./lib/sources/meta.mjs";
 import { verifyGoogleKey, normalizeGoogleLead } from "./lib/sources/google.mjs";
 import { verifyWebformKey, normalizeWebformLead } from "./lib/sources/webform.mjs";
+import { createTransport } from "./lib/mailer.mjs";
+import { runDueSequenceSteps } from "./lib/sequenceRunner.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = join(__dirname, "public");
@@ -119,10 +128,28 @@ function toCsv(leads) {
 // Servidor
 // ---------------------------------------------------------------------------
 
-export function createServer(config) {
+// overrides.transport permite inyectar un transporte falso en los tests sin
+// tocar SMTP real; si no se pasa, se construye del config (null si no hay
+// SMTP_HOST/SMTP_USER, ver lib/mailer.mjs).
+export function createServer(config, overrides = {}) {
   const store = new LeadStore(config.dataFile);
+  const transport = overrides.transport !== undefined ? overrides.transport : createTransport(config.smtp);
 
-  return createHttpServer(async (req, res) => {
+  function dispatchSequence() {
+    return runDueSequenceSteps({ store, transport, agency: config.agency, from: config.smtp.from })
+      .then((resultados) => {
+        for (const r of resultados) {
+          console.log(`secuencia ${r.step} -> ${r.status}${r.error ? ` (${r.error})` : ""} [lead ${r.leadId}]`);
+        }
+        return resultados;
+      })
+      .catch((err) => {
+        console.error("Error revisando la secuencia de correos:", err);
+        return [];
+      });
+  }
+
+  const server = createHttpServer(async (req, res) => {
     const started = Date.now();
     const url = new URL(req.url, "http://localhost");
     const path = url.pathname;
@@ -161,7 +188,10 @@ export function createServer(config) {
           }
           await store.addLead(lead);
         }
-        // Meta espera un 200 rápido; si tarda/falla reintenta y duplicaríamos avisos.
+        // Dispara la secuencia sin esperarla: Meta quiere un 200 rápido y si
+        // tarda/falla reintenta el aviso (duplicaríamos, aunque addLead ya
+        // deduplica por leadgen_id).
+        dispatchSequence();
         return sendText(res, 200, "EVENT_RECEIVED");
       }
 
@@ -172,6 +202,7 @@ export function createServer(config) {
         if (!verifyGoogleKey(payload, config.google.webhookKey)) return sendJson(res, 401, { error: "clave inválida" });
         const lead = normalizeGoogleLead(payload);
         const { created } = await store.addLead(lead);
+        dispatchSequence();
         return sendJson(res, created ? 201 : 200, { success: true });
       }
 
@@ -198,6 +229,7 @@ export function createServer(config) {
             return sendJson(res, 422, { error: "falta email o teléfono de contacto" });
           }
           await store.addLead(lead);
+          dispatchSequence();
 
           if (body.redirect) {
             res.writeHead(302, { Location: String(body.redirect) });
@@ -244,8 +276,10 @@ export function createServer(config) {
           if (body.status && !isValidStatus(body.status)) {
             return sendJson(res, 400, { error: `status inválido, usa: ${STATUSES.join(", ")}` });
           }
-          const lead = await store.updateLead(id, body);
-          return lead ? sendJson(res, 200, lead) : sendJson(res, 404, { error: "no encontrado" });
+          let lead = await store.updateLead(id, body);
+          if (!lead) return sendJson(res, 404, { error: "no encontrado" });
+          if (body.cancelSequence) lead = await store.cancelSequence(id);
+          return sendJson(res, 200, lead);
         }
         if (req.method === "DELETE") {
           const ok = await store.deleteLead(id);
@@ -260,6 +294,11 @@ export function createServer(config) {
       if (!res.headersSent) sendJson(res, status, { error: err.message || "error interno" });
     }
   });
+
+  // Enganches para el arranque (setInterval de la secuencia) y para los
+  // tests (inspeccionar el almacén / disparar la secuencia sin esperar).
+  server.crm = { store, transport, dispatchSequence };
+  return server;
 }
 
 // ---- Arranque directo: node crm/server.mjs ----
@@ -269,6 +308,14 @@ if (import.meta.url === `file://${process.argv[1]}`) {
     console.warn("⚠️  CRM_USER / CRM_PASS no configurados: el dashboard y la API quedarán inaccesibles.");
   }
   const server = createServer(config);
+  if (!server.crm.transport) {
+    console.warn("⚠️  SMTP_HOST / SMTP_USER no configurados: la secuencia de bienvenida queda en 'pendiente' (no se manda ningún correo).");
+  }
+  if (!config.agency.websiteUrl) console.warn("⚠️  AGENCY_WEBSITE_URL vacío: el paso 'web' de la secuencia se queda pendiente hasta rellenarlo.");
+  if (!config.agency.newsletterUrl) console.warn("⚠️  AGENCY_NEWSLETTER_URL vacío: el paso 'newsletter' de la secuencia se queda pendiente hasta rellenarlo.");
+
+  setInterval(() => server.crm.dispatchSequence(), config.sequence.checkIntervalMinutes * 60_000);
+
   server.listen(config.port, () => {
     console.log(`CRM escuchando en http://localhost:${config.port}  (fuentes: ${SOURCES.join(", ")})`);
     console.log(`Datos en: ${config.dataFile}`);

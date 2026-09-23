@@ -47,5 +47,29 @@ export function loadConfig(env = process.env) {
       // (útil en desarrollo; en producción configura WEBFORM_API_KEYS).
       corsOrigin: env.WEBFORM_CORS_ORIGIN || "*",
     },
+
+    // Envío de la secuencia de bienvenida (SMTP propio, p. ej. el Gmail de la
+    // agencia). Sin SMTP_HOST/SMTP_USER configurados, el CRM funciona igual
+    // pero no manda los correos (se quedan "pendiente" hasta que se configure).
+    smtp: {
+      host: env.SMTP_HOST || "",
+      port: Number(env.SMTP_PORT) || 465,
+      secure: env.SMTP_SECURE !== "false", // true por defecto (puerto 465)
+      user: env.SMTP_USER || "",
+      pass: env.SMTP_PASS || "",
+      from: env.SMTP_FROM || env.SMTP_USER || "",
+    },
+
+    // Datos de la agencia usados en el contenido de la secuencia de correos.
+    agency: {
+      name: env.AGENCY_NAME || "Santiso Marketing",
+      websiteUrl: env.AGENCY_WEBSITE_URL || "",
+      newsletterUrl: env.AGENCY_NEWSLETTER_URL || "",
+      senderName: env.AGENCY_SENDER_NAME || "Santiso Marketing",
+    },
+
+    sequence: {
+      checkIntervalMinutes: Number(env.SEQUENCE_CHECK_INTERVAL_MINUTES) || 5,
+    },
   };
 }

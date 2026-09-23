@@ -73,6 +73,34 @@ export class LeadStore {
     });
   }
 
+  // Marca el resultado de intentar mandar un paso de la secuencia de correos.
+  // patch = { status: "enviado"|"error", sentAt?, error? }
+  async updateSequenceStep(id, stepId, patch) {
+    return this._enqueue(() => {
+      const lead = this._leads.find((l) => l.id === id);
+      if (!lead) return null;
+      const step = lead.sequence?.find((s) => s.id === stepId);
+      if (!step) return null;
+      Object.assign(step, patch);
+      this._persist();
+      return lead;
+    });
+  }
+
+  // Cancela los pasos de la secuencia aún no enviados (p. ej. el lead ya se
+  // cerró y no tiene sentido seguir mandando los correos de bienvenida).
+  async cancelSequence(id) {
+    return this._enqueue(() => {
+      const lead = this._leads.find((l) => l.id === id);
+      if (!lead) return null;
+      for (const step of lead.sequence || []) {
+        if (step.status === "pendiente") step.status = "cancelado";
+      }
+      this._persist();
+      return lead;
+    });
+  }
+
   async deleteLead(id) {
     return this._enqueue(() => {
       const idx = this._leads.findIndex((l) => l.id === id);

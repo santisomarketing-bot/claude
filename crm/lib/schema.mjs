@@ -7,6 +7,7 @@
 // ============================================================================
 
 import { randomUUID } from "node:crypto";
+import { buildSequenceState } from "./sequence.mjs";
 
 export const SOURCES = ["meta", "google", "web"];
 
@@ -36,12 +37,13 @@ export function buildLead(opts) {
   if (!SOURCES.includes(opts.source)) throw new Error(`source inválido: ${opts.source}`);
 
   const contact = opts.contact || {};
+  const receivedAt = new Date().toISOString();
   return {
     id: randomUUID(),
     source: opts.source,
     sourceId: opts.sourceId ? String(opts.sourceId) : null,
     site: opts.site || null,
-    receivedAt: new Date().toISOString(),
+    receivedAt,
     status: "nuevo",
     contact: {
       name: limpia(contact.name),
@@ -53,6 +55,10 @@ export function buildLead(opts) {
     message: limpia(opts.message),
     fields: opts.fields || {},
     notes: [],
+    // Secuencia de bienvenida (3 correos, ver sequence.mjs). Se calcula igual
+    // para todos los leads; el envío en sí lo filtra sequenceRunner.mjs por
+    // si el lead tiene email, y stepsDue() por si el contenido está listo.
+    sequence: buildSequenceState(receivedAt),
     raw: opts.raw ?? null,
   };
 }

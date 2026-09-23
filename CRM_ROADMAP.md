@@ -20,6 +20,15 @@ preguntar antes de meter una dependencia nueva.
       (filtros, ficha, notas, estados, export CSV), Basic Auth, test
       end-to-end (`npm run crm:test`). Ver `CRM_LEADS.md`.
 
+- [x] **Sesión 0.1 — Secuencia de bienvenida (estructura).** 3 correos
+      automáticos al lead (confirmación al momento, invitación a la web
+      +1 día, newsletter +4 días), con su propio envío SMTP (`nodemailer`,
+      única dependencia añadida), botón de cancelar por lead, y test
+      end-to-end con transporte simulado. **Falta lo real para activarla**
+      (ver Sesión 1): credenciales `SMTP_*`, `AGENCY_WEBSITE_URL` y
+      `AGENCY_NEWSLETTER_URL`, y revisar el texto de los 3 correos. Ver
+      "Secuencia de bienvenida" en `CRM_LEADS.md`.
+
 ## Por hacer
 
 - [ ] **Sesión 1 — Puesta en producción real.**
@@ -32,15 +41,20 @@ preguntar antes de meter una dependencia nueva.
       - Configurar el webhook de Google Ads (Herramientas → Integraciones de
         clientes potenciales) con la clave compartida.
       - Rellenar `crm/.env` en el hosting con las claves reales
-        (`crm/.env.example` trae la lista completa).
+        (`crm/.env.example` trae la lista completa), incluyendo `SMTP_*` y
+        `AGENCY_WEBSITE_URL`/`AGENCY_NEWSLETTER_URL` para activar la
+        secuencia de bienvenida, y revisar/ajustar sus textos en
+        `crm/lib/sequence.mjs` antes de que salgan de verdad.
       - Validar con un lead de prueba de cada canal: el "lead de prueba" de
         Meta, el botón "enviar solicitud de prueba" de Google Ads, y un
-        envío real desde un formulario.
+        envío real desde un formulario — y confirmar que llega el correo de
+        confirmación.
 
-- [ ] **Sesión 2 — Notificación de lead nuevo.**
-      Aviso automático (email por Gmail, y si interesa, Slack/WhatsApp) en
-      cuanto entra un lead, para no depender de refrescar el panel. Tamaño:
-      pequeño — reutiliza el conector de Gmail ya disponible.
+- [ ] **Sesión 2 — Notificación de lead nuevo (al equipo, no al lead).**
+      Aviso a la agencia (no al lead — eso ya lo cubre la secuencia de
+      bienvenida) en cuanto entra un lead, para no depender de refrescar el
+      panel. Email por Gmail, y si interesa, Slack/WhatsApp. Tamaño pequeño:
+      puede reutilizar el mismo SMTP de la secuencia o el conector de Gmail.
 
 - [ ] **Sesión 3 — Multiusuario y copias de seguridad.**
       Hoy el panel es una única contraseña compartida (`CRM_USER`/`CRM_PASS`)

@@ -16,6 +16,7 @@ import { mkdtempSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createServer } from "../server.mjs";
+import { runDueSequenceSteps } from "../lib/sequenceRunner.mjs";
 
 const tmpDir = mkdtempSync(join(tmpdir(), "crm-smoke-"));
 const config = {
@@ -25,9 +26,16 @@ const config = {
   meta: { verifyToken: "verify-me", appSecret: "app-secret", pageAccessToken: "page-token", apiVersion: "v21.0" },
   google: { webhookKey: "google-secret" },
   webform: { siteKeys: new Map([["clave-web", "webSantiso"]]), corsOrigin: "*" },
+  smtp: { from: "Santiso Marketing <hola@santiso.test>" },
+  agency: { name: "Santiso Marketing", senderName: "Equipo Santiso", websiteUrl: "https://santiso.test", newsletterUrl: "https://santiso.test/newsletter" },
+  sequence: { checkIntervalMinutes: 5 },
 };
 
 const AUTH = "Basic " + Buffer.from(`${config.auth.user}:${config.auth.pass}`).toString("base64");
+
+// Transporte falso: no manda correos de verdad, solo los apunta aquí.
+const sentEmails = [];
+const fakeTransport = { sendMail: async (msg) => (sentEmails.push(msg), { messageId: `fake-${sentEmails.length}` }) };
 
 // Intercepta las llamadas a la Graph API de Meta para no depender de la red.
 const realFetch = globalThis.fetch;
@@ -64,7 +72,7 @@ async function step(label, fn) {
 }
 
 async function main() {
-  server = createServer(config);
+  server = createServer(config, { transport: fakeTransport });
   await new Promise((resolve) => server.listen(0, resolve));
   const port = server.address().port;
   const base = `http://localhost:${port}`;
@@ -113,6 +121,32 @@ async function main() {
     const json = await res.json();
     assert.ok(json.id);
     webLeadId = json.id;
+  });
+
+  await step("La secuencia manda la confirmación (paso 1) al crear el lead", async () => {
+    // Fuerza el barrido por si el disparo interno (fire-and-forget del propio
+    // handler) todavía no había terminado cuando llegó la respuesta HTTP.
+    await server.crm.dispatchSequence();
+    const correo = sentEmails.find((m) => m.to === "laura@ejemplo.com");
+    assert.ok(correo, "no se mandó el correo de confirmación");
+    assert.match(correo.subject, /Hemos recibido tu solicitud/);
+  });
+
+  await step("No se reenvía la confirmación en un segundo barrido", async () => {
+    const antes = sentEmails.length;
+    await server.crm.dispatchSequence();
+    assert.equal(sentEmails.length, antes);
+  });
+
+  await step("GET /api/leads/:id muestra el paso 1 enviado y el resto pendiente", async () => {
+    const res = await fetch(`${base}/api/leads/${webLeadId}`, { headers: { Authorization: AUTH } });
+    const lead = await res.json();
+    assert.equal(lead.sequence.length, 3);
+    assert.equal(lead.sequence[0].id, "confirmacion");
+    assert.equal(lead.sequence[0].status, "enviado");
+    assert.ok(lead.sequence[0].sentAt);
+    assert.equal(lead.sequence[1].status, "pendiente");
+    assert.equal(lead.sequence[2].status, "pendiente");
   });
 
   await step("POST /webhooks/web-form urlencoded + redirect -> 302", async () => {
@@ -170,12 +204,32 @@ async function main() {
     assert.equal(stats.bySource.google, 1);
   });
 
+  let metaLeadId;
   await step("GET /api/leads?source=meta -> trae el lead normalizado", async () => {
     const res = await fetch(`${base}/api/leads?source=meta`, { headers: { Authorization: AUTH } });
     const { items } = await res.json();
     assert.equal(items.length, 1);
     assert.equal(items[0].contact.name, "Test Meta");
     assert.equal(items[0].contact.email, "metatest@ejemplo.com");
+    metaLeadId = items[0].id;
+  });
+
+  await step("Cancelar la secuencia deja 'confirmacion' tal cual y el resto en 'cancelado'", async () => {
+    await server.crm.dispatchSequence(); // asegura que la confirmación del lead de Meta ya salió
+    const res = await fetch(`${base}/api/leads/${metaLeadId}`, { method: "PATCH", headers: { Authorization: AUTH, "Content-Type": "application/json" }, body: JSON.stringify({ cancelSequence: true }) });
+    assert.equal(res.status, 200);
+    const lead = await res.json();
+    assert.equal(lead.sequence.find((s) => s.id === "confirmacion").status, "enviado");
+    assert.equal(lead.sequence.find((s) => s.id === "web").status, "cancelado");
+    assert.equal(lead.sequence.find((s) => s.id === "newsletter").status, "cancelado");
+  });
+
+  await step("Un barrido muy adelantado manda los pasos con retraso, salvo los cancelados", async () => {
+    const muyFuturo = Date.now() + 10 * 24 * 60 * 60 * 1000; // 10 días vista
+    await runDueSequenceSteps({ store: server.crm.store, transport: fakeTransport, agency: config.agency, from: config.smtp.from, now: muyFuturo });
+    assert.equal(sentEmails.filter((m) => m.to === "laura@ejemplo.com").length, 3); // confirmación + web + newsletter
+    assert.equal(sentEmails.filter((m) => m.to === "metatest@ejemplo.com").length, 1); // solo la confirmación: se canceló el resto
+    assert.equal(sentEmails.filter((m) => m.to === "g@ejemplo.com").length, 3); // el lead de Google no se canceló
   });
 
   await step("PATCH /api/leads/:id status inválido -> 400", async () => {
