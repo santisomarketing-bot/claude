@@ -5,6 +5,14 @@ sueltas de Claude Code, cada una con un objetivo cerrado y entregable. Los
 tics se van marcando aquí para que una sesión nueva sepa por dónde va esto
 sin tener que releer todo el historial.
 
+**Principio que guía todo el roadmap: cero proveedores externos de
+CRM/gestión** (nada de Jira, HubSpot, Salesforce, etc.). El pipeline
+comercial vive entero dentro de este CRM propio — ver "Sin proveedores
+externos, a propósito" en `CRM_LEADS.md`. Infraestructura básica (hosting
+del servidor, el propio Gmail de la agencia para notificar) no cuenta como
+"proveedor externo" en este sentido; ante la duda en una sesión futura,
+preguntar antes de meter una dependencia nueva.
+
 ## Hecho
 
 - [x] **Sesión 0 — Base del CRM.** Ingesta unificada (Meta Ads, Google Ads,
@@ -34,27 +42,22 @@ sin tener que releer todo el historial.
       cuanto entra un lead, para no depender de refrescar el panel. Tamaño:
       pequeño — reutiliza el conector de Gmail ya disponible.
 
-- [ ] **Sesión 3 — Puente a Jira.**
-      Botón "Enviar a Jira" en la ficha del lead que reutiliza
-      `jira-lead-templates.mjs` (`construyeTareaLead`) para crear la tarea
-      con un clic en vez de copiar los datos a mano. Requiere decidir cómo
-      se autentica el servidor contra Jira (API token de Atlassian) ya que
-      el CRM corre fuera de una sesión de Claude.
-
-- [ ] **Sesión 4 — Multiusuario y copias de seguridad.**
+- [ ] **Sesión 3 — Multiusuario y copias de seguridad.**
       Hoy el panel es una única contraseña compartida (`CRM_USER`/`CRM_PASS`)
       y el almacén es un solo JSON sin backup. Si el equipo va a vivir en
-      esto: login por persona + backup automático (cron que copia
-      `leads.json` a Drive o similar).
+      esto: login por persona + backup automático (copia periódica de
+      `leads.json` fuera del propio servidor).
 
-- [ ] **Sesión 5 — Métricas.**
+- [ ] **Sesión 4 — Métricas.**
       Leads por semana/mes y por fuente, tasa de conversión por estado, y
       —si interesa— coste por lead cruzando con el gasto real de Meta/Google
       Ads (ya hay herramientas MCP de Meta Business disponibles para esto).
 
-- [ ] **Sesión 6 (opcional) — Más canales.**
+- [ ] **Sesión 5 (opcional) — Más canales.**
       Enchufar el scanner de LinkedIn (`scan.mjs`) como una fuente más del
-      mismo CRM en vez de su flujo actual por email aparte (`DAILY_LEADS.md`).
+      mismo CRM, sustituyendo su flujo actual por email + Jira
+      (`DAILY_LEADS.md`, `JIRA_TEMPLATES.md`) para que ese pipeline también
+      quede dentro de casa.
 
 ## Cómo retomar
 

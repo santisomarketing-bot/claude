@@ -184,15 +184,16 @@ El servidor es un proceso Node normal (`npm run crm`) que necesita:
 No incluye script de despliegue porque depende de dónde se aloje; el propio
 servidor no asume ninguna plataforma en concreto.
 
-## Relación con el pipeline de Jira
+## Sin proveedores externos, a propósito
 
-El pipeline de leads de LinkedIn ya vuelca en Jira vía `jira-lead-templates.mjs`
-(ver `JIRA_TEMPLATES.md`). Este CRM es la fuente de verdad para Meta/Google/web
-y **hoy no crea tareas de Jira automáticamente** — el dato ya está todo en el
-lead (contacto, campaña, mensaje) para copiarlo a mano si un lead se
-convierte en oportunidad real de venta. Automatizar ese salto (botón
-"Enviar a Jira" en la ficha del lead, reusando `construyeTareaLead`) es una
-ampliación natural cuando convenga, sin tocar el modelo de datos actual.
+Este CRM es la única fuente de verdad para los leads de Meta/Google/web: no
+integra con Jira, HubSpot ni ningún otro CRM/gestor de tareas de terceros, y
+no está previsto que lo haga. El pipeline comercial (estado, notas,
+histórico) vive entero dentro del propio CRM — por eso tiene su propio
+`status` con el mismo vocabulario que ya se usaba en Jira para los leads de
+LinkedIn (`JIRA_TEMPLATES.md`), pero sin depender de Jira para nada. Esa
+plantilla de Jira sigue existiendo solo para el flujo, ya separado, de leads
+de LinkedIn.
 
 ## Datos personales
 
