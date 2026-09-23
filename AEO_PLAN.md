@@ -64,6 +64,11 @@ Automatiza la fase 1 de `GEO_TEMPLATES.md`. Implementado en
 - Criterio de éxito: correr `npm run audit -- --url=cliente.com` sobre un cliente real y obtener
   un informe legible con qué falta (schema, llms.txt, headings, etc.).
 
+**Automatizado sin PC**: corre solo cada semana vía GitHub Actions
+([`ai-stats.yml`](https://github.com/santisomarketing-bot/AEO-core/blob/main/.github/workflows/ai-stats.yml)
+en `AEO-core`, junto con la Sesión 4) y publica al dashboard de la Sesión 8
+(pestaña "Visibilidad IA"). Validado en vivo con Why Not Barbershop.
+
 ### Sesión 2 — Generador de contenido "AI-ready" ✅ hecho
 
 Automatiza la fase 6 (schema.org) y complementa la 4 (crear contenido). Implementado en
@@ -102,13 +107,20 @@ cliente piloto en vez del sitio de prueba.
 - Criterio de éxito: desplegado en un dominio de prueba, `curl -A "GPTBot" ...` devuelve la
   versión optimizada y un navegador normal ve el sitio intacto.
 
-### Sesión 4 — Seguimiento de menciones/citas en motores de IA ✅ hecho (falta probar con API keys reales)
+### Sesión 4 — Seguimiento de menciones/citas en motores de IA ✅ hecho y validado en vivo
 
 Automatiza la fase 9. Implementado en
 [`AEO-core/ai-mentions.mjs`](https://github.com/santisomarketing-bot/AEO-core/blob/main/ai-mentions.mjs)
 — ver [`AI_MENTIONS.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/AI_MENTIONS.md).
-La lógica de detección de mención/sentimiento/citas está probada con respuestas sintéticas; falta
-correrlo con API keys reales de al menos un motor (no hay ninguna cargada en esta sesión).
+
+**Automatizado sin PC, corriendo en vivo**: junto con la Sesión 1, corre cada semana vía GitHub
+Actions ([`ai-stats.yml`](https://github.com/santisomarketing-bot/AEO-core/blob/main/.github/workflows/ai-stats.yml))
+con las API keys como secrets del repo — a diferencia de Maps (Sesión 8), esto es solo HTTP y no
+necesita ninguna PC prendida. Validado con Why Not Barbershop: los motores con API key configurada
+devuelven datos reales (mención/posición/sentimiento/citas), los que no tienen key quedan
+marcados como `sin_api_key` en vez de fallar. Publica a `docs/data/ai/`, leído por la pestaña
+"Visibilidad IA" del dashboard de la Sesión 8 — de momento esa pestaña queda pausada a pedido del
+cliente hasta terminar de configurar el resto de las API keys, aunque el mecanismo ya funciona.
 
 - Script `ai-mentions.mjs` que, dado un cliente + lista de prompts de marca (p. ej. "mejor
   agencia de marketing en [ciudad]", "alternativas a [cliente]"):
@@ -189,7 +201,16 @@ Programador de tareas de Windows hace, sin intervención manual: 1) corre el hea
 el CSV a la carpeta de Drive del cliente (`geo CSVs/`), 3) copia el CSV a `docs/data/<cliente>.csv`
 y hace `git push` — el dashboard de GitHub Pages sirve la versión nueva a los pocos minutos. Para
 sumar un cliente nuevo: una línea en `docs/data/manifest.json` + su propio `.bat` (mismo patrón,
-coordenadas y `--target` distintos).
+coordenadas y `--target` distintos). Runbook completo, con los errores reales ya resueltos:
+[`ONBOARDING_CLIENTE.md`](https://github.com/santisomarketing-bot/AEO-core/blob/main/ONBOARDING_CLIENTE.md).
+
+**Estado real (22-23/09/2026)**: 4 sucursales de Why Not en producción con datos reales — Paris,
+Gràcia, Balmes y Senillosa, todas visibles en el dashboard. Detectado y corregido un problema real
+de la tarea programada: la config por defecto de `schtasks` ("Solo interactivo" + detener en
+batería) hizo que la tarea de Paris no se disparara sola la primera semana (la PC tenía que estar
+desbloqueada y enchufada justo a esa hora) — la solución (ejecutar sin sesión iniciada + sin
+restricción de batería) ya quedó documentada en `SCHEDULED_SCANS.md` y `ONBOARDING_CLIENTE.md`, y
+aplicada en las tareas nuevas.
 
 - **Sí es posible**: mismo patrón que `scan.mjs` (Playwright + tu propia sesión de navegador, sin
   API de pago). En vez de hacerlo a mano ficha por ficha, un script recorre una lista de
