@@ -93,7 +93,8 @@
   // ───────────────────────────────────────── [LANG] detección por navegador + selector manual
   // Reglas: 1) la elección MANUAL (clic en ES/EN/FR/DE) manda siempre y se recuerda.
   //         2) sin elección guardada, en la primera visita se usa el idioma del navegador: si hay versión en ese idioma se redirige a la página equivalente.
-  //         3) la redirección automática ocurre una sola vez por visitante; después solo se ofrece un aviso (cambiar / mantener).
+  //         3) la redirección automática ocurre una sola vez por visitante y SOLO desde una página en español (la versión por defecto, sin prefijo);
+  //            quien llega a /en/, /fr/ o /de/ ya ha elegido idioma (enlace compartido, buscador): ahí solo se ofrece un aviso (cambiar / mantener).
   var SITE_LANGS = ['es', 'en', 'fr', 'de'];
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
   function browserLang() { var arr = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'es']); for (var i = 0; i < arr.length; i++) { var c = String(arr[i]).toLowerCase().slice(0, 2); if (SITE_LANGS.indexOf(c) >= 0) return c; } return null; }
@@ -107,7 +108,7 @@
     if (!bl) return;
     if (!store('tv_lang_auto_done')) {                                                  // primera visita: redirección automática (una vez)
       store('tv_lang_auto_done', '1'); store('tv_lang', bl); store('tv_lang_src', 'auto');
-      if (bl !== lang && window.TV_PATHS.home[bl]) { location.replace(window.TV_PATHS.home[bl]); return; }
+      if (lang === 'es' && bl !== lang && window.TV_PATHS.home[bl]) { location.replace(window.TV_PATHS.home[bl]); return; }
     }
     if (bl !== lang && !sessionStorage.getItem('tv_lang_dismiss')) offer(bl);
   })();
@@ -115,6 +116,7 @@
     var bar = $('#lang-banner'); if (!bar || !window.TV_PATHS.home[target]) return;
     var d = (TV.i18n && TV.i18n[target]) || {};
     $('[data-lang-msg]', bar).textContent = (d.lang_banner || '') + ' ';
+    var keep = $('[data-lang-keep]', bar); if (d.lang_dismiss) keep.textContent = d.lang_dismiss;      // todo el aviso en el idioma de la persona, no en el de la página
     var go = $('[data-lang-go]', bar); go.textContent = (d.lang_switch || 'OK') + ' → ' + target.toUpperCase(); go.href = window.TV_PATHS.home[target];
     go.addEventListener('click', function () { store('tv_lang', target); store('tv_lang_src', 'manual'); });
     $('[data-lang-keep]', bar).addEventListener('click', function () { try { sessionStorage.setItem('tv_lang_dismiss', '1'); } catch (e) { /* ignorar */ } store('tv_lang', lang); store('tv_lang_src', 'manual'); bar.hidden = true; });

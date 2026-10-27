@@ -10,8 +10,8 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 import fs from 'node:fs';
 import vm from 'node:vm';
-import http from 'node:http';
 import { execFileSync } from 'node:child_process';
+import { serve } from './lib/static-server.mjs';
 import { fileURLToPath } from 'node:url';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -52,15 +52,8 @@ expected.forEach((l) => console.log(`  ${l.ref}\t${l.name}\t×${l.qty}\t${l.unit
 // Por defecto se prueba por http (como en producción). Con --file se usa file:// (doble clic): el Chromium de pruebas pierde a veces
 // localStorage entre ficheros file:// (no ocurre por http; sí ocurre en una página de 2 líneas) → ahí la prueba puede fallar sin que sea un fallo de la web.
 const useFile = process.argv.includes('--file');
-const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.pdf': 'application/pdf', '.woff2': 'font/woff2', '.xlsx': 'application/octet-stream', '.csv': 'text/csv' };
-const server = useFile ? null : http.createServer((req, res) => {
-  let u = decodeURIComponent(req.url.split('?')[0]); if (u.endsWith('/')) u += 'index.html';
-  const fp = path.join(DIST, u);
-  if (!fp.startsWith(DIST) || !fs.existsSync(fp) || fs.statSync(fp).isDirectory()) { res.writeHead(404); return res.end('404'); }
-  res.writeHead(200, { 'Content-Type': MIME[path.extname(fp)] || 'application/octet-stream' }); fs.createReadStream(fp).pipe(res);
-});
-if (server) await new Promise((r) => server.listen(0, '127.0.0.1', r));
-const BASE = server ? `http://127.0.0.1:${server.address().port}` : null;
+const served = useFile ? null : await serve(DIST);
+const server = served && served.server, BASE = served && served.base;
 const browser = await chromium.launch();
 let fails = 0;
 const ok = (c, m) => { if (!c) { fails++; console.error('  ✗ ' + m); } else console.log('  ✓ ' + m); };
