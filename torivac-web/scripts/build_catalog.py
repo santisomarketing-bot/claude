@@ -138,10 +138,11 @@ def _best_per_path(records):
         if not p:
             continue
         stem = Path(r["file"]).stem
-        # un ES publicado también bajo /en/ (canónica ES) no es una página EN: se descarta
         fetched = "en" if stem.startswith("en__") else "fr" if stem.startswith("fr__") else "de" if stem.startswith("de__") else "es"
         if fetched != lang_of_path(p) and stem not in ("en", "fr", "de"):
-            continue
+            if lang_of_path(p) == "es":
+                continue                      # contenido ES publicado también bajo /en/ (canónica ES): no es una página EN
+            p = "/" + stem.replace("__", "/") + "/"   # canónica apuntando a OTRO idioma no-ES (error de la web original): manda la URL real
         score = (stem == _expected_stem(p) or stem in ("en", "fr", "de", "home"), r.get("text_chars", 0))
         if p not in best or score > best[p][0]:
             best[p] = (score, r)
@@ -166,6 +167,30 @@ def alt_of(path, lang):
 
 
 # ----------------------------------------------------------------------------- [CATS]
+rest_cat_by_id = {l: {int(c["id"]): c for c in rest_cat[l]} for l in LANGS}
+
+
+def cooccurrence():
+    """ES cat id → {cat id en idioma: peso}, por los productos traducidos que comparten (se desempata luego por coherencia de padres)"""
+    out = {}
+    for l in ("en", "fr", "de"):
+        cnt = defaultdict(lambda: defaultdict(int))
+        for pid, pm in pmap.items():
+            tr = pm["translations"].get(l)
+            if not tr:
+                continue
+            ces = [c["id"] for c in store["es"][pid]["categories"]]
+            cl = [c["id"] for c in store[l][tr["id"]]["categories"]]
+            for a in ces:
+                for b in cl:
+                    cnt[a][b] += 1 if len(ces) == len(cl) else 0.5
+        out[l] = {a: dict(d) for a, d in cnt.items()}
+    return out
+
+
+COOC = cooccurrence()
+
+
 def build_categories():
     es = rest_cat["es"]
     store_cat = {c["id"]: c for c in jl(RAW / "store/categories.es.json", [])}
@@ -187,7 +212,25 @@ def build_categories():
         rec["image"] = img_ref(sim) if sim else None
         yo = (c.get("yoast_head_json") or {})
         rec["seo"] = {"es": {"title": htmllib.unescape(yo.get("title") or "") or None, "description": htmllib.unescape(yo.get("description") or "") or None}}
+        for l in ("en", "fr", "de"):
+            rec.setdefault("ids", {})[l] = int(t["id"]) if (t := (by_link[l].get(alt_of(path, l)) if alt_of(path, l) else None)) else None
         out.append(rec)
+    # segundo pase: categorías que hreflang no resuelve (su URL canónica apunta a un producto) → coincidencia de productos traducidos + coherencia de padres
+    byid = {r["id"]: r for r in out}
+    depth = lambda r: 0 if not r["parent"] else 1 + depth(byid[r["parent"]]) if r["parent"] in byid else 0
+    for r in sorted(out, key=depth):
+        for l in ("en", "fr", "de"):
+            if r["name"][l] is not None:
+                continue
+            want_parent = 0 if not r["parent"] else (byid[r["parent"]]["ids"].get(l) if r["parent"] in byid else None)
+            cands = {b: w for b, w in COOC[l].get(r["id"], {}).items() if b in rest_cat_by_id[l] and int(rest_cat_by_id[l][b]["parent"]) == (want_parent or 0) and want_parent is not None}
+            best = sorted(cands.items(), key=lambda kv: -kv[1])
+            if best and (len(best) == 1 or best[0][1] > best[1][1]):
+                t = rest_cat_by_id[l][best[0][0]]
+                r["slug"][l], r["name"][l], r["path"][l] = t["slug"], htmllib.unescape(t["name"]), pth(t["link"])
+                r["description"][l] = blocks_from_html(t.get("description") or "")
+                r["ids"][l] = int(t["id"])
+                r.setdefault("matched_by", {})[l] = "product-cooccurrence"
     return out
 
 

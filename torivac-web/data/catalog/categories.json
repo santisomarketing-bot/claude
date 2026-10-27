@@ -60,6 +60,11 @@
     "title": "Accesorios de regulación - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 449,
+   "fr": 546,
+   "de": 555
   }
  },
  {
@@ -68,27 +73,45 @@
   "count": 1,
   "slug": {
    "es": "aros-con-flecha",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "hoops-with-arrow",
+   "fr": "cerceaux-avec-fleche",
+   "de": "hoepels-met-pijl"
   },
   "name": {
    "es": "Aros con flecha",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Arrow hoops",
+   "fr": "Cerceaux à flèches",
+   "de": "Pfeil-Reifen"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/aros-con-flecha/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/hoops-with-arrow/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/cerceaux-avec-fleche/",
+   "de": "/de/categoria-producto/bedieningsknoppen/hoepels-met-pijl/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Se adaptan a la base de los botones de la serie BO de forma que solamente sobresale la punta indicadora y se utilizan para identificar la posición del botón. Disponibles para toda gama de botones."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "They adapt to the base of the BO series buttons so that only the indicator tip protrudes and are used to identify the position of the button. Available for all range of buttons."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Ils s'insèrent dans la base des boutons de la série BO de manière à ce que seule la pointe de l'indicateur dépasse et sont utilisés pour identifier la position du bouton. Disponibles pour toutes les gammes de boutons."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Sie passen in den Sockel der Knöpfe der BO-Serie, so dass nur die Spitze des Indikators herausragt. Sie werden verwendet, um die Position des Knopfes zu identifizieren. Erhältlich für alle Knopfserien."
     }
    ]
   },
@@ -105,6 +128,16 @@
     "title": "Aros con flecha - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 658,
+   "fr": 659,
+   "de": 660
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -113,27 +146,45 @@
   "count": 1,
   "slug": {
    "es": "bancos-de-carga",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "load-banks",
+   "fr": "bancs-de-charge",
+   "de": "ladebanke"
   },
   "name": {
    "es": "Bancos de carga",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Load banks",
+   "fr": "Bancs de charge",
+   "de": "Ladebänke"
   },
   "path": {
    "es": "/categoria-producto/resistencias/bancos-de-carga/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/resistors-load-banks/load-banks/",
+   "fr": "/fr/categoria-producto/resistances-bancs-de-charge/bancs-de-charge/",
+   "de": "/de/categoria-producto/widerstande-lastbanke/ladebanke/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Como fabricante de elementos resistivos, podemos suministrar cargas resistivas a fabricantes de bancos de carga y bancos de descarga: Fabricados con diferentes tipos de elementos resistivos en función de las aplicaciones, y de los requisitos de potencia, podemos proporcionarle bancos de carga con una gran capacidad de disipación y una excelente resistencia a los choques térmicos y a las sobrecargas, especialmente recomendados para potencias pequeñas (hasta 30 kW) y para potencias más elevadas, cargas que ofrecen un bajo coeficiente de inducción, y una gran capacidad de absorción de energía."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "As a manufacturer of resistive elements, we can supply resistive loads to load bank and dump bank manufacturers: Manufactured with different types of resistive elements depending on the applications and power requirements, we can provide load banks with high dissipation capacity and excellent resistance to thermal shocks and overloads, especially recommended for small power ratings (up to 30 kW) and for higher power ratings, loads that offer a low induction coefficient, and a high energy absorption capacity."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "En tant que fabricant d'éléments résistifs, nous pouvons fournir des charges résistives aux fabricants de bancs de charge et de bancs de décharge : fabriqués avec différents types d'éléments résistifs en fonction des applications et des exigences de puissance, nous pouvons fournir des bancs de charge ayant une capacité de dissipation élevée et une excellente résistance aux chocs thermiques et aux surcharges, particulièrement recommandés pour les petites puissances (jusqu'à 30 kW) et, pour les puissances plus élevées, des charges offrant un faible coefficient d'induction et une grande capacité d'absorption d'énergie."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Als Hersteller von Widerstandselementen können wir Herstellern von Lastbänken und Dumpbänken Widerstandslasten liefern: Je nach Anwendung und Leistungsanforderungen können wir Lastbänke mit hoher Verlustleistung und hervorragender Widerstandsfähigkeit gegen thermische Schocks und Überlastungen liefern, die besonders für kleine Leistungen (bis zu 30 kW) und für höhere Leistungen, Lasten mit niedrigem Induktionskoeffizienten und hoher Energieabsorptionskapazität empfohlen werden."
     }
    ]
   },
@@ -150,6 +201,16 @@
     "title": "Bancos de carga - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 508,
+   "fr": 506,
+   "de": 510
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -214,6 +275,11 @@
     "title": "Bobinas encapsuladas - Torivac",
     "description": "¿Tu negocio necesita bobinas encapsuladas? Confía en un especialista con más de 60 años de experiencia en el sector de la energía."
    }
+  },
+  "ids": {
+   "en": 515,
+   "fr": 512,
+   "de": 518
   }
  },
  {
@@ -277,6 +343,11 @@
     "title": "Botones de mando - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 569,
+   "fr": 570,
+   "de": 571
   }
  },
  {
@@ -285,27 +356,45 @@
   "count": 1,
   "slug": {
    "es": "botones-de-mando-serie-bm-mate",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "bm-series-control-buttons-matte",
+   "fr": "boutons-de-commande-de-la-serie-bm-mat",
+   "de": "bm-serie-bedieningsknoppen-mat"
   },
   "name": {
    "es": "Botones de mando serie BM (Mate)",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "BM series control buttons (Matte)",
+   "fr": "Boutons de commande série BM (Matt)",
+   "de": "Bedientasten Serie BM (Matt)"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/botones-de-mando-serie-bm-mate/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/bm-series-control-buttons-matte/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bm-mat/",
+   "de": "/de/categoria-producto/bedieningsknoppen/bm-serie-bedieningsknoppen-mat/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Se fabrican con los mismos materiales que la serie BO pero con aspecto mate. El perfil es más alto y cilíndrico que los de la serie BO y la forma externa es ligeramente distinta. Se complementan con tapas mate y todos los demás accesorios de la serie BO."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "They are manufactured with the same materials as the BO series but with a matte appearance. The profile is taller and more cylindrical than those of the BO series and the external shape is slightly different. They are complemented by matte covers and all other BO series accessories."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Ils sont fabriqués avec les mêmes matériaux que ceux de la série BO, mais avec un aspect mat. Le profil est plus haut et plus cylindrique que celui de la série BO et la forme extérieure est légèrement différente. Ils sont complétés par des couvercles mats et tous les autres accessoires de la série BO."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Sie bestehen aus denselben Materialien wie die BO-Serie, haben aber ein mattes Aussehen. Das Profil ist höher und zylindrischer als bei der BO-Serie und die äußere Form ist etwas anders. Sie werden durch matte Abdeckungen und alle anderen Accessoires der BO-Serie ergänzt."
     }
    ]
   },
@@ -322,6 +411,16 @@
     "title": "Botones de mando serie BM (Mate) - Torivac",
     "description": "Dentro de los botones de mando, entre nuestro catálogo destaca el botón serie BM en acabado mate. ¡Echa un vistazo y encuentra el tuyo!"
    }
+  },
+  "ids": {
+   "en": 661,
+   "fr": 662,
+   "de": 663
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -330,27 +429,45 @@
   "count": 1,
   "slug": {
    "es": "botones-de-mando-serie-bo-brillante",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "bo-series-control-buttons-glossy",
+   "fr": "boutons-de-commande-de-la-serie-bo-brillants",
+   "de": "bo-serie-bedieningsknoppen-glanzend"
   },
   "name": {
    "es": "Botones de mando serie BO (brillante)",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "BO series control buttons (bright)",
+   "fr": "Boutons de commande de la série BO (brillants)",
+   "de": "Bedientasten der BO-Serie (glänzend)"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-brillante/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/bo-series-control-buttons-glossy/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-brillants/",
+   "de": "/de/categoria-producto/bedieningsknoppen/bo-serie-bedieningsknoppen-glanzend/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "En esta serie se utiliza el sistema de fijación central por pinza, sin tornillos, que permite un alto poder de apriete (8-20 kp/cm). El cuerpo esta inyectado en poliamida 6 y la pinza y el casquillo insertado son de latón."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "This series uses the central clamping system by clamp, without screws, which allows a high tightening power (8-20 kp/cm). The body is injected in polyamide 6 and the clamp and the inserted bushing are made of brass."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Cette série utilise le système de fixation par collier central, sans vis, qui permet un pouvoir de serrage élevé (8-20 kp/cm). Le corps est injecté en polyamide 6 et le collier ainsi que la douille insérée sont en laiton."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Diese Serie verwendet das System der Zentralbefestigung ohne Schrauben, das eine hohe Anzugskraft (8-20 kp/cm) ermöglicht. Der Körper ist aus Polyamid 6 gespritzt und die Klemme und die eingesetzte Buchse sind aus Messing."
     }
    ]
   },
@@ -368,6 +485,16 @@
     "title": "Botones de mando serie BO (brillante) - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 664,
+   "fr": 665,
+   "de": 666
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -376,27 +503,45 @@
   "count": 1,
   "slug": {
    "es": "botones-de-mando-serie-bo-con-linea",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "bo-series-control-buttons-with-line",
+   "fr": "boutons-de-commande-de-la-serie-bo-avec-ligne",
+   "de": "bo-serie-bedieningsknoppen-met-lijn"
   },
   "name": {
    "es": "Botones de mando Serie BO con linea",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "BO Series control buttons with line",
+   "fr": "Boutons de commande BO série avec ligne",
+   "de": "Steuertasten BO Serie mit Linie"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-con-linea/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/bo-series-control-buttons-with-line/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-avec-ligne/",
+   "de": "/de/categoria-producto/bedieningsknoppen/bo-serie-bedieningsknoppen-met-lijn/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Son los mismos botones que la serie BO pero con una línea lateral para indicar su posición."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "These are the same buttons as the BO series but with a side line to indicate their position."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Il s'agit des mêmes boutons que ceux de la série BO, mais avec une ligne latérale indiquant leur position."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Dies sind die gleichen Tasten wie bei der BO-Serie, aber mit einer Seitenlinie, die ihre Position anzeigt."
     }
    ]
   },
@@ -413,6 +558,16 @@
     "title": "Botones de mando Serie BO con linea - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 667,
+   "fr": 668,
+   "de": 669
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -488,6 +643,11 @@
     "title": "Botones de mando y accesorios - Torivac",
     "description": "Descubre nuestra amplia variedad en botones de mando y accesorios. Todo un mundo de componentes eléctricos para tu negocio."
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -496,27 +656,45 @@
   "count": 1,
   "slug": {
    "es": "caratulas-graduadas",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "graduated-covers",
+   "fr": "couvertures-graduees",
+   "de": "gegradueerde-covers"
   },
   "name": {
    "es": "Caratulas graduadas",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Graded covers",
+   "fr": "Couvertures classées",
+   "de": "Abgestufte Bezüge"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/caratulas-graduadas/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/graduated-covers/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/couvertures-graduees/",
+   "de": "/de/categoria-producto/bedieningsknoppen/gegradueerde-covers/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Fabricadas en aluminio anodizado, para reostatos y variadores de tensión.\n\nImpresas en voltios o porcentajes, para diferentes ángulos de giro."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Made of anodized aluminum, for rheostats and voltage variators.\n\nPrinted in volts or percentages, for different rotation angles."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "En aluminium anodisé, pour rhéostats et variateurs de tension.\n\nImprimé en volts ou en pourcentages, pour différents angles de rotation."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Aus eloxiertem Aluminium, für Rheostate und Spannungsvariatoren.\n\nAufgedruckt in Volt oder Prozent, für verschiedene Drehwinkel."
     }
    ]
   },
@@ -533,6 +711,16 @@
     "title": "Caratulas graduadas - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 670,
+   "fr": 671,
+   "de": 672
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -541,27 +729,45 @@
   "count": 1,
   "slug": {
    "es": "cementadas",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "cemented",
+   "fr": "cimente",
+   "de": "zementiert"
   },
   "name": {
    "es": "Cementadas",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Cemented",
+   "fr": "Cimenté",
+   "de": "Zementiert"
   },
   "path": {
    "es": "/categoria-producto/resistencias/cementadas/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/resistors-load-banks/cemented/",
+   "fr": "/fr/categoria-producto/resistances-bancs-de-charge/cimente/",
+   "de": "/de/categoria-producto/widerstande-lastbanke/zementiert/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Nuestras de resistencias de alta potencia cementadas se fabrican con hilo de aleación resistiva de alta calidad. El valor ohmico varia poco con la subida en temperatura del elemento.\n\nSon resistencias bobinadas compuestas por un elemento resistivo enrollado sobre un núcleo tubular cerámico utilizado como soporte y recubierto de una. resina, para asegurar una alta capacidad de disipación y una excelente resistencia al choque térmico y a la sobrecarga. Se trata de un elemento abierto de baja inductancia que permite muy bajos valores ohmicos."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Our high power cemented resistors are manufactured from high quality resistive alloy wire. The ohmic value varies little with the temperature rise of the element. \n\nThese are wound resistors composed of a resistive element wound on a ceramic tubular core used as a support and coated with a resin to ensure high dissipation capacity and excellent resistance to thermal shock and overload. It is a low inductance open element that allows very low ohmic values."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Nos résistances cimentées de haute puissance sont fabriquées à partir d'un fil d'alliage résistif de haute qualité. La valeur ohmique varie peu avec l'élévation de température de l'élément. \n\nIl s'agit de résistances bobinées composées d'un élément résistif enroulé sur un noyau tubulaire en céramique utilisé comme support et recouvert d'une résine pour assurer une capacité de dissipation élevée et une excellente résistance aux chocs thermiques et aux surcharges. Il s'agit d'un élément ouvert avec une faible inductance qui permet des valeurs ohmiques très basses."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Unsere zementierten Hochleistungswiderstände werden aus hochwertigen Widerstandsdrähten hergestellt. Der ohmsche Wert variiert nur wenig mit dem Temperaturanstieg des Elements. \n\nEs handelt sich um gewickelte Widerstände, die aus einem Widerstandselement bestehen, das auf einen röhrenförmigen Keramikkern gewickelt ist, der als Träger dient und mit einem Harz beschichtet ist, um eine hohe Verlustleistung und eine ausgezeichnete Beständigkeit gegen Temperaturschock und Überlast zu gewährleisten. Es handelt sich um ein offenes Element mit niedriger Induktivität, das sehr niedrige Ohmwerte ermöglicht."
     }
    ]
   },
@@ -578,6 +784,16 @@
     "title": "Cementadas - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 482,
+   "fr": 480,
+   "de": 484
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -586,27 +802,45 @@
   "count": 1,
   "slug": {
    "es": "choques",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "chokes-inductances-toroidal-reactances",
+   "fr": "bobines-darret-inductances-reactances-toroidales",
+   "de": "smoorspoelen-inductanties-toroidale-reactanties"
   },
   "name": {
    "es": "Choques | Inductancias | Reactancias toroidales",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Chokes | Inductances | Toroidal Reactances",
+   "fr": "Inductances | Réactances toroïdales",
+   "de": "Drosseln | Induktivitäten | Ringkerndrosseln"
   },
   "path": {
    "es": "/categoria-producto/choques/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/chokes-inductances-toroidal-reactances/",
+   "fr": "/fr/categoria-producto/bobines-darret-inductances-reactances-toroidales/",
+   "de": "/de/categoria-producto/smoorspoelen-inductanties-toroidale-reactanties/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Un choque es un inductor diseñado para tener una reactancia muy alta a una frecuencia o rango de frecuencias determinado. Se utiliza bien para impedir el paso de corriente alterna de una parte a otra de un circuito, permitiendo al mismo tiempo el paso de corriente continua, bien para impedir el paso de corriente en modo común, permitiendo al mismo tiempo el paso de corriente en modo diferencial, por lo que actúan como filtros."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "A choke is an inductor designed to have very high reactance at a specific frequency or frequency range. It is used either to block alternating current from one part of a circuit to another while allowing direct current, or to block common-mode current while allowing differential-mode current, thus acting as a filter."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Une self est un inducteur conçu pour avoir une réactance très élevée à une fréquence ou une gamme de fréquences donnée. Ils sont utilisés soit pour empêcher le passage du courant alternatif d'une partie d'un circuit à l'autre, tout en laissant passer le courant continu, soit pour empêcher le passage du courant de mode commun, tout en laissant passer le courant de mode différentiel, agissant ainsi comme des filtres."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Eine Drossel ist eine Spule, die bei einer bestimmten Frequenz oder einem bestimmten Frequenzbereich eine sehr hohe Reaktanz aufweist. Sie werden entweder verwendet, um den Durchgang von Wechselstrom von einem Teil eines Stromkreises zu einem anderen zu verhindern, während Gleichstrom durchgelassen wird, oder um den Durchgang von Gleichtaktstrom zu verhindern, während Differenzstrom durchgelassen wird, und wirken somit als Filter."
     }
    ]
   },
@@ -624,6 +858,16 @@
     "title": "Choques | Inductancias | Reactancias toroidales toroidales - Torivac",
     "description": "¿Los mejores choques toroidales? Contamos con más de 60 años de experiencia en el sector de la energía. Proyectos 100% personalizados"
    }
+  },
+  "ids": {
+   "en": 572,
+   "fr": 573,
+   "de": 574
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -661,6 +905,11 @@
     "title": "Comunicación MODBUS - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 693,
+   "fr": 694,
+   "de": 695
   }
  },
  {
@@ -724,6 +973,11 @@
     "title": "Equipos electrónicos de control industrial - Torivac",
     "description": "En Torivac fabricamos y distribuimos todo tipo de equipos electrónicos de control industrial. Echa un vistazo a nuestro catálogo."
    }
+  },
+  "ids": {
+   "en": 493,
+   "fr": 490,
+   "de": 554
   }
  },
  {
@@ -758,6 +1012,11 @@
     "title": "Controlador 0-10VDC - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -766,27 +1025,45 @@
   "count": 0,
   "slug": {
    "es": "convertidores",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "converters",
+   "fr": "convertisseurs",
+   "de": "konverter"
   },
   "name": {
    "es": "Convertidores",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Converters",
+   "fr": "Convertisseurs",
+   "de": "Konverter"
   },
   "path": {
    "es": "/categoria-producto/electronica/convertidores/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/electronic-equipment/converters/",
+   "fr": "/fr/categoria-producto/equipements-electroniques/convertisseurs/",
+   "de": "/de/categoria-producto/elektronische-ausrustung/konverter/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Un desarrollo de más de 3 años nos ha llevado a conseguir una fuente de alimentación variable en tensión y frecuencia en potencias que oscila entre 25-300KVA. Nuestro convertidor puede suministrar una red desde 16Hz hasta 200Hz, con una resolución de 0.1Hz, y una tensión de salida variable en directo de 0-240VAC en monofásico, y de 0- 440VAC en trifásico. El equipo incluye conexión ethernet, visualizador de todos los parámetros de salida y entrada, pantalla táctil, armario IP20, ventilación forzada (&gt;50dB a 1m)."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "A development of more than 3 years has led us to achieve a power supply variable in voltage and frequency in powers ranging from 25-300KVA. Our converter can supply a network from 16Hz to 200Hz, with a resolution of 0.1Hz, and a live variable output voltage of 0-240VAC in single-phase, and 0- 440VAC in three-phase. The equipment includes ethernet connection, display of all output and input parameters, touch screen, IP20 cabinet, forced ventilation (&gt;50dB at 1m)."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Un développement de plus de 3 ans nous a permis de réaliser une alimentation à tension et fréquence variables dans des puissances allant de 25 à 300KVA. Notre convertisseur peut alimenter un réseau de 16Hz à 200Hz, avec une résolution de 0,1Hz, et une tension de sortie variable en direct de 0-240VAC en monophasé, et de 0- 440VAC en triphasé. L'unité comprend une connexion ethernet, l'affichage de tous les paramètres d'entrée et de sortie, un écran tactile, un boîtier IP20, une ventilation forcée (&gt;50dB à 1m)."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Nach einer Entwicklungszeit von mehr als 3 Jahren haben wir eine Stromversorgung mit variabler Spannung und Frequenz in einem Leistungsbereich von 25-300KVA erreicht. Unser Konverter kann ein Netz von 16Hz bis 200Hz mit einer Auflösung von 0,1Hz und einer variablen Ausgangsspannung von 0-240VAC bei einphasigen und 0- 440VAC bei dreiphasigen Netzen versorgen. Das Gerät verfügt über einen Ethernet-Anschluss, eine Anzeige aller Eingangs- und Ausgangsparameter, einen Touchscreen, ein IP20-Gehäuse und eine Zwangsbelüftung (&gt;50dB in 1m Entfernung)."
     }
    ]
   },
@@ -803,6 +1080,16 @@
     "title": "Convertidores - Torivac",
     "description": "La más amplia gama de convertidores. Confía en un especialista con más de 60 años de experiencia en el sector de la energía."
    }
+  },
+  "ids": {
+   "en": 503,
+   "fr": 502,
+   "de": 501
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -811,27 +1098,45 @@
   "count": 1,
   "slug": {
    "es": "cuadradas",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "square",
+   "fr": "carre",
+   "de": "vierkant"
   },
   "name": {
    "es": "Cuadradas",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Squares",
+   "fr": "Carrés",
+   "de": "Quadrate"
   },
   "path": {
    "es": "/categoria-producto/bobinas-encapsuladas/cuadradas/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/encapsulated-coils/square/",
+   "fr": "/fr/categoria-producto/bobines-encapsulees/carre/",
+   "de": "/de/categoria-producto/gekapselte-spulen/vierkant/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Las bobinas para electroimanes Torivac están fabricadas con materiales de alta calidad, diseñadas para garantizar un rendimiento confiable incluso en entornos industriales exigentes.\nCada unidad se produce bajo estrictos controles de aislamiento y encapsulado, lo que asegura una excelente rigidez dieléctrica y una larga vida útil."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Torivac electromagnet coils are manufactured with high quality materials, designed to ensure reliable performance even in demanding industrial environments.\nEach unit is produced under strict insulation and encapsulation controls, ensuring excellent dielectric strength and long service life."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les bobines d'électroaimants Torivac sont fabriquées à partir de matériaux de haute qualité, conçus pour assurer des performances fiables même dans des environnements industriels exigeants.\nChaque unité est produite sous des contrôles stricts d'isolation et d'empotage, assurant une excellente rigidité diélectrique et une longue durée de vie."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Torivac Elektromagnetspulen werden aus hochwertigen Materialien hergestellt, die eine zuverlässige Leistung auch in anspruchsvollen Industrieumgebungen gewährleisten.\nJede Einheit wird unter strengen Isolations- und Vergusskontrollen hergestellt, die eine ausgezeichnete Durchschlagsfestigkeit und lange Lebensdauer gewährleisten."
     }
    ]
   },
@@ -849,6 +1154,16 @@
     "title": "Cuadradas - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 578,
+   "fr": 579,
+   "de": 580
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -888,6 +1203,11 @@
     "title": "Cuba de aceite - Torivac",
     "description": "Este tipo de instalaciones, de variadores de tensión sumergidos en aceite, es recomendable cuando se instalan en atmósferas muy corrosivas."
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -896,27 +1216,45 @@
   "count": 1,
   "slug": {
    "es": "cubretercas",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "covers",
+   "fr": "couvertures",
+   "de": "omslagen"
   },
   "name": {
    "es": "Cubretercas",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Casing covers",
+   "fr": "Couvercles de boîtier",
+   "de": "Gehäuseabdeckungen"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/cubretercas/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/covers/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/couvertures/",
+   "de": "/de/categoria-producto/bedieningsknoppen/omslagen/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Diseñadas como complemento necesario para cubrir las tuercas de los potenciómetros en los que se utilizan pequeños botones de 10 y 15mm. Pueden ser lisas o con línea de referencia.\n\nColores: negro y gris. Para otros colores consultar cantidad.\n\nPara pedidos indicar el tipo, color y si llevan línea."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Designed as a necessary complement to cover potentiometer nuts where small 10 and 15mm knobs are used. They can be smooth or with a reference line.\n\nColors: black and gray. For other colors, please consult quantity.\n\nFor orders, please indicate the type, color and if they are lined."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Conçus comme un complément nécessaire pour couvrir les écrous de potentiomètre lorsque de petits boutons de 10 et 15 mm sont utilisés. Ils peuvent être simples ou avec ligne de référence. \n\nCouleurs : noir et gris. Pour d'autres couleurs, veuillez consulter la quantité. \n\nPour les commandes, veuillez indiquer le type, la couleur et si elles sont doublées."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Entwickelt als notwendige Ergänzung zur Abdeckung von Potentiometermuttern, wenn kleine 10 und 15mm Knöpfe verwendet werden. Sie können glatt oder mit Referenzlinie sein. \n\nFarben: Schwarz und Grau. Für andere Farben fragen Sie bitte nach der Menge. \n\nBitte geben Sie bei Bestellungen den Typ, die Farbe und ob sie gefüttert sind, an."
     }
    ]
   },
@@ -933,6 +1271,16 @@
     "title": "Cubretercas - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 673,
+   "fr": 674,
+   "de": 675
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -941,27 +1289,45 @@
   "count": 1,
   "slug": {
    "es": "discos-flecha",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "arrow-discs",
+   "fr": "disques-fleches",
+   "de": "pijlschijven"
   },
   "name": {
    "es": "Discos Flecha",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Arrow Discs",
+   "fr": "Disques Arrow",
+   "de": "Pfeil-Scheiben"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/discos-flecha/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/arrow-discs/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/disques-fleches/",
+   "de": "/de/categoria-producto/bedieningsknoppen/pijlschijven/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Aplicables a la base de los botones de la serie BO, para identificar la posición del botón sobre las carátulas o fondos serigrafiados.\n\nColores: Negro, Gris y Transparente."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Applicable to the base of the BO series buttons, to identify the position of the button on the covers or screen-printed backgrounds.\n\nColors: Black, Gray and Transparent."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Applicable à la base des boutons de la série BO, pour identifier la position du bouton sur les couvertures ou les fonds sérigraphiés.\n\nCouleurs : Noir, Gris et Transparent."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Anwendbar auf dem Sockel der Knöpfe der BO-Serie, um die Position des Knopfes auf den Abdeckungen oder siebgedruckten Hintergründen zu kennzeichnen.\n\nFarben: Schwarz, Grau und Transparent."
     }
    ]
   },
@@ -978,6 +1344,16 @@
     "title": "Discos Flecha - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 676,
+   "fr": 677,
+   "de": 678
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -986,27 +1362,45 @@
   "count": 1,
   "slug": {
    "es": "discos-graduados",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "graduated-discs",
+   "fr": "disques-gradues",
+   "de": "gegradueerde-schijven"
   },
   "name": {
    "es": "Discos graduados",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Graduated discs",
+   "fr": "Disques gradués",
+   "de": "Abgestufte Scheiben"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/discos-graduados/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/graduated-discs/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/disques-gradues/",
+   "de": "/de/categoria-producto/bedieningsknoppen/gegradueerde-schijven/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Fabricados en metacrilato transparente, grabados por termografía.\n\nIdénticas dimensiones que los discos con flecha.\n\nDisponibles en formatos 0/100-270º, 1/10 y 1/12 en 360º."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Manufactured in transparent methacrylate, thermographically engraved.\n\nIdentical dimensions as the discs with arrow.\n\nAvailable in 0/100-270º, 1/10 and 1/12 in 360º."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Fabriqués en méthacrylate transparent, gravés thermographiquement.\n\nDimensions identiques aux disques avec flèche.\n\nDisponibles en 0/100-270º, 1/10 et 1/12 en 360º."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Hergestellt aus transparentem Methacrylat, thermografisch graviert.\n\nIdentische Abmessungen wie die Scheiben mit Pfeil.\n\nVerfügbar in 0/100-270º, 1/10 und 1/12 in 360º."
     }
    ]
   },
@@ -1023,6 +1417,16 @@
     "title": "Discos graduados - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 679,
+   "fr": 680,
+   "de": 681
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -1031,27 +1435,45 @@
   "count": 1,
   "slug": {
    "es": "doble-manual",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "double-manual",
+   "fr": "manuel-double",
+   "de": "dubbele-handleiding"
   },
   "name": {
    "es": "Doble manual",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Double manual",
+   "fr": "Double manuel",
+   "de": "Doppelt manuell"
   },
   "path": {
    "es": "/categoria-producto/variadores-de-tension/dobles/doble-manual/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/double-manual/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/manuel-double/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/dubbele-handleiding/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Por medio de un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada en cada momento."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "The axis is operated by means of a control knob, which in turn allows the rotation of the graphite traveller by selecting the desired tension at any given moment."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "L'axe est actionné au moyen d'un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension souhaitée à un moment donné."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Die Achse wird über einen Drehknopf bedient, mit dem der Graphitläufer gedreht werden kann, indem die gewünschte Spannung zu einem bestimmten Zeitpunkt gewählt wird."
     }
    ]
   },
@@ -1068,6 +1490,16 @@
     "title": "Doble manual - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 584,
+   "fr": 585,
+   "de": 586
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -1076,27 +1508,45 @@
   "count": 1,
   "slug": {
    "es": "doble-motorizado",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "dual-motorized",
+   "fr": "double-motorisation",
+   "de": "dubbele-motor"
   },
   "name": {
    "es": "Doble motorizado",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Dual motorized",
+   "fr": "Double motorisation",
+   "de": "Dubbele motor"
   },
   "path": {
    "es": "/categoria-producto/variadores-de-tension/dobles/doble-motorizado/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/dual-motorized/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/double-motorisation/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/dubbele-motor/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Es utilizado fundamentalmente para regular los equipos a distancia ó para equipos estabilizadores. También es recomendable motorizar los variadores de tensión de grandes potencias, por la comodidad de uso que proporcionan."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "It is primarily used for remotely regulating equipment or for voltage stabilization equipment. It is also advisable to motorize high power voltage variators, for the convenience of use they provide."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Il est principalement utilisé pour la commande à distance d'équipements ou pour la stabilisation d'équipements. Il est également conseillé de motoriser les variateurs de tension de forte puissance en raison de la facilité d'utilisation qu'ils procurent."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Het wordt voornamelijk gebruikt voor het op afstand regelen van apparatuur of voor spanningsstabilisatieapparatuur. Es ist auch ratsam, Hochleistungs-Spannungsvariatoren zu motorisieren, weil sie so einfach zu bedienen sind."
     }
    ]
   },
@@ -1114,6 +1564,16 @@
     "title": "Doble motorizado - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 587,
+   "fr": 588,
+   "de": 589
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -1122,27 +1582,45 @@
   "count": 1,
   "slug": {
    "es": "dobles-potenciometros",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "dual-potentiometers",
+   "fr": "potentiometres-doubles",
+   "de": "dubbele-potentiometers"
   },
   "name": {
    "es": "Dobles",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Doubles",
+   "fr": "Doubles",
+   "de": "Doppelte"
   },
   "path": {
    "es": "/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/dobles-potenciometros/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/dual-potentiometers/",
+   "fr": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/potentiometres-doubles/",
+   "de": "/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/dubbele-potentiometers/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Potenciómetro doble, de 2 x 3 W, es un derivado del modelo de\n3W para su uso en equipos estéreo, como atenuador. Sus\ncaracterísticas eléctricas y físicas son iguales a estos últimos."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Double potentiometer, 2 x 3 W, is a derivative of the\n3W model for use in stereo equipment, as an attenuator. Its\nelectrical and physical characteristics are the same as the latter."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Le potentiomètre double, 2 x 3 W, est un dérivé du modèle\n3W destiné à être utilisé dans les équipements stéréo, en tant qu'atténuateur. Ses caractéristiques électriques et physiques\nsont les mêmes que celles de ce dernier."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Das Doppelpotentiometer 2 x 3 W ist eine Abwandlung des Modells\n3W zur Verwendung in Stereoanlagen als Dämpfungsglied. Seine\nelektrischen und physikalischen Eigenschaften sind die gleichen wie die des letzteren."
     }
    ]
   },
@@ -1159,6 +1637,16 @@
     "title": "Dobles - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 627,
+   "fr": 628,
+   "de": 629
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -1204,6 +1692,11 @@
     "title": "En caja - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -1212,27 +1705,45 @@
   "count": 1,
   "slug": {
    "es": "en-caja-resistencias",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "boxed",
+   "fr": "en-boite",
+   "de": "boxen"
   },
   "name": {
    "es": "En caja",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Boxed",
+   "fr": "En boîte",
+   "de": "Boxen"
   },
   "path": {
    "es": "/categoria-producto/resistencias/en-caja-resistencias/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/resistors-load-banks/boxed/",
+   "fr": "/fr/categoria-producto/resistances-bancs-de-charge/en-boite/",
+   "de": "/de/categoria-producto/widerstande-lastbanke/boxen/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "deales para aplicaciones como variadores de velocidad y frecuencia, grúas, automatización industrial, control de motor, frenado dinámicos, energías renovables (como eólicas y solares) y tanto de carga como descarga, estas resistencias en caja se compone por una resistencia tubular helicoidal. Es decir, es un tubo cerámico con un alto grado de disipación térmica y resistencia mecánica dentro de una caja de chapa galvanizada IP20 y debidamente perforada para una correcta ventilación.\n\nEste tipo de resistencias en caja se fabrica en función de las características solicitadas por el cliente, personalizando la resistencia en caja con una resistencia tubular bobinada cementada o resistencia tubular bobinada helicoidal; un alto grado de disipación térmica y un “protector térmico”; un valor óhmico según especificación y un modo Gearless o capacidad silenciosa."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "For applications such as variable speed and frequency drives, cranes, industrial automation, motor control, dynamic braking, renewable energies (such as wind and solar) and both loading and unloading, these boxed resistors consist of a tubular helical resistor. That is, it is a ceramic tube with a high degree of thermal dissipation and mechanical strength inside a galvanized sheet metal box IP20 and properly perforated for proper ventilation. \n\nThis type of boxed resistors is manufactured according to the characteristics requested by the customer, customizing the boxed resistor with a cemented coiled tubular resistor or helical coiled tubular resistor; a high degree of thermal dissipation and a \"thermal protector\"; an ohmic value according to specification and a Gearless mode or silent capability."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Ces résistances en boîtier sont idéales pour des applications telles que les variateurs de vitesse et de fréquence, les grues, l'automatisation industrielle, le contrôle des moteurs, le freinage dynamique, les énergies renouvelables (telles que l'éolien et le solaire) et la charge et la décharge. Ces résistances en boîtier sont constituées d'une résistance tubulaire hélicoïdale. Il s'agit d'un tube en céramique à haut degré de dissipation thermique et de résistance mécanique à l'intérieur d'une boîte en tôle galvanisée IP20 et dûment perforée pour une bonne ventilation. \n\nCe type de résistance en boîtier est fabriqué selon les caractéristiques demandées par le client, en personnalisant la résistance en boîtier avec une résistance tubulaire cimentée ou une résistance tubulaire hélicoïdale ; un degré élevé de dissipation thermique et un \"protecteur thermique\" ; une valeur ohmique conforme à la spécification et un mode Gearless ou une capacité silencieuse."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Diese Boxwiderstände sind ideal für Anwendungen wie drehzahl- und frequenzvariable Antriebe, Kräne, Industrieautomation, Motorsteuerung, dynamisches Bremsen, erneuerbare Energien (wie Wind- und Solarenergie) und sowohl Lade- als auch Entladewiderstände. Diese Boxwiderstände bestehen aus einem spiralförmigen Rohrwiderstand. Das heißt, es handelt sich um ein Keramikrohr mit einem hohen Grad an Wärmeableitung und mechanischer Festigkeit in einem verzinkten Blechgehäuse IP20, das für eine gute Belüftung entsprechend perforiert ist. \n\nDiese Art von Kastenwiderstand wird nach den vom Kunden gewünschten Merkmalen hergestellt, wobei der Kastenwiderstand mit einem zementierten Rohrspulenwiderstand oder einem schraubenförmigen Rohrspulenwiderstand, einem hohen Grad an Wärmeableitung und einem \"Wärmeschutz\", einem Ohmwert gemäß Spezifikation und einem Gearless-Modus oder einer Silent-Fähigkeit ausgestattet ist."
     }
    ]
   },
@@ -1249,6 +1760,16 @@
     "title": "En caja - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 477,
+   "fr": 475,
+   "de": 479
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -1312,6 +1833,11 @@
     "title": "Optimiza tus energías renovables - Torivac",
     "description": "Optimizamos tus sistemas de energías renovables con nuestros equipos electrónicos. La máxima eficiencia energética para tu espacio."
    }
+  },
+  "ids": {
+   "en": 494,
+   "fr": 496,
+   "de": 497
   }
  },
  {
@@ -1349,6 +1875,11 @@
     "title": "Equipos de Sobremesa - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 598,
+   "fr": 597,
+   "de": 596
   }
  },
  {
@@ -1412,6 +1943,11 @@
     "title": "Equipos de sobremesa - Torivac",
     "description": "Equipos en caja IP20 – IP65. Todos nuestros variadores se pueden suministrar como un equipo acabado en caja."
    }
+  },
+  "ids": {
+   "en": 590,
+   "fr": 591,
+   "de": 592
   }
  },
  {
@@ -1449,6 +1985,11 @@
     "title": "Equipos de sobremesa - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 593,
+   "fr": 594,
+   "de": 595
   }
  },
  {
@@ -1513,6 +2054,11 @@
     "title": "Equipos electrónicos - Torivac",
     "description": "¡Somos tu experto en equipos electrónicos! Confía en un especialista con más de 60 años de experiencia en el sector de la energía."
    }
+  },
+  "ids": {
+   "en": 492,
+   "fr": 489,
+   "de": 495
   }
  },
  {
@@ -1547,6 +2093,11 @@
     "title": "Equipos industriales - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -1581,6 +2132,11 @@
     "title": "Equipos industriales - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -1644,6 +2200,11 @@
     "title": "Estabilizadores de tensión - Torivac",
     "description": "¿Tu negocio necesita estabilizadores de tensión? Confía en un especialista con más de 60 años de experiencia en el sector de la energía."
    }
+  },
+  "ids": {
+   "en": 463,
+   "fr": 523,
+   "de": 525
   }
  },
  {
@@ -1707,6 +2268,11 @@
     "title": "Estabilizadores Serie AVS: electromecánicos con servomotor - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 607,
+   "fr": 608,
+   "de": 609
   }
  },
  {
@@ -1715,27 +2281,45 @@
   "count": 1,
   "slug": {
    "es": "estators",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "buttons-estators",
+   "fr": "estateurs",
+   "de": "knoppen-estators"
   },
   "name": {
    "es": "Estators",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Estators",
+   "fr": "Estateurs",
+   "de": "Statoren"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/estators/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/buttons-estators/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/estateurs/",
+   "de": "/de/categoria-producto/bedieningsknoppen/knoppen-estators/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Se aplican debajo de los discos graduados para resaltar la lectura de los mismos en los modelos de 15, 21 y 30mm.\n\nColor: negro (con sector blanco)."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "These are applied beneath the graduated discs to enhance their readability on the 15, 21, and 30 mm models.\n\nColor: Black (with white section)."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Ces pastilles sont placées sous les disques gradués pour améliorer leur lisibilité sur les modèles de 15, 21 et 30 mm.\n\nCouleur : Noir (avec partie blanche)."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Sie werden unter den Skalenscheiben angebracht, um die Ablesung der Scheiben bei den 15-, 21- und 30-mm-Modellen hervorzuheben.\n\nFarbe: schwarz (mit weißem Sektor)."
     }
    ]
   },
@@ -1752,6 +2336,16 @@
     "title": "Estators - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 682,
+   "fr": 683,
+   "de": 684
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -1760,27 +2354,45 @@
   "count": 1,
   "slug": {
    "es": "fabricacion-a-media",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "custom-manufacturing",
+   "fr": "production-sur-mesure",
+   "de": "masgeschneiderte-fertigung"
   },
   "name": {
    "es": "Fabricación a medida",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Custom manufacturing",
+   "fr": "Production sur mesure",
+   "de": "Maßgeschneiderte Fertigung"
   },
   "path": {
    "es": "/categoria-producto/variadores-de-tension/fabricacion-a-media/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/custom-manufacturing/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/production-sur-mesure/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/masgeschneiderte-fertigung/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Cada cliente es único, y por lo tanto hay matices o variaciones de productos estándar que precisan. En TORIVAC hacemos adaptaciones de productos para que sea SU producto, desde un eje más largo para poder instalar el variador de tensión en el fondo de un armario, motorizaciones especiales en corriente continua o en trifásica, elementos de visualización concretos, tamaños especiales. Fijaciones adaptadas a su sistema etc. No dude en consultarnos y le propondremos la solución óptima."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Each customer is unique, and therefore there are nuances or variations of standard products that they require. In TORIVAC we make adaptations of products to make it YOUR product, from a longer shaft to be able to install the voltage variator at the bottom of a cabinet, special motorizations in direct current or three-phase, specific display elements, special sizes. Fixings adapted to your system, etc. Do not hesitate to contact us and we will propose you the optimal solution."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Chaque client est unique et il existe donc des nuances ou des variations des produits standard dont il a besoin. Chez TORIVAC, nous adaptons les produits pour en faire VOTRE produit, qu'il s'agisse d'un arbre plus long pour pouvoir installer le variateur de tension au fond d'une armoire, de motorisations spéciales en courant continu ou en triphasé, d'éléments d'affichage spécifiques, de tailles spéciales. Des fixations adaptées à votre système, etc. N'hésitez pas à nous contacter et nous vous proposerons la solution optimale."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Jeder Kunde ist einzigartig, und daher gibt es Nuancen oder Variationen von Standardprodukten, die er benötigt. Bei TORIVAC passen wir Produkte an, um es zu IHREM Produkt zu machen, von einer längeren Welle, um den Spannungsregler unten in einem Schrank installieren zu können, über spezielle Motorisierungen in Gleichstrom oder Drehstrom, spezifische Anzeigeelemente, Sondergrößen. An Ihr System angepasste Befestigungen, usw. Zögern Sie nicht, uns zu kontaktieren und wir werden Ihnen die optimale Lösung vorschlagen."
     }
    ]
   },
@@ -1797,6 +2409,16 @@
     "title": "Fabricación a medida - Torivac",
     "description": "¿Necesitas componentes personalizados? Descubre nuestra fabricación de variadores de tensión a medida y cómo podemos adaptarnos a tus necesidades específicas"
    }
+  },
+  "ids": {
+   "en": 450,
+   "fr": 549,
+   "de": 556
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -1844,6 +2466,11 @@
     "title": "Fabricaciones a Medida - Torivac",
     "description": "Torivac diseña y fabrica variadores de tensión y de regulación continua orientados al control preciso, seguro y fiable de sistemas eléctricos en entornos industriales,"
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -1878,6 +2505,11 @@
     "title": "Fabricaciones a medida - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -1924,6 +2556,11 @@
     "title": "Fuente de alimentación CA - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -1987,6 +2624,11 @@
     "title": "Fuentes de alimentación CC - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 499,
+   "fr": 498,
+   "de": 500
   }
  },
  {
@@ -1995,27 +2637,45 @@
   "count": 1,
   "slug": {
    "es": "helicoidales",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "helical",
+   "fr": "helicoidale",
+   "de": "wendel"
   },
   "name": {
    "es": "Helicoidales",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Helical",
+   "fr": "Hélicoïdale",
+   "de": "Wendel"
   },
   "path": {
    "es": "/categoria-producto/resistencias/helicoidales/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/resistors-load-banks/helical/",
+   "fr": "/fr/categoria-producto/resistances-bancs-de-charge/helicoidale/",
+   "de": "/de/categoria-producto/widerstande-lastbanke/wendel/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Nuestras de resistencias de alta potencia potencia modelo se fabrican con hilo de aleación resistiva de alta calidad. El valor ohmico varia poco con la subida en temperatura del elemento.\n\nSon resistencias bobinadas compuestas por un elemento resistivo enrollado sobre un núcleo tubular cerámico utilizado como soporte, para asegurar una alta capacidad de disipación y una excelente resistencia al choque térmico y a la sobrecarga. Se trata de un elemento abierto de baja inductancia."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Our high power model power resistors are manufactured with high quality resistive alloy wire. The ohmic value varies little with the temperature rise of the element. \n\nThese are wound resistors composed of a resistive element wound on a ceramic tubular core used as a support, to ensure high dissipation capacity and excellent resistance to thermal shock and overload. It is an open element with low inductance."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Nos résistances modèles haute puissance sont fabriquées à partir de fils d'alliage résistif de haute qualité. La valeur ohmique varie peu avec l'élévation de température de l'élément. \n\nIl s'agit de résistances bobinées composées d'un élément résistif enroulé sur un noyau tubulaire en céramique utilisé comme support, afin de garantir une capacité de dissipation élevée et une excellente résistance aux chocs thermiques et aux surcharges. Il s'agit d'un élément ouvert à faible inductance."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Unsere Hochleistungswiderstände werden aus hochwertigen Widerstandsdrähten hergestellt. Der ohmsche Wert variiert nur wenig mit dem Temperaturanstieg des Elements. \n\nEs handelt sich um gewickelte Widerstände, die aus einem Widerstandselement bestehen, das auf einen röhrenförmigen Kern aus Keramik gewickelt ist, der als Träger dient, um eine hohe Verlustleistung und eine ausgezeichnete Beständigkeit gegen Temperaturschock und Überlast zu gewährleisten. Es handelt sich um ein offenes Element mit niedriger Induktivität."
     }
    ]
   },
@@ -2032,6 +2692,16 @@
     "title": "Helicoidales - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 488,
+   "fr": 486,
+   "de": 491
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2040,27 +2710,45 @@
   "count": 1,
   "slug": {
    "es": "hembrilla-de-seguridad-hbs4",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "socket-jack-hbs4",
+   "fr": "prise-de-securite-hbs4",
+   "de": "hbs4-veiligheidsaansluiting"
   },
   "name": {
    "es": "Hembrilla de seguridad HBS4",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Safety socket HBS4",
+   "fr": "Prise de sécurité HBS4",
+   "de": "Sicherheitssteckdose HBS4"
   },
   "path": {
    "es": "/categoria-producto/hembrillas/hembrilla-de-seguridad-hbs4/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/socket-jack/socket-jack-hbs4/",
+   "fr": "/fr/categoria-producto/prise-jack/prise-de-securite-hbs4/",
+   "de": "/de/categoria-producto/socket-jack/hbs4-veiligheidsaansluiting/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Intensidad máxima: 10A/230V.\nConexión con faston hembra 3,9 o soldadura.\nCuerpo de Poliamida 6/6, autoextinguible.\nCasquillo de latón niquelado.\nColores: negro, rojo, amarillo, verde, azul y gris."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Maximum current: 10A/230V.\nConnection with 3.9 female faston or solder.\nPolyamide 6/6 body, self-extinguishing.\nNickel-plated brass socket.\nColors: black, red, yellow, green, blue and gray."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Courant maximum : 10A/230V.\nConnexion par faston femelle 3.9 ou soudure.\nCorps en polyamide 6/6 auto-extinguible.\nDouille en laiton nickelé.\nCouleurs : noir, rouge, jaune, vert, bleu et gris."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Maximale Stromstärke: 10A/230V.\nAnschluss mit 3.9-Buchse oder Lötzinn.\nSelbstverlöschendes Gehäuse aus Polyamid 6/6.\nVernickelte Messingbuchse.\nFarben: schwarz, rot, gelb, grün, blau und grau."
     }
    ]
   },
@@ -2078,6 +2766,16 @@
     "title": "Hembrilla de seguridad HBS4 - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 647,
+   "fr": 652,
+   "de": 653
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2086,27 +2784,45 @@
   "count": 1,
   "slug": {
    "es": "hembrilla-de-seguridad-hr4",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "socket-jack-hr4",
+   "fr": "prise-de-securite-hr4",
+   "de": "hr4-veiligheidsaansluiting"
   },
   "name": {
    "es": "hembrilla de seguridad HR4",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "safety socket HR4",
+   "fr": "prise de sécurité HR4",
+   "de": "Sicherheitssteckdose HR4"
   },
   "path": {
    "es": "/categoria-producto/hembrillas/hembrilla-de-seguridad-hr4/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/socket-jack/socket-jack-hr4/",
+   "fr": "/fr/categoria-producto/prise-jack/prise-de-securite-hr4/",
+   "de": "/de/categoria-producto/socket-jack/hr4-veiligheidsaansluiting/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Intensidad máxima: 20A/230V.\nConexión por soldadura.\nIdénticas características que las HB-4, pero con el casquillo reforzado para 20A.\nColores: negro, rojo, amarillo, verde y azul."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Maximum current: 20A/230V.\nConnection by welding.\nIdentical characteristics as HB-4, but with reinforced bushing for 20A.\nColors: black, red, yellow, green and blue."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Courant maximum : 20A/230V.\nConnexion par soudage.\nMêmes caractéristiques que HB-4, mais avec une prise renforcée de 20A.\nCouleurs : noir, rouge, jaune, vert et bleu."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Maximalstrom: 20A/230V.\nAnschluss durch Schweißen.\nGleiche Eigenschaften wie HB-4, aber mit verstärkter 20A-Steckdose.\nFarben: schwarz, rot, gelb, grün und blau."
     }
    ]
   },
@@ -2124,6 +2840,16 @@
     "title": "hembrilla de seguridad HR4 - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 649,
+   "fr": 656,
+   "de": 657
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2132,27 +2858,45 @@
   "count": 1,
   "slug": {
    "es": "hembrilla-de-seguridad-hsr4",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "socket-jack-hsr4",
+   "fr": "prise-de-securite-hsr4",
+   "de": "hsr4-veiligheidsaansluiting"
   },
   "name": {
    "es": "Hembrilla de seguridad HSR4",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "HSR4 safety socket",
+   "fr": "Prise de sécurité HSR4",
+   "de": "Sicherheitssteckdose HSR4"
   },
   "path": {
    "es": "/categoria-producto/hembrillas/hembrilla-de-seguridad-hsr4/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/socket-jack/socket-jack-hsr4/",
+   "fr": "/fr/categoria-producto/prise-jack/prise-de-securite-hsr4/",
+   "de": "/de/categoria-producto/socket-jack/hsr4-veiligheidsaansluiting/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Intensidad máxima: 20A/230V.\nConexión por soldadura.\nIdénticas características que las HBS-4, pero con el casquillo reforzado para 20A.\nColores: negro, rojo, amarillo, verde y azul."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Maximum current: 20A/230V.\nConnection by welding.\nSame characteristics as HBS-4, but with reinforced 20A socket.\nColors: black, red, yellow, green and blue."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Courant maximum : 20A/230V.\nConnexion par soudage.\nMêmes caractéristiques que HBS-4, mais avec une prise renforcée de 20A.\nCouleurs : noir, rouge, jaune, vert et bleu."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Maximalstrom: 20A/230V.\nAnschluss durch Schweißen.\nGleiche Eigenschaften wie HBS-4, aber mit verstärkter 20A-Steckdose.\nFarben: schwarz, rot, gelb, grün und blau."
     }
    ]
   },
@@ -2169,6 +2913,16 @@
     "title": "Hembrilla de seguridad HSR4 - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 648,
+   "fr": 654,
+   "de": 655
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2177,27 +2931,45 @@
   "count": 1,
   "slug": {
    "es": "hembrilla-hb4",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "socket-jack-2",
+   "fr": "prise-jack-hb4",
+   "de": "socket-jack-hb4-10a"
   },
   "name": {
    "es": "Hembrilla HB4",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "HB4 socket",
+   "fr": "Prise HB4",
+   "de": "HB4-Buchse"
   },
   "path": {
    "es": "/categoria-producto/hembrillas/hembrilla-hb4/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/socket-jack/socket-jack-2/",
+   "fr": "/fr/categoria-producto/prise-jack/prise-jack-hb4/",
+   "de": "/de/categoria-producto/socket-jack/socket-jack-hb4-10a/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Intensidad máxima: 10A/230V.\nCasquillo y tuerca de latón niquelado.\nCuerpo de Poliamida 6/6, auto extinguible.\nConexión faston de 3,9mm ó soldadura.\nColores: negro, rojo, amarillo, verde y azul."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Maximum current: 10A/230V.\nNickel-plated brass socket and nut.\nPolyamide 6/6 body, self-extinguishing.\n3.9mm faston connection or solder.\nColors: black, red, yellow, green and blue."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Courant maximum : 10A/230V.\nDouille et écrou en laiton nickelé.\nCorps en polyamide 6/6, auto-extinguible.\nConnexion faston de 3,9mm ou soudure.\nCouleurs : noir, rouge, jaune, vert et bleu."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Maximale Stromstärke: 10A/230V.\nBuchse und Mutter aus vernickeltem Messing.\nGehäuse aus Polyamid 6/6, selbstverlöschend.\n3,9mm Faston-Anschluss oder Löten.\nFarben: schwarz, rot, gelb, grün und blau."
     }
    ]
   },
@@ -2214,6 +2986,16 @@
     "title": "Hembrilla HB4 - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 646,
+   "fr": 650,
+   "de": 651
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2278,6 +3060,11 @@
     "title": "Hembrillas de seguridad - Torivac",
     "description": "En Torivac fabricamos nuestras propias hembrillas de seguridad, asegurándote a ti y a tu negocio la más alta calidad en el sector."
    }
+  },
+  "ids": {
+   "en": 575,
+   "fr": 576,
+   "de": 577
   }
  },
  {
@@ -2312,6 +3099,11 @@
     "title": "Hembrillas de seguridad - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -2320,27 +3112,45 @@
   "count": 1,
   "slug": {
    "es": "led-10mm",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "led-10mm",
+   "fr": "porte-10-mm",
+   "de": "geperforeerde-led-10mm"
   },
   "name": {
    "es": "led 10mm",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "led 10mm",
+   "fr": "led 10mm",
+   "de": "led 10mm"
   },
   "path": {
    "es": "/categoria-producto/portaled/led-10mm/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/portaled/led-10mm/",
+   "fr": "/fr/categoria-producto/portail/porte-10-mm/",
+   "de": "/de/categoria-producto/geportaliseerd/geperforeerde-led-10mm/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Soporte metálico para led de 10mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)"
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Metal support for 10mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Supports métalliques pour LED de 10 mm, en laiton ou duralumin, finitions chromées, nickelées ou anodisées noires.\nDisponibles avec deux types de têtes (cône intérieur / cône extérieur)."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Metalen beugels voor 10 mm LED's, gemaakt van messing of duraluminium, en met een verchroomde, vernikkelde of zwart geanodiseerde afwerking.\n\nVerkrijgbaar met twee verschillende kopvormen (binnenconus / buitenconus)."
     }
    ]
   },
@@ -2358,6 +3168,16 @@
     "title": "led 10mm - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 642,
+   "fr": 634,
+   "de": 635
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2366,27 +3186,45 @@
   "count": 1,
   "slug": {
    "es": "led-3mm",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "portaled-led-3mm",
+   "fr": "led-portique-3-mm",
+   "de": "geportaliseerde-led-3mm"
   },
   "name": {
    "es": "led 3mm",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "led 3mm",
+   "fr": "led 3mm",
+   "de": "led 3mm"
   },
   "path": {
    "es": "/categoria-producto/portaled/led-3mm/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/portaled/portaled-led-3mm/",
+   "fr": "/fr/categoria-producto/portail/led-portique-3-mm/",
+   "de": "/de/categoria-producto/geportaliseerd/geportaliseerde-led-3mm/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Soporte metálico para led de 3mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)"
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Metal brackets for 3mm LEDs, manufactured in brass or duralumin, and with chrome, nickel, or black anodized finishes.\nAvailable with two different heads (inner cone / outer cone)"
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Supports métalliques pour LED de 3 mm, fabriqués en laiton ou en duralumin, avec finitions chromées, nickelées ou anodisées noires.\n\nDisponibles avec deux types de têtes (cône intérieur / cône extérieur)."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Metalen beugels voor 3 mm LED's, vervaardigd uit messing of duraluminium, en met een verchroomde, vernikkelde of zwart geanodiseerde afwerking.\n\nVerkrijgbaar met twee verschillende kopvormen (binnenconus / buitenconus)."
     }
    ]
   },
@@ -2403,6 +3241,16 @@
     "title": "led 3mm - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 645,
+   "fr": 636,
+   "de": 637
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2411,27 +3259,45 @@
   "count": 1,
   "slug": {
    "es": "led-5mm",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "portaled-led-5mm",
+   "fr": "led-portale-5-mm",
+   "de": "geportaliseerde-led-5mm"
   },
   "name": {
    "es": "led 5mm",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "led 5mm",
+   "fr": "led 5mm",
+   "de": "led 5mm"
   },
   "path": {
    "es": "/categoria-producto/portaled/led-5mm/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/portaled/portaled-led-5mm/",
+   "fr": "/fr/categoria-producto/portail/led-portale-5-mm/",
+   "de": "/de/categoria-producto/geportaliseerd/geportaliseerde-led-5mm/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Soporte metálico para led de 5mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)"
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Metal brackets for 5mm LEDs, manufactured in brass or duralumin, and with chrome, nickel, or black anodized finishes.\nAvailable with two different heads (inner cone / outer cone)."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Supports métalliques pour LED de 5 mm, fabriqués en laiton ou en duralumin, avec finitions chromées, nickelées ou anodisées noires.\n\nDisponibles avec deux types de têtes (cône intérieur / cône extérieur)."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Metalen beugels voor 5 mm LED's, vervaardigd uit messing of duraluminium, en met een verchroomde, vernikkelde of zwart geanodiseerde afwerking.\n\nVerkrijgbaar met twee verschillende kopvormen (binnenconus / buitenconus)."
     }
    ]
   },
@@ -2448,6 +3314,16 @@
     "title": "led 5mm - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 644,
+   "fr": 638,
+   "de": 640
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2456,27 +3332,45 @@
   "count": 1,
   "slug": {
    "es": "led-8mm",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "portaled-led-8mm",
+   "fr": "led-portique-8-mm",
+   "de": "geporteerde-led-8mm"
   },
   "name": {
    "es": "led 8mm",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "led 8mm",
+   "fr": "led 8mm",
+   "de": "led 8mm"
   },
   "path": {
    "es": "/categoria-producto/portaled/led-8mm/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/portaled/portaled-led-8mm/",
+   "fr": "/fr/categoria-producto/portail/led-portique-8-mm/",
+   "de": "/de/categoria-producto/geportaliseerd/geporteerde-led-8mm/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Soporte metálico para led de 8mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)"
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Metal brackets for 8mm LEDs, manufactured in brass or duralumin, and with chrome, nickel, or black anodized finishes.\nAvailable with two different heads (inner cone / outer cone)."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Supports métalliques pour LED de 8 mm, fabriqués en laiton ou en duralumin, avec finitions chromées, nickelées ou anodisées noires.\n\nDisponibles avec deux types de têtes (cône intérieur / cône extérieur)."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Metalen beugels voor 8 mm LED's, vervaardigd uit messing of duraluminium, en met een verchroomde, vernikkelde of zwart geanodiseerde afwerking.\n\nVerkrijgbaar met twee verschillende kopvormen (binnenconus / buitenconus)."
     }
    ]
   },
@@ -2494,6 +3388,16 @@
     "title": "led 8mm - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 643,
+   "fr": 639,
+   "de": 641
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2502,27 +3406,45 @@
   "count": 1,
   "slug": {
    "es": "monofasicos-manual",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "trifasicos-manual",
+   "fr": "manuel",
+   "de": "handbuch"
   },
   "name": {
    "es": "Manual",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Manual",
+   "fr": "Manuel",
+   "de": "Handbuch"
   },
   "path": {
    "es": "/categoria-producto/variadores-de-tension/monofasico/monofasicos-manual/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/single-phase-inverters/trifasicos-manual/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/manuel/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/einphasen-wechselrichter/handbuch/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada en cada momento."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "A control knob is used to operate the shaft, which in turn allows rotation of the graphite traveller by selecting the desired tension at any given moment."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "L'axe est actionné au moyen d'un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension souhaitée à un moment donné."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Die Achse wird über einen Drehknopf bedient, mit dem der Graphitläufer gedreht werden kann, indem die gewünschte Spannung zu einem bestimmten Zeitpunkt gewählt wird."
     }
    ]
   },
@@ -2539,6 +3461,16 @@
     "title": "Manual - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 543,
+   "fr": 540,
+   "de": 559
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2602,6 +3534,11 @@
     "title": "Manual - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 545,
+   "fr": 542,
+   "de": 626
   }
  },
  {
@@ -2610,27 +3547,45 @@
   "count": 1,
   "slug": {
    "es": "monofasico-serie-bavs",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "monofasico-serie-bavs",
+   "fr": "monophase",
+   "de": "monofase"
   },
   "name": {
    "es": "Monofásico",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "single-phase-bavs",
+   "fr": "Monophasé",
+   "de": "Monofase"
   },
   "path": {
    "es": "/categoria-producto/estabilizadores-de-tension/serie-bavs/monofasico-serie-bavs/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/monofasico-serie-bavs/",
+   "fr": "/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/monophase/",
+   "de": "/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/monofase/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Estabilizador binario accionado por control electrónico de IGBT para redes monofásicas. Ciclo de estabilizado cada 100mS. Controlado por microprocesador. Regulación continua por fase. Precisión en la tensión de salida mejor del 1 %. De serie, margen de regulación del ± 30 % Sin distorsión de onda ni cortes. Pantalla táctil mostrando tensión de entrada y salida por fase Intensidad de la carga, potencia activa y reactiva, coseno de fi. Frecuencia, Temperatura."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Binary voltage regulator driven by IGBT electronic control for single-phase networks. Stabilization cycle every 100ms. Microprocessor controlled. Continuous phase regulation. Output voltage accuracy better than 1%. Standard regulation range of ±30%. No waveform distortion or interruptions. Touchscreen display showing input and output voltage per phase, load current, active and reactive power, power factor, frequency, and temperature."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Régulateur de tension binaire à commande électronique IGBT pour réseaux monophasés. Cycle de stabilisation toutes les 100 ms. Contrôlé par microprocesseur. Régulation de phase continue. Précision de la tension de sortie supérieure à 1 %. Plage de régulation standard de ±30 %. Absence de distorsion ou d'interruption du signal. Écran tactile affichant la tension d'entrée et de sortie par phase, le courant de charge, la puissance active et réactive, le facteur de puissance, la fréquence et la température."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Binaire spanningsregelaar met IGBT-elektronica voor eenfasige netwerken. Stabilisatiecyclus elke 100 ms. Microprocessorgestuurd. Continue faseregeling. Nauwkeurigheid van de uitgangsspanning beter dan 1%. Standaard regelbereik van ±30%. Geen golfvormvervorming of onderbrekingen. Touchscreen-display met weergave van ingangs- en uitgangsspanning per fase, belastingsstroom, actief en reactief vermogen, arbeidsfactor, frequentie en temperatuur."
     }
    ]
   },
@@ -2647,6 +3602,16 @@
     "title": "Monofásico - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 622,
+   "fr": 623,
+   "de": 624
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2655,27 +3620,45 @@
   "count": 1,
   "slug": {
    "es": "monofasico-serie-avs",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "single-phase-avs",
+   "fr": "monophase",
+   "de": "monofase"
   },
   "name": {
    "es": "Monofásico",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Single-phase",
+   "fr": "Monophasé",
+   "de": "Einphasig"
   },
   "path": {
    "es": "/categoria-producto/estabilizadores-de-tension/serie-avs/monofasico-serie-avs/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/single-phase-avs/",
+   "fr": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/monophase/",
+   "de": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/monofase/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Estabilizador electromecánico accionado por servomotor para redes monofásicas.\nVelocidad de estabilizado hasta 90V/Seg. Controlado por microprocesador. Regulación continua por fase. Precisión en la tensión de salida mejor del 1 %. Margen de regulación hasta del ± 40 % Sin distorsión de onda ni cortes. Pantalla táctil mostrando tensión de entrada y salida por fase Intensidad de la carga, potencia activa y reactiva, coseno de fi. Frecuencia, Temperatura."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Servomotor-driven electromechanical stabilizer for single-phase networks.\nStabilizing speed up to 90V/Sec. Microprocessor controlled. Continuous phase regulation. Output voltage accuracy better than 1 %. Control range up to ± 40 % No waveform distortion or clipping. Touch screen display showing input and output voltage per phase, load current, active and reactive power, cosine of fi. Frequency, Temperature."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Stabilisateur de tension électromécanique à servomoteur pour réseaux monophasés.\n\nVitesse de stabilisation jusqu'à 90 V/s. Contrôle par microprocesseur. Régulation continue phase par phase. Précision de la tension de sortie supérieure à 1 %. Plage de régulation jusqu'à ±40 %. Absence de distorsion ou d'interruption du signal. Écran tactile affichant la tension d'entrée et de sortie par phase, le courant de charge, la puissance active et réactive, le facteur de puissance, la fréquence et la température."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Elektromechanischer Stabilisator mit Servomotor für einphasige Netze.\nStabilisierungsgeschwindigkeit bis zu 90V/Sek. Mikroprozessorgesteuert. Kontinuierliche Regelung pro Phase. Genauigkeit der Ausgangsspannung besser als 1 %. Regelbereich bis zu ± 40 %. Keine Wellenformverzerrung oder Clipping. Touchscreen-Display mit Anzeige von Eingangs- und Ausgangsspannung pro Phase, Laststrom, Wirk- und Blindleistung, Kosinus von fi. Frequenz, Temperatur."
     }
    ]
   },
@@ -2693,6 +3676,16 @@
     "title": "Monofásico - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 613,
+   "fr": 614,
+   "de": 615
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2701,27 +3694,45 @@
   "count": 1,
   "slug": {
    "es": "motorizado",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "three-phase-motorized",
+   "fr": "motorise",
+   "de": "motorisiert"
   },
   "name": {
    "es": "Motorizado",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Motorized",
+   "fr": "Motorisé",
+   "de": "Motorisiert"
   },
   "path": {
    "es": "/categoria-producto/variadores-de-tension/trifasico/motorizado/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/three-phase-drives/three-phase-motorized/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/motorise/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/motorisiert/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Es utilizado fundamentalmente para regular los equipos a distancia o para equipos estabilizadores. También es recomendable motorizar los variadores de tensión de grandes potencias, por la comodidad de uso que proporcionan."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "It is mainly used to regulate equipment remotely or for stabilizing equipment. It is also recommended to motorize high power voltage variators, due to the ease of use they provide."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Il est principalement utilisé pour réguler des équipements à distance ou pour stabiliser des équipements. Il est également recommandé pour motoriser les variateurs de tension de forte puissance, en raison de la facilité d'utilisation qu'il procure."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Er wird hauptsächlich zur Fernsteuerung von Geräten oder zur Stabilisierung von Geräten verwendet. Auch für die Motorisierung von Hochspannungsreglern wird er empfohlen, da er einfach zu bedienen ist."
     }
    ]
   },
@@ -2739,6 +3750,16 @@
     "title": "Motorizado - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 548,
+   "fr": 547,
+   "de": 539
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2747,27 +3768,45 @@
   "count": 1,
   "slug": {
    "es": "motorizado-monofasico",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "single-phase-motorized",
+   "fr": "motorise",
+   "de": "motorisiert"
   },
   "name": {
    "es": "Motorizado",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Motorized",
+   "fr": "Motorisé",
+   "de": "Motorisiert"
   },
   "path": {
    "es": "/categoria-producto/variadores-de-tension/monofasico/motorizado-monofasico/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/single-phase-inverters/single-phase-motorized/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/motorise/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/einphasen-wechselrichter/motorisiert/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Es utilizado fundamentalmente para regular los equipos a distancia o para equipos estabilizadores. También es recomendable motorizar los variadores de tensión de grandes potencias, por la comodidad de uso que proporcionan."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "It is mainly used to regulate equipment remotely or for stabilizing equipment. It is also recommended to motorize high power voltage variators, due to the ease of use they provide."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Il est principalement utilisé pour réguler des équipements à distance ou pour stabiliser des équipements. Il est également recommandé pour motoriser les variateurs de tension de forte puissance, en raison de la facilité d'utilisation qu'il procure."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Er wird hauptsächlich zur Fernsteuerung von Geräten oder zur Stabilisierung von Geräten verwendet. Auch für die Motorisierung von Hochspannungsreglern wird er empfohlen, da er einfach zu bedienen ist."
     }
    ]
   },
@@ -2785,6 +3824,16 @@
     "title": "Motorizado - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 537,
+   "fr": 535,
+   "de": 558
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2793,27 +3842,45 @@
   "count": 1,
   "slug": {
    "es": "nucleos",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "cores",
+   "fr": "noyaux",
+   "de": "kernen"
   },
   "name": {
    "es": "Nucleos",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Nuclei",
+   "fr": "Noyaux",
+   "de": "Kerne"
   },
   "path": {
    "es": "/categoria-producto/nucleos/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/cores/",
+   "fr": "/fr/categoria-producto/noyaux/",
+   "de": "/de/categoria-producto/kernen/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Los núcleos toroidales son componentes magnéticos esenciales en una amplia variedad de aplicaciones electrónicas e industriales. Su diseño en forma de anillo cerrado permite una distribución uniforme del flujo magnético, lo que se traduce en una mayor eficiencia y una reducción significativa de interferencias electromagnéticas (EMI)."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Toroidal cores are essential magnetic components in a wide variety of electronic and industrial applications. Their closed ring design allows for an even distribution of magnetic flux, resulting in higher efficiency and a significant reduction of electromagnetic interference (EMI)."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les noyaux toroïdaux sont des composants magnétiques essentiels dans une grande variété d'applications électroniques et industrielles. Leur conception en anneau fermé permet une distribution uniforme du flux magnétique, ce qui se traduit par une efficacité accrue et une réduction significative des interférences électromagnétiques (EMI)."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Ringkerne sind wesentliche magnetische Komponenten in einer Vielzahl von elektronischen und industriellen Anwendungen. Ihr geschlossenes Ringdesign ermöglicht eine gleichmäßige Verteilung des magnetischen Flusses, was zu einem höheren Wirkungsgrad und einer deutlichen Reduzierung der elektromagnetischen Interferenz (EMI) führt."
     }
    ]
   },
@@ -2831,6 +3898,16 @@
     "title": "Núcleos toroideales - Torivac",
     "description": "Los núcleos toroidales son componentes magnéticos esenciales en una amplia variedad de aplicaciones electrónicas e industriales."
    }
+  },
+  "ids": {
+   "en": 560,
+   "fr": 561,
+   "de": 562
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -2895,6 +3972,11 @@
     "title": "Portaled - Torivac",
     "description": "Nuestros portaled están formados por un cuerpo de latón o duraluminio, bañado en níquel, cromo o anodinado, tuerca y arandela de latón niquelado."
    }
+  },
+  "ids": {
+   "en": 563,
+   "fr": 564,
+   "de": 565
   }
  },
  {
@@ -2932,6 +4014,11 @@
     "title": "Portaleds - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 696,
+   "fr": 697,
+   "de": 698
   }
  },
  {
@@ -2996,6 +4083,11 @@
     "title": "Expertos en potenciómetros - Torivac",
     "description": "En Torivac llevamos años fabricando los mejores potenciómetros para tu negocio. Encuentra la solución a medida que necesitas."
    }
+  },
+  "ids": {
+   "en": 599,
+   "fr": 600,
+   "de": 601
   }
  },
  {
@@ -3033,6 +4125,11 @@
     "title": "Potenciómetros y reóstatos - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 566,
+   "fr": 567,
+   "de": 568
   }
  },
  {
@@ -3041,27 +4138,45 @@
   "count": 1,
   "slug": {
    "es": "redondas",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "round",
+   "fr": "rond",
+   "de": "rund"
   },
   "name": {
    "es": "Redondas",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Round",
+   "fr": "Rond",
+   "de": "Rund"
   },
   "path": {
    "es": "/categoria-producto/bobinas-encapsuladas/redondas/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/encapsulated-coils/round/",
+   "fr": "/fr/categoria-producto/bobines-encapsulees/rond/",
+   "de": "/de/categoria-producto/gekapselte-spulen/rund/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Bobinas redondas con orificio central pasante para ejes lisos o escalonados. Con diferentes longitudes de salidas de cables y pensadas para resistir las vibraciones mas exigentes.\n\n¿Qué son las bobinas para electroimanes?\n\nLas bobinas para electroimanes es un componente electromagnético formado por un hilo conductor enrollado en espiral, diseñado para generar un campo magnético cuando se le aplica una corriente eléctrica. Este campo permite atraer o mover objetos metálicos de manera controlada, lo que la convierte en un elemento clave en sistemas de elevación, automatización industrial, frenos electromagnéticos y cerraduras magnéticas."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Round reels with central through hole for smooth or stepped shafts. With different cable outlet lengths and designed to withstand the most demanding vibrations. \n\nWhat are electromagnet coils?\n\nElectromagnet coils are an electromagnetic component consisting of a spirally wound conductive wire, designed to generate a magnetic field when an electric current is applied to it. This field allows attracting or moving metallic objects in a controlled manner, which makes it a key element in lifting systems, industrial automation, electromagnetic brakes and magnetic locks."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Enrouleurs ronds avec trou central pour arbres lisses ou étagés. Avec différentes longueurs de sortie de câble et conçus pour résister aux vibrations les plus exigeantes. \n\nQu'est-ce qu'une bobine d'électro-aimant ?\n\nLes bobines d'électro-aimants sont des composants électromagnétiques constitués d'un fil conducteur enroulé en spirale, conçu pour générer un champ magnétique lorsqu'un courant électrique lui est appliqué. Ce champ lui permet d'attirer ou de déplacer des objets métalliques de manière contrôlée, ce qui en fait un élément clé des systèmes de levage, de l'automatisation industrielle, des freins électromagnétiques et des serrures magnétiques."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Rundspulen mit zentraler Durchgangsbohrung für glatte oder abgesetzte Wellen. Mit verschiedenen Kabelausgangslängen und so konzipiert, dass sie auch den stärksten Vibrationen standhalten. \n\nWas sind elektromagnetische Spulen?\n\nElektromagnetische Spulen sind eine elektromagnetische Komponente, die aus einem spiralförmig gewickelten leitenden Draht besteht, der ein Magnetfeld erzeugt, wenn elektrischer Strom an ihn angelegt wird. Dieses Feld ermöglicht es ihr, metallische Objekte anzuziehen oder kontrolliert zu bewegen. Das macht sie zu einem Schlüsselelement in Hebesystemen, industrieller Automation, elektromagnetischen Bremsen und Magnetschlössern."
     }
    ]
   },
@@ -3079,6 +4194,16 @@
     "title": "Redondas - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 516,
+   "fr": 514,
+   "de": 519
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3143,6 +4268,11 @@
     "title": "Reóstatos cerámicos - Torivac",
     "description": "¿Necesitas reóstatos cerámicos? ¡Echa un vistazo a nuestro catálogo! Encontrarás soluciones completamente personalizadas para ti."
    }
+  },
+  "ids": {
+   "en": 485,
+   "fr": 483,
+   "de": 487
   }
  },
  {
@@ -3206,6 +4336,11 @@
     "title": "Reostatos y potenciómetros - Torivac",
     "description": "En Torivac encontrarás los mejores reostatos y potenciómetros, todos ellos de fabricación propia, y adaptados a tus necesidades específicas."
    }
+  },
+  "ids": {
+   "en": 521,
+   "fr": 520,
+   "de": 522
   }
  },
  {
@@ -3269,6 +4404,11 @@
     "title": "Expertos en resistencias eléctricas - Torivac",
     "description": "Resistencias desde 50W a 200K W, estándares o hechas a medida; baja inductancia, corte de alto voltaje y alto voltaje de funcionamiento."
    }
+  },
+  "ids": {
+   "en": 476,
+   "fr": 474,
+   "de": 478
   }
  },
  {
@@ -3277,27 +4417,45 @@
   "count": 1,
   "slug": {
    "es": "resistencias-de-arranque",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "starting-resistors",
+   "fr": "resistances-de-demarrage",
+   "de": "startwiderstande"
   },
   "name": {
    "es": "Resistencias de arranque",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Starting resistors",
+   "fr": "Résistances de démarrage",
+   "de": "Startwiderstände"
   },
   "path": {
    "es": "/categoria-producto/resistencias/resistencias-de-arranque/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/resistors-load-banks/starting-resistors/",
+   "fr": "/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-demarrage/",
+   "de": "/de/categoria-producto/widerstande-lastbanke/startwiderstande/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Nuestras resistencias de arranque de acero inoxidable se utilizan siempre que sea necesario controlar la corriente de un motor eléctrico durante las fases de arranque y parada.\n\nNuestras resistencias de arranque de acero inoxidable se utilizan siempre que sea necesario controlar la corriente de un motor eléctrico durante las fases de arranque y parada."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Our stainless steel starting resistors are used whenever it is necessary to control the current of an electric motor during the start and stop phases.\n\nOur stainless steel starting resistors are used whenever it is necessary to control the current of an electric motor during the start and stop phases."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Nos résistances de démarrage en acier inoxydable sont utilisées chaque fois qu'il est nécessaire de contrôler le courant d'un moteur électrique pendant les phases de démarrage et d'arrêt.\n\nNos résistances de démarrage en acier inoxydable sont utilisées chaque fois qu'il est nécessaire de contrôler le courant d'un moteur électrique pendant les phases de démarrage et d'arrêt."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Unsere Startwiderstände aus Edelstahl werden immer dann eingesetzt, wenn es darum geht, den Strom eines Elektromotors während der Start- und Stopp-Phase zu kontrollieren.\n\nUnsere Startwiderstände aus Edelstahl werden immer dann eingesetzt, wenn es darum geht, den Strom eines Elektromotors während der Start- und Stopp-Phase zu kontrollieren."
     }
    ]
   },
@@ -3314,6 +4472,16 @@
     "title": "Resistencias de arranque - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 511,
+   "fr": 509,
+   "de": 513
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3322,27 +4490,45 @@
   "count": 1,
   "slug": {
    "es": "resistencias-de-frenado",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "braking-resistors",
+   "fr": "resistances-de-freinage",
+   "de": "remweerstanden"
   },
   "name": {
    "es": "Resistencias de frenado",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Braking resistors",
+   "fr": "Résistances de freinage",
+   "de": "Bremswiderstände"
   },
   "path": {
    "es": "/categoria-producto/resistencias/resistencias-de-frenado/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/resistors-load-banks/braking-resistors/",
+   "fr": "/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-freinage/",
+   "de": "/de/categoria-producto/widerstande-lastbanke/remweerstanden/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Las resistencias de frenado tienen como objetivo disipar la energía generada por un motor durante la deceleración, evitando que se dañe el accionamiento por sobretensión y garantizando que se detenga de forma segura.\n\nTORIVAC es fabricante de diferentes tipos de resistencias de frenado dinámico, que ofrecen una solución económica y de dimensiones reducidas, para el control del frenado absorbiendo y disipando energía de manera eficiente y eficaz. Una resistencia de frenado ayuda a ralentizar o detener un motor disipando el exceso de tensión generado por el motor en desaceleración."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Braking resistors are intended to dissipate the energy generated by a motor during deceleration, preventing damage to the drive due to overvoltage and ensuring that it stops safely.\n\nTORIVAC is a manufacturer of different types of dynamic braking resistors, which offer an economical and small size solution for braking control by absorbing and dissipating energy efficiently and effectively. A braking resistor helps to slow down or stop a motor by dissipating the excess voltage generated by the decelerating motor."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les résistances de freinage sont destinées à dissiper l'énergie générée par un moteur pendant la décélération, afin d'éviter que le variateur ne soit endommagé par une surtension et de garantir qu'il s'arrête en toute sécurité.\n\nTORIVAC est un fabricant de différents types de résistances de freinage dynamiques, qui offrent une solution économique et compacte pour le contrôle du freinage en absorbant et en dissipant l'énergie de manière efficace. Une résistance de freinage permet de ralentir ou d'arrêter un moteur en dissipant l'excès de tension généré par le moteur en décélération."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Bremswiderstände dienen dazu, die von einem Motor beim Abbremsen erzeugte Energie abzubauen, um Überspannungsschäden am Antrieb zu vermeiden und einen sicheren Halt zu gewährleisten.\n\nTORIVAC ist ein Hersteller verschiedener Arten von dynamischen Bremswiderständen, die eine kostengünstige und kompakte Lösung für die Bremssteuerung bieten, indem sie Energie effizient und effektiv absorbieren und ableiten. Ein Bremswiderstand hilft beim Abbremsen oder Anhalten eines Motors, indem er die vom abbremsenden Motor erzeugte Überspannung ableitet."
     }
    ]
   },
@@ -3360,6 +4546,16 @@
     "title": "Resistencias de frenado - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 481,
+   "fr": 691,
+   "de": 692
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3368,27 +4564,45 @@
   "count": 1,
   "slug": {
    "es": "resistencias-de-puesta-a-tierra",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "grounding-resistors",
+   "fr": "resistances-de-mise-a-la-terre",
+   "de": "erdungswiderstande"
   },
   "name": {
    "es": "Resistencias de puesta a tierra",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Grounding resistors",
+   "fr": "Résistances de mise à la terre",
+   "de": "Erdungswiderstände"
   },
   "path": {
    "es": "/categoria-producto/resistencias/resistencias-de-puesta-a-tierra/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/resistors-load-banks/grounding-resistors/",
+   "fr": "/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-mise-a-la-terre/",
+   "de": "/de/categoria-producto/widerstande-lastbanke/erdungswiderstande/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Las resistencias de puesta a tierra del neutro están especialmente recomendadas para la protección de transformadores de potencia y generadores en caso de fallos a tierra en redes de distribución eléctrica de media y baja tensión\n\nNuestras resistencias de puesta a tierra a medida, equipadas con un transformador de corriente, ofrecen una gran capacidad térmica para absorber grandes corrientes. Nuestras resistencias también pueden integrar todo tipo de accesorios (interruptores, contactores, elementos de control, cajas de bornes, etc.)."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Neutral grounding resistors are especially recommended for the protection of power transformers and generators in case of ground faults in medium and low voltage electrical distribution networks.\n\nOur custom-made grounding resistors, equipped with a current transformer, offer a high thermal capacity to absorb large currents. Our resistors can also integrate all types of accessories (switches, contactors, control elements, terminal boxes, etc.)."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les résistances de mise à la terre du neutre sont particulièrement recommandées pour la protection des transformateurs de puissance et des générateurs en cas de défauts à la terre dans les réseaux de distribution de moyenne et basse tension.\n\nNos résistances de mise à la terre sur mesure, équipées d'un transformateur de courant, offrent une capacité thermique élevée pour absorber des courants importants. Nos résistances peuvent également intégrer tous types d'accessoires (interrupteurs, contacteurs, éléments de commande, boîtes à bornes, etc.)"
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Neutrale Erdungswiderstände werden besonders für den Schutz von Leistungstransformatoren und Generatoren im Falle von Erdungsfehlern in Mittel- und Niederspannungsnetzen empfohlen.\n\nUnsere Erdungswiderstände nach Maß, die mit einem Stromwandler ausgestattet sind, bieten eine hohe thermische Kapazität zur Aufnahme großer Ströme. In unsere Widerstände können auch alle Arten von Zubehör integriert werden (Schalter, Schütze, Steuerelemente, Klemmkästen usw.)."
     }
    ]
   },
@@ -3405,6 +4619,16 @@
     "title": "Resistencias de puesta a tierra - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 505,
+   "fr": 504,
+   "de": 507
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3468,6 +4692,11 @@
     "title": "Serie BAVS: Electrónicos - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 610,
+   "fr": 611,
+   "de": 612
   }
  },
  {
@@ -3476,27 +4705,45 @@
   "count": 1,
   "slug": {
    "es": "serie-tc",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "tc-series",
+   "fr": "serie-tc",
+   "de": "tc-serie"
   },
   "name": {
    "es": "Serie TC",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "TC Series",
+   "fr": "Série TC",
+   "de": "TC Serie"
   },
   "path": {
    "es": "/categoria-producto/transformadores/transformador-convencional/serie-tc/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/transformers/conventional-transformer/tc-series/",
+   "fr": "/fr/categoria-producto/transformateurs/transformateur-conventionnel/serie-tc/",
+   "de": "/de/categoria-producto/transformatoren/konventioneller-transformator/tc-serie/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Fabricados con salida simple, simétrica o múltiple, son perfectos como transformadores de audio, transformadores de impedancia, audio línea 100V i telefónico 600 ohms."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Manufactured with single, symmetrical or multiple output, they are perfect as audio transformers, impedance transformers, audio line 100V and telephone 600 ohms."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Fabriqués avec une sortie simple, symétrique ou multiple, ils sont parfaits comme transformateurs audio, transformateurs d'impédance, ligne audio 100V et téléphone 600 ohms."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Sie werden mit einfachem, symmetrischem oder mehrfachem Ausgang hergestellt und eignen sich perfekt als Audiotransformatoren, Impedanztransformatoren, Audioleitung 100V und Telefon 600 Ohm."
     }
    ]
   },
@@ -3513,6 +4760,16 @@
     "title": "Serie TC - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 465,
+   "fr": 467,
+   "de": 461
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3521,27 +4778,45 @@
   "count": 1,
   "slug": {
    "es": "serie-tce",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "tce-series",
+   "fr": "serie-tce",
+   "de": "tce-serie"
   },
   "name": {
    "es": "Serie TCE",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "TCE Series",
+   "fr": "Série TCE",
+   "de": "TCE-Serie"
   },
   "path": {
    "es": "/categoria-producto/transformadores/transformador-convencional/serie-tce/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/transformers/conventional-transformer/tce-series/",
+   "fr": "/fr/categoria-producto/transformateurs/transformateur-conventionnel/serie-tce/",
+   "de": "/de/categoria-producto/transformatoren/konventioneller-transformator/tce-serie/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Transformadores convencionales encapsulados fabricados con salida simple, salida simétrica o salidas dobles, encapsulados en resina epoxy autoextinguible, que cumplen con las normas internacionales de seguridad y calidad."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Encapsulated conventional transformers manufactured with single output, symmetrical output or double output, encapsulated in self-extinguishing epoxy resin, complying with international safety and quality standards."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Transformateurs conventionnels encapsulés fabriqués avec une sortie simple, une sortie symétrique ou une sortie double, encapsulés dans une résine époxy auto-extinguible, conformes aux normes internationales de sécurité et de qualité."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Gekapselte konventionelle Transformatoren mit einfachem, symmetrischem oder doppeltem Ausgang, eingekapselt in selbstverlöschendem Epoxidharz, die den internationalen Sicherheits- und Qualitätsstandards entsprechen."
     }
    ]
   },
@@ -3559,6 +4834,16 @@
     "title": "Serie TCE - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 472,
+   "fr": 524,
+   "de": 468
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3567,27 +4852,45 @@
   "count": 1,
   "slug": {
    "es": "serie-tci",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "tci-series-printed-circuit-board-enclosure",
+   "fr": "serie-tci-encapsulation-de-circuits-imprimes",
+   "de": "tci-serie-verkapselung-von-leiterplatten"
   },
   "name": {
    "es": "Serie TCi (encapsulado para circuito impreso)",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "TCi Series (printed circuit board enclosure)",
+   "fr": "Série TCi (encapsulation de circuits imprimés)",
+   "de": "TCi-Serie (Verkapselung von Leiterplatten)"
   },
   "path": {
    "es": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tci/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/transformers/toroidal-transformers/tci-series-printed-circuit-board-enclosure/",
+   "fr": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-tci-encapsulation-de-circuits-imprimes/",
+   "de": "/de/categoria-producto/transformatoren/ringkerntransformatoren/tci-serie-verkapselung-von-leiterplatten/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Transformadores de la serie TT, encapsulados con resina de epoxi, en cajas de poliamida 6, conectados internamente a los pins para una aplicación directa sobre circuitos impresos.\n\nEl Raster entre pins es de 5mm y su número varía según el tamaño de la caja.\n\nSe puede configurar el conexionado según las necesidades de cada cliente."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "TT series transformers, encapsulated with epoxy resin, in polyamide 6 cases, internally connected to the pins for direct application on printed circuit boards.\n\nRaster between pins is 5mm and their number varies according to the size of the case.\n\nThe connection can be configured according to the needs of each customer."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Transformateurs de la série TT, encapsulés dans de la résine époxy, dans des boîtiers en polyamide 6, connectés intérieurement aux broches pour une application directe sur des circuits imprimés.\n\nLa trame entre les broches est de 5 mm et leur nombre varie en fonction de la taille du boîtier.\n\nLe câblage peut être configuré en fonction des besoins de chaque client."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Transformatoren der Serie TT, in Epoxidharz eingekapselt, in Polyamid 6-Gehäusen, intern mit den Pins verbunden, für die direkte Anwendung auf Leiterplatten.\n\nDas Raster zwischen den Pins beträgt 5 mm und ihre Anzahl variiert je nach Größe des Gehäuses.\n\nDie Verdrahtung kann je nach den Bedürfnissen des Kunden konfiguriert werden."
     }
    ]
   },
@@ -3604,6 +4907,16 @@
     "title": "Transformadores encapsulados para circuito impreso - Torivac",
     "description": "Son transformadores encapsulados para circuito impreso en resina de epoxi, en cajas de poliamida 6 y conectados a los pins para su aplicación sobre circuitos impresos."
    }
+  },
+  "ids": {
+   "en": 459,
+   "fr": 473,
+   "de": 462
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3612,27 +4925,45 @@
   "count": 1,
   "slug": {
    "es": "serie-te",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "te-series",
+   "fr": "serie-te",
+   "de": "te-serie"
   },
   "name": {
    "es": "Serie TE",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "TE Series",
+   "fr": "Série TE",
+   "de": "TE-Serie"
   },
   "path": {
    "es": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-te/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/transformers/toroidal-transformers/te-series/",
+   "fr": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-te/",
+   "de": "/de/categoria-producto/transformatoren/ringkerntransformatoren/te-serie/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Son transformadores de la serie TT, encapsulados en resina de epoxi, en cajas de poliamida 6 que permiten alargar la vida util y mejorar el aislamiento del transformador.\n\nSon ideales para ambientes húmedos Elegir transformadores torideales encapsulados fiables para entornos industriales exigentes, Torivac se ha consolidado como una de las pocas empresas europeas especializadas en ello.o con polvo."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "They are transformers of the TT series, encapsulated in epoxy resin, in polyamide 6 enclosures that extend the service life and improve the insulation of the transformer.\n\nThey are ideal for humid environments Choosing reliable encapsulated toroidal transformers for demanding industrial environments, Torivac has established itself as one of the few European companies specialized in this field."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Il s'agit de transformateurs de la série TT, encapsulés en résine époxy, dans des enveloppes en polyamide 6 qui prolongent la durée de vie et améliorent l'isolation du transformateur.\n\nIls sont idéaux pour les environnements humides. En choisissant des transformateurs toriques encapsulés fiables pour les environnements industriels exigeants, Torivac s'est imposée comme l'une des rares entreprises européennes spécialisées dans ce domaine."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Es handelt sich um Transformatoren der Serie TT, die in Epoxidharz eingekapselt sind, in Polyamid 6-Gehäusen, die die Lebensdauer verlängern und die Isolierung des Transformators verbessern.\n\nSie sind ideal für feuchte Umgebungen. Mit der Auswahl zuverlässiger gekapselter Ringkerntransformatoren für anspruchsvolle industrielle Umgebungen hat sich Torivac als eines der wenigen europäischen Unternehmen etabliert, das sich auf diesen Bereich spezialisiert hat."
     }
    ]
   },
@@ -3650,6 +4981,16 @@
     "title": "Serie TE - Torivac",
     "description": "Torivac se ha consolidado como una de las pocas empresas europeas especializadas en transformadores toridales encapsulados."
    }
+  },
+  "ids": {
+   "en": 458,
+   "fr": 471,
+   "de": 455
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3658,27 +4999,45 @@
   "count": 1,
   "slug": {
    "es": "serie-tt",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "tt-series",
+   "fr": "serie-tt",
+   "de": "tt-serie"
   },
   "name": {
    "es": "Serie TT",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "TT Series",
+   "fr": "Série TT",
+   "de": "TT-Serie"
   },
   "path": {
    "es": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tt/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/transformers/toroidal-transformers/tt-series/",
+   "fr": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-tt/",
+   "de": "/de/categoria-producto/transformatoren/ringkerntransformatoren/tt-serie/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Este Transformador serie TT se fabrica con un primario de 230V y dos secundarios idénticos, que permiten duplicar tensiones ó intensidades, conectándolos en serie ó paralelo, en una gama de potencias entre 20VA y 220VA.Se suministran con cajas individuales y accesorios de montaje."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "This TT series transformer is manufactured with a 230V primary and two identical secondaries, which allow to duplicate voltages or currents, connecting them in series or parallel, in a power range between 20VA and 220VA, supplied with individual boxes and mounting accessories."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Ce transformateur de la série TT est fabriqué avec un primaire de 230V et deux secondaires identiques, qui permettent de dupliquer les tensions ou les courants, en les connectant en série ou en parallèle, dans une gamme de puissance comprise entre 20VA et 220VA, fourni avec des boîtes individuelles et des accessoires de montage."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Dieser Transformator der Serie TT wird mit einer 230V-Primärseite und zwei identischen Sekundärseiten hergestellt, die es ermöglichen, Spannungen oder Ströme zu verdoppeln, indem sie in Reihe oder parallel geschaltet werden, in einem Leistungsbereich zwischen 20VA und 220VA, geliefert mit individuellen Gehäusen und Montagezubehör."
     }
    ]
   },
@@ -3695,6 +5054,16 @@
     "title": "Serie TT - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 530,
+   "fr": 529,
+   "de": 531
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3759,6 +5128,11 @@
     "title": "Simples - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 630,
+   "fr": 602,
+   "de": 603
   }
  },
  {
@@ -3796,6 +5170,11 @@
     "title": "Sin categorizar - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 517,
+   "fr": 451,
+   "de": 446
   }
  },
  {
@@ -3804,27 +5183,45 @@
   "count": 1,
   "slug": {
    "es": "tapas-serie-bm",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "bm-series-covers",
+   "fr": "couvertures-de-la-serie-bm",
+   "de": "bm-serie-covers"
   },
   "name": {
    "es": "Tapas Serie BM",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "BM Series Covers",
+   "fr": "Couvercles de la série BM",
+   "de": "BM Serie Abdeckungen"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/tapas-serie-bm/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/bm-series-covers/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/couvertures-de-la-serie-bm/",
+   "de": "/de/categoria-producto/bedieningsknoppen/bm-serie-covers/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Las tapas correspondientes a la serie BM son mates, de perfil plano, lo que facilita cualquier grabado en su superficie. Se piden separadamente de los botones y se suministran lisas o con una línea grabada."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "The caps corresponding to the BM series are matte, with a flat profile, which facilitates any engraving on their surface. They are ordered separately from the buttons and are supplied plain or with an engraved line."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les capuchons correspondant à la série BM sont mats, avec un profil plat, ce qui facilite toute gravure sur leur surface. Ils sont commandés séparément des boutons et sont livrés bruts ou avec une ligne gravée."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Die Abdeckungen der BM-Serie sind matt und haben ein flaches Profil, das jede Gravur auf der Oberfläche erleichtert. Sie werden separat von den Knöpfen bestellt und sind entweder schlicht oder mit einer eingravierten Linie erhältlich."
     }
    ]
   },
@@ -3841,6 +5238,16 @@
     "title": "Tapas Serie BM - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 685,
+   "fr": 686,
+   "de": 687
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3849,27 +5256,45 @@
   "count": 1,
   "slug": {
    "es": "tapas-serie-bo",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "bo-series-lids",
+   "fr": "couvercles-de-la-serie-bo",
+   "de": "bo-serie-deksels"
   },
   "name": {
    "es": "Tapas serie BO",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "BO series covers",
+   "fr": "La série BO couvre",
+   "de": "BO-Serie umfasst"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando/tapas-serie-bo/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons/bo-series-lids/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/couvercles-de-la-serie-bo/",
+   "de": "/de/categoria-producto/bedieningsknoppen/bo-serie-deksels/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Son un complemento necesario para el botón pero se solicitan separadamente, para personalizar cada aplicación, mencionando el modelo y el color."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "They are a necessary complement to the button but are requested separately, to customize each application, mentioning the model and color."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Ils sont un complément indispensable au bouton mais sont commandés séparément, pour personnaliser chaque application, en mentionnant le modèle et la couleur."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Sie sind eine notwendige Ergänzung zum Knopf, werden aber separat bestellt, um jede Anwendung zu personalisieren, wobei das Modell und die Farbe angegeben werden."
     }
    ]
   },
@@ -3886,6 +5311,16 @@
     "title": "Tapas serie BO - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 688,
+   "fr": 689,
+   "de": 690
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -3894,27 +5329,45 @@
   "count": 1,
   "slug": {
    "es": "tct",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "tct",
+   "fr": "tct",
+   "de": "tct"
   },
   "name": {
    "es": "TCT",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "TCT",
+   "fr": "TCT",
+   "de": "TCT"
   },
   "path": {
    "es": "/categoria-producto/transformadores/transformador-convencional/tct/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/transformers/conventional-transformer/tct/",
+   "fr": "/fr/categoria-producto/transformateurs/transformateur-conventionnel/tct/",
+   "de": "/de/categoria-producto/transformatoren/konventioneller-transformator/tct/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Transformadores trifásicos fabricados con núcleos de la mejor calidad y según necesidades de cada cliente."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Three-phase transformers manufactured with the best quality cores and according to each customer's needs."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Transformateurs triphasés fabriqués avec des noyaux de la meilleure qualité et selon les besoins de chaque client."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Dreiphasentransformatoren, die mit den besten Qualitätskernen und nach den Bedürfnissen jedes Kunden hergestellt werden."
     }
    ]
   },
@@ -3931,6 +5384,16 @@
     "title": "Transformadores convencionales trifásicos - Torivac",
     "description": "Transformadores trifásicos fabricados con núcleos de la mejor calidad y según necesidades de cada cliente."
    }
+  },
+  "ids": {
+   "en": 527,
+   "fr": 526,
+   "de": 528
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -4038,6 +5501,11 @@
     "title": "Transformadores convencionales en España | Torivac",
     "description": "Los tansformadores convencionales pueden ser diseñados por Torivac y fabricados en España, con mayor trazabilidad, fiabilidad mecánica y control térmico."
    }
+  },
+  "ids": {
+   "en": 464,
+   "fr": 466,
+   "de": 460
   }
  },
  {
@@ -4101,6 +5569,11 @@
     "title": "Fábrica de transformadores industriales Barcelona | Torivac",
     "description": "Descubre nuestros transformadores industriales personalizados fabricados en Barcelona: eficiencia, silencio y fiabilidad para tus proyectos industriales"
    }
+  },
+  "ids": {
+   "en": 456,
+   "fr": 469,
+   "de": 453
   }
  },
  {
@@ -4177,6 +5650,11 @@
     "title": "Transformadores toroidales - Torivac",
     "description": "Torivac cuenta con una experiencia superior a treinta años en la fabricación de toda clase de transformadores toroidales."
    }
+  },
+  "ids": {
+   "en": 457,
+   "fr": 470,
+   "de": 454
   }
  },
  {
@@ -4185,27 +5663,45 @@
   "count": 1,
   "slug": {
    "es": "trifasico-serie-bavs",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "serie-bavs-three-phase",
+   "fr": "triphase",
+   "de": "driefasen"
   },
   "name": {
    "es": "Trifásico",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Three-phase",
+   "fr": "triphasé",
+   "de": "Driefasen"
   },
   "path": {
    "es": "/categoria-producto/estabilizadores-de-tension/serie-bavs/trifasico-serie-bavs/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/serie-bavs-three-phase/",
+   "fr": "/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/triphase/",
+   "de": "/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/driefasen/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Estabilizador binario accionado por control electrónico de IGBT para redes trifásicas. Ciclo de estabilizado cada 100mS. Controlado por microprocesador. Regulación continua por fase. Precisión en la tensión de salida mejor del 1 %. De serie, margen de regulación del ± 30 % Sin distorsión de onda ni cortes. Pantalla táctil mostrando tensión de entrada y salida por fase Intensidad de la carga, potencia activa y reactiva, coseno de fi. Frecuencia, Temperatura."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Binary voltage regulator driven by IGBT electronic control for three-phase networks. Stabilization cycle every 100ms. Microprocessor controlled. Continuous phase regulation. Output voltage accuracy better than 1%. Standard regulation range of ±30%. No waveform distortion or interruptions. Touchscreen display showing input and output voltage per phase, load current, active and reactive power, power factor, frequency, and temperature."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Régulateur de tension binaire à commande électronique IGBT pour réseaux triphasés. Cycle de stabilisation toutes les 100 ms. Commande par microprocesseur. Régulation de phase continue. Précision de la tension de sortie supérieure à 1 %. Plage de régulation standard de ±30 %. Absence de distorsion ou d'interruption du signal. Écran tactile affichant la tension d'entrée et de sortie par phase, le courant de charge, la puissance active et réactive, le facteur de puissance, la fréquence et la température."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Binaire spanningsregelaar met IGBT-elektronica voor driefasennetwerken. Stabilisatiecyclus elke 100 ms. Microprocessorgestuurd. Continue faseregeling. Nauwkeurigheid van de uitgangsspanning beter dan 1%. Standaard regelbereik van ±30%. Geen golfvormvervorming of onderbrekingen. Touchscreen-display met weergave van ingangs- en uitgangsspanning per fase, belastingsstroom, actief en reactief vermogen, arbeidsfactor, frequentie en temperatuur."
     }
    ]
   },
@@ -4223,6 +5719,16 @@
     "title": "Trifásico - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 619,
+   "fr": 620,
+   "de": 621
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -4231,27 +5737,45 @@
   "count": 1,
   "slug": {
    "es": "trifasico-serie-avs",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "serie-avs-three-phase",
+   "fr": "triphase",
+   "de": "driefasen"
   },
   "name": {
    "es": "Trifásico",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Three-phase",
+   "fr": "Triphasé",
+   "de": "Dreiphasig"
   },
   "path": {
    "es": "/categoria-producto/estabilizadores-de-tension/serie-avs/trifasico-serie-avs/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/serie-avs-three-phase/",
+   "fr": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/triphase/",
+   "de": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/driefasen/"
   },
   "description": {
    "es": [
     {
      "t": "p",
      "h": "Estabilizador electromecánico accionado por servomotor para redes trifásicas. Velocidad de estabilizado hasta 90V/Seg. Controlado por microprocesador. Regulación continua por fase. Precisión en la tensión de salida mejor del 1 %. Margen de regulación hasta del ± 40 % Sin distorsión de onda ni cortes. Pantalla táctil mostrando tensión de entrada y salida por fase Intensidad de la carga, potencia activa y reactiva, coseno de fi. Frecuencia, Temperatura."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Servomotor-driven electromechanical stabilizer for three-phase networks. Stabilization speed up to 90V/Sec. Microprocessor controlled. Continuous phase regulation. Output voltage accuracy better than 1 %. Control range up to ± 40 % No waveform distortion or clipping. Touch screen display showing input and output voltage per phase, load current, active and reactive power, cosine of fi. Frequency, Temperature."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Stabilisateur électromécanique à servomoteur pour réseaux triphasés. Vitesse de stabilisation jusqu'à 90V/Sec. Contrôlé par microprocesseur. Régulation continue de la phase. Précision de la tension de sortie meilleure que 1 %. Plage de réglage jusqu'à ± 40 % Pas de distorsion de la forme d'onde ni d'écrêtage. L'écran tactile affiche la tension d'entrée et de sortie par phase, le courant de charge, la puissance active et réactive, le cosinus de fi. Fréquence, température."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Servomotorischer elektromechanischer Stabilisator für Drehstromnetze. Stabilisierungsgeschwindigkeit bis zu 90 V/Sek. Mikroprozessorgesteuert. Kontinuierliche Phasenregelung. Genauigkeit der Ausgangsspannung besser als 1 %. Regelbereich bis zu ± 40 % Keine Wellenformverzerrung und kein Clipping. Touchscreen-Display mit Anzeige der Eingangs- und Ausgangsspannung pro Phase Laststrom, Wirk- und Blindleistung, Kosinus von fi. Frequenz, Temperatur."
     }
    ]
   },
@@ -4268,6 +5792,16 @@
     "title": "Trifásico - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 616,
+   "fr": 617,
+   "de": 618
+  },
+  "matched_by": {
+   "en": "product-cooccurrence",
+   "fr": "product-cooccurrence",
+   "de": "product-cooccurrence"
   }
  },
  {
@@ -4313,6 +5847,11 @@
     "title": "Variador de tensión industriales - Torivac",
     "description": "Constituidos, básicamente, por un variador de tensión, botón de mando y carátula, voltímetros y/o amperímetros (opcionales), cable, fusible, interruptor, piloto, etc."
    }
+  },
+  "ids": {
+   "en": null,
+   "fr": null,
+   "de": null
   }
  },
  {
@@ -4376,6 +5915,11 @@
     "title": "Variador Doble - Torivac",
     "description": null
    }
+  },
+  "ids": {
+   "en": 581,
+   "fr": 582,
+   "de": 583
   }
  },
  {
@@ -4448,6 +5992,11 @@
     "title": "Variadores de tensión - Autotransformadores regulables - Torivac",
     "description": "Torivac diseña y fabrica variadores de tensión y de regulación continua orientados al control preciso, seguro y fiable de sistemas eléctricos en entornos industriales, técnicos y de laboratorio."
    }
+  },
+  "ids": {
+   "en": 448,
+   "fr": 532,
+   "de": 533
   }
  },
  {
@@ -4511,6 +6060,11 @@
     "title": "Variadores monofásicos - Torivac",
     "description": "Los variadores de tensión monofásicos están diseñados para trabajar con una tensión de alimentación de 230VAC. El voltaje de salida se puede regular de 0-230VAC."
    }
+  },
+  "ids": {
+   "en": 536,
+   "fr": 534,
+   "de": 557
   }
  },
  {
@@ -4574,6 +6128,11 @@
     "title": "Variadores Trifásicos - Torivac",
     "description": "Los Variadores Trifásicos se pueden fabricar variadores de tensión con cualquier rango de tensión y potencia."
    }
+  },
+  "ids": {
+   "en": 544,
+   "fr": 541,
+   "de": 538
   }
  }
 ]

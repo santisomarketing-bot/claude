@@ -121,18 +121,20 @@ export function catTree(ctx, activeId = null) {
 }
 
 /** tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original */
-export function categoryCards(ctx) {
+export function categoryCards(ctx, list = null, opts = {}) {
   const { lang, site } = ctx;
-  const cards = site.catTree.map((c) => {
+  const nodes = list || site.catTree;
+  const limit = opts.limit === 0 ? Infinity : (opts.limit || 140);   // limit 0 = texto íntegro (páginas de categoría: la original muestra la descripción completa)
+  const cards = nodes.map((c) => {
     const desc = (c.description[lang] || c.description.es || []).find((b) => b.t === 'p');
     let txt = desc ? desc.h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() : '';
     // algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
     const words = (pick(c.name, lang) || '').toLowerCase().split(/[^a-záéíóúñüçàâêèëîïôûäöß]+/).filter((w) => w.length > 4).map((w) => w.slice(0, 6));
-    if (txt && words.length && !words.some((w) => txt.toLowerCase().includes(w))) txt = '';
+    if (opts.guard && txt && words.length && !words.some((w) => txt.toLowerCase().includes(w))) txt = '';
     const im = c.image || site.prodById.get(c.firstProduct)?.images?.[0];
-    return `<a class="ccard" href="${attr(ctx.href(c.pathFor[lang]))}"><div class="ph">${im ? `<img src="${attr(ctx.thumb(im))}" alt="" loading="lazy" decoding="async">` : ''}</div><div class="tx"><h3>${esc(pick(c.name, lang))}</h3>${txt ? `<p>${esc(txt.slice(0, 140))}${txt.length > 140 ? '…' : ''}</p>` : ''}<span class="meta"><span>${countLabel(c.total, lang)}</span><span class="go">${t('view_category', lang)} →</span></span></div></a>`;
+    return `<a class="ccard" href="${attr(ctx.href(c.pathFor[lang]))}"><div class="ph">${im ? `<img src="${attr(ctx.thumb(im))}" alt="" loading="lazy" decoding="async">` : ''}</div><div class="tx"><h3>${esc(pick(c.name, lang))}</h3>${txt ? `<p>${esc(txt.slice(0, limit))}${txt.length > limit ? '…' : ''}</p>` : ''}<span class="meta"><span>${countLabel(c.total, lang)}</span><span class="go">${t('view_category', lang)} →</span></span></div></a>`;
   }).join('');
-  return `<h2 class="sr-h">${t('categories', lang)}</h2><div class="ccards">${cards}</div>`;
+  return `<h2 class="${opts.heading ? 'sub-h' : 'sr-h'}">${opts.heading || t('categories', lang)}</h2><div class="ccards${opts.long ? ' long' : ''}">${cards}</div>`;
 }
 
 // ───────────────────────────────────────────────────────────── [HOME]
@@ -264,7 +266,7 @@ export function shopBody(ctx, { products, category = null, intro = [] }) {
   <div>
     ${crumbsHtml}
     ${introHtml}
-    ${category ? '' : categoryCards(ctx)}
+    ${category ? (category.children.length ? categoryCards(ctx, category.children, { heading: t('explore_sub', lang), limit: 0, long: true }) : '') : categoryCards(ctx, null, { guard: true })}
     <div class="toolbar"><button class="btn sm ghost filters-toggle" type="button" data-filters-toggle>☰ ${t('filters', lang)}</button><span class="count" data-count aria-live="polite">${countLabel(products.length, lang)}</span></div>
     <div class="pgrid" data-grid>${products.map((p) => productCard(ctx, p)).join('')}</div>
     <p class="notice" data-empty hidden>${t('no_results', lang)}</p>

@@ -57,6 +57,7 @@ export const T = {
   result_one: { es: 'producto', en: 'product', fr: 'produit', de: 'Produkt' },
   no_results: { es: 'No hay productos con estos filtros.', en: 'No products match these filters.', fr: 'Aucun produit ne correspond à ces filtres.', de: 'Keine Produkte für diese Filter.' },
   all: { es: 'Todos', en: 'All', fr: 'Tous', de: 'Alle' },
+  explore_sub: { es: 'Explora las subcategorías', en: 'Explore subcategories', fr: 'Explorer les sous-catégories', de: 'Unterkategorien erkunden' },
   view_category: { es: 'Ver categoría', en: 'View category', fr: 'Voir la catégorie', de: 'Kategorie ansehen' },
   view_product: { es: 'Ver ficha', en: 'View product', fr: 'Voir la fiche', de: 'Produkt ansehen' },
   models: { es: 'Modelos y referencias', en: 'Models and references', fr: 'Modèles et références', de: 'Modelle und Artikelnummern' },

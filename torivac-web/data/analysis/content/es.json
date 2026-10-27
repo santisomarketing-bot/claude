@@ -584,7 +584,7 @@
     {
      "severity": "media",
      "type": "accessibility",
-     "detail": "Alt vacío en la imagen hero y alts que son nombres de archivo en el carrusel ('B7T4306-optimized', 'te-optimized', 'A_Medida02-910x1024[1]'...).",
+     "detail": "Alt vacío en la imagen del hero, en los 10 iconos de familia y en 'disipador1'; y 11 alts que son nombres de archivo en las fotografías de los bloques y de la rejilla ('B7T4306-optimized', 'te-optimized', 'A_Medida02-910x1024[1]'...).",
      "evidence": "B7T4306-optimized",
      "where": "img"
     },
@@ -3068,7 +3068,7 @@
     {
      "severity": "media",
      "type": "wrong_language",
-     "detail": "La URL ES /confirmar/ devuelve la plantilla en inglés (/en/carrito/): problema de mapeo WPML.",
+     "detail": "La URL ES /confirmar/ devuelve la plantilla en inglés (/en/carrito/); probable fallo de mapeo de WPML (no confirmado).",
      "evidence": "Legal Notice and Terms of Use",
      "where": "html"
     },
@@ -9788,20 +9788,19 @@
  "gaps": [
   "Razón social completa y datos registrales: el titular está vacío en aviso legal y política de privacidad (solo NIF B60784584 y 'Torivac S.L.' en el pie/JSON-LD).",
   "Correo de destino de los formularios: no consta en las fuentes (WPForms no expone notificaciones); solo info@torivac.com. El plan asume info@grupotorivac.com y un correo 'mzamora', no confirmados.",
-  "Redes sociales: ninguna en el sitio. Horarios de atención: no constan.",
+  "Redes sociales: ningún perfil con enlace (el pie solo muestra un icono de LinkedIn sin enlace). Horarios de atención: no constan.",
   "Certificaciones de empresa (ISO, etc.): no constan; las entradas del blog afirman 'certificaciones reconocidas' sin nombrarlas.",
   "Servicios de mantenimiento, reparación, modernización, garantía extendida y descargadores de batería: afirmados en entradas del blog, ausentes del resto del sitio y del catálogo; pendientes de confirmar con el cliente.",
   "Blog: solo se cosechó la primera página del índice (/blog/page/2/ y /blog/page/3/ no están en los datos); las 21 entradas proceden de la API REST.",
   "Política de cookies: el HTML cosechado solo contiene el pie; el texto íntegro procede de la API REST (data/raw/rest/pages.es.json, id 1117).",
   "Las capturas ES de /confirmar/ y /shop/ devuelven la plantilla de /en/carrito/ y /en/shop/ (canonical): no hay carrito, tienda ni mi-cuenta ES en los datos.",
-  "Traducciones EN/FR/DE de /politica-de-cookies/ y de /aviso-legal-2/ (solo DE) no existen o no se cosecharon; el análisis de idiomas es de otras tareas.",
+  "El aviso legal solo tiene traducción DE; el índice de páginas registra la URL española para las políticas de cookies EN/FR/DE (con el título traducido): revisar en las tareas de idioma.",
   "Cifra '60 años' vs 'más de treinta años' (toroidales): requiere criterio del cliente.",
   "Clientes de referencia, lista de países y casos de éxito: no constan en ninguna página ES.",
   "Autoría real de los textos del blog (todos firmados 'Franco Santiso' en WordPress; no consta quién redactó los textos).",
   "Entrada EN id 8196 'What is a Voltage Variator?' (slug 'el-variador-de-tension-y-sus-funciones', 2024-09-19): existe solo en inglés (22 entradas EN frente a 21 en ES/FR/DE), con la meta description en español. No hay original ES en la API REST ni en el sitemap: posible original ES despublicado o borrado; confirmar con el cliente. Se analiza en el fichero EN.",
   "Banner de cookies: sus enlaces a política de cookies, privacidad y aviso legal se rellenan en ejecución (complianz.page_links); no hay captura del banner abierto en data/raw/screens para verlo.",
   "El enlace /aviso-legal/ del pie antiguo se marca como roto aparente solo por no constar en sitemap, REST ni índice de páginas; no se comprobó por red.",
-  "Destino real de las notificaciones de los formularios WPForms 14511 y 4921 (no consta; solo el aviso de privacidad menciona 'correodelcliente' sin dominio).",
   "Icono de LinkedIn del pie sin enlace: falta la URL del perfil de empresa (y si existen otros perfiles)."
  ],
  "field_notes": {

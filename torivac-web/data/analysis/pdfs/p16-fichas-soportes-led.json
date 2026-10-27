@@ -1,0 +1,591 @@
+{
+ "job": "p16-fichas-soportes-led",
+ "documents": [
+  {
+   "file": "Caracteristicas_Soportes_Metalicos_para_Leds.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "SOPORTES METALICOS PARA LED/METAL BRACKET FOR LEDS",
+   "families": [
+    {
+     "family": "Soportes Metálicos para LED de 3mm.",
+     "series": null,
+     "page": 1,
+     "description": "Rótulo en la página: 'Soportes Metálicos para LED de 3mm.' (con las líneas 'Suports metàl·lics per LED de 3mm.' y 'Metal Brackets for 3mm. LED'). Dos ilustraciones con foto y dibujo acotado.",
+     "general_specs": {
+      "Unidad de las cotas": "no impresa en el dibujo (solo cifras; el rótulo habla de 'LED de Nmm')",
+      "Número de ilustraciones/variantes": "2",
+      "Rosca en ambas": "ROSCA 6/0,75",
+      "Cota superior en ambas": "Ø 7"
+     },
+     "models": [
+      {
+       "reference": "Soportes Metálicos para LED de 3mm. (ilustración 1 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 7",
+        "Cota parcial superior junto a la cabeza (dibujo)": "2",
+        "Cota total (altura, dibujo)": "13",
+        "Rosca (rótulo del dibujo)": "ROSCA 6/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "cabeza negra con tuerca hexagonal metálica y cuerpo roscado negro; dibujo con cabeza troncocónica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 3mm. | Ø 7 | 2 | 13 | ROSCA 6/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Soportes Metálicos para LED de 3mm. (ilustración 2 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 7",
+        "Cota parcial superior junto a la cabeza (dibujo)": "3",
+        "Cota total (altura, dibujo)": "15",
+        "Rosca (rótulo del dibujo)": "ROSCA 6/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "acabado metálico brillante, cabeza en embudo, base negra; dibujo con cabeza cilíndrica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 3mm. | Ø 7 | 3 | 15 | ROSCA 6/0,75",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Los dibujos muestran tuerca hexagonal y arandela de fijación junto al cuerpo roscado (observación visual; el PDF no los nombra ni da referencia)"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Soportes Metálicos para LED de 5mm.",
+     "series": null,
+     "page": 1,
+     "description": "Rótulo en la página: 'Soportes Metálicos para LED de 5mm.' (con las líneas 'Suports metàl·lics per LED de 5mm.' y 'Metal Brackets for 5mm. LED'). Dos ilustraciones con foto y dibujo acotado.",
+     "general_specs": {
+      "Unidad de las cotas": "no impresa en el dibujo (solo cifras; el rótulo habla de 'LED de Nmm')",
+      "Número de ilustraciones/variantes": "2",
+      "Rosca en ambas": "ROSCA 8/0,75"
+     },
+     "models": [
+      {
+       "reference": "Soportes Metálicos para LED de 5mm. (ilustración 1 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 10",
+        "Cota parcial superior junto a la cabeza (dibujo)": "3",
+        "Cota total (altura, dibujo)": "15",
+        "Rosca (rótulo del dibujo)": "ROSCA 8/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "acabado metálico brillante, cabeza cónica con orificio, base negra; dibujo con cabeza troncocónica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 5mm. | Ø 10 | 3 | 15 | ROSCA 8/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Soportes Metálicos para LED de 5mm. (ilustración 2 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 9.5",
+        "Cota parcial superior junto a la cabeza (dibujo)": "3",
+        "Cota total (altura, dibujo)": "16.5",
+        "Rosca (rótulo del dibujo)": "ROSCA 8/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "cabeza y cuerpo roscado negros con tuerca metálica; dibujo con cabeza cilíndrica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 5mm. | Ø 9.5 | 3 | 16.5 | ROSCA 8/0,75",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Los dibujos muestran tuerca hexagonal y arandela de fijación junto al cuerpo roscado (observación visual; el PDF no los nombra ni da referencia)"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Soportes Metálicos para LED de 8mm.",
+     "series": null,
+     "page": 1,
+     "description": "Rótulo en la página: 'Soportes Metálicos para LED de 8mm.' (con las líneas 'Suports metàl·lics per LED de 8mm.' y 'Metal Brackets for 8mm. LED'). Dos ilustraciones con foto y dibujo acotado.",
+     "general_specs": {
+      "Unidad de las cotas": "no impresa en el dibujo (solo cifras; el rótulo habla de 'LED de Nmm')",
+      "Número de ilustraciones/variantes": "2",
+      "Rosca en ambas": "ROSCA 12/0,75",
+      "Cota superior en ambas": "Ø 14"
+     },
+     "models": [
+      {
+       "reference": "Soportes Metálicos para LED de 8mm. (ilustración 1 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 14",
+        "Cota parcial superior junto a la cabeza (dibujo)": "2,5",
+        "Cota total (altura, dibujo)": "17",
+        "Rosca (rótulo del dibujo)": "ROSCA 12/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "acabado metálico brillante, cabeza troncocónica, anillo negro en la base; dibujo con cabeza troncocónica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 8mm. | Ø 14 | 2,5 | 17 | ROSCA 12/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Soportes Metálicos para LED de 8mm. (ilustración 2 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 14",
+        "Cota parcial superior junto a la cabeza (dibujo)": null,
+        "Cota total (altura, dibujo)": "20",
+        "Rosca (rótulo del dibujo)": "ROSCA 12/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "acabado metálico brillante, cabeza en embudo, cuerpo roscado largo y anillo negro en la base; dibujo con cabeza cilíndrica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 8mm. | Ø 14 | (cota sin cifra) | 20 | ROSCA 12/0,75",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Los dibujos muestran tuerca hexagonal y arandela de fijación junto al cuerpo roscado (observación visual; el PDF no los nombra ni da referencia)"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Soportes Metálicos para LED de 10mm.",
+     "series": null,
+     "page": 1,
+     "description": "Rótulo en la página: 'Soportes Metálicos para LED de 10mm.' (con las líneas 'Suports metàl·lics per LED de 10mm.' y 'Metal Brackets for 10mm. LED'). Una foto y dos dibujos acotados en sección, rotulados 'Portaled 8 Cono Mixto' y 'Portaled 10 Cono Mixto'.",
+     "general_specs": {
+      "Unidad de las cotas": "no impresa en el dibujo (solo cifras; el rótulo habla de 'LED de Nmm')",
+      "Número de dibujos/variantes": "2",
+      "Rótulos de los dibujos": "Portaled 8 Cono Mixto; Portaled 10 Cono Mixto"
+     },
+     "models": [
+      {
+       "reference": "Portaled 8 Cono Mixto",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "14",
+        "Cota parcial superior junto a la cabeza (dibujo)": null,
+        "Cota total (altura, dibujo)": "16,5",
+        "Rosca (rótulo del dibujo)": "ROSCA 12 / 75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "cilindro metálico brillante roscado con cavidad interior oscura y anillo negro (una sola foto para los dos dibujos); dibujo en sección con zona sombreada",
+        "Rótulo del dibujo": "Portaled 8 Cono Mixto",
+        "Nota sobre las cotas": "la cota superior figura como '14' (sin símbolo Ø) y no hay cota parcial de cabeza"
+       },
+       "raw_row": "Soportes Metálicos para LED de 10mm. [dibujo izquierdo] | 14 | (cota sin cifra) | 16,5 | ROSCA 12 / 75",
+       "confidence": "media"
+      },
+      {
+       "reference": "Portaled 10 Cono Mixto",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "16",
+        "Cota parcial superior junto a la cabeza (dibujo)": null,
+        "Cota total (altura, dibujo)": "22",
+        "Rosca (rótulo del dibujo)": "ROSCA 10 / 100",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "cilindro metálico brillante roscado con cavidad interior oscura y anillo negro (una sola foto para los dos dibujos); dibujo en sección con zona sombreada",
+        "Rótulo del dibujo": "Portaled 10 Cono Mixto",
+        "Nota sobre las cotas": "la cota superior figura como '16' (sin símbolo Ø) y no hay cota parcial de cabeza"
+       },
+       "raw_row": "Soportes Metálicos para LED de 10mm. [dibujo derecho] | 16 | (cota sin cifra) | 22 | ROSCA 10 / 100",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Hoja de una página con logo Torivac y cabecera bilingüe 'SOPORTES METALICOS PARA LED/METAL BRACKET FOR LEDS'. Cada bloque lleva tres líneas de rótulo: castellano ('Soportes Metálicos para LED de Nmm.'), catalán ('Suports metàl·lics per LED de Nmm.') e inglés ('Metal Brackets for Nmm. LED').",
+     "page": 1
+    },
+    {
+     "fact": "Siete ilustraciones en total: 3 mm (2), 5 mm (2), 8 mm (2) y 10 mm (1 foto con 2 dibujos en sección).",
+     "page": 1
+    },
+    {
+     "fact": "Pie de página con la dirección web www.torivac.com.",
+     "page": 1
+    },
+    {
+     "fact": "La página no tiene capa de texto útil (solo cabecera y URL): los rótulos, cotas y roscas están en la imagen/dibujo y se han transcrito de la imagen renderizada.",
+     "page": 1
+    },
+    {
+     "fact": "Ausente en el PDF: referencias de pedido, material, acabado/color, tensión, corriente, precios, unidades por envase y normas. Solo figuran fotos, rótulos de familia, cotas y rosca.",
+     "page": 1
+    },
+    {
+     "fact": "Contenido duplicado: esta hoja reúne las mismas ilustraciones y cotas que 'Soportes-Metalicos.pdf' (pág. 37 del catálogo: 3 mm y 5 mm) y 'Soportes-Metalicos-para-LED.pdf' (pág. 38: 8 mm y 10 mm). El texto del PDF no coincide (same_text_as vacío), pero las cifras sí.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas",
+     "why": "Los dibujos solo llevan cifras (Ø 7, 13, 16,5...) sin 'mm'. El rótulo habla de 'LED de 3mm/5mm/8mm/10mm', pero la unidad de las cotas no está impresa. No se convierte ni se asume; se publica sin unidad hasta confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Significado de las cotas",
+     "why": "Cada dibujo tiene tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza y una cota total vertical. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'."
+    },
+    {
+     "page": 1,
+     "item": "Referencias de modelo",
+     "why": "El PDF no imprime ninguna referencia de pedido. Las 'reference' de models son etiquetas de trabajo (rótulo + nº de ilustración), salvo 'Portaled 8 Cono Mixto' y 'Portaled 10 Cono Mixto' que sí están impresos."
+    },
+    {
+     "page": 1,
+     "item": "Notación decimal mezclada",
+     "why": "En los dibujos aparecen 'Ø 9.5' y '16.5' (punto) junto a '2,5', '16,5' y 'ROSCA ...0,75' (coma). Se conservan tal cual; no se unifica."
+    },
+    {
+     "page": 1,
+     "item": "Cota parcial sin cifra (8mm, ilustración 2 de 2)",
+     "why": "El dibujo tiene la flecha de cota junto a la cabeza pero sin número. Se deja en null; no se infiere (en la ilustración 1 de 8 mm es '2,5')."
+    },
+    {
+     "page": 1,
+     "item": "Bloque de 10mm: dos dibujos bajo un solo rótulo",
+     "why": "Bajo 'Soportes Metálicos para LED de 10mm.' hay una foto y dos dibujos en sección rotulados 'Portaled 8 Cono Mixto' (ROSCA 12 / 75, cotas 14 y 16,5) y 'Portaled 10 Cono Mixto' (ROSCA 10 / 100, cotas 16 y 22). No queda claro qué LED admite cada uno ni si 'Portaled 8' pertenece de verdad a la familia de 10 mm; se transcribe tal cual."
+    },
+    {
+     "page": 1,
+     "item": "Roscas 'ROSCA 12 / 75' y 'ROSCA 10 / 100'",
+     "why": "Notación distinta de 'ROSCA 12/0,75' (8 mm). Podrían ser paso 0,75 y 1,00 pero el PDF no lo escribe; no se normaliza ni se interpreta."
+    },
+    {
+     "page": 1,
+     "item": "Duplicidad con Soportes-Metalicos.pdf y Soportes-Metalicos-para-LED.pdf",
+     "why": "Mismas ilustraciones y cotas que las páginas 37 y 38 del catálogo. No es un dato dudoso sino repetido; consolidar en un solo producto por variante al construir el catálogo web."
+    },
+    {
+     "page": 1,
+     "item": "Cota 'Ø 9.5' (5mm, ilustración 2)",
+     "why": "Es la única cota con '9.5' (resto de Ø: 7, 10, 14). Verificada a 250 ppp en la imagen: se lee 'Ø 9.5'."
+    }
+   ]
+  },
+  {
+   "file": "Soportes-Metalicos-para-LED.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "SOPORTES METÁLICOS PARA LED (página 38 del catálogo: 8 mm y 10 mm)",
+   "families": [
+    {
+     "family": "Soportes Metálicos para LED de 8mm.",
+     "series": null,
+     "page": 1,
+     "description": "Rótulo en la página: 'Soportes Metálicos para LED de 8mm.'. Dos ilustraciones con foto y dibujo acotado.",
+     "general_specs": {
+      "Unidad de las cotas": "no impresa en el dibujo (solo cifras; el rótulo habla de 'LED de Nmm')",
+      "Número de ilustraciones/variantes": "2",
+      "Rosca en ambas": "ROSCA 12/0,75",
+      "Cota superior en ambas": "Ø 14"
+     },
+     "models": [
+      {
+       "reference": "Soportes Metálicos para LED de 8mm. (ilustración 1 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 14",
+        "Cota parcial superior junto a la cabeza (dibujo)": "2,5",
+        "Cota total (altura, dibujo)": "17",
+        "Rosca (rótulo del dibujo)": "ROSCA 12/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "acabado metálico brillante, cabeza troncocónica, anillo negro en la base; dibujo con cabeza troncocónica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 8mm. | Ø 14 | 2,5 | 17 | ROSCA 12/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Soportes Metálicos para LED de 8mm. (ilustración 2 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 14",
+        "Cota parcial superior junto a la cabeza (dibujo)": null,
+        "Cota total (altura, dibujo)": "20",
+        "Rosca (rótulo del dibujo)": "ROSCA 12/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "acabado metálico brillante, cabeza en embudo, cuerpo roscado largo y anillo negro en la base; dibujo con cabeza cilíndrica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 8mm. | Ø 14 | (cota sin cifra) | 20 | ROSCA 12/0,75",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Los dibujos muestran tuerca hexagonal y arandela de fijación junto al cuerpo roscado (observación visual; el PDF no los nombra ni da referencia)"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Soportes Metálicos para LED de 10mm.",
+     "series": null,
+     "page": 1,
+     "description": "Rótulo en la página: 'Soportes Metálicos para LED de 10mm.'. Una foto y dos dibujos acotados en sección, rotulados 'Portaled 8 Cono Mixto' y 'Portaled 10 Cono Mixto'.",
+     "general_specs": {
+      "Unidad de las cotas": "no impresa en el dibujo (solo cifras; el rótulo habla de 'LED de Nmm')",
+      "Número de dibujos/variantes": "2",
+      "Rótulos de los dibujos": "Portaled 8 Cono Mixto; Portaled 10 Cono Mixto"
+     },
+     "models": [
+      {
+       "reference": "Portaled 8 Cono Mixto",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "14",
+        "Cota parcial superior junto a la cabeza (dibujo)": null,
+        "Cota total (altura, dibujo)": "16,5",
+        "Rosca (rótulo del dibujo)": "ROSCA 12 / 75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "cilindro metálico brillante roscado con cavidad interior oscura y anillo negro (una sola foto para los dos dibujos); dibujo en sección con zona sombreada",
+        "Rótulo del dibujo": "Portaled 8 Cono Mixto",
+        "Nota sobre las cotas": "la cota superior figura como '14' (sin símbolo Ø) y no hay cota parcial de cabeza"
+       },
+       "raw_row": "Soportes Metálicos para LED de 10mm. [dibujo izquierdo] | 14 | (cota sin cifra) | 16,5 | ROSCA 12 / 75",
+       "confidence": "media"
+      },
+      {
+       "reference": "Portaled 10 Cono Mixto",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "16",
+        "Cota parcial superior junto a la cabeza (dibujo)": null,
+        "Cota total (altura, dibujo)": "22",
+        "Rosca (rótulo del dibujo)": "ROSCA 10 / 100",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "cilindro metálico brillante roscado con cavidad interior oscura y anillo negro (una sola foto para los dos dibujos); dibujo en sección con zona sombreada",
+        "Rótulo del dibujo": "Portaled 10 Cono Mixto",
+        "Nota sobre las cotas": "la cota superior figura como '16' (sin símbolo Ø) y no hay cota parcial de cabeza"
+       },
+       "raw_row": "Soportes Metálicos para LED de 10mm. [dibujo derecho] | 16 | (cota sin cifra) | 22 | ROSCA 10 / 100",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 38 del catálogo (numeración impresa '38'), cabecera 'SOPORTES METÁLICOS PARA LED' con icono de soporte de LED en recuadro naranja.",
+     "page": 1
+    },
+    {
+     "fact": "Rótulos solo en castellano: 'Soportes Metálicos para LED de 8mm.' (x2) y 'Soportes Metálicos para LED de 10mm.' (x1). La capa de texto contiene solo cabecera, rótulos y el número de página; las cotas y roscas están en el dibujo y se han transcrito de la imagen renderizada.",
+     "page": 1
+    },
+    {
+     "fact": "Ausente en el PDF: referencias de pedido, material, acabado/color, tensión, corriente, precios, unidades por envase y normas. Solo figuran fotos, rótulos de familia, cotas y rosca.",
+     "page": 1
+    },
+    {
+     "fact": "Contenido duplicado: las mismas 4 ilustraciones y cotas (8 mm y 10 mm, dos dibujos 'Portaled') figuran en 'Caracteristicas_Soportes_Metalicos_para_Leds.pdf'; este PDF es la pág. 38 del catálogo y continúa 'Soportes-Metalicos.pdf' (pág. 37).",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas",
+     "why": "Los dibujos solo llevan cifras (Ø 7, 13, 16,5...) sin 'mm'. El rótulo habla de 'LED de 3mm/5mm/8mm/10mm', pero la unidad de las cotas no está impresa. No se convierte ni se asume; se publica sin unidad hasta confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Significado de las cotas",
+     "why": "Cada dibujo tiene tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza y una cota total vertical. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'."
+    },
+    {
+     "page": 1,
+     "item": "Referencias de modelo",
+     "why": "El PDF no imprime ninguna referencia de pedido. Las 'reference' de models son etiquetas de trabajo (rótulo + nº de ilustración), salvo 'Portaled 8 Cono Mixto' y 'Portaled 10 Cono Mixto' que sí están impresos."
+    },
+    {
+     "page": 1,
+     "item": "Notación decimal mezclada",
+     "why": "En los dibujos aparecen 'Ø 9.5' y '16.5' (punto) junto a '2,5', '16,5' y 'ROSCA ...0,75' (coma). Se conservan tal cual; no se unifica."
+    },
+    {
+     "page": 1,
+     "item": "Cota parcial sin cifra (8mm, segundo soporte)",
+     "why": "El dibujo tiene la flecha de cota junto a la cabeza pero sin número. Se deja en null; no se infiere."
+    },
+    {
+     "page": 1,
+     "item": "Bloque de 10mm: dos dibujos bajo un solo rótulo",
+     "why": "Bajo 'Soportes Metálicos para LED de 10mm.' hay una foto y dos dibujos en sección rotulados 'Portaled 8 Cono Mixto' (ROSCA 12 / 75; cotas 14 y 16,5) y 'Portaled 10 Cono Mixto' (ROSCA 10 / 100; cotas 16 y 22). No queda claro qué LED admite cada uno; se transcribe tal cual."
+    },
+    {
+     "page": 1,
+     "item": "Roscas 'ROSCA 12 / 75' y 'ROSCA 10 / 100'",
+     "why": "Notación distinta de 'ROSCA 12/0,75'. No se normaliza ni se interpreta."
+    },
+    {
+     "page": 1,
+     "item": "Duplicidad con Caracteristicas_Soportes_Metalicos_para_Leds.pdf",
+     "why": "Mismas ilustraciones y cotas de 8 mm y 10 mm. Repetido, no dudoso."
+    }
+   ]
+  },
+  {
+   "file": "Soportes-Metalicos.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "SOPORTES METÁLICOS PARA LED (página 37 del catálogo: 3 mm y 5 mm)",
+   "families": [
+    {
+     "family": "Soportes Metálicos para LED de 3mm.",
+     "series": null,
+     "page": 1,
+     "description": "Rótulo en la página: 'Soportes Metálicos para LED de 3mm.'. Dos ilustraciones con foto y dibujo acotado.",
+     "general_specs": {
+      "Unidad de las cotas": "no impresa en el dibujo (solo cifras; el rótulo habla de 'LED de Nmm')",
+      "Número de ilustraciones/variantes": "2",
+      "Rosca en ambas": "ROSCA 6/0,75",
+      "Cota superior en ambas": "Ø 7"
+     },
+     "models": [
+      {
+       "reference": "Soportes Metálicos para LED de 3mm. (ilustración 1 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 7",
+        "Cota parcial superior junto a la cabeza (dibujo)": "2",
+        "Cota total (altura, dibujo)": "13",
+        "Rosca (rótulo del dibujo)": "ROSCA 6/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "cabeza negra con tuerca hexagonal metálica y cuerpo roscado negro; dibujo con cabeza troncocónica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 3mm. | Ø 7 | 2 | 13 | ROSCA 6/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Soportes Metálicos para LED de 3mm. (ilustración 2 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 7",
+        "Cota parcial superior junto a la cabeza (dibujo)": "3",
+        "Cota total (altura, dibujo)": "15",
+        "Rosca (rótulo del dibujo)": "ROSCA 6/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "acabado metálico brillante, cabeza en embudo, base negra; dibujo con cabeza cilíndrica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 3mm. | Ø 7 | 3 | 15 | ROSCA 6/0,75",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Los dibujos muestran tuerca hexagonal y arandela de fijación junto al cuerpo roscado (observación visual; el PDF no los nombra ni da referencia)"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Soportes Metálicos para LED de 5mm.",
+     "series": null,
+     "page": 1,
+     "description": "Rótulo en la página: 'Soportes Metálicos para LED de 5mm.'. Dos ilustraciones con foto y dibujo acotado.",
+     "general_specs": {
+      "Unidad de las cotas": "no impresa en el dibujo (solo cifras; el rótulo habla de 'LED de Nmm')",
+      "Número de ilustraciones/variantes": "2",
+      "Rosca en ambas": "ROSCA 8/0,75"
+     },
+     "models": [
+      {
+       "reference": "Soportes Metálicos para LED de 5mm. (ilustración 1 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 10",
+        "Cota parcial superior junto a la cabeza (dibujo)": "3",
+        "Cota total (altura, dibujo)": "15",
+        "Rosca (rótulo del dibujo)": "ROSCA 8/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "acabado metálico brillante, cabeza cónica con orificio, base negra; dibujo con cabeza troncocónica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 5mm. | Ø 10 | 3 | 15 | ROSCA 8/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Soportes Metálicos para LED de 5mm. (ilustración 2 de 2; sin referencia impresa)",
+       "page": 1,
+       "specs": {
+        "Cota superior del dibujo (diámetro, Ø)": "Ø 9.5",
+        "Cota parcial superior junto a la cabeza (dibujo)": "3",
+        "Cota total (altura, dibujo)": "16.5",
+        "Rosca (rótulo del dibujo)": "ROSCA 8/0,75",
+        "Aspecto en la foto (observación visual, no es texto del PDF)": "cabeza y cuerpo roscado negros con tuerca metálica; dibujo con cabeza cilíndrica"
+       },
+       "raw_row": "Soportes Metálicos para LED de 5mm. | Ø 9.5 | 3 | 16.5 | ROSCA 8/0,75",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Los dibujos muestran tuerca hexagonal y arandela de fijación junto al cuerpo roscado (observación visual; el PDF no los nombra ni da referencia)"
+     ],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 37 del catálogo (numeración impresa '37'), cabecera 'SOPORTES METÁLICOS PARA LED' con icono de soporte de LED en recuadro naranja.",
+     "page": 1
+    },
+    {
+     "fact": "Rótulos solo en castellano: 'Soportes Metálicos para LED de 3mm.' (x2) y 'Soportes Metálicos para LED de 5mm.' (x2). La capa de texto contiene solo cabecera, rótulos y el número de página; las cotas y roscas están en el dibujo y se han transcrito de la imagen renderizada.",
+     "page": 1
+    },
+    {
+     "fact": "Ausente en el PDF: referencias de pedido, material, acabado/color, tensión, corriente, precios, unidades por envase y normas. Solo figuran fotos, rótulos de familia, cotas y rosca.",
+     "page": 1
+    },
+    {
+     "fact": "Contenido duplicado: las mismas 4 ilustraciones y cotas (3 mm y 5 mm) figuran en 'Caracteristicas_Soportes_Metalicos_para_Leds.pdf'; este PDF es la pág. 37 del catálogo y su continuación es 'Soportes-Metalicos-para-LED.pdf' (pág. 38).",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas",
+     "why": "Los dibujos solo llevan cifras (Ø 7, 13, 16,5...) sin 'mm'. El rótulo habla de 'LED de 3mm/5mm/8mm/10mm', pero la unidad de las cotas no está impresa. No se convierte ni se asume; se publica sin unidad hasta confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Significado de las cotas",
+     "why": "Cada dibujo tiene tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza y una cota total vertical. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'."
+    },
+    {
+     "page": 1,
+     "item": "Referencias de modelo",
+     "why": "El PDF no imprime ninguna referencia de pedido. Las 'reference' de models son etiquetas de trabajo (rótulo + nº de ilustración), no códigos de Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Notación decimal mezclada",
+     "why": "En los dibujos aparecen 'Ø 9.5' y '16.5' (punto) junto a '2,5', '16,5' y 'ROSCA ...0,75' (coma). Se conservan tal cual; no se unifica."
+    },
+    {
+     "page": 1,
+     "item": "Duplicidad con Caracteristicas_Soportes_Metalicos_para_Leds.pdf",
+     "why": "Mismas ilustraciones y cotas de 3 mm y 5 mm. Repetido, no dudoso."
+    },
+    {
+     "page": 1,
+     "item": "Cota 'Ø 9.5' (5mm, segundo soporte)",
+     "why": "Verificada a 220 ppp: se lee 'Ø 9.5' con punto decimal y altura '16.5'. Se conservan con punto."
+    }
+   ]
+  }
+ ]
+}

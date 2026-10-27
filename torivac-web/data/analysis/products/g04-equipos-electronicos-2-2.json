@@ -1,0 +1,1224 @@
+{
+ "group": "g04-equipos-electronicos-2-2",
+ "products": [
+  {
+   "id_es": 968,
+   "slug": "convertidores-y-variadores-de-frecuencia-para-ensayos",
+   "url_es": "https://grupotorivac.com/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+   "sku": "ed95f462528c",
+   "names": {
+    "es": "Variadores de frecuencia",
+    "en": "Frequency inverters",
+    "fr": "Convertisseurs de fréquence",
+    "de": "Frequenzumrichter"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+    "en": "https://grupotorivac.com/en/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+    "fr": "https://grupotorivac.com/fr/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+    "de": "https://grupotorivac.com/de/product/convertidores-y-variadores-de-frecuencia-para-ensayos/"
+   },
+   "ids": {
+    "es": 968,
+    "en": 15852,
+    "fr": 15854,
+    "de": 15874
+   },
+   "category_path_es": [
+    "Equipos electrónicos",
+    "Convertidores"
+   ],
+   "categories_all_es": [
+    {
+     "id": 97,
+     "name": "Convertidores",
+     "slug": "convertidores"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Un desarrollo de más de 3 años nos ha llevado a conseguir una fuente de alimentación variable en tensión y frecuencia en potencias que oscila entre 25-300KVA,\nNuestro convertidor puede suministrar una red desde 16Hz hasta 200Hz, con una resolución de 0.1Hz, y una tensión de salida variable en directo de 0-240VAC en monofásico, y de 0- 440VAC en trifásico.\nEl equipo incluye conexión ethernet, visualizador de todos los parámetros de salida y entrada, pantalla táctil, armario IP20, ventilación forzada (>50dB a 1m).",
+    "en": "A development of more than 3 years has led us to achieve a power supply variable in voltage and frequency in powers ranging from 25-300KVA,\n. Our converter can supply a network from 16Hz to 200Hz, with a resolution of 0. 1Hz, and a live variable output voltage of 0-240VAC in single phase, and 0- 440VAC in three phase.1Hz, and a live variable output voltage of 0-240VAC in single phase, and 0- 440VAC in three phase.\nThe equipment includes ethernet connection, display of all output and input parameters, touch screen, IP20 cabinet, forced ventilation (>50dB at 1m).",
+    "fr": "Un développement de plus de 3 ans nous a permis de réaliser une alimentation variable en tension et en fréquence dans des puissances allant de 25-300KVA,\nNotre convertisseur peut alimenter un réseau de 16Hz à 200Hz, avec une résolution de 0. 1Hz, et une tension de sortie variable en direct de 0-240VAC en monophasé, et de 0- 440VAC en triphasé.1Hz, et une tension de sortie variable en direct de 0-240VAC en monophasé, et de 0- 440VAC en triphasé.\nL’équipement comprend la connexion ethernet, l’affichage de tous les paramètres de sortie et d’entrée, un écran tactile, une armoire IP20, une ventilation forcée (>50dB à 1m).",
+    "de": "Eine mehr als 3-jährige Entwicklung hat uns zu einer in Spannung und Frequenz variablen Stromversorgung in einem Leistungsbereich von 25-300KVA geführt,\nUnser Umrichter kann ein Netz von 16Hz bis 200Hz mit einer Auflösung von 0. 1Hz und einer variablen Ausgangsspannung von 0-240VAC in einphasig und 0- 440VAC in dreiphasig versorgen.1Hz und eine variable Ausgangsspannung von 0-240VAC einphasig und 0- 440VAC dreiphasig.\nDie Ausstattung umfasst einen Ethernet-Anschluss, eine Anzeige aller Ausgangs- und Eingangsparameter, einen Touchscreen, einen IP20-Schrank, eine Zwangsbelüftung (>50dB in 1m)."
+   },
+   "description_text": {
+    "es": "## ¿Para qué sirven estos variadores de frecuencia?\n\nLos variadores de frecuencia gestionan la potencia de motores eléctricos de manera eficiente, ajustando la velocidad de acuerdo con las necesidades de carga en cada momento. Optimizan el consumo energético, reducen el estrés mecánico en los equipos y mejoran la fiabilidad del sistema. Gracias a su tecnología avanzada, estos dispositivos garantizan una operación más eficiente y segura, convirtiéndolos en una inversión estratégica para cualquier industria que busque maximizar su rendimiento eléctrico.\n\n## ¿Cuál es la función elemental que cumple el variador de frecuencia?\n\nLos variadores de frecuencia gestionan la potencia de motores eléctricos de manera eficiente, ajustando la velocidad de acuerdo con las necesidades de carga en cada momento. Optimizan el consumo energético, reducen el estrés mecánico en los equipos y mejoran la fiabilidad del sistema. Gracias a su tecnología avanzada, estos dispositivos garantizan una operación más eficiente y segura, convirtiéndolos en una inversión estratégica para cualquier industria que busque maximizar su rendimiento eléctrico.\n\n## ¿Cuál es la función elemental que cumple el variador de frecuencia?\n\nSu capacidad para regular la velocidad y el torque del motor según la demanda real de la aplicación no solo mejora la eficiencia operativa, sino que también reduce el consumo energético y prolonga la vida útil de los equipos. En industrias donde el control de potencia es fundamental, contar con esta tecnología representa una ventaja competitiva al minimizar costos de operación y mejorar la estabilidad de los sistemas eléctricos.\n\nEstos dispositivos permiten ajustar de manera precisa la velocidad del motor, evitando arranques bruscos que pueden generar picos de tensión y un desgaste prematuro de los componentes. Su aplicación es fundamental en plantas de generación de energía, sistemas de bombeo, ventilación industrial y cualquier infraestructura que requiera un control preciso del flujo eléctrico. Además, su implementación reduce la emisión de calor y vibraciones, lo que se traduce en un funcionamiento más estable y seguro.\n\n## ¿Cómo se complementa con otros dispositivos en un sistema eléctrico de alta exigencia?\n\nEn combinación con transformadores toroidales y autotransformadores, los variadores ajustan la tensión y frecuencia de salida para garantizar un suministro estable y adaptado a las necesidades del motor, evitando subidas o bajadas de tensión que puedan afectar su rendimiento. Al trabajar junto a resistencias de arranque, permiten un encendido progresivo, minimizando picos de corriente y protegiendo la infraestructura eléctrica.\nTambién se complementan con descargadores de batería y sistemas de monitoreo, permitiendo realizar pruebas y ajustes en tiempo real para mantener un desempeño óptimo. En aplicaciones donde la estabilidad es crítica, como procesos de producción automatizados, sistemas de bombeo y climatización industrial, los variadores garantizan que los motores operen con el menor consumo posible.\n\n## Torivac es una compañía especialista en diseño y fabricación de transformadores toroidales y variadores de tensión\n\nContamos con una experiencia de cerca de 60 años en el sector, que nos ha permitido ir creciendo hasta lograr una presencia en más de 30 países.\nDisponemos de un equipo técnico que garantiza la fabricación dispositivos de alta precisión y eficiencia. Nuestra metodología de trabajo nos permite realizar simulaciones avanzadas en cada fase de cada proyecto, asegurando que cada componente, desde variadores de tensión toroidales, transformadores regulables, descargadores de batería, potenciómetros y núcleos toroidales, cumpla con los más altos estándares del sector.\nTrabajamos estrechamente con empresas que cuentan con una gran infraestructura, en busca de garantizarles soluciones personalizadas y eficientes. Apuntamos a responder a las exigencias de industrias como la tecnológica, la energética y la automotriz. Nuestro objetivo es seguir innovando, fortaleciendo alianzas estratégicas y expandiendo nuestro alcance global, manteniendo siempre el sello de calidad y excelencia que nos ha caracterizado desde nuestros inicios.",
+    "en": "## What are these frequency inverters used for?\n\nVariable frequency drives manage the power of electric motors efficiently, adjusting the speed according to the load requirements at any given time. They optimize energy consumption, reduce mechanical stress on equipment and improve system reliability. Thanks to their advanced technology, these devices ensure more efficient and safer operation, making them a strategic investment for any industry seeking to maximize electrical performance.\n\n## What is the basic function of the variable frequency drive?\n\nVariable frequency drives manage the power of electric motors efficiently, adjusting the speed according to the load requirements at any given time. They optimize energy consumption, reduce mechanical stress on equipment and improve system reliability. Thanks to their advanced technology, these devices ensure more efficient and safer operation, making them a strategic investment for any industry seeking to maximize electrical performance.\n\n## What is the basic function of the variable frequency drive?\n\nIts ability to regulate motor speed and torque according to actual application demand not only improves operating efficiency, but also reduces energy consumption and extends equipment life. In industries where power control is critical, this technology represents a competitive advantage by minimizing operating costs and improving the stability of electrical systems.\n\nThese devices allow precise adjustment of the motor speed, avoiding abrupt starts that can generate voltage peaks and premature wear of components. Their application is essential in power generation plants, pumping systems, industrial ventilation and any infrastructure that requires precise control of electrical flow. In addition, its implementation reduces heat emission and vibrations, resulting in a more stable and safer operation.\n\n## How does it complement other devices in a highly demanding electrical system?\n\nIn combination with toroidal transformers and autotransformers, the drives adjust the output voltage and frequency to ensure a stable supply adapted to the motor’s needs, avoiding voltage surges or dips that could affect its performance. Working in conjunction with starting resistors, they enable soft-starting, minimizing current peaks and protecting the electrical infrastructure.\nThey are also complemented by battery dischargers and monitoring systems, allowing real-time testing and adjustment to maintain optimal performance. In applications where stability is critical, such as automated production processes, pumping systems and industrial air conditioning, the drives ensure that motors operate with the lowest possible power consumption.\n\n## Torivac is a company specialized in the design and manufacture of toroidal transformers and voltage regulators\n\nWe have nearly 60 years of experience in the industry, which has allowed us to grow to a presence in more than 30 countries.\nWe have a technical team that guarantees the manufacture of high precision and efficient devices. Our work methodology allows us to perform advanced simulations in each phase of each project, ensuring that each component, from toroidal voltage variators, adjustable transformers, battery dischargers, potentiometers and toroidal cores, meet the highest standards in the industry.\nWe work closely with companies that have a large infrastructure, seeking to ensure customized and efficient solutions. We aim to respond to the demands of industries such as technology, energy and automotive. Our goal is to continue innovating, strengthening strategic alliances and expanding our global reach, always maintaining the seal of quality and excellence that has characterized us since our beginnings.",
+    "fr": "## À quoi servent ces convertisseurs de fréquence ?\n\nLes variateurs de fréquence gèrent efficacement la puissance des moteurs électriques, en ajustant la vitesse en fonction des besoins de la charge à un moment donné. Ils optimisent la consommation d’énergie, réduisent les contraintes mécaniques sur les équipements et améliorent la fiabilité des systèmes. Grâce à leur technologie avancée, ces dispositifs assurent un fonctionnement plus efficace et plus sûr, ce qui en fait un investissement stratégique pour toute industrie cherchant à maximiser les performances électriques.\n\n## Quelle est la fonction de base du convertisseur de fréquence ?\n\nLes variateurs de fréquence gèrent efficacement la puissance des moteurs électriques, en ajustant la vitesse en fonction des besoins de la charge à un moment donné. Ils optimisent la consommation d’énergie, réduisent les contraintes mécaniques sur les équipements et améliorent la fiabilité des systèmes. Grâce à leur technologie avancée, ces dispositifs assurent un fonctionnement plus efficace et plus sûr, ce qui en fait un investissement stratégique pour toute industrie cherchant à maximiser les performances électriques.\n\n## Quelle est la fonction de base du convertisseur de fréquence ?\n\nSa capacité à réguler la vitesse et le couple du moteur en fonction de la demande réelle de l’application permet non seulement d’améliorer l’efficacité opérationnelle, mais aussi de réduire la consommation d’énergie et de prolonger la durée de vie de l’équipement. Dans les industries où le contrôle de la puissance est critique, disposer de cette technologie représente un avantage concurrentiel en minimisant les coûts d’exploitation et en améliorant la stabilité des systèmes électriques.\n\nCes dispositifs permettent un réglage précis de la vitesse du moteur, en évitant les démarrages brusques qui peuvent générer des pics de tension et une usure prématurée des composants. Leur application est essentielle dans les centrales électriques, les systèmes de pompage, la ventilation industrielle et toute infrastructure nécessitant un contrôle précis du flux électrique. En outre, leur mise en œuvre permet de réduire les émissions de chaleur et les vibrations, ce qui se traduit par un fonctionnement plus stable et plus sûr.\n\n## Comment complète-t-il les autres dispositifs d’un système électrique très exigeant ?\n\nAssociés à des transformateurs toroïdaux et à des autotransformateurs, les onduleurs ajustent la tension et la fréquence de sortie pour garantir une alimentation stable adaptée aux besoins du moteur, en évitant les surtensions ou les chutes de tension qui pourraient affecter ses performances. Associés à des résistances de démarrage, ils permettent un démarrage en douceur, minimisant les pics de courant et protégeant l’infrastructure électrique.\nIls sont également complétés par des déchargeurs de batterie et des systèmes de surveillance, permettant des tests et des ajustements en temps réel afin de maintenir des performances optimales. Dans les applications où la stabilité est essentielle, telles que les processus de production automatisés, les systèmes de pompage et la climatisation industrielle, les variateurs garantissent que les moteurs fonctionnent avec la consommation d’énergie la plus faible possible.\n\n## Torivac est une entreprise spécialisée dans la conception et la fabrication de transformateurs toroïdaux et de régulateurs de tension\n\nNous avons près de 60 ans d’expérience dans le secteur, ce qui nous a permis d’être présents dans plus de 30 pays.\nNous disposons d’une équipe technique qui garantit la fabrication d’appareils de haute précision et efficaces. Notre méthodologie de travail nous permet d’effectuer des simulations avancées à chaque étape de chaque projet, en garantissant que chaque composant, qu’il s’agisse de variateurs de tension toroïdaux, de transformateurs de régulation, de déchargeurs de batterie, de potentiomètres ou de noyaux toroïdaux, répond aux normes les plus élevées du secteur.\nNous travaillons en étroite collaboration avec des entreprises disposant d’une grande infrastructure, afin de garantir des solutions personnalisées et efficaces. Nous visons à répondre aux demandes d’industries telles que la technologie, l’énergie et l’automobile. Notre objectif est de continuer à innover, de renforcer les alliances stratégiques et d’étendre notre portée mondiale, en maintenant toujours le label de qualité et d’excellence qui nous caractérise depuis nos débuts.",
+    "de": "## Wofür werden diese Frequenzumrichter verwendet?\n\nFrequenzumrichter steuern die Leistung von Elektromotoren effizient und passen die Drehzahl an die jeweiligen Lastanforderungen an. Sie optimieren den Energieverbrauch, reduzieren die mechanische Belastung der Geräte und verbessern die Zuverlässigkeit des Systems. Dank ihrer fortschrittlichen Technologie sorgen diese Geräte für einen effizienteren und sichereren Betrieb, was sie zu einer strategischen Investition für jede Branche macht, die ihre elektrische Leistung maximieren möchte.\n\n## Was ist die grundlegende Funktion des Frequenzumrichters?\n\nFrequenzumrichter steuern die Leistung von Elektromotoren effizient und passen die Drehzahl an die jeweiligen Lastanforderungen an. Sie optimieren den Energieverbrauch, reduzieren die mechanische Belastung der Geräte und verbessern die Zuverlässigkeit des Systems. Dank ihrer fortschrittlichen Technologie sorgen diese Geräte für einen effizienteren und sichereren Betrieb, was sie zu einer strategischen Investition für jede Branche macht, die ihre elektrische Leistung maximieren möchte.\n\n## Was ist die grundlegende Funktion des Frequenzumrichters?\n\nDie Fähigkeit, Motordrehzahl und -drehmoment entsprechend dem tatsächlichen Anwendungsbedarf zu regulieren, verbessert nicht nur die Betriebseffizienz, sondern senkt auch den Energieverbrauch und verlängert die Lebensdauer der Geräte. In Industrien, in denen die Leistungssteuerung von entscheidender Bedeutung ist, stellt diese Technologie einen Wettbewerbsvorteil dar, da sie die Betriebskosten minimiert und die Stabilität der elektrischen Systeme verbessert.\n\nDiese Geräte ermöglichen eine präzise Einstellung der Motordrehzahl und vermeiden so abrupte Starts, die Spannungsspitzen und vorzeitigen Verschleiß von Komponenten verursachen können. Ihr Einsatz ist unerlässlich in Kraftwerken, Pumpsystemen, industriellen Lüftungsanlagen und jeder Infrastruktur, die eine präzise Steuerung des Stromflusses erfordert. Darüber hinaus werden durch ihren Einsatz Wärmeabstrahlung und Vibrationen reduziert, was zu einem stabileren und sichereren Betrieb führt.\n\n## Wie ergänzt es andere Geräte in einem hochanspruchsvollen elektrischen System?\n\nIn Kombination mit Ringkerntransformatoren und Spartransformatoren passen die Wechselrichter die Ausgangsspannung und -frequenz an, um eine stabile, an die Bedürfnisse des Motors angepasste Versorgung zu gewährleisten und Spannungsspitzen oder -einbrüche zu vermeiden, die seine Leistung beeinträchtigen könnten. In Verbindung mit Anlaufwiderständen ermöglichen sie einen sanften Start, minimieren Stromspitzen und schützen die elektrische Infrastruktur.\nSie werden außerdem durch Batterieentlader und Überwachungssysteme ergänzt, die eine Prüfung und Anpassung in Echtzeit ermöglichen, um eine optimale Leistung zu erhalten. Bei Anwendungen, bei denen die Stabilität entscheidend ist, wie z.B. bei automatisierten Produktionsprozessen, Pumpsystemen und industriellen Klimaanlagen, sorgen die Antriebe dafür, dass die Motoren mit dem geringstmöglichen Stromverbrauch arbeiten.\n\n## Torivac ist ein Unternehmen, das sich auf die Entwicklung und Herstellung von Ringkerntransformatoren und Spannungsreglern spezialisiert hat\n\nWir verfügen über eine fast 60-jährige Erfahrung in diesem Sektor, die es uns ermöglicht hat, in mehr als 30 Ländern präsent zu sein.\nWir verfügen über ein technisches Team, das die Herstellung von hochpräzisen und effizienten Geräten garantiert. Unsere Arbeitsmethodik ermöglicht es uns, in jeder Phase eines Projekts fortschrittliche Simulationen durchzuführen, um zu gewährleisten, dass jedes Bauteil, von Ringspannungswandlern, Regeltransformatoren, Batterieentladern, Potentiometern und Ringbandkernen, den höchsten Standards des Sektors entspricht.\nWir arbeiten eng mit Unternehmen zusammen, die über eine große Infrastruktur verfügen, um maßgeschneiderte und effiziente Lösungen zu gewährleisten. Wir sind bestrebt, auf die Anforderungen von Branchen wie Technologie, Energie und Automobil zu reagieren. Unser Ziel ist es, weiterhin innovativ zu sein, strategische Allianzen zu stärken und unsere globale Reichweite zu erweitern, wobei wir stets das Gütesiegel für Qualität und Exzellenz beibehalten, das uns seit unseren Anfängen auszeichnet."
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-1.jpg",
+     "alt": {
+      "es": "variadores de frecuencia diseñados para gestionar la potencia de motores eléctricos en sistemas electricos de alta exigencia.",
+      "en": "variadores de frecuencia diseñados para gestionar la potencia de motores eléctricos en sistemas electricos de alta exigencia.",
+      "fr": "variadores de frecuencia diseñados para gestionar la potencia de motores eléctricos en sistemas electricos de alta exigencia.",
+      "de": "variadores de frecuencia diseñados para gestionar la potencia de motores eléctricos en sistemas electricos de alta exigencia."
+     },
+     "id": 1088
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor2-scaled.jpg",
+     "alt": {
+      "es": "Variadores de frecuencia",
+      "en": "Frequency inverters",
+      "fr": "Convertisseurs de fréquence",
+      "de": "Frequenzumrichter"
+     },
+     "id": 420
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor3-scaled.jpg",
+     "alt": {
+      "es": "Variadores de frecuencia",
+      "en": "Frequency inverters",
+      "fr": "Convertisseurs de fréquence",
+      "de": "Frequenzumrichter"
+     },
+     "id": 421
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor4-scaled.jpg",
+     "alt": {
+      "es": "Variadores de frecuencia",
+      "en": "Frequency inverters",
+      "fr": "Convertisseurs de fréquence",
+      "de": "Frequenzumrichter"
+     },
+     "id": 422
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "0-240VAC",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "…puede suministrar una red desde 16Hz hasta 200Hz, con una resolución de 0.1Hz, y una tensión de salida variable en directo de 0-240VAC en monofásico, y de 0- 440VAC en trifásico."
+    },
+    {
+     "raw": "0- 440VAC",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "…puede suministrar una red desde 16Hz hasta 200Hz, con una resolución de 0.1Hz, y una tensión de salida variable en directo de 0-240VAC en monofásico, y de 0- 440VAC en trifásico."
+    },
+    {
+     "raw": "0-240VAC",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "…from 16Hz to 200Hz, with a resolution of 0. 1Hz, and a live variable output voltage of 0-240VAC in single phase, and 0- 440VAC in three phase.1Hz, and a live variable output voltage…"
+    },
+    {
+     "raw": "0- 440VAC",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "…a resolution of 0. 1Hz, and a live variable output voltage of 0-240VAC in single phase, and 0- 440VAC in three phase.1Hz, and a live variable output voltage of 0-240VAC in single phase,…"
+    },
+    {
+     "raw": "0-240VAC",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "…16Hz à 200Hz, avec une résolution de 0. 1Hz, et une tension de sortie variable en direct de 0-240VAC en monophasé, et de 0- 440VAC en triphasé.1Hz, et une tension de sortie variable en…"
+    },
+    {
+     "raw": "0- 440VAC",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "…de 0. 1Hz, et une tension de sortie variable en direct de 0-240VAC en monophasé, et de 0- 440VAC en triphasé.1Hz, et une tension de sortie variable en direct de 0-240VAC en…"
+    },
+    {
+     "raw": "0-240VAC",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "…von 16Hz bis 200Hz mit einer Auflösung von 0. 1Hz und einer variablen Ausgangsspannung von 0-240VAC in einphasig und 0- 440VAC in dreiphasig versorgen.1Hz und eine variable…"
+    },
+    {
+     "raw": "0- 440VAC",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "…einer Auflösung von 0. 1Hz und einer variablen Ausgangsspannung von 0-240VAC in einphasig und 0- 440VAC in dreiphasig versorgen.1Hz und eine variable Ausgangsspannung von 0-240VAC…"
+    }
+   ],
+   "power_mentions": [
+    {
+     "raw": "25-300KVA",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Un desarrollo de más de 3 años nos ha llevado a conseguir una fuente de alimentación variable en tensión y frecuencia en potencias que oscila entre 25-300KVA,"
+    },
+    {
+     "raw": "25-300KVA",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "A development of more than 3 years has led us to achieve a power supply variable in voltage and frequency in powers ranging from 25-300KVA,"
+    },
+    {
+     "raw": "25-300KVA",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Un développement de plus de 3 ans nous a permis de réaliser une alimentation variable en tension et en fréquence dans des puissances allant de 25-300KVA,"
+    },
+    {
+     "raw": "25-300KVA",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Eine mehr als 3-jährige Entwicklung hat uns zu einer in Spannung und Frequenz variablen Stromversorgung in einem Leistungsbereich von 25-300KVA geführt,"
+    }
+   ],
+   "variation_axes_hint": [
+    "Potencia (kVA): la web solo da el rango 25-300KVA; no hay potencias concretas ni modelos",
+    "Fases: monofásico (salida 0-240VAC) o trifásico (salida 0- 440VAC)",
+    "Frecuencia de salida: 16Hz a 200Hz con resolución de 0.1Hz (la web no dice si es un ajuste del equipo o un dato de pedido)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Variadores de frecuencia - Torivac",
+     "meta_description": "Los variadores de frecuencia regulan eficientemente la potencia de tu motor eléctrico. Especial para grandes infraestructuras energéticas.",
+     "og_title": "Variadores de frecuencia - Torivac",
+     "og_description": "Los variadores de frecuencia regulan eficientemente la potencia de tu motor eléctrico. Especial para grandes infraestructuras energéticas.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-1.jpg",
+     "canonical": "https://grupotorivac.com/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+     "focus_keyword": "variadores de frecuencia",
+     "modified": "2026-10-14T07:02:16",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Frequency inverters - Torivac",
+     "meta_description": "Frequency inverters efficiently regulate the power of your electric motor. Especially for large energy infrastructures.",
+     "og_title": "Frequency inverters - Torivac",
+     "og_description": "Frequency inverters efficiently regulate the power of your electric motor. Especially for large energy infrastructures.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-1.jpg",
+     "canonical": "https://grupotorivac.com/en/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+     "focus_keyword": "frequency variators",
+     "modified": "2026-10-16T12:05:51",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Convertisseurs de fréquence - Torivac",
+     "meta_description": "Les convertisseurs de fréquence régulent efficacement la puissance de votre moteur électrique. En particulier pour les grandes infrastructures énergétiques.",
+     "og_title": "Convertisseurs de fréquence - Torivac",
+     "og_description": "Les convertisseurs de fréquence régulent efficacement la puissance de votre moteur électrique. En particulier pour les grandes infrastructures énergétiques.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-1.jpg",
+     "canonical": "https://grupotorivac.com/fr/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+     "focus_keyword": "variateurs de fréquence",
+     "modified": "2026-10-16T12:05:52",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "Frequenzumrichter - Torivac",
+     "meta_description": "Frequenzumrichter regulieren effizient die Leistung Ihres Elektromotors. Besonders für große Energieinfrastrukturen.",
+     "og_title": "Frequenzumrichter - Torivac",
+     "og_description": "Frequenzumrichter regulieren effizient die Leistung Ihres Elektromotors. Besonders für große Energieinfrastrukturen.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-1.jpg",
+     "canonical": "https://grupotorivac.com/de/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+     "focus_keyword": "Frequenzumwandler",
+     "modified": "2026-10-16T12:06:08",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "nombre_generico",
+    "contenido_por_verificar",
+    "texto_duplicado_en_descripcion",
+    "traduccion_con_texto_duplicado",
+    "typo",
+    "terminologia_dudosa",
+    "duplicado_posible",
+    "sin_alt",
+    "texto_en_idioma_incorrecto",
+    "nombre_de_archivo_poco_descriptivo",
+    "descripcion_no_renderizada_en_traduccion",
+    "sin_h1_en_traducciones",
+    "sin_modelos",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "Sin tabla de modelos, sin atributos, sin PDF propio y sin referencias: spec_tables=[], attributes=[] y orderable_items=[] en los 4 idiomas. Toda la información técnica está en la descripción corta; no hay potencias concretas (solo el rango 25-300KVA) ni modelos pedibles.",
+    "La descripción larga (4183 caracteres en ES) es texto genérico sobre variadores de frecuencia para motores y la presentación de Torivac, y no contiene ninguna cifra. Los datos técnicos (fuente de alimentación variable en tensión y frecuencia, 25-300KVA, red de 16Hz a 200Hz con resolución 0.1Hz, salida 0-240VAC monofásica y 0- 440VAC trifásica, ethernet, pantalla táctil, armario IP20, ventilación forzada >50dB a 1m) solo están en la descripción corta. Lo que describe la corta (equipo de potencia con salida variable en tensión y frecuencia) y lo que cuenta la larga (variadores que regulan la velocidad de motores) no coinciden del todo: contenido por verificar con Torivac antes de reutilizarlo.",
+    "Nombre, categoría y slug no coinciden: nombre 'Variadores de frecuencia' (plural, sin modelo), categoría 'Convertidores' (id 97) y slug 'convertidores-y-variadores-de-frecuencia-para-ensayos'; 'para ensayos' solo aparece en el slug, en ningún texto.",
+    "Terminología inconsistente entre el nombre y el cuerpo en las traducciones: EN nombre 'Frequency inverters' frente a cuerpo 'Variable frequency drives'; FR 'Convertisseurs de fréquence' frente a 'variateurs de fréquence' y 'onduleurs'; DE 'Frequenzumrichter' frente a 'Wechselrichter' y 'Antriebe'. El bloque final de presentación de Torivac tampoco traduce igual 'variadores de tensión' (EN/FR/DE: 'voltage regulators', 'régulateurs de tension', 'Spannungsreglern'). Se conserva tal cual.",
+    "Texto duplicado en la descripción larga (los 4 idiomas): la respuesta bajo el 1.er encabezado ('¿Para qué sirven estos variadores de frecuencia?') es idéntica a la del 2.º, y el 2.º encabezado ('¿Cuál es la función elemental que cumple el variador de frecuencia?') aparece dos veces seguidas con respuestas distintas. Se conserva íntegro. El último bloque ('Torivac es una compañía especialista en diseño y fabricación…') es presentación corporativa repetida literalmente en 973 y 975 de este lote.",
+    "Descripción corta EN, FR y DE con fragmento duplicado y decimal roto (restos de traducción automática): EN '…a resolution of 0. 1Hz, and a live variable output voltage of 0-240VAC in single phase, and 0- 440VAC in three phase.1Hz, and a live variable output voltage of 0-240VAC in single phase, and 0- 440VAC in three phase.' (FR y DE igual). Las tensiones 0-240VAC y 0- 440VAC aparecen dos veces en cada una de esas descripciones; en voltage_mentions se recoge una entrada por valor e idioma. En ES no se repite, pero sí hay un espacio en '0- 440VAC' (también en EN/FR/DE), 'KVA' con K mayúscula y la expresión 'variable en directo'.",
+    "Imágenes: 4 (ids 1088, 420, 421, 422; ficheros convertidor1-1.jpg, convertidor2-scaled.jpg, convertidor3-scaled.jpg, convertidor4-scaled.jpg). Solo la 1.ª tiene alt en la biblioteca: 'variadores de frecuencia diseñados para gestionar la potencia de motores eléctricos en sistemas electricos de alta exigencia.' (typo 'electricos' sin tilde), que se repite en español en EN, FR y DE (texto en idioma incorrecto). Las otras 3 tienen alt vacío en los 4 idiomas y la página renderizada pone el nombre del producto de cada idioma (valor automático, no descriptivo); en images[].alt se ha guardado el alt de la biblioteca o, si está vacío, el renderizado. Los ids de medios de las imágenes 2-4 cambian por idioma (EN 3640/3642/3644, FR 3641/3643/3645, DE 9458/9460/9461) pero comparten el mismo fichero; en 'id' se guarda el de ES.",
+    "Las páginas renderizadas EN, FR y DE NO muestran la descripción larga (solo la corta y el bloque de contacto: 2422/2843/2707 caracteres de texto de página frente a 6894 en ES), aunque la Store API y la REST la devuelven en los 3 idiomas (3713/4455/4248 caracteres de texto plano). El texto se conserva íntegro desde la Store API. Revisar si la omisión es intencionada antes de dar por buena la versión pública. Además esas 3 páginas no renderizan ningún h1 (el outline empieza en el h3 'Products'/'Produits'/'Produkte' del menú lateral); la ES sí (h1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "No hay PDF propio del producto: el único PDF enlazado en la página es el catálogo general del menú (CATALOGO: Torivac_2024.pdf) y no se recoge en pdf_links porque no es una ficha de este producto. En el texto extraído del catálogo 'Convertidores' solo figura como campo de aplicación del transformador toroidal (p. 17), sin datos de este equipo.",
+    "SKU 'ed95f462528c' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; no hay referencia de fabricante en ninguna fuente web de este producto.",
+    "Precio: la Store API devuelve price '0', price_html vacío, is_purchasable=false y botón 'Leer más' (catálogo sin precios); no hay ningún dato de precio en las fuentes."
+   ]
+  },
+  {
+   "id_es": 974,
+   "slug": "ondulador-autonomo-para-instalaciones-fotovoltaicas-sin-conexion-a-red",
+   "url_es": "https://grupotorivac.com/product/ondulador-autonomo-para-instalaciones-fotovoltaicas-sin-conexion-a-red/",
+   "sku": "f4f0d8ca207e",
+   "names": {
+    "es": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/ondulador-autonomo-para-instalaciones-fotovoltaicas-sin-conexion-a-red/",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "ids": {
+    "es": 974,
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "category_path_es": [
+    "Equipos electrónicos",
+    "Energias renovables"
+   ],
+   "categories_all_es": [
+    {
+     "id": 100,
+     "name": "Energias renovables",
+     "slug": "energias-renovables"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "El sistema de doble conversión y acumulación de energía en un bus intermedio de corriente continua a alta tensión.\nNos permite trabajar con baterías relativamente pequeñas para la potencia disponible, ya que el consumo no sufre el rizado de la salida, y los picos instantáneos de arranque de dispositivos conectados no son trasladados inmediatamente a la batería debido a que se utiliza la energía almacenada en el propio ondulador.\nEl puente de transistores de salida, conmutando a 20kHz con modulación senoidal nos permite obtener una tensión de salida pura y exenta de armónicos.\nEl control de todas las funciones del ondulador se realiza mediante un sistema de doble microcontrolador, lo que permite una gran precisión y fiabilidad.",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "description_text": {
+    "es": "- Tensiones nominales de baterías 24V y 48V.\n- Bajo rizado de la corriente de baterías gracias al sistema de doble conversión a alta frecuencia.\n- Potencia nominal, servicio continuo, 4000W.\n- Tensión de salida 230V ±2% (En la versión para Europa).\n- Frecuencia de salida 50Hz ±0.01% (En la versión para Europa).\n- Onda senoidal pura, THD<2%\n- Rendimiento típico 95%, superior al 90% a partir de 50W de consumo.\n- Gestión automática de la ventilación forzada según temperatura.\n- Protección inteligente contra sobrecargas y cortocircuitos.\n- Capacidad de gestionar sobrecargas instantáneas del 200% sin cortar el servicio.\n- Display alfanumérico con indicación de tensión, corriente, potencia activa y energía consumida.\n- Puerto de comunicaciones para la lectura remota de todos los parámetros.\n- Conexiones para el uso en modo Master-Slave.",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-auton-1.jpg",
+     "alt": {
+      "es": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red",
+      "en": null,
+      "fr": null,
+      "de": null
+     },
+     "id": 1096
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "24V",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Tensiones nominales de baterías 24V y 48V."
+    },
+    {
+     "raw": "48V",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Tensiones nominales de baterías 24V y 48V."
+    },
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Tensión de salida 230V ±2% (En la versión para Europa)."
+    }
+   ],
+   "power_mentions": [
+    {
+     "raw": "4000W",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Potencia nominal, servicio continuo, 4000W."
+    },
+    {
+     "raw": "50W",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Rendimiento típico 95%, superior al 90% a partir de 50W de consumo."
+    }
+   ],
+   "variation_axes_hint": [
+    "Tensión nominal de batería (V): 24V o 48V",
+    "Versión por mercado: la salida 230V ±2% y 50Hz ±0.01% se declara 'en la versión para Europa'; las demás versiones no se describen"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red - Torivac",
+     "meta_description": "El sistema de doble conversión y acumulación de energía en un bus intermedio de corriente continua a alta tensión.",
+     "og_title": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red - Torivac",
+     "og_description": "El sistema de doble conversión y acumulación de energía en un bus intermedio de corriente continua a alta tensión.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-auton-1.jpg",
+     "canonical": "https://grupotorivac.com/product/ondulador-autonomo-para-instalaciones-fotovoltaicas-sin-conexion-a-red/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:09",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "translation_status": {
+    "en": "missing",
+    "fr": "missing",
+    "de": "missing"
+   },
+   "quality_flags": [
+    "sin_traduccion",
+    "typo",
+    "sin_alt",
+    "duplicado_posible",
+    "contenido_por_verificar",
+    "sin_modelos",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "Sin traducción EN/FR/DE en la web: coverage.json lo lista en 'missing_translation_of_es_products' (en, fr y de), product-map.json no tiene 'translations' y pages-index.json no tiene páginas EN/FR/DE. names/urls/ids/textos/seo de en, fr y de = null y translation_status='missing'.",
+    "Sin tabla de modelos, atributos ni referencias: spec_tables=[], attributes=[] y orderable_items=[]. Datos en la lista de la descripción (13 viñetas): baterías 24V y 48V, potencia nominal en servicio continuo 4000W, salida 230V ±2% y 50Hz ±0.01% 'en la versión para Europa', THD<2%, rendimiento típico 95%, sobrecargas instantáneas del 200%, uso Master-Slave. No se describen las versiones para otros mercados.",
+    "La descripción corta empieza con una frase sin verbo ('El sistema de doble conversión y acumulación de energía en un bus intermedio de corriente continua a alta tensión.') que además es la meta description de Yoast; cita 'alta tensión' sin ningún valor. Esa misma descripción corta aparece idéntica en el producto 975 (reguladores MPPT).",
+    "Errata en el nombre (se conserva): 'autonomo' sin tilde, también en el título SEO, el h1 y el alt renderizado.",
+    "Imagen: 1 (id 1096, ondulador-auton-1.jpg), con alt vacío en la biblioteca; la página renderizada pone el nombre del producto (valor automático, no descriptivo), que es lo que se guarda en images[].alt.",
+    "Sin descripción larga con encabezados: la descripción es solo la lista de viñetas; la página no renderiza más secciones que ese texto y el bloque de contacto.",
+    "SEO: Yoast sin focus keyword; el título SEO es el nombre más ' - Torivac'.",
+    "Plantilla de página: el bloque de contacto (extra_sections, ES) lleva 'encontrareis' sin tilde; es texto común a todas las páginas de producto, no de este producto.",
+    "No hay PDF propio del producto: el único PDF enlazado en la página es el catálogo general del menú (CATALOGO: Torivac_2024.pdf) y no se recoge en pdf_links porque no es una ficha de este producto. El texto extraído de las 4 versiones del catálogo (data/analysis/pdf-text/Torivac_2024*, catalogue-torivac-DE) no contiene 'MPPT' ni ninguna mención fotovoltaica/solar, así que tampoco aporta datos de estos equipos.",
+    "SKU 'f4f0d8ca207e' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; no hay referencia de fabricante en ninguna fuente web de este producto.",
+    "Precio: la Store API devuelve price '0', price_html vacío, is_purchasable=false y botón 'Leer más' (catálogo sin precios); no hay ningún dato de precio en las fuentes."
+   ]
+  },
+  {
+   "id_es": 976,
+   "slug": "ondulador-para-fv-interconectada-de-350w-autoconsumo",
+   "url_es": "https://grupotorivac.com/product/ondulador-para-fv-interconectada-de-350w-autoconsumo/",
+   "sku": "72ebb60a7074",
+   "names": {
+    "es": "Ondulador para FV Interconectada de 350W autoconsumo",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/ondulador-para-fv-interconectada-de-350w-autoconsumo/",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "ids": {
+    "es": 976,
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "category_path_es": [
+    "Equipos electrónicos",
+    "Energias renovables"
+   ],
+   "categories_all_es": [
+    {
+     "id": 100,
+     "name": "Energias renovables",
+     "slug": "energias-renovables"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Se ha previsto en el diseño de este producto la posibilidad de funcionar en modo inyección 0. Para ello incluye tres modos alternativos de lectura de potencia de inyección a la red exterior, configuraciones de regulación de potencia, relé de accionamiento de consumos auxiliares, y comunicación con módulo opcional de acumulación.\n\n- Tensión admisible en entrada: 15 a 80V\n- Tensión de trabajo MPPT en entrada : 17 a 70V\n- Tensión de red nominal 230V +10 -15% 49 a 51Hz\n- Potencia máxima 350W\n- Señalización de funcionamiento y alarmas por leds\n- Puerto RS 485 para lectura de contador externo de potencia, y comunicación con otros onduladores o elementos periféricos\n- Comunicación por portadora (PLC)\n- Entrada bobina de lectura de corriente de inyección a red\n- Relé configurable\n- Puerto USB Host para actualización configuraciones con pendriver",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "description_text": {
+    "es": "",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador2-scaled-1.jpg",
+     "alt": {
+      "es": "Ondulador para FV Interconectada de 350W autoconsumo",
+      "en": null,
+      "fr": null,
+      "de": null
+     },
+     "id": 1097
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "15 a 80V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Tensión admisible en entrada: 15 a 80V"
+    },
+    {
+     "raw": "17 a 70V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Tensión de trabajo MPPT en entrada : 17 a 70V"
+    },
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Tensión de red nominal 230V +10 -15% 49 a 51Hz"
+    }
+   ],
+   "power_mentions": [
+    {
+     "raw": "350W",
+     "lang": "es",
+     "source": "web:nombre",
+     "context": "Ondulador para FV Interconectada de 350W autoconsumo"
+    },
+    {
+     "raw": "350W",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Potencia máxima 350W"
+    }
+   ],
+   "variation_axes_hint": [
+    "Módulo opcional de acumulación (el texto solo dice que hay comunicación con él; sin referencia ni descripción)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Ondulador para FV Interconectada de 350W autoconsumo - Torivac",
+     "meta_description": "Se ha previsto en el diseño de este producto la posibilidad de funcionar en modo inyección 0. Fabricado por Torivac.",
+     "og_title": "Ondulador para FV Interconectada de 350W autoconsumo - Torivac",
+     "og_description": "Se ha previsto en el diseño de este producto la posibilidad de funcionar en modo inyección 0. Fabricado por Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador2-scaled-1.jpg",
+     "canonical": "https://grupotorivac.com/product/ondulador-para-fv-interconectada-de-350w-autoconsumo/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:09",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "translation_status": {
+    "en": "missing",
+    "fr": "missing",
+    "de": "missing"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_traduccion",
+    "sin_alt",
+    "lista_en_descripcion_corta",
+    "nombre_de_archivo_poco_descriptivo",
+    "sin_modelos",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "Sin traducción EN/FR/DE en la web: coverage.json lo lista en 'missing_translation_of_es_products' (en, fr y de), product-map.json no tiene 'translations' y pages-index.json no tiene páginas EN/FR/DE. names/urls/ids/textos/seo de en, fr y de = null y translation_status='missing'.",
+    "description vacía (Store API y REST content = ''): todo el contenido está en short_description (848 caracteres), que incluye la lista de especificaciones escrita con viñetas manuales '•' y tabuladores dentro de un párrafo (no como lista HTML); en short_description se han pasado a '- ' sin cambiar el texto. La página renderizada no añade secciones, tablas ni pestañas (solo el bloque de contacto).",
+    "Sin tabla de modelos, atributos ni referencias: spec_tables=[], attributes=[] y orderable_items=[]. Una sola potencia (350W máxima, también en el nombre); entrada admisible 15 a 80V, trabajo MPPT 17 a 70V, red 230V +10 -15% 49 a 51Hz. Se mencionan 'tres modos alternativos de lectura de potencia de inyección' sin nombrarlos y un 'módulo opcional de acumulación' sin describirlo.",
+    "SEO: la meta description de Yoast es la primera frase de la descripción corta más 'Fabricado por Torivac.'; sin focus keyword.",
+    "Imagen: 1 (id 1097, ondulador2-scaled-1.jpg, con el sufijo '-scaled-1' de WordPress), con alt vacío en la biblioteca; la página renderizada pone el nombre del producto (valor automático, no descriptivo), que es lo que se guarda en images[].alt.",
+    "Plantilla de página: el bloque de contacto (extra_sections, ES) lleva 'encontrareis' sin tilde; es texto común a todas las páginas de producto, no de este producto.",
+    "No hay PDF propio del producto: el único PDF enlazado en la página es el catálogo general del menú (CATALOGO: Torivac_2024.pdf) y no se recoge en pdf_links porque no es una ficha de este producto. El texto extraído de las 4 versiones del catálogo (data/analysis/pdf-text/Torivac_2024*, catalogue-torivac-DE) no contiene 'MPPT' ni ninguna mención fotovoltaica/solar, así que tampoco aporta datos de estos equipos.",
+    "SKU '72ebb60a7074' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; no hay referencia de fabricante en ninguna fuente web de este producto.",
+    "Precio: la Store API devuelve price '0', price_html vacío, is_purchasable=false y botón 'Leer más' (catálogo sin precios); no hay ningún dato de precio en las fuentes."
+   ]
+  },
+  {
+   "id_es": 973,
+   "slug": "ondulador-para-conexion-fotovoltaica-a-red",
+   "url_es": "https://grupotorivac.com/product/ondulador-para-conexion-fotovoltaica-a-red/",
+   "sku": "ce5e174a3bec",
+   "names": {
+    "es": "Ondulador para conexión fotovoltaica a red",
+    "en": "Inverter for photovoltaic connection to the grid",
+    "fr": "Onduleur pour connexion au réseau photovoltaïque",
+    "de": "Wechselrichter für photovoltaischen Netzanschluss"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/ondulador-para-conexion-fotovoltaica-a-red/",
+    "en": "https://grupotorivac.com/en/product/ondulador-para-conexion-fotovoltaica-a-red/",
+    "fr": "https://grupotorivac.com/fr/product/ondulador-para-conexion-fotovoltaica-a-red/",
+    "de": "https://grupotorivac.com/de/product/ondulador-para-conexion-fotovoltaica-a-red/"
+   },
+   "ids": {
+    "es": 973,
+    "en": 15900,
+    "fr": 15859,
+    "de": 15867
+   },
+   "category_path_es": [
+    "Equipos electrónicos",
+    "Energias renovables"
+   ],
+   "categories_all_es": [
+    {
+     "id": 100,
+     "name": "Energias renovables",
+     "slug": "energias-renovables"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Gama de convertidores diseñados para transformar la corriente continua producida por la energía solar fotovoltaica, en corriente alterna de las mismas características de la red de 230V.\nEstos onduladores están diseñados para inyectar en la red eléctrica pública toda la energía disponible. La gama de potencias está comprendida entre 500W y 3300W.",
+    "en": "Range of converters designed to transform the direct current produced by photovoltaic solar energy into alternating current with the same characteristics of the 230V grid.\nThese inverters are designed to inject all the available energy into the public power grid. The power range is between 500W and 3300W.",
+    "fr": "Gamme de convertisseurs destinés à transformer le courant continu produit par l’énergie solaire photovoltaïque en courant alternatif ayant les mêmes caractéristiques que le réseau 230V.\nCes onduleurs sont destinés à injecter toute l’énergie disponible dans le réseau électrique public. La gamme de puissance est comprise entre 500W et 3300W.",
+    "de": "Eine Reihe von Wechselrichtern, die den von der Photovoltaik erzeugten Gleichstrom in Wechselstrom mit denselben Eigenschaften wie das 230-Volt-Netz umwandeln.\nDiese Wechselrichter sind dafür ausgelegt, die gesamte verfügbare Energie in das öffentliche Stromnetz einzuspeisen. Der Leistungsbereich liegt zwischen 500W und 3300W."
+   },
+   "description_text": {
+    "es": "## ¿Qué es un Ondulador para conexión fotovoltaica a red?\n\nUn ondulador de conexión fotovoltaica a red es un dispositivo que convierte la energía generada por los paneles solares en electricidad utilizable para su consumo o inyección en la red eléctrica. Los paneles solares producen corriente continua (CC), pero la mayoría de los sistemas eléctricos y electrodomésticos funcionan con corriente alterna (CA), por lo que el ondulador es esencial para adaptar la energía y hacerla compatible con la infraestructura eléctrica.\nEl ondulador para conexión fotovoltaica a red de Torivac es un componente esencial para empresas que buscan integrar energía solar en sus operaciones diarias. Este dispositivo convierte la corriente continua generada por los paneles solares en corriente alterna, permitiendo su uso directo en instalaciones industriales y comerciales.\n\n## ¿Cómo funciona este dispositivo en un sistema energético de alta exigencia?\n\nEn instalaciones industriales, comerciales o grandes infraestructuras, donde la demanda energética es elevada, el ondulador trabaja en tiempo real ajustando la conversión de energía según el consumo requerido. Integra un sistema de seguimiento del punto de máxima potencia (MPPT), que permite extraer el máximo rendimiento de los paneles solares en condiciones variables como cambios de radiación o temperatura.\n\nCuando la producción fotovoltaica supera el consumo, el ondulador puede redirigir el excedente de energía a la red eléctrica o almacenarlo en baterías, dependiendo del sistema instalado. Esto es crucial en sectores que operan con alta carga energética, ya que ayuda a reducir la dependencia de la red convencional, disminuir costos y mejorar la eficiencia operativa.\nAdemás, en sistemas críticos como hospitales, fábricas y centros de datos, el ondulador de alta capacidad incorpora protecciones avanzadas contra subidas o bajadas de tensión y cortes de energía, asegurando que los equipos esenciales continúen funcionando sin interrupciones.\n\n## Beneficios a la hora de controlar la entrada y salida de energía\n\n1. Reducción de costos energéticos\n\nEl ondulador permite que la energía generada por los paneles solares se consuma directamente en las instalaciones, disminuyendo la compra de electricidad a la red. Esto reduce significativamente la factura eléctrica, especialmente en industrias con alto consumo, como manufactura y agroindustria. Además, al aprovechar una fuente gratuita como la solar, el retorno de inversión del sistema fotovoltaico se acelera, permitiendo amortizar el costo inicial en menos tiempo.\n\n2. Estabilidad y confiabilidad en el suministro eléctrico\n\nLas fluctuaciones en la red pueden afectar la producción industrial, causando interrupciones o daños en equipos sensibles. El ondulador de Torivac gestiona de manera eficiente la conversión de energía solar, estabilizando la tensión y asegurando un suministro constante, incluso en condiciones de baja generación solar. Esta estabilidad es clave en sectores como centros de datos, hospitales y plantas de producción automatizada, donde cualquier variación en la energía puede afectar la operación.\n\n3.Compatibilidad con sistemas de monitoreo y gestión energética\n\nEl ondulador de Torivac es compatible con plataformas de monitoreo en tiempo real, lo que permite a las empresas controlar la producción y el consumo energético desde cualquier ubicación. Esto es esencial para industrias con múltiples plantas o grandes superficies de producción, ya que permite controlar subidas y bajadas de tensión.\n\nTorivac es una compañía especialista en diseño y fabricación de transformadores toroidales y variadores de tensión\nContamos con una experiencia de cerca de 60 años en el sector, que nos ha permitido ir creciendo hasta lograr una presencia en más de 30 países.\nDisponemos de un equipo técnico que garantiza la fabricación dispositivos de alta precisión y eficiencia. Nuestra metodología de trabajo nos permite realizar simulaciones avanzadas en cada fase de cada proyecto, asegurando que cada componente, desde variadores de tensión toroidales, transformadores regulables, descargadores de batería, potenciómetros y núcleos toroidales, cumpla con los más altos estándares del sector.\nTrabajamos estrechamente con empresas que cuentan con una gran infraestructura, en busca de garantizarles soluciones personalizadas y eficientes. Apuntamos a responder a las exigencias de industrias como la tecnológica, la energética y la automotriz. Nuestro objetivo es seguir innovando, fortaleciendo alianzas estratégicas y expandiendo nuestro alcance global, manteniendo siempre el sello de calidad y excelencia que nos ha caracterizado desde nuestros inicios.\n\n## Detalles Técnicos\n\n- Búsqueda dinámica del punto de máxima potencia (MPPT).\n- Mínima potencia de generación para el funcionamiento del MPPT: 20W.\n- Mínima potencia de generación para inyectar energía en la red: 3W.\n- Onda senoidal pura, THD<3%\n- Consumo en standby < 1W.\n- Protección contra exceso de temperatura por regulación de la potencia máxima.\n- Adaptación automática a las características del campo F.V.\n- Rendimiento máximo 95%.\n- Rango admitido de tensión de red : 230V ±2%.\n- Rango admitido de frecuencia de la red: 50Hz ±0.02%.\n- Tiempo de desconexión por caída o apertura de la red < 5ms.\n- Aislamiento entre circuitos de campo F.V. y red: 3000V CA 50Hz.\n- Detección de fuga a tierra del campo F.V.\n- Filtro EMC de conexión a la red, asegurando compatibilidad electromagnética conforme a la normativa CE.\n- Protección contra picos de tensión y descargas atmosféricas.\n\nUtilizamos la tecnología más avanzada de conversión de energía. La etapa de entrada, equipada con transistores d’alta eficiencia POWER-MOS, convierte la corriente continua en alterna de alta frecuencia, modulada de forma sinusoidal que sigue fielmente a la tensión de la red. La transferencia aislada de energía se hace a través de un transformador separador, que al operar a alta frecuencia dispone de un rendimiento superior a los transformadores que operan a frecuencia de red, con un peso Y dimensiones\nmucho más reducidas. A la salida un puente de IGBT restituye la frecuencia de 50Hz, con conmutación sincronizada con la red.\nEl control de todas las funciones del ondulador lo realiza un MICROPROCESADOR flash de última generación. Esto incluye un preciso seguimiento del punto de máxima potencia del campo fotovoltaico. Parámetros como la curva tensión-corriente del campo, la tensión de la red y la potencia suministrada son medidos constantemente, reajustando cada pocos segundos el punto de trabajo para conseguir el máximo aprovechamiento de la energía. La tensión y frecuencia de la red son controladas cada milisegundo, con la finalidad de asegurar una desconexión inmediata del ondulador en caso de desviación del rango autorizado, o funcionamiento en isla, conforme al RD 1663/2000.\nEl hecho de estar equipado con memoria flash de programa permite hacer fácilmente una modificación de parámetros (si es necesario, sin retirar la unidad de la instalación) para adecuarlo a futuros cambios de normativa o condicionantes específicos del cliente.",
+    "en": "## What is an Inverter for photovoltaic grid connection?\n\nA photovoltaic grid-tie inverter is a device that converts the power generated by solar panels into usable electricity for consumption or injection into the electrical grid. Solar panels produce direct current (DC), but most electrical systems and appliances run on alternating current (AC), so the inverter is essential to adapt the power and make it compatible with the electrical infrastructure.\nTorivac’s PV grid-tie inverter is an essential component for companies looking to integrate solar power into their daily operations. This device converts the direct current generated by solar panels into alternating current, allowing its direct use in industrial and commercial installations.\n\n## How does this device perform in a highly demanding power system?\n\nIn industrial, commercial or large infrastructure installations, where energy demand is high, the inverter works in real time adjusting the energy conversion according to the required consumption. It integrates a maximum power point tracking system (MPPT), which allows extracting the maximum performance from the solar panels under variable conditions such as changes in radiation or temperature.\n\nWhen PV production exceeds consumption, the inverter can redirect surplus energy to the grid or store it in batteries, depending on the system installed. This is crucial in sectors that operate with high energy loads, as it helps reduce dependence on the conventional grid, lower costs and improve operational efficiency.\nIn addition, in critical systems such as hospitals, factories and data centers, the high-capacity inverter incorporates advanced protections against power surges or dips and power outages, ensuring that essential equipment continues to operate without interruption.\n\n## Benefits in controlling energy input and output\n\n1. Reduction of energy costs\n\nThe inverter allows the energy generated by the solar panels to be consumed directly in the installations, reducing the purchase of electricity from the grid. This significantly reduces the electricity bill, especially in industries with high consumption, such as manufacturing and agribusiness. In addition, by taking advantage of a free source such as solar energy, the return on investment of the photovoltaic system is accelerated, allowing the initial cost to be amortized in less time.\n\n2. Stability and reliability of power supply\n\nFluctuations in the grid can affect industrial production, causing outages or damage to sensitive equipment. Torivac’s inverter efficiently manages solar power conversion, stabilizing the voltage and ensuring a constant supply, even in conditions of low solar generation. This stability is key in sectors such as data centers, hospitals and automated production plants, where any variation in power can affect operation.\n\n3.Compatibility with energy monitoring and management systems.\n\nTorivac’s inverter is compatible with real-time monitoring platforms, allowing companies to control production and energy consumption from any location. This is essential for industries with multiple plants or large production areas, as it allows for monitoring power surges and dips.\n\nTorivac is a company specialized in the design and manufacture of toroidal transformers and voltage regulators\nWe have nearly 60 years of experience in the industry, which has allowed us to grow to a presence in more than 30 countries.\nWe have a technical team that guarantees the manufacture of high precision and efficient devices. Our work methodology allows us to perform advanced simulations in each phase of each project, ensuring that each component, from toroidal voltage variators, adjustable transformers, battery dischargers, potentiometers and toroidal cores, meet the highest standards in the industry.\nWe work closely with companies that have a large infrastructure, seeking to ensure customized and efficient solutions. We aim to respond to the demands of industries such as technology, energy and automotive. Our goal is to continue innovating, strengthening strategic alliances and expanding our global reach, always maintaining the seal of quality and excellence that has characterized us since our beginnings.\n\n## Technical Details\n\n- Dynamic maximum power point search (MPPT).\n- Minimum generation power for MPPT operation: 20W.\n- Minimum generation power to inject energy into the grid: 3W.\n- Pure sine wave, THD<3%.\n- Consumption in standby < 1W.\n- Over-temperature protection by maximum power regulation.\n- Automatic adaptation to the characteristics of the F.V. field.\n- Maximum yield 95%.\n- Admitted mains voltage range : 230V ±2%.\n- Supported mains frequency range: 50Hz ±0.02%.\n- Disconnection time in case of power failure or opening of the network < 5ms.\n- Isolation between V.F. field circuits and mains: 3000V AC 50Hz.\n- V.F. field ground leakage detection.\n- EMC filter for mains connection, ensuring electromagnetic compatibility in compliance with CE standards.\n- Protection against voltage peaks and atmospheric discharges.\n\nWe use the most advanced power conversion technology. The input stage, equipped with high-efficiency POWER-MOS transistors, converts direct current into high-frequency alternating current, modulated in a sinusoidal manner that closely follows the mains voltage. The isolated power transfer is done through a isolating transformer, which, operating at high frequency, has a higher efficiency than the transformers operating at mains frequency, with a much smaller weight and dimensions\n. At the output an IGBT bridge restores the 50Hz frequency, with synchronized switching with the mains.\nAll inverter functions are controlled by a state-of-the-art flash MICROPROCESSOR. This includes precise tracking of the maximum power point of the PV field. Parameters such as field voltage-current curve, grid voltage and delivered power are constantly measured, readjusting the operating point every few seconds to achieve maximum energy utilization. Grid voltage and frequency are monitored every millisecond, in order to ensure an immediate disconnection of the inverter in case of deviation from the authorized range, or island operation, according to RD 1663/2000.\nThe fact of being equipped with program flash memory allows to easily make a modification of parameters (if necessary, without removing the unit from the installation) to adapt it to future changes in regulations or specific conditions of the customer.",
+    "fr": "## Qu’est-ce qu’un onduleur pour la connexion au réseau photovoltaïque ?\n\nUn onduleur PV raccordé au réseau est un dispositif qui convertit l’énergie générée par les panneaux solaires en électricité utilisable pour la consommation ou l’injection dans le réseau. Les panneaux solaires produisent du courant continu (CC), mais la plupart des systèmes et appareils électriques fonctionnent en courant alternatif (CA). L’onduleur est donc essentiel pour adapter le courant et le rendre compatible avec l’infrastructure électrique.\nL’onduleur PV grid-tie de Torivac est un composant essentiel pour les entreprises qui cherchent à intégrer l’énergie solaire dans leurs activités quotidiennes. Cet appareil convertit le courant continu généré par les panneaux solaires en courant alternatif, ce qui permet de l’utiliser directement dans les installations industrielles et commerciales.\n\n## Comment ce dispositif fonctionne-t-il dans un système énergétique très exigeant ?\n\nDans les installations industrielles, commerciales ou les grandes infrastructures, où la demande d’énergie est élevée, l’onduleur fonctionne en temps réel, ajustant la conversion d’énergie en fonction de la consommation requise. Il intègre un système de suivi du point de puissance maximale (MPPT), qui permet de tirer le meilleur parti des panneaux solaires dans des conditions variables telles que les changements de rayonnement ou de température.\n\nLorsque la production photovoltaïque dépasse la consommation, l’onduleur peut rediriger l’énergie excédentaire vers le réseau ou la stocker dans des batteries, en fonction du système installé. Cette fonction est cruciale dans les secteurs à forte charge énergétique, car elle permet de réduire la dépendance vis-à-vis du réseau conventionnel, de diminuer les coûts et d’améliorer l’efficacité opérationnelle.\nEn outre, dans les systèmes critiques tels que les hôpitaux, les usines et les centres de données, l’onduleur haute capacité intègre des protections avancées contre les surtensions ou les baisses de tension et les coupures de courant, garantissant ainsi que les équipements essentiels continuent de fonctionner sans interruption.\n\n## Avantages du contrôle de l’apport et de la production d’énergie\n\n1. réduction des coûts énergétiques\n\nL’onduleur permet de consommer l’énergie générée par les panneaux solaires directement sur le site, réduisant ainsi l’achat d’électricité auprès du réseau. Cela permet de réduire considérablement la facture d’électricité, en particulier dans les secteurs à forte consommation, tels que l’industrie manufacturière et l’agro-industrie. En outre, en tirant parti d’une source gratuite telle que l’énergie solaire, le retour sur investissement du système photovoltaïque est accéléré, ce qui permet d’amortir le coût initial en moins de temps.\n\n2. Stabilité et fiabilité de l’approvisionnement en électricité\n\nLes fluctuations du réseau peuvent affecter la production industrielle, provoquant des interruptions ou des dommages aux équipements sensibles. L’onduleur Torivac gère efficacement la conversion de l’énergie solaire, stabilise la tension et assure une alimentation constante, même en cas de faible production solaire. Cette stabilité est essentielle dans des secteurs tels que les centres de données, les hôpitaux et les usines de production automatisées, où toute variation de puissance peut affecter le fonctionnement.\n\n3. compatibilité avec les systèmes de contrôle et de gestion de l’énergie\n\nL’onduleur Torivac est compatible avec les plateformes de surveillance en temps réel, ce qui permet aux entreprises de contrôler la production et la consommation d’énergie depuis n’importe quel endroit. Ceci est essentiel pour les industries ayant plusieurs usines ou de grandes zones de production, car cela permet de surveiller les surtensions et les baisses de tension.\n\nTorivac est une entreprise spécialisée dans la conception et la fabrication de transformateurs toroïdaux et de régulateurs de tension\nNous avons près de 60 ans d’expérience dans le secteur, ce qui nous a permis d’être présents dans plus de 30 pays.\nNous disposons d’une équipe technique qui garantit la fabrication d’appareils de haute précision et efficaces. Notre méthodologie de travail nous permet d’effectuer des simulations avancées à chaque étape de chaque projet, en garantissant que chaque composant, qu’il s’agisse de variateurs de tension toroïdaux, de transformateurs de régulation, de déchargeurs de batterie, de potentiomètres ou de noyaux toroïdaux, réponde aux normes les plus élevées du secteur.\nNous travaillons en étroite collaboration avec des entreprises disposant d’une grande infrastructure, afin de garantir des solutions personnalisées et efficaces. Nous visons à répondre aux demandes d’industries telles que la technologie, l’énergie et l’automobile. Notre objectif est de continuer à innover, de renforcer les alliances stratégiques et d’étendre notre portée mondiale, en maintenant toujours le label de qualité et d’excellence qui nous caractérise depuis nos débuts.\n\n## Détails techniques\n\n- Recherche dynamique du point de puissance maximale (MPPT).\n- Puissance de production minimale pour le fonctionnement du MPPT : 20 W.\n- Puissance de production minimale pour injecter de l’énergie dans le réseau : 3W.\n- Onde sinusoïdale pure, THD<3%.\n- Consommation en veille < 1W.\n- Protection contre la surchauffe grâce à une régulation maximale de la puissance.\n- Adaptation automatique aux caractéristiques du champ V.F.\n- Rendement maximal de 95 %.\n- Plage de tension secteur admise : 230V ±2%.\n- Plage de fréquence du réseau prise en charge : 50Hz ±0,02%.\n- Temps de coupure du réseau ou de déconnexion de l’ouverture < 5ms.\n- Isolation entre les circuits de terrain et le réseau : 3000V AC 50Hz.\n- Détection des fuites à la terre sur le terrain V.F.\n- Filtre CEM pour le raccordement au réseau, garantissant la compatibilité électromagnétique conformément aux normes de la CE.\n- Protection contre les pics de tension et les décharges atmosphériques.\n\nNous utilisons la technologie de conversion d’énergie la plus avancée. L’étage d’entrée, équipé de transistors POWER-MOS à haut rendement, convertit le courant continu en courant alternatif à haute fréquence, modulé de façon sinusoïdale, qui suit de près la tension du réseau. Le transfert isolé de l’énergie se fait par l’intermédiaire d’un transformateur d’isolement qui, fonctionnant à haute fréquence, a un rendement plus élevé que les transformateurs fonctionnant à la fréquence du réseau, avec un poids et des dimensions beaucoup plus faibles\n. À la sortie, un pont IGBT rétablit la fréquence de 50 Hz, avec une commutation synchronisée avec le réseau.\nToutes les fonctions de l’onduleur sont contrôlées par un MICROPROCESSEUR flash à la pointe de la technologie. Cela inclut le suivi précis du point de puissance maximale du champ photovoltaïque. Des paramètres tels que la courbe tension-courant du champ, la tension du réseau et la puissance fournie sont mesurés en permanence, ce qui permet de réajuster le point de fonctionnement toutes les quelques secondes afin d’obtenir une utilisation maximale de l’énergie. La tension et la fréquence du réseau sont contrôlées toutes les millisecondes, afin de garantir la déconnexion immédiate de l’onduleur en cas d’écart par rapport à la plage autorisée, ou de fonctionnement en îlot, conformément à la RD 1663/2000.\nLe fait qu’il soit équipé d’une mémoire de programme flash permet de modifier facilement les paramètres (si nécessaire, sans retirer l’unité de l’installation) pour l’adapter aux changements futurs de la réglementation ou aux exigences spécifiques du client.",
+    "de": "## Was ist ein Wechselrichter für den Netzanschluss von Photovoltaikanlagen?\n\nEin netzgekoppelter PV-Wechselrichter ist ein Gerät, das die von den Solarmodulen erzeugte Energie in nutzbaren Strom für den Verbrauch oder die Einspeisung in das Netz umwandelt. Solarmodule erzeugen Gleichstrom (DC), aber die meisten elektrischen Systeme und Geräte werden mit Wechselstrom (AC) betrieben. Daher ist der Wechselrichter unerlässlich, um den Strom anzupassen und mit der elektrischen Infrastruktur kompatibel zu machen.\nDer PV-Wechselrichter von Torivac ist eine unverzichtbare Komponente für Unternehmen, die Solarstrom in ihren täglichen Betrieb integrieren möchten. Dieses Gerät wandelt den von den Solarmodulen erzeugten Gleichstrom in Wechselstrom um, so dass er direkt in industriellen und gewerblichen Anlagen genutzt werden kann.\n\n## Wie funktioniert dieses Gerät in einem sehr anspruchsvollen Energiesystem?\n\nIn Industrie-, Gewerbe- oder großen Infrastrukturanlagen, in denen ein hoher Energiebedarf besteht, arbeitet der Wechselrichter in Echtzeit und passt die Energieumwandlung an den erforderlichen Verbrauch an. Er ist mit einem MPPT-System (Maximum Power Point Tracking) ausgestattet, das es ermöglicht, unter variablen Bedingungen, wie z.B. Strahlungs- oder Temperaturschwankungen, die maximale Leistung aus den Solarmodulen herauszuholen.\n\nWenn die PV-Erzeugung den Verbrauch übersteigt, kann der Wechselrichter die überschüssige Energie in das Netz umleiten oder in Batterien speichern, je nach installiertem System. Dies ist in Sektoren mit hoher Energiebelastung von entscheidender Bedeutung, da es dazu beiträgt, die Abhängigkeit vom konventionellen Stromnetz zu verringern, die Kosten zu senken und die betriebliche Effizienz zu verbessern.\nIn kritischen Systemen wie Krankenhäusern, Fabriken und Rechenzentren bietet der Hochleistungs-Wechselrichter außerdem fortschrittliche Schutzmechanismen gegen Stromstöße oder -einbrüche und Stromausfälle, die sicherstellen, dass wichtige Geräte ohne Unterbrechung weiterarbeiten.\n\n## Vorteile der Kontrolle von Energiezufuhr und -abgabe\n\n1. die Senkung der Energiekosten\n\nMit dem Wechselrichter kann die von den Solarmodulen erzeugte Energie direkt vor Ort verbraucht werden, wodurch der Bezug von Strom aus dem Netz reduziert wird. Dadurch wird die Stromrechnung erheblich gesenkt, insbesondere in Branchen mit hohem Verbrauch, wie der verarbeitenden Industrie und der Agrarwirtschaft. Außerdem wird durch die Nutzung einer kostenlosen Quelle wie der Sonnenenergie die Amortisation der Investition in die Photovoltaikanlage beschleunigt, so dass sich die Anschaffungskosten in kürzerer Zeit amortisieren.\n\n2. Stabilität und Zuverlässigkeit der Elektrizitätsversorgung\n\nSchwankungen im Stromnetz können die industrielle Produktion beeinträchtigen und zu Unterbrechungen oder Schäden an empfindlichen Geräten führen. Der Torivac Wechselrichter steuert effizient die Umwandlung von Solarstrom, stabilisiert die Spannung und sorgt für eine konstante Versorgung, selbst bei geringer Solarstromerzeugung. Diese Stabilität ist in Bereichen wie Rechenzentren, Krankenhäusern und automatisierten Produktionsanlagen, in denen jede Stromschwankung den Betrieb beeinträchtigen kann, von entscheidender Bedeutung.\n\n3. die Kompatibilität mit Energieüberwachungs- und -managementsystemen\n\nDer Torivac Wechselrichter ist mit Echtzeit-Überwachungsplattformen kompatibel, so dass Unternehmen die Produktion und den Energieverbrauch von jedem Standort aus kontrollieren können. Dies ist für Industrien mit mehreren Anlagen oder großen Produktionsbereichen unerlässlich, da es die Überwachung von Stromspitzen und -einbrüchen ermöglicht.\n\nTorivac ist ein Unternehmen, das sich auf die Entwicklung und Herstellung von Ringkerntransformatoren und Spannungsreglern spezialisiert hat\nWir verfügen über eine fast 60-jährige Erfahrung in diesem Sektor, die es uns ermöglicht hat, in mehr als 30 Ländern präsent zu sein.\nWir verfügen über ein technisches Team, das die Herstellung von hochpräzisen und effizienten Geräten garantiert. Unsere Arbeitsmethodik ermöglicht es uns, in jeder Phase eines Projekts fortschrittliche Simulationen durchzuführen, um zu gewährleisten, dass jedes Bauteil, von Ringspannungswandlern, Regeltransformatoren, Batterieentladern, Potentiometern und Ringbandkernen, den höchsten Standards des Sektors entspricht.\nWir arbeiten eng mit Unternehmen zusammen, die über eine große Infrastruktur verfügen, um maßgeschneiderte und effiziente Lösungen zu gewährleisten. Wir sind bestrebt, auf die Anforderungen von Branchen wie Technologie, Energie und Automobil zu reagieren. Unser Ziel ist es, weiterhin innovativ zu sein, strategische Allianzen zu stärken und unsere globale Reichweite zu erweitern, wobei wir stets das Gütesiegel für Qualität und Exzellenz beibehalten, das uns seit unseren Anfängen auszeichnet.\n\n## Technische Details\n\n- Dynamische Suche nach dem Punkt maximaler Leistung (MPPT).\n- Minimale Erzeugungsleistung für den MPPT-Betrieb: 20W.\n- Minimale Erzeugungsleistung zur Einspeisung von Energie ins Netz: 3W.\n- Reine Sinuswelle, THD<3%.\n- Verbrauch im Standby-Modus < 1W.\n- Überhitzungsschutz durch maximale Leistungsregelung.\n- Automatische Anpassung an die Eigenschaften des V.F. Feldes.\n- Maximale Ausbeute 95%.\n- Zulässiger Netzspannungsbereich : 230V ±2%.\n- Unterstützter Netzfrequenzbereich: 50Hz ±0,02%.\n- Netzausfall- oder Öffnungstrennungszeit < 5ms.\n- Isolierung zwischen Feldstromkreisen und Netz: 3000V AC 50Hz.\n- V.F. Feld Erdschlusserkennung.\n- EMV-Filter für den Netzanschluss, der die elektromagnetische Verträglichkeit gemäß den EG-Normen gewährleistet.\n- Schutz vor Spannungsspitzen und atmosphärischen Entladungen.\n\nWir verwenden die fortschrittlichste Technologie zur Stromumwandlung. Die Eingangsstufe, die mit hocheffizienten POWER-MOS-Transistoren ausgestattet ist, wandelt Gleichstrom in hochfrequenten, sinusförmig modulierten Wechselstrom um, der der Netzspannung genau folgt. Die isolierte Übertragung der Energie erfolgt über einen Trenntransformator, der bei Hochfrequenz einen höheren Wirkungsgrad hat als Transformatoren, die mit Netzfrequenz arbeiten, und das bei wesentlich geringerem Gewicht und kleineren Abmessungen\n. Am Ausgang stellt eine IGBT-Brücke die 50Hz-Frequenz wieder her, wobei die Umschaltung mit dem Netz synchronisiert ist.\nAlle Funktionen des Wechselrichters werden von einem hochmodernen Flash-MICROPROCESSOR gesteuert. Dazu gehört die präzise Verfolgung des maximalen Leistungspunktes des PV-Feldes. Parameter wie die Spannungs-Strom-Kurve des Feldes, die Netzspannung und die eingespeiste Leistung werden ständig gemessen, wobei der Arbeitspunkt alle paar Sekunden neu eingestellt wird, um eine maximale Energieausnutzung zu erreichen. Die Netzspannung und -frequenz werden im Millisekundentakt überwacht, um eine sofortige Abschaltung des Wechselrichters im Falle einer Abweichung vom zulässigen Bereich oder eines Inselbetriebs gemäß RD 1663/2000 zu gewährleisten.\nDie Tatsache, dass das Gerät mit einem Flash-Programmspeicher ausgestattet ist, ermöglicht eine einfache Änderung der Parameter (falls erforderlich, ohne das Gerät aus der Anlage zu entfernen), um es an zukünftige Änderungen der Vorschriften oder spezifische Kundenanforderungen anzupassen."
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-1.jpg",
+     "alt": {
+      "es": "Ondulador para conexión fotovoltaica a red",
+      "en": "Inverter for photovoltaic connection to the grid",
+      "fr": "Onduleur pour connexion au réseau photovoltaïque",
+      "de": "Wechselrichter für photovoltaischen Netzanschluss"
+     },
+     "id": 1095
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Gama de convertidores diseñados para transformar la corriente continua producida por la energía solar fotovoltaica, en corriente alterna de las mismas características de la red de 230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Rango admitido de tensión de red : 230V ±2%."
+    },
+    {
+     "raw": "3000V CA",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Aislamiento entre circuitos de campo F.V. y red: 3000V CA 50Hz."
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "Range of converters designed to transform the direct current produced by photovoltaic solar energy into alternating current with the same characteristics of the 230V grid."
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:descripcion",
+     "context": "Admitted mains voltage range : 230V ±2%."
+    },
+    {
+     "raw": "3000V AC",
+     "lang": "en",
+     "source": "web:descripcion",
+     "context": "Isolation between V.F. field circuits and mains: 3000V AC 50Hz."
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Gamme de convertisseurs destinés à transformer le courant continu produit par l’énergie solaire photovoltaïque en courant alternatif ayant les mêmes caractéristiques que le réseau 230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:descripcion",
+     "context": "Plage de tension secteur admise : 230V ±2%."
+    },
+    {
+     "raw": "3000V AC",
+     "lang": "fr",
+     "source": "web:descripcion",
+     "context": "Isolation entre les circuits de terrain et le réseau : 3000V AC 50Hz."
+    },
+    {
+     "raw": "230-Volt",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Eine Reihe von Wechselrichtern, die den von der Photovoltaik erzeugten Gleichstrom in Wechselstrom mit denselben Eigenschaften wie das 230-Volt-Netz umwandeln."
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:descripcion",
+     "context": "Zulässiger Netzspannungsbereich : 230V ±2%."
+    },
+    {
+     "raw": "3000V AC",
+     "lang": "de",
+     "source": "web:descripcion",
+     "context": "Isolierung zwischen Feldstromkreisen und Netz: 3000V AC 50Hz."
+    }
+   ],
+   "power_mentions": [
+    {
+     "raw": "500W",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "La gama de potencias está comprendida entre 500W y 3300W."
+    },
+    {
+     "raw": "3300W",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "La gama de potencias está comprendida entre 500W y 3300W."
+    },
+    {
+     "raw": "20W",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Mínima potencia de generación para el funcionamiento del MPPT: 20W."
+    },
+    {
+     "raw": "3W",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Mínima potencia de generación para inyectar energía en la red: 3W."
+    },
+    {
+     "raw": "1W",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Consumo en standby < 1W."
+    },
+    {
+     "raw": "500W",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "The power range is between 500W and 3300W."
+    },
+    {
+     "raw": "3300W",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "The power range is between 500W and 3300W."
+    },
+    {
+     "raw": "20W",
+     "lang": "en",
+     "source": "web:descripcion",
+     "context": "Minimum generation power for MPPT operation: 20W."
+    },
+    {
+     "raw": "3W",
+     "lang": "en",
+     "source": "web:descripcion",
+     "context": "Minimum generation power to inject energy into the grid: 3W."
+    },
+    {
+     "raw": "1W",
+     "lang": "en",
+     "source": "web:descripcion",
+     "context": "Consumption in standby < 1W."
+    },
+    {
+     "raw": "500W",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "La gamme de puissance est comprise entre 500W et 3300W."
+    },
+    {
+     "raw": "3300W",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "La gamme de puissance est comprise entre 500W et 3300W."
+    },
+    {
+     "raw": "20 W",
+     "lang": "fr",
+     "source": "web:descripcion",
+     "context": "Puissance de production minimale pour le fonctionnement du MPPT : 20 W."
+    },
+    {
+     "raw": "3W",
+     "lang": "fr",
+     "source": "web:descripcion",
+     "context": "Puissance de production minimale pour injecter de l’énergie dans le réseau : 3W."
+    },
+    {
+     "raw": "1W",
+     "lang": "fr",
+     "source": "web:descripcion",
+     "context": "Consommation en veille < 1W."
+    },
+    {
+     "raw": "500W",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Der Leistungsbereich liegt zwischen 500W und 3300W."
+    },
+    {
+     "raw": "3300W",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Der Leistungsbereich liegt zwischen 500W und 3300W."
+    },
+    {
+     "raw": "20W",
+     "lang": "de",
+     "source": "web:descripcion",
+     "context": "Minimale Erzeugungsleistung für den MPPT-Betrieb: 20W."
+    },
+    {
+     "raw": "3W",
+     "lang": "de",
+     "source": "web:descripcion",
+     "context": "Minimale Erzeugungsleistung zur Einspeisung von Energie ins Netz: 3W."
+    },
+    {
+     "raw": "1W",
+     "lang": "de",
+     "source": "web:descripcion",
+     "context": "Verbrauch im Standby-Modus < 1W."
+    }
+   ],
+   "variation_axes_hint": [
+    "Potencia (W): la web solo da la gama 500W a 3300W; no hay potencias concretas ni modelos"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Ondulador para conexión fotovoltaica a red - Torivac",
+     "meta_description": "El ondulador para conexión fotovoltaica transforma la corriente continua producida por la energía solar en corriente alterna.",
+     "og_title": "Ondulador para conexión fotovoltaica a red - Torivac",
+     "og_description": "El ondulador para conexión fotovoltaica transforma la corriente continua producida por la energía solar en corriente alterna.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-1.jpg",
+     "canonical": "https://grupotorivac.com/product/ondulador-para-conexion-fotovoltaica-a-red/",
+     "focus_keyword": "ondulador para conexión fotovoltaica",
+     "modified": "2026-10-14T07:02:18",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Inverter for photovoltaic connection to the grid - Torivac",
+     "meta_description": "The inverter for photovoltaic connection transforms the direct current produced by solar energy into alternating current.",
+     "og_title": "Inverter for photovoltaic connection to the grid - Torivac",
+     "og_description": "The inverter for photovoltaic connection transforms the direct current produced by solar energy into alternating current.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-1.jpg",
+     "canonical": "https://grupotorivac.com/en/product/ondulador-para-conexion-fotovoltaica-a-red/",
+     "focus_keyword": "inverter for photovoltaic connection",
+     "modified": "2026-10-16T12:06:27",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Onduleur pour connexion au réseau photovoltaïque - Torivac",
+     "meta_description": "L'onduleur pour raccordement photovoltaïque convertit le courant continu produit par l'énergie solaire en courant alternatif.",
+     "og_title": "Onduleur pour connexion au réseau photovoltaïque - Torivac",
+     "og_description": "L'onduleur pour raccordement photovoltaïque convertit le courant continu produit par l'énergie solaire en courant alternatif.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-1.jpg",
+     "canonical": "https://grupotorivac.com/fr/product/ondulador-para-conexion-fotovoltaica-a-red/",
+     "focus_keyword": "onduleur pour connexion photovoltaïque",
+     "modified": "2026-10-16T12:05:55",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "Wechselrichter für photovoltaischen Netzanschluss - Torivac",
+     "meta_description": "Der Wechselrichter für den Anschluss von Photovoltaikanlagen wandelt den von der Sonnenenergie erzeugten Gleichstrom in Wechselstrom um.",
+     "og_title": "Wechselrichter für photovoltaischen Netzanschluss - Torivac",
+     "og_description": "Der Wechselrichter für den Anschluss von Photovoltaikanlagen wandelt den von der Sonnenenergie erzeugten Gleichstrom in Wechselstrom um.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-1.jpg",
+     "canonical": "https://grupotorivac.com/de/product/ondulador-para-conexion-fotovoltaica-a-red/",
+     "focus_keyword": "Wechselrichter für den Anschluss von Photovoltaikanlagen",
+     "modified": "2026-10-16T12:06:04",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "sin_alt",
+    "typo",
+    "terminologia_dudosa",
+    "contenido_por_verificar",
+    "duplicado_posible",
+    "texto_en_idioma_incorrecto",
+    "descripcion_no_renderizada_en_traduccion",
+    "sin_h1_en_traducciones",
+    "sin_modelos",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "Sin tabla de modelos, sin atributos y sin referencias: spec_tables=[], attributes=[] y orderable_items=[] en los 4 idiomas. La única cifra de gama es 'entre 500W y 3300W' (descripción corta); no hay potencias intermedias, modelos ni códigos.",
+    "Lista 'Detalles Técnicos' (15 viñetas, idéntica en estructura en los 4 idiomas) con tensión de red 230V ±2%, frecuencia 50Hz ±0.02%, aislamiento 3000V CA/AC 50Hz, potencia mínima de generación 20W (MPPT) y 3W (inyección), consumo en standby < 1W y rendimiento máximo 95%. No se corrige nada; por verificar con Torivac que el mínimo para inyectar (3W) sea menor que el del MPPT (20W) y si la referencia normativa citada (RD 1663/2000) sigue vigente.",
+    "Erratas en ES (se conservan): 'garantiza la fabricación dispositivos' (falta 'de'), 'transistores d’alta eficiencia', 'con un peso Y dimensiones' (Y mayúscula, salto de línea en mitad de frase), '3.Compatibilidad' (sin espacio). En EN/FR/DE se arrastra la abreviatura española 'F.V.' de forma inconsistente: EN 'F.V. field' y 'V.F. field', FR 'champ V.F.', DE 'V.F. Feld(es)'.",
+    "Imagen: 1 (id 1095, ondulador-1.jpg), con alt vacío en la biblioteca en los 4 idiomas; la página renderizada pone el nombre del producto de cada idioma (valor automático, no descriptivo), que es lo que se guarda en images[].alt.",
+    "Las páginas renderizadas EN, FR y DE NO muestran la descripción larga (solo la corta y el bloque de contacto: 2161/2560/2437 caracteres de texto de página frente a 9650 en ES), aunque la Store API y la REST la devuelven en los 3 idiomas (6415/7587/7229 caracteres de texto plano). El texto se conserva íntegro desde la Store API. Revisar si la omisión es intencionada antes de dar por buena la versión pública. Además esas 3 páginas no renderizan ningún h1 (el outline empieza en el h3 'Products'/'Produits'/'Produkte' del menú lateral); la ES sí (h1 = nombre del producto).",
+    "El bloque final de presentación de Torivac ('Torivac es una compañía especialista en diseño y fabricación…') se repite literalmente en 968 y 975 de este lote, y su traducción de 'variadores de tensión' cambia entre páginas (aquí EN 'voltage regulators', FR 'régulateurs de tension', DE 'Spannungsreglern'; en 975 FR 'variateurs de tension' y DE 'Antrieben mit variabler Spannung').",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "No hay PDF propio del producto: el único PDF enlazado en la página es el catálogo general del menú (CATALOGO: Torivac_2024.pdf) y no se recoge en pdf_links porque no es una ficha de este producto. El texto extraído de las 4 versiones del catálogo (data/analysis/pdf-text/Torivac_2024*, catalogue-torivac-DE) no contiene 'MPPT' ni ninguna mención fotovoltaica/solar, así que tampoco aporta datos de estos equipos.",
+    "SKU 'ce5e174a3bec' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; no hay referencia de fabricante en ninguna fuente web de este producto.",
+    "Precio: la Store API devuelve price '0', price_html vacío, is_purchasable=false y botón 'Leer más' (catálogo sin precios); no hay ningún dato de precio en las fuentes."
+   ]
+  },
+  {
+   "id_es": 975,
+   "slug": "reguladores-fotovoltaicos-torivac",
+   "url_es": "https://grupotorivac.com/product/reguladores-fotovoltaicos-torivac/",
+   "sku": "9c8710d8200f",
+   "names": {
+    "es": "Reguladores fotovoltaicos MPPT",
+    "en": "MPPT photovoltaic regulators",
+    "fr": "Régulateurs photovoltaïques MPPT",
+    "de": "MPPT-Photovoltaik-Steuerungen"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/reguladores-fotovoltaicos-torivac/",
+    "en": "https://grupotorivac.com/en/product/reguladores-fotovoltaicos-torivac/",
+    "fr": "https://grupotorivac.com/fr/product/reguladores-fotovoltaicos-torivac/",
+    "de": "https://grupotorivac.com/de/product/reguladores-fotovoltaicos-torivac/"
+   },
+   "ids": {
+    "es": 975,
+    "en": 15858,
+    "fr": 15898,
+    "de": 15865
+   },
+   "category_path_es": [
+    "Equipos electrónicos",
+    "Energias renovables"
+   ],
+   "categories_all_es": [
+    {
+     "id": 100,
+     "name": "Energias renovables",
+     "slug": "energias-renovables"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "El sistema de doble conversión y acumulación de energía en un bus intermedio de corriente continua a alta tensión.\nNos permite trabajar con baterías relativamente pequeñas para la potencia disponible, ya que el consumo no sufre el rizado de la salida, y los picos instantáneos de arranque de dispositivos conectados no son trasladados inmediatamente a la batería debido a que se utiliza la energía almacenada en el propio ondulador.\nEl puente de transistores de salida, conmutando a 20kHz con modulación senoidal nos permite obtener una tensión de salida pura y exenta de armónicos.\nEl control de todas las funciones del ondulador se realiza mediante un sistema de doble microcontrolador, lo que permite una gran precisión y fiabilidad.",
+    "en": "The system of double conversion and accumulation of energy in an intermediate bus from direct current to high voltage.\nIt allows us to work with relatively small batteries for the available power, since the consumption does not suffer the output ripple, and the instantaneous start-up peaks of connected devices are not immediately transferred to the battery because the energy stored in the inverter itself is used.\nThe output transistor bridge, switching at 20kHz with sinusoidal modulation allows us to obtain a pure output voltage free of harmonics.\nAll inverter functions are controlled by a dual microcontroller system, which allows for high precision and reliability.",
+    "fr": "Le système de double conversion et de stockage d’énergie sur un bus intermédiaire entre le courant continu et la haute tension.\nIl nous permet de travailler avec des batteries relativement petites pour la puissance disponible, car la consommation ne souffre pas de l’ondulation de sortie, et les pics de démarrage instantanés des appareils connectés ne sont pas immédiatement transférés à la batterie, car l’énergie stockée dans l’onduleur lui-même est utilisée.\nLe pont de transistors de sortie, commutant à 20kHz avec une modulation sinusoïdale, permet d’obtenir une tension de sortie pure et sans harmoniques.\nToutes les fonctions de l’onduleur sont contrôlées par un système à double microcontrôleur, ce qui permet d’obtenir une précision et une fiabilité élevées.",
+    "de": "Das doppelte Umwandlungs- und Energiespeichersystem auf einem Zwischenkreis zwischen Gleich- und Hochspannung.\nEs ermöglicht uns, mit relativ kleinen Batterien für die verfügbare Leistung zu arbeiten, da der Verbrauch nicht unter der Ausgangswelligkeit leidet und die momentanen Anlaufspitzen der angeschlossenen Geräte nicht sofort auf die Batterie übertragen werden, da die im Wechselrichter selbst gespeicherte Energie genutzt wird.\nDie Ausgangstransistorbrücke, die bei 20 kHz mit sinusförmiger Modulation schaltet, ermöglicht es uns, eine reine, oberwellenfreie Ausgangsspannung zu erhalten.\nAlle Funktionen des Wechselrichters werden von einem doppelten Mikrocontrollersystem gesteuert, das eine hohe Präzision und Zuverlässigkeit gewährleistet."
+   },
+   "description_text": {
+    "es": "## ¿Qué son los reguladores fotovoltaicos de Torivac?\n\nLos reguladores fotovoltaicos de Torivac son dispositivos que controlan la cantidad de carga que entra y sale de un panel solar. Su función principal es evitar la sobrecarga y la descarga excesiva de la batería, que pueden provocar daños y reducir la vida útil de la misma.\nCuentan con tecnología MPPT que ajusta automáticamente la tensión y la corriente de los paneles solares para operar en su punto de máxima potencia. Este proceso mejora la eficiencia de conversión hasta en un 30%, permitiendo a las empresas generar más energía sin necesidad de incrementar la cantidad de paneles instalados.\nLos reguladores MPPT garantizan un rendimiento óptimo incluso en condiciones de baja radiación o cambios bruscos en la intensidad solar. En sectores como la agricultura, donde la energía solar se utiliza para riego y procesamiento, mantener una producción estable es crucial para evitar interrupciones operativas.\n\n## ¿Qué función cumplen los reguladores en un sistema fotovoltaico?\n\nSin un regulador MPPT, las baterías pueden recibir una carga excesiva o descargarse completamente, lo que reduce su vida útil y puede generar fallos en el suministro eléctrico. Un regulador fotovoltaico evita estos problemas al controlar la carga y descarga de las baterías, asegurando un flujo de energía estable y seguro.\nAdemás,pueden integrarse en una amplia variedad de instalaciones, desde pequeñas unidades fotovoltaicas hasta grandes plantas industriales. Su flexibilidad los hace ideales para sectores con diferentes necesidades energéticas, como manufactura, minería y logística.\n\nEn sectores donde se utilizan equipos sensibles, como hospitales, centros de datos o fábricas automatizadas, cualquier fluctuación en el suministro eléctrico puede generar problemas graves, desde fallas en los sistemas de producción hasta pérdida de información. Un regulador MPPT ayuda a mantener un flujo estable de energía, protegiendo equipos costosos y asegurando la continuidad operativa sin interrupciones inesperadas.\n\n## Torivac es una compañía especialista en diseño y fabricación de transformadores toroidales y variadores de tensión\n\nContamos con una experiencia de cerca de 60 años en el sector, que nos ha permitido ir creciendo hasta lograr una presencia en más de 30 países.\nDisponemos de un equipo técnico que garantiza la fabricación dispositivos de alta precisión y eficiencia. Nuestra metodología de trabajo nos permite realizar simulaciones avanzadas en cada fase de cada proyecto, asegurando que cada componente, desde variadores de tensión toroidales, transformadores regulables, descargadores de batería, potenciómetros y núcleos toroidales, cumpla con los más altos estándares del sector.\nTrabajamos estrechamente con empresas que cuentan con una gran infraestructura, en busca de garantizarles soluciones personalizadas y eficientes. Apuntamos a responder a las exigencias de industrias como la tecnológica, la energética y la automotriz. Nuestro objetivo es seguir innovando, fortaleciendo alianzas estratégicas y expandiendo nuestro alcance global, manteniendo siempre el sello de calidad y excelencia que nos ha caracterizado desde nuestros inicios.\n\n## Detalles Técnicos\n\n- Tensiones nominales de baterías 12V, 24V y 48V.\n- Búsqueda automática del punto de máxima potencia de los módulos fotovoltaicos.\n- Conversión de tensión step-up y step-down con un amplio margen de tensiones de entrada.\n- Regulación de carga y supervisión de baterías.\n- Adquisición de datos y registro de producción.\n- Corriente de carga de baterías hasta 80A.\n- Puerto de comunicación RS-485 para lecturas y gestión remota.\n- Relés de maniobra configurables.\n- Display alfanumérico con lecturas de tensión, corriente, potencia activa y energía consumida\n- Puerto de comunicaciones para la lectura remota de todos los parámetros.\n- Conexiones para el uso en modo Master-Slave.",
+    "en": "## What are Torivac’s photovoltaic regulators?\n\nTorivac’s photovoltaic regulators are devices that control the amount of charge going in and out of a solar panel. Their main function is to prevent overcharging and over-discharging of the battery, which can cause damage and reduce battery life.\nThey feature MPPT technology that automatically adjusts the voltage and current of solar panels to operate at their maximum power point. This process improves conversion efficiency by up to 30%, allowing companies to generate more power without increasing the number of panels installed.\nMPPT regulators ensure optimal performance even in conditions of low radiation or sudden changes in solar intensity. In sectors such as agriculture, where solar energy is used for irrigation and processing, maintaining stable production is crucial to avoid operational interruptions.\n\n## What is the role of regulators in a photovoltaic system?\n\nWithout an MPPT regulator, batteries can be overcharged or completely discharged, which reduces their lifespan and can lead to power failures. A PV regulator avoids these problems by controlling the charging and discharging of the batteries, ensuring a stable and safe power flow.\nThey can also be integrated into a wide variety of installations, from small PV units to large industrial plants. Their flexibility makes them ideal for sectors with different energy needs, such as manufacturing, mining and logistics.\n\nIn sectors where sensitive equipment is used, such as hospitals, data centers or automated factories, any fluctuation in the power supply can cause serious problems, from production system failures to loss of information. An MPPT regulator helps maintain a stable flow of power, protecting expensive equipment and ensuring operational continuity without unexpected interruptions.\n\n## Torivac is a company specialized in the design and manufacture of toroidal transformers and voltage regulators.\n\nWe have nearly 60 years of experience in the sector, which has allowed us to grow to a presence in more than 30 countries.\nWe have a technical team that guarantees the manufacture of high precision and efficient devices. Our work methodology allows us to perform advanced simulations in each phase of each project, ensuring that each component, from toroidal voltage variators, adjustable transformers, battery dischargers, potentiometers and toroidal cores, meet the highest industry standards.\nWe work closely with companies that have a large infrastructure, seeking to ensure customized and efficient solutions. We aim to respond to the demands of industries such as technology, energy and automotive. Our goal is to continue innovating, strengthening strategic alliances and expanding our global reach, always maintaining the seal of quality and excellence that has characterized us since our beginnings.\n\n## Technical Details\n\n- Nominal battery voltages 12V, 24V and 48V.\n- Automatic search for the maximum power point of the photovoltaic modules.\n- Step-up and step-down voltage conversion with a wide range of input voltages.\n- Charge regulation and battery monitoring.\n- Data acquisition and production logging.\n- Battery charging current up to 80A.\n- RS-485 communication port for readings and remote management.\n- Configurable switching relays.\n- Alphanumeric display with voltage, current, active power and consumed energy readings\n- Communications port for remote reading of all parameters.\n- Connections for use in Master-Slave mode.",
+    "fr": "## Quels sont les régulateurs photovoltaïques de Torivac ?\n\nLes régulateurs photovoltaïques de Torivac sont des dispositifs qui contrôlent la quantité de charge entrant et sortant d’un panneau solaire. Leur fonction principale est d’empêcher la surcharge et la décharge excessive de la batterie, ce qui peut l’endommager et réduire sa durée de vie.\nIls sont dotés de la technologie MPPT qui ajuste automatiquement la tension et le courant des panneaux solaires pour qu’ils fonctionnent à leur point de puissance maximale. Ce processus améliore le rendement de conversion jusqu’à 30 %, ce qui permet aux entreprises de produire plus d’énergie sans avoir à augmenter le nombre de panneaux installés.\nLes régulateurs MPPT garantissent des performances optimales même dans des conditions de faible irradiation ou de changements soudains de l’intensité solaire. Dans des secteurs tels que l’agriculture, où l’énergie solaire est utilisée pour l’irrigation et le traitement, il est essentiel de maintenir une production stable pour éviter les interruptions d’activité.\n\n## Quel est le rôle des régulateurs dans un système photovoltaïque ?\n\nSans régulateur MPPT, les batteries peuvent être surchargées ou complètement déchargées, ce qui réduit leur durée de vie et peut entraîner des pannes de courant. Un régulateur PV évite ces problèmes en contrôlant la charge et la décharge des batteries, ce qui garantit un flux d’énergie stable et sûr.\nIls peuvent être intégrés dans une grande variété d’installations, des petites unités PV aux grandes installations industrielles. Leur flexibilité les rend idéaux pour les secteurs ayant des besoins énergétiques différents, tels que l’industrie manufacturière, l’exploitation minière et la logistique.\n\nDans les secteurs où des équipements sensibles sont utilisés, tels que les hôpitaux, les centres de données ou les usines automatisées, toute fluctuation de l’alimentation électrique peut entraîner de graves problèmes, allant de la défaillance des systèmes de production à la perte d’informations. Un régulateur MPPT permet de maintenir un flux d’énergie stable, de protéger les équipements coûteux et d’assurer la continuité des opérations sans interruption imprévue.\n\n## Torivac est une entreprise spécialisée dans la conception et la fabrication de transformateurs toroïdaux et de variateurs de tension.\n\nNous avons près de 60 ans d’expérience dans le secteur, ce qui nous a permis d’être présents dans plus de 30 pays.\nNous disposons d’une équipe technique qui garantit la fabrication de dispositifs de haute précision et efficaces. Notre méthodologie de travail nous permet d’effectuer des simulations avancées à chaque étape de chaque projet, garantissant que chaque composant, des variateurs de tension toroïdaux aux transformateurs de régulation, en passant par les déchargeurs de batterie, les potentiomètres et les noyaux toroïdaux, répond aux normes les plus strictes du secteur.\nNous travaillons en étroite collaboration avec des entreprises disposant d’une grande infrastructure, afin de garantir des solutions personnalisées et efficaces. Nous visons à répondre aux demandes d’industries telles que la technologie, l’énergie et l’automobile. Notre objectif est de continuer à innover, de renforcer les alliances stratégiques et d’étendre notre portée mondiale, en maintenant toujours le label de qualité et d’excellence qui nous caractérise depuis nos débuts.\n\n## Détails techniques\n\n- Tension nominale des batteries 12V, 24V et 48V.\n- Recherche automatique du point de puissance maximale des modules photovoltaïques.\n- Conversion de tension ascendante et descendante avec une large gamme de tensions d’entrée.\n- Régulation de la charge et surveillance de la batterie.\n- Acquisition de données et enregistrement de la production.\n- Courant de charge de la batterie jusqu’à 80A.\n- Port de communication RS-485 pour les relevés et la gestion à distance.\n- Relais de contrôle configurables.\n- Affichage alphanumérique de la tension, du courant, de la puissance active et de la consommation d’énergie\n- Port de communication pour la lecture à distance de tous les paramètres.\n- Connexions à utiliser en mode maître-esclave.",
+    "de": "## Was sind die Photovoltaik-Regler von Torivac?\n\nDie Photovoltaik-Regler von Torivac sind Geräte, die die Ladungsmenge, die in ein Solarmodul ein- und ausgeht, kontrollieren. Ihre Hauptfunktion besteht darin, die Überladung und Überentladung der Batterie zu verhindern, die zu Schäden führen und die Lebensdauer der Batterie verkürzen können.\nSie verfügen über die MPPT-Technologie, die die Spannung und den Strom der Solarmodule automatisch so anpasst, dass sie an ihrem maximalen Leistungspunkt arbeiten. Dieser Prozess verbessert den Umwandlungswirkungsgrad um bis zu 30%, so dass Unternehmen mehr Strom erzeugen können, ohne die Anzahl der installierten Paneele erhöhen zu müssen.\nMPPT-Regler gewährleisten eine optimale Leistung auch bei geringer Einstrahlung oder plötzlichen Änderungen der Sonnenintensität. In Sektoren wie der Landwirtschaft, wo Solarenergie für die Bewässerung und Verarbeitung genutzt wird, ist die Aufrechterhaltung einer stabilen Leistung entscheidend, um Betriebsunterbrechungen zu vermeiden.\n\n## Welche Rolle spielen die Regler in einer Photovoltaikanlage?\n\nOhne einen MPPT-Regler können die Batterien überladen oder vollständig entladen werden, was ihre Lebensdauer verkürzt und zu Stromausfällen führen kann. Ein PV-Regler vermeidet diese Probleme, indem er das Laden und Entladen der Batterien steuert und so einen stabilen und sicheren Stromfluss gewährleistet.\nSie können in eine Vielzahl von Anlagen integriert werden, von kleinen PV-Einheiten bis hin zu großen Industrieanlagen. Ihre Flexibilität macht sie ideal für Sektoren mit unterschiedlichem Energiebedarf, wie z.B. Produktion, Bergbau und Logistik.\n\nIn Bereichen, in denen empfindliche Geräte eingesetzt werden, wie z.B. in Krankenhäusern, Rechenzentren oder automatisierten Fabriken, kann jede Schwankung in der Stromversorgung zu ernsthaften Problemen führen, vom Ausfall des Produktionssystems bis hin zum Verlust von Informationen. Ein MPPT-Regler trägt dazu bei, einen stabilen Stromfluss aufrechtzuerhalten, der teure Geräte schützt und die Betriebskontinuität ohne unerwartete Unterbrechungen gewährleistet.\n\n## Torivac ist ein Unternehmen, das sich auf die Entwicklung und Herstellung von Ringkerntransformatoren und Antrieben mit variabler Spannung spezialisiert hat.\n\nWir verfügen über fast 60 Jahre Erfahrung in der Branche, die uns zu einer Präsenz in mehr als 30 Ländern geführt hat.\nWir verfügen über ein technisches Team, das die Herstellung von hochpräzisen und effizienten Geräten garantiert. Unsere Arbeitsmethodik ermöglicht es uns, in jeder Phase eines Projekts fortschrittliche Simulationen durchzuführen, um sicherzustellen, dass jedes Bauteil, von Ringspannungswandlern, Regeltransformatoren, Batterieentladern, Potentiometern und Ringbandkernen, den höchsten Standards der Branche entspricht.\nWir arbeiten eng mit Unternehmen zusammen, die über eine große Infrastruktur verfügen, um maßgeschneiderte und effiziente Lösungen zu gewährleisten. Wir sind bestrebt, auf die Anforderungen von Branchen wie Technologie, Energie und Automobil zu reagieren. Unser Ziel ist es, weiterhin innovativ zu sein, strategische Allianzen zu stärken und unsere globale Reichweite zu erweitern, wobei wir stets das Gütesiegel für Qualität und Exzellenz beibehalten, das uns seit unseren Anfängen auszeichnet.\n\n## Technische Details\n\n- Batterie-Nennspannungen 12V, 24V und 48V.\n- Automatische Suche nach dem maximalen Leistungspunkt der Photovoltaik-Module.\n- Step-up- und Step-down-Spannungsumwandlung mit einer großen Bandbreite an Eingangsspannungen.\n- Ladungsregulierung und Batterieüberwachung.\n- Datenerfassung und Produktionsprotokollierung.\n- Batterieladestrom bis zu 80A.\n- RS-485 Kommunikationsanschluss für Ablesungen und Fernverwaltung.\n- Konfigurierbare Steuerrelais.\n- Alphanumerisches Display mit Anzeige von Spannung, Strom, Wirkleistung und Stromverbrauch\n- Kommunikationsanschluss für die Fernablesung aller Parameter.\n- Anschlüsse für die Verwendung im Master-Slave-Modus."
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/12/regulador.jpg",
+     "alt": {
+      "es": "Regulador fotovoltaico MPPT Torivac diseñado para optimizar la carga y descarga de baterías solares, maximizando la eficiencia energética en sistemas industriales.",
+      "en": "Regulador fotovoltaico MPPT Torivac diseñado para optimizar la carga y descarga de baterías solares, maximizando la eficiencia energética en sistemas industriales.",
+      "fr": "Regulador fotovoltaico MPPT Torivac diseñado para optimizar la carga y descarga de baterías solares, maximizando la eficiencia energética en sistemas industriales.",
+      "de": "Regulador fotovoltaico MPPT Torivac diseñado para optimizar la carga y descarga de baterías solares, maximizando la eficiencia energética en sistemas industriales."
+     },
+     "id": 1094
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "12V",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Tensiones nominales de baterías 12V, 24V y 48V."
+    },
+    {
+     "raw": "24V",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Tensiones nominales de baterías 12V, 24V y 48V."
+    },
+    {
+     "raw": "48V",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Tensiones nominales de baterías 12V, 24V y 48V."
+    },
+    {
+     "raw": "12V",
+     "lang": "en",
+     "source": "web:descripcion",
+     "context": "Nominal battery voltages 12V, 24V and 48V."
+    },
+    {
+     "raw": "24V",
+     "lang": "en",
+     "source": "web:descripcion",
+     "context": "Nominal battery voltages 12V, 24V and 48V."
+    },
+    {
+     "raw": "48V",
+     "lang": "en",
+     "source": "web:descripcion",
+     "context": "Nominal battery voltages 12V, 24V and 48V."
+    },
+    {
+     "raw": "12V",
+     "lang": "fr",
+     "source": "web:descripcion",
+     "context": "Tension nominale des batteries 12V, 24V et 48V."
+    },
+    {
+     "raw": "24V",
+     "lang": "fr",
+     "source": "web:descripcion",
+     "context": "Tension nominale des batteries 12V, 24V et 48V."
+    },
+    {
+     "raw": "48V",
+     "lang": "fr",
+     "source": "web:descripcion",
+     "context": "Tension nominale des batteries 12V, 24V et 48V."
+    },
+    {
+     "raw": "12V",
+     "lang": "de",
+     "source": "web:descripcion",
+     "context": "Batterie-Nennspannungen 12V, 24V und 48V."
+    },
+    {
+     "raw": "24V",
+     "lang": "de",
+     "source": "web:descripcion",
+     "context": "Batterie-Nennspannungen 12V, 24V und 48V."
+    },
+    {
+     "raw": "48V",
+     "lang": "de",
+     "source": "web:descripcion",
+     "context": "Batterie-Nennspannungen 12V, 24V und 48V."
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Tensión nominal de batería (V): 12V, 24V o 48V",
+    "Corriente de carga de baterías: 'hasta 80A' (sin escalones ni modelos concretos)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Reguladores fotovoltaicos MPPT - Torivac",
+     "meta_description": "Los reguladores fotovoltaicos de Torivac regulan el flujo de energía que va de los paneles a las baterías. Controlan su intensidad para no dañarlas.",
+     "og_title": "Reguladores fotovoltaicos MPPT - Torivac",
+     "og_description": "Los reguladores fotovoltaicos de Torivac regulan el flujo de energía que va de los paneles a las baterías. Controlan su intensidad para no dañarlas.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/regulador.jpg",
+     "canonical": "https://grupotorivac.com/product/reguladores-fotovoltaicos-torivac/",
+     "focus_keyword": "reguladores fotovoltaicos torivac",
+     "modified": "2026-10-14T07:02:19",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "MPPT photovoltaic regulators - Torivac",
+     "meta_description": "Torivac's photovoltaic regulators regulate the flow of energy from the panels to the batteries. They control their intensity so as not to damage them.",
+     "og_title": "MPPT photovoltaic regulators - Torivac",
+     "og_description": "Torivac's photovoltaic regulators regulate the flow of energy from the panels to the batteries. They control their intensity so as not to damage them.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/regulador.jpg",
+     "canonical": "https://grupotorivac.com/en/product/reguladores-fotovoltaicos-torivac/",
+     "focus_keyword": "torivac photovoltaic controllers",
+     "modified": "2026-10-16T12:05:54",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Régulateurs photovoltaïques MPPT - Torivac",
+     "meta_description": "Les régulateurs photovoltaïques de Torivac régulent le flux d'énergie des panneaux vers les batteries. Ils contrôlent leur intensité afin de ne pas les endommager.",
+     "og_title": "Régulateurs photovoltaïques MPPT - Torivac",
+     "og_description": "Les régulateurs photovoltaïques de Torivac régulent le flux d'énergie des panneaux vers les batteries. Ils contrôlent leur intensité afin de ne pas les endommager.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/regulador.jpg",
+     "canonical": "https://grupotorivac.com/fr/product/reguladores-fotovoltaicos-torivac/",
+     "focus_keyword": "régulateurs photovoltaïques torivac",
+     "modified": "2026-10-16T12:06:26",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "MPPT-Photovoltaik-Steuerungen - Torivac",
+     "meta_description": "Die Photovoltaik-Regler von Torivac regulieren den Energiefluss von den Modulen zu den Batterien. Sie kontrollieren deren Intensität, um sie nicht zu beschädigen.",
+     "og_title": "MPPT-Photovoltaik-Steuerungen - Torivac",
+     "og_description": "Die Photovoltaik-Regler von Torivac regulieren den Energiefluss von den Modulen zu den Batterien. Sie kontrollieren deren Intensität, um sie nicht zu beschädigen.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/regulador.jpg",
+     "canonical": "https://grupotorivac.com/de/product/reguladores-fotovoltaicos-torivac/",
+     "focus_keyword": "torivac Photovoltaik-Steuergeräte",
+     "modified": "2026-10-16T12:06:03",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "duplicado_posible",
+    "texto_copiado_de_otro_producto",
+    "traduccion_dudosa",
+    "typo",
+    "terminologia_dudosa",
+    "texto_en_idioma_incorrecto",
+    "descripcion_no_renderizada_en_traduccion",
+    "sin_h1_en_traducciones",
+    "sin_modelos",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "La descripción corta (736 caracteres) es idéntica a la del producto 974 (ondulador autónomo): habla del 'ondulador', del puente de transistores de salida a 20kHz y de la 'tensión de salida pura', no de un regulador de carga. La meta description de Yoast sí describe el regulador. En EN, FR y DE la corta es la traducción de ese mismo texto (que dice 'inverter'/'onduleur'/'Wechselrichter'). No se corrige; hay que confirmar con Torivac qué descripción corta corresponde a este producto.",
+    "Traducción dudosa de la corta en los 3 idiomas: 'bus intermedio de corriente continua a alta tensión' pasa a EN 'intermediate bus from direct current to high voltage', FR 'bus intermédiaire entre le courant continu et la haute tension' y DE 'Zwischenkreis zwischen Gleich- und Hochspannung' (cambia el sentido). 'Alta tensión' no lleva ningún valor.",
+    "Sin tabla de modelos, atributos ni referencias: spec_tables=[], attributes=[] y orderable_items=[] en los 4 idiomas. Las únicas cifras son baterías 12V/24V/48V y corriente de carga 'hasta 80A' (descripción); no hay tensión de entrada de los módulos, potencia ni modelos. 'Conversión step-up y step-down con un amplio margen de tensiones de entrada' no da valores.",
+    "Erratas en ES (se conservan): 'Además,pueden' (sin espacio) y 'garantiza la fabricación dispositivos' (falta 'de').",
+    "Terminología: el nombre ES dice 'reguladores' y el DE 'MPPT-Photovoltaik-Steuerungen' (Steuerungen = controles) mientras el cuerpo DE dice 'Photovoltaik-Regler'; la focus keyword EN de Yoast es 'torivac photovoltaic controllers' frente al nombre 'regulators'. El bloque final de presentación de Torivac (repetido en 968 y 973) traduce 'variadores de tensión' como FR 'variateurs de tension' y DE 'Antrieben mit variabler Spannung', distinto de 973 ('régulateurs de tension', 'Spannungsreglern').",
+    "Imagen: 1 (id 1094, regulador.jpg). Su alt en la biblioteca es un texto descriptivo en español ('Regulador fotovoltaico MPPT Torivac diseñado para optimizar la carga y descarga de baterías solares, maximizando la eficiencia energética en sistemas industriales.') y se repite en español en EN, FR y DE (texto en idioma incorrecto). Es el único alt descriptivo del lote.",
+    "Las páginas renderizadas EN, FR y DE NO muestran la descripción larga (solo la corta y el bloque de contacto: 2530/2988/2861 caracteres de texto de página frente a 6813 en ES), aunque la Store API y la REST la devuelven en los 3 idiomas (3447/4130/3948 caracteres de texto plano). El texto se conserva íntegro desde la Store API. Revisar si la omisión es intencionada antes de dar por buena la versión pública. Además esas 3 páginas no renderizan ningún h1 (el outline empieza en el h3 'Products'/'Produits'/'Produkte' del menú lateral); la ES sí (h1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "No hay PDF propio del producto: el único PDF enlazado en la página es el catálogo general del menú (CATALOGO: Torivac_2024.pdf) y no se recoge en pdf_links porque no es una ficha de este producto. El texto extraído de las 4 versiones del catálogo (data/analysis/pdf-text/Torivac_2024*, catalogue-torivac-DE) no contiene 'MPPT' ni ninguna mención fotovoltaica/solar, así que tampoco aporta datos de estos equipos.",
+    "SKU '9c8710d8200f' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; no hay referencia de fabricante en ninguna fuente web de este producto.",
+    "Precio: la Store API devuelve price '0', price_html vacío, is_purchasable=false y botón 'Leer más' (catálogo sin precios); no hay ningún dato de precio en las fuentes."
+   ]
+  }
+ ]
+}

@@ -14,3 +14,6 @@ quedan como propuestas para aprobar (panel admin → Propuestas).
 | 7 | Baja | Páginas legales de EN/FR/DE enlazan a las versiones en español (`/aviso-legal-2/`) | pie de página | Se enlaza a la traducción donde existe |
 | 8 | Baja | Referencias a un dominio de pruebas antiguo (`torivac.santisomarketing.com`) dentro de contenido | descripción de categoría | No se enlazan imágenes de otros dominios |
 | 9 | Info | Ningún producto tiene precio; 18 de 80 mencionan tensión en el texto (el resto solo en PDFs) | Store API | Etiquetas de voltaje a partir de web + PDFs verificados |
+| 10 | Media (legal) | En el *Aviso legal* (ES y EN) falta el nombre de la titular: «la ostenta: , con NIF: B60784584» | `/aviso-legal-2/` y `/en/aviso-legal-2/` | Se replica fiel; se propone completar con la razón social (Torivac S.L.) tras confirmación |
+| 11 | Alta (SEO) | Canónicas incoherentes en la web original: 93 fichas EN, 94 FR y 90 DE declaran como canónica la URL **en español**; además la home y el contacto EN apuntan a la URL alemana, y el listado de productos FR y DE apunta al inglés. Con `hreflang` esto resta posicionamiento internacional | `<link rel="canonical">` de cada página (ver `data/analysis/pages-index.json`) | La web nueva emite canónica propia por idioma + `hreflang` correcto |
+

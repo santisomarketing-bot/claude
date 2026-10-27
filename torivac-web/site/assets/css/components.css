@@ -212,3 +212,7 @@
 .page-hero .lead{font-size:var(--fs-4);max-width:62ch;margin:var(--s-4) 0 0;color:#f2ece6}
 .sec.dark[style*="background-image"]{position:relative;isolation:isolate}
 .sec.dark[style*="background-image"]::before{content:"";position:absolute;inset:0;background:rgba(16,4,4,.78);z-index:-1}
+.sub-h{font-size:var(--fs-5);margin:var(--s-5) 0 var(--s-4);color:var(--ink)}
+.ccards.long{grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr))}
+.ccards.long .ccard{grid-template-columns:120px 1fr}
+.ccards.long .ccard p{font-size:var(--fs-1);line-height:1.5;color:var(--ink-3)}

@@ -6181,6 +6181,105 @@
    },
    "excerpt": "The energy efficiency and performance of electrical equipment depends, to a large extent, on the condition of its transformers. Understanding how to improve a transformer not […]"
   },
+  "/en/contact/": {
+   "kind": "page",
+   "lang": "en",
+   "path": "/en/contact/",
+   "title": "Torivac Group - Contact",
+   "meta_description": "%",
+   "alternates": {
+    "es": "/contacto/",
+    "fr": "/fr/contactez-nous/",
+    "de": "/de/kontakt-us/"
+   },
+   "source_url": "https://grupotorivac.com/de/kontakt-us/",
+   "elementor_id": "15736",
+   "sections": [
+    {
+     "id": "08c1fb9",
+     "form": true,
+     "blocks": [
+      {
+       "t": "h",
+       "l": 2,
+       "x": "CONTACT US"
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "SEND US A MESSAGE"
+      },
+      {
+       "t": "p",
+       "h": "Complete the following form. We will be happy to assist you."
+      },
+      {
+       "t": "p",
+       "h": "This site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply."
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "CONTACT WITH US"
+      },
+      {
+       "t": "h",
+       "l": 2,
+       "x": "Do you have any doubts? Write us and we will solve it for you"
+      },
+      {
+       "t": "p",
+       "h": "In Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project."
+      },
+      {
+       "t": "p",
+       "h": "C/ Potosi Nº 2, Planta 6ª, 08030 Barcelona"
+      },
+      {
+       "t": "p",
+       "h": "+34 93 312 01 61"
+      },
+      {
+       "t": "p",
+       "h": "info@torivac.com"
+      },
+      {
+       "t": "img",
+       "src": "https://grupotorivac.com/wp-content/uploads/2022/03/cropped-Logo_Torivac.png",
+       "alt": "Torivac empresa",
+       "href": null,
+       "w": 512,
+       "h": 512,
+       "img": {
+        "file": "assets/media/12fea80d-cropped-Logo_Torivac.webp",
+        "thumb": "assets/media/12fea80d-cropped-Logo_Torivac-t.webp",
+        "w": 512,
+        "h": 512,
+        "src": "https://grupotorivac.com/wp-content/uploads/2022/03/cropped-Logo_Torivac.png"
+       }
+      }
+     ],
+     "bg": {
+      "file": "assets/media/e661c92c-formatorivac.webp",
+      "thumb": "assets/media/e661c92c-formatorivac-t.webp",
+      "w": 1920,
+      "h": 716,
+      "src": "https://grupotorivac.com/wp-content/uploads/2022/04/formatorivac.jpg"
+     }
+    },
+    {
+     "id": "55f43536",
+     "form": false,
+     "blocks": [
+      {
+       "t": "embed",
+       "src": "https://maps.google.com/maps?q=Carrer%20de%20Potos%C3%AD%2C%202%2C%20planta%206%2C%20San%20Andr%C3%A9s%20de%20Palomar%2C%2008030%20Barcelona&t=m&z=15&output=embed&iwloc=near"
+      }
+     ],
+     "bg": null
+    }
+   ]
+  },
   "/en/declaracion-de-accesibilidad/": {
    "kind": "page",
    "lang": "en",
@@ -13096,6 +13195,77 @@
     }
    ]
   },
+  "/fr/produits-torivac/": {
+   "kind": "page",
+   "lang": "fr",
+   "path": "/fr/produits-torivac/",
+   "title": "Produits Torivac - Torivac",
+   "meta_description": "%",
+   "alternates": {
+    "es": "/productos/",
+    "en": "/en/torivac-products/",
+    "de": "/de/torivac-produkte/"
+   },
+   "source_url": "https://grupotorivac.com/en/torivac-products/",
+   "elementor_id": "15734",
+   "sections": [
+    {
+     "id": "37aab46",
+     "form": false,
+     "blocks": [
+      {
+       "t": "h",
+       "l": 3,
+       "x": "Produits"
+      },
+      {
+       "t": "ul",
+       "o": false,
+       "i": [
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/transformateurs/transformateur-conventionnel/\">Transformateur conventionnel</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/transformateurs/transformateurs-toroidaux/\">Transformateurs toroïdaux</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/accessoires-de-regulation/\">Accessoires de régulation</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/\">Double onduleur</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/\">Entraînements triphasés</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/unites-de-paillasse/\">Équipement de bureau</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/\">Onduleurs monophasés</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/production-sur-mesure/\">Production sur mesure</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/\">Série BAVS : Électronique</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/\">Stabilisateurs de la série AVS : électromécaniques avec servomoteur</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/\">Potentiomètres</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/rheostats-en-ceramique/\">Rhéostats en céramique</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/bobines-encapsulees/carre/\">Carrés</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/bobines-encapsulees/rond/\">Rond</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/portail/porte-10-mm/\">led 10mm</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/portail/led-portique-3-mm/\">led 3mm</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/portail/led-portale-5-mm/\">led 5mm</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/portail/led-portique-8-mm/\">led 8mm</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/prise-jack/prise-de-securite-hbs4/\">Prise de sécurité HBS4</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/prise-jack/prise-de-securite-hr4/\">prise de sécurité HR4</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/prise-jack/prise-de-securite-hsr4/\">Prise de sécurité HSR4</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/prise-jack/prise-jack-hb4/\">Prise HB4</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-avec-ligne/\">Boutons de commande BO série avec ligne</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-brillants/\">Boutons de commande de la série BO (brillants)</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bm-mat/\">Boutons de commande série BM (Matt)</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/cerceaux-avec-fleche/\">Cerceaux à flèches</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/couvertures/\">Couvercles de boîtier</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/couvertures-de-la-serie-bm/\">Couvercles de la série BM</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/couvertures-graduees/\">Couvertures classées</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/disques-fleches/\">Disques Arrow</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/disques-gradues/\">Disques gradués</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/estateurs/\">Estateurs</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/couvercles-de-la-serie-bo/\">La série BO couvre</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/bancs-de-charge/\">Bancs de charge</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/cimente/\">Cimenté</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/en-boite/\">En boîte</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/helicoidale/\">Hélicoïdale</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-demarrage/\">Résistances de démarrage</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-freinage/\">Résistances de freinage</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-mise-a-la-terre/\">Résistances de mise à la terre</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/alimentations-en-courant-continu/\">Alimentations en courant continu</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/controle-industriel/\">Contrôle industriel</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/convertisseurs/\">Convertisseurs</a> <a href=\"https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/energies-renouvelables/\">Énergies renouvelables</a>"
+       ]
+      },
+      {
+       "t": "h",
+       "l": 2,
+       "x": "PRODUITS SUR MESURE"
+      },
+      {
+       "t": "h",
+       "l": 2,
+       "x": "Nos produits"
+      },
+      {
+       "t": "ul",
+       "o": false,
+       "i": [
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/transformateurs/\"> \n Transformateurs (6) \nLe marché européen des transformateurs a connu un développement significatif au cours de la dernière décennie, stimulé par la demande…</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/\"> \n Régulateurs de tension - Autotransformateurs réglables (12) \nTorivac conçoit et fabrique des variateurs de vitesse à tension et à variation continue pour la commande précise, sûre et…</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/\"> \n Stabilisateurs de tension (5) \nLes stabilisateurs de tension sont également connus sous le nom de régulateurs de tension. Ils peuvent être électroniques ou électromécaniques…</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/\"> \n Rhéostats et potentiomètres à boudin (9) \nLes potentiomètres et rhéostats fabriqués par Torivac sont des composants essentiels pour la régulation précise de la tension et du…</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/bobines-encapsulees/\"> \n Bobines encapsulées (2) \nLes bobines de l’électro-aimant, encapsulées dans une résine époxy, ont une rigidité diélectrique élevée et une efficacité magnétique maximale grâce…</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/bobines-darret-inductances-reactances-toroidales/\"> \n Inductances | Réactances toroïdales (1) \nUne self est un inducteur conçu pour avoir une réactance très élevée à une fréquence ou une gamme de fréquences…</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/noyaux/\"> \n Noyaux (1) \nLes noyaux toroïdaux sont des composants magnétiques essentiels dans une grande variété d’applications électroniques et industrielles. Leur conception en anneau…</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/portail/\"> \n Porté (4) \nCes supports métalliques pour LED sont composés d’un corps en laiton ou duraluminium, nickelé, chromé ou anodisé, d’un écrou et…</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/prise-jack/\"> \n Prises (4) \nLes douilles de sécurité sont fabriquées en interne, ce qui garantit une qualité optimale.</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/\"> \n Boutons de commande (11) \nEn complément de notre catalogue, nous pouvons vous proposer une large gamme de composants auxiliaires pour des utilisations multiples. Composants…</a>",
+        "<a href=\"https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/\"> \n Résistances : bancs de charge (7) \nNous disposons d’une gamme de produits allant de 50W à 200K W, standard ou sur mesure selon les spécifications du…</a>"
+       ]
+      }
+     ],
+     "bg": null
+    }
+   ]
+  },
   "/fr/projets-cles-en-main/": {
    "kind": "page",
    "lang": "fr",
@@ -18298,6 +18468,77 @@
     "src": "https://grupotorivac.com/wp-content/uploads/2024/11/1000067538.jpg"
    },
    "excerpt": "Unser jährlicher Besuch in Matelec Wie bei jeder Ausgabe sind einige Mitglieder des Torivac-Teams nach Madrid gereist, um an der Matelec 2024. Diese Messe ist bereits […]"
+  },
+  "/de/torivac-produkte/": {
+   "kind": "page",
+   "lang": "de",
+   "path": "/de/torivac-produkte/",
+   "title": "Torivac Produkte - Torivac",
+   "meta_description": "%",
+   "alternates": {
+    "es": "/productos/",
+    "en": "/en/torivac-products/",
+    "fr": "/fr/produits-torivac/"
+   },
+   "source_url": "https://grupotorivac.com/en/torivac-products/",
+   "elementor_id": "15730",
+   "sections": [
+    {
+     "id": "37aab46",
+     "form": false,
+     "blocks": [
+      {
+       "t": "h",
+       "l": 3,
+       "x": "Produkte"
+      },
+      {
+       "t": "ul",
+       "o": false,
+       "i": [
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/transformatoren/konventioneller-transformator/\">Konventioneller Transformator</a> <a href=\"https://grupotorivac.com/de/categoria-producto/transformatoren/ringkerntransformatoren/\">Ringkerntransformatoren</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/\">Doppelter Wechselrichter</a> <a href=\"https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/\">Dreiphasige Antriebe</a> <a href=\"https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/einphasen-wechselrichter/\">Einphasen-Wechselrichter</a> <a href=\"https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/masgeschneiderte-fertigung/\">Maßgeschneiderte Fertigung</a> <a href=\"https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/tafelmodellen/\">Schreibtischgeräte</a> <a href=\"https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/zubehor-zum-regulieren/\">Zubehör zum Regulieren</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/\">BAVS Serie: Elektronik</a> <a href=\"https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/\">Stabilisatoren der AVS-Serie: elektromechanisch mit Servomotor</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/rheostate-und-spulenpotentiometer/keramische-rheostate/\">Keramische Rheostate</a> <a href=\"https://grupotorivac.com/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/\">Potentiometer</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/gekapselte-spulen/vierkant/\">Quadrate</a> <a href=\"https://grupotorivac.com/de/categoria-producto/gekapselte-spulen/rund/\">Rund</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/geportaliseerd/geperforeerde-led-10mm/\">led 10mm</a> <a href=\"https://grupotorivac.com/de/categoria-producto/geportaliseerd/geportaliseerde-led-3mm/\">led 3mm</a> <a href=\"https://grupotorivac.com/de/categoria-producto/geportaliseerd/geportaliseerde-led-5mm/\">led 5mm</a> <a href=\"https://grupotorivac.com/de/categoria-producto/geportaliseerd/geporteerde-led-8mm/\">led 8mm</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/socket-jack/socket-jack-hb4-10a/\">HB4-Buchse</a> <a href=\"https://grupotorivac.com/de/categoria-producto/socket-jack/hbs4-veiligheidsaansluiting/\">Sicherheitssteckdose HBS4</a> <a href=\"https://grupotorivac.com/de/categoria-producto/socket-jack/hr4-veiligheidsaansluiting/\">Sicherheitssteckdose HR4</a> <a href=\"https://grupotorivac.com/de/categoria-producto/socket-jack/hsr4-veiligheidsaansluiting/\">Sicherheitssteckdose HSR4</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/gegradueerde-covers/\">Abgestufte Bezüge</a> <a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/gegradueerde-schijven/\">Abgestufte Scheiben</a> <a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bo-serie-bedieningsknoppen-glanzend/\">Bedientasten der BO-Serie (glänzend)</a> <a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bm-serie-bedieningsknoppen-mat/\">Bedientasten Serie BM (Matt)</a> <a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bm-serie-covers/\">BM Serie Abdeckungen</a> <a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bo-serie-deksels/\">BO-Serie umfasst</a> <a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/omslagen/\">Gehäuseabdeckungen</a> <a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/hoepels-met-pijl/\">Pfeil-Reifen</a> <a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/pijlschijven/\">Pfeil-Scheiben</a> <a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/knoppen-estators/\">Statoren</a> <a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bo-serie-bedieningsknoppen-met-lijn/\">Steuertasten BO Serie mit Linie</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/boxen/\">Boxen</a> <a href=\"https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/remweerstanden/\">Bremswiderstände</a> <a href=\"https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/erdungswiderstande/\">Erdungswiderstände</a> <a href=\"https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/ladebanke/\">Ladebänke</a> <a href=\"https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/startwiderstande/\">Startwiderstände</a> <a href=\"https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/wendel/\">Wendel</a> <a href=\"https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/zementiert/\">Zementiert</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/dc-stromversorgungen/\">DC-Stromversorgungen</a> <a href=\"https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/erneuerbare-energien/\">Erneuerbare Energien</a> <a href=\"https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/industrielle-steuerung/\">Industrielle Steuerung</a> <a href=\"https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/konverter/\">Konverter</a>"
+       ]
+      },
+      {
+       "t": "h",
+       "l": 2,
+       "x": "MASSGESCHNEIDERTE PRODUKTE"
+      },
+      {
+       "t": "h",
+       "l": 2,
+       "x": "Unsere Produkte"
+      },
+      {
+       "t": "ul",
+       "o": false,
+       "i": [
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/transformatoren/\"> \n Transformatoren (6) \nDer europäische Markt für Transformatoren hat sich in den letzten zehn Jahren stark entwickelt, angetrieben durch die wachsende Nachfrage nach…</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/\"> \n Spannungsregler - Einstellbare Spartransformatoren (11) \nTorivac entwickelt und fertigt Antriebe zur Spannungs- und Stetigregelung für die präzise, sichere und zuverlässige Steuerung elektrischer Systeme in industriellen,…</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/\"> \n Spannungsstabilisatoren (5) \nSpannungsstabilisatoren oder auch als Spannungsregler bekannt. Sie können elektronisch oder elektromechanisch mit Servomotor sein, für einphasige oder dreiphasige Installationen. Wird…</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/rheostate-und-spulenpotentiometer/\"> \n Rheostate und Spulenpotentiometer (9) \nDie von Torivac hergestellten Potentiometer und Rheostate sind unverzichtbare Komponenten für die präzise Regulierung von Spannung und Strom in elektrischen…</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/gekapselte-spulen/\"> \n Gekapselte Spulen (2) \nDie in Epoxidharz eingekapselten Elektromagnetspulen haben aufgrund ihres Designs und ihres mechanischen Aufbaus eine hohe Durchschlagsfestigkeit und eine maximale magnetische…</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/smoorspoelen-inductanties-toroidale-reactanties/\"> \n Drosseln | Induktivitäten | Ringkerndrosseln (1) \nEine Drossel ist eine Spule, die bei einer bestimmten Frequenz oder einem bestimmten Frequenzbereich eine sehr hohe Reaktanz aufweist. Sie…</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/kernen/\"> \n Kerne (1) \nRingkerne sind wesentliche magnetische Komponenten in einer Vielzahl von elektronischen und industriellen Anwendungen. Ihr geschlossenes Ringdesign ermöglicht eine gleichmäßige Verteilung…</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/geportaliseerd/\"> \n Portiert (4) \nDiese LED-Halterungen aus Metall bestehen aus einem Gehäuse aus Messing oder Duraluminium, vernickelt, verchromt oder eloxiert, einer vernickelten Messingmutter und…</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/socket-jack/\"> \n Socket Jack (4) \nDe Socket Jack wordt in eigen huis geproduceerd, wat de hoogste kwaliteit garandeert.</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/\"> \n Steuerungstasten (11) \nErgänzend zu unserem Katalog können wir Ihnen eine große Auswahl an Hilfskomponenten für verschiedene Einsatzzwecke anbieten. Komponenten aus eigener Herstellung…</a>",
+        "<a href=\"https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/\"> \n Widerstände : Lastbänke (7) \nWir haben eine Produktpalette von 50W bis 200K W, standardmäßig oder maßgeschneidert nach Kundenspezifikation, einschließlich Widerständen mit niedriger Induktivität, hoher…</a>"
+       ]
+      }
+     ],
+     "bg": null
+    }
+   ]
   },
   "/de/unser-unternehmen/": {
    "kind": "page",
