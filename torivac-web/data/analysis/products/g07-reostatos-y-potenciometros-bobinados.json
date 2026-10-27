@@ -1,0 +1,2408 @@
+{
+ "group": "g07-reostatos-y-potenciometros-bobinados",
+ "products": [
+  {
+   "id_es": 904,
+   "slug": "reostatos-y-potenciometros-bobinados",
+   "url_es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados/",
+   "sku": "897b440c7c85",
+   "names": {
+    "es": "Reostatos y potenciometros bobinados",
+    "en": "Rheostats and coiled potentiometers",
+    "fr": "Rhéostats et potentiomètres à boudin",
+    "de": "Rheostate und Spulenpotentiometer"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados/",
+    "en": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados/",
+    "fr": "https://grupotorivac.com/fr/product/reostatos-y-potenciometros-bobinados/",
+    "de": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados/"
+   },
+   "ids": {
+    "es": 904,
+    "en": 15611,
+    "fr": 15610,
+    "de": 15613
+   },
+   "category_path_es": [
+    "Reostatos y potenciómetros bobinados"
+   ],
+   "categories_all_es": [
+    {
+     "id": 122,
+     "name": "Reostatos y potenciómetros bobinados",
+     "slug": "reostatos-y-potenciometros-bobinados"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Diseñamos y fabricamos reostatos ceramicos y potenciometros bobinados.",
+    "en": "We design and manufacture ceramic rheostats and coiled potentiometers.",
+    "fr": "Nous concevons et fabriquons des rhéostats en céramique et des potentiomètres à boudin.",
+    "de": "Wir entwickeln und fertigen Keramik-Rheostate und Spulenpotentiometer."
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/reostato-ceramico-torivac.jpg",
+     "alt": {
+      "es": "Reostatos y potenciometros bobinados",
+      "en": "Rheostats and coiled potentiometers",
+      "fr": "Rhéostats et potentiomètres à boudin",
+      "de": "Rheostate und Spulenpotentiometer"
+     },
+     "id": 778,
+     "ids": {
+      "es": 778,
+      "en": 778,
+      "fr": 778,
+      "de": 778
+     },
+     "filename": "reostato-ceramico-torivac.jpg",
+     "title": {
+      "es": "reostato-ceramico-torivac",
+      "en": "reostato-ceramico-torivac",
+      "fr": "reostato-ceramico-torivac",
+      "de": "reostato-ceramico-torivac"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Tipo de producto (reóstato cerámico o potenciómetro bobinado): la ficha no permite elegir, hay que ir a las fichas hijas del lote",
+    "Valor óhmico (Ω): no indicado en la web",
+    "Potencia (W): no indicada en la web"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project.\n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Rheostats and coiled potentiometers",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet.\n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Rhéostats et potentiomètres à boudin",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt.\n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Rheostate und Spulenpotentiometer",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Reostatos y potenciometros bobinados - Torivac",
+     "meta_description": "Diseñamos y fabricamos reostatos ceramicos y potenciometros. Fabricado por Torivac.",
+     "og_title": "Reostatos y potenciometros bobinados - Torivac",
+     "og_description": "Diseñamos y fabricamos reostatos ceramicos y potenciometros. Fabricado por Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/reostato-ceramico-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:42",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__reostatos-y-potenciometros-bobinados.json"
+    },
+    "en": {
+     "title": "Rheostats and coiled potentiometers - Torivac",
+     "meta_description": "We design and manufacture ceramic rheostats and coiled. Made by Torivac.",
+     "og_title": "Rheostats and coiled potentiometers - Torivac",
+     "og_description": "We design and manufacture ceramic rheostats and coiled. Made by Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/reostato-ceramico-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:33",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__reostatos-y-potenciometros-bobinados.json"
+    },
+    "fr": {
+     "title": "Rhéostats et potentiomètres à boudin - Torivac",
+     "meta_description": "Nous concevons et fabriquons des rhéostats en céramique et des potentiomètres à boudin. Fabriqué par Torivac.",
+     "og_title": "Rhéostats et potentiomètres à boudin - Torivac",
+     "og_description": "Nous concevons et fabriquons des rhéostats en céramique et des potentiomètres à boudin. Fabriqué par Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/reostato-ceramico-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:33",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__reostatos-y-potenciometros-bobinados.json"
+    },
+    "de": {
+     "title": "Rheostate und Spulenpotentiometer - Torivac",
+     "meta_description": "Wir entwickeln und fertigen Keramik-Rheostate. Hergestellt von Torivac.",
+     "og_title": "Rheostate und Spulenpotentiometer - Torivac",
+     "og_description": "Wir entwickeln und fertigen Keramik-Rheostate. Hergestellt von Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/reostato-ceramico-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:42",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__reostatos-y-potenciometros-bobinados.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "nombre_generico",
+    "duplicado_posible",
+    "ficha_generica_sin_datos_tecnicos",
+    "sin_pdf",
+    "sin_alt",
+    "typo",
+    "meta_description_truncada",
+    "terminologia_inconsistente_entre_idiomas",
+    "producto_relacionado_autorreferente",
+    "slug_url_en_espanol",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "sku_no_comercial",
+    "sin_referencias_comerciales",
+    "sin_tabla_de_modelos"
+   ],
+   "gaps": [
+    "Ficha genérica de familia: su nombre ('Reostatos y potenciometros bobinados') coincide con el de la categoría 122 'Reostatos y potenciómetros bobinados' y solo tiene una frase en short_description ('Diseñamos y fabricamos reostatos ceramicos y potenciometros bobinados.' y sus equivalentes EN/FR/DE) más una imagen. No hay descripción, tabla, atributos, PDF ni ningún dato técnico (potencia, tensión, valor óhmico). Parece una página de familia con formato de producto (duplicado funcional de la categoría); decidir si se migra como producto o se absorbe en la categoría.",
+    "description vacía en la Store API y en la REST (content.rendered) en los 4 idiomas: todo el texto del producto está en short_description, que es también lo que muestra la página renderizada. description_text='' (no hay descripción larga).",
+    "Sin enlace a PDF: es el único producto del lote sin botón 'Ver ficha técnica'; pdf_links=[].",
+    "Bloque 'Explora productos similares': la página ES no lo muestra, pero EN/FR/DE sí y su única entrada es el propio producto ('Rheostats and coiled potentiometers' / 'Rhéostats et potentiomètres à boudin' / 'Rheostate und Spulenpotentiometer', enlazando a su misma URL); relacionado autorreferente generado por WooCommerce (se guarda en extra_sections).",
+    "Meta description truncada o recortada de forma desigual: ES 'Diseñamos y fabricamos reostatos ceramicos y potenciometros. Fabricado por Torivac.' (pierde 'bobinados'); EN 'We design and manufacture ceramic rheostats and coiled. Made by Torivac.' (frase incompleta: falta 'potentiometers'); DE 'Wir entwickeln und fertigen Keramik-Rheostate. Hergestellt von Torivac.' (omite 'und Spulenpotentiometer'); FR sí es completa.",
+    "Terminología del nombre: ES 'bobinados' → EN 'coiled potentiometers', FR 'potentiomètres à boudin', DE 'Spulenpotentiometer'; en el resto del lote EN usa 'windings/wound', FR 'enroulement/bobinés' y DE 'Wicklungen/gewickelt'. ('à boudin' no es la forma habitual para 'bobinado'.) Se conserva.",
+    "URL de traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados/; FR https://grupotorivac.com/fr/product/reostatos-y-potenciometros-bobinados/; DE https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados/.",
+    "Texto sin tildes en origen: 'reostatos ceramicos y potenciometros bobinados' (ES). Nomenclatura: el nombre dice 'Reostatos y potenciometros bobinados' (sin tildes; la forma correcta sería 'Reóstatos y potenciómetros bobinados', como ya escribe la propia descripción de la ficha 1042) y es común a todo el lote.",
+    "Sin menciones de tensión ni de potencia en ningún idioma (voltage_mentions=[] y power_mentions=[]); sin tabla ni referencias comerciales.",
+    "SKU '897b440c7c85': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes (orderable_items=[] y sin_referencias_comerciales).",
+    "Sin tablas: ni la descripción (Store API / REST) ni la página renderizada contienen <table> en ningún idioma; spec_tables=[] y orderable_items=[] (no hay tabla de modelos en la web).",
+    "Atributos de WooCommerce vacíos (attributes=[]) en los 4 idiomas; no hay ningún dato técnico estructurado.",
+    "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados/); ver docs/01-analisis/HALLAZGOS.md n.º 11.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (su outline solo tiene el H3 de menú 'Products'/'Produits'/'Produkte' y los H4/H2 del bloque de contacto y de productos relacionados; el nombre del producto solo está en <title>); la página ES sí lo tiene (H1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés) y título 'KONTAKT US'; ES 'encontrareis' sin tilde. Los productos relacionados cambian de un idioma a otro (selección automática de WooCommerce).",
+    "Contraste fuentes: el texto de la página renderizada (sin menú, bloque de contacto ni relacionados) coincide con short_description + description de la Store API en los 4 idiomas; no hay pestañas ni descargas adicionales aparte del botón al PDF."
+   ]
+  },
+  {
+   "id_es": 906,
+   "slug": "reostatos-y-potenciometros-bobinados-3",
+   "url_es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/",
+   "sku": "a4f0c100b685",
+   "names": {
+    "es": "Reostatos y potenciometros bobinados simple 3W",
+    "en": "Rheostats and potentiometers simple windings 3W",
+    "fr": "Rhéostats et potentiomètres à simple enroulement 3W",
+    "de": "Rheostate und Potentiometer einzelne Wicklungen 3W"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/",
+    "en": "https://grupotorivac.com/en/product/rheostats-and-potentiometers-simple-windings-3w/",
+    "fr": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-a-simple-enroulement-3w/",
+    "de": "https://grupotorivac.com/de/product/rheostate-und-potentiometer-einzelne-wicklungen-3w/"
+   },
+   "ids": {
+    "es": 906,
+    "en": 16328,
+    "fr": 16329,
+    "de": 16330
+   },
+   "category_path_es": [
+    "Reostatos y potenciómetros bobinados",
+    "Potenciometros"
+   ],
+   "categories_all_es": [
+    {
+     "id": 107,
+     "name": "Potenciometros",
+     "slug": "potenciometros"
+    },
+    {
+     "id": 108,
+     "name": "Simples",
+     "slug": "simples"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Este potenciómetro se distingue por su pequeño diámetro (25mm) a pesar de su disipación real de 3W. Su linealidad (3%) los hace aptos para usos sofisticados. Se fabrican la gama de valores Standard, según la serie E-10 (desde 5 Ohm hasta 22 K).\n\nVer ficha técnica",
+    "en": "This potentiometer is distinguished by its small diameter (25mm) despite its real dissipation of 3W. Their linearity (3%) makes them suitable for sophisticated applications. They are manufactured in the standard range of values, according to the E-10 series (from 5 Ohm to 22 K).\n\nSee technical data sheet",
+    "fr": "Ce potentiomètre se distingue par son faible diamètre (25mm) malgré sa dissipation réelle de 3W. Leur linéarité (3%) les destine à des applications sophistiquées. Ils sont fabriqués dans la gamme de valeurs standard, selon la série E-10 (de 5 Ohm à 22 K).\n\nVoir la fiche technique",
+    "de": "Dieses Potentiometer zeichnet sich durch seinen kleinen Durchmesser (25mm) trotz seiner realen Verlustleistung von 3W aus. Ihre Linearität (3%) macht sie für anspruchsvolle Anwendungen geeignet. Sie werden in den Standardwerten der Serie E-10 hergestellt (von 5 Ohm bis 22 K).\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-torivac.jpg",
+     "alt": {
+      "es": "Reostatos y potenciometros bobinados simple 3W",
+      "en": "Rheostats and potentiometers simple windings 3W",
+      "fr": "Rhéostats et potentiomètres à simple enroulement 3W",
+      "de": "Rheostate und Potentiometer einzelne Wicklungen 3W"
+     },
+     "id": 781,
+     "ids": {
+      "es": 781,
+      "en": 781,
+      "fr": 781,
+      "de": 781
+     },
+     "filename": "potenciometro-3w-torivac.jpg",
+     "title": {
+      "es": "potenciometro-3w-torivac",
+      "en": "potenciometro-3w-torivac",
+      "fr": "potenciometro-3w-torivac",
+      "de": "potenciometro-3w-torivac"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/Potenciometro.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [
+    {
+     "raw": "3W",
+     "lang": "es",
+     "source": "web:nombre",
+     "context": "Reostatos y potenciometros bobinados simple 3W"
+    },
+    {
+     "raw": "3W",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Este potenciómetro se distingue por su pequeño diámetro (25mm) a pesar de su disipación real de 3W."
+    },
+    {
+     "raw": "3W",
+     "lang": "en",
+     "source": "web:nombre",
+     "context": "Rheostats and potentiometers simple windings 3W"
+    },
+    {
+     "raw": "3W",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "This potentiometer is distinguished by its small diameter (25mm) despite its real dissipation of 3W."
+    },
+    {
+     "raw": "3W",
+     "lang": "fr",
+     "source": "web:nombre",
+     "context": "Rhéostats et potentiomètres à simple enroulement 3W"
+    },
+    {
+     "raw": "3W",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Ce potentiomètre se distingue par son faible diamètre (25mm) malgré sa dissipation réelle de 3W."
+    },
+    {
+     "raw": "3W",
+     "lang": "de",
+     "source": "web:nombre",
+     "context": "Rheostate und Potentiometer einzelne Wicklungen 3W"
+    },
+    {
+     "raw": "3W",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Dieses Potentiometer zeichnet sich durch seinen kleinen Durchmesser (25mm) trotz seiner realen Verlustleistung von 3W aus."
+    }
+   ],
+   "variation_axes_hint": [
+    "Valor óhmico (Ω): gama estándar serie E-10, «desde 5 Ohm hasta 22 K» según la web"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Reostatos y potenciometros bobinados simple 5W\n- Reostatos y potenciometros bobinados doble 2x3W",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project.\n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Rheostats and potentiometers simple windings 5W\n- Rheostats and potentiometers dual windings 2x3W",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet.\n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Rhéostats et potentiomètres à simple enroulement 5W\n- Rhéostats et potentiomètres à double enroulement 2x3W",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt.\n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Rheostate und Potentiometer Einzelwicklung 5W\n- Rheostate und Potentiometer mit zwei Wicklungen 2x3W",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Reostatos y potenciometros bobinados simple 3W - Torivac",
+     "meta_description": "Este potenciómetro se distingue por su pequeño diámetro (25mm) a pesar de su disipación real de 3W. Fabricado por Torivac.",
+     "og_title": "Reostatos y potenciometros bobinados simple 3W - Torivac",
+     "og_description": "Este potenciómetro se distingue por su pequeño diámetro (25mm) a pesar de su disipación real de 3W. Fabricado por Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:44",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__reostatos-y-potenciometros-bobinados-3.json"
+    },
+    "en": {
+     "title": "Rheostats and potentiometers simple windings 3W - Torivac",
+     "meta_description": "This potentiometer is distinguished by its small diameter (25mm) despite its real dissipation of 3W.",
+     "og_title": "Rheostats and potentiometers simple windings 3W - Torivac",
+     "og_description": "This potentiometer is distinguished by its small diameter (25mm) despite its real dissipation of 3W.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:11",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__rheostats-and-potentiometers-simple-windings-3w.json"
+    },
+    "fr": {
+     "title": "Rhéostats et potentiomètres à simple enroulement 3W - Torivac",
+     "meta_description": "Ce potentiomètre se distingue par son faible diamètre (25mm) malgré sa dissipation réelle de 3W. Fabriqué par Torivac.",
+     "og_title": "Rhéostats et potentiomètres à simple enroulement 3W - Torivac",
+     "og_description": "Ce potentiomètre se distingue par son faible diamètre (25mm) malgré sa dissipation réelle de 3W. Fabriqué par Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:11",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__rheostats-et-potentiometres-a-simple-enroulement-3w.json"
+    },
+    "de": {
+     "title": "Rheostate und Potentiometer einzelne Wicklungen 3W - Torivac",
+     "meta_description": "Dieses Potentiometer zeichnet sich durch seinen kleinen Durchmesser (25mm) trotz seiner realen Verlustleistung von 3W aus.",
+     "og_title": "Rheostate und Potentiometer einzelne Wicklungen 3W - Torivac",
+     "og_description": "Dieses Potentiometer zeichnet sich durch seinen kleinen Durchmesser (25mm) trotz seiner realen Verlustleistung von 3W aus.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:11",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__rheostate-und-potentiometer-einzelne-wicklungen-3w.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "nombre_generico",
+    "sin_alt",
+    "typo",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_numerico_no_descriptivo",
+    "pdf_compartido_entre_fichas",
+    "unidad_ambigua",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "sku_no_comercial",
+    "sin_referencias_comerciales",
+    "sin_tabla_de_modelos"
+   ],
+   "gaps": [
+    "Potencia: '3W' en el nombre y 'disipación real de 3W' en la short_description (en los 4 idiomas); es potencia disipada, no tensión. La web no da ninguna tensión para este producto (voltage_mentions=[]).",
+    "Datos técnicos solo en prosa: diámetro '25mm', linealidad '(3%)' y gama de valores 'serie E-10 (desde 5 Ohm hasta 22 K)'. '22 K' va sin unidad (se entiende kΩ, pero no está escrito) y 'Ohm' sin símbolo Ω; '25mm' sin espacio. No hay tabla: la web no ofrece los valores óhmicos de la serie E-10 como lista seleccionable, así que no se puede construir orderable_items.",
+    "Erratas en ES: 'Se fabrican la gama de valores Standard' (falta la preposición 'en'); EN/FR/DE traducen 'are manufactured in the standard range' / 'sont fabriqués dans la gamme' / 'werden in den Standardwerten ... hergestellt' (la errata no se reproduce). El nombre sigue sin tildes. Nomenclatura: el nombre dice 'Reostatos y potenciometros bobinados' (sin tildes; la forma correcta sería 'Reóstatos y potenciómetros bobinados', como ya escribe la propia descripción de la ficha 1042) y es común a todo el lote.",
+    "El nombre habla de 'Reostatos y potenciometros' pero el texto describe solo un potenciómetro (ficha categorizada en 'Potenciometros' > 'Simples').",
+    "Terminología inconsistente entre idiomas y dentro del lote: ES 'bobinados' se traduce como 'coiled' / 'wound' / 'windings' (EN), 'à boudin' / 'enroulement' / 'bobinés' / 'bobinages' (FR) y 'Spulen-' / 'gewickelt' / 'Wicklungen' / 'Wickel-' (DE); ES 'simple' es 'simple windings' (906, 907) pero 'single windings' (910) en EN, y 'einzelne Wicklungen' / 'Einzelwicklung' / 'einfache Wicklungen' en DE. Se conserva tal cual.",
+    "PDF enlazado Potenciometro.pdf (1 página; compartido con la ficha 908): según el texto extraído (data/analysis/pdf-text/Potenciometro/p001.txt, ruidoso y no verificado visualmente) trae 'Características principales' del 3W (terminales, eje, tolerancia, 'Tensión de perforación > 1000v', 'Peso neto: 22grs.', 'Temperatura de trabajo', 'Categoría UL: 94V-0', embalaje) y una sección 'Potenciómetro doble'. No se vuelca aquí porque la fuente de esta tarea es la web; pendiente de verificación (S11). Riesgo de falso positivo de voltaje al etiquetar desde el PDF: el texto extraído de Potenciometro.pdf contiene 'Categoría UL: 94V-0' (clase de inflamabilidad UL94, no es una tensión) junto a 'Tensión de perforación > 1000v' (esta sí es una tensión, pero solo está en el PDF).",
+    "Meta description: ES y FR añaden el sufijo de plantilla 'Fabricado por Torivac.' / 'Fabriqué par Torivac.'; EN y DE no. Las cuatro reproducen la primera frase.",
+    "Slug ES numérico sin significado ('reostatos-y-potenciometros-bobinados-3'): la URL no describe el producto (relevante para SEO y para redirecciones en la web nueva).",
+    "SKU 'a4f0c100b685': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes (orderable_items=[] y sin_referencias_comerciales).",
+    "description vacía en la Store API y en la REST (content.rendered) en los 4 idiomas: todo el texto del producto está en short_description, que es también lo que muestra la página renderizada. description_text='' (no hay descripción larga).",
+    "Sin tablas: ni la descripción (Store API / REST) ni la página renderizada contienen <table> en ningún idioma; spec_tables=[] y orderable_items=[] (no hay tabla de modelos en la web).",
+    "Atributos de WooCommerce vacíos (attributes=[]) en los 4 idiomas; no hay ningún dato técnico estructurado.",
+    "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
+    "La short_description incluye el texto del botón al PDF (p. ej. 'Ver ficha técnica' / 'See technical data sheet'); se deja en short_description y se registra en pdf_links[].labels.",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/); ver docs/01-analisis/HALLAZGOS.md n.º 11.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (su outline solo tiene el H3 de menú 'Products'/'Produits'/'Produkte' y los H4/H2 del bloque de contacto y de productos relacionados; el nombre del producto solo está en <title>); la página ES sí lo tiene (H1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés) y título 'KONTAKT US'; ES 'encontrareis' sin tilde. Los productos relacionados cambian de un idioma a otro (selección automática de WooCommerce).",
+    "Contraste fuentes: el texto de la página renderizada (sin menú, bloque de contacto ni relacionados) coincide con short_description + description de la Store API en los 4 idiomas; no hay pestañas ni descargas adicionales aparte del botón al PDF."
+   ]
+  },
+  {
+   "id_es": 907,
+   "slug": "reostatos-y-potenciometros-bobinados-4",
+   "url_es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/",
+   "sku": "6e514d4dee24",
+   "names": {
+    "es": "Reostatos y potenciometros bobinados simple 5W",
+    "en": "Rheostats and potentiometers simple windings 5W",
+    "fr": "Rhéostats et potentiomètres à simple enroulement 5W",
+    "de": "Rheostate und Potentiometer Einzelwicklung 5W"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/",
+    "en": "https://grupotorivac.com/en/product/rheostats-and-potentiometers-simple-windings-5w/",
+    "fr": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-a-simple-enroulement-5w/",
+    "de": "https://grupotorivac.com/de/product/rheostate-und-potentiometer-einzelwicklung-5w/"
+   },
+   "ids": {
+    "es": 907,
+    "en": 16325,
+    "fr": 16326,
+    "de": 16327
+   },
+   "category_path_es": [
+    "Reostatos y potenciómetros bobinados",
+    "Potenciometros"
+   ],
+   "categories_all_es": [
+    {
+     "id": 107,
+     "name": "Potenciometros",
+     "slug": "potenciometros"
+    },
+    {
+     "id": 108,
+     "name": "Simples",
+     "slug": "simples"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "El cuidadoso bobinado del elemento de resistencia y el diseño original de un sistema de cursor muy sensible aseguran un manejo muy suave, preciso y de larga duración. La escobilla es un rodillo de latón basculante que gira sobre la superficie plana de la resistencia con la presión adecuada para garantizar un buen contacto y un número muy elevado de maniobras. La resistencia residual al inicio y final de recorrido es prácticamente nula.\n\nVer ficha técnica",
+    "en": "The careful winding of the heating element and the original design of a very sensitive slider system ensure very smooth, precise and long-lasting operation. The brush is a tilting brass roller that rotates on the flat surface of the resistor with adequate pressure to ensure good contact and a very high number of maneuvers. Residual resistance at the beginning and end of the stroke is practically nil.\n\nSee technical data sheet",
+    "fr": "L’enroulement minutieux de l’élément chauffant et la conception originale d’un système de glissière très sensible garantissent un fonctionnement très doux, précis et durable. La brosse est un rouleau de laiton inclinable qui tourne sur la surface plane de l’élément chauffant avec la bonne pression pour assurer un bon contact et un très grand nombre de manœuvres. La résistance résiduelle en début et en fin de course est pratiquement nulle.\n\nVoir la fiche technique",
+    "de": "Die sorgfältige Wicklung des Heizelements und das originelle Design eines sehr empfindlichen Schiebersystems sorgen für einen sehr sanften, präzisen und langlebigen Betrieb. Bei der Bürste handelt es sich um eine kippbare Messingwalze, die auf der flachen Oberfläche des Heizelements mit dem richtigen Druck rotiert, um einen guten Kontakt und eine sehr hohe Anzahl von Manövern zu gewährleisten. Der Restwiderstand zu Beginn und am Ende des Hubes ist praktisch gleich null.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-5w-torivac.jpg",
+     "alt": {
+      "es": "Reostatos y potenciometros bobinados simple 5W",
+      "en": "Rheostats and potentiometers simple windings 5W",
+      "fr": "Rhéostats et potentiomètres à simple enroulement 5W",
+      "de": "Rheostate und Potentiometer Einzelwicklung 5W"
+     },
+     "id": 783,
+     "ids": {
+      "es": 783,
+      "en": 783,
+      "fr": 783,
+      "de": 783
+     },
+     "filename": "potenciometro-5w-torivac.jpg",
+     "title": {
+      "es": "potenciometro-5w-torivac",
+      "en": "potenciometro-5w-torivac",
+      "fr": "potenciometro-5w-torivac",
+      "de": "potenciometro-5w-torivac"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/POTENCIOMETRO-5W.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [
+    {
+     "raw": "5W",
+     "lang": "es",
+     "source": "web:nombre",
+     "context": "Reostatos y potenciometros bobinados simple 5W"
+    },
+    {
+     "raw": "5W",
+     "lang": "en",
+     "source": "web:nombre",
+     "context": "Rheostats and potentiometers simple windings 5W"
+    },
+    {
+     "raw": "5W",
+     "lang": "fr",
+     "source": "web:nombre",
+     "context": "Rhéostats et potentiomètres à simple enroulement 5W"
+    },
+    {
+     "raw": "5W",
+     "lang": "de",
+     "source": "web:nombre",
+     "context": "Rheostate und Potentiometer Einzelwicklung 5W"
+    }
+   ],
+   "variation_axes_hint": [
+    "Valor óhmico (Ω): la web no indica gama ni valores"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Reostatos y potenciometros bobinados simple 3W\n- Reostatos y potenciometros bobinados doble 2x3W",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project.\n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Rheostats and potentiometers simple windings 3W\n- Rheostats and potentiometers dual windings 2x3W",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet.\n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Rhéostats et potentiomètres à simple enroulement 3W\n- Rhéostats et potentiomètres à double enroulement 2x3W",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt.\n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Rheostate und Potentiometer einzelne Wicklungen 3W\n- Rheostate und Potentiometer mit zwei Wicklungen 2x3W",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Reostatos y potenciometros bobinados simple 5W - Torivac",
+     "meta_description": "El cuidadoso bobinado del elemento de resistencia y el diseño original de un sistema de cursor muy sensible aseguran un manejo muy suave.",
+     "og_title": "Reostatos y potenciometros bobinados simple 5W - Torivac",
+     "og_description": "El cuidadoso bobinado del elemento de resistencia y el diseño original de un sistema de cursor muy sensible aseguran un manejo muy suave.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-5w-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:44",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__reostatos-y-potenciometros-bobinados-4.json"
+    },
+    "en": {
+     "title": "Rheostats and potentiometers simple windings 5W - Torivac",
+     "meta_description": "The careful winding of the heating element and the original design of a very sensitive slider system ensure very smooth.",
+     "og_title": "Rheostats and potentiometers simple windings 5W - Torivac",
+     "og_description": "The careful winding of the heating element and the original design of a very sensitive slider system ensure very smooth.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-5w-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:01",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__rheostats-and-potentiometers-simple-windings-5w.json"
+    },
+    "fr": {
+     "title": "Rhéostats et potentiomètres à simple enroulement 5W - Torivac",
+     "meta_description": "L'enroulement minutieux de l'élément chauffant et la conception originale d'un système de glissière très sensible garantissent un fonctionnement très.",
+     "og_title": "Rhéostats et potentiomètres à simple enroulement 5W - Torivac",
+     "og_description": "L'enroulement minutieux de l'élément chauffant et la conception originale d'un système de glissière très sensible garantissent un fonctionnement très.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-5w-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:10",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__rheostats-et-potentiometres-a-simple-enroulement-5w.json"
+    },
+    "de": {
+     "title": "Rheostate und Potentiometer Einzelwicklung 5W - Torivac",
+     "meta_description": "Die sorgfältige Wicklung des Heizelements und das originelle Design eines sehr empfindlichen Schiebersystems sorgen für einen sehr sanften.",
+     "og_title": "Rheostate und Potentiometer Einzelwicklung 5W - Torivac",
+     "og_description": "Die sorgfältige Wicklung des Heizelements und das originelle Design eines sehr empfindlichen Schiebersystems sorgen für einen sehr sanften.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-5w-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:10",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__rheostate-und-potentiometer-einzelwicklung-5w.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "nombre_generico",
+    "sin_alt",
+    "typo",
+    "meta_description_truncada",
+    "traduccion_inexacta",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_numerico_no_descriptivo",
+    "ficha_sin_datos_numericos",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "sku_no_comercial",
+    "sin_referencias_comerciales",
+    "sin_tabla_de_modelos"
+   ],
+   "gaps": [
+    "Potencia: solo '5W' en el nombre (en los 4 idiomas). La short_description describe el bobinado, el cursor y la escobilla pero no da ningún número (ni gama óhmica, ni tolerancia, ni tensión): voltage_mentions=[] y la potencia solo aparece en el nombre.",
+    "Meta description truncada a mitad de frase en los 4 idiomas, sin sufijo: ES '...aseguran un manejo muy suave.' (la frase sigue 'muy suave, preciso y de larga duración'); EN '...ensure very smooth.'; FR '...garantissent un fonctionnement très.'; DE '...sorgen für einen sehr sanften.'.",
+    "Traducción técnicamente inexacta en EN/FR/DE: ES 'elemento de resistencia' se traduce como 'heating element' / 'élément chauffant' / 'Heizelement' (un elemento calefactor, no el elemento resistivo de un potenciómetro; EN usa después 'resistor' para lo mismo). ES 'escobilla' → 'brush' / 'brosse' / 'Bürste'. Se conserva tal cual.",
+    "Terminología inconsistente entre idiomas y dentro del lote: ES 'bobinados' se traduce como 'coiled' / 'wound' / 'windings' (EN), 'à boudin' / 'enroulement' / 'bobinés' / 'bobinages' (FR) y 'Spulen-' / 'gewickelt' / 'Wicklungen' / 'Wickel-' (DE); ES 'simple' es 'simple windings' (906, 907) pero 'single windings' (910) en EN, y 'einzelne Wicklungen' / 'Einzelwicklung' / 'einfache Wicklungen' en DE. Se conserva tal cual.",
+    "PDF enlazado POTENCIOMETRO-5W.pdf (propio de esta ficha, 1 página): el texto extraído (data/analysis/pdf-text/POTENCIOMETRO-5W/p001.txt) lista 'Características principales' (terminales, potencia máx., distribución lineal, gama de valores óhmicos, tolerancia, 'Tensión de perforación: >1000V', ángulos, longitud del eje, peso, incremento de temperatura) pero con OCR muy ruidoso (p. ej. 'Gama de valores óhmicos: 52-50 KO', 'Tolerancia: 6%,', 'Angulo de glo, acánico; 264\"'), por lo que no es fiable sin lectura visual. No se vuelca aquí porque la fuente de esta tarea es la web; pendiente de verificación (S11).",
+    "El nombre sigue sin tildes. Nomenclatura: el nombre dice 'Reostatos y potenciometros bobinados' (sin tildes; la forma correcta sería 'Reóstatos y potenciómetros bobinados', como ya escribe la propia descripción de la ficha 1042) y es común a todo el lote.",
+    "Slug ES numérico sin significado ('reostatos-y-potenciometros-bobinados-4'): la URL no describe el producto (relevante para SEO y para redirecciones en la web nueva).",
+    "SKU '6e514d4dee24': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes (orderable_items=[] y sin_referencias_comerciales).",
+    "description vacía en la Store API y en la REST (content.rendered) en los 4 idiomas: todo el texto del producto está en short_description, que es también lo que muestra la página renderizada. description_text='' (no hay descripción larga).",
+    "Sin tablas: ni la descripción (Store API / REST) ni la página renderizada contienen <table> en ningún idioma; spec_tables=[] y orderable_items=[] (no hay tabla de modelos en la web).",
+    "Atributos de WooCommerce vacíos (attributes=[]) en los 4 idiomas; no hay ningún dato técnico estructurado.",
+    "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
+    "La short_description incluye el texto del botón al PDF (p. ej. 'Ver ficha técnica' / 'See technical data sheet'); se deja en short_description y se registra en pdf_links[].labels.",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/); ver docs/01-analisis/HALLAZGOS.md n.º 11.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (su outline solo tiene el H3 de menú 'Products'/'Produits'/'Produkte' y los H4/H2 del bloque de contacto y de productos relacionados; el nombre del producto solo está en <title>); la página ES sí lo tiene (H1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés) y título 'KONTAKT US'; ES 'encontrareis' sin tilde. Los productos relacionados cambian de un idioma a otro (selección automática de WooCommerce).",
+    "Contraste fuentes: el texto de la página renderizada (sin menú, bloque de contacto ni relacionados) coincide con short_description + description de la Store API en los 4 idiomas; no hay pestañas ni descargas adicionales aparte del botón al PDF."
+   ]
+  },
+  {
+   "id_es": 908,
+   "slug": "reostatos-y-potenciometros-bobinados-5",
+   "url_es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/",
+   "sku": "aa0c66c1a326",
+   "names": {
+    "es": "Reostatos y potenciometros bobinados doble 2x3W",
+    "en": "Rheostats and potentiometers dual windings 2x3W",
+    "fr": "Rhéostats et potentiomètres à double enroulement 2x3W",
+    "de": "Rheostate und Potentiometer mit zwei Wicklungen 2x3W"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/",
+    "en": "https://grupotorivac.com/en/product/rheostats-and-potentiometers-dual-windings-2x3w/",
+    "fr": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-a-double-enroulement-2x3w/",
+    "de": "https://grupotorivac.com/de/product/rheostate-und-potentiometer-mit-zwei-wicklungen-2x3w/"
+   },
+   "ids": {
+    "es": 908,
+    "en": 16321,
+    "fr": 16322,
+    "de": 16323
+   },
+   "category_path_es": [
+    "Reostatos y potenciómetros bobinados",
+    "Potenciometros",
+    "Dobles"
+   ],
+   "categories_all_es": [
+    {
+     "id": 111,
+     "name": "Dobles",
+     "slug": "dobles-potenciometros"
+    },
+    {
+     "id": 107,
+     "name": "Potenciometros",
+     "slug": "potenciometros"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Este potenciómetro doble, de 2 x 3W., es un derivado del modelo de 3W. Para su uso en equipos estéreo, como atenuador. Sus características eléctricas y físicas son iguales a estos últimos. Peso neto: 28 gr.\n\nVer ficha técnica",
+    "en": "This 2 x 3W double potentiometer is a derivative of the 3W model. For use in stereo equipment, as an attenuator. Its electrical and physical characteristics are the same as the latter. Net weight: 28 gr.\n\nSee data sheet",
+    "fr": "Ce double potentiomètre 2 x 3W est un dérivé du modèle 3W. Il est destiné à être utilisé dans les équipements stéréo, comme atténuateur. Ses caractéristiques électriques et physiques sont les mêmes que ce dernier. Poids net : 28 gr.\n\nVoir la fiche technique",
+    "de": "Dieses 2 x 3W-Doppelpotentiometer ist ein Derivat des 3W-Modells. Es wird in Stereoanlagen als Dämpfungsglied verwendet. Seine elektrischen und physikalischen Eigenschaften sind die gleichen wie die des letzteren. Nettogewicht: 28 gr.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-tandem-torivac.jpg",
+     "alt": {
+      "es": "Reostatos y potenciometros bobinados doble 2x3W",
+      "en": "Rheostats and potentiometers dual windings 2x3W",
+      "fr": "Rhéostats et potentiomètres à double enroulement 2x3W",
+      "de": "Rheostate und Potentiometer mit zwei Wicklungen 2x3W"
+     },
+     "id": 785,
+     "ids": {
+      "es": 785,
+      "en": 785,
+      "fr": 785,
+      "de": 785
+     },
+     "filename": "potenciometro-3w-tandem-torivac.jpg",
+     "title": {
+      "es": "potenciometro-3w-tandem-torivac",
+      "en": "potenciometro-3w-tandem-torivac",
+      "fr": "potenciometro-3w-tandem-torivac",
+      "de": "potenciometro-3w-tandem-torivac"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/Potenciometro.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [
+    {
+     "raw": "2x3W",
+     "lang": "es",
+     "source": "web:nombre",
+     "context": "Reostatos y potenciometros bobinados doble 2x3W"
+    },
+    {
+     "raw": "2 x 3W",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Este potenciómetro doble, de 2 x 3W., es un derivado del modelo de 3W."
+    },
+    {
+     "raw": "3W",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Este potenciómetro doble, de 2 x 3W., es un derivado del modelo de 3W."
+    },
+    {
+     "raw": "2x3W",
+     "lang": "en",
+     "source": "web:nombre",
+     "context": "Rheostats and potentiometers dual windings 2x3W"
+    },
+    {
+     "raw": "2 x 3W",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "This 2 x 3W double potentiometer is a derivative of the 3W model."
+    },
+    {
+     "raw": "3W",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "This 2 x 3W double potentiometer is a derivative of the 3W model."
+    },
+    {
+     "raw": "2x3W",
+     "lang": "fr",
+     "source": "web:nombre",
+     "context": "Rhéostats et potentiomètres à double enroulement 2x3W"
+    },
+    {
+     "raw": "2 x 3W",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Ce double potentiomètre 2 x 3W est un dérivé du modèle 3W."
+    },
+    {
+     "raw": "3W",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Ce double potentiomètre 2 x 3W est un dérivé du modèle 3W."
+    },
+    {
+     "raw": "2x3W",
+     "lang": "de",
+     "source": "web:nombre",
+     "context": "Rheostate und Potentiometer mit zwei Wicklungen 2x3W"
+    },
+    {
+     "raw": "2 x 3W",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Dieses 2 x 3W-Doppelpotentiometer ist ein Derivat des 3W-Modells."
+    },
+    {
+     "raw": "3W",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Dieses 2 x 3W-Doppelpotentiometer ist ein Derivat des 3W-Modells."
+    }
+   ],
+   "variation_axes_hint": [
+    "Valor óhmico (Ω): la web solo dice que sus características eléctricas y físicas son iguales a las del modelo de 3W (serie E-10, de 5 Ohm a 22 K en la ficha 906); no da gama propia"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Reostatos y potenciometros bobinados simple 3W\n- Reostatos y potenciometros bobinados simple 5W",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project.\n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Rheostats and potentiometers simple windings 3W\n- Rheostats and potentiometers simple windings 5W",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet.\n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Rhéostats et potentiomètres à simple enroulement 3W\n- Rhéostats et potentiomètres à simple enroulement 5W",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt.\n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Rheostate und Potentiometer einzelne Wicklungen 3W\n- Rheostate und Potentiometer Einzelwicklung 5W",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Reostatos y potenciometros bobinados doble 2x3W - Torivac",
+     "meta_description": "Este potenciómetro doble, de 2 x 3W., es un derivado del modelo de 3W. Para su uso en equipos estéreo, como atenuador.",
+     "og_title": "Reostatos y potenciometros bobinados doble 2x3W - Torivac",
+     "og_description": "Este potenciómetro doble, de 2 x 3W., es un derivado del modelo de 3W. Para su uso en equipos estéreo, como atenuador.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-tandem-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:45",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__reostatos-y-potenciometros-bobinados-5.json"
+    },
+    "en": {
+     "title": "Rheostats and potentiometers dual windings 2x3W - Torivac",
+     "meta_description": "This 2 x 3W double potentiometer is a derivative of the 3W model. For use in stereo equipment, as an attenuator.",
+     "og_title": "Rheostats and potentiometers dual windings 2x3W - Torivac",
+     "og_description": "This 2 x 3W double potentiometer is a derivative of the 3W model. For use in stereo equipment, as an attenuator.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-tandem-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:00",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__rheostats-and-potentiometers-dual-windings-2x3w.json"
+    },
+    "fr": {
+     "title": "Rhéostats et potentiomètres à double enroulement 2x3W - Torivac",
+     "meta_description": "Ce double potentiomètre 2 x 3W est un dérivé du modèle 3W. Il est destiné à être utilisé dans les équipements stéréo, comme atténuateur.",
+     "og_title": "Rhéostats et potentiomètres à double enroulement 2x3W - Torivac",
+     "og_description": "Ce double potentiomètre 2 x 3W est un dérivé du modèle 3W. Il est destiné à être utilisé dans les équipements stéréo, comme atténuateur.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-tandem-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:00",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__rheostats-et-potentiometres-a-double-enroulement-2x3w.json"
+    },
+    "de": {
+     "title": "Rheostate und Potentiometer mit zwei Wicklungen 2x3W - Torivac",
+     "meta_description": "Dieses 2 x 3W-Doppelpotentiometer ist ein Derivat des 3W-Modells. Es wird in Stereoanlagen als Dämpfungsglied verwendet.",
+     "og_title": "Rheostate und Potentiometer mit zwei Wicklungen 2x3W - Torivac",
+     "og_description": "Dieses 2 x 3W-Doppelpotentiometer ist ein Derivat des 3W-Modells. Es wird in Stereoanlagen als Dämpfungsglied verwendet.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-tandem-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:01",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__rheostate-und-potentiometer-mit-zwei-wicklungen-2x3w.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "nombre_generico",
+    "sin_alt",
+    "typo",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_numerico_no_descriptivo",
+    "pdf_compartido_entre_fichas",
+    "dato_discrepante_con_pdf",
+    "etiqueta_boton_inconsistente",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "sku_no_comercial",
+    "sin_referencias_comerciales",
+    "sin_tabla_de_modelos"
+   ],
+   "gaps": [
+    "Potencia: '2x3W' en el nombre (sin espacios) y '2 x 3W' en la short_description (con espacios), más '3W' al citar el modelo base; en los 4 idiomas. La web no da ninguna tensión (voltage_mentions=[]). Otros datos: 'Peso neto: 28 gr.' ('Net weight: 28 gr.', 'Poids net : 28 gr.', 'Nettogewicht: 28 gr.'); uso 'en equipos estéreo, como atenuador'.",
+    "Discrepancia web ↔ PDF (sin corregir): el texto extraído de Potenciometro.pdf (data/analysis/pdf-text/Potenciometro/p001.txt, ruidoso y no verificado visualmente) da para el 'Potenciómetro doble' 'Peso neto: 40 grs' frente a los 28 gr de la web (y 22 grs para el 3W). Proponer la comprobación en la verificación de PDFs (S11).",
+    "Erratas/estilo en ES: '2 x 3W.,' (un punto seguido de una coma); 'Sus características eléctricas y físicas son iguales a estos últimos' (plural, aunque se refiere solo al modelo de 3W); 'Para su uso en equipos estéreo, como atenuador.' es un fragmento sin verbo. EN/FR/DE lo redactan como frase completa. El nombre sigue sin tildes. Nomenclatura: el nombre dice 'Reostatos y potenciometros bobinados' (sin tildes; la forma correcta sería 'Reóstatos y potenciómetros bobinados', como ya escribe la propia descripción de la ficha 1042) y es común a todo el lote.",
+    "Etiqueta del botón al PDF inconsistente en EN: 'See data sheet' (esta ficha y la 910) frente a 'See technical data sheet' en el resto del lote.",
+    "Categoría 'Dobles' (id 111): slug ES 'dobles-potenciometros' y slugs de las traducciones EN 'dual-potentiometers', FR 'potentiometres-doubles', DE 'dubbele-potentiometers' (neerlandés dentro de DE; el nombre de categoría DE es 'Doppelte').",
+    "Terminología inconsistente entre idiomas y dentro del lote: ES 'bobinados' se traduce como 'coiled' / 'wound' / 'windings' (EN), 'à boudin' / 'enroulement' / 'bobinés' / 'bobinages' (FR) y 'Spulen-' / 'gewickelt' / 'Wicklungen' / 'Wickel-' (DE); ES 'simple' es 'simple windings' (906, 907) pero 'single windings' (910) en EN, y 'einzelne Wicklungen' / 'Einzelwicklung' / 'einfache Wicklungen' en DE. Se conserva tal cual.",
+    "PDF enlazado Potenciometro.pdf (1 página; compartido con la ficha 906): ver el detalle de su contenido en la ficha 906. Riesgo de falso positivo de voltaje al etiquetar desde el PDF: el texto extraído de Potenciometro.pdf contiene 'Categoría UL: 94V-0' (clase de inflamabilidad UL94, no es una tensión) junto a 'Tensión de perforación > 1000v' (esta sí es una tensión, pero solo está en el PDF).",
+    "Slug ES numérico sin significado ('reostatos-y-potenciometros-bobinados-5'): la URL no describe el producto (relevante para SEO y para redirecciones en la web nueva).",
+    "SKU 'aa0c66c1a326': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes (orderable_items=[] y sin_referencias_comerciales).",
+    "description vacía en la Store API y en la REST (content.rendered) en los 4 idiomas: todo el texto del producto está en short_description, que es también lo que muestra la página renderizada. description_text='' (no hay descripción larga).",
+    "Sin tablas: ni la descripción (Store API / REST) ni la página renderizada contienen <table> en ningún idioma; spec_tables=[] y orderable_items=[] (no hay tabla de modelos en la web).",
+    "Atributos de WooCommerce vacíos (attributes=[]) en los 4 idiomas; no hay ningún dato técnico estructurado.",
+    "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
+    "La short_description incluye el texto del botón al PDF (p. ej. 'Ver ficha técnica' / 'See technical data sheet'); se deja en short_description y se registra en pdf_links[].labels.",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/); ver docs/01-analisis/HALLAZGOS.md n.º 11.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (su outline solo tiene el H3 de menú 'Products'/'Produits'/'Produkte' y los H4/H2 del bloque de contacto y de productos relacionados; el nombre del producto solo está en <title>); la página ES sí lo tiene (H1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés) y título 'KONTAKT US'; ES 'encontrareis' sin tilde. Los productos relacionados cambian de un idioma a otro (selección automática de WooCommerce).",
+    "Contraste fuentes: el texto de la página renderizada (sin menú, bloque de contacto ni relacionados) coincide con short_description + description de la Store API en los 4 idiomas; no hay pestañas ni descargas adicionales aparte del botón al PDF."
+   ]
+  },
+  {
+   "id_es": 911,
+   "slug": "reostatos-y-potenciometros-bobinados-8-2",
+   "url_es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-8-2/",
+   "sku": "651e59f5150c",
+   "names": {
+    "es": "Reostatos y potenciometros bobinados doble",
+    "en": "Rheostats and potentiometers dual windings",
+    "fr": "Rhéostats et potentiomètres à double enroulement",
+    "de": "Dubbelgewonden reostaten en potentiometers"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-8-2/",
+    "en": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-8/",
+    "fr": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-a-double-enroulement/",
+    "de": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-8-2/"
+   },
+   "ids": {
+    "es": 911,
+    "en": 4196,
+    "fr": 16334,
+    "de": 16335
+   },
+   "category_path_es": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ],
+   "categories_all_es": [
+    {
+     "id": 112,
+     "name": "Reóstatos cerámicos",
+     "slug": "ceramicos"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Este tipo de montaje es utilizado para aumentar potencia o conseguir regulaciones especificas adaptadas a cada cliente.\n\nLos reostatos dobles permiten regular con un solo mando dos resistencias independientes de valor idéntico.\n\nVer ficha técnica",
+    "en": "Usually used to increase power or to obtain specific settings adapted to each customer, the double rheostats allow to regulate with a single control two independent resistors of identical value.\n\nSee technical data sheet",
+    "fr": "Ce type de montage est utilisé pour augmenter la puissance ou pour obtenir des réglages spécifiques adaptés à chaque client.\n\nLes doubles rhéostats permettent de réguler deux résistances indépendantes de valeur identique avec une seule commande.\n\nVoir fiche technique",
+    "de": "Dit type module wordt gebruikt om het vermogen te verhogen of om specifieke regelingen te realiseren die zijn afgestemd op elke klant.\nMet dubbele rheostaten kunt u twee onafhankelijke weerstanden met dezelfde waarde regelen met één enkele bediening.\n\nVer ficha técnica"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/doble-1.png",
+     "alt": {
+      "es": "Reostatos y potenciometros bobinados doble",
+      "en": "Rheostats and potentiometers dual windings",
+      "fr": "Rhéostats et potentiomètres à double enroulement",
+      "de": "Dubbelgewonden reostaten en potentiometers"
+     },
+     "id": 1084,
+     "ids": {
+      "es": 1084,
+      "en": 1084,
+      "fr": 1084,
+      "de": 1084
+     },
+     "filename": "doble-1.png",
+     "title": {
+      "es": "doble",
+      "en": "doble",
+      "fr": "doble",
+      "de": "doble"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/REOSTATOS-CERAMICOS.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir fiche technique",
+      "de": "Ver ficha técnica"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Valor óhmico (Ω) de las dos resistencias (idéntico en ambas según la web): no indicado",
+    "Potencia (W): no indicada en la ficha (ver PDF de reóstatos cerámicos)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Reostatos y potenciometros bobinados simple\n- Reostatos y potenciometros bobinados tripes\n- Reostatos y potenciometros bobinados en caja\n- Reostatos y potenciometros bobinados fabricaciones especiales",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project.\n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Rheostats and potentiometers single windings\n- Rheostats and potentiometers triple windings\n- Rheostats and potentiometers wound in boxes\n- Rheostats and potentiometers, wound special fabrications",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet.\n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Rhéostats et potentiomètres bobinages simples\n- Rhéostats et potentiomètres à triple enroulement\n- Rhéostats et potentiomètres enroulés dans des boîtes\n- Rhéostats et potentiomètres, enroulés, constructions spéciales",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt.\n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Rheostate und Potentiometer einfache Wicklungen\n- Rheostate und Potentiometer dreifach gewickelt\n- Rheostate und Potentiometer in Schachteln gewickelt\n- Rheostate und Potentiometer, gewickelte Sonderanfertigungen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Reostatos y potenciometros bobinados doble - Torivac",
+     "meta_description": "Este tipo de montaje es utilizado para aumentar potencia o conseguir regulaciones especificas adaptadas a cada cliente.",
+     "og_title": "Reostatos y potenciometros bobinados doble - Torivac",
+     "og_description": "Este tipo de montaje es utilizado para aumentar potencia o conseguir regulaciones especificas adaptadas a cada cliente.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/doble-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-8-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:46",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__reostatos-y-potenciometros-bobinados-8-2.json"
+    },
+    "en": {
+     "title": "Rheostats and potentiometers dual windings - Torivac",
+     "meta_description": "Usually used to increase power or to obtain specific settings adapted to each customer. Made by Torivac.",
+     "og_title": "Rheostats and potentiometers dual windings - Torivac",
+     "og_description": "Usually used to increase power or to obtain specific settings adapted to each customer. Made by Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/doble-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-8-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:23",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__reostatos-y-potenciometros-bobinados-8.json"
+    },
+    "fr": {
+     "title": "Rhéostats et potentiomètres à double enroulement - Torivac",
+     "meta_description": "Ce type de montage est utilisé pour augmenter la puissance ou pour obtenir des réglages spécifiques adaptés à chaque client.",
+     "og_title": "Rhéostats et potentiomètres à double enroulement - Torivac",
+     "og_description": "Ce type de montage est utilisé pour augmenter la puissance ou pour obtenir des réglages spécifiques adaptés à chaque client.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/doble-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-8-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:13",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__rheostats-et-potentiometres-a-double-enroulement.json"
+    },
+    "de": {
+     "title": "Dubbelgewonden reostaten en potentiometers - Torivac",
+     "meta_description": "Dit type module wordt gebruikt om het vermogen te verhogen of om specifieke regelingen te realiseren die zijn afgestemd op elke klant.",
+     "og_title": "Dubbelgewonden reostaten en potentiometers - Torivac",
+     "og_description": "Dit type module wordt gebruikt om het vermogen te verhogen of om specifieke regelingen te realiseren die zijn afgestemd op elke klant.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/doble-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-8-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:13",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__reostatos-y-potenciometros-bobinados-8-2.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "wrong_language"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "nombre_generico",
+    "sin_alt",
+    "typo",
+    "texto_en_idioma_incorrecto",
+    "nombre_en_idioma_incorrecto",
+    "etiqueta_boton_en_idioma_incorrecto",
+    "etiqueta_boton_inconsistente",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_numerico_no_descriptivo",
+    "slug_url_en_espanol",
+    "nombre_no_coincide_con_categoria",
+    "pdf_compartido_entre_fichas",
+    "nombre_de_archivo_poco_descriptivo",
+    "ficha_generica_sin_datos_tecnicos",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "sku_no_comercial",
+    "sin_referencias_comerciales",
+    "sin_tabla_de_modelos"
+   ],
+   "gaps": [
+    "Traducción DE en idioma equivocado: nombre 'Dubbelgewonden reostaten en potentiometers', short_description (2 frases: 'Dit type module wordt gebruikt om het vermogen te verhogen...', 'Met dubbele rheostaten kunt u...'), <title> y meta description SEO están en neerlandés; además el botón al PDF dice 'Ver ficha técnica' (español, sin traducir). translation_status.de='wrong_language'. El nombre neerlandés se ve también en el bloque 'Ähnliche Produkte erkunden' de las páginas DE de las fichas 910, 912, 913 y 1042 (extra_sections de esas fichas).",
+    "Sin datos numéricos: el texto solo explica la función ('aumentar potencia o conseguir regulaciones específicas adaptadas a cada cliente'; 'regular con un solo mando dos resistencias independientes de valor idéntico'). No hay potencia, valor óhmico ni tensión (voltage_mentions=[] y power_mentions=[]).",
+    "EN fusiona los dos párrafos ES en uno ('Usually used to increase power or to obtain specific settings adapted to each customer, the double rheostats allow to regulate with a single control two independent resistors of identical value.'); el contenido equivale. FR conserva los dos párrafos y su botón dice 'Voir fiche technique' (sin 'la', a diferencia de 'Voir la fiche technique' en el resto del lote).",
+    "Erratas en ES: 'especificas' sin tilde; la frase lleva un espacio no separable (U+00A0) entre 'potencia' y 'o' (se normaliza a espacio en el texto plano). El nombre sigue sin tildes. Nomenclatura: el nombre dice 'Reostatos y potenciometros bobinados' (sin tildes; la forma correcta sería 'Reóstatos y potenciómetros bobinados', como ya escribe la propia descripción de la ficha 1042) y es común a todo el lote.",
+    "El nombre dice 'bobinados' pero la ficha está solo en la categoría 'Reóstatos cerámicos' (id 112) y su PDF es REOSTATOS-CERAMICOS.pdf: la web mezcla 'bobinados' y 'cerámicos'. Nombre EN 'dual windings', FR 'à double enroulement' y DE 'Dubbelgewonden' (neerlandés) para ES 'doble'.",
+    "Terminología inconsistente entre idiomas y dentro del lote: ES 'bobinados' se traduce como 'coiled' / 'wound' / 'windings' (EN), 'à boudin' / 'enroulement' / 'bobinés' / 'bobinages' (FR) y 'Spulen-' / 'gewickelt' / 'Wicklungen' / 'Wickel-' (DE); ES 'simple' es 'simple windings' (906, 907) pero 'single windings' (910) en EN, y 'einzelne Wicklungen' / 'Einzelwicklung' / 'einfache Wicklungen' en DE. Se conserva tal cual.",
+    "URL de traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-8/; DE https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-8-2/.",
+    "Imagen 'doble-1.png' (id 1084, mismo en los 4 idiomas): el nombre de archivo no describe el producto.",
+    "Meta description: ES, FR y DE reproducen solo la primera frase, sin sufijo (la DE en neerlandés); EN corta su frase única antes de ', the double rheostats allow to regulate...' y añade el sufijo 'Made by Torivac.'.",
+    "PDF enlazado REOSTATOS-CERAMICOS.pdf (3 páginas; compartido por las fichas 910, 911, 912, 913 y 1042): según el texto extraído (data/analysis/pdf-text/REOSTATOS-CERAMICOS/p001.txt, no verificado visualmente) contiene la descripción de los reóstatos cerámicos (potencias '15-30-40-60-80125-250-500 y 1000 W' tal como sale extraído, núcleo de esteatita, hilos de constantán, nichrom o kantal) y una tabla de modelos PC12 a PC1000 (columnas POTENCIA/POWER, A, B, C, D, d, R, G, L, PESO y GAMA DE VALORES ÓHMICOS); las páginas 2 y 3 solo muestran las etiquetas 'Manual' y 'Motor'. Esa tabla NO está en la web (por eso orderable_items=[]) y no se vuelca aquí porque la fuente de esta tarea es la web; queda para la verificación de PDFs (S11).",
+    "Slug ES numérico sin significado ('reostatos-y-potenciometros-bobinados-8-2'): la URL no describe el producto (relevante para SEO y para redirecciones en la web nueva).",
+    "SKU '651e59f5150c': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes (orderable_items=[] y sin_referencias_comerciales).",
+    "description vacía en la Store API y en la REST (content.rendered) en los 4 idiomas: todo el texto del producto está en short_description, que es también lo que muestra la página renderizada. description_text='' (no hay descripción larga).",
+    "Sin tablas: ni la descripción (Store API / REST) ni la página renderizada contienen <table> en ningún idioma; spec_tables=[] y orderable_items=[] (no hay tabla de modelos en la web).",
+    "Atributos de WooCommerce vacíos (attributes=[]) en los 4 idiomas; no hay ningún dato técnico estructurado.",
+    "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
+    "La short_description incluye el texto del botón al PDF (p. ej. 'Ver ficha técnica' / 'See technical data sheet'); se deja en short_description y se registra en pdf_links[].labels.",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-8-2/); ver docs/01-analisis/HALLAZGOS.md n.º 11.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (su outline solo tiene el H3 de menú 'Products'/'Produits'/'Produkte' y los H4/H2 del bloque de contacto y de productos relacionados; el nombre del producto solo está en <title>); la página ES sí lo tiene (H1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés) y título 'KONTAKT US'; ES 'encontrareis' sin tilde. Los productos relacionados cambian de un idioma a otro (selección automática de WooCommerce).",
+    "Contraste fuentes: el texto de la página renderizada (sin menú, bloque de contacto ni relacionados) coincide con short_description + description de la Store API en los 4 idiomas; no hay pestañas ni descargas adicionales aparte del botón al PDF."
+   ]
+  },
+  {
+   "id_es": 913,
+   "slug": "reostatos-y-potenciometros-bobinados-10-2",
+   "url_es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-10-2/",
+   "sku": "7fb0fb732233",
+   "names": {
+    "es": "Reostatos y potenciometros bobinados en caja",
+    "en": "Rheostats and potentiometers wound in boxes",
+    "fr": "Rhéostats et potentiomètres enroulés dans des boîtes",
+    "de": "Rheostate und Potentiometer in Schachteln gewickelt"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-10-2/",
+    "en": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-10/",
+    "fr": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-enroules-dans-des-boites/",
+    "de": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-10/"
+   },
+   "ids": {
+    "es": 913,
+    "en": 4247,
+    "fr": 16338,
+    "de": 9721
+   },
+   "category_path_es": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ],
+   "categories_all_es": [
+    {
+     "id": 112,
+     "name": "Reóstatos cerámicos",
+     "slug": "ceramicos"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Cualquier reostato o potenciometro es susceptible de ser instalado dentro de una caja o armario IP20, con la finalidad de proteger al usuario de posibles daños durante su manipulación.\n\nVer ficha técnica",
+    "en": "Any rheostat or potentiometer can be installed inside an IP20 enclosure or cabinet, in order to protect the user from possible damage during handling.\n\nSee technical data sheet",
+    "fr": "Tout rhéostat ou potentiomètre peut être installé à l’intérieur d’un boîtier ou d’une armoire IP20, afin de protéger l’utilisateur contre d’éventuels dommages lors de la manipulation.\n\nVoir la fiche technique",
+    "de": "Jedes Rheostat oder Potentiometer kann in einem IP20-Gehäuse oder -Schrank installiert werden, um den Benutzer vor möglichen Schäden bei der Handhabung zu schützen.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/POTENCIMETRO-EN-CAJA-scaled.jpg",
+     "alt": {
+      "es": "Reostatos y potenciometros bobinados en caja",
+      "en": "Rheostats and potentiometers wound in boxes",
+      "fr": "Rhéostats et potentiomètres enroulés dans des boîtes",
+      "de": "Rheostate und Potentiometer in Schachteln gewickelt"
+     },
+     "id": 1063,
+     "ids": {
+      "es": 1063,
+      "en": 1063,
+      "fr": 1063,
+      "de": 1063
+     },
+     "filename": "POTENCIMETRO-EN-CAJA-scaled.jpg",
+     "title": {
+      "es": "POTENCIMETRO EN CAJA",
+      "en": "POTENCIMETRO EN CAJA",
+      "fr": "POTENCIMETRO EN CAJA",
+      "de": "POTENCIMETRO EN CAJA"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/REOSTATOS-CERAMICOS.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Reóstato o potenciómetro base que se monta en la caja o armario IP20: la web no lo especifica",
+    "Valor óhmico (Ω): no indicado en la web",
+    "Potencia (W): no indicada en la ficha (ver PDF de reóstatos cerámicos)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Reostatos y potenciometros bobinados simple\n- Reostatos y potenciometros bobinados doble\n- Reostatos y potenciometros bobinados tripes\n- Reostatos y potenciometros bobinados fabricaciones especiales",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project.\n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Rheostats and potentiometers single windings\n- Rheostats and potentiometers dual windings\n- Rheostats and potentiometers triple windings\n- Rheostats and potentiometers, wound special fabrications",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet.\n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Rhéostats et potentiomètres bobinages simples\n- Rhéostats et potentiomètres à double enroulement\n- Rhéostats et potentiomètres à triple enroulement\n- Rhéostats et potentiomètres, enroulés, constructions spéciales",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt.\n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Rheostate und Potentiometer einfache Wicklungen\n- Dubbelgewonden reostaten en potentiometers\n- Rheostate und Potentiometer dreifach gewickelt\n- Rheostate und Potentiometer, gewickelte Sonderanfertigungen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Reostatos y potenciometros bobinados en caja - Torivac",
+     "meta_description": "Cualquier reostato o potenciometro es susceptible de ser instalado dentro de una caja o armario IP20.",
+     "og_title": "Reostatos y potenciometros bobinados en caja - Torivac",
+     "og_description": "Cualquier reostato o potenciometro es susceptible de ser instalado dentro de una caja o armario IP20.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/POTENCIMETRO-EN-CAJA-scaled.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-10-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:47",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__reostatos-y-potenciometros-bobinados-10-2.json"
+    },
+    "en": {
+     "title": "Rheostats and potentiometers wound in boxes - Torivac",
+     "meta_description": "Any rheostat or potentiometer can be installed inside an IP20 enclosure or cabinet, in order to protect the user from possible damage during handling.",
+     "og_title": "Rheostats and potentiometers wound in boxes - Torivac",
+     "og_description": "Any rheostat or potentiometer can be installed inside an IP20 enclosure or cabinet, in order to protect the user from possible damage during handling.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/POTENCIMETRO-EN-CAJA-scaled.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-10-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:24",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__reostatos-y-potenciometros-bobinados-10.json"
+    },
+    "fr": {
+     "title": "Rhéostats et potentiomètres enroulés dans des boîtes - Torivac",
+     "meta_description": "Tout rhéostat ou potentiomètre peut être installé à l'intérieur d'un boîtier ou d'une armoire IP20. Fabriqué par Torivac.",
+     "og_title": "Rhéostats et potentiomètres enroulés dans des boîtes - Torivac",
+     "og_description": "Tout rhéostat ou potentiomètre peut être installé à l'intérieur d'un boîtier ou d'une armoire IP20. Fabriqué par Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/POTENCIMETRO-EN-CAJA-scaled.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-10-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:14",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__rheostats-et-potentiometres-enroules-dans-des-boites.json"
+    },
+    "de": {
+     "title": "Rheostate und Potentiometer in Schachteln gewickelt - Torivac",
+     "meta_description": "Jedes Rheostat oder Potentiometer kann in einem IP20-Gehäuse oder -Schrank installiert werden. Hergestellt von Torivac.",
+     "og_title": "Rheostate und Potentiometer in Schachteln gewickelt - Torivac",
+     "og_description": "Jedes Rheostat oder Potentiometer kann in einem IP20-Gehäuse oder -Schrank installiert werden. Hergestellt von Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/POTENCIMETRO-EN-CAJA-scaled.jpg",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-10-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:26",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__reostatos-y-potenciometros-bobinados-10.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "nombre_generico",
+    "sin_alt",
+    "typo",
+    "traduccion_inexacta",
+    "terminologia_inconsistente_entre_idiomas",
+    "meta_description_truncada",
+    "slug_numerico_no_descriptivo",
+    "slug_url_en_espanol",
+    "nombre_no_coincide_con_categoria",
+    "pdf_compartido_entre_fichas",
+    "nombre_de_archivo_poco_descriptivo",
+    "ficha_generica_sin_datos_tecnicos",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "sku_no_comercial",
+    "sin_referencias_comerciales",
+    "sin_tabla_de_modelos"
+   ],
+   "gaps": [
+    "Sin tensión ni potencia: la única cifra técnica es 'IP20' (grado de protección de la caja o armario; literal en los 4 idiomas, 'IP20-Gehäuse' en DE). No es una tensión ni una potencia, por eso voltage_mentions=[] y power_mentions=[]; puede interesar como atributo de protección de la web nueva.",
+    "Traducción inexacta del nombre: ES 'en caja' (instalado en una caja o armario) se traduce como EN 'wound in boxes', FR 'enroulés dans des boîtes' y DE 'in Schachteln gewickelt' ('enrollados/bobinados en cajas'; 'Schachteln' son cajas de cartón). El texto de la descripción sí es correcto ('inside an IP20 enclosure or cabinet' / 'à l'intérieur d'un boîtier ou d'une armoire IP20' / 'in einem IP20-Gehäuse oder -Schrank'). Se conserva.",
+    "Imagen 'POTENCIMETRO-EN-CAJA-scaled.jpg' (id 1063, mismo en los 4 idiomas): el nombre de archivo tiene una errata ('POTENCIMETRO' por 'POTENCIOMETRO') y el sufijo '-scaled' de WordPress; el título del medio es 'POTENCIMETRO EN CAJA' (también con errata).",
+    "Meta description recortada en ES, FR y DE: la ES se queda en '...caja o armario IP20.' y FR/DE en el equivalente ('...armoire IP20.' / '...Schrank installiert werden.') más el sufijo 'Fabriqué par Torivac.' / 'Hergestellt von Torivac.'; todas pierden la cláusula 'con la finalidad de proteger al usuario de posibles daños durante su manipulación'. EN sí reproduce la frase completa.",
+    "El nombre dice 'bobinados' pero la ficha está en la categoría 'Reóstatos cerámicos' (id 112) con el PDF de reóstatos cerámicos.",
+    "Erratas en ES: 'reostato o potenciometro' sin tildes en la descripción; el nombre también. Nomenclatura: el nombre dice 'Reostatos y potenciometros bobinados' (sin tildes; la forma correcta sería 'Reóstatos y potenciómetros bobinados', como ya escribe la propia descripción de la ficha 1042) y es común a todo el lote.",
+    "Terminología inconsistente entre idiomas y dentro del lote: ES 'bobinados' se traduce como 'coiled' / 'wound' / 'windings' (EN), 'à boudin' / 'enroulement' / 'bobinés' / 'bobinages' (FR) y 'Spulen-' / 'gewickelt' / 'Wicklungen' / 'Wickel-' (DE); ES 'simple' es 'simple windings' (906, 907) pero 'single windings' (910) en EN, y 'einzelne Wicklungen' / 'Einzelwicklung' / 'einfache Wicklungen' en DE. Se conserva tal cual.",
+    "URL de traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-10/; DE https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-10/.",
+    "PDF enlazado REOSTATOS-CERAMICOS.pdf (3 páginas; compartido por las fichas 910, 911, 912, 913 y 1042): según el texto extraído (data/analysis/pdf-text/REOSTATOS-CERAMICOS/p001.txt, no verificado visualmente) contiene la descripción de los reóstatos cerámicos (potencias '15-30-40-60-80125-250-500 y 1000 W' tal como sale extraído, núcleo de esteatita, hilos de constantán, nichrom o kantal) y una tabla de modelos PC12 a PC1000 (columnas POTENCIA/POWER, A, B, C, D, d, R, G, L, PESO y GAMA DE VALORES ÓHMICOS); las páginas 2 y 3 solo muestran las etiquetas 'Manual' y 'Motor'. Esa tabla NO está en la web (por eso orderable_items=[]) y no se vuelca aquí porque la fuente de esta tarea es la web; queda para la verificación de PDFs (S11).",
+    "Slug ES numérico sin significado ('reostatos-y-potenciometros-bobinados-10-2'): la URL no describe el producto (relevante para SEO y para redirecciones en la web nueva).",
+    "SKU '7fb0fb732233': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes (orderable_items=[] y sin_referencias_comerciales). Es también la base del SKU de la ficha 1042 ('7fb0fb732233-1').",
+    "description vacía en la Store API y en la REST (content.rendered) en los 4 idiomas: todo el texto del producto está en short_description, que es también lo que muestra la página renderizada. description_text='' (no hay descripción larga).",
+    "Sin tablas: ni la descripción (Store API / REST) ni la página renderizada contienen <table> en ningún idioma; spec_tables=[] y orderable_items=[] (no hay tabla de modelos en la web).",
+    "Atributos de WooCommerce vacíos (attributes=[]) en los 4 idiomas; no hay ningún dato técnico estructurado.",
+    "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
+    "La short_description incluye el texto del botón al PDF (p. ej. 'Ver ficha técnica' / 'See technical data sheet'); se deja en short_description y se registra en pdf_links[].labels.",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-10-2/); ver docs/01-analisis/HALLAZGOS.md n.º 11.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (su outline solo tiene el H3 de menú 'Products'/'Produits'/'Produkte' y los H4/H2 del bloque de contacto y de productos relacionados; el nombre del producto solo está en <title>); la página ES sí lo tiene (H1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés) y título 'KONTAKT US'; ES 'encontrareis' sin tilde. Los productos relacionados cambian de un idioma a otro (selección automática de WooCommerce).",
+    "Contraste fuentes: el texto de la página renderizada (sin menú, bloque de contacto ni relacionados) coincide con short_description + description de la Store API en los 4 idiomas; no hay pestañas ni descargas adicionales aparte del botón al PDF."
+   ]
+  },
+  {
+   "id_es": 1042,
+   "slug": "reostatos-y-potenciometros-bobinados-especiales",
+   "url_es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-especiales/",
+   "sku": "7fb0fb732233-1",
+   "names": {
+    "es": "Reostatos y potenciometros bobinados fabricaciones especiales",
+    "en": "Rheostats and potentiometers, wound special fabrications",
+    "fr": "Rhéostats et potentiomètres, enroulés, constructions spéciales",
+    "de": "Rheostate und Potentiometer, gewickelte Sonderanfertigungen"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-especiales/",
+    "en": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-especiales/",
+    "fr": "https://grupotorivac.com/fr/product/reostatos-y-potenciometros-bobinados-especiales/",
+    "de": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-especiales/"
+   },
+   "ids": {
+    "es": 1042,
+    "en": 15820,
+    "fr": 15901,
+    "de": 15815
+   },
+   "category_path_es": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ],
+   "categories_all_es": [
+    {
+     "id": 112,
+     "name": "Reóstatos cerámicos",
+     "slug": "ceramicos"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Cada cliente tiene necesidades específicas, por lo tanto, hay matices o variaciones de productos estándar que precisan.\nEn TORIVAC hacemos adaptaciones de reostatos con diseños personalizados de acuerdo a las necesidades de cada cliente.\nNo dude en consultarnos y le propondremos la solución óptima.\n\nVer ficha técnica",
+    "en": "Each customer has specific needs, therefore, there are nuances or variations of standard products that they require.\nIn TORIVAC we make adaptations of rheostats with customized designs according to the needs of each customer.\nDo not hesitate to contact us and we will propose you the optimal solution.\n\nSee technical data sheet",
+    "fr": "Chaque client a des besoins spécifiques, il y a donc des nuances ou des variations de produits standards qu’il demande.\nChez TORIVAC nous réalisons des adaptations de rhéostats avec des designs personnalisés selon les besoins de chaque client.\nN’hésitez pas à nous consulter et nous vous proposerons la solution optimale.\n\nVoir la fiche technique",
+    "de": "Jeder Kunde hat spezifische Bedürfnisse, daher gibt es Nuancen oder Variationen von Standardprodukten, die er benötigt.\nBei TORIVAC machen wir Anpassungen von Rheostaten mit kundenspezifischen Designs entsprechend den Bedürfnissen jedes Kunden.\nZögern Sie nicht, uns zu konsultieren und wir werden Ihnen die optimale Lösung vorschlagen.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "## ¿Qué son los Reostatos y potenciómetros bobinados? ¿Por qué son importantes?\n\nLos reóstatos y potenciómetros bobinados son dispositivos de resistencia variable diseñados para regular la tensión en un circuito eléctrico, ajustando la potencia suministrada a un sistema.\n\nEl reóstato se emplea principalmente en motores eléctricos, bancos de carga y sistemas de control industrial, donde es necesario modificar la resistencia para gestionar el flujo de energía. En cambio, el potenciómetro bobinado actúa como un divisor de tensión, permitiendo ajustar la señal eléctrica en equipos de calibración, controles de velocidad y dispositivos de medición.\n\nLos reóstatos y potenciómetros bobinados de fabricación especial ofrecen una solución a medida para la regulación de voltaje y la gestión de potencia en infraestructuras críticas, optimizando el desempeño de los sistemas eléctricos y prolongando la vida útil de los equipos.\n\nEstos dispositivos permiten ajustes finos en la corriente, mejorando la estabilidad operativa en motores, generadores y sistemas de distribución de energía. Su capacidad de personalización los hace ideales para adaptarse a cualquier aplicación específica, garantizando un rendimiento óptimo en condiciones exigentes.\nSon esenciales en el control de velocidad de motores industriales, la regulación de intensidad en sistemas eléctricos y la simulación de cargas en bancos de pruebas. En grandes estructuras energéticas, su uso permite minimizar pérdidas de energía, mejorar la eficiencia del sistema y evitar sobrecargas, asegurando un funcionamiento fiable y continuo.\n\n## Solución efectiva para cada aplicación industrial\n\nEl uso de reóstatos y potenciómetros bobinados es una estrategia clave para optimizar el consumo energético en entornos industriales. Al regular la intensidad de corriente de manera controlada, se evita el sobrecalentamiento y se mejora la estabilidad del sistema eléctrico. Esta capacidad de ajuste contribuye a una gestión más eficiente de la energía.\nLos reóstatos permiten ajustar la potencia de arranque y operación, evitando picos de corriente que puedan dañar los equipos. Esto es especialmente útil en maquinaria pesada, elevadores y sistemas de producción automatizados.\nLos potenciómetros bobinados son esenciales en sistemas de calibración, medición y control de precisión, garantizando que la energía suministrada a sensores, reguladores y equipos de prueba sea la adecuada para su correcto funcionamiento.\n\n## Torivac es una compañía especialista en diseño y fabricación de transformadores toroidales y variadores de tensión\n\nContamos con una experiencia de cerca de 60 años en el sector, que nos ha permitido ir creciendo hasta lograr una presencia en más de 30 países.\nDisponemos de un equipo técnico que garantiza la fabricación dispositivos de alta precisión y eficiencia. Nuestra metodología de trabajo nos permite realizar simulaciones avanzadas en cada fase de cada proyecto, asegurando que cada componente, desde variadores de tensión toroidales, transformadores regulables, descargadores de batería, potenciómetros y núcleos toroidales, cumpla con los más altos estándares del sector.\nTrabajamos estrechamente con empresas que cuentan con una gran infraestructura, en busca de garantizarles soluciones personalizadas y eficientes. Apuntamos a responder a las exigencias de industrias como la tecnológica, la energética y la automotriz. Nuestro objetivo es seguir innovando, fortaleciendo alianzas estratégicas y expandiendo nuestro alcance global, manteniendo siempre el sello de calidad y excelencia que nos ha caracterizado desde nuestros inicios.",
+    "en": "## What are Rheostats and Wound Potentiometers and why are they important?\n\nRheostats and potentiometer windings are variable resistance devices designed to regulate the voltage in an electrical circuit, adjusting the power supplied to a system.\n\nThe rheostat is mainly used in electric motors, load banks and industrial control systems, where it is necessary to modify the resistance to manage the power flow. In contrast, the wound potentiometer acts as a voltage divider, allowing the electrical signal to be adjusted in calibration equipment, speed controls and measuring devices.\n\nSpecially manufactured rheostats and coiled potentiometers offer a tailor-made solution for voltage regulation and power management in critical infrastructures, optimizing the performance of electrical systems and extending the lifetime of equipment.\n\nThese devices allow fine adjustments in current, improving operational stability in motors, generators and power distribution systems. Their customizability makes them ideal for adapting to any specific application, ensuring optimum performance under demanding conditions.\nThey are essential for speed control of industrial motors, current regulation in electrical systems and load simulation in test benches. In large power structures, their use minimizes energy losses, improves system efficiency and avoids overloads, ensuring reliable and continuous operation.\n\n## Effective solution for every industrial application\n\nThe use of rheostats and wound potentiometers is a key strategy for optimizing energy consumption in industrial environments. By regulating the current intensity in a controlled manner, overheating is avoided and the stability of the electrical system is improved. This adjustability contributes to more efficient energy management.\nRheostats allow the starting and operating power to be adjusted, avoiding current peaks that can damage equipment. This is especially useful in heavy machinery, elevators and automated production systems.\nWound potentiometers are essential in calibration, measurement and precision control systems, ensuring that the power supplied to sensors, regulators and test equipment is adequate for proper operation.\n\n## Torivac is a company specialized in the design and manufacture of toroidal transformers and voltage regulators.\n\nWe have nearly 60 years of experience in the sector, which has allowed us to grow to a presence in more than 30 countries.\nWe have a technical team that guarantees the manufacture of high precision and efficient devices. Our work methodology allows us to perform advanced simulations in each phase of each project, ensuring that each component, from toroidal voltage variators, adjustable transformers, battery dischargers, potentiometers and toroidal cores, meet the highest industry standards.\nWe work closely with companies that have a large infrastructure, seeking to ensure customized and efficient solutions. We aim to respond to the demands of industries such as technology, energy and automotive. Our goal is to continue innovating, strengthening strategic alliances and expanding our global reach, always maintaining the seal of quality and excellence that has characterized us since our beginnings.",
+    "fr": "## Que sont les rhéostats et les potentiomètres à enroulement et pourquoi sont-ils importants ?\n\nLes rhéostats et les potentiomètres à enroulement sont des dispositifs à résistance variable conçus pour réguler la tension d’un circuit électrique en ajustant la puissance fournie à un système.\n\nLe rhéostat est principalement utilisé dans les moteurs électriques, les bancs de charge et les systèmes de contrôle industriel, où il est nécessaire de modifier la résistance pour gérer le flux de puissance. En revanche, le potentiomètre bobiné agit comme un diviseur de tension, permettant d’ajuster le signal électrique dans les équipements d’étalonnage, les régulateurs de vitesse et les appareils de mesure.\n\nLes rhéostats et les potentiomètres enroulés spécialement fabriqués offrent une solution sur mesure pour la régulation de la tension et la gestion de l’énergie dans les infrastructures critiques, optimisant ainsi les performances des systèmes électriques et prolongeant la durée de vie des équipements.\n\nCes dispositifs permettent des ajustements fins du courant, améliorant la stabilité opérationnelle des moteurs, des générateurs et des systèmes de distribution d’énergie. Leur personnalisation les rend idéaux pour s’adapter à toute application spécifique, garantissant des performances optimales dans des conditions exigeantes.\nIls sont essentiels pour le contrôle de la vitesse des moteurs industriels, la régulation du courant dans les systèmes électriques et la simulation de la charge dans les bancs d’essai. Dans les grandes structures électriques, leur utilisation permet de minimiser les pertes d’énergie, d’améliorer l’efficacité du système et d’éviter les surcharges, garantissant ainsi un fonctionnement fiable et continu.\n\n## Une solution efficace pour chaque application industrielle\n\nL’utilisation de rhéostats et de potentiomètres bobinés est une stratégie clé pour optimiser la consommation d’énergie dans les environnements industriels. En régulant le courant de manière contrôlée, on évite les surchauffes et on améliore la stabilité du système électrique. Cette capacité de réglage contribue à une gestion plus efficace de l’énergie.\nLes rhéostats permettent d’ajuster la puissance de démarrage et de fonctionnement, évitant ainsi les pics de courant qui peuvent endommager l’équipement. Ceci est particulièrement utile dans les machines lourdes, les ascenseurs et les systèmes de production automatisés.\nLes potentiomètres bobinés sont essentiels dans les systèmes d’étalonnage, de mesure et de contrôle de précision, garantissant que la puissance fournie aux capteurs, régulateurs et équipements d’essai est adéquate pour un fonctionnement correct.\n\n## Torivac est une entreprise spécialisée dans la conception et la fabrication de transformateurs toroïdaux et de variateurs de tension.\n\nNous avons près de 60 ans d’expérience dans le secteur, ce qui nous a permis d’être présents dans plus de 30 pays.\nNous disposons d’une équipe technique qui garantit la fabrication de dispositifs de haute précision et efficaces. Notre méthodologie de travail nous permet d’effectuer des simulations avancées à chaque étape de chaque projet, garantissant que chaque composant, des variateurs de tension toroïdaux aux transformateurs de régulation, en passant par les déchargeurs de batterie, les potentiomètres et les noyaux toroïdaux, répond aux normes les plus strictes du secteur.\nNous travaillons en étroite collaboration avec des entreprises disposant d’une grande infrastructure, afin de garantir des solutions personnalisées et efficaces. Nous visons à répondre aux demandes d’industries telles que la technologie, l’énergie et l’automobile. Notre objectif est de continuer à innover, de renforcer les alliances stratégiques et d’étendre notre portée mondiale, en maintenant toujours le label de qualité et d’excellence qui nous caractérise depuis nos débuts.",
+    "de": "## Was sind Rheostate und Wickelpotentiometer und warum sind sie wichtig?\n\nRheostate und gewickelte Potentiometer sind Geräte mit variablem Widerstand, die dazu dienen, die Spannung in einem Stromkreis zu regulieren, indem sie die einem System zugeführte Leistung anpassen.\n\nDer Rheostat wird hauptsächlich in Elektromotoren, Lastbänken und industriellen Kontrollsystemen verwendet, wo es notwendig ist, den Widerstand zu verändern, um den Leistungsfluss zu steuern. Im Gegensatz dazu fungiert das gewickelte Potentiometer als Spannungsteiler, mit dem das elektrische Signal in Kalibrierungsgeräten, Geschwindigkeitsreglern und Messgeräten eingestellt werden kann.\n\nSpeziell gefertigte Rheostate und Spulenpotentiometer bieten eine maßgeschneiderte Lösung für die Spannungsregulierung und das Energiemanagement in kritischen Infrastrukturen, optimieren die Leistung elektrischer Systeme und verlängern die Lebensdauer von Geräten.\n\nDiese Geräte ermöglichen eine Feineinstellung des Stroms und verbessern die Betriebsstabilität von Motoren, Generatoren und Stromverteilungssystemen. Durch ihre Anpassungsfähigkeit sind sie ideal für jede spezifische Anwendung geeignet und gewährleisten optimale Leistung unter anspruchsvollen Bedingungen.\nSie sind unverzichtbar für die Drehzahlregelung von Industriemotoren, die Stromregelung in elektrischen Systemen und die Lastsimulation in Prüfständen. In großen Stromversorgungsstrukturen minimiert ihr Einsatz Energieverluste, verbessert die Systemeffizienz und verhindert Überlastungen, wodurch ein zuverlässiger und kontinuierlicher Betrieb gewährleistet wird.\n\n## Effektive Lösung für jede industrielle Anwendung\n\nDer Einsatz von Rheostaten und gewickelten Potentiometern ist eine wichtige Strategie zur Optimierung des Energieverbrauchs in industriellen Umgebungen. Durch die kontrollierte Regulierung des Stroms wird eine Überhitzung verhindert und die Stabilität des elektrischen Systems verbessert. Diese Anpassungsfähigkeit trägt zu einem effizienteren Energiemanagement bei.\nRheostate ermöglichen die Anpassung der Start- und Betriebsleistung und vermeiden so Stromspitzen, die Geräte beschädigen können. Dies ist besonders nützlich bei schweren Maschinen, Aufzügen und automatisierten Produktionssystemen.\nGewickelte Potentiometer sind in Kalibrier-, Mess- und Präzisionssteuerungssystemen unverzichtbar und stellen sicher, dass die Stromversorgung von Sensoren, Reglern und Testgeräten für einen ordnungsgemäßen Betrieb ausreichend ist.\n\n## Torivac ist ein Unternehmen, das sich auf die Entwicklung und Herstellung von Ringkerntransformatoren und Antrieben mit variabler Spannung spezialisiert hat.\n\nWir verfügen über fast 60 Jahre Erfahrung in der Branche, die uns zu einer Präsenz in mehr als 30 Ländern geführt hat.\nWir verfügen über ein technisches Team, das die Herstellung von hochpräzisen und effizienten Geräten garantiert. Unsere Arbeitsmethodik ermöglicht es uns, in jeder Phase eines Projekts fortschrittliche Simulationen durchzuführen, um sicherzustellen, dass jedes Bauteil, von Ringspannungswandlern, Regeltransformatoren, Batterieentladern, Potentiometern und Ringbandkernen, den höchsten Standards der Branche entspricht.\nWir arbeiten eng mit Unternehmen zusammen, die über eine große Infrastruktur verfügen, um maßgeschneiderte und effiziente Lösungen zu gewährleisten. Wir sind bestrebt, auf die Anforderungen von Branchen wie Technologie, Energie und Automobil zu reagieren. Unser Ziel ist es, weiterhin innovativ zu sein, strategische Allianzen zu stärken und unsere globale Reichweite zu erweitern, wobei wir stets das Gütesiegel für Qualität und Exzellenz beibehalten, das uns seit unseren Anfängen auszeichnet."
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/12/fabricaciones-especiales-1-1.png",
+     "alt": {
+      "es": "Reostatos y potenciometros bobinados fabricaciones especiales",
+      "en": "Rheostats and potentiometers, wound special fabrications",
+      "fr": "Rhéostats et potentiomètres, enroulés, constructions spéciales",
+      "de": "Rheostate und Potentiometer, gewickelte Sonderanfertigungen"
+     },
+     "id": 15426,
+     "ids": {
+      "es": 15426,
+      "en": 15426,
+      "fr": 15426,
+      "de": 15426
+     },
+     "filename": "fabricaciones-especiales-1-1.png",
+     "title": {
+      "es": "fabricaciones-especiales-1",
+      "en": "fabricaciones-especiales-1",
+      "fr": "fabricaciones-especiales-1",
+      "de": "fabricaciones-especiales-1"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/12/Sin-titulo-7.jpeg",
+     "alt": {
+      "es": "Reostatos y potenciometros bobinados fabricaciones especiales",
+      "en": "Rheostats and potentiometers, wound special fabrications",
+      "fr": "Rhéostats et potentiomètres, enroulés, constructions spéciales",
+      "de": "Rheostate und Potentiometer, gewickelte Sonderanfertigungen"
+     },
+     "id": 15411,
+     "ids": {
+      "es": 15411,
+      "en": 15822,
+      "fr": 15905,
+      "de": 15817
+     },
+     "filename": "Sin-titulo-7.jpeg",
+     "title": {
+      "es": "Sin título (7)",
+      "en": "Untitled (7)",
+      "fr": "Sans titre (7)",
+      "de": "Unbetitelt (7)"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/REOSTATOS-CERAMICOS.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Especificación a medida (valor óhmico, potencia, configuración, tensión de trabajo...): a consultar con Torivac, la web no lista parámetros",
+    "Reóstato o potenciómetro de partida (simple, doble, triple, en caja) que hay que adaptar"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Reostatos y potenciometros bobinados simple\n- Reostatos y potenciometros bobinados doble\n- Reostatos y potenciometros bobinados tripes\n- Reostatos y potenciometros bobinados en caja",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project.\n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Rheostats and potentiometers single windings\n- Rheostats and potentiometers dual windings\n- Rheostats and potentiometers triple windings\n- Rheostats and potentiometers wound in boxes",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet.\n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Rhéostats et potentiomètres bobinages simples\n- Rhéostats et potentiomètres à double enroulement\n- Rhéostats et potentiomètres à triple enroulement\n- Rhéostats et potentiomètres enroulés dans des boîtes",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt.\n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Rheostate und Potentiometer einfache Wicklungen\n- Dubbelgewonden reostaten en potentiometers\n- Rheostate und Potentiometer dreifach gewickelt\n- Rheostate und Potentiometer in Schachteln gewickelt",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Reostatos y potenciometros bobinados fabricaciones especiales - Torivac",
+     "meta_description": "Los reóstatos y potenciómetros potencian la regulación de intensidad en sistemas eléctricos y la simulación de cargas en bancos de pruebas.",
+     "og_title": "Reostatos y potenciometros bobinados fabricaciones especiales - Torivac",
+     "og_description": "Los reóstatos y potenciómetros potencian la regulación de intensidad en sistemas eléctricos y la simulación de cargas en bancos de pruebas.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/fabricaciones-especiales-1-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-especiales/",
+     "focus_keyword": null,
+     "modified": "2026-10-14T07:02:13",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__reostatos-y-potenciometros-bobinados-especiales.json"
+    },
+    "en": {
+     "title": "Rheostats and potentiometers, wound special fabrications - Torivac",
+     "meta_description": "Rheostats and potentiometers enhance current regulation in electrical systems and load simulation in test benches.",
+     "og_title": "Rheostats and potentiometers, wound special fabrications - Torivac",
+     "og_description": "Rheostats and potentiometers enhance current regulation in electrical systems and load simulation in test benches.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/fabricaciones-especiales-1-1.png",
+     "canonical": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-especiales/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:50",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__reostatos-y-potenciometros-bobinados-especiales.json"
+    },
+    "fr": {
+     "title": "Rhéostats et potentiomètres, enroulés, constructions spéciales - Torivac",
+     "meta_description": "Les rhéostats et les potentiomètres améliorent la régulation du courant dans les systèmes électriques et la simulation de charge dans les bancs d'essai.",
+     "og_title": "Rhéostats et potentiomètres, enroulés, constructions spéciales - Torivac",
+     "og_description": "Les rhéostats et les potentiomètres améliorent la régulation du courant dans les systèmes électriques et la simulation de charge dans les bancs d'essai.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/fabricaciones-especiales-1-1.png",
+     "canonical": "https://grupotorivac.com/fr/product/reostatos-y-potenciometros-bobinados-especiales/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:28",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__reostatos-y-potenciometros-bobinados-especiales.json"
+    },
+    "de": {
+     "title": "Rheostate und Potentiometer, gewickelte Sonderanfertigungen - Torivac",
+     "meta_description": "Rheostate und Potentiometer verbessern die Stromregelung in elektrischen Systemen und die Lastsimulation in Prüfständen.",
+     "og_title": "Rheostate und Potentiometer, gewickelte Sonderanfertigungen - Torivac",
+     "og_description": "Rheostate und Potentiometer verbessern die Stromregelung in elektrischen Systemen und die Lastsimulation in Prüfständen.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/fabricaciones-especiales-1-1.png",
+     "canonical": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-especiales/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:49",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__reostatos-y-potenciometros-bobinados-especiales.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "nombre_generico",
+    "sin_alt",
+    "typo",
+    "pagina_traducida_sin_descripcion_ni_tabla",
+    "texto_generico_no_especifico_del_producto",
+    "traduccion_inexacta",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_url_en_espanol",
+    "nombre_no_coincide_con_categoria",
+    "pdf_compartido_entre_fichas",
+    "nombre_de_archivo_poco_descriptivo",
+    "sku_derivado_de_otro_producto",
+    "ficha_generica_sin_datos_tecnicos",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "sku_no_comercial",
+    "sin_referencias_comerciales",
+    "sin_tabla_de_modelos"
+   ],
+   "gaps": [
+    "Única ficha del lote con descripción larga (Store API y REST; texto plano: ES 3623, EN 3226, FR 3884, DE 3685 caracteres; EN = 89 % de ES). Las páginas renderizadas EN/FR/DE NO muestran esa descripción (solo la short_description y el botón), mientras que la página ES sí la renderiza (31 bloques frente a 16). Para description_text se ha usado la Store API (más completa). translation_status='ok' por el dato, pero la web pública de EN/FR/DE enseña menos que la ES.",
+    "Estructura sin encabezados HTML: la descripción no usa H2/H3 sino párrafos en negrita (<b>/<strong>, algunos con class 'p1'); en description_text se marcan con '## ' ('¿Qué son los Reostatos y potenciómetros bobinados? ¿Por qué son importantes?', 'Solución efectiva para cada aplicación industrial', 'Torivac es una compañía especialista en diseño y fabricación de transformadores toroidales y variadores de tensión'). El primer encabezado comparte <p> con el párrafo siguiente.",
+    "Texto genérico no específico del producto: el último bloque habla de Torivac en general (cerca de 60 años de experiencia, presencia en más de 30 países, 'variadores de tensión toroidales, transformadores regulables, descargadores de batería, potenciómetros y núcleos toroidales') y no de reóstatos a medida; en EN/FR/DE se traduce igual. Las cifras '60' y '30' son años y países, no magnitudes eléctricas.",
+    "Sin magnitudes eléctricas con valor: 'tensión' / 'voltaje' / 'voltage' / 'Spannung' aparecen solo como concepto ('regular la tensión en un circuito eléctrico', 'divisor de tensión', 'regulación de voltaje', 'variadores de tensión'); no hay ninguna cifra de V, kV ni de W/VA (voltage_mentions=[] y power_mentions=[]).",
+    "Erratas/estilo en ES: 'garantiza la fabricación dispositivos de alta precisión' (falta 'de'); 'Reostatos' sin tilde en el encabezado frente a 'reóstatos' en el cuerpo. En DE, 'variadores de tensión' se traduce como 'Antrieben mit variabler Spannung' (accionamientos de tensión variable); EN usa 'voltage regulators' y FR 'variateurs de tension'. Se conserva.",
+    "Terminología inconsistente entre idiomas y dentro del lote: ES 'bobinados' se traduce como 'coiled' / 'wound' / 'windings' (EN), 'à boudin' / 'enroulement' / 'bobinés' / 'bobinages' (FR) y 'Spulen-' / 'gewickelt' / 'Wicklungen' / 'Wickel-' (DE); ES 'simple' es 'simple windings' (906, 907) pero 'single windings' (910) en EN, y 'einzelne Wicklungen' / 'Einzelwicklung' / 'einfache Wicklungen' en DE. Se conserva tal cual.",
+    "El nombre dice 'bobinados' pero la ficha está en la categoría 'Reóstatos cerámicos' (id 112) y su PDF es el de reóstatos cerámicos: el botón 'Ver ficha técnica' no describe una fabricación especial, sino la ficha genérica.",
+    "SKU '7fb0fb732233-1': es el SKU de la ficha 913 ('Reostatos y potenciometros bobinados en caja', '7fb0fb732233') con sufijo '-1'; indica que la ficha se creó duplicando la 913. La Store API lo repite igual en las traducciones; no es una referencia comercial.",
+    "Imágenes: 'fabricaciones-especiales-1-1.png' (id 15426, igual en los 4 idiomas; en la página renderizada aparece con el prefijo de PageSpeed 'xfabricaciones-especiales-1-1.png.pagespeed.ic...') y 'Sin-titulo-7.jpeg' (nombre de archivo no descriptivo; ids por idioma ES 15411, EN 15822, FR 15905, DE 15817, con título de medio localizado 'Sin título (7)' / 'Untitled (7)' / 'Sans titre (7)' / 'Unbetitelt (7)').",
+    "Canonical: es la única ficha del lote cuya canonical de EN/FR/DE apunta a su propia URL traducida (no a la ES). Fecha de modificación (REST): ES 2026-10-14, EN/FR/DE 2026-10-16; el resto de fichas del lote tiene 2026-10-16 en los 4 idiomas.",
+    "URL de traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-especiales/; FR https://grupotorivac.com/fr/product/reostatos-y-potenciometros-bobinados-especiales/; DE https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-especiales/.",
+    "El bloque 'Ähnliche Produkte erkunden' de la página DE muestra el nombre neerlandés de la ficha 911 ('Dubbelgewonden reostaten en potentiometers').",
+    "PDF enlazado REOSTATOS-CERAMICOS.pdf (3 páginas; compartido por las fichas 910, 911, 912, 913 y 1042): según el texto extraído (data/analysis/pdf-text/REOSTATOS-CERAMICOS/p001.txt, no verificado visualmente) contiene la descripción de los reóstatos cerámicos (potencias '15-30-40-60-80125-250-500 y 1000 W' tal como sale extraído, núcleo de esteatita, hilos de constantán, nichrom o kantal) y una tabla de modelos PC12 a PC1000 (columnas POTENCIA/POWER, A, B, C, D, d, R, G, L, PESO y GAMA DE VALORES ÓHMICOS); las páginas 2 y 3 solo muestran las etiquetas 'Manual' y 'Motor'. Esa tabla NO está en la web (por eso orderable_items=[]) y no se vuelca aquí porque la fuente de esta tarea es la web; queda para la verificación de PDFs (S11).",
+    "SKU '7fb0fb732233-1': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes (orderable_items=[] y sin_referencias_comerciales).",
+    "Sin tablas: ni la descripción (Store API / REST) ni la página renderizada contienen <table> en ningún idioma; spec_tables=[] y orderable_items=[] (no hay tabla de modelos en la web).",
+    "Atributos de WooCommerce vacíos (attributes=[]) en los 4 idiomas; no hay ningún dato técnico estructurado.",
+    "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
+    "La short_description incluye el texto del botón al PDF (p. ej. 'Ver ficha técnica' / 'See technical data sheet'); se deja en short_description y se registra en pdf_links[].labels.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (su outline solo tiene el H3 de menú 'Products'/'Produits'/'Produkte' y los H4/H2 del bloque de contacto y de productos relacionados; el nombre del producto solo está en <title>); la página ES sí lo tiene (H1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés) y título 'KONTAKT US'; ES 'encontrareis' sin tilde. Los productos relacionados cambian de un idioma a otro (selección automática de WooCommerce).",
+    "Contraste fuentes: el texto de la página ES coincide con short_description + description de la Store API; en EN/FR/DE la página solo coincide con la short_description (ver primer gap)."
+   ]
+  },
+  {
+   "id_es": 910,
+   "slug": "reostatos-y-potenciometros-bobinados-7",
+   "url_es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-7/",
+   "sku": "708689bf8358",
+   "names": {
+    "es": "Reostatos y potenciometros bobinados simple",
+    "en": "Rheostats and potentiometers single windings",
+    "fr": "Rhéostats et potentiomètres bobinages simples",
+    "de": "Rheostate und Potentiometer einfache Wicklungen"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-7/",
+    "en": "https://grupotorivac.com/en/product/rheostats-and-potentiometers-single-windings/",
+    "fr": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-bobinages-simples/",
+    "de": "https://grupotorivac.com/de/product/rheostate-und-potentiometer-einfache-wicklungen/"
+   },
+   "ids": {
+    "es": 910,
+    "en": 16331,
+    "fr": 16332,
+    "de": 16333
+   },
+   "category_path_es": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ],
+   "categories_all_es": [
+    {
+     "id": 112,
+     "name": "Reóstatos cerámicos",
+     "slug": "ceramicos"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Diseñados para soportar un gran numero de ciclos.\n\nLos reostatos simples permiten variar la resistencia desde 0 ohms.\n\nVer ficha técnica",
+    "en": "Designed to withstand a large number of cycles.\n\nSingle rheostats allow to vary the resistance from 0 ohms.\n\nSee data sheet",
+    "fr": "Conçus pour supporter un grand nombre de cycles.\n\nLes rhéostats simples permettent de faire varier la résistance à partir de 0 ohm.\n\nVoir la fiche technique",
+    "de": "Entwickelt, um einer großen Anzahl von Zyklen standzuhalten.\n\nEinzelne Rheostate ermöglichen die Variation des Widerstands von 0 Ohm.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/simple-1.png",
+     "alt": {
+      "es": "Reostatos y potenciometros bobinados simple",
+      "en": "Rheostats and potentiometers single windings",
+      "fr": "Rhéostats et potentiomètres bobinages simples",
+      "de": "Rheostate und Potentiometer einfache Wicklungen"
+     },
+     "id": 1083,
+     "ids": {
+      "es": 1083,
+      "en": 1083,
+      "fr": 1083,
+      "de": 1083
+     },
+     "filename": "simple-1.png",
+     "title": {
+      "es": "simple",
+      "en": "simple",
+      "fr": "simple",
+      "de": "simple"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/REOSTATOS-CERAMICOS.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Valor óhmico (Ω): la web solo dice que permite «variar la resistencia desde 0 ohms»; no da gama",
+    "Potencia (W): no indicada en la ficha (ver PDF de reóstatos cerámicos)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Reostatos y potenciometros bobinados doble\n- Reostatos y potenciometros bobinados tripes\n- Reostatos y potenciometros bobinados en caja\n- Reostatos y potenciometros bobinados fabricaciones especiales",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project.\n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Rheostats and potentiometers dual windings\n- Rheostats and potentiometers triple windings\n- Rheostats and potentiometers wound in boxes\n- Rheostats and potentiometers, wound special fabrications",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet.\n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Rhéostats et potentiomètres à double enroulement\n- Rhéostats et potentiomètres à triple enroulement\n- Rhéostats et potentiomètres enroulés dans des boîtes\n- Rhéostats et potentiomètres, enroulés, constructions spéciales",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt.\n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Dubbelgewonden reostaten en potentiometers\n- Rheostate und Potentiometer dreifach gewickelt\n- Rheostate und Potentiometer in Schachteln gewickelt\n- Rheostate und Potentiometer, gewickelte Sonderanfertigungen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Reostatos y potenciometros bobinados simple - Torivac",
+     "meta_description": "Diseñados para soportar un gran numero de ciclos. Los reostatos simples permiten variar la resistencia desde 0 ohms. Ver ficha técnica",
+     "og_title": "Reostatos y potenciometros bobinados simple - Torivac",
+     "og_description": "Diseñados para soportar un gran numero de ciclos. Los reostatos simples permiten variar la resistencia desde 0 ohms. Ver ficha técnica",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/simple-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-7/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:45",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__reostatos-y-potenciometros-bobinados-7.json"
+    },
+    "en": {
+     "title": "Rheostats and potentiometers single windings - Torivac",
+     "meta_description": "Designed to withstand a large number of cycles. Single rheostats allow to vary the resistance from 0 ohms. See data sheet",
+     "og_title": "Rheostats and potentiometers single windings - Torivac",
+     "og_description": "Designed to withstand a large number of cycles. Single rheostats allow to vary the resistance from 0 ohms. See data sheet",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/simple-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-7/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:12",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__rheostats-and-potentiometers-single-windings.json"
+    },
+    "fr": {
+     "title": "Rhéostats et potentiomètres bobinages simples - Torivac",
+     "meta_description": "Conçus pour supporter un grand nombre de cycles. Les rhéostats simples permettent de faire varier la résistance à partir de 0 ohm. Voir la fiche technique",
+     "og_title": "Rhéostats et potentiomètres bobinages simples - Torivac",
+     "og_description": "Conçus pour supporter un grand nombre de cycles. Les rhéostats simples permettent de faire varier la résistance à partir de 0 ohm. Voir la fiche technique",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/simple-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-7/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:12",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__rheostats-et-potentiometres-bobinages-simples.json"
+    },
+    "de": {
+     "title": "Rheostate und Potentiometer einfache Wicklungen - Torivac",
+     "meta_description": "Entwickelt, um einer großen Anzahl von Zyklen standzuhalten. Einzelne Rheostate ermöglichen die Variation des Widerstands von 0 Ohm.",
+     "og_title": "Rheostate und Potentiometer einfache Wicklungen - Torivac",
+     "og_description": "Entwickelt, um einer großen Anzahl von Zyklen standzuhalten. Einzelne Rheostate ermöglichen die Variation des Widerstands von 0 Ohm.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/simple-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-7/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:13",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__rheostate-und-potentiometer-einfache-wicklungen.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "nombre_generico",
+    "sin_alt",
+    "typo",
+    "meta_description_con_texto_de_boton",
+    "etiqueta_boton_inconsistente",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_numerico_no_descriptivo",
+    "nombre_no_coincide_con_categoria",
+    "pdf_compartido_entre_fichas",
+    "nombre_de_archivo_poco_descriptivo",
+    "ficha_generica_sin_datos_tecnicos",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "sku_no_comercial",
+    "sin_referencias_comerciales",
+    "sin_tabla_de_modelos"
+   ],
+   "gaps": [
+    "Sin tensión ni potencia: el texto solo dice 'Diseñados para soportar un gran numero de ciclos.' y 'Los reostatos simples permiten variar la resistencia desde 0 ohms.' ('0 ohms' es resistencia, no potencia ni tensión). voltage_mentions=[] y power_mentions=[].",
+    "Erratas/estilo en ES: 'numero' sin tilde y 'ohms' (anglicismo; en español 'ohmios'); EN 'ohms', FR 'ohm', DE 'Ohm'. El nombre sigue sin tildes. Nomenclatura: el nombre dice 'Reostatos y potenciometros bobinados' (sin tildes; la forma correcta sería 'Reóstatos y potenciómetros bobinados', como ya escribe la propia descripción de la ficha 1042) y es común a todo el lote.",
+    "Meta description (ES, EN y FR) incluye al final el texto del botón al PDF ('Ver ficha técnica' / 'See data sheet' / 'Voir la fiche technique'), es decir, Yoast ha tomado el HTML del botón; la DE no lo incluye.",
+    "Etiqueta del botón al PDF inconsistente en EN: 'See data sheet' (esta ficha y la 908) frente a 'See technical data sheet' en el resto del lote.",
+    "El nombre dice 'bobinados' pero la ficha está solo en la categoría 'Reóstatos cerámicos' (id 112) y su PDF es REOSTATOS-CERAMICOS.pdf. EN 'single windings', FR 'bobinages simples', DE 'einfache Wicklungen' para ES 'simple'.",
+    "Terminología inconsistente entre idiomas y dentro del lote: ES 'bobinados' se traduce como 'coiled' / 'wound' / 'windings' (EN), 'à boudin' / 'enroulement' / 'bobinés' / 'bobinages' (FR) y 'Spulen-' / 'gewickelt' / 'Wicklungen' / 'Wickel-' (DE); ES 'simple' es 'simple windings' (906, 907) pero 'single windings' (910) en EN, y 'einzelne Wicklungen' / 'Einzelwicklung' / 'einfache Wicklungen' en DE. Se conserva tal cual.",
+    "Imagen 'simple-1.png' (id 1083, mismo en los 4 idiomas): el nombre de archivo no describe el producto.",
+    "PDF enlazado REOSTATOS-CERAMICOS.pdf (3 páginas; compartido por las fichas 910, 911, 912, 913 y 1042): según el texto extraído (data/analysis/pdf-text/REOSTATOS-CERAMICOS/p001.txt, no verificado visualmente) contiene la descripción de los reóstatos cerámicos (potencias '15-30-40-60-80125-250-500 y 1000 W' tal como sale extraído, núcleo de esteatita, hilos de constantán, nichrom o kantal) y una tabla de modelos PC12 a PC1000 (columnas POTENCIA/POWER, A, B, C, D, d, R, G, L, PESO y GAMA DE VALORES ÓHMICOS); las páginas 2 y 3 solo muestran las etiquetas 'Manual' y 'Motor'. Esa tabla NO está en la web (por eso orderable_items=[]) y no se vuelca aquí porque la fuente de esta tarea es la web; queda para la verificación de PDFs (S11).",
+    "Slug ES numérico sin significado ('reostatos-y-potenciometros-bobinados-7'): la URL no describe el producto (relevante para SEO y para redirecciones en la web nueva).",
+    "SKU '708689bf8358': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes (orderable_items=[] y sin_referencias_comerciales).",
+    "description vacía en la Store API y en la REST (content.rendered) en los 4 idiomas: todo el texto del producto está en short_description, que es también lo que muestra la página renderizada. description_text='' (no hay descripción larga).",
+    "Sin tablas: ni la descripción (Store API / REST) ni la página renderizada contienen <table> en ningún idioma; spec_tables=[] y orderable_items=[] (no hay tabla de modelos en la web).",
+    "Atributos de WooCommerce vacíos (attributes=[]) en los 4 idiomas; no hay ningún dato técnico estructurado.",
+    "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
+    "La short_description incluye el texto del botón al PDF (p. ej. 'Ver ficha técnica' / 'See technical data sheet'); se deja en short_description y se registra en pdf_links[].labels.",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-7/); ver docs/01-analisis/HALLAZGOS.md n.º 11.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (su outline solo tiene el H3 de menú 'Products'/'Produits'/'Produkte' y los H4/H2 del bloque de contacto y de productos relacionados; el nombre del producto solo está en <title>); la página ES sí lo tiene (H1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés) y título 'KONTAKT US'; ES 'encontrareis' sin tilde. Los productos relacionados cambian de un idioma a otro (selección automática de WooCommerce).",
+    "Contraste fuentes: el texto de la página renderizada (sin menú, bloque de contacto ni relacionados) coincide con short_description + description de la Store API en los 4 idiomas; no hay pestañas ni descargas adicionales aparte del botón al PDF."
+   ]
+  },
+  {
+   "id_es": 912,
+   "slug": "reostatos-y-potenciometros-bobinados-9-2",
+   "url_es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-9-2/",
+   "sku": "c270ef0dc067",
+   "names": {
+    "es": "Reostatos y potenciometros bobinados tripes",
+    "en": "Rheostats and potentiometers triple windings",
+    "fr": "Rhéostats et potentiomètres à triple enroulement",
+    "de": "Rheostate und Potentiometer dreifach gewickelt"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-9-2/",
+    "en": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-9/",
+    "fr": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-a-triple-enroulement/",
+    "de": "https://grupotorivac.com/de/product/rheostate-und-potentiometer-dreifach-gewickelt/"
+   },
+   "ids": {
+    "es": 912,
+    "en": 4199,
+    "fr": 16336,
+    "de": 16337
+   },
+   "category_path_es": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ],
+   "categories_all_es": [
+    {
+     "id": 112,
+     "name": "Reóstatos cerámicos",
+     "slug": "ceramicos"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Este tipo de montaje es utilizado para regular la carga en redes trifasicas, aquí tambien se pueden utilizar para aumentar potencia o conseguir regulaciones especiales.\n\nLos reostatos triples permiten regular con un solo mando tres resistencias independientes de valor identico.\n\nVer ficha técnica",
+    "en": "Usually used to regulate the load in three-phase networks, they can also be used to increase power or to achieve special settings. The triple rheostats allow to regulate with a single control three independent resistors of identical value.\n\nSee technical data sheet",
+    "fr": "Ce type de montage est utilisé pour réguler la charge dans les réseaux triphasés, mais peut également être utilisé pour augmenter la puissance ou réaliser des réglages particuliers.\n\nLes rhéostats triples permettent de réguler trois résistances indépendantes de valeur identique à l’aide d’une seule commande.\n\nVoir la fiche technique",
+    "de": "Diese Art der Montage wird zur Regelung der Last in Dreiphasennetzen verwendet, kann aber auch zur Leistungserhöhung oder für spezielle Einstellungen eingesetzt werden.\n\nDreifach-Rheostate ermöglichen die Regelung von drei unabhängigen Widerständen mit identischem Wert mit einem einzigen Regler.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/trifasico-1.png",
+     "alt": {
+      "es": "Reostatos y potenciometros bobinados tripes",
+      "en": "Rheostats and potentiometers triple windings",
+      "fr": "Rhéostats et potentiomètres à triple enroulement",
+      "de": "Rheostate und Potentiometer dreifach gewickelt"
+     },
+     "id": 1085,
+     "ids": {
+      "es": 1085,
+      "en": 1085,
+      "fr": 1085,
+      "de": 1085
+     },
+     "filename": "trifasico-1.png",
+     "title": {
+      "es": "trifasico",
+      "en": "trifasico",
+      "fr": "trifasico",
+      "de": "trifasico"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/REOSTATOS-CERAMICOS.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Valor óhmico (Ω) de las tres resistencias (idéntico en las tres según la web): no indicado",
+    "Potencia (W): no indicada en la ficha (ver PDF de reóstatos cerámicos)",
+    "Tensión de la red trifásica (V): la web habla de 'redes trifasicas' sin indicar tensión"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Reostatos y potenciometros bobinados simple\n- Reostatos y potenciometros bobinados doble\n- Reostatos y potenciometros bobinados en caja\n- Reostatos y potenciometros bobinados fabricaciones especiales",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project.\n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Rheostats and potentiometers single windings\n- Rheostats and potentiometers dual windings\n- Rheostats and potentiometers wound in boxes\n- Rheostats and potentiometers, wound special fabrications",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet.\n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Rhéostats et potentiomètres bobinages simples\n- Rhéostats et potentiomètres à double enroulement\n- Rhéostats et potentiomètres enroulés dans des boîtes\n- Rhéostats et potentiomètres, enroulés, constructions spéciales",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt.\n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Rheostate und Potentiometer einfache Wicklungen\n- Dubbelgewonden reostaten en potentiometers\n- Rheostate und Potentiometer in Schachteln gewickelt\n- Rheostate und Potentiometer, gewickelte Sonderanfertigungen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Reostatos y potenciometros bobinados tripes - Torivac",
+     "meta_description": "Este tipo de montaje es utilizado para regular la carga en redes trifasicas. Fabricado por Torivac.",
+     "og_title": "Reostatos y potenciometros bobinados tripes - Torivac",
+     "og_description": "Este tipo de montaje es utilizado para regular la carga en redes trifasicas. Fabricado por Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/trifasico-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-9-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:47",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__reostatos-y-potenciometros-bobinados-9-2.json"
+    },
+    "en": {
+     "title": "Rheostats and potentiometers triple windings - Torivac",
+     "meta_description": "Usually used to regulate the load in three-phase networks, they can also be used to increase power or to achieve special settings.",
+     "og_title": "Rheostats and potentiometers triple windings - Torivac",
+     "og_description": "Usually used to regulate the load in three-phase networks, they can also be used to increase power or to achieve special settings.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/trifasico-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-9-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:23",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__reostatos-y-potenciometros-bobinados-9.json"
+    },
+    "fr": {
+     "title": "Rhéostats et potentiomètres à triple enroulement - Torivac",
+     "meta_description": "Ce type de montage est utilisé pour réguler la charge dans les réseaux triphasés. Fabriqué par Torivac.",
+     "og_title": "Rhéostats et potentiomètres à triple enroulement - Torivac",
+     "og_description": "Ce type de montage est utilisé pour réguler la charge dans les réseaux triphasés. Fabriqué par Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/trifasico-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-9-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:14",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__rheostats-et-potentiometres-a-triple-enroulement.json"
+    },
+    "de": {
+     "title": "Rheostate und Potentiometer dreifach gewickelt - Torivac",
+     "meta_description": "Diese Art der Montage wird zur Regelung der Last in Dreiphasennetzen verwendet. Hergestellt von Torivac.",
+     "og_title": "Rheostate und Potentiometer dreifach gewickelt - Torivac",
+     "og_description": "Diese Art der Montage wird zur Regelung der Last in Dreiphasennetzen verwendet. Hergestellt von Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/trifasico-1.png",
+     "canonical": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-9-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:14",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__rheostate-und-potentiometer-dreifach-gewickelt.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "nombre_generico",
+    "sin_alt",
+    "typo",
+    "meta_description_truncada",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_numerico_no_descriptivo",
+    "slug_url_en_espanol",
+    "nombre_no_coincide_con_categoria",
+    "pdf_compartido_entre_fichas",
+    "nombre_de_archivo_poco_descriptivo",
+    "ficha_generica_sin_datos_tecnicos",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "sku_no_comercial",
+    "sin_referencias_comerciales",
+    "sin_tabla_de_modelos"
+   ],
+   "gaps": [
+    "Errata en el nombre ES: 'tripes' (la propia descripción dice 'reostatos triples' y las traducciones EN/FR/DE son 'triple windings' / 'à triple enroulement' / 'dreifach gewickelt'). Se conserva tal cual.",
+    "Sin tensión ni potencia con valor: menciona 'redes trifasicas' ('three-phase networks' / 'réseaux triphasés' / 'Dreiphasennetzen') pero sin indicar tensión (p. ej. 400 V), así que no hay voltage_mentions; tampoco hay cifras de potencia (power_mentions=[]). Si la web nueva quiere etiqueta de voltaje para esta ficha, el dato no está en las fuentes web.",
+    "Erratas en ES: 'trifasicas', 'tambien' e 'identico' sin tilde; la frase 'aquí tambien se pueden utilizar para aumentar potencia o conseguir regulaciones especiales' va enlazada con coma a la anterior. El nombre sigue sin tildes. Nomenclatura: el nombre dice 'Reostatos y potenciometros bobinados' (sin tildes; la forma correcta sería 'Reóstatos y potenciómetros bobinados', como ya escribe la propia descripción de la ficha 1042) y es común a todo el lote.",
+    "Meta description recortada en ES, FR y DE: 'Este tipo de montaje es utilizado para regular la carga en redes trifasicas. Fabricado por Torivac.' (y equivalentes FR/DE con su sufijo) pierden la cláusula 'aquí tambien se pueden utilizar para aumentar potencia o conseguir regulaciones especiales'; EN reproduce la frase completa.",
+    "El nombre dice 'bobinados' pero la ficha está solo en la categoría 'Reóstatos cerámicos' (id 112) y su PDF es REOSTATOS-CERAMICOS.pdf. EN 'triple windings', FR 'à triple enroulement', DE 'dreifach gewickelt'.",
+    "Terminología inconsistente entre idiomas y dentro del lote: ES 'bobinados' se traduce como 'coiled' / 'wound' / 'windings' (EN), 'à boudin' / 'enroulement' / 'bobinés' / 'bobinages' (FR) y 'Spulen-' / 'gewickelt' / 'Wicklungen' / 'Wickel-' (DE); ES 'simple' es 'simple windings' (906, 907) pero 'single windings' (910) en EN, y 'einzelne Wicklungen' / 'Einzelwicklung' / 'einfache Wicklungen' en DE. Se conserva tal cual.",
+    "URL de traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-9/.",
+    "Imagen 'trifasico-1.png' (id 1085, mismo en los 4 idiomas): el nombre de archivo no describe el producto (dice 'trifásico').",
+    "PDF enlazado REOSTATOS-CERAMICOS.pdf (3 páginas; compartido por las fichas 910, 911, 912, 913 y 1042): según el texto extraído (data/analysis/pdf-text/REOSTATOS-CERAMICOS/p001.txt, no verificado visualmente) contiene la descripción de los reóstatos cerámicos (potencias '15-30-40-60-80125-250-500 y 1000 W' tal como sale extraído, núcleo de esteatita, hilos de constantán, nichrom o kantal) y una tabla de modelos PC12 a PC1000 (columnas POTENCIA/POWER, A, B, C, D, d, R, G, L, PESO y GAMA DE VALORES ÓHMICOS); las páginas 2 y 3 solo muestran las etiquetas 'Manual' y 'Motor'. Esa tabla NO está en la web (por eso orderable_items=[]) y no se vuelca aquí porque la fuente de esta tarea es la web; queda para la verificación de PDFs (S11).",
+    "Slug ES numérico sin significado ('reostatos-y-potenciometros-bobinados-9-2'): la URL no describe el producto (relevante para SEO y para redirecciones en la web nueva).",
+    "SKU 'c270ef0dc067': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes (orderable_items=[] y sin_referencias_comerciales).",
+    "description vacía en la Store API y en la REST (content.rendered) en los 4 idiomas: todo el texto del producto está en short_description, que es también lo que muestra la página renderizada. description_text='' (no hay descripción larga).",
+    "Sin tablas: ni la descripción (Store API / REST) ni la página renderizada contienen <table> en ningún idioma; spec_tables=[] y orderable_items=[] (no hay tabla de modelos en la web).",
+    "Atributos de WooCommerce vacíos (attributes=[]) en los 4 idiomas; no hay ningún dato técnico estructurado.",
+    "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
+    "La short_description incluye el texto del botón al PDF (p. ej. 'Ver ficha técnica' / 'See technical data sheet'); se deja en short_description y se registra en pdf_links[].labels.",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-9-2/); ver docs/01-analisis/HALLAZGOS.md n.º 11.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (su outline solo tiene el H3 de menú 'Products'/'Produits'/'Produkte' y los H4/H2 del bloque de contacto y de productos relacionados; el nombre del producto solo está en <title>); la página ES sí lo tiene (H1 = nombre del producto).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés) y título 'KONTAKT US'; ES 'encontrareis' sin tilde. Los productos relacionados cambian de un idioma a otro (selección automática de WooCommerce).",
+    "Contraste fuentes: el texto de la página renderizada (sin menú, bloque de contacto ni relacionados) coincide con short_description + description de la Store API en los 4 idiomas; no hay pestañas ni descargas adicionales aparte del botón al PDF."
+   ]
+  }
+ ]
+}

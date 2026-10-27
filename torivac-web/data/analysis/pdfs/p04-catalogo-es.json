@@ -15,7 +15,7 @@
      "family": "CHOQUES TOROIDALES",
      "series": null,
      "page": 22,
-     "description": "Tabla 'INTENSIDAD SEGÚN MODELO/INTENSITY DEPENDIG OF TYPE': intensidad para cada modelo de choque toroidal (1305, 1307, 1706, 2006, 2010, 2408, 2711, 3311, 3915, 4718, 5122) y cada valor de inductancia L (uH) de 10 a 1000. Es la continuación de la tabla de dimensiones de la p.21 del PDF (choques toroidales de polvo de hierro). Dos fotografías sin pie de foto: un choque encapsulado en rojo con dos patillas y un choque toroidal bobinado con dos hilos.",
+     "description": "Tabla 'INTENSIDAD SEGÚN MODELO/INTENSITY DEPENDIG OF TYPE': intensidad para cada modelo de choque toroidal (1305, 1307, 1706, 2006, 2010, 2408, 2711, 3311, 3915, 4718, 5122) y cada valor de inductancia L (uH) de 10 a 1000. Es la continuación de la tabla de dimensiones de la p.21 del PDF (choques toroidales de polvo de hierro). Dos fotografías sin pie de foto: un choque encapsulado en rojo con tres patillas y un choque toroidal bobinado con dos hilos.",
      "general_specs": {
       "Título de la tabla (tal cual, con su errata)": "INTENSIDAD SEGÚN MODELO/INTENSITY DEPENDIG OF TYPE",
       "Cabecera de la columna de valores inductivos": "L (uH)",
@@ -1152,9 +1152,9 @@
        "specs": {
         "A": "150",
         "B": "75",
-        "C": "75",
-        "PESO (KG) / WEIGHT (KG)": "6.912",
-        "CM2": "26.3"
+        "C": null,
+        "PESO (KG) / WEIGHT (KG)": null,
+        "CM2": null
        },
        "raw_row": "150 75 75 6.912 26.3",
        "confidence": "baja"
@@ -1176,7 +1176,7 @@
       "Marcador de celda sin valor": "--",
       "Unidad de las cotas A-G": "no indicada en el PDF",
       "Tipos de eje rotulados en el dibujo": "EJE LISO; EJE ESCALONADO",
-      "Lectura del dibujo (inferida, no está escrita en la tabla)": "el dibujo del EJE LISO usa las cotas A, B y C; el del EJE ESCALONADO usa A, B, D, E, F y G. Las filas con valor en C (50, 150 y la segunda de 200 VA) y las filas con valores en D, E, F, G (100 y la primera de 200 VA) se corresponderían con uno u otro tipo de eje",
+      "Lectura del dibujo (inferida, no está escrita en la tabla)": "el dibujo rotula A y C en la vista en planta y B en el alzado del EJE LISO; en el alzado del EJE ESCALONADO rotula D, E, F y G (no rotula B). Las filas con valor en C (50, 150 y la segunda de 200 VA) y las filas con valores en D, E, F, G (100 y la primera de 200 VA) se corresponderían con uno u otro tipo de eje (inferencia, no escrita en la tabla)",
       "Cota \"200\" del dibujo": "en el esquema del eje liso aparece una cota rotulada 200 sobre el cuerpo; significado y unidad no indicados en el PDF"
      },
      "models": [
@@ -1416,7 +1416,7 @@
     {
      "page": 24,
      "item": "Núcleo A150 B75 C75: CM2 '26.3' no encaja con C = 75 (confianza baja)",
-     "why": "En las otras 55 filas CM2 coincide con (A - B) / 2 x C / 100 (cálculo propio, no figura en el PDF); aquí daría 28.1, y 26.3 corresponde a C = 70. El peso impreso 6.912 también es coherente con C = 70 (5.925 con C = 60, +0.0987 por unidad de C). Posible errata de C en el PDF; se transcribe lo impreso y no se publica hasta confirmar."
+     "why": "En las otras 55 filas CM2 coincide con (A - B) / 2 x C / 100 (cálculo propio, no figura en el PDF); aquí daría 28.1, y 26.3 corresponde a C = 70. El peso impreso 6.912 también es coherente con C = 70 (5.925 con C = 60, +0.0987 por unidad de C). Posible errata de C en el PDF; se transcribe lo impreso y no se publica hasta confirmar. [Verificación: C, CM2 y peso quedan en null en specs; valores impresos solo en raw_row.]"
     },
     {
      "page": 24,
@@ -1463,7 +1463,47 @@
      "item": "Página transcrita desde imagen",
      "why": "Cotas y pesos solo existen como dibujo (sin capa de texto); revisadas a 200 ppp."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 22,
+     "item": "description (fotografía del choque encapsulado en rojo)",
+     "was": "un choque encapsulado en rojo con dos patillas",
+     "now": "un choque encapsulado en rojo con tres patillas",
+     "why": "En la imagen renderizada a 150 ppp se ven tres patillas metálicas (izquierda, derecha y una central delantera), no dos."
+    },
+    {
+     "page": 26,
+     "item": "general_specs['Lectura del dibujo (inferida, no está escrita en la tabla)']",
+     "was": "el dibujo del EJE LISO usa las cotas A, B y C; el del EJE ESCALONADO usa A, B, D, E, F y G. Las filas con valor en C (50, 150 y la segunda de 200 VA) y las filas con valores en D, E, F, G (100 y la primera de 200 VA) se corresponderían con uno u otro tipo de eje",
+     "now": "el dibujo rotula A y C en la vista en planta y B en el alzado del EJE LISO; en el alzado del EJE ESCALONADO rotula D, E, F y G (no rotula B). Las filas con valor en C (50, 150 y la segunda de 200 VA) y las filas con valores en D, E, F, G (100 y la primera de 200 VA) se corresponderían con uno u otro tipo de eje (inferencia, no escrita en la tabla)",
+     "why": "En el dibujo la cota B solo aparece bajo la vista del EJE LISO, no en la del EJE ESCALONADO; la frase anterior atribuía A y B al escalonado sin respaldo en la imagen."
+    },
+    {
+     "page": 24,
+     "item": "A150 B75 C75 (última fila de la tabla derecha): specs C, PESO, CM2",
+     "was": {
+      "C": "75",
+      "PESO (KG) / WEIGHT (KG)": "6.912",
+      "CM2": "26.3"
+     },
+     "now": {
+      "C": null,
+      "PESO (KG) / WEIGHT (KG)": null,
+      "CM2": null
+     },
+     "why": "Los tres valores impresos (C=75, CM2=26.3, peso=6.912) son mutuamente incoherentes con el resto de la tabla (CM2 26.3 y el peso encajan con C=70, no con 75) y no se puede decidir cuál es la errata. La entrada de 'uncertain' decía 'no se publica hasta confirmar' pero specs los publicaba. Se anulan en specs (A=150 y B=75 sí son legibles e inequívocos); los valores impresos siguen en raw_row: 150 75 75 6.912 26.3. La etiqueta 'A150 B75 C75' es del extractor y no se modifica."
+    }
+   ],
+   "verification": {
+    "method": "Páginas 22, 24, 26 y 27 re-renderizadas (pdftoppm 150/200/250 ppp) y leídas celda a celda; p23, p25 y p28 comprobadas a 60 ppp; p22 contrastada además con la capa de texto.",
+    "p22": "27 filas x 11 columnas = 297 valores comparados con la imagen y la capa de texto: 0 discrepancias; los 3 valores impresos fuera de secuencia (2006 L=18 '3.3', 2006 L=39 '3.0', 2010 L=75 '3.1') siguen en null en specs y se conservan en raw_row. Contraste adicional I*sqrt(L) por columna: no hay más valores atípicos.",
+    "p24": "56 filas (28 + 28) transcritas de forma independiente desde la imagen a 250 ppp: 0 discrepancias con A, B, C, peso y CM2 del JSON. Anomalías ya señaladas confirmadas (A85 B40 C13 peso 4.280; A101 B55 C35/C38/C40 pesos 1.058/1.148/1.208).",
+    "p26": "5 filas x 9 columnas coinciden con la imagen (incluidos los '--').",
+    "p27": "Cotas 65/99/64/64/96 y 69/99/64/64/101 y pesos Kg. 2,635 y Kg. 2,750 coinciden con la imagen.",
+    "voltage_mentions": "Vacío correcto: ninguna de las páginas 22-28 menciona tensiones (la 'VA' de p26 es la cabecera de potencia)."
+   },
+   "verified": true
   }
  ]
 }

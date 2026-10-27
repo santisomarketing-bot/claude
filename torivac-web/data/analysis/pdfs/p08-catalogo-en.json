@@ -1686,10 +1686,6 @@
        "Resistencia mín. / Gama de valores óhmicos (ES text garbled)"
       ],
       [
-       "Resistance distribution: lin.",
-       "Distribución resistencia: Lineal"
-      ],
-      [
        "Rotation angle",
        "Ángulo de giro"
       ],
@@ -1716,6 +1712,21 @@
       [
        "Packing: box of 25 pcs.",
        "Embalaje: Caja de 25 pzas."
+      ]
+     ],
+     "notes": "ES pairs verified against the ES extraction of the same products; where the ES text is garbled this is stated and the EN wording is the readable one."
+    },
+    {
+     "page": 19,
+     "caption": "Terminology EN vs ES - 5W wire wound potentiometer",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "Resistance distribution: lin.",
+       "Distribución resistencia: Lineal"
       ],
       [
        "Standard shaft lenght",
@@ -1730,7 +1741,7 @@
        "Resistencia del tope a la rotura (ES text garbled)"
       ]
      ],
-     "notes": "ES pairs verified against the ES extraction of the same products; where the ES text is garbled this is stated and the EN wording is the readable one."
+     "notes": "Terms printed on this page (split out of the terminology table of the preceding page; ES pairs as in that table; 'Mech. breakdown of the stop' ES text is garbled in the ES catalogue, the EN wording is the readable one)."
     },
     {
      "page": 20,
@@ -1742,7 +1753,7 @@
      "rows": [
       [
        "CERAMIC RHEOSTATS (Potentiometers)",
-       "Reóstatos cerámicos (Potenciometros)"
+       "Reostatos cerámicos (Potenciometros)"
       ],
       [
        "hard non hygroscopic steatite",
@@ -1789,11 +1800,7 @@
       ],
       [
        "REOSTATO TANDEM DOBLE (left in Spanish)",
-       "Reóstato tandem doble"
-      ],
-      [
-       "REOSTATO TANDEM TRIPLE (left in Spanish)",
-       "Reóstato tandem triple"
+       "Reostato tandem doble"
       ],
       [
        "MANUAL / MOTOR. (column headings)",
@@ -1801,6 +1808,21 @@
       ]
      ],
      "notes": "Table headings are the same Spanish words in both catalogues; only the drawing captions are translated."
+    },
+    {
+     "page": 22,
+     "caption": "Terminology EN vs ES - tandem rheostat triple",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "REOSTATO TANDEM TRIPLE (left in Spanish)",
+       "Reostato tandem triple"
+      ]
+     ],
+     "notes": "Term printed on this page (split out of the terminology table of the preceding page)."
     },
     {
      "page": 24,
@@ -1835,16 +1857,27 @@
        "Cubretuercas"
       ],
       [
+       "MOD. TYPE",
+       "MOD./TYPE"
+      ]
+     ],
+     "notes": "ES pairs verified against the ES extraction of the same tables."
+    },
+    {
+     "page": 25,
+     "caption": "Terminology EN vs ES - dials, startors and BM series",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
        "Dials With Pointer",
        "Discos con Flecha"
       ],
       [
        "Graded Dials (MOD. TYPE table)",
        "Discos Graduados"
-      ],
-      [
-       "Graded Dials (CA code table)",
-       "Carátulas Graduadas"
       ],
       [
        "Startors",
@@ -1857,17 +1890,28 @@
       [
        "Matt Caps for BM Series",
        "Tapas para Botón BM (mate)"
+      ]
+     ],
+     "notes": "Terms printed on this page (split out of the terminology table of the preceding page). ES pairs verified against Torivac_2024.pdf p36 (image)."
+    },
+    {
+     "page": 26,
+     "caption": "Terminology EN vs ES - DF knob series and graded dials (CA codes)",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "Graded Dials (CA code table)",
+       "Carátulas Graduadas"
       ],
       [
        "\"DF\" Knob Series",
        "Botón Baquelita \"DF\""
-      ],
-      [
-       "MOD. TYPE",
-       "MOD./TYPE"
       ]
      ],
-     "notes": "ES pairs verified against the ES extraction of the same tables."
+     "notes": "Terms printed on this page (split out of the terminology table of the preceding page). ES pairs verified against Torivac_2024.pdf p37 (image)."
     },
     {
      "page": 27,
@@ -1888,13 +1932,24 @@
       [
        "ROSCA (left in Spanish in the drawings)",
        "ROSCA"
-      ],
+      ]
+     ],
+     "notes": "Drawing labels are not translated in the EN catalogue."
+    },
+    {
+     "page": 28,
+     "caption": "Terminology EN vs ES - metal brackets for LED (10mm section)",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
       [
        "Portaled ... Cono Mixto (left in Spanish)",
        "Portaled ... Cono Mixto"
       ]
      ],
-     "notes": "Drawing labels are not translated in the EN catalogue."
+     "notes": "Term printed on this page (split out of the terminology table of the preceding page); 'ROSCA' also appears here."
     }
    ],
    "voltage_mentions": [
@@ -1902,7 +1957,7 @@
      "raw": "Breakdown voltage over 1000v.",
      "page": 18,
      "context": "3W potentiometer, Principal Characteristics (breakdown voltage, not an operating voltage)",
-     "normalized_hint": "1000 V (breakdown voltage; AC/DC not stated)"
+     "normalized_hint": "> 1000 V (printed 'over 1000v.'; breakdown voltage; AC/DC not stated)"
     },
     {
      "raw": "Breakdown voltage: > 1000v.",
@@ -1953,7 +2008,7 @@
      "page": 16
     },
     {
-     "fact": "Section cover 'WIRE WOUND POTENTIOMETERS & CERAMIC RHEOSTATS' (photograph of a wire-wound potentiometer; ES catalogue: 'Potenciómetros y reóstatos'); no technical data.",
+     "fact": "Section cover 'WIRE WOUND POTENTIOMETERS & CERAMIC RHEOSTATS' (photograph of a wire-wound potentiometer; ES catalogue: 'Potenciómetros y reostatos'); no technical data.",
      "page": 17
     },
     {
@@ -1961,7 +2016,7 @@
      "page": 18
     },
     {
-     "fact": "3W potentiometer: polyamide 6 with fibreglass body/shaft, hermetic against the dust, tilting slider; UL rating 94V-0; packing box of 25 pcs.; terminals 3.2 x 0,5 mm.",
+     "fact": "3W potentiometer: polyamide 6 with fibreglass (the PDF does not say which part is made of it), hermetic against the dust, tilting slider; UL rating 94V-0; packing box of 25 pcs.; terminals 3.2 x 0,5 mm.",
      "page": 18
     },
     {
@@ -1981,7 +2036,7 @@
      "page": 19
     },
     {
-     "fact": "Ceramic rheostats: made in 15-30-40-60-80-125-250-500 and 1000 Watts; derating of about 20% when ventilation is insufficient; core of hard non hygroscopic steatite; ceramic cement resists 900ºC; slider fine-silver brush; multi/sections windings to order for non-linear response. Sub-heading 'CERAMIC RHEOSTATS (Potentiometers)' (ES: 'Reóstatos cerámicos').",
+     "fact": "Ceramic rheostats: made in 15-30-40-60-80-125-250-500 and 1000 Watts; derating of about 20% when ventilation is insufficient; core of hard non hygroscopic steatite; ceramic cement resists 900ºC; slider fine-silver brush; multi/sections windings to order for non-linear response. Sub-heading 'CERAMIC RHEOSTATS (Potentiometers)' (ES: 'Reostatos cerámicos').",
      "page": 20
     },
     {
@@ -2029,7 +2084,7 @@
      "page": 28
     },
     {
-     "fact": "No prices, no stock data and no operating-voltage or current ratings are given anywhere in this page range (only the 1000 V breakdown voltage of the potentiometers and the 0-230v / 0-250v printed dial scales).",
+     "fact": "No prices, no stock data and no operating-voltage or current ratings are given anywhere in this page range (only the breakdown voltage of the potentiometers printed as 'over 1000v.' (3W) and '> 1000v.' (5W) and the 0-230v / 0-250v printed dial scales).",
      "page": 26
     }
    ],
@@ -2230,7 +2285,94 @@
      "item": "Page numbering and scope",
      "why": "Printed page numbers are the PDF page + 10. This job ends at the LED brackets; BINDING POST, BANANA SOCKETS & FUSE HOLDERS announced on the cover (PDF p23) are outside the range."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 18,
+     "item": "other_facts[9] 3W potentiometer material",
+     "was": "3W potentiometer: polyamide 6 with fibreglass body/shaft, hermetic against the dust, tilting slider; UL rating 94V-0; packing box of 25 pcs.; terminals 3.2 x 0,5 mm.",
+     "now": "3W potentiometer: polyamide 6 with fibreglass (the PDF does not say which part is made of it), hermetic against the dust, tilting slider; UL rating 94V-0; packing box of 25 pcs.; terminals 3.2 x 0,5 mm.",
+     "why": "'body/shaft' was an interpretation: the printed line is 'Polyamide 6 with fibreglass , 12mm shaft (Ø 6mm.)' and does not say which part is polyamide."
+    },
+    {
+     "page": 18,
+     "item": "voltage_mentions[0].normalized_hint",
+     "was": "1000 V (breakdown voltage; AC/DC not stated)",
+     "now": "> 1000 V (printed 'over 1000v.'; breakdown voltage; AC/DC not stated)",
+     "why": "The hint dropped the word 'over': the PDF does not print 'Breakdown voltage = 1000 V' but 'over 1000v.'; a reader of the hint alone would take 1000 V as the exact value."
+    },
+    {
+     "page": 26,
+     "item": "other_facts[26] voltage summary",
+     "was": "No prices, no stock data and no operating-voltage or current ratings are given anywhere in this page range (only the 1000 V breakdown voltage of the potentiometers and the 0-230v / 0-250v printed dial scales).",
+     "now": "No prices, no stock data and no operating-voltage or current ratings are given anywhere in this page range (only the breakdown voltage of the potentiometers printed as 'over 1000v.' (3W) and '> 1000v.' (5W) and the 0-230v / 0-250v printed dial scales).",
+     "why": "Same issue as the p18 hint: the breakdown voltage is printed as 'over 1000v.' / '> 1000v.', not as exactly 1000 V."
+    },
+    {
+     "page": 20,
+     "item": "tables[3] row 'CERAMIC RHEOSTATS (Potentiometers)' ES term",
+     "was": "Reóstatos cerámicos (Potenciometros)",
+     "now": "Reostatos cerámicos (Potenciometros)",
+     "why": "The ES catalogue (Torivac_2024.pdf p31, image and text layer) prints the heading 'REOSTATOS CERÁMICOS (Potenciometros)' without an accent on REOSTATOS; the JSON had added one."
+    },
+    {
+     "page": 20,
+     "item": "other_facts[14] ES heading quote",
+     "was": "(ES: 'Reóstatos cerámicos')",
+     "now": "(ES: 'Reostatos cerámicos')",
+     "why": "Same spelling as printed in the ES heading (no accent on REOSTATOS)."
+    },
+    {
+     "page": 17,
+     "item": "other_facts[7] ES heading quote",
+     "was": "'Potenciómetros y reóstatos'",
+     "now": "'Potenciómetros y reostatos'",
+     "why": "The ES cover prints 'POTENCIÓMETROS Y REOSTATOS' (REOSTATOS without accent); the JSON's own terminology table already used that spelling, this quote was inconsistent."
+    },
+    {
+     "page": 21,
+     "item": "tables[4] rows REOSTATO TANDEM DOBLE / TRIPLE ES term",
+     "was": "Reóstato tandem doble / Reóstato tandem triple",
+     "now": "Reostato tandem doble / Reostato tandem triple",
+     "why": "The ES tables (Torivac_2024.pdf p32, p33) print 'REOSTATO TANDEM DOBLE' / 'REOSTATO TANDEM TRIPLE' without accents; the JSON had added one."
+    },
+    {
+     "page": 19,
+     "item": "tables[2] terminology rows (Resistance distribution, Standard shaft lenght, Temperature increasing at full load, Mech. breakdown of the stop)",
+     "was": "4 rows inside the table with page=18",
+     "now": "moved to a new table with page=19",
+     "why": "Those four terms are printed only on PDF p19 (5W potentiometer), not on p18; data must carry the page where it is printed."
+    },
+    {
+     "page": 22,
+     "item": "tables[4] row REOSTATO TANDEM TRIPLE",
+     "was": "inside the table with page=21",
+     "now": "moved to a new table with page=22",
+     "why": "'REOSTATO TANDEM TRIPLE' is printed only on PDF p22."
+    },
+    {
+     "page": 25,
+     "item": "tables[5] rows Dials With Pointer, Graded Dials (MOD. TYPE table), Startors, BM Series, Matt Caps for BM Series",
+     "was": "inside the table with page=24",
+     "now": "moved to a new table with page=25",
+     "why": "Those terms are printed on PDF p25, not p24."
+    },
+    {
+     "page": 26,
+     "item": "tables[5] rows Graded Dials (CA code table), \"DF\" Knob Series",
+     "was": "inside the table with page=24",
+     "now": "moved to a new table with page=26",
+     "why": "Those terms are printed on PDF p26, not p24."
+    },
+    {
+     "page": 28,
+     "item": "tables[6] row 'Portaled ... Cono Mixto'",
+     "was": "inside the table with page=27",
+     "now": "moved to a new table with page=28",
+     "why": "'Portaled 8 Cono Mixto' / 'Portaled 10 Cono Mixto' are printed only on PDF p28."
+    }
+   ],
+   "verified": true
   }
  ]
 }

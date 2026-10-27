@@ -10,6 +10,8 @@
   var INK = [16, 4, 4], COPPER = [156, 82, 15], AMBER = [255, 182, 83];
 
   TV.makeQuotePdf = function (opts) {
+    // jsPDF usa Helvetica (WinAnsi): el espacio fino (U+202F) que usan fr/de en los miles sale como «/» → se cambia por espacio normal
+    var fmt = { money: function (n) { return String(Q.money(n)).replace(/[\u202f\u2009\u00a0]/g, ' '); }, unit: function (n) { return String(Q.unitMoney(n)).replace(/[\u202f\u2009\u00a0]/g, ' '); } };
     opts = opts || {}; var c = opts.customer || {};
     var JS = window.jspdf && window.jspdf.jsPDF; if (!JS) throw new Error('jsPDF no cargado');
     var doc = new JS({ unit: 'mm', format: 'a4' });
@@ -36,7 +38,7 @@
 
     // tabla
     var body = d.lines.map(function (l) {
-      return ['', (l.generic ? '' : l.ref + '\n') + l.name + (l.spec ? '\n' + l.spec : ''), String(l.qty), l.unit == null ? Q.t('on_request') : Q.unitMoney(l.unit), l.total == null ? Q.t('on_request') : Q.money(l.total)];
+      return ['', (l.generic ? '' : l.ref + '\n') + l.name + (l.spec ? '\n' + l.spec : ''), String(l.qty), l.unit == null ? Q.t('on_request') : fmt.unit(l.unit), l.total == null ? Q.t('on_request') : fmt.money(l.total)];
     });
     var thumbs = d.lines.map(function (l) { var it = TV.items[l.ref] || {}; return it.th && TV.thumbs ? TV.thumbs[it.th] : null; });
     doc.autoTable({
@@ -54,7 +56,7 @@
     var fy = doc.lastAutoTable.finalY + 6;
     if (fy > H - 50) { doc.addPage(); fy = 20; }
     doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.text(Q.t('total'), W - 62, fy, { align: 'right' });
-    doc.setFontSize(14); doc.text(Q.money(d.total), W - 12, fy, { align: 'right' });
+    doc.setFontSize(14); doc.text(fmt.money(d.total), W - 12, fy, { align: 'right' });
     doc.setFont('helvetica', 'normal'); doc.setFontSize(8);
     var ny = fy + 7;
     if (d.unpriced) { doc.text(doc.splitTextToSize(Q.t('price_note_request'), W - 24), 12, ny); ny += 8; }

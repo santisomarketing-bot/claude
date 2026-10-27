@@ -26,10 +26,22 @@
   // ───────────────────────────────────────── [STATE]
   var lines = load();
   var listeners = [];
+  //   Respaldo SOLO para file:// (demo abierto con doble clic): Chrome a veces entrega a la página siguiente un localStorage vacío.
+  //   Se duplica el presupuesto en window.name (viaja con la pestaña) con una marca de tiempo; manda la copia más reciente.
+  //   No se usa en http(s): window.name sería legible por otros sitios abiertos en la misma pestaña.
+  var STAMP = 'tv_quote_t', NAME = 'tvq1:', FILE = location.protocol === 'file:';
+  function clean(r) { return Array.isArray(r) ? r.filter(function (l) { return l && l.ref && l.qty > 0; }) : []; }
   function load() {
-    try { var r = JSON.parse(localStorage.getItem(KEY) || '[]'); return Array.isArray(r) ? r.filter(function (l) { return l && l.ref && l.qty > 0; }) : []; } catch (e) { return []; }
+    var ls = [], lt = 0, nm = null;
+    try { ls = clean(JSON.parse(localStorage.getItem(KEY) || '[]')); lt = Number(localStorage.getItem(STAMP)) || 0; } catch (e) { /* sin almacenamiento */ }
+    if (FILE && String(window.name).indexOf(NAME) === 0) { try { nm = JSON.parse(String(window.name).slice(NAME.length)); } catch (e) { nm = null; } }
+    return nm && Number(nm.t) > lt ? clean(nm.l) : ls;
   }
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(lines)); } catch (e) { /* modo privado: se mantiene en memoria */ } }
+  function save() {
+    var t = Date.now();
+    try { localStorage.setItem(KEY, JSON.stringify(lines)); localStorage.setItem(STAMP, String(t)); } catch (e) { /* modo privado: se mantiene en memoria */ }
+    if (FILE) { try { window.name = NAME + JSON.stringify({ t: t, l: lines }); } catch (e) { /* ignorar */ } }
+  }
   function emit(detail) {
     save();
     listeners.forEach(function (fn) { try { fn(detail); } catch (e) { console.error(e); } });

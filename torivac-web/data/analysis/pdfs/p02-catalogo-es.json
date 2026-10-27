@@ -813,7 +813,7 @@
      "family": "Variador tensión sobremesa",
      "series": null,
      "page": 11,
-     "description": "Tabla 1500 VA – 11000 VA, Entrada/Input 230V, Salida/Output 230/250V, con cotas A, B, C y peso (Kg). Fotografías de un equipo en armario con instrumentos y de un equipo sobre ruedas; dibujo con cotas A, B, C.",
+     "description": "Tabla 1500 VA – 11000 VA, Entrada/Input 230V, Salida/Output 230/250V, con cotas A, B, C y peso (Kg). Dibujo en perspectiva con cotas A, B, C a la derecha de la tabla. En el centro de la página hay dos fotografías sin rótulo propio (un armario con instrumentos de medida y mando, y un equipo sobre ruedas) que el PDF no vincula a una u otra tabla (ver uncertain).",
      "general_specs": {
       "Cabecera de tabla": "1500 VA – 11000 VA  Entrada/Input 230V  Salida/Output 230/250V",
       "Entrada/Input": "230V",
@@ -1341,7 +1341,7 @@
        "Salida: 1 - 2, 2, 2."
       ]
      ],
-     "notes": "Texto del PDF: los variadores de tensión trifásicos incorporan de serie un puente entre los bornes 1-1-1 de cada bobina, correspondiente al neutro de una conexión en estrella, para evitar posibles desequilibrios en el equipo. Los esquemas (solo imagen) rotulan los bornes 1, 2, 3 y 4 en los monofásicos y N, R, R1, S, S1, T, T1 en los trifásicos."
+     "notes": "Texto del PDF: los variadores de tensión trifásicos incorporan de serie un puente entre los bornes 1-1-1 de cada bobina, correspondiente al neutro de una conexión en estrella, para evitar posibles desequilibrios en el equipo. Los esquemas (solo imagen) rotulan los bornes 1, 2, 3 y 4 tanto en los monofásicos como en los trifásicos; los trifásicos añaden N, R, R1, S, S1, T, T1."
     },
     {
      "page": 13,
@@ -1376,49 +1376,49 @@
      "raw": "Entrada/Input 400 V Salida/Output 400/430V",
      "page": 8,
      "context": "Cabecera de la tabla 15000 VA – 33000 VA (trifásico regulación manual, continuación)",
-     "normalized_hint": "400 V entrada / 400-430 V salida"
+     "normalized_hint": "Entrada 400 V; salida 400/430 V (barra literal del PDF, no es un rango)"
     },
     {
      "raw": "Entrada/Input 400V Salida/Output 400/430V",
      "page": 8,
      "context": "Cabecera de la tabla 480 VA – 12000 VA, variador trifásico regulación motorizada",
-     "normalized_hint": "400 V entrada / 400-430 V salida"
+     "normalized_hint": "Entrada 400 V; salida 400/430 V (barra literal del PDF, no es un rango)"
     },
     {
      "raw": "Entrada/Input 400V Salida/Output 400/430V",
      "page": 8,
      "context": "Cabecera de la tabla 15000 VA – 33000 VA, variador trifásico regulación motorizada",
-     "normalized_hint": "400 V entrada / 400-430 V salida"
+     "normalized_hint": "Entrada 400 V; salida 400/430 V (barra literal del PDF, no es un rango)"
     },
     {
      "raw": "Entrada/Input 230V Salida/Output 230/250V",
      "page": 10,
      "context": "Cabecera de la tabla de variador en cura de aceite",
-     "normalized_hint": "230 V entrada / 230-250 V salida"
+     "normalized_hint": "Entrada 230 V; salida 230/250 V (barra literal del PDF, no es un rango)"
     },
     {
      "raw": "230V/250V",
      "page": 10,
      "context": "Rótulo vertical del grupo Monofasico / Single phase",
-     "normalized_hint": "230/250 V"
+     "normalized_hint": "230V/250V (barra literal del PDF)"
     },
     {
      "raw": "230V/250V",
      "page": 10,
      "context": "Rótulo vertical del grupo Trifasico / Triple phase",
-     "normalized_hint": "230/250 V"
+     "normalized_hint": "230V/250V (barra literal del PDF)"
     },
     {
      "raw": "Entrada/Input 230V Salida/Output 230/250V",
      "page": 11,
      "context": "Cabecera de la tabla de variador tensión sobremesa 1500-11000 VA",
-     "normalized_hint": "230 V entrada / 230-250 V salida"
+     "normalized_hint": "Entrada 230 V; salida 230/250 V (barra literal del PDF, no es un rango)"
     },
     {
      "raw": "Entrada/Input 400V Salida/Output 400/430V",
      "page": 11,
      "context": "Cabecera de la tabla de variador en caja industrial trifásico",
-     "normalized_hint": "400 V entrada / 400-430 V salida"
+     "normalized_hint": "Entrada 400 V; salida 400/430 V (barra literal del PDF, no es un rango)"
     },
     {
      "raw": "tensión 230 VAC entre los bornes cableados Violeta – gris",
@@ -1465,7 +1465,7 @@
      "page": 9
     },
     {
-     "fact": "Variador en cura de aceite: fotografía de equipo en envolvente metálica con asa/mando y regleta de bornes en la tapa; esquema 3D con A como cota vertical y B, C como cotas horizontales.",
+     "fact": "Variador en cura de aceite: fotografía de equipo en envolvente metálica con un pomo negro y una regleta de bornes en la tapa; esquema 3D con A como cota vertical y B, C como cotas horizontales.",
      "page": 10
     },
     {
@@ -1533,7 +1533,7 @@
     {
      "page": 8,
      "item": "Familia de la primera tabla (15000 VA – 33000 VA, columnas A-H con C y D)",
-     "why": "La tabla no lleva título en esta página; se asigna a 'Variador tensión trifásico regulación manual' por continuidad con la p.7 (cuya tabla 480 VA – 12000 VA tiene las mismas columnas A-G con C y D) y por los dibujos con cotas C, D. Asignación inferida: verificar contra la p.7."
+     "why": "La tabla no lleva título en esta página; se asigna a 'Variador tensión trifásico regulación manual' por continuidad con la p.7 (cuya tabla 480 VA – 12000 VA tiene las mismas columnas In 400/In 430, A-G con C y D) y porque los dibujos superiores de la p.8 (sin motor) rotulan las cotas C y D que solo existen en esta tabla; las tablas motorizadas de la p.8 no tienen C ni D. Contrastado con el texto y la imagen de la p.7; sigue siendo una asignación inferida porque el PDF no la titula."
     },
     {
      "page": 8,
@@ -1614,8 +1614,91 @@
      "page": 14,
      "item": "Página de portada de sección",
      "why": "Solo el título 'TRANSFORMADORES TOROIDALES' y una fotografía; sin datos técnicos. Marcada como visual_only_pages."
+    },
+    {
+     "page": 11,
+     "item": "Atribución de fotografías y dibujos en perspectiva de la p.11",
+     "why": "Hay dos fotografías sin rótulo (armario con instrumentos y mando; equipo sobre ruedas) y dos dibujos con cotas A, B, C (caja plana arriba a la derecha; caja alta abajo a la izquierda). El PDF no los vincula explícitamente a 'Variador tensión sobremesa' o a 'Variador tensión en caja industrial trifásico'; no se afirma la correspondencia."
+    },
+    {
+     "page": 14,
+     "item": "Etiquetas en la fotografía de portada",
+     "why": "Algunos transformadores fotografiados llevan etiquetas de producto (rótulos PRIMARIO / SECUNDARIO / POTENCIA) parcialmente legibles; es fotografía de fondo, no tabla del catálogo, y no se transcribe ningún valor ni se registra como tensión."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 8,
+     "item": "voltage_mentions[0].normalized_hint (Cabecera de la tabla 15000 VA – 33000 VA (trifásico regulación manual, continuación))",
+     "was": "400 V entrada / 400-430 V salida",
+     "now": "Entrada 400 V; salida 400/430 V (barra literal del PDF, no es un rango)",
+     "why": "La barra '/' del PDF separa dos valores (en los rótulos 'In 400 / In 430' y 'In 230 / In 250' de las tablas y en 'sin/con elevación' de la p.12); el hint con guion lo convertía en un rango, interpretación que el PDF no hace. Se conserva la barra literal."
+    },
+    {
+     "page": 8,
+     "item": "voltage_mentions[1].normalized_hint (Cabecera de la tabla 480 VA – 12000 VA, variador trifásico regulación motorizada)",
+     "was": "400 V entrada / 400-430 V salida",
+     "now": "Entrada 400 V; salida 400/430 V (barra literal del PDF, no es un rango)",
+     "why": "La barra '/' del PDF separa dos valores (en los rótulos 'In 400 / In 430' y 'In 230 / In 250' de las tablas y en 'sin/con elevación' de la p.12); el hint con guion lo convertía en un rango, interpretación que el PDF no hace. Se conserva la barra literal."
+    },
+    {
+     "page": 8,
+     "item": "voltage_mentions[2].normalized_hint (Cabecera de la tabla 15000 VA – 33000 VA, variador trifásico regulación motorizada)",
+     "was": "400 V entrada / 400-430 V salida",
+     "now": "Entrada 400 V; salida 400/430 V (barra literal del PDF, no es un rango)",
+     "why": "La barra '/' del PDF separa dos valores (en los rótulos 'In 400 / In 430' y 'In 230 / In 250' de las tablas y en 'sin/con elevación' de la p.12); el hint con guion lo convertía en un rango, interpretación que el PDF no hace. Se conserva la barra literal."
+    },
+    {
+     "page": 10,
+     "item": "voltage_mentions[3].normalized_hint (Cabecera de la tabla de variador en cura de aceite)",
+     "was": "230 V entrada / 230-250 V salida",
+     "now": "Entrada 230 V; salida 230/250 V (barra literal del PDF, no es un rango)",
+     "why": "La barra '/' del PDF separa dos valores (en los rótulos 'In 400 / In 430' y 'In 230 / In 250' de las tablas y en 'sin/con elevación' de la p.12); el hint con guion lo convertía en un rango, interpretación que el PDF no hace. Se conserva la barra literal."
+    },
+    {
+     "page": 11,
+     "item": "voltage_mentions[6].normalized_hint (Cabecera de la tabla de variador tensión sobremesa 1500-11000 VA)",
+     "was": "230 V entrada / 230-250 V salida",
+     "now": "Entrada 230 V; salida 230/250 V (barra literal del PDF, no es un rango)",
+     "why": "La barra '/' del PDF separa dos valores (en los rótulos 'In 400 / In 430' y 'In 230 / In 250' de las tablas y en 'sin/con elevación' de la p.12); el hint con guion lo convertía en un rango, interpretación que el PDF no hace. Se conserva la barra literal."
+    },
+    {
+     "page": 11,
+     "item": "voltage_mentions[7].normalized_hint (Cabecera de la tabla de variador en caja industrial trifásico)",
+     "was": "400 V entrada / 400-430 V salida",
+     "now": "Entrada 400 V; salida 400/430 V (barra literal del PDF, no es un rango)",
+     "why": "La barra '/' del PDF separa dos valores (en los rótulos 'In 400 / In 430' y 'In 230 / In 250' de las tablas y en 'sin/con elevación' de la p.12); el hint con guion lo convertía en un rango, interpretación que el PDF no hace. Se conserva la barra literal."
+    },
+    {
+     "page": 12,
+     "item": "tables[p12].notes",
+     "was": "Texto del PDF: los variadores de tensión trifásicos incorporan de serie un puente entre los bornes 1-1-1 de cada bobina, correspondiente al neutro de una conexión en estrella, para evitar posibles desequilibrios en el equipo. Los esquemas (solo imagen) rotulan los bornes 1, 2, 3 y 4 en los monofásicos y N, R, R1, S, S1, T, T1 en los trifásicos.",
+     "now": "Texto del PDF: los variadores de tensión trifásicos incorporan de serie un puente entre los bornes 1-1-1 de cada bobina, correspondiente al neutro de una conexión en estrella, para evitar posibles desequilibrios en el equipo. Los esquemas (solo imagen) rotulan los bornes 1, 2, 3 y 4 tanto en los monofásicos como en los trifásicos; los trifásicos añaden N, R, R1, S, S1, T, T1.",
+     "why": "Los esquemas trifásicos también rotulan 1, 2, 3 y 4 (verificado en la imagen renderizada); la nota los atribuía solo a los monofásicos."
+    },
+    {
+     "page": 10,
+     "item": "other_facts (fotografía del variador en cura de aceite)",
+     "was": "Variador en cura de aceite: fotografía de equipo en envolvente metálica con asa/mando y regleta de bornes en la tapa; esquema 3D con A como cota vertical y B, C como cotas horizontales.",
+     "now": "Variador en cura de aceite: fotografía de equipo en envolvente metálica con un pomo negro y una regleta de bornes en la tapa; esquema 3D con A como cota vertical y B, C como cotas horizontales.",
+     "why": "'asa' era una suposición; en la imagen solo se ve un pomo/mando negro y una regleta de bornes en la tapa."
+    },
+    {
+     "page": 11,
+     "item": "families[Variador tensión sobremesa].description",
+     "was": "Tabla 1500 VA – 11000 VA, Entrada/Input 230V, Salida/Output 230/250V, con cotas A, B, C y peso (Kg). Fotografías de un equipo en armario con instrumentos y de un equipo sobre ruedas; dibujo con cotas A, B, C.",
+     "now": "Tabla 1500 VA – 11000 VA, Entrada/Input 230V, Salida/Output 230/250V, con cotas A, B, C y peso (Kg). Dibujo en perspectiva con cotas A, B, C a la derecha de la tabla. En el centro de la página hay dos fotografías sin rótulo propio (un armario con instrumentos de medida y mando, y un equipo sobre ruedas) que el PDF no vincula a una u otra tabla (ver uncertain).",
+     "why": "Las dos fotografías del centro no llevan título y no se pueden atribuir con certeza a la tabla sobremesa ni a la de caja industrial; se deja de asignarlas a una sola familia."
+    },
+    {
+     "page": 8,
+     "item": "uncertain: familia de la primera tabla",
+     "was": "La tabla no lleva título en esta página; se asigna a 'Variador tensión trifásico regulación manual' por continuidad con la p.7 (cuya tabla 480 VA – 12000 VA tiene las mismas columnas A-G con C y D) y por los dibujos con cotas C, D. Asignación inferida: verificar contra la p.7.",
+     "now": "La tabla no lleva título en esta página; se asigna a 'Variador tensión trifásico regulación manual' por continuidad con la p.7 (cuya tabla 480 VA – 12000 VA tiene las mismas columnas In 400/In 430, A-G con C y D) y porque los dibujos superiores de la p.8 (sin motor) rotulan las cotas C y D que solo existen en esta tabla; las tablas motorizadas de la p.8 no tienen C ni D. Contrastado con el texto y la imagen de la p.7; sigue siendo una asignación inferida porque el PDF no la titula.",
+     "why": "Se añade la evidencia de la verificación contra p.7 y los dibujos; la asignación sigue marcada como inferida."
+    }
+   ],
+   "verified": true
   }
  ]
 }

@@ -752,7 +752,11 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": null
+     "ordering_info": null,
+     "pages": [
+      40,
+      41
+     ]
     }
    ],
    "tables": [],
@@ -855,7 +859,7 @@
     {
      "page": 37,
      "item": "Carátulas CA0115230, CA0115250 y CA0115330 (Ø 116) y CA0160330 (Ø 116)",
-     "why": "El código CA0115... / CA0160... no coincide con el patrón de las demás filas Ø 116 (CA0116...). Puede ser una errata del código o del diámetro; se transcribe tal cual y no se corrige."
+     "why": "El código CA0115... / CA0160... no coincide con el patrón de las demás filas Ø 116 (CA0116...). Puede ser una errata del código o del diámetro; se transcribe tal cual y no se corrige. Además, en CA0160330 la tabla imprime 328º (confirmado en la imagen a 260 dpi) mientras que en los códigos de escala 0-100% el sufijo coincide con el ángulo impreso (p.ej. CA0116330 = 330º, CA0115330 = 330º); no se corrige ni se deduce."
     },
     {
      "page": 37,
@@ -870,7 +874,7 @@
     {
      "page": 38,
      "item": "Cotas Ø 7 / 2 / 13 y Ø 7 / 3 / 15 (3mm), Ø 10 / 3 / 15 y Ø 9.5 / 3 / 16.5 (5mm) y rosca 6/0,75, 8/0,75",
-     "why": "Las cotas del dibujo no llevan rótulo ni unidad; el significado de la cota vertical pequeña (cabeza) y de la total se interpreta por el dibujo. En el 4.º dibujo el PDF imprime '9.5' y '16.5' con punto decimal (el resto de cotas de la página usa coma); se conserva el punto tal cual."
+     "why": "Las cotas del dibujo no llevan rótulo ni unidad; el significado de la cota vertical pequeña (cabeza) y de la total se interpreta por el dibujo. En el 4.º dibujo el PDF imprime '9.5' y '16.5' con punto decimal (las únicas cifras decimales restantes de la página son las roscas 6/0,75 y 8/0,75, que llevan coma); se conserva el punto tal cual."
     },
     {
      "page": 39,
@@ -899,15 +903,46 @@
     },
     {
      "page": 41,
-     "item": "Cota 'ROSCA 12,50/0,75' de HBS - 4 y PF - 15 y cotas 15, 2,1, 10 sin símbolo Ø en HBS/HSR",
-     "why": "Se transcribe tal cual; '12,50/0,75' tiene un formato atípico y no se normaliza. La cota 15 de HBS/HSR no lleva Ø en el PDF."
+     "item": "Cota 'ROSCA 12,50/0,75' de HBS - 4 y PF - 15, y cota 15 de HBS - 4 / HSR - 4 sin símbolo Ø",
+     "why": "Se transcribe tal cual; '12,50/0,75' tiene un formato atípico y no se normaliza. La cota horizontal 15 de HBS/HSR no lleva Ø en el PDF (las cotas verticales 2,1, 24,6, 25,5 de HBS/HSR y 10 y 32 de PF - 15 tampoco lo llevan, como es normal en una cota vertical)."
     },
     {
      "page": 36,
      "item": "Páginas 36 a 41 transcritas de la imagen",
      "why": "Las capas de texto de estas páginas solo contienen títulos de sección y rótulos; todas las cotas, tablas y roscas se leyeron de la imagen renderizada (110/170/200 dpi), por lo que el comprobador automático no puede verificarlas."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 40,
+     "item": "Familia 'BORNES HEMBRILLAS Y PORTAFUSIBLES': atribución de página",
+     "was": "page: 40 (la familia incluye 3 modelos de la p.41: HBS - 4, HSR - 4, PF - 15)",
+     "now": "page: 40 y nuevo campo pages: [40, 41]; los modelos conservan su page propia (BPB, HB, HR = 40; HBS, HSR, PF = 41)",
+     "why": "Evitar que un consumidor que lea solo family.page atribuya a la p.40 datos de la p.41. Las cifras no cambian."
+    },
+    {
+     "page": 41,
+     "item": "Entrada 'uncertain' sobre ROSCA 12,50/0,75 y cotas sin Ø",
+     "was": "Cota 'ROSCA 12,50/0,75' de HBS - 4 y PF - 15 y cotas 15, 2,1, 10 sin símbolo Ø en HBS/HSR (la cota 10 pertenece a PF - 15, no a HBS/HSR)",
+     "now": "Cota 'ROSCA 12,50/0,75' de HBS - 4 y PF - 15, y cota 15 de HBS - 4 / HSR - 4 sin símbolo Ø",
+     "why": "La redacción atribuía la cota 10 a HBS/HSR; en la imagen la cota 10 es la altura de la tapa de PF - 15. Solo cambia el texto de la nota, ningún valor."
+    },
+    {
+     "page": 37,
+     "item": "Entrada 'uncertain' de carátulas CA0115... / CA0160330",
+     "was": "El código CA0115... / CA0160... no coincide con el patrón de las demás filas Ø 116 (CA0116...). Puede ser una errata del código o del diámetro; se transcribe tal cual y no se corrige.",
+     "now": "El código CA0115... / CA0160... no coincide con el patrón de las demás filas Ø 116 (CA0116...). Puede ser una errata del código o del diámetro; se transcribe tal cual y no se corrige. Además, en CA0160330 la tabla imprime 328º (confirmado en la imagen a 260 dpi) mientras que en los códigos de escala 0-100% el sufijo coincide con el ángulo impreso (p.ej. CA0116330 = 330º, CA0115330 = 330º); no se corrige ni se deduce.",
+     "why": "Se añade la segunda anomalía observada en CA0160330 (código acabado en 330 pero ángulo impreso 328º). Solo cambia la nota; el valor 328º del modelo se mantiene porque es lo que imprime el PDF."
+    },
+    {
+     "page": 38,
+     "item": "Entrada 'uncertain' sobre punto decimal en 9.5 y 16.5",
+     "was": "... (el resto de cotas de la página usa coma)",
+     "now": "... (las únicas cifras decimales restantes de la página son las roscas 6/0,75 y 8/0,75, que llevan coma)",
+     "why": "Las demás cotas dibujadas de la p.38 son enteras (7, 2, 13, 3, 15, 10); la coma solo aparece en las roscas. Solo cambia la nota."
+    }
+   ],
+   "verified": true
   }
  ]
 }

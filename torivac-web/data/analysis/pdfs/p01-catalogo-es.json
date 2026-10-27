@@ -15,7 +15,7 @@
      "family": "Variadores de tensión toroidales (información general, sin tabla de modelos)",
      "series": null,
      "page": 2,
-     "description": "El variador de tensión toroidal o autotransformador variable es un elemento básico si deseamos regular una tensión alterna, desde cero hasta el máximo, con una intensidad constante. Los variadores de tensión Torivac, se caracterizan por su robustez mecánica su alta resolución, que permite ajustes muy precisos de tensión, y por la alta calidad de todos los materiales utilizados en su fabricación. Estos detalles, junto al control del 100% de todos los variadores nos permiten ofrecer una ﬁabilidad reconocida por los clientes más exigentes.",
+     "description": "El variador de tensión toroidal o autotransformador variable es un elemento básico si deseamos regular una tensión alterna, desde cero hasta el máximo, con una intensidad constante. Los variadores de tensión Torivac, se caracterizan por su robustez mecánica su alta resolución, que permite ajustes muy precisos de tensión, y por la alta calidad de todos los materiales utilizados en su fabricación. Estos detalles, junto al control del 100% de todos los variadores nos permiten ofrecer una fiabilidad reconocida por los clientes más exigentes.",
      "general_specs": {
       "Series de fabricación": "Variador de tensión toroidal monofásico, doble y trifásico (I, II, III)",
       "Montaje": "Todos los modelos se pueden montar en caja metálica suministrar para regulación manual o motorizada"
@@ -2075,7 +2075,7 @@
       ],
       [
        "17",
-       "Rodillo de graﬁto"
+       "Rodillo de grafito"
       ],
       [
        "18",
@@ -2175,6 +2175,42 @@
      "page": 7,
      "context": "cabecera de tabla «Dimensiones y peso», variador trifásico manual",
      "normalized_hint": "Entrada 400 V AC (trifásico); salida 400/430 V"
+    },
+    {
+     "raw": "V (marcas 0, 50, 100, 150, 200, 250, 300, 350) frente a mA (marcas 0, 100, 200, 300, 400)",
+     "page": 3,
+     "context": "eje de tensión del gráfico de la curva de saturación (Fig. 4)",
+     "normalized_hint": "escala 0-350 V (lectura de gráfico, aproximada; no es una especificación)"
+    },
+    {
+     "raw": "carátulas graduadas en % ó en voltios",
+     "page": 4,
+     "context": "regulación manual: botones y carátulas graduadas en % o en voltios",
+     "normalized_hint": "escala de carátula en voltios (sin valor numérico)"
+    },
+    {
+     "raw": "In 230 (A) / In 250 (A)",
+     "page": 5,
+     "context": "cabeceras de columna de las tres tablas «Dimensiones y peso» de la página 5 (monofásico manual 160-4000 y 5000-11000 VA; monofásico motorizado 160-4000 VA)",
+     "normalized_hint": "intensidad nominal a 230 V y a 250 V"
+    },
+    {
+     "raw": "In 230 (A) / In 250 (A)",
+     "page": 6,
+     "context": "cabeceras de columna de las tres tablas «Dimensiones y peso» de la página 6 (monofásico motorizado 5000-11000 VA; doble manual 160x2-4000x2 y 5000x2-11000x2)",
+     "normalized_hint": "intensidad nominal a 230 V y a 250 V"
+    },
+    {
+     "raw": "In 230 (A) / In 250 (A)",
+     "page": 7,
+     "context": "cabeceras de columna de las dos tablas «Dimensiones y peso» del variador doble motorizado de la página 7",
+     "normalized_hint": "intensidad nominal a 230 V y a 250 V"
+    },
+    {
+     "raw": "In 400 (A) / In 430 (A)",
+     "page": 7,
+     "context": "cabecera de columna de la tabla «Dimensiones y peso» del variador trifásico manual 480-12000 VA",
+     "normalized_hint": "intensidad nominal a 400 V y a 430 V (valores impresos como valor x3)"
     }
    ],
    "other_facts": [
@@ -2386,8 +2422,79 @@
      "page": 4,
      "item": "Regulación estabilizada: 'precisión del 2%' y señal '0-10Vcc'",
      "why": "Solo se dan en texto bajo demanda; no hay tabla de modelos estabilizados en estas páginas."
+    },
+    {
+     "page": 7,
+     "item": "Trifásico manual, filas 1000 y 1000* VA: In 400 = 1.52x3 A, In 430 = 1.4x3 A",
+     "why": "Las demás filas trifásicas son 3 x la potencia del variador simple (480=3x160, 660=3x220, 1500=3x500, 2250=3x750, ... 12000=3x4000), pero 1000 VA lleva las intensidades de 350 VA (1.52x3 A; 3x350=1050 VA). Se conserva lo impreso (coincide con la fila 350 VA de los simples); no se interpreta ni se corrige. Revisar con el fabricante si se muestra como dato de potencia."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 2,
+     "item": "families[0].description: «ﬁabilidad»",
+     "was": "ﬁabilidad (ligatura U+FB01)",
+     "now": "fiabilidad",
+     "why": "El PDF usa la ligatura tipográfica «ﬁ»; se normaliza a «fi» para que el texto sea buscable/indexable. Mismo texto, sin cambio de contenido."
+    },
+    {
+     "page": 2,
+     "item": "Despiece nº 17",
+     "was": "Rodillo de graﬁto (ligatura U+FB01)",
+     "now": "Rodillo de grafito",
+     "why": "Normalización de la ligatura «ﬁ» (artefacto de extracción); el PDF imprime «Rodillo de grafito»."
+    },
+    {
+     "page": 3,
+     "item": "voltage_mentions: eje V de la Fig. 4",
+     "was": "no recogido",
+     "now": "V (marcas 0, 50, 100, 150, 200, 250, 300, 350) frente a mA (marcas 0, 100, 200, 300, 400)",
+     "why": "La página 3 contiene un eje en voltios (0-350 V) que no figuraba entre las tensiones de la página."
+    },
+    {
+     "page": 4,
+     "item": "voltage_mentions: carátulas en voltios (regulación manual)",
+     "was": "no recogido",
+     "now": "carátulas graduadas en % ó en voltios",
+     "why": "Mención de tensión (escala en voltios) de la página 4 no recogida."
+    },
+    {
+     "page": 5,
+     "item": "voltage_mentions: cabeceras In 230 / In 250 (p.5)",
+     "was": "no recogido",
+     "now": "In 230 (A) / In 250 (A)",
+     "why": "Las cabeceras In 230 e In 250 llevan tensiones (230 V y 250 V) que no estaban en voltage_mentions."
+    },
+    {
+     "page": 6,
+     "item": "voltage_mentions: cabeceras In 230 / In 250 (p.6)",
+     "was": "no recogido",
+     "now": "In 230 (A) / In 250 (A)",
+     "why": "Las cabeceras In 230 e In 250 llevan tensiones (230 V y 250 V) que no estaban en voltage_mentions."
+    },
+    {
+     "page": 7,
+     "item": "voltage_mentions: cabeceras In 230 / In 250 (p.7)",
+     "was": "no recogido",
+     "now": "In 230 (A) / In 250 (A)",
+     "why": "Las cabeceras In 230 e In 250 llevan tensiones (230 V y 250 V) que no estaban en voltage_mentions."
+    },
+    {
+     "page": 7,
+     "item": "voltage_mentions: cabeceras In 400 / In 430 (p.7)",
+     "was": "no recogido",
+     "now": "In 400 (A) / In 430 (A)",
+     "why": "Las cabeceras In 400 e In 430 (trifásico) llevan tensiones (400 V y 430 V) que no estaban en voltage_mentions."
+    },
+    {
+     "page": 7,
+     "item": "uncertain: trifásico 1000 / 1000* VA",
+     "was": "sin anotar",
+     "now": "añadida nota en uncertain (1.52x3 A corresponde a 3x350 VA=1050 VA, no a 1000 VA)",
+     "why": "Discrepancia de coherencia interna del catálogo detectada en la verificación; el valor impreso no se modifica."
+    }
+   ],
+   "verified": true
   }
  ]
 }

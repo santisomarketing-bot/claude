@@ -1,0 +1,1675 @@
+{
+ "group": "g06-botones-de-mando-2-2",
+ "products": [
+  {
+   "id_es": 940,
+   "slug": "tapas-serie-bm-2",
+   "url_es": "https://grupotorivac.com/product/tapas-serie-bm-2/",
+   "sku": "2c4cc608cd83",
+   "names": {
+    "es": "Tapas serie BM",
+    "en": "BM series covers",
+    "fr": "La série BM couvre",
+    "de": "BM-Serie umfasst"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/tapas-serie-bm-2/",
+    "en": "https://grupotorivac.com/en/product/bm-series-covers/",
+    "fr": "https://grupotorivac.com/fr/product/la-serie-bm-couvre/",
+    "de": "https://grupotorivac.com/de/product/bm-serie-umfasst/"
+   },
+   "ids": {
+    "es": 940,
+    "en": 16396,
+    "fr": 16397,
+    "de": 16398
+   },
+   "category_path_es": [
+    "Botones de mando"
+   ],
+   "categories_all_es": [
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    },
+    {
+     "id": 76,
+     "name": "Tapas Serie BM",
+     "slug": "tapas-serie-bm"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Las tapas correspondientes a la serie BM son mates, de perfil plano, lo que facilita cualquier grabado en su superficie. Se piden separadamente de los botones y se suministran lisas o con una línea grabada.\n\nVer ficha técnica",
+    "en": "The caps corresponding to the BM series are matte, with a flat profile, which facilitates any engraving on their surface. They are ordered separately from the buttons and are supplied plain or with an engraved line.\n\nSee technical data sheet",
+    "fr": "Les capuchons correspondant à la série BM sont mats, avec un profil plat, ce qui facilite toute gravure sur leur surface. Ils sont commandés séparément des boutons et sont livrés bruts ou avec une ligne gravée.\n\nVoir la fiche technique",
+    "de": "Die Abdeckungen der BM-Serie sind matt und haben ein flaches Profil, das jede Gravur auf der Oberfläche erleichtert. Sie werden separat von den Knöpfen bestellt und sind entweder schlicht oder mit einer eingravierten Linie erhältlich.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-bm-600x600-2.jpg",
+     "alt": {
+      "es": "Tapas serie BM",
+      "en": "BM series covers",
+      "fr": "La série BM couvre",
+      "de": "BM-Serie umfasst"
+     },
+     "id": 941,
+     "ids": {
+      "es": 941,
+      "en": 941,
+      "fr": 941,
+      "de": 941
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/BOTONES-DE-MANDO2.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Modelo / tamaño de la tapa BM (la web no lista modelos; la lectura visual de BOTONES-DE-MANDO2.pdf muestra MOD. TYPE 15 y 21)",
+    "Acabado: lisa o con una línea grabada (descripción corta)",
+    "Botón BM al que se acopla (se piden por separado de los botones; la web no indica compatibilidades)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Aros con flecha\n- Discos graduados\n- Estators\n- Tapas serie BO",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Arrow discs\n- Graduated discs\n- Stators\n- BO series covers",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Cerceaux à flèches\n- Couvertures classées\n- Disques Arrow\n- Stators",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Pfeil-Reifen\n- Abgestufte Bezüge\n- Mutternabdeckungen\n- Pfeil-Discs",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Tapas serie BM - Torivac",
+     "meta_description": "Las tapas correspondientes a la serie BM son mates, de perfil plano, lo que facilita cualquier grabado en su superficie.",
+     "og_title": "Tapas serie BM - Torivac",
+     "og_description": "Las tapas correspondientes a la serie BM son mates, de perfil plano, lo que facilita cualquier grabado en su superficie.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-bm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/tapas-serie-bm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:01",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__tapas-serie-bm-2.json"
+    },
+    "en": {
+     "title": "BM series covers - Torivac",
+     "meta_description": "The caps corresponding to the BM series are matte, with a flat profile, which facilitates any engraving on their surface.",
+     "og_title": "BM series covers - Torivac",
+     "og_description": "The caps corresponding to the BM series are matte, with a flat profile, which facilitates any engraving on their surface.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-bm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/tapas-serie-bm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:51",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__bm-series-covers.json"
+    },
+    "fr": {
+     "title": "La série BM couvre - Torivac",
+     "meta_description": "Les capuchons correspondant à la série BM sont mats, avec un profil plat, ce qui facilite toute gravure sur leur surface.",
+     "og_title": "La série BM couvre - Torivac",
+     "og_description": "Les capuchons correspondant à la série BM sont mats, avec un profil plat, ce qui facilite toute gravure sur leur surface.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-bm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/tapas-serie-bm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:51",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__la-serie-bm-couvre.json"
+    },
+    "de": {
+     "title": "BM-Serie umfasst - Torivac",
+     "meta_description": "Die Abdeckungen der BM-Serie sind matt und haben ein flaches Profil, das jede Gravur auf der Oberfläche erleichtert.",
+     "og_title": "BM-Serie umfasst - Torivac",
+     "og_description": "Die Abdeckungen der BM-Serie sind matt und haben ein flaches Profil, das jede Gravur auf der Oberfläche erleichtert.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-bm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/tapas-serie-bm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:51",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__bm-serie-umfasst.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "ficha_sin_datos_tecnicos",
+    "sin_modelos",
+    "sin_referencias_comerciales",
+    "traduccion_erronea",
+    "terminologia_dudosa",
+    "sin_alt",
+    "sin_h1_en_traducciones",
+    "canonical_apunta_a_es",
+    "pdf_solo_imagen",
+    "sku_no_comercial",
+    "categorias_incompletas",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "texto_en_idioma_incorrecto"
+   ],
+   "gaps": [
+    "Descripción larga vacía en es/en/fr/de (Store API description=''). El único texto es la descripción corta (2 frases + el botón 'Ver ficha técnica'); la página renderizada no añade tablas, pestañas ni secciones salvo el bloque CTA y los productos relacionados.",
+    "Sin datos técnicos en la web: no hay tabla de modelos, dimensiones, atributos, colores ni referencias (spec_tables=[], attributes=[] y orderable_items=[] en los 4 idiomas). Los únicos datos de pedido son textuales: las tapas 'se piden separadamente de los botones' y 'se suministran lisas o con una línea grabada'.",
+    "La ficha técnica enlazada (BOTONES-DE-MANDO2.pdf) es un PDF de 1 página que es solo imagen (pdf-index: needs_visual_read=true, text_chars=42): no hay texto extraíble. Lectura visual hecha sobre la captura data/raw/screens/pdf/BOTONES-DE-MANDO2-p1-hi-1.png (NO es dato web; verificar con Torivac antes de usarla): la tabla 'Tapas para Botón BM (mate)' del PDF da MOD. TYPE 15 (D 12; e '4,6,1/4\"'; H 6,2) y 21 (D 18,8; e '4,6,1/4\"'; H 7,4). La web no publica estas cotas.",
+    "Nombre mal traducido: FR 'La série BM couvre' ('couvre' es el verbo couvrir) y DE 'BM-Serie umfasst' ('umfasst' = 'comprende') no designan una tapa; EN 'BM series covers' es comprensible. Las categorías sí están bien traducidas (FR 'Couvercles de la série BM' id 686, DE 'BM Serie Abdeckungen' id 687, EN 'BM Series Covers' id 685), así que nombre de producto y categoría no coinciden en FR/DE. Los slugs EN/FR/DE heredan el nombre ('bm-series-covers', 'la-serie-bm-couvre', 'bm-serie-umfasst'). Se conserva todo literal.",
+    "Terminología inconsistente para 'tapas': EN usa 'covers' en el nombre y 'caps' en el texto ('The caps corresponding to the BM series'); FR 'capuchons' en el texto y 'couvre'/'Couvercles' en nombre/categoría; DE 'Abdeckungen' en el texto y 'umfasst' en el nombre.",
+    "Imagen única (id 941, tapas-para-boton-bm-600x600-2.jpg, 600×600): el alt_text del medio en WordPress está vacío (REST media y Store API alt=''); el alt que muestra la página es el nombre del producto en cada idioma (relleno del tema, incluido el nombre mal traducido en FR/DE), no un alt descriptivo. El título del medio 'tapas-para-boton-bm-600×600' arrastra el sufijo de tamaño.",
+    "category_path_es (product-map) es ['Botones de mando'], pero el producto está además en la categoría hija 'Tapas Serie BM' (id 76, parent 30; category-map: ['Botones de mando', 'Tapas Serie BM']); categories_all_es recoge las dos. En DE las categorías cuelgan de la raíz 'Steuerungstasten' con slug neerlandés ('bedieningsknoppen', id 571) y la hija usa 'bm-serie-covers' (inglés 'covers').",
+    "Bloque 'Explora productos similares' (extra_sections): lista generada por WooCommerce que cambia por idioma y por carga de página (la página de categoría del mismo producto muestra otra selección); no es contenido editorial ni una relación definida por Torivac. En ES salen: Aros con flecha, Discos graduados, Estators y Tapas serie BO.",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/tapas-serie-bm-2/), no a la de su propio idioma (EN https://grupotorivac.com/en/product/bm-series-covers/, FR https://grupotorivac.com/fr/product/la-serie-bm-couvre/, DE https://grupotorivac.com/de/product/bm-serie-umfasst/); los títulos y las meta descriptions sí están traducidos. Las URL propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical. El slug ES lleva el sufijo '-2' (deduplicación de slug de WordPress). Ojo al consultar pages-index.json: el campo 'url' de las páginas EN/FR/DE de este producto es la URL española, así que buscar por URL devuelve la página de otro idioma; las páginas renderizadas se localizan por nombre de fichero (pages/<idioma>/<idioma>__product__<slug>.json).",
+    "Las páginas renderizadas EN, FR y DE no tienen H1 (su outline solo trae el H3 de menú, el H4 del bloque CTA y los H2 de CTA y relacionados); solo la ES tiene H1 'Tapas serie BM'.",
+    "SKU '2c4cc608cd83': hash de 12 caracteres hexadecimales, idéntico en los 4 idiomas; no es una referencia comercial. La web no publica códigos de pedido para este producto.",
+    "Sin menciones de tensión ni de potencia en ningún idioma (nombre, descripción corta, descripción larga, tablas ni página renderizada; en el texto de la página solo hay palabras del menú global y de la plantilla, sin cifra, p. ej. 'Variadores Monofasicos' o 'regulación de la tensión'). Es un producto mecánico de plástico/latón, no eléctrico: voltage_mentions=[] y power_mentions=[] son correctos y no procede etiqueta de voltaje. En la ficha 932 'poder de apriete' (tightening power) es una fuerza mecánica, no potencia eléctrica.",
+    "Bloque CTA de plantilla (común a todas las fichas) con errores en las traducciones: DE título 'KONTAKT US' y casilla de consentimiento del formulario en neerlandés ('Hij gaat akkoord met het privacybeleid.'); FR 'Il a accepté et accepté la politique de confidentialité' (traducción incorrecta de 'He leído y acepto la política de privacidad'). Se conserva literal en extra_sections; no es contenido del producto."
+   ]
+  },
+  {
+   "id_es": 938,
+   "slug": "tapas-serie-bo-2",
+   "url_es": "https://grupotorivac.com/product/tapas-serie-bo-2/",
+   "sku": "a287b0a65bce",
+   "names": {
+    "es": "Tapas serie BO",
+    "en": "BO series covers",
+    "fr": "La série BO couvre",
+    "de": "BO-Serie umfasst"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/tapas-serie-bo-2/",
+    "en": "https://grupotorivac.com/en/product/bo-series-covers/",
+    "fr": "https://grupotorivac.com/fr/product/la-serie-bo-couvre/",
+    "de": "https://grupotorivac.com/de/product/bo-serie-umfasst/"
+   },
+   "ids": {
+    "es": 938,
+    "en": 16399,
+    "fr": 16400,
+    "de": 16401
+   },
+   "category_path_es": [
+    "Botones de mando"
+   ],
+   "categories_all_es": [
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    },
+    {
+     "id": 75,
+     "name": "Tapas serie BO",
+     "slug": "tapas-serie-bo"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Son un complemento necesario para el botón pero se solicitan separadamente, para personalizar cada aplicación, mencionando el modelo y el color.\n\nVer ficha técnica",
+    "en": "They are a necessary complement to the button but are requested separately, to customize each application, mentioning the model and color.\n\nSee technical data sheet",
+    "fr": "Ils sont un complément indispensable au bouton mais sont commandés séparément, pour personnaliser chaque application, en mentionnant le modèle et la couleur.\n\nVoir la fiche technique",
+    "de": "Sie sind eine notwendige Ergänzung zum Knopf, werden aber separat bestellt, um jede Anwendung zu personalisieren, wobei das Modell und die Farbe angegeben werden.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-600x600-2.jpg",
+     "alt": {
+      "es": "Tapas serie BO",
+      "en": "BO series covers",
+      "fr": "La série BO couvre",
+      "de": "BO-Serie umfasst"
+     },
+     "id": 939,
+     "ids": {
+      "es": 939,
+      "en": 939,
+      "fr": 939,
+      "de": 939
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/BOTONES-DE-MANDO.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Modelo / tamaño de la tapa BO (la web no lista modelos; la lectura visual de BOTONES-DE-MANDO.pdf muestra MOD. TYPE 15, 21, 30 y 38)",
+    "Color (la web pide indicar modelo y color al pedir, pero no lista los colores)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Botones de mando serie BM (Mate)\n- Caratulas graduadas\n- Discos graduados\n- Tapas serie BM",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Arrow hoops\n- BM series control buttons (Matte)\n- Graded covers\n- Graduated discs",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Boutons de commande de la série BM (Matt)\n- Couvertures classées\n- Disques Arrow\n- Stators",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Steuertasten der BM-Serie (Matt)\n- Abgestufte Bezüge\n- Pfeil-Discs\n- Abgestufte Scheiben",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Tapas serie BO - Torivac",
+     "meta_description": "Son un complemento necesario para el botón pero se solicitan separadamente, para personalizar cada aplicación, mencionando el modelo y el color.",
+     "og_title": "Tapas serie BO - Torivac",
+     "og_description": "Son un complemento necesario para el botón pero se solicitan separadamente, para personalizar cada aplicación, mencionando el modelo y el color.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/tapas-serie-bo-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:01",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__tapas-serie-bo-2.json"
+    },
+    "en": {
+     "title": "BO series covers - Torivac",
+     "meta_description": "They are a necessary complement to the button but are requested separately, to customize each application, mentioning the model and color.",
+     "og_title": "BO series covers - Torivac",
+     "og_description": "They are a necessary complement to the button but are requested separately, to customize each application, mentioning the model and color.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/tapas-serie-bo-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:52",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__bo-series-covers.json"
+    },
+    "fr": {
+     "title": "La série BO couvre - Torivac",
+     "meta_description": "Ils sont un complément indispensable au bouton mais sont commandés séparément, pour personnaliser chaque application.",
+     "og_title": "La série BO couvre - Torivac",
+     "og_description": "Ils sont un complément indispensable au bouton mais sont commandés séparément, pour personnaliser chaque application.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/tapas-serie-bo-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:52",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__la-serie-bo-couvre.json"
+    },
+    "de": {
+     "title": "BO-Serie umfasst - Torivac",
+     "meta_description": "Sie sind eine notwendige Ergänzung zum Knopf, werden aber separat bestellt, um jede Anwendung zu personalisieren.",
+     "og_title": "BO-Serie umfasst - Torivac",
+     "og_description": "Sie sind eine notwendige Ergänzung zum Knopf, werden aber separat bestellt, um jede Anwendung zu personalisieren.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/tapas-serie-bo-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:52",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__bo-serie-umfasst.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "ficha_sin_datos_tecnicos",
+    "sin_modelos",
+    "sin_referencias_comerciales",
+    "traduccion_erronea",
+    "terminologia_dudosa",
+    "meta_description_truncada",
+    "sin_alt",
+    "sin_h1_en_traducciones",
+    "canonical_apunta_a_es",
+    "pdf_solo_imagen",
+    "sku_no_comercial",
+    "categorias_incompletas",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "texto_en_idioma_incorrecto"
+   ],
+   "gaps": [
+    "Descripción larga vacía en es/en/fr/de (Store API description=''). El único texto es la descripción corta (1 frase + el botón 'Ver ficha técnica'); la página renderizada no añade tablas, pestañas ni secciones salvo el bloque CTA y los productos relacionados.",
+    "Sin datos técnicos en la web: no hay tabla de modelos, dimensiones, atributos, colores ni referencias (spec_tables=[], attributes=[] y orderable_items=[] en los 4 idiomas). El único dato de pedido es textual: son 'un complemento necesario para el botón' que 'se solicitan separadamente, para personalizar cada aplicación, mencionando el modelo y el color'. No dice a qué botón se refiere (por el nombre, a la serie BO: fichas 932 y 934) ni lista modelos o colores.",
+    "La ficha técnica enlazada (BOTONES-DE-MANDO.pdf) es un PDF de 1 página que es solo imagen (pdf-index: needs_visual_read=true, text_chars=42): no hay texto extraíble. Lectura visual hecha sobre la captura data/raw/screens/pdf/BOTONES-DE-MANDO-p1-hi-1.png (NO es dato web; verificar con Torivac): la tabla 'Tapas' del PDF (columnas MOD. TYPE, D, d, e) da 15: 26 / 9,8 / 2,8; 21: 36 / 16 / 2,8; 30: 45 / 21,5 / 2,8; 38: 55 / 27 / 2,7. Las mismas cifras aparecen en las tablas 'Discos con Flecha' y 'Discos Graduados' de BOTONES-DE-MANDO2.pdf, así que puede ser una tabla duplicada en el catálogo; confirmar antes de asociarla a las tapas BO.",
+    "Nombre mal traducido: FR 'La série BO couvre' ('couvre' es el verbo couvrir) y DE 'BO-Serie umfasst' ('umfasst' = 'comprende') no designan una tapa; EN 'BO series covers' es comprensible. La categoría repite el error (FR id 689 'La série BO couvre', DE id 690 'BO-Serie umfasst'; EN id 688 'BO series covers' con slug 'bo-series-lids', 'lids' en vez de 'covers'). Los slugs EN/FR/DE de producto heredan el nombre ('bo-series-covers', 'la-serie-bo-couvre', 'bo-serie-umfasst'). Se conserva todo literal.",
+    "Terminología inconsistente para 'tapas': EN 'covers' (nombre) y 'lids' (slug de categoría); FR 'couvre'/'couvercles'; DE 'umfasst' y 'Abdeckungen' en el resto de la familia.",
+    "Meta description truncada en FR y DE: terminan en '…pour personnaliser chaque application.' / '…um jede Anwendung zu personalisieren.' y omiten la cláusula 'en mentionnant le modèle et la couleur' / 'wobei das Modell und die Farbe angegeben werden', que es justo la indicación de pedido. ES y EN llevan la frase completa.",
+    "Imagen única (id 939, tapas-para-boton-600x600-2.jpg, 600×600): el alt_text del medio en WordPress está vacío (REST media y Store API alt=''); el alt que muestra la página es el nombre del producto en cada idioma (relleno del tema, incluido el nombre mal traducido en FR/DE). El nombre de archivo no indica serie ni color.",
+    "category_path_es (product-map) es ['Botones de mando'], pero el producto está además en la categoría hija 'Tapas serie BO' (id 75, parent 30; category-map: ['Botones de mando', 'Tapas serie BO']); categories_all_es recoge las dos. En DE las categorías cuelgan de la raíz 'Steuerungstasten' con slug neerlandés ('bedieningsknoppen', id 571) y la hija usa 'bo-serie-deksels' (neerlandés 'deksels' = tapas).",
+    "Bloque 'Explora productos similares' (extra_sections): lista generada por WooCommerce que cambia por idioma y por carga de página (la página de categoría del mismo producto muestra otra selección); no es contenido editorial ni una relación definida por Torivac. En ES salen: Botones de mando serie BM (Mate), Caratulas graduadas, Discos graduados y Tapas serie BM.",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/tapas-serie-bo-2/), no a la de su propio idioma (EN https://grupotorivac.com/en/product/bo-series-covers/, FR https://grupotorivac.com/fr/product/la-serie-bo-couvre/, DE https://grupotorivac.com/de/product/bo-serie-umfasst/); los títulos y las meta descriptions sí están traducidos. Las URL propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical. El slug ES lleva el sufijo '-2' (deduplicación de slug de WordPress). Ojo al consultar pages-index.json: el campo 'url' de las páginas EN/FR/DE de este producto es la URL española, así que buscar por URL devuelve la página de otro idioma; las páginas renderizadas se localizan por nombre de fichero (pages/<idioma>/<idioma>__product__<slug>.json).",
+    "Las páginas renderizadas EN, FR y DE no tienen H1 (su outline solo trae el H3 de menú, el H4 del bloque CTA y los H2 de CTA y relacionados); solo la ES tiene H1 'Tapas serie BO'.",
+    "SKU 'a287b0a65bce': hash de 12 caracteres hexadecimales, idéntico en los 4 idiomas; no es una referencia comercial. La web no publica códigos de pedido para este producto.",
+    "Sin menciones de tensión ni de potencia en ningún idioma (nombre, descripción corta, descripción larga, tablas ni página renderizada; en el texto de la página solo hay palabras del menú global y de la plantilla, sin cifra, p. ej. 'Variadores Monofasicos' o 'regulación de la tensión'). Es un producto mecánico de plástico/latón, no eléctrico: voltage_mentions=[] y power_mentions=[] son correctos y no procede etiqueta de voltaje. En la ficha 932 'poder de apriete' (tightening power) es una fuerza mecánica, no potencia eléctrica.",
+    "Bloque CTA de plantilla (común a todas las fichas) con errores en las traducciones: DE título 'KONTAKT US' y casilla de consentimiento del formulario en neerlandés ('Hij gaat akkoord met het privacybeleid.'); FR 'Il a accepté et accepté la politique de confidentialité' (traducción incorrecta de 'He leído y acepto la política de privacidad'). Se conserva literal en extra_sections; no es contenido del producto."
+   ]
+  },
+  {
+   "id_es": 942,
+   "slug": "aros-con-flecha-2",
+   "url_es": "https://grupotorivac.com/product/aros-con-flecha-2/",
+   "sku": "2a7c92ba16c4",
+   "names": {
+    "es": "Aros con flecha",
+    "en": "Arrow hoops",
+    "fr": "Cerceaux à flèches",
+    "de": "Pfeil-Reifen"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/aros-con-flecha-2/",
+    "en": "https://grupotorivac.com/en/product/arrow-hoops/",
+    "fr": "https://grupotorivac.com/fr/product/cerceaux-a-fleches/",
+    "de": "https://grupotorivac.com/de/product/pfeil-reifen/"
+   },
+   "ids": {
+    "es": 942,
+    "en": 16371,
+    "fr": 16372,
+    "de": 16373
+   },
+   "category_path_es": [
+    "Botones de mando",
+    "Aros con flecha"
+   ],
+   "categories_all_es": [
+    {
+     "id": 77,
+     "name": "Aros con flecha",
+     "slug": "aros-con-flecha"
+    },
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Se adaptan a la base de los botones de la serie BO de forma que solamente sobresale la punta indicadora y se utilizan para identificar la posición del botón. Disponibles para toda gama de botones.\n\nColores : Negro, rojo, verde, azul y gris.\n\nVer ficha técnica",
+    "en": "They adapt to the base of the BO series buttons so that only the indicator tip protrudes and are used to identify the position of the button. Available for all range of buttons.\n\nColors : Black, red, green, blue and gray.\n\nSee technical data sheet",
+    "fr": "Ils s’insèrent dans la base des boutons de la série BO de manière à ce que seule la pointe de l’indicateur dépasse et sont utilisés pour identifier la position du bouton. Disponibles pour toutes les gammes de boutons.\n\nCouleurs : noir, rouge, vert, bleu et gris.\n\nVoir la fiche technique",
+    "de": "Sie passen in den Sockel der Knöpfe der BO-Serie, so dass nur die Spitze des Indikators herausragt, und werden verwendet, um die Position des Knopfes zu identifizieren. Erhältlich für alle Knopfserien.\n\nFarben : Schwarz, Rot, Grün, Blau und Grau.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "## Botones de mando:\n\nFabricados con materiales resistentes al uso continuo y condiciones industriales, constituyen un elemento esencial en la interfaz hombre-máquina (HMI) para el control de procesos eléctricos y automatizados.\n\nAros con Flecha\nMOD. TYPE | D | e | H\n10 | 8 | 6,5 | 8,5\n15 | 11 | 10 | 13\n21 | 18 | 15,7 | 19,5\n30 | 25,5 | 23,8 | 28\n38 | 33,5 | 30,5 | 36,5",
+    "en": "## Control buttons:\n\nManufactured with materials resistant to continuous use and industrial conditions, they are an essential element in the human-machine interface (HMI) for the control of electrical and automated processes.\n\nArrow Hoops\nMOD. TYPE | D | e | H\n10 | 8 | 6,5 | 8,5\n15 | 11 | 10 | 13\n21 | 18 | 15,7 | 19,5\n30 | 25,5 | 23,8 | 28\n38 | 33,5 | 30,5 | 36,5",
+    "fr": "## Boutons de commande :\n\nFabriqués dans des matériaux résistants à une utilisation continue et aux conditions industrielles, ils constituent un élément essentiel de l’interface homme-machine (IHM) pour le contrôle des processus électriques et automatisés.\n\nCerceaux Arrow\nMOD. TYPE | D | e | H\n10 | 8 | 6,5 | 8,5\n15 | 11 | 10 | 13\n21 | 18 | 15,7 | 19,5\n30 | 25,5 | 23,8 | 28\n38 | 33,5 | 30,5 | 36,5",
+    "de": "## Steuerungstasten:\n\nSie bestehen aus Materialien, die dem Dauereinsatz und den industriellen Bedingungen standhalten. Sie sind ein wesentliches Element der Mensch-Maschine-Schnittstelle (HMI) für die Steuerung elektrischer und automatisierter Prozesse.\n\nPfeil-Reifen\nMOD. TYP | D | e | H\n10 | 8 | 6,5 | 8,5\n15 | 11 | 10 | 13\n21 | 18 | 15,7 | 19,5\n30 | 25,5 | 23,8 | 28\n38 | 33,5 | 30,5 | 36,5"
+   },
+   "spec_tables": [
+    {
+     "lang": "es",
+     "caption": "Aros con Flecha",
+     "columns": [
+      "MOD. TYPE",
+      "D",
+      "e",
+      "H"
+     ],
+     "rows": [
+      [
+       "10",
+       "8",
+       "6,5",
+       "8,5"
+      ],
+      [
+       "15",
+       "11",
+       "10",
+       "13"
+      ],
+      [
+       "21",
+       "18",
+       "15,7",
+       "19,5"
+      ],
+      [
+       "30",
+       "25,5",
+       "23,8",
+       "28"
+      ],
+      [
+       "38",
+       "33,5",
+       "30,5",
+       "36,5"
+      ]
+     ],
+     "source": "web:descripcion tabla 1"
+    },
+    {
+     "lang": "en",
+     "caption": "Arrow Hoops",
+     "columns": [
+      "MOD. TYPE",
+      "D",
+      "e",
+      "H"
+     ],
+     "rows": [
+      [
+       "10",
+       "8",
+       "6,5",
+       "8,5"
+      ],
+      [
+       "15",
+       "11",
+       "10",
+       "13"
+      ],
+      [
+       "21",
+       "18",
+       "15,7",
+       "19,5"
+      ],
+      [
+       "30",
+       "25,5",
+       "23,8",
+       "28"
+      ],
+      [
+       "38",
+       "33,5",
+       "30,5",
+       "36,5"
+      ]
+     ],
+     "source": "web:descripcion tabla 1"
+    },
+    {
+     "lang": "fr",
+     "caption": "Cerceaux Arrow",
+     "columns": [
+      "MOD. TYPE",
+      "D",
+      "e",
+      "H"
+     ],
+     "rows": [
+      [
+       "10",
+       "8",
+       "6,5",
+       "8,5"
+      ],
+      [
+       "15",
+       "11",
+       "10",
+       "13"
+      ],
+      [
+       "21",
+       "18",
+       "15,7",
+       "19,5"
+      ],
+      [
+       "30",
+       "25,5",
+       "23,8",
+       "28"
+      ],
+      [
+       "38",
+       "33,5",
+       "30,5",
+       "36,5"
+      ]
+     ],
+     "source": "web:descripcion tabla 1"
+    },
+    {
+     "lang": "de",
+     "caption": "Pfeil-Reifen",
+     "columns": [
+      "MOD. TYP",
+      "D",
+      "e",
+      "H"
+     ],
+     "rows": [
+      [
+       "10",
+       "8",
+       "6,5",
+       "8,5"
+      ],
+      [
+       "15",
+       "11",
+       "10",
+       "13"
+      ],
+      [
+       "21",
+       "18",
+       "15,7",
+       "19,5"
+      ],
+      [
+       "30",
+       "25,5",
+       "23,8",
+       "28"
+      ],
+      [
+       "38",
+       "33,5",
+       "30,5",
+       "36,5"
+      ]
+     ],
+     "source": "web:descripcion tabla 1"
+    }
+   ],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-aro-con-flecha.jpg",
+     "alt": {
+      "es": "Aros con flecha",
+      "en": "Arrow hoops",
+      "fr": "Cerceaux à flèches",
+      "de": "Pfeil-Reifen"
+     },
+     "id": 821,
+     "ids": {
+      "es": 821,
+      "en": 821,
+      "fr": 821,
+      "de": 821
+     }
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/boton_01.jpg",
+     "alt": {
+      "es": "Aros con flecha",
+      "en": "Arrow hoops",
+      "fr": "Cerceaux à flèches",
+      "de": "Pfeil-Reifen"
+     },
+     "id": 16410,
+     "ids": {
+      "es": 16410,
+      "en": 16405,
+      "fr": 16409,
+      "de": 16410
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/BOTONES-DE-MANDO.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Modelo (MOD. TYPE: 10, 15, 21, 30, 38; cotas D, e y H en la tabla)",
+    "Color: negro, rojo, verde, azul o gris (descripción corta; no hay atributo)"
+   ],
+   "orderable_items": [
+    {
+     "label": "Aros con flecha · MOD. 10",
+     "reference": null,
+     "specs": {
+      "MOD. TYPE": "10",
+      "D": "8",
+      "e": "6,5",
+      "H": "8,5"
+     },
+     "source": "web:descripcion tabla 1 fila de datos 1 (MOD. 10)"
+    },
+    {
+     "label": "Aros con flecha · MOD. 15",
+     "reference": null,
+     "specs": {
+      "MOD. TYPE": "15",
+      "D": "11",
+      "e": "10",
+      "H": "13"
+     },
+     "source": "web:descripcion tabla 1 fila de datos 2 (MOD. 15)"
+    },
+    {
+     "label": "Aros con flecha · MOD. 21",
+     "reference": null,
+     "specs": {
+      "MOD. TYPE": "21",
+      "D": "18",
+      "e": "15,7",
+      "H": "19,5"
+     },
+     "source": "web:descripcion tabla 1 fila de datos 3 (MOD. 21)"
+    },
+    {
+     "label": "Aros con flecha · MOD. 30",
+     "reference": null,
+     "specs": {
+      "MOD. TYPE": "30",
+      "D": "25,5",
+      "e": "23,8",
+      "H": "28"
+     },
+     "source": "web:descripcion tabla 1 fila de datos 4 (MOD. 30)"
+    },
+    {
+     "label": "Aros con flecha · MOD. 38",
+     "reference": null,
+     "specs": {
+      "MOD. TYPE": "38",
+      "D": "33,5",
+      "e": "30,5",
+      "H": "36,5"
+     },
+     "source": "web:descripcion tabla 1 fila de datos 5 (MOD. 38)"
+    }
+   ],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Botones de mando serie BM (Mate)\n- Caratulas graduadas\n- Estators\n- Tapas serie BO",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- BM series control buttons (Matte)\n- Graded covers\n- Nut covers\n- BO series covers",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Couvercles d’écrous\n- Disques Arrow\n- La série BM couvre\n- La série BO couvre",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Abgestufte Bezüge\n- Pfeil-Discs\n- BM-Serie umfasst\n- BO-Serie umfasst",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Aros con flecha - Torivac",
+     "meta_description": "Se adaptan a la base de los botones de la serie BO de forma que solamente sobresale la punta indicadora y se utilizan para identificar la posición.",
+     "og_title": "Aros con flecha - Torivac",
+     "og_description": "Se adaptan a la base de los botones de la serie BO de forma que solamente sobresale la punta indicadora y se utilizan para identificar la posición.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-aro-con-flecha.jpg",
+     "canonical": "https://grupotorivac.com/product/aros-con-flecha-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:02",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__aros-con-flecha-2.json"
+    },
+    "en": {
+     "title": "Arrow hoops - Torivac",
+     "meta_description": "They adapt to the base of the BO series buttons so that only the indicator tip protrudes and are used to identify the position of the button.",
+     "og_title": "Arrow hoops - Torivac",
+     "og_description": "They adapt to the base of the BO series buttons so that only the indicator tip protrudes and are used to identify the position of the button.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-aro-con-flecha.jpg",
+     "canonical": "https://grupotorivac.com/product/aros-con-flecha-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:33",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__arrow-hoops.json"
+    },
+    "fr": {
+     "title": "Cerceaux à flèches - Torivac",
+     "meta_description": "Ils s'insèrent dans la base des boutons de la série BO de manière à ce que seule la pointe de l'indicateur dépasse et sont utilisés pour identifier.",
+     "og_title": "Cerceaux à flèches - Torivac",
+     "og_description": "Ils s'insèrent dans la base des boutons de la série BO de manière à ce que seule la pointe de l'indicateur dépasse et sont utilisés pour identifier.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-aro-con-flecha.jpg",
+     "canonical": "https://grupotorivac.com/product/aros-con-flecha-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:33",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__cerceaux-a-fleches.json"
+    },
+    "de": {
+     "title": "Pfeil-Reifen - Torivac",
+     "meta_description": "Sie passen in den Sockel der Knöpfe der BO-Serie, so dass nur die Spitze des Indikators herausragt, und werden verwendet.",
+     "og_title": "Pfeil-Reifen - Torivac",
+     "og_description": "Sie passen in den Sockel der Knöpfe der BO-Serie, so dass nur die Spitze des Indikators herausragt, und werden verwendet.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-aro-con-flecha.jpg",
+     "canonical": "https://grupotorivac.com/product/aros-con-flecha-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:34",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__pfeil-reifen.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "texto_plantilla_repetido",
+    "tabla_sin_unidades_ni_leyenda",
+    "leyenda_tabla_no_coincide_con_dibujo",
+    "sin_referencias_comerciales",
+    "pagina_traducida_sin_descripcion_ni_tabla",
+    "terminologia_dudosa",
+    "texto_en_idioma_incorrecto",
+    "meta_description_truncada",
+    "imagen_con_id_de_otro_idioma",
+    "nombre_de_archivo_poco_descriptivo",
+    "sin_alt",
+    "sin_h1_en_traducciones",
+    "canonical_apunta_a_es",
+    "pdf_solo_imagen",
+    "sku_no_comercial",
+    "slug_categoria_de_en_idioma_incorrecto"
+   ],
+   "gaps": [
+    "Descripción larga = encabezado en negrita 'Botones de mando:' + párrafo genérico sobre botones de mando (materiales resistentes, interfaz hombre-máquina HMI) + tabla titulada 'Aros con Flecha'. El encabezado y el párrafo son plantilla común de la familia (repetida en 934 y en la ficha 936 del lote g05) y no hablan de aros con flecha. En description_text el encabezado se marca con '## ' y la tabla va como título + una línea por fila.",
+    "Tabla 'Aros con Flecha' (columnas MOD. TYPE, D, e, H; 5 filas: 10, 15, 21, 30, 38). La web no rotula D, e ni H ni indica unidad (no se asume mm). El dibujo técnico incrustado (boton_01.jpg: aro en sección, revisado visualmente) rotula las cotas F, d y D, no D, e y H, por lo que la leyenda de la tabla no se puede casar con el dibujo (el PDF repite el mismo dibujo con F, d, D). Sin incoherencias numéricas internas (en todas las filas H > D > e).",
+    "Las tablas EN, FR y DE de la Store API tienen las mismas cifras que la ES; solo cambian el título ('Arrow Hoops', 'Cerceaux Arrow', 'Pfeil-Reifen') y la cabecera ('MOD. TYP' en DE). 'Cerceaux Arrow' mezcla francés e inglés. spec_tables lleva las 4 tablas; orderable_items solo la versión ES.",
+    "Las páginas renderizadas EN, FR y DE NO muestran el encabezado, el párrafo ni la tabla de la descripción (solo la ES los renderiza), aunque la Store API los trae en los 3 idiomas. Para description_text y spec_tables se usa la Store API (más completa). translation_status='ok' por el dato, pero la web pública de EN/FR/DE enseña menos que la ES.",
+    "Sin código de referencia comercial: las filas se identifican solo por MOD. TYPE (10, 15, 21, 30, 38). orderable_items.reference=null; el modelo va en specs['MOD. TYPE'] y en label.",
+    "La ficha técnica enlazada (BOTONES-DE-MANDO.pdf) es un PDF de 1 página que es solo imagen (pdf-index: needs_visual_read=true, text_chars=42): no hay texto extraíble. Lectura visual hecha sobre la captura data/raw/screens/pdf/BOTONES-DE-MANDO-p1-hi-1.png (NO es dato web): la tabla 'Aros con Flecha' del PDF coincide con la web en las 5 filas y 3 columnas.",
+    "Terminología dudosa: 'Aros con flecha' se traduce literalmente como 'Arrow hoops' (EN), 'Cerceaux à flèches' (FR) y 'Pfeil-Reifen' (DE); 'hoops', 'cerceaux' y 'Reifen' designan aros grandes o neumáticos, no anillos indicadores de posición. Además la descripción corta ES dice 'Se adaptan a la base de los botones de la serie BO' y a la vez 'Disponibles para toda gama de botones' (ambiguo: no queda claro si valen para la serie BM).",
+    "Meta description truncada a media frase: ES termina en '…identificar la posición.' (omite 'del botón'), FR en '…sont utilisés pour identifier.' y DE en '…und werden verwendet.'; solo EN cierra la frase ('…the position of the button.').",
+    "Dos imágenes: 821 'disco-para-botones-aro-con-flecha.jpg' (foto, og:image) y 'boton_01.jpg' (dibujo técnico 430×430). Para 'boton_01.jpg' la galería ES apunta al medio id 16410 (título 'Taste_01', copia DE), EN al 16405 ('button_01'), FR al 16409 ('bouton_01') y DE al 16410; el <img> incrustado en la descripción cita el medio ES 14484 'boton_01' con alt vacío. Es el mismo fichero en los 4 idiomas y su nombre no describe el contenido. El alt_text de todos los medios en WordPress está vacío; el alt de la página (nombre del producto) lo rellena el tema.",
+    "Referencia cruzada: la ficha 936 'Botones de mando serie BM (Mate)' (lote g05) lleva una tabla con el título 'Aros con Flecha' pero con cifras de otra serie; la tabla real de aros con flecha es la de esta ficha (942).",
+    "Colores solo en texto de la descripción corta ('Colores : Negro, rojo, verde, azul y gris.'); no hay atributo de color en la Store API.",
+    "Bloque 'Explora productos similares' (extra_sections): lista generada por WooCommerce que cambia por idioma y por carga de página (la página de categoría del mismo producto muestra otra selección); no es contenido editorial ni una relación definida por Torivac. En ES salen: Botones de mando serie BM (Mate), Caratulas graduadas, Estators y Tapas serie BO. En DE aparecen 'BM-Serie umfasst' y 'BO-Serie umfasst' (nombres de las tapas, mal traducidos).",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/aros-con-flecha-2/), no a la de su propio idioma (EN https://grupotorivac.com/en/product/arrow-hoops/, FR https://grupotorivac.com/fr/product/cerceaux-a-fleches/, DE https://grupotorivac.com/de/product/pfeil-reifen/); los títulos y las meta descriptions sí están traducidos. Las URL propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical. El slug ES lleva el sufijo '-2' (deduplicación de slug de WordPress). Ojo al consultar pages-index.json: el campo 'url' de las páginas EN/FR/DE de este producto es la URL española, así que buscar por URL devuelve la página de otro idioma; las páginas renderizadas se localizan por nombre de fichero (pages/<idioma>/<idioma>__product__<slug>.json).",
+    "Las páginas renderizadas EN, FR y DE no tienen H1 (su outline solo trae el H3 de menú, el H4 del bloque CTA y los H2 de CTA y relacionados); solo la ES tiene H1 'Aros con flecha'.",
+    "SKU '2a7c92ba16c4': hash de 12 caracteres hexadecimales, idéntico en los 4 idiomas; no es una referencia comercial. La web no publica códigos de pedido para este producto.",
+    "Sin menciones de tensión ni de potencia en ningún idioma (nombre, descripción corta, descripción larga, tablas ni página renderizada; en el texto de la página solo hay palabras del menú global y de la plantilla, sin cifra, p. ej. 'Variadores Monofasicos' o 'regulación de la tensión'). Es un producto mecánico de plástico/latón, no eléctrico: voltage_mentions=[] y power_mentions=[] son correctos y no procede etiqueta de voltaje. En la ficha 932 'poder de apriete' (tightening power) es una fuerza mecánica, no potencia eléctrica.",
+    "Bloque CTA de plantilla (común a todas las fichas) con errores en las traducciones: DE título 'KONTAKT US' y casilla de consentimiento del formulario en neerlandés ('Hij gaat akkoord met het privacybeleid.'); FR 'Il a accepté et accepté la politique de confidentialité' (traducción incorrecta de 'He leído y acepto la política de privacidad'). Se conserva literal en extra_sections; no es contenido del producto.",
+    "Categorías: DE 'Pfeil-Reifen' (id 660) con slug neerlandés 'hoepels-met-pijl' bajo la raíz 'bedieningsknoppen'; la ficha pertenece a las categorías ES 77 'Aros con flecha' (parent 30) y 30 'Botones de mando'."
+   ]
+  },
+  {
+   "id_es": 934,
+   "slug": "botones-de-mando-serie-bo-con-linea-2",
+   "url_es": "https://grupotorivac.com/product/botones-de-mando-serie-bo-con-linea-2/",
+   "sku": "86e3ea5faad6",
+   "names": {
+    "es": "Botones de mando serie BO con linea",
+    "en": "BO series control buttons with line",
+    "fr": "Boutons de commande de la série BO avec ligne",
+    "de": "BO-Serie Steuertasten mit Linie"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/botones-de-mando-serie-bo-con-linea-2/",
+    "en": "https://grupotorivac.com/en/product/bo-series-control-buttons-with-line/",
+    "fr": "https://grupotorivac.com/fr/product/boutons-de-commande-de-la-serie-bo-avec-ligne/",
+    "de": "https://grupotorivac.com/de/product/bo-serie-steuertasten-mit-linie/"
+   },
+   "ids": {
+    "es": 934,
+    "en": 16380,
+    "fr": 16381,
+    "de": 16382
+   },
+   "category_path_es": [
+    "Botones de mando",
+    "Botones de mando Serie BO con linea"
+   ],
+   "categories_all_es": [
+    {
+     "id": 73,
+     "name": "Botones de mando Serie BO con linea",
+     "slug": "botones-de-mando-serie-bo-con-linea"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Son los mismos botones que la serie BO pero con una línea lateral para indicar su posición.\n\nVer ficha técnica",
+    "en": "These are the same buttons as the BO series but with a side line to indicate their position.\n\nSee technical data sheet",
+    "fr": "Il s’agit des mêmes boutons que ceux de la série BO, mais avec une ligne latérale indiquant leur position.\n\nVoir la fiche technique",
+    "de": "Dies sind die gleichen Tasten wie bei der BO-Serie, aber mit einer Seitenlinie, die ihre Position anzeigt.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "## Botones de mando:\n\nFabricados con materiales resistentes al uso continuo y condiciones industriales, constituyen un elemento esencial en la interfaz hombre-máquina (HMI) para el control de procesos eléctricos y automatizados.\n\nMOD. TYPE | D | e | H | d\n10 | 10 | 3 y 4 | 14 | 8,5\n15 | 14,5 | 4,6 | 15 | 13\n21 | 21 | 4,6 | 17 | 19,5\n30 | 29,5 | 4,6 | 17,5 | 28\n38 | 38 | 18,5 | 18,5 | 36,5",
+    "en": "## Control buttons:\n\nManufactured with materials resistant to continuous use and industrial conditions, they are an essential element in the human-machine interface (HMI) for the control of electrical and automated processes.\n\nMOD. TYPE | D | e | H | d\n10 | 10 | 3 y 4 | 14 | 8,5\n15 | 14,5 | 4,6 | 15 | 13\n21 | 21 | 4,6 | 17 | 19,5\n30 | 29,5 | 4,6 | 17,5 | 28\n38 | 38 | 18,5 | 18,5 | 36,5",
+    "fr": "## Boutons de commande :\n\nFabriqués dans des matériaux résistants à une utilisation continue et aux conditions industrielles, ils constituent un élément essentiel de l’interface homme-machine (IHM) pour le contrôle des processus électriques et automatisés.\n\nMOD. TYPE | D | e | H | d\n10 | 10 | 3 y 4 | 14 | 8,5\n15 | 14,5 | 4,6 | 15 | 13\n21 | 21 | 4,6 | 17 | 19,5\n30 | 29,5 | 4,6 | 17,5 | 28\n38 | 38 | 18,5 | 18,5 | 36,5",
+    "de": "## Steuerungstasten:\n\nSie bestehen aus Materialien, die dem Dauereinsatz und den industriellen Bedingungen standhalten. Sie sind ein wesentliches Element der Mensch-Maschine-Schnittstelle (HMI) für die Steuerung elektrischer und automatisierter Prozesse.\n\nMOD. TYP | D | e | H | d\n10 | 10 | 3 y 4 | 14 | 8,5\n15 | 14,5 | 4,6 | 15 | 13\n21 | 21 | 4,6 | 17 | 19,5\n30 | 29,5 | 4,6 | 17,5 | 28\n38 | 38 | 18,5 | 18,5 | 36,5"
+   },
+   "spec_tables": [
+    {
+     "lang": "es",
+     "caption": "",
+     "columns": [
+      "MOD. TYPE",
+      "D",
+      "e",
+      "H",
+      "d"
+     ],
+     "rows": [
+      [
+       "10",
+       "10",
+       "3 y 4",
+       "14",
+       "8,5"
+      ],
+      [
+       "15",
+       "14,5",
+       "4,6",
+       "15",
+       "13"
+      ],
+      [
+       "21",
+       "21",
+       "4,6",
+       "17",
+       "19,5"
+      ],
+      [
+       "30",
+       "29,5",
+       "4,6",
+       "17,5",
+       "28"
+      ],
+      [
+       "38",
+       "38",
+       "18,5",
+       "18,5",
+       "36,5"
+      ]
+     ],
+     "source": "web:descripcion tabla 1"
+    },
+    {
+     "lang": "en",
+     "caption": "",
+     "columns": [
+      "MOD. TYPE",
+      "D",
+      "e",
+      "H",
+      "d"
+     ],
+     "rows": [
+      [
+       "10",
+       "10",
+       "3 y 4",
+       "14",
+       "8,5"
+      ],
+      [
+       "15",
+       "14,5",
+       "4,6",
+       "15",
+       "13"
+      ],
+      [
+       "21",
+       "21",
+       "4,6",
+       "17",
+       "19,5"
+      ],
+      [
+       "30",
+       "29,5",
+       "4,6",
+       "17,5",
+       "28"
+      ],
+      [
+       "38",
+       "38",
+       "18,5",
+       "18,5",
+       "36,5"
+      ]
+     ],
+     "source": "web:descripcion tabla 1"
+    },
+    {
+     "lang": "fr",
+     "caption": "",
+     "columns": [
+      "MOD. TYPE",
+      "D",
+      "e",
+      "H",
+      "d"
+     ],
+     "rows": [
+      [
+       "10",
+       "10",
+       "3 y 4",
+       "14",
+       "8,5"
+      ],
+      [
+       "15",
+       "14,5",
+       "4,6",
+       "15",
+       "13"
+      ],
+      [
+       "21",
+       "21",
+       "4,6",
+       "17",
+       "19,5"
+      ],
+      [
+       "30",
+       "29,5",
+       "4,6",
+       "17,5",
+       "28"
+      ],
+      [
+       "38",
+       "38",
+       "18,5",
+       "18,5",
+       "36,5"
+      ]
+     ],
+     "source": "web:descripcion tabla 1"
+    },
+    {
+     "lang": "de",
+     "caption": "",
+     "columns": [
+      "MOD. TYP",
+      "D",
+      "e",
+      "H",
+      "d"
+     ],
+     "rows": [
+      [
+       "10",
+       "10",
+       "3 y 4",
+       "14",
+       "8,5"
+      ],
+      [
+       "15",
+       "14,5",
+       "4,6",
+       "15",
+       "13"
+      ],
+      [
+       "21",
+       "21",
+       "4,6",
+       "17",
+       "19,5"
+      ],
+      [
+       "30",
+       "29,5",
+       "4,6",
+       "17,5",
+       "28"
+      ],
+      [
+       "38",
+       "38",
+       "18,5",
+       "18,5",
+       "36,5"
+      ]
+     ],
+     "source": "web:descripcion tabla 1"
+    }
+   ],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-torivac-600x600-2.jpg",
+     "alt": {
+      "es": "Botones de mando serie BO con linea",
+      "en": "BO series control buttons with line",
+      "fr": "Boutons de commande de la série BO avec ligne",
+      "de": "BO-Serie Steuertasten mit Linie"
+     },
+     "id": 935,
+     "ids": {
+      "es": 935,
+      "en": 935,
+      "fr": 935,
+      "de": 935
+     }
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/boton_02.jpg",
+     "alt": {
+      "es": "Botones de mando serie BO con linea",
+      "en": "BO series control buttons with line",
+      "fr": "Boutons de commande de la série BO avec ligne",
+      "de": "BO-Serie Steuertasten mit Linie"
+     },
+     "id": 16411,
+     "ids": {
+      "es": 16411,
+      "en": 16402,
+      "fr": 16408,
+      "de": 16411
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/BOTONES-DE-MANDO.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Modelo (MOD. TYPE: 10, 15, 21, 30, 38; cotas D, e, H y d en la tabla)",
+    "Valor de la cota 'e' (3 y 4 / 4,6 / ...): la web no dice qué mide ni si es diámetro de eje; en la serie BO hermana (932) sí se pide indicar el diámetro de eje al pedir",
+    "Color: esta ficha no lo indica (la ficha 932 de la serie BO da cuerpos negro y gris)"
+   ],
+   "orderable_items": [
+    {
+     "label": "Botones de mando serie BO con linea · MOD. 10",
+     "reference": null,
+     "specs": {
+      "MOD. TYPE": "10",
+      "D": "10",
+      "e": "3 y 4",
+      "H": "14",
+      "d": "8,5"
+     },
+     "source": "web:descripcion tabla 1 fila de datos 1 (MOD. 10)"
+    },
+    {
+     "label": "Botones de mando serie BO con linea · MOD. 15",
+     "reference": null,
+     "specs": {
+      "MOD. TYPE": "15",
+      "D": "14,5",
+      "e": "4,6",
+      "H": "15",
+      "d": "13"
+     },
+     "source": "web:descripcion tabla 1 fila de datos 2 (MOD. 15)"
+    },
+    {
+     "label": "Botones de mando serie BO con linea · MOD. 21",
+     "reference": null,
+     "specs": {
+      "MOD. TYPE": "21",
+      "D": "21",
+      "e": "4,6",
+      "H": "17",
+      "d": "19,5"
+     },
+     "source": "web:descripcion tabla 1 fila de datos 3 (MOD. 21)"
+    },
+    {
+     "label": "Botones de mando serie BO con linea · MOD. 30",
+     "reference": null,
+     "specs": {
+      "MOD. TYPE": "30",
+      "D": "29,5",
+      "e": "4,6",
+      "H": "17,5",
+      "d": "28"
+     },
+     "source": "web:descripcion tabla 1 fila de datos 4 (MOD. 30)"
+    },
+    {
+     "label": "Botones de mando serie BO con linea · MOD. 38",
+     "reference": null,
+     "specs": {
+      "MOD. TYPE": "38",
+      "D": "38",
+      "e": "18,5",
+      "H": "18,5",
+      "d": "36,5"
+     },
+     "source": "web:descripcion tabla 1 fila de datos 5 (MOD. 38); columna 'e' incoherente, ver gaps"
+    }
+   ],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- BO series control buttons with line",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Boutons de commande de la série BO avec ligne",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- BO-Serie Steuertasten mit Linie",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Botones de mando serie BO con linea - Torivac",
+     "meta_description": "Son los mismos botones que la serie BO pero con una línea lateral para indicar su posición. Ver ficha técnica",
+     "og_title": "Botones de mando serie BO con linea - Torivac",
+     "og_description": "Son los mismos botones que la serie BO pero con una línea lateral para indicar su posición. Ver ficha técnica",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-torivac-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/botones-de-mando-serie-bo-con-linea-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:59",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__botones-de-mando-serie-bo-con-linea-2.json"
+    },
+    "en": {
+     "title": "BO series control buttons with line - Torivac",
+     "meta_description": "These are the same buttons as the BO series but with a side line to indicate their position. See technical data sheet",
+     "og_title": "BO series control buttons with line - Torivac",
+     "og_description": "These are the same buttons as the BO series but with a side line to indicate their position. See technical data sheet",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-torivac-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/botones-de-mando-serie-bo-con-linea-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:37",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__bo-series-control-buttons-with-line.json"
+    },
+    "fr": {
+     "title": "Boutons de commande de la série BO avec ligne - Torivac",
+     "meta_description": "Il s'agit des mêmes boutons que ceux de la série BO, mais avec une ligne latérale indiquant leur position. Voir la fiche technique",
+     "og_title": "Boutons de commande de la série BO avec ligne - Torivac",
+     "og_description": "Il s'agit des mêmes boutons que ceux de la série BO, mais avec une ligne latérale indiquant leur position. Voir la fiche technique",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-torivac-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/botones-de-mando-serie-bo-con-linea-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:37",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__boutons-de-commande-de-la-serie-bo-avec-ligne.json"
+    },
+    "de": {
+     "title": "BO-Serie Steuertasten mit Linie - Torivac",
+     "meta_description": "Dies sind die gleichen Tasten wie bei der BO-Serie, aber mit einer Seitenlinie, die ihre Position anzeigt. Siehe technisches Datenblatt",
+     "og_title": "BO-Serie Steuertasten mit Linie - Torivac",
+     "og_description": "Dies sind die gleichen Tasten wie bei der BO-Serie, aber mit einer Seitenlinie, die ihre Position anzeigt. Siehe technisches Datenblatt",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-torivac-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/botones-de-mando-serie-bo-con-linea-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:38",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__bo-serie-steuertasten-mit-linie.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "tabla_con_valores_incoherentes",
+    "valor_ambiguo_en_tabla",
+    "tabla_sin_unidades_ni_leyenda",
+    "texto_plantilla_repetido",
+    "sin_referencias_comerciales",
+    "pagina_traducida_sin_descripcion_ni_tabla",
+    "texto_en_idioma_incorrecto",
+    "typo",
+    "meta_description_con_texto_de_boton",
+    "relacionados_autorreferente",
+    "imagen_con_id_de_otro_idioma",
+    "nombre_de_archivo_poco_descriptivo",
+    "duplicado_posible",
+    "sin_alt",
+    "sin_h1_en_traducciones",
+    "canonical_apunta_a_es",
+    "pdf_solo_imagen",
+    "sku_no_comercial",
+    "slug_categoria_de_en_idioma_incorrecto"
+   ],
+   "gaps": [
+    "Tabla de la descripción, fila MOD. 38, columna 'e': vale '18,5', igual que la columna H ('18,5') y fuera del patrón de la columna (3 y 4 / 4,6 / 4,6 / 4,6): valor incoherente y aparente duplicado de H. La lectura visual del PDF (captura data/raw/screens/pdf/BOTONES-DE-MANDO-p1-hi-1.png, tabla 'Serie BO con Línea'; NO es dato web, verificar con Torivac) da '4,6,8' en 'e' para MOD. 38 y coincide con la web en el resto de celdas. No se corrige: se conserva '18,5' en spec_tables (4 idiomas), description_text y orderable_items (fila 5).",
+    "Columna 'e' ambigua: '3 y 4' (lista con 'y'), '4,6' (¿decimal 4,6 o lista 4 y 6?) y '18,5'. La web no rotula D, e, H ni d y no da unidad (no se asume mm). El dibujo técnico incrustado (boton_02.jpg, revisado visualmente) rotula d, D, H y e, coherente con las columnas, pero sin dar su significado ni unidad. El PDF añade bajo la tabla 'Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10' (lectura visual); la web no lo dice.",
+    "Tabla sin título (caption vacío) con 5 columnas (MOD. TYPE, D, e, H, d) y 5 filas (10, 15, 21, 30, 38). En EN, FR y DE la celda 'e' de MOD. 10 sigue en español ('3 y 4'); DE usa 'MOD. TYP' en la cabecera. Las cifras de EN/FR/DE son idénticas a las de ES. spec_tables lleva las 4 tablas; orderable_items solo la versión ES.",
+    "Texto de la descripción larga: encabezado en negrita 'Botones de mando:' + párrafo genérico (plantilla común de la familia, repetida en 942 y en la ficha 936 del lote g05) + la tabla. El único texto específico del producto es la descripción corta ('Son los mismos botones que la serie BO pero con una línea lateral para indicar su posición'), sin materiales, colores ni fijación (eso solo está en la ficha 932).",
+    "Las páginas renderizadas EN, FR y DE NO muestran el encabezado, el párrafo ni la tabla de la descripción (solo la ES los renderiza), aunque la Store API los trae en los 3 idiomas. Para description_text y spec_tables se usa la Store API (más completa). translation_status='ok' por el dato, pero la web pública de EN/FR/DE enseña menos que la ES.",
+    "Sin código de referencia comercial: las filas se identifican solo por MOD. TYPE. orderable_items.reference=null; el modelo va en specs['MOD. TYPE'] y en label.",
+    "Duplicado posible con la ficha 932 (serie BO brillante): la web publica la tabla de cotas solo aquí, mientras que 932 no tiene tabla en la web; el PDF (lectura visual) da para 'Serie BO (brillante)' una tabla con las mismas cifras que 'Serie BO con Línea', incluida la '4,6,8' de MOD. 38. Las dos fichas solo se distinguen por la línea lateral.",
+    "La ficha técnica enlazada (BOTONES-DE-MANDO.pdf) es un PDF de 1 página que es solo imagen (pdf-index: needs_visual_read=true, text_chars=42): no hay texto extraíble.",
+    "Imágenes: la principal (id 935) se llama 'boton-serie-bm-torivac-600x600-2.jpg' ('bm') aunque la ficha es de la serie BO con línea; la foto (revisada visualmente) muestra un botón gris con línea lateral negra, coherente con 'BO con línea', así que solo el nombre de archivo induce a error. Segunda imagen 'boton_02.jpg' (dibujo técnico 638×638, incrustado en la descripción con alt vacío, clase wp-image-14487): la galería ES apunta al medio id 16411 (título 'Taste_02', copia DE), EN al 16402 ('button_02'), FR al 16408 ('bouton_02') y DE al 16411; mismo fichero en los 4 idiomas y nombre no descriptivo. El alt_text de los medios en WordPress está vacío; el alt de la página (nombre del producto) lo rellena el tema.",
+    "Meta description (Yoast) con el texto del botón al final en los 4 idiomas: '…para indicar su posición. Ver ficha técnica', '…to indicate their position. See technical data sheet', '…indiquant leur position. Voir la fiche technique', '…ihre Position anzeigt. Siehe technisches Datenblatt'.",
+    "Typo: el nombre ES 'Botones de mando serie BO con linea' lleva 'linea' sin tilde (línea); igual en la categoría ES (id 73 'Botones de mando Serie BO con linea') y en el slug 'botones-de-mando-serie-bo-con-linea-2'. La descripción corta ES sí escribe 'línea'. Se conserva literal.",
+    "Productos relacionados: la página ES no muestra el bloque; las páginas EN, FR y DE lo muestran con el propio producto como único elemento (autorreferente), sin enlaces útiles. Se conserva en extra_sections.",
+    "Terminología en DE inconsistente: nombre 'BO-Serie Steuertasten mit Linie', categoría 'Steuertasten BO Serie mit Linie' (id 669, slug neerlandés 'bo-serie-bedieningsknoppen-met-lijn'), raíz 'Steuerungstasten' y, en la ficha 932, 'Bedientasten'. FR: nombre 'Boutons de commande de la série BO avec ligne' frente a categoría 'Boutons de commande BO série avec ligne' (id 668).",
+    "category_path_es (product-map) incluye la hoja: ['Botones de mando', 'Botones de mando Serie BO con linea']; en la Store API el producto solo está asignado a la categoría hoja 73, no a la raíz 30.",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/botones-de-mando-serie-bo-con-linea-2/), no a la de su propio idioma (EN https://grupotorivac.com/en/product/bo-series-control-buttons-with-line/, FR https://grupotorivac.com/fr/product/boutons-de-commande-de-la-serie-bo-avec-ligne/, DE https://grupotorivac.com/de/product/bo-serie-steuertasten-mit-linie/); los títulos y las meta descriptions sí están traducidos. Las URL propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical. El slug ES lleva el sufijo '-2' (deduplicación de slug de WordPress). Ojo al consultar pages-index.json: el campo 'url' de las páginas EN/FR/DE de este producto es la URL española, así que buscar por URL devuelve la página de otro idioma; las páginas renderizadas se localizan por nombre de fichero (pages/<idioma>/<idioma>__product__<slug>.json).",
+    "Las páginas renderizadas EN, FR y DE no tienen H1 (su outline solo trae el H3 de menú, el H4 del bloque CTA y los H2 de CTA y relacionados); solo la ES tiene H1 'Botones de mando serie BO con linea'.",
+    "SKU '86e3ea5faad6': hash de 12 caracteres hexadecimales, idéntico en los 4 idiomas; no es una referencia comercial. La web no publica códigos de pedido para este producto.",
+    "Sin menciones de tensión ni de potencia en ningún idioma (nombre, descripción corta, descripción larga, tablas ni página renderizada; en el texto de la página solo hay palabras del menú global y de la plantilla, sin cifra, p. ej. 'Variadores Monofasicos' o 'regulación de la tensión'). Es un producto mecánico de plástico/latón, no eléctrico: voltage_mentions=[] y power_mentions=[] son correctos y no procede etiqueta de voltaje. En la ficha 932 'poder de apriete' (tightening power) es una fuerza mecánica, no potencia eléctrica.",
+    "Bloque CTA de plantilla (común a todas las fichas) con errores en las traducciones: DE título 'KONTAKT US' y casilla de consentimiento del formulario en neerlandés ('Hij gaat akkoord met het privacybeleid.'); FR 'Il a accepté et accepté la politique de confidentialité' (traducción incorrecta de 'He leído y acepto la política de privacidad'). Se conserva literal en extra_sections; no es contenido del producto."
+   ]
+  },
+  {
+   "id_es": 932,
+   "slug": "botones-de-mando-serie-bo-brillante-2",
+   "url_es": "https://grupotorivac.com/product/botones-de-mando-serie-bo-brillante-2/",
+   "sku": "77c4702bc13a",
+   "names": {
+    "es": "Botones de mando serie BO (brillante)",
+    "en": "BO series control buttons (bright)",
+    "fr": "Boutons de commande de la série BO (brillants)",
+    "de": "Bedientasten der BO-Serie (glänzend)"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/botones-de-mando-serie-bo-brillante-2/",
+    "en": "https://grupotorivac.com/en/product/bo-series-control-buttons-bright/",
+    "fr": "https://grupotorivac.com/fr/product/boutons-de-commande-de-la-serie-bo-brillants/",
+    "de": "https://grupotorivac.com/de/product/bedientasten-der-bo-serie-glaenzend/"
+   },
+   "ids": {
+    "es": 932,
+    "en": 16377,
+    "fr": 16378,
+    "de": 16379
+   },
+   "category_path_es": [
+    "Botones de mando",
+    "Botones de mando serie BO (brillante)"
+   ],
+   "categories_all_es": [
+    {
+     "id": 72,
+     "name": "Botones de mando serie BO (brillante)",
+     "slug": "botones-de-mando-serie-bo-brillante"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "En esta serie se utiliza el sistema de fijación central por pinza, sin tornillos, que permite un alto poder de apriete (8-20 kp/cm). El cuerpo esta inyectado en poliamida 6 y la pinza y el casquillo insertado son de latón.\n\nLa familia está formada por cinco tamaños fabricados; para distintos diámetros de ejes.\n\nColores Standard de los cuerpos: negro y gris. Otros por encargo.\n\nSe complementan con una amplia gama de tapas y accesorios de múltiples colores que permiten personalizar cada aplicación. Para pedir indicar el modelo, el diámetro de eje y el color.\n\nVer ficha técnica",
+    "en": "This series uses the central clamp fixing system, without screws, which allows a high tightening power (8-20 kp/cm). The body is injected in polyamide 6 and the clamp and the inserted bushing are made of brass.\n\nThe family consists of five manufactured sizes; for different shaft diameters.\n\nStandard body colors: black and gray. Others on request.\n\nThey are complemented by a wide range of covers and accessories in multiple colors to customize each application. To order, please indicate model, shaft diameter and color.\n\nSee technical data sheet",
+    "fr": "Cette série utilise le système de fixation par collier central, sans vis, qui permet un pouvoir de serrage élevé (8-20 kp/cm). Le corps est injecté en polyamide 6 et le collier ainsi que la douille insérée sont en laiton.\n\nLa famille se compose de cinq tailles fabriquées pour différents diamètres d’arbre.\n\nCouleurs standard de la carrosserie : noir et gris. Autres couleurs sur demande.\n\nIls sont complétés par une large gamme de couvercles et d’accessoires en plusieurs couleurs pour personnaliser chaque application. Pour commander, veuillez indiquer le modèle, le diamètre de l’arbre et la couleur.\n\nVoir la fiche technique",
+    "de": "Diese Serie verwendet das System der Zentralbefestigung ohne Schrauben, das eine hohe Anzugskraft (8-20 kp/cm) ermöglicht. Der Körper ist aus Polyamid 6 gespritzt und die Klemme und die eingesetzte Buchse sind aus Messing.\n\nDie Familie besteht aus fünf verschiedenen Größen für unterschiedliche Wellendurchmesser.\n\nStandardfarben des Gehäuses: Schwarz und Grau. Andere auf Anfrage.\n\nSie werden durch eine große Auswahl an Abdeckungen und Zubehör in verschiedenen Farben ergänzt, um jede Anwendung individuell zu gestalten. Bitte geben Sie bei der Bestellung das Modell, den Schaftdurchmesser und die Farbe an.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2.jpg",
+     "alt": {
+      "es": "Botones de mando serie BO (brillante)",
+      "en": "BO series control buttons (bright)",
+      "fr": "Boutons de commande de la série BO (brillants)",
+      "de": "Bedientasten der BO-Serie (glänzend)"
+     },
+     "id": 933,
+     "ids": {
+      "es": 933,
+      "en": 933,
+      "fr": 933,
+      "de": 933
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/BOTONES-DE-MANDO.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Modelo (cinco tamaños fabricados; la web no los lista; la lectura visual de BOTONES-DE-MANDO.pdf da MOD. TYPE 10, 15, 21, 30 y 38)",
+    "Diámetro de eje (la web pide indicarlo al pedir y no da la lista de diámetros; el PDF, lectura visual, muestra la cota 'e' y '1/4\"' bajo pedido salvo Mod.10)",
+    "Color del cuerpo: negro o gris estándar, otros por encargo (más color de las tapas y accesorios, que se piden aparte)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- BO series control buttons (bright)",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Boutons de commande de la série BO (brillants)",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Bedientasten der BO-Serie (glänzend)",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Botones de mando serie BO (brillante) - Torivac",
+     "meta_description": "En esta serie se utiliza el sistema de fijación central por pinza, sin tornillos, que permite un alto poder de apriete (8-20 kp/cm).",
+     "og_title": "Botones de mando serie BO (brillante) - Torivac",
+     "og_description": "En esta serie se utiliza el sistema de fijación central por pinza, sin tornillos, que permite un alto poder de apriete (8-20 kp/cm).",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/botones-de-mando-serie-bo-brillante-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:59",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__botones-de-mando-serie-bo-brillante-2.json"
+    },
+    "en": {
+     "title": "BO series control buttons (bright) - Torivac",
+     "meta_description": "This series uses the central clamp fixing system, without screws, which allows a high tightening power (8-20 kp/cm).",
+     "og_title": "BO series control buttons (bright) - Torivac",
+     "og_description": "This series uses the central clamp fixing system, without screws, which allows a high tightening power (8-20 kp/cm).",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/botones-de-mando-serie-bo-brillante-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:36",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__bo-series-control-buttons-bright.json"
+    },
+    "fr": {
+     "title": "Boutons de commande de la série BO (brillants) - Torivac",
+     "meta_description": "Cette série utilise le système de fixation par collier central, sans vis, qui permet un pouvoir de serrage élevé (8-20 kp/cm).",
+     "og_title": "Boutons de commande de la série BO (brillants) - Torivac",
+     "og_description": "Cette série utilise le système de fixation par collier central, sans vis, qui permet un pouvoir de serrage élevé (8-20 kp/cm).",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/botones-de-mando-serie-bo-brillante-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:36",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__boutons-de-commande-de-la-serie-bo-brillants.json"
+    },
+    "de": {
+     "title": "Bedientasten der BO-Serie (glänzend) - Torivac",
+     "meta_description": "Diese Serie verwendet das System der Zentralbefestigung ohne Schrauben, das eine hohe Anzugskraft (8-20 kp/cm) ermöglicht.",
+     "og_title": "Bedientasten der BO-Serie (glänzend) - Torivac",
+     "og_description": "Diese Serie verwendet das System der Zentralbefestigung ohne Schrauben, das eine hohe Anzugskraft (8-20 kp/cm) ermöglicht.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/botones-de-mando-serie-bo-brillante-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:36",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__bedientasten-der-bo-serie-glaenzend.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_referencias_comerciales",
+    "typo",
+    "unidad_dudosa",
+    "terminologia_dudosa",
+    "relacionados_autorreferente",
+    "texto_en_idioma_incorrecto",
+    "sin_alt",
+    "sin_h1_en_traducciones",
+    "canonical_apunta_a_es",
+    "pdf_solo_imagen",
+    "sku_no_comercial",
+    "slug_categoria_de_en_idioma_incorrecto"
+   ],
+   "gaps": [
+    "Descripción larga vacía en es/en/fr/de (Store API description=''). Toda la información está en la descripción corta (4 párrafos + el botón 'Ver ficha técnica'): fijación central por pinza sin tornillos, poder de apriete 8-20 kp/cm, cuerpo de poliamida 6, pinza y casquillo de latón, cinco tamaños, colores y forma de pedir. La página renderizada no añade tablas, pestañas ni secciones salvo el bloque CTA y los relacionados.",
+    "Sin tabla de modelos en la web (spec_tables=[], attributes=[], orderable_items=[]): la web dice que la familia tiene 'cinco tamaños fabricados' pero no los lista. BOTONES-DE-MANDO.pdf es un PDF de 1 página que es solo imagen (pdf-index: needs_visual_read=true, text_chars=42): no hay texto extraíble. Lectura visual hecha sobre la captura data/raw/screens/pdf/BOTONES-DE-MANDO-p1-hi-1.png (NO es dato web; verificar con Torivac): el PDF trae la tabla 'Serie BO (brillante)' (columnas MOD. TYPE, D, e, H, d) con 10: 10 / '3 y 4' / 14 / 8,5; 15: 14,5 / 4,6 / 15 / 13; 21: 21 / 4,6 / 17 / 19,5; 30: 29,5 / 4,6 / 17,5 / 28; 38: 38 / '4,6,8' / 18,5 / 36,5, y la nota 'Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10'. La tabla de la ficha 934 (BO con línea) de la web coincide con estas cifras salvo la celda 'e' de MOD. 38 ('18,5').",
+    "Forma de pedir (texto, 4 idiomas): 'Para pedir indicar el modelo, el diámetro de eje y el color'. No hay referencias comerciales ni lista de diámetros de eje ni de colores de tapas y accesorios (tapas: fichas 938 y 940; otros accesorios: otras fichas de Botones de mando).",
+    "Typo ES: 'El cuerpo esta inyectado en poliamida 6' (falta la tilde: 'está'). 'Colores Standard' (anglicismo por 'estándar'). Se conserva literal.",
+    "Unidad dudosa: 'poder de apriete (8-20 kp/cm)' en los 4 idiomas; 'kp/cm' es fuerza por longitud y un par de apriete se expresaría en kp·cm. No se corrige.",
+    "Terminología dudosa en FR: 'système de fixation par collier central' y 'le collier' traducen 'pinza' (EN 'clamp', DE 'Klemme') y 'carrosserie' traduce 'cuerpos' ('Couleurs standard de la carrosserie'). En la categoría EN el slug es 'bo-series-control-buttons-glossy' mientras el nombre del producto y de la categoría dicen 'bright'. DE 'Die Familie besteht aus fünf verschiedenen Größen' pierde 'fabricados'.",
+    "Imagen única (id 933, boton-serie-bo-torivac-600x600-2.jpg, 600×600; revisada visualmente: botón gris con tuerca de latón, sin línea). El alt_text del medio en WordPress está vacío (REST media y Store API alt=''); el alt que muestra la página es el nombre del producto en cada idioma (relleno del tema).",
+    "Productos relacionados: la página ES no muestra el bloque; las páginas EN, FR y DE lo muestran con el propio producto como único elemento (autorreferente), sin enlaces útiles. Se conserva en extra_sections.",
+    "Terminología de familia en DE: nombre 'Bedientasten der BO-Serie (glänzend)' (slug neerlandés de categoría 'bo-serie-bedieningsknoppen-glanzend', id 666) frente a 'Steuertasten' en 934 y 'Steuerungstasten' en la categoría raíz.",
+    "category_path_es (product-map) incluye la hoja: ['Botones de mando', 'Botones de mando serie BO (brillante)']; en la Store API el producto solo está asignado a la categoría hoja 72, no a la raíz 30.",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/botones-de-mando-serie-bo-brillante-2/), no a la de su propio idioma (EN https://grupotorivac.com/en/product/bo-series-control-buttons-bright/, FR https://grupotorivac.com/fr/product/boutons-de-commande-de-la-serie-bo-brillants/, DE https://grupotorivac.com/de/product/bedientasten-der-bo-serie-glaenzend/); los títulos y las meta descriptions sí están traducidos. Las URL propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical. El slug ES lleva el sufijo '-2' (deduplicación de slug de WordPress). Ojo al consultar pages-index.json: el campo 'url' de las páginas EN/FR/DE de este producto es la URL española, así que buscar por URL devuelve la página de otro idioma; las páginas renderizadas se localizan por nombre de fichero (pages/<idioma>/<idioma>__product__<slug>.json).",
+    "Las páginas renderizadas EN, FR y DE no tienen H1 (su outline solo trae el H3 de menú, el H4 del bloque CTA y los H2 de CTA y relacionados); solo la ES tiene H1 'Botones de mando serie BO (brillante)'.",
+    "SKU '77c4702bc13a': hash de 12 caracteres hexadecimales, idéntico en los 4 idiomas; no es una referencia comercial. La web no publica códigos de pedido para este producto.",
+    "Sin menciones de tensión ni de potencia en ningún idioma (nombre, descripción corta, descripción larga, tablas ni página renderizada; en el texto de la página solo hay palabras del menú global y de la plantilla, sin cifra, p. ej. 'Variadores Monofasicos' o 'regulación de la tensión'). Es un producto mecánico de plástico/latón, no eléctrico: voltage_mentions=[] y power_mentions=[] son correctos y no procede etiqueta de voltaje. En la ficha 932 'poder de apriete' (tightening power) es una fuerza mecánica, no potencia eléctrica.",
+    "Bloque CTA de plantilla (común a todas las fichas) con errores en las traducciones: DE título 'KONTAKT US' y casilla de consentimiento del formulario en neerlandés ('Hij gaat akkoord met het privacybeleid.'); FR 'Il a accepté et accepté la politique de confidentialité' (traducción incorrecta de 'He leído y acepto la política de privacidad'). Se conserva literal en extra_sections; no es contenido del producto."
+   ]
+  }
+ ]
+}

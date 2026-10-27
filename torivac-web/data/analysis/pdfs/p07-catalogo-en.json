@@ -77,13 +77,13 @@
      "family": "Single-Phase Variable Autotransformer (ManualControl)",
      "series": null,
      "page": 5,
-     "description": "Section 'SIZE & WEIGHT', single-phase variable autotransformer with manual control: two tables of nominal currents (In 230 / In 250), dimensions A-G and weight (Kg) per VA rating (160 VA - 4000 VA and 5000 VA - 11000 VA). Control type described on the 'Types of control' page: manual control with a button on the shaft of the variator.",
+     "description": "Section 'SIZE & WEIGHT', single-phase variable autotransformer with manual control: two tables of nominal currents (In 230 / In 250), dimensions A-G (the 5000 VA - 11000 VA table has no G column) and weight (Kg) per VA rating (160 VA - 4000 VA and 5000 VA - 11000 VA). Control type described on the 'Types of control' page: manual control with a button on the shaft of the variator.",
      "general_specs": {
       "Phases / control": "Single-phase, manual control",
       "Input / Output (as printed)": "Input 230V Output 230/250V",
       "Power ranges (tables)": "160 VA – 4000 VA; 5000 VA – 11000 VA",
       "Table notes": "* Limited dimensions (rows 350* and 500*); In it refers to the nominal current of the variable autotransformers",
-      "Dimension columns": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+      "Dimension columns": "Columns printed: table 160 VA – 4000 VA = A, B, C, D, E, F, G; table 5000 VA – 11000 VA = A, B, C, D, E, F (no G, no H). Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
       "Drawing captions (image)": "5000 VA; 6000 VA - 11000 VA"
      },
      "models": [
@@ -516,7 +516,7 @@
       "Input / Output (as printed)": "Input 230V Output 230/250V",
       "Power ranges (tables)": "160 VA – 4000 VA; 5000 VA – 11000 VA",
       "Table notes": "* Limited dimensions (rows 350* and 500*); In it refers to the nominal current of the variable autotransformers",
-      "Dimension columns": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+      "Dimension columns": "Columns printed: table 160 VA – 4000 VA = A, B, E, F, G; table 5000 VA – 11000 VA = A, B, E, F, G, H (no C, no D). Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
       "Drawing captions (image)": "5000 VA; 6000 VA - 11000 VA"
      },
      "models": [
@@ -921,7 +921,7 @@
       "Input / Output (as printed)": "Input 230V Output 230/250V",
       "Power ranges (tables)": "160 VA x 2 – 4000 VA x 2; 5000 VA x 2 – 11000 VA x 2",
       "Table notes": "*Limited dimensions (rows 350*x2 and 500*x2); In it refers to the nominal current of the variable autotransformers",
-      "Dimension columns": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+      "Dimension columns": "Columns printed: table 160 VA x 2 – 4000 VA x 2 = A, B, C, D, E, F, G; table 5000 VA x 2 – 11000 VA x 2 = A, B, C, D, E, F, G, H. Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
       "Drawing captions (image)": "5000 VA x2; 6000 VA x2 - 11000 VA x2"
      },
      "models": [
@@ -1366,7 +1366,7 @@
       "Input / Output (as printed)": "Input 230V Output 230/250V",
       "Power ranges (tables)": "160 VA x 2 – 4000 VA x 2; 5000 VA x 2 – 11000 VA x 2",
       "Table notes": "*Limited dimensions (rows 350*x2 and 500*x2); In it refers to the nominal current of the variable autotransformers",
-      "Dimension columns": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+      "Dimension columns": "Columns printed: table 160 VA x 2 – 4000 VA x 2 = A, B, E, F, G; table 5000 VA x 2 – 11000 VA x 2 = A, B, E, F, G, H (no C, no D). Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
       "Drawing captions (image)": "5000 VA x2; 6000 VA x2 - 11000 VA x2"
      },
      "models": [
@@ -1769,7 +1769,7 @@
       "Input / Output (as printed)": "Input 400V Output 400/430V",
       "Power range (this table)": "480 VA – 12000 VA",
       "Table notes": "In it refers to the nominal current of the variable autotransformers (rows 1000* and 1500* carry an asterisk but this table prints no '* Limited dimensions' note)",
-      "Dimension columns": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)"
+      "Dimension columns": "Columns printed: A, B, C, D, E, F, G (no H). Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)"
      },
      "models": [
       {
@@ -2066,7 +2066,7 @@
       "Input / Output (as printed)": "Input 400 V Output 400/430V",
       "Power range (this table)": "15000 VA – 33000 VA",
       "Table notes": "In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable autotransformers.",
-      "Dimension columns": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+      "Dimension columns": "Columns printed: A, B, C, D, E, F, G, H. Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
       "Drawing captions (image)": "15000 VA; 18000 VA - 30000 VA"
      },
      "models": [
@@ -2231,7 +2231,7 @@
       "Input / Output (as printed)": "Entrada/Input 400V Salida/Output 400/430V",
       "Power ranges (tables)": "480 VA – 12000 VA; 15000 VA – 33000 VA",
       "Table notes": "In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable autotransformers (third table: '...nominal intensity of the variable autotransformers')",
-      "Dimension columns": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+      "Dimension columns": "Columns printed: table 480 VA – 12000 VA = A, B, E, F, G; table 15000 VA – 33000 VA = A, B, E, F, G, H (no C, no D). Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
       "Drawing captions (image)": "15000 VA; 18000 VA - 30000 VA"
      },
      "models": [
@@ -4065,7 +4065,7 @@
      "raw": "160 VA – 4000 VA Input 230V Output 230/250V",
      "page": 5,
      "context": "table header, single-phase manual",
-     "normalized_hint": "400 V input / 400-430 V output"
+     "normalized_hint": "230 V input / 230-250 V output"
     },
     {
      "raw": "5000 VA – 11000 VA Input 230V Output 230/250V",
@@ -4077,7 +4077,7 @@
      "raw": "160 VA – 4000 VA Input 230V Output 230/250V",
      "page": 5,
      "context": "table header, single-phase power-assisted",
-     "normalized_hint": "400 V input / 400-430 V output"
+     "normalized_hint": "230 V input / 230-250 V output"
     },
     {
      "raw": "5000 VA – 11000 VA Entrada/Input 230V Salida/Output 230/250V",
@@ -4089,7 +4089,7 @@
      "raw": "160 VA x 2 – 4000 VA x 2 Entrada/Input 230V Salida/Output 230/250V",
      "page": 6,
      "context": "table header, double manual",
-     "normalized_hint": "400 V input / 400-430 V output"
+     "normalized_hint": "230 V input / 230-250 V output"
     },
     {
      "raw": "5000 VA x 2 – 11000 VA x 2 Input 230V Output 230/250V",
@@ -4101,7 +4101,7 @@
      "raw": "160 VA x 2 – 4000 VA x 2 Input 230V Output 230/250V",
      "page": 7,
      "context": "table header, double power-assisted",
-     "normalized_hint": "400 V input / 400-430 V output"
+     "normalized_hint": "230 V input / 230-250 V output"
     },
     {
      "raw": "5000 VA x 2 – 11000 VA x 2 Input 230V Output 230/250V",
@@ -4232,7 +4232,7 @@
      "page": 3
     },
     {
-     "fact": "Photographs: control panel in a metal cabinet with measuring instruments, three single units of different sizes and a stack of three units on a frame (no captions).",
+     "fact": "Photographs (no captions): control panel in a metal cabinet with measuring instruments; two single units of different sizes (the larger one with a finned contact plate); a tall three-unit stack with a control knob on the shaft; and a three-unit stack on a frame with a motor on top.",
      "page": 4
     },
     {
@@ -4486,8 +4486,107 @@
      "page": 14,
      "item": "Orden de secciones distinto entre catalogos",
      "why": "La pagina 14 del PDF EN es la portada 'PACKED ELECTRIC COILS' (y la p15 abre esa seccion), mientras la pagina 14 del PDF ES es la portada 'TRANSFORMADORES TOROIDALES'. Aunque ambos PDF tienen el mismo numero de paginas, el orden de las secciones tras los variadores no coincide; no se pueden contrastar paginas EN/ES por numero a partir de la p14."
+    },
+    {
+     "page": 11,
+     "item": "Emparejamiento de fotos y dibujos 3D con cada tabla",
+     "why": "La pagina 11 no tiene pies de foto: la asociacion del armario mural (fila superior izquierda) y del armario con ruedas con las tablas monofasica y trifasica, y de cada dibujo 3D con su tabla, se deduce de la maquetacion. Ambos dibujos acotan B en vertical y A, C en horizontal. No publicar el emparejamiento sin confirmarlo."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 5,
+     "item": "voltage_mentions normalized_hint for raw \"160 VA – 4000 VA Input 230V Output 230/250V\" (table header, single-phase manual)",
+     "was": "400 V input / 400-430 V output",
+     "now": "230 V input / 230-250 V output",
+     "why": "El encabezado impreso dice Input 230V / Output 230/250V (imagen y capa de texto); el hint 400 V / 400-430 V pertenece a las tablas trifasicas y estaba pegado por error."
+    },
+    {
+     "page": 5,
+     "item": "voltage_mentions normalized_hint for raw \"160 VA – 4000 VA Input 230V Output 230/250V\" (table header, single-phase power-assisted)",
+     "was": "400 V input / 400-430 V output",
+     "now": "230 V input / 230-250 V output",
+     "why": "El encabezado impreso dice Input 230V / Output 230/250V (imagen y capa de texto); el hint 400 V / 400-430 V pertenece a las tablas trifasicas y estaba pegado por error."
+    },
+    {
+     "page": 6,
+     "item": "voltage_mentions normalized_hint for raw \"160 VA x 2 – 4000 VA x 2 Entrada/Input 230V Salida/Output 230/250V\" (table header, double manual)",
+     "was": "400 V input / 400-430 V output",
+     "now": "230 V input / 230-250 V output",
+     "why": "El encabezado impreso dice Input 230V / Output 230/250V (imagen y capa de texto); el hint 400 V / 400-430 V pertenece a las tablas trifasicas y estaba pegado por error."
+    },
+    {
+     "page": 7,
+     "item": "voltage_mentions normalized_hint for raw \"160 VA x 2 – 4000 VA x 2 Input 230V Output 230/250V\" (table header, double power-assisted)",
+     "was": "400 V input / 400-430 V output",
+     "now": "230 V input / 230-250 V output",
+     "why": "El encabezado impreso dice Input 230V / Output 230/250V (imagen y capa de texto); el hint 400 V / 400-430 V pertenece a las tablas trifasicas y estaba pegado por error."
+    },
+    {
+     "page": 4,
+     "item": "other_facts: photographs of the page",
+     "was": "Photographs: control panel in a metal cabinet with measuring instruments, three single units of different sizes and a stack of three units on a frame (no captions).",
+     "now": "Photographs (no captions): control panel in a metal cabinet with measuring instruments; two single units of different sizes (the larger one with a finned contact plate); a tall three-unit stack with a control knob on the shaft; and a three-unit stack on a frame with a motor on top.",
+     "why": "En la imagen hay dos unidades sueltas (no tres), un apilado de tres unidades con boton de mando y otro apilado de tres sobre bastidor con motor; la descripcion previa los mezclaba."
+    },
+    {
+     "page": 5,
+     "item": "families[3] \"Single-Phase Variable Autotransformer (ManualControl)\" general_specs[\"Dimension columns\"]",
+     "was": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+     "now": "Columns printed: table 160 VA – 4000 VA = A, B, C, D, E, F, G; table 5000 VA – 11000 VA = A, B, C, D, E, F (no G, no H). Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
+     "why": "La frase generica citaba columnas (C, D y/o H, o G) que no existen en todas las tablas de la familia; se lista lo realmente impreso en cada cabecera (imagen)."
+    },
+    {
+     "page": 5,
+     "item": "families[4] \"Single-Phase Variable Autotransformer (Power-Assisted Control)\" general_specs[\"Dimension columns\"]",
+     "was": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+     "now": "Columns printed: table 160 VA – 4000 VA = A, B, E, F, G; table 5000 VA – 11000 VA = A, B, E, F, G, H (no C, no D). Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
+     "why": "La frase generica citaba columnas (C, D y/o H, o G) que no existen en todas las tablas de la familia; se lista lo realmente impreso en cada cabecera (imagen)."
+    },
+    {
+     "page": 6,
+     "item": "families[5] \"Double Variable Autotransformers (Manual Control)\" general_specs[\"Dimension columns\"]",
+     "was": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+     "now": "Columns printed: table 160 VA x 2 – 4000 VA x 2 = A, B, C, D, E, F, G; table 5000 VA x 2 – 11000 VA x 2 = A, B, C, D, E, F, G, H. Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
+     "why": "La frase generica citaba columnas (C, D y/o H, o G) que no existen en todas las tablas de la familia; se lista lo realmente impreso en cada cabecera (imagen)."
+    },
+    {
+     "page": 7,
+     "item": "families[6] \"Double Variable Autotransformer (Power-Assisted Control)\" general_specs[\"Dimension columns\"]",
+     "was": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+     "now": "Columns printed: table 160 VA x 2 – 4000 VA x 2 = A, B, E, F, G; table 5000 VA x 2 – 11000 VA x 2 = A, B, E, F, G, H (no C, no D). Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
+     "why": "La frase generica citaba columnas (C, D y/o H, o G) que no existen en todas las tablas de la familia; se lista lo realmente impreso en cada cabecera (imagen)."
+    },
+    {
+     "page": 7,
+     "item": "families[7] \"Three phase variable autotransformer (Manual Control)\" general_specs[\"Dimension columns\"]",
+     "was": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+     "now": "Columns printed: A, B, C, D, E, F, G (no H). Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
+     "why": "La frase generica citaba columnas (C, D y/o H, o G) que no existen en todas las tablas de la familia; se lista lo realmente impreso en cada cabecera (imagen)."
+    },
+    {
+     "page": 8,
+     "item": "families[8] \"Three phase variable autotransformer (Manual Control)\" general_specs[\"Dimension columns\"]",
+     "was": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+     "now": "Columns printed: A, B, C, D, E, F, G, H. Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
+     "why": "La frase generica citaba columnas (C, D y/o H, o G) que no existen en todas las tablas de la familia; se lista lo realmente impreso en cada cabecera (imagen)."
+    },
+    {
+     "page": 8,
+     "item": "families[9] \"Three Phase Variable Autotransformer (Power-Assisted Control)\" general_specs[\"Dimension columns\"]",
+     "was": "A, B, C, D, E, G, H are dimensions defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for A-H (not assumed)",
+     "now": "Columns printed: table 480 VA – 12000 VA = A, B, E, F, G; table 15000 VA – 33000 VA = A, B, E, F, G, H (no C, no D). Dimensions are defined only in the drawings; F is a thread designation (M-4 ... M-12) printed in the table; the PDF prints no unit for the dimensions (not assumed)",
+     "why": "La frase generica citaba columnas (C, D y/o H, o G) que no existen en todas las tablas de la familia; se lista lo realmente impreso en cada cabecera (imagen)."
+    },
+    {
+     "page": 5,
+     "item": "families[3] description",
+     "was": "Section 'SIZE & WEIGHT', single-phase variable autotransformer with manual control: two tables of nominal currents (In 230 / In 250), dimensions A-G and weight (Kg) per VA rating (160 VA - 4000 VA and 5000 VA - 11000 VA). Control type described on the 'Types of control' page: manual control with a button on the shaft of the variator.",
+     "now": "Section 'SIZE & WEIGHT', single-phase variable autotransformer with manual control: two tables of nominal currents (In 230 / In 250), dimensions A-G (the 5000 VA - 11000 VA table has no G column) and weight (Kg) per VA rating (160 VA - 4000 VA and 5000 VA - 11000 VA). Control type described on the 'Types of control' page: manual control with a button on the shaft of the variator.",
+     "why": "La segunda tabla (5000-11000 VA) imprime A, B, C, D, E, F y Kg; no tiene columna G."
+    }
+   ],
+   "verified": true
   }
  ]
 }

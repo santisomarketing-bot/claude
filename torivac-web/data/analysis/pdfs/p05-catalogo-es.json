@@ -30,14 +30,14 @@
        "specs": {
         "Terminales": "3,2 x 0,5 mm",
         "Hermético": "al polvo",
-        "Eje Standard": "12 mm, (8 6mm) de poliamida 6 con fibra de vidrio",
+        "Eje Standard": null,
         "Cursor": "basculante,",
-        "Resistencia mín.": "52 - 22KQ",
-        "Ángulo de giro": "2800",
+        "Resistencia mín.": null,
+        "Ángulo de giro": null,
         "Tolerancia": "10%",
         "Tensión de perforación": "> 1000v",
         "Peso neto": "22grs",
-        "Temperatura de trabajo": "-20%/+60\"",
+        "Temperatura de trabajo": null,
         "Categoría UL": "94V-0",
         "Embalaje": "Caja de 25 pzas"
        },
@@ -90,16 +90,16 @@
        "page": 30,
        "specs": {
         "Terminales soldables": "3.2x0.5mm",
-        "Potencia máx": "2.2:25%0,5W",
+        "Potencia máx": null,
         "Distribución resistencia": "Lineal",
-        "Gama de valores óhmicos": "52-50 KO",
-        "Tolerancia": "6%,",
+        "Gama de valores óhmicos": null,
+        "Tolerancia": null,
         "Tensión de perforación": ">1000V",
-        "Angulo de glo, acánico": "264\"",
-        "Angulo de gio'Biécirico": "250%",
-        "Rosistoncia del ope a la rotura": "8 Kg/cm",
+        "Angulo de glo, acánico": null,
+        "Angulo de gio'Biécirico": null,
+        "Rosistoncia del ope a la rotura": null,
         "Longitud del eje Standard": "40 mm",
-        "Paso noto": "40-grs",
+        "Paso noto": null,
         "Incremento de temperatura plena carga": "75'C"
        },
        "raw_row": "* Terminales soldables 3.2x0.5mm | * Potencia máx 2.2:25%0,5W | * Distribución resistencia: Lineal | * Gama de valores óhmicos: 52-50 KO | * Tolerancia: 6%, | * Tensión de perforación: >1000V | * Angulo de glo, acánico; 264\" | * Angulo de gio'Biécirico: 250% | * Rosistoncia del ope a la rotura: 8 Kg/cm | * Longitud del eje Standard: 40 mm | * Paso noto: 40-grs | * Incremento de temperatura plena carga: 75'C",
@@ -396,7 +396,7 @@
        "specs": {
         "POTENCIA / POWER": "3x250W",
         "A MANUAL": "300",
-        "A MOTOR.": "240",
+        "A MOTOR.": null,
         "B": "115",
         "C MANUAL": "18",
         "C MOTOR.": "- -",
@@ -414,7 +414,7 @@
        "specs": {
         "POTENCIA / POWER": "3x500W",
         "A MANUAL": "370",
-        "A MOTOR.": "300",
+        "A MOTOR.": null,
         "B": "165",
         "C MANUAL": "36",
         "C MOTOR.": "- -",
@@ -432,7 +432,7 @@
        "specs": {
         "POTENCIA / POWER": "3x1000W",
         "A MANUAL": "430",
-        "A MOTOR.": "350",
+        "A MOTOR.": null,
         "B": "235",
         "C MANUAL": "54",
         "C MOTOR.": "- -",
@@ -899,22 +899,22 @@
     {
      "page": 29,
      "item": "Potenciómetro 3W · 'Resistencia mín.: 52 - 22KQ'",
-     "why": "Texto con símbolos mal reconocidos (también en la capa de texto del PDF). El párrafo de la misma página dice 'desde 5 Ohm hasta 22 K', lo que sugiere 5 Ω - 22 kΩ, pero el PDF no lo escribe así: solo se conserva la cadena literal y no se publica ninguna lectura corregida; propuesta de revisión para el panel de admin."
+     "why": "Texto con símbolos mal reconocidos (también en la capa de texto del PDF). El párrafo de la misma página dice 'desde 5 Ohm hasta 22 K', lo que sugiere 5 Ω - 22 kΩ, pero el PDF no lo escribe así: solo se conserva la cadena literal y no se publica ninguna lectura corregida; propuesta de revisión para el panel de admin. [Verificación adversaria] specs puesto a null (no se publica); literal impreso confirmado en la imagen y conservado en raw_row."
     },
     {
      "page": 29,
      "item": "Potenciómetro 3W · 'Ángulo de giro: 2800'",
-     "why": "Falta el símbolo de grado: el valor literal es '2800'. Una lectura probable es 280º, pero no consta en el PDF; no se publica."
+     "why": "Falta el símbolo de grado: el valor literal es '2800'. Una lectura probable es 280º, pero no consta en el PDF; no se publica. [Verificación adversaria] specs puesto a null (no se publica); literal impreso confirmado en la imagen y conservado en raw_row."
     },
     {
      "page": 29,
      "item": "Potenciómetro 3W · 'Temperatura de trabajo: -20%/+60\"'",
-     "why": "Los símbolos '%' y '\"' ocupan el lugar de la unidad (probablemente ºC). Solo se conserva la cadena literal; la unidad no se asume."
+     "why": "Los símbolos '%' y '\"' ocupan el lugar de la unidad (probablemente ºC). Solo se conserva la cadena literal; la unidad no se asume. [Verificación adversaria] specs puesto a null (no se publica); literal impreso confirmado en la imagen y conservado en raw_row."
     },
     {
      "page": 29,
      "item": "Potenciómetro 3W · 'Eje Standard 12 mm, (8 6mm) de poliamida 6 con fibra de vidrio'",
-     "why": "El paréntesis '(8 6mm)' es ilegible. El dibujo rotula 6 junto al eje y 12 como longitud, pero el PDF no aclara qué significa el '8'; no se interpreta."
+     "why": "El paréntesis '(8 6mm)' es ilegible. El dibujo rotula 6 junto al eje y 12 como longitud, pero el PDF no aclara qué significa el '8'; no se interpreta. [Verificación adversaria] specs puesto a null (no se publica); literal impreso confirmado en la imagen y conservado en raw_row."
     },
     {
      "page": 29,
@@ -934,32 +934,32 @@
     {
      "page": 30,
      "item": "Potenciómetro 5W · 'Potencia máx 2.2:25%0,5W'",
-     "why": "Cadena ilegible (OCR defectuoso en el propio PDF). No es posible deducir la potencia máxima; la potencia 5W solo procede del título 'POTENCIÓMETRO 5W' y del subtítulo 'POTENCIÓMETROS BOBINADOS DE 3W Y 5W'. No se publica ningún valor de potencia máxima."
+     "why": "Cadena ilegible (OCR defectuoso en el propio PDF). No es posible deducir la potencia máxima; la potencia 5W solo procede del título 'POTENCIÓMETRO 5W' y del subtítulo 'POTENCIÓMETROS BOBINADOS DE 3W Y 5W'. No se publica ningún valor de potencia máxima. [Verificación adversaria] specs puesto a null (no se publica); literal impreso confirmado en la imagen y conservado en raw_row."
     },
     {
      "page": 30,
      "item": "Potenciómetro 5W · 'Gama de valores óhmicos: 52-50 KO'",
-     "why": "Cadena con símbolos mal reconocidos; lectura probable 5 Ω - 50 kΩ no confirmada por el PDF. Solo se conserva la cadena literal."
+     "why": "Cadena con símbolos mal reconocidos; lectura probable 5 Ω - 50 kΩ no confirmada por el PDF. Solo se conserva la cadena literal. [Verificación adversaria] specs puesto a null (no se publica); literal impreso confirmado en la imagen y conservado en raw_row."
     },
     {
      "page": 30,
      "item": "Potenciómetro 5W · 'Tolerancia: 6%,'",
-     "why": "Valor con coma final y posible error de reconocimiento (el 3W indica 10%). No se corrige; propuesta de verificación."
+     "why": "Valor con coma final y posible error de reconocimiento (el 3W indica 10%). No se corrige; propuesta de verificación. [Verificación adversaria] specs puesto a null (no se publica); literal impreso confirmado en la imagen y conservado en raw_row."
     },
     {
      "page": 30,
      "item": "Potenciómetro 5W · 'Angulo de glo, acánico; 264\"' y 'Angulo de gio'Biécirico: 250%'",
-     "why": "Rótulos y unidades mal reconocidos (probablemente ángulo de giro mecánico y eléctrico en grados). Solo se conservan las cadenas literales; no se asignan rótulos ni unidades corregidos."
+     "why": "Rótulos y unidades mal reconocidos (probablemente ángulo de giro mecánico y eléctrico en grados). Solo se conservan las cadenas literales; no se asignan rótulos ni unidades corregidos. [Verificación adversaria] specs puesto a null (no se publica); literal impreso confirmado en la imagen y conservado en raw_row."
     },
     {
      "page": 30,
      "item": "Potenciómetro 5W · 'Rosistoncia del ope a la rotura: 8 Kg/cm'",
-     "why": "Rótulo ilegible (probablemente resistencia del tope a la rotura). Se conserva el rótulo literal y '8 Kg/cm'; no se reinterpreta."
+     "why": "Rótulo ilegible (probablemente resistencia del tope a la rotura). Se conserva el rótulo literal y '8 Kg/cm'; no se reinterpreta. [Verificación adversaria] specs puesto a null (no se publica); literal impreso confirmado en la imagen y conservado en raw_row."
     },
     {
      "page": 30,
      "item": "Potenciómetro 5W · 'Paso noto: 40-grs'",
-     "why": "Rótulo ilegible (probablemente peso neto). Se conserva literal; no se publica como peso."
+     "why": "Rótulo ilegible (probablemente peso neto). Se conserva literal; no se publica como peso. [Verificación adversaria] specs puesto a null (no se publica); literal impreso confirmado en la imagen y conservado en raw_row."
     },
     {
      "page": 30,
@@ -1019,7 +1019,7 @@
     {
      "page": 33,
      "item": "Tabla 'REOSTATO TANDEM TRIPLE' · A MOTOR. idéntica a la del tandem doble",
-     "why": "En el tandem triple, A MOTOR. vale 240, 300 y 350, los mismos valores que en el tandem doble, y es menor que A MANUAL (300, 370, 430), al contrario que en el doble (A MOTOR. 240, 300, 350 > A MANUAL 180, 230, 270). Podría ser una repetición de valores en el catálogo. Se conservan tal cual con confianza 'media'; propuesta para verificar con el fabricante, no se publica como dato fiable."
+     "why": "En el tandem triple, A MOTOR. vale 240, 300 y 350, los mismos valores que en el tandem doble, y es menor que A MANUAL (300, 370, 430), al contrario que en el doble (A MOTOR. 240, 300, 350 > A MANUAL 180, 230, 270). Podría ser una repetición de valores en el catálogo. Se conservan tal cual con confianza 'media'; propuesta para verificar con el fabricante, no se publica como dato fiable. [Verificación adversaria] En specs, 'A MOTOR.' de las 3 filas del triple queda en null (no se publica); los valores 240/300/350 están en raw_row."
     },
     {
      "page": 33,
@@ -1061,7 +1061,108 @@
      "item": "Tablas de la p.35 · solo existen como imagen",
      "why": "Valores transcritos de la imagen (PNG a 250 dpi, tabla por tabla); sin capa de texto, no verificable automáticamente. Las filas de Tapas y Cubretuercas se leyeron sin ambigüedad (confianza alta); el resto lleva confianza media por los puntos anteriores."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 29,
+     "item": "Potenciómetro 3W · specs['Resistencia mín.']",
+     "was": "52 - 22KQ",
+     "now": null,
+     "why": "Cadena impresa '52 - 22KQ' (Ω/kΩ reconocidos como '5'/'Q'); además el rótulo 'mín.' no cuadra con un rango. Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 29,
+     "item": "Potenciómetro 3W · specs['Ángulo de giro']",
+     "was": "2800",
+     "now": null,
+     "why": "Impreso '2800' sin símbolo de grado; no se puede decidir entre 280º y 2800 (esto último es físicamente imposible, pero la lectura 280º es una conjetura). Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 29,
+     "item": "Potenciómetro 3W · specs['Temperatura de trabajo']",
+     "was": "-20%/+60\"",
+     "now": null,
+     "why": "Impreso '-20%/+60\"': los símbolos '%' y '\"' ocupan el lugar de la unidad, que no consta. Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 29,
+     "item": "Potenciómetro 3W · specs['Eje Standard']",
+     "was": "12 mm, (8 6mm) de poliamida 6 con fibra de vidrio",
+     "now": null,
+     "why": "El valor impreso incluye el paréntesis ilegible '(8 6mm)' (probable 'Ø 6mm', no confirmado). Lo legible ('12 mm', 'poliamida 6 con fibra de vidrio') sigue en other_facts y en raw_row. Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · specs['Potencia máx']",
+     "was": "2.2:25%0,5W",
+     "now": null,
+     "why": "Impreso '2.2:25%0,5W': cadena ininteligible; no se puede deducir ninguna potencia máxima. Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · specs['Gama de valores óhmicos']",
+     "was": "52-50 KO",
+     "now": null,
+     "why": "Impreso '52-50 KO': símbolos Ω/kΩ mal reconocidos; la lectura 5 Ω - 50 kΩ es conjetura. Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · specs['Tolerancia']",
+     "was": "6%,",
+     "now": null,
+     "why": "Impreso '6%,' (coma final, posible dígito mal reconocido; el 3W indica 10%). Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · specs['Angulo de glo, acánico']",
+     "was": "264\"",
+     "now": null,
+     "why": "Rótulo corrupto y unidad '\"' en lugar de grado; no se puede asignar significado ni unidad. Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · specs['Angulo de gio'Biécirico']",
+     "was": "250%",
+     "now": null,
+     "why": "Rótulo corrupto y unidad '%' en lugar de grado; no se puede asignar significado ni unidad. Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · specs['Rosistoncia del ope a la rotura']",
+     "was": "8 Kg/cm",
+     "now": null,
+     "why": "Rótulo corrupto ('Rosistoncia del ope'); no se puede decidir qué magnitud mide el '8 Kg/cm'. Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · specs['Paso noto']",
+     "was": "40-grs",
+     "now": null,
+     "why": "Rótulo corrupto ('Paso noto'); '40-grs' podría ser el peso neto pero el PDF no lo escribe así. Verificado sobre el PDF renderizado a 200 dpi: la cadena impresa es literalmente esa, con símbolos/rótulos corruptos en el propio PDF, así que el valor no se puede decidir con certeza. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 33,
+     "item": "Reóstato tandem triple 3x250W · specs['A MOTOR.']",
+     "was": "240",
+     "now": null,
+     "why": "Valor impreso (240/300/350, verificado sobre imagen a 200 dpi, coincide con el JSON) pero idéntico a A MOTOR. del tandem doble y MENOR que A MANUAL del triple (300/370/430), al revés que en el doble (Motor > Manual): probable repetición de valores en el catálogo. Un dato dudoso no se publica: specs=null; el literal queda en raw_row y en 'uncertain' como propuesta de verificación con el fabricante."
+    },
+    {
+     "page": 33,
+     "item": "Reóstato tandem triple 3x500W · specs['A MOTOR.']",
+     "was": "300",
+     "now": null,
+     "why": "Valor impreso (240/300/350, verificado sobre imagen a 200 dpi, coincide con el JSON) pero idéntico a A MOTOR. del tandem doble y MENOR que A MANUAL del triple (300/370/430), al revés que en el doble (Motor > Manual): probable repetición de valores en el catálogo. Un dato dudoso no se publica: specs=null; el literal queda en raw_row y en 'uncertain' como propuesta de verificación con el fabricante."
+    },
+    {
+     "page": 33,
+     "item": "Reóstato tandem triple 3x1000W · specs['A MOTOR.']",
+     "was": "350",
+     "now": null,
+     "why": "Valor impreso (240/300/350, verificado sobre imagen a 200 dpi, coincide con el JSON) pero idéntico a A MOTOR. del tandem doble y MENOR que A MANUAL del triple (300/370/430), al revés que en el doble (Motor > Manual): probable repetición de valores en el catálogo. Un dato dudoso no se publica: specs=null; el literal queda en raw_row y en 'uncertain' como propuesta de verificación con el fabricante."
+    }
+   ],
+   "verified": true
   }
  ]
 }
