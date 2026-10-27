@@ -257,6 +257,13 @@ for (const p of products) {
     itemsJs[v.ref] = { pid: p.id, n: Object.fromEntries(LANGS.map((l) => [l, p.name[l] || p.name.es])), v: specLabel, d: !!v.default, p: p.pathFor, img: im.thumb || im.file || null, th: im.file ? (thumbs[im.file] ? im.file : null) : null };
   }
 }
+// [WORKER] referencias pedibles para validar pedidos en el servidor (workers/api): { ref: { n: nombre ES, pid } }
+{
+  const wk = path.join(ROOT, 'workers', 'api', 'src', 'generated');
+  fs.mkdirSync(wk, { recursive: true });
+  const slim = Object.fromEntries(Object.entries(itemsJs).map(([ref, i]) => [ref, { n: i.n.es, pid: i.pid }]));
+  fs.writeFileSync(path.join(wk, 'items.js'), `// GENERADO por site/build.mjs (no editar a mano). refs pedibles: { ref: { n: nombre ES, pid } }\nexport default ${JSON.stringify(slim)};\n`);
+}
 const i18n = Object.fromEntries(LANGS.map((l) => [l, Object.fromEntries(Object.keys(T).map((k) => [k, T[k][l] ?? T[k].es]))]));
 const thumbsUsed = Object.fromEntries(Object.entries(thumbs).filter(([k]) => k !== '__logo' && Object.values(itemsJs).some((i) => i.th === k)));
 const catalogJs = `/* [DATA] generado por site/build.mjs — no editar */\nwindow.TV=window.TV||{};\nTV.meta=${JSON.stringify({ currency: meta.currency || 'EUR', demo: site.demo, recipients: meta.order_recipients?.to || [], contact: meta.contact })};\nTV.i18n=${JSON.stringify(i18n)};\nTV.items=${JSON.stringify(itemsJs)};\nTV.thumbs=${JSON.stringify(thumbsUsed)};\nTV.logo=${JSON.stringify(thumbs.__logo || null)};\n`;

@@ -1,0 +1,61 @@
+// [INDEX] Router del Worker torivac-api + tarea programada (precios cada 24 h).
+//   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login
+//   USUARIO   GET /api/auth/me · GET /api/orders (manager: todos; client: solo los suyos)
+//   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · GET|POST|DELETE /api/users
+import { json, readJson } from './util.js';
+import { isOriginAllowed, corsHeaders } from './cors.js';
+import { authenticate, requireRole, signSession } from './auth.js';
+import { checkLogin, createUser, listUsers, deleteUser } from './users.js';
+import { hit } from './ratelimit.js';
+import { parseContact } from './validate.js';
+import { handleOrder, handleContact } from './orders.js';
+import { loadPrices, KEY_META, rowsToPrices } from './prices.js';
+import { syncPrices, parseCsv } from './sheets.js';
+
+export default {
+  async fetch(request, env, ctx, deps = {}) {
+    const url = new URL(request.url); const origin = request.headers.get('Origin');
+    if (origin && !isOriginAllowed(origin, env)) return json({ ok: false, error: 'Origen no permitido' }, 403);
+    const cors = origin ? corsHeaders(origin) : {};
+    if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
+    const path = url.pathname.replace(/\/+$/, '') || '/';
+    try {
+      if (path === '/api/health') return json({ ok: true, time: new Date().toISOString() }, 200, cors);
+      if (path === '/api/prices' && request.method === 'GET') { const p = await loadPrices(env); const meta = JSON.parse((await env.KV.get(KEY_META)) || 'null'); return json({ prices: p, meta }, 200, { ...cors, 'Cache-Control': 'public, max-age=300' }); }
+      if (path === '/api/order' && request.method === 'POST') return handleOrder(request, env, await readJson(request), { ...deps, cors });
+      if (path === '/api/contact' && request.method === 'POST') { const p = parseContact(await readJson(request)); if (p.error) return json({ ok: false, error: p.error }, 400, cors); return handleContact(request, env, p.contact, { ...deps, cors }); }
+      if (path === '/api/auth/login' && request.method === 'POST') {
+        const b = (await readJson(request)) || {}; const email = String(b.email || '').trim().toLowerCase();
+        const rl = await hit(env, 'login', `${request.headers.get('CF-Connecting-IP') || '0'}:${email}`, { max: 6 });
+        if (!rl.allowed) return json({ ok: false, error: 'Demasiados intentos. Espera unos minutos.' }, 429, cors);
+        const u = await checkLogin(env, email, b.password);
+        if (!u) return json({ ok: false, error: 'Credenciales incorrectas' }, 401, cors);
+        return json({ ok: true, token: await signSession({ sub: u.email, role: u.role, name: u.name }, env.SESSION_SECRET), user: u }, 200, cors);
+      }
+      const who = await authenticate(request, env);
+      if (path === '/api/auth/me') return who ? json({ ok: true, user: who }, 200, cors) : json({ ok: false }, 401, cors);
+      if (!who) return json({ ok: false, error: 'No autorizado' }, 401, cors);
+      if (path === '/api/orders' && request.method === 'GET') {
+        const out = []; let cursor;
+        do { const r = await env.KV.list({ prefix: 'order:', cursor }); for (const k of r.keys) { const o = JSON.parse((await env.KV.get(k.name)) || 'null'); if (o && (who.role === 'manager' || o.customer.email === who.sub)) out.push(o); } cursor = r.list_complete ? undefined : r.cursor; } while (cursor);
+        return json({ ok: true, orders: out.sort((a, b) => b.at.localeCompare(a.at)) }, 200, cors);
+      }
+      if (!requireRole(who, 'manager')) return json({ ok: false, error: 'Solo para managers' }, 403, cors);
+      if (path === '/api/prices/refresh' && request.method === 'POST') return json({ ok: true, meta: await syncPrices(env, { fetchImpl: deps.fetchImpl || fetch, reason: `manual:${who.sub}`, force: false }) }, 200, cors);
+      if (path === '/api/prices/upload' && request.method === 'POST') {
+        const b = (await readJson(request, 3_000_000)) || {}; const rows = Array.isArray(b.rows) ? b.rows : typeof b.csv === 'string' ? parseCsv(b.csv) : null;
+        if (!rows) return json({ ok: false, error: 'Envía rows[] o csv' }, 400, cors);
+        if (b.dry_run) { const next = rowsToPrices(rows, 'upload'); const cur = await loadPrices(env); const { diffPrices } = await import('./prices.js'); return json({ ok: true, dry_run: true, refs: Object.keys(next.items).length, diff: diffPrices(cur, next) }, 200, cors); }
+        return json({ ok: true, meta: await syncPrices(env, { rows, source: `upload:${who.sub}`, reason: `upload:${who.sub}`, force: b.force === true }) }, 200, cors);
+      }
+      if (path === '/api/users' && request.method === 'GET') return json({ ok: true, users: await listUsers(env) }, 200, cors);
+      if (path === '/api/users' && request.method === 'POST') { const r = await createUser(env, (await readJson(request)) || {}); return r.error ? json({ ok: false, error: r.error }, r.status || 400, cors) : json({ ok: true, user: r.user }, 201, cors); }
+      if (path.startsWith('/api/users/') && request.method === 'DELETE') { await deleteUser(env, decodeURIComponent(path.split('/').pop())); return json({ ok: true }, 200, cors); }
+      return json({ ok: false, error: 'No encontrado' }, 404, cors);
+    } catch (e) { console.error(e); return json({ ok: false, error: e.message || 'Error interno' }, 500, cors); }
+  },
+  async scheduled(event, env, ctx) {
+    try { const meta = await syncPrices(env, { reason: 'cron' }); console.log('precios sincronizados', JSON.stringify(meta)); }
+    catch (e) { console.error('Sincronización de precios fallida:', e.message); }
+  },
+};

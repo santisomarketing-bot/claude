@@ -1,0 +1,31 @@
+# Worker único de Torivac. Pasos de puesta en marcha en README.md.
+name = "torivac-api"
+main = "src/index.js"
+compatibility_date = "2026-09-26"
+workers_dev = true
+
+# Un solo namespace KV (menos recursos que crear a mano, como aprendió whynot-sites). Prefijos de clave:
+#   user:<email> · order:<nº> · prices:current · prices:meta · prices:history:<ts> · rl:<ip> · counter:<yyyymmdd>
+# Crear con:  npx wrangler kv namespace create TORIVAC_KV   y pegar aquí el id.
+[[kv_namespaces]]
+binding = "KV"
+id = "REEMPLAZAR_CON_EL_ID_DEL_KV"
+
+# Sincronización de precios cada 24 h (03:00 UTC). La actualización manual es POST /api/prices/refresh (manager).
+[triggers]
+crons = ["0 3 * * *"]
+
+[vars]
+ORDER_TO = "info@torivac.com,mzamora@torivac.com"      # POR CONFIRMAR con el cliente
+ORDER_FROM = "Torivac Web <pedidos@torivac.com>"        # dominio verificado en Resend
+ALLOWED_ORIGINS = "http://localhost:8080,http://127.0.0.1:8080"
+PRICE_SHEET_ID = ""                                      # id de la hoja de Google (docs.google.com/spreadsheets/d/<ID>/…)
+PRICE_SHEET_RANGE = "Precios!A:O"
+PRICE_CSV_URL = ""                                       # alternativa sin credenciales: URL de exportación CSV de la hoja (compartida con enlace)
+
+# Secretos (npx wrangler secret put <NOMBRE>):
+#   RESEND_API_KEY             envío de correo (Resend)
+#   ADMIN_API_TOKEN            token maestro (equivale a un manager) para scripts/CI
+#   SESSION_SECRET             clave HMAC de las sesiones de usuario (≥ 32 caracteres aleatorios)
+#   TURNSTILE_SECRET           (opcional) Cloudflare Turnstile para pedidos/contacto
+#   GOOGLE_SERVICE_ACCOUNT     JSON de la cuenta de servicio con acceso de lectura a la hoja de precios

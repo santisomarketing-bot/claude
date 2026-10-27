@@ -1,0 +1,13 @@
+{
+  "name": "torivac-api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Worker de Torivac: pedidos por email, contacto, precios desde Google Sheets (cron 24 h + manual) y login manager/cliente.",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": { "wrangler": "^4.0.0" }
+}
