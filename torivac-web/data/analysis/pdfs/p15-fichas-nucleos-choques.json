@@ -1,0 +1,2554 @@
+{
+ "job": "p15-fichas-nucleos-choques",
+ "documents": [
+  {
+   "file": "Caracteristicas_Nucleos_Toroidales.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "NÚCLEOS TOROIDALES - CARACTERÍSTICAS (página 20 del catálogo)",
+   "families": [
+    {
+     "family": "Núcleos toroidales",
+     "series": null,
+     "page": 1,
+     "description": "CARACTERÍSTICAS. Los núcleos toroidales que fabrica Torivac están construidos con plancha magnética de aleaciones de hierro-silicio, de grano orientado, de muy bajas pérdidas y alta inducción de saturación que, tratados térmicamente, mejoran su permeabilidad magnética en aproximadamente un 40%. Las calidades de plancha utilizadas son las tipo M4 ó M5, según las diferentes aplicaciones. Todos los núcleos van soldados al final del enrollado, para evitar posibles vibraciones, y posteriormente aislados mediante cápsulas de poliamida-6 con 30% de fibra de vidrio, ideales para soportar temperaturas próximas a los 150º C.",
+     "general_specs": {
+      "Material de la plancha": "plancha magnética de aleaciones de hierro-silicio, de grano orientado, de muy bajas pérdidas y alta inducción de saturación",
+      "Calidades de plancha": "tipo M4 ó M5, según las diferentes aplicaciones",
+      "Mejora de la permeabilidad magnética (con tratamiento térmico)": "aproximadamente un 40%",
+      "Fijación del núcleo": "soldados al final del enrollado, para evitar posibles vibraciones",
+      "Aislamiento": "cápsulas de poliamida-6 con 30% de fibra de vidrio",
+      "Temperatura soportada por la cápsula": "próximas a los 150º C",
+      "Columnas de la tabla": "A | B | C | PESO (KG) / WEIGHT (KG) | CM2 (cabeceras tal cual; el PDF no rotula la unidad de A, B, C ni define CM2)",
+      "Filas de la tabla": "56 (dos bloques de 28 filas, izquierda y derecha, ordenados por A, B, C)"
+     },
+     "models": [
+      {
+       "reference": "A60-B40-C20",
+       "page": 1,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "20",
+        "PESO (KG)": "0.235",
+        "CM2": "2"
+       },
+       "raw_row": "60 | 40 | 20 | 0.235 | 2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A60-B40-C25",
+       "page": 1,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "25",
+        "PESO (KG)": "0.293",
+        "CM2": "2.5"
+       },
+       "raw_row": "60 | 40 | 25 | 0.293 | 2.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A60-B40-C30",
+       "page": 1,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "30",
+        "PESO (KG)": "0.352",
+        "CM2": "3"
+       },
+       "raw_row": "60 | 40 | 30 | 0.352 | 3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A60-B40-C35",
+       "page": 1,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "35",
+        "PESO (KG)": "0.411",
+        "CM2": "3.5"
+       },
+       "raw_row": "60 | 40 | 35 | 0.411 | 3.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A65-B40-C20",
+       "page": 1,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "20",
+        "PESO (KG)": "0.307",
+        "CM2": "2.5"
+       },
+       "raw_row": "65 | 40 | 20 | 0.307 | 2.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A65-B40-C25",
+       "page": 1,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "25",
+        "PESO (KG)": "0.400",
+        "CM2": "3.13"
+       },
+       "raw_row": "65 | 40 | 25 | 0.400 | 3.13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A65-B40-C30",
+       "page": 1,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "30",
+        "PESO (KG)": "0.480",
+        "CM2": "3.76"
+       },
+       "raw_row": "65 | 40 | 30 | 0.480 | 3.76",
+       "confidence": "media"
+      },
+      {
+       "reference": "A65-B40-C32",
+       "page": 1,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "32",
+        "PESO (KG)": "0.512",
+        "CM2": "4"
+       },
+       "raw_row": "65 | 40 | 32 | 0.512 | 4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B40-C20",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "20",
+        "PESO (KG)": "0.386",
+        "CM2": "3"
+       },
+       "raw_row": "70 | 40 | 20 | 0.386 | 3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B40-C22",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "22",
+        "PESO (KG)": "0.425",
+        "CM2": "3.3"
+       },
+       "raw_row": "70 | 40 | 22 | 0.425 | 3.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B40-C25",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "25",
+        "PESO (KG)": "0.483",
+        "CM2": "3.75"
+       },
+       "raw_row": "70 | 40 | 25 | 0.483 | 3.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B40-C32",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "32",
+        "PESO (KG)": "0.618",
+        "CM2": "4.8"
+       },
+       "raw_row": "70 | 40 | 32 | 0.618 | 4.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B45-C22",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "45",
+        "C": "22",
+        "PESO (KG)": "0.365",
+        "CM2": "2.75"
+       },
+       "raw_row": "70 | 45 | 22 | 0.365 | 2.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B45-C25",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "45",
+        "C": "25",
+        "PESO (KG)": "0.415",
+        "CM2": "3.13"
+       },
+       "raw_row": "70 | 45 | 25 | 0.415 | 3.13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A75-B40-C13",
+       "page": 1,
+       "specs": {
+        "A": "75",
+        "B": "40",
+        "C": "13",
+        "PESO (KG)": "0.314",
+        "CM2": "2.28"
+       },
+       "raw_row": "75 | 40 | 13 | 0.314 | 2.28",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A75-B40-C15",
+       "page": 1,
+       "specs": {
+        "A": "75",
+        "B": "40",
+        "C": "15",
+        "PESO (KG)": "0.362",
+        "CM2": "2.63"
+       },
+       "raw_row": "75 | 40 | 15 | 0.362 | 2.63",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80-B50-C25",
+       "page": 1,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "25",
+        "PESO (KG)": "0.570",
+        "CM2": "3.75"
+       },
+       "raw_row": "80 | 50 | 25 | 0.570 | 3.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80-B50-C30",
+       "page": 1,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "30",
+        "PESO (KG)": "0.684",
+        "CM2": "4.5"
+       },
+       "raw_row": "80 | 50 | 30 | 0.684 | 4.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80-B50-C35",
+       "page": 1,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "35",
+        "PESO (KG)": "0.798",
+        "CM2": "5.25"
+       },
+       "raw_row": "80 | 50 | 35 | 0.798 | 5.25",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80-B50-C40",
+       "page": 1,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "40",
+        "PESO (KG)": "0.912",
+        "CM2": "6"
+       },
+       "raw_row": "80 | 50 | 40 | 0.912 | 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A85-B40-C13",
+       "page": 1,
+       "specs": {
+        "A": "85",
+        "B": "40",
+        "C": "13",
+        "PESO (KG)": "4.280",
+        "CM2": "2.93"
+       },
+       "raw_row": "85 | 40 | 13 | 4.280 | 2.93",
+       "confidence": "baja"
+      },
+      {
+       "reference": "A90-B50-C20",
+       "page": 1,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "20",
+        "PESO (KG)": "0.652",
+        "CM2": "4"
+       },
+       "raw_row": "90 | 50 | 20 | 0.652 | 4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A90-B50-C22",
+       "page": 1,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "22",
+        "PESO (KG)": "0.717",
+        "CM2": "4.4"
+       },
+       "raw_row": "90 | 50 | 22 | 0.717 | 4.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A90-B50-C25",
+       "page": 1,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "25",
+        "PESO (KG)": "0.815",
+        "CM2": "5"
+       },
+       "raw_row": "90 | 50 | 25 | 0.815 | 5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A90-B50-C30",
+       "page": 1,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "30",
+        "PESO (KG)": "0.978",
+        "CM2": "6"
+       },
+       "raw_row": "90 | 50 | 30 | 0.978 | 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A95-B50-C40",
+       "page": 1,
+       "specs": {
+        "A": "95",
+        "B": "50",
+        "C": "40",
+        "PESO (KG)": "1.527",
+        "CM2": "9"
+       },
+       "raw_row": "95 | 50 | 40 | 1.527 | 9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100-B60-C25",
+       "page": 1,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "25",
+        "PESO (KG)": "0.940",
+        "CM2": "5"
+       },
+       "raw_row": "100 | 60 | 25 | 0.940 | 5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100-B60-C30",
+       "page": 1,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "30",
+        "PESO (KG)": "1.130",
+        "CM2": "6"
+       },
+       "raw_row": "100 | 60 | 30 | 1.130 | 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100-B60-C35",
+       "page": 1,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "35",
+        "PESO (KG)": "1.318",
+        "CM2": "7"
+       },
+       "raw_row": "100 | 60 | 35 | 1.318 | 7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100-B60-C38",
+       "page": 1,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "38",
+        "PESO (KG)": "1.430",
+        "CM2": "7.6"
+       },
+       "raw_row": "100 | 60 | 38 | 1.430 | 7.6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100-B60-C40",
+       "page": 1,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "40",
+        "PESO (KG)": "1.500",
+        "CM2": "8"
+       },
+       "raw_row": "100 | 60 | 40 | 1.500 | 8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A101-B55-C25",
+       "page": 1,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "25",
+        "PESO (KG)": "1.050",
+        "CM2": "5.75"
+       },
+       "raw_row": "101 | 55 | 25 | 1.050 | 5.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A101-B55-C30",
+       "page": 1,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "30",
+        "PESO (KG)": "1.260",
+        "CM2": "6.9"
+       },
+       "raw_row": "101 | 55 | 30 | 1.260 | 6.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A101-B55-C35",
+       "page": 1,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "35",
+        "PESO (KG)": "1.058",
+        "CM2": "8.05"
+       },
+       "raw_row": "101 | 55 | 35 | 1.058 | 8.05",
+       "confidence": "baja"
+      },
+      {
+       "reference": "A101-B55-C38",
+       "page": 1,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "38",
+        "PESO (KG)": "1.148",
+        "CM2": "8.74"
+       },
+       "raw_row": "101 | 55 | 38 | 1.148 | 8.74",
+       "confidence": "baja"
+      },
+      {
+       "reference": "A101-B55-C40",
+       "page": 1,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "40",
+        "PESO (KG)": "1.208",
+        "CM2": "9.2"
+       },
+       "raw_row": "101 | 55 | 40 | 1.208 | 9.2",
+       "confidence": "baja"
+      },
+      {
+       "reference": "A105-B65-C35",
+       "page": 1,
+       "specs": {
+        "A": "105",
+        "B": "65",
+        "C": "35",
+        "PESO (KG)": "1.392",
+        "CM2": "7"
+       },
+       "raw_row": "105 | 65 | 35 | 1.392 | 7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A105-B65-C45",
+       "page": 1,
+       "specs": {
+        "A": "105",
+        "B": "65",
+        "C": "45",
+        "PESO (KG)": "1.790",
+        "CM2": "9"
+       },
+       "raw_row": "105 | 65 | 45 | 1.790 | 9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B48-C20",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "48",
+        "C": "20",
+        "PESO (KG)": "1.095",
+        "CM2": "6"
+       },
+       "raw_row": "108 | 48 | 20 | 1.095 | 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B58-C25",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "25",
+        "PESO (KG)": "1.215",
+        "CM2": "6.25"
+       },
+       "raw_row": "108 | 58 | 25 | 1.215 | 6.25",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B58-C30",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "30",
+        "PESO (KG)": "1.458",
+        "CM2": "7.5"
+       },
+       "raw_row": "108 | 58 | 30 | 1.458 | 7.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B58-C38",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "38",
+        "PESO (KG)": "1.847",
+        "CM2": "9.5"
+       },
+       "raw_row": "108 | 58 | 38 | 1.847 | 9.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B58-C40",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "40",
+        "PESO (KG)": "1.944",
+        "CM2": "10"
+       },
+       "raw_row": "108 | 58 | 40 | 1.944 | 10",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B58-C45",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "45",
+        "PESO (KG)": "2.187",
+        "CM2": "11.3"
+       },
+       "raw_row": "108 | 58 | 45 | 2.187 | 11.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135-B70-C35",
+       "page": 1,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "35",
+        "PESO (KG)": "2.728",
+        "CM2": "11.4"
+       },
+       "raw_row": "135 | 70 | 35 | 2.728 | 11.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135-B70-C40",
+       "page": 1,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "40",
+        "PESO (KG)": "3.118",
+        "CM2": "13"
+       },
+       "raw_row": "135 | 70 | 40 | 3.118 | 13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135-B70-C45",
+       "page": 1,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "45",
+        "PESO (KG)": "3.507",
+        "CM2": "14.63"
+       },
+       "raw_row": "135 | 70 | 45 | 3.507 | 14.63",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135-B70-C50",
+       "page": 1,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "50",
+        "PESO (KG)": "3.897",
+        "CM2": "16.3"
+       },
+       "raw_row": "135 | 70 | 50 | 3.897 | 16.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135-B70-C53",
+       "page": 1,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "53",
+        "PESO (KG)": "4.130",
+        "CM2": "17.2"
+       },
+       "raw_row": "135 | 70 | 53 | 4.130 | 17.2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A140-B70-C70",
+       "page": 1,
+       "specs": {
+        "A": "140",
+        "B": "70",
+        "C": "70",
+        "PESO (KG)": "6.025",
+        "CM2": "24.5"
+       },
+       "raw_row": "140 | 70 | 70 | 6.025 | 24.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C35",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "35",
+        "PESO (KG)": "3.455",
+        "CM2": "13.13"
+       },
+       "raw_row": "150 | 75 | 35 | 3.455 | 13.13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C40",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "40",
+        "PESO (KG)": "3.950",
+        "CM2": "15"
+       },
+       "raw_row": "150 | 75 | 40 | 3.950 | 15",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C45",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "45",
+        "PESO (KG)": "4.444",
+        "CM2": "16.9"
+       },
+       "raw_row": "150 | 75 | 45 | 4.444 | 16.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C50",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "50",
+        "PESO (KG)": "4.937",
+        "CM2": "18.8"
+       },
+       "raw_row": "150 | 75 | 50 | 4.937 | 18.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C60",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "60",
+        "PESO (KG)": "5.925",
+        "CM2": "22.5"
+       },
+       "raw_row": "150 | 75 | 60 | 5.925 | 22.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C75",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "75",
+        "PESO (KG)": "6.912",
+        "CM2": "26.3"
+       },
+       "raw_row": "150 | 75 | 75 | 6.912 | 26.3",
+       "confidence": "baja"
+      }
+     ],
+     "options_accessories": [
+      "Cápsula de aislamiento de poliamida-6 con 30% de fibra de vidrio (todos los núcleos van aislados mediante cápsulas)"
+     ],
+     "ordering_info": "El PDF no imprime referencia ni código de pedido para los núcleos: la tabla se identifica solo por las columnas A, B, C. El identificador 'A<n>-B<n>-C<n>' usado en 'reference' es una etiqueta de trabajo construida con esas columnas, NO un código de Torivac."
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 20 del catálogo impreso (número al pie). Rótulo de cabecera: NÚCLEOS TOROIDALES.",
+     "page": 1
+    },
+    {
+     "fact": "Tabla de núcleos: la tabla de 56 filas (A, B, C, PESO (KG)/WEIGHT (KG), CM2) está dibujada como imagen, sin capa de texto; se ha transcrito del render a 200 dpi y se ha contrastado fila a fila con Nucleos-toroidales.pdf.",
+     "page": 1
+    },
+    {
+     "fact": "DUPLICIDAD: texto y tabla idénticos a Nucleos-toroidales.pdf (pág. 23 impresa); solo cambian el diseño de página y el número de página.",
+     "page": 1
+    },
+    {
+     "fact": "Núcleos de plancha magnética de hierro-silicio de grano orientado, tratados térmicamente (+40% aprox. de permeabilidad), calidades M4 ó M5, soldados al final del enrollado.",
+     "page": 1
+    },
+    {
+     "fact": "Aislamiento con cápsulas de poliamida-6 con 30% de fibra de vidrio, ideales para temperaturas próximas a los 150º C.",
+     "page": 1
+    },
+    {
+     "fact": "Las calidades de plancha M4 ó M5 se citan sin norma ni espesor asociados.",
+     "page": 1
+    },
+    {
+     "fact": "Cinco fotografías de núcleos toroidales encapsulados (sin pie de foto ni referencia).",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las columnas A, B y C",
+     "why": "La tabla no rotula ninguna unidad para A, B, C (solo 'PESO (KG)' lleva unidad). Por comprobación aritmética, CM2 = (A-B)/2 x C / 100 en 54 de las 56 filas (con A, B, C en mm), lo que sugiere A = diámetro exterior, B = diámetro interior, C = ancho de banda en mm y CM2 = sección en cm2, pero es inferencia mía, no texto del PDF: no publicar 'mm' ni el significado de A/B/C/CM2 sin confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Fila A=85, B=40, C=13: PESO (KG) = 4.280",
+     "why": "Impreso así en el PDF (leído en imagen a 200 dpi y confirmado en los dos PDFs de núcleos). Es incoherente con el resto de la tabla: la fila vecina 75/40/13 pesa 0.314 y la relación peso / (CM2 x (A+B)/2) de las otras 55 filas es ~2.31-2.44 mientras que aquí sale ~23.4 (diez veces mayor). Posible errata de coma (0.428). No se corrige: dato dudoso, no publicar; proponer a Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Filas A=101, B=55, C=35 / 38 / 40: PESO (KG) = 1.058 / 1.148 / 1.208",
+     "why": "Impreso así. El peso de estas tres filas es menor que el de 101/55/30 (1.260) pese a tener mayor C y mayor CM2 (8.05 / 8.74 / 9.2); su relación peso/(CM2 x (A+B)/2) es ~1.68 frente a ~2.34 de 101/55/25 y 101/55/30 y del resto de la tabla. Posible errata o dato de otra serie. No publicar sin confirmar."
+    },
+    {
+     "page": 1,
+     "item": "Fila A=150, B=75, C=75: CM2 = 26.3 y PESO (KG) = 6.912",
+     "why": "Impreso así. Con A=150 y B=75, CM2 = 26.3 y peso 6.912 corresponden a C=70 (CM2 = 37.5 x 70 / 100 = 26.25; peso proporcional al de 150/75/60 = 5.925), no a C=75 (daría CM2 = 28.125). Posible errata en la columna C (70 en lugar de 75) o en CM2/peso. No se corrige; dato dudoso, no publicar sin confirmar."
+    },
+    {
+     "page": 1,
+     "item": "Fila A=65, B=40, C=30: CM2 = 3.76",
+     "why": "Impreso 3.76; el cálculo (65-40)/2 x 30 / 100 da 3.75 y la fila 65/40/25 imprime 3.13 (3.125 redondeado). Diferencia de 0.01, probable errata de redondeo. Confianza media."
+    },
+    {
+     "page": 1,
+     "item": "Cabecera 'CM2'",
+     "why": "En la imagen el '2' va en tamaño pequeño tras 'CM'; se transcribe como 'CM2'. El PDF no define la magnitud."
+    },
+    {
+     "page": 1,
+     "item": "Rótulo de referencia",
+     "why": "La tabla no tiene referencias de producto ni de pedido; ver ordering_info. No inventar códigos."
+    },
+    {
+     "page": 1,
+     "item": "El PDF no indica la tensión, potencia, frecuencia ni inducción de saturación de los núcleos",
+     "why": "Solo hay descripción cualitativa más A, B, C, peso y CM2. 'Alta inducción de saturación', 'muy bajas pérdidas' no llevan cifra."
+    },
+    {
+     "page": 1,
+     "item": "Documento duplicado de Nucleos-toroidales.pdf",
+     "why": "Mismo texto y misma tabla; para el catálogo web se debe usar una sola vez (las erratas de la tabla se repiten en ambos)."
+    }
+   ]
+  },
+  {
+   "file": "CHOQUES-TOROIDALES.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "CHOQUES TOROIDALES - CHOQUES TOROIDALES DE POLVO DE HIERRO (página 20 del catálogo)",
+   "families": [
+    {
+     "family": "Choques toroidales de polvo de hierro",
+     "series": null,
+     "page": 1,
+     "description": "CHOQUES TOROIDALES DE POLVO DE HIERRO. Los choques toroidales de polvo de hierro, son los componentes inductivos ideales para el diseño y fabricación de convetidores CC/CC ó fuentes conmutadas CA/CC así como para filtros de red, filtros para interferencias electromagnéticas y otros choques de la gama de bajas frecuencias. Sus características principales son: * Baja dispersión de campo magnético, limitando al mínimo los campos radiados. * Alto rendimiento, permitiendo filtrar o almacenar energía en un mínimo espacio. * Bajas pérdidas en toda la gama de frecuencias de trabajo. * Alta estabilidad frente a la temperatura con un margen de -50ºC a + 90ºC. * Amplio margen de frecuencias 10Khz a 150Khz. La familia está compuesta de 27 valores inductivos distintos que corresponden a los valores normalizados para los componentes pasivos en electrónica, y de 11 núcleos distintos, obteniéndose 297 referencias distintas que permiten, en la mayoría de los casos, cubrir las necesidades de diseño. Podemos, fabricar modelos especiales de otros valores o con otros tipos de núcleo de diferente tamaño, atendiendo a las especificaciones de cada cliente.",
+     "general_specs": {
+      "Material del núcleo": "polvo de hierro",
+      "Aplicaciones": "diseño y fabricación de convetidores CC/CC ó fuentes conmutadas CA/CC, filtros de red, filtros para interferencias electromagnéticas y otros choques de la gama de bajas frecuencias",
+      "Estabilidad frente a la temperatura (margen)": "-50ºC a + 90ºC",
+      "Margen de frecuencias": "10Khz a 150Khz",
+      "Valores inductivos distintos": "27",
+      "Núcleos distintos": "11",
+      "Referencias distintas": "297",
+      "Fabricación especial": "modelos especiales de otros valores o con otros tipos de núcleo de diferente tamaño, según las especificaciones de cada cliente",
+      "Cotas de la tabla de dimensiones": "Dimensiones (mm.) / Dimensions (mm.): D, A, L"
+     },
+     "models": [
+      {
+       "reference": "1305",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "15",
+        "A (mm.)": "7",
+        "L (mm.)": "30"
+       },
+       "raw_row": "1305 | 15 | 7 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1307",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "16",
+        "A (mm.)": "10",
+        "L (mm.)": "30"
+       },
+       "raw_row": "1307 | 16 | 10 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1706",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "20",
+        "A (mm.)": "8",
+        "L (mm.)": "30"
+       },
+       "raw_row": "1706 | 20 | 8 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2006",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "23",
+        "A (mm.)": "9",
+        "L (mm.)": "30"
+       },
+       "raw_row": "2006 | 23 | 9 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2010",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "23",
+        "A (mm.)": "14",
+        "L (mm.)": "30"
+       },
+       "raw_row": "2010 | 23 | 14 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2408",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "27",
+        "A (mm.)": "11",
+        "L (mm.)": "30"
+       },
+       "raw_row": "2408 | 27 | 11 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2711",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "32",
+        "A (mm.)": "14",
+        "L (mm.)": "30"
+       },
+       "raw_row": "2711 | 32 | 14 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3311",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "37",
+        "A (mm.)": "15",
+        "L (mm.)": "30"
+       },
+       "raw_row": "3311 | 37 | 15 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3915",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "44",
+        "A (mm.)": "20",
+        "L (mm.)": "30"
+       },
+       "raw_row": "3915 | 44 | 20 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "4715",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "52",
+        "A (mm.)": "21",
+        "L (mm.)": "30"
+       },
+       "raw_row": "4715 | 52 | 21 | 30",
+       "confidence": "media"
+      },
+      {
+       "reference": "5122",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "57",
+        "A (mm.)": "28",
+        "L (mm.)": "30"
+       },
+       "raw_row": "5122 | 57 | 28 | 30",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Montaje HORIZONTAL / H (esquema con cotas A y L)",
+      "Montaje VERTICAL / V (esquema con cotas D y L)",
+      "Modelos especiales de otros valores o con otros tipos de núcleo de diferente tamaño, bajo especificación del cliente"
+     ],
+     "ordering_info": "El PDF solo da los 11 códigos de núcleo (1305 ... 5122) y los 27 valores de L en uH (11 x 27 = 297 combinaciones, coincide con las '297 referencias distintas' del texto). No imprime cómo se forma la referencia completa de pedido (núcleo + valor de L + montaje H/V): no inventar códigos."
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 20 del catálogo impreso (número al pie). Rótulo de cabecera: CHOQUES TOROIDALES.",
+     "page": 1
+    },
+    {
+     "fact": "La tabla de dimensiones tiene cabecera bilingüe español/inglés: 'Dimensiones (mm.) / Dimensions (mm.)' y 'Referencia / Reference', con columnas D, A, L y 11 filas (referencias 1305 a 5122); L = 30 en todas.",
+     "page": 1
+    },
+    {
+     "fact": "Esquemas de montaje: HORIZONTAL / H (cotas A y L) y VERTICAL / V (cotas D y L). Fotografía de un choque toroidal bobinado con cobre y dos cables de salida.",
+     "page": 1
+    },
+    {
+     "fact": "Temperatura: 'Alta estabilidad frente a la temperatura con un margen de -50ºC a + 90ºC'. Frecuencias: 'Amplio margen de frecuencias 10Khz a 150Khz'.",
+     "page": 1
+    },
+    {
+     "fact": "La familia son 27 valores inductivos (valores normalizados de componentes pasivos) x 11 núcleos = 297 referencias. Esta página NO incluye la tabla de intensidades por L y modelo (está en Cracteristicas_Choques_Toroidales.pdf, p2).",
+     "page": 1
+    },
+    {
+     "fact": "DUPLICIDAD: el texto es idéntico al de la página 1 de Cracteristicas_Choques_Toroidales.pdf y la tabla de dimensiones es la misma; solo cambian el diseño y el número de página.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Significado de D, A y L en la tabla de dimensiones",
+     "why": "El texto no define D, A, L; solo aparecen como cotas en los esquemas HORIZONTAL / H (A y L) y VERTICAL / V (D y L). Por el dibujo, D sería el diámetro exterior, A la altura del anillo y L la longitud de patillas/cables, pero es lectura del dibujo, no texto: no publicar esas definiciones sin confirmar. La unidad (mm.) sí está impresa en la cabecera de la tabla."
+    },
+    {
+     "page": 1,
+     "item": "Referencia 4715 (tabla de dimensiones) frente a 4718 (cabecera de la tabla de intensidades de Cracteristicas_Choques_Toroidales.pdf p2)",
+     "why": "La tabla de dimensiones imprime 4715 (D=52, A=21, L=30) y la de intensidades 4718 en la columna que ocupa esa posición. Es el mismo orden y posición, así que probablemente es una errata de 4715/4718, pero no hay forma de confirmarlo con los PDFs. Dato dudoso: no publicar el código hasta que Torivac lo confirme."
+    },
+    {
+     "page": 1,
+     "item": "Erratas de texto en el PDF: 'convetidores' (sic, por 'convertidores'), 'Podemos, fabricar' (coma sobrante), 'Khz' (por kHz)",
+     "why": "Se conserva el texto tal cual en description y general_specs; al redactar la web no copiar la errata, pero no cambiar ninguna cifra."
+    },
+    {
+     "page": 1,
+     "item": "Sin tensión, corriente nominal, resistencia, material de la bobina ni norma",
+     "why": "La ficha no da tensión (no hay voltage_mentions), ni DCR, ni norma aplicable; solo temperatura, frecuencia, número de valores/núcleos, dimensiones y (en la ficha de 2 páginas) una matriz de intensidad."
+    },
+    {
+     "page": 1,
+     "item": "Documento duplicado de Cracteristicas_Choques_Toroidales.pdf (p1)",
+     "why": "Mismo texto y misma tabla de dimensiones; usar una sola vez en el catálogo web."
+    }
+   ]
+  },
+  {
+   "file": "Cracteristicas_Choques_Toroidales.pdf",
+   "pages": [
+    1,
+    2
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "CHOQUES TOROIDALES - CHOQUES TOROIDALES DE POLVO DE HIERRO (ficha de 2 páginas, págs. 18-19 del catálogo)",
+   "families": [
+    {
+     "family": "Choques toroidales de polvo de hierro",
+     "series": null,
+     "page": 1,
+     "description": "CHOQUES TOROIDALES DE POLVO DE HIERRO. Los choques toroidales de polvo de hierro, son los componentes inductivos ideales para el diseño y fabricación de convetidores CC/CC ó fuentes conmutadas CA/CC así como para filtros de red, filtros para interferencias electromagnéticas y otros choques de la gama de bajas frecuencias. Sus características principales son: * Baja dispersión de campo magnético, limitando al mínimo los campos radiados. * Alto rendimiento, permitiendo filtrar o almacenar energía en un mínimo espacio. * Bajas pérdidas en toda la gama de frecuencias de trabajo. * Alta estabilidad frente a la temperatura con un margen de -50ºC a + 90ºC. * Amplio margen de frecuencias 10Khz a 150Khz. La familia está compuesta de 27 valores inductivos distintos que corresponden a los valores normalizados para los componentes pasivos en electrónica, y de 11 núcleos distintos, obteniéndose 297 referencias distintas que permiten, en la mayoría de los casos, cubrir las necesidades de diseño. Podemos, fabricar modelos especiales de otros valores o con otros tipos de núcleo de diferente tamaño, atendiendo a las especificaciones de cada cliente.",
+     "general_specs": {
+      "Material del núcleo": "polvo de hierro",
+      "Aplicaciones": "diseño y fabricación de convetidores CC/CC ó fuentes conmutadas CA/CC, filtros de red, filtros para interferencias electromagnéticas y otros choques de la gama de bajas frecuencias",
+      "Estabilidad frente a la temperatura (margen)": "-50ºC a + 90ºC",
+      "Margen de frecuencias": "10Khz a 150Khz",
+      "Valores inductivos distintos": "27",
+      "Núcleos distintos": "11",
+      "Referencias distintas": "297",
+      "Fabricación especial": "modelos especiales de otros valores o con otros tipos de núcleo de diferente tamaño, según las especificaciones de cada cliente",
+      "Cotas de la tabla de dimensiones": "Dimensiones (mm.) / Dimensions (mm.): D, A, L"
+     },
+     "models": [
+      {
+       "reference": "1305",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "15",
+        "A (mm.)": "7",
+        "L (mm.)": "30"
+       },
+       "raw_row": "1305 | 15 | 7 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1307",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "16",
+        "A (mm.)": "10",
+        "L (mm.)": "30"
+       },
+       "raw_row": "1307 | 16 | 10 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1706",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "20",
+        "A (mm.)": "8",
+        "L (mm.)": "30"
+       },
+       "raw_row": "1706 | 20 | 8 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2006",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "23",
+        "A (mm.)": "9",
+        "L (mm.)": "30"
+       },
+       "raw_row": "2006 | 23 | 9 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2010",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "23",
+        "A (mm.)": "14",
+        "L (mm.)": "30"
+       },
+       "raw_row": "2010 | 23 | 14 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2408",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "27",
+        "A (mm.)": "11",
+        "L (mm.)": "30"
+       },
+       "raw_row": "2408 | 27 | 11 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2711",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "32",
+        "A (mm.)": "14",
+        "L (mm.)": "30"
+       },
+       "raw_row": "2711 | 32 | 14 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3311",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "37",
+        "A (mm.)": "15",
+        "L (mm.)": "30"
+       },
+       "raw_row": "3311 | 37 | 15 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3915",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "44",
+        "A (mm.)": "20",
+        "L (mm.)": "30"
+       },
+       "raw_row": "3915 | 44 | 20 | 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "4715",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "52",
+        "A (mm.)": "21",
+        "L (mm.)": "30"
+       },
+       "raw_row": "4715 | 52 | 21 | 30",
+       "confidence": "media"
+      },
+      {
+       "reference": "5122",
+       "page": 1,
+       "specs": {
+        "D (mm.)": "57",
+        "A (mm.)": "28",
+        "L (mm.)": "30"
+       },
+       "raw_row": "5122 | 57 | 28 | 30",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Montaje HORIZONTAL / H (esquema con cotas A y L)",
+      "Montaje VERTICAL / V (esquema con cotas D y L)",
+      "Modelos especiales de otros valores o con otros tipos de núcleo de diferente tamaño, bajo especificación del cliente"
+     ],
+     "ordering_info": "El PDF solo da los 11 códigos de núcleo (1305 ... 5122) y los 27 valores de L en uH (11 x 27 = 297 combinaciones, coincide con las '297 referencias distintas' del texto). No imprime cómo se forma la referencia completa de pedido (núcleo + valor de L + montaje H/V): no inventar códigos."
+    }
+   ],
+   "tables": [
+    {
+     "page": 2,
+     "caption": "INTENSIDAD SEGÚN MODELO / INTENSITY DEPENDIG OF TYPE (sic). Filas: L (uH); columnas: tipo de núcleo.",
+     "columns": [
+      "L (uH)",
+      "1305",
+      "1307",
+      "1706",
+      "2006",
+      "2010",
+      "2408",
+      "2711",
+      "3311",
+      "3915",
+      "4718",
+      "5122"
+     ],
+     "rows": [
+      [
+       "10",
+       "4.7",
+       "6.3",
+       "9.4",
+       "11.8",
+       "16.7",
+       "16.1",
+       "21.0",
+       "28.3",
+       "40.4",
+       "56.6",
+       "80.0"
+      ],
+      [
+       "12",
+       "4.3",
+       "5.8",
+       "8.6",
+       "10.8",
+       "15.3",
+       "14.7",
+       "19.2",
+       "25.8",
+       "38.9",
+       "51.6",
+       "73.0"
+      ],
+      [
+       "15",
+       "3.8",
+       "5.2",
+       "7.7",
+       "9.7",
+       "13.7",
+       "13.7",
+       "17.1",
+       "23.1",
+       "32.9",
+       "46.2",
+       "65.3"
+      ],
+      [
+       "18",
+       "3.5",
+       "4.7",
+       "7.0",
+       "3.3",
+       "12.5",
+       "12.0",
+       "15.6",
+       "21.1",
+       "30.1",
+       "42.2",
+       "59.6"
+      ],
+      [
+       "22",
+       "3.2",
+       "4.3",
+       "6.3",
+       "8.0",
+       "11.3",
+       "10.9",
+       "14.1",
+       "19.1",
+       "27.2",
+       "38.1",
+       "53.9"
+      ],
+      [
+       "27",
+       "2.8",
+       "3.9",
+       "5.7",
+       "7.2",
+       "10.2",
+       "9.8",
+       "12.8",
+       "17.2",
+       "24.6",
+       "34.4",
+       "48.7"
+      ],
+      [
+       "33",
+       "2.6",
+       "3.5",
+       "5.2",
+       "6.5",
+       "9.2",
+       "8.9",
+       "11.6",
+       "15.6",
+       "22.2",
+       "31.1",
+       "44.0"
+      ],
+      [
+       "39",
+       "2.4",
+       "3.2",
+       "4.8",
+       "3.0",
+       "8.5",
+       "8.2",
+       "10.6",
+       "14.3",
+       "20.4",
+       "28.6",
+       "40.5"
+      ],
+      [
+       "47",
+       "2.2",
+       "2.9",
+       "4.3",
+       "5.5",
+       "7.7",
+       "7.4",
+       "9.7",
+       "13.1",
+       "18.6",
+       "26.1",
+       "36.9"
+      ],
+      [
+       "56",
+       "2.0",
+       "2.7",
+       "4.0",
+       "5.0",
+       "7.1",
+       "6.8",
+       "8.9",
+       "12.0",
+       "17.1",
+       "23.9",
+       "33.8"
+      ],
+      [
+       "68",
+       "1.8",
+       "2.4",
+       "3.6",
+       "4.5",
+       "6.4",
+       "6.2",
+       "8.1",
+       "10.9",
+       "15.5",
+       "21.7",
+       "30.7"
+      ],
+      [
+       "75",
+       "1.7",
+       "2.3",
+       "3.4",
+       "4.3",
+       "3.1",
+       "5.9",
+       "7.7",
+       "10.3",
+       "14.7",
+       "20.7",
+       "29.2"
+      ],
+      [
+       "82",
+       "1.6",
+       "2.2",
+       "3.3",
+       "4.1",
+       "5.8",
+       "5.6",
+       "7.3",
+       "9.9",
+       "14.1",
+       "19.8",
+       "27.9"
+      ],
+      [
+       "100",
+       "1.5",
+       "2.0",
+       "3.0",
+       "3.7",
+       "5.3",
+       "5.1",
+       "6.6",
+       "8.9",
+       "12.8",
+       "17.9",
+       "25.3"
+      ],
+      [
+       "120",
+       "1.3",
+       "1.8",
+       "2.7",
+       "3.4",
+       "4.8",
+       "4.7",
+       "6.1",
+       "8.2",
+       "11.7",
+       "16.3",
+       "23.1"
+      ],
+      [
+       "150",
+       "1.2",
+       "1.6",
+       "2.4",
+       "3.1",
+       "4.3",
+       "4.2",
+       "5.2",
+       "7.3",
+       "10.4",
+       "14.6",
+       "20.7"
+      ],
+      [
+       "180",
+       "1.1",
+       "1.5",
+       "2.2",
+       "2.8",
+       "3.9",
+       "3.8",
+       "4.9",
+       "6.7",
+       "9.5",
+       "13.3",
+       "18.9"
+      ],
+      [
+       "220",
+       "1.0",
+       "1.4",
+       "2.0",
+       "2.5",
+       "3.5",
+       "3.4",
+       "4.5",
+       "6.1",
+       "8.6",
+       "12.6",
+       "17.1"
+      ],
+      [
+       "270",
+       "0.9",
+       "1.2",
+       "1.8",
+       "2.3",
+       "3.2",
+       "3.1",
+       "4.0",
+       "5.4",
+       "7.8",
+       "10.8",
+       "15.4"
+      ],
+      [
+       "330",
+       "0.8",
+       "1.1",
+       "1.6",
+       "2.1",
+       "2.9",
+       "2.8",
+       "3.7",
+       "4.9",
+       "7.0",
+       "9.9",
+       "13.9"
+      ],
+      [
+       "390",
+       "0.7",
+       "1.0",
+       "1.5",
+       "1.9",
+       "2.7",
+       "2.6",
+       "3.4",
+       "4.5",
+       "6.5",
+       "9.1",
+       "12.8"
+      ],
+      [
+       "470",
+       "0.7",
+       "0.9",
+       "1.4",
+       "1.7",
+       "2.4",
+       "2.3",
+       "3.1",
+       "4.1",
+       "5.9",
+       "8.3",
+       "11.7"
+      ],
+      [
+       "560",
+       "0.6",
+       "0.9",
+       "1.2",
+       "1.6",
+       "2.2",
+       "2.1",
+       "2.8",
+       "3.8",
+       "5.4",
+       "7.6",
+       "10.7"
+      ],
+      [
+       "680",
+       "0.6",
+       "0.8",
+       "1.1",
+       "1.4",
+       "2.0",
+       "1.9",
+       "2.5",
+       "3.4",
+       "4.9",
+       "6.9",
+       "9.7"
+      ],
+      [
+       "750",
+       "0.5",
+       "0.7",
+       "1.1",
+       "1.4",
+       "1.9",
+       "1.8",
+       "2.4",
+       "3.3",
+       "4.7",
+       "6.5",
+       "9.2"
+      ],
+      [
+       "820",
+       "0.5",
+       "0.7",
+       "1.0",
+       "1.3",
+       "1.8",
+       "1.8",
+       "2.3",
+       "3.1",
+       "4.5",
+       "6.2",
+       "8.8"
+      ],
+      [
+       "1000",
+       "0.5",
+       "0.6",
+       "0.9",
+       "1.2",
+       "1.7",
+       "1.6",
+       "2.1",
+       "2.8",
+       "4.0",
+       "5.7",
+       "8.0"
+      ]
+     ],
+     "notes": "Matriz de 27 valores de L (10 a 1000 uH) por los modelos de las columnas; sus celdas son las combinaciones núcleo x L de las que habla el texto de la página 1. El PDF no imprime la unidad de la intensidad (ni 'A') ni su condición (nominal, saturación...). La cabecera de la última columna dice 4718 (difiere del código de la tabla de dimensiones de la página 1; ver uncertain). Valores dudosos impresos así: 2006 @ 18 uH = 3.3; 2006 @ 39 uH = 3.0; 2010 @ 75 uH = 3.1 (rompen la secuencia decreciente de su columna). Valores copiados tal cual del texto y verificados en el render a 150 dpi."
+    }
+   ],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 18 del catálogo impreso (dimensiones), con logotipo Torivac y pie www.torivac.com. Rótulo de cabecera: CHOQUES TOROIDALES.",
+     "page": 1
+    },
+    {
+     "fact": "La tabla de dimensiones tiene cabecera bilingüe español/inglés: 'Dimensiones (mm.) / Dimensions (mm.)' y 'Referencia / Reference', con columnas D, A, L y 11 filas (referencias 1305 a 5122); L = 30 en todas.",
+     "page": 1
+    },
+    {
+     "fact": "Esquemas de montaje: HORIZONTAL / H (cotas A y L) y VERTICAL / V (cotas D y L). Fotografía de un choque toroidal bobinado con cobre y dos cables de salida.",
+     "page": 1
+    },
+    {
+     "fact": "Temperatura: 'Alta estabilidad frente a la temperatura con un margen de -50ºC a + 90ºC'. Frecuencias: 'Amplio margen de frecuencias 10Khz a 150Khz'.",
+     "page": 1
+    },
+    {
+     "fact": "27 valores inductivos (valores normalizados de componentes pasivos) x 11 núcleos = 297 referencias.",
+     "page": 1
+    },
+    {
+     "fact": "Página 19 del catálogo impreso (intensidades). La tabla de la página 2 se titula 'INTENSIDAD SEGÚN MODELO/INTENSITY DEPENDIG OF TYPE' y lista L (uH) de 10 a 1000 uH para los modelos 1305 a 5122.",
+     "page": 2
+    },
+    {
+     "fact": "La página 2 incluye dos fotografías: un choque encapsulado en carcasa de color rojo/marrón con dos patillas rectas, y un choque toroidal bobinado con dos cables. Sin pie de foto ni referencia.",
+     "page": 2
+    },
+    {
+     "fact": "DUPLICIDAD: el texto y la tabla de dimensiones de la página 1 son idénticos a los de CHOQUES-TOROIDALES.pdf.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Significado de D, A y L en la tabla de dimensiones",
+     "why": "El texto no define D, A, L; solo aparecen como cotas en los esquemas HORIZONTAL / H (A y L) y VERTICAL / V (D y L). Por el dibujo, D sería el diámetro exterior, A la altura del anillo y L la longitud de patillas/cables, pero es lectura del dibujo, no texto: no publicar esas definiciones sin confirmar. La unidad (mm.) sí está impresa en la cabecera de la tabla."
+    },
+    {
+     "page": 1,
+     "item": "Referencia 4715 (tabla de dimensiones) frente a 4718 (cabecera de la tabla de intensidades de Cracteristicas_Choques_Toroidales.pdf p2)",
+     "why": "La tabla de dimensiones imprime 4715 (D=52, A=21, L=30) y la de intensidades 4718 en la columna que ocupa esa posición. Es el mismo orden y posición, así que probablemente es una errata de 4715/4718, pero no hay forma de confirmarlo con los PDFs. Dato dudoso: no publicar el código hasta que Torivac lo confirme."
+    },
+    {
+     "page": 1,
+     "item": "Erratas de texto en el PDF: 'convetidores' (sic, por 'convertidores'), 'Podemos, fabricar' (coma sobrante), 'Khz' (por kHz)",
+     "why": "Se conserva el texto tal cual en description y general_specs; al redactar la web no copiar la errata, pero no cambiar ninguna cifra."
+    },
+    {
+     "page": 1,
+     "item": "Sin tensión, corriente nominal, resistencia, material de la bobina ni norma",
+     "why": "La ficha no da tensión (no hay voltage_mentions), ni DCR, ni norma aplicable; solo temperatura, frecuencia, número de valores/núcleos, dimensiones y (en la ficha de 2 páginas) una matriz de intensidad."
+    },
+    {
+     "page": 2,
+     "item": "Unidad y condición de la 'Intensidad' de la matriz",
+     "why": "La cabecera dice 'INTENSIDAD SEGÚN MODELO' sin unidad ni condición (corriente nominal, de saturación, etc.). Por magnitud probablemente son amperios, pero no consta: no publicar 'A' ni la condición sin confirmar."
+    },
+    {
+     "page": 2,
+     "item": "2006 @ 18 uH = 3.3",
+     "why": "Impreso 3.3 entre 9.7 (15 uH) y 8.0 (22 uH) en la misma columna; rompe la secuencia decreciente (esperable ~9.x). Confirmado en el render, así que es una errata del PDF. No se corrige; no publicar."
+    },
+    {
+     "page": 2,
+     "item": "2006 @ 39 uH = 3.0",
+     "why": "Impreso 3.0 entre 6.5 (33 uH) y 5.5 (47 uH); rompe la secuencia decreciente (esperable ~6.0). Errata probable del PDF. No se corrige; no publicar."
+    },
+    {
+     "page": 2,
+     "item": "2010 @ 75 uH = 3.1",
+     "why": "Impreso 3.1 entre 6.4 (68 uH) y 5.8 (82 uH); rompe la secuencia decreciente (esperable ~6.1). Errata probable del PDF. No se corrige; no publicar."
+    },
+    {
+     "page": 2,
+     "item": "Cabecera 'INTENSITY DEPENDIG OF TYPE'",
+     "why": "Errata del PDF ('DEPENDIG' por 'DEPENDING'); no copiarla al texto de la web."
+    },
+    {
+     "page": 1,
+     "item": "Documento duplicado en la p1 de CHOQUES-TOROIDALES.pdf",
+     "why": "Mismo texto y misma tabla de dimensiones; usar una sola vez en el catálogo web."
+    }
+   ]
+  },
+  {
+   "file": "Nucleos-toroidales.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "NÚCLEOS TOROIDALES - CARACTERÍSTICAS (página 23 del catálogo)",
+   "families": [
+    {
+     "family": "Núcleos toroidales",
+     "series": null,
+     "page": 1,
+     "description": "CARACTERÍSTICAS. Los núcleos toroidales que fabrica Torivac están construidos con plancha magnética de aleaciones de hierro-silicio, de grano orientado, de muy bajas pérdidas y alta inducción de saturación que, tratados térmicamente, mejoran su permeabilidad magnética en aproximadamente un 40%. Las calidades de plancha utilizadas son las tipo M4 ó M5, según las diferentes aplicaciones. Todos los núcleos van soldados al final del enrollado, para evitar posibles vibraciones, y posteriormente aislados mediante cápsulas de poliamida-6 con 30% de fibra de vidrio, ideales para soportar temperaturas próximas a los 150º C.",
+     "general_specs": {
+      "Material de la plancha": "plancha magnética de aleaciones de hierro-silicio, de grano orientado, de muy bajas pérdidas y alta inducción de saturación",
+      "Calidades de plancha": "tipo M4 ó M5, según las diferentes aplicaciones",
+      "Mejora de la permeabilidad magnética (con tratamiento térmico)": "aproximadamente un 40%",
+      "Fijación del núcleo": "soldados al final del enrollado, para evitar posibles vibraciones",
+      "Aislamiento": "cápsulas de poliamida-6 con 30% de fibra de vidrio",
+      "Temperatura soportada por la cápsula": "próximas a los 150º C",
+      "Columnas de la tabla": "A | B | C | PESO (KG) / WEIGHT (KG) | CM2 (cabeceras tal cual; el PDF no rotula la unidad de A, B, C ni define CM2)",
+      "Filas de la tabla": "56 (dos bloques de 28 filas, izquierda y derecha, ordenados por A, B, C)"
+     },
+     "models": [
+      {
+       "reference": "A60-B40-C20",
+       "page": 1,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "20",
+        "PESO (KG)": "0.235",
+        "CM2": "2"
+       },
+       "raw_row": "60 | 40 | 20 | 0.235 | 2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A60-B40-C25",
+       "page": 1,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "25",
+        "PESO (KG)": "0.293",
+        "CM2": "2.5"
+       },
+       "raw_row": "60 | 40 | 25 | 0.293 | 2.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A60-B40-C30",
+       "page": 1,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "30",
+        "PESO (KG)": "0.352",
+        "CM2": "3"
+       },
+       "raw_row": "60 | 40 | 30 | 0.352 | 3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A60-B40-C35",
+       "page": 1,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "35",
+        "PESO (KG)": "0.411",
+        "CM2": "3.5"
+       },
+       "raw_row": "60 | 40 | 35 | 0.411 | 3.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A65-B40-C20",
+       "page": 1,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "20",
+        "PESO (KG)": "0.307",
+        "CM2": "2.5"
+       },
+       "raw_row": "65 | 40 | 20 | 0.307 | 2.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A65-B40-C25",
+       "page": 1,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "25",
+        "PESO (KG)": "0.400",
+        "CM2": "3.13"
+       },
+       "raw_row": "65 | 40 | 25 | 0.400 | 3.13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A65-B40-C30",
+       "page": 1,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "30",
+        "PESO (KG)": "0.480",
+        "CM2": "3.76"
+       },
+       "raw_row": "65 | 40 | 30 | 0.480 | 3.76",
+       "confidence": "media"
+      },
+      {
+       "reference": "A65-B40-C32",
+       "page": 1,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "32",
+        "PESO (KG)": "0.512",
+        "CM2": "4"
+       },
+       "raw_row": "65 | 40 | 32 | 0.512 | 4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B40-C20",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "20",
+        "PESO (KG)": "0.386",
+        "CM2": "3"
+       },
+       "raw_row": "70 | 40 | 20 | 0.386 | 3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B40-C22",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "22",
+        "PESO (KG)": "0.425",
+        "CM2": "3.3"
+       },
+       "raw_row": "70 | 40 | 22 | 0.425 | 3.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B40-C25",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "25",
+        "PESO (KG)": "0.483",
+        "CM2": "3.75"
+       },
+       "raw_row": "70 | 40 | 25 | 0.483 | 3.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B40-C32",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "32",
+        "PESO (KG)": "0.618",
+        "CM2": "4.8"
+       },
+       "raw_row": "70 | 40 | 32 | 0.618 | 4.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B45-C22",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "45",
+        "C": "22",
+        "PESO (KG)": "0.365",
+        "CM2": "2.75"
+       },
+       "raw_row": "70 | 45 | 22 | 0.365 | 2.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70-B45-C25",
+       "page": 1,
+       "specs": {
+        "A": "70",
+        "B": "45",
+        "C": "25",
+        "PESO (KG)": "0.415",
+        "CM2": "3.13"
+       },
+       "raw_row": "70 | 45 | 25 | 0.415 | 3.13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A75-B40-C13",
+       "page": 1,
+       "specs": {
+        "A": "75",
+        "B": "40",
+        "C": "13",
+        "PESO (KG)": "0.314",
+        "CM2": "2.28"
+       },
+       "raw_row": "75 | 40 | 13 | 0.314 | 2.28",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A75-B40-C15",
+       "page": 1,
+       "specs": {
+        "A": "75",
+        "B": "40",
+        "C": "15",
+        "PESO (KG)": "0.362",
+        "CM2": "2.63"
+       },
+       "raw_row": "75 | 40 | 15 | 0.362 | 2.63",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80-B50-C25",
+       "page": 1,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "25",
+        "PESO (KG)": "0.570",
+        "CM2": "3.75"
+       },
+       "raw_row": "80 | 50 | 25 | 0.570 | 3.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80-B50-C30",
+       "page": 1,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "30",
+        "PESO (KG)": "0.684",
+        "CM2": "4.5"
+       },
+       "raw_row": "80 | 50 | 30 | 0.684 | 4.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80-B50-C35",
+       "page": 1,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "35",
+        "PESO (KG)": "0.798",
+        "CM2": "5.25"
+       },
+       "raw_row": "80 | 50 | 35 | 0.798 | 5.25",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80-B50-C40",
+       "page": 1,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "40",
+        "PESO (KG)": "0.912",
+        "CM2": "6"
+       },
+       "raw_row": "80 | 50 | 40 | 0.912 | 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A85-B40-C13",
+       "page": 1,
+       "specs": {
+        "A": "85",
+        "B": "40",
+        "C": "13",
+        "PESO (KG)": "4.280",
+        "CM2": "2.93"
+       },
+       "raw_row": "85 | 40 | 13 | 4.280 | 2.93",
+       "confidence": "baja"
+      },
+      {
+       "reference": "A90-B50-C20",
+       "page": 1,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "20",
+        "PESO (KG)": "0.652",
+        "CM2": "4"
+       },
+       "raw_row": "90 | 50 | 20 | 0.652 | 4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A90-B50-C22",
+       "page": 1,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "22",
+        "PESO (KG)": "0.717",
+        "CM2": "4.4"
+       },
+       "raw_row": "90 | 50 | 22 | 0.717 | 4.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A90-B50-C25",
+       "page": 1,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "25",
+        "PESO (KG)": "0.815",
+        "CM2": "5"
+       },
+       "raw_row": "90 | 50 | 25 | 0.815 | 5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A90-B50-C30",
+       "page": 1,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "30",
+        "PESO (KG)": "0.978",
+        "CM2": "6"
+       },
+       "raw_row": "90 | 50 | 30 | 0.978 | 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A95-B50-C40",
+       "page": 1,
+       "specs": {
+        "A": "95",
+        "B": "50",
+        "C": "40",
+        "PESO (KG)": "1.527",
+        "CM2": "9"
+       },
+       "raw_row": "95 | 50 | 40 | 1.527 | 9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100-B60-C25",
+       "page": 1,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "25",
+        "PESO (KG)": "0.940",
+        "CM2": "5"
+       },
+       "raw_row": "100 | 60 | 25 | 0.940 | 5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100-B60-C30",
+       "page": 1,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "30",
+        "PESO (KG)": "1.130",
+        "CM2": "6"
+       },
+       "raw_row": "100 | 60 | 30 | 1.130 | 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100-B60-C35",
+       "page": 1,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "35",
+        "PESO (KG)": "1.318",
+        "CM2": "7"
+       },
+       "raw_row": "100 | 60 | 35 | 1.318 | 7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100-B60-C38",
+       "page": 1,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "38",
+        "PESO (KG)": "1.430",
+        "CM2": "7.6"
+       },
+       "raw_row": "100 | 60 | 38 | 1.430 | 7.6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100-B60-C40",
+       "page": 1,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "40",
+        "PESO (KG)": "1.500",
+        "CM2": "8"
+       },
+       "raw_row": "100 | 60 | 40 | 1.500 | 8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A101-B55-C25",
+       "page": 1,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "25",
+        "PESO (KG)": "1.050",
+        "CM2": "5.75"
+       },
+       "raw_row": "101 | 55 | 25 | 1.050 | 5.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A101-B55-C30",
+       "page": 1,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "30",
+        "PESO (KG)": "1.260",
+        "CM2": "6.9"
+       },
+       "raw_row": "101 | 55 | 30 | 1.260 | 6.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A101-B55-C35",
+       "page": 1,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "35",
+        "PESO (KG)": "1.058",
+        "CM2": "8.05"
+       },
+       "raw_row": "101 | 55 | 35 | 1.058 | 8.05",
+       "confidence": "baja"
+      },
+      {
+       "reference": "A101-B55-C38",
+       "page": 1,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "38",
+        "PESO (KG)": "1.148",
+        "CM2": "8.74"
+       },
+       "raw_row": "101 | 55 | 38 | 1.148 | 8.74",
+       "confidence": "baja"
+      },
+      {
+       "reference": "A101-B55-C40",
+       "page": 1,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "40",
+        "PESO (KG)": "1.208",
+        "CM2": "9.2"
+       },
+       "raw_row": "101 | 55 | 40 | 1.208 | 9.2",
+       "confidence": "baja"
+      },
+      {
+       "reference": "A105-B65-C35",
+       "page": 1,
+       "specs": {
+        "A": "105",
+        "B": "65",
+        "C": "35",
+        "PESO (KG)": "1.392",
+        "CM2": "7"
+       },
+       "raw_row": "105 | 65 | 35 | 1.392 | 7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A105-B65-C45",
+       "page": 1,
+       "specs": {
+        "A": "105",
+        "B": "65",
+        "C": "45",
+        "PESO (KG)": "1.790",
+        "CM2": "9"
+       },
+       "raw_row": "105 | 65 | 45 | 1.790 | 9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B48-C20",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "48",
+        "C": "20",
+        "PESO (KG)": "1.095",
+        "CM2": "6"
+       },
+       "raw_row": "108 | 48 | 20 | 1.095 | 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B58-C25",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "25",
+        "PESO (KG)": "1.215",
+        "CM2": "6.25"
+       },
+       "raw_row": "108 | 58 | 25 | 1.215 | 6.25",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B58-C30",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "30",
+        "PESO (KG)": "1.458",
+        "CM2": "7.5"
+       },
+       "raw_row": "108 | 58 | 30 | 1.458 | 7.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B58-C38",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "38",
+        "PESO (KG)": "1.847",
+        "CM2": "9.5"
+       },
+       "raw_row": "108 | 58 | 38 | 1.847 | 9.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B58-C40",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "40",
+        "PESO (KG)": "1.944",
+        "CM2": "10"
+       },
+       "raw_row": "108 | 58 | 40 | 1.944 | 10",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108-B58-C45",
+       "page": 1,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "45",
+        "PESO (KG)": "2.187",
+        "CM2": "11.3"
+       },
+       "raw_row": "108 | 58 | 45 | 2.187 | 11.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135-B70-C35",
+       "page": 1,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "35",
+        "PESO (KG)": "2.728",
+        "CM2": "11.4"
+       },
+       "raw_row": "135 | 70 | 35 | 2.728 | 11.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135-B70-C40",
+       "page": 1,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "40",
+        "PESO (KG)": "3.118",
+        "CM2": "13"
+       },
+       "raw_row": "135 | 70 | 40 | 3.118 | 13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135-B70-C45",
+       "page": 1,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "45",
+        "PESO (KG)": "3.507",
+        "CM2": "14.63"
+       },
+       "raw_row": "135 | 70 | 45 | 3.507 | 14.63",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135-B70-C50",
+       "page": 1,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "50",
+        "PESO (KG)": "3.897",
+        "CM2": "16.3"
+       },
+       "raw_row": "135 | 70 | 50 | 3.897 | 16.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135-B70-C53",
+       "page": 1,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "53",
+        "PESO (KG)": "4.130",
+        "CM2": "17.2"
+       },
+       "raw_row": "135 | 70 | 53 | 4.130 | 17.2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A140-B70-C70",
+       "page": 1,
+       "specs": {
+        "A": "140",
+        "B": "70",
+        "C": "70",
+        "PESO (KG)": "6.025",
+        "CM2": "24.5"
+       },
+       "raw_row": "140 | 70 | 70 | 6.025 | 24.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C35",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "35",
+        "PESO (KG)": "3.455",
+        "CM2": "13.13"
+       },
+       "raw_row": "150 | 75 | 35 | 3.455 | 13.13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C40",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "40",
+        "PESO (KG)": "3.950",
+        "CM2": "15"
+       },
+       "raw_row": "150 | 75 | 40 | 3.950 | 15",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C45",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "45",
+        "PESO (KG)": "4.444",
+        "CM2": "16.9"
+       },
+       "raw_row": "150 | 75 | 45 | 4.444 | 16.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C50",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "50",
+        "PESO (KG)": "4.937",
+        "CM2": "18.8"
+       },
+       "raw_row": "150 | 75 | 50 | 4.937 | 18.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C60",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "60",
+        "PESO (KG)": "5.925",
+        "CM2": "22.5"
+       },
+       "raw_row": "150 | 75 | 60 | 5.925 | 22.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150-B75-C75",
+       "page": 1,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "75",
+        "PESO (KG)": "6.912",
+        "CM2": "26.3"
+       },
+       "raw_row": "150 | 75 | 75 | 6.912 | 26.3",
+       "confidence": "baja"
+      }
+     ],
+     "options_accessories": [
+      "Cápsula de aislamiento de poliamida-6 con 30% de fibra de vidrio (todos los núcleos van aislados mediante cápsulas)"
+     ],
+     "ordering_info": "El PDF no imprime referencia ni código de pedido para los núcleos: la tabla se identifica solo por las columnas A, B, C. El identificador 'A<n>-B<n>-C<n>' usado en 'reference' es una etiqueta de trabajo construida con esas columnas, NO un código de Torivac."
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 23 del catálogo impreso (número al pie). Rótulo de cabecera: NÚCLEOS TOROIDALES.",
+     "page": 1
+    },
+    {
+     "fact": "Tabla de núcleos: la tabla de 56 filas (A, B, C, PESO (KG)/WEIGHT (KG), CM2) está dibujada como imagen, sin capa de texto; se ha transcrito del render a 200 dpi y se ha contrastado fila a fila con Caracteristicas_Nucleos_Toroidales.pdf.",
+     "page": 1
+    },
+    {
+     "fact": "DUPLICIDAD: texto y tabla idénticos a Caracteristicas_Nucleos_Toroidales.pdf (pág. 20 impresa); solo cambian el diseño de página y el número de página.",
+     "page": 1
+    },
+    {
+     "fact": "Núcleos de plancha magnética de hierro-silicio de grano orientado, tratados térmicamente (+40% aprox. de permeabilidad), calidades M4 ó M5, soldados al final del enrollado.",
+     "page": 1
+    },
+    {
+     "fact": "Aislamiento con cápsulas de poliamida-6 con 30% de fibra de vidrio, ideales para temperaturas próximas a los 150º C.",
+     "page": 1
+    },
+    {
+     "fact": "Las calidades de plancha M4 ó M5 se citan sin norma ni espesor asociados.",
+     "page": 1
+    },
+    {
+     "fact": "Cinco fotografías de núcleos toroidales encapsulados (sin pie de foto ni referencia).",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las columnas A, B y C",
+     "why": "La tabla no rotula ninguna unidad para A, B, C (solo 'PESO (KG)' lleva unidad). Por comprobación aritmética, CM2 = (A-B)/2 x C / 100 en 54 de las 56 filas (con A, B, C en mm), lo que sugiere A = diámetro exterior, B = diámetro interior, C = ancho de banda en mm y CM2 = sección en cm2, pero es inferencia mía, no texto del PDF: no publicar 'mm' ni el significado de A/B/C/CM2 sin confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Fila A=85, B=40, C=13: PESO (KG) = 4.280",
+     "why": "Impreso así en el PDF (leído en imagen a 200 dpi y confirmado en los dos PDFs de núcleos). Es incoherente con el resto de la tabla: la fila vecina 75/40/13 pesa 0.314 y la relación peso / (CM2 x (A+B)/2) de las otras 55 filas es ~2.31-2.44 mientras que aquí sale ~23.4 (diez veces mayor). Posible errata de coma (0.428). No se corrige: dato dudoso, no publicar; proponer a Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Filas A=101, B=55, C=35 / 38 / 40: PESO (KG) = 1.058 / 1.148 / 1.208",
+     "why": "Impreso así. El peso de estas tres filas es menor que el de 101/55/30 (1.260) pese a tener mayor C y mayor CM2 (8.05 / 8.74 / 9.2); su relación peso/(CM2 x (A+B)/2) es ~1.68 frente a ~2.34 de 101/55/25 y 101/55/30 y del resto de la tabla. Posible errata o dato de otra serie. No publicar sin confirmar."
+    },
+    {
+     "page": 1,
+     "item": "Fila A=150, B=75, C=75: CM2 = 26.3 y PESO (KG) = 6.912",
+     "why": "Impreso así. Con A=150 y B=75, CM2 = 26.3 y peso 6.912 corresponden a C=70 (CM2 = 37.5 x 70 / 100 = 26.25; peso proporcional al de 150/75/60 = 5.925), no a C=75 (daría CM2 = 28.125). Posible errata en la columna C (70 en lugar de 75) o en CM2/peso. No se corrige; dato dudoso, no publicar sin confirmar."
+    },
+    {
+     "page": 1,
+     "item": "Fila A=65, B=40, C=30: CM2 = 3.76",
+     "why": "Impreso 3.76; el cálculo (65-40)/2 x 30 / 100 da 3.75 y la fila 65/40/25 imprime 3.13 (3.125 redondeado). Diferencia de 0.01, probable errata de redondeo. Confianza media."
+    },
+    {
+     "page": 1,
+     "item": "Cabecera 'CM2'",
+     "why": "En la imagen el '2' va en tamaño pequeño tras 'CM'; se transcribe como 'CM2'. El PDF no define la magnitud."
+    },
+    {
+     "page": 1,
+     "item": "Rótulo de referencia",
+     "why": "La tabla no tiene referencias de producto ni de pedido; ver ordering_info. No inventar códigos."
+    },
+    {
+     "page": 1,
+     "item": "El PDF no indica la tensión, potencia, frecuencia ni inducción de saturación de los núcleos",
+     "why": "Solo hay descripción cualitativa más A, B, C, peso y CM2. 'Alta inducción de saturación', 'muy bajas pérdidas' no llevan cifra."
+    },
+    {
+     "page": 1,
+     "item": "Documento duplicado de Caracteristicas_Nucleos_Toroidales.pdf",
+     "why": "Mismo texto y misma tabla; para el catálogo web se debe usar una sola vez (las erratas de la tabla se repiten en ambos)."
+    }
+   ]
+  }
+ ]
+}

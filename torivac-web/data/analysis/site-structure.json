@@ -33,12 +33,20 @@
     "Huérfanos EN 5 / FR 2 / DE 1 (recalculados)",
     "Sitemap: 201 URLs únicas (197 ES + 4 EN), product-sitemap 306 loc -> 82 únicas",
     "Canonical de /en/ = /de/; canonical de FR/DE /productos/ = /en/torivac-products/; canonical de /en/contact/ = /de/kontakt-us/",
-    "Enlaces de pie a /aviso-legal/ (bloque tablet/móvil y pie de entradas de blog) y pie FR/DE/EN enlazando a las URL ES de privacidad/aviso legal/accesibilidad"
+    "Enlaces de pie a /aviso-legal/ (bloque tablet/móvil y pie de entradas de blog) y pie FR/DE/EN enlazando a las URL ES de privacidad/aviso legal/accesibilidad",
+    "Selector de idioma incompleto: 17 ES / 8 EN / 3 FR / 2 DE (recalculado desde el HTML)",
+    "Las 781 páginas HTML cosechadas figuran en seo.preserve_urls (comprobado por ruta); todos los destinos de redirección existen"
    ],
    "corrected": [
     "Selector de idioma: sí muestra banderas (antes decía 'sin banderas')",
     "Enlaces externos del pie (Santiso Marketing) ya no llevan path '/'",
-    "sitemap_issues ampliado: URL fea ?p=875 y /shop/ dentro de product-sitemap; 12 categorías ES vivas fuera del sitemap"
+    "sitemap_issues ampliado: URL fea ?p=875 y /shop/ dentro de product-sitemap; 12 categorías ES vivas fuera del sitemap",
+    "Paginación del blog (/blog/page/2|3/ y /category/blog/page/2|3/, x4 idiomas): confirmada en el HTML y añadida (16 URLs)",
+    "9 destinos de redirección de categorías-ficha EN/FR/DE apuntaban a la URL ES de la ficha; ahora apuntan a la ficha traducida de ese idioma",
+    "7 categorías FR/DE cruzadas (sirven otra ficha): destino = ficha que sirven hoy, marcadas needs_review",
+    "Categorías vacías o duplicadas (23 URLs) pasan de mantener_identica a revisar_descartar; 'Sin categorizar' (4 URLs) pasa a 301 a /productos/",
+    "6 archivos de categoría de blog EN/FR/DE faltaban en la lista de URLs: añadidos como 301 a /blog/",
+    "Nuevos hallazgos verificados: /productos/ omite 'Equipos electrónicos' (F-N01) y 4 fichas sin ruta de navegación (F-N02)"
    ]
   }
  },
@@ -19826,7 +19834,7 @@
      "where": "página 1109",
      "url": "https://grupotorivac.com/aviso-legal-2/",
      "slug": "aviso-legal-2",
-     "problem": "Sufijo -2: el slug \"aviso-legal\" está ocupado por otro elemento; los pies (bloque tablet/móvil) enlazan a /aviso-legal/ que no figura en REST ni sitemap."
+     "problem": "Sufijo -2: probable colisión con otro elemento de WordPress que no sale en la REST (borrador o papelera; no verificable en las copias); los pies (bloque tablet/móvil y entradas de blog) enlazan a /aviso-legal/ que no figura en REST ni sitemap."
     },
     {
      "lang": "es/en/fr/de",
@@ -23624,27 +23632,27 @@
     {
      "action": "mantener_identica",
      "tier": 1,
-     "count": 142
+     "count": 141
     },
     {
      "action": "mantener_identica",
      "tier": 2,
-     "count": 471
+     "count": 445
     },
     {
      "action": "redirigir_301",
      "tier": 1,
-     "count": 53
+     "count": 54
     },
     {
      "action": "redirigir_301",
      "tier": 2,
-     "count": 158
+     "count": 161
     },
     {
      "action": "redirigir_301",
      "tier": 3,
-     "count": 16
+     "count": 22
     },
     {
      "action": "revisar",
@@ -23654,13 +23662,13 @@
     {
      "action": "revisar_descartar",
      "tier": 3,
-     "count": 4
+     "count": 27
     }
    ],
    "totals": {
-    "urls": 848,
-    "mantener_identica": 613,
-    "redirigir_301": 227
+    "urls": 854,
+    "mantener_identica": 586,
+    "redirigir_301": 237
    },
    "urls": [
     {
@@ -24804,9 +24812,9 @@
      "path": "/categoria-producto/comunicacion-modbus/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/electronica/control-industrial/",
@@ -24822,9 +24830,9 @@
      "path": "/categoria-producto/controlador-0-10vdc/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/electronica/convertidores/",
@@ -24851,9 +24859,9 @@
      "path": "/categoria-producto/variadores-de-tension/en-caja/cuba-de-aceite/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/botones-de-mando/cubretercas/",
@@ -24949,9 +24957,9 @@
      "path": "/categoria-producto/equipos-de-sobremesa-en-caja/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/variadores-de-tension/en-caja/",
@@ -24967,9 +24975,9 @@
      "path": "/categoria-producto/equipos-de-sobremesa/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/electronica/",
@@ -24985,18 +24993,18 @@
      "path": "/categoria-producto/equipos-industriales-en-caja/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/equipos-industriales/",
      "path": "/categoria-producto/equipos-industriales/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/",
@@ -25041,9 +25049,9 @@
      "path": "/categoria-producto/fabricaciones-a-medida/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/fabricaciones-a-medida-transformadores-toroidales/",
@@ -25137,9 +25145,9 @@
      "path": "/categoria-producto/hembrillas-de-seguridad/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/portaled/led-10mm/",
@@ -25265,9 +25273,9 @@
      "path": "/categoria-producto/portaleds/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/",
@@ -25283,9 +25291,9 @@
      "path": "/categoria-producto/potenciometros-y-reostatos/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría real (fuera de sitemap)"
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/bobinas-encapsuladas/redondas/",
@@ -25427,9 +25435,10 @@
      "path": "/categoria-producto/sin-categorizar/",
      "lang": "es",
      "type": "product_category",
-     "action": "mantener_identica",
+     "action": "redirigir_301",
      "tier": 1,
-     "reason": "Archivo de categoría real (en sitemap)"
+     "reason": "'Sin categorizar' no existe en la web nueva: las 4 fichas pasan a su familia real y la URL redirige a /productos/.",
+     "redirect_to": "/productos/"
     },
     {
      "url": "https://grupotorivac.com/categoria-producto/botones-de-mando/tapas-serie-bm/",
@@ -26680,9 +26689,9 @@
      "path": "/en/categoria-producto/comunicacion-modbus/",
      "lang": "en",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/en/categoria-producto/electronic-equipment/industrial-control/",
@@ -26692,7 +26701,7 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/product/regulador-a-tiristores/"
+     "redirect_to": "/en/product/regulador-a-tiristores/"
     },
     {
      "url": "https://grupotorivac.com/en/categoria-producto/electronic-equipment/converters/",
@@ -26798,9 +26807,9 @@
      "path": "/en/categoria-producto/benchtop-units-2/",
      "lang": "en",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/benchtop-units/",
@@ -26810,7 +26819,7 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/product/cuba-de-aceite-2/"
+     "redirect_to": "/en/product/oil-vat/"
     },
     {
      "url": "https://grupotorivac.com/en/categoria-producto/benchtop-units/",
@@ -26820,7 +26829,7 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/product/cuba-de-aceite-2/"
+     "redirect_to": "/en/product/oil-vat/"
     },
     {
      "url": "https://grupotorivac.com/en/categoria-producto/electronic-equipment/",
@@ -27061,9 +27070,9 @@
      "path": "/en/categoria-producto/portaleds/",
      "lang": "en",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/",
@@ -27079,9 +27088,9 @@
      "path": "/en/categoria-producto/potentiometers-and-rheostats/",
      "lang": "en",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/en/categoria-producto/encapsulated-coils/round/",
@@ -27223,9 +27232,10 @@
      "path": "/en/categoria-producto/uncategorized/",
      "lang": "en",
      "type": "product_category",
-     "action": "mantener_identica",
+     "action": "redirigir_301",
      "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "reason": "'Sin categorizar' no existe en la web nueva: las 4 fichas pasan a su familia real y la URL redirige a /productos/.",
+     "redirect_to": "/en/torivac-products/"
     },
     {
      "url": "https://grupotorivac.com/en/categoria-producto/control-buttons/bm-series-covers/",
@@ -28458,9 +28468,9 @@
      "path": "/fr/categoria-producto/comunicacion-modbus/",
      "lang": "fr",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/controle-industriel/",
@@ -28470,7 +28480,7 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/product/regulador-a-tiristores/"
+     "redirect_to": "/fr/product/regulador-a-tiristores/"
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/convertisseurs/",
@@ -28576,9 +28586,9 @@
      "path": "/fr/categoria-producto/unites-de-paillasse-2/",
      "lang": "fr",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/unites-de-paillasse/",
@@ -28588,7 +28598,7 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/product/cuba-de-aceite-2/"
+     "redirect_to": "/fr/product/cuve-a-huile/"
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/unites-de-paillasse/",
@@ -28598,7 +28608,7 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/product/cuba-de-aceite-2/"
+     "redirect_to": "/fr/product/cuve-a-huile/"
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/",
@@ -28773,7 +28783,9 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/fr/product/onduleur-triphase-manuel/"
+     "redirect_to": "/fr/product/monofasico-manual/",
+     "needs_review": true,
+     "note": "Categoría FR/DE 'cruzada': la URL sirve una ficha distinta de la que le correspondería por nombre (WPML). El destino es la ficha que sirve hoy (hreflang de la propia página); validar con Torivac cuál debe ser el destino real."
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/monophase/",
@@ -28783,7 +28795,9 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/fr/product/serie-bavs-2/"
+     "redirect_to": "/fr/product/serie-avs-2/",
+     "needs_review": true,
+     "note": "Categoría FR/DE 'cruzada': la URL sirve una ficha distinta de la que le correspondería por nombre (WPML). El destino es la ficha que sirve hoy (hreflang de la propia página); validar con Torivac cuál debe ser el destino real."
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/monophase/",
@@ -28803,7 +28817,9 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/fr/product/variador-trifasico-motorizado/"
+     "redirect_to": "/fr/product/monofasico-motorizado/",
+     "needs_review": true,
+     "note": "Categoría FR/DE 'cruzada': la URL sirve una ficha distinta de la que le correspondería por nombre (WPML). El destino es la ficha que sirve hoy (hreflang de la propia página); validar con Torivac cuál debe ser el destino real."
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/motorise/",
@@ -28839,9 +28855,9 @@
      "path": "/fr/categoria-producto/portaleds/",
      "lang": "fr",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/",
@@ -28857,9 +28873,9 @@
      "path": "/fr/categoria-producto/potentiometres-et-rheostats/",
      "lang": "fr",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/bobines-encapsulees/rond/",
@@ -29001,9 +29017,10 @@
      "path": "/fr/categoria-producto/sans-categorie/",
      "lang": "fr",
      "type": "product_category",
-     "action": "mantener_identica",
+     "action": "redirigir_301",
      "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "reason": "'Sin categorizar' no existe en la web nueva: las 4 fichas pasan a su familia real y la URL redirige a /productos/.",
+     "redirect_to": "/fr/produits-torivac/"
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/couvertures-de-la-serie-bm/",
@@ -29070,7 +29087,9 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/fr/product/serie-bavs-3/"
+     "redirect_to": "/fr/product/serie-avs-3/",
+     "needs_review": true,
+     "note": "Categoría FR/DE 'cruzada': la URL sirve una ficha distinta de la que le correspondería por nombre (WPML). El destino es la ficha que sirve hoy (hreflang de la propia página); validar con Torivac cuál debe ser el destino real."
     },
     {
      "url": "https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/triphase/",
@@ -30205,9 +30224,9 @@
      "path": "/de/categoria-producto/comunicacion-modbus/",
      "lang": "de",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/industrielle-steuerung/",
@@ -30217,7 +30236,7 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/product/regulador-a-tiristores/"
+     "redirect_to": "/de/product/regulador-a-tiristores/"
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/konverter/",
@@ -30323,9 +30342,9 @@
      "path": "/de/categoria-producto/tafelmodellen-2/",
      "lang": "de",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/tafelmodellen/",
@@ -30335,7 +30354,7 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/product/cuba-de-aceite-2/"
+     "redirect_to": "/de/product/cuba-de-aceite-2/"
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/tafelmodellen/",
@@ -30345,7 +30364,7 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/product/cuba-de-aceite-2/"
+     "redirect_to": "/de/product/cuba-de-aceite-2/"
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/",
@@ -30529,7 +30548,9 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/de/product/serie-bavs-2/"
+     "redirect_to": "/de/product/serie-avs-2/",
+     "needs_review": true,
+     "note": "Categoría FR/DE 'cruzada': la URL sirve una ficha distinta de la que le correspondería por nombre (WPML). El destino es la ficha que sirve hoy (hreflang de la propia página); validar con Torivac cuál debe ser el destino real."
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/monofase/",
@@ -30559,7 +30580,9 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/de/product/monofasico-motorizado/"
+     "redirect_to": "/de/product/variador-trifasico-motorizado/",
+     "needs_review": true,
+     "note": "Categoría FR/DE 'cruzada': la URL sirve una ficha distinta de la que le correspondería por nombre (WPML). El destino es la ficha que sirve hoy (hreflang de la propia página); validar con Torivac cuál debe ser el destino real."
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/kernen/",
@@ -30585,9 +30608,9 @@
      "path": "/de/categoria-producto/portaleds/",
      "lang": "de",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/",
@@ -30603,9 +30626,9 @@
      "path": "/de/categoria-producto/potentiometers-en-reostaten/",
      "lang": "de",
      "type": "product_category",
-     "action": "mantener_identica",
-     "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "action": "revisar_descartar",
+     "tier": 3,
+     "reason": "Categoría vacía o duplicada fuera del sitemap (F-D03): 301 a la familia afín o 410, a decidir con Torivac."
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/gekapselte-spulen/rund/",
@@ -30747,9 +30770,10 @@
      "path": "/de/categoria-producto/nicht-kategorisiert/",
      "lang": "de",
      "type": "product_category",
-     "action": "mantener_identica",
+     "action": "redirigir_301",
      "tier": 2,
-     "reason": "Archivo de categoría traducido."
+     "reason": "'Sin categorizar' no existe en la web nueva: las 4 fichas pasan a su familia real y la URL redirige a /productos/.",
+     "redirect_to": "/de/torivac-produkte/"
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bm-serie-covers/",
@@ -30816,7 +30840,9 @@
      "action": "redirigir_301",
      "tier": 2,
      "reason": "La categoría sirve una ficha de producto.",
-     "redirect_to": "/de/product/serie-bavs-3/"
+     "redirect_to": "/de/product/serie-avs-3/",
+     "needs_review": true,
+     "note": "Categoría FR/DE 'cruzada': la URL sirve una ficha distinta de la que le correspondería por nombre (WPML). El destino es la ficha que sirve hoy (hreflang de la propia página); validar con Torivac cuál debe ser el destino real."
     },
     {
      "url": "https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/driefasen/",
@@ -31528,9 +31554,69 @@
      "tier": 3,
      "reason": "Paginación del archivo de categoría de blog (duplica /blog/page/N/).",
      "redirect_to": "/de/blog/page/3/"
+    },
+    {
+     "url": "https://grupotorivac.com/en/category/blog/",
+     "path": "/en/category/blog/",
+     "lang": "en",
+     "type": "blog_category",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Archivo de categoría de blog duplicado del índice.",
+     "redirect_to": "/en/blog/"
+    },
+    {
+     "url": "https://grupotorivac.com/en/category/uncategorized/",
+     "path": "/en/category/uncategorized/",
+     "lang": "en",
+     "type": "blog_category",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Archivo de categoría de blog duplicado del índice.",
+     "redirect_to": "/en/blog/"
+    },
+    {
+     "url": "https://grupotorivac.com/fr/category/blog/",
+     "path": "/fr/category/blog/",
+     "lang": "fr",
+     "type": "blog_category",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Archivo de categoría de blog duplicado del índice.",
+     "redirect_to": "/fr/blog/"
+    },
+    {
+     "url": "https://grupotorivac.com/fr/category/non-classifiee/",
+     "path": "/fr/category/non-classifiee/",
+     "lang": "fr",
+     "type": "blog_category",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Archivo de categoría de blog duplicado del índice.",
+     "redirect_to": "/fr/blog/"
+    },
+    {
+     "url": "https://grupotorivac.com/de/category/blog/",
+     "path": "/de/category/blog/",
+     "lang": "de",
+     "type": "blog_category",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Archivo de categoría de blog duplicado del índice.",
+     "redirect_to": "/de/blog/"
+    },
+    {
+     "url": "https://grupotorivac.com/de/category/unkategorisiert/",
+     "path": "/de/category/unkategorisiert/",
+     "lang": "de",
+     "type": "blog_category",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Archivo de categoría de blog duplicado del índice.",
+     "redirect_to": "/de/blog/"
     }
    ],
-   "totals_note": "El resto (descartar_410, revisar, revisar_descartar) = 8 URLs. Las 16 URLs de paginación del blog se añadieron tras confirmar los enlaces en el HTML (no están en pages-index)."
+   "totals_note": "El resto (descartar_410, revisar, revisar_descartar) = 31 URLs. Incluye 16 URLs de paginación del blog añadidas tras confirmar los enlaces en el HTML (no están en pages-index). 7 redirecciones llevan needs_review=true (categorías FR/DE cruzadas). Las 781 páginas HTML cosechadas figuran todas en la lista (comprobado por ruta)."
   }
  },
  "global_components": {
@@ -31635,7 +31721,7 @@
   {
    "scope": "categorías vacías y duplicadas",
    "decision": "unificar/descartar",
-   "detail": "IDs ES 31, 32, 36, 47, 49, 102, 25 (+ 24, 26, 39, 46 duplicados con traducciones) sin productos."
+   "detail": "IDs ES 31, 32, 36, 47, 49, 102, 25 (+ 24, 26, 39, 46, 50 con traducciones) sin productos; 12 en total, ninguna en el sitemap."
   },
   {
    "scope": "tres fichas \"Reostatos y potenciometros bobinados\" con el mismo nombre",
@@ -32019,6 +32105,22 @@
    "refs": [
     "gaps.G-01"
    ]
+  },
+  {
+   "id": "F-N09",
+   "area": "navegación e IA",
+   "severity": "media",
+   "title": "7 categorías FR/DE cruzadas sirven una ficha equivocada",
+   "detail": "En FR y DE las categorías 'Variadores trifásicos > Manual/Motorizado', 'Serie BAVS > Monofásico/Trifásico' (y su equivalente DE) devuelven otra ficha: p. ej. la categoría FR trifásico > manuel muestra 'Variateur de vitesse manuel monophasé' (postid 15885) en vez del trifásico; ocurre con 4 URLs FR y 3 DE.",
+   "evidence": [
+    "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__entrainements-triphases__manuel.json (title, postid)",
+    "gaps.G-08"
+   ],
+   "recommendation": "No replicar el cruce: en la web nueva cada ficha cuelga de su familia; las 7 redirecciones se marcan needs_review.",
+   "refs": [
+    "seo.preserve_urls",
+    "gaps.G-08"
+   ]
   }
  ],
  "recommended_ia": {
@@ -32141,9 +32243,9 @@
   "products_not_listed_in_productos_index": 15,
   "sitemap_unique_urls": 201,
   "preserve_urls_total": {
-   "urls": 848,
-   "mantener_identica": 613,
-   "redirigir_301": 227
+   "urls": 854,
+   "mantener_identica": 586,
+   "redirigir_301": 237
   }
  }
 }

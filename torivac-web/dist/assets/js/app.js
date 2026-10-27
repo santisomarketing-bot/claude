@@ -24,6 +24,16 @@
   // ───────────────────────────────────────── [EMBED] ?embed=1: la página se muestra dentro del panel (sin cabecera, pie ni flotantes)
   if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add('embed');
 
+  // ───────────────────────────────────────── [TREE] árbol de categorías: botones de plegado accesibles (el HTML llega desplegado)
+  $$('[data-tree] li.has-kids').forEach(function (li, n) {
+    var a = li.querySelector(':scope > a'), ul = li.querySelector(':scope > ul'); if (!a || !ul) return;
+    var row = document.createElement('div'); row.className = 'row'; li.insertBefore(row, a); row.appendChild(a);
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'tgl'; ul.id = ul.id || 'tree-' + n; b.setAttribute('aria-controls', ul.id);
+    var open = li.hasAttribute('data-open'); li.classList.toggle('collapsed', !open); b.setAttribute('aria-expanded', open); b.textContent = open ? '−' : '+'; b.setAttribute('aria-label', (a.textContent || '').replace(/\d+$/, '').trim());
+    b.addEventListener('click', function () { var o = li.classList.toggle('collapsed') === false; b.setAttribute('aria-expanded', o); b.textContent = o ? '−' : '+'; });
+    row.appendChild(b);
+  });
+
   // ───────────────────────────────────────── [MENU]
   var header = $('#site-header'), mbtn = $('[data-menu-toggle]');
   if (mbtn) mbtn.addEventListener('click', function () { var o = header.classList.toggle('open'); mbtn.setAttribute('aria-expanded', o); });

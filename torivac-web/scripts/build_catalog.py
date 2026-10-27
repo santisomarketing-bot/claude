@@ -389,7 +389,8 @@ def main():
     pages = build_pages()
     nav, foot = build_site()
     (CAT / "categories.json").write_text(json.dumps(cats, ensure_ascii=False, indent=1))
-    (CAT / "products.json").write_text(json.dumps(prods, ensure_ascii=False, indent=1))
+    (CAT / "products.base.json").write_text(json.dumps(prods, ensure_ascii=False, indent=1))
+    (CAT / "products.json").write_text((CAT / "products.base.json").read_text())   # enrich_catalog.py parte de products.base.json
     (CAT / "pages.json").write_text(json.dumps(pages, ensure_ascii=False, indent=1))
     meta = {
         "name": "Torivac", "legal_name": "Torivac S.L.", "price_mode": "demo", "currency": "EUR",

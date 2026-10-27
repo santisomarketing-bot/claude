@@ -20,7 +20,7 @@
         if (ok && text) ok = (c.getAttribute('data-q') || '').indexOf(text) >= 0;
         c.hidden = !ok; if (ok) n++;
       });
-      if (count) count.textContent = n + ' ' + Q.t('results');
+      if (count) count.textContent = n + ' ' + (n === 1 ? (Q.t('result_one') || Q.t('results')) : Q.t('results'));
       if (empty) empty.hidden = n > 0;
     };
     $$('[data-vf]').forEach(function (b) { b.addEventListener('click', function () { var k = b.getAttribute('data-vf'); active[k] = !active[k]; b.setAttribute('aria-pressed', active[k]); apply(); }); });

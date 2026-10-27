@@ -1,0 +1,1727 @@
+{
+ "job": "p12-fichas-botones-baquelita",
+ "documents": [
+  {
+   "file": "BOTONES-DE-MANDO.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "BOTONES DE MANDO (página 34 del catálogo): serie BO brillante, serie BO con línea, tapas, aros con flecha y cubretuercas",
+   "families": [
+    {
+     "family": "Serie BO (brillante)",
+     "series": "BO",
+     "page": 1,
+     "description": "Botón de mando serie BO, acabado brillante (según el título de la tabla). Tabla con cinco modelos (MOD. TYPE 10, 15, 21, 30, 38), fotografía de un botón gris con tuerca y dibujo acotado en sección.",
+     "general_specs": {
+      "Cotas de la tabla": "D, e, H, d",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "d (arriba), H (altura), e (cota inferior junto al interior), D (base)",
+      "Modelos (MOD. TYPE)": "10, 15, 21, 30, 38",
+      "Nota": "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
+     },
+     "models": [
+      {
+       "reference": "Mod. 10",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "10",
+        "e": "3 y 4",
+        "H": "14",
+        "d": "8,5"
+       },
+       "raw_row": "10 | 10 | 3 y 4 | 14 | 8,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6",
+        "H": "15",
+        "d": "13"
+       },
+       "raw_row": "15 | 14,5 | 4,6 | 15 | 13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "21",
+        "e": "4,6",
+        "H": "17",
+        "d": "19,5"
+       },
+       "raw_row": "21 | 21 | 4,6 | 17 | 19,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "29,5",
+        "e": "4,6",
+        "H": "17,5",
+        "d": "28"
+       },
+       "raw_row": "30 | 29,5 | 4,6 | 17,5 | 28",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "38",
+        "e": "4,6,8",
+        "H": "18,5",
+        "d": "36,5"
+       },
+       "raw_row": "38 | 38 | 4,6,8 | 18,5 | 36,5",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
+     ],
+     "ordering_info": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
+    },
+    {
+     "family": "Serie BO con Línea",
+     "series": "BO",
+     "page": 1,
+     "description": "Botón de mando serie BO con línea (marca indicadora negra visible en la fotografía). Tabla con los mismos cinco modelos y las mismas cotas que la serie BO (brillante).",
+     "general_specs": {
+      "Cotas de la tabla": "D, e, H, d",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "d (arriba), H (altura), e (cota inferior junto al interior), D (base)",
+      "Modelos (MOD. TYPE)": "10, 15, 21, 30, 38",
+      "Nota": "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
+     },
+     "models": [
+      {
+       "reference": "Mod. 10",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "10",
+        "e": "3 y 4",
+        "H": "14",
+        "d": "8,5"
+       },
+       "raw_row": "10 | 10 | 3 y 4 | 14 | 8,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6",
+        "H": "15",
+        "d": "13"
+       },
+       "raw_row": "15 | 14,5 | 4,6 | 15 | 13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "21",
+        "e": "4,6",
+        "H": "17",
+        "d": "19,5"
+       },
+       "raw_row": "21 | 21 | 4,6 | 17 | 19,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "29,5",
+        "e": "4,6",
+        "H": "17,5",
+        "d": "28"
+       },
+       "raw_row": "30 | 29,5 | 4,6 | 17,5 | 28",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "38",
+        "e": "4,6,8",
+        "H": "18,5",
+        "d": "36,5"
+       },
+       "raw_row": "38 | 38 | 4,6,8 | 18,5 | 36,5",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
+     ],
+     "ordering_info": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
+    },
+    {
+     "family": "Tapas",
+     "series": null,
+     "page": 1,
+     "description": "Tapas (fotografía de una tapa azul con aleta). Tabla con cuatro modelos (MOD. TYPE 15, 21, 30, 38) con columnas D, d, e.",
+     "general_specs": {
+      "Cotas de la tabla": "D, d, e",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "D (cota superior), H (cota de altura), e (cota inferior); la columna d de la tabla no aparece en el dibujo",
+      "Modelos (MOD. TYPE)": "15, 21, 30, 38"
+     },
+     "models": [
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 | 26 | 9,8 | 2,8",
+       "confidence": "media"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 | 36 | 16 | 2,8",
+       "confidence": "media"
+      },
+      {
+       "reference": "Mod. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 | 45 | 21,5 | 2,8",
+       "confidence": "media"
+      },
+      {
+       "reference": "Mod. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 | 55 | 27 | 2,7",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por MOD. TYPE (15, 21, 30, 38)."
+    },
+    {
+     "family": "Aros con Flecha",
+     "series": null,
+     "page": 1,
+     "description": "Aros con flecha (aro negro con puntero y cuatro pivotes). Tabla con cinco modelos (MOD. TYPE 10, 15, 21, 30, 38) con columnas D, e, H.",
+     "general_specs": {
+      "Cotas de la tabla": "D, e, H",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "F (saliente de la flecha), d (cota interior), D (cota exterior); las columnas e y H de la tabla no aparecen en el dibujo",
+      "Modelos (MOD. TYPE)": "10, 15, 21, 30, 38"
+     },
+     "models": [
+      {
+       "reference": "Mod. 10",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "8",
+        "e": "6,5",
+        "H": "8,5"
+       },
+       "raw_row": "10 | 8 | 6,5 | 8,5",
+       "confidence": "media"
+      },
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "11",
+        "e": "10",
+        "H": "13"
+       },
+       "raw_row": "15 | 11 | 10 | 13",
+       "confidence": "media"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "18",
+        "e": "15,7",
+        "H": "19,5"
+       },
+       "raw_row": "21 | 18 | 15,7 | 19,5",
+       "confidence": "media"
+      },
+      {
+       "reference": "Mod. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "25,5",
+        "e": "23,8",
+        "H": "28"
+       },
+       "raw_row": "30 | 25,5 | 23,8 | 28",
+       "confidence": "media"
+      },
+      {
+       "reference": "Mod. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "33,5",
+        "e": "30,5",
+        "H": "36,5"
+       },
+       "raw_row": "38 | 33,5 | 30,5 | 36,5",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por MOD. TYPE (10, 15, 21, 30, 38)."
+    },
+    {
+     "family": "Cubretuercas",
+     "series": null,
+     "page": 1,
+     "description": "Cubretuercas (pieza negra con cuatro pivotes). Tabla con dos modelos (MOD. TYPE 10 y 15) con columnas A, B, D.",
+     "general_specs": {
+      "Cotas de la tabla": "A, B, D",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "A y B (cotas de altura), C (cota inferior de anchura); el dibujo no tiene cota D",
+      "Modelos (MOD. TYPE)": "10, 15"
+     },
+     "models": [
+      {
+       "reference": "Mod. 10",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "10",
+        "A": "3,5",
+        "B": "2,5",
+        "D": "14"
+       },
+       "raw_row": "10 | 3,5 | 2,5 | 14",
+       "confidence": "media"
+      },
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "A": "4",
+        "B": "3",
+        "D": "17"
+       },
+       "raw_row": "15 | 4 | 3 | 17",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por MOD. TYPE (10, 15)."
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 34 del catálogo (número impreso al pie). Cabecera de sección: BOTONES DE MANDO. Página sin capa de texto (imagen): transcrita desde el render a 110 y 200 ppp.",
+     "page": 1
+    },
+    {
+     "fact": "La página contiene cinco bloques: Serie BO (brillante), Serie BO con Línea, Tapas, Aros con Flecha y Cubretuercas. Cada bloque tiene su tabla (MOD. TYPE y cotas), una fotografía y un dibujo acotado.",
+     "page": 1
+    },
+    {
+     "fact": "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10 (nota bajo las tablas de la serie BO y de la serie BO con Línea).",
+     "page": 1
+    },
+    {
+     "fact": "Las tablas de la serie BO (brillante) y de la serie BO con Línea son idénticas fila a fila (mismos cinco modelos y mismas cotas D, e, H, d). La única diferencia visible está en la fotografía: la versión con línea muestra una línea negra indicadora.",
+     "page": 1
+    },
+    {
+     "fact": "Observación visual de las fotografías (no es un dato técnico del PDF): botón BO gris con tuerca metálica dorada; tapa azul; aro negro con puntero; cubretuercas negro. El PDF no indica colores disponibles.",
+     "page": 1
+    },
+    {
+     "fact": "Las tablas de Tapas, Aros con Flecha y Cubretuercas aparecen con los mismos valores (con subtítulos en inglés) en Caracteristicas_Tapas_para_Botones.pdf y Caracteristicas_senalizadores_para_botones.pdf (comprobado visualmente; esos PDFs pertenecen a otro trabajo).",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Columna e de la serie BO y de la serie BO con Línea: valores '3 y 4' (Mod. 10), '4,6' (Mod. 15, 21, 30) y '4,6,8' (Mod. 38)",
+     "why": "La coma puede ser separador de lista ('4, 6' y '4, 6, 8', coherente con '3 y 4' y con '4,6,1/4\"' de la serie BM) o decimal (4,6). Se conserva el texto tal cual. Propuesta, NO publicar como número: leer como lista de diámetros de eje (4 y 6; 4, 6 y 8) y confirmar con Torivac. Además el PDF no rotula qué es 'e' (en el dibujo está junto al interior de la base; la nota de '1/4\"' sugiere el diámetro del eje)."
+    },
+    {
+     "page": 1,
+     "item": "Unidad de todas las cotas (D, e, H, d, A, B...)",
+     "why": "El PDF no indica la unidad en ninguna tabla. No se asume mm; a confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Tabla de Tapas (D, d, e)",
+     "why": "Los valores (26/9,8/2,8; 36/16/2,8; 45/21,5/2,8; 55/27/2,7) son idénticos fila a fila a los de Discos con Flecha y Discos Graduados (p. impresa 35). El dibujo de la tapa acota D, H y e (no hay cota d) y la tapa mod. 15 (D 26) casi duplica el D del botón BO mod. 15 (D 14,5): posible copia de tabla. Propuesta, NO publicar las cotas de las tapas hasta confirmarlas."
+    },
+    {
+     "page": 1,
+     "item": "Tabla de Aros con Flecha (D, e, H)",
+     "why": "El dibujo acota F, d y D (no hay e ni H). Los valores de la columna H (8,5; 13; 19,5; 28; 36,5) coinciden fila a fila con la columna d de la serie BO. Posible rótulo de columna erróneo; confirmar el significado de e y H antes de publicar."
+    },
+    {
+     "page": 1,
+     "item": "Tabla de Cubretuercas (A, B, D)",
+     "why": "El dibujo acota A, B y C; la tabla titula la tercera columna D. Se transcribe con el rótulo de la tabla (D); confirmar si es C."
+    },
+    {
+     "page": 1,
+     "item": "Compatibilidad de Tapas, Aros con Flecha y Cubretuercas con cada modelo de botón",
+     "why": "El PDF comparte la numeración MOD. TYPE (10, 15, 21, 30, 38) pero no indica qué accesorio encaja en qué botón. No se publica compatibilidad."
+    }
+   ]
+  },
+  {
+   "file": "BOTONES-DE-MANDO2.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "BOTONES DE MANDO (página 35 del catálogo): discos con flecha, discos graduados, startors, serie BM mate y tapas para botón BM",
+   "families": [
+    {
+     "family": "Discos con Flecha",
+     "series": null,
+     "page": 1,
+     "description": "Discos con flecha (disco negro con flecha blanca). Tabla con cuatro modelos (MOD. TYPE 15, 21, 30, 38) con columnas D, d, e.",
+     "general_specs": {
+      "Cotas de la tabla": "D, d, e",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "D (cota exterior), d (cota interior), e (cota de altura)",
+      "Modelos (MOD. TYPE)": "15, 21, 30, 38"
+     },
+     "models": [
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 | 26 | 9,8 | 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 | 36 | 16 | 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 | 45 | 21,5 | 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 | 55 | 27 | 2,7",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por MOD. TYPE (15, 21, 30, 38)."
+    },
+    {
+     "family": "Discos Graduados",
+     "series": null,
+     "page": 1,
+     "description": "Discos graduados (disco blanco translúcido con numeración del 1 al 10 en la fotografía). Tabla con cuatro modelos (MOD. TYPE 15, 21, 30, 38) con columnas D, d, e.",
+     "general_specs": {
+      "Cotas de la tabla": "D, d, e",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "D (cota exterior), d (cota interior), e (cota de altura)",
+      "Modelos (MOD. TYPE)": "15, 21, 30, 38",
+      "Graduación visible en la fotografía": "numeración 1 a 10"
+     },
+     "models": [
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 | 26 | 9,8 | 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 | 36 | 16 | 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 | 45 | 21,5 | 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 | 55 | 27 | 2,7",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por MOD. TYPE (15, 21, 30, 38)."
+    },
+    {
+     "family": "Startors",
+     "series": null,
+     "page": 1,
+     "description": "Startors (disco negro con marca blanca). Tabla con código (CÓD./CODE), MOD. TYPE y D para tres modelos.",
+     "general_specs": {
+      "Cotas de la tabla": "D",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "D (cota exterior)",
+      "Modelos (MOD. TYPE)": "15, 21, 30"
+     },
+     "models": [
+      {
+       "reference": "BOS014",
+       "page": 1,
+       "specs": {
+        "CÓD. / CODE": "BOS014",
+        "MOD. TYPE": "15",
+        "D": "26"
+       },
+       "raw_row": "BOS014 | 15 | 26",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BOS021",
+       "page": 1,
+       "specs": {
+        "CÓD. / CODE": "BOS021",
+        "MOD. TYPE": "21",
+        "D": "36"
+       },
+       "raw_row": "BOS021 | 21 | 36",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BOS029",
+       "page": 1,
+       "specs": {
+        "CÓD. / CODE": "BOS029",
+        "MOD. TYPE": "30",
+        "D": "44"
+       },
+       "raw_row": "BOS029 | 30 | 44",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por código (BOS014, BOS021, BOS029)."
+    },
+    {
+     "family": "Serie BM (mate)",
+     "series": "BM",
+     "page": 1,
+     "description": "Botón de mando serie BM, acabado mate (según el título de la tabla). Tabla con modelos 15 y 21.",
+     "general_specs": {
+      "Cotas de la tabla": "D, e, H",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "d (arriba), H (altura), e (cota inferior junto al interior), D (base)",
+      "Modelos (MOD. TYPE)": "15, 21",
+      "Acabado": "mate"
+     },
+     "models": [
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6,1/4\"",
+        "H": "16"
+       },
+       "raw_row": "15 | 14,5 | 4,6,1/4\" | 16",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "20,6",
+        "e": "4,6,1/4\"",
+        "H": "19"
+       },
+       "raw_row": "21 | 20,6 | 4,6,1/4\" | 19",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Tapas para Botón BM (mate)"
+     ],
+     "ordering_info": "Se pide por MOD. TYPE (15, 21). La columna e indica '4,6,1/4\"' en ambos modelos."
+    },
+    {
+     "family": "Tapas para Botón BM (mate)",
+     "series": null,
+     "page": 1,
+     "description": "Tapas para botón de la serie BM (mate): tapa gris con marca indicadora oscura. Tabla con dos modelos (MOD. TYPE 15 y 21) con columnas D, e, H.",
+     "general_specs": {
+      "Cotas de la tabla": "D, e, H",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "D (cota exterior), e (cota inferior), H (cota de altura)",
+      "Modelos (MOD. TYPE)": "15, 21"
+     },
+     "models": [
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "12",
+        "e": "4,6,1/4\"",
+        "H": "6,2"
+       },
+       "raw_row": "15 | 12 | 4,6,1/4\" | 6,2",
+       "confidence": "media"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "18,8",
+        "e": "4,6,1/4\"",
+        "H": "7,4"
+       },
+       "raw_row": "21 | 18,8 | 4,6,1/4\" | 7,4",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por MOD. TYPE (15, 21)."
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 35 del catálogo (número impreso al pie). Cabecera de sección: BOTONES DE MANDO. Página sin capa de texto (imagen): transcrita desde el render a 110 y 200 ppp.",
+     "page": 1
+    },
+    {
+     "fact": "La página contiene cinco bloques: Discos con Flecha, Discos Graduados, Startors, Serie BM (mate) y Tapas para Botón BM (mate). Cada bloque tiene tabla, fotografía y dibujo acotado.",
+     "page": 1
+    },
+    {
+     "fact": "Las tablas de Discos con Flecha y Discos Graduados son idénticas entre sí (D 26/36/45/55, d 9,8/16/21,5/27, e 2,8/2,8/2,8/2,7) y a la tabla de Tapas de la p. impresa 34.",
+     "page": 1
+    },
+    {
+     "fact": "Startors: únicos productos de la página que se piden por código propio (BOS014, BOS021, BOS029) además del MOD. TYPE.",
+     "page": 1
+    },
+    {
+     "fact": "Observación visual de las fotografías (no es un dato técnico del PDF): disco con flecha negro con flecha blanca; disco graduado blanco translúcido con números 1 a 10; startor negro con sector blanco; botón BM verde oscuro/negro mate con tuerca dorada; tapa BM gris con marca oscura. El PDF no indica colores disponibles.",
+     "page": 1
+    },
+    {
+     "fact": "Las tablas de Discos con Flecha, Discos Graduados y Startors figuran con los mismos valores (con subtítulos en inglés 'Dials With Pointer', 'Graded Dials') en Caracteristicas_senalizadores_para_botones.pdf, y la de Tapas para Botón BM en Caracteristicas_Tapas_para_Botones.pdf (comprobado visualmente; otros trabajos).",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de todas las cotas (D, d, e, H)",
+     "why": "El PDF no indica la unidad en ninguna tabla. No se asume mm; a confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Startors BOS029 (MOD. TYPE 30): D = 44",
+     "why": "El Disco con Flecha / Graduado MOD. TYPE 30 tiene D = 45. Se transcribe 44 tal cual (también figura 44 en Caracteristicas_senalizadores_para_botones.pdf). Puede ser una pieza distinta o una discrepancia del original; confirmar."
+    },
+    {
+     "page": 1,
+     "item": "Tapas para Botón BM (mate): columna e = '4,6,1/4\"' (ambos modelos)",
+     "why": "El valor es idéntico al de la columna e del botón BM (diámetros de eje), mientras que el dibujo de la tapa acota e como una cota inferior de la propia tapa. Posible copia de tabla. Además la coma es ambigua (lista '4, 6, 1/4\"' o decimal 4,6). No publicar la columna e de las tapas BM; confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Serie BM (mate): columna e = '4,6,1/4\"' (ambos modelos)",
+     "why": "La coma puede ser separador de lista (4, 6 y 1/4\") o decimal (4,6 y 1/4\"). Se conserva el texto tal cual. Propuesta, NO publicar como número: leer como lista de diámetros de eje y confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Significado de d y e en Discos con Flecha y Discos Graduados",
+     "why": "El dibujo acota D, d y e (e como altura/grosor, d como diámetro interior), pero el PDF no los nombra con palabras. Solo se publican las cifras con la letra del PDF."
+    },
+    {
+     "page": 1,
+     "item": "Dibujo de la serie BM: cota d",
+     "why": "El dibujo acota d (arriba), pero la tabla de la serie BM no tiene columna d. No se infiere ningún valor."
+    }
+   ]
+  },
+  {
+   "file": "BOTONES-DE-MANDO3.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "BOTONES DE MANDO (página 36 del catálogo): botón baquelita \"DF\" y carátulas graduadas",
+   "families": [
+    {
+     "family": "Botón Baquelita \"DF\"",
+     "series": "DF",
+     "page": 1,
+     "description": "Botón de baquelita serie DF (título de la tabla: Botón Baquelita DF) con tres modelos: 29DF, 38DF y 61DF. Dos fotografías (botón pequeño y botón grande con aleta indicadora) y dibujo acotado con A, B y D.",
+     "general_specs": {
+      "Cotas de la tabla": "A, B, D, E",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "A (cota superior), B (cota de altura), D (cota de la base); E no está acotada en el dibujo",
+      "Modelos (MOD. TYPE)": "29DF, 38DF, 61DF"
+     },
+     "models": [
+      {
+       "reference": "29DF",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "29DF",
+        "A": "29",
+        "B": "20",
+        "D": "38",
+        "E": "15,5"
+       },
+       "raw_row": "29DF | 29 | 20 | 38 | 15,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "38DF",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38DF",
+        "A": "38",
+        "B": "22",
+        "D": "52",
+        "E": "17"
+       },
+       "raw_row": "38DF | 38 | 22 | 52 | 17",
+       "confidence": "alta"
+      },
+      {
+       "reference": "61DF",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "61DF",
+        "A": "61",
+        "B": "31",
+        "D": "76",
+        "E": "18"
+       },
+       "raw_row": "61DF | 61 | 31 | 76 | 18",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por MOD. TYPE (29DF, 38DF, 61DF)."
+    },
+    {
+     "family": "Carátulas Graduadas",
+     "series": null,
+     "page": 1,
+     "description": "Carátulas graduadas (esferas con escala impresa). Tabla bilingüe (Código/Code, Ø, Grabado/Printed, Ángulo/Rotat.Angle, Color/Colour) con 13 códigos. Fotografía de tres carátulas: una azul con escala 0-100 y '%', una gris clara con escala graduada y una oscura con numeración visible hasta 230.",
+     "general_specs": {
+      "Número de códigos": "13",
+      "Unidad del Ø": "no indicada en la página",
+      "Escalas grabadas (columna Grabado/Printed)": "0-100%; 0-230v; 0-250v",
+      "Ángulos de giro (columna Ángulo/Rotat.Angle)": "180º; 270º; 305º; 310º; 328º; 330º; 340º",
+      "Ø presentes en la tabla": "50; 80; 116",
+      "Colores (columna Color/Colour)": "Gris / Grey; Negro / Black; Azul / Blue"
+     },
+     "models": [
+      {
+       "reference": "CA0050180",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0050180",
+        "Ø": "50",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "180º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0050180 | 50 | 0-100% | 180º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0050270",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0050270",
+        "Ø": "50",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "270º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0050270 | 50 | 0-100% | 270º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080270",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0080270",
+        "Ø": "80",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "270º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0080270 | 80 | 0-100% | 270º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080305",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0080305",
+        "Ø": "80",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "305º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0080305 | 80 | 0-100% | 305º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116270",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0116270",
+        "Ø": "116",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "270º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116270 | 116 | 0-100% | 270º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116310",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0116310",
+        "Ø": "116",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "310º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116310 | 116 | 0-100% | 310º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116330",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0116330",
+        "Ø": "116",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "330º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116330 | 116 | 0-100% | 330º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080230",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0080230",
+        "Ø": "80",
+        "Grabado / Printed": "0-230v",
+        "Ángulo / Rotat. Angle": "330º",
+        "Color / Colour": "Negro / Black"
+       },
+       "raw_row": "CA0080230 | 80 | 0-230v | 330º | Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080250",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0080250",
+        "Ø": "80",
+        "Grabado / Printed": "0-250v",
+        "Ángulo / Rotat. Angle": "340º",
+        "Color / Colour": "Negro / Black"
+       },
+       "raw_row": "CA0080250 | 80 | 0-250v | 340º | Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115230",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0115230",
+        "Ø": "116",
+        "Grabado / Printed": "0-230v",
+        "Ángulo / Rotat. Angle": "330º",
+        "Color / Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115230 | 116 | 0-230v | 330º | Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115250",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0115250",
+        "Ø": "116",
+        "Grabado / Printed": "0-250v",
+        "Ángulo / Rotat. Angle": "330º",
+        "Color / Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115250 | 116 | 0-250v | 330º | Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115330",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0115330",
+        "Ø": "116",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "330º",
+        "Color / Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115330 | 116 | 0-100% | 330º | Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0160330",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0160330",
+        "Ø": "116",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "328º",
+        "Color / Colour": "Azul / Blue"
+       },
+       "raw_row": "CA0160330 | 116 | 0-100% | 328º | Azul / Blue",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por Código (CA + 7 cifras). El PDF no explica cómo se forma el código."
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "0-230v",
+     "page": 1,
+     "context": "Escala grabada de la carátula CA0080230 (Ø 80, ángulo 330º, color Negro / Black)",
+     "normalized_hint": "0-230 V (rango de la escala impresa en la carátula, no una tensión de servicio)"
+    },
+    {
+     "raw": "0-250v",
+     "page": 1,
+     "context": "Escala grabada de la carátula CA0080250 (Ø 80, ángulo 340º, color Negro / Black)",
+     "normalized_hint": "0-250 V (rango de la escala impresa en la carátula, no una tensión de servicio)"
+    },
+    {
+     "raw": "0-230v",
+     "page": 1,
+     "context": "Escala grabada de la carátula CA0115230 (Ø 116, ángulo 330º, color Negro / Black)",
+     "normalized_hint": "0-230 V (rango de la escala impresa en la carátula, no una tensión de servicio)"
+    },
+    {
+     "raw": "0-250v",
+     "page": 1,
+     "context": "Escala grabada de la carátula CA0115250 (Ø 116, ángulo 330º, color Negro / Black)",
+     "normalized_hint": "0-250 V (rango de la escala impresa en la carátula, no una tensión de servicio)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Página 36 del catálogo (número impreso al pie). Cabecera de sección: BOTONES DE MANDO. Página sin capa de texto (imagen): transcrita desde el render a 110 y 200 ppp.",
+     "page": 1
+    },
+    {
+     "fact": "La página contiene dos bloques: tabla del Botón Baquelita \"DF\" (con dos fotografías y un dibujo acotado) y tabla de Carátulas Graduadas (con una fotografía de tres carátulas).",
+     "page": 1
+    },
+    {
+     "fact": "Material: el botón DF se rotula como 'Botón Baquelita'. El PDF no da más datos de material.",
+     "page": 1
+    },
+    {
+     "fact": "Las cabeceras de la tabla de carátulas son bilingües (Código/Code, Grabado/Printed, Ángulo/Rotat.Angle, Color/Colour).",
+     "page": 1
+    },
+    {
+     "fact": "Resumen de las 13 carátulas: Ø 50 (2 códigos, grises, 0-100%), Ø 80 (4 códigos: 2 grises 0-100%, 2 negros 0-230v y 0-250v) y Ø 116 (7 códigos: 3 grises 0-100%, 3 negros 0-230v, 0-250v y 0-100%, 1 azul 0-100%).",
+     "page": 1
+    },
+    {
+     "fact": "Observación visual de las fotografías (no es un dato técnico del PDF): botón DF negro con aleta indicadora; carátulas azul con escala 0-100 y '%', gris claro con escala fina y oscura con numeración hasta 230.",
+     "page": 1
+    },
+    {
+     "fact": "Contenido de esta página duplicado en Caracteristicas_Boton_Baquelita_DF.pdf (ficha individual con la misma tabla DF y las mismas 13 carátulas, comprobado fila a fila).",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas A, B, D, E del botón DF y del Ø de las carátulas",
+     "why": "El PDF no indica la unidad. No se asume mm; a confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Columna E del botón Baquelita \"DF\" (15,5 / 17 / 18)",
+     "why": "El dibujo solo acota A, B y D; E no aparece en el dibujo y el PDF no dice qué es. Se transcribe tal cual; no publicar su significado."
+    },
+    {
+     "page": 1,
+     "item": "Códigos de las Carátulas Graduadas (CA0050180... CA0160330)",
+     "why": "El PDF no explica la codificación. Se observa que muchos códigos terminan en el ángulo (180, 270, 305, 310, 330) o en la escala de tensión (230, 250), pero CA0160330 termina en 330 y su ángulo es 328º, y los Ø 116 usan prefijos 0116, 0115 y 0160. Patrón no documentado: no derivar ángulo ni escala del código."
+    },
+    {
+     "page": 1,
+     "item": "Escalas '0-230v' y '0-250v' (CA0080230, CA0080250, CA0115230, CA0115250)",
+     "why": "Son rangos de la escala grabada en la carátula (columna Grabado/Printed), con la 'v' en minúscula tal cual. El PDF no dice a qué producto se acoplan ni si son para voltímetro de variador. No presentarlas como tensión de alimentación de un producto."
+    },
+    {
+     "page": 1,
+     "item": "Carátulas con Ø 116 y prefijos distintos (0116, 0115, 0160)",
+     "why": "CA0115230/250/330 (negro) y CA0160330 (azul) figuran con Ø 116 igual que CA0116xxx (gris). Se transcribe tal cual; si el Ø real fuera 115 o 160 en alguno de ellos sería un error del original. Confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Compatibilidad de las carátulas y del botón DF con otros productos (variadores, potenciómetros)",
+     "why": "El PDF no indica con qué productos se usan. No se publica compatibilidad."
+    }
+   ]
+  },
+  {
+   "file": "Caracteristicas_Boton_Baquelita_DF.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "BOTONES DE BAQUELITA/BAKELITE KNOBS (ficha técnica: botón baquelita DF y carátulas graduadas)",
+   "families": [
+    {
+     "family": "Botón Baquelita \"DF\"",
+     "series": "DF",
+     "page": 1,
+     "description": "Botón de baquelita serie DF (título de la tabla: Botón Baquelita DF) con tres modelos: 29DF, 38DF y 61DF. Dos fotografías (botón pequeño y botón grande con aleta indicadora) y dibujo acotado con A, B y D.",
+     "general_specs": {
+      "Cotas de la tabla": "A, B, D, E",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "A (cota superior), B (cota de altura), D (cota de la base); E no está acotada en el dibujo",
+      "Modelos (MOD. TYPE)": "29DF, 38DF, 61DF"
+     },
+     "models": [
+      {
+       "reference": "29DF",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "29DF",
+        "A": "29",
+        "B": "20",
+        "D": "38",
+        "E": "15,5"
+       },
+       "raw_row": "29DF | 29 | 20 | 38 | 15,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "38DF",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38DF",
+        "A": "38",
+        "B": "22",
+        "D": "52",
+        "E": "17"
+       },
+       "raw_row": "38DF | 38 | 22 | 52 | 17",
+       "confidence": "alta"
+      },
+      {
+       "reference": "61DF",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "61DF",
+        "A": "61",
+        "B": "31",
+        "D": "76",
+        "E": "18"
+       },
+       "raw_row": "61DF | 61 | 31 | 76 | 18",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por MOD. TYPE (29DF, 38DF, 61DF)."
+    },
+    {
+     "family": "Carátulas Graduadas",
+     "series": null,
+     "page": 1,
+     "description": "Carátulas graduadas (esferas con escala impresa). Tabla bilingüe (Código/Code, Ø, Grabado/Printed, Ángulo/Rotat.Angle, Color/Colour) con 13 códigos. Fotografía de tres carátulas: una azul con escala 0-100 y '%', una gris clara con escala graduada y una oscura con numeración visible hasta 230.",
+     "general_specs": {
+      "Número de códigos": "13",
+      "Unidad del Ø": "no indicada en la página",
+      "Escalas grabadas (columna Grabado/Printed)": "0-100%; 0-230v; 0-250v",
+      "Ángulos de giro (columna Ángulo/Rotat.Angle)": "180º; 270º; 305º; 310º; 328º; 330º; 340º",
+      "Ø presentes en la tabla": "50; 80; 116",
+      "Colores (columna Color/Colour)": "Gris / Grey; Negro / Black; Azul / Blue"
+     },
+     "models": [
+      {
+       "reference": "CA0050180",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0050180",
+        "Ø": "50",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "180º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0050180 | 50 | 0-100% | 180º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0050270",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0050270",
+        "Ø": "50",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "270º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0050270 | 50 | 0-100% | 270º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080270",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0080270",
+        "Ø": "80",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "270º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0080270 | 80 | 0-100% | 270º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080305",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0080305",
+        "Ø": "80",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "305º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0080305 | 80 | 0-100% | 305º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116270",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0116270",
+        "Ø": "116",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "270º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116270 | 116 | 0-100% | 270º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116310",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0116310",
+        "Ø": "116",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "310º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116310 | 116 | 0-100% | 310º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116330",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0116330",
+        "Ø": "116",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "330º",
+        "Color / Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116330 | 116 | 0-100% | 330º | Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080230",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0080230",
+        "Ø": "80",
+        "Grabado / Printed": "0-230v",
+        "Ángulo / Rotat. Angle": "330º",
+        "Color / Colour": "Negro / Black"
+       },
+       "raw_row": "CA0080230 | 80 | 0-230v | 330º | Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080250",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0080250",
+        "Ø": "80",
+        "Grabado / Printed": "0-250v",
+        "Ángulo / Rotat. Angle": "340º",
+        "Color / Colour": "Negro / Black"
+       },
+       "raw_row": "CA0080250 | 80 | 0-250v | 340º | Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115230",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0115230",
+        "Ø": "116",
+        "Grabado / Printed": "0-230v",
+        "Ángulo / Rotat. Angle": "330º",
+        "Color / Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115230 | 116 | 0-230v | 330º | Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115250",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0115250",
+        "Ø": "116",
+        "Grabado / Printed": "0-250v",
+        "Ángulo / Rotat. Angle": "330º",
+        "Color / Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115250 | 116 | 0-250v | 330º | Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115330",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0115330",
+        "Ø": "116",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "330º",
+        "Color / Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115330 | 116 | 0-100% | 330º | Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0160330",
+       "page": 1,
+       "specs": {
+        "Código / Code": "CA0160330",
+        "Ø": "116",
+        "Grabado / Printed": "0-100%",
+        "Ángulo / Rotat. Angle": "328º",
+        "Color / Colour": "Azul / Blue"
+       },
+       "raw_row": "CA0160330 | 116 | 0-100% | 328º | Azul / Blue",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por Código (CA + 7 cifras). El PDF no explica cómo se forma el código."
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "0-230v",
+     "page": 1,
+     "context": "Escala grabada de la carátula CA0080230 (Ø 80, ángulo 330º, color Negro / Black)",
+     "normalized_hint": "0-230 V (rango de la escala impresa en la carátula, no una tensión de servicio)"
+    },
+    {
+     "raw": "0-250v",
+     "page": 1,
+     "context": "Escala grabada de la carátula CA0080250 (Ø 80, ángulo 340º, color Negro / Black)",
+     "normalized_hint": "0-250 V (rango de la escala impresa en la carátula, no una tensión de servicio)"
+    },
+    {
+     "raw": "0-230v",
+     "page": 1,
+     "context": "Escala grabada de la carátula CA0115230 (Ø 116, ángulo 330º, color Negro / Black)",
+     "normalized_hint": "0-230 V (rango de la escala impresa en la carátula, no una tensión de servicio)"
+    },
+    {
+     "raw": "0-250v",
+     "page": 1,
+     "context": "Escala grabada de la carátula CA0115250 (Ø 116, ángulo 330º, color Negro / Black)",
+     "normalized_hint": "0-250 V (rango de la escala impresa en la carátula, no una tensión de servicio)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Ficha técnica de una página con logo Torivac y pie www.torivac.com. Título de la página: 'BOTONES DE BAQUELITA/BAKELITE KNOBS' (metadato PDF: 'BAQUELITA'). Sin capa de texto salvo título y web: transcrita desde el render a 110 y 200 ppp.",
+     "page": 1
+    },
+    {
+     "fact": "DUPLICIDAD DE CONTENIDO: la tabla Botón Baquelita \"DF\" y la tabla Carátulas Graduadas son idénticas fila a fila a las de BOTONES-DE-MANDO3.pdf (p. impresa 36 del catálogo).",
+     "page": 1
+    },
+    {
+     "fact": "DUPLICIDAD DE ARCHIVO: según pdf-index.json este PDF es un duplicado exacto (mismo hash) de Especificaciones_tecnicas_Caratulas_Gradudas_Torivac.pdf.",
+     "page": 1
+    },
+    {
+     "fact": "Material: el botón DF se rotula como 'Botón Baquelita' y la ficha se titula 'BOTONES DE BAQUELITA/BAKELITE KNOBS'. El PDF no da más datos de material.",
+     "page": 1
+    },
+    {
+     "fact": "Las cabeceras de la tabla de carátulas son bilingües (Código/Code, Grabado/Printed, Ángulo/Rotat.Angle, Color/Colour).",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Duplicidad con BOTONES-DE-MANDO3.pdf y con Especificaciones_tecnicas_Caratulas_Gradudas_Torivac.pdf",
+     "why": "Mismo contenido técnico en tres archivos. Se extrae igualmente; al fusionar datos deduplicar por referencia (29DF, 38DF, 61DF y códigos CA...)."
+    },
+    {
+     "page": 1,
+     "item": "Unidad de las cotas A, B, D, E del botón DF y del Ø de las carátulas",
+     "why": "El PDF no indica la unidad. No se asume mm; a confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Columna E del botón Baquelita \"DF\" (15,5 / 17 / 18)",
+     "why": "El dibujo solo acota A, B y D; E no aparece en el dibujo y el PDF no dice qué es. Se transcribe tal cual; no publicar su significado."
+    },
+    {
+     "page": 1,
+     "item": "Códigos de las Carátulas Graduadas (CA0050180... CA0160330)",
+     "why": "El PDF no explica la codificación. Se observa que muchos códigos terminan en el ángulo (180, 270, 305, 310, 330) o en la escala de tensión (230, 250), pero CA0160330 termina en 330 y su ángulo es 328º, y los Ø 116 usan prefijos 0116, 0115 y 0160. Patrón no documentado: no derivar ángulo ni escala del código."
+    },
+    {
+     "page": 1,
+     "item": "Escalas '0-230v' y '0-250v' (CA0080230, CA0080250, CA0115230, CA0115250)",
+     "why": "Son rangos de la escala grabada en la carátula (columna Grabado/Printed), con la 'v' en minúscula tal cual. El PDF no dice a qué producto se acoplan ni si son para voltímetro de variador. No presentarlas como tensión de alimentación de un producto."
+    },
+    {
+     "page": 1,
+     "item": "Carátulas con Ø 116 y prefijos distintos (0116, 0115, 0160)",
+     "why": "CA0115230/250/330 (negro) y CA0160330 (azul) figuran con Ø 116 igual que CA0116xxx (gris). Se transcribe tal cual; si el Ø real fuera 115 o 160 en alguno de ellos sería un error del original. Confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Compatibilidad de las carátulas y del botón DF con otros productos (variadores, potenciómetros)",
+     "why": "El PDF no indica con qué productos se usan. No se publica compatibilidad."
+    }
+   ]
+  },
+  {
+   "file": "Caracteristicas_Botones_de_Mando.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "BOTONES DE MANDO/KNOBS (ficha técnica: serie BO brillante, serie BO con línea y serie BM mate)",
+   "families": [
+    {
+     "family": "Serie BO (brillante)",
+     "series": "BO",
+     "page": 1,
+     "description": "Botón de mando serie BO, acabado brillante (título bilingüe 'Serie BO (brillante) BO Series'). Tabla con cinco modelos (MOD. TYPE 10, 15, 21, 30, 38), fotografía de un botón gris con tuerca y dibujo acotado en sección.",
+     "general_specs": {
+      "Cotas de la tabla": "D, e, H, d",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "d (arriba), H (altura), e (cota inferior junto al interior), D (base)",
+      "Modelos (MOD. TYPE)": "10, 15, 21, 30, 38",
+      "Nota": "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10",
+      "Nota (catalán)": "Sota comanda fabriquem 1/4\" en tots els models excepte Mod.10",
+      "Nota (inglés)": "Can be manufactured to order 1/4\" in all the models except Type 10"
+     },
+     "models": [
+      {
+       "reference": "Mod. 10",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "10",
+        "e": "3 y 4",
+        "H": "14",
+        "d": "8,5"
+       },
+       "raw_row": "10 | 10 | 3 y 4 | 14 | 8,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6",
+        "H": "15",
+        "d": "13"
+       },
+       "raw_row": "15 | 14,5 | 4,6 | 15 | 13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "21",
+        "e": "4,6",
+        "H": "17",
+        "d": "19,5"
+       },
+       "raw_row": "21 | 21 | 4,6 | 17 | 19,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "29,5",
+        "e": "4,6",
+        "H": "17,5",
+        "d": "28"
+       },
+       "raw_row": "30 | 29,5 | 4,6 | 17,5 | 28",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "38",
+        "e": "4,6,8",
+        "H": "18,5",
+        "d": "36,5"
+       },
+       "raw_row": "38 | 38 | 4,6,8 | 18,5 | 36,5",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
+     ],
+     "ordering_info": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
+    },
+    {
+     "family": "Serie BO con Línea",
+     "series": "BO",
+     "page": 1,
+     "description": "Botón de mando serie BO con línea (título bilingüe 'Serie BO con Línea BO Series Lined'; marca indicadora negra visible en la fotografía). Tabla con los mismos cinco modelos y las mismas cotas que la serie BO (brillante).",
+     "general_specs": {
+      "Cotas de la tabla": "D, e, H, d",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "d (arriba), H (altura), e (cota inferior junto al interior), D (base)",
+      "Modelos (MOD. TYPE)": "10, 15, 21, 30, 38",
+      "Nota": "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10",
+      "Nota (catalán)": "Sota comanda fabriquem 1/4\" en tots els models excepte Mod.10",
+      "Nota (inglés)": "Can be manufactured to order 1/4\" in all the models except Type 10"
+     },
+     "models": [
+      {
+       "reference": "Mod. 10",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "10",
+        "e": "3 y 4",
+        "H": "14",
+        "d": "8,5"
+       },
+       "raw_row": "10 | 10 | 3 y 4 | 14 | 8,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6",
+        "H": "15",
+        "d": "13"
+       },
+       "raw_row": "15 | 14,5 | 4,6 | 15 | 13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "21",
+        "e": "4,6",
+        "H": "17",
+        "d": "19,5"
+       },
+       "raw_row": "21 | 21 | 4,6 | 17 | 19,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "29,5",
+        "e": "4,6",
+        "H": "17,5",
+        "d": "28"
+       },
+       "raw_row": "30 | 29,5 | 4,6 | 17,5 | 28",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "38",
+        "e": "4,6,8",
+        "H": "18,5",
+        "d": "36,5"
+       },
+       "raw_row": "38 | 38 | 4,6,8 | 18,5 | 36,5",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
+     ],
+     "ordering_info": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
+    },
+    {
+     "family": "Serie BM (mate)",
+     "series": "BM",
+     "page": 1,
+     "description": "Botón de mando serie BM, acabado mate (según el título de la tabla). Tabla con modelos 15 y 21.",
+     "general_specs": {
+      "Cotas de la tabla": "D, e, H",
+      "Unidad de las cotas": "no indicada en la página",
+      "Dibujo acotado": "d (arriba), H (altura), e (cota inferior junto al interior), D (base)",
+      "Modelos (MOD. TYPE)": "15, 21",
+      "Acabado": "mate"
+     },
+     "models": [
+      {
+       "reference": "Mod. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6,1/4\"",
+        "H": "16"
+       },
+       "raw_row": "15 | 14,5 | 4,6,1/4\" | 16",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Mod. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "20,6",
+        "e": "4,6,1/4\"",
+        "H": "19"
+       },
+       "raw_row": "21 | 20,6 | 4,6,1/4\" | 19",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Se pide por MOD. TYPE (15, 21). La columna e indica '4,6,1/4\"' en ambos modelos."
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Ficha técnica de una página con logo Torivac y pie www.torivac.com. Título de la página: 'BOTONES DE MANDO/KNOBS' (metadato PDF: 'BOTONES'). Sin capa de texto salvo título y web: transcrita desde el render a 110 y 200 ppp.",
+     "page": 1
+    },
+    {
+     "fact": "Nota trilingüe bajo las tablas de la serie BO y BO con Línea: ES 'Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10'; CA 'Sota comanda fabriquem 1/4\" en tots els models excepte Mod.10'; EN 'Can be manufactured to order 1/4\" in all the models except Type 10'.",
+     "page": 1
+    },
+    {
+     "fact": "Títulos de tabla bilingües: 'Serie BO (brillante) / BO Series', 'Serie BO con Línea / BO Series Lined', 'Serie BM (mate) / BM Series'.",
+     "page": 1
+    },
+    {
+     "fact": "DUPLICIDAD DE CONTENIDO: las tablas BO y BO con Línea son idénticas fila a fila a las de BOTONES-DE-MANDO.pdf (p. impresa 34) y la tabla BM a la de BOTONES-DE-MANDO2.pdf (p. impresa 35). Esta ficha no incluye tapas, aros, cubretuercas, discos ni startors.",
+     "page": 1
+    },
+    {
+     "fact": "Observación visual de las fotografías (no es un dato técnico del PDF): botón BO gris con tuerca dorada; BO con línea gris con línea negra; botón BM verde oscuro/negro mate con tuerca dorada. El PDF no indica colores disponibles.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Duplicidad con BOTONES-DE-MANDO.pdf y BOTONES-DE-MANDO2.pdf",
+     "why": "Mismo contenido técnico (series BO, BO con Línea y BM). Se extrae igualmente; al fusionar datos deduplicar por serie y MOD. TYPE."
+    },
+    {
+     "page": 1,
+     "item": "Columna e de la serie BO y BO con Línea: '3 y 4' (Mod. 10), '4,6' (Mod. 15, 21, 30), '4,6,8' (Mod. 38); y de la serie BM: '4,6,1/4\"'",
+     "why": "La coma puede ser separador de lista (4 y 6; 4, 6 y 8; 4, 6 y 1/4\") o decimal (4,6). Se conserva el texto tal cual. Propuesta, NO publicar como número: leer como lista de diámetros de eje y confirmar con Torivac. El PDF no rotula qué es 'e'."
+    },
+    {
+     "page": 1,
+     "item": "Unidad de todas las cotas (D, e, H, d)",
+     "why": "El PDF no indica la unidad en ninguna tabla. No se asume mm; a confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Dibujo de la serie BM: cota d",
+     "why": "El dibujo acota d (arriba), pero la tabla de la serie BM no tiene columna d. No se infiere ningún valor."
+    }
+   ]
+  }
+ ]
+}

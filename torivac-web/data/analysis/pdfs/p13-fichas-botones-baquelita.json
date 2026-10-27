@@ -1,0 +1,539 @@
+{
+ "job": "p13-fichas-botones-baquelita",
+ "documents": [
+  {
+   "file": "Caracteristicas_senalizadores_para_botones.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "DISCOS PARA BOTON/DIALS",
+   "families": [
+    {
+     "family": "Aros con Flecha / Ring With Pointers",
+     "series": null,
+     "page": 1,
+     "description": "Aros con Flecha / Ring With Pointers. El PDF no incluye texto descriptivo; solo título de tabla bilingüe, foto del producto y dibujo acotado.",
+     "general_specs": {
+      "Denominación (ES / EN)": "Aros con Flecha / Ring With Pointers",
+      "Columnas de la tabla": "MOD. TYPE, D, e, H",
+      "Cotas rotuladas en el dibujo": "F, d, D"
+     },
+     "models": [
+      {
+       "reference": "MOD. 10",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "8",
+        "e": "6,5",
+        "H": "8,5"
+       },
+       "raw_row": "10 8 6,5 8,5",
+       "confidence": "media"
+      },
+      {
+       "reference": "MOD. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "11",
+        "e": "10",
+        "H": "13"
+       },
+       "raw_row": "15 11 10 13",
+       "confidence": "media"
+      },
+      {
+       "reference": "MOD. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "18",
+        "e": "15,7",
+        "H": "19,5"
+       },
+       "raw_row": "21 18 15,7 19,5",
+       "confidence": "media"
+      },
+      {
+       "reference": "MOD. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "25,5",
+        "e": "23,8",
+        "H": "28"
+       },
+       "raw_row": "30 25,5 23,8 28",
+       "confidence": "media"
+      },
+      {
+       "reference": "MOD. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "33,5",
+        "e": "30,5",
+        "H": "36,5"
+       },
+       "raw_row": "38 33,5 30,5 36,5",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Cubretuercas / Nut Covers",
+     "series": null,
+     "page": 1,
+     "description": "Cubretuercas / Nut Covers. El PDF no incluye texto descriptivo; solo título de tabla bilingüe, foto del producto y dibujo acotado.",
+     "general_specs": {
+      "Denominación (ES / EN)": "Cubretuercas / Nut Covers",
+      "Columnas de la tabla": "MOD. TYPE, A, B, D",
+      "Cotas rotuladas en el dibujo": "A, B, C"
+     },
+     "models": [
+      {
+       "reference": "MOD. 10",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "10",
+        "A": "3,5",
+        "B": "2,5",
+        "D": "14"
+       },
+       "raw_row": "10 3,5 2,5 14",
+       "confidence": "media"
+      },
+      {
+       "reference": "MOD. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "A": "4",
+        "B": "3",
+        "D": "17"
+       },
+       "raw_row": "15 4 3 17",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Discos con Flecha / Dials With Pointer",
+     "series": null,
+     "page": 1,
+     "description": "Discos con Flecha / Dials With Pointer. El PDF no incluye texto descriptivo; solo título de tabla bilingüe, foto del producto y dibujo acotado.",
+     "general_specs": {
+      "Denominación (ES / EN)": "Discos con Flecha / Dials With Pointer",
+      "Columnas de la tabla": "MOD. TYPE, D, d, e",
+      "Cotas rotuladas en el dibujo": "D, d, e"
+     },
+     "models": [
+      {
+       "reference": "MOD. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 26 9,8 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "MOD. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 36 16 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "MOD. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 45 21,5 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "MOD. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 55 27 2,7",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Discos Graduados / Graded Dials",
+     "series": null,
+     "page": 1,
+     "description": "Discos Graduados / Graded Dials. El PDF no incluye texto descriptivo; solo título de tabla bilingüe, foto del producto y dibujo acotado.",
+     "general_specs": {
+      "Denominación (ES / EN)": "Discos Graduados / Graded Dials",
+      "Columnas de la tabla": "MOD. TYPE, D, d, e",
+      "Cotas rotuladas en el dibujo": "D, d, e"
+     },
+     "models": [
+      {
+       "reference": "MOD. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 26 9,8 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "MOD. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 36 16 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "MOD. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 45 21,5 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "MOD. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 55 27 2,7",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Startors",
+     "series": null,
+     "page": 1,
+     "description": "Startors (título de tabla sin traducción al inglés en el PDF). El PDF no incluye texto descriptivo; solo título de tabla bilingüe, foto del producto y dibujo acotado.",
+     "general_specs": {
+      "Denominación (ES / EN)": "Startors",
+      "Columnas de la tabla": "CÓD. CODE, MOD. TYPE, D",
+      "Cotas rotuladas en el dibujo": "D"
+     },
+     "models": [
+      {
+       "reference": "BOS014",
+       "page": 1,
+       "specs": {
+        "CÓD. CODE": "BOS014",
+        "MOD. TYPE": "15",
+        "D": "26"
+       },
+       "raw_row": "BOS014 15 26",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BOS021",
+       "page": 1,
+       "specs": {
+        "CÓD. CODE": "BOS021",
+        "MOD. TYPE": "21",
+        "D": "36"
+       },
+       "raw_row": "BOS021 21 36",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BOS029",
+       "page": 1,
+       "specs": {
+        "CÓD. CODE": "BOS029",
+        "MOD. TYPE": "30",
+        "D": "44"
+       },
+       "raw_row": "BOS029 30 44",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "La tabla asigna un código a cada modelo: BOS014 (MOD. TYPE 15), BOS021 (MOD. TYPE 21), BOS029 (MOD. TYPE 30)."
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Título de la página: \"DISCOS PARA BOTON/DIALS\" (bilingüe español/inglés). Pie de página: www.torivac.com. El nombre del fichero habla de \"senalizadores para botones\", pero el título impreso es \"Discos para botón\".",
+     "page": 1
+    },
+    {
+     "fact": "Cinco tablas de cotas con foto del producto y dibujo acotado cada una: Aros con Flecha, Cubretuercas, Discos con Flecha, Discos Graduados y Startors. Los modelos se identifican con \"MOD./TYPE\" (10, 15, 21, 30, 38) salvo los Startors, que además llevan código BOS0xx.",
+     "page": 1
+    },
+    {
+     "fact": "Los modelos MOD./TYPE 15, 21, 30 y 38 de Discos con Flecha y de Discos Graduados tienen las mismas cotas D, d, e (26/9,8/2,8; 36/16/2,8; 45/21,5/2,8; 55/27/2,7).",
+     "page": 1
+    },
+    {
+     "fact": "La foto del Disco Graduado muestra un disco blanco translúcido con escala numerada del 1 al 10 impresa en negro. La foto del Disco con Flecha y la del Startor muestran un disco negro con marca/flecha blanca. La foto del Aro con Flecha muestra un anillo negro con flecha. La foto del Cubretuercas muestra un anillo negro con ranura.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas",
+     "why": "Ninguna tabla indica unidad (mm no figura en la página). Se transcriben los valores sin unidad; no publicar \"mm\" hasta confirmarlo con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Aros con Flecha: significado de las columnas e y H",
+     "why": "La tabla rotula D, e, H pero el dibujo acotado rotula F, d, D (F = longitud de la punta de la flecha, d = diámetro interior, D = diámetro exterior según el dibujo). No se puede asegurar a qué cota del dibujo corresponden e y H; no etiquetar como altura/diámetro interior sin confirmar. Los valores numéricos están leídos de la imagen a 220 dpi."
+    },
+    {
+     "page": 1,
+     "item": "Cubretuercas: columna D de la tabla vs cota C del dibujo",
+     "why": "La tabla rotula A, B, D y el dibujo rotula A, B, C (C = cota horizontal de mayor anchura). Es probable que D de la tabla sea la C del dibujo, pero el PDF no lo aclara."
+    },
+    {
+     "page": 1,
+     "item": "Startors MOD. TYPE 30: D = 44",
+     "why": "El Disco con Flecha / Graduado de MOD. TYPE 30 tiene D = 45; los Startors de MOD. TYPE 15 y 21 coinciden con los discos (26 y 36). Se transcribe 44 tal cual figura en la imagen; puede ser una diferencia real o errata del original."
+    },
+    {
+     "page": 1,
+     "item": "e = 2,7 en MOD. TYPE 38",
+     "why": "En Discos con Flecha y Discos Graduados el MOD. TYPE 38 figura con e = 2,7 mientras los demás modelos tienen 2,8. Leído igual en el render a 220 dpi; se transcribe tal cual, posible errata del original."
+    },
+    {
+     "page": 1,
+     "item": "Datos no indicados en el PDF",
+     "why": "No figuran material, colores disponibles, diámetro de eje/agujero admitido, botón al que se acopla cada modelo, unidades por envase, normas ni códigos de pedido (salvo BOS014/BOS021/BOS029 en Startors). Aros, Cubretuercas, Discos con Flecha y Discos Graduados solo se identifican por MOD./TYPE; no inventar referencias de pedido."
+    },
+    {
+     "page": 1,
+     "item": "Escala del Disco Graduado",
+     "why": "La foto muestra la escala 1 a 10, pero el PDF no dice si esa es la única graduación disponible ni su ángulo; no publicarlo como especificación."
+    },
+    {
+     "page": 1,
+     "item": "PDF sin capa de texto",
+     "why": "Toda la página se transcribió desde la imagen (la capa de texto solo contiene el título y la URL). Las cifras se leyeron en renders a 110 y 220 dpi y no pueden verificarse con scripts/check_pdf_extract.py."
+    }
+   ]
+  },
+  {
+   "file": "Caracteristicas_Tapas_para_Botones.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "TAPAS PARA BOTON/CAPS",
+   "families": [
+    {
+     "family": "Tapas / Caps",
+     "series": null,
+     "page": 1,
+     "description": "Tapas / Caps. El PDF no incluye texto descriptivo; solo título de tabla bilingüe, foto del producto y dibujo acotado.",
+     "general_specs": {
+      "Denominación (ES / EN)": "Tapas / Caps",
+      "Columnas de la tabla": "MOD. TYPE, D, d, e",
+      "Cotas rotuladas en el dibujo": "D, H, e"
+     },
+     "models": [
+      {
+       "reference": "MOD. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 26 9,8 2,8",
+       "confidence": "media"
+      },
+      {
+       "reference": "MOD. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 36 16 2,8",
+       "confidence": "media"
+      },
+      {
+       "reference": "MOD. 30",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 45 21,5 2,8",
+       "confidence": "media"
+      },
+      {
+       "reference": "MOD. 38",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 55 27 2,7",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Tapas para Botón BM (mate) / Matt Caps for BM Series",
+     "series": "BM",
+     "page": 1,
+     "description": "Tapas para Botón BM (mate) / Matt Caps for BM Series. El PDF no incluye texto descriptivo; solo título de tabla bilingüe, foto del producto y dibujo acotado.",
+     "general_specs": {
+      "Denominación (ES / EN)": "Tapas para Botón BM (mate) / Matt Caps for BM Series",
+      "Columnas de la tabla": "MOD. TYPE, D, e, H",
+      "Cotas rotuladas en el dibujo": "D, e, H"
+     },
+     "models": [
+      {
+       "reference": "MOD. 15",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "12",
+        "e": "4,6,1/4\"",
+        "H": "6,2"
+       },
+       "raw_row": "15 12 4,6,1/4\" 6,2",
+       "confidence": "media"
+      },
+      {
+       "reference": "MOD. 21",
+       "page": 1,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "18,8",
+        "e": "4,6,1/4\"",
+        "H": "7,4"
+       },
+       "raw_row": "21 18,8 4,6,1/4\" 7,4",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Título de la página: \"TAPAS PARA BOTON/CAPS\" (bilingüe español/inglés). Pie de página: www.torivac.com.",
+     "page": 1
+    },
+    {
+     "fact": "Dos tablas de cotas con foto y dibujo acotado: Tapas (MOD. TYPE 15, 21, 30, 38) y Tapas para Botón BM (mate) (MOD. TYPE 15 y 21). El título de la segunda es \"Tapas para Botón BM (mate) / Matt Caps for BM Series\": son tapas con acabado mate para la serie BM.",
+     "page": 1
+    },
+    {
+     "fact": "Los modelos MOD. TYPE 15, 21, 30 y 38 de la tabla Tapas tienen las mismas cotas D, d, e que los Discos con Flecha y Discos Graduados del PDF Caracteristicas_senalizadores_para_botones.pdf (26/9,8/2,8; 36/16/2,8; 45/21,5/2,8; 55/27/2,7).",
+     "page": 1
+    },
+    {
+     "fact": "La foto de la tapa (Tapas / Caps) muestra una tapa de color azul con pestañas de encaje; la foto de la tapa BM muestra una tapa gris claro mate con una marca indicadora oscura.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas",
+     "why": "Ninguna tabla indica unidad (mm no figura en la página; solo aparece la comilla de pulgada en 1/4\"). Se transcriben los valores sin unidad; no publicar \"mm\" hasta confirmarlo con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Tapas / Caps: columnas D, d, e de la tabla vs cotas D, H, e del dibujo",
+     "why": "La tabla rotula D, d, e y el dibujo rotula D, H, e (no hay d en el dibujo y H no tiene valor en la tabla). Además los valores son idénticos a los de Discos con Flecha/Graduados, lo que puede indicar que la tabla se copió de esos discos. Se transcribe la tabla tal cual; no etiquetar d ni e como altura/diámetro de encaje sin confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Tapas BM, columna e = \"4,6,1/4\\\"\" (MOD. TYPE 15 y 21)",
+     "why": "La celda se lee 4,6,1/4\" en ambas filas. Puede ser una lista de tres valores (4 / 6 / 1/4\", p. ej. diámetros de eje) o 4,6 (decimal) + 1/4\". El dibujo rotula e como cota ancha de la espiga de la tapa (más de 4,6 con D = 12), lo que no encaja con ese valor. Se deja literal en specs y no se interpreta; no publicar como diámetro de eje."
+    },
+    {
+     "page": 1,
+     "item": "Datos no indicados en el PDF",
+     "why": "No figuran material, colores disponibles (la foto de Tapas es azul, la BM gris mate, sin lista de colores), unidades por envase, botón al que se acopla cada modelo, normas ni códigos de pedido. Las tapas solo se identifican por MOD./TYPE."
+    },
+    {
+     "page": 1,
+     "item": "Relación con la serie BM",
+     "why": "El PDF solo menciona \"BM Series\" en el título de la segunda tabla; no dice si la serie BM corresponde a los botones de baquelita ni qué modelos BM admiten estas tapas."
+    },
+    {
+     "page": 1,
+     "item": "PDF sin capa de texto",
+     "why": "Toda la página se transcribió desde la imagen (la capa de texto solo contiene el título y la URL). Las cifras se leyeron en renders a 110 y 220 dpi y no pueden verificarse con scripts/check_pdf_extract.py."
+    }
+   ]
+  }
+ ]
+}

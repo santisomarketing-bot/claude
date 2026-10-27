@@ -111,3 +111,8 @@
 .embed .site-header,.embed .site-footer,.embed .fab-stack,.embed .demo-ribbon,.embed .page-hero,.embed .lang-banner{display:none!important}
 .embed body{background:var(--paper)}
 .embed .sec{padding-block:var(--s-5)}
+
+/* móvil: el botón flotante del presupuesto se reduce a icono + contador para no tapar contenido */
+@media (max-width:640px){.fab-quote{padding:var(--s-3)}.fab-quote{font-size:0}.fab-quote .count{font-size:12px}.fab-stack{right:var(--s-3);bottom:var(--s-3)}}
+.lang-banner .btn.ghost{color:#fff;border-color:rgba(255,255,255,.65)}
+.lang-banner .btn.ghost:hover{background:#fff;color:var(--ink)}

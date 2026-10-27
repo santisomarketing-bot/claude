@@ -12,7 +12,7 @@
 - **Los slugs de página sí están traducidos; los de entrada de blog no (los 21 repiten el slug ES), los de ficha son mixtos y los segmentos base `/product/`, `/categoria-producto/`, `/category/` se repiten en español en los 4 idiomas.**
 - Problemas SEO graves que no hay que heredar: canonical de `/en/` apunta a `/de/`; 54/54/53 fichas EN/FR/DE declaran canonical en la URL ES; el sitemap sólo lista URLs ES (197) y 4 EN; meta description literal `%` en 38 páginas; título "Grupor Torivac" en 7.
 - **Hallazgo de arquitectura de información:** `/productos/` lista 11 familias y omite "Equipos electrónicos" (11 fichas). En total 15 de las 80 fichas ES no se enlazan desde `/productos/`.
-- Lista de URLs a conservar idénticas: **613** (142 de ellas son tier 1: URLs ES indexadas y catálogo PDF); **227** se redirigen con 301 y 8 se descartan o revisan (sección 11).
+- Lista de URLs a conservar idénticas: **586** (141 de ellas son tier 1: URLs ES indexadas y catálogo PDF); **237** se redirigen con 301 y 31 se descartan o revisan (sección 11).
 
 Cómo leer este documento: cada afirmación lleva su fuente (fichero y clave) en el JSON; los valores de contenido (títulos, slugs, etiquetas de menú) se dejan en su idioma original.
 
@@ -225,7 +225,7 @@ Clasificación por ruta + `body_classes` (los tokens `N` representan identificad
 | **Política de privacidad** (`page:privacy_policy`) | page | 1 / 1 / 1 / 1 | https://grupotorivac.com/politica-de-privacidad/ | `elementor-page`, `elementor-page-N`, `is-elementor`, `page`, `page-id-N` | migrar |
 | **Política de cookies** (`page:cookie_policy`) | page + shortcode Complianz | 1 / 1 / 1 / 1 | https://grupotorivac.com/politica-de-cookies/ | `page`, `page-id-N`, `page-template-default`, `wp-singular` | migrar |
 | **Declaración de accesibilidad** (`page:accessibility_statement`) | page | 1 / 1 / 1 / 1 | https://grupotorivac.com/declaracion-de-accesibilidad/ | `elementor-page`, `elementor-page-N`, `is-elementor`, `page`, `page-id-N` | migrar |
-| **Tienda (WooCommerce)** (`page:shop`) | archivo de producto (ES /shop/) y página "tienda" (EN) | 1 / 1 / 0 / 0 | https://grupotorivac.com/shop/ |  | no migrar (redirigir a /productos/) |
+| **Tienda (WooCommerce)** (`page:shop`) | archivo de producto (ES /shop/) y página "tienda" (EN) | 1 / 1 / 0 / 0 | https://grupotorivac.com/shop/ | — (varía por página) | no migrar (redirigir a /productos/) |
 | **Carrito** (`page:cart`) | page WooCommerce [woocommerce_cart] | 1 / 1 / 0 / 0 | https://grupotorivac.com/confirmar/ | `page`, `page-id-N`, `page-template-default`, `woocommerce-cart`, `woocommerce-page` | no migrar |
 | **Finalizar compra** (`page:checkout`) | page WooCommerce [woocommerce_checkout] | 0 / 1 / 0 / 0 | https://grupotorivac.com/en/finalizar-compra/ | `page`, `page-id-N`, `page-template-default`, `woocommerce-cart`, `woocommerce-page` | no migrar |
 | **Mi cuenta** (`page:account`) | page WooCommerce [woocommerce_my_account] | 0 / 1 / 0 / 0 | https://grupotorivac.com/en/mi-cuenta/ | `page`, `page-id-N`, `page-template-default`, `woocommerce-account`, `woocommerce-page` | no migrar |
@@ -235,7 +235,7 @@ Detalle por plantilla (esquema de títulos, formularios, rango de texto, nota de
 
 Observaciones:
 
-- Las 4 plantillas de catálogo (`product_single`, `product_category_serves_product`, `product_category_archive`, `page:products_index`) comparten `woocommerce`, `elementor-template-full-width`, `with_aside aside_right` y la barra lateral flotante.
+- Las 3 plantillas de producto y categoría (`product_single`, `product_category_serves_product`, `product_category_archive`) comparten `woocommerce`, `elementor-template-full-width` y `with_aside aside_right`; `page:products_index` es una página de Elementor normal que sólo comparte la barra lateral flotante.
 - Los formularios WPForms son 3 en ES (14511 portada y entradas, 14527 fichas y categorías-ficha, 4921 contacto) y 2 por idioma en EN/FR/DE (p. ej. EN 16157 portada y contacto, 16204 fichas y entradas). Todos tienen nombre\*, email\*, teléfono, mensaje y consentimiento\*; el 14511 lleva además un campo adicional sin etiqueta identificada.
 - Fichas: 79 de tipo `simple` y 1 `variable` en la Store API ES; ninguna es comprable (precio 0).
 
@@ -250,7 +250,9 @@ Observaciones:
 | Categoría de producto | `/categoria-producto/{cat}/{subcat}/{subsubcat}/` | `/en/categoria-producto/{cat}/{subcat}/{subsubcat}/` | `/fr/categoria-producto/{cat}/{subcat}/{subsubcat}/` | `/de/categoria-producto/{cat}/{subcat}/{subsubcat}/` |
 | Categoría de blog | `/category/{slug}/` | `/en/category/{slug}/` | `/fr/category/{slug}/` | `/de/category/{slug}/` |
 | Paginación del blog | `/blog/page/{n}/` | `/en/blog/page/{n}/` | `/fr/blog/page/{n}/` | `/de/blog/page/{n}/` |
-| Entrada de blog | `/{slug}/` (entradas colgando de la raíz del idioma) | `/en/{slug}/` (entradas colgando de la raíz del idioma) | `/fr/{slug}/` (entradas colgando de la raíz del idioma) | `/de/{slug}/` (entradas colgando de la raíz del idioma) |
+| Entrada de blog | `/{slug}/` | `/en/{slug}/` | `/fr/{slug}/` | `/de/{slug}/` |
+
+Las entradas de blog cuelgan de la raíz del idioma; no existe `/blog/{slug}/`.
 
 Ejemplos reales:
 
@@ -398,7 +400,7 @@ Listado ordenado por área; la columna Evidencia remite a claves de `site-struct
 |---|---|---|---|---|---|
 | F-H01 | media | **Contenido que sólo existe en EN/FR/DE** | EN: entrada 8196 'What is a Voltage Variator?', páginas WooCommerce tienda/finalizar-compra/mi-cuenta, categoría 2x3W. FR: ficha 4323 'Equipos de sobremesa' y categoría 2x3W. DE: categoría 2x3W. Ninguno tiene par ES por hreflang. | La entrada EN 8196 requiere decisión de contenido (traducir a ES o descartar); el resto se descarta. | orphans.by_language; data/analysis/coverage.json translated_products_without_es_match |
 
-### 8.3 Navegación e ia
+### 8.3 Navegación e IA
 
 | ID | Sev. | Hallazgo | Detalle | Recomendación | Evidencia |
 |---|---|---|---|---|---|
@@ -410,6 +412,7 @@ Listado ordenado por área; la columna Evidencia remite a claves de `site-struct
 | F-N06 | media | **Nombres de familia mal traducidos en /productos/** | FR 'Porté (4)' y DE 'Portiert (4)' para Portaled; DE 'Socket Jack (4)' para Hembrillas; contadores distintos para Variadores (ES 15, EN 12, FR 12, DE 11) por fichas sin traducir. | Glosario técnico de familias en los 4 idiomas (propuesta a validar). | data/analysis/pages/{fr,de}/*produits-torivac.json \| *torivac-produkte.json |
 | F-N07 | media | **Blog paginado en 3 páginas, no cosechadas** | 21 entradas en 3 páginas de 10 (/blog/page/2/ y /blog/page/3/ enlazadas en el HTML, no cosechadas); /blog/ muestra un contador 'Do you like it?' con 0 y meta description '%'. | Conservar las mismas URLs de paginación (o un listado completo) y quitar el contador. | data/raw/html/es/blog.html |
 | F-N08 | media | **Selector de idioma sin retroceso** | Sólo ofrece los idiomas con traducción (se verificó en el HTML: selector incompleto en 17 páginas ES, 8 EN, 3 FR y 2 DE), por ejemplo categorías vacías que existen sólo en ES y fichas sin traducir como /product/fuente-de-corriente-alterna-sinusoidal/. | Selector con retroceso a la portada del idioma o a /productos/. | nav_menus.*.language_switcher |
+| F-N09 | media | **7 categorías FR/DE cruzadas sirven una ficha equivocada** | En FR y DE las categorías 'Variadores trifásicos > Manual/Motorizado', 'Serie BAVS > Monofásico/Trifásico' (y su equivalente DE) devuelven otra ficha: p. ej. la categoría FR trifásico > manuel muestra 'Variateur de vitesse manuel monophasé' (postid 15885) en vez del trifásico; ocurre con 4 URLs FR y 3 DE. | No replicar el cruce: en la web nueva cada ficha cuelga de su familia; las 7 redirecciones se marcan needs_review. | data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__entrainements-triphases__manuel.json (title, postid); gaps.G-08 |
 
 ### 8.4 SEO, canonical, hreflang y sitemap
 
@@ -440,20 +443,20 @@ Detalle de SI-06 (lista curada, revisada contra las rutas reales):
 | es | categoría 28 "Fabricación a medida" | `fabricacion-a-media` | Errata: "a-media" en lugar de "a-medida" (el producto que sirve se llama a-medida-2). |
 | es | categoría 45 "Equipos de sobremesa" | `en-caja` | El slug "en-caja" no coincide con el nombre ("Equipos de sobremesa"); existen además "en-caja-resistencias", "variador-de-tension-en-caja" y el producto /product/en-caja/ (sin relación con resistencias). |
 | es | página inicio (REST id 13947) | `grupo-torivac-inicio` | Slug interno "grupo-torivac-inicio" para la portada (la URL pública es /); sólo relevante si se reutiliza REST. |
-| es | página 1109 | `aviso-legal-2` | Sufijo -2: el slug "aviso-legal" está ocupado por otro elemento; los pies (bloque tablet/móvil) enlazan a /aviso-legal/ que no figura en REST ni sitemap. |
-| es/en/fr/de | página "Proyectos" | `proyectos-empresariales \| entrepreneurial-projects \| projets-cles-en-main \| schluesselfertige-projekte` | El H1 ES dice "Proyectos llave en mano"; FR y DE usan slug "llave en mano / schlüsselfertig" pero la etiqueta de menú dice "Projets entrepreneuriaux / Unternehmerische Projekte"; ES y EN usan "empresariales / entrepreneurial". Tres términos distintos para la misma página. |
+| es | página 1109 | `aviso-legal-2` | Sufijo -2: probable colisión con otro elemento de WordPress que no sale en la REST (borrador o papelera; no verificable en las copias); los pies (bloque tablet/móvil y entradas de blog) enlazan a /aviso-legal/ que no figura en REST ni sitemap. |
+| es/en/fr/de | página "Proyectos" | `proyectos-empresariales, entrepreneurial-projects, projets-cles-en-main, schluesselfertige-projekte` | El H1 ES dice "Proyectos llave en mano"; FR y DE usan slug "llave en mano / schlüsselfertig" pero la etiqueta de menú dice "Projets entrepreneuriaux / Unternehmerische Projekte"; ES y EN usan "empresariales / entrepreneurial". Tres términos distintos para la misma página. |
 | de | página 15742 contacto | `kontakt-us` | Slug mezcla alemán e inglés ("kontakt-us"); es además el canonical de la página EN de contacto. |
 | en | categoría 543 (Manual, hija de "Single Phase Inverters") | `trifasicos-manual` | Slug en español y semánticamente contradictorio: "trifásicos" (trifásico) bajo la rama monofásica. |
-| fr | productos 940 y 938 (Tapas serie BM / BO) | `la-serie-bm-couvre \| la-serie-bo-couvre` | "Tapas" traducido como verbo ("couvre" = cubre): debería ser "couvercles/capuchons". |
-| de | productos 940 y 938 (Tapas serie BM / BO) | `bm-serie-umfasst \| bo-serie-umfasst` | "Tapas" traducido como verbo ("umfasst" = incluye): debería ser "Abdeckungen/Deckel". |
+| fr | productos 940 y 938 (Tapas serie BM / BO) | `la-serie-bm-couvre, la-serie-bo-couvre` | "Tapas" traducido como verbo ("couvre" = cubre): debería ser "couvercles/capuchons". |
+| de | productos 940 y 938 (Tapas serie BM / BO) | `bm-serie-umfasst, bo-serie-umfasst` | "Tapas" traducido como verbo ("umfasst" = incluye): debería ser "Abdeckungen/Deckel". |
 | fr | producto 951 (Carátulas graduadas) | `couvertures-classees` | "couvertures classées" no corresponde a "carátulas graduadas" (cadrans gradués). |
 | de | producto 951 (Carátulas graduadas) | `abgestufte-bezuege` | "abgestufte Bezüge" no corresponde a "carátulas graduadas" (Skalenblenden / Gradskalen). |
-| de | árbol de categorías DE | `bedieningsknoppen, hoepels-met-pijl, gegradueerde-covers, omslagen, pijlschijven, dubbele-variator, dubbele-handleiding, dubbele-motor, dubbele-potentiometers, ` | Numerosos slugs de categoría DE están en neerlandés (traducción automática equivocada), mezclados con alemán en la misma ruta. |
+| de | árbol de categorías DE | `bedieningsknoppen, hoepels-met-pijl, gegradueerde-covers, omslagen, pijlschijven, dubbele-variator …` | Numerosos slugs de categoría DE están en neerlandés (traducción automática equivocada), mezclados con alemán en la misma ruta. |
 | fr | categorías FR (portaleds, hembrillas) | `portail, porte-10-mm, led-portique-3-mm, led-portale-5-mm, prise-jack` | "Portaled" traducido como "portail" (portal/puerta) y "hembrilla" como "prise jack": términos inexactos para portaleds y hembrillas de seguridad. |
-| en/fr/de | ramas de variadores monofásicos/trifásicos | `single-phase-inverters \| three-phase-drives \| onduleurs-monophases \| entrainements-triphases \| einphasen-wechselrichter \| dreiphasige-antriebe` | "Variador de tensión" (autotransformador regulable) vertido como inverter/drive/Wechselrichter/onduleur: término técnico distinto (convertidor/inversor). Revisar con glosario técnico; marcar como propuesta, no corregir sin validación. |
+| en/fr/de | ramas de variadores monofásicos/trifásicos | `single-phase-inverters, three-phase-drives, onduleurs-monophases, entrainements-triphases, einphasen-wechselrichter, dreiphasige-antriebe` | "Variador de tensión" (autotransformador regulable) vertido como inverter/drive/Wechselrichter/onduleur: término técnico distinto (convertidor/inversor). Revisar con glosario técnico; marcar como propuesta, no corregir sin validación. |
 | fr/de | productos de reóstatos | `rheostats-et-potentiometres-… (FR), rheostate-und-potentiometer-… (DE)` | FR usa "rheostats" (inglés) en lugar de "rhéostats" en la URL; ES conserva "reostatos" sin traducir en 2-3 fichas por idioma. |
 | en | productos 951 vs categoría 82 | `graded-covers (producto) vs graduated-covers (categoría)` | El mismo concepto "carátulas graduadas" tiene dos traducciones distintas entre ficha y categoría. |
-| es | productos 904, 905, 909 | `reostatos-y-potenciometros-bobinados \| -2 \| -6` | Tres fichas con el mismo nombre "Reostatos y potenciometros bobinados" (textos similares al 74-79 %); dos de ellas están en la categoría "Sin categorizar". |
+| es | productos 904, 905, 909 | `reostatos-y-potenciometros-bobinados, -2, -6` | Tres fichas con el mismo nombre "Reostatos y potenciometros bobinados" (textos similares al 74-79 %); dos de ellas están en la categoría "Sin categorizar". |
 
 Notas: (a) los slugs con sufijo numérico (`-2`, `-6`…) existen en 39 fichas ES y 1 página (`aviso-legal-2`) por colisión al duplicar; forman parte de la URL pública y no se cambian sin 301. (b) Los términos técnicos (variador de tensión vs inverter/drive/Wechselrichter/onduleur) deben validarse con Torivac antes de corregirse.
 
@@ -468,11 +471,11 @@ El pedido pasa a presupuesto por cantidades, así que no se migran las páginas 
 | Mi cuenta | `/en/mi-cuenta/` | no migrar | Ninguno público (el área de cliente/administración es un módulo aparte del proyecto). → `portada del idioma` |
 | Página "Tienda" (EN) | `/en/tienda/` | no migrar | /productos/ (torivac-products) → `/en/torivac-products/` |
 | Archivo de productos /shop/ (ES) | `/shop/` | no migrar | /productos/ → `/productos/` |
-| Banner de cookies Complianz + política dinámica | `/politica-de-cookies/`, `/en/politica-de-cookies/`, `/fr/politica-de-cookies/`, `/de/politica-de-cookies/` | reemplazar | Banner propio + política de cookies redactada (contenido a recuperar). → `—` |
+| Banner de cookies Complianz + política dinámica | `/politica-de-cookies/`, `/en/politica-de-cookies/`, `/fr/politica-de-cookies/`, `/de/politica-de-cookies/` | reemplazar | Banner propio + política de cookies redactada (contenido a recuperar). |
 | Archivos de categoría de blog | `/category/blog/`, `/category/sin-categorizar/`, `/en/category/blog/`, `/en/category/uncategorized/`, `/fr/category/blog/`, `/fr/category/non-classifiee/`, `/de/category/blog/`, `/de/category/unkategorisiert/` | no migrar | /blog/ → `/blog/ del idioma` |
-| Plantillas Elementor header/footer expuestas | `/elementor-hf/footer-blog/`, `/elementor-hf/header/` | descartar |  → `desindexar (410 o noindex)` |
-| Archivo de autor | `/author/francoadm/` | descartar |  → `410 / noindex` |
-| Selector de idioma WPML (ítems de menú) |  | reemplazar | Selector de idioma nuevo (manual + detección). → `—` |
+| Plantillas Elementor header/footer expuestas | `/elementor-hf/footer-blog/`, `/elementor-hf/header/` | descartar | — → `desindexar (410 o noindex)` |
+| Archivo de autor | `/author/francoadm/` | descartar | — → `410 / noindex` |
+| Selector de idioma WPML (ítems de menú) | — | reemplazar | Selector de idioma nuevo (manual + detección). |
 
 Componentes que no se migran tal cual: selector de orden de WooCommerce (`form.woocommerce-ordering` en 4 categorías por idioma; sustituido por orden fijo o filtros por voltaje/potencia), búsqueda de WordPress (se reemplaza por un buscador JS sobre el índice de productos) y los formularios WPForms (se reimplementan con envío por email conservando campos y consentimiento RGPD).
 
@@ -488,7 +491,7 @@ Otras URLs técnicas descartables: `/elementor-hf/header/` y `/elementor-hf/foot
 | fichas de producto | **mantener** | 80 ES / 75 EN / 76 FR / 74 DE; completar las 5-6 sin traducción como propuesta (no inventar). |
 | categorías con archivo real | **mantener** | 38 ES (+29 EN/FR, +30 DE) con migas y barra lateral. |
 | categorías hoja que sirven la ficha | **unificar** | 53 URLs por idioma -> 301 a la ficha (ya es la canónica). |
-| categorías vacías y duplicadas | **unificar/descartar** | IDs ES 31, 32, 36, 47, 49, 102, 25 (+ 24, 26, 39, 46 duplicados con traducciones) sin productos. |
+| categorías vacías y duplicadas | **unificar/descartar** | IDs ES 31, 32, 36, 47, 49, 102, 25 (+ 24, 26, 39, 46, 50 con traducciones) sin productos; 12 en total, ninguna en el sitemap. |
 | tres fichas "Reostatos y potenciometros bobinados" con el mismo nombre | **unificar** | IDs 904/905/909: diferenciar nombre o fusionar tras revisión. |
 | WooCommerce (carrito, finalizar compra, mi cuenta, tienda, /shop/) | **descartar** | El pedido pasa a presupuesto por cantidades; redirigir a /productos/ y a la página de presupuesto. |
 | elementor-hf, author, categorías de blog | **descartar** | No son contenido; desindexar/redirigir. |
@@ -513,25 +516,25 @@ Páginas nuevas: una página de presupuesto (lista de referencias y cantidades, 
 Orden de trabajo recomendado:
 
 1. Congelar la lista de URLs idénticas (sección 11) como contrato del generador: el build debe fallar si falta alguna.
-2. Generar redirecciones 301 desde `seo.preserve_urls` (227 entradas) y 410 para las técnicas.
+2. Generar redirecciones 301 desde `seo.preserve_urls` (237 entradas; 7 con `needs_review`) y 410 para las técnicas.
 3. Auto-canonical y hreflang recíproco completo desde el primer despliegue; sitemap por idioma sin duplicados.
 4. Resolver las decisiones abiertas con Torivac: visibilidad de Equipos electrónicos, aviso legal EN/FR, fichas sin traducir, artículo EN huérfano, glosario técnico de familias.
 
 ## 11. URLs que deben conservarse idénticas
 
-Criterio: **tier 1** = URLs ES indexadas (sitemap de Yoast) y catálogo PDF del menú; **tier 2** = URLs traducidas declaradas por hreflang, PDFs de ficha y categorías ES vivas fuera del sitemap; **tier 3** = técnicas o legadas (se redirigen o descartan). La lista completa de 848 URLs con acción, tier y destino está en `site-structure.json` → `seo.preserve_urls.urls`; aquí se resume y se listan las de tier 1.
+Criterio: **tier 1** = URLs ES indexadas (sitemap de Yoast) y catálogo PDF del menú; **tier 2** = URLs traducidas declaradas por hreflang y PDFs de ficha; **tier 3** = técnicas, legadas, vacías o duplicadas (se redirigen, se descartan o se revisan). La lista completa de 854 URLs con acción, tier y destino está en `site-structure.json` → `seo.preserve_urls.urls`; aquí se resume y se listan las de tier 1.
 
 | Tier | Acción | URLs |
 |---:|---|---:|
 | 3 | descartar_410 | 3 |
-| 1 | mantener_identica | 142 |
-| 2 | mantener_identica | 471 |
-| 1 | redirigir_301 | 53 |
-| 2 | redirigir_301 | 158 |
-| 3 | redirigir_301 | 16 |
+| 1 | mantener_identica | 141 |
+| 2 | mantener_identica | 445 |
+| 1 | redirigir_301 | 54 |
+| 2 | redirigir_301 | 161 |
+| 3 | redirigir_301 | 22 |
 | 3 | revisar | 1 |
-| 3 | revisar_descartar | 4 |
-| | **Total** | **848** (mantener 613 · 301 227) |
+| 3 | revisar_descartar | 27 |
+| | **Total** | **854** (mantener 586 · 301 237) |
 
 ### 11.1 Conservar idénticas, por idioma y tipo
 
@@ -550,10 +553,10 @@ Criterio: **tier 1** = URLs ES indexadas (sitemap de Yoast) y catálogo PDF del 
 | blog_post | 21 | 21 | 21 | 21 |
 | blog_pagination | 2 | 2 | 2 | 2 |
 | product | 80 | 75 | 75 | 74 |
-| product_category | 37 | 28 | 28 | 29 |
+| product_category | 25 | 23 | 23 | 24 |
 | PDFs enlazados (mismo `/wp-content/uploads/...`) | 56 | | | |
 
-Las entradas EN incluyen la huérfana `/en/el-variador-de-tension-y-sus-funciones/` (tier 1 porque está en el sitemap). Las categorías por idioma excluyen las que se redirigen a la ficha (11.3) y las vacías.
+Las entradas EN incluyen la huérfana `/en/el-variador-de-tension-y-sus-funciones/` (tier 1 porque está en el sitemap; se lista aparte y no entra en el 21). En categorías sólo cuentan las que tienen archivo real y contenido: quedan fuera las 53 (52 en DE) que se redirigen a la ficha, "Sin categorizar" (301 a /productos/), las vacías o duplicadas (F-D03: revisar o descartar) y las huérfanas 2x3W.
 
 ### 11.2 Páginas estáticas y blog (4 idiomas)
 
@@ -561,7 +564,7 @@ Todas se conservan con su ruta actual (sección 7.1). Las 21 entradas se mantien
 
 ### 11.3 Tier 1 en detalle (ES, mantener idénticas)
 
-Fichas (80) y categorías con archivo real (26 en tier 1):
+Fichas (80) y categorías ES con archivo real (25 en tier 1):
 
 ```
 /product/variador-de-tension-portatil/
@@ -662,7 +665,6 @@ Fichas (80) y categorías con archivo real (26 en tier 1):
 /categoria-producto/resistencias/
 /categoria-producto/estabilizadores-de-tension/serie-bavs/
 /categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/simples/
-/categoria-producto/sin-categorizar/
 /categoria-producto/transformadores/transformador-convencional/
 /categoria-producto/transformadores/
 /categoria-producto/transformadores/transformadores-toroidales-transformadores/
@@ -724,8 +726,478 @@ Otras de tier 1:
 | `/elementor-hf/header/`, `/elementor-hf/footer-blog/`, `/author/francoadm/` | 410 | Plantillas internas y archivo de autor. |
 | Categorías 2x3W (`/en|fr|de/categoria-producto/2x3w/`), ficha FR `/fr/product/equipos-de-sobremesa-2/` | revisar / descartar | Sin par ES; la ficha FR es una categoría convertida en ficha. |
 | `/categoria-producto/fabricaciones-a-medida-transformadores-toroidales/` | revisar / descartar | Categoría vacía con canonical a una ruta inexistente. |
+| 12 categorías ES vacías o duplicadas (F-D03) y sus 15 equivalentes traducidas | 301 a la familia afín o 410 (`revisar_descartar`) | Vacías, fuera del sitemap, nombres duplicados. Decisión con Torivac. |
+| `Sin categorizar` (`/categoria-producto/sin-categorizar/`, `/en/.../uncategorized/`, `/fr/.../sans-categorie/`, `/de/.../nicht-kategorisiert/`) | `/productos/` de cada idioma | Categoría residual de WooCommerce con 4 fichas que pasan a su familia. |
+| 7 categorías FR/DE cruzadas (F-N09) | la ficha que sirven hoy (`needs_review`) | Validar con Torivac el destino correcto. |
 
 Importante: no se conservan ni la URL fea `?post_type=product&p=875` ni `/aviso-legal/`: la primera sólo existe como canonical de la ficha FR huérfana y en el product-sitemap; la segunda se enlaza desde pies pero no figura en REST ni en sitemap, y no se verificó su respuesta HTTP.
+
+### 11.5 Anexo A: lista completa de tier 2 (traducciones y PDFs)
+
+Rutas completas a conservar tal cual en EN/FR/DE y los PDFs. Las redirecciones 301 con destino por URL están en `seo.preserve_urls.urls` (campo `redirect_to`).
+
+#### EN
+
+```
+/en/
+/en/torivac-company/
+/en/torivac-products/
+/en/entrepreneurial-projects/
+/en/blog/
+/en/blog/page/2/
+/en/blog/page/3/
+/en/contact/
+/en/privacy-policy/
+/en/politica-de-cookies/
+/en/declaracion-de-accesibilidad/
+/en/la-importancia-del-transformador-toroidal-en-la-industria/
+/en/descargadores-de-bateria/
+/en/estabilizadores-de-tension/
+/en/estabilizadores-de-tension-con-cobre/
+/en/torivac-en-beyond-catalonia/
+/en/torivac-en-matelec-2024-explorando-el-mercado-y-reforzando-conexiones-2/
+/en/torivac-consolida-su-liderazgo-en-el-sector-electrico-tras-su-participacion-en-coiltech-deutschland-2025/
+/en/para-que-sirve-un-transformador-descubre-su-funcion-clave/
+/en/materiales-de-un-transformador-clave-en-su-rendimiento/
+/en/aplicaciones-de-los-transformadores-en-la-industria-actual/
+/en/como-se-fabrica-un-transformador-proceso-y-calidad-europea/
+/en/como-se-mejora-un-transformador-con-tecnicas-expertas/
+/en/eficiencia-de-los-transformadores-clave-en-europa/
+/en/fallos-comunes-en-transformadores-y-sus-soluciones-efectivas/
+/en/limites-de-un-transformador-y-como-afectan-su-rendimiento/
+/en/seguridad-en-el-uso-de-transformadores/
+/en/funcionamiento-de-un-transformador-en-la-industria/
+/en/impacto-medioambiental-de-los-transformadores-hoy/
+/en/como-extender-la-vida-util-de-un-transformador/
+/en/mantenimiento-de-transformadores-electricos/
+/en/normativas-sobre-transformadores-electricos-en-europa/
+/en/product/resistencia-en-caja/
+/en/product/resistencias-de-alta-potencia-cementadas/
+/en/product/resistencias-helicoidales/
+/en/product/resistencias-de-frenado/
+/en/product/reostatos-y-potenciometros-bobinados-especiales/
+/en/product/regulador-a-tiristores/
+/en/product/reguladores-fotovoltaicos-torivac/
+/en/product/ondulador-para-conexion-fotovoltaica-a-red/
+/en/product/fuente-de-alimentacion-de-300a/
+/en/product/fuente-de-alimentacion-de-corriente-constante-150a/
+/en/product/convertidores-y-variadores-de-frecuencia-para-ensayos/
+/en/product/electronica/
+/en/product/resistencias-de-puesta-a-tierra/
+/en/product/resistencias-de-arranque/
+/en/product/bancos-de-carga/
+/en/product/hsr4-safety-socket/
+/en/product/hr4-safety-socket/
+/en/product/safety-socket-hbs4/
+/en/product/hb4-socket/
+/en/product/graded-covers/
+/en/product/arrow-discs/
+/en/product/nut-covers/
+/en/product/estators/
+/en/product/graduated-discs/
+/en/product/arrow-hoops/
+/en/product/bm-series-covers/
+/en/product/bo-series-covers/
+/en/product/bm-series-control-buttons-matte/
+/en/product/bo-series-control-buttons-with-line/
+/en/product/bo-series-control-buttons-bright/
+/en/product/soporte-metalico-para-led-10mm/
+/en/product/soporte-metalico-para-led-8mm/
+/en/product/soporte-metalico-para-led-5mm/
+/en/product/soporte-metalico-para-led-3mm/
+/en/product/toroidal-cores/
+/en/product/chokes-inductances-reactances-toroidal/
+/en/product/coils-for-electromagnets-square/
+/en/product/bobinas-para-electroimanes/
+/en/product/reostatos-y-potenciometros-bobinados-10/
+/en/product/reostatos-y-potenciometros-bobinados-9/
+/en/product/reostatos-y-potenciometros-bobinados-8/
+/en/product/rheostats-and-potentiometers-single-windings/
+/en/product/reostatos-y-potenciometros-bobinados-6/
+/en/product/rheostats-and-potentiometers-dual-windings-2x3w/
+/en/product/rheostats-and-potentiometers-simple-windings-5w/
+/en/product/rheostats-and-potentiometers-simple-windings-3w/
+/en/product/reostatos-y-potenciometros-bobinados-2/
+/en/product/reostatos-y-potenciometros-bobinados/
+/en/product/serie-bavs-3/
+/en/product/serie-bavs-2/
+/en/product/serie-avs-3/
+/en/product/serie-avs-2/
+/en/product/estabilizadores-de-tension/
+/en/product/transformador-trifasico-2/
+/en/product/transformadores-convencionales-encapsulados/
+/en/product/transformador-convencional-estandar-2/
+/en/product/serie-circuito-impreso-2/
+/en/product/serie-encapsulada-2/
+/en/product/transformadores-serie-tt/
+/en/product/modbus-communication/
+/en/product/accesorios-de-regulacion/
+/en/product/fabricaciones-a-medida/
+/en/product/voltage-regulator-industrial-equipment/
+/en/product/en-caja/
+/en/product/monofasico-motorizado/
+/en/product/monofasico-manual/
+/en/product/variador-trifasico-motorizado/
+/en/product/manual-three-phase-inverter/
+/en/product/double-manual-variator/
+/en/product/dual-motorized-variator/
+/en/product/oil-vat/
+/en/product/controller-0-10vdc/
+/en/product/botones-de-mando-2-2/
+/en/product/a-medida-2/
+/en/product/tapas-para-botones-bm-mate/
+/en/categoria-producto/voltage-variators-adjustable-autotransformers/regulating-accessories/
+/en/categoria-producto/encapsulated-coils/
+/en/categoria-producto/control-buttons/
+/en/categoria-producto/electronic-equipment/renewable-energies/
+/en/categoria-producto/electronic-equipment/
+/en/categoria-producto/voltage-stabilizers/
+/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/
+/en/categoria-producto/electronic-equipment/dc-power-supplies/
+/en/categoria-producto/socket-jack/
+/en/categoria-producto/portaled/
+/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/
+/en/categoria-producto/rheostats-and-coiled-potentiometers/ceramic-rheostats/
+/en/categoria-producto/rheostats-and-coiled-potentiometers/
+/en/categoria-producto/resistors-load-banks/
+/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/
+/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/simple-potentiometer/
+/en/categoria-producto/transformers/conventional-transformer/
+/en/categoria-producto/transformers/
+/en/categoria-producto/transformers/toroidal-transformers/
+/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/
+/en/categoria-producto/voltage-variators-adjustable-autotransformers/
+/en/categoria-producto/voltage-variators-adjustable-autotransformers/single-phase-inverters/
+/en/categoria-producto/voltage-variators-adjustable-autotransformers/three-phase-drives/
+```
+
+#### FR
+
+```
+/fr/
+/fr/notre-entreprise/
+/fr/produits-torivac/
+/fr/projets-cles-en-main/
+/fr/blog/
+/fr/blog/page/2/
+/fr/blog/page/3/
+/fr/contactez-nous/
+/fr/politique-de-confidentialite/
+/fr/politica-de-cookies/
+/fr/declaracion-de-accesibilidad/
+/fr/la-importancia-del-transformador-toroidal-en-la-industria/
+/fr/descargadores-de-bateria/
+/fr/estabilizadores-de-tension/
+/fr/estabilizadores-de-tension-con-cobre/
+/fr/torivac-en-beyond-catalonia/
+/fr/torivac-en-matelec-2024-explorando-el-mercado-y-reforzando-conexiones-2/
+/fr/torivac-consolida-su-liderazgo-en-el-sector-electrico-tras-su-participacion-en-coiltech-deutschland-2025/
+/fr/para-que-sirve-un-transformador-descubre-su-funcion-clave/
+/fr/materiales-de-un-transformador-clave-en-su-rendimiento/
+/fr/aplicaciones-de-los-transformadores-en-la-industria-actual/
+/fr/como-se-fabrica-un-transformador-proceso-y-calidad-europea/
+/fr/como-se-mejora-un-transformador-con-tecnicas-expertas/
+/fr/eficiencia-de-los-transformadores-clave-en-europa/
+/fr/fallos-comunes-en-transformadores-y-sus-soluciones-efectivas/
+/fr/limites-de-un-transformador-y-como-afectan-su-rendimiento/
+/fr/seguridad-en-el-uso-de-transformadores/
+/fr/funcionamiento-de-un-transformador-en-la-industria/
+/fr/impacto-medioambiental-de-los-transformadores-hoy/
+/fr/como-extender-la-vida-util-de-un-transformador/
+/fr/mantenimiento-de-transformadores-electricos/
+/fr/normativas-sobre-transformadores-electricos-en-europa/
+/fr/product/resistencia-en-caja/
+/fr/product/resistances-cimentees-de-haute-puissance/
+/fr/product/resistencias-helicoidales/
+/fr/product/resistances-de-freinage/
+/fr/product/reostatos-y-potenciometros-bobinados-especiales/
+/fr/product/regulador-a-tiristores/
+/fr/product/reguladores-fotovoltaicos-torivac/
+/fr/product/ondulador-para-conexion-fotovoltaica-a-red/
+/fr/product/fuente-de-alimentacion-de-300a/
+/fr/product/fuente-de-alimentacion-de-corriente-constante-150a/
+/fr/product/convertidores-y-variadores-de-frecuencia-para-ensayos/
+/fr/product/electronica/
+/fr/product/resistencias-de-puesta-a-tierra/
+/fr/product/resistencias-de-arranque/
+/fr/product/bancos-de-carga/
+/fr/product/prise-de-securite-hsr4/
+/fr/product/prise-de-securite-hr4/
+/fr/product/prise-de-securite-hbs4/
+/fr/product/prise-hb4/
+/fr/product/couvertures-classees/
+/fr/product/disques-arrow/
+/fr/product/couvercles-decrous/
+/fr/product/estators/
+/fr/product/disques-gradues/
+/fr/product/cerceaux-a-fleches/
+/fr/product/la-serie-bm-couvre/
+/fr/product/la-serie-bo-couvre/
+/fr/product/boutons-de-commande-de-la-serie-bm-matt/
+/fr/product/boutons-de-commande-de-la-serie-bo-avec-ligne/
+/fr/product/boutons-de-commande-de-la-serie-bo-brillants/
+/fr/product/support-metallique-pour-led-10mm/
+/fr/product/support-metallique-pour-led-8mm/
+/fr/product/support-metallique-pour-led-de-5mm/
+/fr/product/support-metallique-pour-led-3mm/
+/fr/product/noyaux-toroidaux/
+/fr/product/inductances-reactances-toroidales/
+/fr/product/bobines-pour-electro-aimants-carre/
+/fr/product/bobinas-para-electroimanes/
+/fr/product/rheostats-et-potentiometres-enroules-dans-des-boites/
+/fr/product/rheostats-et-potentiometres-a-triple-enroulement/
+/fr/product/rheostats-et-potentiometres-a-double-enroulement/
+/fr/product/rheostats-et-potentiometres-bobinages-simples/
+/fr/product/reostatos-y-potenciometros-bobinados-6/
+/fr/product/rheostats-et-potentiometres-a-double-enroulement-2x3w/
+/fr/product/rheostats-et-potentiometres-a-simple-enroulement-5w/
+/fr/product/rheostats-et-potentiometres-a-simple-enroulement-3w/
+/fr/product/reostatos-y-potenciometros-bobinados-2/
+/fr/product/reostatos-y-potenciometros-bobinados/
+/fr/product/serie-bavs-3/
+/fr/product/serie-bavs-2/
+/fr/product/serie-avs-3/
+/fr/product/serie-avs-2/
+/fr/product/estabilizadores-de-tension/
+/fr/product/transformador-trifasico-2/
+/fr/product/transformadores-convencionales-encapsulados/
+/fr/product/transformador-convencional-estandar-2/
+/fr/product/serie-circuito-impreso-2/
+/fr/product/serie-encapsulada-2/
+/fr/product/transformadores-serie-tt/
+/fr/product/communication-modbus/
+/fr/product/accesorios-de-regulacion/
+/fr/product/fabricaciones-a-medida/
+/fr/product/regulateur-de-tension-equipement-industriel/
+/fr/product/en-caja/
+/fr/product/monofasico-motorizado/
+/fr/product/monofasico-manual/
+/fr/product/variador-trifasico-motorizado/
+/fr/product/onduleur-triphase-manuel/
+/fr/product/double-variateur-manuel/
+/fr/product/double-inverseur-motorise/
+/fr/product/cuve-a-huile/
+/fr/product/controleur-0-10vdc/
+/fr/product/botones-de-mando-2-2/
+/fr/product/a-medida-2/
+/fr/product/tapas-para-botones-bm-mate/
+/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/accessoires-de-regulation/
+/fr/categoria-producto/bobines-encapsulees/
+/fr/categoria-producto/boutons-de-commande/
+/fr/categoria-producto/equipements-electroniques/energies-renouvelables/
+/fr/categoria-producto/equipements-electroniques/
+/fr/categoria-producto/stabilisateurs-de-tension/
+/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/
+/fr/categoria-producto/equipements-electroniques/alimentations-en-courant-continu/
+/fr/categoria-producto/prise-jack/
+/fr/categoria-producto/portail/
+/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/
+/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/rheostats-en-ceramique/
+/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/
+/fr/categoria-producto/resistances-bancs-de-charge/
+/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/
+/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/simple/
+/fr/categoria-producto/transformateurs/transformateur-conventionnel/
+/fr/categoria-producto/transformateurs/
+/fr/categoria-producto/transformateurs/transformateurs-toroidaux/
+/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/
+/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/
+/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/
+/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/
+```
+
+#### DE
+
+```
+/de/
+/de/unser-unternehmen/
+/de/torivac-produkte/
+/de/schluesselfertige-projekte/
+/de/blog/
+/de/blog/page/2/
+/de/blog/page/3/
+/de/kontakt-us/
+/de/aviso-legal-2/
+/de/datenschutzbestimmungen/
+/de/politica-de-cookies/
+/de/declaracion-de-accesibilidad/
+/de/la-importancia-del-transformador-toroidal-en-la-industria/
+/de/descargadores-de-bateria/
+/de/estabilizadores-de-tension/
+/de/estabilizadores-de-tension-con-cobre/
+/de/torivac-en-beyond-catalonia/
+/de/torivac-en-matelec-2024-explorando-el-mercado-y-reforzando-conexiones-2/
+/de/torivac-consolida-su-liderazgo-en-el-sector-electrico-tras-su-participacion-en-coiltech-deutschland-2025/
+/de/para-que-sirve-un-transformador-descubre-su-funcion-clave/
+/de/materiales-de-un-transformador-clave-en-su-rendimiento/
+/de/aplicaciones-de-los-transformadores-en-la-industria-actual/
+/de/como-se-fabrica-un-transformador-proceso-y-calidad-europea/
+/de/como-se-mejora-un-transformador-con-tecnicas-expertas/
+/de/eficiencia-de-los-transformadores-clave-en-europa/
+/de/fallos-comunes-en-transformadores-y-sus-soluciones-efectivas/
+/de/limites-de-un-transformador-y-como-afectan-su-rendimiento/
+/de/seguridad-en-el-uso-de-transformadores/
+/de/funcionamiento-de-un-transformador-en-la-industria/
+/de/impacto-medioambiental-de-los-transformadores-hoy/
+/de/como-extender-la-vida-util-de-un-transformador/
+/de/mantenimiento-de-transformadores-electricos/
+/de/normativas-sobre-transformadores-electricos-en-europa/
+/de/product/resistencia-en-caja/
+/de/product/resistencias-de-alta-potencia-cementadas/
+/de/product/resistencias-helicoidales/
+/de/product/bremswiderstaende/
+/de/product/reostatos-y-potenciometros-bobinados-especiales/
+/de/product/regulador-a-tiristores/
+/de/product/reguladores-fotovoltaicos-torivac/
+/de/product/ondulador-para-conexion-fotovoltaica-a-red/
+/de/product/fuente-de-alimentacion-de-300a/
+/de/product/fuente-de-alimentacion-de-corriente-constante-150a/
+/de/product/convertidores-y-variadores-de-frecuencia-para-ensayos/
+/de/product/electronica/
+/de/product/resistencias-de-puesta-a-tierra/
+/de/product/resistencias-de-arranque/
+/de/product/bancos-de-carga/
+/de/product/sicherheitssteckdose-hsr4/
+/de/product/sicherheitssteckdose-hr4/
+/de/product/sicherheitssteckdose-hbs4/
+/de/product/hb4-buchse/
+/de/product/abgestufte-bezuege/
+/de/product/pfeil-discs/
+/de/product/mutternabdeckungen/
+/de/product/statoren/
+/de/product/abgestufte-scheiben/
+/de/product/pfeil-reifen/
+/de/product/bm-serie-umfasst/
+/de/product/bo-serie-umfasst/
+/de/product/steuertasten-der-bm-serie-matt/
+/de/product/bo-serie-steuertasten-mit-linie/
+/de/product/bedientasten-der-bo-serie-glaenzend/
+/de/product/metallbuegel-fuer-led-10mm/
+/de/product/metallbuegel-fuer-led-8mm/
+/de/product/metallhalterung-fuer-5mm-led/
+/de/product/metallbuegel-fuer-led-3mm/
+/de/product/toroidale-kerne/
+/de/product/drosseln-induktivitaeten-ringkerndrosseln/
+/de/product/spulen-fuer-elektromagnete-quadratisch/
+/de/product/bobinas-para-electroimanes/
+/de/product/reostatos-y-potenciometros-bobinados-10/
+/de/product/rheostate-und-potentiometer-dreifach-gewickelt/
+/de/product/reostatos-y-potenciometros-bobinados-8-2/
+/de/product/rheostate-und-potentiometer-einfache-wicklungen/
+/de/product/reostatos-y-potenciometros-bobinados-6/
+/de/product/rheostate-und-potentiometer-mit-zwei-wicklungen-2x3w/
+/de/product/rheostate-und-potentiometer-einzelwicklung-5w/
+/de/product/rheostate-und-potentiometer-einzelne-wicklungen-3w/
+/de/product/reostatos-y-potenciometros-bobinados-2/
+/de/product/reostatos-y-potenciometros-bobinados/
+/de/product/serie-bavs-3/
+/de/product/serie-bavs-2/
+/de/product/serie-avs-3/
+/de/product/serie-avs-2/
+/de/product/estabilizadores-de-tension/
+/de/product/transformador-trifasico-2/
+/de/product/transformadores-convencionales-encapsulados/
+/de/product/transformador-convencional-estandar-2/
+/de/product/serie-circuito-impreso-2/
+/de/product/serie-encapsulada-2/
+/de/product/transformadores-serie-tt/
+/de/product/modbus-kommunikation/
+/de/product/accesorios-de-regulacion/
+/de/product/fabricaciones-a-medida/
+/de/product/spannungsregler-industrielle-geraete/
+/de/product/en-caja/
+/de/product/monofasico-motorizado/
+/de/product/monofasico-manual/
+/de/product/variador-trifasico-motorizado/
+/de/product/doppelter-manueller-variator/
+/de/product/doble-motorizado/
+/de/product/cuba-de-aceite-2/
+/de/product/steuergeraet-0-10vdc/
+/de/product/botones-de-mando-2-2/
+/de/product/a-medida-2/
+/de/product/tapas-para-botones-bm-mate/
+/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/zubehor-zum-regulieren/
+/de/categoria-producto/gekapselte-spulen/
+/de/categoria-producto/bedieningsknoppen/
+/de/categoria-producto/elektronische-ausrustung/erneuerbare-energien/
+/de/categoria-producto/elektronische-ausrustung/
+/de/categoria-producto/spannungsstabilisatoren/
+/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/
+/de/categoria-producto/elektronische-ausrustung/dc-stromversorgungen/
+/de/categoria-producto/socket-jack/
+/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/handmatige-driefasen/
+/de/categoria-producto/geportaliseerd/
+/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/
+/de/categoria-producto/rheostate-und-spulenpotentiometer/keramische-rheostate/
+/de/categoria-producto/rheostate-und-spulenpotentiometer/
+/de/categoria-producto/widerstande-lastbanke/
+/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/
+/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/einfach/
+/de/categoria-producto/transformatoren/konventioneller-transformator/
+/de/categoria-producto/transformatoren/
+/de/categoria-producto/transformatoren/ringkerntransformatoren/
+/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/
+/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/
+/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/einphasen-wechselrichter/
+/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/
+```
+
+#### PDFs (tier 2)
+
+```
+/wp-content/uploads/2026/02/Caracteristicas_Bobinas_Encapsuladas.pdf
+/wp-content/uploads/2023/02/4.-Bobinas-encapsuladas.pdf
+/wp-content/uploads/2023/02/BOTONES-DE-MANDO2.pdf
+/wp-content/uploads/2023/02/BOTONES-DE-MANDO.pdf
+/wp-content/uploads/2023/02/BOTONES-DE-MANDO3.pdf
+/wp-content/uploads/2023/02/HEMBRILLAS2.pdf
+/wp-content/uploads/2023/02/CHOQUES-TOROIDALES.pdf
+/wp-content/uploads/2023/02/HEMBRILLAS.pdf
+/wp-content/uploads/2023/02/Soportes-Metalicos-para-LED.pdf
+/wp-content/uploads/2023/02/Nucleos-toroidales.pdf
+/wp-content/uploads/2023/02/Soportes-Metalicos.pdf
+/wp-content/uploads/2023/02/Potenciometro.pdf
+/wp-content/uploads/2023/02/Serie-TE-Serie-TCI.pdf
+/wp-content/uploads/2023/02/Serie-TT.pdf
+/wp-content/uploads/2023/02/Variador-tension-doble-regulacion-manual.pdf
+/wp-content/uploads/2023/02/Variador-tension-doble-regulacion-motorizada.pdf
+/wp-content/uploads/2023/02/Variador-tension-sobremesa.pdf
+/wp-content/uploads/2023/02/Variador-tension-en-caja-industrial-trifasico.pdf
+/wp-content/uploads/2024/09/1.-Variadores-de-tension_monofasicomanual.pdf
+/wp-content/uploads/2024/09/1.-Variadores-de-tension_monofasicomotorizado.pdf
+/wp-content/uploads/2024/09/Variador-tension-trifasico-regulacion-manual.pdf
+/wp-content/uploads/2023/02/Variador-tension-trifasico-regulacion-motorizada-1.pdf
+/wp-content/uploads/2023/02/Variador-tension-en-cura-de-aceite.pdf
+/wp-content/uploads/2023/02/REOSTATOS-CERAMICOS.pdf
+/wp-content/uploads/2023/02/POTENCIOMETRO-5W.pdf
+/wp-content/uploads/2025/01/Bobinas_encapsuladas_-potenciometros_ENd.pdf
+/wp-content/uploads/2023/02/Variador-tension-trifasico-regulacion-motorizada.pdf
+/wp-content/uploads/2023/02/Variador-tension-trifasico-regulacion-manual.pdf
+/wp-content/uploads/2023/02/Monofasico-motorizado.pdf
+/wp-content/uploads/2023/02/variador-de-tension-monofasico.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Tecnicas_Variador_Trifasico_Manual.pdf
+/wp-content/uploads/2022/03/Carcateristicas_transformadores_toroidales_Torivac_serie_TT.pdf
+/wp-content/uploads/2022/03/Carcateristicas_transformadores_toroidales_Torivac_serie_TE.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Tecnicas_Variador_Dobles_Manual.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Tecnicas_Variador_Dobles_Motorizados.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Tecnicas_Variador_Trifasico_Motorizado.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Tecnicas_Variador_Monofasico_Manual.pdf
+/wp-content/uploads/2022/03/Cracteristicas_Choques_Toroidales.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Bobinas_Encapsuladas.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Nucleos_Toroidales.pdf
+/wp-content/uploads/2022/03/Carcateristicas_transformadores_toroidales_Torivac_serie_TCI.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Soportes_Metalicos_para_Leds.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Bornes_Hembrillas_Portafusibles.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Potenciometros_5W.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Potenciometros_3W.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Boton_Baquelita_DF.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Botones_de_Mando.pdf
+/wp-content/uploads/2022/03/Especificaciones_tecnicas_Caratulas_Gradudas_Torivac.pdf
+/wp-content/uploads/2022/03/Caracteristicas_senalizadores_para_botones.pdf
+/wp-content/uploads/2022/03/Caracteristicas_Tapas_para_Botones.pdf
+```
 
 ## 12. Huecos y verificaciones pendientes
 
@@ -755,9 +1227,17 @@ Tras generar el JSON se recalcularon con scripts propios (`python3 -I`) a partir
 - Confirmado: Sitemap: 201 URLs únicas (197 ES + 4 EN), product-sitemap 306 loc -> 82 únicas.
 - Confirmado: Canonical de /en/ = /de/; canonical de FR/DE /productos/ = /en/torivac-products/; canonical de /en/contact/ = /de/kontakt-us/.
 - Confirmado: Enlaces de pie a /aviso-legal/ (bloque tablet/móvil y pie de entradas de blog) y pie FR/DE/EN enlazando a las URL ES de privacidad/aviso legal/accesibilidad.
+- Confirmado: Selector de idioma incompleto: 17 ES / 8 EN / 3 FR / 2 DE (recalculado desde el HTML).
+- Confirmado: Las 781 páginas HTML cosechadas figuran en seo.preserve_urls (comprobado por ruta); todos los destinos de redirección existen.
 - Corregido: Selector de idioma: sí muestra banderas (antes decía 'sin banderas').
 - Corregido: Enlaces externos del pie (Santiso Marketing) ya no llevan path '/'.
 - Corregido: sitemap_issues ampliado: URL fea ?p=875 y /shop/ dentro de product-sitemap; 12 categorías ES vivas fuera del sitemap.
+- Corregido: Paginación del blog (/blog/page/2|3/ y /category/blog/page/2|3/, x4 idiomas): confirmada en el HTML y añadida (16 URLs).
+- Corregido: 9 destinos de redirección de categorías-ficha EN/FR/DE apuntaban a la URL ES de la ficha; ahora apuntan a la ficha traducida de ese idioma.
+- Corregido: 7 categorías FR/DE cruzadas (sirven otra ficha): destino = ficha que sirven hoy, marcadas needs_review.
+- Corregido: Categorías vacías o duplicadas (23 URLs) pasan de mantener_identica a revisar_descartar; 'Sin categorizar' (4 URLs) pasa a 301 a /productos/.
+- Corregido: 6 archivos de categoría de blog EN/FR/DE faltaban en la lista de URLs: añadidos como 301 a /blog/.
+- Corregido: Nuevos hallazgos verificados: /productos/ omite 'Equipos electrónicos' (F-N01) y 4 fichas sin ruta de navegación (F-N02).
 
 ## 14. Fuentes
 

@@ -1,6 +1,6 @@
 {
  "lang": "es",
- "generated_by": "scratchpad build_es.py (sesión 1, tarea 'contenido ES')",
+ "generated_by": "scratchpad build_es.py (borrador, sesión 1) + patch_es.py (auditoría y correcciones contra data/raw)",
  "source_snapshot": "cosecha de 2026-10-27 (comentario de W3 Total Cache en el HTML)",
  "normalizations": [
   "NBSP -> espacio",
@@ -500,10 +500,11 @@
        "name": "wpforms[fields][2]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Consentimiento (He leído y acepto la política de privacidad)",
@@ -514,13 +515,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -608,12 +612,12 @@
     {
      "severity": "baja",
      "type": "ux",
-     "detail": "El formulario combina captcha aritmético personalizado y aviso de reCAPTCHA de Google.",
+     "detail": "El formulario trae un captcha aritmético oculto por lógica condicional (solo se mostraría a remitentes de una lista negra), además de reCAPTCHA v3 y honeypot; la lista negra (4 correos y 3 URLs de spam) queda expuesta en el HTML público y el texto extraído arrastra ruido del formulario ('personalizado Captcha Nombre', 'Captcha personalizado', '=').",
      "evidence": "Captcha personalizado",
      "where": "text"
     }
    ],
-   "notes": "Contenido de 'torivac-empresa' repite dos párrafos de esta portada (ver hallazgos de duplicados). El formulario 14511 incluye una lógica condicional anti-spam de WPForms con direcciones y URLs en lista negra (no son datos de contacto).",
+   "notes": "Contenido de 'torivac-empresa' repite dos párrafos de esta portada (ver hallazgos de duplicados). El formulario 14511 incluye una lógica condicional anti-spam de WPForms con direcciones y URLs en lista negra (no son datos de contacto). En full_text, desde 'Por favor, activa JavaScript...' hasta 'Enviar', hay ruido de formulario (etiqueta del honeypot 'personalizado Captcha Nombre', 'Captcha personalizado', '='): al migrar, rehacer el formulario, no copiar ese texto.",
    "source": {
     "analysis": "data/analysis/pages/es/home.json",
     "html": "data/raw/html/es/home.html",
@@ -1605,7 +1609,7 @@
    "title": "Torivac_Blog",
    "seo_title": "Grupo Torivac - Blog",
    "h1": null,
-   "h1_visual": "Normativas sobre transformadores eléctricos en Europa",
+   "h1_visual": null,
    "date": "2024-06-25T14:27:50",
    "date_gmt": "2024-06-25T14:27:50",
    "modified": "2026-03-10T00:15:42",
@@ -1968,12 +1972,12 @@
     {
      "severity": "media",
      "type": "seo",
-     "detail": "La página no tiene <h1> (el título visible es un H2).",
+     "detail": "La página no tiene <h1> ni encabezado propio: el único H2 es el título de la primera tarjeta de entrada.",
      "evidence": "Normativas sobre transformadores eléctricos en Europa",
      "where": "text"
     }
    ],
-   "notes": "El listado completo de 21 entradas procede de data/raw/rest/posts.es.json. Fechas reales: ver items de tipo 'post'.",
+   "notes": "El listado completo de 21 entradas procede de data/raw/rest/posts.es.json. Fechas reales: ver items de tipo 'post'. La página no tiene encabezado propio: el único H2 es el título de la primera tarjeta (tarjeta destacada), según la captura blog.desktop.png.",
    "source": {
     "analysis": "data/analysis/pages/es/blog.json",
     "html": "data/raw/html/es/blog.html",
@@ -2095,10 +2099,11 @@
        "name": "wpforms[fields][0]"
       },
       {
-       "label": "Captcha personalizado (aritmético)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto, sin etiqueta)",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][4]"
+       "name": "wpforms[fields][4]",
+       "role": "honeypot"
       },
       {
        "label": "Correo electrónico",
@@ -2120,8 +2125,9 @@
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -2186,7 +2192,7 @@
      "where": "text"
     }
    ],
-   "notes": "El plan docs/PLAN.md asume info@grupotorivac.com; en las fuentes solo aparece info@torivac.com (234 apariciones). El destino real de las notificaciones del formulario no está en los datos cosechados.",
+   "notes": "El plan docs/PLAN.md asume info@grupotorivac.com; en las fuentes solo aparece info@torivac.com (234 apariciones). El destino real de las notificaciones del formulario no está en los datos cosechados. El formulario 4921 tiene un honeypot WPForms (campo [4]) y reCAPTCHA v3; en la captura de escritorio el mapa embebido no se ve (iframe diferido: hueco en blanco).",
    "source": {
     "analysis": "data/analysis/pages/es/contacto.json",
     "html": "data/raw/html/es/contacto.html",
@@ -2390,7 +2396,7 @@
     {
      "severity": "baja",
      "type": "seo",
-     "detail": "Slug 'aviso-legal-2' (duplicado) y meta description '%'; los pies de 22 páginas enlazan a /aviso-legal/ (inexistente).",
+     "detail": "Slug 'aviso-legal-2' (duplicado) y meta description '%'; los pies de 22 páginas (21 entradas y /confirmar/) enlazan a /aviso-legal/, que no figura en ninguna fuente: enlace roto aparente.",
      "evidence": "%",
      "where": "seo"
     },
@@ -2713,7 +2719,7 @@
    },
    "migration": {
     "decision": "reescribir",
-    "notes": "Plantilla genérica de un generador gratuito, sin inventario de cookies real (GA4, GTM, reCAPTCHA, Complianz) y sin enlace desde el banner ni el pie. Rehacer con el banner de consentimiento de la web nueva."
+    "notes": "Plantilla genérica de un generador gratuito, sin inventario de cookies real (GA4, GTM, reCAPTCHA, Complianz). No está enlazada desde el pie (solo desde el banner Complianz, en ejecución). Rehacer con el banner de consentimiento de la web nueva."
    },
    "quality_flags": [
     {
@@ -2738,9 +2744,9 @@
      "where": "text"
     },
     {
-     "severity": "media",
+     "severity": "baja",
      "type": "ux",
-     "detail": "La política no está enlazada desde el pie, el banner ni ninguna otra página (solo existe en el sitemap).",
+     "detail": "El pie y el menú no enlazan a la política de cookies (el pie solo enlaza aviso legal, privacidad y accesibilidad). El banner Complianz sí la enlaza en ejecución: su marcado estático trae 3 enlaces con href='#' y '{title}', que el script rellena con complianz.page_links.eu ('Política de cookies' -> /politica-de-cookies/). No hay captura del banner abierto para confirmarlo visualmente.",
      "evidence": "POLÍTICA DE COOKIES",
      "where": "html"
     },
@@ -2902,7 +2908,7 @@
     {
      "severity": "alta",
      "type": "unverified_claim",
-     "detail": "Declara nivel AA de WCAG 2.1 por autoevaluación, mientras el sitio actual tiene alts vacíos, ausencia de H1 y enlaces a recursos inexistentes.",
+     "detail": "Declara nivel AA de WCAG 2.1 por autoevaluación, mientras el sitio actual tiene alts vacíos o con nombre de archivo, ausencia de H1 y enlaces rotos aparentes en el pie de las entradas.",
      "evidence": "cumpliendo con los puntos de verificación de prioridad 2 (AA)",
      "where": "text"
     },
@@ -2967,7 +2973,7 @@
     "status": "placeholder_sin_resolver"
    },
    "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/Diseno-sin-titulo-73.png",
-   "purpose": "Página WooCommerce 'Confirmar' (id 11519). La captura ES redirige al carrito en inglés (/en/carrito/); solo se inventaría.",
+   "purpose": "Página de finalizar compra (checkout) de WooCommerce con título 'Confirmar' (id 11519, publicada 2025-06-11). La captura ES devuelve el carrito en inglés (/en/carrito/); solo se inventaría.",
    "sections": [
     {
      "heading": "(sin contenido propio)",
@@ -3056,7 +3062,7 @@
    },
    "migration": {
     "decision": "no_migrar",
-    "notes": "Página de carrito/confirmación de WooCommerce sin contenido propio (REST vacío) y noindex; la web nueva tendrá su propio flujo de presupuesto."
+    "notes": "Página de checkout de WooCommerce sin contenido propio (solo marcado de bloques, 0 caracteres de texto visible); no migrar. La web nueva tendrá su propio flujo de presupuesto."
    },
    "quality_flags": [
     {
@@ -3069,17 +3075,20 @@
     {
      "severity": "media",
      "type": "broken_link",
-     "detail": "El pie antiguo enlaza a /aviso-legal/ (inexistente; el aviso real es /aviso-legal-2/).",
+     "detail": "El pie antiguo enlaza a /aviso-legal/, que no figura en el sitemap, la API REST ni el índice de páginas (el aviso real es /aviso-legal-2/): enlace roto aparente (no comprobado por red).",
      "evidence": "https://grupotorivac.com/aviso-legal/",
      "where": "html"
     }
    ],
-   "notes": "REST content.rendered vacío (0 caracteres). Equivalentes ES de tienda, carrito, finalizar compra y mi-cuenta no existen en los datos ES (solo bajo /en/).",
+   "notes": "REST content.rendered: 3.250 caracteres de marcado de bloques WooCommerce Checkout (contacto, envío, facturación, pago, resumen del pedido) y 0 caracteres de texto visible. Yoast (REST) declara 'index, follow' y description '%'; el HTML servido (carrito EN) es 'noindex, follow'. No existen equivalentes ES de tienda, carrito ni mi-cuenta en los datos ES (solo bajo /en/).",
    "source": {
     "analysis": "data/analysis/pages/es/confirmar.json",
     "html": "data/raw/html/es/confirmar.html",
     "rest": "data/raw/rest/pages.es.json#id=11519"
-   }
+   },
+   "rest_content_chars": 3250,
+   "rest_visible_text_chars": 0,
+   "robots_rest_yoast": "index, follow"
   },
   {
    "type": "post",
@@ -3206,10 +3215,11 @@
        "name": "wpforms[fields][0]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Correo electrónico",
@@ -3232,13 +3242,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -3445,10 +3458,11 @@
        "name": "wpforms[fields][2]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Consentimiento (He leído y acepto la política de privacidad)",
@@ -3459,13 +3473,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -3663,10 +3680,11 @@
        "name": "wpforms[fields][1]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Mensaje",
@@ -3683,13 +3701,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -3878,10 +3899,11 @@
        "name": "wpforms[fields][0]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Correo electrónico",
@@ -3904,13 +3926,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -4104,10 +4129,11 @@
        "name": "wpforms[fields][0]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Correo electrónico",
@@ -4130,13 +4156,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -4333,10 +4362,11 @@
        "name": "wpforms[fields][1]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Mensaje",
@@ -4353,13 +4383,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -4563,10 +4596,11 @@
        "name": "wpforms[fields][2]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Consentimiento (He leído y acepto la política de privacidad)",
@@ -4577,13 +4611,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -4776,10 +4813,11 @@
        "name": "wpforms[fields][1]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Mensaje",
@@ -4796,13 +4834,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -5003,21 +5044,25 @@
        "name": "wpforms[fields][3][]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -5201,10 +5246,11 @@
        "name": "wpforms[fields][1]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Mensaje",
@@ -5221,13 +5267,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -5438,21 +5487,25 @@
        "name": "wpforms[fields][3][]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -5642,10 +5695,11 @@
        "name": "wpforms[fields][2]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Consentimiento (He leído y acepto la política de privacidad)",
@@ -5656,13 +5710,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -5876,10 +5933,11 @@
        "name": "wpforms[fields][2]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Consentimiento (He leído y acepto la política de privacidad)",
@@ -5890,13 +5948,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -6094,21 +6155,25 @@
        "name": "wpforms[fields][3][]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -6288,10 +6353,11 @@
        "name": "wpforms[fields][2]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Consentimiento (He leído y acepto la política de privacidad)",
@@ -6302,13 +6368,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -6530,10 +6599,11 @@
        "name": "wpforms[fields][1]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Mensaje",
@@ -6550,13 +6620,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -6574,7 +6647,7 @@
     {
      "severity": "alta",
      "type": "reputation",
-     "detail": "Crítica explícita a la organización de la feria (cliente de IFEMA/organizador): riesgo reputacional.",
+     "detail": "Crítica explícita a la organización de la feria (la propia entrada enlaza a https://www.ifema.es/matelec/que-es): riesgo reputacional.",
      "evidence": "la experiencia no fue lo que esperábamos",
      "where": "text"
     },
@@ -6805,21 +6878,25 @@
        "name": "wpforms[fields][3][]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -7018,10 +7095,11 @@
        "name": "wpforms[fields][0]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Correo electrónico",
@@ -7044,13 +7122,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -7261,10 +7342,11 @@
        "name": "wpforms[fields][2]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Consentimiento (He leído y acepto la política de privacidad)",
@@ -7275,13 +7357,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -7484,10 +7569,11 @@
        "name": "wpforms[fields][0]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Correo electrónico",
@@ -7510,13 +7596,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -7698,10 +7787,11 @@
        "name": "wpforms[fields][0]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Correo electrónico",
@@ -7724,13 +7814,16 @@
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -7818,7 +7911,7 @@
     "status": "ausente"
    },
    "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/Diseno-sin-titulo-73.png",
-   "purpose": "Archivo WooCommerce de productos (/shop/): listado de categorías raíz con extracto. La URL ES redirige a /en/shop/; solo se inventaría.",
+   "purpose": "Archivo WooCommerce de productos (/shop/): listado de categorías raíz con extracto. La captura ES devuelve la plantilla de /en/shop/ (canonical); solo se inventaría.",
    "sections": [
     {
      "heading": "Productos",
@@ -8755,7 +8848,25 @@
      "kind": "form_submit"
     }
    ],
-   "images": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/03/Torivac_negativo.png",
+     "alt": "",
+     "alt_issue": "vacío",
+     "role": "logo",
+     "width": 150,
+     "height": 150
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2025/07/Logotipos_FondosEuropeos.jpg",
+     "alt": "",
+     "alt_issue": "vacío",
+     "role": "financiacion",
+     "width": 770,
+     "height": 162,
+     "nota": "Aparece dos veces (pie duplicado); solo logotipo, sin el texto de ICEX-Next."
+    }
+   ],
    "pdf_links": [],
    "internal_links": [
     {
@@ -8802,21 +8913,25 @@
        "name": "wpforms[fields][3][]"
       },
       {
-       "label": "Campo condicional anti-spam (oculto salvo lista negra)",
+       "label": "Honeypot anti-spam de WPForms (campo de texto oculto; etiqueta técnica 'personalizado Captcha Nombre')",
        "type": "text",
        "required": false,
-       "name": "wpforms[fields][5]"
+       "name": "wpforms[fields][5]",
+       "role": "honeypot"
       },
       {
        "label": "Captcha personalizado (aritmético)",
        "type": "text",
-       "required": true,
-       "name": "wpforms[fields][4][a]"
+       "required": false,
+       "name": "wpforms[fields][4][a]",
+       "role": "captcha_condicional",
+       "note": "Oculto por defecto (style=display:none; clase wpforms-conditional-show): lógica condicional 'show' con 4 reglas sobre el correo y 3 sobre el mensaje (lista negra de spam); el atributo required del HTML solo aplica si se muestra."
       }
      ],
      "submit_label": "Enviar",
-     "protection": "reCAPTCHA de Google + captcha aritmético personalizado",
-     "consent_links_privacy_policy": false
+     "protection": "reCAPTCHA v3 + honeypot + captcha aritmético condicional (oculto por defecto)",
+     "consent_links_privacy_policy": false,
+     "recaptcha": "reCAPTCHA v3 de Google (token oculto wpforms[recaptcha]; aviso visible bajo el botón)"
     }
    ],
    "translation_of_es": null,
@@ -8830,14 +8945,14 @@
     {
      "severity": "media",
      "type": "broken_link",
-     "detail": "Los dos pies enlazan a /aviso-legal/ (inexistente) en las 21 entradas y en /confirmar/.",
+     "detail": "Los dos pies enlazan a /aviso-legal/ (no figura en sitemap, REST ni índice de páginas: enlace roto aparente) en las 21 entradas y en /confirmar/.",
      "evidence": "https://grupotorivac.com/aviso-legal/",
      "where": "html"
     },
     {
      "severity": "media",
      "type": "legal",
-     "detail": "El pie de las entradas no incluye enlaces a política de privacidad ni declaración de accesibilidad ni el aviso de financiación ICEX/FEDER, que sí tiene el pie de las páginas.",
+     "detail": "El pie de las entradas no enlaza a política de privacidad ni a declaración de accesibilidad y, de la financiación pública, solo muestra el logotipo antiguo 'Logotipos_FondosEuropeos.jpg' (alt vacío), sin el texto de ICEX-Next ni el logotipo 'MANUAL-FEDER-ICEX-NEXT-2027' del pie de las páginas.",
      "evidence": "© 2022 Torivac. Todos los derechos reservados",
      "where": "html"
     },
@@ -8956,8 +9071,12 @@
   ],
   "redes_sociales": {
    "value": [],
-   "nota": "No hay enlaces ni perfiles de redes sociales en el HTML ES (ni en cabecera, pie ni JSON-LD sameAs). La política de cookies cita Facebook, Twitter, Instagram, YouTube, Pinterest y LinkedIn solo como enlaces a sus políticas de privacidad.",
+   "nota": "No hay ningún perfil ni enlace a redes sociales en el HTML ES (cabecera, pie, JSON-LD: sin sameAs). El pie de todas las páginas y entradas muestra un icono de LinkedIn (Font Awesome 'fab fa-linkedin', 230 apariciones en los 208 HTML ES) que NO está dentro de ningún <a>: no enlaza a ninguna parte y no consta la URL del perfil. La política de cookies cita Facebook, Twitter, Instagram, YouTube, Pinterest y LinkedIn solo como enlaces a sus políticas de privacidad.",
    "fuentes": [
+    {
+     "url": "https://grupotorivac.com/",
+     "donde": "Pie de página (icono LinkedIn sin enlace)"
+    },
     {
      "url": "https://grupotorivac.com/politica-de-cookies/",
      "donde": "Cookies de redes sociales"
@@ -9159,7 +9278,7 @@
     "url": "https://grupotorivac.com/",
     "donde": "Pie de página 'Desarrollado por Santiso Marketing'"
    },
-   "nota": "En WordPress todas las entradas están firmadas por 'Franco Santiso' (usuario de la agencia), no por Torivac."
+   "nota": "En WordPress todas las entradas figuran con el autor 'Franco Santiso' (Yoast: 'Escrito por'); el apellido coincide con la agencia, pero las fuentes no dicen que sea personal de Santiso Marketing: no se asume."
   },
   "pila_tecnica_detectada": {
    "value": [
@@ -9232,7 +9351,8 @@
      "detail": "La página no tiene <h1> (el título visible es un H2)."
     }
    ],
-   "source": "data/raw/rest/pages.es.json#id=1109"
+   "source": "data/raw/rest/pages.es.json#id=1109",
+   "full_text_source": "HTML (data/analysis/pages/es/*.json -> text)"
   },
   {
    "kind": "privacidad",
@@ -9275,7 +9395,8 @@
      "detail": "La página no tiene <h1> (el título visible es un H2)."
     }
    ],
-   "source": "data/raw/rest/pages.es.json#id=14762"
+   "source": "data/raw/rest/pages.es.json#id=14762",
+   "full_text_source": "HTML (data/analysis/pages/es/*.json -> text)"
   },
   {
    "kind": "cookies",
@@ -9310,16 +9431,12 @@
     },
     {
      "severity": "media",
-     "type": "ux",
-     "detail": "La política no está enlazada desde el pie, el banner ni ninguna otra página (solo existe en el sitemap)."
-    },
-    {
-     "severity": "media",
      "type": "seo",
      "detail": "La página no tiene <h1> (el título visible es un H2)."
     }
    ],
-   "source": "data/raw/rest/pages.es.json#id=1117"
+   "source": "data/raw/rest/pages.es.json#id=1117",
+   "full_text_source": "API REST (data/raw/rest/pages.es.json)"
   },
   {
    "kind": "accesibilidad",
@@ -9348,7 +9465,7 @@
     {
      "severity": "alta",
      "type": "unverified_claim",
-     "detail": "Declara nivel AA de WCAG 2.1 por autoevaluación, mientras el sitio actual tiene alts vacíos, ausencia de H1 y enlaces a recursos inexistentes."
+     "detail": "Declara nivel AA de WCAG 2.1 por autoevaluación, mientras el sitio actual tiene alts vacíos o con nombre de archivo, ausencia de H1 y enlaces rotos aparentes en el pie de las entradas."
     },
     {
      "severity": "media",
@@ -9366,7 +9483,8 @@
      "detail": "La página no tiene <h1> (el título visible es un H2)."
     }
    ],
-   "source": "data/raw/rest/pages.es.json#id=14774"
+   "source": "data/raw/rest/pages.es.json#id=14774",
+   "full_text_source": "HTML (data/analysis/pages/es/*.json -> text)"
   }
  ],
  "site_chrome": {
@@ -9467,13 +9585,18 @@
    ],
    "hallazgos": [
     "Año © 2025 (la fecha de captura es 2026-10-27)",
-    "No enlaza a la política de cookies"
+    "El pie no enlaza a la política de cookies (solo el banner Complianz, en ejecución)",
+    "Icono de LinkedIn junto a los logotipos de financiación, sin enlace (ni al perfil de la empresa ni a nada)"
    ]
   },
   "footer_entradas": {
    "template": "Elementor post 14542 (footer-blog)",
-   "descripcion": "Bloque 'CONTACTA CON NOSOTROS' con formulario 14511 y dos pies idénticos '© 2022 Torivac' con enlace /aviso-legal/ (inexistente).",
-   "paginas_afectadas": 22
+   "descripcion": "Bloque 'CONTACTA CON NOSOTROS' con formulario 14511, y dos pies idénticos '© 2022 Torivac' con enlace /aviso-legal/ (enlace roto aparente: no figura en sitemap, REST ni índice de páginas), el logotipo antiguo 'Logotipos_FondosEuropeos.jpg' (2025/07, alt vacío) y un icono de LinkedIn sin enlace.",
+   "paginas_afectadas": 22,
+   "imagenes": [
+    "https://grupotorivac.com/wp-content/uploads/2022/03/Torivac_negativo.png",
+    "https://grupotorivac.com/wp-content/uploads/2025/07/Logotipos_FondosEuropeos.jpg"
+   ]
   },
   "banner_cookies": {
    "plugin": "Complianz",
@@ -9492,8 +9615,9 @@
     "Guardar preferencias"
    ],
    "hallazgos": [
-    "No enlaza a la política de cookies",
-    "El marcado contiene plantillas sin resolver '{title}' y '{vendor_count}' (ocultas)"
+    "El marcado estático lista 3 enlaces ('cookie-statement', 'privacy-statement', 'impressum') con href='#' y marcador '{title}'; Complianz los resuelve en ejecución con complianz.page_links.eu: Política de cookies -> /politica-de-cookies/, Política de privacidad -> /politica-de-privacidad/, Aviso legal -> /aviso-legal-2/ (no verificado visualmente: sin captura del banner abierto).",
+    "Texto genérico de plantilla Complianz; botones 'Aceptar', 'Denegar', 'Ver preferencias', 'Guardar preferencias'.",
+    "El marcado contiene además el marcador sin resolver '{vendor_count}' (oculto)."
    ]
   }
  },
@@ -9553,7 +9677,8 @@
     "seguridad-en-el-uso-de-transformadores",
     "torivac-en-beyond-catalonia",
     "normativas-sobre-transformadores-electricos-en-europa"
-   ]
+   ],
+   "nota": "Enlace roto aparente: /aviso-legal/ no está en page-sitemap.xml, pages.es.json ni pages-index.json; el aviso real es /aviso-legal-2/. No se comprobó por red (norma del trabajo)."
   },
   "sin_h1": [
    "productos",
@@ -9595,7 +9720,11 @@
    "politica-de-cookies",
    "declaracion-de-accesibilidad",
    "confirmar"
-  ]
+  ],
+  "icono_linkedin_sin_enlace": {
+   "detalle": "230 iconos 'fa-linkedin' en los 208 HTML ES, ninguno dentro de un <a>",
+   "fuente": "data/raw/html/es/*.html"
+  }
  },
  "stats": {
   "items_total": 37,
@@ -9632,8 +9761,8 @@
    "propuesta_admin": 10
   },
   "banderas_por_severidad": {
-   "media": 114,
-   "baja": 77,
+   "media": 113,
+   "baja": 78,
    "alta": 24
   },
   "banderas_por_tipo": {
@@ -9664,10 +9793,44 @@
   "Servicios de mantenimiento, reparación, modernización, garantía extendida y descargadores de batería: afirmados en entradas del blog, ausentes del resto del sitio y del catálogo; pendientes de confirmar con el cliente.",
   "Blog: solo se cosechó la primera página del índice (/blog/page/2/ y /blog/page/3/ no están en los datos); las 21 entradas proceden de la API REST.",
   "Política de cookies: el HTML cosechado solo contiene el pie; el texto íntegro procede de la API REST (data/raw/rest/pages.es.json, id 1117).",
-  "Páginas /confirmar/ y /shop/ redirigen a /en/carrito/ y /en/shop/: no hay carrito, tienda ni mi-cuenta ES en los datos.",
+  "Las capturas ES de /confirmar/ y /shop/ devuelven la plantilla de /en/carrito/ y /en/shop/ (canonical): no hay carrito, tienda ni mi-cuenta ES en los datos.",
   "Traducciones EN/FR/DE de /politica-de-cookies/ y de /aviso-legal-2/ (solo DE) no existen o no se cosecharon; el análisis de idiomas es de otras tareas.",
   "Cifra '60 años' vs 'más de treinta años' (toroidales): requiere criterio del cliente.",
   "Clientes de referencia, lista de países y casos de éxito: no constan en ninguna página ES.",
-  "Autoría real de los textos del blog (todos firmados 'Franco Santiso', usuario de la agencia)."
- ]
+  "Autoría real de los textos del blog (todos firmados 'Franco Santiso' en WordPress; no consta quién redactó los textos).",
+  "Entrada EN id 8196 'What is a Voltage Variator?' (slug 'el-variador-de-tension-y-sus-funciones', 2024-09-19): existe solo en inglés (22 entradas EN frente a 21 en ES/FR/DE), con la meta description en español. No hay original ES en la API REST ni en el sitemap: posible original ES despublicado o borrado; confirmar con el cliente. Se analiza en el fichero EN.",
+  "Banner de cookies: sus enlaces a política de cookies, privacidad y aviso legal se rellenan en ejecución (complianz.page_links); no hay captura del banner abierto en data/raw/screens para verlo.",
+  "El enlace /aviso-legal/ del pie antiguo se marca como roto aparente solo por no constar en sitemap, REST ni índice de páginas; no se comprobó por red.",
+  "Destino real de las notificaciones de los formularios WPForms 14511 y 4921 (no consta; solo el aviso de privacidad menciona 'correodelcliente' sin dominio).",
+  "Icono de LinkedIn del pie sin enlace: falta la URL del perfil de empresa (y si existen otros perfiles)."
+ ],
+ "field_notes": {
+  "h1": "Texto del <h1> real del HTML. null si la página no tiene <h1> (28 de las 31 páginas y entradas).",
+  "h1_visual": "Primer encabezado del cuerpo cuando no hay <h1> (H2/H3/H4 del constructor). null si no hay encabezado propio (p. ej. blog).",
+  "title": "Título interno de WordPress (REST title.rendered). seo_title: <title> de Yoast.",
+  "meta_description.status": "ok | placeholder_sin_resolver (valor literal '%') | ausente | no_aplica (plantilla).",
+  "full_text": "Texto del cuerpo extraído del HTML (data/analysis/pages/es/*.json -> text), normalizado (NBSP, U+200B, líneas en blanco). Excluye cabecera, pie y banner de cookies (ver site_chrome). Para politica-de-cookies procede de la API REST. En home y en las 21 entradas incluye ruido del formulario de contacto.",
+  "sections": "Una por encabezado del cuerpo (page: anotación manual; post: texto partido por H2/H3 y resumido). key_facts son datos literales del texto.",
+  "images[].alt_issue": "vacío | nombre_de_archivo | null. role: content|featured|logo|financiacion|ui.",
+  "translation_of_es": "Siempre null en ES (es el idioma de origen). translation_quality 'n/a'. Traducciones existentes en translations_hreflang (la calidad se analiza en los ficheros de cada idioma).",
+  "migration.decision": "copiar_con_correcciones | regenerar | revisar_antes_de_migrar | reescribir | no_migrar | propuesta_admin (contenido dudoso: mostrar como propuesta en el panel de admin y no publicar hasta validarlo).",
+  "quality_flags": "severity alta|media|baja; where indica en qué campo está la evidencia (verificada automáticamente contra el texto, el SEO, las imágenes o el HTML crudo).",
+  "date/modified": "Hora local de WordPress (REST date/modified); *_gmt también disponibles."
+ },
+ "audit": {
+  "fecha": "2026-10-27",
+  "metodo": "Revisión de las 37 piezas contra data/raw/html/es, data/raw/rest/{pages,posts}.es.json, sitemaps, pdf-text y capturas de pantalla (data/raw/screens): coincidencia carácter a carácter de full_text con el texto del análisis en 31 de las 37 piezas (las otras 6 son: política de cookies tomada de la API REST, 3 archivos sin texto y 2 plantillas de cabecera/pie reconstruidas), comprobación de números y citas de los key_facts contra el texto, búsqueda de lorem ipsum y de texto de relleno (0 resultados), comprobación de afirmaciones negativas (enlaces, redes, horarios) con búsquedas en los 208 HTML ES.",
+  "correcciones_sobre_el_borrador": [
+   "confirmar: REST no está vacío (3.250 caracteres de bloques WooCommerce Checkout, 0 de texto visible); es el checkout, no el carrito",
+   "/aviso-legal/: 'inexistente' pasa a 'enlace roto aparente' (solo se puede afirmar que no consta en las fuentes)",
+   "Banner de cookies: la afirmación 'no enlaza a la política de cookies' era errónea; Complianz lo enlaza en ejecución (page_links)",
+   "Formularios 14511 y 4921: el campo [4] de 4921 y el [5] de 14511 son honeypots (hn_data), no captchas; el captcha aritmético de 14511 está oculto por lógica condicional",
+   "Redes sociales: el pie muestra un icono de LinkedIn sin enlace (antes se decía 'ninguna')",
+   "blog: h1_visual pasa a null (el único H2 es el título de la primera tarjeta; la página no tiene encabezado propio)",
+   "Matelec: IFEMA se menciona porque la propia entrada enlaza a ifema.es/matelec, no como 'cliente'",
+   "Autoría del blog: se elimina la inferencia 'usuario de la agencia' (solo consta el autor WordPress 'Franco Santiso')",
+   "Pie de entradas (footer-blog): sí incluye el logotipo antiguo Logotipos_FondosEuropeos.jpg (alt vacío) y un icono LinkedIn sin enlace; no incluye el texto ICEX-Next",
+   "Huecos añadidos: entrada EN-only id 8196, banner de cookies sin captura, /aviso-legal/ sin comprobación por red, destino de formularios, URL de LinkedIn"
+  ]
+ }
 }

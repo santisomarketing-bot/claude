@@ -22,6 +22,6 @@
 /* separador de sección tipo regla de medición */
 .ruler{height:14px;background:repeating-linear-gradient(90deg,var(--line-strong) 0 1px,transparent 1px 10px),repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 50px);background-size:100% 6px,100% 14px;background-repeat:no-repeat;background-position:top,top;opacity:.4;margin-block:var(--s-5)}
 .sec.dark.bp{background-color:var(--ink)}
-.sec.dark .btn{background:var(--copper)}
+.sec.dark .btn{background:var(--copper-strong);border-color:var(--copper-strong)}
 .sec.dark .btn:hover{background:var(--copper-on-dark);color:var(--ink)}
 @media (prefers-reduced-motion:reduce){.hero .wave .w{animation:none}}

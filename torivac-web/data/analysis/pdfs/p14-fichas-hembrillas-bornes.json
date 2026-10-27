@@ -1,0 +1,440 @@
+{
+ "job": "p14-fichas-hembrillas-bornes",
+ "documents": [
+  {
+   "file": "Caracteristicas_Bornes_Hembrillas_Portafusibles.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "BORNES HEMBRILLAS Y PORTAFUSIBLES/BINDING POST, BANANA SOCKETS & FUSE HOLDERS",
+   "families": [
+    {
+     "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+     "series": null,
+     "page": 1,
+     "description": "Ficha de una página (A4) con seis modelos, cada uno con fotografía y dibujo acotado: BPB - 30 A / 230V., HB - 4, HR - 4, HBS - 4, HSR - 4 y PF - 15. No hay texto descriptivo, tabla ni condiciones de pedido.",
+     "general_specs": {},
+     "models": [
+      {
+       "reference": "BPB - 30 A / 230V.",
+       "page": 1,
+       "specs": {
+        "Rótulo intensidad / tensión": "30 A / 230V.",
+        "Cota anchura superior (cabeza)": "14",
+        "Cota altura cabeza": "15",
+        "Cota altura base": "4",
+        "Cota altura total": "36,5",
+        "ROSCA": "4/0,7"
+       },
+       "raw_row": "BPB - 30 A / 230V. | cotas 14 / 15 / 4 / 36,5 | ROSCA 4/0,7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HB - 4",
+       "page": 1,
+       "specs": {
+        "Ø cabeza": "Ø 11",
+        "Ø orificio central (cota Ø 4)": "Ø 4",
+        "Cota altura total": "24,1",
+        "ROSCA": "8/0,75"
+       },
+       "raw_row": "HB - 4 | Ø 11 / Ø 4 / 24,1 | ROSCA 8/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HR - 4",
+       "page": 1,
+       "specs": {
+        "Ø cabeza": "Ø 11",
+        "Ø orificio central (cota Ø 4)": "Ø 4",
+        "Cota altura total": "25",
+        "ROSCA": "8/0,75"
+       },
+       "raw_row": "HR - 4 | Ø 11 / Ø 4 / 25 | ROSCA 8/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HBS - 4",
+       "page": 1,
+       "specs": {
+        "Cota anchura superior (cabeza)": "15",
+        "Ø orificio central (cota Ø 4)": "Ø 4",
+        "Cota 2,1 (junto al borde superior de la cabeza)": "2,1",
+        "Cota altura total": "24,6",
+        "ROSCA": "12,50/0,75"
+       },
+       "raw_row": "HBS - 4 | 15 / Ø 4 / 2,1 / 24,6 | ROSCA 12,50/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HSR - 4",
+       "page": 1,
+       "specs": {
+        "Cota anchura superior (cabeza)": "15",
+        "Ø orificio central (cota Ø 4)": "Ø 4",
+        "Cota 2,1 (junto al borde superior de la cabeza)": "2,1",
+        "Cota altura total": "25,5",
+        "ROSCA": null
+       },
+       "raw_row": "HSR - 4 | 15 / Ø 4 / 2,1 / 25,5 | sin cota ROSCA en el dibujo",
+       "confidence": "media"
+      },
+      {
+       "reference": "PF - 15",
+       "page": 1,
+       "specs": {
+        "Ø cabeza": "Ø 16",
+        "Cota altura tapa moleteada": "10",
+        "Cota altura total": "32",
+        "ROSCA": "12,50/0,75"
+       },
+       "raw_row": "PF - 15 | Ø 16 / 10 / 32 | ROSCA 12,50/0,75",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "230V.",
+     "page": 1,
+     "context": "rótulo del modelo 'BPB - 30 A / 230V.'",
+     "normalized_hint": "230 V (tipo de tensión no indicado)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Título bilingüe en el encabezado: 'BORNES HEMBRILLAS Y PORTAFUSIBLES' / 'BINDING POST, BANANA SOCKETS & FUSE HOLDERS' (es/en). Pie con 'www.torivac.com'.",
+     "page": 1
+    },
+    {
+     "fact": "Colores visibles en las fotografías (no hay texto que los indique ni que diga si existen otros): BPB - 30 A / 230V. negro; HB - 4 negro; HR - 4 rojo; HBS - 4 azul; HSR - 4 verde; PF - 15 negro.",
+     "page": 1
+    },
+    {
+     "fact": "Las fotografías de HB - 4, HR - 4, HBS - 4 y HSR - 4 muestran un cuerpo con tuerca de fijación y, en el extremo opuesto, una pestaña (HB-4, HBS-4) o un terminal cilíndrico (HR-4, HSR-4). BPB muestra una varilla roscada con dos tuercas. Observación de imagen, no texto del PDF.",
+     "page": 1
+    },
+    {
+     "fact": "Los números de las cotas están dibujados como gráficos, no como texto: pdftotext solo devuelve el título y 'www.torivac.com'. Todos los valores se han transcrito de la imagen renderizada.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas (14, 15, 4, 36,5; Ø 11, Ø 4, 24,1; Ø 11, Ø 4, 25; 15, Ø 4, 2,1, 24,6; 15, Ø 4, 2,1, 25,5; Ø 16, 10, 32)",
+     "why": "Los dibujos acotados no imprimen unidad. Se conservan las cifras tal cual; no se afirma que sean mm."
+    },
+    {
+     "page": 1,
+     "item": "Significado de cada cota de BPB - 30 A / 230V., HB - 4, HR - 4, HBS - 4, HSR - 4, PF - 15 (anchura/altura de cabeza, altura de base, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "why": "Los nombres de las claves se deducen de la posición de la línea de cota en el dibujo; el PDF no tiene texto que los nombre. Las cifras sí se leen con claridad."
+    },
+    {
+     "page": 1,
+     "item": "Clasificación por tipo (BPB - 30 A / 230V. = borne; HB - 4 = hembrilla; HR - 4 = hembrilla; HBS - 4 = hembrilla; HSR - 4 = hembrilla; PF - 15 = portafusibles)",
+     "why": "El título solo dice 'BORNES HEMBRILLAS Y PORTAFUSIBLES' y no asigna un tipo a cada código; la clasificación se deduce de la fotografía y del nombre. Propuesta, no publicar como dato."
+    },
+    {
+     "page": 1,
+     "item": "ROSCA de HSR - 4",
+     "why": "El dibujo de HSR - 4 no lleva cota ROSCA, a diferencia de BPB, HB - 4, HR - 4, HBS - 4 y PF - 15 en los PDFs de este trabajo. Se deja en null; no se asume igual que HBS - 4."
+    },
+    {
+     "page": 1,
+     "item": "Significado de 'ROSCA 4/0,7', 'ROSCA 8/0,75', 'ROSCA 12,50/0,75'",
+     "why": "Se transcribe tal cual el rótulo. No se indica la norma (p. ej. métrica diámetro/paso), ni la unidad."
+    },
+    {
+     "page": 1,
+     "item": "Significado del sufijo de la referencia (HB - 4, HR - 4, HBS - 4, HSR - 4, PF - 15)",
+     "why": "El PDF no explica si '4' es el diámetro de clavija/borne ni si '15' es intensidad o calibre de fusible; no se infiere. Para PF - 15 tampoco figura calibre ni tamaño de fusible admitido."
+    },
+    {
+     "page": 1,
+     "item": "Intensidad, tensión, material y norma de HB - 4, HR - 4, HBS - 4, HSR - 4, PF - 15",
+     "why": "Solo BPB lleva rótulo eléctrico ('30 A / 230V.'). Para estos modelos no hay intensidad, tensión, material ni norma en el PDF."
+    },
+    {
+     "page": 1,
+     "item": "'30 A / 230V.' del rótulo de BPB",
+     "why": "No se indica si son valores nominales o máximos, ni si la tensión es AC o DC."
+    },
+    {
+     "page": 1,
+     "item": "Duplicidad de contenido",
+     "why": "Esta ficha reúne los 6 modelos que el catálogo reparte en HEMBRILLAS.pdf (BPB, HB-4, HR-4) y HEMBRILLAS2.pdf (HBS-4, HSR-4, PF-15). Las cotas coinciden en los tres PDFs; no hay discrepancias."
+    }
+   ]
+  },
+  {
+   "file": "HEMBRILLAS.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+   "families": [
+    {
+     "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+     "series": null,
+     "page": 1,
+     "description": "Página de catálogo (número impreso 39) con tres modelos, cada uno con fotografía y dibujo acotado: BPB - 30 A / 230V., HB - 4 y HR - 4. No hay texto descriptivo ni tabla.",
+     "general_specs": {},
+     "models": [
+      {
+       "reference": "BPB - 30 A / 230V.",
+       "page": 1,
+       "specs": {
+        "Rótulo intensidad / tensión": "30 A / 230V.",
+        "Cota anchura superior (cabeza)": "14",
+        "Cota altura cabeza": "15",
+        "Cota altura base": "4",
+        "Cota altura total": "36,5",
+        "ROSCA": "4/0,7"
+       },
+       "raw_row": "BPB - 30 A / 230V. | cotas 14 / 15 / 4 / 36,5 | ROSCA 4/0,7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HB - 4",
+       "page": 1,
+       "specs": {
+        "Ø cabeza": "Ø 11",
+        "Ø orificio central (cota Ø 4)": "Ø 4",
+        "Cota altura total": "24,1",
+        "ROSCA": "8/0,75"
+       },
+       "raw_row": "HB - 4 | Ø 11 / Ø 4 / 24,1 | ROSCA 8/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HR - 4",
+       "page": 1,
+       "specs": {
+        "Ø cabeza": "Ø 11",
+        "Ø orificio central (cota Ø 4)": "Ø 4",
+        "Cota altura total": "25",
+        "ROSCA": "8/0,75"
+       },
+       "raw_row": "HR - 4 | Ø 11 / Ø 4 / 25 | ROSCA 8/0,75",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "230V.",
+     "page": 1,
+     "context": "rótulo del modelo 'BPB - 30 A / 230V.'",
+     "normalized_hint": "230 V (tipo de tensión no indicado)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Página de catálogo con el número impreso 39 y el encabezado 'BORNES HEMBRILLAS Y PORTAFUSIBLES'. Continúa en HEMBRILLAS2.pdf (número impreso 40).",
+     "page": 1
+    },
+    {
+     "fact": "Colores visibles en las fotografías (no hay texto que los indique): BPB - 30 A / 230V. negro; HB - 4 negro; HR - 4 rojo.",
+     "page": 1
+    },
+    {
+     "fact": "Otras versiones lingüísticas del catálogo titulan la misma hoja: EN 'BINDING POST, BANANA SOCKETS & FUSE HOLDERS'; FR 'FICHES FEMELLE, BANANES & PORTE FUSIBLES'; DE 'KLEMMEN, STECKDOSEN UND SICHERUNGSHALTER' (la versión DE rotula la rosca como 'Gewinde'). Dato leído de la capa de texto de esos catálogos.",
+     "page": 1
+    },
+    {
+     "fact": "Los números de las cotas están dibujados como gráficos, no como texto: pdftotext solo devuelve título, códigos de modelo, '230V.' y el número de página. Todas las cotas se han transcrito de la imagen renderizada.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas (14, 15, 4, 36,5; Ø 11, Ø 4, 24,1; Ø 11, Ø 4, 25)",
+     "why": "Los dibujos acotados no imprimen unidad. Se conservan las cifras tal cual; no se afirma que sean mm."
+    },
+    {
+     "page": 1,
+     "item": "Significado de cada cota de BPB - 30 A / 230V., HB - 4, HR - 4 (anchura/altura de cabeza, altura de base, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "why": "Los nombres de las claves se deducen de la posición de la línea de cota en el dibujo; el PDF no tiene texto que los nombre. Las cifras sí se leen con claridad."
+    },
+    {
+     "page": 1,
+     "item": "Clasificación por tipo (BPB - 30 A / 230V. = borne; HB - 4 = hembrilla; HR - 4 = hembrilla)",
+     "why": "El título solo dice 'BORNES HEMBRILLAS Y PORTAFUSIBLES' y no asigna un tipo a cada código; la clasificación se deduce de la fotografía y del nombre. Propuesta, no publicar como dato."
+    },
+    {
+     "page": 1,
+     "item": "Significado de 'ROSCA 4/0,7', 'ROSCA 8/0,75'",
+     "why": "Se transcribe tal cual el rótulo. No se indica la norma (p. ej. métrica diámetro/paso), ni la unidad."
+    },
+    {
+     "page": 1,
+     "item": "Significado del sufijo de la referencia (HB - 4, HR - 4)",
+     "why": "El PDF no explica qué significa el '4' del sufijo (p. ej. diámetro de clavija); no se infiere."
+    },
+    {
+     "page": 1,
+     "item": "Intensidad, tensión, material y norma de HB - 4, HR - 4",
+     "why": "Solo BPB lleva rótulo eléctrico ('30 A / 230V.'). Para estos modelos no hay intensidad, tensión, material ni norma en el PDF."
+    },
+    {
+     "page": 1,
+     "item": "'30 A / 230V.' del rótulo de BPB",
+     "why": "No se indica si son valores nominales o máximos, ni si la tensión es AC o DC."
+    },
+    {
+     "page": 1,
+     "item": "Duplicidad de contenido",
+     "why": "Mismo contenido que los tres primeros modelos de Caracteristicas_Bornes_Hembrillas_Portafusibles.pdf, y texto idéntico al de la hoja del catálogo Torivac_2024 con los mismos códigos (BPB, HB-4, HR-4). Cotas coincidentes."
+    }
+   ]
+  },
+  {
+   "file": "HEMBRILLAS2.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+   "families": [
+    {
+     "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+     "series": null,
+     "page": 1,
+     "description": "Página de catálogo (número impreso 40) con tres modelos, cada uno con fotografía y dibujo acotado: HBS - 4, HSR - 4 y PF - 15. No hay texto descriptivo ni tabla.",
+     "general_specs": {},
+     "models": [
+      {
+       "reference": "HBS - 4",
+       "page": 1,
+       "specs": {
+        "Cota anchura superior (cabeza)": "15",
+        "Ø orificio central (cota Ø 4)": "Ø 4",
+        "Cota 2,1 (junto al borde superior de la cabeza)": "2,1",
+        "Cota altura total": "24,6",
+        "ROSCA": "12,50/0,75"
+       },
+       "raw_row": "HBS - 4 | 15 / Ø 4 / 2,1 / 24,6 | ROSCA 12,50/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HSR - 4",
+       "page": 1,
+       "specs": {
+        "Cota anchura superior (cabeza)": "15",
+        "Ø orificio central (cota Ø 4)": "Ø 4",
+        "Cota 2,1 (junto al borde superior de la cabeza)": "2,1",
+        "Cota altura total": "25,5",
+        "ROSCA": null
+       },
+       "raw_row": "HSR - 4 | 15 / Ø 4 / 2,1 / 25,5 | sin cota ROSCA en el dibujo",
+       "confidence": "media"
+      },
+      {
+       "reference": "PF - 15",
+       "page": 1,
+       "specs": {
+        "Ø cabeza": "Ø 16",
+        "Cota altura tapa moleteada": "10",
+        "Cota altura total": "32",
+        "ROSCA": "12,50/0,75"
+       },
+       "raw_row": "PF - 15 | Ø 16 / 10 / 32 | ROSCA 12,50/0,75",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página de catálogo con el número impreso 40 y el encabezado 'BORNES HEMBRILLAS Y PORTAFUSIBLES'. Continúa HEMBRILLAS.pdf (número impreso 39).",
+     "page": 1
+    },
+    {
+     "fact": "Colores visibles en las fotografías (no hay texto que los indique): HBS - 4 azul; HSR - 4 verde; PF - 15 negro.",
+     "page": 1
+    },
+    {
+     "fact": "Los números de las cotas están dibujados como gráficos, no como texto: pdftotext solo devuelve título, códigos de modelo y el número de página. Todas las cotas se han transcrito de la imagen renderizada.",
+     "page": 1
+    },
+    {
+     "fact": "Esta página no contiene ninguna mención de tensión ni de intensidad.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas (15, Ø 4, 2,1, 24,6; 15, Ø 4, 2,1, 25,5; Ø 16, 10, 32)",
+     "why": "Los dibujos acotados no imprimen unidad. Se conservan las cifras tal cual; no se afirma que sean mm."
+    },
+    {
+     "page": 1,
+     "item": "Significado de cada cota de HBS - 4, HSR - 4, PF - 15 (anchura/altura de cabeza, altura de base, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "why": "Los nombres de las claves se deducen de la posición de la línea de cota en el dibujo; el PDF no tiene texto que los nombre. Las cifras sí se leen con claridad."
+    },
+    {
+     "page": 1,
+     "item": "Clasificación por tipo (HBS - 4 = hembrilla; HSR - 4 = hembrilla; PF - 15 = portafusibles)",
+     "why": "El título solo dice 'BORNES HEMBRILLAS Y PORTAFUSIBLES' y no asigna un tipo a cada código; la clasificación se deduce de la fotografía y del nombre. Propuesta, no publicar como dato."
+    },
+    {
+     "page": 1,
+     "item": "ROSCA de HSR - 4",
+     "why": "El dibujo de HSR - 4 no lleva cota ROSCA, a diferencia de BPB, HB - 4, HR - 4, HBS - 4 y PF - 15 en los PDFs de este trabajo. Se deja en null; no se asume igual que HBS - 4."
+    },
+    {
+     "page": 1,
+     "item": "Significado de 'ROSCA 12,50/0,75'",
+     "why": "Se transcribe tal cual el rótulo. No se indica la norma (p. ej. métrica diámetro/paso), ni la unidad."
+    },
+    {
+     "page": 1,
+     "item": "Significado del sufijo de la referencia (HBS - 4, HSR - 4, PF - 15)",
+     "why": "El PDF no explica si '4' es el diámetro de clavija/borne ni si '15' es intensidad o calibre de fusible; no se infiere. Para PF - 15 tampoco figura calibre ni tamaño de fusible admitido."
+    },
+    {
+     "page": 1,
+     "item": "Intensidad, tensión, material y norma de HBS - 4, HSR - 4, PF - 15",
+     "why": "Ningún modelo de este PDF lleva rótulo eléctrico. Para estos modelos no hay intensidad, tensión, material ni norma en el PDF."
+    },
+    {
+     "page": 1,
+     "item": "Duplicidad de contenido",
+     "why": "Mismo contenido que los modelos HBS-4, HSR-4 y PF-15 de Caracteristicas_Bornes_Hembrillas_Portafusibles.pdf, y texto idéntico al de la hoja del catálogo Torivac_2024 con los mismos códigos. Cotas coincidentes."
+    }
+   ]
+  }
+ ]
+}

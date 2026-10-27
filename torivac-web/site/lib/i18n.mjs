@@ -54,6 +54,7 @@ export const T = {
   search_ph: { es: 'Buscar por nombre o referencia', en: 'Search by name or reference', fr: 'Rechercher par nom ou référence', de: 'Nach Name oder Artikelnummer suchen' },
   clear_filters: { es: 'Quitar filtros', en: 'Clear filters', fr: 'Effacer les filtres', de: 'Filter zurücksetzen' },
   results: { es: 'productos', en: 'products', fr: 'produits', de: 'Produkte' },
+  result_one: { es: 'producto', en: 'product', fr: 'produit', de: 'Produkt' },
   no_results: { es: 'No hay productos con estos filtros.', en: 'No products match these filters.', fr: 'Aucun produit ne correspond à ces filtres.', de: 'Keine Produkte für diese Filter.' },
   all: { es: 'Todos', en: 'All', fr: 'Tous', de: 'Alle' },
   view_category: { es: 'Ver categoría', en: 'View category', fr: 'Voir la catégorie', de: 'Kategorie ansehen' },
@@ -83,4 +84,7 @@ export const T = {
   quote_slug: { es: 'presupuesto', en: 'quote', fr: 'devis', de: 'angebot' },
 };
 
+/** «1 producto / 2 productos» en los 4 idiomas */
+export const countLabel = (n, lang) => `${n} ${({ es: ['producto', 'productos'], en: ['product', 'products'], fr: ['produit', 'produits'], de: ['Produkt', 'Produkte'] }[lang] || ['', ''])[n === 1 ? 0 : 1]}`;
+export const refLabel = (n, lang) => `${n} ${({ es: ['referencia', 'referencias'], en: ['reference', 'references'], fr: ['référence', 'références'], de: ['Artikelnummer', 'Artikelnummern'] }[lang] || ['', ''])[n === 1 ? 0 : 1]}`;
 export const t = (key, lang) => (T[key] && (T[key][lang] ?? T[key].es)) ?? key;

@@ -1,0 +1,1106 @@
+{
+ "group": "g03-equipos-electronicos-1-2",
+ "products": [
+  {
+   "id_es": 967,
+   "slug": "electronica",
+   "url_es": "https://grupotorivac.com/product/electronica/",
+   "sku": "8899762d3d80",
+   "names": {
+    "es": "Electronica",
+    "en": "Electronics",
+    "fr": "Électronique",
+    "de": "Elektronik"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/electronica/",
+    "en": "https://grupotorivac.com/en/product/electronica/",
+    "fr": "https://grupotorivac.com/fr/product/electronica/",
+    "de": "https://grupotorivac.com/de/product/electronica/"
+   },
+   "ids": {
+    "es": 967,
+    "en": 15598,
+    "fr": 15597,
+    "de": 15599
+   },
+   "category_path_es": [
+    "Equipos electrónicos"
+   ],
+   "categories_all_es": [
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Contamos con un departamento de ingeniería propio que le ayudará a llevar a cabo sus proyectos mas ambiciosos.",
+    "en": "We have our own engineering department that will help you carry out your most ambitious projects.",
+    "fr": "Nous disposons de notre propre département d’ingénierie qui vous aidera à réaliser vos projets les plus ambitieux.",
+    "de": "Wir verfügen über eine eigene technische Abteilung, die Ihnen bei der Durchführung Ihrer ehrgeizigsten Projekte hilft."
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-scaled.jpg",
+     "alt": {
+      "es": "Electronica",
+      "en": "Electronics",
+      "fr": "Électronique",
+      "de": "Elektronik"
+     },
+     "id": 418
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Electronica - Torivac",
+     "meta_description": "Contamos con un departamento de ingeniería propio que le ayudará a llevar a cabo sus proyectos mas ambiciosos.",
+     "og_title": "Electronica - Torivac",
+     "og_description": "Contamos con un departamento de ingeniería propio que le ayudará a llevar a cabo sus proyectos mas ambiciosos.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-scaled.jpg",
+     "modified": "2026-10-16T12:05:08",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Electronics - Torivac",
+     "meta_description": "We have our own engineering department that will help you carry out your most ambitious projects. Made by Torivac.",
+     "og_title": "Electronics - Torivac",
+     "og_description": "We have our own engineering department that will help you carry out your most ambitious projects. Made by Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-scaled.jpg",
+     "modified": "2026-10-16T12:05:31",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Électronique - Torivac",
+     "meta_description": "Nous disposons de notre propre département d'ingénierie qui vous aidera à réaliser vos projets les plus ambitieux.",
+     "og_title": "Électronique - Torivac",
+     "og_description": "Nous disposons de notre propre département d'ingénierie qui vous aidera à réaliser vos projets les plus ambitieux.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-scaled.jpg",
+     "modified": "2026-10-16T12:05:31",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "Elektronik - Torivac",
+     "meta_description": "Wir verfügen über eine eigene technische Abteilung, die Ihnen bei der Durchführung Ihrer ehrgeizigsten Projekte hilft.",
+     "og_title": "Elektronik - Torivac",
+     "og_description": "Wir verfügen über eine eigene technische Abteilung, die Ihnen bei der Durchführung Ihrer ehrgeizigsten Projekte hilft.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-scaled.jpg",
+     "modified": "2026-10-16T12:05:31",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "nombre_generico",
+    "duplicado_posible",
+    "typo",
+    "sin_alt",
+    "nombre_de_archivo_poco_descriptivo",
+    "sin_modelos",
+    "sku_no_comercial",
+    "canonical_incorrecto",
+    "pagina_traducida_sin_h1"
+   ],
+   "gaps": [
+    "description vacía en los 4 idiomas: todo el texto es una única frase en short_description ('Contamos con un departamento de ingeniería propio que le ayudará a llevar a cabo sus proyectos mas ambiciosos.'); la página renderizada sólo añade el bloque de contacto.",
+    "Nombre genérico: 'Electronica' (sin tilde) coincide con el nombre de la categoría 'Equipos electrónicos' (slug de categoría 'electronica', el mismo que el slug del producto). No describe ningún equipo concreto: no hay referencia, tipo, tensión ni potencia.",
+    "Duplicado probable de una categoría: la frase es idéntica a la descripción de las categorías 'Equipos electrónicos' (id 96), 'Fuentes de alimentación CC' (id 98) y 'Control industrial' (id 101) en ES, y a sus equivalentes en EN (ids 492/499/493), FR (489/498/490) y DE (495/500/554). Parece una ficha-contenedor o introducción de categoría, no un producto pedible: decidir con Torivac si se descarta o se usa como texto de la categoría.",
+    "Typo ES: 'mas ambiciosos' (sin tilde en 'más'); el nombre y el slug 'Electronica' van sin tilde. Se conservan.",
+    "Sin tabla de modelos ni referencias pedibles: ni la descripción HTML ni la página renderizada contienen <table> en ningún idioma (tables=[]); spec_tables=[] y orderable_items=[].",
+    "Sin menciones de tensión (V) ni de potencia (VA, W) en ninguna fuente web de este producto.",
+    "Atributos de WooCommerce vacíos (attributes=[]) en todos los idiomas.",
+    "SKU '8899762d3d80' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios; is_purchasable=false, botón 'Leer más'); no hay ningún dato de precio en las fuentes.",
+    "Alt de la biblioteca de medios vacío en la imagen 418 (convertidor1-scaled.jpg) en todos los idiomas existentes; la página renderizada pone como alt el título del producto de cada idioma (valor automático, no descriptivo). En images[].alt se ha guardado el alt renderizado.",
+    "Nombre de archivo de la imagen ('convertidor1-scaled.jpg') poco descriptivo y sin relación con el nombre del producto ('Electronica'); según media-index.json mide 1707×2560 px (formato vertical).",
+    "SEO: la meta description EN añade 'Made by Torivac.' al final del texto traducido (ES, FR y DE no lo llevan). El canonical y el og_url de yoast_head_json de EN/FR/DE apuntan a la URL en español (https://grupotorivac.com/product/electronica/) en lugar de a su URL traducida.",
+    "Sin PDF: no hay enlaces a PDF ni en la descripción ni en la página renderizada (pdf_links=[]) y ningún PDF de pdf-index.json describe este producto (búsqueda de 'tiristor', 'fuente de alimentación', 'SAI', 'regulador' en pdf-text sin fichas dedicadas).",
+    "Las páginas renderizadas EN/FR/DE de este producto no tienen H1 (su outline sólo tiene el H3 del menú lateral y el H4/H2 del bloque de contacto; el nombre del producto sólo está en <title>); la página ES sí lo tiene (H1 = nombre).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen')."
+   ]
+  },
+  {
+   "id_es": 972,
+   "slug": "fuente-de-corriente-alterna-sinusoidal",
+   "url_es": "https://grupotorivac.com/product/fuente-de-corriente-alterna-sinusoidal/",
+   "sku": "3733e7c4426f",
+   "names": {
+    "es": "Fuente de corriente alterna sinusoidal",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/fuente-de-corriente-alterna-sinusoidal/",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "ids": {
+    "es": 972,
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "category_path_es": [
+    "Equipos electrónicos"
+   ],
+   "categories_all_es": [
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    },
+    {
+     "id": 99,
+     "name": "Fuente de alimentación CA",
+     "slug": "fuente-de-alimentacion-ca"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Son una gama de generadores de corriente alterna sinusoidal, con tensión y frecuencia configurables.\nIncorporan un rectificador controlado de entrada, que limita la corriente de conexión. La salida consiste en un convertidor estático, conmutando con modulación de ancho de pulso a alta frecuencia, mediante un puente de transistores IGBT de última generación.",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "description_text": {
+    "es": "",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/fuentes_alimentacion_ca-1.jpg",
+     "alt": {
+      "es": "Fuente de corriente alterna sinusoidal",
+      "en": null,
+      "fr": null,
+      "de": null
+     },
+     "id": 1092
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Tensión de salida (V) (la web dice 'tensión configurable', sin rango)",
+    "Frecuencia de salida (Hz) (la web dice 'frecuencia configurable', sin rango)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Fuente de corriente alterna sinusoidal - Torivac",
+     "meta_description": "Son una gama de generadores de corriente alterna sinusoidal, con tensión y frecuencia configurables.",
+     "og_title": "Fuente de corriente alterna sinusoidal - Torivac",
+     "og_description": "Son una gama de generadores de corriente alterna sinusoidal, con tensión y frecuencia configurables.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/fuentes_alimentacion_ca-1.jpg",
+     "modified": "2026-10-16T12:05:08",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "translation_status": {
+    "en": "missing",
+    "fr": "missing",
+    "de": "missing"
+   },
+   "quality_flags": [
+    "sin_traduccion",
+    "descripcion_vacia",
+    "ficha_sin_datos_tecnicos",
+    "duplicado_posible",
+    "typo",
+    "sin_alt",
+    "sin_modelos",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "Sin traducción a EN/FR/DE: no existe ficha ni en la Store API, ni en la REST, ni en las páginas renderizadas; coverage.json la lista en missing_translation_of_es_products (en, fr, de) y no hay ninguna ficha huérfana con otro nombre en las tiendas EN/FR/DE.",
+    "description vacía en ES: todo el contenido es un párrafo de dos frases en short_description (frase de gama + frase de funcionamiento); la página renderizada no añade nada salvo el bloque de contacto.",
+    "Ficha sin datos técnicos numéricos: tensión y frecuencia son 'configurables' pero no se da ningún rango; tampoco hay potencia (VA/kVA), corriente, número de fases, frecuencia de conmutación ni modelos. Por eso voltage_mentions=[] y power_mentions=[] (no hay ningún valor literal).",
+    "Duplicado de categoría: el texto del producto es idéntico a la descripción de la categoría 'Fuente de alimentación CA' (id 99, slug fuente-de-alimentacion-ca). En pages-index.json la misma URL de producto apunta a dos HTML (la página de la categoría y la del producto). Esa categoría tampoco existe en EN/FR/DE: el menú 'Equipos electrónicos' de esos idiomas no lista fuentes de alimentación CA.",
+    "Terminología: la misma gama se denomina 'Fuente de corriente alterna sinusoidal' (nombre, singular), 'generadores de corriente alterna sinusoidal' (texto) y 'Fuente de alimentación CA' (categoría).",
+    "Gramática ES: 'Son una gama de generadores...' (concordancia singular/plural). Se conserva.",
+    "Contenido técnico sólo cualitativo: rectificador controlado de entrada que limita la corriente de conexión; salida con convertidor estático, modulación de ancho de pulso a alta frecuencia y puente de transistores IGBT de última generación (sin cifras).",
+    "SEO: la meta description ES es sólo la primera frase del texto (no incluye el segundo párrafo).",
+    "Sin tabla de modelos ni referencias pedibles: ni la descripción HTML ni la página renderizada contienen <table> en ningún idioma (tables=[]); spec_tables=[] y orderable_items=[].",
+    "Atributos de WooCommerce vacíos (attributes=[]) en todos los idiomas.",
+    "SKU '3733e7c4426f' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios; is_purchasable=false, botón 'Leer más'); no hay ningún dato de precio en las fuentes.",
+    "Alt de la biblioteca de medios vacío en la imagen 1092 (fuentes_alimentacion_ca-1.jpg) en todos los idiomas existentes; la página renderizada pone como alt el título del producto de cada idioma (valor automático, no descriptivo). En images[].alt se ha guardado el alt renderizado.",
+    "Sin PDF: no hay enlaces a PDF ni en la descripción ni en la página renderizada (pdf_links=[]) y ningún PDF de pdf-index.json describe este producto (búsqueda de 'tiristor', 'fuente de alimentación', 'SAI', 'regulador' en pdf-text sin fichas dedicadas).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto. No hay H1 que revisar en EN/FR/DE porque la ficha sólo existe en ES."
+   ]
+  },
+  {
+   "id_es": 969,
+   "slug": "fuente-de-alimentacion-de-corriente-constante-150a",
+   "url_es": "https://grupotorivac.com/product/fuente-de-alimentacion-de-corriente-constante-150a/",
+   "sku": "593e40b38dfb",
+   "names": {
+    "es": "Fuentes de alimentación de 150A",
+    "en": "150A power supplies",
+    "fr": "Alimentations 150A",
+    "de": "150A Stromversorgungen"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/fuente-de-alimentacion-de-corriente-constante-150a/",
+    "en": "https://grupotorivac.com/en/product/fuente-de-alimentacion-de-corriente-constante-150a/",
+    "fr": "https://grupotorivac.com/fr/product/fuente-de-alimentacion-de-corriente-constante-150a/",
+    "de": "https://grupotorivac.com/de/product/fuente-de-alimentacion-de-corriente-constante-150a/"
+   },
+   "ids": {
+    "es": 969,
+    "en": 15912,
+    "fr": 15911,
+    "de": 15870
+   },
+   "category_path_es": [
+    "Equipos electrónicos"
+   ],
+   "categories_all_es": [
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    },
+    {
+     "id": 98,
+     "name": "Fuentes de alimentación CC",
+     "slug": "fuentes-de-alimentacion-cc"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Fuentes conmutadas de corriente constante de cualquier tamaño\n\nCARACTERÍSTICAS GENERALES\n\n- Entrada corriente alterna monofásica 230V 50Hz\n- Salida corriente continua 0 a 30V\n- Corriente máxima de salida 100A\n- Programación de la tensión i corriente máxima de salida por pulsadores, control por microprocesador.\n- Display alfanumérico indicador de tensión y corriente.\n- Memoria no volátil de los valores configurados.\n- Rectificador controlado de entrada, con limitación de la corriente de conexión\n- Inversor con transistores IGBT, conmutando con modulación de ancho de pulso a 40kHz.\n- Rectificador de alta eficiencia equipado con diodos schottky.\n- Transformador separador y filtro de salida, asegurando aislamiento galvánico\n- Protección electrónica contra cortocircuitos y sobrecargas.\n- Conjunto completo montado en caja metálica para utilización de sobremesa en laboratorio.\n- Opcional: control remoto RS-232.",
+    "en": "Constant current switch-mode power supplies of any size\n\nGENERAL CHARACTERISTICS\n\n- Single-phase alternating current input 230V 50Hz\n- Direct current output 0 to 30V\n- Maximum output current 100A\n- Programming of the maximum output voltage and current by push buttons, microprocessor control.\n- Alphanumeric display indicating voltage and current.\n- Non-volatile memory of the configured values.\n- Controlled input rectifier with switch-on current limitation\n- Inverter with IGBT transistors, switching with pulse width modulation at 40kHz.\n- High efficiency rectifier equipped with schottky diodes.\n- Separating transformer and output filter, ensuring galvanic isolation\n- Electronic protection against short circuits and overloads.\n- Complete set mounted in a metal box for benchtop use in the laboratory.\n- Optional: RS-232 remote control.",
+    "fr": "Alimentations à découpage à courant constant de toutes tailles\n\nCARACTÉRISTIQUES GÉNÉRALES\n\n- Entrée courant alternatif monophasé 230V 50Hz\n- Sortie DC 0 à 30V\n- Courant de sortie maximal 100A\n- Programmation de la tension et de l’intensité maximales de sortie par boutons-poussoirs, contrôle par microprocesseur.\n- Affichage alphanumérique indiquant la tension et le courant.\n- Mémoire non volatile des valeurs configurées.\n- Redresseur d’entrée contrôlé, avec limitation du courant d’enclenchement\n- Onduleur avec transistors IGBT, commutation avec modulation de largeur d’impulsion à 40kHz.\n- Redresseur à haut rendement équipé de diodes schottky.\n- Séparation du transformateur et du filtre de sortie, assurant une isolation galvanique\n- Protection électronique contre les courts-circuits et les surcharges.\n- Ensemble complet monté dans une boîte métallique pour une utilisation sur table en laboratoire.\n- En option : télécommande RS-232.",
+    "de": "Konstantstrom-Schaltnetzteile jeder Größe\n\nALLGEMEINE MERKMALE\n\n- Einphasen-Wechselstromeingang 230V 50Hz\n- DC-Ausgang 0 bis 30V\n- Maximaler Ausgangsstrom 100A\n- Programmierung der maximalen Ausgangsspannung und des Stroms über Drucktasten, Mikroprozessorsteuerung.\n- Alphanumerisches Display zur Anzeige von Spannung und Stromstärke.\n- Nichtflüchtiger Speicher für die konfigurierten Werte.\n- Gesteuerter Eingangsgleichrichter, mit Einschaltstrombegrenzung\n- Wechselrichter mit IGBT-Transistoren, schaltend mit Pulsweitenmodulation bei 40kHz.\n- Gleichrichter mit hohem Wirkungsgrad, ausgestattet mit Schottky-Dioden.\n- Trennt Transformator und Ausgangsfilter und gewährleistet so eine galvanische Isolierung\n- Elektronischer Kurzschluss- und Überlastungsschutz.\n- Komplettes Set in einer Metallbox für die Verwendung auf dem Labortisch.\n- Optional: RS-232-Fernbedienung."
+   },
+   "description_text": {
+    "es": "## Fuente de alimentación de 150A\n\nLas fuentes de alimentación de 150A de Torivac, son dispositivos diseñados para suministrar energía eléctrica estable y continua a equipos y sistemas que requieren corrientes de hasta 150 amperios. Como función principal tienen convertir la corriente alterna (CA) de la red eléctrica en corriente continua (CC) regulada, asegurando un suministro confiable y seguro para aplicaciones industriales.\n\n## ¿Cuál es la función elemental que cumple el variador de frecuencia?\n\nSon fundamentales en aplicaciones de laboratorio donde la estabilidad del suministro es crucial, sistemas de control industrial y equipos electrónicos avanzados. Entre sus características destacan su alta eficiencia energética, protección contra sobrecargas y diseño compacto para facilitar la integración en diferentes configuraciones industriales. Su implementación garantiza un rendimiento más seguro y eficiente en cualquier entorno de alta demanda energética.\n\n## ¿Para qué sirven las fuentes de alimentación de corriente constante?\n\nSon fundamentales en aplicaciones de laboratorio donde la estabilidad del suministro es crucial, sistemas de control industrial y equipos electrónicos avanzados. Entre sus características destacan su alta eficiencia energética, protección contra sobrecargas y diseño compacto para facilitar la integración en diferentes configuraciones industriales. Su implementación garantiza un rendimiento más seguro y eficiente en cualquier entorno de alta demanda energética\n\n## Torivac es una compañía especialista en diseño y fabricación de transformadores toroidales y variadores de tensión\n\nContamos con una experiencia de cerca de 60 años en el sector, que nos ha permitido ir creciendo hasta lograr una presencia en más de 30 países.\nDisponemos de un equipo técnico que garantiza la fabricación dispositivos de alta precisión y eficiencia. Nuestra metodología de trabajo nos permite realizar simulaciones avanzadas en cada fase de cada proyecto, asegurando que cada componente, desde variadores de tensión toroidales, transformadores regulables, descargadores de batería, potenciómetros y núcleos toroidales, cumpla con los más altos estándares del sector.\nTrabajamos estrechamente con empresas que cuentan con una gran infraestructura, en busca de garantizarles soluciones personalizadas y eficientes. Apuntamos a responder a las exigencias de industrias como la tecnológica, la energética y la automotriz. Nuestro objetivo es seguir innovando, fortaleciendo alianzas estratégicas y expandiendo nuestro alcance global, manteniendo siempre el sello de calidad y excelencia que nos ha caracterizado desde nuestros inicios.",
+    "en": "## 150A power supply\n\nTorivac’s 150A power supplies are devices designed to supply stable and continuous electrical power to equipment and systems that require currents up to 150 amperes. Their main function is to convert alternating current (AC) from the mains into regulated direct current (DC), ensuring a reliable and safe supply for industrial applications.\n\n## What is the basic function of the variable frequency drive?\n\nThey are essential in laboratory applications where supply stability is crucial, industrial control systems and advanced electronic equipment. Their features include high energy efficiency, overload protection and compact design for easy integration into different industrial configurations. Their implementation ensures safer and more efficient performance in any energy demanding environment.\n\n## What are constant current power supplies for?\n\nThey are essential in laboratory applications where supply stability is crucial, industrial control systems and advanced electronic equipment. Their features include high energy efficiency, overload protection and compact design for easy integration into different industrial configurations. Their implementation ensures safer and more efficient performance in any energy-demanding environment.\n\n## Torivac is a company specialized in the design and manufacture of toroidal transformers and voltage regulators.\n\nWe have nearly 60 years of experience in the sector, which has allowed us to grow to a presence in more than 30 countries.\nWe have a technical team that guarantees the manufacture of high precision and efficient devices. Our work methodology allows us to perform advanced simulations in each phase of each project, ensuring that each component, from toroidal voltage variators, adjustable transformers, battery dischargers, potentiometers and toroidal cores, meet the highest industry standards.\nWe work closely with companies that have a large infrastructure, seeking to ensure customized and efficient solutions. We aim to respond to the demands of industries such as technology, energy and automotive. Our goal is to continue innovating, strengthening strategic alliances and expanding our global reach, always maintaining the seal of quality and excellence that has characterized us since our beginnings.",
+    "fr": "## Alimentation électrique 150A\n\nLes alimentations 150A de Torivac sont des dispositifs conçus pour fournir une alimentation électrique stable et continue aux équipements et systèmes nécessitant des courants allant jusqu’à 150 ampères. Leur fonction principale est de convertir le courant alternatif (AC) du secteur en courant continu (DC) régulé, assurant ainsi une alimentation fiable et sûre pour les applications industrielles.\n\n## Quelle est la fonction de base du convertisseur de fréquence ?\n\nIls sont essentiels dans les applications de laboratoire où la stabilité de l’alimentation est cruciale, dans les systèmes de contrôle industriel et dans les équipements électroniques avancés. Ils se caractérisent par un rendement énergétique élevé, une protection contre les surcharges et une conception compacte qui facilite leur intégration dans différentes configurations industrielles. Leur mise en œuvre garantit des performances plus sûres et plus efficaces dans tout environnement exigeant en matière d’énergie.\n\n## À quoi servent les alimentations à courant constant ?\n\nIls sont essentiels dans les applications de laboratoire où la stabilité de l’alimentation est cruciale, dans les systèmes de contrôle industriel et dans les équipements électroniques avancés. Ils se caractérisent par un rendement énergétique élevé, une protection contre les surcharges et une conception compacte qui facilite leur intégration dans différentes configurations industrielles. Leur mise en œuvre garantit des performances plus sûres et plus efficaces dans tout environnement exigeant en matière d’énergie.\n\n## Torivac est une entreprise spécialisée dans la conception et la fabrication de transformateurs toroïdaux et de variateurs de tension.\n\nNous avons près de 60 ans d’expérience dans le secteur, ce qui nous a permis d’être présents dans plus de 30 pays.\nNous disposons d’une équipe technique qui garantit la fabrication de dispositifs de haute précision et efficaces. Notre méthodologie de travail nous permet d’effectuer des simulations avancées à chaque étape de chaque projet, garantissant que chaque composant, des variateurs de tension toroïdaux aux transformateurs de régulation, en passant par les déchargeurs de batterie, les potentiomètres et les noyaux toroïdaux, répond aux normes les plus strictes du secteur.\nNous travaillons en étroite collaboration avec des entreprises disposant d’une grande infrastructure, afin de garantir des solutions personnalisées et efficaces. Nous visons à répondre aux demandes d’industries telles que la technologie, l’énergie et l’automobile. Notre objectif est de continuer à innover, de renforcer les alliances stratégiques et d’étendre notre portée mondiale, en maintenant toujours le label de qualité et d’excellence qui nous caractérise depuis nos débuts.",
+    "de": "## 150A Stromversorgung\n\nDie 150A-Netzteile von Torivac sind Geräte zur stabilen und kontinuierlichen Stromversorgung von Geräten und Systemen, die Ströme bis zu 150 Ampere benötigen. Ihre Hauptfunktion ist die Umwandlung von Wechselstrom (AC) aus dem Stromnetz in geregelten Gleichstrom (DC), um eine zuverlässige und sichere Versorgung für industrielle Anwendungen zu gewährleisten.\n\n## Was ist die grundlegende Funktion des Frequenzumrichters?\n\nSie sind unverzichtbar für Laboranwendungen, bei denen die Stabilität der Stromversorgung von entscheidender Bedeutung ist, sowie für industrielle Kontrollsysteme und moderne elektronische Geräte. Sie zeichnen sich durch eine hohe Energieeffizienz, einen Überlastungsschutz und ein kompaktes Design aus, das eine einfache Integration in verschiedene industrielle Konfigurationen ermöglicht. Ihr Einsatz gewährleistet eine sicherere und effizientere Leistung in jeder energieintensiven Umgebung.\n\n## Wofür sind Konstantstrom-Netzteile gedacht?\n\nSie sind unverzichtbar für Laboranwendungen, bei denen die Stabilität der Stromversorgung von entscheidender Bedeutung ist, sowie für industrielle Kontrollsysteme und moderne elektronische Geräte. Sie zeichnen sich durch eine hohe Energieeffizienz, einen Überlastungsschutz und ein kompaktes Design aus, das eine einfache Integration in verschiedene industrielle Konfigurationen ermöglicht. Ihr Einsatz gewährleistet eine sicherere und effizientere Leistung in jeder energieintensiven Umgebung.\n\n## Torivac ist ein Unternehmen, das sich auf die Entwicklung und Herstellung von Ringkerntransformatoren und Antrieben mit variabler Spannung spezialisiert hat.\n\nWir verfügen über fast 60 Jahre Erfahrung in der Branche, die uns zu einer Präsenz in mehr als 30 Ländern geführt hat.\nWir verfügen über ein technisches Team, das die Herstellung von hochpräzisen und effizienten Geräten garantiert. Unsere Arbeitsmethodik ermöglicht es uns, in jeder Phase eines Projekts fortschrittliche Simulationen durchzuführen, um sicherzustellen, dass jedes Bauteil, von Ringspannungswandlern, Regeltransformatoren, Batterieentladern, Potentiometern und Ringbandkernen, den höchsten Standards der Branche entspricht.\nWir arbeiten eng mit Unternehmen zusammen, die über eine große Infrastruktur verfügen, um maßgeschneiderte und effiziente Lösungen zu gewährleisten. Wir sind bestrebt, auf die Anforderungen von Branchen wie Technologie, Energie und Automobil zu reagieren. Unser Ziel ist es, weiterhin innovativ zu sein, strategische Allianzen zu stärken und unsere globale Reichweite zu erweitern, wobei wir stets das Gütesiegel für Qualität und Exzellenz beibehalten, das uns seit unseren Anfängen auszeichnet."
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/fuentes_alimentacion_cc-1.jpg",
+     "alt": {
+      "es": "fuentes de alimentación de 150A, diseñados especialmente para garantizar estabilidad en la distribución energética de equipos electrónicos avanzados.",
+      "en": "fuentes de alimentación de 150A, diseñados especialmente para garantizar estabilidad en la distribución energética de equipos electrónicos avanzados.",
+      "fr": "fuentes de alimentación de 150A, diseñados especialmente para garantizar estabilidad en la distribución energética de equipos electrónicos avanzados.",
+      "de": "fuentes de alimentación de 150A, diseñados especialmente para garantizar estabilidad en la distribución energética de equipos electrónicos avanzados."
+     },
+     "id": 1091
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Entrada corriente alterna monofásica 230V 50Hz"
+    },
+    {
+     "raw": "0 a 30V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Salida corriente continua 0 a 30V"
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "Single-phase alternating current input 230V 50Hz"
+    },
+    {
+     "raw": "0 to 30V",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "Direct current output 0 to 30V"
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Entrée courant alternatif monophasé 230V 50Hz"
+    },
+    {
+     "raw": "0 à 30V",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Sortie DC 0 à 30V"
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Einphasen-Wechselstromeingang 230V 50Hz"
+    },
+    {
+     "raw": "0 bis 30V",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "DC-Ausgang 0 bis 30V"
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Corriente máxima de salida (A) (la web dice 'fuentes de cualquier tamaño'; nombre 150A y características 100A)",
+    "Tensión de salida (V) (0 a 30V según las características)",
+    "Opcional: control remoto RS-232 (con/sin)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Fuentes de alimentación de 150A - Torivac",
+     "meta_description": "Las fuentes de alimentación de 150A suministran un nivel de corriente fijo, independientemente de las variaciones en la carga o el voltaje de entrada.",
+     "og_title": "Fuentes de alimentación de 150A - Torivac",
+     "og_description": "Las fuentes de alimentación de 150A suministran un nivel de corriente fijo, independientemente de las variaciones en la carga o el voltaje de entrada.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/fuentes_alimentacion_cc-1.jpg",
+     "modified": "2026-10-14T07:02:17",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "150A power supplies - Torivac",
+     "meta_description": "The 150A power supplies deliver a fixed current level, regardless of variations in load or input voltage.",
+     "og_title": "150A power supplies - Torivac",
+     "og_description": "The 150A power supplies deliver a fixed current level, regardless of variations in load or input voltage.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/fuentes_alimentacion_cc-1.jpg",
+     "modified": "2026-10-16T12:06:32",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Alimentations 150A - Torivac",
+     "meta_description": "Les alimentations 150A délivrent un niveau de courant fixe, quelles que soient les variations de la charge ou de la tension d'entrée.",
+     "og_title": "Alimentations 150A - Torivac",
+     "og_description": "Les alimentations 150A délivrent un niveau de courant fixe, quelles que soient les variations de la charge ou de la tension d'entrée.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/fuentes_alimentacion_cc-1.jpg",
+     "modified": "2026-10-16T12:06:32",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "150A Stromversorgungen - Torivac",
+     "meta_description": "150A-Netzteile liefern eine feste Stromstärke, unabhängig von Schwankungen der Last oder der Eingangsspannung.",
+     "og_title": "150A Stromversorgungen - Torivac",
+     "og_description": "150A-Netzteile liefern eine feste Stromstärke, unabhängig von Schwankungen der Last oder der Eingangsspannung.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/fuentes_alimentacion_cc-1.jpg",
+     "modified": "2026-10-16T12:06:06",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "texto_con_valores_incoherentes",
+    "contenido_copiado_de_otro_producto",
+    "parrafo_duplicado_interno",
+    "texto_plantilla_repetido",
+    "typo",
+    "texto_en_idioma_incorrecto",
+    "traduccion_dudosa",
+    "sin_modelos",
+    "sku_no_comercial",
+    "pagina_traducida_sin_h1"
+   ],
+   "gaps": [
+    "Incoherencia de corriente: el nombre, el slug, el título SEO y el primer párrafo de la descripción dicen 150A ('corrientes de hasta 150 amperios'), pero la lista de características generales (short_description) dice 'Corriente máxima de salida 100A' en los 4 idiomas. No se corrige.",
+    "Encabezado copiado de otro producto: '¿Cuál es la función elemental que cumple el variador de frecuencia?' (el mismo texto está en el producto 968 'Variadores de frecuencia') encabeza un párrafo sobre fuentes de alimentación. Las traducciones lo reproducen: EN 'What is the basic function of the variable frequency drive?', FR 'Quelle est la fonction de base du convertisseur de fréquence ?', DE 'Was ist die grundlegende Funktion des Frequenzumrichters?'.",
+    "Párrafo duplicado dentro del producto: 'Son fundamentales en aplicaciones de laboratorio...' aparece dos veces, bajo el encabezado del variador de frecuencia y bajo '¿Para qué sirven las fuentes de alimentación de corriente constante?' (idéntico; en ES la segunda copia no lleva punto final).",
+    "Bloque de empresa de plantilla: 'Torivac es una compañía especialista en diseño y fabricación de transformadores toroidales y variadores de tensión' + 'Contamos con una experiencia de cerca de 60 años...' se repite idéntico en otros 12 productos ES (ids 15355, 8346, 8340, 1042, 975, 973, 970, 968, 965, 916, 890, 328); no es contenido específico de esta fuente.",
+    "Los encabezados de la descripción son párrafos en negrita (<p class=\"p1\"><b>), no etiquetas H2/H3: la página sólo tiene un H1 y el H4/H2 del bloque de contacto. En description_text se han marcado con '## ' para conservar la estructura.",
+    "Typos ES: 'Programación de la tensión i corriente máxima' ('i' por 'y'); 'garantiza la fabricación dispositivos de alta precisión' (falta 'de'); coma entre sujeto y verbo en 'Las fuentes de alimentación de 150A de Torivac, son dispositivos'; alt 'fuentes de alimentación de 150A, diseñados especialmente...' (concordancia). Se conservan.",
+    "Traducción dudosa en las viñetas: FR 'Séparation du transformateur et du filtre de sortie' y DE 'Trennt Transformator und Ausgangsfilter und gewährleistet so eine galvanische Isolierung' cambian el sentido del ES 'Transformador separador y filtro de salida, asegurando aislamiento galvánico'. EN 'Separating transformer...' es correcto.",
+    "Especificaciones sólo como viñetas de short_description (4 idiomas): entrada monofásica 230V 50Hz, salida CC 0 a 30V, corriente máxima de salida 100A, inversor IGBT a 40kHz, opcional control remoto RS-232, caja metálica de sobremesa. No hay modelos, tamaños ni referencias aunque el texto habla de fuentes 'de cualquier tamaño'.",
+    "Sin menciones de potencia (VA, kVA, W, kW) en ninguna fuente web de este producto. La ficha dimensiona por corriente (A): 150A en el nombre, 100A en las características.",
+    "Alt en idioma incorrecto: la Store API y las páginas EN/FR/DE publican el alt en español (media id 1091). La biblioteca de medios (media-index.json) tiene copias traducidas de la imagen, no usadas en las fichas: EN id 3916 '150A power supplies, specially designed to ensure stability in the power distribution of advanced electronic equipment.'; FR id 3917 'Alimentations de 150A, spécialement conçues pour assurer la stabilité de la distribution d'énergie des équipements électroniques de pointe.'; DE id 9472 '150A-Netzteile, speziell entwickelt, um die Stabilität bei der Stromverteilung von modernen elektronischen Geräten zu gewährleisten.'.",
+    "SEO ES: la meta description ('...suministran un nivel de corriente fijo, independientemente de las variaciones en la carga o el voltaje de entrada.') es un texto propio que no aparece en el cuerpo de la página.",
+    "Slug 'fuente-de-alimentacion-de-corriente-constante-150a' y nombre 'Fuentes de alimentación de 150A' no coinciden exactamente (el slug añade 'corriente-constante').",
+    "Atributos de WooCommerce vacíos (attributes=[]) en todos los idiomas.",
+    "SKU '593e40b38dfb' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios; is_purchasable=false, botón 'Leer más'); no hay ningún dato de precio en las fuentes.",
+    "Sin PDF: no hay enlaces a PDF ni en la descripción ni en la página renderizada (pdf_links=[]) y ningún PDF de pdf-index.json describe este producto (búsqueda de 'tiristor', 'fuente de alimentación', 'SAI', 'regulador' en pdf-text sin fichas dedicadas).",
+    "Las páginas renderizadas EN/FR/DE de este producto no tienen H1 (su outline sólo tiene el H3 del menú lateral y el H4/H2 del bloque de contacto; el nombre del producto sólo está en <title>); la página ES sí lo tiene (H1 = nombre).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen')."
+   ]
+  },
+  {
+   "id_es": 970,
+   "slug": "fuente-de-alimentacion-de-300a",
+   "url_es": "https://grupotorivac.com/product/fuente-de-alimentacion-de-300a/",
+   "sku": "ed7b7fd5bb22",
+   "names": {
+    "es": "Fuentes de alimentación de 300A",
+    "en": "300A power supplies",
+    "fr": "Alimentations 300A",
+    "de": "300A Stromversorgungen"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/fuente-de-alimentacion-de-300a/",
+    "en": "https://grupotorivac.com/en/product/fuente-de-alimentacion-de-300a/",
+    "fr": "https://grupotorivac.com/fr/product/fuente-de-alimentacion-de-300a/",
+    "de": "https://grupotorivac.com/de/product/fuente-de-alimentacion-de-300a/"
+   },
+   "ids": {
+    "es": 970,
+    "en": 15908,
+    "fr": 15906,
+    "de": 15868
+   },
+   "category_path_es": [
+    "Equipos electrónicos"
+   ],
+   "categories_all_es": [
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    },
+    {
+     "id": 98,
+     "name": "Fuentes de alimentación CC",
+     "slug": "fuentes-de-alimentacion-cc"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Fuentes conmutadas para generación oxhídrica.\nCARACTERÍSTICAS GENERALES\n• Entrada corriente alterna monofásica 230V 50Hz\n• Salida corriente continua constante de 300A\n• Tensión máxima de salida 4V\n• Conmutación eficiente a alta frecuencia\n• Rectificadores Shottky de alta eficiencia\n• Diseño compacto\n• Regulación de la corriente por sensor de presión de gas incorporado\n• Equipo preparado para ser incorporado a máquinas de trabajo duro\n• Transformador separador y filtro de salida, asegurando aislamiento galvánico\n• Protección electrónica contra cortocircuitos y sobrecargas",
+    "en": "Switching power supplies for hydroelectric generation.\nGENERAL FEATURES\n– Single-phase alternating current input 230V 50Hz\n– 300A constant direct current output\n– Maximum output voltage 4V\n– Efficient high frequency switching\n– High efficiency Shottky rectifiers\n– Compact design\n– Current regulation by built-in gas pressure sensor\n– Equipment prepared to be incorporated in heavy duty machines\n– Separating transformer and output filter, ensuring galvanic isolation\n– Electronic short-circuit and overload protection",
+    "fr": "Alimentations à découpage pour la production d’énergie hydroélectrique.\nCARACTÉRISTIQUES GÉNÉRALES\n– Entrée courant alternatif monophasé 230V 50Hz\n– Sortie courant continu constant 300A\n– Tension de sortie maximale 4V\n– Commutation efficace à haute fréquence\n– Redresseurs Shottky à haut rendement\n– Conception compacte\n– Régulation du courant par capteur de pression de gaz incorporé\n– Equipement préparé pour être incorporé dans des machines à usage intensif\n– Transformateur de séparation et filtre de sortie, assurant une isolation galvanique\n– Protection électronique contre les courts-circuits et les surcharges",
+    "de": "Schaltnetzteile für die Stromerzeugung aus Wasserkraft.\nALLGEMEINE MERKMALE\n– Einphasiger Wechselstromeingang 230V 50Hz\n– 300A konstanter Gleichstromausgang\n– Maximale Ausgangsspannung 4V\n– Effiziente Hochfrequenzschaltung\n– Hocheffiziente Shottky-Gleichrichter\n– Kompakte Bauweise\n– Stromregelung durch eingebauten Gasdrucksensor\n– Vorbereitet für den Einbau in Hochleistungsmaschinen\n– Trenntrafo und Ausgangsfilter, gewährleistet galvanische Trennung\n– Elektronischer Kurzschluss- und Überlastschutz"
+   },
+   "description_text": {
+    "es": "## ¿Qué es una fuente de alimentación de 300A?¿Cuál es su función principal?\n\nUna fuente de alimentación de 300A es un equipo diseñado para suministrar corriente continua (CC) estable y de alto amperaje, asegurando un flujo de energía confiable en sistemas que requieren grandes cantidades de potencia. Han de convertir la corriente alterna (CA) de la red eléctrica en corriente continua regulada, permitiendo alimentar dispositivos de alta demanda sin fluctuaciones ni interrupciones.\n\nLas fuentes de alimentación de 300A son esenciales en sectores como la manufactura industrial, el control de motores eléctricos, la carga de sistemas de almacenamiento de energía y la alimentación de maquinaria pesada. Cuenta con una capacidad de entrega de corriente estable que permite un funcionamiento seguro y eficiente, incluso en condiciones exigentes.\n\n## ¿Por qué es determinante tener este tipo de fuente de alimentación?\n\nEn grandes infraestructuras energéticas e industriales, la calidad y estabilidad del suministro eléctrico son determinantes para el rendimiento de los sistemas. Una fuente de alimentación de 300A es la solución ideal para aplicaciones que requieren una entrega de energía constante y confiable, garantizando el funcionamiento eficiente de equipos de alta potencia. Su capacidad para suministrar corriente de manera precisa y sin fluctuaciones protege los dispositivos conectados y optimiza la operatividad en entornos de gran demanda eléctrica.\n\nEn la automatización industrial, cuentan con un papel clave, donde alimentan motores de alta potencia, maquinaria de control numérico y sistemas de robótica, asegurando una operación estable sin interrupciones.\n\nEstas fuentes están diseñadas para maximizar la eficiencia energética y reducir el riesgo de fallos en sistemas críticos. Su uso es fundamental en procesos industriales, laboratorios de prueba, carga de baterías de alto rendimiento, telecomunicaciones y sistemas de automatización avanzada. Además, al mantener un flujo de corriente estable, evitan picos de tensión que pueden afectar la vida útil de los equipos, disminuyendo los costos de mantenimiento y mejorando la fiabilidad operativa.\n\n## Torivac es una compañía especialista en diseño y fabricación de transformadores toroidales y variadores de tensión\n\nContamos con una experiencia de cerca de 60 años en el sector, que nos ha permitido ir creciendo hasta lograr una presencia en más de 30 países.\nDisponemos de un equipo técnico que garantiza la fabricación dispositivos de alta precisión y eficiencia. Nuestra metodología de trabajo nos permite realizar simulaciones avanzadas en cada fase de cada proyecto, asegurando que cada componente, desde variadores de tensión toroidales, transformadores regulables, descargadores de batería, potenciómetros y núcleos toroidales, cumpla con los más altos estándares del sector.\nTrabajamos estrechamente con empresas que cuentan con una gran infraestructura, en busca de garantizarles soluciones personalizadas y eficientes. Apuntamos a responder a las exigencias de industrias como la tecnológica, la energética y la automotriz. Nuestro objetivo es seguir innovando, fortaleciendo alianzas estratégicas y expandiendo nuestro alcance global, manteniendo siempre el sello de calidad y excelencia que nos ha caracterizado desde nuestros inicios.",
+    "en": "## What is a 300A power supply? What is its main function?\n\nA 300A power supply is an equipment designed to supply stable and high amperage direct current (DC), ensuring a reliable power flow in systems requiring large amounts of power. They convert alternating current (AC) from the mains into regulated direct current, allowing powering high-demand devices without fluctuations or interruptions.\n\n300A power supplies are essential in sectors such as industrial manufacturing, electric motor control, energy storage system charging and heavy machinery power supply. It has a stable current delivery capability that enables safe and efficient operation, even under demanding conditions.\n\n## Why is it crucial to have this type of power supply?\n\nIn large power and industrial infrastructures, the quality and stability of the power supply are critical to system performance. A 300A power supply is the ideal solution for applications that require constant and reliable power delivery, ensuring the efficient operation of high-power equipment. Its ability to supply current accurately and without fluctuations protects connected devices and optimizes operability in environments with high electrical demand.\n\nIn industrial automation, they play a key role in powering high-power motors, numerical control machinery and robotics systems, ensuring stable operation without interruptions.\n\nThese sources are designed to maximize energy efficiency and reduce the risk of failure in critical systems. Their use is essential in industrial processes, test laboratories, high performance battery charging, telecommunications and advanced automation systems. In addition, by maintaining a stable current flow, they prevent voltage spikes that can affect the useful life of equipment, lowering maintenance costs and improving operational reliability.\n\n## Torivac is a company specialized in the design and manufacture of toroidal transformers and voltage regulators.\n\nWe have nearly 60 years of experience in the sector, which has allowed us to grow to a presence in more than 30 countries.\nWe have a technical team that guarantees the manufacture of high precision and efficient devices. Our work methodology allows us to perform advanced simulations in each phase of each project, ensuring that each component, from toroidal voltage variators, adjustable transformers, battery dischargers, potentiometers and toroidal cores, meet the highest industry standards.\nWe work closely with companies that have a large infrastructure, seeking to ensure customized and efficient solutions. We aim to respond to the demands of industries such as technology, energy and automotive. Our goal is to continue innovating, strengthening strategic alliances and expanding our global reach, always maintaining the seal of quality and excellence that has characterized us since our beginnings.",
+    "fr": "## Qu’est-ce qu’une alimentation de 300 A ? quelle est sa fonction principale ?\n\nUn bloc d’alimentation de 300 A est un équipement conçu pour fournir un courant continu (CC) stable et de forte intensité, garantissant un flux d’énergie fiable dans les systèmes nécessitant de grandes quantités d’énergie. Ils convertissent le courant alternatif (CA) du secteur en courant continu régulé, ce qui permet d’alimenter les appareils à forte demande sans fluctuations ni interruptions.\n\nLes alimentations de 300 A sont essentielles dans des secteurs tels que la fabrication industrielle, la commande de moteurs électriques, la charge de systèmes de stockage d’énergie et l’alimentation de machines lourdes. Leur capacité à délivrer un courant stable permet un fonctionnement sûr et efficace, même dans des conditions exigeantes.\n\n## Pourquoi est-il essentiel de disposer de ce type d’alimentation ?\n\nDans les grandes infrastructures électriques et industrielles, la qualité et la stabilité de l’alimentation électrique sont essentielles à la performance du système. Une alimentation de 300 A est la solution idéale pour les applications qui nécessitent une alimentation constante et fiable, garantissant le fonctionnement efficace des équipements de grande puissance. Sa capacité à fournir une alimentation précise et sans fluctuations protège les appareils connectés et optimise le fonctionnement dans les environnements à forte demande d’énergie.\n\nDans l’automatisation industrielle, ils jouent un rôle clé en alimentant des moteurs de grande puissance, des machines à commande numérique et des systèmes robotiques, garantissant un fonctionnement stable sans interruption.\n\nCes sources sont conçues pour maximiser l’efficacité énergétique et réduire le risque de défaillance des systèmes critiques. Leur utilisation est essentielle dans les processus industriels, les laboratoires d’essai, le chargement de batteries à haute performance, les télécommunications et les systèmes d’automatisation avancés. En outre, en maintenant un flux de courant stable, elles évitent les pics de tension qui peuvent affecter la durée de vie des équipements, réduisant ainsi les coûts de maintenance et améliorant la fiabilité opérationnelle.\n\n## Torivac est une entreprise spécialisée dans la conception et la fabrication de transformateurs toroïdaux et de variateurs de tension.\n\nNous avons près de 60 ans d’expérience dans le secteur, ce qui nous a permis d’être présents dans plus de 30 pays.\nNous disposons d’une équipe technique qui garantit la fabrication de dispositifs de haute précision et efficaces. Notre méthodologie de travail nous permet d’effectuer des simulations avancées à chaque étape de chaque projet, garantissant que chaque composant, des variateurs de tension toroïdaux aux transformateurs de régulation, en passant par les déchargeurs de batterie, les potentiomètres et les noyaux toroïdaux, répond aux normes les plus strictes du secteur.\nNous travaillons en étroite collaboration avec des entreprises disposant d’une grande infrastructure, afin de garantir des solutions personnalisées et efficaces. Nous visons à répondre aux demandes d’industries telles que la technologie, l’énergie et l’automobile. Notre objectif est de continuer à innover, de renforcer les alliances stratégiques et d’étendre notre portée mondiale, en maintenant toujours le label de qualité et d’excellence qui nous caractérise depuis nos débuts.",
+    "de": "## Was ist eine 300A-Stromversorgung? Was ist ihre Hauptfunktion?\n\nEin 300A-Netzteil ist ein Gerät, das stabilen Gleichstrom (DC) mit hoher Amperezahl liefert und einen zuverlässigen Stromfluss in Systemen mit hohem Strombedarf gewährleistet. Sie wandeln Wechselstrom (AC) aus dem Stromnetz in geregelten Gleichstrom um, so dass Geräte mit hohem Strombedarf ohne Schwankungen oder Unterbrechungen mit Strom versorgt werden können.\n\n300A-Netzteile sind in Bereichen wie der industriellen Fertigung, der Steuerung von Elektromotoren, dem Laden von Energiespeichersystemen und dem Betrieb schwerer Maschinen unverzichtbar. Es verfügt über eine stabile Stromlieferfähigkeit, die einen sicheren und effizienten Betrieb auch unter anspruchsvollen Bedingungen ermöglicht.\n\n## Warum ist diese Art der Stromversorgung so wichtig?\n\nIn großen Energie- und Industrieinfrastrukturen sind die Qualität und Stabilität der Stromversorgung entscheidend für die Systemleistung. Ein 300A-Netzteil ist die ideale Lösung für Anwendungen, die eine konstante und zuverlässige Stromversorgung erfordern, um den effizienten Betrieb von Hochleistungsgeräten zu gewährleisten. Seine Fähigkeit, Strom präzise und ohne Schwankungen zu liefern, schützt die angeschlossenen Geräte und optimiert die Betriebsfähigkeit in Umgebungen mit hohem Strombedarf.\n\nIn der Industrieautomation spielen sie eine Schlüsselrolle, da sie Hochleistungsmotoren, numerisch gesteuerte Maschinen und Robotersysteme antreiben und einen stabilen Betrieb ohne Unterbrechung gewährleisten.\n\nDiese Quellen wurden entwickelt, um die Energieeffizienz zu maximieren und das Risiko von Ausfällen in kritischen Systemen zu verringern. Ihr Einsatz ist in industriellen Prozessen, Testlabors, Hochleistungsbatterieladung, Telekommunikation und fortschrittlichen Automatisierungssystemen unerlässlich. Außerdem verhindern sie durch die Aufrechterhaltung eines stabilen Stromflusses Spannungsspitzen, die die Lebensdauer von Geräten beeinträchtigen können, und senken so die Wartungskosten und verbessern die Betriebssicherheit.\n\n## Torivac ist ein Unternehmen, das sich auf die Entwicklung und Herstellung von Ringkerntransformatoren und Antrieben mit variabler Spannung spezialisiert hat.\n\nWir verfügen über fast 60 Jahre Erfahrung in der Branche, die uns zu einer Präsenz in mehr als 30 Ländern geführt hat.\nWir verfügen über ein technisches Team, das die Herstellung von hochpräzisen und effizienten Geräten garantiert. Unsere Arbeitsmethodik ermöglicht es uns, in jeder Phase eines Projekts fortschrittliche Simulationen durchzuführen, um sicherzustellen, dass jedes Bauteil, von Ringspannungswandlern, Regeltransformatoren, Batterieentladern, Potentiometern und Ringbandkernen, den höchsten Standards der Branche entspricht.\nWir arbeiten eng mit Unternehmen zusammen, die über eine große Infrastruktur verfügen, um maßgeschneiderte und effiziente Lösungen zu gewährleisten. Wir sind bestrebt, auf die Anforderungen von Branchen wie Technologie, Energie und Automobil zu reagieren. Unser Ziel ist es, weiterhin innovativ zu sein, strategische Allianzen zu stärken und unsere globale Reichweite zu erweitern, wobei wir stets das Gütesiegel für Qualität und Exzellenz beibehalten, das uns seit unseren Anfängen auszeichnet."
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/12/fa300a.png",
+     "alt": {
+      "es": "fuentes de alimentación de 300A especial para suministrar corriente de manera continua y regular la distribución en maquinaría industrial.",
+      "en": "fuentes de alimentación de 300A especial para suministrar corriente de manera continua y regular la distribución en maquinaría industrial.",
+      "fr": "fuentes de alimentación de 300A especial para suministrar corriente de manera continua y regular la distribución en maquinaría industrial.",
+      "de": "fuentes de alimentación de 300A especial para suministrar corriente de manera continua y regular la distribución en maquinaría industrial."
+     },
+     "id": 1090
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Entrada corriente alterna monofásica 230V 50Hz"
+    },
+    {
+     "raw": "4V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Tensión máxima de salida 4V"
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "Single-phase alternating current input 230V 50Hz"
+    },
+    {
+     "raw": "4V",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "Maximum output voltage 4V"
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Entrée courant alternatif monophasé 230V 50Hz"
+    },
+    {
+     "raw": "4V",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Tension de sortie maximale 4V"
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Einphasiger Wechselstromeingang 230V 50Hz"
+    },
+    {
+     "raw": "4V",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Maximale Ausgangsspannung 4V"
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Fuentes de alimentación de 300A - Torivac",
+     "meta_description": "Estas fuentes de alimentación de 300A asegura un suministro eléctrico estable en aplicaciones críticas de manera continua,",
+     "og_title": "Fuentes de alimentación de 300A - Torivac",
+     "og_description": "Estas fuentes de alimentación de 300A asegura un suministro eléctrico estable en aplicaciones críticas de manera continua,",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/fa300a.png",
+     "modified": "2026-10-14T07:02:17",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "300A power supplies - Torivac",
+     "meta_description": "These 300A power supplies ensure a stable power supply in critical applications on a continuous basis,",
+     "og_title": "300A power supplies - Torivac",
+     "og_description": "These 300A power supplies ensure a stable power supply in critical applications on a continuous basis,",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/fa300a.png",
+     "modified": "2026-10-16T12:06:30",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Alimentations 300A - Torivac",
+     "meta_description": "Ces alimentations de 300A garantissent une alimentation stable et continue dans les applications critiques,",
+     "og_title": "Alimentations 300A - Torivac",
+     "og_description": "Ces alimentations de 300A garantissent une alimentation stable et continue dans les applications critiques,",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/fa300a.png",
+     "modified": "2026-10-16T12:06:29",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "300A Stromversorgungen - Torivac",
+     "meta_description": "Diese 300A-Netzteile sorgen für eine stabile Stromversorgung in kritischen Anwendungen auf kontinuierlicher Basis,",
+     "og_title": "300A Stromversorgungen - Torivac",
+     "og_description": "Diese 300A-Netzteile sorgen für eine stabile Stromversorgung in kritischen Anwendungen auf kontinuierlicher Basis,",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/fa300a.png",
+     "modified": "2026-10-16T12:06:05",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "traduccion_erronea",
+    "terminologia_dudosa",
+    "texto_plantilla_repetido",
+    "typo",
+    "texto_en_idioma_incorrecto",
+    "meta_description_truncada",
+    "formato_vinetas_manual",
+    "sin_modelos",
+    "sku_no_comercial",
+    "pagina_traducida_sin_h1"
+   ],
+   "gaps": [
+    "Posible traducción errónea de la primera línea de short_description: ES 'Fuentes conmutadas para generación oxhídrica' (oxhídrica = de oxígeno e hidrógeno; la ficha habla de 'sensor de presión de gas') -> EN 'Switching power supplies for hydroelectric generation', FR 'pour la production d'énergie hydroélectrique', DE 'für die Stromerzeugung aus Wasserkraft'. 'Hidroeléctrica' no equivale a 'oxhídrica'. Se conservan los textos; verificar con Torivac.",
+    "Typos: 'Shottky' (sic) en la viñeta de rectificadores en los 4 idiomas (en la fuente de 150A se escribe 'schottky'); alt ES 'maquinaría' (con tilde); meta description ES 'Estas fuentes de alimentación de 300A asegura...' (concordancia) y acabada en coma en los 4 idiomas; encabezado ES '¿Qué es una fuente de alimentación de 300A?¿Cuál es su función principal?' sin espacio entre '?' y '¿' (y encabezado EN/FR/DE con las dos preguntas en una sola línea). Se conservan.",
+    "Meta description truncada en los 4 idiomas: termina en coma ('...de manera continua,', '...on a continuous basis,', '...continue dans les applications critiques,', '...auf kontinuierlicher Basis,').",
+    "Listas tecleadas a mano: las viñetas de short_description son '•' (ES, con <br>) y '–' (EN/FR/DE), no un <ul>. Se conservan los caracteres.",
+    "Especificaciones sólo como viñetas de short_description (4 idiomas): entrada monofásica 230V 50Hz, salida CC constante de 300A, tensión máxima de salida 4V, rectificadores 'Shottky' de alta eficiencia (grafía de la fuente), regulación de la corriente por sensor de presión de gas incorporado, transformador separador y filtro de salida, protección contra cortocircuitos y sobrecargas. No hay modelos ni referencias.",
+    "Uso: la descripción presenta usos genéricos (manufactura, motores, carga de baterías, telecomunicaciones...) que no mencionan el uso concreto de la ficha corta (generación oxhídrica con sensor de presión de gas).",
+    "Bloque de empresa de plantilla ('Torivac es una compañía especialista...' + 'Contamos con una experiencia de cerca de 60 años...') repetido idéntico en otros 12 productos ES (ids 15355, 8346, 8340, 1042, 975, 973, 969, 968, 965, 916, 890, 328); no es contenido específico de esta fuente.",
+    "Los encabezados de la descripción son párrafos en negrita (<p class=\"p1\"><b>), no etiquetas H2/H3; en description_text se han marcado con '## '.",
+    "Sin menciones de potencia (VA, kVA, W, kW) en ninguna fuente web de este producto. La ficha dimensiona por corriente (300A) y tensión máxima de salida (4V); no se calcula ninguna potencia.",
+    "Alt en idioma incorrecto: la Store API y las páginas EN/FR/DE publican el alt en español (media id 1090). La biblioteca de medios (media-index.json) tiene copias traducidas sin adjuntar a ningún producto: EN id 3914 '300A power supplies especially designed to supply continuous current and regulate the distribution in industrial machinery.'; FR id 3915 'Les alimentations 300A sont spécialement conçues pour fournir un courant continu et réguler la distribution dans les machines industrielles.'; DE id 9478 '300A-Netzteile, die speziell für die Lieferung von Dauerstrom und die Regelung der Verteilung in Industriemaschinen entwickelt wurden.'.",
+    "Atributos de WooCommerce vacíos (attributes=[]) en todos los idiomas.",
+    "SKU 'ed7b7fd5bb22' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios; is_purchasable=false, botón 'Leer más'); no hay ningún dato de precio en las fuentes.",
+    "Sin PDF: no hay enlaces a PDF ni en la descripción ni en la página renderizada (pdf_links=[]) y ningún PDF de pdf-index.json describe este producto (búsqueda de 'tiristor', 'fuente de alimentación', 'SAI', 'regulador' en pdf-text sin fichas dedicadas).",
+    "Las páginas renderizadas EN/FR/DE de este producto no tienen H1 (su outline sólo tiene el H3 del menú lateral y el H4/H2 del bloque de contacto; el nombre del producto sólo está en <title>); la página ES sí lo tiene (H1 = nombre).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen')."
+   ]
+  },
+  {
+   "id_es": 978,
+   "slug": "regulador-a-tiristores",
+   "url_es": "https://grupotorivac.com/product/regulador-a-tiristores/",
+   "sku": "de33455f1252",
+   "names": {
+    "es": "Regulador  a tiristores",
+    "en": "Thyristor controller",
+    "fr": "Contrôleur à thyristor",
+    "de": "Thyristor-Steuerung"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/regulador-a-tiristores/",
+    "en": "https://grupotorivac.com/en/product/regulador-a-tiristores/",
+    "fr": "https://grupotorivac.com/fr/product/regulador-a-tiristores/",
+    "de": "https://grupotorivac.com/de/product/regulador-a-tiristores/"
+   },
+   "ids": {
+    "es": 978,
+    "en": 15856,
+    "fr": 15855,
+    "de": 15864
+   },
+   "category_path_es": [
+    "Equipos electrónicos",
+    "Control industrial"
+   ],
+   "categories_all_es": [
+    {
+     "id": 101,
+     "name": "Control industrial",
+     "slug": "control-industrial"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Es una tarjeta de control de tiristores por regulación de ángulo de fase.\n\nCon un mínimo de componentes externos permite realizar tanto un control de corriente alterna como controlar un puente rectificador.\n\nLas características más destacadas son:\n• Controla hasta 6 tiristores, en conexión W3C o B6C\n• Alimentación a 3x400V sin neutro.\n• Equilibrado automático de fases.\n• Entrada de señal de shunt 60mV.\n• Regulación de tensión y de corriente.\n• Salidas de alimentación auxiliares para instrumentos.",
+    "en": "It is a thyristor control card for phase angle regulation.\n\nWith a minimum of external components, it allows both AC control and control of a bridge rectifier.\n\nThe most outstanding features are:\n– Controls up to 6 thyristors, in W3C or B6C connection\n– 3x400V power supply without neutral.\n– Automatic phase balancing.\n– 60mV shunt signal input.\n– Voltage and current regulation.\n– Auxiliary power supply outputs for instruments.",
+    "fr": "Il s’agit d’une carte de contrôle de thyristors pour la régulation de l’angle de phase.\n\nAvec un minimum de composants externes, elle permet à la fois le contrôle du courant alternatif et le contrôle d’un pont redresseur.\n\nLes caractéristiques les plus remarquables sont :\n– Contrôle jusqu’à 6 thyristors, en connexion W3C ou B6C\n– Alimentation 3x400V sans neutre.\n– Equilibrage automatique des phases.\n– Entrée signal shunt 60mV.\n– Régulation de la tension et du courant.\n– Sorties d’alimentation auxiliaire pour instruments.",
+    "de": "Es handelt sich um eine Thyristor-Steuerkarte für die Phasenanschnittsteuerung.\n\nMit einem Minimum an externen Komponenten ermöglicht sie sowohl die AC-Steuerung als auch die Steuerung eines Brückengleichrichters.\n\nDie herausragendsten Merkmale sind:\n– Steuerung von bis zu 6 Thyristoren, in W3C- oder B6C-Verbindung\n– 3x400V Stromversorgung ohne Nullleiter.\n– Automatischer Phasenausgleich.\n– 60mV Shunt-Signaleingang.\n– Spannungs- und Stromregelung.\n– Hilfsstromversorgungsausgänge für Instrumente."
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/12/control-src.png",
+     "alt": {
+      "es": "Regulador  a tiristores",
+      "en": "Thyristor controller",
+      "fr": "Contrôleur à thyristor",
+      "de": "Thyristor-Steuerung"
+     },
+     "id": 1098
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "3x400V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Alimentación a 3x400V sin neutro."
+    },
+    {
+     "raw": "60mV",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Entrada de señal de shunt 60mV."
+    },
+    {
+     "raw": "3x400V",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "3x400V power supply without neutral."
+    },
+    {
+     "raw": "60mV",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "60mV shunt signal input."
+    },
+    {
+     "raw": "3x400V",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Alimentation 3x400V sans neutre."
+    },
+    {
+     "raw": "60mV",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Entrée signal shunt 60mV."
+    },
+    {
+     "raw": "3x400V",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "3x400V Stromversorgung ohne Nullleiter."
+    },
+    {
+     "raw": "60mV",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "60mV Shunt-Signaleingang."
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Conexión de los tiristores (W3C o B6C)",
+    "Número de tiristores a controlar (hasta 6)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Regulador a tiristores - Torivac",
+     "meta_description": "Es una tarjeta de control de tiristores por regulación de ángulo de fase. Con un mínimo de componentes externos permite realizar tanto un control.",
+     "og_title": "Regulador a tiristores - Torivac",
+     "og_description": "Es una tarjeta de control de tiristores por regulación de ángulo de fase. Con un mínimo de componentes externos permite realizar tanto un control.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/control-src.png",
+     "modified": "2026-10-16T12:05:09",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Thyristor controller - Torivac",
+     "meta_description": "It is a thyristor control card for phase angle regulation. With a minimum of external components. Made by Torivac.",
+     "og_title": "Thyristor controller - Torivac",
+     "og_description": "It is a thyristor control card for phase angle regulation. With a minimum of external components. Made by Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/control-src.png",
+     "modified": "2026-10-16T12:05:53",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Contrôleur à thyristor - Torivac",
+     "meta_description": "Il s'agit d'une carte de contrôle de thyristors pour la régulation de l'angle de phase. Fabriqué par Torivac.",
+     "og_title": "Contrôleur à thyristor - Torivac",
+     "og_description": "Il s'agit d'une carte de contrôle de thyristors pour la régulation de l'angle de phase. Fabriqué par Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/control-src.png",
+     "modified": "2026-10-16T12:05:53",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "Thyristor-Steuerung - Torivac",
+     "meta_description": "Es handelt sich um eine Thyristor-Steuerkarte für die Phasenanschnittsteuerung. Mit einem Minimum an externen Komponenten ermöglicht sie sowohl.",
+     "og_title": "Thyristor-Steuerung - Torivac",
+     "og_description": "Es handelt sich um eine Thyristor-Steuerkarte für die Phasenanschnittsteuerung. Mit einem Minimum an externen Komponenten ermöglicht sie sowohl.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/control-src.png",
+     "modified": "2026-10-16T12:06:03",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "typo",
+    "sin_alt",
+    "nombre_de_archivo_poco_descriptivo",
+    "meta_description_truncada",
+    "formato_vinetas_manual",
+    "ficha_sin_datos_tecnicos",
+    "sin_modelos",
+    "sku_no_comercial",
+    "canonical_incorrecto",
+    "pagina_traducida_sin_h1"
+   ],
+   "gaps": [
+    "description vacía en los 4 idiomas: todo el contenido es short_description (dos frases + lista de 6 características); la página renderizada no añade nada salvo el bloque de contacto.",
+    "Nombre con doble espacio en la Store API ('Regulador  a tiristores'); el alt renderizado ES también lo conserva. Se guarda tal cual.",
+    "Ficha técnica mínima: controla hasta 6 tiristores en conexión W3C o B6C, alimentación a 3x400V sin neutro, entrada de señal de shunt 60mV, regulación de tensión y de corriente, salidas auxiliares para instrumentos. No hay corriente ni potencia máximas, ni tamaño de tarjeta, ni modelos o referencias. voltage_mentions recoge '3x400V' y '60mV' (señal de shunt, no tensión de red).",
+    "variation_axes_hint inferido de las características (conexión W3C/B6C, hasta 6 tiristores): la web no presenta variantes ni modelos de esta tarjeta.",
+    "Listas tecleadas a mano: las viñetas son '•' (ES, con tabulador y <br>) y '–' (EN/FR/DE), no un <ul>. Se conservan los caracteres.",
+    "Terminología de las traducciones: ES 'Regulador' -> EN 'Thyristor controller', FR 'Contrôleur à thyristor', DE 'Thyristor-Steuerung' (control en lugar de regulación); el texto sí distingue 'control' y 'regulación'.",
+    "Dos categorías: 'Equipos electrónicos' y 'Control industrial' (hija de la anterior); ver categories_all_es.",
+    "SEO: la meta description ES está cortada a mitad de frase ('...permite realizar tanto un control.') y la DE también ('...ermöglicht sie sowohl.'); la EN y la FR añaden 'Made by Torivac.' / 'Fabriqué par Torivac.' tras la segunda frase. El canonical y el og_url de EN/FR/DE apuntan a la URL en español (https://grupotorivac.com/product/regulador-a-tiristores/).",
+    "Nombre de archivo de la imagen ('control-src.png', 600×600 px según media-index.json) poco descriptivo.",
+    "Atributos de WooCommerce vacíos (attributes=[]) en todos los idiomas.",
+    "Alt de la biblioteca de medios vacío en la imagen 1098 (control-src.png) en todos los idiomas existentes; la página renderizada pone como alt el título del producto de cada idioma (valor automático, no descriptivo). En images[].alt se ha guardado el alt renderizado.",
+    "SKU 'de33455f1252' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios; is_purchasable=false, botón 'Leer más'); no hay ningún dato de precio en las fuentes.",
+    "Sin PDF: no hay enlaces a PDF ni en la descripción ni en la página renderizada (pdf_links=[]) y ningún PDF de pdf-index.json describe este producto (búsqueda de 'tiristor', 'fuente de alimentación', 'SAI', 'regulador' en pdf-text sin fichas dedicadas).",
+    "Las páginas renderizadas EN/FR/DE de este producto no tienen H1 (su outline sólo tiene el H3 del menú lateral y el H4/H2 del bloque de contacto; el nombre del producto sólo está en <title>); la página ES sí lo tiene (H1 = nombre).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen')."
+   ]
+  },
+  {
+   "id_es": 977,
+   "slug": "sai-para-control-industrial",
+   "url_es": "https://grupotorivac.com/product/sai-para-control-industrial/",
+   "sku": "ccd86c99b6ba",
+   "names": {
+    "es": "SAI para control industrial",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/sai-para-control-industrial/",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "ids": {
+    "es": 977,
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "category_path_es": [
+    "Equipos electrónicos",
+    "Control industrial"
+   ],
+   "categories_all_es": [
+    {
+     "id": 101,
+     "name": "Control industrial",
+     "slug": "control-industrial"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "• Entrada corriente continua de 15V a 30V.\n• Salida estabilizada 12V ±1%.\n• Corriente máxima de salida 6A.\n• Batería de NiMh de 2000mA.\n• Supervisión del estado de la batería.\n• Desconexión automática configurable.\n• Puerto de comunicación USB, con información de tensiones, corriente y estado de carga.",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "description_text": {
+    "es": "",
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/SAI-1.jpg",
+     "alt": {
+      "es": "SAI para control industrial",
+      "en": null,
+      "fr": null,
+      "de": null
+     },
+     "id": 1099
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "15V a 30V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Entrada corriente continua de 15V a 30V."
+    },
+    {
+     "raw": "12V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Salida estabilizada 12V ±1%."
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "SAI para control industrial - Torivac",
+     "meta_description": "• Entrada corriente continua de 15V a 30V. • Salida estabilizada 12V ±1%. • Corriente máxima de salida 6A. • Batería de NiMh de 2000mA.",
+     "og_title": "SAI para control industrial - Torivac",
+     "og_description": "• Entrada corriente continua de 15V a 30V. • Salida estabilizada 12V ±1%. • Corriente máxima de salida 6A. • Batería de NiMh de 2000mA.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/SAI-1.jpg",
+     "modified": "2026-10-16T12:05:09",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": null,
+    "fr": null,
+    "de": null
+   },
+   "translation_status": {
+    "en": "missing",
+    "fr": "missing",
+    "de": "missing"
+   },
+   "quality_flags": [
+    "sin_traduccion",
+    "descripcion_vacia",
+    "ficha_sin_datos_tecnicos",
+    "unidad_dudosa",
+    "formato_vinetas_manual",
+    "meta_description_truncada",
+    "typo",
+    "sin_alt",
+    "sin_modelos",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "Sin traducción a EN/FR/DE: no existe ficha ni en la Store API, ni en la REST, ni en las páginas renderizadas; coverage.json la lista en missing_translation_of_es_products (en, fr, de) y no hay ninguna ficha huérfana con otro nombre en las tiendas EN/FR/DE.",
+    "description vacía: todo el contenido es una lista de 7 viñetas en short_description, sin frase introductoria ni descripción de uso (lo único que sitúa el uso es 'control industrial' en el nombre). La página renderizada no añade nada salvo el bloque de contacto.",
+    "Acrónimo 'SAI' sin desarrollar en ninguna fuente web; al no existir traducción tampoco hay nombre EN/FR/DE (decisión de naming pendiente de Torivac).",
+    "Ficha 100 % en corriente continua: entrada de 15V a 30V CC, salida estabilizada 12V ±1 %, corriente máxima de salida 6A, batería de NiMh de 2000mA, supervisión del estado de la batería, desconexión automática configurable, puerto USB con información de tensiones, corriente y estado de carga. La ficha no menciona tensión de red (230V) ni potencia.",
+    "Unidad dudosa: 'Batería de NiMh de 2000mA' expresa la batería en mA (corriente); una capacidad suele darse en mAh. Además 'NiMh' (la grafía habitual es NiMH). Se conserva el texto original.",
+    "Listas tecleadas a mano: las viñetas son '•' con tabulador y <br> dentro de un párrafo, no un <ul>. Se conservan los caracteres.",
+    "SEO: la meta description ES es la concatenación de las cuatro primeras viñetas (con '•', sin frase) y el título es sólo el nombre; sin descripción comercial.",
+    "Dos categorías: 'Equipos electrónicos' y 'Control industrial' (hija de la anterior); ver categories_all_es.",
+    "Sin modelos ni referencias: sólo hay una especificación única; spec_tables=[] y orderable_items=[]. variation_axes_hint=[] porque la ficha no ofrece opciones.",
+    "Atributos de WooCommerce vacíos (attributes=[]) en todos los idiomas.",
+    "SKU 'ccd86c99b6ba' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios; is_purchasable=false, botón 'Leer más'); no hay ningún dato de precio en las fuentes.",
+    "Alt de la biblioteca de medios vacío en la imagen 1099 (SAI-1.jpg) en todos los idiomas existentes; la página renderizada pone como alt el título del producto de cada idioma (valor automático, no descriptivo). En images[].alt se ha guardado el alt renderizado.",
+    "Sin PDF: no hay enlaces a PDF ni en la descripción ni en la página renderizada (pdf_links=[]) y ningún PDF de pdf-index.json describe este producto (búsqueda de 'tiristor', 'fuente de alimentación', 'SAI', 'regulador' en pdf-text sin fichas dedicadas).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto. No hay H1 que revisar en EN/FR/DE porque la ficha sólo existe en ES."
+   ]
+  }
+ ]
+}

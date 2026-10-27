@@ -3,7 +3,7 @@
 // Datos: data/catalog/*.json (ver docs/ARQUITECTURA.md). Textos de interfaz: site/lib/i18n.mjs.
 
 import { esc, attr, blocksHtml, inlineHtml, mapLink, plain, fmtDate } from './lib/render.mjs';
-import { t, LANGS } from './lib/i18n.mjs';
+import { t, LANGS, countLabel, refLabel } from './lib/i18n.mjs';
 
 const NAMES = { es: 'Español', en: 'English', fr: 'Français', de: 'Deutsch' };
 const pick = (obj, lang) => (obj && (obj[lang] ?? obj.es)) ?? '';
@@ -104,19 +104,20 @@ export function productCard(ctx, p) {
   const nVar = p.variants.length;
   return `<a class="pcard" href="${attr(ctx.href(p.pathFor[lang]))}" data-pid="${p.id}" data-cats="${cats}" data-v="${(p.voltage_tags || []).join(',')}" data-q="${attr((name + ' ' + p.variants.map((v) => v.ref).join(' ')).toLowerCase())}">
   <div class="ph">${im ? `<img src="${attr(ctx.thumb(im))}" alt="${attr(pick(im.alt, lang) || name)}" loading="lazy" decoding="async" width="${im.w ? Math.min(480, im.w) : 480}" height="${im.h ? Math.round(Math.min(480, im.w || 480) * (im.h / (im.w || 1))) : 480}">` : ''}</div>
-  <div class="tx"><h3>${esc(name)}</h3>${vtags(ctx.site, p.voltage_tags, 3)}<div class="meta"><span>${nVar ? `${nVar} ${t('ref', lang).toLowerCase()}${nVar > 1 && lang !== 'de' ? (lang === 'fr' ? 's' : 's') : ''}` : ''}</span><span class="go">${t('view_product', lang)} →</span></div></div>
+  <div class="tx"><h3>${esc(name)}</h3>${vtags(ctx.site, p.voltage_tags, 3)}<div class="meta"><span>${nVar ? refLabel(nVar, lang) : ''}</span><span class="go">${t('view_product', lang)} →</span></div></div>
 </a>`;
 }
 
-/** árbol de categorías para la barra lateral: ramas plegables (<details>), se abre la rama de la categoría activa */
+/** árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
+ *  La rama de la categoría activa queda abierta (data-open). */
 export function catTree(ctx, activeId = null) {
   const lang = ctx.lang;
   const holds = (c) => c.id === activeId || c.children.some(holds);
   const link = (c) => `<a href="${attr(ctx.href(c.pathFor[lang]))}"${c.id === activeId ? ' aria-current="page"' : ''}><span>${esc(pick(c.name, lang))}</span><span class="n">${c.total}</span></a>`;
   const walk = (nodes) => `<ul>${nodes.map((c) => c.children.length
-    ? `<li><details${holds(c) ? ' open' : ''}><summary>${link(c)}</summary>${walk(c.children)}</details></li>`
+    ? `<li class="has-kids"${holds(c) ? ' data-open' : ''}>${link(c)}${walk(c.children)}</li>`
     : `<li>${link(c)}</li>`).join('')}</ul>`;
-  return `<nav aria-label="${attr(t('categories', lang))}"><div class="cat-tree">${walk(ctx.site.catTree)}</div></nav>`;
+  return `<nav aria-label="${attr(t('categories', lang))}"><div class="cat-tree" data-tree>${walk(ctx.site.catTree)}</div></nav>`;
 }
 
 /** tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original */
@@ -129,7 +130,7 @@ export function categoryCards(ctx) {
     const words = (pick(c.name, lang) || '').toLowerCase().split(/[^a-záéíóúñüçàâêèëîïôûäöß]+/).filter((w) => w.length > 4).map((w) => w.slice(0, 6));
     if (txt && words.length && !words.some((w) => txt.toLowerCase().includes(w))) txt = '';
     const im = c.image || site.prodById.get(c.firstProduct)?.images?.[0];
-    return `<a class="ccard" href="${attr(ctx.href(c.pathFor[lang]))}"><div class="ph">${im ? `<img src="${attr(ctx.thumb(im))}" alt="" loading="lazy" decoding="async">` : ''}</div><div class="tx"><h3>${esc(pick(c.name, lang))}</h3>${txt ? `<p>${esc(txt.slice(0, 140))}${txt.length > 140 ? '…' : ''}</p>` : ''}<span class="meta"><span>${c.total} ${t('results', lang)}</span><span class="go">${t('view_category', lang)} →</span></span></div></a>`;
+    return `<a class="ccard" href="${attr(ctx.href(c.pathFor[lang]))}"><div class="ph">${im ? `<img src="${attr(ctx.thumb(im))}" alt="" loading="lazy" decoding="async">` : ''}</div><div class="tx"><h3>${esc(pick(c.name, lang))}</h3>${txt ? `<p>${esc(txt.slice(0, 140))}${txt.length > 140 ? '…' : ''}</p>` : ''}<span class="meta"><span>${countLabel(c.total, lang)}</span><span class="go">${t('view_category', lang)} →</span></span></div></a>`;
   }).join('');
   return `<h2 class="sr-h">${t('categories', lang)}</h2><div class="ccards">${cards}</div>`;
 }
@@ -193,10 +194,11 @@ export function sectionsHtml(ctx, page) {
   return page.sections.map((s, i) => {
     if (s.form) return `<section class="sec alt"><div class="container split" style="align-items:start"><div class="prose">${blocksHtml(ctx, s.blocks.filter((b) => !(b.t === 'p' && /reCAPTCHA/i.test(b.h))), { demote: 0 })}</div>${contactForm(ctx, 'section')}</div></section>`;
     if (!s.blocks.length) return '';
-    const hasImg = s.blocks.some((b) => b.t === 'img');
+    const isPhoto = (b) => b.t === 'img' && !(b.img && b.img.w && b.img.w <= 160);   // los iconos pequeños se quedan dentro del texto
+    const hasImg = s.blocks.some(isPhoto);
     const hasText = s.blocks.some((b) => b.t === 'p' || b.t === 'h' || b.t === 'ul');
-    const imgs = s.blocks.filter((b) => b.t === 'img');
-    const rest = s.blocks.filter((b) => b.t !== 'img');
+    const imgs = s.blocks.filter(isPhoto);
+    const rest = s.blocks.filter((b) => !isPhoto(b));
     const bg = s.bg ? ` style="background-image:url('${attr(ctx.img(s.bg))}');background-size:cover;background-position:center"` : '';
     const dark = s.bg && !/formatorivac/.test(s.bg.src || '');
     if (hasImg && hasText) {
@@ -217,8 +219,12 @@ export function genericPage(ctx, page) {
   const body = { ...page, sections: page.sections.map((s) => ({ ...s, blocks: s.blocks.slice() })) };
   if (h1) { const k = body.sections.findIndex((s) => s.blocks.includes(h1) || s.blocks.some((b) => b.t === 'h' && b.x === h1.x)); const idx = body.sections[k].blocks.findIndex((b) => b.t === 'h' && b.x === h1.x); body.sections[k].blocks.splice(idx, 1); }
   const title = h1?.x || page.title;
+  // si la sección del título solo trae texto (sin fotos ni botones), ese texto pasa a ser el subtítulo del hero y la sección se retira
+  let lead = '';
+  const hs = body.sections.find((s) => s.blocks.length && s.bg);
+  if (hs && hs === body.sections.find((s) => s.blocks.length) && hs.blocks.every((b) => b.t === 'p')) { lead = hs.blocks.map((b) => `<p class="lead">${inlineHtml(ctx, b.h)}</p>`).join(''); hs.blocks = []; }
   return {
-    hero: `<section class="page-hero bp" ${heroBg ? `style="background-image:url('${attr(ctx.img(heroBg))}')"` : ''}><div class="container">${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: title }])}<h1>${esc(title)}</h1></div></section>`,
+    hero: `<section class="page-hero bp" ${heroBg ? `style="background-image:url('${attr(ctx.img(heroBg))}')"` : ''}><div class="container">${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: title }])}<h1>${esc(title)}</h1>${lead}</div></section>`,
     body: sectionsHtml(ctx, body),
     title,
   };
@@ -259,7 +265,7 @@ export function shopBody(ctx, { products, category = null, intro = [] }) {
     ${crumbsHtml}
     ${introHtml}
     ${category ? '' : categoryCards(ctx)}
-    <div class="toolbar"><button class="btn sm ghost filters-toggle" type="button" data-filters-toggle>☰ ${t('filters', lang)}</button><span class="count" data-count aria-live="polite">${products.length} ${t('results', lang)}</span></div>
+    <div class="toolbar"><button class="btn sm ghost filters-toggle" type="button" data-filters-toggle>☰ ${t('filters', lang)}</button><span class="count" data-count aria-live="polite">${countLabel(products.length, lang)}</span></div>
     <div class="pgrid" data-grid>${products.map((p) => productCard(ctx, p)).join('')}</div>
     <p class="notice" data-empty hidden>${t('no_results', lang)}</p>
   </div>

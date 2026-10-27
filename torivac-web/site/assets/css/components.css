@@ -173,12 +173,12 @@
 .post-meta{font-family:var(--font-mono);font-size:var(--fs-0);color:#d9d1ca;margin-top:var(--s-3)}
 .alts{display:flex;gap:var(--s-2);flex-wrap:wrap;font-size:var(--fs-0)}
 
-/* ---- árbol plegable ---- */
-.cat-tree details>summary{list-style:none;display:flex;align-items:center;cursor:pointer}
-.cat-tree details>summary::-webkit-details-marker{display:none}
-.cat-tree details>summary a{flex:1}
-.cat-tree details>summary::after{content:"+";font-family:var(--font-mono);color:var(--copper-strong);padding:0 6px;font-weight:700}
-.cat-tree details[open]>summary::after{content:"−"}
+/* ---- árbol plegable (botones añadidos por app.js; sin JS se ve completo) ---- */
+.cat-tree .row{display:flex;align-items:stretch}
+.cat-tree .row a{flex:1;min-width:0}
+.cat-tree .tgl{flex:none;width:32px;border:0;background:none;color:var(--copper-strong);font:700 16px/1 var(--font-mono);cursor:pointer}
+.cat-tree .tgl:hover{background:rgba(186,107,30,.1)}
+.cat-tree li.collapsed>ul{display:none}
 /* ---- tarjetas de categoría ---- */
 .sr-h{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 .ccards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:var(--s-4);margin-bottom:var(--s-7)}
@@ -207,3 +207,8 @@
 .ccard p,.ccard h3,.pcard h3{overflow-wrap:anywhere}
 .ccard h3{font-size:var(--fs-3);hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
 .ccard .tx{overflow:hidden}
+
+.prose img.icon{display:block;width:60px;height:60px;margin:var(--s-5) 0 var(--s-2)}
+.page-hero .lead{font-size:var(--fs-4);max-width:62ch;margin:var(--s-4) 0 0;color:#f2ece6}
+.sec.dark[style*="background-image"]{position:relative;isolation:isolate}
+.sec.dark[style*="background-image"]::before{content:"";position:absolute;inset:0;background:rgba(16,4,4,.78);z-index:-1}
