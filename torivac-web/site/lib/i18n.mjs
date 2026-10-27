@@ -56,6 +56,7 @@ export const T = {
   results: { es: 'productos', en: 'products', fr: 'produits', de: 'Produkte' },
   no_results: { es: 'No hay productos con estos filtros.', en: 'No products match these filters.', fr: 'Aucun produit ne correspond à ces filtres.', de: 'Keine Produkte für diese Filter.' },
   all: { es: 'Todos', en: 'All', fr: 'Tous', de: 'Alle' },
+  view_category: { es: 'Ver categoría', en: 'View category', fr: 'Voir la catégorie', de: 'Kategorie ansehen' },
   view_product: { es: 'Ver ficha', en: 'View product', fr: 'Voir la fiche', de: 'Produkt ansehen' },
   models: { es: 'Modelos y referencias', en: 'Models and references', fr: 'Modèles et références', de: 'Modelle und Artikelnummern' },
   models_hint: { es: 'Indica la cantidad de cada referencia y añádelas al presupuesto.', en: 'Enter the quantity of each reference and add them to your quote.', fr: 'Indiquez la quantité de chaque référence et ajoutez-les au devis.', de: 'Geben Sie die Menge je Artikelnummer ein und fügen Sie sie dem Angebot hinzu.' },

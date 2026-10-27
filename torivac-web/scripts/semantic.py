@@ -208,7 +208,24 @@ def _dedupe(blocks):
     return out
 
 
+import base64
+import urllib.parse
+
+
+def clean_wp_html(html):
+    """[WPBAKERY] Restos de shortcodes sin renderizar en la web original: [vc_raw_html]BASE64[/vc_raw_html] se decodifica (base64 → URL-decode → HTML);
+    el resto de [vc_*] / [/vc_*] se elimina. Así el texto real no se pierde ni se muestra como código."""
+    def raw(m):
+        try:
+            return urllib.parse.unquote(base64.b64decode(m.group(1)).decode("utf-8", "replace"))
+        except Exception:
+            return ""
+    html = re.sub(r"\[vc_raw_html[^\]]*\]([^\[]+)\[/vc_raw_html\]", raw, html or "")
+    return re.sub(r"\[/?vc_[^\]]*\]", "", html)
+
+
 def blocks_from_html(html):
+    html = clean_wp_html(html)
     soup = BeautifulSoup(html or "", "lxml")
     return blocks_from(soup.body or soup)
 

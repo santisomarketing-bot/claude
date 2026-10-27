@@ -85,7 +85,9 @@
    "pdf_links": [],
    "voltage_mentions": [],
    "power_mentions": [],
-   "variation_axes_hint": [],
+   "variation_axes_hint": [
+    "Especificación a medida que pida el cliente (longitud de eje, motorización especial en corriente continua o trifásica, elementos de visualización, tamaños, fijaciones): sin opciones cerradas ni referencias en la web; se tramita como consulta/presupuesto"
+   ],
    "orderable_items": [],
    "extra_sections": [
     {
@@ -138,6 +140,8 @@
      "og_title": "Variador de tensión a medida - Torivac",
      "og_description": "Cada cliente es único, y por lo tanto hay matices o variaciones de productos estándar que precisan. Fabricado por Torivac.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg",
+     "canonical": "https://grupotorivac.com/product/a-medida-2/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:04:32",
      "source": "rest/product.es.json yoast_head_json"
     },
@@ -147,6 +151,8 @@
      "og_title": "Tailor-made voltage regulator - Torivac",
      "og_description": "Each customer is unique, and therefore there are nuances or variations of standard products that they require.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg",
+     "canonical": "https://grupotorivac.com/product/a-medida-2/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:36",
      "source": "rest/product.en.json yoast_head_json"
     },
@@ -156,6 +162,8 @@
      "og_title": "Régulateur de tension sur mesure - Torivac",
      "og_description": "Chaque client est unique et il existe donc des nuances ou des variations des produits standard dont il a besoin.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg",
+     "canonical": "https://grupotorivac.com/product/a-medida-2/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:13",
      "source": "rest/product.fr.json yoast_head_json"
     },
@@ -165,6 +173,8 @@
      "og_title": "Maßgeschneiderter Spannungsregler - Torivac",
      "og_description": "Jeder Kunde ist einzigartig, und daher gibt es Nuancen oder Variationen von Standardprodukten, die er benötigt.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg",
+     "canonical": "https://grupotorivac.com/product/a-medida-2/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:14",
      "source": "rest/product.de.json yoast_head_json"
     }
@@ -174,8 +184,32 @@
     "fr": "ok",
     "de": "ok"
    },
-   "quality_flags": [],
-   "gaps": []
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_alt",
+    "texto_en_idioma_incorrecto",
+    "nombre_de_archivo_poco_descriptivo",
+    "relacionados_autorreferente",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "description vacía en es/en/fr/de: todo el texto está en short_description (3 párrafos); la página renderizada no añade secciones, tablas ni pestañas (solo el bloque de contacto).",
+    "Producto 'a medida' sin modelos, referencias, potencias ni tensiones: la web describe un servicio (eje más largo, motorizaciones especiales en corriente continua o trifásica, elementos de visualización, tamaños especiales, fijaciones) y remite a consulta. Sin ficha PDF ni tabla; orderable_items=[] (se tramita como consulta/presupuesto, no como referencia pedible).",
+    "Slug 'a-medida-2' (sufijo '-2'). Solo está asignado a la categoría 'Fabricación a medida' (id 28, slug 'fabricacion-a-media', con 'media' por 'medida'); la jerarquía hasta 'Variadores de tensión - Autotransformadores regulables' sale de product-map.json (category_path_es).",
+    "Imágenes: 3. La 1ª (id 9561, fichero '4Z0A9199.jpg', nombre de cámara) tiene alt 'Maßgeschneiderter Spannungsregler' (alemán) en los 4 idiomas, también en las páginas ES, EN y FR (texto en idioma incorrecto). Las otras dos tienen alt vacío en los 4 idiomas y la página renderizada pone el nombre del producto de cada idioma (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt de la biblioteca o, si está vacío, el renderizado.",
+    "Las imágenes 2 y 3 (controlador0-10.jpg, trifasico-servomotor.jpg) tienen ids distintos en EN (9115, 9203) y FR (9116, 9204); ES y DE usan 9114 y 9202 (mismos ficheros). Por el nombre de fichero y el título de medios ('Controller0-10', 'Servomotor triphasé') parecen un controlador 0-10 y un servomotor trifásico, no una variante a medida: comprobar con Torivac que son la imagen que se quiere mostrar.",
+    "Las páginas EN, FR y DE listan este mismo producto como único elemento de 'productos similares'; la página ES no muestra ese bloque.",
+    "Sin menciones numéricas de tensión ni de potencia (V, kV, VA, kVA, W) en nombre, descripción corta, página renderizada ni SEO de ningún idioma; el texto solo cita 'motorizaciones especiales en corriente continua o en trifásica' sin valores. voltage_mentions=[] y power_mentions=[].",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/a-medida-2/), no a la del propio idioma; los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el outline empieza en el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "SKU '58923a85804f' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "El bloque 'productos similares' de la página lo genera WooCommerce y cambia entre idiomas (otros productos de otros lotes); se conserva en extra_sections y no se usa para voltage_mentions/power_mentions."
+   ]
   },
   {
    "id_es": 310,
@@ -269,7 +303,10 @@
    ],
    "voltage_mentions": [],
    "power_mentions": [],
-   "variation_axes_hint": [],
+   "variation_axes_hint": [
+    "Potencia (VA) de cada uno de los dos variadores (no figura en la web; ver ficha técnica PDF)",
+    "Tensión (según el texto, de ella depende que se incorpore bobina de compensación; los valores no figuran en la web, ver ficha técnica PDF)"
+   ],
    "orderable_items": [],
    "extra_sections": [
     {
@@ -328,6 +365,8 @@
      "og_title": "Variador Doble manual - Torivac",
      "og_description": "Por medio de un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png",
+     "canonical": "https://grupotorivac.com/product/doble-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:04:35",
      "source": "rest/product.es.json yoast_head_json"
     },
@@ -337,6 +376,8 @@
      "og_title": "Double manual variator - Torivac",
      "og_description": "By means of a control button, the shaft is actuated, which in turn allows the rotation of the graphite cursor by selecting the desired tension.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png",
+     "canonical": "https://grupotorivac.com/product/doble-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:48",
      "source": "rest/product.en.json yoast_head_json"
     },
@@ -346,6 +387,8 @@
      "og_title": "Double variateur manuel - Torivac",
      "og_description": "L'axe est actionné au moyen d'un bouton de commande qui, à son tour, permet la rotation du chariot en graphite en sélectionnant la tension souhaitée.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png",
+     "canonical": "https://grupotorivac.com/product/doble-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:48",
      "source": "rest/product.fr.json yoast_head_json"
     },
@@ -355,6 +398,8 @@
      "og_title": "Doppelter manueller Variator - Torivac",
      "og_description": "Die Achse wird über einen Drehknopf bedient, der wiederum die Drehung des Graphitläufers ermöglicht.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png",
+     "canonical": "https://grupotorivac.com/product/doble-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:49",
      "source": "rest/product.de.json yoast_head_json"
     }
@@ -364,8 +409,30 @@
     "fr": "ok",
     "de": "ok"
    },
-   "quality_flags": [],
-   "gaps": []
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_alt",
+    "duplicado_posible",
+    "terminologia_dudosa",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "description vacía en los 4 idiomas: el texto está en short_description (2 párrafos + botón 'Ver ficha técnica'); la página renderizada no añade nada.",
+    "Texto casi idéntico al de 'Variador Monofásico manual' (866) y 'Variador Trifásico manual' (326): la primera frase solo cambia 'Por medio de' por 'Mediante'; aquí se añade 'Dependiendo de la tensión incorporamos bobina de compensación.' (sin indicar a partir de qué tensión). El texto no explica qué es un variador 'doble' (no menciona dos variadores); eso solo aparece en el PDF ('160 VA x 2 – 4000 VA x 2').",
+    "Sin tabla ni modelos en la web (spec_tables=[], orderable_items=[]). La ficha PDF enlazada (data/analysis/pdf-text/Variador-tension-doble-regulacion-manual/p001.txt, 1 pág., texto extraíble) contiene dos tablas por rango '160 VA x 2 – 4000 VA x 2' (Entrada/Input 230V, Salida/Output 230/250V) y '5000 VA x 2 – 11000 VA x 2' (Entrada/Input 230V, Salida/Output 230/250V), con columnas VA, intensidades In, dimensiones y peso. NO se incorpora aquí (fuente PDF, no web; sesión de PDFs) y no se ha verificado su coherencia interna.",
+    "Alt de la biblioteca de medios vacío en 1 de 1 imágenes (ES); la página renderizada pone como alt el nombre del producto de cada idioma (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
+    "Terminología EN/FR: EN usa 'tension' ('selecting the desired tension', 'Depending on the tension') en vez de 'voltage' y traduce 'cursor de grafito' como 'graphite cursor' aquí pero como 'graphite traveller' en 866 y 326; FR 'chariot en graphite'. DE 'Graphitläufer'. Se conservan.",
+    "Sin menciones numéricas de tensión ni de potencia (V, kV, VA, kVA, W) en nombre, descripción corta, página renderizada ni SEO de ningún idioma; solo referencias cualitativas ('la tensión deseada', 'bobina de compensación'). Las cifras (entrada 230 V, salida 230/250 V, VA x 2) solo existen en el PDF. voltage_mentions=[] y power_mentions=[].",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/doble-manual/), no a la del propio idioma; los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el outline empieza en el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "SKU '0e113f234788' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "El bloque 'productos similares' de la página lo genera WooCommerce y cambia entre idiomas (otros productos de otros lotes); se conserva en extra_sections y no se usa para voltage_mentions/power_mentions."
+   ]
   },
   {
    "id_es": 308,
@@ -459,7 +526,11 @@
    ],
    "voltage_mentions": [],
    "power_mentions": [],
-   "variation_axes_hint": [],
+   "variation_axes_hint": [
+    "Potencia (VA) de cada uno de los dos variadores (no figura en la web; ver ficha técnica PDF)",
+    "Tensión de entrada/salida (no figura en la web; ver ficha técnica PDF)",
+    "Modelo estabilizado con electrónica propia, precisión del 2 % (solo bajo demanda)"
+   ],
    "orderable_items": [],
    "extra_sections": [
     {
@@ -518,6 +589,8 @@
      "og_title": "Variador Doble motorizado - Torivac",
      "og_description": "Es utilizado fundamentalmente para regular los equipos a distancia ó para equipos estabilizadores. Fabricado por Torivac.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/product/doble-motorizado/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:04:35",
      "source": "rest/product.es.json yoast_head_json"
     },
@@ -527,6 +600,8 @@
      "og_title": "Dual motorized variator - Torivac",
      "og_description": "It is primarily used for remotely regulating equipment or for voltage stabilization equipment. Made by Torivac.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/product/doble-motorizado/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:49",
      "source": "rest/product.en.json yoast_head_json"
     },
@@ -536,6 +611,8 @@
      "og_title": "Double inverseur motorisé - Torivac",
      "og_description": "Il est principalement utilisé pour la commande à distance d'équipements ou pour la stabilisation d'équipements.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/product/doble-motorizado/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:50",
      "source": "rest/product.fr.json yoast_head_json"
     },
@@ -545,6 +622,8 @@
      "og_title": "Dubbele gemotoriseerde variator - Torivac",
      "og_description": "Het wordt voornamelijk gebruikt voor het op afstand regelen van apparatuur of voor spanningsstabilisatieapparatuur.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/product/doble-motorizado/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:50",
      "source": "rest/product.de.json yoast_head_json"
     }
@@ -552,10 +631,37 @@
    "translation_status": {
     "en": "ok",
     "fr": "ok",
-    "de": "ok"
+    "de": "wrong_language"
    },
-   "quality_flags": [],
-   "gaps": []
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_alt",
+    "duplicado_posible",
+    "typo",
+    "texto_en_idioma_incorrecto",
+    "terminologia_dudosa",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "description vacía en los 4 idiomas: el texto está en short_description (4 párrafos + botón 'Ver ficha técnica'); la página renderizada no añade nada.",
+    "DE en idioma equivocado (parcial): el nombre 'Dubbele gemotoriseerde variator' y la 1ª frase de la descripción corta ('Het wordt voornamelijk gebruikt voor het op afstand regelen van apparatuur of voor spanningsstabilisatieapparatuur.') están en neerlandés; el resto del texto está en alemán. También en neerlandés: título SEO y meta description DE, el alt renderizado de la imagen, la categoría DE 'Dubbele motor' (id 589) y el nombre cuando aparece como similar en las páginas DE de 310 y 866. El slug DE es el español 'doble-motorizado'. Se marca 'wrong_language' (el texto está completo pero el nombre y la frase inicial no sirven tal cual).",
+    "Texto ES casi idéntico al de 'Variador Monofásico motorizado' (867) y 'Variador Trifasico motorizado' (328): solo cambian 'ó' por 'o' y 'elevar o reducir' por 'elevar o bajar' (867), más la nota '(link a accesorios de control)' en 328.",
+    "Typo ES: 'a distancia ó para equipos estabilizadores' (ó con tilde); se repite en la meta description de Yoast ES. Se conserva.",
+    "Terminología dudosa: FR nombre 'Double inverseur motorisé' y texto 'l'arbre de l'onduleur'; DE texto 'die Wechselrichterwelle'. 'Inverseur', 'onduleur' y 'Wechselrichter' designan en electrotecnia otros aparatos (conmutador/inversor), no un variador de tensión; el producto hermano 310 se traduce 'Double variateur manuel' / 'Doppelter manueller Variator'. EN 'Dual motorized variator' frente a 'Double manual variator' (310): 'Dual' y 'Double' para el mismo 'Doble'. Las categorías padre heredan lo mismo (DE 'Doppelter Wechselrichter', id 583; FR 'Double onduleur', id 582).",
+    "'Bajo demanda se fabrican modelos estabilizados por medio de una electrónica propia con una precisión del 2%': el 2 % es precisión, no tensión ni potencia; no se cuenta en voltage_mentions/power_mentions.",
+    "Sin tabla ni modelos en la web (spec_tables=[], orderable_items=[]). La ficha PDF enlazada (data/analysis/pdf-text/Variador-tension-doble-regulacion-motorizada/p001.txt, 1 pág., texto extraíble) contiene dos tablas por rango '160 VA x 2 – 4000 VA x 2' (Entrada/Input 230V, Salida/Output 230/250V) y '5000 VA x 2 – 11000 VA x 2' (Entrada/Input 230V, Salida/Output 230/250V), con columnas VA, intensidades In, dimensiones y peso. NO se incorpora aquí (fuente PDF, no web; sesión de PDFs) y no se ha verificado su coherencia interna.",
+    "Alt de la biblioteca de medios vacío en 1 de 1 imágenes (ES); la página renderizada pone como alt el nombre del producto de cada idioma (valor automático, no descriptivo; en DE, neerlandés). En 'images[].alt' se ha guardado el alt renderizado.",
+    "Sin menciones numéricas de tensión ni de potencia (V, kV, VA, kVA, W) en nombre, descripción corta, página renderizada ni SEO de ningún idioma; solo referencias cualitativas ('elevar o reducir la tensión de salida', 'variadores de tensión de grandes potencias'). Las cifras solo existen en el PDF. voltage_mentions=[] y power_mentions=[].",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/doble-motorizado/), no a la del propio idioma; los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el outline empieza en el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "SKU '4e6209352a32' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "El bloque 'productos similares' de la página lo genera WooCommerce y cambia entre idiomas (otros productos de otros lotes); se conserva en extra_sections y no se usa para voltage_mentions/power_mentions."
+   ]
   },
   {
    "id_es": 866,
@@ -649,7 +755,10 @@
    ],
    "voltage_mentions": [],
    "power_mentions": [],
-   "variation_axes_hint": [],
+   "variation_axes_hint": [
+    "Potencia (VA) (no figura en la web; ver ficha técnica PDF)",
+    "Tensión de entrada/salida (no figura en la web; ver ficha técnica PDF)"
+   ],
    "orderable_items": [],
    "extra_sections": [
     {
@@ -708,6 +817,8 @@
      "og_title": "Variador Monofásico manual - Torivac",
      "og_description": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg",
+     "canonical": "https://grupotorivac.com/product/monofasico-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:04:36",
      "source": "rest/product.es.json yoast_head_json"
     },
@@ -717,6 +828,8 @@
      "og_title": "Single-phase manual variable speed drive - Torivac",
      "og_description": "A control knob is used to operate the shaft, which in turn allows rotation of the graphite traveller by selecting the desired tension at any given moment.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg",
+     "canonical": "https://grupotorivac.com/product/monofasico-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:29",
      "source": "rest/product.en.json yoast_head_json"
     },
@@ -726,6 +839,8 @@
      "og_title": "Variateur de vitesse manuel monophasé - Torivac",
      "og_description": "L'axe est actionné au moyen d'un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg",
+     "canonical": "https://grupotorivac.com/product/monofasico-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:13",
      "source": "rest/product.fr.json yoast_head_json"
     },
@@ -735,6 +850,8 @@
      "og_title": "Einphasiger manueller Antrieb mit variabler Geschwindigkeit - Torivac",
      "og_description": "Die Achse wird über einen Drehknopf bedient, mit dem der Graphitläufer gedreht werden kann. Hergestellt von Torivac.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg",
+     "canonical": "https://grupotorivac.com/product/monofasico-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:15",
      "source": "rest/product.de.json yoast_head_json"
     }
@@ -744,8 +861,31 @@
     "fr": "ok",
     "de": "ok"
    },
-   "quality_flags": [],
-   "gaps": []
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_alt",
+    "duplicado_posible",
+    "terminologia_dudosa",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "description vacía en los 4 idiomas: el texto está en short_description (1 párrafo + botón 'Ver ficha técnica'); la página renderizada no añade nada.",
+    "El texto ES es idéntico, carácter a carácter, al de 'Variador Trifásico manual' (326) y no menciona 'monofásico' ni tensión alguna; el EN y el FR de ambos también son idénticos. Solo el nombre y el PDF distinguen los dos productos. Muy parecido además al de 310 ('Por medio de' / 'Mediante').",
+    "Traducción conceptualmente errónea del nombre: EN 'Single-phase manual variable speed drive', FR 'Variateur de vitesse manuel monophasé' y DE 'Einphasiger manueller Antrieb mit variabler Geschwindigkeit' traducen 'variador (de tensión)' como variador de velocidad, mientras el texto habla de seleccionar la tensión con el cursor de grafito. El hermano motorizado 867 usa 'inverter' / 'inverseur' / 'Wechselrichter'. Las categorías padre heredan lo mismo (EN 'Single Phase Inverters' id 536, FR 'Onduleurs monophasés' id 534, DE 'Einphasen-Wechselrichter' id 557). Se conserva tal cual.",
+    "El slug es el español 'monofasico-manual' en los 4 idiomas (sin traducir); el nombre ES ('Variador Monofásico manual') coincide con la categoría 'Variadores Monofasicos' (id 37, sin tilde).",
+    "Sin tabla ni modelos en la web (spec_tables=[], orderable_items=[]). La ficha PDF enlazada (data/analysis/pdf-text/1_-Variadores-de-tension_monofasicomanual/p001.txt, 1 pág., texto extraíble) contiene dos tablas por rango '160 VA – 4000 VA' (Entrada/Input 230V, Salida/Output 230/250V) y '5000 VA – 11000 VA' (Entrada/Input 230V, Salida/Output 230/250V), con columnas VA, intensidades In, dimensiones y peso. NO se incorpora aquí (fuente PDF, no web; sesión de PDFs) y no se ha verificado su coherencia interna.",
+    "Alt de la biblioteca de medios vacío en 1 de 1 imágenes (ES); la página renderizada pone como alt el nombre del producto de cada idioma (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
+    "Sin menciones numéricas de tensión ni de potencia (V, kV, VA, kVA, W) en nombre, descripción corta, página renderizada ni SEO de ningún idioma; solo 'la tensión deseada'. Las cifras (entrada 230 V, salida 230/250 V, 160-11000 VA) solo existen en el PDF. voltage_mentions=[] y power_mentions=[].",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/monofasico-manual/), no a la del propio idioma; los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el outline empieza en el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "SKU '12bdc8ede58d' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "El bloque 'productos similares' de la página lo genera WooCommerce y cambia entre idiomas (otros productos de otros lotes); se conserva en extra_sections y no se usa para voltage_mentions/power_mentions."
+   ]
   },
   {
    "id_es": 867,
@@ -839,7 +979,11 @@
    ],
    "voltage_mentions": [],
    "power_mentions": [],
-   "variation_axes_hint": [],
+   "variation_axes_hint": [
+    "Potencia (VA) (no figura en la web; ver ficha técnica PDF)",
+    "Tensión de entrada/salida (no figura en la web; ver ficha técnica PDF)",
+    "Modelo estabilizado con electrónica propia, precisión del 2 % (solo bajo demanda)"
+   ],
    "orderable_items": [],
    "extra_sections": [
     {
@@ -898,6 +1042,8 @@
      "og_title": "Variador Monofásico motorizado - Torivac",
      "og_description": "Es utilizado fundamentalmente para regular los equipos a distancia o para equipos estabilizadores. Fabricado por Torivac.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/MONOFASICO-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/product/monofasico-motorizado/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:04:37",
      "source": "rest/product.es.json yoast_head_json"
     },
@@ -907,6 +1053,8 @@
      "og_title": "Single-phase motorized inverter - Torivac",
      "og_description": "It is mainly used to regulate equipment remotely or for stabilizing equipment. It is also recommended to motorize high power voltage variators.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/MONOFASICO-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/product/monofasico-motorizado/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:31",
      "source": "rest/product.en.json yoast_head_json"
     },
@@ -916,6 +1064,8 @@
      "og_title": "Inverseur motorisé monophasé - Torivac",
      "og_description": "Il est principalement utilisé pour réguler des équipements à distance ou pour stabiliser des équipements.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/MONOFASICO-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/product/monofasico-motorizado/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:11",
      "source": "rest/product.fr.json yoast_head_json"
     },
@@ -925,6 +1075,8 @@
      "og_title": "Einphasiger motorisierter Wechselrichter - Torivac",
      "og_description": "Es wird hauptsächlich zur Fernsteuerung von Geräten oder zur Stabilisierung von Geräten verwendet. Hergestellt von Torivac.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/MONOFASICO-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/product/monofasico-motorizado/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:12",
      "source": "rest/product.de.json yoast_head_json"
     }
@@ -934,8 +1086,32 @@
     "fr": "ok",
     "de": "ok"
    },
-   "quality_flags": [],
-   "gaps": []
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_alt",
+    "duplicado_posible",
+    "terminologia_dudosa",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "description vacía en los 4 idiomas: el texto está en short_description (4 párrafos + botón 'Ver ficha técnica'); la página renderizada no añade nada.",
+    "Texto ES casi idéntico al de 308 y 328: aquí 'elevar o bajar la tensión de salida' (308 y 328: 'elevar o reducir'). Nada distingue lo monofásico en el texto; solo el nombre y el PDF.",
+    "Terminología dudosa: EN 'Single-phase motorized inverter', FR 'Inverseur motorisé monophasé' (texto: 'l'arbre de l'onduleur') y DE 'Einphasiger motorisierter Wechselrichter' (texto: 'Wechselrichterwelle') traducen 'variador' como inversor/conmutador, concepto distinto del variador de tensión; el hermano manual 866 se traduce como 'variable speed drive' / 'Variateur de vitesse' / 'Antrieb mit variabler Geschwindigkeit'. Categorías padre: EN 'Single Phase Inverters', FR 'Onduleurs monophasés', DE 'Einphasen-Wechselrichter'. Se conserva tal cual.",
+    "El slug es el español 'monofasico-motorizado' en los 4 idiomas (sin traducir).",
+    "'Bajo demanda se fabrican modelos estabilizados por medio de una electrónica propia con una precisión del 2%': el 2 % es precisión, no tensión ni potencia; no se cuenta en voltage_mentions/power_mentions.",
+    "Sin tabla ni modelos en la web (spec_tables=[], orderable_items=[]). La ficha PDF enlazada (data/analysis/pdf-text/1_-Variadores-de-tension_monofasicomotorizado/p001.txt, 1 pág., texto extraíble) contiene dos tablas por rango '160 VA – 4000 VA' (Entrada/Input 230V, Salida/Output 230/250V) y '5000 VA – 11000 VA' (Entrada/Input 230V, Salida/Output 230/250V), con columnas VA, intensidades In, dimensiones y peso. NO se incorpora aquí (fuente PDF, no web; sesión de PDFs) y no se ha verificado su coherencia interna.",
+    "Alt de la biblioteca de medios vacío en 1 de 1 imágenes (ES); la página renderizada pone como alt el nombre del producto de cada idioma (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
+    "Sin menciones numéricas de tensión ni de potencia (V, kV, VA, kVA, W) en nombre, descripción corta, página renderizada ni SEO de ningún idioma; solo referencias cualitativas ('elevar o bajar la tensión de salida', 'grandes potencias'). Las cifras solo existen en el PDF. voltage_mentions=[] y power_mentions=[].",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/monofasico-motorizado/), no a la del propio idioma; los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el outline empieza en el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "SKU '4f2cbb78e2ed' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "El bloque 'productos similares' de la página lo genera WooCommerce y cambia entre idiomas (otros productos de otros lotes); se conserva en extra_sections y no se usa para voltage_mentions/power_mentions."
+   ]
   },
   {
    "id_es": 326,
@@ -1017,7 +1193,10 @@
    ],
    "voltage_mentions": [],
    "power_mentions": [],
-   "variation_axes_hint": [],
+   "variation_axes_hint": [
+    "Potencia (VA) (no figura en la web; ver ficha técnica PDF)",
+    "Tensión de entrada/salida trifásica (no figura en la web; ver ficha técnica PDF)"
+   ],
    "orderable_items": [],
    "extra_sections": [
     {
@@ -1058,6 +1237,8 @@
      "og_title": "Variador Trifásico manual - Torivac",
      "og_description": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/TRIFASICO-MANUAL-scaled-1.jpg",
+     "canonical": "https://grupotorivac.com/product/trifasico-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:04:36",
      "source": "rest/product.es.json yoast_head_json"
     },
@@ -1067,6 +1248,8 @@
      "og_title": "Manual Three-Phase Inverter - Torivac",
      "og_description": "A control knob is used to operate the shaft, which in turn allows rotation of the graphite traveller by selecting the desired tension at any given moment.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/TRIFASICO-MANUAL-scaled-1.jpg",
+     "canonical": "https://grupotorivac.com/product/trifasico-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:51",
      "source": "rest/product.en.json yoast_head_json"
     },
@@ -1076,6 +1259,8 @@
      "og_title": "Onduleur triphasé manuel - Torivac",
      "og_description": "L'axe est actionné au moyen d'un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/TRIFASICO-MANUAL-scaled-1.jpg",
+     "canonical": "https://grupotorivac.com/product/trifasico-manual/",
+     "focus_keyword": null,
      "modified": "2026-10-16T12:06:51",
      "source": "rest/product.fr.json yoast_head_json"
     },
@@ -1084,10 +1269,38 @@
    "translation_status": {
     "en": "ok",
     "fr": "ok",
-    "de": "ok"
+    "de": "missing"
    },
-   "quality_flags": [],
-   "gaps": []
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_traduccion",
+    "sin_modelos",
+    "sin_alt",
+    "duplicado_posible",
+    "terminologia_dudosa",
+    "categorias_incompletas",
+    "relacionados_autorreferente",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "Sin traducción DE en la web: coverage.json lo lista en 'missing_translation_of_es_products.de' (junto a 16633, 977, 976, 974 y 972); product-map.json no tiene translations.de y pages-index.json no tiene página DE. names/urls/ids/textos/seo de = null y translation_status.de='missing'. (El texto ES de este producto es idéntico al de 866, que sí tiene versión DE.)",
+    "description vacía en es/en/fr: el texto está en short_description (1 párrafo + botón 'Ver ficha técnica'); la página renderizada no añade nada.",
+    "El texto ES es idéntico, carácter a carácter, al de 'Variador Monofásico manual' (866) y no menciona 'trifásico' ni tensión alguna; EN y FR también son idénticos a los de 866. Solo el nombre y el PDF distinguen los dos productos.",
+    "Categorías incompletas: la Store API solo asigna la subcategoría 'Manual' (id 41, slug 'manual-trifasico'); en EN (id 545) y FR (id 542) también solo 'Manual'. No está asignado a 'Variadores Trifásicos' (id 40) ni a la categoría raíz (id 19), a diferencia de 328; la jerarquía completa sale de product-map.json (category_path_es).",
+    "Terminología dudosa: EN 'Manual Three-Phase Inverter' y FR 'Onduleur triphasé manuel' traducen 'variador' como inversor/SAI, concepto distinto del variador de tensión; EN/FR del texto usan 'graphite traveller' / 'chariot en graphite'. Se conserva tal cual.",
+    "Las páginas EN y FR listan este mismo producto como único elemento de 'productos similares'; la página ES no muestra ese bloque. El PDF solo se enlaza desde ES, EN y FR (found_in=['es','en','fr']).",
+    "Sin tabla ni modelos en la web (spec_tables=[], orderable_items=[]). La ficha PDF enlazada (data/analysis/pdf-text/Variador-tension-trifasico-regulacion-manual/p001.txt, 1 pág., texto extraíble) contiene dos tablas por rango '480 VA – 12000 VA' (Entrada/Input 400V, Salida/Output 400/430V) y '15000 VA – 33000 VA' (Entrada/Input 400 V, Salida/Output 400/430V), con columnas VA, intensidades In, dimensiones y peso. NO se incorpora aquí (fuente PDF, no web; sesión de PDFs) y no se ha verificado su coherencia interna.",
+    "Alt de la biblioteca de medios vacío en 1 de 1 imágenes (ES); la página renderizada pone como alt el nombre del producto de cada idioma (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado. El fichero se llama 'TRIFASICO-MANUAL-scaled-1.jpg' (sufijo '-scaled-1' de WordPress).",
+    "Sin menciones numéricas de tensión ni de potencia (V, kV, VA, kVA, W) en nombre, descripción corta, página renderizada ni SEO de ningún idioma; solo 'la tensión deseada'. Las cifras (entrada 400 V, salida 400/430 V, 480-33000 VA) solo existen en el PDF. voltage_mentions=[] y power_mentions=[].",
+    "SEO: en las páginas EN y FR el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/trifasico-manual/), no a la del propio idioma; los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls' y el canonical de Yoast de cada idioma en seo.<idioma>.canonical.",
+    "Las páginas EN y FR no renderizan ningún <h1> (el outline empieza en el h3 'Products' / 'Produits' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "SKU '6d6ab80b4cb5' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Plantilla de página con textos mal traducidos (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'.",
+    "El bloque 'productos similares' de la página lo genera WooCommerce y cambia entre idiomas (otros productos de otros lotes); se conserva en extra_sections y no se usa para voltage_mentions/power_mentions."
+   ]
   },
   {
    "id_es": 328,
@@ -1181,7 +1394,12 @@
    ],
    "voltage_mentions": [],
    "power_mentions": [],
-   "variation_axes_hint": [],
+   "variation_axes_hint": [
+    "Potencia (VA) (no figura en la web; ver ficha técnica PDF)",
+    "Tensión de entrada/salida trifásica (no figura en la web; ver ficha técnica PDF)",
+    "Modelo estabilizado con electrónica propia, precisión del 2 % (solo bajo demanda)",
+    "Accesorios de control (el texto remite a ellos con '(link a accesorios de control)', sin enlace real)"
+   ],
    "orderable_items": [],
    "extra_sections": [
     {
@@ -1240,6 +1458,8 @@
      "og_title": "Variador Trifasico motorizado - Torivac",
      "og_description": "los variadores trifásicos motorizados de Torivac controlan la velocidad de los motores de inducción monofásicos y trifásicos.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/product/variador-trifasico-motorizado/",
+     "focus_keyword": "variador trifásico motorizado",
      "modified": "2026-10-14T07:04:01",
      "source": "rest/product.es.json yoast_head_json"
     },
@@ -1249,6 +1469,8 @@
      "og_title": "Motorized three-phase inverter - Torivac",
      "og_description": "Torivac's three-phase motorized drives control the speed of single-phase and three-phase induction motors.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/en/product/variador-trifasico-motorizado/",
+     "focus_keyword": "three-phase motorized drive",
      "modified": "2026-10-16T12:06:02",
      "source": "rest/product.en.json yoast_head_json"
     },
@@ -1258,6 +1480,8 @@
      "og_title": "Inverseur motorisé triphasé - Torivac",
      "og_description": "Les onduleurs motorisés triphasés de Torivac contrôlent la vitesse des moteurs à induction monophasés et triphasés.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/fr/product/variador-trifasico-motorizado/",
+     "focus_keyword": "variateur de vitesse motorisé triphasé",
      "modified": "2026-10-16T12:06:24",
      "source": "rest/product.fr.json yoast_head_json"
     },
@@ -1267,6 +1491,8 @@
      "og_title": "Dreiphasiger motorisierter Wechselrichter - Torivac",
      "og_description": "Die dreiphasigen Motorumrichter von Torivac steuern die Drehzahl von einphasigen und dreiphasigen Induktionsmotoren.",
      "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg",
+     "canonical": "https://grupotorivac.com/de/product/variador-trifasico-motorizado/",
+     "focus_keyword": "Dreiphasen-Motorantrieb mit variabler Geschwindigkeit",
      "modified": "2026-10-16T12:06:25",
      "source": "rest/product.de.json yoast_head_json"
     }
@@ -1276,8 +1502,36 @@
     "fr": "ok",
     "de": "ok"
    },
-   "quality_flags": [],
-   "gaps": []
+   "quality_flags": [
+    "sin_modelos",
+    "duplicado_posible",
+    "typo",
+    "texto_interno_visible",
+    "contenido_por_verificar",
+    "terminologia_dudosa",
+    "texto_en_idioma_incorrecto",
+    "descripcion_no_renderizada_en_traduccion",
+    "sin_h1_en_traducciones",
+    "sku_no_comercial"
+   ],
+   "gaps": [
+    "Única descripción larga del lote (3.809 caracteres HTML en ES; EN 3.491, FR 4.232, DE 4.004). Estructura: H2 'Aportes del variador trifásico motorizado Torivac' y tres H3 ('¿Para qué sirve un variador de trifásico motorizado?', 'Aporta estabilidad y una mejor sincronización en procesos operativos de grandes industrias energéticas', 'Torivac es una compañía especialista en diseño y fabricación de transformadores toroidales y variadores de tensión'). En description_text todos los encabezados van como '## ' (se pierde h2/h3; el outline original está en data/analysis/pages/es/product__variador-trifasico-motorizado.json). Las líneas de '¿Para qué sirve...?' son líneas separadas por <br>, no una lista <ul>.",
+    "Las páginas renderizadas EN, FR y DE NO muestran la descripción larga (solo la corta y el bloque de contacto, sin H2/H3 del producto), aunque la Store API y la REST la devuelven en los 3 idiomas; la página ES sí la muestra. El texto se conserva íntegro desde la Store API. Revisar si la omisión es intencionada (plantilla de traducción distinta) antes de dar por buena la versión pública.",
+    "Texto interno visible en la descripción corta de los 4 idiomas: '(link a accesorios de control)' / '(link to control accessories)' / '(lien vers les accessoires de contrôle)' / '(Link zum Kontrollzubehör)'. Es una nota de edición sin enlace real; se conserva tal cual.",
+    "Typos ES (se conservan): nombre 'Variador Trifasico motorizado' sin tilde (el hermano 326 lleva 'Trifásico'); 'variador de trifásico motorizado' (H3 y título del bloque); 'garantiza la fabricación dispositivos' (falta 'de'); 'Fuentes de alimentación senoidal de gran potencia' (concordancia). La meta description de Yoast ES empieza en minúscula ('los variadores trifásicos motorizados de Torivac controlan la velocidad…').",
+    "Contenido por verificar (no se corrige): el texto describe el aparato como 'ubicado entre el motor y la fuente de tensión del equipo', que 'alimenta, regula y controla un motor de corriente alterna' con 'eficiencia entre el 95% y 98%', y la meta description de ES/EN/FR/DE dice que 'controlan la velocidad de los motores de inducción monofásicos y trifásicos' (palabras clave de Yoast: EN 'three-phase motorized drive', FR 'variateur de vitesse motorisé triphasé', DE 'Dreiphasen-Motorantrieb mit variabler Geschwindigkeit'). Eso describe un variador de velocidad, mientras que la ficha PDF se titula 'Variador tensión trifásico regulación motorizada' y el resto del lote regula tensión. Confirmar con Torivac antes de reutilizar esas frases. El 95 %/98 % es eficiencia, no tensión; el 2 % es precisión.",
+    "Terminología dudosa en las traducciones: nombre EN 'Motorized three-phase inverter' (texto: 'inverter' y 'drive'), FR 'Inverseur motorisé triphasé' (texto: 'onduleur', 'entraînement', 'variateur'), DE 'Dreiphasiger motorisierter Wechselrichter' (texto: 'Motorwechselrichter', 'Dreiphasenantrieb'). Mezclan inversor, accionamiento y variador. Se conserva tal cual.",
+    "El slug 'variador-trifasico-motorizado' es el mismo (español) en los 4 idiomas, y es el único producto del lote cuyo canonical de Yoast en EN/FR/DE es la URL del propio idioma (los demás apuntan a la URL española).",
+    "Imagen (id 1071, TRIFASICO-MOTORIZADO.jpg): el alt de la biblioteca es el mismo texto español de 143 caracteres ('Variador de tensión trifásico Torivac, diseñado para maquinaria pesada, reduciendo el consumo eléctrico y optimizando el rendimiento del motor.') en los 4 idiomas, y las páginas EN/FR/DE lo muestran en español (texto en idioma incorrecto). Es el único alt descriptivo del lote.",
+    "La ficha PDF enlazada es 'Variador-tension-trifasico-regulacion-motorizada-1.pdf' (con '-1'); pdf-index.json la marca duplicada byte a byte de 'Variador-tension-trifasico-regulacion-motorizada.pdf', que la web no enlaza.",
+    "Sin tabla ni modelos en la web (spec_tables=[], orderable_items=[]). La ficha PDF enlazada (data/analysis/pdf-text/Variador-tension-trifasico-regulacion-motorizada-1/p001.txt, 1 pág., texto extraíble) contiene dos tablas por rango '480 VA – 12000 VA' (Entrada/Input 400V, Salida/Output 400/430V) y '15000 VA – 33000 VA' (Entrada/Input 400V, Salida/Output 400/430V), con columnas VA, intensidades In, dimensiones y peso. NO se incorpora aquí (fuente PDF, no web; sesión de PDFs) y no se ha verificado su coherencia interna. pdf-index.json marca como duplicado byte a byte Variador-tension-trifasico-regulacion-motorizada.pdf.",
+    "Sin menciones numéricas de tensión ni de potencia (V, kV, VA, kVA, W) en nombre, descripción corta, descripción, página renderizada ni SEO de ningún idioma (solo 95 %, 98 % y 2 %, que son eficiencia y precisión); en la descripción solo hay referencias cualitativas ('tensión de salida', 'sub o sobre tensión', 'gran potencia'). Las cifras (entrada 400 V, salida 400/430 V, 480-33000 VA) solo existen en el PDF. voltage_mentions=[] y power_mentions=[].",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el outline empieza en el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "SKU 'c7c4551cd46b' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
+    "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "El bloque 'productos similares' de la página lo genera WooCommerce y cambia entre idiomas (otros productos de otros lotes); se conserva en extra_sections y no se usa para voltage_mentions/power_mentions."
+   ]
   }
  ]
 }

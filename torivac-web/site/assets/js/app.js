@@ -21,6 +21,9 @@
   }
   TV.thumbSrc = thumbSrc;
 
+  // ───────────────────────────────────────── [EMBED] ?embed=1: la página se muestra dentro del panel (sin cabecera, pie ni flotantes)
+  if (/[?&]embed=1/.test(location.search)) document.documentElement.classList.add('embed');
+
   // ───────────────────────────────────────── [MENU]
   var header = $('#site-header'), mbtn = $('[data-menu-toggle]');
   if (mbtn) mbtn.addEventListener('click', function () { var o = header.classList.toggle('open'); mbtn.setAttribute('aria-expanded', o); });

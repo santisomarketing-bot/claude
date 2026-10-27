@@ -1,0 +1,4101 @@
+{
+ "job": "p09-catalogo-en",
+ "documents": [
+  {
+   "file": "Torivac_2024_EN.pdf",
+   "pages": [
+    29,
+    41
+   ],
+   "doc_type": "catalogo",
+   "language": "en",
+   "title": "Torivac Catalogue 2024 (EN) - PDF pp.29-41: binding posts, banana sockets & fuse holders; iron powder toroidal buffers; toroidal cores; toroidal transformers (standard by order, TT, TE and TCI series). Printed page numbers: 39-40, 20-21, 23, 14-18. Cross-checked against the ES catalogue Torivac_2024.pdf pp.15-19, 21-22, 24 and 40-41.",
+   "families": [
+    {
+     "family": "Binding Post, Banana Sockets & Fuse Holders",
+     "series": null,
+     "page": 29,
+     "description": "Section 'BINDING POST, BANANA SOCKETS & FUSE HOLDERS'. Six products without descriptive text or table, each with title, photograph and dimensioned drawing: BPB - 30 A / 230V., HB - 4 and HR - 4 on this page; HBS - 4, HSR - 4 and PF - 15 on the next page.",
+     "general_specs": {
+      "Unit of the dimensions": "not printed in the PDF (the drawings give figures only; mm is not assumed)",
+      "Product titles (as printed)": "BPB - 30 A / 230V.; HB - 4; HR - 4; HBS - 4; HSR - 4; PF - 15",
+      "Drawing label 'ROSCA' (Spanish word in the EN catalogue)": "BPB 4/0,7; HB - 4 and HR - 4 8/0,75; HBS - 4 and PF - 15 12,50/0,75; HSR - 4 none printed",
+      "Source of the figures": "dimensioned drawings only (image); they are not in the PDF text layer"
+     },
+     "models": [
+      {
+       "reference": "BPB - 30 A / 230V.",
+       "page": 29,
+       "specs": {
+        "Title (as printed)": "BPB - 30 A / 230V.",
+        "Current (in title)": "30 A",
+        "Voltage (in title)": "230V",
+        "Top horizontal dimension (drawing)": "14",
+        "Vertical dimension of the upper part (drawing)": "15",
+        "Intermediate vertical dimension (drawing)": "4",
+        "Overall vertical dimension (drawing)": "36,5",
+        "ROSCA (drawing)": "4/0,7"
+       },
+       "raw_row": "BPB - 30 A / 230V. | 14 | 15 | 4 | 36,5 | ROSCA 4/0,7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HB - 4",
+       "page": 29,
+       "specs": {
+        "Outer Ø dimension (drawing)": "11",
+        "Inner Ø dimension (drawing)": "4",
+        "Overall vertical dimension (drawing)": "24,1",
+        "ROSCA (drawing)": "8/0,75"
+       },
+       "raw_row": "HB - 4 | Ø 11 | Ø 4 | 24,1 | ROSCA 8/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HR - 4",
+       "page": 29,
+       "specs": {
+        "Outer Ø dimension (drawing)": "11",
+        "Inner Ø dimension (drawing)": "4",
+        "Overall vertical dimension (drawing)": "25",
+        "ROSCA (drawing)": "8/0,75"
+       },
+       "raw_row": "HR - 4 | Ø 11 | Ø 4 | 25 | ROSCA 8/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HBS - 4",
+       "page": 30,
+       "specs": {
+        "Top horizontal dimension (drawing, printed without Ø symbol)": "15",
+        "Inner Ø dimension (drawing)": "4",
+        "Flange vertical dimension (drawing)": "2,1",
+        "Overall vertical dimension (drawing)": "24,6",
+        "ROSCA (drawing)": "12,50/0,75"
+       },
+       "raw_row": "HBS - 4 | 15 | Ø 4 | 2,1 | 24,6 | ROSCA 12,50/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HSR - 4",
+       "page": 30,
+       "specs": {
+        "Top horizontal dimension (drawing, printed without Ø symbol)": "15",
+        "Inner Ø dimension (drawing)": "4",
+        "Flange vertical dimension (drawing)": "2,1",
+        "Overall vertical dimension (drawing)": "25,5"
+       },
+       "raw_row": "HSR - 4 | 15 | Ø 4 | 2,1 | 25,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PF - 15",
+       "page": 30,
+       "specs": {
+        "Ø dimension (drawing)": "16",
+        "Cap vertical dimension (drawing)": "10",
+        "Overall vertical dimension (drawing)": "32",
+        "ROSCA (drawing)": "12,50/0,75"
+       },
+       "raw_row": "PF - 15 | Ø 16 | 10 | 32 | ROSCA 12,50/0,75",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Iron Powder Toroidal Buffers (dimensions)",
+     "series": null,
+     "page": 32,
+     "description": "The iron powder toroidal buffers are the ideal inductive components for the design and manufacture of DC/DC converters or switched AC/DC sources as well as for line filter applications, electromagnetic interference filters and low-frequency buffers range. The family is comprised of 27 different inductance values that correspond to the standardised values of passive electronic components, and of 11different cores, thus obtaining 297 different references which allow for all design requirements to be covered in most cases. We can manufacture other special inductive values even othertypes of core with different sizes, in specifications of each customer.",
+     "general_specs": {
+      "Main characteristics": "Low dispersion of the magnetic field, limiting the radiated fields to the minimum; High efficiency, allowing the filtration or storage of energy in a minimum space; Low loss level over the entire range of operating frequencies; High stability with different temperatures with a margin of –50ºC to +90ºC; High frequency range from 10Khz to 150Khz",
+      "Temperature margin": "–50ºC to +90ºC",
+      "Frequency range": "10Khz to 150Khz",
+      "Inductance values": "27 different inductance values (standardised values of passive electronic components)",
+      "Cores": "11different cores",
+      "References": "297 different references",
+      "Special models": "other special inductive values and other types of core with different sizes, per customer specification",
+      "Applications": "DC/DC converters, switched AC/DC sources, line filter applications, electromagnetic interference filters, low-frequency buffers range",
+      "Table header": "Dimensiones (mm.) / Dimensions (mm.); columns Referencia / Reference, D, A, L",
+      "Drawings (image)": "HORIZONTAL / H (dimensions A and L) and VERTICAL / V (dimensions D and L)",
+      "L (mm)": "30 in every row of the table"
+     },
+     "models": [
+      {
+       "reference": "1305",
+       "page": 32,
+       "specs": {
+        "D (mm)": "15",
+        "A (mm)": "7",
+        "L (mm)": "30"
+       },
+       "raw_row": "1305 15 7 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1307",
+       "page": 32,
+       "specs": {
+        "D (mm)": "16",
+        "A (mm)": "10",
+        "L (mm)": "30"
+       },
+       "raw_row": "1307 16 10 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1706",
+       "page": 32,
+       "specs": {
+        "D (mm)": "20",
+        "A (mm)": "8",
+        "L (mm)": "30"
+       },
+       "raw_row": "1706 20 8 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2006",
+       "page": 32,
+       "specs": {
+        "D (mm)": "23",
+        "A (mm)": "9",
+        "L (mm)": "30"
+       },
+       "raw_row": "2006 23 9 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2010",
+       "page": 32,
+       "specs": {
+        "D (mm)": "23",
+        "A (mm)": "14",
+        "L (mm)": "30"
+       },
+       "raw_row": "2010 23 14 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2408",
+       "page": 32,
+       "specs": {
+        "D (mm)": "27",
+        "A (mm)": "11",
+        "L (mm)": "30"
+       },
+       "raw_row": "2408 27 11 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2711",
+       "page": 32,
+       "specs": {
+        "D (mm)": "32",
+        "A (mm)": "14",
+        "L (mm)": "30"
+       },
+       "raw_row": "2711 32 14 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3311",
+       "page": 32,
+       "specs": {
+        "D (mm)": "37",
+        "A (mm)": "15",
+        "L (mm)": "30"
+       },
+       "raw_row": "3311 37 15 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3915",
+       "page": 32,
+       "specs": {
+        "D (mm)": "44",
+        "A (mm)": "20",
+        "L (mm)": "30"
+       },
+       "raw_row": "3915 44 20 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "4715",
+       "page": 32,
+       "specs": {
+        "D (mm)": "52",
+        "A (mm)": "21",
+        "L (mm)": "30"
+       },
+       "raw_row": "4715 52 21 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "5122",
+       "page": 32,
+       "specs": {
+        "D (mm)": "57",
+        "A (mm)": "28",
+        "L (mm)": "30"
+       },
+       "raw_row": "5122 57 28 30",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "HORIZONTAL / H and VERTICAL / V mounting versions are drawn; the table does not say which reference comes in which"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Toroidal Buffers (intensity depending of type)",
+     "series": null,
+     "page": 33,
+     "description": "Table 'INTENSIDAD SEGÚN MODELO/INTENSITY DEPENDIG OF TYPE': intensity for each buffer model (1305, 1307, 1706, 2006, 2010, 2408, 2711, 3311, 3915, 4718, 5122) and each inductance value L (uH) from 10 to 1000. Continuation of the dimensions table of the previous page. Two photographs without caption: a red encapsulated buffer with pins and a wound toroidal buffer with two leads.",
+     "general_specs": {
+      "Table title (as printed, with its typo)": "INTENSIDAD SEGÚN MODELO/INTENSITY DEPENDIG OF TYPE",
+      "Header of the inductance column": "L (uH)",
+      "L (uH) values of the table": "10, 12, 15, 18, 22, 27, 33, 39, 47, 56, 68, 75, 82, 100, 120, 150, 180, 220, 270, 330, 390, 470, 560, 680, 750, 820, 1000",
+      "Models (columns) of the table": "1305, 1307, 1706, 2006, 2010, 2408, 2711, 3311, 3915, 4718, 5122",
+      "Unit of the intensity": "not printed in the PDF",
+      "Structure": "matrix: each core model (column) by each L value (row); one model per column is recorded, with one intensity value per L",
+      "Printed values published as null": "2006 at L = 18 uH ('3.3'), 2006 at L = 39 uH ('3.0') and 2010 at L = 75 uH ('3.1'); the printed value is kept in raw_row (see uncertain)"
+     },
+     "models": [
+      {
+       "reference": "1305",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "4.7",
+        "Intensity (L = 12 uH)": "4.3",
+        "Intensity (L = 15 uH)": "3.8",
+        "Intensity (L = 18 uH)": "3.5",
+        "Intensity (L = 22 uH)": "3.2",
+        "Intensity (L = 27 uH)": "2.8",
+        "Intensity (L = 33 uH)": "2.6",
+        "Intensity (L = 39 uH)": "2.4",
+        "Intensity (L = 47 uH)": "2.2",
+        "Intensity (L = 56 uH)": "2.0",
+        "Intensity (L = 68 uH)": "1.8",
+        "Intensity (L = 75 uH)": "1.7",
+        "Intensity (L = 82 uH)": "1.6",
+        "Intensity (L = 100 uH)": "1.5",
+        "Intensity (L = 120 uH)": "1.3",
+        "Intensity (L = 150 uH)": "1.2",
+        "Intensity (L = 180 uH)": "1.1",
+        "Intensity (L = 220 uH)": "1.0",
+        "Intensity (L = 270 uH)": "0.9",
+        "Intensity (L = 330 uH)": "0.8",
+        "Intensity (L = 390 uH)": "0.7",
+        "Intensity (L = 470 uH)": "0.7",
+        "Intensity (L = 560 uH)": "0.6",
+        "Intensity (L = 680 uH)": "0.6",
+        "Intensity (L = 750 uH)": "0.5",
+        "Intensity (L = 820 uH)": "0.5",
+        "Intensity (L = 1000 uH)": "0.5"
+       },
+       "raw_row": "column 1305 (L = 10 ... 1000 uH, in order): 4.7 4.3 3.8 3.5 3.2 2.8 2.6 2.4 2.2 2.0 1.8 1.7 1.6 1.5 1.3 1.2 1.1 1.0 0.9 0.8 0.7 0.7 0.6 0.6 0.5 0.5 0.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1307",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "6.3",
+        "Intensity (L = 12 uH)": "5.8",
+        "Intensity (L = 15 uH)": "5.2",
+        "Intensity (L = 18 uH)": "4.7",
+        "Intensity (L = 22 uH)": "4.3",
+        "Intensity (L = 27 uH)": "3.9",
+        "Intensity (L = 33 uH)": "3.5",
+        "Intensity (L = 39 uH)": "3.2",
+        "Intensity (L = 47 uH)": "2.9",
+        "Intensity (L = 56 uH)": "2.7",
+        "Intensity (L = 68 uH)": "2.4",
+        "Intensity (L = 75 uH)": "2.3",
+        "Intensity (L = 82 uH)": "2.2",
+        "Intensity (L = 100 uH)": "2.0",
+        "Intensity (L = 120 uH)": "1.8",
+        "Intensity (L = 150 uH)": "1.6",
+        "Intensity (L = 180 uH)": "1.5",
+        "Intensity (L = 220 uH)": "1.4",
+        "Intensity (L = 270 uH)": "1.2",
+        "Intensity (L = 330 uH)": "1.1",
+        "Intensity (L = 390 uH)": "1.0",
+        "Intensity (L = 470 uH)": "0.9",
+        "Intensity (L = 560 uH)": "0.9",
+        "Intensity (L = 680 uH)": "0.8",
+        "Intensity (L = 750 uH)": "0.7",
+        "Intensity (L = 820 uH)": "0.7",
+        "Intensity (L = 1000 uH)": "0.6"
+       },
+       "raw_row": "column 1307 (L = 10 ... 1000 uH, in order): 6.3 5.8 5.2 4.7 4.3 3.9 3.5 3.2 2.9 2.7 2.4 2.3 2.2 2.0 1.8 1.6 1.5 1.4 1.2 1.1 1.0 0.9 0.9 0.8 0.7 0.7 0.6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1706",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "9.4",
+        "Intensity (L = 12 uH)": "8.6",
+        "Intensity (L = 15 uH)": "7.7",
+        "Intensity (L = 18 uH)": "7.0",
+        "Intensity (L = 22 uH)": "6.3",
+        "Intensity (L = 27 uH)": "5.7",
+        "Intensity (L = 33 uH)": "5.2",
+        "Intensity (L = 39 uH)": "4.8",
+        "Intensity (L = 47 uH)": "4.3",
+        "Intensity (L = 56 uH)": "4.0",
+        "Intensity (L = 68 uH)": "3.6",
+        "Intensity (L = 75 uH)": "3.4",
+        "Intensity (L = 82 uH)": "3.3",
+        "Intensity (L = 100 uH)": "3.0",
+        "Intensity (L = 120 uH)": "2.7",
+        "Intensity (L = 150 uH)": "2.4",
+        "Intensity (L = 180 uH)": "2.2",
+        "Intensity (L = 220 uH)": "2.0",
+        "Intensity (L = 270 uH)": "1.8",
+        "Intensity (L = 330 uH)": "1.6",
+        "Intensity (L = 390 uH)": "1.5",
+        "Intensity (L = 470 uH)": "1.4",
+        "Intensity (L = 560 uH)": "1.2",
+        "Intensity (L = 680 uH)": "1.1",
+        "Intensity (L = 750 uH)": "1.1",
+        "Intensity (L = 820 uH)": "1.0",
+        "Intensity (L = 1000 uH)": "0.9"
+       },
+       "raw_row": "column 1706 (L = 10 ... 1000 uH, in order): 9.4 8.6 7.7 7.0 6.3 5.7 5.2 4.8 4.3 4.0 3.6 3.4 3.3 3.0 2.7 2.4 2.2 2.0 1.8 1.6 1.5 1.4 1.2 1.1 1.1 1.0 0.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2006",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "11.8",
+        "Intensity (L = 12 uH)": "10.8",
+        "Intensity (L = 15 uH)": "9.7",
+        "Intensity (L = 18 uH)": null,
+        "Intensity (L = 22 uH)": "8.0",
+        "Intensity (L = 27 uH)": "7.2",
+        "Intensity (L = 33 uH)": "6.5",
+        "Intensity (L = 39 uH)": null,
+        "Intensity (L = 47 uH)": "5.5",
+        "Intensity (L = 56 uH)": "5.0",
+        "Intensity (L = 68 uH)": "4.5",
+        "Intensity (L = 75 uH)": "4.3",
+        "Intensity (L = 82 uH)": "4.1",
+        "Intensity (L = 100 uH)": "3.7",
+        "Intensity (L = 120 uH)": "3.4",
+        "Intensity (L = 150 uH)": "3.1",
+        "Intensity (L = 180 uH)": "2.8",
+        "Intensity (L = 220 uH)": "2.5",
+        "Intensity (L = 270 uH)": "2.3",
+        "Intensity (L = 330 uH)": "2.1",
+        "Intensity (L = 390 uH)": "1.9",
+        "Intensity (L = 470 uH)": "1.7",
+        "Intensity (L = 560 uH)": "1.6",
+        "Intensity (L = 680 uH)": "1.4",
+        "Intensity (L = 750 uH)": "1.4",
+        "Intensity (L = 820 uH)": "1.3",
+        "Intensity (L = 1000 uH)": "1.2"
+       },
+       "raw_row": "column 2006 (L = 10 ... 1000 uH, in order): 11.8 10.8 9.7 3.3 8.0 7.2 6.5 3.0 5.5 5.0 4.5 4.3 4.1 3.7 3.4 3.1 2.8 2.5 2.3 2.1 1.9 1.7 1.6 1.4 1.4 1.3 1.2",
+       "confidence": "media"
+      },
+      {
+       "reference": "2010",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "16.7",
+        "Intensity (L = 12 uH)": "15.3",
+        "Intensity (L = 15 uH)": "13.7",
+        "Intensity (L = 18 uH)": "12.5",
+        "Intensity (L = 22 uH)": "11.3",
+        "Intensity (L = 27 uH)": "10.2",
+        "Intensity (L = 33 uH)": "9.2",
+        "Intensity (L = 39 uH)": "8.5",
+        "Intensity (L = 47 uH)": "7.7",
+        "Intensity (L = 56 uH)": "7.1",
+        "Intensity (L = 68 uH)": "6.4",
+        "Intensity (L = 75 uH)": null,
+        "Intensity (L = 82 uH)": "5.8",
+        "Intensity (L = 100 uH)": "5.3",
+        "Intensity (L = 120 uH)": "4.8",
+        "Intensity (L = 150 uH)": "4.3",
+        "Intensity (L = 180 uH)": "3.9",
+        "Intensity (L = 220 uH)": "3.5",
+        "Intensity (L = 270 uH)": "3.2",
+        "Intensity (L = 330 uH)": "2.9",
+        "Intensity (L = 390 uH)": "2.7",
+        "Intensity (L = 470 uH)": "2.4",
+        "Intensity (L = 560 uH)": "2.2",
+        "Intensity (L = 680 uH)": "2.0",
+        "Intensity (L = 750 uH)": "1.9",
+        "Intensity (L = 820 uH)": "1.8",
+        "Intensity (L = 1000 uH)": "1.7"
+       },
+       "raw_row": "column 2010 (L = 10 ... 1000 uH, in order): 16.7 15.3 13.7 12.5 11.3 10.2 9.2 8.5 7.7 7.1 6.4 3.1 5.8 5.3 4.8 4.3 3.9 3.5 3.2 2.9 2.7 2.4 2.2 2.0 1.9 1.8 1.7",
+       "confidence": "media"
+      },
+      {
+       "reference": "2408",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "16.1",
+        "Intensity (L = 12 uH)": "14.7",
+        "Intensity (L = 15 uH)": "13.7",
+        "Intensity (L = 18 uH)": "12.0",
+        "Intensity (L = 22 uH)": "10.9",
+        "Intensity (L = 27 uH)": "9.8",
+        "Intensity (L = 33 uH)": "8.9",
+        "Intensity (L = 39 uH)": "8.2",
+        "Intensity (L = 47 uH)": "7.4",
+        "Intensity (L = 56 uH)": "6.8",
+        "Intensity (L = 68 uH)": "6.2",
+        "Intensity (L = 75 uH)": "5.9",
+        "Intensity (L = 82 uH)": "5.6",
+        "Intensity (L = 100 uH)": "5.1",
+        "Intensity (L = 120 uH)": "4.7",
+        "Intensity (L = 150 uH)": "4.2",
+        "Intensity (L = 180 uH)": "3.8",
+        "Intensity (L = 220 uH)": "3.4",
+        "Intensity (L = 270 uH)": "3.1",
+        "Intensity (L = 330 uH)": "2.8",
+        "Intensity (L = 390 uH)": "2.6",
+        "Intensity (L = 470 uH)": "2.3",
+        "Intensity (L = 560 uH)": "2.1",
+        "Intensity (L = 680 uH)": "1.9",
+        "Intensity (L = 750 uH)": "1.8",
+        "Intensity (L = 820 uH)": "1.8",
+        "Intensity (L = 1000 uH)": "1.6"
+       },
+       "raw_row": "column 2408 (L = 10 ... 1000 uH, in order): 16.1 14.7 13.7 12.0 10.9 9.8 8.9 8.2 7.4 6.8 6.2 5.9 5.6 5.1 4.7 4.2 3.8 3.4 3.1 2.8 2.6 2.3 2.1 1.9 1.8 1.8 1.6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2711",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "21.0",
+        "Intensity (L = 12 uH)": "19.2",
+        "Intensity (L = 15 uH)": "17.1",
+        "Intensity (L = 18 uH)": "15.6",
+        "Intensity (L = 22 uH)": "14.1",
+        "Intensity (L = 27 uH)": "12.8",
+        "Intensity (L = 33 uH)": "11.6",
+        "Intensity (L = 39 uH)": "10.6",
+        "Intensity (L = 47 uH)": "9.7",
+        "Intensity (L = 56 uH)": "8.9",
+        "Intensity (L = 68 uH)": "8.1",
+        "Intensity (L = 75 uH)": "7.7",
+        "Intensity (L = 82 uH)": "7.3",
+        "Intensity (L = 100 uH)": "6.6",
+        "Intensity (L = 120 uH)": "6.1",
+        "Intensity (L = 150 uH)": "5.2",
+        "Intensity (L = 180 uH)": "4.9",
+        "Intensity (L = 220 uH)": "4.5",
+        "Intensity (L = 270 uH)": "4.0",
+        "Intensity (L = 330 uH)": "3.7",
+        "Intensity (L = 390 uH)": "3.4",
+        "Intensity (L = 470 uH)": "3.1",
+        "Intensity (L = 560 uH)": "2.8",
+        "Intensity (L = 680 uH)": "2.5",
+        "Intensity (L = 750 uH)": "2.4",
+        "Intensity (L = 820 uH)": "2.3",
+        "Intensity (L = 1000 uH)": "2.1"
+       },
+       "raw_row": "column 2711 (L = 10 ... 1000 uH, in order): 21.0 19.2 17.1 15.6 14.1 12.8 11.6 10.6 9.7 8.9 8.1 7.7 7.3 6.6 6.1 5.2 4.9 4.5 4.0 3.7 3.4 3.1 2.8 2.5 2.4 2.3 2.1",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3311",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "28.3",
+        "Intensity (L = 12 uH)": "25.8",
+        "Intensity (L = 15 uH)": "23.1",
+        "Intensity (L = 18 uH)": "21.1",
+        "Intensity (L = 22 uH)": "19.1",
+        "Intensity (L = 27 uH)": "17.2",
+        "Intensity (L = 33 uH)": "15.6",
+        "Intensity (L = 39 uH)": "14.3",
+        "Intensity (L = 47 uH)": "13.1",
+        "Intensity (L = 56 uH)": "12.0",
+        "Intensity (L = 68 uH)": "10.9",
+        "Intensity (L = 75 uH)": "10.3",
+        "Intensity (L = 82 uH)": "9.9",
+        "Intensity (L = 100 uH)": "8.9",
+        "Intensity (L = 120 uH)": "8.2",
+        "Intensity (L = 150 uH)": "7.3",
+        "Intensity (L = 180 uH)": "6.7",
+        "Intensity (L = 220 uH)": "6.1",
+        "Intensity (L = 270 uH)": "5.4",
+        "Intensity (L = 330 uH)": "4.9",
+        "Intensity (L = 390 uH)": "4.5",
+        "Intensity (L = 470 uH)": "4.1",
+        "Intensity (L = 560 uH)": "3.8",
+        "Intensity (L = 680 uH)": "3.4",
+        "Intensity (L = 750 uH)": "3.3",
+        "Intensity (L = 820 uH)": "3.1",
+        "Intensity (L = 1000 uH)": "2.8"
+       },
+       "raw_row": "column 3311 (L = 10 ... 1000 uH, in order): 28.3 25.8 23.1 21.1 19.1 17.2 15.6 14.3 13.1 12.0 10.9 10.3 9.9 8.9 8.2 7.3 6.7 6.1 5.4 4.9 4.5 4.1 3.8 3.4 3.3 3.1 2.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3915",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "40.4",
+        "Intensity (L = 12 uH)": "38.9",
+        "Intensity (L = 15 uH)": "32.9",
+        "Intensity (L = 18 uH)": "30.1",
+        "Intensity (L = 22 uH)": "27.2",
+        "Intensity (L = 27 uH)": "24.6",
+        "Intensity (L = 33 uH)": "22.2",
+        "Intensity (L = 39 uH)": "20.4",
+        "Intensity (L = 47 uH)": "18.6",
+        "Intensity (L = 56 uH)": "17.1",
+        "Intensity (L = 68 uH)": "15.5",
+        "Intensity (L = 75 uH)": "14.7",
+        "Intensity (L = 82 uH)": "14.1",
+        "Intensity (L = 100 uH)": "12.8",
+        "Intensity (L = 120 uH)": "11.7",
+        "Intensity (L = 150 uH)": "10.4",
+        "Intensity (L = 180 uH)": "9.5",
+        "Intensity (L = 220 uH)": "8.6",
+        "Intensity (L = 270 uH)": "7.8",
+        "Intensity (L = 330 uH)": "7.0",
+        "Intensity (L = 390 uH)": "6.5",
+        "Intensity (L = 470 uH)": "5.9",
+        "Intensity (L = 560 uH)": "5.4",
+        "Intensity (L = 680 uH)": "4.9",
+        "Intensity (L = 750 uH)": "4.7",
+        "Intensity (L = 820 uH)": "4.5",
+        "Intensity (L = 1000 uH)": "4.0"
+       },
+       "raw_row": "column 3915 (L = 10 ... 1000 uH, in order): 40.4 38.9 32.9 30.1 27.2 24.6 22.2 20.4 18.6 17.1 15.5 14.7 14.1 12.8 11.7 10.4 9.5 8.6 7.8 7.0 6.5 5.9 5.4 4.9 4.7 4.5 4.0",
+       "confidence": "alta"
+      },
+      {
+       "reference": "4718",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "56.6",
+        "Intensity (L = 12 uH)": "51.6",
+        "Intensity (L = 15 uH)": "46.2",
+        "Intensity (L = 18 uH)": "42.2",
+        "Intensity (L = 22 uH)": "38.1",
+        "Intensity (L = 27 uH)": "34.4",
+        "Intensity (L = 33 uH)": "31.1",
+        "Intensity (L = 39 uH)": "28.6",
+        "Intensity (L = 47 uH)": "26.1",
+        "Intensity (L = 56 uH)": "23.9",
+        "Intensity (L = 68 uH)": "21.7",
+        "Intensity (L = 75 uH)": "20.7",
+        "Intensity (L = 82 uH)": "19.8",
+        "Intensity (L = 100 uH)": "17.9",
+        "Intensity (L = 120 uH)": "16.3",
+        "Intensity (L = 150 uH)": "14.6",
+        "Intensity (L = 180 uH)": "13.3",
+        "Intensity (L = 220 uH)": "12.6",
+        "Intensity (L = 270 uH)": "10.8",
+        "Intensity (L = 330 uH)": "9.9",
+        "Intensity (L = 390 uH)": "9.1",
+        "Intensity (L = 470 uH)": "8.3",
+        "Intensity (L = 560 uH)": "7.6",
+        "Intensity (L = 680 uH)": "6.9",
+        "Intensity (L = 750 uH)": "6.5",
+        "Intensity (L = 820 uH)": "6.2",
+        "Intensity (L = 1000 uH)": "5.7"
+       },
+       "raw_row": "column 4718 (L = 10 ... 1000 uH, in order): 56.6 51.6 46.2 42.2 38.1 34.4 31.1 28.6 26.1 23.9 21.7 20.7 19.8 17.9 16.3 14.6 13.3 12.6 10.8 9.9 9.1 8.3 7.6 6.9 6.5 6.2 5.7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "5122",
+       "page": 33,
+       "specs": {
+        "Intensity (L = 10 uH)": "80.0",
+        "Intensity (L = 12 uH)": "73.0",
+        "Intensity (L = 15 uH)": "65.3",
+        "Intensity (L = 18 uH)": "59.6",
+        "Intensity (L = 22 uH)": "53.9",
+        "Intensity (L = 27 uH)": "48.7",
+        "Intensity (L = 33 uH)": "44.0",
+        "Intensity (L = 39 uH)": "40.5",
+        "Intensity (L = 47 uH)": "36.9",
+        "Intensity (L = 56 uH)": "33.8",
+        "Intensity (L = 68 uH)": "30.7",
+        "Intensity (L = 75 uH)": "29.2",
+        "Intensity (L = 82 uH)": "27.9",
+        "Intensity (L = 100 uH)": "25.3",
+        "Intensity (L = 120 uH)": "23.1",
+        "Intensity (L = 150 uH)": "20.7",
+        "Intensity (L = 180 uH)": "18.9",
+        "Intensity (L = 220 uH)": "17.1",
+        "Intensity (L = 270 uH)": "15.4",
+        "Intensity (L = 330 uH)": "13.9",
+        "Intensity (L = 390 uH)": "12.8",
+        "Intensity (L = 470 uH)": "11.7",
+        "Intensity (L = 560 uH)": "10.7",
+        "Intensity (L = 680 uH)": "9.7",
+        "Intensity (L = 750 uH)": "9.2",
+        "Intensity (L = 820 uH)": "8.8",
+        "Intensity (L = 1000 uH)": "8.0"
+       },
+       "raw_row": "column 5122 (L = 10 ... 1000 uH, in order): 80.0 73.0 65.3 59.6 53.9 48.7 44.0 40.5 36.9 33.8 30.7 29.2 27.9 25.3 23.1 20.7 18.9 17.1 15.4 13.9 12.8 11.7 10.7 9.7 9.2 8.8 8.0",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Toroidal Cores",
+     "series": null,
+     "page": 35,
+     "description": "CHARACTERISTICS. The toroidal cores manufactured by Torivac are made from magnetic iron-silicon alloy sheet, of orientated grain, with very low loss levels and a high induction saturation, which are subjected to thermal treatment, thus improving their magnetic permeability by pproximately 40%. The specific materials used are the types M4 or M5, depending on the different applications. All the cores are soldered at the end of the wound coil, in order to avoid possible vibrations and they are subsequently insulated using polyamide-6 capsules with 30% of fibre glass, ideal for withstanding temperatures of close to 150ºC.",
+     "general_specs": {
+      "Material": "magnetic iron-silicon alloy sheet, of orientated grain, with very low loss levels and a high induction saturation",
+      "Improvement of the magnetic permeability by thermal treatment": "approximately 40% (printed 'pproximately')",
+      "Sheet types": "M4 or M5, depending on the different applications",
+      "Assembly": "all the cores are soldered at the end of the wound coil, in order to avoid possible vibrations",
+      "Insulation": "polyamide-6 capsules with 30% of fibre glass",
+      "Temperature quoted for the insulation": "close to 150ºC",
+      "Headers of the two tables (identical)": "A | B | C | PESO (KG) WEIGHT (KG) | CM2",
+      "Unit of A, B, C and CM2": "not printed in the PDF",
+      "Page structure": "two tables with the same headers (left and right block), image only; there is no reference column and no dimensioned drawing of the core"
+     },
+     "models": [
+      {
+       "reference": "A60 B40 C20",
+       "page": 35,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "20",
+        "PESO (KG) / WEIGHT (KG)": "0.235",
+        "CM2": "2"
+       },
+       "raw_row": "60 40 20 0.235 2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A60 B40 C25",
+       "page": 35,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "25",
+        "PESO (KG) / WEIGHT (KG)": "0.293",
+        "CM2": "2.5"
+       },
+       "raw_row": "60 40 25 0.293 2.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A60 B40 C30",
+       "page": 35,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "30",
+        "PESO (KG) / WEIGHT (KG)": "0.352",
+        "CM2": "3"
+       },
+       "raw_row": "60 40 30 0.352 3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A60 B40 C35",
+       "page": 35,
+       "specs": {
+        "A": "60",
+        "B": "40",
+        "C": "35",
+        "PESO (KG) / WEIGHT (KG)": "0.411",
+        "CM2": "3.5"
+       },
+       "raw_row": "60 40 35 0.411 3.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A65 B40 C20",
+       "page": 35,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "20",
+        "PESO (KG) / WEIGHT (KG)": "0.307",
+        "CM2": "2.5"
+       },
+       "raw_row": "65 40 20 0.307 2.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A65 B40 C25",
+       "page": 35,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "25",
+        "PESO (KG) / WEIGHT (KG)": "0.400",
+        "CM2": "3.13"
+       },
+       "raw_row": "65 40 25 0.400 3.13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A65 B40 C30",
+       "page": 35,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "30",
+        "PESO (KG) / WEIGHT (KG)": "0.480",
+        "CM2": "3.76"
+       },
+       "raw_row": "65 40 30 0.480 3.76",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A65 B40 C32",
+       "page": 35,
+       "specs": {
+        "A": "65",
+        "B": "40",
+        "C": "32",
+        "PESO (KG) / WEIGHT (KG)": "0.512",
+        "CM2": "4"
+       },
+       "raw_row": "65 40 32 0.512 4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70 B40 C20",
+       "page": 35,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "20",
+        "PESO (KG) / WEIGHT (KG)": "0.386",
+        "CM2": "3"
+       },
+       "raw_row": "70 40 20 0.386 3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70 B40 C22",
+       "page": 35,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "22",
+        "PESO (KG) / WEIGHT (KG)": "0.425",
+        "CM2": "3.3"
+       },
+       "raw_row": "70 40 22 0.425 3.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70 B40 C25",
+       "page": 35,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "25",
+        "PESO (KG) / WEIGHT (KG)": "0.483",
+        "CM2": "3.75"
+       },
+       "raw_row": "70 40 25 0.483 3.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70 B40 C32",
+       "page": 35,
+       "specs": {
+        "A": "70",
+        "B": "40",
+        "C": "32",
+        "PESO (KG) / WEIGHT (KG)": "0.618",
+        "CM2": "4.8"
+       },
+       "raw_row": "70 40 32 0.618 4.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70 B45 C22",
+       "page": 35,
+       "specs": {
+        "A": "70",
+        "B": "45",
+        "C": "22",
+        "PESO (KG) / WEIGHT (KG)": "0.365",
+        "CM2": "2.75"
+       },
+       "raw_row": "70 45 22 0.365 2.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A70 B45 C25",
+       "page": 35,
+       "specs": {
+        "A": "70",
+        "B": "45",
+        "C": "25",
+        "PESO (KG) / WEIGHT (KG)": "0.415",
+        "CM2": "3.13"
+       },
+       "raw_row": "70 45 25 0.415 3.13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A75 B40 C13",
+       "page": 35,
+       "specs": {
+        "A": "75",
+        "B": "40",
+        "C": "13",
+        "PESO (KG) / WEIGHT (KG)": "0.314",
+        "CM2": "2.28"
+       },
+       "raw_row": "75 40 13 0.314 2.28",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A75 B40 C15",
+       "page": 35,
+       "specs": {
+        "A": "75",
+        "B": "40",
+        "C": "15",
+        "PESO (KG) / WEIGHT (KG)": "0.362",
+        "CM2": "2.63"
+       },
+       "raw_row": "75 40 15 0.362 2.63",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80 B50 C25",
+       "page": 35,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "25",
+        "PESO (KG) / WEIGHT (KG)": "0.570",
+        "CM2": "3.75"
+       },
+       "raw_row": "80 50 25 0.570 3.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80 B50 C30",
+       "page": 35,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "30",
+        "PESO (KG) / WEIGHT (KG)": "0.684",
+        "CM2": "4.5"
+       },
+       "raw_row": "80 50 30 0.684 4.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80 B50 C35",
+       "page": 35,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "35",
+        "PESO (KG) / WEIGHT (KG)": "0.798",
+        "CM2": "5.25"
+       },
+       "raw_row": "80 50 35 0.798 5.25",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A80 B50 C40",
+       "page": 35,
+       "specs": {
+        "A": "80",
+        "B": "50",
+        "C": "40",
+        "PESO (KG) / WEIGHT (KG)": "0.912",
+        "CM2": "6"
+       },
+       "raw_row": "80 50 40 0.912 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A85 B40 C13",
+       "page": 35,
+       "specs": {
+        "A": "85",
+        "B": "40",
+        "C": "13",
+        "PESO (KG) / WEIGHT (KG)": null,
+        "CM2": "2.93"
+       },
+       "raw_row": "85 40 13 4.280 2.93",
+       "confidence": "media"
+      },
+      {
+       "reference": "A90 B50 C20",
+       "page": 35,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "20",
+        "PESO (KG) / WEIGHT (KG)": "0.652",
+        "CM2": "4"
+       },
+       "raw_row": "90 50 20 0.652 4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A90 B50 C22",
+       "page": 35,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "22",
+        "PESO (KG) / WEIGHT (KG)": "0.717",
+        "CM2": "4.4"
+       },
+       "raw_row": "90 50 22 0.717 4.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A90 B50 C25",
+       "page": 35,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "25",
+        "PESO (KG) / WEIGHT (KG)": "0.815",
+        "CM2": "5"
+       },
+       "raw_row": "90 50 25 0.815 5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A90 B50 C30",
+       "page": 35,
+       "specs": {
+        "A": "90",
+        "B": "50",
+        "C": "30",
+        "PESO (KG) / WEIGHT (KG)": "0.978",
+        "CM2": "6"
+       },
+       "raw_row": "90 50 30 0.978 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A95 B50 C40",
+       "page": 35,
+       "specs": {
+        "A": "95",
+        "B": "50",
+        "C": "40",
+        "PESO (KG) / WEIGHT (KG)": "1.527",
+        "CM2": "9"
+       },
+       "raw_row": "95 50 40 1.527 9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100 B60 C25",
+       "page": 35,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "25",
+        "PESO (KG) / WEIGHT (KG)": "0.940",
+        "CM2": "5"
+       },
+       "raw_row": "100 60 25 0.940 5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100 B60 C30",
+       "page": 35,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "30",
+        "PESO (KG) / WEIGHT (KG)": "1.130",
+        "CM2": "6"
+       },
+       "raw_row": "100 60 30 1.130 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100 B60 C35",
+       "page": 35,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "35",
+        "PESO (KG) / WEIGHT (KG)": "1.318",
+        "CM2": "7"
+       },
+       "raw_row": "100 60 35 1.318 7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100 B60 C38",
+       "page": 35,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "38",
+        "PESO (KG) / WEIGHT (KG)": "1.430",
+        "CM2": "7.6"
+       },
+       "raw_row": "100 60 38 1.430 7.6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A100 B60 C40",
+       "page": 35,
+       "specs": {
+        "A": "100",
+        "B": "60",
+        "C": "40",
+        "PESO (KG) / WEIGHT (KG)": "1.500",
+        "CM2": "8"
+       },
+       "raw_row": "100 60 40 1.500 8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A101 B55 C25",
+       "page": 35,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "25",
+        "PESO (KG) / WEIGHT (KG)": "1.050",
+        "CM2": "5.75"
+       },
+       "raw_row": "101 55 25 1.050 5.75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A101 B55 C30",
+       "page": 35,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "30",
+        "PESO (KG) / WEIGHT (KG)": "1.260",
+        "CM2": "6.9"
+       },
+       "raw_row": "101 55 30 1.260 6.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A101 B55 C35",
+       "page": 35,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "35",
+        "PESO (KG) / WEIGHT (KG)": null,
+        "CM2": "8.05"
+       },
+       "raw_row": "101 55 35 1.058 8.05",
+       "confidence": "media"
+      },
+      {
+       "reference": "A101 B55 C38",
+       "page": 35,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "38",
+        "PESO (KG) / WEIGHT (KG)": null,
+        "CM2": "8.74"
+       },
+       "raw_row": "101 55 38 1.148 8.74",
+       "confidence": "media"
+      },
+      {
+       "reference": "A101 B55 C40",
+       "page": 35,
+       "specs": {
+        "A": "101",
+        "B": "55",
+        "C": "40",
+        "PESO (KG) / WEIGHT (KG)": null,
+        "CM2": "9.2"
+       },
+       "raw_row": "101 55 40 1.208 9.2",
+       "confidence": "media"
+      },
+      {
+       "reference": "A105 B65 C35",
+       "page": 35,
+       "specs": {
+        "A": "105",
+        "B": "65",
+        "C": "35",
+        "PESO (KG) / WEIGHT (KG)": "1.392",
+        "CM2": "7"
+       },
+       "raw_row": "105 65 35 1.392 7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A105 B65 C45",
+       "page": 35,
+       "specs": {
+        "A": "105",
+        "B": "65",
+        "C": "45",
+        "PESO (KG) / WEIGHT (KG)": "1.790",
+        "CM2": "9"
+       },
+       "raw_row": "105 65 45 1.790 9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108 B48 C20",
+       "page": 35,
+       "specs": {
+        "A": "108",
+        "B": "48",
+        "C": "20",
+        "PESO (KG) / WEIGHT (KG)": "1.095",
+        "CM2": "6"
+       },
+       "raw_row": "108 48 20 1.095 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108 B58 C25",
+       "page": 35,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "25",
+        "PESO (KG) / WEIGHT (KG)": "1.215",
+        "CM2": "6.25"
+       },
+       "raw_row": "108 58 25 1.215 6.25",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108 B58 C30",
+       "page": 35,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "30",
+        "PESO (KG) / WEIGHT (KG)": "1.458",
+        "CM2": "7.5"
+       },
+       "raw_row": "108 58 30 1.458 7.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108 B58 C38",
+       "page": 35,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "38",
+        "PESO (KG) / WEIGHT (KG)": "1.847",
+        "CM2": "9.5"
+       },
+       "raw_row": "108 58 38 1.847 9.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108 B58 C40",
+       "page": 35,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "40",
+        "PESO (KG) / WEIGHT (KG)": "1.944",
+        "CM2": "10"
+       },
+       "raw_row": "108 58 40 1.944 10",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A108 B58 C45",
+       "page": 35,
+       "specs": {
+        "A": "108",
+        "B": "58",
+        "C": "45",
+        "PESO (KG) / WEIGHT (KG)": "2.187",
+        "CM2": "11.3"
+       },
+       "raw_row": "108 58 45 2.187 11.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135 B70 C35",
+       "page": 35,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "35",
+        "PESO (KG) / WEIGHT (KG)": "2.728",
+        "CM2": "11.4"
+       },
+       "raw_row": "135 70 35 2.728 11.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135 B70 C40",
+       "page": 35,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "40",
+        "PESO (KG) / WEIGHT (KG)": "3.118",
+        "CM2": "13"
+       },
+       "raw_row": "135 70 40 3.118 13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135 B70 C45",
+       "page": 35,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "45",
+        "PESO (KG) / WEIGHT (KG)": "3.507",
+        "CM2": "14.63"
+       },
+       "raw_row": "135 70 45 3.507 14.63",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135 B70 C50",
+       "page": 35,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "50",
+        "PESO (KG) / WEIGHT (KG)": "3.897",
+        "CM2": "16.3"
+       },
+       "raw_row": "135 70 50 3.897 16.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A135 B70 C53",
+       "page": 35,
+       "specs": {
+        "A": "135",
+        "B": "70",
+        "C": "53",
+        "PESO (KG) / WEIGHT (KG)": "4.130",
+        "CM2": "17.2"
+       },
+       "raw_row": "135 70 53 4.130 17.2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A140 B70 C70",
+       "page": 35,
+       "specs": {
+        "A": "140",
+        "B": "70",
+        "C": "70",
+        "PESO (KG) / WEIGHT (KG)": "6.025",
+        "CM2": "24.5"
+       },
+       "raw_row": "140 70 70 6.025 24.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150 B75 C35",
+       "page": 35,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "35",
+        "PESO (KG) / WEIGHT (KG)": "3.455",
+        "CM2": "13.13"
+       },
+       "raw_row": "150 75 35 3.455 13.13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150 B75 C40",
+       "page": 35,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "40",
+        "PESO (KG) / WEIGHT (KG)": "3.950",
+        "CM2": "15"
+       },
+       "raw_row": "150 75 40 3.950 15",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150 B75 C45",
+       "page": 35,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "45",
+        "PESO (KG) / WEIGHT (KG)": "4.444",
+        "CM2": "16.9"
+       },
+       "raw_row": "150 75 45 4.444 16.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150 B75 C50",
+       "page": 35,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "50",
+        "PESO (KG) / WEIGHT (KG)": "4.937",
+        "CM2": "18.8"
+       },
+       "raw_row": "150 75 50 4.937 18.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150 B75 C60",
+       "page": 35,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "60",
+        "PESO (KG) / WEIGHT (KG)": "5.925",
+        "CM2": "22.5"
+       },
+       "raw_row": "150 75 60 5.925 22.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "A150 B75 C75",
+       "page": 35,
+       "specs": {
+        "A": "150",
+        "B": "75",
+        "C": "75",
+        "PESO (KG) / WEIGHT (KG)": "6.912",
+        "CM2": "26.3"
+       },
+       "raw_row": "150 75 75 6.912 26.3",
+       "confidence": "baja"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "The tables have no reference column; each row is identified by its A, B and C values (the 56 combinations are unique). The references 'A60 B40 C20', etc. are labels of this extraction, not Torivac codes."
+    },
+    {
+     "family": "Toroidal Transformers - Presentation and characteristics",
+     "series": null,
+     "page": 37,
+     "description": "Torivac has over thirty years of experience in manufacturing all types of toroidal transformers. The toroidal cores manufactured by Torivac are made of magnetic sheet metal with very low loss levels and high induction saturation, which when heat treated allow for reaching saturation values of up to 16,000 gauss. In the toroidal transformer the magnetic flow is evenly concentrated in the core and, due to the absence of intermediate metal parts, vibrations are eliminated. As all the wound coils are spread over the surface of the core, the noise caused by magnetostriction practically disappears, which favours the dissipation of heat.",
+     "general_specs": {
+      "Manufacturing experience": "over thirty years",
+      "Core material": "magnetic sheet metal with very low loss levels and high induction saturation",
+      "Saturation after heat treatment": "up to 16,000 gauss",
+      "Typical efficiency of the standard transformers, from 20VA to 3000VA": "varies between 82% and 96% (see diagram)",
+      "Core hysteresis losses after recrystallization heat treatment": "reduced to 0,98W / Kg, at an induction of 1.6T",
+      "Foucault currents": "practically negligible in cores made from M4 and M5 magnetic sheet",
+      "Efficiency chart (image)": "X axis '% Poténcia nominal' 0 to 100; Y axis '% Poténcia de salida' 0 to 110; three curves labelled 1 KVA, 300 VA and 30 VA; the PDF gives no table of values",
+      "Exploded-view photograph": "13 numbered components (see tables)"
+     },
+     "models": [],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Toroidal Transformers - Technical specifications",
+     "series": null,
+     "page": 38,
+     "description": "Technical specifications of the toroidal transformers: voltage variation no load / full load, radiation, electrostatic shielding, start up transitory electric currents, temperature increase, shape factor and advantages.",
+     "general_specs": {
+      "Voltage variation 'No Load'/'Full Load'": "ratio between the 'no load' and 'full load' secondary voltage; changes with the size of the transformer; the diagram shows the increase in no load voltage (%) with respect to the nominal load voltage, based on the power rating",
+      "No-load voltage chart (image)": "X axis 'Poténcia (VA)' 0 to 3000; Y axis '% V (en vacío)' 0 to 30; one curve; the PDF gives no table of values",
+      "Radiation": "very low magnetic dispersion, almost insignificant; to eliminate it totally one can add electromagnetic screens or shielding",
+      "Electrostatic shielding": "copper layer winding coil, insulated with polyester, which covers completely the primary winding; filters out the electrostatic interferences from the mains power supply and derives to ground in case of failure of the main isolation",
+      "Start up transitory electric currents": "higher than in conventional transformers due to the absence of air-gaps in the core; slow melting fuses or controlled starting systems recommended",
+      "Temperature increase in permanent working mode": "between 55oC and 60oC above the surrounding environmental temperature (printed 'oC')",
+      "Outside temperature of the transformer": "does not display increases in excess of 45oC",
+      "Shape factor": "low profiles; diameter and height of the cores adjusted to the final requirements",
+      "Advantages": "High efficiency; Low noise level; Low dispersion field; Less heating; Low weight and size; Easy assembly"
+     },
+     "models": [],
+     "options_accessories": [
+      "electromagnetic screens or shielding (to eliminate the magnetic dispersion totally)",
+      "slow melting fuses or controlled starting systems (recommended protection of the power supply)"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Toroidal Transformers - Fields of application and production series (Standard by order, input 230V)",
+     "series": null,
+     "page": 39,
+     "description": "FIELDS OF APPLICATION: consumer electronics, electro medicine, converters, power supply systems, audio systems, security, telecommunications, low voltage lighting, any equipment that may require an optimal efficiency. PRODUCTION SERIES - Standard by order: this series is conceived for a 230V primary and a secondary of any voltage and power ratings between 20VA and 5 KVA, according with the following table. By order, we can manufacture them adding screens, thermal winding protectors and other configurations. The standard lengths of the output leads are of 16 cm up to 500 VA, 20 cm for 600 to 1000VA and 25 cm for higher powers.",
+     "general_specs": {
+      "Table header": "Estándar bajo demanda/Standad to order (Entrada/Input 230V)",
+      "Input": "230V",
+      "Secondary": "any voltage",
+      "Power range quoted in the text": "between 20VA and 5 KVA",
+      "Power range of the table": "from 15 VA to 5.000 VA",
+      "Standard length of the output leads": "16 cm up to 500 VA; 20 cm for 600 to 1000VA; 25 cm for higher powers (printed 'fir higher powers')",
+      "Units given in the headers": "Ø and Altura in mm; Kg.; Fijación as metric thread and length, e.g. 'M5x40 mm.'",
+      "Units not given in the headers": "Voltaje mín. / Voltage min., Rdto. / EffiC., cdt and Ø Acce.",
+      "Ø Acce.": "numeric values (50, 65, 80, 100, 127, 140) and, from 2.000 VA, the text 'En. Int.' (not explained in the PDF)",
+      "Drawings (image)": "labels TOR, ALT, Ø; 'ENCAPSULADO CENTRAL / EPOXY-FILLED CENTER' and 'EPOXY RESIN'",
+      "Paragraph 'Regulación motorizada' (printed in Spanish in the EN catalogue)": "regulation of equipment at a distance or stabiliser equipment; the shaft of the variable autotransformer is driven by a motor-reducer through a manual switch; TORIVAC motorisations have no inertia (ideal for remote control); stabilised models by order with an electronic board with a precision of 2%; regulation by a potentiometer or a DC signal of 0-10Vcc"
+     },
+     "models": [
+      {
+       "reference": "15 VA (Ø 66 mm, height 29 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "15",
+        "Ø mm.": "66",
+        "Altura mm. (Height mm.)": "29",
+        "Voltaje mín. (Voltage min.)": "2",
+        "Rdto. (EffiC.)": "82",
+        "cdt": "18",
+        "Ø Acce.": "50",
+        "Kg.": "0.37",
+        "Fijación (Mounting)": "M5x40 mm."
+       },
+       "raw_row": "15 66 29 2 82 18 50 0.37 M5x40 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "20 VA (Ø 67 mm, height 32 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "20",
+        "Ø mm.": "67",
+        "Altura mm. (Height mm.)": "32",
+        "Voltaje mín. (Voltage min.)": "3",
+        "Rdto. (EffiC.)": "82",
+        "cdt": "18",
+        "Ø Acce.": "50",
+        "Kg.": "0.4",
+        "Fijación (Mounting)": "M5x40 mm."
+       },
+       "raw_row": "20 67 32 3 82 18 50 0.4 M5x40 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "30 VA (Ø 69 mm, height 36 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "30",
+        "Ø mm.": "69",
+        "Altura mm. (Height mm.)": "36",
+        "Voltaje mín. (Voltage min.)": "11",
+        "Rdto. (EffiC.)": "83",
+        "cdt": "17",
+        "Ø Acce.": "50",
+        "Kg.": "0.5",
+        "Fijación (Mounting)": "M5x45 mm."
+       },
+       "raw_row": "30 69 36 11 83 17 50 0.5 M5x45 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "30 VA (Ø 75 mm, height 32 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "30",
+        "Ø mm.": "75",
+        "Altura mm. (Height mm.)": "32",
+        "Voltaje mín. (Voltage min.)": "11",
+        "Rdto. (EffiC.)": "83",
+        "cdt": "17",
+        "Ø Acce.": "50",
+        "Kg.": "0.55",
+        "Fijación (Mounting)": "M5x40 mm."
+       },
+       "raw_row": "30 75 32 11 83 17 50 0.55 M5x40 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "30 VA (Ø 83 mm, height 25 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "30",
+        "Ø mm.": "83",
+        "Altura mm. (Height mm.)": "25",
+        "Voltaje mín. (Voltage min.)": "11",
+        "Rdto. (EffiC.)": "83",
+        "cdt": "17",
+        "Ø Acce.": "65",
+        "Kg.": "0.60",
+        "Fijación (Mounting)": "M5x35 mm."
+       },
+       "raw_row": "30 83 25 11 83 17 65 0.60 M5x35 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "40 VA (Ø 69 mm, height 50 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "40",
+        "Ø mm.": "69",
+        "Altura mm. (Height mm.)": "50",
+        "Voltaje mín. (Voltage min.)": "5",
+        "Rdto. (EffiC.)": "84",
+        "cdt": "16",
+        "Ø Acce.": "50",
+        "Kg.": "0.65",
+        "Fijación (Mounting)": "M5x60 mm."
+       },
+       "raw_row": "40 69 50 5 84 16 50 0.65 M5x60 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "40 VA (Ø 79 mm, height 33 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "40",
+        "Ø mm.": "79",
+        "Altura mm. (Height mm.)": "33",
+        "Voltaje mín. (Voltage min.)": "5",
+        "Rdto. (EffiC.)": "84",
+        "cdt": "16",
+        "Ø Acce.": "50",
+        "Kg.": "0.60",
+        "Fijación (Mounting)": "M5x45 mm."
+       },
+       "raw_row": "40 79 33 5 84 16 50 0.60 M5x45 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "40 VA (Ø 83 mm, height 26 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "40",
+        "Ø mm.": "83",
+        "Altura mm. (Height mm.)": "26",
+        "Voltaje mín. (Voltage min.)": "5",
+        "Rdto. (EffiC.)": "84",
+        "cdt": "16",
+        "Ø Acce.": "65",
+        "Kg.": "0.70",
+        "Fijación (Mounting)": "M5x35 mm."
+       },
+       "raw_row": "40 83 26 5 84 16 65 0.70 M5x35 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "50 VA (Ø 70 mm, height 43 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "50",
+        "Ø mm.": "70",
+        "Altura mm. (Height mm.)": "43",
+        "Voltaje mín. (Voltage min.)": "5",
+        "Rdto. (EffiC.)": "85",
+        "cdt": "15",
+        "Ø Acce.": "50",
+        "Kg.": "0.70",
+        "Fijación (Mounting)": "M5x55 mm."
+       },
+       "raw_row": "50 70 43 5 85 15 50 0.70 M5x55 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "50 VA (Ø 79 mm, height 34 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "50",
+        "Ø mm.": "79",
+        "Altura mm. (Height mm.)": "34",
+        "Voltaje mín. (Voltage min.)": "5",
+        "Rdto. (EffiC.)": "85",
+        "cdt": "15",
+        "Ø Acce.": "65",
+        "Kg.": "0.75",
+        "Fijación (Mounting)": "M5x45 mm."
+       },
+       "raw_row": "50 79 34 5 85 15 65 0.75 M5x45 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "50 VA (Ø 94 mm, height 27 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "50",
+        "Ø mm.": "94",
+        "Altura mm. (Height mm.)": "27",
+        "Voltaje mín. (Voltage min.)": "5",
+        "Rdto. (EffiC.)": "85",
+        "cdt": "15",
+        "Ø Acce.": "65",
+        "Kg.": "0.8",
+        "Fijación (Mounting)": "M5x35 mm."
+       },
+       "raw_row": "50 94 27 5 85 15 65 0.8 M5x35 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "60 VA (Ø 79 mm, height 38 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "60",
+        "Ø mm.": "79",
+        "Altura mm. (Height mm.)": "38",
+        "Voltaje mín. (Voltage min.)": "6",
+        "Rdto. (EffiC.)": "86",
+        "cdt": "14",
+        "Ø Acce.": "65",
+        "Kg.": "0.85",
+        "Fijación (Mounting)": "M6x55 mm."
+       },
+       "raw_row": "60 79 38 6 86 14 65 0.85 M6x55 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "60 VA (Ø 87 mm, height 34 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "60",
+        "Ø mm.": "87",
+        "Altura mm. (Height mm.)": "34",
+        "Voltaje mín. (Voltage min.)": "6",
+        "Rdto. (EffiC.)": "86",
+        "cdt": "14",
+        "Ø Acce.": "65",
+        "Kg.": "0.90",
+        "Fijación (Mounting)": "M6x50 mm."
+       },
+       "raw_row": "60 87 34 6 86 14 65 0.90 M6x50 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "80 VA (Ø 90 mm, height 38 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "80",
+        "Ø mm.": "90",
+        "Altura mm. (Height mm.)": "38",
+        "Voltaje mín. (Voltage min.)": "7",
+        "Rdto. (EffiC.)": "86",
+        "cdt": "13",
+        "Ø Acce.": "65",
+        "Kg.": "0.90",
+        "Fijación (Mounting)": "M6x50 mm."
+       },
+       "raw_row": "80 90 38 7 86 13 65 0.90 M6x50 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "80 VA (Ø 99 mm, height 34 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "80",
+        "Ø mm.": "99",
+        "Altura mm. (Height mm.)": "34",
+        "Voltaje mín. (Voltage min.)": "7",
+        "Rdto. (EffiC.)": "86",
+        "cdt": "13",
+        "Ø Acce.": "80",
+        "Kg.": "1.00",
+        "Fijación (Mounting)": "M6x50 mm."
+       },
+       "raw_row": "80 99 34 7 86 13 80 1.00 M6x50 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "100 VA (Ø 90 mm, height 45 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "100",
+        "Ø mm.": "90",
+        "Altura mm. (Height mm.)": "45",
+        "Voltaje mín. (Voltage min.)": "8",
+        "Rdto. (EffiC.)": "87",
+        "cdt": "12",
+        "Ø Acce.": "65",
+        "Kg.": "1.25",
+        "Fijación (Mounting)": "M6x55 mm."
+       },
+       "raw_row": "100 90 45 8 87 12 65 1.25 M6x55 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "100 VA (Ø 100 mm, height 38 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "100",
+        "Ø mm.": "100",
+        "Altura mm. (Height mm.)": "38",
+        "Voltaje mín. (Voltage min.)": "8",
+        "Rdto. (EffiC.)": "87",
+        "cdt": "12",
+        "Ø Acce.": "80",
+        "Kg.": "1.30",
+        "Fijación (Mounting)": "M6x50 mm."
+       },
+       "raw_row": "100 100 38 8 87 12 80 1.30 M6x50 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "120 VA (Ø 100 mm, height 40 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "120",
+        "Ø mm.": "100",
+        "Altura mm. (Height mm.)": "40",
+        "Voltaje mín. (Voltage min.)": "9",
+        "Rdto. (EffiC.)": "87",
+        "cdt": "11",
+        "Ø Acce.": "80",
+        "Kg.": "1.40",
+        "Fijación (Mounting)": "M6x55 mm."
+       },
+       "raw_row": "120 100 40 9 87 11 80 1.40 M6x55 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "120 VA (Ø 110 mm, height 38 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "120",
+        "Ø mm.": "110",
+        "Altura mm. (Height mm.)": "38",
+        "Voltaje mín. (Voltage min.)": "8",
+        "Rdto. (EffiC.)": "87",
+        "cdt": "11",
+        "Ø Acce.": "80",
+        "Kg.": "1.45",
+        "Fijación (Mounting)": "M6x50 mm."
+       },
+       "raw_row": "120 110 38 8 87 11 80 1.45 M6x50 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "150 VA (Ø 100 mm, height 44 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "150",
+        "Ø mm.": "100",
+        "Altura mm. (Height mm.)": "44",
+        "Voltaje mín. (Voltage min.)": "10",
+        "Rdto. (EffiC.)": "88",
+        "cdt": "10",
+        "Ø Acce.": "80",
+        "Kg.": "1.60",
+        "Fijación (Mounting)": "M6x60 mm."
+       },
+       "raw_row": "150 100 44 10 88 10 80 1.60 M6x60 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "150 VA (Ø 120 mm, height 33 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "150",
+        "Ø mm.": "120",
+        "Altura mm. (Height mm.)": "33",
+        "Voltaje mín. (Voltage min.)": "10",
+        "Rdto. (EffiC.)": "88",
+        "cdt": "10",
+        "Ø Acce.": "80",
+        "Kg.": "1.70",
+        "Fijación (Mounting)": "M6x50 mm."
+       },
+       "raw_row": "150 120 33 10 88 10 80 1.70 M6x50 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "160 VA (Ø 113 mm, height 43 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "160",
+        "Ø mm.": "113",
+        "Altura mm. (Height mm.)": "43",
+        "Voltaje mín. (Voltage min.)": "9",
+        "Rdto. (EffiC.)": "80",
+        "cdt": "10",
+        "Ø Acce.": "80",
+        "Kg.": "1.65",
+        "Fijación (Mounting)": "M6x55 mm."
+       },
+       "raw_row": "160 113 43 9 80 10 80 1.65 M6x55 mm.",
+       "confidence": "media"
+      },
+      {
+       "reference": "200 VA (Ø 110 mm, height 42 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "200",
+        "Ø mm.": "110",
+        "Altura mm. (Height mm.)": "42",
+        "Voltaje mín. (Voltage min.)": "10",
+        "Rdto. (EffiC.)": "89",
+        "cdt": "9",
+        "Ø Acce.": "80",
+        "Kg.": "1.80",
+        "Fijación (Mounting)": "M6x60 mm."
+       },
+       "raw_row": "200 110 42 10 89 9 80 1.80 M6x60 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "250 VA (Ø 120 mm, height 52 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "250",
+        "Ø mm.": "120",
+        "Altura mm. (Height mm.)": "52",
+        "Voltaje mín. (Voltage min.)": "10",
+        "Rdto. (EffiC.)": "89",
+        "cdt": "9",
+        "Ø Acce.": "80",
+        "Kg.": "2.00",
+        "Fijación (Mounting)": "M6x70 mm."
+       },
+       "raw_row": "250 120 52 10 89 9 80 2.00 M6x70 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "300 VA (Ø 120 mm, height 62 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "300",
+        "Ø mm.": "120",
+        "Altura mm. (Height mm.)": "62",
+        "Voltaje mín. (Voltage min.)": "12",
+        "Rdto. (EffiC.)": "90",
+        "cdt": "9",
+        "Ø Acce.": "80",
+        "Kg.": "2.80",
+        "Fijación (Mounting)": "M6x80 mm."
+       },
+       "raw_row": "300 120 62 12 90 9 80 2.80 M6x80 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "300 VA (Ø 123 mm, height 58 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "300",
+        "Ø mm.": "123",
+        "Altura mm. (Height mm.)": "58",
+        "Voltaje mín. (Voltage min.)": "13",
+        "Rdto. (EffiC.)": "90",
+        "cdt": "9",
+        "Ø Acce.": "80",
+        "Kg.": "3.00",
+        "Fijación (Mounting)": "M6x80 mm."
+       },
+       "raw_row": "300 123 58 13 90 9 80 3.00 M6x80 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "300 VA (Ø 135 mm, height 55 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "300",
+        "Ø mm.": "135",
+        "Altura mm. (Height mm.)": "55",
+        "Voltaje mín. (Voltage min.)": "12",
+        "Rdto. (EffiC.)": "90",
+        "cdt": "9",
+        "Ø Acce.": "100",
+        "Kg.": "3.50",
+        "Fijación (Mounting)": "M6x70 mm."
+       },
+       "raw_row": "300 135 55 12 90 9 100 3.50 M6x70 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "330 VA (Ø 125 mm, height 62 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "330",
+        "Ø mm.": "125",
+        "Altura mm. (Height mm.)": "62",
+        "Voltaje mín. (Voltage min.)": "12",
+        "Rdto. (EffiC.)": "90",
+        "cdt": "9",
+        "Ø Acce.": "80",
+        "Kg.": "3.00",
+        "Fijación (Mounting)": "M6x80 mm."
+       },
+       "raw_row": "330 125 62 12 90 9 80 3.00 M6x80 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "400 VA (Ø 150 mm, height 50 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "400",
+        "Ø mm.": "150",
+        "Altura mm. (Height mm.)": "50",
+        "Voltaje mín. (Voltage min.)": "13",
+        "Rdto. (EffiC.)": "91",
+        "cdt": "8",
+        "Ø Acce.": "100",
+        "Kg.": "3.90",
+        "Fijación (Mounting)": "M8x70 mm."
+       },
+       "raw_row": "400 150 50 13 91 8 100 3.90 M8x70 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "500 VA (Ø 150 mm, height 60 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "500",
+        "Ø mm.": "150",
+        "Altura mm. (Height mm.)": "60",
+        "Voltaje mín. (Voltage min.)": "15",
+        "Rdto. (EffiC.)": "92",
+        "cdt": "8",
+        "Ø Acce.": "100",
+        "Kg.": "4.40",
+        "Fijación (Mounting)": "M8x80 mm."
+       },
+       "raw_row": "500 150 60 15 92 8 100 4.40 M8x80 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "600 VA (Ø 150 mm, height 70 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "600",
+        "Ø mm.": "150",
+        "Altura mm. (Height mm.)": "70",
+        "Voltaje mín. (Voltage min.)": "15",
+        "Rdto. (EffiC.)": "93",
+        "cdt": "8",
+        "Ø Acce.": "100",
+        "Kg.": "5.70",
+        "Fijación (Mounting)": "M8x90 mm."
+       },
+       "raw_row": "600 150 70 15 93 8 100 5.70 M8x90 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "750 VA (Ø 165 mm, height 67 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "750",
+        "Ø mm.": "165",
+        "Altura mm. (Height mm.)": "67",
+        "Voltaje mín. (Voltage min.)": "18",
+        "Rdto. (EffiC.)": "93",
+        "cdt": "7",
+        "Ø Acce.": "127",
+        "Kg.": "6.00",
+        "Fijación (Mounting)": "M8x90 mm."
+       },
+       "raw_row": "750 165 67 18 93 7 127 6.00 M8x90 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1.000 VA (Ø 165 mm, height 77 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "1.000",
+        "Ø mm.": "165",
+        "Altura mm. (Height mm.)": "77",
+        "Voltaje mín. (Voltage min.)": "22",
+        "Rdto. (EffiC.)": "93",
+        "cdt": "7",
+        "Ø Acce.": "127",
+        "Kg.": "7.10",
+        "Fijación (Mounting)": "M8x100 mm."
+       },
+       "raw_row": "1.000 165 77 22 93 7 127 7.10 M8x100 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1.200 VA (Ø 170 mm, height 95 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "1.200",
+        "Ø mm.": "170",
+        "Altura mm. (Height mm.)": "95",
+        "Voltaje mín. (Voltage min.)": "22",
+        "Rdto. (EffiC.)": "94",
+        "cdt": "6",
+        "Ø Acce.": "140",
+        "Kg.": "9.70",
+        "Fijación (Mounting)": "M8x110 mm."
+       },
+       "raw_row": "1.200 170 95 22 94 6 140 9.70 M8x110 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1.500 VA (Ø 185 mm, height 90 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "1.500",
+        "Ø mm.": "185",
+        "Altura mm. (Height mm.)": "90",
+        "Voltaje mín. (Voltage min.)": "24",
+        "Rdto. (EffiC.)": "94",
+        "cdt": "6",
+        "Ø Acce.": "140",
+        "Kg.": "10.80",
+        "Fijación (Mounting)": "M8x110 mm."
+       },
+       "raw_row": "1.500 185 90 24 94 6 140 10.80 M8x110 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1.500 VA (Ø 220 mm, height 70 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "1.500",
+        "Ø mm.": "220",
+        "Altura mm. (Height mm.)": "70",
+        "Voltaje mín. (Voltage min.)": "24",
+        "Rdto. (EffiC.)": "94",
+        "cdt": "6",
+        "Ø Acce.": "140",
+        "Kg.": "12.34",
+        "Fijación (Mounting)": "M8x90 mm."
+       },
+       "raw_row": "1.500 220 70 24 94 6 140 12.34 M8x90 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2.000 VA (Ø 250 mm, height 80 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "2.000",
+        "Ø mm.": "250",
+        "Altura mm. (Height mm.)": "80",
+        "Voltaje mín. (Voltage min.)": "30",
+        "Rdto. (EffiC.)": "95",
+        "cdt": "6",
+        "Ø Acce.": "En. Int.",
+        "Kg.": "15.00",
+        "Fijación (Mounting)": "M10x100 mm."
+       },
+       "raw_row": "2.000 250 80 30 95 6 En. Int. 15.00 M10x100 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2.500 VA (Ø 255 mm, height 85 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "2.500",
+        "Ø mm.": "255",
+        "Altura mm. (Height mm.)": "85",
+        "Voltaje mín. (Voltage min.)": "35",
+        "Rdto. (EffiC.)": "95",
+        "cdt": "5",
+        "Ø Acce.": "En. Int.",
+        "Kg.": "18.00",
+        "Fijación (Mounting)": "M10x110 mm."
+       },
+       "raw_row": "2.500 255 85 35 95 5 En. Int. 18.00 M10x110 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3.000 VA (Ø 260 mm, height 105 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "3.000",
+        "Ø mm.": "260",
+        "Altura mm. (Height mm.)": "105",
+        "Voltaje mín. (Voltage min.)": "40",
+        "Rdto. (EffiC.)": "95",
+        "cdt": "4",
+        "Ø Acce.": "En. Int.",
+        "Kg.": "23.00",
+        "Fijación (Mounting)": "M10x130 mm."
+       },
+       "raw_row": "3.000 260 105 40 95 4 En. Int. 23.00 M10x130 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "4.000 VA (Ø 270 mm, height 115 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "4.000",
+        "Ø mm.": "270",
+        "Altura mm. (Height mm.)": "115",
+        "Voltaje mín. (Voltage min.)": "50",
+        "Rdto. (EffiC.)": "96",
+        "cdt": "3",
+        "Ø Acce.": "En. Int.",
+        "Kg.": "28.00",
+        "Fijación (Mounting)": "M12x140 mm."
+       },
+       "raw_row": "4.000 270 115 50 96 3 En. Int. 28.00 M12x140 mm.",
+       "confidence": "alta"
+      },
+      {
+       "reference": "5.000 VA (Ø 280 mm, height 125 mm)",
+       "page": 39,
+       "specs": {
+        "VA": "5.000",
+        "Ø mm.": "280",
+        "Altura mm. (Height mm.)": "125",
+        "Voltaje mín. (Voltage min.)": "60",
+        "Rdto. (EffiC.)": "96",
+        "cdt": "2",
+        "Ø Acce.": "En. Int.",
+        "Kg.": "33.00",
+        "Fijación (Mounting)": "M12x160 mm."
+       },
+       "raw_row": "5.000 280 125 60 96 2 En. Int. 33.00 M12x160 mm.",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "screens, thermal winding protectors and other configurations (by order)",
+      "epoxy-filled center version drawn ('ENCAPSULADO CENTRAL / EPOXY-FILLED CENTER')"
+     ],
+     "ordering_info": "The table has no reference codes; each row is identified by VA + Ø + height (the reference of this JSON is a descriptive label, not a code of the PDF)."
+    },
+    {
+     "family": "TT Series (Standard, in stock)",
+     "series": "TT",
+     "page": 40,
+     "description": "This series is made for a 230V primary and two identical secondaries, that can be connected in series or parallel and to double the voltage or the current, in a range of power ratings between 20VA and 220VA. They are supplied with individual boxes and the assembly accessories. The usual voltages are as in the following table. NOTE: Other voltages can be manufactured by order. Series connection: Connecting yellow with white we will obtain twice the voltage between red and black with the nominal current. Parallel connection: By connecting red with white and yellow with black we will obtain the nominal voltage with twice current. Standard length : 20Cm.",
+     "general_specs": {
+      "Table header": "Serie T.T. (Estandar, en stock) 230 V Secundarios en serie o paralelo / T.T Serie (Standard in stock) 230 V Secondaries in serially or in parallel",
+      "Primary": "230V",
+      "Secondaries": "two identical secondaries",
+      "Power range": "between 20VA and 220VA",
+      "Supply": "with individual boxes and the assembly accessories",
+      "Other voltages": "can be manufactured by order",
+      "Series connection": "connecting yellow with white we will obtain twice the voltage between red and black with the nominal current",
+      "Parallel connection": "by connecting red with white and yellow with black we will obtain the nominal voltage with twice current",
+      "Standard length": "20Cm",
+      "Connection diagram (image)": "terminals labelled Blue (two, left side), Red, Yellow, White and Black (right side)",
+      "Units given in the headers": "Ø and Altura in mm; Cdt in %; Kg.; Fijación as metric thread and length, e.g. 'M4x35'"
+     },
+     "models": [
+      {
+       "reference": "TT0020210",
+       "page": 40,
+       "specs": {
+        "VA": "20",
+        "V": "2x10",
+        "A": "2x1",
+        "Rdto. (EffiC.)": "82",
+        "Cdt %": "18",
+        "Ø mm.": "67",
+        "Altura mm (Height mm.)": "32",
+        "Kg.": "0.4",
+        "Fijación (Mounting)": "M4x35"
+       },
+       "raw_row": "TT0020210 20 2x10 2x1 82 18 67 32 0.4 M4x35",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0020212",
+       "page": 40,
+       "specs": {
+        "VA": "20",
+        "V": "2x12",
+        "A": "2x0.83",
+        "Rdto. (EffiC.)": "82",
+        "Cdt %": "18",
+        "Ø mm.": "67",
+        "Altura mm (Height mm.)": "32",
+        "Kg.": "0.4",
+        "Fijación (Mounting)": "M4x35"
+       },
+       "raw_row": "TT0020212 20 2x12 2x0.83 82 18 67 32 0.4 M4x35",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0020215",
+       "page": 40,
+       "specs": {
+        "VA": "20",
+        "V": "2x15",
+        "A": "2x0.66",
+        "Rdto. (EffiC.)": "82",
+        "Cdt %": "18",
+        "Ø mm.": "67",
+        "Altura mm (Height mm.)": "32",
+        "Kg.": "0.4",
+        "Fijación (Mounting)": "M4x35"
+       },
+       "raw_row": "TT0020215 20 2x15 2x0.66 82 18 67 32 0.4 M4x35",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0030210",
+       "page": 40,
+       "specs": {
+        "VA": "30",
+        "V": "2x10",
+        "A": "2x1.5",
+        "Rdto. (EffiC.)": "83",
+        "Cdt %": "17",
+        "Ø mm.": "69",
+        "Altura mm (Height mm.)": "36",
+        "Kg.": "0.5",
+        "Fijación (Mounting)": "M5x40"
+       },
+       "raw_row": "TT0030210 30 2x10 2x1.5 83 17 69 36 0.5 M5x40",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0030212",
+       "page": 40,
+       "specs": {
+        "VA": "30",
+        "V": "2x12",
+        "A": "2x1.25",
+        "Rdto. (EffiC.)": "83",
+        "Cdt %": "17",
+        "Ø mm.": "69",
+        "Altura mm (Height mm.)": "36",
+        "Kg.": "0.5",
+        "Fijación (Mounting)": "M5x40"
+       },
+       "raw_row": "TT0030212 30 2x12 2x1.25 83 17 69 36 0.5 M5x40",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0030215",
+       "page": 40,
+       "specs": {
+        "VA": "30",
+        "V": "2x15",
+        "A": "2x1",
+        "Rdto. (EffiC.)": "83",
+        "Cdt %": "17",
+        "Ø mm.": "69",
+        "Altura mm (Height mm.)": "36",
+        "Kg.": "0.5",
+        "Fijación (Mounting)": "M5x40"
+       },
+       "raw_row": "TT0030215 30 2x15 2x1 83 17 69 36 0.5 M5x40",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0030218",
+       "page": 40,
+       "specs": {
+        "VA": "30",
+        "V": "2x18",
+        "A": "2x0.83",
+        "Rdto. (EffiC.)": "83",
+        "Cdt %": "17",
+        "Ø mm.": "69",
+        "Altura mm (Height mm.)": "36",
+        "Kg.": "0.5",
+        "Fijación (Mounting)": "M5x40"
+       },
+       "raw_row": "TT0030218 30 2x18 2x0.83 83 17 69 36 0.5 M5x40",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0050210",
+       "page": 40,
+       "specs": {
+        "VA": "50",
+        "V": "2x10",
+        "A": "2x2.5",
+        "Rdto. (EffiC.)": "85",
+        "Cdt %": "15",
+        "Ø mm.": "79",
+        "Altura mm (Height mm.)": "34",
+        "Kg.": "0.7",
+        "Fijación (Mounting)": "M5x40"
+       },
+       "raw_row": "TT0050210 50 2x10 2x2.5 85 15 79 34 0.7 M5x40",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0050212",
+       "page": 40,
+       "specs": {
+        "VA": "50",
+        "V": "2x12",
+        "A": "2x2.08",
+        "Rdto. (EffiC.)": "85",
+        "Cdt %": "15",
+        "Ø mm.": "79",
+        "Altura mm (Height mm.)": "34",
+        "Kg.": "0.7",
+        "Fijación (Mounting)": "M5x40"
+       },
+       "raw_row": "TT0050212 50 2x12 2x2.08 85 15 79 34 0.7 M5x40",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0050215",
+       "page": 40,
+       "specs": {
+        "VA": "50",
+        "V": "2x15",
+        "A": "2x1.66",
+        "Rdto. (EffiC.)": "85",
+        "Cdt %": "15",
+        "Ø mm.": "79",
+        "Altura mm (Height mm.)": "34",
+        "Kg.": "0.7",
+        "Fijación (Mounting)": "M5x40"
+       },
+       "raw_row": "TT0050215 50 2x15 2x1.66 85 15 79 34 0.7 M5x40",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0050218",
+       "page": 40,
+       "specs": {
+        "VA": "50",
+        "V": "2x18",
+        "A": "2x1.38",
+        "Rdto. (EffiC.)": "85",
+        "Cdt %": "15",
+        "Ø mm.": "79",
+        "Altura mm (Height mm.)": "34",
+        "Kg.": "0.7",
+        "Fijación (Mounting)": "M5x40"
+       },
+       "raw_row": "TT0050218 50 2x18 2x1.38 85 15 79 34 0.7 M5x40",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0080210",
+       "page": 40,
+       "specs": {
+        "VA": "80",
+        "V": "2x10",
+        "A": "2x4",
+        "Rdto. (EffiC.)": "86",
+        "Cdt %": "13",
+        "Ø mm.": "89",
+        "Altura mm (Height mm.)": "35",
+        "Kg.": "0.9",
+        "Fijación (Mounting)": "M6x45"
+       },
+       "raw_row": "TT0080210 80 2x10 2x4 86 13 89 35 0.9 M6x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0080212",
+       "page": 40,
+       "specs": {
+        "VA": "80",
+        "V": "2x12",
+        "A": "2x3.33",
+        "Rdto. (EffiC.)": "86",
+        "Cdt %": "13",
+        "Ø mm.": "89",
+        "Altura mm (Height mm.)": "35",
+        "Kg.": "0.9",
+        "Fijación (Mounting)": "M6x45"
+       },
+       "raw_row": "TT0080212 80 2x12 2x3.33 86 13 89 35 0.9 M6x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0080215",
+       "page": 40,
+       "specs": {
+        "VA": "80",
+        "V": "2x15",
+        "A": "2x2.66",
+        "Rdto. (EffiC.)": "86",
+        "Cdt %": "13",
+        "Ø mm.": "89",
+        "Altura mm (Height mm.)": "35",
+        "Kg.": "0.9",
+        "Fijación (Mounting)": "M6x45"
+       },
+       "raw_row": "TT0080215 80 2x15 2x2.66 86 13 89 35 0.9 M6x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0080218",
+       "page": 40,
+       "specs": {
+        "VA": "80",
+        "V": "2x18",
+        "A": "2x2.22",
+        "Rdto. (EffiC.)": "86",
+        "Cdt %": "13",
+        "Ø mm.": "89",
+        "Altura mm (Height mm.)": "35",
+        "Kg.": "0.9",
+        "Fijación (Mounting)": "M6x45"
+       },
+       "raw_row": "TT0080218 80 2x18 2x2.22 86 13 89 35 0.9 M6x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0100212",
+       "page": 40,
+       "specs": {
+        "VA": "100",
+        "V": "2x12",
+        "A": "2x4.16",
+        "Rdto. (EffiC.)": "87",
+        "Cdt %": "12",
+        "Ø mm.": "100",
+        "Altura mm (Height mm.)": "38",
+        "Kg.": "1.3",
+        "Fijación (Mounting)": "M6x45"
+       },
+       "raw_row": "TT0100212 100 2x12 2x4.16 87 12 100 38 1.3 M6x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0100215",
+       "page": 40,
+       "specs": {
+        "VA": "100",
+        "V": "2x15",
+        "A": "2x3.33",
+        "Rdto. (EffiC.)": "87",
+        "Cdt %": "12",
+        "Ø mm.": "100",
+        "Altura mm (Height mm.)": "38",
+        "Kg.": "1.3",
+        "Fijación (Mounting)": "M6x45"
+       },
+       "raw_row": "TT0100215 100 2x15 2x3.33 87 12 100 38 1.3 M6x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0100222",
+       "page": 40,
+       "specs": {
+        "VA": "100",
+        "V": "2x22",
+        "A": "2x2.27",
+        "Rdto. (EffiC.)": "87",
+        "Cdt %": "12",
+        "Ø mm.": "100",
+        "Altura mm (Height mm.)": "38",
+        "Kg.": "1.3",
+        "Fijación (Mounting)": "M6x45"
+       },
+       "raw_row": "TT0100222 100 2x22 2x2.27 87 12 100 38 1.3 M6x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0120212",
+       "page": 40,
+       "specs": {
+        "VA": "120",
+        "V": "2x12",
+        "A": "2x5",
+        "Rdto. (EffiC.)": "87",
+        "Cdt %": "11",
+        "Ø mm.": "110",
+        "Altura mm (Height mm.)": "38",
+        "Kg.": "1.4",
+        "Fijación (Mounting)": "M6x45"
+       },
+       "raw_row": "TT0120212 120 2x12 2x5 87 11 110 38 1.4 M6x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0120215",
+       "page": 40,
+       "specs": {
+        "VA": "120",
+        "V": "2x15",
+        "A": "2x4",
+        "Rdto. (EffiC.)": "87",
+        "Cdt %": "11",
+        "Ø mm.": "110",
+        "Altura mm (Height mm.)": "38",
+        "Kg.": "1.4",
+        "Fijación (Mounting)": "M6x45"
+       },
+       "raw_row": "TT0120215 120 2x15 2x4 87 11 110 38 1.4 M6x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0120222",
+       "page": 40,
+       "specs": {
+        "VA": "120",
+        "V": "2x22",
+        "A": "2x2.72",
+        "Rdto. (EffiC.)": "87",
+        "Cdt %": "11",
+        "Ø mm.": "110",
+        "Altura mm (Height mm.)": "38",
+        "Kg.": "1.4",
+        "Fijación (Mounting)": "M6x45"
+       },
+       "raw_row": "TT0120222 120 2x22 2x2.72 87 11 110 38 1.4 M6x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0160212",
+       "page": 40,
+       "specs": {
+        "VA": "160",
+        "V": "2x12",
+        "A": "2x6.66",
+        "Rdto. (EffiC.)": "88",
+        "Cdt %": "10",
+        "Ø mm.": "113",
+        "Altura mm (Height mm.)": "43",
+        "Kg.": "1.7",
+        "Fijación (Mounting)": "M6x50"
+       },
+       "raw_row": "TT0160212 160 2x12 2x6.66 88 10 113 43 1.7 M6x50",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0160215",
+       "page": 40,
+       "specs": {
+        "VA": "160",
+        "V": "2x15",
+        "A": "2x5.33",
+        "Rdto. (EffiC.)": "88",
+        "Cdt %": "10",
+        "Ø mm.": "113",
+        "Altura mm (Height mm.)": "43",
+        "Kg.": "1.7",
+        "Fijación (Mounting)": "M6x50"
+       },
+       "raw_row": "TT0160215 160 2x15 2x5.33 88 10 113 43 1.7 M6x50",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0160222",
+       "page": 40,
+       "specs": {
+        "VA": "160",
+        "V": "2x22",
+        "A": "2x3.63",
+        "Rdto. (EffiC.)": "88",
+        "Cdt %": "10",
+        "Ø mm.": "113",
+        "Altura mm (Height mm.)": "43",
+        "Kg.": "1.7",
+        "Fijación (Mounting)": "M6x50"
+       },
+       "raw_row": "TT0160222 160 2x22 2x3.63 88 10 113 43 1.7 M6x50",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0220215",
+       "page": 40,
+       "specs": {
+        "VA": "220",
+        "V": "2x15",
+        "A": "2x7.33",
+        "Rdto. (EffiC.)": "89",
+        "Cdt %": "9",
+        "Ø mm.": "120",
+        "Altura mm (Height mm.)": "52",
+        "Kg.": "2",
+        "Fijación (Mounting)": "M6x55"
+       },
+       "raw_row": "TT0220215 220 2x15 2x7.33 89 9 120 52 2 M6x55",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0220222",
+       "page": 40,
+       "specs": {
+        "VA": "220",
+        "V": "2x22",
+        "A": "2x5",
+        "Rdto. (EffiC.)": "89",
+        "Cdt %": "9",
+        "Ø mm.": "120",
+        "Altura mm (Height mm.)": "52",
+        "Kg.": "2",
+        "Fijación (Mounting)": "M6x55"
+       },
+       "raw_row": "TT0220222 220 2x22 2x5 89 9 120 52 2 M6x55",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0220230",
+       "page": 40,
+       "specs": {
+        "VA": "220",
+        "V": "2x30",
+        "A": "2x3.66",
+        "Rdto. (EffiC.)": "89",
+        "Cdt %": "9",
+        "Ø mm.": "120",
+        "Altura mm (Height mm.)": "52",
+        "Kg.": "2",
+        "Fijación (Mounting)": "M6x55"
+       },
+       "raw_row": "TT0220230 220 2x30 2x3.66 89 9 120 52 2 M6x55",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TT0220235",
+       "page": 40,
+       "specs": {
+        "VA": "220",
+        "V": "2x35",
+        "A": "2x3.14",
+        "Rdto. (EffiC.)": "89",
+        "Cdt %": "9",
+        "Ø mm.": "120",
+        "Altura mm (Height mm.)": "52",
+        "Kg.": "2",
+        "Fijación (Mounting)": "M6x55"
+       },
+       "raw_row": "TT0220235 220 2x35 2x3.14 89 9 120 52 2 M6x55",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "individual boxes and assembly accessories (included in the supply)",
+      "metallic disc for mounting (see table 'Ø Discos metálicos/ metallic disc')"
+     ],
+     "ordering_info": "The series code is the CODIGO/CODE column of the table (e.g. TT0020210); the PDF does not explain how the code is composed."
+    },
+    {
+     "family": "TE Series (Resin packed)",
+     "series": "TE",
+     "page": 41,
+     "description": "These are transformers of the TT series, packed into PVC boxes and filled with epoxi resin, which allow the extension of the useful life and improve the insulation of the transformer. These are ideal for dusty or humid atmospheres.",
+     "general_specs": {
+      "Table header": "Transformadores encapsulados en cajas / Transformers packed in casing",
+      "Construction": "TT series transformers packed into PVC boxes and filled with epoxi resin",
+      "Application": "ideal for dusty or humid atmospheres",
+      "Drawing (image)": "labels ALT, Ø and TOR",
+      "Units given in the headers": "Ø and Altura in mm; Kg.; Fijación as metric thread and length, e.g. 'M5x45'"
+     },
+     "models": [
+      {
+       "reference": "TE Series - 15 VA (Ø 73 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "15",
+        "Ø mm.": "73",
+        "Altura mm (Height mm.)": "35.4",
+        "Kg.": "0.5",
+        "Fijación (Mounting)": "M5x45"
+       },
+       "raw_row": "15 73 35.4 0.5 M5x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 20 VA (Ø 73 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "20",
+        "Ø mm.": "73",
+        "Altura mm (Height mm.)": "35.4",
+        "Kg.": "0.5",
+        "Fijación (Mounting)": "M5x45"
+       },
+       "raw_row": "20 73 35.4 0.5 M5x45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 30 VA (Ø 73 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "30",
+        "Ø mm.": "73",
+        "Altura mm (Height mm.)": "39.1",
+        "Kg.": "0.6",
+        "Fijación (Mounting)": "M5x50"
+       },
+       "raw_row": "30 73 39.1 0.6 M5x50",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 40 VA (Ø 81.5 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "40",
+        "Ø mm.": "81.5",
+        "Altura mm (Height mm.)": "39.1",
+        "Kg.": "0.7",
+        "Fijación (Mounting)": "M5x50"
+       },
+       "raw_row": "40 81.5 39.1 0.7 M5x50",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 50 VA (Ø 81.5 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "50",
+        "Ø mm.": "81.5",
+        "Altura mm (Height mm.)": "39.1",
+        "Kg.": "0.7",
+        "Fijación (Mounting)": "M5x50"
+       },
+       "raw_row": "50 81.5 39.1 0.7 M5x50",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 60 VA (Ø 87.3 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "60",
+        "Ø mm.": "87.3",
+        "Altura mm (Height mm.)": "41.7",
+        "Kg.": "0.9",
+        "Fijación (Mounting)": "M5x55"
+       },
+       "raw_row": "60 87.3 41.7 0.9 M5x55",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 60 VA (Ø 91 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "60",
+        "Ø mm.": "91",
+        "Altura mm (Height mm.)": "40.5",
+        "Kg.": "0.9",
+        "Fijación (Mounting)": "M5x55"
+       },
+       "raw_row": "60 91 40.5 0.9 M5x55",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 80 VA (Ø 96.7 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "80",
+        "Ø mm.": "96.7",
+        "Altura mm (Height mm.)": "37.1",
+        "Kg.": "1",
+        "Fijación (Mounting)": "M6x50"
+       },
+       "raw_row": "80 96.7 37.1 1 M6x50",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 100 VA (Ø 104.2 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "100",
+        "Ø mm.": "104.2",
+        "Altura mm (Height mm.)": "44",
+        "Kg.": "1.2",
+        "Fijación (Mounting)": "M6x60"
+       },
+       "raw_row": "100 104.2 44 1.2 M6x60",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 120 VA (Ø 104.2 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "120",
+        "Ø mm.": "104.2",
+        "Altura mm (Height mm.)": "44",
+        "Kg.": "1.2",
+        "Fijación (Mounting)": "M6x60"
+       },
+       "raw_row": "120 104.2 44 1.2 M6x60",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 150 VA (Ø 104.2 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "150",
+        "Ø mm.": "104.2",
+        "Altura mm (Height mm.)": "52.1",
+        "Kg.": "1.6",
+        "Fijación (Mounting)": "M6x70"
+       },
+       "raw_row": "150 104.2 52.1 1.6 M6x70",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 200 VA (Ø 115 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "200",
+        "Ø mm.": "115",
+        "Altura mm (Height mm.)": "53.2",
+        "Kg.": "2",
+        "Fijación (Mounting)": "M6x70"
+       },
+       "raw_row": "200 115 53.2 2 M6x70",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 250 VA (Ø 125.4 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "250",
+        "Ø mm.": "125.4",
+        "Altura mm (Height mm.)": "52.4",
+        "Kg.": "2.1",
+        "Fijación (Mounting)": "M6x70"
+       },
+       "raw_row": "250 125.4 52.4 2.1 M6x70",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 300 VA (Ø 125.4 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "300",
+        "Ø mm.": "125.4",
+        "Altura mm (Height mm.)": "65.3",
+        "Kg.": "2.3",
+        "Fijación (Mounting)": "M6x80"
+       },
+       "raw_row": "300 125.4 65.3 2.3 M6x80",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 400 VA (Ø 139.6 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "400",
+        "Ø mm.": "139.6",
+        "Altura mm (Height mm.)": "65.7",
+        "Kg.": "3.5",
+        "Fijación (Mounting)": "M8x80"
+       },
+       "raw_row": "400 139.6 65.7 3.5 M8x80",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 500 VA (Ø 148 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "500",
+        "Ø mm.": "148",
+        "Altura mm (Height mm.)": "90",
+        "Kg.": "4.2",
+        "Fijación (Mounting)": "M8x110"
+       },
+       "raw_row": "500 148 90 4.2 M8x110",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 600 VA (Ø 151.2 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "600",
+        "Ø mm.": "151.2",
+        "Altura mm (Height mm.)": "82.8",
+        "Kg.": "6.1",
+        "Fijación (Mounting)": "M8x100"
+       },
+       "raw_row": "600 151.2 82.8 6.1 M8x100",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TE Series - 750 VA (Ø 154.4 mm)",
+       "page": 41,
+       "specs": {
+        "VA": "750",
+        "Ø mm.": "154.4",
+        "Altura mm (Height mm.)": "100.3",
+        "Kg.": "7.5",
+        "Fijación (Mounting)": "M8x110"
+       },
+       "raw_row": "750 154.4 100.3 7.5 M8x110",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "The table has no codes or voltages; each row is identified by VA and Ø (the reference of this JSON is a descriptive label, not a code of the PDF)."
+    },
+    {
+     "family": "TCI Series (packed for P.C.)",
+     "series": "TCI",
+     "page": 41,
+     "description": "These are transformers of the TT series, packed in epoxy resin, in PVC boxes which are connected internally to the pins for their use directly on printed circuits. The raster between the pins is of 5 mm and their number varies in accordance with the box size . The connections can be configured in accordance with the customers requirements.",
+     "general_specs": {
+      "Table header": "Transformadores encapsulados en cajas / Transformers packed in casing",
+      "Construction": "epoxy resin, in PVC boxes, connected internally to the pins",
+      "Application": "directly on printed circuits",
+      "Raster between the pins": "5 mm",
+      "Number of pins": "varies in accordance with the box size",
+      "Connections": "can be configured in accordance with the customers requirements",
+      "Dimensions (image)": "drawings with the dimensions A, B, C, D, E, F and G",
+      "Unit of A-G": "not printed in the PDF (only the 5 mm raster and Kg. are given)"
+     },
+     "models": [
+      {
+       "reference": "TCI Series - 15 VA",
+       "page": 41,
+       "specs": {
+        "VA": "15",
+        "A": "80",
+        "B": "63.1",
+        "C": "43.3",
+        "D": "47.3",
+        "E": "5.1",
+        "F": "5x5",
+        "G": "70",
+        "Kg.": "0.6"
+       },
+       "raw_row": "15 80 63.1 43.3 47.3 5.1 5x5 70 0.6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TCI Series - 30 VA",
+       "page": 41,
+       "specs": {
+        "VA": "30",
+        "A": "90.2",
+        "B": "73.2",
+        "C": "43.4",
+        "D": "47.4",
+        "E": "5.1",
+        "F": "7x5",
+        "G": "80",
+        "Kg.": "0.7"
+       },
+       "raw_row": "30 90.2 73.2 43.4 47.4 5.1 7x5 80 0.7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TCI Series - 60 VA",
+       "page": 41,
+       "specs": {
+        "VA": "60",
+        "A": "100",
+        "B": "83.5",
+        "C": "43.4",
+        "D": "47.4",
+        "E": "5.1",
+        "F": "9x5",
+        "G": "90",
+        "Kg.": "1"
+       },
+       "raw_row": "60 100 83.5 43.4 47.4 5.1 9x5 90 1",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TCI Series - 100 VA",
+       "page": 41,
+       "specs": {
+        "VA": "100",
+        "A": "110",
+        "B": "93.3",
+        "C": "50.5",
+        "D": "54.5",
+        "E": "6.1",
+        "F": "11x5",
+        "G": "100",
+        "Kg.": "1.3"
+       },
+       "raw_row": "100 110 93.3 50.5 54.5 6.1 11x5 100 1.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TCI Series - 200 VA",
+       "page": 41,
+       "specs": {
+        "VA": "200",
+        "A": "120",
+        "B": "103.3",
+        "C": "55.5",
+        "D": "59.5",
+        "E": "6.1",
+        "F": "13x5",
+        "G": "110",
+        "Kg.": "2.1"
+       },
+       "raw_row": "200 120 103.3 55.5 59.5 6.1 13x5 110 2.1",
+       "confidence": "alta"
+      },
+      {
+       "reference": "TCI Series - 400 VA",
+       "page": 41,
+       "specs": {
+        "VA": "400",
+        "A": "160",
+        "B": "125.6",
+        "C": "72.8",
+        "D": "76.8",
+        "E": "8.2",
+        "F": "-",
+        "G": null,
+        "Kg.": "3.8"
+       },
+       "raw_row": "400 160 125.6 72.8 76.8 8.2 - 3.8",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "connections configurable in accordance with the customers requirements"
+     ],
+     "ordering_info": "The table has no codes or voltages; each row is identified by VA (the reference of this JSON is a descriptive label, not a code of the PDF)."
+    }
+   ],
+   "tables": [
+    {
+     "page": 29,
+     "caption": "Terminology EN vs ES - binding posts, banana sockets and fuse holders (pages 29-30)",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "BINDING POST, BANANA SOCKETS & FUSE HOLDERS",
+       "BORNES HEMBRILLAS Y PORTAFUSIBLES"
+      ],
+      [
+       "ROSCA (drawing label, Spanish word kept in the EN catalogue)",
+       "ROSCA"
+      ]
+     ],
+     "notes": "Section title of pages 29 and 30. The product titles (BPB, HB, HR, HBS, HSR, PF) are identical in both catalogues."
+    },
+    {
+     "page": 31,
+     "caption": "Terminology EN vs ES - section cover",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "TOROIDAL BUFFERS",
+       "CHOQUES TOROIDALES"
+      ]
+     ],
+     "notes": "Cover page of the section (photograph of a wound toroidal buffer with two leads); it contains no data."
+    },
+    {
+     "page": 32,
+     "caption": "Terminology EN vs ES - iron powder toroidal buffers",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "TOROIDAL BUFFERS",
+       "CHOQUES TOROIDALES"
+      ],
+      [
+       "IRON POWDER TOROIDAL BUFFERS",
+       "CHOQUES TOROIDALES DE POLVO DE HIERRO"
+      ],
+      [
+       "Their main characteristics are:",
+       "Sus características principales son:"
+      ],
+      [
+       "Low dispersion of the magnetic field",
+       "Baja dispersión de campo magnético"
+      ],
+      [
+       "High efficiency",
+       "Alto rendimiento"
+      ],
+      [
+       "Low loss level over the entire range of operating frequencies",
+       "Bajas pérdidas en toda la gama de frecuencias de trabajo"
+      ],
+      [
+       "High stability with different temperatures",
+       "Alta estabilidad frente a la temperatura"
+      ],
+      [
+       "High frequency range from 10Khz to 150Khz",
+       "Amplio margen de frecuencias 10Khz a 150Khz"
+      ],
+      [
+       "DC/DC converters",
+       "convertidores CC/CC (printed 'convetidores')"
+      ],
+      [
+       "switched AC/DC sources",
+       "fuentes conmutadas CA/CC"
+      ],
+      [
+       "line filter applications",
+       "filtros de red"
+      ],
+      [
+       "electromagnetic interference filters",
+       "filtros para interferencias electromagnéticas"
+      ],
+      [
+       "low-frequency buffers range",
+       "choques de la gama de bajas frecuencias"
+      ],
+      [
+       "Reference",
+       "Referencia"
+      ],
+      [
+       "Dimensions (mm.)",
+       "Dimensiones (mm.)"
+      ]
+     ],
+     "notes": "The EN catalogue translates 'choques' as 'buffers' (see uncertain). The table headers are bilingual in both catalogues."
+    },
+    {
+     "page": 33,
+     "caption": "Terminology EN vs ES - intensity table of the buffers",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "INTENSIDAD SEGÚN MODELO/INTENSITY DEPENDIG OF TYPE",
+       "INTENSIDAD SEGÚN MODELO/INTENSITY DEPENDIG OF TYPE"
+      ],
+      [
+       "L (uH)",
+       "L (uH)"
+      ]
+     ],
+     "notes": "The title is bilingual and identical in both catalogues (including the typo 'DEPENDIG')."
+    },
+    {
+     "page": 34,
+     "caption": "Terminology EN vs ES - section cover",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "TOROIDAL CORES",
+       "NÚCLEOS TOROIDALES"
+      ]
+     ],
+     "notes": "Cover page of the section (photograph of toroidal cores); it contains no data."
+    },
+    {
+     "page": 35,
+     "caption": "Terminology EN vs ES - toroidal cores",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "TOROIDAL CORES",
+       "NÚCLEOS TOROIDALES"
+      ],
+      [
+       "CHARACTERISTICS",
+       "CARACTERÍSTICAS"
+      ],
+      [
+       "magnetic iron-silicon alloy sheet, of orientated grain",
+       "plancha magnética de aleaciones de hierro-silicio, de grano orientado"
+      ],
+      [
+       "very low loss levels",
+       "muy bajas pérdidas"
+      ],
+      [
+       "high induction saturation",
+       "alta inducción de saturación"
+      ],
+      [
+       "subjected to thermal treatment",
+       "tratados térmicamente"
+      ],
+      [
+       "magnetic permeability",
+       "permeabilidad magnética"
+      ],
+      [
+       "types M4 or M5",
+       "tipo M4 ó M5"
+      ],
+      [
+       "soldered at the end of the wound coil",
+       "soldados al final del enrollado"
+      ],
+      [
+       "polyamide-6 capsules with 30% of fibre glass",
+       "cápsulas de poliamida-6 con 30% de fibra de vidrio"
+      ],
+      [
+       "PESO (KG) / WEIGHT (KG)",
+       "PESO (KG) / WEIGHT (KG)"
+      ]
+     ],
+     "notes": "Terms only; there are no figures in this table."
+    },
+    {
+     "page": 36,
+     "caption": "Terminology EN vs ES - section cover",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "TOROIDAL TRANSFORMERS",
+       "TRANSFORMADORES TOROIDALES"
+      ]
+     ],
+     "notes": "Cover page of the section (photograph of toroidal transformers with wiring); it contains no data."
+    },
+    {
+     "page": 37,
+     "caption": "Legend of the exploded toroidal transformer photograph (components 1-13), EN list with ES equivalents",
+     "columns": [
+      "No.",
+      "EN term (this catalogue, as printed)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "1",
+       "Metallic disc",
+       "Disco metálico"
+      ],
+      [
+       "2",
+       "Sochet-pan of rubber",
+       "Arandela de caucho"
+      ],
+      [
+       "3",
+       "Out",
+       "Salida de cables"
+      ],
+      [
+       "4",
+       "Wound secondary",
+       "Bobinado secundario"
+      ],
+      [
+       "5",
+       "Kerb betwen shielded and secondary",
+       "Encintado entre apantallado y secundario"
+      ],
+      [
+       "6",
+       "Electrostatic shielded",
+       "Apantallado electroestático"
+      ],
+      [
+       "7",
+       "Kerb film polyester betwueen primary and shielded",
+       "Encintado film poliéster entre primario y apantallado"
+      ],
+      [
+       "8",
+       "Wound primary",
+       "Bobinado primario"
+      ],
+      [
+       "9",
+       "Cover toroidal with nylon",
+       "Tapa toroidal de nylon"
+      ],
+      [
+       "10",
+       "Screw, nut and socket-pans",
+       "Tornillo, tuerca y arandelas"
+      ],
+      [
+       "11",
+       "Magnetic core",
+       "Núcleo magnético"
+      ],
+      [
+       "12",
+       "Thermostat",
+       "Termostato"
+      ],
+      [
+       "13",
+       "Final kerb or foreing covering",
+       "Encintado final"
+      ]
+     ],
+     "notes": "Legend of a photograph with overlaid numbers; no further figures (materials, thicknesses). The EN terms are kept with their typos."
+    },
+    {
+     "page": 37,
+     "caption": "Axes of the efficiency chart (curves 1 KVA, 300 VA and 30 VA)",
+     "columns": [
+      "Axis",
+      "Axis marks"
+     ],
+     "rows": [
+      [
+       "X: % Poténcia nominal",
+       "0, 20, 40, 60, 80, 100"
+      ],
+      [
+       "Y: % Poténcia de salida",
+       "0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110"
+      ]
+     ],
+     "notes": "Only the axis labels and marks are transcribed. The curves 1 KVA, 300 VA and 30 VA have no table of values in the PDF and no figures are read from them."
+    },
+    {
+     "page": 37,
+     "caption": "Terminology EN vs ES - toroidal transformers, presentation and characteristics",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "PRESENTATION",
+       "PRESENTACIÓN"
+      ],
+      [
+       "CHARACTERISTICS",
+       "CARACTERÍSTICAS"
+      ],
+      [
+       "Efficiency",
+       "Rendimiento"
+      ],
+      [
+       "magnetic sheet metal with very low loss levels and high induction saturation",
+       "plancha magnética de grano orientado, de muy bajas pérdidas y alta inducción de saturación"
+      ],
+      [
+       "saturation values of up to 16,000 gauss",
+       "valores de saturación de hasta 16.000 gauss"
+      ],
+      [
+       "absence of intermediate metal parts, vibrations are eliminated",
+       "ausencia de entrehierros, se eliminan vibraciones (the ES text says 'entrehierros' = air gaps)"
+      ],
+      [
+       "noise caused by magnetostriction",
+       "ruido provocado por la magnetostricción"
+      ],
+      [
+       "hysteresis",
+       "histéresis"
+      ],
+      [
+       "Foucault's currents",
+       "corrientes de Foucault"
+      ]
+     ],
+     "notes": "The ES text reads 'ausencia de entrehierros' where the EN text reads 'absence of intermediate metal parts' (see uncertain)."
+    },
+    {
+     "page": 38,
+     "caption": "Axes of the no-load voltage chart",
+     "columns": [
+      "Axis",
+      "Axis marks"
+     ],
+     "rows": [
+      [
+       "X: Poténcia (VA)",
+       "0, 500, 1000, 1500, 2000, 2500, 3000"
+      ],
+      [
+       "Y: % V (en vacío)",
+       "0, 5, 10, 15, 20, 25, 30"
+      ]
+     ],
+     "notes": "Only the axis labels and marks are transcribed. The curve has no table of values in the PDF and no figures are read from it."
+    },
+    {
+     "page": 38,
+     "caption": "Terminology EN vs ES - technical specifications of the toroidal transformers",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "Technical specifications",
+       "especificaciones técnicas"
+      ],
+      [
+       "Voltage Variation \"No Load\"/\"Full Load\"",
+       "Variación de tensión vacío/carga"
+      ],
+      [
+       "Radiation",
+       "Radiación"
+      ],
+      [
+       "Electrostatic shielding",
+       "Pantallas electroestáticas"
+      ],
+      [
+       "Start up transitory electric currents",
+       "Corrientes transitorias de arranque"
+      ],
+      [
+       "Temperature increase",
+       "Incremento de temperatura"
+      ],
+      [
+       "Shape factor",
+       "Factor de forma"
+      ],
+      [
+       "Advantages",
+       "Ventajas"
+      ],
+      [
+       "slow melting fuses",
+       "fusibles de fusión lenta"
+      ],
+      [
+       "controlled starting systems",
+       "sistemas de arranque controlados"
+      ],
+      [
+       "High efficiency",
+       "Alto rendimiento"
+      ],
+      [
+       "Low noise level",
+       "Bajo nivel de ruido"
+      ],
+      [
+       "Low dispersion field",
+       "Bajo campo disperso"
+      ],
+      [
+       "Less heating",
+       "Menor calentamiento"
+      ],
+      [
+       "Low weight and size",
+       "Peso y tamaño reducidos"
+      ],
+      [
+       "Easy assembly",
+       "Facilidad de montaje"
+      ]
+     ],
+     "notes": "Terms only; there are no figures in this table."
+    },
+    {
+     "page": 39,
+     "caption": "Terminology EN vs ES - fields of application and production series",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "FIELDS OF APPLICATION",
+       "CAMPOS DE APLICACIÓN"
+      ],
+      [
+       "PRODUCTION SERIES",
+       "SERIES DE FABRICACIÓN"
+      ],
+      [
+       "Standard by order",
+       "Estándar bajo demanda (table header, bilingual in both catalogues)"
+      ],
+      [
+       "Consumer electronics",
+       "Electrónica de consumo"
+      ],
+      [
+       "Electro medicine",
+       "Electromedicina"
+      ],
+      [
+       "Converters",
+       "Convertidores"
+      ],
+      [
+       "Power supply systems",
+       "Sistemas de alimentación"
+      ],
+      [
+       "Audio systems",
+       "Sistemas de audio"
+      ],
+      [
+       "Security",
+       "Seguridad"
+      ],
+      [
+       "Telecommunications",
+       "Telecomunicaciones"
+      ],
+      [
+       "Low voltage lighting",
+       "Iluminación de baja tensión"
+      ],
+      [
+       "Any equipment that may require an optimal efficiency",
+       "Cualquier equipo que requiera un óptimo rendimiento"
+      ],
+      [
+       "Regulación motorizada (paragraph printed in Spanish in the EN catalogue)",
+       "Regulación motorizada"
+      ]
+     ],
+     "notes": "In the ES catalogue the 'SERIES DE FABRICACIÓN' block starts with a paragraph 'Regulación manual' that does not appear in the EN catalogue, and the EN 'Standard by order' paragraph does not appear in the ES one (see uncertain)."
+    },
+    {
+     "page": 40,
+     "caption": "Ø Discos metálicos / metallic disc (TT Series)",
+     "columns": [
+      "VA",
+      "Ø metallic disc"
+     ],
+     "rows": [
+      [
+       "20 VA",
+       "50 mm"
+      ],
+      [
+       "30 VA",
+       "50 mm"
+      ],
+      [
+       "50 VA",
+       "65 mm"
+      ],
+      [
+       "80 VA",
+       "65 mm"
+      ],
+      [
+       "100 VA",
+       "65 mm"
+      ],
+      [
+       "120 VA",
+       "80 mm"
+      ],
+      [
+       "160 VA",
+       "80 mm"
+      ],
+      [
+       "220 VA",
+       "80 mm"
+      ]
+     ],
+     "notes": "Table under the TT Series table; it only covers the powers 20 VA to 220 VA of the series. Identical to the ES catalogue."
+    },
+    {
+     "page": 40,
+     "caption": "Terminology EN vs ES - TT Series",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "TT Series (Standard, in stock)",
+       "Serie TT (Estándar, en stock)"
+      ],
+      [
+       "individual boxes and the assembly accessories",
+       "cajas individuales y accesorios de montaje"
+      ],
+      [
+       "NOTE: Other voltages can be manufactured by order",
+       "NOTA: Se pueden fabricar otras tensiones, bajo demanda"
+      ],
+      [
+       "Series connection",
+       "Conexión en serie"
+      ],
+      [
+       "Parallel connection",
+       "Conexión en paralelo"
+      ],
+      [
+       "twice the voltage between red and black with the nominal current",
+       "doble tensión entre rojo y negro, a la intensidad nominal"
+      ],
+      [
+       "Standard length : 20Cm.",
+       "Longitud estándar de salidas: 20Cm."
+      ],
+      [
+       "yellow / white / red / black / blue",
+       "amarillo / blanco / rojo / negro / azul"
+      ],
+      [
+       "CODIGO / CODE",
+       "CODIGO / CODE (bilingual in both)"
+      ],
+      [
+       "Metallic disc",
+       "Discos metálicos"
+      ]
+     ],
+     "notes": "Terms only; there are no figures in this table."
+    },
+    {
+     "page": 41,
+     "caption": "Terminology EN vs ES - TE and TCI Series",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "TE Series (Resin packed)",
+       "Serie TE (Encapsulado en resina)"
+      ],
+      [
+       "packed into PVC boxes and filled with epoxi resin",
+       "encapsulados con resina de epoxi, en cajas de PVC"
+      ],
+      [
+       "ideal for dusty or humid atmospheres",
+       "ideal para ambientes húmedos o con polvo"
+      ],
+      [
+       "TCI Series (packed for P.C.)",
+       "Serie TCI (encapsulado para C.I.)"
+      ],
+      [
+       "raster between the pins",
+       "raster entre pins"
+      ],
+      [
+       "Transformers packed in casing",
+       "Transformadores encapsulados en cajas (bilingual in both)"
+      ]
+     ],
+     "notes": "Terms only; there are no figures in this table."
+    }
+   ],
+   "voltage_mentions": [
+    {
+     "raw": "BPB - 30 A / 230V.",
+     "page": 29,
+     "context": "title of the binding post (current and voltage in the product name)",
+     "normalized_hint": "30 A / 230 V (AC/DC not stated)"
+    },
+    {
+     "raw": "a 230V primary and a secondary of any voltage",
+     "page": 39,
+     "context": "Standard by order series: primary 230V, any secondary voltage",
+     "normalized_hint": "230 V AC (primary); secondary any voltage"
+    },
+    {
+     "raw": "(Entrada/Input 230V)",
+     "page": 39,
+     "context": "header of the 'Estándar bajo demanda/Standad to order' table",
+     "normalized_hint": "230 V AC (input)"
+    },
+    {
+     "raw": "una señal continua de 0-10Vcc",
+     "page": 39,
+     "context": "Spanish paragraph 'Regulación motorizada': control signal of the electronic board of stabilised models",
+     "normalized_hint": "0-10 V DC (control signal)"
+    },
+    {
+     "raw": "a 230V primary and two identical secondaries",
+     "page": 40,
+     "context": "TT Series: primary and two identical secondaries",
+     "normalized_hint": "230 V AC (primary)"
+    },
+    {
+     "raw": "230 V Secundarios en serie o paralelo",
+     "page": 40,
+     "context": "header of the TT Series table",
+     "normalized_hint": "230 V AC (primary); secondaries in series or parallel"
+    },
+    {
+     "raw": "2x10",
+     "page": 40,
+     "context": "V column of the TT Series: two secondaries of 10 V (first row with this value: TT0020210)",
+     "normalized_hint": "2 x 10 V (series: double voltage; parallel: nominal voltage with double current)"
+    },
+    {
+     "raw": "2x12",
+     "page": 40,
+     "context": "V column of the TT Series: two secondaries of 12 V (first row with this value: TT0020212)",
+     "normalized_hint": "2 x 12 V (series: double voltage; parallel: nominal voltage with double current)"
+    },
+    {
+     "raw": "2x15",
+     "page": 40,
+     "context": "V column of the TT Series: two secondaries of 15 V (first row with this value: TT0020215)",
+     "normalized_hint": "2 x 15 V (series: double voltage; parallel: nominal voltage with double current)"
+    },
+    {
+     "raw": "2x18",
+     "page": 40,
+     "context": "V column of the TT Series: two secondaries of 18 V (first row with this value: TT0030218)",
+     "normalized_hint": "2 x 18 V (series: double voltage; parallel: nominal voltage with double current)"
+    },
+    {
+     "raw": "2x22",
+     "page": 40,
+     "context": "V column of the TT Series: two secondaries of 22 V (first row with this value: TT0100222)",
+     "normalized_hint": "2 x 22 V (series: double voltage; parallel: nominal voltage with double current)"
+    },
+    {
+     "raw": "2x30",
+     "page": 40,
+     "context": "V column of the TT Series: two secondaries of 30 V (first row with this value: TT0220230)",
+     "normalized_hint": "2 x 30 V (series: double voltage; parallel: nominal voltage with double current)"
+    },
+    {
+     "raw": "2x35",
+     "page": 40,
+     "context": "V column of the TT Series: two secondaries of 35 V (first row with this value: TT0220235)",
+     "normalized_hint": "2 x 35 V (series: double voltage; parallel: nominal voltage with double current)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Sección 'BINDING POST, BANANA SOCKETS & FUSE HOLDERS' (ES: 'Bornes hembrillas y portafusibles'): seis productos BPB - 30 A / 230V., HB - 4, HR - 4, HBS - 4, HSR - 4 y PF - 15, cada uno con foto y dibujo acotado y sin texto ni tabla. Las cotas coinciden con las del catálogo ES. Página impresa 39.",
+     "page": 29
+    },
+    {
+     "fact": "Colores vistos solo en las fotografías: BPB negro con cabeza estriada, HB - 4 negra, HR - 4 roja.",
+     "page": 29
+    },
+    {
+     "fact": "Colores vistos solo en las fotografías: HBS - 4 azul, HSR - 4 verde, PF - 15 negro con cabeza estriada y dos terminales. HSR - 4 no lleva rosca rotulada en su dibujo. Página impresa 40; cotas idénticas a las del catálogo ES.",
+     "page": 30
+    },
+    {
+     "fact": "Portada de sección 'TOROIDAL BUFFERS' (ES: 'Choques toroidales') con una fotografía de un choque toroidal bobinado con dos hilos. Sin datos.",
+     "page": 31
+    },
+    {
+     "fact": "Choques toroidales de polvo de hierro: aplicables a convertidores DC/DC, fuentes conmutadas AC/DC, filtros de línea, filtros de interferencias electromagnéticas y choques de baja frecuencia; margen de temperatura de –50ºC a +90ºC y de frecuencias de 10Khz a 150Khz.",
+     "page": 32
+    },
+    {
+     "fact": "Familia de 27 valores de inductancia normalizados y 11 núcleos: 297 referencias distintas según el catálogo; se pueden fabricar otros valores y otros tipos de núcleo por encargo.",
+     "page": 32
+    },
+    {
+     "fact": "Dibujos HORIZONTAL / H (cotas A y L) y VERTICAL / V (cotas D y L); L vale 30 en las 11 filas. La tabla de dimensiones está rotulada en mm. Contraste con el catálogo ES: las cifras de la tabla y el texto de las características coinciden.",
+     "page": 32
+    },
+    {
+     "fact": "Tabla de intensidades: 27 valores de L (uH), de 10 a 1000, por cada modelo de núcleo (una columna por modelo); el catálogo no indica la unidad de la intensidad. Página impresa 21. Contraste con el catálogo ES: todas las celdas coinciden, incluidas las tres dudosas.",
+     "page": 33
+    },
+    {
+     "fact": "Portada de sección 'TOROIDAL CORES' (ES: 'Núcleos toroidales') con fotografía de núcleos. Sin datos.",
+     "page": 34
+    },
+    {
+     "fact": "Núcleos toroidales: plancha magnética de aleación hierro-silicio de grano orientado, calidades M4 o M5; el tratamiento térmico mejora la permeabilidad magnética en aproximadamente un 40%.",
+     "page": 35
+    },
+    {
+     "fact": "Núcleos soldados al final del bobinado para evitar vibraciones y aislados con cápsulas de poliamida-6 con 30% de fibra de vidrio, aptas para temperaturas próximas a 150ºC.",
+     "page": 35
+    },
+    {
+     "fact": "Dos tablas (bloque izquierdo y bloque derecho; columnas A, B, C, peso en kg y CM2) solo como imagen. Contraste con el catálogo ES: todas las filas y cifras son idénticas, incluidas las filas dudosas.",
+     "page": 35
+    },
+    {
+     "fact": "Portada de sección 'TOROIDAL TRANSFORMERS' (ES: 'Transformadores toroidales') con fotografía de transformadores con cableado. Sin datos.",
+     "page": 36
+    },
+    {
+     "fact": "Torivac declara más de treinta años de experiencia fabricando transformadores toroidales; el tratamiento térmico del núcleo permite saturaciones de hasta 16,000 gauss. Página impresa 14. Contraste con el catálogo ES: mismas cifras (el ES escribe 16.000 con punto); la única diferencia de fondo es la frase de los entrehierros.",
+     "page": 37
+    },
+    {
+     "fact": "Rendimiento típico de los transformadores estándar de 20VA a 3000VA: entre 82% y 96%; pérdidas por histéresis reducidas a 0,98W / Kg a una inducción de 1.6T; corrientes de Foucault prácticamente despreciables en núcleos M4 y M5.",
+     "page": 37
+    },
+    {
+     "fact": "Fotografía despiezada del transformador con 13 componentes numerados (disco metálico, arandela de caucho, salida de cables, secundario, pantalla electrostática, primario, tapa de nylon, tornillo, núcleo, termostato, encintado final).",
+     "page": 37
+    },
+    {
+     "fact": "Incremento de temperatura en régimen permanente de 55oC a 60oC sobre la ambiente; la temperatura externa del transformador no supera incrementos de 45oC. Se recomiendan fusibles de fusión lenta o sistemas de arranque controlados por las corrientes de arranque.",
+     "page": 38
+    },
+    {
+     "fact": "Pantalla electrostática: bobinado de lámina de cobre aislado con poliéster que cubre el primario; filtra interferencias de red y deriva a masa si falla el aislamiento principal.",
+     "page": 38
+    },
+    {
+     "fact": "Contraste con el catálogo ES: las cifras (55oC a 60oC, 45oC) y las ventajas coinciden; el gráfico de tensión en vacío es el mismo.",
+     "page": 38
+    },
+    {
+     "fact": "Ventajas: alto rendimiento, bajo nivel de ruido, bajo campo disperso, menor calentamiento, peso y tamaño reducidos, fácil montaje.",
+     "page": 38
+    },
+    {
+     "fact": "Campos de aplicación: electrónica de consumo, electromedicina, convertidores, sistemas de alimentación, audio, seguridad, telecomunicaciones, iluminación de baja tensión y cualquier equipo que requiera un óptimo rendimiento.",
+     "page": 39
+    },
+    {
+     "fact": "Serie 'Standard by order': primario de 230V y secundario de cualquier tensión, de 20VA a 5 KVA según el texto (la tabla empieza en 15 VA); bajo pedido con pantallas, protectores térmicos del bobinado y otras configuraciones. Cables de salida de 16 cm hasta 500 VA, de 20 cm de 600 a 1000VA y de 25 cm para mayores potencias. Contraste con el catálogo ES: todas las filas de la tabla coinciden celda a celda; el texto de este bloque no tiene equivalente exacto en el ES.",
+     "page": 39
+    },
+    {
+     "fact": "El párrafo 'Regulación motorizada' aparece en castellano dentro del catálogo en inglés y describe variadores de tensión (motor-reductor, placa electrónica con precisión del 2%, consigna por potenciómetro o señal continua de 0-10Vcc).",
+     "page": 39
+    },
+    {
+     "fact": "Serie TT (estándar, en stock): primario de 230V y dos secundarios idénticos conectables en serie o en paralelo, de 20VA a 220VA; se suministra con cajas individuales y accesorios de montaje; longitud estándar de los cables 20Cm; otras tensiones bajo pedido. Contraste con el catálogo ES: todas las filas y la tabla de discos metálicos coinciden.",
+     "page": 40
+    },
+    {
+     "fact": "Conexión en serie: amarillo con blanco da doble tensión entre rojo y negro a la intensidad nominal; conexión en paralelo: rojo con blanco y amarillo con negro da la tensión nominal con doble intensidad.",
+     "page": 40
+    },
+    {
+     "fact": "Serie TE (encapsulado en resina): transformadores de la serie TT en cajas de PVC rellenas de resina epoxi; alargan la vida útil, mejoran el aislamiento y son ideales para ambientes con polvo o humedad.",
+     "page": 41
+    },
+    {
+     "fact": "Serie TCI (encapsulado para circuito impreso): transformadores de la serie TT en resina epoxi y cajas de PVC con pines internos a 5 mm de separación (raster); el número de pines varía con el tamaño de la caja y el conexionado se configura según el cliente. Página impresa 18. Contraste con el catálogo ES: todas las filas de TE y de TCI coinciden.",
+     "page": 41
+    }
+   ],
+   "visual_only_pages": [
+    29,
+    30,
+    31,
+    34,
+    35,
+    36
+   ],
+   "uncertain": [
+    {
+     "page": 29,
+     "item": "Cotas de los dibujos de BPB, HB - 4 y HR - 4",
+     "why": "Las cifras solo existen en la imagen (no están en la capa de texto); transcritas de la imagen a 200 ppp y revisadas una a una. La página va en visual_only_pages y el comprobador no puede verificarlas. Contraste con el catálogo ES: idéntico."
+    },
+    {
+     "page": 29,
+     "item": "Unidad de las cotas",
+     "why": "El PDF no indica unidad (ni 'mm'); no se asume. Tampoco aclara qué significa 'ROSCA 4/0,7' u '8/0,75' (diámetro/paso de la rosca, presumiblemente, pero no está escrito)."
+    },
+    {
+     "page": 29,
+     "item": "BPB - 30 A / 230V.: intensidad y tensión del título",
+     "why": "Solo se imprime '30 A / 230V.' en el título; no dice si 230V es tensión nominal, máxima o de ensayo, ni si es CA/CC. Publicar solo como denominación y pedir la ficha al fabricante (propuesta para el panel admin)."
+    },
+    {
+     "page": 29,
+     "item": "Significado de la cifra '4' en HB - 4, HR - 4, HBS - 4 y HSR - 4",
+     "why": "El PDF no explica la nomenclatura; la cota 'Ø 4' del dibujo no está rotulada (taladro, clavija...). No se infiere '4 mm'."
+    },
+    {
+     "page": 30,
+     "item": "HSR - 4: dibujo sin ROSCA rotulada",
+     "why": "HBS - 4 y PF - 15 imprimen 'ROSCA 12,50/0,75'; HSR - 4 no imprime rosca. No se copia la de HBS - 4 aunque el dibujo parezca idéntico."
+    },
+    {
+     "page": 30,
+     "item": "Cota '15' de HBS - 4 y HSR - 4 sin símbolo Ø; formato '12,50/0,75'",
+     "why": "Se transcribe tal cual. La cota 15 no lleva Ø en el PDF y '12,50/0,75' tiene un formato atípico (no se normaliza a 12,5)."
+    },
+    {
+     "page": 31,
+     "item": "Páginas sin datos (31, 34 y 36)",
+     "why": "Son portadas de sección con fotografía ('TOROIDAL BUFFERS', 'TOROIDAL CORES', 'TOROIDAL TRANSFORMERS'); se revisaron como imagen y no contienen cifras. Se listan en visual_only_pages."
+    },
+    {
+     "page": 32,
+     "item": "Referencia 4715 (p.32) frente a 4718 (p.33)",
+     "why": "La tabla de dimensiones rotula el modelo '4715' (52 / 21 / 30) y la tabla de intensidades de la página siguiente rotula '4718'. El catálogo ES repite exactamente la misma discrepancia (4715 en su p.21 y 4718 en su p.22). Se conserva cada rótulo tal cual; confirmar con el fabricante cuál es el correcto antes de publicar y antes de unir ambas tablas por referencia."
+    },
+    {
+     "page": 32,
+     "item": "Significado de D, A y L",
+     "why": "El PDF solo rotula las letras en los dibujos HORIZONTAL / H y VERTICAL / V; no dice expresamente que D sea el diámetro, A la altura del cuerpo ni L la longitud de los terminales (lectura probable por el dibujo, no escrita). L vale 30 en todas las filas."
+    },
+    {
+     "page": 32,
+     "item": "Terminología 'buffers' (EN) por 'choques' (ES)",
+     "why": "El catálogo EN traduce 'choques toroidales' como 'toroidal buffers'; en terminología técnica inglesa lo habitual sería 'chokes' o 'inductors'. Es una propuesta de revisión para la web en inglés; no se corrige el texto del PDF. Erratas del PDF conservadas: '11different cores', 'othertypes', 'Khz', '–50ºC'. Contraste con el catálogo ES: idéntico, salvo que el ES lleva además la errata 'convetidores'."
+    },
+    {
+     "page": 33,
+     "item": "Intensidad impresa de 2006 con L = 18 uH ('3.3'), 2006 con L = 39 uH ('3.0') y 2010 con L = 75 uH ('3.1')",
+     "why": "Rompen la secuencia decreciente de su columna (2006: 9.7, 3.3, 8.0 y 6.5, 3.0, 5.5; 2010: 6.4, 3.1, 5.8). Parecen erratas del PDF. Se publican como null en specs, el valor impreso consta en raw_row y no se corrige. El catálogo ES imprime exactamente los mismos valores, así que no es un error de la versión inglesa. Propuesta: pedir la tabla corregida al fabricante."
+    },
+    {
+     "page": 33,
+     "item": "Unidad y condiciones de la 'intensidad'",
+     "why": "La tabla no indica la unidad (no se escribe 'A') ni a qué corresponde la intensidad (nominal, saturación, calentamiento), ni la frecuencia o temperatura de medida. No se asume nada."
+    },
+    {
+     "page": 33,
+     "item": "Referencias completas de pedido de los choques",
+     "why": "La página no indica cómo se codifica la referencia final (modelo de núcleo + valor L); ordering_info queda en null y no se compone ningún código. La página anterior dice 297 referencias (27 x 11); aquí hay 297 celdas (27 filas x 11 columnas)."
+    },
+    {
+     "page": 33,
+     "item": "Errata del título de la tabla",
+     "why": "El PDF escribe 'DEPENDIG' en lugar de 'DEPENDING'; se conserva tal cual (igual en el catálogo ES). Contraste con el catálogo ES: idéntico; las 297 cifras coinciden celda a celda."
+    },
+    {
+     "page": 35,
+     "item": "Las dos tablas de la página son imagen (sin capa de texto)",
+     "why": "Transcritas a mano desde la imagen a 200 ppp (4 bandas) y revisadas una a una; la página va en visual_only_pages y el comprobador no puede verificar sus números. Contraste con el catálogo ES (p.24): las 56 filas son idénticas."
+    },
+    {
+     "page": 35,
+     "item": "Unidades y significado de A, B, C y CM2",
+     "why": "El PDF no indica unidad para A, B y C ni para CM2, ni qué cota es diámetro exterior, interior o altura (no hay dibujo acotado). Comprobación propia, que no figura en el PDF: en 55 de las 56 filas CM2 = (A - B) / 2 x C / 100, lo que sugiere A y B diámetros y C altura; es una lectura probable, no un dato publicable."
+    },
+    {
+     "page": 35,
+     "item": "Núcleo A85 B40 C13: peso impreso '4.280' (publicado como null en specs; consta en raw_row)",
+     "why": "Incoherente con filas vecinas (A75 B40 C13 pesa 0.314 y A75 B40 C15 pesa 0.362) y con su CM2 (2.93). Cálculo propio, no del PDF: la densidad implícita sería de 74.5 g/cm3 frente a unos 7.4 en las demás filas, así que cabría esperar un peso del orden de 0.4. Parece errata del PDF (igual en el catálogo ES); no se corrige."
+    },
+    {
+     "page": 35,
+     "item": "Núcleos A101 B55 C35, C38 y C40: pesos impresos '1.058', '1.148' y '1.208' (publicados como null en specs; constan en raw_row)",
+     "why": "Son menores que el peso de A101 B55 C30 (1.260) pese a tener más fondo C y más CM2 (8.05, 8.74 y 9.2 frente a 6.9). Cálculo propio: densidad implícita de 5.36 g/cm3 frente a unos 7.45 en el resto. Posible errata del PDF (igual en el catálogo ES); no se corrige ni se publica."
+    },
+    {
+     "page": 35,
+     "item": "Núcleo A150 B75 C75 (confianza baja): CM2 '26.3' no encaja con C = 75",
+     "why": "En las otras 55 filas CM2 coincide con (A - B) / 2 x C / 100 (cálculo propio); aquí daría 28.1, y 26.3 corresponde a C = 70. El peso impreso 6.912 también es coherente con C = 70 (densidad implícita de 6.95 con C = 75 frente a 7.45 con C = 70). Posible errata de C en el PDF (igual en el catálogo ES); se transcribe lo impreso y no se publica hasta confirmar."
+    },
+    {
+     "page": 35,
+     "item": "Referencias 'A60 B40 C20', etc.",
+     "why": "Son etiquetas del extractor (mismas que en el trabajo del catálogo ES); la tabla no tiene columna de referencia y no son códigos de Torivac."
+    },
+    {
+     "page": 35,
+     "item": "Qué representa el peso y errata del texto",
+     "why": "El PDF no aclara si el peso es del núcleo desnudo o con la cápsula de aislamiento. Errata del PDF conservada: 'pproximately'. La cabecera de las columnas mezcla castellano e inglés ('PESO (KG) / WEIGHT (KG)') y 'CM2' va impreso como CM con un 2 en subíndice."
+    },
+    {
+     "page": 37,
+     "item": "Curvas del gráfico de rendimiento (1 KVA, 300 VA, 30 VA)",
+     "why": "Solo hay un gráfico sin tabla de valores; no se extraen cifras de las curvas ni se publican valores leídos a ojo. Los rótulos '% Poténcia de salida' y '% Poténcia nominal' llevan la errata 'Poténcia' (igual en el catálogo ES)."
+    },
+    {
+     "page": 37,
+     "item": "Rendimiento 'de 20VA a 3000VA entre 82% y 96%'",
+     "why": "La tabla estándar de la p.39 llega a 5.000 VA con rendimiento 96 y la TT (p.40) usa 82-89; mantener la frase tal cual y no mezclar rangos."
+    },
+    {
+     "page": 37,
+     "item": "Texto EN 'absence of intermediate metal parts' frente a ES 'ausencia de entrehierros'",
+     "why": "El catálogo ES dice 'entrehierros' (huecos de aire en el núcleo); el EN dice 'piezas metálicas intermedias'. No se armoniza ni se corrige; confirmar la formulación correcta antes de publicar el texto en inglés. En la página siguiente el propio catálogo EN usa 'air-gaps' para el mismo concepto."
+    },
+    {
+     "page": 37,
+     "item": "Erratas del PDF en la leyenda de componentes y en el texto",
+     "why": "Conservadas tal cual: 'Sochet-pan', 'Out' (ES: 'Salida de cables'), 'Kerb betwen', 'betwueen', 'foreing', 'The efficience', 'resistive loses', 'that in the conventional ones'. La leyenda numerada va con fotografía; no se dan cifras adicionales. 'Faraday designed and wound the first transformer on a toroidal core' es una afirmación histórica del catálogo, no una especificación."
+    },
+    {
+     "page": 37,
+     "item": "Decimales mezclados",
+     "why": "El texto escribe '0,98W / Kg' (coma) e '1.6T' (punto) en la misma frase, y '16,000 gauss' con coma como separador de miles (el catálogo ES escribe '16.000'). Se conservan tal cual; no normalizar sin confirmar la intención."
+    },
+    {
+     "page": 38,
+     "item": "Incremento de temperatura 'as can be seen in the attached diagram'",
+     "why": "El texto remite a un diagrama de temperatura que NO aparece en la página (solo el de tensión en vacío). Solo se dan 55oC-60oC y 45oC. Proponer revisar el original de imprenta; no inventar la curva. Las temperaturas van impresas como '55oC' (letra o minúscula, no símbolo de grado) en el PDF."
+    },
+    {
+     "page": 38,
+     "item": "Gráfico de variación de tensión en vacío",
+     "why": "Solo gráfico (eje 0-3000 VA y 0-30 %) sin tabla de valores; no se extraen cifras. El texto EN dice 'determinate by the quotient between no load and full load secondary voltage'; se conserva (ES: 'relación entre la tensión del secundario, en vacío y la tensión del mismo en carga nominal')."
+    },
+    {
+     "page": 38,
+     "item": "Erratas del PDF",
+     "why": "Conservadas: 'determinate' y 'ours toroidal transformers'. Contraste con el catálogo ES: mismas cifras y mismo gráfico (los textos son traducciones, no copias literales)."
+    },
+    {
+     "page": 39,
+     "item": "Fila 160 VA (Ø 113, altura 43): Rdto. 80",
+     "why": "El valor impreso (80) rompe la tendencia (150 VA = 88, 200 VA = 89) y la serie TT de la p.40 da 88 para 160 VA. Se transcribe tal cual (texto e imagen coinciden), confianza media; proponer revisión en el panel admin; no corregir. Igual en el catálogo ES."
+    },
+    {
+     "page": 39,
+     "item": "Rango '20VA and 5 KVA' del texto frente a la tabla (15 VA a 5.000 VA)",
+     "why": "La tabla incluye una fila de 15 VA por debajo del mínimo citado en el texto. No se corrige ninguno de los dos."
+    },
+    {
+     "page": 39,
+     "item": "Unidades de 'Voltaje mín.', 'Rdto.' y 'cdt', y columna 'Ø Acce.' / 'En. Int.'",
+     "why": "Las cabeceras no indican unidad ni definen 'cdt' (en la TT pone 'Cdt %'); 'Voltaje mín.' no se explica. 'Ø Acce.' (50, 65, 80, 100, 127, 140) se parece a los diámetros de disco metálico de la p.40, pero el PDF no lo afirma, y 'En. Int.' (desde 2.000 VA) no se explica. No interpretar."
+    },
+    {
+     "page": 39,
+     "item": "Tabla sin códigos de referencia",
+     "why": "No hay referencia por fila; las etiquetas 'VA (Ø, height)' son descriptivas. Filas con el mismo VA se distinguen por Ø/altura. Los VA de la tabla usan punto de miles ('1.000', '2.500') y se conservan así."
+    },
+    {
+     "page": 39,
+     "item": "El párrafo 'Regulación motorizada' va en castellano y habla de variadores",
+     "why": "Está dentro del bloque de transformadores toroidales del catálogo EN y no está traducido; trata de variadores de tensión (autotransformadores), no de transformadores. Asignarlo a variadores solo tras confirmarlo. Diferencia EN/ES: el catálogo ES abre ese bloque con un párrafo 'Regulación manual' (botón de mando y escobilla) que el EN no tiene, y el párrafo EN 'Standard by order' (primario 230V, 20VA a 5 KVA, longitudes de cable) no existe en el ES; por eso esas cifras no se pueden contrastar con el catálogo ES."
+    },
+    {
+     "page": 39,
+     "item": "Erratas del PDF",
+     "why": "Conservadas: 'Standad to order', 'the followings', 'fir higher powers', 'EffiC.'. El resto de la tabla (41 filas) es idéntico al del catálogo ES."
+    },
+    {
+     "page": 40,
+     "item": "Estructura del código TT (p.ej. TT0020210)",
+     "why": "En las 28 filas el código es consistente con TT + VA de 4 dígitos + 2 + tensión de 2 dígitos, pero el PDF no lo explica. Propuesta de lectura, no regla publicable. Contraste con el catálogo ES: idéntico."
+    },
+    {
+     "page": 40,
+     "item": "Columna 'A' (p.ej. 2x1, 2x0.83)",
+     "why": "La cabecera solo dice 'A'; las intensidades coinciden con VA / (2 x V) en las filas comprobadas, pero interpretarlas como intensidad por secundario es una propuesta. 'Cdt %' no se define."
+    },
+    {
+     "page": 40,
+     "item": "Colores del esquema de conexión (Blue, Red, Yellow, White, Black)",
+     "why": "Solo se transcriben las etiquetas de la imagen; el PDF no dice que los azules sean el primario de 230V."
+    },
+    {
+     "page": 40,
+     "item": "Mismo VA con distinta fijación que la tabla estándar",
+     "why": "Para un mismo VA, Ø/altura/Kg/fijación de la serie TT no siempre coinciden con la tabla 'Standard by order' de la p.39 (p.ej. 20 VA: M4x35 aquí frente a M5x40 mm.). Son tablas distintas; no unificar ni deducir una de la otra."
+    },
+    {
+     "page": 41,
+     "item": "Serie TE: tabla de 15 a 750 VA sin tensiones ni códigos",
+     "why": "El texto dice 'transformers of the TT series', cuya gama es 20VA-220VA, pero la tabla TE incluye 15, 40, 60, 250-750 VA que no están en la TT. No deducir tensiones/intensidades de la serie TT para la TE. Hay dos filas de 60 VA (Ø 87.3 y Ø 91), impresas así; se conservan ambas. Contraste con el catálogo ES: idéntico."
+    },
+    {
+     "page": 41,
+     "item": "Serie TCI: significado de las cotas A-G y de la columna F ('5x5', '7x5'... '-')",
+     "why": "No hay definición de F/G ni unidades; el texto solo habla del raster de 5 mm. La fila de 400 VA tiene F = '-' y G vacío (sin pines en el PDF). 'B' de 200 VA y 400 VA va impreso con otro tamaño de letra (103.3 y 125.6); se transcribe igual. No interpretar. Contraste con el catálogo ES: idéntico."
+    },
+    {
+     "page": 41,
+     "item": "Serie TCI: sin tensiones ni intensidades por modelo",
+     "why": "Solo se dan dimensiones y peso; el cliente configura el conexionado. Errata del PDF conservada: 'box size .' y 'customers requirements'."
+    }
+   ]
+  }
+ ]
+}

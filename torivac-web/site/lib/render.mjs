@@ -90,6 +90,7 @@ export function blocksHtml(ctx, blocks = [], opts = {}) {
       case 'table': return tbl(b, ctx.lang);
       case 'img': {
         const im = b.img;
+        if (!im || im.missing_local) return '';   // nunca se enlaza a imágenes de otros dominios
         const src = ctx.img(im);
         if (!src) return '';
         const w = im?.w ? ` width="${im.w}" height="${im.h}"` : '';

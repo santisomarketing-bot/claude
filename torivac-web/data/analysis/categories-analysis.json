@@ -16,12 +16,13 @@
    "products_rest": "data/raw/rest/product.<lang>.json",
    "products_store": "data/raw/store/products.<lang>.json",
    "html_category_pages": "data/raw/html/<lang>/(<lang>__)categoria-producto__*.html (hreflang, clase del body, canonical)",
-   "page_json": "data/analysis/pages/<lang>/ (home, productos, shop)",
+   "page_json": "data/analysis/pages/<lang>/categoria-producto__*.json (H1 y encabezados de cada URL de categoría) y home/productos/shop",
    "sitemap": "data/raw/sitemaps/product_cat-sitemap.xml"
   },
   "method_translation_links": "1) hreflang de las páginas de archivo de categoría (96 enlaces, simétricos); 2) para el resto, el producto ES de la categoría se localiza en el idioma destino (product-map.json) y se toma la categoría destino que lo contiene, con el mismo padre que la traducción del padre ES (147 enlaces). Validado: sin conflictos, sin padres incoherentes y sin discrepancias entre ambos métodos donde coinciden.",
   "id_convention": "id = id del término ES (WPML original); term_ids lleva el id en cada idioma.",
-  "count_convention": "rest_reported = campo count del REST/Store (WooCommerce lo calcula incluyendo subcategorías); derived_total_with_descendants = calculado aquí a partir de product.product_cat; es_products_direct = productos con esa categoría asignada directamente."
+  "count_convention": "rest_reported = campo count del REST/Store (WooCommerce lo calcula incluyendo subcategorías); derived_total_with_descendants = calculado aquí a partir de product.product_cat; es_products_direct = productos con esa categoría asignada directamente.",
+  "report": "docs/01-analisis/05-categorias.md"
  },
  "summary": {
   "categories_per_language": {
@@ -97,6 +98,31 @@
    "nombre_distinto_del_producto": 2,
    "imagen_compartida": 2,
    "imagen_posiblemente_equivocada": 1
+  },
+  "category_url_heading_stats": {
+   "es": {
+    "archivos": 38,
+    "h1_a_h3_sin_h2": 38,
+    "fichas": 53
+   },
+   "en": {
+    "archivos": 28,
+    "h1_a_h3_sin_h2": 28,
+    "fichas": 53,
+    "ficha_sin_h1": 53
+   },
+   "fr": {
+    "archivos": 28,
+    "h1_a_h3_sin_h2": 28,
+    "fichas": 53,
+    "ficha_sin_h1": 53
+   },
+   "de": {
+    "archivos": 29,
+    "h1_a_h3_sin_h2": 29,
+    "fichas": 52,
+    "ficha_sin_h1": 52
+   }
   }
  },
  "tree": {
@@ -619,7 +645,33 @@
         "data/raw/html/es/categoria-producto__bobinas-encapsuladas__cuadradas.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__bobinas-encapsuladas__cuadradas.json",
+        "type": "ficha_de_producto",
+        "h1": "Bobinas para electroimanes Cuadrada",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__encapsulated-coils__square.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__bobines-encapsulees__carre.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__gekapselte-spulen__vierkant.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 118,
@@ -858,9 +910,125 @@
         "data/raw/html/es/categoria-producto__bobinas-encapsuladas__redondas.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__bobinas-encapsuladas__redondas.json",
+        "type": "ficha_de_producto",
+        "h1": "Bobinas para electroimanes",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__encapsulated-coils__round.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__bobines-encapsulees__rond.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__gekapselte-spulen__rund.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      }
-    ]
+    ],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__bobinas-encapsuladas.json",
+      "type": "archivo_de_categoria",
+      "h1": "Bobinas encapsuladas",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Cuadradas"
+       },
+       {
+        "level": 3,
+        "text": "Redondas"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2579
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__encapsulated-coils.json",
+      "type": "archivo_de_categoria",
+      "h1": "Encapsulated coils",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Round"
+       },
+       {
+        "level": 3,
+        "text": "Squares"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2264
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__bobines-encapsulees.json",
+      "type": "archivo_de_categoria",
+      "h1": "Bobines encapsulées",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Rond"
+       },
+       {
+        "level": 3,
+        "text": "Carrés"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2629
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__gekapselte-spulen.json",
+      "type": "archivo_de_categoria",
+      "h1": "Gekapselte Spulen",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Rund"
+       },
+       {
+        "level": 3,
+        "text": "Quadrate"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2504
+     }
+    }
    },
    {
     "id": 30,
@@ -1411,7 +1579,33 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__aros-con-flecha.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__aros-con-flecha.json",
+        "type": "ficha_de_producto",
+        "h1": "Aros con flecha",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__hoops-with-arrow.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__cerceaux-avec-fleche.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__hoepels-met-pijl.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 74,
@@ -1674,7 +1868,33 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__botones-de-mando-serie-bm-mate.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__botones-de-mando-serie-bm-mate.json",
+        "type": "ficha_de_producto",
+        "h1": "Botones de mando serie BM (Mate)",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__bm-series-control-buttons-matte.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__boutons-de-commande-de-la-serie-bm-mat.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__bm-serie-bedieningsknoppen-mat.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 72,
@@ -1937,7 +2157,33 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__botones-de-mando-serie-bo-brillante.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__botones-de-mando-serie-bo-brillante.json",
+        "type": "ficha_de_producto",
+        "h1": "Botones de mando serie BO (brillante)",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__bo-series-control-buttons-glossy.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__boutons-de-commande-de-la-serie-bo-brillants.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__bo-serie-bedieningsknoppen-glanzend.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 73,
@@ -2204,7 +2450,33 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__botones-de-mando-serie-bo-con-linea.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__botones-de-mando-serie-bo-con-linea.json",
+        "type": "ficha_de_producto",
+        "h1": "Botones de mando serie BO con linea",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__bo-series-control-buttons-with-line.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__boutons-de-commande-de-la-serie-bo-avec-ligne.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__bo-serie-bedieningsknoppen-met-lijn.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 82,
@@ -2481,7 +2753,33 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__caratulas-graduadas.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__caratulas-graduadas.json",
+        "type": "ficha_de_producto",
+        "h1": "Caratulas graduadas",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__graduated-covers.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__couvertures-graduees.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__gegradueerde-covers.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 80,
@@ -2753,7 +3051,33 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__cubretercas.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__cubretercas.json",
+        "type": "ficha_de_producto",
+        "h1": "Cubretuercas",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__covers.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__couvertures.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__omslagen.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 81,
@@ -3025,7 +3349,33 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__discos-flecha.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__discos-flecha.json",
+        "type": "ficha_de_producto",
+        "h1": "Discos con flecha",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__arrow-discs.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__disques-fleches.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__pijlschijven.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 78,
@@ -3288,7 +3638,33 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__discos-graduados.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__discos-graduados.json",
+        "type": "ficha_de_producto",
+        "h1": "Discos graduados",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__graduated-discs.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__disques-gradues.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__gegradueerde-schijven.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 442,
@@ -3561,7 +3937,33 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__estators.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__estators.json",
+        "type": "ficha_de_producto",
+        "h1": "Estators",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__buttons-estators.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__estateurs.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__knoppen-estators.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 76,
@@ -3829,7 +4231,33 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__tapas-serie-bm.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__tapas-serie-bm.json",
+        "type": "ficha_de_producto",
+        "h1": "Tapas serie BM",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__bm-series-covers.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__couvertures-de-la-serie-bm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__bm-serie-covers.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 75,
@@ -4107,9 +4535,269 @@
         "data/raw/html/es/categoria-producto__botones-de-mando__tapas-serie-bo.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando__tapas-serie-bo.json",
+        "type": "ficha_de_producto",
+        "h1": "Tapas serie BO",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons__bo-series-lids.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande__couvercles-de-la-serie-bo.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen__bo-serie-deksels.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      }
-    ]
+    ],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando.json",
+      "type": "archivo_de_categoria",
+      "h1": "Botones de mando",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Aros con flecha"
+       },
+       {
+        "level": 3,
+        "text": "Botones de mando serie BM (Mate)"
+       },
+       {
+        "level": 3,
+        "text": "Botones de mando serie BO (brillante)"
+       },
+       {
+        "level": 3,
+        "text": "Botones de mando Serie BO con linea"
+       },
+       {
+        "level": 3,
+        "text": "Caratulas graduadas"
+       },
+       {
+        "level": 3,
+        "text": "Cubretercas"
+       },
+       {
+        "level": 3,
+        "text": "Discos Flecha"
+       },
+       {
+        "level": 3,
+        "text": "Discos graduados"
+       },
+       {
+        "level": 3,
+        "text": "Estators"
+       },
+       {
+        "level": 3,
+        "text": "Tapas Serie BM"
+       },
+       {
+        "level": 3,
+        "text": "Tapas serie BO"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 3934
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons.json",
+      "type": "archivo_de_categoria",
+      "h1": "Control buttons",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Arrow Discs"
+       },
+       {
+        "level": 3,
+        "text": "Arrow hoops"
+       },
+       {
+        "level": 3,
+        "text": "BM series control buttons (Matte)"
+       },
+       {
+        "level": 3,
+        "text": "BM Series Covers"
+       },
+       {
+        "level": 3,
+        "text": "BO series control buttons (bright)"
+       },
+       {
+        "level": 3,
+        "text": "BO Series control buttons with line"
+       },
+       {
+        "level": 3,
+        "text": "BO series covers"
+       },
+       {
+        "level": 3,
+        "text": "Casing covers"
+       },
+       {
+        "level": 3,
+        "text": "Estators"
+       },
+       {
+        "level": 3,
+        "text": "Graded covers"
+       },
+       {
+        "level": 3,
+        "text": "Graduated discs"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 3711
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande.json",
+      "type": "archivo_de_categoria",
+      "h1": "Boutons de commande",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Boutons de commande BO série avec ligne"
+       },
+       {
+        "level": 3,
+        "text": "Boutons de commande de la série BO (brillants)"
+       },
+       {
+        "level": 3,
+        "text": "Boutons de commande série BM (Matt)"
+       },
+       {
+        "level": 3,
+        "text": "Cerceaux à flèches"
+       },
+       {
+        "level": 3,
+        "text": "Couvercles de boîtier"
+       },
+       {
+        "level": 3,
+        "text": "Couvercles de la série BM"
+       },
+       {
+        "level": 3,
+        "text": "Couvertures classées"
+       },
+       {
+        "level": 3,
+        "text": "Disques Arrow"
+       },
+       {
+        "level": 3,
+        "text": "Disques gradués"
+       },
+       {
+        "level": 3,
+        "text": "Estateurs"
+       },
+       {
+        "level": 3,
+        "text": "La série BO couvre"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 4219
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__bedieningsknoppen.json",
+      "type": "archivo_de_categoria",
+      "h1": "Steuerungstasten",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Abgestufte Bezüge"
+       },
+       {
+        "level": 3,
+        "text": "Abgestufte Scheiben"
+       },
+       {
+        "level": 3,
+        "text": "Bedientasten der BO-Serie (glänzend)"
+       },
+       {
+        "level": 3,
+        "text": "Bedientasten Serie BM (Matt)"
+       },
+       {
+        "level": 3,
+        "text": "BM Serie Abdeckungen"
+       },
+       {
+        "level": 3,
+        "text": "BO-Serie umfasst"
+       },
+       {
+        "level": 3,
+        "text": "Gehäuseabdeckungen"
+       },
+       {
+        "level": 3,
+        "text": "Pfeil-Reifen"
+       },
+       {
+        "level": 3,
+        "text": "Pfeil-Scheiben"
+       },
+       {
+        "level": 3,
+        "text": "Statoren"
+       },
+       {
+        "level": 3,
+        "text": "Steuertasten BO Serie mit Linie"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 4044
+     }
+    }
    },
    {
     "id": 27,
@@ -4389,7 +5077,33 @@
       "data/raw/html/es/categoria-producto__botones-de-mando-y-accesorios.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__botones-de-mando-y-accesorios.json",
+      "type": "ficha_de_producto",
+      "h1": "Tapas para botones – BM mate",
+      "h1_count": 1
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__control-buttons-and-accessories.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__boutons-de-commande-et-accessoires.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__steuertasten-und-zubehor.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     }
+    }
    },
    {
     "id": 63,
@@ -4651,7 +5365,33 @@
       "data/raw/html/es/categoria-producto__choques.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__choques.json",
+      "type": "ficha_de_producto",
+      "h1": "Choques | Inductancias | Reactancias toroidales",
+      "h1_count": 1
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__chokes-inductances-toroidal-reactances.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__bobines-darret-inductances-reactances-toroidales.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__smoorspoelen-inductanties-toroidale-reactanties.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     }
+    }
    },
    {
     "id": 50,
@@ -4873,7 +5613,65 @@
       "data/raw/html/es/categoria-producto__comunicacion-modbus.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__comunicacion-modbus.json",
+      "type": "archivo_de_categoria",
+      "h1": "Comunicación MODBUS",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1366
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__comunicacion-modbus.json",
+      "type": "archivo_de_categoria",
+      "h1": "Modbus comunication",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1188
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__comunicacion-modbus.json",
+      "type": "archivo_de_categoria",
+      "h1": "communicateur Modbus",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1365
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__comunicacion-modbus.json",
+      "type": "archivo_de_categoria",
+      "h1": "Modbus-Kommunikator",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1275
+     }
+    }
    },
    {
     "id": 31,
@@ -5026,7 +5824,26 @@
       "data/raw/html/es/categoria-producto__controlador-0-10vdc.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__controlador-0-10vdc.json",
+      "type": "archivo_de_categoria",
+      "h1": "Controlador 0-10VDC",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1366
+     },
+     "en": null,
+     "fr": null,
+     "de": null
+    }
    },
    {
     "id": 39,
@@ -5270,7 +6087,41 @@
       "data/raw/html/es/categoria-producto__equipos-de-sobremesa.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__equipos-de-sobremesa.json",
+      "type": "archivo_de_categoria",
+      "h1": "Equipos de sobremesa",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1367
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__benchtop-units.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__unites-de-paillasse.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__tafelmodellen.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     }
+    }
    },
    {
     "id": 46,
@@ -5491,7 +6342,65 @@
       "data/raw/html/es/categoria-producto__equipos-de-sobremesa-en-caja.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__equipos-de-sobremesa-en-caja.json",
+      "type": "archivo_de_categoria",
+      "h1": "Equipos de Sobremesa",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1367
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__benchtop-units-2.json",
+      "type": "archivo_de_categoria",
+      "h1": "Benchtop Units",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1183
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__unites-de-paillasse-2.json",
+      "type": "archivo_de_categoria",
+      "h1": "Unités de paillasse",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1364
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__tafelmodellen-2.json",
+      "type": "archivo_de_categoria",
+      "h1": "Tafelmodellen",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1269
+     }
+    }
    },
    {
     "id": 96,
@@ -6030,7 +6939,41 @@
         "data/raw/html/es/categoria-producto__electronica__control-industrial.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__electronica__control-industrial.json",
+        "type": "archivo_de_categoria",
+        "h1": "Control industrial",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1365
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__electronic-equipment__industrial-control.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__equipements-electroniques__controle-industriel.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__elektronische-ausrustung__industrielle-steuerung.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 97,
@@ -6261,7 +7204,33 @@
         "data/raw/html/es/categoria-producto__electronica__convertidores.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__electronica__convertidores.json",
+        "type": "ficha_de_producto",
+        "h1": "Variadores de frecuencia",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__electronic-equipment__converters.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__equipements-electroniques__convertisseurs.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__elektronische-ausrustung__konverter.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 100,
@@ -6508,7 +7477,65 @@
         "data/raw/html/es/categoria-producto__electronica__energias-renovables.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__electronica__energias-renovables.json",
+        "type": "archivo_de_categoria",
+        "h1": "Energias renovables",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1366
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__electronic-equipment__renewable-energies.json",
+        "type": "archivo_de_categoria",
+        "h1": "Renewable energies",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1285
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__equipements-electroniques__energies-renouvelables.json",
+        "type": "archivo_de_categoria",
+        "h1": "Énergies renouvelables",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1482
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__elektronische-ausrustung__erneuerbare-energien.json",
+        "type": "archivo_de_categoria",
+        "h1": "Erneuerbare Energien",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1395
+       }
+      }
      },
      {
       "id": 99,
@@ -6674,7 +7701,18 @@
         "data/raw/html/es/categoria-producto__electronica__fuente-de-alimentacion-ca.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__electronica__fuente-de-alimentacion-ca.json",
+        "type": "ficha_de_producto",
+        "h1": "Fuente de corriente alterna sinusoidal",
+        "h1_count": 1
+       },
+       "en": null,
+       "fr": null,
+       "de": null
+      }
      },
      {
       "id": 98,
@@ -6894,9 +7932,193 @@
         "data/raw/html/es/categoria-producto__electronica__fuentes-de-alimentacion-cc.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__electronica__fuentes-de-alimentacion-cc.json",
+        "type": "archivo_de_categoria",
+        "h1": "Fuentes de alimentación CC",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1373
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__electronic-equipment__dc-power-supplies.json",
+        "type": "archivo_de_categoria",
+        "h1": "DC power supplies",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1284
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__equipements-electroniques__alimentations-en-courant-continu.json",
+        "type": "archivo_de_categoria",
+        "h1": "Alimentations en courant continu",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1492
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__elektronische-ausrustung__dc-stromversorgungen.json",
+        "type": "archivo_de_categoria",
+        "h1": "DC-Stromversorgungen",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1395
+       }
+      }
      }
-    ]
+    ],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__electronica.json",
+      "type": "archivo_de_categoria",
+      "h1": "Equipos electrónicos",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Control industrial"
+       },
+       {
+        "level": 3,
+        "text": "Convertidores"
+       },
+       {
+        "level": 3,
+        "text": "Energias renovables"
+       },
+       {
+        "level": 3,
+        "text": "Fuente de alimentación CA"
+       },
+       {
+        "level": 3,
+        "text": "Fuentes de alimentación CC"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2857
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__electronic-equipment.json",
+      "type": "archivo_de_categoria",
+      "h1": "Electronic equipment",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Converters"
+       },
+       {
+        "level": 3,
+        "text": "DC power supplies"
+       },
+       {
+        "level": 3,
+        "text": "Industrial control"
+       },
+       {
+        "level": 3,
+        "text": "Renewable energies"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2172
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__equipements-electroniques.json",
+      "type": "archivo_de_categoria",
+      "h1": "Équipements électroniques",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Alimentations en courant continu"
+       },
+       {
+        "level": 3,
+        "text": "Contrôle industriel"
+       },
+       {
+        "level": 3,
+        "text": "Convertisseurs"
+       },
+       {
+        "level": 3,
+        "text": "Énergies renouvelables"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2517
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__elektronische-ausrustung.json",
+      "type": "archivo_de_categoria",
+      "h1": "Elektronische Ausrüstung",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "DC-Stromversorgungen"
+       },
+       {
+        "level": 3,
+        "text": "Erneuerbare Energien"
+       },
+       {
+        "level": 3,
+        "text": "Industrielle Steuerung"
+       },
+       {
+        "level": 3,
+        "text": "Konverter"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2453
+     }
+    }
    },
    {
     "id": 36,
@@ -7049,7 +8271,26 @@
       "data/raw/html/es/categoria-producto__equipos-industriales.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__equipos-industriales.json",
+      "type": "archivo_de_categoria",
+      "h1": "Equipos industriales",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1367
+     },
+     "en": null,
+     "fr": null,
+     "de": null
+    }
    },
    {
     "id": 47,
@@ -7202,7 +8443,26 @@
       "data/raw/html/es/categoria-producto__equipos-industriales-en-caja.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__equipos-industriales-en-caja.json",
+      "type": "archivo_de_categoria",
+      "h1": "Equipos industriales",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1367
+     },
+     "en": null,
+     "fr": null,
+     "de": null
+    }
    },
    {
     "id": 60,
@@ -7960,7 +9220,33 @@
           "data/raw/html/es/categoria-producto__estabilizadores-de-tension__serie-avs__monofasico-serie-avs.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__estabilizadores-de-tension__serie-avs__monofasico-serie-avs.json",
+          "type": "ficha_de_producto",
+          "h1": "Estabilizadores Monofásicos",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-stabilizers__avs-series-stabilizers-electromechanical-with-servomotor__single-phase-avs.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__stabilisateurs-de-tension__estabilizadores-serie-avs-electromecanicos-con-servomotor__monophase.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsstabilisatoren__avs-serie-stabilisatoren-elektromechanisch-met-servomotor__monofase.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        },
        {
         "id": 104,
@@ -8229,9 +9515,125 @@
           "data/raw/html/es/categoria-producto__estabilizadores-de-tension__serie-avs__trifasico-serie-avs.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__estabilizadores-de-tension__serie-avs__trifasico-serie-avs.json",
+          "type": "ficha_de_producto",
+          "h1": "Estabilizador Trifásico Serie AVS",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-stabilizers__avs-series-stabilizers-electromechanical-with-servomotor__serie-avs-three-phase.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__stabilisateurs-de-tension__estabilizadores-serie-avs-electromecanicos-con-servomotor__triphase.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsstabilisatoren__avs-serie-stabilisatoren-elektromechanisch-met-servomotor__driefasen.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        }
-      ]
+      ],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__estabilizadores-de-tension__serie-avs.json",
+        "type": "archivo_de_categoria",
+        "h1": "Estabilizadores Serie AVS: electromecánicos con servomotor",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Monofásico"
+         },
+         {
+          "level": 3,
+          "text": "Trifásico"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2896
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-stabilizers__avs-series-stabilizers-electromechanical-with-servomotor.json",
+        "type": "archivo_de_categoria",
+        "h1": "AVS Series Stabilizers: electromechanical with servo motor",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Single-phase"
+         },
+         {
+          "level": 3,
+          "text": "Three-phase"
+         },
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2606
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__stabilisateurs-de-tension__estabilizadores-serie-avs-electromecanicos-con-servomotor.json",
+        "type": "archivo_de_categoria",
+        "h1": "Stabilisateurs de la série AVS : électromécaniques avec servomoteur",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Monophasé"
+         },
+         {
+          "level": 3,
+          "text": "Triphasé"
+         },
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 3018
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsstabilisatoren__avs-serie-stabilisatoren-elektromechanisch-met-servomotor.json",
+        "type": "archivo_de_categoria",
+        "h1": "Stabilisatoren der AVS-Serie: elektromechanisch mit Servomotor",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Dreiphasig"
+         },
+         {
+          "level": 3,
+          "text": "Einphasig"
+         },
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2827
+       }
+      }
      },
      {
       "id": 62,
@@ -8747,7 +10149,33 @@
           "data/raw/html/es/categoria-producto__estabilizadores-de-tension__serie-bavs__monofasico-serie-bavs.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__estabilizadores-de-tension__serie-bavs__monofasico-serie-bavs.json",
+          "type": "ficha_de_producto",
+          "h1": "Estabilizador Monofásico Serie BAVS",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-stabilizers__bavs-series-electronics__monofasico-serie-bavs.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__stabilisateurs-de-tension__serie-bavs-electronique__monophase.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsstabilisatoren__bavs-serie-elektronica__monofase.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        },
        {
         "id": 106,
@@ -9040,11 +10468,217 @@
           "data/raw/html/es/categoria-producto__estabilizadores-de-tension__serie-bavs__trifasico-serie-bavs.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__estabilizadores-de-tension__serie-bavs__trifasico-serie-bavs.json",
+          "type": "ficha_de_producto",
+          "h1": "Estabilizador Trifásico Serie BAVS",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-stabilizers__bavs-series-electronics__serie-bavs-three-phase.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__stabilisateurs-de-tension__serie-bavs-electronique__triphase.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsstabilisatoren__bavs-serie-elektronica__driefasen.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        }
-      ]
+      ],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__estabilizadores-de-tension__serie-bavs.json",
+        "type": "archivo_de_categoria",
+        "h1": "Serie BAVS: Electrónicos",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Monofásico"
+         },
+         {
+          "level": 3,
+          "text": "Trifásico"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2716
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-stabilizers__bavs-series-electronics.json",
+        "type": "archivo_de_categoria",
+        "h1": "BAVS Series: Electronics",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "single-phase-bavs"
+         },
+         {
+          "level": 3,
+          "text": "Three-phase"
+         },
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2443
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__stabilisateurs-de-tension__serie-bavs-electronique.json",
+        "type": "archivo_de_categoria",
+        "h1": "Série BAVS : Électronique",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Monophasé"
+         },
+         {
+          "level": 3,
+          "text": "triphasé"
+         },
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2837
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsstabilisatoren__bavs-serie-elektronica.json",
+        "type": "archivo_de_categoria",
+        "h1": "BAVS Serie: Elektronik",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Driefasen"
+         },
+         {
+          "level": 3,
+          "text": "Monofase"
+         },
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2618
+       }
+      }
      }
-    ]
+    ],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__estabilizadores-de-tension.json",
+      "type": "archivo_de_categoria",
+      "h1": "Estabilizadores de tensión",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Estabilizadores Serie AVS: electromecánicos con servomotor"
+       },
+       {
+        "level": 3,
+        "text": "Serie BAVS: Electrónicos"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2646
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-stabilizers.json",
+      "type": "archivo_de_categoria",
+      "h1": "Voltage stabilizers",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "AVS Series Stabilizers: electromechanical with servo motor"
+       },
+       {
+        "level": 3,
+        "text": "BAVS Series: Electronics"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2359
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__stabilisateurs-de-tension.json",
+      "type": "archivo_de_categoria",
+      "h1": "Stabilisateurs de tension",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Série BAVS : Électronique"
+       },
+       {
+        "level": 3,
+        "text": "Stabilisateurs de la série AVS : électromécaniques avec servomoteur"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2733
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsstabilisatoren.json",
+      "type": "archivo_de_categoria",
+      "h1": "Spannungsstabilisatoren",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "BAVS Serie: Elektronik"
+       },
+       {
+        "level": 3,
+        "text": "Stabilisatoren der AVS-Serie: elektromechanisch mit Servomotor"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2595
+     }
+    }
    },
    {
     "id": 49,
@@ -9197,7 +10831,26 @@
       "data/raw/html/es/categoria-producto__fabricaciones-a-medida.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__fabricaciones-a-medida.json",
+      "type": "archivo_de_categoria",
+      "h1": "Fabricaciones a Medida",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2504
+     },
+     "en": null,
+     "fr": null,
+     "de": null
+    }
    },
    {
     "id": 102,
@@ -9355,7 +11008,26 @@
       "data/raw/html/es/categoria-producto__fabricaciones-a-medida-transformadores-toroidales.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__fabricaciones-a-medida-transformadores-toroidales.json",
+      "type": "archivo_de_categoria",
+      "h1": "Fabricaciones a medida",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1369
+     },
+     "en": null,
+     "fr": null,
+     "de": null
+    }
    },
    {
     "id": 83,
@@ -9863,7 +11535,33 @@
         "data/raw/html/es/categoria-producto__hembrillas__hembrilla-de-seguridad-hbs4.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__hembrillas__hembrilla-de-seguridad-hbs4.json",
+        "type": "ficha_de_producto",
+        "h1": "Hembrilla de seguridad HBS4",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__socket-jack__socket-jack-hbs4.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__prise-jack__prise-de-securite-hbs4.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__socket-jack__hbs4-veiligheidsaansluiting.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 86,
@@ -10130,7 +11828,33 @@
         "data/raw/html/es/categoria-producto__hembrillas__hembrilla-de-seguridad-hr4.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__hembrillas__hembrilla-de-seguridad-hr4.json",
+        "type": "ficha_de_producto",
+        "h1": "Hembrilla de seguridad HR4",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__socket-jack__socket-jack-hr4.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__prise-jack__prise-de-securite-hr4.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__socket-jack__hr4-veiligheidsaansluiting.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 87,
@@ -10393,7 +12117,33 @@
         "data/raw/html/es/categoria-producto__hembrillas__hembrilla-de-seguridad-hsr4.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__hembrillas__hembrilla-de-seguridad-hsr4.json",
+        "type": "ficha_de_producto",
+        "h1": "Hembrilla de seguridad HSR4",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__socket-jack__socket-jack-hsr4.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__prise-jack__prise-de-securite-hsr4.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__socket-jack__hsr4-veiligheidsaansluiting.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 84,
@@ -10651,9 +12401,157 @@
         "data/raw/html/es/categoria-producto__hembrillas__hembrilla-hb4.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__hembrillas__hembrilla-hb4.json",
+        "type": "ficha_de_producto",
+        "h1": "Hembrilla HB4",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__socket-jack__socket-jack-2.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__prise-jack__prise-jack-hb4.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__socket-jack__socket-jack-hb4-10a.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      }
-    ]
+    ],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__hembrillas.json",
+      "type": "archivo_de_categoria",
+      "h1": "Hembrillas",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Hembrilla de seguridad HBS4"
+       },
+       {
+        "level": 3,
+        "text": "hembrilla de seguridad HR4"
+       },
+       {
+        "level": 3,
+        "text": "Hembrilla de seguridad HSR4"
+       },
+       {
+        "level": 3,
+        "text": "Hembrilla HB4"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2341
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__socket-jack.json",
+      "type": "archivo_de_categoria",
+      "h1": "Sockets",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "HB4 socket"
+       },
+       {
+        "level": 3,
+        "text": "HSR4 safety socket"
+       },
+       {
+        "level": 3,
+        "text": "Safety socket HBS4"
+       },
+       {
+        "level": 3,
+        "text": "safety socket HR4"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2063
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__prise-jack.json",
+      "type": "archivo_de_categoria",
+      "h1": "Prises",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Prise de sécurité HBS4"
+       },
+       {
+        "level": 3,
+        "text": "prise de sécurité HR4"
+       },
+       {
+        "level": 3,
+        "text": "Prise de sécurité HSR4"
+       },
+       {
+        "level": 3,
+        "text": "Prise HB4"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2317
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__socket-jack.json",
+      "type": "archivo_de_categoria",
+      "h1": "Socket Jack",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "HB4-Buchse"
+       },
+       {
+        "level": 3,
+        "text": "Sicherheitssteckdose HBS4"
+       },
+       {
+        "level": 3,
+        "text": "Sicherheitssteckdose HR4"
+       },
+       {
+        "level": 3,
+        "text": "Sicherheitssteckdose HSR4"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2231
+     }
+    }
    },
    {
     "id": 25,
@@ -10806,7 +12704,26 @@
       "data/raw/html/es/categoria-producto__hembrillas-de-seguridad.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__hembrillas-de-seguridad.json",
+      "type": "archivo_de_categoria",
+      "h1": "Hembrillas de seguridad",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1370
+     },
+     "en": null,
+     "fr": null,
+     "de": null
+    }
    },
    {
     "id": 64,
@@ -11072,7 +12989,33 @@
       "data/raw/html/es/categoria-producto__nucleos.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__nucleos.json",
+      "type": "ficha_de_producto",
+      "h1": "Núcleos toroidales",
+      "h1_count": 1
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__cores.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__noyaux.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__kernen.json",
+      "type": "ficha_de_producto",
+      "h1": null,
+      "h1_count": 0
+     }
+    }
    },
    {
     "id": 65,
@@ -11623,7 +13566,33 @@
         "data/raw/html/es/categoria-producto__portaled__led-10mm.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__portaled__led-10mm.json",
+        "type": "ficha_de_producto",
+        "h1": "Soporte metalico para led 10mm",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__portaled__led-10mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__portail__porte-10-mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__geportaliseerd__geperforeerde-led-10mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 66,
@@ -11910,7 +13879,33 @@
         "data/raw/html/es/categoria-producto__portaled__led-3mm.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__portaled__led-3mm.json",
+        "type": "ficha_de_producto",
+        "h1": "Soporte metalico para led 3mm",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__portaled__portaled-led-3mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__portail__led-portique-3-mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__geportaliseerd__geportaliseerde-led-3mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 67,
@@ -12197,7 +14192,33 @@
         "data/raw/html/es/categoria-producto__portaled__led-5mm.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__portaled__led-5mm.json",
+        "type": "ficha_de_producto",
+        "h1": "Soporte metalico para led 5mm",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__portaled__portaled-led-5mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__portail__led-portale-5-mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__geportaliseerd__geportaliseerde-led-5mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 68,
@@ -12484,9 +14505,157 @@
         "data/raw/html/es/categoria-producto__portaled__led-8mm.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__portaled__led-8mm.json",
+        "type": "ficha_de_producto",
+        "h1": "Soporte metalico para led 8mm",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__portaled__portaled-led-8mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__portail__led-portique-8-mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__geportaliseerd__geporteerde-led-8mm.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      }
-    ]
+    ],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__portaled.json",
+      "type": "archivo_de_categoria",
+      "h1": "Portaled",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "led 10mm"
+       },
+       {
+        "level": 3,
+        "text": "led 3mm"
+       },
+       {
+        "level": 3,
+        "text": "led 5mm"
+       },
+       {
+        "level": 3,
+        "text": "led 8mm"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2421
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__portaled.json",
+      "type": "archivo_de_categoria",
+      "h1": "Portaled",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "led 10mm"
+       },
+       {
+        "level": 3,
+        "text": "led 3mm"
+       },
+       {
+        "level": 3,
+        "text": "led 5mm"
+       },
+       {
+        "level": 3,
+        "text": "led 8mm"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2081
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__portail.json",
+      "type": "archivo_de_categoria",
+      "h1": "Porté",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "led 10mm"
+       },
+       {
+        "level": 3,
+        "text": "led 3mm"
+       },
+       {
+        "level": 3,
+        "text": "led 5mm"
+       },
+       {
+        "level": 3,
+        "text": "led 8mm"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2456
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__geportaliseerd.json",
+      "type": "archivo_de_categoria",
+      "h1": "Portiert",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "led 3mm"
+       },
+       {
+        "level": 3,
+        "text": "led 5mm"
+       },
+       {
+        "level": 3,
+        "text": "led 8mm"
+       },
+       {
+        "level": 3,
+        "text": "led 10mm"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 2456
+     }
+    }
    },
    {
     "id": 24,
@@ -12693,7 +14862,65 @@
       "data/raw/html/es/categoria-producto__portaleds.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__portaleds.json",
+      "type": "archivo_de_categoria",
+      "h1": "Portaleds",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1356
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__portaleds.json",
+      "type": "archivo_de_categoria",
+      "h1": "Portaleds",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1178
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__portaleds.json",
+      "type": "archivo_de_categoria",
+      "h1": "Portaleds",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1354
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__portaleds.json",
+      "type": "archivo_de_categoria",
+      "h1": "Portaleds",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1265
+     }
+    }
    },
    {
     "id": 26,
@@ -12910,7 +15137,65 @@
       "data/raw/html/es/categoria-producto__potenciometros-y-reostatos.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__potenciometros-y-reostatos.json",
+      "type": "archivo_de_categoria",
+      "h1": "Potenciómetros y reóstatos",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1373
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__potentiometers-and-rheostats.json",
+      "type": "archivo_de_categoria",
+      "h1": "Potentiometers and rheostats",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1197
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__potentiometres-et-rheostats.json",
+      "type": "archivo_de_categoria",
+      "h1": "Potentiomètres et rhéostats",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1372
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__potentiometers-en-reostaten.json",
+      "type": "archivo_de_categoria",
+      "h1": "Potentiometers en reostaten",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1283
+     }
+    }
    },
    {
     "id": 122,
@@ -13682,7 +15967,33 @@
           "data/raw/html/es/categoria-producto__reostatos-y-potenciometros-bobinados__potenciometros__dobles-potenciometros.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__reostatos-y-potenciometros-bobinados__potenciometros__dobles-potenciometros.json",
+          "type": "ficha_de_producto",
+          "h1": "Reostatos y potenciometros bobinados doble 2x3W",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__rheostats-and-coiled-potentiometers__potentiometers__dual-potentiometers.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__rheostats-et-potentiometres-a-boudin__potentiometres__potentiometres-doubles.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__rheostate-und-spulenpotentiometer__potentiometer__dubbele-potentiometers.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        },
        {
         "id": 108,
@@ -13915,9 +16226,189 @@
           "data/raw/html/es/categoria-producto__reostatos-y-potenciometros-bobinados__potenciometros__simples.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__reostatos-y-potenciometros-bobinados__potenciometros__simples.json",
+          "type": "archivo_de_categoria",
+          "h1": "Simples",
+          "h1_count": 1,
+          "headings_h2_h4": [
+           {
+            "level": 4,
+            "text": "Reostatos y potenciometros bobinados simple 3W"
+           },
+           {
+            "level": 4,
+            "text": "Reostatos y potenciometros bobinados simple 5W"
+           },
+           {
+            "level": 3,
+            "text": "Productos"
+           }
+          ],
+          "has_h2": false,
+          "text_chars": 1867
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__rheostats-and-coiled-potentiometers__potentiometers__simple-potentiometer.json",
+          "type": "archivo_de_categoria",
+          "h1": "Simple",
+          "h1_count": 1,
+          "headings_h2_h4": [
+           {
+            "level": 4,
+            "text": "Rheostats and potentiometers simple windings 3W"
+           },
+           {
+            "level": 4,
+            "text": "Rheostats and potentiometers simple windings 5W"
+           },
+           {
+            "level": 3,
+            "text": "Products"
+           }
+          ],
+          "has_h2": false,
+          "text_chars": 1693
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__rheostats-et-potentiometres-a-boudin__potentiometres__simple.json",
+          "type": "archivo_de_categoria",
+          "h1": "Simple",
+          "h1_count": 1,
+          "headings_h2_h4": [
+           {
+            "level": 4,
+            "text": "Rhéostats et potentiomètres à simple enroulement 3W"
+           },
+           {
+            "level": 4,
+            "text": "Rhéostats et potentiomètres à simple enroulement 5W"
+           },
+           {
+            "level": 3,
+            "text": "Produits"
+           }
+          ],
+          "has_h2": false,
+          "text_chars": 1876
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__rheostate-und-spulenpotentiometer__potentiometer__einfach.json",
+          "type": "archivo_de_categoria",
+          "h1": "Einfach",
+          "h1_count": 1,
+          "headings_h2_h4": [
+           {
+            "level": 4,
+            "text": "Rheostate und Potentiometer einzelne Wicklungen 3W"
+           },
+           {
+            "level": 4,
+            "text": "Rheostate und Potentiometer Einzelwicklung 5W"
+           },
+           {
+            "level": 3,
+            "text": "Produkte"
+           }
+          ],
+          "has_h2": false,
+          "text_chars": 1834
+         }
+        }
        }
-      ]
+      ],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__reostatos-y-potenciometros-bobinados__potenciometros.json",
+        "type": "archivo_de_categoria",
+        "h1": "Potenciometros",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Dobles"
+         },
+         {
+          "level": 3,
+          "text": "Simples"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2325
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__rheostats-and-coiled-potentiometers__potentiometers.json",
+        "type": "archivo_de_categoria",
+        "h1": "Potentiometers",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Doubles"
+         },
+         {
+          "level": 3,
+          "text": "Simple"
+         },
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2168
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__rheostats-et-potentiometres-a-boudin__potentiometres.json",
+        "type": "archivo_de_categoria",
+        "h1": "Potentiomètres",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Simple"
+         },
+         {
+          "level": 3,
+          "text": "Doubles"
+         },
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2442
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__rheostate-und-spulenpotentiometer__potentiometer.json",
+        "type": "archivo_de_categoria",
+        "h1": "Potentiometer",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Einfach"
+         },
+         {
+          "level": 3,
+          "text": "Doppelte"
+         },
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2357
+       }
+      }
      },
      {
       "id": 112,
@@ -14157,9 +16648,237 @@
         "data/raw/html/es/categoria-producto__reostatos-y-potenciometros-bobinados__ceramicos.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__reostatos-y-potenciometros-bobinados__ceramicos.json",
+        "type": "archivo_de_categoria",
+        "h1": "Reóstatos cerámicos",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 4,
+          "text": "Reostatos y potenciometros bobinados simple"
+         },
+         {
+          "level": 4,
+          "text": "Reostatos y potenciometros bobinados doble"
+         },
+         {
+          "level": 4,
+          "text": "Reostatos y potenciometros bobinados tripes"
+         },
+         {
+          "level": 4,
+          "text": "Reostatos y potenciometros bobinados en caja"
+         },
+         {
+          "level": 4,
+          "text": "Reostatos y potenciometros bobinados fabricaciones especiales"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 3124
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__rheostats-and-coiled-potentiometers__ceramic-rheostats.json",
+        "type": "archivo_de_categoria",
+        "h1": "Ceramic rheostats",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 4,
+          "text": "Rheostats and potentiometers single windings"
+         },
+         {
+          "level": 4,
+          "text": "Rheostats and potentiometers dual windings"
+         },
+         {
+          "level": 4,
+          "text": "Rheostats and potentiometers triple windings"
+         },
+         {
+          "level": 4,
+          "text": "Rheostats and potentiometers wound in boxes"
+         },
+         {
+          "level": 4,
+          "text": "Rheostats and potentiometers, wound special fabrications"
+         },
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2791
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__rheostats-et-potentiometres-a-boudin__rheostats-en-ceramique.json",
+        "type": "archivo_de_categoria",
+        "h1": "Rhéostats en céramique",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 4,
+          "text": "Rhéostats et potentiomètres bobinages simples"
+         },
+         {
+          "level": 4,
+          "text": "Rhéostats et potentiomètres à double enroulement"
+         },
+         {
+          "level": 4,
+          "text": "Rhéostats et potentiomètres à triple enroulement"
+         },
+         {
+          "level": 4,
+          "text": "Rhéostats et potentiomètres enroulés dans des boîtes"
+         },
+         {
+          "level": 4,
+          "text": "Rhéostats et potentiomètres, enroulés, constructions spéciales"
+         },
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 3196
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__rheostate-und-spulenpotentiometer__keramische-rheostate.json",
+        "type": "archivo_de_categoria",
+        "h1": "Keramische Rheostate",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 4,
+          "text": "Rheostate und Potentiometer einfache Wicklungen"
+         },
+         {
+          "level": 4,
+          "text": "Dubbelgewonden reostaten en potentiometers"
+         },
+         {
+          "level": 4,
+          "text": "Rheostate und Potentiometer dreifach gewickelt"
+         },
+         {
+          "level": 4,
+          "text": "Rheostate und Potentiometer in Schachteln gewickelt"
+         },
+         {
+          "level": 4,
+          "text": "Rheostate und Potentiometer, gewickelte Sonderanfertigungen"
+         },
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 3107
+       }
+      }
      }
-    ]
+    ],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__reostatos-y-potenciometros-bobinados.json",
+      "type": "archivo_de_categoria",
+      "h1": "Reostatos y potenciómetros bobinados",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Potenciometros"
+       },
+       {
+        "level": 3,
+        "text": "Reóstatos cerámicos"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 3966
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__rheostats-and-coiled-potentiometers.json",
+      "type": "archivo_de_categoria",
+      "h1": "Rheostats and coiled potentiometers",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Ceramic rheostats"
+       },
+       {
+        "level": 3,
+        "text": "Potentiometers"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 3643
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__rheostats-et-potentiometres-a-boudin.json",
+      "type": "archivo_de_categoria",
+      "h1": "Rhéostats et potentiomètres à boudin",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Rhéostats en céramique"
+       },
+       {
+        "level": 3,
+        "text": "Potentiomètres"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 4133
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__rheostate-und-spulenpotentiometer.json",
+      "type": "archivo_de_categoria",
+      "h1": "Rheostate und Spulenpotentiometer",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Keramische Rheostate"
+       },
+       {
+        "level": 3,
+        "text": "Potentiometer"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 4116
+     }
+    }
    },
    {
     "id": 88,
@@ -14655,7 +17374,33 @@
         "data/raw/html/es/categoria-producto__resistencias__bancos-de-carga.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__resistencias__bancos-de-carga.json",
+        "type": "ficha_de_producto",
+        "h1": "Resistencias – Banco de carga",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__resistors-load-banks__load-banks.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__resistances-bancs-de-charge__bancs-de-charge.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__widerstande-lastbanke__ladebanke.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 92,
@@ -14902,7 +17647,33 @@
         "data/raw/html/es/categoria-producto__resistencias__cementadas.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__resistencias__cementadas.json",
+        "type": "ficha_de_producto",
+        "h1": "Resistencias de alta potencia cementadas",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__resistors-load-banks__cemented.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__resistances-bancs-de-charge__cimente.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__widerstande-lastbanke__zementiert.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 120,
@@ -15179,7 +17950,33 @@
         "data/raw/html/es/categoria-producto__resistencias__en-caja-resistencias.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__resistencias__en-caja-resistencias.json",
+        "type": "ficha_de_producto",
+        "h1": "Resistencia en caja",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__resistors-load-banks__boxed.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__resistances-bancs-de-charge__en-boite.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__widerstande-lastbanke__boxen.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 90,
@@ -15426,7 +18223,33 @@
         "data/raw/html/es/categoria-producto__resistencias__helicoidales.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__resistencias__helicoidales.json",
+        "type": "ficha_de_producto",
+        "h1": "Resistencias helicoidales",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__resistors-load-banks__helical.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__resistances-bancs-de-charge__helicoidale.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__widerstande-lastbanke__wendel.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 94,
@@ -15673,7 +18496,33 @@
         "data/raw/html/es/categoria-producto__resistencias__resistencias-de-arranque.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__resistencias__resistencias-de-arranque.json",
+        "type": "ficha_de_producto",
+        "h1": "Resistencias de arranque",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__resistors-load-banks__starting-resistors.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__resistances-bancs-de-charge__resistances-de-demarrage.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__widerstande-lastbanke__startwiderstande.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 444,
@@ -15941,7 +18790,33 @@
         "data/raw/html/es/categoria-producto__resistencias__resistencias-de-frenado.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__resistencias__resistencias-de-frenado.json",
+        "type": "ficha_de_producto",
+        "h1": "Resistencias de frenado",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__resistors-load-banks__braking-resistors.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__resistances-bancs-de-charge__resistances-de-freinage.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__widerstande-lastbanke__remweerstanden.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 95,
@@ -16184,9 +19059,205 @@
         "data/raw/html/es/categoria-producto__resistencias__resistencias-de-puesta-a-tierra.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__resistencias__resistencias-de-puesta-a-tierra.json",
+        "type": "ficha_de_producto",
+        "h1": "Resistencias de puesta a tierra",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__resistors-load-banks__grounding-resistors.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__resistances-bancs-de-charge__resistances-de-mise-a-la-terre.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__widerstande-lastbanke__erdungswiderstande.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      }
-    ]
+    ],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__resistencias.json",
+      "type": "archivo_de_categoria",
+      "h1": "Resistencias | Bancos de carga",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Bancos de carga"
+       },
+       {
+        "level": 3,
+        "text": "Cementadas"
+       },
+       {
+        "level": 3,
+        "text": "En caja"
+       },
+       {
+        "level": 3,
+        "text": "Helicoidales"
+       },
+       {
+        "level": 3,
+        "text": "Resistencias de arranque"
+       },
+       {
+        "level": 3,
+        "text": "Resistencias de frenado"
+       },
+       {
+        "level": 3,
+        "text": "Resistencias de puesta a tierra"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 5894
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__resistors-load-banks.json",
+      "type": "archivo_de_categoria",
+      "h1": "Resistors : Load banks",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Boxed"
+       },
+       {
+        "level": 3,
+        "text": "Braking resistors"
+       },
+       {
+        "level": 3,
+        "text": "Cemented"
+       },
+       {
+        "level": 3,
+        "text": "Grounding resistors"
+       },
+       {
+        "level": 3,
+        "text": "Helical"
+       },
+       {
+        "level": 3,
+        "text": "Load banks"
+       },
+       {
+        "level": 3,
+        "text": "Starting resistors"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 5122
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__resistances-bancs-de-charge.json",
+      "type": "archivo_de_categoria",
+      "h1": "Résistances : bancs de charge",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Bancs de charge"
+       },
+       {
+        "level": 3,
+        "text": "Cimenté"
+       },
+       {
+        "level": 3,
+        "text": "En boîte"
+       },
+       {
+        "level": 3,
+        "text": "Hélicoïdale"
+       },
+       {
+        "level": 3,
+        "text": "Résistances de démarrage"
+       },
+       {
+        "level": 3,
+        "text": "Résistances de mise à la terre"
+       },
+       {
+        "level": 3,
+        "text": "Résistances de freinage"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 6017
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__widerstande-lastbanke.json",
+      "type": "archivo_de_categoria",
+      "h1": "Widerstände : Lastbänke",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Boxen"
+       },
+       {
+        "level": 3,
+        "text": "Erdungswiderstände"
+       },
+       {
+        "level": 3,
+        "text": "Ladebänke"
+       },
+       {
+        "level": 3,
+        "text": "Startwiderstände"
+       },
+       {
+        "level": 3,
+        "text": "Wendel"
+       },
+       {
+        "level": 3,
+        "text": "Zementiert"
+       },
+       {
+        "level": 3,
+        "text": "Bremswiderstände"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 5768
+     }
+    }
    },
    {
     "id": 18,
@@ -16414,7 +19485,133 @@
       "data/raw/html/es/categoria-producto__sin-categorizar.html"
      ]
     },
-    "children": []
+    "children": [],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__sin-categorizar.json",
+      "type": "archivo_de_categoria",
+      "h1": "Sin categorizar",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 4,
+        "text": "Fabricaciones a medida"
+       },
+       {
+        "level": 4,
+        "text": "Reostatos y potenciometros bobinados"
+       },
+       {
+        "level": 4,
+        "text": "Reostatos y potenciometros bobinados"
+       },
+       {
+        "level": 4,
+        "text": "Tapas para botones – BM mate"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1659
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__uncategorized.json",
+      "type": "archivo_de_categoria",
+      "h1": "Uncategorized",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 4,
+        "text": "Custom fabrications"
+       },
+       {
+        "level": 4,
+        "text": "Rheostats and coiled potentiometers"
+       },
+       {
+        "level": 4,
+        "text": "Rheostats and coiled potentiometers"
+       },
+       {
+        "level": 4,
+        "text": "Button covers – BM matte"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1436
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__sans-categorie.json",
+      "type": "archivo_de_categoria",
+      "h1": "Sans catégorie",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 4,
+        "text": "Equipos de sobremesa"
+       },
+       {
+        "level": 4,
+        "text": "Produits sur mesure"
+       },
+       {
+        "level": 4,
+        "text": "Rhéostats et potentiomètres à boudin"
+       },
+       {
+        "level": 4,
+        "text": "Rhéostats et potentiomètres à boudin"
+       },
+       {
+        "level": 4,
+        "text": "Cache-boutons – BM mat"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1648
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__nicht-kategorisiert.json",
+      "type": "archivo_de_categoria",
+      "h1": "Nicht kategorisiert",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 4,
+        "text": "Maßgeschneiderte Produkte"
+       },
+       {
+        "level": 4,
+        "text": "Rheostate und Spulenpotentiometer"
+       },
+       {
+        "level": 4,
+        "text": "Rheostate und Spulenpotentiometer"
+       },
+       {
+        "level": 4,
+        "text": "Knopfabdeckungen – BM matt"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 1581
+     }
+    }
    },
    {
     "id": 51,
@@ -17137,7 +20334,33 @@
           "data/raw/html/es/categoria-producto__transformadores__transformador-convencional__serie-tc.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__transformadores__transformador-convencional__serie-tc.json",
+          "type": "ficha_de_producto",
+          "h1": "Transformador convencional estándar",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__transformers__conventional-transformer__tc-series.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__transformateurs__transformateur-conventionnel__serie-tc.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__transformatoren__konventioneller-transformator__tc-serie.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        },
        {
         "id": 58,
@@ -17381,7 +20604,33 @@
           "data/raw/html/es/categoria-producto__transformadores__transformador-convencional__serie-tce.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__transformadores__transformador-convencional__serie-tce.json",
+          "type": "ficha_de_producto",
+          "h1": "Transformador convencional encapsulado",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__transformers__conventional-transformer__tce-series.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__transformateurs__transformateur-conventionnel__serie-tce.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__transformatoren__konventioneller-transformator__tce-serie.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        },
        {
         "id": 59,
@@ -17625,9 +20874,141 @@
           "data/raw/html/es/categoria-producto__transformadores__transformador-convencional__tct.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__transformadores__transformador-convencional__tct.json",
+          "type": "ficha_de_producto",
+          "h1": "Transformador trifásico",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__transformers__conventional-transformer__tct.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__transformateurs__transformateur-conventionnel__tct.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__transformatoren__konventioneller-transformator__tct.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        }
-      ]
+      ],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__transformadores__transformador-convencional.json",
+        "type": "archivo_de_categoria",
+        "h1": "Transformador convencional",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Serie TC"
+         },
+         {
+          "level": 3,
+          "text": "Serie TCE"
+         },
+         {
+          "level": 3,
+          "text": "TCT"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 5515
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__transformers__conventional-transformer.json",
+        "type": "archivo_de_categoria",
+        "h1": "Conventional transformer",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "TC Series"
+         },
+         {
+          "level": 3,
+          "text": "TCE Series"
+         },
+         {
+          "level": 3,
+          "text": "TCT"
+         },
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 5094
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__transformateurs__transformateur-conventionnel.json",
+        "type": "archivo_de_categoria",
+        "h1": "Transformateur conventionnel",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Série TC"
+         },
+         {
+          "level": 3,
+          "text": "Série TCE"
+         },
+         {
+          "level": 3,
+          "text": "TCT"
+         },
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 5946
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__transformatoren__konventioneller-transformator.json",
+        "type": "archivo_de_categoria",
+        "h1": "Konventioneller Transformator",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "TC Serie"
+         },
+         {
+          "level": 3,
+          "text": "TCE-Serie"
+         },
+         {
+          "level": 3,
+          "text": "TCT"
+         },
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 5939
+       }
+      }
      },
      {
       "id": 52,
@@ -18093,7 +21474,33 @@
           "data/raw/html/es/categoria-producto__transformadores__transformadores-toroidales-transformadores__serie-tci.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__transformadores__transformadores-toroidales-transformadores__serie-tci.json",
+          "type": "ficha_de_producto",
+          "h1": "Transformadores en serie circuito impreso",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__transformers__toroidal-transformers__tci-series-printed-circuit-board-enclosure.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__transformateurs__transformateurs-toroidaux__serie-tci-encapsulation-de-circuits-imprimes.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__transformatoren__ringkerntransformatoren__tci-serie-verkapselung-von-leiterplatten.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        },
        {
         "id": 54,
@@ -18337,7 +21744,33 @@
           "data/raw/html/es/categoria-producto__transformadores__transformadores-toroidales-transformadores__serie-te.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__transformadores__transformadores-toroidales-transformadores__serie-te.json",
+          "type": "ficha_de_producto",
+          "h1": "Transformador serie encapsulada",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__transformers__toroidal-transformers__te-series.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__transformateurs__transformateurs-toroidaux__serie-te.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__transformatoren__ringkerntransformatoren__te-serie.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        },
        {
         "id": 53,
@@ -18585,11 +22018,233 @@
           "data/raw/html/es/categoria-producto__transformadores__transformadores-toroidales-transformadores__serie-tt.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__transformadores__transformadores-toroidales-transformadores__serie-tt.json",
+          "type": "ficha_de_producto",
+          "h1": "Transformador Serie TT",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__transformers__toroidal-transformers__tt-series.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__transformateurs__transformateurs-toroidaux__serie-tt.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__transformatoren__ringkerntransformatoren__tt-serie.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        }
-      ]
+      ],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__transformadores__transformadores-toroidales-transformadores.json",
+        "type": "archivo_de_categoria",
+        "h1": "Transformadores toroidales",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Serie TCi (encapsulado para circuito impreso)"
+         },
+         {
+          "level": 3,
+          "text": "Serie TT"
+         },
+         {
+          "level": 3,
+          "text": "Serie TE"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 4566
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__transformers__toroidal-transformers.json",
+        "type": "archivo_de_categoria",
+        "h1": "Toroidal transformers",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "TCi Series (printed circuit board enclosure)"
+         },
+         {
+          "level": 3,
+          "text": "TE Series"
+         },
+         {
+          "level": 3,
+          "text": "TT Series"
+         },
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 4187
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__transformateurs__transformateurs-toroidaux.json",
+        "type": "archivo_de_categoria",
+        "h1": "Transformateurs toroïdaux",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Série TCi (encapsulation de circuits imprimés)"
+         },
+         {
+          "level": 3,
+          "text": "Série TE"
+         },
+         {
+          "level": 3,
+          "text": "Série TT"
+         },
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 4807
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__transformatoren__ringkerntransformatoren.json",
+        "type": "archivo_de_categoria",
+        "h1": "Ringkerntransformatoren",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "TCi-Serie (Verkapselung von Leiterplatten)"
+         },
+         {
+          "level": 3,
+          "text": "TE-Serie"
+         },
+         {
+          "level": 3,
+          "text": "TT-Serie"
+         },
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 4591
+       }
+      }
      }
-    ]
+    ],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__transformadores.json",
+      "type": "archivo_de_categoria",
+      "h1": "Transformadores",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Transformadores toroidales"
+       },
+       {
+        "level": 3,
+        "text": "Transformador convencional"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 4250
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__transformers.json",
+      "type": "archivo_de_categoria",
+      "h1": "Transformers",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Conventional transformer"
+       },
+       {
+        "level": 3,
+        "text": "Toroidal transformers"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 3878
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__transformateurs.json",
+      "type": "archivo_de_categoria",
+      "h1": "Transformateurs",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Transformateur conventionnel"
+       },
+       {
+        "level": 3,
+        "text": "Transformateurs toroïdaux"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 4419
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__transformatoren.json",
+      "type": "archivo_de_categoria",
+      "h1": "Transformatoren",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Konventioneller Transformator"
+       },
+       {
+        "level": 3,
+        "text": "Ringkerntransformatoren"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 4409
+     }
+    }
    },
    {
     "id": 19,
@@ -19125,7 +22780,113 @@
         "data/raw/html/es/categoria-producto__variadores-de-tension__accesorios-de-regulacion.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__accesorios-de-regulacion.json",
+        "type": "archivo_de_categoria",
+        "h1": "Accesorios de regulación",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 4,
+          "text": "Accesorios de mando"
+         },
+         {
+          "level": 4,
+          "text": "Controlador 0-10VDC"
+         },
+         {
+          "level": 4,
+          "text": "Comunicación MODBUS"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1601
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__regulating-accessories.json",
+        "type": "archivo_de_categoria",
+        "h1": "Regulating accessories",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 4,
+          "text": "Control accessories"
+         },
+         {
+          "level": 4,
+          "text": "Controller 0-10VDC"
+         },
+         {
+          "level": 4,
+          "text": "MODBUS communication"
+         },
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1532
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__accessoires-de-regulation.json",
+        "type": "archivo_de_categoria",
+        "h1": "Accessoires de régulation",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 4,
+          "text": "Accessoires de contrôle"
+         },
+         {
+          "level": 4,
+          "text": "Contrôleur 0-10VDC"
+         },
+         {
+          "level": 4,
+          "text": "Communication MODBUS"
+         },
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1729
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__zubehor-zum-regulieren.json",
+        "type": "archivo_de_categoria",
+        "h1": "Zubehör zum Regulieren",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 4,
+          "text": "Zubehör kontrollieren"
+         },
+         {
+          "level": 4,
+          "text": "Steuergerät 0-10VDC"
+         },
+         {
+          "level": 4,
+          "text": "MODBUS-Kommunikation"
+         },
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1652
+       }
+      }
      },
      {
       "id": 45,
@@ -19562,7 +23323,26 @@
           "data/raw/html/es/categoria-producto__variadores-de-tension__en-caja__cuba-de-aceite.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__en-caja__cuba-de-aceite.json",
+          "type": "archivo_de_categoria",
+          "h1": "Cuba de aceite",
+          "h1_count": 1,
+          "headings_h2_h4": [
+           {
+            "level": 3,
+            "text": "Productos"
+           }
+          ],
+          "has_h2": false,
+          "text_chars": 1658
+         },
+         "en": null,
+         "fr": null,
+         "de": null
+        }
        },
        {
         "id": 700,
@@ -19725,7 +23505,18 @@
           "data/raw/html/es/categoria-producto__variadores-de-tension__en-caja__variador-de-tension-en-caja.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__en-caja__variador-de-tension-en-caja.json",
+          "type": "ficha_de_producto",
+          "h1": "En caja",
+          "h1_count": 1
+         },
+         "en": null,
+         "fr": null,
+         "de": null
+        }
        },
        {
         "id": 699,
@@ -19884,9 +23675,66 @@
           "data/raw/html/es/categoria-producto__variadores-de-tension__en-caja__variador-de-tension-industriales.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__en-caja__variador-de-tension-industriales.json",
+          "type": "ficha_de_producto",
+          "h1": "Variador de tensión Equipos industriales",
+          "h1_count": 1
+         },
+         "en": null,
+         "fr": null,
+         "de": null
+        }
        }
-      ]
+      ],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__en-caja.json",
+        "type": "archivo_de_categoria",
+        "h1": "Equipos de sobremesa",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "En caja"
+         },
+         {
+          "level": 3,
+          "text": "Variador de tensión industriales"
+         },
+         {
+          "level": 3,
+          "text": "Cuba de aceite"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2653
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__benchtop-units.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__unites-de-paillasse.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__tafelmodellen.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 28,
@@ -20144,7 +23992,33 @@
         "data/raw/html/es/categoria-producto__variadores-de-tension__fabricacion-a-media.html"
        ]
       },
-      "children": []
+      "children": [],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__fabricacion-a-media.json",
+        "type": "ficha_de_producto",
+        "h1": "Variador de tensión a medida",
+        "h1_count": 1
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__custom-manufacturing.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__production-sur-mesure.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__masgeschneiderte-fertigung.json",
+        "type": "ficha_de_producto",
+        "h1": null,
+        "h1_count": 0
+       }
+      }
      },
      {
       "id": 33,
@@ -20655,7 +24529,33 @@
           "data/raw/html/es/categoria-producto__variadores-de-tension__dobles__doble-manual.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__dobles__doble-manual.json",
+          "type": "ficha_de_producto",
+          "h1": "Variador Doble manual",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__dual-variator__double-manual.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__variateur-double__manuel-double.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__dubbele-variator__dubbele-handleiding.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        },
        {
         "id": 34,
@@ -20929,9 +24829,125 @@
           "data/raw/html/es/categoria-producto__variadores-de-tension__dobles__doble-motorizado.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__dobles__doble-motorizado.json",
+          "type": "ficha_de_producto",
+          "h1": "Variador Doble motorizado",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__dual-variator__dual-motorized.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__variateur-double__double-motorisation.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__dubbele-variator__dubbele-motor.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        }
-      ]
+      ],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__dobles.json",
+        "type": "archivo_de_categoria",
+        "h1": "Variador Doble",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Doble manual"
+         },
+         {
+          "level": 3,
+          "text": "Doble motorizado"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2503
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__dual-variator.json",
+        "type": "archivo_de_categoria",
+        "h1": "Double Variator",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Double manual"
+         },
+         {
+          "level": 3,
+          "text": "Dual motorized"
+         },
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2242
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__variateur-double.json",
+        "type": "archivo_de_categoria",
+        "h1": "Double onduleur",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Double manuel"
+         },
+         {
+          "level": 3,
+          "text": "Double motorisation"
+         },
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2624
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__dubbele-variator.json",
+        "type": "archivo_de_categoria",
+        "h1": "Doppelter Wechselrichter",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Doppelt manuell"
+         },
+         {
+          "level": 3,
+          "text": "Dubbele motor"
+         },
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2434
+       }
+      }
      },
      {
       "id": 37,
@@ -21455,7 +25471,33 @@
           "data/raw/html/es/categoria-producto__variadores-de-tension__monofasico__monofasicos-manual.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__monofasico__monofasicos-manual.json",
+          "type": "ficha_de_producto",
+          "h1": "Variador Monofásico manual",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__single-phase-inverters__trifasicos-manual.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__onduleurs-monophases__manuel.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__einphasen-wechselrichter__handbuch.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        },
        {
         "id": 43,
@@ -21719,9 +25761,125 @@
           "data/raw/html/es/categoria-producto__variadores-de-tension__monofasico__motorizado-monofasico.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__monofasico__motorizado-monofasico.json",
+          "type": "ficha_de_producto",
+          "h1": "Variador Monofásico motorizado",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__single-phase-inverters__single-phase-motorized.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__onduleurs-monophases__motorise.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__einphasen-wechselrichter__motorisiert.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        }
-      ]
+      ],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__monofasico.json",
+        "type": "archivo_de_categoria",
+        "h1": "Variadores Monofasicos",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Manual"
+         },
+         {
+          "level": 3,
+          "text": "Motorizado"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2236
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__single-phase-inverters.json",
+        "type": "archivo_de_categoria",
+        "h1": "Single Phase Inverters",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Manual"
+         },
+         {
+          "level": 3,
+          "text": "Motorized"
+         },
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1959
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__onduleurs-monophases.json",
+        "type": "archivo_de_categoria",
+        "h1": "Onduleurs monophasés",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Manuel"
+         },
+         {
+          "level": 3,
+          "text": "Motorisé"
+         },
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2318
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__einphasen-wechselrichter.json",
+        "type": "archivo_de_categoria",
+        "h1": "Einphasen-Wechselrichter",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Handbuch"
+         },
+         {
+          "level": 3,
+          "text": "Motorisiert"
+         },
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2164
+       }
+      }
      },
      {
       "id": 40,
@@ -22240,7 +26398,41 @@
           "data/raw/html/es/categoria-producto__variadores-de-tension__trifasico__manual-trifasico.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__trifasico__manual-trifasico.json",
+          "type": "ficha_de_producto",
+          "h1": "Variador Trifásico manual",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__three-phase-drives__manual.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__entrainements-triphases__manuel.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__dreiphasige-antriebe__handmatige-driefasen.json",
+          "type": "archivo_de_categoria",
+          "h1": "Handbuch",
+          "h1_count": 1,
+          "headings_h2_h4": [
+           {
+            "level": 3,
+            "text": "Produkte"
+           }
+          ],
+          "has_h2": false,
+          "text_chars": 1430
+         }
+        }
        },
        {
         "id": 42,
@@ -22503,11 +26695,281 @@
           "data/raw/html/es/categoria-producto__variadores-de-tension__trifasico__motorizado.html"
          ]
         },
-        "children": []
+        "children": [],
+        "archive_page": {
+         "es": {
+          "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__trifasico__motorizado.json",
+          "type": "ficha_de_producto",
+          "h1": "Variador Trifasico motorizado",
+          "h1_count": 1
+         },
+         "en": {
+          "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__three-phase-drives__three-phase-motorized.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "fr": {
+          "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__entrainements-triphases__motorise.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         },
+         "de": {
+          "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__dreiphasige-antriebe__motorisiert.json",
+          "type": "ficha_de_producto",
+          "h1": null,
+          "h1_count": 0
+         }
+        }
        }
-      ]
+      ],
+      "archive_page": {
+       "es": {
+        "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension__trifasico.json",
+        "type": "archivo_de_categoria",
+        "h1": "Variadores Trifásicos",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Manual"
+         },
+         {
+          "level": 3,
+          "text": "Motorizado"
+         },
+         {
+          "level": 3,
+          "text": "Productos"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2241
+       },
+       "en": {
+        "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers__three-phase-drives.json",
+        "type": "archivo_de_categoria",
+        "h1": "Three-phase drives",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Manual"
+         },
+         {
+          "level": 3,
+          "text": "Motorized"
+         },
+         {
+          "level": 3,
+          "text": "Products"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 1953
+       },
+       "fr": {
+        "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables__entrainements-triphases.json",
+        "type": "archivo_de_categoria",
+        "h1": "Entraînements triphasés",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Manuel"
+         },
+         {
+          "level": 3,
+          "text": "Motorisé"
+         },
+         {
+          "level": 3,
+          "text": "Produits"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2328
+       },
+       "de": {
+        "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren__dreiphasige-antriebe.json",
+        "type": "archivo_de_categoria",
+        "h1": "Dreiphasige Antriebe",
+        "h1_count": 1,
+        "headings_h2_h4": [
+         {
+          "level": 3,
+          "text": "Handbuch"
+         },
+         {
+          "level": 3,
+          "text": "Motorisiert"
+         },
+         {
+          "level": 3,
+          "text": "Produkte"
+         }
+        ],
+        "has_h2": false,
+        "text_chars": 2119
+       }
+      }
      }
-    ]
+    ],
+    "archive_page": {
+     "es": {
+      "page_json": "data/analysis/pages/es/categoria-producto__variadores-de-tension.json",
+      "type": "archivo_de_categoria",
+      "h1": "Variadores de tensión - Autotransformadores regulables",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Variadores Monofasicos"
+       },
+       {
+        "level": 3,
+        "text": "Variador Doble"
+       },
+       {
+        "level": 3,
+        "text": "Variadores Trifásicos"
+       },
+       {
+        "level": 3,
+        "text": "Equipos de sobremesa"
+       },
+       {
+        "level": 3,
+        "text": "Fabricación a medida"
+       },
+       {
+        "level": 3,
+        "text": "Accesorios de regulación"
+       },
+       {
+        "level": 3,
+        "text": "Productos"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 5214
+     },
+     "en": {
+      "page_json": "data/analysis/pages/en/en__categoria-producto__voltage-variators-adjustable-autotransformers.json",
+      "type": "archivo_de_categoria",
+      "h1": "Voltage variators - Adjustable autotransformers",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Custom manufacturing"
+       },
+       {
+        "level": 3,
+        "text": "Regulating accessories"
+       },
+       {
+        "level": 3,
+        "text": "Single Phase Inverters"
+       },
+       {
+        "level": 3,
+        "text": "Three-phase drives"
+       },
+       {
+        "level": 3,
+        "text": "Desktop equipment"
+       },
+       {
+        "level": 3,
+        "text": "Double Variator"
+       },
+       {
+        "level": 3,
+        "text": "Products"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 4731
+     },
+     "fr": {
+      "page_json": "data/analysis/pages/fr/fr__categoria-producto__regulateurs-de-tension-autotransformateurs-reglables.json",
+      "type": "archivo_de_categoria",
+      "h1": "Régulateurs de tension - Autotransformateurs réglables",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Accessoires de régulation"
+       },
+       {
+        "level": 3,
+        "text": "Entraînements triphasés"
+       },
+       {
+        "level": 3,
+        "text": "Onduleurs monophasés"
+       },
+       {
+        "level": 3,
+        "text": "Production sur mesure"
+       },
+       {
+        "level": 3,
+        "text": "Double onduleur"
+       },
+       {
+        "level": 3,
+        "text": "Équipement de bureau"
+       },
+       {
+        "level": 3,
+        "text": "Produits"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 5478
+     },
+     "de": {
+      "page_json": "data/analysis/pages/de/de__categoria-producto__spannungsregler-einstellbare-spartransformatoren.json",
+      "type": "archivo_de_categoria",
+      "h1": "Spannungsregler - Einstellbare Spartransformatoren",
+      "h1_count": 1,
+      "headings_h2_h4": [
+       {
+        "level": 3,
+        "text": "Dreiphasige Antriebe"
+       },
+       {
+        "level": 3,
+        "text": "Einphasen-Wechselrichter"
+       },
+       {
+        "level": 3,
+        "text": "Maßgeschneiderte Fertigung"
+       },
+       {
+        "level": 3,
+        "text": "Zubehör zum Regulieren"
+       },
+       {
+        "level": 3,
+        "text": "Doppelter Wechselrichter"
+       },
+       {
+        "level": 3,
+        "text": "Schreibtischgeräte"
+       },
+       {
+        "level": 3,
+        "text": "Produkte"
+       }
+      ],
+      "has_h2": false,
+      "text_chars": 5241
+     }
+    }
    }
   ]
  },
@@ -23760,8 +28222,6 @@
      "categoria_vacia",
      "oculta_en_store_api",
      "sin_traduccion",
-     "sin_traduccion",
-     "sin_traduccion",
      "sin_descripcion",
      "fuera_del_sitemap"
     ],
@@ -23823,8 +28283,6 @@
      "categoria_vacia",
      "oculta_en_store_api",
      "sin_traduccion",
-     "sin_traduccion",
-     "sin_traduccion",
      "sin_descripcion",
      "fuera_del_sitemap"
     ],
@@ -23857,8 +28315,6 @@
      "categoria_vacia",
      "oculta_en_store_api",
      "sin_traduccion",
-     "sin_traduccion",
-     "sin_traduccion",
      "fuera_del_sitemap"
     ],
     "stale_count_declared": null
@@ -23887,8 +28343,6 @@
     "flags": [
      "categoria_vacia",
      "oculta_en_store_api",
-     "sin_traduccion",
-     "sin_traduccion",
      "sin_traduccion",
      "sin_descripcion",
      "fuera_del_sitemap"
@@ -23923,10 +28377,6 @@
      "nombre_en_idioma_equivocado",
      "slug_en_idioma_equivocado",
      "fuera_del_sitemap",
-     "url_de_categoria_sirve_ficha_de_producto",
-     "canonical_html_apunta_a_otro_idioma",
-     "url_de_categoria_sirve_ficha_de_producto",
-     "canonical_html_apunta_a_otro_idioma",
      "url_de_categoria_sirve_ficha_de_producto",
      "canonical_html_apunta_a_otro_idioma"
     ],
@@ -23989,8 +28439,6 @@
      "categoria_vacia",
      "oculta_en_store_api",
      "sin_traduccion",
-     "sin_traduccion",
-     "sin_traduccion",
      "sin_descripcion",
      "fuera_del_sitemap"
     ],
@@ -24020,8 +28468,6 @@
     "flags": [
      "categoria_vacia",
      "oculta_en_store_api",
-     "sin_traduccion",
-     "sin_traduccion",
      "sin_traduccion",
      "descripcion_copia_de_otra",
      "fuera_del_sitemap"
@@ -24055,7 +28501,6 @@
      "sin_descripcion",
      "slug_en_idioma_equivocado",
      "traduccion_dudosa",
-     "traduccion_dudosa",
      "fuera_del_sitemap"
     ],
     "stale_count_declared": null
@@ -24084,8 +28529,6 @@
     "flags": [
      "categoria_vacia",
      "oculta_en_store_api",
-     "sin_traduccion",
-     "sin_traduccion",
      "sin_traduccion",
      "sin_descripcion",
      "canonical_distinto_de_la_url",
@@ -26202,6 +30645,20 @@
    "severity": "alta",
    "finding": "En 37 páginas EN, 38 FR y 35 DE de categorías de 1 producto, el canonical del HTML apunta a la ficha del producto en ESPAÑOL (p. ej. la página FR de 'Aros con flecha' declara canonical https://grupotorivac.com/product/aros-con-flecha-2/): canonical cruzado entre idiomas.",
    "source": "data/raw/html/<lang>/<lang>__categoria-producto__*.html (link rel=canonical)"
+  },
+  {
+   "code": "S14",
+   "severity": "media",
+   "finding": "Todos los archivos de categoría saltan de H1 a H3 sin H2 (las subcategorías y el bloque 'Productos' son H3): ES 38/38, EN 28/28, FR 28/28, DE 29/29. Ninguno tiene H2.",
+   "effect": "Jerarquía de encabezados incorrecta; en la web nueva las subcategorías y el listado deben colgar de H2.",
+   "source": "data/analysis/pages/<lang>/categoria-producto__*.json (outline)"
+  },
+  {
+   "code": "S15",
+   "severity": "media",
+   "finding": "Las páginas EN/FR/DE servidas en URLs de categoría de 1 producto no tienen ningún <h1> (EN 53/53, FR 53/53, DE 52/52); las ES sí tienen H1 (53/53). Es un rasgo de la plantilla de ficha de producto, no de la categoría.",
+   "effect": "Se anota aquí porque son las URLs de categoría quienes sirven esa ficha; la corrección corresponde a la tarea de productos.",
+   "source": "data/raw/html/<lang>/<lang>__categoria-producto__*.html (conteo de <h1> en páginas con clase single-product)"
   }
  ],
  "proposal": {
@@ -31366,7 +35823,7 @@
   "Las clasificaciones de idioma de nombres, slugs y descripciones (neerlandés en DE, español en slugs FR) son heurísticas por vocabulario; requieren revisión de un nativo.",
   "Yoast no define meta description en EN/FR/DE (meta_description = null en las 82 categorías de cada idioma); solo 30 de las 91 categorías ES la tienen. Se informa og_description cuando existe.",
   "La Store API solo trae imagen de categoría para las categorías no vacías; las 12 vacías no tienen imagen consultable.",
-  "No existe fuente de orden editorial de categorías: menu_order en WooCommerce es alfabético (0..99). El orden propuesto sale de las tarjetas de /productos/ y de criterio lógico.",
+  "No existe fuente de orden editorial de categorías: menu_order en ES va de 0 a 99 y las raíces salen en orden prácticamente alfabético (con 'Sin categorizar' la primera); en EN/FR/DE vale 0 en todas. El orden propuesto sale de las tarjetas de /productos/ y de criterio lógico.",
   "Los textos de las descripciones se limpian de HTML pero se conservan tal cual (errores incluidos); no se corrigen."
  ]
 }

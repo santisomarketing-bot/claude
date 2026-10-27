@@ -24,6 +24,22 @@
    "en": 194,
    "fr": 190,
    "de": 189
+  },
+  "independent_verification": {
+   "method": "Recalculado con scripts propios (python3 -I) a partir de data/analysis/pages-index.json, data/raw/sitemaps/*.xml, data/raw/rest/*.json y data/raw/html/*; no se ha tocado data/raw.",
+   "confirmed": [
+    "781 páginas HTML (208 ES / 194 EN / 190 FR / 189 DE) y reparto por plantilla por idioma",
+    "translation_matrix.pages/posts/products: 0 diferencias frente a hreflang de las páginas ES",
+    "Huérfanos EN 5 / FR 2 / DE 1 (recalculados)",
+    "Sitemap: 201 URLs únicas (197 ES + 4 EN), product-sitemap 306 loc -> 82 únicas",
+    "Canonical de /en/ = /de/; canonical de FR/DE /productos/ = /en/torivac-products/; canonical de /en/contact/ = /de/kontakt-us/",
+    "Enlaces de pie a /aviso-legal/ (bloque tablet/móvil y pie de entradas de blog) y pie FR/DE/EN enlazando a las URL ES de privacidad/aviso legal/accesibilidad"
+   ],
+   "corrected": [
+    "Selector de idioma: sí muestra banderas (antes decía 'sin banderas')",
+    "Enlaces externos del pie (Santiso Marketing) ya no llevan path '/'",
+    "sitemap_issues ampliado: URL fea ?p=875 y /shop/ dentro de product-sitemap; 12 categorías ES vivas fuera del sitemap"
+   ]
   }
  },
  "languages": [
@@ -347,7 +363,7 @@
     "notes": "Menú plano de 7 entradas; no hay desplegable de productos en cabecera (la navegación por categorías vive en la barra lateral flotante y en /productos/)."
    },
    "language_switcher": {
-    "mechanism": "WPML añade 4 ítems de idioma al final del menú principal (clases wpml-ls-slot-3, wpml-ls-item-xx); sin banderas, sólo nombre del idioma",
+    "mechanism": "WPML añade 4 ítems de idioma al final del menú principal (li.wpml-ls-slot-3 / wpml-ls-item-xx, orden fijo English, Français, Español, Deutsch); cada ítem lleva bandera (img.wpml-ls-flag con alt vacío, plugin sitepress-multilingual-cms/res/flags/xx.png) + nombre nativo del idioma (span.wpml-ls-native). Verificado en data/raw/html/es/home.html y en la captura data/raw/screens/home-es.desktop.png",
     "items_on_home": [
      {
       "code": "en",
@@ -465,7 +481,8 @@
       ]
      }
     ],
-    "pages_with_full_switcher": 191
+    "pages_with_full_switcher": 191,
+    "a11y_note": "Las banderas son <img> con alt=\"\" (decorativas) y el enlace de idioma activo no lleva title; el nombre nativo sí lleva atributo lang."
    },
    "mobile": {
     "distinct_menu": false,
@@ -496,7 +513,8 @@
       {
        "label": "Santiso Marketing",
        "url": "https://santisomarketing.com/",
-       "path": "/"
+       "path": null,
+       "external": true
       }
      ]
     },
@@ -513,7 +531,8 @@
       {
        "label": "Santiso Marketing",
        "url": "https://santisomarketing.com/",
-       "path": "/"
+       "path": null,
+       "external": true
       }
      ],
      "description": "Las entradas de blog añaden un bloque CTA \"Contacta con nosotros\" con formulario WPForms (14511 ES / 16157-16204 EN / 16179-16206 FR / 16168-16202 DE) antes del pie."
@@ -979,7 +998,7 @@
     "notes": "Menú plano de 7 entradas; no hay desplegable de productos en cabecera (la navegación por categorías vive en la barra lateral flotante y en /productos/)."
    },
    "language_switcher": {
-    "mechanism": "WPML añade 4 ítems de idioma al final del menú principal (clases wpml-ls-slot-3, wpml-ls-item-xx); sin banderas, sólo nombre del idioma",
+    "mechanism": "WPML añade 4 ítems de idioma al final del menú principal (li.wpml-ls-slot-3 / wpml-ls-item-xx, orden fijo English, Français, Español, Deutsch); cada ítem lleva bandera (img.wpml-ls-flag con alt vacío, plugin sitepress-multilingual-cms/res/flags/xx.png) + nombre nativo del idioma (span.wpml-ls-native). Verificado en data/raw/html/es/home.html y en la captura data/raw/screens/home-es.desktop.png",
     "items_on_home": [
      {
       "code": "en",
@@ -1072,7 +1091,8 @@
       ]
      }
     ],
-    "pages_with_full_switcher": 186
+    "pages_with_full_switcher": 186,
+    "a11y_note": "Las banderas son <img> con alt=\"\" (decorativas) y el enlace de idioma activo no lleva title; el nombre nativo sí lleva atributo lang."
    },
    "mobile": {
     "distinct_menu": false,
@@ -1103,7 +1123,8 @@
       {
        "label": "Santiso Marketing",
        "url": "https://santisomarketing.com/",
-       "path": "/"
+       "path": null,
+       "external": true
       },
       {
        "label": "Legal Notice",
@@ -1125,7 +1146,8 @@
       {
        "label": "Santiso Marketing",
        "url": "https://santisomarketing.com/",
-       "path": "/"
+       "path": null,
+       "external": true
       }
      ],
      "description": "Las entradas de blog añaden un bloque CTA \"Contacta con nosotros\" con formulario WPForms (14511 ES / 16157-16204 EN / 16179-16206 FR / 16168-16202 DE) antes del pie."
@@ -1585,7 +1607,7 @@
     "notes": "Menú plano de 7 entradas; no hay desplegable de productos en cabecera (la navegación por categorías vive en la barra lateral flotante y en /productos/)."
    },
    "language_switcher": {
-    "mechanism": "WPML añade 4 ítems de idioma al final del menú principal (clases wpml-ls-slot-3, wpml-ls-item-xx); sin banderas, sólo nombre del idioma",
+    "mechanism": "WPML añade 4 ítems de idioma al final del menú principal (li.wpml-ls-slot-3 / wpml-ls-item-xx, orden fijo English, Français, Español, Deutsch); cada ítem lleva bandera (img.wpml-ls-flag con alt vacío, plugin sitepress-multilingual-cms/res/flags/xx.png) + nombre nativo del idioma (span.wpml-ls-native). Verificado en data/raw/html/es/home.html y en la captura data/raw/screens/home-es.desktop.png",
     "items_on_home": [
      {
       "code": "en",
@@ -1641,7 +1663,8 @@
       ]
      }
     ],
-    "pages_with_full_switcher": 187
+    "pages_with_full_switcher": 187,
+    "a11y_note": "Las banderas son <img> con alt=\"\" (decorativas) y el enlace de idioma activo no lleva title; el nombre nativo sí lleva atributo lang."
    },
    "mobile": {
     "distinct_menu": false,
@@ -1672,7 +1695,8 @@
       {
        "label": "Santiso Marketing",
        "url": "https://santisomarketing.com/",
-       "path": "/"
+       "path": null,
+       "external": true
       },
       {
        "label": "Mentions légales",
@@ -1694,7 +1718,8 @@
       {
        "label": "Santiso Marketing",
        "url": "https://santisomarketing.com/",
-       "path": "/"
+       "path": null,
+       "external": true
       }
      ],
      "description": "Las entradas de blog añaden un bloque CTA \"Contacta con nosotros\" con formulario WPForms (14511 ES / 16157-16204 EN / 16179-16206 FR / 16168-16202 DE) antes del pie."
@@ -2154,7 +2179,7 @@
     "notes": "Menú plano de 7 entradas; no hay desplegable de productos en cabecera (la navegación por categorías vive en la barra lateral flotante y en /productos/)."
    },
    "language_switcher": {
-    "mechanism": "WPML añade 4 ítems de idioma al final del menú principal (clases wpml-ls-slot-3, wpml-ls-item-xx); sin banderas, sólo nombre del idioma",
+    "mechanism": "WPML añade 4 ítems de idioma al final del menú principal (li.wpml-ls-slot-3 / wpml-ls-item-xx, orden fijo English, Français, Español, Deutsch); cada ítem lleva bandera (img.wpml-ls-flag con alt vacío, plugin sitepress-multilingual-cms/res/flags/xx.png) + nombre nativo del idioma (span.wpml-ls-native). Verificado en data/raw/html/es/home.html y en la captura data/raw/screens/home-es.desktop.png",
     "items_on_home": [
      {
       "code": "en",
@@ -2202,7 +2227,8 @@
       ]
      }
     ],
-    "pages_with_full_switcher": 187
+    "pages_with_full_switcher": 187,
+    "a11y_note": "Las banderas son <img> con alt=\"\" (decorativas) y el enlace de idioma activo no lleva title; el nombre nativo sí lleva atributo lang."
    },
    "mobile": {
     "distinct_menu": false,
@@ -2233,7 +2259,8 @@
       {
        "label": "Santiso Marketing",
        "url": "https://santisomarketing.com/",
-       "path": "/"
+       "path": null,
+       "external": true
       },
       {
        "label": "Rechtliche Hinweise",
@@ -2255,7 +2282,8 @@
       {
        "label": "Santiso Marketing",
        "url": "https://santisomarketing.com/",
-       "path": "/"
+       "path": null,
+       "external": true
       }
      ],
      "description": "Las entradas de blog añaden un bloque CTA \"Contacta con nosotros\" con formulario WPForms (14511 ES / 16157-16204 EN / 16179-16206 FR / 16168-16202 DE) antes del pie."
@@ -4468,7 +4496,9 @@
     "post": "https://grupotorivac.com/la-importancia-del-transformador-toroidal-en-la-industria/",
     "product": "https://grupotorivac.com/product/hembrilla-hb4/",
     "product_category": "https://grupotorivac.com/categoria-producto/resistencias/bancos-de-carga/"
-   }
+   },
+   "blog_pagination": "/blog/page/{n}/  (n = 2, 3; 10 entradas por página; enlaces en el HTML del índice, no cosechados)",
+   "blog_category_pagination": "/category/blog/page/{n}/  (n = 2, 3)"
   },
   "en": {
    "prefix": "/en/",
@@ -4521,7 +4551,9 @@
     "post": "https://grupotorivac.com/en/la-importancia-del-transformador-toroidal-en-la-industria/",
     "product": "https://grupotorivac.com/en/product/hb4-socket/",
     "product_category": "https://grupotorivac.com/en/categoria-producto/resistors-load-banks/load-banks/"
-   }
+   },
+   "blog_pagination": "/en/blog/page/{n}/  (n = 2, 3; 10 entradas por página; enlaces en el HTML del índice, no cosechados)",
+   "blog_category_pagination": "/en/category/blog/page/{n}/  (n = 2, 3)"
   },
   "fr": {
    "prefix": "/fr/",
@@ -4569,7 +4601,9 @@
     "post": "https://grupotorivac.com/fr/la-importancia-del-transformador-toroidal-en-la-industria/",
     "product": "https://grupotorivac.com/fr/product/prise-hb4/",
     "product_category": "https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/bancs-de-charge/"
-   }
+   },
+   "blog_pagination": "/fr/blog/page/{n}/  (n = 2, 3; 10 entradas por página; enlaces en el HTML del índice, no cosechados)",
+   "blog_category_pagination": "/fr/category/blog/page/{n}/  (n = 2, 3)"
   },
   "de": {
    "prefix": "/de/",
@@ -4617,7 +4651,9 @@
     "post": "https://grupotorivac.com/de/la-importancia-del-transformador-toroidal-en-la-industria/",
     "product": "https://grupotorivac.com/de/product/hb4-buchse/",
     "product_category": "https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/ladebanke/"
-   }
+   },
+   "blog_pagination": "/de/blog/page/{n}/  (n = 2, 3; 10 entradas por página; enlaces en el HTML del índice, no cosechados)",
+   "blog_category_pagination": "/de/category/blog/page/{n}/  (n = 2, 3)"
   },
   "_rules": [
    "ES es el idioma por defecto y vive en la raíz sin prefijo; EN/FR/DE se montan bajo /en/ /fr/ /de/ (WPML, idioma por directorio).",
@@ -17406,7 +17442,12 @@
     }
    ]
   },
-  "notes": []
+  "notes": [
+   "Huérfano = contenido que existe en EN/FR/DE y no tiene par ES enlazado por hreflang (ni por mapeo de categoría/ficha). Recalculado de forma independiente: EN 5 (1 entrada, 3 páginas WooCommerce, 1 categoría), FR 2 (1 ficha, 1 categoría), DE 1 (1 categoría).",
+   "Las 3 categorías '2x3W' (EN id 631, FR 632, DE 633) están vacías y las fichas '...2x3w' traducidas cuelgan de otras categorías; ES no tiene categoría 2x3W.",
+   "La ficha FR 4323 'Equipos de sobremesa' (slug equipos-de-sobremesa-2) es en realidad una categoría convertida en ficha; su ES original (id 875) no está publicado pero el product-sitemap lo anuncia.",
+   "Las 4 URLs WooCommerce en español bajo /en/ (tienda, carrito, finalizar-compra, mi-cuenta) son EN-only salvo carrito, que WPML enlaza con /confirmar/ (ES)."
+  ]
  },
  "utility_pages": [
   {
@@ -23410,13 +23451,34 @@
     "https://grupotorivac.com/en/mi-cuenta/"
    ],
    "listed_but_not_harvested": [
-    "https://grupotorivac.com/author/francoadm/"
+    "https://grupotorivac.com/author/francoadm/",
+    "https://grupotorivac.com/?post_type=product&p=875"
    ],
    "elementor_hf_listed": [
     "https://grupotorivac.com/elementor-hf/footer-blog/",
     "https://grupotorivac.com/elementor-hf/header/"
    ],
-   "conclusion": "El sitemap anuncia 201 URLs únicas: 197 en ES (incluye 2 plantillas elementor-hf y el autor) y sólo 4 en EN (tienda, carrito, mi-cuenta y una entrada); FR y DE no aparecen. Las versiones traducidas dependen únicamente de hreflang."
+   "conclusion": "El sitemap anuncia 201 URLs únicas: 197 en ES (incluye 2 plantillas elementor-hf y el autor) y sólo 4 en EN (tienda, carrito, mi-cuenta y una entrada); FR y DE no aparecen. Las versiones traducidas dependen únicamente de hreflang.",
+   "product_sitemap_non_product_urls": [
+    "https://grupotorivac.com/shop/",
+    "https://grupotorivac.com/?post_type=product&p=875"
+   ],
+   "product_sitemap_note": "El product-sitemap lista 82 URLs únicas = 80 fichas ES + /shop/ (archivo WooCommerce duplicado de /productos/) + una URL fea ?post_type=product&p=875 (id 875, ficha ES original de la ficha FR huérfana 4323; no existe en REST ni Store API ES). Fuente: data/raw/sitemaps/product-sitemap.xml",
+   "es_categories_live_not_in_sitemap": [
+    "https://grupotorivac.com/categoria-producto/comunicacion-modbus/",
+    "https://grupotorivac.com/categoria-producto/controlador-0-10vdc/",
+    "https://grupotorivac.com/categoria-producto/equipos-de-sobremesa-en-caja/",
+    "https://grupotorivac.com/categoria-producto/equipos-de-sobremesa/",
+    "https://grupotorivac.com/categoria-producto/equipos-industriales-en-caja/",
+    "https://grupotorivac.com/categoria-producto/equipos-industriales/",
+    "https://grupotorivac.com/categoria-producto/fabricaciones-a-medida-transformadores-toroidales/",
+    "https://grupotorivac.com/categoria-producto/fabricaciones-a-medida/",
+    "https://grupotorivac.com/categoria-producto/hembrillas-de-seguridad/",
+    "https://grupotorivac.com/categoria-producto/portaleds/",
+    "https://grupotorivac.com/categoria-producto/potenciometros-y-reostatos/",
+    "https://grupotorivac.com/categoria-producto/variadores-de-tension/en-caja/cuba-de-aceite/"
+   ],
+   "es_categories_note": "De las 91 categorías ES con HTML cosechado, 79 figuran en product_cat-sitemap y 12 no (todas vacías o duplicadas). Fuente: comparación de data/raw/sitemaps/product_cat-sitemap.xml con data/analysis/pages/es/categoria-producto__*.json"
   },
   "internal_linking": {
    "method": "enlaces del contenido principal (sin menú ni pie) de data/analysis/pages/*/*.json",
@@ -23539,7 +23601,17 @@
      ]
     }
    },
-   "caveat": "No se cosechó la paginación del blog (G-06): puede existir /blog/page/2/."
+   "caveat": "El índice del blog pagina de 10 en 10: /blog/page/2/ y /blog/page/3/ (y /category/blog/page/2|3/) aparecen enlazados en el HTML de los 4 idiomas pero no se cosecharon. Por eso 'posts_without_inbound_links' sobrestima los huérfanos: las entradas fuera de la 1ª página están enlazadas desde la paginación. Confirmado en data/raw/html/<lang>/blog.html.",
+   "blog_pagination_urls": [
+    "https://grupotorivac.com/blog/page/2/",
+    "https://grupotorivac.com/blog/page/3/",
+    "https://grupotorivac.com/en/blog/page/2/",
+    "https://grupotorivac.com/en/blog/page/3/",
+    "https://grupotorivac.com/fr/blog/page/2/",
+    "https://grupotorivac.com/fr/blog/page/3/",
+    "https://grupotorivac.com/de/blog/page/2/",
+    "https://grupotorivac.com/de/blog/page/3/"
+   ]
   },
   "preserve_urls": {
    "definition": "tier 1 = URLs ES indexadas (sitemap de Yoast) y catálogos PDF del menú; tier 2 = URLs traducidas declaradas por hreflang y PDFs de ficha; tier 3 = URLs técnicas/legadas que se redirigen o descartan. Acciones: mantener_identica (misma ruta, contenido equivalente), redirigir_301 (con destino), revisar_descartar/revisar (decidir), descartar_410.",
@@ -23557,7 +23629,7 @@
     {
      "action": "mantener_identica",
      "tier": 2,
-     "count": 463
+     "count": 471
     },
     {
      "action": "redirigir_301",
@@ -23572,7 +23644,7 @@
     {
      "action": "redirigir_301",
      "tier": 3,
-     "count": 8
+     "count": 16
     },
     {
      "action": "revisar",
@@ -23586,9 +23658,9 @@
     }
    ],
    "totals": {
-    "urls": 832,
-    "mantener_identica": 605,
-    "redirigir_301": 219
+    "urls": 848,
+    "mantener_identica": 613,
+    "redirigir_301": 227
    },
    "urls": [
     {
@@ -31304,8 +31376,161 @@
      "action": "mantener_identica",
      "tier": 1,
      "reason": "PDF enlazado desde fichas/menú; mantener ruta /wp-content/uploads/... para no romper enlaces externos."
+    },
+    {
+     "url": "https://grupotorivac.com/blog/page/2/",
+     "path": "/blog/page/2/",
+     "lang": "es",
+     "type": "blog_pagination",
+     "action": "mantener_identica",
+     "tier": 2,
+     "reason": "Paginación del índice del blog enlazada desde /blog/ (no cosechada; contenido = entradas 11-21)."
+    },
+    {
+     "url": "https://grupotorivac.com/blog/page/3/",
+     "path": "/blog/page/3/",
+     "lang": "es",
+     "type": "blog_pagination",
+     "action": "mantener_identica",
+     "tier": 2,
+     "reason": "Paginación del índice del blog enlazada desde /blog/ (no cosechada; contenido = entradas 11-21)."
+    },
+    {
+     "url": "https://grupotorivac.com/category/blog/page/2/",
+     "path": "/category/blog/page/2/",
+     "lang": "es",
+     "type": "blog_category_pagination",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Paginación del archivo de categoría de blog (duplica /blog/page/N/).",
+     "redirect_to": "/blog/page/2/"
+    },
+    {
+     "url": "https://grupotorivac.com/category/blog/page/3/",
+     "path": "/category/blog/page/3/",
+     "lang": "es",
+     "type": "blog_category_pagination",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Paginación del archivo de categoría de blog (duplica /blog/page/N/).",
+     "redirect_to": "/blog/page/3/"
+    },
+    {
+     "url": "https://grupotorivac.com/en/blog/page/2/",
+     "path": "/en/blog/page/2/",
+     "lang": "en",
+     "type": "blog_pagination",
+     "action": "mantener_identica",
+     "tier": 2,
+     "reason": "Paginación del índice del blog enlazada desde /blog/ (no cosechada; contenido = entradas 11-21)."
+    },
+    {
+     "url": "https://grupotorivac.com/en/blog/page/3/",
+     "path": "/en/blog/page/3/",
+     "lang": "en",
+     "type": "blog_pagination",
+     "action": "mantener_identica",
+     "tier": 2,
+     "reason": "Paginación del índice del blog enlazada desde /blog/ (no cosechada; contenido = entradas 11-21)."
+    },
+    {
+     "url": "https://grupotorivac.com/en/category/blog/page/2/",
+     "path": "/en/category/blog/page/2/",
+     "lang": "en",
+     "type": "blog_category_pagination",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Paginación del archivo de categoría de blog (duplica /blog/page/N/).",
+     "redirect_to": "/en/blog/page/2/"
+    },
+    {
+     "url": "https://grupotorivac.com/en/category/blog/page/3/",
+     "path": "/en/category/blog/page/3/",
+     "lang": "en",
+     "type": "blog_category_pagination",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Paginación del archivo de categoría de blog (duplica /blog/page/N/).",
+     "redirect_to": "/en/blog/page/3/"
+    },
+    {
+     "url": "https://grupotorivac.com/fr/blog/page/2/",
+     "path": "/fr/blog/page/2/",
+     "lang": "fr",
+     "type": "blog_pagination",
+     "action": "mantener_identica",
+     "tier": 2,
+     "reason": "Paginación del índice del blog enlazada desde /blog/ (no cosechada; contenido = entradas 11-21)."
+    },
+    {
+     "url": "https://grupotorivac.com/fr/blog/page/3/",
+     "path": "/fr/blog/page/3/",
+     "lang": "fr",
+     "type": "blog_pagination",
+     "action": "mantener_identica",
+     "tier": 2,
+     "reason": "Paginación del índice del blog enlazada desde /blog/ (no cosechada; contenido = entradas 11-21)."
+    },
+    {
+     "url": "https://grupotorivac.com/fr/category/blog/page/2/",
+     "path": "/fr/category/blog/page/2/",
+     "lang": "fr",
+     "type": "blog_category_pagination",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Paginación del archivo de categoría de blog (duplica /blog/page/N/).",
+     "redirect_to": "/fr/blog/page/2/"
+    },
+    {
+     "url": "https://grupotorivac.com/fr/category/blog/page/3/",
+     "path": "/fr/category/blog/page/3/",
+     "lang": "fr",
+     "type": "blog_category_pagination",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Paginación del archivo de categoría de blog (duplica /blog/page/N/).",
+     "redirect_to": "/fr/blog/page/3/"
+    },
+    {
+     "url": "https://grupotorivac.com/de/blog/page/2/",
+     "path": "/de/blog/page/2/",
+     "lang": "de",
+     "type": "blog_pagination",
+     "action": "mantener_identica",
+     "tier": 2,
+     "reason": "Paginación del índice del blog enlazada desde /blog/ (no cosechada; contenido = entradas 11-21)."
+    },
+    {
+     "url": "https://grupotorivac.com/de/blog/page/3/",
+     "path": "/de/blog/page/3/",
+     "lang": "de",
+     "type": "blog_pagination",
+     "action": "mantener_identica",
+     "tier": 2,
+     "reason": "Paginación del índice del blog enlazada desde /blog/ (no cosechada; contenido = entradas 11-21)."
+    },
+    {
+     "url": "https://grupotorivac.com/de/category/blog/page/2/",
+     "path": "/de/category/blog/page/2/",
+     "lang": "de",
+     "type": "blog_category_pagination",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Paginación del archivo de categoría de blog (duplica /blog/page/N/).",
+     "redirect_to": "/de/blog/page/2/"
+    },
+    {
+     "url": "https://grupotorivac.com/de/category/blog/page/3/",
+     "path": "/de/category/blog/page/3/",
+     "lang": "de",
+     "type": "blog_category_pagination",
+     "action": "redirigir_301",
+     "tier": 3,
+     "reason": "Paginación del archivo de categoría de blog (duplica /blog/page/N/).",
+     "redirect_to": "/de/blog/page/3/"
     }
-   ]
+   ],
+   "totals_note": "El resto (descartar_410, revisar, revisar_descartar) = 8 URLs. Las 16 URLs de paginación del blog se añadieron tras confirmar los enlaces en el HTML (no están en pages-index)."
   }
  },
  "global_components": {
@@ -31472,7 +31697,7 @@
   {
    "id": "G-06",
    "topic": "Resultados de búsqueda y paginación",
-   "detail": "No se cosecharon /?s=, /page/N/ ni feeds: se desconoce si el blog/archivos paginan.",
+   "detail": "No se cosecharon /?s=, feeds ni las páginas paginadas del blog: /blog/page/2/, /blog/page/3/ y /category/blog/page/2|3/ (x4 idiomas, 16 URLs) están enlazadas en el HTML pero no existen en data/raw/html. Su contenido (entradas 11-21) se conoce por REST/sitemap, no por estas URLs.",
    "source": "data/raw/manifest.json"
   },
   {
@@ -31492,6 +31717,433 @@
    "topic": "Fichas sin traducción",
    "detail": "ES ids 16633, 977, 976, 974, 972 sin EN/FR/DE; id 326 sin DE. No se inventan traducciones; quedan como propuesta.",
    "source": "data/analysis/coverage.json"
+  },
+  {
+   "id": "G-10",
+   "topic": "Cobertura de /productos/",
+   "detail": "/productos/ (4 idiomas) lista 11 familias y omite 'Equipos electrónicos' (11 fichas en ES) y 'Sin categorizar'; la barra lateral sí incluye 'Equipos electrónicos'. No se sabe si es intencionado (categoría oculta) o un olvido; la REST devuelve count 0 para esa rama aunque la Store API asigna fichas.",
+   "source": "data/analysis/pages/*/productos.json (outline) + nav_menus.*.floating_sidebar + data/analysis/product-map.json"
+  },
+  {
+   "id": "G-11",
+   "topic": "Verificación de mapeos de categoría inferidos",
+   "detail": "8 emparejamientos de categoría (FR/DE) se infirieron por eliminación o palabra clave del producto servido (mapped_by = parent-elimination / parent+served-product-keyword); revisar manualmente antes de generar redirecciones.",
+   "source": "translation_matrix.product_categories[].fr|de.mapped_by"
   }
- ]
+ ],
+ "findings": [
+  {
+   "id": "F-D01",
+   "area": "duplicados",
+   "severity": "alta",
+   "title": "211 URLs de categoría sirven la ficha de producto",
+   "detail": "53 categorías hoja por idioma (52 en DE) con un solo producto devuelven el HTML de la ficha: canonical y og:url apuntan a la ficha, pero la URL de categoría está en product_cat-sitemap y en la barra lateral.",
+   "evidence": [
+    "data/analysis/site-structure.json translation_matrix.product_categories[].es.renders = product",
+    "data/raw/sitemaps/product_cat-sitemap.xml"
+   ],
+   "recommendation": "En la web nueva la categoría hoja no existe como página: 301 a la ficha (redirect_to ya calculado en seo.preserve_urls).",
+   "refs": [
+    "seo.preserve_urls",
+    "page_templates.product_category_serves_product"
+   ]
+  },
+  {
+   "id": "F-D02",
+   "area": "duplicados",
+   "severity": "media",
+   "title": "/shop/ y /en/tienda/ duplican /productos/",
+   "detail": "Archivo WooCommerce (ES /shop/, EN /en/tienda/) lista las mismas familias que /productos/; /shop/ es la primera URL del product-sitemap y declara hreflang relativo '/shop/'.",
+   "evidence": [
+    "data/analysis/pages/es/shop.json",
+    "data/raw/sitemaps/product-sitemap.xml"
+   ],
+   "recommendation": "No migrar; 301 a /productos/ (traducido).",
+   "refs": [
+    "utility_pages"
+   ]
+  },
+  {
+   "id": "F-D03",
+   "area": "duplicados",
+   "severity": "media",
+   "title": "12 categorías ES vacías o duplicadas por nombre",
+   "detail": "Sin productos y fuera del sitemap (12): Comunicación MODBUS (50), Controlador 0-10VDC (31), Cuba de aceite (32), Equipos de Sobremesa (46) y Equipos de sobremesa (39) duplicadas entre sí y con la de variadores, Equipos industriales x2 (36, 47), Fabricaciones a Medida / a medida (49, 102; la 102 con canonical a una ruta inexistente), Hembrillas de seguridad (25, duplicada de Hembrillas), Portaleds (24, duplicada de Portaled) y Potenciómetros y reóstatos (26, duplicada de Reostatos y potenciómetros bobinados).",
+   "evidence": [
+    "translation_matrix.product_categories[] con product_count 0",
+    "seo.sitemap_issues.es_categories_live_not_in_sitemap"
+   ],
+   "recommendation": "Descartar (410/301 a la familia correcta) y no regenerarlas; 5 de ellas tienen traducción (24, 26, 39, 46, 50) y también se retiran.",
+   "refs": [
+    "migration_decisions"
+   ]
+  },
+  {
+   "id": "F-D04",
+   "area": "duplicados",
+   "severity": "media",
+   "title": "Tres fichas con el mismo nombre 'Reostatos y potenciometros bobinados'",
+   "detail": "Fichas 904, 905 y 909 (slugs reostatos-y-potenciometros-bobinados, -2, -6); 905 y 909 sólo cuelgan de 'Sin categorizar' (REST product_cat = [18]). Ficha 878 'Fabricaciones a medida' también.",
+   "evidence": [
+    "data/raw/rest/product.es.json (product_cat)",
+    "data/analysis/product-map.json"
+   ],
+   "recommendation": "Diferenciar nombres o fusionar tras revisión (propuesta para el admin, no se decide aquí).",
+   "refs": [
+    "slug_issues.SI-06"
+   ]
+  },
+  {
+   "id": "F-D05",
+   "area": "duplicados",
+   "severity": "media",
+   "title": "Plantillas Elementor indexables que duplican la portada",
+   "detail": "/elementor-hf/header/ y /elementor-hf/footer-blog/ responden con body 'home', mismo H1 que la portada, canonical a otra URL ES y están en elementor-hf-sitemap.",
+   "evidence": [
+    "data/raw/sitemaps/elementor-hf-sitemap.xml",
+    "data/analysis/pages/es/elementor-hf__header.json"
+   ],
+   "recommendation": "No migrar: 410.",
+   "refs": [
+    "page_templates.elementor_hf_template"
+   ]
+  },
+  {
+   "id": "F-D06",
+   "area": "duplicados",
+   "severity": "baja",
+   "title": "Archivos de categoría de blog duplican el índice",
+   "detail": "/category/blog/ (22 entradas según REST) y /category/sin-categorizar/ (0) existen en los 4 idiomas; /category/blog/ pagina igual que /blog/. El canonical DE de sin-categorizar apunta a otro idioma.",
+   "evidence": [
+    "data/raw/rest/categories.*.json",
+    "data/raw/html/*/category__*.html"
+   ],
+   "recommendation": "301 a /blog/ (y /blog/page/N/).",
+   "refs": [
+    "page_templates.blog_category_archive"
+   ]
+  },
+  {
+   "id": "F-H01",
+   "area": "huérfanos",
+   "severity": "media",
+   "title": "Contenido que sólo existe en EN/FR/DE",
+   "detail": "EN: entrada 8196 'What is a Voltage Variator?', páginas WooCommerce tienda/finalizar-compra/mi-cuenta, categoría 2x3W. FR: ficha 4323 'Equipos de sobremesa' y categoría 2x3W. DE: categoría 2x3W. Ninguno tiene par ES por hreflang.",
+   "evidence": [
+    "orphans.by_language",
+    "data/analysis/coverage.json translated_products_without_es_match"
+   ],
+   "recommendation": "La entrada EN 8196 requiere decisión de contenido (traducir a ES o descartar); el resto se descarta.",
+   "refs": [
+    "orphans"
+   ]
+  },
+  {
+   "id": "F-N01",
+   "area": "navegación e IA",
+   "severity": "alta",
+   "title": "/productos/ omite 'Equipos electrónicos' (11 fichas) en los 4 idiomas",
+   "detail": "/productos/ lista 11 familias (65 fichas sumando sus contadores); 'Equipos electrónicos' (control industrial, convertidores, energías renovables, fuentes CA/CC) sólo aparece en la barra lateral y en /shop/; la REST da count 0 para esa rama. La rejilla de la portada (10 mosaicos) tampoco incluye Hembrillas ni Equipos electrónicos.",
+   "evidence": [
+    "data/analysis/pages/*/productos.json outline",
+    "nav_menus.es.floating_sidebar",
+    "data/analysis/product-map.json"
+   ],
+   "recommendation": "Listar las 12 familias en /productos/ y en la portada, o decidir expresamente ocultar la rama (confirmar con Torivac).",
+   "refs": [
+    "gaps.G-10"
+   ]
+  },
+  {
+   "id": "F-N02",
+   "area": "navegación e IA",
+   "severity": "media",
+   "title": "Cuatro fichas sin ruta de navegación desde /productos/",
+   "detail": "909, 905 y 878 sólo cuelgan de 'Sin categorizar' (REST product_cat=[18]) y la 155 'Tapas para botones BM mate' de la categoría raíz 'Botones de mando y accesorios' (27); ninguna de esas dos categorías aparece en /productos/ ni en la barra lateral (sí en /shop/). Con las 11 de 'Equipos electrónicos' son 15 de las 80 fichas ES que /productos/ no enlaza (65 sí).",
+   "evidence": [
+    "data/raw/rest/product.es.json (product_cat)",
+    "data/analysis/product-map.json (distribución por categoría raíz)",
+    "data/analysis/pages/es/productos.json outline"
+   ],
+   "recommendation": "Asignarles familia real en la web nueva (propuesta para el admin) y listar las 12 familias.",
+   "refs": [
+    "F-D04"
+   ]
+  },
+  {
+   "id": "F-N03",
+   "area": "navegación e IA",
+   "severity": "media",
+   "title": "Menú plano y navegación de catálogo sólo en la barra lateral",
+   "detail": "El menú principal tiene 7 entradas sin desplegables; las categorías sólo se navegan desde la barra lateral flotante de /productos/, /shop/, categorías y fichas (173 páginas en ES; el mismo patrón en EN/FR/DE).",
+   "evidence": [
+    "nav_menus.*.header",
+    "nav_menus.*.floating_sidebar"
+   ],
+   "recommendation": "Mantener 7 entradas; menú lateral fijo en todo el catálogo con las 12 familias (ya previsto en el plan).",
+   "refs": []
+  },
+  {
+   "id": "F-N04",
+   "area": "navegación e IA",
+   "severity": "baja",
+   "title": "Migas inconsistentes",
+   "detail": "Primer enlace 'Productos' va a la portada en 38 categorías ES y a /productos/ en categorías-ficha y fichas.",
+   "evidence": [
+    "nav_menus.es.breadcrumb"
+   ],
+   "recommendation": "Migas Inicio > Productos (/productos/) > familia > subfamilia, siempre al mismo destino.",
+   "refs": []
+  },
+  {
+   "id": "F-N05",
+   "area": "navegación e IA",
+   "severity": "alta",
+   "title": "Pie EN/FR/DE enlaza a URLs ES y a /aviso-legal/",
+   "detail": "El pie traducido enlaza /aviso-legal-2/, /politica-de-privacidad/ y /declaracion-de-accesibilidad/ (rutas ES) aunque existen versiones traducidas de privacidad y accesibilidad; el bloque tablet/móvil y el pie de las 21 entradas de blog enlazan a /aviso-legal/, que no figura en REST ni sitemap (no se verificó su código HTTP).",
+   "evidence": [
+    "data/raw/html/en/en.html",
+    "data/raw/html/es/aplicaciones-de-los-transformadores-en-la-industria-actual.html"
+   ],
+   "recommendation": "Pie por idioma con sus propias URLs; crear aviso legal EN y FR.",
+   "refs": [
+    "nav_menus.*.footer"
+   ]
+  },
+  {
+   "id": "F-N06",
+   "area": "navegación e IA",
+   "severity": "media",
+   "title": "Nombres de familia mal traducidos en /productos/",
+   "detail": "FR 'Porté (4)' y DE 'Portiert (4)' para Portaled; DE 'Socket Jack (4)' para Hembrillas; contadores distintos para Variadores (ES 15, EN 12, FR 12, DE 11) por fichas sin traducir.",
+   "evidence": [
+    "data/analysis/pages/{fr,de}/*produits-torivac.json | *torivac-produkte.json"
+   ],
+   "recommendation": "Glosario técnico de familias en los 4 idiomas (propuesta a validar).",
+   "refs": [
+    "slug_issues.SI-06"
+   ]
+  },
+  {
+   "id": "F-N07",
+   "area": "navegación e IA",
+   "severity": "media",
+   "title": "Blog paginado en 3 páginas, no cosechadas",
+   "detail": "21 entradas en 3 páginas de 10 (/blog/page/2/ y /blog/page/3/ enlazadas en el HTML, no cosechadas); /blog/ muestra un contador 'Do you like it?' con 0 y meta description '%'.",
+   "evidence": [
+    "data/raw/html/es/blog.html"
+   ],
+   "recommendation": "Conservar las mismas URLs de paginación (o un listado completo) y quitar el contador.",
+   "refs": [
+    "seo.internal_linking"
+   ]
+  },
+  {
+   "id": "F-N08",
+   "area": "navegación e IA",
+   "severity": "media",
+   "title": "Selector de idioma sin retroceso",
+   "detail": "Sólo ofrece los idiomas con traducción (se verificó en el HTML: selector incompleto en 17 páginas ES, 8 EN, 3 FR y 2 DE), por ejemplo categorías vacías que existen sólo en ES y fichas sin traducir como /product/fuente-de-corriente-alterna-sinusoidal/.",
+   "evidence": [
+    "nav_menus.*.language_switcher"
+   ],
+   "recommendation": "Selector con retroceso a la portada del idioma o a /productos/.",
+   "refs": []
+  },
+  {
+   "id": "F-C01",
+   "area": "SEO/hreflang",
+   "severity": "alta",
+   "title": "Canonicals cruzados entre idiomas",
+   "detail": "EN /en/ canonical /de/; EN contacto canonical /de/kontakt-us/; FR /fr/produits-torivac/ y DE /de/torivac-produkte/ canonical /en/torivac-products/; cookies EN/FR/DE canonical a la URL ES.",
+   "evidence": [
+    "seo.canonical_issues"
+   ],
+   "recommendation": "Auto-canonical por idioma + hreflang recíproco completo.",
+   "refs": [
+    "seo"
+   ]
+  },
+  {
+   "id": "F-C02",
+   "area": "SEO/hreflang",
+   "severity": "alta",
+   "title": "54 de 75 fichas EN, 54 de 76 FR y 53 de 74 DE tienen canonical ES",
+   "detail": "Google puede ignorar las versiones traducidas.",
+   "evidence": [
+    "seo.canonical_issues.summary"
+   ],
+   "recommendation": "Auto-canonical en cada ficha traducida.",
+   "refs": [
+    "seo"
+   ]
+  },
+  {
+   "id": "F-C03",
+   "area": "SEO/hreflang",
+   "severity": "media",
+   "title": "Sitemap sólo con URLs ES",
+   "detail": "201 URLs únicas (197 ES + 4 EN); FR y DE ausentes; cada URL ES se repite hasta 4 veces; product-sitemap incluye /shop/ y ?post_type=product&p=875.",
+   "evidence": [
+    "seo.sitemap_issues"
+   ],
+   "recommendation": "Un sitemap por idioma sin duplicados y con hreflang.",
+   "refs": [
+    "seo.sitemap_issues"
+   ]
+  },
+  {
+   "id": "F-C04",
+   "area": "SEO/hreflang",
+   "severity": "media",
+   "title": "Metadatos erróneos",
+   "detail": "Título SEO 'Grupor Torivac' en 7 páginas (empresa/proyectos en 4 idiomas, salvo ES-proyectos) y meta description '%' en 38 páginas.",
+   "evidence": [
+    "slug_issues.SI-07"
+   ],
+   "recommendation": "Corregir y revisar title/description por página.",
+   "refs": [
+    "slug_issues.SI-07"
+   ]
+  },
+  {
+   "id": "F-C05",
+   "area": "SEO/hreflang",
+   "severity": "media",
+   "title": "Política de cookies sin contenido en la copia",
+   "detail": "Complianz inyecta el texto por JS: el HTML sólo tiene banner y pie (408-572 caracteres) en los 4 idiomas.",
+   "evidence": [
+    "gaps.G-01"
+   ],
+   "recommendation": "Recuperar el texto original antes de migrar.",
+   "refs": [
+    "gaps.G-01"
+   ]
+  }
+ ],
+ "recommended_ia": {
+  "status": "propuesta derivada del análisis; no sustituye decisiones del cliente",
+  "principles": [
+   "Misma estructura de URLs que la web actual (mismo slug, mismo prefijo de idioma) salvo las 211 categorías-ficha y las páginas WooCommerce (ver seo.preserve_urls).",
+   "ES en la raíz; EN/FR/DE bajo /en/ /fr/ /de/. Auto-canonical por idioma y hreflang recíproco en todas las páginas con traducción.",
+   "Catálogo = 12 familias raíz (se añade 'Equipos electrónicos' a /productos/ y a la portada) con menú lateral fijo en todo el catálogo.",
+   "Pedido por presupuesto: lista de presupuesto flotante + página de presupuesto nueva (sustituye carrito/finalizar compra/mi cuenta/tienda)."
+  ],
+  "header_nav": [
+   {
+    "order": 1,
+    "es": "Inicio",
+    "route": "/"
+   },
+   {
+    "order": 2,
+    "es": "Torivac Empresa",
+    "route": "/torivac-empresa/"
+   },
+   {
+    "order": 3,
+    "es": "Productos",
+    "route": "/productos/"
+   },
+   {
+    "order": 4,
+    "es": "Proyectos comerciales Torivac",
+    "route": "/proyectos-empresariales/"
+   },
+   {
+    "order": 5,
+    "es": "Catálogo (PDF por idioma)",
+    "route": "/wp-content/uploads/2024/10/Torivac_2024.pdf"
+   },
+   {
+    "order": 6,
+    "es": "Blog",
+    "route": "/blog/"
+   },
+   {
+    "order": 7,
+    "es": "Contacto",
+    "route": "/contacto/"
+   }
+  ],
+  "header_extras": [
+   "selector de idioma con banderas y retroceso",
+   "botón flotante de presupuesto"
+  ],
+  "footer": {
+   "legal_links_per_language": true,
+   "links": [
+    "aviso-legal-2 (crear EN y FR)",
+    "politica-de-privacidad (traducida)",
+    "declaracion-de-accesibilidad (traducida)",
+    "politica-de-cookies (recuperar texto)"
+   ],
+   "keeps": [
+    "dirección C/ Potosí Nº 2, Planta 6ª, 08030 Barcelona",
+    "+34 93 312 01 61",
+    "info@torivac.com",
+    "aviso ICEX-Next / FEDER",
+    "crédito Santiso Marketing"
+   ]
+  },
+  "new_pages": [
+   {
+    "purpose": "página de presupuesto (lista de referencias y cantidades)",
+    "status": "nueva; slug a decidir",
+    "replaces": [
+     "/confirmar/",
+     "/en/carrito/",
+     "/en/finalizar-compra/",
+     "/en/tienda/",
+     "/en/mi-cuenta/",
+     "/shop/"
+    ]
+   }
+  ],
+  "keep": [
+   "portada, empresa, proyectos, productos, blog, contacto, legales (4 idiomas) con la misma URL",
+   "80/75/76/74 fichas con la misma URL",
+   "38/29/29/30 categorías con archivo real",
+   "21 entradas x 4 idiomas y paginación del blog"
+  ],
+  "unify": [
+   "53 categorías-ficha por idioma -> ficha",
+   "categorías duplicadas por nombre",
+   "pie legal por idioma",
+   "migas",
+   "término 'proyectos' (llave en mano vs empresariales)"
+  ],
+  "discard": [
+   "/shop/ /en/tienda/ /confirmar/ /en/carrito/ /en/finalizar-compra/ /en/mi-cuenta/",
+   "/elementor-hf/*",
+   "/author/*",
+   "/category/*",
+   "categorías vacías y 2x3W",
+   "ficha FR 4323"
+  ]
+ },
+ "summary_numbers": {
+  "html_pages": {
+   "es": 208,
+   "en": 194,
+   "fr": 190,
+   "de": 189,
+   "total": 781
+  },
+  "es_content": {
+   "pages_rest": 11,
+   "posts": 21,
+   "products": 80,
+   "product_categories": 91,
+   "blog_categories": 2
+  },
+  "products_reachable_from_productos_index": 65,
+  "products_not_listed_in_productos_index": 15,
+  "sitemap_unique_urls": 201,
+  "preserve_urls_total": {
+   "urls": 848,
+   "mantener_identica": 613,
+   "redirigir_301": 227
+  }
+ }
 }

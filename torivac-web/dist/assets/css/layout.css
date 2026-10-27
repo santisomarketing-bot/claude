@@ -106,3 +106,8 @@
 /* aviso de idioma */
 .lang-banner{background:var(--ink-2);color:#fff;font-size:var(--fs-1);padding:var(--s-3) 0}
 .lang-banner .container{display:flex;gap:var(--s-4);align-items:center;justify-content:center;flex-wrap:wrap}
+
+/* modo embebido (panel cliente) */
+.embed .site-header,.embed .site-footer,.embed .fab-stack,.embed .demo-ribbon,.embed .page-hero,.embed .lang-banner{display:none!important}
+.embed body{background:var(--paper)}
+.embed .sec{padding-block:var(--s-5)}

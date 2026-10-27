@@ -440,8 +440,38 @@
   "description": {
    "es": [
     {
+     "t": "h",
+     "l": 5,
+     "x": "PRODUCTOS PROFESIONALES"
+    },
+    {
+     "t": "img",
+     "src": "https://torivac.santisomarketing.com/wp-content/uploads/2022/04/lineaypunto_oscura.png",
+     "alt": "",
+     "href": null,
+     "w": 0,
+     "h": 0
+    },
+    {
+     "t": "h",
+     "l": 2,
+     "x": "Botones de Mando y Accesorios"
+    },
+    {
      "t": "p",
-     "h": "[vc_row][vc_column][vc_raw_html]JTNDaDUlMjBzdHlsZSUzRCUyMmNvbG9yJTNBJTIzQkE2QjFFJTNCJTIwZm9udC1mYW1pbHklM0ElMjBzYW5kYm94JTNCJTIyJTNFUFJPRFVDVE9TJTIwUFJPRkVTSU9OQUxFUyUzQyUyRmg1JTNFJTBBJTNDaW1nJTIwc3JjJTNEJTIyaHR0cHMlM0ElMkYlMkZ0b3JpdmFjLnNhbnRpc29tYXJrZXRpbmcuY29tJTJGd3AtY29udGVudCUyRnVwbG9hZHMlMkYyMDIyJTJGMDQlMkZsaW5lYXlwdW50b19vc2N1cmEucG5nJTIyJTIwJTJGJTNFJTBBJTNDaDIlM0VCb3RvbmVzJTIwZGUlMjBNYW5kbyUyMHklMjBBY2Nlc29yaW9zJTNDJTJGaDIlM0UlMEElM0NwJTNFRWwlMjB2YXJpYWRvciUyMGRlJTIwdGVuc2klQzMlQjNuJTIwdG9yb2lkYWwlMjBvJTIwYXV0b3RyYW5zZm9ybWFkb3IlMjByZWd1bGFibGUlMjBlcyUyMHVuJTIwZWxlbWVudG8lMjBiJUMzJUExc2ljbyUyMHNpJTIwZGVzZWFtb3MlMjByZWd1bGFyJTIwdW5hJTIwdGVuc2klQzMlQjNuJTIwYWx0ZXJuYSUyQyUyMHZhcmlhYmxlJTJDJTIwZGVzZGUlMjBjZXJvJTIwaGFzdGElMjBlbCUyMG0lQzMlQTF4aW1vJTJDJTIwY29uJTIwdW5hJTIwaW50ZW5zaWRhZCUyMGNvbnN0YW50ZS4lM0MlMkZwJTNFJTBBJTBBJTNDcCUzRUxvcyUyMHZhcmlhZG9yZXMlMjBkZSUyMHRlbnNpJUMzJUIzbiUyMFRPUklWQUMlMkMlMjBzZSUyMGNhcmFjdGVyaXphbiUyMHBvciUyMHN1JTIwcm9idXN0ZXolMjBtZWMlQzMlQTFuaWNhJTIweSUyMHN1JTIwYWx0YSUyMHJlc29sdWNpJUMzJUIzbiUyMHF1ZSUyMHBlcm1pdGUlMjBhanVzdGVzJTIwbXV5JTIwcHJlY2lzb3MlMjBkZSUyMHRlbnNpJUMzJUIzbiUyMHklMjBwb3IlMjBsYSUyMGFsdGElMjBjYWxpZGFkJTIwZGUlMjB0b2RvcyUyMGxvcyUyMG1hdGVyaWFsZXMlMjB1dGlsaXphZG9zJTIwZW4lMjBzdSUyMGZhYnJpY2FjaSVDMyVCM24uJTNDJTJGcCUzRSUwQSUwQSUzQ3AlM0VFc3RvcyUyMGRldGFsbGVzJTJDJTIwanVudG8lMjBhbCUyMGNvbnRyb2wlMjBkZWwlMjAxMDAlMjUlMjBkZSUyMHRvZG9zJTIwbG9zJTIwdmFyaWFkb3JlcyUyMG5vcyUyMHBlcm1pdGVuJTIwb2ZyZWNlciUyMHVuYSUyMGZpYWJpbGlkYWQlMjByZWNvbm9jaWRhJTIwcG9yJTIwbG9zJTIwY2xpZW50ZXMlMjBtJUMzJUExcyUyMGV4aWdlbnRlcy4lM0MlMkZwJTNF[/vc_raw_html][product_categories orderby=\"\" order=\"ASC\" columns=\"3\" ids=\"70\"][/vc_column][/vc_row]"
+     "h": "El variador de tensión toroidal o autotransformador regulable es un elemento básico si deseamos regular una tensión alterna, variable, desde cero hasta el máximo, con una intensidad constante."
+    },
+    {
+     "t": "p",
+     "h": "Los variadores de tensión TORIVAC, se caracterizan por su robustez mecánica y su alta resolución que permite ajustes muy precisos de tensión y por la alta calidad de todos los materiales utilizados en su fabricación."
+    },
+    {
+     "t": "p",
+     "h": "Estos detalles, junto al control del 100% de todos los variadores nos permiten ofrecer una fiabilidad reconocida por los clientes más exigentes."
+    },
+    {
+     "t": "p",
+     "h": "[product_categories orderby=\"\" order=\"ASC\" columns=\"3\" ids=\"70\"]"
     }
    ]
   },

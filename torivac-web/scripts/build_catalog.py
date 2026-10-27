@@ -10,6 +10,7 @@ scripts/enrich_catalog.py (lee data/analysis/products, pdfs, voltage-*.json) y N
 Etiquetas de secciones: [CFG] [UTIL] [IMG] [CATS] [PRODUCTS] [PAGES] [SITE]
 """
 import difflib
+import html as htmllib
 import json
 import re
 import sys
@@ -72,6 +73,12 @@ def fetch(url, dst: Path):
         return data
     except Exception:
         return ""
+
+
+def clean_alt(a):
+    """alt de imagen: se decodifican entidades; si parece un nombre de fichero (sin espacios) se descarta y la plantilla usa el nombre del producto"""
+    a = htmllib.unescape(a or "").strip()
+    return None if (not a or re.fullmatch(r"[\w\-×x.]+", a)) else a
 
 
 # ----------------------------------------------------------------------------- [IMG]
@@ -166,20 +173,20 @@ def build_categories():
     out = []
     for c in es:
         path = pth(c["link"])
-        rec = {"id": c["id"], "parent": c["parent"], "count": c["count"], "slug": {"es": c["slug"]}, "name": {"es": re.sub(r"&amp;", "&", c["name"])},
+        rec = {"id": c["id"], "parent": c["parent"], "count": c["count"], "slug": {"es": c["slug"]}, "name": {"es": htmllib.unescape(c["name"])},
                "path": {"es": path}, "description": {"es": blocks_from_html(c.get("description") or "")}, "legacy_ids": []}
         for l in ("en", "fr", "de"):
             ap = alt_of(path, l)
             t = by_link[l].get(ap) if ap else None
             if t:
-                rec["slug"][l], rec["name"][l], rec["path"][l] = t["slug"], t["name"], pth(t["link"])
+                rec["slug"][l], rec["name"][l], rec["path"][l] = t["slug"], htmllib.unescape(t["name"]), pth(t["link"])
                 rec["description"][l] = blocks_from_html(t.get("description") or "")
             else:
                 rec["slug"][l] = rec["name"][l] = rec["path"][l] = None
         sim = (store_cat.get(c["id"], {}).get("image") or {}).get("src")
         rec["image"] = img_ref(sim) if sim else None
         yo = (c.get("yoast_head_json") or {})
-        rec["seo"] = {"es": {"title": yo.get("title"), "description": yo.get("description")}}
+        rec["seo"] = {"es": {"title": htmllib.unescape(yo.get("title") or "") or None, "description": htmllib.unescape(yo.get("description") or "") or None}}
         out.append(rec)
     return out
 
@@ -207,11 +214,11 @@ def build_products(categories):
             rec["slug"][l] = s["slug"]
             rec["path"][l] = pth(s["permalink"])
             rec["source_url"][l] = s["permalink"]
-            rec["name"][l] = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", s["name"]).replace("&amp;", "&")).strip()
+            rec["name"][l] = re.sub(r"\s+", " ", htmllib.unescape(re.sub(r"<[^>]+>", "", s["name"]))).strip()
             rec["short"][l] = localize_blocks(blocks_from_html(s.get("short_description") or ""))
             rec["description"][l] = localize_blocks(blocks_from_html(s.get("description") or ""))
             y = (rest_prod[l].get(sid, {}).get("yoast_head_json") or {})
-            rec["seo"][l] = {"title": y.get("title"), "description": y.get("description")}
+            rec["seo"][l] = {"title": htmllib.unescape(y.get("title") or "") or None, "description": htmllib.unescape(y.get("description") or "") or None}
         # estado de traducción respecto a ES
         es_txt = text_of(rec["short"]["es"] + rec["description"]["es"])
         es_tab = sum(1 for b in rec["description"]["es"] if b["t"] == "table")
@@ -230,11 +237,11 @@ def build_products(categories):
         for i, im in enumerate(e["images"]):
             r = img_ref(im["src"]) or {}
             alt = {l: None for l in LANGS}
-            alt["es"] = im.get("alt") or im.get("name")
+            alt["es"] = clean_alt(im.get("alt") or im.get("name"))
             for l in ("en", "fr", "de"):
                 if pm["translations"].get(l):
                     ims = store[l][pm["translations"][l]["id"]]["images"]
-                    if i < len(ims): alt[l] = ims[i].get("alt") or ims[i].get("name")
+                    if i < len(ims): alt[l] = clean_alt(ims[i].get("alt") or ims[i].get("name"))
             imgs.append({**r, "alt": alt, "id": im.get("id")})
         rec["images"] = imgs
         rec["category_ids"] = [c["id"] for c in e["categories"]]
@@ -338,7 +345,7 @@ def build_pages():
         if k == "utility":
             continue
         content = page_blocks(p)
-        rec = {"kind": k, "lang": l, "path": p, "title": r["title"], "meta_description": r["meta_description"], "alternates": {x: alt_of(p, x) for x in LANGS if x != l and alt_of(p, x)},
+        rec = {"kind": k, "lang": l, "path": p, "title": htmllib.unescape(r["title"] or ""), "meta_description": htmllib.unescape(r["meta_description"] or ""), "alternates": {x: alt_of(p, x) for x in LANGS if x != l and alt_of(p, x)},
                "source_url": r["url"], **(content or {"sections": []})}
         if k == "home":
             html = Path(ROOT / r["file"]).read_text(errors="replace")
@@ -353,7 +360,7 @@ def build_pages():
                 y = po.get("yoast_head_json") or {}
                 og = (y.get("og_image") or [{}])[0].get("url")
                 pages[l][p].update({"date": po.get("date"), "modified": po.get("modified"), "wp_id": po["id"], "featured": img_ref(og) if og else None,
-                                    "excerpt": re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", po.get("excerpt", {}).get("rendered", ""))).strip(), "title": re.sub(r"<[^>]+>", "", po["title"]["rendered"])})
+                                    "excerpt": re.sub(r"\s+", " ", htmllib.unescape(re.sub(r"<[^>]+>", "", po.get("excerpt", {}).get("rendered", "")))).strip(), "title": htmllib.unescape(re.sub(r"<[^>]+>", "", po["title"]["rendered"]))})
     return pages
 
 

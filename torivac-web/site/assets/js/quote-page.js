@@ -52,10 +52,7 @@
     var n = $('[data-import-note]') || (function () { var p = document.createElement('p'); p.className = 'notice small'; p.setAttribute('data-import-note', ''); drop.insertAdjacentElement('afterend', p); return p; })();
     n.hidden = !res.unknown.length; n.textContent = res.unknown.length ? '? ' + res.unknown.slice(0, 12).join(', ') + (res.unknown.length > 12 ? '…' : '') : '';
   }
-  function parseCsv(text) {
-    var delim = (text.split('\n')[0].match(/;/g) || []).length >= (text.split('\n')[0].match(/,/g) || []).length ? ';' : ',';
-    return text.replace(/\r/g, '').split('\n').filter(function (l) { return l.trim(); }).map(function (l) { return l.split(delim).map(function (c) { return c.replace(/^"|"$/g, '').trim(); }); });
-  }
+  function parseCsv(text) { return TV.csvParse(text); }
   function readFile(f) {
     if (!f) return; var name = f.name.toLowerCase(), r = new FileReader();
     if (/\.xlsx?$/.test(name) && window.XLSX) { r.onload = function () { var wb = XLSX.read(r.result, { type: 'array' }); handleRows(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, blankrows: false })); }; r.readAsArrayBuffer(f); }

@@ -264,6 +264,18 @@ writeFile(DIST, 'assets/data/catalog.js', catalogJs);
 writeFile(DIST, 'assets/data/prices.js', `/* [DATA] precios — se regenera con scripts/build_prices.py (Sesión 6) */\nwindow.TV=window.TV||{};\nTV.prices=${JSON.stringify(prices)};\n`);
 writeFile(DIST, 'assets/data/proposals.js', `window.TV=window.TV||{};TV.proposals=${JSON.stringify(proposals)};\n`);
 
+// [ADMIN] datos de cobertura para la vista Contenido + página /admin/
+const adminProducts = products.map((p) => ({ id: p.id, name: p.name.es, cat: p.mainCategory ? p.mainCategory.name.es : '', st: { en: p.translation_status.en, fr: p.translation_status.fr, de: p.translation_status.de }, variants: p.variants.length, vtags: (p.voltage_tags || []).length, pdfs: p.pdfs.length }));
+const byRef = {}; for (const p of products) { const vs = p.variants.length ? p.variants : [{ ref: 'P' + p.id }]; for (const v of vs) byRef[v.ref] = { cat: p.mainCategory ? p.mainCategory.trail.map((c) => c.name.es).join(' ') : '' }; }
+writeFile(DIST, 'assets/data/admin-data.js', `window.TV=window.TV||{};TV.admin=${JSON.stringify({ products: adminProducts, byRef })};\n`);
+for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (fs.existsSync(path.join(CAT, f))) { fs.mkdirSync(path.join(DIST, 'assets', 'data'), { recursive: true }); fs.copyFileSync(path.join(CAT, f), path.join(DIST, 'assets', 'data', f)); }
+{
+  const ctx = mkctx('es', '/admin/', 'admin');
+  const a = (s) => ctx.asset(s);
+  writeFile(DIST, 'admin/index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel · Torivac (demo)</title><link rel="icon" href="${a('assets/img/favicon.png')}">${['fonts', 'tokens', 'base', 'layout', 'components', 'admin'].map((c) => `<link rel="stylesheet" href="${a(`assets/css/${c}.css`)}">`).join('')}</head><body class="admin tv-admin" data-path="/admin/"><input type="hidden" id="logo-src" value="${a(site.logo)}"><div id="admin-root"></div><div class="toast" id="toast" role="status"></div><script>window.TV_LANG='es';</script><script src="${a('assets/data/catalog.js')}"></script><script src="${a('assets/data/prices.js')}"></script><script src="${a('assets/data/proposals.js')}"></script><script src="${a('assets/data/admin-data.js')}"></script><script src="${a('assets/js/quote.js')}"></script><script src="${a('assets/vendor/jspdf.umd.min.js')}"></script><script src="${a('assets/vendor/jspdf.plugin.autotable.min.js')}"></script><script src="${a('assets/vendor/xlsx.mini.min.js')}"></script><script src="${a('assets/js/pdf.js')}"></script><script src="${a('assets/js/admin.js')}"></script></body></html>`);
+  count++;
+}
+
 // ───────────────────────────────────────────────────────────── [ASSETS] estáticos
 const SRC = path.join(ROOT, 'site', 'assets');
 const copyDir = (a, b) => { fs.mkdirSync(b, { recursive: true }); for (const e of fs.readdirSync(a, { withFileTypes: true })) { const s = path.join(a, e.name), d = path.join(b, e.name); e.isDirectory() ? copyDir(s, d) : fs.copyFileSync(s, d); } };

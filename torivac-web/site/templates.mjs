@@ -124,9 +124,12 @@ export function categoryCards(ctx) {
   const { lang, site } = ctx;
   const cards = site.catTree.map((c) => {
     const desc = (c.description[lang] || c.description.es || []).find((b) => b.t === 'p');
-    const txt = desc ? desc.h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() : '';
+    let txt = desc ? desc.h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() : '';
+    // algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
+    const words = (pick(c.name, lang) || '').toLowerCase().split(/[^a-záéíóúñüçàâêèëîïôûäöß]+/).filter((w) => w.length > 4).map((w) => w.slice(0, 6));
+    if (txt && words.length && !words.some((w) => txt.toLowerCase().includes(w))) txt = '';
     const im = c.image || site.prodById.get(c.firstProduct)?.images?.[0];
-    return `<a class="ccard" href="${attr(ctx.href(c.pathFor[lang]))}"><div class="ph">${im ? `<img src="${attr(ctx.thumb(im))}" alt="" loading="lazy" decoding="async">` : ''}</div><div class="tx"><h3>${esc(pick(c.name, lang))}</h3>${txt ? `<p>${esc(txt.slice(0, 140))}${txt.length > 140 ? '…' : ''}</p>` : ''}<span class="meta"><span>${c.total} ${t('results', lang)}</span><span class="go">${t('view_product', lang)} →</span></span></div></a>`;
+    return `<a class="ccard" href="${attr(ctx.href(c.pathFor[lang]))}"><div class="ph">${im ? `<img src="${attr(ctx.thumb(im))}" alt="" loading="lazy" decoding="async">` : ''}</div><div class="tx"><h3>${esc(pick(c.name, lang))}</h3>${txt ? `<p>${esc(txt.slice(0, 140))}${txt.length > 140 ? '…' : ''}</p>` : ''}<span class="meta"><span>${c.total} ${t('results', lang)}</span><span class="go">${t('view_category', lang)} →</span></span></div></a>`;
   }).join('');
   return `<h2 class="sr-h">${t('categories', lang)}</h2><div class="ccards">${cards}</div>`;
 }

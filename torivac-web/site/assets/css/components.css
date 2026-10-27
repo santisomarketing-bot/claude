@@ -30,8 +30,8 @@
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(236px,1fr));gap:var(--s-5)}
 .pcard{display:flex;flex-direction:column;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:inherit;position:relative;transition:transform .18s,box-shadow .18s,border-color .18s}
 .pcard:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-copper);border-color:var(--copper);color:inherit}
-.pcard .ph{aspect-ratio:1/1;background:#fff;display:grid;place-items:center;padding:var(--s-4);border-bottom:1px solid var(--line)}
-.pcard .ph img{max-height:100%;width:auto;object-fit:contain}
+.pcard .ph{aspect-ratio:1/1;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:var(--s-4);border-bottom:1px solid var(--line)}
+.pcard .ph img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain}
 .pcard .tx{padding:var(--s-4);display:flex;flex-direction:column;gap:var(--s-3);flex:1}
 .pcard h3{font-family:var(--font-display);font-size:var(--fs-4);font-weight:600;margin:0;line-height:1.15;color:var(--ink)}
 .pcard .meta{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-size:var(--fs-0);color:var(--muted)}
@@ -79,8 +79,8 @@
 /* ---- ficha de producto ---- */
 .pdp{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:var(--s-7);align-items:start;margin-bottom:var(--s-7)}
 @media (max-width:900px){.pdp{grid-template-columns:1fr;gap:var(--s-5)}}
-.gallery .main{background:#fff;border:1px solid var(--line);aspect-ratio:1/1;display:grid;place-items:center;padding:var(--s-5)}
-.gallery .main img{max-height:100%;width:auto;object-fit:contain}
+.gallery .main{background:#fff;border:1px solid var(--line);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:var(--s-5)}
+.gallery .main img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain}
 .gallery .thumbs{display:flex;gap:var(--s-2);margin-top:var(--s-3);flex-wrap:wrap}
 .gallery .thumbs button{border:1px solid var(--line);background:#fff;padding:4px;width:76px;height:76px;cursor:pointer}
 .gallery .thumbs button[aria-current="true"]{border-color:var(--copper);outline:1px solid var(--copper)}
@@ -184,7 +184,7 @@
 .ccards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:var(--s-4);margin-bottom:var(--s-7)}
 .ccard{display:grid;grid-template-columns:104px 1fr;background:var(--paper);border:1px solid var(--line);text-decoration:none;color:inherit;position:relative;transition:transform .18s,box-shadow .18s}
 .ccard:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-copper);border-color:var(--copper);color:inherit}
-.ccard .ph{background:#fff;display:grid;place-items:center;padding:var(--s-2);border-right:1px solid var(--line)}
+.ccard .ph{background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:var(--s-2);border-right:1px solid var(--line)}
 .ccard .ph img{max-height:92px;width:auto;object-fit:contain}
 .ccard .tx{padding:var(--s-3) var(--s-4);display:flex;flex-direction:column;gap:6px;min-width:0}
 .ccard h3{font-size:var(--fs-4);margin:0;line-height:1.1}
@@ -199,3 +199,11 @@
 /* ---- insignia en botones ---- */
 .btn .count,.fab .count{background:var(--amber);color:var(--ink);border-radius:999px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:12px;padding:0 6px;font-family:var(--font-body);font-weight:700}
 .header-quote{gap:var(--s-2)}
+/* evita que imágenes intrínsecamente anchas ensanchen rejillas (min-width:auto de los grid items) */
+.shop>*,.ccards,.ccard>*,.pgrid>*,.pcard>*{min-width:0}
+.ccard .ph img{max-width:100%;height:auto}
+.pcard .ph img{max-width:100%}
+
+.ccard p,.ccard h3,.pcard h3{overflow-wrap:anywhere}
+.ccard h3{font-size:var(--fs-3);hyphens:auto;-webkit-hyphens:auto;overflow-wrap:break-word}
+.ccard .tx{overflow:hidden}

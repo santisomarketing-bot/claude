@@ -16,6 +16,13 @@
   var lang = window.TV_LANG || document.documentElement.lang || 'es';
   var LOCALE = { es: 'es-ES', en: 'en-GB', fr: 'fr-FR', de: 'de-DE' }[lang] || 'es-ES';
 
+  // ───────────────────────────────────────── [OVERRIDE] precios cargados desde el panel (demo): sustituyen a TV.prices en este navegador
+  //   En producción la hoja de Drive manda (Worker + cron 24 h); aquí `tv_prices_override` hace de "hoja viva" para poder probar el flujo Excel → web.
+  function applyOverride() {
+    try { var o = JSON.parse(localStorage.getItem('tv_prices_override') || 'null'); if (o && o.items) { TV._pricesBase = TV._pricesBase || TV.prices; TV.prices = o; } } catch (e) { /* sin override */ }
+  }
+  applyOverride();
+
   // ───────────────────────────────────────── [STATE]
   var lines = load();
   var listeners = [];
@@ -92,6 +99,7 @@
       return { lines: out, total: round2(sum), unpriced: unpriced };
     },
     onChange: function (fn) { listeners.push(fn); },
+    applyOverride: function () { applyOverride(); buildFormats(); document.dispatchEvent(new CustomEvent('tv:prices')); emit({ type: 'prices' }); },
     money: money, unitMoney: unitMoney, priceOf: priceOf, tiersOf: tiersOf, t: t, rel: rel, assetUrl: assetUrl, lang: lang,
     /** nombre de línea listo para mostrar */
     label: function (d) { return d.name + (d.spec ? ' — ' + d.spec : ''); },
@@ -110,13 +118,30 @@
   };
   TV.Quote = API;
 
+  // ───────────────────────────────────────── [CSV] lector RFC 4180 (comillas, separador , o ;, saltos de línea dentro de comillas)
+  TV.csvParse = function (text) {
+    text = String(text).replace(/^\ufeff/, '');
+    var first = text.split('\n')[0], delim = (first.match(/;/g) || []).length >= (first.match(/,/g) || []).length ? ';' : ',';
+    var rows = [], row = [], cell = '', q = false;
+    for (var i = 0; i < text.length; i++) {
+      var ch = text[i];
+      if (q) { if (ch === '"') { if (text[i + 1] === '"') { cell += '"'; i++; } else q = false; } else cell += ch; }
+      else if (ch === '"') q = true;
+      else if (ch === delim) { row.push(cell.trim()); cell = ''; }
+      else if (ch === '\n') { row.push(cell.trim()); cell = ''; if (row.some(function (c) { return c !== ''; })) rows.push(row); row = []; }
+      else if (ch !== '\r') cell += ch;
+    }
+    row.push(cell.trim()); if (row.some(function (c) { return c !== ''; })) rows.push(row);
+    return rows;
+  };
+
   // ───────────────────────────────────────── [REFRESH] recarga manual de precios (el cron de 24 h lo hace el servidor; ver Sesión 6)
   TV.refreshPrices = function () {
     return new Promise(function (resolve) {
       var s = document.querySelector('script[src*="assets/data/prices.js"]'); if (!s) return resolve(false);
       var url = s.getAttribute('src').split('?')[0] + '?t=' + Date.now();
       var n = document.createElement('script'); n.src = url;
-      n.onload = function () { buildFormats(); document.dispatchEvent(new CustomEvent('tv:prices')); emit({ type: 'prices' }); resolve(true); };
+      n.onload = function () { applyOverride(); buildFormats(); document.dispatchEvent(new CustomEvent('tv:prices')); emit({ type: 'prices' }); resolve(true); };
       n.onerror = function () { resolve(false); };
       document.head.appendChild(n);
     });

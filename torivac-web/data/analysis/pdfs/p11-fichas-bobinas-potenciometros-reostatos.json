@@ -1,0 +1,905 @@
+{
+ "job": "p11-fichas-bobinas-potenciometros-reostatos",
+ "documents": [
+  {
+   "file": "POTENCIOMETRO-5W.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "POTENCIÓMETROS Y REOSTATOS - POTENCIÓMETRO 5W (página 29 del catálogo)",
+   "families": [
+    {
+     "family": "POTENCIÓMETRO 5W",
+     "series": null,
+     "page": 1,
+     "description": "El cuidadoso bobinado del elemento de resistencia y el diseño original de un sistema de cursor muy sensible aseguran un manejo muy suave, preciso y de larga duración. La escobilla es un rodillo de latón basculante que gira sobre la superficie plana de la resistencia con la presión adecuada para garantizar un buen contacto y un número muy elevado de maniobras. La resistencia residual al inicio y final de recorrido es prácticamente nula.",
+     "general_specs": {
+      "Terminales soldables": "3.2x0.5mm",
+      "Distribución resistencia": "Lineal",
+      "Tolerancia": "6%",
+      "Tensión de perforación": ">1000V",
+      "Longitud del eje Standard": "40 mm",
+      "Incremento de temperatura plena carga": "75'C",
+      "Potencia máx": null,
+      "Gama de valores óhmicos": null,
+      "Ángulo de giro mecánico": null,
+      "Ángulo de giro eléctrico": null,
+      "Resistencia del tope a la rotura": null,
+      "Peso neto": null
+     },
+     "models": [
+      {
+       "reference": "POTENCIÓMETRO 5W",
+       "page": 1,
+       "specs": {
+        "Terminales soldables": "3.2x0.5mm",
+        "Distribución resistencia": "Lineal",
+        "Tolerancia": "6%",
+        "Tensión de perforación": ">1000V",
+        "Longitud del eje Standard": "40 mm",
+        "Incremento de temperatura plena carga": "75'C",
+        "Potencia máx": null,
+        "Gama de valores óhmicos": null,
+        "Ángulo de giro mecánico": null,
+        "Ángulo de giro eléctrico": null,
+        "Resistencia del tope a la rotura": null,
+        "Peso neto": null,
+        "Dibujo - cota 6Ø (diámetro del eje)": "6Ø",
+        "Dibujo - cota 40 (longitud del eje; coincide con 'Longitud del eje Standard')": "40",
+        "Dibujo - cota 7 (tramo de casquillo roscado y tuercas; sin rótulo)": "7",
+        "Dibujo - cota 25 (altura del cuerpo; sin rótulo)": "25",
+        "Dibujo - cota 41 (anchura del cuerpo; sin rótulo)": "41"
+       },
+       "raw_row": "Terminales soldables 3.2x0.5mm | Potencia máx 2.2:25%0,5W | Distribución resistencia: Lineal | Gama de valores óhmicos: 52-50 KO | Tolerancia: 6%, | Tensión de perforación: >1000V | Angulo de glo, acánico; 264\" | Angulo de gio'Biécirico: 250% | Rosistoncia del ope a la rotura: 8 Kg/cm | Longitud del eje Standard: 40 mm | Paso noto: 40-grs | Incremento de temperatura plena carga: 75'C",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "Tensión de perforación: >1000V",
+     "page": 1,
+     "context": "Característica del potenciómetro 5W: tensión de perforación (ruptura), no tensión de servicio",
+     "normalized_hint": ">1000 V (tensión de perforación)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Página 29 del catálogo (número impreso al pie). Cabecera de sección: POTENCIÓMETROS Y REOSTATOS; la página solo contiene el potenciómetro 5W.",
+     "page": 1
+    },
+    {
+     "fact": "Contacto del cursor: la escobilla es un rodillo de latón basculante que gira sobre la superficie plana de la resistencia con la presión adecuada para garantizar un buen contacto y un número muy elevado de maniobras.",
+     "page": 1
+    },
+    {
+     "fact": "La resistencia residual al inicio y final de recorrido es prácticamente nula.",
+     "page": 1
+    },
+    {
+     "fact": "Manejo muy suave, preciso y de larga duración (cuidadoso bobinado del elemento de resistencia y sistema de cursor muy sensible).",
+     "page": 1
+    },
+    {
+     "fact": "Terminales soldables; distribución de resistencia lineal.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Línea 'Potencia máx 2.2:25%0,5W' (potencia máxima)",
+     "why": "Texto corrupto en el propio PDF (confirmado en el render a 130 y 220 ppp: no es un fallo de pdftotext). No se lee ninguna cifra con seguridad; valor en null. Propuesta, NO publicar: la versión inglesa del mismo catálogo (Torivac_2024_EN, página impresa 29) dice 'Power rating at 25ºC: 5W' y la ficha se titula 'POTENCIÓMETRO 5W'; confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Línea 'Gama de valores óhmicos: 52-50 KO'",
+     "why": "Cifra y unidad corruptas ('52', 'KO'); valor en null. Propuesta, NO publicar: la versión inglesa dice 'Resistance range: 5 Ω - 50 KΩ' (el '2' impreso parece un Ω mal leído)."
+    },
+    {
+     "page": 1,
+     "item": "Línea 'Angulo de glo, acánico; 264\"' (ángulo de giro mecánico)",
+     "why": "Etiqueta ilegible; la cifra 264 se lee pero lleva una comilla en lugar del símbolo de grados; valor en null. Propuesta, NO publicar: 'ángulo de giro mecánico 264º' (versión inglesa 'Mechanical angle of rotation: 264ºC', donde 'ºC' es probable errata)."
+    },
+    {
+     "page": 1,
+     "item": "Línea \"Angulo de gio'Biécirico: 250%\" (ángulo de giro eléctrico)",
+     "why": "Etiqueta ilegible; la cifra 250 se lee pero lleva '%' en lugar de grados; valor en null. Propuesta, NO publicar: 'ángulo de giro eléctrico 250º' (versión inglesa 'Electrical angle of rotation: 250ºC')."
+    },
+    {
+     "page": 1,
+     "item": "Línea 'Rosistoncia del ope a la rotura: 8 Kg/cm'",
+     "why": "La cifra y unidad '8 Kg/cm' se leen bien, pero la etiqueta está corrupta y su significado es una suposición; valor en null. Propuesta de etiqueta: 'Resistencia del tope a la rotura' (versión inglesa 'Mech. breakdown of the stop: 8 kg/cm.'). No convertir la unidad."
+    },
+    {
+     "page": 1,
+     "item": "Línea 'Paso noto: 40-grs'",
+     "why": "Etiqueta corrupta; valor en null. Propuesta, NO publicar: 'Peso neto: 40 grs.' (versión inglesa 'Net weight: 40 grs.')."
+    },
+    {
+     "page": 1,
+     "item": "Línea 'Incremento de temperatura plena carga: 75'C'",
+     "why": "La unidad se imprime como apóstrofe + C (probablemente ºC). Se conserva literal \"75'C\"; no normalizar a ºC sin confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Línea 'Tolerancia: 6%,'",
+     "why": "Legible; la coma final es puntuación del original. Se registra '6%' (coincide con la versión inglesa 'Tolerance: 6%'). Baja prioridad."
+    },
+    {
+     "page": 1,
+     "item": "Cotas del dibujo lateral: 6Ø, 40, 7, 25, 41",
+     "why": "Transcritas de la imagen (no están en la capa de texto). 40 coincide con 'Longitud del eje Standard: 40 mm' y 6Ø es el diámetro del eje; el significado de 7, 25 y 41 no está rotulado (lectura del dibujo: tramo de casquillo/tuercas, altura del cuerpo y anchura del cuerpo). Unidad no indicada: no asumir mm."
+    },
+    {
+     "page": 1,
+     "item": "Duplicidad con otros PDFs",
+     "why": "Texto idéntico (salvo ligaduras) a la página PDF 30 de Torivac_2024.pdf (catálogo, página impresa 29); mismo producto que Caracteristicas_Potenciometros_5W.pdf y Bobinas_encapsuladas_-potenciometros_ENd.pdf (trabajo p10). Los valores limpios del bloque 'Características principales' solo existen en la versión inglesa; esta extracción NO los copia."
+    },
+    {
+     "page": 1,
+     "item": "Datos ausentes en la ficha",
+     "why": "No hay referencia/código de pedido, lista de valores óhmicos concretos, peso legible ni tensión de servicio. Propuesta para el panel de admin: solicitarlos a Torivac; no inventarlos."
+    },
+    {
+     "page": 1,
+     "item": "Página marcada visual_only",
+     "why": "Incluye cotas de dibujo transcritas de la imagen y un bloque de características corrupto; el comprobador automático no la verifica. Los valores de texto se comprobaron a mano contra el render (130 y 220 ppp)."
+    }
+   ]
+  },
+  {
+   "file": "Potenciometro.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "POTENCIÓMETROS BOBINADOS DE 3W Y 5W - Potenciómetro 3W y Potenciómetro doble (página 28 del catálogo)",
+   "families": [
+    {
+     "family": "POTENCIÓMETRO 3W",
+     "series": null,
+     "page": 1,
+     "description": "Este potenciómetro se distingue por su pequeño diámetro (25mm) a pesar de su disipación real de 3 vatios. Su linealidad (3%) los hace aptos para usos sofisticados. Se fabrican la gama de valores Standard, según la serie E-10 (desde 5 Ohm hasta 22 K).",
+     "general_specs": {
+      "Diámetro": "25mm",
+      "Disipación real": "3 vatios",
+      "Linealidad": "3%",
+      "Gama de valores Standard": "serie E-10 (desde 5 Ohm hasta 22 K)",
+      "Terminales": "3,2 x 0,5 mm",
+      "Protección": "Hermético al polvo",
+      "Eje Standard - longitud": "12 mm",
+      "Eje Standard - diámetro": "6mm",
+      "Eje Standard - material": "poliamida 6 con fibra de vidrio",
+      "Cursor": "basculante",
+      "Tolerancia": "10%",
+      "Tensión de perforación": "> 1000v.",
+      "Peso neto": "22grs.",
+      "Categoría UL": "94V-0",
+      "Embalaje": "Caja de 25 pzas.",
+      "Resistencia mín.": null,
+      "Ángulo de giro": null,
+      "Temperatura de trabajo": null
+     },
+     "models": [
+      {
+       "reference": "POTENCIÓMETRO 3W",
+       "page": 1,
+       "specs": {
+        "Diámetro": "25mm",
+        "Disipación real": "3 vatios",
+        "Linealidad": "3%",
+        "Gama de valores Standard": "serie E-10 (desde 5 Ohm hasta 22 K)",
+        "Terminales": "3,2 x 0,5 mm",
+        "Protección": "Hermético al polvo",
+        "Eje Standard - longitud": "12 mm",
+        "Eje Standard - diámetro": "6mm",
+        "Eje Standard - material": "poliamida 6 con fibra de vidrio",
+        "Cursor": "basculante",
+        "Tolerancia": "10%",
+        "Tensión de perforación": "> 1000v.",
+        "Peso neto": "22grs.",
+        "Categoría UL": "94V-0",
+        "Embalaje": "Caja de 25 pzas.",
+        "Resistencia mín.": null,
+        "Ángulo de giro": null,
+        "Temperatura de trabajo": null,
+        "Dibujo - cota 25 (diámetro del cuerpo, vista frontal)": "25",
+        "Dibujo - cota 22,5 (profundidad del cuerpo, vista lateral)": "22,5",
+        "Dibujo - cota 12 (longitud del eje)": "12",
+        "Dibujo - cota 6 (diámetro del eje)": "6",
+        "Dibujo - separación angular entre terminales": "40° / 40°",
+        "Dibujo - rosca (rótulo vertical)": "M10/100",
+        "Dibujo - otras cotas sin significado rotulado": "vista frontal: 8; 6; 2,5 / vista lateral: 6; 8"
+       },
+       "raw_row": "Terminales 3,2 x 0,5 mm | Hermético al polvo. | Eje Standard 12 mm, (8 6mm) de poliamida 6 con fibra de vidrio | Cursor basculante, | Resistencia mín.: 52 - 22KQ | Ángulo de giro: 2800 | Tolerancia: 10%. | Tensión de perforación > 1000v. | Peso neto: 22grs. | Temperatura de trabajo: -20%/+60\" | Categoría UL: 94V-0 | Embalaje: Caja de 25 pzas.",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Potenciómetro doble (2 x 3 W), derivado de este modelo"
+     ],
+     "ordering_info": "Valores Standard según la serie E-10 (desde 5 Ohm hasta 22 K). La ficha no da códigos de referencia ni lista de valores."
+    },
+    {
+     "family": "POTENCIÓMETRO DOBLE",
+     "series": null,
+     "page": 1,
+     "description": "Este potenciómetro doble, de 2 x 3 W, es un derivado del modelo de 3W para su uso en equipos estéreo, como atenuador. Sus características eléctricas y físicas son iguales a estos últimos. Peso neto: 40 grs. Embalaje: Caja de 25 pzas.",
+     "general_specs": {
+      "Potencia": "2 x 3 W",
+      "Uso": "equipos estéreo, como atenuador",
+      "Características eléctricas y físicas": "iguales a estos últimos (modelo de 3W)",
+      "Peso neto": "40 grs.",
+      "Embalaje": "Caja de 25 pzas."
+     },
+     "models": [
+      {
+       "reference": "POTENCIÓMETRO DOBLE (2 x 3 W)",
+       "page": 1,
+       "specs": {
+        "Potencia": "2 x 3 W",
+        "Uso": "equipos estéreo, como atenuador",
+        "Características eléctricas y físicas": "iguales a estos últimos (modelo de 3W)",
+        "Peso neto": "40 grs.",
+        "Embalaje": "Caja de 25 pzas.",
+        "Dibujo - cota 27 (diámetro del cuerpo, vista frontal)": "27",
+        "Dibujo - cota 48 (longitud total, vista lateral)": "48",
+        "Dibujo - cota 40 (longitud del cuerpo, cota superior de la vista lateral)": "40",
+        "Dibujo - cota 12 (longitud del eje)": "12",
+        "Dibujo - cota 6 (diámetro del eje)": "6",
+        "Dibujo - separación angular entre terminales": "40° / 40°",
+        "Dibujo - rosca (rótulo vertical)": "M10/100",
+        "Dibujo - otras cotas sin significado rotulado": "vista frontal: 8; 6; 2,5 / vista lateral: 6; 8"
+       },
+       "raw_row": "Este potenciómetro doble, de 2 x 3 W, es un derivado del modelo de 3W para su uso en equipos estéreo, como atenuador. Sus características eléctricas y físicas son iguales a estos últimos. Peso neto: 40 grs. Embalaje: Caja de 25 pzas.",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "Tensión de perforación > 1000v.",
+     "page": 1,
+     "context": "Característica principal del potenciómetro 3W (tensión de perforación, no tensión de servicio); el doble declara características eléctricas iguales",
+     "normalized_hint": "> 1000 V (tensión de perforación)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Página 28 del catálogo (número impreso al pie). Cabecera de sección: POTENCIÓMETROS Y REOSTATOS; subtítulo POTENCIÓMETROS BOBINADOS DE 3W Y 5W (en esta página solo figuran el 3W y el doble).",
+     "page": 1
+    },
+    {
+     "fact": "Pequeño diámetro (25mm) con disipación real de 3 vatios; linealidad (3%) que lo hace apto para usos sofisticados.",
+     "page": 1
+    },
+    {
+     "fact": "Hermético al polvo; cursor basculante; eje standard de poliamida 6 con fibra de vidrio.",
+     "page": 1
+    },
+    {
+     "fact": "Categoría UL: 94V-0.",
+     "page": 1
+    },
+    {
+     "fact": "Embalaje: caja de 25 pzas. (potenciómetro 3W y potenciómetro doble).",
+     "page": 1
+    },
+    {
+     "fact": "El potenciómetro doble (2 x 3 W) es un derivado del modelo de 3W para equipos estéreo, como atenuador.",
+     "page": 1
+    },
+    {
+     "fact": "Gama de valores Standard según la serie E-10 (desde 5 Ohm hasta 22 K).",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Línea 'Resistencia mín.: 52 - 22KQ'",
+     "why": "Texto corrupto en el propio PDF (confirmado en el render a 220 ppp): '52' y 'KQ'. Además el rótulo dice 'mín.' pero da un rango. Valor en null. El rango legible 'desde 5 Ohm hasta 22 K' sí figura en la descripción y se registra en 'Gama de valores Standard'. Propuesta, NO publicar el rótulo: la versión inglesa del catálogo dice 'Resistance range: 5 Ω , to 22 k.'."
+    },
+    {
+     "page": 1,
+     "item": "Línea 'Ángulo de giro: 2800'",
+     "why": "El PDF imprime '2800' (el símbolo de grados está corrupto como '0'); valor en null. Propuesta, NO publicar: 280º (versión inglesa 'Rotation angle: 280º')."
+    },
+    {
+     "page": 1,
+     "item": "Línea 'Temperatura de trabajo: -20%/+60\"'",
+     "why": "Las cifras -20 y +60 se leen pero los símbolos de unidad están corruptos ('%' y comilla); valor en null. Propuesta, NO publicar: -20º/+60º (versión inglesa 'Operating temperature: -20º/+60º'); sin letra de unidad en ninguna versión."
+    },
+    {
+     "page": 1,
+     "item": "Línea 'Eje Standard 12 mm, (8 6mm) de poliamida 6 con fibra de vidrio'",
+     "why": "El símbolo previo a '6mm' está corrupto ('8', probablemente Ø). Se registra el diámetro como '6mm' porque la cifra se lee y coincide con la cota 6 del eje en el dibujo; la longitud 12 mm coincide con la cota 12 del dibujo. Confirmar el símbolo Ø antes de publicar."
+    },
+    {
+     "page": 1,
+     "item": "Cabecera 'POTENCIÓMETROS BOBINADOS DE 3W Y 5W'",
+     "why": "El título anuncia 3W y 5W pero esta página solo describe el 3W y el doble; el 5W está en la página siguiente (POTENCIOMETRO-5W.pdf)."
+    },
+    {
+     "page": 1,
+     "item": "Serie E-10 y valor mínimo de 5 Ohm",
+     "why": "El PDF no lista los valores de la serie E-10. No generar una lista propia ni asumir 5 Ohm como valor de la serie; propuesta para el panel de admin: pedir a Torivac la lista real de valores."
+    },
+    {
+     "page": 1,
+     "item": "Linealidad (3%) frente a tolerancia (10%)",
+     "why": "Son dos datos distintos impresos en la ficha (descripción y características). Se guardan por separado; no confundirlos."
+    },
+    {
+     "page": 1,
+     "item": "Doble: 'características eléctricas y físicas iguales' frente al dibujo",
+     "why": "El texto dice que son iguales a las del 3W, pero el dibujo acota el doble con diámetro 27 (el 3W: 25), longitud total 48 y peso 40 grs. (el 3W: 22grs.). Se registran ambas tal cual; no inferir que comparten dimensiones."
+    },
+    {
+     "page": 1,
+     "item": "Cotas de los dibujos (3W y doble) y rótulo 'M10/100'",
+     "why": "Transcritas de la imagen (no están en la capa de texto). Unidad no indicada (no asumir mm). Se asignan por lectura del dibujo: 25/27 = diámetro del cuerpo, 22,5 = profundidad del cuerpo (3W), 48 y 40 = longitudes (doble), 12 = longitud del eje, 6 = diámetro del eje, 40°/40° = separación entre terminales. Las cotas 8, 6 y 2,5 no tienen significado rotulado. 'M10/100' se conserva literal sin interpretar."
+    },
+    {
+     "page": 1,
+     "item": "Duplicidad con otros PDFs",
+     "why": "Texto idéntico (salvo ligaduras) a la página PDF 29 de Torivac_2024.pdf (catálogo, página impresa 28); mismo producto que Caracteristicas_Potenciometros_3W.pdf (trabajo p10). Las lecturas limpias de los valores corruptos proceden de otras ediciones del catálogo y se citan solo como propuesta."
+    },
+    {
+     "page": 1,
+     "item": "Datos ausentes",
+     "why": "No hay códigos de referencia, tensión de servicio ni corriente máxima. Propuesta para el panel de admin: solicitarlos a Torivac; no publicar ninguno hasta tenerlos."
+    },
+    {
+     "page": 1,
+     "item": "Página marcada visual_only",
+     "why": "Incluye cotas de dibujo transcritas de la imagen y líneas de características corruptas; el comprobador automático no la verifica. Los valores de texto se comprobaron a mano contra el render (130 y 220 ppp)."
+    }
+   ]
+  },
+  {
+   "file": "REOSTATOS-CERAMICOS.pdf",
+   "pages": [
+    1,
+    3
+   ],
+   "doc_type": "hoja_seleccion",
+   "language": "es",
+   "title": "REOSTATOS CERÁMICOS (Potenciometros) y REOSTATOS TANDEM DOBLE / TRIPLE (páginas 30-32 del catálogo)",
+   "families": [
+    {
+     "family": "REOSTATOS CERÁMICOS (Potenciometros)",
+     "series": "PC",
+     "page": 1,
+     "description": "Los reóstatos que fabrica Torivac tienen una gran disipación de calor y se fabrican en las siguientes potencias: 15-30-40-60-80125-250-500 y 1000 W. Estas potencias nominales son aplicables con buenas condiciones de ventilación. En instalaciones donde la ventilación es pobre, estas potencias deberemos reducirlas hasta un un 20%, para evitar calentamientos excesivos. El núcleo es un aro cerámico de esteatita de gran dureza, antihigroscópico, evitándose con ello efectos de corrosión por electrólisis. Dicho aro se bobina con hilos de máxima calidad, constantán, nichrom o kantal, según el valor óhmico requerido. Si no se especifica en el pedido, se emplea el material más adecuado para ese valor y potencia. Para su protección contra daños mecánicos y para evitar el movimiento de las espiras, debido a la dilatación causada por el calor, estos potenciómetros están recubiertos de un cemento cerámico de gran dureza, fabricado en nuestros laboratorios, que soporta temperaturas de hasta 9000C, permite una rápida disipación del calor, debido a su superficie mate y buena conductividad térmica. El contacto del cursor es, normalmente, una escobilla de plata o de cobre-plata pulida. Además de bobinas lineales, podemos fabricar, sobre pedido, bobinados con varias secciones para conseguir una curva resistiva no-lineal.",
+     "general_specs": {
+      "Núcleo": "aro cerámico de esteatita de gran dureza, antihigroscópico",
+      "Hilo de bobinado": "constantán, nichrom o kantal, según el valor óhmico requerido",
+      "Recubrimiento": "cemento cerámico de gran dureza, fabricado en nuestros laboratorios; superficie mate y buena conductividad térmica",
+      "Temperatura que soporta el cemento": null,
+      "Contacto del cursor": "normalmente, una escobilla de plata o de cobre-plata pulida",
+      "Potencias de fabricación": null,
+      "Ventilación pobre": "estas potencias deberemos reducirlas hasta un un 20%",
+      "Bobinados": "lineales; sobre pedido, bobinados con varias secciones para conseguir una curva resistiva no-lineal",
+      "Cabeceras de la tabla": "bilingües (POTENCIA / POWER; PESO (KG.) / WEIGHT (KG.); GAMA DE VALORES / OHMIC VALUES)"
+     },
+     "models": [
+      {
+       "reference": "PC12",
+       "page": 1,
+       "specs": {
+        "A": "25",
+        "B": "8",
+        "C": "10",
+        "D": "32",
+        "d": "6",
+        "R": "M-10",
+        "G": "290º",
+        "L": "25",
+        "PESO (KG.) / WEIGHT (KG.)": "0,028",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 10kΩ"
+       },
+       "raw_row": "PC12 25 8 10 32 6 M-10 290º 25 0,028 5Ω – 10kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC25",
+       "page": 1,
+       "specs": {
+        "A": "35",
+        "B": "8",
+        "C": "38",
+        "D": "45",
+        "d": "6",
+        "R": "M-10",
+        "G": "280º",
+        "L": "30",
+        "PESO (KG.) / WEIGHT (KG.)": "0,125",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 20kΩ"
+       },
+       "raw_row": "PC25 35 8 38 45 6 M-10 280º 30 0,125 5Ω – 20kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC35",
+       "page": 1,
+       "specs": {
+        "A": "40",
+        "B": "12",
+        "C": "32",
+        "D": "55",
+        "d": "6",
+        "R": "M-10",
+        "G": "278º",
+        "L": "35",
+        "PESO (KG.) / WEIGHT (KG.)": "0,140",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 25kΩ"
+       },
+       "raw_row": "PC35 40 12 32 55 6 M-10 278º 35 0,140 5Ω – 25kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC50",
+       "page": 1,
+       "specs": {
+        "A": "40",
+        "B": "12",
+        "C": "37",
+        "D": "65",
+        "d": "6",
+        "R": "M-10",
+        "G": "310º",
+        "L": "41",
+        "PESO (KG.) / WEIGHT (KG.)": "0,150",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 25kΩ"
+       },
+       "raw_row": "PC50 40 12 37 65 6 M-10 310º 41 0,150 5Ω – 25kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC75",
+       "page": 1,
+       "specs": {
+        "A": "43",
+        "B": "12",
+        "C": "37",
+        "D": "73",
+        "d": "6",
+        "R": "M-10",
+        "G": "317º",
+        "L": "45",
+        "PESO (KG.) / WEIGHT (KG.)": "0,200",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 25kΩ"
+       },
+       "raw_row": "PC75 43 12 37 73 6 M-10 317º 45 0,200 5Ω – 25kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC125",
+       "page": 1,
+       "specs": {
+        "A": "60",
+        "B": "12",
+        "C": "18",
+        "D": "87",
+        "d": "6",
+        "R": "M-10",
+        "G": "302º",
+        "L": "53",
+        "PESO (KG.) / WEIGHT (KG.)": "0,360",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 15kΩ"
+       },
+       "raw_row": "PC125 60 12 18 87 6 M-10 302º 53 0,360 5Ω – 15kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC250",
+       "page": 1,
+       "specs": {
+        "A": "60",
+        "B": "12",
+        "C": "18",
+        "D": "117",
+        "d": "6",
+        "R": "M-10",
+        "G": "314º",
+        "L": "70",
+        "PESO (KG.) / WEIGHT (KG.)": "0,535",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 15kΩ"
+       },
+       "raw_row": "PC250 60 12 18 117 6 M-10 314º 70 0,535 5Ω – 15kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC500",
+       "page": 1,
+       "specs": {
+        "A": "86",
+        "B": "12",
+        "C": "36",
+        "D": "144",
+        "d": "8",
+        "R": "M-12",
+        "G": "310º",
+        "L": "85",
+        "PESO (KG.) / WEIGHT (KG.)": "1,225",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 10kΩ"
+       },
+       "raw_row": "PC500 86 12 36 144 8 M-12 310º 85 1,225 5Ω – 10kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC1000",
+       "page": 1,
+       "specs": {
+        "A": "103",
+        "B": "10",
+        "C": "54",
+        "D": "205",
+        "d": "8",
+        "R": "(1)",
+        "G": "320º",
+        "L": "115",
+        "PESO (KG.) / WEIGHT (KG.)": "2,700",
+        "GAMA DE VALORES / OHMIC VALUES": "3Ω – 10kΩ"
+       },
+       "raw_row": "PC1000 103 10 54 205 8 (1) 320º 115 2,700 3Ω – 10kΩ",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Bobinados con varias secciones para curva resistiva no-lineal (sobre pedido)",
+      "Hilo de constantán, nichrom o kantal según el valor óhmico requerido",
+      "Escobilla de plata o de cobre-plata pulida (normalmente)",
+      "Anclaje Mod. PC-1000 (nota (1) de la tabla)"
+     ],
+     "ordering_info": "Si no se especifica el hilo en el pedido, se emplea el material más adecuado para ese valor y potencia. La hoja no da más reglas de codificación; la columna POTENCIA / POWER contiene los códigos PC12 a PC1000."
+    },
+    {
+     "family": "REOSTATO TANDEM DOBLE",
+     "series": null,
+     "page": 2,
+     "description": "La página no tiene texto descriptivo: contiene la tabla 'REOSTATO TANDEM DOBLE' y dos esquemas acotados rotulados 'Manual' y 'Motor' (vista en planta y alzado).",
+     "general_specs": {
+      "Versiones": "Manual; Motor",
+      "Unidad de las cotas": "no indicada en la página"
+     },
+     "models": [
+      {
+       "reference": "2x250W",
+       "page": 2,
+       "specs": {
+        "A MANUAL": "180",
+        "A MOTOR.": "240",
+        "B": "115",
+        "C MANUAL": "18",
+        "C MOTOR.": "- -",
+        "D MANUAL": "6",
+        "D MOTOR.": "- -",
+        "E": "100",
+        "F": "M-6"
+       },
+       "raw_row": "2x250W | 180 | 240 | 115 | 18 | - - | 6 | - - | 100 | M-6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2x500W",
+       "page": 2,
+       "specs": {
+        "A MANUAL": "230",
+        "A MOTOR.": "300",
+        "B": "165",
+        "C MANUAL": "36",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "125",
+        "F": "M-6"
+       },
+       "raw_row": "2x500W | 230 | 300 | 165 | 36 | - - | 8 | - - | 125 | M-6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2x1000W",
+       "page": 2,
+       "specs": {
+        "A MANUAL": "270",
+        "A MOTOR.": "350",
+        "B": "235",
+        "C MANUAL": "54",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "195",
+        "F": "M-8"
+       },
+       "raw_row": "2x1000W | 270 | 350 | 235 | 54 | - - | 8 | - - | 195 | M-8",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Versión Manual",
+      "Versión Motor"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "REOSTATO TANDEM TRIPLE",
+     "series": null,
+     "page": 3,
+     "description": "La página no tiene texto descriptivo: contiene la tabla 'REOSTATO TANDEM TRIPLE' y dos esquemas acotados rotulados 'Manual' y 'Motor' (vista en planta y alzado).",
+     "general_specs": {
+      "Versiones": "Manual; Motor",
+      "Unidad de las cotas": "no indicada en la página"
+     },
+     "models": [
+      {
+       "reference": "3x250W",
+       "page": 3,
+       "specs": {
+        "A MANUAL": null,
+        "A MOTOR.": null,
+        "B": "115",
+        "C MANUAL": "18",
+        "C MOTOR.": "- -",
+        "D MANUAL": "6",
+        "D MOTOR.": "- -",
+        "E": "100",
+        "F": "M-6"
+       },
+       "raw_row": "3x250W | 300 | 240 | 115 | 18 | - - | 6 | - - | 100 | M-6",
+       "confidence": "media"
+      },
+      {
+       "reference": "3x500W",
+       "page": 3,
+       "specs": {
+        "A MANUAL": null,
+        "A MOTOR.": null,
+        "B": "165",
+        "C MANUAL": "36",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "125",
+        "F": "M-6"
+       },
+       "raw_row": "3x500W | 370 | 300 | 165 | 36 | - - | 8 | - - | 125 | M-6",
+       "confidence": "media"
+      },
+      {
+       "reference": "3x1000W",
+       "page": 3,
+       "specs": {
+        "A MANUAL": null,
+        "A MOTOR.": null,
+        "B": "235",
+        "C MANUAL": "54",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "195",
+        "F": "M-8"
+       },
+       "raw_row": "3x1000W | 430 | 350 | 235 | 54 | - - | 8 | - - | 195 | M-8",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Versión Manual",
+      "Versión Motor"
+     ],
+     "ordering_info": null
+    }
+   ],
+   "tables": [
+    {
+     "page": 3,
+     "caption": "REOSTATO TANDEM TRIPLE (tabla tal como está impresa)",
+     "columns": [
+      "POTENCIA / POWER",
+      "A MANUAL",
+      "A MOTOR.",
+      "B",
+      "C MANUAL",
+      "C MOTOR.",
+      "D MANUAL",
+      "D MOTOR.",
+      "E",
+      "F"
+     ],
+     "rows": [
+      [
+       "3x250W",
+       "300",
+       "240",
+       "115",
+       "18",
+       "- -",
+       "6",
+       "- -",
+       "100",
+       "M-6"
+      ],
+      [
+       "3x500W",
+       "370",
+       "300",
+       "165",
+       "36",
+       "- -",
+       "8",
+       "- -",
+       "125",
+       "M-6"
+      ],
+      [
+       "3x1000W",
+       "430",
+       "350",
+       "235",
+       "54",
+       "- -",
+       "8",
+       "- -",
+       "195",
+       "M-8"
+      ]
+     ],
+     "notes": "Copia literal de la tabla impresa. Se incluye aquí porque en families[].models[] las celdas 'A MANUAL' y 'A MOTOR.' están en null: los valores impresos de A son sospechosos (ver uncertain) y NO deben publicarse hasta confirmarlos con Torivac. '- -' es el contenido impreso de las celdas C y D de la versión MOTOR."
+    }
+   ],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 30 del catálogo (número impreso al pie). Cabecera de sección: POTENCIÓMETROS Y REOSTATOS; título de la sección 'REOSTATOS CERÁMICOS (Potenciometros)'.",
+     "page": 1
+    },
+    {
+     "fact": "Las potencias nominales son aplicables con buenas condiciones de ventilación; con ventilación pobre hay que reducirlas hasta un un 20% (texto literal) para evitar calentamientos excesivos.",
+     "page": 1
+    },
+    {
+     "fact": "Núcleo: aro cerámico de esteatita de gran dureza, antihigroscópico, que evita efectos de corrosión por electrólisis.",
+     "page": 1
+    },
+    {
+     "fact": "Hilo de bobinado: constantán, nichrom o kantal según el valor óhmico requerido; si no se especifica en el pedido se emplea el material más adecuado para ese valor y potencia.",
+     "page": 1
+    },
+    {
+     "fact": "Protección: cemento cerámico de gran dureza, fabricado en laboratorios propios, que evita el movimiento de las espiras por la dilatación térmica y permite una rápida disipación del calor por su superficie mate y buena conductividad térmica.",
+     "page": 1
+    },
+    {
+     "fact": "Contacto del cursor: normalmente una escobilla de plata o de cobre-plata pulida.",
+     "page": 1
+    },
+    {
+     "fact": "Sobre pedido se fabrican bobinados con varias secciones para conseguir una curva resistiva no-lineal.",
+     "page": 1
+    },
+    {
+     "fact": "Esquema acotado con las letras A, B, C, D, d, R, G, L (sin definición impresa). Lectura del dibujo: D diámetro exterior y A altura del cuerpo en alzado; B y C tramos bajo el cuerpo (casquillo y eje); d diámetro del eje; R rosca; G arco de recorrido y L cota lineal en planta.",
+     "page": 1
+    },
+    {
+     "fact": "La fila PC1000 remite en la columna R a la nota (1) 'Anclaje Mod. PC-1000', con un esquema de la plantilla de fijación (tres taladros de fijación y uno central).",
+     "page": 1
+    },
+    {
+     "fact": "Página 31 del catálogo (número impreso al pie): tabla 'REOSTATO TANDEM DOBLE' y esquemas 'Manual' y 'Motor'.",
+     "page": 2
+    },
+    {
+     "fact": "Página 32 del catálogo (número impreso al pie): tabla 'REOSTATO TANDEM TRIPLE' y esquemas 'Manual' y 'Motor'.",
+     "page": 3
+    },
+    {
+     "fact": "Esquemas tándem (lectura del dibujo): placa cuadrada con cuatro puntos de fijación en las esquinas y varios reóstatos apilados en un mismo eje; la versión 'Motor' lleva un conjunto motor y engranaje en la parte superior y no rotula las cotas C ni D.",
+     "page": 2
+    },
+    {
+     "fact": "En las dos tablas tándem, las columnas C y D de la versión MOTOR. figuran como '- -' en todas las filas.",
+     "page": 2
+    }
+   ],
+   "visual_only_pages": [
+    2,
+    3
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Lista de potencias del texto: '15-30-40-60-80125-250-500 y 1000 W'",
+     "why": "'80125' está impreso sin separador (probablemente 80 y 125) y la lista no coincide con los códigos de la tabla (PC12, PC25, PC35, PC50, PC75, PC125, PC250, PC500, PC1000). La hoja NO dice a qué potencia corresponde cada código. Valor en null. Hipótesis, NO publicar: correspondencia uno a uno en orden (9 potencias y 9 códigos); la apoya que C y d de PC250/PC500/PC1000 (18/6, 36/8, 54/8) coinciden con C y D de las filas 2x250W/2x500W/2x1000W de las tablas tándem, pero no la prueba. La versión inglesa del catálogo (Torivac_2024_EN, texto p020) escribe '15-30-40-60-80-125-250-500 and 1000 Watts'. Confirmar con Torivac antes de mapear PC12 a 15 W, PC25 a 30 W, etc."
+    },
+    {
+     "page": 1,
+     "item": "Frase 'reducirlas hasta un un 20%'",
+     "why": "El original repite 'un' y no deja claro si la reducción es de hasta el 20% o hasta quedar en el 20%. Se conserva el texto literal; no calcular potencias reducidas (por ejemplo, el 80% de cada valor)."
+    },
+    {
+     "page": 1,
+     "item": "Temperatura del cemento: 'hasta 9000C'",
+     "why": "Cifra y unidad corruptas en el propio PDF (confirmado en el render). Valor en null. Propuesta, NO publicar: 900 ºC (versión inglesa del catálogo: 'resists 900ºC')."
+    },
+    {
+     "page": 1,
+     "item": "Unidades de las columnas A, B, C, D, d y L, y significado de las letras",
+     "why": "La tabla solo rotula 'PESO (KG.)' y la columna G lleva º; el resto de cabeceras son letras sin unidad. No asumir mm. El significado de las letras es lectura del dibujo (ver other_facts), no una definición impresa."
+    },
+    {
+     "page": 1,
+     "item": "PC1000, columna R = '(1)'",
+     "why": "No hay rosca indicada en la tabla; la nota (1) remite al esquema 'Anclaje Mod. PC-1000'. Cotas de ese esquema, transcritas de la imagen (no están en la capa de texto): 70 (entre los dos taladros superiores), 33 (altura al taladro inferior) y rótulo 'R.M6' en un taladro. Unidades y significado no rotulados; no publicar sin confirmar."
+    },
+    {
+     "page": 1,
+     "item": "Columna C no monótona: PC12 = 10, PC25 = 38, PC35 = 32",
+     "why": "Valores coincidentes entre capa de texto e imagen, por lo que se conservan tal cual (confianza alta en la transcripción); el salto de PC12 a PC25 es llamativo. Baja prioridad: confirmar con Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Título 'REOSTATOS CERÁMICOS (Potenciometros)'",
+     "why": "El título impreso es 'Potenciometros' (sin tilde) y el texto llama 'potenciómetros' a los reóstatos. Se conserva literal; no unificar la terminología sin confirmar."
+    },
+    {
+     "page": 3,
+     "item": "Tándem triple: columnas A MANUAL (300, 370, 430) y A MOTOR. (240, 300, 350)",
+     "why": "Valores impresos transcritos del render a 220 ppp con total claridad, pero sospechosos: en el tándem doble A MOTOR. es mayor que A MANUAL en 60, 70 y 80, mientras que en el triple A MOTOR. es menor que A MANUAL, y la columna A MOTOR. del triple (240, 300, 350) es idéntica a la del doble. Propuesta, NO aplicar: las dos columnas A del triple podrían estar intercambiadas en el original (con el intercambio, MOTOR. sería 60, 70 y 80 mayor que MANUAL, igual que en el doble). Celdas en null en models[]; los valores impresos están en raw_row y en tables[]. Confirmar con Torivac."
+    },
+    {
+     "page": 2,
+     "item": "Celdas '- -' en C MOTOR. y D MOTOR.",
+     "why": "Se conserva '- -' tal cual. La hoja no define su significado; la lectura del dibujo (la versión 'Motor' no rotula C ni D) sugiere 'no aplica', pero no está impreso."
+    },
+    {
+     "page": 2,
+     "item": "Cotas de las tablas tándem (A a F) sin unidad ni definición",
+     "why": "Unidad no indicada. Lectura del dibujo, no impresa: A altura total, B lado de la placa cuadrada, C longitud del eje, D diámetro del eje, E distancia entre taladros de fijación, F rosca de las varillas (M-6, M-8). La coincidencia de C y D con C y d de PC250, PC500 y PC1000 es una observación, no una afirmación del PDF."
+    },
+    {
+     "page": 2,
+     "item": "Potencias '2x250W', '2x500W', '2x1000W' y '3x...'",
+     "why": "Se conservan literales. El PDF no dice si se refieren a elementos independientes ni da una potencia total; no calcular sumas (500 W, 1500 W, etc.)."
+    },
+    {
+     "page": 2,
+     "item": "Páginas 2 y 3 sin capa de texto numérica",
+     "why": "El texto extraíble solo contiene 'Manual', 'Motor' y el número de página. Las tablas y esquemas se transcribieron del render a 130 y 220 ppp; el comprobador automático no las verifica (visual_only_pages)."
+    },
+    {
+     "page": 1,
+     "item": "Duplicidad con otros PDFs",
+     "why": "Las tres páginas son idénticas a las páginas PDF 31, 32 y 33 de Torivac_2024.pdf (catálogo, páginas impresas 30 a 32); la tabla PC12 a PC1000 también aparece en Torivac_2024_EN (texto p020), Torivac_2024_FR (texto p031) y catalogue-torivac-DE (texto p031). Extraer una sola vez al construir el producto."
+    },
+    {
+     "page": 1,
+     "item": "Datos ausentes en la hoja",
+     "why": "No hay tensión máxima, corriente máxima, valor de resistencia por modelo (solo la gama), clase de tolerancia ni precios. Propuesta para el panel de admin: solicitarlos a Torivac; no inventarlos."
+    }
+   ]
+  }
+ ]
+}

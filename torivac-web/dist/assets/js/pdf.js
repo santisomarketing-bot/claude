@@ -14,7 +14,7 @@
     var JS = window.jspdf && window.jspdf.jsPDF; if (!JS) throw new Error('jsPDF no cargado');
     var doc = new JS({ unit: 'mm', format: 'a4' });
     var W = doc.internal.pageSize.getWidth(), H = doc.internal.pageSize.getHeight();
-    var d = Q.detail(), P = TV.prices || {};
+    var d = opts.detail || Q.detail(), P = TV.prices || {};
     var number = opts.number || ('TV-' + new Date().toISOString().slice(0, 10).replace(/-/g, '') + '-' + String(Math.floor(Math.random() * 9000) + 1000));
     var demo = P.mode === 'demo';
 
@@ -23,7 +23,7 @@
     if (TV.logo) { try { doc.addImage(TV.logo, 'PNG', 12, 6, 42, 18); } catch (e) { /* sin logo */ } } else { doc.setTextColor(255); doc.setFontSize(20); doc.text('TORIVAC', 12, 19); }
     doc.setTextColor(255); doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
     doc.text(Q.t('quote').toUpperCase() + ' · ' + number, W - 12, 13, { align: 'right' });
-    doc.text(new Date().toLocaleDateString(Q.lang === 'en' ? 'en-GB' : Q.lang), W - 12, 19, { align: 'right' });
+    doc.text((opts.date ? new Date(opts.date) : new Date()).toLocaleDateString(Q.lang === 'en' ? 'en-GB' : Q.lang), W - 12, 19, { align: 'right' });
     doc.setFillColor.apply(doc, COPPER); doc.rect(0, 30, W, 1.2, 'F');
     doc.setTextColor(30);
 
