@@ -1,0 +1,82 @@
+RINGKERNTRANSFORMATOREN
+
+
+
+
+P RÄS E N T A T I O N
+
+Torivac verfügt über mehr als dreißig Jahre Erfahrung in der Herstellung aller
+Arten von Herstellung aller Arten von Ringkerntransformatoren.
+Ringkerntransformatoren stellen wie kein anderer Typ das ideale Design für
+einen Transformator dar. In der Tat hat Faraday den ersten Transformator mit
+einem Ringkern entworfen und gewickelt. Die von Torivac hergestellten
+Ringkerne bestehen aus kornorientiertem Magnetblech, haben sehr geringe
+Verluste und eine hohe Sättigungsinduktion und können nach einer
+Wärmebehandlung Sättigungswerte von bis zu 16.000 Gauß erreichen. Im
+Ringkerntransformator ist der magnetische Fluss gleichmäßig im Kern
+konzentriert und durch das Fehlen von Luftspalten werden Vibrationen
+vermieden.
+Da die Wicklung über die gesamte Oberfläche des Kerns verteilt ist, werden
+außerdem die durch Magnetostriktion verursachten Geräusche praktisch
+eliminiert und die Wärmeableitung verbessert. Diese Details ermöglichen eine
+erhebliche Verbesserung der Eigenschaften und Leistungen von
+Ringkerntransformatoren im Vergleich zu herkömmlichen Transformatoren.
+
+
+
+
+                                                                                                         1- Metallscheibe
+                                                                                                         2- Gummischeibe
+                                                                                                         3- Kabelausgang
+                                                                                                         4- Sekundärwicklung
+                                                                                                         5- Umhüllung zwischen Abschirmung
+                                                                                                         und Sekundärwicklung
+                                                                                                         6- Elektrostatische Abschirmung
+                                                                                                         7- Polyesterfolienumwicklung zwischen
+                                                                                                         Primär- und Abschirmung
+                                                                                                         8- Primärwicklung
+                                                                                                         9- Ringspaltabdeckung aus Nylon
+                                                                                                         10- Schraube, Mutter und
+                                                                                                         Unterlegscheiben
+                                                                                                         11- Magnetischer Kern
+                                                                                                         12- Thermostat
+EINGESCHAFTEN                                                                                            13- Bandagierung der Enden
+
+Wirkungsgrad
+                                                                                               110
+
+Dies ist das Verhältnis        zwischen    Ausgangs - und                                      100
+
+Eingangsleistung. Es ist variabel und hängt von der Größe des                                   90
+
+Transformators und den Betriebsbedingungen          ab . Er ist                                 80
+jedoch fast immer höher als der von herkömmlichen
+                                                                             %Leitungsabgabe
+
+
+
+
+                                                                                                70
+Transformatoren mit gleicher Leistung.
+                                                                                                60
+Der typische Wirkungsgrad unserer Standardtransformatoren                                       50
+                                                                                                                                                  1KVA
+
+von 20 VA bis 3000 VA liegt zwischen 82 % und 96 % (siehe                                                                                         300VA
+                                                                                                40
+Abbildung).                                                                                                                                       30VA
+
+                                                                                                30
+Der Wirkungsgrad eines Ringkerntransformators      wird im
+Wesentlichen durch die ohmschen Verluste des Kupferdrahtes                                      20
+
+und die Verluste im Kern bestimmt . Die Widerstandsverluste                                     10
+sind bei Ringkerntransformatoren immer geringer als bei                                         0
+herkömmlichen     Transformatoren , da sie eine geringere                                            0         20     40          60   80   100
+Kupfermenge verwenden.                                                                                                % Nennleistung
+
+
+
+
+                                                                   14
+

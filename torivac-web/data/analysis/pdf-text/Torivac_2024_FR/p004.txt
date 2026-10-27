@@ -1,0 +1,51 @@
+AUTOTRANSFORMATEURS VARIABLES
+
+
+
+
+CHAMPS D’APPLICATION
+
+Les autotransformateurs variables sont utilisés pour ajuster la tension
+de 0 au maximum de la valeur pour laquelle ils ont été conçus.
+Les applications sont diverses et parmi elles nous pouvons trouver :
+ Électronique de consommation. Electro-médecine.
+ Convertisseurs.
+ Systèmes d'alimentation.
+ Systèmes d'audio.
+ Sécurité.
+ Télécommunications.
+ Illumination de basse tension.
+ Tout équipement qui requiert un rendement optimal.
+
+
+
+
+                                                                           TYPES DE REGULATION
+
+                                                                           REGULATION MANUELLE
+                                                                           A l’aide de bouton de commande placé sur l'axe du variateur qui
+                                                                           permet d'agir sur la brosse et d'obtenir ainsi la tension souhaitée.
+                                                                           Nous disposons d'une ample gamme de boutons et faces avant
+                                                                           graduées en % ou en volts, applicables aux diﬀérentes puissances.
+
+
+                                                                           REGULATION MOTORISEE
+                                                                           Utilisée pour ajuster essentiellement des équipements à distance
+                                                                           ou pour des appareils stabilisateurs. Il est habituel de motoriser les
+                                                                           variateurs de tension de grandes puissances, par les raisons de
+                                                                           confort d'utilisation qu'ils oﬀrent. Dans ce type d‘ajustement, l'axe
+                                                                           du variateur est activé par un motoréducteur, à l’aide d'un
+                                                                           commutateur manuel qui permet d'élever ou de réduire la tension
+                                                                           de sortie.
+                                                                           Les motorisations qu’utilisent TORIVAC manquent d'inertie, ce
+                                                                           pourquoi elles sont idéales pour un contrôle à distance.
+                                                                           Sous demande nous pouvons fabriquer des modèles stabilisés à
+                                                                           l’aide d'une plaque électronique avec une précision de 2%.
+                                                                           L'incorporation de cette plaque permet d’ajuster le variateur à
+                                                                           l’aide d'un potentiomètre ou d'un signal continue de 0-10VDC..
+
+
+
+
+                                                                       3
+

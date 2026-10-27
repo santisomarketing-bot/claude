@@ -1,0 +1,161 @@
+{
+ "file": "data/raw/html/es/category__blog.html",
+ "lang": "es",
+ "url": "https://grupotorivac.com/category/blog/",
+ "title": "blog - Torivac",
+ "meta_description": null,
+ "og_title": "blog - Torivac",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/Diseno-sin-titulo-73.png",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/category/blog/",
+  "fr": "https://grupotorivac.com/fr/category/blog/",
+  "es": "https://grupotorivac.com/category/blog/",
+  "de": "https://grupotorivac.com/de/category/blog/",
+  "x-default": "https://grupotorivac.com/category/blog/"
+ },
+ "body_classes": [
+  "archive",
+  "category",
+  "category-blog",
+  "category-443",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-kit-6"
+ ],
+ "outline": [],
+ "text": "C/ Potosi Nº 2, Planta 6ª\n 08030 Barcelona \n\n +34 93 312 01 61 \n\n info@torivac.com \n\n© 2025 Torivac. Todos los derechos reservados | \nAviso legal y condiciones de uso\n | \nPolítica de Privacidad\n |\n Declaración de accesibilidad\nDesarrollado por \nSantiso Marketing\n\nTorivac S.L. ha participado en el Programa de Iniciación a la Exportación ICEX-Next, y ha contado con el apoyo de ICEX, así como con la cofinanciación de Fondos europeos FEDER, habiendo contribuido según la medida de los mismos, al crecimiento económico de esta empresa, su región y de España en su conjunto.",
+ "text_chars": 572,
+ "tables": [],
+ "links": [
+  {
+   "text": "Aviso legal y condiciones de uso",
+   "href": "https://grupotorivac.com/aviso-legal-2/"
+  },
+  {
+   "text": "Política de Privacidad",
+   "href": "https://grupotorivac.com/politica-de-privacidad/"
+  },
+  {
+   "text": "Declaración de accesibilidad",
+   "href": "https://grupotorivac.com/declaracion-de-accesibilidad/"
+  },
+  {
+   "text": "Santiso Marketing",
+   "href": "https://santisomarketing.com/"
+  }
+ ],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/Torivac_negativo.png",
+   "alt": ""
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/11/MANUAL-FEDER-ICEX-NEXT-2027.jpeg",
+   "alt": ""
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "INICIO",
+     "href": "https://grupotorivac.com/"
+    },
+    {
+     "text": "TORIVAC EMPRESA",
+     "href": "https://grupotorivac.com/torivac-empresa/"
+    },
+    {
+     "text": "PRODUCTOS",
+     "href": "https://grupotorivac.com/productos/"
+    },
+    {
+     "text": "PROYECTOS COMERCIALES TORIVAC",
+     "href": "https://grupotorivac.com/proyectos-empresariales/"
+    },
+    {
+     "text": "CATALOGO",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024.pdf"
+    },
+    {
+     "text": "BLOG",
+     "href": "https://grupotorivac.com/blog/"
+    },
+    {
+     "text": "CONTACTO",
+     "href": "https://grupotorivac.com/contacto/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/category/blog/"
+    },
+    {
+     "text": "Français",
+     "href": "https://grupotorivac.com/fr/category/blog/"
+    },
+    {
+     "text": "Español",
+     "href": "https://grupotorivac.com/category/blog/"
+    },
+    {
+     "text": "Deutsch",
+     "href": "https://grupotorivac.com/de/category/blog/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

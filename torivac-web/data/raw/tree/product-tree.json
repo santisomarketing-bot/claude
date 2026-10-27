@@ -1,0 +1,1854 @@
+[
+    {
+        "id": 18,
+        "slug": "sin-categorizar",
+        "name": "Sin categorizar",
+        "parent": 0,
+        "products": [
+            {
+                "id": 905,
+                "sku": "57a0fa4e8a28",
+                "name": "Reostatos y potenciometros bobinados",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-2/"
+            },
+            {
+                "id": 909,
+                "sku": "e47de8b46e1a",
+                "name": "Reostatos y potenciometros bobinados",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-6/"
+            },
+            {
+                "id": 878,
+                "sku": "8cca38630446",
+                "name": "Fabricaciones a medida",
+                "url": "https://grupotorivac.com/product/fabricaciones-a-medida/"
+            },
+            {
+                "id": 155,
+                "sku": "",
+                "name": "Tapas para botones - BM mate",
+                "url": "https://grupotorivac.com/product/tapas-para-botones-bm-mate/"
+            }
+        ],
+        "children": []
+    },
+    {
+        "id": 22,
+        "slug": "bobinas-encapsuladas",
+        "name": "Bobinas encapsuladas",
+        "parent": 0,
+        "products": [
+            {
+                "id": 916,
+                "sku": "d21ae06d493e",
+                "name": "Bobinas para electroimanes",
+                "url": "https://grupotorivac.com/product/bobinas-para-electroimanes/"
+            },
+            {
+                "id": 918,
+                "sku": "ca01d6cbc41d",
+                "name": "Bobinas para electroimanes Cuadrada",
+                "url": "https://grupotorivac.com/product/bobinas-para-electroimanes-3-2/"
+            }
+        ],
+        "children": [
+            {
+                "id": 119,
+                "slug": "cuadradas",
+                "name": "Cuadradas",
+                "parent": 22,
+                "products": [
+                    {
+                        "id": 918,
+                        "sku": "ca01d6cbc41d",
+                        "name": "Bobinas para electroimanes Cuadrada",
+                        "url": "https://grupotorivac.com/product/bobinas-para-electroimanes-3-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 118,
+                "slug": "redondas",
+                "name": "Redondas",
+                "parent": 22,
+                "products": [
+                    {
+                        "id": 916,
+                        "sku": "d21ae06d493e",
+                        "name": "Bobinas para electroimanes",
+                        "url": "https://grupotorivac.com/product/bobinas-para-electroimanes/"
+                    }
+                ],
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 30,
+        "slug": "botones-de-mando",
+        "name": "Botones de mando",
+        "parent": 0,
+        "products": [
+            {
+                "id": 945,
+                "sku": "715fface722f",
+                "name": "Estators",
+                "url": "https://grupotorivac.com/product/estators-2/"
+            },
+            {
+                "id": 943,
+                "sku": "ba1c185dde2d",
+                "name": "Discos graduados",
+                "url": "https://grupotorivac.com/product/discos-graduados-2/"
+            },
+            {
+                "id": 947,
+                "sku": "3dabdc2b7eb1",
+                "name": "Cubretuercas",
+                "url": "https://grupotorivac.com/product/cubretercas-2/"
+            },
+            {
+                "id": 949,
+                "sku": "203858f8c967",
+                "name": "Discos con flecha",
+                "url": "https://grupotorivac.com/product/discos-con-flecha-2/"
+            },
+            {
+                "id": 951,
+                "sku": "6b26ca3ac715",
+                "name": "Caratulas graduadas",
+                "url": "https://grupotorivac.com/product/caratulas-graduadas-2/"
+            },
+            {
+                "id": 938,
+                "sku": "a287b0a65bce",
+                "name": "Tapas serie BO",
+                "url": "https://grupotorivac.com/product/tapas-serie-bo-2/"
+            },
+            {
+                "id": 940,
+                "sku": "2c4cc608cd83",
+                "name": "Tapas serie BM",
+                "url": "https://grupotorivac.com/product/tapas-serie-bm-2/"
+            },
+            {
+                "id": 942,
+                "sku": "2a7c92ba16c4",
+                "name": "Aros con flecha",
+                "url": "https://grupotorivac.com/product/aros-con-flecha-2/"
+            },
+            {
+                "id": 936,
+                "sku": "4d3e94cd06c8",
+                "name": "Botones de mando serie BM (Mate)",
+                "url": "https://grupotorivac.com/product/botones-de-mando-serie-bm-mate-2/"
+            },
+            {
+                "id": 932,
+                "sku": "77c4702bc13a",
+                "name": "Botones de mando serie BO (brillante)",
+                "url": "https://grupotorivac.com/product/botones-de-mando-serie-bo-brillante-2/"
+            },
+            {
+                "id": 934,
+                "sku": "86e3ea5faad6",
+                "name": "Botones de mando serie BO con linea",
+                "url": "https://grupotorivac.com/product/botones-de-mando-serie-bo-con-linea-2/"
+            }
+        ],
+        "children": [
+            {
+                "id": 77,
+                "slug": "aros-con-flecha",
+                "name": "Aros con flecha",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 942,
+                        "sku": "2a7c92ba16c4",
+                        "name": "Aros con flecha",
+                        "url": "https://grupotorivac.com/product/aros-con-flecha-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 74,
+                "slug": "botones-de-mando-serie-bm-mate",
+                "name": "Botones de mando serie BM (Mate)",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 936,
+                        "sku": "4d3e94cd06c8",
+                        "name": "Botones de mando serie BM (Mate)",
+                        "url": "https://grupotorivac.com/product/botones-de-mando-serie-bm-mate-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 72,
+                "slug": "botones-de-mando-serie-bo-brillante",
+                "name": "Botones de mando serie BO (brillante)",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 932,
+                        "sku": "77c4702bc13a",
+                        "name": "Botones de mando serie BO (brillante)",
+                        "url": "https://grupotorivac.com/product/botones-de-mando-serie-bo-brillante-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 73,
+                "slug": "botones-de-mando-serie-bo-con-linea",
+                "name": "Botones de mando Serie BO con linea",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 934,
+                        "sku": "86e3ea5faad6",
+                        "name": "Botones de mando serie BO con linea",
+                        "url": "https://grupotorivac.com/product/botones-de-mando-serie-bo-con-linea-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 82,
+                "slug": "caratulas-graduadas",
+                "name": "Caratulas graduadas",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 951,
+                        "sku": "6b26ca3ac715",
+                        "name": "Caratulas graduadas",
+                        "url": "https://grupotorivac.com/product/caratulas-graduadas-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 80,
+                "slug": "cubretercas",
+                "name": "Cubretercas",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 947,
+                        "sku": "3dabdc2b7eb1",
+                        "name": "Cubretuercas",
+                        "url": "https://grupotorivac.com/product/cubretercas-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 81,
+                "slug": "discos-flecha",
+                "name": "Discos Flecha",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 949,
+                        "sku": "203858f8c967",
+                        "name": "Discos con flecha",
+                        "url": "https://grupotorivac.com/product/discos-con-flecha-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 78,
+                "slug": "discos-graduados",
+                "name": "Discos graduados",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 943,
+                        "sku": "ba1c185dde2d",
+                        "name": "Discos graduados",
+                        "url": "https://grupotorivac.com/product/discos-graduados-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 442,
+                "slug": "estators",
+                "name": "Estators",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 945,
+                        "sku": "715fface722f",
+                        "name": "Estators",
+                        "url": "https://grupotorivac.com/product/estators-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 76,
+                "slug": "tapas-serie-bm",
+                "name": "Tapas Serie BM",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 940,
+                        "sku": "2c4cc608cd83",
+                        "name": "Tapas serie BM",
+                        "url": "https://grupotorivac.com/product/tapas-serie-bm-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 75,
+                "slug": "tapas-serie-bo",
+                "name": "Tapas serie BO",
+                "parent": 30,
+                "products": [
+                    {
+                        "id": 938,
+                        "sku": "a287b0a65bce",
+                        "name": "Tapas serie BO",
+                        "url": "https://grupotorivac.com/product/tapas-serie-bo-2/"
+                    }
+                ],
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 27,
+        "slug": "botones-de-mando-y-accesorios",
+        "name": "Botones de mando y accesorios",
+        "parent": 0,
+        "products": [
+            {
+                "id": 155,
+                "sku": "",
+                "name": "Tapas para botones - BM mate",
+                "url": "https://grupotorivac.com/product/tapas-para-botones-bm-mate/"
+            }
+        ],
+        "children": []
+    },
+    {
+        "id": 63,
+        "slug": "choques",
+        "name": "Choques | Inductancias | Reactancias toroidales",
+        "parent": 0,
+        "products": [
+            {
+                "id": 919,
+                "sku": "3ca61e9b429e",
+                "name": "Choques | Inductancias | Reactancias toroidales",
+                "url": "https://grupotorivac.com/product/choques-inductancias-reactancias-toroidales/"
+            }
+        ],
+        "children": []
+    },
+    {
+        "id": 50,
+        "slug": "comunicacion-modbus",
+        "name": "Comunicación MODBUS",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 31,
+        "slug": "controlador-0-10vdc",
+        "name": "Controlador 0-10VDC",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 46,
+        "slug": "equipos-de-sobremesa-en-caja",
+        "name": "Equipos de Sobremesa",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 39,
+        "slug": "equipos-de-sobremesa",
+        "name": "Equipos de sobremesa",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 96,
+        "slug": "electronica",
+        "name": "Equipos electrónicos",
+        "parent": 0,
+        "products": [
+            {
+                "id": 967,
+                "sku": "8899762d3d80",
+                "name": "Electronica",
+                "url": "https://grupotorivac.com/product/electronica/"
+            },
+            {
+                "id": 968,
+                "sku": "ed95f462528c",
+                "name": "Variadores de frecuencia",
+                "url": "https://grupotorivac.com/product/convertidores-y-variadores-de-frecuencia-para-ensayos/"
+            },
+            {
+                "id": 969,
+                "sku": "593e40b38dfb",
+                "name": "Fuentes de alimentación de 150A",
+                "url": "https://grupotorivac.com/product/fuente-de-alimentacion-de-corriente-constante-150a/"
+            },
+            {
+                "id": 970,
+                "sku": "ed7b7fd5bb22",
+                "name": "Fuentes de alimentación de 300A",
+                "url": "https://grupotorivac.com/product/fuente-de-alimentacion-de-300a/"
+            },
+            {
+                "id": 972,
+                "sku": "3733e7c4426f",
+                "name": "Fuente de corriente alterna sinusoidal",
+                "url": "https://grupotorivac.com/product/fuente-de-corriente-alterna-sinusoidal/"
+            },
+            {
+                "id": 973,
+                "sku": "ce5e174a3bec",
+                "name": "Ondulador para conexión fotovoltaica a red",
+                "url": "https://grupotorivac.com/product/ondulador-para-conexion-fotovoltaica-a-red/"
+            },
+            {
+                "id": 974,
+                "sku": "f4f0d8ca207e",
+                "name": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red",
+                "url": "https://grupotorivac.com/product/ondulador-autonomo-para-instalaciones-fotovoltaicas-sin-conexion-a-red/"
+            },
+            {
+                "id": 975,
+                "sku": "9c8710d8200f",
+                "name": "Reguladores fotovoltaicos MPPT",
+                "url": "https://grupotorivac.com/product/reguladores-fotovoltaicos-torivac/"
+            },
+            {
+                "id": 976,
+                "sku": "72ebb60a7074",
+                "name": "Ondulador para FV Interconectada de 350W autoconsumo",
+                "url": "https://grupotorivac.com/product/ondulador-para-fv-interconectada-de-350w-autoconsumo/"
+            },
+            {
+                "id": 977,
+                "sku": "ccd86c99b6ba",
+                "name": "SAI para control industrial",
+                "url": "https://grupotorivac.com/product/sai-para-control-industrial/"
+            },
+            {
+                "id": 978,
+                "sku": "de33455f1252",
+                "name": "Regulador  a tiristores",
+                "url": "https://grupotorivac.com/product/regulador-a-tiristores/"
+            }
+        ],
+        "children": [
+            {
+                "id": 101,
+                "slug": "control-industrial",
+                "name": "Control industrial",
+                "parent": 96,
+                "products": [
+                    {
+                        "id": 977,
+                        "sku": "ccd86c99b6ba",
+                        "name": "SAI para control industrial",
+                        "url": "https://grupotorivac.com/product/sai-para-control-industrial/"
+                    },
+                    {
+                        "id": 978,
+                        "sku": "de33455f1252",
+                        "name": "Regulador  a tiristores",
+                        "url": "https://grupotorivac.com/product/regulador-a-tiristores/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 97,
+                "slug": "convertidores",
+                "name": "Convertidores",
+                "parent": 96,
+                "products": [
+                    {
+                        "id": 968,
+                        "sku": "ed95f462528c",
+                        "name": "Variadores de frecuencia",
+                        "url": "https://grupotorivac.com/product/convertidores-y-variadores-de-frecuencia-para-ensayos/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 100,
+                "slug": "energias-renovables",
+                "name": "Energias renovables",
+                "parent": 96,
+                "products": [
+                    {
+                        "id": 973,
+                        "sku": "ce5e174a3bec",
+                        "name": "Ondulador para conexión fotovoltaica a red",
+                        "url": "https://grupotorivac.com/product/ondulador-para-conexion-fotovoltaica-a-red/"
+                    },
+                    {
+                        "id": 974,
+                        "sku": "f4f0d8ca207e",
+                        "name": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red",
+                        "url": "https://grupotorivac.com/product/ondulador-autonomo-para-instalaciones-fotovoltaicas-sin-conexion-a-red/"
+                    },
+                    {
+                        "id": 975,
+                        "sku": "9c8710d8200f",
+                        "name": "Reguladores fotovoltaicos MPPT",
+                        "url": "https://grupotorivac.com/product/reguladores-fotovoltaicos-torivac/"
+                    },
+                    {
+                        "id": 976,
+                        "sku": "72ebb60a7074",
+                        "name": "Ondulador para FV Interconectada de 350W autoconsumo",
+                        "url": "https://grupotorivac.com/product/ondulador-para-fv-interconectada-de-350w-autoconsumo/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 99,
+                "slug": "fuente-de-alimentacion-ca",
+                "name": "Fuente de alimentación CA",
+                "parent": 96,
+                "products": [
+                    {
+                        "id": 972,
+                        "sku": "3733e7c4426f",
+                        "name": "Fuente de corriente alterna sinusoidal",
+                        "url": "https://grupotorivac.com/product/fuente-de-corriente-alterna-sinusoidal/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 98,
+                "slug": "fuentes-de-alimentacion-cc",
+                "name": "Fuentes de alimentación CC",
+                "parent": 96,
+                "products": [
+                    {
+                        "id": 969,
+                        "sku": "593e40b38dfb",
+                        "name": "Fuentes de alimentación de 150A",
+                        "url": "https://grupotorivac.com/product/fuente-de-alimentacion-de-corriente-constante-150a/"
+                    },
+                    {
+                        "id": 970,
+                        "sku": "ed7b7fd5bb22",
+                        "name": "Fuentes de alimentación de 300A",
+                        "url": "https://grupotorivac.com/product/fuente-de-alimentacion-de-300a/"
+                    }
+                ],
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 47,
+        "slug": "equipos-industriales-en-caja",
+        "name": "Equipos industriales",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 36,
+        "slug": "equipos-industriales",
+        "name": "Equipos industriales",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 60,
+        "slug": "estabilizadores-de-tension",
+        "name": "Estabilizadores de tensión",
+        "parent": 0,
+        "products": [
+            {
+                "id": 895,
+                "sku": "da7b8680927b",
+                "name": "Estabilizadores de tensión",
+                "url": "https://grupotorivac.com/product/estabilizadores-de-tension/"
+            },
+            {
+                "id": 897,
+                "sku": "592f331c74e3",
+                "name": "Estabilizadores Monofásicos",
+                "url": "https://grupotorivac.com/product/serie-avs-2/"
+            },
+            {
+                "id": 898,
+                "sku": "28e88fa19299",
+                "name": "Estabilizador Trifásico Serie AVS",
+                "url": "https://grupotorivac.com/product/serie-avs-3/"
+            },
+            {
+                "id": 900,
+                "sku": "13d3617942b1",
+                "name": "Estabilizador Monofásico Serie BAVS",
+                "url": "https://grupotorivac.com/product/serie-bavs-2/"
+            },
+            {
+                "id": 901,
+                "sku": "a2cff0898d74",
+                "name": "Estabilizador Trifásico Serie BAVS",
+                "url": "https://grupotorivac.com/product/serie-bavs-3/"
+            }
+        ],
+        "children": [
+            {
+                "id": 61,
+                "slug": "serie-avs",
+                "name": "Estabilizadores Serie AVS: electromecánicos con servomotor",
+                "parent": 60,
+                "products": [
+                    {
+                        "id": 897,
+                        "sku": "592f331c74e3",
+                        "name": "Estabilizadores Monofásicos",
+                        "url": "https://grupotorivac.com/product/serie-avs-2/"
+                    },
+                    {
+                        "id": 898,
+                        "sku": "28e88fa19299",
+                        "name": "Estabilizador Trifásico Serie AVS",
+                        "url": "https://grupotorivac.com/product/serie-avs-3/"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 103,
+                        "slug": "monofasico-serie-avs",
+                        "name": "Monofásico",
+                        "parent": 61,
+                        "products": [
+                            {
+                                "id": 897,
+                                "sku": "592f331c74e3",
+                                "name": "Estabilizadores Monofásicos",
+                                "url": "https://grupotorivac.com/product/serie-avs-2/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 104,
+                        "slug": "trifasico-serie-avs",
+                        "name": "Trifásico",
+                        "parent": 61,
+                        "products": [
+                            {
+                                "id": 898,
+                                "sku": "28e88fa19299",
+                                "name": "Estabilizador Trifásico Serie AVS",
+                                "url": "https://grupotorivac.com/product/serie-avs-3/"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 62,
+                "slug": "serie-bavs",
+                "name": "Serie BAVS: Electrónicos",
+                "parent": 60,
+                "products": [
+                    {
+                        "id": 900,
+                        "sku": "13d3617942b1",
+                        "name": "Estabilizador Monofásico Serie BAVS",
+                        "url": "https://grupotorivac.com/product/serie-bavs-2/"
+                    },
+                    {
+                        "id": 901,
+                        "sku": "a2cff0898d74",
+                        "name": "Estabilizador Trifásico Serie BAVS",
+                        "url": "https://grupotorivac.com/product/serie-bavs-3/"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 105,
+                        "slug": "monofasico-serie-bavs",
+                        "name": "Monofásico",
+                        "parent": 62,
+                        "products": [
+                            {
+                                "id": 900,
+                                "sku": "13d3617942b1",
+                                "name": "Estabilizador Monofásico Serie BAVS",
+                                "url": "https://grupotorivac.com/product/serie-bavs-2/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 106,
+                        "slug": "trifasico-serie-bavs",
+                        "name": "Trifásico",
+                        "parent": 62,
+                        "products": [
+                            {
+                                "id": 901,
+                                "sku": "a2cff0898d74",
+                                "name": "Estabilizador Trifásico Serie BAVS",
+                                "url": "https://grupotorivac.com/product/serie-bavs-3/"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 49,
+        "slug": "fabricaciones-a-medida",
+        "name": "Fabricaciones a Medida",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 102,
+        "slug": "fabricaciones-a-medida-transformadores-toroidales",
+        "name": "Fabricaciones a medida",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 83,
+        "slug": "hembrillas",
+        "name": "Hembrillas",
+        "parent": 0,
+        "products": [
+            {
+                "id": 954,
+                "sku": "4beda945df2e",
+                "name": "Hembrilla HB4",
+                "url": "https://grupotorivac.com/product/hembrilla-hb4/"
+            },
+            {
+                "id": 955,
+                "sku": "ead0c27ca8b8",
+                "name": "Hembrilla de seguridad HBS4",
+                "url": "https://grupotorivac.com/product/hembrilla-de-seguridad-hbs4/"
+            },
+            {
+                "id": 956,
+                "sku": "f363f052982a",
+                "name": "Hembrilla de seguridad HR4",
+                "url": "https://grupotorivac.com/product/hembrilla-de-seguridad-hr4/"
+            },
+            {
+                "id": 957,
+                "sku": "9d0144f29a4f",
+                "name": "Hembrilla de seguridad HSR4",
+                "url": "https://grupotorivac.com/product/hembrilla-de-seguridad-hsr4/"
+            }
+        ],
+        "children": [
+            {
+                "id": 85,
+                "slug": "hembrilla-de-seguridad-hbs4",
+                "name": "Hembrilla de seguridad HBS4",
+                "parent": 83,
+                "products": [
+                    {
+                        "id": 955,
+                        "sku": "ead0c27ca8b8",
+                        "name": "Hembrilla de seguridad HBS4",
+                        "url": "https://grupotorivac.com/product/hembrilla-de-seguridad-hbs4/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 86,
+                "slug": "hembrilla-de-seguridad-hr4",
+                "name": "hembrilla de seguridad HR4",
+                "parent": 83,
+                "products": [
+                    {
+                        "id": 956,
+                        "sku": "f363f052982a",
+                        "name": "Hembrilla de seguridad HR4",
+                        "url": "https://grupotorivac.com/product/hembrilla-de-seguridad-hr4/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 87,
+                "slug": "hembrilla-de-seguridad-hsr4",
+                "name": "Hembrilla de seguridad HSR4",
+                "parent": 83,
+                "products": [
+                    {
+                        "id": 957,
+                        "sku": "9d0144f29a4f",
+                        "name": "Hembrilla de seguridad HSR4",
+                        "url": "https://grupotorivac.com/product/hembrilla-de-seguridad-hsr4/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 84,
+                "slug": "hembrilla-hb4",
+                "name": "Hembrilla HB4",
+                "parent": 83,
+                "products": [
+                    {
+                        "id": 954,
+                        "sku": "4beda945df2e",
+                        "name": "Hembrilla HB4",
+                        "url": "https://grupotorivac.com/product/hembrilla-hb4/"
+                    }
+                ],
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 25,
+        "slug": "hembrillas-de-seguridad",
+        "name": "Hembrillas de seguridad",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 64,
+        "slug": "nucleos",
+        "name": "Nucleos",
+        "parent": 0,
+        "products": [
+            {
+                "id": 921,
+                "sku": "89771ab4a36f",
+                "name": "Núcleos toroidales",
+                "url": "https://grupotorivac.com/product/nucleos-toroidales/"
+            }
+        ],
+        "children": []
+    },
+    {
+        "id": 65,
+        "slug": "portaled",
+        "name": "Portaled",
+        "parent": 0,
+        "products": [
+            {
+                "id": 923,
+                "sku": "2262440b3e6c",
+                "name": "Soporte metalico para led 3mm",
+                "url": "https://grupotorivac.com/product/soporte-metalico-para-led-3mm-2/"
+            },
+            {
+                "id": 925,
+                "sku": "15b9f0f7e5b8",
+                "name": "Soporte metalico para led 5mm",
+                "url": "https://grupotorivac.com/product/soporte-metalico-para-led-5mm-2/"
+            },
+            {
+                "id": 927,
+                "sku": "b99f0ea0881f",
+                "name": "Soporte metalico para led 8mm",
+                "url": "https://grupotorivac.com/product/soporte-metalico-para-led-8mm-2/"
+            },
+            {
+                "id": 929,
+                "sku": "71b0ae5dc762",
+                "name": "Soporte metalico para led 10mm",
+                "url": "https://grupotorivac.com/product/soporte-metalico-para-led-10mm-2/"
+            }
+        ],
+        "children": [
+            {
+                "id": 69,
+                "slug": "led-10mm",
+                "name": "led 10mm",
+                "parent": 65,
+                "products": [
+                    {
+                        "id": 929,
+                        "sku": "71b0ae5dc762",
+                        "name": "Soporte metalico para led 10mm",
+                        "url": "https://grupotorivac.com/product/soporte-metalico-para-led-10mm-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 66,
+                "slug": "led-3mm",
+                "name": "led 3mm",
+                "parent": 65,
+                "products": [
+                    {
+                        "id": 923,
+                        "sku": "2262440b3e6c",
+                        "name": "Soporte metalico para led 3mm",
+                        "url": "https://grupotorivac.com/product/soporte-metalico-para-led-3mm-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 67,
+                "slug": "led-5mm",
+                "name": "led 5mm",
+                "parent": 65,
+                "products": [
+                    {
+                        "id": 925,
+                        "sku": "15b9f0f7e5b8",
+                        "name": "Soporte metalico para led 5mm",
+                        "url": "https://grupotorivac.com/product/soporte-metalico-para-led-5mm-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 68,
+                "slug": "led-8mm",
+                "name": "led 8mm",
+                "parent": 65,
+                "products": [
+                    {
+                        "id": 927,
+                        "sku": "b99f0ea0881f",
+                        "name": "Soporte metalico para led 8mm",
+                        "url": "https://grupotorivac.com/product/soporte-metalico-para-led-8mm-2/"
+                    }
+                ],
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 24,
+        "slug": "portaleds",
+        "name": "Portaleds",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 26,
+        "slug": "potenciometros-y-reostatos",
+        "name": "Potenciómetros y reóstatos",
+        "parent": 0,
+        "products": [],
+        "children": []
+    },
+    {
+        "id": 122,
+        "slug": "reostatos-y-potenciometros-bobinados",
+        "name": "Reostatos y potenciómetros bobinados",
+        "parent": 0,
+        "products": [
+            {
+                "id": 1042,
+                "sku": "7fb0fb732233-1",
+                "name": "Reostatos y potenciometros bobinados fabricaciones especiales",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-especiales/"
+            },
+            {
+                "id": 910,
+                "sku": "708689bf8358",
+                "name": "Reostatos y potenciometros bobinados simple",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-7/"
+            },
+            {
+                "id": 911,
+                "sku": "651e59f5150c",
+                "name": "Reostatos y potenciometros bobinados doble",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-8-2/"
+            },
+            {
+                "id": 912,
+                "sku": "c270ef0dc067",
+                "name": "Reostatos y potenciometros bobinados tripes",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-9-2/"
+            },
+            {
+                "id": 913,
+                "sku": "7fb0fb732233",
+                "name": "Reostatos y potenciometros bobinados en caja",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-10-2/"
+            },
+            {
+                "id": 906,
+                "sku": "a4f0c100b685",
+                "name": "Reostatos y potenciometros bobinados simple 3W",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/"
+            },
+            {
+                "id": 907,
+                "sku": "6e514d4dee24",
+                "name": "Reostatos y potenciometros bobinados simple 5W",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/"
+            },
+            {
+                "id": 908,
+                "sku": "aa0c66c1a326",
+                "name": "Reostatos y potenciometros bobinados doble 2x3W",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/"
+            },
+            {
+                "id": 904,
+                "sku": "897b440c7c85",
+                "name": "Reostatos y potenciometros bobinados",
+                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados/"
+            }
+        ],
+        "children": [
+            {
+                "id": 107,
+                "slug": "potenciometros",
+                "name": "Potenciometros",
+                "parent": 122,
+                "products": [
+                    {
+                        "id": 906,
+                        "sku": "a4f0c100b685",
+                        "name": "Reostatos y potenciometros bobinados simple 3W",
+                        "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/"
+                    },
+                    {
+                        "id": 907,
+                        "sku": "6e514d4dee24",
+                        "name": "Reostatos y potenciometros bobinados simple 5W",
+                        "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/"
+                    },
+                    {
+                        "id": 908,
+                        "sku": "aa0c66c1a326",
+                        "name": "Reostatos y potenciometros bobinados doble 2x3W",
+                        "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 111,
+                        "slug": "dobles-potenciometros",
+                        "name": "Dobles",
+                        "parent": 107,
+                        "products": [
+                            {
+                                "id": 908,
+                                "sku": "aa0c66c1a326",
+                                "name": "Reostatos y potenciometros bobinados doble 2x3W",
+                                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 108,
+                        "slug": "simples",
+                        "name": "Simples",
+                        "parent": 107,
+                        "products": [
+                            {
+                                "id": 907,
+                                "sku": "6e514d4dee24",
+                                "name": "Reostatos y potenciometros bobinados simple 5W",
+                                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/"
+                            },
+                            {
+                                "id": 906,
+                                "sku": "a4f0c100b685",
+                                "name": "Reostatos y potenciometros bobinados simple 3W",
+                                "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 112,
+                "slug": "ceramicos",
+                "name": "Reóstatos cerámicos",
+                "parent": 122,
+                "products": [
+                    {
+                        "id": 1042,
+                        "sku": "7fb0fb732233-1",
+                        "name": "Reostatos y potenciometros bobinados fabricaciones especiales",
+                        "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-especiales/"
+                    },
+                    {
+                        "id": 910,
+                        "sku": "708689bf8358",
+                        "name": "Reostatos y potenciometros bobinados simple",
+                        "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-7/"
+                    },
+                    {
+                        "id": 911,
+                        "sku": "651e59f5150c",
+                        "name": "Reostatos y potenciometros bobinados doble",
+                        "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-8-2/"
+                    },
+                    {
+                        "id": 912,
+                        "sku": "c270ef0dc067",
+                        "name": "Reostatos y potenciometros bobinados tripes",
+                        "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-9-2/"
+                    },
+                    {
+                        "id": 913,
+                        "sku": "7fb0fb732233",
+                        "name": "Reostatos y potenciometros bobinados en caja",
+                        "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-10-2/"
+                    }
+                ],
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 88,
+        "slug": "resistencias",
+        "name": "Resistencias | Bancos de carga",
+        "parent": 0,
+        "products": [
+            {
+                "id": 15355,
+                "sku": "",
+                "name": "Resistencia en caja",
+                "url": "https://grupotorivac.com/product/resistencia-en-caja/"
+            },
+            {
+                "id": 8346,
+                "sku": "3faa07fd4d75-1-1-1",
+                "name": "Resistencias de alta potencia cementadas",
+                "url": "https://grupotorivac.com/product/resistencias-de-alta-potencia-cementadas/"
+            },
+            {
+                "id": 8340,
+                "sku": "3faa07fd4d75-1-1",
+                "name": "Resistencias helicoidales",
+                "url": "https://grupotorivac.com/product/resistencias-helicoidales/"
+            },
+            {
+                "id": 8339,
+                "sku": "3faa07fd4d75-1",
+                "name": "Resistencias de frenado",
+                "url": "https://grupotorivac.com/product/resistencias-de-frenado/"
+            },
+            {
+                "id": 965,
+                "sku": "9960fe5dd93b",
+                "name": "Resistencias de arranque",
+                "url": "https://grupotorivac.com/product/resistencias-de-arranque/"
+            },
+            {
+                "id": 966,
+                "sku": "10a45a056423",
+                "name": "Resistencias de puesta a tierra",
+                "url": "https://grupotorivac.com/product/resistencias-de-puesta-a-tierra/"
+            },
+            {
+                "id": 964,
+                "sku": "3faa07fd4d75",
+                "name": "Resistencias - Banco de carga",
+                "url": "https://grupotorivac.com/product/bancos-de-carga/"
+            }
+        ],
+        "children": [
+            {
+                "id": 93,
+                "slug": "bancos-de-carga",
+                "name": "Bancos de carga",
+                "parent": 88,
+                "products": [
+                    {
+                        "id": 964,
+                        "sku": "3faa07fd4d75",
+                        "name": "Resistencias - Banco de carga",
+                        "url": "https://grupotorivac.com/product/bancos-de-carga/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 92,
+                "slug": "cementadas",
+                "name": "Cementadas",
+                "parent": 88,
+                "products": [
+                    {
+                        "id": 8346,
+                        "sku": "3faa07fd4d75-1-1-1",
+                        "name": "Resistencias de alta potencia cementadas",
+                        "url": "https://grupotorivac.com/product/resistencias-de-alta-potencia-cementadas/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 120,
+                "slug": "en-caja-resistencias",
+                "name": "En caja",
+                "parent": 88,
+                "products": [
+                    {
+                        "id": 15355,
+                        "sku": "",
+                        "name": "Resistencia en caja",
+                        "url": "https://grupotorivac.com/product/resistencia-en-caja/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 90,
+                "slug": "helicoidales",
+                "name": "Helicoidales",
+                "parent": 88,
+                "products": [
+                    {
+                        "id": 8340,
+                        "sku": "3faa07fd4d75-1-1",
+                        "name": "Resistencias helicoidales",
+                        "url": "https://grupotorivac.com/product/resistencias-helicoidales/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 94,
+                "slug": "resistencias-de-arranque",
+                "name": "Resistencias de arranque",
+                "parent": 88,
+                "products": [
+                    {
+                        "id": 965,
+                        "sku": "9960fe5dd93b",
+                        "name": "Resistencias de arranque",
+                        "url": "https://grupotorivac.com/product/resistencias-de-arranque/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 444,
+                "slug": "resistencias-de-frenado",
+                "name": "Resistencias de frenado",
+                "parent": 88,
+                "products": [
+                    {
+                        "id": 8339,
+                        "sku": "3faa07fd4d75-1",
+                        "name": "Resistencias de frenado",
+                        "url": "https://grupotorivac.com/product/resistencias-de-frenado/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 95,
+                "slug": "resistencias-de-puesta-a-tierra",
+                "name": "Resistencias de puesta a tierra",
+                "parent": 88,
+                "products": [
+                    {
+                        "id": 966,
+                        "sku": "10a45a056423",
+                        "name": "Resistencias de puesta a tierra",
+                        "url": "https://grupotorivac.com/product/resistencias-de-puesta-a-tierra/"
+                    }
+                ],
+                "children": []
+            }
+        ]
+    },
+    {
+        "id": 51,
+        "slug": "transformadores",
+        "name": "Transformadores",
+        "parent": 0,
+        "products": [
+            {
+                "id": 886,
+                "sku": "59ca6bdaf199",
+                "name": "Transformador serie encapsulada",
+                "url": "https://grupotorivac.com/product/serie-encapsulada-2/"
+            },
+            {
+                "id": 888,
+                "sku": "a7c0d6e651b3",
+                "name": "Transformadores en serie circuito impreso",
+                "url": "https://grupotorivac.com/product/serie-circuito-impreso-2/"
+            },
+            {
+                "id": 891,
+                "sku": "4b36f30b87cd",
+                "name": "Transformador convencional encapsulado",
+                "url": "https://grupotorivac.com/product/transformadores-convencionales-encapsulados/"
+            },
+            {
+                "id": 892,
+                "sku": "bab0199a7343",
+                "name": "Transformador trifásico",
+                "url": "https://grupotorivac.com/product/transformador-trifasico-2/"
+            },
+            {
+                "id": 890,
+                "sku": "57a2268b76ae",
+                "name": "Transformador convencional estándar",
+                "url": "https://grupotorivac.com/product/transformador-convencional-estandar-2/"
+            },
+            {
+                "id": 884,
+                "sku": "TT0020210",
+                "name": "Transformador Serie TT",
+                "url": "https://grupotorivac.com/product/transformadores-serie-tt/"
+            }
+        ],
+        "children": [
+            {
+                "id": 52,
+                "slug": "transformadores-toroidales-transformadores",
+                "name": "Transformadores toroidales",
+                "parent": 51,
+                "products": [
+                    {
+                        "id": 886,
+                        "sku": "59ca6bdaf199",
+                        "name": "Transformador serie encapsulada",
+                        "url": "https://grupotorivac.com/product/serie-encapsulada-2/"
+                    },
+                    {
+                        "id": 888,
+                        "sku": "a7c0d6e651b3",
+                        "name": "Transformadores en serie circuito impreso",
+                        "url": "https://grupotorivac.com/product/serie-circuito-impreso-2/"
+                    },
+                    {
+                        "id": 884,
+                        "sku": "TT0020210",
+                        "name": "Transformador Serie TT",
+                        "url": "https://grupotorivac.com/product/transformadores-serie-tt/"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 55,
+                        "slug": "serie-tci",
+                        "name": "Serie TCi (encapsulado para circuito impreso)",
+                        "parent": 52,
+                        "products": [
+                            {
+                                "id": 888,
+                                "sku": "a7c0d6e651b3",
+                                "name": "Transformadores en serie circuito impreso",
+                                "url": "https://grupotorivac.com/product/serie-circuito-impreso-2/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 53,
+                        "slug": "serie-tt",
+                        "name": "Serie TT",
+                        "parent": 52,
+                        "products": [
+                            {
+                                "id": 884,
+                                "sku": "TT0020210",
+                                "name": "Transformador Serie TT",
+                                "url": "https://grupotorivac.com/product/transformadores-serie-tt/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 54,
+                        "slug": "serie-te",
+                        "name": "Serie TE",
+                        "parent": 52,
+                        "products": [
+                            {
+                                "id": 886,
+                                "sku": "59ca6bdaf199",
+                                "name": "Transformador serie encapsulada",
+                                "url": "https://grupotorivac.com/product/serie-encapsulada-2/"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 56,
+                "slug": "transformador-convencional",
+                "name": "Transformador convencional",
+                "parent": 51,
+                "products": [
+                    {
+                        "id": 891,
+                        "sku": "4b36f30b87cd",
+                        "name": "Transformador convencional encapsulado",
+                        "url": "https://grupotorivac.com/product/transformadores-convencionales-encapsulados/"
+                    },
+                    {
+                        "id": 892,
+                        "sku": "bab0199a7343",
+                        "name": "Transformador trifásico",
+                        "url": "https://grupotorivac.com/product/transformador-trifasico-2/"
+                    },
+                    {
+                        "id": 890,
+                        "sku": "57a2268b76ae",
+                        "name": "Transformador convencional estándar",
+                        "url": "https://grupotorivac.com/product/transformador-convencional-estandar-2/"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 57,
+                        "slug": "serie-tc",
+                        "name": "Serie TC",
+                        "parent": 56,
+                        "products": [
+                            {
+                                "id": 890,
+                                "sku": "57a2268b76ae",
+                                "name": "Transformador convencional estándar",
+                                "url": "https://grupotorivac.com/product/transformador-convencional-estandar-2/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 58,
+                        "slug": "serie-tce",
+                        "name": "Serie TCE",
+                        "parent": 56,
+                        "products": [
+                            {
+                                "id": 891,
+                                "sku": "4b36f30b87cd",
+                                "name": "Transformador convencional encapsulado",
+                                "url": "https://grupotorivac.com/product/transformadores-convencionales-encapsulados/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 59,
+                        "slug": "tct",
+                        "name": "TCT",
+                        "parent": 56,
+                        "products": [
+                            {
+                                "id": 892,
+                                "sku": "bab0199a7343",
+                                "name": "Transformador trifásico",
+                                "url": "https://grupotorivac.com/product/transformador-trifasico-2/"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": 19,
+        "slug": "variadores-de-tension",
+        "name": "Variadores de tensión - Autotransformadores regulables",
+        "parent": 0,
+        "products": [
+            {
+                "id": 16633,
+                "sku": "",
+                "name": "Variador de tensión portatil",
+                "url": "https://grupotorivac.com/product/variador-de-tension-portatil/"
+            },
+            {
+                "id": 866,
+                "sku": "12bdc8ede58d",
+                "name": "Variador Monofásico manual",
+                "url": "https://grupotorivac.com/product/monofasico-manual/"
+            },
+            {
+                "id": 867,
+                "sku": "4f2cbb78e2ed",
+                "name": "Variador Monofásico motorizado",
+                "url": "https://grupotorivac.com/product/monofasico-motorizado/"
+            },
+            {
+                "id": 879,
+                "sku": "30d6e59bbbc2",
+                "name": "Accesorios de regulacion",
+                "url": "https://grupotorivac.com/product/accesorios-de-regulacion/"
+            },
+            {
+                "id": 882,
+                "sku": "b0ab88d1a8d1",
+                "name": "Comunicación MODBUS",
+                "url": "https://grupotorivac.com/product/comunicacion-modbus-2/"
+            },
+            {
+                "id": 876,
+                "sku": "43a0b44489f9",
+                "name": "Variador de tensión Equipos industriales",
+                "url": "https://grupotorivac.com/product/equipos-industriales-2/"
+            },
+            {
+                "id": 874,
+                "sku": "42d57d5045a9",
+                "name": "En caja",
+                "url": "https://grupotorivac.com/product/en-caja/"
+            },
+            {
+                "id": 301,
+                "sku": "5d7f54e5c99b",
+                "name": "Accesorios de mando",
+                "url": "https://grupotorivac.com/product/botones-de-mando-2-2/"
+            },
+            {
+                "id": 308,
+                "sku": "4e6209352a32",
+                "name": "Variador Doble motorizado",
+                "url": "https://grupotorivac.com/product/doble-motorizado/"
+            },
+            {
+                "id": 310,
+                "sku": "0e113f234788",
+                "name": "Variador Doble manual",
+                "url": "https://grupotorivac.com/product/doble-manual/"
+            },
+            {
+                "id": 328,
+                "sku": "c7c4551cd46b",
+                "name": "Variador Trifasico motorizado",
+                "url": "https://grupotorivac.com/product/variador-trifasico-motorizado/"
+            },
+            {
+                "id": 294,
+                "sku": "58923a85804f",
+                "name": "Variador de tensión a medida",
+                "url": "https://grupotorivac.com/product/a-medida-2/"
+            },
+            {
+                "id": 304,
+                "sku": "7f6721289dd1",
+                "name": "Controlador 0-10VDC",
+                "url": "https://grupotorivac.com/product/controlador-0-10vdc-2/"
+            },
+            {
+                "id": 326,
+                "sku": "6d6ab80b4cb5",
+                "name": "Variador Trifásico manual",
+                "url": "https://grupotorivac.com/product/trifasico-manual/"
+            },
+            {
+                "id": 306,
+                "sku": "656b57350c61",
+                "name": "Cuba de aceite",
+                "url": "https://grupotorivac.com/product/cuba-de-aceite-2/"
+            }
+        ],
+        "children": [
+            {
+                "id": 37,
+                "slug": "monofasico",
+                "name": "Variadores Monofasicos",
+                "parent": 19,
+                "products": [
+                    {
+                        "id": 866,
+                        "sku": "12bdc8ede58d",
+                        "name": "Variador Monofásico manual",
+                        "url": "https://grupotorivac.com/product/monofasico-manual/"
+                    },
+                    {
+                        "id": 867,
+                        "sku": "4f2cbb78e2ed",
+                        "name": "Variador Monofásico motorizado",
+                        "url": "https://grupotorivac.com/product/monofasico-motorizado/"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 38,
+                        "slug": "monofasicos-manual",
+                        "name": "Manual",
+                        "parent": 37,
+                        "products": [
+                            {
+                                "id": 866,
+                                "sku": "12bdc8ede58d",
+                                "name": "Variador Monofásico manual",
+                                "url": "https://grupotorivac.com/product/monofasico-manual/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 43,
+                        "slug": "motorizado-monofasico",
+                        "name": "Motorizado",
+                        "parent": 37,
+                        "products": [
+                            {
+                                "id": 867,
+                                "sku": "4f2cbb78e2ed",
+                                "name": "Variador Monofásico motorizado",
+                                "url": "https://grupotorivac.com/product/monofasico-motorizado/"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 33,
+                "slug": "dobles",
+                "name": "Variador Doble",
+                "parent": 19,
+                "products": [
+                    {
+                        "id": 308,
+                        "sku": "4e6209352a32",
+                        "name": "Variador Doble motorizado",
+                        "url": "https://grupotorivac.com/product/doble-motorizado/"
+                    },
+                    {
+                        "id": 310,
+                        "sku": "0e113f234788",
+                        "name": "Variador Doble manual",
+                        "url": "https://grupotorivac.com/product/doble-manual/"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 44,
+                        "slug": "doble-manual",
+                        "name": "Doble manual",
+                        "parent": 33,
+                        "products": [
+                            {
+                                "id": 310,
+                                "sku": "0e113f234788",
+                                "name": "Variador Doble manual",
+                                "url": "https://grupotorivac.com/product/doble-manual/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 34,
+                        "slug": "doble-motorizado",
+                        "name": "Doble motorizado",
+                        "parent": 33,
+                        "products": [
+                            {
+                                "id": 308,
+                                "sku": "4e6209352a32",
+                                "name": "Variador Doble motorizado",
+                                "url": "https://grupotorivac.com/product/doble-motorizado/"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 40,
+                "slug": "trifasico",
+                "name": "Variadores Trifásicos",
+                "parent": 19,
+                "products": [
+                    {
+                        "id": 328,
+                        "sku": "c7c4551cd46b",
+                        "name": "Variador Trifasico motorizado",
+                        "url": "https://grupotorivac.com/product/variador-trifasico-motorizado/"
+                    },
+                    {
+                        "id": 326,
+                        "sku": "6d6ab80b4cb5",
+                        "name": "Variador Trifásico manual",
+                        "url": "https://grupotorivac.com/product/trifasico-manual/"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 41,
+                        "slug": "manual-trifasico",
+                        "name": "Manual",
+                        "parent": 40,
+                        "products": [
+                            {
+                                "id": 326,
+                                "sku": "6d6ab80b4cb5",
+                                "name": "Variador Trifásico manual",
+                                "url": "https://grupotorivac.com/product/trifasico-manual/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 42,
+                        "slug": "motorizado",
+                        "name": "Motorizado",
+                        "parent": 40,
+                        "products": [
+                            {
+                                "id": 328,
+                                "sku": "c7c4551cd46b",
+                                "name": "Variador Trifasico motorizado",
+                                "url": "https://grupotorivac.com/product/variador-trifasico-motorizado/"
+                            }
+                        ],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 45,
+                "slug": "en-caja",
+                "name": "Equipos de sobremesa",
+                "parent": 19,
+                "products": [
+                    {
+                        "id": 876,
+                        "sku": "43a0b44489f9",
+                        "name": "Variador de tensión Equipos industriales",
+                        "url": "https://grupotorivac.com/product/equipos-industriales-2/"
+                    },
+                    {
+                        "id": 874,
+                        "sku": "42d57d5045a9",
+                        "name": "En caja",
+                        "url": "https://grupotorivac.com/product/en-caja/"
+                    },
+                    {
+                        "id": 306,
+                        "sku": "656b57350c61",
+                        "name": "Cuba de aceite",
+                        "url": "https://grupotorivac.com/product/cuba-de-aceite-2/"
+                    }
+                ],
+                "children": [
+                    {
+                        "id": 700,
+                        "slug": "variador-de-tension-en-caja",
+                        "name": "En caja",
+                        "parent": 45,
+                        "products": [
+                            {
+                                "id": 874,
+                                "sku": "42d57d5045a9",
+                                "name": "En caja",
+                                "url": "https://grupotorivac.com/product/en-caja/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 699,
+                        "slug": "variador-de-tension-industriales",
+                        "name": "Variador de tensión industriales",
+                        "parent": 45,
+                        "products": [
+                            {
+                                "id": 876,
+                                "sku": "43a0b44489f9",
+                                "name": "Variador de tensión Equipos industriales",
+                                "url": "https://grupotorivac.com/product/equipos-industriales-2/"
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": 32,
+                        "slug": "cuba-de-aceite",
+                        "name": "Cuba de aceite",
+                        "parent": 45,
+                        "products": [],
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 28,
+                "slug": "fabricacion-a-media",
+                "name": "Fabricación a medida",
+                "parent": 19,
+                "products": [
+                    {
+                        "id": 294,
+                        "sku": "58923a85804f",
+                        "name": "Variador de tensión a medida",
+                        "url": "https://grupotorivac.com/product/a-medida-2/"
+                    }
+                ],
+                "children": []
+            },
+            {
+                "id": 29,
+                "slug": "accesorios-de-regulacion",
+                "name": "Accesorios de regulación",
+                "parent": 19,
+                "products": [
+                    {
+                        "id": 882,
+                        "sku": "b0ab88d1a8d1",
+                        "name": "Comunicación MODBUS",
+                        "url": "https://grupotorivac.com/product/comunicacion-modbus-2/"
+                    },
+                    {
+                        "id": 301,
+                        "sku": "5d7f54e5c99b",
+                        "name": "Accesorios de mando",
+                        "url": "https://grupotorivac.com/product/botones-de-mando-2-2/"
+                    },
+                    {
+                        "id": 304,
+                        "sku": "7f6721289dd1",
+                        "name": "Controlador 0-10VDC",
+                        "url": "https://grupotorivac.com/product/controlador-0-10vdc-2/"
+                    }
+                ],
+                "children": []
+            }
+        ]
+    }
+]

@@ -1,0 +1,55 @@
+                                                                                          CHOQUES TOROIDALES
+
+
+
+
+  CHOQUES TOROIDALES DE POLVO DE HIERRO
+
+  Los choques toroidales de polvo de hierro, son los componentes
+  inductivos ideales para el diseño y fabricación de convetidores
+  CC/CC ó fuentes conmutadas CA/CC así como para filtros de red,
+  filtros para interferencias electromagnéticas y otros choques de la
+  gama de bajas frecuencias.
+  Sus características principales son:
+  * Baja dispersión de campo magnético, limitando al mínimo los
+    campos radiados.
+  * Alto rendimiento, permitiendo filtrar o almacenar energía en un
+    mínimo espacio.
+  * Bajas pérdidas en toda la gama de frecuencias de trabajo.
+  * Alta estabilidad frente a la temperatura con un margen de -50ºC
+  a + 90ºC.
+  * Amplio margen de frecuencias 10Khz a 150Khz.
+  La familia está compuesta de 27 valores inductivos distintos que
+  corresponden a los valores normalizados para los componentes
+  pasivos en electrónica, y de 11 núcleos distintos, obteniéndose
+  297 referencias distintas que permiten, en la mayoría de los casos,
+  cubrir          las         necesidades          de         diseño.
+  Podemos, fabricar modelos especiales de otros valores o con
+  otros tipos de núcleo de diferente       tamaño, atendiendo a las
+  especificaciones de cada cliente.
+
+
+
+
+                                                                                 Dimensiones (mm.)
+                                                                                 Dimensions (mm.)
+                                                                    Referencia
+                                                                                         D           A    L
+                                                                    Reference
+                                                                      1305               15           7   30
+                                                                      1307               16          10   30
+                                                                      1706               20           8   30
+                                                                      2006               23           9   30
+                                                                      2010               23          14   30
+                                                                      2408               27          11   30
+                                                                      2711               32          14   30
+                                                                      3311               37          15   30
+                                                                      3915               44          20   30
+                                                                      4715               52          21   30
+                                                                      5122               57          28   30
+
+
+
+
+www.torivac.com                                                                                                18
+

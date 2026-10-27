@@ -1,0 +1,56 @@
+SELFS TORIQUES
+
+
+
+
+ SELFS TORIQUES
+
+Les selfs toriques en poudre de fer sont les composants inductifs idéaux
+pour la conception et la fabrication de convertisseurs DC / DC ou de
+sources d’alimentations AC/DC commut.es, ainsi que pour les
+applications de ﬁltrage réseau, les ﬁltres               interférentiels
+.électromagnétiques et les selfs basse fréquence.
+
+
+Leurs principales caractéristiques sont:
+* Faible dispersion du champ magnétique, limitant au minimum les
+champs rayonnés.
+* Haute eﬃcacité., permettant la ﬁltration ou le stockage d'énergie
+dans un espace minimum.
+* Faible niveau de perte sur toute la plage de fréquences de
+fonctionnement.
+* Haute stabilité avec diﬀérentes températures avec une marge de
+–50.C
+. + 90.C.
+* Gamme de hautes fréquences de 10Khz .à150Khz.
+La famille se compose de 27 valeurs d'inductance diﬀérentes
+correspondant aux valeurs normalis.es des composants électroniques
+passifs, et de 11 noyaux diﬀérents, obtenant ainsi 297 références
+diﬀérentes permettant de répondre à toutes les exigences.
+Nous pouvons fabriquer d’autres valeurs inductives spéciales, m.me
+d’autres types de noyaux de tailles diﬀérentes, conformément aux
+spéciﬁcations de chaque client.
+
+
+                                                                                        Dimensiones (mm.)
+                                                                                        Dimensions (mm.)
+                                                                           Referencia
+                                                                                                D           A    L
+                                                                           Reference
+                                                                             1305               15           7   30
+                                                                             1307               16          10   30
+                                                                             1706               20           8   30
+                                                                             2006               23           9   30
+                                                                             2010               23          14   30
+                                                                             2408               27          11   30
+                                                                             2711               32          14   30
+                                                                             3311               37          15   30
+                                                                             3915               44          20   30
+                                                                             4715               52          21   30
+                                                                             5122               57          28   30
+
+
+
+
+                                                                    20
+

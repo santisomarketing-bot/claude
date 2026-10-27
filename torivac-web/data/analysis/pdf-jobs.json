@@ -1,0 +1,709 @@
+{
+ "n_pdfs": 50,
+ "n_jobs": 21,
+ "jobs": [
+  {
+   "key": "p01-catalogo-es",
+   "kind": "catalogo-es",
+   "note": "Catálogo general 2024 (ES). Fuente principal de referencias, tensiones y potencias.",
+   "files": [
+    {
+     "file": "Torivac_2024.pdf",
+     "stem": "Torivac_2024",
+     "pages": [
+      1,
+      7
+     ]
+    }
+   ]
+  },
+  {
+   "key": "p02-catalogo-es",
+   "kind": "catalogo-es",
+   "note": "Catálogo general 2024 (ES). Fuente principal de referencias, tensiones y potencias.",
+   "files": [
+    {
+     "file": "Torivac_2024.pdf",
+     "stem": "Torivac_2024",
+     "pages": [
+      8,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "key": "p03-catalogo-es",
+   "kind": "catalogo-es",
+   "note": "Catálogo general 2024 (ES). Fuente principal de referencias, tensiones y potencias.",
+   "files": [
+    {
+     "file": "Torivac_2024.pdf",
+     "stem": "Torivac_2024",
+     "pages": [
+      15,
+      21
+     ]
+    }
+   ]
+  },
+  {
+   "key": "p04-catalogo-es",
+   "kind": "catalogo-es",
+   "note": "Catálogo general 2024 (ES). Fuente principal de referencias, tensiones y potencias.",
+   "files": [
+    {
+     "file": "Torivac_2024.pdf",
+     "stem": "Torivac_2024",
+     "pages": [
+      22,
+      28
+     ]
+    }
+   ]
+  },
+  {
+   "key": "p05-catalogo-es",
+   "kind": "catalogo-es",
+   "note": "Catálogo general 2024 (ES). Fuente principal de referencias, tensiones y potencias.",
+   "files": [
+    {
+     "file": "Torivac_2024.pdf",
+     "stem": "Torivac_2024",
+     "pages": [
+      29,
+      35
+     ]
+    }
+   ]
+  },
+  {
+   "key": "p06-catalogo-es",
+   "kind": "catalogo-es",
+   "note": "Catálogo general 2024 (ES). Fuente principal de referencias, tensiones y potencias.",
+   "files": [
+    {
+     "file": "Torivac_2024.pdf",
+     "stem": "Torivac_2024",
+     "pages": [
+      36,
+      41
+     ]
+    }
+   ]
+  },
+  {
+   "key": "p07-catalogo-en",
+   "kind": "catalogo-en",
+   "note": "Catálogo 2024 en inglés: registrar terminología EN y CONTRASTAR cifras con el catálogo ES (misma página/producto).",
+   "files": [
+    {
+     "file": "Torivac_2024_EN.pdf",
+     "stem": "Torivac_2024_EN",
+     "pages": [
+      1,
+      14
+     ]
+    }
+   ]
+  },
+  {
+   "key": "p08-catalogo-en",
+   "kind": "catalogo-en",
+   "note": "Catálogo 2024 en inglés: registrar terminología EN y CONTRASTAR cifras con el catálogo ES (misma página/producto).",
+   "files": [
+    {
+     "file": "Torivac_2024_EN.pdf",
+     "stem": "Torivac_2024_EN",
+     "pages": [
+      15,
+      28
+     ]
+    }
+   ]
+  },
+  {
+   "key": "p09-catalogo-en",
+   "kind": "catalogo-en",
+   "note": "Catálogo 2024 en inglés: registrar terminología EN y CONTRASTAR cifras con el catálogo ES (misma página/producto).",
+   "files": [
+    {
+     "file": "Torivac_2024_EN.pdf",
+     "stem": "Torivac_2024_EN",
+     "pages": [
+      29,
+      41
+     ]
+    }
+   ]
+  },
+  {
+   "key": "p10-fichas-bobinas-potenciometros-reostatos",
+   "kind": "fichas-bobinas-potenciometros-reostatos",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "4.-Bobinas-encapsuladas.pdf",
+     "stem": "4_-Bobinas-encapsuladas",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Bobinas_encapsuladas_-potenciometros_ENd.pdf",
+     "stem": "Bobinas_encapsuladas_-potenciometros_ENd",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Bobinas_Encapsuladas.pdf",
+     "stem": "Caracteristicas_Bobinas_Encapsuladas",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Potenciometros_3W.pdf",
+     "stem": "Caracteristicas_Potenciometros_3W",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Potenciometros_5W.pdf",
+     "stem": "Caracteristicas_Potenciometros_5W",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    }
+   ]
+  },
+  {
+   "key": "p11-fichas-bobinas-potenciometros-reostatos",
+   "kind": "fichas-bobinas-potenciometros-reostatos",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "POTENCIOMETRO-5W.pdf",
+     "stem": "POTENCIOMETRO-5W",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Potenciometro.pdf",
+     "stem": "Potenciometro",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "REOSTATOS-CERAMICOS.pdf",
+     "stem": "REOSTATOS-CERAMICOS",
+     "pages": [
+      1,
+      3
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    }
+   ]
+  },
+  {
+   "key": "p12-fichas-botones-baquelita",
+   "kind": "fichas-botones-baquelita",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "BOTONES-DE-MANDO.pdf",
+     "stem": "BOTONES-DE-MANDO",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": true,
+     "same_text_as": []
+    },
+    {
+     "file": "BOTONES-DE-MANDO2.pdf",
+     "stem": "BOTONES-DE-MANDO2",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": true,
+     "same_text_as": []
+    },
+    {
+     "file": "BOTONES-DE-MANDO3.pdf",
+     "stem": "BOTONES-DE-MANDO3",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": true,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Boton_Baquelita_DF.pdf",
+     "stem": "Caracteristicas_Boton_Baquelita_DF",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": true,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Botones_de_Mando.pdf",
+     "stem": "Caracteristicas_Botones_de_Mando",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": true,
+     "same_text_as": []
+    }
+   ]
+  },
+  {
+   "key": "p13-fichas-botones-baquelita",
+   "kind": "fichas-botones-baquelita",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "Caracteristicas_senalizadores_para_botones.pdf",
+     "stem": "Caracteristicas_senalizadores_para_botones",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": true,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Tapas_para_Botones.pdf",
+     "stem": "Caracteristicas_Tapas_para_Botones",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": true,
+     "same_text_as": []
+    }
+   ]
+  },
+  {
+   "key": "p14-fichas-hembrillas-bornes",
+   "kind": "fichas-hembrillas-bornes",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "Caracteristicas_Bornes_Hembrillas_Portafusibles.pdf",
+     "stem": "Caracteristicas_Bornes_Hembrillas_Portafusibles",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "HEMBRILLAS.pdf",
+     "stem": "HEMBRILLAS",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "HEMBRILLAS2.pdf",
+     "stem": "HEMBRILLAS2",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    }
+   ]
+  },
+  {
+   "key": "p15-fichas-nucleos-choques",
+   "kind": "fichas-nucleos-choques",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "Caracteristicas_Nucleos_Toroidales.pdf",
+     "stem": "Caracteristicas_Nucleos_Toroidales",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "CHOQUES-TOROIDALES.pdf",
+     "stem": "CHOQUES-TOROIDALES",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Cracteristicas_Choques_Toroidales.pdf",
+     "stem": "Cracteristicas_Choques_Toroidales",
+     "pages": [
+      1,
+      2
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Nucleos-toroidales.pdf",
+     "stem": "Nucleos-toroidales",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    }
+   ]
+  },
+  {
+   "key": "p16-fichas-soportes-led",
+   "kind": "fichas-soportes-led",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "Caracteristicas_Soportes_Metalicos_para_Leds.pdf",
+     "stem": "Caracteristicas_Soportes_Metalicos_para_Leds",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Soportes-Metalicos-para-LED.pdf",
+     "stem": "Soportes-Metalicos-para-LED",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Soportes-Metalicos.pdf",
+     "stem": "Soportes-Metalicos",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    }
+   ]
+  },
+  {
+   "key": "p17-fichas-transformadores",
+   "kind": "fichas-transformadores",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "Carcateristicas_transformadores_toroidales_Torivac_serie_TCI.pdf",
+     "stem": "Carcateristicas_transformadores_toroidales_Torivac_serie_TCI",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Carcateristicas_transformadores_toroidales_Torivac_serie_TE.pdf",
+     "stem": "Carcateristicas_transformadores_toroidales_Torivac_serie_TE",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Carcateristicas_transformadores_toroidales_Torivac_serie_TT.pdf",
+     "stem": "Carcateristicas_transformadores_toroidales_Torivac_serie_TT",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Serie-TE-Serie-TCI.pdf",
+     "stem": "Serie-TE-Serie-TCI",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Serie-TT.pdf",
+     "stem": "Serie-TT",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    }
+   ]
+  },
+  {
+   "key": "p18-fichas-variadores",
+   "kind": "fichas-variadores",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "1.-Variadores-de-tension_monofasicomanual.pdf",
+     "stem": "1_-Variadores-de-tension_monofasicomanual",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "1.-Variadores-de-tension_monofasicomotorizado.pdf",
+     "stem": "1_-Variadores-de-tension_monofasicomotorizado",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf",
+     "stem": "Caracteristicas_Tecnicas_Variador_de_Tension_en_caja",
+     "pages": [
+      1,
+      3
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Tecnicas_Variador_Dobles_Manual.pdf",
+     "stem": "Caracteristicas_Tecnicas_Variador_Dobles_Manual",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Tecnicas_Variador_Dobles_Motorizados.pdf",
+     "stem": "Caracteristicas_Tecnicas_Variador_Dobles_Motorizados",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    }
+   ]
+  },
+  {
+   "key": "p19-fichas-variadores",
+   "kind": "fichas-variadores",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "Caracteristicas_Tecnicas_Variador_Monofasico_Manual.pdf",
+     "stem": "Caracteristicas_Tecnicas_Variador_Monofasico_Manual",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado.pdf",
+     "stem": "Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Tecnicas_Variador_Trifasico_Manual.pdf",
+     "stem": "Caracteristicas_Tecnicas_Variador_Trifasico_Manual",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Caracteristicas_Tecnicas_Variador_Trifasico_Motorizado.pdf",
+     "stem": "Caracteristicas_Tecnicas_Variador_Trifasico_Motorizado",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Monofasico-motorizado.pdf",
+     "stem": "Monofasico-motorizado",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": [
+      "variador-de-tension-monofasico.pdf"
+     ]
+    }
+   ]
+  },
+  {
+   "key": "p20-fichas-variadores",
+   "kind": "fichas-variadores",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "variador-de-tension-monofasico.pdf",
+     "stem": "variador-de-tension-monofasico",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": [
+      "Monofasico-motorizado.pdf"
+     ]
+    },
+    {
+     "file": "Variador-tension-doble-regulacion-manual.pdf",
+     "stem": "Variador-tension-doble-regulacion-manual",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Variador-tension-doble-regulacion-motorizada.pdf",
+     "stem": "Variador-tension-doble-regulacion-motorizada",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Variador-tension-en-caja-industrial-trifasico.pdf",
+     "stem": "Variador-tension-en-caja-industrial-trifasico",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Variador-tension-en-cura-de-aceite.pdf",
+     "stem": "Variador-tension-en-cura-de-aceite",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    }
+   ]
+  },
+  {
+   "key": "p21-fichas-variadores",
+   "kind": "fichas-variadores",
+   "note": "Fichas técnicas. Los PDFs con needs_visual_read=true son imagen: hay que mirarlos renderizados (pdftoppm) y transcribirlos.",
+   "files": [
+    {
+     "file": "Variador-tension-sobremesa.pdf",
+     "stem": "Variador-tension-sobremesa",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Variador-tension-trifasico-regulacion-manual.pdf",
+     "stem": "Variador-tension-trifasico-regulacion-manual",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    },
+    {
+     "file": "Variador-tension-trifasico-regulacion-motorizada-1.pdf",
+     "stem": "Variador-tension-trifasico-regulacion-motorizada-1",
+     "pages": [
+      1,
+      1
+     ],
+     "needs_visual_read": false,
+     "same_text_as": []
+    }
+   ]
+  }
+ ]
+}

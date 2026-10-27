@@ -1,0 +1,76 @@
+VARIADORES DE TENSIÓN
+
+
+
+
+especificaciones técnicas
+
+El variador de tensión consta principalmente de un núcleo toroidal
+fabricado con plancha magnética de muy bajas pérdidas y alta                                              80
+permeabilidad, bobinado en un ángulo de aprox. 340º. La pista de                                          70
+contacto está formada por un bobinado uniforme, rectiﬁcado, pulido y                                      60
+tratado con un baño de plata, para mejorar el contacto con la escobilla
+                                                                                                          50
+de graﬁto. Este tratamiento permite reducir la resistencia de contacto y
+la oxidación del cobre lo que redunda en una vida más larga del variador         ∆ºC                      40
+de tensión.                                                                                               30
+Los siguientes factores contribuyen a que nuestros variadores de                                          20
+tensión trabajen con una efectividad y duración óptima:
+                                                                                                               0        1         2        3      4
+* Un elevado número de espiras por voltio, nos permite regular valores
+de tensión muy precisos.                                                                                                         Horas
+* El encapsulado en resina de epoxi mejora la disipación de calor,                                                                              Fig.2
+evitando que éste se concentre en el punto de contacto de la escobilla
+(como ocurre con los variadores de bobinado al aire) y además protege
+físicamente al variador de las agresiones atmosféricas de ciertos
+                                                                                                         130
+ambientes nocivos.
+                                                                                  I.max. En % de la In   125
+* Los contactos de fricción interiores y exteriores están diseñados
+generosamente para que disipen el máximo calor posible con el mínimo                                     120
+desgaste.                                                                                                115
+* Tanto las motorizaciones como los topes mecánicos han sido                                             110
+sometidos a ensayos de resistencia mecánica que garantizan su eﬁcacia                                    105
+en las diferentes aplicaciones.
+                                                                                                         100
+* Los variadores de tensión toroidales no deforman la onda senoidal.
+                                                                                                          95
+* El incremento de temperatura en las partes externas no metálicas
+oscila entre 45ºC y 60ºC, sobre temperatura ambiente a plena carga                                             0   20       40        60   80   100
+(Fig.2), no obstante existen medios para reducir esta temperatura,
+como el baño en cuba de aceite o refrigeración mediante ventilador,                                                         % Recorrido
+                                                                                                                                                Fig.3
+aunque estos sistemas suelen emplearse para variadores de grandes
+potencias.
+* Los variadores de tensión permiten regular el voltaje sin sobrepasar la
+intensidad nominal salvo al inicio y ﬁnal del recorrido que se puede
+sobrepasar hasta un 22 %, según el gráﬁco de la ﬁg. 3.
+                                                                            características magnéticas
+
+       350                                                                  El núcleo toroidal fabricado con plancha magnética de primera
+       300                                                                  calidad, de muy bajas pérdidas y alto rendimiento, es sometido a
+                                                                            tratamiento térmico para oblener una capacidad de inducción de
+       250
+                                                                            15.000 a 16.000 Gauss.
+       200
+                                                                            En la ﬁg. 4 podemos observar que la curva de saturación de un
+  V    150                                                                  variador de tensión está, aproximadamente, en el 15% de la
+       100                                                                  tensión nominal del aparato, suponiendo una tensión de
+        50                                                                  Alimentación de 230V.
+         0                                                                  En el variador de tensión toroidal el ﬂujo magnético queda
+                                                                            concentrado en el núcleo de manera uniforme y, debido a la
+             0       100        200       300       400                     ausencia de entrehierrs, se eliminan vibraciones. Asimismo, como
+                                mA                                          el bobinado se reparte por toda la superﬁcie del núcleo, desaparece
+                                                Fig. 4                      prácticamente el ruido provocado por la magnetostricción y
+                                                                            favorece la disipación del calor, mejorando el rendimiento.
+                                                                            Los variadores de tensión fabricados por Torivac están diseñados
+                                                                            para trabajar a 50/60 Hz., pero debido a la calidad de la plancha
+                                                                            magnética y al tratamiento térmico al que la sometemos, podría
+                                                                            trabajar a frecuencias próximas a 400 Hz, teniendo en cuenta que
+                                                                            las pérdidas por histéresis aumentan considerablemente
+
+
+
+
+                                                                     2
+

@@ -1,0 +1,85 @@
+TOROIDAL TRANSFORMERS
+
+
+
+
+ PRESENTATION
+
+Torivac has over thirty years of experience in manufacturing all types of
+toroidal transformers.
+The toroidal transformer represents, like no others, the ideal design for
+a transformer. In fact, Faraday designed and wound the ﬁrst
+transformer on a toroidal core. The toroidal cores manufactured by
+Torivac are made of magnetic sheet metal with very low loss levels and
+high induction saturation, which when heat treated allow for reaching
+saturation values of up to 16,000 gauss. In the toroidal transformer the
+magnetic ﬂow is evenly concentrated in the core and, due to the
+absence of intermediate metal parts, vibrations are eliminated.
+Similarly, as all the wound coils are spread over the surface of the core,
+the noise caused by magnetostriction practically disappears, which
+favours the dissipation of heat. These features substantially improve
+the characteristics and yield of the toroidal transformers with respect
+to conventional ones.
+
+
+
+
+                                                                                                              1. Metallic disc
+                                                                                                              2. Sochet-pan of rubber
+                                                                                                              3. Out
+                                                                                                              4. Wound secondary
+                                                                                                              5. Kerb betwen shielded and secondary
+                                                                                                              6. Electrostatic shielded
+                                                                                                              7. Kerb ﬁlm polyester betwueen primary and shielded
+                                                                                                              8. Wound primary
+                                                                                                              9. Cover toroidal with nylon
+                                                                                                              10. Screw, nut and socket-pans
+                                                                                                              11. Magnetic core
+                                                                                                              12. Thermostat
+                                                                                                              13. Final kerb or foreing covering
+
+
+
+
+ CHARACTERISTICS
+
+Eﬃciency
+Is the ratio between the output and the input power ratings that is                                 110
+
+variable depending on the size of the transformer and the working                                   100
+
+conditions, but which is almost always higher than that of conventional                              90
+
+transformers of a similar power rating. The typical eﬃciency of our                                  80
+standard transformers, from 20VA to 3000VA varies between 82% and
+                                                                             % Poténcia de salida
+
+
+
+
+                                                                                                     70
+96% (see diagram).
+                                                                                                     60
+The eﬃcience of a toroidal transformer is mainly conditioned by the                                  50
+                                                                                                                                                                 1 KVA
+
+resistive losses of the copper wire and the losses in the core. The                                                                                              300 VA
+
+resistive loses are always less in the toroidal transformer that in the
+                                                                                                     40                                                          30 VA
+
+conventional ones by the lower quantity of copper used in the windings.                              30
+
+With regards to the core losses, by hysteresis, are reduced to 0,98W /                               20
+
+Kg, at an induction of 1.6T, by means of an appropriate heat treatment                               10
+of recrystallization and the losses induced by Foucault’s currents are                               0
+practically negligible in our cores made from M4 and M5 magnetic                                          0            20        40            60     80   100
+
+sheet.                                                                                                                           % Poténcia nominal
+
+
+
+
+                                                                      14
+

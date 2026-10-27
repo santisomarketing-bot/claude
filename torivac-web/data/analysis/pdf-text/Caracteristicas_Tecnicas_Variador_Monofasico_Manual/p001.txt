@@ -1,0 +1,84 @@
+                                                                                                                                VARIADORES DE TENSIÓN
+
+        DIMENSIONES Y PESO
+
+         VARIADOR TENSION MONOFASICO DE REGULACIÓN MANUAL
+
+
+
+
+                                                                                                                                         F
+
+
+
+
+                                                                                                                                A
+                                                                                                                                A
+
+
+
+
+                                                                                                                                              EE
+
+
+
+
+                                                                                                                                                   G
+          160 VA – 4000 VA                          Entrada/Input 230V Salida/Output 230/250V
+
+
+
+
+                                                                                                                                                   G
+             In 230        In 250
+  VA                                        A           B          C         D          E           F          G         Kg
+               (A)          (A)
+ 160           0.7          0.64            80          63         30         6         25        M-4         88         0.8
+ 220          0.95          0.88            87          67         30         6         25        M-4         99         1.2
+ 350          1.52           1.4           110          75         30         6         26        M-4        125         2.5
+ 350*         1.52           1.4            88          85         30         6         25        M-4         99         1.9
+ 500          2.17            2            110          80         30         6         26        M-4        125         2.8
+ 500*         2.17            2             88         103         30         6         25        M-4         99         2.4
+ 750          3.26            3            120          90         30         6        33.5       M-6        130         3.2
+ 1000         4.34            4            120         105         30         6        33.5       M-6        130          4
+ 1250         5.43            5            130         105         30         6        33.5       M-6        142         4.6
+ 1500         6.52            6            160          95         35         8         40        M-6        172         5.7
+ 2000         8.69            8            160         107         35         8         40        M-6        172         6.8
+ 2500         10.86          10            196         117         40         8         60        M-6        206         10
+ 3000         13.04          12            226         120         40         8         60        M-6        238        13.4
+ 4000         17.39          16            250         127         40         8         74        M-8        275         17
+
+
+
+
+                                                                                                                                                       BB
+*Dimensiones reducidas/ limited dimensions
+In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable autotransformers.
+
+
+
+
+                                                                                                                                             CC
+                                                                                                                                         D
+
+
+
+
+        5000 VA – 11000 VA                          Entrada/Input 230V Salida/Output 230/250V
+               In 230         In 250
+  VA                                            A           B          C          D           E            F            Kg
+                 (A)           (A)
+  5000          21.73           20            320         140         60          10          74         M-8            19
+  6000          26.01           24            425         170        100          12           80        M-10           32
+  7000          30.43           28            445         170        100          12           80        M-10           37
+  8000          34.78           32            490         170        100          12          100        M-10           46
+  9000          39.13           36            520         170        100          12          100        M-10           55
+ 10000          43.47           40            570         170        100          15          150        M-12           71
+ 11000          47.85           44            610         180        100          15          150        M-12           86
+In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable autotransformers.
+
+
+
+
+ www.torivac.com                                                                                                                                            4
+

@@ -1,0 +1,77 @@
+TOROIDAL TRANSFORMERS
+
+
+
+
+ TT Series (Standard, in stock)
+
+
+ This series is made for a 230V primary and two identical
+ secondaries, that can be connected in series or parallel and to
+ double the voltage or the current, in a range of power ratings
+ between 20VA and 220VA. They are supplied with individual boxes
+ and the assembly accessories. The usual voltages are as in the
+ following table:
+
+
+ NOTE: Other voltages can be manufactured by order
+ Series connection: Connecting yellow with white we will obtain
+ twice the voltage between red and black with the nominal current.
+ Parallel connection: By connecting red with white and yellow with
+ black we will obtain the nominal voltage with twice current.
+ Standard length : 20Cm.
+
+
+       Serie T.T. (Estandar, en stock) 230 V Secundarios en serie o paralelo
+       T.T Serie (Standard in stock) 230 V Secondaries in serially or in parallel
+     CODIGO                                        Rdto.                    Ø     Altura mm           Fijación
+                      VA         V          A                  Cdt %                           Kg.
+      CODE                                         EffiC.                 mm.     Height mm.          Mounting
+    TT0020210         20       2x10        2x1       82          18        67         32       0.4     M4x35
+    TT0020212         20       2x12      2x0.83      82          18        67         32       0.4     M4x35
+    TT0020215         20       2x15      2x0.66      82          18        67         32       0.4     M4x35
+    TT0030210         30       2x10       2x1.5      83          17        69         36       0.5     M5x40
+    TT0030212         30       2x12      2x1.25      83          17        69         36       0.5     M5x40
+    TT0030215         30       2x15        2x1       83          17        69         36       0.5     M5x40
+    TT0030218         30       2x18      2x0.83      83          17        69         36       0.5     M5x40
+    TT0050210         50       2x10       2x2.5      85          15        79         34       0.7     M5x40
+    TT0050212         50       2x12      2x2.08      85          15        79         34       0.7     M5x40
+    TT0050215         50       2x15      2x1.66      85          15        79         34       0.7     M5x40
+    TT0050218         50       2x18      2x1.38      85          15        79         34       0.7     M5x40
+    TT0080210         80       2x10        2x4       86          13        89         35       0.9     M6x45
+    TT0080212         80       2x12      2x3.33      86          13        89         35       0.9     M6x45
+    TT0080215         80       2x15      2x2.66      86          13        89         35       0.9     M6x45
+    TT0080218         80       2x18      2x2.22      86          13        89         35       0.9     M6x45
+    TT0100212         100      2x12      2x4.16      87          12        100        38       1.3     M6x45
+    TT0100215         100      2x15      2x3.33      87          12        100        38       1.3     M6x45
+    TT0100222         100      2x22      2x2.27      87          12        100        38       1.3     M6x45
+    TT0120212         120      2x12        2x5       87          11        110        38       1.4     M6x45
+    TT0120215         120      2x15        2x4       87          11        110        38       1.4     M6x45
+    TT0120222         120      2x22      2x2.72      87          11        110        38       1.4     M6x45
+    TT0160212         160      2x12      2x6.66      88          10        113        43       1.7     M6x50
+    TT0160215         160      2x15      2x5.33      88          10        113        43       1.7     M6x50
+    TT0160222         160      2x22      2x3.63      88          10        113        43       1.7     M6x50
+    TT0220215         220      2x15      2x7.33      89           9        120        52        2      M6x55
+    TT0220222         220      2x22        2x5       89           9        120        52        2      M6x55
+    TT0220230         220      2x30      2x3.66      89           9        120        52        2      M6x55
+    TT0220235         220      2x35      2x3.14      89           9        120        52        2      M6x55
+
+
+
+
+                                Ø Discos metálicos/ metallic disc                              Blue              Red
+                                   20 VA             50 mm
+                                   30 VA             50 mm
+                                   50 VA             65 mm
+                                                                                                                 Yellow
+                                   80 VA             65 mm                                                       White
+                                  100 VA             65 mm
+                                   120 VA            80 mm
+                                  160 VA             80 mm
+                                  220 VA             80 mm                                     Blue              Black
+
+
+
+
+                                                                             17
+

@@ -1,0 +1,76 @@
+RINGKERNTRANSFORMATOREN
+
+
+
+
+ Technische Daten
+
+ Variation der Leerlauf-/Lastspannung
+ Der Spannungsabfall     eines Transformators               wird durch das Verhältnis zwischen der Sekundärspannung         bei Nulllast und der
+ Sekundärspannung      bei Nennlast . Dieses Verhältnis ist wichtig für die Auslegung des Transformators , um die Nennlastspannung
+ ungefähr zu kennen.
+ Er ist je nach Größe des Transformators variabel. Höhere Nennleistungen entsprechen in der Regel einem geringeren Widerstand der in
+ den Wicklungen verwendeten Kupferdrähte , wodurch bessere Eigenschaften erzielt werden können . Die folgende Abbildung zeigt die
+ Erhöhung der Leerlaufspannung (%), in Bezug auf die Nennlastspannung in Abhängigkeit von der Transformatorleistung.
+
+                                        30
+
+                                        25
+                         %V(Leerlauf)
+
+
+
+
+                                        20
+
+                                        15
+
+                                        10
+
+                                        5
+
+                                        0
+                                             0        500        1000        1500        2000        2500         3000
+
+                                                                    Leistung(VA)
+
+
+ - STRAHLUNG
+ Das Fehlen von Luftspalten                  im Kern , die Wärmebehandlung     des Kerns , die sorgfältige   Konstruktion   und die sorgfältigen
+ Wicklungstechniken     ermöglichen              eine sehr geringe , fast vernachlässigbare   magnetische    Streuung im Vergleich zu der von
+ herkömmlichen Transformatoren. Wenn die magnetische Streuung vollständig beseitigt werden muss, kann eine Abschirmung und/oder
+ elektromagnetische Abschirmung eingebaut werden.
+ Die Verwendung von Ringkerntransformatoren in Leistungs- und Versorgungsstufen ist ideal, da sie ein gutes Signal-Rausch-Verhältnis
+ ermöglichen.
+
+
+ - ELEKTROSTATISCHE ABSCHIRMUNGEN
+ Elektrostatische Schirme bestehen aus einer mit Polyester isolierten Kupferfolienwicklung , die die Primärwicklung vollständig umgibt.
+ Ihre Aufgabe ist es, das Netz von elektrostatischen Störungen zu befreien , wenn die Spannung transformiert wird, und im Falle eines
+ Versagens der Hauptisolierung gegen Erde zu leiten.
+
+
+ - TRANSIENTE EINSCHALTSTRÖME
+ Ringkerntransformatoren                neigen aufgrund des Fehlens von Luftspalten im Kern zu höheren transienten Einschaltströmen          als
+ herkömmliche Transformatoren . Aus diesem Grund empfehlen wir einen angemessenen Schutz ihrer Stromversorgung mit trägen
+ Sicherungen oder kontrollierten Einschaltsystemen.
+
+
+ - TEMPERATURANSTIEG
+ Die Betriebstemperatur unserer Ringkerntransformatoren variiert je nach dem Prozentsatz der verwendeten Last, wie in der Abbildung
+ unten dargestellt . Im Dauerbetrieb können sie zwischen 55 ºC und 60 ºC über die Umgebungstemperatur ansteigen , obwohl die
+ Außentemperatur des Transformators 45ºC nicht überschreitet.
+
+
+ - FORMFAKTOR
+ Diese Art von Transformatoren erlaubt wie keine andere, niedrige Profile zu erreichen und sich an die für jede Anwendung
+ erforderlichen Abmessungen anzupassen, indem die Durchmesser und Höhen der Kerne an die endgültigen Bedürfnisse angepasst
+ werden.
+
+
+ - VORTEILE
+
+ • Hohe Leistung • Niedriger Geräuschpegel • Geringes Streufeld. • Geringes Gewicht und geringe Größe • Einfache
+                                                          15
+ Installation
+

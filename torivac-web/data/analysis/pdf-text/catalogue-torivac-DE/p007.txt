@@ -1,0 +1,74 @@
+SPANNUNGSREGLERN
+
+
+
+ Motorisierter doppelter Spannungsregler
+
+ 160 VA x 2 – 4000 VA x 2                  Eingabe/Input 230V Ausgang/Output 230/250V
+                      In 230        In 250
+     VA                                             A          B          E          F          G          Kg
+                        (A)           (A)
+    160x2              0.7x2        0.64x2          90        290          75      M-5           92         3.4
+    220x2             0.9 x2        0.88x2          90        290          75      M-5          100         4.2
+    350x2            1.52x2          1.4x2         120        275         100      M-6          130         8.6
+   350*x2            1.52x2          1.4x2          90        290          75      M-5           92         4.5
+    500x2             2.17x2          2x2          120        280         100      M-6          130         9.1
+   500*x2             2.17x2          2x2           90        290          75      M-5          92           5
+    750x2             3.26x2          3x2          120        300         100      M-6          130         9.2
+   1000x2             4.34x2          4x2          120        320         100      M-6          130        10.1
+   1250x2             5.43x2          5x2          135        285         112      M-6          140        11.7
+   1500x2             6.52x2          6x2          165        315         135      M-6          175        14.4
+   2000x2            8.69x2           8x2          165        335         135      M-6          175        17.1
+   2500x2            10.86x2         10x2          200        375         170      M-8          230        25.3
+   3000x2            13.04x2         12x2          235        395        195       M-8          242        33.5
+   4000x2            17.39x2         16x2          285        445         255      M-8          295        43.7
+ *Reduzierte Abmessungen limited dimensions
+ In bezieht sich auf den Nennstrom des Umrichters /In it refers to the nominal current of the
+ variable autotransformers.
+
+
+
+
+        5000 VA x 2 – 11000 VA x 2                        Eingabe/Input 230V Ausgang/Output 230/250V
+                      In 230       In 250
+     VA                                            A           B          E            F              G           H       Kg
+                       (A)           (A)
+   5000x2            21.73x2        20x2          380         445        255         M-8            320       255         57
+   6000x2            26.01x2        24x2          520         575        380         M-10           430       470         87
+   7000x2            30.43x2        28x2          540         575        380         M-10           445       490         109
+   8000x2            34.78x2        32x2          585         575        380         M-10           490       535         122
+   9000x2            39.13x2        36x2          615         585        420         M-10           520       565         147
+  10000x2            43.47x2        40x2          665         585        420         M-12           570       615         189
+  11000x2            47.85x2        44x2          685         585        420         M-12           610       635         219
+ In bezieht sich auf den Nennstrom des Umrichters/In it refers to the nominal current of the variable autotransformers.
+
+
+
+
+ Dreiphasiger manuell einstellbarer Spannungsregler
+
+               480 VA – 12000 VA                             Eingabe/Input 400V Ausgang/Output 430/250V
+                       In 400           In 430
+      VA                                                 A           B           C         D          E           F        G         Kg
+                         (A)              (A)
+     480                0.7x3           0.64x3           90         255         50         6          75          M-5       92      4.4
+     660                0.9x3           0.88x3           90         255         50         6          75          M-5      100      5.6
+     1000             1.52x3             1.4x3          120         305         70         6         100          M-6      130      9.4
+    1000*             1.52x3             1.4x3           90         255         50         6          75          M-5       92        8
+     1500             2.17x3              2x3           120         315         70         6         100          M-6      130       11
+    1500*             2.17x3              2x3           90          255         50         6          75          M-5       92      10.4
+     2250             3.26x3              3x3           120         345         70         6         100          M-6      130      11.5
+     3000             4.34x3              4x3           120         375         70         6         100          M-6      130      13.5
+     3750             5.43x3              5x3           135         375         70         6         112          M-6      140       16
+     4500             6.52x3              6x3           165         360         70         8         135          M-6      175      20.5
+     6000             8.69x 3             8x3           165         390         70         8         135          M-6      175      23.5
+     7500             10.86x3            10x3           200         445         70         8         170          M-8      230       35
+     9000             13.04x3            12x3           235         475         70         8        195           M-8      242       45
+    12000             17.39x3            16x3           285         520         90         8         255          M-8      295       61
+ In bezieht   sich    auf   den   Nennstrom      des    Umrichters/In it refers to the nominal current of the variable autotransformers.
+
+
+
+
+                                                                                                                                6
+

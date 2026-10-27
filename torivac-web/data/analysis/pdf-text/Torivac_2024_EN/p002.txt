@@ -1,0 +1,61 @@
+VARIABLE AUTOTRANSFORMERS
+
+
+
+
+CHARACTERISTICS
+
+The toroidal variable auto-transformer is an essential component if we
+wish to control a variable A.C.voltage, from zero to the maximum, with
+a constant degree of current.
+The Torivac variable auto-transformers are characterised by their
+mechanical ruggedness, high resolution allowing very precise voltage
+adjustments and the high quality of the materials used in their
+manufacturing. These characteristics, together with the quality control
+of 100% of all our variators, allow us to oﬀer a degree of reliability
+recognised by the most demanding customers.
+
+
+
+PRODUCTION SERIES
+
+We have diﬀerent models for each application:
+Single, dual and triple-phase variable autotransformers (I, II, III). All
+models can be mounted in metal box and supply for manual regulation
+or motorized.
+
+
+
+
+                                                                            COMPONENTS OF THE VARIAC
+                                                                            The ﬁgure 1 shows clearly the parts of a variable auto-
+                                                                            transformer, in which we diﬀerentiate the core, the electric
+                                                                            wound coil, the insulation and the rest of the components that
+                                                                            shape it.
+
+
+
+                                                                            1- Epoxy resin
+                                                                            2- Electric coil (Wound Cu)
+                                                                            3- Bakelite capsules
+                                                                            4- Magnetic core
+                                                                            5- Shaft
+                                                                            6- Brass bearing
+                                                                            7- Connection terminal
+                                                                            8- Contact strip
+                                                                            9- Fastening screw and contact strip connection
+                                                                            10- Brass contact collector ring
+                                                                            11- Brush press terminal
+                                                                            12- Brush fastening screws
+                                                                            13- Brush fastening bracket
+                                                                            14- Carbon brush holder strip
+                                                                            15- Carbon brush holder rivet
+                                                                            16- Carbon brush holder
+                                                                            17- Graphite roller
+                                                                            18- Carbon brush glover fastener
+                                                                            19- Contact guide
+                                                                            20- Mechanical stop
+                                                                            21- Fastening terminals
+
+                                                                      1
+

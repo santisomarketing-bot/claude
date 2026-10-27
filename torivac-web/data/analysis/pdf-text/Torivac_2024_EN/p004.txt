@@ -1,0 +1,52 @@
+VARIABLE AUTOTRANSFORMERS
+
+
+
+
+FIELDS OF APPLICATION
+
+The variable autotransformers are used to adjust the voltage from 0
+volts up to the maximum voltage for which they have been designed
+and among the most usual applications, there are the following:
+* Laboratory control equipment.
+* Lighting equipment.
+* Dielectric rigidity equipment.
+* Temperature controls.
+* Galvanic control process.
+* Power-assisted equipment for remote control.
+* Motor speed control.
+* Control of voltage stabilisers.
+* Control of other ﬁxed transformers.
+
+
+
+
+                                                                      TYPES OF CONTROL
+
+                                                                      Manual control
+                                                                      By means of a control button on the shaft of the variator which
+                                                                      allows to act on the brush and achieve the desired voltage. We
+                                                                      have a wide range of available buttons and dials calibrated in % or
+                                                                      in volts, applicable to the diﬀerent power ratings.
+
+
+                                                                      Power-assisted control
+                                                                      Is mainly used to remotely control equipment or for stabiliser
+                                                                      equipments.
+                                                                      The high-powered voltage variators are also usually power-
+                                                                      assisted, due to the greater comfort they oﬀer in use. In this type of
+                                                                      control the variator shaft is activated by a motor by using a manual
+                                                                      switch, which allows increasing or reducing the output voltage.
+                                                                      The power assisted control that Torivac installs in the variable
+                                                                      Autotransformers stop without inertia; therefore they are ideal for
+                                                                      remote control.
+                                                                      By order, we can make them stabilized and controlled by means of
+                                                                      an electronic card, with a precision of about 2%. This electronic
+                                                                      card allows to regulate the variable autotransformer by means of a
+                                                                      potentiometer or by a continuous signal of 0-10Vcc.
+
+
+
+
+                                                               3
+

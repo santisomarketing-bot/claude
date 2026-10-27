@@ -1,0 +1,74 @@
+VARIABLE AUTOTRANSFORMERS
+
+
+
+
+TECHNICAL SPECIFICATIONS
+
+The variable autotransformer is mainly comprised of a toroidal core
+manufactured using magnetic sheeting with very low loss and high                                         80
+permeability, wound at an angle of approx. 340º. The contact track is                                    70
+comprised of an evenly wound coil, that is trued up, polished and                                        60
+treated with a silver bath to improve the contact with the graphite
+                                                                                                         50
+brush. This treatment allows the reduction of the contact resistance
+and the rusting of the copper which leads to a longer useful life of the        ∆ºC                      40
+variable autotransformer.                                                                                30
+The following factors work towards our variable autotransformer                                          20
+operating with an optimal degree of eﬀectiveness and durability:
+                                                                                                              0        1         2        3      4
+* A high number of turns per volt, which allow us to set extremely
+precise voltage values.                                                                                                         Horas
+* The epoxy resin encapsulation packing allows for an improved                                                                                 Fig.2
+dissipation of heat, avoiding the concentration of this at the contact
+point of the brush (as occurs with the air-wound variable autotransf.)
+and in addition it protects the variable autotransformer from the harsh
+                                                                                                        130
+environmental factors of certain harmful surroundings.
+                                                                                 I.max. En % de la In   125
+* The inside and outside friction contacts are generously designed to
+dissipate the maximum possible amount of heat with the minimum of                                       120
+wear.                                                                                                   115
+* Both the motorisations and the mechanical stops have been subjected                                   110
+to mechanical resistance tests, which guarantee their eﬀectiveness in                                   105
+the diﬀerent applications they are used for.
+                                                                                                        100
+* The toroidal voltage variable autotransformer do not distort the
+sine-wave signal.                                                                                        95
+* The increase in the external non-metallic parts varies between 45ºC                                         0   20       40        60   80   100
+and 60oC, above the environmental temperature at full load (Fig. 2),
+nevertheless, there are many means to reduce this temperature, such                                                        % Recorrido
+                                                                                                                                               Fig.3
+as an oil bath, fan cooling, although these systems are usually used in
+high-power variators.
+* The variable autotransformers allows the adjustment of the voltage
+without surpassing the nominal current , except at the beginning and
+the end of the range which may be surpassed by up to 22%, as shown in
+the graph in ﬁgure 3.                                                      MAGNETIC CHARACTERISTICS
+
+                                                                           The toroidal core is manufactured using top quality, of very low
+                                                                           loss and high yield magnetic sheeting, and is subjected to a heat
+                                                                           treatment in order to achieve an induction capacity of between
+       350                                                                 15.000 - 16,000 Gauss.
+       300
+                                                                           In ﬁgure 4 we can observe that the saturation curve of a variable
+       250                                                                 autotransformer, is at approximately 15% of the nominal voltage
+       200                                                                 rating of the transformer , assuming an imput voltage of 230V.
+  V    150                                                                 In the toroidal variable autotransformer the magnetic ﬂow is
+       100                                                                 concentrated within the core in an uniform manner, and as there
+                                                                           are no intermediate metal parts, vibrations are eliminated. In
+        50
+                                                                           addition, as the wire wind is spread over the entire surface of the
+         0                                                                 core, the noise caused by magnetostriction practically disappears
+             0       100       200       300       400                     and the dissipation of heat is favoured, improving the yield.
+                                                                           The variable autotransformers manufactured by Torivac are
+                               mA              Fig. 4                      designed to operate at 50/60 Hz., even though the quality of the
+                                                                           magnetic sheeting and the heat treatment we subject it to allow it
+                                                                           to operate at frequencies close to 400Hz, taking into account that
+                                                                           the hysteresis losses increase considerably.
+
+
+
+
+                                                                    2
+

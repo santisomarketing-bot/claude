@@ -1,0 +1,53 @@
+TOROIDAL BUFFERS
+
+
+
+
+IRON POWDER TOROIDAL BUFFERS
+
+The iron powder toroidal buﬀers are the ideal inductive components for
+the design and manufacture of DC/DC converters or switched AC/DC
+sources as well as for line ﬁlter applications , electromagnetic
+interference ﬁlters and low-frequency buﬀers range.
+Their main characteristics are:
+* Low dispersion of the magnetic ﬁeld, limiting the radiated ﬁelds to the
+minimum.
+* High eﬃciency, allowing the ﬁltration or storage of energy in a
+minimum space.
+* Low loss level over the entire range of operating frequencies.
+* High stability with diﬀerent temperatures with a margin of –50ºC to
++90ºC.
+* High frequency range from 10Khz to 150Khz.
+The family is comprised of 27 diﬀerent inductance values that
+correspond to the standardised values of passive electronic
+components, and of 11diﬀerent cores, thus obtaining 297 diﬀerent
+references which allow for all design requirements to be covered in
+most cases.
+We can manufacture other special inductive values even othertypes of
+core with diﬀerent sizes, in speciﬁcations of each customer.
+
+
+
+
+                                                                                         Dimensiones (mm.)
+                                                                                         Dimensions (mm.)
+                                                                            Referencia
+                                                                                                 D           A    L
+                                                                            Reference
+                                                                              1305               15           7   30
+                                                                              1307               16          10   30
+                                                                              1706               20           8   30
+                                                                              2006               23           9   30
+                                                                              2010               23          14   30
+                                                                              2408               27          11   30
+                                                                              2711               32          14   30
+                                                                              3311               37          15   30
+                                                                              3915               44          20   30
+                                                                              4715               52          21   30
+                                                                              5122               57          28   30
+
+
+
+
+                                                                     20
+

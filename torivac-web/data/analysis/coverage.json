@@ -1,0 +1,91 @@
+{
+ "missing_translation_of_es_products": {
+  "en": [
+   {
+    "id": 16633,
+    "name": "Variador de tensión portatil"
+   },
+   {
+    "id": 977,
+    "name": "SAI para control industrial"
+   },
+   {
+    "id": 976,
+    "name": "Ondulador para FV Interconectada de 350W autoconsumo"
+   },
+   {
+    "id": 974,
+    "name": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red"
+   },
+   {
+    "id": 972,
+    "name": "Fuente de corriente alterna sinusoidal"
+   }
+  ],
+  "fr": [
+   {
+    "id": 16633,
+    "name": "Variador de tensión portatil"
+   },
+   {
+    "id": 977,
+    "name": "SAI para control industrial"
+   },
+   {
+    "id": 976,
+    "name": "Ondulador para FV Interconectada de 350W autoconsumo"
+   },
+   {
+    "id": 974,
+    "name": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red"
+   },
+   {
+    "id": 972,
+    "name": "Fuente de corriente alterna sinusoidal"
+   }
+  ],
+  "de": [
+   {
+    "id": 16633,
+    "name": "Variador de tensión portatil"
+   },
+   {
+    "id": 977,
+    "name": "SAI para control industrial"
+   },
+   {
+    "id": 976,
+    "name": "Ondulador para FV Interconectada de 350W autoconsumo"
+   },
+   {
+    "id": 974,
+    "name": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red"
+   },
+   {
+    "id": 972,
+    "name": "Fuente de corriente alterna sinusoidal"
+   },
+   {
+    "id": 326,
+    "name": "Variador Trifásico manual"
+   }
+  ]
+ },
+ "translated_products_without_es_match": {
+  "en": [],
+  "fr": [
+   {
+    "id": 4323,
+    "name": "Equipos de sobremesa",
+    "url": "https://grupotorivac.com/fr/product/equipos-de-sobremesa-2/"
+   }
+  ],
+  "de": []
+ },
+ "counts": {
+  "es": 80,
+  "en": 75,
+  "fr": 76,
+  "de": 74
+ }
+}

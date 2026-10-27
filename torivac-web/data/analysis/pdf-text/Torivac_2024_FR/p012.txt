@@ -1,0 +1,60 @@
+AUTOTRANSFORMATEURS VARIABLES
+
+
+
+
+sécurité, câblage et maintenance
+
+                            Les variateurs de tension sont conformes aux normes CE, à condition
+                            qu'ils soient installés à l'intérieur d'un coﬀret ou d'un boîtier qui les
+                            isole de l'extérieur, en protégeant l'utilisateur d'un éventuel contact
+                            avec les parties actives, électriques et mécaniques du variateur.
+                            Si les variateurs de tension ne sont pas installés à l'intérieur d'un coﬀret
+                            ou d'un boîtier de protection, il faut éviter tout contact entre
+                            l'utilisateur et les parties actives, telles que la piste de contact, les
+                            bornes de connexion ou le curseur.
+
+
+
+
+Connexion
+
+Modes de connexion des variateurs monophasés
+
+
+
+               Variateurs monophasés sans élévation:                         Variateurs monophasés avec élévation:
+
+
+                           1                               4                        1                          3     4
+                                       ENTRÉE                                               ENTRÉE
+
+
+
+
+                               SORTIE                                                     SORTIE
+                           1                2                                       1                2
+
+
+
+                                    Entrée: 1-4                                                 Entrée: 1-3
+                                    Sortie: 1-2                                                  Sortie: 1-2
+
+
+
+Modes de connexion des variateurs triphasés
+Les variateurs de tension triphasés intègrent d’origine un pont entre les
+bornes 1-1-1 de chaque bobine, correspondant au neutre d'une
+connexion en étoile, aﬁn d'éviter d'éventuels déséquilibres dans
+l’appareil.
+               Onduleur triphasé sans élévation                                 Onduleur triphasé avec élévation
+
+
+
+
+                          Entrée en étoile: 1 - 4, 4, 4.                                Entrée en étoile: 1 – 3, 3, 3.
+                          Sortie: 1 - 2, 2, 2.                                          Sortie: 1 - 2, 2, 2.
+
+
+                                                                       11
+

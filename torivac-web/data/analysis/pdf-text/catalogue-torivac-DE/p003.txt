@@ -1,0 +1,74 @@
+SPANNUNGSREGLERN
+
+
+
+TECHNISCHE DATEN
+
+Der Spannungsregler       besteht hauptsächlich aus einem
+Ringkern aus hochpermeablem          Magnetblech mit sehr
+geringem Verlust, der in einem Winkel von ca. 340º gewickelt
+ist. Die Kontaktbahn besteht aus einer einheitlichen Wicklung,                                    80
+die geschliffen , poliert und mit einem Silberbad behandelt                                       70
+wurde, um den Kontakt mit der Graphitkugel zu verbessern .                                        60
+Diese Behandlung verringert den Kontaktwiderstand und die
+Oxidation des Kupfers , was zu einer längeren Lebensdauer                                         50
+des Spannungsreglers führt.                                        ∆ºC                            40
+Die folgenden Faktoren tragen zur optimalen Effizienz und                                         30
+Haltbarkeit unserer Spannungsregler bei:                                                          20
+* Eine hohe Anzahl von Windungen pro Volt ermöglicht es                                                 0        1        2        3            4
+uns, sehr präzise Spannungswerte zu regeln.
+                                                                                                                 Stunden
+* Die Epoxidharzkapselung verbessert die Wärmeableitung                                                                                 Abb.2
+und verhindert , dass sich die Wärme am Kontaktpunkt der
+Bürsten konzentriert (wie es bei luftgewickelten Antrieben der
+Fall ist ), und schützt den Antrieb auch physisch vor den
+                                                                                                  130
+atmosphärischen        Einflüssen    bestimmter    schädlicher
+Umgebungen.                                                          max. S in % des Nennstroms   125
+* Die inneren und äußeren Reibungskontakte sind großzügig
+                                                                                                  120
+ausgelegt , um so viel Wärme wie möglich bei minimalem                                            115
+Verschleiß abzuleiten.                                                                            110
+* Sowohl die Motoren als auch die mechanischen Anschläge                                          105
+wurden mechanischen Widerstandstests unterzogen , die ihre                                        100
+Effizienz in den verschiedenen Anwendungen garantieren.                                            95
+* Die Ringkernspannungsregler    deformieren die Sinuswelle
+nicht.                                                                                                  0   20       40       60   80      100
+* Der Temperaturanstieg in den externen nichtmetallischen                         %Weg
+Teilen    liegt zwischen     45 º C und 60 º C über der                                                                                 Abb.3
+Umgebungstemperatur bei Volllast (Abb .2). Es gibt jedoch
+Mittel zur Verringerung dieser Temperatur , wie z. B. Ölbäder
+oder Lüfterkühlung , obwohl diese Systeme in der Regel für
+Antriebe mit hoher Leistung verwendet werden.
+                                                              MAGNETISCHE EINGESCHAFTEN
+* Mit Spannungsreglern kann die Spannung geregelt werden,
+                                                                 Der Ringkern aus hochwertigem Magnetblech mit
+ohne dass der Nennstrom überschritten wird , außer zu
+                                                                 sehr geringen Verlusten und hoher Leistung wird
+Beginn und am Ende des Hubes , wo er um bis zu 22 %
+überschritten werden kann (siehe Abb. 3).                        einer Wärmebehandlung unterzogen, um eine
+                                                                 Induktionskapazität von 15.000 bis 16.000 Gauß zu
+                                                                 erreichen.
+      350                                                        Abb. 4 zeigt, dass die Sättigungskurve eines
+      300                                                        Spannungsreglers etwa 15 % der Nennspannung des
+      250                                                        Geräts beträgt, wenn man von einer
+      200                                                        Versorgungsspannung von 230 V ausgeht.
+  V   150                                                        Im Ringkern- Spannungsregler ist der magnetische
+      100                                                        Fluss gleichmäßig im Kern konzentriert und durch
+                                                                 das Fehlen von Luftspalten werden Vibrationen
+       50
+                                                                 eliminiert. Da die Wicklung über die gesamte
+        0
+                                                                 Oberfläche des Kerns verteilt ist, verschwindet auch
+            0     100      200     300      400                  das durch die Magnetostriktion verursachte
+                           mA                                    Rauschen praktisch, was die Wärmeableitung
+                                         Abb.4
+                                                                 begünstigt und die Leistung verbessert.
+                                                                 Die von Torivac hergestellten Spannungsregler sind
+                                                                 für den Betrieb bei 50/60 Hz ausgelegt, können
+                                                                 aber aufgrund der Qualität der Magnetplatte und
+                                                                 der Wärmebehandlung, der wir sie unterziehen, bei
+                                                                 Frequenzen nahe 400 Hz arbeiten, wobei zu
+                                                          2      berücksichtigen ist, dass die Hystereseverluste
+                                                                 erheblich zunehmen.
+

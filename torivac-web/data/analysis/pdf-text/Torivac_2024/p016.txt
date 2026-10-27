@@ -1,0 +1,77 @@
+TRANSFORMADORES TOROIDALES
+
+
+
+
+ especificaciones técnicas
+
+ Variación de tensión vacío/carga
+ La caída de tensión de un transformador viene determinada por la relación entre la tensión del secundario, en vacío y la tensión del mismo en
+ carga nominal. Este ratio es importante a la hora de diseñar el transformador para conocer de forma aproximada la tensión en carga nominal.
+ Es variable en función del tamaño del transformador. A mayores potencias suelen corresponder menores resistencias de los hilos de cobre
+ utilizados en los bobinados y se pueden conseguir mejores características. La ﬁgura adjunta reﬂeja el incremento de tensión en vacío (%),
+ respecto a la tensión a carga nominal, en función de la potencia del transformador.
+
+
+                                          30
+
+                                          25
+
+                                          20
+                         % V (en vacío)
+
+
+
+
+                                          15
+
+                                          10
+
+                                          5
+
+                                          0
+                                               0   500   1000         1500         2000         2500         3000
+
+                                                                  Poténcia (VA)
+
+
+
+ Radiación
+ La ausencia de entrehierros en el núcleo, el tratamiento térmico del mismo, el cuidadoso diseño y las meticulosas técnicas de bobinado
+ permiten conseguir una dispersión magnética muy baja, casi despreciable, comparada con la que generan los transformadores
+ convencionales. Cuando se necesita eliminar totalmente la dispersión magnética se pueden incorporar apantallados y / o blindajes
+ electromagnéticos.
+ La utilización de transformadores toroidales en etapas de alimentación y potencia es ideal porque permiten obtener una buena relación
+ señal/ruido.
+
+
+ Pantallas electroestáticas
+ Las pantallas electroestáticas están constituidas por un bobinado de lámina de cobre, aislado por poliéster, que envuelve completamente el
+ bobinado primario y tiene la función de ﬁltrar la red de parásitos electroestáticos, cuando se transforma la tensión y de derivar a masa, en
+ caso de fallo del aislamiento principal.
+
+
+ Corrientes transitorias de arranque
+ Los transformadores toroidales acostumbran a tener mayores corrientes transitorias de arranque que los convencionales, debido a la
+ ausencia de entrehierros en el núcleo, por este motivo recomendamos proteger adecuadamente su alimentación con fusibles de fusión lenta
+ ó sistemas de arranque controlados.
+
+
+ Incremento de temperatura
+ La temperatura de trabajo de nuestros transformadores toroidales varía, en función del porcentaje de carga utilizado, según se aprecia en la
+ ﬁgura adjunta. En régimen de trabajo permanente pueden aumentar entre 55ºC y 60ºC, sobre la temperatura ambiente, aunque la
+ temperatura externa del transformador no supera incrementos de 45ºC.
+
+
+ Factor de forma
+ Este tipo de transformadores permiten, como ningún otro, conseguir perﬁles bajos y ajustarse a las dimensiones exigidas para cada
+ aplicación, ajustando los diámetros y las alturas de los núcleos a las necesidades ﬁnales.
+
+
+ Ventajas
+ * Alto rendimiento * Bajo nivel de ruido * Bajo campo disperso * Menor calentamiento * Peso y tamaño reducidos * Facilidad de montaje
+
+
+
+                                                                     15
+

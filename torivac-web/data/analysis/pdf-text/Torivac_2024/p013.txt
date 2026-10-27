@@ -1,0 +1,60 @@
+VARIADORES DE TENSIÓN
+
+
+
+
+regulación motorizada
+
+Los variadores con regulación motorizada disponen de tres bornes de
+conexión correspondientes al suplemento motorizado.
+Para aumentar la tensión de salida en el variador, se debe aplicar
+tensión 230 VAC entre los bornes cableados Violeta – gris.
+Para disminuir la tensión de salida en el variador, se debe aplicar tensión
+230 VAC ente los bornes cableados Naranja – gris.
+
+                                                                              BORNES DE
+                                                                              CONEXIÓN
+                                                                                                   NARANJA
+
+              230 VAC
+                                                                                                      GRIS
+
+                                                                                                    VIOLETA
+
+
+No se debe aplicar en ningún caso tensión entre los bornes cableados naranja – violeta.
+
+
+
+MANTENIMIENTO
+
+Recomendamos para prolongar la vida útil del variador:
+• Colocar, a ser posible, el variador de forma que evite la acumulación de polvo en la pista de contacto.
+• Revisar periódicamente el desgaste de los carbones de contacto, substituyéndolos cuando sea necesario.
+• Comprobar periódicamente el estado de la pista de contacto para que, en caso que sea necesario, se realice una revisión completa del
+variador de tensión en nuestras instalaciones.
+
+
+protección
+
+• Aconsejamos proteger la salida del variador intercalando un fusible de valor 10% superior a la intensidad nominal entre el borne 2 y la carga.
+• En caso de querer proteger la entrada, se debe colocar un fusible o magnetotérmico de acción retardada entre la red y el borne 1, dado el
+elevado pico de tensión que se produce en el arranque de los toroidales.
+
+
+garantía
+
+Este producto esta garantizado por un periodo de 12 meses a partir de su fecha de adquisición.
+No estarán sujetos a garantía los desperfectos ocasionados por una manipulación indebida, así como lo daños ocasionados por la aplicación
+de tensiones o corrientes superiores a las especiﬁcadas en la etiqueta del producto.
+
+
+servicio
+
+Para cualquier consulta pueden ponerse en contacto con nuestro departamento técnico al nº de telf.: 93 312 01 61.
+
+
+
+
+                                                                       12
+

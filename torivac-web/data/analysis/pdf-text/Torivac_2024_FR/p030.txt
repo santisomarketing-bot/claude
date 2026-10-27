@@ -1,0 +1,35 @@
+POTENTIOMÈTRES ET RHÉOSTATS
+
+
+
+
+ POTENTIOMÈTRE 5W
+
+ Le soigneux bobinage de l'élément de résistance et la conception
+ originale d'un système de curseur très sensible assurent une
+ manipulation très douce, précise et de longue durée. La brosse est
+ un rouleau de laiton basculant qui tourne sur la surface plate de la
+ résistance avec la pression adéquate pour garantir un bon contact
+ et un très grand nombre de manœuvres. La résistance résiduelle au
+ début et à la ﬁn de parcours est pratiquement nulle.
+
+
+ Caractéristiques
+ * Terminaux: 3.2 x 0,5 mm
+ * Puissance à 25oC: 5W
+ * Distribution de la résistance: lin.
+ * Gamme de résistance: 5 Ω - 50 KΩ
+ * Tolérance: 6%
+ * Tension de rupture: > 1000v.
+ * Angle mécanique de rotation: 264oC
+ * Angle électrique de rotation: 250oC
+ * Rupture mécanique: 8 kg/cm.
+ * Longueur standard de l’axe: 40 mm.
+ * Poids Net: 40 gr.
+ *Augmentation température à pleine charge: 75oC.
+
+
+
+
+                                                                        29
+

@@ -1,0 +1,208 @@
+{
+ "file": "data/raw/html/es/contacto.html",
+ "lang": "es",
+ "url": "https://grupotorivac.com/contacto/",
+ "title": "Grupo Torivac - Contacto",
+ "meta_description": "%",
+ "og_title": "Grupo Torivac - Contacto",
+ "og_image": "https://grupotorivac.com/wp-content/plugins/wpforms-lite/assets/images/submit-spin.svg",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/contact/",
+  "fr": "https://grupotorivac.com/fr/contactez-nous/",
+  "es": "https://grupotorivac.com/contacto/",
+  "de": "https://grupotorivac.com/de/kontakt-us/",
+  "x-default": "https://grupotorivac.com/contacto/"
+ },
+ "body_classes": [
+  "wp-singular",
+  "page-template",
+  "page-template-elementor_header_footer",
+  "page",
+  "page-id-14214",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "is-elementor",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-template-full-width",
+  "elementor-kit-6",
+  "elementor-page",
+  "elementor-page-14214"
+ ],
+ "outline": [
+  {
+   "level": 2,
+   "text": "CONSÚLTANOS"
+  },
+  {
+   "level": 4,
+   "text": "ENVÍANOS UN MENSAJE"
+  },
+  {
+   "level": 4,
+   "text": "CONTACTA CON NOSOTROS"
+  },
+  {
+   "level": 2,
+   "text": "¿Tienes alguna duda? Escríbenos y te la resolveremos"
+  }
+ ],
+ "text": "CONSÚLTANOS\n\nENVÍANOS UN MENSAJE\n\n Completa el siguiente formulario. Estaremos encantados de atenderte. \n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.\n\nCONTACTA CON NOSOTROS\n\n¿Tienes alguna duda?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\n C/ Potosi Nº 2, Planta 6ª, 08030 Barcelona \n\n +34 93 312 01 61 \n\n info@torivac.com",
+ "text_chars": 975,
+ "tables": [],
+ "links": [],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/plugins/wpforms/assets/images/submit-spin.svg",
+   "alt": "Cargando"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/cropped-Logo_Torivac.png",
+   "alt": "Torivac empresa"
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  },
+  {
+   "action": "/contacto/",
+   "method": "post",
+   "id": "wpforms-form-4921",
+   "class": [
+    "wpforms-validate",
+    "wpforms-form",
+    "wpforms-ajax-form"
+   ],
+   "fields": [
+    {
+     "name": "wpforms[fields][0]",
+     "type": "text",
+     "placeholder": "Nombre",
+     "required": true
+    },
+    {
+     "name": "wpforms[fields][4]",
+     "type": "text",
+     "placeholder": null,
+     "required": false
+    },
+    {
+     "name": "wpforms[fields][1]",
+     "type": "email",
+     "placeholder": "Correo electrónico",
+     "required": true
+    },
+    {
+     "name": "wpforms[fields][2]",
+     "type": "textarea",
+     "placeholder": "Mensaje",
+     "required": false
+    },
+    {
+     "name": "wpforms[fields][3][]",
+     "type": "checkbox",
+     "placeholder": null,
+     "required": true
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "INICIO",
+     "href": "https://grupotorivac.com/"
+    },
+    {
+     "text": "TORIVAC EMPRESA",
+     "href": "https://grupotorivac.com/torivac-empresa/"
+    },
+    {
+     "text": "PRODUCTOS",
+     "href": "https://grupotorivac.com/productos/"
+    },
+    {
+     "text": "PROYECTOS COMERCIALES TORIVAC",
+     "href": "https://grupotorivac.com/proyectos-empresariales/"
+    },
+    {
+     "text": "CATALOGO",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024.pdf"
+    },
+    {
+     "text": "BLOG",
+     "href": "https://grupotorivac.com/blog/"
+    },
+    {
+     "text": "CONTACTO",
+     "href": "https://grupotorivac.com/contacto/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/contact/"
+    },
+    {
+     "text": "Français",
+     "href": "https://grupotorivac.com/fr/contactez-nous/"
+    },
+    {
+     "text": "Español",
+     "href": "https://grupotorivac.com/contacto/"
+    },
+    {
+     "text": "Deutsch",
+     "href": "https://grupotorivac.com/de/kontakt-us/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

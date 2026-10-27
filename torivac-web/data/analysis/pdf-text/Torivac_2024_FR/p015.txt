@@ -1,0 +1,88 @@
+TRANSFORMATEURS TORIQUES
+
+
+
+
+ PRESENTATION
+
+Torivac dispose d’une expérience de plus de trente années dans la
+fabrication de toute classe de transformateurs toriques.
+Les transformateurs toriques représentent, comme aucun autre, la
+conception idéale de comment doit être un transformateur. En fait,
+Faraday a conçu et a bobiné le premier transformateur sur un noyau
+torique. Les noyaux toriques∫ que fabrique Torivac sont construits avec
+des tôles magnétiques de grain orienté, de très faibles pertes et de
+grande induction de saturation qui après avoir été thermiquement
+traitée, permet d'atteindre des valeurs de saturation allant jusqu'à
+16.000 gauss. Dans le transformateur torique le ﬂux magnétique est
+concentré uniformément dans le noyau et, étant donné l'absence
+d'entrefers, les vibrations seront éliminées.
+De même, comme le bobinage se répartis sur toute la surface du noyau,
+le bruit provoqué par la magnéto-friction disparaît pratiquement et
+favorise la dissipation de la chaleur. Ces détails permettent d'améliorer
+substantiellement les caractéristiques et les rendements des
+transformateurs toriques, par rapport aux transformateurs
+conventionnels
+
+
+
+                                                                                                             1. Disque Métallique
+                                                                                                             2. Rondelle en caoutchouc
+                                                                                                             3. Sortie de câbles
+                                                                                                             4. Bobinage secondaire
+                                                                                                             5. Protection entre écran et secondaire
+                                                                                                             6. Ecran électrostatique
+                                                                                                             7. Film polyester entre primaire et écran
+                                                                                                             8. Bobinage primaire
+                                                                                                             9. Couvercle du torique en nylon
+                                                                                                             10. Vis, écrou et rondelles
+                                                                                                             11. Noyau magnétique
+                                                                                                             12. Thermostat
+                                                                                                             13. Protection ﬁnale ou recouvrement extérieur
+
+
+
+
+ CARACTÉRISTIQUES
+
+Eﬃcacité
+Le rapport entre les puissances nominales de sortie et d'entrée varie en                           110
+
+fonction de la taille du transformateur et des conditions de                                       100
+
+fonctionnement, mais il est presque toujours supérieur . celui des                                  90
+
+transformateurs classiques pour une puissance équivalente. L'eﬃcacité                               80
+typique de nos transformateurs standard, de 20VA . 3000VA, varie
+                                                                            % Poténcia de salida
+
+
+
+
+                                                                                                    70
+entre 82% et 96% (voir diagramme).
+                                                                                                    60
+L'eﬃcacité d'un transformateur toroïdal est principalement                                          50
+                                                                                                                                                                1 KVA
+
+conditionnée par les pertes résistives du ﬁl de cuivre et les pertes dans                                                                                       300 VA
+
+le noyau. Les pertes résistives sont toujours moindres dans le
+                                                                                                    40                                                          30 VA
+
+transformateur toroïdal que dans les transformateurs classiques en                                  30
+
+raison de la plus faible quantité. de cuivre utilisée pour les                                      20
+
+enroulements. Les pertes de noyau par hystérésis, sont réduites à 0,98                              10
+W / Kg, à une induction de 1,6T, au moyen d’un traitement thermique de                              0
+recristallisation approprié. et les pertes induites par les courants de                                  0           20       40            60       80   100
+
+Foucault sont pratiquement négligeables dans nos noyaux fabriqués à                                                           % Puissance nominale
+
+partir de Feuille magnétique M4 et M5.
+
+
+
+                                                                     14
+

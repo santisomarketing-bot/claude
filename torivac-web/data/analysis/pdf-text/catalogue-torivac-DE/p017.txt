@@ -1,0 +1,93 @@
+RINGKERNTRANSFORMATOREN
+
+
+
+
+ ANWENDUNGSBEREICHE                                                                           PRODUKTIONSSERIE
+
+ Die Anwendungen des Ringkerntransformators sind                                              Manuelle Einstellung
+ sehr vielfältig. Unter ihnen können wir die folgenden                                        Mit Hilfe eines Bedienknopfes auf der Welle des Variators, der es
+ hervorheben:                                                                                 ermöglicht, auf die Bürste einzuwirken und die gewünschte
+                                                                                              Spannung zu erhalten. Wir verfügen über eine große Auswahl an
+ * Unterhaltungselektronik                                                                    Knöpfen und Skalen mit %- oder Volt-Einteilung, die für die
+                                                                                              verschiedenen Leistungen geeignet sind.
+ * Elektromedizin
+ * Umrichter
+                                                                                              Motorisierte Steuerung
+ * Stromversorgungssysteme
+                                                                                              Hauptsächlich zur Fernsteuerung von Geräten oder zur
+ * Audiosysteme
+                                                                                              Stabilisierung von Geräten verwendet. Spannungsregler mit
+ * Sicherheitssysteme
+                                                                                              hoher Leistung sind aufgrund ihrer einfachen Handhabung
+ * Telekommunikation                                                                          ebenfalls meist motorisiert. Bei dieser Art der Regelung wird die
+ * Niederspannungsbeleuchtung                                                                 Welle des Variators durch einen Getriebemotor angetrieben, der
+                                                                                              über einen manuellen Schalter die Ausgangsspannung erhöht
+ * Alle Geräte, die eine optimale Leistung erfordern.                                         oder senkt.
+                                                                                              Die von TORIVAC montierten Motoren haben keine Trägheit, was
+                                                                                              sie ideal für die Fernsteuerung macht.
+                                                                                              Auf Anfrage können Modelle hergestellt werden, die durch eine
+                                                                                              elektronische Karte mit einer Genauigkeit von 2% stabilisiert
+                                                                                              werden. Der Einbau dieser Platine ermöglicht die Regelung des
+                                                                                              Variators über ein Potentiometer oder ein kontinuierliches 0-10
+                                                                                              Vdc-Signal.
+   Standard auf Angabe/Standad to order (Eingang/Input 230V)
+    VA
+             Ø    Hö mm . mind. spannung Leist . .     cdt
+                                                                Ø
+                                                                        Kg.
+                                                                                Befestigung
+           mm. Heightmm. Voltagemin.          EffiC.          Acce.             Mounting
+    15      66        29             2         82      18      50       0.37     M5x40 mm.
+    20      67        32             3         82      18      50        0.4     M5x40 mm.
+            69        36            11         83      17      50        0.5     M5x45 mm.
+    30      75        32            11         83      17      50       0.55     M5x40 mm.
+            83        25            11         83      17      65       0.60     M5x35 mm.
+            69        50             5         84      16      50       0.65     M5x60 mm.
+    40      79        33             5         84      16      50       0.60     M5x45 mm.
+            83        26             5         84      16      65       0.70     M5x35 mm.
+            70        43             5         85      15      50       0.70     M5x55 mm.
+    50      79        34             5         85      15      65       0.75     M5x45 mm.
+            94        27             5         85      15      65        0.8     M5x35 mm.
+            79        38             6         86      14      65       0.85     M6x55 mm.
+    60
+            87        34             6         86      14      65       0.90     M6x50 mm.
+            90        38             7         86      13      65       0.90     M6x50 mm.
+    80
+            99        34             7         86      13      80       1.00     M6x50 mm.
+            90        45             8         87      12      65       1.25     M6x55 mm.
+    100
+            100       38             8         87      12      80       1.30     M6x50 mm.
+            100       40             9         87      11      80       1.40     M6x55 mm.
+    120
+            110       38            8          87      11      80       1.45     M6x50 mm.
+            100       44            10         88      10      80       1.60     M6x60 mm.
+    150
+            120       33            10         88      10      80       1.70     M6x50 mm.
+    160     113       43             9         80      10      80       1.65     M6x55 mm.
+    200     110       42            10         89       9      80       1.80     M6x60 mm.
+    250     120       52            10         89       9      80       2.00     M6x70 mm.
+            120       62            12         90       9      80       2.80     M6x80 mm.
+    300     123       58            13         90       9      80       3.00     M6x80 mm.
+            135       55            12         90       9      100      3.50     M6x70 mm.
+    330     125       62            12         90       9      80       3.00     M6x80 mm.
+    400     150       50            13         91       8      100      3.90     M8x70 mm.
+    500     150       60            15         92       8      100      4.40     M8x80 mm.
+    600     150       70            15         93       8      100      5.70     M8x90 mm.
+    750     165       67            18         93       7      127      6.00     M8x90 mm.
+   1.000 165          77            22         93       7      127      7.10    M8x100 mm.
+   1.200 170          95            22         94       6      140      9.70    M8x110 mm.
+            185       90            24         94       6      140      10.80   M8x110 mm.
+   1.500
+            220       70            24         94       6      140      12.34    M8x90 mm.
+   2.000 250          80            30         95       6    En. Int.   15.00   M10x100 mm.
+   2.500 255          85            35         95       5    En. Int.   18.00   M10x110 mm.
+   3.000 260         105            40         95       4    En. Int.   23.00   M10x130 mm.
+   4.000 270         115            50         96       3    En. Int.   28.00   M12x140 mm.
+   5.000 280         125            60         96       2    En. Int.   33.00   M12x160 mm.
+
+
+
+
+                                                                                      16
+

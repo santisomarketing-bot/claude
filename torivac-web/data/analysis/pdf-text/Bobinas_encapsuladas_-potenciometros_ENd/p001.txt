@@ -1,0 +1,36 @@
+WIRE WOUND POTENTIOMETERS
+& CERAMIC RHEOSTATS
+
+
+
+
+5W POTENTIOMETER
+
+Our 5W. potentiometer distinguish themselves by the original
+design of the slider-contact. Its consists of a metallic roller on top
+of a tangential spring. The turning of the spring produces a
+hypocycloidal movement of the roller on the ﬂat side of the
+resistor-strip, thus avoiding the abrasion of the wire. The ends of
+the resistor-strip are colloidal-silver painted so, that practically
+there is no residual resistance.
+
+
+Characteristics
+* Terminals 3.2 x 0,5 mm
+* Power rating at 25ºC: 5W
+* Resistance distribution: lin.
+* Resistance range: 5 Ω - 50 KΩ
+* Tolerance: 6%
+* Breakdown voltage: > 1000v.
+* Mechanical angle of rotation: 264ºC
+* Electrical angle of rotation: 250ºC
+* Mech. breakdown of the stop: 8 kg/cm.
+* Standard shaft lenght: 40 mm.
+* Net weight: 40 grs.
+*Temperature increasing at full load: 75ºC
+
+
+
+
+                                                                         29
+

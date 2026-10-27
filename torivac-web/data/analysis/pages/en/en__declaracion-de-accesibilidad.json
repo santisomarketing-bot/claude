@@ -1,0 +1,143 @@
+{
+ "file": "data/raw/html/en/en__declaracion-de-accesibilidad.html",
+ "lang": "en",
+ "url": "https://grupotorivac.com/en/declaracion-de-accesibilidad/",
+ "title": "Accessibility statement - Torivac",
+ "meta_description": "%",
+ "og_title": "Accessibility statement - Torivac",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/Diseno-sin-titulo-73.png",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/declaracion-de-accesibilidad/",
+  "fr": "https://grupotorivac.com/fr/declaracion-de-accesibilidad/",
+  "es": "https://grupotorivac.com/declaracion-de-accesibilidad/",
+  "de": "https://grupotorivac.com/de/declaracion-de-accesibilidad/",
+  "x-default": "https://grupotorivac.com/declaracion-de-accesibilidad/"
+ },
+ "body_classes": [
+  "wp-singular",
+  "page-template-default",
+  "page",
+  "page-id-15699",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "is-elementor",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-kit-6",
+  "elementor-page",
+  "elementor-page-15699"
+ ],
+ "outline": [
+  {
+   "level": 2,
+   "text": "Accessibility statement"
+  }
+ ],
+ "text": "Accessibility statement\n\nhttps://grupotorivac.com\nCOMPLIANCE SITUATION\nTorivac Group (hereinafter also Website) is partially compliant with Royal Decree 1112/2018, of September 7, due to the non-compliance of the aspects listed below.\n\nContent not accessible\nThe content listed below is not accessible for the following reasons:\na. Non-compliance with RD 1112/2018: Not applicable. Meets 100% of the web accessibility criteria. \nb. Disproportionate burden: Not applicable. \nc. Content does not fall within the scope of applicable law: \nThere may be PDF office automation files and other formats published prior to September 20, 2018 that do not fully meet all accessibility requirements. Although efforts have been made to ensure that most of them do. \nThere may be third party content that is not developed by or under the control of this Unit, such as images, interactive maps, videos, documents, players, etc.\nThere may be pre-recorded files published prior to September 20, 2018 that do not fully meet all accessibility requirements.\nParts or all of the website may be created with a CMS (WordPress, Shopify, PrestaShop, etc), so due to some update or change in the systems, not all generated or auto-generated content may comply with all accessibility regulations.\nPreparation of this accessibility statement\nThe method used to prepare the statement was a self-assessment carried out by the company itself.\n\nRemarks and contact details\nYou can make communications on accessibility requirements (Article 10.2.a of Royal Decree 1112/2018, of September 7) such as:\nTo report any possible non-compliance by this web site.\nTo transmit other difficulties in accessing the content.\nTo make any other consultation or suggestion for improvement related to the accessibility of the web site.\nThrough the following channels:\nContact telephone: \n+34 93 312 01 61\nContact email: \ninfo@torivac.com\nAccording to article 10.2.b of RD 1112/2018, you can also submit:\nA complaint regarding compliance with the requirements of RD 1112/2018.\nA request for accessible information relating to:\nContent that is excluded from the scope of application of RD 1112/2018 as established by Article 3, paragraph 4.\nContent that is exempt from compliance with the accessibility requirements because it imposes a disproportionate burden.\nIn the Request for accessible information, the facts, reasons and request must be clearly specified in order to establish that it is a reasonable and legitimate request.\nCommunications will be received and processed by the company’s management, as the unit responsible for the contents of this website.\n\nOptional content\nThe currently visible version of this website is dated 08/26/2024 and on that date the current accessibility level was revised at that time.\nAs of said date, partial daily reviews of new or modified web content, both templates and final published pages and documents, are carried out on a daily basis in order to ensure compliance with the accessibility requirements of the UNE-EN 301549:2022 Standard, considering the exceptions of Royal Decree 1112/2018, of September 7.\nAmong others, the following measures are adopted to facilitate accessibility:\nUse of alternative text on images.\nLinks provide details of the function or destination of the hyperlink.\nUse of W3C standards: XHTML 1.0, CSS 3.0, WAI AA.\n\nCompatibility\nThe website:\nhas been designed adapting to the standards and regulations in force in relation to accessibility, complying with the priority 2 (AA) checkpoints defined in the Web Content Accessibility Guidelines specification (WCAG 2.1)\nis optimized for the latest versions of Chrome, Edge, Firefox, Safari and Opera\nis designed for proper viewing in any resolution and desktop, tablet or mobile device (responsive design)\nhas been made using HTML5 as markup language and CSS 3 style sheets for its design.\nIn addition, a continuous audit and revision of content is carried out to facilitate its interpretation and improve navigation through the web portal.\nThis Accessibility Statement document has been created using the free online web accessibility statement template generator on 08/26/2024.",
+ "text_chars": 4149,
+ "tables": [],
+ "links": [],
+ "pdf_links": [],
+ "images": [],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/en/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "Home",
+     "href": "https://grupotorivac.com/en/"
+    },
+    {
+     "text": "Torivac Company",
+     "href": "https://grupotorivac.com/en/torivac-company/"
+    },
+    {
+     "text": "Products",
+     "href": "https://grupotorivac.com/en/torivac-products/"
+    },
+    {
+     "text": "Entrepreneurial Projects",
+     "href": "https://grupotorivac.com/en/entrepreneurial-projects/"
+    },
+    {
+     "text": "Catalogue",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024_EN.pdf"
+    },
+    {
+     "text": "Blog",
+     "href": "https://grupotorivac.com/en/blog/"
+    },
+    {
+     "text": "Contact",
+     "href": "https://grupotorivac.com/en/contact/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/declaracion-de-accesibilidad/"
+    },
+    {
+     "text": "Français",
+     "href": "https://grupotorivac.com/fr/declaracion-de-accesibilidad/"
+    },
+    {
+     "text": "Español",
+     "href": "https://grupotorivac.com/declaracion-de-accesibilidad/"
+    },
+    {
+     "text": "Deutsch",
+     "href": "https://grupotorivac.com/de/declaracion-de-accesibilidad/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

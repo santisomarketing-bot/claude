@@ -1,0 +1,60 @@
+SPANNUNGSREGLERN
+
+
+
+
+EINGESCHAFTEN
+
+Der Ringkern-Spannungsregler oder Spartransformator ist ein
+grundlegendes Element , wenn man eine Wechselspannung
+von Null bis Maximum mit einem konstanten Strom regeln will
+.
+
+Die Spannungsregler von Torivac zeichnen sich durch ihre
+mechanische Robustheit , ihre hohe Auflösung , die eine sehr
+genaue Einstellung der Spannung ermöglicht , und durch die
+hohe Qualität aller für ihre Herstellung       verwendeten
+Materialien aus.
+
+Diese Details sowie die 100%ige Kontrolle aller Wechselrichter
+ermöglichen es uns, eine Zuverlässigkeit zu bieten , die auch
+von den anspruchsvollsten Kunden anerkannt wird.
+
+
+
+
+FERTIGUNGSREIHEN
+
+Wir haben verschiedene Modelle für jede Anwendung :
+einphasige , zweiphasige       und dreiphasige Ringkern -
+Spannungsregler (I, II, III ). Alle Modelle können in einem
+Metallgehäuse montiert werden , das für eine manuelle oder       ERSATZTEILE
+motorisierte Regelung geliefert wird.
+                                                                 Abbildung 1 zeigt deutlich die Teile eines Umrichters .
+                                                                 Man erkennt den Kern, die Wicklung , die Isolierung und
+                                                                 die übrigen Komponenten, aus denen er besteht.
+
+                                                                 1- Epoxidharz
+                                                                 2- Wicklung (Cu-Spulen)
+                                                                 3- Bakelit-Kapseln
+                                                                 4- Magnetischer Kern
+                                                                 5- Welle
+                                                                 6- Messingbuchse
+                                                                 7- Anschlussklemme
+                                                                 8- Kontaktplatte
+                                                                 9- Klemmschraube und Kontaktleistenverbindung
+                                                                 10- Messingscheibe des Schleifkontakts
+                                                                 11- Bürstenklemme
+                                                                 12- Bürstenhaltebolzen
+                                                                 13- Bürstenhalterflansch
+                                                                 14- Bürstenhalterplatte
+                                                                 15- Nieten des Bürstenhalters
+                                                                 16- Bürstenhalter
+                                                                 17- Graphitrolle
+                                                                 18- Handschuh zum Halten der Holzkohle
+                                                                 19- Kontaktschiene
+                                                                 20- Mechanischer Anschlag
+                                                                 21- Klemmanschlüsse
+
+                                                           1
+

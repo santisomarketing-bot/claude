@@ -1,0 +1,76 @@
+TRANSFORMATEURS TORIQUES
+
+
+
+
+ Spécifications techniques
+
+ Variation de la tension “à vide”/”à pleine charge”
+ La chute de tension d'un transformateur est déterminée par le quotient entre la tension secondaire « à vide » et « à pleine charge ». Ce taux est
+ un paramètre important à prendre en compte lors de la conception du transformateur. Il permet un calcul approximatif de la tension de charge
+ nominale.
+ Le taux change avec la taille du transformateur. À des puissances nominales supérieures, les ﬁls de cuivre utilisés dans les bobines enroul.es
+ présentent généralement une résistance moindre et de meilleures caractéristiques peuvent être obtenues. Le diagramme ci-dessous indique
+ l'augmentation de la tension à vide (%) par rapport à la tension de charge nominale, en fonction de la puissance nominale du transformateur.
+
+                                           30
+
+                                           25
+
+                                           20
+                          % V (en vacío)
+
+
+
+
+                                           15
+
+                                           10
+
+                                           5
+
+                                           0
+                                                0   500    1000         1500          2000         2500         3000
+
+                                                                    Poténcia (VA)
+
+
+ Radiation
+ L'absence de fentes d'aération dans la construction du noyau, son traitement thermique, sa conception soignée et les techniques de
+ bobinage minutieuses utilis.es permettent d'obtenir une dispersion magnétique très faible, presque insigniﬁante par rapport à celle générée
+ par les transformateurs classiques. Lorsqu'il est nécessaire d'éliminer totalement la dispersion magnétique, on peut ajouter des écrans
+ électromagnétiques ou un blindage.
+ L'application des transformateurs toriques aux étapes d'alimentation et de mise sous tension est idéales car ils oﬀrent un bon rapport signal
+ / bruit peut être atteint.
+
+
+ Blindage électrostatique
+ Les écrans électrostatiques sont construits à l'aide d'une bobine d'enroulement en cuivre, isolée au polyester, qui recouvre complètement
+ l'enroulement primaire et a pour fonction de ﬁltrer les interférences électrostatiques provenant de l'alimentation secteur, lorsque la tension
+ est transformée et de dériver à la terre en cas de défaut de l'isolation principale.
+
+
+ Démarrer des courants électriques transitoires
+ Les transformateurs toriques ont généralement au démarrage des courants électriques transitoires plus élevés que les transformateurs
+ classiques en raison de l'absence d'entrefer dans le noyau. Pour cette raison, nous vous recommandons de protéger l'alimentation avec des
+ fusibles à fusion lente ou des systèmes de démarrage contrôlés.
+
+
+ Augmentation de la température
+ La température de fonctionnement de nos transformateurs toriques varie en fonction du pourcentage de charge utilisé, comme le montre le
+ schéma ci-joint. En mode de travail permanent, elles peuvent varier entre 55 oC et 60 oC, au- dessus de la température ambiante
+ environnante, mê.me si la température extérieure du transformateur ne présente pas d'augmentation supérieure à 45 oC.
+
+
+ Facteur de forme
+ Ces types de transformateurs permettent d’atteindre des proﬁls bas et d’adapter la taille aux dimensions requises pour chaque application,
+ en ajustant le diamètre et la hauteur des noyaux aux exigences ﬁnales.
+
+
+ Avantages
+ • Haut rendement. • Bas niveau de bruit. • Bas champ dispersé. • Moindre réchauﬀement. • Poids et taille réduits. • Facilité de montage.
+
+
+
+                                                                       15
+

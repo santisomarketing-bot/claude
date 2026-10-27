@@ -1,0 +1,63 @@
+SPANNUNGSREGLERN
+
+
+
+
+MOTORISIERTE STEUERUNG
+Umrichter mit Motorregelung haben drei Anschlussklemmen ,
+die der motorisierten Ergänzung entsprechen.
+
+Um die Ausgangsspannung am Umrichter zu erhöhen , muss
+eine Spannung von 230 VAC zwischen den verdrahteten
+Klemmen Violett - Grau angelegt werden.
+
+Um die Ausgangsspannung am Umrichter zu verringern ,
+muss zwischen den verdrahteten Klemmen Orange - Grau
+eine Spannung von 230 VAC angelegt werden.                            ANSCHLUSSKLEMMEN
+
+                                                                                            ORANGE
+
+            230 VAC
+                                                                                              GRAU
+
+                                                                                             VIOLETT
+
+
+Zwischen den orange - violett verdrahteten Klemmen darf unter keinen
+Umständen eine Spannung angelegt warden.
+
+   WARTUNG
+
+   Um die Lebensdauer des Wechselrichters zu verlängern, empfehlen wir Folgendes:
+   - Den Getriebemotor möglichst so aufstellen, dass sich kein Staub auf der Kontaktbahn ansammelt.
+   - Kontrollieren Sie regelmäßig den Verschleiß der Kontaktkohlen und tauschen Sie diese bei Bedarf aus.
+   - Überprüfen Sie regelmäßig den Zustand der Kontaktbahn, damit bei Bedarf eine komplette Überholung des
+   Spannungsreglers in unseren Anlagen durchgeführt werden kann.
+
+
+
+
+   SCHUTZ
+
+   - Es wird empfohlen, den Ausgang des Umrichters zu schützen, indem eine Sicherung mit einem Wert, der 10% über
+   dem Nennstrom liegt, zwischen Klemme 2 und der Last eingesetzt wird.
+   - Wenn Sie den Eingang schützen wollen, müssen Sie angesichts der hohen Spitzenspannung, die beim Einschalten der
+   Ringkernwandler auftritt, eine träge Sicherung oder einen Schutzschalter zwischen Netz und Klemme 1 schalten.
+
+
+   GARANTIE
+
+   Für dieses Produkt gilt eine Garantiezeit von 12 Monaten ab Kaufdatum.
+   Schäden, die durch unsachgemäße Handhabung verursacht werden, sowie Schäden, die durch die Anwendung von
+   Spannungen oder Strömen verursacht werden, die höher sind als die auf dem Produktetikett angegebenen, sind nicht
+   von der Garantie abgedeckt.
+
+   SERVICE
+
+  Wenn Sie Fragen haben, wenden Sie sich bitte an unsere technische Abteilung unter Tel. +34 93 312 01 61.
+
+
+
+
+                                                                12
+

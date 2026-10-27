@@ -1,0 +1,3068 @@
+{
+ "es": [
+  {
+   "id": 29,
+   "name": "Accesorios de regulación",
+   "slug": "accesorios-de-regulacion",
+   "parent": 19,
+   "count": 3,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/accesorios-de-regulacion/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Accesorios de regulación"
+   ]
+  },
+  {
+   "id": 77,
+   "name": "Aros con flecha",
+   "slug": "aros-con-flecha",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/aros-con-flecha/",
+   "path": [
+    "Botones de mando",
+    "Aros con flecha"
+   ]
+  },
+  {
+   "id": 93,
+   "name": "Bancos de carga",
+   "slug": "bancos-de-carga",
+   "parent": 88,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/resistencias/bancos-de-carga/",
+   "path": [
+    "Resistencias | Bancos de carga",
+    "Bancos de carga"
+   ]
+  },
+  {
+   "id": 22,
+   "name": "Bobinas encapsuladas",
+   "slug": "bobinas-encapsuladas",
+   "parent": 0,
+   "count": 2,
+   "link": "https://grupotorivac.com/categoria-producto/bobinas-encapsuladas/",
+   "path": [
+    "Bobinas encapsuladas"
+   ]
+  },
+  {
+   "id": 30,
+   "name": "Botones de mando",
+   "slug": "botones-de-mando",
+   "parent": 0,
+   "count": 11,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/",
+   "path": [
+    "Botones de mando"
+   ]
+  },
+  {
+   "id": 74,
+   "name": "Botones de mando serie BM (Mate)",
+   "slug": "botones-de-mando-serie-bm-mate",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/botones-de-mando-serie-bm-mate/",
+   "path": [
+    "Botones de mando",
+    "Botones de mando serie BM (Mate)"
+   ]
+  },
+  {
+   "id": 72,
+   "name": "Botones de mando serie BO (brillante)",
+   "slug": "botones-de-mando-serie-bo-brillante",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-brillante/",
+   "path": [
+    "Botones de mando",
+    "Botones de mando serie BO (brillante)"
+   ]
+  },
+  {
+   "id": 73,
+   "name": "Botones de mando Serie BO con linea",
+   "slug": "botones-de-mando-serie-bo-con-linea",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-con-linea/",
+   "path": [
+    "Botones de mando",
+    "Botones de mando Serie BO con linea"
+   ]
+  },
+  {
+   "id": 27,
+   "name": "Botones de mando y accesorios",
+   "slug": "botones-de-mando-y-accesorios",
+   "parent": 0,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando-y-accesorios/",
+   "path": [
+    "Botones de mando y accesorios"
+   ]
+  },
+  {
+   "id": 82,
+   "name": "Caratulas graduadas",
+   "slug": "caratulas-graduadas",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/caratulas-graduadas/",
+   "path": [
+    "Botones de mando",
+    "Caratulas graduadas"
+   ]
+  },
+  {
+   "id": 92,
+   "name": "Cementadas",
+   "slug": "cementadas",
+   "parent": 88,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/resistencias/cementadas/",
+   "path": [
+    "Resistencias | Bancos de carga",
+    "Cementadas"
+   ]
+  },
+  {
+   "id": 63,
+   "name": "Choques | Inductancias | Reactancias toroidales",
+   "slug": "choques",
+   "parent": 0,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/choques/",
+   "path": [
+    "Choques | Inductancias | Reactancias toroidales"
+   ]
+  },
+  {
+   "id": 50,
+   "name": "Comunicación MODBUS",
+   "slug": "comunicacion-modbus",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/comunicacion-modbus/",
+   "path": [
+    "Comunicación MODBUS"
+   ]
+  },
+  {
+   "id": 101,
+   "name": "Control industrial",
+   "slug": "control-industrial",
+   "parent": 96,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/electronica/control-industrial/",
+   "path": [
+    "Equipos electrónicos",
+    "Control industrial"
+   ]
+  },
+  {
+   "id": 31,
+   "name": "Controlador 0-10VDC",
+   "slug": "controlador-0-10vdc",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/controlador-0-10vdc/",
+   "path": [
+    "Controlador 0-10VDC"
+   ]
+  },
+  {
+   "id": 97,
+   "name": "Convertidores",
+   "slug": "convertidores",
+   "parent": 96,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/electronica/convertidores/",
+   "path": [
+    "Equipos electrónicos",
+    "Convertidores"
+   ]
+  },
+  {
+   "id": 119,
+   "name": "Cuadradas",
+   "slug": "cuadradas",
+   "parent": 22,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/bobinas-encapsuladas/cuadradas/",
+   "path": [
+    "Bobinas encapsuladas",
+    "Cuadradas"
+   ]
+  },
+  {
+   "id": 32,
+   "name": "Cuba de aceite",
+   "slug": "cuba-de-aceite",
+   "parent": 45,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/en-caja/cuba-de-aceite/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Equipos de sobremesa",
+    "Cuba de aceite"
+   ]
+  },
+  {
+   "id": 80,
+   "name": "Cubretercas",
+   "slug": "cubretercas",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/cubretercas/",
+   "path": [
+    "Botones de mando",
+    "Cubretercas"
+   ]
+  },
+  {
+   "id": 81,
+   "name": "Discos Flecha",
+   "slug": "discos-flecha",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/discos-flecha/",
+   "path": [
+    "Botones de mando",
+    "Discos Flecha"
+   ]
+  },
+  {
+   "id": 78,
+   "name": "Discos graduados",
+   "slug": "discos-graduados",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/discos-graduados/",
+   "path": [
+    "Botones de mando",
+    "Discos graduados"
+   ]
+  },
+  {
+   "id": 44,
+   "name": "Doble manual",
+   "slug": "doble-manual",
+   "parent": 33,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/dobles/doble-manual/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variador Doble",
+    "Doble manual"
+   ]
+  },
+  {
+   "id": 34,
+   "name": "Doble motorizado",
+   "slug": "doble-motorizado",
+   "parent": 33,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/dobles/doble-motorizado/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variador Doble",
+    "Doble motorizado"
+   ]
+  },
+  {
+   "id": 111,
+   "name": "Dobles",
+   "slug": "dobles-potenciometros",
+   "parent": 107,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/dobles-potenciometros/",
+   "path": [
+    "Reostatos y potenciómetros bobinados",
+    "Potenciometros",
+    "Dobles"
+   ]
+  },
+  {
+   "id": 700,
+   "name": "En caja",
+   "slug": "variador-de-tension-en-caja",
+   "parent": 45,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-en-caja/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Equipos de sobremesa",
+    "En caja"
+   ]
+  },
+  {
+   "id": 120,
+   "name": "En caja",
+   "slug": "en-caja-resistencias",
+   "parent": 88,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/resistencias/en-caja-resistencias/",
+   "path": [
+    "Resistencias | Bancos de carga",
+    "En caja"
+   ]
+  },
+  {
+   "id": 100,
+   "name": "Energias renovables",
+   "slug": "energias-renovables",
+   "parent": 96,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/electronica/energias-renovables/",
+   "path": [
+    "Equipos electrónicos",
+    "Energias renovables"
+   ]
+  },
+  {
+   "id": 46,
+   "name": "Equipos de Sobremesa",
+   "slug": "equipos-de-sobremesa-en-caja",
+   "parent": 0,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/equipos-de-sobremesa-en-caja/",
+   "path": [
+    "Equipos de Sobremesa"
+   ]
+  },
+  {
+   "id": 45,
+   "name": "Equipos de sobremesa",
+   "slug": "en-caja",
+   "parent": 19,
+   "count": 3,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/en-caja/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Equipos de sobremesa"
+   ]
+  },
+  {
+   "id": 39,
+   "name": "Equipos de sobremesa",
+   "slug": "equipos-de-sobremesa",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/equipos-de-sobremesa/",
+   "path": [
+    "Equipos de sobremesa"
+   ]
+  },
+  {
+   "id": 96,
+   "name": "Equipos electrónicos",
+   "slug": "electronica",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/electronica/",
+   "path": [
+    "Equipos electrónicos"
+   ]
+  },
+  {
+   "id": 47,
+   "name": "Equipos industriales",
+   "slug": "equipos-industriales-en-caja",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/equipos-industriales-en-caja/",
+   "path": [
+    "Equipos industriales"
+   ]
+  },
+  {
+   "id": 36,
+   "name": "Equipos industriales",
+   "slug": "equipos-industriales",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/equipos-industriales/",
+   "path": [
+    "Equipos industriales"
+   ]
+  },
+  {
+   "id": 60,
+   "name": "Estabilizadores de tensión",
+   "slug": "estabilizadores-de-tension",
+   "parent": 0,
+   "count": 5,
+   "link": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/",
+   "path": [
+    "Estabilizadores de tensión"
+   ]
+  },
+  {
+   "id": 61,
+   "name": "Estabilizadores Serie AVS: electromecánicos con servomotor",
+   "slug": "serie-avs",
+   "parent": 60,
+   "count": 2,
+   "link": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/serie-avs/",
+   "path": [
+    "Estabilizadores de tensión",
+    "Estabilizadores Serie AVS: electromecánicos con servomotor"
+   ]
+  },
+  {
+   "id": 442,
+   "name": "Estators",
+   "slug": "estators",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/estators/",
+   "path": [
+    "Botones de mando",
+    "Estators"
+   ]
+  },
+  {
+   "id": 28,
+   "name": "Fabricación a medida",
+   "slug": "fabricacion-a-media",
+   "parent": 19,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/fabricacion-a-media/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Fabricación a medida"
+   ]
+  },
+  {
+   "id": 49,
+   "name": "Fabricaciones a Medida",
+   "slug": "fabricaciones-a-medida",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/fabricaciones-a-medida/",
+   "path": [
+    "Fabricaciones a Medida"
+   ]
+  },
+  {
+   "id": 102,
+   "name": "Fabricaciones a medida",
+   "slug": "fabricaciones-a-medida-transformadores-toroidales",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/fabricaciones-a-medida-transformadores-toroidales/",
+   "path": [
+    "Fabricaciones a medida"
+   ]
+  },
+  {
+   "id": 99,
+   "name": "Fuente de alimentación CA",
+   "slug": "fuente-de-alimentacion-ca",
+   "parent": 96,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/electronica/fuente-de-alimentacion-ca/",
+   "path": [
+    "Equipos electrónicos",
+    "Fuente de alimentación CA"
+   ]
+  },
+  {
+   "id": 98,
+   "name": "Fuentes de alimentación CC",
+   "slug": "fuentes-de-alimentacion-cc",
+   "parent": 96,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/electronica/fuentes-de-alimentacion-cc/",
+   "path": [
+    "Equipos electrónicos",
+    "Fuentes de alimentación CC"
+   ]
+  },
+  {
+   "id": 90,
+   "name": "Helicoidales",
+   "slug": "helicoidales",
+   "parent": 88,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/resistencias/helicoidales/",
+   "path": [
+    "Resistencias | Bancos de carga",
+    "Helicoidales"
+   ]
+  },
+  {
+   "id": 85,
+   "name": "Hembrilla de seguridad HBS4",
+   "slug": "hembrilla-de-seguridad-hbs4",
+   "parent": 83,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/hembrillas/hembrilla-de-seguridad-hbs4/",
+   "path": [
+    "Hembrillas",
+    "Hembrilla de seguridad HBS4"
+   ]
+  },
+  {
+   "id": 86,
+   "name": "hembrilla de seguridad HR4",
+   "slug": "hembrilla-de-seguridad-hr4",
+   "parent": 83,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/hembrillas/hembrilla-de-seguridad-hr4/",
+   "path": [
+    "Hembrillas",
+    "hembrilla de seguridad HR4"
+   ]
+  },
+  {
+   "id": 87,
+   "name": "Hembrilla de seguridad HSR4",
+   "slug": "hembrilla-de-seguridad-hsr4",
+   "parent": 83,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/hembrillas/hembrilla-de-seguridad-hsr4/",
+   "path": [
+    "Hembrillas",
+    "Hembrilla de seguridad HSR4"
+   ]
+  },
+  {
+   "id": 84,
+   "name": "Hembrilla HB4",
+   "slug": "hembrilla-hb4",
+   "parent": 83,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/hembrillas/hembrilla-hb4/",
+   "path": [
+    "Hembrillas",
+    "Hembrilla HB4"
+   ]
+  },
+  {
+   "id": 83,
+   "name": "Hembrillas",
+   "slug": "hembrillas",
+   "parent": 0,
+   "count": 4,
+   "link": "https://grupotorivac.com/categoria-producto/hembrillas/",
+   "path": [
+    "Hembrillas"
+   ]
+  },
+  {
+   "id": 25,
+   "name": "Hembrillas de seguridad",
+   "slug": "hembrillas-de-seguridad",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/hembrillas-de-seguridad/",
+   "path": [
+    "Hembrillas de seguridad"
+   ]
+  },
+  {
+   "id": 69,
+   "name": "led 10mm",
+   "slug": "led-10mm",
+   "parent": 65,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/portaled/led-10mm/",
+   "path": [
+    "Portaled",
+    "led 10mm"
+   ]
+  },
+  {
+   "id": 66,
+   "name": "led 3mm",
+   "slug": "led-3mm",
+   "parent": 65,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/portaled/led-3mm/",
+   "path": [
+    "Portaled",
+    "led 3mm"
+   ]
+  },
+  {
+   "id": 67,
+   "name": "led 5mm",
+   "slug": "led-5mm",
+   "parent": 65,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/portaled/led-5mm/",
+   "path": [
+    "Portaled",
+    "led 5mm"
+   ]
+  },
+  {
+   "id": 68,
+   "name": "led 8mm",
+   "slug": "led-8mm",
+   "parent": 65,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/portaled/led-8mm/",
+   "path": [
+    "Portaled",
+    "led 8mm"
+   ]
+  },
+  {
+   "id": 38,
+   "name": "Manual",
+   "slug": "monofasicos-manual",
+   "parent": 37,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/monofasico/monofasicos-manual/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Monofasicos",
+    "Manual"
+   ]
+  },
+  {
+   "id": 41,
+   "name": "Manual",
+   "slug": "manual-trifasico",
+   "parent": 40,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/trifasico/manual-trifasico/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Trifásicos",
+    "Manual"
+   ]
+  },
+  {
+   "id": 105,
+   "name": "Monofásico",
+   "slug": "monofasico-serie-bavs",
+   "parent": 62,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/serie-bavs/monofasico-serie-bavs/",
+   "path": [
+    "Estabilizadores de tensión",
+    "Serie BAVS: Electrónicos",
+    "Monofásico"
+   ]
+  },
+  {
+   "id": 103,
+   "name": "Monofásico",
+   "slug": "monofasico-serie-avs",
+   "parent": 61,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/serie-avs/monofasico-serie-avs/",
+   "path": [
+    "Estabilizadores de tensión",
+    "Estabilizadores Serie AVS: electromecánicos con servomotor",
+    "Monofásico"
+   ]
+  },
+  {
+   "id": 42,
+   "name": "Motorizado",
+   "slug": "motorizado",
+   "parent": 40,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/trifasico/motorizado/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Trifásicos",
+    "Motorizado"
+   ]
+  },
+  {
+   "id": 43,
+   "name": "Motorizado",
+   "slug": "motorizado-monofasico",
+   "parent": 37,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/monofasico/motorizado-monofasico/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Monofasicos",
+    "Motorizado"
+   ]
+  },
+  {
+   "id": 64,
+   "name": "Nucleos",
+   "slug": "nucleos",
+   "parent": 0,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/nucleos/",
+   "path": [
+    "Nucleos"
+   ]
+  },
+  {
+   "id": 65,
+   "name": "Portaled",
+   "slug": "portaled",
+   "parent": 0,
+   "count": 4,
+   "link": "https://grupotorivac.com/categoria-producto/portaled/",
+   "path": [
+    "Portaled"
+   ]
+  },
+  {
+   "id": 24,
+   "name": "Portaleds",
+   "slug": "portaleds",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/portaleds/",
+   "path": [
+    "Portaleds"
+   ]
+  },
+  {
+   "id": 107,
+   "name": "Potenciometros",
+   "slug": "potenciometros",
+   "parent": 122,
+   "count": 3,
+   "link": "https://grupotorivac.com/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/",
+   "path": [
+    "Reostatos y potenciómetros bobinados",
+    "Potenciometros"
+   ]
+  },
+  {
+   "id": 26,
+   "name": "Potenciómetros y reóstatos",
+   "slug": "potenciometros-y-reostatos",
+   "parent": 0,
+   "count": 0,
+   "link": "https://grupotorivac.com/categoria-producto/potenciometros-y-reostatos/",
+   "path": [
+    "Potenciómetros y reóstatos"
+   ]
+  },
+  {
+   "id": 118,
+   "name": "Redondas",
+   "slug": "redondas",
+   "parent": 22,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/bobinas-encapsuladas/redondas/",
+   "path": [
+    "Bobinas encapsuladas",
+    "Redondas"
+   ]
+  },
+  {
+   "id": 112,
+   "name": "Reóstatos cerámicos",
+   "slug": "ceramicos",
+   "parent": 122,
+   "count": 5,
+   "link": "https://grupotorivac.com/categoria-producto/reostatos-y-potenciometros-bobinados/ceramicos/",
+   "path": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ]
+  },
+  {
+   "id": 122,
+   "name": "Reostatos y potenciómetros bobinados",
+   "slug": "reostatos-y-potenciometros-bobinados",
+   "parent": 0,
+   "count": 9,
+   "link": "https://grupotorivac.com/categoria-producto/reostatos-y-potenciometros-bobinados/",
+   "path": [
+    "Reostatos y potenciómetros bobinados"
+   ]
+  },
+  {
+   "id": 88,
+   "name": "Resistencias | Bancos de carga",
+   "slug": "resistencias",
+   "parent": 0,
+   "count": 7,
+   "link": "https://grupotorivac.com/categoria-producto/resistencias/",
+   "path": [
+    "Resistencias | Bancos de carga"
+   ]
+  },
+  {
+   "id": 94,
+   "name": "Resistencias de arranque",
+   "slug": "resistencias-de-arranque",
+   "parent": 88,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/resistencias/resistencias-de-arranque/",
+   "path": [
+    "Resistencias | Bancos de carga",
+    "Resistencias de arranque"
+   ]
+  },
+  {
+   "id": 444,
+   "name": "Resistencias de frenado",
+   "slug": "resistencias-de-frenado",
+   "parent": 88,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/resistencias/resistencias-de-frenado/",
+   "path": [
+    "Resistencias | Bancos de carga",
+    "Resistencias de frenado"
+   ]
+  },
+  {
+   "id": 95,
+   "name": "Resistencias de puesta a tierra",
+   "slug": "resistencias-de-puesta-a-tierra",
+   "parent": 88,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/resistencias/resistencias-de-puesta-a-tierra/",
+   "path": [
+    "Resistencias | Bancos de carga",
+    "Resistencias de puesta a tierra"
+   ]
+  },
+  {
+   "id": 62,
+   "name": "Serie BAVS: Electrónicos",
+   "slug": "serie-bavs",
+   "parent": 60,
+   "count": 2,
+   "link": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/serie-bavs/",
+   "path": [
+    "Estabilizadores de tensión",
+    "Serie BAVS: Electrónicos"
+   ]
+  },
+  {
+   "id": 57,
+   "name": "Serie TC",
+   "slug": "serie-tc",
+   "parent": 56,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/transformadores/transformador-convencional/serie-tc/",
+   "path": [
+    "Transformadores",
+    "Transformador convencional",
+    "Serie TC"
+   ]
+  },
+  {
+   "id": 58,
+   "name": "Serie TCE",
+   "slug": "serie-tce",
+   "parent": 56,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/transformadores/transformador-convencional/serie-tce/",
+   "path": [
+    "Transformadores",
+    "Transformador convencional",
+    "Serie TCE"
+   ]
+  },
+  {
+   "id": 55,
+   "name": "Serie TCi (encapsulado para circuito impreso)",
+   "slug": "serie-tci",
+   "parent": 52,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tci/",
+   "path": [
+    "Transformadores",
+    "Transformadores toroidales",
+    "Serie TCi (encapsulado para circuito impreso)"
+   ]
+  },
+  {
+   "id": 54,
+   "name": "Serie TE",
+   "slug": "serie-te",
+   "parent": 52,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-te/",
+   "path": [
+    "Transformadores",
+    "Transformadores toroidales",
+    "Serie TE"
+   ]
+  },
+  {
+   "id": 53,
+   "name": "Serie TT",
+   "slug": "serie-tt",
+   "parent": 52,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tt/",
+   "path": [
+    "Transformadores",
+    "Transformadores toroidales",
+    "Serie TT"
+   ]
+  },
+  {
+   "id": 108,
+   "name": "Simples",
+   "slug": "simples",
+   "parent": 107,
+   "count": 2,
+   "link": "https://grupotorivac.com/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/simples/",
+   "path": [
+    "Reostatos y potenciómetros bobinados",
+    "Potenciometros",
+    "Simples"
+   ]
+  },
+  {
+   "id": 18,
+   "name": "Sin categorizar",
+   "slug": "sin-categorizar",
+   "parent": 0,
+   "count": 4,
+   "link": "https://grupotorivac.com/categoria-producto/sin-categorizar/",
+   "path": [
+    "Sin categorizar"
+   ]
+  },
+  {
+   "id": 76,
+   "name": "Tapas Serie BM",
+   "slug": "tapas-serie-bm",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/tapas-serie-bm/",
+   "path": [
+    "Botones de mando",
+    "Tapas Serie BM"
+   ]
+  },
+  {
+   "id": 75,
+   "name": "Tapas serie BO",
+   "slug": "tapas-serie-bo",
+   "parent": 30,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/botones-de-mando/tapas-serie-bo/",
+   "path": [
+    "Botones de mando",
+    "Tapas serie BO"
+   ]
+  },
+  {
+   "id": 59,
+   "name": "TCT",
+   "slug": "tct",
+   "parent": 56,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/transformadores/transformador-convencional/tct/",
+   "path": [
+    "Transformadores",
+    "Transformador convencional",
+    "TCT"
+   ]
+  },
+  {
+   "id": 56,
+   "name": "Transformador convencional",
+   "slug": "transformador-convencional",
+   "parent": 51,
+   "count": 3,
+   "link": "https://grupotorivac.com/categoria-producto/transformadores/transformador-convencional/",
+   "path": [
+    "Transformadores",
+    "Transformador convencional"
+   ]
+  },
+  {
+   "id": 51,
+   "name": "Transformadores",
+   "slug": "transformadores",
+   "parent": 0,
+   "count": 6,
+   "link": "https://grupotorivac.com/categoria-producto/transformadores/",
+   "path": [
+    "Transformadores"
+   ]
+  },
+  {
+   "id": 52,
+   "name": "Transformadores toroidales",
+   "slug": "transformadores-toroidales-transformadores",
+   "parent": 51,
+   "count": 3,
+   "link": "https://grupotorivac.com/categoria-producto/transformadores/transformadores-toroidales-transformadores/",
+   "path": [
+    "Transformadores",
+    "Transformadores toroidales"
+   ]
+  },
+  {
+   "id": 106,
+   "name": "Trifásico",
+   "slug": "trifasico-serie-bavs",
+   "parent": 62,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/serie-bavs/trifasico-serie-bavs/",
+   "path": [
+    "Estabilizadores de tensión",
+    "Serie BAVS: Electrónicos",
+    "Trifásico"
+   ]
+  },
+  {
+   "id": 104,
+   "name": "Trifásico",
+   "slug": "trifasico-serie-avs",
+   "parent": 61,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/serie-avs/trifasico-serie-avs/",
+   "path": [
+    "Estabilizadores de tensión",
+    "Estabilizadores Serie AVS: electromecánicos con servomotor",
+    "Trifásico"
+   ]
+  },
+  {
+   "id": 699,
+   "name": "Variador de tensión industriales",
+   "slug": "variador-de-tension-industriales",
+   "parent": 45,
+   "count": 1,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-industriales/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Equipos de sobremesa",
+    "Variador de tensión industriales"
+   ]
+  },
+  {
+   "id": 33,
+   "name": "Variador Doble",
+   "slug": "dobles",
+   "parent": 19,
+   "count": 2,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/dobles/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variador Doble"
+   ]
+  },
+  {
+   "id": 19,
+   "name": "Variadores de tensión - Autotransformadores regulables",
+   "slug": "variadores-de-tension",
+   "parent": 0,
+   "count": 15,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables"
+   ]
+  },
+  {
+   "id": 37,
+   "name": "Variadores Monofasicos",
+   "slug": "monofasico",
+   "parent": 19,
+   "count": 2,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/monofasico/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Monofasicos"
+   ]
+  },
+  {
+   "id": 40,
+   "name": "Variadores Trifásicos",
+   "slug": "trifasico",
+   "parent": 19,
+   "count": 2,
+   "link": "https://grupotorivac.com/categoria-producto/variadores-de-tension/trifasico/",
+   "path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Trifásicos"
+   ]
+  }
+ ],
+ "other_langs": {
+  "en": [
+   {
+    "id": 631,
+    "name": "2x3W",
+    "slug": "2x3w",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/2x3w/"
+   },
+   {
+    "id": 676,
+    "name": "Arrow Discs",
+    "slug": "arrow-discs",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/arrow-discs/"
+   },
+   {
+    "id": 658,
+    "name": "Arrow hoops",
+    "slug": "hoops-with-arrow",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/hoops-with-arrow/"
+   },
+   {
+    "id": 607,
+    "name": "AVS Series Stabilizers: electromechanical with servo motor",
+    "slug": "avs-series-stabilizers-electromechanical-with-servomotor",
+    "parent": 463,
+    "count": 2,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/"
+   },
+   {
+    "id": 610,
+    "name": "BAVS Series: Electronics",
+    "slug": "bavs-series-electronics",
+    "parent": 463,
+    "count": 2,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/"
+   },
+   {
+    "id": 593,
+    "name": "Benchtop Units",
+    "slug": "benchtop-units",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/benchtop-units/"
+   },
+   {
+    "id": 598,
+    "name": "Benchtop Units",
+    "slug": "benchtop-units-2",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/benchtop-units-2/"
+   },
+   {
+    "id": 661,
+    "name": "BM series control buttons (Matte)",
+    "slug": "bm-series-control-buttons-matte",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/bm-series-control-buttons-matte/"
+   },
+   {
+    "id": 685,
+    "name": "BM Series Covers",
+    "slug": "bm-series-covers",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/bm-series-covers/"
+   },
+   {
+    "id": 664,
+    "name": "BO series control buttons (bright)",
+    "slug": "bo-series-control-buttons-glossy",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/bo-series-control-buttons-glossy/"
+   },
+   {
+    "id": 667,
+    "name": "BO Series control buttons with line",
+    "slug": "bo-series-control-buttons-with-line",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/bo-series-control-buttons-with-line/"
+   },
+   {
+    "id": 688,
+    "name": "BO series covers",
+    "slug": "bo-series-lids",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/bo-series-lids/"
+   },
+   {
+    "id": 477,
+    "name": "Boxed",
+    "slug": "boxed",
+    "parent": 476,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/resistors-load-banks/boxed/"
+   },
+   {
+    "id": 481,
+    "name": "Braking resistors",
+    "slug": "braking-resistors",
+    "parent": 476,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/resistors-load-banks/braking-resistors/"
+   },
+   {
+    "id": 673,
+    "name": "Casing covers",
+    "slug": "covers",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/covers/"
+   },
+   {
+    "id": 482,
+    "name": "Cemented",
+    "slug": "cemented",
+    "parent": 476,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/resistors-load-banks/cemented/"
+   },
+   {
+    "id": 485,
+    "name": "Ceramic rheostats",
+    "slug": "ceramic-rheostats",
+    "parent": 521,
+    "count": 5,
+    "link": "https://grupotorivac.com/en/categoria-producto/rheostats-and-coiled-potentiometers/ceramic-rheostats/"
+   },
+   {
+    "id": 572,
+    "name": "Chokes | Inductances | Toroidal Reactances",
+    "slug": "chokes-inductances-toroidal-reactances",
+    "parent": 0,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/chokes-inductances-toroidal-reactances/"
+   },
+   {
+    "id": 569,
+    "name": "Control buttons",
+    "slug": "control-buttons",
+    "parent": 0,
+    "count": 11,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/"
+   },
+   {
+    "id": 550,
+    "name": "Control buttons and accessories",
+    "slug": "control-buttons-and-accessories",
+    "parent": 0,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons-and-accessories/"
+   },
+   {
+    "id": 464,
+    "name": "Conventional transformer",
+    "slug": "conventional-transformer",
+    "parent": 456,
+    "count": 3,
+    "link": "https://grupotorivac.com/en/categoria-producto/transformers/conventional-transformer/"
+   },
+   {
+    "id": 503,
+    "name": "Converters",
+    "slug": "converters",
+    "parent": 492,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/electronic-equipment/converters/"
+   },
+   {
+    "id": 450,
+    "name": "Custom manufacturing",
+    "slug": "custom-manufacturing",
+    "parent": 448,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/custom-manufacturing/"
+   },
+   {
+    "id": 499,
+    "name": "DC power supplies",
+    "slug": "dc-power-supplies",
+    "parent": 492,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/electronic-equipment/dc-power-supplies/"
+   },
+   {
+    "id": 590,
+    "name": "Desktop equipment",
+    "slug": "benchtop-units",
+    "parent": 448,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/benchtop-units/"
+   },
+   {
+    "id": 584,
+    "name": "Double manual",
+    "slug": "double-manual",
+    "parent": 581,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/double-manual/"
+   },
+   {
+    "id": 581,
+    "name": "Double Variator",
+    "slug": "dual-variator",
+    "parent": 448,
+    "count": 2,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/"
+   },
+   {
+    "id": 627,
+    "name": "Doubles",
+    "slug": "dual-potentiometers",
+    "parent": 599,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/dual-potentiometers/"
+   },
+   {
+    "id": 587,
+    "name": "Dual motorized",
+    "slug": "dual-motorized",
+    "parent": 581,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/dual-motorized/"
+   },
+   {
+    "id": 492,
+    "name": "Electronic equipment",
+    "slug": "electronic-equipment",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/electronic-equipment/"
+   },
+   {
+    "id": 515,
+    "name": "Encapsulated coils",
+    "slug": "encapsulated-coils",
+    "parent": 0,
+    "count": 2,
+    "link": "https://grupotorivac.com/en/categoria-producto/encapsulated-coils/"
+   },
+   {
+    "id": 682,
+    "name": "Estators",
+    "slug": "buttons-estators",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/buttons-estators/"
+   },
+   {
+    "id": 670,
+    "name": "Graded covers",
+    "slug": "graduated-covers",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/graduated-covers/"
+   },
+   {
+    "id": 679,
+    "name": "Graduated discs",
+    "slug": "graduated-discs",
+    "parent": 569,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/control-buttons/graduated-discs/"
+   },
+   {
+    "id": 505,
+    "name": "Grounding resistors",
+    "slug": "grounding-resistors",
+    "parent": 476,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/resistors-load-banks/grounding-resistors/"
+   },
+   {
+    "id": 646,
+    "name": "HB4 socket",
+    "slug": "socket-jack-2",
+    "parent": 575,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/socket-jack/socket-jack-2/"
+   },
+   {
+    "id": 488,
+    "name": "Helical",
+    "slug": "helical",
+    "parent": 476,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/resistors-load-banks/helical/"
+   },
+   {
+    "id": 648,
+    "name": "HSR4 safety socket",
+    "slug": "socket-jack-hsr4",
+    "parent": 575,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/socket-jack/socket-jack-hsr4/"
+   },
+   {
+    "id": 493,
+    "name": "Industrial control",
+    "slug": "industrial-control",
+    "parent": 492,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/electronic-equipment/industrial-control/"
+   },
+   {
+    "id": 642,
+    "name": "led 10mm",
+    "slug": "led-10mm",
+    "parent": 563,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/portaled/led-10mm/"
+   },
+   {
+    "id": 645,
+    "name": "led 3mm",
+    "slug": "portaled-led-3mm",
+    "parent": 563,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/portaled/portaled-led-3mm/"
+   },
+   {
+    "id": 644,
+    "name": "led 5mm",
+    "slug": "portaled-led-5mm",
+    "parent": 563,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/portaled/portaled-led-5mm/"
+   },
+   {
+    "id": 643,
+    "name": "led 8mm",
+    "slug": "portaled-led-8mm",
+    "parent": 563,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/portaled/portaled-led-8mm/"
+   },
+   {
+    "id": 508,
+    "name": "Load banks",
+    "slug": "load-banks",
+    "parent": 476,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/resistors-load-banks/load-banks/"
+   },
+   {
+    "id": 545,
+    "name": "Manual",
+    "slug": "manual",
+    "parent": 544,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/three-phase-drives/manual/"
+   },
+   {
+    "id": 543,
+    "name": "Manual",
+    "slug": "trifasicos-manual",
+    "parent": 536,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/single-phase-inverters/trifasicos-manual/"
+   },
+   {
+    "id": 693,
+    "name": "Modbus comunication",
+    "slug": "comunicacion-modbus",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/comunicacion-modbus/"
+   },
+   {
+    "id": 548,
+    "name": "Motorized",
+    "slug": "three-phase-motorized",
+    "parent": 544,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/three-phase-drives/three-phase-motorized/"
+   },
+   {
+    "id": 537,
+    "name": "Motorized",
+    "slug": "single-phase-motorized",
+    "parent": 536,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/single-phase-inverters/single-phase-motorized/"
+   },
+   {
+    "id": 560,
+    "name": "Nuclei",
+    "slug": "cores",
+    "parent": 0,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/cores/"
+   },
+   {
+    "id": 563,
+    "name": "Portaled",
+    "slug": "portaled",
+    "parent": 0,
+    "count": 4,
+    "link": "https://grupotorivac.com/en/categoria-producto/portaled/"
+   },
+   {
+    "id": 696,
+    "name": "Portaleds",
+    "slug": "portaleds",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/portaleds/"
+   },
+   {
+    "id": 599,
+    "name": "Potentiometers",
+    "slug": "potentiometers",
+    "parent": 521,
+    "count": 3,
+    "link": "https://grupotorivac.com/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/"
+   },
+   {
+    "id": 566,
+    "name": "Potentiometers and rheostats",
+    "slug": "potentiometers-and-rheostats",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/potentiometers-and-rheostats/"
+   },
+   {
+    "id": 449,
+    "name": "Regulating accessories",
+    "slug": "regulating-accessories",
+    "parent": 448,
+    "count": 3,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/regulating-accessories/"
+   },
+   {
+    "id": 494,
+    "name": "Renewable energies",
+    "slug": "renewable-energies",
+    "parent": 492,
+    "count": 0,
+    "link": "https://grupotorivac.com/en/categoria-producto/electronic-equipment/renewable-energies/"
+   },
+   {
+    "id": 476,
+    "name": "Resistors : Load banks",
+    "slug": "resistors-load-banks",
+    "parent": 0,
+    "count": 7,
+    "link": "https://grupotorivac.com/en/categoria-producto/resistors-load-banks/"
+   },
+   {
+    "id": 521,
+    "name": "Rheostats and coiled potentiometers",
+    "slug": "rheostats-and-coiled-potentiometers",
+    "parent": 0,
+    "count": 9,
+    "link": "https://grupotorivac.com/en/categoria-producto/rheostats-and-coiled-potentiometers/"
+   },
+   {
+    "id": 516,
+    "name": "Round",
+    "slug": "round",
+    "parent": 515,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/encapsulated-coils/round/"
+   },
+   {
+    "id": 647,
+    "name": "Safety socket HBS4",
+    "slug": "socket-jack-hbs4",
+    "parent": 575,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/socket-jack/socket-jack-hbs4/"
+   },
+   {
+    "id": 649,
+    "name": "safety socket HR4",
+    "slug": "socket-jack-hr4",
+    "parent": 575,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/socket-jack/socket-jack-hr4/"
+   },
+   {
+    "id": 630,
+    "name": "Simple",
+    "slug": "simple-potentiometer",
+    "parent": 599,
+    "count": 2,
+    "link": "https://grupotorivac.com/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/simple-potentiometer/"
+   },
+   {
+    "id": 536,
+    "name": "Single Phase Inverters",
+    "slug": "single-phase-inverters",
+    "parent": 448,
+    "count": 2,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/single-phase-inverters/"
+   },
+   {
+    "id": 613,
+    "name": "Single-phase",
+    "slug": "single-phase-avs",
+    "parent": 607,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/single-phase-avs/"
+   },
+   {
+    "id": 622,
+    "name": "single-phase-bavs",
+    "slug": "monofasico-serie-bavs",
+    "parent": 610,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/monofasico-serie-bavs/"
+   },
+   {
+    "id": 575,
+    "name": "Sockets",
+    "slug": "socket-jack",
+    "parent": 0,
+    "count": 4,
+    "link": "https://grupotorivac.com/en/categoria-producto/socket-jack/"
+   },
+   {
+    "id": 578,
+    "name": "Squares",
+    "slug": "square",
+    "parent": 515,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/encapsulated-coils/square/"
+   },
+   {
+    "id": 511,
+    "name": "Starting resistors",
+    "slug": "starting-resistors",
+    "parent": 476,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/resistors-load-banks/starting-resistors/"
+   },
+   {
+    "id": 465,
+    "name": "TC Series",
+    "slug": "tc-series",
+    "parent": 464,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/transformers/conventional-transformer/tc-series/"
+   },
+   {
+    "id": 472,
+    "name": "TCE Series",
+    "slug": "tce-series",
+    "parent": 464,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/transformers/conventional-transformer/tce-series/"
+   },
+   {
+    "id": 459,
+    "name": "TCi Series (printed circuit board enclosure)",
+    "slug": "tci-series-printed-circuit-board-enclosure",
+    "parent": 457,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/transformers/toroidal-transformers/tci-series-printed-circuit-board-enclosure/"
+   },
+   {
+    "id": 527,
+    "name": "TCT",
+    "slug": "tct",
+    "parent": 464,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/transformers/conventional-transformer/tct/"
+   },
+   {
+    "id": 458,
+    "name": "TE Series",
+    "slug": "te-series",
+    "parent": 457,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/transformers/toroidal-transformers/te-series/"
+   },
+   {
+    "id": 619,
+    "name": "Three-phase",
+    "slug": "serie-bavs-three-phase",
+    "parent": 610,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/serie-bavs-three-phase/"
+   },
+   {
+    "id": 616,
+    "name": "Three-phase",
+    "slug": "serie-avs-three-phase",
+    "parent": 607,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/serie-avs-three-phase/"
+   },
+   {
+    "id": 544,
+    "name": "Three-phase drives",
+    "slug": "three-phase-drives",
+    "parent": 448,
+    "count": 2,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/three-phase-drives/"
+   },
+   {
+    "id": 457,
+    "name": "Toroidal transformers",
+    "slug": "toroidal-transformers",
+    "parent": 456,
+    "count": 3,
+    "link": "https://grupotorivac.com/en/categoria-producto/transformers/toroidal-transformers/"
+   },
+   {
+    "id": 456,
+    "name": "Transformers",
+    "slug": "transformers",
+    "parent": 0,
+    "count": 6,
+    "link": "https://grupotorivac.com/en/categoria-producto/transformers/"
+   },
+   {
+    "id": 530,
+    "name": "TT Series",
+    "slug": "tt-series",
+    "parent": 457,
+    "count": 1,
+    "link": "https://grupotorivac.com/en/categoria-producto/transformers/toroidal-transformers/tt-series/"
+   },
+   {
+    "id": 517,
+    "name": "Uncategorized",
+    "slug": "uncategorized",
+    "parent": 0,
+    "count": 4,
+    "link": "https://grupotorivac.com/en/categoria-producto/uncategorized/"
+   },
+   {
+    "id": 463,
+    "name": "Voltage stabilizers",
+    "slug": "voltage-stabilizers",
+    "parent": 0,
+    "count": 5,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-stabilizers/"
+   },
+   {
+    "id": 448,
+    "name": "Voltage variators - Adjustable autotransformers",
+    "slug": "voltage-variators-adjustable-autotransformers",
+    "parent": 0,
+    "count": 12,
+    "link": "https://grupotorivac.com/en/categoria-producto/voltage-variators-adjustable-autotransformers/"
+   }
+  ],
+  "fr": [
+   {
+    "id": 632,
+    "name": "2x3W",
+    "slug": "2x3w",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/2x3w/"
+   },
+   {
+    "id": 546,
+    "name": "Accessoires de régulation",
+    "slug": "accessoires-de-regulation",
+    "parent": 532,
+    "count": 3,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/accessoires-de-regulation/"
+   },
+   {
+    "id": 498,
+    "name": "Alimentations en courant continu",
+    "slug": "alimentations-en-courant-continu",
+    "parent": 489,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/alimentations-en-courant-continu/"
+   },
+   {
+    "id": 506,
+    "name": "Bancs de charge",
+    "slug": "bancs-de-charge",
+    "parent": 474,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/bancs-de-charge/"
+   },
+   {
+    "id": 512,
+    "name": "Bobines encapsulées",
+    "slug": "bobines-encapsulees",
+    "parent": 0,
+    "count": 2,
+    "link": "https://grupotorivac.com/fr/categoria-producto/bobines-encapsulees/"
+   },
+   {
+    "id": 570,
+    "name": "Boutons de commande",
+    "slug": "boutons-de-commande",
+    "parent": 0,
+    "count": 11,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/"
+   },
+   {
+    "id": 668,
+    "name": "Boutons de commande BO série avec ligne",
+    "slug": "boutons-de-commande-de-la-serie-bo-avec-ligne",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-avec-ligne/"
+   },
+   {
+    "id": 665,
+    "name": "Boutons de commande de la série BO (brillants)",
+    "slug": "boutons-de-commande-de-la-serie-bo-brillants",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-brillants/"
+   },
+   {
+    "id": 452,
+    "name": "Boutons de commande et accessoires",
+    "slug": "boutons-de-commande-et-accessoires",
+    "parent": 0,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande-et-accessoires/"
+   },
+   {
+    "id": 662,
+    "name": "Boutons de commande série BM (Matt)",
+    "slug": "boutons-de-commande-de-la-serie-bm-mat",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bm-mat/"
+   },
+   {
+    "id": 579,
+    "name": "Carrés",
+    "slug": "carre",
+    "parent": 512,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/bobines-encapsulees/carre/"
+   },
+   {
+    "id": 659,
+    "name": "Cerceaux à flèches",
+    "slug": "cerceaux-avec-fleche",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/cerceaux-avec-fleche/"
+   },
+   {
+    "id": 480,
+    "name": "Cimenté",
+    "slug": "cimente",
+    "parent": 474,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/cimente/"
+   },
+   {
+    "id": 694,
+    "name": "communicateur Modbus",
+    "slug": "comunicacion-modbus",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/comunicacion-modbus/"
+   },
+   {
+    "id": 490,
+    "name": "Contrôle industriel",
+    "slug": "controle-industriel",
+    "parent": 489,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/controle-industriel/"
+   },
+   {
+    "id": 502,
+    "name": "Convertisseurs",
+    "slug": "convertisseurs",
+    "parent": 489,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/convertisseurs/"
+   },
+   {
+    "id": 674,
+    "name": "Couvercles de boîtier",
+    "slug": "couvertures",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/couvertures/"
+   },
+   {
+    "id": 686,
+    "name": "Couvercles de la série BM",
+    "slug": "couvertures-de-la-serie-bm",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/couvertures-de-la-serie-bm/"
+   },
+   {
+    "id": 671,
+    "name": "Couvertures classées",
+    "slug": "couvertures-graduees",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/couvertures-graduees/"
+   },
+   {
+    "id": 677,
+    "name": "Disques Arrow",
+    "slug": "disques-fleches",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/disques-fleches/"
+   },
+   {
+    "id": 680,
+    "name": "Disques gradués",
+    "slug": "disques-gradues",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/disques-gradues/"
+   },
+   {
+    "id": 585,
+    "name": "Double manuel",
+    "slug": "manuel-double",
+    "parent": 582,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/manuel-double/"
+   },
+   {
+    "id": 588,
+    "name": "Double motorisation",
+    "slug": "double-motorisation",
+    "parent": 582,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/double-motorisation/"
+   },
+   {
+    "id": 582,
+    "name": "Double onduleur",
+    "slug": "variateur-double",
+    "parent": 532,
+    "count": 2,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/"
+   },
+   {
+    "id": 628,
+    "name": "Doubles",
+    "slug": "potentiometres-doubles",
+    "parent": 600,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/potentiometres-doubles/"
+   },
+   {
+    "id": 475,
+    "name": "En boîte",
+    "slug": "en-boite",
+    "parent": 474,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/en-boite/"
+   },
+   {
+    "id": 496,
+    "name": "Énergies renouvelables",
+    "slug": "energies-renouvelables",
+    "parent": 489,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/energies-renouvelables/"
+   },
+   {
+    "id": 541,
+    "name": "Entraînements triphasés",
+    "slug": "entrainements-triphases",
+    "parent": 532,
+    "count": 2,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/"
+   },
+   {
+    "id": 591,
+    "name": "Équipement de bureau",
+    "slug": "unites-de-paillasse",
+    "parent": 532,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/unites-de-paillasse/"
+   },
+   {
+    "id": 489,
+    "name": "Équipements électroniques",
+    "slug": "equipements-electroniques",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/equipements-electroniques/"
+   },
+   {
+    "id": 683,
+    "name": "Estateurs",
+    "slug": "estateurs",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/estateurs/"
+   },
+   {
+    "id": 486,
+    "name": "Hélicoïdale",
+    "slug": "helicoidale",
+    "parent": 474,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/helicoidale/"
+   },
+   {
+    "id": 573,
+    "name": "Inductances | Réactances toroïdales",
+    "slug": "bobines-darret-inductances-reactances-toroidales",
+    "parent": 0,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/bobines-darret-inductances-reactances-toroidales/"
+   },
+   {
+    "id": 689,
+    "name": "La série BO couvre",
+    "slug": "couvercles-de-la-serie-bo",
+    "parent": 570,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/boutons-de-commande/couvercles-de-la-serie-bo/"
+   },
+   {
+    "id": 634,
+    "name": "led 10mm",
+    "slug": "porte-10-mm",
+    "parent": 564,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/portail/porte-10-mm/"
+   },
+   {
+    "id": 636,
+    "name": "led 3mm",
+    "slug": "led-portique-3-mm",
+    "parent": 564,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/portail/led-portique-3-mm/"
+   },
+   {
+    "id": 638,
+    "name": "led 5mm",
+    "slug": "led-portale-5-mm",
+    "parent": 564,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/portail/led-portale-5-mm/"
+   },
+   {
+    "id": 639,
+    "name": "led 8mm",
+    "slug": "led-portique-8-mm",
+    "parent": 564,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/portail/led-portique-8-mm/"
+   },
+   {
+    "id": 542,
+    "name": "Manuel",
+    "slug": "manuel",
+    "parent": 541,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/manuel/"
+   },
+   {
+    "id": 540,
+    "name": "Manuel",
+    "slug": "manuel",
+    "parent": 534,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/manuel/"
+   },
+   {
+    "id": 623,
+    "name": "Monophasé",
+    "slug": "monophase",
+    "parent": 611,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/monophase/"
+   },
+   {
+    "id": 614,
+    "name": "Monophasé",
+    "slug": "monophase",
+    "parent": 608,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/monophase/"
+   },
+   {
+    "id": 547,
+    "name": "Motorisé",
+    "slug": "motorise",
+    "parent": 541,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/motorise/"
+   },
+   {
+    "id": 535,
+    "name": "Motorisé",
+    "slug": "motorise",
+    "parent": 534,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/motorise/"
+   },
+   {
+    "id": 561,
+    "name": "Noyaux",
+    "slug": "noyaux",
+    "parent": 0,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/noyaux/"
+   },
+   {
+    "id": 534,
+    "name": "Onduleurs monophasés",
+    "slug": "onduleurs-monophases",
+    "parent": 532,
+    "count": 2,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/"
+   },
+   {
+    "id": 697,
+    "name": "Portaleds",
+    "slug": "portaleds",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/portaleds/"
+   },
+   {
+    "id": 564,
+    "name": "Porté",
+    "slug": "portail",
+    "parent": 0,
+    "count": 4,
+    "link": "https://grupotorivac.com/fr/categoria-producto/portail/"
+   },
+   {
+    "id": 600,
+    "name": "Potentiomètres",
+    "slug": "potentiometres",
+    "parent": 520,
+    "count": 3,
+    "link": "https://grupotorivac.com/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/"
+   },
+   {
+    "id": 567,
+    "name": "Potentiomètres et rhéostats",
+    "slug": "potentiometres-et-rheostats",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/potentiometres-et-rheostats/"
+   },
+   {
+    "id": 652,
+    "name": "Prise de sécurité HBS4",
+    "slug": "prise-de-securite-hbs4",
+    "parent": 576,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/prise-jack/prise-de-securite-hbs4/"
+   },
+   {
+    "id": 656,
+    "name": "prise de sécurité HR4",
+    "slug": "prise-de-securite-hr4",
+    "parent": 576,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/prise-jack/prise-de-securite-hr4/"
+   },
+   {
+    "id": 654,
+    "name": "Prise de sécurité HSR4",
+    "slug": "prise-de-securite-hsr4",
+    "parent": 576,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/prise-jack/prise-de-securite-hsr4/"
+   },
+   {
+    "id": 650,
+    "name": "Prise HB4",
+    "slug": "prise-jack-hb4",
+    "parent": 576,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/prise-jack/prise-jack-hb4/"
+   },
+   {
+    "id": 576,
+    "name": "Prises",
+    "slug": "prise-jack",
+    "parent": 0,
+    "count": 4,
+    "link": "https://grupotorivac.com/fr/categoria-producto/prise-jack/"
+   },
+   {
+    "id": 549,
+    "name": "Production sur mesure",
+    "slug": "production-sur-mesure",
+    "parent": 532,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/production-sur-mesure/"
+   },
+   {
+    "id": 532,
+    "name": "Régulateurs de tension - Autotransformateurs réglables",
+    "slug": "regulateurs-de-tension-autotransformateurs-reglables",
+    "parent": 0,
+    "count": 12,
+    "link": "https://grupotorivac.com/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/"
+   },
+   {
+    "id": 474,
+    "name": "Résistances : bancs de charge",
+    "slug": "resistances-bancs-de-charge",
+    "parent": 0,
+    "count": 7,
+    "link": "https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/"
+   },
+   {
+    "id": 509,
+    "name": "Résistances de démarrage",
+    "slug": "resistances-de-demarrage",
+    "parent": 474,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-demarrage/"
+   },
+   {
+    "id": 691,
+    "name": "Résistances de freinage",
+    "slug": "resistances-de-freinage",
+    "parent": 474,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-freinage/"
+   },
+   {
+    "id": 504,
+    "name": "Résistances de mise à la terre",
+    "slug": "resistances-de-mise-a-la-terre",
+    "parent": 474,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-mise-a-la-terre/"
+   },
+   {
+    "id": 483,
+    "name": "Rhéostats en céramique",
+    "slug": "rheostats-en-ceramique",
+    "parent": 520,
+    "count": 5,
+    "link": "https://grupotorivac.com/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/rheostats-en-ceramique/"
+   },
+   {
+    "id": 520,
+    "name": "Rhéostats et potentiomètres à boudin",
+    "slug": "rheostats-et-potentiometres-a-boudin",
+    "parent": 0,
+    "count": 9,
+    "link": "https://grupotorivac.com/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/"
+   },
+   {
+    "id": 514,
+    "name": "Rond",
+    "slug": "rond",
+    "parent": 512,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/bobines-encapsulees/rond/"
+   },
+   {
+    "id": 451,
+    "name": "Sans catégorie",
+    "slug": "sans-categorie",
+    "parent": 0,
+    "count": 5,
+    "link": "https://grupotorivac.com/fr/categoria-producto/sans-categorie/"
+   },
+   {
+    "id": 611,
+    "name": "Série BAVS : Électronique",
+    "slug": "serie-bavs-electronique",
+    "parent": 523,
+    "count": 2,
+    "link": "https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/"
+   },
+   {
+    "id": 467,
+    "name": "Série TC",
+    "slug": "serie-tc",
+    "parent": 466,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/transformateurs/transformateur-conventionnel/serie-tc/"
+   },
+   {
+    "id": 524,
+    "name": "Série TCE",
+    "slug": "serie-tce",
+    "parent": 466,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/transformateurs/transformateur-conventionnel/serie-tce/"
+   },
+   {
+    "id": 473,
+    "name": "Série TCi (encapsulation de circuits imprimés)",
+    "slug": "serie-tci-encapsulation-de-circuits-imprimes",
+    "parent": 470,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-tci-encapsulation-de-circuits-imprimes/"
+   },
+   {
+    "id": 471,
+    "name": "Série TE",
+    "slug": "serie-te",
+    "parent": 470,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-te/"
+   },
+   {
+    "id": 529,
+    "name": "Série TT",
+    "slug": "serie-tt",
+    "parent": 470,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-tt/"
+   },
+   {
+    "id": 602,
+    "name": "Simple",
+    "slug": "simple",
+    "parent": 600,
+    "count": 2,
+    "link": "https://grupotorivac.com/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/simple/"
+   },
+   {
+    "id": 608,
+    "name": "Stabilisateurs de la série AVS : électromécaniques avec servomoteur",
+    "slug": "estabilizadores-serie-avs-electromecanicos-con-servomotor",
+    "parent": 523,
+    "count": 2,
+    "link": "https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/"
+   },
+   {
+    "id": 523,
+    "name": "Stabilisateurs de tension",
+    "slug": "stabilisateurs-de-tension",
+    "parent": 0,
+    "count": 5,
+    "link": "https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/"
+   },
+   {
+    "id": 526,
+    "name": "TCT",
+    "slug": "tct",
+    "parent": 466,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/transformateurs/transformateur-conventionnel/tct/"
+   },
+   {
+    "id": 466,
+    "name": "Transformateur conventionnel",
+    "slug": "transformateur-conventionnel",
+    "parent": 469,
+    "count": 3,
+    "link": "https://grupotorivac.com/fr/categoria-producto/transformateurs/transformateur-conventionnel/"
+   },
+   {
+    "id": 469,
+    "name": "Transformateurs",
+    "slug": "transformateurs",
+    "parent": 0,
+    "count": 6,
+    "link": "https://grupotorivac.com/fr/categoria-producto/transformateurs/"
+   },
+   {
+    "id": 470,
+    "name": "Transformateurs toroïdaux",
+    "slug": "transformateurs-toroidaux",
+    "parent": 469,
+    "count": 3,
+    "link": "https://grupotorivac.com/fr/categoria-producto/transformateurs/transformateurs-toroidaux/"
+   },
+   {
+    "id": 620,
+    "name": "triphasé",
+    "slug": "triphase",
+    "parent": 611,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/triphase/"
+   },
+   {
+    "id": 617,
+    "name": "Triphasé",
+    "slug": "triphase",
+    "parent": 608,
+    "count": 1,
+    "link": "https://grupotorivac.com/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/triphase/"
+   },
+   {
+    "id": 594,
+    "name": "Unités de paillasse",
+    "slug": "unites-de-paillasse",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/unites-de-paillasse/"
+   },
+   {
+    "id": 597,
+    "name": "Unités de paillasse",
+    "slug": "unites-de-paillasse-2",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/fr/categoria-producto/unites-de-paillasse-2/"
+   }
+  ],
+  "de": [
+   {
+    "id": 633,
+    "name": "2x3W",
+    "slug": "2x3w",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/2x3w/"
+   },
+   {
+    "id": 672,
+    "name": "Abgestufte Bezüge",
+    "slug": "gegradueerde-covers",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/gegradueerde-covers/"
+   },
+   {
+    "id": 681,
+    "name": "Abgestufte Scheiben",
+    "slug": "gegradueerde-schijven",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/gegradueerde-schijven/"
+   },
+   {
+    "id": 612,
+    "name": "BAVS Serie: Elektronik",
+    "slug": "bavs-serie-elektronica",
+    "parent": 525,
+    "count": 2,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/"
+   },
+   {
+    "id": 666,
+    "name": "Bedientasten der BO-Serie (glänzend)",
+    "slug": "bo-serie-bedieningsknoppen-glanzend",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bo-serie-bedieningsknoppen-glanzend/"
+   },
+   {
+    "id": 663,
+    "name": "Bedientasten Serie BM (Matt)",
+    "slug": "bm-serie-bedieningsknoppen-mat",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bm-serie-bedieningsknoppen-mat/"
+   },
+   {
+    "id": 687,
+    "name": "BM Serie Abdeckungen",
+    "slug": "bm-serie-covers",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bm-serie-covers/"
+   },
+   {
+    "id": 690,
+    "name": "BO-Serie umfasst",
+    "slug": "bo-serie-deksels",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bo-serie-deksels/"
+   },
+   {
+    "id": 479,
+    "name": "Boxen",
+    "slug": "boxen",
+    "parent": 478,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/boxen/"
+   },
+   {
+    "id": 692,
+    "name": "Bremswiderstände",
+    "slug": "remweerstanden",
+    "parent": 478,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/remweerstanden/"
+   },
+   {
+    "id": 500,
+    "name": "DC-Stromversorgungen",
+    "slug": "dc-stromversorgungen",
+    "parent": 495,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/dc-stromversorgungen/"
+   },
+   {
+    "id": 586,
+    "name": "Doppelt manuell",
+    "slug": "dubbele-handleiding",
+    "parent": 583,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/dubbele-handleiding/"
+   },
+   {
+    "id": 629,
+    "name": "Doppelte",
+    "slug": "dubbele-potentiometers",
+    "parent": 601,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/dubbele-potentiometers/"
+   },
+   {
+    "id": 583,
+    "name": "Doppelter Wechselrichter",
+    "slug": "dubbele-variator",
+    "parent": 533,
+    "count": 2,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/"
+   },
+   {
+    "id": 618,
+    "name": "Dreiphasig",
+    "slug": "driefasen",
+    "parent": 609,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/driefasen/"
+   },
+   {
+    "id": 538,
+    "name": "Dreiphasige Antriebe",
+    "slug": "dreiphasige-antriebe",
+    "parent": 533,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/"
+   },
+   {
+    "id": 621,
+    "name": "Driefasen",
+    "slug": "driefasen",
+    "parent": 612,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/driefasen/"
+   },
+   {
+    "id": 574,
+    "name": "Drosseln | Induktivitäten | Ringkerndrosseln",
+    "slug": "smoorspoelen-inductanties-toroidale-reactanties",
+    "parent": 0,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/smoorspoelen-inductanties-toroidale-reactanties/"
+   },
+   {
+    "id": 589,
+    "name": "Dubbele motor",
+    "slug": "dubbele-motor",
+    "parent": 583,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/dubbele-motor/"
+   },
+   {
+    "id": 603,
+    "name": "Einfach",
+    "slug": "einfach",
+    "parent": 601,
+    "count": 2,
+    "link": "https://grupotorivac.com/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/einfach/"
+   },
+   {
+    "id": 557,
+    "name": "Einphasen-Wechselrichter",
+    "slug": "einphasen-wechselrichter",
+    "parent": 533,
+    "count": 2,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/einphasen-wechselrichter/"
+   },
+   {
+    "id": 615,
+    "name": "Einphasig",
+    "slug": "monofase",
+    "parent": 609,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/monofase/"
+   },
+   {
+    "id": 495,
+    "name": "Elektronische Ausrüstung",
+    "slug": "elektronische-ausrustung",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/"
+   },
+   {
+    "id": 507,
+    "name": "Erdungswiderstände",
+    "slug": "erdungswiderstande",
+    "parent": 478,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/erdungswiderstande/"
+   },
+   {
+    "id": 497,
+    "name": "Erneuerbare Energien",
+    "slug": "erneuerbare-energien",
+    "parent": 495,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/erneuerbare-energien/"
+   },
+   {
+    "id": 675,
+    "name": "Gehäuseabdeckungen",
+    "slug": "omslagen",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/omslagen/"
+   },
+   {
+    "id": 518,
+    "name": "Gekapselte Spulen",
+    "slug": "gekapselte-spulen",
+    "parent": 0,
+    "count": 2,
+    "link": "https://grupotorivac.com/de/categoria-producto/gekapselte-spulen/"
+   },
+   {
+    "id": 626,
+    "name": "Handbuch",
+    "slug": "handmatige-driefasen",
+    "parent": 538,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/handmatige-driefasen/"
+   },
+   {
+    "id": 559,
+    "name": "Handbuch",
+    "slug": "handbuch",
+    "parent": 557,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/einphasen-wechselrichter/handbuch/"
+   },
+   {
+    "id": 651,
+    "name": "HB4-Buchse",
+    "slug": "socket-jack-hb4-10a",
+    "parent": 577,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/socket-jack/socket-jack-hb4-10a/"
+   },
+   {
+    "id": 554,
+    "name": "Industrielle Steuerung",
+    "slug": "industrielle-steuerung",
+    "parent": 495,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/industrielle-steuerung/"
+   },
+   {
+    "id": 487,
+    "name": "Keramische Rheostate",
+    "slug": "keramische-rheostate",
+    "parent": 522,
+    "count": 5,
+    "link": "https://grupotorivac.com/de/categoria-producto/rheostate-und-spulenpotentiometer/keramische-rheostate/"
+   },
+   {
+    "id": 562,
+    "name": "Kerne",
+    "slug": "kernen",
+    "parent": 0,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/kernen/"
+   },
+   {
+    "id": 460,
+    "name": "Konventioneller Transformator",
+    "slug": "konventioneller-transformator",
+    "parent": 453,
+    "count": 3,
+    "link": "https://grupotorivac.com/de/categoria-producto/transformatoren/konventioneller-transformator/"
+   },
+   {
+    "id": 501,
+    "name": "Konverter",
+    "slug": "konverter",
+    "parent": 495,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/elektronische-ausrustung/konverter/"
+   },
+   {
+    "id": 510,
+    "name": "Ladebänke",
+    "slug": "ladebanke",
+    "parent": 478,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/ladebanke/"
+   },
+   {
+    "id": 635,
+    "name": "led 10mm",
+    "slug": "geperforeerde-led-10mm",
+    "parent": 565,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/geportaliseerd/geperforeerde-led-10mm/"
+   },
+   {
+    "id": 637,
+    "name": "led 3mm",
+    "slug": "geportaliseerde-led-3mm",
+    "parent": 565,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/geportaliseerd/geportaliseerde-led-3mm/"
+   },
+   {
+    "id": 640,
+    "name": "led 5mm",
+    "slug": "geportaliseerde-led-5mm",
+    "parent": 565,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/geportaliseerd/geportaliseerde-led-5mm/"
+   },
+   {
+    "id": 641,
+    "name": "led 8mm",
+    "slug": "geporteerde-led-8mm",
+    "parent": 565,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/geportaliseerd/geporteerde-led-8mm/"
+   },
+   {
+    "id": 556,
+    "name": "Maßgeschneiderte Fertigung",
+    "slug": "masgeschneiderte-fertigung",
+    "parent": 533,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/masgeschneiderte-fertigung/"
+   },
+   {
+    "id": 695,
+    "name": "Modbus-Kommunikator",
+    "slug": "comunicacion-modbus",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/comunicacion-modbus/"
+   },
+   {
+    "id": 624,
+    "name": "Monofase",
+    "slug": "monofase",
+    "parent": 612,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/monofase/"
+   },
+   {
+    "id": 558,
+    "name": "Motorisiert",
+    "slug": "motorisiert",
+    "parent": 557,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/einphasen-wechselrichter/motorisiert/"
+   },
+   {
+    "id": 539,
+    "name": "Motorisiert",
+    "slug": "motorisiert",
+    "parent": 538,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/motorisiert/"
+   },
+   {
+    "id": 446,
+    "name": "Nicht kategorisiert",
+    "slug": "nicht-kategorisiert",
+    "parent": 0,
+    "count": 4,
+    "link": "https://grupotorivac.com/de/categoria-producto/nicht-kategorisiert/"
+   },
+   {
+    "id": 660,
+    "name": "Pfeil-Reifen",
+    "slug": "hoepels-met-pijl",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/hoepels-met-pijl/"
+   },
+   {
+    "id": 678,
+    "name": "Pfeil-Scheiben",
+    "slug": "pijlschijven",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/pijlschijven/"
+   },
+   {
+    "id": 698,
+    "name": "Portaleds",
+    "slug": "portaleds",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/portaleds/"
+   },
+   {
+    "id": 565,
+    "name": "Portiert",
+    "slug": "geportaliseerd",
+    "parent": 0,
+    "count": 4,
+    "link": "https://grupotorivac.com/de/categoria-producto/geportaliseerd/"
+   },
+   {
+    "id": 601,
+    "name": "Potentiometer",
+    "slug": "potentiometer",
+    "parent": 522,
+    "count": 3,
+    "link": "https://grupotorivac.com/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/"
+   },
+   {
+    "id": 568,
+    "name": "Potentiometers en reostaten",
+    "slug": "potentiometers-en-reostaten",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/potentiometers-en-reostaten/"
+   },
+   {
+    "id": 580,
+    "name": "Quadrate",
+    "slug": "vierkant",
+    "parent": 518,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/gekapselte-spulen/vierkant/"
+   },
+   {
+    "id": 522,
+    "name": "Rheostate und Spulenpotentiometer",
+    "slug": "rheostate-und-spulenpotentiometer",
+    "parent": 0,
+    "count": 9,
+    "link": "https://grupotorivac.com/de/categoria-producto/rheostate-und-spulenpotentiometer/"
+   },
+   {
+    "id": 454,
+    "name": "Ringkerntransformatoren",
+    "slug": "ringkerntransformatoren",
+    "parent": 453,
+    "count": 3,
+    "link": "https://grupotorivac.com/de/categoria-producto/transformatoren/ringkerntransformatoren/"
+   },
+   {
+    "id": 519,
+    "name": "Rund",
+    "slug": "rund",
+    "parent": 518,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/gekapselte-spulen/rund/"
+   },
+   {
+    "id": 592,
+    "name": "Schreibtischgeräte",
+    "slug": "tafelmodellen",
+    "parent": 533,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/tafelmodellen/"
+   },
+   {
+    "id": 653,
+    "name": "Sicherheitssteckdose HBS4",
+    "slug": "hbs4-veiligheidsaansluiting",
+    "parent": 577,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/socket-jack/hbs4-veiligheidsaansluiting/"
+   },
+   {
+    "id": 657,
+    "name": "Sicherheitssteckdose HR4",
+    "slug": "hr4-veiligheidsaansluiting",
+    "parent": 577,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/socket-jack/hr4-veiligheidsaansluiting/"
+   },
+   {
+    "id": 655,
+    "name": "Sicherheitssteckdose HSR4",
+    "slug": "hsr4-veiligheidsaansluiting",
+    "parent": 577,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/socket-jack/hsr4-veiligheidsaansluiting/"
+   },
+   {
+    "id": 577,
+    "name": "Socket Jack",
+    "slug": "socket-jack",
+    "parent": 0,
+    "count": 4,
+    "link": "https://grupotorivac.com/de/categoria-producto/socket-jack/"
+   },
+   {
+    "id": 533,
+    "name": "Spannungsregler - Einstellbare Spartransformatoren",
+    "slug": "spannungsregler-einstellbare-spartransformatoren",
+    "parent": 0,
+    "count": 11,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/"
+   },
+   {
+    "id": 525,
+    "name": "Spannungsstabilisatoren",
+    "slug": "spannungsstabilisatoren",
+    "parent": 0,
+    "count": 5,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/"
+   },
+   {
+    "id": 609,
+    "name": "Stabilisatoren der AVS-Serie: elektromechanisch mit Servomotor",
+    "slug": "avs-serie-stabilisatoren-elektromechanisch-met-servomotor",
+    "parent": 525,
+    "count": 2,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/"
+   },
+   {
+    "id": 513,
+    "name": "Startwiderstände",
+    "slug": "startwiderstande",
+    "parent": 478,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/startwiderstande/"
+   },
+   {
+    "id": 684,
+    "name": "Statoren",
+    "slug": "knoppen-estators",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/knoppen-estators/"
+   },
+   {
+    "id": 669,
+    "name": "Steuertasten BO Serie mit Linie",
+    "slug": "bo-serie-bedieningsknoppen-met-lijn",
+    "parent": 571,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/bo-serie-bedieningsknoppen-met-lijn/"
+   },
+   {
+    "id": 447,
+    "name": "Steuertasten und Zubehör",
+    "slug": "steuertasten-und-zubehor",
+    "parent": 0,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/steuertasten-und-zubehor/"
+   },
+   {
+    "id": 571,
+    "name": "Steuerungstasten",
+    "slug": "bedieningsknoppen",
+    "parent": 0,
+    "count": 11,
+    "link": "https://grupotorivac.com/de/categoria-producto/bedieningsknoppen/"
+   },
+   {
+    "id": 595,
+    "name": "Tafelmodellen",
+    "slug": "tafelmodellen",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/tafelmodellen/"
+   },
+   {
+    "id": 596,
+    "name": "Tafelmodellen",
+    "slug": "tafelmodellen-2",
+    "parent": 0,
+    "count": 0,
+    "link": "https://grupotorivac.com/de/categoria-producto/tafelmodellen-2/"
+   },
+   {
+    "id": 461,
+    "name": "TC Serie",
+    "slug": "tc-serie",
+    "parent": 460,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/transformatoren/konventioneller-transformator/tc-serie/"
+   },
+   {
+    "id": 468,
+    "name": "TCE-Serie",
+    "slug": "tce-serie",
+    "parent": 460,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/transformatoren/konventioneller-transformator/tce-serie/"
+   },
+   {
+    "id": 462,
+    "name": "TCi-Serie (Verkapselung von Leiterplatten)",
+    "slug": "tci-serie-verkapselung-von-leiterplatten",
+    "parent": 454,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/transformatoren/ringkerntransformatoren/tci-serie-verkapselung-von-leiterplatten/"
+   },
+   {
+    "id": 528,
+    "name": "TCT",
+    "slug": "tct",
+    "parent": 460,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/transformatoren/konventioneller-transformator/tct/"
+   },
+   {
+    "id": 455,
+    "name": "TE-Serie",
+    "slug": "te-serie",
+    "parent": 454,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/transformatoren/ringkerntransformatoren/te-serie/"
+   },
+   {
+    "id": 453,
+    "name": "Transformatoren",
+    "slug": "transformatoren",
+    "parent": 0,
+    "count": 6,
+    "link": "https://grupotorivac.com/de/categoria-producto/transformatoren/"
+   },
+   {
+    "id": 531,
+    "name": "TT-Serie",
+    "slug": "tt-serie",
+    "parent": 454,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/transformatoren/ringkerntransformatoren/tt-serie/"
+   },
+   {
+    "id": 491,
+    "name": "Wendel",
+    "slug": "wendel",
+    "parent": 478,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/wendel/"
+   },
+   {
+    "id": 478,
+    "name": "Widerstände : Lastbänke",
+    "slug": "widerstande-lastbanke",
+    "parent": 0,
+    "count": 7,
+    "link": "https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/"
+   },
+   {
+    "id": 484,
+    "name": "Zementiert",
+    "slug": "zementiert",
+    "parent": 478,
+    "count": 1,
+    "link": "https://grupotorivac.com/de/categoria-producto/widerstande-lastbanke/zementiert/"
+   },
+   {
+    "id": 555,
+    "name": "Zubehör zum Regulieren",
+    "slug": "zubehor-zum-regulieren",
+    "parent": 533,
+    "count": 3,
+    "link": "https://grupotorivac.com/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/zubehor-zum-regulieren/"
+   }
+  ]
+ }
+}

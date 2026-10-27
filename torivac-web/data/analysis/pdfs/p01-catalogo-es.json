@@ -1,0 +1,2393 @@
+{
+ "job": "p01-catalogo-es",
+ "documents": [
+  {
+   "file": "Torivac_2024.pdf",
+   "pages": [
+    1,
+    7
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "Catálogo Torivac 2024 — Variadores de tensión (PDF págs. 1-7: portada, características, especificaciones, aplicaciones y tablas de dimensiones y peso)",
+   "families": [
+    {
+     "family": "Variadores de tensión toroidales (información general, sin tabla de modelos)",
+     "series": null,
+     "page": 2,
+     "description": "El variador de tensión toroidal o autotransformador variable es un elemento básico si deseamos regular una tensión alterna, desde cero hasta el máximo, con una intensidad constante. Los variadores de tensión Torivac, se caracterizan por su robustez mecánica su alta resolución, que permite ajustes muy precisos de tensión, y por la alta calidad de todos los materiales utilizados en su fabricación. Estos detalles, junto al control del 100% de todos los variadores nos permiten ofrecer una ﬁabilidad reconocida por los clientes más exigentes.",
+     "general_specs": {
+      "Series de fabricación": "Variador de tensión toroidal monofásico, doble y trifásico (I, II, III)",
+      "Montaje": "Todos los modelos se pueden montar en caja metálica suministrar para regulación manual o motorizada"
+     },
+     "models": [],
+     "options_accessories": [
+      "Caja metálica (p.2: «Todos los modelos se pueden montar en caja metálica suministrar para regulación manual o motorizada»)"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Variador de tensión monofásico de regulación manual",
+     "series": null,
+     "page": 5,
+     "description": "Regulación manual: mediante botón de mando en el eje del variador que permite actuar sobre la escobilla y conseguir la tensión deseada. Dos tablas «Dimensiones y peso»: 160 VA – 4000 VA y 5000 VA – 11000 VA.",
+     "general_specs": {
+      "Entrada/Input": "230V",
+      "Salida/Output": "230/250V",
+      "Gamas de potencia (tablas)": "160 VA – 4000 VA; 5000 VA – 11000 VA",
+      "Nota": "*Dimensiones reducidas/ limited dimensions (filas 350* y 500*)"
+     },
+     "models": [
+      {
+       "reference": "160 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "160",
+        "In 230 (A)": "0.7",
+        "In 250 (A)": "0.64",
+        "A": "80",
+        "B": "63",
+        "C": "30",
+        "D": "6",
+        "E": "25",
+        "F": "M-4",
+        "G": "88",
+        "Kg": "0.8"
+       },
+       "raw_row": "160 0.7 0.64 80 63 30 6 25 M-4 88 0.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "220 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "220",
+        "In 230 (A)": "0.95",
+        "In 250 (A)": "0.88",
+        "A": "87",
+        "B": "67",
+        "C": "30",
+        "D": "6",
+        "E": "25",
+        "F": "M-4",
+        "G": "99",
+        "Kg": "1.2"
+       },
+       "raw_row": "220 0.95 0.88 87 67 30 6 25 M-4 99 1.2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "350 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "350",
+        "In 230 (A)": "1.52",
+        "In 250 (A)": "1.4",
+        "A": "110",
+        "B": "75",
+        "C": "30",
+        "D": "6",
+        "E": "26",
+        "F": "M-4",
+        "G": "125",
+        "Kg": "2.5"
+       },
+       "raw_row": "350 1.52 1.4 110 75 30 6 26 M-4 125 2.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "350* VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "350*",
+        "In 230 (A)": "1.52",
+        "In 250 (A)": "1.4",
+        "A": "88",
+        "B": "85",
+        "C": "30",
+        "D": "6",
+        "E": "25",
+        "F": "M-4",
+        "G": "99",
+        "Kg": "1.9"
+       },
+       "raw_row": "350* 1.52 1.4 88 85 30 6 25 M-4 99 1.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "500 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "500",
+        "In 230 (A)": "2.17",
+        "In 250 (A)": "2",
+        "A": "110",
+        "B": "80",
+        "C": "30",
+        "D": "6",
+        "E": "26",
+        "F": "M-4",
+        "G": "125",
+        "Kg": "2.8"
+       },
+       "raw_row": "500 2.17 2 110 80 30 6 26 M-4 125 2.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "500* VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "500*",
+        "In 230 (A)": "2.17",
+        "In 250 (A)": "2",
+        "A": "88",
+        "B": "103",
+        "C": "30",
+        "D": "6",
+        "E": "25",
+        "F": "M-4",
+        "G": "99",
+        "Kg": "2.4"
+       },
+       "raw_row": "500* 2.17 2 88 103 30 6 25 M-4 99 2.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "750 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "750",
+        "In 230 (A)": "3.26",
+        "In 250 (A)": "3",
+        "A": "120",
+        "B": "90",
+        "C": "30",
+        "D": "6",
+        "E": "33.5",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "3.2"
+       },
+       "raw_row": "750 3.26 3 120 90 30 6 33.5 M-6 130 3.2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "1000",
+        "In 230 (A)": "4.34",
+        "In 250 (A)": "4",
+        "A": "120",
+        "B": "105",
+        "C": "30",
+        "D": "6",
+        "E": "33.5",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "4"
+       },
+       "raw_row": "1000 4.34 4 120 105 30 6 33.5 M-6 130 4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1250 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "1250",
+        "In 230 (A)": "5.43",
+        "In 250 (A)": "5",
+        "A": "130",
+        "B": "105",
+        "C": "30",
+        "D": "6",
+        "E": "33.5",
+        "F": "M-6",
+        "G": "142",
+        "Kg": "4.6"
+       },
+       "raw_row": "1250 5.43 5 130 105 30 6 33.5 M-6 142 4.6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1500 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "1500",
+        "In 230 (A)": "6.52",
+        "In 250 (A)": "6",
+        "A": "160",
+        "B": "95",
+        "C": "35",
+        "D": "8",
+        "E": "40",
+        "F": "M-6",
+        "G": "172",
+        "Kg": "5.7"
+       },
+       "raw_row": "1500 6.52 6 160 95 35 8 40 M-6 172 5.7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "2000",
+        "In 230 (A)": "8.69",
+        "In 250 (A)": "8",
+        "A": "160",
+        "B": "107",
+        "C": "35",
+        "D": "8",
+        "E": "40",
+        "F": "M-6",
+        "G": "172",
+        "Kg": "6.8"
+       },
+       "raw_row": "2000 8.69 8 160 107 35 8 40 M-6 172 6.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2500 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "2500",
+        "In 230 (A)": "10.86",
+        "In 250 (A)": "10",
+        "A": "196",
+        "B": "117",
+        "C": "40",
+        "D": "8",
+        "E": "60",
+        "F": "M-6",
+        "G": "206",
+        "Kg": "10"
+       },
+       "raw_row": "2500 10.86 10 196 117 40 8 60 M-6 206 10",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "3000",
+        "In 230 (A)": "13.04",
+        "In 250 (A)": "12",
+        "A": "226",
+        "B": "120",
+        "C": "40",
+        "D": "8",
+        "E": "60",
+        "F": "M-6",
+        "G": "238",
+        "Kg": "13.4"
+       },
+       "raw_row": "3000 13.04 12 226 120 40 8 60 M-6 238 13.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "4000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "4000",
+        "In 230 (A)": "17.39",
+        "In 250 (A)": "16",
+        "A": "250",
+        "B": "127",
+        "C": "40",
+        "D": "8",
+        "E": "74",
+        "F": "M-8",
+        "G": "275",
+        "Kg": "17"
+       },
+       "raw_row": "4000 17.39 16 250 127 40 8 74 M-8 275 17",
+       "confidence": "alta"
+      },
+      {
+       "reference": "5000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "5000",
+        "In 230 (A)": "21.73",
+        "In 250 (A)": "20",
+        "A": "320",
+        "B": "140",
+        "C": "60",
+        "D": "10",
+        "E": "74",
+        "F": "M-8",
+        "Kg": "19"
+       },
+       "raw_row": "5000 21.73 20 320 140 60 10 74 M-8 19",
+       "confidence": "alta"
+      },
+      {
+       "reference": "6000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "6000",
+        "In 230 (A)": "26.01",
+        "In 250 (A)": "24",
+        "A": "425",
+        "B": "170",
+        "C": "100",
+        "D": "12",
+        "E": "80",
+        "F": "M-10",
+        "Kg": "32"
+       },
+       "raw_row": "6000 26.01 24 425 170 100 12 80 M-10 32",
+       "confidence": "media"
+      },
+      {
+       "reference": "7000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "7000",
+        "In 230 (A)": "30.43",
+        "In 250 (A)": "28",
+        "A": "445",
+        "B": "170",
+        "C": "100",
+        "D": "12",
+        "E": "80",
+        "F": "M-10",
+        "Kg": "37"
+       },
+       "raw_row": "7000 30.43 28 445 170 100 12 80 M-10 37",
+       "confidence": "alta"
+      },
+      {
+       "reference": "8000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "8000",
+        "In 230 (A)": "34.78",
+        "In 250 (A)": "32",
+        "A": "490",
+        "B": "170",
+        "C": "100",
+        "D": "12",
+        "E": "100",
+        "F": "M-10",
+        "Kg": "46"
+       },
+       "raw_row": "8000 34.78 32 490 170 100 12 100 M-10 46",
+       "confidence": "alta"
+      },
+      {
+       "reference": "9000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "9000",
+        "In 230 (A)": "39.13",
+        "In 250 (A)": "36",
+        "A": "520",
+        "B": "170",
+        "C": "100",
+        "D": "12",
+        "E": "100",
+        "F": "M-10",
+        "Kg": "55"
+       },
+       "raw_row": "9000 39.13 36 520 170 100 12 100 M-10 55",
+       "confidence": "alta"
+      },
+      {
+       "reference": "10000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "10000",
+        "In 230 (A)": "43.47",
+        "In 250 (A)": "40",
+        "A": "570",
+        "B": "170",
+        "C": "100",
+        "D": "15",
+        "E": "150",
+        "F": "M-12",
+        "Kg": "71"
+       },
+       "raw_row": "10000 43.47 40 570 170 100 15 150 M-12 71",
+       "confidence": "alta"
+      },
+      {
+       "reference": "11000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "11000",
+        "In 230 (A)": "47.85",
+        "In 250 (A)": "44",
+        "A": "610",
+        "B": "180",
+        "C": "100",
+        "D": "15",
+        "E": "150",
+        "F": "M-12",
+        "Kg": "86"
+       },
+       "raw_row": "11000 47.85 44 610 180 100 15 150 M-12 86",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "(p.4) Amplia gama de botones y carátulas graduadas en % ó en voltios, aplicables a las diferentes potencias"
+     ],
+     "ordering_info": "En estas páginas no hay códigos de referencia: los modelos se identifican por la potencia en VA (fila de la tabla)."
+    },
+    {
+     "family": "Variador de tensión monofásico de regulación motorizada",
+     "series": null,
+     "page": 5,
+     "description": "Regulación motorizada: el eje del variador es accionado por un motor-reductor, mediante un conmutador manual que permite elevar o reducir la tensión de salida. Dos tablas «Dimensiones y peso»: 160 VA – 4000 VA (p.5) y 5000 VA – 11000 VA (p.6).",
+     "general_specs": {
+      "Entrada/Input": "230V",
+      "Salida/Output": "230/250V",
+      "Gamas de potencia (tablas)": "160 VA – 4000 VA; 5000 VA – 11000 VA",
+      "Nota": "*Dimensiones reducidas/ limited dimensions (filas 350* y 500*)"
+     },
+     "models": [
+      {
+       "reference": "160 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "160",
+        "In 230 (A)": "0.7",
+        "In 250 (A)": "0.64",
+        "A": "90",
+        "B": "211",
+        "E": "75",
+        "F": "M-5",
+        "G": "92",
+        "Kg": "1.8"
+       },
+       "raw_row": "160 0.7 0.64 90 211 75 M-5 92 1.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "220 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "220",
+        "In 230 (A)": "0.95",
+        "In 250 (A)": "0.88",
+        "A": "90",
+        "B": "211",
+        "E": "75",
+        "F": "M-5",
+        "G": "100",
+        "Kg": "2.2"
+       },
+       "raw_row": "220 0.95 0.88 90 211 75 M-5 100 2.2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "350 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "350",
+        "In 230 (A)": "1.52",
+        "In 250 (A)": "1.4",
+        "A": "155",
+        "B": "185",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "4.5"
+       },
+       "raw_row": "350 1.52 1.4 155 185 100 M-6 130 4.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "350* VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "350*",
+        "In 230 (A)": "1.52",
+        "In 250 (A)": "1.4",
+        "A": "90",
+        "B": "211",
+        "E": "75",
+        "F": "M-5",
+        "G": "100",
+        "Kg": "2.9"
+       },
+       "raw_row": "350* 1.52 1.4 90 211 75 M-5 100 2.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "500 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "500",
+        "In 230 (A)": "2.17",
+        "In 250 (A)": "2",
+        "A": "155",
+        "B": "190",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "4.8"
+       },
+       "raw_row": "500 2.17 2 155 190 100 M-6 130 4.8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "500* VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "500*",
+        "In 230 (A)": "2.17",
+        "In 250 (A)": "2",
+        "A": "90",
+        "B": "211",
+        "E": "75",
+        "F": "M-5",
+        "G": "100",
+        "Kg": "3.4"
+       },
+       "raw_row": "500* 2.17 2 90 211 75 M-5 100 3.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "750 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "750",
+        "In 230 (A)": "3.26",
+        "In 250 (A)": "3",
+        "A": "155",
+        "B": "200",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "5"
+       },
+       "raw_row": "750 3.26 3 155 200 100 M-6 130 5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "1000",
+        "In 230 (A)": "4.34",
+        "In 250 (A)": "4",
+        "A": "155",
+        "B": "210",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "6"
+       },
+       "raw_row": "1000 4.34 4 155 210 100 M-6 130 6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1250 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "1250",
+        "In 230 (A)": "5.43",
+        "In 250 (A)": "5",
+        "A": "135",
+        "B": "210",
+        "E": "112",
+        "F": "M-6",
+        "G": "140",
+        "Kg": "6.7"
+       },
+       "raw_row": "1250 5.43 5 135 210 112 M-6 140 6.7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1500 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "1500",
+        "In 230 (A)": "6.52",
+        "In 250 (A)": "6",
+        "A": "165",
+        "B": "205",
+        "E": "135",
+        "F": "M-6",
+        "G": "175",
+        "Kg": "8.6"
+       },
+       "raw_row": "1500 6.52 6 165 205 135 M-6 175 8.6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "2000",
+        "In 230 (A)": "8.69",
+        "In 250 (A)": "8",
+        "A": "165",
+        "B": "215",
+        "E": "135",
+        "F": "M-6",
+        "G": "175",
+        "Kg": "9.5"
+       },
+       "raw_row": "2000 8.69 8 165 215 135 M-6 175 9.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2500 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "2500",
+        "In 230 (A)": "10.86",
+        "In 250 (A)": "10",
+        "A": "220",
+        "B": "235",
+        "E": "170",
+        "F": "M-8",
+        "G": "230",
+        "Kg": "14.5"
+       },
+       "raw_row": "2500 10.86 10 220 235 170 M-8 230 14.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "3000",
+        "In 230 (A)": "13.04",
+        "In 250 (A)": "12",
+        "A": "235",
+        "B": "245",
+        "E": "195",
+        "F": "M-8",
+        "G": "242",
+        "Kg": "18.5"
+       },
+       "raw_row": "3000 13.04 12 235 245 195 M-8 242 18.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "4000 VA",
+       "page": 5,
+       "specs": {
+        "Gama de la tabla": "160 VA – 4000 VA",
+        "VA": "4000",
+        "In 230 (A)": "17.39",
+        "In 250 (A)": "16",
+        "A": "285",
+        "B": "300",
+        "E": "255",
+        "F": "M-8",
+        "G": "295",
+        "Kg": "25"
+       },
+       "raw_row": "4000 17.39 16 285 300 255 M-8 295 25",
+       "confidence": "alta"
+      },
+      {
+       "reference": "5000 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "5000",
+        "In 230 (A)": "21.73",
+        "In 250 (A)": "20",
+        "A": "380",
+        "B": "300",
+        "E": "255",
+        "F": "M-8",
+        "G": "320",
+        "H": "255",
+        "Kg": "27"
+       },
+       "raw_row": "5000 21.73 20 380 300 255 M-8 320 255 27",
+       "confidence": "alta"
+      },
+      {
+       "reference": "6000 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "6000",
+        "In 230 (A)": "26.01",
+        "In 250 (A)": "24",
+        "A": "520",
+        "B": "350",
+        "E": "380",
+        "F": "M-12",
+        "G": "430",
+        "H": "470",
+        "Kg": "48"
+       },
+       "raw_row": "6000 26.01 24 520 350 380 M-12 430 470 48",
+       "confidence": "media"
+      },
+      {
+       "reference": "7000 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "7000",
+        "In 230 (A)": "30.43",
+        "In 250 (A)": "28",
+        "A": "540",
+        "B": "350",
+        "E": "380",
+        "F": "M-12",
+        "G": "445",
+        "H": "490",
+        "Kg": "56"
+       },
+       "raw_row": "7000 30.43 28 540 350 380 M-12 445 490 56",
+       "confidence": "alta"
+      },
+      {
+       "reference": "8000 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "8000",
+        "In 230 (A)": "34.78",
+        "In 250 (A)": "32",
+        "A": "585",
+        "B": "350",
+        "E": "380",
+        "F": "M-12",
+        "G": "490",
+        "H": null,
+        "Kg": "64"
+       },
+       "raw_row": "8000 34.78 32 585 350 380 M-12 490 235 64",
+       "confidence": "baja"
+      },
+      {
+       "reference": "9000 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "9000",
+        "In 230 (A)": "39.13",
+        "In 250 (A)": "36",
+        "A": "615",
+        "B": "360",
+        "E": "420",
+        "F": "M-12",
+        "G": "520",
+        "H": "565",
+        "Kg": "75"
+       },
+       "raw_row": "9000 39.13 36 615 360 420 M-12 520 565 75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "10000 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "10000",
+        "In 230 (A)": "43.47",
+        "In 250 (A)": "40",
+        "A": "665",
+        "B": "360",
+        "E": "420",
+        "F": "M-12",
+        "G": "570",
+        "H": "615",
+        "Kg": "91"
+       },
+       "raw_row": "10000 43.47 40 665 360 420 M-12 570 615 91",
+       "confidence": "alta"
+      },
+      {
+       "reference": "11000 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA – 11000 VA",
+        "VA": "11000",
+        "In 230 (A)": "47.85",
+        "In 250 (A)": "44",
+        "A": "685",
+        "B": "360",
+        "E": "420",
+        "F": "M-12",
+        "G": "610",
+        "H": "635",
+        "Kg": "106"
+       },
+       "raw_row": "11000 47.85 44 685 360 420 M-12 610 635 106",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "(p.4) Bajo demanda modelos estabilizados por medio de una placa electrónica con una precisión del 2%; permite regular el variador por medio de un potenciómetro o una señal continua de 0-10Vcc"
+     ],
+     "ordering_info": "En estas páginas no hay códigos de referencia: los modelos se identifican por la potencia en VA (fila de la tabla)."
+    },
+    {
+     "family": "Variador tensión doble regulación manual",
+     "series": null,
+     "page": 6,
+     "description": "Dos tablas «Dimensiones y peso»: 160 VA x 2 – 4000 VA x 2 y 5000 VA x 2 – 11000 VA x 2 (dos variadores; intensidades indicadas como valor x2).",
+     "general_specs": {
+      "Entrada/Input": "230V",
+      "Salida/Output": "230/250V",
+      "Gamas de potencia (tablas)": "160 VA x 2 – 4000 VA x 2; 5000 VA x 2 – 11000 VA x 2",
+      "Nota": "*Dimensiones reducidas/ limited dimensions (filas 350*x2 y 500*x2)"
+     },
+     "models": [
+      {
+       "reference": "160x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "160x2",
+        "In 230 (A)": "0.7x2",
+        "In 250 (A)": "0.64x2",
+        "A": "90",
+        "B": "180",
+        "C": "50",
+        "D": "6",
+        "E": "75",
+        "F": "M-5",
+        "G": "92",
+        "Kg": "2.9"
+       },
+       "raw_row": "160x2 0.7x2 0.64x2 90 180 50 6 75 M-5 92 2.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "220x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "220x2",
+        "In 230 (A)": "0.9x2",
+        "In 250 (A)": "0.88x2",
+        "A": "90",
+        "B": "180",
+        "C": "50",
+        "D": "6",
+        "E": "75",
+        "F": "M-5",
+        "G": "100",
+        "Kg": "3.7"
+       },
+       "raw_row": "220x2 0.9 x2 0.88x2 90 180 50 6 75 M-5 100 3.7",
+       "confidence": "media"
+      },
+      {
+       "reference": "350x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "350x2",
+        "In 230 (A)": "1.52x2",
+        "In 250 (A)": "1.4x2",
+        "A": "120",
+        "B": "215",
+        "C": "70",
+        "D": "6",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "6.3"
+       },
+       "raw_row": "350x2 1.52x2 1.4x2 120 215 70 6 100 M-6 130 6.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "350*x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "350*x2",
+        "In 230 (A)": "1.52x2",
+        "In 250 (A)": "1.4x2",
+        "A": "90",
+        "B": "180",
+        "C": "50",
+        "D": "6",
+        "E": "75",
+        "F": "M-5",
+        "G": "92",
+        "Kg": "4"
+       },
+       "raw_row": "350*x2 1.52x2 1.4x2 90 180 50 6 75 M-5 92 4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "500x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "500x2",
+        "In 230 (A)": "2.17x2",
+        "In 250 (A)": "2x2",
+        "A": "120",
+        "B": "220",
+        "C": "70",
+        "D": "6",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "6.9"
+       },
+       "raw_row": "500x2 2.17x2 2x2 120 220 70 6 100 M-6 130 6.9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "500*x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "500*x2",
+        "In 230 (A)": "2.17x2",
+        "In 250 (A)": "2x2",
+        "A": "90",
+        "B": "180",
+        "C": "50",
+        "D": "6",
+        "E": "75",
+        "F": "M-5",
+        "G": "92",
+        "Kg": "4.5"
+       },
+       "raw_row": "500*x2 2.17x2 2x2 90 180 50 6 75 M-5 92 4.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "750x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "750x2",
+        "In 230 (A)": "3.26x2",
+        "In 250 (A)": "3x2",
+        "A": "120",
+        "B": "240",
+        "C": "70",
+        "D": "6",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "7.7"
+       },
+       "raw_row": "750x2 3.26x2 3x2 120 240 70 6 100 M-6 130 7.7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "1000x2",
+        "In 230 (A)": "4.34x2",
+        "In 250 (A)": "4x2",
+        "A": "120",
+        "B": "260",
+        "C": "70",
+        "D": "6",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "9"
+       },
+       "raw_row": "1000x2 4.34x2 4x2 120 260 70 6 100 M-6 130 9",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1250x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "1250x2",
+        "In 230 (A)": "5.43x2",
+        "In 250 (A)": "5x2",
+        "A": "135",
+        "B": "215",
+        "C": "70",
+        "D": "6",
+        "E": "112",
+        "F": "M-6",
+        "G": "140",
+        "Kg": "10.7"
+       },
+       "raw_row": "1250x2 5.43x2 5x2 135 215 70 6 112 M-6 140 10.7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1500x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "1500x2",
+        "In 230 (A)": "6.52x2",
+        "In 250 (A)": "6x2",
+        "A": "165",
+        "B": "245",
+        "C": "70",
+        "D": "8",
+        "E": "135",
+        "F": "M-6",
+        "G": "175",
+        "Kg": "13.7"
+       },
+       "raw_row": "1500x2 6.52x2 6x2 165 245 70 8 135 M-6 175 13.7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "2000x2",
+        "In 230 (A)": "8.69x2",
+        "In 250 (A)": "8x2",
+        "A": "165",
+        "B": null,
+        "C": "70",
+        "D": "8",
+        "E": "135",
+        "F": "M-6",
+        "G": "175",
+        "Kg": "15.6"
+       },
+       "raw_row": "2000x2 8.69x2 8x2 165 25 70 8 135 M-6 175 15.6",
+       "confidence": "baja"
+      },
+      {
+       "reference": "2500x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "2500x2",
+        "In 230 (A)": "10.86x2",
+        "In 250 (A)": "10x2",
+        "A": "200",
+        "B": "312",
+        "C": "70",
+        "D": "8",
+        "E": "170",
+        "F": "M-8",
+        "G": "230",
+        "Kg": "23.3"
+       },
+       "raw_row": "2500x2 10.86x2 10x2 200 312 70 8 170 M-8 230 23.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "3000x2",
+        "In 230 (A)": "13.04x2",
+        "In 250 (A)": "12x2",
+        "A": "235",
+        "B": "335",
+        "C": "70",
+        "D": "8",
+        "E": "195",
+        "F": "M-8",
+        "G": "242",
+        "Kg": "30"
+       },
+       "raw_row": "3000x2 13.04x2 12x2 235 335 70 8 195 M-8 242 30",
+       "confidence": "alta"
+      },
+      {
+       "reference": "4000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "4000x2",
+        "In 230 (A)": "17.39x2",
+        "In 250 (A)": "16x2",
+        "A": "285",
+        "B": "365",
+        "C": "90",
+        "D": "8",
+        "E": "255",
+        "F": "M-8",
+        "G": "295",
+        "Kg": "41"
+       },
+       "raw_row": "4000x2 17.39x2 16x2 285 365 90 8 255 M-8 295 41",
+       "confidence": "alta"
+      },
+      {
+       "reference": "5000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "5000x2",
+        "In 230 (A)": "21.73x2",
+        "In 250 (A)": "20x2",
+        "A": "380",
+        "B": "365",
+        "C": "90",
+        "D": "10",
+        "E": "255",
+        "F": "M-8",
+        "G": "320",
+        "H": "255",
+        "Kg": "50"
+       },
+       "raw_row": "5000x2 21.73x2 20x2 380 365 90 10 255 M-8 320 255 50",
+       "confidence": "alta"
+      },
+      {
+       "reference": "6000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "6000x2",
+        "In 230 (A)": "26.01x2",
+        "In 250 (A)": "24x2",
+        "A": "520",
+        "B": "460",
+        "C": "155",
+        "D": "12",
+        "E": "380",
+        "F": "M-10",
+        "G": "430",
+        "H": "470",
+        "Kg": "80"
+       },
+       "raw_row": "6000x2 26.01x2 24x2 520 460 155 12 380 M-10 430 470 80",
+       "confidence": "media"
+      },
+      {
+       "reference": "7000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "7000x2",
+        "In 230 (A)": "30.43x2",
+        "In 250 (A)": "28x2",
+        "A": "540",
+        "B": "460",
+        "C": "155",
+        "D": "12",
+        "E": "380",
+        "F": "M-10",
+        "G": "445",
+        "H": "490",
+        "Kg": "102"
+       },
+       "raw_row": "7000x2 30.43x2 28x2 540 460 155 12 380 M-10 445 490 102",
+       "confidence": "alta"
+      },
+      {
+       "reference": "8000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "8000x2",
+        "In 230 (A)": "34.78x2",
+        "In 250 (A)": "32x2",
+        "A": "585",
+        "B": "460",
+        "C": "155",
+        "D": "12",
+        "E": "380",
+        "F": "M-10",
+        "G": "490",
+        "H": "535",
+        "Kg": "115"
+       },
+       "raw_row": "8000x2 34.78x2 32x2 585 460 155 12 380 M-10 490 535 115",
+       "confidence": "alta"
+      },
+      {
+       "reference": "9000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "9000x2",
+        "In 230 (A)": "39.13x2",
+        "In 250 (A)": "36x2",
+        "A": "615",
+        "B": "480",
+        "C": "165",
+        "D": "12",
+        "E": "420",
+        "F": "M-10",
+        "G": "520",
+        "H": "565",
+        "Kg": "140"
+       },
+       "raw_row": "9000x2 39.13x2 36x2 615 480 165 12 420 M-10 520 565 140",
+       "confidence": "alta"
+      },
+      {
+       "reference": "10000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "10000x2",
+        "In 230 (A)": "43.47x2",
+        "In 250 (A)": "40x2",
+        "A": "665",
+        "B": "480",
+        "C": "165",
+        "D": "15",
+        "E": "420",
+        "F": "M-12",
+        "G": "570",
+        "H": "615",
+        "Kg": "182"
+       },
+       "raw_row": "10000x2 43.47x2 40x2 665 480 165 15 420 M-12 570 615 182",
+       "confidence": "alta"
+      },
+      {
+       "reference": "11000x2 VA",
+       "page": 6,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "11000x2",
+        "In 230 (A)": "47.85x2",
+        "In 250 (A)": "44x2",
+        "A": "685",
+        "B": "480",
+        "C": "165",
+        "D": "15",
+        "E": "420",
+        "F": "M-12",
+        "G": "610",
+        "H": "635",
+        "Kg": "212"
+       },
+       "raw_row": "11000x2 47.85x2 44x2 685 480 165 15 420 M-12 610 635 212",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "En estas páginas no hay códigos de referencia: los modelos se identifican por la potencia en VA (fila de la tabla)."
+    },
+    {
+     "family": "Variador tensión doble regulación motorizada",
+     "series": null,
+     "page": 7,
+     "description": "Dos tablas «Dimensiones y peso»: 160 VA x 2 – 4000 VA x 2 y 5000 VA x 2 – 11000 VA x 2 (dos variadores; intensidades indicadas como valor x2).",
+     "general_specs": {
+      "Entrada/Input": "230V",
+      "Salida/Output": "230/250V",
+      "Gamas de potencia (tablas)": "160 VA x 2 – 4000 VA x 2; 5000 VA x 2 – 11000 VA x 2",
+      "Nota": "*Dimensiones reducidas/ limited dimensions (filas 350*x2 y 500*x2)"
+     },
+     "models": [
+      {
+       "reference": "160x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "160x2",
+        "In 230 (A)": "0.7x2",
+        "In 250 (A)": "0.64x2",
+        "A": "90",
+        "B": "290",
+        "E": "75",
+        "F": "M-5",
+        "G": "92",
+        "Kg": "3.4"
+       },
+       "raw_row": "160x2 0.7x2 0.64x2 90 290 75 M-5 92 3.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "220x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "220x2",
+        "In 230 (A)": "0.9x2",
+        "In 250 (A)": "0.88x2",
+        "A": "90",
+        "B": "290",
+        "E": "75",
+        "F": "M-5",
+        "G": "100",
+        "Kg": "4.2"
+       },
+       "raw_row": "220x2 0.9 x2 0.88x2 90 290 75 M-5 100 4.2",
+       "confidence": "media"
+      },
+      {
+       "reference": "350x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "350x2",
+        "In 230 (A)": "1.52x2",
+        "In 250 (A)": "1.4x2",
+        "A": "120",
+        "B": "275",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "8.6"
+       },
+       "raw_row": "350x2 1.52x2 1.4x2 120 275 100 M-6 130 8.6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "350*x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "350*x2",
+        "In 230 (A)": "1.52x2",
+        "In 250 (A)": "1.4x2",
+        "A": "90",
+        "B": "290",
+        "E": "75",
+        "F": "M-5",
+        "G": "92",
+        "Kg": "4.5"
+       },
+       "raw_row": "350*x2 1.52x2 1.4x2 90 290 75 M-5 92 4.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "500x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "500x2",
+        "In 230 (A)": "2.17x2",
+        "In 250 (A)": "2x2",
+        "A": "120",
+        "B": "280",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "9.1"
+       },
+       "raw_row": "500x2 2.17x2 2x2 120 280 100 M-6 130 9.1",
+       "confidence": "alta"
+      },
+      {
+       "reference": "500*x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "500*x2",
+        "In 230 (A)": "2.17x2",
+        "In 250 (A)": "2x2",
+        "A": "90",
+        "B": "290",
+        "E": "75",
+        "F": "M-5",
+        "G": "92",
+        "Kg": "5"
+       },
+       "raw_row": "500*x2 2.17x2 2x2 90 290 75 M-5 92 5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "750x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "750x2",
+        "In 230 (A)": "3.26x2",
+        "In 250 (A)": "3x2",
+        "A": "120",
+        "B": "300",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "9.2"
+       },
+       "raw_row": "750x2 3.26x2 3x2 120 300 100 M-6 130 9.2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "1000x2",
+        "In 230 (A)": "4.34x2",
+        "In 250 (A)": "4x2",
+        "A": "120",
+        "B": "320",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "10.1"
+       },
+       "raw_row": "1000x2 4.34x2 4x2 120 320 100 M-6 130 10.1",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1250x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "1250x2",
+        "In 230 (A)": "5.43x2",
+        "In 250 (A)": "5x2",
+        "A": "135",
+        "B": "285",
+        "E": "112",
+        "F": "M-6",
+        "G": "140",
+        "Kg": "11.7"
+       },
+       "raw_row": "1250x2 5.43x2 5x2 135 285 112 M-6 140 11.7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1500x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "1500x2",
+        "In 230 (A)": "6.52x2",
+        "In 250 (A)": "6x2",
+        "A": "165",
+        "B": "315",
+        "E": "135",
+        "F": "M-6",
+        "G": "175",
+        "Kg": "14.4"
+       },
+       "raw_row": "1500x2 6.52x2 6x2 165 315 135 M-6 175 14.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "2000x2",
+        "In 230 (A)": "8.69x2",
+        "In 250 (A)": "8x2",
+        "A": "165",
+        "B": "335",
+        "E": "135",
+        "F": "M-6",
+        "G": "175",
+        "Kg": "17.1"
+       },
+       "raw_row": "2000x2 8.69x2 8x2 165 335 135 M-6 175 17.1",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2500x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "2500x2",
+        "In 230 (A)": "10.86x2",
+        "In 250 (A)": "10x2",
+        "A": "200",
+        "B": "375",
+        "E": "170",
+        "F": "M-8",
+        "G": "230",
+        "Kg": "25.3"
+       },
+       "raw_row": "2500x2 10.86x2 10x2 200 375 170 M-8 230 25.3",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "3000x2",
+        "In 230 (A)": "13.04x2",
+        "In 250 (A)": "12x2",
+        "A": "235",
+        "B": "395",
+        "E": "195",
+        "F": "M-8",
+        "G": "242",
+        "Kg": "33.5"
+       },
+       "raw_row": "3000x2 13.04x2 12x2 235 395 195 M-8 242 33.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "4000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "160 VA x 2 – 4000 VA x 2",
+        "VA": "4000x2",
+        "In 230 (A)": "17.39x2",
+        "In 250 (A)": "16x2",
+        "A": "285",
+        "B": "445",
+        "E": "255",
+        "F": "M-8",
+        "G": "295",
+        "Kg": "43.7"
+       },
+       "raw_row": "4000x2 17.39x2 16x2 285 445 255 M-8 295 43.7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "5000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "5000x2",
+        "In 230 (A)": "21.73x2",
+        "In 250 (A)": "20x2",
+        "A": "380",
+        "B": "445",
+        "E": "255",
+        "F": "M-8",
+        "G": "320",
+        "H": "255",
+        "Kg": "57"
+       },
+       "raw_row": "5000x2 21.73x2 20x2 380 445 255 M-8 320 255 57",
+       "confidence": "alta"
+      },
+      {
+       "reference": "6000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "6000x2",
+        "In 230 (A)": "26.01x2",
+        "In 250 (A)": "24x2",
+        "A": "520",
+        "B": "575",
+        "E": "380",
+        "F": "M-10",
+        "G": "430",
+        "H": "470",
+        "Kg": "87"
+       },
+       "raw_row": "6000x2 26.01x2 24x2 520 575 380 M-10 430 470 87",
+       "confidence": "media"
+      },
+      {
+       "reference": "7000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "7000x2",
+        "In 230 (A)": "30.43x2",
+        "In 250 (A)": "28x2",
+        "A": "540",
+        "B": "575",
+        "E": "380",
+        "F": "M-10",
+        "G": "445",
+        "H": "490",
+        "Kg": "109"
+       },
+       "raw_row": "7000x2 30.43x2 28x2 540 575 380 M-10 445 490 109",
+       "confidence": "alta"
+      },
+      {
+       "reference": "8000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "8000x2",
+        "In 230 (A)": "34.78x2",
+        "In 250 (A)": "32x2",
+        "A": "585",
+        "B": "575",
+        "E": "380",
+        "F": "M-10",
+        "G": "490",
+        "H": "535",
+        "Kg": "122"
+       },
+       "raw_row": "8000x2 34.78x2 32x2 585 575 380 M-10 490 535 122",
+       "confidence": "alta"
+      },
+      {
+       "reference": "9000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "9000x2",
+        "In 230 (A)": "39.13x2",
+        "In 250 (A)": "36x2",
+        "A": "615",
+        "B": "585",
+        "E": "420",
+        "F": "M-10",
+        "G": "520",
+        "H": "565",
+        "Kg": "147"
+       },
+       "raw_row": "9000x2 39.13x2 36x2 615 585 420 M-10 520 565 147",
+       "confidence": "alta"
+      },
+      {
+       "reference": "10000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "10000x2",
+        "In 230 (A)": "43.47x2",
+        "In 250 (A)": "40x2",
+        "A": "665",
+        "B": "585",
+        "E": "420",
+        "F": "M-12",
+        "G": "570",
+        "H": "615",
+        "Kg": "189"
+       },
+       "raw_row": "10000x2 43.47x2 40x2 665 585 420 M-12 570 615 189",
+       "confidence": "alta"
+      },
+      {
+       "reference": "11000x2 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "5000 VA x 2 – 11000 VA x 2",
+        "VA": "11000x2",
+        "In 230 (A)": "47.85x2",
+        "In 250 (A)": "44x2",
+        "A": "685",
+        "B": "585",
+        "E": "420",
+        "F": "M-12",
+        "G": "610",
+        "H": "635",
+        "Kg": "219"
+       },
+       "raw_row": "11000x2 47.85x2 44x2 685 585 420 M-12 610 635 219",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "En estas páginas no hay códigos de referencia: los modelos se identifican por la potencia en VA (fila de la tabla)."
+    },
+    {
+     "family": "Variador tensión trifásico regulación manual",
+     "series": null,
+     "page": 7,
+     "description": "Tabla «Dimensiones y peso» 480 VA – 12000 VA (intensidades indicadas como valor x3). La tabla de trifásico manual continúa en la página 8 del PDF, fuera de este trabajo.",
+     "general_specs": {
+      "Entrada/Input": "400V",
+      "Salida/Output": "400/430V",
+      "Gama de potencia (tabla)": "480 VA – 12000 VA"
+     },
+     "models": [
+      {
+       "reference": "480 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "480",
+        "In 400 (A)": "0.7x3",
+        "In 430 (A)": "0.64x3",
+        "A": "90",
+        "B": "255",
+        "C": "50",
+        "D": "6",
+        "E": "75",
+        "F": "M-5",
+        "G": "92",
+        "Kg": "4.4"
+       },
+       "raw_row": "480 0.7x3 0.64x3 90 255 50 6 75 M-5 92 4.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "660 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "660",
+        "In 400 (A)": "0.9x3",
+        "In 430 (A)": "0.88x3",
+        "A": "90",
+        "B": "255",
+        "C": "50",
+        "D": "6",
+        "E": "75",
+        "F": "M-5",
+        "G": "100",
+        "Kg": "5.6"
+       },
+       "raw_row": "660 0.9x3 0.88x3 90 255 50 6 75 M-5 100 5.6",
+       "confidence": "media"
+      },
+      {
+       "reference": "1000 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "1000",
+        "In 400 (A)": "1.52x3",
+        "In 430 (A)": "1.4x3",
+        "A": "120",
+        "B": "305",
+        "C": "70",
+        "D": "6",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "9.4"
+       },
+       "raw_row": "1000 1.52x3 1.4x3 120 305 70 6 100 M-6 130 9.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1000* VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "1000*",
+        "In 400 (A)": "1.52x3",
+        "In 430 (A)": "1.4x3",
+        "A": "90",
+        "B": "255",
+        "C": "50",
+        "D": "6",
+        "E": "75",
+        "F": "M-5",
+        "G": "92",
+        "Kg": "8"
+       },
+       "raw_row": "1000* 1.52x3 1.4x3 90 255 50 6 75 M-5 92 8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1500 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "1500",
+        "In 400 (A)": "2.17x3",
+        "In 430 (A)": "2x3",
+        "A": "120",
+        "B": "315",
+        "C": "70",
+        "D": "6",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "11"
+       },
+       "raw_row": "1500 2.17x3 2x3 120 315 70 6 100 M-6 130 11",
+       "confidence": "alta"
+      },
+      {
+       "reference": "1500* VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "1500*",
+        "In 400 (A)": "2.17x3",
+        "In 430 (A)": "2x3",
+        "A": "90",
+        "B": "255",
+        "C": "50",
+        "D": "6",
+        "E": "75",
+        "F": "M-5",
+        "G": "92",
+        "Kg": "10.4"
+       },
+       "raw_row": "1500* 2.17x3 2x3 90 255 50 6 75 M-5 92 10.4",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2250 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "2250",
+        "In 400 (A)": "3.26x3",
+        "In 430 (A)": "3x3",
+        "A": "120",
+        "B": "345",
+        "C": "70",
+        "D": "6",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "11.5"
+       },
+       "raw_row": "2250 3.26x3 3x3 120 345 70 6 100 M-6 130 11.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3000 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "3000",
+        "In 400 (A)": "4.34x3",
+        "In 430 (A)": "4x3",
+        "A": "120",
+        "B": "375",
+        "C": "70",
+        "D": "6",
+        "E": "100",
+        "F": "M-6",
+        "G": "130",
+        "Kg": "13.5"
+       },
+       "raw_row": "3000 4.34x3 4x3 120 375 70 6 100 M-6 130 13.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "3750 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "3750",
+        "In 400 (A)": "5.43x3",
+        "In 430 (A)": "5x3",
+        "A": "135",
+        "B": "375",
+        "C": "70",
+        "D": "6",
+        "E": "112",
+        "F": "M-6",
+        "G": "140",
+        "Kg": "16"
+       },
+       "raw_row": "3750 5.43x3 5x3 135 375 70 6 112 M-6 140 16",
+       "confidence": "alta"
+      },
+      {
+       "reference": "4500 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "4500",
+        "In 400 (A)": "6.52x3",
+        "In 430 (A)": "6x3",
+        "A": "165",
+        "B": "360",
+        "C": "70",
+        "D": "8",
+        "E": "135",
+        "F": "M-6",
+        "G": "175",
+        "Kg": "20.5"
+       },
+       "raw_row": "4500 6.52x3 6x3 165 360 70 8 135 M-6 175 20.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "6000 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "6000",
+        "In 400 (A)": "8.69x3",
+        "In 430 (A)": "8x3",
+        "A": "165",
+        "B": "390",
+        "C": "70",
+        "D": "8",
+        "E": "135",
+        "F": "M-6",
+        "G": "175",
+        "Kg": "23.5"
+       },
+       "raw_row": "6000 8.69x 3 8x3 165 390 70 8 135 M-6 175 23.5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "7500 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "7500",
+        "In 400 (A)": "10.86x3",
+        "In 430 (A)": "10x3",
+        "A": "200",
+        "B": "445",
+        "C": "70",
+        "D": "8",
+        "E": "170",
+        "F": "M-8",
+        "G": "230",
+        "Kg": "35"
+       },
+       "raw_row": "7500 10.86x3 10x3 200 445 70 8 170 M-8 230 35",
+       "confidence": "alta"
+      },
+      {
+       "reference": "9000 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "9000",
+        "In 400 (A)": "13.04x3",
+        "In 430 (A)": "12x3",
+        "A": "235",
+        "B": "475",
+        "C": "70",
+        "D": "8",
+        "E": "195",
+        "F": "M-8",
+        "G": "242",
+        "Kg": "45"
+       },
+       "raw_row": "9000 13.04x3 12x3 235 475 70 8 195 M-8 242 45",
+       "confidence": "alta"
+      },
+      {
+       "reference": "12000 VA",
+       "page": 7,
+       "specs": {
+        "Gama de la tabla": "480 VA – 12000 VA",
+        "VA": "12000",
+        "In 400 (A)": "17.39x3",
+        "In 430 (A)": "16x3",
+        "A": "285",
+        "B": "520",
+        "C": "90",
+        "D": "8",
+        "E": "255",
+        "F": "M-8",
+        "G": "295",
+        "Kg": "61"
+       },
+       "raw_row": "12000 17.39x3 16x3 285 520 90 8 255 M-8 295 61",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "En estas páginas no hay códigos de referencia: los modelos se identifican por la potencia en VA (fila de la tabla)."
+    }
+   ],
+   "tables": [
+    {
+     "page": 2,
+     "caption": "Despiece del variador seccionado (figura 1)",
+     "columns": [
+      "Nº",
+      "Pieza"
+     ],
+     "rows": [
+      [
+       "1",
+       "Resina epoxi"
+      ],
+      [
+       "2",
+       "Bobinado (Espiras de Cu)"
+      ],
+      [
+       "3",
+       "Cápsulas de baquelita"
+      ],
+      [
+       "4",
+       "Núcleo magnético"
+      ],
+      [
+       "5",
+       "Eje"
+      ],
+      [
+       "6",
+       "Casquillo latón"
+      ],
+      [
+       "7",
+       "Borne de conexión"
+      ],
+      [
+       "8",
+       "Pletina de contacto"
+      ],
+      [
+       "9",
+       "Tornillo de sujeción y conexión de pletina de contacto"
+      ],
+      [
+       "10",
+       "Arandela de latón de contacto rozante"
+      ],
+      [
+       "11",
+       "Borne prensa escobilla"
+      ],
+      [
+       "12",
+       "Tornillos de sujeción de escobilla"
+      ],
+      [
+       "13",
+       "Valona de sujeción escobilla"
+      ],
+      [
+       "14",
+       "Pletina de portacarbones"
+      ],
+      [
+       "15",
+       "Remaches de portacarbones"
+      ],
+      [
+       "16",
+       "Portacarbones"
+      ],
+      [
+       "17",
+       "Rodillo de graﬁto"
+      ],
+      [
+       "18",
+       "Glover de sujeción del carbón"
+      ],
+      [
+       "19",
+       "Pista de contacto"
+      ],
+      [
+       "20",
+       "Tope mecánico"
+      ],
+      [
+       "21",
+       "Bornes de sujeción"
+      ]
+     ],
+     "notes": "Numeración tal como figura en el PDF; los números del dibujo (1-21) remiten a esta lista. El PDF imprime «Glover» en el punto 18."
+    }
+   ],
+   "voltage_mentions": [
+    {
+     "raw": "regular una tensión alterna, desde cero hasta el máximo, con una intensidad constante",
+     "page": 2,
+     "context": "definición del variador toroidal / autotransformador variable",
+     "normalized_hint": "0 V – tensión máxima (AC)"
+    },
+    {
+     "raw": "suponiendo una tensión de Alimentación de 230V",
+     "page": 3,
+     "context": "curva de saturación (Fig. 4)",
+     "normalized_hint": "230 V AC"
+    },
+    {
+     "raw": "regular tensión desde 0 voltios hasta la máxima tensión para la que han sido diseñados",
+     "page": 4,
+     "context": "campos de aplicación",
+     "normalized_hint": "0 V – tensión máxima de diseño"
+    },
+    {
+     "raw": "señal continua de 0-10Vcc",
+     "page": 4,
+     "context": "modelos estabilizados bajo demanda con placa electrónica (precisión del 2%)",
+     "normalized_hint": "0-10 V DC (señal de mando)"
+    },
+    {
+     "raw": "160 VA – 4000 VA Entrada/Input 230V Salida/Output 230/250V",
+     "page": 5,
+     "context": "cabecera de tabla «Dimensiones y peso», variador monofásico manual",
+     "normalized_hint": "Entrada 230 V AC; salida 230/250 V"
+    },
+    {
+     "raw": "5000 VA – 11000 VA Entrada/Input 230V Salida/Output 230/250V",
+     "page": 5,
+     "context": "cabecera de tabla «Dimensiones y peso», variador monofásico manual",
+     "normalized_hint": "Entrada 230 V AC; salida 230/250 V"
+    },
+    {
+     "raw": "160 VA – 4000 VA Entrada/Input 230V Salida/Output 230/250V",
+     "page": 5,
+     "context": "cabecera de tabla «Dimensiones y peso», variador monofásico motorizado",
+     "normalized_hint": "Entrada 230 V AC; salida 230/250 V"
+    },
+    {
+     "raw": "5000 VA – 11000 VA Entrada/Input 230V Salida/Output 230/250V",
+     "page": 6,
+     "context": "cabecera de tabla «Dimensiones y peso», variador monofásico motorizado",
+     "normalized_hint": "Entrada 230 V AC; salida 230/250 V"
+    },
+    {
+     "raw": "160 VA x 2 – 4000 VA x 2 Entrada/Input 230V Salida/Output 230/250V",
+     "page": 6,
+     "context": "cabecera de tabla «Dimensiones y peso», variador doble manual",
+     "normalized_hint": "Entrada 230 V AC; salida 230/250 V"
+    },
+    {
+     "raw": "5000 VA x 2 – 11000 VA x 2 Entrada/Input 230V Salida/Output 230/250V",
+     "page": 6,
+     "context": "cabecera de tabla «Dimensiones y peso», variador doble manual",
+     "normalized_hint": "Entrada 230 V AC; salida 230/250 V"
+    },
+    {
+     "raw": "160 VA x 2 – 4000 VA x 2 Entrada/Input 230V Salida/Output 230/250V",
+     "page": 7,
+     "context": "cabecera de tabla «Dimensiones y peso», variador doble motorizado",
+     "normalized_hint": "Entrada 230 V AC; salida 230/250 V"
+    },
+    {
+     "raw": "5000 VA x 2 – 11000 VA x 2 Entrada/Input 230V Salida/Output 230/250V",
+     "page": 7,
+     "context": "cabecera de tabla «Dimensiones y peso», variador doble motorizado",
+     "normalized_hint": "Entrada 230 V AC; salida 230/250 V"
+    },
+    {
+     "raw": "480 VA – 12000 VA Entrada/Input 400V Salida/Output 400/430V",
+     "page": 7,
+     "context": "cabecera de tabla «Dimensiones y peso», variador trifásico manual",
+     "normalized_hint": "Entrada 400 V AC (trifásico); salida 400/430 V"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Portada de la sección «VARIADORES DE TENSIÓN» con logotipo TORIVAC y fotografía de un variador toroidal con pletina de contacto y bornes; no contiene datos técnicos.",
+     "page": 1
+    },
+    {
+     "fact": "La numeración impresa de las páginas de la sección es la del PDF menos 1 (la página 2 del PDF lleva el número impreso 1).",
+     "page": 2
+    },
+    {
+     "fact": "Series de fabricación: «Variador de tensión toroidal monofásico, doble y trifásico (I, II, III). Todos los modelos se pueden montar en caja metálica suministrar para regulación manual o motorizada».",
+     "page": 2
+    },
+    {
+     "fact": "Calidad: «control del 100% de todos los variadores»; robustez mecánica y alta resolución (ajustes muy precisos de tensión).",
+     "page": 2
+    },
+    {
+     "fact": "Variador seccionado (figura 1): el dibujo diferencia el núcleo, el bobinado, los aislamientos y el resto de componentes; las 21 piezas numeradas se listan en el despiece.",
+     "page": 2
+    },
+    {
+     "fact": "Núcleo toroidal fabricado con plancha magnética de muy bajas pérdidas y alta permeabilidad, bobinado en un ángulo de aprox. 340º.",
+     "page": 3
+    },
+    {
+     "fact": "Pista de contacto formada por un bobinado uniforme, rectificado, pulido y tratado con un baño de plata, para mejorar el contacto con la escobilla de grafito; reduce la resistencia de contacto y la oxidación del cobre (vida más larga).",
+     "page": 3
+    },
+    {
+     "fact": "Un elevado número de espiras por voltio permite regular valores de tensión muy precisos.",
+     "page": 3
+    },
+    {
+     "fact": "El encapsulado en resina de epoxi mejora la disipación de calor, evita que se concentre en el punto de contacto de la escobilla (como en los variadores de bobinado al aire) y protege físicamente de las agresiones atmosféricas de ciertos ambientes nocivos.",
+     "page": 3
+    },
+    {
+     "fact": "Contactos de fricción interiores y exteriores diseñados generosamente para disipar el máximo calor con el mínimo desgaste.",
+     "page": 3
+    },
+    {
+     "fact": "Las motorizaciones y los topes mecánicos han sido sometidos a ensayos de resistencia mecánica.",
+     "page": 3
+    },
+    {
+     "fact": "Los variadores de tensión toroidales no deforman la onda senoidal.",
+     "page": 3
+    },
+    {
+     "fact": "Incremento de temperatura en las partes externas no metálicas: entre 45ºC y 60ºC sobre temperatura ambiente a plena carga (Fig.2); medios para reducirla: baño en cuba de aceite o refrigeración mediante ventilador, habituales en variadores de grandes potencias.",
+     "page": 3
+    },
+    {
+     "fact": "Permiten regular el voltaje sin sobrepasar la intensidad nominal salvo al inicio y final del recorrido, donde se puede sobrepasar hasta un 22 %, según el gráfico de la fig. 3.",
+     "page": 3
+    },
+    {
+     "fact": "Fig.2 (gráfico): eje ΔºC con marcas 20, 30, 40, 50, 60, 70, 80 frente a Horas con marcas 0, 1, 2, 3, 4; la curva parte de 20 y se estabiliza en torno a 70 entre las horas 1 y 2 (lectura aproximada del gráfico).",
+     "page": 3
+    },
+    {
+     "fact": "Fig.3 (gráfico): I.max. en % de la In (marcas 95, 100, 105, 110, 115, 120, 125, 130) frente a % Recorrido (marcas 0, 20, 40, 60, 80, 100); ≈100 en la zona central del recorrido y por encima de 120 en los extremos (lectura aproximada del gráfico).",
+     "page": 3
+    },
+    {
+     "fact": "Fig. 4 (gráfico): V (marcas 0, 50, 100, 150, 200, 250, 300, 350) frente a mA (marcas 0, 100, 200, 300, 400); la curva sube rápido y se aplana, llegando a ≈300 V hacia 300 mA (lectura aproximada del gráfico).",
+     "page": 3
+    },
+    {
+     "fact": "Características magnéticas: núcleo de plancha magnética de primera calidad, de muy bajas pérdidas y alto rendimiento, con tratamiento térmico para obtener una capacidad de inducción de 15.000 a 16.000 Gauss (el PDF imprime «oblener»).",
+     "page": 3
+    },
+    {
+     "fact": "Curva de saturación (Fig. 4): «aproximadamente, en el 15% de la tensión nominal del aparato, suponiendo una tensión de Alimentación de 230V».",
+     "page": 3
+    },
+    {
+     "fact": "Flujo magnético concentrado en el núcleo de manera uniforme; la ausencia de entrehierros elimina vibraciones; el bobinado repartido por toda la superficie del núcleo hace desaparecer prácticamente el ruido por magnetostricción y favorece la disipación del calor.",
+     "page": 3
+    },
+    {
+     "fact": "Frecuencia: diseñados para trabajar a 50/60 Hz.; por la calidad de la plancha y el tratamiento térmico podrían trabajar a frecuencias próximas a 400 Hz, teniendo en cuenta que las pérdidas por histéresis aumentan considerablemente (el texto de la página termina ahí).",
+     "page": 3
+    },
+    {
+     "fact": "Campos de aplicación (0 voltios hasta la máxima tensión de diseño): alimentación variable en laboratorios; luminotecnia; equipos de rigidez dieléctrica; regulación de temperatura con cargas resistivas; regulación galvánica; regulación a distancia mediante equipos motorizados; regulación de velocidad de motores eléctricos; estabilizadores de tensión; regulación de otros transformadores fijos.",
+     "page": 4
+    },
+    {
+     "fact": "Regulación manual: mediante botón de mando en el eje del variador que permite actuar sobre la escobilla y conseguir la tensión deseada; amplia gama de botones y carátulas graduadas en % ó en voltios, aplicables a las diferentes potencias.",
+     "page": 4
+    },
+    {
+     "fact": "Regulación motorizada: para regular equipos a distancia o equipos estabilizadores; también se motorizan los variadores de grandes potencias por comodidad. El eje es accionado por un motor-reductor mediante un conmutador manual que permite elevar o reducir la tensión de salida. Las motorizaciones que ensambla TORIVAC carecen de inercia, por lo que son ideales para control remoto.",
+     "page": 4
+    },
+    {
+     "fact": "Bajo demanda se fabrican modelos estabilizados por medio de una placa electrónica con una precisión del 2%; la placa permite regular el variador por medio de un potenciómetro o una señal continua de 0-10Vcc.",
+     "page": 4
+    },
+    {
+     "fact": "Fotografías de la página 4 sin leyenda: variador en caja metálica con instrumentos de medida, variadores monofásicos y variadores apilados en bastidor.",
+     "page": 4
+    },
+    {
+     "fact": "Tablas «Dimensiones y peso» (bilingües ES/EN): «In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable autotransformers». «*Dimensiones reducidas/ limited dimensions» se aplica a las filas marcadas con asterisco.",
+     "page": 5
+    },
+    {
+     "fact": "Dibujos de cotas (vistas con letras A, B, C, D, E, F, G): manual monofásico 160-4000 VA; 5000 VA y 6000 VA - 11000 VA con dibujos separados; motorizado monofásico con vista lateral y superior.",
+     "page": 5
+    },
+    {
+     "fact": "Dibujos de cotas del variador monofásico motorizado: 5000 VA y 6000 VA - 11000 VA con vistas separadas (letras A, B, E, F, G, H).",
+     "page": 6
+    },
+    {
+     "fact": "Dibujos de cotas del variador doble manual: 160 VA x 2 – 4000 VA x 2 con una vista; 5000 VA x2 y 6000 VA x2 - 11000 VA x2 con vistas separadas (letras A a H).",
+     "page": 6
+    },
+    {
+     "fact": "Dibujos de cotas del variador doble motorizado (5000 VA x2 y 6000 VA x2 - 11000 VA x2) y del trifásico manual (letras A a G); intensidades del trifásico expresadas como valor x3.",
+     "page": 7
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 5,
+     "item": "Unidad de las cotas A–H",
+     "why": "Las tablas «Dimensiones y peso» no imprimen la unidad de las cotas (probablemente mm) ni definen cada letra en texto; solo 'Kg' y 'In (A)' llevan unidad. No se ha añadido unidad."
+    },
+    {
+     "page": 5,
+     "item": "Columna F (M-4, M-5, M-6, M-8, M-10, M-12)",
+     "why": "Designación de rosca/fijación impresa en la tabla; el PDF no lo explica en texto, solo en los dibujos. Conservada tal cual."
+    },
+    {
+     "page": 5,
+     "item": "Referencias de producto",
+     "why": "Las páginas 1-7 no contienen códigos de referencia; cada modelo se identifica solo por su potencia en VA. La referencia del JSON es '<VA> VA' como en la tabla."
+    },
+    {
+     "page": 6,
+     "item": "Monofásico motorizado 5000-11000 VA, fila 8000 VA, columna H = 235",
+     "why": "Valor impreso 235 rompe la serie (255, 470, 490, 235, 565, 615, 635) y los dobles motorizado/manual de 8000x2 imprimen 535. Dato dudoso: se deja en null y se propone revisarlo con el fabricante."
+    },
+    {
+     "page": 6,
+     "item": "Doble manual 160x2-4000x2, fila 2000x2, columna B = 25",
+     "why": "Valor impreso 25 frente a 245 (1500x2) y 312 (2500x2); el doble motorizado de 2000x2 da 335. Posible error de imprenta; se deja en null y se propone revisarlo."
+    },
+    {
+     "page": 6,
+     "item": "In 230 (A) de la fila 6000 VA = 26.01 (y 6000x2 = 26.01x2)",
+     "why": "VA/230 daría ≈26.09; el 26.01 se repite en todas las tablas (p5, p6, p7). Se conserva lo impreso con confianza media; proponer verificación antes de mostrarlo como dato fiable."
+    },
+    {
+     "page": 6,
+     "item": "In 230 (A) de la fila 11000 VA = 47.85 (y 11000x2 = 47.85x2)",
+     "why": "VA/230 daría ≈47.83; el 47.85 se repite en todas las tablas. Se conserva lo impreso con confianza media."
+    },
+    {
+     "page": 6,
+     "item": "In 230 (A) de la fila 220x2 = '0.9 x2' (p6 y p7) y fila 660 trifásico = '0.9x3' (p7)",
+     "why": "Las tablas de un solo variador imprimen 0.95 para 220 VA; las dobles y la trifásica imprimen 0.9. Posible redondeo/discrepancia; se conserva lo impreso con confianza media. Además el PDF imprime 'x 3' con espacio en '8.69x 3' (6000 VA trifásico) y '0.9 x2'; normalizado el espacio, la cifra no cambia."
+    },
+    {
+     "page": 7,
+     "item": "Trifásico manual, filas 1000* y 1500*",
+     "why": "Llevan asterisco pero la tabla no imprime la nota '*Dimensiones reducidas/ limited dimensions' (sí la imprimen las demás). Se asume el mismo significado pero no está escrito en esa tabla."
+    },
+    {
+     "page": 7,
+     "item": "Trifásico manual: no hay tabla de trifásico motorizado ni de variador en caja en las páginas 1-7",
+     "why": "La tabla trifásica continúa en la página 8 del PDF (15000 VA en adelante, fuera de este trabajo); el texto de la p.2 menciona regulación manual o motorizada para todos los modelos pero estas páginas no aportan tablas motorizadas trifásicas."
+    },
+    {
+     "page": 3,
+     "item": "Fig.2: estabilización ≈70 frente al texto 'entre 45ºC y 60ºC'",
+     "why": "El gráfico (ΔºC, 20-80) se estabiliza cerca de 70, mientras el texto dice 45-60ºC en las partes externas no metálicas; probablemente miden puntos distintos. Valores del gráfico leídos a ojo; no publicar sin confirmar."
+    },
+    {
+     "page": 3,
+     "item": "Curva de saturación 'en el 15% de la tensión nominal' (Fig. 4)",
+     "why": "Redacción ambigua; el codo del gráfico queda por encima de 230 V (≈15% sobre la nominal), no al 15%. Se transcribe literal y no se interpreta."
+    },
+    {
+     "page": 3,
+     "item": "Texto cortado al final de la página: '...las pérdidas por histéresis aumentan considerablemente'",
+     "why": "La frase termina sin punto ni continuación en la página; no se debe completar."
+    },
+    {
+     "page": 3,
+     "item": "Erratas aparentes del PDF: 'oblener', 'entrehierrs', 'caja metálica suministrar', 'su alta resolución' (falta coma)",
+     "why": "Se conservan tal cual; proponer corrección editorial (obtener, entrehierros, 'caja metálica a suministrar') solo tras aprobación."
+    },
+    {
+     "page": 2,
+     "item": "Despiece nº 18 'Glover de sujeción del carbón'",
+     "why": "Término no verificado (posible errata); se conserva literal. No traducir ni corregir sin confirmación."
+    },
+    {
+     "page": 4,
+     "item": "Regulación estabilizada: 'precisión del 2%' y señal '0-10Vcc'",
+     "why": "Solo se dan en texto bajo demanda; no hay tabla de modelos estabilizados en estas páginas."
+    }
+   ]
+  }
+ ]
+}

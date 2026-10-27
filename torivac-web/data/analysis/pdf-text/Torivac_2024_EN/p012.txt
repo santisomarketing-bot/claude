@@ -1,0 +1,60 @@
+VARIABLE AUTOTRANSFORMERS
+
+
+
+
+safety, wiring and maintenance
+
+                           The voltage variators are in accordance with CE standards, if that they
+                           are installed inside a box or enclosure that isolates them from the
+                           outside, protecting the user from possible contact with active,
+                           electrical and mechanical parts of the variator. If the voltage variators
+                           are not installed inside a protection box or enclosure, contact between
+                           the user and the active parts, such as the contact track, connection
+                           terminals or the brush, must be avoided.
+
+
+
+
+Connection
+
+Connection modes for single-phase drives
+
+
+
+               Single-phase inverters without elevation:                   Single-phase inverters with elevation:
+
+
+                          1                              4                       1                       3         4
+                                      INPUT                                              INPUT
+
+
+
+
+                               OUTPUT                                                 OUTPUT
+                          1                2                                     1                2
+
+
+
+                                     Input: 1-4                                            Input: 1-3
+                                     Output: 1-2                                           Output: 1-2
+
+
+
+Connection modes for three-phase Inverters
+Three-phase voltage inverters incorporate as standard a bridge
+between terminals 1-1-1 of each coil, corresponding to the neutral for a
+star connection, in order to avoid possible unbalances in the
+equipment.
+
+               Three-phase inverter without elevation                       Three-phase inverter with elevation
+
+
+
+
+                           Input in star: 1 - 4, 4, 4.                               Input in star: 1 – 3, 3, 3.
+                           Output: 1 - 2, 2, 2.                                      Output: 1 - 2, 2, 2.
+
+
+                                                                    11
+

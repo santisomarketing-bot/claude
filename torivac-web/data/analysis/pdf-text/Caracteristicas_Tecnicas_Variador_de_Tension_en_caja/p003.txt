@@ -1,0 +1,64 @@
+                                                                                                                      VARIADORES DE TENSIÓN
+
+
+   VARIADOR TENSIÓN EN CAJA INDUSTRIAL MONOFASICO
+
+
+           1500 VA – 11000 VA           Entrada/Input 230V
+                        Salida/Output 230/250V
+                 In 230     In 250
+         VA                            A      B      C      Kg
+                   (A)       (A)
+        1500      6.52         6      300    300    200     10
+        2000      8.69         8      300    300    200     12
+        2500      10.86       10      300    300    200     14                                                                                                                            B
+        3000      13.04       12      300    300    200     17
+        4000      17.39       16      400    400    200     21
+        5000      21.73       20      400    400    200     27
+        6000      26.01       24      600    600    250    57.6
+        7000      30.43       28      600    600    250    67.2
+        8000      34.78       32      600    600    250    76.8
+        9000      39.13       36      800    800    300     90                                                                                                 C
+                                                                                                            A
+       10000      43.47       40      800    800    300    109.2
+       11000      47.85       44      800    800    300    127.2
+   In hace referencia a la intensidad nominal del variador/In it refers to the nominal current
+   of the variable autotransformers.
+
+
+
+
+                                                                                                 VARIADOR TENSIÓN EN CAJA INDUSTRIAL TRIFASICO
+
+                                                                                                          480 VA – 33000 VA           Entrada/Input 400V
+                                                                                                                       Salida/Output 400/430V
+                                                            A                                                   In 230     In 250
+                        C                                                                              VA                             A      B      C                                   Kg
+                                                                                                                  (A)        (A)
+                                                                                                      480        0.7x3     0.64x3    250    250    150                                   6
+                                                                                                      660        0.9x3     0.88x3    250    250    150                                   8
+                                                                                                      1000     1.52x3       1.4x3    300    300    150                                 12.4
+                                                                                                      1500      2.17x3       2x3     300    300    150                                 13.5
+                                                                                                      2250      3.26x3       3x3     300    300    150                                 14.5
+                                                                                                      3000      4.34x3       4x3     400    400    200                                 17.5
+                                                                                                      3750      5.43x3       5x3     400    400    200                                  19
+                                                                                                      4500      6.52x3       6x3     400    400    250                                 24.5
+   B                                                                                                  6000     8.69x 3       8x3     400    400    250                                 27.5
+                                                                                                      7500     10.86x3      10x3     400    400    250                                  39
+                                                                                                      9000     13.04x3      12x3     600    600    300                                  52
+                                                                                                     12000     17.39x3      16x3     640    640    440                                  68
+                                                                                                     15000     21.73x3      20x3     640    640    440                                  71
+                                                                                                     18000     26.01x3      24x3     745    745    495                                 129
+                                                                                                     21000     30.43x3      28x3     745    745    495                                 136
+                                                                                                     24000     34.78x3      32x3     850    850    550                                 177
+                                                                                                     27000     39.13x3      36x3     850    850    550                                 208
+                                                                                                     30000     43.47x3      40x3    1000 1000      605                                 240
+                                                                                                     33000     47.85x3      44x3    1000 1000      700                                 295
+                                                                                                  In hace referencia a la intensidad nominal del variador/In it refers to the nominal current
+                                                                                                  of the variable autotransformers.
+
+
+
+
+www.torivac.com                                                                                                                                                                                 10
+

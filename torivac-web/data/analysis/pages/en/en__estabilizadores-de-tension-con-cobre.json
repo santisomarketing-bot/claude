@@ -1,0 +1,210 @@
+{
+ "file": "data/raw/html/en/en__estabilizadores-de-tension-con-cobre.html",
+ "lang": "en",
+ "url": "https://grupotorivac.com/en/estabilizadores-de-tension-con-cobre/",
+ "title": "Copper voltage stabilizers | Torivac Torivac.",
+ "meta_description": "Copper voltage stabilizers reduce losses and guarantee stability in energy infrastructures.",
+ "og_title": "Copper voltage stabilizers",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2024/11/evolucion-del-cobre.jpg",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/estabilizadores-de-tension-con-cobre/",
+  "fr": "https://grupotorivac.com/fr/estabilizadores-de-tension-con-cobre/",
+  "es": "https://grupotorivac.com/estabilizadores-de-tension-con-cobre/",
+  "de": "https://grupotorivac.com/de/estabilizadores-de-tension-con-cobre/",
+  "x-default": "https://grupotorivac.com/estabilizadores-de-tension-con-cobre/"
+ },
+ "body_classes": [
+  "wp-singular",
+  "post-template",
+  "post-template-elementor_header_footer",
+  "single",
+  "single-post",
+  "postid-16000",
+  "single-format-standard",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "is-elementor",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-template-full-width",
+  "elementor-kit-6",
+  "elementor-page",
+  "elementor-page-16000"
+ ],
+ "outline": [
+  {
+   "level": 2,
+   "text": "Copper voltage stabilizers"
+  },
+  {
+   "level": 3,
+   "text": "Controls power surges and dips"
+  },
+  {
+   "level": 3,
+   "text": "What is a copper voltage stabilizer and what is its function?"
+  },
+  {
+   "level": 3,
+   "text": "What makes our voltage stabilizers special?"
+  },
+  {
+   "level": 3,
+   "text": "Torivac is a company specialized in the design and manufacture of toroidal transformers and voltage regulators."
+  }
+ ],
+ "text": "Copper voltage stabilizers\n\nControls power surges and dips\nEnsuring a stable power supply is critical for any industry. Power surges and dips can cause equipment failures, reduce operating efficiency and increase maintenance costs. One of the many solutions is voltage regulation using copper. This is undoubtedly the most effective, since it is a material that stands out for its conductivity, resistance and ability to minimize energy losses. Therefore, voltage stabilizers are more than effective. \nOur copper voltage stabilizers are designed to ensure safety, efficiency and durability in the electrical systems of large infrastructures. Thanks to the use of high quality materials, we offer devices capable of maintaining a constant flow of energy, protecting industrial equipment, precision machinery and distribution networks. \n\nWhat is a copper voltage stabilizer and what is its function? \nA voltage stabilizer is an electrical device designed to maintain a stable and constant voltage level in a circuit, regardless of variations in the power supply or connected load. Its main function is to protect electrical and electronic equipment from voltage surges and dips that can cause failures, overheating or even irreparable damage. \nThey are essential in multiple industrial, commercial and residential applications, as they ensure a reliable and safe power supply. In sectors such as automation, telecommunications, electromedicine and manufacturing, where voltage accuracy is crucial, voltage regulators enable optimal operation of equipment and avoid interruptions in production processes.\nSome operate automatically, adjusting the voltage in real time according to the needs of the system, while others allow manual regulation according to user requirements. Their implementation not only extends the service life of connected devices, but also improves energy efficiency and reduces the risk of failures in the electrical infrastructure. \n\nWhat makes our voltage stabilizers special?\nIndustries need solutions that guarantee energy stability without interruptions. Our copper voltage regulators reduce equipment wear, optimize energy consumption and lower operating costs. \nGreater electrical stability: you will avoid voltage surges and dips that can affect the company’s operations.\nMaintenance savings: extends the useful life of electrical equipment and reduces costs due to breakdowns.\nEnergy efficiency: optimizes consumption, reducing losses and improving network performance.\nReliable technology: products designed with the highest quality standards.\nIn addition, each voltage regulator guarantees stable power distribution, protecting sensitive machinery, avoiding overloads and ensuring that your company’s operations are not affected by voltage variations. By optimizing power consumption, they contribute to a more efficient use of energy, reducing environmental impact and helping to comply with sustainability regulations. \n\nTorivac is a company specialized in the design and manufacture of toroidal transformers and voltage regulators.\nWe have nearly 60 years of experience in the industry, which has allowed us to grow to a presence in more than 30 countries.\nWe have a technical team that guarantees the manufacture of high precision and efficient devices. Our work methodology allows us to perform advanced simulations in each phase of each project, ensuring that each component, from toroidal voltage variators, adjustable transformers, battery dischargers, potentiometers and toroidal cores, meet the highest standards in the industry.\nWe work closely with companies that have a large infrastructure, seeking to ensure customized and efficient solutions. We aim to respond to the demands of industries such as technology, energy and automotive. Our goal is to continue innovating, strengthening strategic alliances and expanding our global reach, always maintaining the seal of quality and excellence that has characterized us since our beginnings.",
+ "text_chars": 3982,
+ "tables": [],
+ "links": [],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2024/11/evolucion-del-cobre.jpg",
+   "alt": "reduce operating costs in your business with Torivac voltage stabilizers. Specially manufactured to optimize power supply and stability in energy infrastructures."
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/en/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  },
+  {
+   "action": "/en/estabilizadores-de-tension-con-cobre/",
+   "method": "post",
+   "id": "wpforms-form-16204",
+   "class": [
+    "wpforms-validate",
+    "wpforms-form",
+    "wpforms-ajax-form"
+   ],
+   "fields": [
+    {
+     "name": "wpforms[fields][0]",
+     "type": "text",
+     "placeholder": "Name",
+     "required": true
+    },
+    {
+     "name": "wpforms[fields][4]",
+     "type": "text",
+     "placeholder": null,
+     "required": false
+    },
+    {
+     "name": "wpforms[fields][1]",
+     "type": "email",
+     "placeholder": "E-mail",
+     "required": true
+    },
+    {
+     "name": "wpforms[fields][2]",
+     "type": "textarea",
+     "placeholder": "Message",
+     "required": false
+    },
+    {
+     "name": "wpforms[fields][3][]",
+     "type": "checkbox",
+     "placeholder": null,
+     "required": true
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "Home",
+     "href": "https://grupotorivac.com/en/"
+    },
+    {
+     "text": "Torivac Company",
+     "href": "https://grupotorivac.com/en/torivac-company/"
+    },
+    {
+     "text": "Products",
+     "href": "https://grupotorivac.com/en/torivac-products/"
+    },
+    {
+     "text": "Entrepreneurial Projects",
+     "href": "https://grupotorivac.com/en/entrepreneurial-projects/"
+    },
+    {
+     "text": "Catalogue",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024_EN.pdf"
+    },
+    {
+     "text": "Blog",
+     "href": "https://grupotorivac.com/en/blog/"
+    },
+    {
+     "text": "Contact",
+     "href": "https://grupotorivac.com/en/contact/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/estabilizadores-de-tension-con-cobre/"
+    },
+    {
+     "text": "Français",
+     "href": "https://grupotorivac.com/fr/estabilizadores-de-tension-con-cobre/"
+    },
+    {
+     "text": "Español",
+     "href": "https://grupotorivac.com/estabilizadores-de-tension-con-cobre/"
+    },
+    {
+     "text": "Deutsch",
+     "href": "https://grupotorivac.com/de/estabilizadores-de-tension-con-cobre/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

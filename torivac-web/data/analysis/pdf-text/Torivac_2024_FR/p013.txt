@@ -1,0 +1,60 @@
+VARIADORES DE TENSIÓN
+
+
+
+
+Régulation motorisée
+
+Les variateurs de tension à régulation motorisée disposent de trois
+bornes de connexion correspondant au supplément motorisé. Pour
+augmenter la tension de sortie du variateur, il faut appliquer une
+tension de 230 VAC entre les bornes câblées Violet - Gris. Pour diminuer
+la tension de sortie sur le variateur de vitesse, il faut appliquer une
+tension de 230 VAC entre les bornes câblées Orange - Gris.
+
+                                                                           BORNES DE
+                                                                           CONNEXION
+                                                                                                    ORANGE
+
+              230 VAC
+                                                                                                      GRIS
+
+                                                                                                     VIOLET
+
+
+En aucun cas, la tension ne doit être appliquée entre les bornes câblées Orange - Violet.
+
+
+
+MAINTENANCE
+
+Aﬁn de prolonger la durée de vie du variateur de tension, nous recommandons ce qui suit
+• Si possible, placer l'onduleur de manière à éviter l'accumulation de poussière sur la piste de contact.
+• Vériﬁer périodiquement l'usure des charbons de contact et les remplacer si nécessaire.
+• Contrôler périodiquement l'état de la piste de contact aﬁn de pouvoir procéder, si nécessaire, à une révision complète du variateur de
+tension dans nos locaux.
+
+
+protection
+
+• Il est conseillé de protéger la sortie du variateur de tension en insérant un fusible d'une valeur supérieure de 10% au courant nominal entre
+la borne 2 et la charge.
+• Si l'on souhaite protéger l'entrée, il convient de placer un fusible ou un disjoncteur à action retardée entre le réseau et la borne 1, compte
+tenu du pic de tension élevée qui se produit lors du démarrage des bobines.
+
+Garantie
+
+Ce produit est garanti pour une période de 12 mois à compter de la date d'achat. Les dommages causés par une mauvaise manipulation, ainsi
+que les dommages causés par l'application de tensions ou de courants supérieurs à ceux spéciﬁés sur l'étiquette du produit ne sont pas
+couverts par la garantie.
+
+
+Service après-vente
+
+Pour toute question, veuillez contacter notre service technique au numéro de téléphone : +34 93 312 01 61.
+
+
+
+
+                                                                      12
+

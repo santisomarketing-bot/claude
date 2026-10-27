@@ -1,0 +1,194 @@
+{
+ "file": "data/raw/html/en/en__estabilizadores-de-tension.html",
+ "lang": "en",
+ "url": "https://grupotorivac.com/en/estabilizadores-de-tension/",
+ "title": "Voltage stabilizers",
+ "meta_description": "Torivac voltage stabilizers ensure efficiency, protection and energy savings in large infrastructures.",
+ "og_title": "Voltage stabilizers ensure stable supply and cost reduction",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2024/11/Reducir-consumo-energetico.jpg",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/estabilizadores-de-tension/",
+  "fr": "https://grupotorivac.com/fr/estabilizadores-de-tension/",
+  "es": "https://grupotorivac.com/estabilizadores-de-tension/",
+  "de": "https://grupotorivac.com/de/estabilizadores-de-tension/",
+  "x-default": "https://grupotorivac.com/estabilizadores-de-tension/"
+ },
+ "body_classes": [
+  "wp-singular",
+  "post-template",
+  "post-template-elementor_header_footer",
+  "single",
+  "single-post",
+  "postid-16056",
+  "single-format-standard",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "is-elementor",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-template-full-width",
+  "elementor-kit-6",
+  "elementor-page",
+  "elementor-page-16056"
+ ],
+ "outline": [
+  {
+   "level": 2,
+   "text": "Voltage stabilizers ensure stable supply and cost reduction"
+  }
+ ],
+ "text": "Voltage stabilizers ensure stable supply and cost reduction\n\nPower consumption in large infrastructures directly impacts the profitability and operational efficiency of any industry. Constant power surges and dips not only lead to equipment failures, but also increase electrical expenditure and maintenance costs. To avoid these problems, high-performance voltage stabilizers are vital to ensure stable and optimized power flow.\nThey ensure the continuity of power supply and the protection of industrial and commercial infrastructure. Our voltage stabilizers maintain a constant energy distribution, avoiding overloads and prolonging the life of the equipment. \n\nWhat is a voltage stabilizer and what is its function?\nA voltage stabilizer is a device designed to maintain a constant voltage level in an electrical system, compensating for variations in the supply network that could affect the operation of connected equipment. Its main function is to protect electrical and electronic devices from voltage surges and dips, preventing damage from surges or voltage drops that can cause failures, reduced performance or even irreparable breakdowns. \nThese devices are essential in applications where voltage stability is critical, such as in hospitals, data centers, laboratories, manufacturing industries and telecommunications systems. By ensuring a stable power supply, voltage stabilizers optimize equipment performance and extend equipment life. \n\nWhat is the difference between a voltage protector and a voltage stabilizer?\nThe voltage stabilizer is equipped with a transformer that has several outputs. This allows it to modify the voltage output to different levels, depending on the needs of the moment. Thus, when the input voltage varies outside normal ranges, the stabilizer does not simply disconnect devices, but actively adjusts the voltage. In doing so, it ensures that your equipment always receives the exact amount of power it needs, no more and no less. \nUnlike the stabilizer, which continuously adjusts the voltage, the voltage protector kicks in when it detects an overvoltage (or undervoltage) that exceeds a safe threshold. At that critical instant, it acts quickly to block the excessive energy. You can think of it as a fast and sensitive switch, capable of disconnecting power to protect your equipment in milliseconds. \n\nWhy choose a voltage stabilizer?\nA voltage stabilizer will not disconnect your device while in use, but will maintain a constant voltage level over time. For example, if your area experiences frequent power surges and dips, a voltage stabilizer would be the right choice, as it keeps the power output stable. \nIn addition, it contributes to infrastructure protection, reduces costs, improves energy efficiency and ensures operational continuity without risk or interruption.\n\nHow does it benefit large energy infrastructures?\nVoltage stabilizers play a key role in reducing energy consumption by optimizing the use of electricity and minimizing unnecessary losses. One of the main problems in industrial environments is voltage instability, which can lead to excessive energy consumption and affect equipment performance. These devices ensure that the voltage supplied to machinery is maintained within optimum levels, avoiding overconsumption caused by electrical fluctuations. \nImplementing voltage regulators helps to comply with energy regulations and improve the energy efficiency rating of facilities. By consuming only the energy needed for each process, companies can reduce operating costs, improve productivity and contribute to a more sustainable and environmentally responsible industrial model. \n\nTorivac is a company specialized in the design and manufacture of toroidal transformers and voltage regulators.\nWe have nearly 60 years of experience in the industry, which has allowed us to grow to a presence in more than 30 countries.\nWe have a technical team that guarantees the manufacture of high precision and efficient devices. Our work methodology allows us to perform advanced simulations at every stage of each project, ensuring that each component, from toroidal voltage regulators, adjustable transformers, battery dischargers, potentiometers and toroidal cores, meets the highest standards in the industry. \nWe work closely with companies that have a large infrastructure, seeking to guarantee customized and efficient solutions. We aim to respond to the demands of industries such as technology, energy and automotive. Our goal is to continue innovating, strengthening strategic alliances and expanding our global reach, always maintaining the seal of quality and excellence that has characterized us since our beginnings.",
+ "text_chars": 4697,
+ "tables": [],
+ "links": [],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2024/11/Reducir-consumo-energetico.jpg",
+   "alt": "we manufacture voltage stabilizers to avoid surges and dips that affect the operation of large infrastructures."
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/en/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  },
+  {
+   "action": "/en/estabilizadores-de-tension/",
+   "method": "post",
+   "id": "wpforms-form-16204",
+   "class": [
+    "wpforms-validate",
+    "wpforms-form",
+    "wpforms-ajax-form"
+   ],
+   "fields": [
+    {
+     "name": "wpforms[fields][0]",
+     "type": "text",
+     "placeholder": "Name",
+     "required": true
+    },
+    {
+     "name": "wpforms[fields][1]",
+     "type": "email",
+     "placeholder": "E-mail",
+     "required": true
+    },
+    {
+     "name": "wpforms[fields][2]",
+     "type": "textarea",
+     "placeholder": "Message",
+     "required": false
+    },
+    {
+     "name": "wpforms[fields][4]",
+     "type": "text",
+     "placeholder": null,
+     "required": false
+    },
+    {
+     "name": "wpforms[fields][3][]",
+     "type": "checkbox",
+     "placeholder": null,
+     "required": true
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "Home",
+     "href": "https://grupotorivac.com/en/"
+    },
+    {
+     "text": "Torivac Company",
+     "href": "https://grupotorivac.com/en/torivac-company/"
+    },
+    {
+     "text": "Products",
+     "href": "https://grupotorivac.com/en/torivac-products/"
+    },
+    {
+     "text": "Entrepreneurial Projects",
+     "href": "https://grupotorivac.com/en/entrepreneurial-projects/"
+    },
+    {
+     "text": "Catalogue",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024_EN.pdf"
+    },
+    {
+     "text": "Blog",
+     "href": "https://grupotorivac.com/en/blog/"
+    },
+    {
+     "text": "Contact",
+     "href": "https://grupotorivac.com/en/contact/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/estabilizadores-de-tension/"
+    },
+    {
+     "text": "Français",
+     "href": "https://grupotorivac.com/fr/estabilizadores-de-tension/"
+    },
+    {
+     "text": "Español",
+     "href": "https://grupotorivac.com/estabilizadores-de-tension/"
+    },
+    {
+     "text": "Deutsch",
+     "href": "https://grupotorivac.com/de/estabilizadores-de-tension/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

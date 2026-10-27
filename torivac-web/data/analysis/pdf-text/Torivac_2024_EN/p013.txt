@@ -1,0 +1,61 @@
+VARIABLE AUTOTRANSFORMERS
+
+
+
+
+Motorised regulation
+
+Voltage variators with motorised regulation have three connection
+terminals corresponding to the motorised supplement. To increase the
+output voltage on the inverter, 230 VAC voltage must be applied
+between the wired terminals Violet - Grey. To decrease the output
+voltage at the speed variator, 230 VAC voltage must be applied between
+the wired terminals Orange - Grey.
+
+                                                                           CONNECTION
+                                                                           TERMINALS
+                                                                                                     ORANGE
+
+              230 VAC
+                                                                                                       GREY
+
+                                                                                                      VIOLET
+
+
+Under no circumstances a voltage must be applied between the orange - violet wired terminals.
+
+
+
+MAINTENANCE
+
+In order to extend the service life of the voltage variator, we recommend the following:
+• If possible, place the inverter to prevent the accumulation of dust on the contact track.
+• Periodically check the status of the contact carbons and replace them when necessary.
+• Periodically, check the status of the contact track so that, if necessary, a complete overhaul of the voltage variator can be carried out at our
+facilities.
+
+
+Protection
+
+• We recommend protect the voltage variator output by inserting a fuse with a value 10% higher than the rated current between terminal 2
+and the load.
+• If you wish to protect the input, a delayed-action fuse or circuit breaker should be placed between the mains and terminal 1, because of the
+high voltage peak that occurs when coils start up.
+
+Warranty
+
+This product is guaranteed for a period of 12 months from the date of purchase. Damage caused by improper handling, as well as damage
+caused by the application of voltages or currents higher than those speciﬁed on the product label will not be subject to warranty.
+
+
+
+
+Service
+
+If you have any queries, please contact our technical department on telephone number: +34 93 312 01 61.
+
+
+
+
+                                                                      12
+

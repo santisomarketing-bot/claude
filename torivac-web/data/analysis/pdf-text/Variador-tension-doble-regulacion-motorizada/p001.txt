@@ -1,0 +1,55 @@
+VARIADORES DE TENSIÓN
+
+
+
+
+dimensiones y peso
+
+
+
+
+Variador tensión doble regulación motorizada
+
+ 160 VA x 2 – 4000 VA x 2                           Entrada/Input 230V Salida/Output 230/250V
+                     In 230           In 250
+    VA                                                 A           B           E          F           G         Kg
+                       (A)              (A)
+   160x2              0.7x2           0.64x2           90         290         75         M-5          92         3.4
+   220x2             0.9 x2           0.88x2           90         290         75         M-5         100         4.2
+   350x2            1.52x2             1.4x2          120         275        100         M-6         130         8.6
+  350*x2            1.52x2             1.4x2           90         290         75         M-5          92         4.5
+   500x2             2.17x2             2x2           120         280        100         M-6         130         9.1
+  500*x2             2.17x2             2x2            90         290         75         M-5          92          5
+   750x2             3.26x2             3x2           120         300        100         M-6         130         9.2
+  1000x2             4.34x2             4x2           120         320        100         M-6         130        10.1
+  1250x2             5.43x2             5x2           135         285        112         M-6         140        11.7
+  1500x2             6.52x2             6x2           165         315        135         M-6         175        14.4
+  2000x2            8.69x2              8x2           165         335        135         M-6         175        17.1
+  2500x2            10.86x2            10x2           200         375        170         M-8         230        25.3
+  3000x2            13.04x2            12x2           235         395       195          M-8         242        33.5
+  4000x2            17.39x2            16x2           285         445        255         M-8         295        43.7
+*Dimensiones reducidas/ limited dimensions
+In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable
+autotransformers.
+
+
+
+
+        5000 VA x 2 – 11000 VA x 2                            Entrada/Input 230V Salida/Output 230/250V
+                    In 230           In 250
+    VA                                                A           B            E            F              G           H        Kg
+                     (A)               (A)
+  5000x2           21.73x2            20x2           380         445         255          M-8             320       255         57
+  6000x2           26.01x2            24x2           520         575         380          M-10            430       470         87
+  7000x2           30.43x2            28x2           540         575         380          M-10            445       490         109
+  8000x2           34.78x2            32x2           585         575         380          M-10            490       535         122
+  9000x2           39.13x2            36x2           615         585         420          M-10            520       565         147
+ 10000x2           43.47x2            40x2           665         585         420          M-12            570       615         189
+ 11000x2           47.85x2            44x2           685         585         420          M-12            610       635         219
+In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable autotransformers.
+
+
+
+
+                                                                                                                                      7
+

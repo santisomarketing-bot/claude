@@ -1,0 +1,51 @@
+VARIADORES DE TENSIÓN
+
+
+
+
+campos de aplicación
+
+Los variadores de tensión se utilizan para regular tensión desde 0
+voltios hasta la máxima tensión para la que han sido diseñados y entre
+las aplicaciones más habituales ﬁguran las siguientes:
+* Alimentación variable en laboratorios.
+* Luminotecnia.
+* Equipos de rigidez dieléctrica.
+* Regulación de temperatura con cargas resistivas.
+* Regulación galvánica.
+* Regulación a distancia mediante equipos motorizados.
+* Regulación de velocidad de motores eléctricos.
+* Estabilizadores de tensión.
+* Regulación de otros transformadores ﬁjos.
+
+
+
+
+                                                                         tipos de regulación
+
+                                                                         Regulación manual
+                                                                         Mediante botón de mando en el eje del variador que permite actuar
+                                                                         sobre la escobilla y conseguir la tensión deseada. Disponemos de
+                                                                         una amplia gama de botones y carátulas graduadas en % ó en
+                                                                         voltios, aplicables a las diferentes potencias.
+
+
+                                                                         Regulación motorizada
+                                                                         Utilizada fundamentalmente para regular los equipos a distancia ó
+                                                                         para equipos estabilizadores. También se suelen motorizar los
+                                                                         variadores de tensión de grandes potencias, por la comodidad de
+                                                                         uso que proporcionan. En este tipo de regulación el eje del variador
+                                                                         es accionado por un motor-reductor, mediante un conmutador
+                                                                         manual que permite elevar o reducir la tensión de salida.
+                                                                         Las motorizaciones que ensambla TORIVAC carecen de inercia, por
+                                                                         lo que son ideales para control remoto.
+                                                                         Bajo demanda se fabrican modelos estabilizados por medio de una
+                                                                         placa electrónica con una precisión del 2%. La incorporación de
+                                                                         dicha placa permite regular el variador por medio de un
+                                                                         potenciómetro o una señal continua de 0-10Vcc.
+
+
+
+
+                                                                  3
+

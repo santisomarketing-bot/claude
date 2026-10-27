@@ -1,0 +1,199 @@
+{
+ "file": "data/raw/html/fr/fr__notre-entreprise.html",
+ "lang": "fr",
+ "url": "https://grupotorivac.com/fr/notre-entreprise/",
+ "title": "Grupor Torivac - Notre entreprise",
+ "meta_description": "%",
+ "og_title": "Grupor Torivac - Notre entreprise",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2024/10/empresa.jpg",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/torivac-company/",
+  "fr": "https://grupotorivac.com/fr/notre-entreprise/",
+  "es": "https://grupotorivac.com/torivac-empresa/",
+  "de": "https://grupotorivac.com/de/unser-unternehmen/",
+  "x-default": "https://grupotorivac.com/torivac-empresa/"
+ },
+ "body_classes": [
+  "wp-singular",
+  "page-template",
+  "page-template-elementor_header_footer",
+  "page",
+  "page-id-15716",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "is-elementor",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-template-full-width",
+  "elementor-kit-6",
+  "elementor-page",
+  "elementor-page-15716"
+ ],
+ "outline": [
+  {
+   "level": 1,
+   "text": "Notre entreprise"
+  },
+  {
+   "level": 4,
+   "text": "Production sur mesure"
+  },
+  {
+   "level": 2,
+   "text": "Nous sommes présents dans plus de 30 pays"
+  },
+  {
+   "level": 4,
+   "text": "Ce qui nous définit"
+  },
+  {
+   "level": 2,
+   "text": "Conception et innovation"
+  },
+  {
+   "level": 4,
+   "text": "MISSION"
+  },
+  {
+   "level": 4,
+   "text": "VISION"
+  },
+  {
+   "level": 4,
+   "text": "VALEURS"
+  },
+  {
+   "level": 4,
+   "text": "Nous disposons d'une équipe dotée d'une vaste expérience en matière de commerce et de relations humaines."
+  }
+ ],
+ "text": "Notre entreprise\n\n60 ans à répondre aux exigences des grandes entreprises.\nNous fabriquons des variateurs de tension et des transformateurs toroïdaux.\n\nProduction sur mesure\n\nNous sommes présents dans plus de 30 pays\n\nNous fabriquons des équipements personnalisés pour la régulation de la tension, offrant des solutions avancées pour l’industrie.\nLa précision et l’efficacité sont essentielles dans chaque développement, c’est pourquoi nous intégrons la technologie de modélisation 3D et les simulations en temps réel afin d’optimiser chaque étape du processus. Cela nous permet de garantir une adaptation exacte aux besoins de chaque application, d’assurer des performances fiables et de prolonger la durée de vie de l’équipement. \nNotre capacité d’innovation nous positionne comme un allié stratégique dans l’optimisation des systèmes électriques industriels. Faites confiance aux solutions conçues pour maximiser l’efficacité et la sécurité. \n\nCe qui nous définit\n\nConception et innovation\n\nMISSION\n\nDepuis 1964, nous sommes spécialisés dans la conception et la fabrication de produits de régulation de tension. Avec plus d’un demi-siècle de réponse aux besoins de nos clients et un engagement clair en faveur de l’innovation, nos régulateurs de tension toroïdaux, autotransformateurs réglables, bobines d’inductance, potentiomètres et noyaux toroïdaux sont présents sur les cinq continents. \n\nVISION\n\nLa croissance constante de notre activité et la technicité de nos produits nous ont permis de devenir l’une des principales entreprises du secteur. Notre objectif est de maintenir la fiabilité de nos clients pour nos produits et processus, l’excellent rapport qualité-prix qui nous caractérise, et de devenir le premier choix de nos clients. \n\nVALEURS\n\nNotre vocation pour la qualité et le service sont nos piliers. Nous sommes conscients de la rapidité avec laquelle le secteur évolue et c’est pourquoi nous disposons des moyens nécessaires pour continuer à maintenir le meilleur rapport qualité-prix pour nos produits. \n\nNous disposons d'une équipe dotée d'une vaste expérience en matière de commerce et de relations humaines.\n\nSous la direction de M. Ramón Zamora, nous avons élaboré une philosophie fondée sur la proximité, l’engagement et l’attention méticuleuse portée aux détails de chaque commande. Plus qu’un groupe d’experts dans le secteur, nous sommes une équipe synchronisée où chaque membre apporte fiabilité et excellence à chaque projet. \nCette façon de travailler nous a définis au fil des ans et continuera à marquer notre parcours, en garantissant des solutions précises pour chaque entreprise, au bénéfice de la construction d’alliances.\n\n Plus d'informations",
+ "text_chars": 2684,
+ "tables": [],
+ "links": [
+  {
+   "text": "Plus d'informations",
+   "href": "https://grupotorivac.com/contacto/"
+  }
+ ],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2024/10/empresa.jpg",
+   "alt": ""
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/04/mision.png",
+   "alt": ""
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/04/vision.png",
+   "alt": ""
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/04/valores.png",
+   "alt": ""
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/fr/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "Accueil",
+     "href": "https://grupotorivac.com/fr/"
+    },
+    {
+     "text": "Notre Entreprise",
+     "href": "https://grupotorivac.com/fr/notre-entreprise/"
+    },
+    {
+     "text": "Produits",
+     "href": "https://grupotorivac.com/fr/produits-torivac/"
+    },
+    {
+     "text": "Projets entrepreneuriaux",
+     "href": "https://grupotorivac.com/fr/projets-cles-en-main/"
+    },
+    {
+     "text": "Catalogue",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024_FR.pdf"
+    },
+    {
+     "text": "Blog",
+     "href": "https://grupotorivac.com/fr/blog/"
+    },
+    {
+     "text": "Contactez nous",
+     "href": "https://grupotorivac.com/fr/contactez-nous/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/torivac-company/"
+    },
+    {
+     "text": "Français",
+     "href": "https://grupotorivac.com/fr/notre-entreprise/"
+    },
+    {
+     "text": "Español",
+     "href": "https://grupotorivac.com/torivac-empresa/"
+    },
+    {
+     "text": "Deutsch",
+     "href": "https://grupotorivac.com/de/unser-unternehmen/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

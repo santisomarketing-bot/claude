@@ -1,0 +1,187 @@
+{
+ "file": "data/raw/html/en/en__el-variador-de-tension-y-sus-funciones.html",
+ "lang": "en",
+ "url": "https://grupotorivac.com/el-variador-de-tension-y-sus-funciones/",
+ "title": "What is a Voltage Variator? - Torivac",
+ "meta_description": "Desde Torivac os contamos cómo funciona y qué aporta a tu negocio un variador de tensión. ¡Echa un vistazo!",
+ "og_title": "What is a Voltage Variator?",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2025/01/especial01-scaled.jpg",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/el-variador-de-tension-y-sus-funciones/"
+ },
+ "body_classes": [
+  "wp-singular",
+  "post-template",
+  "post-template-elementor_header_footer",
+  "single",
+  "single-post",
+  "postid-8196",
+  "single-format-standard",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "is-elementor",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-template-full-width",
+  "elementor-kit-6",
+  "elementor-page",
+  "elementor-page-8196"
+ ],
+ "outline": [
+  {
+   "level": 2,
+   "text": "What is a Voltage Variator?"
+  },
+  {
+   "level": 3,
+   "text": "How to Calculate the Power You Need for Your Voltage Variator or Adjustable Autotransformer"
+  }
+ ],
+ "text": "What is a Voltage Variator?\n\nAt \nTorivac\n, we are experts in all types of electronic elements and components, and today we want to talk to you about one of the most common devices in this sector: the \nvoltage variator\n. Variable autotransformers, commonly known as voltage variators, allow you to modulate the amplitude of the input sine wave, enabling continuous voltage variation without changing the input frequency and with virtually zero harmonic distortion.\n\nTypes of Voltage Regulators\n\nVoltage regulators can come in three different forms:\n\nVoltage variators without mechanical protection (IP00)\n: These are mainly intended for industrial environments where the user integrates the variator into their system.\nEnclosed variators\n: These are suitable for domestic use or in industrial environments ready for use without prior installation.\nTurnkey projects\n: Our engineering team combines voltage variators or variable autotransformers with other components like transformers, load banks, rectifiers, control drivers, or other elements, providing tailored solutions for each customer.\n\nHow to Calculate the Power You Need for Your Voltage Variator or Adjustable Autotransformer\nAn adjustable autotransformer consists of a single, orderly winding, with a cursor moving along it to select the desired voltage.\nThe relationship between the magnetic section of the core and the wire diameter in voltage variators is crucial in calculating optimal performance, preventing overheating, and maintaining a competitive price.\nIn variable autotransformers, we must define the \nmaximum operating current\n in continuous operation and the \nmaximum regulation voltage\n. Based on these two parameters, we can determine the required power, the magnetic core section, and the winding conductor diameter.\nOnce these parameters are defined, the appropriate voltage variator format can be chosen for continuous operation, 100% load, 24/7.\nWhen selecting the power of variable autotransformers, it is important to consider that when a variator is installed in an enclosure or cabinet, the ventilation must match the heat dissipation, or the variator windings should be oversized to operate at a lower thermal load.\nIf you’re not sure whether this component would help meet your needs, don’t worry! We are at your full disposal. Ask us, and we’ll be happy to \nassist you!",
+ "text_chars": 2356,
+ "tables": [],
+ "links": [
+  {
+   "text": "assist you!",
+   "href": "https://grupotorivac.com/en/contacto/"
+  }
+ ],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/especial01-2048x1970.jpg",
+   "alt": "transformador toroideal"
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/en/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  },
+  {
+   "action": "/en/el-variador-de-tension-y-sus-funciones/",
+   "method": "post",
+   "id": "wpforms-form-16204",
+   "class": [
+    "wpforms-validate",
+    "wpforms-form",
+    "wpforms-ajax-form"
+   ],
+   "fields": [
+    {
+     "name": "wpforms[fields][0]",
+     "type": "text",
+     "placeholder": "Name",
+     "required": true
+    },
+    {
+     "name": "wpforms[fields][1]",
+     "type": "email",
+     "placeholder": "E-mail",
+     "required": true
+    },
+    {
+     "name": "wpforms[fields][4]",
+     "type": "text",
+     "placeholder": null,
+     "required": false
+    },
+    {
+     "name": "wpforms[fields][2]",
+     "type": "textarea",
+     "placeholder": "Message",
+     "required": false
+    },
+    {
+     "name": "wpforms[fields][3][]",
+     "type": "checkbox",
+     "placeholder": null,
+     "required": true
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "Home",
+     "href": "https://grupotorivac.com/en/"
+    },
+    {
+     "text": "Torivac Company",
+     "href": "https://grupotorivac.com/en/torivac-company/"
+    },
+    {
+     "text": "Products",
+     "href": "https://grupotorivac.com/en/torivac-products/"
+    },
+    {
+     "text": "Entrepreneurial Projects",
+     "href": "https://grupotorivac.com/en/entrepreneurial-projects/"
+    },
+    {
+     "text": "Catalogue",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024_EN.pdf"
+    },
+    {
+     "text": "Blog",
+     "href": "https://grupotorivac.com/en/blog/"
+    },
+    {
+     "text": "Contact",
+     "href": "https://grupotorivac.com/en/contact/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/el-variador-de-tension-y-sus-funciones/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

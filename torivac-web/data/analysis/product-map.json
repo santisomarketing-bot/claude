@@ -1,0 +1,3796 @@
+{
+ "count": 80,
+ "products": [
+  {
+   "id_es": 16633,
+   "slug": "variador-de-tension-portatil",
+   "url": "https://grupotorivac.com/product/variador-de-tension-portatil/",
+   "name_es": "Variador de tensión portatil",
+   "sku": "",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {},
+   "n_images": 10,
+   "has_table": false
+  },
+  {
+   "id_es": 15355,
+   "slug": "resistencia-en-caja",
+   "url": "https://grupotorivac.com/product/resistencia-en-caja/",
+   "name_es": "Resistencia en caja",
+   "sku": "",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 120,
+     "name": "En caja",
+     "slug": "en-caja-resistencias"
+    },
+    {
+     "id": 88,
+     "name": "Resistencias | Bancos de carga",
+     "slug": "resistencias"
+    }
+   ],
+   "category_path": [
+    "Resistencias | Bancos de carga",
+    "En caja"
+   ],
+   "top_category": "Resistencias | Bancos de carga",
+   "top_slug": "resistencias",
+   "translations": {
+    "en": {
+     "id": 15577,
+     "slug": "resistencia-en-caja",
+     "url": "https://grupotorivac.com/en/product/resistencia-en-caja/",
+     "name": "Resistance in box",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15575,
+     "slug": "resistencia-en-caja",
+     "url": "https://grupotorivac.com/fr/product/resistencia-en-caja/",
+     "name": "Résistance en boîte",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15580,
+     "slug": "resistencia-en-caja",
+     "url": "https://grupotorivac.com/de/product/resistencia-en-caja/",
+     "name": "Boxed Widerstand",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 8346,
+   "slug": "resistencias-de-alta-potencia-cementadas",
+   "url": "https://grupotorivac.com/product/resistencias-de-alta-potencia-cementadas/",
+   "name_es": "Resistencias de alta potencia cementadas",
+   "sku": "3faa07fd4d75-1-1-1",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 92,
+     "name": "Cementadas",
+     "slug": "cementadas"
+    },
+    {
+     "id": 88,
+     "name": "Resistencias | Bancos de carga",
+     "slug": "resistencias"
+    }
+   ],
+   "category_path": [
+    "Resistencias | Bancos de carga",
+    "Cementadas"
+   ],
+   "top_category": "Resistencias | Bancos de carga",
+   "top_slug": "resistencias",
+   "translations": {
+    "en": {
+     "id": 15595,
+     "slug": "resistencias-de-alta-potencia-cementadas",
+     "url": "https://grupotorivac.com/en/product/resistencias-de-alta-potencia-cementadas/",
+     "name": "High power cemented resistors",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16412,
+     "slug": "resistances-cimentees-de-haute-puissance",
+     "url": "https://grupotorivac.com/fr/product/resistances-cimentees-de-haute-puissance/",
+     "name": "Résistances cimentées de haute puissance",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15819,
+     "slug": "resistencias-de-alta-potencia-cementadas",
+     "url": "https://grupotorivac.com/de/product/resistencias-de-alta-potencia-cementadas/",
+     "name": "Zementierte Widerstände mit hoher Leistung",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 8340,
+   "slug": "resistencias-helicoidales",
+   "url": "https://grupotorivac.com/product/resistencias-helicoidales/",
+   "name_es": "Resistencias helicoidales",
+   "sku": "3faa07fd4d75-1-1",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 90,
+     "name": "Helicoidales",
+     "slug": "helicoidales"
+    },
+    {
+     "id": 88,
+     "name": "Resistencias | Bancos de carga",
+     "slug": "resistencias"
+    }
+   ],
+   "category_path": [
+    "Resistencias | Bancos de carga",
+    "Helicoidales"
+   ],
+   "top_category": "Resistencias | Bancos de carga",
+   "top_slug": "resistencias",
+   "translations": {
+    "en": {
+     "id": 15596,
+     "slug": "resistencias-helicoidales",
+     "url": "https://grupotorivac.com/en/product/resistencias-helicoidales/",
+     "name": "Helical resistors",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15892,
+     "slug": "resistencias-helicoidales",
+     "url": "https://grupotorivac.com/fr/product/resistencias-helicoidales/",
+     "name": "Résistances hélicoïdales",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15813,
+     "slug": "resistencias-helicoidales",
+     "url": "https://grupotorivac.com/de/product/resistencias-helicoidales/",
+     "name": "Wendelwiderstände",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 8339,
+   "slug": "resistencias-de-frenado",
+   "url": "https://grupotorivac.com/product/resistencias-de-frenado/",
+   "name_es": "Resistencias de frenado",
+   "sku": "3faa07fd4d75-1",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 88,
+     "name": "Resistencias | Bancos de carga",
+     "slug": "resistencias"
+    },
+    {
+     "id": 444,
+     "name": "Resistencias de frenado",
+     "slug": "resistencias-de-frenado"
+    }
+   ],
+   "category_path": [
+    "Resistencias | Bancos de carga"
+   ],
+   "top_category": "Resistencias | Bancos de carga",
+   "top_slug": "resistencias",
+   "translations": {
+    "en": {
+     "id": 15594,
+     "slug": "resistencias-de-frenado",
+     "url": "https://grupotorivac.com/en/product/resistencias-de-frenado/",
+     "name": "Braking resistors",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16413,
+     "slug": "resistances-de-freinage",
+     "url": "https://grupotorivac.com/fr/product/resistances-de-freinage/",
+     "name": "Résistances de freinage",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16414,
+     "slug": "bremswiderstaende",
+     "url": "https://grupotorivac.com/de/product/bremswiderstaende/",
+     "name": "Bremswiderstände",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 1042,
+   "slug": "reostatos-y-potenciometros-bobinados-especiales",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-especiales/",
+   "name_es": "Reostatos y potenciometros bobinados fabricaciones especiales",
+   "sku": "7fb0fb732233-1",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 112,
+     "name": "Reóstatos cerámicos",
+     "slug": "ceramicos"
+    }
+   ],
+   "category_path": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ],
+   "top_category": "Reostatos y potenciómetros bobinados",
+   "top_slug": "reostatos-y-potenciometros-bobinados",
+   "translations": {
+    "en": {
+     "id": 15820,
+     "slug": "reostatos-y-potenciometros-bobinados-especiales",
+     "url": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-especiales/",
+     "name": "Rheostats and potentiometers, wound special fabrications",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15901,
+     "slug": "reostatos-y-potenciometros-bobinados-especiales",
+     "url": "https://grupotorivac.com/fr/product/reostatos-y-potenciometros-bobinados-especiales/",
+     "name": "Rhéostats et potentiomètres, enroulés, constructions spéciales",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15815,
+     "slug": "reostatos-y-potenciometros-bobinados-especiales",
+     "url": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-especiales/",
+     "name": "Rheostate und Potentiometer, gewickelte Sonderanfertigungen",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 2,
+   "has_table": false
+  },
+  {
+   "id_es": 978,
+   "slug": "regulador-a-tiristores",
+   "url": "https://grupotorivac.com/product/regulador-a-tiristores/",
+   "name_es": "Regulador  a tiristores",
+   "sku": "de33455f1252",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 101,
+     "name": "Control industrial",
+     "slug": "control-industrial"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos",
+    "Control industrial"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {
+    "en": {
+     "id": 15856,
+     "slug": "regulador-a-tiristores",
+     "url": "https://grupotorivac.com/en/product/regulador-a-tiristores/",
+     "name": "Thyristor controller",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15855,
+     "slug": "regulador-a-tiristores",
+     "url": "https://grupotorivac.com/fr/product/regulador-a-tiristores/",
+     "name": "Contrôleur à thyristor",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15864,
+     "slug": "regulador-a-tiristores",
+     "url": "https://grupotorivac.com/de/product/regulador-a-tiristores/",
+     "name": "Thyristor-Steuerung",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 977,
+   "slug": "sai-para-control-industrial",
+   "url": "https://grupotorivac.com/product/sai-para-control-industrial/",
+   "name_es": "SAI para control industrial",
+   "sku": "ccd86c99b6ba",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 101,
+     "name": "Control industrial",
+     "slug": "control-industrial"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos",
+    "Control industrial"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {},
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 976,
+   "slug": "ondulador-para-fv-interconectada-de-350w-autoconsumo",
+   "url": "https://grupotorivac.com/product/ondulador-para-fv-interconectada-de-350w-autoconsumo/",
+   "name_es": "Ondulador para FV Interconectada de 350W autoconsumo",
+   "sku": "72ebb60a7074",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 100,
+     "name": "Energias renovables",
+     "slug": "energias-renovables"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos",
+    "Energias renovables"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {},
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 975,
+   "slug": "reguladores-fotovoltaicos-torivac",
+   "url": "https://grupotorivac.com/product/reguladores-fotovoltaicos-torivac/",
+   "name_es": "Reguladores fotovoltaicos MPPT",
+   "sku": "9c8710d8200f",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 100,
+     "name": "Energias renovables",
+     "slug": "energias-renovables"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos",
+    "Energias renovables"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {
+    "en": {
+     "id": 15858,
+     "slug": "reguladores-fotovoltaicos-torivac",
+     "url": "https://grupotorivac.com/en/product/reguladores-fotovoltaicos-torivac/",
+     "name": "MPPT photovoltaic regulators",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15898,
+     "slug": "reguladores-fotovoltaicos-torivac",
+     "url": "https://grupotorivac.com/fr/product/reguladores-fotovoltaicos-torivac/",
+     "name": "Régulateurs photovoltaïques MPPT",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15865,
+     "slug": "reguladores-fotovoltaicos-torivac",
+     "url": "https://grupotorivac.com/de/product/reguladores-fotovoltaicos-torivac/",
+     "name": "MPPT-Photovoltaik-Steuerungen",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 974,
+   "slug": "ondulador-autonomo-para-instalaciones-fotovoltaicas-sin-conexion-a-red",
+   "url": "https://grupotorivac.com/product/ondulador-autonomo-para-instalaciones-fotovoltaicas-sin-conexion-a-red/",
+   "name_es": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red",
+   "sku": "f4f0d8ca207e",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 100,
+     "name": "Energias renovables",
+     "slug": "energias-renovables"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos",
+    "Energias renovables"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {},
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 973,
+   "slug": "ondulador-para-conexion-fotovoltaica-a-red",
+   "url": "https://grupotorivac.com/product/ondulador-para-conexion-fotovoltaica-a-red/",
+   "name_es": "Ondulador para conexión fotovoltaica a red",
+   "sku": "ce5e174a3bec",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 100,
+     "name": "Energias renovables",
+     "slug": "energias-renovables"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos",
+    "Energias renovables"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {
+    "en": {
+     "id": 15900,
+     "slug": "ondulador-para-conexion-fotovoltaica-a-red",
+     "url": "https://grupotorivac.com/en/product/ondulador-para-conexion-fotovoltaica-a-red/",
+     "name": "Inverter for photovoltaic connection to the grid",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15859,
+     "slug": "ondulador-para-conexion-fotovoltaica-a-red",
+     "url": "https://grupotorivac.com/fr/product/ondulador-para-conexion-fotovoltaica-a-red/",
+     "name": "Onduleur pour connexion au réseau photovoltaïque",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15867,
+     "slug": "ondulador-para-conexion-fotovoltaica-a-red",
+     "url": "https://grupotorivac.com/de/product/ondulador-para-conexion-fotovoltaica-a-red/",
+     "name": "Wechselrichter für photovoltaischen Netzanschluss",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 972,
+   "slug": "fuente-de-corriente-alterna-sinusoidal",
+   "url": "https://grupotorivac.com/product/fuente-de-corriente-alterna-sinusoidal/",
+   "name_es": "Fuente de corriente alterna sinusoidal",
+   "sku": "3733e7c4426f",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    },
+    {
+     "id": 99,
+     "name": "Fuente de alimentación CA",
+     "slug": "fuente-de-alimentacion-ca"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {},
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 970,
+   "slug": "fuente-de-alimentacion-de-300a",
+   "url": "https://grupotorivac.com/product/fuente-de-alimentacion-de-300a/",
+   "name_es": "Fuentes de alimentación de 300A",
+   "sku": "ed7b7fd5bb22",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    },
+    {
+     "id": 98,
+     "name": "Fuentes de alimentación CC",
+     "slug": "fuentes-de-alimentacion-cc"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {
+    "en": {
+     "id": 15908,
+     "slug": "fuente-de-alimentacion-de-300a",
+     "url": "https://grupotorivac.com/en/product/fuente-de-alimentacion-de-300a/",
+     "name": "300A power supplies",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15906,
+     "slug": "fuente-de-alimentacion-de-300a",
+     "url": "https://grupotorivac.com/fr/product/fuente-de-alimentacion-de-300a/",
+     "name": "Alimentations 300A",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15868,
+     "slug": "fuente-de-alimentacion-de-300a",
+     "url": "https://grupotorivac.com/de/product/fuente-de-alimentacion-de-300a/",
+     "name": "300A Stromversorgungen",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 969,
+   "slug": "fuente-de-alimentacion-de-corriente-constante-150a",
+   "url": "https://grupotorivac.com/product/fuente-de-alimentacion-de-corriente-constante-150a/",
+   "name_es": "Fuentes de alimentación de 150A",
+   "sku": "593e40b38dfb",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    },
+    {
+     "id": 98,
+     "name": "Fuentes de alimentación CC",
+     "slug": "fuentes-de-alimentacion-cc"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {
+    "en": {
+     "id": 15912,
+     "slug": "fuente-de-alimentacion-de-corriente-constante-150a",
+     "url": "https://grupotorivac.com/en/product/fuente-de-alimentacion-de-corriente-constante-150a/",
+     "name": "150A power supplies",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15911,
+     "slug": "fuente-de-alimentacion-de-corriente-constante-150a",
+     "url": "https://grupotorivac.com/fr/product/fuente-de-alimentacion-de-corriente-constante-150a/",
+     "name": "Alimentations 150A",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15870,
+     "slug": "fuente-de-alimentacion-de-corriente-constante-150a",
+     "url": "https://grupotorivac.com/de/product/fuente-de-alimentacion-de-corriente-constante-150a/",
+     "name": "150A Stromversorgungen",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 968,
+   "slug": "convertidores-y-variadores-de-frecuencia-para-ensayos",
+   "url": "https://grupotorivac.com/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+   "name_es": "Variadores de frecuencia",
+   "sku": "ed95f462528c",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 97,
+     "name": "Convertidores",
+     "slug": "convertidores"
+    },
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos",
+    "Convertidores"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {
+    "en": {
+     "id": 15852,
+     "slug": "convertidores-y-variadores-de-frecuencia-para-ensayos",
+     "url": "https://grupotorivac.com/en/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+     "name": "Frequency inverters",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15854,
+     "slug": "convertidores-y-variadores-de-frecuencia-para-ensayos",
+     "url": "https://grupotorivac.com/fr/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+     "name": "Convertisseurs de fréquence",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15874,
+     "slug": "convertidores-y-variadores-de-frecuencia-para-ensayos",
+     "url": "https://grupotorivac.com/de/product/convertidores-y-variadores-de-frecuencia-para-ensayos/",
+     "name": "Frequenzumrichter",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 4,
+   "has_table": false
+  },
+  {
+   "id_es": 967,
+   "slug": "electronica",
+   "url": "https://grupotorivac.com/product/electronica/",
+   "name_es": "Electronica",
+   "sku": "8899762d3d80",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 96,
+     "name": "Equipos electrónicos",
+     "slug": "electronica"
+    }
+   ],
+   "category_path": [
+    "Equipos electrónicos"
+   ],
+   "top_category": "Equipos electrónicos",
+   "top_slug": "electronica",
+   "translations": {
+    "en": {
+     "id": 15598,
+     "slug": "electronica",
+     "url": "https://grupotorivac.com/en/product/electronica/",
+     "name": "Electronics",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15597,
+     "slug": "electronica",
+     "url": "https://grupotorivac.com/fr/product/electronica/",
+     "name": "Électronique",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15599,
+     "slug": "electronica",
+     "url": "https://grupotorivac.com/de/product/electronica/",
+     "name": "Elektronik",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 966,
+   "slug": "resistencias-de-puesta-a-tierra",
+   "url": "https://grupotorivac.com/product/resistencias-de-puesta-a-tierra/",
+   "name_es": "Resistencias de puesta a tierra",
+   "sku": "10a45a056423",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 88,
+     "name": "Resistencias | Bancos de carga",
+     "slug": "resistencias"
+    },
+    {
+     "id": 95,
+     "name": "Resistencias de puesta a tierra",
+     "slug": "resistencias-de-puesta-a-tierra"
+    }
+   ],
+   "category_path": [
+    "Resistencias | Bancos de carga"
+   ],
+   "top_category": "Resistencias | Bancos de carga",
+   "top_slug": "resistencias",
+   "translations": {
+    "en": {
+     "id": 15916,
+     "slug": "resistencias-de-puesta-a-tierra",
+     "url": "https://grupotorivac.com/en/product/resistencias-de-puesta-a-tierra/",
+     "name": "Grounding resistors",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15914,
+     "slug": "resistencias-de-puesta-a-tierra",
+     "url": "https://grupotorivac.com/fr/product/resistencias-de-puesta-a-tierra/",
+     "name": "Résistances de mise à la terre",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15877,
+     "slug": "resistencias-de-puesta-a-tierra",
+     "url": "https://grupotorivac.com/de/product/resistencias-de-puesta-a-tierra/",
+     "name": "Erdungswiderstände",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 965,
+   "slug": "resistencias-de-arranque",
+   "url": "https://grupotorivac.com/product/resistencias-de-arranque/",
+   "name_es": "Resistencias de arranque",
+   "sku": "9960fe5dd93b",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 88,
+     "name": "Resistencias | Bancos de carga",
+     "slug": "resistencias"
+    },
+    {
+     "id": 94,
+     "name": "Resistencias de arranque",
+     "slug": "resistencias-de-arranque"
+    }
+   ],
+   "category_path": [
+    "Resistencias | Bancos de carga"
+   ],
+   "top_category": "Resistencias | Bancos de carga",
+   "top_slug": "resistencias",
+   "translations": {
+    "en": {
+     "id": 15814,
+     "slug": "resistencias-de-arranque",
+     "url": "https://grupotorivac.com/en/product/resistencias-de-arranque/",
+     "name": "Starting resistors",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15899,
+     "slug": "resistencias-de-arranque",
+     "url": "https://grupotorivac.com/fr/product/resistencias-de-arranque/",
+     "name": "Résistances de démarrage",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15824,
+     "slug": "resistencias-de-arranque",
+     "url": "https://grupotorivac.com/de/product/resistencias-de-arranque/",
+     "name": "Startwiderstände",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 964,
+   "slug": "bancos-de-carga",
+   "url": "https://grupotorivac.com/product/bancos-de-carga/",
+   "name_es": "Resistencias &#8211; Banco de carga",
+   "sku": "3faa07fd4d75",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 93,
+     "name": "Bancos de carga",
+     "slug": "bancos-de-carga"
+    },
+    {
+     "id": 88,
+     "name": "Resistencias | Bancos de carga",
+     "slug": "resistencias"
+    }
+   ],
+   "category_path": [
+    "Resistencias | Bancos de carga",
+    "Bancos de carga"
+   ],
+   "top_category": "Resistencias | Bancos de carga",
+   "top_slug": "resistencias",
+   "translations": {
+    "en": {
+     "id": 15853,
+     "slug": "bancos-de-carga",
+     "url": "https://grupotorivac.com/en/product/bancos-de-carga/",
+     "name": "Resistors &#8211; Load bank",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15896,
+     "slug": "bancos-de-carga",
+     "url": "https://grupotorivac.com/fr/product/bancos-de-carga/",
+     "name": "Résistances &#8211; Banc de charge",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15875,
+     "slug": "bancos-de-carga",
+     "url": "https://grupotorivac.com/de/product/bancos-de-carga/",
+     "name": "Widerstände &#8211; Lastbank",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 957,
+   "slug": "hembrilla-de-seguridad-hsr4",
+   "url": "https://grupotorivac.com/product/hembrilla-de-seguridad-hsr4/",
+   "name_es": "Hembrilla de seguridad HSR4",
+   "sku": "9d0144f29a4f",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 87,
+     "name": "Hembrilla de seguridad HSR4",
+     "slug": "hembrilla-de-seguridad-hsr4"
+    }
+   ],
+   "category_path": [
+    "Hembrillas",
+    "Hembrilla de seguridad HSR4"
+   ],
+   "top_category": "Hembrillas",
+   "top_slug": "hembrillas",
+   "translations": {
+    "en": {
+     "id": 16358,
+     "slug": "hsr4-safety-socket",
+     "url": "https://grupotorivac.com/en/product/hsr4-safety-socket/",
+     "name": "HSR4 safety socket",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16359,
+     "slug": "prise-de-securite-hsr4",
+     "url": "https://grupotorivac.com/fr/product/prise-de-securite-hsr4/",
+     "name": "Prise de sécurité HSR4",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16360,
+     "slug": "sicherheitssteckdose-hsr4",
+     "url": "https://grupotorivac.com/de/product/sicherheitssteckdose-hsr4/",
+     "name": "Sicherheitssteckdose HSR4",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 956,
+   "slug": "hembrilla-de-seguridad-hr4",
+   "url": "https://grupotorivac.com/product/hembrilla-de-seguridad-hr4/",
+   "name_es": "Hembrilla de seguridad HR4",
+   "sku": "f363f052982a",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 86,
+     "name": "hembrilla de seguridad HR4",
+     "slug": "hembrilla-de-seguridad-hr4"
+    }
+   ],
+   "category_path": [
+    "Hembrillas",
+    "hembrilla de seguridad HR4"
+   ],
+   "top_category": "Hembrillas",
+   "top_slug": "hembrillas",
+   "translations": {
+    "en": {
+     "id": 16365,
+     "slug": "hr4-safety-socket",
+     "url": "https://grupotorivac.com/en/product/hr4-safety-socket/",
+     "name": "HR4 safety socket",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16366,
+     "slug": "prise-de-securite-hr4",
+     "url": "https://grupotorivac.com/fr/product/prise-de-securite-hr4/",
+     "name": "Prise de sécurité HR4",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16367,
+     "slug": "sicherheitssteckdose-hr4",
+     "url": "https://grupotorivac.com/de/product/sicherheitssteckdose-hr4/",
+     "name": "Sicherheitssteckdose HR4",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 955,
+   "slug": "hembrilla-de-seguridad-hbs4",
+   "url": "https://grupotorivac.com/product/hembrilla-de-seguridad-hbs4/",
+   "name_es": "Hembrilla de seguridad HBS4",
+   "sku": "ead0c27ca8b8",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 85,
+     "name": "Hembrilla de seguridad HBS4",
+     "slug": "hembrilla-de-seguridad-hbs4"
+    }
+   ],
+   "category_path": [
+    "Hembrillas",
+    "Hembrilla de seguridad HBS4"
+   ],
+   "top_category": "Hembrillas",
+   "top_slug": "hembrillas",
+   "translations": {
+    "en": {
+     "id": 16361,
+     "slug": "safety-socket-hbs4",
+     "url": "https://grupotorivac.com/en/product/safety-socket-hbs4/",
+     "name": "Safety socket HBS4",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16362,
+     "slug": "prise-de-securite-hbs4",
+     "url": "https://grupotorivac.com/fr/product/prise-de-securite-hbs4/",
+     "name": "Prise de sécurité HBS4",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16363,
+     "slug": "sicherheitssteckdose-hbs4",
+     "url": "https://grupotorivac.com/de/product/sicherheitssteckdose-hbs4/",
+     "name": "Sicherheitssteckdose HBS4",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 954,
+   "slug": "hembrilla-hb4",
+   "url": "https://grupotorivac.com/product/hembrilla-hb4/",
+   "name_es": "Hembrilla HB4",
+   "sku": "4beda945df2e",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 84,
+     "name": "Hembrilla HB4",
+     "slug": "hembrilla-hb4"
+    },
+    {
+     "id": 83,
+     "name": "Hembrillas",
+     "slug": "hembrillas"
+    }
+   ],
+   "category_path": [
+    "Hembrillas",
+    "Hembrilla HB4"
+   ],
+   "top_category": "Hembrillas",
+   "top_slug": "hembrillas",
+   "translations": {
+    "en": {
+     "id": 16368,
+     "slug": "hb4-socket",
+     "url": "https://grupotorivac.com/en/product/hb4-socket/",
+     "name": "HB4 socket",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16369,
+     "slug": "prise-hb4",
+     "url": "https://grupotorivac.com/fr/product/prise-hb4/",
+     "name": "Prise HB4",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16370,
+     "slug": "hb4-buchse",
+     "url": "https://grupotorivac.com/de/product/hb4-buchse/",
+     "name": "HB4-Buchse",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 951,
+   "slug": "caratulas-graduadas-2",
+   "url": "https://grupotorivac.com/product/caratulas-graduadas-2/",
+   "name_es": "Caratulas graduadas",
+   "sku": "6b26ca3ac715",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    },
+    {
+     "id": 82,
+     "name": "Caratulas graduadas",
+     "slug": "caratulas-graduadas"
+    }
+   ],
+   "category_path": [
+    "Botones de mando"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 16383,
+     "slug": "graded-covers",
+     "url": "https://grupotorivac.com/en/product/graded-covers/",
+     "name": "Graded covers",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16384,
+     "slug": "couvertures-classees",
+     "url": "https://grupotorivac.com/fr/product/couvertures-classees/",
+     "name": "Couvertures classées",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16385,
+     "slug": "abgestufte-bezuege",
+     "url": "https://grupotorivac.com/de/product/abgestufte-bezuege/",
+     "name": "Abgestufte Bezüge",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 949,
+   "slug": "discos-con-flecha-2",
+   "url": "https://grupotorivac.com/product/discos-con-flecha-2/",
+   "name_es": "Discos con flecha",
+   "sku": "203858f8c967",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    },
+    {
+     "id": 81,
+     "name": "Discos Flecha",
+     "slug": "discos-flecha"
+    }
+   ],
+   "category_path": [
+    "Botones de mando"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 16389,
+     "slug": "arrow-discs",
+     "url": "https://grupotorivac.com/en/product/arrow-discs/",
+     "name": "Arrow discs",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16390,
+     "slug": "disques-arrow",
+     "url": "https://grupotorivac.com/fr/product/disques-arrow/",
+     "name": "Disques Arrow",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16391,
+     "slug": "pfeil-discs",
+     "url": "https://grupotorivac.com/de/product/pfeil-discs/",
+     "name": "Pfeil-Discs",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 947,
+   "slug": "cubretercas-2",
+   "url": "https://grupotorivac.com/product/cubretercas-2/",
+   "name_es": "Cubretuercas",
+   "sku": "3dabdc2b7eb1",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    },
+    {
+     "id": 80,
+     "name": "Cubretercas",
+     "slug": "cubretercas"
+    }
+   ],
+   "category_path": [
+    "Botones de mando"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 16386,
+     "slug": "nut-covers",
+     "url": "https://grupotorivac.com/en/product/nut-covers/",
+     "name": "Nut covers",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16387,
+     "slug": "couvercles-decrous",
+     "url": "https://grupotorivac.com/fr/product/couvercles-decrous/",
+     "name": "Couvercles d&#8217;écrous",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16388,
+     "slug": "mutternabdeckungen",
+     "url": "https://grupotorivac.com/de/product/mutternabdeckungen/",
+     "name": "Mutternabdeckungen",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 945,
+   "slug": "estators-2",
+   "url": "https://grupotorivac.com/product/estators-2/",
+   "name_es": "Estators",
+   "sku": "715fface722f",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    },
+    {
+     "id": 442,
+     "name": "Estators",
+     "slug": "estators"
+    }
+   ],
+   "category_path": [
+    "Botones de mando"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 4138,
+     "slug": "estators",
+     "url": "https://grupotorivac.com/en/product/estators/",
+     "name": "Stators",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 4432,
+     "slug": "estators",
+     "url": "https://grupotorivac.com/fr/product/estators/",
+     "name": "Stators",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16395,
+     "slug": "statoren",
+     "url": "https://grupotorivac.com/de/product/statoren/",
+     "name": "Statoren",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 943,
+   "slug": "discos-graduados-2",
+   "url": "https://grupotorivac.com/product/discos-graduados-2/",
+   "name_es": "Discos graduados",
+   "sku": "ba1c185dde2d",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    },
+    {
+     "id": 78,
+     "name": "Discos graduados",
+     "slug": "discos-graduados"
+    }
+   ],
+   "category_path": [
+    "Botones de mando"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 16392,
+     "slug": "graduated-discs",
+     "url": "https://grupotorivac.com/en/product/graduated-discs/",
+     "name": "Graduated discs",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16393,
+     "slug": "disques-gradues",
+     "url": "https://grupotorivac.com/fr/product/disques-gradues/",
+     "name": "Disques gradués",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16394,
+     "slug": "abgestufte-scheiben",
+     "url": "https://grupotorivac.com/de/product/abgestufte-scheiben/",
+     "name": "Abgestufte Scheiben",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 942,
+   "slug": "aros-con-flecha-2",
+   "url": "https://grupotorivac.com/product/aros-con-flecha-2/",
+   "name_es": "Aros con flecha",
+   "sku": "2a7c92ba16c4",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 77,
+     "name": "Aros con flecha",
+     "slug": "aros-con-flecha"
+    },
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    }
+   ],
+   "category_path": [
+    "Botones de mando",
+    "Aros con flecha"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 16371,
+     "slug": "arrow-hoops",
+     "url": "https://grupotorivac.com/en/product/arrow-hoops/",
+     "name": "Arrow hoops",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16372,
+     "slug": "cerceaux-a-fleches",
+     "url": "https://grupotorivac.com/fr/product/cerceaux-a-fleches/",
+     "name": "Cerceaux à flèches",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16373,
+     "slug": "pfeil-reifen",
+     "url": "https://grupotorivac.com/de/product/pfeil-reifen/",
+     "name": "Pfeil-Reifen",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 2,
+   "has_table": true
+  },
+  {
+   "id_es": 940,
+   "slug": "tapas-serie-bm-2",
+   "url": "https://grupotorivac.com/product/tapas-serie-bm-2/",
+   "name_es": "Tapas serie BM",
+   "sku": "2c4cc608cd83",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    },
+    {
+     "id": 76,
+     "name": "Tapas Serie BM",
+     "slug": "tapas-serie-bm"
+    }
+   ],
+   "category_path": [
+    "Botones de mando"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 16396,
+     "slug": "bm-series-covers",
+     "url": "https://grupotorivac.com/en/product/bm-series-covers/",
+     "name": "BM series covers",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16397,
+     "slug": "la-serie-bm-couvre",
+     "url": "https://grupotorivac.com/fr/product/la-serie-bm-couvre/",
+     "name": "La série BM couvre",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16398,
+     "slug": "bm-serie-umfasst",
+     "url": "https://grupotorivac.com/de/product/bm-serie-umfasst/",
+     "name": "BM-Serie umfasst",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 938,
+   "slug": "tapas-serie-bo-2",
+   "url": "https://grupotorivac.com/product/tapas-serie-bo-2/",
+   "name_es": "Tapas serie BO",
+   "sku": "a287b0a65bce",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    },
+    {
+     "id": 75,
+     "name": "Tapas serie BO",
+     "slug": "tapas-serie-bo"
+    }
+   ],
+   "category_path": [
+    "Botones de mando"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 16399,
+     "slug": "bo-series-covers",
+     "url": "https://grupotorivac.com/en/product/bo-series-covers/",
+     "name": "BO series covers",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16400,
+     "slug": "la-serie-bo-couvre",
+     "url": "https://grupotorivac.com/fr/product/la-serie-bo-couvre/",
+     "name": "La série BO couvre",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16401,
+     "slug": "bo-serie-umfasst",
+     "url": "https://grupotorivac.com/de/product/bo-serie-umfasst/",
+     "name": "BO-Serie umfasst",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 936,
+   "slug": "botones-de-mando-serie-bm-mate-2",
+   "url": "https://grupotorivac.com/product/botones-de-mando-serie-bm-mate-2/",
+   "name_es": "Botones de mando serie BM (Mate)",
+   "sku": "4d3e94cd06c8",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 30,
+     "name": "Botones de mando",
+     "slug": "botones-de-mando"
+    },
+    {
+     "id": 74,
+     "name": "Botones de mando serie BM (Mate)",
+     "slug": "botones-de-mando-serie-bm-mate"
+    }
+   ],
+   "category_path": [
+    "Botones de mando"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 16374,
+     "slug": "bm-series-control-buttons-matte",
+     "url": "https://grupotorivac.com/en/product/bm-series-control-buttons-matte/",
+     "name": "BM series control buttons (Matte)",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16375,
+     "slug": "boutons-de-commande-de-la-serie-bm-matt",
+     "url": "https://grupotorivac.com/fr/product/boutons-de-commande-de-la-serie-bm-matt/",
+     "name": "Boutons de commande de la série BM (Matt)",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16376,
+     "slug": "steuertasten-der-bm-serie-matt",
+     "url": "https://grupotorivac.com/de/product/steuertasten-der-bm-serie-matt/",
+     "name": "Steuertasten der BM-Serie (Matt)",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 2,
+   "has_table": true
+  },
+  {
+   "id_es": 934,
+   "slug": "botones-de-mando-serie-bo-con-linea-2",
+   "url": "https://grupotorivac.com/product/botones-de-mando-serie-bo-con-linea-2/",
+   "name_es": "Botones de mando serie BO con linea",
+   "sku": "86e3ea5faad6",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 73,
+     "name": "Botones de mando Serie BO con linea",
+     "slug": "botones-de-mando-serie-bo-con-linea"
+    }
+   ],
+   "category_path": [
+    "Botones de mando",
+    "Botones de mando Serie BO con linea"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 16380,
+     "slug": "bo-series-control-buttons-with-line",
+     "url": "https://grupotorivac.com/en/product/bo-series-control-buttons-with-line/",
+     "name": "BO series control buttons with line",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16381,
+     "slug": "boutons-de-commande-de-la-serie-bo-avec-ligne",
+     "url": "https://grupotorivac.com/fr/product/boutons-de-commande-de-la-serie-bo-avec-ligne/",
+     "name": "Boutons de commande de la série BO avec ligne",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16382,
+     "slug": "bo-serie-steuertasten-mit-linie",
+     "url": "https://grupotorivac.com/de/product/bo-serie-steuertasten-mit-linie/",
+     "name": "BO-Serie Steuertasten mit Linie",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 2,
+   "has_table": true
+  },
+  {
+   "id_es": 932,
+   "slug": "botones-de-mando-serie-bo-brillante-2",
+   "url": "https://grupotorivac.com/product/botones-de-mando-serie-bo-brillante-2/",
+   "name_es": "Botones de mando serie BO (brillante)",
+   "sku": "77c4702bc13a",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 72,
+     "name": "Botones de mando serie BO (brillante)",
+     "slug": "botones-de-mando-serie-bo-brillante"
+    }
+   ],
+   "category_path": [
+    "Botones de mando",
+    "Botones de mando serie BO (brillante)"
+   ],
+   "top_category": "Botones de mando",
+   "top_slug": "botones-de-mando",
+   "translations": {
+    "en": {
+     "id": 16377,
+     "slug": "bo-series-control-buttons-bright",
+     "url": "https://grupotorivac.com/en/product/bo-series-control-buttons-bright/",
+     "name": "BO series control buttons (bright)",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16378,
+     "slug": "boutons-de-commande-de-la-serie-bo-brillants",
+     "url": "https://grupotorivac.com/fr/product/boutons-de-commande-de-la-serie-bo-brillants/",
+     "name": "Boutons de commande de la série BO (brillants)",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16379,
+     "slug": "bedientasten-der-bo-serie-glaenzend",
+     "url": "https://grupotorivac.com/de/product/bedientasten-der-bo-serie-glaenzend/",
+     "name": "Bedientasten der BO-Serie (glänzend)",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 929,
+   "slug": "soporte-metalico-para-led-10mm-2",
+   "url": "https://grupotorivac.com/product/soporte-metalico-para-led-10mm-2/",
+   "name_es": "Soporte metalico para led 10mm",
+   "sku": "71b0ae5dc762",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 69,
+     "name": "led 10mm",
+     "slug": "led-10mm"
+    }
+   ],
+   "category_path": [
+    "Portaled",
+    "led 10mm"
+   ],
+   "top_category": "Portaled",
+   "top_slug": "portaled",
+   "translations": {
+    "en": {
+     "id": 4117,
+     "slug": "soporte-metalico-para-led-10mm",
+     "url": "https://grupotorivac.com/en/product/soporte-metalico-para-led-10mm/",
+     "name": "Metal support for led 10mm",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16350,
+     "slug": "support-metallique-pour-led-10mm",
+     "url": "https://grupotorivac.com/fr/product/support-metallique-pour-led-10mm/",
+     "name": "Support métallique pour led 10mm",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16351,
+     "slug": "metallbuegel-fuer-led-10mm",
+     "url": "https://grupotorivac.com/de/product/metallbuegel-fuer-led-10mm/",
+     "name": "Metallbügel für led 10mm",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 927,
+   "slug": "soporte-metalico-para-led-8mm-2",
+   "url": "https://grupotorivac.com/product/soporte-metalico-para-led-8mm-2/",
+   "name_es": "Soporte metalico para led 8mm",
+   "sku": "b99f0ea0881f",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 68,
+     "name": "led 8mm",
+     "slug": "led-8mm"
+    }
+   ],
+   "category_path": [
+    "Portaled",
+    "led 8mm"
+   ],
+   "top_category": "Portaled",
+   "top_slug": "portaled",
+   "translations": {
+    "en": {
+     "id": 4112,
+     "slug": "soporte-metalico-para-led-8mm",
+     "url": "https://grupotorivac.com/en/product/soporte-metalico-para-led-8mm/",
+     "name": "Metal support for led 8mm",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16356,
+     "slug": "support-metallique-pour-led-8mm",
+     "url": "https://grupotorivac.com/fr/product/support-metallique-pour-led-8mm/",
+     "name": "Support métallique pour led 8mm",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16357,
+     "slug": "metallbuegel-fuer-led-8mm",
+     "url": "https://grupotorivac.com/de/product/metallbuegel-fuer-led-8mm/",
+     "name": "Metallbügel für led 8mm",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 925,
+   "slug": "soporte-metalico-para-led-5mm-2",
+   "url": "https://grupotorivac.com/product/soporte-metalico-para-led-5mm-2/",
+   "name_es": "Soporte metalico para led 5mm",
+   "sku": "15b9f0f7e5b8",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 67,
+     "name": "led 5mm",
+     "slug": "led-5mm"
+    }
+   ],
+   "category_path": [
+    "Portaled",
+    "led 5mm"
+   ],
+   "top_category": "Portaled",
+   "top_slug": "portaled",
+   "translations": {
+    "en": {
+     "id": 4110,
+     "slug": "soporte-metalico-para-led-5mm",
+     "url": "https://grupotorivac.com/en/product/soporte-metalico-para-led-5mm/",
+     "name": "Metal support for led 5mm",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16354,
+     "slug": "support-metallique-pour-led-de-5mm",
+     "url": "https://grupotorivac.com/fr/product/support-metallique-pour-led-de-5mm/",
+     "name": "Support métallique pour led de 5mm",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16355,
+     "slug": "metallhalterung-fuer-5mm-led",
+     "url": "https://grupotorivac.com/de/product/metallhalterung-fuer-5mm-led/",
+     "name": "Metallhalterung für 5mm Led",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 923,
+   "slug": "soporte-metalico-para-led-3mm-2",
+   "url": "https://grupotorivac.com/product/soporte-metalico-para-led-3mm-2/",
+   "name_es": "Soporte metalico para led 3mm",
+   "sku": "2262440b3e6c",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 66,
+     "name": "led 3mm",
+     "slug": "led-3mm"
+    }
+   ],
+   "category_path": [
+    "Portaled",
+    "led 3mm"
+   ],
+   "top_category": "Portaled",
+   "top_slug": "portaled",
+   "translations": {
+    "en": {
+     "id": 4108,
+     "slug": "soporte-metalico-para-led-3mm",
+     "url": "https://grupotorivac.com/en/product/soporte-metalico-para-led-3mm/",
+     "name": "Metal support for led 3mm",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16352,
+     "slug": "support-metallique-pour-led-3mm",
+     "url": "https://grupotorivac.com/fr/product/support-metallique-pour-led-3mm/",
+     "name": "Support métallique pour led 3mm",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16353,
+     "slug": "metallbuegel-fuer-led-3mm",
+     "url": "https://grupotorivac.com/de/product/metallbuegel-fuer-led-3mm/",
+     "name": "Metallbügel für led 3mm",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 921,
+   "slug": "nucleos-toroidales",
+   "url": "https://grupotorivac.com/product/nucleos-toroidales/",
+   "name_es": "Núcleos toroidales",
+   "sku": "89771ab4a36f",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 64,
+     "name": "Nucleos",
+     "slug": "nucleos"
+    }
+   ],
+   "category_path": [
+    "Nucleos"
+   ],
+   "top_category": "Nucleos",
+   "top_slug": "nucleos",
+   "translations": {
+    "en": {
+     "id": 16344,
+     "slug": "toroidal-cores",
+     "url": "https://grupotorivac.com/en/product/toroidal-cores/",
+     "name": "Toroidal cores",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16345,
+     "slug": "noyaux-toroidaux",
+     "url": "https://grupotorivac.com/fr/product/noyaux-toroidaux/",
+     "name": "Noyaux toroïdaux",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16346,
+     "slug": "toroidale-kerne",
+     "url": "https://grupotorivac.com/de/product/toroidale-kerne/",
+     "name": "Toroidale Kerne",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 919,
+   "slug": "choques-inductancias-reactancias-toroidales",
+   "url": "https://grupotorivac.com/product/choques-inductancias-reactancias-toroidales/",
+   "name_es": "Choques | Inductancias | Reactancias toroidales",
+   "sku": "3ca61e9b429e",
+   "type": "variable",
+   "categories_es": [
+    {
+     "id": 63,
+     "name": "Choques | Inductancias | Reactancias toroidales",
+     "slug": "choques"
+    }
+   ],
+   "category_path": [
+    "Choques | Inductancias | Reactancias toroidales"
+   ],
+   "top_category": "Choques | Inductancias | Reactancias toroidales",
+   "top_slug": "choques",
+   "translations": {
+    "en": {
+     "id": 16341,
+     "slug": "chokes-inductances-reactances-toroidal",
+     "url": "https://grupotorivac.com/en/product/chokes-inductances-reactances-toroidal/",
+     "name": "Chokes | Inductances | Toroidal Reactances",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16342,
+     "slug": "inductances-reactances-toroidales",
+     "url": "https://grupotorivac.com/fr/product/inductances-reactances-toroidales/",
+     "name": "Inductances | Réactances toroïdales",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16343,
+     "slug": "drosseln-induktivitaeten-ringkerndrosseln",
+     "url": "https://grupotorivac.com/de/product/drosseln-induktivitaeten-ringkerndrosseln/",
+     "name": "Drosseln | Induktivitäten | Ringkerndrosseln",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": true
+  },
+  {
+   "id_es": 918,
+   "slug": "bobinas-para-electroimanes-3-2",
+   "url": "https://grupotorivac.com/product/bobinas-para-electroimanes-3-2/",
+   "name_es": "Bobinas para electroimanes Cuadrada",
+   "sku": "ca01d6cbc41d",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 22,
+     "name": "Bobinas encapsuladas",
+     "slug": "bobinas-encapsuladas"
+    },
+    {
+     "id": 119,
+     "name": "Cuadradas",
+     "slug": "cuadradas"
+    }
+   ],
+   "category_path": [
+    "Bobinas encapsuladas"
+   ],
+   "top_category": "Bobinas encapsuladas",
+   "top_slug": "bobinas-encapsuladas",
+   "translations": {
+    "en": {
+     "id": 4102,
+     "slug": "coils-for-electromagnets-square",
+     "url": "https://grupotorivac.com/en/product/coils-for-electromagnets-square/",
+     "name": "Coils for electromagnets Square",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16339,
+     "slug": "bobines-pour-electro-aimants-carre",
+     "url": "https://grupotorivac.com/fr/product/bobines-pour-electro-aimants-carre/",
+     "name": "Bobines pour électro-aimants Carré",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16340,
+     "slug": "spulen-fuer-elektromagnete-quadratisch",
+     "url": "https://grupotorivac.com/de/product/spulen-fuer-elektromagnete-quadratisch/",
+     "name": "Spulen für Elektromagnete Quadratisch",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 3,
+   "has_table": false
+  },
+  {
+   "id_es": 916,
+   "slug": "bobinas-para-electroimanes",
+   "url": "https://grupotorivac.com/product/bobinas-para-electroimanes/",
+   "name_es": "Bobinas para electroimanes",
+   "sku": "d21ae06d493e",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 22,
+     "name": "Bobinas encapsuladas",
+     "slug": "bobinas-encapsuladas"
+    },
+    {
+     "id": 118,
+     "name": "Redondas",
+     "slug": "redondas"
+    }
+   ],
+   "category_path": [
+    "Bobinas encapsuladas"
+   ],
+   "top_category": "Bobinas encapsuladas",
+   "top_slug": "bobinas-encapsuladas",
+   "translations": {
+    "en": {
+     "id": 4100,
+     "slug": "bobinas-para-electroimanes",
+     "url": "https://grupotorivac.com/en/product/bobinas-para-electroimanes/",
+     "name": "Coils for electromagnets",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 4388,
+     "slug": "bobinas-para-electroimanes",
+     "url": "https://grupotorivac.com/fr/product/bobinas-para-electroimanes/",
+     "name": "Bobines pour électro-aimants",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15871,
+     "slug": "bobinas-para-electroimanes",
+     "url": "https://grupotorivac.com/de/product/bobinas-para-electroimanes/",
+     "name": "Spulen für Elektromagnete",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 3,
+   "has_table": false
+  },
+  {
+   "id_es": 913,
+   "slug": "reostatos-y-potenciometros-bobinados-10-2",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-10-2/",
+   "name_es": "Reostatos y potenciometros bobinados en caja",
+   "sku": "7fb0fb732233",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 112,
+     "name": "Reóstatos cerámicos",
+     "slug": "ceramicos"
+    }
+   ],
+   "category_path": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ],
+   "top_category": "Reostatos y potenciómetros bobinados",
+   "top_slug": "reostatos-y-potenciometros-bobinados",
+   "translations": {
+    "en": {
+     "id": 4247,
+     "slug": "reostatos-y-potenciometros-bobinados-10",
+     "url": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-10/",
+     "name": "Rheostats and potentiometers wound in boxes",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16338,
+     "slug": "rheostats-et-potentiometres-enroules-dans-des-boites",
+     "url": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-enroules-dans-des-boites/",
+     "name": "Rhéostats et potentiomètres enroulés dans des boîtes",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 9721,
+     "slug": "reostatos-y-potenciometros-bobinados-10",
+     "url": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-10/",
+     "name": "Rheostate und Potentiometer in Schachteln gewickelt",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 912,
+   "slug": "reostatos-y-potenciometros-bobinados-9-2",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-9-2/",
+   "name_es": "Reostatos y potenciometros bobinados tripes",
+   "sku": "c270ef0dc067",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 112,
+     "name": "Reóstatos cerámicos",
+     "slug": "ceramicos"
+    }
+   ],
+   "category_path": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ],
+   "top_category": "Reostatos y potenciómetros bobinados",
+   "top_slug": "reostatos-y-potenciometros-bobinados",
+   "translations": {
+    "en": {
+     "id": 4199,
+     "slug": "reostatos-y-potenciometros-bobinados-9",
+     "url": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-9/",
+     "name": "Rheostats and potentiometers triple windings",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16336,
+     "slug": "rheostats-et-potentiometres-a-triple-enroulement",
+     "url": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-a-triple-enroulement/",
+     "name": "Rhéostats et potentiomètres à triple enroulement",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16337,
+     "slug": "rheostate-und-potentiometer-dreifach-gewickelt",
+     "url": "https://grupotorivac.com/de/product/rheostate-und-potentiometer-dreifach-gewickelt/",
+     "name": "Rheostate und Potentiometer dreifach gewickelt",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 911,
+   "slug": "reostatos-y-potenciometros-bobinados-8-2",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-8-2/",
+   "name_es": "Reostatos y potenciometros bobinados doble",
+   "sku": "651e59f5150c",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 112,
+     "name": "Reóstatos cerámicos",
+     "slug": "ceramicos"
+    }
+   ],
+   "category_path": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ],
+   "top_category": "Reostatos y potenciómetros bobinados",
+   "top_slug": "reostatos-y-potenciometros-bobinados",
+   "translations": {
+    "en": {
+     "id": 4196,
+     "slug": "reostatos-y-potenciometros-bobinados-8",
+     "url": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-8/",
+     "name": "Rheostats and potentiometers dual windings",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16334,
+     "slug": "rheostats-et-potentiometres-a-double-enroulement",
+     "url": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-a-double-enroulement/",
+     "name": "Rhéostats et potentiomètres à double enroulement",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16335,
+     "slug": "reostatos-y-potenciometros-bobinados-8-2",
+     "url": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-8-2/",
+     "name": "Dubbelgewonden reostaten en potentiometers",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 910,
+   "slug": "reostatos-y-potenciometros-bobinados-7",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-7/",
+   "name_es": "Reostatos y potenciometros bobinados simple",
+   "sku": "708689bf8358",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 112,
+     "name": "Reóstatos cerámicos",
+     "slug": "ceramicos"
+    }
+   ],
+   "category_path": [
+    "Reostatos y potenciómetros bobinados",
+    "Reóstatos cerámicos"
+   ],
+   "top_category": "Reostatos y potenciómetros bobinados",
+   "top_slug": "reostatos-y-potenciometros-bobinados",
+   "translations": {
+    "en": {
+     "id": 16331,
+     "slug": "rheostats-and-potentiometers-single-windings",
+     "url": "https://grupotorivac.com/en/product/rheostats-and-potentiometers-single-windings/",
+     "name": "Rheostats and potentiometers single windings",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16332,
+     "slug": "rheostats-et-potentiometres-bobinages-simples",
+     "url": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-bobinages-simples/",
+     "name": "Rhéostats et potentiomètres bobinages simples",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16333,
+     "slug": "rheostate-und-potentiometer-einfache-wicklungen",
+     "url": "https://grupotorivac.com/de/product/rheostate-und-potentiometer-einfache-wicklungen/",
+     "name": "Rheostate und Potentiometer einfache Wicklungen",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 909,
+   "slug": "reostatos-y-potenciometros-bobinados-6",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-6/",
+   "name_es": "Reostatos y potenciometros bobinados",
+   "sku": "e47de8b46e1a",
+   "type": "simple",
+   "categories_es": [],
+   "category_path": [],
+   "top_category": "Sin categoría",
+   "top_slug": "sin-categoria",
+   "translations": {
+    "en": {
+     "id": 15609,
+     "slug": "reostatos-y-potenciometros-bobinados-6",
+     "url": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-6/",
+     "name": "Rheostats and coiled potentiometers",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15606,
+     "slug": "reostatos-y-potenciometros-bobinados-6",
+     "url": "https://grupotorivac.com/fr/product/reostatos-y-potenciometros-bobinados-6/",
+     "name": "Rhéostats et potentiomètres à boudin",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15612,
+     "slug": "reostatos-y-potenciometros-bobinados-6",
+     "url": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-6/",
+     "name": "Rheostate und Spulenpotentiometer",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 0,
+   "has_table": false
+  },
+  {
+   "id_es": 908,
+   "slug": "reostatos-y-potenciometros-bobinados-5",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-5/",
+   "name_es": "Reostatos y potenciometros bobinados doble 2x3W",
+   "sku": "aa0c66c1a326",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 111,
+     "name": "Dobles",
+     "slug": "dobles-potenciometros"
+    },
+    {
+     "id": 107,
+     "name": "Potenciometros",
+     "slug": "potenciometros"
+    }
+   ],
+   "category_path": [
+    "Reostatos y potenciómetros bobinados",
+    "Potenciometros",
+    "Dobles"
+   ],
+   "top_category": "Reostatos y potenciómetros bobinados",
+   "top_slug": "reostatos-y-potenciometros-bobinados",
+   "translations": {
+    "en": {
+     "id": 16321,
+     "slug": "rheostats-and-potentiometers-dual-windings-2x3w",
+     "url": "https://grupotorivac.com/en/product/rheostats-and-potentiometers-dual-windings-2x3w/",
+     "name": "Rheostats and potentiometers dual windings 2x3W",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16322,
+     "slug": "rheostats-et-potentiometres-a-double-enroulement-2x3w",
+     "url": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-a-double-enroulement-2x3w/",
+     "name": "Rhéostats et potentiomètres à double enroulement 2x3W",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16323,
+     "slug": "rheostate-und-potentiometer-mit-zwei-wicklungen-2x3w",
+     "url": "https://grupotorivac.com/de/product/rheostate-und-potentiometer-mit-zwei-wicklungen-2x3w/",
+     "name": "Rheostate und Potentiometer mit zwei Wicklungen 2x3W",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 907,
+   "slug": "reostatos-y-potenciometros-bobinados-4",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-4/",
+   "name_es": "Reostatos y potenciometros bobinados simple 5W",
+   "sku": "6e514d4dee24",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 107,
+     "name": "Potenciometros",
+     "slug": "potenciometros"
+    },
+    {
+     "id": 108,
+     "name": "Simples",
+     "slug": "simples"
+    }
+   ],
+   "category_path": [
+    "Reostatos y potenciómetros bobinados",
+    "Potenciometros"
+   ],
+   "top_category": "Reostatos y potenciómetros bobinados",
+   "top_slug": "reostatos-y-potenciometros-bobinados",
+   "translations": {
+    "en": {
+     "id": 16325,
+     "slug": "rheostats-and-potentiometers-simple-windings-5w",
+     "url": "https://grupotorivac.com/en/product/rheostats-and-potentiometers-simple-windings-5w/",
+     "name": "Rheostats and potentiometers simple windings 5W",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16326,
+     "slug": "rheostats-et-potentiometres-a-simple-enroulement-5w",
+     "url": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-a-simple-enroulement-5w/",
+     "name": "Rhéostats et potentiomètres à simple enroulement 5W",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16327,
+     "slug": "rheostate-und-potentiometer-einzelwicklung-5w",
+     "url": "https://grupotorivac.com/de/product/rheostate-und-potentiometer-einzelwicklung-5w/",
+     "name": "Rheostate und Potentiometer Einzelwicklung 5W",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 906,
+   "slug": "reostatos-y-potenciometros-bobinados-3",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-3/",
+   "name_es": "Reostatos y potenciometros bobinados simple 3W",
+   "sku": "a4f0c100b685",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 107,
+     "name": "Potenciometros",
+     "slug": "potenciometros"
+    },
+    {
+     "id": 108,
+     "name": "Simples",
+     "slug": "simples"
+    }
+   ],
+   "category_path": [
+    "Reostatos y potenciómetros bobinados",
+    "Potenciometros"
+   ],
+   "top_category": "Reostatos y potenciómetros bobinados",
+   "top_slug": "reostatos-y-potenciometros-bobinados",
+   "translations": {
+    "en": {
+     "id": 16328,
+     "slug": "rheostats-and-potentiometers-simple-windings-3w",
+     "url": "https://grupotorivac.com/en/product/rheostats-and-potentiometers-simple-windings-3w/",
+     "name": "Rheostats and potentiometers simple windings 3W",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16329,
+     "slug": "rheostats-et-potentiometres-a-simple-enroulement-3w",
+     "url": "https://grupotorivac.com/fr/product/rheostats-et-potentiometres-a-simple-enroulement-3w/",
+     "name": "Rhéostats et potentiomètres à simple enroulement 3W",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16330,
+     "slug": "rheostate-und-potentiometer-einzelne-wicklungen-3w",
+     "url": "https://grupotorivac.com/de/product/rheostate-und-potentiometer-einzelne-wicklungen-3w/",
+     "name": "Rheostate und Potentiometer einzelne Wicklungen 3W",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 905,
+   "slug": "reostatos-y-potenciometros-bobinados-2",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-2/",
+   "name_es": "Reostatos y potenciometros bobinados",
+   "sku": "57a0fa4e8a28",
+   "type": "simple",
+   "categories_es": [],
+   "category_path": [],
+   "top_category": "Sin categoría",
+   "top_slug": "sin-categoria",
+   "translations": {
+    "en": {
+     "id": 15605,
+     "slug": "reostatos-y-potenciometros-bobinados-2",
+     "url": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados-2/",
+     "name": "Rheostats and coiled potentiometers",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15614,
+     "slug": "reostatos-y-potenciometros-bobinados-2",
+     "url": "https://grupotorivac.com/fr/product/reostatos-y-potenciometros-bobinados-2/",
+     "name": "Rhéostats et potentiomètres à boudin",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15607,
+     "slug": "reostatos-y-potenciometros-bobinados-2",
+     "url": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados-2/",
+     "name": "Rheostate und Spulenpotentiometer",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 904,
+   "slug": "reostatos-y-potenciometros-bobinados",
+   "url": "https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados/",
+   "name_es": "Reostatos y potenciometros bobinados",
+   "sku": "897b440c7c85",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 122,
+     "name": "Reostatos y potenciómetros bobinados",
+     "slug": "reostatos-y-potenciometros-bobinados"
+    }
+   ],
+   "category_path": [
+    "Reostatos y potenciómetros bobinados"
+   ],
+   "top_category": "Reostatos y potenciómetros bobinados",
+   "top_slug": "reostatos-y-potenciometros-bobinados",
+   "translations": {
+    "en": {
+     "id": 15611,
+     "slug": "reostatos-y-potenciometros-bobinados",
+     "url": "https://grupotorivac.com/en/product/reostatos-y-potenciometros-bobinados/",
+     "name": "Rheostats and coiled potentiometers",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15610,
+     "slug": "reostatos-y-potenciometros-bobinados",
+     "url": "https://grupotorivac.com/fr/product/reostatos-y-potenciometros-bobinados/",
+     "name": "Rhéostats et potentiomètres à boudin",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15613,
+     "slug": "reostatos-y-potenciometros-bobinados",
+     "url": "https://grupotorivac.com/de/product/reostatos-y-potenciometros-bobinados/",
+     "name": "Rheostate und Spulenpotentiometer",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 901,
+   "slug": "serie-bavs-3",
+   "url": "https://grupotorivac.com/product/serie-bavs-3/",
+   "name_es": "Estabilizador Trifásico Serie BAVS",
+   "sku": "a2cff0898d74",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 106,
+     "name": "Trifásico",
+     "slug": "trifasico-serie-bavs"
+    }
+   ],
+   "category_path": [
+    "Estabilizadores de tensión",
+    "Serie BAVS: Electrónicos",
+    "Trifásico"
+   ],
+   "top_category": "Estabilizadores de tensión",
+   "top_slug": "estabilizadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16196,
+     "slug": "serie-bavs-3",
+     "url": "https://grupotorivac.com/en/product/serie-bavs-3/",
+     "name": "BAVS Series Three-Phase Stabilizer",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16197,
+     "slug": "serie-bavs-3",
+     "url": "https://grupotorivac.com/fr/product/serie-bavs-3/",
+     "name": "Stabilisateur triphasé de la série BAVS",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16198,
+     "slug": "serie-bavs-3",
+     "url": "https://grupotorivac.com/de/product/serie-bavs-3/",
+     "name": "Dreiphasiger Stabilisator der BAVS-Serie",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 900,
+   "slug": "serie-bavs-2",
+   "url": "https://grupotorivac.com/product/serie-bavs-2/",
+   "name_es": "Estabilizador Monofásico Serie BAVS",
+   "sku": "13d3617942b1",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 105,
+     "name": "Monofásico",
+     "slug": "monofasico-serie-bavs"
+    }
+   ],
+   "category_path": [
+    "Estabilizadores de tensión",
+    "Serie BAVS: Electrónicos",
+    "Monofásico"
+   ],
+   "top_category": "Estabilizadores de tensión",
+   "top_slug": "estabilizadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16199,
+     "slug": "serie-bavs-2",
+     "url": "https://grupotorivac.com/en/product/serie-bavs-2/",
+     "name": "Single Phase Stabilizer BAVS Series",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16200,
+     "slug": "serie-bavs-2",
+     "url": "https://grupotorivac.com/fr/product/serie-bavs-2/",
+     "name": "Stabilisateur monophasé Série BAVS",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16201,
+     "slug": "serie-bavs-2",
+     "url": "https://grupotorivac.com/de/product/serie-bavs-2/",
+     "name": "Einphasen-Stabilisator Serie BAVS",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 898,
+   "slug": "serie-avs-3",
+   "url": "https://grupotorivac.com/product/serie-avs-3/",
+   "name_es": "Estabilizador Trifásico Serie AVS",
+   "sku": "28e88fa19299",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 104,
+     "name": "Trifásico",
+     "slug": "trifasico-serie-avs"
+    }
+   ],
+   "category_path": [
+    "Estabilizadores de tensión",
+    "Estabilizadores Serie AVS: electromecánicos con servomotor",
+    "Trifásico"
+   ],
+   "top_category": "Estabilizadores de tensión",
+   "top_slug": "estabilizadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16193,
+     "slug": "serie-avs-3",
+     "url": "https://grupotorivac.com/en/product/serie-avs-3/",
+     "name": "AVS Series Three-Phase Stabilizer",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16194,
+     "slug": "serie-avs-3",
+     "url": "https://grupotorivac.com/fr/product/serie-avs-3/",
+     "name": "Stabilisateur triphasé de la série AVS",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16195,
+     "slug": "serie-avs-3",
+     "url": "https://grupotorivac.com/de/product/serie-avs-3/",
+     "name": "AVS Serie Drei-Phasen-Stabilisator",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 2,
+   "has_table": false
+  },
+  {
+   "id_es": 897,
+   "slug": "serie-avs-2",
+   "url": "https://grupotorivac.com/product/serie-avs-2/",
+   "name_es": "Estabilizadores Monofásicos",
+   "sku": "592f331c74e3",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 103,
+     "name": "Monofásico",
+     "slug": "monofasico-serie-avs"
+    }
+   ],
+   "category_path": [
+    "Estabilizadores de tensión",
+    "Estabilizadores Serie AVS: electromecánicos con servomotor",
+    "Monofásico"
+   ],
+   "top_category": "Estabilizadores de tensión",
+   "top_slug": "estabilizadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16190,
+     "slug": "serie-avs-2",
+     "url": "https://grupotorivac.com/en/product/serie-avs-2/",
+     "name": "Single Phase Stabilizers",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16191,
+     "slug": "serie-avs-2",
+     "url": "https://grupotorivac.com/fr/product/serie-avs-2/",
+     "name": "Stabilisateurs monophasés",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16192,
+     "slug": "serie-avs-2",
+     "url": "https://grupotorivac.com/de/product/serie-avs-2/",
+     "name": "Einphasige Stabilisatoren",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 2,
+   "has_table": false
+  },
+  {
+   "id_es": 895,
+   "slug": "estabilizadores-de-tension",
+   "url": "https://grupotorivac.com/product/estabilizadores-de-tension/",
+   "name_es": "Estabilizadores de tensión",
+   "sku": "da7b8680927b",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 60,
+     "name": "Estabilizadores de tensión",
+     "slug": "estabilizadores-de-tension"
+    }
+   ],
+   "category_path": [
+    "Estabilizadores de tensión"
+   ],
+   "top_category": "Estabilizadores de tensión",
+   "top_slug": "estabilizadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 15567,
+     "slug": "estabilizadores-de-tension",
+     "url": "https://grupotorivac.com/en/product/estabilizadores-de-tension/",
+     "name": "Voltage stabilizers",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15615,
+     "slug": "estabilizadores-de-tension",
+     "url": "https://grupotorivac.com/fr/product/estabilizadores-de-tension/",
+     "name": "Stabilisateurs de tension",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15617,
+     "slug": "estabilizadores-de-tension",
+     "url": "https://grupotorivac.com/de/product/estabilizadores-de-tension/",
+     "name": "Spannungsstabilisatoren",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 892,
+   "slug": "transformador-trifasico-2",
+   "url": "https://grupotorivac.com/product/transformador-trifasico-2/",
+   "name_es": "Transformador trifásico",
+   "sku": "bab0199a7343",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 59,
+     "name": "TCT",
+     "slug": "tct"
+    },
+    {
+     "id": 56,
+     "name": "Transformador convencional",
+     "slug": "transformador-convencional"
+    }
+   ],
+   "category_path": [
+    "Transformadores",
+    "Transformador convencional",
+    "TCT"
+   ],
+   "top_category": "Transformadores",
+   "top_slug": "transformadores",
+   "translations": {
+    "en": {
+     "id": 15860,
+     "slug": "transformador-trifasico-2",
+     "url": "https://grupotorivac.com/en/product/transformador-trifasico-2/",
+     "name": "Three-phase transformer",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15909,
+     "slug": "transformador-trifasico-2",
+     "url": "https://grupotorivac.com/fr/product/transformador-trifasico-2/",
+     "name": "Transformateur triphasé",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15866,
+     "slug": "transformador-trifasico-2",
+     "url": "https://grupotorivac.com/de/product/transformador-trifasico-2/",
+     "name": "Drehstromtransformator",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 2,
+   "has_table": false
+  },
+  {
+   "id_es": 891,
+   "slug": "transformadores-convencionales-encapsulados",
+   "url": "https://grupotorivac.com/product/transformadores-convencionales-encapsulados/",
+   "name_es": "Transformador convencional encapsulado",
+   "sku": "4b36f30b87cd",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 58,
+     "name": "Serie TCE",
+     "slug": "serie-tce"
+    },
+    {
+     "id": 56,
+     "name": "Transformador convencional",
+     "slug": "transformador-convencional"
+    }
+   ],
+   "category_path": [
+    "Transformadores",
+    "Transformador convencional",
+    "Serie TCE"
+   ],
+   "top_category": "Transformadores",
+   "top_slug": "transformadores",
+   "translations": {
+    "en": {
+     "id": 15913,
+     "slug": "transformadores-convencionales-encapsulados",
+     "url": "https://grupotorivac.com/en/product/transformadores-convencionales-encapsulados/",
+     "name": "Encapsulated conventional transformer",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15861,
+     "slug": "transformadores-convencionales-encapsulados",
+     "url": "https://grupotorivac.com/fr/product/transformadores-convencionales-encapsulados/",
+     "name": "Transformateur conventionnel encapsulé",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15869,
+     "slug": "transformadores-convencionales-encapsulados",
+     "url": "https://grupotorivac.com/de/product/transformadores-convencionales-encapsulados/",
+     "name": "Gekapselter konventioneller Transformator",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 890,
+   "slug": "transformador-convencional-estandar-2",
+   "url": "https://grupotorivac.com/product/transformador-convencional-estandar-2/",
+   "name_es": "Transformador convencional estándar",
+   "sku": "57a2268b76ae",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 57,
+     "name": "Serie TC",
+     "slug": "serie-tc"
+    },
+    {
+     "id": 56,
+     "name": "Transformador convencional",
+     "slug": "transformador-convencional"
+    }
+   ],
+   "category_path": [
+    "Transformadores",
+    "Transformador convencional",
+    "Serie TC"
+   ],
+   "top_category": "Transformadores",
+   "top_slug": "transformadores",
+   "translations": {
+    "en": {
+     "id": 15915,
+     "slug": "transformador-convencional-estandar-2",
+     "url": "https://grupotorivac.com/en/product/transformador-convencional-estandar-2/",
+     "name": "Standard conventional transformer",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15890,
+     "slug": "transformador-convencional-estandar-2",
+     "url": "https://grupotorivac.com/fr/product/transformador-convencional-estandar-2/",
+     "name": "Transformateur conventionnel standard",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15891,
+     "slug": "transformador-convencional-estandar-2",
+     "url": "https://grupotorivac.com/de/product/transformador-convencional-estandar-2/",
+     "name": "Herkömmlicher Standard-Transformator",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 888,
+   "slug": "serie-circuito-impreso-2",
+   "url": "https://grupotorivac.com/product/serie-circuito-impreso-2/",
+   "name_es": "Transformadores en serie circuito impreso",
+   "sku": "a7c0d6e651b3",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 55,
+     "name": "Serie TCi (encapsulado para circuito impreso)",
+     "slug": "serie-tci"
+    },
+    {
+     "id": 52,
+     "name": "Transformadores toroidales",
+     "slug": "transformadores-toroidales-transformadores"
+    }
+   ],
+   "category_path": [
+    "Transformadores",
+    "Transformadores toroidales",
+    "Serie TCi (encapsulado para circuito impreso)"
+   ],
+   "top_category": "Transformadores",
+   "top_slug": "transformadores",
+   "translations": {
+    "en": {
+     "id": 15917,
+     "slug": "serie-circuito-impreso-2",
+     "url": "https://grupotorivac.com/en/product/serie-circuito-impreso-2/",
+     "name": "Transformers in series printed circuit",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15893,
+     "slug": "serie-circuito-impreso-2",
+     "url": "https://grupotorivac.com/fr/product/serie-circuito-impreso-2/",
+     "name": "Circuit imprimé des transformateurs de série",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15894,
+     "slug": "serie-circuito-impreso-2",
+     "url": "https://grupotorivac.com/de/product/serie-circuito-impreso-2/",
+     "name": "Leiterplatte für Serientransformatoren",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": true
+  },
+  {
+   "id_es": 886,
+   "slug": "serie-encapsulada-2",
+   "url": "https://grupotorivac.com/product/serie-encapsulada-2/",
+   "name_es": "Transformador serie encapsulada",
+   "sku": "59ca6bdaf199",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 54,
+     "name": "Serie TE",
+     "slug": "serie-te"
+    },
+    {
+     "id": 51,
+     "name": "Transformadores",
+     "slug": "transformadores"
+    },
+    {
+     "id": 52,
+     "name": "Transformadores toroidales",
+     "slug": "transformadores-toroidales-transformadores"
+    }
+   ],
+   "category_path": [
+    "Transformadores",
+    "Transformadores toroidales",
+    "Serie TE"
+   ],
+   "top_category": "Transformadores",
+   "top_slug": "transformadores",
+   "translations": {
+    "en": {
+     "id": 15919,
+     "slug": "serie-encapsulada-2",
+     "url": "https://grupotorivac.com/en/product/serie-encapsulada-2/",
+     "name": "Encapsulated series transformer",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15888,
+     "slug": "serie-encapsulada-2",
+     "url": "https://grupotorivac.com/fr/product/serie-encapsulada-2/",
+     "name": "Transformateur série encapsulé",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15889,
+     "slug": "serie-encapsulada-2",
+     "url": "https://grupotorivac.com/de/product/serie-encapsulada-2/",
+     "name": "Gekapselter Serientransformator",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": true
+  },
+  {
+   "id_es": 884,
+   "slug": "transformadores-serie-tt",
+   "url": "https://grupotorivac.com/product/transformadores-serie-tt/",
+   "name_es": "Transformador Serie TT",
+   "sku": "TT0020210",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 53,
+     "name": "Serie TT",
+     "slug": "serie-tt"
+    },
+    {
+     "id": 51,
+     "name": "Transformadores",
+     "slug": "transformadores"
+    },
+    {
+     "id": 52,
+     "name": "Transformadores toroidales",
+     "slug": "transformadores-toroidales-transformadores"
+    }
+   ],
+   "category_path": [
+    "Transformadores",
+    "Transformadores toroidales",
+    "Serie TT"
+   ],
+   "top_category": "Transformadores",
+   "top_slug": "transformadores",
+   "translations": {
+    "en": {
+     "id": 15857,
+     "slug": "transformadores-serie-tt",
+     "url": "https://grupotorivac.com/en/product/transformadores-serie-tt/",
+     "name": "TT Series Transformer",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15876,
+     "slug": "transformadores-serie-tt",
+     "url": "https://grupotorivac.com/fr/product/transformadores-serie-tt/",
+     "name": "Transformateur série TT",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15878,
+     "slug": "transformadores-serie-tt",
+     "url": "https://grupotorivac.com/de/product/transformadores-serie-tt/",
+     "name": "TT Serie Transformator",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": true
+  },
+  {
+   "id_es": 882,
+   "slug": "comunicacion-modbus-2",
+   "url": "https://grupotorivac.com/product/comunicacion-modbus-2/",
+   "name_es": "Comunicación MODBUS",
+   "sku": "b0ab88d1a8d1",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 29,
+     "name": "Accesorios de regulación",
+     "slug": "accesorios-de-regulacion"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Accesorios de regulación"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16318,
+     "slug": "modbus-communication",
+     "url": "https://grupotorivac.com/en/product/modbus-communication/",
+     "name": "MODBUS communication",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16319,
+     "slug": "communication-modbus",
+     "url": "https://grupotorivac.com/fr/product/communication-modbus/",
+     "name": "Communication MODBUS",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16320,
+     "slug": "modbus-kommunikation",
+     "url": "https://grupotorivac.com/de/product/modbus-kommunikation/",
+     "name": "MODBUS-Kommunikation",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 879,
+   "slug": "accesorios-de-regulacion",
+   "url": "https://grupotorivac.com/product/accesorios-de-regulacion/",
+   "name_es": "Accesorios de regulacion",
+   "sku": "30d6e59bbbc2",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 15623,
+     "slug": "accesorios-de-regulacion",
+     "url": "https://grupotorivac.com/en/product/accesorios-de-regulacion/",
+     "name": "Regulating accessories",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15620,
+     "slug": "accesorios-de-regulacion",
+     "url": "https://grupotorivac.com/fr/product/accesorios-de-regulacion/",
+     "name": "Accessoires de régulation",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15625,
+     "slug": "accesorios-de-regulacion",
+     "url": "https://grupotorivac.com/de/product/accesorios-de-regulacion/",
+     "name": "Zubehör zum Regulieren",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 0,
+   "has_table": false
+  },
+  {
+   "id_es": 878,
+   "slug": "fabricaciones-a-medida",
+   "url": "https://grupotorivac.com/product/fabricaciones-a-medida/",
+   "name_es": "Fabricaciones a medida",
+   "sku": "8cca38630446",
+   "type": "simple",
+   "categories_es": [],
+   "category_path": [],
+   "top_category": "Sin categoría",
+   "top_slug": "sin-categoria",
+   "translations": {
+    "en": {
+     "id": 15630,
+     "slug": "fabricaciones-a-medida",
+     "url": "https://grupotorivac.com/en/product/fabricaciones-a-medida/",
+     "name": "Custom fabrications",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15627,
+     "slug": "fabricaciones-a-medida",
+     "url": "https://grupotorivac.com/fr/product/fabricaciones-a-medida/",
+     "name": "Produits sur mesure",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15619,
+     "slug": "fabricaciones-a-medida",
+     "url": "https://grupotorivac.com/de/product/fabricaciones-a-medida/",
+     "name": "Maßgeschneiderte Produkte",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 4,
+   "has_table": false
+  },
+  {
+   "id_es": 876,
+   "slug": "equipos-industriales-2",
+   "url": "https://grupotorivac.com/product/equipos-industriales-2/",
+   "name_es": "Variador de tensión Equipos industriales",
+   "sku": "43a0b44489f9",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 699,
+     "name": "Variador de tensión industriales",
+     "slug": "variador-de-tension-industriales"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Equipos de sobremesa",
+    "Variador de tensión industriales"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16305,
+     "slug": "voltage-regulator-industrial-equipment",
+     "url": "https://grupotorivac.com/en/product/voltage-regulator-industrial-equipment/",
+     "name": "Voltage regulator Industrial equipment",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16306,
+     "slug": "regulateur-de-tension-equipement-industriel",
+     "url": "https://grupotorivac.com/fr/product/regulateur-de-tension-equipement-industriel/",
+     "name": "Régulateur de tension Équipement industriel",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16307,
+     "slug": "spannungsregler-industrielle-geraete",
+     "url": "https://grupotorivac.com/de/product/spannungsregler-industrielle-geraete/",
+     "name": "Spannungsregler Industrielle Geräte",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 2,
+   "has_table": false
+  },
+  {
+   "id_es": 874,
+   "slug": "en-caja",
+   "url": "https://grupotorivac.com/product/en-caja/",
+   "name_es": "En caja",
+   "sku": "42d57d5045a9",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 700,
+     "name": "En caja",
+     "slug": "variador-de-tension-en-caja"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Equipos de sobremesa",
+    "En caja"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 15626,
+     "slug": "en-caja",
+     "url": "https://grupotorivac.com/en/product/en-caja/",
+     "name": "Boxed",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15624,
+     "slug": "en-caja",
+     "url": "https://grupotorivac.com/fr/product/en-caja/",
+     "name": "En boîte",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15628,
+     "slug": "en-caja",
+     "url": "https://grupotorivac.com/de/product/en-caja/",
+     "name": "Boxen",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 2,
+   "has_table": false
+  },
+  {
+   "id_es": 867,
+   "slug": "monofasico-motorizado",
+   "url": "https://grupotorivac.com/product/monofasico-motorizado/",
+   "name_es": "Variador Monofásico motorizado",
+   "sku": "4f2cbb78e2ed",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 43,
+     "name": "Motorizado",
+     "slug": "motorizado-monofasico"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    },
+    {
+     "id": 37,
+     "name": "Variadores Monofasicos",
+     "slug": "monofasico"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Monofasicos",
+    "Motorizado"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 15910,
+     "slug": "monofasico-motorizado",
+     "url": "https://grupotorivac.com/en/product/monofasico-motorizado/",
+     "name": "Single-phase motorized inverter",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15880,
+     "slug": "monofasico-motorizado",
+     "url": "https://grupotorivac.com/fr/product/monofasico-motorizado/",
+     "name": "Inverseur motorisé monophasé",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15883,
+     "slug": "monofasico-motorizado",
+     "url": "https://grupotorivac.com/de/product/monofasico-motorizado/",
+     "name": "Einphasiger motorisierter Wechselrichter",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 866,
+   "slug": "monofasico-manual",
+   "url": "https://grupotorivac.com/product/monofasico-manual/",
+   "name_es": "Variador Monofásico manual",
+   "sku": "12bdc8ede58d",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 38,
+     "name": "Manual",
+     "slug": "monofasicos-manual"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    },
+    {
+     "id": 37,
+     "name": "Variadores Monofasicos",
+     "slug": "monofasico"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Monofasicos",
+    "Manual"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 15907,
+     "slug": "monofasico-manual",
+     "url": "https://grupotorivac.com/en/product/monofasico-manual/",
+     "name": "Single-phase manual variable speed drive",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15885,
+     "slug": "monofasico-manual",
+     "url": "https://grupotorivac.com/fr/product/monofasico-manual/",
+     "name": "Variateur de vitesse manuel monophasé",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15887,
+     "slug": "monofasico-manual",
+     "url": "https://grupotorivac.com/de/product/monofasico-manual/",
+     "name": "Einphasiger manueller Antrieb mit variabler Geschwindigkeit",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 328,
+   "slug": "variador-trifasico-motorizado",
+   "url": "https://grupotorivac.com/product/variador-trifasico-motorizado/",
+   "name_es": "Variador Trifasico motorizado",
+   "sku": "c7c4551cd46b",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 42,
+     "name": "Motorizado",
+     "slug": "motorizado"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    },
+    {
+     "id": 40,
+     "name": "Variadores Trifásicos",
+     "slug": "trifasico"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Trifásicos",
+    "Motorizado"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 15862,
+     "slug": "variador-trifasico-motorizado",
+     "url": "https://grupotorivac.com/en/product/variador-trifasico-motorizado/",
+     "name": "Motorized three-phase inverter",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15895,
+     "slug": "variador-trifasico-motorizado",
+     "url": "https://grupotorivac.com/fr/product/variador-trifasico-motorizado/",
+     "name": "Inverseur motorisé triphasé",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15897,
+     "slug": "variador-trifasico-motorizado",
+     "url": "https://grupotorivac.com/de/product/variador-trifasico-motorizado/",
+     "name": "Dreiphasiger motorisierter Wechselrichter",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 326,
+   "slug": "trifasico-manual",
+   "url": "https://grupotorivac.com/product/trifasico-manual/",
+   "name_es": "Variador Trifásico manual",
+   "sku": "6d6ab80b4cb5",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 41,
+     "name": "Manual",
+     "slug": "manual-trifasico"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Trifásicos",
+    "Manual"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16303,
+     "slug": "manual-three-phase-inverter",
+     "url": "https://grupotorivac.com/en/product/manual-three-phase-inverter/",
+     "name": "Manual Three-Phase Inverter",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16304,
+     "slug": "onduleur-triphase-manuel",
+     "url": "https://grupotorivac.com/fr/product/onduleur-triphase-manuel/",
+     "name": "Onduleur triphasé manuel",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 310,
+   "slug": "doble-manual",
+   "url": "https://grupotorivac.com/product/doble-manual/",
+   "name_es": "Variador Doble manual",
+   "sku": "0e113f234788",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 44,
+     "name": "Doble manual",
+     "slug": "doble-manual"
+    },
+    {
+     "id": 33,
+     "name": "Variador Doble",
+     "slug": "dobles"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variador Doble",
+    "Doble manual"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16297,
+     "slug": "double-manual-variator",
+     "url": "https://grupotorivac.com/en/product/double-manual-variator/",
+     "name": "Double manual variator",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16298,
+     "slug": "double-variateur-manuel",
+     "url": "https://grupotorivac.com/fr/product/double-variateur-manuel/",
+     "name": "Double variateur manuel",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16299,
+     "slug": "doppelter-manueller-variator",
+     "url": "https://grupotorivac.com/de/product/doppelter-manueller-variator/",
+     "name": "Doppelter manueller Variator",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 308,
+   "slug": "doble-motorizado",
+   "url": "https://grupotorivac.com/product/doble-motorizado/",
+   "name_es": "Variador Doble motorizado",
+   "sku": "4e6209352a32",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 34,
+     "name": "Doble motorizado",
+     "slug": "doble-motorizado"
+    },
+    {
+     "id": 33,
+     "name": "Variador Doble",
+     "slug": "dobles"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variador Doble",
+    "Doble motorizado"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16300,
+     "slug": "dual-motorized-variator",
+     "url": "https://grupotorivac.com/en/product/dual-motorized-variator/",
+     "name": "Dual motorized variator",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16301,
+     "slug": "double-inverseur-motorise",
+     "url": "https://grupotorivac.com/fr/product/double-inverseur-motorise/",
+     "name": "Double inverseur motorisé",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16302,
+     "slug": "doble-motorizado",
+     "url": "https://grupotorivac.com/de/product/doble-motorizado/",
+     "name": "Dubbele gemotoriseerde variator",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 306,
+   "slug": "cuba-de-aceite-2",
+   "url": "https://grupotorivac.com/product/cuba-de-aceite-2/",
+   "name_es": "Cuba de aceite",
+   "sku": "656b57350c61",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 45,
+     "name": "Equipos de sobremesa",
+     "slug": "en-caja"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Equipos de sobremesa"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16310,
+     "slug": "oil-vat",
+     "url": "https://grupotorivac.com/en/product/oil-vat/",
+     "name": "Oil vat",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16311,
+     "slug": "cuve-a-huile",
+     "url": "https://grupotorivac.com/fr/product/cuve-a-huile/",
+     "name": "Cuba du pétrole",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16312,
+     "slug": "cuba-de-aceite-2",
+     "url": "https://grupotorivac.com/de/product/cuba-de-aceite-2/",
+     "name": "Cuba de aceite",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  },
+  {
+   "id_es": 304,
+   "slug": "controlador-0-10vdc-2",
+   "url": "https://grupotorivac.com/product/controlador-0-10vdc-2/",
+   "name_es": "Controlador 0-10VDC",
+   "sku": "7f6721289dd1",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 29,
+     "name": "Accesorios de regulación",
+     "slug": "accesorios-de-regulacion"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Accesorios de regulación"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 16313,
+     "slug": "controller-0-10vdc",
+     "url": "https://grupotorivac.com/en/product/controller-0-10vdc/",
+     "name": "Controller 0-10VDC",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 16314,
+     "slug": "controleur-0-10vdc",
+     "url": "https://grupotorivac.com/fr/product/controleur-0-10vdc/",
+     "name": "Contrôleur 0-10VDC",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 16315,
+     "slug": "steuergeraet-0-10vdc",
+     "url": "https://grupotorivac.com/de/product/steuergeraet-0-10vdc/",
+     "name": "Steuergerät 0-10VDC",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 3,
+   "has_table": false
+  },
+  {
+   "id_es": 301,
+   "slug": "botones-de-mando-2-2",
+   "url": "https://grupotorivac.com/product/botones-de-mando-2-2/",
+   "name_es": "Accesorios de mando",
+   "sku": "5d7f54e5c99b",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 29,
+     "name": "Accesorios de regulación",
+     "slug": "accesorios-de-regulacion"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Accesorios de regulación"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 15863,
+     "slug": "botones-de-mando-2-2",
+     "url": "https://grupotorivac.com/en/product/botones-de-mando-2-2/",
+     "name": "Control accessories",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15879,
+     "slug": "botones-de-mando-2-2",
+     "url": "https://grupotorivac.com/fr/product/botones-de-mando-2-2/",
+     "name": "Accessoires de contrôle",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15881,
+     "slug": "botones-de-mando-2-2",
+     "url": "https://grupotorivac.com/de/product/botones-de-mando-2-2/",
+     "name": "Zubehör kontrollieren",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 2,
+   "has_table": false
+  },
+  {
+   "id_es": 294,
+   "slug": "a-medida-2",
+   "url": "https://grupotorivac.com/product/a-medida-2/",
+   "name_es": "Variador de tensión a medida",
+   "sku": "58923a85804f",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 28,
+     "name": "Fabricación a medida",
+     "slug": "fabricacion-a-media"
+    }
+   ],
+   "category_path": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Fabricación a medida"
+   ],
+   "top_category": "Variadores de tensión - Autotransformadores regulables",
+   "top_slug": "variadores-de-tension",
+   "translations": {
+    "en": {
+     "id": 15918,
+     "slug": "a-medida-2",
+     "url": "https://grupotorivac.com/en/product/a-medida-2/",
+     "name": "Tailor-made voltage regulator",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15884,
+     "slug": "a-medida-2",
+     "url": "https://grupotorivac.com/fr/product/a-medida-2/",
+     "name": "Régulateur de tension sur mesure",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15886,
+     "slug": "a-medida-2",
+     "url": "https://grupotorivac.com/de/product/a-medida-2/",
+     "name": "Maßgeschneiderter Spannungsregler",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 3,
+   "has_table": false
+  },
+  {
+   "id_es": 155,
+   "slug": "tapas-para-botones-bm-mate",
+   "url": "https://grupotorivac.com/product/tapas-para-botones-bm-mate/",
+   "name_es": "Tapas para botones &#8211; BM mate",
+   "sku": "",
+   "type": "simple",
+   "categories_es": [
+    {
+     "id": 27,
+     "name": "Botones de mando y accesorios",
+     "slug": "botones-de-mando-y-accesorios"
+    }
+   ],
+   "category_path": [
+    "Botones de mando y accesorios"
+   ],
+   "top_category": "Botones de mando y accesorios",
+   "top_slug": "botones-de-mando-y-accesorios",
+   "translations": {
+    "en": {
+     "id": 15631,
+     "slug": "tapas-para-botones-bm-mate",
+     "url": "https://grupotorivac.com/en/product/tapas-para-botones-bm-mate/",
+     "name": "Button covers &#8211; BM matte",
+     "matched_by": "hreflang"
+    },
+    "fr": {
+     "id": 15559,
+     "slug": "tapas-para-botones-bm-mate",
+     "url": "https://grupotorivac.com/fr/product/tapas-para-botones-bm-mate/",
+     "name": "Cache-boutons &#8211; BM mat",
+     "matched_by": "hreflang"
+    },
+    "de": {
+     "id": 15555,
+     "slug": "tapas-para-botones-bm-mate",
+     "url": "https://grupotorivac.com/de/product/tapas-para-botones-bm-mate/",
+     "name": "Knopfabdeckungen &#8211; BM matt",
+     "matched_by": "hreflang"
+    }
+   },
+   "n_images": 1,
+   "has_table": false
+  }
+ ]
+}

@@ -1,0 +1,189 @@
+{
+ "file": "data/raw/html/en/en__mi-cuenta.html",
+ "lang": "en",
+ "url": "https://grupotorivac.com/en/mi-cuenta/",
+ "title": "Mi cuenta - Torivac",
+ "meta_description": "%",
+ "og_title": "Mi cuenta - Torivac",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/Diseno-sin-titulo-73.png",
+ "robots": "noindex, follow",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/mi-cuenta/"
+ },
+ "body_classes": [
+  "wp-singular",
+  "page-template-default",
+  "page",
+  "page-id-11515",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-account",
+  "woocommerce-page",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-kit-6"
+ ],
+ "outline": [],
+ "text": "C/ Potosi No. 2, 6th Floor\n 08030 Barcelona \n\n +34 93 312 01 61 \n\n info@torivac.com \n\n© 2025 Torivac. All rights reserved | \nLegal Notice and Terms of Use\n | \nPrivacy Policy\n |\n Accessibility Statement\nDeveloped by \nSantiso Marketing\n\n C/ Potosi No. 2, 6th Floor\n 08030 Barcelona \n\n +34 93 312 01 61 \n\n info@torivac.com \n\n© 2022 Torivac. All rights reserved | \nLegal Notice\n | Developed by \nSantiso Marketing",
+ "text_chars": 408,
+ "tables": [],
+ "links": [
+  {
+   "text": "Legal Notice and Terms of Use",
+   "href": "https://grupotorivac.com/aviso-legal-2/"
+  },
+  {
+   "text": "Privacy Policy",
+   "href": "https://grupotorivac.com/politica-de-privacidad/"
+  },
+  {
+   "text": "Accessibility Statement",
+   "href": "https://grupotorivac.com/declaracion-de-accesibilidad/"
+  },
+  {
+   "text": "Santiso Marketing",
+   "href": "https://santisomarketing.com/"
+  },
+  {
+   "text": "Legal Notice",
+   "href": "https://grupotorivac.com/aviso-legal/"
+  },
+  {
+   "text": "Santiso Marketing",
+   "href": "https://santisomarketing.com/"
+  }
+ ],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/Torivac_negativo.png",
+   "alt": ""
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/07/Logotipos_FondosEuropeos.jpg",
+   "alt": ""
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/07/Logotipos_FondosEuropeos.jpg",
+   "alt": ""
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/en/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  },
+  {
+   "action": null,
+   "method": "post",
+   "id": null,
+   "class": [
+    "woocommerce-form",
+    "woocommerce-form-login",
+    "login"
+   ],
+   "fields": [
+    {
+     "name": "username",
+     "type": "text",
+     "placeholder": null,
+     "required": true
+    },
+    {
+     "name": "password",
+     "type": "password",
+     "placeholder": null,
+     "required": true
+    },
+    {
+     "name": "rememberme",
+     "type": "checkbox",
+     "placeholder": null,
+     "required": false
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "Home",
+     "href": "https://grupotorivac.com/en/"
+    },
+    {
+     "text": "Torivac Company",
+     "href": "https://grupotorivac.com/en/torivac-company/"
+    },
+    {
+     "text": "Products",
+     "href": "https://grupotorivac.com/en/torivac-products/"
+    },
+    {
+     "text": "Entrepreneurial Projects",
+     "href": "https://grupotorivac.com/en/entrepreneurial-projects/"
+    },
+    {
+     "text": "Catalogue",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024_EN.pdf"
+    },
+    {
+     "text": "Blog",
+     "href": "https://grupotorivac.com/en/blog/"
+    },
+    {
+     "text": "Contact",
+     "href": "https://grupotorivac.com/en/contact/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/mi-cuenta/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

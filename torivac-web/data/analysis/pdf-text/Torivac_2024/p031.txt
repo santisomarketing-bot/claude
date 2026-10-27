@@ -1,0 +1,64 @@
+POTENCIÓMETROS Y REOSTATOS
+
+
+
+
+ REOSTATOS CERÁMICOS (Potenciometros)
+
+ Los reóstatos que fabrica Torivac tienen una gran disipación de
+ calor y se fabrican en las siguientes potencias:
+ 15-30-40-60-80125-250-500 y 1000 W. Estas potencias nominales
+ son aplicables con buenas condiciones de ventilación. En
+ instalaciones donde la ventilación es pobre, estas potencias
+ deberemos reducirlas hasta un un 20%, para evitar
+ calentamientos excesivos.
+ El núcleo es un aro cerámico de esteatita de gran dureza,
+ antihigroscópico, evitándose con ello efectos de corrosión por
+ electrólisis. Dicho aro se bobina con hilos de máxima calidad,
+ constantán, nichrom o kantal, según el valor óhmico requerido. Si
+ no se especifica en el pedido, se emplea el material más adecuado
+ para ese valor y potencia.
+ Para su protección contra daños mecánicos y para evitar el
+ movimiento de las espiras, debido a la dilatación causada por el
+ calor, estos potenciómetros están recubiertos de un cemento
+ cerámico de gran dureza, fabricado en nuestros laboratorios, que
+ soporta temperaturas de hasta 9000C, permite una rápida
+ disipación del calor, debido a su superficie mate y buena
+ conductividad térmica.
+ El contacto del cursor es, normalmente, una escobilla de plata o de
+ cobre-plata pulida.
+ Además de bobinas lineales, podemos fabricar, sobre pedido,
+ bobinados con varias secciones para conseguir una curva resistiva
+ no-lineal.
+
+             POTENCIA                                                               PESO (KG.)     GAMA DE VALORES
+                              A      B      C      D     d     R        G     L
+              POWER                                                                 WEIGHT (KG.)    OHMIC VALUES
+                 PC12        25      8      10     32    6    M-10     290º   25       0,028           5Ω – 10kΩ
+
+                 PC25        35      8      38     45    6    M-10     280º   30       0,125           5Ω – 20kΩ
+
+                 PC35        40      12     32     55    6    M-10     278º   35       0,140           5Ω – 25kΩ
+
+                 PC50        40      12     37     65    6    M-10     310º   41       0,150           5Ω – 25kΩ
+
+                 PC75        43      12     37     73    6    M-10     317º   45       0,200           5Ω – 25kΩ
+
+                PC125        60      12     18     87    6    M-10     302º   53       0,360           5Ω – 15kΩ
+
+                PC250        60      12     18    117    6    M-10     314º   70       0,535           5Ω – 15kΩ
+
+                PC500        86      12     36    144    8    M-12     310º   85       1,225           5Ω – 10kΩ
+
+                PC1000       103     10     54    205    8     (1)     320º   115      2,700           3Ω – 10kΩ
+
+
+
+
+                  (1)
+         Anclaje Mod. PC-1000
+
+
+
+                                                                       30
+

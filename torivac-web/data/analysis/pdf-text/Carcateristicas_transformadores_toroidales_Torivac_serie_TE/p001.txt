@@ -1,0 +1,39 @@
+                                                                   TRANSFORMADORES TOROIDALES
+
+
+Serie TE (Encapsulado en resina)
+Son transformadores de la serie TT, encapsulados con resina de
+epoxi, en cajas de PVC que permiten alargar la vida y mejorar el
+aislamiento del transformador. Este acabado es ideal para
+ambientes húmedos o con polvo.
+
+
+         Transformadores encapsulados en cajas
+         Transformers packed in casing
+              Ø      Altura mm               Fijación
+     VA                              Kg.
+             mm.     Height mm.             Mounting
+     15       73         35.4        0.5      M5x45
+     20       73         35.4        0.5      M5x45
+     30       73         39.1        0.6      M5x50
+     40      81.5        39.1        0.7      M5x50
+     50      81.5        39.1        0.7      M5x50
+     60      87.3        41.7        0.9      M5x55
+     60       91         40.5        0.9      M5x55
+     80      96.7        37.1         1       M6x50
+     100    104.2         44         1.2      M6x60
+     120    104.2         44         1.2      M6x60
+     150    104.2        52.1        1.6      M6x70
+     200     115         53.2         2       M6x70
+     250    125.4        52.4        2.1      M6x70
+     300    125.4        65.3        2.3      M6x80
+     400    139.6        65.7        3.5      M8x80
+     500     148          90         4.2     M8x110
+     600    151.2        82.8        6.1     M8x100
+     750    154.4       100.3        7.5     M8x110
+
+
+
+
+   www.torivac.com
+

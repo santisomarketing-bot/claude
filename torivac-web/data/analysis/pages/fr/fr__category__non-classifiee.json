@@ -1,0 +1,173 @@
+{
+ "file": "data/raw/html/fr/fr__category__non-classifiee.html",
+ "lang": "fr",
+ "url": "https://grupotorivac.com/fr/category/non-classifiee/",
+ "title": "Non classifié(e) - Torivac",
+ "meta_description": null,
+ "og_title": "Non classifié(e) - Torivac",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/Diseno-sin-titulo-73.png",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/category/uncategorized/",
+  "fr": "https://grupotorivac.com/fr/category/non-classifiee/",
+  "es": "https://grupotorivac.com/category/sin-categorizar/",
+  "de": "https://grupotorivac.com/de/category/unkategorisiert/",
+  "x-default": "https://grupotorivac.com/category/sin-categorizar/"
+ },
+ "body_classes": [
+  "archive",
+  "category",
+  "category-non-classifiee",
+  "category-133",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-kit-6"
+ ],
+ "outline": [],
+ "text": "C/ Potosi Nº 2, Planta 6ª\n 08030 Barcelona \n\n +34 93 312 01 61 \n\n info@torivac.com \n\n2025 Torivac. Tous droits réservés | \nAvis juridique et conditions d’utilisation\n | \nPolitique de confidentialité\n |\n Déclaration d’accessibilité\nDéveloppé par \nSantiso Marketing\n\n C/ Potosi Nº 2, Planta 6ª\n 08030 Barcelona \n\n +34 93 312 01 61 \n\n info@torivac.com \n\n2022 Torivac. Tous droits réservés | \nMentions légales\n | Développé par \nSantiso Marketing",
+ "text_chars": 441,
+ "tables": [],
+ "links": [
+  {
+   "text": "Avis juridique et conditions d’utilisation",
+   "href": "https://grupotorivac.com/aviso-legal-2/"
+  },
+  {
+   "text": "Politique de confidentialité",
+   "href": "https://grupotorivac.com/politica-de-privacidad/"
+  },
+  {
+   "text": "Déclaration d’accessibilité",
+   "href": "https://grupotorivac.com/declaracion-de-accesibilidad/"
+  },
+  {
+   "text": "Santiso Marketing",
+   "href": "https://santisomarketing.com/"
+  },
+  {
+   "text": "Mentions légales",
+   "href": "https://grupotorivac.com/aviso-legal/"
+  },
+  {
+   "text": "Santiso Marketing",
+   "href": "https://santisomarketing.com/"
+  }
+ ],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/Torivac_negativo.png",
+   "alt": ""
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/07/Logotipos_FondosEuropeos.jpg",
+   "alt": ""
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/07/Logotipos_FondosEuropeos.jpg",
+   "alt": ""
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/fr/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "Accueil",
+     "href": "https://grupotorivac.com/fr/"
+    },
+    {
+     "text": "Notre Entreprise",
+     "href": "https://grupotorivac.com/fr/notre-entreprise/"
+    },
+    {
+     "text": "Produits",
+     "href": "https://grupotorivac.com/fr/produits-torivac/"
+    },
+    {
+     "text": "Projets entrepreneuriaux",
+     "href": "https://grupotorivac.com/fr/projets-cles-en-main/"
+    },
+    {
+     "text": "Catalogue",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024_FR.pdf"
+    },
+    {
+     "text": "Blog",
+     "href": "https://grupotorivac.com/fr/blog/"
+    },
+    {
+     "text": "Contactez nous",
+     "href": "https://grupotorivac.com/fr/contactez-nous/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/category/uncategorized/"
+    },
+    {
+     "text": "Français",
+     "href": "https://grupotorivac.com/fr/category/non-classifiee/"
+    },
+    {
+     "text": "Español",
+     "href": "https://grupotorivac.com/category/sin-categorizar/"
+    },
+    {
+     "text": "Deutsch",
+     "href": "https://grupotorivac.com/de/category/unkategorisiert/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

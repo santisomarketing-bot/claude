@@ -1,0 +1,163 @@
+{
+ "total_products": 80,
+ "groups": [
+  {
+   "label": "Variadores de tensión - Autotransformadores regulables (1/2)",
+   "ids": [
+    879,
+    16633,
+    301,
+    882,
+    304,
+    306,
+    874,
+    876
+   ],
+   "key": "g01-variadores-de-tension-autotransformadore"
+  },
+  {
+   "label": "Variadores de tensión - Autotransformadores regulables (2/2)",
+   "ids": [
+    294,
+    310,
+    308,
+    866,
+    867,
+    326,
+    328
+   ],
+   "key": "g02-variadores-de-tension-autotransformadore"
+  },
+  {
+   "label": "Equipos electrónicos (1/2)",
+   "ids": [
+    967,
+    972,
+    969,
+    970,
+    978,
+    977
+   ],
+   "key": "g03-equipos-electronicos-1-2"
+  },
+  {
+   "label": "Equipos electrónicos (2/2)",
+   "ids": [
+    968,
+    974,
+    976,
+    973,
+    975
+   ],
+   "key": "g04-equipos-electronicos-2-2"
+  },
+  {
+   "label": "Botones de mando (1/2)",
+   "ids": [
+    936,
+    951,
+    947,
+    949,
+    943,
+    945
+   ],
+   "key": "g05-botones-de-mando-1-2"
+  },
+  {
+   "label": "Botones de mando (2/2)",
+   "ids": [
+    940,
+    938,
+    942,
+    934,
+    932
+   ],
+   "key": "g06-botones-de-mando-2-2"
+  },
+  {
+   "label": "Reostatos y potenciómetros bobinados",
+   "ids": [
+    904,
+    906,
+    907,
+    908,
+    911,
+    913,
+    1042,
+    910,
+    912
+   ],
+   "key": "g07-reostatos-y-potenciometros-bobinados"
+  },
+  {
+   "label": "Resistencias | Bancos de carga",
+   "ids": [
+    965,
+    8339,
+    966,
+    964,
+    8346,
+    15355,
+    8340
+   ],
+   "key": "g08-resistencias-bancos-de-carga"
+  },
+  {
+   "label": "Transformadores",
+   "ids": [
+    890,
+    891,
+    892,
+    888,
+    886,
+    884
+   ],
+   "key": "g09-transformadores"
+  },
+  {
+   "label": "Estabilizadores de tensión",
+   "ids": [
+    895,
+    897,
+    898,
+    900,
+    901
+   ],
+   "key": "g10-estabilizadores-de-tension"
+  },
+  {
+   "label": "Hembrillas",
+   "ids": [
+    954,
+    955,
+    957,
+    956
+   ],
+   "key": "g11-hembrillas"
+  },
+  {
+   "label": "Portaled",
+   "ids": [
+    929,
+    923,
+    925,
+    927
+   ],
+   "key": "g12-portaled"
+  },
+  {
+   "label": "Sin categoría + Bobinas encapsuladas + Nucleos + Choques | Inductancias | Reactancias toroidales + Botones de mando y accesorios",
+   "ids": [
+    878,
+    909,
+    905,
+    916,
+    918,
+    921,
+    919,
+    155
+   ],
+   "key": "g13-sin-categoria-bobinas-encapsuladas-nucle"
+  }
+ ]
+}

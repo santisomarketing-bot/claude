@@ -1,0 +1,60 @@
+SPANNUNGSREGLERN
+
+
+
+
+SICHERHEITSVERKABELUNG UND WARTUNG
+
+                       Die Spannungsregler entsprechen den CE-Normen, sofern sie in einem
+                       Gehäuse oder einer Umhüllung installiert sind , die sie von der
+                       Außenwelt isoliert und den Benutzer vor einem möglichen Kontakt mit
+                       aktiven, elektrischen und mechanischen Teilen des Reglers schützt.
+
+
+                       Wenn die Spannungsregler nicht innerhalb eines Schutzkastens oder -
+                       gehäuses installiert sind , muss der Kontakt zwischen dem Benutzer
+                       und stromführenden        Teilen , wie z . B . der Kontaktbahn , den
+                       Anschlussklemmen oder der Bürste, verhindert werden.
+
+VERBINDUNG
+
+Anschlussarten für einphasige Umrichter
+
+
+
+            Einphasige Umrichter ohne Aufzug:          Einphasige Umrichter mit Aufzug:
+
+
+                      1                         4             1                  3      4
+                              EINGANG                                EINGANG
+
+
+
+
+                          AUSGANG                                  AUSGANG
+                      1             2                         1              2
+
+
+
+                              Eingang:1-4                            Eingang1-3
+                              Ausgang:1-2                            Ausgang1-2
+
+
+
+Anschlussarten für dreiphasige Umrichter
+Dreiphasige Spannungsumrichter verfügen standardmäßig
+über eine Brücke zwischen den Klemmen 1-1-1 jeder Spule,
+die dem Nullleiter einer Sternschaltung entspricht , um
+mögliche Ungleichgewichte in den Geräten zu vermeiden.
+                                                            Dreiphasige Umrichter mit Aufzug:
+            Dreiphasige Umrichter ohne Aufzug:
+
+
+
+
+                      Stern-Eingang: 1-4,4,4.                     Stern-Eingang: 1– 3, 3,3.
+                      Ausgang: 1-2, 2,2.                          Ausgang: 1-2, 2,2.
+
+
+                                                     11
+

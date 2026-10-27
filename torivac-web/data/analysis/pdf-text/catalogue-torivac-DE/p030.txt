@@ -1,0 +1,36 @@
+  POTENTIOMETERN UND RHEOSTATEN
+
+
+
+
+      POTENTIOMETER 5W
+
+
+
+Die sorgfältige Wicklung des Widerstandselements und das originelle Design eines
+sehr empfindlichen Schleifersystems gewährleisten einen sehr glatten, präzisen und
+dauerhaften Betrieb. Die Bürste ist eine kippbare Messingrolle, die auf der flachen
+Oberfläche des Widerstands mit dem richtigen Druck rotiert, um einen guten Kontakt
+und eine sehr hohe Anzahl von Hüben zu gewährleisten. Der Restwiderstand am
+Anfang und am Ende des Hubes ist praktisch Null.
+
+Hauptmerkmale
+
+* Anschlussklemmen 3,2 x 0,5 mm
+* Nennleistung bei 25ºC: 5W
+* Widerstandsverteilung: lin.
+* Widerstandsbereich: 5 Ω - 50 KΩ
+* Toleranz: 6%
+* Durchschlagsspannung: > 1000v.
+* Mechanischer Drehwinkel: 264ºC
+* Elektrischer Drehwinkel: 250ºC
+* Mechanischer Durchschlag des Anschlags: 8 kg/cm.
+* Standard Wellenlänge: 40 mm.
+* Nettogewicht: 40 grs.
+*Temperaturanstieg bei Volllast: 75ºC
+
+
+
+
+                                                               29
+

@@ -1,0 +1,60 @@
+VARIADORES DE TENSIÓN
+
+
+
+
+seguridad conexionado y mantenimiento
+
+                           Los variadores de tensión cumplen con normativa CE, siempre que su
+                           montaje se realice dentro de una caja o envolvente que los aísle del
+                           exterior, protegiendo al usuario del posible contacto con partes activas,
+                           eléctricas y mecánicas del variador.
+                           En caso que los variadores de tensión no se instalen en el interior de una
+                           caja o envolvente protector, se debe evitar el contacto entre usuario y
+                           las partes activas, como la pista de contacto, bornes de conexión o la
+                           escobilla.
+
+
+
+
+conexionado
+
+Modos de conexión para variadores monofásicos
+
+
+
+               Variadores monofásicos sin elevación:                       Variadores monofásicos con elevación:
+
+
+                          1                                 4                    1                          3    4
+                                      ENTRADA                                            ENTRADA
+
+
+
+
+                              SALIDA                                                  SALIDA
+                          1                2                                     1                2
+
+
+
+                                     Entrada: 1-4                                           Entrada 1-3
+                                     Salida: 1-2                                            Salida 1-2
+
+
+
+Modos de conexión para Variadores trifásicos
+Los Variadores de tensión trifásicos incorporan de serie un puente entre
+los bornes 1-1-1 de cada bobina, correspondiente al neutro de una
+conexión en estrella, para evitar posibles desequilibrios en el equipo.
+
+               Variador trifásico sin elevación                               Variador trifásico con elevación
+
+
+
+
+                           Entrada estrella: 1 - 4, 4, 4.                            Entrada estrella: 1 – 3, 3, 3.
+                           Salida: 1 - 2, 2, 2.                                      Salida: 1 - 2, 2, 2.
+
+
+                                                                     11
+

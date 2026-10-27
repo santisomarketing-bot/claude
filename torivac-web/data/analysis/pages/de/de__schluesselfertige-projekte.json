@@ -1,0 +1,195 @@
+{
+ "file": "data/raw/html/de/de__schluesselfertige-projekte.html",
+ "lang": "de",
+ "url": "https://grupotorivac.com/de/schluesselfertige-projekte/",
+ "title": "Grupor Torivac - Geschäftsprojekte",
+ "meta_description": "%",
+ "og_title": "Grupor Torivac - Geschäftsprojekte",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2022/03/transformador-serie-tci.png",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/entrepreneurial-projects/",
+  "fr": "https://grupotorivac.com/fr/projets-cles-en-main/",
+  "es": "https://grupotorivac.com/proyectos-empresariales/",
+  "de": "https://grupotorivac.com/de/schluesselfertige-projekte/",
+  "x-default": "https://grupotorivac.com/proyectos-empresariales/"
+ },
+ "body_classes": [
+  "wp-singular",
+  "page-template",
+  "page-template-elementor_header_footer",
+  "page",
+  "page-id-15784",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "is-elementor",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-template-full-width",
+  "elementor-kit-6",
+  "elementor-page",
+  "elementor-page-15784"
+ ],
+ "outline": [
+  {
+   "level": 1,
+   "text": "Schlüsselfertige Projekte"
+  },
+  {
+   "level": 2,
+   "text": "Effiziente Lösungen für die Spannungsregulierung und Transformation ."
+  },
+  {
+   "level": 4,
+   "text": "Maßgeschneiderte Projekte"
+  },
+  {
+   "level": 4,
+   "text": "Strategische Arbeit und Zusammenarbeit"
+  },
+  {
+   "level": 2,
+   "text": "Haben Sie ein spezielles Projekt oder einen technischen Bedarf?"
+  },
+  {
+   "level": 4,
+   "text": "Strategische Arbeit und Zusammenarbeit"
+  }
+ ],
+ "text": "Schlüsselfertige Projekte\n\n Wir zeichnen uns dadurch aus, dass wir jedes Projekt und seinen Nutzen für jeden Kunden genau analysieren.\nWir übernehmen die Planung, Herstellung und Inbetriebnahme von Anlagen.\n\nEffiziente Lösungen für die Spannungsregulierung und Transformation\n.\n\nMaßgeschneiderte Projekte\n\nJedes Projekt wird im Detail analysiert, um sicherzustellen, dass das Design perfekt an die betrieblichen Anforderungen angepasst ist und einen stabilen und sicheren Betrieb in jeder industriellen Umgebung gewährleistet.\nDurch das Management aller Phasen des Prozesses, von der Konzeption bis zur Installation, können wir Lösungen anbieten, die sowohl in Bezug auf die Leistung als auch auf die Kosten optimiert sind.\n\nStrategische Arbeit und Zusammenarbeit\n\nHaben Sie ein spezielles Projekt oder einen technischen Bedarf?\n\nUnser Team von Ingenieuren kann Sie beraten. Unsere Fachleute arbeiten eng mit Kunden und strategischen Partnern zusammen, um effiziente Lösungen für die Regulierung und Umwandlung von elektrischer Spannung zu entwickeln. \n\nKontaktieren Sie uns unter \n\nStrategische Arbeit und Zusammenarbeit\n\nDie vollständige Kontrolle über die Entwicklung der Geräte gibt uns die Möglichkeit, jedes Detail anzupassen, die Installationszeiten zu verkürzen und die Funktionsfähigkeit der elektrischen Systeme zu verbessern. \nInnovation und Präzision im Design sind der Schlüssel zu anwendungsspezifischen Lösungen: Durch den Einsatz fortschrittlicher Tools und Simulationsmethoden wird jedes Gerät vor dem Einsatz getestet und verfeinert, um Zuverlässigkeit und Effizienz zu gewährleisten.",
+ "text_chars": 1602,
+ "tables": [],
+ "links": [
+  {
+   "text": "Kontaktieren Sie uns unter",
+   "href": "https://grupotorivac.com/contacto/"
+  }
+ ],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/transformador-serie-tci.png",
+   "alt": "transformador-serie-tci.png"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/transformador-serie-te.png",
+   "alt": "transformador-serie-te.png"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/02/fa300a-1280x1000.png",
+   "alt": "fa300a"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/11/convertidor1-1-1024x1024-1.png",
+   "alt": "convertidor1-1-1024x1024"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/11/resistencia.png",
+   "alt": "resistencia"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/11/Adobe-Express-file.png",
+   "alt": "Adobe Express - file"
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/de/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "Startseite",
+     "href": "https://grupotorivac.com/de/"
+    },
+    {
+     "text": "Torivac Unternehmen",
+     "href": "https://grupotorivac.com/de/unser-unternehmen/"
+    },
+    {
+     "text": "Produkte",
+     "href": "https://grupotorivac.com/de/torivac-produkte/"
+    },
+    {
+     "text": "Unternehmerische Projekte",
+     "href": "https://grupotorivac.com/de/schluesselfertige-projekte/"
+    },
+    {
+     "text": "Katalog",
+     "href": "https://grupotorivac.com/wp-content/uploads/2025/02/catalogue-torivac-DE.pdf"
+    },
+    {
+     "text": "Blog",
+     "href": "https://grupotorivac.com/de/blog/"
+    },
+    {
+     "text": "Kontakt",
+     "href": "https://grupotorivac.com/de/kontakt-us/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/entrepreneurial-projects/"
+    },
+    {
+     "text": "Français",
+     "href": "https://grupotorivac.com/fr/projets-cles-en-main/"
+    },
+    {
+     "text": "Español",
+     "href": "https://grupotorivac.com/proyectos-empresariales/"
+    },
+    {
+     "text": "Deutsch",
+     "href": "https://grupotorivac.com/de/schluesselfertige-projekte/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

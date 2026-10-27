@@ -1,0 +1,49 @@
+                                                                                                                                        VARIADORES DE TENSIÓN
+
+
+
+
+ VARIADOR TENSIÓN TRIFÁSICO REGULACIÓN MAMOTORIZADA
+
+             480 VA – 12000 VA                            Entrada/Input 400V Salida/Output 400/430V
+                              In 400            In 430
+              VA                                                 A          B           E           F          G           Kg
+                                (A)               (A)
+             480               0.7x3            0.64x3          90         365          75        M-5           92          4.9
+             660               0.9x3            0.88x3          90         365          75        M-5          100          6.1
+             1000            1.52x3              1.4x3         120         375         100        M-6          130         11.7
+            1000*            1.52x3              1.4x3          90         365          75        M-5           92          8.5
+             1500             2.17x3              2x3          120         375         100        M-6          130         12.6
+            1500*             2.17x3              2x3           90         365          75        M-5           92          11
+             2250             3.26x3              3x3          120         405         100        M-6          130          13
+             3000             4.34x3              4x3          120         435         100        M-6          130         14.6
+             3750             5.43x3              5x3          135         445         112        M-6          140          17
+             4500             6.52x3              6x3          165         430         135        M-6          175         21.2
+             6000            8.69x 3              8x3          165         460         135        M-6          175          25
+             7500            10.86x3             10x3          200         525         170        M-8          230          37
+             9000            13.04x3             12x3          235         555        195         M-8          242         48.5
+            12000            17.39x3             16x3          285         600         255        M-8          295         63.7
+         In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable
+         autotransformers.
+
+
+
+
+              15000 VA – 33000 VA                           Entrada/Input 400V Salida/Output 400/430V
+                      In 400           In 430
+       VA                                               A            B          E            F             G           H          Kg
+                       (A)               (A)
+      15000          21.73x3            20x3           380         600        255           M-8          320           255         68
+      18000          26.01x3            24x3           520         760        380           M-10         430           470        125
+      21000          30.43x3            28x3           540         760        380           M-10         445           490        133
+      24000          34.78x3            32x3           585         760        380           M-10         490           535        160
+      27000          39.13x3            36x3           615         780        420           M-10         520           565        195
+      30000          43.47x3            40x3           665         780        420           M-12         570           615        230
+      33000          47.85x3            44x3           685         780        420           M-12         610           635        285
+     In hace referencia a la intensidad nominal del variador/In it refers to the nominal intensity of the variable autotransformers.
+
+
+
+
+www.torivac.com
+

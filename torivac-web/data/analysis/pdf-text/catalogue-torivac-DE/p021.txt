@@ -1,0 +1,54 @@
+RINGKERNDROSSELN
+
+
+
+
+ RINGKERNDROSSELN AUS EISENPULVER
+
+ Eisenpulver-Ringkerndrosseln sind die idealen induktiven
+ Bauelemente für die Konstruktion und Herstellung von DC/DC-
+ Wandlern oder AC/DC-Schaltnetzteilen sowie für Netzfilter,
+ elektromagnetische Störungsfilter und andere Drosseln im
+ Niederfrequenzbereich.
+
+ Seine wichtigsten Merkmale sind:
+ * Geringe Streuung des Magnetfelds, wodurch die abgestrahlten
+ Felder auf ein Minimum begrenzt werden.
+ * Hohe Leistung, die es ermöglicht, die Energie auf kleinstem Raum
+ zu filtern oder zu speichern.
+ * Geringe Verluste im gesamten Bereich der Arbeitsfrequenzen.
+ * Hohe Temperaturstabilität mit einem Bereich von -50ºC bis + 90ºC.
+ * Großer Frequenzbereich von 10Khz bis 150Khz.
+ Die Familie besteht aus 27 verschiedenen induktiven Werten, die den
+ Standardwerten für passive Bauelemente in der Elektronik
+ entsprechen, und 11 verschiedenen Kernen, wodurch 297
+ verschiedene Referenzen erzielt werden, die es in den meisten Fällen
+ ermöglichen, den Designbedarf zu decken. Wir können
+ Sondermodelle mit anderen Werten oder mit anderen Kerntypen in
+ verschiedenen Größen herstellen, je nach den Spezifikationen des
+ jeweiligen Kunden.
+
+
+
+
+                                                                             Abmessungen ( mm .)
+                                                                             Dimensions(mm.)
+                                                                        Referenz         D       A    L
+                                                                        Reference
+                                                                          1305           15       7   30
+                                                                          1307           16      10   30
+                                                                          1706           20       8   30
+                                                                          2006           23       9   30
+                                                                          2010           23      14   30
+                                                                          2408           27      11   30
+                                                                          2711           32      14   30
+                                                                          3311           37      15   30
+                                                                          3915           44      20   30
+                                                                          4715           52      21   30
+                                                                          5122           57      28   30
+
+
+
+
+                                                                  20
+

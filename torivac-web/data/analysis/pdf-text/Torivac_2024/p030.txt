@@ -1,0 +1,35 @@
+POTENCIÓMETROS Y REOSTATOS
+
+
+
+
+ POTENCIÓMETRO 5W
+
+ El cuidadoso bobinado del elemento de resistencia y el diseño
+ original de un sistema de cursor muy sensible aseguran un manejo
+ muy suave, preciso y de larga duración. La escobilla es un rodillo de
+ latón basculante que gira sobre la superficie plana de la resistencia
+ con la presión adecuada para garantizar un buen contacto y un
+ número muy elevado de maniobras. La resistencia residual al inicio
+ y final de recorrido es prácticamente nula.
+
+
+ Características principales
+ * Terminales soldables 3.2x0.5mm
+ * Potencia máx 2.2:25%0,5W
+ * Distribución resistencia: Lineal
+ * Gama de valores óhmicos: 52-50 KO
+ * Tolerancia: 6%,
+ * Tensión de perforación: >1000V
+ * Angulo de glo, acánico; 264"
+ * Angulo de gio'Biécirico: 250%
+ * Rosistoncia del ope a la rotura: 8 Kg/cm
+ * Longitud del eje Standard: 40 mm
+ * Paso noto: 40-grs
+ * Incremento de temperatura plena carga: 75'C
+
+
+
+
+                                                                         29
+

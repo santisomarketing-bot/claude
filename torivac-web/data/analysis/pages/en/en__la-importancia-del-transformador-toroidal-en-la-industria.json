@@ -1,0 +1,206 @@
+{
+ "file": "data/raw/html/en/en__la-importancia-del-transformador-toroidal-en-la-industria.html",
+ "lang": "en",
+ "url": "https://grupotorivac.com/en/la-importancia-del-transformador-toroidal-en-la-industria/",
+ "title": "The importance of the toroidal transformer in industry - Torivac",
+ "meta_description": "The importance of toroidal transformers is that they guarantee superior electrical isolation in power transmission.",
+ "og_title": "The importance of the toroidal transformer in industry",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2024/06/DSC06625.jpg",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "https://grupotorivac.com/en/la-importancia-del-transformador-toroidal-en-la-industria/",
+  "fr": "https://grupotorivac.com/fr/la-importancia-del-transformador-toroidal-en-la-industria/",
+  "es": "https://grupotorivac.com/la-importancia-del-transformador-toroidal-en-la-industria/",
+  "de": "https://grupotorivac.com/de/la-importancia-del-transformador-toroidal-en-la-industria/",
+  "x-default": "https://grupotorivac.com/la-importancia-del-transformador-toroidal-en-la-industria/"
+ },
+ "body_classes": [
+  "wp-singular",
+  "post-template",
+  "post-template-elementor_header_footer",
+  "single",
+  "single-post",
+  "postid-8191",
+  "single-format-standard",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "is-elementor",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-default",
+  "elementor-template-full-width",
+  "elementor-kit-6",
+  "elementor-page",
+  "elementor-page-8191"
+ ],
+ "outline": [
+  {
+   "level": 2,
+   "text": "The importance of the toroidal transformer in industry"
+  },
+  {
+   "level": 3,
+   "text": "Maximize performance and reduce operating costs with our high-efficiency transformers."
+  },
+  {
+   "level": 3,
+   "text": "Which is the most suitable toroidal transformer for your company?"
+  },
+  {
+   "level": 3,
+   "text": "Difference between toroidal and conventional transformers: efficiency, design and applications"
+  }
+ ],
+ "text": "The importance of the toroidal transformer in industry\n\nMaximize performance and reduce operating costs with our high-efficiency transformers.\nAt Torivac we specialize in offering high quality industrial transformers, both toroidal and conventional transformers, custom designed to meet the specific needs of our customers.\nThese products stand out for their energy efficiency, durability and reliability, with the confidence that comes from a company with more than 60 years of experience. This equipment reduces operating costs and improves the stability of the electrical systems of any business. Our strength for the design of these transformers? We use advanced technology, such as 3D modeling, to ensure high quality and precision products. \nIn addition, our transformers contribute to environmental sustainability by minimizing energy consumption and carbon footprint. We have a strong commitment and vocation for continuous innovation to offer advanced solutions that exceed our customers’ expectations, without neglecting the ecological aspect. \n\nWhich is the most suitable toroidal transformer for your company?\nExpert advice is important for an informed and efficient choice. However, there are a number of key considerations that will always help you choose the perfect equipment. \nTo choose the right toroidal transformer for your company, it is essential to consider aspects such as power requirements, load capacity, quality and energy efficiency, compatibility with electrical equipment, design and installation, as well as to review the relevant technical specifications.\nOf course, feel free to consult any questions with electrical experts or electrical engineers can provide personalized guidance. Our team can help you with this. In this way, we guarantee an informed and optimal selection of the transformer that meets your company’s specific energy needs. \n\nDifference between toroidal and conventional transformers: efficiency, design and applications\nUnpacking the relationship between cost, efficiency and performance to meet specific energy requirements.\nToroidal and conventional transformers, although both are valid, differ in design and efficiency. Toroidal transformers, fortunately for your company, have a circular core that minimizes losses and noise generation, being more compact and efficient, but they are usually more expensive. \nOn the other hand, conventional ones, with square or rectangular cores, are more economical but less efficient and can generate more vibrations.\nBoth perform the same electrical transformation function, but are preferred in different applications depending on space, noise and final cost requirements.\nDo you want to have a look at our different transformers? Then just click here. If you need a recommendation or more specific advice, you can contact us here.",
+ "text_chars": 2830,
+ "tables": [],
+ "links": [],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2024/06/DSC06625.jpg",
+   "alt": "importance of the toroidal transformer"
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/en/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  },
+  {
+   "action": "/en/la-importancia-del-transformador-toroidal-en-la-industria/",
+   "method": "post",
+   "id": "wpforms-form-16204",
+   "class": [
+    "wpforms-validate",
+    "wpforms-form",
+    "wpforms-ajax-form"
+   ],
+   "fields": [
+    {
+     "name": "wpforms[fields][0]",
+     "type": "text",
+     "placeholder": "Name",
+     "required": true
+    },
+    {
+     "name": "wpforms[fields][4]",
+     "type": "text",
+     "placeholder": null,
+     "required": false
+    },
+    {
+     "name": "wpforms[fields][1]",
+     "type": "email",
+     "placeholder": "E-mail",
+     "required": true
+    },
+    {
+     "name": "wpforms[fields][2]",
+     "type": "textarea",
+     "placeholder": "Message",
+     "required": false
+    },
+    {
+     "name": "wpforms[fields][3][]",
+     "type": "checkbox",
+     "placeholder": null,
+     "required": true
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "Home",
+     "href": "https://grupotorivac.com/en/"
+    },
+    {
+     "text": "Torivac Company",
+     "href": "https://grupotorivac.com/en/torivac-company/"
+    },
+    {
+     "text": "Products",
+     "href": "https://grupotorivac.com/en/torivac-products/"
+    },
+    {
+     "text": "Entrepreneurial Projects",
+     "href": "https://grupotorivac.com/en/entrepreneurial-projects/"
+    },
+    {
+     "text": "Catalogue",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024_EN.pdf"
+    },
+    {
+     "text": "Blog",
+     "href": "https://grupotorivac.com/en/blog/"
+    },
+    {
+     "text": "Contact",
+     "href": "https://grupotorivac.com/en/contact/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/en/la-importancia-del-transformador-toroidal-en-la-industria/"
+    },
+    {
+     "text": "Français",
+     "href": "https://grupotorivac.com/fr/la-importancia-del-transformador-toroidal-en-la-industria/"
+    },
+    {
+     "text": "Español",
+     "href": "https://grupotorivac.com/la-importancia-del-transformador-toroidal-en-la-industria/"
+    },
+    {
+     "text": "Deutsch",
+     "href": "https://grupotorivac.com/de/la-importancia-del-transformador-toroidal-en-la-industria/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

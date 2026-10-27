@@ -1,0 +1,64 @@
+VARIABLE AUTOTRANSFORMERS
+
+
+
+
+         5000 VA – 11000 VA                                 Entrada/Input 230V Salida/Output 230/250V
+                 In 230            In 250
+   VA                                                 A             B        E              F          G      H     Kg
+                   (A)              (A)
+  5000            21.73              20              380          300       255           M-8          320    255    27
+  6000            26.01              24              520          350       380           M-12         430    470    48
+  7000            30.43              28              540          350       380           M-12         445    490    56
+  8000            34.78              32              585          350       380           M-12         490    235    64
+  9000            39.13              36              615          360       420           M-12         520    565    75
+ 10000            43.47              40              665          360       420           M-12         570    615    91
+ 11000            47.85              44              685          360       420           M-12         610    635   106
+In it refers to the nominal current of the variable autotransformers
+
+
+
+
+Double Variable Autotransformers (Manual Control)
+
+          160 VA x 2 – 4000 VA x 2                              Entrada/Input 230V Salida/Output 230/250V
+                      In 230            In 250
+     VA                                                   A             B     C       D          E      F     G     Kg
+                        (A)               (A)
+   160x2               0.7x2            0.64x2           90         180      50       6           75   M-5     92    2.9
+   220x2              0.9 x2            0.88x2           90         180      50       6           75   M-5    100    3.7
+   350x2             1.52x2              1.4x2          120         215      70       6          100   M-6    130    6.3
+  350*x2             1.52x2              1.4x2           90         180      50       6           75   M-5     92     4
+   500x2              2.17x2              2x2           120         220      70       6          100   M-6    130    6.9
+  500*x2              2.17x2              2x2            90         180      50       6           75   M-5     92    4.5
+   750x2              3.26x2              3x2           120         240      70       6          100   M-6    130    7.7
+  1000x2              4.34x2              4x2           120         260      70       6          100   M-6    130     9
+  1250x2              5.43x2              5x2           135         215      70       6          112   M-6    140   10.7
+  1500x2              6.52x2              6x2           165         245      70       8          135   M-6    175   13.7
+  2000x2             8.69x2               8x2           165          25      70       8          135   M-6    175   15.6
+  2500x2             10.86x2             10x2           200         312      70       8          170   M-8    230   23.3
+  3000x2             13.04x2             12x2           235         335      70       8         195    M-8    242    30
+  4000x2             17.39x2             16x2           285         365      90       8          255   M-8    295    41
+*Limited dimensions In it refers to the nominal current of the variable autotransformers.
+
+
+
+
+                 5000 VA x 2 – 11000 VA x 2                                       Input 230V Output 230/250V
+                    In 230           In 250
+    VA                                                A            B        C        D          E       F      G     H     Kg
+                     (A)               (A)
+  5000x2           21.73x2            20x2           380         365        90       10         255    M-8    320   255     50
+  6000x2           26.01x2            24x2           520         460        155      12         380    M-10   430   470     80
+  7000x2           30.43x2            28x2           540         460        155      12         380    M-10   445   490    102
+  8000x2           34.78x2            32x2           585         460        155      12         380    M-10   490   535    115
+  9000x2           39.13x2            36x2           615         480        165      12         420    M-10   520   565    140
+ 10000x2           43.47x2            40x2           665         480        165      15         420    M-12   570   615    182
+ 11000x2           47.85x2            44x2           685         480        165      15         420    M-12   610   635    212
+In it refers to the nominal current of the variable autotransformers.
+
+
+
+
+                                                                                                                            5
+

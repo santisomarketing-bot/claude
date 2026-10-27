@@ -1,0 +1,540 @@
+{
+ "file": "data/raw/html/es/shop.html",
+ "lang": "es",
+ "url": "https://grupotorivac.com/en/shop/",
+ "title": "Productos archivo - Torivac",
+ "meta_description": null,
+ "og_title": "Productos archivo - Torivac",
+ "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/Diseno-sin-titulo-73.png",
+ "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+ "hreflang": {
+  "en": "/shop/",
+  "fr": "/shop/",
+  "es": "/shop/",
+  "de": "/shop/",
+  "x-default": "/shop/"
+ },
+ "body_classes": [
+  "archive",
+  "post-type-archive",
+  "post-type-archive-product",
+  "wp-custom-logo",
+  "wp-theme-betheme",
+  "wp-child-theme-betheme-child",
+  "theme-betheme",
+  "woocommerce-shop",
+  "woocommerce",
+  "woocommerce-page",
+  "woocommerce-no-js",
+  "ehf-footer",
+  "ehf-template-betheme",
+  "ehf-stylesheet-betheme-child",
+  "with_aside",
+  "aside_right",
+  "color-custom",
+  "style-simple",
+  "button-flat",
+  "layout-full-width",
+  "if-zoom",
+  "if-border-hide",
+  "no-shadows",
+  "header-classic",
+  "header-fw",
+  "sticky-header",
+  "sticky-tb-color",
+  "ab-hide",
+  "subheader-both-center",
+  "menu-link-color",
+  "menuo-no-borders",
+  "mobile-tb-center",
+  "mobile-mini-mr-ll",
+  "tablet-sticky",
+  "mobile-header-mini",
+  "mobile-sticky",
+  "be-reg-2199",
+  "elementor-page-15666",
+  "elementor-default",
+  "elementor-template-full-width",
+  "elementor-kit-6"
+ ],
+ "outline": [
+  {
+   "level": 3,
+   "text": "Sin categorizar"
+  },
+  {
+   "level": 3,
+   "text": "Bobinas encapsuladas"
+  },
+  {
+   "level": 3,
+   "text": "Botones de mando"
+  },
+  {
+   "level": 3,
+   "text": "Botones de mando y accesorios"
+  },
+  {
+   "level": 3,
+   "text": "Choques | Inductancias | Reactancias toroidales"
+  },
+  {
+   "level": 3,
+   "text": "Equipos electrónicos"
+  },
+  {
+   "level": 3,
+   "text": "Estabilizadores de tensión"
+  },
+  {
+   "level": 3,
+   "text": "Hembrillas"
+  },
+  {
+   "level": 3,
+   "text": "Nucleos"
+  },
+  {
+   "level": 3,
+   "text": "Portaled"
+  },
+  {
+   "level": 3,
+   "text": "Reostatos y potenciómetros bobinados"
+  },
+  {
+   "level": 3,
+   "text": "Resistencias | Bancos de carga"
+  },
+  {
+   "level": 3,
+   "text": "Transformadores"
+  },
+  {
+   "level": 3,
+   "text": "Variadores de tensión - Autotransformadores regulables"
+  },
+  {
+   "level": 3,
+   "text": "Productos"
+  }
+ ],
+ "text": "Sin categorizar\nBobinas encapsuladas\nLas bobinas para electroimanes, encapsuladas en resina de epóxi, disponen de una alta rigidez dieléctrica y un aprovechamiento…\nBotones de mando\nComplementando nuestro catálogo, podemos ofrecer una amplia gama de componentes auxiliares para múltiples utilidades. Componentes de fabricación propia…\nBotones de mando y accesorios\n[vc_row][vc_column][vc_raw_html]JTNDaDUlMjBzdHlsZSUzRCUyMmNvbG9yJTNBJTIzQkE2QjFFJTNCJTIwZm9udC1mYW1pbHklM0ElMjBzYW5kYm94JTNCJTIyJTNFUFJPRFVDVE9TJTIwUFJPRkVTSU9OQUxFUyUzQyUyRmg1JTNFJTBBJTNDaW1nJTIwc3JjJTNEJTIyaHR0cHMlM0ElMkYlMkZ0b3JpdmFjLnNhbnRpc29tYXJrZXRpbmcuY29tJTJGd3AtY29udGVudCUyRnVwbG9hZHMlMkYyMDIyJTJGMDQlMkZsaW5lYXlwdW50b19vc2N1cmEucG5nJTIyJTIwJTJGJTNFJTBBJTNDaDIlM0VCb3RvbmVzJTIwZGUlMjBNYW5kbyUyMHklMjBBY2Nlc29yaW9zJTNDJTJGaDIlM0UlMEElM0NwJTNFRWwlMjB2YXJpYWRvciUyMGRlJTIwdGVuc2klQzMlQjNuJTIwdG9yb2lkYWwlMjBvJTIwYXV0b3RyYW5zZm9ybWFkb3IlMjByZWd1bGFibGUlMjBlcyUyMHVuJTIwZWxlbWVudG8lMjBiJUMzJUExc2ljbyUyMHNpJTIwZGVzZWFtb3MlMjByZWd1bGFyJTIwdW5hJTIwdGVuc2klQzMlQjNuJTIwYWx0ZXJuYSUyQyUyMHZhcmlhYmxlJTJDJTIwZGVzZGUlMjBjZXJvJTIwaGFzdGElMjBlbCUyMG0lQzMlQTF4aW1vJTJDJTIwY29uJTIwdW5hJTIwaW50ZW5zaWRhZCUyMGNvbnN0YW50ZS4lM0MlMkZwJTNFJTBBJTBBJTNDcCUzRUxvcyUyMHZhcmlhZG9yZXMlMjBkZSUyMHRlbnNpJUMzJUIzbiUyMFRPUklWQUMlMkMlMjBzZSUyMGNhcmFjdGVyaXphbiUyMHBvciUyMHN1JTIwcm9idXN0ZXolMjBtZWMlQzMlQTFuaWNhJTIweSUyMHN1JTIwYWx0YSUyMHJlc29sdWNpJUMzJUIzbiUyMHF1ZSUyMHBlcm1pdGUlMjBhanVzdGVzJTIwbXV5JTIwcHJlY2lzb3MlMjBkZSUyMHRlbnNpJUMzJUIzbiUyMHklMjBwb3IlMjBsYSUyMGFsdGElMjBjYWxpZGFkJTIwZGUlMjB0b2RvcyUyMGxvcyUyMG1hdGVyaWFsZXMlMjB1dGlsaXphZG9zJTIwZW4lMjBzdSUyMGZhYnJpY2FjaSVDMyVCM24uJTNDJTJGcCUzRSUwQSUwQSUzQ3AlM0VFc3RvcyUyMGRldGFsbGVzJTJDJTIwanVudG8lMjBhbCUyMGNvbnRyb2wlMjBkZWwlMjAxMDAlMjUlMjBkZSUyMHRvZG9zJTIwbG9zJTIwdmFyaWFkb3JlcyUyMG5vcyUyMHBlcm1pdGVuJTIwb2ZyZWNlciUyMHVuYSUyMGZpYWJpbGlkYWQlMjByZWNvbm9jaWRhJTIwcG9yJTIwbG9zJTIwY2xpZW50ZXMlMjBtJUMzJUExcyUyMGV4aWdlbnRlcy4lM0MlMkZwJTNF[/vc_raw_html]\n[/vc_column][/vc_row]\nChoques | Inductancias | Reactancias toroidales\nUn choque es un inductor diseñado para tener una reactancia muy alta a una frecuencia o rango de…\nEquipos electrónicos\nContamos con un departamento de ingeniería propio que le ayudará a llevar a cabo sus proyectos mas ambiciosos.\nEstabilizadores de tensión\nEstabilizadores de tensión o también denominados reguladores de tensión o voltaje. Pueden ser electrónicos y electromecánicos con servomotor,…\nHembrillas\nHembrillas de seguridad de fabricación propia, asegurando la más alta calidad.\nNucleos\nLos núcleos toroidales son componentes magnéticos esenciales en una amplia variedad de aplicaciones electrónicas e industriales. Su diseño…\nPortaled\nEstos soportes metálicos para LED están formados por un cuerpo de latón o duraluminio, bañado en níquel, cromo…\nReostatos y potenciómetros bobinados\nLos potenciómetros y reóstatos fabricados por Torivac son componentes esenciales para la regulación precisa de tensión y corriente…\nResistencias | Bancos de carga\nDisponemos de una gama de productos que va de 50W a 200K W, estándares o hechas a medida…\nTransformadores\nEl mercado europeo de transformadores ha experimentado un importante desarrollo en la última década, impulsado por la creciente…\nVariadores de tensión - Autotransformadores regulables\nTorivac diseña y fabrica variadores de tensión y de regulación continua orientados al control preciso, seguro y fiable…\n\nProductos-Torivac\n\n×\n\nProductos\n\nTransformadores\n\n+\n\nTransformador convencional\n\nTransformadores toroidales\n\nVariadores de tensión - Autotransformadores regulables\n\n+\n\nAccesorios de regulación\n\nEquipos de sobremesa\n\nFabricación a medida\n\nVariador Doble\n\nVariadores Monofasicos\n\nVariadores Trifásicos\n\nEstabilizadores de tensión\n\n+\n\nEstabilizadores Serie AVS: electromecánicos con servomotor\n\nSerie BAVS: Electrónicos\n\nReostatos y potenciómetros bobinados\n\n+\n\nPotenciometros\n\nReóstatos cerámicos\n\nBobinas encapsuladas\n\n+\n\nCuadradas\n\nRedondas\n\nChoques | Inductancias | Reactancias toroidales\n\n+\n\nNucleos\n\n+\n\nPortaled\n\n+\n\nled 10mm\n\nled 3mm\n\nled 5mm\n\nled 8mm\n\nHembrillas\n\n+\n\nHembrilla de seguridad HBS4\n\nhembrilla de seguridad HR4\n\nHembrilla de seguridad HSR4\n\nHembrilla HB4\n\nBotones de mando\n\n+\n\nAros con flecha\n\nBotones de mando serie BM (Mate)\n\nBotones de mando serie BO (brillante)\n\nBotones de mando Serie BO con linea\n\nCaratulas graduadas\n\nCubretercas\n\nDiscos Flecha\n\nDiscos graduados\n\nEstators\n\nTapas Serie BM\n\nTapas serie BO\n\nResistencias | Bancos de carga\n\n+\n\nBancos de carga\n\nCementadas\n\nEn caja\n\nHelicoidales\n\nResistencias de arranque\n\nResistencias de frenado\n\nResistencias de puesta a tierra\n\nEquipos electrónicos\n\n+\n\nControl industrial\n\nConvertidores\n\nEnergias renovables\n\nFuente de alimentación CA\n\nFuentes de alimentación CC",
+ "text_chars": 4718,
+ "tables": [],
+ "links": [
+  {
+   "text": "Sin categorizar",
+   "href": "https://grupotorivac.com/categoria-producto/sin-categorizar/"
+  },
+  {
+   "text": "Bobinas encapsuladas Las bobinas para electroimanes, encapsuladas en resina de epóxi, disponen de una alta rigidez dielé",
+   "href": "https://grupotorivac.com/categoria-producto/bobinas-encapsuladas/"
+  },
+  {
+   "text": "Botones de mando Complementando nuestro catálogo, podemos ofrecer una amplia gama de componentes auxiliares para múltipl",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/"
+  },
+  {
+   "text": "Botones de mando y accesorios [vc_row][vc_column][vc_raw_html]JTNDaDUlMjBzdHlsZSUzRCUyMmNvbG9yJTNBJTIzQkE2QjFFJTNCJTIwZm",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando-y-accesorios/"
+  },
+  {
+   "text": "Choques | Inductancias | Reactancias toroidales Un choque es un inductor diseñado para tener una reactancia muy alta a u",
+   "href": "https://grupotorivac.com/categoria-producto/choques/"
+  },
+  {
+   "text": "Equipos electrónicos Contamos con un departamento de ingeniería propio que le ayudará a llevar a cabo sus proyectos mas ",
+   "href": "https://grupotorivac.com/categoria-producto/electronica/"
+  },
+  {
+   "text": "Estabilizadores de tensión Estabilizadores de tensión o también denominados reguladores de tensión o voltaje. Pueden ser",
+   "href": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/"
+  },
+  {
+   "text": "Hembrillas Hembrillas de seguridad de fabricación propia, asegurando la más alta calidad.",
+   "href": "https://grupotorivac.com/categoria-producto/hembrillas/"
+  },
+  {
+   "text": "Nucleos Los núcleos toroidales son componentes magnéticos esenciales en una amplia variedad de aplicaciones electrónicas",
+   "href": "https://grupotorivac.com/categoria-producto/nucleos/"
+  },
+  {
+   "text": "Portaled Estos soportes metálicos para LED están formados por un cuerpo de latón o duraluminio, bañado en níquel, cromo…",
+   "href": "https://grupotorivac.com/categoria-producto/portaled/"
+  },
+  {
+   "text": "Reostatos y potenciómetros bobinados Los potenciómetros y reóstatos fabricados por Torivac son componentes esenciales pa",
+   "href": "https://grupotorivac.com/categoria-producto/reostatos-y-potenciometros-bobinados/"
+  },
+  {
+   "text": "Resistencias | Bancos de carga Disponemos de una gama de productos que va de 50W a 200K W, estándares o hechas a medida…",
+   "href": "https://grupotorivac.com/categoria-producto/resistencias/"
+  },
+  {
+   "text": "Transformadores El mercado europeo de transformadores ha experimentado un importante desarrollo en la última década, imp",
+   "href": "https://grupotorivac.com/categoria-producto/transformadores/"
+  },
+  {
+   "text": "Variadores de tensión - Autotransformadores regulables Torivac diseña y fabrica variadores de tensión y de regulación co",
+   "href": "https://grupotorivac.com/categoria-producto/variadores-de-tension/"
+  },
+  {
+   "text": "Transformadores",
+   "href": "https://grupotorivac.com/categoria-producto/transformadores/"
+  },
+  {
+   "text": "Transformador convencional",
+   "href": "https://grupotorivac.com/categoria-producto/transformadores/transformador-convencional/"
+  },
+  {
+   "text": "Transformadores toroidales",
+   "href": "https://grupotorivac.com/categoria-producto/transformadores/transformadores-toroidales-transformadores/"
+  },
+  {
+   "text": "Variadores de tensión - Autotransformadores regulables",
+   "href": "https://grupotorivac.com/categoria-producto/variadores-de-tension/"
+  },
+  {
+   "text": "Accesorios de regulación",
+   "href": "https://grupotorivac.com/categoria-producto/variadores-de-tension/accesorios-de-regulacion/"
+  },
+  {
+   "text": "Equipos de sobremesa",
+   "href": "https://grupotorivac.com/categoria-producto/variadores-de-tension/en-caja/"
+  },
+  {
+   "text": "Fabricación a medida",
+   "href": "https://grupotorivac.com/categoria-producto/variadores-de-tension/fabricacion-a-media/"
+  },
+  {
+   "text": "Variador Doble",
+   "href": "https://grupotorivac.com/categoria-producto/variadores-de-tension/dobles/"
+  },
+  {
+   "text": "Variadores Monofasicos",
+   "href": "https://grupotorivac.com/categoria-producto/variadores-de-tension/monofasico/"
+  },
+  {
+   "text": "Variadores Trifásicos",
+   "href": "https://grupotorivac.com/categoria-producto/variadores-de-tension/trifasico/"
+  },
+  {
+   "text": "Estabilizadores de tensión",
+   "href": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/"
+  },
+  {
+   "text": "Estabilizadores Serie AVS: electromecánicos con servomotor",
+   "href": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/serie-avs/"
+  },
+  {
+   "text": "Serie BAVS: Electrónicos",
+   "href": "https://grupotorivac.com/categoria-producto/estabilizadores-de-tension/serie-bavs/"
+  },
+  {
+   "text": "Reostatos y potenciómetros bobinados",
+   "href": "https://grupotorivac.com/categoria-producto/reostatos-y-potenciometros-bobinados/"
+  },
+  {
+   "text": "Potenciometros",
+   "href": "https://grupotorivac.com/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/"
+  },
+  {
+   "text": "Reóstatos cerámicos",
+   "href": "https://grupotorivac.com/categoria-producto/reostatos-y-potenciometros-bobinados/ceramicos/"
+  },
+  {
+   "text": "Bobinas encapsuladas",
+   "href": "https://grupotorivac.com/categoria-producto/bobinas-encapsuladas/"
+  },
+  {
+   "text": "Cuadradas",
+   "href": "https://grupotorivac.com/categoria-producto/bobinas-encapsuladas/cuadradas/"
+  },
+  {
+   "text": "Redondas",
+   "href": "https://grupotorivac.com/categoria-producto/bobinas-encapsuladas/redondas/"
+  },
+  {
+   "text": "Choques | Inductancias | Reactancias toroidales",
+   "href": "https://grupotorivac.com/categoria-producto/choques/"
+  },
+  {
+   "text": "Nucleos",
+   "href": "https://grupotorivac.com/categoria-producto/nucleos/"
+  },
+  {
+   "text": "Portaled",
+   "href": "https://grupotorivac.com/categoria-producto/portaled/"
+  },
+  {
+   "text": "led 10mm",
+   "href": "https://grupotorivac.com/categoria-producto/portaled/led-10mm/"
+  },
+  {
+   "text": "led 3mm",
+   "href": "https://grupotorivac.com/categoria-producto/portaled/led-3mm/"
+  },
+  {
+   "text": "led 5mm",
+   "href": "https://grupotorivac.com/categoria-producto/portaled/led-5mm/"
+  },
+  {
+   "text": "led 8mm",
+   "href": "https://grupotorivac.com/categoria-producto/portaled/led-8mm/"
+  },
+  {
+   "text": "Hembrillas",
+   "href": "https://grupotorivac.com/categoria-producto/hembrillas/"
+  },
+  {
+   "text": "Hembrilla de seguridad HBS4",
+   "href": "https://grupotorivac.com/categoria-producto/hembrillas/hembrilla-de-seguridad-hbs4/"
+  },
+  {
+   "text": "hembrilla de seguridad HR4",
+   "href": "https://grupotorivac.com/categoria-producto/hembrillas/hembrilla-de-seguridad-hr4/"
+  },
+  {
+   "text": "Hembrilla de seguridad HSR4",
+   "href": "https://grupotorivac.com/categoria-producto/hembrillas/hembrilla-de-seguridad-hsr4/"
+  },
+  {
+   "text": "Hembrilla HB4",
+   "href": "https://grupotorivac.com/categoria-producto/hembrillas/hembrilla-hb4/"
+  },
+  {
+   "text": "Botones de mando",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/"
+  },
+  {
+   "text": "Aros con flecha",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/aros-con-flecha/"
+  },
+  {
+   "text": "Botones de mando serie BM (Mate)",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/botones-de-mando-serie-bm-mate/"
+  },
+  {
+   "text": "Botones de mando serie BO (brillante)",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-brillante/"
+  },
+  {
+   "text": "Botones de mando Serie BO con linea",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-con-linea/"
+  },
+  {
+   "text": "Caratulas graduadas",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/caratulas-graduadas/"
+  },
+  {
+   "text": "Cubretercas",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/cubretercas/"
+  },
+  {
+   "text": "Discos Flecha",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/discos-flecha/"
+  },
+  {
+   "text": "Discos graduados",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/discos-graduados/"
+  },
+  {
+   "text": "Estators",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/estators/"
+  },
+  {
+   "text": "Tapas Serie BM",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/tapas-serie-bm/"
+  },
+  {
+   "text": "Tapas serie BO",
+   "href": "https://grupotorivac.com/categoria-producto/botones-de-mando/tapas-serie-bo/"
+  },
+  {
+   "text": "Resistencias | Bancos de carga",
+   "href": "https://grupotorivac.com/categoria-producto/resistencias/"
+  },
+  {
+   "text": "Bancos de carga",
+   "href": "https://grupotorivac.com/categoria-producto/resistencias/bancos-de-carga/"
+  },
+  {
+   "text": "Cementadas",
+   "href": "https://grupotorivac.com/categoria-producto/resistencias/cementadas/"
+  },
+  {
+   "text": "En caja",
+   "href": "https://grupotorivac.com/categoria-producto/resistencias/en-caja-resistencias/"
+  },
+  {
+   "text": "Helicoidales",
+   "href": "https://grupotorivac.com/categoria-producto/resistencias/helicoidales/"
+  },
+  {
+   "text": "Resistencias de arranque",
+   "href": "https://grupotorivac.com/categoria-producto/resistencias/resistencias-de-arranque/"
+  },
+  {
+   "text": "Resistencias de frenado",
+   "href": "https://grupotorivac.com/categoria-producto/resistencias/resistencias-de-frenado/"
+  },
+  {
+   "text": "Resistencias de puesta a tierra",
+   "href": "https://grupotorivac.com/categoria-producto/resistencias/resistencias-de-puesta-a-tierra/"
+  },
+  {
+   "text": "Equipos electrónicos",
+   "href": "https://grupotorivac.com/categoria-producto/electronica/"
+  },
+  {
+   "text": "Control industrial",
+   "href": "https://grupotorivac.com/categoria-producto/electronica/control-industrial/"
+  },
+  {
+   "text": "Convertidores",
+   "href": "https://grupotorivac.com/categoria-producto/electronica/convertidores/"
+  },
+  {
+   "text": "Energias renovables",
+   "href": "https://grupotorivac.com/categoria-producto/electronica/energias-renovables/"
+  },
+  {
+   "text": "Fuente de alimentación CA",
+   "href": "https://grupotorivac.com/categoria-producto/electronica/fuente-de-alimentacion-ca/"
+  },
+  {
+   "text": "Fuentes de alimentación CC",
+   "href": "https://grupotorivac.com/categoria-producto/electronica/fuentes-de-alimentacion-cc/"
+  }
+ ],
+ "pdf_links": [],
+ "images": [
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Eliminar-fondo-1-300x300.png",
+   "alt": "Bobinas encapsuladas"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2-300x300.jpg",
+   "alt": "Botones de mando"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/tapas-para-boton-bm-300x300.png",
+   "alt": "Botones de mando y accesorios"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/choque_toroidal-300x300.png",
+   "alt": "Choques | Inductancias | Reactancias toroidales"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-300x225.jpg",
+   "alt": "Equipos electrónicos"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/04/trifasico-servomotor-optimized-300x300.webp",
+   "alt": "Estabilizadores de tensión"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/hembrilla-banana-hr4-torivac-300x300.png",
+   "alt": "Hembrillas"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/03/B7T3102-300x300.png",
+   "alt": "Nucleos"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-8mm-300x300.png",
+   "alt": "Portaled"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/reostato-ceramico-torivac-300x300.jpg",
+   "alt": "Reostatos y potenciómetros bobinados"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2023/05/resistencia-300x300.jpg",
+   "alt": "Resistencias | Bancos de carga"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/03/TRAFO-TOROIDAL-300x300-1.png",
+   "alt": "Transformadores"
+  },
+  {
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen-259x300.jpeg",
+   "alt": "Variadores de tensión - Autotransformadores regulables"
+  }
+ ],
+ "forms": [
+  {
+   "action": "https://grupotorivac.com/",
+   "method": "get",
+   "id": "searchform",
+   "class": null,
+   "fields": [
+    {
+     "name": "s",
+     "type": "text",
+     "placeholder": "Busar",
+     "required": false
+    }
+   ]
+  }
+ ],
+ "menus": [
+  {
+   "aria": null,
+   "items": [
+    {
+     "text": "INICIO",
+     "href": "https://grupotorivac.com/"
+    },
+    {
+     "text": "TORIVAC EMPRESA",
+     "href": "https://grupotorivac.com/torivac-empresa/"
+    },
+    {
+     "text": "PRODUCTOS",
+     "href": "https://grupotorivac.com/productos/"
+    },
+    {
+     "text": "PROYECTOS COMERCIALES TORIVAC",
+     "href": "https://grupotorivac.com/proyectos-empresariales/"
+    },
+    {
+     "text": "CATALOGO",
+     "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024.pdf"
+    },
+    {
+     "text": "BLOG",
+     "href": "https://grupotorivac.com/blog/"
+    },
+    {
+     "text": "CONTACTO",
+     "href": "https://grupotorivac.com/contacto/"
+    },
+    {
+     "text": "English",
+     "href": "https://grupotorivac.com/shop/"
+    },
+    {
+     "text": "Français",
+     "href": "https://grupotorivac.com/shop/"
+    },
+    {
+     "text": "Español",
+     "href": "https://grupotorivac.com/shop/"
+    },
+    {
+     "text": "Deutsch",
+     "href": "https://grupotorivac.com/shop/"
+    }
+   ]
+  }
+ ],
+ "tracking_ids": [
+  "G-QXLKHV4Y7X",
+  "GTM-K93FKL89"
+ ],
+ "json_ld_types": [
+  null
+ ]
+}

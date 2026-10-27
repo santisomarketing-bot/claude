@@ -1,0 +1,63 @@
+WIRE WOUND POTENTIOMETERS
+& CERAMIC RHEOSTATS
+
+
+
+
+CERAMIC RHEOSTATS (Potentiometers)
+
+Our heavy potentiometers and rheostats are made in the following
+powers : 15-30-40-60-80-125-250-500 and 1000 Watts.
+These nominal powers are applicable in good conditions of
+ventilation. If the installation becomes in closets or closed boxes,
+where ventilation is insuﬃcient these powers are due to reduce
+until about 20%.
+The ceramic core is made of hard non hygroscopic steatite, thus
+avoiding corrosion due to electrolysis. The core is wound with high
+quality copper-nickel or chrome-aluminium wire, according to the
+required ohmic value and power of the winding.
+Each turn of the winding is hold ﬁrmly in place and protected
+against mechanical damages, by a hard, heat-resistant ceramic
+cement.
+This cement coating which resists 900ºC has a fast heat
+dissipation due to its good heat conductivity and matt radiating
+surface.
+The slider is a ﬁne-silver brush, according to the requirements.
+Besides linear windings, to order we can wind multi/sections
+windings, according to customer's needs or speciﬁcations, in order
+to provide a non-linear response.
+
+
+
+
+             POTENCIA                                                               PESO (KG.)     GAMA DE VALORES
+                             A       B      C      D     d     R        G     L
+              POWER                                                                 WEIGHT (KG.)    OHMIC VALUES
+                PC12         25      8     10      32    6    M-10     290º   25       0,028           5Ω – 10kΩ
+
+                PC25         35      8     38      45    6    M-10     280º   30       0,125           5Ω – 20kΩ
+
+                PC35         40     12     32      55    6    M-10     278º   35       0,140           5Ω – 25kΩ
+
+                PC50         40     12     37      65    6    M-10     310º   41       0,150           5Ω – 25kΩ
+
+                PC75         43     12     37      73    6    M-10     317º   45       0,200           5Ω – 25kΩ
+
+               PC125         60     12     18      87    6    M-10     302º   53       0,360           5Ω – 15kΩ
+
+               PC250         60     12     18     117    6    M-10     314º   70       0,535           5Ω – 15kΩ
+
+               PC500         86     12     36     144    8    M-12     310º   85       1,225           5Ω – 10kΩ
+
+               PC1000       103     10     54     205    8     (1)     320º   115      2,700           3Ω – 10kΩ
+
+
+
+
+                  (1)
+         Anclaje Mod. PC-1000
+
+
+
+                                                                       30
+

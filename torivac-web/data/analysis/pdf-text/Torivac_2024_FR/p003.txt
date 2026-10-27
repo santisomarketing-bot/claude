@@ -1,0 +1,73 @@
+AUTOTRANSFORMATEURS VARIABLES
+
+
+
+
+SPÉCIFICATIONS TECHNIQUES
+
+L'autotransformateur variable est principalement constitué d'un noyau
+toroïdal fabriqué à l'aide d’un feuillard magnétique à très faible perte et                                 80
+à haute perméabilité, bobiné à un angle d'env. 340o. La piste de contact                                    70
+est composée d'une bobine bobinée de manière uniforme, polie et                                             60
+traitée avec un bain d'argent pour améliorer le contact avec un curseur
+                                                                                                            50
+en graphite. Ce traitement permet de réduire la résistance de contact et
+la rouille du cuivre, ce qui prolonge la durée de vie de                           ∆ºC                      40
+l'autotransformateur variable.                                                                              30
+Les facteurs suivants contribuent            à   l'eﬃcacité    de    notre                                  20
+autotransformateur et à sa durabilité:
+                                                                                                                 0        1         2        3      4
+* Un nombre élevé de tours par volt, ce qui nous permet de déﬁnir des
+valeurs de tension extrêmement précises.                                                                                           Horas
+* Le moulage en résine époxy permet une meilleure dissipation de la                                                                               Fig.2
+chaleur, en évitant sa concentration au point de contact des charbons
+(comme cela se produit avec l’autotransfo variable non moulé) et en
+plus, il protège l’autotransformateur variable des agressions
+                                                                                                           130
+environnementales et de certains facteurs environnements nuisibles.
+                                                                                    I.max. En % de la In   125
+* Les contacts de frottement intérieurs et extérieurs sont
+généreusement conçus pour dissiper le maximum de chaleur possible                                          120
+avec un minimum d'usure.                                                                                   115
+* Les ﬁn de courses et les butées mécaniques ont tous deux été soumis                                      110
+à des tests de résistance mécanique garantissant leur eﬃcacité dans les                                    105
+diﬀérentes applications pour lesquelles ils sont utilisés.
+                                                                                                           100
+* L’autotransformateur à tension variable toroïdale ne déforme pas le
+signal sinusoïdal.                                                                                          95
+* L'augmentation des parties externes non métalliques varie entre 45 °C                                          0   20       40        60   80   100
+et 60 °C, au-dessus de la température ambiante à pleine charge (Fig. 2).
+Néanmoins, il existe de nombreux moyens de réduire cette                                                                      % Recorrido
+                                                                                                                                                  Fig.3
+température, tels qu'un bain d'huile, un refroidissement par
+ventilateur. Ces systèmes sont généralement utilisés dans les variateurs
+de forte puissance.
+* Les autotransformateurs variables permettent d’ajuster la tension
+sans dépasser le courant nominal, sauf au début et à la ﬁn de la plage
+qui peut être dépassée de 22% maximum, comme le montre le                     MAGNETIC CHARACTERISTICS
+graphique de la ﬁgure 3.
+                                                                              Le noyau toroïdal est fabriqué en utilisant un feuillard magnétique
+                                                                              de haute qualité, à très faible perte et à haut rendement, et est
+                                                                              soumis à un traitement thermique pour atteindre une capacité
+       350                                                                    d'induction de 15 000 - 16 000 Gauss.
+       300                                                                    Sur la ﬁgure 4, nous pouvons observer que la courbe de saturation
+                                                                              d'un autotransformateur variable correspond à environ 15% de la
+       250                                                                    tension nominale du transformateur, dans l'hypothèse d'une
+       200                                                                    tension d'entrée de 230V.
+  V    150                                                                    Dans l'autotransformateur variable toroïdal, le ﬂux magnétique
+       100                                                                    est concentré de manière uniforme dans le noyau et, en l'absence
+        50                                                                    de pièces métalliques intermédiaires, les vibrations sont éliminées.
+                                                                              De plus, comme le bobinage est réparti sur toute la surface du
+         0
+                                                                              noyau, le bruit causé par la magnétostriction disparaît quasiment
+             0        100       200        300       400                      et la dissipation de chaleur est favorisée, ce qui améliore le
+                                                                              rendement.
+                                mA               Fig. 4                       Les autotransformateurs variables fabriqués par Torivac sont
+                                                                              conçus pour fonctionner à 50/60 Hz, même si la qualité du
+                                                                              feuillard magnétique utilisé et le traitement thermique auquel
+                                                                              nous soumettons nos autrotransfos permettent un
+                                                                              fonctionnement à des fréquences proches de 400 Hz, en tenant
+                                                                              compte du fai
+
+                                                                       2
+

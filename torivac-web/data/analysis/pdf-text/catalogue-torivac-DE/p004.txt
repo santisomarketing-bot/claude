@@ -1,0 +1,57 @@
+SPANNUNGSREGLERN
+
+
+
+
+  ANWENDUNGSBEREICHE
+
+Spannungsregler werden eingesetzt, um die
+Spannung von 0 Volt bis zur maximalen Spannung,
+für die sie ausgelegt sind, zu regeln. Typische
+Anwendungen sind unter anderem folgende:
+* Variable Stromversorgung in Laboratorien.
+* Beleuchtungstechnik.
+* Geräte für die Durchschlagsfestigkeit.
+* Temperaturregelung mit ohmschen Lasten.
+* Galvanische Regelung.
+* Fernsteuerung mit motorisierten Geräten.
+* Drehzahlregelung von Elektromotoren.
+* Spannungsstabilisatoren.
+* Regelung von anderen festen
+Transformatoren.
+
+
+
+
+                                                      ARTEN DER REGULIERUNG
+
+                                                      MANUELLE REGULIERUNG
+                                                      Mittels eines Bedienknopfes auf der Welle des Reglers ,
+                                                      der es ermöglicht , auf die Bürste einzuwirken und die
+                                                      gewünschte Spannung zu erhalten . Wir verfügen über
+                                                      eine große Auswahl an Knöpfen und Einstellrädern mit %-
+                                                      oder Volt - Einteilung     , die für die verschiedenen
+                                                      Leistungen geeignet sind..
+
+                                                      MOTORISIERTE STEUERUNG
+                                                      Hauptsächlich für die Fernregelung von Geräten oder zur
+                                                      Stabilisierung    von Geräten verwendet . Auch die
+                                                      Spannungsregler für große Leistungen sind in der Regel
+                                                      motorisiert , weil sie so einfach zu bedienen sind . Bei
+                                                      dieser Art der Regelung wird die Welle des Variators
+                                                      durch einen Getriebemotor angetrieben , der über einen
+                                                      manuellen Schalter die Ausgangsspannung erhöht oder
+                                                      senkt.
+                                                      Die von TORIVAC montierten Motoren haben keine
+                                                      Trägheit, was sie ideal für die Fernsteuerung macht.
+                                                      Auf Anfrage können Modelle hergestellt werden , die
+                                                      durch eine elektronische Karte mit einer Genauigkeit von
+                                                      2 % stabilisiert  werden . Der Einbau dieser Platine
+                                                      ermöglicht     die Regelung   des Variators über ein
+                                                      Potentiometer oder ein kontinuierliches 0-10Vdc-Signal.
+
+
+
+
+                                                  3
+
