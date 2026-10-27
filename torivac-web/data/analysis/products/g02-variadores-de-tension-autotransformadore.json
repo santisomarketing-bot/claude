@@ -1,0 +1,1283 @@
+{
+ "group": "g02-variadores-de-tension-autotransformadore",
+ "products": [
+  {
+   "id_es": 294,
+   "slug": "a-medida-2",
+   "url_es": "https://grupotorivac.com/product/a-medida-2/",
+   "sku": "58923a85804f",
+   "names": {
+    "es": "Variador de tensión a medida",
+    "en": "Tailor-made voltage regulator",
+    "fr": "Régulateur de tension sur mesure",
+    "de": "Maßgeschneiderter Spannungsregler"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/a-medida-2/",
+    "en": "https://grupotorivac.com/en/product/a-medida-2/",
+    "fr": "https://grupotorivac.com/fr/product/a-medida-2/",
+    "de": "https://grupotorivac.com/de/product/a-medida-2/"
+   },
+   "ids": {
+    "es": 294,
+    "en": 15918,
+    "fr": 15884,
+    "de": 15886
+   },
+   "category_path_es": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Fabricación a medida"
+   ],
+   "categories_all_es": [
+    {
+     "id": 28,
+     "name": "Fabricación a medida",
+     "slug": "fabricacion-a-media"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Cada cliente es único, y por lo tanto hay matices o variaciones de productos estándar que precisan.\n\nEn TORIVAC hacemos adaptaciones de productos para que sea SU producto, desde un eje más largo para poder instalar el variador de tensión en el fondo de un armario, motorizaciones especiales en corriente continua o en trifásica, elementos de visualización concretos, tamaños especiales. Fijaciones adaptadas a su sistema etc.\n\nNo dude en consultarnos y le propondremos la solución óptima.",
+    "en": "Each customer is unique, and therefore there are nuances or variations of standard products that they require.\n\nIn TORIVAC we make adaptations of products to make it YOUR product, from a longer shaft to be able to install the voltage variator at the bottom of a cabinet, special motorizations in direct current or three-phase, specific display elements, special sizes. Fixings adapted to your system, etc.\n\nDo not hesitate to contact us and we will propose you the optimal solution.",
+    "fr": "Chaque client est unique et il existe donc des nuances ou des variations des produits standard dont il a besoin.\n\nChez TORIVAC, nous adaptons les produits pour en faire VOTRE produit, qu’il s’agisse d’un arbre plus long pour pouvoir installer le variateur de tension au fond d’une armoire, de motorisations spéciales en courant continu ou en triphasé, d’éléments d’affichage spécifiques, de tailles spéciales. Des fixations adaptées à votre système, etc.\n\nN’hésitez pas à nous contacter et nous vous proposerons la solution optimale.",
+    "de": "Jeder Kunde ist einzigartig, und daher gibt es Nuancen oder Variationen von Standardprodukten, die er benötigt.\n\nBei TORIVAC passen wir Produkte an, um es zu IHREM Produkt zu machen, von einer längeren Welle, um den Spannungsregler unten in einem Schrank installieren zu können, über spezielle Motorisierungen in Gleichstrom oder Drehstrom, spezifische Anzeigeelemente, Sondergrößen. An Ihr System angepasste Befestigungen, usw.\n\nZögern Sie nicht, uns zu kontaktieren und wir werden Ihnen die optimale Lösung vorschlagen."
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg",
+     "alt": {
+      "es": "Maßgeschneiderter Spannungsregler",
+      "en": "Maßgeschneiderter Spannungsregler",
+      "fr": "Maßgeschneiderter Spannungsregler",
+      "de": "Maßgeschneiderter Spannungsregler"
+     },
+     "id": 9561
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2025/01/controlador0-10.jpg",
+     "alt": {
+      "es": "Variador de tensión a medida",
+      "en": "Tailor-made voltage regulator",
+      "fr": "Régulateur de tension sur mesure",
+      "de": "Maßgeschneiderter Spannungsregler"
+     },
+     "id": 9114
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2025/01/trifasico-servomotor.jpg",
+     "alt": {
+      "es": "Variador de tensión a medida",
+      "en": "Tailor-made voltage regulator",
+      "fr": "Régulateur de tension sur mesure",
+      "de": "Maßgeschneiderter Spannungsregler"
+     },
+     "id": 9202
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Tailor-made voltage regulator",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Régulateur de tension sur mesure",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Maßgeschneiderter Spannungsregler",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Variador de tensión a medida - Torivac",
+     "meta_description": "Cada cliente es único, y por lo tanto hay matices o variaciones de productos estándar que precisan. Fabricado por Torivac.",
+     "og_title": "Variador de tensión a medida - Torivac",
+     "og_description": "Cada cliente es único, y por lo tanto hay matices o variaciones de productos estándar que precisan. Fabricado por Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg",
+     "modified": "2026-10-16T12:04:32",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Tailor-made voltage regulator - Torivac",
+     "meta_description": "Each customer is unique, and therefore there are nuances or variations of standard products that they require.",
+     "og_title": "Tailor-made voltage regulator - Torivac",
+     "og_description": "Each customer is unique, and therefore there are nuances or variations of standard products that they require.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg",
+     "modified": "2026-10-16T12:06:36",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Régulateur de tension sur mesure - Torivac",
+     "meta_description": "Chaque client est unique et il existe donc des nuances ou des variations des produits standard dont il a besoin.",
+     "og_title": "Régulateur de tension sur mesure - Torivac",
+     "og_description": "Chaque client est unique et il existe donc des nuances ou des variations des produits standard dont il a besoin.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg",
+     "modified": "2026-10-16T12:06:13",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "Maßgeschneiderter Spannungsregler - Torivac",
+     "meta_description": "Jeder Kunde ist einzigartig, und daher gibt es Nuancen oder Variationen von Standardprodukten, die er benötigt.",
+     "og_title": "Maßgeschneiderter Spannungsregler - Torivac",
+     "og_description": "Jeder Kunde ist einzigartig, und daher gibt es Nuancen oder Variationen von Standardprodukten, die er benötigt.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg",
+     "modified": "2026-10-16T12:06:14",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [],
+   "gaps": []
+  },
+  {
+   "id_es": 310,
+   "slug": "doble-manual",
+   "url_es": "https://grupotorivac.com/product/doble-manual/",
+   "sku": "0e113f234788",
+   "names": {
+    "es": "Variador Doble manual",
+    "en": "Double manual variator",
+    "fr": "Double variateur manuel",
+    "de": "Doppelter manueller Variator"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/doble-manual/",
+    "en": "https://grupotorivac.com/en/product/double-manual-variator/",
+    "fr": "https://grupotorivac.com/fr/product/double-variateur-manuel/",
+    "de": "https://grupotorivac.com/de/product/doppelter-manueller-variator/"
+   },
+   "ids": {
+    "es": 310,
+    "en": 16297,
+    "fr": 16298,
+    "de": 16299
+   },
+   "category_path_es": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variador Doble",
+    "Doble manual"
+   ],
+   "categories_all_es": [
+    {
+     "id": 44,
+     "name": "Doble manual",
+     "slug": "doble-manual"
+    },
+    {
+     "id": 33,
+     "name": "Variador Doble",
+     "slug": "dobles"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Por medio de un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada en cada momento.\n\nDependiendo de la tensión incorporamos bobina de compensación.\n\nVer ficha técnica",
+    "en": "By means of a control button, the shaft is actuated, which in turn allows the rotation of the graphite cursor by selecting the desired tension at all times.\n\nDepending on the tension, we incorporate a compensation coil.\n\nSee data sheet",
+    "fr": "L’axe est actionné au moyen d’un bouton de commande qui, à son tour, permet la rotation du chariot en graphite en sélectionnant la tension souhaitée à tout moment.\n\nEn fonction de la tension, nous incorporons une bobine de compensation.\n\nVoir la fiche technique",
+    "de": "Die Achse wird über einen Drehknopf bedient, der wiederum die Drehung des Graphitläufers ermöglicht, indem er die gewünschte Spannung zu einem bestimmten Zeitpunkt wählt.\n\nJe nach Spannung bauen wir eine Ausgleichsspule ein.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png",
+     "alt": {
+      "es": "Variador Doble manual",
+      "en": "Double manual variator",
+      "fr": "Double variateur manuel",
+      "de": "Doppelter manueller Variator"
+     },
+     "id": 1070
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/Variador-tension-doble-regulacion-manual.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Variador de tensión portatil\n- Accesorios de mando\n- Comunicación MODBUS\n- Variador Monofásico motorizado",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- MODBUS communication\n- Regulating accessories\n- Single-phase motorized inverter\n- Motorized three-phase inverter",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Accessoires de contrôle\n- Communication MODBUS\n- Accessoires de régulation\n- Inverseur motorisé triphasé",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Zubehör kontrollieren\n- MODBUS-Kommunikation\n- Dubbele gemotoriseerde variator\n- Einphasiger manueller Antrieb mit variabler Geschwindigkeit",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Variador Doble manual - Torivac",
+     "meta_description": "Por medio de un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión.",
+     "og_title": "Variador Doble manual - Torivac",
+     "og_description": "Por medio de un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png",
+     "modified": "2026-10-16T12:04:35",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Double manual variator - Torivac",
+     "meta_description": "By means of a control button, the shaft is actuated, which in turn allows the rotation of the graphite cursor by selecting the desired tension.",
+     "og_title": "Double manual variator - Torivac",
+     "og_description": "By means of a control button, the shaft is actuated, which in turn allows the rotation of the graphite cursor by selecting the desired tension.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png",
+     "modified": "2026-10-16T12:06:48",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Double variateur manuel - Torivac",
+     "meta_description": "L'axe est actionné au moyen d'un bouton de commande qui, à son tour, permet la rotation du chariot en graphite en sélectionnant la tension souhaitée.",
+     "og_title": "Double variateur manuel - Torivac",
+     "og_description": "L'axe est actionné au moyen d'un bouton de commande qui, à son tour, permet la rotation du chariot en graphite en sélectionnant la tension souhaitée.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png",
+     "modified": "2026-10-16T12:06:48",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "Doppelter manueller Variator - Torivac",
+     "meta_description": "Die Achse wird über einen Drehknopf bedient, der wiederum die Drehung des Graphitläufers ermöglicht.",
+     "og_title": "Doppelter manueller Variator - Torivac",
+     "og_description": "Die Achse wird über einen Drehknopf bedient, der wiederum die Drehung des Graphitläufers ermöglicht.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png",
+     "modified": "2026-10-16T12:06:49",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [],
+   "gaps": []
+  },
+  {
+   "id_es": 308,
+   "slug": "doble-motorizado",
+   "url_es": "https://grupotorivac.com/product/doble-motorizado/",
+   "sku": "4e6209352a32",
+   "names": {
+    "es": "Variador Doble motorizado",
+    "en": "Dual motorized variator",
+    "fr": "Double inverseur motorisé",
+    "de": "Dubbele gemotoriseerde variator"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/doble-motorizado/",
+    "en": "https://grupotorivac.com/en/product/dual-motorized-variator/",
+    "fr": "https://grupotorivac.com/fr/product/double-inverseur-motorise/",
+    "de": "https://grupotorivac.com/de/product/doble-motorizado/"
+   },
+   "ids": {
+    "es": 308,
+    "en": 16300,
+    "fr": 16301,
+    "de": 16302
+   },
+   "category_path_es": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variador Doble",
+    "Doble motorizado"
+   ],
+   "categories_all_es": [
+    {
+     "id": 34,
+     "name": "Doble motorizado",
+     "slug": "doble-motorizado"
+    },
+    {
+     "id": 33,
+     "name": "Variador Doble",
+     "slug": "dobles"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Es utilizado fundamentalmente para regular los equipos a distancia ó para equipos estabilizadores. También es recomendable motorizar los variadores de tensión de grandes potencias, por la comodidad de uso que proporcionan.\n\nEn este tipo de regulación el eje del variador es accionado por un motor-reductor, mediante un conmutador manual que permite elevar o reducir la tensión de salida.\n\nLas motorizaciones que ensambla TORIVAC carecen de inercia, por lo que son ideales para control remoto.\n\nBajo demanda se fabrican modelos estabilizados por medio de una electrónica propia con una precisión del 2%.\n\nVer ficha técnica",
+    "en": "It is primarily used for remotely regulating equipment or for voltage stabilization equipment. It is also advisable to motorize high power voltage variators, for the convenience of use they provide.\n\nIn this type of regulation, the drive shaft is driven by a geared motor, by means of a manual switch that allows the output voltage to be raised or lowered.\n\nThe motors assembled by TORIVAC have no inertia, making them ideal for remote control.\n\nOn request, stabilized models are manufactured by means of our own electronics with an accuracy of 2%.\n\nSee technical data sheet",
+    "fr": "Il est principalement utilisé pour la commande à distance d’équipements ou pour la stabilisation d’équipements. Il est également conseillé de motoriser les variateurs de tension de forte puissance en raison de la facilité d’utilisation qu’ils procurent.\n\nDans ce type de régulation, l’arbre de l’onduleur est entraîné par un motoréducteur via un interrupteur manuel qui permet d’augmenter ou de diminuer la tension de sortie.\n\nLes moteurs assemblés par TORIVAC n’ont pas d’inertie, ce qui les rend idéaux pour la télécommande.\n\nSur demande, des modèles stabilisés peuvent être fabriqués à l’aide de notre propre électronique avec une précision de 2 %.\n\nVoir la fiche technique",
+    "de": "Het wordt voornamelijk gebruikt voor het op afstand regelen van apparatuur of voor spanningsstabilisatieapparatuur. Es ist auch ratsam, Hochleistungs-Spannungsvariatoren zu motorisieren, weil sie so einfach zu bedienen sind.\n\nBei dieser Art der Regelung wird die Wechselrichterwelle von einem Getriebemotor über einen manuellen Schalter angetrieben, mit dem die Ausgangsspannung erhöht oder gesenkt werden kann.\n\nDie von TORIVAC montierten Motoren haben keine Trägheit, was sie ideal für die Fernsteuerung macht.\n\nAuf Wunsch können stabilisierte Modelle mit unserer eigenen Elektronik mit einer Genauigkeit von 2% hergestellt werden.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg",
+     "alt": {
+      "es": "Variador Doble motorizado",
+      "en": "Dual motorized variator",
+      "fr": "Double inverseur motorisé",
+      "de": "Dubbele gemotoriseerde variator"
+     },
+     "id": 1069
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/Variador-tension-doble-regulacion-motorizada.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Variador de tensión portatil\n- Accesorios de mando\n- Variador Doble manual\n- Variador Monofásico motorizado",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Control accessories\n- Double manual variator\n- Single-phase manual variable speed drive\n- Motorized three-phase inverter",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Communication MODBUS\n- Accessoires de régulation\n- Variateur de vitesse manuel monophasé\n- Inverseur motorisé monophasé",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- MODBUS-Kommunikation\n- Doppelter manueller Variator\n- Einphasiger manueller Antrieb mit variabler Geschwindigkeit\n- Einphasiger motorisierter Wechselrichter",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Variador Doble motorizado - Torivac",
+     "meta_description": "Es utilizado fundamentalmente para regular los equipos a distancia ó para equipos estabilizadores. Fabricado por Torivac.",
+     "og_title": "Variador Doble motorizado - Torivac",
+     "og_description": "Es utilizado fundamentalmente para regular los equipos a distancia ó para equipos estabilizadores. Fabricado por Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:04:35",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Dual motorized variator - Torivac",
+     "meta_description": "It is primarily used for remotely regulating equipment or for voltage stabilization equipment. Made by Torivac.",
+     "og_title": "Dual motorized variator - Torivac",
+     "og_description": "It is primarily used for remotely regulating equipment or for voltage stabilization equipment. Made by Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:06:49",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Double inverseur motorisé - Torivac",
+     "meta_description": "Il est principalement utilisé pour la commande à distance d'équipements ou pour la stabilisation d'équipements.",
+     "og_title": "Double inverseur motorisé - Torivac",
+     "og_description": "Il est principalement utilisé pour la commande à distance d'équipements ou pour la stabilisation d'équipements.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:06:50",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "Dubbele gemotoriseerde variator - Torivac",
+     "meta_description": "Het wordt voornamelijk gebruikt voor het op afstand regelen van apparatuur of voor spanningsstabilisatieapparatuur.",
+     "og_title": "Dubbele gemotoriseerde variator - Torivac",
+     "og_description": "Het wordt voornamelijk gebruikt voor het op afstand regelen van apparatuur of voor spanningsstabilisatieapparatuur.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:06:50",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [],
+   "gaps": []
+  },
+  {
+   "id_es": 866,
+   "slug": "monofasico-manual",
+   "url_es": "https://grupotorivac.com/product/monofasico-manual/",
+   "sku": "12bdc8ede58d",
+   "names": {
+    "es": "Variador Monofásico manual",
+    "en": "Single-phase manual variable speed drive",
+    "fr": "Variateur de vitesse manuel monophasé",
+    "de": "Einphasiger manueller Antrieb mit variabler Geschwindigkeit"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/monofasico-manual/",
+    "en": "https://grupotorivac.com/en/product/monofasico-manual/",
+    "fr": "https://grupotorivac.com/fr/product/monofasico-manual/",
+    "de": "https://grupotorivac.com/de/product/monofasico-manual/"
+   },
+   "ids": {
+    "es": 866,
+    "en": 15907,
+    "fr": 15885,
+    "de": 15887
+   },
+   "category_path_es": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Monofasicos",
+    "Manual"
+   ],
+   "categories_all_es": [
+    {
+     "id": 38,
+     "name": "Manual",
+     "slug": "monofasicos-manual"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    },
+    {
+     "id": 37,
+     "name": "Variadores Monofasicos",
+     "slug": "monofasico"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada en cada momento.\n\nVer ficha técnica",
+    "en": "A control knob is used to operate the shaft, which in turn allows rotation of the graphite traveller by selecting the desired tension at any given moment.\n\nSee technical data sheet",
+    "fr": "L’axe est actionné au moyen d’un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension souhaitée à un moment donné.\n\nVoir la fiche technique",
+    "de": "Die Achse wird über einen Drehknopf bedient, mit dem der Graphitläufer gedreht werden kann, indem die gewünschte Spannung zu einem bestimmten Zeitpunkt gewählt wird.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg",
+     "alt": {
+      "es": "Variador Monofásico manual",
+      "en": "Single-phase manual variable speed drive",
+      "fr": "Variateur de vitesse manuel monophasé",
+      "de": "Einphasiger manueller Antrieb mit variabler Geschwindigkeit"
+     },
+     "id": 319
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2024/09/1.-Variadores-de-tension_monofasicomanual.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Variador de tensión portatil\n- Comunicación MODBUS\n- Variador Doble motorizado\n- Variador Monofásico motorizado",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Control accessories\n- MODBUS communication\n- Regulating accessories\n- Double manual variator",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Communication MODBUS\n- Accessoires de régulation\n- Inverseur motorisé monophasé\n- Inverseur motorisé triphasé",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Zubehör kontrollieren\n- Zubehör zum Regulieren\n- Doppelter manueller Variator\n- Dubbele gemotoriseerde variator",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Variador Monofásico manual - Torivac",
+     "meta_description": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada.",
+     "og_title": "Variador Monofásico manual - Torivac",
+     "og_description": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg",
+     "modified": "2026-10-16T12:04:36",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Single-phase manual variable speed drive - Torivac",
+     "meta_description": "A control knob is used to operate the shaft, which in turn allows rotation of the graphite traveller by selecting the desired tension at any given moment.",
+     "og_title": "Single-phase manual variable speed drive - Torivac",
+     "og_description": "A control knob is used to operate the shaft, which in turn allows rotation of the graphite traveller by selecting the desired tension at any given moment.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg",
+     "modified": "2026-10-16T12:06:29",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Variateur de vitesse manuel monophasé - Torivac",
+     "meta_description": "L'axe est actionné au moyen d'un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension.",
+     "og_title": "Variateur de vitesse manuel monophasé - Torivac",
+     "og_description": "L'axe est actionné au moyen d'un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg",
+     "modified": "2026-10-16T12:06:13",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "Einphasiger manueller Antrieb mit variabler Geschwindigkeit - Torivac",
+     "meta_description": "Die Achse wird über einen Drehknopf bedient, mit dem der Graphitläufer gedreht werden kann. Hergestellt von Torivac.",
+     "og_title": "Einphasiger manueller Antrieb mit variabler Geschwindigkeit - Torivac",
+     "og_description": "Die Achse wird über einen Drehknopf bedient, mit dem der Graphitläufer gedreht werden kann. Hergestellt von Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg",
+     "modified": "2026-10-16T12:06:15",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [],
+   "gaps": []
+  },
+  {
+   "id_es": 867,
+   "slug": "monofasico-motorizado",
+   "url_es": "https://grupotorivac.com/product/monofasico-motorizado/",
+   "sku": "4f2cbb78e2ed",
+   "names": {
+    "es": "Variador Monofásico motorizado",
+    "en": "Single-phase motorized inverter",
+    "fr": "Inverseur motorisé monophasé",
+    "de": "Einphasiger motorisierter Wechselrichter"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/monofasico-motorizado/",
+    "en": "https://grupotorivac.com/en/product/monofasico-motorizado/",
+    "fr": "https://grupotorivac.com/fr/product/monofasico-motorizado/",
+    "de": "https://grupotorivac.com/de/product/monofasico-motorizado/"
+   },
+   "ids": {
+    "es": 867,
+    "en": 15910,
+    "fr": 15880,
+    "de": 15883
+   },
+   "category_path_es": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Monofasicos",
+    "Motorizado"
+   ],
+   "categories_all_es": [
+    {
+     "id": 43,
+     "name": "Motorizado",
+     "slug": "motorizado-monofasico"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    },
+    {
+     "id": 37,
+     "name": "Variadores Monofasicos",
+     "slug": "monofasico"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Es utilizado fundamentalmente para regular los equipos a distancia o para equipos estabilizadores. También es recomendable motorizar los variadores de tensión de grandes potencias, por la comodidad de uso que proporcionan.\n\nEn este tipo de regulación el eje del variador es accionado por un motor-reductor, mediante un conmutador manual que permite elevar o bajar la tensión de salida.\n\nLas motorizaciones que ensambla TORIVAC carecen de inercia, por lo que son ideales para control remoto.\n\nBajo demanda se fabrican modelos estabilizados por medio de una electrónica propia con una precisión del 2%.\n\nVer ficha técnica",
+    "en": "It is mainly used to regulate equipment remotely or for stabilizing equipment. It is also recommended to motorize high power voltage variators, due to the ease of use they provide.\n\nIn this type of regulation, the drive shaft is driven by a geared motor, by means of a manual switch that allows the output voltage to be raised or lowered.\n\nThe motors assembled by TORIVAC have no inertia, making them ideal for remote control.\n\nOn request, stabilized models are manufactured by means of our own electronics with an accuracy of 2%.\n\nSee technical data sheet",
+    "fr": "Il est principalement utilisé pour réguler des équipements à distance ou pour stabiliser des équipements. Il est également recommandé pour motoriser les variateurs de tension de forte puissance, en raison de la facilité d’utilisation qu’il procure.\n\nDans ce type de régulation, l’arbre de l’onduleur est entraîné par un motoréducteur via un interrupteur manuel qui permet d’augmenter ou de diminuer la tension de sortie.\n\nLes moteurs assemblés par TORIVAC n’ont pas d’inertie, ce qui les rend idéaux pour la télécommande.\n\nDes modèles stabilisés par notre propre électronique avec une précision de 2% sont produits sur demande.\n\nVoir la fiche technique",
+    "de": "Es wird hauptsächlich zur Fernsteuerung von Geräten oder zur Stabilisierung von Geräten verwendet. Es ist auch ratsam, Hochleistungs-Spannungsvariatoren zu motorisieren, weil sie so einfach zu bedienen sind.\n\nBei dieser Art der Regelung wird die Wechselrichterwelle von einem Getriebemotor über einen manuellen Schalter angetrieben, mit dem die Ausgangsspannung erhöht oder gesenkt werden kann.\n\nDie von TORIVAC montierten Motoren haben keine Trägheit, was sie ideal für die Fernsteuerung macht.\n\nAuf Wunsch können stabilisierte Modelle mit unserer eigenen Elektronik mit einer Genauigkeit von 2% hergestellt werden.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/MONOFASICO-MOTORIZADO.jpg",
+     "alt": {
+      "es": "Variador Monofásico motorizado",
+      "en": "Single-phase motorized inverter",
+      "fr": "Inverseur motorisé monophasé",
+      "de": "Einphasiger motorisierter Wechselrichter"
+     },
+     "id": 332
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2024/09/1.-Variadores-de-tension_monofasicomotorizado.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Comunicación MODBUS\n- Accesorios de regulacion\n- Variador Doble motorizado\n- Variador Trifasico motorizado",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Double manual variator\n- Dual motorized variator\n- Single-phase manual variable speed drive\n- Motorized three-phase inverter",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Communication MODBUS\n- Accessoires de régulation\n- Double inverseur motorisé\n- Inverseur motorisé triphasé",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Zubehör kontrollieren\n- Zubehör zum Regulieren\n- Doppelter manueller Variator\n- Dreiphasiger motorisierter Wechselrichter",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Variador Monofásico motorizado - Torivac",
+     "meta_description": "Es utilizado fundamentalmente para regular los equipos a distancia o para equipos estabilizadores. Fabricado por Torivac.",
+     "og_title": "Variador Monofásico motorizado - Torivac",
+     "og_description": "Es utilizado fundamentalmente para regular los equipos a distancia o para equipos estabilizadores. Fabricado por Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/MONOFASICO-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:04:37",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Single-phase motorized inverter - Torivac",
+     "meta_description": "It is mainly used to regulate equipment remotely or for stabilizing equipment. It is also recommended to motorize high power voltage variators.",
+     "og_title": "Single-phase motorized inverter - Torivac",
+     "og_description": "It is mainly used to regulate equipment remotely or for stabilizing equipment. It is also recommended to motorize high power voltage variators.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/MONOFASICO-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:06:31",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Inverseur motorisé monophasé - Torivac",
+     "meta_description": "Il est principalement utilisé pour réguler des équipements à distance ou pour stabiliser des équipements.",
+     "og_title": "Inverseur motorisé monophasé - Torivac",
+     "og_description": "Il est principalement utilisé pour réguler des équipements à distance ou pour stabiliser des équipements.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/MONOFASICO-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:06:11",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "Einphasiger motorisierter Wechselrichter - Torivac",
+     "meta_description": "Es wird hauptsächlich zur Fernsteuerung von Geräten oder zur Stabilisierung von Geräten verwendet. Hergestellt von Torivac.",
+     "og_title": "Einphasiger motorisierter Wechselrichter - Torivac",
+     "og_description": "Es wird hauptsächlich zur Fernsteuerung von Geräten oder zur Stabilisierung von Geräten verwendet. Hergestellt von Torivac.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/MONOFASICO-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:06:12",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [],
+   "gaps": []
+  },
+  {
+   "id_es": 326,
+   "slug": "trifasico-manual",
+   "url_es": "https://grupotorivac.com/product/trifasico-manual/",
+   "sku": "6d6ab80b4cb5",
+   "names": {
+    "es": "Variador Trifásico manual",
+    "en": "Manual Three-Phase Inverter",
+    "fr": "Onduleur triphasé manuel",
+    "de": null
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/trifasico-manual/",
+    "en": "https://grupotorivac.com/en/product/manual-three-phase-inverter/",
+    "fr": "https://grupotorivac.com/fr/product/onduleur-triphase-manuel/",
+    "de": null
+   },
+   "ids": {
+    "es": 326,
+    "en": 16303,
+    "fr": 16304,
+    "de": null
+   },
+   "category_path_es": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Trifásicos",
+    "Manual"
+   ],
+   "categories_all_es": [
+    {
+     "id": 41,
+     "name": "Manual",
+     "slug": "manual-trifasico"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada en cada momento.\n\nVer ficha técnica",
+    "en": "A control knob is used to operate the shaft, which in turn allows rotation of the graphite traveller by selecting the desired tension at any given moment.\n\nSee technical data sheet",
+    "fr": "L’axe est actionné au moyen d’un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension souhaitée à un moment donné.\n\nVoir la fiche technique",
+    "de": null
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": null
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/05/TRIFASICO-MANUAL-scaled-1.jpg",
+     "alt": {
+      "es": "Variador Trifásico manual",
+      "en": "Manual Three-Phase Inverter",
+      "fr": "Onduleur triphasé manuel",
+      "de": null
+     },
+     "id": 1072
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2024/09/Variador-tension-trifasico-regulacion-manual.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Manual Three-Phase Inverter",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Onduleur triphasé manuel",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Variador Trifásico manual - Torivac",
+     "meta_description": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada.",
+     "og_title": "Variador Trifásico manual - Torivac",
+     "og_description": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/TRIFASICO-MANUAL-scaled-1.jpg",
+     "modified": "2026-10-16T12:04:36",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Manual Three-Phase Inverter - Torivac",
+     "meta_description": "A control knob is used to operate the shaft, which in turn allows rotation of the graphite traveller by selecting the desired tension at any given moment.",
+     "og_title": "Manual Three-Phase Inverter - Torivac",
+     "og_description": "A control knob is used to operate the shaft, which in turn allows rotation of the graphite traveller by selecting the desired tension at any given moment.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/TRIFASICO-MANUAL-scaled-1.jpg",
+     "modified": "2026-10-16T12:06:51",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Onduleur triphasé manuel - Torivac",
+     "meta_description": "L'axe est actionné au moyen d'un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension.",
+     "og_title": "Onduleur triphasé manuel - Torivac",
+     "og_description": "L'axe est actionné au moyen d'un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/05/TRIFASICO-MANUAL-scaled-1.jpg",
+     "modified": "2026-10-16T12:06:51",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": null
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [],
+   "gaps": []
+  },
+  {
+   "id_es": 328,
+   "slug": "variador-trifasico-motorizado",
+   "url_es": "https://grupotorivac.com/product/variador-trifasico-motorizado/",
+   "sku": "c7c4551cd46b",
+   "names": {
+    "es": "Variador Trifasico motorizado",
+    "en": "Motorized three-phase inverter",
+    "fr": "Inverseur motorisé triphasé",
+    "de": "Dreiphasiger motorisierter Wechselrichter"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/variador-trifasico-motorizado/",
+    "en": "https://grupotorivac.com/en/product/variador-trifasico-motorizado/",
+    "fr": "https://grupotorivac.com/fr/product/variador-trifasico-motorizado/",
+    "de": "https://grupotorivac.com/de/product/variador-trifasico-motorizado/"
+   },
+   "ids": {
+    "es": 328,
+    "en": 15862,
+    "fr": 15895,
+    "de": 15897
+   },
+   "category_path_es": [
+    "Variadores de tensión - Autotransformadores regulables",
+    "Variadores Trifásicos",
+    "Motorizado"
+   ],
+   "categories_all_es": [
+    {
+     "id": 42,
+     "name": "Motorizado",
+     "slug": "motorizado"
+    },
+    {
+     "id": 19,
+     "name": "Variadores de tensión - Autotransformadores regulables",
+     "slug": "variadores-de-tension"
+    },
+    {
+     "id": 40,
+     "name": "Variadores Trifásicos",
+     "slug": "trifasico"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Es utilizado fundamentalmente para regular los equipos a distancia o para equipos estabilizadores. También es recomendable motorizar los variadores de tensión de grandes potencias, por la comodidad de uso que proporcionan.\n\nEn este tipo de regulación el eje del variador es accionado por un motor-reductor, mediante un conmutador manual que permite elevar o reducir la tensión de salida.\n\nLas motorizaciones que ensambla TORIVAC carecen de inercia, por lo que son ideales para control remoto.\n\nBajo demanda se fabrican modelos estabilizados por medio de una electrónica propia con una precisión del 2%. (link a accesorios de control)\n\nVer ficha técnica",
+    "en": "It is mainly used to regulate equipment remotely or for stabilizing equipment. It is also recommended to motorize high power voltage variators, due to the ease of use they provide.\n\nIn this type of regulation, the drive shaft is driven by a geared motor, by means of a manual switch that allows the output voltage to be raised or lowered.\n\nThe motors assembled by TORIVAC have no inertia, making them ideal for remote control.\n\nOn request, stabilized models are manufactured by means of our own electronics with an accuracy of 2% (link to control accessories).\n\nSee technical data sheet",
+    "fr": "Il est principalement utilisé pour réguler des équipements à distance ou pour stabiliser des équipements. Il est également recommandé pour motoriser les variateurs de tension de forte puissance, en raison de la facilité d’utilisation qu’il procure.\n\nDans ce type de régulation, l’arbre de l’onduleur est entraîné par un motoréducteur via un interrupteur manuel qui permet d’augmenter ou de diminuer la tension de sortie.\n\nLes moteurs assemblés par TORIVAC n’ont pas d’inertie, ce qui les rend idéaux pour la télécommande.\n\nSur demande, des modèles stabilisés peuvent être fabriqués en utilisant notre propre électronique avec une précision de 2% (lien vers les accessoires de contrôle).\n\nVoir la fiche technique",
+    "de": "Es wird hauptsächlich zur Fernsteuerung von Geräten oder zur Stabilisierung von Geräten verwendet. Es ist auch ratsam, Hochleistungs-Spannungsvariatoren zu motorisieren, weil sie so einfach zu bedienen sind.\n\nBei dieser Art der Regelung wird die Wechselrichterwelle von einem Getriebemotor über einen manuellen Schalter angetrieben, mit dem die Ausgangsspannung erhöht oder gesenkt werden kann.\n\nDie von TORIVAC montierten Motoren haben keine Trägheit, was sie ideal für die Fernsteuerung macht.\n\nAuf Wunsch können stabilisierte Modelle mit unserer eigenen Elektronik mit einer Genauigkeit von 2% hergestellt werden. (Link zum Kontrollzubehör)\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "## Aportes del variador trifásico motorizado Torivac\n\nUn variador trifásico motorizado Torivac es un dispositivo diseñado para regular y ajustar la tensión de salida en sistemas eléctricos trifásicos, permitiendo un control preciso del voltaje según las necesidades de la instalación. Su función elemental es estabilizar la energía suministrada a motores eléctricos y maquinaria industrial, evitando subidas o bajadas de energía que puedan afectar el rendimiento y la eficiencia operativa.\nEn entornos de alta exigencia, su uso es clave para optimizar el consumo eléctrico, prolongar la vida útil de los equipos y mejorar la seguridad en la infraestructura energética.\nEstá ubicado entre el motor y la fuente de tensión del equipo. Alimenta, regula y controla un motor de corriente alterna. Los variadores suelen tener una eficiencia entre el 95% y 98%, lo que implica una reducción considerable en los consumos energéticos de los motores y en consecuencia una reducción en costos.\n\n## ¿Para qué sirve un variador de trifásico motorizado?\n\nFuentes de alimentación senoidal de gran potencia\nControl de potencia en cargas lineales.\nCuando necesitamos realizar ensayos con sub o sobre tensión\nCuando el proceso requiere de una fuente de potencia eléctrica estable y un suministro constante.\n\n## Aporta estabilidad y una mejor sincronización en procesos operativos de grandes industrias energéticas\n\nEl variador trifásico motorizado permite ajustar con precisión la tensión de salida, lo que es fundamental en aplicaciones que requieren estabilidad y sincronización.\nEn líneas de producción automatizadas, por ejemplo, garantiza que las máquinas operen con una tensión ajustada según la necesidad, evitando fallos por desajustes en la temperatura de un tanque o en la corriente de un baño galvánico. En la industria alimentaria, donde los procesos deben cumplir con estándares de calidad, esta capacidad de control es clave para la consistencia del producto final.\n\nEste variador protege el sistema ante picos de tensión y variaciones de carga, evitando daños y garantizando una operación estable. En entornos industriales con redes eléctricas cambiantes, esta protección es esencial para evitar interrupciones y fallas inesperadas.\nEstá pensado para lograr una integración en distintos sectores, desde sistemas de climatización hasta maquinaria pesada. En la logística y el transporte, optimiza el rendimiento de cintas transportadoras, asegurando un flujo eficiente de materiales.\n\n## Torivac es una compañía especialista en diseño y fabricación de transformadores toroidales y variadores de tensión\n\nContamos con una experiencia de cerca de 60 años en el sector, que nos ha permitido ir creciendo hasta lograr una presencia en más de 30 países.\nDisponemos de un equipo técnico que garantiza la fabricación dispositivos de alta precisión y eficiencia. Nuestra metodología de trabajo nos permite realizar simulaciones avanzadas en cada fase de cada proyecto, asegurando que cada componente, desde variadores de tensión toroidales, transformadores regulables, descargadores de batería, potenciómetros y núcleos toroidales, cumpla con los más altos estándares del sector.\nTrabajamos estrechamente con empresas que cuentan con una gran infraestructura, en busca de garantizarles soluciones personalizadas y eficientes. Apuntamos a responder a las exigencias de industrias como la tecnológica, la energética y la automotriz. Nuestro objetivo es seguir innovando, fortaleciendo alianzas estratégicas y expandiendo nuestro alcance global, manteniendo siempre el sello de calidad y excelencia que nos ha caracterizado desde nuestros inicios.",
+    "en": "## Contributions of the Torivac three-phase motorized inverter\n\nA Torivac three-phase motorized inverter is a device designed to regulate and adjust the output voltage in three-phase electrical systems, allowing precise voltage control according to the needs of the installation. Its basic function is to stabilize the power supplied to electric motors and industrial machinery, avoiding power surges or dips that may affect performance and operating efficiency.\nIn highly demanding environments, its use is key to optimize power consumption, extend equipment life and improve safety in the energy infrastructure.\nIt is located between the motor and the equipment’s voltage source. It powers, regulates and controls an AC motor. Inverters usually have an efficiency between 95% and 98%, which implies a considerable reduction in the energy consumption of the motors and consequently a reduction in costs.\n\n## What is a motorized three-phase drive used for?\n\nHigh power sinusoidal power supplies\nPower control in linear loads.\nWhen we need to perform tests with under or over voltage\nWhen the process requires a stable electrical power source and a constant supply.\n\n## Provides stability and better synchronization in the operational processes of large energy industries.\n\nThe motorized three-phase drive allows the output voltage to be precisely adjusted, which is essential in applications requiring stability and synchronization.\nIn automated production lines, for example, it ensures that machines operate with a voltage adjusted as needed, avoiding failures due to mismatches in the temperature of a tank or in the current of a galvanic bath. In the food industry, where processes must meet quality standards, this control capability is key to the consistency of the final product.\n\nThis drive protects the system against voltage spikes and load variations, preventing damage and ensuring stable operation. In industrial environments with changing power grids, this protection is essential to avoid unexpected interruptions and failures.\nIt is designed for integration in various sectors, from air conditioning systems to heavy machinery. In logistics and transportation, it optimizes the performance of conveyor belts, ensuring an efficient flow of materials.\n\n## Torivac is a company specialized in the design and manufacture of toroidal transformers and voltage regulators.\n\nWe have nearly 60 years of experience in the industry, which has allowed us to grow to a presence in more than 30 countries.\nWe have a technical team that guarantees the manufacture of high precision and efficient devices. Our work methodology allows us to perform advanced simulations in each phase of each project, ensuring that each component, from toroidal voltage variators, adjustable transformers, battery dischargers, potentiometers and toroidal cores, meet the highest standards in the industry.\nWe work closely with companies that have a large infrastructure, seeking to ensure customized and efficient solutions. We aim to respond to the demands of industries such as technology, energy and automotive. Our goal is to continue innovating, strengthening strategic alliances and expanding our global reach, always maintaining the seal of quality and excellence that has characterized us since our beginnings.",
+    "fr": "## Apports de l’onduleur motorisé triphasé Torivac\n\nUn onduleur motorisé triphasé Torivac est un appareil conçu pour réguler et ajuster la tension de sortie dans les systèmes électriques triphasés, permettant un contrôle précis de la tension en fonction des besoins de l’installation. Sa fonction de base est de stabiliser la puissance fournie aux moteurs électriques et aux machines industrielles, en évitant les surtensions ou les chutes de tension qui peuvent affecter les performances et l’efficacité du fonctionnement.\nDans les environnements très exigeants, son utilisation est essentielle pour optimiser la consommation d’électricité, prolonger la durée de vie utile des équipements et améliorer la sécurité de l’infrastructure énergétique.\nIl est situé entre le moteur et la source de tension de l’équipement. Il alimente, régule et contrôle un moteur à courant alternatif. Les onduleurs ont généralement un rendement compris entre 95% et 98%, ce qui implique une réduction considérable de la consommation d’énergie des moteurs et, par conséquent, une réduction des coûts.\n\n## A quoi sert un onduleur triphasé motorisé ?\n\nAlimentations sinusoïdales de forte puissance\nContrôle de la puissance des charges linéaires.\nLorsque des tests de sous ou de surtension sont nécessaires\nLorsque le processus nécessite une source d’énergie électrique stable et une alimentation constante.\n\n## Il apporte une stabilité et une meilleure synchronisation aux processus opérationnels dans les grandes industries de l’énergie.\n\nL’entraînement triphasé motorisé permet d’ajuster précisément la tension de sortie, ce qui est essentiel dans les applications exigeant stabilité et synchronisation.\nDans les lignes de production automatisées, par exemple, il garantit que les machines fonctionnent avec une tension ajustée en fonction des besoins, évitant ainsi les défaillances dues à des écarts de température dans une cuve ou de courant dans un bain galvanique. Dans l’industrie alimentaire, où les processus doivent répondre à des normes de qualité, cette capacité de contrôle est essentielle à l’uniformité du produit final.\n\nCe variateur protège le système contre les pics de tension et les variations de charge, évitant ainsi les dommages et garantissant un fonctionnement stable. Dans les environnements industriels où les réseaux électriques changent, cette protection est essentielle pour éviter les pannes et les défaillances inattendues.\nIl est conçu pour être intégré dans divers secteurs, des systèmes de climatisation aux machines lourdes. Dans le domaine de la logistique et du transport, il optimise les performances des bandes transporteuses, garantissant un flux efficace de matériaux.\n\n## Torivac est une entreprise spécialisée dans la conception et la fabrication de transformateurs toroïdaux et de variateurs de tension.\n\nNous avons près de 60 ans d’expérience dans le secteur, ce qui nous a permis d’être présents dans plus de 30 pays.\nNous disposons d’une équipe technique qui garantit la fabrication de dispositifs de haute précision et efficaces. Notre méthodologie de travail nous permet d’effectuer des simulations avancées à chaque étape de chaque projet, en garantissant que chaque composant, qu’il s’agisse de variateurs de tension toroïdaux, de transformateurs de régulation, de déchargeurs de batterie, de potentiomètres ou de noyaux toroïdaux, réponde aux normes les plus élevées du secteur.\nNous travaillons en étroite collaboration avec des entreprises qui disposent d’une grande infrastructure, afin de garantir des solutions personnalisées et efficaces. Nous visons à répondre aux demandes d’industries telles que la technologie, l’énergie et l’automobile. Notre objectif est de continuer à innover, de renforcer les alliances stratégiques et d’étendre notre portée mondiale, en maintenant toujours le label de qualité et d’excellence qui nous caractérise depuis nos débuts.",
+    "de": "## Beiträge des dreiphasigen motorgetriebenen Wechselrichters von Torivac\n\nEin dreiphasiger Motorwechselrichter von Torivac ist ein Gerät zur Regulierung und Anpassung der Ausgangsspannung in dreiphasigen elektrischen Systemen, das eine präzise Spannungssteuerung entsprechend den Anforderungen der Anlage ermöglicht. Seine Hauptfunktion besteht darin, die Stromversorgung von Elektromotoren und Industriemaschinen zu stabilisieren und Spannungsspitzen oder -einbrüche zu vermeiden, die die Leistung und die Betriebseffizienz beeinträchtigen können.\nIn sehr anspruchsvollen Umgebungen ist sein Einsatz der Schlüssel zur Optimierung des Stromverbrauchs, zur Verlängerung der Nutzungsdauer von Geräten und zur Verbesserung der Sicherheit in der Energieinfrastruktur.\nEr befindet sich zwischen dem Motor und der Spannungsquelle des Geräts. Er versorgt, regelt und steuert einen Wechselstrommotor. Wechselrichter haben in der Regel einen Wirkungsgrad zwischen 95 % und 98 %, was eine erhebliche Senkung des Energieverbrauchs der Motoren und damit auch eine Senkung der Kosten bedeutet.\n\n## Wofür wird ein motorisierter dreiphasiger Wechselrichter verwendet?\n\nSinusförmige Hochleistungsnetzteile\nLeistungssteuerung von linearen Lasten.\nWenn Unter- oder Überspannungstests erforderlich sind\nWenn der Prozess eine stabile Stromquelle und eine konstante Versorgung erfordert.\n\n## Es sorgt für Stabilität und eine bessere Synchronisierung der Betriebsabläufe in großen Energieunternehmen.\n\nDer motorisierte Dreiphasenantrieb ermöglicht eine präzise Einstellung der Ausgangsspannung, was bei Anwendungen, die Stabilität und Synchronisation erfordern, unerlässlich ist.\nIn automatisierten Produktionslinien stellt sie beispielsweise sicher, dass die Maschinen mit einer bedarfsgerechten Spannung arbeiten, um Ausfälle aufgrund von Temperaturunterschieden in einem Tank oder der Stromstärke in einem galvanischen Bad zu vermeiden. In der Lebensmittelindustrie, wo die Prozesse den Qualitätsstandards entsprechen müssen, ist diese Kontrollfunktion der Schlüssel für die Konsistenz des Endprodukts.\n\nDieser Antrieb schützt das System vor Spannungsspitzen und Lastschwankungen, verhindert Schäden und gewährleistet einen stabilen Betrieb. In Industrieumgebungen mit schwankenden Stromnetzen ist dieser Schutz unerlässlich, um unerwartete Ausfälle und Störungen zu vermeiden.\nEs ist für die Integration in verschiedenen Sektoren konzipiert, von Klimaanlagen bis hin zu schweren Maschinen. In der Logistik und im Transportwesen optimiert es die Leistung von Förderbändern und sorgt für einen effizienten Materialfluss.\n\n## Torivac ist ein Unternehmen, das sich auf die Entwicklung und Herstellung von Ringkerntransformatoren und Antrieben mit variabler Spannung spezialisiert hat.\n\nWir verfügen über eine fast 60-jährige Erfahrung in diesem Sektor, die es uns ermöglicht hat, in mehr als 30 Ländern präsent zu sein.\nWir verfügen über ein technisches Team, das die Herstellung von hochpräzisen und effizienten Geräten garantiert. Unsere Arbeitsmethodik ermöglicht es uns, in jeder Phase eines Projekts fortschrittliche Simulationen durchzuführen, um zu gewährleisten, dass jedes Bauteil, von Ringkernspannungswandlern, Regeltransformatoren, Batterieentladern, Potentiometern und Ringbandkernen, den höchsten Standards der Branche entspricht.\nWir arbeiten eng mit Unternehmen zusammen, die über eine große Infrastruktur verfügen, um maßgeschneiderte und effiziente Lösungen zu gewährleisten. Wir sind bestrebt, auf die Anforderungen von Branchen wie Technologie, Energie und Automobil zu reagieren. Unser Ziel ist es, weiterhin innovativ zu sein, strategische Allianzen zu stärken und unsere globale Reichweite zu erweitern, wobei wir stets das Gütesiegel für Qualität und Exzellenz beibehalten, das uns seit unseren Anfängen auszeichnet."
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg",
+     "alt": {
+      "es": "Variador de tensión trifásico Torivac, diseñado para maquinaria pesada, reduciendo el consumo eléctrico y optimizando el rendimiento del motor.",
+      "en": "Variador de tensión trifásico Torivac, diseñado para maquinaria pesada, reduciendo el consumo eléctrico y optimizando el rendimiento del motor.",
+      "fr": "Variador de tensión trifásico Torivac, diseñado para maquinaria pesada, reduciendo el consumo eléctrico y optimizando el rendimiento del motor.",
+      "de": "Variador de tensión trifásico Torivac, diseñado para maquinaria pesada, reduciendo el consumo eléctrico y optimizando el rendimiento del motor."
+     },
+     "id": 1071
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/Variador-tension-trifasico-regulacion-motorizada-1.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explora productos similares",
+     "text": "- Comunicación MODBUS\n- Accesorios de regulacion\n- Variador Doble manual\n- Variador Monofásico motorizado",
+     "lang": "es",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Control accessories\n- MODBUS communication\n- Regulating accessories\n- Dual motorized variator",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Accessoires de contrôle\n- Accessoires de régulation\n- Double variateur manuel\n- Double inverseur motorisé",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Zubehör kontrollieren\n- Zubehör zum Regulieren\n- Doppelter manueller Variator\n- Einphasiger motorisierter Wechselrichter",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Variador Trifasico motorizado - Torivac",
+     "meta_description": "los variadores trifásicos motorizados de Torivac controlan la velocidad de los motores de inducción monofásicos y trifásicos.",
+     "og_title": "Variador Trifasico motorizado - Torivac",
+     "og_description": "los variadores trifásicos motorizados de Torivac controlan la velocidad de los motores de inducción monofásicos y trifásicos.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg",
+     "modified": "2026-10-14T07:04:01",
+     "source": "rest/product.es.json yoast_head_json"
+    },
+    "en": {
+     "title": "Motorized three-phase inverter - Torivac",
+     "meta_description": "Torivac's three-phase motorized drives control the speed of single-phase and three-phase induction motors.",
+     "og_title": "Motorized three-phase inverter - Torivac",
+     "og_description": "Torivac's three-phase motorized drives control the speed of single-phase and three-phase induction motors.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:06:02",
+     "source": "rest/product.en.json yoast_head_json"
+    },
+    "fr": {
+     "title": "Inverseur motorisé triphasé - Torivac",
+     "meta_description": "Les onduleurs motorisés triphasés de Torivac contrôlent la vitesse des moteurs à induction monophasés et triphasés.",
+     "og_title": "Inverseur motorisé triphasé - Torivac",
+     "og_description": "Les onduleurs motorisés triphasés de Torivac contrôlent la vitesse des moteurs à induction monophasés et triphasés.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:06:24",
+     "source": "rest/product.fr.json yoast_head_json"
+    },
+    "de": {
+     "title": "Dreiphasiger motorisierter Wechselrichter - Torivac",
+     "meta_description": "Die dreiphasigen Motorumrichter von Torivac steuern die Drehzahl von einphasigen und dreiphasigen Induktionsmotoren.",
+     "og_title": "Dreiphasiger motorisierter Wechselrichter - Torivac",
+     "og_description": "Die dreiphasigen Motorumrichter von Torivac steuern die Drehzahl von einphasigen und dreiphasigen Induktionsmotoren.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg",
+     "modified": "2026-10-16T12:06:25",
+     "source": "rest/product.de.json yoast_head_json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [],
+   "gaps": []
+  }
+ ]
+}

@@ -1,0 +1,317 @@
+{
+ "name": "Torivac",
+ "legal_name": "Torivac S.L.",
+ "price_mode": "demo",
+ "currency": "EUR",
+ "languages": [
+  {
+   "code": "es",
+   "prefix": "",
+   "label": "Español"
+  },
+  {
+   "code": "en",
+   "prefix": "/en",
+   "label": "English"
+  },
+  {
+   "code": "fr",
+   "prefix": "/fr",
+   "label": "Français"
+  },
+  {
+   "code": "de",
+   "prefix": "/de",
+   "label": "Deutsch"
+  }
+ ],
+ "contact": {
+  "address": [
+   "C/ Potosi Nº 2, Planta 6ª",
+   "08030 Barcelona"
+  ],
+  "phone": "+34 93 312 01 61",
+  "email": "info@torivac.com"
+ },
+ "order_recipients": {
+  "to": [
+   "info@torivac.com",
+   "mzamora@torivac.com"
+  ],
+  "status": "POR CONFIRMAR: la web muestra info@torivac.com; el dictado decía grupotoriback.com / toriback.com"
+ },
+ "nav": {
+  "es": [
+   {
+    "label": "INICIO",
+    "href": "https://grupotorivac.com/"
+   },
+   {
+    "label": "TORIVAC EMPRESA",
+    "href": "https://grupotorivac.com/torivac-empresa/"
+   },
+   {
+    "label": "PRODUCTOS",
+    "href": "https://grupotorivac.com/productos/"
+   },
+   {
+    "label": "PROYECTOS COMERCIALES TORIVAC",
+    "href": "https://grupotorivac.com/proyectos-empresariales/"
+   },
+   {
+    "label": "CATALOGO",
+    "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024.pdf"
+   },
+   {
+    "label": "BLOG",
+    "href": "https://grupotorivac.com/blog/"
+   },
+   {
+    "label": "CONTACTO",
+    "href": "https://grupotorivac.com/contacto/"
+   }
+  ],
+  "en": [
+   {
+    "label": "Home",
+    "href": "https://grupotorivac.com/en/"
+   },
+   {
+    "label": "Torivac Company",
+    "href": "https://grupotorivac.com/en/torivac-company/"
+   },
+   {
+    "label": "Products",
+    "href": "https://grupotorivac.com/en/torivac-products/"
+   },
+   {
+    "label": "Entrepreneurial Projects",
+    "href": "https://grupotorivac.com/en/entrepreneurial-projects/"
+   },
+   {
+    "label": "Catalogue",
+    "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024_EN.pdf"
+   },
+   {
+    "label": "Blog",
+    "href": "https://grupotorivac.com/en/blog/"
+   },
+   {
+    "label": "Contact",
+    "href": "https://grupotorivac.com/en/contact/"
+   }
+  ],
+  "fr": [
+   {
+    "label": "Accueil",
+    "href": "https://grupotorivac.com/fr/"
+   },
+   {
+    "label": "Notre Entreprise",
+    "href": "https://grupotorivac.com/fr/notre-entreprise/"
+   },
+   {
+    "label": "Produits",
+    "href": "https://grupotorivac.com/fr/produits-torivac/"
+   },
+   {
+    "label": "Projets entrepreneuriaux",
+    "href": "https://grupotorivac.com/fr/projets-cles-en-main/"
+   },
+   {
+    "label": "Catalogue",
+    "href": "https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024_FR.pdf"
+   },
+   {
+    "label": "Blog",
+    "href": "https://grupotorivac.com/fr/blog/"
+   },
+   {
+    "label": "Contactez nous",
+    "href": "https://grupotorivac.com/fr/contactez-nous/"
+   }
+  ],
+  "de": [
+   {
+    "label": "Startseite",
+    "href": "https://grupotorivac.com/de/"
+   },
+   {
+    "label": "Torivac Unternehmen",
+    "href": "https://grupotorivac.com/de/unser-unternehmen/"
+   },
+   {
+    "label": "Produkte",
+    "href": "https://grupotorivac.com/de/torivac-produkte/"
+   },
+   {
+    "label": "Unternehmerische Projekte",
+    "href": "https://grupotorivac.com/de/schluesselfertige-projekte/"
+   },
+   {
+    "label": "Katalog",
+    "href": "https://grupotorivac.com/wp-content/uploads/2025/02/catalogue-torivac-DE.pdf"
+   },
+   {
+    "label": "Blog",
+    "href": "https://grupotorivac.com/de/blog/"
+   },
+   {
+    "label": "Kontakt",
+    "href": "https://grupotorivac.com/de/kontakt-us/"
+   }
+  ]
+ },
+ "footer": {
+  "es": {
+   "lines": [
+    "C/ Potosi Nº 2, Planta 6ª",
+    "08030 Barcelona",
+    "+34 93 312 01 61",
+    "info@torivac.com",
+    "© 2025 Torivac. Todos los derechos reservados |",
+    "Aviso legal y condiciones de uso",
+    "|",
+    "Política de Privacidad",
+    "|",
+    "Declaración de accesibilidad",
+    "Desarrollado por",
+    "Santiso Marketing",
+    "Torivac S.L. ha participado en el Programa de Iniciación a la Exportación ICEX-Next, y ha contado con el apoyo de ICEX, así como con la cofinanciación de Fondos europeos FEDER, habiendo contribuido según la medida de los mismos, al crecimiento económico de esta empresa, su región y de España en su conjunto."
+   ],
+   "links": [
+    {
+     "label": "Aviso legal y condiciones de uso",
+     "href": "https://grupotorivac.com/aviso-legal-2/"
+    },
+    {
+     "label": "Política de Privacidad",
+     "href": "https://grupotorivac.com/politica-de-privacidad/"
+    },
+    {
+     "label": "Declaración de accesibilidad",
+     "href": "https://grupotorivac.com/declaracion-de-accesibilidad/"
+    }
+   ],
+   "funding_text": "Torivac S.L. ha participado en el Programa de Iniciación a la Exportación ICEX-Next, y ha contado con el apoyo de ICEX, así como con la cofinanciación de Fondos europeos FEDER, habiendo contribuido según la medida de los mismos, al crecimiento económico de esta empresa, su región y de España en su conjunto."
+  },
+  "en": {
+   "lines": [
+    "C/ Potosi No. 2, 6th Floor",
+    "08030 Barcelona",
+    "+34 93 312 01 61",
+    "info@torivac.com",
+    "© 2025 Torivac. All rights reserved |",
+    "Legal Notice and Terms of Use",
+    "|",
+    "Privacy Policy",
+    "|",
+    "Accessibility Statement",
+    "Developed by",
+    "Santiso Marketing",
+    "C/ Potosi No. 2, 6th Floor",
+    "08030 Barcelona"
+   ],
+   "links": [
+    {
+     "label": "Legal Notice and Terms of Use",
+     "href": "https://grupotorivac.com/aviso-legal-2/"
+    },
+    {
+     "label": "Privacy Policy",
+     "href": "https://grupotorivac.com/politica-de-privacidad/"
+    },
+    {
+     "label": "Accessibility Statement",
+     "href": "https://grupotorivac.com/declaracion-de-accesibilidad/"
+    },
+    {
+     "label": "Legal Notice",
+     "href": "https://grupotorivac.com/aviso-legal/"
+    }
+   ],
+   "funding_text": null
+  },
+  "fr": {
+   "lines": [
+    "C/ Potosi Nº 2, Planta 6ª",
+    "08030 Barcelona",
+    "+34 93 312 01 61",
+    "info@torivac.com",
+    "2025 Torivac. Tous droits réservés |",
+    "Avis juridique et conditions d’utilisation",
+    "|",
+    "Politique de confidentialité",
+    "|",
+    "Déclaration d’accessibilité",
+    "Développé par",
+    "Santiso Marketing",
+    "C/ Potosi Nº 2, Planta 6ª",
+    "08030 Barcelona"
+   ],
+   "links": [
+    {
+     "label": "Avis juridique et conditions d’utilisation",
+     "href": "https://grupotorivac.com/aviso-legal-2/"
+    },
+    {
+     "label": "Politique de confidentialité",
+     "href": "https://grupotorivac.com/politica-de-privacidad/"
+    },
+    {
+     "label": "Déclaration d’accessibilité",
+     "href": "https://grupotorivac.com/declaracion-de-accesibilidad/"
+    },
+    {
+     "label": "Mentions légales",
+     "href": "https://grupotorivac.com/aviso-legal/"
+    }
+   ],
+   "funding_text": null
+  },
+  "de": {
+   "lines": [
+    "C/ Potosi Nº 2, Planta 6ª",
+    "08030 Barcelona",
+    "+34 93 312 01 61",
+    "info@torivac.com",
+    "© 2025 Torivac. Alle Rechte vorbehalten |",
+    "Rechtliche Hinweise und Nutzungsbedingungen",
+    "|",
+    "Datenschutzrichtlinien",
+    "|",
+    "Erklärung zur Barrierefreiheit",
+    "Entwickelt von",
+    "Santiso Marketing",
+    "C/ Potosi Nº 2, Planta 6ª",
+    "08030 Barcelona"
+   ],
+   "links": [
+    {
+     "label": "Rechtliche Hinweise und Nutzungsbedingungen",
+     "href": "https://grupotorivac.com/aviso-legal-2/"
+    },
+    {
+     "label": "Datenschutzrichtlinien",
+     "href": "https://grupotorivac.com/politica-de-privacidad/"
+    },
+    {
+     "label": "Erklärung zur Barrierefreiheit",
+     "href": "https://grupotorivac.com/declaracion-de-accesibilidad/"
+    },
+    {
+     "label": "Rechtliche Hinweise",
+     "href": "https://grupotorivac.com/aviso-legal/"
+    }
+   ],
+   "funding_text": null
+  }
+ },
+ "catalogs": {
+  "es": "Torivac_2024.pdf",
+  "en": "Torivac_2024_EN.pdf",
+  "fr": "Torivac_2024_FR.pdf",
+  "de": "catalogue-torivac-DE.pdf"
+ },
+ "generated_by": "scripts/build_catalog.py"
+}

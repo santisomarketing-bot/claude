@@ -1,0 +1,1067 @@
+{
+ "job": "p05-catalogo-es",
+ "documents": [
+  {
+   "file": "Torivac_2024.pdf",
+   "pages": [
+    29,
+    35
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "Catálogo Torivac 2024 (ES) - secciones POTENCIÓMETROS Y REOSTATOS (potenciómetros bobinados 3W, doble y 5W, reóstatos cerámicos PC12-PC1000, reóstatos tandem doble y triple) y BOTONES DE MANDO (portada de sección y tablas de la serie BO, tapas, aros con flecha y cubretuercas): páginas PDF 29-35 (paginación impresa 28-32 y 34; la p.34 del PDF es la portada de sección sin número impreso)",
+   "families": [
+    {
+     "family": "Potenciómetro 3W (POTENCIÓMETROS BOBINADOS DE 3W Y 5W)",
+     "series": null,
+     "page": 29,
+     "description": "Este potenciómetro se distingue por su pequeño diámetro (25mm) a pesar de su disipación real de 3 vatios. Su linealidad (3%) los hace aptos para usos sofisticados. Se fabrican la gama de valores Standard, según la serie E-10 (desde 5 Ohm hasta 22 K).",
+     "general_specs": {
+      "Diámetro": "pequeño diámetro (25mm)",
+      "Disipación real": "3 vatios",
+      "Linealidad": "(3%)",
+      "Gama de valores Standard": "serie E-10 (desde 5 Ohm hasta 22 K)",
+      "Aptitud de uso": "usos sofisticados"
+     },
+     "models": [
+      {
+       "reference": "Potenciómetro 3W",
+       "page": 29,
+       "specs": {
+        "Terminales": "3,2 x 0,5 mm",
+        "Hermético": "al polvo",
+        "Eje Standard": "12 mm, (8 6mm) de poliamida 6 con fibra de vidrio",
+        "Cursor": "basculante,",
+        "Resistencia mín.": "52 - 22KQ",
+        "Ángulo de giro": "2800",
+        "Tolerancia": "10%",
+        "Tensión de perforación": "> 1000v",
+        "Peso neto": "22grs",
+        "Temperatura de trabajo": "-20%/+60\"",
+        "Categoría UL": "94V-0",
+        "Embalaje": "Caja de 25 pzas"
+       },
+       "raw_row": "* Terminales 3,2 x 0,5 mm | * Hermético al polvo. | * Eje Standard 12 mm, (8 6mm) de poliamida 6 con fibra de vidrio | * Cursor basculante, | * Resistencia mín.: 52 - 22KQ | * Ángulo de giro: 2800 | * Tolerancia: 10%. | * Tensión de perforación > 1000v. | * Peso neto: 22grs. | * Temperatura de trabajo: -20%/+60\" | * Categoría UL: 94V-0 | * Embalaje: Caja de 25 pzas.",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "El PDF no da códigos de referencia para este potenciómetro; solo indica la gama de valores Standard (serie E-10, desde 5 Ohm hasta 22 K) y el embalaje (Caja de 25 pzas.)."
+    },
+    {
+     "family": "Potenciómetro doble (2 x 3 W)",
+     "series": null,
+     "page": 29,
+     "description": "Este potenciómetro doble, de 2 x 3 W, es un derivado del modelo de 3W para su uso en equipos estéreo, como atenuador. Sus características eléctricas y físicas son iguales a estos últimos. Peso neto: 40 grs. Embalaje: Caja de 25 pzas.",
+     "general_specs": {
+      "Potencia": "2 x 3 W",
+      "Derivado de": "modelo de 3W",
+      "Uso": "equipos estéreo, como atenuador",
+      "Características eléctricas y físicas": "iguales a las del modelo de 3W (según el texto del PDF)"
+     },
+     "models": [
+      {
+       "reference": "Potenciómetro doble 2 x 3 W",
+       "page": 29,
+       "specs": {
+        "Potencia": "2 x 3 W",
+        "Peso neto": "40 grs",
+        "Embalaje": "Caja de 25 pzas"
+       },
+       "raw_row": "Peso neto: 40 grs. Embalaje: Caja de 25 pzas.",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "El PDF no da códigos de referencia; remite al modelo de 3W para las características eléctricas y físicas. Embalaje: Caja de 25 pzas."
+    },
+    {
+     "family": "Potenciómetro 5W",
+     "series": null,
+     "page": 30,
+     "description": "El cuidadoso bobinado del elemento de resistencia y el diseño original de un sistema de cursor muy sensible aseguran un manejo muy suave, preciso y de larga duración. La escobilla es un rodillo de latón basculante que gira sobre la superficie plana de la resistencia con la presión adecuada para garantizar un buen contacto y un número muy elevado de maniobras. La resistencia residual al inicio y final de recorrido es prácticamente nula.",
+     "general_specs": {
+      "Escobilla": "rodillo de latón basculante que gira sobre la superficie plana de la resistencia",
+      "Resistencia residual al inicio y final de recorrido": "prácticamente nula"
+     },
+     "models": [
+      {
+       "reference": "Potenciómetro 5W",
+       "page": 30,
+       "specs": {
+        "Terminales soldables": "3.2x0.5mm",
+        "Potencia máx": "2.2:25%0,5W",
+        "Distribución resistencia": "Lineal",
+        "Gama de valores óhmicos": "52-50 KO",
+        "Tolerancia": "6%,",
+        "Tensión de perforación": ">1000V",
+        "Angulo de glo, acánico": "264\"",
+        "Angulo de gio'Biécirico": "250%",
+        "Rosistoncia del ope a la rotura": "8 Kg/cm",
+        "Longitud del eje Standard": "40 mm",
+        "Paso noto": "40-grs",
+        "Incremento de temperatura plena carga": "75'C"
+       },
+       "raw_row": "* Terminales soldables 3.2x0.5mm | * Potencia máx 2.2:25%0,5W | * Distribución resistencia: Lineal | * Gama de valores óhmicos: 52-50 KO | * Tolerancia: 6%, | * Tensión de perforación: >1000V | * Angulo de glo, acánico; 264\" | * Angulo de gio'Biécirico: 250% | * Rosistoncia del ope a la rotura: 8 Kg/cm | * Longitud del eje Standard: 40 mm | * Paso noto: 40-grs | * Incremento de temperatura plena carga: 75'C",
+       "confidence": "baja"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "El PDF no da códigos de referencia para este potenciómetro; la lista de características tiene varios rótulos y valores mal reconocidos (ver uncertain)."
+    },
+    {
+     "family": "Reóstatos cerámicos (Potenciometros)",
+     "series": null,
+     "page": 31,
+     "description": "Los reóstatos que fabrica Torivac tienen una gran disipación de calor y se fabrican en las siguientes potencias: 15-30-40-60-80125-250-500 y 1000 W. Estas potencias nominales son aplicables con buenas condiciones de ventilación. En instalaciones donde la ventilación es pobre, estas potencias deberemos reducirlas hasta un un 20%, para evitar calentamientos excesivos. El núcleo es un aro cerámico de esteatita de gran dureza, antihigroscópico, evitándose con ello efectos de corrosión por electrólisis. Dicho aro se bobina con hilos de máxima calidad, constantán, nichrom o kantal, según el valor óhmico requerido. Si no se especifica en el pedido, se emplea el material más adecuado para ese valor y potencia. Para su protección contra daños mecánicos y para evitar el movimiento de las espiras, debido a la dilatación causada por el calor, estos potenciómetros están recubiertos de un cemento cerámico de gran dureza, fabricado en nuestros laboratorios, que soporta temperaturas de hasta 9000C, permite una rápida disipación del calor, debido a su superficie mate y buena conductividad térmica. El contacto del cursor es, normalmente, una escobilla de plata o de cobre-plata pulida. Además de bobinas lineales, podemos fabricar, sobre pedido, bobinados con varias secciones para conseguir una curva resistiva no-lineal.",
+     "general_specs": {
+      "Potencias de fabricación": "15-30-40-60-80125-250-500 y 1000 W",
+      "Condición de las potencias nominales": "aplicables con buenas condiciones de ventilación",
+      "Reducción de potencia con ventilación pobre": "hasta un un 20%",
+      "Núcleo": "aro cerámico de esteatita de gran dureza, antihigroscópico",
+      "Hilo de bobinado": "constantán, nichrom o kantal, según el valor óhmico requerido",
+      "Recubrimiento": "cemento cerámico de gran dureza, fabricado en nuestros laboratorios, que soporta temperaturas de hasta 9000C",
+      "Contacto del cursor": "normalmente, una escobilla de plata o de cobre-plata pulida",
+      "Bobinados no lineales": "sobre pedido, bobinados con varias secciones para conseguir una curva resistiva no-lineal",
+      "Cabecera de tabla": "POTENCIA / POWER; A; B; C; D; d; R; G; L; PESO (KG.) / WEIGHT (KG.); GAMA DE VALORES / OHMIC VALUES",
+      "Nota (1)": "(1) Anclaje Mod. PC-1000"
+     },
+     "models": [
+      {
+       "reference": "PC12",
+       "page": 31,
+       "specs": {
+        "POTENCIA / POWER": "PC12",
+        "A": "25",
+        "B": "8",
+        "C": "10",
+        "D": "32",
+        "d": "6",
+        "R": "M-10",
+        "G": "290º",
+        "L": "25",
+        "PESO (KG.) / WEIGHT (KG.)": "0,028",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 10kΩ"
+       },
+       "raw_row": "PC12 25 8 10 32 6 M-10 290º 25 0,028 5Ω – 10kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC25",
+       "page": 31,
+       "specs": {
+        "POTENCIA / POWER": "PC25",
+        "A": "35",
+        "B": "8",
+        "C": "38",
+        "D": "45",
+        "d": "6",
+        "R": "M-10",
+        "G": "280º",
+        "L": "30",
+        "PESO (KG.) / WEIGHT (KG.)": "0,125",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 20kΩ"
+       },
+       "raw_row": "PC25 35 8 38 45 6 M-10 280º 30 0,125 5Ω – 20kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC35",
+       "page": 31,
+       "specs": {
+        "POTENCIA / POWER": "PC35",
+        "A": "40",
+        "B": "12",
+        "C": "32",
+        "D": "55",
+        "d": "6",
+        "R": "M-10",
+        "G": "278º",
+        "L": "35",
+        "PESO (KG.) / WEIGHT (KG.)": "0,140",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 25kΩ"
+       },
+       "raw_row": "PC35 40 12 32 55 6 M-10 278º 35 0,140 5Ω – 25kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC50",
+       "page": 31,
+       "specs": {
+        "POTENCIA / POWER": "PC50",
+        "A": "40",
+        "B": "12",
+        "C": "37",
+        "D": "65",
+        "d": "6",
+        "R": "M-10",
+        "G": "310º",
+        "L": "41",
+        "PESO (KG.) / WEIGHT (KG.)": "0,150",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 25kΩ"
+       },
+       "raw_row": "PC50 40 12 37 65 6 M-10 310º 41 0,150 5Ω – 25kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC75",
+       "page": 31,
+       "specs": {
+        "POTENCIA / POWER": "PC75",
+        "A": "43",
+        "B": "12",
+        "C": "37",
+        "D": "73",
+        "d": "6",
+        "R": "M-10",
+        "G": "317º",
+        "L": "45",
+        "PESO (KG.) / WEIGHT (KG.)": "0,200",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 25kΩ"
+       },
+       "raw_row": "PC75 43 12 37 73 6 M-10 317º 45 0,200 5Ω – 25kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC125",
+       "page": 31,
+       "specs": {
+        "POTENCIA / POWER": "PC125",
+        "A": "60",
+        "B": "12",
+        "C": "18",
+        "D": "87",
+        "d": "6",
+        "R": "M-10",
+        "G": "302º",
+        "L": "53",
+        "PESO (KG.) / WEIGHT (KG.)": "0,360",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 15kΩ"
+       },
+       "raw_row": "PC125 60 12 18 87 6 M-10 302º 53 0,360 5Ω – 15kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC250",
+       "page": 31,
+       "specs": {
+        "POTENCIA / POWER": "PC250",
+        "A": "60",
+        "B": "12",
+        "C": "18",
+        "D": "117",
+        "d": "6",
+        "R": "M-10",
+        "G": "314º",
+        "L": "70",
+        "PESO (KG.) / WEIGHT (KG.)": "0,535",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 15kΩ"
+       },
+       "raw_row": "PC250 60 12 18 117 6 M-10 314º 70 0,535 5Ω – 15kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC500",
+       "page": 31,
+       "specs": {
+        "POTENCIA / POWER": "PC500",
+        "A": "86",
+        "B": "12",
+        "C": "36",
+        "D": "144",
+        "d": "8",
+        "R": "M-12",
+        "G": "310º",
+        "L": "85",
+        "PESO (KG.) / WEIGHT (KG.)": "1,225",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 10kΩ"
+       },
+       "raw_row": "PC500 86 12 36 144 8 M-12 310º 85 1,225 5Ω – 10kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC1000",
+       "page": 31,
+       "specs": {
+        "POTENCIA / POWER": "PC1000",
+        "A": "103",
+        "B": "10",
+        "C": "54",
+        "D": "205",
+        "d": "8",
+        "R": "(1)",
+        "G": "320º",
+        "L": "115",
+        "PESO (KG.) / WEIGHT (KG.)": "2,700",
+        "GAMA DE VALORES / OHMIC VALUES": "3Ω – 10kΩ"
+       },
+       "raw_row": "PC1000 103 10 54 205 8 (1) 320º 115 2,700 3Ω – 10kΩ",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Bobinados con varias secciones para curva resistiva no-lineal (sobre pedido)",
+      "Hilo de bobinado constantán, nichrom o kantal según el valor óhmico requerido (se puede especificar en el pedido)",
+      "Anclaje Mod. PC-1000 (nota (1) de la columna R del modelo PC1000)"
+     ],
+     "ordering_info": "Cada modelo se identifica por el código PC12 ... PC1000 de la columna POTENCIA/POWER. Texto del PDF: si no se especifica en el pedido [el material del hilo], se emplea el material más adecuado para ese valor y potencia. Los bobinados no lineales se fabrican sobre pedido."
+    },
+    {
+     "family": "Reóstato tandem doble",
+     "series": null,
+     "page": 32,
+     "description": "Sin texto descriptivo en el PDF; tabla 'REOSTATO TANDEM DOBLE' (solo imagen) con cotas A, B, C, D, E, F para las versiones Manual y Motor, y cuatro dibujos (planta y alzado de la versión Manual y de la versión Motor).",
+     "general_specs": {
+      "Título de tabla": "REOSTATO TANDEM DOBLE",
+      "Estructura de cabecera": "POTENCIA/POWER; A (MANUAL, MOTOR.); B; C (MANUAL, MOTOR.); D (MANUAL, MOTOR.); E; F",
+      "Versiones dibujadas": "Manual y Motor",
+      "Unidad de las cotas": "no indicada en el PDF"
+     },
+     "models": [
+      {
+       "reference": "2x250W",
+       "page": 32,
+       "specs": {
+        "POTENCIA / POWER": "2x250W",
+        "A MANUAL": "180",
+        "A MOTOR.": "240",
+        "B": "115",
+        "C MANUAL": "18",
+        "C MOTOR.": "- -",
+        "D MANUAL": "6",
+        "D MOTOR.": "- -",
+        "E": "100",
+        "F": "M-6"
+       },
+       "raw_row": "2x250W 180 240 115 18 - - 6 - - 100 M-6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2x500W",
+       "page": 32,
+       "specs": {
+        "POTENCIA / POWER": "2x500W",
+        "A MANUAL": "230",
+        "A MOTOR.": "300",
+        "B": "165",
+        "C MANUAL": "36",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "125",
+        "F": "M-6"
+       },
+       "raw_row": "2x500W 230 300 165 36 - - 8 - - 125 M-6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2x1000W",
+       "page": 32,
+       "specs": {
+        "POTENCIA / POWER": "2x1000W",
+        "A MANUAL": "270",
+        "A MOTOR.": "350",
+        "B": "235",
+        "C MANUAL": "54",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "195",
+        "F": "M-8"
+       },
+       "raw_row": "2x1000W 270 350 235 54 - - 8 - - 195 M-8",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Versión Manual y versión Motor (columnas A, C y D se dan para ambas)"
+     ],
+     "ordering_info": "El PDF no da códigos de referencia; cada fila se identifica por la potencia 2x250W, 2x500W o 2x1000W."
+    },
+    {
+     "family": "Reóstato tandem triple",
+     "series": null,
+     "page": 33,
+     "description": "Sin texto descriptivo en el PDF; tabla 'REOSTATO TANDEM TRIPLE' (solo imagen) con cotas A, B, C, D, E, F para las versiones Manual y Motor, y cuatro dibujos (planta y alzado de la versión Manual y de la versión Motor).",
+     "general_specs": {
+      "Título de tabla": "REOSTATO TANDEM TRIPLE",
+      "Estructura de cabecera": "POTENCIA/POWER; A (MANUAL, MOTOR.); B; C (MANUAL, MOTOR.); D (MANUAL, MOTOR.); E; F",
+      "Versiones dibujadas": "Manual y Motor",
+      "Unidad de las cotas": "no indicada en el PDF"
+     },
+     "models": [
+      {
+       "reference": "3x250W",
+       "page": 33,
+       "specs": {
+        "POTENCIA / POWER": "3x250W",
+        "A MANUAL": "300",
+        "A MOTOR.": "240",
+        "B": "115",
+        "C MANUAL": "18",
+        "C MOTOR.": "- -",
+        "D MANUAL": "6",
+        "D MOTOR.": "- -",
+        "E": "100",
+        "F": "M-6"
+       },
+       "raw_row": "3x250W 300 240 115 18 - - 6 - - 100 M-6",
+       "confidence": "media"
+      },
+      {
+       "reference": "3x500W",
+       "page": 33,
+       "specs": {
+        "POTENCIA / POWER": "3x500W",
+        "A MANUAL": "370",
+        "A MOTOR.": "300",
+        "B": "165",
+        "C MANUAL": "36",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "125",
+        "F": "M-6"
+       },
+       "raw_row": "3x500W 370 300 165 36 - - 8 - - 125 M-6",
+       "confidence": "media"
+      },
+      {
+       "reference": "3x1000W",
+       "page": 33,
+       "specs": {
+        "POTENCIA / POWER": "3x1000W",
+        "A MANUAL": "430",
+        "A MOTOR.": "350",
+        "B": "235",
+        "C MANUAL": "54",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "195",
+        "F": "M-8"
+       },
+       "raw_row": "3x1000W 430 350 235 54 - - 8 - - 195 M-8",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Versión Manual y versión Motor (columnas A, C y D se dan para ambas)"
+     ],
+     "ordering_info": "El PDF no da códigos de referencia; cada fila se identifica por la potencia 3x250W, 3x500W o 3x1000W."
+    },
+    {
+     "family": "Botones de mando - Serie BO (brillante)",
+     "series": "BO",
+     "page": 35,
+     "description": "Sin texto descriptivo en el PDF; tabla 'Serie BO (brillante)' (solo imagen) con cotas D, e, H, d por MOD. TYPE, fotografía de un botón gris con inserto metálico y dibujo en sección con cotas d, H, e, D.",
+     "general_specs": {
+      "Título de tabla": "Serie BO (brillante)",
+      "Nota": "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10",
+      "Unidad de las cotas": "no indicada en el PDF"
+     },
+     "models": [
+      {
+       "reference": "Serie BO (brillante) MOD. 10",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "10",
+        "e": "3 y 4",
+        "H": "14",
+        "d": "8,5"
+       },
+       "raw_row": "10 10 3 y 4 14 8,5",
+       "confidence": "media"
+      },
+      {
+       "reference": "Serie BO (brillante) MOD. 15",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6",
+        "H": "15",
+        "d": "13"
+       },
+       "raw_row": "15 14,5 4,6 15 13",
+       "confidence": "media"
+      },
+      {
+       "reference": "Serie BO (brillante) MOD. 21",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "21",
+        "e": "4,6",
+        "H": "17",
+        "d": "19,5"
+       },
+       "raw_row": "21 21 4,6 17 19,5",
+       "confidence": "media"
+      },
+      {
+       "reference": "Serie BO (brillante) MOD. 30",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "29,5",
+        "e": "4,6",
+        "H": "17,5",
+        "d": "28"
+       },
+       "raw_row": "30 29,5 4,6 17,5 28",
+       "confidence": "media"
+      },
+      {
+       "reference": "Serie BO (brillante) MOD. 38",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "38",
+        "e": "4,6,8",
+        "H": "18,5",
+        "d": "36,5"
+       },
+       "raw_row": "38 38 4,6,8 18,5 36,5",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
+     ],
+     "ordering_info": "El PDF no da códigos de referencia; cada fila se identifica por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
+    },
+    {
+     "family": "Botones de mando - Serie BO con Línea",
+     "series": "BO",
+     "page": 35,
+     "description": "Sin texto descriptivo en el PDF; tabla 'Serie BO con Línea' (solo imagen) con cotas D, e, H, d por MOD. TYPE, fotografía de un botón gris con línea indicadora negra y dibujo en sección con cotas d, H, e, D.",
+     "general_specs": {
+      "Título de tabla": "Serie BO con Línea",
+      "Nota": "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10",
+      "Unidad de las cotas": "no indicada en el PDF"
+     },
+     "models": [
+      {
+       "reference": "Serie BO con Línea MOD. 10",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "10",
+        "e": "3 y 4",
+        "H": "14",
+        "d": "8,5"
+       },
+       "raw_row": "10 10 3 y 4 14 8,5",
+       "confidence": "media"
+      },
+      {
+       "reference": "Serie BO con Línea MOD. 15",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6",
+        "H": "15",
+        "d": "13"
+       },
+       "raw_row": "15 14,5 4,6 15 13",
+       "confidence": "media"
+      },
+      {
+       "reference": "Serie BO con Línea MOD. 21",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "21",
+        "e": "4,6",
+        "H": "17",
+        "d": "19,5"
+       },
+       "raw_row": "21 21 4,6 17 19,5",
+       "confidence": "media"
+      },
+      {
+       "reference": "Serie BO con Línea MOD. 30",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "29,5",
+        "e": "4,6",
+        "H": "17,5",
+        "d": "28"
+       },
+       "raw_row": "30 29,5 4,6 17,5 28",
+       "confidence": "media"
+      },
+      {
+       "reference": "Serie BO con Línea MOD. 38",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "38",
+        "e": "4,6,8",
+        "H": "18,5",
+        "d": "36,5"
+       },
+       "raw_row": "38 38 4,6,8 18,5 36,5",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
+     ],
+     "ordering_info": "El PDF no da códigos de referencia; cada fila se identifica por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
+    },
+    {
+     "family": "Botones de mando - Tapas",
+     "series": null,
+     "page": 35,
+     "description": "Sin texto descriptivo en el PDF; tabla 'Tapas' (solo imagen) con cotas D, d, e por MOD. TYPE (15, 21, 30, 38), fotografía de una tapa azul y dibujo en sección con rótulos D, H, e.",
+     "general_specs": {
+      "Título de tabla": "Tapas",
+      "Unidad de las cotas": "no indicada en el PDF"
+     },
+     "models": [
+      {
+       "reference": "Tapas MOD. 15",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 26 9,8 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Tapas MOD. 21",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 36 16 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Tapas MOD. 30",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 45 21,5 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Tapas MOD. 38",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 55 27 2,7",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "El PDF no da códigos de referencia; cada fila se identifica por MOD. TYPE (15, 21, 30, 38)."
+    },
+    {
+     "family": "Botones de mando - Aros con Flecha",
+     "series": null,
+     "page": 35,
+     "description": "Sin texto descriptivo en el PDF; tabla 'Aros con Flecha' (solo imagen) con cotas D, e, H por MOD. TYPE (10, 15, 21, 30, 38), fotografía de un aro negro con flecha y dibujo en sección con rótulos F, d, D.",
+     "general_specs": {
+      "Título de tabla": "Aros con Flecha",
+      "Unidad de las cotas": "no indicada en el PDF"
+     },
+     "models": [
+      {
+       "reference": "Aros con Flecha MOD. 10",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "8",
+        "e": "6,5",
+        "H": "8,5"
+       },
+       "raw_row": "10 8 6,5 8,5",
+       "confidence": "media"
+      },
+      {
+       "reference": "Aros con Flecha MOD. 15",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "11",
+        "e": "10",
+        "H": "13"
+       },
+       "raw_row": "15 11 10 13",
+       "confidence": "media"
+      },
+      {
+       "reference": "Aros con Flecha MOD. 21",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "18",
+        "e": "15,7",
+        "H": "19,5"
+       },
+       "raw_row": "21 18 15,7 19,5",
+       "confidence": "media"
+      },
+      {
+       "reference": "Aros con Flecha MOD. 30",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "25,5",
+        "e": "23,8",
+        "H": "28"
+       },
+       "raw_row": "30 25,5 23,8 28",
+       "confidence": "media"
+      },
+      {
+       "reference": "Aros con Flecha MOD. 38",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "33,5",
+        "e": "30,5",
+        "H": "36,5"
+       },
+       "raw_row": "38 33,5 30,5 36,5",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "El PDF no da códigos de referencia; cada fila se identifica por MOD. TYPE (10, 15, 21, 30, 38)."
+    },
+    {
+     "family": "Botones de mando - Cubretuercas",
+     "series": null,
+     "page": 35,
+     "description": "Sin texto descriptivo en el PDF; tabla 'Cubretuercas' (solo imagen) con cotas A, B, D por MOD. TYPE (10, 15), fotografía de un cubretuercas negro y dibujo en sección con rótulos A, B, C.",
+     "general_specs": {
+      "Título de tabla": "Cubretuercas",
+      "Unidad de las cotas": "no indicada en el PDF"
+     },
+     "models": [
+      {
+       "reference": "Cubretuercas MOD. 10",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "10",
+        "A": "3,5",
+        "B": "2,5",
+        "D": "14"
+       },
+       "raw_row": "10 3,5 2,5 14",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Cubretuercas MOD. 15",
+       "page": 35,
+       "specs": {
+        "MOD. TYPE": "15",
+        "A": "4",
+        "B": "3",
+        "D": "17"
+       },
+       "raw_row": "15 4 3 17",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "El PDF no da códigos de referencia; cada fila se identifica por MOD. TYPE (10, 15)."
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "Tensión de perforación > 1000v.",
+     "page": 29,
+     "context": "Característica principal del potenciómetro 3W (la doble 2 x 3 W remite a las mismas características eléctricas)",
+     "normalized_hint": "> 1000 V (tensión de perforación; el PDF no indica AC/DC)"
+    },
+    {
+     "raw": "Tensión de perforación: >1000V",
+     "page": 30,
+     "context": "Característica principal del potenciómetro 5W",
+     "normalized_hint": "> 1000 V (tensión de perforación; el PDF no indica AC/DC)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Encabezado de página 'POTENCIÓMETROS Y REOSTATOS' en las páginas de potenciómetros y reóstatos del rango; la penúltima página del rango es la portada de las secciones BOTONES DE MANDO / SOPORTES METÁLICOS PARA LED / BORNES, HEMBRILLAS Y PORTAFUSIBLES (sin número impreso) y la última lleva el encabezado 'BOTONES DE MANDO'. Numeración PDF/impresa: ver título del documento.",
+     "page": 29
+    },
+    {
+     "fact": "Subtítulo de sección: 'POTENCIÓMETROS BOBINADOS DE 3W Y 5W'; subtítulo siguiente de la misma página: 'POTENCIÓMETRO DOBLE'.",
+     "page": 29
+    },
+    {
+     "fact": "Material del eje: poliamida 6 con fibra de vidrio (eje Standard 12 mm); cursor basculante; hermético al polvo.",
+     "page": 29
+    },
+    {
+     "fact": "Categoría UL: 94V-0.",
+     "page": 29
+    },
+    {
+     "fact": "Embalaje del potenciómetro 3W y del potenciómetro doble: Caja de 25 pzas.",
+     "page": 29
+    },
+    {
+     "fact": "Aplicación del potenciómetro doble 2 x 3 W: equipos estéreo, como atenuador.",
+     "page": 29
+    },
+    {
+     "fact": "Fotografía y dibujos acotados (vista frontal y lateral) del potenciómetro 3W y del doble; los dibujos no llevan leyenda ni unidades (ver uncertain).",
+     "page": 29
+    },
+    {
+     "fact": "Potenciómetro 5W: la escobilla es un rodillo de latón basculante que gira sobre la superficie plana de la resistencia; distribución de resistencia lineal; terminales soldables.",
+     "page": 30
+    },
+    {
+     "fact": "Fotografía y dibujo acotado (vista frontal y lateral) del potenciómetro 5W; el dibujo no lleva leyenda ni unidades (ver uncertain).",
+     "page": 30
+    },
+    {
+     "fact": "Reóstatos cerámicos: se fabrican en las potencias 15-30-40-60-80125-250-500 y 1000 W; potencias nominales aplicables con buenas condiciones de ventilación; con ventilación pobre se deben reducir hasta un un 20%.",
+     "page": 31
+    },
+    {
+     "fact": "Reóstatos cerámicos: núcleo de aro cerámico de esteatita, antihigroscópico (evita la corrosión por electrólisis); hilo de constantán, nichrom o kantal; cemento cerámico fabricado en los laboratorios de Torivac que soporta hasta 9000C; escobilla de plata o de cobre-plata pulida.",
+     "page": 31
+    },
+    {
+     "fact": "Tabla de reóstatos PC12 a PC1000: columnas POTENCIA/POWER (código PC), A, B, C, D, d, R, G (en grados, 'º'), L, PESO (KG.)/WEIGHT (KG.) y GAMA DE VALORES/OHMIC VALUES (rotulada en español e inglés); nota (1) 'Anclaje Mod. PC-1000' con dibujo de anclaje.",
+     "page": 31
+    },
+    {
+     "fact": "Dibujos bajo la tabla: anclaje Mod. PC-1000 con cotas rotuladas (ver uncertain), alzado con cotas D, A, B, C, d, R y planta con cotas L, G.",
+     "page": 31
+    },
+    {
+     "fact": "Reóstato tandem doble: tabla 2x250W / 2x500W / 2x1000W con cotas A, C y D separadas en MANUAL y MOTOR., más B, E y F; dibujos de planta y alzado de las versiones Manual y Motor. La tabla solo existe como imagen.",
+     "page": 32
+    },
+    {
+     "fact": "Reóstato tandem triple: tabla 3x250W / 3x500W / 3x1000W con la misma estructura de columnas que la del tandem doble; dibujos de planta y alzado de las versiones Manual y Motor. La tabla solo existe como imagen.",
+     "page": 33
+    },
+    {
+     "fact": "Portada de sección: títulos 'BOTONES DE MANDO', 'SOPORTES METÁLICOS PARA LED' y 'BORNES, HEMBRILLAS Y PORTAFUSIBLES' con logotipo Torivac y fotografía de botones de mando, soportes para LED y bornes/hembrillas de varios colores; sin datos técnicos ni texto descriptivo.",
+     "page": 34
+    },
+    {
+     "fact": "Los contenidos de SOPORTES METÁLICOS PARA LED y BORNES, HEMBRILLAS Y PORTAFUSIBLES anunciados en esta portada quedan fuera del rango de este trabajo.",
+     "page": 34
+    },
+    {
+     "fact": "Botones de mando (p.35, impresa 34): solo tablas de cotas con fotografías y dibujos en sección; el PDF no menciona en esta página material, colores disponibles, precios ni códigos de referencia.",
+     "page": 35
+    },
+    {
+     "fact": "Las tablas 'Serie BO (brillante)' y 'Serie BO con Línea' contienen valores idénticos fila a fila (D, e, H, d por MOD. TYPE 10, 15, 21, 30, 38); se extraen ambas tal como figuran.",
+     "page": 35
+    },
+    {
+     "fact": "Nota de las series BO: 'Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10'.",
+     "page": 35
+    },
+    {
+     "fact": "Los MOD. TYPE de Aros con Flecha (10, 15, 21, 30, 38) y Cubretuercas (10, 15) y de Tapas (15, 21, 30, 38) coinciden con los de las series BO, pero el PDF no declara que sean accesorios de ellas.",
+     "page": 35
+    }
+   ],
+   "visual_only_pages": [
+    32,
+    33,
+    35
+   ],
+   "uncertain": [
+    {
+     "page": 29,
+     "item": "Potenciómetro 3W · 'Resistencia mín.: 52 - 22KQ'",
+     "why": "Texto con símbolos mal reconocidos (también en la capa de texto del PDF). El párrafo de la misma página dice 'desde 5 Ohm hasta 22 K', lo que sugiere 5 Ω - 22 kΩ, pero el PDF no lo escribe así: solo se conserva la cadena literal y no se publica ninguna lectura corregida; propuesta de revisión para el panel de admin."
+    },
+    {
+     "page": 29,
+     "item": "Potenciómetro 3W · 'Ángulo de giro: 2800'",
+     "why": "Falta el símbolo de grado: el valor literal es '2800'. Una lectura probable es 280º, pero no consta en el PDF; no se publica."
+    },
+    {
+     "page": 29,
+     "item": "Potenciómetro 3W · 'Temperatura de trabajo: -20%/+60\"'",
+     "why": "Los símbolos '%' y '\"' ocupan el lugar de la unidad (probablemente ºC). Solo se conserva la cadena literal; la unidad no se asume."
+    },
+    {
+     "page": 29,
+     "item": "Potenciómetro 3W · 'Eje Standard 12 mm, (8 6mm) de poliamida 6 con fibra de vidrio'",
+     "why": "El paréntesis '(8 6mm)' es ilegible. El dibujo rotula 6 junto al eje y 12 como longitud, pero el PDF no aclara qué significa el '8'; no se interpreta."
+    },
+    {
+     "page": 29,
+     "item": "Potenciómetro 3W · cotas del dibujo (imagen, sin leyenda ni unidad)",
+     "why": "Vista frontal: 40º y 40º (entre terminales), 25, 8, 6, 2,5. Vista lateral: 22,5, 6, 8, 12, 6 y la rotulación vertical M10/100. El PDF no explica a qué elemento corresponde cada cota ni su unidad (presumiblemente mm); solo 25 (diámetro) y 12 (eje) se corresponden con el texto. Propuesta para revisar con el fabricante, no se publica como dato."
+    },
+    {
+     "page": 29,
+     "item": "Potenciómetro doble 2 x 3 W · cotas del dibujo (imagen, sin leyenda ni unidad)",
+     "why": "Vista frontal: 40º y 40º, 27, 8, 6, 2,5. Vista lateral: 40 (cota superior), 6, 8, 12, 6, 48 y M10/100. Difieren de las del 3W (25 y 22,5) aunque el texto dice que sus 'características eléctricas y físicas son iguales'; el PDF no resuelve la aparente discrepancia. No se publica como dato."
+    },
+    {
+     "page": 29,
+     "item": "Potenciómetro doble · 'Peso neto: 40 grs.' y gama de valores",
+     "why": "El PDF solo da el peso (40 grs) y remite al modelo de 3W para las demás características; la gama de valores, tolerancia y tensión de perforación del doble no figuran de forma explícita."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · 'Potencia máx 2.2:25%0,5W'",
+     "why": "Cadena ilegible (OCR defectuoso en el propio PDF). No es posible deducir la potencia máxima; la potencia 5W solo procede del título 'POTENCIÓMETRO 5W' y del subtítulo 'POTENCIÓMETROS BOBINADOS DE 3W Y 5W'. No se publica ningún valor de potencia máxima."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · 'Gama de valores óhmicos: 52-50 KO'",
+     "why": "Cadena con símbolos mal reconocidos; lectura probable 5 Ω - 50 kΩ no confirmada por el PDF. Solo se conserva la cadena literal."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · 'Tolerancia: 6%,'",
+     "why": "Valor con coma final y posible error de reconocimiento (el 3W indica 10%). No se corrige; propuesta de verificación."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · 'Angulo de glo, acánico; 264\"' y 'Angulo de gio'Biécirico: 250%'",
+     "why": "Rótulos y unidades mal reconocidos (probablemente ángulo de giro mecánico y eléctrico en grados). Solo se conservan las cadenas literales; no se asignan rótulos ni unidades corregidos."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · 'Rosistoncia del ope a la rotura: 8 Kg/cm'",
+     "why": "Rótulo ilegible (probablemente resistencia del tope a la rotura). Se conserva el rótulo literal y '8 Kg/cm'; no se reinterpreta."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · 'Paso noto: 40-grs'",
+     "why": "Rótulo ilegible (probablemente peso neto). Se conserva literal; no se publica como peso."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · 'Incremento de temperatura plena carga: 75'C'",
+     "why": "La unidad aparece como 'C precedida de un apóstrofo (probablemente ºC); se conserva literal."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · cotas del dibujo (imagen, sin leyenda ni unidad)",
+     "why": "Rótulos del alzado: 6Ø (eje), 40, 7, 25 y 41. El PDF no los explica; 40 coincide con 'Longitud del eje Standard: 40 mm' y 6Ø sugiere el diámetro del eje, pero no se asigna ningún significado ni unidad."
+    },
+    {
+     "page": 30,
+     "item": "Potenciómetro 5W · peso, embalaje, categoría UL y temperatura de trabajo",
+     "why": "A diferencia del 3W, la lista del 5W no da embalaje, categoría UL ni temperatura de trabajo."
+    },
+    {
+     "page": 31,
+     "item": "Reóstatos cerámicos · lista de potencias '15-30-40-60-80125-250-500 y 1000 W'",
+     "why": "Falta un separador entre 80 y 125 (lectura probable '80 y 125 W'). Además, la lista (9 potencias) no se relaciona explícitamente con los códigos PC12, PC25, PC35, PC50, PC75, PC125, PC250, PC500 y PC1000 de la tabla (9 modelos): la columna POTENCIA/POWER contiene códigos PC, no vatios. No se asocia ningún código con ninguna potencia."
+    },
+    {
+     "page": 31,
+     "item": "Reóstatos cerámicos · 'soporta temperaturas de hasta 9000C'",
+     "why": "Cadena literal con unidad mal reconocida (probablemente 900 ºC). No se corrige."
+    },
+    {
+     "page": 31,
+     "item": "Reóstatos cerámicos · 'reducirlas hasta un un 20%'",
+     "why": "Texto con 'un' duplicado; el sentido (reducción de potencia en ventilación pobre) es claro pero el PDF no precisa si es una reducción del 20% o hasta el 20%. Se conserva la frase literal."
+    },
+    {
+     "page": 31,
+     "item": "Tabla PC12-PC1000 · unidad y significado de las cotas A, B, C, D, d, R, L",
+     "why": "La tabla no indica unidad (presumiblemente mm) ni explica qué designa cada letra; el dibujo de la p.31 solo rotula A, B, C, D, d, R, L y G sin leyenda. G se da en grados ('º') y el peso en KG. por el rótulo de columna."
+    },
+    {
+     "page": 31,
+     "item": "Tabla PC12-PC1000 · fila PC1000, columna R '(1)' y columna B '10'",
+     "why": "La columna R del PC1000 contiene la llamada '(1)' (nota: 'Anclaje Mod. PC-1000') en lugar de una rosca (M-10 / M-12 en los demás); la columna B del PC1000 vale 10, mientras el resto vale 8 o 12. Se conservan tal cual; confianza media en esa fila."
+    },
+    {
+     "page": 31,
+     "item": "Dibujo de anclaje Mod. PC-1000 · rótulos 70, 33 y R.M6",
+     "why": "Valores leídos de la imagen (no figuran en la capa de texto): cota horizontal 70, cota vertical 33 y rótulo 'R.M6' sobre un agujero. Sin unidad ni leyenda; la relación de R.M6 con la columna R de la tabla no está explicada. No se publica como dato."
+    },
+    {
+     "page": 32,
+     "item": "Tabla 'REOSTATO TANDEM DOBLE' · solo existe como imagen",
+     "why": "Valores transcritos de la imagen (PNG a 200 dpi). Sin unidad (presumiblemente mm). Las celdas C MOTOR. y D MOTOR. aparecen como '- -' y se conservan así. El significado de A-F solo se deduce de los dibujos (sin leyenda); no se asigna."
+    },
+    {
+     "page": 32,
+     "item": "Reóstato tandem doble · relación con los reóstatos cerámicos PC12-PC1000",
+     "why": "El PDF no indica con qué modelos de la tabla de la p.31 se construyen los tandem 2x250W, 2x500W y 2x1000W (ni su gama de valores óhmicos, peso o precio). No se infiere."
+    },
+    {
+     "page": 33,
+     "item": "Tabla 'REOSTATO TANDEM TRIPLE' · A MOTOR. idéntica a la del tandem doble",
+     "why": "En el tandem triple, A MOTOR. vale 240, 300 y 350, los mismos valores que en el tandem doble, y es menor que A MANUAL (300, 370, 430), al contrario que en el doble (A MOTOR. 240, 300, 350 > A MANUAL 180, 230, 270). Podría ser una repetición de valores en el catálogo. Se conservan tal cual con confianza 'media'; propuesta para verificar con el fabricante, no se publica como dato fiable."
+    },
+    {
+     "page": 33,
+     "item": "Tabla 'REOSTATO TANDEM TRIPLE' · solo existe como imagen",
+     "why": "Valores transcritos de la imagen (PNG a 200 dpi). Sin unidad (presumiblemente mm). Celdas C MOTOR. y D MOTOR. como '- -'."
+    },
+    {
+     "page": 34,
+     "item": "Portada de sección · contenido anunciado",
+     "why": "La portada rotula tres secciones; en el rango 29-35 solo se encuentran datos de BOTONES DE MANDO (p.35). No hay datos de SOPORTES METÁLICOS PARA LED ni de BORNES, HEMBRILLAS Y PORTAFUSIBLES en este rango."
+    },
+    {
+     "page": 35,
+     "item": "Series BO (brillante / con Línea) · columna 'e' con valores '4,6' en MOD. 15, 21 y 30",
+     "why": "Ambigüedad: '4,6' puede ser el decimal 4,6 o la lista 4 y 6 (en la misma columna MOD. 10 pone '3 y 4' y MOD. 38 pone '4,6,8', que son listas). En las demás tablas la coma sí es decimal (9,8; 2,8; 6,5...). Se conserva la cadena literal '4,6' con confianza media; no se interpreta ni se publica como decimal."
+    },
+    {
+     "page": 35,
+     "item": "Series BO · significado de D, e, H, d y unidad",
+     "why": "El dibujo en sección rotula d, H, e, D sin leyenda; el PDF no dice qué mide cada una (e parece el diámetro/orificio del eje por los valores '3 y 4' y '4,6,8', pero no consta) ni la unidad (presumiblemente mm). La nota 'Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10' no explica a qué cota se refiere el 1/4\"."
+    },
+    {
+     "page": 35,
+     "item": "Aros con Flecha · cabecera de columna 'H'",
+     "why": "Los valores de la columna 'H' (8,5; 13; 19,5; 28; 36,5) coinciden exactamente con los de la columna 'd' de las series BO, y el dibujo de los aros rotula F, d, D (no H). Se conserva la cabecera 'H' tal como está impresa; posible rótulo erróneo, propuesta de verificación."
+    },
+    {
+     "page": 35,
+     "item": "Tapas · rótulos del dibujo (D, H, e) frente a las columnas de la tabla (D, d, e)",
+     "why": "El dibujo rotula D, H y e pero la tabla tiene D, d y e; no se puede asignar con certeza qué cota corresponde a cada columna. Se conservan las cabeceras de la tabla."
+    },
+    {
+     "page": 35,
+     "item": "Cubretuercas · rótulos del dibujo (A, B, C) frente a las columnas de la tabla (A, B, D)",
+     "why": "El dibujo rotula A, B y C pero la tabla tiene A, B y D; se conservan las cabeceras de la tabla sin asignar significado."
+    },
+    {
+     "page": 35,
+     "item": "Tablas de la p.35 · solo existen como imagen",
+     "why": "Valores transcritos de la imagen (PNG a 250 dpi, tabla por tabla); sin capa de texto, no verificable automáticamente. Las filas de Tapas y Cubretuercas se leyeron sin ambigüedad (confianza alta); el resto lleva confianza media por los puntos anteriores."
+    }
+   ]
+  }
+ ]
+}

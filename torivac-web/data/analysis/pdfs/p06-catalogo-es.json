@@ -1,0 +1,913 @@
+{
+ "job": "p06-catalogo-es",
+ "documents": [
+  {
+   "file": "Torivac_2024.pdf",
+   "pages": [
+    36,
+    41
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "Catálogo Torivac 2024 (ES) – páginas PDF 36 a 41 (paginación impresa 35 a 40): BOTONES DE MANDO (p.36-37), SOPORTES METÁLICOS PARA LED (p.38-39) y BORNES HEMBRILLAS Y PORTAFUSIBLES (p.40-41)",
+   "families": [
+    {
+     "family": "BOTONES DE MANDO – Discos con Flecha",
+     "series": null,
+     "page": 36,
+     "description": "Tabla 'Discos con Flecha' (MOD./TYPE 15, 21, 30 y 38) con las cotas D, d y e; fotografía de un disco negro con flecha blanca y dibujo en sección con las cotas e, d y D. Sección BOTONES DE MANDO, página impresa 35.",
+     "general_specs": {
+      "Cabeceras de columna (tal cual)": "MOD. TYPE | D | d | e",
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)",
+      "Dibujo": "perfil en sección con las cotas e (espesor), d y D rotuladas solo con la letra"
+     },
+     "models": [
+      {
+       "reference": "15",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 26 9,8 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "21",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 36 16 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "30",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 45 21,5 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "38",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 55 27 2,7",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "BOTONES DE MANDO – Discos Graduados",
+     "series": null,
+     "page": 36,
+     "description": "Tabla 'Discos Graduados' (MOD./TYPE 15, 21, 30 y 38) con las cotas D, d y e (mismos valores que la tabla de Discos con Flecha); fotografía de un disco blanco translúcido con graduación numérica y dibujo en sección con las cotas e, d y D.",
+     "general_specs": {
+      "Cabeceras de columna (tal cual)": "MOD. TYPE | D | d | e",
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)",
+      "Duplicidad de valores": "los 4 modelos repiten exactamente las cotas D, d y e de 'Discos con Flecha' (misma página)"
+     },
+     "models": [
+      {
+       "reference": "15",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 26 9,8 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "21",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 36 16 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "30",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 45 21,5 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "38",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 55 27 2,7",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "BOTONES DE MANDO – Startors",
+     "series": null,
+     "page": 36,
+     "description": "Tabla 'Startors' con CÓD./CODE, MOD./TYPE y D (BOS014, BOS021, BOS029); fotografía de un disco negro con marca blanca y dibujo en sección con la cota D.",
+     "general_specs": {
+      "Cabeceras de columna (tal cual)": "CÓD. CODE | MOD. TYPE | D",
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)"
+     },
+     "models": [
+      {
+       "reference": "BOS014",
+       "page": 36,
+       "specs": {
+        "CÓD./CODE": "BOS014",
+        "MOD./TYPE": "15",
+        "D": "26"
+       },
+       "raw_row": "BOS014 15 26",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BOS021",
+       "page": 36,
+       "specs": {
+        "CÓD./CODE": "BOS021",
+        "MOD./TYPE": "21",
+        "D": "36"
+       },
+       "raw_row": "BOS021 21 36",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BOS029",
+       "page": 36,
+       "specs": {
+        "CÓD./CODE": "BOS029",
+        "MOD./TYPE": "30",
+        "D": "44"
+       },
+       "raw_row": "BOS029 30 44",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "La tabla da el código de pedido (CÓD./CODE) BOS014, BOS021 y BOS029 asociado a cada MOD./TYPE."
+    },
+    {
+     "family": "BOTONES DE MANDO – Serie BM (mate)",
+     "series": "BM",
+     "page": 36,
+     "description": "Tabla 'Serie BM (mate)' (MOD./TYPE 15 y 21) con las cotas D, e y H; fotografía de un botón negro estriado con inserto metálico y dibujo en sección con las cotas d, D, e y H.",
+     "general_specs": {
+      "Cabeceras de columna (tal cual)": "MOD. TYPE | D | e | H",
+      "Acabado (título)": "mate",
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)"
+     },
+     "models": [
+      {
+       "reference": "15",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "15",
+        "D": "14,5",
+        "e": "4,6,1/4\"",
+        "H": "16"
+       },
+       "raw_row": "15 14,5 4,6,1/4\" 16",
+       "confidence": "alta"
+      },
+      {
+       "reference": "21",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "21",
+        "D": "20,6",
+        "e": "4,6,1/4\"",
+        "H": "19"
+       },
+       "raw_row": "21 20,6 4,6,1/4\" 19",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Tapas para Botón BM (mate), tabla de la misma página con MOD./TYPE 15 y 21"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "BOTONES DE MANDO – Tapas para Botón BM (mate)",
+     "series": "BM",
+     "page": 36,
+     "description": "Tabla 'Tapas para Botón BM (mate)' (MOD./TYPE 15 y 21) con las cotas D, e y H; fotografía de una tapa gris claro con marca negra y dibujo en sección con las cotas D, e y H.",
+     "general_specs": {
+      "Cabeceras de columna (tal cual)": "MOD. TYPE | D | e | H",
+      "Acabado (título)": "mate",
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)"
+     },
+     "models": [
+      {
+       "reference": "15",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "15",
+        "D": "12",
+        "e": "4,6,1/4\"",
+        "H": "6,2"
+       },
+       "raw_row": "15 12 4,6,1/4\" 6,2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "21",
+       "page": 36,
+       "specs": {
+        "MOD./TYPE": "21",
+        "D": "18,8",
+        "e": "4,6,1/4\"",
+        "H": "7,4"
+       },
+       "raw_row": "21 18,8 4,6,1/4\" 7,4",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "BOTONES DE MANDO – Botón Baquelita \"DF\"",
+     "series": "DF",
+     "page": 37,
+     "description": "Tabla 'Botón Baquelita \"DF\"' (MOD./TYPE 29DF, 38DF y 61DF) con las cotas A, B, D y E; dos fotografías de botones negros con faldón y aguja, y dibujo en sección con las cotas A, B y D. Página impresa 36.",
+     "general_specs": {
+      "Cabeceras de columna (tal cual)": "MOD. TYPE | A | B | D | E",
+      "Material (título)": "baquelita",
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)",
+      "Cotas dibujadas": "el dibujo solo rotula A, B y D; la letra E de la tabla no aparece en el dibujo"
+     },
+     "models": [
+      {
+       "reference": "29DF",
+       "page": 37,
+       "specs": {
+        "MOD./TYPE": "29DF",
+        "A": "29",
+        "B": "20",
+        "D": "38",
+        "E": "15,5"
+       },
+       "raw_row": "29DF 29 20 38 15,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "38DF",
+       "page": 37,
+       "specs": {
+        "MOD./TYPE": "38DF",
+        "A": "38",
+        "B": "22",
+        "D": "52",
+        "E": "17"
+       },
+       "raw_row": "38DF 38 22 52 17",
+       "confidence": "alta"
+      },
+      {
+       "reference": "61DF",
+       "page": 37,
+       "specs": {
+        "MOD./TYPE": "61DF",
+        "A": "61",
+        "B": "31",
+        "D": "76",
+        "E": "18"
+       },
+       "raw_row": "61DF 61 31 76 18",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "BOTONES DE MANDO – Carátulas Graduadas",
+     "series": null,
+     "page": 37,
+     "description": "Tabla bilingüe 'Carátulas Graduadas' (13 códigos CA...) con diámetro Ø, grabado (escala impresa), ángulo de rotación y color; fotografía de tres carátulas (azul, blanca/gris y negra) con escalas graduadas.",
+     "general_specs": {
+      "Cabeceras de columna (tal cual)": "Código Code | Ø | Grabado Printed | Ángulo Rotat.Angle | Color Colour",
+      "Unidad de Ø": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)",
+      "Colores que figuran": "Gris / Grey, Negro / Black, Azul / Blue",
+      "Escalas grabadas que figuran": "0-100%, 0-230v, 0-250v"
+     },
+     "models": [
+      {
+       "reference": "CA0050180",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0050180",
+        "Ø": "50",
+        "Grabado/Printed": "0-100%",
+        "Ángulo/Rotat.Angle": "180º",
+        "Color/Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0050180 50 0-100% 180º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0050270",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0050270",
+        "Ø": "50",
+        "Grabado/Printed": "0-100%",
+        "Ángulo/Rotat.Angle": "270º",
+        "Color/Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0050270 50 0-100% 270º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080270",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0080270",
+        "Ø": "80",
+        "Grabado/Printed": "0-100%",
+        "Ángulo/Rotat.Angle": "270º",
+        "Color/Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0080270 80 0-100% 270º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080305",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0080305",
+        "Ø": "80",
+        "Grabado/Printed": "0-100%",
+        "Ángulo/Rotat.Angle": "305º",
+        "Color/Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0080305 80 0-100% 305º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116270",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0116270",
+        "Ø": "116",
+        "Grabado/Printed": "0-100%",
+        "Ángulo/Rotat.Angle": "270º",
+        "Color/Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116270 116 0-100% 270º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116310",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0116310",
+        "Ø": "116",
+        "Grabado/Printed": "0-100%",
+        "Ángulo/Rotat.Angle": "310º",
+        "Color/Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116310 116 0-100% 310º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116330",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0116330",
+        "Ø": "116",
+        "Grabado/Printed": "0-100%",
+        "Ángulo/Rotat.Angle": "330º",
+        "Color/Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116330 116 0-100% 330º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080230",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0080230",
+        "Ø": "80",
+        "Grabado/Printed": "0-230v",
+        "Ángulo/Rotat.Angle": "330º",
+        "Color/Colour": "Negro / Black"
+       },
+       "raw_row": "CA0080230 80 0-230v 330º Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080250",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0080250",
+        "Ø": "80",
+        "Grabado/Printed": "0-250v",
+        "Ángulo/Rotat.Angle": "340º",
+        "Color/Colour": "Negro / Black"
+       },
+       "raw_row": "CA0080250 80 0-250v 340º Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115230",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0115230",
+        "Ø": "116",
+        "Grabado/Printed": "0-230v",
+        "Ángulo/Rotat.Angle": "330º",
+        "Color/Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115230 116 0-230v 330º Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115250",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0115250",
+        "Ø": "116",
+        "Grabado/Printed": "0-250v",
+        "Ángulo/Rotat.Angle": "330º",
+        "Color/Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115250 116 0-250v 330º Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115330",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0115330",
+        "Ø": "116",
+        "Grabado/Printed": "0-100%",
+        "Ángulo/Rotat.Angle": "330º",
+        "Color/Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115330 116 0-100% 330º Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0160330",
+       "page": 37,
+       "specs": {
+        "Código/Code": "CA0160330",
+        "Ø": "116",
+        "Grabado/Printed": "0-100%",
+        "Ángulo/Rotat.Angle": "328º",
+        "Color/Colour": "Azul / Blue"
+       },
+       "raw_row": "CA0160330 116 0-100% 328º Azul / Blue",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Cada fila lleva su código de pedido CA........ en la columna 'Código/Code'."
+    },
+    {
+     "family": "SOPORTES METÁLICOS PARA LED – de 3mm",
+     "series": null,
+     "page": 38,
+     "description": "Dos soportes metálicos para LED de 3mm bajo el mismo título 'Soportes Metálicos para LED de 3mm.', cada uno con fotografía y dibujo acotado; no llevan referencia ni tabla. Página impresa 37.",
+     "general_specs": {
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)",
+      "Referencias": "no hay referencia impresa; cada soporte se identifica solo por su dibujo (orden de arriba a abajo)"
+     },
+     "models": [
+      {
+       "reference": "sin referencia impresa – LED 3mm, dibujo 1 (arriba)",
+       "page": 38,
+       "specs": {
+        "Soporte para LED de (título)": "3mm",
+        "Cota Ø (dibujo)": "7",
+        "Cota vertical total (dibujo)": "13",
+        "ROSCA (dibujo)": "6/0,75",
+        "Cota vertical superior (dibujo)": "2"
+       },
+       "raw_row": "Ø 7 2 13 ROSCA 6/0,75",
+       "confidence": "media"
+      },
+      {
+       "reference": "sin referencia impresa – LED 3mm, dibujo 2 (abajo)",
+       "page": 38,
+       "specs": {
+        "Soporte para LED de (título)": "3mm",
+        "Cota Ø (dibujo)": "7",
+        "Cota vertical total (dibujo)": "15",
+        "ROSCA (dibujo)": "6/0,75",
+        "Cota vertical superior (dibujo)": "3"
+       },
+       "raw_row": "Ø 7 3 15 ROSCA 6/0,75",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "SOPORTES METÁLICOS PARA LED – de 5mm",
+     "series": null,
+     "page": 38,
+     "description": "Dos soportes metálicos para LED de 5mm bajo el mismo título 'Soportes Metálicos para LED de 5mm.', cada uno con fotografía y dibujo acotado; no llevan referencia ni tabla. Página impresa 37.",
+     "general_specs": {
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)",
+      "Referencias": "no hay referencia impresa; cada soporte se identifica solo por su dibujo (orden de arriba a abajo)"
+     },
+     "models": [
+      {
+       "reference": "sin referencia impresa – LED 5mm, dibujo 1 (arriba)",
+       "page": 38,
+       "specs": {
+        "Soporte para LED de (título)": "5mm",
+        "Cota Ø (dibujo)": "10",
+        "Cota vertical total (dibujo)": "15",
+        "ROSCA (dibujo)": "8/0,75",
+        "Cota vertical superior (dibujo)": "3"
+       },
+       "raw_row": "Ø 10 3 15 ROSCA 8/0,75",
+       "confidence": "media"
+      },
+      {
+       "reference": "sin referencia impresa – LED 5mm, dibujo 2 (abajo)",
+       "page": 38,
+       "specs": {
+        "Soporte para LED de (título)": "5mm",
+        "Cota Ø (dibujo)": "9.5",
+        "Cota vertical total (dibujo)": "16.5",
+        "ROSCA (dibujo)": "8/0,75",
+        "Cota vertical superior (dibujo)": "3"
+       },
+       "raw_row": "Ø 9.5 3 16.5 ROSCA 8/0,75",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "SOPORTES METÁLICOS PARA LED – de 8mm",
+     "series": null,
+     "page": 39,
+     "description": "Dos soportes metálicos para LED de 8mm bajo el mismo título 'Soportes Metálicos para LED de 8mm.', cada uno con fotografía y dibujo acotado; no llevan referencia ni tabla. Página impresa 38.",
+     "general_specs": {
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)",
+      "Referencias": "no hay referencia impresa; cada soporte se identifica solo por su dibujo (orden de arriba a abajo)"
+     },
+     "models": [
+      {
+       "reference": "sin referencia impresa – LED 8mm, dibujo 1 (arriba)",
+       "page": 39,
+       "specs": {
+        "Soporte para LED de (título)": "8mm",
+        "Cota Ø (dibujo)": "14",
+        "Cota vertical total (dibujo)": "17",
+        "ROSCA (dibujo)": "12/0,75",
+        "Cota vertical superior (dibujo)": "2,5"
+       },
+       "raw_row": "Ø 14 2,5 17 ROSCA 12/0,75",
+       "confidence": "media"
+      },
+      {
+       "reference": "sin referencia impresa – LED 8mm, dibujo 2 (abajo; la cota vertical superior está dibujada sin valor)",
+       "page": 39,
+       "specs": {
+        "Soporte para LED de (título)": "8mm",
+        "Cota Ø (dibujo)": "14",
+        "Cota vertical total (dibujo)": "20",
+        "ROSCA (dibujo)": "12/0,75"
+       },
+       "raw_row": "Ø 14 20 ROSCA 12/0,75",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "SOPORTES METÁLICOS PARA LED – de 10mm",
+     "series": null,
+     "page": 39,
+     "description": "Soportes metálicos para LED bajo el título 'Soportes Metálicos para LED de 10mm.': una fotografía de un portaled metálico cromado y dos dibujos en sección rotulados 'Portaled 8 Cono Mixto' y 'Portaled 10 Cono Mixto'; no llevan referencia ni tabla. Página impresa 38.",
+     "general_specs": {
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)",
+      "Referencias": "no hay referencia impresa; solo los rótulos de los dibujos 'Portaled 8 Cono Mixto' y 'Portaled 10 Cono Mixto'"
+     },
+     "models": [
+      {
+       "reference": "Portaled 8 Cono Mixto",
+       "page": 39,
+       "specs": {
+        "Soporte para LED de (título)": "10mm",
+        "Rótulo del dibujo": "Portaled 8 Cono Mixto",
+        "Cota horizontal (dibujo, sin símbolo Ø)": "14",
+        "Cota vertical total (dibujo)": "16,5",
+        "ROSCA (dibujo)": "12 / 75"
+       },
+       "raw_row": "14 16,5 ROSCA 12 / 75 Portaled 8 Cono Mixto",
+       "confidence": "media"
+      },
+      {
+       "reference": "Portaled 10 Cono Mixto",
+       "page": 39,
+       "specs": {
+        "Soporte para LED de (título)": "10mm",
+        "Rótulo del dibujo": "Portaled 10 Cono Mixto",
+        "Cota horizontal (dibujo, sin símbolo Ø)": "16",
+        "Cota vertical total (dibujo)": "22",
+        "ROSCA (dibujo)": "10 / 100"
+       },
+       "raw_row": "16 22 ROSCA 10 / 100 Portaled 10 Cono Mixto",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+     "series": null,
+     "page": 40,
+     "description": "Seis productos sin tabla, cada uno con título/referencia, fotografía y dibujo acotado: BPB - 30 A / 230V., HB - 4, HR - 4 (página PDF 40, impresa 39) y HBS - 4, HSR - 4, PF - 15 (página PDF 41, impresa 40).",
+     "general_specs": {
+      "Unidad de las cotas": "no indicada en el PDF (las cabeceras solo rotulan las letras de cota; no se asume mm)",
+      "Tipos de producto (sección)": "bornes, hembrillas y portafusibles (título de la sección BORNES HEMBRILLAS Y PORTAFUSIBLES)"
+     },
+     "models": [
+      {
+       "reference": "BPB - 30 A / 230V.",
+       "page": 40,
+       "specs": {
+        "Título (tal cual)": "BPB - 30 A / 230V.",
+        "Intensidad (en el título)": "30 A",
+        "Tensión (en el título)": "230V",
+        "Cota horizontal superior (dibujo)": "14",
+        "Cota vertical de la parte superior (dibujo)": "15",
+        "Cota vertical intermedia (dibujo)": "4",
+        "Cota vertical total (dibujo)": "36,5",
+        "ROSCA (dibujo)": "4/0,7"
+       },
+       "raw_row": "BPB - 30 A / 230V. 14 15 4 36,5 ROSCA 4/0,7",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HB - 4",
+       "page": 40,
+       "specs": {
+        "Cota Ø exterior (dibujo)": "11",
+        "Cota Ø interior (dibujo)": "4",
+        "Cota vertical total (dibujo)": "24,1",
+        "ROSCA (dibujo)": "8/0,75"
+       },
+       "raw_row": "HB - 4 Ø 11 Ø 4 24,1 ROSCA 8/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HR - 4",
+       "page": 40,
+       "specs": {
+        "Cota Ø exterior (dibujo)": "11",
+        "Cota Ø interior (dibujo)": "4",
+        "Cota vertical total (dibujo)": "25",
+        "ROSCA (dibujo)": "8/0,75"
+       },
+       "raw_row": "HR - 4 Ø 11 Ø 4 25 ROSCA 8/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HBS - 4",
+       "page": 41,
+       "specs": {
+        "Cota horizontal superior (dibujo, sin símbolo Ø)": "15",
+        "Cota Ø interior (dibujo)": "4",
+        "Cota vertical del reborde (dibujo)": "2,1",
+        "Cota vertical total (dibujo)": "24,6",
+        "ROSCA (dibujo)": "12,50/0,75"
+       },
+       "raw_row": "HBS - 4 15 Ø 4 2,1 24,6 ROSCA 12,50/0,75",
+       "confidence": "alta"
+      },
+      {
+       "reference": "HSR - 4",
+       "page": 41,
+       "specs": {
+        "Cota horizontal superior (dibujo, sin símbolo Ø)": "15",
+        "Cota Ø interior (dibujo)": "4",
+        "Cota vertical del reborde (dibujo)": "2,1",
+        "Cota vertical total (dibujo)": "25,5"
+       },
+       "raw_row": "HSR - 4 15 Ø 4 2,1 25,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PF - 15",
+       "page": 41,
+       "specs": {
+        "Cota Ø (dibujo)": "16",
+        "Cota vertical de la tapa (dibujo)": "10",
+        "Cota vertical total (dibujo)": "32",
+        "ROSCA (dibujo)": "12,50/0,75"
+       },
+       "raw_row": "PF - 15 Ø 16 10 32 ROSCA 12,50/0,75",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "BPB - 30 A / 230V.",
+     "page": 40,
+     "context": "Título del borne BPB: intensidad 30 A y tensión 230V",
+     "normalized_hint": "30 A / 230 V (tipo AC/DC no indicado)"
+    },
+    {
+     "raw": "0-230v",
+     "page": 37,
+     "context": "Grabado de las carátulas graduadas CA0080230 y CA0115230",
+     "normalized_hint": "escala grabada 0-230 V (rango de la carátula; no es una tensión de alimentación)"
+    },
+    {
+     "raw": "0-250v",
+     "page": 37,
+     "context": "Grabado de las carátulas graduadas CA0080250 y CA0115250",
+     "normalized_hint": "escala grabada 0-250 V (rango de la carátula; no es una tensión de alimentación)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Sección BOTONES DE MANDO; esta página lleva impreso el número 35 (PDF p.36 = impresa 35). Contiene cinco tablas: Discos con Flecha, Discos Graduados, Startors, Serie BM (mate) y Tapas para Botón BM (mate).",
+     "page": 36
+    },
+    {
+     "fact": "Las tablas de la p.36 usan cabeceras bilingües ES/EN solo en 'MOD./TYPE' y 'CÓD./CODE'; los títulos de tabla están en español.",
+     "page": 36
+    },
+    {
+     "fact": "En la fotografía de 'Discos Graduados' se ve un disco blanco translúcido con graduación numérica (números del 1 al 10 alrededor); solo observado en la fotografía, no hay texto que lo describa.",
+     "page": 36
+    },
+    {
+     "fact": "Sección BOTONES DE MANDO; esta página lleva impreso el número 36 (PDF p.37 = impresa 36). Contiene la tabla 'Botón Baquelita \"DF\"' y la tabla bilingüe 'Carátulas Graduadas'.",
+     "page": 37
+    },
+    {
+     "fact": "Material 'Baquelita' indicado en el título de la tabla 'Botón Baquelita \"DF\"'; la fotografía muestra botones negros con faldón cónico y aguja.",
+     "page": 37
+    },
+    {
+     "fact": "Carátulas Graduadas: el grabado es '0-100%', '0-230v' o '0-250v'; el ángulo de rotación va de 180º a 340º; los colores impresos son Gris / Grey, Negro / Black y Azul / Blue.",
+     "page": 37
+    },
+    {
+     "fact": "Sección SOPORTES METÁLICOS PARA LED; esta página lleva impreso el número 37 (PDF p.38 = impresa 37). Cuatro soportes (dos de 3mm y dos de 5mm). Solo observado en las fotografías: el 1.º de 3mm tiene cabeza negra; el 2.º de 3mm, cabeza metálica cónica; el 1.º de 5mm, cabeza metálica cónica; el 2.º de 5mm, cabeza negra cilíndrica.",
+     "page": 38
+    },
+    {
+     "fact": "Sección SOPORTES METÁLICOS PARA LED; esta página lleva impreso el número 38 (PDF p.39 = impresa 38). Dos soportes de 8mm y uno (con dos dibujos) de 10mm.",
+     "page": 39
+    },
+    {
+     "fact": "Sección BORNES HEMBRILLAS Y PORTAFUSIBLES; esta página lleva impreso el número 39 (PDF p.40 = impresa 39). Colores observados solo en las fotografías: BPB negro con cabeza estriada, HB - 4 negra, HR - 4 roja.",
+     "page": 40
+    },
+    {
+     "fact": "Sección BORNES HEMBRILLAS Y PORTAFUSIBLES; esta página lleva impreso el número 40 (PDF p.41 = impresa 40). Colores observados solo en las fotografías: HBS - 4 azul, HSR - 4 verde, PF - 15 negro con cabeza estriada y dos terminales.",
+     "page": 41
+    }
+   ],
+   "visual_only_pages": [
+    36,
+    37,
+    38,
+    39,
+    40,
+    41
+   ],
+   "uncertain": [
+    {
+     "page": 36,
+     "item": "Unidad de las cotas D, d, e, H de las tablas de la p.36 (y de A, B, D, E de la p.37)",
+     "why": "Las tablas solo rotulan la letra de la cota; el PDF no imprime la unidad (se supone mm por contexto de producto, pero no está impreso). No publicar 'mm' como dato del PDF sin confirmarlo."
+    },
+    {
+     "page": 36,
+     "item": "Startors BOS029 (MOD. 30): D = 44",
+     "why": "En 'Discos con Flecha' y 'Discos Graduados' el MOD. 30 tiene D = 45; en Startors figura 44. Se transcribe tal cual (44); podría ser una variante real o una errata, no se corrige."
+    },
+    {
+     "page": 36,
+     "item": "Columna 'e' de Serie BM (mate) y Tapas para Botón BM (mate): valor '4,6,1/4\"' en MOD. 15 y 21",
+     "why": "Es un valor con comas y comillas de pulgada (probablemente una lista de diámetros de eje 4, 6 y 1/4\"), pero el PDF no lo explica ni rotula 'e' como eje. Se conserva literal; no interpretar ni convertir."
+    },
+    {
+     "page": 36,
+     "item": "Serie BM (mate): el dibujo rotula una cota 'd' (minúscula, arriba) que no figura en la tabla",
+     "why": "La tabla solo da D, e y H; el dibujo marca d, D, e y H. No se sabe qué valor corresponde a la cota 'd' del dibujo, por lo que no se publica ninguno."
+    },
+    {
+     "page": 37,
+     "item": "Botón Baquelita \"DF\": columna E (15,5 / 17 / 18)",
+     "why": "El dibujo solo rotula las cotas A, B y D; la letra E de la tabla no aparece en el dibujo, por lo que no se sabe qué dimensión es."
+    },
+    {
+     "page": 37,
+     "item": "Carátulas CA0115230, CA0115250 y CA0115330 (Ø 116) y CA0160330 (Ø 116)",
+     "why": "El código CA0115... / CA0160... no coincide con el patrón de las demás filas Ø 116 (CA0116...). Puede ser una errata del código o del diámetro; se transcribe tal cual y no se corrige."
+    },
+    {
+     "page": 37,
+     "item": "Carátulas: grabado '0-230v' y '0-250v' (v minúscula)",
+     "why": "Se conserva literal. El PDF no aclara si 0-230v/0-250v es una escala de tensión de salida de un variador; no se normaliza ni se asocia a un modelo de variador."
+    },
+    {
+     "page": 38,
+     "item": "Soportes metálicos para LED de 3mm y de 5mm: sin referencia ni tabla",
+     "why": "Cada soporte solo tiene título y dibujo acotado; no hay código. No se puede publicar una ficha con referencia: hace falta el código del listado de precios o de la web."
+    },
+    {
+     "page": 38,
+     "item": "Cotas Ø 7 / 2 / 13 y Ø 7 / 3 / 15 (3mm), Ø 10 / 3 / 15 y Ø 9.5 / 3 / 16.5 (5mm) y rosca 6/0,75, 8/0,75",
+     "why": "Las cotas del dibujo no llevan rótulo ni unidad; el significado de la cota vertical pequeña (cabeza) y de la total se interpreta por el dibujo. En el 4.º dibujo el PDF imprime '9.5' y '16.5' con punto decimal (el resto de cotas de la página usa coma); se conserva el punto tal cual."
+    },
+    {
+     "page": 39,
+     "item": "Soporte de 8mm (2.º dibujo): cota vertical superior sin número",
+     "why": "El dibujo dibuja la línea de cota de la cabeza pero no imprime su valor; solo se leen Ø 14, 20 y ROSCA 12/0,75. No se deduce el valor que falta."
+    },
+    {
+     "page": 39,
+     "item": "Soportes de 10mm: dibujos rotulados 'Portaled 8 Cono Mixto' (14 / 16,5 / ROSCA 12 / 75) y 'Portaled 10 Cono Mixto' (16 / 22 / ROSCA 10 / 100)",
+     "why": "Bajo el título 'LED de 10mm' hay un dibujo rotulado 'Portaled 8'. No se sabe si el portaled 8 pertenece a la gama de 8mm o a la de 10mm, ni qué diámetro de LED admite cada uno. Las roscas se imprimen como '12 / 75' y '10 / 100' (distinto formato que '12/0,75'); se conservan literales y no se interpretan como 0,75 / 1,00. Las cotas 14 y 16 llevan sin símbolo Ø."
+    },
+    {
+     "page": 40,
+     "item": "BPB - 30 A / 230V.: intensidad y tensión del título",
+     "why": "El PDF solo imprime '30 A / 230V.' en el título; no indica si 230V es tensión nominal, máxima o de ensayo, ni si es AC/DC. Para la web conviene publicarlo tal cual como denominación y proponer la ficha completa al fabricante."
+    },
+    {
+     "page": 40,
+     "item": "Significado de la cifra '4' de HB - 4, HR - 4, HBS - 4 y HSR - 4 y de la Ø 4 del dibujo",
+     "why": "El PDF no explica la nomenclatura; la cota 'Ø 4' del dibujo no está rotulada (taladro, clavija, etc.). No se infiere ('4 mm') ni se asocia a un tipo de clavija."
+    },
+    {
+     "page": 41,
+     "item": "HSR - 4: dibujo sin ROSCA rotulada",
+     "why": "HBS - 4 y PF - 15 imprimen 'ROSCA 12,50/0,75'; HSR - 4 no imprime rosca. No se copia la de HBS - 4 aunque el dibujo parezca idéntico."
+    },
+    {
+     "page": 41,
+     "item": "Cota 'ROSCA 12,50/0,75' de HBS - 4 y PF - 15 y cotas 15, 2,1, 10 sin símbolo Ø en HBS/HSR",
+     "why": "Se transcribe tal cual; '12,50/0,75' tiene un formato atípico y no se normaliza. La cota 15 de HBS/HSR no lleva Ø en el PDF."
+    },
+    {
+     "page": 36,
+     "item": "Páginas 36 a 41 transcritas de la imagen",
+     "why": "Las capas de texto de estas páginas solo contienen títulos de sección y rótulos; todas las cotas, tablas y roscas se leyeron de la imagen renderizada (110/170/200 dpi), por lo que el comprobador automático no puede verificarlas."
+    }
+   ]
+  }
+ ]
+}

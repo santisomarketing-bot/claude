@@ -1,0 +1,2236 @@
+{
+ "job": "p08-catalogo-en",
+ "documents": [
+  {
+   "file": "Torivac_2024_EN.pdf",
+   "pages": [
+    15,
+    28
+   ],
+   "doc_type": "catalogo",
+   "language": "en",
+   "title": "Torivac Catalogue 2024 (EN) - PDF pp.15-28: packed electric coils, laminated core electromagnets, wire wound potentiometers, ceramic rheostats, tandem rheostats, operating knobs and metal brackets for LED (cross-checked against the ES catalogue Torivac_2024.pdf pp.26-27, 29-33, 35-39)",
+   "families": [
+    {
+     "family": "Packed Electric Coils",
+     "series": null,
+     "page": 15,
+     "description": "GENERAL CONSIDERATIONS. The coils for electromagnets, encapsulated in epoxi resin, offer a high degree of dielectric rigidity and an optimal magnetic properties due to their design and mechanical construction.",
+     "general_specs": {
+      "Application": "coils for electromagnets",
+      "Encapsulation": "epoxi resin",
+      "Properties quoted": "high degree of dielectric rigidity; optimal magnetic properties due to design and mechanical construction",
+      "Table headers (as printed)": "VA | A | B | C | D | E | F | G | Kg",
+      "Empty-cell marker": "--",
+      "Unit of dimensions A-G": "not printed in the PDF (column headers only give the letter of each dimension)",
+      "Axis types labelled on the drawing": "SMOOTH AXIS; STAGGERED AXIS"
+     },
+     "models": [
+      {
+       "reference": "50 VA",
+       "page": 15,
+       "specs": {
+        "VA": "50",
+        "A": "60",
+        "B": "54",
+        "C": "24",
+        "D": "--",
+        "E": "--",
+        "F": "--",
+        "G": "--",
+        "Kg": "0.450"
+       },
+       "raw_row": "50 60 54 24 -- -- -- -- 0.450",
+       "confidence": "alta"
+      },
+      {
+       "reference": "100 VA",
+       "page": 15,
+       "specs": {
+        "VA": "100",
+        "A": "68",
+        "B": "58",
+        "C": "--",
+        "D": "38",
+        "E": "20",
+        "F": "26",
+        "G": "28",
+        "Kg": "0.735"
+       },
+       "raw_row": "100 68 58 -- 38 20 26 28 0.735",
+       "confidence": "alta"
+      },
+      {
+       "reference": "150 VA",
+       "page": 15,
+       "specs": {
+        "VA": "150",
+        "A": "73",
+        "B": "60",
+        "C": "28",
+        "D": "--",
+        "E": "--",
+        "F": "--",
+        "G": "--",
+        "Kg": "0.955"
+       },
+       "raw_row": "150 73 60 28 -- -- -- -- 0.955",
+       "confidence": "alta"
+      },
+      {
+       "reference": "200 VA (row 4)",
+       "page": 15,
+       "specs": {
+        "VA": "200",
+        "A": "82",
+        "B": "64",
+        "C": "--",
+        "D": "44",
+        "E": "20",
+        "F": "28",
+        "G": "31",
+        "Kg": "1.225"
+       },
+       "raw_row": "200 82 64 -- 44 20 28 31 1.225",
+       "confidence": "alta"
+      },
+      {
+       "reference": "200 VA (row 5)",
+       "page": 15,
+       "specs": {
+        "VA": "200",
+        "A": "82",
+        "B": "64",
+        "C": "30",
+        "D": "--",
+        "E": "--",
+        "F": "--",
+        "G": "--",
+        "Kg": "1.225"
+       },
+       "raw_row": "200 82 64 30 -- -- -- -- 1.225",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Two axis versions are drawn (SMOOTH AXIS / STAGGERED AXIS); the table does not say which row belongs to which"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Laminated Core Electromagnets",
+     "series": null,
+     "page": 16,
+     "description": "Sub-section of PACKED ELECTRIC COILS. Two variants, 'Partially Encapsulation' and 'Complete Encapsulation', each with a photograph (blue electromagnet with black connection cable; the core is visible in the partial one) and a dimensioned elevation and plan drawing with its weight. The page has no descriptive text and no electrical data.",
+     "general_specs": {
+      "Variants": "Partially Encapsulation; Complete Encapsulation",
+      "Unit of dimensions": "not printed in the PDF",
+      "Electrical data (VA, voltage, force)": "not given on the page"
+     },
+     "models": [
+      {
+       "reference": "Partially Encapsulation",
+       "page": 16,
+       "specs": {
+        "Elevation view, vertical dimension (drawing, unlabelled)": "65",
+        "Elevation view, horizontal dimension (drawing, unlabelled)": "99",
+        "Plan view, left dimension (drawing, unlabelled)": "64",
+        "Plan view, right dimension next to the filled circle (drawing, unlabelled)": "64",
+        "Plan view, overall dimension (drawing, unlabelled)": "96",
+        "Weight (as printed)": "Kg. 2,635"
+       },
+       "raw_row": "65 99 64 64 96 Kg. 2,635",
+       "confidence": "media"
+      },
+      {
+       "reference": "Complete Encapsulation",
+       "page": 16,
+       "specs": {
+        "Elevation view, vertical dimension (drawing, unlabelled)": "69",
+        "Elevation view, horizontal dimension (drawing, unlabelled)": "99",
+        "Plan view, left dimension (drawing, unlabelled)": "64",
+        "Plan view, right dimension next to the filled circle (drawing, unlabelled)": "64",
+        "Plan view, overall dimension (drawing, unlabelled)": "101",
+        "Weight (as printed)": "Kg. 2,750"
+       },
+       "raw_row": "69 99 64 64 101 Kg. 2,750",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Partially Encapsulation",
+      "Complete Encapsulation"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "3W Potentiometer (3 AND 5W WIRE WOUND POTENTIOMETERS)",
+     "series": null,
+     "page": 18,
+     "description": "The 3W potentiometer is distinguished by its small diameter (25mm) in spite of its real dissipation of 3 W .Its 3% linearity makes it suitable for uses where a fine adjustment is required. Values according to the E-10 series, but we can furnish other values, by order.",
+     "general_specs": {
+      "Diameter": "small diameter (25mm)",
+      "Real dissipation": "3 W",
+      "Linearity": "3%",
+      "Standard values": "according to the E-10 series; other values by order",
+      "Suitable for": "uses where a fine adjustment is required"
+     },
+     "models": [
+      {
+       "reference": "3W Potentiometer",
+       "page": 18,
+       "specs": {
+        "Terminals": "3.2 x 0,5 mm",
+        "Dust protection": "Hermetic against the dust",
+        "Material / shaft": "Polyamide 6 with fibreglass , 12mm shaft (Ø 6mm.)",
+        "Slider": "Tilting slider providing great endurance",
+        "Resistance range": "5 Ω , to 22 k.",
+        "Rotation angle": "280º",
+        "Tolerance": "10%",
+        "Breakdown voltage": "over 1000v.",
+        "Net weight": "22 grs.",
+        "Operating temperature": "-20º/+60º",
+        "UL rating": "94V-0",
+        "Packing": "box of 25 pcs."
+       },
+       "raw_row": "* Terminals 3.2 x 0,5 mm | *Hermetic against the dust | * Polyamide 6 with fibreglass , 12mm shaft (Ø 6mm.) | * Tilting slider providing great endurance | * Resistance range: 5 Ω , to 22 k. | * Rotation angle: 280º | * Tolerance: 10% | * Breakdown voltage over 1000v. | * Net weight: 22 grs. | * Operating temperature: -20º/+60º | * UL rating: 94V-0 | * Packing: box of 25 pcs.",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Other resistance values by order (standard values follow the E-10 series)"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Twin Potentiometer",
+     "series": null,
+     "page": 18,
+     "description": "This twin, 2x3 W. wirewound potentiometer is a variant of our well-known type 3W and designed for stereo equipments. Its electrical and physical characterisitics are the same as the mentioned 3W. Net weight: 40 grs. Packing: Box of 25 pcs.",
+     "general_specs": {
+      "Power": "2x3 W.",
+      "Derived from": "type 3W",
+      "Intended use": "stereo equipments",
+      "Electrical and physical characteristics": "the same as the mentioned 3W (as stated in the PDF)"
+     },
+     "models": [
+      {
+       "reference": "Twin Potentiometer 2x3 W",
+       "page": 18,
+       "specs": {
+        "Power": "2x3 W.",
+        "Net weight": "40 grs.",
+        "Packing": "Box of 25 pcs."
+       },
+       "raw_row": "Net weight: 40 grs. Packing: Box of 25 pcs.",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "5W Potentiometer",
+     "series": null,
+     "page": 19,
+     "description": "Our 5W. potentiometer distinguish themselves by the original design of the slider-contact. Its consists of a metallic roller on top of a tangential spring. The turning of the spring produces a hypocycloidal movement of the roller on the flat side of the resistor-strip, thus avoiding the abrasion of the wire. The ends of the resistor-strip are colloidal-silver painted so, that practically there is no residual resistance.",
+     "general_specs": {
+      "Slider-contact": "metallic roller on top of a tangential spring (hypocycloidal movement on the flat side of the resistor-strip)",
+      "Residual resistance": "practically none (ends of the resistor-strip colloidal-silver painted)"
+     },
+     "models": [
+      {
+       "reference": "5W Potentiometer",
+       "page": 19,
+       "specs": {
+        "Terminals": "3.2 x 0,5 mm",
+        "Power rating at 25ºC": "5W",
+        "Resistance distribution": "lin.",
+        "Resistance range": "5 Ω - 50 KΩ",
+        "Tolerance": "6%",
+        "Breakdown voltage": "> 1000v.",
+        "Mechanical angle of rotation": "264ºC",
+        "Electrical angle of rotation": "250ºC",
+        "Mech. breakdown of the stop": "8 kg/cm.",
+        "Standard shaft lenght": "40 mm.",
+        "Net weight": "40 grs.",
+        "Temperature increasing at full load": "75ºC"
+       },
+       "raw_row": "* Terminals 3.2 x 0,5 mm | * Power rating at 25ºC: 5W | * Resistance distribution: lin. | * Resistance range: 5 Ω - 50 KΩ | * Tolerance: 6% | * Breakdown voltage: > 1000v. | * Mechanical angle of rotation: 264ºC | * Electrical angle of rotation: 250ºC | * Mech. breakdown of the stop: 8 kg/cm. | * Standard shaft lenght: 40 mm. | * Net weight: 40 grs. | *Temperature increasing at full load: 75ºC",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Ceramic Rheostats (Potentiometers)",
+     "series": null,
+     "page": 20,
+     "description": "Our heavy potentiometers and rheostats are made in the following powers : 15-30-40-60-80-125-250-500 and 1000 Watts. These nominal powers are applicable in good conditions of ventilation. If the installation becomes in closets or closed boxes, where ventilation is insufficient these powers are due to reduce until about 20%. The ceramic core is made of hard non hygroscopic steatite, thus avoiding corrosion due to electrolysis. The core is wound with high quality copper-nickel or chrome-aluminium wire, according to the required ohmic value and power of the winding. Each turn of the winding is hold firmly in place and protected against mechanical damages, by a hard, heat-resistant ceramic cement. This cement coating which resists 900ºC has a fast heat dissipation due to its good heat conductivity and matt radiating surface. The slider is a fine-silver brush, according to the requirements. Besides linear windings, to order we can wind multi/sections windings, according to customer's needs or specifications, in order to provide a non-linear response.",
+     "general_specs": {
+      "Powers made": "15-30-40-60-80-125-250-500 and 1000 Watts",
+      "Rating condition": "nominal powers applicable in good conditions of ventilation",
+      "Derating": "if installed in closets or closed boxes with insufficient ventilation, powers are due to reduce until about 20%",
+      "Core": "hard non hygroscopic steatite (avoids corrosion due to electrolysis)",
+      "Winding wire": "high quality copper-nickel or chrome-aluminium wire, according to the required ohmic value and power",
+      "Cement coating": "hard, heat-resistant ceramic cement; resists 900ºC; fast heat dissipation; matt radiating surface",
+      "Slider": "fine-silver brush, according to the requirements",
+      "Non-linear response": "to order, multi/sections windings according to customer's needs or specifications",
+      "Table headers (as printed)": "POTENCIA POWER | A | B | C | D | d | R | G | L | PESO (KG.) WEIGHT (KG.) | GAMA DE VALORES OHMIC VALUES",
+      "Unit of dimensions A-D, d, L": "not printed in the PDF; G is printed in degrees (º); weight column printed as KG.",
+      "Note (1)": "(1) Anclaje Mod. PC-1000"
+     },
+     "models": [
+      {
+       "reference": "PC12",
+       "page": 20,
+       "specs": {
+        "POTENCIA / POWER": "PC12",
+        "A": "25",
+        "B": "8",
+        "C": "10",
+        "D": "32",
+        "d": "6",
+        "R": "M-10",
+        "G": "290º",
+        "L": "25",
+        "PESO (KG.) / WEIGHT (KG.)": "0,028",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 10kΩ"
+       },
+       "raw_row": "PC12 25 8 10 32 6 M-10 290º 25 0,028 5Ω – 10kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC25",
+       "page": 20,
+       "specs": {
+        "POTENCIA / POWER": "PC25",
+        "A": "35",
+        "B": "8",
+        "C": "38",
+        "D": "45",
+        "d": "6",
+        "R": "M-10",
+        "G": "280º",
+        "L": "30",
+        "PESO (KG.) / WEIGHT (KG.)": "0,125",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 20kΩ"
+       },
+       "raw_row": "PC25 35 8 38 45 6 M-10 280º 30 0,125 5Ω – 20kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC35",
+       "page": 20,
+       "specs": {
+        "POTENCIA / POWER": "PC35",
+        "A": "40",
+        "B": "12",
+        "C": "32",
+        "D": "55",
+        "d": "6",
+        "R": "M-10",
+        "G": "278º",
+        "L": "35",
+        "PESO (KG.) / WEIGHT (KG.)": "0,140",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 25kΩ"
+       },
+       "raw_row": "PC35 40 12 32 55 6 M-10 278º 35 0,140 5Ω – 25kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC50",
+       "page": 20,
+       "specs": {
+        "POTENCIA / POWER": "PC50",
+        "A": "40",
+        "B": "12",
+        "C": "37",
+        "D": "65",
+        "d": "6",
+        "R": "M-10",
+        "G": "310º",
+        "L": "41",
+        "PESO (KG.) / WEIGHT (KG.)": "0,150",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 25kΩ"
+       },
+       "raw_row": "PC50 40 12 37 65 6 M-10 310º 41 0,150 5Ω – 25kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC75",
+       "page": 20,
+       "specs": {
+        "POTENCIA / POWER": "PC75",
+        "A": "43",
+        "B": "12",
+        "C": "37",
+        "D": "73",
+        "d": "6",
+        "R": "M-10",
+        "G": "317º",
+        "L": "45",
+        "PESO (KG.) / WEIGHT (KG.)": "0,200",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 25kΩ"
+       },
+       "raw_row": "PC75 43 12 37 73 6 M-10 317º 45 0,200 5Ω – 25kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC125",
+       "page": 20,
+       "specs": {
+        "POTENCIA / POWER": "PC125",
+        "A": "60",
+        "B": "12",
+        "C": "18",
+        "D": "87",
+        "d": "6",
+        "R": "M-10",
+        "G": "302º",
+        "L": "53",
+        "PESO (KG.) / WEIGHT (KG.)": "0,360",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 15kΩ"
+       },
+       "raw_row": "PC125 60 12 18 87 6 M-10 302º 53 0,360 5Ω – 15kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC250",
+       "page": 20,
+       "specs": {
+        "POTENCIA / POWER": "PC250",
+        "A": "60",
+        "B": "12",
+        "C": "18",
+        "D": "117",
+        "d": "6",
+        "R": "M-10",
+        "G": "314º",
+        "L": "70",
+        "PESO (KG.) / WEIGHT (KG.)": "0,535",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 15kΩ"
+       },
+       "raw_row": "PC250 60 12 18 117 6 M-10 314º 70 0,535 5Ω – 15kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC500",
+       "page": 20,
+       "specs": {
+        "POTENCIA / POWER": "PC500",
+        "A": "86",
+        "B": "12",
+        "C": "36",
+        "D": "144",
+        "d": "8",
+        "R": "M-12",
+        "G": "310º",
+        "L": "85",
+        "PESO (KG.) / WEIGHT (KG.)": "1,225",
+        "GAMA DE VALORES / OHMIC VALUES": "5Ω – 10kΩ"
+       },
+       "raw_row": "PC500 86 12 36 144 8 M-12 310º 85 1,225 5Ω – 10kΩ",
+       "confidence": "alta"
+      },
+      {
+       "reference": "PC1000",
+       "page": 20,
+       "specs": {
+        "POTENCIA / POWER": "PC1000",
+        "A": "103",
+        "B": "10",
+        "C": "54",
+        "D": "205",
+        "d": "8",
+        "R": "(1)",
+        "G": "320º",
+        "L": "115",
+        "PESO (KG.) / WEIGHT (KG.)": "2,700",
+        "GAMA DE VALORES / OHMIC VALUES": "3Ω – 10kΩ"
+       },
+       "raw_row": "PC1000 103 10 54 205 8 (1) 320º 115 2,700 3Ω – 10kΩ",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Multi/sections windings for a non-linear response (to order)",
+      "Winding material copper-nickel or chrome-aluminium according to the required ohmic value and power",
+      "Anclaje Mod. PC-1000 (note (1), referenced in column R of PC1000, with its own drawing)"
+     ],
+     "ordering_info": "The model code PC12 ... PC1000 is printed in the POTENCIA / POWER column of the table; the PDF does not explain the coding."
+    },
+    {
+     "family": "REOSTATO TANDEM DOBLE",
+     "series": null,
+     "page": 21,
+     "description": "No descriptive text in the PDF; table 'REOSTATO TANDEM DOBLE' (image only) with dimensions A, B, C, D, E, F for the Manual and MOTOR. versions, and four drawings (top and front views of 'Manual Control' and 'Power-assisted control').",
+     "general_specs": {
+      "Table structure (as printed)": "POTENCIA POWER; A (MANUAL, MOTOR.); B; C (MANUAL, MOTOR.); D (MANUAL, MOTOR.); E; F",
+      "Drawing captions": "Manual Control; Power-assisted control",
+      "Unit of dimensions": "not printed in the PDF",
+      "Cells without value": "'- -' (C MOTOR. and D MOTOR.)",
+      "Language note": "table title and headings are in Spanish ('REOSTATO TANDEM', 'POTENCIA', 'MANUAL', 'MOTOR.') in the English catalogue",
+      "Power range": "2x250W; 2x500W; 2x1000W"
+     },
+     "models": [
+      {
+       "reference": "2x250W",
+       "page": 21,
+       "specs": {
+        "POTENCIA / POWER": "2x250W",
+        "A MANUAL": "180",
+        "A MOTOR.": "240",
+        "B": "115",
+        "C MANUAL": "18",
+        "C MOTOR.": "- -",
+        "D MANUAL": "6",
+        "D MOTOR.": "- -",
+        "E": "100",
+        "F": "M-6"
+       },
+       "raw_row": "2x250W 180 240 115 18 - - 6 - - 100 M-6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2x500W",
+       "page": 21,
+       "specs": {
+        "POTENCIA / POWER": "2x500W",
+        "A MANUAL": "230",
+        "A MOTOR.": "300",
+        "B": "165",
+        "C MANUAL": "36",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "125",
+        "F": "M-6"
+       },
+       "raw_row": "2x500W 230 300 165 36 - - 8 - - 125 M-6",
+       "confidence": "alta"
+      },
+      {
+       "reference": "2x1000W",
+       "page": 21,
+       "specs": {
+        "POTENCIA / POWER": "2x1000W",
+        "A MANUAL": "270",
+        "A MOTOR.": "350",
+        "B": "235",
+        "C MANUAL": "54",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "195",
+        "F": "M-8"
+       },
+       "raw_row": "2x1000W 270 350 235 54 - - 8 - - 195 M-8",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Manual Control version",
+      "Power-assisted control version (MOTOR. columns)"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "REOSTATO TANDEM TRIPLE",
+     "series": null,
+     "page": 22,
+     "description": "No descriptive text in the PDF; table 'REOSTATO TANDEM TRIPLE' (image only) with dimensions A, B, C, D, E, F for the Manual and MOTOR. versions, and four drawings (top and front views of 'Manual Control' and 'Power-assisted control').",
+     "general_specs": {
+      "Table structure (as printed)": "POTENCIA POWER; A (MANUAL, MOTOR.); B; C (MANUAL, MOTOR.); D (MANUAL, MOTOR.); E; F",
+      "Drawing captions": "Manual Control; Power-assisted control",
+      "Unit of dimensions": "not printed in the PDF",
+      "Cells without value": "'- -' (C MOTOR. and D MOTOR.)",
+      "Language note": "table title and headings are in Spanish ('REOSTATO TANDEM', 'POTENCIA', 'MANUAL', 'MOTOR.') in the English catalogue",
+      "Power range": "3x250W; 3x500W; 3x1000W"
+     },
+     "models": [
+      {
+       "reference": "3x250W",
+       "page": 22,
+       "specs": {
+        "POTENCIA / POWER": "3x250W",
+        "A MANUAL": "300",
+        "A MOTOR.": "240",
+        "B": "115",
+        "C MANUAL": "18",
+        "C MOTOR.": "- -",
+        "D MANUAL": "6",
+        "D MOTOR.": "- -",
+        "E": "100",
+        "F": "M-6"
+       },
+       "raw_row": "3x250W 300 240 115 18 - - 6 - - 100 M-6",
+       "confidence": "media"
+      },
+      {
+       "reference": "3x500W",
+       "page": 22,
+       "specs": {
+        "POTENCIA / POWER": "3x500W",
+        "A MANUAL": "370",
+        "A MOTOR.": "300",
+        "B": "165",
+        "C MANUAL": "36",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "125",
+        "F": "M-6"
+       },
+       "raw_row": "3x500W 370 300 165 36 - - 8 - - 125 M-6",
+       "confidence": "media"
+      },
+      {
+       "reference": "3x1000W",
+       "page": 22,
+       "specs": {
+        "POTENCIA / POWER": "3x1000W",
+        "A MANUAL": "430",
+        "A MOTOR.": "350",
+        "B": "235",
+        "C MANUAL": "54",
+        "C MOTOR.": "- -",
+        "D MANUAL": "8",
+        "D MOTOR.": "- -",
+        "E": "195",
+        "F": "M-8"
+       },
+       "raw_row": "3x1000W 430 350 235 54 - - 8 - - 195 M-8",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [
+      "Manual Control version",
+      "Power-assisted control version (MOTOR. columns)"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "BO Series",
+     "series": "BO",
+     "page": 24,
+     "description": "No descriptive text in the PDF; table 'BO Series'; photograph of a grey knob with metal insert and a sectional drawing with dimensions d, H, e, D. Note: Can be manufactured to order 1/4\" in all the models except Type 10.",
+     "general_specs": {
+      "Table headers (as printed)": "MOD. TYPE | D | e | H | d",
+      "Note": "Can be manufactured to order 1/4\" in all the models except Type 10",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)"
+     },
+     "models": [
+      {
+       "reference": "BO Series MOD. 10",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "10",
+        "e": "3 y 4",
+        "H": "14",
+        "d": "8,5"
+       },
+       "raw_row": "10 10 3 y 4 14 8,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BO Series MOD. 15",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6",
+        "H": "15",
+        "d": "13"
+       },
+       "raw_row": "15 14,5 4,6 15 13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BO Series MOD. 21",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "21",
+        "e": "4,6",
+        "H": "17",
+        "d": "19,5"
+       },
+       "raw_row": "21 21 4,6 17 19,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BO Series MOD. 30",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "29,5",
+        "e": "4,6",
+        "H": "17,5",
+        "d": "28"
+       },
+       "raw_row": "30 29,5 4,6 17,5 28",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BO Series MOD. 38",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "38",
+        "e": "4,6,8",
+        "H": "18,5",
+        "d": "36,5"
+       },
+       "raw_row": "38 38 4,6,8 18,5 36,5",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Can be manufactured to order 1/4\" in all the models except Type 10"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "BO Series Lined",
+     "series": "BO",
+     "page": 24,
+     "description": "No descriptive text in the PDF; table 'BO Series Lined'; photograph of a grey knob with a black indicator line and a sectional drawing with dimensions d, H, e, D. Note: Can be manufactured to order 1/4\" in all the models except Type 10.",
+     "general_specs": {
+      "Table headers (as printed)": "MOD. TYPE | D | e | H | d",
+      "Note": "Can be manufactured to order 1/4\" in all the models except Type 10",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)"
+     },
+     "models": [
+      {
+       "reference": "BO Series Lined MOD. 10",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "10",
+        "e": "3 y 4",
+        "H": "14",
+        "d": "8,5"
+       },
+       "raw_row": "10 10 3 y 4 14 8,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BO Series Lined MOD. 15",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6",
+        "H": "15",
+        "d": "13"
+       },
+       "raw_row": "15 14,5 4,6 15 13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BO Series Lined MOD. 21",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "21",
+        "e": "4,6",
+        "H": "17",
+        "d": "19,5"
+       },
+       "raw_row": "21 21 4,6 17 19,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BO Series Lined MOD. 30",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "29,5",
+        "e": "4,6",
+        "H": "17,5",
+        "d": "28"
+       },
+       "raw_row": "30 29,5 4,6 17,5 28",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BO Series Lined MOD. 38",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "38",
+        "e": "4,6,8",
+        "H": "18,5",
+        "d": "36,5"
+       },
+       "raw_row": "38 38 4,6,8 18,5 36,5",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Can be manufactured to order 1/4\" in all the models except Type 10"
+     ],
+     "ordering_info": null
+    },
+    {
+     "family": "Caps",
+     "series": null,
+     "page": 24,
+     "description": "No descriptive text in the PDF; table 'Caps' with dimensions D, d, e per MOD. TYPE (15, 21, 30, 38), photograph of a blue cap and a sectional drawing labelled D, H, e.",
+     "general_specs": {
+      "Table headers (as printed)": "MOD. TYPE | D | d | e",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)"
+     },
+     "models": [
+      {
+       "reference": "Caps MOD. 15",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 26 9,8 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Caps MOD. 21",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 36 16 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Caps MOD. 30",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 45 21,5 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Caps MOD. 38",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 55 27 2,7",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Ring With Pointers",
+     "series": null,
+     "page": 24,
+     "description": "No descriptive text in the PDF; table 'Ring With Pointers' with dimensions D, e, H per MOD. TYPE (10, 15, 21, 30, 38), photograph of a black ring with pointer and a sectional drawing labelled F, d, D.",
+     "general_specs": {
+      "Table headers (as printed)": "MOD. TYPE | D | e | H",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)"
+     },
+     "models": [
+      {
+       "reference": "Ring With Pointers MOD. 10",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "10",
+        "D": "8",
+        "e": "6,5",
+        "H": "8,5"
+       },
+       "raw_row": "10 8 6,5 8,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Ring With Pointers MOD. 15",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "11",
+        "e": "10",
+        "H": "13"
+       },
+       "raw_row": "15 11 10 13",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Ring With Pointers MOD. 21",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "18",
+        "e": "15,7",
+        "H": "19,5"
+       },
+       "raw_row": "21 18 15,7 19,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Ring With Pointers MOD. 30",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "25,5",
+        "e": "23,8",
+        "H": "28"
+       },
+       "raw_row": "30 25,5 23,8 28",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Ring With Pointers MOD. 38",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "33,5",
+        "e": "30,5",
+        "H": "36,5"
+       },
+       "raw_row": "38 33,5 30,5 36,5",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Nut Covers",
+     "series": null,
+     "page": 24,
+     "description": "No descriptive text in the PDF; table 'Nut Covers' with dimensions A, B, D per MOD. TYPE (10, 15), photograph of a black nut cover and a sectional drawing labelled A, B, C.",
+     "general_specs": {
+      "Table headers (as printed)": "MOD. TYPE | A | B | D",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)"
+     },
+     "models": [
+      {
+       "reference": "Nut Covers MOD. 10",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "10",
+        "A": "3,5",
+        "B": "2,5",
+        "D": "14"
+       },
+       "raw_row": "10 3,5 2,5 14",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Nut Covers MOD. 15",
+       "page": 24,
+       "specs": {
+        "MOD. TYPE": "15",
+        "A": "4",
+        "B": "3",
+        "D": "17"
+       },
+       "raw_row": "15 4 3 17",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Dials With Pointer",
+     "series": null,
+     "page": 25,
+     "description": "No descriptive text in the PDF; table 'Dials With Pointer' with dimensions D, d, e per MOD. TYPE (15, 21, 30, 38), photograph of a black dial with white pointer and a sectional drawing labelled e, d, D.",
+     "general_specs": {
+      "Table headers (as printed)": "MOD. TYPE | D | d | e",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)"
+     },
+     "models": [
+      {
+       "reference": "Dials With Pointer MOD. 15",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 26 9,8 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Dials With Pointer MOD. 21",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 36 16 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Dials With Pointer MOD. 30",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 45 21,5 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Dials With Pointer MOD. 38",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 55 27 2,7",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Graded Dials (MOD. TYPE table)",
+     "series": null,
+     "page": 25,
+     "description": "No descriptive text in the PDF; table 'Graded Dials' with dimensions D, d, e per MOD. TYPE (15, 21, 30, 38), photograph of a white translucent dial with numbered scale and a sectional drawing labelled e, d, D. Not to be confused with the 'Graded Dials' code table of the next page (CA codes, Ø 50-116).",
+     "general_specs": {
+      "Table headers (as printed)": "MOD. TYPE | D | d | e",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)",
+      "Values": "the four rows repeat exactly the D, d, e values of 'Dials With Pointer' (same page) and of 'Caps' (previous page)"
+     },
+     "models": [
+      {
+       "reference": "Graded Dials MOD. 15",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "26",
+        "d": "9,8",
+        "e": "2,8"
+       },
+       "raw_row": "15 26 9,8 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Graded Dials MOD. 21",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "36",
+        "d": "16",
+        "e": "2,8"
+       },
+       "raw_row": "21 36 16 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Graded Dials MOD. 30",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "30",
+        "D": "45",
+        "d": "21,5",
+        "e": "2,8"
+       },
+       "raw_row": "30 45 21,5 2,8",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Graded Dials MOD. 38",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "38",
+        "D": "55",
+        "d": "27",
+        "e": "2,7"
+       },
+       "raw_row": "38 55 27 2,7",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Startors",
+     "series": null,
+     "page": 25,
+     "description": "No descriptive text in the PDF; table 'Startors' with CÓD. CODE, MOD. TYPE and D (BOS014, BOS021, BOS029), photograph of a black disc with white mark and a sectional drawing with dimension D.",
+     "general_specs": {
+      "Table headers (as printed)": "CÓD. CODE | MOD. TYPE | D",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)"
+     },
+     "models": [
+      {
+       "reference": "BOS014",
+       "page": 25,
+       "specs": {
+        "CÓD. CODE": "BOS014",
+        "MOD. TYPE": "15",
+        "D": "26"
+       },
+       "raw_row": "BOS014 15 26",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BOS021",
+       "page": 25,
+       "specs": {
+        "CÓD. CODE": "BOS021",
+        "MOD. TYPE": "21",
+        "D": "36"
+       },
+       "raw_row": "BOS021 21 36",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BOS029",
+       "page": 25,
+       "specs": {
+        "CÓD. CODE": "BOS029",
+        "MOD. TYPE": "30",
+        "D": "44"
+       },
+       "raw_row": "BOS029 30 44",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Order code is the 'CÓD. CODE' column (BOS014, BOS021, BOS029), as printed; coding not explained in the PDF."
+    },
+    {
+     "family": "BM Series",
+     "series": "BM",
+     "page": 25,
+     "description": "No descriptive text in the PDF; table 'BM Series' with dimensions D, e, H per MOD. TYPE (15, 21), photograph of a black ribbed knob with metal insert and a sectional drawing labelled d, e, D, H.",
+     "general_specs": {
+      "Table headers (as printed)": "MOD. TYPE | D | e | H",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)"
+     },
+     "models": [
+      {
+       "reference": "BM Series MOD. 15",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "14,5",
+        "e": "4,6,1/4\"",
+        "H": "16"
+       },
+       "raw_row": "15 14,5 4,6,1/4\" 16",
+       "confidence": "alta"
+      },
+      {
+       "reference": "BM Series MOD. 21",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "20,6",
+        "e": "4,6,1/4\"",
+        "H": "19"
+       },
+       "raw_row": "21 20,6 4,6,1/4\" 19",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Matt Caps for BM Series",
+     "series": "BM",
+     "page": 25,
+     "description": "No descriptive text in the PDF; table 'Matt Caps for BM Series' with dimensions D, e, H per MOD. TYPE (15, 21), photograph of a light grey cap with black mark and a sectional drawing labelled D, e, H.",
+     "general_specs": {
+      "Table headers (as printed)": "MOD. TYPE | D | e | H",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)"
+     },
+     "models": [
+      {
+       "reference": "Matt Caps for BM Series MOD. 15",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "15",
+        "D": "12",
+        "e": "4,6,1/4\"",
+        "H": "6,2"
+       },
+       "raw_row": "15 12 4,6,1/4\" 6,2",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Matt Caps for BM Series MOD. 21",
+       "page": 25,
+       "specs": {
+        "MOD. TYPE": "21",
+        "D": "18,8",
+        "e": "4,6,1/4\"",
+        "H": "7,4"
+       },
+       "raw_row": "21 18,8 4,6,1/4\" 7,4",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "\"DF\" Knob Series",
+     "series": "DF",
+     "page": 26,
+     "description": "No descriptive text in the PDF; table '\"DF\" Knob Series' with dimensions A, B, D, E per MOD. TYPE (29DF, 38DF, 61DF), two photographs of black knobs with skirt and pointer and a sectional drawing labelled A, B, D.",
+     "general_specs": {
+      "Table headers (as printed)": "MOD. TYPE | A | B | D | E",
+      "Unit of dimensions": "not printed in the PDF (column headers only give the letter of each dimension)",
+      "Drawing": "the sectional drawing labels only A, B and D; column E has no counterpart in the drawing"
+     },
+     "models": [
+      {
+       "reference": "29DF",
+       "page": 26,
+       "specs": {
+        "MOD. TYPE": "29DF",
+        "A": "29",
+        "B": "20",
+        "D": "38",
+        "E": "15,5"
+       },
+       "raw_row": "29DF 29 20 38 15,5",
+       "confidence": "alta"
+      },
+      {
+       "reference": "38DF",
+       "page": 26,
+       "specs": {
+        "MOD. TYPE": "38DF",
+        "A": "38",
+        "B": "22",
+        "D": "52",
+        "E": "17"
+       },
+       "raw_row": "38DF 38 22 52 17",
+       "confidence": "alta"
+      },
+      {
+       "reference": "61DF",
+       "page": 26,
+       "specs": {
+        "MOD. TYPE": "61DF",
+        "A": "61",
+        "B": "31",
+        "D": "76",
+        "E": "18"
+       },
+       "raw_row": "61DF 61 31 76 18",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "The MOD. TYPE value (29DF, 38DF, 61DF) is the identifier printed in the table."
+    },
+    {
+     "family": "Graded Dials (CA code table)",
+     "series": null,
+     "page": 26,
+     "description": "No descriptive text in the PDF; bilingual table 'Graded Dials' (13 CA codes) with diameter Ø, printed scale (Grabado/Printed), rotation angle and colour; photograph of three graded dials (blue, white/grey and black).",
+     "general_specs": {
+      "Table headers (as printed)": "Código Code | Ø | Grabado Printed | Ángulo Rotat.Angle | Color Colour",
+      "Unit of Ø": "not printed in the PDF",
+      "Colours shown": "Gris / Grey; Negro / Black; Azul / Blue",
+      "Printed scales shown": "0-100%; 0-230v; 0-250v"
+     },
+     "models": [
+      {
+       "reference": "CA0050180",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0050180",
+        "Ø": "50",
+        "Grabado Printed": "0-100%",
+        "Ángulo Rotat.Angle": "180º",
+        "Color Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0050180 50 0-100% 180º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0050270",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0050270",
+        "Ø": "50",
+        "Grabado Printed": "0-100%",
+        "Ángulo Rotat.Angle": "270º",
+        "Color Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0050270 50 0-100% 270º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080270",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0080270",
+        "Ø": "80",
+        "Grabado Printed": "0-100%",
+        "Ángulo Rotat.Angle": "270º",
+        "Color Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0080270 80 0-100% 270º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080305",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0080305",
+        "Ø": "80",
+        "Grabado Printed": "0-100%",
+        "Ángulo Rotat.Angle": "305º",
+        "Color Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0080305 80 0-100% 305º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116270",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0116270",
+        "Ø": "116",
+        "Grabado Printed": "0-100%",
+        "Ángulo Rotat.Angle": "270º",
+        "Color Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116270 116 0-100% 270º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116310",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0116310",
+        "Ø": "116",
+        "Grabado Printed": "0-100%",
+        "Ángulo Rotat.Angle": "310º",
+        "Color Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116310 116 0-100% 310º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0116330",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0116330",
+        "Ø": "116",
+        "Grabado Printed": "0-100%",
+        "Ángulo Rotat.Angle": "330º",
+        "Color Colour": "Gris / Grey"
+       },
+       "raw_row": "CA0116330 116 0-100% 330º Gris / Grey",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080230",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0080230",
+        "Ø": "80",
+        "Grabado Printed": "0-230v",
+        "Ángulo Rotat.Angle": "330º",
+        "Color Colour": "Negro / Black"
+       },
+       "raw_row": "CA0080230 80 0-230v 330º Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0080250",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0080250",
+        "Ø": "80",
+        "Grabado Printed": "0-250v",
+        "Ángulo Rotat.Angle": "340º",
+        "Color Colour": "Negro / Black"
+       },
+       "raw_row": "CA0080250 80 0-250v 340º Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115230",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0115230",
+        "Ø": "116",
+        "Grabado Printed": "0-230v",
+        "Ángulo Rotat.Angle": "330º",
+        "Color Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115230 116 0-230v 330º Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115250",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0115250",
+        "Ø": "116",
+        "Grabado Printed": "0-250v",
+        "Ángulo Rotat.Angle": "330º",
+        "Color Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115250 116 0-250v 330º Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0115330",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0115330",
+        "Ø": "116",
+        "Grabado Printed": "0-100%",
+        "Ángulo Rotat.Angle": "330º",
+        "Color Colour": "Negro / Black"
+       },
+       "raw_row": "CA0115330 116 0-100% 330º Negro / Black",
+       "confidence": "alta"
+      },
+      {
+       "reference": "CA0160330",
+       "page": 26,
+       "specs": {
+        "Código Code": "CA0160330",
+        "Ø": "116",
+        "Grabado Printed": "0-100%",
+        "Ángulo Rotat.Angle": "328º",
+        "Color Colour": "Azul / Blue"
+       },
+       "raw_row": "CA0160330 116 0-100% 328º Azul / Blue",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": "Each row carries its order code CA......... in the 'Código Code' column; the PDF does not explain the coding."
+    },
+    {
+     "family": "Metal Brackets for 3mm. LED",
+     "series": null,
+     "page": 27,
+     "description": "Two metal brackets for 3mm LED under the same title 'Metal Brackets for 3mm. LED', each with a photograph and a dimensioned drawing; no reference or table.",
+     "general_specs": {
+      "Unit of dimensions": "not printed in the PDF",
+      "References": "no printed reference or table; each bracket is identified only by its drawing (top to bottom order on the page)"
+     },
+     "models": [
+      {
+       "reference": "no printed reference - 3mm LED, drawing 1 (top)",
+       "page": 27,
+       "specs": {
+        "LED size (title)": "3mm",
+        "Ø (drawing)": "7",
+        "Top vertical dimension (drawing)": "2",
+        "Overall vertical dimension (drawing)": "13",
+        "ROSCA (drawing)": "6/0,75"
+       },
+       "raw_row": "Ø 7 2 13 ROSCA 6/0,75",
+       "confidence": "media"
+      },
+      {
+       "reference": "no printed reference - 3mm LED, drawing 2 (bottom)",
+       "page": 27,
+       "specs": {
+        "LED size (title)": "3mm",
+        "Ø (drawing)": "7",
+        "Top vertical dimension (drawing)": "3",
+        "Overall vertical dimension (drawing)": "15",
+        "ROSCA (drawing)": "6/0,75"
+       },
+       "raw_row": "Ø 7 3 15 ROSCA 6/0,75",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Metal Brackets for 5mm. LED",
+     "series": null,
+     "page": 27,
+     "description": "Two metal brackets for 5mm LED under the same title 'Metal Brackets for 5mm. LED', each with a photograph and a dimensioned drawing; no reference or table.",
+     "general_specs": {
+      "Unit of dimensions": "not printed in the PDF",
+      "References": "no printed reference or table; each bracket is identified only by its drawing (top to bottom order on the page)"
+     },
+     "models": [
+      {
+       "reference": "no printed reference - 5mm LED, drawing 1 (top)",
+       "page": 27,
+       "specs": {
+        "LED size (title)": "5mm",
+        "Ø (drawing)": "10",
+        "Top vertical dimension (drawing)": "3",
+        "Overall vertical dimension (drawing)": "15",
+        "ROSCA (drawing)": "8/0,75"
+       },
+       "raw_row": "Ø 10 3 15 ROSCA 8/0,75",
+       "confidence": "media"
+      },
+      {
+       "reference": "no printed reference - 5mm LED, drawing 2 (bottom)",
+       "page": 27,
+       "specs": {
+        "LED size (title)": "5mm",
+        "Ø (drawing)": "9.5",
+        "Top vertical dimension (drawing)": "3",
+        "Overall vertical dimension (drawing)": "16.5",
+        "ROSCA (drawing)": "8/0,75"
+       },
+       "raw_row": "Ø 9.5 3 16.5 ROSCA 8/0,75",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Metal Brackets for 8mm. LED",
+     "series": null,
+     "page": 28,
+     "description": "Two metal brackets for 8mm LED under the same title 'Metal Brackets for 8mm. LED', each with a photograph and a dimensioned drawing; no reference or table.",
+     "general_specs": {
+      "Unit of dimensions": "not printed in the PDF",
+      "References": "no printed reference or table; each bracket is identified only by its drawing (top to bottom order on the page)"
+     },
+     "models": [
+      {
+       "reference": "no printed reference - 8mm LED, drawing 1 (top)",
+       "page": 28,
+       "specs": {
+        "LED size (title)": "8mm",
+        "Ø (drawing)": "14",
+        "Top vertical dimension (drawing)": "2,5",
+        "Overall vertical dimension (drawing)": "17",
+        "ROSCA (drawing)": "12/0,75"
+       },
+       "raw_row": "Ø 14 2,5 17 ROSCA 12/0,75",
+       "confidence": "media"
+      },
+      {
+       "reference": "no printed reference - 8mm LED, drawing 2 (bottom; its top vertical dimension is drawn without a value)",
+       "page": 28,
+       "specs": {
+        "LED size (title)": "8mm",
+        "Ø (drawing)": "14",
+        "Overall vertical dimension (drawing)": "20",
+        "ROSCA (drawing)": "12/0,75"
+       },
+       "raw_row": "Ø 14 20 ROSCA 12/0,75",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    },
+    {
+     "family": "Metal Brackets for 10mm. LED",
+     "series": null,
+     "page": 28,
+     "description": "Metal brackets under the title 'Metal Brackets for 10mm. LED': one photograph of a chrome-plated bracket and two sectional drawings labelled 'Portaled 8 Cono Mixto' and 'Portaled 10 Cono Mixto'; no reference or table.",
+     "general_specs": {
+      "Unit of dimensions": "not printed in the PDF",
+      "References": "no printed reference; only the drawing labels 'Portaled 8 Cono Mixto' and 'Portaled 10 Cono Mixto'"
+     },
+     "models": [
+      {
+       "reference": "Portaled 8 Cono Mixto",
+       "page": 28,
+       "specs": {
+        "LED size (title)": "10mm",
+        "Horizontal dimension (drawing, without Ø symbol)": "14",
+        "Overall vertical dimension (drawing)": "16,5",
+        "ROSCA (drawing)": "12 / 75"
+       },
+       "raw_row": "14 16,5 ROSCA 12 / 75 Portaled 8 Cono Mixto",
+       "confidence": "media"
+      },
+      {
+       "reference": "Portaled 10 Cono Mixto",
+       "page": 28,
+       "specs": {
+        "LED size (title)": "10mm",
+        "Horizontal dimension (drawing, without Ø symbol)": "16",
+        "Overall vertical dimension (drawing)": "22",
+        "ROSCA (drawing)": "10 / 100"
+       },
+       "raw_row": "16 22 ROSCA 10 / 100 Portaled 10 Cono Mixto",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [
+    {
+     "page": 15,
+     "caption": "Terminology EN vs ES - packed electric coils",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "PACKED ELECTRIC COILS",
+       "BOBINAS ENCAPSULADAS"
+      ],
+      [
+       "GENERAL CONSIDERATIONS",
+       "GENERALIDADES"
+      ],
+      [
+       "coils for electromagnets, encapsulated in epoxi resin",
+       "bobinas para electroimanes, encapsuladas en resina de epóxi"
+      ],
+      [
+       "SMOOTH AXIS",
+       "EJE LISO"
+      ],
+      [
+       "STAGGERED AXIS",
+       "EJE ESCALONADO"
+      ]
+     ],
+     "notes": "Terms only; the numeric table of this page is in families[] (identical to the ES table)."
+    },
+    {
+     "page": 16,
+     "caption": "Terminology EN vs ES - laminated core electromagnets",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "LAMINATED CORE ELECTROMAGNETS",
+       "ELECTROIMANES DE NUCLEO TOROIDAL"
+      ],
+      [
+       "Partially Encapsulation",
+       "Encapsulado parcial"
+      ],
+      [
+       "Complete Encapsulation",
+       "Encapsulado completo"
+      ]
+     ],
+     "notes": "The section title is NOT a translation of the ES title (laminated vs toroidal core): see uncertain."
+    },
+    {
+     "page": 18,
+     "caption": "Terminology EN vs ES - wire wound potentiometers",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "WIRE WOUND POTENTIOMETERS & CERAMIC RHEOSTATS",
+       "POTENCIÓMETROS Y REOSTATOS"
+      ],
+      [
+       "3 AND 5W WIRE WOUND POTENTIOMETERS",
+       "POTENCIÓMETROS BOBINADOS DE 3W Y 5W"
+      ],
+      [
+       "TWIN POTENTIOMETER",
+       "POTENCIÓMETRO DOBLE"
+      ],
+      [
+       "Terminals",
+       "Terminales"
+      ],
+      [
+       "Hermetic against the dust",
+       "Hermético al polvo"
+      ],
+      [
+       "Tilting slider",
+       "Cursor basculante"
+      ],
+      [
+       "Resistance range",
+       "Resistencia mín. / Gama de valores óhmicos (ES text garbled)"
+      ],
+      [
+       "Resistance distribution: lin.",
+       "Distribución resistencia: Lineal"
+      ],
+      [
+       "Rotation angle",
+       "Ángulo de giro"
+      ],
+      [
+       "Tolerance",
+       "Tolerancia"
+      ],
+      [
+       "Breakdown voltage",
+       "Tensión de perforación"
+      ],
+      [
+       "Net weight",
+       "Peso neto"
+      ],
+      [
+       "Operating temperature",
+       "Temperatura de trabajo"
+      ],
+      [
+       "UL rating",
+       "Categoría UL"
+      ],
+      [
+       "Packing: box of 25 pcs.",
+       "Embalaje: Caja de 25 pzas."
+      ],
+      [
+       "Standard shaft lenght",
+       "Longitud del eje Standard"
+      ],
+      [
+       "Temperature increasing at full load",
+       "Incremento de temperatura plena carga"
+      ],
+      [
+       "Mech. breakdown of the stop",
+       "Resistencia del tope a la rotura (ES text garbled)"
+      ]
+     ],
+     "notes": "ES pairs verified against the ES extraction of the same products; where the ES text is garbled this is stated and the EN wording is the readable one."
+    },
+    {
+     "page": 20,
+     "caption": "Terminology EN vs ES - ceramic rheostats",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "CERAMIC RHEOSTATS (Potentiometers)",
+       "Reóstatos cerámicos (Potenciometros)"
+      ],
+      [
+       "hard non hygroscopic steatite",
+       "esteatita de gran dureza, antihigroscópico"
+      ],
+      [
+       "heat-resistant ceramic cement",
+       "cemento cerámico de gran dureza"
+      ],
+      [
+       "slider (fine-silver brush)",
+       "escobilla de plata o de cobre-plata pulida"
+      ],
+      [
+       "ventilation / closets or closed boxes",
+       "ventilación / instalaciones con ventilación pobre"
+      ],
+      [
+       "multi/sections windings",
+       "bobinados con varias secciones"
+      ],
+      [
+       "Anclaje Mod. PC-1000 (left in Spanish)",
+       "Anclaje Mod. PC-1000"
+      ]
+     ],
+     "notes": "Winding wire differs between languages (copper-nickel / chrome-aluminium vs constantán / nichrom / kantal): not a translation pair, see uncertain."
+    },
+    {
+     "page": 21,
+     "caption": "Terminology EN vs ES - tandem rheostats",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "Manual Control",
+       "Manual"
+      ],
+      [
+       "Power-assisted control",
+       "Motor"
+      ],
+      [
+       "REOSTATO TANDEM DOBLE (left in Spanish)",
+       "Reóstato tandem doble"
+      ],
+      [
+       "REOSTATO TANDEM TRIPLE (left in Spanish)",
+       "Reóstato tandem triple"
+      ],
+      [
+       "MANUAL / MOTOR. (column headings)",
+       "MANUAL / MOTOR."
+      ]
+     ],
+     "notes": "Table headings are the same Spanish words in both catalogues; only the drawing captions are translated."
+    },
+    {
+     "page": 24,
+     "caption": "Terminology EN vs ES - operating knobs and accessories",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "OPERATING KNOBS",
+       "BOTONES DE MANDO"
+      ],
+      [
+       "BO Series",
+       "Serie BO (brillante)"
+      ],
+      [
+       "BO Series Lined",
+       "Serie BO con Línea"
+      ],
+      [
+       "Caps",
+       "Tapas"
+      ],
+      [
+       "Ring With Pointers",
+       "Aros con Flecha"
+      ],
+      [
+       "Nut Covers",
+       "Cubretuercas"
+      ],
+      [
+       "Dials With Pointer",
+       "Discos con Flecha"
+      ],
+      [
+       "Graded Dials (MOD. TYPE table)",
+       "Discos Graduados"
+      ],
+      [
+       "Graded Dials (CA code table)",
+       "Carátulas Graduadas"
+      ],
+      [
+       "Startors",
+       "Startors"
+      ],
+      [
+       "BM Series",
+       "Serie BM (mate)"
+      ],
+      [
+       "Matt Caps for BM Series",
+       "Tapas para Botón BM (mate)"
+      ],
+      [
+       "\"DF\" Knob Series",
+       "Botón Baquelita \"DF\""
+      ],
+      [
+       "MOD. TYPE",
+       "MOD./TYPE"
+      ]
+     ],
+     "notes": "ES pairs verified against the ES extraction of the same tables."
+    },
+    {
+     "page": 27,
+     "caption": "Terminology EN vs ES - metal brackets for LED",
+     "columns": [
+      "EN term (this catalogue)",
+      "ES term (Torivac_2024.pdf)"
+     ],
+     "rows": [
+      [
+       "METAL BRACKETS FOR LED",
+       "SOPORTES METÁLICOS PARA LED"
+      ],
+      [
+       "Metal Brackets for 3mm. LED",
+       "Soportes Metálicos para LED de 3mm."
+      ],
+      [
+       "ROSCA (left in Spanish in the drawings)",
+       "ROSCA"
+      ],
+      [
+       "Portaled ... Cono Mixto (left in Spanish)",
+       "Portaled ... Cono Mixto"
+      ]
+     ],
+     "notes": "Drawing labels are not translated in the EN catalogue."
+    }
+   ],
+   "voltage_mentions": [
+    {
+     "raw": "Breakdown voltage over 1000v.",
+     "page": 18,
+     "context": "3W potentiometer, Principal Characteristics (breakdown voltage, not an operating voltage)",
+     "normalized_hint": "1000 V (breakdown voltage; AC/DC not stated)"
+    },
+    {
+     "raw": "Breakdown voltage: > 1000v.",
+     "page": 19,
+     "context": "5W potentiometer, Characteristics (breakdown voltage, not an operating voltage)",
+     "normalized_hint": "> 1000 V (breakdown voltage; AC/DC not stated)"
+    },
+    {
+     "raw": "0-230v",
+     "page": 26,
+     "context": "Graded Dials, 'Grabado/Printed' scale of CA0080230 and CA0115230",
+     "normalized_hint": "printed scale 0-230 V (AC/DC not stated)"
+    },
+    {
+     "raw": "0-250v",
+     "page": 26,
+     "context": "Graded Dials, 'Grabado/Printed' scale of CA0080250 and CA0115250",
+     "normalized_hint": "printed scale 0-250 V (AC/DC not stated)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Section heading 'PACKED ELECTRIC COILS' (ES catalogue: 'Bobinas encapsuladas'); sub-heading 'GENERAL CONSIDERATIONS'. Coils for electromagnets encapsulated in epoxi resin.",
+     "page": 15
+    },
+    {
+     "fact": "Material: epoxi resin encapsulation (ES catalogue: 'resina de epóxi'). Property quoted: high degree of dielectric rigidity.",
+     "page": 15
+    },
+    {
+     "fact": "Drawing labels 'SMOOTH AXIS' and 'STAGGERED AXIS' (ES catalogue: 'EJE LISO' / 'EJE ESCALONADO'); photograph of four blue encapsulated coils with connection cables.",
+     "page": 15
+    },
+    {
+     "fact": "Cross-check with the ES catalogue (same table 'Bobinas encapsuladas'): the five rows (VA, A-G, Kg) are identical in every cell.",
+     "page": 15
+    },
+    {
+     "fact": "Sub-section 'LAMINATED CORE ELECTROMAGNETS' with variants 'Partially Encapsulation' and 'Complete Encapsulation' (ES catalogue: 'Electroimanes de núcleo toroidal', 'Encapsulado parcial' / 'Encapsulado completo').",
+     "page": 16
+    },
+    {
+     "fact": "Cross-check with the ES catalogue: dimensions (65, 99, 64, 64, 96 / 69, 99, 64, 64, 101) and weights (Kg. 2,635 / Kg. 2,750) are identical in both languages; only the sub-section title differs ('Laminated core' vs 'núcleo toroidal').",
+     "page": 16
+    },
+    {
+     "fact": "Printed page numbers in this PDF range equal the PDF page + 10 (PDF p15 prints 25 ... PDF p28 prints 38). 'page' fields in this file are PDF pages.",
+     "page": 16
+    },
+    {
+     "fact": "Section cover 'WIRE WOUND POTENTIOMETERS & CERAMIC RHEOSTATS' (photograph of a wire-wound potentiometer; ES catalogue: 'Potenciómetros y reóstatos'); no technical data.",
+     "page": 17
+    },
+    {
+     "fact": "Section heading '3 AND 5W WIRE WOUND POTENTIOMETERS'; sub-headings '3W Potentiometer', 'Principal Characteristics' and 'TWIN POTENTIOMETER' (ES catalogue: 'Potenciómetros bobinados de 3W y 5W', 'Potenciómetro doble').",
+     "page": 18
+    },
+    {
+     "fact": "3W potentiometer: polyamide 6 with fibreglass body/shaft, hermetic against the dust, tilting slider; UL rating 94V-0; packing box of 25 pcs.; terminals 3.2 x 0,5 mm.",
+     "page": 18
+    },
+    {
+     "fact": "3W potentiometer: stated shaft '12mm shaft (Ø 6mm.)'. In the ES catalogue the equivalent text is garbled ('(8 6mm)'), so the EN text resolves that reading to 'Ø 6mm'.",
+     "page": 18
+    },
+    {
+     "fact": "Twin potentiometer: intended for stereo equipments; variant of the 3W; net weight 40 grs.; packing box of 25 pcs. (ES catalogue adds 'como atenuador' to the stereo use).",
+     "page": 18
+    },
+    {
+     "fact": "Sub-heading '5W POTENTIOMETER'; slider-contact: metallic roller on a tangential spring with hypocycloidal movement over the flat side of the resistor-strip (avoids abrasion of the wire); resistor-strip ends colloidal-silver painted so that there is practically no residual resistance.",
+     "page": 19
+    },
+    {
+     "fact": "5W potentiometer: power rating at 25ºC 5W; linear resistance distribution; resistance range 5 Ω - 50 KΩ; tolerance 6%; standard shaft 40 mm; net weight 40 grs.; temperature increasing at full load 75ºC. The EN text is legible where the ES catalogue text is garbled; values agree with the readable parts of the ES text (6%, 8 kg/cm, 40 mm, 75).",
+     "page": 19
+    },
+    {
+     "fact": "Ceramic rheostats: made in 15-30-40-60-80-125-250-500 and 1000 Watts; derating of about 20% when ventilation is insufficient; core of hard non hygroscopic steatite; ceramic cement resists 900ºC; slider fine-silver brush; multi/sections windings to order for non-linear response. Sub-heading 'CERAMIC RHEOSTATS (Potentiometers)' (ES: 'Reóstatos cerámicos').",
+     "page": 20
+    },
+    {
+     "fact": "Table of PC12 ... PC1000 (9 models): header is bilingual ('POTENCIA POWER', 'PESO (KG.) WEIGHT (KG.)', 'GAMA DE VALORES OHMIC VALUES'); note (1) 'Anclaje Mod. PC-1000' with an anchor drawing. Cross-check with the ES catalogue: all 9 rows are identical in every cell.",
+     "page": 20
+    },
+    {
+     "fact": "Terminology EN vs ES (same product, same table): 'Manual Control' / 'Power-assisted control' (EN drawing captions) vs 'Manual' / 'Motor' (ES); table columns 'MANUAL' and 'MOTOR.' are the same in both languages.",
+     "page": 21
+    },
+    {
+     "fact": "Tandem rheostat 'REOSTATO TANDEM DOBLE' (2x250W, 2x500W, 2x1000W): table exists only as an image. Cross-check with the ES catalogue: all 3 rows identical.",
+     "page": 21
+    },
+    {
+     "fact": "Tandem rheostat 'REOSTATO TANDEM TRIPLE' (3x250W, 3x500W, 3x1000W): table exists only as an image. Cross-check with the ES catalogue: all 3 rows identical, including the suspicious A MOTOR. column (see uncertain).",
+     "page": 22
+    },
+    {
+     "fact": "Section cover listing: OPERATING KNOBS; METAL BRACKETS FOR LED; BINDING POST, BANANA SOCKETS & FUSE HOLDERS (the data of the third section lie outside this page range). Photograph of knobs, dials, binding posts and banana sockets.",
+     "page": 23
+    },
+    {
+     "fact": "Operating knobs: tables for BO Series, BO Series Lined, Caps, Ring With Pointers, Nut Covers (all with MOD. TYPE as identifier). Note printed under both BO tables: 'Can be manufactured to order 1/4\" in all the models except Type 10'.",
+     "page": 24
+    },
+    {
+     "fact": "Cross-check with the ES catalogue, p24 tables (BO, BO Lined, Caps, Ring With Pointers, Nut Covers): every value is identical; the EN BO 'e' column keeps the Spanish connector in '3 y 4'.",
+     "page": 24
+    },
+    {
+     "fact": "Dials With Pointer, Graded Dials (MOD. TYPE), Startors, BM Series and Matt Caps for BM Series: all values identical to the ES catalogue tables (Startors BOS029 has D = 44 in both languages).",
+     "page": 25
+    },
+    {
+     "fact": "\"DF\" Knob Series (29DF, 38DF, 61DF) and the 13-row Graded Dials code table (CA0050180 ... CA0160330): all values identical to the ES catalogue.",
+     "page": 26
+    },
+    {
+     "fact": "Section heading 'METAL BRACKETS FOR LED': 3mm (2 drawings), 5mm (2 drawings) [page 27] and 8mm (2 drawings), 10mm (2 drawings) [page 28]; thread labelled 'ROSCA' (Spanish) in the drawings; all dimensions identical to the ES catalogue ('Soportes metálicos para LED').",
+     "page": 27
+    },
+    {
+     "fact": "10mm LED section: drawings labelled 'Portaled 8 Cono Mixto' (thread 'ROSCA 12 / 75') and 'Portaled 10 Cono Mixto' (thread 'ROSCA 10 / 100'), Spanish labels untranslated in the EN catalogue; identical to the ES catalogue.",
+     "page": 28
+    },
+    {
+     "fact": "No prices, no stock data and no operating-voltage or current ratings are given anywhere in this page range (only the 1000 V breakdown voltage of the potentiometers and the 0-230v / 0-250v printed dial scales).",
+     "page": 26
+    }
+   ],
+   "visual_only_pages": [
+    16,
+    17,
+    21,
+    22,
+    24,
+    25,
+    26,
+    27,
+    28
+   ],
+   "uncertain": [
+    {
+     "page": 15,
+     "item": "Unit of A-G, meaning of 'VA' and of 'Kg' in the coil table",
+     "why": "The PDF does not print any unit for A-G, does not say what 'VA' rates (coil power) and gives no electrical data (voltage, frequency, insulation class, temperature). Do not complete with assumptions; proposal for the admin panel: ask the manufacturer."
+    },
+    {
+     "page": 15,
+     "item": "Assignment of rows to SMOOTH AXIS / STAGGERED AXIS",
+     "why": "Rows with a value in C (50, 150 and the second 200 VA) and rows with values in D-G (100 and the first 200 VA) probably correspond to the smooth-axis and staggered-axis drawings, but the table does not say so. Not published as data."
+    },
+    {
+     "page": 15,
+     "item": "Two '200 VA' rows with identical A, B and Kg",
+     "why": "They differ only in C (30) versus D-G (44, 20, 28, 31). They are named '200 VA (row 4)' and '200 VA (row 5)' only to distinguish them; they are not Torivac references and the PDF does not say whether they are two different products."
+    },
+    {
+     "page": 15,
+     "item": "Dimension '200' printed on the smooth-axis drawing",
+     "why": "A dimension labelled 200 appears above the smooth-axis drawing with no legend or unit (it could be a cable length). Not interpreted."
+    },
+    {
+     "page": 15,
+     "item": "Wording of the properties ('an optimal magnetic properties' / 'epoxi')",
+     "why": "Kept literal. The ES catalogue says 'aprovechamiento magnético máximo' (maximum magnetic utilisation), which is not the same nuance as 'optimal magnetic properties'; both are source statements, do not harmonise them in the web copy without confirmation."
+    },
+    {
+     "page": 16,
+     "item": "Section title 'Laminated Core Electromagnets' versus ES 'Electroimanes de núcleo toroidal'",
+     "why": "The two catalogues name the core differently (laminated vs toroidal). The photograph of the partially encapsulated unit shows a stacked (laminated-looking) core, but the PDF states nothing else. Do not publish a core-type claim until the manufacturer confirms; proposal for the admin panel."
+    },
+    {
+     "page": 16,
+     "item": "Dimensions of the two drawings (65, 99, 64, 64, 96 / 69, 99, 64, 64, 101) and weights",
+     "why": "Only positions on the drawing are known (elevation/plan); no legend, unit or electrical data (VA, voltage, force). Weight is printed 'Kg. 2,635' / 'Kg. 2,750' with decimal comma, unlike the 0.450 style of the previous page. Assignment partial = left drawings, complete = right drawings follows the captions' alignment."
+    },
+    {
+     "page": 18,
+     "item": "3W potentiometer 'Resistance range: 5 Ω , to 22 k.'",
+     "why": "The unit after 22 k is not printed (the ES catalogue also reads '22 K'). A reading of 5 Ω to 22 kΩ is consistent with the E-10 series statement, but the PDF does not write it; kept literal, proposal for confirmation before publishing a normalised range."
+    },
+    {
+     "page": 18,
+     "item": "3W potentiometer 'Operating temperature: -20º/+60º' and 'Rotation angle: 280º'",
+     "why": "The temperature unit letter (C) is not printed after the degree signs; the rotation angle is printed 280º. Kept literal; the ES catalogue is garbled for these two lines ('-20%/+60\"', '2800') so it cannot confirm them."
+    },
+    {
+     "page": 18,
+     "item": "3W potentiometer drawing dimensions (unlabelled, no unit)",
+     "why": "Front view: 40º and 40º (between the three terminals), 25, 8, 6, 2,5. Side view: 22,5, 6, 8, 12, 6 and the vertical label M10/100. The PDF does not say which element each dimension belongs to or its unit (presumably mm). Only 25 (diameter 25mm) and 12 / 6 (shaft '12mm shaft (Ø 6mm.)') are corroborated by the text. Proposal to review with the manufacturer; not published as data."
+    },
+    {
+     "page": 18,
+     "item": "Twin potentiometer drawing dimensions (27, 48, 40, 8, 6, 2,5, 12, M10/100, 40º) versus the 3W (25, 22,5)",
+     "why": "Front view: 40º and 40º, 27, 8, 6, 2,5. Side view: 40 (top dimension), 6, 8, 12, 6, 48 and M10/100. They differ from the 3W drawing (25 and 22,5) although the text says the electrical and physical characteristics are the same as the 3W; the PDF does not resolve the apparent discrepancy (only the net weight differs by statement). Not published."
+    },
+    {
+     "page": 18,
+     "item": "Twin potentiometer: resistance range, tolerance, breakdown voltage and angle",
+     "why": "Not given explicitly; the PDF only says its characteristics are 'the same as the mentioned 3W'. Inheriting the 3W values for the twin is an inference and is left as a proposal."
+    },
+    {
+     "page": 19,
+     "item": "5W potentiometer angles printed '264ºC' and '250ºC'",
+     "why": "The PDF prints 'ºC' after both angle values (mechanical 264, electrical 250), which are angles of rotation; the 'C' looks like a typographical error. Kept literal in the data; proposal to normalise to degrees (264º / 250º) only after confirmation."
+    },
+    {
+     "page": 19,
+     "item": "5W potentiometer 'Temperature increasing at full load: 75ºC' and 'Mech. breakdown of the stop: 8 kg/cm.'",
+     "why": "The first is a temperature rise (not an absolute temperature); the second has no further definition (breaking torque of the stop). Kept literal."
+    },
+    {
+     "page": 19,
+     "item": "5W potentiometer drawing dimensions (6Ø, 40, 7, 25, 41)",
+     "why": "Side view labels: 6Ø on the shaft, 40, 7, 25 and 41 (the front view has no numbers). The PDF gives no legend or unit; 40 coincides with 'Standard shaft lenght: 40 mm' and 6Ø is presumably the shaft diameter, while 7, 25 and 41 (probably bushing length, body height and body diameter) are not in the text. Proposal; not published."
+    },
+    {
+     "page": 19,
+     "item": "5W slider description 'metallic roller on top of a tangential spring' versus ES 'rodillo de latón basculante'",
+     "why": "The ES catalogue describes a tilting brass roller; the EN text describes a metallic roller on a tangential spring with hypocycloidal movement. The two descriptions are not equivalent and the ES power line is unreadable. Do not publish 'brass' or 'tilting' for the 5W without confirmation."
+    },
+    {
+     "page": 20,
+     "item": "Model codes PC12 ... PC1000 versus the nominal powers '15-30-40-60-80-125-250-500 and 1000 Watts'",
+     "why": "The table gives 9 models and the text 9 powers, but the codes do not match the powers for the first five (PC12, PC25, PC35, PC50, PC75 versus 15, 30, 40, 60, 80). The PDF does not state which model has which wattage, so the number in the code must not be published as watts; proposal to ask the manufacturer."
+    },
+    {
+     "page": 20,
+     "item": "Units and letters of the rheostat table",
+     "why": "No unit is printed for A, B, C, D, d, R, L (presumably mm) and the drawing labels only the letters (D, A, B, C, R, d, L, G) without legend; G is printed in degrees; weight column is 'PESO (KG.) WEIGHT (KG.)'. The ohmic range is printed as '5Ω – 10kΩ' etc."
+    },
+    {
+     "page": 20,
+     "item": "PC1000 row: R = '(1)' and B = 10; anchor drawing labels 70, 33, R.M6",
+     "why": "Column R of PC1000 contains the note mark '(1)' (Anclaje Mod. PC-1000) instead of a thread (M-10 / M-12 in the other rows) and column B is 10 (the others are 8 or 12). The anchor drawing prints 70 (horizontal), 33 (vertical) and 'R.M6' on a hole, with no unit or legend; the relation of R.M6 to column R is not explained. Values kept as printed (confidence media on that row); anchor values not published."
+    },
+    {
+     "page": 20,
+     "item": "PC25 column C = 38 (A = 35, B = 8)",
+     "why": "C is 10, 38, 32, 37, 37, 18, 18, 36, 54 along the table, so PC25 does not follow the trend of its neighbours; it is the same in the ES catalogue, so it is not a transcription error of this extraction, but could be an error of the original. Not corrected."
+    },
+    {
+     "page": 20,
+     "item": "Winding wire and slider wording versus ES",
+     "why": "EN: 'high quality copper-nickel or chrome-aluminium wire' and 'fine-silver brush'. ES: 'constantán, nichrom o kantal' and 'escobilla de plata o de cobre-plata pulida'. The materials listed differ (nichrom and copper-silver appear only in ES); do not merge or translate one into the other without confirmation."
+    },
+    {
+     "page": 20,
+     "item": "Wording 'powers are due to reduce until about 20%'",
+     "why": "It is not clear whether the reduction is of 20% or down to 20% (the same ambiguity exists in the ES text). Kept literal."
+    },
+    {
+     "page": 21,
+     "item": "Tandem double: unit of A-F, '- -' cells and the meaning of the letters",
+     "why": "Table transcribed from the image (220 ppp); no unit printed (presumably mm); C MOTOR. and D MOTOR. are '- -' (no value). The drawings label A-F with no legend; no ohmic range, weight, voltage or current is given and the PDF does not say which PC rheostats are used in each tandem."
+    },
+    {
+     "page": 22,
+     "item": "Tandem triple: A MOTOR. = 240, 300, 350 (identical to the tandem double)",
+     "why": "In the triple table A MOTOR. repeats the double's values and is smaller than the triple's A MANUAL (300, 370, 430), the opposite of the double (A MOTOR. 240, 300, 350 larger than A MANUAL 180, 230, 270). It looks like a repeated block in the original; the ES catalogue has the same numbers, so the extraction is faithful. Do not publish A MOTOR. for the triple without manufacturer confirmation."
+    },
+    {
+     "page": 24,
+     "item": "Unit of D, e, H, d and meaning of the 'e' column ('3 y 4', '4,6', '4,6,8')",
+     "why": "No unit is printed. In 'e' the values '3 y 4' and '4,6,8' are lists and '4,6' is ambiguous (decimal 4,6 or the list 4 and 6); in other tables the comma is a decimal. Kept literal, not interpreted. The note 'Can be manufactured to order 1/4\" in all the models except Type 10' does not say what dimension the 1/4\" refers to."
+    },
+    {
+     "page": 24,
+     "item": "BO Series and BO Series Lined have identical numeric tables",
+     "why": "Only the photographs differ (the lined version has a black indicator line); the PDF gives no other difference. Both tables are kept as separate families."
+    },
+    {
+     "page": 24,
+     "item": "Drawing letters versus table columns (Caps: D, H, e vs D, d, e; Ring With Pointers: F, d, D vs D, e, H; Nut Covers: A, B, C vs A, B, D)",
+     "why": "The table headers are kept as printed; the correspondence between drawing and columns cannot be established. Also, the 'H' values of Ring With Pointers (8,5; 13; 19,5; 28; 36,5) are exactly the 'd' values of the BO Series, so the 'H' header may be a misprint."
+    },
+    {
+     "page": 24,
+     "item": "Accessory compatibility (Caps, Ring With Pointers, Nut Covers) with the BO / BM knobs",
+     "why": "The accessories are listed by the same MOD. TYPE numbers as the BO series (10, 15, 21, 30, 38), but the PDF does not state which knob each accessory fits. No 'compatible with' claim should be published; proposal for the admin panel."
+    },
+    {
+     "page": 25,
+     "item": "Duplicate values (Dials With Pointer = Graded Dials (MOD. TYPE) = Caps) and Startors BOS029 D = 44",
+     "why": "The three tables repeat 26 / 9,8 / 2,8, 36 / 16 / 2,8, 45 / 21,5 / 2,8 and 55 / 27 / 2,7. MOD. 30 has D = 45 in those tables but D = 44 in Startors (BOS029); the same in the ES catalogue. Transcribed as printed; may be a variant or a misprint."
+    },
+    {
+     "page": 25,
+     "item": "BM Series and Matt Caps: 'e' = 4,6,1/4\" and drawing label 'd'",
+     "why": "The value mixes a comma list and an inch mark; the PDF does not explain it. The BM drawing labels a dimension 'd' that has no column. Not interpreted."
+    },
+    {
+     "page": 26,
+     "item": "\"DF\" Knob Series: column E",
+     "why": "The sectional drawing labels only A, B and D; column E (15,5 / 17 / 18) has no counterpart in the drawing. Also no material is printed on the page (the ES catalogue calls the series 'Botón Baquelita \"DF\"')."
+    },
+    {
+     "page": 26,
+     "item": "Graded Dials (CA codes): code pattern and scales",
+     "why": "Rows CA0115230, CA0115250, CA0115330 and CA0160330 have Ø 116 but codes starting 0115 / 0160 (the other Ø 116 rows start 0116); CA0160330 has angle 328º while its code ends in 330. Scales '0-230v' and '0-250v' (lower-case v) are kept literal; the PDF does not say for which variador models they are meant. Not corrected or associated."
+    },
+    {
+     "page": 26,
+     "item": "Language of the table",
+     "why": "The English catalogue keeps Spanish/English mixed headers and values ('Código Code', 'Grabado Printed', 'Gris / Grey'). Kept as printed."
+    },
+    {
+     "page": 27,
+     "item": "LED brackets 3mm and 5mm: no reference, dimension meaning and unit",
+     "why": "No code or table: each bracket is identified only by its position on the page. Dimensions read from the drawings: Ø 7 / 2 / 13 and Ø 7 / 3 / 15 (3mm), Ø 10 / 3 / 15 and Ø 9.5 / 3 / 16.5 (5mm), thread 'ROSCA 6/0,75' and 'ROSCA 8/0,75'. The small top vertical dimension and the overall one are interpreted from the drawing only; no unit; the fourth drawing prints '9.5' and '16.5' with a decimal point while the rest of the catalogue uses a comma. Identical to the ES catalogue. A priced, referenced sheet needs the code from the manufacturer's list."
+    },
+    {
+     "page": 28,
+     "item": "LED bracket 8mm, second drawing: top vertical dimension without value",
+     "why": "The dimension line of the head is drawn but no number is printed; only Ø 14, 20 and ROSCA 12/0,75 are legible. The missing value is not deduced."
+    },
+    {
+     "page": 28,
+     "item": "10mm LED section: 'Portaled 8 Cono Mixto' / 'Portaled 10 Cono Mixto' and thread notation",
+     "why": "Under the '10mm. LED' heading there is a drawing labelled 'Portaled 8'; it is not stated whether it belongs to the 8mm or the 10mm range or which LED diameter each one takes. The threads are printed 'ROSCA 12 / 75' and 'ROSCA 10 / 100' (a different notation from '12/0,75') and the horizontal dimensions 14 and 16 have no Ø symbol; not interpreted as 0,75 / 1,00."
+    },
+    {
+     "page": 28,
+     "item": "Page numbering and scope",
+     "why": "Printed page numbers are the PDF page + 10. This job ends at the LED brackets; BINDING POST, BANANA SOCKETS & FUSE HOLDERS announced on the cover (PDF p23) are outside the range."
+    }
+   ]
+  }
+ ]
+}

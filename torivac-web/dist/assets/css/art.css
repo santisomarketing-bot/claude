@@ -1,0 +1,27 @@
+/* [ART] elementos gráficos de marca (estética de plano técnico). Sesión 12 los amplía con más piezas. */
+
+/* onda de tensión del héroe: tres senoidales a distinta velocidad (parallax de fase) */
+.hero .wave{overflow:visible}
+.hero .wave .w{animation:wave-slide 14s linear infinite}
+.hero .wave .w2{animation-duration:22s;animation-direction:reverse}
+.hero .wave .w3{animation-duration:34s}
+@keyframes wave-slide{from{transform:translateX(0)}to{transform:translateX(-1440px)}}
+.hero.bp::after{content:"";position:absolute;inset:0;z-index:-1;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:var(--grid-size) var(--grid-size);mask-image:linear-gradient(180deg,transparent,#000 40%,#000 80%,transparent)}
+/* indicadores de esquina en el héroe */
+.hero .container{position:relative}
+.hero .container::before,.hero .container::after{content:"";position:absolute;width:26px;height:26px;border:2px solid var(--copper-on-dark);opacity:.8}
+.hero .container::before{left:0;top:var(--s-6);border-right:0;border-bottom:0}
+.hero .container::after{right:0;bottom:var(--s-6);border-left:0;border-top:0}
+
+/* tarjeta con sombra cobre (firma original) */
+.card-shadow{position:relative}
+/* ficha: cota de referencia sobre la imagen principal */
+.gallery .main{position:relative}
+.gallery .main::after{content:attr(data-dim);position:absolute;right:8px;bottom:6px;font-family:var(--font-mono);font-size:10px;color:var(--muted)}
+
+/* separador de sección tipo regla de medición */
+.ruler{height:14px;background:repeating-linear-gradient(90deg,var(--line-strong) 0 1px,transparent 1px 10px),repeating-linear-gradient(90deg,var(--ink) 0 1px,transparent 1px 50px);background-size:100% 6px,100% 14px;background-repeat:no-repeat;background-position:top,top;opacity:.4;margin-block:var(--s-5)}
+.sec.dark.bp{background-color:var(--ink)}
+.sec.dark .btn{background:var(--copper)}
+.sec.dark .btn:hover{background:var(--copper-on-dark);color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.hero .wave .w{animation:none}}

@@ -1,0 +1,718 @@
+{
+ "job": "p10-fichas-bobinas-potenciometros-reostatos",
+ "documents": [
+  {
+   "file": "4.-Bobinas-encapsuladas.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "es",
+   "title": "BOBINAS ENCAPSULADAS - ELECTROIMANES DE NUCLEO TOROIDAL (página 26 del catálogo)",
+   "families": [
+    {
+     "family": "ELECTROIMANES DE NUCLEO TOROIDAL (Bobinas encapsuladas)",
+     "series": null,
+     "page": 1,
+     "description": "Rótulo de sección: BOBINAS ENCAPSULADAS. Subtítulo: ELECTROIMANES DE NUCLEO TOROIDAL. Dos versiones ilustradas con foto y esquema acotado: 'Encapsulado parcial' y 'Encapsulado completo'. La página no incluye texto descriptivo, tensión, potencia (VA) ni referencias; solo cotas y peso.",
+     "general_specs": {
+      "Versiones": "Encapsulado parcial; Encapsulado completo",
+      "Unidad del peso": "Kg.",
+      "Unidad de las cotas": "no indicada en la página"
+     },
+     "models": [
+      {
+       "reference": "Encapsulado parcial",
+       "page": 1,
+       "specs": {
+        "Cota vertical del alzado": "65",
+        "Cota horizontal del alzado": "99",
+        "Cota de planta (lado izquierdo)": "64",
+        "Cota de planta (lado derecho)": "64",
+        "Cota total de planta": "96",
+        "Peso (Kg.)": "2,635"
+       },
+       "raw_row": "Encapsulado parcial | alzado 65 x 99 | planta 64 / 64 / 96 | Kg. 2,635",
+       "confidence": "alta"
+      },
+      {
+       "reference": "Encapsulado completo",
+       "page": 1,
+       "specs": {
+        "Cota vertical del alzado": "69",
+        "Cota horizontal del alzado": "99",
+        "Cota de planta (lado izquierdo)": "64",
+        "Cota de planta (lado derecho)": "64",
+        "Cota total de planta": "101",
+        "Peso (Kg.)": "2,750"
+       },
+       "raw_row": "Encapsulado completo | alzado 69 x 99 | planta 64 / 64 / 101 | Kg. 2,750",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Encapsulado parcial",
+      "Encapsulado completo"
+     ],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 26 del catálogo (número impreso al pie). Sección 'BOBINAS ENCAPSULADAS'.",
+     "page": 1
+    },
+    {
+     "fact": "Ambas versiones se muestran con cable de salida. En la fotografía del encapsulado parcial queda visible el paquete de chapas del núcleo; en el encapsulado completo la resina lo cubre (forma en cruz en la vista de planta).",
+     "page": 1
+    },
+    {
+     "fact": "Esta hoja es distinta de la tabla de bobinas por VA (Caracteristicas_Bobinas_Encapsuladas.pdf): aquí solo hay dos modelos con cotas y peso, sin VA.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas (65, 99, 64, 96, 69, 101)",
+     "why": "El esquema no rotula la unidad; solo el peso lleva 'Kg.'. No se asume ni se convierte; no publicar 'mm' sin confirmar."
+    },
+    {
+     "page": 1,
+     "item": "Asignación de las cotas 64 (izquierda / derecha) en la vista de planta",
+     "why": "El esquema muestra dos cotas 64 en posiciones distintas sin rótulo de significado (ancho de núcleo / de cuerpo); se guardan por posición, sin interpretar."
+    },
+    {
+     "page": 1,
+     "item": "Rótulo 'núcleo toroidal' frente a las fotografías",
+     "why": "Las fotos muestran un conjunto rectangular con paquete de chapas visible; el rótulo dice 'ELECTROIMANES DE NUCLEO TOROIDAL'. Se reproduce el rótulo tal cual; confirmar con Torivac antes de clasificar el producto."
+    },
+    {
+     "page": 1,
+     "item": "Datos eléctricos ausentes (tensión, VA, corriente, referencia)",
+     "why": "La hoja no los da. Propuesta para el panel de admin: solicitar a Torivac estos datos; no publicar ninguno hasta tenerlos."
+    },
+    {
+     "page": 1,
+     "item": "Página sin capa de texto numérica",
+     "why": "El texto extraíble solo contiene los rótulos y el número de página; las cotas y pesos se transcribieron de la imagen renderizada (110-220 ppp)."
+    }
+   ]
+  },
+  {
+   "file": "Bobinas_encapsuladas_-potenciometros_ENd.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "catalogo",
+   "language": "en",
+   "title": "WIRE WOUND POTENTIOMETERS & CERAMIC RHEOSTATS - 5W POTENTIOMETER (página 29 del catálogo)",
+   "families": [
+    {
+     "family": "5W POTENTIOMETER",
+     "series": null,
+     "page": 1,
+     "description": "Our 5W. potentiometer distinguish themselves by the original design of the slider-contact. Its consists of a metallic roller on top of a tangential spring. The turning of the spring produces a hypocycloidal movement of the roller on the flat side of the resistor-strip, thus avoiding the abrasion of the wire. The ends of the resistor-strip are colloidal-silver painted so, that practically there is no residual resistance.",
+     "general_specs": {
+      "Terminals": "3.2 x 0,5 mm",
+      "Power rating at 25ºC": "5W",
+      "Resistance distribution": "lin.",
+      "Resistance range": "5 Ω - 50 KΩ",
+      "Tolerance": "6%",
+      "Breakdown voltage": "> 1000v.",
+      "Mechanical angle of rotation": "264ºC",
+      "Electrical angle of rotation": "250ºC",
+      "Mech. breakdown of the stop": "8 kg/cm.",
+      "Standard shaft lenght": "40 mm.",
+      "Net weight": "40 grs.",
+      "Temperature increasing at full load": "75ºC"
+     },
+     "models": [
+      {
+       "reference": "5W POTENTIOMETER",
+       "page": 1,
+       "specs": {
+        "Terminals": "3.2 x 0,5 mm",
+        "Power rating at 25ºC": "5W",
+        "Resistance distribution": "lin.",
+        "Resistance range": "5 Ω - 50 KΩ",
+        "Tolerance": "6%",
+        "Breakdown voltage": "> 1000v.",
+        "Mechanical angle of rotation": "264ºC",
+        "Electrical angle of rotation": "250ºC",
+        "Mech. breakdown of the stop": "8 kg/cm.",
+        "Standard shaft lenght": "40 mm.",
+        "Net weight": "40 grs.",
+        "Temperature increasing at full load": "75ºC",
+        "Dibujo - diámetro del eje (rótulo 6Ø)": "6Ø",
+        "Dibujo - cota del eje": "40",
+        "Dibujo - cota intermedia": "7",
+        "Dibujo - cota del cuerpo (altura)": "25",
+        "Dibujo - cota del cuerpo (diámetro, parte inferior)": "41"
+       },
+       "raw_row": "* Terminals 3.2 x 0,5 mm * Power rating at 25ºC: 5W * Resistance distribution: lin. * Resistance range: 5 Ω - 50 KΩ * Tolerance: 6% * Breakdown voltage: > 1000v. * Mechanical angle of rotation: 264ºC * Electrical angle of rotation: 250ºC * Mech. breakdown of the stop: 8 kg/cm. * Standard shaft lenght: 40 mm. * Net weight: 40 grs. *Temperature increasing at full load: 75ºC",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "Breakdown voltage: > 1000v.",
+     "page": 1,
+     "context": "Característica del potenciómetro 5W (tensión de ruptura, no tensión de servicio)",
+     "normalized_hint": "> 1000 V (tensión de perforación / breakdown)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Página 29 del catálogo (número impreso al pie). Cabecera de sección: 'WIRE WOUND POTENTIOMETERS & CERAMIC RHEOSTATS' (la página solo contiene el potenciómetro de 5W).",
+     "page": 1
+    },
+    {
+     "fact": "Contacto deslizante: rodillo metálico sobre un muelle tangencial que produce un movimiento hipocicloidal sobre la cara plana de la banda resistiva, evitando la abrasión del hilo; extremos de la banda pintados con plata coloidal (resistencia residual prácticamente nula).",
+     "page": 1
+    },
+    {
+     "fact": "DUPLICIDAD: esta ficha en inglés corresponde al mismo producto que Caracteristicas_Potenciometros_5W.pdf (español); mismos valores numéricos, redacción descriptiva distinta.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "'Mechanical angle of rotation: 264ºC' y 'Electrical angle of rotation: 250ºC'",
+     "why": "El PDF en inglés usa 'ºC' para ángulos; la ficha en español dice 264º y 250º. Probable errata. Se conserva el texto literal en general_specs; no publicar 'ºC' en ángulos."
+    },
+    {
+     "page": 1,
+     "item": "Texto inglés con erratas ('Our 5W. potentiometer distinguish', 'Its consists', 'lenght', 'Mech. breakdown of the stop')",
+     "why": "Se transcribe literal. Propuesta para el panel de admin: versión inglesa corregida a revisar por Torivac antes de publicar."
+    },
+    {
+     "page": 1,
+     "item": "Descripción EN distinta de la descripción ES del 5W",
+     "why": "La versión ES habla de bobinado cuidadoso y rodillo de latón basculante; la EN de muelle tangencial, movimiento hipocicloidal y plata coloidal. No son traducciones literales; no mezclar afirmaciones entre idiomas sin confirmar."
+    },
+    {
+     "page": 1,
+     "item": "Cotas del dibujo 6Ø, 40, 7, 25, 41 (sin unidad ni significado rotulado)",
+     "why": "Se transcriben de la imagen. El 40 coincide con 'Standard shaft lenght: 40 mm.' y 6Ø es el diámetro del eje; 7, 25 y 41 no se definen en el texto (la asignación a cuerpo/casquillo es lectura del dibujo)."
+    },
+    {
+     "page": 1,
+     "item": "'Mech. breakdown of the stop: 8 kg/cm.'",
+     "why": "Unidad conservada tal cual (la ficha ES dice 'Kg/cm'); sin convertir."
+    },
+    {
+     "page": 1,
+     "item": "Nombre de archivo 'Bobinas_encapsuladas_-potenciometros_ENd' vs. contenido",
+     "why": "El PDF solo contiene el potenciómetro de 5W; no hay datos de bobinas encapsuladas ni de reóstatos cerámicos en esta página pese al título de cabecera."
+    },
+    {
+     "page": 1,
+     "item": "Página renderizada para las cotas del dibujo",
+     "why": "El texto extraíble contiene los datos de 'Characteristics' pero no las cotas del dibujo; la página se marca como visual_only para esas cotas."
+    }
+   ]
+  },
+  {
+   "file": "Caracteristicas_Bobinas_Encapsuladas.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "BOBINAS ENCAPSULADAS - Generalidades (página 21)",
+   "families": [
+    {
+     "family": "BOBINAS ENCAPSULADAS (bobinas para electroimanes)",
+     "series": null,
+     "page": 1,
+     "description": "Las bobinas para electroimanes, encapsuladas en resina de epóxi, disponen de una alta rigidez dieléctrica y un aprovechamiento magnético máximo por su diseño y construcción mecánica",
+     "general_specs": {
+      "Encapsulado": "resina de epóxi",
+      "Propiedades citadas": "alta rigidez dieléctrica; aprovechamiento magnético máximo por su diseño y construcción mecánica",
+      "Columnas de la tabla": "VA, A, B, C, D, E, F, G, Kg",
+      "Valor '--'": "celda sin valor en la tabla del PDF (se guarda como null)",
+      "Esquemas": "EJE LISO (cotas A, B, C) y EJE ESCALONADO (cotas D, E, F, G), según los rótulos del dibujo",
+      "Unidad de VA": "VA",
+      "Unidad de peso": "Kg"
+     },
+     "models": [
+      {
+       "reference": "50 VA",
+       "page": 1,
+       "specs": {
+        "VA": "50",
+        "A": "60",
+        "B": "54",
+        "C": "24",
+        "D": null,
+        "E": null,
+        "F": null,
+        "G": null,
+        "Kg": "0.450"
+       },
+       "raw_row": "50 60 54 24 -- -- -- -- 0.450",
+       "confidence": "alta"
+      },
+      {
+       "reference": "100 VA",
+       "page": 1,
+       "specs": {
+        "VA": "100",
+        "A": "68",
+        "B": "58",
+        "C": null,
+        "D": "38",
+        "E": "20",
+        "F": "26",
+        "G": "28",
+        "Kg": "0.735"
+       },
+       "raw_row": "100 68 58 -- 38 20 26 28 0.735",
+       "confidence": "alta"
+      },
+      {
+       "reference": "150 VA",
+       "page": 1,
+       "specs": {
+        "VA": "150",
+        "A": "73",
+        "B": "60",
+        "C": "28",
+        "D": null,
+        "E": null,
+        "F": null,
+        "G": null,
+        "Kg": "0.955"
+       },
+       "raw_row": "150 73 60 28 -- -- -- -- 0.955",
+       "confidence": "alta"
+      },
+      {
+       "reference": "200 VA [fila 4: cotas D, E, F, G]",
+       "page": 1,
+       "specs": {
+        "VA": "200",
+        "A": "82",
+        "B": "64",
+        "C": null,
+        "D": "44",
+        "E": "20",
+        "F": "28",
+        "G": "31",
+        "Kg": "1.225"
+       },
+       "raw_row": "200 82 64 -- 44 20 28 31 1.225",
+       "confidence": "alta"
+      },
+      {
+       "reference": "200 VA [fila 5: cota C]",
+       "page": 1,
+       "specs": {
+        "VA": "200",
+        "A": "82",
+        "B": "64",
+        "C": "30",
+        "D": null,
+        "E": null,
+        "F": null,
+        "G": null,
+        "Kg": "1.225"
+       },
+       "raw_row": "200 82 64 30 -- -- -- -- 1.225",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "EJE LISO",
+      "EJE ESCALONADO"
+     ],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [],
+   "other_facts": [
+    {
+     "fact": "Página 21 (número impreso al pie); web www.torivac.com en el pie y logotipo Torivac en la cabecera.",
+     "page": 1
+    },
+    {
+     "fact": "Material: encapsulado en resina de epóxi; se destaca alta rigidez dieléctrica.",
+     "page": 1
+    },
+    {
+     "fact": "Las fotografías muestran bobinas cilíndricas azules con cable de salida.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Unidad de las cotas A-G",
+     "why": "La tabla solo rotula VA y Kg; A-G no llevan unidad. No se asume 'mm' ni se convierte."
+    },
+    {
+     "page": 1,
+     "item": "Dos filas de 200 VA (A=82, B=64, Kg 1.225 en ambas)",
+     "why": "Una fila usa D, E, F, G (44, 20, 28, 31) y la otra C (30). Se mantienen como dos modelos diferenciados por la fila. La asociación eje escalonado = D-G y eje liso = C es lectura del esquema, no texto del PDF."
+    },
+    {
+     "page": 1,
+     "item": "Rótulo '200' en el esquema (cota vertical sobre el cilindro del eje liso)",
+     "why": "No se explica su significado (podría ser longitud de cable u otra cota); no se publica."
+    },
+    {
+     "page": 1,
+     "item": "Datos eléctricos ausentes (tensión de bobina, corriente, espiras, referencia)",
+     "why": "La tabla solo da VA y dimensiones. Propuesta para el panel de admin: pedir tensiones disponibles y códigos a Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Decimales con punto (0.450 ... 1.225)",
+     "why": "Conservados tal cual; en la hoja de la p. 26 el peso usa coma (2,635). Formato no uniforme entre fichas."
+    }
+   ]
+  },
+  {
+   "file": "Caracteristicas_Potenciometros_3W.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "POTENCIOMETROS BOBINADOS DE 3W - Potenciómetro 3W y Potenciómetro doble (página 23)",
+   "families": [
+    {
+     "family": "POTENCIOMETRO 3W",
+     "series": null,
+     "page": 1,
+     "description": "Este potenciómetro se distingue por su pequeño diámetro (25mm) a pesar de su disipación real de 3 vatios. Su linealidad (3%) los hace aptos para usos sofisticados. Se fabrican la gama de valores Standard, según la serie E-10 (desde 5 Ohm hasta 22 K).",
+     "general_specs": {
+      "Terminales": "3,2 x 0,5 mm",
+      "Hermético al polvo": "Hermético al polvo",
+      "Eje Standard": "12 mm, (Ø 6mm.) de poliamida 6 con fibra de vidrio",
+      "Cursor": "basculante",
+      "Resistencia mín.": "5 Ω - 22 KΩ",
+      "Ángulo de giro": "280º",
+      "Tolerancia": "10%",
+      "Tensión de perforación": "> 1000v.",
+      "Peso neto": "22 grs.",
+      "Temperatura de trabajo": "-20º/+60º",
+      "Categoría UL": "94V-0",
+      "Embalaje": "Caja de 25 pzas.",
+      "Diámetro": "25mm",
+      "Disipación real": "3 vatios",
+      "Linealidad": "3%",
+      "Serie de valores": "E-10 (desde 5 Ohm hasta 22 K)"
+     },
+     "models": [
+      {
+       "reference": "POTENCIOMETRO 3W",
+       "page": 1,
+       "specs": {
+        "Potencia (disipación real)": "3 vatios",
+        "Diámetro": "25mm",
+        "Linealidad": "3%",
+        "Tolerancia": "10%",
+        "Resistencia mín. (rango)": "5 Ω - 22 KΩ",
+        "Serie de valores": "E-10",
+        "Ángulo de giro": "280º",
+        "Tensión de perforación": "> 1000v.",
+        "Eje Standard": "12 mm, (Ø 6mm.) de poliamida 6 con fibra de vidrio",
+        "Terminales": "3,2 x 0,5 mm",
+        "Peso neto": "22 grs.",
+        "Temperatura de trabajo": "-20º/+60º",
+        "Categoría UL": "94V-0",
+        "Embalaje": "Caja de 25 pzas.",
+        "Dibujo - diámetro del cuerpo": "25",
+        "Dibujo - profundidad del cuerpo": "22,5",
+        "Dibujo - longitud del eje": "12",
+        "Dibujo - diámetro del eje": "6",
+        "Dibujo - separación angular entre terminales": "40° / 40°",
+        "Dibujo - otras cotas sin rótulo": "8; 6; 6; 8; 2,5; M10/100"
+       },
+       "raw_row": "* Terminales 3,2 x 0,5 mm * Hermético al polvo * Eje Standard 12 mm, (Ø 6mm.) de poliamida 6 con fibra de vidrio * Cursor basculante * Resistencia mín.: 5 Ω - 22 KΩ * Ángulo de giro: 280º * Tolerancia: 10% * Tensión de perforación > 1000v. * Peso neto: 22 grs. * Temperatura de trabajo: -20º/+60º * Categoría UL: 94V-0 * Embalaje: Caja de 25 pzas.",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [
+      "Potenciómetro doble (2 x 3 W), derivado de este modelo"
+     ],
+     "ordering_info": "Valores standard según la serie E-10 (desde 5 Ohm hasta 22 K). La ficha no da códigos de referencia ni lista de valores."
+    },
+    {
+     "family": "POTENCIOMETRO DOBLE",
+     "series": null,
+     "page": 1,
+     "description": "Este potenciómetro doble, de 2 x 3 W, es un derivado del modelo de 3W para su uso en equipos estéreo, como atenuador. Sus características eléctricas y físicas son iguales a estos últimos. Peso neto: 40 grs. Embalaje: Caja de 25 pzas.",
+     "general_specs": {
+      "Potencia": "2 x 3 W",
+      "Uso": "equipos estéreo, como atenuador",
+      "Características eléctricas y físicas": "iguales a las del modelo de 3W (según el PDF)",
+      "Peso neto": "40 grs.",
+      "Embalaje": "Caja de 25 pzas."
+     },
+     "models": [
+      {
+       "reference": "POTENCIOMETRO DOBLE (2 x 3 W)",
+       "page": 1,
+       "specs": {
+        "Potencia": "2 x 3 W",
+        "Peso neto": "40 grs.",
+        "Embalaje": "Caja de 25 pzas.",
+        "Dibujo - diámetro del cuerpo": "27",
+        "Dibujo - longitud total": "48",
+        "Dibujo - longitud del cuerpo (cota superior)": "40",
+        "Dibujo - longitud del eje": "12",
+        "Dibujo - diámetro del eje": "6",
+        "Dibujo - separación angular entre terminales": "40° / 40°",
+        "Dibujo - otras cotas sin rótulo": "8; 6; 6; 8; 2,5; M10/100"
+       },
+       "raw_row": "POTENCIOMETRO DOBLE, de 2 x 3 W ... Peso neto: 40 grs. Embalaje: Caja de 25 pzas.",
+       "confidence": "media"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "Tensión de perforación > 1000v.",
+     "page": 1,
+     "context": "Característica principal del potenciómetro 3W (tensión de perforación, no tensión de servicio)",
+     "normalized_hint": "> 1000 V (tensión de perforación)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Página 23 del catálogo (número impreso al pie); cabecera POTENCIOMETROS; web www.torivac.com.",
+     "page": 1
+    },
+    {
+     "fact": "Pequeño diámetro (25mm) con disipación real de 3 vatios; linealidad (3%) apta para usos sofisticados.",
+     "page": 1
+    },
+    {
+     "fact": "Hermético al polvo; cursor basculante; eje de poliamida 6 con fibra de vidrio.",
+     "page": 1
+    },
+    {
+     "fact": "Clasificación de inflamabilidad: Categoría UL 94V-0.",
+     "page": 1
+    },
+    {
+     "fact": "Temperatura de trabajo -20º/+60º (sin letra de unidad en el PDF).",
+     "page": 1
+    },
+    {
+     "fact": "Embalaje en caja de 25 pzas. (modelo simple y modelo doble).",
+     "page": 1
+    },
+    {
+     "fact": "El potenciómetro doble (2 x 3 W) se usa en equipos estéreo como atenuador.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Bloque 'CARACTERÍSTICAS PRINCIPALES' sin capa de texto fiable",
+     "why": "El texto extraíble solo trae fragmentos desordenados (12, 22, 280º, 22); los valores se transcribieron de la imagen a 260 ppp. Verificados dos veces visualmente."
+    },
+    {
+     "page": 1,
+     "item": "Rótulo 'Resistencia mín.: 5 Ω - 22 KΩ'",
+     "why": "El rótulo dice 'mín.' pero da un rango; la descripción dice 'desde 5 Ohm hasta 22 K'. Se conserva literal; en el sitio publicar como rango 5 Ω - 22 KΩ solo tras confirmar."
+    },
+    {
+     "page": 1,
+     "item": "Serie E-10 y valor de 5 Ω",
+     "why": "El PDF no lista los valores de la serie E-10. 5 Ω no es un valor normalizado típico de E-10 (el más cercano es 4,7 Ω). Propuesta para admin: pedir a Torivac la lista real de valores; no generar una lista propia."
+    },
+    {
+     "page": 1,
+     "item": "Linealidad 3% y tolerancia 10%",
+     "why": "Son dos datos distintos que aparecen en el PDF (descripción vs. características). Se guardan por separado; no confundir."
+    },
+    {
+     "page": 1,
+     "item": "Temperatura de trabajo -20º/+60º",
+     "why": "El PDF no escribe la unidad (probablemente ºC). No se añade la letra."
+    },
+    {
+     "page": 1,
+     "item": "Doble: 'características eléctricas y físicas iguales' vs. peso 40 grs. y cota 27",
+     "why": "El modelo simple pesa 22 grs. y su diámetro es 25; el doble indica 40 grs. y 27. Se conservan ambos valores; la frase 'iguales' es del PDF y no cubre peso ni dimensiones."
+    },
+    {
+     "page": 1,
+     "item": "Cotas de los dibujos (8, 6, 2,5, M10/100, 22,5, 48, 40)",
+     "why": "Sin unidad ni significado rotulado; solo 25 (diámetro), 12 (eje) y Ø6 (eje) se confirman con el texto. 'M10/100' se transcribe tal cual sin interpretar (rosca del casquillo, probable). Cota 40 en el doble: lectura de dibujo."
+    },
+    {
+     "page": 1,
+     "item": "Potencia del modelo simple",
+     "why": "Solo aparece en la descripción ('disipación real de 3 vatios'); la lista de características no tiene línea de potencia."
+    },
+    {
+     "page": 1,
+     "item": "Sin referencias de producto",
+     "why": "La ficha no da códigos de pedido. Propuesta para admin: solicitar códigos a Torivac."
+    }
+   ]
+  },
+  {
+   "file": "Caracteristicas_Potenciometros_5W.pdf",
+   "pages": [
+    1,
+    1
+   ],
+   "doc_type": "ficha_tecnica",
+   "language": "es",
+   "title": "POTENCIOMETROS - Potenciómetro 5W",
+   "families": [
+    {
+     "family": "POTENCIOMETRO 5W",
+     "series": null,
+     "page": 1,
+     "description": "El cuidadoso bobinado del elemento de resistencia y el diseño original de un sistema de cursor muy sensible aseguran un manejo muy suave, preciso y de larga duración. La escobilla es un rodillo de latón basculante que gira sobre la superficie plana de la resistencia con la presión adecuada para garantizar un buen contacto y un número muy elevado de maniobras. La resistencia residual al inicio y final de recorrido es prácticamente nula.",
+     "general_specs": {
+      "Terminales soldables": "3.2x0.5mm",
+      "Potencia máxima a 25ºC": "5W",
+      "Distribución resistencia": "Lineal",
+      "Gama de valores óhmicos": "5 Ω - 50 KΩ",
+      "Tolerancia": "6%",
+      "Tensión de perforación": ">1000V",
+      "Ángulo de giro mecánico": "264º",
+      "Ángulo de giro eléctrico": "250º",
+      "Resistencia del tope a la rotura": "8 Kg/cm",
+      "Longitud del eje Standard": "40 mm",
+      "Peso neto": "40 grs",
+      "Incremento de temperatura a plena carga": "75ºC"
+     },
+     "models": [
+      {
+       "reference": "POTENCIOMETRO 5W",
+       "page": 1,
+       "specs": {
+        "Terminales soldables": "3.2x0.5mm",
+        "Potencia máxima a 25ºC": "5W",
+        "Distribución resistencia": "Lineal",
+        "Gama de valores óhmicos": "5 Ω - 50 KΩ",
+        "Tolerancia": "6%",
+        "Tensión de perforación": ">1000V",
+        "Ángulo de giro mecánico": "264º",
+        "Ángulo de giro eléctrico": "250º",
+        "Resistencia del tope a la rotura": "8 Kg/cm",
+        "Longitud del eje Standard": "40 mm",
+        "Peso neto": "40 grs",
+        "Incremento de temperatura a plena carga": "75ºC",
+        "Dibujo - diámetro del eje (rótulo 6Ø)": "6Ø",
+        "Dibujo - cota del eje": "40",
+        "Dibujo - cota intermedia": "7",
+        "Dibujo - cota del cuerpo (altura)": "25",
+        "Dibujo - cota del cuerpo (diámetro, parte inferior)": "41"
+       },
+       "raw_row": "* Terminales soldables 3.2x0.5mm * Potencia máxima a 25ºC: 5W * Distribución resistencia: Lineal * Gama de valores óhmicos: 5 Ω - 50 KΩ * Tolerancia: 6% * Tensión de perforación: >1000V * Ángulo de giro mecánico: 264º * Ángulo de giro eléctrico: 250º * Resistencia del tope a la rotura: 8 Kg/cm * Longitud del eje Standard: 40 mm * Peso neto: 40 grs * Incremento de temperatura a plena carga: 75ºC",
+       "confidence": "alta"
+      }
+     ],
+     "options_accessories": [],
+     "ordering_info": null
+    }
+   ],
+   "tables": [],
+   "voltage_mentions": [
+    {
+     "raw": "Tensión de perforación: >1000V",
+     "page": 1,
+     "context": "Característica principal del potenciómetro 5W (tensión de perforación, no tensión de servicio)",
+     "normalized_hint": "> 1000 V (tensión de perforación)"
+    }
+   ],
+   "other_facts": [
+    {
+     "fact": "Cabecera POTENCIOMETROS y web www.torivac.com; esta hoja no lleva número de página impreso (en el catálogo en inglés equivale a la página 29).",
+     "page": 1
+    },
+    {
+     "fact": "Escobilla: rodillo de latón basculante sobre la superficie plana de la resistencia; resistencia residual al inicio y final de recorrido prácticamente nula.",
+     "page": 1
+    },
+    {
+     "fact": "Bobinado cuidadoso del elemento resistivo y sistema de cursor muy sensible: manejo suave, preciso y de larga duración, con número muy elevado de maniobras.",
+     "page": 1
+    },
+    {
+     "fact": "DUPLICIDAD: mismos valores que la ficha en inglés Bobinas_encapsuladas_-potenciometros_ENd.pdf (5W POTENTIOMETER); cambia el idioma y la redacción de la descripción.",
+     "page": 1
+    }
+   ],
+   "visual_only_pages": [
+    1
+   ],
+   "uncertain": [
+    {
+     "page": 1,
+     "item": "Bloque 'CARACTERÍSTICAS PRINCIPALES' sin capa de texto",
+     "why": "El texto extraíble solo contiene el párrafo descriptivo; todos los valores se transcribieron de la imagen a 260 ppp."
+    },
+    {
+     "page": 1,
+     "item": "Rótulos con letras desplazadas ('Potencia máxi   a a 25ºC', 'Angulo de giro  ecánico', 'Peso neto: 40  grs', 'gama de  valores')",
+     "why": "El render muestra la 'm' de 'máxima'/'mecánico' fuera de sitio. La clave se reconstruyó como 'Potencia máxima a 25ºC' y 'Ángulo de giro mecánico' (la ficha en inglés confirma 'Power rating at 25ºC' y 'Mechanical angle of rotation'); los valores (5W, 264º) están claros."
+    },
+    {
+     "page": 1,
+     "item": "'Resistencia del tope a la rotura: 8 Kg/cm'",
+     "why": "Unidad conservada literalmente (probable par de rotura en kg·cm); no se convierte."
+    },
+    {
+     "page": 1,
+     "item": "Cotas del dibujo 6Ø, 40, 7, 25, 41",
+     "why": "Sin unidad rotulada. 40 coincide con la longitud del eje y 6Ø con el eje; 7 (casquillo/rosca) , 25 y 41 (cuerpo) no se definen en el texto, son lectura del dibujo."
+    },
+    {
+     "page": 1,
+     "item": "Terminales '3.2x0.5mm' (punto decimal)",
+     "why": "En la ficha 3W se escribe '3,2 x 0,5 mm'. Se conserva cada formato; unificar solo en presentación."
+    },
+    {
+     "page": 1,
+     "item": "Valores óhmicos disponibles",
+     "why": "Solo se da el rango 5 Ω - 50 KΩ; no hay serie ni lista de valores. Propuesta para admin: pedir la serie a Torivac."
+    },
+    {
+     "page": 1,
+     "item": "Sin referencias de producto",
+     "why": "La ficha no incluye códigos de pedido."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,4549 @@
+[
+ {
+  "id": 29,
+  "parent": 19,
+  "count": 3,
+  "slug": {
+   "es": "accesorios-de-regulacion",
+   "en": "regulating-accessories",
+   "fr": "accessoires-de-regulation",
+   "de": "zubehor-zum-regulieren"
+  },
+  "name": {
+   "es": "Accesorios de regulación",
+   "en": "Regulating accessories",
+   "fr": "Accessoires de régulation",
+   "de": "Zubehör zum Regulieren"
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/accesorios-de-regulacion/",
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/regulating-accessories/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/accessoires-de-regulation/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/zubehor-zum-regulieren/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Disponemos de todos los accesorios necesarios para realizar la regulación de su variador de tensión de una forma cómoda, segura y adaptada a sus necesidades."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "We have all the necessary accessories to carry out the regulation of your voltage variator in a comfortable, safe and adapted way to your needs."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Nous disposons de tous les accessoires nécessaires pour réguler votre variateur de tension de manière confortable, sûre et adaptée à vos besoins."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Wir haben alles notwendige Zubehör, um Ihren Spannungsvariator bequem, sicher und angepasst an Ihre Bedürfnisse zu regulieren."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/fd0ce488-controlador0-10.webp",
+   "thumb": "assets/media/fd0ce488-controlador0-10-t.webp",
+   "w": 1500,
+   "h": 1500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/12/controlador0-10.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Accesorios de regulación - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 77,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "aros-con-flecha",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Aros con flecha",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/aros-con-flecha/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Se adaptan a la base de los botones de la serie BO de forma que solamente sobresale la punta indicadora y se utilizan para identificar la posición del botón. Disponibles para toda gama de botones."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/1f1b3118-disco-para-botones-aro-con-flecha.webp",
+   "thumb": "assets/media/1f1b3118-disco-para-botones-aro-con-flecha-t.webp",
+   "w": 800,
+   "h": 803,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-aro-con-flecha.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Aros con flecha - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 93,
+  "parent": 88,
+  "count": 1,
+  "slug": {
+   "es": "bancos-de-carga",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Bancos de carga",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/resistencias/bancos-de-carga/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Como fabricante de elementos resistivos, podemos suministrar cargas resistivas a fabricantes de bancos de carga y bancos de descarga: Fabricados con diferentes tipos de elementos resistivos en función de las aplicaciones, y de los requisitos de potencia, podemos proporcionarle bancos de carga con una gran capacidad de disipación y una excelente resistencia a los choques térmicos y a las sobrecargas, especialmente recomendados para potencias pequeñas (hasta 30 kW) y para potencias más elevadas, cargas que ofrecen un bajo coeficiente de inducción, y una gran capacidad de absorción de energía."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/64858880-banco-de-carga1-1.webp",
+   "thumb": "assets/media/64858880-banco-de-carga1-1-t.webp",
+   "w": 900,
+   "h": 900,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/banco-de-carga1-1.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Bancos de carga - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 22,
+  "parent": 0,
+  "count": 2,
+  "slug": {
+   "es": "bobinas-encapsuladas",
+   "en": "encapsulated-coils",
+   "fr": "bobines-encapsulees",
+   "de": "gekapselte-spulen"
+  },
+  "name": {
+   "es": "Bobinas encapsuladas",
+   "en": "Encapsulated coils",
+   "fr": "Bobines encapsulées",
+   "de": "Gekapselte Spulen"
+  },
+  "path": {
+   "es": "/categoria-producto/bobinas-encapsuladas/",
+   "en": "/en/categoria-producto/encapsulated-coils/",
+   "fr": "/fr/categoria-producto/bobines-encapsulees/",
+   "de": "/de/categoria-producto/gekapselte-spulen/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Las bobinas para electroimanes, encapsuladas en resina de epóxi, disponen de una alta rigidez dieléctrica y un aprovechamiento magnético máximo por su diseño y construcción mecánica."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "The electromagnet coils, encapsulated in epoxy resin, have a high dielectric strength and maximum magnetic efficiency due to their design and mechanical construction."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les bobines de l'électro-aimant, encapsulées dans une résine époxy, ont une rigidité diélectrique élevée et une efficacité magnétique maximale grâce à leur conception et à leur construction mécanique."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Die in Epoxidharz eingekapselten Elektromagnetspulen haben aufgrund ihres Designs und ihres mechanischen Aufbaus eine hohe Durchschlagsfestigkeit und eine maximale magnetische Effizienz."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Eliminar-fondo-1.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Bobinas encapsuladas - Torivac",
+    "description": "¿Tu negocio necesita bobinas encapsuladas? Confía en un especialista con más de 60 años de experiencia en el sector de la energía."
+   }
+  }
+ },
+ {
+  "id": 30,
+  "parent": 0,
+  "count": 11,
+  "slug": {
+   "es": "botones-de-mando",
+   "en": "control-buttons",
+   "fr": "boutons-de-commande",
+   "de": "bedieningsknoppen"
+  },
+  "name": {
+   "es": "Botones de mando",
+   "en": "Control buttons",
+   "fr": "Boutons de commande",
+   "de": "Steuerungstasten"
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/",
+   "en": "/en/categoria-producto/control-buttons/",
+   "fr": "/fr/categoria-producto/boutons-de-commande/",
+   "de": "/de/categoria-producto/bedieningsknoppen/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Complementando nuestro catálogo, podemos ofrecer una amplia gama de componentes auxiliares para múltiples utilidades.\n\nComponentes de fabricación propia y de la más alta calidad."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Complementing our catalog, we can offer a wide range of auxiliary components for multiple utilities.\n\nComponents of our own manufacture and of the highest quality."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "En complément de notre catalogue, nous pouvons vous proposer une large gamme de composants auxiliaires pour des utilisations multiples.\n\nComposants fabriqués en interne et de la plus haute qualité."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Ergänzend zu unserem Katalog können wir Ihnen eine große Auswahl an Hilfskomponenten für verschiedene Einsatzzwecke anbieten.\n\nKomponenten aus eigener Herstellung und von höchster Qualität."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/00390aa6-boton-serie-bo-torivac-600x600-2.webp",
+   "thumb": "assets/media/00390aa6-boton-serie-bo-torivac-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Botones de mando - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 74,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "botones-de-mando-serie-bm-mate",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Botones de mando serie BM (Mate)",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/botones-de-mando-serie-bm-mate/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Se fabrican con los mismos materiales que la serie BO pero con aspecto mate. El perfil es más alto y cilíndrico que los de la serie BO y la forma externa es ligeramente distinta. Se complementan con tapas mate y todos los demás accesorios de la serie BO."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/37f34e8d-boton-serie-bm-mate-troivac-600x598-2.webp",
+   "thumb": "assets/media/37f34e8d-boton-serie-bm-mate-troivac-600x598-2-t.webp",
+   "w": 600,
+   "h": 598,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-mate-troivac-600x598-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Botones de mando serie BM (Mate) - Torivac",
+    "description": "Dentro de los botones de mando, entre nuestro catálogo destaca el botón serie BM en acabado mate. ¡Echa un vistazo y encuentra el tuyo!"
+   }
+  }
+ },
+ {
+  "id": 72,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "botones-de-mando-serie-bo-brillante",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Botones de mando serie BO (brillante)",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-brillante/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "En esta serie se utiliza el sistema de fijación central por pinza, sin tornillos, que permite un alto poder de apriete (8-20 kp/cm). El cuerpo esta inyectado en poliamida 6 y la pinza y el casquillo insertado son de latón."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/boton-serie-bo-torivac.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Botones de mando serie BO (brillante) - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 73,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "botones-de-mando-serie-bo-con-linea",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Botones de mando Serie BO con linea",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-con-linea/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Son los mismos botones que la serie BO pero con una línea lateral para indicar su posición."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/167370ef-boton-serie-bm-torivac-600x600-2.webp",
+   "thumb": "assets/media/167370ef-boton-serie-bm-torivac-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-torivac-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Botones de mando Serie BO con linea - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 27,
+  "parent": 0,
+  "count": 1,
+  "slug": {
+   "es": "botones-de-mando-y-accesorios",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Botones de mando y accesorios",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando-y-accesorios/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "[vc_row][vc_column][vc_raw_html]JTNDaDUlMjBzdHlsZSUzRCUyMmNvbG9yJTNBJTIzQkE2QjFFJTNCJTIwZm9udC1mYW1pbHklM0ElMjBzYW5kYm94JTNCJTIyJTNFUFJPRFVDVE9TJTIwUFJPRkVTSU9OQUxFUyUzQyUyRmg1JTNFJTBBJTNDaW1nJTIwc3JjJTNEJTIyaHR0cHMlM0ElMkYlMkZ0b3JpdmFjLnNhbnRpc29tYXJrZXRpbmcuY29tJTJGd3AtY29udGVudCUyRnVwbG9hZHMlMkYyMDIyJTJGMDQlMkZsaW5lYXlwdW50b19vc2N1cmEucG5nJTIyJTIwJTJGJTNFJTBBJTNDaDIlM0VCb3RvbmVzJTIwZGUlMjBNYW5kbyUyMHklMjBBY2Nlc29yaW9zJTNDJTJGaDIlM0UlMEElM0NwJTNFRWwlMjB2YXJpYWRvciUyMGRlJTIwdGVuc2klQzMlQjNuJTIwdG9yb2lkYWwlMjBvJTIwYXV0b3RyYW5zZm9ybWFkb3IlMjByZWd1bGFibGUlMjBlcyUyMHVuJTIwZWxlbWVudG8lMjBiJUMzJUExc2ljbyUyMHNpJTIwZGVzZWFtb3MlMjByZWd1bGFyJTIwdW5hJTIwdGVuc2klQzMlQjNuJTIwYWx0ZXJuYSUyQyUyMHZhcmlhYmxlJTJDJTIwZGVzZGUlMjBjZXJvJTIwaGFzdGElMjBlbCUyMG0lQzMlQTF4aW1vJTJDJTIwY29uJTIwdW5hJTIwaW50ZW5zaWRhZCUyMGNvbnN0YW50ZS4lM0MlMkZwJTNFJTBBJTBBJTNDcCUzRUxvcyUyMHZhcmlhZG9yZXMlMjBkZSUyMHRlbnNpJUMzJUIzbiUyMFRPUklWQUMlMkMlMjBzZSUyMGNhcmFjdGVyaXphbiUyMHBvciUyMHN1JTIwcm9idXN0ZXolMjBtZWMlQzMlQTFuaWNhJTIweSUyMHN1JTIwYWx0YSUyMHJlc29sdWNpJUMzJUIzbiUyMHF1ZSUyMHBlcm1pdGUlMjBhanVzdGVzJTIwbXV5JTIwcHJlY2lzb3MlMjBkZSUyMHRlbnNpJUMzJUIzbiUyMHklMjBwb3IlMjBsYSUyMGFsdGElMjBjYWxpZGFkJTIwZGUlMjB0b2RvcyUyMGxvcyUyMG1hdGVyaWFsZXMlMjB1dGlsaXphZG9zJTIwZW4lMjBzdSUyMGZhYnJpY2FjaSVDMyVCM24uJTNDJTJGcCUzRSUwQSUwQSUzQ3AlM0VFc3RvcyUyMGRldGFsbGVzJTJDJTIwanVudG8lMjBhbCUyMGNvbnRyb2wlMjBkZWwlMjAxMDAlMjUlMjBkZSUyMHRvZG9zJTIwbG9zJTIwdmFyaWFkb3JlcyUyMG5vcyUyMHBlcm1pdGVuJTIwb2ZyZWNlciUyMHVuYSUyMGZpYWJpbGlkYWQlMjByZWNvbm9jaWRhJTIwcG9yJTIwbG9zJTIwY2xpZW50ZXMlMjBtJUMzJUExcyUyMGV4aWdlbnRlcy4lM0MlMkZwJTNF[/vc_raw_html][product_categories orderby=\"\" order=\"ASC\" columns=\"3\" ids=\"70\"][/vc_column][/vc_row]"
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/b9c48f46-tapas-para-boton-bm.webp",
+   "thumb": "assets/media/b9c48f46-tapas-para-boton-bm-t.webp",
+   "w": 800,
+   "h": 800,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/tapas-para-boton-bm.png"
+  },
+  "seo": {
+   "es": {
+    "title": "Botones de mando y accesorios - Torivac",
+    "description": "Descubre nuestra amplia variedad en botones de mando y accesorios. Todo un mundo de componentes eléctricos para tu negocio."
+   }
+  }
+ },
+ {
+  "id": 82,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "caratulas-graduadas",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Caratulas graduadas",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/caratulas-graduadas/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Fabricadas en aluminio anodizado, para reostatos y variadores de tensión.\n\nImpresas en voltios o porcentajes, para diferentes ángulos de giro."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/bbcfca2c-caratulas-graduadas-aluminio-anodizado-torivac-600x600-2.webp",
+   "thumb": "assets/media/bbcfca2c-caratulas-graduadas-aluminio-anodizado-torivac-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/caratulas-graduadas-aluminio-anodizado-torivac-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Caratulas graduadas - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 92,
+  "parent": 88,
+  "count": 1,
+  "slug": {
+   "es": "cementadas",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Cementadas",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/resistencias/cementadas/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Nuestras de resistencias de alta potencia cementadas se fabrican con hilo de aleación resistiva de alta calidad. El valor ohmico varia poco con la subida en temperatura del elemento.\n\nSon resistencias bobinadas compuestas por un elemento resistivo enrollado sobre un núcleo tubular cerámico utilizado como soporte y recubierto de una. resina, para asegurar una alta capacidad de disipación y una excelente resistencia al choque térmico y a la sobrecarga. Se trata de un elemento abierto de baja inductancia que permite muy bajos valores ohmicos."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/15700916-cementadas.webp",
+   "thumb": "assets/media/15700916-cementadas-t.webp",
+   "w": 250,
+   "h": 250,
+   "src": "https://grupotorivac.com/wp-content/uploads/2024/11/cementadas.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Cementadas - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 63,
+  "parent": 0,
+  "count": 1,
+  "slug": {
+   "es": "choques",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Choques | Inductancias | Reactancias toroidales",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/choques/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Un choque es un inductor diseñado para tener una reactancia muy alta a una frecuencia o rango de frecuencias determinado. Se utiliza bien para impedir el paso de corriente alterna de una parte a otra de un circuito, permitiendo al mismo tiempo el paso de corriente continua, bien para impedir el paso de corriente en modo común, permitiendo al mismo tiempo el paso de corriente en modo diferencial, por lo que actúan como filtros."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/choque_toroidal.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Choques | Inductancias | Reactancias toroidales toroidales - Torivac",
+    "description": "¿Los mejores choques toroidales? Contamos con más de 60 años de experiencia en el sector de la energía. Proyectos 100% personalizados"
+   }
+  }
+ },
+ {
+  "id": 50,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "comunicacion-modbus",
+   "en": "comunicacion-modbus",
+   "fr": "comunicacion-modbus",
+   "de": "comunicacion-modbus"
+  },
+  "name": {
+   "es": "Comunicación MODBUS",
+   "en": "Modbus comunication",
+   "fr": "communicateur Modbus",
+   "de": "Modbus-Kommunikator"
+  },
+  "path": {
+   "es": "/categoria-producto/comunicacion-modbus/",
+   "en": "/en/categoria-producto/comunicacion-modbus/",
+   "fr": "/fr/categoria-producto/comunicacion-modbus/",
+   "de": "/de/categoria-producto/comunicacion-modbus/"
+  },
+  "description": {
+   "es": [],
+   "en": [],
+   "fr": [],
+   "de": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Comunicación MODBUS - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 101,
+  "parent": 96,
+  "count": 0,
+  "slug": {
+   "es": "control-industrial",
+   "en": "industrial-control",
+   "fr": "controle-industriel",
+   "de": "industrielle-steuerung"
+  },
+  "name": {
+   "es": "Control industrial",
+   "en": "Industrial control",
+   "fr": "Contrôle industriel",
+   "de": "Industrielle Steuerung"
+  },
+  "path": {
+   "es": "/categoria-producto/electronica/control-industrial/",
+   "en": "/en/categoria-producto/electronic-equipment/industrial-control/",
+   "fr": "/fr/categoria-producto/equipements-electroniques/controle-industriel/",
+   "de": "/de/categoria-producto/elektronische-ausrustung/industrielle-steuerung/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Contamos con un departamento de ingeniería propio que le ayudará a llevar a cabo sus proyectos mas ambiciosos."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "We have our own engineering department that will help you carry out your most ambitious projects."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Nous disposons de notre propre département d'ingénierie qui vous aidera à réaliser vos projets les plus ambitieux."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Wir verfügen über eine eigene technische Abteilung, die Ihnen bei der Durchführung Ihrer ehrgeizigsten Projekte hilft."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/af2241dd-control-src.webp",
+   "thumb": "assets/media/af2241dd-control-src-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/12/control-src.png"
+  },
+  "seo": {
+   "es": {
+    "title": "Equipos electrónicos de control industrial - Torivac",
+    "description": "En Torivac fabricamos y distribuimos todo tipo de equipos electrónicos de control industrial. Echa un vistazo a nuestro catálogo."
+   }
+  }
+ },
+ {
+  "id": 31,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "controlador-0-10vdc",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Controlador 0-10VDC",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/controlador-0-10vdc/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Controlador 0-10VDC - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 97,
+  "parent": 96,
+  "count": 0,
+  "slug": {
+   "es": "convertidores",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Convertidores",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/electronica/convertidores/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Un desarrollo de más de 3 años nos ha llevado a conseguir una fuente de alimentación variable en tensión y frecuencia en potencias que oscila entre 25-300KVA. Nuestro convertidor puede suministrar una red desde 16Hz hasta 200Hz, con una resolución de 0.1Hz, y una tensión de salida variable en directo de 0-240VAC en monofásico, y de 0- 440VAC en trifásico. El equipo incluye conexión ethernet, visualizador de todos los parámetros de salida y entrada, pantalla táctil, armario IP20, ventilación forzada (&gt;50dB a 1m)."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/8328a792-convertidor1-1.webp",
+   "thumb": "assets/media/8328a792-convertidor1-1-t.webp",
+   "w": 1500,
+   "h": 1500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-1.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Convertidores - Torivac",
+    "description": "La más amplia gama de convertidores. Confía en un especialista con más de 60 años de experiencia en el sector de la energía."
+   }
+  }
+ },
+ {
+  "id": 119,
+  "parent": 22,
+  "count": 1,
+  "slug": {
+   "es": "cuadradas",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Cuadradas",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/bobinas-encapsuladas/cuadradas/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Las bobinas para electroimanes Torivac están fabricadas con materiales de alta calidad, diseñadas para garantizar un rendimiento confiable incluso en entornos industriales exigentes.\nCada unidad se produce bajo estrictos controles de aislamiento y encapsulado, lo que asegura una excelente rigidez dieléctrica y una larga vida útil."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-cuadrada-1.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Cuadradas - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 32,
+  "parent": 45,
+  "count": 0,
+  "slug": {
+   "es": "cuba-de-aceite",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Cuba de aceite",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/en-caja/cuba-de-aceite/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Este tipo de instalaciones, de variadores de tensión sumergidos en aceite, es recomendable cuando se instalan en atmósferas muy corrosivas como por ejemplo en baños galvánicos o simplemente cuando necesitamos ganar potencia en un equipo, en momentos puntuales, y evitar un excesivo calentamiento."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Cuba de aceite - Torivac",
+    "description": "Este tipo de instalaciones, de variadores de tensión sumergidos en aceite, es recomendable cuando se instalan en atmósferas muy corrosivas."
+   }
+  }
+ },
+ {
+  "id": 80,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "cubretercas",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Cubretercas",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/cubretercas/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Diseñadas como complemento necesario para cubrir las tuercas de los potenciómetros en los que se utilizan pequeños botones de 10 y 15mm. Pueden ser lisas o con línea de referencia.\n\nColores: negro y gris. Para otros colores consultar cantidad.\n\nPara pedidos indicar el tipo, color y si llevan línea."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/f3647924-discos-para-botones-cubretuercas-600x600-2.webp",
+   "thumb": "assets/media/f3647924-discos-para-botones-cubretuercas-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/discos-para-botones-cubretuercas-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Cubretercas - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 81,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "discos-flecha",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Discos Flecha",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/discos-flecha/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Aplicables a la base de los botones de la serie BO, para identificar la posición del botón sobre las carátulas o fondos serigrafiados.\n\nColores: Negro, Gris y Transparente."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/e70bffa7-discos-para-botones-disco-con-flecha-600x600-2.webp",
+   "thumb": "assets/media/e70bffa7-discos-para-botones-disco-con-flecha-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/discos-para-botones-disco-con-flecha-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Discos Flecha - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 78,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "discos-graduados",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Discos graduados",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/discos-graduados/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Fabricados en metacrilato transparente, grabados por termografía.\n\nIdénticas dimensiones que los discos con flecha.\n\nDisponibles en formatos 0/100-270º, 1/10 y 1/12 en 360º."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/f892fa7f-disco-para-botones-graduado-600x600-2.webp",
+   "thumb": "assets/media/f892fa7f-disco-para-botones-graduado-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-graduado-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Discos graduados - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 44,
+  "parent": 33,
+  "count": 1,
+  "slug": {
+   "es": "doble-manual",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Doble manual",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/dobles/doble-manual/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Por medio de un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada en cada momento."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/82127aa8-doble_manual-1.webp",
+   "thumb": "assets/media/82127aa8-doble_manual-1-t.webp",
+   "w": 450,
+   "h": 450,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png"
+  },
+  "seo": {
+   "es": {
+    "title": "Doble manual - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 34,
+  "parent": 33,
+  "count": 1,
+  "slug": {
+   "es": "doble-motorizado",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Doble motorizado",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/dobles/doble-motorizado/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Es utilizado fundamentalmente para regular los equipos a distancia ó para equipos estabilizadores. También es recomendable motorizar los variadores de tensión de grandes potencias, por la comodidad de uso que proporcionan."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Doble motorizado - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 111,
+  "parent": 107,
+  "count": 1,
+  "slug": {
+   "es": "dobles-potenciometros",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Dobles",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/dobles-potenciometros/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Potenciómetro doble, de 2 x 3 W, es un derivado del modelo de\n3W para su uso en equipos estéreo, como atenuador. Sus\ncaracterísticas eléctricas y físicas son iguales a estos últimos."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/4225dc0c-potenciometro-3w-tandem-torivac.webp",
+   "thumb": "assets/media/4225dc0c-potenciometro-3w-tandem-torivac-t.webp",
+   "w": 800,
+   "h": 800,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-tandem-torivac.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Dobles - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 700,
+  "parent": 45,
+  "count": 1,
+  "slug": {
+   "es": "variador-de-tension-en-caja",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "En caja",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-en-caja/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Todos nuestros variadores se pueden suministrar como un equipo acabado en caja.\nPensados para aquellos clientes que no necesitan nada más que conectarlos y empezar a trabajar con ellos de forma segura, evitando contactos con partes activas del circuito y siempre bajo las normativas de seguridad vigentes."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/fc0dc68b-variadores-tension-caja-sobremesa.webp",
+   "thumb": "assets/media/fc0dc68b-variadores-tension-caja-sobremesa-t.webp",
+   "w": 800,
+   "h": 800,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/variadores-tension-caja-sobremesa.png"
+  },
+  "seo": {
+   "es": {
+    "title": "En caja - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 120,
+  "parent": 88,
+  "count": 1,
+  "slug": {
+   "es": "en-caja-resistencias",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "En caja",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/resistencias/en-caja-resistencias/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "deales para aplicaciones como variadores de velocidad y frecuencia, grúas, automatización industrial, control de motor, frenado dinámicos, energías renovables (como eólicas y solares) y tanto de carga como descarga, estas resistencias en caja se compone por una resistencia tubular helicoidal. Es decir, es un tubo cerámico con un alto grado de disipación térmica y resistencia mecánica dentro de una caja de chapa galvanizada IP20 y debidamente perforada para una correcta ventilación.\n\nEste tipo de resistencias en caja se fabrica en función de las características solicitadas por el cliente, personalizando la resistencia en caja con una resistencia tubular bobinada cementada o resistencia tubular bobinada helicoidal; un alto grado de disipación térmica y un “protector térmico”; un valor óhmico según especificación y un modo Gearless o capacidad silenciosa."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/bf20afe4-en-caja.webp",
+   "thumb": "assets/media/bf20afe4-en-caja-t.webp",
+   "w": 500,
+   "h": 500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2024/11/en-caja.png"
+  },
+  "seo": {
+   "es": {
+    "title": "En caja - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 100,
+  "parent": 96,
+  "count": 0,
+  "slug": {
+   "es": "energias-renovables",
+   "en": "renewable-energies",
+   "fr": "energies-renouvelables",
+   "de": "erneuerbare-energien"
+  },
+  "name": {
+   "es": "Energias renovables",
+   "en": "Renewable energies",
+   "fr": "Énergies renouvelables",
+   "de": "Erneuerbare Energien"
+  },
+  "path": {
+   "es": "/categoria-producto/electronica/energias-renovables/",
+   "en": "/en/categoria-producto/electronic-equipment/renewable-energies/",
+   "fr": "/fr/categoria-producto/equipements-electroniques/energies-renouvelables/",
+   "de": "/de/categoria-producto/elektronische-ausrustung/erneuerbare-energien/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Contamos con un departamento de ingeniería propio que le ayudará a llevar a cabo sus proyectos mas ambiciosos."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "We have our own engineering department that will help you carry out your most ambitious projects."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Nous disposons de notre propre département d'ingénierie qui vous aidera à réaliser vos projets les plus ambitieux."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Wir verfügen über eine eigene technische Abteilung, die Ihnen bei der Durchführung Ihrer ehrgeizigsten Projekte hilft."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/88ba1bbe-regulador.webp",
+   "thumb": "assets/media/88ba1bbe-regulador-t.webp",
+   "w": 1200,
+   "h": 1200,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/12/regulador.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Optimiza tus energías renovables - Torivac",
+    "description": "Optimizamos tus sistemas de energías renovables con nuestros equipos electrónicos. La máxima eficiencia energética para tu espacio."
+   }
+  }
+ },
+ {
+  "id": 46,
+  "parent": 0,
+  "count": 1,
+  "slug": {
+   "es": "equipos-de-sobremesa-en-caja",
+   "en": "benchtop-units-2",
+   "fr": "unites-de-paillasse-2",
+   "de": "tafelmodellen-2"
+  },
+  "name": {
+   "es": "Equipos de Sobremesa",
+   "en": "Benchtop Units",
+   "fr": "Unités de paillasse",
+   "de": "Tafelmodellen"
+  },
+  "path": {
+   "es": "/categoria-producto/equipos-de-sobremesa-en-caja/",
+   "en": "/en/categoria-producto/benchtop-units-2/",
+   "fr": "/fr/categoria-producto/unites-de-paillasse-2/",
+   "de": "/de/categoria-producto/tafelmodellen-2/"
+  },
+  "description": {
+   "es": [],
+   "en": [],
+   "fr": [],
+   "de": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Equipos de Sobremesa - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 45,
+  "parent": 19,
+  "count": 3,
+  "slug": {
+   "es": "en-caja",
+   "en": "benchtop-units",
+   "fr": "unites-de-paillasse",
+   "de": "tafelmodellen"
+  },
+  "name": {
+   "es": "Equipos de sobremesa",
+   "en": "Desktop equipment",
+   "fr": "Équipement de bureau",
+   "de": "Schreibtischgeräte"
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/en-caja/",
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/benchtop-units/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/unites-de-paillasse/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/tafelmodellen/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Equipos en caja IP20 – IP65. Todos nuestros variadores se pueden suministrar como un equipo acabado en caja. Pensados para aquellos clientes que no necesitan nada más que conectarlos y empezar a trabajar con ellos de forma segura, evitando contactos con partes activas del circuito y siempre bajo las normativas de seguridad vigentes."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Equipment in IP20 - IP65 enclosure. All our inverters can be supplied as a complete enclosed unit. Designed for those customers who only need to connect them and start working with them in a safe way, avoiding contact with live parts of the circuit and always under the current safety regulations."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Équipement dans un boîtier IP20 - IP65. Tous nos onduleurs peuvent être fournis en tant qu'unité complète fermée. Conçus pour les clients qui ont seulement besoin de les connecter et de commencer à travailler avec eux en toute sécurité, en évitant tout contact avec les parties sous tension du circuit et en respectant toujours les normes de sécurité en vigueur."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Ausrüstung in IP20 - IP65-Gehäuse. Alle unsere Wechselrichter können als komplett geschlossene Einheit geliefert werden. Konzipiert für Kunden, die sie nur anschließen und auf sichere Weise mit ihnen arbeiten müssen, ohne Kontakt mit stromführenden Teilen des Stromkreises und immer unter Einhaltung der geltenden Sicherheitsvorschriften."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/3e4eb5bb-sobremesa03.webp",
+   "thumb": "assets/media/3e4eb5bb-sobremesa03-t.webp",
+   "w": 1500,
+   "h": 1500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/12/sobremesa03.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Equipos de sobremesa - Torivac",
+    "description": "Equipos en caja IP20 – IP65. Todos nuestros variadores se pueden suministrar como un equipo acabado en caja."
+   }
+  }
+ },
+ {
+  "id": 39,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "equipos-de-sobremesa",
+   "en": "benchtop-units",
+   "fr": "unites-de-paillasse",
+   "de": "tafelmodellen"
+  },
+  "name": {
+   "es": "Equipos de sobremesa",
+   "en": "Benchtop Units",
+   "fr": "Unités de paillasse",
+   "de": "Tafelmodellen"
+  },
+  "path": {
+   "es": "/categoria-producto/equipos-de-sobremesa/",
+   "en": "/en/categoria-producto/benchtop-units/",
+   "fr": "/fr/categoria-producto/unites-de-paillasse/",
+   "de": "/de/categoria-producto/tafelmodellen/"
+  },
+  "description": {
+   "es": [],
+   "en": [],
+   "fr": [],
+   "de": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Equipos de sobremesa - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 96,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "electronica",
+   "en": "electronic-equipment",
+   "fr": "equipements-electroniques",
+   "de": "elektronische-ausrustung"
+  },
+  "name": {
+   "es": "Equipos electrónicos",
+   "en": "Electronic equipment",
+   "fr": "Équipements électroniques",
+   "de": "Elektronische Ausrüstung"
+  },
+  "path": {
+   "es": "/categoria-producto/electronica/",
+   "en": "/en/categoria-producto/electronic-equipment/",
+   "fr": "/fr/categoria-producto/equipements-electroniques/",
+   "de": "/de/categoria-producto/elektronische-ausrustung/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Contamos con un departamento de ingeniería propio que le ayudará a llevar a cabo sus proyectos mas ambiciosos."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "We have our own engineering department that will help you carry out your most ambitious projects."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Nous disposons de notre propre département d'ingénierie qui vous aidera à réaliser vos projets les plus ambitieux."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Wir verfügen über eine eigene technische Abteilung, die Ihnen bei der Durchführung Ihrer ehrgeizigsten Projekte hilft."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Equipos electrónicos - Torivac",
+    "description": "¡Somos tu experto en equipos electrónicos! Confía en un especialista con más de 60 años de experiencia en el sector de la energía."
+   }
+  }
+ },
+ {
+  "id": 47,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "equipos-industriales-en-caja",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Equipos industriales",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/equipos-industriales-en-caja/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Equipos industriales - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 36,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "equipos-industriales",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Equipos industriales",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/equipos-industriales/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Equipos industriales - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 60,
+  "parent": 0,
+  "count": 5,
+  "slug": {
+   "es": "estabilizadores-de-tension",
+   "en": "voltage-stabilizers",
+   "fr": "stabilisateurs-de-tension",
+   "de": "spannungsstabilisatoren"
+  },
+  "name": {
+   "es": "Estabilizadores de tensión",
+   "en": "Voltage stabilizers",
+   "fr": "Stabilisateurs de tension",
+   "de": "Spannungsstabilisatoren"
+  },
+  "path": {
+   "es": "/categoria-producto/estabilizadores-de-tension/",
+   "en": "/en/categoria-producto/voltage-stabilizers/",
+   "fr": "/fr/categoria-producto/stabilisateurs-de-tension/",
+   "de": "/de/categoria-producto/spannungsstabilisatoren/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Estabilizadores de tensión o también denominados reguladores de tensión o voltaje. Pueden ser electrónicos y electromecánicos con servomotor, para instalaciones monofásicas o trifásicas.\nUtilizados para mantener de forma estable la tensión de red de la instalación."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Voltage stabilizers or also called voltage regulators or voltage regulators. They can be electronic and electromechanical with servomotor, for single-phase or three-phase installations.\nUsed to maintain the installation's mains voltage stable."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les stabilisateurs de tension sont également connus sous le nom de régulateurs de tension. Ils peuvent être électroniques ou électromécaniques avec servomoteur, pour des installations monophasées ou triphasées.\nUtilisé pour maintenir stable la tension du réseau de l'installation."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Spannungsstabilisatoren oder auch als Spannungsregler bekannt. Sie können elektronisch oder elektromechanisch mit Servomotor sein, für einphasige oder dreiphasige Installationen.\nWird verwendet, um die Netzspannung der Installation stabil zu halten."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/ea994ecf-trifasico-servomotor-optimized.webp",
+   "thumb": "assets/media/ea994ecf-trifasico-servomotor-optimized-t.webp",
+   "w": 450,
+   "h": 450,
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/04/trifasico-servomotor-optimized.webp"
+  },
+  "seo": {
+   "es": {
+    "title": "Estabilizadores de tensión - Torivac",
+    "description": "¿Tu negocio necesita estabilizadores de tensión? Confía en un especialista con más de 60 años de experiencia en el sector de la energía."
+   }
+  }
+ },
+ {
+  "id": 61,
+  "parent": 60,
+  "count": 2,
+  "slug": {
+   "es": "serie-avs",
+   "en": "avs-series-stabilizers-electromechanical-with-servomotor",
+   "fr": "estabilizadores-serie-avs-electromecanicos-con-servomotor",
+   "de": "avs-serie-stabilisatoren-elektromechanisch-met-servomotor"
+  },
+  "name": {
+   "es": "Estabilizadores Serie AVS: electromecánicos con servomotor",
+   "en": "AVS Series Stabilizers: electromechanical with servo motor",
+   "fr": "Stabilisateurs de la série AVS : électromécaniques avec servomoteur",
+   "de": "Stabilisatoren der AVS-Serie: elektromechanisch mit Servomotor"
+  },
+  "path": {
+   "es": "/categoria-producto/estabilizadores-de-tension/serie-avs/",
+   "en": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/",
+   "fr": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/",
+   "de": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Estabilizador electromecánico accionado por servomotor. Diseñado bajo estrictos estándares de calidad y robustez mecánica y eléctrica, donde prima el rendimiento y la fiabilidad.\n\nLa estabilización se consigue comparando de forma continua el voltaje de entrada con la tensión nominal de salida, y ajustando el punto de trabajo del transformador variable mediante un servomotor para conseguir la tensión de salida nominal. Cuenta con indicadores digitales de la tensión de salida, así como indicadores de estado del equipo."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Electromechanical stabilizer driven by servomotor. Designed under strict standards of quality and mechanical and electrical robustness, where performance and reliability are paramount.\n\nStabilization is achieved by continuously comparing the input voltage with the nominal output voltage, and adjusting the operating point of the variable transformer by means of a servomotor to achieve the nominal output voltage. It has digital output voltage indicators, as well as equipment status indicators."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Stabilisateur électromécanique entraîné par un servomoteur. Conçus selon des normes strictes de qualité et de robustesse mécanique et électrique, où la performance et la fiabilité sont primordiales.\n\nLa stabilisation est obtenue en comparant en permanence la tension d'entrée à la tension de sortie nominale et en ajustant le point de fonctionnement du transformateur variable au moyen d'un servomoteur afin d'obtenir la tension de sortie nominale. Il dispose d'indicateurs numériques de tension de sortie ainsi que d'indicateurs d'état de l'équipement."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Elektromechanischer Stabilisator mit Servomotorantrieb. Entwickelt unter strengen Qualitätsstandards und mechanischer und elektrischer Robustheit, wo Leistung und Zuverlässigkeit an erster Stelle stehen.\n\nDie Stabilisierung erfolgt durch den kontinuierlichen Vergleich der Eingangsspannung mit der nominalen Ausgangsspannung und die Einstellung des Arbeitspunkts des Stelltransformators mit Hilfe eines Stellmotors, um die nominale Ausgangsspannung zu erreichen. Er verfügt über digitale Ausgangsspannungsanzeigen sowie über Gerätestatusanzeigen."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/6a7f6f1b-trifasico-servomotor.webp",
+   "thumb": "assets/media/6a7f6f1b-trifasico-servomotor-t.webp",
+   "w": 1500,
+   "h": 1500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/12/trifasico-servomotor.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Estabilizadores Serie AVS: electromecánicos con servomotor - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 442,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "estators",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Estators",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/estators/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Se aplican debajo de los discos graduados para resaltar la lectura de los mismos en los modelos de 15, 21 y 30mm.\n\nColor: negro (con sector blanco)."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/e70e64c8-disco-para-botones-stators-600x600-2.webp",
+   "thumb": "assets/media/e70e64c8-disco-para-botones-stators-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-stators-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Estators - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 28,
+  "parent": 19,
+  "count": 1,
+  "slug": {
+   "es": "fabricacion-a-media",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Fabricación a medida",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/fabricacion-a-media/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Cada cliente es único, y por lo tanto hay matices o variaciones de productos estándar que precisan. En TORIVAC hacemos adaptaciones de productos para que sea SU producto, desde un eje más largo para poder instalar el variador de tensión en el fondo de un armario, motorizaciones especiales en corriente continua o en trifásica, elementos de visualización concretos, tamaños especiales. Fijaciones adaptadas a su sistema etc. No dude en consultarnos y le propondremos la solución óptima."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/ec82aca0-4Z0A9199.webp",
+   "thumb": "assets/media/ec82aca0-4Z0A9199-t.webp",
+   "w": 1200,
+   "h": 800,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Fabricación a medida - Torivac",
+    "description": "¿Necesitas componentes personalizados? Descubre nuestra fabricación de variadores de tensión a medida y cómo podemos adaptarnos a tus necesidades específicas"
+   }
+  }
+ },
+ {
+  "id": 49,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "fabricaciones-a-medida",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Fabricaciones a Medida",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/fabricaciones-a-medida/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Torivac diseña y fabrica variadores de tensión y de regulación continua orientados al control preciso, seguro y fiable de sistemas eléctricos en entornos industriales, técnicos y de laboratorio. Nuestra gama de soluciones está pensada para adaptarse tanto a aplicaciones estándar como a requerimientos específicos, garantizando siempre un funcionamiento estable y conforme a las normativas de seguridad vigentes."
+    },
+    {
+     "t": "p",
+     "h": "Los accesorios de regulación permiten realizar el ajuste del variador de tensión de forma cómoda y segura, facilitando su integración en distintos sistemas y mejorando la experiencia de uso del equipo. Estos elementos complementarios están diseñados para optimizar la manipulación, la protección del usuario y la eficiencia operativa del conjunto."
+    },
+    {
+     "t": "p",
+     "h": "Para aplicaciones que requieren una solución lista para usar, Torivac suministra equipos de sobremesa montados en cajas con grados de protección IP20 o IP65. Estos equipos permiten una puesta en marcha inmediata, evitando el contacto con partes activas del circuito y ofreciendo una solución compacta y segura para entornos donde no se requieren desarrollos adicionales."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Fabricaciones a Medida - Torivac",
+    "description": "Torivac diseña y fabrica variadores de tensión y de regulación continua orientados al control preciso, seguro y fiable de sistemas eléctricos en entornos industriales,"
+   }
+  }
+ },
+ {
+  "id": 102,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "fabricaciones-a-medida-transformadores-toroidales",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Fabricaciones a medida",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/fabricaciones-a-medida-transformadores-toroidales/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Fabricaciones a medida - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 99,
+  "parent": 96,
+  "count": 0,
+  "slug": {
+   "es": "fuente-de-alimentacion-ca",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Fuente de alimentación CA",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/electronica/fuente-de-alimentacion-ca/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Son una gama de generadores de corriente alterna sinusoidal, con tensión y frecuencia configurables. Incorporan un rectificador controlado de entrada, que limita la corriente de conexión. La salida consiste en un convertidor estático, conmutando con modulación de ancho de pulso a alta frecuencia, mediante un puente de transistores IGBT de última generación."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/12/fuentes_alimentacion_ca.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Fuente de alimentación CA - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 98,
+  "parent": 96,
+  "count": 0,
+  "slug": {
+   "es": "fuentes-de-alimentacion-cc",
+   "en": "dc-power-supplies",
+   "fr": "alimentations-en-courant-continu",
+   "de": "dc-stromversorgungen"
+  },
+  "name": {
+   "es": "Fuentes de alimentación CC",
+   "en": "DC power supplies",
+   "fr": "Alimentations en courant continu",
+   "de": "DC-Stromversorgungen"
+  },
+  "path": {
+   "es": "/categoria-producto/electronica/fuentes-de-alimentacion-cc/",
+   "en": "/en/categoria-producto/electronic-equipment/dc-power-supplies/",
+   "fr": "/fr/categoria-producto/equipements-electroniques/alimentations-en-courant-continu/",
+   "de": "/de/categoria-producto/elektronische-ausrustung/dc-stromversorgungen/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Contamos con un departamento de ingeniería propio que le ayudará a llevar a cabo sus proyectos mas ambiciosos."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "We have our own engineering department that will help you carry out your most ambitious projects."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Nous disposons de notre propre département d'ingénierie qui vous aidera à réaliser vos projets les plus ambitieux."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Wir verfügen über eine eigene technische Abteilung, die Ihnen bei der Durchführung Ihrer ehrgeizigsten Projekte hilft."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/f210e832-fa300a.webp",
+   "thumb": "assets/media/f210e832-fa300a-t.webp",
+   "w": 1500,
+   "h": 1500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/12/fa300a.png"
+  },
+  "seo": {
+   "es": {
+    "title": "Fuentes de alimentación CC - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 90,
+  "parent": 88,
+  "count": 1,
+  "slug": {
+   "es": "helicoidales",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Helicoidales",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/resistencias/helicoidales/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Nuestras de resistencias de alta potencia potencia modelo se fabrican con hilo de aleación resistiva de alta calidad. El valor ohmico varia poco con la subida en temperatura del elemento.\n\nSon resistencias bobinadas compuestas por un elemento resistivo enrollado sobre un núcleo tubular cerámico utilizado como soporte, para asegurar una alta capacidad de disipación y una excelente resistencia al choque térmico y a la sobrecarga. Se trata de un elemento abierto de baja inductancia."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/4570c1fc-helicoidal.webp",
+   "thumb": "assets/media/4570c1fc-helicoidal-t.webp",
+   "w": 250,
+   "h": 250,
+   "src": "https://grupotorivac.com/wp-content/uploads/2024/11/helicoidal.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Helicoidales - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 85,
+  "parent": 83,
+  "count": 1,
+  "slug": {
+   "es": "hembrilla-de-seguridad-hbs4",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Hembrilla de seguridad HBS4",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/hembrillas/hembrilla-de-seguridad-hbs4/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Intensidad máxima: 10A/230V.\nConexión con faston hembra 3,9 o soldadura.\nCuerpo de Poliamida 6/6, autoextinguible.\nCasquillo de latón niquelado.\nColores: negro, rojo, amarillo, verde, azul y gris."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-1.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Hembrilla de seguridad HBS4 - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 86,
+  "parent": 83,
+  "count": 1,
+  "slug": {
+   "es": "hembrilla-de-seguridad-hr4",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "hembrilla de seguridad HR4",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/hembrillas/hembrilla-de-seguridad-hr4/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Intensidad máxima: 20A/230V.\nConexión por soldadura.\nIdénticas características que las HB-4, pero con el casquillo reforzado para 20A.\nColores: negro, rojo, amarillo, verde y azul."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/hembrilla-banana-hr4-torivac.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "hembrilla de seguridad HR4 - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 87,
+  "parent": 83,
+  "count": 1,
+  "slug": {
+   "es": "hembrilla-de-seguridad-hsr4",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Hembrilla de seguridad HSR4",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/hembrillas/hembrilla-de-seguridad-hsr4/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Intensidad máxima: 20A/230V.\nConexión por soldadura.\nIdénticas características que las HBS-4, pero con el casquillo reforzado para 20A.\nColores: negro, rojo, amarillo, verde y azul."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/c25a8bd1-hembrilla-seguridad-HSR-torivac-600x600-4.webp",
+   "thumb": "assets/media/c25a8bd1-hembrilla-seguridad-HSR-torivac-600x600-4-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HSR-torivac-600x600-4.png"
+  },
+  "seo": {
+   "es": {
+    "title": "Hembrilla de seguridad HSR4 - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 84,
+  "parent": 83,
+  "count": 1,
+  "slug": {
+   "es": "hembrilla-hb4",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Hembrilla HB4",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/hembrillas/hembrilla-hb4/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Intensidad máxima: 10A/230V.\nCasquillo y tuerca de latón niquelado.\nCuerpo de Poliamida 6/6, auto extinguible.\nConexión faston de 3,9mm ó soldadura.\nColores: negro, rojo, amarillo, verde y azul."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/b4e16a90-hembrilla-banana-torivac.webp",
+   "thumb": "assets/media/b4e16a90-hembrilla-banana-torivac-t.webp",
+   "w": 800,
+   "h": 800,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-torivac.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Hembrilla HB4 - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 83,
+  "parent": 0,
+  "count": 4,
+  "slug": {
+   "es": "hembrillas",
+   "en": "socket-jack",
+   "fr": "prise-jack",
+   "de": "socket-jack"
+  },
+  "name": {
+   "es": "Hembrillas",
+   "en": "Sockets",
+   "fr": "Prises",
+   "de": "Socket Jack"
+  },
+  "path": {
+   "es": "/categoria-producto/hembrillas/",
+   "en": "/en/categoria-producto/socket-jack/",
+   "fr": "/fr/categoria-producto/prise-jack/",
+   "de": "/de/categoria-producto/socket-jack/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Hembrillas de seguridad de fabricación propia, asegurando la más alta calidad."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Safety sockets manufactured in-house, ensuring the highest quality."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les douilles de sécurité sont fabriquées en interne, ce qui garantit une qualité optimale."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "De Socket Jack wordt in eigen huis geproduceerd, wat de hoogste kwaliteit garandeert."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/hembrilla-banana-hr4-torivac.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Hembrillas de seguridad - Torivac",
+    "description": "En Torivac fabricamos nuestras propias hembrillas de seguridad, asegurándote a ti y a tu negocio la más alta calidad en el sector."
+   }
+  }
+ },
+ {
+  "id": 25,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "hembrillas-de-seguridad",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Hembrillas de seguridad",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/hembrillas-de-seguridad/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Hembrillas de seguridad - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 69,
+  "parent": 65,
+  "count": 1,
+  "slug": {
+   "es": "led-10mm",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "led 10mm",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/portaled/led-10mm/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Soporte metálico para led de 10mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)"
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-10mm.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "led 10mm - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 66,
+  "parent": 65,
+  "count": 1,
+  "slug": {
+   "es": "led-3mm",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "led 3mm",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/portaled/led-3mm/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Soporte metálico para led de 3mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)"
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/e8c0c760-soporte-metalico-led-3mm-600x600-2.webp",
+   "thumb": "assets/media/e8c0c760-soporte-metalico-led-3mm-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-3mm-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "led 3mm - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 67,
+  "parent": 65,
+  "count": 1,
+  "slug": {
+   "es": "led-5mm",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "led 5mm",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/portaled/led-5mm/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Soporte metálico para led de 5mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)"
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/60b745cd-soporte-metalico-led-5mm-600x600-2.webp",
+   "thumb": "assets/media/60b745cd-soporte-metalico-led-5mm-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-5mm-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "led 5mm - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 68,
+  "parent": 65,
+  "count": 1,
+  "slug": {
+   "es": "led-8mm",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "led 8mm",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/portaled/led-8mm/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Soporte metálico para led de 8mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)"
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/soporte-metalico-led-8mm.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "led 8mm - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 38,
+  "parent": 37,
+  "count": 1,
+  "slug": {
+   "es": "monofasicos-manual",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Manual",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/monofasico/monofasicos-manual/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada en cada momento."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/c880f444-MONOFASICO-MANUAL-scaled.webp",
+   "thumb": "assets/media/c880f444-MONOFASICO-MANUAL-scaled-t.webp",
+   "w": 2560,
+   "h": 2560,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Manual - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 41,
+  "parent": 40,
+  "count": 1,
+  "slug": {
+   "es": "manual-trifasico",
+   "en": "manual",
+   "fr": "manuel",
+   "de": "handmatige-driefasen"
+  },
+  "name": {
+   "es": "Manual",
+   "en": "Manual",
+   "fr": "Manuel",
+   "de": "Handbuch"
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/trifasico/manual-trifasico/",
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/three-phase-drives/manual/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/manuel/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/handmatige-driefasen/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Mediante un botón de mando se actúa sobre el eje, este a su vez permite realizar la rotación del cursor de grafito seleccionando la tensión deseada en cada momento."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "A control knob is used to operate the shaft, which in turn allows rotation of the graphite traveller by selecting the desired tension at any given moment."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "L'axe est actionné au moyen d'un bouton de commande, qui permet à son tour de faire tourner le chariot en graphite en sélectionnant la tension souhaitée à un moment donné."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Die Achse wird über einen Drehknopf bedient, mit dem der Graphitläufer gedreht werden kann, indem die gewünschte Spannung zu einem bestimmten Zeitpunkt gewählt wird."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/8dce3606-TRIFASICO-MANUAL-scaled-1.webp",
+   "thumb": "assets/media/8dce3606-TRIFASICO-MANUAL-scaled-1-t.webp",
+   "w": 1500,
+   "h": 1500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/05/TRIFASICO-MANUAL-scaled-1.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Manual - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 105,
+  "parent": 62,
+  "count": 1,
+  "slug": {
+   "es": "monofasico-serie-bavs",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Monofásico",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/estabilizadores-de-tension/serie-bavs/monofasico-serie-bavs/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Estabilizador binario accionado por control electrónico de IGBT para redes monofásicas. Ciclo de estabilizado cada 100mS. Controlado por microprocesador. Regulación continua por fase. Precisión en la tensión de salida mejor del 1 %. De serie, margen de regulación del ± 30 % Sin distorsión de onda ni cortes. Pantalla táctil mostrando tensión de entrada y salida por fase Intensidad de la carga, potencia activa y reactiva, coseno de fi. Frecuencia, Temperatura."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/92e4613c-BAVS-mono-1.webp",
+   "thumb": "assets/media/92e4613c-BAVS-mono-1-t.webp",
+   "w": 900,
+   "h": 900,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/BAVS-mono-1.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Monofásico - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 103,
+  "parent": 61,
+  "count": 1,
+  "slug": {
+   "es": "monofasico-serie-avs",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Monofásico",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/estabilizadores-de-tension/serie-avs/monofasico-serie-avs/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Estabilizador electromecánico accionado por servomotor para redes monofásicas.\nVelocidad de estabilizado hasta 90V/Seg. Controlado por microprocesador. Regulación continua por fase. Precisión en la tensión de salida mejor del 1 %. Margen de regulación hasta del ± 40 % Sin distorsión de onda ni cortes. Pantalla táctil mostrando tensión de entrada y salida por fase Intensidad de la carga, potencia activa y reactiva, coseno de fi. Frecuencia, Temperatura."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/bavs-tri.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Monofásico - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 42,
+  "parent": 40,
+  "count": 1,
+  "slug": {
+   "es": "motorizado",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Motorizado",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/trifasico/motorizado/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Es utilizado fundamentalmente para regular los equipos a distancia o para equipos estabilizadores. También es recomendable motorizar los variadores de tensión de grandes potencias, por la comodidad de uso que proporcionan."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/TRIFASICO-MOTORIZADO-1.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Motorizado - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 43,
+  "parent": 37,
+  "count": 1,
+  "slug": {
+   "es": "motorizado-monofasico",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Motorizado",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/monofasico/motorizado-monofasico/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Es utilizado fundamentalmente para regular los equipos a distancia o para equipos estabilizadores. También es recomendable motorizar los variadores de tensión de grandes potencias, por la comodidad de uso que proporcionan."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/MONOFASICO-MOTORIZADO.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Motorizado - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 64,
+  "parent": 0,
+  "count": 1,
+  "slug": {
+   "es": "nucleos",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Nucleos",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/nucleos/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Los núcleos toroidales son componentes magnéticos esenciales en una amplia variedad de aplicaciones electrónicas e industriales. Su diseño en forma de anillo cerrado permite una distribución uniforme del flujo magnético, lo que se traduce en una mayor eficiencia y una reducción significativa de interferencias electromagnéticas (EMI)."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/03/B7T3102.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Núcleos toroideales - Torivac",
+    "description": "Los núcleos toroidales son componentes magnéticos esenciales en una amplia variedad de aplicaciones electrónicas e industriales."
+   }
+  }
+ },
+ {
+  "id": 65,
+  "parent": 0,
+  "count": 4,
+  "slug": {
+   "es": "portaled",
+   "en": "portaled",
+   "fr": "portail",
+   "de": "geportaliseerd"
+  },
+  "name": {
+   "es": "Portaled",
+   "en": "Portaled",
+   "fr": "Porté",
+   "de": "Portiert"
+  },
+  "path": {
+   "es": "/categoria-producto/portaled/",
+   "en": "/en/categoria-producto/portaled/",
+   "fr": "/fr/categoria-producto/portail/",
+   "de": "/de/categoria-producto/geportaliseerd/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Estos soportes metálicos para LED están formados por un cuerpo de latón o duraluminio, bañado en níquel, cromo o anodinado, tuerca y arandela de latón niquelado y además el tapón de Poliamida-6."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "These metal LED supports consist of a brass or duralumin body, nickel-plated, chrome-plated or anodized, a nickel-plated brass nut and washer, and a Polyamide-6 cap."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Ces supports métalliques pour LED sont composés d'un corps en laiton ou duraluminium, nickelé, chromé ou anodisé, d'un écrou et d'une rondelle en laiton nickelé et d'un bouchon en polyamide-6."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Diese LED-Halterungen aus Metall bestehen aus einem Gehäuse aus Messing oder Duraluminium, vernickelt, verchromt oder eloxiert, einer vernickelten Messingmutter und Unterlegscheibe sowie einem Polyamid-6-Stecker."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-8mm.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Portaled - Torivac",
+    "description": "Nuestros portaled están formados por un cuerpo de latón o duraluminio, bañado en níquel, cromo o anodinado, tuerca y arandela de latón niquelado."
+   }
+  }
+ },
+ {
+  "id": 24,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "portaleds",
+   "en": "portaleds",
+   "fr": "portaleds",
+   "de": "portaleds"
+  },
+  "name": {
+   "es": "Portaleds",
+   "en": "Portaleds",
+   "fr": "Portaleds",
+   "de": "Portaleds"
+  },
+  "path": {
+   "es": "/categoria-producto/portaleds/",
+   "en": "/en/categoria-producto/portaleds/",
+   "fr": "/fr/categoria-producto/portaleds/",
+   "de": "/de/categoria-producto/portaleds/"
+  },
+  "description": {
+   "es": [],
+   "en": [],
+   "fr": [],
+   "de": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Portaleds - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 107,
+  "parent": 122,
+  "count": 3,
+  "slug": {
+   "es": "potenciometros",
+   "en": "potentiometers",
+   "fr": "potentiometres",
+   "de": "potentiometer"
+  },
+  "name": {
+   "es": "Potenciometros",
+   "en": "Potentiometers",
+   "fr": "Potentiomètres",
+   "de": "Potentiometer"
+  },
+  "path": {
+   "es": "/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/",
+   "en": "/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/",
+   "fr": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/",
+   "de": "/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Los potenciómetros y los reostatos son resistencias variables necesarias para regular los niveles de voltaje o de corriente, según sean conectados en paralelo o en serie. Los potenciómetros de 3 y 5 watios fabricados por Torivac se distinguen por su pequeño tamaño, linealidad, un manejo suave y preciso y su larga durabilidad. Los reostatos, por su parte se caracterizan principalmente por su gran disipación de calor y su amplia gama de potencias tanto monofasicas, dobles o triples."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Potentiometers and rheostats are variable resistors needed to regulate voltage or current levels, depending on whether they are connected in parallel or in series. The 3 and 5 watt potentiometers manufactured by Torivac are distinguished by their small size, linearity, smooth and precise handling and long durability. The rheostats, on the other hand, are mainly characterized by their high heat dissipation and their wide range of single-phase, double or triple power."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les potentiomètres et les rhéostats sont des résistances variables nécessaires pour réguler les niveaux de tension ou de courant, selon qu'ils sont connectés en parallèle ou en série. Les potentiomètres de 3 et 5 watts fabriqués par Torivac se distinguent par leur petite taille, leur linéarité, leur manipulation souple et précise et leur longue durée de vie. Les rhéostats, quant à eux, se caractérisent principalement par leur forte dissipation thermique et leur large gamme de puissances monophasées, doubles ou triples."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Potentiometer und Rheostate sind variable Widerstände, die zur Regulierung von Spannung oder Stromstärke benötigt werden, je nachdem, ob sie parallel oder in Reihe geschaltet sind. Die von Torivac hergestellten 3- und 5-Watt-Potentiometer zeichnen sich durch ihre geringe Größe, ihre Linearität, ihre reibungslose und präzise Handhabung und ihre lange Lebensdauer aus. Die Rheostate hingegen zeichnen sich vor allem durch ihre hohe Wärmeableitung und ihre große Auswahl an einphasigen, doppelten oder dreifachen Wattzahlen aus."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/potenciometro-3w-torivac.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Expertos en potenciómetros - Torivac",
+    "description": "En Torivac llevamos años fabricando los mejores potenciómetros para tu negocio. Encuentra la solución a medida que necesitas."
+   }
+  }
+ },
+ {
+  "id": 26,
+  "parent": 0,
+  "count": 0,
+  "slug": {
+   "es": "potenciometros-y-reostatos",
+   "en": "potentiometers-and-rheostats",
+   "fr": "potentiometres-et-rheostats",
+   "de": "potentiometers-en-reostaten"
+  },
+  "name": {
+   "es": "Potenciómetros y reóstatos",
+   "en": "Potentiometers and rheostats",
+   "fr": "Potentiomètres et rhéostats",
+   "de": "Potentiometers en reostaten"
+  },
+  "path": {
+   "es": "/categoria-producto/potenciometros-y-reostatos/",
+   "en": "/en/categoria-producto/potentiometers-and-rheostats/",
+   "fr": "/fr/categoria-producto/potentiometres-et-rheostats/",
+   "de": "/de/categoria-producto/potentiometers-en-reostaten/"
+  },
+  "description": {
+   "es": [],
+   "en": [],
+   "fr": [],
+   "de": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Potenciómetros y reóstatos - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 118,
+  "parent": 22,
+  "count": 1,
+  "slug": {
+   "es": "redondas",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Redondas",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/bobinas-encapsuladas/redondas/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Bobinas redondas con orificio central pasante para ejes lisos o escalonados. Con diferentes longitudes de salidas de cables y pensadas para resistir las vibraciones mas exigentes.\n\n¿Qué son las bobinas para electroimanes?\n\nLas bobinas para electroimanes es un componente electromagnético formado por un hilo conductor enrollado en espiral, diseñado para generar un campo magnético cuando se le aplica una corriente eléctrica. Este campo permite atraer o mover objetos metálicos de manera controlada, lo que la convierte en un elemento clave en sistemas de elevación, automatización industrial, frenos electromagnéticos y cerraduras magnéticas."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-redonda-scaled.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Redondas - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 112,
+  "parent": 122,
+  "count": 5,
+  "slug": {
+   "es": "ceramicos",
+   "en": "ceramic-rheostats",
+   "fr": "rheostats-en-ceramique",
+   "de": "keramische-rheostate"
+  },
+  "name": {
+   "es": "Reóstatos cerámicos",
+   "en": "Ceramic rheostats",
+   "fr": "Rhéostats en céramique",
+   "de": "Keramische Rheostate"
+  },
+  "path": {
+   "es": "/categoria-producto/reostatos-y-potenciometros-bobinados/ceramicos/",
+   "en": "/en/categoria-producto/rheostats-and-coiled-potentiometers/ceramic-rheostats/",
+   "fr": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/rheostats-en-ceramique/",
+   "de": "/de/categoria-producto/rheostate-und-spulenpotentiometer/keramische-rheostate/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Los reóstatos que fabrica a Torivac tienen una gran disipación de calor y se fabrican desde 12W hasta una amplia variedad de potencias en montajes ensamblados. Estas potencias nominales son aplicables con buenas condiciones de ventilación. En instalaciones donde la ventilación es pobre, estas potencias deberemos reducirlas hasta un un 20%, para evitar calentamientos excesivos.\n\nEl núcleo es un aro cerámico de esteatita o alúmina de gran dureza, antihigroscópico, evitándose con ello efectos de corrosión por electrólisis. Dicho aro se bobina con hilos de máxima calidad, constantan, nicrom o kanthal, según el valor óhmico requerido. Si no se especifica en el pedido, se emplea el material más adecuado para ese valor y potencia.\n\nPara su protección contra daños mecánicos y para evitar el movimiento de las espiras, debido a la dilatación causada por el calor, estos potenciómetros están recubiertos de un cemento cerámico de gran dureza, fabricado en nuestros laboratorios, que soporta temperaturas de hasta 900ºC, permite una rápida disipación del calor, debido a su superficie mate y buena conductividad térmica.\n\nEl contacto del cursor es, normalmente, una escobilla de plata o de cobre-plata pulida.\n\nAdemás de bobinas lineales, podemos fabricar, sobre pedido, bobinados con varias secciones para conseguir una curva resistiva no-lineal."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "The rheostats manufactured by Torivac have high heat dissipation and are manufactured from 12W up to a wide range of power ratings in assembled assemblies. These power ratings are applicable with good ventilation conditions. In installations where ventilation is poor, these power ratings should be reduced by up to 20% to avoid overheating. \n\nThe core is a ceramic ring of steatite or alumina of high hardness, anti-hygroscopic, thus avoiding corrosion effects by electrolysis. This ring is wound with top quality constantan, nicrom or kanthal wires, depending on the required ohmic value. If not specified in the order, the most suitable material for that value and power is used. \n\nFor protection against mechanical damage and to prevent movement of the coils due to expansion caused by heat, these potentiometers are coated with a very hard ceramic cement, manufactured in our laboratories, which withstands temperatures up to 900ºC, allows rapid heat dissipation due to its matte surface and good thermal conductivity.\n\nThe cursor contact is usually a silver or polished copper-silver brush.\n\nIn addition to linear coils, we can manufacture, upon request, windings with various sections to achieve a non-linear resistive curve."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les rhéostats fabriqués par Torivac ont une dissipation thermique élevée et sont fabriqués à partir de 12W jusqu'à une large gamme de puissances dans des ensembles assemblés. Ces puissances sont applicables dans de bonnes conditions de ventilation. Dans les installations où la ventilation est insuffisante, ces puissances doivent être réduites jusqu'à 20 % pour éviter la surchauffe. \n\nLe cœur est un anneau de céramique très dure et antihygroscopique en stéatite ou en alumine, ce qui évite les effets de corrosion dus à l'électrolyse. Cet anneau est enroulé avec des fils de constantan, de nicrom ou de kanthal de première qualité, en fonction de la valeur ohmique requise. Si cela n'est pas spécifié dans la commande, le matériau le plus approprié pour cette valeur et cette puissance est utilisé. \n\nPour la protection contre les dommages mécaniques et pour éviter le mouvement des bobines dû à la dilatation thermique, ces potentiomètres sont revêtus d'un ciment céramique très dur, fabriqué dans nos laboratoires, qui résiste à des températures allant jusqu'à 900°C, permet une dissipation rapide de la chaleur grâce à sa surface mate et à sa bonne conductibilité thermique.\n\nLe contact du curseur est normalement une brosse en argent poli ou en cuivre-argent.\n\nOutre les bobines linéaires, nous pouvons fabriquer, sur demande, des bobines de différentes sections pour obtenir une courbe résistive non linéaire."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Die von Torivac hergestellten Rheostate haben eine hohe Wärmeableitung und werden von 12W bis zu einer breiten Palette von Leistungen in montierten Baugruppen hergestellt. Diese Leistungen sind bei guter Belüftung anwendbar. In Installationen mit schlechter Belüftung sollten diese Leistungen um bis zu 20% reduziert werden, um eine Überhitzung zu vermeiden. \n\nDer Kern ist ein sehr harter, antihygroskopischer Keramikring aus Steatit oder Aluminiumoxid, wodurch Korrosionseffekte durch Elektrolyse vermieden werden. Dieser Ring ist mit hochwertigen Konstantan-, Nicrom- oder Kanthal-Drähten umwickelt, je nach dem gewünschten Ohmwert. Wenn in der Bestellung nichts angegeben ist, wird das für diesen Wert und diese Leistung am besten geeignete Material verwendet. \n\nZum Schutz vor mechanischer Beschädigung und um eine Bewegung der Spulen aufgrund von Wärmeausdehnung zu verhindern, sind diese Potentiometer mit einem sehr harten, in unseren Labors hergestellten Keramikzement beschichtet, der Temperaturen von bis zu 900°C standhält und aufgrund seiner matten Oberfläche und seiner guten Wärmeleitfähigkeit eine schnelle Wärmeableitung ermöglicht.\n\nDer Cursorkontakt ist normalerweise eine polierte Silber- oder Kupfer-Silber-Bürste.\n\nNeben linearen Spulen können wir auf Anfrage auch Wicklungen mit verschiedenen Querschnitten herstellen, um eine nicht-lineare Widerstandskurve zu erreichen."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/03/reostato-ceramico-torivac.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Reóstatos cerámicos - Torivac",
+    "description": "¿Necesitas reóstatos cerámicos? ¡Echa un vistazo a nuestro catálogo! Encontrarás soluciones completamente personalizadas para ti."
+   }
+  }
+ },
+ {
+  "id": 122,
+  "parent": 0,
+  "count": 9,
+  "slug": {
+   "es": "reostatos-y-potenciometros-bobinados",
+   "en": "rheostats-and-coiled-potentiometers",
+   "fr": "rheostats-et-potentiometres-a-boudin",
+   "de": "rheostate-und-spulenpotentiometer"
+  },
+  "name": {
+   "es": "Reostatos y potenciómetros bobinados",
+   "en": "Rheostats and coiled potentiometers",
+   "fr": "Rhéostats et potentiomètres à boudin",
+   "de": "Rheostate und Spulenpotentiometer"
+  },
+  "path": {
+   "es": "/categoria-producto/reostatos-y-potenciometros-bobinados/",
+   "en": "/en/categoria-producto/rheostats-and-coiled-potentiometers/",
+   "fr": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/",
+   "de": "/de/categoria-producto/rheostate-und-spulenpotentiometer/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Los potenciómetros y reóstatos fabricados por Torivac son componentes esenciales para la regulación precisa de tensión y corriente en sistemas eléctricos e industriales, ya sea mediante conexiones en paralelo o en serie. Nuestra gama de potenciómetros, disponibles en versiones de 3 y 5 W, se distingue por su diseño compacto, excelente linealidad, accionamiento suave y alta precisión, garantizando un funcionamiento fiable y una larga vida útil incluso en aplicaciones exigentes.\n\nEn el caso de los reóstatos cerámicos, Torivac ofrece soluciones de alta disipación térmica, fabricadas desde 12 W hasta potencias superiores en configuraciones ensambladas, monofásicas, dobles o triples. Las potencias nominales indicadas son válidas en condiciones de ventilación adecuadas; en entornos con ventilación limitada, se recomienda una reducción de hasta un 20 % para evitar sobrecalentamientos y asegurar un rendimiento óptimo.\n\nEl núcleo resistivo se compone de un aro cerámico de esteatita o alúmina de gran dureza y carácter antihigroscópico, lo que elimina riesgos de corrosión por electrólisis. Sobre este núcleo se bobinan hilos resistivos de máxima calidad —constantán, nicrom o kanthal— seleccionados en función del valor óhmico y la potencia requerida. En ausencia de especificaciones concretas, se emplea siempre el material más adecuado para cada aplicación."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Potentiometers and rheostats manufactured by Torivac are essential components for precise voltage and current regulation in electrical and industrial systems, either through parallel or series connections. Our range of potentiometers, available in 3 and 5 W versions, is distinguished by their compact design, excellent linearity, smooth actuation and high precision, ensuring reliable operation and long life even in demanding applications.\nFor ceramic rheostats, Torivac offers high heat dissipation solutions, manufactured from 12 W up to higher powers in assembled, single-phase, double or triple configurations. The indicated power ratings are valid under adequate ventilation conditions; in environments with limited ventilation, a reduction of up to 20 % is recommended to avoid overheating and ensure optimum performance.\nThe resistive core consists of a ceramic ring of steatite or alumina of high hardness and anti-hygroscopic character, which eliminates the risk of corrosion by electrolysis. Top quality resistive wires -constantan, nichrome or kanthal- are wound on this core, selected according to the ohmic value and the power required. In the absence of specific specifications, the most suitable material is always used for each application."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les potentiomètres et rhéostats fabriqués par Torivac sont des composants essentiels pour la régulation précise de la tension et du courant dans les systèmes électriques et industriels, que ce soit par des connexions en parallèle ou en série. Notre gamme de potentiomètres, disponibles en versions 3 et 5 W, se distingue par sa conception compacte, son excellente linéarité, son actionnement en douceur et sa grande précision, ce qui garantit un fonctionnement fiable et une longue durée de vie, même dans les applications exigeantes. \nPour les rhéostats céramiques, Torivac propose des solutions à haute dissipation thermique, fabriquées à partir de 12 W jusqu'à des puissances plus élevées dans des configurations assemblées, monophasées, doubles ou triples. Les puissances indiquées sont valables dans des conditions de ventilation adéquates ; dans les environnements où la ventilation est limitée, une réduction allant jusqu'à 20 % est recommandée pour éviter la surchauffe et garantir des performances optimales. \nLe noyau résistif est constitué d'un anneau céramique de stéatite ou d'alumine de grande dureté et de caractère antihygroscopique, ce qui élimine le risque de corrosion par électrolyse. Sur ce noyau sont enroulés des fils résistifs de première qualité - constantan, nichrome ou kanthal - sélectionnés en fonction de la valeur ohmique et de la puissance requise. En l'absence de spécifications particulières, le matériau le plus approprié est toujours utilisé pour chaque application."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Die von Torivac hergestellten Potentiometer und Rheostate sind unverzichtbare Komponenten für die präzise Regulierung von Spannung und Strom in elektrischen und industriellen Systemen, entweder durch Parallel- oder Reihenschaltung. Unsere Potentiometer, die in den Versionen 3 und 5 W erhältlich sind, zeichnen sich durch ihr kompaktes Design, ihre hervorragende Linearität, ihre sanfte Betätigung und ihre hohe Präzision aus, die einen zuverlässigen Betrieb und eine lange Lebensdauer auch bei anspruchsvollen Anwendungen gewährleisten. \nFür keramische Rheostate bietet Torivac Lösungen mit hoher Wärmeableitung, die von 12 W bis zu höheren Leistungen in montierten, einphasigen, doppelten oder dreifachen Konfigurationen hergestellt werden. Die angegebenen Leistungen gelten unter angemessenen Belüftungsbedingungen; in Umgebungen mit eingeschränkter Belüftung wird eine Reduzierung um bis zu 20 % empfohlen, um eine Überhitzung zu vermeiden und eine optimale Leistung zu gewährleisten. \nDer Widerstandskern besteht aus einem keramischen Ring aus Steatit oder Aluminiumoxid mit hoher Härte und antihygroskopischem Charakter, der das Risiko von Korrosion durch Elektrolyse ausschließt. Auf diesen Kern werden hochwertige Widerstandsdrähte - Konstantan, Nichrom oder Kanthal - gewickelt, die je nach dem Ohmwert und der erforderlichen Leistung ausgewählt werden. Da es keine spezifischen Spezifikationen gibt, wird für jede Anwendung immer das am besten geeignete Material verwendet."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/47491007-reostato-ceramico-torivac.webp",
+   "thumb": "assets/media/47491007-reostato-ceramico-torivac-t.webp",
+   "w": 800,
+   "h": 800,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/reostato-ceramico-torivac.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Reostatos y potenciómetros - Torivac",
+    "description": "En Torivac encontrarás los mejores reostatos y potenciómetros, todos ellos de fabricación propia, y adaptados a tus necesidades específicas."
+   }
+  }
+ },
+ {
+  "id": 88,
+  "parent": 0,
+  "count": 7,
+  "slug": {
+   "es": "resistencias",
+   "en": "resistors-load-banks",
+   "fr": "resistances-bancs-de-charge",
+   "de": "widerstande-lastbanke"
+  },
+  "name": {
+   "es": "Resistencias | Bancos de carga",
+   "en": "Resistors : Load banks",
+   "fr": "Résistances : bancs de charge",
+   "de": "Widerstände : Lastbänke"
+  },
+  "path": {
+   "es": "/categoria-producto/resistencias/",
+   "en": "/en/categoria-producto/resistors-load-banks/",
+   "fr": "/fr/categoria-producto/resistances-bancs-de-charge/",
+   "de": "/de/categoria-producto/widerstande-lastbanke/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Disponemos de una gama de productos que va de 50W a 200K W, estándares o hechas a medida según especificaciones del cliente, incluyendo resistencias de baja inductancia, corte de alto voltaje, alto voltaje de funcionamiento, adecuado para los impulsos de alta energía y diseños para refrigeración natural o ventilación forzada. Nuestras resistencias pueden ser suministradas desde IP00 hasta IP54 y en versiones especiales (con aislamiento especial, no inductivas, terminales o cables especiales e interruptor térmico."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "We have a product range from 50W to 200K W, standard or custom-made to customer specifications, including low inductance resistors, high voltage cut-off, high operating voltage, suitable for high energy pulses and designs for natural cooling or forced ventilation. Our resistors can be supplied from IP00 to IP54 and in special versions (with special insulation, non-inductive, special terminals or cables and thermal switch."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Nous disposons d'une gamme de produits allant de 50W à 200K W, standard ou sur mesure selon les spécifications du client, y compris des résistances à faible inductance, à coupure de tension élevée, à tension de fonctionnement élevée, adaptées aux impulsions à haute énergie et conçues pour le refroidissement naturel ou la ventilation forcée. Nos résistances peuvent être fournies de IP00 à IP54 et dans des versions spéciales (avec isolation spéciale, non inductive, bornes ou câbles spéciaux et interrupteur thermique)."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Wir haben eine Produktpalette von 50W bis 200K W, standardmäßig oder maßgeschneidert nach Kundenspezifikation, einschließlich Widerständen mit niedriger Induktivität, hoher Spannungsabschaltung, hoher Betriebsspannung, geeignet für hohe Energieimpulse und Ausführungen für natürliche Kühlung oder Zwangsbelüftung. Unsere Widerstände sind von IP00 bis IP54 und in Sonderausführungen (mit spezieller Isolierung, nicht-induktiv, speziellen Anschlüssen oder Kabeln und Thermoschalter) lieferbar."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/912a4342-resistencia.webp",
+   "thumb": "assets/media/912a4342-resistencia-t.webp",
+   "w": 800,
+   "h": 800,
+   "src": "https://grupotorivac.com/wp-content/uploads/2023/05/resistencia.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Expertos en resistencias eléctricas - Torivac",
+    "description": "Resistencias desde 50W a 200K W, estándares o hechas a medida; baja inductancia, corte de alto voltaje y alto voltaje de funcionamiento."
+   }
+  }
+ },
+ {
+  "id": 94,
+  "parent": 88,
+  "count": 1,
+  "slug": {
+   "es": "resistencias-de-arranque",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Resistencias de arranque",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/resistencias/resistencias-de-arranque/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Nuestras resistencias de arranque de acero inoxidable se utilizan siempre que sea necesario controlar la corriente de un motor eléctrico durante las fases de arranque y parada.\n\nNuestras resistencias de arranque de acero inoxidable se utilizan siempre que sea necesario controlar la corriente de un motor eléctrico durante las fases de arranque y parada."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/3e2bcbde-arranque.webp",
+   "thumb": "assets/media/3e2bcbde-arranque-t.webp",
+   "w": 318,
+   "h": 321,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/arranque.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Resistencias de arranque - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 444,
+  "parent": 88,
+  "count": 1,
+  "slug": {
+   "es": "resistencias-de-frenado",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Resistencias de frenado",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/resistencias/resistencias-de-frenado/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Las resistencias de frenado tienen como objetivo disipar la energía generada por un motor durante la deceleración, evitando que se dañe el accionamiento por sobretensión y garantizando que se detenga de forma segura.\n\nTORIVAC es fabricante de diferentes tipos de resistencias de frenado dinámico, que ofrecen una solución económica y de dimensiones reducidas, para el control del frenado absorbiendo y disipando energía de manera eficiente y eficaz. Una resistencia de frenado ayuda a ralentizar o detener un motor disipando el exceso de tensión generado por el motor en desaceleración."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/resistencia.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Resistencias de frenado - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 95,
+  "parent": 88,
+  "count": 1,
+  "slug": {
+   "es": "resistencias-de-puesta-a-tierra",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Resistencias de puesta a tierra",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/resistencias/resistencias-de-puesta-a-tierra/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Las resistencias de puesta a tierra del neutro están especialmente recomendadas para la protección de transformadores de potencia y generadores en caso de fallos a tierra en redes de distribución eléctrica de media y baja tensión\n\nNuestras resistencias de puesta a tierra a medida, equipadas con un transformador de corriente, ofrecen una gran capacidad térmica para absorber grandes corrientes. Nuestras resistencias también pueden integrar todo tipo de accesorios (interruptores, contactores, elementos de control, cajas de bornes, etc.)."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/64998294-puesta-a-tierra.webp",
+   "thumb": "assets/media/64998294-puesta-a-tierra-t.webp",
+   "w": 200,
+   "h": 200,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/puesta-a-tierra.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Resistencias de puesta a tierra - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 62,
+  "parent": 60,
+  "count": 2,
+  "slug": {
+   "es": "serie-bavs",
+   "en": "bavs-series-electronics",
+   "fr": "serie-bavs-electronique",
+   "de": "bavs-serie-elektronica"
+  },
+  "name": {
+   "es": "Serie BAVS: Electrónicos",
+   "en": "BAVS Series: Electronics",
+   "fr": "Série BAVS : Électronique",
+   "de": "BAVS Serie: Elektronik"
+  },
+  "path": {
+   "es": "/categoria-producto/estabilizadores-de-tension/serie-bavs/",
+   "en": "/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/",
+   "fr": "/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/",
+   "de": "/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Estabilizador de tensión Binario controlado electrónicamente por IGBT, está especialmente pensado para trabajar en circunstancias muy complejas, tanto por la potencia como por variaciones constantes, tanto en tensión como en intensidad. Siempre ofreciendo un nivel de estabilización muy alto, con variaciones inferiores al 1%. y con un factor de harmónicos &lt; 0,5%."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Binary voltage stabilizer electronically controlled by IGBT, is specially designed to work in very complex circumstances, both for power and constant variations, both in voltage and current. Always offering a very high level of stabilization, with variations of less than 1% and with a harmonic factor &lt; 0.5%."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Stabilisateur de tension binaire contrôlé électroniquement par IGBT, il est spécialement conçu pour travailler dans des circonstances très complexes, aussi bien pour la puissance que pour les variations constantes, aussi bien en tension qu'en courant. Il offre toujours un niveau de stabilisation très élevé, avec des variations inférieures à 1% et un facteur harmonique de &lt; 0,5%."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Der binäre Spannungsstabilisator wird elektronisch von einem IGBT gesteuert und wurde speziell für den Betrieb unter sehr komplexen Bedingungen entwickelt, sowohl für Leistung als auch für konstante Schwankungen, sowohl bei der Spannung als auch beim Strom. Er bietet stets ein sehr hohes Maß an Stabilisierung, mit Schwankungen von weniger als 1% und einem Oberwellenfaktor von &lt; 0,5%."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/6a1cf37c-bavs-tri.webp",
+   "thumb": "assets/media/6a1cf37c-bavs-tri-t.webp",
+   "w": 1500,
+   "h": 1500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Serie BAVS: Electrónicos - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 57,
+  "parent": 56,
+  "count": 1,
+  "slug": {
+   "es": "serie-tc",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Serie TC",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/transformadores/transformador-convencional/serie-tc/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Fabricados con salida simple, simétrica o múltiple, son perfectos como transformadores de audio, transformadores de impedancia, audio línea 100V i telefónico 600 ohms."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/57f3d62d-TC.webp",
+   "thumb": "assets/media/57f3d62d-TC-t.webp",
+   "w": 800,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/TC.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Serie TC - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 58,
+  "parent": 56,
+  "count": 1,
+  "slug": {
+   "es": "serie-tce",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Serie TCE",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/transformadores/transformador-convencional/serie-tce/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Transformadores convencionales encapsulados fabricados con salida simple, salida simétrica o salidas dobles, encapsulados en resina epoxy autoextinguible, que cumplen con las normas internacionales de seguridad y calidad."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/TCE.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Serie TCE - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 55,
+  "parent": 52,
+  "count": 1,
+  "slug": {
+   "es": "serie-tci",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Serie TCi (encapsulado para circuito impreso)",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tci/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Transformadores de la serie TT, encapsulados con resina de epoxi, en cajas de poliamida 6, conectados internamente a los pins para una aplicación directa sobre circuitos impresos.\n\nEl Raster entre pins es de 5mm y su número varía según el tamaño de la caja.\n\nSe puede configurar el conexionado según las necesidades de cada cliente."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/22b2198d-tci-scaled.webp",
+   "thumb": "assets/media/22b2198d-tci-scaled-t.webp",
+   "w": 2560,
+   "h": 2436,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/tci-scaled.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Transformadores encapsulados para circuito impreso - Torivac",
+    "description": "Son transformadores encapsulados para circuito impreso en resina de epoxi, en cajas de poliamida 6 y conectados a los pins para su aplicación sobre circuitos impresos."
+   }
+  }
+ },
+ {
+  "id": 54,
+  "parent": 52,
+  "count": 1,
+  "slug": {
+   "es": "serie-te",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Serie TE",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-te/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Son transformadores de la serie TT, encapsulados en resina de epoxi, en cajas de poliamida 6 que permiten alargar la vida util y mejorar el aislamiento del transformador.\n\nSon ideales para ambientes húmedos Elegir transformadores torideales encapsulados fiables para entornos industriales exigentes, Torivac se ha consolidado como una de las pocas empresas europeas especializadas en ello.o con polvo."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/te-scaled.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Serie TE - Torivac",
+    "description": "Torivac se ha consolidado como una de las pocas empresas europeas especializadas en transformadores toridales encapsulados."
+   }
+  }
+ },
+ {
+  "id": 53,
+  "parent": 52,
+  "count": 1,
+  "slug": {
+   "es": "serie-tt",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Serie TT",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tt/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Este Transformador serie TT se fabrica con un primario de 230V y dos secundarios idénticos, que permiten duplicar tensiones ó intensidades, conectándolos en serie ó paralelo, en una gama de potencias entre 20VA y 220VA.Se suministran con cajas individuales y accesorios de montaje."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/ebeaf6b0-tt01-scaled.webp",
+   "thumb": "assets/media/ebeaf6b0-tt01-scaled-t.webp",
+   "w": 2435,
+   "h": 2560,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/tt01-scaled.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Serie TT - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 108,
+  "parent": 107,
+  "count": 2,
+  "slug": {
+   "es": "simples",
+   "en": "simple-potentiometer",
+   "fr": "simple",
+   "de": "einfach"
+  },
+  "name": {
+   "es": "Simples",
+   "en": "Simple",
+   "fr": "Simple",
+   "de": "Einfach"
+  },
+  "path": {
+   "es": "/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/simples/",
+   "en": "/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/simple-potentiometer/",
+   "fr": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/simple/",
+   "de": "/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/einfach/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Potenciómetro se distingue por su pequeño diámetro (25mm)\na pesar de su disipación real de 3 vatios. Su linealidad (3%) los hace\naptos para usos sofisticados.\nSe fabrican la gama de valores Standard, según la serie E-10 (desde\n5 Ohm hasta 22 K)."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Potentiometer is distinguished by its small diameter (25mm)\ndespite its actual dissipation of 3 watts. Their linearity (3%) makes them\nsuitable for sophisticated applications.\nThey are manufactured in the standard range of values, according to the E-10 series (from\n5 Ohm to 22 K)."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les potentiomètres se distinguent par leur petit diamètre (25 mm)\nmalgré leur dissipation réelle de 3 watts. Leur linéarité (3%) les rend\nappropriés pour des applications sophistiquées.\nLa gamme standard de valeurs est fabriquée selon la série E-10 (de\n5 Ohm à 22 K)."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Die Potentiometer zeichnen sich durch ihren kleinen Durchmesser (25 mm)\ntrotz ihrer realen Verlustleistung von 3 Watt aus. Dank ihrer Linearität (3%) sind sie\nfür anspruchsvolle Anwendungen geeignet.\nDer Standard-Wertebereich wird gemäß der E-10 Serie hergestellt (von\n5 Ohm bis 22 K)."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/potenciometro-3w-torivac.png",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Simples - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 18,
+  "parent": 0,
+  "count": 4,
+  "slug": {
+   "es": "sin-categorizar",
+   "en": "uncategorized",
+   "fr": "sans-categorie",
+   "de": "nicht-kategorisiert"
+  },
+  "name": {
+   "es": "Sin categorizar",
+   "en": "Uncategorized",
+   "fr": "Sans catégorie",
+   "de": "Nicht kategorisiert"
+  },
+  "path": {
+   "es": "/categoria-producto/sin-categorizar/",
+   "en": "/en/categoria-producto/uncategorized/",
+   "fr": "/fr/categoria-producto/sans-categorie/",
+   "de": "/de/categoria-producto/nicht-kategorisiert/"
+  },
+  "description": {
+   "es": [],
+   "en": [],
+   "fr": [],
+   "de": []
+  },
+  "legacy_ids": [],
+  "image": null,
+  "seo": {
+   "es": {
+    "title": "Sin categorizar - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 76,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "tapas-serie-bm",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Tapas Serie BM",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/tapas-serie-bm/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Las tapas correspondientes a la serie BM son mates, de perfil plano, lo que facilita cualquier grabado en su superficie. Se piden separadamente de los botones y se suministran lisas o con una línea grabada."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/5cfd4c77-tapas-para-boton-bm-600x600-2.webp",
+   "thumb": "assets/media/5cfd4c77-tapas-para-boton-bm-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-bm-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Tapas Serie BM - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 75,
+  "parent": 30,
+  "count": 1,
+  "slug": {
+   "es": "tapas-serie-bo",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Tapas serie BO",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/botones-de-mando/tapas-serie-bo/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Son un complemento necesario para el botón pero se solicitan separadamente, para personalizar cada aplicación, mencionando el modelo y el color."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/d827540e-tapas-para-boton-600x600-2.webp",
+   "thumb": "assets/media/d827540e-tapas-para-boton-600x600-2-t.webp",
+   "w": 600,
+   "h": 600,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-600x600-2.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Tapas serie BO - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 59,
+  "parent": 56,
+  "count": 1,
+  "slug": {
+   "es": "tct",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "TCT",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/transformadores/transformador-convencional/tct/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Transformadores trifásicos fabricados con núcleos de la mejor calidad y según necesidades de cada cliente."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/908890f2-TCT1.webp",
+   "thumb": "assets/media/908890f2-TCT1-t.webp",
+   "w": 300,
+   "h": 300,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/TCT1.png"
+  },
+  "seo": {
+   "es": {
+    "title": "Transformadores convencionales trifásicos - Torivac",
+    "description": "Transformadores trifásicos fabricados con núcleos de la mejor calidad y según necesidades de cada cliente."
+   }
+  }
+ },
+ {
+  "id": 56,
+  "parent": 51,
+  "count": 3,
+  "slug": {
+   "es": "transformador-convencional",
+   "en": "conventional-transformer",
+   "fr": "transformateur-conventionnel",
+   "de": "konventioneller-transformator"
+  },
+  "name": {
+   "es": "Transformador convencional",
+   "en": "Conventional transformer",
+   "fr": "Transformateur conventionnel",
+   "de": "Konventioneller Transformator"
+  },
+  "path": {
+   "es": "/categoria-producto/transformadores/transformador-convencional/",
+   "en": "/en/categoria-producto/transformers/conventional-transformer/",
+   "fr": "/fr/categoria-producto/transformateurs/transformateur-conventionnel/",
+   "de": "/de/categoria-producto/transformatoren/konventioneller-transformator/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "<strong>Transformadores convencionales en Europa</strong>"
+    },
+    {
+     "t": "p",
+     "h": "La estabilidad del suministro eléctrico en Europa depende en gran medida de la calidad de sus componentes industriales, especialmente de los transformadores convencionales. Estos equipos adaptan los niveles de tensión eléctrica para garantizar un uso seguro y eficiente en sectores como la automatización, la electrónica y la maquinaria pesada. En mercados exigentes como el europeo, deben cumplir normativas técnicas rigurosas que aseguren rendimiento y durabilidad. Pese al avance de nuevas tecnologías, los transformadores convencionales siguen siendo esenciales por su robustez, facilidad de mantenimiento y fiabilidad operativa."
+    },
+    {
+     "t": "p",
+     "h": "En un entorno donde la eficiencia energética y la durabilidad son determinantes, estos transformadores mantienen su relevancia gracias a su diseño probado y compatibilidad con diferentes sistemas eléctricos. En países como España, Alemania o Italia, se valoran por su estabilidad bajo distintas condiciones operativas, lo que refuerza la importancia de contar con proveedores especializados que ofrezcan productos certificados y soporte técnico alineado con las normativas europeas."
+    },
+    {
+     "t": "p",
+     "h": "<strong>Calidad y disponibilidad en el mercado europeo</strong>"
+    },
+    {
+     "t": "p",
+     "h": "Encontrar un proveedor de transformadores convencionales se ha convertido en un reto estratégico. La oferta europea es limitada y muchas veces insuficiente frente a los estándares de rendimiento y seguridad exigidos. Mientras tanto, el aumento de productos importados —particularmente desde Asia— plantea dudas sobre su fiabilidad y trazabilidad. Esta realidad impulsa la demanda de empresas europeas especializadas que aseguren soluciones personalizadas, soporte técnico y cumplimiento normativo estricto."
+    },
+    {
+     "t": "p",
+     "h": "Elegir transformadores diseñados para las necesidades del mercado europeo no es solo una decisión técnica, sino una estrategia para reducir riesgos, asegurar continuidad operativa y garantizar la sostenibilidad a largo plazo."
+    },
+    {
+     "t": "p",
+     "h": "<strong>Ventajas de los transformadores convencionales Torivac</strong>"
+    },
+    {
+     "t": "p",
+     "h": "<a href=\"https://grupotorivac.com/wp-content/uploads/2022/03/cropped-Logo_Torivac.png\"></a>Torivac es una de las pocas empresas con capacidad comprobada para diseñar transformadores convencionales que superan las exigencias europeas en rendimiento y normativas. A diferencia de fabricantes de bajo coste, Torivac apuesta por la ingeniería de precisión, controles de calidad rigurosos y materiales de alta pureza. Sus diseños están optimizados para el entorno eléctrico europeo, con aislamientos y sistemas de enfriamiento que aseguran estabilidad térmica incluso bajo cargas exigentes."
+    },
+    {
+     "t": "p",
+     "h": "Elegir Torivac significa acceder a productos fabricados en Europa, con trazabilidad, fiabilidad mecánica y menor coste total de propiedad. Además, cumple con las directrices ecológicas y de eficiencia de la Comisión Europea, posicionándose como un socio estratégico para empresas que buscan calidad sin concesiones."
+    },
+    {
+     "t": "p",
+     "h": "<strong>Compromiso y calidad como base</strong>"
+    },
+    {
+     "t": "p",
+     "h": "Los transformadores convencionales siguen siendo fundamentales en la automatización industrial y la transición energética. Por eso, contar con fabricantes capaces de garantizar soporte técnico, consistencia operativa y cumplimiento legal es esencial. Torivac combina ingeniería avanzada y experiencia para ofrecer soluciones adaptadas a entornos críticos como fábricas, centros logísticos o instalaciones de energía renovable."
+    },
+    {
+     "t": "p",
+     "h": "Establecer relaciones con un proveedor europeo consolidado como Torivac permite a las empresas aumentar la fiabilidad de sus redes internas, reducir mantenimiento no planificado y cumplir con los estándares del mercado. Elegir calidad, proximidad y precisión es hoy una decisión inteligente y estratégica."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "<strong>Conventional transformers in Europe</strong>\nThe stability of the power supply in Europe depends to a large extent on the quality of its industrial components, especially conventional transformers. This equipment adapts electrical voltage levels to ensure safe and efficient use in sectors such as automation, electronics and heavy machinery. In demanding markets such as Europe, they must meet stringent technical standards to ensure performance and durability. Despite the advance of new technologies, conventional transformers remain essential for their robustness, ease of maintenance and operational reliability. \nIn an environment where energy efficiency and durability are crucial, these transformers maintain their relevance thanks to their proven design and compatibility with different electrical systems. In countries such as Spain, Germany or Italy, they are valued for their stability under different operating conditions, which reinforces the importance of having specialized suppliers that offer certified products and technical support aligned with European standards. \n<strong>Quality and availability in the European market</strong>\nFinding a supplier of conventional transformers has become a strategic challenge. European supply is limited and often insufficient to meet the required performance and safety standards. Meanwhile, the increase in imported products - particularly from Asia - raises doubts about their reliability and traceability. This reality drives the demand for specialized European companies to ensure customized solutions, technical support and strict regulatory compliance. \nChoosing transformers designed for the needs of the European market is not only a technical decision, but a strategy to reduce risks, ensure operational continuity and guarantee long-term sustainability.\n\n\n<strong>Advantages of conventional Torivac transformers</strong><a href=\"https://grupotorivac.com/wp-content/uploads/2022/03/cropped-Logo_Torivac.png\"></a>Torivac is one of the few companies with the proven ability to design conventional transformers that exceed European performance and regulatory requirements. Unlike low-cost manufacturers, Torivac relies on precision engineering, stringent quality controls and high purity materials. Their designs are optimized for the European electrical environment, with insulation and cooling systems that ensure thermal stability even under demanding loads. \nChoosing Torivac means access to products manufactured in Europe, with traceability, mechanical reliability and lower total cost of ownership. In addition, it complies with the European Commission's ecological and efficiency guidelines, positioning itself as a strategic partner for companies seeking uncompromising quality. \n\n\n<strong>Commitment and quality as a basis</strong>\nConventional transformers remain critical in industrial automation and energy transition. That is why having manufacturers capable of guaranteeing technical support, operational consistency and legal compliance is essential. Torivac combines advanced engineering and expertise to offer solutions adapted to critical environments such as factories, logistics centers or renewable energy facilities. \nEstablishing relationships with an established European supplier like Torivac allows companies to increase the reliability of their internal networks, reduce unplanned maintenance and meet market standards. Choosing quality, proximity and precision is today a smart and strategic decision."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "<strong>Transformateurs conventionnels en Europe</strong>\nLa stabilité de l'alimentation électrique de l'Europe dépend en grande partie de la qualité de ses composants industriels, en particulier des transformateurs conventionnels. Ces équipements adaptent les niveaux de tension électrique pour garantir une utilisation sûre et efficace dans des secteurs tels que l'automatisation, l'électronique et la machinerie lourde. Sur des marchés exigeants comme l'Europe, ils doivent répondre à des normes techniques strictes pour garantir leur performance et leur durabilité. Malgré l'avancée des nouvelles technologies, les transformateurs conventionnels restent essentiels pour leur robustesse, leur facilité d'entretien et leur fiabilité opérationnelle. \nDans un environnement où l'efficacité énergétique et la durabilité sont cruciales, ces transformateurs conservent leur pertinence grâce à leur conception éprouvée et à leur compatibilité avec différents systèmes électriques. Dans des pays comme l'Espagne, l'Allemagne ou l'Italie, ils sont appréciés pour leur stabilité dans différentes conditions de fonctionnement, ce qui renforce l'importance d'avoir des fournisseurs spécialisés qui offrent des produits certifiés et une assistance technique conforme aux réglementations européennes. \n<strong>Qualité et disponibilité sur le marché européen</strong>\nTrouver un fournisseur de transformateurs conventionnels est devenu un défi stratégique. L'offre européenne est limitée et souvent insuffisante pour répondre aux normes de performance et de sécurité requises. Par ailleurs, l'augmentation des produits importés - en particulier d'Asie - suscite des doutes quant à leur fiabilité et à leur traçabilité. Cette réalité entraîne la demande d'entreprises européennes spécialisées pour garantir des solutions personnalisées, une assistance technique et une stricte conformité aux réglementations. \nLe choix de transformateurs conçus pour répondre aux besoins du marché européen n'est pas seulement une décision technique, mais une stratégie visant à réduire les risques, à assurer la continuité opérationnelle et à garantir la durabilité à long terme.\n\n\n<strong>Avantages des transformateurs Torivac conventionnels</strong><a href=\"https://grupotorivac.com/wp-content/uploads/2022/03/cropped-Logo_Torivac.png\"></a>Torivac est l'une des rares entreprises à avoir prouvé sa capacité à concevoir des transformateurs conventionnels qui dépassent les exigences européennes en matière de performance et de réglementation. Contrairement aux fabricants bon marché, Torivac s'appuie sur une ingénierie de précision, des contrôles de qualité rigoureux et des matériaux de grande pureté. Ses conceptions sont optimisées pour l'environnement électrique européen, avec des systèmes d'isolation et de refroidissement qui garantissent la stabilité thermique même sous des charges exigeantes. \nChoisir Torivac, c'est accéder à des produits fabriqués en Europe, avec une traçabilité, une fiabilité mécanique et un coût total de possession réduit. Il respecte également les directives de la Commission européenne en matière d'écologie et d'efficacité, ce qui le positionne comme un partenaire stratégique pour les entreprises à la recherche d'une qualité sans compromis. \n\n\n<strong>L'engagement et la qualité comme base</strong>\nLes transformateurs conventionnels restent au cœur de l'automatisation industrielle et de la transition énergétique. C'est pourquoi il est essentiel d'avoir des fabricants capables de garantir le support technique, la cohérence opérationnelle et la conformité légale. Torivac allie ingénierie de pointe et expérience pour proposer des solutions adaptées aux environnements critiques tels que les usines, les centres logistiques ou les installations d'énergie renouvelable. \nÉtablir une relation avec un fournisseur européen établi tel que Torivac permet aux entreprises d'augmenter la fiabilité de leurs réseaux internes, de réduire la maintenance non planifiée et de répondre aux normes du marché. Choisir la qualité, la proximité et la précision est aujourd'hui une décision intelligente et stratégique."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "<strong>Konventionelle Transformatoren in Europa</strong>\nDie Stabilität der europäischen Stromversorgung hängt in hohem Maße von der Qualität der industriellen Komponenten ab, insbesondere der konventionellen Transformatoren. Diese Geräte passen die elektrischen Spannungsniveaus an, um eine sichere und effiziente Nutzung in Bereichen wie Automatisierung, Elektronik und Schwermaschinen zu gewährleisten. In anspruchsvollen Märkten wie Europa müssen sie strenge technische Normen erfüllen, um Leistung und Haltbarkeit zu gewährleisten. Trotz des Fortschritts der neuen Technologien bleiben konventionelle Transformatoren aufgrund ihrer Robustheit, Wartungsfreundlichkeit und Betriebssicherheit unverzichtbar. \nIn einem Umfeld, in dem Energieeffizienz und Langlebigkeit von entscheidender Bedeutung sind, behalten diese Transformatoren dank ihres bewährten Designs und ihrer Kompatibilität mit verschiedenen elektrischen Systemen ihre Bedeutung. In Ländern wie Spanien, Deutschland oder Italien werden sie für ihre Stabilität unter verschiedenen Betriebsbedingungen geschätzt. Dies unterstreicht die Bedeutung von spezialisierten Lieferanten, die zertifizierte Produkte und technische Unterstützung gemäß den europäischen Vorschriften anbieten. \n<strong>Qualität und Verfügbarkeit auf dem europäischen Markt</strong>\nDie Suche nach einem Lieferanten für konventionelle Transformatoren ist zu einer strategischen Herausforderung geworden. Das europäische Angebot ist begrenzt und reicht oft nicht aus, um die erforderlichen Leistungs- und Sicherheitsstandards zu erfüllen. Gleichzeitig weckt die Zunahme der importierten Produkte - insbesondere aus Asien - Zweifel an ihrer Zuverlässigkeit und Rückverfolgbarkeit. Dies führt dazu, dass spezialisierte europäische Unternehmen gefragt sind, die maßgeschneiderte Lösungen, technische Unterstützung und die strikte Einhaltung von Vorschriften gewährleisten. \nDie Wahl von Transformatoren, die auf die Bedürfnisse des europäischen Marktes zugeschnitten sind, ist nicht nur eine technische Entscheidung, sondern auch eine Strategie, um Risiken zu reduzieren, die betriebliche Kontinuität zu gewährleisten und eine langfristige Nachhaltigkeit zu garantieren.\n\n\n<strong>Vorteile der herkömmlichen Torivac Transformatoren</strong><a href=\"https://grupotorivac.com/wp-content/uploads/2022/03/cropped-Logo_Torivac.png\"></a>Torivac ist eines der wenigen Unternehmen, das nachweislich in der Lage ist, konventionelle Transformatoren zu entwickeln, die die europäischen Leistungs- und Gesetzesanforderungen übertreffen. Im Gegensatz zu Billigherstellern verlässt sich Torivac auf Präzisionstechnik, strenge Qualitätskontrollen und hochreine Materialien. Ihre Konstruktionen sind für die europäischen elektrischen Umgebungsbedingungen optimiert und verfügen über Isolier- und Kühlsysteme, die die thermische Stabilität auch unter anspruchsvollen Belastungen gewährleisten. \nWenn Sie sich für Torivac entscheiden, haben Sie Zugang zu Produkten, die in Europa hergestellt werden, mit Rückverfolgbarkeit, mechanischer Zuverlässigkeit und niedrigeren Gesamtbetriebskosten. Torivac erfüllt auch die Umwelt- und Effizienzrichtlinien der Europäischen Kommission und positioniert sich als strategischer Partner für Unternehmen, die kompromisslose Qualität suchen. \n\n\n<strong>Engagement und Qualität als Grundlage</strong>\nKonventionelle Transformatoren sind nach wie vor von zentraler Bedeutung für die industrielle Automatisierung und die Energiewende. Deshalb ist es wichtig, Hersteller zu haben, die in der Lage sind, technische Unterstützung, betriebliche Konsistenz und die Einhaltung gesetzlicher Vorschriften zu garantieren. Torivac kombiniert fortschrittliche Technik und Erfahrung, um Lösungen anzubieten, die an kritische Umgebungen wie Fabriken, Logistikzentren oder Anlagen für erneuerbare Energien angepasst sind. \nDer Aufbau einer Beziehung zu einem etablierten europäischen Anbieter wie Torivac ermöglicht es Unternehmen, die Zuverlässigkeit ihrer internen Netzwerke zu erhöhen, ungeplante Wartungsarbeiten zu reduzieren und Marktstandards zu erfüllen. Sich für Qualität, Nähe und Präzision zu entscheiden, ist heute eine kluge und strategische Entscheidung."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/908890f2-TCT1.webp",
+   "thumb": "assets/media/908890f2-TCT1-t.webp",
+   "w": 300,
+   "h": 300,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/06/TCT1.png"
+  },
+  "seo": {
+   "es": {
+    "title": "Transformadores convencionales en España | Torivac",
+    "description": "Los tansformadores convencionales pueden ser diseñados por Torivac y fabricados en España, con mayor trazabilidad, fiabilidad mecánica y control térmico."
+   }
+  }
+ },
+ {
+  "id": 51,
+  "parent": 0,
+  "count": 6,
+  "slug": {
+   "es": "transformadores",
+   "en": "transformers",
+   "fr": "transformateurs",
+   "de": "transformatoren"
+  },
+  "name": {
+   "es": "Transformadores",
+   "en": "Transformers",
+   "fr": "Transformateurs",
+   "de": "Transformatoren"
+  },
+  "path": {
+   "es": "/categoria-producto/transformadores/",
+   "en": "/en/categoria-producto/transformers/",
+   "fr": "/fr/categoria-producto/transformateurs/",
+   "de": "/de/categoria-producto/transformatoren/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "El mercado europeo de transformadores ha experimentado un importante desarrollo en la última década, impulsado por la creciente demanda de soluciones energéticas fiables y eficientes en sectores industriales, de automatización y de infraestructura crítica. Estos equipos son fundamentales para adaptar los niveles de tensión eléctrica y garantizar un suministro estable, seguro y de alta calidad en entornos donde la continuidad del servicio es esencial.\n\nDentro de este sector, destacan principalmente dos tipos de productos: los transformadores toroidales y los convencionales, sin olvidarnos de la gama de transformadores encapsulados.\n\nLos transformadores toroidales, ofrecen una excelente eficiencia energética, menor pérdida magnética y un diseño compacto que reduce las interferencias electromagnéticas, resultando ideales para aplicaciones electrónicas, médicas y de precisión. Los transformadores convencionales, por su parte, se caracterizan por su robustez, facilidad de mantenimiento y fiabilidad operativa, siendo indispensables en instalaciones industriales y comerciales que requieren un rendimiento constante bajo condiciones exigentes.\n\nLa calidad y el cumplimiento normativo son factores decisivos en la elección de un transformador, especialmente en Europa, donde las regulaciones técnicas y medioambientales exigen altos estándares de seguridad y rendimiento."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "The European transformer market has experienced significant development over the last decade, driven by the growing demand for reliable and efficient power solutions in industrial, automation and critical infrastructure sectors. This equipment is essential for adapting electrical voltage levels and ensuring a stable, safe and high quality supply in environments where continuity of service is essential. \n\nWithin this sector, two main types of products stand out: toroidal transformers and conventional transformers, without forgetting the range of encapsulated transformers.\n\nToroidal transformers offer excellent energy efficiency, lower magnetic loss and a compact design that reduces electromagnetic interference, making them ideal for electronic, medical and precision applications. Conventional transformers, on the other hand, are characterized by their robustness, ease of maintenance and operational reliability, being indispensable in industrial and commercial installations that require constant performance under demanding conditions. \n\nQuality and regulatory compliance are decisive factors in the choice of a transformer, especially in Europe, where technical and environmental regulations demand high safety and performance standards."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Le marché européen des transformateurs a connu un développement significatif au cours de la dernière décennie, stimulé par la demande croissante de solutions d'alimentation fiables et efficaces dans les secteurs de l'industrie, de l'automatisation et des infrastructures critiques. Cet équipement est essentiel pour adapter les niveaux de tension électrique et garantir une alimentation stable, sûre et de haute qualité dans des environnements où la continuité du service est essentielle. \n\nDans ce secteur, deux grands types de produits se distinguent : les transformateurs toroïdaux et les transformateurs conventionnels, sans oublier la gamme de transformateurs encapsulés.\n\nLes transformateurs toroïdaux offrent un excellent rendement énergétique, des pertes magnétiques plus faibles et une conception compacte qui réduit les interférences électromagnétiques, ce qui les rend idéaux pour les applications électroniques, médicales et de précision. Les transformateurs conventionnels, quant à eux, se caractérisent par leur robustesse, leur facilité d'entretien et leur fiabilité opérationnelle, ce qui les rend indispensables dans les installations industrielles et commerciales qui exigent des performances constantes dans des conditions exigeantes. \n\nLa qualité et la conformité sont des facteurs décisifs dans le choix d'un transformateur, en particulier en Europe, où les réglementations techniques et environnementales exigent des normes élevées de sécurité et de performance."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Der europäische Markt für Transformatoren hat sich in den letzten zehn Jahren stark entwickelt, angetrieben durch die wachsende Nachfrage nach zuverlässigen und effizienten Stromversorgungslösungen in den Bereichen Industrie, Automatisierung und kritische Infrastruktur. Diese Geräte sind unverzichtbar, um das Spannungsniveau anzupassen und eine stabile, sichere und qualitativ hochwertige Versorgung in Umgebungen zu gewährleisten, in denen die Kontinuität des Betriebs von entscheidender Bedeutung ist. \n\nInnerhalb dieses Sektors gibt es zwei Haupttypen von Produkten: Ringkerntransformatoren und konventionelle Transformatoren, nicht zu vergessen die Palette der gekapselten Transformatoren.\n\nRingkerntransformatoren bieten eine hervorragende Energieeffizienz, geringere magnetische Verluste und ein kompaktes Design, das elektromagnetische Störungen reduziert, wodurch sie ideal für elektronische, medizinische und Präzisionsanwendungen sind. Konventionelle Transformatoren hingegen zeichnen sich durch ihre Robustheit, Wartungsfreundlichkeit und Betriebssicherheit aus. Sie sind daher unverzichtbar für industrielle und gewerbliche Anlagen, die eine konstante Leistung unter anspruchsvollen Bedingungen erfordern. \n\nQualität und Konformität sind entscheidende Faktoren bei der Wahl eines Transformators, insbesondere in Europa, wo technische und Umweltvorschriften hohe Sicherheits- und Leistungsstandards verlangen."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/2306b011-TRAFO-TOROIDAL-300x300-1.webp",
+   "thumb": "assets/media/2306b011-TRAFO-TOROIDAL-300x300-1-t.webp",
+   "w": 300,
+   "h": 300,
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/03/TRAFO-TOROIDAL-300x300-1.png"
+  },
+  "seo": {
+   "es": {
+    "title": "Fábrica de transformadores industriales Barcelona | Torivac",
+    "description": "Descubre nuestros transformadores industriales personalizados fabricados en Barcelona: eficiencia, silencio y fiabilidad para tus proyectos industriales"
+   }
+  }
+ },
+ {
+  "id": 52,
+  "parent": 51,
+  "count": 3,
+  "slug": {
+   "es": "transformadores-toroidales-transformadores",
+   "en": "toroidal-transformers",
+   "fr": "transformateurs-toroidaux",
+   "de": "ringkerntransformatoren"
+  },
+  "name": {
+   "es": "Transformadores toroidales",
+   "en": "Toroidal transformers",
+   "fr": "Transformateurs toroïdaux",
+   "de": "Ringkerntransformatoren"
+  },
+  "path": {
+   "es": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/",
+   "en": "/en/categoria-producto/transformers/toroidal-transformers/",
+   "fr": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/",
+   "de": "/de/categoria-producto/transformatoren/ringkerntransformatoren/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Torivac cuenta con una experiencia superior a treinta años en la fabricación de toda clase de transformadores toroidales. Los transformadores toroidales representan, como ningún otro tipo, el diseño ideal sobre cómo debe ser un transformador. De hecho, Fáraday diseñó y bobinó el primer transformador sobre un núcleo toroidal. Los núcleos toroidales que fabrica Torivac están construidos con plancha magnética de grano orientado, de muy bajas pérdidas y alta inducción de saturación y después de ser tratada térmicamente, permite alcanzar valores de saturación de hasta 16.000 gauss.\n\nEn el transformador toroidal el flujo magnético queda concentrado uniformemente en el núcleo y, debido a la ausencia de entrehierros, se eliminan vibraciones. Asimismo, como el bobinado se reparte por toda la superficie del núcleo, desaparece prácticamente el ruido provocado por la magnetostricción y favorece la disipación del calor. Estos detalles permiten mejorar sustancialmente las características y rendimientos de los transformadores toroidales, respecto a los convencionales."
+    },
+    {
+     "t": "img",
+     "src": "https://grupotorivac.com/wp-content/uploads/2025/11/ToroidalDetail.jpg",
+     "alt": "",
+     "href": "https://grupotorivac.com/wp-content/uploads/2025/11/ToroidalDetail.jpg",
+     "w": 1447,
+     "h": 603
+    },
+    {
+     "t": "p",
+     "h": "La estabilidad y fiabilidad del suministro eléctrico en Europa depende en gran parte de la calidad de sus componentes industriales, siendo uno de los más fundamentales los transformadores convencionales. Estos equipos son responsables de adaptar los niveles de tensión eléctrica para su uso seguro y eficiente tanto en aplicaciones domésticas como industriales. En sectores como la automatización, la electrónica y la maquinaria pesada, la elección del transformador adecuado no es una cuestión trivial.\n\nEspecialmente en mercados como el español, donde la precisión técnica y la normativa europea definen los estándares, los transformadores convencionales deben superar rigurosas pruebas para garantizar un rendimiento duradero y seguro. A pesar del avance de nuevas tecnologías, estos modelos siguen siendo indispensables por su robustez, facilidad de mantenimiento y fiabilidad operativa. Su función como eslabón intermedio y regulador en la distribución de energía continúa siendo insustituible."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Torivac has more than thirty years of experience in the manufacture of all kinds of toroidal transformers. Toroidal transformers represent, like no other type, the ideal design of how a transformer should be. In fact, Faraday designed and wound the first transformer on a toroidal core. The toroidal cores manufactured by Torivac are built with grain oriented magnetic plate, with very low losses and high saturation induction and after being thermally treated, it allows reaching saturation values of up to 16,000 gauss. \n\nIn the toroidal transformer, the magnetic flux is uniformly concentrated on the core and, due to the absence of air gaps, vibrations are eliminated. Also, since the winding is distributed over the entire surface of the core, the noise caused by magnetostriction is practically eliminated and heat dissipation is favored. These details substantially improve the characteristics and performance of toroidal transformers compared to conventional transformers. <a href=\"https://grupotorivac.com/wp-content/uploads/2025/11/ToroidalDetail.jpg\"></a>\nThe stability and reliability of the power supply in Europe depends to a large extent on the quality of its industrial components, one of the most fundamental being conventional transformers. These devices are responsible for adapting electrical voltage levels for safe and efficient use in both domestic and industrial applications. In sectors such as automation, electronics and heavy machinery, choosing the right transformer is not a trivial matter. \n\nEspecially in markets such as Spain, where technical precision and European regulations define the standards, conventional transformers must pass rigorous tests to ensure long-lasting and safe performance. Despite the advance of new technologies, these models remain indispensable for their robustness, ease of maintenance and operational reliability. Its role as an intermediate and regulatory link in energy distribution continues to be irreplaceable."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Torivac a plus de trente ans d'expérience dans la fabrication de tous les types de transformateurs toroïdaux. Les transformateurs toroïdaux représentent, comme aucun autre type, la conception idéale de ce à quoi un transformateur devrait ressembler. En fait, Faraday a conçu et enroulé le premier transformateur sur un noyau toroïdal. Les noyaux toroïdaux fabriqués par Torivac sont construits avec des tôles magnétiques à grains orientés, avec des pertes très faibles et une induction de saturation élevée. Après traitement thermique, ils peuvent atteindre des valeurs de saturation allant jusqu'à 16 000 gauss. \n\nDans le transformateur toroïdal, le flux magnétique est uniformément concentré sur le noyau et, en raison de l'absence d'entrefers, les vibrations sont éliminées. De plus, comme l'enroulement est réparti sur toute la surface du noyau, le bruit causé par la magnétostriction est pratiquement éliminé et la dissipation de la chaleur est favorisée. Ces détails permettent d'améliorer considérablement les caractéristiques et les performances des transformateurs toroïdaux par rapport aux transformateurs conventionnels. <a href=\"https://grupotorivac.com/wp-content/uploads/2025/11/ToroidalDetail.jpg\"></a>\nLa stabilité et la fiabilité de l'approvisionnement en électricité en Europe dépendent dans une large mesure de la qualité de ses composants industriels, dont l'un des plus fondamentaux est le transformateur conventionnel. Cet équipement est chargé d'adapter les niveaux de tension électrique pour une utilisation sûre et efficace dans les applications domestiques et industrielles. Dans des secteurs tels que l'automatisation, l'électronique et la machinerie lourde, le choix du bon transformateur n'est pas anodin. \n\nEn particulier sur des marchés comme l'Espagne, où la précision technique et les réglementations européennes définissent les normes, les transformateurs conventionnels doivent subir des tests rigoureux pour garantir des performances durables et sûres. Malgré les progrès des nouvelles technologies, ces modèles restent indispensables pour leur robustesse, leur facilité d'entretien et leur fiabilité opérationnelle. Leur rôle de maillon intermédiaire et régulateur de la distribution électrique reste irremplaçable."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Torivac verfügt über mehr als dreißig Jahre Erfahrung in der Herstellung aller Arten von Ringkerntransformatoren. Ringkerntransformatoren stellen wie kein anderer Typ das ideale Design dar, wie ein Transformator aussehen sollte. In der Tat hat Faraday den ersten Transformator mit einem Ringkern entworfen und gewickelt. Die von Torivac hergestellten Ringkerne bestehen aus kornorientiertem Magnetblech, haben sehr geringe Verluste und eine hohe Sättigungsinduktion und können nach einer Wärmebehandlung Sättigungswerte von bis zu 16.000 Gauss erreichen. \n\nIm Ringkerntransformator ist der magnetische Fluss gleichmäßig auf den Kern konzentriert und durch das Fehlen von Luftspalten werden Vibrationen eliminiert. Da die Wicklung über die gesamte Oberfläche des Kerns verteilt ist, wird auch das durch Magnetostriktion verursachte Rauschen praktisch eliminiert und die Wärmeableitung begünstigt. Diese Details ermöglichen es, die Eigenschaften und die Leistung von Ringkerntransformatoren im Vergleich zu herkömmlichen Transformatoren erheblich zu verbessern. <a href=\"https://grupotorivac.com/wp-content/uploads/2025/11/ToroidalDetail.jpg\"></a>\nDie Stabilität und Zuverlässigkeit der Stromversorgung in Europa hängt in hohem Maße von der Qualität der industriellen Komponenten ab, von denen die konventionellen Transformatoren eine der wichtigsten sind. Diese Geräte sind für die Anpassung des elektrischen Spannungsniveaus für eine sichere und effiziente Nutzung sowohl in privaten als auch in industriellen Anwendungen verantwortlich. In Sektoren wie Automatisierung, Elektronik und Schwermaschinenbau ist die Wahl des richtigen Transformators keine triviale Angelegenheit. \n\nVor allem in Märkten wie Spanien, wo technische Präzision und europäische Vorschriften die Standards bestimmen, müssen herkömmliche Transformatoren strenge Tests bestehen, um eine dauerhafte und sichere Leistung zu gewährleisten. Trotz des Fortschritts der neuen Technologien bleiben diese Modelle aufgrund ihrer Robustheit, Wartungsfreundlichkeit und Betriebssicherheit unverzichtbar. Ihre Rolle als Zwischen- und Regelglied in der Energieverteilung bleibt unersetzlich."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/02/B7T3114.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Transformadores toroidales - Torivac",
+    "description": "Torivac cuenta con una experiencia superior a treinta años en la fabricación de toda clase de transformadores toroidales."
+   }
+  }
+ },
+ {
+  "id": 106,
+  "parent": 62,
+  "count": 1,
+  "slug": {
+   "es": "trifasico-serie-bavs",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Trifásico",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/estabilizadores-de-tension/serie-bavs/trifasico-serie-bavs/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Estabilizador binario accionado por control electrónico de IGBT para redes trifásicas. Ciclo de estabilizado cada 100mS. Controlado por microprocesador. Regulación continua por fase. Precisión en la tensión de salida mejor del 1 %. De serie, margen de regulación del ± 30 % Sin distorsión de onda ni cortes. Pantalla táctil mostrando tensión de entrada y salida por fase Intensidad de la carga, potencia activa y reactiva, coseno de fi. Frecuencia, Temperatura."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/bavs-tri.jpg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Trifásico - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 104,
+  "parent": 61,
+  "count": 1,
+  "slug": {
+   "es": "trifasico-serie-avs",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Trifásico",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/estabilizadores-de-tension/serie-avs/trifasico-serie-avs/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Estabilizador electromecánico accionado por servomotor para redes trifásicas. Velocidad de estabilizado hasta 90V/Seg. Controlado por microprocesador. Regulación continua por fase. Precisión en la tensión de salida mejor del 1 %. Margen de regulación hasta del ± 40 % Sin distorsión de onda ni cortes. Pantalla táctil mostrando tensión de entrada y salida por fase Intensidad de la carga, potencia activa y reactiva, coseno de fi. Frecuencia, Temperatura."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/d7fac582-trifasico-servomotor.webp",
+   "thumb": "assets/media/d7fac582-trifasico-servomotor-t.webp",
+   "w": 1500,
+   "h": 1500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2025/01/trifasico-servomotor.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Trifásico - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 699,
+  "parent": 45,
+  "count": 1,
+  "slug": {
+   "es": "variador-de-tension-industriales",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "name": {
+   "es": "Variador de tensión industriales",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-industriales/",
+   "en": null,
+   "fr": null,
+   "de": null
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Gama diseñada para monofásicos de 1500 a 5000VA y trifásicos de 440VA a 15.000VA. Constituidos, básicamente, por un variador de tensión, botón de mando y carátula, voltímetros y/o amperímetros (opcionales), cable, fusible, interruptor, piloto, etc."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/135c4b99-industrial02.webp",
+   "thumb": "assets/media/135c4b99-industrial02-t.webp",
+   "w": 5616,
+   "h": 3744,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/05/industrial02.png"
+  },
+  "seo": {
+   "es": {
+    "title": "Variador de tensión industriales - Torivac",
+    "description": "Constituidos, básicamente, por un variador de tensión, botón de mando y carátula, voltímetros y/o amperímetros (opcionales), cable, fusible, interruptor, piloto, etc."
+   }
+  }
+ },
+ {
+  "id": 33,
+  "parent": 19,
+  "count": 2,
+  "slug": {
+   "es": "dobles",
+   "en": "dual-variator",
+   "fr": "variateur-double",
+   "de": "dubbele-variator"
+  },
+  "name": {
+   "es": "Variador Doble",
+   "en": "Double Variator",
+   "fr": "Double onduleur",
+   "de": "Doppelter Wechselrichter"
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/dobles/",
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "El sistema de montaje Doble es habitualmente utilizado para doblar la potencia del equipo sin aumentar las dimensiones en planta. Para alimentaciones de 400V o bien para ser utilizados como reguladores inversores de fase en estabilizadores de tensión.\n\nFabricados con las mismas bobinas con las que fabricamos los variadores monofásicos su rango de alimentación y regulación variará según el tipo de conexión que empleemos.\n\nBajo pedido fabricamos variadores de tensión monofásicos con regulaciones de hasta 2 X 0-260 de forma estándar, o con alimentaciones de red a 127VAC o 400VAC. Del mismo modo se pueden producir variadores de tensión con cualquier rango de regulación y potencia."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "The dual mounting system is commonly used to double the power of the equipment without increasing the plant dimensions. For 400V power supply or to be used as phase inverter regulators in voltage stabilizers. \n\nManufactured with the same coils with which we manufacture single-phase drives, their power supply and regulation range will vary according to the type of connection used.\n\nOn request we manufacture single-phase voltage variators with regulation up to 2 X 0-260 as standard, or with 127VAC or 400VAC mains power supply. In the same way, it is possible to produce voltage variators with any range of regulation and power."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Le système de montage double est couramment utilisé pour doubler la puissance de l'équipement sans en augmenter l'encombrement. Pour l'alimentation en 400V ou pour une utilisation en tant que régulateur inverseur de phase dans les stabilisateurs de tension. \n\nFabriqués avec les mêmes bobines que celles avec lesquelles nous fabriquons les onduleurs monophasés, leur plage d'alimentation et de régulation varie en fonction du type de connexion utilisé.\n\nSur demande, nous fabriquons des variateurs de tension monophasés avec des réglages jusqu'à 2 X 0-260 en standard, ou avec une alimentation secteur de 127VAC ou 400VAC. De la même manière, il est possible de produire des variateurs de tension avec n'importe quelle régulation et plage de puissance."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Das doppelte Montagesystem wird üblicherweise verwendet, um die Leistung des Geräts zu verdoppeln, ohne die Gesamtabmessungen zu vergrößern. Für 400V-Stromversorgung oder zur Verwendung als Phasenwechselrichter in Spannungsstabilisatoren. \n\nSie werden mit denselben Spulen hergestellt, mit denen wir auch einphasige Wechselrichter produzieren. Ihr Stromversorgungs- und Regelungsbereich variiert je nach Art des verwendeten Anschlusses.\n\nAuf Wunsch fertigen wir einphasige Spannungswandler mit einer Einstellung von bis zu 2 X 0-260 als Standard oder mit einer Netzversorgung von 127VAC oder 400VAC. Ebenso können wir Spannungswandler mit beliebigem Regelbereich und Leistung herstellen."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/0093d2f7-DOBLE-MOTORIZADO.webp",
+   "thumb": "assets/media/0093d2f7-DOBLE-MOTORIZADO-t.webp",
+   "w": 1500,
+   "h": 1500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Variador Doble - Torivac",
+    "description": null
+   }
+  }
+ },
+ {
+  "id": 19,
+  "parent": 0,
+  "count": 15,
+  "slug": {
+   "es": "variadores-de-tension",
+   "en": "voltage-variators-adjustable-autotransformers",
+   "fr": "regulateurs-de-tension-autotransformateurs-reglables",
+   "de": "spannungsregler-einstellbare-spartransformatoren"
+  },
+  "name": {
+   "es": "Variadores de tensión - Autotransformadores regulables",
+   "en": "Voltage variators - Adjustable autotransformers",
+   "fr": "Régulateurs de tension - Autotransformateurs réglables",
+   "de": "Spannungsregler - Einstellbare Spartransformatoren"
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/",
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Torivac diseña y fabrica variadores de tensión y de regulación continua orientados al control preciso, seguro y fiable de sistemas eléctricos en entornos industriales, técnicos y de laboratorio. Nuestra gama de soluciones está pensada para adaptarse tanto a aplicaciones estándar como a requerimientos específicos, garantizando siempre un funcionamiento estable y conforme a las normativas de seguridad vigentes."
+    },
+    {
+     "t": "p",
+     "h": "Los accesorios de regulación permiten realizar el ajuste del variador de tensión de forma cómoda y segura, facilitando su integración en distintos sistemas y mejorando la experiencia de uso del equipo. Estos elementos complementarios están diseñados para optimizar la manipulación, la protección del usuario y la eficiencia operativa del conjunto."
+    },
+    {
+     "t": "p",
+     "h": "Para aplicaciones que requieren una solución lista para usar, Torivac suministra equipos de sobremesa montados en cajas con grados de protección IP20 o IP65. Estos equipos permiten una puesta en marcha inmediata, evitando el contacto con partes activas del circuito y ofreciendo una solución compacta y segura para entornos donde no se requieren desarrollos adicionales."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Torivac designs and manufactures voltage and stepless variable speed drives for precise, safe and reliable control of electrical systems in industrial, technical and laboratory environments. Our range of solutions is designed to adapt to both standard applications and specific requirements, always guaranteeing stable operation in compliance with current safety regulations. \nAdjustment accessories allow for convenient and safe adjustment of the variable voltage drive, facilitating its integration into different systems and enhancing the equipment's user experience. These complementary elements are designed to optimize handling, user protection and operating efficiency. \nFor applications requiring a ready-to-use solution, Torivac supplies benchtop units mounted in enclosures with IP20 or IP65 protection ratings. These units allow immediate commissioning, avoiding contact with live parts of the circuit and offering a compact and safe solution for environments where no additional development is required."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Torivac conçoit et fabrique des variateurs de vitesse à tension et à variation continue pour la commande précise, sûre et fiable de systèmes électriques dans des environnements industriels, techniques et de laboratoire. Notre gamme de solutions est conçue pour s'adapter aussi bien aux applications standard qu'aux exigences spécifiques, en garantissant toujours un fonctionnement stable dans le respect des normes de sécurité en vigueur. \nLes accessoires de régulation permettent de régler le variateur de tension de manière pratique et sûre, facilitant ainsi son intégration dans différents systèmes et améliorant l'expérience de l'utilisateur de l'équipement. Ces éléments complémentaires sont conçus pour optimiser la manipulation, la protection de l'utilisateur et l'efficacité opérationnelle. \nPour les applications nécessitant une solution prête à l'emploi, Torivac fournit des unités de table montées dans des boîtiers avec des indices de protection IP20 ou IP65. Ces unités permettent une mise en service immédiate, évitant tout contact avec les parties sous tension du circuit et offrant une solution compacte et sûre pour les environnements ne nécessitant pas de développement supplémentaire."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Torivac entwickelt und fertigt Antriebe zur Spannungs- und Stetigregelung für die präzise, sichere und zuverlässige Steuerung elektrischer Systeme in industriellen, technischen und Laborumgebungen. Unsere Lösungen sind so konzipiert, dass sie sich sowohl an Standardanwendungen als auch an spezifische Anforderungen anpassen und stets einen stabilen Betrieb unter Einhaltung der geltenden Sicherheitsvorschriften garantieren. \nMit dem Regelungszubehör kann der Spannungsvariator bequem und sicher eingestellt werden, was seine Integration in verschiedene Systeme erleichtert und die Benutzerfreundlichkeit des Geräts verbessert. Diese ergänzenden Elemente sind so konzipiert, dass sie die Handhabung, den Schutz des Benutzers und die betriebliche Effizienz optimieren. \nFür Anwendungen, die eine sofort einsatzbereite Lösung erfordern, liefert Torivac Tischgeräte, die in Gehäusen der Schutzart IP20 oder IP65 montiert sind. Diese Geräte ermöglichen eine sofortige Inbetriebnahme, vermeiden den Kontakt mit stromführenden Teilen des Stromkreises und bieten eine kompakte und sichere Lösung für Umgebungen, in denen keine zusätzliche Entwicklung erforderlich ist."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": null,
+   "thumb": null,
+   "w": null,
+   "h": null,
+   "src": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen.jpeg",
+   "missing_local": true
+  },
+  "seo": {
+   "es": {
+    "title": "Variadores de tensión - Autotransformadores regulables - Torivac",
+    "description": "Torivac diseña y fabrica variadores de tensión y de regulación continua orientados al control preciso, seguro y fiable de sistemas eléctricos en entornos industriales, técnicos y de laboratorio."
+   }
+  }
+ },
+ {
+  "id": 37,
+  "parent": 19,
+  "count": 2,
+  "slug": {
+   "es": "monofasico",
+   "en": "single-phase-inverters",
+   "fr": "onduleurs-monophases",
+   "de": "einphasen-wechselrichter"
+  },
+  "name": {
+   "es": "Variadores Monofasicos",
+   "en": "Single Phase Inverters",
+   "fr": "Onduleurs monophasés",
+   "de": "Einphasen-Wechselrichter"
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/monofasico/",
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/single-phase-inverters/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/einphasen-wechselrichter/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Los variadores de tensión monofásicos están diseñados para trabajar con una tensión de alimentación de 230VAC. El voltaje de salida se puede regular de 0-230VAC.\n\nBajo demanda o pedido podemos fabricar variadores de tensión monofásicos con regulación hasta 0-260VAC como estándar, o con alimentación de red a 127VAC o 400VAC. Del mismo modo, podemos fabricar variadores de tensión con cualquier rango de regulación y potencia."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "The single-phase AC drives are designed to work with a supply voltage of 230VAC. The output voltage can be regulated from 0-230VAC. \n\nUpon request or order, we can manufacture single-phase voltage inverters with regulation up to 0-260VAC as standard, or with mains supply at 127VAC or 400VAC. Likewise, we can manufacture voltage variators with any range of regulation and power."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les variateurs AC monophasés sont conçus pour fonctionner avec une tension d'alimentation de 230VAC. La tension de sortie peut être régulée de 0 à 230 V CA. \n\nSur demande ou commande, nous pouvons fabriquer des variateurs de tension monophasés avec une régulation jusqu'à 0-260VAC en standard, ou avec une alimentation secteur de 127VAC ou 400VAC. De même, nous pouvons fabriquer des variateurs de tension avec n'importe quelle gamme de régulation et de puissance."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Die einphasigen Wechselstromantriebe sind für eine Versorgungsspannung von 230VAC ausgelegt. Die Ausgangsspannung kann von 0-230VAC geregelt werden. \n\nAuf Anfrage oder Bestellung können wir einphasige Spannungsvariatoren mit einer Regulierung bis zu 0-260VAC als Standard oder mit einer Netzversorgung von 127VAC oder 400VAC herstellen. Ebenso können wir Spannungsvariatoren mit einem beliebigen Regelbereich und einer beliebigen Leistung herstellen."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/c880f444-MONOFASICO-MANUAL-scaled.webp",
+   "thumb": "assets/media/c880f444-MONOFASICO-MANUAL-scaled-t.webp",
+   "w": 2560,
+   "h": 2560,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/05/MONOFASICO-MANUAL-scaled.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Variadores monofásicos - Torivac",
+    "description": "Los variadores de tensión monofásicos están diseñados para trabajar con una tensión de alimentación de 230VAC. El voltaje de salida se puede regular de 0-230VAC."
+   }
+  }
+ },
+ {
+  "id": 40,
+  "parent": 19,
+  "count": 2,
+  "slug": {
+   "es": "trifasico",
+   "en": "three-phase-drives",
+   "fr": "entrainements-triphases",
+   "de": "dreiphasige-antriebe"
+  },
+  "name": {
+   "es": "Variadores Trifásicos",
+   "en": "Three-phase drives",
+   "fr": "Entraînements triphasés",
+   "de": "Dreiphasige Antriebe"
+  },
+  "path": {
+   "es": "/categoria-producto/variadores-de-tension/trifasico/",
+   "en": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/three-phase-drives/",
+   "fr": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/",
+   "de": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/"
+  },
+  "description": {
+   "es": [
+    {
+     "t": "p",
+     "h": "Los variadores de tensión trifásicos estándar son diseñamos para trabajar con una alimentación de 3 x 400VAC, permitiendo regular la tensión de salida de 3 x 0-400VAC Bajo pedido fabricamos variadores de tensión trifásicos con regulaciones de hasta 3 x 0-450VAC de forma estándar, con alimentaciones de red a 2 x 230VAC y tensiones especiales.\n\nDel mismo modo se pueden fabricar variadores con cualquier rango de tensión y potencia."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "The standard three-phase AC drives are designed to work with a 3 x 400VAC power supply, allowing the output voltage to be regulated from 3 x 0-400VAC. On request we manufacture three-phase AC drives with regulation up to 3 x 0-450VAC as standard, with mains supply at 2 x 230VAC and special voltages.\n\nIn the same way, we can manufacture drives with any voltage and power range."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Les onduleurs de tension triphasés standard sont conçus pour fonctionner avec une alimentation de 3 x 400VAC, ce qui permet de réguler la tension de sortie de 3 x 0-400VAC. Sur demande, nous fabriquons des onduleurs de tension triphasés avec une régulation jusqu'à 3 x 0-450VAC en standard, avec une alimentation secteur de 2 x 230VAC et des tensions spéciales.\n\nDe la même manière, nous pouvons fabriquer des onduleurs avec n'importe quelle tension et plage de puissance."
+    }
+   ],
+   "de": [
+    {
+     "t": "p",
+     "h": "Die Standard-Drehstromwechselrichter sind für eine Stromversorgung von 3 x 400VAC ausgelegt, so dass die Ausgangsspannung von 3 x 0-400VAC geregelt werden kann. Auf Anfrage fertigen wir Drehstromwechselrichter mit einer Regelung bis zu 3 x 0-450VAC als Standard, mit einer Netzversorgung von 2 x 230VAC und Sonderspannungen.\n\nEbenso können wir Wechselrichter mit jedem Spannungs- und Leistungsbereich fertigen."
+    }
+   ]
+  },
+  "legacy_ids": [],
+  "image": {
+   "file": "assets/media/98c33655-TRIFASICO-MOTORIZADO.webp",
+   "thumb": "assets/media/98c33655-TRIFASICO-MOTORIZADO-t.webp",
+   "w": 1500,
+   "h": 1500,
+   "src": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg"
+  },
+  "seo": {
+   "es": {
+    "title": "Variadores Trifásicos - Torivac",
+    "description": "Los Variadores Trifásicos se pueden fabricar variadores de tensión con cualquier rango de tensión y potencia."
+   }
+  }
+ }
+]

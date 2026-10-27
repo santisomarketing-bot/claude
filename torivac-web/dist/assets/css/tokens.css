@@ -1,0 +1,48 @@
+/* [TOKENS] Torivac · variables de diseño. Nunca colores/fuentes a fuego en componentes: todo sale de aquí.
+   Origen: tokens extraídos de grupotorivac.com (Elementor kit): acento cobre #BA6B1E, negro cálido #100404, Advent Pro (títulos) + Archivo (texto).
+   Se ajusta SOLO el contraste (AA): --copper-strong para texto/botones sobre claro. */
+
+
+
+
+
+:root{
+  /* color */
+  --ink:#100404;            /* negro cálido de la marca */
+  --ink-2:#2a2523;          /* grafito */
+  --ink-3:#4a4441;
+  --muted:#6b645f;          /* texto secundario (AA sobre --bg) */
+  --bg:#f3f2f0;             /* fondo de página (original #f4f4f4) */
+  --paper:#ffffff;
+  --line:rgba(16,4,4,.14);
+  --line-strong:rgba(16,4,4,.32);
+  --copper:#ba6b1e;         /* acento de marca (grande/decorativo) */
+  --copper-strong:#9c520f;  /* texto y botones sobre claro: AA con blanco (≥4.9:1) */
+  --copper-hover:#7f410a;
+  --copper-on-dark:#f0a259; /* acento sobre fondo oscuro */
+  --amber:#ffb653;
+  --ac:#ba6b1e;             /* etiquetas de tensión alterna */
+  --dc:#2a2523;             /* continua */
+  --ok:#1f6b3a;
+  --warn:#8a5a00;
+  --err:#a4261a;
+  /* tipografía */
+  --font-display:"Advent Pro","Archivo",system-ui,sans-serif;
+  --font-body:"Archivo",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --font-mono:ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+  --fs-0:.8125rem; --fs-1:.9375rem; --fs-2:1rem; --fs-3:1.125rem; --fs-4:1.375rem; --fs-5:1.75rem; --fs-6:2.25rem; --fs-7:clamp(2.4rem,5.4vw,4rem);
+  --lh:1.55;
+  /* espacio, forma */
+  --s-1:.25rem; --s-2:.5rem; --s-3:.75rem; --s-4:1rem; --s-5:1.5rem; --s-6:2rem; --s-7:3rem; --s-8:4.5rem; --s-9:6.5rem;
+  --radius:3px;             /* técnico: esquinas casi rectas */
+  --shadow-copper:6px 6px 0 var(--copper);   /* firma de la web original: tarjeta con sombra cobre desplazada */
+  --shadow-soft:0 10px 30px -14px rgba(16,4,4,.35);
+  --container:1240px;
+  --header-h:76px;
+  --sidebar-w:288px;
+  --z-header:50; --z-fab:60; --z-drawer:80; --z-modal:90;
+  /* retícula de plano técnico */
+  --grid-line:rgba(240,162,89,.07);
+  --grid-size:28px;
+}
+@media (prefers-reduced-motion:reduce){:root{--motion:0}}

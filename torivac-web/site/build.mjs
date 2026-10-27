@@ -1,0 +1,280 @@
+#!/usr/bin/env node
+// [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio]
+// Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS).
+// Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
+
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { Ctx, writeFile, esc, attr, mapLink } from './lib/render.mjs';
+import { LANGS, T, t } from './lib/i18n.mjs';
+import * as TPL from './templates.mjs';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const CAT = path.join(ROOT, 'data', 'catalog');
+const DIST = path.join(ROOT, 'dist');
+const arg = (k) => (process.argv.find((a) => a.startsWith(`--${k}=`)) || '').split('=').slice(1).join('=');
+const ABS = arg('base') || '';
+const jl = (f, d) => { try { return JSON.parse(fs.readFileSync(path.join(CAT, f), 'utf8')); } catch { return d; } };
+
+// ───────────────────────────────────────────────────────────── [LOAD]
+const meta = jl('meta.json', {});
+const rawCats = jl('categories.json', []);
+const rawProducts = jl('products.json', []);
+const pages = jl('pages.json', {});
+const vtagList = jl('voltage-tags.json', []);
+const prices = jl('prices.json', { updated_at: null, source: 'none', currency: 'EUR', mode: 'demo', items: {} });
+const thumbs = jl('thumbs.json', {});
+const imageMap = jl('image-map.json', {});
+const proposals = jl('proposals.json', []);
+
+fs.rmSync(DIST, { recursive: true, force: true });
+fs.mkdirSync(DIST, { recursive: true });
+
+// ───────────────────────────────────────────────────────────── [CATS] limpieza del árbol (duplicados → fusionados) y rutas
+const normName = (s = '') => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9 ]+/g, ' ').split(/\s+/).filter(Boolean).map((w) => w.replace(/s$/, '')).join(' ');
+const byId = new Map(rawCats.map((c) => [c.id, { ...c, children: [], direct: new Set() }]));
+for (const p of rawProducts) for (const cid of p.category_ids) byId.get(cid)?.direct.add(p.id);
+const depthOf = (c) => { let d = 0, x = c; while (x && x.parent) { d++; x = byId.get(x.parent); } return d; };
+const canonical = new Map();
+const canon = (id) => { while (canonical.has(id)) id = canonical.get(id); return id; };
+const groups = new Map();
+for (const c of [...byId.values()].sort((a, b) => depthOf(a) - depthOf(b) || a.id - b.id)) {
+  const key = `${canon(c.parent)}|${normName(c.name.es)}`;
+  if (!groups.has(key)) groups.set(key, []);
+  groups.get(key).push(c);
+  if (groups.get(key).length > 1) {
+    const m = groups.get(key);
+    const keep = m.slice().sort((a, b) => b.direct.size - a.direct.size || a.id - b.id)[0];
+    for (const o of m) if (o !== keep) canonical.set(o.id, keep.id);
+    for (const o of m) if (o === keep) canonical.delete(o.id);
+  }
+}
+const aliasPaths = [];            // [{from:{lang:path}, to:canonicalId}]
+for (const [id, to] of canonical) { const c = byId.get(id); aliasPaths.push({ from: c.path, to: canon(to), id }); }
+const products = rawProducts.map((p) => ({ ...p, category_ids: [...new Set(p.category_ids.map(canon))], voltage_tags: p.voltage_tags || [], variants: p.variants || [], pdfs: p.pdfs || [] }));
+const nodes = new Map();
+for (const c of byId.values()) {
+  if (canonical.has(c.id)) continue;
+  nodes.set(c.id, { ...c, parent: canon(c.parent) || 0, children: [], pathFor: {}, trail: [] });
+}
+for (const c of nodes.values()) for (const l of LANGS) c.pathFor[l] = c.path[l] || (l === 'es' ? c.path.es : `/${l}${c.path.es}`);
+for (const c of nodes.values()) { const par = nodes.get(c.parent); if (par && par !== c) par.children.push(c); }
+const subtreeIds = (c) => [c.id, ...c.children.flatMap(subtreeIds)];
+const prodIdsOf = (c) => { const ids = new Set(subtreeIds(c)); return products.filter((p) => p.category_ids.some((x) => ids.has(x))).map((p) => p.id); };
+for (const c of nodes.values()) c.total = prodIdsOf(c).length;
+const HIDE = new Set(['sin-categorizar']);
+const visible = (c) => c.total > 0 && !HIDE.has(c.slug.es);
+const prune = (arr) => arr.filter(visible).sort((a, b) => (a.name.es || '').localeCompare(b.name.es || 'es')).map((c) => { c.children = prune(c.children); return c; });
+const catTree = prune([...nodes.values()].filter((c) => !nodes.get(c.parent) || c.parent === 0));
+const flatVisible = []; (function w(a, trail = []) { for (const c of a) { c.trail = [...trail, c]; flatVisible.push(c); w(c.children, c.trail); } })(catTree);
+const catById = new Map(flatVisible.map((c) => [c.id, c]));
+const aliases = new Map();       // ruta antigua → ruta canónica (se emiten como páginas de redirección)
+for (const a of aliasPaths) { const to = catById.get(a.to); if (!to) continue; for (const l of LANGS) if (a.from[l] && a.from[l] !== to.pathFor[l]) aliases.set(a.from[l], to.pathFor[l]); }
+
+// ───────────────────────────────────────────────────────────── [PRODUCTS] rutas por idioma, categoría principal
+for (const p of products) {
+  p.pathFor = {};
+  for (const l of LANGS) p.pathFor[l] = p.path[l] || (l === 'es' ? `/product/${p.slug.es}/` : `/${l}/product/${p.slug.es}/`);
+  const cats = p.category_ids.map((id) => catById.get(id)).filter(Boolean);
+  p.mainCategory = cats.sort((a, b) => b.trail.length - a.trail.length || a.id - b.id)[0] || null;
+  p.images = (p.images || []).filter((i) => i.file || i.src);
+  // aún no hay variantes (se rellenan en la sesión 2 desde PDFs): cada producto sigue siendo pedible como línea genérica
+}
+const prodById = new Map(products.map((p) => [p.id, p]));
+site_prodById_placeholder();
+function site_prodById_placeholder() {}
+const vtags = new Map(vtagList.map((v, i) => [v.id, { ...v, sort: v.sort ?? i }]));
+
+// ───────────────────────────────────────────────────────────── [SITE] estructura global por idioma
+const pth = (u) => { const p = new URL(u, 'https://grupotorivac.com').pathname; return p.endsWith('/') || /\.\w{2,5}$/.test(p) ? p : p + '/'; };
+const pdfDir = path.join(ROOT, 'data', 'raw', 'pdf');
+const pdfLocal = new Map();
+if (fs.existsSync(pdfDir)) for (const f of fs.readdirSync(pdfDir)) { const s = fs.statSync(path.join(pdfDir, f)).size; if (s <= 14 * 1048576) pdfLocal.set(f, f); }
+const logoKey = Object.keys(imageMap).find((k) => /Torivac_negativo/i.test(k));
+const fundES = Object.keys(imageMap).find((k) => /MANUAL-FEDER/i.test(k));
+const fundOT = Object.keys(imageMap).find((k) => /Logotipos_FondosEuropeos/i.test(k));
+const logo = imageMap[logoKey]?.file || 'assets/img/logo.png';
+const NAVKEYS = ['home', 'company', 'products', 'projects', 'catalog', 'blog', 'contact'];
+const site = { meta, demo: meta.price_mode === 'demo', absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
+const QSLUG = { es: '/presupuesto/', en: '/en/quote/', fr: '/fr/devis/', de: '/de/angebot/' };
+meta.catalogHref = {};
+for (const l of LANGS) {
+  const items = meta.nav[l];
+  site.navItems[l] = items.map((n, i) => {
+    const key = NAVKEYS[i];
+    if (key === 'catalog') {
+      const file = decodeURIComponent(n.href.split('/').pop());
+      const local = pdfLocal.has(file);
+      meta.catalogHref[l] = { file, local, url: n.href };
+      return { key, label: n.label, pdfFile: local ? file : null, pdfUrl: n.href };
+    }
+    return { key, label: n.label, path: pth(n.href) };
+  });
+  for (const n of site.navItems[l]) if (n.key !== 'catalog') site[n.key][l] = n.path;
+  site.quote[l] = QSLUG[l];
+  site.funding[l] = { img: imageMap[l === 'es' ? fundES : fundOT]?.file || '' };
+  const f = meta.footer[l];
+  const lines = f.lines;
+  site.footer[l] = {
+    copyright: lines.find((x) => /^(©|\d{4}\s)/.test(x)) || '© Torivac',
+    devBy: lines.find((x) => /Desarrollado|Developed|Développé|Entwickelt/.test(x)) || '',
+    funding: f.funding_text || '',
+    links: f.links.slice(0, 3).map((x) => ({ label: x.label, href: x.href })),
+  };
+}
+
+site.prodById = prodById;
+for (const c of flatVisible) c.firstProduct = prodIdsOf(c)[0];
+// rutas lógicas existentes (para reescribir enlaces internos)
+for (const l of LANGS) for (const p of Object.keys(pages[l] || {})) site.paths.add(p);
+for (const p of products) for (const l of LANGS) site.paths.add(p.pathFor[l]);
+for (const c of flatVisible) for (const l of LANGS) site.paths.add(c.pathFor[l]);
+for (const l of LANGS) { site.paths.add(site.quote[l]); site.paths.add(site.products[l]); }
+for (const [from] of aliases) site.paths.add(from);
+// el carrito / tienda de WooCommerce se sustituyen por el presupuesto y el listado
+for (const l of LANGS) for (const old of ['/carrito/', '/en/carrito/', '/fr/carrito/', '/de/carrito/', '/tienda/', '/en/tienda/', '/shop/', '/en/shop/']) if (!site.paths.has(old)) aliases.set(old, old.includes('carrito') ? QSLUG[old.startsWith('/en') ? 'en' : old.startsWith('/fr') ? 'fr' : old.startsWith('/de') ? 'de' : 'es'] : site.products[old.startsWith('/en') ? 'en' : 'es']);
+
+// ───────────────────────────────────────────────────────────── [EMIT]
+let count = 0;
+const emit = (p, html) => { writeFile(DIST, p.replace(/^\//, '') + (p.endsWith('/') ? 'index.html' : ''), html); count++; };
+const mkctx = (lang, p, section) => { const c = new Ctx({ lang, path: p, site }); c.section = section; return c; };
+const LEGAL_MIN = 700;
+
+for (const lang of LANGS) {
+  const L = pages[lang] || {};
+  const alts = (pagePath) => { const a = L[pagePath]?.alternates || {}; return Object.fromEntries(Object.entries(a).filter(([, v]) => v && site.paths.has(v))); };
+
+  // home
+  const homePath = site.home[lang];
+  if (L[homePath]) {
+    const ctx = mkctx(lang, homePath, 'home');
+    const h = TPL.homeBody(ctx, L[homePath]);
+    emit(homePath, TPL.layout(ctx, { title: L[homePath].title || 'Torivac', description: L[homePath].meta_description, template: 'home', hero: h.hero, body: h.body, alts: alts(homePath), scripts: ['assets/js/contact.js'] }));
+  }
+
+  // listado de productos (la página "Productos" de la web original aporta el texto de introducción)
+  {
+    const pp = site.products[lang];
+    const ctx = mkctx(lang, pp, 'products');
+    const intro = (L[pp]?.sections || []).flatMap((s) => s.blocks);
+    const h1 = intro.find((b) => b.t === 'h');
+    const title = h1?.x || t('products', lang);
+    const hero = `<section class="page-hero bp"><div class="container"><h1>${esc(title)}</h1></div></section>`;
+    const alt = Object.fromEntries(LANGS.map((l) => [l, site.products[l]]));
+    emit(pp, TPL.layout(ctx, { title: L[pp]?.title || title, description: L[pp]?.meta_description, template: 'shop', hero, body: TPL.shopBody(ctx, { products, intro: [] }), alts: alt, scripts: ['assets/js/shop.js'] }));
+  }
+
+  // categorías
+  for (const c of flatVisible) {
+    const cp = c.pathFor[lang];
+    const ctx = mkctx(lang, cp, 'products');
+    const ids = new Set(prodIdsOf(c));
+    const name = c.name[lang] || c.name.es;
+    const hero = `<section class="page-hero bp"><div class="container"><h1>${esc(name)}</h1></div></section>`;
+    const alt = Object.fromEntries(LANGS.map((l) => [l, c.pathFor[l]]));
+    emit(cp, TPL.layout(ctx, { title: `${name} · Torivac`, description: c.seo?.es?.description, template: 'shop', hero, body: TPL.shopBody(ctx, { products: products.filter((p) => ids.has(p.id)), category: c, intro: (c.description[lang] || c.description.es || []) }), alts: alt, scripts: ['assets/js/shop.js'] }));
+  }
+
+  // fichas de producto
+  for (const p of products) {
+    const pp = p.pathFor[lang];
+    const ctx = mkctx(lang, pp, 'products');
+    const name = p.name[lang] || p.name.es;
+    const rel = p.related.map((id) => prodById.get(id)).filter(Boolean);
+    const alt = Object.fromEntries(LANGS.map((l) => [l, p.pathFor[l]]));
+    const seo = p.seo[lang] || p.seo.es || {};
+    emit(pp, TPL.layout(ctx, { title: (seo.title || `${name} · Torivac`).replace(/&amp;/g, '&'), description: seo.description, template: 'product', body: TPL.productBody(ctx, p, rel), alts: alt, scripts: ['assets/js/shop.js'], ogImage: p.images[0] && (ABS ? ABS + '/' + p.images[0].file : undefined) }));
+  }
+
+  // blog
+  const posts = Object.values(L).filter((x) => x.kind === 'post').sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  {
+    const bp = site.blog[lang];
+    const ctx = mkctx(lang, bp, 'blog');
+    const first = (L[bp]?.sections || []).flatMap((s) => s.blocks).find((b) => b.t === 'h');
+    const hero = `<section class="page-hero bp"><div class="container"><h1>${esc(first?.x || 'Blog')}</h1></div></section>`;
+    emit(bp, TPL.layout(ctx, { title: L[bp]?.title || 'Blog', description: L[bp]?.meta_description, template: 'blog', hero, body: TPL.blogIndexBody(ctx, posts), alts: alts(bp) }));
+  }
+  for (const post of posts) {
+    const ctx = mkctx(lang, post.path, 'blog');
+    const b = TPL.postBody(ctx, post);
+    emit(post.path, TPL.layout(ctx, { title: post.title, description: post.meta_description || post.excerpt, template: 'post', hero: b.hero, body: b.body, alts: alts(post.path), ogImage: post.featured && ABS ? ABS + '/' + post.featured.file : undefined }));
+  }
+
+  // contacto
+  {
+    const cp = site.contact[lang];
+    const ctx = mkctx(lang, cp, 'contact');
+    const pg = L[cp];
+    const bl = (pg?.sections || []).flatMap((s) => s.blocks);
+    const head = bl.filter((b) => b.t === 'h' || b.t === 'p').filter((b) => !(b.t === 'p' && /reCAPTCHA/i.test(b.h)));
+    const h1 = head.find((b) => b.t === 'h');
+    const title = h1?.x || t('contact_us', lang);
+    const hero = `<section class="page-hero bp"><div class="container"><h1>${esc(title)}</h1></div></section>`;
+    const body = `<section class="sec"><div class="container split" style="align-items:start"><div class="prose">${TPL.contactIntro(ctx, head.filter((b) => b !== h1))}</div>${TPL.contactForm(ctx, 'page')}</div></section>`;
+    emit(cp, TPL.layout(ctx, { title: pg?.title || title, description: pg?.meta_description, template: 'contact', hero, body, alts: alts(cp), scripts: ['assets/js/contact.js'] }));
+  }
+
+  // presupuesto
+  {
+    const qp = site.quote[lang];
+    const ctx = mkctx(lang, qp, 'quote');
+    const hero = `<section class="page-hero bp"><div class="container"><h1>${t('quote_yours', lang)}</h1></div></section>`;
+    const alt = Object.fromEntries(LANGS.map((l) => [l, site.quote[l]]));
+    emit(qp, TPL.layout(ctx, { title: `${t('quote', lang)} · Torivac`, description: '', template: 'quote', hero, body: TPL.quoteBody(ctx), alts: alt, scripts: ['assets/vendor/jspdf.umd.min.js', 'assets/vendor/jspdf.plugin.autotable.min.js', 'assets/vendor/xlsx.mini.min.js', 'assets/js/pdf.js', 'assets/js/quote-page.js'], noindex: true }));
+  }
+
+  // páginas genéricas (empresa, proyectos, legales…)
+  const special = new Set([homePath, site.products[lang], site.blog[lang], site.contact[lang]]);
+  for (const [pp, pg] of Object.entries(L)) {
+    if (pg.kind !== 'page' || special.has(pp)) continue;
+    const words = pg.sections.reduce((n, s) => n + s.blocks.length, 0);
+    if (words < 2) continue;                       // p. ej. política de cookies: es un shortcode dinámico de Complianz
+    const ctx = mkctx(lang, pp, 'page');
+    const g = TPL.genericPage(ctx, pg);
+    emit(pp, TPL.layout(ctx, { title: pg.title || g.title, description: pg.meta_description, template: 'page', hero: g.hero, body: g.body, alts: alts(pp) }));
+  }
+}
+// redirecciones de rutas fusionadas / sustituidas
+for (const [from, to] of aliases) {
+  if (!from.endsWith('/')) continue;
+  const depth = from.split('/').filter(Boolean).length;
+  const up = '../'.repeat(depth);
+  const target = up + to.replace(/^\//, '') + 'index.html';
+  emit(from, `<!doctype html><meta charset="utf-8"><title>Redirect</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${attr(target)}"><link rel="canonical" href="${attr(ABS + to)}"><a href="${attr(target)}">→</a>`);
+}
+// raíz de /en, /fr, /de ya emitida como home; portada del demo
+console.log(`HTML emitidos: ${count}`);
+
+// ───────────────────────────────────────────────────────────── [DATA] datos para el navegador (compatibles con file://)
+const itemsJs = {};
+for (const p of products) {
+  const vs = p.variants.length ? p.variants : [{ ref: 'P' + p.id, specs: {}, default: true }];
+  for (const v of vs) {
+    const specLabel = Object.entries(v.specs || {}).slice(0, 4).map(([k, x]) => `${k} ${x.raw}`).join(' · ');
+    const im = (v.image || p.images[0]) || {};
+    itemsJs[v.ref] = { pid: p.id, n: Object.fromEntries(LANGS.map((l) => [l, p.name[l] || p.name.es])), v: specLabel, d: !!v.default, p: p.pathFor, img: im.thumb || im.file || null, th: im.file ? (thumbs[im.file] ? im.file : null) : null };
+  }
+}
+const i18n = Object.fromEntries(LANGS.map((l) => [l, Object.fromEntries(Object.keys(T).map((k) => [k, T[k][l] ?? T[k].es]))]));
+const thumbsUsed = Object.fromEntries(Object.entries(thumbs).filter(([k]) => k !== '__logo' && Object.values(itemsJs).some((i) => i.th === k)));
+const catalogJs = `/* [DATA] generado por site/build.mjs — no editar */\nwindow.TV=window.TV||{};\nTV.meta=${JSON.stringify({ currency: meta.currency || 'EUR', demo: site.demo, recipients: meta.order_recipients?.to || [], contact: meta.contact })};\nTV.i18n=${JSON.stringify(i18n)};\nTV.items=${JSON.stringify(itemsJs)};\nTV.thumbs=${JSON.stringify(thumbsUsed)};\nTV.logo=${JSON.stringify(thumbs.__logo || null)};\n`;
+writeFile(DIST, 'assets/data/catalog.js', catalogJs);
+writeFile(DIST, 'assets/data/prices.js', `/* [DATA] precios — se regenera con scripts/build_prices.py (Sesión 6) */\nwindow.TV=window.TV||{};\nTV.prices=${JSON.stringify(prices)};\n`);
+writeFile(DIST, 'assets/data/proposals.js', `window.TV=window.TV||{};TV.proposals=${JSON.stringify(proposals)};\n`);
+
+// ───────────────────────────────────────────────────────────── [ASSETS] estáticos
+const SRC = path.join(ROOT, 'site', 'assets');
+const copyDir = (a, b) => { fs.mkdirSync(b, { recursive: true }); for (const e of fs.readdirSync(a, { withFileTypes: true })) { const s = path.join(a, e.name), d = path.join(b, e.name); e.isDirectory() ? copyDir(s, d) : fs.copyFileSync(s, d); } };
+copyDir(SRC, path.join(DIST, 'assets'));
+fs.mkdirSync(path.join(DIST, 'assets', 'pdf'), { recursive: true });
+for (const f of pdfLocal.keys()) fs.copyFileSync(path.join(pdfDir, f), path.join(DIST, 'assets', 'pdf', f));
+// portada del demo: abre el español; selector con los 4 idiomas en demo.html
+fs.writeFileSync(path.join(DIST, 'README-DEMO.txt'), `Torivac · demo (no es la web oficial)\nAbre index.html (español). Idiomas: en/index.html, fr/index.html, de/index.html.\nPrecios y envío de pedido: SIMULADOS.\n`);
+if (ABS) {
+  const urls = [...site.paths].filter((p) => p.endsWith('/'));
+  fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map((u) => `<url><loc>${ABS}${u}</loc></url>`).join('')}</urlset>`);
+  fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${ABS}/sitemap.xml\n`);
+}
+console.log('dist listo:', DIST);
