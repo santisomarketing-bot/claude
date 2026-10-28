@@ -61,7 +61,7 @@ class Page(HTMLParser):
         elif tag == "link":
             self.links.append((a.get("rel", ""), a.get("hreflang"), a.get("href")))
         elif re.fullmatch(r"h[1-6]", tag):
-            self._h = [int(tag[1]), ""]
+            self._h = [int(a.get("aria-level") or tag[1]), ""]       # aria-level: el nivel «efectivo» para lectores de pantalla (ver headingOrder en templates.mjs)
         elif tag == "img":
             self.imgs.append((a.get("src"), a.get("alt")))
         elif tag == "a" and a.get("href"):

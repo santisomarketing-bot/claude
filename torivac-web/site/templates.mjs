@@ -10,6 +10,20 @@ const NAMES = { es: 'Español', en: 'English', fr: 'Français', de: 'Deutsch' };
 const pick = (obj, lang) => (obj && (obj[lang] ?? obj.es)) ?? '';
 
 
+
+// ───────────────────────────────────────────────────────────── [A11Y] orden de encabezados
+/** El contenido original salta de nivel (H1→H4). Se corrige en la ACCESIBILIDAD (aria-level) sin tocar la etiqueta, así el diseño no cambia:
+ *  ningún encabezado sube más de un nivel respecto al anterior. */
+export function headingOrder(html) {
+  let prev = 0;
+  return String(html).replace(/<h([1-6])((?:\s[^>]*)?)>/g, (m, lv, attrs = '') => {
+    const level = +lv; const eff = prev === 0 ? level : Math.min(level, prev + 1);
+    prev = eff;
+    if (eff === level || /\saria-level=/.test(attrs)) return m;
+    return `<h${lv}${attrs} aria-level="${eff}">`;
+  });
+}
+
 // ───────────────────────────────────────────────────────────── [META] descripción válida (la web original trae «%» o nada en varias páginas)
 const META_FALLBACK = { es: 'Torivac, fabricante europeo de transformadores toroidales, variadores y estabilizadores de tensión, resistencias y más. Consulta el catálogo y pide presupuesto.', en: 'Torivac, European manufacturer of toroidal transformers, voltage variators and stabilizers, resistors and more. Browse the catalogue and request a quote.', fr: 'Torivac, fabricant européen de transformateurs toroïdaux, régulateurs et stabilisateurs de tension, résistances et plus. Consultez le catalogue et demandez un devis.', de: 'Torivac, europäischer Hersteller von Ringkerntransformatoren, Spannungsreglern und -stabilisatoren, Widerständen und mehr. Katalog ansehen und Angebot anfordern.' };
 /** Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, una frase genérica de marca. */
@@ -63,8 +77,8 @@ ${noindex ? '' : ldScript(pageGraph(ctx, { template, title, description, crumbs,
 </head>
 <body class="tv tv-${template}" data-path="${attr(ctx.path)}">
 <a class="skip" href="#content">${t('skip', lang)}</a>
-${site.demo ? `<div class="demo-ribbon no-print" role="note">${t('demo_banner', lang)} · ${t('demo_prices', lang)}</div>` : ''}
-<div class="lang-banner no-print" id="lang-banner" hidden><div class="container"><span data-lang-msg></span><a class="btn sm" href="#" data-lang-go></a><button class="btn sm ghost" type="button" data-lang-keep>${t('lang_dismiss', lang)}</button></div></div>
+${site.demo ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('demo_banner', lang))}">${t('demo_banner', lang)} · ${t('demo_prices', lang)}</div>` : ''}
+<div class="lang-banner no-print" id="lang-banner" role="region" aria-label="${attr(t('language', lang))}" hidden><div class="container"><span data-lang-msg></span><a class="btn sm" href="#" data-lang-go></a><button class="btn sm ghost" type="button" data-lang-keep>${t('lang_dismiss', lang)}</button></div></div>
 <header class="site-header no-print" id="site-header">
   <div class="container bar">
     <a class="brand" href="${attr(ctx.href(site.home[lang]))}" aria-label="Torivac"><img src="${ctx.asset(site.logo)}" alt="Torivac" width="54" height="54"></a>
@@ -73,9 +87,8 @@ ${site.demo ? `<div class="demo-ribbon no-print" role="note">${t('demo_banner', 
     <div class="lang" role="group" aria-label="${attr(t('language', lang))}">${langLinks}</div>
   </div>
 </header>
-${hero || ''}
 <main id="content" tabindex="-1">
-${body}
+${headingOrder(`${hero || ''}${body}`)}
 </main>
 <footer class="site-footer on-dark">
   <div class="container">
@@ -329,7 +342,7 @@ export function productBody(ctx, p, related) {
     <td class="add-cell"><button class="btn sm" type="button" data-add-row="${attr(v.ref)}">${t('add_to_quote', lang)}</button></td></tr>`).join('');
   const models = `<section id="modelos" aria-labelledby="h-models"><div class="models-bar"><h2 id="h-models" style="margin:0">${t('models', lang)}</h2><span><span class="price-demo" data-demo-flag hidden>DEMO</span></span></div>
     <p class="muted">${t('models_hint', lang)}</p>
-    <div class="tbl-wrap models" tabindex="0" role="region" aria-label="${attr(t('models', lang))}"><table class="spec"><thead><tr><th>${t('ref', lang)}</th>${cols.length ? cols.map((c) => `<th>${esc(c)}</th>`).join('') : '<th></th>'}<th class="price-cell">${t('unit_price', lang)}</th><th>${t('qty', lang)}</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="tbl-wrap models" tabindex="0"><table class="spec"><thead><tr><th>${t('ref', lang)}</th>${cols.length ? cols.map((c) => `<th>${esc(c)}</th>`).join('') : `<th><span class="vh">${t('item', lang)}</span></th>`}<th class="price-cell">${t('unit_price', lang)}</th><th>${t('qty', lang)}</th><th><span class="vh">${t('add_to_quote', lang)}</span></th></tr></thead><tbody>${rows}</tbody></table></div>
     <p><button class="btn" type="button" data-add-selected>${t('add_selected', lang)}</button> <a class="btn ghost" href="${attr(ctx.href(site.quote[lang]))}">${t('quote', lang)} →</a></p></section>`;
   const notice = useEs && lang !== 'es' ? `<p class="notice">${t('translation_missing', lang)}</p>` : '';
   const rel = related.length ? `<section class="sec tight" style="padding-inline:0"><h2>${t('related', lang)}</h2><div class="pgrid">${related.map((r) => productCard(ctx, r)).join('')}</div></section>` : '';
