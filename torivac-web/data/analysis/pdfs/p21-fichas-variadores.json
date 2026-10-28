@@ -85,7 +85,7 @@
     {
      "page": 1,
      "item": "Rango 160-1250VA",
-     "why": "Es el único dato técnico escrito; no hay lista de potencias individuales ni referencias de modelo. La 'referencia' del modelo es el propio título; no inventar potencias intermedias (160, 250, 500, 1000, etc.)."
+     "why": "Es el único dato técnico escrito; no hay lista de potencias individuales ni referencias de modelo. La 'referencia' del modelo es el propio título; no inventar potencias intermedias. La serie 160, 220, 350, 500, 750, 1000 y 1250 VA figura en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (p. 1-2); esta ficha no la da."
     },
     {
      "page": 1,
@@ -99,6 +99,11 @@
     },
     {
      "page": 1,
+     "item": "Cotas del sobremesa frente a Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (otro PDF del lote)",
+     "why": "Esta ficha acota 353,00 x 153,00 x 150,00 (sin unidad) para el sobremesa 160-1250VA, mientras que en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (p. 1-2) las tablas del sobremesa dan A = 140 o 240, B = 200 y C = 200 (sin unidad) y pesos de 1.5 a 9 Kg. No se concilian: no publicar ninguna de las dos hasta confirmar con Torivac cuál es la presentación vigente. Además, el dibujo frontal de esta ficha no muestra recortes de pantalla (coincide con la versión sin pantalla de la primera fotografía), así que no consta que 353 x 153 x 150 valga también para las versiones con una y con dos pantallas."
+    },
+    {
+     "page": 1,
      "item": "Versiones con pantalla V y V+A",
      "why": "Solo se ven en las fotografías; sin texto no se sabe si son opciones, modelos distintos ni sus rangos de medida (las pantallas muestran 140, 264 y 0.00 como lecturas de demostración, no son datos técnicos). No publicar como característica hasta confirmar con fabricante."
     },
@@ -107,7 +112,31 @@
      "item": "Elementos del frontal (dial graduado, interruptor basculante con piloto, dos hembrillas negras, una hembrilla verde-amarilla, elemento redondo negro)",
      "why": "Se ven en las fotografías pero el PDF no los nombra ni da su función; la escala del dial no es legible con fiabilidad a la resolución de las fotos (imágenes de 600x400 px). No transcribir valores de escala."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "uncertain 'Rango 160-1250VA'.why",
+     "was": "Es el único dato técnico escrito; no hay lista de potencias individuales ni referencias de modelo. La 'referencia' del modelo es el propio título; no inventar potencias intermedias (160, 250, 500, 1000, etc.).",
+     "now": "Es el único dato técnico escrito; no hay lista de potencias individuales ni referencias de modelo. La 'referencia' del modelo es el propio título; no inventar potencias intermedias. La serie 160, 220, 350, 500, 750, 1000 y 1250 VA figura en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (p. 1-2); esta ficha no la da.",
+     "why": "El ejemplo de potencias que no había que inventar ('160, 250, 500, 1000') incluía cifras que no están en esta ficha y una (250) que no pertenece a la serie real del sobremesa (160, 220, 350, 500, 750, 1000, 1250 VA, comprobada en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf); se retira para que no pueda leerse como dato. La serie se cita solo como referencia a otro PDF dentro de 'uncertain', no se copia a specs."
+    },
+    {
+     "page": 1,
+     "item": "uncertain (nuevo): cotas 353,00 x 153,00 x 150,00 frente a otro PDF",
+     "was": null,
+     "now": "Esta ficha acota 353,00 x 153,00 x 150,00 (sin unidad) para el sobremesa 160-1250VA, mientras que en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (p. 1-2) las tablas del sobremesa dan A = 140 o 240, B = 200 y C = 200 (sin unidad) y pesos de 1.5 a 9 Kg. No se concilian: no publicar ninguna de las dos hasta confirmar con Torivac cuál es la presentación vigente. Además, el dibujo frontal de esta ficha no muestra recortes de pantalla (coincide con la versión sin pantalla de la primera fotografía), así que no consta que 353 x 153 x 150 valga también para las versiones con una y con dos pantallas.",
+     "why": "Conflicto entre PDFs no recogido por el extractor: el mismo sobremesa 160-1250VA se acota 353,00 x 153,00 x 150,00 en esta ficha y A = 140/240, B = 200, C = 200 en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (texto releído). Un dato que depende de qué PDF se elija no puede publicarse sin confirmar. Se comprobó en el dibujo (200 ppp y raster nativo de 924x577) que el alzado no tiene recortes de pantalla."
+    }
+   ],
+   "verification": {
+    "method": "Página renderizada de nuevo (pdftoppm 110 y 200 ppp); las 4 imágenes embebidas (3 fotografías de 600x400 y 1 raster de 924x577 con los 3 dibujos) extraídas a resolución nativa con pdfimages y ampliadas; capa de texto contrastada.",
+    "cotas": "153,00, 353,00 y 150,00 releídas en el dibujo: 3/3 coinciden. Asignación vista-cota comprobada con las proporciones del dibujo (frontal 353x153, superior 353x150, lateral 150x153).",
+    "texto": "Título 'Variador tensión sobremesa 160-1250VA' y número de página 10 coinciden con la capa de texto y con la imagen.",
+    "fotografias": "Pantallas 'V' (una pantalla) y 'V' + 'A' (dos pantallas) confirmadas ampliando las fotografías nativas; lecturas 140, 264 y 0.00 confirmadas (demostración, no dato técnico). La escala del dial se ve borrosa: no se transcribe.",
+    "voltage_mentions": "Vacío correcto: ni la capa de texto ni los dibujos de la página mencionan tensiones."
+   },
+   "verified": true
   },
   {
    "file": "Variador-tension-trifasico-regulacion-manual.pdf",
@@ -156,7 +185,7 @@
        "page": 1,
        "specs": {
         "VA": "660",
-        "In 400 (A)": "0.9x3",
+        "In 400 (A)": null,
         "In 430 (A)": "0.88x3",
         "A": "90",
         "B": "255",
@@ -168,7 +197,7 @@
         "Kg": "5.6"
        },
        "raw_row": "660 0.9x3 0.88x3 90 255 50 6 75 M-5 100 5.6",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "1000 VA",
@@ -549,25 +578,25 @@
      "raw": "Entrada/Input 400V Salida/Output 400/430V",
      "page": 1,
      "context": "Cabecera de la tabla 480 VA – 12000 VA",
-     "normalized_hint": "entrada 400 V AC trifásico; salida 400/430 V AC"
+     "normalized_hint": "entrada 400 V; salida 400/430 V"
     },
     {
      "raw": "Entrada/Input 400 V Salida/Output 400/430V",
      "page": 1,
      "context": "Cabecera de la tabla 15000 VA – 33000 VA",
-     "normalized_hint": "entrada 400 V AC trifásico; salida 400/430 V AC"
+     "normalized_hint": "entrada 400 V; salida 400/430 V"
     },
     {
      "raw": "In 400 (A)",
      "page": 1,
-     "context": "Columna de intensidad nominal In asociada a 400",
-     "normalized_hint": "intensidad nominal (A) con tensión 400 V (inferido de la cabecera)"
+     "context": "Cabecera de columna de intensidad nominal (A), repetida en las dos tablas",
+     "normalized_hint": "columna rotulada 'In 400 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere; valores con sufijo 'x3'"
     },
     {
      "raw": "In 430 (A)",
      "page": 1,
-     "context": "Columna de intensidad nominal In asociada a 430",
-     "normalized_hint": "intensidad nominal (A) con tensión 430 V (inferido de la cabecera)"
+     "context": "Cabecera de columna de intensidad nominal (A), repetida en las dos tablas",
+     "normalized_hint": "columna rotulada 'In 430 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere; valores con sufijo 'x3'"
     }
    ],
    "other_facts": [
@@ -597,7 +626,7 @@
     {
      "page": 1,
      "item": "Filas 1000* y 1500* (con asterisco)",
-     "why": "El asterisco no tiene leyenda ni nota en el PDF. Las filas repiten VA, In 400 e In 430 de 1000 y 1500 pero con otras cotas (A, B, C/E, G) y otro peso, sin explicar a qué corresponde la variante. Se conservan literales; no publicar la diferencia hasta confirmarla (¿otra construcción, otro núcleo?)."
+     "why": "El asterisco no tiene leyenda ni nota en el PDF (comprobado en la capa de texto y en el renderizado a 300 ppp: bajo las tablas solo está la nota de In). Las filas repiten VA, In 400 e In 430 de 1000 y 1500 pero con otras cotas (A, B, C, E, F, G) y otro peso; sus cotas (A 90, B 255, C 50, D 6, E 75, F M-5, G 92) son las mismas que las de la fila 480 VA y solo cambia el peso (8 y 10.4 Kg frente a 4.4 Kg). Se conservan literales; no publicar la diferencia hasta confirmarla (¿otra construcción, otro núcleo?)."
     },
     {
      "page": 1,
@@ -626,8 +655,13 @@
     },
     {
      "page": 1,
+     "item": "Fila 660 VA, In 400 (A): el PDF imprime '0.9x3'",
+     "why": "specs lo deja en null (el literal se conserva en raw_row). Es incoherente con el resto de la tabla: In 430 de esta fila (0.88x3) sigue VA/750 como todas las filas salvo 1000 y 1000*, pero In 400/In 430 = 1,02 frente a 1,08-1,09 en el resto de filas, y VA/(1,732·400 V) daría 0.95. La fila 220 VA de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (660 VA = 3x220 VA) imprime In 230 = 0.95 e In 250 = 0.88. Propuesta (cálculo del verificador, NO es dato del PDF; no publicar sin confirmar con Torivac): 0.95x3. La misma cifra (0.9x3) está impresa en todas las fichas y catálogos del lote que contienen una fila 660 VA trifásica (catálogo Torivac 2024 en ES, EN, FR y DE, las fichas Caracteristicas_Tecnicas_Variador_Trifasico_*, las de caja industrial trifásico y esta ficha); ninguno la resuelve."
+    },
+    {
+     "page": 1,
      "item": "Contraste numérico In vs VA/(raiz(3)·tensión) (cálculo del extractor, NO es dato del PDF)",
-     "why": "Casi todas las filas cuadran con VA/(1,732·400 V) e VA/(1,732·430 V) dentro de ±1 %. Excepciones: 660 VA (In 400 = 0.9x3; el cálculo daría 0.95) y 1000/1000* VA (In 400 = 1.52x3 e In 430 = 1.4x3; el cálculo daría 1.44 y 1.34). Se conservan los valores del PDF; proponer revisión con el fabricante antes de publicar esas intensidades."
+     "why": "Con VA/(1,732·400 V) y VA/(1,732·430 V) todas las filas cuadran dentro de ±1,1 % (la mayor desviación es 480 VA, +1,04 % en In 400, por redondear 0.693 a 0.7), salvo 660 VA (In 400; ver su entrada propia) y 1000/1000* VA (In 400 = 1.52x3 e In 430 = 1.4x3; el cálculo daría 1.44 y 1.34, es decir +5,3 % y +4,3 %). La fila 1000 VA es coherente consigo misma (In 400/In 430 = 1,09, como el resto) y repite las cifras de la fila 350 VA de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (1.52 y 1.4; 3x350 VA = 1050 VA): posible potencia real algo mayor que la nominal; el PDF no lo aclara. Se conservan los valores del PDF; proponer revisión con el fabricante antes de publicar estas intensidades."
     },
     {
      "page": 1,
@@ -637,9 +671,94 @@
     {
      "page": 1,
      "item": "Dimensiones frente a la versión motorizada",
-     "why": "Esta ficha incluye las columnas C y D (en el dibujo acotan el extremo superior del eje de mando) que la ficha motorizada no tiene; las demás columnas (VA, In 400, In 430) coinciden fila a fila con la motorizada. No hay texto que explique la diferencia."
+     "why": "Esta ficha incluye las columnas C y D (en el dibujo acotan el extremo superior del eje de mando) que la ficha motorizada no tiene. Fila a fila coinciden con la motorizada VA, In 400, In 430, A, E, F, G y H; solo difieren B (cota vertical total del alzado: la motorizada es de 60 a 115 mayor en las 21 filas) y Kg (la motorizada pesa más en las 21 filas). No hay texto que explique la diferencia."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "voltage_mentions[0].normalized_hint (Cabecera de la tabla 480 VA – 12000 VA)",
+     "was": "entrada 400 V AC trifásico; salida 400/430 V AC",
+     "now": "entrada 400 V; salida 400/430 V",
+     "why": "La cabecera del PDF solo escribe 'Entrada/Input 400V Salida/Output 400/430V': no pone 'AC' ni 'trifásico'. 'AC' era una inferencia del extractor (corriente alterna) que no está escrita en la ficha; el carácter trifásico consta en el título del producto, no en la cabecera de la tabla. La cifra no cambia (400 V; 400/430 V)."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[1].normalized_hint (Cabecera de la tabla 15000 VA – 33000 VA)",
+     "was": "entrada 400 V AC trifásico; salida 400/430 V AC",
+     "now": "entrada 400 V; salida 400/430 V",
+     "why": "La cabecera del PDF solo escribe 'Entrada/Input 400V Salida/Output 400/430V' (en la tabla de 15000-33000 VA, '400 V' con espacio): no pone 'AC' ni 'trifásico'. 'AC' era una inferencia del extractor (corriente alterna) que no está escrita en la ficha; el carácter trifásico consta en el título del producto, no en la cabecera de la tabla. La cifra no cambia (400 V; 400/430 V)."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[2] ('In 400 (A)'): normalized_hint y context",
+     "was": {
+      "normalized_hint": "intensidad nominal (A) con tensión 400 V (inferido de la cabecera)",
+      "context": "Columna de intensidad nominal In asociada a 400"
+     },
+     "now": {
+      "normalized_hint": "columna rotulada 'In 400 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere; valores con sufijo 'x3'",
+      "context": "Cabecera de columna de intensidad nominal (A), repetida en las dos tablas"
+     },
+     "why": "El PDF solo rotula la columna 'In 400 (A)' y la nota al pie dice 'In hace referencia a la intensidad nominal del variador'; no escribe a qué tensión se mide cada intensidad. La lectura 'con tensión 400/430 V' era una inferencia (coherente con VA/(1,732·V), pero no escrita en la ficha). El contexto decía que la columna aparecía una sola vez: está en las dos tablas (480-12000 VA y 15000-33000 VA)."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[3] ('In 430 (A)'): normalized_hint y context",
+     "was": {
+      "normalized_hint": "intensidad nominal (A) con tensión 430 V (inferido de la cabecera)",
+      "context": "Columna de intensidad nominal In asociada a 430"
+     },
+     "now": {
+      "normalized_hint": "columna rotulada 'In 430 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere; valores con sufijo 'x3'",
+      "context": "Cabecera de columna de intensidad nominal (A), repetida en las dos tablas"
+     },
+     "why": "El PDF solo rotula la columna 'In 430 (A)' y la nota al pie dice 'In hace referencia a la intensidad nominal del variador'; no escribe a qué tensión se mide cada intensidad. La lectura 'con tensión 400/430 V' era una inferencia (coherente con VA/(1,732·V), pero no escrita en la ficha). El contexto decía que la columna aparecía una sola vez: está en las dos tablas (480-12000 VA y 15000-33000 VA)."
+    },
+    {
+     "page": 1,
+     "item": "families[0].models['660 VA'].specs['In 400 (A)'] y .confidence",
+     "was": "In 400 (A) = '0.9x3'; confidence = 'alta'",
+     "now": "In 400 (A) = null; confidence = 'media'",
+     "why": "Dato dudoso, no se publica (regla 1): la propia lista 'uncertain' pedía revisar con el fabricante antes de publicar esta intensidad, pero specs la dejaba como 'alta'. La transcripción '0.9x3' es correcta (releída a 300 ppp y en la capa de texto); lo dudoso es la cifra impresa: en esta tabla In 430 de la fila (0.88x3) coincide con VA/750 como en todas las filas salvo 1000 y 1000*, pero In 400/In 430 vale 1,02 en 660 VA frente a 1,08-1,09 en todas las demás, y la fila 220 VA de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (660 VA = 3x220 VA) imprime In 230 = 0.95. El literal se conserva en raw_row y en 'uncertain'; no se sustituye por ningún valor. Mismo criterio que el aplicado a esta fila en Caracteristicas_Tecnicas_Variador_Trifasico_* y en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf."
+    },
+    {
+     "page": 1,
+     "item": "uncertain (nuevo): 660 VA, In 400: el PDF imprime '0.9x3'",
+     "was": null,
+     "now": "specs lo deja en null (el literal se conserva en raw_row). Es incoherente con el resto de la tabla: In 430 de esta fila (0.88x3) sigue VA/750 como todas las filas salvo 1000 y 1000*, pero In 400/In 430 = 1,02 frente a 1,08-1,09 en el resto de filas, y VA/(1,732·400 V) daría 0.95. La fila 220 VA de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (660 VA = 3x220 VA) imprime In 230 = 0.95 e In 250 = 0.88. Propuesta (cálculo del verificador, NO es dato del PDF; no publicar sin confirmar con Torivac): 0.95x3. La misma cifra (0.9x3) está impresa en todas las fichas y catálogos del lote que contienen una fila 660 VA trifásica (catálogo Torivac 2024 en ES, EN, FR y DE, las fichas Caracteristicas_Tecnicas_Variador_Trifasico_*, las de caja industrial trifásico y esta ficha); ninguno la resuelve.",
+     "why": "Dato dudoso o incoherencia de la fuente detectada al contrastar la tabla (aritmética VA/V, razón In 400/In 430 y comparación con otras fichas); el extractor la mencionaba dentro de un punto genérico pero la dejaba publicada en specs. Ahora tiene entrada propia para el panel de propuestas."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Contraste numérico In vs VA/(raiz(3)·tensión) (cálculo del extractor, NO es dato del PDF)'.why",
+     "was": "Casi todas las filas cuadran con VA/(1,732·400 V) e VA/(1,732·430 V) dentro de ±1 %. Excepciones: 660 VA (In 400 = 0.9x3; el cálculo daría 0.95) y 1000/1000* VA (In 400 = 1.52x3 e In 430 = 1.4x3; el cálculo daría 1.44 y 1.34). Se conservan los valores del PDF; proponer revisión con el fabricante antes de publicar esas intensidades.",
+     "now": "Con VA/(1,732·400 V) y VA/(1,732·430 V) todas las filas cuadran dentro de ±1,1 % (la mayor desviación es 480 VA, +1,04 % en In 400, por redondear 0.693 a 0.7), salvo 660 VA (In 400; ver su entrada propia) y 1000/1000* VA (In 400 = 1.52x3 e In 430 = 1.4x3; el cálculo daría 1.44 y 1.34, es decir +5,3 % y +4,3 %). La fila 1000 VA es coherente consigo misma (In 400/In 430 = 1,09, como el resto) y repite las cifras de la fila 350 VA de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (1.52 y 1.4; 3x350 VA = 1050 VA): posible potencia real algo mayor que la nominal; el PDF no lo aclara. Se conservan los valores del PDF; proponer revisión con el fabricante antes de publicar estas intensidades.",
+     "why": "Recalculado fila a fila (21 filas): la cota '±1 %' era imprecisa (480 VA da +1,04 % por redondeo) y mezclaba en un solo punto la fila 660 VA (error aislado de una celda, ahora con entrada propia y en null) con la fila 1000/1000* (par de cifras coherente entre sí, +5 % sobre el cálculo, que se conserva). Se añade la comparación con la fila 350 VA de otro PDF del lote como posible explicación, sin darla por cierta."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Filas 1000* y 1500* (con asterisco)'.why",
+     "was": "El asterisco no tiene leyenda ni nota en el PDF. Las filas repiten VA, In 400 e In 430 de 1000 y 1500 pero con otras cotas (A, B, C/E, G) y otro peso, sin explicar a qué corresponde la variante. Se conservan literales; no publicar la diferencia hasta confirmarla (¿otra construcción, otro núcleo?).",
+     "now": "El asterisco no tiene leyenda ni nota en el PDF (comprobado en la capa de texto y en el renderizado a 300 ppp: bajo las tablas solo está la nota de In). Las filas repiten VA, In 400 e In 430 de 1000 y 1500 pero con otras cotas (A, B, C, E, F, G) y otro peso; sus cotas (A 90, B 255, C 50, D 6, E 75, F M-5, G 92) son las mismas que las de la fila 480 VA y solo cambia el peso (8 y 10.4 Kg frente a 4.4 Kg). Se conservan literales; no publicar la diferencia hasta confirmarla (¿otra construcción, otro núcleo?).",
+     "why": "La lista de cotas que cambian era ambigua ('C/E') e incompleta: respecto a 1000 y 1500, las filas con asterisco cambian A, B, C, E, F y G (D no cambia). Se añade el hecho comprobado en la tabla de que las cotas coinciden con las de la fila 480 VA (solo el peso difiere), útil para no tratarlas como un modelo aparte."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Dimensiones frente a la versión motorizada'.why",
+     "was": "Esta ficha incluye las columnas C y D (en el dibujo acotan el extremo superior del eje de mando) que la ficha motorizada no tiene; las demás columnas (VA, In 400, In 430) coinciden fila a fila con la motorizada. No hay texto que explique la diferencia.",
+     "now": "Esta ficha incluye las columnas C y D (en el dibujo acotan el extremo superior del eje de mando) que la ficha motorizada no tiene. Fila a fila coinciden con la motorizada VA, In 400, In 430, A, E, F, G y H; solo difieren B (cota vertical total del alzado: la motorizada es de 60 a 115 mayor en las 21 filas) y Kg (la motorizada pesa más en las 21 filas). No hay texto que explique la diferencia.",
+     "why": "'las demás columnas (VA, In 400, In 430)' podía leerse como que todas las columnas salvo C y D coinciden, y no es así: B y Kg difieren en todas las filas. Comparadas las 21 filas de ambas fichas por script: coinciden VA, In 400, In 430, A, E, F, G y H; B de la motorizada es 60-115 mayor y Kg es mayor en todas."
+    }
+   ],
+   "verification": {
+    "method": "Página renderizada de nuevo (pdftoppm 110 y 300 ppp); cada tabla leída a 300 ppp celda a celda y comparada con el JSON y con la capa de texto (pdftotext -layout) mediante script independiente.",
+    "tabla 1 (480-12000 VA)": "14 filas x 11 columnas = 154 celdas: 0 discrepancias imagen/JSON y 0 texto/JSON.",
+    "tabla 2 (15000-33000 VA)": "7 filas x 12 columnas = 84 celdas: 0 discrepancias imagen/JSON y 0 texto/JSON. 21 modelos en total, ninguno omitido ni duplicado.",
+    "voltage_mentions": "Cabeceras de ambas tablas (400V / 400 V; 400/430V) y columnas In 400 (A) / In 430 (A): completas. No hay otras tensiones, ni frecuencia, ni tolerancias, ni leyenda del asterisco en la página.",
+    "dibujos": "Tres conjuntos de dibujos verificados: el primero con letras A-G, '15000 VA' y '18000 VA - 30000 VA' con letras A-H."
+   },
+   "verified": true
   },
   {
    "file": "Variador-tension-trifasico-regulacion-motorizada-1.pdf",
@@ -686,7 +805,7 @@
        "page": 1,
        "specs": {
         "VA": "660",
-        "In 400 (A)": "0.9x3",
+        "In 400 (A)": null,
         "In 430 (A)": "0.88x3",
         "A": "90",
         "B": "365",
@@ -696,7 +815,7 @@
         "Kg": "6.1"
        },
        "raw_row": "660 0.9x3 0.88x3 90 365 75 M-5 100 6.1",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "1000 VA",
@@ -1039,25 +1158,25 @@
      "raw": "Entrada/Input 400V Salida/Output 400/430V",
      "page": 1,
      "context": "Cabecera de la tabla 480 VA – 12000 VA",
-     "normalized_hint": "entrada 400 V AC trifásico; salida 400/430 V AC"
+     "normalized_hint": "entrada 400 V; salida 400/430 V"
     },
     {
      "raw": "Entrada/Input 400V Salida/Output 400/430V",
      "page": 1,
      "context": "Cabecera de la tabla 15000 VA – 33000 VA",
-     "normalized_hint": "entrada 400 V AC trifásico; salida 400/430 V AC"
+     "normalized_hint": "entrada 400 V; salida 400/430 V"
     },
     {
      "raw": "In 400 (A)",
      "page": 1,
-     "context": "Columna de intensidad nominal In asociada a 400",
-     "normalized_hint": "intensidad nominal (A) con tensión 400 V (inferido de la cabecera)"
+     "context": "Cabecera de columna de intensidad nominal (A), repetida en las dos tablas",
+     "normalized_hint": "columna rotulada 'In 400 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere; valores con sufijo 'x3'"
     },
     {
      "raw": "In 430 (A)",
      "page": 1,
-     "context": "Columna de intensidad nominal In asociada a 430",
-     "normalized_hint": "intensidad nominal (A) con tensión 430 V (inferido de la cabecera)"
+     "context": "Cabecera de columna de intensidad nominal (A), repetida en las dos tablas",
+     "normalized_hint": "columna rotulada 'In 430 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere; valores con sufijo 'x3'"
     }
    ],
    "other_facts": [
@@ -1091,12 +1210,12 @@
     {
      "page": 1,
      "item": "Filas 1000* y 1500* (con asterisco)",
-     "why": "El asterisco no tiene leyenda ni nota en el PDF. Las filas repiten VA, In 400 e In 430 de 1000 y 1500 pero con otras cotas (A, B, C/E, G) y otro peso, sin explicar a qué corresponde la variante. Se conservan literales; no publicar la diferencia hasta confirmarla (¿otra construcción, otro núcleo?)."
+     "why": "El asterisco no tiene leyenda ni nota en el PDF (comprobado en la capa de texto y en el renderizado a 300 ppp: bajo las tablas solo está la nota de In). Las filas repiten VA, In 400 e In 430 de 1000 y 1500 pero con otras cotas (A, B, E, F, G) y otro peso; sus cotas (A 90, B 365, E 75, F M-5, G 92) son las mismas que las de la fila 480 VA y solo cambia el peso (8.5 y 11 Kg frente a 4.9 Kg). Se conservan literales; no publicar la diferencia hasta confirmarla (¿otra construcción, otro núcleo?)."
     },
     {
      "page": 1,
-     "item": "Unidad de las cotas A-H",
-     "why": "El PDF no escribe unidad (ni mm ni cm) en las columnas A, B, C, D, E, G, H; solo 'Kg' para el peso. Se conservan los números sin unidad; confirmar (probablemente mm) antes de publicar. Las letras se definen únicamente en los dibujos."
+     "item": "Unidad de las cotas A, B, E, G, H",
+     "why": "El PDF no escribe unidad (ni mm ni cm) en las columnas A, B, E, G (tabla 480 VA – 12000 VA) y A, B, E, G, H (tabla 15000 VA – 33000 VA); solo 'Kg' para el peso. Se conservan los números sin unidad; confirmar (probablemente mm) antes de publicar. Las letras se definen únicamente en los dibujos."
     },
     {
      "page": 1,
@@ -1120,8 +1239,13 @@
     },
     {
      "page": 1,
+     "item": "Fila 660 VA, In 400 (A): el PDF imprime '0.9x3'",
+     "why": "specs lo deja en null (el literal se conserva en raw_row). Es incoherente con el resto de la tabla: In 430 de esta fila (0.88x3) sigue VA/750 como todas las filas salvo 1000 y 1000*, pero In 400/In 430 = 1,02 frente a 1,08-1,09 en el resto de filas, y VA/(1,732·400 V) daría 0.95. La fila 220 VA de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (660 VA = 3x220 VA) imprime In 230 = 0.95 e In 250 = 0.88. Propuesta (cálculo del verificador, NO es dato del PDF; no publicar sin confirmar con Torivac): 0.95x3. La misma cifra (0.9x3) está impresa en todas las fichas y catálogos del lote que contienen una fila 660 VA trifásica (catálogo Torivac 2024 en ES, EN, FR y DE, las fichas Caracteristicas_Tecnicas_Variador_Trifasico_*, las de caja industrial trifásico y esta ficha); ninguno la resuelve."
+    },
+    {
+     "page": 1,
      "item": "Contraste numérico In vs VA/(raiz(3)·tensión) (cálculo del extractor, NO es dato del PDF)",
-     "why": "Casi todas las filas cuadran con VA/(1,732·400 V) e VA/(1,732·430 V) dentro de ±1 %. Excepciones: 660 VA (In 400 = 0.9x3; el cálculo daría 0.95) y 1000/1000* VA (In 400 = 1.52x3 e In 430 = 1.4x3; el cálculo daría 1.44 y 1.34). Se conservan los valores del PDF; proponer revisión con el fabricante antes de publicar esas intensidades."
+     "why": "Con VA/(1,732·400 V) y VA/(1,732·430 V) todas las filas cuadran dentro de ±1,1 % (la mayor desviación es 480 VA, +1,04 % en In 400, por redondear 0.693 a 0.7), salvo 660 VA (In 400; ver su entrada propia) y 1000/1000* VA (In 400 = 1.52x3 e In 430 = 1.4x3; el cálculo daría 1.44 y 1.34, es decir +5,3 % y +4,3 %). La fila 1000 VA es coherente consigo misma (In 400/In 430 = 1,09, como el resto) y repite las cifras de la fila 350 VA de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (1.52 y 1.4; 3x350 VA = 1050 VA): posible potencia real algo mayor que la nominal; el PDF no lo aclara. Se conservan los valores del PDF; proponer revisión con el fabricante antes de publicar estas intensidades."
     },
     {
      "page": 1,
@@ -1143,7 +1267,93 @@
      "item": "Archivo duplicado en data/raw/pdf",
      "why": "Variador-tension-trifasico-regulacion-motorizada-1.pdf es idéntico byte a byte (md5 a9c9b242d1696e405ada289c852c2fc3) a Variador-tension-trifasico-regulacion-motorizada.pdf, que no figura en pdf-index.json ni en el reparto de trabajos. Los datos se extraen una sola vez desde este archivo."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "voltage_mentions[0].normalized_hint (Cabecera de la tabla 480 VA – 12000 VA)",
+     "was": "entrada 400 V AC trifásico; salida 400/430 V AC",
+     "now": "entrada 400 V; salida 400/430 V",
+     "why": "La cabecera del PDF solo escribe 'Entrada/Input 400V Salida/Output 400/430V': no pone 'AC' ni 'trifásico'. 'AC' era una inferencia del extractor (corriente alterna) que no está escrita en la ficha; el carácter trifásico consta en el título del producto, no en la cabecera de la tabla. La cifra no cambia (400 V; 400/430 V)."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[1].normalized_hint (Cabecera de la tabla 15000 VA – 33000 VA)",
+     "was": "entrada 400 V AC trifásico; salida 400/430 V AC",
+     "now": "entrada 400 V; salida 400/430 V",
+     "why": "La cabecera del PDF solo escribe 'Entrada/Input 400V Salida/Output 400/430V': no pone 'AC' ni 'trifásico'. 'AC' era una inferencia del extractor (corriente alterna) que no está escrita en la ficha; el carácter trifásico consta en el título del producto, no en la cabecera de la tabla. La cifra no cambia (400 V; 400/430 V)."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[2] ('In 400 (A)'): normalized_hint y context",
+     "was": {
+      "normalized_hint": "intensidad nominal (A) con tensión 400 V (inferido de la cabecera)",
+      "context": "Columna de intensidad nominal In asociada a 400"
+     },
+     "now": {
+      "normalized_hint": "columna rotulada 'In 400 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere; valores con sufijo 'x3'",
+      "context": "Cabecera de columna de intensidad nominal (A), repetida en las dos tablas"
+     },
+     "why": "El PDF solo rotula la columna 'In 400 (A)' y la nota al pie dice 'In hace referencia a la intensidad nominal del variador'; no escribe a qué tensión se mide cada intensidad. La lectura 'con tensión 400/430 V' era una inferencia (coherente con VA/(1,732·V), pero no escrita en la ficha). El contexto decía que la columna aparecía una sola vez: está en las dos tablas (480-12000 VA y 15000-33000 VA)."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[3] ('In 430 (A)'): normalized_hint y context",
+     "was": {
+      "normalized_hint": "intensidad nominal (A) con tensión 430 V (inferido de la cabecera)",
+      "context": "Columna de intensidad nominal In asociada a 430"
+     },
+     "now": {
+      "normalized_hint": "columna rotulada 'In 430 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere; valores con sufijo 'x3'",
+      "context": "Cabecera de columna de intensidad nominal (A), repetida en las dos tablas"
+     },
+     "why": "El PDF solo rotula la columna 'In 430 (A)' y la nota al pie dice 'In hace referencia a la intensidad nominal del variador'; no escribe a qué tensión se mide cada intensidad. La lectura 'con tensión 400/430 V' era una inferencia (coherente con VA/(1,732·V), pero no escrita en la ficha). El contexto decía que la columna aparecía una sola vez: está en las dos tablas (480-12000 VA y 15000-33000 VA)."
+    },
+    {
+     "page": 1,
+     "item": "families[0].models['660 VA'].specs['In 400 (A)'] y .confidence",
+     "was": "In 400 (A) = '0.9x3'; confidence = 'alta'",
+     "now": "In 400 (A) = null; confidence = 'media'",
+     "why": "Dato dudoso, no se publica (regla 1): la propia lista 'uncertain' pedía revisar con el fabricante antes de publicar esta intensidad, pero specs la dejaba como 'alta'. La transcripción '0.9x3' es correcta (releída a 300 ppp y en la capa de texto); lo dudoso es la cifra impresa: en esta tabla In 430 de la fila (0.88x3) coincide con VA/750 como en todas las filas salvo 1000 y 1000*, pero In 400/In 430 vale 1,02 en 660 VA frente a 1,08-1,09 en todas las demás, y la fila 220 VA de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (660 VA = 3x220 VA) imprime In 230 = 0.95. El literal se conserva en raw_row y en 'uncertain'; no se sustituye por ningún valor. Mismo criterio que el aplicado a esta fila en Caracteristicas_Tecnicas_Variador_Trifasico_* y en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf."
+    },
+    {
+     "page": 1,
+     "item": "uncertain (nuevo): 660 VA, In 400: el PDF imprime '0.9x3'",
+     "was": null,
+     "now": "specs lo deja en null (el literal se conserva en raw_row). Es incoherente con el resto de la tabla: In 430 de esta fila (0.88x3) sigue VA/750 como todas las filas salvo 1000 y 1000*, pero In 400/In 430 = 1,02 frente a 1,08-1,09 en el resto de filas, y VA/(1,732·400 V) daría 0.95. La fila 220 VA de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (660 VA = 3x220 VA) imprime In 230 = 0.95 e In 250 = 0.88. Propuesta (cálculo del verificador, NO es dato del PDF; no publicar sin confirmar con Torivac): 0.95x3. La misma cifra (0.9x3) está impresa en todas las fichas y catálogos del lote que contienen una fila 660 VA trifásica (catálogo Torivac 2024 en ES, EN, FR y DE, las fichas Caracteristicas_Tecnicas_Variador_Trifasico_*, las de caja industrial trifásico y esta ficha); ninguno la resuelve.",
+     "why": "Dato dudoso o incoherencia de la fuente detectada al contrastar la tabla (aritmética VA/V, razón In 400/In 430 y comparación con otras fichas); el extractor la mencionaba dentro de un punto genérico pero la dejaba publicada en specs. Ahora tiene entrada propia para el panel de propuestas."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Contraste numérico In vs VA/(raiz(3)·tensión) (cálculo del extractor, NO es dato del PDF)'.why",
+     "was": "Casi todas las filas cuadran con VA/(1,732·400 V) e VA/(1,732·430 V) dentro de ±1 %. Excepciones: 660 VA (In 400 = 0.9x3; el cálculo daría 0.95) y 1000/1000* VA (In 400 = 1.52x3 e In 430 = 1.4x3; el cálculo daría 1.44 y 1.34). Se conservan los valores del PDF; proponer revisión con el fabricante antes de publicar esas intensidades.",
+     "now": "Con VA/(1,732·400 V) y VA/(1,732·430 V) todas las filas cuadran dentro de ±1,1 % (la mayor desviación es 480 VA, +1,04 % en In 400, por redondear 0.693 a 0.7), salvo 660 VA (In 400; ver su entrada propia) y 1000/1000* VA (In 400 = 1.52x3 e In 430 = 1.4x3; el cálculo daría 1.44 y 1.34, es decir +5,3 % y +4,3 %). La fila 1000 VA es coherente consigo misma (In 400/In 430 = 1,09, como el resto) y repite las cifras de la fila 350 VA de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (1.52 y 1.4; 3x350 VA = 1050 VA): posible potencia real algo mayor que la nominal; el PDF no lo aclara. Se conservan los valores del PDF; proponer revisión con el fabricante antes de publicar estas intensidades.",
+     "why": "Recalculado fila a fila (21 filas): la cota '±1 %' era imprecisa (480 VA da +1,04 % por redondeo) y mezclaba en un solo punto la fila 660 VA (error aislado de una celda, ahora con entrada propia y en null) con la fila 1000/1000* (par de cifras coherente entre sí, +5 % sobre el cálculo, que se conserva). Se añade la comparación con la fila 350 VA de otro PDF del lote como posible explicación, sin darla por cierta."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Filas 1000* y 1500* (con asterisco)'.why",
+     "was": "El asterisco no tiene leyenda ni nota en el PDF. Las filas repiten VA, In 400 e In 430 de 1000 y 1500 pero con otras cotas (A, B, C/E, G) y otro peso, sin explicar a qué corresponde la variante. Se conservan literales; no publicar la diferencia hasta confirmarla (¿otra construcción, otro núcleo?).",
+     "now": "El asterisco no tiene leyenda ni nota en el PDF (comprobado en la capa de texto y en el renderizado a 300 ppp: bajo las tablas solo está la nota de In). Las filas repiten VA, In 400 e In 430 de 1000 y 1500 pero con otras cotas (A, B, E, F, G) y otro peso; sus cotas (A 90, B 365, E 75, F M-5, G 92) son las mismas que las de la fila 480 VA y solo cambia el peso (8.5 y 11 Kg frente a 4.9 Kg). Se conservan literales; no publicar la diferencia hasta confirmarla (¿otra construcción, otro núcleo?).",
+     "why": "Texto copiado de la ficha manual: citaba una cota 'C' que la tabla motorizada no tiene (sus columnas son A, B, E, F, G y, en la segunda tabla, H; no hay C ni D). Respecto a 1000 y 1500, las filas con asterisco cambian A, B, E, F y G. Se añade que sus cotas coinciden con las de la fila 480 VA (solo cambia el peso)."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Unidad de las cotas A-H' (item y why)",
+     "was": "Unidad de las cotas A-H | El PDF no escribe unidad (ni mm ni cm) en las columnas A, B, C, D, E, G, H; solo 'Kg' para el peso. Se conservan los números sin unidad; confirmar (probablemente mm) antes de publicar. Las letras se definen únicamente en los dibujos.",
+     "now": "Unidad de las cotas A, B, E, G, H | El PDF no escribe unidad (ni mm ni cm) en las columnas A, B, E, G (tabla 480 VA – 12000 VA) y A, B, E, G, H (tabla 15000 VA – 33000 VA); solo 'Kg' para el peso. Se conservan los números sin unidad; confirmar (probablemente mm) antes de publicar. Las letras se definen únicamente en los dibujos.",
+     "why": "La ficha motorizada no tiene columnas C ni D (columnas: VA, In 400, In 430, A, B, E, F, G y Kg; la segunda tabla añade H). El texto heredado de la ficha manual listaba 'A, B, C, D, E, G, H' y el rango 'A-H' sugería cotas que el PDF no da para esta tabla (comprobado a 300 ppp). F se trata aparte (rosca M-x)."
+    }
+   ],
+   "verification": {
+    "method": "Página renderizada de nuevo (pdftoppm 110 y 300 ppp); cada tabla leída a 300 ppp celda a celda y comparada con el JSON y con la capa de texto (pdftotext -layout) mediante script independiente.",
+    "tabla 1 (480-12000 VA)": "14 filas x 9 columnas = 126 celdas: 0 discrepancias imagen/JSON y 0 texto/JSON.",
+    "tabla 2 (15000-33000 VA)": "7 filas x 10 columnas = 70 celdas: 0 discrepancias imagen/JSON y 0 texto/JSON. 21 modelos en total, ninguno omitido ni duplicado.",
+    "voltage_mentions": "Cabeceras de ambas tablas (400V; 400/430V) y columnas In 400 (A) / In 430 (A): completas. No hay otras tensiones, ni frecuencia, ni tolerancias, ni leyenda del asterisco en la página.",
+    "dibujos": "Tres conjuntos de dibujos verificados con motor y engranaje en la parte superior; letras A, B, E, F, G (primero) y A, B, E, F, G, H ('15000 VA' y '18000 VA - 30000 VA'); no hay C ni D.",
+    "duplicado": "md5 a9c9b242d1696e405ada289c852c2fc3 confirmado; cmp confirma que Variador-tension-trifasico-regulacion-motorizada.pdf es idéntico byte a byte."
+   },
+   "verified": true
   }
  ]
 }

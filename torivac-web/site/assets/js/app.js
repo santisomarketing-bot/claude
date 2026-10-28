@@ -131,4 +131,14 @@
   }
   stamp(); document.addEventListener('tv:prices', stamp);
   refreshCounts();
+
+  // ───────────────────────────────────────── [ART] las espiras del bobinado toroidal se dibujan al entrar en pantalla (sin JS o con movimiento reducido ya se ven completas)
+  (function () {
+    var arts = $$('.toroid-art');
+    if (!arts.length) return;
+    if (!('IntersectionObserver' in window) || (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) return;     // espiras ya completas
+    arts.forEach(function (a) { a.classList.add('armed'); });
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.15 });
+    arts.forEach(function (a) { io.observe(a); });
+  })();
 })();

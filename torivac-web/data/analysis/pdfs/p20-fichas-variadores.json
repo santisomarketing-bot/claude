@@ -24,7 +24,7 @@
       "Columnas": "VA, In 230 (A), In 250 (A), A, B, E, F, G, Kg",
       "* (350*, 500*)": "Dimensiones reducidas/ limited dimensions",
       "In": "In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable autotransformers.",
-      "Cotas": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A-G (solo 'Kg' para el peso)."
+      "Cotas": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A, B, E, F, G (solo 'Kg' para el peso)."
      },
      "models": [
       {
@@ -281,7 +281,7 @@
       "Regulación": "motorizada",
       "Columnas": "VA, In 230 (A), In 250 (A), A, B, E, F, G, H, Kg",
       "In": "In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable autotransformers.",
-      "Cotas": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A-H (solo 'Kg' para el peso)."
+      "Cotas": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A, B, E, F, G, H (solo 'Kg' para el peso)."
      },
      "models": [
       {
@@ -350,7 +350,7 @@
         "E": "380",
         "F": "M-12",
         "G": "490",
-        "H": "235",
+        "H": null,
         "Kg": "64"
        },
        "raw_row": "8000 34.78 32 585 350 380 M-12 490 235 64",
@@ -433,7 +433,7 @@
      "raw": "In 230 (A) / In 250 (A)",
      "page": 1,
      "context": "columnas de intensidad nominal de todas las tablas",
-     "normalized_hint": "intensidad nominal a 230 V y a 250 V (el PDF no detalla la condicion)"
+     "normalized_hint": "columnas rotuladas 'In 230 (A)' e 'In 250 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere cada una"
     }
    ],
    "other_facts": [
@@ -454,7 +454,7 @@
      "page": 1
     },
     {
-     "fact": "DUPLICIDAD: el texto de página de este PDF es idéntico, carácter a carácter, al de Monofasico-motorizado.pdf (ficheros distintos a nivel de bytes). Tablas coincidentes con las de Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado.pdf (otro trabajo) salvo cabecera y pie (comprobar en ese trabajo).",
+     "fact": "DUPLICIDAD: el texto de página de este PDF es idéntico, carácter a carácter, al de Monofasico-motorizado.pdf (ficheros distintos a nivel de bytes; el renderizado también es idéntico). Verificado celda a celda: las tablas coinciden además con las de Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado.pdf (otro trabajo; solo cambian cabecera y pie) y con las de las cuatro ediciones del catálogo Torivac (ES, EN, FR, DE). No debe contarse como producto distinto.",
      "page": 1
     }
    ],
@@ -462,12 +462,12 @@
    "uncertain": [
     {
      "page": 1,
-     "item": "Unidad de las cotas A-H",
+     "item": "Unidad de las cotas A, B, E, F, G, H",
      "why": "El PDF no indica unidad (solo 'Kg' para el peso). No se asume mm."
     },
     {
      "page": 1,
-     "item": "Significado de las letras de las columnas A-H y de F (M-5 ... M-12)",
+     "item": "Significado de las letras de las columnas A, B, E, F, G, H y de F (M-5 ... M-12)",
      "why": "Solo se ven como letras en los dibujos acotados; el texto no las describe. No se asume que F sea rosca ni que A/B/G sean ancho/alto/fondo."
     },
     {
@@ -487,15 +487,79 @@
     },
     {
      "page": 1,
-     "item": "Cota H del modelo 8000 VA (235)",
-     "why": "En la tabla 5000 VA – 11000 VA la columna H es 255, 470, 490, 235, 565, 615, 635; el 235 rompe la progresión y en los variadores dobles el 8000 VA x 2 lleva 535. Se transcribe tal cual está impreso (verificado en la imagen); posible errata del PDF, a confirmar con Torivac."
+     "item": "8000 VA, columna H: el PDF imprime 235",
+     "why": "Rompe la serie H de la misma tabla (255, 470, 490, [235], 565, 615, 635). En las fichas de doble regulación manual y motorizada de este lote, 8000x2 tiene H=535 con A, E y G idénticos (F difiere: M-12 en la monofásica motorizada, M-10 en las dobles). Se deja null; propuesta (no publicar sin confirmar): 535. La misma cifra (235) está impresa en Monofasico-motorizado.pdf, en Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado.pdf y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 6 del PDF); ningún PDF del lote la resuelve."
+    },
+    {
+     "page": 1,
+     "item": "Columna F de 6000-9000 VA: M-12 impreso",
+     "why": "En esta ficha F = M-12 desde 6000 VA hasta 11000 VA; en las fichas de monofásico manual, doble manual y doble motorizada, F = M-10 para 6000-9000 VA (M-12 solo desde 10000 VA). Monofasico-motorizado.pdf, Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado.pdf y el catálogo Torivac (ES, EN, FR, DE) repiten M-12. Se transcribe el valor impreso; la ficha no describe qué es F, así que no se puede decidir si es una diferencia real de construcción o una errata."
     },
     {
      "page": 1,
      "item": "Duplicidad con Monofasico-motorizado.pdf",
      "why": "Mismo texto de página; se extrae igualmente pero no debe contarse como dos productos distintos."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[0] (Variador de tensión monofásico de regulación motorizada (160 VA – 4000 VA)).general_specs['Cotas']",
+     "was": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A-G (solo 'Kg' para el peso).",
+     "now": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A, B, E, F, G (solo 'Kg' para el peso).",
+     "why": "La tabla de esta familia solo tiene las columnas de cota A, B, E, F, G (más Kg); no existen columnas C, D ni H. El rango 'A-G' sugería cotas que el PDF no da para esta tabla (columnas impresas: VA, In 230 (A), In 250 (A), A, B, E, F, G, Kg). No cambia ningún valor."
+    },
+    {
+     "page": 1,
+     "item": "families[1] (Variador de tensión monofásico de regulación motorizada (5000 VA – 11000 VA)).general_specs['Cotas']",
+     "was": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A-H (solo 'Kg' para el peso).",
+     "now": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A, B, E, F, G, H (solo 'Kg' para el peso).",
+     "why": "La tabla de esta familia solo tiene las columnas de cota A, B, E, F, G, H (más Kg); no existen columnas C ni D. El rango 'A-H' sugería cotas que el PDF no da para esta tabla (columnas impresas: VA, In 230 (A), In 250 (A), A, B, E, F, G, H, Kg). No cambia ningún valor."
+    },
+    {
+     "page": 1,
+     "item": "families[1] (Variador de tensión monofásico de regulación motorizada (5000 VA – 11000 VA)).models['8000 VA'].specs['H']",
+     "was": "235",
+     "now": null,
+     "why": "Dato dudoso: H = 235 rompe la serie de la columna (255, 470, 490, [235], 565, 615, 635) y en las fichas de doble regulación manual y motorizada de este lote 8000x2 lleva H = 535 con A, E y G idénticos. Regla 1 (un dato dudoso no se publica): specs queda en null y el valor impreso se conserva en raw_row ('8000 34.78 32 585 350 380 M-12 490 235 64') y en 'uncertain'. La cifra impresa es idéntica en todos los PDFs que contienen esta tabla (anomalía de la fuente, no de la transcripción)."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Cota H del modelo 8000 VA (235)' (item reescrito: '8000 VA, columna H: el PDF imprime 235')",
+     "was": "En la tabla 5000 VA – 11000 VA la columna H es 255, 470, 490, 235, 565, 615, 635; el 235 rompe la progresión y en los variadores dobles el 8000 VA x 2 lleva 535. Se transcribe tal cual está impreso (verificado en la imagen); posible errata del PDF, a confirmar con Torivac.",
+     "now": "Rompe la serie H de la misma tabla (255, 470, 490, [235], 565, 615, 635). En las fichas de doble regulación manual y motorizada de este lote, 8000x2 tiene H=535 con A, E y G idénticos (F difiere: M-12 en la monofásica motorizada, M-10 en las dobles). Se deja null; propuesta (no publicar sin confirmar): 535. La misma cifra (235) está impresa en Monofasico-motorizado.pdf, en Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado.pdf y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 6 del PDF); ningún PDF del lote la resuelve.",
+     "why": "El valor pasa a null en specs (regla 1: dato dudoso no se publica); el 'uncertain' recoge el valor impreso, la propuesta (535, sin confirmar) y la comprobación de que ninguna otra edición lo resuelve (búsqueda de la fila completa en todos los textos extraídos: idéntica en 8 PDFs)."
+    },
+    {
+     "page": 1,
+     "item": "uncertain (nuevo): columna F de 6000-9000 VA",
+     "was": null,
+     "now": "Columna F de 6000-9000 VA: M-12 impreso (monofásica motorizada) frente a M-10 en las demás fichas del mismo lote.",
+     "why": "Discrepancia entre fichas detectada al contrastar las tablas de 5000-11000 VA: F de 6000, 7000, 8000 y 9000 VA es M-12 en esta ficha y M-10 en la doble manual, la doble motorizada y la monofásica manual (comprobado en las tablas renderizadas/extraídas). No se anula el valor (está impreso tal cual y repetido en los duplicados); se avisa para confirmarlo antes de publicar F."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: rótulos 'Unidad de las cotas A-H' y 'Significado de las letras de las columnas A-H y de F (M-5 ... M-12)'",
+     "was": "Unidad de las cotas A-H | Significado de las letras de las columnas A-H y de F (M-5 ... M-12)",
+     "now": "Unidad de las cotas A, B, E, F, G, H | Significado de las letras de las columnas A, B, E, F, G, H y de F (M-5 ... M-12)",
+     "why": "Las tablas de esta ficha solo tienen las columnas de cota A, B, E, F, G y H; no existen C ni D, de modo que 'A-H' sugería cotas inexistentes. Solo cambia el rótulo; el contenido de 'why' no se toca."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[2].normalized_hint ('In 230 (A) / In 250 (A)')",
+     "was": "intensidad nominal a 230 V y a 250 V (el PDF no detalla la condicion)",
+     "now": "columnas rotuladas 'In 230 (A)' e 'In 250 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere cada una",
+     "why": "El PDF solo rotula las columnas 'In 230 (A)' e 'In 250 (A)' y la nota al pie dice 'In hace referencia a la intensidad nominal del variador'; no escribe a qué tensión se mide cada una. La lectura 'a 230 V y a 250 V' era una inferencia (coherente con VA/230 y VA/250, pero no escrita en la ficha), igual que en la verificación de p18. Se deja la descripción literal."
+    },
+    {
+     "page": 1,
+     "item": "other_facts[4].fact (duplicidad)",
+     "was": "DUPLICIDAD: el texto de página de este PDF es idéntico, carácter a carácter, al de Monofasico-motorizado.pdf (ficheros distintos a nivel de bytes). Tablas coincidentes con las de Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado.pdf (otro trabajo) salvo cabecera y pie (comprobar en ese trabajo).",
+     "now": "DUPLICIDAD: el texto de página de este PDF es idéntico, carácter a carácter, al de Monofasico-motorizado.pdf (ficheros distintos a nivel de bytes; el renderizado también es idéntico). Verificado celda a celda: las tablas coinciden además con las de Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado.pdf (otro trabajo; solo cambian cabecera y pie) y con las de las cuatro ediciones del catálogo Torivac (ES, EN, FR, DE). No debe contarse como producto distinto.",
+     "why": "La nota dejaba pendiente 'comprobar en ese trabajo'. Comprobado: reconstruidas las tablas por coordenadas (pdftotext -bbox) en este PDF, en Monofasico-motorizado.pdf y en Caracteristicas_Tecnicas_Variador_Monofasico_Motorizado.pdf, las filas y celdas coinciden (0 diferencias); las filas también aparecen idénticas en el catálogo Torivac en los cuatro idiomas."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Variador-tension-doble-regulacion-manual.pdf",
@@ -547,7 +611,7 @@
        "page": 1,
        "specs": {
         "VA": "220x2",
-        "In 230 (A)": "0.9 x2",
+        "In 230 (A)": null,
         "In 250 (A)": "0.88x2",
         "A": "90",
         "B": "180",
@@ -559,7 +623,7 @@
         "Kg": "3.7"
        },
        "raw_row": "220x2 0.9 x2 0.88x2 90 180 50 6 75 M-5 100 3.7",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "350x2 VA",
@@ -721,7 +785,7 @@
         "In 230 (A)": "8.69x2",
         "In 250 (A)": "8x2",
         "A": "165",
-        "B": "25",
+        "B": null,
         "C": "70",
         "D": "8",
         "E": "135",
@@ -971,7 +1035,7 @@
      "raw": "In 230 (A) / In 250 (A)",
      "page": 1,
      "context": "columnas de intensidad nominal de todas las tablas",
-     "normalized_hint": "intensidad nominal a 230 V y a 250 V (el PDF no detalla la condicion)"
+     "normalized_hint": "columnas rotuladas 'In 230 (A)' e 'In 250 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere cada una; valores con sufijo 'x2'"
     }
    ],
    "other_facts": [
@@ -992,7 +1056,7 @@
      "page": 1
     },
     {
-     "fact": "Posible duplicidad con Caracteristicas_Tecnicas_Variador_Dobles_Manual.pdf (otro trabajo): comprobar allí si las tablas coinciden cifra a cifra.",
+     "fact": "DUPLICIDAD verificada celda a celda: las tablas coinciden con las de Caracteristicas_Tecnicas_Variador_Dobles_Manual.pdf (otro trabajo) y con las de las cuatro ediciones del catálogo Torivac (ES, EN, FR, DE), incluidas las cifras dudosas (ver uncertain). No debe contarse como producto distinto.",
      "page": 1
     }
    ],
@@ -1025,15 +1089,60 @@
     },
     {
      "page": 1,
-     "item": "Cota B del modelo 2000x2 (25)",
-     "why": "En la tabla 160x2 – 4000x2 la columna B va de 180 a 365 (1500x2 = 245, 2500x2 = 312). El valor impreso '25' es incoherente con la serie (posible 255 o 265 con un dígito perdido). Se conserva '25' tal cual (verificado en la imagen); a confirmar con Torivac."
+     "item": "2000x2, columna B: el PDF imprime 25",
+     "why": "Los vecinos son 245 (1500x2) y 312 (2500x2); el valor impreso rompe la serie. Se deja null; no se propone valor. La misma cifra (25) está impresa en Caracteristicas_Tecnicas_Variador_Dobles_Manual.pdf y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 6 del PDF); ningún PDF del lote la resuelve."
     },
     {
      "page": 1,
-     "item": "In 230 de 220x2 impreso como '0.9 x2' (con espacio)",
-     "why": "Se transcribe tal cual. Los variadores monofásicos de la misma familia dan 0.95 para 220 VA; en los dobles figura '0.9 x2'. No se corrige."
+     "item": "220x2, In 230 impreso '0.9 x2' (con espacio)",
+     "why": "En las tablas monofásicas 220 VA tiene In 230 = 0.95. Se deja null; propuesta (no publicar sin confirmar): 0.95x2. In 250 (0.88x2) coincide. La misma cifra (0.9 x2) está impresa en Caracteristicas_Tecnicas_Variador_Dobles_Manual.pdf y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 6 del PDF); ningún PDF del lote la resuelve."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[0] (Variador tensión doble regulación manual (160 VA x 2 – 4000 VA x 2)).models['2000x2 VA'].specs['B']",
+     "was": "25",
+     "now": null,
+     "why": "Dato dudoso: B = 25 rompe la serie de la columna (245 en 1500x2, [25], 312 en 2500x2); es incoherente con las filas vecinas. Regla 1 (un dato dudoso no se publica): specs queda en null y el valor impreso se conserva en raw_row ('2000x2 8.69x2 8x2 165 25 70 8 135 M-6 175 15.6') y en 'uncertain'. La cifra impresa es idéntica en todos los PDFs que contienen esta tabla (anomalía de la fuente, no de la transcripción)."
+    },
+    {
+     "page": 1,
+     "item": "families[0] (Variador tensión doble regulación manual (160 VA x 2 – 4000 VA x 2)).models['220x2 VA'].specs['In 230 (A)']",
+     "was": "0.9 x2",
+     "now": null,
+     "why": "Dato dudoso: '0.9 x2' (con espacio) difiere de 0.95 que figura para 220 VA en las tablas monofásicas, mientras In 250 (0.88x2) sí coincide con el monofásico (0.88). Regla 1 (un dato dudoso no se publica): specs queda en null y el valor impreso se conserva en raw_row ('220x2 0.9 x2 0.88x2 90 180 50 6 75 M-5 100 3.7') y en 'uncertain'. La cifra impresa es idéntica en todos los PDFs que contienen esta tabla (anomalía de la fuente, no de la transcripción); confidence alta -> media."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Cota B del modelo 2000x2 (25)' (item reescrito: '2000x2, columna B: el PDF imprime 25')",
+     "was": "En la tabla 160x2 – 4000x2 la columna B va de 180 a 365 (1500x2 = 245, 2500x2 = 312). El valor impreso '25' es incoherente con la serie (posible 255 o 265 con un dígito perdido). Se conserva '25' tal cual (verificado en la imagen); a confirmar con Torivac.",
+     "now": "Los vecinos son 245 (1500x2) y 312 (2500x2); el valor impreso rompe la serie. Se deja null; no se propone valor. La misma cifra (25) está impresa en Caracteristicas_Tecnicas_Variador_Dobles_Manual.pdf y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 6 del PDF); ningún PDF del lote la resuelve.",
+     "why": "El valor pasa a null en specs (regla 1). Se elimina además la conjetura 'posible 255 o 265 con un dígito perdido', que no tiene respaldo en ningún PDF (regla: no adivinar); no se propone valor. Búsqueda de la fila completa en todos los textos extraídos: idéntica en 6 PDFs."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'In 230 de 220x2 impreso como '0.9 x2' (con espacio)' (item reescrito: \"220x2, In 230 impreso '0.9 x2' (con espacio)\")",
+     "was": "Se transcribe tal cual. Los variadores monofásicos de la misma familia dan 0.95 para 220 VA; en los dobles figura '0.9 x2'. No se corrige.",
+     "now": "En las tablas monofásicas 220 VA tiene In 230 = 0.95. Se deja null; propuesta (no publicar sin confirmar): 0.95x2. In 250 (0.88x2) coincide. La misma cifra (0.9 x2) está impresa en Caracteristicas_Tecnicas_Variador_Dobles_Manual.pdf y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 6 del PDF); ningún PDF del lote la resuelve.",
+     "why": "El valor pasa a null en specs (regla 1); el 'uncertain' recoge el valor impreso, la propuesta (0.95x2, sin confirmar) y la comprobación de que ninguna otra edición lo resuelve (fila completa idéntica en 6 PDFs)."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[2].normalized_hint ('In 230 (A) / In 250 (A)')",
+     "was": "intensidad nominal a 230 V y a 250 V (el PDF no detalla la condicion)",
+     "now": "columnas rotuladas 'In 230 (A)' e 'In 250 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere cada una; valores con sufijo 'x2'",
+     "why": "El PDF solo rotula las columnas 'In 230 (A)' e 'In 250 (A)' y la nota al pie dice 'In hace referencia a la intensidad nominal del variador'; no escribe a qué tensión se mide cada una. La lectura 'a 230 V y a 250 V' era una inferencia (coherente con VA/230 y VA/250, pero no escrita en la ficha), igual que en la verificación de p18. Se deja la descripción literal."
+    },
+    {
+     "page": 1,
+     "item": "other_facts[4].fact (duplicidad)",
+     "was": "Posible duplicidad con Caracteristicas_Tecnicas_Variador_Dobles_Manual.pdf (otro trabajo): comprobar allí si las tablas coinciden cifra a cifra.",
+     "now": "DUPLICIDAD verificada celda a celda: las tablas coinciden con las de Caracteristicas_Tecnicas_Variador_Dobles_Manual.pdf (otro trabajo) y con las de las cuatro ediciones del catálogo Torivac (ES, EN, FR, DE), incluidas las cifras dudosas (ver uncertain). No debe contarse como producto distinto.",
+     "why": "La nota dejaba pendiente 'comprobar allí si las tablas coinciden cifra a cifra'. Comprobado por coordenadas (pdftotext -bbox) y por búsqueda de filas: todas las filas y celdas coinciden (0 diferencias) con el PDF hermano y con el catálogo en los cuatro idiomas."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Variador-tension-doble-regulacion-motorizada.pdf",
@@ -1058,7 +1167,7 @@
       "Columnas": "VA, In 230 (A), In 250 (A), A, B, E, F, G, Kg",
       "* (350*x2, 500*x2)": "Dimensiones reducidas/ limited dimensions",
       "In": "In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable autotransformers.",
-      "Cotas": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A-G (solo 'Kg' para el peso)."
+      "Cotas": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A, B, E, F, G (solo 'Kg' para el peso)."
      },
      "models": [
       {
@@ -1083,7 +1192,7 @@
        "page": 1,
        "specs": {
         "VA": "220x2",
-        "In 230 (A)": "0.9 x2",
+        "In 230 (A)": null,
         "In 250 (A)": "0.88x2",
         "A": "90",
         "B": "290",
@@ -1093,7 +1202,7 @@
         "Kg": "4.2"
        },
        "raw_row": "220x2 0.9 x2 0.88x2 90 290 75 M-5 100 4.2",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "350x2 VA",
@@ -1315,7 +1424,7 @@
       "Regulación": "doble regulación motorizada",
       "Columnas": "VA, In 230 (A), In 250 (A), A, B, E, F, G, H, Kg",
       "In": "In hace referencia a la intensidad nominal del variador/In it refers to the nominal current of the variable autotransformers.",
-      "Cotas": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A-H (solo 'Kg' para el peso)."
+      "Cotas": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A, B, E, F, G, H (solo 'Kg' para el peso)."
      },
      "models": [
       {
@@ -1467,7 +1576,7 @@
      "raw": "In 230 (A) / In 250 (A)",
      "page": 1,
      "context": "columnas de intensidad nominal de todas las tablas",
-     "normalized_hint": "intensidad nominal a 230 V y a 250 V (el PDF no detalla la condicion)"
+     "normalized_hint": "columnas rotuladas 'In 230 (A)' e 'In 250 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere cada una; valores con sufijo 'x2'"
     }
    ],
    "other_facts": [
@@ -1488,7 +1597,7 @@
      "page": 1
     },
     {
-     "fact": "Posible duplicidad con Caracteristicas_Tecnicas_Variador_Dobles_Motorizados.pdf (otro trabajo): comprobar allí si las tablas coinciden cifra a cifra.",
+     "fact": "DUPLICIDAD verificada celda a celda: las tablas coinciden con las de Caracteristicas_Tecnicas_Variador_Dobles_Motorizados.pdf (otro trabajo) y con las de las cuatro ediciones del catálogo Torivac (ES, EN, FR, DE), incluidas las cifras dudosas (ver uncertain). No debe contarse como producto distinto.",
      "page": 1
     }
    ],
@@ -1496,12 +1605,12 @@
    "uncertain": [
     {
      "page": 1,
-     "item": "Unidad de las cotas A-H",
+     "item": "Unidad de las cotas A, B, E, F, G, H",
      "why": "El PDF no indica unidad (solo 'Kg' para el peso). No se asume mm."
     },
     {
      "page": 1,
-     "item": "Significado de las letras de las columnas A-H y de F (M-5 ... M-12)",
+     "item": "Significado de las letras de las columnas A, B, E, F, G, H y de F (M-5 ... M-12)",
      "why": "Solo se ven como letras en los dibujos acotados; el texto no las describe. No se asume que F sea rosca ni que A/B/G sean ancho/alto/fondo."
     },
     {
@@ -1521,10 +1630,62 @@
     },
     {
      "page": 1,
-     "item": "In 230 de 220x2 impreso como '0.9 x2' (con espacio)",
-     "why": "Se transcribe tal cual. Los variadores monofásicos dan 0.95 para 220 VA; en los dobles figura '0.9 x2'. No se corrige."
+     "item": "220x2, In 230 impreso '0.9 x2' (con espacio)",
+     "why": "En las tablas monofásicas 220 VA tiene In 230 = 0.95. Se deja null; propuesta (no publicar sin confirmar): 0.95x2. In 250 (0.88x2) coincide. La misma cifra (0.9 x2) está impresa en Caracteristicas_Tecnicas_Variador_Dobles_Motorizados.pdf y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 7 del PDF); ningún PDF del lote la resuelve."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[0] (Variador tensión doble regulación motorizada (160 VA x 2 – 4000 VA x 2)).general_specs['Cotas']",
+     "was": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A-G (solo 'Kg' para el peso).",
+     "now": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A, B, E, F, G (solo 'Kg' para el peso).",
+     "why": "La tabla de esta familia solo tiene las columnas de cota A, B, E, F, G (más Kg); no existen columnas C, D ni H. El rango 'A-G' sugería cotas que el PDF no da para esta tabla (columnas impresas: VA, In 230 (A), In 250 (A), A, B, E, F, G, Kg). No cambia ningún valor."
+    },
+    {
+     "page": 1,
+     "item": "families[1] (Variador tensión doble regulación motorizada (5000 VA x 2 – 11000 VA x 2)).general_specs['Cotas']",
+     "was": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A-H (solo 'Kg' para el peso).",
+     "now": "Columnas de la tabla en el PDF; el PDF no indica la unidad de las cotas A, B, E, F, G, H (solo 'Kg' para el peso).",
+     "why": "La tabla de esta familia solo tiene las columnas de cota A, B, E, F, G, H (más Kg); no existen columnas C ni D. El rango 'A-H' sugería cotas que el PDF no da para esta tabla (columnas impresas: VA, In 230 (A), In 250 (A), A, B, E, F, G, H, Kg). No cambia ningún valor."
+    },
+    {
+     "page": 1,
+     "item": "families[0] (Variador tensión doble regulación motorizada (160 VA x 2 – 4000 VA x 2)).models['220x2 VA'].specs['In 230 (A)']",
+     "was": "0.9 x2",
+     "now": null,
+     "why": "Dato dudoso: '0.9 x2' (con espacio) difiere de 0.95 que figura para 220 VA en las tablas monofásicas, mientras In 250 (0.88x2) sí coincide con el monofásico (0.88). Regla 1 (un dato dudoso no se publica): specs queda en null y el valor impreso se conserva en raw_row ('220x2 0.9 x2 0.88x2 90 290 75 M-5 100 4.2') y en 'uncertain'. La cifra impresa es idéntica en todos los PDFs que contienen esta tabla (anomalía de la fuente, no de la transcripción); confidence alta -> media."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'In 230 de 220x2 impreso como '0.9 x2' (con espacio)' (item reescrito: \"220x2, In 230 impreso '0.9 x2' (con espacio)\")",
+     "was": "Se transcribe tal cual. Los variadores monofásicos dan 0.95 para 220 VA; en los dobles figura '0.9 x2'. No se corrige.",
+     "now": "En las tablas monofásicas 220 VA tiene In 230 = 0.95. Se deja null; propuesta (no publicar sin confirmar): 0.95x2. In 250 (0.88x2) coincide. La misma cifra (0.9 x2) está impresa en Caracteristicas_Tecnicas_Variador_Dobles_Motorizados.pdf y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 7 del PDF); ningún PDF del lote la resuelve.",
+     "why": "El valor pasa a null en specs (regla 1); el 'uncertain' recoge el valor impreso, la propuesta (0.95x2, sin confirmar) y la comprobación de que ninguna otra edición lo resuelve (fila completa idéntica en 6 PDFs)."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: rótulos 'Unidad de las cotas A-H' y 'Significado de las letras de las columnas A-H y de F (M-5 ... M-12)'",
+     "was": "Unidad de las cotas A-H | Significado de las letras de las columnas A-H y de F (M-5 ... M-12)",
+     "now": "Unidad de las cotas A, B, E, F, G, H | Significado de las letras de las columnas A, B, E, F, G, H y de F (M-5 ... M-12)",
+     "why": "Las tablas de esta ficha solo tienen las columnas de cota A, B, E, F, G y H; no existen C ni D, de modo que 'A-H' sugería cotas inexistentes. Solo cambia el rótulo; el contenido de 'why' no se toca."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[2].normalized_hint ('In 230 (A) / In 250 (A)')",
+     "was": "intensidad nominal a 230 V y a 250 V (el PDF no detalla la condicion)",
+     "now": "columnas rotuladas 'In 230 (A)' e 'In 250 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere cada una; valores con sufijo 'x2'",
+     "why": "El PDF solo rotula las columnas 'In 230 (A)' e 'In 250 (A)' y la nota al pie dice 'In hace referencia a la intensidad nominal del variador'; no escribe a qué tensión se mide cada una. La lectura 'a 230 V y a 250 V' era una inferencia (coherente con VA/230 y VA/250, pero no escrita en la ficha), igual que en la verificación de p18. Se deja la descripción literal."
+    },
+    {
+     "page": 1,
+     "item": "other_facts[4].fact (duplicidad)",
+     "was": "Posible duplicidad con Caracteristicas_Tecnicas_Variador_Dobles_Motorizados.pdf (otro trabajo): comprobar allí si las tablas coinciden cifra a cifra.",
+     "now": "DUPLICIDAD verificada celda a celda: las tablas coinciden con las de Caracteristicas_Tecnicas_Variador_Dobles_Motorizados.pdf (otro trabajo) y con las de las cuatro ediciones del catálogo Torivac (ES, EN, FR, DE), incluidas las cifras dudosas (ver uncertain). No debe contarse como producto distinto.",
+     "why": "La nota dejaba pendiente 'comprobar allí si las tablas coinciden cifra a cifra'. Comprobado por coordenadas (pdftotext -bbox) y por búsqueda de filas: todas las filas y celdas coinciden (0 diferencias) con el PDF hermano y con el catálogo en los cuatro idiomas."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Variador-tension-en-caja-industrial-trifasico.pdf",
@@ -1738,7 +1899,7 @@
      "family": "Variador tensión en caja industrial trifásico (480 VA – 33000 VA)",
      "series": null,
      "page": 1,
-     "description": "Variador tensión en caja industrial trifásico, 480 VA – 33000 VA. Entrada/Input 400V Salida/Output 400/430V. Las intensidades se dan por fase (valor x3).",
+     "description": "Variador tensión en caja industrial trifásico, 480 VA – 33000 VA. Entrada/Input 400V Salida/Output 400/430V. Las intensidades llevan el sufijo x3 (p. ej. 0.7x3); el PDF no explica su significado.",
      "general_specs": {
       "Rango de potencia": "480 VA – 33000 VA",
       "Entrada/Input": "400V",
@@ -1769,7 +1930,7 @@
        "page": 1,
        "specs": {
         "VA": "660",
-        "In 230 (A)": "0.9x3",
+        "In 230 (A)": null,
         "In 250 (A)": "0.88x3",
         "A": "250",
         "B": "250",
@@ -1777,7 +1938,7 @@
         "Kg": "8"
        },
        "raw_row": "660 0.9x3 0.88x3 250 250 150 8",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "1000 VA",
@@ -1874,7 +2035,7 @@
        "page": 1,
        "specs": {
         "VA": "6000",
-        "In 230 (A)": "8.69x 3",
+        "In 230 (A)": "8.69x3",
         "In 250 (A)": "8x3",
         "A": "400",
         "B": "400",
@@ -2057,7 +2218,7 @@
      "raw": "In 230 (A) / In 250 (A)",
      "page": 1,
      "context": "columnas de intensidad nominal de ambas tablas (también en la trifásica de entrada 400V)",
-     "normalized_hint": "intensidad nominal a 230 V y a 250 V (el PDF no detalla la condición)"
+     "normalized_hint": "columnas rotuladas 'In 230 (A)' e 'In 250 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere cada una ni su relación con la entrada 400V / salida 400/430V de la tabla trifásica (valores con sufijo 'x3' en esa tabla)"
     }
    ],
    "other_facts": [
@@ -2086,7 +2247,7 @@
      "page": 1
     },
     {
-     "fact": "Posible duplicidad parcial con Variador-tension-sobremesa.pdf (otro trabajo): contrastar allí la tabla 'Variador tensión sobremesa'.",
+     "fact": "DUPLICIDAD verificada celda a celda: las dos tablas coinciden con las de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (otro trabajo; allí la tabla de 1500 VA – 11000 VA se titula 'VARIADOR TENSIÓN EN CAJA INDUSTRIAL MONOFASICO') y con la página equivalente de las cuatro ediciones del catálogo Torivac (ES, EN, FR, DE). Variador-tension-sobremesa.pdf no es duplicado: es la ficha del sobremesa de potencias menores, sin tablas de texto y con dibujos acotados propios.",
      "page": 1
     }
    ],
@@ -2110,7 +2271,22 @@
     {
      "page": 1,
      "item": "In 230 del modelo 6000 VA de la tabla trifásica impreso '8.69x 3'",
-     "why": "Aparece con un espacio ('8.69x 3') frente a '8.69x3' esperable; se conserva tal cual. En ese modelo la In 250 es '8x3'."
+     "why": "Aparece impreso con un espacio ('8.69x 3') frente a '8.69x3' esperable (defecto tipográfico del PDF). En specs se transcribe 8.69x3; raw_row conserva el espacio impreso. En ese modelo la In 250 es '8x3'."
+    },
+    {
+     "page": 1,
+     "item": "Caja industrial trifásico, 660 VA: In 230 impreso '0.9x3'",
+     "why": "En las tablas monofásicas 220 VA tiene In 230 = 0.95 (660 VA = 3x220 VA). Se deja null; propuesta (no publicar sin confirmar): 0.95x3. In 250 (0.88x3) coincide. La misma cifra (0.9x3) está impresa en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (p. 3) y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 11 del PDF); ningún PDF del lote la resuelve."
+    },
+    {
+     "page": 1,
+     "item": "Caja industrial trifásico, 1000 VA: In 1.52x3 / 1.4x3",
+     "why": "En las tablas monofásicas 1.52 A / 1.4 A corresponden a 350 VA (3x350 = 1050), no a un tercio de 1000 VA. Las demás filas trifásicas cumplen potencia = 3x la potencia monofásica con la misma In (480 = 3x160 ... 33000 = 3x11000; la de 660 VA con la salvedad de su In 230 impresa, ver su entrada). Se conserva tal cual; posible redondeo de la potencia nominal, el PDF no lo aclara."
+    },
+    {
+     "page": 1,
+     "item": "Rótulo de la tabla de 1500 VA – 11000 VA: 'Variador tensión sobremesa'",
+     "why": "Este PDF y el catálogo ES imprimen 'Variador tensión sobremesa' sobre la tabla de 1500 VA – 11000 VA (el catálogo DE: 'Tisch-Spannungsregler'). La misma tabla se titula 'VARIADOR TENSIÓN EN CAJA INDUSTRIAL MONOFASICO' en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (p. 3), 'Single-phase Variable Autotransformer in Metallic Cabinet' en el catálogo EN y 'Autotransformateur variable monophasé dans coffret métallique' en el FR. El sobremesa propiamente dicho está en Variador-tension-sobremesa.pdf (otra ficha: 160-1250VA, con fotografías y dibujos acotados propios, sin esta tabla). Se conserva el rótulo impreso en el nombre de familia; propuesta (no publicar sin confirmar): nombrar esta familia 'Variador tensión en caja industrial monofásico', como en el PDF hermano, y decidirlo antes de publicar para no mezclar la familia 'sobremesa' (potencias menores) con esta."
     },
     {
      "page": 1,
@@ -2132,7 +2308,73 @@
      "item": "In 230 de 6000 VA (26.01) y 11000 VA (47.85) en la tabla de sobremesa; 18000 VA (26.01x3) y 33000 VA (47.85x3) en la trifásica",
      "why": "Aritmética VA/230 da 26.09 y 47.83. Las cifras impresas se repiten en todas las tablas de variadores de Torivac; se conservan tal cual."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[1] (Variador tensión en caja industrial trifásico (480 VA – 33000 VA)).description",
+     "was": "Variador tensión en caja industrial trifásico, 480 VA – 33000 VA. Entrada/Input 400V Salida/Output 400/430V. Las intensidades se dan por fase (valor x3).",
+     "now": "Variador tensión en caja industrial trifásico, 480 VA – 33000 VA. Entrada/Input 400V Salida/Output 400/430V. Las intensidades llevan el sufijo x3 (p. ej. 0.7x3); el PDF no explica su significado.",
+     "why": "'Las intensidades se dan por fase' es una interpretación que el PDF no escribe: solo imprime valores con sufijo x3 (0.7x3, 0.64x3...) y no dice que sean por fase. Se deja la descripción literal, como en las fichas dobles ('x2') y en la cuba de aceite ('x3'). general_specs['Fases'] ya era literal."
+    },
+    {
+     "page": 1,
+     "item": "families[1] (Variador tensión en caja industrial trifásico (480 VA – 33000 VA)).models['660 VA'].specs['In 230 (A)']",
+     "was": "0.9x3",
+     "now": null,
+     "why": "Dato dudoso: '0.9x3' difiere de 0.95 que figura para 220 VA en las tablas monofásicas (660 VA = 3x220 VA), mientras In 250 (0.88x3) sí coincide con el monofásico (0.88). Regla 1 (un dato dudoso no se publica): specs queda en null y el valor impreso se conserva en raw_row ('660 0.9x3 0.88x3 250 250 150 8') y en 'uncertain'. La cifra impresa es idéntica en todos los PDFs que contienen esta tabla (anomalía de la fuente, no de la transcripción); confidence alta -> media."
+    },
+    {
+     "page": 1,
+     "item": "families[1] (Variador tensión en caja industrial trifásico (480 VA – 33000 VA)).models['6000 VA'].specs['In 230 (A)']",
+     "was": "8.69x 3",
+     "now": "8.69x3",
+     "why": "El espacio de '8.69x 3' es un defecto tipográfico del PDF, no una cifra distinta (In 250 de la fila: 8x3; el resto de filas: sufijo x3 sin espacio). Se normaliza en specs para que los duplicados (Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf) den la misma especificación; raw_row conserva el texto impreso con el espacio. La cifra 8.69 no cambia."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'In 230 del modelo 6000 VA de la tabla trifásica impreso '8.69x 3''",
+     "was": "Aparece con un espacio ('8.69x 3') frente a '8.69x3' esperable; se conserva tal cual. En ese modelo la In 250 es '8x3'.",
+     "now": "Aparece impreso con un espacio ('8.69x 3') frente a '8.69x3' esperable (defecto tipográfico del PDF). En specs se transcribe 8.69x3; raw_row conserva el espacio impreso. En ese modelo la In 250 es '8x3'.",
+     "why": "Ajuste de la nota a la normalización anterior (antes: 'se conserva tal cual')."
+    },
+    {
+     "page": 1,
+     "item": "uncertain (nuevo): 660 VA, In 230 impreso '0.9x3'",
+     "was": null,
+     "now": "Caja industrial trifásico, 660 VA: In 230 impreso '0.9x3'; null en specs, propuesta 0.95x3 sin confirmar.",
+     "why": "Misma anomalía que '0.9 x2' en las fichas dobles (220 VA = 0.95 en las monofásicas); la fila no estaba en 'uncertain' y se publicaba como dato cierto. Fila completa idéntica en 6 PDFs (ninguno la resuelve)."
+    },
+    {
+     "page": 1,
+     "item": "uncertain (nuevo): 1000 VA, In 1.52x3 / 1.4x3",
+     "was": null,
+     "now": "Caja industrial trifásico, 1000 VA: In 1.52x3 / 1.4x3 corresponde a 350 VA monofásicos (3x350 = 1050), no a 1000 VA.",
+     "why": "Comprobado fila a fila contra la tabla monofásica motorizada: 17 de las 19 filas trifásicas cumplen potencia/3 = potencia monofásica con las mismas In 230 e In 250 (480 = 3x160 ... 33000 = 3x11000). Las excepciones son 660 VA (In 230 impresa 0.9x3 frente a 0.95; tiene su propia entrada) y 1000 VA (1000/3 no es una potencia monofásica; la In impresa corresponde a 350 VA). No se anula el valor (está impreso tal cual); se avisa."
+    },
+    {
+     "page": 1,
+     "item": "uncertain (nuevo): rótulo 'Variador tensión sobremesa' sobre la tabla de 1500 VA – 11000 VA",
+     "was": null,
+     "now": "Rótulo de la tabla de 1500 VA – 11000 VA: 'Variador tensión sobremesa' (impreso aquí y en el catálogo ES) frente a 'caja industrial monofásico' / 'in Metallic Cabinet' / 'dans coffret métallique' en otras fuentes.",
+     "why": "Riesgo de familias mezcladas: el nombre de familia impreso coincide con el del sobremesa de potencias menores (Variador-tension-sobremesa.pdf), pero esta tabla es otra (A=B hasta 800, 127.2 Kg) y otras tres fuentes (PDF hermano p. 3, catálogo EN y catálogo FR) la titulan como caja/cabinet monofásico, mientras el catálogo ES y el DE la llaman sobremesa. No se renombra la familia (se transcribe el rótulo impreso); se avisa y se deja una propuesta de nombre para decidirlo antes de publicar."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[2].normalized_hint ('In 230 (A) / In 250 (A)')",
+     "was": "intensidad nominal a 230 V y a 250 V (el PDF no detalla la condición)",
+     "now": "columnas rotuladas 'In 230 (A)' e 'In 250 (A)' (In = intensidad nominal según la nota al pie); el PDF no detalla la tensión a la que se refiere cada una ni su relación con la entrada 400V / salida 400/430V de la tabla trifásica (valores con sufijo 'x3' en esa tabla)",
+     "why": "El PDF solo rotula las columnas 'In 230 (A)' e 'In 250 (A)' y la nota al pie dice 'In hace referencia a la intensidad nominal del variador'; no escribe a qué tensión se mide cada una. La lectura 'a 230 V y a 250 V' era una inferencia (coherente con VA/230 y VA/250, pero no escrita en la ficha), igual que en la verificación de p18. Se deja la descripción literal. En la tabla trifásica las columnas siguen rotuladas 230/250 bajo Entrada 400V / Salida 400/430V."
+    },
+    {
+     "page": 1,
+     "item": "other_facts[6].fact (duplicidad)",
+     "was": "Posible duplicidad parcial con Variador-tension-sobremesa.pdf (otro trabajo): contrastar allí la tabla 'Variador tensión sobremesa'.",
+     "now": "DUPLICIDAD verificada celda a celda: las dos tablas coinciden con las de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (otro trabajo; allí la tabla de 1500 VA – 11000 VA se titula 'VARIADOR TENSIÓN EN CAJA INDUSTRIAL MONOFASICO') y con la página equivalente de las cuatro ediciones del catálogo Torivac (ES, EN, FR, DE). Variador-tension-sobremesa.pdf no es duplicado: es la ficha del sobremesa de potencias menores, sin tablas de texto y con dibujos acotados propios.",
+     "why": "La nota apuntaba a un duplicado equivocado: Variador-tension-sobremesa.pdf (renderizado y comprobado) es otra ficha, sin tabla de texto y con otro rango de potencias; los duplicados reales son la página 3 de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (31 filas, 217 celdas, 0 diferencias) y el catálogo Torivac en los cuatro idiomas."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Variador-tension-en-cura-de-aceite.pdf",
@@ -2151,6 +2393,7 @@
      "description": "Variador tensión en cura de aceite, versión Monofasico / Single phase 230V/250V. Entrada/Input 230V Salida/Output 230/250V. Siete modelos de 5000 VA a 11000 VA; dibujo acotado con las cotas A, B y C.",
      "general_specs": {
       "Rango de potencia (filas de la tabla)": "5000 VA – 11000 VA",
+      "Rango de potencia (cabecera impresa)": "1500 VA – 11000 VA",
       "Fases": "Monofasico / Single phase",
       "Tensión rotulada": "230V/250V",
       "Entrada/Input": "230V",
@@ -2213,11 +2456,11 @@
         "In 250 (A)": "32",
         "A": "450",
         "B": "655",
-        "C": "480",
+        "C": null,
         "Kg": "79"
        },
        "raw_row": "8000 34.78 32 450 655 480 79",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "9000 VA",
@@ -2275,6 +2518,7 @@
      "description": "Variador tensión en cura de aceite, versión Trifasico / Triple phase 230V/250V. Siete modelos de 15000 VA a 33000 VA con intensidades expresadas como valor x3.",
      "general_specs": {
       "Rango de potencia (filas de la tabla)": "15000 VA – 33000 VA",
+      "Rango de potencia (cabecera impresa)": "1500 VA – 11000 VA",
       "Fases": "Trifasico / Triple phase",
       "Tensión rotulada": "230V/250V",
       "Columnas": "VA, In 230 (A), In 250 (A), A, B, C, Kg",
@@ -2335,7 +2579,7 @@
         "In 250 (A)": "32x3",
         "A": "900",
         "B": "655",
-        "C": "460",
+        "C": null,
         "Kg": "190"
        },
        "raw_row": "24000 34.78x3 32x3 900 655 460 190",
@@ -2415,7 +2659,7 @@
      "raw": "In 230 (A) / In 250 (A)",
      "page": 1,
      "context": "columnas de intensidad nominal",
-     "normalized_hint": "intensidad nominal a 230 V y a 250 V (el PDF no detalla la condición)"
+     "normalized_hint": "columnas rotuladas 'In 230 (A)' e 'In 250 (A)' (valores con sufijo 'x3' en el bloque trifásico); esta hoja no incluye la nota al pie que define 'In' y el PDF no detalla la tensión a la que se refiere cada columna"
     }
    ],
    "other_facts": [
@@ -2436,7 +2680,7 @@
      "page": 1
     },
     {
-     "fact": "Posible duplicidad parcial con Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (otro trabajo), donde la misma sección se titula 'VARIADOR TENSIÓN EN CUBA DE ACEITE'.",
+     "fact": "DUPLICIDAD verificada celda a celda: la tabla coincide con la de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (otro trabajo; allí la sección se titula 'VARIADOR TENSIÓN EN CUBA DE ACEITE') y con la de las cuatro ediciones del catálogo Torivac (ES, EN, FR, DE), incluidas las cifras dudosas (ver uncertain).",
      "page": 1
     }
    ],
@@ -2454,8 +2698,8 @@
     },
     {
      "page": 1,
-     "item": "Cota C del modelo 24000 VA (460) frente al 8000 VA (480)",
-     "why": "En las demás parejas monofásico/trifásico las cotas B y C coinciden (5000/15000: 390/390; 6000/18000: 590/495; 7000/21000: 610/515; 9000/27000: 685/580; 10000/30000: 735/640; 11000/33000: 756/680). Solo 8000 VA/24000 VA difieren en C (480 frente a 460). Se transcribe lo impreso; posible errata."
+     "item": "Cuba de aceite: cota C de 8000 VA (480 impreso, monofásico) y de 24000 VA (460 impreso, trifásico)",
+     "why": "En el resto de filas B y C del bloque trifásico repiten las del monofásico (5000/15000: 390/390; 6000/18000: 590/495; 7000/21000: 610/515; 9000/27000: 685/580; 10000/30000: 735/640; 11000/33000: 756/680), pero en este par C difiere (480 frente a 460) y ambos rompen el orden creciente (515, [480], 580 y 515, [460], 580). Se dejan null los dos; no se propone valor. La misma cifra (480 y 460) está impresa en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (p. 2) y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 10 del PDF); ningún PDF del lote la resuelve."
     },
     {
      "page": 1,
@@ -2482,7 +2726,59 @@
      "item": "In 230 de 6000 VA (26.01), 11000 VA (47.85), 18000 VA (26.01x3) y 33000 VA (47.85x3)",
      "why": "Aritmética VA/230 da 26.09 y 47.83. Las cifras impresas se repiten en todas las tablas de variadores de Torivac; se conservan tal cual."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[0] (Variador tensión en cura de aceite - Monofásico (Monofasico / Single phase 230V/250V)).models['8000 VA'].specs['C']",
+     "was": "480",
+     "now": null,
+     "why": "Dato dudoso: C = 480 rompe el orden creciente de la columna (515, [480], 580) y difiere de la C de su pareja trifásica de la misma tabla (24000 VA: 460), cuando las demás parejas coinciden en B y C. Regla 1 (un dato dudoso no se publica): specs queda en null y el valor impreso se conserva en raw_row ('8000 34.78 32 450 655 480 79') y en 'uncertain'. La cifra impresa es idéntica en todos los PDFs que contienen esta tabla (anomalía de la fuente, no de la transcripción); confidence alta -> media."
+    },
+    {
+     "page": 1,
+     "item": "families[1] (Variador tensión en cura de aceite - Trifásico (Trifasico / Triple phase 230V/250V)).models['24000 VA'].specs['C']",
+     "was": "460",
+     "now": null,
+     "why": "Dato dudoso: C = 460 rompe el orden creciente de la columna (515, [460], 580) y difiere de la C de su pareja monofásica de la misma tabla (8000 VA: 480), cuando las demás parejas coinciden en B y C. Regla 1 (un dato dudoso no se publica): specs queda en null y el valor impreso se conserva en raw_row ('24000 34.78x3 32x3 900 655 460 190') y en 'uncertain'. La cifra impresa es idéntica en todos los PDFs que contienen esta tabla (anomalía de la fuente, no de la transcripción)."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Cota C del modelo 24000 VA (460) frente al 8000 VA (480)' (item reescrito: 'Cuba de aceite: cota C de 8000 VA (480 impreso, monofásico) y de 24000 VA (460 impreso, trifásico)')",
+     "was": "En las demás parejas monofásico/trifásico las cotas B y C coinciden (5000/15000: 390/390; 6000/18000: 590/495; 7000/21000: 610/515; 9000/27000: 685/580; 10000/30000: 735/640; 11000/33000: 756/680). Solo 8000 VA/24000 VA difieren en C (480 frente a 460). Se transcribe lo impreso; posible errata.",
+     "now": "En el resto de filas B y C del bloque trifásico repiten las del monofásico (5000/15000: 390/390; 6000/18000: 590/495; 7000/21000: 610/515; 9000/27000: 685/580; 10000/30000: 735/640; 11000/33000: 756/680), pero en este par C difiere (480 frente a 460) y ambos rompen el orden creciente (515, [480], 580 y 515, [460], 580). Se dejan null los dos; no se propone valor. La misma cifra (480 y 460) está impresa en Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (p. 2) y en las cuatro ediciones del catálogo Torivac 2024 (ES, EN, FR, DE; p. 10 del PDF); ningún PDF del lote la resuelve.",
+     "why": "Ambos valores pasan a null en specs (regla 1). Antes solo el de 24000 VA llevaba confidence 'media' y el de 8000 VA figuraba como 'alta' aunque la nota ya lo cuestionaba; ahora las dos filas son 'media'. Búsqueda de las dos filas completas en todos los textos extraídos: idénticas en 6 PDFs."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions[3].normalized_hint ('In 230 (A) / In 250 (A)')",
+     "was": "intensidad nominal a 230 V y a 250 V (el PDF no detalla la condición)",
+     "now": "columnas rotuladas 'In 230 (A)' e 'In 250 (A)' (valores con sufijo 'x3' en el bloque trifásico); esta hoja no incluye la nota al pie que define 'In' y el PDF no detalla la tensión a la que se refiere cada columna",
+     "why": "La hoja de la cuba de aceite no lleva la nota al pie 'In hace referencia a la intensidad nominal del variador' (sí la llevan las otras hojas), por lo que ni siquiera 'intensidad nominal' está escrito aquí; tampoco dice a qué tensión se mide cada columna. La lectura 'intensidad nominal a 230 V y a 250 V' era una inferencia. Se deja la descripción literal."
+    },
+    {
+     "page": 1,
+     "item": "families[0] (Variador tensión en cura de aceite - Monofásico (Monofasico / Single phase 230V/250V)).general_specs['Rango de potencia (cabecera impresa)']",
+     "was": null,
+     "now": "1500 VA – 11000 VA",
+     "why": "Omisión: la cabecera impresa de la tabla dice '1500 VA – 11000 VA' pero las filas van de 5000 a 33000 VA. El dato solo figuraba en 'uncertain' y en el contexto de voltage_mentions; se registra también en general_specs (sin sustituir el rango real de las filas) para que quien derive el rango de potencia no use 1500 VA como mínimo ni lo pierda. Mismo tratamiento que en la verificación de p18."
+    },
+    {
+     "page": 1,
+     "item": "families[1] (Variador tensión en cura de aceite - Trifásico (Trifasico / Triple phase 230V/250V)).general_specs['Rango de potencia (cabecera impresa)']",
+     "was": null,
+     "now": "1500 VA – 11000 VA",
+     "why": "Omisión: la cabecera impresa de la tabla dice '1500 VA – 11000 VA' pero las filas van de 5000 a 33000 VA. El dato solo figuraba en 'uncertain' y en el contexto de voltage_mentions; se registra también en general_specs (sin sustituir el rango real de las filas) para que quien derive el rango de potencia no use 1500 VA como mínimo ni lo pierda. Mismo tratamiento que en la verificación de p18."
+    },
+    {
+     "page": 1,
+     "item": "other_facts[4].fact (duplicidad)",
+     "was": "Posible duplicidad parcial con Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (otro trabajo), donde la misma sección se titula 'VARIADOR TENSIÓN EN CUBA DE ACEITE'.",
+     "now": "DUPLICIDAD verificada celda a celda: la tabla coincide con la de Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf (otro trabajo; allí la sección se titula 'VARIADOR TENSIÓN EN CUBA DE ACEITE') y con la de las cuatro ediciones del catálogo Torivac (ES, EN, FR, DE), incluidas las cifras dudosas (ver uncertain).",
+     "why": "La nota decía 'posible duplicidad parcial'. Comprobado por coordenadas (pdftotext -bbox) y por búsqueda de filas: las 14 filas y 98 celdas coinciden (0 diferencias) con la página 2 del PDF hermano y con el catálogo en los cuatro idiomas."
+    }
+   ],
+   "verified": true
   }
  ]
 }

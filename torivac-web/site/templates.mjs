@@ -11,6 +11,35 @@ const pick = (obj, lang) => (obj && (obj[lang] ?? obj.es)) ?? '';
 
 
 
+
+// ───────────────────────────────────────────────────────────── [ART] piezas gráficas técnicas (SVG propio, sin librerías)
+/** Bobinado toroidal visto desde arriba (mismo motivo que el logotipo): 56 espiras que se «dibujan» al entrar en pantalla (CSS + IntersectionObserver en app.js). */
+export function toroidArt() {
+  const N = 56, R0 = 78, R1 = 168; let turns = '';
+  for (let i = 0; i < N; i++) {
+    const a = (i / N) * Math.PI * 2, b = a + 0.09, c = (c0, r) => `${(200 + Math.cos(c0) * r).toFixed(1)} ${(200 + Math.sin(c0) * r).toFixed(1)}`;
+    turns += `<path class="tt" pathLength="1" style="--i:${i}" d="M${c(a, R0)} C${c(a + 0.02, R0 + 30)} ${c(b - 0.02, R1 - 30)} ${c(b, R1)}"/>`;
+  }
+  return `<svg class="toroid-art" viewBox="0 0 400 400" aria-hidden="true" focusable="false"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="200" cy="200" r="${R0 - 6}" opacity=".5"/><circle cx="200" cy="200" r="${R1 + 6}" opacity=".5"/>${turns}</g></svg>`;
+}
+/** Osciloscopio esquemático de un variador de tensión: la onda de salida (cobre) se reduce al mover el mando; la de entrada (230 V) queda fija. JS: assets/js/lab.js */
+export function waveLab(ctx) {
+  const { lang } = ctx;
+  const grid = Array.from({ length: 7 }, (_, i) => `<line x1="0" x2="640" y1="${i * 40}" y2="${i * 40}"/>`).join('') + Array.from({ length: 17 }, (_, i) => `<line y1="0" y2="240" x1="${i * 40}" x2="${i * 40}"/>`).join('');
+  return `<section class="wave-lab" aria-labelledby="h-lab" data-lab>
+  <div class="wl-head"><h2 id="h-lab">${t('lab_title', lang)}</h2><p>${t('lab_hint', lang)}</p></div>
+  <div class="wl-grid">
+    <svg viewBox="0 0 640 240" role="img" aria-label="${attr(t('lab_aria', lang))}"><g class="wl-grid-lines">${grid}</g><line class="wl-axis" x1="0" x2="640" y1="120" y2="120"/><path class="wl-in" data-wl-in d="M0 120"/><path class="wl-out" data-wl-out-path d="M0 120"/></svg>
+    <div class="wl-ctl">
+      <label for="wl-range">${t('lab_knob', lang)}</label>
+      <input id="wl-range" type="range" min="0" max="230" step="1" value="230" data-wl-range>
+      <dl><div><dt>${t('lab_in', lang)}</dt><dd class="mono">230 V ~</dd></div><div><dt>${t('lab_out', lang)}</dt><dd class="mono" data-wl-readout aria-live="polite">230 V ~</dd></div></dl>
+      <p class="muted small">${t('lab_note', lang)}</p>
+    </div>
+  </div>
+</section>`;
+}
+
 // ───────────────────────────────────────────────────────────── [A11Y] orden de encabezados
 /** El contenido original salta de nivel (H1→H4). Se corrige en la ACCESIBILIDAD (aria-level) sin tocar la etiqueta, así el diseño no cambia:
  *  ningún encabezado sube más de un nivel respecto al anterior. */
@@ -208,7 +237,7 @@ export function homeBody(ctx, page) {
     <div>${eyebrowAndHead(s1)}${paras(s1)}${bt(s1)}</div></div></section>`;
   const car2 = imgs(s2).map((i) => `<img src="${attr(ctx.thumb(i.img))}" alt="${attr(i.alt || '')}" loading="lazy">`).join('');
   const s2h = s2.blocks.filter((b) => b.t === 'h');
-  const sec2 = `<section class="sec alt"><div class="container"><h2 class="center">${esc(s2h.find((h) => h.l <= 3)?.x || '')}</h2>
+  const sec2 = `<section class="sec alt art-host">${toroidArt()}<div class="container"><h2 class="center">${esc(s2h.find((h) => h.l <= 3)?.x || '')}</h2>
     <div class="split"><div class="card-shadow"><h3>${esc(s2h.find((h) => h.l >= 4)?.x || '')}</h3>${paras(s2)}${bt(s2)}</div><div class="photo-grid" aria-label="Fotos">${car2}</div></div></div></section>`;
   const tiles = page.services.map((c) => `<a class="tile" href="${attr(mapLink(ctx, c.href))}"><img src="${attr(ctx.img(c.icon))}" alt="" loading="lazy" width="92" height="92"><span>${esc(c.title)}</span></a>`).join('');
   const sec3 = `<section class="sec tight"><div class="container">${eyebrowAndHead(s3)}<div class="tiles">${tiles}</div></div></section>`;
@@ -306,6 +335,7 @@ export function shopBody(ctx, { products, category = null, intro = [] }) {
   <div>
     ${crumbsHtml}
     ${introHtml}
+    ${category && category.id === 19 ? waveLab(ctx) : ''}
     ${category ? (category.children.length ? categoryCards(ctx, category.children, { heading: t('explore_sub', lang), limit: 0, long: true }) : '') : categoryCards(ctx, null, { guard: true })}
     <div class="toolbar"><button class="btn sm ghost filters-toggle" type="button" data-filters-toggle>☰ ${t('filters', lang)}</button><span class="count" data-count aria-live="polite">${countLabel(products.length, lang)}</span></div>
     <div class="pgrid" data-grid>${products.map((p) => productCard(ctx, p)).join('')}</div>

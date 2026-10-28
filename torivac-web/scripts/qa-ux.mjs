@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // [QA-UX] Sesión 10 · Control riguroso de experiencia de usuario sobre TODAS las páginas del demo (Playwright, por http).
-//   node scripts/qa-ux.mjs [--limit=N] [--mobile] [--only=/ruta/] [--workers=4] [--out=informe.json]
+//   node scripts/qa-ux.mjs [--limit=N] [--mobile | --width=1280] [--only=/ruta/] [--workers=4] [--out=informe.json]
 // Por página mide (tras recorrerla entera para que carguen las imágenes diferidas):
 //   DUROS (fallan la prueba)   cualquier petición a otro dominio (la demo debe ser autónoma) · desborde horizontal · imagen rota · imagen deformada (relación de aspecto distinta con object-fit:fill) ·
 //                              restos de código visibles ([vc_…], &#…, {{…}}, undefined/NaN…) · errores de consola o de red local · ids duplicados
@@ -16,7 +16,8 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const opt = (k, d) => { const a = process.argv.find((x) => x.startsWith(`--${k}=`)); return a ? a.split('=').slice(1).join('=') : d; };
 const MOBILE = process.argv.includes('--mobile');
-const LIMIT = Number(opt('limit', 0)), WORKERS = Number(opt('workers', 4)), ONLY = opt('only', ''), OUT = opt('out', path.join(ROOT, 'data', 'analysis', MOBILE ? 'qa-ux-mobile.json' : 'qa-ux-desktop.json'));
+const WIDTH = Number(opt('width', MOBILE ? 390 : 1440));
+const LIMIT = Number(opt('limit', 0)), WORKERS = Number(opt('workers', 4)), ONLY = opt('only', ''), OUT = opt('out', path.join(ROOT, 'data', 'analysis', MOBILE ? 'qa-ux-mobile.json' : WIDTH === 1440 ? 'qa-ux-desktop.json' : `qa-ux-w${WIDTH}.json`));
 
 // ───────────────────────────────────────── páginas a recorrer: todas las indexables (sin redirecciones ni /assets/ ni /admin/)
 const pages = [];
@@ -70,7 +71,7 @@ const inPage = () => {
     if (cs.textOverflow === 'ellipsis' || cs.webkitLineClamp && cs.webkitLineClamp !== 'none') continue;
     if (!(el.innerText || '').trim()) continue;
     const dx = el.scrollWidth - el.clientWidth, dy = el.scrollHeight - el.clientHeight;
-    if ((dx > 3 || dy > 3) && !el.matches('.tbl-wrap, .thumb, .ph, .ratio')) out.clipped.push(`${desc(el)} (+${Math.max(dx, dy)}px) «${el.innerText.trim().slice(0, 40)}»`);
+    if ((dx > 3 || dy > 3) && !el.matches('.tbl-wrap, .thumb, .ph, .ratio, .art-host')) out.clipped.push(`${desc(el)} (+${Math.max(dx, dy)}px) «${el.innerText.trim().slice(0, 40)}»`);
   }
   // nombres accesibles
   for (const el of document.querySelectorAll('a[href], button')) {
@@ -110,7 +111,7 @@ const inPage = () => {
 // ───────────────────────────────────────── ejecución
 const { server, base } = await serve(DIST);
 const browser = await chromium.launch();
-const ctx = await browser.newContext({ viewport: MOBILE ? { width: 390, height: 844 } : { width: 1440, height: 900 }, locale: 'es-ES' });
+const ctx = await browser.newContext({ viewport: { width: WIDTH, height: WIDTH <= 600 ? 844 : 900 }, locale: 'es-ES' });
 await ctx.addInitScript(() => { try { localStorage.setItem('tv_lang_auto_done', '1'); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang', document.documentElement.lang || 'es'); } catch (e) { /* ignorar */ } });
 const results = []; let idx = 0, done = 0; const t0 = Date.now();
 async function worker() {
@@ -144,8 +145,8 @@ const SOFT = ['cropped', 'upscaled', 'clipped', 'noname', 'lang'];
 const tally = {};
 for (const r of results) for (const k of [...HARD, ...SOFT]) { const v = r[k]; if (v && (Array.isArray(v) ? v.length : true)) (tally[k] ||= []).push(r); }
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
-fs.writeFileSync(OUT, JSON.stringify({ viewport: MOBILE ? '390x844' : '1440x900', pages: results.length, tally: Object.fromEntries(Object.entries(tally).map(([k, v]) => [k, v.length])), results }, null, 1));
-console.log(`\n${results.length} páginas (${MOBILE ? 'móvil 390' : 'escritorio 1440'}) en ${Math.round((Date.now() - t0) / 1000)} s`);
+fs.writeFileSync(OUT, JSON.stringify({ viewport: `${WIDTH}px`, pages: results.length, tally: Object.fromEntries(Object.entries(tally).map(([k, v]) => [k, v.length])), results }, null, 1));
+console.log(`\n${results.length} páginas (ancho ${WIDTH}px) en ${Math.round((Date.now() - t0) / 1000)} s`);
 let hard = 0;
 for (const [title, keys] of [['DUROS', HARD], ['AVISOS', SOFT]]) {
   console.log(`\n${title}`);
