@@ -116,5 +116,5 @@ La CI (`ci/ci.yml`) las encadena. `node scripts/capturas.mjs` genera capturas de
 - **Algo falla en `file://`**: el almacenamiento entre páginas de Chrome es inconsistente; usar un servidor (`python3 -m http.server`) o producción.
 
 ## 11. Riesgos y pendiente conocidos
-Referencias pedibles reales y etiquetas de voltaje dependen del enlace producto↔PDF (análisis en curso; lo dudoso va a propuestas). Destinatarios de pedidos (info@torivac.com vs info@grupotorivac.com, mzamora@) por confirmar.
+Referencias pedibles reales y etiquetas de voltaje dependen del enlace producto↔PDF (análisis en curso; lo dudoso va a propuestas). Destinatarios de pedidos confirmados: info@grupotorivac.com y mzamora@torivac.com (el pie mantiene info@torivac.com, contenido original); queda verificar el dominio en Resend.
 Estadísticas externas sin conectar. Textos legales publicados tal cual con sus defectos (ver propuestas `legal`). Traducciones inexistentes en el original (5 fichas) mostradas en español con aviso.

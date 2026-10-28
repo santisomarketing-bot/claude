@@ -6,3 +6,9 @@ node_modules/
 data/raw/rest/media.*.json
 data/raw/pdf/
 entrega/
+
+# salida generada y datos privados (precios reales): nunca al repositorio
+dist/
+data/private/
+private/
+*.private.*

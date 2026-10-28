@@ -29,7 +29,7 @@ const expTotal = round2(REFS.reduce((s, r) => s + round2(unit(r, QTY[r]) * QTY[r
 
 // ───────────────────────────────────────── [SITE] + [WORKER]
 const { server: site, base: SITE } = await serve(DIST);
-const env = { KV: new FakeKV(), ORDER_TO: 'info@torivac.com,mzamora@torivac.com', ORDER_FROM: 'Torivac Web <pedidos@torivac.com>', RESEND_API_KEY: 're_test', SESSION_SECRET: 'x'.repeat(40), ADMIN_API_TOKEN: 'master-test', ALLOWED_ORIGINS: SITE };
+const env = { KV: new FakeKV(), ORDER_TO: 'info@grupotorivac.com,mzamora@torivac.com', ORDER_FROM: 'Torivac Web <pedidos@grupotorivac.com>', RESEND_API_KEY: 're_test', SESSION_SECRET: 'x'.repeat(40), ADMIN_API_TOKEN: 'master-test', ALLOWED_ORIGINS: SITE };
 await env.KV.put(KEY_CURRENT, JSON.stringify({ ...prices, mode: 'live', updated_at: new Date().toISOString() }));
 const mails = []; let failNext = false;
 const mockFetch = async (url, init) => { if (String(url).includes('api.resend.com')) { mails.push(JSON.parse(init.body)); return new Response(JSON.stringify({ id: 'mail_' + mails.length }), { status: 200 }); } throw new Error('red no permitida en el test: ' + url); };
@@ -73,7 +73,7 @@ ok(/recibido|copia/i.test(sent), `mensaje de éxito: «${sent.replace(/\s+/g, ' 
 ok((await page.evaluate(() => TV.Quote.count())) === 0, 'el presupuesto se vacía tras enviarlo');
 ok(mails.length === 2, `2 correos (equipo + copia al cliente): ${mails.length}`);
 const team = mails[0] || {}, copy = mails[1] || {};
-ok(JSON.stringify(team.to) === JSON.stringify(['info@torivac.com', 'mzamora@torivac.com']), `equipo: ${JSON.stringify(team.to)}`);
+ok(JSON.stringify(team.to) === JSON.stringify(['info@grupotorivac.com', 'mzamora@torivac.com']), `equipo: ${JSON.stringify(team.to)}`);
 ok(team.reply_to === 'cliente.prueba@example.com' || team.replyTo === 'cliente.prueba@example.com' || JSON.stringify(team).includes('cliente.prueba@example.com'), 'responder-a = cliente');
 ok(JSON.stringify(copy.to) === JSON.stringify(['cliente.prueba@example.com']), 'copia al cliente');
 const att = (team.attachments || [])[0];
@@ -109,7 +109,7 @@ await cf.locator('button[type=submit]').click();
 await cf.locator('[data-sent]:not([hidden])').waitFor({ timeout: 8000 });
 ok(/recibido/i.test(await cf.locator('[data-sent]').innerText()), 'mensaje de confirmación');
 const cm = mails.at(-1) || {};
-ok(JSON.stringify(cm.to) === JSON.stringify(['info@torivac.com', 'mzamora@torivac.com']) && /toroidal/.test(JSON.stringify(cm)), 'llega a info@ y mzamora@ con el texto del mensaje');
+ok(JSON.stringify(cm.to) === JSON.stringify(['info@grupotorivac.com', 'mzamora@torivac.com']) && /toroidal/.test(JSON.stringify(cm)), 'llega a info@ y mzamora@ con el texto del mensaje');
 
 console.log('\n5) CORS: un origen ajeno no puede usar el API');
 const bad = await fetch(API + '/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: 'https://evil.example' }, body: '{}' });

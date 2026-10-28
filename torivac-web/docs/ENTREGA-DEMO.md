@@ -39,8 +39,8 @@ precios desde Google Sheets/CSV con cron cada 24 h + actualización manual, logi
 `node scripts/qa-quote.mjs` (presupuesto realista en 4 idiomas, totales y PDF) · `qa-lang.mjs` (idiomas) · `qa-live.mjs` (web + Worker) · `smoke.mjs` · `smoke-admin.mjs` · `cd workers/api && npm test`.
 
 ## Pendiente / decisiones tuyas
-1. **Destinatarios**: ¿`info@torivac.com` o `info@grupotorivac.com`? ¿`mzamora@torivac.com`? (hoy figuran como «por confirmar»).
-2. **Hosting** del dominio de prueba (propuesta: Cloudflare Pages + el Worker) y de dónde saldrán los **precios reales** (Excel en Drive).
+1. ~~Destinatarios~~ **Confirmado**: los pedidos y mensajes llegan a `info@grupotorivac.com` (también para las pruebas) y a `mzamora@torivac.com`. El pie de la web conserva `info@torivac.com` (es contenido original). Falta verificar el dominio `grupotorivac.com` en Resend (SPF/DKIM) para enviar desde `pedidos@grupotorivac.com`: ver `docs/DESPLIEGUE-CPANEL.md`.
+2. **Hosting**: la web estática irá a un **hosting con cPanel** (no Cloudflare Pages). El Worker de la API sigue en Cloudflare salvo que prefieras un backend PHP en el mismo cPanel (pendiente de tu decisión). Los **precios reales** saldrán de un Excel/Google Sheet en tu Drive (formatos reconocidos: `docs/PRECIOS-DRIVE.md`).
 3. Enlace producto ↔ PDF (referencias pedibles reales, etiquetas de voltaje, fichas) y verificación de los PDF: el análisis se cortó por el límite de uso de las 5 h; se relanza y todo lo dudoso irá a «Propuestas».
 4. Traducciones que faltan en el original (variador portátil, SAI, 2 onduladores y fuente de CA; «Trifásico manual» sin alemán): se buscaron leyendo las redirecciones públicas de WPML de la web original y **no hay traducción publicada**; mientras tanto la web nueva muestra el español con aviso. **La web nueva no usa WPML ni ningún plugin de idioma** (HTML estático con selector y detección propios); WPML solo se consultó, en lectura, para emparejar traducciones al migrar.
 5. Gráficos extra (sesión 12), documentación para programadores (sesión 15) y la sesión final de revisión para superar la versión de Why Not (sesión 16).

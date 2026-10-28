@@ -6,7 +6,7 @@ export class FakeKV {
   async delete(k) { this.m.delete(k); }
   async list({ prefix = '' } = {}) { return { keys: [...this.m.keys()].filter((k) => k.startsWith(prefix)).map((name) => ({ name })), list_complete: true }; }
 }
-export const mkEnv = (extra = {}) => ({ KV: new FakeKV(), ORDER_TO: 'info@torivac.com, mzamora@torivac.com', ADMIN_API_TOKEN: 'master-token-123', SESSION_SECRET: 'x'.repeat(40), ALLOWED_ORIGINS: 'https://demo.example', ...extra });
+export const mkEnv = (extra = {}) => ({ KV: new FakeKV(), ORDER_TO: 'info@grupotorivac.com, mzamora@torivac.com', ADMIN_API_TOKEN: 'master-token-123', SESSION_SECRET: 'x'.repeat(40), ALLOWED_ORIGINS: 'https://demo.example', ...extra });
 export const req = (path, { method = 'GET', body, headers = {} } = {}) => new Request(`https://api.test${path}`, { method, headers: { 'Content-Type': 'application/json', ...headers }, body: body ? JSON.stringify(body) : undefined });
 export const CATALOG = { 'TT0020210': { n: 'Transformador serie TT 20 VA', pid: 884 }, P16633: { n: 'Variador portátil', pid: 16633 }, R100: { n: 'Resistencia 100 W', pid: 1 } };
 export const PRICES = { updated_at: '2026-10-27T00:00:00Z', source: 'test', currency: 'EUR', mode: 'live', items: { TT0020210: { p: 12.37, t: [[10, 11.9], [50, 11.4]] }, P16633: { p: 67.65 } } };

@@ -25,12 +25,12 @@
         TV.api.post('/api/contact', { name: d.name, email: d.email, message: d.message, privacy: !!d.privacy, lang: Q.lang, hp: d.hp || '' }).then(function (r) {
           btn.disabled = false; btn.textContent = label; out.hidden = false;
           if (r && r.ok) { out.className = 'notice ok'; out.innerHTML = '<strong>' + TV.esc(Q.t('message_received')) + '</strong>'; f.reset(); }
-          else { var mail = ((TV.meta && TV.meta.recipients) || ['info@torivac.com'])[0]; out.className = 'notice'; out.innerHTML = TV.esc(Q.t('send_failed')) + ' <a href="mailto:' + TV.esc(mail) + '">' + TV.esc(mail) + '</a>'; }
+          else { var mail = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0]; out.className = 'notice'; out.innerHTML = TV.esc(Q.t('send_failed')) + ' <a href="mailto:' + TV.esc(mail) + '">' + TV.esc(mail) + '</a>'; }
         });
         return;
       }
       try { var arr = JSON.parse(localStorage.getItem('tv_messages') || '[]'); arr.push({ at: new Date().toISOString(), name: d.name, email: d.email, message: d.message }); localStorage.setItem('tv_messages', JSON.stringify(arr)); } catch (x) { /* ignorar */ }
-      var to = (TV.meta && TV.meta.recipients || ['info@torivac.com']).join(',');
+      var to = (TV.meta && TV.meta.recipients || ['info@grupotorivac.com']).join(',');
       var href = 'mailto:' + to + '?subject=' + encodeURIComponent('Contacto web · ' + d.name) + '&body=' + encodeURIComponent(d.message + '\n\n— ' + d.name + ' <' + d.email + '>');
       out.hidden = false; out.innerHTML = '<strong>' + TV.esc(Q.t('order_sent')) + '</strong> · ' + TV.esc(Q.t('order_sent_text')) + ' <a href="' + href + '">' + TV.esc(Q.t('open_email')) + '</a>';
       f.reset();

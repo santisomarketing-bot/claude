@@ -29,7 +29,7 @@ const { items, prices } = sb.TV;
 
 const { server: site, base: SITE } = await serve(DIST);
 const SHEET_CSV = 'ref;price;qty2;price2\nP884;88,5;10;85\nP8339;15,82;;\nP8340;62,93;;\nP932;49,128;;\n';
-const env = { KV: new FakeKV(), PRICE_CSV_URL: 'https://sheet.test/precios.csv', ORDER_TO: 'info@torivac.com,mzamora@torivac.com', RESEND_API_KEY: 're_test', ANTHROPIC_API_KEY: 'sk-test', SESSION_SECRET: 'x'.repeat(40), ADMIN_API_TOKEN: 'master-test', ALLOWED_ORIGINS: SITE };
+const env = { KV: new FakeKV(), PRICE_CSV_URL: 'https://sheet.test/precios.csv', ORDER_TO: 'info@grupotorivac.com,mzamora@torivac.com', RESEND_API_KEY: 're_test', ANTHROPIC_API_KEY: 'sk-test', SESSION_SECRET: 'x'.repeat(40), ADMIN_API_TOKEN: 'master-test', ALLOWED_ORIGINS: SITE };
 await env.KV.put(KEY_CURRENT, JSON.stringify({ ...prices, mode: 'live', updated_at: '2026-10-28T08:00:00.000Z' }));
 await createUser(env, { email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manager', password: 'Manager-Clave-2026' });
 await createUser(env, { email: 'marta@taller.es', name: 'Marta Taller', role: 'client', password: 'Cliente-Clave-2026' });

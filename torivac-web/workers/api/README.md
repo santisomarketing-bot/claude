@@ -57,8 +57,9 @@ curl -X POST https://<worker>/api/users -H "Authorization: Bearer $ADMIN_API_TOK
   -d '{"email":"tu@correo","name":"Tu nombre","role":"manager","password":"mínimo 10 caracteres"}'
 # panel real: compilar la web con  TORIVAC_API=https://<worker>  → /admin/ carga admin-live.js (login real) en lugar del demo
 ```
-Antes de producción: confirmar con el cliente `ORDER_TO` y `ORDER_FROM` (dominio verificado en Resend),
-y poner en `ALLOWED_ORIGINS` el dominio real de la web.
+Destinatarios confirmados por el cliente: `ORDER_TO = info@grupotorivac.com, mzamora@torivac.com` (info@ también para las pruebas).
+Antes de producción: verificar `grupotorivac.com` en Resend (SPF/DKIM) para que `ORDER_FROM` (`pedidos@grupotorivac.com`) no vaya a spam,
+y poner en `ALLOWED_ORIGINS` el dominio real de la web (y el del cPanel de pruebas).
 
 ## Pruebas
 `npm test` (Node ≥ 22, sin dependencias): 24 pruebas — hash/sesión, validación, tramos y céntimos,

@@ -35,10 +35,10 @@
  },
  "order_recipients": {
   "to": [
-   "info@torivac.com",
+   "info@grupotorivac.com",
    "mzamora@torivac.com"
   ],
-  "status": "POR CONFIRMAR: la web muestra info@torivac.com; el dictado decía grupotoriback.com / toriback.com"
+  "status": "CONFIRMADO por el cliente: pedidos a info@grupotorivac.com (también para pruebas) y mzamora@torivac.com. El pie de la web sigue mostrando info@torivac.com (contenido original)."
  },
  "nav": {
   "es": [

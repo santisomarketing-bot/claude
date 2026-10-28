@@ -16,9 +16,9 @@ id = "REEMPLAZAR_CON_EL_ID_DEL_KV"
 crons = ["0 3 * * *"]
 
 [vars]
-ORDER_TO = "info@torivac.com,mzamora@torivac.com"      # POR CONFIRMAR con el cliente
-ORDER_FROM = "Torivac Web <pedidos@torivac.com>"        # dominio verificado en Resend
-ALLOWED_ORIGINS = "http://localhost:8080,http://127.0.0.1:8080"
+ORDER_TO = "info@grupotorivac.com,mzamora@torivac.com"   # confirmado por el cliente (info@ también para pruebas)
+ORDER_FROM = "Torivac Web <pedidos@grupotorivac.com>"    # el dominio debe estar verificado en Resend (SPF/DKIM en el DNS)
+ALLOWED_ORIGINS = "http://localhost:8080,http://127.0.0.1:8080"      # añadir el dominio real/de pruebas de la web en cPanel, p. ej. https://nueva.grupotorivac.com
 PRICE_SHEET_ID = ""                                      # id de la hoja de Google (docs.google.com/spreadsheets/d/<ID>/…)
 PRICE_SHEET_RANGE = "Precios!A:O"
 PRICE_CSV_URL = ""                                       # alternativa sin credenciales: URL de exportación CSV de la hoja (compartida con enlace)

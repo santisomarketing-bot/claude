@@ -89,7 +89,7 @@ test('pedido: valora en servidor (ignora precios del cliente), guarda y envía a
   const res = await handleOrder(req('/api/order', { method: 'POST', body }), env, body, { fetchImpl, catalog: CATALOG, now: new Date('2026-10-28T07:00:00Z') });
   const j = await res.json();
   assert.equal(res.status, 200); assert.equal(j.number, 'TV-20261028-0001'); assert.equal(j.total, 142.8); assert.equal(j.unpriced, 1);
-  assert.deepEqual(sent[0].to, ['info@torivac.com', 'mzamora@torivac.com']);
+  assert.deepEqual(sent[0].to, ['info@grupotorivac.com', 'mzamora@torivac.com']);
   assert.equal(sent[0].reply_to, 'ana@acme.es'); assert.equal(sent[0].attachments[0].filename, 'TV-20261028-0001.pdf');
   assert.deepEqual(sent[1].to, ['ana@acme.es']);
   const rec = JSON.parse(await env.KV.get('order:TV-20261028-0001')); assert.equal(rec.lines[0].unit, 11.9); assert.equal(rec.total, 142.8);

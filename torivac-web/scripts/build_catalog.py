@@ -480,7 +480,7 @@ def main():
         "name": "Torivac", "legal_name": "Torivac S.L.", "price_mode": "demo", "currency": "EUR",
         "languages": [{"code": l, "prefix": "" if l == "es" else f"/{l}", "label": {"es": "Español", "en": "English", "fr": "Français", "de": "Deutsch"}[l]} for l in LANGS],
         "contact": {"address": ["C/ Potosi Nº 2, Planta 6ª", "08030 Barcelona"], "phone": "+34 93 312 01 61", "email": "info@torivac.com"},
-        "order_recipients": {"to": ["info@torivac.com", "mzamora@torivac.com"], "status": "POR CONFIRMAR: la web muestra info@torivac.com; el dictado decía grupotoriback.com / toriback.com"},
+        "order_recipients": {"to": ["info@grupotorivac.com", "mzamora@torivac.com"], "status": "CONFIRMADO por el cliente: pedidos a info@grupotorivac.com (también para pruebas) y mzamora@torivac.com. El pie de la web sigue mostrando info@torivac.com (contenido original)."},
         "nav": nav, "footer": foot,
         "catalogs": {"es": "Torivac_2024.pdf", "en": "Torivac_2024_EN.pdf", "fr": "Torivac_2024_FR.pdf", "de": "catalogue-torivac-DE.pdf"},
         "generated_by": "scripts/build_catalog.py",

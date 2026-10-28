@@ -124,7 +124,7 @@
 
   V.ajustes = function () {
     var r = (TV.meta && TV.meta.recipients) || [];
-    return '<h1>Ajustes</h1><section class="panel"><h2>Destinatarios del pedido</h2><p>' + r.map(esc).join(' · ') + '</p><p class="notice">Por confirmar: la web muestra <strong>info@torivac.com</strong>; el brief decía grupotoriback.com / toriback.com. En el demo no se envía ningún correo.</p></section><section class="panel"><h2>Usuarios (demo)</h2><table class="spec"><tbody><tr><th>manager@torivac.demo</th><td>rol manager</td></tr><tr><th>cliente@torivac.demo</th><td>rol cliente</td></tr></tbody></table></section>';
+    return '<h1>Ajustes</h1><section class="panel"><h2>Destinatarios del pedido</h2><p>' + r.map(esc).join(' · ') + '</p><p class="notice">Confirmado por el cliente: los pedidos llegan a <strong>info@grupotorivac.com</strong> (también para las pruebas) y a <strong>mzamora@torivac.com</strong>. El pie de la web mantiene <strong>info@torivac.com</strong> (contenido original). En el demo no se envía ningún correo.</p></section><section class="panel"><h2>Usuarios (demo)</h2><table class="spec"><tbody><tr><th>manager@torivac.demo</th><td>rol manager</td></tr><tr><th>cliente@torivac.demo</th><td>rol cliente</td></tr></tbody></table></section>';
   };
 
   V.presupuestador = function () {

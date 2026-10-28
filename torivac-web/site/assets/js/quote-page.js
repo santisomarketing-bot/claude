@@ -98,7 +98,7 @@
         out.className = 'notice ok'; out.innerHTML = '<strong>' + esc(Q.t('order_sent')) + ' · ' + esc(r.number) + '</strong><br>' + esc(Q.t('order_received'));
         Q.clear(); form.reset();
       } else {
-        var mail = ((TV.meta && TV.meta.recipients) || ['info@torivac.com'])[0];
+        var mail = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];
         out.className = 'notice'; out.innerHTML = esc(Q.t('send_failed')) + ' <a href="mailto:' + esc(mail) + '">' + esc(mail) + '</a>' + (r && r.error && r.error !== 'network' ? '<br><span class="small muted">' + esc(r.error) + '</span>' : '');
       }
       out.focus();
@@ -109,7 +109,7 @@
   function sendDemo(c, res, d, out) {
     download(res);
     var body = Q.t('quote') + ' ' + res.number + '\n\n' + d.lines.map(function (l) { return '- ' + (l.generic ? '' : l.ref + ' · ') + l.name + ' × ' + l.qty + (l.total == null ? '' : ' = ' + Q.money(l.total)); }).join('\n') + '\n\n' + Q.t('total') + ': ' + Q.money(d.total) + '\n\n' + [c.name, c.company, c.email, c.phone].filter(Boolean).join(' · ') + (c.notes ? '\n\n' + c.notes : '') + '\n\n(PDF: ' + res.filename + ')';
-    var to = ((TV.meta && TV.meta.recipients) || ['info@torivac.com']).join(',');
+    var to = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com']).join(',');
     var href = 'mailto:' + to + '?cc=' + encodeURIComponent(c.email) + '&subject=' + encodeURIComponent(Q.t('quote') + ' ' + res.number) + '&body=' + encodeURIComponent(body);
     try { var arr = JSON.parse(localStorage.getItem('tv_orders') || '[]'); arr.push({ number: res.number, at: new Date().toISOString(), customer: c, lines: d.lines.map(function (l) { return { ref: l.ref, qty: l.qty, unit: l.unit, total: l.total }; }), total: d.total, demo: !!(TV.prices && TV.prices.mode === 'demo') }); localStorage.setItem('tv_orders', JSON.stringify(arr)); } catch (x) { /* ignorar */ }
     out.hidden = false;
