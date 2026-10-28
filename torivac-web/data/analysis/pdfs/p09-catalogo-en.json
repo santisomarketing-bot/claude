@@ -43,8 +43,8 @@
        "reference": "HB - 4",
        "page": 29,
        "specs": {
-        "Outer Ø dimension (drawing)": "11",
-        "Inner Ø dimension (drawing)": "4",
+        "Ø dimension, top line (drawing)": "11",
+        "Ø dimension, second line (drawing)": "4",
         "Overall vertical dimension (drawing)": "24,1",
         "ROSCA (drawing)": "8/0,75"
        },
@@ -55,8 +55,8 @@
        "reference": "HR - 4",
        "page": 29,
        "specs": {
-        "Outer Ø dimension (drawing)": "11",
-        "Inner Ø dimension (drawing)": "4",
+        "Ø dimension, top line (drawing)": "11",
+        "Ø dimension, second line (drawing)": "4",
         "Overall vertical dimension (drawing)": "25",
         "ROSCA (drawing)": "8/0,75"
        },
@@ -68,8 +68,8 @@
        "page": 30,
        "specs": {
         "Top horizontal dimension (drawing, printed without Ø symbol)": "15",
-        "Inner Ø dimension (drawing)": "4",
-        "Flange vertical dimension (drawing)": "2,1",
+        "Ø dimension, second line (drawing)": "4",
+        "Vertical dimension at upper right (drawing)": "2,1",
         "Overall vertical dimension (drawing)": "24,6",
         "ROSCA (drawing)": "12,50/0,75"
        },
@@ -81,8 +81,8 @@
        "page": 30,
        "specs": {
         "Top horizontal dimension (drawing, printed without Ø symbol)": "15",
-        "Inner Ø dimension (drawing)": "4",
-        "Flange vertical dimension (drawing)": "2,1",
+        "Ø dimension, second line (drawing)": "4",
+        "Vertical dimension at upper right (drawing)": "2,1",
         "Overall vertical dimension (drawing)": "25,5"
        },
        "raw_row": "HSR - 4 | 15 | Ø 4 | 2,1 | 25,5",
@@ -93,7 +93,7 @@
        "page": 30,
        "specs": {
         "Ø dimension (drawing)": "16",
-        "Cap vertical dimension (drawing)": "10",
+        "Vertical dimension at upper right (drawing)": "10",
         "Overall vertical dimension (drawing)": "32",
         "ROSCA (drawing)": "12,50/0,75"
        },
@@ -262,7 +262,7 @@
       "Models (columns) of the table": "1305, 1307, 1706, 2006, 2010, 2408, 2711, 3311, 3915, 4718, 5122",
       "Unit of the intensity": "not printed in the PDF",
       "Structure": "matrix: each core model (column) by each L value (row); one model per column is recorded, with one intensity value per L",
-      "Printed values published as null": "2006 at L = 18 uH ('3.3'), 2006 at L = 39 uH ('3.0') and 2010 at L = 75 uH ('3.1'); the printed value is kept in raw_row (see uncertain)"
+      "Printed values published as null": "2006 at L = 18 uH ('3.3'), 2006 at L = 39 uH ('3.0'), 2010 at L = 75 uH ('3.1'), 2408 at L = 15 uH ('13.7'), 2711 at L = 150 uH ('5.2'), 3915 at L = 12 uH ('38.9') and 4718 at L = 220 uH ('12.6'); the printed value is kept in raw_row (see uncertain)"
      },
      "models": [
       {
@@ -446,7 +446,7 @@
        "specs": {
         "Intensity (L = 10 uH)": "16.1",
         "Intensity (L = 12 uH)": "14.7",
-        "Intensity (L = 15 uH)": "13.7",
+        "Intensity (L = 15 uH)": null,
         "Intensity (L = 18 uH)": "12.0",
         "Intensity (L = 22 uH)": "10.9",
         "Intensity (L = 27 uH)": "9.8",
@@ -473,7 +473,7 @@
         "Intensity (L = 1000 uH)": "1.6"
        },
        "raw_row": "column 2408 (L = 10 ... 1000 uH, in order): 16.1 14.7 13.7 12.0 10.9 9.8 8.9 8.2 7.4 6.8 6.2 5.9 5.6 5.1 4.7 4.2 3.8 3.4 3.1 2.8 2.6 2.3 2.1 1.9 1.8 1.8 1.6",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "2711",
@@ -494,7 +494,7 @@
         "Intensity (L = 82 uH)": "7.3",
         "Intensity (L = 100 uH)": "6.6",
         "Intensity (L = 120 uH)": "6.1",
-        "Intensity (L = 150 uH)": "5.2",
+        "Intensity (L = 150 uH)": null,
         "Intensity (L = 180 uH)": "4.9",
         "Intensity (L = 220 uH)": "4.5",
         "Intensity (L = 270 uH)": "4.0",
@@ -508,7 +508,7 @@
         "Intensity (L = 1000 uH)": "2.1"
        },
        "raw_row": "column 2711 (L = 10 ... 1000 uH, in order): 21.0 19.2 17.1 15.6 14.1 12.8 11.6 10.6 9.7 8.9 8.1 7.7 7.3 6.6 6.1 5.2 4.9 4.5 4.0 3.7 3.4 3.1 2.8 2.5 2.4 2.3 2.1",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "3311",
@@ -550,7 +550,7 @@
        "page": 33,
        "specs": {
         "Intensity (L = 10 uH)": "40.4",
-        "Intensity (L = 12 uH)": "38.9",
+        "Intensity (L = 12 uH)": null,
         "Intensity (L = 15 uH)": "32.9",
         "Intensity (L = 18 uH)": "30.1",
         "Intensity (L = 22 uH)": "27.2",
@@ -578,7 +578,7 @@
         "Intensity (L = 1000 uH)": "4.0"
        },
        "raw_row": "column 3915 (L = 10 ... 1000 uH, in order): 40.4 38.9 32.9 30.1 27.2 24.6 22.2 20.4 18.6 17.1 15.5 14.7 14.1 12.8 11.7 10.4 9.5 8.6 7.8 7.0 6.5 5.9 5.4 4.9 4.7 4.5 4.0",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "4718",
@@ -601,7 +601,7 @@
         "Intensity (L = 120 uH)": "16.3",
         "Intensity (L = 150 uH)": "14.6",
         "Intensity (L = 180 uH)": "13.3",
-        "Intensity (L = 220 uH)": "12.6",
+        "Intensity (L = 220 uH)": null,
         "Intensity (L = 270 uH)": "10.8",
         "Intensity (L = 330 uH)": "9.9",
         "Intensity (L = 390 uH)": "9.1",
@@ -613,7 +613,7 @@
         "Intensity (L = 1000 uH)": "5.7"
        },
        "raw_row": "column 4718 (L = 10 ... 1000 uH, in order): 56.6 51.6 46.2 42.2 38.1 34.4 31.1 28.6 26.1 23.9 21.7 20.7 19.8 17.9 16.3 14.6 13.3 12.6 10.8 9.9 9.1 8.3 7.6 6.9 6.5 6.2 5.7",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "5122",
@@ -1505,7 +1505,7 @@
         "VA": "30",
         "Ø mm.": "69",
         "Altura mm. (Height mm.)": "36",
-        "Voltaje mín. (Voltage min.)": "11",
+        "Voltaje mín. (Voltage min.)": null,
         "Rdto. (EffiC.)": "83",
         "cdt": "17",
         "Ø Acce.": "50",
@@ -1513,7 +1513,7 @@
         "Fijación (Mounting)": "M5x45 mm."
        },
        "raw_row": "30 69 36 11 83 17 50 0.5 M5x45 mm.",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "30 VA (Ø 75 mm, height 32 mm)",
@@ -1522,7 +1522,7 @@
         "VA": "30",
         "Ø mm.": "75",
         "Altura mm. (Height mm.)": "32",
-        "Voltaje mín. (Voltage min.)": "11",
+        "Voltaje mín. (Voltage min.)": null,
         "Rdto. (EffiC.)": "83",
         "cdt": "17",
         "Ø Acce.": "50",
@@ -1530,7 +1530,7 @@
         "Fijación (Mounting)": "M5x40 mm."
        },
        "raw_row": "30 75 32 11 83 17 50 0.55 M5x40 mm.",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "30 VA (Ø 83 mm, height 25 mm)",
@@ -1539,7 +1539,7 @@
         "VA": "30",
         "Ø mm.": "83",
         "Altura mm. (Height mm.)": "25",
-        "Voltaje mín. (Voltage min.)": "11",
+        "Voltaje mín. (Voltage min.)": null,
         "Rdto. (EffiC.)": "83",
         "cdt": "17",
         "Ø Acce.": "65",
@@ -1547,7 +1547,7 @@
         "Fijación (Mounting)": "M5x35 mm."
        },
        "raw_row": "30 83 25 11 83 17 65 0.60 M5x35 mm.",
-       "confidence": "alta"
+       "confidence": "media"
       },
       {
        "reference": "40 VA (Ø 69 mm, height 50 mm)",
@@ -1829,7 +1829,7 @@
         "Ø mm.": "113",
         "Altura mm. (Height mm.)": "43",
         "Voltaje mín. (Voltage min.)": "9",
-        "Rdto. (EffiC.)": "80",
+        "Rdto. (EffiC.)": null,
         "cdt": "10",
         "Ø Acce.": "80",
         "Kg.": "1.65",
@@ -3796,7 +3796,7 @@
      "page": 32
     },
     {
-     "fact": "Tabla de intensidades: 27 valores de L (uH), de 10 a 1000, por cada modelo de núcleo (una columna por modelo); el catálogo no indica la unidad de la intensidad. Página impresa 21. Contraste con el catálogo ES: todas las celdas coinciden, incluidas las tres dudosas.",
+     "fact": "Tabla de intensidades: 27 valores de L (uH), de 10 a 1000, por cada modelo de núcleo (una columna por modelo); el catálogo no indica la unidad de la intensidad. Página impresa 21. Contraste con el catálogo ES: todas las celdas coinciden, incluidas las siete dudosas (tres anotadas por el extractor y cuatro por la verificación).",
      "page": 33
     },
     {
@@ -3937,8 +3937,8 @@
     },
     {
      "page": 33,
-     "item": "Intensidad impresa de 2006 con L = 18 uH ('3.3'), 2006 con L = 39 uH ('3.0') y 2010 con L = 75 uH ('3.1')",
-     "why": "Rompen la secuencia decreciente de su columna (2006: 9.7, 3.3, 8.0 y 6.5, 3.0, 5.5; 2010: 6.4, 3.1, 5.8). Parecen erratas del PDF. Se publican como null en specs, el valor impreso consta en raw_row y no se corrige. El catálogo ES imprime exactamente los mismos valores, así que no es un error de la versión inglesa. Propuesta: pedir la tabla corregida al fabricante."
+     "item": "Intensidades impresas dudosas de la tabla (publicadas como null): 2006 con L = 18 uH ('3.3') y L = 39 uH ('3.0'), 2010 con L = 75 uH ('3.1'), 2408 con L = 15 uH ('13.7'), 2711 con L = 150 uH ('5.2'), 3915 con L = 12 uH ('38.9') y 4718 con L = 220 uH ('12.6')",
+     "why": "Rompen la secuencia decreciente de su columna (2006: 9.7, 3.3, 8.0 y 6.5, 3.0, 5.5; 2010: 6.4, 3.1, 5.8). Parecen erratas del PDF. Se publican como null en specs, el valor impreso consta en raw_row y no se corrige. El catálogo ES imprime exactamente los mismos valores, así que no es un error de la versión inglesa. Propuesta: pedir la tabla corregida al fabricante. Las cuatro últimas (2408@15, 2711@150, 3915@12, 4718@220) las añade la verificación: no rompen la secuencia decreciente, pero se apartan un 4-5 % del patrón I x raiz(L) = constante que cumplen las demás 290 cifras de la tabla (tolerancia +-0.06 + 1.2 %) (esperado 13.16, 5.43, 36.88 y 12.06; cálculo propio, no del PDF). Es compatible con erratas de una cifra (p.ej. 36.9 impreso como 38.9), pero no se corrige ni se adivina; se publican como null y el literal impreso consta en raw_row. El catálogo ES imprime los mismos valores. Propuesta: pedir la tabla corregida al fabricante."
     },
     {
      "page": 33,
@@ -4033,7 +4033,7 @@
     {
      "page": 39,
      "item": "Fila 160 VA (Ø 113, altura 43): Rdto. 80",
-     "why": "El valor impreso (80) rompe la tendencia (150 VA = 88, 200 VA = 89) y la serie TT de la p.40 da 88 para 160 VA. Se transcribe tal cual (texto e imagen coinciden), confianza media; proponer revisión en el panel admin; no corregir. Igual en el catálogo ES."
+     "why": "El valor impreso (80) rompe la tendencia (150 VA = 88, 200 VA = 89) y la serie TT de la p.40 da 88 para 160 VA. Texto, imagen y catálogo ES coinciden con el 80 impreso (la transcripción es fiel), pero por ser dudoso se publica como null en specs (verificación); el literal consta en raw_row. Confianza media; proponer revisión en el panel admin con el fabricante; no corregir ni sustituir por 88."
     },
     {
      "page": 39,
@@ -4094,6 +4094,91 @@
      "page": 41,
      "item": "Serie TCI: sin tensiones ni intensidades por modelo",
      "why": "Solo se dan dimensiones y peso; el cliente configura el conexionado. Errata del PDF conservada: 'box size .' y 'customers requirements'."
+    },
+    {
+     "page": 39,
+     "item": "Fila(s) 30 VA: 'Voltaje mín.' = 11 en las tres variantes (publicado como null en specs; consta en raw_row)",
+     "why": "La columna sube con la potencia (15 VA = 2, 20 VA = 3, 40 VA = 5, 50 VA = 5, 60 VA = 6, 80 VA = 7, 100 VA = 8) y un 11 entre 3 y 5 rompe esa progresión; las otras irregularidades de la columna son de +-1 entre variantes del mismo VA. El PDF imprime 11 en las tres filas (texto, imagen y catálogo ES coinciden), así que la transcripción es fiel, pero la cabecera 'Voltaje mín. / Voltage min.' no define la magnitud ni la unidad y no hay otro dato del PDF con el que contrastarlo. No se corrige ni se adivina; se publica como null. Propuesta: confirmar con el fabricante."
+    }
+   ],
+   "verified": true,
+   "corrections": [
+    {
+     "page": 29,
+     "item": "HB - 4 y HR - 4, claves de specs de las dos cotas Ø (valores 11 y 4)",
+     "was": "'Outer Ø dimension (drawing)': '11' / 'Inner Ø dimension (drawing)': '4'",
+     "now": "'Ø dimension, top line (drawing)': '11' / 'Ø dimension, second line (drawing)': '4'",
+     "why": "Los valores 11 y 4 son correctos (PDF renderizado a 200 ppp), pero 'exterior' e 'interior' eran una interpretación: el dibujo solo rotula 'Ø 11' y 'Ø 4' sin decir a qué elemento corresponde cada una, y la propia entrada de 'uncertain' sobre la cota 'Ø 4' dice que no está rotulada (taladro, clavija...). Se deja solo la posición en el dibujo (criterio ya aplicado en las fichas de potenciómetros). Ningún valor cambia."
+    },
+    {
+     "page": 30,
+     "item": "HBS - 4 y HSR - 4, claves de specs de las cotas 'Ø 4' y '2,1'",
+     "was": "'Inner Ø dimension (drawing)': '4' / 'Flange vertical dimension (drawing)': '2,1'",
+     "now": "'Ø dimension, second line (drawing)': '4' / 'Vertical dimension at upper right (drawing)': '2,1'",
+     "why": "Valores correctos (4 y 2,1 vistos a 200 ppp), pero 'interior' y 'brida' no están rotulados en el PDF: el dibujo solo da las cifras. Se deja la posición en el dibujo. Ningún valor cambia."
+    },
+    {
+     "page": 30,
+     "item": "PF - 15, clave de specs de la cota 10",
+     "was": "'Cap vertical dimension (drawing)': '10'",
+     "now": "'Vertical dimension at upper right (drawing)': '10'",
+     "why": "Valor correcto (10), pero 'tapa' (cap) no está rotulado en el PDF; la cota abarca la parte superior estriada del dibujo y el PDF no la nombra. Se deja la posición en el dibujo. Ningún valor cambia."
+    },
+    {
+     "page": 33,
+     "item": "2408 · specs['Intensity (L = 15 uH)']",
+     "was": "13.7",
+     "now": null,
+     "why": "El valor impreso (13.7) coincide con la capa de texto y con la imagen, y con el catálogo ES, así que la transcripción es fiel. Pero se aparta +4.1 % del patrón de su propia columna: las otras 290 cifras de la tabla (297 menos las siete dudosas) cumplen I x raiz(L) = constante por columna con una tolerancia de +-0.06 + 1.2 % (redondeo a una décima), y aquí daría 13.16. Cálculo propio, no del PDF. Regla: un dato dudoso no se publica; mismo criterio que las tres celdas ya anuladas de 2006 y 2010. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 33,
+     "item": "2711 · specs['Intensity (L = 150 uH)']",
+     "was": "5.2",
+     "now": null,
+     "why": "El valor impreso (5.2) coincide con la capa de texto y con la imagen, y con el catálogo ES, así que la transcripción es fiel. Pero se aparta -4.2 % del patrón de su propia columna: las otras 290 cifras de la tabla (297 menos las siete dudosas) cumplen I x raiz(L) = constante por columna con una tolerancia de +-0.06 + 1.2 % (redondeo a una décima), y aquí daría 5.43. Cálculo propio, no del PDF. Regla: un dato dudoso no se publica; mismo criterio que las tres celdas ya anuladas de 2006 y 2010. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 33,
+     "item": "3915 · specs['Intensity (L = 12 uH)']",
+     "was": "38.9",
+     "now": null,
+     "why": "El valor impreso (38.9) coincide con la capa de texto y con la imagen, y con el catálogo ES, así que la transcripción es fiel. Pero se aparta +5.5 % del patrón de su propia columna: las otras 290 cifras de la tabla (297 menos las siete dudosas) cumplen I x raiz(L) = constante por columna con una tolerancia de +-0.06 + 1.2 % (redondeo a una décima), y aquí daría 36.88. Cálculo propio, no del PDF. Regla: un dato dudoso no se publica; mismo criterio que las tres celdas ya anuladas de 2006 y 2010. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 33,
+     "item": "4718 · specs['Intensity (L = 220 uH)']",
+     "was": "12.6",
+     "now": null,
+     "why": "El valor impreso (12.6) coincide con la capa de texto y con la imagen, y con el catálogo ES, así que la transcripción es fiel. Pero se aparta +4.4 % del patrón de su propia columna: las otras 290 cifras de la tabla (297 menos las siete dudosas) cumplen I x raiz(L) = constante por columna con una tolerancia de +-0.06 + 1.2 % (redondeo a una décima), y aquí daría 12.06. Cálculo propio, no del PDF. Regla: un dato dudoso no se publica; mismo criterio que las tres celdas ya anuladas de 2006 y 2010. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 39,
+     "item": "160 VA (Ø 113 mm, height 43 mm) · specs['Rdto. (EffiC.)']",
+     "was": "80",
+     "now": null,
+     "why": "El 80 impreso coincide con la capa de texto, la imagen (200 ppp) y el catálogo ES, pero rompe la columna Rdto. (150 VA = 88, 200 VA = 89; en toda la tabla no baja con la potencia) y la serie TT de la p.40 da 88 para 160 VA. El extractor lo dejó publicado con confianza media pese a anotarlo como dudoso; regla: un dato dudoso no se publica (mismo criterio que las celdas anuladas de las pp.33 y 35). Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 39,
+     "item": "30 VA (Ø 69 mm, height 36 mm) · specs['Voltaje mín. (Voltage min.)']",
+     "was": "11",
+     "now": null,
+     "why": "El 11 impreso (las tres filas de 30 VA) coincide con la capa de texto, la imagen y el catálogo ES, pero la columna sube con la potencia (15 VA = 2, 20 VA = 3, 40 VA = 5, 50 VA = 5, 60 VA = 6, 80 VA = 7...) y entre 3 y 5 no cabe un 11; el resto de la columna solo varía en +-1 entre variantes del mismo VA. Dato no anotado por el extractor; la cabecera ni siquiera define la magnitud. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 39,
+     "item": "30 VA (Ø 75 mm, height 32 mm) · specs['Voltaje mín. (Voltage min.)']",
+     "was": "11",
+     "now": null,
+     "why": "El 11 impreso (las tres filas de 30 VA) coincide con la capa de texto, la imagen y el catálogo ES, pero la columna sube con la potencia (15 VA = 2, 20 VA = 3, 40 VA = 5, 50 VA = 5, 60 VA = 6, 80 VA = 7...) y entre 3 y 5 no cabe un 11; el resto de la columna solo varía en +-1 entre variantes del mismo VA. Dato no anotado por el extractor; la cabecera ni siquiera define la magnitud. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
+    },
+    {
+     "page": 39,
+     "item": "30 VA (Ø 83 mm, height 25 mm) · specs['Voltaje mín. (Voltage min.)']",
+     "was": "11",
+     "now": null,
+     "why": "El 11 impreso (las tres filas de 30 VA) coincide con la capa de texto, la imagen y el catálogo ES, pero la columna sube con la potencia (15 VA = 2, 20 VA = 3, 40 VA = 5, 50 VA = 5, 60 VA = 6, 80 VA = 7...) y entre 3 y 5 no cabe un 11; el resto de la columna solo varía en +-1 entre variantes del mismo VA. Dato no anotado por el extractor; la cabecera ni siquiera define la magnitud. Regla: un dato dudoso no se publica. Se pone a null en specs; el literal impreso se conserva en raw_row y en 'uncertain'."
     }
    ]
   }

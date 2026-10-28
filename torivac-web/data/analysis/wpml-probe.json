@@ -1,0 +1,1822 @@
+{
+ "29": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/accesorios-de-regulacion/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/regulating-accessories/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/accesorios-de-regulacion/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/accessoires-de-regulation/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/accesorios-de-regulacion/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/zubehor-zum-regulieren/",
+   "kind": "category"
+  }
+ },
+ "77": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/aros-con-flecha/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/hoops-with-arrow/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/aros-con-flecha/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/cerceaux-avec-fleche/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/aros-con-flecha/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/hoepels-met-pijl/",
+   "kind": "category"
+  }
+ },
+ "93": {
+  "en": {
+   "probe": "/en/categoria-producto/resistencias/bancos-de-carga/",
+   "http": 301,
+   "to": "/en/categoria-producto/resistors-load-banks/load-banks/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/resistencias/bancos-de-carga/",
+   "http": 301,
+   "to": "/fr/categoria-producto/resistances-bancs-de-charge/bancs-de-charge/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/resistencias/bancos-de-carga/",
+   "http": 301,
+   "to": "/de/categoria-producto/widerstande-lastbanke/ladebanke/",
+   "kind": "category"
+  }
+ },
+ "22": {
+  "en": {
+   "probe": "/en/categoria-producto/bobinas-encapsuladas/",
+   "http": 301,
+   "to": "/en/categoria-producto/encapsulated-coils/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/bobinas-encapsuladas/",
+   "http": 301,
+   "to": "/fr/categoria-producto/bobines-encapsulees/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/bobinas-encapsuladas/",
+   "http": 301,
+   "to": "/de/categoria-producto/gekapselte-spulen/",
+   "kind": "category"
+  }
+ },
+ "30": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/",
+   "kind": "category"
+  }
+ },
+ "74": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/botones-de-mando-serie-bm-mate/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/bm-series-control-buttons-matte/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/botones-de-mando-serie-bm-mate/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bm-mat/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/botones-de-mando-serie-bm-mate/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/bm-serie-bedieningsknoppen-mat/",
+   "kind": "category"
+  }
+ },
+ "72": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-brillante/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/bo-series-control-buttons-glossy/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-brillante/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-brillants/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-brillante/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/bo-serie-bedieningsknoppen-glanzend/",
+   "kind": "category"
+  }
+ },
+ "73": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-con-linea/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/bo-series-control-buttons-with-line/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-con-linea/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-avec-ligne/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/botones-de-mando-serie-bo-con-linea/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/bo-serie-bedieningsknoppen-met-lijn/",
+   "kind": "category"
+  }
+ },
+ "27": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando-y-accesorios/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons-and-accessories/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando-y-accesorios/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande-et-accessoires/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando-y-accesorios/",
+   "http": 301,
+   "to": "/de/categoria-producto/steuertasten-und-zubehor/",
+   "kind": "category"
+  }
+ },
+ "82": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/caratulas-graduadas/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/graduated-covers/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/caratulas-graduadas/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/couvertures-graduees/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/caratulas-graduadas/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/gegradueerde-covers/",
+   "kind": "category"
+  }
+ },
+ "92": {
+  "en": {
+   "probe": "/en/categoria-producto/resistencias/cementadas/",
+   "http": 301,
+   "to": "/en/categoria-producto/resistors-load-banks/cemented/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/resistencias/cementadas/",
+   "http": 301,
+   "to": "/fr/categoria-producto/resistances-bancs-de-charge/cimente/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/resistencias/cementadas/",
+   "http": 301,
+   "to": "/de/categoria-producto/widerstande-lastbanke/zementiert/",
+   "kind": "category"
+  }
+ },
+ "63": {
+  "en": {
+   "probe": "/en/categoria-producto/choques/",
+   "http": 301,
+   "to": "/en/categoria-producto/chokes-inductances-toroidal-reactances/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/choques/",
+   "http": 301,
+   "to": "/fr/categoria-producto/bobines-darret-inductances-reactances-toroidales/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/choques/",
+   "http": 301,
+   "to": "/de/categoria-producto/smoorspoelen-inductanties-toroidale-reactanties/",
+   "kind": "category"
+  }
+ },
+ "50": {
+  "en": {
+   "probe": "/en/categoria-producto/comunicacion-modbus/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/comunicacion-modbus/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/comunicacion-modbus/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  }
+ },
+ "101": {
+  "en": {
+   "probe": "/en/categoria-producto/electronica/control-industrial/",
+   "http": 301,
+   "to": "/en/categoria-producto/electronic-equipment/industrial-control/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/electronica/control-industrial/",
+   "http": 301,
+   "to": "/fr/categoria-producto/equipements-electroniques/controle-industriel/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/electronica/control-industrial/",
+   "http": 301,
+   "to": "/de/categoria-producto/elektronische-ausrustung/industrielle-steuerung/",
+   "kind": "category"
+  }
+ },
+ "31": {
+  "en": {
+   "probe": "/en/categoria-producto/controlador-0-10vdc/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/controlador-0-10vdc/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/controlador-0-10vdc/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  }
+ },
+ "97": {
+  "en": {
+   "probe": "/en/categoria-producto/electronica/convertidores/",
+   "http": 301,
+   "to": "/en/categoria-producto/electronic-equipment/converters/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/electronica/convertidores/",
+   "http": 301,
+   "to": "/fr/categoria-producto/equipements-electroniques/convertisseurs/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/electronica/convertidores/",
+   "http": 301,
+   "to": "/de/categoria-producto/elektronische-ausrustung/konverter/",
+   "kind": "category"
+  }
+ },
+ "119": {
+  "en": {
+   "probe": "/en/categoria-producto/bobinas-encapsuladas/cuadradas/",
+   "http": 301,
+   "to": "/en/categoria-producto/encapsulated-coils/square/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/bobinas-encapsuladas/cuadradas/",
+   "http": 301,
+   "to": "/fr/categoria-producto/bobines-encapsulees/carre/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/bobinas-encapsuladas/cuadradas/",
+   "http": 301,
+   "to": "/de/categoria-producto/gekapselte-spulen/vierkant/",
+   "kind": "category"
+  }
+ },
+ "32": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/en-caja/cuba-de-aceite/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/en-caja/cuba-de-aceite/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/en-caja/cuba-de-aceite/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  }
+ },
+ "80": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/cubretercas/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/covers/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/cubretercas/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/couvertures/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/cubretercas/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/omslagen/",
+   "kind": "category"
+  }
+ },
+ "81": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/discos-flecha/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/arrow-discs/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/discos-flecha/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/disques-fleches/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/discos-flecha/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/pijlschijven/",
+   "kind": "category"
+  }
+ },
+ "78": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/discos-graduados/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/graduated-discs/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/discos-graduados/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/disques-gradues/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/discos-graduados/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/gegradueerde-schijven/",
+   "kind": "category"
+  }
+ },
+ "44": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/dobles/doble-manual/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/double-manual/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/dobles/doble-manual/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/manuel-double/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/dobles/doble-manual/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/dubbele-handleiding/",
+   "kind": "category"
+  }
+ },
+ "34": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/dobles/doble-motorizado/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/dual-motorized/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/dobles/doble-motorizado/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/double-motorisation/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/dobles/doble-motorizado/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/dubbele-motor/",
+   "kind": "category"
+  }
+ },
+ "111": {
+  "en": {
+   "probe": "/en/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/dobles-potenciometros/",
+   "http": 301,
+   "to": "/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/dual-potentiometers/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/dobles-potenciometros/",
+   "http": 301,
+   "to": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/potentiometres-doubles/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/dobles-potenciometros/",
+   "http": 301,
+   "to": "/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/dubbele-potentiometers/",
+   "kind": "category"
+  }
+ },
+ "700": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-en-caja/",
+   "http": 302,
+   "to": "/en/product/en-caja/",
+   "kind": "product"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-en-caja/",
+   "http": 302,
+   "to": "/fr/product/en-caja/",
+   "kind": "product"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-en-caja/",
+   "http": 302,
+   "to": "/de/product/en-caja/",
+   "kind": "product"
+  }
+ },
+ "120": {
+  "en": {
+   "probe": "/en/categoria-producto/resistencias/en-caja-resistencias/",
+   "http": 301,
+   "to": "/en/categoria-producto/resistors-load-banks/boxed/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/resistencias/en-caja-resistencias/",
+   "http": 301,
+   "to": "/fr/categoria-producto/resistances-bancs-de-charge/en-boite/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/resistencias/en-caja-resistencias/",
+   "http": 301,
+   "to": "/de/categoria-producto/widerstande-lastbanke/boxen/",
+   "kind": "category"
+  }
+ },
+ "100": {
+  "en": {
+   "probe": "/en/categoria-producto/electronica/energias-renovables/",
+   "http": 301,
+   "to": "/en/categoria-producto/electronic-equipment/renewable-energies/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/electronica/energias-renovables/",
+   "http": 301,
+   "to": "/fr/categoria-producto/equipements-electroniques/energies-renouvelables/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/electronica/energias-renovables/",
+   "http": 301,
+   "to": "/de/categoria-producto/elektronische-ausrustung/erneuerbare-energien/",
+   "kind": "category"
+  }
+ },
+ "46": {
+  "en": {
+   "probe": "/en/categoria-producto/equipos-de-sobremesa-en-caja/",
+   "http": 301,
+   "to": "/en/categoria-producto/benchtop-units-2/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/equipos-de-sobremesa-en-caja/",
+   "http": 301,
+   "to": "/fr/categoria-producto/unites-de-paillasse-2/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/equipos-de-sobremesa-en-caja/",
+   "http": 301,
+   "to": "/de/categoria-producto/tafelmodellen-2/",
+   "kind": "category"
+  }
+ },
+ "45": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/en-caja/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/benchtop-units/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/en-caja/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/unites-de-paillasse/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/en-caja/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/tafelmodellen/",
+   "kind": "category"
+  }
+ },
+ "39": {
+  "en": {
+   "probe": "/en/categoria-producto/equipos-de-sobremesa/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/benchtop-units/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/equipos-de-sobremesa/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/unites-de-paillasse/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/equipos-de-sobremesa/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/tafelmodellen/",
+   "kind": "category"
+  }
+ },
+ "96": {
+  "en": {
+   "probe": "/en/categoria-producto/electronica/",
+   "http": 301,
+   "to": "/en/categoria-producto/electronic-equipment/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/electronica/",
+   "http": 301,
+   "to": "/fr/categoria-producto/equipements-electroniques/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/electronica/",
+   "http": 301,
+   "to": "/de/categoria-producto/elektronische-ausrustung/",
+   "kind": "category"
+  }
+ },
+ "47": {
+  "en": {
+   "probe": "/en/categoria-producto/equipos-industriales-en-caja/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/equipos-industriales-en-caja/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/equipos-industriales-en-caja/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  }
+ },
+ "36": {
+  "en": {
+   "probe": "/en/categoria-producto/equipos-industriales/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/equipos-industriales/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/equipos-industriales/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  }
+ },
+ "60": {
+  "en": {
+   "probe": "/en/categoria-producto/estabilizadores-de-tension/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-stabilizers/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/estabilizadores-de-tension/",
+   "http": 301,
+   "to": "/fr/categoria-producto/stabilisateurs-de-tension/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/estabilizadores-de-tension/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsstabilisatoren/",
+   "kind": "category"
+  }
+ },
+ "61": {
+  "en": {
+   "probe": "/en/categoria-producto/estabilizadores-de-tension/serie-avs/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/estabilizadores-de-tension/serie-avs/",
+   "http": 301,
+   "to": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/estabilizadores-de-tension/serie-avs/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/",
+   "kind": "category"
+  }
+ },
+ "442": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/estators/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/buttons-estators/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/estators/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/estateurs/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/estators/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/knoppen-estators/",
+   "kind": "category"
+  }
+ },
+ "28": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/fabricacion-a-media/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/custom-manufacturing/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/fabricacion-a-media/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/production-sur-mesure/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/fabricacion-a-media/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/masgeschneiderte-fertigung/",
+   "kind": "category"
+  }
+ },
+ "49": {
+  "en": {
+   "probe": "/en/categoria-producto/fabricaciones-a-medida/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/fabricaciones-a-medida/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/fabricaciones-a-medida/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  }
+ },
+ "102": {
+  "en": {
+   "probe": "/en/categoria-producto/fabricaciones-a-medida-transformadores-toroidales/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/fabricaciones-a-medida-transformadores-toroidales/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/fabricaciones-a-medida-transformadores-toroidales/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  }
+ },
+ "99": {
+  "en": {
+   "probe": "/en/categoria-producto/electronica/fuente-de-alimentacion-ca/",
+   "http": 302,
+   "to": "/product/fuente-de-corriente-alterna-sinusoidal/",
+   "kind": "no_translation"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/electronica/fuente-de-alimentacion-ca/",
+   "http": 302,
+   "to": "/product/fuente-de-corriente-alterna-sinusoidal/",
+   "kind": "no_translation"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/electronica/fuente-de-alimentacion-ca/",
+   "http": 302,
+   "to": "/product/fuente-de-corriente-alterna-sinusoidal/",
+   "kind": "no_translation"
+  }
+ },
+ "98": {
+  "en": {
+   "probe": "/en/categoria-producto/electronica/fuentes-de-alimentacion-cc/",
+   "http": 301,
+   "to": "/en/categoria-producto/electronic-equipment/dc-power-supplies/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/electronica/fuentes-de-alimentacion-cc/",
+   "http": 301,
+   "to": "/fr/categoria-producto/equipements-electroniques/alimentations-en-courant-continu/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/electronica/fuentes-de-alimentacion-cc/",
+   "http": 301,
+   "to": "/de/categoria-producto/elektronische-ausrustung/dc-stromversorgungen/",
+   "kind": "category"
+  }
+ },
+ "90": {
+  "en": {
+   "probe": "/en/categoria-producto/resistencias/helicoidales/",
+   "http": 301,
+   "to": "/en/categoria-producto/resistors-load-banks/helical/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/resistencias/helicoidales/",
+   "http": 301,
+   "to": "/fr/categoria-producto/resistances-bancs-de-charge/helicoidale/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/resistencias/helicoidales/",
+   "http": 301,
+   "to": "/de/categoria-producto/widerstande-lastbanke/wendel/",
+   "kind": "category"
+  }
+ },
+ "85": {
+  "en": {
+   "probe": "/en/categoria-producto/hembrillas/hembrilla-de-seguridad-hbs4/",
+   "http": 301,
+   "to": "/en/categoria-producto/socket-jack/socket-jack-hbs4/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/hembrillas/hembrilla-de-seguridad-hbs4/",
+   "http": 301,
+   "to": "/fr/categoria-producto/prise-jack/prise-de-securite-hbs4/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/hembrillas/hembrilla-de-seguridad-hbs4/",
+   "http": 301,
+   "to": "/de/categoria-producto/socket-jack/hbs4-veiligheidsaansluiting/",
+   "kind": "category"
+  }
+ },
+ "86": {
+  "en": {
+   "probe": "/en/categoria-producto/hembrillas/hembrilla-de-seguridad-hr4/",
+   "http": 301,
+   "to": "/en/categoria-producto/socket-jack/socket-jack-hr4/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/hembrillas/hembrilla-de-seguridad-hr4/",
+   "http": 301,
+   "to": "/fr/categoria-producto/prise-jack/prise-de-securite-hr4/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/hembrillas/hembrilla-de-seguridad-hr4/",
+   "http": 301,
+   "to": "/de/categoria-producto/socket-jack/hr4-veiligheidsaansluiting/",
+   "kind": "category"
+  }
+ },
+ "87": {
+  "en": {
+   "probe": "/en/categoria-producto/hembrillas/hembrilla-de-seguridad-hsr4/",
+   "http": 301,
+   "to": "/en/categoria-producto/socket-jack/socket-jack-hsr4/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/hembrillas/hembrilla-de-seguridad-hsr4/",
+   "http": 301,
+   "to": "/fr/categoria-producto/prise-jack/prise-de-securite-hsr4/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/hembrillas/hembrilla-de-seguridad-hsr4/",
+   "http": 301,
+   "to": "/de/categoria-producto/socket-jack/hsr4-veiligheidsaansluiting/",
+   "kind": "category"
+  }
+ },
+ "84": {
+  "en": {
+   "probe": "/en/categoria-producto/hembrillas/hembrilla-hb4/",
+   "http": 301,
+   "to": "/en/categoria-producto/socket-jack/socket-jack-2/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/hembrillas/hembrilla-hb4/",
+   "http": 301,
+   "to": "/fr/categoria-producto/prise-jack/prise-jack-hb4/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/hembrillas/hembrilla-hb4/",
+   "http": 301,
+   "to": "/de/categoria-producto/socket-jack/socket-jack-hb4-10a/",
+   "kind": "category"
+  }
+ },
+ "83": {
+  "en": {
+   "probe": "/en/categoria-producto/hembrillas/",
+   "http": 301,
+   "to": "/en/categoria-producto/socket-jack/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/hembrillas/",
+   "http": 301,
+   "to": "/fr/categoria-producto/prise-jack/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/hembrillas/",
+   "http": 301,
+   "to": "/de/categoria-producto/socket-jack/",
+   "kind": "category"
+  }
+ },
+ "25": {
+  "en": {
+   "probe": "/en/categoria-producto/hembrillas-de-seguridad/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/hembrillas-de-seguridad/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/hembrillas-de-seguridad/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  }
+ },
+ "69": {
+  "en": {
+   "probe": "/en/categoria-producto/portaled/led-10mm/",
+   "http": 302,
+   "to": "/en/product/soporte-metalico-para-led-10mm/",
+   "kind": "product"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/portaled/led-10mm/",
+   "http": 301,
+   "to": "/fr/categoria-producto/portail/porte-10-mm/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/portaled/led-10mm/",
+   "http": 301,
+   "to": "/de/categoria-producto/geportaliseerd/geperforeerde-led-10mm/",
+   "kind": "category"
+  }
+ },
+ "66": {
+  "en": {
+   "probe": "/en/categoria-producto/portaled/led-3mm/",
+   "http": 301,
+   "to": "/en/categoria-producto/portaled/portaled-led-3mm/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/portaled/led-3mm/",
+   "http": 301,
+   "to": "/fr/categoria-producto/portail/led-portique-3-mm/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/portaled/led-3mm/",
+   "http": 301,
+   "to": "/de/categoria-producto/geportaliseerd/geportaliseerde-led-3mm/",
+   "kind": "category"
+  }
+ },
+ "67": {
+  "en": {
+   "probe": "/en/categoria-producto/portaled/led-5mm/",
+   "http": 301,
+   "to": "/en/categoria-producto/portaled/portaled-led-5mm/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/portaled/led-5mm/",
+   "http": 301,
+   "to": "/fr/categoria-producto/portail/led-portale-5-mm/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/portaled/led-5mm/",
+   "http": 301,
+   "to": "/de/categoria-producto/geportaliseerd/geportaliseerde-led-5mm/",
+   "kind": "category"
+  }
+ },
+ "68": {
+  "en": {
+   "probe": "/en/categoria-producto/portaled/led-8mm/",
+   "http": 301,
+   "to": "/en/categoria-producto/portaled/portaled-led-8mm/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/portaled/led-8mm/",
+   "http": 301,
+   "to": "/fr/categoria-producto/portail/led-portique-8-mm/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/portaled/led-8mm/",
+   "http": 301,
+   "to": "/de/categoria-producto/geportaliseerd/geporteerde-led-8mm/",
+   "kind": "category"
+  }
+ },
+ "38": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/monofasico/monofasicos-manual/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/single-phase-inverters/trifasicos-manual/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/monofasico/monofasicos-manual/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/manuel/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/monofasico/monofasicos-manual/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/einphasen-wechselrichter/handbuch/",
+   "kind": "category"
+  }
+ },
+ "41": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/trifasico/manual-trifasico/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/three-phase-drives/manual/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/trifasico/manual-trifasico/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/manuel/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/trifasico/manual-trifasico/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/handmatige-driefasen/",
+   "kind": "category"
+  }
+ },
+ "105": {
+  "en": {
+   "probe": "/en/categoria-producto/estabilizadores-de-tension/serie-bavs/monofasico-serie-bavs/",
+   "http": 302,
+   "to": "/en/product/serie-bavs-2/",
+   "kind": "product"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/estabilizadores-de-tension/serie-bavs/monofasico-serie-bavs/",
+   "http": 301,
+   "to": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/monophase/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/estabilizadores-de-tension/serie-bavs/monofasico-serie-bavs/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/monofase/",
+   "kind": "category"
+  }
+ },
+ "103": {
+  "en": {
+   "probe": "/en/categoria-producto/estabilizadores-de-tension/serie-avs/monofasico-serie-avs/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/single-phase-avs/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/estabilizadores-de-tension/serie-avs/monofasico-serie-avs/",
+   "http": 301,
+   "to": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/monophase/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/estabilizadores-de-tension/serie-avs/monofasico-serie-avs/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/monofase/",
+   "kind": "category"
+  }
+ },
+ "42": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/trifasico/motorizado/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/three-phase-drives/three-phase-motorized/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/trifasico/motorizado/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/motorise/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/trifasico/motorizado/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/motorisiert/",
+   "kind": "category"
+  }
+ },
+ "43": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/monofasico/motorizado-monofasico/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/single-phase-inverters/single-phase-motorized/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/monofasico/motorizado-monofasico/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/motorise/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/monofasico/motorizado-monofasico/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/motorisiert/",
+   "kind": "category"
+  }
+ },
+ "64": {
+  "en": {
+   "probe": "/en/categoria-producto/nucleos/",
+   "http": 301,
+   "to": "/en/categoria-producto/cores/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/nucleos/",
+   "http": 301,
+   "to": "/fr/categoria-producto/noyaux/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/nucleos/",
+   "http": 301,
+   "to": "/de/categoria-producto/kernen/",
+   "kind": "category"
+  }
+ },
+ "65": {
+  "en": {
+   "probe": "/en/categoria-producto/portaled/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/portaled/",
+   "http": 301,
+   "to": "/fr/categoria-producto/portail/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/portaled/",
+   "http": 301,
+   "to": "/de/categoria-producto/geportaliseerd/",
+   "kind": "category"
+  }
+ },
+ "24": {
+  "en": {
+   "probe": "/en/categoria-producto/portaleds/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/portaleds/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/portaleds/",
+   "http": 200,
+   "to": "",
+   "kind": "same_slug"
+  }
+ },
+ "107": {
+  "en": {
+   "probe": "/en/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/",
+   "http": 301,
+   "to": "/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/",
+   "http": 301,
+   "to": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/",
+   "http": 301,
+   "to": "/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/",
+   "kind": "category"
+  }
+ },
+ "26": {
+  "en": {
+   "probe": "/en/categoria-producto/potenciometros-y-reostatos/",
+   "http": 301,
+   "to": "/en/categoria-producto/potentiometers-and-rheostats/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/potenciometros-y-reostatos/",
+   "http": 301,
+   "to": "/fr/categoria-producto/potentiometres-et-rheostats/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/potenciometros-y-reostatos/",
+   "http": 301,
+   "to": "/de/categoria-producto/potentiometers-en-reostaten/",
+   "kind": "category"
+  }
+ },
+ "118": {
+  "en": {
+   "probe": "/en/categoria-producto/bobinas-encapsuladas/redondas/",
+   "http": 301,
+   "to": "/en/categoria-producto/encapsulated-coils/round/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/bobinas-encapsuladas/redondas/",
+   "http": 301,
+   "to": "/fr/categoria-producto/bobines-encapsulees/rond/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/bobinas-encapsuladas/redondas/",
+   "http": 301,
+   "to": "/de/categoria-producto/gekapselte-spulen/rund/",
+   "kind": "category"
+  }
+ },
+ "112": {
+  "en": {
+   "probe": "/en/categoria-producto/reostatos-y-potenciometros-bobinados/ceramicos/",
+   "http": 301,
+   "to": "/en/categoria-producto/rheostats-and-coiled-potentiometers/ceramic-rheostats/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/reostatos-y-potenciometros-bobinados/ceramicos/",
+   "http": 301,
+   "to": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/rheostats-en-ceramique/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/reostatos-y-potenciometros-bobinados/ceramicos/",
+   "http": 301,
+   "to": "/de/categoria-producto/rheostate-und-spulenpotentiometer/keramische-rheostate/",
+   "kind": "category"
+  }
+ },
+ "122": {
+  "en": {
+   "probe": "/en/categoria-producto/reostatos-y-potenciometros-bobinados/",
+   "http": 301,
+   "to": "/en/categoria-producto/rheostats-and-coiled-potentiometers/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/reostatos-y-potenciometros-bobinados/",
+   "http": 301,
+   "to": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/reostatos-y-potenciometros-bobinados/",
+   "http": 301,
+   "to": "/de/categoria-producto/rheostate-und-spulenpotentiometer/",
+   "kind": "category"
+  }
+ },
+ "88": {
+  "en": {
+   "probe": "/en/categoria-producto/resistencias/",
+   "http": 301,
+   "to": "/en/categoria-producto/resistors-load-banks/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/resistencias/",
+   "http": 301,
+   "to": "/fr/categoria-producto/resistances-bancs-de-charge/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/resistencias/",
+   "http": 301,
+   "to": "/de/categoria-producto/widerstande-lastbanke/",
+   "kind": "category"
+  }
+ },
+ "94": {
+  "en": {
+   "probe": "/en/categoria-producto/resistencias/resistencias-de-arranque/",
+   "http": 301,
+   "to": "/en/categoria-producto/resistors-load-banks/starting-resistors/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/resistencias/resistencias-de-arranque/",
+   "http": 301,
+   "to": "/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-demarrage/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/resistencias/resistencias-de-arranque/",
+   "http": 301,
+   "to": "/de/categoria-producto/widerstande-lastbanke/startwiderstande/",
+   "kind": "category"
+  }
+ },
+ "444": {
+  "en": {
+   "probe": "/en/categoria-producto/resistencias/resistencias-de-frenado/",
+   "http": 301,
+   "to": "/en/categoria-producto/resistors-load-banks/braking-resistors/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/resistencias/resistencias-de-frenado/",
+   "http": 301,
+   "to": "/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-freinage/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/resistencias/resistencias-de-frenado/",
+   "http": 301,
+   "to": "/de/categoria-producto/widerstande-lastbanke/remweerstanden/",
+   "kind": "category"
+  }
+ },
+ "95": {
+  "en": {
+   "probe": "/en/categoria-producto/resistencias/resistencias-de-puesta-a-tierra/",
+   "http": 301,
+   "to": "/en/categoria-producto/resistors-load-banks/grounding-resistors/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/resistencias/resistencias-de-puesta-a-tierra/",
+   "http": 301,
+   "to": "/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-mise-a-la-terre/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/resistencias/resistencias-de-puesta-a-tierra/",
+   "http": 301,
+   "to": "/de/categoria-producto/widerstande-lastbanke/erdungswiderstande/",
+   "kind": "category"
+  }
+ },
+ "62": {
+  "en": {
+   "probe": "/en/categoria-producto/estabilizadores-de-tension/serie-bavs/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/estabilizadores-de-tension/serie-bavs/",
+   "http": 301,
+   "to": "/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/estabilizadores-de-tension/serie-bavs/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/",
+   "kind": "category"
+  }
+ },
+ "57": {
+  "en": {
+   "probe": "/en/categoria-producto/transformadores/transformador-convencional/serie-tc/",
+   "http": 301,
+   "to": "/en/categoria-producto/transformers/conventional-transformer/tc-series/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/transformadores/transformador-convencional/serie-tc/",
+   "http": 302,
+   "to": "/fr/product/transformador-convencional-estandar-2/",
+   "kind": "product"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/transformadores/transformador-convencional/serie-tc/",
+   "http": 301,
+   "to": "/de/categoria-producto/transformatoren/konventioneller-transformator/tc-serie/",
+   "kind": "category"
+  }
+ },
+ "58": {
+  "en": {
+   "probe": "/en/categoria-producto/transformadores/transformador-convencional/serie-tce/",
+   "http": 301,
+   "to": "/en/categoria-producto/transformers/conventional-transformer/tce-series/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/transformadores/transformador-convencional/serie-tce/",
+   "http": 302,
+   "to": "/fr/product/transformadores-convencionales-encapsulados/",
+   "kind": "product"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/transformadores/transformador-convencional/serie-tce/",
+   "http": 301,
+   "to": "/de/categoria-producto/transformatoren/konventioneller-transformator/tce-serie/",
+   "kind": "category"
+  }
+ },
+ "55": {
+  "en": {
+   "probe": "/en/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tci/",
+   "http": 301,
+   "to": "/en/categoria-producto/transformers/toroidal-transformers/tci-series-printed-circuit-board-enclosure/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tci/",
+   "http": 301,
+   "to": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-tci-encapsulation-de-circuits-imprimes/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tci/",
+   "http": 301,
+   "to": "/de/categoria-producto/transformatoren/ringkerntransformatoren/tci-serie-verkapselung-von-leiterplatten/",
+   "kind": "category"
+  }
+ },
+ "54": {
+  "en": {
+   "probe": "/en/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-te/",
+   "http": 301,
+   "to": "/en/categoria-producto/transformers/toroidal-transformers/te-series/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-te/",
+   "http": 302,
+   "to": "/fr/product/serie-encapsulada-2/",
+   "kind": "product"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-te/",
+   "http": 301,
+   "to": "/de/categoria-producto/transformatoren/ringkerntransformatoren/te-serie/",
+   "kind": "category"
+  }
+ },
+ "53": {
+  "en": {
+   "probe": "/en/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tt/",
+   "http": 301,
+   "to": "/en/categoria-producto/transformers/toroidal-transformers/tt-series/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tt/",
+   "http": 302,
+   "to": "/fr/product/transformadores-serie-tt/",
+   "kind": "product"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tt/",
+   "http": 301,
+   "to": "/de/categoria-producto/transformatoren/ringkerntransformatoren/tt-serie/",
+   "kind": "category"
+  }
+ },
+ "108": {
+  "en": {
+   "probe": "/en/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/simples/",
+   "http": 301,
+   "to": "/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/simple-potentiometer/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/simples/",
+   "http": 301,
+   "to": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/simple/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/reostatos-y-potenciometros-bobinados/potenciometros/simples/",
+   "http": 301,
+   "to": "/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/einfach/",
+   "kind": "category"
+  }
+ },
+ "18": {
+  "en": {
+   "probe": "/en/categoria-producto/sin-categorizar/",
+   "http": 301,
+   "to": "/en/categoria-producto/uncategorized/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/sin-categorizar/",
+   "http": 301,
+   "to": "/fr/categoria-producto/sans-categorie/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/sin-categorizar/",
+   "http": 301,
+   "to": "/de/categoria-producto/nicht-kategorisiert/",
+   "kind": "category"
+  }
+ },
+ "76": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/tapas-serie-bm/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/bm-series-covers/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/tapas-serie-bm/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/couvertures-de-la-serie-bm/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/tapas-serie-bm/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/bm-serie-covers/",
+   "kind": "category"
+  }
+ },
+ "75": {
+  "en": {
+   "probe": "/en/categoria-producto/botones-de-mando/tapas-serie-bo/",
+   "http": 301,
+   "to": "/en/categoria-producto/control-buttons/bo-series-lids/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/botones-de-mando/tapas-serie-bo/",
+   "http": 301,
+   "to": "/fr/categoria-producto/boutons-de-commande/couvercles-de-la-serie-bo/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/botones-de-mando/tapas-serie-bo/",
+   "http": 301,
+   "to": "/de/categoria-producto/bedieningsknoppen/bo-serie-deksels/",
+   "kind": "category"
+  }
+ },
+ "59": {
+  "en": {
+   "probe": "/en/categoria-producto/transformadores/transformador-convencional/tct/",
+   "http": 302,
+   "to": "/en/product/transformador-trifasico-2/",
+   "kind": "product"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/transformadores/transformador-convencional/tct/",
+   "http": 302,
+   "to": "/fr/product/transformador-trifasico-2/",
+   "kind": "product"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/transformadores/transformador-convencional/tct/",
+   "http": 302,
+   "to": "/de/product/transformador-trifasico-2/",
+   "kind": "product"
+  }
+ },
+ "56": {
+  "en": {
+   "probe": "/en/categoria-producto/transformadores/transformador-convencional/",
+   "http": 301,
+   "to": "/en/categoria-producto/transformers/conventional-transformer/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/transformadores/transformador-convencional/",
+   "http": 301,
+   "to": "/fr/categoria-producto/transformateurs/transformateur-conventionnel/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/transformadores/transformador-convencional/",
+   "http": 301,
+   "to": "/de/categoria-producto/transformatoren/konventioneller-transformator/",
+   "kind": "category"
+  }
+ },
+ "51": {
+  "en": {
+   "probe": "/en/categoria-producto/transformadores/",
+   "http": 301,
+   "to": "/en/categoria-producto/transformers/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/transformadores/",
+   "http": 301,
+   "to": "/fr/categoria-producto/transformateurs/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/transformadores/",
+   "http": 301,
+   "to": "/de/categoria-producto/transformatoren/",
+   "kind": "category"
+  }
+ },
+ "52": {
+  "en": {
+   "probe": "/en/categoria-producto/transformadores/transformadores-toroidales-transformadores/",
+   "http": 301,
+   "to": "/en/categoria-producto/transformers/toroidal-transformers/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/transformadores/transformadores-toroidales-transformadores/",
+   "http": 301,
+   "to": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/transformadores/transformadores-toroidales-transformadores/",
+   "http": 301,
+   "to": "/de/categoria-producto/transformatoren/ringkerntransformatoren/",
+   "kind": "category"
+  }
+ },
+ "106": {
+  "en": {
+   "probe": "/en/categoria-producto/estabilizadores-de-tension/serie-bavs/trifasico-serie-bavs/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/serie-bavs-three-phase/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/estabilizadores-de-tension/serie-bavs/trifasico-serie-bavs/",
+   "http": 301,
+   "to": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/triphase/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/estabilizadores-de-tension/serie-bavs/trifasico-serie-bavs/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/driefasen/",
+   "kind": "category"
+  }
+ },
+ "104": {
+  "en": {
+   "probe": "/en/categoria-producto/estabilizadores-de-tension/serie-avs/trifasico-serie-avs/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/serie-avs-three-phase/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/estabilizadores-de-tension/serie-avs/trifasico-serie-avs/",
+   "http": 301,
+   "to": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/triphase/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/estabilizadores-de-tension/serie-avs/trifasico-serie-avs/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/driefasen/",
+   "kind": "category"
+  }
+ },
+ "699": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-industriales/",
+   "http": 302,
+   "to": "/en/product/voltage-regulator-industrial-equipment/",
+   "kind": "product"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-industriales/",
+   "http": 302,
+   "to": "/fr/product/regulateur-de-tension-equipement-industriel/",
+   "kind": "product"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-industriales/",
+   "http": 302,
+   "to": "/de/product/spannungsregler-industrielle-geraete/",
+   "kind": "product"
+  }
+ },
+ "33": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/dobles/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/dobles/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/variateur-double/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/dobles/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/",
+   "kind": "category"
+  }
+ },
+ "19": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/",
+   "kind": "category"
+  }
+ },
+ "37": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/monofasico/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/single-phase-inverters/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/monofasico/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/monofasico/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/einphasen-wechselrichter/",
+   "kind": "category"
+  }
+ },
+ "40": {
+  "en": {
+   "probe": "/en/categoria-producto/variadores-de-tension/trifasico/",
+   "http": 301,
+   "to": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/three-phase-drives/",
+   "kind": "category"
+  },
+  "fr": {
+   "probe": "/fr/categoria-producto/variadores-de-tension/trifasico/",
+   "http": 301,
+   "to": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/",
+   "kind": "category"
+  },
+  "de": {
+   "probe": "/de/categoria-producto/variadores-de-tension/trifasico/",
+   "http": 301,
+   "to": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/",
+   "kind": "category"
+  }
+ }
+}

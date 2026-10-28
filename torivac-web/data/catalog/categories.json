@@ -65,6 +65,11 @@
    "en": 449,
    "fr": 546,
    "de": 555
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -135,9 +140,9 @@
    "de": 660
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -208,9 +213,9 @@
    "de": 510
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -280,6 +285,11 @@
    "en": 515,
    "fr": 512,
    "de": 518
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -348,6 +358,11 @@
    "en": 569,
    "fr": 570,
    "de": 571
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -418,9 +433,9 @@
    "de": 663
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -492,9 +507,9 @@
    "de": 666
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -565,9 +580,9 @@
    "de": 669
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -576,24 +591,132 @@
   "count": 1,
   "slug": {
    "es": "botones-de-mando-y-accesorios",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "control-buttons-and-accessories",
+   "fr": "boutons-de-commande-et-accessoires",
+   "de": "steuertasten-und-zubehor"
   },
   "name": {
    "es": "Botones de mando y accesorios",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "Control buttons and accessories",
+   "fr": "Boutons de commande et accessoires",
+   "de": "Steuertasten und Zubehör"
   },
   "path": {
    "es": "/categoria-producto/botones-de-mando-y-accesorios/",
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": "/en/categoria-producto/control-buttons-and-accessories/",
+   "fr": "/fr/categoria-producto/boutons-de-commande-et-accessoires/",
+   "de": "/de/categoria-producto/steuertasten-und-zubehor/"
   },
   "description": {
    "es": [
+    {
+     "t": "h",
+     "l": 5,
+     "x": "PRODUCTOS PROFESIONALES"
+    },
+    {
+     "t": "img",
+     "src": "https://torivac.santisomarketing.com/wp-content/uploads/2022/04/lineaypunto_oscura.png",
+     "alt": "",
+     "href": null,
+     "w": 0,
+     "h": 0
+    },
+    {
+     "t": "h",
+     "l": 2,
+     "x": "Botones de Mando y Accesorios"
+    },
+    {
+     "t": "p",
+     "h": "El variador de tensión toroidal o autotransformador regulable es un elemento básico si deseamos regular una tensión alterna, variable, desde cero hasta el máximo, con una intensidad constante."
+    },
+    {
+     "t": "p",
+     "h": "Los variadores de tensión TORIVAC, se caracterizan por su robustez mecánica y su alta resolución que permite ajustes muy precisos de tensión y por la alta calidad de todos los materiales utilizados en su fabricación."
+    },
+    {
+     "t": "p",
+     "h": "Estos detalles, junto al control del 100% de todos los variadores nos permiten ofrecer una fiabilidad reconocida por los clientes más exigentes."
+    },
+    {
+     "t": "p",
+     "h": "[product_categories orderby=\"\" order=\"ASC\" columns=\"3\" ids=\"70\"]"
+    }
+   ],
+   "en": [
+    {
+     "t": "h",
+     "l": 5,
+     "x": "PRODUCTOS PROFESIONALES"
+    },
+    {
+     "t": "img",
+     "src": "https://torivac.santisomarketing.com/wp-content/uploads/2022/04/lineaypunto_oscura.png",
+     "alt": "",
+     "href": null,
+     "w": 0,
+     "h": 0
+    },
+    {
+     "t": "h",
+     "l": 2,
+     "x": "Botones de Mando y Accesorios"
+    },
+    {
+     "t": "p",
+     "h": "El variador de tensión toroidal o autotransformador regulable es un elemento básico si deseamos regular una tensión alterna, variable, desde cero hasta el máximo, con una intensidad constante."
+    },
+    {
+     "t": "p",
+     "h": "Los variadores de tensión TORIVAC, se caracterizan por su robustez mecánica y su alta resolución que permite ajustes muy precisos de tensión y por la alta calidad de todos los materiales utilizados en su fabricación."
+    },
+    {
+     "t": "p",
+     "h": "Estos detalles, junto al control del 100% de todos los variadores nos permiten ofrecer una fiabilidad reconocida por los clientes más exigentes."
+    },
+    {
+     "t": "p",
+     "h": "[product_categories orderby=\"\" order=\"ASC\" columns=\"3\" ids=\"70\"]"
+    }
+   ],
+   "fr": [
+    {
+     "t": "h",
+     "l": 5,
+     "x": "PRODUCTOS PROFESIONALES"
+    },
+    {
+     "t": "img",
+     "src": "https://torivac.santisomarketing.com/wp-content/uploads/2022/04/lineaypunto_oscura.png",
+     "alt": "",
+     "href": null,
+     "w": 0,
+     "h": 0
+    },
+    {
+     "t": "h",
+     "l": 2,
+     "x": "Botones de Mando y Accesorios"
+    },
+    {
+     "t": "p",
+     "h": "El variador de tensión toroidal o autotransformador regulable es un elemento básico si deseamos regular una tensión alterna, variable, desde cero hasta el máximo, con una intensidad constante."
+    },
+    {
+     "t": "p",
+     "h": "Los variadores de tensión TORIVAC, se caracterizan por su robustez mecánica y su alta resolución que permite ajustes muy precisos de tensión y por la alta calidad de todos los materiales utilizados en su fabricación."
+    },
+    {
+     "t": "p",
+     "h": "Estos detalles, junto al control del 100% de todos los variadores nos permiten ofrecer una fiabilidad reconocida por los clientes más exigentes."
+    },
+    {
+     "t": "p",
+     "h": "[product_categories orderby=\"\" order=\"ASC\" columns=\"3\" ids=\"70\"]"
+    }
+   ],
+   "de": [
     {
      "t": "h",
      "l": 5,
@@ -645,9 +768,14 @@
    }
   },
   "ids": {
-   "en": null,
-   "fr": null,
-   "de": null
+   "en": 550,
+   "fr": 452,
+   "de": 447
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -718,9 +846,9 @@
    "de": 672
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -791,9 +919,9 @@
    "de": 484
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -865,9 +993,9 @@
    "de": 574
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -978,6 +1106,11 @@
    "en": 493,
    "fr": 490,
    "de": 554
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1087,9 +1220,9 @@
    "de": 501
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1161,9 +1294,9 @@
    "de": 580
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1278,9 +1411,9 @@
    "de": 675
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1351,9 +1484,9 @@
    "de": 678
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1424,9 +1557,9 @@
    "de": 681
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1497,9 +1630,9 @@
    "de": 586
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1571,9 +1704,9 @@
    "de": 589
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1644,9 +1777,9 @@
    "de": 629
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1767,9 +1900,9 @@
    "de": 479
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1838,6 +1971,11 @@
    "en": 494,
    "fr": 496,
    "de": 497
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1880,6 +2018,11 @@
    "en": 598,
    "fr": 597,
    "de": 596
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1948,6 +2091,11 @@
    "en": 590,
    "fr": 591,
    "de": 592
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -1990,6 +2138,26 @@
    "en": 593,
    "fr": 594,
    "de": 595
+  },
+  "wpml_conflict": {
+   "en": {
+    "wpml_path": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/benchtop-units/",
+    "wpml_name": "Desktop equipment",
+    "kept_path": "/en/categoria-producto/benchtop-units/",
+    "why": "el padre del término traducido no es la traducción del padre español"
+   },
+   "fr": {
+    "wpml_path": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/unites-de-paillasse/",
+    "wpml_name": "Équipement de bureau",
+    "kept_path": "/fr/categoria-producto/unites-de-paillasse/",
+    "why": "el padre del término traducido no es la traducción del padre español"
+   },
+   "de": {
+    "wpml_path": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/tafelmodellen/",
+    "wpml_name": "Schreibtischgeräte",
+    "kept_path": "/de/categoria-producto/tafelmodellen/",
+    "why": "el padre del término traducido no es la traducción del padre español"
+   }
   }
  },
  {
@@ -2059,6 +2227,11 @@
    "en": 492,
    "fr": 489,
    "de": 495
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -2205,6 +2378,11 @@
    "en": 463,
    "fr": 523,
    "de": 525
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -2273,6 +2451,11 @@
    "en": 607,
    "fr": 608,
    "de": 609
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -2343,9 +2526,9 @@
    "de": 684
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -2416,9 +2599,9 @@
    "de": 556
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -2629,6 +2812,11 @@
    "en": 499,
    "fr": 498,
    "de": 500
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -2699,9 +2887,9 @@
    "de": 491
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -2773,9 +2961,9 @@
    "de": 653
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -2847,9 +3035,9 @@
    "de": 657
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -2920,9 +3108,9 @@
    "de": 655
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -2993,9 +3181,9 @@
    "de": 651
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -3065,6 +3253,11 @@
    "en": 575,
    "fr": 576,
    "de": 577
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -3135,12 +3328,6 @@
      "h": "Soporte metálico para led de 10mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)"
     }
    ],
-   "en": [
-    {
-     "t": "p",
-     "h": "Metal support for 10mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings."
-    }
-   ],
    "fr": [
     {
      "t": "p",
@@ -3151,6 +3338,12 @@
     {
      "t": "p",
      "h": "Metalen beugels voor 10 mm LED's, gemaakt van messing of duraluminium, en met een verchroomde, vernikkelde of zwart geanodiseerde afwerking.\n\nVerkrijgbaar met twee verschillende kopvormen (binnenconus / buitenconus)."
+    }
+   ],
+   "en": [
+    {
+     "t": "p",
+     "h": "Metal support for 10mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings."
     }
    ]
   },
@@ -3175,9 +3368,9 @@
    "de": 635
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "fr": "wpml",
+   "de": "wpml",
+   "en": "product-cooccurrence"
   }
  },
  {
@@ -3248,9 +3441,9 @@
    "de": 637
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -3321,9 +3514,9 @@
    "de": 640
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -3395,9 +3588,9 @@
    "de": 641
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -3468,9 +3661,9 @@
    "de": 559
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -3539,6 +3732,18 @@
    "en": 545,
    "fr": 542,
    "de": 626
+  },
+  "matched_by": {
+   "en": "wpml",
+   "de": "wpml"
+  },
+  "wpml_conflict": {
+   "fr": {
+    "wpml_path": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/manuel/",
+    "wpml_name": "Manuel",
+    "kept_path": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/manuel/",
+    "why": "el padre del término traducido no es la traducción del padre español"
+   }
   }
  },
  {
@@ -3607,6 +3812,20 @@
    "en": 622,
    "fr": 623,
    "de": 624
+  },
+  "wpml_conflict": {
+   "fr": {
+    "wpml_path": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/monophase/",
+    "wpml_name": "Monophasé",
+    "kept_path": null,
+    "why": "el padre del término traducido no es la traducción del padre español"
+   },
+   "de": {
+    "wpml_path": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/monofase/",
+    "wpml_name": "Einphasig",
+    "kept_path": null,
+    "why": "el padre del término traducido no es la traducción del padre español"
+   }
   },
   "matched_by": {
    "en": "product-cooccurrence",
@@ -3683,9 +3902,9 @@
    "de": 615
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -3723,16 +3942,16 @@
      "h": "It is mainly used to regulate equipment remotely or for stabilizing equipment. It is also recommended to motorize high power voltage variators, due to the ease of use they provide."
     }
    ],
-   "fr": [
-    {
-     "t": "p",
-     "h": "Il est principalement utilisé pour réguler des équipements à distance ou pour stabiliser des équipements. Il est également recommandé pour motoriser les variateurs de tension de forte puissance, en raison de la facilité d'utilisation qu'il procure."
-    }
-   ],
    "de": [
     {
      "t": "p",
      "h": "Er wird hauptsächlich zur Fernsteuerung von Geräten oder zur Stabilisierung von Geräten verwendet. Auch für die Motorisierung von Hochspannungsreglern wird er empfohlen, da er einfach zu bedienen ist."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Il est principalement utilisé pour réguler des équipements à distance ou pour stabiliser des équipements. Il est également recommandé pour motoriser les variateurs de tension de forte puissance, en raison de la facilité d'utilisation qu'il procure."
     }
    ]
   },
@@ -3757,9 +3976,17 @@
    "de": 539
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "de": "wpml",
+   "fr": "product-cooccurrence"
+  },
+  "wpml_conflict": {
+   "fr": {
+    "wpml_path": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/onduleurs-monophases/motorise/",
+    "wpml_name": "Motorisé",
+    "kept_path": null,
+    "why": "el padre del término traducido no es la traducción del padre español"
+   }
   }
  },
  {
@@ -3831,9 +4058,17 @@
    "de": 558
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
+   "en": "wpml",
+   "fr": "wpml",
    "de": "product-cooccurrence"
+  },
+  "wpml_conflict": {
+   "de": {
+    "wpml_path": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/motorisiert/",
+    "wpml_name": "Motorisiert",
+    "kept_path": null,
+    "why": "el padre del término traducido no es la traducción del padre español"
+   }
   }
  },
  {
@@ -3905,9 +4140,9 @@
    "de": 562
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -3977,6 +4212,10 @@
    "en": 563,
    "fr": 564,
    "de": 565
+  },
+  "matched_by": {
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4088,6 +4327,11 @@
    "en": 599,
    "fr": 600,
    "de": 601
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4130,6 +4374,11 @@
    "en": 566,
    "fr": 567,
    "de": 568
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4201,9 +4450,9 @@
    "de": 519
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4273,6 +4522,11 @@
    "en": 485,
    "fr": 483,
    "de": 487
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4341,6 +4595,11 @@
    "en": 521,
    "fr": 520,
    "de": 522
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4409,6 +4668,11 @@
    "en": 476,
    "fr": 474,
    "de": 478
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4479,9 +4743,9 @@
    "de": 513
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4553,9 +4817,9 @@
    "de": 692
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4626,9 +4890,9 @@
    "de": 507
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4697,6 +4961,11 @@
    "en": 610,
    "fr": 611,
    "de": 612
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4734,16 +5003,16 @@
      "h": "Manufactured with single, symmetrical or multiple output, they are perfect as audio transformers, impedance transformers, audio line 100V and telephone 600 ohms."
     }
    ],
-   "fr": [
-    {
-     "t": "p",
-     "h": "Fabriqués avec une sortie simple, symétrique ou multiple, ils sont parfaits comme transformateurs audio, transformateurs d'impédance, ligne audio 100V et téléphone 600 ohms."
-    }
-   ],
    "de": [
     {
      "t": "p",
      "h": "Sie werden mit einfachem, symmetrischem oder mehrfachem Ausgang hergestellt und eignen sich perfekt als Audiotransformatoren, Impedanztransformatoren, Audioleitung 100V und Telefon 600 Ohm."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Fabriqués avec une sortie simple, symétrique ou multiple, ils sont parfaits comme transformateurs audio, transformateurs d'impédance, ligne audio 100V et téléphone 600 ohms."
     }
    ]
   },
@@ -4767,9 +5036,9 @@
    "de": 461
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "de": "wpml",
+   "fr": "product-cooccurrence"
   }
  },
  {
@@ -4807,16 +5076,16 @@
      "h": "Encapsulated conventional transformers manufactured with single output, symmetrical output or double output, encapsulated in self-extinguishing epoxy resin, complying with international safety and quality standards."
     }
    ],
-   "fr": [
-    {
-     "t": "p",
-     "h": "Transformateurs conventionnels encapsulés fabriqués avec une sortie simple, une sortie symétrique ou une sortie double, encapsulés dans une résine époxy auto-extinguible, conformes aux normes internationales de sécurité et de qualité."
-    }
-   ],
    "de": [
     {
      "t": "p",
      "h": "Gekapselte konventionelle Transformatoren mit einfachem, symmetrischem oder doppeltem Ausgang, eingekapselt in selbstverlöschendem Epoxidharz, die den internationalen Sicherheits- und Qualitätsstandards entsprechen."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Transformateurs conventionnels encapsulés fabriqués avec une sortie simple, une sortie symétrique ou une sortie double, encapsulés dans une résine époxy auto-extinguible, conformes aux normes internationales de sécurité et de qualité."
     }
    ]
   },
@@ -4841,9 +5110,9 @@
    "de": 468
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "de": "wpml",
+   "fr": "product-cooccurrence"
   }
  },
  {
@@ -4914,9 +5183,9 @@
    "de": 462
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -4954,16 +5223,16 @@
      "h": "They are transformers of the TT series, encapsulated in epoxy resin, in polyamide 6 enclosures that extend the service life and improve the insulation of the transformer.\n\nThey are ideal for humid environments Choosing reliable encapsulated toroidal transformers for demanding industrial environments, Torivac has established itself as one of the few European companies specialized in this field."
     }
    ],
-   "fr": [
-    {
-     "t": "p",
-     "h": "Il s'agit de transformateurs de la série TT, encapsulés en résine époxy, dans des enveloppes en polyamide 6 qui prolongent la durée de vie et améliorent l'isolation du transformateur.\n\nIls sont idéaux pour les environnements humides. En choisissant des transformateurs toriques encapsulés fiables pour les environnements industriels exigeants, Torivac s'est imposée comme l'une des rares entreprises européennes spécialisées dans ce domaine."
-    }
-   ],
    "de": [
     {
      "t": "p",
      "h": "Es handelt sich um Transformatoren der Serie TT, die in Epoxidharz eingekapselt sind, in Polyamid 6-Gehäusen, die die Lebensdauer verlängern und die Isolierung des Transformators verbessern.\n\nSie sind ideal für feuchte Umgebungen. Mit der Auswahl zuverlässiger gekapselter Ringkerntransformatoren für anspruchsvolle industrielle Umgebungen hat sich Torivac als eines der wenigen europäischen Unternehmen etabliert, das sich auf diesen Bereich spezialisiert hat."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Il s'agit de transformateurs de la série TT, encapsulés en résine époxy, dans des enveloppes en polyamide 6 qui prolongent la durée de vie et améliorent l'isolation du transformateur.\n\nIls sont idéaux pour les environnements humides. En choisissant des transformateurs toriques encapsulés fiables pour les environnements industriels exigeants, Torivac s'est imposée comme l'une des rares entreprises européennes spécialisées dans ce domaine."
     }
    ]
   },
@@ -4988,9 +5257,9 @@
    "de": 455
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "de": "wpml",
+   "fr": "product-cooccurrence"
   }
  },
  {
@@ -5028,16 +5297,16 @@
      "h": "This TT series transformer is manufactured with a 230V primary and two identical secondaries, which allow to duplicate voltages or currents, connecting them in series or parallel, in a power range between 20VA and 220VA, supplied with individual boxes and mounting accessories."
     }
    ],
-   "fr": [
-    {
-     "t": "p",
-     "h": "Ce transformateur de la série TT est fabriqué avec un primaire de 230V et deux secondaires identiques, qui permettent de dupliquer les tensions ou les courants, en les connectant en série ou en parallèle, dans une gamme de puissance comprise entre 20VA et 220VA, fourni avec des boîtes individuelles et des accessoires de montage."
-    }
-   ],
    "de": [
     {
      "t": "p",
      "h": "Dieser Transformator der Serie TT wird mit einer 230V-Primärseite und zwei identischen Sekundärseiten hergestellt, die es ermöglichen, Spannungen oder Ströme zu verdoppeln, indem sie in Reihe oder parallel geschaltet werden, in einem Leistungsbereich zwischen 20VA und 220VA, geliefert mit individuellen Gehäusen und Montagezubehör."
+    }
+   ],
+   "fr": [
+    {
+     "t": "p",
+     "h": "Ce transformateur de la série TT est fabriqué avec un primaire de 230V et deux secondaires identiques, qui permettent de dupliquer les tensions ou les courants, en les connectant en série ou en parallèle, dans une gamme de puissance comprise entre 20VA et 220VA, fourni avec des boîtes individuelles et des accessoires de montage."
     }
    ]
   },
@@ -5061,9 +5330,9 @@
    "de": 531
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "de": "wpml",
+   "fr": "product-cooccurrence"
   }
  },
  {
@@ -5133,6 +5402,11 @@
    "en": 630,
    "fr": 602,
    "de": 603
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -5175,6 +5449,11 @@
    "en": 517,
    "fr": 451,
    "de": 446
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -5245,9 +5524,9 @@
    "de": 687
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -5318,9 +5597,9 @@
    "de": 690
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -5506,6 +5785,11 @@
    "en": 464,
    "fr": 466,
    "de": 460
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -5574,6 +5858,11 @@
    "en": 456,
    "fr": 469,
    "de": 453
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -5655,6 +5944,11 @@
    "en": 457,
    "fr": 470,
    "de": 454
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -5726,9 +6020,23 @@
    "de": 621
   },
   "matched_by": {
-   "en": "product-cooccurrence",
+   "en": "wpml",
    "fr": "product-cooccurrence",
    "de": "product-cooccurrence"
+  },
+  "wpml_conflict": {
+   "fr": {
+    "wpml_path": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/triphase/",
+    "wpml_name": "Triphasé",
+    "kept_path": null,
+    "why": "el padre del término traducido no es la traducción del padre español"
+   },
+   "de": {
+    "wpml_path": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/driefasen/",
+    "wpml_name": "Dreiphasig",
+    "kept_path": null,
+    "why": "el padre del término traducido no es la traducción del padre español"
+   }
   }
  },
  {
@@ -5799,9 +6107,9 @@
    "de": 618
   },
   "matched_by": {
-   "en": "product-cooccurrence",
-   "fr": "product-cooccurrence",
-   "de": "product-cooccurrence"
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -5920,6 +6228,11 @@
    "en": 581,
    "fr": 582,
    "de": 583
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -5997,6 +6310,11 @@
    "en": 448,
    "fr": 532,
    "de": 533
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -6065,6 +6383,11 @@
    "en": 536,
    "fr": 534,
    "de": 557
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  },
  {
@@ -6133,6 +6456,11 @@
    "en": 544,
    "fr": 541,
    "de": 538
+  },
+  "matched_by": {
+   "en": "wpml",
+   "fr": "wpml",
+   "de": "wpml"
   }
  }
 ]

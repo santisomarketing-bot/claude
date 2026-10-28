@@ -144,7 +144,7 @@
     {
      "page": 1,
      "item": "Duplicidad con otros PDFs",
-     "why": "Texto idéntico (salvo ligaduras) a la página PDF 30 de Torivac_2024.pdf (catálogo, página impresa 29); mismo producto que Caracteristicas_Potenciometros_5W.pdf y Bobinas_encapsuladas_-potenciometros_ENd.pdf (trabajo p10). Los valores limpios del bloque 'Características principales' solo existen en la versión inglesa; esta extracción NO los copia."
+     "why": "Texto idéntico (salvo ligaduras) a la página PDF 30 de Torivac_2024.pdf (catálogo, página impresa 29); mismo producto que Caracteristicas_Potenciometros_5W.pdf y Bobinas_encapsuladas_-potenciometros_ENd.pdf (trabajo p10). Los valores limpios del bloque 'Características principales' solo existen en la versión inglesa; esta extracción NO los copia. Verificación cruzada de las propuestas (solo capa de texto de los otros idiomas, sin red): Torivac_2024_EN p019, Torivac_2024_FR p030 y catalogue-torivac-DE p030 imprimen limpios y coincidentes 5 W, 5 Ω - 50 KΩ, tolerancia 6%, ángulo mecánico 264, ángulo eléctrico 250 (con 'ºC' en EN y DE, 'oC' en FR), 8 kg/cm, eje 40 mm, 40 grs (40 gr en FR) y 75ºC. Siguen siendo propuesta (no publicar) hasta confirmarlas con Torivac."
     },
     {
      "page": 1,
@@ -156,7 +156,17 @@
      "item": "Página marcada visual_only",
      "why": "Incluye cotas de dibujo transcritas de la imagen y un bloque de características corrupto; el comprobador automático no la verifica. Los valores de texto se comprobaron a mano contra el render (130 y 220 ppp)."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "[nota] uncertain 'Duplicidad con otros PDFs'",
+     "was": "propuestas apoyadas solo en la edición EN",
+     "now": "propuestas corroboradas también por las ediciones FR y DE (capa de texto); valores del JSON sin cambios",
+     "why": "Refuerza la trazabilidad de las propuestas; no se publica ningún valor nuevo."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Potenciometro.pdf",
@@ -256,7 +266,7 @@
         "Peso neto": "40 grs.",
         "Embalaje": "Caja de 25 pzas.",
         "Dibujo - cota 27 (diámetro del cuerpo, vista frontal)": "27",
-        "Dibujo - cota 48 (longitud total, vista lateral)": "48",
+        "Dibujo - cota 48 (vista lateral, cota inferior: desde la pieza trasera hasta la cara del cuerpo, sin casquillo ni eje; sin rótulo)": "48",
         "Dibujo - cota 40 (longitud del cuerpo, cota superior de la vista lateral)": "40",
         "Dibujo - cota 12 (longitud del eje)": "12",
         "Dibujo - cota 6 (diámetro del eje)": "6",
@@ -333,7 +343,7 @@
     {
      "page": 1,
      "item": "Línea 'Eje Standard 12 mm, (8 6mm) de poliamida 6 con fibra de vidrio'",
-     "why": "El símbolo previo a '6mm' está corrupto ('8', probablemente Ø). Se registra el diámetro como '6mm' porque la cifra se lee y coincide con la cota 6 del eje en el dibujo; la longitud 12 mm coincide con la cota 12 del dibujo. Confirmar el símbolo Ø antes de publicar."
+     "why": "El símbolo previo a '6mm' está corrupto ('8', probablemente Ø). Se registra el diámetro como '6mm' porque la cifra se lee y coincide con la cota 6 del eje en el dibujo; la longitud 12 mm coincide con la cota 12 del dibujo. Confirmar el símbolo Ø antes de publicar. Corroboración cruzada: Torivac_2024_EN p018 ('12mm shaft (Ø 6mm.)') y Torivac_2024_FR p029 ('Axe de 12mm (Ø 6mm.)') imprimen el símbolo Ø; el valor del JSON no cambia."
     },
     {
      "page": 1,
@@ -353,7 +363,7 @@
     {
      "page": 1,
      "item": "Doble: 'características eléctricas y físicas iguales' frente al dibujo",
-     "why": "El texto dice que son iguales a las del 3W, pero el dibujo acota el doble con diámetro 27 (el 3W: 25), longitud total 48 y peso 40 grs. (el 3W: 22grs.). Se registran ambas tal cual; no inferir que comparten dimensiones."
+     "why": "El texto dice que son iguales a las del 3W, pero el dibujo acota el doble con diámetro 27 (el 3W: 25), cotas de longitud 40 y 48 en la vista lateral (el 3W: 22,5) y peso 40 grs. (el 3W: 22grs.). Se registran ambas tal cual; no inferir que comparten dimensiones."
     },
     {
      "page": 1,
@@ -363,7 +373,7 @@
     {
      "page": 1,
      "item": "Duplicidad con otros PDFs",
-     "why": "Texto idéntico (salvo ligaduras) a la página PDF 29 de Torivac_2024.pdf (catálogo, página impresa 28); mismo producto que Caracteristicas_Potenciometros_3W.pdf (trabajo p10). Las lecturas limpias de los valores corruptos proceden de otras ediciones del catálogo y se citan solo como propuesta."
+     "why": "Texto idéntico (salvo ligaduras) a la página PDF 29 de Torivac_2024.pdf (catálogo, página impresa 28); mismo producto que Caracteristicas_Potenciometros_3W.pdf (trabajo p10). Las lecturas limpias de los valores corruptos proceden de otras ediciones del catálogo y se citan solo como propuesta. Verificación cruzada de las propuestas del 3W (capa de texto, sin red): Torivac_2024_EN p018 y Torivac_2024_FR p029 coinciden en 5 Ω a 22 k, 280 y -20/+60 (EN con 'º'; FR imprime 'oo' y 'o' en lugar de 'º'); catalogue-torivac-DE p029 reproduce la misma corrupción del ES ('52 - 22KQ', '2800', '-20%/+60') y no aporta."
     },
     {
      "page": 1,
@@ -374,8 +384,44 @@
      "page": 1,
      "item": "Página marcada visual_only",
      "why": "Incluye cotas de dibujo transcritas de la imagen y líneas de características corruptas; el comprobador automático no la verifica. Los valores de texto se comprobaron a mano contra el render (130 y 220 ppp)."
+    },
+    {
+     "page": 1,
+     "item": "Potenciómetro doble: 'Peso neto: 40 grs.' frente a otras ediciones",
+     "why": "El PDF (ES, render y capa de texto) dice 40 grs. y coincide con Torivac_2024_EN p018 ('Net weight: 40 grs.') y catalogue-torivac-DE p029 ('Gewicht netto: 40 Gramm'), pero Torivac_2024_FR p029 dice 'Poids net : 28 gr.' para el mismo potenciómetro doble. Se conserva 40 grs. porque es lo impreso en este PDF; confirmar con Torivac antes de publicar el peso. No promediar ni elegir por cuenta propia."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "Potenciómetro doble: rótulo de la cota 48 (models[0].specs)",
+     "was": "Dibujo - cota 48 (longitud total, vista lateral): 48",
+     "now": "Dibujo - cota 48 (vista lateral, cota inferior: desde la pieza trasera hasta la cara del cuerpo, sin casquillo ni eje; sin rótulo): 48",
+     "why": "En el render (220 ppp) la cota 48 mide desde la pieza trasera hasta la cara frontal del cuerpo y NO incluye el casquillo (cota 8) ni el eje (cota 12); 'longitud total' era una interpretación engañosa. El valor 48 es correcto y no cambia."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Doble: características eléctricas y físicas iguales frente al dibujo'",
+     "was": "…longitud total 48…",
+     "now": "…cotas de longitud 40 y 48 en la vista lateral (el 3W: 22,5)…",
+     "why": "Mismo motivo: 48 no es longitud total del potenciómetro (excluye casquillo y eje)."
+    },
+    {
+     "page": 1,
+     "item": "[omisión] uncertain: peso del potenciómetro doble",
+     "was": "sin aviso de discrepancia entre ediciones",
+     "now": "aviso añadido a 'uncertain' (ES/EN/DE 40 grs., FR 28 gr.); valor 40 grs. del JSON sin cambios",
+     "why": "Dato contradictorio entre ediciones del catálogo; no debe publicarse sin confirmar."
+    },
+    {
+     "page": 1,
+     "item": "[nota] uncertain 'Eje Standard…' y 'Duplicidad con otros PDFs'",
+     "was": "propuestas apoyadas solo en la edición EN",
+     "now": "propuestas corroboradas también por FR (Ø 6mm, 5 Ω a 22 k, 280, -20/+60); valores del JSON sin cambios",
+     "why": "Refuerza la trazabilidad; no se publica ningún valor nuevo."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "REOSTATOS-CERAMICOS.pdf",
@@ -832,7 +878,7 @@
     {
      "page": 1,
      "item": "Lista de potencias del texto: '15-30-40-60-80125-250-500 y 1000 W'",
-     "why": "'80125' está impreso sin separador (probablemente 80 y 125) y la lista no coincide con los códigos de la tabla (PC12, PC25, PC35, PC50, PC75, PC125, PC250, PC500, PC1000). La hoja NO dice a qué potencia corresponde cada código. Valor en null. Hipótesis, NO publicar: correspondencia uno a uno en orden (9 potencias y 9 códigos); la apoya que C y d de PC250/PC500/PC1000 (18/6, 36/8, 54/8) coinciden con C y D de las filas 2x250W/2x500W/2x1000W de las tablas tándem, pero no la prueba. La versión inglesa del catálogo (Torivac_2024_EN, texto p020) escribe '15-30-40-60-80-125-250-500 and 1000 Watts'. Confirmar con Torivac antes de mapear PC12 a 15 W, PC25 a 30 W, etc."
+     "why": "'80125' está impreso sin separador (probablemente 80 y 125) y la lista no coincide con los códigos de la tabla (PC12, PC25, PC35, PC50, PC75, PC125, PC250, PC500, PC1000). La hoja NO dice a qué potencia corresponde cada código. Valor en null. Hipótesis, NO publicar: correspondencia uno a uno en orden (9 potencias y 9 códigos); la apoya que C y d de PC250/PC500/PC1000 (18/6, 36/8, 54/8) coinciden con C y D de las filas 2x250W/2x500W/2x1000W de las tablas tándem, pero no la prueba. La versión inglesa del catálogo (Torivac_2024_EN, texto p020) escribe '15-30-40-60-80-125-250-500 and 1000 Watts'. Confirmar con Torivac antes de mapear PC12 a 15 W, PC25 a 30 W, etc. Comprobación cruzada: Torivac_2024_FR p031 imprime '15-30-40-60-80-125-250-500 et 1000W' y catalogue-torivac-DE p031 repite '80125' como el ES."
     },
     {
      "page": 1,
@@ -842,7 +888,7 @@
     {
      "page": 1,
      "item": "Temperatura del cemento: 'hasta 9000C'",
-     "why": "Cifra y unidad corruptas en el propio PDF (confirmado en el render). Valor en null. Propuesta, NO publicar: 900 ºC (versión inglesa del catálogo: 'resists 900ºC')."
+     "why": "Cifra y unidad corruptas en el propio PDF (confirmado en el render). Valor en null. Propuesta, NO publicar: 900 ºC (versión inglesa del catálogo: 'resists 900ºC'). Torivac_2024_FR p031 dice 'jusqu'à 900oC'; catalogue-torivac-DE p031 repite '9000C' como el ES."
     },
     {
      "page": 1,
@@ -867,7 +913,7 @@
     {
      "page": 3,
      "item": "Tándem triple: columnas A MANUAL (300, 370, 430) y A MOTOR. (240, 300, 350)",
-     "why": "Valores impresos transcritos del render a 220 ppp con total claridad, pero sospechosos: en el tándem doble A MOTOR. es mayor que A MANUAL en 60, 70 y 80, mientras que en el triple A MOTOR. es menor que A MANUAL, y la columna A MOTOR. del triple (240, 300, 350) es idéntica a la del doble. Propuesta, NO aplicar: las dos columnas A del triple podrían estar intercambiadas en el original (con el intercambio, MOTOR. sería 60, 70 y 80 mayor que MANUAL, igual que en el doble). Celdas en null en models[]; los valores impresos están en raw_row y en tables[]. Confirmar con Torivac."
+     "why": "Valores impresos transcritos del render a 220 ppp con total claridad, pero sospechosos: en el tándem doble A MOTOR. es mayor que A MANUAL en 60, 70 y 80, mientras que en el triple A MOTOR. es menor que A MANUAL, y la columna A MOTOR. del triple (240, 300, 350) es idéntica a la del doble. Propuesta, NO aplicar: las dos columnas A del triple podrían estar intercambiadas en el original (con el intercambio, MOTOR. sería 60, 70 y 80 mayor que MANUAL, igual que en el doble). Celdas en null en models[]; los valores impresos están en raw_row y en tables[]. Confirmar con Torivac. Evidencia adicional (comprobada en el render): (1) en los dibujos, la cota A de la versión 'Motor' arranca en lo alto del motor y la de 'Manual' en la placa superior, de modo que A MOTOR. debe ser mayor que A MANUAL, como ocurre en el doble; (2) un tercer reóstato apilado debe aumentar A, pero la columna A MOTOR. del triple (240, 300, 350) es igual a la del doble, y con las columnas intercambiadas el aumento doble a triple sería 60, 70 y 80 en MANUAL y también en MOTOR. (180 a 240, 230 a 300, 270 a 350 en MANUAL; 240 a 300, 300 a 370, 350 a 430 en MOTOR.), un patrón coherente; (3) Torivac_2024_EN p022 imprime exactamente los mismos valores (300/240, 370/300, 430/350), así que el posible error viene del original y no de una mala lectura. Sigue siendo hipótesis: no se corrige ni se publica; celdas A en null en models[] y valores impresos en raw_row y tables[]."
     },
     {
      "page": 2,
@@ -899,7 +945,24 @@
      "item": "Datos ausentes en la hoja",
      "why": "No hay tensión máxima, corriente máxima, valor de resistencia por modelo (solo la gama), clase de tolerancia ni precios. Propuesta para el panel de admin: solicitarlos a Torivac; no inventarlos."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 3,
+     "item": "[nota] uncertain 'Tándem triple: columnas A MANUAL / A MOTOR.'",
+     "was": "sospecha basada solo en la comparación con el doble",
+     "now": "sospecha reforzada con los dibujos, el incremento coherente 60/70/80 si se intercambian las columnas y la coincidencia con la edición EN; celdas A siguen en null",
+     "why": "Dar a Torivac/admin evidencia suficiente para decidir; no se adivina el valor."
+    },
+    {
+     "page": 1,
+     "item": "[nota] uncertain 'Lista de potencias' y 'Temperatura del cemento'",
+     "was": "propuestas apoyadas solo en la edición EN",
+     "now": "propuestas corroboradas también por FR; DE repite la corrupción del ES; valores del JSON sin cambios",
+     "why": "Refuerza la trazabilidad; no se publica ningún valor nuevo."
+    }
+   ],
+   "verified": true
   }
  ]
 }

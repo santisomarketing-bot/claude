@@ -146,6 +146,13 @@ def main():
             if st in ("missing", "partial", "identical_to_es"):
                 n += 1
                 proposals.append({"id": f"PR-{n:03d}", "status": "pending", "type": "missing_translation", "product_id": p["id"], "product_name": p["name"]["es"], "lang": l, "field": f"description[{l}]", "title": {"missing": "Falta la traducción", "partial": "Traducción incompleta", "identical_to_es": "Texto sin traducir (idéntico al español)"}[st], "web_value": st, "pdf_value": None, "severity": "media", "recommendation": "Traducir antes de publicar; mientras tanto la web muestra el texto en español con aviso.", "confidence": "alta"})
+    # enlaces de traducción (WPML) incoherentes con el árbol de categorías → propuesta (la web original los tiene mal enlazados)
+    for c in jl(CAT / "categories.json", []) or []:
+        for l, cf in (c.get("wpml_conflict") or {}).items():
+            n += 1
+            proposals.append({"id": f"PR-{n:03d}", "status": "pending", "type": "wpml_link", "category_id": c["id"], "product_name": c["name"]["es"], "lang": l, "field": f"categoría[{l}]",
+                              "title": "Traducción de categoría mal enlazada en WPML", "web_value": cf["wpml_path"], "pdf_value": None, "severity": "baja",
+                              "recommendation": f"WPML enlaza «{c['name']['es']}» con «{cf['wpml_name']}», que cuelga de otra rama del árbol. La web nueva usa {cf['kept_path'] or 'el texto en español'}; revisar el enlace en WPML de la web original.", "confidence": "alta"})
     (CAT / "proposals.json").write_text(json.dumps(proposals, ensure_ascii=False, indent=1))
     (CAT / "products.json").write_text(json.dumps(products, ensure_ascii=False, indent=1))
     print(json.dumps({"productos": len(products), "propuestas": len(proposals), **dict(stats)}, ensure_ascii=False))

@@ -215,6 +215,31 @@ def build_categories():
         for l in ("en", "fr", "de"):
             rec.setdefault("ids", {})[l] = int(t["id"]) if (t := (by_link[l].get(alt_of(path, l)) if alt_of(path, l) else None)) else None
         out.append(rec)
+    # pase WPML (fuente PRIORITARIA): data/analysis/wpml-probe.json (scripts/wpml_probe.py) guarda a dónde redirige WPML la URL española de cada
+    # categoría en cada idioma; esa redirección es la traducción "oficial" (más fiable que hreflang, que en la web original cruza varias).
+    # Salvedad: WPML de la web original también tiene enlaces mal hechos (p. ej. dos «Manual» españoles apuntan al mismo término francés).
+    # Por eso solo se acepta si RESPETA EL ÁRBOL (el padre del término traducido = traducción del padre español); si no, se conserva
+    # el emparejamiento anterior y el conflicto queda en r["wpml_conflict"] (→ propuesta en el panel).
+    wpml = jl(AN / "wpml-probe.json", {})
+    byid0 = {r["id"]: r for r in out}
+    depth0 = lambda r: 0 if not r["parent"] else 1 + depth0(byid0[r["parent"]]) if r["parent"] in byid0 else 0
+    for r in sorted(out, key=depth0):
+        for l in ("en", "fr", "de"):
+            pr = (wpml.get(str(r["id"])) or {}).get(l)
+            if not pr or pr["kind"] != "category":
+                continue
+            t = by_link[l].get(pth(pr["to"]))
+            if not t:
+                continue
+            want_parent = 0 if not r["parent"] else (byid0[r["parent"]]["ids"].get(l) if r["parent"] in byid0 else None)
+            if want_parent is None or int(t["parent"]) != want_parent:
+                r.setdefault("wpml_conflict", {})[l] = {"wpml_path": pth(t["link"]), "wpml_name": htmllib.unescape(t["name"]), "kept_path": r["path"][l], "why": "el padre del término traducido no es la traducción del padre español"}
+                continue
+            was = r["path"][l]
+            r["slug"][l], r["name"][l], r["path"][l] = t["slug"], htmllib.unescape(t["name"]), pth(t["link"])
+            r["description"][l] = blocks_from_html(t.get("description") or "")
+            r["ids"][l] = int(t["id"])
+            r.setdefault("matched_by", {})[l] = "wpml" if was is None or was == r["path"][l] else "wpml-corrige-hreflang"
     # segundo pase: categorías que hreflang no resuelve (su URL canónica apunta a un producto) → coincidencia de productos traducidos + coherencia de padres
     byid = {r["id"]: r for r in out}
     depth = lambda r: 0 if not r["parent"] else 1 + depth(byid[r["parent"]]) if r["parent"] in byid else 0

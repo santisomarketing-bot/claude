@@ -1,0 +1,1222 @@
+{
+ "group": "g10-estabilizadores-de-tension",
+ "products": [
+  {
+   "id_es": 895,
+   "slug": "estabilizadores-de-tension",
+   "url_es": "https://grupotorivac.com/product/estabilizadores-de-tension/",
+   "sku": "da7b8680927b",
+   "names": {
+    "es": "Estabilizadores de tensión",
+    "en": "Voltage stabilizers",
+    "fr": "Stabilisateurs de tension",
+    "de": "Spannungsstabilisatoren"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/estabilizadores-de-tension/",
+    "en": "https://grupotorivac.com/en/product/estabilizadores-de-tension/",
+    "fr": "https://grupotorivac.com/fr/product/estabilizadores-de-tension/",
+    "de": "https://grupotorivac.com/de/product/estabilizadores-de-tension/"
+   },
+   "ids": {
+    "es": 895,
+    "en": 15567,
+    "fr": 15615,
+    "de": 15617
+   },
+   "category_path_es": [
+    "Estabilizadores de tensión"
+   ],
+   "categories_all_es": [
+    {
+     "id": 60,
+     "name": "Estabilizadores de tensión",
+     "slug": "estabilizadores-de-tension"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Estabilizadores de tensión o también llamados reguladores de tensión o voltaje, electrónicos y electromecánicos con servomotor, para instalaciones monofásicas o trifásicas.\nUtilizados para mantener de forma estable la tensión de red de la instalación.",
+    "en": "Voltage stabilizers or also called voltage regulators or voltage regulators, electronic and electromechanical with servomotor, for single-phase or three-phase installations.\nUsed to maintain stable mains voltage of the installation.",
+    "fr": "Stabilisateurs de tension ou également appelés régulateurs de tension ou régulateurs de tension, électroniques et électromécaniques avec servomoteur, pour installations monophasées ou triphasées.\nUtilisés pour maintenir stable la tension du réseau de l’installation.",
+    "de": "Spannungsstabilisatoren oder auch Spannungsregler oder Spannungsregler genannt, elektronisch und elektromechanisch mit Servomotor, für einphasige oder dreiphasige Anlagen.\nDient dazu, die Netzspannung der Anlage stabil zu halten."
+   },
+   "description_text": {
+    "es": "Un estabilizador de tensión, también conocido como regulador de tensión o regulador de voltaje, es el equipo encargado de mantener la tensión de red dentro de unos valores estables, independientemente de las fluctuaciones que se produzcan en la instalación eléctrica. Torivac fabrica estabilizadores electrónicos y electromecánicos con servomotor, tanto para instalaciones monofásicas como trifásicas, cubriendo desde pequeñas instalaciones hasta entornos industriales de alta exigencia.\n\n## ¿Por qué es necesario un estabilizador de tensión?\n\nLas redes eléctricas no siempre entregan una tensión constante. Picos, caídas y fluctuaciones continuas son habituales en instalaciones industriales, zonas con red débil o entornos con maquinaria de alta demanda. Esas variaciones deterioran los equipos conectados, reducen su vida útil y pueden provocar paradas no planificadas en la producción. Un estabilizador de tensión corrige esas variaciones de forma automática y continua, protegiendo la instalación sin intervención del operario.\nDos tecnologías para cada necesidad\n\n## Torivac ofrece estabilizadores en dos versiones según el tipo de aplicación y los requisitos técnicos del proyecto:\n\nElectromecánicos con servomotor: regulación continua mediante autotransformador accionado por servomotor. Alta precisión, margen de regulación amplio y respuesta rápida ante variaciones bruscas de red. Ideales para cargas industriales exigentes.\nElectrónicos: conmutación por etapas sin partes móviles. Respuesta prácticamente instantánea y mantenimiento mínimo. Adecuados para equipos sensibles y entornos donde la continuidad del suministro es crítica.\n\n## Monofásico y trifásico\n\nLa gama cubre instalaciones monofásicas y trifásicas, con regulación independiente por fase en los modelos trifásicos para garantizar el equilibrio de cargas asimétricas. Disponibles en múltiples potencias para adaptarse a cualquier dimensión de instalación.\n\n## ¿Para qué tipo de instalaciones están indicados?\n\n- Maquinaria industrial con electrónica de control sensible\n- Líneas de producción automatizadas\n- Laboratorios, centros de datos y salas técnicas\n- Instalaciones en zonas con red eléctrica inestable\n- Equipos médicos, de telecomunicaciones y de medida\n- Fabricación española, soluciones a medida\n\nTodos los estabilizadores Torivac se fabrican en España bajo un estricto control de calidad individual. Cuando las especificaciones estándar no se ajustan al proyecto, el equipo técnico de Torivac diseña y fabrica la solución a medida, con los parámetros eléctricos, formato y opciones de instrumentación que cada instalación requiere.",
+    "en": "Voltage stabilizers or also called voltage regulators or voltage regulators, electronic and electromechanical with servomotor, for single-phase or three-phase installations.\nUsed to maintain stable mains voltage of the installation.",
+    "fr": "Stabilisateurs de tension ou également appelés régulateurs de tension ou régulateurs de tension, électroniques et électromécaniques avec servomoteur, pour installations monophasées ou triphasées.\nUtilisés pour maintenir stable la tension du réseau de l’installation.",
+    "de": "Spannungsstabilisatoren oder auch Spannungsregler oder Spannungsregler genannt, elektronisch und elektromechanisch mit Servomotor, für einphasige oder dreiphasige Anlagen.\nDient dazu, die Netzspannung der Anlage stabil zu halten."
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2026/02/Sin-titulo-6.jpeg",
+     "alt": {
+      "es": "Estabilizadores de tensión",
+      "en": "Voltage stabilizers",
+      "fr": "Stabilisateurs de tension",
+      "de": "Spannungsstabilisatoren"
+     },
+     "id": 15407
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Serie / tecnología (AVS electromecánica con servomotor, BAVS electrónica) [la web las nombra pero esta ficha no contiene modelos]",
+    "Fases (monofásico / trifásico) [la web dice que la gama cubre ambos]",
+    "Potencia (kVA) [inferido: la web solo dice 'disponibles en múltiples potencias', sin valores ni unidad]",
+    "Tensión nominal de entrada y salida (V) [inferido: la web no la indica]"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Voltage stabilizers\n[botón] View full catalog -> https://grupotorivac.com/en/torivac-products/",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Stabilisateurs de tension\n[botón] Voir tout le catalogue -> https://grupotorivac.com/fr/produits-torivac/",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Spannungsstabilisatoren\n[botón] Gesamten Katalog ansehen -> https://grupotorivac.com/de/torivac-produkte/",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Estabilizadores de tensión - Torivac",
+     "meta_description": "Estabilizadores de tensión o también llamados reguladores de tensión o voltaje, electrónicos y electromecánicos con servomotor.",
+     "og_title": "Estabilizadores de tensión - Torivac",
+     "og_description": "Estabilizadores de tensión o también llamados reguladores de tensión o voltaje, electrónicos y electromecánicos con servomotor.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2026/02/Sin-titulo-6.jpeg",
+     "canonical": "https://grupotorivac.com/product/estabilizadores-de-tension/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:40",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__estabilizadores-de-tension.json"
+    },
+    "en": {
+     "title": "Voltage stabilizers - Torivac",
+     "meta_description": "Voltage stabilizers or also called voltage regulators or voltage regulators, electronic and electromechanical with servomotor.",
+     "og_title": "Voltage stabilizers - Torivac",
+     "og_description": "Voltage stabilizers or also called voltage regulators or voltage regulators, electronic and electromechanical with servomotor.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2026/02/Sin-titulo-6.jpeg",
+     "canonical": "https://grupotorivac.com/product/estabilizadores-de-tension/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:28",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__estabilizadores-de-tension.json"
+    },
+    "fr": {
+     "title": "Stabilisateurs de tension - Torivac",
+     "meta_description": "Stabilisateurs de tension ou également appelés régulateurs de tension ou régulateurs de tension, électroniques et électromécaniques avec servomoteur.",
+     "og_title": "Stabilisateurs de tension - Torivac",
+     "og_description": "Stabilisateurs de tension ou également appelés régulateurs de tension ou régulateurs de tension, électroniques et électromécaniques avec servomoteur.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2026/02/Sin-titulo-6.jpeg",
+     "canonical": "https://grupotorivac.com/product/estabilizadores-de-tension/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:43",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__estabilizadores-de-tension.json"
+    },
+    "de": {
+     "title": "Spannungsstabilisatoren - Torivac",
+     "meta_description": "Spannungsstabilisatoren oder auch Spannungsregler oder Spannungsregler genannt, elektronisch und elektromechanisch mit Servomotor.",
+     "og_title": "Spannungsstabilisatoren - Torivac",
+     "og_description": "Spannungsstabilisatoren oder auch Spannungsregler oder Spannungsregler genannt, elektronisch und elektromechanisch mit Servomotor.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2026/02/Sin-titulo-6.jpeg",
+     "canonical": "https://grupotorivac.com/product/estabilizadores-de-tension/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:43",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__estabilizadores-de-tension.json"
+    }
+   },
+   "translation_status": {
+    "en": "partial",
+    "fr": "partial",
+    "de": "partial"
+   },
+   "quality_flags": [
+    "sku_no_comercial",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "sin_referencias_comerciales",
+    "sin_pdf",
+    "sin_alt",
+    "nombre_de_archivo_poco_descriptivo",
+    "slug_url_en_espanol",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "relacionados_autorreferente",
+    "descripcion_larga_ausente_en_traducciones",
+    "texto_en_idioma_incorrecto",
+    "ficha_sin_datos_numericos",
+    "nombre_generico",
+    "estructura_de_encabezados_dudosa",
+    "traduccion_dudosa",
+    "contenido_por_verificar"
+   ],
+   "gaps": [
+    "Ficha de familia, no un producto pedible: el nombre 'Estabilizadores de tensión' coincide con el de la categoría raíz (id 60) y el texto solo presenta las dos tecnologías (electromecánicos con servomotor y electrónicos) y los usos; no define modelos, series concretas ni enlaza a las fichas AVS/BAVS (ver los productos 897, 898, 900 y 901 del lote). Dentro del lote es el único producto asignado directamente a la categoría raíz (los otros cuatro cuelgan de las subcategorías Monofásico/Trifásico).",
+    "Traducciones parciales: en EN, FR y DE la Store API y la REST devuelven como descripción el mismo párrafo de la descripción corta (232/266/229 caracteres frente a 2861 en ES, un 8/9/8 %). Faltan las secciones largas ES: '¿Por qué es necesario un estabilizador de tensión?', 'Dos tecnologías para cada necesidad', 'Monofásico y trifásico' y '¿Para qué tipo de instalaciones están indicados?' (lista de 6 usos), y el párrafo final sobre fabricación en España. Las páginas renderizadas EN/FR/DE muestran solo ese párrafo.",
+    "Traducción dudosa por duplicación: ES 'reguladores de tensión o voltaje' se tradujo como EN 'voltage regulators or voltage regulators', FR 'régulateurs de tension ou régulateurs de tension' y DE 'Spannungsregler oder Spannungsregler' (el mismo término repetido). Se conserva tal cual.",
+    "Estructura del texto ES: el H2 'Torivac ofrece estabilizadores en dos versiones según el tipo de aplicación y los requisitos técnicos del proyecto:' es una frase larga que acaba en dos puntos y empieza con salto de línea (funciona como párrafo introductorio, no como encabezado); 'Dos tecnologías para cada necesidad' va dentro del párrafo anterior tras un <br> en vez de ser un encabezado; y la lista '¿Para qué tipo de instalaciones están indicados?' incluye el elemento 'Fabricación española, soluciones a medida', que no es un tipo de instalación.",
+    "Incoherencia de contenido con la ficha BAVS (901 y 900): esta ficha describe los electrónicos como 'conmutación por etapas sin partes móviles', mientras que las fichas BAVS dicen 'regulación continua por fase' y 'sin los escalones ni distorsiones propios de otras tecnologías de conmutación'. Se conservan ambos textos sin corregir; por verificar con Torivac.",
+    "Afirmaciones sin corroboración fuera de la web: 'Todos los estabilizadores Torivac se fabrican en España bajo un estricto control de calidad individual', 'alta precisión, margen de regulación amplio y respuesta rápida', 'mantenimiento mínimo'. Ningún PDF/catálogo las confirma; revisar con Torivac antes de reutilizarlas en presupuestos.",
+    "Imagen única (id 15407, Sin-titulo-6.jpeg, 2106 px de ancho; nombre en la biblioteca 'Sin título (6)'): nombre de archivo no descriptivo, sin relación con el producto. Es la misma imagen en los 4 idiomas.",
+    "Meta description (Yoast, campo manual) más corta que la descripción corta: ES 'Estabilizadores de tensión o también llamados reguladores de tensión o voltaje, electrónicos y electromecánicos con servomotor.' (omite 'para instalaciones monofásicas o trifásicas' y la frase de uso); en EN/FR/DE repite el mismo recorte, con la misma duplicación de 'regulators'.",
+    "Sin tabla de modelos ni referencias comerciales: ni la Store API (ningún <table> en la descripción), ni la REST, ni la página renderizada contienen tablas en ningún idioma, y la Store API no trae atributos (attributes = []). No hay potencias (VA/kVA), tensiones nominales de entrada/salida, intensidades, dimensiones ni pesos por referencia (spec_tables = [], orderable_items = []).",
+    "Sin ficha técnica PDF enlazada en ningún idioma (pdf_links = []). El único enlace .pdf de cada página es el catálogo global del menú (Torivac_2024.pdf en ES, Torivac_2024_EN.pdf en EN, Torivac_2024_FR.pdf en FR, catalogue-torivac-DE.pdf en DE), no específico del producto. Los catálogos (data/analysis/pdf-text y pdfs/) tampoco tratan los estabilizadores AVS/BAVS: solo citan 'estabilizadores de tensión' como aplicación de los variadores, 'equipos estabilizadores' en la regulación motorizada y los variadores 'estabilizados' bajo demanda con placa electrónica (precisión del 2 %), que son otro producto (Torivac_2024 p004 y p017, EN p004 y p039, FR p004, catalogue-torivac-DE p004 y p017), así que no hay otra fuente de datos técnicos.",
+    "SKU 'da7b8680927b': hash de 12 caracteres sin significado comercial, no es una referencia de pedido; la Store API lo repite idéntico en EN/FR/DE.",
+    "Alt de la biblioteca de medios vacío en 1 de 1 imágenes (Store API, los 4 idiomas); la página renderizada pone como alt el título del producto en cada idioma (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
+    "Las páginas renderizadas EN, FR y DE no tienen H1 (el outline solo trae el h3 del menú y los h4/h2 del bloque de contacto y de relacionados); solo la ES tiene H1 con el nombre del producto.",
+    "SEO: en EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española del producto (p. ej. https://grupotorivac.com/product/estabilizadores-de-tension/), no a la URL traducida; los slugs de las URLs EN/FR/DE están en español (/estabilizadores-de-tension/).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (común a todas las fichas; se guarda tal cual en extra_sections): EN título 'CONTACT WITH US'; FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE título 'KONTAKT US', casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés); ES 'encontrareis' sin tilde.",
+    "En EN, FR y DE el bloque 'productos relacionados' solo lista el propio producto (relacionado autorreferente) y su botón de catálogo enlaza al listado general de productos; la página ES no muestra bloque de relacionados.",
+    "Tensión y potencia: no hay ninguna cifra de tensión (V) ni de potencia (VA/kVA) en ninguno de los 4 idiomas (voltage_mentions y power_mentions vacíos); solo 'monofásicas o trifásicas' y 'tensión de red' de forma cualitativa."
+   ]
+  },
+  {
+   "id_es": 897,
+   "slug": "serie-avs-2",
+   "url_es": "https://grupotorivac.com/product/serie-avs-2/",
+   "sku": "592f331c74e3",
+   "names": {
+    "es": "Estabilizadores Monofásicos",
+    "en": "Single Phase Stabilizers",
+    "fr": "Stabilisateurs monophasés",
+    "de": "Einphasige Stabilisatoren"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/serie-avs-2/",
+    "en": "https://grupotorivac.com/en/product/serie-avs-2/",
+    "fr": "https://grupotorivac.com/fr/product/serie-avs-2/",
+    "de": "https://grupotorivac.com/de/product/serie-avs-2/"
+   },
+   "ids": {
+    "es": 897,
+    "en": 16190,
+    "fr": 16191,
+    "de": 16192
+   },
+   "category_path_es": [
+    "Estabilizadores de tensión",
+    "Estabilizadores Serie AVS: electromecánicos con servomotor",
+    "Monofásico"
+   ],
+   "categories_all_es": [
+    {
+     "id": 103,
+     "name": "Monofásico",
+     "slug": "monofasico-serie-avs"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Estabilizador electromecánico monofásico\n\n• Velocidad de estabilizado hasta 90V/Seg.\n• Controlado por microprocesador.\n• Regulación continua por fase.\n• Precisión en la tensión de salida mejor del 1 %.\n• Margen de regulación hasta del ± 40 %\n• Sin distorsión de onda ni cortes.\n• Pantalla táctil mostrando tensión de entrada y salida por fase\n• Intensidad de la carga, potencia activa y reactiva, factor de potencia.\n• Frecuencia, Temperatura.",
+    "en": "Servomotor driven electromechanical stabilizer for single phase networks.\n– Stabilizing speed up to 90V/Sec.\n– Microprocessor controlled.\n– Continuous regulation per phase.\n– Output voltage accuracy better than 1 %.\n– Regulation range up to ± 40 %\n– No waveform distortion or clipping.\n– Touch screen display showing input and output voltage per phase\n– Load current, active and reactive power, cosine of fi.\n– Frequency, Temperature.",
+    "fr": "Stabilisateur électromécanique à servomoteur pour réseaux monophasés.\n– Vitesse de stabilisation jusqu’à 90V/Sec.\n– Contrôlé par microprocesseur.\n– Régulation continue par phase.\n– Précision de la tension de sortie meilleure que 1 %.\n– Plage de régulation jusqu’à ± 40 %.\n– Pas de distorsion de forme d’onde ni d’écrêtage.\n– Écran tactile indiquant la tension d’entrée et de sortie par phase.\n– Courant de charge, puissance active et réactive, cosinus de fi.\n– Fréquence, température.",
+    "de": "Elektromechanischer Stabilisator mit Servomotor für einphasige Netze.\n– Stabilisierungsgeschwindigkeit bis zu 90V/Sek.\n– Mikroprozessorgesteuert.\n– Kontinuierliche Regelung pro Phase.\n– Genauigkeit der Ausgangsspannung besser als 1 %.\n– Regelbereich bis zu ± 40 %.\n– Keine Wellenformverzerrung oder Clipping.\n– Touchscreen-Display mit Anzeige der Eingangs- und Ausgangsspannung pro Phase.\n– Laststrom, Wirk- und Blindleistung, Kosinus von fi.\n– Frequenz, Temperatur."
+   },
+   "description_text": {
+    "es": "El estabilizador electromecánico monofásico de Torivac combina la robustez del accionamiento por servomotor con la precisión del control por microprocesador para ofrecer una regulación de tensión continua, estable y sin interrupciones en redes monofásicas. Donde la red eléctrica no garantiza una tensión constante, este equipo actúa de forma automática para proteger los equipos conectados y asegurar la continuidad del proceso.\n\n## El estabilizador electromecánico monofásico de Torivac corrige la tensión si varia demasiado\n\nLa velocidad de estabilizado de hasta 90 V por segundo permite al equipo reaccionar ante variaciones bruscas de red con una rapidez que las soluciones convencionales no alcanzan. El servomotor responde a la orden del microprocesador de forma inmediata, ajustando la tensión de salida de manera continua sin escalones ni interrupciones. La onda de salida permanece limpia en todo momento, sin distorsión ni microcortes que puedan afectar a equipos sensibles o procesos críticos.\n\n## Precisión del 1% con el mayor margen de regulación de la gama\n\nCon una precisión en la tensión de salida mejor del 1% y un margen de regulación de hasta ±40%, este estabilizador cubre las situaciones de red más comprometidas. Instalaciones con caídas o picos de tensión severos, zonas con suministro eléctrico débil o entornos industriales con cargas variables encuentran en este equipo la respuesta más completa de la gama Torivac. Ese margen amplio de regulación, combinado con la precisión del microprocesador, garantiza una salida estable incluso cuando la entrada se aleja considerablemente del valor nominal.\n\n## Supervisión completa desde la pantalla táctil del estabilizador electromecánico monofásico de Torivac\n\nEl panel táctil integrado centraliza toda la información del sistema en tiempo real: tensión de entrada y salida, intensidad de la carga, potencia activa y reactiva, coseno de fi, frecuencia y temperatura del equipo. La gestión es completamente autónoma, con el microprocesador tomando las decisiones de regulación sin intervención del operario, mientras la pantalla permite supervisar el estado de la instalación en cualquier momento sin instrumentación externa.\n\n## Fabricación española para instalaciones exigentes\n\nIndicado para maquinaria industrial monofásica, equipos de laboratorio, instalaciones médicas, zonas con red eléctrica inestable y cualquier aplicación donde la calidad de la tensión sea determinante. Fabricado en España con materiales de alta calidad y control individual de cada unidad antes de su entrega. Disponible en diferentes potencias y configurable a medida según los requisitos específicos del proyecto.",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
+     "alt": {
+      "es": "Estabilizadores Monofásicos",
+      "en": "Single Phase Stabilizers",
+      "fr": "Stabilisateurs monophasés",
+      "de": "Einphasige Stabilisatoren"
+     },
+     "id": 1067
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2026/06/estabilizador-de-tension-instalada-en-una-fabrica-de-chips-302590.jpg",
+     "alt": {
+      "es": "Estabilizadores Monofásicos",
+      "en": "Single Phase Stabilizers",
+      "fr": "Stabilisateurs monophasés",
+      "de": "Einphasige Stabilisatoren"
+     },
+     "id": 16662
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "90V/Seg.",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "• Velocidad de estabilizado hasta 90V/Seg."
+    },
+    {
+     "raw": "90 V por segundo",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "La velocidad de estabilizado de hasta 90 V por segundo permite al equipo reaccionar ante variaciones bruscas de red con una rapidez que las soluciones convencionales no alcanzan."
+    },
+    {
+     "raw": "90V/Seg.",
+     "lang": "es",
+     "source": "web:pagina",
+     "context": "meta description: Estabilizador electromecánico monofásico • Velocidad de estabilizado hasta 90V/Seg. • Controlado por microprocesador. • Regulación continua por fase."
+    },
+    {
+     "raw": "90V/Sec.",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "– Stabilizing speed up to 90V/Sec."
+    },
+    {
+     "raw": "90V/Sec.",
+     "lang": "en",
+     "source": "web:pagina",
+     "context": "meta description: Servomotor driven electromechanical stabilizer for single phase networks. - Stabilizing speed up to 90V/Sec. - Microprocessor controlled."
+    },
+    {
+     "raw": "90V/Sec.",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "– Vitesse de stabilisation jusqu’à 90V/Sec."
+    },
+    {
+     "raw": "90V/Sec.",
+     "lang": "fr",
+     "source": "web:pagina",
+     "context": "meta description: Stabilisateur électromécanique à servomoteur pour réseaux monophasés. - Vitesse de stabilisation jusqu'à 90V/Sec. - Contrôlé par microprocesseur."
+    },
+    {
+     "raw": "90V/Sek.",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "– Stabilisierungsgeschwindigkeit bis zu 90V/Sek."
+    },
+    {
+     "raw": "90V/Sek.",
+     "lang": "de",
+     "source": "web:pagina",
+     "context": "meta description: Elektromechanischer Stabilisator mit Servomotor für einphasige Netze. - Stabilisierungsgeschwindigkeit bis zu 90V/Sek. - Mikroprozessorgesteuert."
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Potencia (kVA o VA) [la web dice 'disponible en diferentes potencias' sin valores; unidad inferida]",
+    "Tensión nominal de entrada y salida (V) [inferido: la web no la indica]",
+    "Margen de regulación (la web indica 'hasta ± 40 %' como máximo; 'configurable a medida según los requisitos específicos del proyecto')",
+    "Opciones a medida (parámetros eléctricos / instrumentación) [la web dice 'configurable a medida', sin opciones concretas]"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Single Phase Stabilizers\n[botón] View full catalog -> https://grupotorivac.com/en/torivac-products/",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Stabilisateurs monophasés\n[botón] Voir tout le catalogue -> https://grupotorivac.com/fr/produits-torivac/",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Einphasige Stabilisatoren\n[botón] Gesamten Katalog ansehen -> https://grupotorivac.com/de/torivac-produkte/",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Estabilizadores Monofásicos - Torivac",
+     "meta_description": "Estabilizador electromecánico monofásico • Velocidad de estabilizado hasta 90V/Seg. • Controlado por microprocesador. • Regulación continua por fase.",
+     "og_title": "Estabilizadores Monofásicos - Torivac",
+     "og_description": "Estabilizador electromecánico monofásico • Velocidad de estabilizado hasta 90V/Seg. • Controlado por microprocesador. • Regulación continua por fase.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-avs-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:41",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__serie-avs-2.json"
+    },
+    "en": {
+     "title": "Single Phase Stabilizers - Torivac",
+     "meta_description": "Servomotor driven electromechanical stabilizer for single phase networks. - Stabilizing speed up to 90V/Sec. - Microprocessor controlled.",
+     "og_title": "Single Phase Stabilizers - Torivac",
+     "og_description": "Servomotor driven electromechanical stabilizer for single phase networks. - Stabilizing speed up to 90V/Sec. - Microprocessor controlled.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-avs-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:37",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__serie-avs-2.json"
+    },
+    "fr": {
+     "title": "Stabilisateurs monophasés - Torivac",
+     "meta_description": "Stabilisateur électromécanique à servomoteur pour réseaux monophasés. - Vitesse de stabilisation jusqu'à 90V/Sec. - Contrôlé par microprocesseur.",
+     "og_title": "Stabilisateurs monophasés - Torivac",
+     "og_description": "Stabilisateur électromécanique à servomoteur pour réseaux monophasés. - Vitesse de stabilisation jusqu'à 90V/Sec. - Contrôlé par microprocesseur.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-avs-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:38",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__serie-avs-2.json"
+    },
+    "de": {
+     "title": "Einphasige Stabilisatoren - Torivac",
+     "meta_description": "Elektromechanischer Stabilisator mit Servomotor für einphasige Netze. - Stabilisierungsgeschwindigkeit bis zu 90V/Sek. - Mikroprozessorgesteuert.",
+     "og_title": "Einphasige Stabilisatoren - Torivac",
+     "og_description": "Elektromechanischer Stabilisator mit Servomotor für einphasige Netze. - Stabilisierungsgeschwindigkeit bis zu 90V/Sek. - Mikroprozessorgesteuert.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-avs-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:39",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__serie-avs-2.json"
+    }
+   },
+   "translation_status": {
+    "en": "partial",
+    "fr": "partial",
+    "de": "partial"
+   },
+   "quality_flags": [
+    "sku_no_comercial",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "sin_referencias_comerciales",
+    "sin_pdf",
+    "sin_alt",
+    "nombre_de_archivo_poco_descriptivo",
+    "slug_url_en_espanol",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "relacionados_autorreferente",
+    "descripcion_larga_ausente_en_traducciones",
+    "texto_en_idioma_incorrecto",
+    "descripcion_vacia",
+    "formato_vinetas_manual",
+    "nombre_generico",
+    "typo",
+    "texto_plantilla_repetido",
+    "traduccion_inexacta",
+    "traduccion_dudosa",
+    "traduccion_desactualizada_respecto_a_es",
+    "imagen_compartida_entre_fichas",
+    "meta_description_con_vinetas",
+    "slug_numerico_no_descriptivo",
+    "contenido_por_verificar",
+    "terminologia_inconsistente_entre_fichas",
+    "sin_potencias_ni_tensiones_nominales"
+   ],
+   "gaps": [
+    "Traducciones parciales: EN, FR y DE solo contienen la descripción corta (frase de presentación + 9 viñetas): 434/484/466 caracteres frente a 3099 en ES (un 14/16/15 %), con description vacía en Store API y REST. Faltan las 5 secciones largas ES (párrafo introductorio, 'corrige la tensión si varia demasiado', 'Precisión del 1% con el mayor margen de regulación de la gama', 'Supervisión completa desde la pantalla táctil…', 'Fabricación española para instalaciones exigentes'). Las páginas renderizadas EN/FR/DE muestran solo la descripción corta.",
+    "Las traducciones no coinciden literalmente con la descripción corta ES actual: empiezan con la frase 'Servomotor driven electromechanical stabilizer for single phase networks.' (FR 'Stabilisateur électromécanique à servomoteur pour réseaux monophasés.', DE 'Elektromechanischer Stabilisator mit Servomotor für einphasige Netze.'), que en ES no existe (el h2 ES es solo 'Estabilizador electromecánico monofásico'; en 898 sí consta la frase equivalente), y terminan con 'cosine of fi' / 'cosinus de fi' / 'Kosinus von fi' donde la descripción corta ES dice 'factor de potencia' (la descripción larga ES sí dice 'coseno de fi'). Sugiere que se tradujo de una versión distinta de la ES actual.",
+    "Traducción inexacta: la viñeta ES 'Sin distorsión de onda ni cortes' se tradujo como EN 'No waveform distortion or clipping', FR 'Pas de distorsion de forme d'onde ni d'écrêtage', DE 'Keine Wellenformverzerrung oder Clipping' ('clipping/écrêtage' = recorte de la onda, no 'cortes' de suministro, que es lo que dice la descripción larga ES: 'sin distorsión ni microcortes'). Además 'cosine of fi' es calco de 'coseno de fi' (cos φ / factor de potencia). Se conserva tal cual.",
+    "Nombre genérico e inconsistente con la serie: ES 'Estabilizadores Monofásicos' (plural, sin 'Serie AVS' ni 'electromecánico'), frente a 898 'Estabilizador Trifásico Serie AVS' y 900 'Estabilizador Monofásico Serie BAVS'. Los nombres traducidos tampoco siguen un patrón común en la familia: EN 'Single Phase Stabilizers' / 'AVS Series Three-Phase Stabilizer' / 'Single Phase Stabilizer BAVS Series' / 'BAVS Series Three-Phase Stabilizer'; DE 'Einphasige Stabilisatoren' / 'AVS Serie Drei-Phasen-Stabilisator' / 'Einphasen-Stabilisator Serie BAVS' / 'Dreiphasiger Stabilisator der BAVS-Serie'.",
+    "Erratas en ES: 'si varia demasiado' (falta tilde: 'varía') en el H2 'El estabilizador electromecánico monofásico de Torivac corrige la tensión si varia demasiado'.",
+    "Texto de plantilla: las 9 viñetas de la descripción corta son idénticas a las de 898 (trifásico AVS) salvo el h2; incluyen 'Regulación continua por fase' y 'tensión de entrada y salida por fase', expresiones 'por fase' propias de la ficha trifásica aplicadas a un equipo para redes monofásicas. Se conserva tal cual.",
+    "Cifras de la ficha (velocidad hasta 90 V/s, precisión de salida mejor del 1 %, margen de regulación hasta ±40 %, 'el mayor margen de regulación de la gama') solo figuran en la propia web, coherentes entre descripción corta y larga; ningún PDF las corrobora. 'El mayor margen de la gama' (±40 %) se compara con ±30 % de serie en BAVS (901 añade 'y superior a pedido del cliente'): por verificar con Torivac.",
+    "Imágenes: id 1067 (bavs-tri.jpg, 1500 px) — el mismo archivo es la imagen única de 901 (BAVS trifásico) y su nombre indica 'bavs' y 'tri' (trifásico) aunque este producto es AVS monofásico; es también la og:image. Id 16662 (estabilizador-de-tension-instalada-en-una-fabrica-de-chips-302590.jpg, 1200 px). Comprobar con Torivac si la imagen de producto es la correcta.",
+    "SEO: la meta description (≈150 caracteres) es el inicio de la descripción corta: en ES el título más 3 viñetas con los símbolos '•' literales ('Estabilizador electromecánico monofásico • Velocidad de estabilizado hasta 90V/Seg. • Controlado por microprocesador. • Regulación continua por fase.'); en EN/FR/DE la frase de presentación más 2 viñetas con guiones convertidos en ' - '. No es un resumen redactado para snippet.",
+    "Slug 'serie-avs-2': el sufijo '-2' no es descriptivo (en 898 es '-3'); no indica monofásico/trifásico ni serie.",
+    "Sin tabla de modelos ni referencias comerciales: ni la Store API (ningún <table> en la descripción), ni la REST, ni la página renderizada contienen tablas en ningún idioma, y la Store API no trae atributos (attributes = []). No hay potencias (VA/kVA), tensiones nominales de entrada/salida, intensidades, dimensiones ni pesos por referencia (spec_tables = [], orderable_items = []).",
+    "Sin ficha técnica PDF enlazada en ningún idioma (pdf_links = []). El único enlace .pdf de cada página es el catálogo global del menú (Torivac_2024.pdf en ES, Torivac_2024_EN.pdf en EN, Torivac_2024_FR.pdf en FR, catalogue-torivac-DE.pdf en DE), no específico del producto. Los catálogos (data/analysis/pdf-text y pdfs/) tampoco tratan los estabilizadores AVS/BAVS: solo citan 'estabilizadores de tensión' como aplicación de los variadores, 'equipos estabilizadores' en la regulación motorizada y los variadores 'estabilizados' bajo demanda con placa electrónica (precisión del 2 %), que son otro producto (Torivac_2024 p004 y p017, EN p004 y p039, FR p004, catalogue-torivac-DE p004 y p017), así que no hay otra fuente de datos técnicos.",
+    "SKU '592f331c74e3': hash de 12 caracteres sin significado comercial, no es una referencia de pedido; la Store API lo repite idéntico en EN/FR/DE.",
+    "Alt de la biblioteca de medios vacío en 2 de 2 imágenes (Store API, los 4 idiomas); la página renderizada pone como alt el título del producto en cada idioma (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
+    "Las páginas renderizadas EN, FR y DE no tienen H1 (el outline solo trae el h3 del menú y los h4/h2 del bloque de contacto y de relacionados); solo la ES tiene H1 con el nombre del producto.",
+    "SEO: en EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española del producto (p. ej. https://grupotorivac.com/product/serie-avs-2/), no a la URL traducida; los slugs de las URLs EN/FR/DE están en español (/serie-avs-2/).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (común a todas las fichas; se guarda tal cual en extra_sections): EN título 'CONTACT WITH US'; FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE título 'KONTAKT US', casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés); ES 'encontrareis' sin tilde.",
+    "En EN, FR y DE el bloque 'productos relacionados' solo lista el propio producto (relacionado autorreferente) y su botón de catálogo enlaza al listado general de productos; la página ES no muestra bloque de relacionados.",
+    "Tensión y potencia: la ficha no da ninguna tensión nominal de entrada/salida (p. ej. 230 V monofásico / 400 V trifásico) ni potencia (VA/kVA); 'monofásico/trifásico' aparece sin tensión asociada y 'potencia activa y reactiva' solo como magnitud que muestra la pantalla. Las únicas menciones con 'V' (voltage_mentions: '90V/Seg.' en la descripción corta y su variante en el texto largo ES, más el equivalente en EN/FR/DE y en la meta description) son una velocidad de corrección (voltios por segundo), no una tensión nominal: no usarlas como etiqueta de voltaje."
+   ]
+  },
+  {
+   "id_es": 898,
+   "slug": "serie-avs-3",
+   "url_es": "https://grupotorivac.com/product/serie-avs-3/",
+   "sku": "28e88fa19299",
+   "names": {
+    "es": "Estabilizador Trifásico Serie AVS",
+    "en": "AVS Series Three-Phase Stabilizer",
+    "fr": "Stabilisateur triphasé de la série AVS",
+    "de": "AVS Serie Drei-Phasen-Stabilisator"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/serie-avs-3/",
+    "en": "https://grupotorivac.com/en/product/serie-avs-3/",
+    "fr": "https://grupotorivac.com/fr/product/serie-avs-3/",
+    "de": "https://grupotorivac.com/de/product/serie-avs-3/"
+   },
+   "ids": {
+    "es": 898,
+    "en": 16193,
+    "fr": 16194,
+    "de": 16195
+   },
+   "category_path_es": [
+    "Estabilizadores de tensión",
+    "Estabilizadores Serie AVS: electromecánicos con servomotor",
+    "Trifásico"
+   ],
+   "categories_all_es": [
+    {
+     "id": 104,
+     "name": "Trifásico",
+     "slug": "trifasico-serie-avs"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Estabilizador electromecánico accionado por servomotor para redes trifásicas\n\n• Velocidad de estabilizado hasta 90V/Seg.\n• Controlado por microprocesador.\n• Regulación continua por fase.\n• Precisión en la tensión de salida mejor del 1 %.\n• Margen de regulación hasta del ± 40 %\n• Sin distorsión de onda ni cortes.\n• Pantalla táctil mostrando tensión de entrada y salida por fase\n• Intensidad de la carga, potencia activa y reactiva, factor de potencia.\n• Frecuencia, Temperatura.",
+    "en": "Servomotor driven electromechanical stabilizer for three-phase networks.\n– Stabilizing speed up to 90V/Sec.\n– Microprocessor controlled.\n– Continuous regulation per phase.\n– Output voltage accuracy better than 1 %.\n– Regulation range up to ± 40 %\n– No waveform distortion or clipping.\n– Touch screen display showing input and output voltage per phase\n– Load current, active and reactive power, cosine of fi.\n– Frequency, Temperature.",
+    "fr": "Stabilisateur électromécanique à servomoteur pour réseaux triphasés.\n– Vitesse de stabilisation jusqu’à 90V/Sec.\n– Contrôlé par microprocesseur.\n– Régulation continue par phase.\n– Précision de la tension de sortie meilleure que 1 %.\n– Plage de régulation jusqu’à ± 40 %.\n– Pas de distorsion de forme d’onde ni d’écrêtage.\n– Écran tactile indiquant la tension d’entrée et de sortie par phase.\n– Courant de charge, puissance active et réactive, cosinus de fi.\n– Fréquence, température.",
+    "de": "Elektromechanischer Stabilisator mit Servomotor für dreiphasige Netze.\n– Stabilisierungsgeschwindigkeit bis zu 90 V/Sek.\n– Mikroprozessorgesteuert.\n– Kontinuierliche Regelung pro Phase.\n– Genauigkeit der Ausgangsspannung besser als 1 %.\n– Regelbereich bis zu ± 40 %.\n– Keine Wellenformverzerrung oder Clipping.\n– Touchscreen-Display mit Anzeige der Eingangs- und Ausgangsspannung pro Phase.\n– Laststrom, Wirk- und Blindleistung, Kosinus von fi.\n– Frequenz, Temperatur."
+   },
+   "description_text": {
+    "es": "## Estabilizador electromecánico trifásico de Torivac\n\nEl estabilizador electromecánico trifásico de Torivac mantiene la tensión de salida estable aunque la red eléctrica fluctúe, sin cortar el suministro ni distorsionar la onda. Accionado por servomotor y controlado por microprocesador, reacciona ante cualquier variación de red de forma continua y automática, protegiendo los equipos conectados en todo momento.\n\n## Velocidad de respuesta que marca la diferencia\n\nCon una velocidad de estabilizado de hasta 90 V/seg, el equipo corrige las fluctuaciones de tensión antes de que afecten a la carga. En entornos industriales donde los picos y caídas de red son frecuentes, esa capacidad de reacción es lo que separa un estabilizador profesional de una solución insuficiente. La regulación es continua por fase, lo que garantiza un comportamiento equilibrado en redes trifásicas con cargas asimétricas.\n\nPrecisión del 1% en la tensión de salida\n\nLa tensión de salida se mantiene con una precisión mejor del 1%, independientemente de lo que ocurra en la red de entrada. Con un margen de regulación de hasta ±40%, el estabilizador absorbe variaciones de tensión severas sin esfuerzo, entregando siempre una salida limpia y estable a los equipos conectados. Sin distorsión de onda, sin microcortes, sin interrupciones.\n\n## Control total del estabilizador electromecánico trifásico de Torivac desde la pantalla táctil\n\nEl panel táctil integrado muestra en tiempo real toda la información necesaria para supervisar el estado del sistema y de la carga:\n\n- Tensión de entrada y salida por fase.\n- Intensidad de la carga.\n- Potencia activa y reactiva.\n- Factor de potencia\n- Frecuencia.\n- Temperatura del equipo.\n\nToda la información en un solo punto, sin necesidad de instrumentación externa. El microprocesador gestiona la regulación de forma autónoma y permite una supervisión precisa del proceso en cualquier momento.\n\n## ¿Para qué aplicaciones está indicado?\n\nProtección de maquinaria industrial sensible a fluctuaciones de red, líneas de producción con equipos de control electrónico, instalaciones con redes eléctricas inestables o de baja calidad, centros de datos, laboratorios y salas técnicas; cualquier proceso industrial donde la calidad de la tensión sea crítica.\n\n## Fabricado en España con garantía Torivac\n\nComo el resto de la gama, este estabilizador está fabricado en España bajo los estándares de calidad Torivac, con control individual de cada unidad antes de su entrega. Disponible en diferentes potencias y con posibilidad de configuración a medida según los requerimientos del proyecto.",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/12/trifasico-servomotor.jpg",
+     "alt": {
+      "es": "Estabilizador Trifásico Serie AVS",
+      "en": "AVS Series Three-Phase Stabilizer",
+      "fr": "Stabilisateur triphasé de la série AVS",
+      "de": "AVS Serie Drei-Phasen-Stabilisator"
+     },
+     "id": 1080
+    },
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2026/06/estabilizador-de-tension-instalado-en-un-data-center-302590.jpg",
+     "alt": {
+      "es": "Estabilizador Trifásico Serie AVS",
+      "en": "AVS Series Three-Phase Stabilizer",
+      "fr": "Stabilisateur triphasé de la série AVS",
+      "de": "AVS Serie Drei-Phasen-Stabilisator"
+     },
+     "id": 16663
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [
+    {
+     "raw": "90V/Seg.",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "• Velocidad de estabilizado hasta 90V/Seg."
+    },
+    {
+     "raw": "90 V/seg",
+     "lang": "es",
+     "source": "web:descripcion",
+     "context": "Con una velocidad de estabilizado de hasta 90 V/seg, el equipo corrige las fluctuaciones de tensión antes de que afecten a la carga."
+    },
+    {
+     "raw": "90V/Seg.",
+     "lang": "es",
+     "source": "web:pagina",
+     "context": "meta description: Estabilizador electromecánico accionado por servomotor para redes trifásicas • Velocidad de estabilizado hasta 90V/Seg. • Controlado por microprocesador."
+    },
+    {
+     "raw": "90V/Sec.",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "– Stabilizing speed up to 90V/Sec."
+    },
+    {
+     "raw": "90V/Sec.",
+     "lang": "en",
+     "source": "web:pagina",
+     "context": "meta description: Servomotor driven electromechanical stabilizer for three-phase networks. - Stabilizing speed up to 90V/Sec. - Microprocessor controlled."
+    },
+    {
+     "raw": "90V/Sec.",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "– Vitesse de stabilisation jusqu’à 90V/Sec."
+    },
+    {
+     "raw": "90V/Sec.",
+     "lang": "fr",
+     "source": "web:pagina",
+     "context": "meta description: Stabilisateur électromécanique à servomoteur pour réseaux triphasés. - Vitesse de stabilisation jusqu'à 90V/Sec. - Contrôlé par microprocesseur."
+    },
+    {
+     "raw": "90 V/Sek.",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "– Stabilisierungsgeschwindigkeit bis zu 90 V/Sek."
+    },
+    {
+     "raw": "90 V/Sek.",
+     "lang": "de",
+     "source": "web:pagina",
+     "context": "meta description: Elektromechanischer Stabilisator mit Servomotor für dreiphasige Netze. - Stabilisierungsgeschwindigkeit bis zu 90 V/Sek. - Mikroprozessorgesteuert."
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Potencia (kVA o VA) [la web dice 'disponible en diferentes potencias' sin valores; unidad inferida]",
+    "Tensión nominal de entrada y salida (V) [inferido: la web no la indica]",
+    "Margen de regulación (la web indica 'hasta ± 40 %' como máximo; 'configuración a medida según los requerimientos del proyecto')",
+    "Opciones a medida (parámetros eléctricos / instrumentación) [la web dice 'posibilidad de configuración a medida', sin opciones concretas]"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- AVS Series Three-Phase Stabilizer\n[botón] View full catalog -> https://grupotorivac.com/en/torivac-products/",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Stabilisateur triphasé de la série AVS\n[botón] Voir tout le catalogue -> https://grupotorivac.com/fr/produits-torivac/",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- AVS Serie Drei-Phasen-Stabilisator\n[botón] Gesamten Katalog ansehen -> https://grupotorivac.com/de/torivac-produkte/",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Estabilizador Trifásico Serie AVS - Torivac",
+     "meta_description": "Estabilizador electromecánico accionado por servomotor para redes trifásicas • Velocidad de estabilizado hasta 90V/Seg. • Controlado por microprocesador.",
+     "og_title": "Estabilizador Trifásico Serie AVS - Torivac",
+     "og_description": "Estabilizador electromecánico accionado por servomotor para redes trifásicas • Velocidad de estabilizado hasta 90V/Seg. • Controlado por microprocesador.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/trifasico-servomotor.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-avs-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:41",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__serie-avs-3.json"
+    },
+    "en": {
+     "title": "AVS Series Three-Phase Stabilizer - Torivac",
+     "meta_description": "Servomotor driven electromechanical stabilizer for three-phase networks. - Stabilizing speed up to 90V/Sec. - Microprocessor controlled.",
+     "og_title": "AVS Series Three-Phase Stabilizer - Torivac",
+     "og_description": "Servomotor driven electromechanical stabilizer for three-phase networks. - Stabilizing speed up to 90V/Sec. - Microprocessor controlled.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/trifasico-servomotor.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-avs-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:39",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__serie-avs-3.json"
+    },
+    "fr": {
+     "title": "Stabilisateur triphasé de la série AVS - Torivac",
+     "meta_description": "Stabilisateur électromécanique à servomoteur pour réseaux triphasés. - Vitesse de stabilisation jusqu'à 90V/Sec. - Contrôlé par microprocesseur.",
+     "og_title": "Stabilisateur triphasé de la série AVS - Torivac",
+     "og_description": "Stabilisateur électromécanique à servomoteur pour réseaux triphasés. - Vitesse de stabilisation jusqu'à 90V/Sec. - Contrôlé par microprocesseur.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/trifasico-servomotor.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-avs-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:40",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__serie-avs-3.json"
+    },
+    "de": {
+     "title": "AVS Serie Drei-Phasen-Stabilisator - Torivac",
+     "meta_description": "Elektromechanischer Stabilisator mit Servomotor für dreiphasige Netze. - Stabilisierungsgeschwindigkeit bis zu 90 V/Sek. - Mikroprozessorgesteuert.",
+     "og_title": "AVS Serie Drei-Phasen-Stabilisator - Torivac",
+     "og_description": "Elektromechanischer Stabilisator mit Servomotor für dreiphasige Netze. - Stabilisierungsgeschwindigkeit bis zu 90 V/Sek. - Mikroprozessorgesteuert.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/trifasico-servomotor.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-avs-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:40",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__serie-avs-3.json"
+    }
+   },
+   "translation_status": {
+    "en": "partial",
+    "fr": "partial",
+    "de": "partial"
+   },
+   "quality_flags": [
+    "sku_no_comercial",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "sin_referencias_comerciales",
+    "sin_pdf",
+    "sin_alt",
+    "nombre_de_archivo_poco_descriptivo",
+    "slug_url_en_espanol",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "relacionados_autorreferente",
+    "descripcion_larga_ausente_en_traducciones",
+    "texto_en_idioma_incorrecto",
+    "descripcion_vacia",
+    "formato_vinetas_manual",
+    "typo",
+    "texto_plantilla_repetido",
+    "traduccion_inexacta",
+    "traduccion_dudosa",
+    "traduccion_desactualizada_respecto_a_es",
+    "estructura_de_encabezados_dudosa",
+    "meta_description_con_vinetas",
+    "slug_numerico_no_descriptivo",
+    "contenido_por_verificar",
+    "terminologia_inconsistente_entre_fichas",
+    "sin_potencias_ni_tensiones_nominales"
+   ],
+   "gaps": [
+    "Traducciones parciales: EN, FR y DE solo contienen la descripción corta (frase de presentación + 9 viñetas): 433/483/468 caracteres frente a 3066 en ES (un 14/16/15 %), con description vacía en Store API y REST. Faltan todas las secciones largas ES (introducción, 'Velocidad de respuesta que marca la diferencia', 'Precisión del 1% en la tensión de salida', 'Control total… desde la pantalla táctil' con su lista de 6 magnitudes, '¿Para qué aplicaciones está indicado?', 'Fabricado en España con garantía Torivac'). Las páginas renderizadas EN/FR/DE muestran solo la descripción corta.",
+    "Las traducciones terminan la lista con 'cosine of fi' / 'cosinus de fi' / 'Kosinus von fi' donde la descripción corta ES actual dice 'factor de potencia' (la lista de la descripción larga ES dice 'Factor de potencia'). La frase inicial traducida sí corresponde al h2 ES.",
+    "Traducción inexacta: la viñeta ES 'Sin distorsión de onda ni cortes' se tradujo como EN 'No waveform distortion or clipping', FR 'Pas de distorsion de forme d'onde ni d'écrêtage', DE 'Keine Wellenformverzerrung oder Clipping' ('clipping' = recorte de onda, no 'cortes'); 'cosine of fi' es calco de 'coseno de fi'. Se conserva tal cual.",
+    "Estructura del texto ES: 'Precisión del 1% en la tensión de salida' es un párrafo en negrita (<p><strong>) en vez de un encabezado h3 como los demás subtítulos, por lo que no aparece en el árbol de encabezados de la página (outline).",
+    "Texto de plantilla: las 9 viñetas de la descripción corta son idénticas a las de 897 (monofásico AVS) salvo el h2 (aquí 'Estabilizador electromecánico accionado por servomotor para redes trifásicas'). En la lista de la descripción larga, 'Factor de potencia' no lleva punto final, a diferencia del resto (menor).",
+    "Cifras de la ficha (velocidad hasta 90 V/s, precisión de salida mejor del 1 %, margen de regulación hasta ±40 %) solo figuran en la propia web, coherentes entre descripción corta y larga ('90 V/seg' vs '90V/Seg.'); ningún PDF las corrobora. Por verificar con Torivac.",
+    "Nombres traducidos sin patrón común en la familia (ver 897): EN 'AVS Series Three-Phase Stabilizer', FR 'Stabilisateur triphasé de la série AVS', DE 'AVS Serie Drei-Phasen-Stabilisator'. Slug 'serie-avs-3': el sufijo '-3' no es descriptivo.",
+    "SEO: la meta description (≈150 caracteres) es el inicio de la descripción corta: en ES el título más 2 viñetas con los símbolos '•' literales; en EN/FR/DE la frase de presentación más 2 viñetas con guiones convertidos en ' - '. No es un resumen redactado para snippet.",
+    "Imágenes: id 1080 (trifasico-servomotor.jpg, 1500 px) e id 16663 (estabilizador-de-tension-instalado-en-un-data-center-302590.jpg, 1200 px). La og:image es la primera (trifasico-servomotor.jpg).",
+    "Sin tabla de modelos ni referencias comerciales: ni la Store API (ningún <table> en la descripción), ni la REST, ni la página renderizada contienen tablas en ningún idioma, y la Store API no trae atributos (attributes = []). No hay potencias (VA/kVA), tensiones nominales de entrada/salida, intensidades, dimensiones ni pesos por referencia (spec_tables = [], orderable_items = []).",
+    "Sin ficha técnica PDF enlazada en ningún idioma (pdf_links = []). El único enlace .pdf de cada página es el catálogo global del menú (Torivac_2024.pdf en ES, Torivac_2024_EN.pdf en EN, Torivac_2024_FR.pdf en FR, catalogue-torivac-DE.pdf en DE), no específico del producto. Los catálogos (data/analysis/pdf-text y pdfs/) tampoco tratan los estabilizadores AVS/BAVS: solo citan 'estabilizadores de tensión' como aplicación de los variadores, 'equipos estabilizadores' en la regulación motorizada y los variadores 'estabilizados' bajo demanda con placa electrónica (precisión del 2 %), que son otro producto (Torivac_2024 p004 y p017, EN p004 y p039, FR p004, catalogue-torivac-DE p004 y p017), así que no hay otra fuente de datos técnicos.",
+    "SKU '28e88fa19299': hash de 12 caracteres sin significado comercial, no es una referencia de pedido; la Store API lo repite idéntico en EN/FR/DE.",
+    "Alt de la biblioteca de medios vacío en 2 de 2 imágenes (Store API, los 4 idiomas); la página renderizada pone como alt el título del producto en cada idioma (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
+    "Las páginas renderizadas EN, FR y DE no tienen H1 (el outline solo trae el h3 del menú y los h4/h2 del bloque de contacto y de relacionados); solo la ES tiene H1 con el nombre del producto.",
+    "SEO: en EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española del producto (p. ej. https://grupotorivac.com/product/serie-avs-3/), no a la URL traducida; los slugs de las URLs EN/FR/DE están en español (/serie-avs-3/).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (común a todas las fichas; se guarda tal cual en extra_sections): EN título 'CONTACT WITH US'; FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE título 'KONTAKT US', casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés); ES 'encontrareis' sin tilde.",
+    "En EN, FR y DE el bloque 'productos relacionados' solo lista el propio producto (relacionado autorreferente) y su botón de catálogo enlaza al listado general de productos; la página ES no muestra bloque de relacionados.",
+    "Tensión y potencia: la ficha no da ninguna tensión nominal de entrada/salida (p. ej. 230 V monofásico / 400 V trifásico) ni potencia (VA/kVA); 'monofásico/trifásico' aparece sin tensión asociada y 'potencia activa y reactiva' solo como magnitud que muestra la pantalla. Las únicas menciones con 'V' (voltage_mentions: '90V/Seg.' en la descripción corta y su variante en el texto largo ES, más el equivalente en EN/FR/DE y en la meta description) son una velocidad de corrección (voltios por segundo), no una tensión nominal: no usarlas como etiqueta de voltaje."
+   ]
+  },
+  {
+   "id_es": 900,
+   "slug": "serie-bavs-2",
+   "url_es": "https://grupotorivac.com/product/serie-bavs-2/",
+   "sku": "13d3617942b1",
+   "names": {
+    "es": "Estabilizador Monofásico Serie BAVS",
+    "en": "Single Phase Stabilizer BAVS Series",
+    "fr": "Stabilisateur monophasé Série BAVS",
+    "de": "Einphasen-Stabilisator Serie BAVS"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/serie-bavs-2/",
+    "en": "https://grupotorivac.com/en/product/serie-bavs-2/",
+    "fr": "https://grupotorivac.com/fr/product/serie-bavs-2/",
+    "de": "https://grupotorivac.com/de/product/serie-bavs-2/"
+   },
+   "ids": {
+    "es": 900,
+    "en": 16199,
+    "fr": 16200,
+    "de": 16201
+   },
+   "category_path_es": [
+    "Estabilizadores de tensión",
+    "Serie BAVS: Electrónicos",
+    "Monofásico"
+   ],
+   "categories_all_es": [
+    {
+     "id": 105,
+     "name": "Monofásico",
+     "slug": "monofasico-serie-bavs"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Binary automatic voltage stabilizers\n\nEstabilizador binario automatico, accionado por control electrónico de IGBT para redes monofásicas.\n\n• Ciclo de estabilizado cada 100mS.\n• Controlado por microprocesador.\n• Regulación continua por fase.\n• Precisión en la tensión de salida mejor del 1 %.\n• De serie, margen de regulación del ± 30 %\n• Sin distorsión de onda ni cortes.\n• Pantalla táctil mostrando tensión de entrada y salida por fase.\n• Intensidad de la carga, potencia activa y reactiva, el factor de potencia.\n• Frecuencia, Temperatura.",
+    "en": "Binary stabilizer driven by IGBT electronic control for single phase networks.\n– Stabilizing cycle every 100mS.\n– Microprocessor controlled.\n– Continuous regulation per phase.\n– Output voltage accuracy better than 1 %.\n– As standard, ± 30 % regulation range.\n– No wave distortion or clipping.\n– Touch screen display showing input and output voltage per phase.\n– Load current, active and reactive power, cosine of fi.\n– Frequency, Temperature.",
+    "fr": "Stabilisateur binaire à commande électronique IGBT pour réseaux monophasés.\n– Cycle de stabilisation tous les 100mS.\n– Commande par microprocesseur.\n– Régulation continue par phase.\n– Précision de la tension de sortie meilleure que 1 %.\n– En standard, plage de régulation ± 30 %.\n– Pas de distorsion de forme d’onde ni d’écrêtage.\n– Écran tactile indiquant la tension d’entrée et de sortie par phase.\n– Courant de charge, puissance active et réactive, cosinus de fi.\n– Fréquence, température.",
+    "de": "Binärer Stabilisator mit elektronischer IGBT-Steuerung für einphasige Netze.\n– Stabilisierungszyklus alle 100mS.\n– Mikroprozessorgesteuert.\n– Kontinuierliche Regelung pro Phase.\n– Genauigkeit der Ausgangsspannung besser als 1 %.\n– Standardmäßig ± 30 % Regelbereich.\n– Keine Wellenformverzerrung oder Clipping.\n– Touchscreen-Display mit Anzeige der Eingangs- und Ausgangsspannung pro Phase.\n– Laststrom, Wirk- und Blindleistung, Kosinus von fi.\n– Frequenz, Temperatur."
+   },
+   "description_text": {
+    "es": "El estabilizador binario monofásico de Torivac lleva la tecnología de control electrónico por IGBT a instalaciones de red monofásica, ofreciendo la misma velocidad de respuesta y precisión que exigen los entornos industriales más exigentes. Sin partes móviles, sin cortes en el suministro y sin distorsión de onda, mantiene la tensión de salida estable aunque la red de entrada fluctúe de forma continua.\n\n## Estabilizador binario monofásico en 100 milisegundos\n\nEl ciclo de estabilizado de tan solo 100 ms es la característica que define este equipo frente a soluciones convencionales. El microprocesador detecta la variación, el control IGBT actúa y la tensión de salida se corrige antes de que los equipos conectados lleguen a verse afectados. Para maquinaria con electrónica sensible, equipos de medida o cualquier instalación donde la estabilidad de la tensión sea crítica, esa velocidad de reacción no tiene alternativa en tecnología electromecánica.\n\n## Precisión del 1% con margen de regulación de ±30%\n\nLa tensión de salida se mantiene con una precisión mejor del 1% en todo momento. Con un margen de regulación de serie de ±30%, el equipo absorbe variaciones significativas de la red sin comprometer la calidad de la señal entregada a la carga. La regulación es continua y la onda de salida permanece limpia en todo el rango de trabajo, sin los escalones ni distorsiones propios de otras tecnologías de conmutación.\n\n## Toda la información de la instalación en la pantalla táctil\n\nEl panel táctil integrado muestra en tiempo real la tensión de entrada y salida, la intensidad de la carga, la potencia activa y reactiva, el factor de potencia, la frecuencia y la temperatura del equipo. El operario tiene visibilidad completa del estado de la instalación desde un único punto, sin necesidad de instrumentación adicional ni cableado externo. El microprocesador gestiona la regulación de forma autónoma, lo que reduce al mínimo la intervención manual y simplifica el mantenimiento del sistema.\n\n## Aplicaciones y fabricación de estabilizador binario monofásico\n\nIndicado para equipos médicos, laboratorios, maquinaria industrial monofásica, instalaciones en zonas con red débil o inestable y cualquier proceso donde los cortes o las fluctuaciones de tensión generen pérdidas o riesgos. Como el resto de la gama, se fabrica en España con control de calidad individual en cada unidad y puede configurarse a medida según los requerimientos técnicos del proyecto.\n\nSus usos mas comunes son son para Máquinas de control numérico, Equipos informáticos, Equipos de laboratorio, Equipos de emisión y transmisión de Radio Televisión, hospitales etc..  En definitiva, en todos aquellos procesos en que se precise una buena calidad en el suministro eléctrico.",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/BAVS-mono-1.jpg",
+     "alt": {
+      "es": "Estabilizador Monofásico Serie BAVS",
+      "en": "Single Phase Stabilizer BAVS Series",
+      "fr": "Stabilisateur monophasé Série BAVS",
+      "de": "Einphasen-Stabilisator Serie BAVS"
+     },
+     "id": 1082
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Potencia (kVA o VA) [inferido: esta ficha no menciona potencias; 897, 898 y 901 dicen 'diferentes potencias' sin valores]",
+    "Tensión nominal de entrada y salida (V) [inferido: la web no la indica]",
+    "Margen de regulación (de serie ± 30 %; 'configurable a medida según los requerimientos técnicos del proyecto')",
+    "Opciones a medida (parámetros eléctricos / instrumentación) [la web dice 'puede configurarse a medida', sin opciones concretas]"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Single Phase Stabilizer BAVS Series\n[botón] View full catalog -> https://grupotorivac.com/en/torivac-products/",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Stabilisateur monophasé Série BAVS\n[botón] Voir tout le catalogue -> https://grupotorivac.com/fr/produits-torivac/",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Einphasen-Stabilisator Serie BAVS\n[botón] Gesamten Katalog ansehen -> https://grupotorivac.com/de/torivac-produkte/",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Estabilizador Monofásico Serie BAVS - Torivac",
+     "meta_description": "Binary automatic voltage stabilizers &nbsp; Estabilizador binario automatico, accionado por control electrónico de IGBT para redes monofásicas.",
+     "og_title": "Estabilizador Monofásico Serie BAVS - Torivac",
+     "og_description": "Binary automatic voltage stabilizers &nbsp; Estabilizador binario automatico, accionado por control electrónico de IGBT para redes monofásicas.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/BAVS-mono-1.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-bavs-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:42",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__serie-bavs-2.json"
+    },
+    "en": {
+     "title": "Single Phase Stabilizer BAVS Series - Torivac",
+     "meta_description": "Binary stabilizer driven by IGBT electronic control for single phase networks. - Stabilizing cycle every 100mS. - Microprocessor controlled.",
+     "og_title": "Single Phase Stabilizer BAVS Series - Torivac",
+     "og_description": "Binary stabilizer driven by IGBT electronic control for single phase networks. - Stabilizing cycle every 100mS. - Microprocessor controlled.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/BAVS-mono-1.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-bavs-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:47",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__serie-bavs-2.json"
+    },
+    "fr": {
+     "title": "Stabilisateur monophasé Série BAVS - Torivac",
+     "meta_description": "Stabilisateur binaire à commande électronique IGBT pour réseaux monophasés. - Cycle de stabilisation tous les 100mS. - Commande par microprocesseur.",
+     "og_title": "Stabilisateur monophasé Série BAVS - Torivac",
+     "og_description": "Stabilisateur binaire à commande électronique IGBT pour réseaux monophasés. - Cycle de stabilisation tous les 100mS. - Commande par microprocesseur.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/BAVS-mono-1.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-bavs-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:47",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__serie-bavs-2.json"
+    },
+    "de": {
+     "title": "Einphasen-Stabilisator Serie BAVS - Torivac",
+     "meta_description": "Binärer Stabilisator mit elektronischer IGBT-Steuerung für einphasige Netze. - Stabilisierungszyklus alle 100mS. - Mikroprozessorgesteuert.",
+     "og_title": "Einphasen-Stabilisator Serie BAVS - Torivac",
+     "og_description": "Binärer Stabilisator mit elektronischer IGBT-Steuerung für einphasige Netze. - Stabilisierungszyklus alle 100mS. - Mikroprozessorgesteuert.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/BAVS-mono-1.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-bavs-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:48",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__serie-bavs-2.json"
+    }
+   },
+   "translation_status": {
+    "en": "partial",
+    "fr": "partial",
+    "de": "partial"
+   },
+   "quality_flags": [
+    "sku_no_comercial",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "sin_referencias_comerciales",
+    "sin_pdf",
+    "sin_alt",
+    "nombre_de_archivo_poco_descriptivo",
+    "slug_url_en_espanol",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "relacionados_autorreferente",
+    "descripcion_larga_ausente_en_traducciones",
+    "texto_en_idioma_incorrecto",
+    "descripcion_vacia",
+    "typo",
+    "unidad_dudosa",
+    "terminologia_dudosa",
+    "texto_plantilla_repetido",
+    "traduccion_inexacta",
+    "traduccion_dudosa",
+    "traduccion_desactualizada_respecto_a_es",
+    "meta_description_con_vinetas",
+    "meta_description_con_html_residual",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "slug_numerico_no_descriptivo",
+    "contenido_por_verificar",
+    "formato_vinetas_manual",
+    "terminologia_inconsistente_entre_fichas",
+    "sin_potencias_ni_tensiones_nominales"
+   ],
+   "gaps": [
+    "Traducciones parciales: EN, FR y DE solo contienen la descripción corta (frase de presentación + 9 viñetas): 442/492/467 caracteres frente a 3284 en ES (un 13/15/14 %), con description vacía en Store API y REST. Faltan las secciones largas ES (introducción, 'Estabilizador binario monofásico en 100 milisegundos', 'Precisión del 1% con margen de regulación de ±30%', 'Toda la información de la instalación en la pantalla táctil', 'Aplicaciones y fabricación…' y el párrafo final de usos). Las páginas renderizadas EN/FR/DE muestran solo la descripción corta.",
+    "Texto en idioma incorrecto en ES: la descripción corta empieza con el encabezado en inglés 'Binary automatic voltage stabilizers' (h2, visible también en el outline de la página ES y al inicio de la meta description y del og:description), seguido de un párrafo vacío (&nbsp;). La traducción EN no lo incluye y su frase de presentación omite 'automatico'.",
+    "Erratas en ES: 'Estabilizador binario automatico' (sin tilde) en la descripción corta; 'Sus usos mas comunes son son para Máquinas de control numérico…' (falta tilde en 'más' y 'son' duplicado); 'hospitales etc..' (doble punto) seguido de doble espacio antes de 'En definitiva'. El último párrafo ('Sus usos mas comunes…') añade, con otro estilo (mayúsculas iniciales y un 'etc.'), una lista de usos que solapa en parte con la del párrafo anterior (equipos de laboratorio, hospitales/instalaciones médicas).",
+    "Unidad dudosa: el ciclo de estabilizado se escribe '100mS' (milisiemens en el SI) en la descripción corta de los 4 idiomas, mientras la descripción larga ES dice '100 ms' / '100 milisegundos'. Se conserva literal.",
+    "Terminología: 'estabilizador binario' no se explica en ningún texto ni idioma (EN 'Binary stabilizer', FR 'Stabilisateur binaire', DE 'Binärer Stabilisator'); la ficha lo define solo como 'accionado por control electrónico de IGBT'. En la ficha de familia (895) los electrónicos se describen como 'conmutación por etapas', y aquí como 'regulación continua' sin escalones: por verificar con Torivac.",
+    "Las traducciones terminan la lista con 'cosine of fi' / 'cosinus de fi' / 'Kosinus von fi' donde la descripción corta ES dice 'el factor de potencia'; traducen 'Sin distorsión de onda ni cortes' como 'No wave distortion or clipping' / 'Pas de distorsion de forme d'onde ni d'écrêtage' / 'Keine Wellenformverzerrung oder Clipping' ('clipping' = recorte de onda, no 'cortes'). Se conservan tal cual.",
+    "Nombre y traducciones sin patrón común en la familia (ver 897): ES 'Estabilizador Monofásico Serie BAVS'; EN 'Single Phase Stabilizer BAVS Series'; FR 'Stabilisateur monophasé Série BAVS'; DE 'Einphasen-Stabilisator Serie BAVS'. Slug 'serie-bavs-2': el sufijo '-2' no es descriptivo.",
+    "SEO: la meta description ES es 'Binary automatic voltage stabilizers &nbsp; Estabilizador binario automatico, accionado por control electrónico de IGBT para redes monofásicas.' (entidad &nbsp; literal sin decodificar, texto mezclado inglés/español, y la errata 'automatico'); en EN/FR/DE es la frase de presentación más 2 viñetas con guiones convertidos en ' - ' (corte a ≈150 caracteres).",
+    "Categorías traducidas inconsistentes (no son datos del producto pero se muestran en la ficha): EN 'single-phase-bavs' (nombre en minúsculas con forma de slug; slug 'monofasico-serie-bavs' en español), FR 'Monophasé' (slug 'monophase', compartido con la categoría monofásica AVS) y DE 'Monofase' (no es alemán; el equivalente alemán usado en 897 es 'Einphasig').",
+    "Imagen única (id 1082, BAVS-mono-1.jpg, 900 px de ancho; nombre en la biblioteca 'BAVS-mono'): nombre de archivo con sufijo '-1' y sin descripción del contenido. La og:image es esa misma imagen. En esta ficha no hay foto de instalación como en 897/898.",
+    "Las cifras (ciclo de 100 ms, precisión mejor del 1 %, margen ±30 % de serie) solo figuran en la propia web; ningún PDF las corrobora. La frase 'esa velocidad de reacción no tiene alternativa en tecnología electromecánica' es una afirmación comparativa no corroborada.",
+    "Sin tabla de modelos ni referencias comerciales: ni la Store API (ningún <table> en la descripción), ni la REST, ni la página renderizada contienen tablas en ningún idioma, y la Store API no trae atributos (attributes = []). No hay potencias (VA/kVA), tensiones nominales de entrada/salida, intensidades, dimensiones ni pesos por referencia (spec_tables = [], orderable_items = []).",
+    "Sin ficha técnica PDF enlazada en ningún idioma (pdf_links = []). El único enlace .pdf de cada página es el catálogo global del menú (Torivac_2024.pdf en ES, Torivac_2024_EN.pdf en EN, Torivac_2024_FR.pdf en FR, catalogue-torivac-DE.pdf en DE), no específico del producto. Los catálogos (data/analysis/pdf-text y pdfs/) tampoco tratan los estabilizadores AVS/BAVS: solo citan 'estabilizadores de tensión' como aplicación de los variadores, 'equipos estabilizadores' en la regulación motorizada y los variadores 'estabilizados' bajo demanda con placa electrónica (precisión del 2 %), que son otro producto (Torivac_2024 p004 y p017, EN p004 y p039, FR p004, catalogue-torivac-DE p004 y p017), así que no hay otra fuente de datos técnicos.",
+    "SKU '13d3617942b1': hash de 12 caracteres sin significado comercial, no es una referencia de pedido; la Store API lo repite idéntico en EN/FR/DE.",
+    "Alt de la biblioteca de medios vacío en 1 de 1 imágenes (Store API, los 4 idiomas); la página renderizada pone como alt el título del producto en cada idioma (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
+    "Las páginas renderizadas EN, FR y DE no tienen H1 (el outline solo trae el h3 del menú y los h4/h2 del bloque de contacto y de relacionados); solo la ES tiene H1 con el nombre del producto.",
+    "SEO: en EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española del producto (p. ej. https://grupotorivac.com/product/serie-bavs-2/), no a la URL traducida; los slugs de las URLs EN/FR/DE están en español (/serie-bavs-2/).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (común a todas las fichas; se guarda tal cual en extra_sections): EN título 'CONTACT WITH US'; FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE título 'KONTAKT US', casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés); ES 'encontrareis' sin tilde.",
+    "En EN, FR y DE el bloque 'productos relacionados' solo lista el propio producto (relacionado autorreferente) y su botón de catálogo enlaza al listado general de productos; la página ES no muestra bloque de relacionados.",
+    "Tensión y potencia: no hay ninguna cifra de tensión (V) ni de potencia (VA/kVA) en ninguno de los 4 idiomas (voltage_mentions y power_mentions vacíos). La ficha no da tensión nominal de entrada/salida; 'monofásico/trifásico' aparece sin tensión asociada y 'potencia activa y reactiva' solo como magnitud que muestra la pantalla. El margen de regulación se expresa en % (no en voltios) y el ciclo en tiempo ('100mS'/'100 ms')."
+   ]
+  },
+  {
+   "id_es": 901,
+   "slug": "serie-bavs-3",
+   "url_es": "https://grupotorivac.com/product/serie-bavs-3/",
+   "sku": "a2cff0898d74",
+   "names": {
+    "es": "Estabilizador Trifásico Serie BAVS",
+    "en": "BAVS Series Three-Phase Stabilizer",
+    "fr": "Stabilisateur triphasé de la série BAVS",
+    "de": "Dreiphasiger Stabilisator der BAVS-Serie"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/serie-bavs-3/",
+    "en": "https://grupotorivac.com/en/product/serie-bavs-3/",
+    "fr": "https://grupotorivac.com/fr/product/serie-bavs-3/",
+    "de": "https://grupotorivac.com/de/product/serie-bavs-3/"
+   },
+   "ids": {
+    "es": 901,
+    "en": 16196,
+    "fr": 16197,
+    "de": 16198
+   },
+   "category_path_es": [
+    "Estabilizadores de tensión",
+    "Serie BAVS: Electrónicos",
+    "Trifásico"
+   ],
+   "categories_all_es": [
+    {
+     "id": 106,
+     "name": "Trifásico",
+     "slug": "trifasico-serie-bavs"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Binary automatic voltage stabilizer\n\nEstabilizador binario accionado por control electrónico de IGBT para redes trifásicas.\n• Ciclo de estabilizado cada 100mS.\n• Controlado por microprocesador.\n• Regulación continua por fase.\n• Precisión en la tensión de salida mejor del 1 %.\n• De serie, margen de regulación del ± 30 %.\n• Sin distorsión de onda ni cortes.\n• Pantalla táctil mostrando tensión de entrada y salida por fase.\n• Intensidad de la carga, potencia activa y reactiva, factor de potencia.\n• Frecuencia, Temperatura.",
+    "en": "Binary stabilizer driven by IGBT electronic control for three-phase networks.\n– Stabilizing cycle every 100mS.\n– Microprocessor controlled.\n– Continuous regulation per phase.\n– Output voltage accuracy better than 1 %.\n– As standard, ± 30 % regulation range.\n– No wave distortion or clipping.\n– Touch screen display showing input and output voltage per phase.\n– Load current, active and reactive power, cosine of fi.\n– Frequency, Temperature.",
+    "fr": "Stabilisateur binaire à commande électronique IGBT pour réseaux triphasés.\n– Cycle de stabilisation tous les 100mS.\n– Commande par microprocesseur.\n– Régulation continue par phase.\n– Précision de la tension de sortie meilleure que 1 %.\n– En standard, plage de régulation ± 30 %.\n– Pas de distorsion de forme d’onde ni d’écrêtage.\n– Écran tactile indiquant la tension d’entrée et de sortie par phase.\n– Courant de charge, puissance active et réactive, cosinus de fi.\n– Fréquence, température.",
+    "de": "Binärer Stabilisator mit elektronischer IGBT-Steuerung für dreiphasige Netze.\n– Stabilisierungszyklus alle 100mS.\n– Mikroprozessorgesteuert.\n– Kontinuierliche Regelung pro Phase.\n– Genauigkeit der Ausgangsspannung besser als 1 %.\n– Standardmäßig ± 30 % Regelbereich.\n– Keine Wellenformverzerrung oder Clipping.\n– Touchscreen-Display mit Anzeige der Eingangs- und Ausgangsspannung pro Phase.\n– Laststrom, Wirk- und Blindleistung, Kosinus von fi.\n– Frequenz, Temperatur."
+   },
+   "description_text": {
+    "es": "El estabilizador binario trifásico automático de Torivac representa la evolución electrónica en la regulación de tensión para redes industriales. Accionado por control electrónico de IGBT y gestionado por microprocesador, estabiliza la tensión de forma continua por fase sin partes móviles, sin distorsión de onda y sin cortes en el suministro. Una solución pensada para instalaciones donde la velocidad de respuesta y la precisión no son negociables.\n\n## Ciclo de estabilizado cada 100 ms\n\nLa principal ventaja del control por IGBT frente a la tecnología electromecánica es la velocidad. Con un ciclo de estabilizado de tan solo 100 milisegundos, el equipo detecta y corrige cualquier variación de tensión casi de forma instantánea, antes de que los equipos conectados lleguen a percibir la fluctuación. En líneas de producción automatizadas, maquinaria con electrónica de control sensible o instalaciones críticas, esa velocidad de reacción marca la diferencia entre una operación continua y una parada no planificada.\n\n## Precisión del 1% y margen de regulación de ±30% estándar\n\nLa tensión de salida se mantiene con una precisión mejor del 1%, con un margen de regulación de serie de ±30%. (estándar) y superior a pedido del cliente. Eso significa que aunque la red de entrada fluctúe de forma significativa, la salida permanece estable, limpia y dentro de los parámetros exigidos por los equipos conectados. Todo ello sin distorsión de onda ni microcortes, preservando la calidad de la señal eléctrica en todo momento.\n\n## Estabilizador binario trifásico automático con pantalla táctil con supervisión completa en tiempo real\n\nEl panel táctil integrado centraliza toda la información del sistema y de la carga en un único punto de control:\n\n- Tensión de entrada y salida por fase.\n- Intensidad de la carga.\n- Potencia activa y reactiva.\n- Factor de potencia.\n- Frecuencia.\n- Temperatura del equipo.\n- Sin instrumentación externa, sin cableado adicional.\n\nEl microprocesador gestiona la regulación de forma autónoma mientras el operario supervisa el estado completo de la instalación desde la pantalla.\n\n## ¿Para qué aplicaciones está indicado el estabilizador binario trifásico automático?\n\n- Instalaciones industriales con variaciones frecuentes de red.\n- Maquinaria CNC, robótica y automatización industrial.\n- Equipos médicos y de telecomunicaciones.\n- Centros de datos y salas de servidores.\n- Cualquier proceso donde los cortes o distorsiones de tensión sean inaceptables.\n\n## Fabricación española, configuración a medida\n\nComo toda la gama Torivac, este estabilizador se fabrica en España con control de calidad individual en cada unidad. Disponible en diferentes potencias y adaptable a los requerimientos técnicos específicos de cada proyecto.",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
+     "alt": {
+      "es": "Estabilizador Trifásico Serie BAVS",
+      "en": "BAVS Series Three-Phase Stabilizer",
+      "fr": "Stabilisateur triphasé de la série BAVS",
+      "de": "Dreiphasiger Stabilisator der BAVS-Serie"
+     },
+     "id": 1067
+    }
+   ],
+   "pdf_links": [],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Potencia (kVA o VA) [la web dice 'disponible en diferentes potencias' sin valores; unidad inferida]",
+    "Tensión nominal de entrada y salida (V) [inferido: la web no la indica]",
+    "Margen de regulación (de serie ± 30 % 'estándar y superior a pedido del cliente')",
+    "Opciones a medida (parámetros eléctricos / instrumentación) [la web dice 'adaptable a los requerimientos técnicos específicos de cada proyecto', sin opciones concretas]"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- BAVS Series Three-Phase Stabilizer\n[botón] View full catalog -> https://grupotorivac.com/en/torivac-products/",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Stabilisateur triphasé de la série BAVS\n[botón] Voir tout le catalogue -> https://grupotorivac.com/fr/produits-torivac/",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Dreiphasiger Stabilisator der BAVS-Serie\n[botón] Gesamten Katalog ansehen -> https://grupotorivac.com/de/torivac-produkte/",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce)"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Estabilizador Trifásico Serie BAVS - Torivac",
+     "meta_description": "Binary automatic voltage stabilizer Estabilizador binario accionado por control electrónico de IGBT para redes trifásicas.",
+     "og_title": "Estabilizador Trifásico Serie BAVS - Torivac",
+     "og_description": "Binary automatic voltage stabilizer Estabilizador binario accionado por control electrónico de IGBT para redes trifásicas.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-bavs-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:42",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__serie-bavs-3.json"
+    },
+    "en": {
+     "title": "BAVS Series Three-Phase Stabilizer - Torivac",
+     "meta_description": "Binary stabilizer driven by IGBT electronic control for three-phase networks. - Stabilizing cycle every 100mS. - Microprocessor controlled.",
+     "og_title": "BAVS Series Three-Phase Stabilizer - Torivac",
+     "og_description": "Binary stabilizer driven by IGBT electronic control for three-phase networks. - Stabilizing cycle every 100mS. - Microprocessor controlled.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-bavs-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:45",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__serie-bavs-3.json"
+    },
+    "fr": {
+     "title": "Stabilisateur triphasé de la série BAVS - Torivac",
+     "meta_description": "Stabilisateur binaire à commande électronique IGBT pour réseaux triphasés. - Cycle de stabilisation tous les 100mS. - Commande par microprocesseur.",
+     "og_title": "Stabilisateur triphasé de la série BAVS - Torivac",
+     "og_description": "Stabilisateur binaire à commande électronique IGBT pour réseaux triphasés. - Cycle de stabilisation tous les 100mS. - Commande par microprocesseur.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-bavs-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:46",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__serie-bavs-3.json"
+    },
+    "de": {
+     "title": "Dreiphasiger Stabilisator der BAVS-Serie - Torivac",
+     "meta_description": "Binärer Stabilisator mit elektronischer IGBT-Steuerung für dreiphasige Netze. - Stabilisierungszyklus alle 100mS. - Mikroprozessorgesteuert.",
+     "og_title": "Dreiphasiger Stabilisator der BAVS-Serie - Torivac",
+     "og_description": "Binärer Stabilisator mit elektronischer IGBT-Steuerung für dreiphasige Netze. - Stabilisierungszyklus alle 100mS. - Mikroprozessorgesteuert.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
+     "canonical": "https://grupotorivac.com/product/serie-bavs-3/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:06:46",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__serie-bavs-3.json"
+    }
+   },
+   "translation_status": {
+    "en": "partial",
+    "fr": "partial",
+    "de": "partial"
+   },
+   "quality_flags": [
+    "sku_no_comercial",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "sin_referencias_comerciales",
+    "sin_pdf",
+    "sin_alt",
+    "nombre_de_archivo_poco_descriptivo",
+    "slug_url_en_espanol",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "plantilla_cta_mal_traducida",
+    "relacionados_autorreferente",
+    "descripcion_larga_ausente_en_traducciones",
+    "texto_en_idioma_incorrecto",
+    "descripcion_vacia",
+    "typo",
+    "unidad_dudosa",
+    "terminologia_dudosa",
+    "texto_plantilla_repetido",
+    "traduccion_inexacta",
+    "traduccion_dudosa",
+    "traduccion_desactualizada_respecto_a_es",
+    "meta_description_con_vinetas",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "slug_numerico_no_descriptivo",
+    "contenido_por_verificar",
+    "imagen_compartida_entre_fichas",
+    "formato_vinetas_manual",
+    "terminologia_inconsistente_entre_fichas",
+    "sin_potencias_ni_tensiones_nominales"
+   ],
+   "gaps": [
+    "Traducciones parciales: EN, FR y DE solo contienen la descripción corta (frase de presentación + 9 viñetas): 441/491/468 caracteres frente a 3267 en ES (un 13/15/14 %), con description vacía en Store API y REST. Faltan las secciones largas ES (introducción, 'Ciclo de estabilizado cada 100 ms', 'Precisión del 1% y margen de regulación de ±30% estándar', la sección de supervisión con su lista de 7 elementos, la lista de 5 aplicaciones y 'Fabricación española, configuración a medida'). Las páginas renderizadas EN/FR/DE muestran solo la descripción corta.",
+    "Texto en idioma incorrecto en ES: la descripción corta empieza con el encabezado en inglés 'Binary automatic voltage stabilizer' (h2, visible también en el outline de la página ES y al inicio de la meta description y del og:description). La traducción EN no lo incluye.",
+    "Puntuación en ES: 'un margen de regulación de serie de ±30%. (estándar) y superior a pedido del cliente' (punto antes del paréntesis, frase sin cerrar); la viñeta 'De serie, margen de regulación del ± 30 %.' lleva punto final y la de 900 no. Se conserva tal cual.",
+    "Unidad dudosa: el ciclo de estabilizado se escribe '100mS' (milisiemens en el SI) en la descripción corta de los 4 idiomas, mientras la descripción larga ES dice '100 ms' / '100 milisegundos'. Se conserva literal.",
+    "Terminología: 'estabilizador binario' no se explica en ningún texto ni idioma (EN 'Binary stabilizer', FR 'Stabilisateur binaire', DE 'Binärer Stabilisator'); la ficha lo define solo como 'accionado por control electrónico de IGBT'. La ficha de familia (895) describe los electrónicos como 'conmutación por etapas'; aquí 'regulación continua por fase' sin partes móviles: por verificar con Torivac.",
+    "Las traducciones terminan la lista con 'cosine of fi' / 'cosinus de fi' / 'Kosinus von fi' donde la descripción corta ES dice 'factor de potencia'; traducen 'Sin distorsión de onda ni cortes' como 'No wave distortion or clipping' / 'Pas de distorsion de forme d'onde ni d'écrêtage' / 'Keine Wellenformverzerrung oder Clipping' ('clipping' = recorte de onda, no 'cortes'). Se conservan tal cual.",
+    "Margen de regulación: la ficha dice ±30 % 'de serie' y 'superior a pedido del cliente', mientras 897 presenta ±40 % como 'el mayor margen de regulación de la gama'. No se indica el máximo posible bajo pedido.",
+    "Nombre y traducciones sin patrón común en la familia (ver 897): ES 'Estabilizador Trifásico Serie BAVS'; EN 'BAVS Series Three-Phase Stabilizer'; FR 'Stabilisateur triphasé de la série BAVS'; DE 'Dreiphasiger Stabilisator der BAVS-Serie'. Slug 'serie-bavs-3': el sufijo '-3' no es descriptivo.",
+    "SEO: la meta description ES empieza con el encabezado en inglés ('Binary automatic voltage stabilizer Estabilizador binario accionado por control electrónico de IGBT para redes trifásicas.'); en EN/FR/DE es la frase de presentación más 2 viñetas con guiones convertidos en ' - ' (corte a ≈150 caracteres).",
+    "Categorías traducidas inconsistentes (no son datos del producto pero se muestran en la ficha): FR 'triphasé' (minúscula; slug 'triphase', compartido con la categoría trifásica AVS) y DE 'Driefasen' (neerlandés; el equivalente alemán usado en 898 es 'Dreiphasig'); EN 'Three-phase' con slug 'serie-bavs-three-phase'.",
+    "Imagen única (id 1067, bavs-tri.jpg, 1500 px; nombre en la biblioteca 'bavs-tri'): nombre de archivo poco descriptivo; es el mismo archivo que usa 897 (AVS monofásico) como primera imagen. La og:image es esa misma imagen.",
+    "Las cifras (ciclo de 100 ms, precisión mejor del 1 %, margen ±30 % de serie) solo figuran en la propia web; ningún PDF las corrobora.",
+    "Sin tabla de modelos ni referencias comerciales: ni la Store API (ningún <table> en la descripción), ni la REST, ni la página renderizada contienen tablas en ningún idioma, y la Store API no trae atributos (attributes = []). No hay potencias (VA/kVA), tensiones nominales de entrada/salida, intensidades, dimensiones ni pesos por referencia (spec_tables = [], orderable_items = []).",
+    "Sin ficha técnica PDF enlazada en ningún idioma (pdf_links = []). El único enlace .pdf de cada página es el catálogo global del menú (Torivac_2024.pdf en ES, Torivac_2024_EN.pdf en EN, Torivac_2024_FR.pdf en FR, catalogue-torivac-DE.pdf en DE), no específico del producto. Los catálogos (data/analysis/pdf-text y pdfs/) tampoco tratan los estabilizadores AVS/BAVS: solo citan 'estabilizadores de tensión' como aplicación de los variadores, 'equipos estabilizadores' en la regulación motorizada y los variadores 'estabilizados' bajo demanda con placa electrónica (precisión del 2 %), que son otro producto (Torivac_2024 p004 y p017, EN p004 y p039, FR p004, catalogue-torivac-DE p004 y p017), así que no hay otra fuente de datos técnicos.",
+    "SKU 'a2cff0898d74': hash de 12 caracteres sin significado comercial, no es una referencia de pedido; la Store API lo repite idéntico en EN/FR/DE.",
+    "Alt de la biblioteca de medios vacío en 1 de 1 imágenes (Store API, los 4 idiomas); la página renderizada pone como alt el título del producto en cada idioma (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
+    "Las páginas renderizadas EN, FR y DE no tienen H1 (el outline solo trae el h3 del menú y los h4/h2 del bloque de contacto y de relacionados); solo la ES tiene H1 con el nombre del producto.",
+    "SEO: en EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española del producto (p. ej. https://grupotorivac.com/product/serie-bavs-3/), no a la URL traducida; los slugs de las URLs EN/FR/DE están en español (/serie-bavs-3/).",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (común a todas las fichas; se guarda tal cual en extra_sections): EN título 'CONTACT WITH US'; FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE título 'KONTAKT US', casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés); ES 'encontrareis' sin tilde.",
+    "En EN, FR y DE el bloque 'productos relacionados' solo lista el propio producto (relacionado autorreferente) y su botón de catálogo enlaza al listado general de productos; la página ES no muestra bloque de relacionados.",
+    "Tensión y potencia: no hay ninguna cifra de tensión (V) ni de potencia (VA/kVA) en ninguno de los 4 idiomas (voltage_mentions y power_mentions vacíos). La ficha no da tensión nominal de entrada/salida; 'monofásico/trifásico' aparece sin tensión asociada y 'potencia activa y reactiva' solo como magnitud que muestra la pantalla. El margen de regulación se expresa en % (no en voltios) y el ciclo en tiempo ('100mS'/'100 ms')."
+   ]
+  }
+ ]
+}

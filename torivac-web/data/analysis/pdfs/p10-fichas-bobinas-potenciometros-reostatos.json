@@ -156,8 +156,8 @@
         "Dibujo - diámetro del eje (rótulo 6Ø)": "6Ø",
         "Dibujo - cota del eje": "40",
         "Dibujo - cota intermedia": "7",
-        "Dibujo - cota del cuerpo (altura)": "25",
-        "Dibujo - cota del cuerpo (diámetro, parte inferior)": "41"
+        "Dibujo - cota vertical inferior (bajo la cota 7)": "25",
+        "Dibujo - cota horizontal inferior del alzado": "41"
        },
        "raw_row": "* Terminals 3.2 x 0,5 mm * Power rating at 25ºC: 5W * Resistance distribution: lin. * Resistance range: 5 Ω - 50 KΩ * Tolerance: 6% * Breakdown voltage: > 1000v. * Mechanical angle of rotation: 264ºC * Electrical angle of rotation: 250ºC * Mech. breakdown of the stop: 8 kg/cm. * Standard shaft lenght: 40 mm. * Net weight: 40 grs. *Temperature increasing at full load: 75ºC",
        "confidence": "alta"
@@ -212,7 +212,7 @@
     {
      "page": 1,
      "item": "Cotas del dibujo 6Ø, 40, 7, 25, 41 (sin unidad ni significado rotulado)",
-     "why": "Se transcriben de la imagen. El 40 coincide con 'Standard shaft lenght: 40 mm.' y 6Ø es el diámetro del eje; 7, 25 y 41 no se definen en el texto (la asignación a cuerpo/casquillo es lectura del dibujo)."
+     "why": "Sin unidad rotulada. 40 coincide con la longitud del eje y 6Ø con el eje. 7, 25 y 41 no se definen en el texto y se guardan solo por su posición en el dibujo: 7 = tramo vertical intermedio (tuercas); 25 = tramo vertical inferior, que arranca bajo la cota 7 y llega a la base del dibujo (incluye el cuello del casquillo sobre la tapa, no es solo la altura del cuerpo); 41 = cota horizontal inferior del alzado."
     },
     {
      "page": 1,
@@ -230,7 +230,29 @@
      "why": "El texto extraíble contiene los datos de 'Characteristics' pero no las cotas del dibujo; la página se marca como visual_only para esas cotas."
     }
    ],
-   "corrections": [],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "5W POTENTIOMETER, specs, clave de la cota 25",
+     "was": "'Dibujo - cota del cuerpo (altura)': '25'",
+     "now": "'Dibujo - cota vertical inferior (bajo la cota 7)': '25'",
+     "why": "El valor 25 es correcto (renderizado a 150-200 ppp), pero no es la altura del cuerpo: la línea de cota arranca en la cara inferior de la tuerca inferior y atraviesa el cuello del casquillo antes de llegar a la base, así que 'altura del cuerpo' era una interpretación errónea. Se deja solo la posición en el dibujo; sin unidad rotulada."
+    },
+    {
+     "page": 1,
+     "item": "5W POTENTIOMETER, specs, clave de la cota 41",
+     "was": "'Dibujo - cota del cuerpo (diámetro, parte inferior)': '41'",
+     "now": "'Dibujo - cota horizontal inferior del alzado': '41'",
+     "why": "El valor 41 es correcto, pero 'diámetro del cuerpo' no está rotulado en el PDF (el texto de la ficha no da el diámetro). Se deja solo la posición en el dibujo, coherente con el criterio aplicado a las cotas 48/40 del potenciómetro doble."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Cotas del dibujo 6Ø, 40, 7, 25, 41...'",
+     "was": "Se transcriben de la imagen. El 40 coincide con 'Standard shaft lenght: 40 mm.' y 6Ø es el diámetro del eje; 7, 25 y 41 no se definen en el texto (la asignación a cuerpo/casquillo es lectura del dibujo).",
+     "now": "Sin unidad rotulada. 40 coincide con la longitud del eje y 6Ø con el eje. 7, 25 y 41 no se definen en el texto y se guardan solo por su posición en el dibujo: 7 = tramo vertical intermedio (tuercas); 25 = tramo vertical inferior, que arranca bajo la cota 7 y llega a la base del dibujo (incluye el cuello del casquillo sobre la tapa, no es solo la altura del cuerpo); 41 = cota horizontal inferior del alzado.",
+     "why": "Coherencia con el cambio de claves 25/41: se elimina la afirmación de que 25 y 41 son cota del cuerpo y se explica qué abarca realmente la cota 25."
+    }
+   ],
    "verified": true
   },
   {
@@ -253,7 +275,7 @@
       "Propiedades citadas": "alta rigidez dieléctrica; aprovechamiento magnético máximo por su diseño y construcción mecánica",
       "Columnas de la tabla": "VA, A, B, C, D, E, F, G, Kg",
       "Valor '--'": "celda sin valor en la tabla del PDF (se guarda como null)",
-      "Esquemas": "EJE LISO (cotas A, B, C) y EJE ESCALONADO (cotas D, E, F, G), según los rótulos del dibujo",
+      "Esquemas": "Vista frontal con cotas A y C; alzado rotulado EJE LISO con cota B (y un rótulo '200' sin explicar); alzado rotulado EJE ESCALONADO con cotas D, E, F, G. Las cinco filas de la tabla llevan A y B",
       "Unidad de VA": "VA",
       "Unidad de peso": "Kg"
      },
@@ -407,6 +429,13 @@
      "was": "sin aviso",
      "now": "añadido aviso en 'uncertain'",
      "why": "Los sufijos entre corchetes no vienen del PDF; el aviso evita que se publiquen como código de modelo. Valores de la tabla sin cambios."
+    },
+    {
+     "page": 1,
+     "item": "families[0].general_specs['Esquemas']",
+     "was": "EJE LISO (cotas A, B, C) y EJE ESCALONADO (cotas D, E, F, G), según los rótulos del dibujo",
+     "now": "Vista frontal con cotas A y C; alzado rotulado EJE LISO con cota B (y un rótulo '200' sin explicar); alzado rotulado EJE ESCALONADO con cotas D, E, F, G. Las cinco filas de la tabla llevan A y B",
+     "why": "Atribuir A, B y C solo al EJE LISO era incorrecto: A (diámetro de la vista frontal) y B figuran también en las filas de eje escalonado (100 VA y 200 VA con D-G), y A y C están en la vista frontal, que no lleva rótulo de tipo de eje. Se describe lo que muestra el dibujo sin repartir cotas entre tipos. Valores de la tabla sin cambios."
     }
    ],
    "verified": true
@@ -464,7 +493,7 @@
         "Categoría UL": "94V-0",
         "Embalaje": "Caja de 25 pzas.",
         "Dibujo - diámetro del cuerpo": "25",
-        "Dibujo - profundidad del cuerpo": "22,5",
+        "Dibujo - cota horizontal inferior del alzado": "22,5",
         "Dibujo - longitud del eje": "12",
         "Dibujo - diámetro del eje": "6",
         "Dibujo - separación angular entre terminales": "40° / 40°",
@@ -591,7 +620,7 @@
     {
      "page": 1,
      "item": "Cotas de los dibujos (8, 6, 2,5, M10/100, 22,5, 48, 40)",
-     "why": "Sin unidad ni significado rotulado; solo 25 (diámetro), 12 (eje) y Ø6 (eje) se confirman con el texto. 'M10/100' se transcribe tal cual sin interpretar (rosca del casquillo, probable). En el potenciómetro doble, 48 y 40 se guardan solo por su posición en el dibujo (cota horizontal inferior / superior del alzado), sin decidir qué tramo miden."
+     "why": "Sin unidad ni significado rotulado; solo 25 (diámetro), 12 (eje) y Ø6 (eje) se confirman con el texto. 'M10/100' se transcribe tal cual sin interpretar (rosca del casquillo, probable). En el potenciómetro doble, 48 y 40 se guardan solo por su posición en el dibujo (cota horizontal inferior / superior del alzado), sin decidir qué tramo miden; en el simple, 22,5 se guarda igual (cota horizontal inferior del alzado)."
     },
     {
      "page": 1,
@@ -632,6 +661,20 @@
      "was": "El PDF no lista los valores de la serie E-10. 5 Ω no es un valor normalizado típico de E-10 (el más cercano es 4,7 Ω). Propuesta para admin: pedir a Torivac la lista real de valores; no generar una lista propia.",
      "now": "El PDF no lista los valores de la serie E-10. Si 5 Ω encaja en la serie citada no se puede comprobar con el PDF. Propuesta para admin: pedir a Torivac la lista real de valores; no generar una lista propia.",
      "why": "El texto citaba '4,7 Ω' y una norma de series que no figuran en el PDF (regla 1: toda cifra debe estar en el PDF). Se elimina la cifra ajena; la duda queda como propuesta."
+    },
+    {
+     "page": 1,
+     "item": "POTENCIOMETRO 3W, specs, clave de la cota 22,5",
+     "was": "'Dibujo - profundidad del cuerpo': '22,5'",
+     "now": "'Dibujo - cota horizontal inferior del alzado': '22,5'",
+     "why": "El valor 22,5 es correcto (renderizado a 260 ppp), pero 'profundidad del cuerpo' no está rotulado en el PDF y la línea de cota llega hasta la cara frontal del casquillo (y el 'uncertain' ya declaraba 22,5 sin significado rotulado). Se deja solo la posición, igual que 48/40 del doble."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Cotas de los dibujos (8, 6, 2,5, M10/100, 22,5, 48, 40)'",
+     "was": "Sin unidad ni significado rotulado; solo 25 (diámetro), 12 (eje) y Ø6 (eje) se confirman con el texto. 'M10/100' se transcribe tal cual sin interpretar (rosca del casquillo, probable). En el potenciómetro doble, 48 y 40 se guardan solo por su posición en el dibujo (cota horizontal inferior / superior del alzado), sin decidir qué tramo miden.",
+     "now": "Sin unidad ni significado rotulado; solo 25 (diámetro), 12 (eje) y Ø6 (eje) se confirman con el texto. 'M10/100' se transcribe tal cual sin interpretar (rosca del casquillo, probable). En el potenciómetro doble, 48 y 40 se guardan solo por su posición en el dibujo (cota horizontal inferior / superior del alzado), sin decidir qué tramo miden; en el simple, 22,5 se guarda igual (cota horizontal inferior del alzado).",
+     "why": "Coherencia con el cambio de clave de 22,5."
     }
    ],
    "verified": true
@@ -685,8 +728,8 @@
         "Dibujo - diámetro del eje (rótulo 6Ø)": "6Ø",
         "Dibujo - cota del eje": "40",
         "Dibujo - cota intermedia": "7",
-        "Dibujo - cota del cuerpo (altura)": "25",
-        "Dibujo - cota del cuerpo (diámetro, parte inferior)": "41"
+        "Dibujo - cota vertical inferior (bajo la cota 7)": "25",
+        "Dibujo - cota horizontal inferior del alzado": "41"
        },
        "raw_row": "* Terminales soldables 3.2x0.5mm * Potencia máxima a 25ºC: 5W * Distribución resistencia: Lineal * Gama de valores óhmicos: 5 Ω - 50 KΩ * Tolerancia: 6% * Tensión de perforación: >1000V * Ángulo de giro mecánico: 264º * Ángulo de giro eléctrico: 250º * Resistencia del tope a la rotura: 8 Kg/cm * Longitud del eje Standard: 40 mm * Peso neto: 40 grs * Incremento de temperatura a plena carga: 75ºC",
        "confidence": "alta"
@@ -745,7 +788,7 @@
     {
      "page": 1,
      "item": "Cotas del dibujo 6Ø, 40, 7, 25, 41",
-     "why": "Sin unidad rotulada. 40 coincide con la longitud del eje y 6Ø con el eje; 7 (casquillo/rosca) , 25 y 41 (cuerpo) no se definen en el texto, son lectura del dibujo."
+     "why": "Sin unidad rotulada. 40 coincide con la longitud del eje y 6Ø con el eje. 7, 25 y 41 no se definen en el texto y se guardan solo por su posición en el dibujo: 7 = tramo vertical intermedio (tuercas); 25 = tramo vertical inferior, que arranca bajo la cota 7 y llega a la base del dibujo (incluye el cuello del casquillo sobre la tapa, no es solo la altura del cuerpo); 41 = cota horizontal inferior del alzado."
     },
     {
      "page": 1,
@@ -763,7 +806,29 @@
      "why": "La ficha no incluye códigos de pedido."
     }
    ],
-   "corrections": [],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "POTENCIOMETRO 5W, specs, clave de la cota 25",
+     "was": "'Dibujo - cota del cuerpo (altura)': '25'",
+     "now": "'Dibujo - cota vertical inferior (bajo la cota 7)': '25'",
+     "why": "El valor 25 es correcto (renderizado a 150-200 ppp), pero no es la altura del cuerpo: la línea de cota arranca en la cara inferior de la tuerca inferior y atraviesa el cuello del casquillo antes de llegar a la base, así que 'altura del cuerpo' era una interpretación errónea. Se deja solo la posición en el dibujo; sin unidad rotulada."
+    },
+    {
+     "page": 1,
+     "item": "POTENCIOMETRO 5W, specs, clave de la cota 41",
+     "was": "'Dibujo - cota del cuerpo (diámetro, parte inferior)': '41'",
+     "now": "'Dibujo - cota horizontal inferior del alzado': '41'",
+     "why": "El valor 41 es correcto, pero 'diámetro del cuerpo' no está rotulado en el PDF (el texto de la ficha no da el diámetro). Se deja solo la posición en el dibujo, coherente con el criterio aplicado a las cotas 48/40 del potenciómetro doble."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Cotas del dibujo 6Ø, 40, 7, 25, 41...'",
+     "was": "Sin unidad rotulada. 40 coincide con la longitud del eje y 6Ø con el eje; 7 (casquillo/rosca) , 25 y 41 (cuerpo) no se definen en el texto, son lectura del dibujo.",
+     "now": "Sin unidad rotulada. 40 coincide con la longitud del eje y 6Ø con el eje. 7, 25 y 41 no se definen en el texto y se guardan solo por su posición en el dibujo: 7 = tramo vertical intermedio (tuercas); 25 = tramo vertical inferior, que arranca bajo la cota 7 y llega a la base del dibujo (incluye el cuello del casquillo sobre la tapa, no es solo la altura del cuerpo); 41 = cota horizontal inferior del alzado.",
+     "why": "Coherencia con el cambio de claves 25/41: se elimina la afirmación de que 25 y 41 son cota del cuerpo y se explica qué abarca realmente la cota 25."
+    }
+   ],
    "verified": true
   }
  ]
