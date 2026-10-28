@@ -1,14 +1,14 @@
 /**
  * [ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales.
  *
- *  Roles:  manager → Resumen · Pedidos · Mensajes · Precios · Propuestas · Contenido · Usuarios · Estadísticas · Ajustes
+ *  Roles:  manager → Resumen · Pedidos · Mensajes · Precios · Propuestas · Contenido · Blog · Usuarios · Estadísticas · Ajustes
  *          cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
  *  El rol lo decide SIEMPRE el servidor (token firmado); este fichero solo decide qué menús mostrar. Un cliente que llamase a la API de un manager recibiría 403.
  *
  *  Se carga en lugar de admin.js cuando la web se compila con TORIVAC_API (ver site/build.mjs). Sin API, el demo (admin.js) sigue funcionando solo.
  *
- * Secciones: [HTTP] [AUTH] [UTIL] [VIEWS] [PRICES] [AI] [USERS] [PROPOSALS] [ROUTER]
- * Depende de: quote.js (TV.Quote, TV.api, TV.csvParse), pdf.js (TV.makeQuotePdf), SheetJS (XLSX), admin-proposals.js (TV.AdminProposals: vista Propuestas). Las propuestas (TV.proposals) y los datos de cobertura (TV.admin) NO van en la web pública: se piden al servidor, solo a managers (GET /api/admin/data).
+ * Secciones: [HTTP] [AUTH] [UTIL] [VIEWS] [PRICES] [AI] [USERS] [PROPOSALS] [BLOG] [ROUTER]
+ * Depende de: quote.js (TV.Quote, TV.api, TV.csvParse), pdf.js (TV.makeQuotePdf), SheetJS (XLSX), admin-proposals.js (TV.AdminProposals: vista Propuestas), blog-markdown.js y admin-blog.js (TV.BlogMarkdown y TV.AdminBlog: vista Blog). Las propuestas (TV.proposals) y los datos de cobertura (TV.admin) NO van en la web pública: se piden al servidor, solo a managers (GET /api/admin/data).
  */
 (function () {
   'use strict';
@@ -67,7 +67,7 @@
 
   // ───────────────────────────────────────── [VIEWS] cada vista devuelve Promise<string> (HTML)
   var NAV = {
-    manager: [['resumen', 'Resumen', '◧'], ['pedidos', 'Pedidos', '☰'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['usuarios', 'Usuarios', '☺'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
+    manager: [['resumen', 'Resumen', '◧'], ['pedidos', 'Pedidos', '☰'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['blog', 'Blog', '✍'], ['usuarios', 'Usuarios', '☺'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
     cliente: [['presupuestador', 'Presupuestador', '✚'], ['mis', 'Mis presupuestos', '☰'], ['lista', 'Lista de precios', '€'], ['estadisticas', 'Estadísticas', '◔']],
   };
   var V = {};
@@ -258,6 +258,10 @@
   /** Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js). */
   V.propuestas = function () { return TV.AdminProposals.view(PCTX); };
 
+  // ───────────────────────────────────────── [BLOG] entradas del blog: lista y editor con vista previa, SEO, imágenes y traducciones (admin-blog.js); solo con el servidor PHP del hosting
+  /** Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección. */
+  V.blog = function (s, arg) { return TV.AdminBlog.view(PCTX, arg || ''); };
+
   // ───────────────────────────────────────── [USERS] altas y bajas de usuarios (managers y clientes)
   /** Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes. */
   V.usuarios = function () {
@@ -312,6 +316,7 @@
       });
     });
     if (root.querySelector('[data-pa-list]')) TV.AdminProposals.bind(root, PCTX);
+    if (root.querySelector('[data-bl-root]')) TV.AdminBlog.bind(root, PCTX);
     var nu = root.querySelector('[data-new-user]');
     if (nu) nu.addEventListener('submit', function (e) {
       e.preventDefault(); var f = e.target;
@@ -330,10 +335,10 @@
       });
       return;
     }
-    var nav = NAV[s.role], cur = (location.hash || '#').slice(1) || nav[0][0]; if (!nav.some(function (n) { return n[0] === cur; })) cur = nav[0][0];
+    var nav = NAV[s.role], raw = (location.hash || '#').slice(1) || nav[0][0], cur = raw.split('/')[0], arg = raw.slice(cur.length + 1); if (!nav.some(function (n) { return n[0] === cur; })) { cur = nav[0][0]; arg = ''; }
     root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + logo + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : 'Cliente') + '</span></div><nav aria-label="Panel">' +
       nav.map(function (n) { return '<a href="#' + n[0] + '"' + (n[0] === cur ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + n[2] + '</span>' + esc(n[1]) + '</a>'; }).join('') + '</nav><div class="side-bot"><a href="../index.html">← Ir a la web</a><button class="btn sm ghost" data-logout type="button">Salir (' + esc(s.name || s.email) + ')</button></div></aside><main class="main" id="main"><p class="notice">Cargando…</p></main></div>';
-    V[cur](s).then(function (html) { var m = root.querySelector('#main'); if (!m || seq !== renderSeq) return; m.innerHTML = html; bind(); });       // si mientras tanto se pidió otra vista, esta respuesta se ignora
+    V[cur](s, arg).then(function (html) { var m = root.querySelector('#main'); if (!m || seq !== renderSeq) return; m.innerHTML = html; bind(); });       // si mientras tanto se pidió otra vista, esta respuesta se ignora
   }
   root.addEventListener('click', onClick);       // una sola vez (los nodos se repintan, el contenedor no)
   window.addEventListener('hashchange', render);

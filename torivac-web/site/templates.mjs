@@ -444,7 +444,8 @@ export function blogIndexBody(ctx, posts) {
 }
 /**
  * Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. Con `dyn` es la plantilla de las entradas que se crean desde el panel: lo variable son marcas
- * @@TV:…@@ (title, date, datefmt, herostyle, banner, content) que rellena el servidor (BlogPage.php); la estructura es la misma que la de las entradas de la web original.
+ * @@TV:…@@ (title, date, datefmt, herostyle, banner, cover, content) que rellena el servidor (BlogPage.php); la estructura es la misma que la de las entradas de la web original.
+ * La imagen destacada sale en la cabecera (fondo en «Clásico», banner en «Original») y, como la primera foto de las entradas de la web original, al principio del texto (se oculta en «Original», que ya la enseña de banner).
  */
 export function postBody(ctx, post, dyn = false) {
   const { lang } = ctx;
@@ -460,7 +461,7 @@ export function postBody(ctx, post, dyn = false) {
   const hero = `<section class="page-hero bp" ${heroStyle}><div class="container">${banner}${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: 'Blog', href: ctx.href(ctx.site.blog[lang]) }, { label: title }])}<h1>${esc(title)}</h1>${when}</div></section>`;
   // «Original»: la foto con la que empieza el texto es la misma de la cabecera (la web actual la enseña una sola vez): se oculta en ese aspecto y se omite si va solo
   const dup = !dyn && site.O && post.featured && content[0] && content[0].t === 'img' && content[0].img && content[0].img.file === post.featured.file;
-  const text = dyn ? '@@TV:content@@' : dup ? `${site.ONLY_O ? '' : `<div class="o-dup">${blocksHtml(ctx, [content[0]], { demote: 0 })}</div>`}${blocksHtml(ctx, content.slice(1), { demote: 0 })}` : blocksHtml(ctx, content, { demote: 0 });
+  const text = dyn ? (site.ONLY_O ? '' : '@@TV:cover@@') + '@@TV:content@@' : dup ? `${site.ONLY_O ? '' : `<div class="o-dup">${blocksHtml(ctx, [content[0]], { demote: 0 })}</div>`}${blocksHtml(ctx, content.slice(1), { demote: 0 })}` : blocksHtml(ctx, content, { demote: 0 });
   return { hero, body: `<article class="sec"><div class="container"><div class="prose">${text}</div></div></article>${contactBlockO(ctx, 'post', true)}` };
 }
 

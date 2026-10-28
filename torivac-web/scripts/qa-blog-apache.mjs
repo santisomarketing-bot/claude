@@ -8,60 +8,15 @@
 //   node scripts/qa-blog-apache.mjs
 import path from 'node:path';
 import fs from 'node:fs';
-import os from 'node:os';
-import zlib from 'node:zlib';
-import net from 'node:net';
-import http from 'node:http';
-import { execFileSync, spawnSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
-import { apacheAvailable, startApache } from './lib/apache.mjs';
+import { spawnSync } from 'node:child_process';
+import { apacheAvailable } from './lib/apache.mjs';
+import { deployPackage, png } from './lib/pkg-apache.mjs';
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const why = apacheAvailable();
 if (why) { console.log(`(se omite: ${why})`); process.exit(0); }
 let fails = 0;
 /** Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo. */
 const ok = (c, m) => { if (!c) { fails++; console.error('  ✗ ' + m); } else console.log('  ✓ ' + m); };
-/** Puerto TCP libre en 127.0.0.1. */
-const freePort = () => new Promise((res) => { const s = net.createServer(); s.listen(0, '127.0.0.1', () => { const p = s.address().port; s.close(() => res(p)); }); });
-
-/** PNG de colores lisos de w×h píxeles (válido de verdad: con sus sumas de control). */
-function png(w, h, rgb = [200, 40, 40]) {
-  /** Suma de control CRC-32 de un trozo de bytes. */
-  const crc = (b) => { let c = ~0 >>> 0; for (const x of b) { c ^= x; for (let k = 0; k < 8; k++) c = (c >>> 1) ^ (0xEDB88320 & -(c & 1)); } return (~c) >>> 0; };
-  /** Trozo de PNG: longitud, tipo, datos y suma de control. */
-  const chunk = (t, d) => { const len = Buffer.alloc(4); len.writeUInt32BE(d.length); const td = Buffer.concat([Buffer.from(t), d]); const c = Buffer.alloc(4); c.writeUInt32BE(crc(td)); return Buffer.concat([len, td, c]); };
-  const ih = Buffer.alloc(13); ih.writeUInt32BE(w, 0); ih.writeUInt32BE(h, 4); ih[8] = 8; ih[9] = 2;
-  const row = Buffer.concat([Buffer.from([0]), Buffer.from(Array.from({ length: w }, () => rgb).flat())]);
-  const raw = Buffer.concat(Array.from({ length: h }, () => row));
-  return Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), chunk('IHDR', ih), chunk('IDAT', zlib.deflateSync(raw)), chunk('IEND', Buffer.alloc(0))]);
-}
-
-/** Despliega un paquete (producción o pruebas) en un Apache real → { www, ap, port, host, req(), api(), stop() } */
-async function deploy({ staging }) {
-  const port = await freePort();
-  const host = staging ? 'pruebas.example.test' : 'example.test';
-  const BASE = `https://${host}`;
-  const OUT = fs.mkdtempSync(path.join(os.tmpdir(), 'tv-blog-pkg-')); fs.chmodSync(OUT, 0o755);
-  execFileSync('python3', ['-I', path.join(ROOT, 'scripts/package_cpanel.py'), `--base=${BASE}`, ...(staging ? ['--staging'] : []), `--out=${OUT}`, '--keep', '--allow-dirty'], { stdio: 'pipe' });
-  const www = path.join(OUT, fs.readdirSync(OUT).find((d) => fs.statSync(path.join(OUT, d)).isDirectory()));
-  spawnSync('chmod', ['-R', 'a+rX', www]);
-  const ap = await startApache({ docroot: www, port });
-  const MASTER = 'master-test-' + 'a1b2c3d4e5f6a7b8c9d0'.repeat(2);
-  const cfg = { storage_dir: ap.dataDir, session_secret: 'session-test-' + 'x'.repeat(40), admin_token: MASTER, order_to: ['info@grupotorivac.com'], order_from: 'Torivac Web <pedidos@grupotorivac.com>', mail: { driver: 'file' }, form_min_fill_ms: 0 };
-  fs.writeFileSync(path.join(www, 'api/config.php'), `<?php\nreturn json_decode(<<<'JSON'\n${JSON.stringify(cfg)}\nJSON\n, true);\n`); fs.chmodSync(path.join(www, 'api/config.php'), 0o644);
-  /** Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b } */
-  const req = (p, { method = 'GET', headers = {}, body = null } = {}) => new Promise((res, rej) => {
-    const r = http.request({ host: '127.0.0.1', port, path: p, method, agent: false, headers: { host, 'x-forwarded-proto': 'https', ...(body ? { 'content-length': Buffer.byteLength(body) } : {}), ...headers } }, (rs) => { const ch = []; rs.on('data', (d) => ch.push(d)); rs.on('end', () => { const b = Buffer.concat(ch); res({ s: rs.statusCode, h: rs.headers, t: b.toString('utf8'), b }); }); });
-    r.on('error', rej); if (body) r.write(body); r.end();
-  });
-  /** Llamada JSON al API → { s, j } */
-  const api = async (p, { method = 'GET', body, token } = {}) => { const r = await req('/api' + p, { method, headers: { 'content-type': 'application/json', origin: BASE, ...(token ? { authorization: 'Bearer ' + token } : {}) }, body: body === undefined ? null : JSON.stringify(body) }); let j = null; try { j = JSON.parse(r.t); } catch { /* no es JSON */ } return { s: r.s, j, h: r.h }; };
-  let r = await api('/users', { method: 'POST', token: MASTER, body: { email: 'jefa@torivac.com', name: 'Jefa', role: 'manager', password: 'Manager-Clave-2026' } });
-  if (r.s !== 201) throw new Error('no se pudo crear el manager: ' + r.s + ' ' + JSON.stringify(r.j));
-  r = await api('/auth/login', { method: 'POST', body: { email: 'jefa@torivac.com', password: 'Manager-Clave-2026' } });
-  return { www, ap, port, host, BASE, req, api, token: r.j.token, stop: async () => { await ap.stop(); fs.rmSync(OUT, { recursive: true, force: true }); } };
-}
 
 /** Todas las direcciones relativas (href/src) de una página → absolutas contra la dirección de la propia página. */
 function localLinks(html, pageUrl) {
@@ -74,7 +29,7 @@ function localLinks(html, pageUrl) {
   return [...out];
 }
 
-const prod = await deploy({ staging: false });
+const prod = await deployPackage({ staging: false });
 try {
   const { req, api, token: T, host } = prod;
   const H = { host };
@@ -122,13 +77,14 @@ try {
   ok(page.includes('<h2>Potencia y margen</h2>') && page.includes('<h3>Series habituales</h3>') && page.includes('<strong>20 %</strong>') && page.includes('<blockquote>'), 'el texto convertido (títulos, negrita, cita)');
   ok(page.includes('aria-label="Tabla"') && page.includes('<th>Potencia (VA)</th>'), 'tabla con nombre accesible');
   ok(page.includes(`<img src="/media/blog/${file}" alt="Toroidal de 300 VA sobre fondo rojo" width="64" height="32" loading="lazy" decoding="async">`), 'imagen del texto con alt, tamaño y carga diferida');
+  ok(page.includes(`<div class="prose"><div class="o-dup"><figure><img src="/media/blog/${file}" alt="Transformador toroidal de 300 VA sobre fondo rojo" width="64" height="32" decoding="async"></figure></div>`) && page.includes(`style="background-image:url('/media/blog/${file}')"`), 'imagen destacada: al principio del texto (con alt y tamaño) y de fondo de la cabecera');
   ok(page.includes('href="https://commission.europa.eu/" target="_blank" rel="noopener"') && page.includes('href="/product/transformadores-toroidales/"'), 'enlace externo seguro e interno');
   ok(/<header class="site-header/.test(page) && /<footer class="site-footer/.test(page) && /id="main-nav"/.test(page) && page.includes('data-set-lang="en"'), 'cabecera, menú, selector de idioma y pie de la web');
   ok(/<a href="\/en\/blog\/how-to-choose-a-toroidal-transformer\/" hreflang="en"/.test(page) && /<a href="\/fr\/" hreflang="fr"[^>]*class="no-tr"/.test(page), 'selector: la traducción real y, sin ella, la portada marcada');
   ok(/Content-Security-Policy/i.test(Object.keys(r.h).join()) && /script-src 'self'/.test(r.h['content-security-policy'] || ''), 'la CSP de la web también cubre estas páginas');
   ok(!/<script(?![^>]*\bsrc=)(?![^>]*application\/(?:ld\+)?json)[^>]*>/i.test(page), 'ningún script en línea ejecutable (la CSP no lo dejaría)');
   ok(!r.h['x-robots-tag'] && !/name="robots"/.test(page), 'producción: indexable');
-  ok(r.h['cache-control'] === 'public, max-age=300' && r.h.etag && r.h['last-modified'] && r.h.expires, `caché de 5 min con ETag y una sola política (${r.h['cache-control']})`);
+  ok(r.h['cache-control'] === 'public, max-age=60' && r.h.etag && r.h['last-modified'] && r.h.expires, `caché de 1 min con ETag y una sola política (${r.h['cache-control']})`);
   const gz = await req(P, { headers: { 'accept-encoding': 'gzip' } }); ok(gz.h['content-encoding'] === 'gzip', 'comprimida con gzip');
   const c304 = await req(P, { headers: { 'if-none-match': r.h.etag } }); ok(c304.s === 304, 'ETag → 304');
   const missing = [];
@@ -215,7 +171,7 @@ try {
 
 // ───────────────────────────────────────── pruebas: noindex y sin reescritura de sitemap/llms
 console.log('\n10) dominio de pruebas: las entradas salen con noindex');
-const st = await deploy({ staging: true });
+const st = await deployPackage({ staging: true });
 try {
   const { req, api, token: T } = st;
   let r = await api('/blog/posts', { method: 'POST', token: T, body: { lang: 'es', title: 'Entrada en pruebas', slug: 'entrada-en-pruebas', markdown: 'Texto de prueba suficiente para publicar.', status: 'published', date: '2026-01-15T09:00:00Z' } });

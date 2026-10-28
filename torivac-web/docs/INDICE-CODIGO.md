@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1549/1549 funciones descritas (100 %) · 189/189 archivos con cabecera.
+**Cobertura**: 1625/1625 funciones descritas (100 %) · 192/192 archivos con cabecera.
 
 
 ## `site/`
@@ -94,16 +94,16 @@ Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[T
 - `contactBlockO` (l. 421) — «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno).
 - `postCard` (l. 434) — Tarjeta de una entrada en el listado del blog. Con `dyn` (plantilla de las entradas que se crean desde el panel, ver backend-php/api/lib/BlogPage.php) cada dato variable es una marca @@TV:…@@
 - `blogIndexBody` (l. 442) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
-- `postBody` (l. 449) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. Con `dyn` es la plantilla de las entradas que se crean desde el panel: lo variable son marcas
-- `shopBody` (l. 469) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
-- `productBody` (l. 508) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
-- `quoteBody` (l. 572) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
-- `contactForm` (l. 600) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
-- `contactIntro` (l. 616) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
-- `contactPageOriginal` (l. 621) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
-- `plainOf` (l. 626) — Texto de un párrafo sin etiquetas.
-- `li` (l. 633) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
-- `lv2` (l. 636) — Encabezados de un trozo de HTML con aria-level 2.
+- `postBody` (l. 450) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. Con `dyn` es la plantilla de las entradas que se crean desde el panel: lo variable son marcas
+- `shopBody` (l. 470) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
+- `productBody` (l. 509) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
+- `quoteBody` (l. 573) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
+- `contactForm` (l. 601) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
+- `contactIntro` (l. 617) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
+- `contactPageOriginal` (l. 622) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
+- `plainOf` (l. 627) — Texto de un párrafo sin etiquetas.
+- `li` (l. 634) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
+- `lv2` (l. 637) — Encabezados de un trozo de HTML con aria-level 2.
 
 ## `site/lib/`
 
@@ -218,11 +218,84 @@ Secciones: `[THEMES]` · `[CSS]`
 
 ## `site/assets/js/`
 
+### `admin-blog.js`
+
+[ADMIN-BLOG] Vista «Blog» del panel real (admin-live.js, solo managers): escribir, ordenar y publicar las entradas del blog sin tocar archivos. Las entradas viven en la carpeta de datos del servidor (no en los archivos de la web) y se publican en /blog/<dirección>/ con SEO completo (título, descripción, canonical, hreflang, Open Graph, JSON-LD, sitemap.xml y llms.txt); ver docs/BLOG.md. · Listado con filtros (idioma, estado, texto) y estado de cada entrada: publicada, programada (con fecha futura) o borrador.
+
+Secciones: `[ADMIN-BLOG]` · `[UTIL]` · `[DATOS]` · `[LISTA]` · `[EDITOR]` · `[SEO]` · `[TEXTO]` · `[IMAGENES]` · `[GUARDAR]` · `[EVENTOS]`
+
+- `esc` (l. 26) — Escapa & < > " para insertar texto en HTML; null y undefined dan cadena vacía.
+- `pad` (l. 28) — Número con cero a la izquierda a dos cifras.
+- `toLocalInput` (l. 30) — Fecha ISO → valor de un <input type="datetime-local"> en la hora del navegador ('' si no hay).
+- `fromLocalInput` (l. 32) — Valor de un <input type="datetime-local"> (hora del navegador) → ISO en UTC «AAAA-MM-DDTHH:MM:SSZ», o null.
+- `siteBase` (l. 34) — Ruta de la web dentro del dominio («» o «/prueba») según dónde está el panel (/admin/).
+- `publicUrl` (l. 36) — Dirección pública completa de una ruta de la web.
+- `pathOf` (l. 38) — Ruta pública de una entrada de ese idioma y dirección.
+- `nowMs` (l. 40) — Ahora, según el reloj del servidor (la diferencia con el del navegador se mide al cargar el listado).
+- `stateOf` (l. 42) — Estado de una entrada del listado o del editor: «live» (publicada y ya visible), «scheduled» (publicada con fecha futura) o «draft».
+- `stateTag` (l. 44) — Etiqueta HTML del estado de una entrada.
+- `shortDate` (l. 49) — Fecha corta local (dd/mm/aaaa hh:mm) de una fecha ISO.
+- `cut` (l. 51) — Título + «…» recortado a `n` caracteres.
+- `slugify` (l. 53) — Dirección a partir de un título (el mismo slugify que el servidor, sale de shared/blog-markdown.mjs).
+- `unavailable` (l. 55) — Aviso de que el blog no está disponible en este servidor.
+- `parseArg` (l. 57) — Parte «nueva?lang=en&tr=bp-…» o «bp-…» en { id, q }.
+- `blank` (l. 65) — Entrada vacía para empezar a escribir (idioma, y si viene de «Crear la traducción», enlazada con la original).
+- `loadList` (l. 71) — Pide el listado (con la hora y los límites del servidor). Devuelve Promise<null|respuesta con error>.
+- `load` (l. 79) — Prepara lo que necesita la vista pedida (listado; o listado + imágenes + la entrada). Devuelve Promise<null|respuesta con error>.
+- `filtered` (l. 97) — Entradas del listado que pasan el filtro actual.
+- `rowsHtml` (l. 104) — Filas de la tabla del listado.
+- `listHtml` (l. 115) — Vista del listado: contadores, filtros y tabla.
+- `opt` (l. 119) — Una <option> con su valor y su texto, marcada si es la actual.
+- `countHtml` (l. 130) — Contador «n/máx» de un campo de una línea.
+- `coverHtml` (l. 132) — Cuadro de la imagen destacada: vista previa, texto alternativo y botones.
+- `toolbarHtml` (l. 141) — Barra de herramientas del texto.
+- `b` (l. 143) — Un botón de la barra: acción, rótulo (HTML) y ayuda.
+- `textHtml` (l. 148) — Cuadro del texto: barra, caja de texto y vista previa en vivo.
+- `seoHtml` (l. 155) — Cuadro de SEO: título y descripción para buscadores, aspecto en Google y lista de comprobación.
+- `translationsHtml` (l. 163) — Cuadro de traducciones: un desplegable por idioma con las entradas de ese idioma que se pueden enlazar.
+- `editorHtml` (l. 176) — Vista del editor completo.
+- `msg` (l. 193) — Mensaje de la barra superior (error o aviso); '' lo oculta.
+- `effectiveDescription` (l. 197) — Texto de la descripción que usará la web: la de SEO, el resumen o el principio del texto.
+- `checks` (l. 204) — Lista [{ok, text}] de comprobaciones de SEO de la entrada actual (consejos, no bloquean el guardado).
+- `updateSeo` (l. 221) — Repinta la vista previa de Google y la lista de comprobación.
+- `updatePreview` (l. 229) — Pinta la vista previa del texto con el MISMO conversor que usa el servidor (TV.BlogMarkdown).
+- `updateCounts` (l. 239) — Pone al día los contadores de caracteres de los campos con límite (en rojo si se pasan).
+- `updateUrl` (l. 246) — Dirección completa que tendrá la entrada, con aviso si cambia la de una ya publicada.
+- `updateWhen` (l. 252) — Texto de la sección «Publicación» según estado y fecha, y la etiqueta de estado de la barra.
+- `setDirty` (l. 260) — Marca el estado «con cambios sin guardar».
+- `refresh` (l. 262) — Pone al día todo lo que depende de los campos.
+- `insertText` (l. 264) — Inserta `text` en la caja de texto sustituyendo la selección; deja el cursor al final de lo insertado.
+- `wrap` (l. 266) — Rodea la selección con `pre` y `post` (o pone `ph` si no hay selección).
+- `prefixLines` (l. 268) — Antepone `prefix` a cada línea de la selección (o a la línea del cursor); con `numbered` las numera.
+- `tool` (l. 274) — Ejecuta una herramienta de la barra sobre la caja de texto.
+- `canWebp` (l. 291) — ¿Sabe este navegador guardar imágenes WebP desde un canvas? (si no, se usa JPEG).
+- `compress` (l. 293) — Archivo de imagen → Promise<{ data: base64, mime, w, h, bytes }> redimensionado a 1600 px como mucho y recodificado (WebP o JPEG) hasta que pese menos que el límite del servidor.
+- `img.onload` (l. 297) — Con la imagen abierta: la redimensiona y recodifica hasta que cabe en el límite.
+- `attempt` (l. 301) — Intenta una combinación de tamaño y calidad; si no cabe en el límite, la siguiente.
+- `r.onload` (l. 312) — Con el archivo leído: entrega los datos en base64.
+- `r.onerror` (l. 314) — Si no se puede leer el archivo recodificado.
+- `img.onerror` (l. 321) — Si el navegador no puede abrir el archivo como imagen.
+- `upload` (l. 326) — Sube un archivo de imagen (comprimido) y devuelve Promise<imagen del servidor | null si falló, con el aviso ya mostrado>.
+- `pickerHtml` (l. 340) — Contenido del cuadro de imágenes: subir una nueva y rejilla de las ya subidas.
+- `openPicker` (l. 347) — Abre el cuadro de imágenes para `target` («cover» = imagen destacada, «text» = insertar en el texto).
+- `closePicker` (l. 356) — Cierra el cuadro de imágenes.
+- `chooseImage` (l. 358) — Marca una imagen del cuadro como elegida y pide su texto alternativo.
+- `useImage` (l. 366) — Usa la imagen elegida: como destacada o insertada en el texto.
+- `payload` (l. 378) — Cuerpo que se envía al servidor con lo que hay en el formulario.
+- `showError` (l. 385) — Marca el campo con error que dijo el servidor y enseña el mensaje.
+- `save` (l. 392) — Guarda la entrada (crea o actualiza). Devuelve Promise<boolean>.
+- `preview` (l. 409) — «Ver como saldrá»: guarda y abre la página real con una dirección firmada de una hora (sirve también para borradores y programadas).
+- `remove` (l. 421) — Borra la entrada indicada tras confirmar.
+- `fieldChanged` (l. 428) — Lee un campo del formulario y lo pasa a la entrada que se edita.
+- `B.bind` (l. 442) — Engancha los clics, cambios y teclas del listado y del editor (delegación de eventos sobre `root`, una sola vez).
+- `B.view` (l. 490) — Vista del blog: listado o editor según `arg` (ver la cabecera).
+- `B.dirty` (l. 500) — ¿Hay cambios sin guardar en el editor?
+
 ### `admin-live.js`
 
-[ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales. Roles:  manager → Resumen · Pedidos · Mensajes · Precios · Propuestas · Contenido · Usuarios · Estadísticas · Ajustes cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
+[ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales. Roles:  manager → Resumen · Pedidos · Mensajes · Precios · Propuestas · Contenido · Blog · Usuarios · Estadísticas · Ajustes cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
 
-Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[PRICES]` · `[AI]` · `[USERS]` · `[PROPOSALS]` · `[ROUTER]`
+Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[PRICES]` · `[AI]` · `[USERS]` · `[PROPOSALS]` · `[BLOG]` · `[ROUTER]`
 
 - `esc` (l. 17) — Escapa & < > " para insertar texto en HTML; null y undefined dan cadena vacía.
 - `money` (l. 19) — Importe formateado con la divisa y el idioma de la página (Q.money); un valor vacío cuenta como 0.
@@ -262,10 +335,11 @@ Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[
 - `runPrompt` (l. 233) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
 - `applyProposal` (l. 249) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
 - `V.propuestas` (l. 259) — Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js).
-- `V.usuarios` (l. 263) — Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes.
-- `onClick` (l. 273) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF.
-- `bind` (l. 291) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
-- `render` (l. 323) — Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
+- `V.blog` (l. 263) — Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección.
+- `V.usuarios` (l. 267) — Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes.
+- `onClick` (l. 277) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF.
+- `bind` (l. 295) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
+- `render` (l. 328) — Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
 
 ### `admin-proposals.js`
 
@@ -1066,15 +1140,21 @@ Secciones: `[QA-ART]`
 
 Secciones: `[QA-BLOG-APACHE]`
 
-- `ok` (l. 24) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
-- `freePort` (l. 26) — Puerto TCP libre en 127.0.0.1.
-- `png` (l. 29) — PNG de colores lisos de w×h píxeles (válido de verdad: con sus sumas de control).
-- `crc` (l. 31) — Suma de control CRC-32 de un trozo de bytes.
-- `chunk` (l. 33) — Trozo de PNG: longitud, tipo, datos y suma de control.
-- `deploy` (l. 41) — Despliega un paquete (producción o pruebas) en un Apache real → { www, ap, port, host, req(), api(), stop() }
-- `req` (l. 54) — Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b }
-- `api` (l. 59) — Llamada JSON al API → { s, j }
-- `localLinks` (l. 67) — Todas las direcciones relativas (href/src) de una página → absolutas contra la dirección de la propia página.
+- `ok` (l. 21) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `localLinks` (l. 24) — Todas las direcciones relativas (href/src) de una página → absolutas contra la dirección de la propia página.
+
+### `qa-blog-panel.mjs`
+
+[QA-BLOG-PANEL] El editor del blog del panel, en un navegador de verdad (Chromium) sobre el paquete desplegado en un Apache real con PHP-FPM: entrar, escribir una entrada con la barra de herramientas y la vista previa en vivo, subir una imagen (se comprime en el navegador), rellenar el SEO y ver cómo sale en Google, publicarla, verla en la web, crear su traducción (hreflang en las dos), previsualizar un borrador con la dirección firmada, programar una entrada para el futuro, comprobar errores de validación, la protección de cambios sin guardar y el borrado; con axe-core (accesibilidad) sobre el listado y el editor.
+
+Secciones: `[QA-BLOG-PANEL]`
+
+- `ok` (l. 21) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `toast` (l. 34) — Texto del aviso emergente del panel (#toast), tras una pausa corta para que aparezca.
+- `editor` (l. 36) — Espera a que el editor esté pintado.
+- `axe` (l. 38) — Analiza con axe la pantalla actual y anota las violaciones graves.
+- `id1` (l. 149) — identificador de la primera entrada creada (sale de la dirección del panel: #blog/<id>)
+- `id2` (l. 176) — identificador de la entrada en inglés (traducción de la primera)
 
 ### `qa-lang.mjs`
 
@@ -1296,6 +1376,23 @@ Secciones: `[BACKENDS]` · `[WORKER]` · `[PHP]`
 - `kv` (l. 123) — Ruta del fichero del almacén que corresponde a una clave.
 - `read` (l. 125) — Valor guardado en el almacén del PHP para una clave (null si no existe).
 - `startBackend` (l. 141) — Arranca el backend pedido ('worker' o 'php') y devuelve su interfaz común.
+
+### `pkg-apache.mjs`
+
+[PKG-APACHE] Despliega un paquete de la web (producción o pruebas) en un Apache REAL con PHP-FPM y deja a mano lo que hace falta para probarlo: peticiones con el Host y el esquema que se quiera, llamadas al API con la sesión de un manager recién creado y una imagen PNG válida de cualquier tamaño. Lo usan scripts/qa-blog-apache.mjs (peticiones directas) y scripts/qa-blog-panel.mjs (navegador). const d = await deployPackage({ staging, local })    local = true: la web es http://127.0.0.1:<puerto> (para abrirla con un navegador); si no, https://example.test (o pruebas.example.test) detrás de un «proxy» (cabecera X-Forwarded-Proto)
+
+Secciones: `[PKG-APACHE]`
+
+- `freePort` (l. 18) — Puerto TCP libre en 127.0.0.1.
+- `png` (l. 21) — PNG de colores lisos de w×h píxeles (válido de verdad: con sus sumas de control).
+- `crc` (l. 23) — Suma de control CRC-32 de un trozo de bytes.
+- `chunk` (l. 25) — Trozo de PNG: longitud, tipo, datos y suma de control.
+- `deploy` (l. 33) — Despliega un paquete (producción o pruebas) en un Apache real → { www, ap, port, host, req(), api(), stop() }
+- `req` (l. 46) — Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b }
+- `api` (l. 51) — Llamada JSON al API → { s, j }
+- `deployPackage` (l. 65) — Despliega el paquete en un Apache real → { www, ap, port, host, BASE, req, api, token, stop } (ver la cabecera).
+- `req` (l. 77) — Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b }
+- `api` (l. 82) — Llamada JSON al API → { s, j, h }
 
 ### `static-server.mjs`
 
@@ -2033,36 +2130,36 @@ Secciones: `[BLOG-MD]` · `[PIEZAS]` · `[BLOQUES]` · `[TEXTO PLANO]`
 
 Secciones: `[BLOG-PAGE]` · `[PIEZAS]` · `[RUTAS]` · `[LISTADO]` · `[ENTRADA]` · `[MAPA DEL SITIO]` · `[SALIDA]`
 
-- `root` (l. 28) — Carpeta de la web.
-- `shellDir` (l. 31) — Carpeta de las plantillas generadas.
-- `reset` (l. 34) — Olvida las plantillas leídas (las pruebas cambian de carpeta).
-- `esc` (l. 38) — Escapa & < > " (igual que la compilación).
-- `clip` (l. 41) — Texto recortado a `$max` caracteres sin partir palabras y con «…» si se cortó (igual que clip() de site/lib/seo.mjs).
-- `json` (l. 52) — JSON para incrustar en una página: sin < ni > literales, sin separadores de línea Unicode.
-- `shell` (l. 60) — Plantilla de un idioma (o null si falta o está dañada).
-- `bp` (l. 73) — Ruta base del sitio dentro del dominio («» o «/prueba»), sacada de la dirección base de la plantilla.
-- `fmtDate` (l. 76) — Fecha larga en el idioma de la plantilla y en la zona horaria del sitio (igual que las fechas de las entradas estáticas).
-- `localNaive` (l. 83) — Fecha y hora local naive «AAAA-MM-DDTHH:MM:SS» (la de las tarjetas estáticas) de un instante UTC: sirve para ordenar las tarjetas nuevas entre las viejas.
-- `withBase` (l. 89) — Antepone la ruta base del sitio a los enlaces e imágenes que empiezan por «/» (solo si el sitio vive en una subcarpeta).
-- `imgAttrs` (l. 95) — width/height de una imagen de /media/blog/ que el servidor conoce (evita saltos de maquetación).
-- `cache` (l. 106) — Cabeceras de caché: `$seconds` > 0 = pública durante ese tiempo; 0 = nada de caché. Se manda también Expires: sin él, el mod_expires del .htaccess de la web (que da «max-age=0» al HTML) añade su propia
-- `out` (l. 113) — Respuesta HTML/texto con estas cabeceras.
-- `plain` (l. 116) — Respuesta de error corta (sin plantilla: no depende de nada que pueda estar roto).
-- `moved` (l. 122) — Redirección 301 a una ruta del mismo sitio, conservando los parámetros de la dirección.
-- `cacheable` (l. 128) — Añade ETag y devuelve 304 si el navegador ya tiene esta versión.
-- `route` (l. 142) — Qué pide la dirección (solo la cola de la ruta cuenta, así vale también en una subcarpeta): ['kind' => post|index|media|file, …] o null.
-- `handle` (l. 157) — Atiende una petición. `$reqHeaders` lleva los nombres en minúsculas. Solo GET y HEAD. Nunca lanza para una petición normal; api/page.php recoge cualquier excepción inesperada.
-- `card` (l. 173) — Tarjeta de una entrada nueva, rellenando la plantilla de tarjeta.
-- `index` (l. 185) — /blog/ (y /en|fr|de/blog/): el listado de la web con las entradas nuevas mezcladas por fecha.
-- `staticFallback` (l. 199) — Sin plantilla (una compilación sin --php-api o un paquete a medias): se sirve el listado estático que haya, para no dejar el blog roto.
-- `languageLinks` (l. 208) — Marcas y enlaces de idioma de una entrada: canonical + hreflang, y los cuatro enlaces del selector de idioma.
-- `structuredData` (l. 233) — JSON-LD de la entrada (mismos tipos y campos que las entradas estáticas: ver pageGraph y postNode de site/lib/seo.mjs).
-- `post` (l. 259) — La página de una entrada, o 404/301.
-- `notFound` (l. 308) — 404 con la página «no encontrado» del idioma (la que ya tiene la web), o un texto corto si no está.
-- `media` (l. 317) — /media/blog/<archivo>: el contenido de la imagen subida, con caché de un año (el nombre lleva la huella del contenido, así que nunca cambia).
-- `xml` (l. 332) — Escapa para XML.
-- `siteFile` (l. 335) — sitemap.xml, llms.txt o llms-full.txt: el archivo de la compilación con las entradas nuevas añadidas.
-- `send` (l. 386) — Envía la respuesta al navegador (para api/page.php). Una respuesta con `file` envía el archivo tal cual.
+- `root` (l. 33) — Carpeta de la web.
+- `shellDir` (l. 36) — Carpeta de las plantillas generadas.
+- `reset` (l. 39) — Olvida las plantillas leídas (las pruebas cambian de carpeta).
+- `esc` (l. 43) — Escapa & < > " (igual que la compilación).
+- `clip` (l. 46) — Texto recortado a `$max` caracteres sin partir palabras y con «…» si se cortó (igual que clip() de site/lib/seo.mjs).
+- `json` (l. 57) — JSON para incrustar en una página: sin < ni > literales, sin separadores de línea Unicode.
+- `shell` (l. 65) — Plantilla de un idioma (o null si falta o está dañada).
+- `bp` (l. 78) — Ruta base del sitio dentro del dominio («» o «/prueba»), sacada de la dirección base de la plantilla.
+- `fmtDate` (l. 81) — Fecha larga en el idioma de la plantilla y en la zona horaria del sitio (igual que las fechas de las entradas estáticas).
+- `localNaive` (l. 88) — Fecha y hora local naive «AAAA-MM-DDTHH:MM:SS» (la de las tarjetas estáticas) de un instante UTC: sirve para ordenar las tarjetas nuevas entre las viejas.
+- `withBase` (l. 94) — Antepone la ruta base del sitio a los enlaces e imágenes que empiezan por «/» (solo si el sitio vive en una subcarpeta).
+- `imgAttrs` (l. 100) — width/height de una imagen de /media/blog/ que el servidor conoce (evita saltos de maquetación).
+- `cache` (l. 111) — Cabeceras de caché: `$seconds` > 0 = pública durante ese tiempo; 0 = nada de caché. Se manda también Expires: sin él, el mod_expires del .htaccess de la web (que da «max-age=0» al HTML) añade su propia
+- `out` (l. 118) — Respuesta HTML/texto con estas cabeceras.
+- `plain` (l. 121) — Respuesta de error corta (sin plantilla: no depende de nada que pueda estar roto).
+- `moved` (l. 127) — Redirección 301 a una ruta del mismo sitio, conservando los parámetros de la dirección.
+- `cacheable` (l. 133) — Añade ETag y devuelve 304 si el navegador ya tiene esta versión.
+- `route` (l. 147) — Qué pide la dirección (solo la cola de la ruta cuenta, así vale también en una subcarpeta): ['kind' => post|index|media|file, …] o null.
+- `handle` (l. 162) — Atiende una petición. `$reqHeaders` lleva los nombres en minúsculas. Solo GET y HEAD. Nunca lanza para una petición normal; api/page.php recoge cualquier excepción inesperada.
+- `card` (l. 178) — Tarjeta de una entrada nueva, rellenando la plantilla de tarjeta.
+- `index` (l. 190) — /blog/ (y /en|fr|de/blog/): el listado de la web con las entradas nuevas mezcladas por fecha.
+- `staticFallback` (l. 204) — Sin plantilla (una compilación sin --php-api o un paquete a medias): se sirve el listado estático que haya, para no dejar el blog roto.
+- `languageLinks` (l. 213) — Marcas y enlaces de idioma de una entrada: canonical + hreflang, y los cuatro enlaces del selector de idioma.
+- `structuredData` (l. 238) — JSON-LD de la entrada (mismos tipos y campos que las entradas estáticas: ver pageGraph y postNode de site/lib/seo.mjs).
+- `post` (l. 264) — La página de una entrada, o 404/301.
+- `notFound` (l. 314) — 404 con la página «no encontrado» del idioma (la que ya tiene la web), o un texto corto si no está.
+- `media` (l. 323) — /media/blog/<archivo>: el contenido de la imagen subida, con caché de un año (el nombre lleva la huella del contenido, así que nunca cambia).
+- `xml` (l. 338) — Escapa para XML.
+- `siteFile` (l. 341) — sitemap.xml, llms.txt o llms-full.txt: el archivo de la compilación con las entradas nuevas añadidas.
+- `send` (l. 392) — Envía la respuesta al navegador (para api/page.php). Una respuesta con `file` envía el archivo tal cual.
 
 ### `Catalog.php`
 
@@ -2474,18 +2571,18 @@ Pruebas de las páginas públicas del blog (BlogPage.php): rutas, entrada (SEO, 
 - `test_blogpage_routes` (l. 80) — BP1 · Las direcciones se reconocen por su cola (valen también en una subcarpeta) y lo demás no es del blog.
 - `test_blogpage_published_post_has_complete_seo` (l. 97) — BP2 · Una entrada publicada sale con todo el SEO: título, descripción, canonical, Open Graph, JSON-LD, una sola h1, fecha en la zona del sitio, texto convertido y sin marcas sin rellenar.
 - `test_blogpage_dates_use_the_site_timezone` (l. 130) — BP3 · La fecha se enseña en la zona horaria del sitio (Madrid), no en UTC.
-- `test_blogpage_image_in_header_social_and_structured_data` (l. 141) — BP4 · Con imagen: fondo de la cabecera, og:image con texto alternativo y ImageObject; sin imagen, el logotipo.
-- `test_blogpage_hostile_content_is_escaped` (l. 161) — BP5 · Todo lo que se escribe se escapa: título, descripción, texto y alt no pueden cerrar etiquetas, atributos ni el JSON-LD, y las marcas @@TV:…@@ escritas por una persona se quedan como texto.
-- `test_blogpage_drafts_and_scheduled_are_invisible` (l. 181) — BP6 · Borradores y programadas no existen para el público (404 con la página «no encontrado» del idioma); borrar también.
-- `test_blogpage_preview_with_signed_address` (l. 204) — BP7 · La vista previa firmada enseña un borrador sin indexar ni cachear; una firma mala, caducada o de otra entrada no vale.
-- `test_blogpage_redirects` (l. 229) — BP8 · Direcciones: la antigua redirige (301) a la nueva con sus parámetros; sin barra final también; y la entrada solo vive en su idioma.
-- `test_blogpage_hreflang_and_language_links` (l. 248) — BP9 · Traducciones: hreflang solo con las visibles (más x-default), enlaces del selector de idioma con la traducción o la portada, y marcas de «sin traducción».
-- `test_blogpage_index_merges_new_posts_by_date` (l. 272) — BP10 · El listado mezcla las entradas nuevas con las de la web por fecha (la más reciente primero), solo las visibles y de su idioma, con imagen y texto escapado.
-- `test_blogpage_index_fallbacks` (l. 297) — BP11 · Sin entradas nuevas el listado es el de la plantilla; sin plantilla se sirve el estático que dejó la compilación; sin nada, 503.
-- `test_blogpage_media` (l. 315) — BP12 · Imágenes: se sirven con su tipo, caché de un año, 304 por ETag y cabeceras que impiden ejecutar nada; las que no existen o con nombre raro, 404.
-- `test_blogpage_conditional_and_methods` (l. 333) — BP13 · Respuestas condicionales de las páginas: 304 con el mismo ETag; solo GET y HEAD.
-- `test_blogpage_sitemap_gets_the_new_posts` (l. 351) — BP14 · sitemap.xml: las entradas visibles se añaden con hreflang (traducciones visibles + x-default), imágenes con texto alternativo y lastmod; borradores y programadas no; sin entradas, el archivo tal cual.
-- `test_blogpage_llms_get_the_new_posts` (l. 376) — BP15 · llms.txt y llms-full.txt: las entradas nuevas se añaden bajo el título de su idioma (la más reciente arriba), con resumen o texto completo; si falta el título se crea la sección; lo escrito no puede romper el formato.
+- `test_blogpage_image_in_header_social_and_structured_data` (l. 141) — BP4 · Con imagen: fondo de la cabecera, foto al principio del texto (con su texto alternativo y medidas), og:image con texto alternativo y ImageObject; sin imagen, el logotipo.
+- `test_blogpage_hostile_content_is_escaped` (l. 163) — BP5 · Todo lo que se escribe se escapa: título, descripción, texto y alt no pueden cerrar etiquetas, atributos ni el JSON-LD, y las marcas @@TV:…@@ escritas por una persona se quedan como texto.
+- `test_blogpage_drafts_and_scheduled_are_invisible` (l. 190) — BP6 · Borradores y programadas no existen para el público (404 con la página «no encontrado» del idioma); borrar también.
+- `test_blogpage_preview_with_signed_address` (l. 213) — BP7 · La vista previa firmada enseña un borrador sin indexar ni cachear; una firma mala, caducada o de otra entrada no vale.
+- `test_blogpage_redirects` (l. 238) — BP8 · Direcciones: la antigua redirige (301) a la nueva con sus parámetros; sin barra final también; y la entrada solo vive en su idioma.
+- `test_blogpage_hreflang_and_language_links` (l. 257) — BP9 · Traducciones: hreflang solo con las visibles (más x-default), enlaces del selector de idioma con la traducción o la portada, y marcas de «sin traducción».
+- `test_blogpage_index_merges_new_posts_by_date` (l. 281) — BP10 · El listado mezcla las entradas nuevas con las de la web por fecha (la más reciente primero), solo las visibles y de su idioma, con imagen y texto escapado.
+- `test_blogpage_index_fallbacks` (l. 306) — BP11 · Sin entradas nuevas el listado es el de la plantilla; sin plantilla se sirve el estático que dejó la compilación; sin nada, 503.
+- `test_blogpage_media` (l. 324) — BP12 · Imágenes: se sirven con su tipo, caché de un año, 304 por ETag y cabeceras que impiden ejecutar nada; las que no existen o con nombre raro, 404.
+- `test_blogpage_conditional_and_methods` (l. 342) — BP13 · Respuestas condicionales de las páginas: 304 con el mismo ETag; solo GET y HEAD.
+- `test_blogpage_sitemap_gets_the_new_posts` (l. 360) — BP14 · sitemap.xml: las entradas visibles se añaden con hreflang (traducciones visibles + x-default), imágenes con texto alternativo y lastmod; borradores y programadas no; sin entradas, el archivo tal cual.
+- `test_blogpage_llms_get_the_new_posts` (l. 385) — BP15 · llms.txt y llms-full.txt: las entradas nuevas se añaden bajo el título de su idioma (la más reciente arriba), con resumen o texto completo; si falta el título se crea la sección; lo escrito no puede romper el formato.
 
 ### `BlogTest.php`
 

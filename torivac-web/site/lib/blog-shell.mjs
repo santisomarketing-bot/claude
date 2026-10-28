@@ -5,7 +5,7 @@
 //   splitIndex(html)                        → { pre, post }: el listado del blog (/blog/) partido justo donde van las tarjetas
 //   llmsHeads(lang)                         → los títulos de las secciones de entradas de llms.txt y llms-full.txt (el servidor añade ahí las nuevas)
 //   dateKit(lang)                           → { pattern, months }: cómo se escribe una fecha larga en ese idioma (sale de Intl, igual que las fechas de las entradas de la web)
-// Marcas que rellena el servidor: seotitle · description · links · social · ld · path · langlinks · boot · title · date · datefmt · herostyle · banner · content (entrada) y slug · cardimg · excerpt (tarjeta).
+// Marcas que rellena el servidor: seotitle · description · links · social · ld · path · langlinks · boot · title · date · datefmt · herostyle · banner · cover · content (entrada) y slug · cardimg · excerpt (tarjeta).
 
 import { t } from './i18n.mjs';
 import { pageGraph, ogLocale } from './seo.mjs';
@@ -58,6 +58,7 @@ export function blogShell({ lang, site, mkctx, posts }) {
     parts: {
       banner: site.O ? `<img class="${TPL.oc(site, 'o-banner')}" src="@@TV:imgsrc@@" alt="" width="1140" height="280" decoding="async">` : '',
       herostyle: site.ONLY_O ? '' : `style="background-image:url('@@TV:imgsrc@@')"`,
+      cover: site.ONLY_O ? '' : '<div class="o-dup"><figure><img src="@@TV:imgsrc@@" alt="@@TV:imgalt@@" width="@@TV:imgw@@" height="@@TV:imgh@@" decoding="async"></figure></div>',
       cardimg: '<img src="@@TV:imgsrc@@" alt="" loading="lazy">',
     },
     post,

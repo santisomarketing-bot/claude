@@ -17,6 +17,11 @@ namespace Torivac;
 
 final class BlogPage
 {
+    /** Segundos que una página (entrada o listado) puede guardarse en la caché del navegador o de un CDN: poco, para que un cambio publicado en el panel se vea enseguida; después se revalida con el ETag. */
+    const PAGE_TTL = 60;
+    /** Lo mismo para el mapa del sitio y los llms.txt. */
+    const MAP_TTL = 600;
+
     /** Carpeta de la web (donde están sitemap.xml, llms.txt y blog/index.html): por defecto, la que contiene api/. Las pruebas la cambian. */
     public static $root = '';
     /** Carpeta de las plantillas generadas (api/generated). Las pruebas la cambian. */
@@ -190,7 +195,7 @@ final class BlogPage
         foreach (Blog::liveEntries($r['lang'], $now) as $e) $cards[] = ['d' => self::localNaive($e['date']), 'h' => self::card($sh, $e)];
         usort($cards, function ($a, $b) { return strcmp($b['d'], $a['d']); });
         $html = $sh['index']['pre'] . implode('', array_column($cards, 'h')) . $sh['index']['post'];
-        return self::out(200, $html, ['Content-Type' => 'text/html; charset=utf-8'] + self::cache(300));
+        return self::out(200, $html, ['Content-Type' => 'text/html; charset=utf-8'] + self::cache(self::PAGE_TTL));
     }
 
     /** Sin plantilla (una compilación sin --php-api o un paquete a medias): se sirve el listado estático que haya, para no dejar el blog roto. */
@@ -282,7 +287,7 @@ final class BlogPage
         $date = $p['date'] ?: $p['created'];
         $trans = $preview ? [] : Blog::translationsOf(Blog::index($p['lang'])[$p['id']] ?? ['lang' => $p['lang'], 'grp' => $p['grp']], true, $now);
         $ll = self::languageLinks($sh, $p, $trans, $preview);
-        $robots = $preview || !empty($sh['staging']) ? '<meta name="robots" content="noindex,nofollow">' : '';
+        $robots = $preview && empty($sh['staging']) ? '<meta name="robots" content="noindex,nofollow">' : '';          // en el dominio de pruebas la plantilla ya lo lleva
         $social = '<meta property="og:title" content="' . self::esc($seoTitle) . '"><meta property="og:description" content="' . self::esc(self::clip($desc ?: $seoTitle, 200)) . '"><meta property="og:type" content="article"><meta property="og:site_name" content="Torivac">'
             . '<meta property="og:locale" content="' . self::esc($sh['locale']) . '"><meta property="og:url" content="' . self::esc($abs . $canonicalPath) . '"><meta property="og:image" content="' . self::esc($imgAbs ?: $sh['logo']) . '">'
             . ($img ? '<meta property="og:image:alt" content="' . self::esc($img['alt']) . '">' : '')
@@ -295,9 +300,10 @@ final class BlogPage
             '@@TV:title@@' => self::esc($p['title']), '@@TV:date@@' => self::esc($date), '@@TV:datefmt@@' => self::esc(self::fmtDate($sh, $date)),
             '@@TV:herostyle@@' => $img && $sh['parts']['herostyle'] !== '' ? strtr($sh['parts']['herostyle'], ['@@TV:imgsrc@@' => self::esc($imgPath)]) : '',
             '@@TV:banner@@' => $img && $sh['parts']['banner'] !== '' ? strtr($sh['parts']['banner'], ['@@TV:imgsrc@@' => self::esc($imgPath)]) : '',
+            '@@TV:cover@@' => $img && ($sh['parts']['cover'] ?? '') !== '' ? strtr($sh['parts']['cover'], ['@@TV:imgsrc@@' => self::esc($imgPath), '@@TV:imgalt@@' => self::esc($img['alt']), '@@TV:imgw@@' => (string) (int) $img['w'], '@@TV:imgh@@' => (string) (int) $img['h']]) : '',
             '@@TV:content@@' => $content,
         ];
-        $headers = ['Content-Type' => 'text/html; charset=utf-8', 'Last-Modified' => gmdate('D, d M Y H:i:s', Blog::ts($p['updated'])) . ' GMT'] + self::cache($preview ? 0 : 300);
+        $headers = ['Content-Type' => 'text/html; charset=utf-8', 'Last-Modified' => gmdate('D, d M Y H:i:s', Blog::ts($p['updated'])) . ' GMT'] + self::cache($preview ? 0 : self::PAGE_TTL);
         if ($preview) $headers['X-Robots-Tag'] = 'noindex, nofollow';
         return self::out(200, strtr((string) $sh['post'], $map), $headers);
     }
@@ -340,7 +346,7 @@ final class BlogPage
         $sh = null;
         foreach (Blog::LANGS as $l) if (($sh = self::shell($l)) !== null) break;
         $type = $name === 'sitemap.xml' ? 'application/xml; charset=utf-8' : 'text/plain; charset=utf-8';
-        $h = ['Content-Type' => $type] + self::cache(3600);
+        $h = ['Content-Type' => $type] + self::cache(self::MAP_TTL);
         if (!$live || $sh === null) return self::out(200, $base, $h);
         $abs = rtrim($sh['base'], '/');
         if ($name === 'sitemap.xml') {

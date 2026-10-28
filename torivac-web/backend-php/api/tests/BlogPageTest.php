@@ -26,9 +26,9 @@ function bp_shell(string $lang = 'es', string $base = 'https://demo.example', bo
         'datePattern' => '{d} de {m} de {y}', 'names' => ['es' => 'Español', 'en' => 'English', 'fr' => 'Français', 'de' => 'Deutsch'], 'home' => $home, 'blog' => $blog, 'quote' => ['es' => '/presupuesto/', 'en' => '/en/quote/', 'fr' => '/fr/devis/', 'de' => '/de/angebot/'],
         'logo' => $base . '/assets/logo.webp', 'crumb' => ['home' => 'Inicio', 'blog' => 'Blog'], 'tableLabel' => 'Tabla',
         'ld' => ['org' => ['@type' => 'Organization', '@id' => $base . '/#organization', 'name' => 'Torivac'], 'website' => ['@type' => 'WebSite', '@id' => $base . '/#website', 'name' => 'Torivac', 'inLanguage' => $lang]],
-        'parts' => ['banner' => '', 'herostyle' => 'style="background-image:url(\'@@TV:imgsrc@@\')"', 'cardimg' => '<img src="@@TV:imgsrc@@" alt="" loading="lazy">'],
+        'parts' => ['banner' => '', 'herostyle' => 'style="background-image:url(\'@@TV:imgsrc@@\')"', 'cover' => '<div class="o-dup"><figure><img src="@@TV:imgsrc@@" alt="@@TV:imgalt@@" width="@@TV:imgw@@" height="@@TV:imgh@@" decoding="async"></figure></div>', 'cardimg' => '<img src="@@TV:imgsrc@@" alt="" loading="lazy">'],
         'post' => '<!doctype html><html lang="' . $lang . '"><head><title>@@TV:seotitle@@</title><meta name="description" content="@@TV:description@@">@@TV:links@@@@TV:social@@@@TV:ld@@</head><body data-path="@@TV:path@@"><div class="lang">@@TV:langlinks@@</div>'
-            . '<main><section class="page-hero" @@TV:herostyle@@>@@TV:banner@@<h1>@@TV:title@@</h1><time datetime="@@TV:date@@">@@TV:datefmt@@</time></section><div class="prose">@@TV:content@@</div></main><script type="application/json" id="tv-boot">@@TV:boot@@</script></body></html>',
+            . '<main><section class="page-hero" @@TV:herostyle@@>@@TV:banner@@<h1>@@TV:title@@</h1><time datetime="@@TV:date@@">@@TV:datefmt@@</time></section><div class="prose">@@TV:cover@@@@TV:content@@</div></main><script type="application/json" id="tv-boot">@@TV:boot@@</script></body></html>',
         'card' => $card,
         'cards' => [['d' => '2025-12-29T14:07:46', 'h' => '<a class="post-card" href="../vieja-2/">V2</a>'], ['d' => '2025-06-01T10:00:00', 'h' => '<a class="post-card" href="../vieja-1/">V1</a>']],
         'llms' => ['short' => '## ' . $home[$lang] . ' entradas', 'full' => '## ' . $home[$lang] . ' entradas (texto completo)'],
@@ -120,7 +120,7 @@ function test_blogpage_published_post_has_complete_seo()
     $post = $ld['@graph'][4];
     T::same(['https://demo.example/blog/como-elegir/#post', 'Cómo elegir un toroidal', 'es', '2026-10-20T08:00:00Z', 'Guía para elegir la potencia de un transformador toroidal.'], [$post['@id'], $post['headline'], $post['inLanguage'], $post['datePublished'], $post['description']], 'BlogPosting');
     T::same([['Inicio', 'https://demo.example/'], ['Blog', 'https://demo.example/blog/'], ['Cómo elegir un toroidal', 'https://demo.example/blog/como-elegir/']], array_map(function ($i) { return [$i['name'], $i['item']]; }, $ld['@graph'][3]['itemListElement']), 'migas de pan');
-    T::same(['text/html; charset=utf-8', 'public, max-age=300'], [$r['headers']['Content-Type'], $r['headers']['Cache-Control']], 'cabeceras');
+    T::same(['text/html; charset=utf-8', 'public, max-age=60'], [$r['headers']['Content-Type'], $r['headers']['Cache-Control']], 'cabeceras');
     T::true(isset($r['headers']['ETag'], $r['headers']['Last-Modified']), 'ETag y Last-Modified');
     T::true(strpos($r['headers']['Last-Modified'], 'GMT') !== false, 'fecha HTTP');
     unset($p);
@@ -137,7 +137,7 @@ function test_blogpage_dates_use_the_site_timezone()
     T::same('', BlogPage::fmtDate($sh, 'no es una fecha'), 'fecha ilegible: vacío');
 }
 
-/** BP4 · Con imagen: fondo de la cabecera, og:image con texto alternativo y ImageObject; sin imagen, el logotipo. */
+/** BP4 · Con imagen: fondo de la cabecera, foto al principio del texto (con su texto alternativo y medidas), og:image con texto alternativo y ImageObject; sin imagen, el logotipo. */
 function test_blogpage_image_in_header_social_and_structured_data()
 {
     fresh(); bp_site();
@@ -147,12 +147,14 @@ function test_blogpage_image_in_header_social_and_structured_data()
     T::true(strpos($h, "style=\"background-image:url('/media/blog/{$im['file']}')\"") !== false, 'imagen de fondo de la cabecera');
     T::true(strpos($h, "og:image\" content=\"https://demo.example/media/blog/{$im['file']}\"") !== false, 'og:image absoluta');
     T::true(strpos($h, 'og:image:alt" content="Toroidal de 300 VA"') !== false, 'og:image:alt');
+    $cover = '<div class="prose"><div class="o-dup"><figure><img src="/media/blog/' . $im['file'] . '" alt="Toroidal de 300 VA" width="' . $im['w'] . '" height="' . $im['h'] . '" decoding="async"></figure></div>';
+    T::true(strpos($h, $cover) !== false, 'la imagen destacada abre el texto, con texto alternativo y medidas');
     $ld = bp_ld($h);
     T::same('https://demo.example/media/blog/' . $im['file'], $ld['@graph'][4]['image'], 'BlogPosting.image');
     T::same('https://demo.example/media/blog/' . $im['file'], $ld['@graph'][2]['primaryImageOfPage']['url'], 'primaryImageOfPage');
     Blog::update(Blog::resolve('es', 'como-elegir')['id'], ['image' => null], 'j', BP_NOW * 1000);
     $h = bp_get('/blog/como-elegir/')['body'];
-    T::true(strpos($h, 'background-image') === false && strpos($h, 'og:image:alt') === false, 'sin imagen: sin fondo ni alt');
+    T::true(strpos($h, 'background-image') === false && strpos($h, 'og:image:alt') === false && strpos($h, 'o-dup') === false, 'sin imagen: sin fondo, sin foto en el texto ni alt');
     T::true(strpos($h, 'og:image" content="https://demo.example/assets/logo.webp"') !== false, 'sin imagen: el logotipo');
     T::true(!isset(bp_ld($h)['@graph'][4]['image']), 'sin imagen: BlogPosting sin image');
 }
@@ -175,6 +177,13 @@ function test_blogpage_hostile_content_is_escaped()
     T::same($evil, $ld['@graph'][4]['headline'] === $evil ? $evil : $ld['@graph'][4]['headline'], 'el JSON-LD sigue siendo JSON válido con el texto dentro');
     T::true(strpos($b, '@@TV:ld@@') !== false && substr_count($b, '@@TV:ld@@') >= 1, 'una marca escrita por una persona se queda como texto (no se vuelve a interpretar)');
     T::true(substr_count($b, '@@TV:content@@') >= 2, 'también en el título y el texto');
+    $im = Blog::saveImage('hostil', bl_img('webp'), 'j', BP_NOW * 1000)['image'];                // el texto alternativo de la imagen destacada sale en la foto del texto, en og:image:alt y en el JSON-LD
+    $alt = '" onerror="alert(6)" x="@@TV:content@@';
+    bp_post(['slug' => 'hostil-2', 'title' => 'Con foto', 'image' => ['file' => $im['file'], 'alt' => $alt]]);
+    $b = bp_get('/blog/hostil-2/')['body'];
+    T::true(strpos($b, 'alt="&quot; onerror=&quot;alert(6)&quot; x=&quot;@@TV:content@@"') !== false, 'el texto alternativo de la foto del texto va escapado y sin romper el atributo');
+    T::same(0, preg_match('/<img(?:\s+[a-z-]+="[^"]*")*\s+on[a-z]+=/i', $b), 'ninguna foto con un atributo on…= propio (solo hay atributos entre comillas)');
+    T::true(preg_match('/<img src="[^"]+" alt="[^"]*" width="\d+" height="\d+" decoding="async">/', $b) === 1, 'la foto tiene exactamente sus cinco atributos');
 }
 
 /** BP6 · Borradores y programadas no existen para el público (404 con la página «no encontrado» del idioma); borrar también. */
@@ -219,10 +228,10 @@ function test_blogpage_preview_with_signed_address()
     T::same(404, bp_get('/blog/borrador/?tvp=' . $tok)['status'], 'sin el id delante');
     T::same(404, bp_get('/blog/borrador/')['status'], 'sin firma');
     T::same(404, bp_get('/blog/borrador/?tvp[]=x')['status'], 'parámetro raro');
-    // el modo pruebas también pone noindex en las publicadas
+    // en el dominio de pruebas la plantilla ya trae el noindex: la vista previa no lo repite
     bp_site(['es'], true, true);
     bp_post(['slug' => 'viva']);
-    T::true(strpos(bp_get('/blog/viva/')['body'], '<meta name="robots" content="noindex,nofollow">') !== false, 'dominio de pruebas: noindex en las publicadas');
+    T::same(0, substr_count(bp_get('/blog/viva/')['body'], 'name="robots"'), 'dominio de pruebas: el noindex lo pone la plantilla (aquí, mínima, no lo trae), no PHP');
 }
 
 /** BP8 · Direcciones: la antigua redirige (301) a la nueva con sus parámetros; sin barra final también; y la entrada solo vive en su idioma. */
@@ -360,7 +369,7 @@ function test_blogpage_sitemap_gets_the_new_posts()
     bp_post(['slug' => 'borrador', 'status' => 'draft']);
     bp_post(['slug' => 'futura', 'date' => '2026-12-01T00:00:00Z']);
     $r = bp_get('/sitemap.xml');
-    T::same(['application/xml; charset=utf-8', 'public, max-age=3600'], [$r['headers']['Content-Type'], $r['headers']['Cache-Control']], 'cabeceras');
+    T::same(['application/xml; charset=utf-8', 'public, max-age=600'], [$r['headers']['Content-Type'], $r['headers']['Cache-Control']], 'cabeceras');
     $x = $r['body'];
     T::true(strpos($x, '<url><loc>https://demo.example/</loc></url>') === 0 || strpos($x, '<url><loc>https://demo.example/</loc></url><url>') !== false, 'lo que ya había se conserva');
     $dom = new \DOMDocument();
