@@ -1,5 +1,7 @@
 # Despliegue en un hosting con cPanel
 
+> **¿Tu hosting es Plesk?** Es el mismo paquete y casi los mismos pasos: lee [`DESPLIEGUE-PLESK.md`](DESPLIEGUE-PLESK.md) (qué cambia, con el paso a cPanel al final). Esta guía sirve para cualquier hosting con Apache y PHP, con los nombres de menú de cPanel.
+
 Se despliega **una sola cosa**: un `.zip` con la web estática (HTML por idioma) y la carpeta `api/` (PHP: pedidos, contacto, precios, panel). No hace falta Node, ni base de datos, ni WordPress en el hosting. La web actual de grupotorivac.com **no se toca**: se prueba en un subdominio y el cambio de dominio se hace al final.
 
 ## Resumen: 10 pasos
@@ -39,7 +41,7 @@ En un ordenador con Node 22 y Python 3 (o con el flujo de GitHub del apartado [1
 python3 -I scripts/package_cpanel.py --base=https://pruebas.grupotorivac.com --staging
 ```
 
-Crea `entrega/torivac-cpanel-pruebas-grupotorivac-com-AAAAMMDD.zip` y antes **verifica**: que están todos los ficheros, que no hay claves ni tests ni scripts de trabajo, que **no lleva precios**, que el PHP es válido y que la URL del API es la de la propia web.
+Crea `entrega/torivac-web-pruebas-grupotorivac-com-AAAAMMDD.zip` y antes **verifica**: que están todos los ficheros, que no hay claves ni tests ni scripts de trabajo, que **no lleva precios**, que el PHP es válido y que la URL del API es la de la propia web.
 `--staging` añade `noindex` (cabecera, meta y `robots.txt` que prohíbe todo) y una cinta «entorno de pruebas»: Google no indexa el subdominio.
 
 **Aspecto de la web** (hay dos: «Ficha técnica», el nuevo, y «Clásico», el de la web original). En pruebas el paquete sale con la Ficha técnica por defecto y un selector «Aspecto» en la cinta y en el pie para que se comparen. Para fijar otro por defecto o quitar/poner el selector: `--theme=clasico`, `--theme-switch`, `--no-theme-switch` (en producción no hay selector salvo que lo pidas). Detalle en [`DISENO-TEMAS.md`](DISENO-TEMAS.md).
@@ -55,7 +57,7 @@ El `.htaccess` ya incluye: HTTPS obligatorio, un solo host (con o sin `www`), UR
 
 ## 5. Carpeta de datos (fuera de la web)
 
-Pedidos, usuarios y precios se guardan como ficheros JSON. Por defecto se usa `torivac-datos` en la carpeta personal de la cuenta (`/home/CUENTA/torivac-datos`, **fuera** de la web) y **se crea sola** al primer uso; no tienes que hacer nada. Si prefieres otra ruta, cámbiala en `storage_dir` (paso 6). Dentro de la web también funciona (se protege con `.htaccess`), pero fuera no hay riesgo ninguno.
+Pedidos, usuarios y precios se guardan como ficheros JSON. Con `storage_dir` vacío (lo normal) se usa `torivac-datos` en la carpeta personal de la cuenta (`/home/CUENTA/torivac-datos`, **fuera** de la web) y **se crea sola** al primer uso; no tienes que hacer nada. Si ahí no se pudiera crear, se usa `api/storage` (dentro de la web, protegida con `.htaccess`) y el Diagnóstico lo avisa. Si prefieres otra ruta, cámbiala en `storage_dir` (paso 6). Una carpeta que ya tiene datos no se abandona sola: para cambiar de carpeta, copia antes su contenido.
 
 ## 6. Configuración: `api/config.php`
 
@@ -63,7 +65,7 @@ Pedidos, usuarios y precios se guardan como ficheros JSON. Por defecto se usa `t
 
 | Ajuste | Qué poner |
 |---|---|
-| `storage_dir` | ya apunta a `/home/CUENTA/torivac-datos` (paso 5); solo cámbialo si quieres otra ruta |
+| `storage_dir` | déjalo vacío (se usa `/home/CUENTA/torivac-datos`, paso 5); solo ponlo si quieres otra ruta |
 | `session_secret` | 32+ caracteres aleatorios (`openssl rand -hex 32` o random.org). Cambiarla cierra todas las sesiones |
 | `order_to` | `['info@grupotorivac.com', 'mzamora@torivac.com']` (confirmado; `info@` también para las pruebas) |
 | `order_from` | `Torivac Web <pedidos@grupotorivac.com>` (dominio verificado en Resend, paso 8) |
@@ -165,7 +167,7 @@ Lo único que no se regenera es la **carpeta de datos** (pedidos 400 días, usua
 | Los precios no se actualizan | Origen mal configurado, archivo sin compartir o hoja rechazada | Ejecuta `php api/cron.php` y lee el mensaje; ver [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md) §6-7 |
 | Enviar un pedido o el contacto da error 403/406 aunque `/api/health` responde | **ModSecurity** (el cortafuegos del hosting) rechaza el cuerpo de la petición (lleva el PDF en base64) | Pedir a soporte una excepción para `/api/` (o que suba el límite del cuerpo); el resto de la web no se ve afectado |
 | El subdominio ya tenía otra web (p. ej. un WordPress de pruebas) | El zip se extrae encima: `index.php`, `.htaccess` y plugins antiguos chocan con los nuevos | Copia de seguridad y vacía la carpeta del subdominio (o usa otro subdominio) antes de extraer |
-| «No puedo escribir en el directorio de datos» | `storage_dir` mal escrito o sin permisos | Crear la carpeta; permisos 755 y mismo usuario de la cuenta |
+| «No puedo escribir en el directorio de datos» | `storage_dir` mal escrito o sin permisos | Dejarlo vacío (se elige una carpeta válida) o crear la carpeta; permisos 755 y mismo usuario de la cuenta |
 
 ## 15. Alternativa: API en Cloudflare Worker
 

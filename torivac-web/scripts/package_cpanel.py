@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""[PACKAGE-CPANEL] Paquete .zip para subir a un hosting con cPanel (web estática + API PHP), verificado antes de entregarlo.
+"""[PACKAGE-CPANEL] Paquete .zip para subir a un hosting con cPanel o Plesk (Apache + PHP; web estática + API PHP), verificado antes de entregarlo.
+(El nombre del script es histórico: el paquete es el mismo para cualquier hosting con Apache y PHP 7.4+.)
 
   python3 -I scripts/package_cpanel.py --base=https://pruebas.grupotorivac.com --staging     # subdominio/dominio de PRUEBAS (noindex, sin robots)
   python3 -I scripts/package_cpanel.py --base=https://www.grupotorivac.com                    # producción
@@ -10,7 +11,7 @@ Opciones:  --out=entrega (carpeta de salida) · --keep (deja también la carpeta
 Qué hace:  1) compila la web con --base y --php-api (URLs limpias, .htaccess, robots, 404 por idioma, sitemap, llms.txt)
            2) copia backend-php/api (sin tests, sin config.php) a api/
            3) verifica: ficheros imprescindibles, nada prohibido (claves, tests, scripts de trabajo, precios), php -l, SEO/enlaces (solo producción)
-           4) comprime en entrega/torivac-cpanel-<host>[-pruebas]-<fecha>.zip y da el SHA-256
+           4) comprime en entrega/torivac-web-<host>[-pruebas]-<fecha>.zip y da el SHA-256
 Qué NO lleva nunca: precios (la web los lee del servidor), config.php (claves), tests, scripts de trabajo, documentación.
 Funciones: build_site · copy_api · verify · make_zip · main
 """
@@ -179,7 +180,7 @@ def make_zip(www: Path, dest: Path) -> str:
 
 def main():
     """Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip."""
-    ap = argparse.ArgumentParser(description="Paquete cPanel de Torivac")
+    ap = argparse.ArgumentParser(description="Paquete de Torivac para un hosting con cPanel o Plesk (Apache + PHP)")
     ap.add_argument("--base", required=True, help="URL pública con https, sin barra final salvo subcarpeta (https://pruebas.dominio.com)")
     ap.add_argument("--staging", action="store_true", help="entorno de pruebas: noindex y robots.txt cerrado")
     ap.add_argument("--out", default="entrega")
@@ -194,9 +195,9 @@ def main():
     if u.scheme not in ("https", "http") or not u.netloc:
         sys.exit("✗ --base debe ser una URL completa, p. ej. https://pruebas.grupotorivac.com")
     if u.scheme == "http" and not re.search(r"127\.0\.0\.1|localhost", u.netloc):
-        print("⚠ --base sin https: cPanel da el certificado gratis (AutoSSL); la web redirige a https solo si la URL empieza por https")
+        print("⚠ --base sin https: el hosting da el certificado gratis (AutoSSL en cPanel, Let's Encrypt en Plesk); la web redirige a https solo si la URL empieza por https")
     base = a.base.rstrip("/")
-    tmp = Path(tempfile.mkdtemp(prefix="tv-cpanel-"))
+    tmp = Path(tempfile.mkdtemp(prefix="tv-paquete-"))
     www = tmp / "www"
     try:
         print(f"1/4 compilando {base}{' (PRUEBAS)' if a.staging else ''} · aspecto {a.theme} …")
@@ -213,12 +214,12 @@ def main():
                 print("  ✗", e)
             sys.exit(1)
         host = re.sub(r"[^a-z0-9]+", "-", (u.netloc + u.path).lower()).strip("-")
-        dest = ROOT / a.out / f"torivac-cpanel-{host}{'-pruebas' if a.staging and 'prueba' not in host else ''}-{date.today():%Y%m%d}.zip"
+        dest = ROOT / a.out / f"torivac-web-{host}{'-pruebas' if a.staging and 'prueba' not in host else ''}-{date.today():%Y%m%d}.zip"
         print("4/4 comprimiendo …")
         sha = make_zip(www, dest)
         n = len(files(www))
         print(f"\n✓ {shown(dest)}  ·  {n} ficheros  ·  {dest.stat().st_size / 1048576:.1f} MB\n  SHA-256 {sha}")
-        print("\nSiguiente: docs/DESPLIEGUE-CPANEL.md (subir, crear api/config.php, primer usuario manager, cron de precios).")
+        print("\nSiguiente: docs/DESPLIEGUE-PLESK.md (Plesk) o docs/DESPLIEGUE-CPANEL.md (cPanel): subir, crear api/config.php, primer usuario manager, cron de precios.")
         if a.keep:
             keep = ROOT / a.out / dest.stem
             shutil.rmtree(keep, ignore_errors=True)

@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 753/753 funciones descritas (100 %) · 123/123 archivos con cabecera.
+**Cobertura**: 774/774 funciones descritas (100 %) · 124/124 archivos con cabecera.
 
 
 ## `site/`
@@ -88,7 +88,7 @@ Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[T
 
 ### `hosting.mjs`
 
-[HOSTING] Archivos de servidor para publicar en un hosting con cPanel (Apache o LiteSpeed): .htaccess, robots.txt de pruebas y 404 por idioma. Se generan solo con --base (producción o dominio de pruebas); la compilación de demostración (doble clic) no los necesita. htaccess({ base, staging, aliases, pdfRedirects, apiOrigin, phpApi, langs })  → texto del .htaccess de la raíz
+[HOSTING] Archivos de servidor para publicar en un hosting con cPanel o Plesk (Apache o LiteSpeed; en Plesk, con PHP servido por Apache): .htaccess, robots.txt de pruebas y 404 por idioma. Se generan solo con --base (producción o dominio de pruebas); la compilación de demostración (doble clic) no los necesita. htaccess({ base, staging, aliases, pdfRedirects, apiOrigin, phpApi, langs })  → texto del .htaccess de la raíz
 
 Secciones: `[HOSTING]`
 
@@ -607,16 +607,16 @@ Sesión 1 · Mapa de traducciones y lotes de trabajo (determinista).    python3 
 
 ### `package_cpanel.py`
 
-[PACKAGE-CPANEL] Paquete .zip para subir a un hosting con cPanel (web estática + API PHP), verificado antes de entregarlo.    python3 -I scripts/package_cpanel.py --base=https://pruebas.grupotorivac.com --staging     # subdominio/dominio de PRUEBAS (noindex, sin robots)
+[PACKAGE-CPANEL] Paquete .zip para subir a un hosting con cPanel o Plesk (Apache + PHP; web estática + API PHP), verificado antes de entregarlo. (El nombre del script es histórico: el paquete es el mismo para cualquier hosting con Apache y PHP 7.4+.)
 
-- `run` (l. 43) — ejecuta y devuelve (código, salida combinada)
-- `build_site` (l. 49) — compila la web de producción (la salida se cuenta línea a línea en la consola de build); `switch` None = el valor por defecto del compilador (sí en pruebas, no en producción)
-- `copy_api` (l. 57) — copia el API PHP sin pruebas, sin almacén de datos y sin la configuración real (config.php lleva claves y la crea quien despliega)
-- `shown` (l. 62) — ruta legible: relativa al proyecto si está dentro, absoluta si no
-- `files` (l. 70) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
-- `verify` (l. 75) — → (errores, avisos). Un error impide entregar el paquete.
-- `make_zip` (l. 168) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
-- `main` (l. 180) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
+- `run` (l. 44) — ejecuta y devuelve (código, salida combinada)
+- `build_site` (l. 50) — compila la web de producción (la salida se cuenta línea a línea en la consola de build); `switch` None = el valor por defecto del compilador (sí en pruebas, no en producción)
+- `copy_api` (l. 58) — copia el API PHP sin pruebas, sin almacén de datos y sin la configuración real (config.php lleva claves y la crea quien despliega)
+- `shown` (l. 63) — ruta legible: relativa al proyecto si está dentro, absoluta si no
+- `files` (l. 71) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
+- `verify` (l. 76) — → (errores, avisos). Un error impide entregar el paquete.
+- `make_zip` (l. 169) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
+- `main` (l. 181) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
 
 ### `pdf_jobs.py`
 
@@ -828,7 +828,7 @@ Secciones: `[QA-LIVE]` · `[DATA]` · `[SITE]` · `[BACKEND]` · `[BROWSER]`
 
 ### `qa-package.mjs`
 
-[QA-PACKAGE] El paquete de cPanel tal y como se sube: lo genera package_cpanel.py (con sus verificaciones), se sirve con php -S (URLs limpias, API PHP real con almacén en ficheros, Resend simulado) y se recorre con el navegador: precios que llegan del servidor (el paquete NO lleva precios), presupuesto, pedido, panel y seguridad del API.
+[QA-PACKAGE] El paquete del hosting (cPanel/Plesk) tal y como se sube: lo genera package_cpanel.py (con sus verificaciones), se sirve con php -S (URLs limpias, API PHP real con almacén en ficheros, Resend simulado) y se recorre con el navegador: precios que llegan del servidor (el paquete NO lleva precios), presupuesto, pedido, panel y seguridad del API.
 
 Secciones: `[QA-PACKAGE]` · `[PAQUETE]`
 
@@ -1218,11 +1218,11 @@ Secciones: `[XLSX]`
 
 ### `config.sample.php`
 
-CONFIGURACIÓN DEL API DE TORIVAC (hosting con cPanel). 1) Copia este fichero como config.php (en esta misma carpeta) y rellénalo. 2) config.php NO se sube a ningún repositorio: contiene claves. Permisos recomendados: 640.
+CONFIGURACIÓN DEL API DE TORIVAC (hosting con Apache y PHP: cPanel, Plesk…). 1) Copia este fichero como config.php (en esta misma carpeta) y rellénalo. 2) config.php NO se sube a ningún repositorio: contiene claves. Permisos recomendados: 640.
 
 ### `cron.php`
 
-[CRON] Sincroniza los precios desde la hoja de Drive y limpia lo caducado. cPanel → «Trabajos de Cron» → una vez al día (p. ej. 03:00): /usr/local/bin/php /home/CUENTA/public_html/api/cron.php
+[CRON] Sincroniza los precios desde la hoja de Drive y limpia lo caducado. cPanel → «Trabajos de Cron» → una vez al día (p. ej. 03:00):  /usr/local/bin/php /home/CUENTA/public_html/api/cron.php Plesk  → «Tareas programadas» → «Ejecutar un script PHP» → ruta  …/api/cron.php  (o «Obtener una URL» con cron_token)
 
 Secciones: `[CRON]`
 
@@ -1292,14 +1292,15 @@ Secciones: `[CONFIG]`
 
 ### `Diag.php`
 
-[DIAG] Autodiagnóstico del servidor para quien despliega en cPanel: versión de PHP, extensiones, carpeta de datos, configuración, correo, origen de precios, primer manager y última sincronización. Se ve de dos formas: php api/tools/check.php [--net]      por línea de comandos (--net prueba además la salida a Internet)
+[DIAG] Autodiagnóstico del servidor para quien despliega en un hosting con Apache y PHP (cPanel, Plesk…): versión de PHP, extensiones, carpeta de datos, configuración, correo, origen de precios, primer manager y última sincronización; y, si se mira por web, qué servidor es y qué IP ve del visitante. Se ve de dos formas: php api/tools/check.php [--net]      por línea de comandos (--net prueba además la salida a Internet)
 
 Secciones: `[DIAG]`
 
 - `c` (l. 16) — Una comprobación.
-- `insideWebRoot` (l. 19) — Dice si un directorio está dentro de la carpeta pública de la web (cualquiera podría pedir sus ficheros si el .htaccess falla).
-- `bytes` (l. 27) — Valor de php.ini con sufijo (8M, 512K, 1G) → bytes; 0 o -1 = sin límite → null.
-- `run` (l. 39) — Ejecuta todas las comprobaciones.
+- `insideWebRoot` (l. 22) — Dice si un directorio está dentro de la web (cualquiera podría pedir sus ficheros si el .htaccess no se respetara): bajo la carpeta que contiene api/ (la web)
+- `bytes` (l. 36) — Valor de php.ini con sufijo (8M, 512K, 1G) → bytes; 0 o -1 = sin límite → null.
+- `run` (l. 48) — Ejecuta todas las comprobaciones.
+- `web` (l. 114) — Comprobaciones que solo tienen sentido al mirar por web: qué servidor atiende (¿se aplica el .htaccess?), qué IP ve del visitante detrás de un proxy y si la
 
 ### `Http.php`
 
@@ -1373,20 +1374,25 @@ Secciones: `[PRICES]` · `[SHEETS]`
 
 ### `Request.php`
 
-[REQUEST] Petición entrante (método, ruta tras /api, cabeceras, JSON, IP) + respuesta JSON + CORS + límite de uso. Pensado para que las pruebas puedan construir peticiones sin servidor web (Request::fake).
+[REQUEST] Petición entrante (método, ruta tras /api, cabeceras, JSON, IP del visitante) + respuesta JSON + CORS + límite de uso. Pensado para que las pruebas puedan construir peticiones sin servidor web (Request::fake). [CLIENT-IP] La IP del visitante sale de REMOTE_ADDR; solo si quien conecta es un proxy de confianza (una red privada, la propia dirección del servidor, Cloudflare
 
-Secciones: `[REQUEST]` · `[CORS]` · `[RATE-LIMIT]`
+Secciones: `[REQUEST]` · `[CLIENT-IP]` · `[CORS]` · `[RATE-LIMIT]`
 
-- `fromGlobals` (l. 18) — construye la petición real a partir de $_SERVER; la ruta es lo que sigue a «/api»
-- `fake` (l. 39) — petición simulada para pruebas
-- `header` (l. 51) — Valor de una cabecera de la petición (nombre sin distinguir mayúsculas); cadena vacía si no existe.
-- `json` (l. 54) — cuerpo JSON como array (null si no es válido o supera el límite)
-- `bearer` (l. 62) — Token de la cabecera «Authorization: Bearer …», o null.
-- `__construct` (l. 76) — Respuesta con cuerpo JSON, código HTTP y cabeceras (por defecto JSON UTF-8 y sin caché).
-- `send` (l. 84) — Envía código, cabeceras y cuerpo JSON (sin cuerpo en 204 y 304).
-- `allowed` (l. 96) — Dice si un origen puede usar el API: el propio sitio, las peticiones sin Origin o los de allowed_origins.
-- `headers` (l. 111) — Cabeceras CORS para un origen permitido.
-- `hit` (l. 121) — @return array{allowed:bool,remaining:int,resetAt:int}
+- `fromGlobals` (l. 26) — construye la petición real a partir de $_SERVER; la ruta es lo que sigue a «/api»
+- `proxyList` (l. 48) — Proxies de confianza además de las redes privadas y Cloudflare: los de config `trusted_proxies` (lista o texto separado por comas) y la propia dirección
+- `normalizeIp` (l. 58) — Una IP escrita de cualquier forma (con corchetes, con puerto, IPv4 dentro de IPv6…) en su forma normal; null si no es una IP.
+- `inNet` (l. 70) — True si la IP está dentro de la red `a.b.c.d/n` o `x::/n` (una IP suelta cuenta como red de una sola dirección).
+- `isTrustedProxy` (l. 88) — True si `$ip` es un proxy de confianza: red privada o local, Cloudflare o una de las redes extra de `trusted_proxies`.
+- `clientIp` (l. 102) — IP del visitante. Una conexión directa NO se puede falsear con cabeceras (se usa REMOTE_ADDR tal cual). Solo si quien conecta es un proxy de confianza
+- `fake` (l. 120) — petición simulada para pruebas
+- `header` (l. 132) — Valor de una cabecera de la petición (nombre sin distinguir mayúsculas); cadena vacía si no existe.
+- `json` (l. 135) — cuerpo JSON como array (null si no es válido o supera el límite)
+- `bearer` (l. 143) — Token de la cabecera «Authorization: Bearer …», o null.
+- `__construct` (l. 157) — Respuesta con cuerpo JSON, código HTTP y cabeceras (por defecto JSON UTF-8 y sin caché).
+- `send` (l. 165) — Envía código, cabeceras y cuerpo JSON (sin cuerpo en 204 y 304).
+- `allowed` (l. 177) — Dice si un origen puede usar el API: el propio sitio, las peticiones sin Origin o los de allowed_origins.
+- `headers` (l. 192) — Cabeceras CORS para un origen permitido.
+- `hit` (l. 202) — @return array{allowed:bool,remaining:int,resetAt:int}
 
 ### `Router.php`
 
@@ -1400,19 +1406,24 @@ Secciones: `[ROUTER]`
 
 ### `Store.php`
 
-[STORE] Almacén clave-valor en ficheros JSON (sustituye a Cloudflare KV en un hosting con cPanel). claves: user:<email> · order:<nº> · prices:current · prices:meta · prices:history:<ts> · rl:<cubo>:<id> · counter:<yyyymmdd> · proposals:state Escritura atómica (fichero temporal + rename) y bloqueo flock para los contadores. Caducidad opcional (TTL) comprobada al leer.
+[STORE] Almacén clave-valor en ficheros JSON (sustituye a Cloudflare KV en un hosting con Apache y PHP: cPanel, Plesk…). claves: user:<email> · order:<nº> · prices:current · prices:meta · prices:history:<ts> · rl:<cubo>:<id> · counter:<yyyymmdd> · proposals:state Escritura atómica (fichero temporal + rename) y bloqueo flock para los contadores. Caducidad opcional (TTL) comprobada al leer.
 
 Secciones: `[STORE]`
 
-- `init` (l. 15) — crea las carpetas y protege el directorio
-- `root` (l. 30) — Carpeta de datos en uso.
-- `file` (l. 33) — Fichero JSON que guarda una clave (la clave se codifica para que sea un nombre de fichero válido).
-- `get` (l. 36) — valor guardado (array/escalar) o null si no existe o caducó
-- `put` (l. 49) — Guarda un valor de forma atómica (fichero temporal + rename) con caducidad opcional en segundos.
-- `delete` (l. 61) — Borra una clave.
-- `keys` (l. 64) — claves que empiezan por un prefijo (sin las caducadas)
-- `locked` (l. 76) — ejecuta $fn con un bloqueo exclusivo (contador de pedidos, límites de uso)
-- `purge` (l. 85) — borra lo caducado (lo llama el cron)
+- `candidates` (l. 21) — Carpetas donde guardar los datos cuando `storage_dir` está vacío, de mejor a peor:
+- `bootstrap` (l. 37) — Prepara el almacén y devuelve su carpeta. Orden: 1) `$configured` (config storage_dir) si se puede usar; 2) una de `candidates()` que YA sea un almacén
+- `usable` (l. 52) — Dice si una carpeta sirve de almacén: existe (o se puede crear con sus subcarpetas) y se puede escribir en ella.
+- `initialized` (l. 59) — Dice si una carpeta ya es un almacén de este API (tiene su subcarpeta kv).
+- `note` (l. 62) — Aviso de bootstrap(): se usó una carpeta distinta de la configurada ('' si todo normal).
+- `init` (l. 65) — crea las carpetas y protege el directorio
+- `root` (l. 80) — Carpeta de datos en uso.
+- `file` (l. 83) — Fichero JSON que guarda una clave (la clave se codifica para que sea un nombre de fichero válido).
+- `get` (l. 86) — valor guardado (array/escalar) o null si no existe o caducó
+- `put` (l. 99) — Guarda un valor de forma atómica (fichero temporal + rename) con caducidad opcional en segundos.
+- `delete` (l. 111) — Borra una clave.
+- `keys` (l. 114) — claves que empiezan por un prefijo (sin las caducadas)
+- `locked` (l. 126) — ejecuta $fn con un bloqueo exclusivo (contador de pedidos, límites de uso)
+- `purge` (l. 135) — borra lo caducado (lo llama el cron)
 
 ### `Util.php`
 
@@ -1460,7 +1471,7 @@ Autocarga mínima de las clases Torivac\* (cada una vive en lib/; las auxiliares
 
 ### `check.php`
 
-[CHECK] Comprobación de la instalación desde la línea de comandos (Terminal de cPanel o SSH): php api/tools/check.php           revisa PHP, extensiones, carpeta de datos, config.php, correo, precios y primer manager php api/tools/check.php --net     además prueba la salida a Internet (Resend, Google, Anthropic)
+[CHECK] Comprobación de la instalación desde la línea de comandos (Terminal de cPanel, SSH o, en Plesk, una tarea programada de «Ejecutar un comando»): php api/tools/check.php           revisa PHP, extensiones, carpeta de datos, config.php, correo, precios y primer manager php api/tools/check.php --net     además prueba la salida a Internet (Resend, Google, Anthropic)
 
 Secciones: `[CHECK]`
 
@@ -1497,6 +1508,21 @@ Pruebas del API en PHP: equivalen a workers/api/test/api.test.js + ai.test.js (s
 - `test_http_client_follows_redirects_without_leaking_credentials` (l. 351) — Cliente HTTP real contra un servidor local: sigue redirecciones de los GET a mano, no manda la credencial a otro servidor y corta los bucles.
 - `test_email_status_is_never_overstated` (l. 384) — El correo es parte del resultado: el pedido se guarda siempre y dice si el aviso salió; el contacto falla si el mensaje no pudo enviarse.
 - `test_diag_warns_about_orders_without_email` (l. 409) — El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo.
+
+### `HostingTest.php`
+
+Pruebas de lo que cambia de un hosting a otro (cPanel, Plesk…): la carpeta de datos que se elige, la IP real del visitante detrás de un proxy (el nginx de Plesk, Cloudflare) y las comprobaciones del diagnóstico que dependen del servidor. Sin red ni servidor web: todo con rutas temporales y $_SERVER simulado.
+
+- `hosting_tmpdir` (l. 16) — Carpeta temporal nueva y vacía para una prueba.
+- `hosting_rmtree` (l. 24) — Borra una carpeta temporal con todo lo que lleva dentro.
+- `hosting_status` (l. 32) — Estado de cada comprobación del diagnóstico por su id.
+- `test_client_ip_behind_proxies` (l. 40) — IP del visitante: sin proxy no se puede falsear con cabeceras; detrás de un proxy de confianza (nginx de Plesk, Cloudflare) se lee X-Forwarded-For de derecha a izquierda.
+- `test_ip_in_net` (l. 62) — Pertenencia a una red: límites, máscaras que no son múltiplo de 8, IPv6, familias distintas, IP suelta y /0.
+- `test_proxy_list` (l. 72) — Proxies de confianza extra: los de config (lista o texto con comas) más la dirección del propio servidor.
+- `test_request_from_globals_ip` (l. 83) — Petición real (a partir de $_SERVER): nginx de Plesk que llama a Apache por la IP pública de la máquina, y conexión directa con cabeceras falsas.
+- `test_store_picks_a_usable_data_folder` (l. 100) — Carpeta de datos: la configurada, un almacén que ya tiene datos, la primera que se pueda crear, o error claro; un fichero en medio hace de «raíz de solo lectura» (Plesk).
+- `test_diag_reports_data_folder_deviation` (l. 134) — El diagnóstico avisa cuando la carpeta de datos configurada no sirvió y se usó otra; por línea de comandos sabe si la carpeta cae dentro de la web.
+- `test_diag_web_checks` (l. 155) — Comprobaciones de servidor del diagnóstico: nginx sin Apache ignora el .htaccess; la IP del visitante tras un proxy; HTTPS.
 
 ### `PriceSheetTest.php`
 

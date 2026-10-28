@@ -1,14 +1,18 @@
 <?php
 /**
- * CONFIGURACIÓN DEL API DE TORIVAC (hosting con cPanel).
+ * CONFIGURACIÓN DEL API DE TORIVAC (hosting con Apache y PHP: cPanel, Plesk…).
  *   1) Copia este fichero como config.php (en esta misma carpeta) y rellénalo.
  *   2) config.php NO se sube a ningún repositorio: contiene claves. Permisos recomendados: 640.
  * Cualquier valor puede darse también como variable de entorno TORIVAC_<CLAVE> (p. ej. TORIVAC_SESSION_SECRET, TORIVAC_MAIL_RESEND_API_KEY).
  */
 return [
-    // Dónde se guardan pedidos, usuarios y precios (ficheros JSON). Por defecto: «torivac-datos» en la carpeta personal de la cuenta de cPanel
-    // (fuera de la web). Se crea sola. Puedes poner otra ruta, p. ej. '/home/CUENTA/torivac-datos'. Dentro de la web también funciona (se protege con .htaccess), pero no es lo ideal.
-    'storage_dir' => (function_exists('posix_getpwuid') && function_exists('posix_geteuid') && ($pw = @posix_getpwuid(posix_geteuid())) && !empty($pw['dir']) ? $pw['dir'] : __DIR__ . '/..') . '/torivac-datos',
+    // Dónde se guardan pedidos, usuarios y precios (ficheros JSON). Déjalo VACÍO y se elige solo:
+    //   «torivac-datos» en la carpeta personal de la cuenta (cPanel: /home/CUENTA/torivac-datos, FUERA de la web) y, si ahí no se puede crear (Plesk: la raíz de la
+    //   cuenta suele ser de solo lectura para la web), api/storage, dentro de la web y protegida con .htaccess. Una carpeta que ya tiene datos no se abandona sola.
+    //   El diagnóstico dice cuál se usa y avisa si cae dentro de la web.
+    // Si prefieres una ruta concreta, escríbela (p. ej. '/home/CUENTA/torivac-datos' o, en Plesk, una carpeta fuera de la web que haya creado tu usuario o el
+    //   administrador: '/var/www/vhosts/DOMINIO/torivac-datos'); si no se puede usar, se avisa y se elige otra. Para cambiar de carpeta con datos ya guardados, copia antes su contenido.
+    'storage_dir' => '',
 
     // Clave para firmar las sesiones: ≥ 32 caracteres aleatorios (https://www.random.org/strings/). Cambiarla cierra todas las sesiones.
     'session_secret' => 'CAMBIA-ESTO-por-una-cadena-aleatoria-de-32-o-mas-caracteres',
@@ -18,6 +22,10 @@ return [
 
     // Otros orígenes que pueden llamar al API desde un navegador (la propia web siempre puede). Normalmente vacío.
     'allowed_origins' => [],
+
+    // IP real del visitante detrás de un proxy: se lee de X-Forwarded-For SOLO si quien conecta es la propia máquina, una red privada (el nginx de Plesk) o
+    // Cloudflare; no hay que tocar nada. Añade aquí (IP o red, p. ej. '203.0.113.0/24') otro proxy tuyo con IP pública, si lo hubiera. Normalmente vacío.
+    'trusted_proxies' => [],
 
     // Quién recibe los pedidos y mensajes (confirmado por el cliente; info@ también para pruebas) y desde qué dirección se envían.
     'order_to' => ['info@grupotorivac.com', 'mzamora@torivac.com'],

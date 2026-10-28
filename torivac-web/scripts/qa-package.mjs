@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// [QA-PACKAGE] El paquete de cPanel tal y como se sube: lo genera package_cpanel.py (con sus verificaciones), se sirve con php -S
+// [QA-PACKAGE] El paquete del hosting (cPanel/Plesk) tal y como se sube: lo genera package_cpanel.py (con sus verificaciones), se sirve con php -S
 // (URLs limpias, API PHP real con almacén en ficheros, Resend simulado) y se recorre con el navegador:
 // precios que llegan del servidor (el paquete NO lleva precios), presupuesto, pedido, panel y seguridad del API.
 //   node scripts/qa-package.mjs
@@ -103,5 +103,5 @@ ok((await fetch(BASE + '/api/order', { method: 'POST', headers: { 'Content-Type'
 ok(!errs.length, 'sin errores de consola ni incumplimientos de la CSP del .htaccess' + (errs.length ? ': ' + errs.slice(0, 3).join(' | ') : ''));
 
 await browser.close(); await be.stop(); fs.rmSync(OUT, { recursive: true, force: true });
-console.log(fails ? `\n✗ ${fails} comprobaciones fallidas` : '\n✓ paquete cPanel: sin precios, precios del servidor, pedido, panel y API cerrado correctos');
+console.log(fails ? `\n✗ ${fails} comprobaciones fallidas` : '\n✓ paquete del hosting: sin precios, precios del servidor, pedido, panel y API cerrado correctos');
 process.exit(fails ? 1 : 0);

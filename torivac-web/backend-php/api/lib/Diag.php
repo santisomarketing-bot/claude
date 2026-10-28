@@ -1,7 +1,7 @@
 <?php
 /**
- * [DIAG] Autodiagnóstico del servidor para quien despliega en cPanel: versión de PHP, extensiones, carpeta de datos, configuración, correo,
- * origen de precios, primer manager y última sincronización. Se ve de dos formas:
+ * [DIAG] Autodiagnóstico del servidor para quien despliega en un hosting con Apache y PHP (cPanel, Plesk…): versión de PHP, extensiones, carpeta de datos, configuración, correo,
+ * origen de precios, primer manager y última sincronización; y, si se mira por web, qué servidor es y qué IP ve del visitante. Se ve de dos formas:
  *   php api/tools/check.php [--net]      por línea de comandos (--net prueba además la salida a Internet)
  *   GET /api/diag                        solo managers (el panel lo muestra en Ajustes)
  * Cada comprobación es ['id', 'status' => ok|warn|fail, 'msg']; «fail» impide que la web funcione, «warn» es algo a revisar.
@@ -15,12 +15,21 @@ final class Diag
     /** Una comprobación. */
     private static function c(string $id, string $status, string $msg): array { return ['id' => $id, 'status' => $status, 'msg' => $msg]; }
 
-    /** Dice si un directorio está dentro de la carpeta pública de la web (cualquiera podría pedir sus ficheros si el .htaccess falla). */
+    /**
+     * Dice si un directorio está dentro de la web (cualquiera podría pedir sus ficheros si el .htaccess no se respetara): bajo la carpeta que contiene api/ (la web)
+     * o bajo DOCUMENT_ROOT cuando se mira por web. Por línea de comandos no hay DOCUMENT_ROOT, y la primera comprobación basta.
+     */
     private static function insideWebRoot(string $dir): bool
     {
-        $root = isset($_SERVER['DOCUMENT_ROOT']) ? realpath((string) $_SERVER['DOCUMENT_ROOT']) : false;
         $real = realpath($dir);
-        return $root && $real && strpos($real . '/', rtrim($root, '/') . '/') === 0;
+        if (!$real) return false;
+        $roots = [dirname(__DIR__, 2)];
+        if (!empty($_SERVER['DOCUMENT_ROOT'])) $roots[] = (string) $_SERVER['DOCUMENT_ROOT'];
+        foreach ($roots as $r) {
+            $rr = realpath($r);
+            if ($rr && strpos($real . '/', rtrim($rr, '/') . '/') === 0) return true;
+        }
+        return false;
     }
 
     /** Valor de php.ini con sufijo (8M, 512K, 1G) → bytes; 0 o -1 = sin límite → null. */
@@ -36,26 +45,27 @@ final class Diag
      * Ejecuta todas las comprobaciones.
      * @return array{checks:array,fail:int,warn:int}
      */
-    public static function run(bool $net = false, ?string $configFile = null): array
+    public static function run(bool $net = false, ?string $configFile = null, ?Request $req = null): array
     {
         $k = [];
         $k[] = version_compare(PHP_VERSION, '7.4.0', '>=')
-            ? self::c('php', version_compare(PHP_VERSION, '8.1.0', '>=') ? 'ok' : 'warn', 'PHP ' . PHP_VERSION . (version_compare(PHP_VERSION, '8.1.0', '>=') ? '' : ' (funciona, pero se recomienda 8.1 o superior: MultiPHP Manager en cPanel)'))
-            : self::c('php', 'fail', 'PHP ' . PHP_VERSION . ': hace falta 7.4 o superior (MultiPHP Manager en cPanel)');
+            ? self::c('php', version_compare(PHP_VERSION, '8.1.0', '>=') ? 'ok' : 'warn', 'PHP ' . PHP_VERSION . (version_compare(PHP_VERSION, '8.1.0', '>=') ? '' : ' (funciona, pero se recomienda 8.1 o superior: cPanel → MultiPHP Manager · Plesk → Ajustes de PHP del dominio)'))
+            : self::c('php', 'fail', 'PHP ' . PHP_VERSION . ': hace falta 7.4 o superior (cPanel → MultiPHP Manager · Plesk → Ajustes de PHP del dominio)');
         $miss = array_values(array_filter(['curl', 'mbstring', 'openssl', 'json', 'zlib'], function ($e) { return !extension_loaded($e); }));
-        $k[] = $miss ? self::c('extensiones', 'fail', 'Faltan extensiones de PHP: ' . implode(', ', $miss) . ' (cPanel → Seleccionar versión de PHP → Extensiones)') : self::c('extensiones', 'ok', 'Extensiones curl, mbstring, openssl, json y zlib activas');
+        $k[] = $miss ? self::c('extensiones', 'fail', 'Faltan extensiones de PHP: ' . implode(', ', $miss) . ' (cPanel → Seleccionar versión de PHP → Extensiones · Plesk: las instala quien administra el servidor)') : self::c('extensiones', 'ok', 'Extensiones curl, mbstring, openssl, json y zlib activas');
         $pm = self::bytes((string) ini_get('post_max_size'));
         $k[] = ($pm !== null && $pm < 8 * 1048576)
-            ? self::c('subida', 'warn', 'post_max_size es ' . ini_get('post_max_size') . ': un presupuesto con un PDF grande podría rechazarse; se recomienda 8M o más (cPanel → MultiPHP INI Editor)')
+            ? self::c('subida', 'warn', 'post_max_size es ' . ini_get('post_max_size') . ': un presupuesto con un PDF grande podría rechazarse; se recomienda 8M o más (cPanel → MultiPHP INI Editor · Plesk → Ajustes de PHP → post_max_size)')
             : self::c('subida', 'ok', 'post_max_size ' . (ini_get('post_max_size') ?: 'sin límite') . ': caben los PDF de los presupuestos');
         $cfgFile = $configFile ?? (dirname(__DIR__) . '/config.php');
         $k[] = is_file($cfgFile) ? self::c('config', 'ok', 'api/config.php existe') : self::c('config', 'fail', 'No existe api/config.php: copia api/config.sample.php como config.php y rellénalo');
         $dir = Store::root();                                                  // la carpeta que se está usando de verdad (storage_dir o, si falta, api/storage)
         $probe = $dir !== '' ? $dir . '/.escritura-' . bin2hex(random_bytes(3)) : '';
-        if ($dir === '' || !is_dir($dir) || @file_put_contents($probe, 'x') === false) $k[] = self::c('datos', 'fail', 'No puedo escribir en la carpeta de datos «' . $dir . '» (storage_dir): créala y dale permisos de escritura');
+        if ($dir === '' || !is_dir($dir) || @file_put_contents($probe, 'x') === false) $k[] = self::c('datos', 'fail', 'No puedo escribir en la carpeta de datos «' . $dir . '»: créala y dale permiso de escritura para el usuario de la web, o escribe en storage_dir otra carpeta que sí lo permita');
         else {
             @unlink($probe);
-            $k[] = self::insideWebRoot($dir) ? self::c('datos', 'warn', 'La carpeta de datos está dentro de la web (protegida con .htaccess): lo ideal es moverla fuera de public_html y cambiar storage_dir') : self::c('datos', 'ok', 'Carpeta de datos fuera de la web y con permiso de escritura');
+            $k[] = self::insideWebRoot($dir) ? self::c('datos', 'warn', 'La carpeta de datos «' . $dir . '» está dentro de la web (protegida con .htaccess): lo ideal es una carpeta fuera de la carpeta pública y su ruta en storage_dir (cPanel: /home/CUENTA/torivac-datos · Plesk: la crea quien administra el servidor, ver la guía de Plesk). Comprueba en el navegador que sus ficheros no se abren (p. ej. /api/storage/index.html debe dar «Prohibido»)') : self::c('datos', 'ok', 'Carpeta de datos fuera de la web y con permiso de escritura: ' . $dir);
+            if (Store::note() !== '') $k[] = self::c('datos_desvio', 'warn', Store::note() . ': corrige storage_dir en config.php (o déjalo vacío para que se elija sola)');
         }
         $sec = (string) Config::get('session_secret', '');
         $k[] = (strlen($sec) < 32 || strpos($sec, self::SAMPLE_SECRET) !== false) ? self::c('secreto', 'fail', 'session_secret debe ser una cadena aleatoria de 32 o más caracteres (no la del ejemplo)') : self::c('secreto', 'ok', 'session_secret definido (' . strlen($sec) . ' caracteres)');
@@ -84,10 +94,7 @@ final class Diag
         $managers = array_filter(Users::all(), function ($u) { return $u['role'] === 'manager'; });
         $k[] = $managers ? self::c('manager', 'ok', count($managers) . ' manager(s) creado(s)') : self::c('manager', 'fail', 'No hay ningún manager: crea el primero con  php api/tools/create-user.php correo "Nombre" manager "contraseña"');
         $k[] = is_file(dirname(__DIR__) . '/generated/catalog.json') ? self::c('catalogo', 'ok', 'Catálogo de referencias presente') : self::c('catalogo', 'fail', 'Falta api/generated/catalog.json (se genera al compilar la web)');
-        if (PHP_SAPI !== 'cli') {
-            $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
-            $k[] = $https ? self::c('https', 'ok', 'La web se sirve por HTTPS') : self::c('https', 'warn', 'Esta petición no llegó por HTTPS: activa AutoSSL en cPanel (Seguridad → SSL/TLS Status)');
-        }
+        if (PHP_SAPI !== 'cli') $k = array_merge($k, self::web($req, $_SERVER));
         if ($net) {
             foreach (['https://api.resend.com' => 'Resend', 'https://oauth2.googleapis.com' => 'Google', 'https://api.anthropic.com' => 'Anthropic'] as $url => $name) {
                 try { [$st] = Http::request('GET', $url, [], null, 8); } catch (\Throwable $e) { $st = 0; }
@@ -97,5 +104,28 @@ final class Diag
         $fail = count(array_filter($k, function ($x) { return $x['status'] === 'fail'; }));
         $warn = count(array_filter($k, function ($x) { return $x['status'] === 'warn'; }));
         return ['checks' => $k, 'fail' => $fail, 'warn' => $warn];
+    }
+
+    /**
+     * Comprobaciones que solo tienen sentido al mirar por web: qué servidor atiende (¿se aplica el .htaccess?), qué IP ve del visitante detrás de un proxy y si la
+     * petición llegó por HTTPS. `$server` es $_SERVER (en las pruebas, uno simulado); `$req` es la petición, para comparar su IP con la de la conexión.
+     * @return array<int,array{id:string,status:string,msg:string}>
+     */
+    public static function web(?Request $req, array $server): array
+    {
+        $k = [];
+        $sw = (string) ($server['SERVER_SOFTWARE'] ?? '');
+        if ($sw !== '') $k[] = (stripos($sw, 'nginx') !== false && !preg_match('/apache|litespeed/i', $sw))
+            ? self::c('servidor', 'warn', 'El servidor web es «' . $sw . '», sin Apache: el .htaccess no se aplica (URLs limpias, cabeceras de seguridad, redirecciones y la ruta /api no funcionarán). En Plesk: Dominios → tu dominio → Ajustes de PHP → «Ejecutar PHP como: aplicación FPM servida por Apache» (ver la guía de Plesk)')
+            : self::c('servidor', 'ok', 'Servidor web: ' . $sw);
+        $peer = Request::normalizeIp((string) ($server['REMOTE_ADDR'] ?? ''));
+        if ($req !== null && $peer !== null) {
+            if ($req->ip !== $peer) $k[] = self::c('ip_visitante', 'ok', 'Hay un proxy delante (nginx, Cloudflare…): la IP del visitante (' . $req->ip . ') se lee de sus cabeceras y los límites por IP funcionan por visitante');
+            elseif (Request::isTrustedProxy($peer, Request::proxyList($server))) $k[] = self::c('ip_visitante', 'warn', 'Todas las visitas llegan con la IP interna ' . $peer . ': hay un proxy delante que no pasa la IP real, así que los límites por IP (pedidos, mensajes, intentos de acceso) se compartirían entre todos los visitantes. Hace falta que el proxy envíe X-Forwarded-For (el nginx de Plesk lo hace por defecto; si sale este aviso, mira la guía de Plesk)');
+            else $k[] = self::c('ip_visitante', 'ok', 'El servidor ve la IP real del visitante (' . $req->ip . '): los límites por IP funcionan por visitante');
+        }
+        $https = (!empty($server['HTTPS']) && $server['HTTPS'] !== 'off') || (($server['HTTP_X_FORWARDED_PROTO'] ?? '') === 'https');
+        $k[] = $https ? self::c('https', 'ok', 'La web se sirve por HTTPS') : self::c('https', 'warn', 'Esta petición no llegó por HTTPS: activa el certificado gratuito del hosting (cPanel → SSL/TLS Status → AutoSSL · Plesk → Certificados SSL/TLS → Let\'s Encrypt)');
+        return $k;
     }
 }

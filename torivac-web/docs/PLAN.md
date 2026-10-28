@@ -37,6 +37,7 @@ Estado: ✅ hecha y probada · 🟡 hecha en lo que no depende de terceros (se i
 | 17 | Despliegue en cPanel | Paquete `.zip` verificado, `.htaccess`, 404, noindex de pruebas, API PHP, CI | `qa-package.mjs` y `DESPLIEGUE-CPANEL.md` | ✅ (falta solo la primera subida a tu hosting) |
 | 18 | Precios reales desde Drive | Formatos de hoja reales, decimales, referencias nuevas, lectura del `.xlsx` | `qa-tarifa.mjs` (Worker y PHP) | ✅ |
 | 19 | Identidad visual «Ficha técnica» + aspecto Clásico | Aspecto nuevo por defecto (papel, tinta, cobre, Archivo extendida + Chivo Mono) y el actual como segunda opción, con selector; banderas de compilación; documentación | `qa-theme.mjs`, `qa-ux` y `qa-a11y` con los dos aspectos, [`DISENO-TEMAS.md`](DISENO-TEMAS.md) | ✅ (falta que Torivac elija cuál se publica) |
+| 20 | Hosting con Plesk (pruebas) y cPanel (producción) | Elección segura de la carpeta de datos, IP real del visitante tras el nginx de Plesk (y sin poder falsearla), diagnóstico por servidor, guía [`DESPLIEGUE-PLESK.md`](DESPLIEGUE-PLESK.md) con el paso a cPanel y paquete con nombre neutro | `php tests/run.php` (`HostingTest.php`), `qa-live` / `qa-admin-live` / `qa-tarifa` con `--php`, `qa-package.mjs` | ✅ (falta la primera subida a tu Plesk) |
 
 Cada sesión termina con commit + push a la rama de trabajo, para no perder nada si el entorno se recicla.
 
@@ -59,7 +60,7 @@ accesibilidad AA, `alt` obligatorio, todo dato debe existir en el esquema.
 ## Puntos que había que confirmar (resueltos)
 
 1. **Correos de destino del pedido:** `info@grupotorivac.com` y `mzamora@torivac.com` — **confirmado** (info@ también para las pruebas).
-2. **Hosting:** un **hosting con cPanel** (distinto del actual); por eso el API existe también en PHP. El Worker de Cloudflare queda como alternativa.
+2. **Hosting:** las pruebas van a un subdominio de **Plesk** (`torivac.santisomarketing.com`) y la producción irá a un **hosting con cPanel** (distinto del actual); por eso el API existe también en PHP y el mismo paquete vale para los dos. El Worker de Cloudflare queda como alternativa.
 3. **Qué hacer con la web actual:** **no se toca**. Todo se prueba en un subdominio de pruebas (o con el demo); el cambio de DNS es el último paso.
 4. **Hoja de precios:** un **Excel existente en tu Drive** («tarifa trafos» y «Torivac Precios»); se lee tal cual (`PRECIOS-DRIVE.md`).
 

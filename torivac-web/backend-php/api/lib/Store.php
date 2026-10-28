@@ -1,22 +1,72 @@
 <?php
 /**
- * [STORE] Almacén clave-valor en ficheros JSON (sustituye a Cloudflare KV en un hosting con cPanel).
+ * [STORE] Almacén clave-valor en ficheros JSON (sustituye a Cloudflare KV en un hosting con Apache y PHP: cPanel, Plesk…).
  *   claves: user:<email> · order:<nº> · prices:current · prices:meta · prices:history:<ts> · rl:<cubo>:<id> · counter:<yyyymmdd> · proposals:state
  * Escritura atómica (fichero temporal + rename) y bloqueo flock para los contadores. Caducidad opcional (TTL) comprobada al leer.
- * Seguridad: el directorio lleva .htaccess «Require all denied»; lo ideal es ponerlo FUERA de public_html (config storage_dir).
+ * Seguridad: el directorio lleva .htaccess «Require all denied»; lo ideal es ponerlo FUERA de la web (config storage_dir; vacío = automático, ver bootstrap()).
  */
 namespace Torivac;
 
 final class Store
 {
     private static $root = '';
+    private static $note = '';
+
+    /**
+     * Carpetas donde guardar los datos cuando `storage_dir` está vacío, de mejor a peor:
+     *   1) «torivac-datos» en la carpeta personal de la cuenta (cPanel: /home/CUENTA/torivac-datos): FUERA de la web, sin riesgo;
+     *   2) api/storage, dentro de la web y protegida con .htaccess: funciona en cualquier hosting. En Plesk es lo que se usa salvo que quien administra el servidor
+     *      cree «torivac-datos» en la raíz de la cuenta (/var/www/vhosts/DOMINIO), que el usuario de la web normalmente no puede escribir.
+     */
+    public static function candidates(?string $home = null, ?string $apiDir = null): array
+    {
+        if ($home === null) {
+            $pw = function_exists('posix_getpwuid') && function_exists('posix_geteuid') ? @posix_getpwuid(posix_geteuid()) : false;
+            $home = is_array($pw) && !empty($pw['dir']) ? (string) $pw['dir'] : (string) getenv('HOME');
+        }
+        $home = rtrim($home, '/\\');
+        return array_merge($home !== '' ? [$home . '/torivac-datos'] : [], [rtrim($apiDir ?? dirname(__DIR__), '/\\') . '/storage']);
+    }
+
+    /**
+     * Prepara el almacén y devuelve su carpeta. Orden: 1) `$configured` (config storage_dir) si se puede usar; 2) una de `candidates()` que YA sea un almacén
+     * (así los datos nunca se parten en dos si luego se crea una carpeta mejor: para moverlos hay que copiarlos y escribir storage_dir); 3) la primera de
+     * `candidates()` que se pueda crear y escribir; 4) si nada se puede escribir, la primera que ya tenga datos (se lee y el diagnóstico avisa).
+     * Si hubo que desviarse de `$configured`, `note()` lo cuenta. Lanza RuntimeException si no hay ninguna carpeta posible.
+     */
+    public static function bootstrap(string $configured = '', ?array $candidates = null): string
+    {
+        $cands = $candidates ?? self::candidates();
+        $pick = null;
+        if ($configured !== '' && self::usable($configured)) $pick = $configured;
+        if ($pick === null) foreach ($cands as $d) if (self::initialized($d) && self::usable($d)) { $pick = $d; break; }
+        if ($pick === null) foreach ($cands as $d) if (self::usable($d)) { $pick = $d; break; }
+        if ($pick === null) foreach (array_merge($configured !== '' ? [$configured] : [], $cands) as $d) if (self::initialized($d)) { $pick = $d; break; }
+        if ($pick === null) throw new \RuntimeException('No hay ninguna carpeta de datos que se pueda crear y escribir');
+        self::init($pick);
+        self::$note = ($configured !== '' && $pick !== $configured) ? 'storage_dir «' . $configured . '» no se puede usar (no existe y no se puede crear, o no se puede escribir): se usa «' . self::$root . '»' : '';
+        return self::$root;
+    }
+
+    /** Dice si una carpeta sirve de almacén: existe (o se puede crear con sus subcarpetas) y se puede escribir en ella. */
+    private static function usable(string $dir): bool
+    {
+        try { self::init($dir); } catch (\RuntimeException $e) { return false; }
+        return @is_writable(self::$root);
+    }
+
+    /** Dice si una carpeta ya es un almacén de este API (tiene su subcarpeta kv). */
+    private static function initialized(string $dir): bool { return @is_dir(rtrim($dir, '/\\') . '/kv'); }
+
+    /** Aviso de bootstrap(): se usó una carpeta distinta de la configurada ('' si todo normal). */
+    public static function note(): string { return self::$note; }
 
     /** crea las carpetas y protege el directorio */
     public static function init(string $dir): void
     {
         self::$root = rtrim($dir, '/\\');
         foreach (['', '/kv', '/locks', '/outbox'] as $d) {
-            if (!is_dir(self::$root . $d) && !@mkdir(self::$root . $d, 0775, true) && !is_dir(self::$root . $d)) {
+            if (!@is_dir(self::$root . $d) && !@mkdir(self::$root . $d, 0775, true) && !@is_dir(self::$root . $d)) {
                 throw new \RuntimeException('No puedo crear el directorio de datos: ' . self::$root . $d);
             }
         }

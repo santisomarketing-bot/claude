@@ -1,10 +1,10 @@
-# Despliegue de torivac-web en un hosting con cPanel. COPIAR a .github/workflows/deploy-cpanel.yml (GitHub solo lee workflows de la raíz del repositorio).
+# Despliegue de torivac-web en un hosting con Apache y PHP (cPanel, Plesk…). COPIAR a .github/workflows/deploy-cpanel.yml (GitHub solo lee workflows de la raíz del repositorio).
 # Genera el paquete con las mismas verificaciones que en local (scripts/package_cpanel.py), lo deja como artefacto descargable y,
 # si se pide, lo sube por SSH con rsync (con simulacro previo). NUNCA sube ni toca api/config.php ni la carpeta de datos: viven solo en el servidor.
 #
 # Variables del repositorio (Settings → Secrets and variables → Actions → Variables):
 #   SITE_URL     URL pública del entorno, p. ej. https://pruebas.grupotorivac.com
-#   SSH_HOST · SSH_PORT (22 por defecto) · REMOTE_DIR    solo para subir: p. ej. /home/CUENTA/public_html/pruebas
+#   SSH_HOST · SSH_PORT (22 por defecto) · REMOTE_DIR    solo para subir: p. ej. /home/CUENTA/public_html/pruebas (cPanel) o /var/www/vhosts/DOMINIO/torivac.dominio.com (Plesk)
 # Secretos (los mismos nombres en cada «environment»: pruebas y produccion):
 #   SSH_USER · SSH_KEY (clave privada con acceso a ese usuario del hosting)
 # El Worker de Cloudflare (alternativa al API PHP) se despliega aparte: ver workers/api/README.md.
@@ -73,7 +73,7 @@ jobs:
           case "$REMOTE_DIR" in /|~|/home|/home/|'') echo "REMOTE_DIR no es una carpeta de sitio"; exit 1;; esac
           install -m 700 -d ~/.ssh && printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "$SSH_PORT" "$SSH_HOST" >> ~/.ssh/known_hosts
-          SRC="$(ls -d entrega/torivac-cpanel-*/ | head -1)"
+          SRC="$(ls -d entrega/torivac-web-*/ | head -1)"
           FLAGS="-az --human-readable --itemize-changes --exclude=/api/config.php --exclude=/api/storage/ --exclude=/.well-known/ --exclude=/cgi-bin/"
           ${{ inputs.limpiar && 'FLAGS="$FLAGS --delete"' || ':' }}
           ${{ inputs.simulacro && 'FLAGS="$FLAGS -n"' || ':' }}

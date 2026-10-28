@@ -3,7 +3,7 @@
 La web **no lleva precios dentro**: los lee del servidor (`GET /api/prices`), y el servidor los toma de **una hoja de Drive**. Así se cambian sin recompilar ni volver a subir la web.
 
 ```
-Excel / Hoja de Google en Drive ──► servidor (api de cPanel o Worker) ──► web pública y panel
+Excel / Hoja de Google en Drive ──► servidor (API PHP de cPanel/Plesk o Worker) ──► web pública y panel
         ▲                              ▲  cron diario 03:00 UTC (24 h)
         │                              ▲  botón «Actualizar ahora» (panel → Precios)
         └── o subida a mano del .xlsx/.csv en el panel (con vista previa)
@@ -79,11 +79,11 @@ El panel muestra el motivo y, si es intencionado (p. ej. la primera carga de una
 
 - **A y B leen el `.xlsx` tal cual está en Drive; no hace falta convertirlo a hoja de Google.** B también lee una hoja de Google directamente. Con A, si tu archivo *es* una hoja de Google, usa su URL de exportación: `https://docs.google.com/spreadsheets/d/ID/export?format=xlsx`. Si el libro tiene varias hojas, se usa la primera visible con columnas de referencia y precio; para fijarla: `sheet_name` (`PRICE_SHEET_NAME` en el Worker).
 - Si editas el Excel con *Drive para escritorio* o lo reemplazas con *Administrar versiones*, el **ID no cambia** y el servidor lo seguirá leyendo. Si lo guardas como «copia» o «Guardar como hoja de Google», el ID es **otro**: hay que actualizar la configuración.
-- Dónde se escribe cada ajuste: `api/config.php` (cPanel, sección `prices`) o variables del Worker (`PRICE_XLSX_URL`, `PRICE_SHEET_ID` + secreto `GOOGLE_SERVICE_ACCOUNT`, `PRICE_SHEET_NAME`, `PRICE_CSV_URL`). Ver [`DESPLIEGUE-CPANEL.md`](DESPLIEGUE-CPANEL.md).
+- Dónde se escribe cada ajuste: `api/config.php` (cPanel o Plesk, sección `prices`) o variables del Worker (`PRICE_XLSX_URL`, `PRICE_SHEET_ID` + secreto `GOOGLE_SERVICE_ACCOUNT`, `PRICE_SHEET_NAME`, `PRICE_CSV_URL`). Ver [`DESPLIEGUE-CPANEL.md`](DESPLIEGUE-CPANEL.md).
 
 ## 8. Actualización diaria y manual
 
-- **Diaria (24 h)**: cron de cPanel `php api/cron.php` a las 03:00 (o el cron del Worker). Si el hosting no deja programar por línea de comandos: URL `https://dominio/api/cron?token=…` con `cron_token`.
+- **Diaria (24 h)**: cron de cPanel (o *Tareas programadas* de Plesk) `php api/cron.php` a las 03:00 (o el cron del Worker). Si el hosting no deja programar por línea de comandos: URL `https://dominio/api/cron?token=…` con `cron_token`.
 - **Manual**: Panel → Precios → **Actualizar ahora** (vuelve a leer Drive) o subir un archivo.
 - **Por instrucción**: Panel → Precios → «Pedile cambios a la IA» (p. ej. «sube un 3 % las resistencias»): la IA **propone**, se revisa la vista previa y solo entonces se aplica; los cambios muy grandes piden confirmación.
 

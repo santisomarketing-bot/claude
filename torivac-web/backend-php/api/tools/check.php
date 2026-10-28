@@ -1,6 +1,6 @@
 <?php
 /**
- * [CHECK] Comprobación de la instalación desde la línea de comandos (Terminal de cPanel o SSH):
+ * [CHECK] Comprobación de la instalación desde la línea de comandos (Terminal de cPanel, SSH o, en Plesk, una tarea programada de «Ejecutar un comando»):
  *   php api/tools/check.php           revisa PHP, extensiones, carpeta de datos, config.php, correo, precios y primer manager
  *   php api/tools/check.php --net     además prueba la salida a Internet (Resend, Google, Anthropic)
  * Sale con código 1 si hay algo que impide funcionar (✗); los avisos (⚠) son cosas a revisar.
@@ -13,7 +13,7 @@ use Torivac\Diag;
 use Torivac\Store;
 
 Config::load(__DIR__ . '/../config.php');
-try { Store::init((string) Config::get('storage_dir', __DIR__ . '/../storage')); } catch (\Throwable $e) { /* Diag lo cuenta como fallo de la carpeta de datos */ }
+try { Store::bootstrap((string) Config::get('storage_dir', '')); } catch (\Throwable $e) { /* Diag lo cuenta como fallo de la carpeta de datos */ }
 $r = Diag::run(in_array('--net', $argv, true), __DIR__ . '/../config.php');
 $sym = ['ok' => '✓', 'warn' => '⚠', 'fail' => '✗'];
 foreach ($r['checks'] as $c) echo $sym[$c['status']] . ' ' . $c['msg'] . "\n";

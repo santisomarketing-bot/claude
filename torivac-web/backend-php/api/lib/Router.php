@@ -79,7 +79,7 @@ final class Router
             return new Response(['ok' => true, 'orders' => $out]);
         }
         if (!Auth::requireRole($who, 'manager')) return new Response(['ok' => false, 'error' => 'Solo para managers'], 403);
-        if ($path === '/diag' && $m === 'GET') return new Response(['ok' => true] + Diag::run());                            // autodiagnóstico de la instalación (solo managers)
+        if ($path === '/diag' && $m === 'GET') return new Response(['ok' => true] + Diag::run(false, null, $req));                            // autodiagnóstico de la instalación (solo managers)
         if ($path === '/prices/refresh' && $m === 'POST') return new Response(['ok' => true, 'meta' => Sheets::sync(['reason' => 'manual:' . $who['sub']])]);
         if ($path === '/prices/upload' && $m === 'POST') {
             $b = $req->json(3000000) ?? [];

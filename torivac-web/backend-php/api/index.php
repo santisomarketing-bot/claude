@@ -15,8 +15,9 @@ use Torivac\Store;
 
 Config::load(__DIR__ . '/config.php');
 try {
-    Store::init((string) Config::get('storage_dir', __DIR__ . '/storage'));
+    Store::bootstrap((string) Config::get('storage_dir', ''));
 } catch (\Throwable $e) {
+    error_log('[torivac] ' . $e->getMessage());                                  // el detalle (con rutas) va al registro de errores del dominio, no a quien llame al API
     (new Response(['ok' => false, 'error' => 'El servidor no puede escribir en su directorio de datos (revisa storage_dir y sus permisos)'], 500))->send();
     exit;
 }

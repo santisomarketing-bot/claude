@@ -6,18 +6,18 @@ Guía para quien tenga que **mantener o ampliar** la web nueva de Torivac. Compl
 ## 1. Qué es
 Una web **100 % estática** (HTML + CSS + JS vanilla, sin frameworks) que replica grupotorivac.com en 4 idiomas (es en la raíz, `/en`, `/fr`, `/de`) y añade:
 pedido por referencia y cantidad (estilo e-commerce, sin pasarela de pago), **presupuesto en PDF** con imágenes, **etiquetas de voltaje**, **precios** desde una hoja
-(Excel/Google Sheets) y un **panel** con dos roles (manager / cliente). Lo único dinámico vive en un **backend con contrato único**, con dos implementaciones intercambiables: el Worker de Cloudflare (`workers/api`) o el API PHP para hosting con cPanel (`backend-php/api`).
+(Excel/Google Sheets) y un **panel** con dos roles (manager / cliente). Lo único dinámico vive en un **backend con contrato único**, con dos implementaciones intercambiables: el Worker de Cloudflare (`workers/api`) o el API PHP para un hosting con Apache y PHP: cPanel o Plesk (`backend-php/api`).
 
 Dos modos de la misma base de código:
 
-| | Demo (`node site/build.mjs`) | Producción con API PHP en cPanel (`scripts/package_cpanel.py --base=https://dominio`) | Producción con Worker (`TORIVAC_API=https://… node site/build.mjs --base=https://dominio`) |
+| | Demo (`node site/build.mjs`) | Producción con API PHP en cPanel o Plesk (`scripts/package_cpanel.py --base=https://dominio`) | Producción con Worker (`TORIVAC_API=https://… node site/build.mjs --base=https://dominio`) |
 |---|---|---|---|
-| Se abre con | doble clic (`file://`) o cualquier servidor | hosting cPanel (Apache/LiteSpeed) | cualquier hosting estático (cPanel, Cloudflare Pages…) |
+| Se abre con | doble clic (`file://`) o cualquier servidor | hosting cPanel o Plesk (Apache/LiteSpeed) | cualquier hosting estático (cPanel, Cloudflare Pages…) |
 | Precios | `prices.demo.*` (inventados, marcados DEMO) | **ninguno en la web**: los lee de `/api/prices` (hoja de Drive, cron 24 h + botón manual) | igual, desde el Worker |
 | Envío de pedido/contacto | simulado (PDF + borrador `mailto:`) | `POST /api/order` y `/api/contact` → Resend (info@ + mzamora@ + copia al cliente) | igual |
 | Panel `/admin/` | `admin.js` (credenciales de demo en el código) | `admin-live.js` (login real, datos del servidor) | igual |
 | CSS / fuentes | 1 `site.css` legible (dos aspectos en capas) + fuentes en base64 (para `file://`) | 1 `site.css` minificado + fuentes `woff2` | igual |
-| SEO y servidor | sin canonical/sitemap | canonical, hreflang, JSON-LD, sitemap con imágenes, `llms.txt`, `robots.txt`, **`.htaccess`** (HTTPS, host único, 301, caché, CSP), 404 por idioma, URLs limpias | igual (el `.htaccess` solo si el estático va a cPanel) |
+| SEO y servidor | sin canonical/sitemap | canonical, hreflang, JSON-LD, sitemap con imágenes, `llms.txt`, `robots.txt`, **`.htaccess`** (HTTPS, host único, 301, caché, CSP), 404 por idioma, URLs limpias | igual (el `.htaccess` solo si el estático va a cPanel/Plesk) |
 
 ## 2. Mapa del repositorio
 ```
@@ -30,7 +30,7 @@ site/
   lib/            i18n.mjs (textos UI ×4 idiomas) · render.mjs (enlaces, bloques, imágenes) · seo.mjs (JSON-LD, OG) · hosting.mjs (.htaccess, robots.txt, 404)
   assets/         css/ (tokens, base, layout, components, art, admin) · js/ (quote, app, shop, pdf, quote-page, contact, lab, admin, admin-live) · vendor/ · fonts/ · img/
 workers/api/      Worker torivac-api (pedidos, contacto, precios, login, IA de precios, propuestas) + pruebas (`npm test`)
-backend-php/api/  el MISMO API en PHP para cPanel: Router, Orders, Prices/Sheets, Xlsx, Auth/Users, Ai, Mail, Store (ficheros JSON), Diag, tools/ (create-user, check), cron.php + pruebas (`php tests/run.php`)
+backend-php/api/  el MISMO API en PHP para cPanel o Plesk: Router, Orders, Prices/Sheets, Xlsx, Auth/Users, Ai, Mail, Store (ficheros JSON), Diag, tools/ (create-user, check), cron.php + pruebas (`php tests/run.php`)
 shared/           código y casos de prueba que comparten JS y PHP: price-sheet.mjs (lector de hojas), xlsx.mjs (lector de .xlsx), fixtures
 scripts/          cosecha y construcción del catálogo (Python/Node) + todas las pruebas de calidad (qa-*.mjs, seo_check.py, perf.mjs…)
 ci/               plantillas de GitHub Actions (ci.yml, deploy.yml) para copiar a .github/workflows/
@@ -87,8 +87,8 @@ También escribe `assets/data/*.js` (datos para el navegador como globales `TV.*
 
 ## 7. Backend: Worker `torivac-api` (`workers/api`) o API PHP (`backend-php/api`)
 Mismas rutas, mismas respuestas, mismas reglas: se elige según el hosting y **los guiones de prueba corren contra los dos** (`--php`). Worker: variables y puesta en marcha en `workers/api/README.md`.
-PHP: `docs/DESPLIEGUE-CPANEL.md`; datos en ficheros JSON de una carpeta fuera de la web (misma estructura de claves que KV, con `flock` para contadores), configuración en `api/config.php`, `cron.php` para los precios y
-`tools/check.php` / `GET /api/diag` para diagnosticar la instalación. Claves KV (o ficheros): `user:<email>`, `order:<nº>`, `prices:current|meta|history:<ts>`, `proposals:state`, `rl:<bucket>:<id>`, `counter:<aaaammdd>`.
+PHP: `docs/DESPLIEGUE-CPANEL.md` o `docs/DESPLIEGUE-PLESK.md`; datos en ficheros JSON de una carpeta (misma estructura de claves que KV, con `flock` para contadores) que elige `Store::bootstrap`: `storage_dir` si sirve, un almacén que ya tenga datos, `/home/CUENTA/torivac-datos` (fuera de la web) o `api/storage` (protegida con `.htaccess`); configuración en `api/config.php`, `cron.php` para los precios y
+`tools/check.php` / `GET /api/diag` para diagnosticar la instalación. La IP del visitante (límites de uso) la calcula `Request::clientIp`: `REMOTE_ADDR`, y solo detrás de un proxy de confianza (nginx de Plesk, Cloudflare, `trusted_proxies`) la cadena `X-Forwarded-For` de derecha a izquierda. Claves KV (o ficheros): `user:<email>`, `order:<nº>`, `prices:current|meta|history:<ts>`, `proposals:state`, `rl:<bucket>:<id>`, `counter:<aaaammdd>`.
 **Precios**: la hoja se lee de un Excel/Hoja de Drive (cuenta de servicio, descarga directa del `.xlsx` o CSV) con `shared/price-sheet.mjs` (+ port PHP) y `shared/xlsx.mjs` (+ port PHP): ver `docs/PRECIOS-DRIVE.md`.
 Seguridad: PBKDF2 (100 k) + sesión firmada HMAC, límite de intentos de login, CORS por lista de orígenes, honeypot y límite por IP en pedidos/contacto, Turnstile opcional,
 **el servidor revalora siempre el pedido** (ignora precios del navegador), la hoja nueva se rechaza si pierde >50 % de las referencias, la IA de precios solo propone y exige confirmación.
@@ -102,11 +102,11 @@ como estructura sin datos: se conectan con las credenciales de Torivac (no se mu
 | Comando | Qué comprueba |
 |---|---|
 | `cd workers/api && npm test` | pruebas del Worker (auth, pedidos, precios, hoja, JWT, IA, propuestas, lector de `.xlsx` y sincronización desde Drive) |
-| `php backend-php/api/tests/run.php` | pruebas del API PHP (mismos casos que el Worker + autodiagnóstico) y los mismos libros `.xlsx` y casos de hoja que JS |
+| `php backend-php/api/tests/run.php` | pruebas del API PHP (mismos casos que el Worker + autodiagnóstico) y los mismos libros `.xlsx` y casos de hoja que JS; `HostingTest.php`: elección de la carpeta de datos, IP del visitante tras un proxy y comprobaciones por servidor (cPanel/Plesk) |
 | `node scripts/qa-quote.mjs` | presupuesto realista (tramos, céntimos, PDF) en 4 idiomas, con cálculo independiente |
 | `node scripts/qa-lang.mjs` | detección de idioma, selector, persistencia, accesibilidad del selector |
 | `node scripts/qa-live.mjs` / `qa-admin-live.mjs` / `qa-tarifa.mjs` (+ `--php`) | web ↔ backend real, **Worker en memoria o API PHP con `php -S`** (pedido, contacto, errores) / panel real completo / tarifa en formato real (Excel, 8 decimales, referencias nuevas, lectura directa del `.xlsx`) |
-| `node scripts/qa-package.mjs` | el **paquete de cPanel tal como se sube**: sin precios, precios del servidor, pedido, panel, CSP real del `.htaccess` y API cerrado a ficheros de código |
+| `node scripts/qa-package.mjs` | el **paquete del hosting (cPanel/Plesk) tal como se sube**: sin precios, precios del servidor, pedido, panel, CSP real del `.htaccess` y API cerrado a ficheros de código |
 | `node scripts/qa-ux.mjs [--mobile \| --width=N]` | **todas** las páginas: desbordes, imágenes rotas/deformadas/borrosas, restos de código, peticiones externas, texto en otro idioma |
 | `node scripts/qa-a11y.mjs` | axe-core (WCAG 2.1 AA) sobre una muestra estratificada |
 | `node scripts/qa-art.mjs` | osciloscopio y arte toroidal (idiomas, teclado, movimiento reducido) |
@@ -120,8 +120,8 @@ La CI (`ci/ci.yml`) las encadena. `node scripts/capturas.mjs` genera capturas de
 - **Cambiar precios**: Excel/CSV en el panel (vista previa → aplicar) · instrucción en castellano (IA propone, tú confirmas) · hoja de Drive (sincroniza cada 24 h; botón «Actualizar ahora»). Cada cambio guarda un histórico de 90 días en KV.
 - **Añadir un usuario**: panel → Usuarios (o `POST /api/users` con el token maestro para el primer manager).
 - **Añadir un producto/referencia**: cambiar el origen (la web original o el PDF) y regenerar `data/catalog`; las referencias pedibles salen de `variants[]`. Para un modelo nuevo sin PDF, añadirlo en la hoja de precios con su `ref` **y** en el catálogo.
-- **Publicar en cPanel**: `python3 -I scripts/package_cpanel.py --base=https://dominio [--staging]` genera y **verifica** el `.zip` (`docs/DESPLIEGUE-CPANEL.md`); `ci/deploy.yml` lo hace desde GitHub (artefacto y, si se pide, rsync por SSH con simulacro).
-  Con Worker: `npx wrangler deploy` y `TORIVAC_API=… node site/build.mjs --base=…` (la web puede ir al mismo cPanel).
+- **Publicar en cPanel o Plesk**: `python3 -I scripts/package_cpanel.py --base=https://dominio [--staging]` genera y **verifica** el `.zip` (`docs/DESPLIEGUE-CPANEL.md` · `docs/DESPLIEGUE-PLESK.md`; el nombre del script es histórico, el paquete es el mismo); `ci/deploy.yml` lo hace desde GitHub (artefacto y, si se pide, rsync por SSH con simulacro).
+  Con Worker: `npx wrangler deploy` y `TORIVAC_API=… node site/build.mjs --base=…` (la web puede ir al mismo cPanel o Plesk).
 - **Algo falla en `file://`**: el almacenamiento entre páginas de Chrome es inconsistente; usar un servidor (`python3 -m http.server`) o producción.
 
 ## 11. Riesgos y pendiente conocidos
@@ -130,7 +130,7 @@ La CI (`ci/ci.yml`) las encadena. `node scripts/capturas.mjs` genera capturas de
 - **Precios públicos**: `GET /api/prices` es público (la web los pinta). Si se quieren solo para clientes registrados, es un cambio pequeño en servidor y en `loadLivePrices` (ver `docs/PRECIOS-DRIVE.md` §9).
 - **Estadísticas externas** (Google Business, Ads, Search Console, GA4) sin conectar: faltan las credenciales de Torivac; el panel no muestra cifras inventadas.
 - **Textos legales** publicados tal cual con sus defectos (ver propuestas `legal`). Traducciones inexistentes en el original (5 fichas) mostradas en español con aviso.
-- **No probado contra un Apache real** (sí contra `php -S` con la misma reescritura y la CSP del `.htaccess` aplicada): la primera subida al subdominio de pruebas se verifica con `tools/check.php` y la lista del apartado 10 de `DESPLIEGUE-CPANEL.md`.
+- **No probado contra un Apache ni un Plesk reales** (sí contra `php -S` con la misma reescritura y la CSP del `.htaccess` aplicada, y con pruebas que simulan las cabeceras y permisos de Plesk): la primera subida al subdominio de pruebas se verifica con `tools/check.php` (o *Ajustes → Diagnóstico*) y la lista del apartado 10 de `DESPLIEGUE-PLESK.md` / `DESPLIEGUE-CPANEL.md`.
 
 ## 12. Revisión final (S16): lo que se encontró y se corrigió
 Una pasada de lectura de todo el código (al documentar cada función) y de las pruebas dejó estos arreglos, cada uno con su prueba en **los dos backends**:
@@ -144,3 +144,10 @@ Una pasada de lectura de todo el código (al documentar cada función) y de las 
 - Código muerto y casos límite de los scripts de desarrollo (`seo_check.py` sin páginas, `qa_content.py` sin filas, fechas inválidas en el blog).
 
 Lo que **no** se ha tocado y conviene saber: los textos legales se publican tal cual (15 propuestas), las Estadísticas de Google no están conectadas, y las sesiones de un manager no se pueden revocar una a una (cambiar `SESSION_SECRET` cierra todas).
+
+## 13. Hosting con Plesk (S20): lo que se encontró y se corrigió
+Al pasar las pruebas a un subdominio de Plesk (producción irá a cPanel) se revisó todo lo que depende del servidor; cada punto tiene su prueba en `backend-php/api/tests/HostingTest.php`:
+- **Carpeta de datos**: el ejemplo de `config.php` apuntaba a `/home/CUENTA/torivac-datos`; en Plesk la raíz de la cuenta no es escribible por la web y **toda la API respondía 500**. Ahora `storage_dir` vacío = `Store::bootstrap` elige solo (`torivac-datos` junto a la cuenta si se puede; si no, `api/storage`), nunca abandona un almacén que ya tiene datos (para no partir pedidos entre dos carpetas) y, si `storage_dir` no sirve, se desvía con aviso en el Diagnóstico.
+- **IP del visitante** (límites por IP de pedidos, mensajes y **bloqueo de intentos de acceso**): el PHP se fiaba de la cabecera `CF-Connecting-IP` sin comprobar que viniera de Cloudflare (cualquiera podía falsearla y saltarse esos límites) y, detrás del nginx de Plesk, todas las visitas podían contar como una sola IP. Ahora `Request::clientIp` usa `REMOTE_ADDR` y solo mira las cabeceras si quien conecta es un proxy de confianza; la cadena `X-Forwarded-For` se lee de derecha a izquierda, de modo que lo que escriba el visitante no cuenta.
+- **PHP servido por nginx** (opción de Plesk): ignora el `.htaccess` y rompe URLs limpias, cabeceras y la ruta `/api`; el Diagnóstico lo detecta (*Servidor web*).
+- **Diagnóstico** más preciso por línea de comandos (sabe si la carpeta de datos cae dentro de la web sin `DOCUMENT_ROOT`), con textos para cPanel y Plesk.
