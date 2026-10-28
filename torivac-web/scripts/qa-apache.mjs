@@ -31,7 +31,7 @@ const ap = await startApache({ docroot: WWW, port });
 const MASTER = 'master-test-' + 'a1b2c3d4e5f6a7b8c9d0'.repeat(2);
 /** Escribe api/config.php con la carpeta de datos indicada (fuera de la web por defecto). */
 const writeCfg = (extra = {}) => {
-  const cfg = { storage_dir: ap.dataDir, session_secret: 'session-test-' + 'x'.repeat(40), admin_token: MASTER, order_to: ['info@grupotorivac.com', 'mzamora@torivac.com'], order_from: 'Torivac Web <pedidos@grupotorivac.com>', mail: { driver: 'file' }, form_min_fill_ms: 0, ...extra };
+  const cfg = { storage_dir: ap.dataDir, session_secret: 'session-test-' + 'x'.repeat(40), admin_token: MASTER, order_to: ['info@grupotorivac.com', 'mzamora@torivac.com'], order_from: 'Torivac Web <pedidos@grupotorivac.com>', mail: { driver: 'file' }, form_min_fill_ms: 0, two_step: { enabled: false }, ...extra };          // el código por correo se prueba aparte (qa-security-panel.mjs): aquí el manager entra con la contraseña sola
   fs.writeFileSync(path.join(WWW, 'api/config.php'), `<?php\nreturn json_decode(<<<'JSON'\n${JSON.stringify(cfg)}\nJSON\n, true);\n`); fs.chmodSync(path.join(WWW, 'api/config.php'), 0o644);
 };
 writeCfg();
