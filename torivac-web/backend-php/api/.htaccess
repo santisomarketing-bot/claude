@@ -1,12 +1,17 @@
-# API de Torivac: solo index.php es accesible desde la web; el resto de ficheros PHP/JSON queda cerrado.
+# API de Torivac: LISTA BLANCA. Desde la web solo se sirve index.php; todo lo demás de esta carpeta
+# (lib/, tools/, tests/, generated/, storage/, cron.php, config.php, copias como config.php.bak o config.php~, error_log, .env, *.zip…) queda cerrado.
 Options -Indexes
 <IfModule mod_authz_core.c>
-  <FilesMatch "^(?!index\.php$).*\.(php|json|md|sample)$">
-    Require all denied
+  Require all denied
+  <FilesMatch "^index\.php$">
+    Require all allowed
   </FilesMatch>
 </IfModule>
-<IfModule mod_authz_core.c>
-  <FilesMatch "^config\.sample\.php$">
-    Require all denied
+<IfModule !mod_authz_core.c>
+  Order deny,allow
+  Deny from all
+  <FilesMatch "^index\.php$">
+    Order allow,deny
+    Allow from all
   </FilesMatch>
 </IfModule>

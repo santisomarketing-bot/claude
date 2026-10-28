@@ -7,8 +7,9 @@
  * [SHEETS] Lectura de la hoja de Drive (Google Sheets API con cuenta de servicio, o CSV público con enlace), CSV con comillas y sincronización.
  * MODOS (prices.update_mode · parámetro mode): «merge» (por defecto) = la hoja puede traer SOLO UNA PARTE del catálogo: cada fila reconocida (por referencia, SKU o ID) actualiza su
  * referencia, las filas con precio 0 o active = 0 la dejan sin precio y todo lo demás se conserva; «replace» = la hoja sustituye a toda la lista de precios.
- * Reglas de seguridad (se rechaza salvo force): «precio de relleno», cambio masivo (más de la mitad de las referencias que ya tenían precio cambian más de un 40 %) y, solo en replace,
- * una hoja con < 50 % de las referencias que había.
+ * Reglas de seguridad (se rechaza salvo force): «precio de relleno», cambio masivo (más de la mitad de las referencias que ya tenían precio cambian más de un 40 %; retirar un precio
+ * cuenta como cambio), una hoja que RETIRA 10 o más referencias y más del 30 % de los precios vigentes, y una hoja tras la cual quedaría menos del 50 % de los precios vigentes (si eran 10 o más).
+ * La sincronización automática (cron, «Actualizar ahora») NUNCA aplica una hoja con bloqueos: conserva los precios vigentes y deja el motivo en prices:sync (lo muestran el panel y el diagnóstico).
  */
 namespace Torivac;
 
@@ -16,6 +17,8 @@ final class Prices
 {
     const KEY_CURRENT = 'prices:current';
     const KEY_META = 'prices:meta';
+    /** Estado del ÚLTIMO intento de sincronización (también el fallido o bloqueado): {at, reason, ok, blocked, error}. Lo ven los managers (GET /prices y /diag). */
+    const KEY_SYNC = 'prices:sync';
 
     /** Precios vigentes; si todavía no hay, devuelve una hoja vacía (modo none). */
     public static function load(): array
@@ -91,8 +94,11 @@ final class Prices
         return ['items' => $items] + $sheet;
     }
 
-    /** Aviso «cambio_masivo» si ≥ 10 referencias de la hoja ya tenían precio y más de la mitad cambia más de un 40 % (¿hoja equivocada, columna movida, otra unidad?); null si no. */
-    public static function massChange(array $prev, array $sheetItems): ?array
+    /**
+     * Aviso «cambio_masivo» si ≥ 10 referencias de la hoja ya tenían precio y más de la mitad cambia más de un 40 % (¿hoja equivocada, columna movida, otra unidad?); null si no.
+     * Las referencias que la hoja pide RETIRAR (`$retire`) y que tenían precio cuentan como cambiadas al 100 %; si la hoja trae también un precio para esa referencia, gana el precio.
+     */
+    public static function massChange(array $prev, array $sheetItems, array $retire = []): ?array
     {
         $n = 0; $big = 0;
         foreach ($sheetItems as $ref => $it) {
@@ -101,8 +107,14 @@ final class Prices
             $n++;
             if (abs($it['p'] - $old) / $old > 0.4) $big++;
         }
+        foreach ($retire as $ref) {
+            if (isset($sheetItems[$ref])) continue;
+            $old = $prev['items'][$ref]['p'] ?? null;
+            if (!is_numeric($old) || $old <= 0) continue;
+            $n++; $big++;
+        }
         if ($n < 10 || $big / $n <= 0.5) return null;
-        return ['code' => 'cambio_masivo', 'message' => 'Más de la mitad de las referencias que ya tenían precio cambia más de un 40 % (' . $big . ' de ' . $n . '): ¿hoja equivocada, columna movida o cambio de unidades?', 'count' => $big];
+        return ['code' => 'cambio_masivo', 'message' => 'Más de la mitad de las referencias que ya tenían precio cambia más de un 40 % o se retira (' . $big . ' de ' . $n . '): ¿hoja equivocada, columna movida o cambio de unidades?', 'count' => $big];
     }
 
     /** diferencias entre dos juegos de precios */
@@ -130,6 +142,12 @@ final class Prices
         if ($mode !== null) $meta['mode'] = $mode;
         Store::put(self::KEY_META, $meta);
         return $meta;
+    }
+
+    /** Anota el resultado del último intento de sincronización (ver KEY_SYNC); un fallo al anotarlo nunca tapa el resultado real. */
+    public static function recordSync(array $state): void
+    {
+        try { Store::put(self::KEY_SYNC, $state); } catch (\Throwable $e) { error_log('torivac-api: no se pudo anotar el estado de la sincronización: ' . $e->getMessage()); }
     }
 
     /** filas → ['prices' => …, 'report' => …] con las reglas compartidas de PriceSheet */
@@ -185,11 +203,11 @@ final class Sheets
         $head = Util::b64url(Util::enc(['alg' => 'RS256', 'typ' => 'JWT']));
         $claim = Util::b64url(Util::enc(['iss' => $sa['client_email'], 'scope' => 'https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive.readonly', 'aud' => 'https://oauth2.googleapis.com/token', 'iat' => $iat, 'exp' => $iat + 3600]));
         $key = openssl_pkey_get_private($sa['private_key']);
-        if (!$key || !openssl_sign($head . '.' . $claim, $sig, $key, OPENSSL_ALGO_SHA256)) throw new \RuntimeException('La clave de la cuenta de servicio no es válida');
+        if (!$key || !openssl_sign($head . '.' . $claim, $sig, $key, OPENSSL_ALGO_SHA256)) throw new \RuntimeException('La clave de la cuenta de servicio no es válida', 502);
         $url = (string) Config::get('prices.google_oauth_url', 'https://oauth2.googleapis.com/token');
         [$st, $body] = Http::request('POST', $url, ['Content-Type: application/x-www-form-urlencoded'], http_build_query(['grant_type' => 'urn:ietf:params:oauth:grant-type:jwt-bearer', 'assertion' => $head . '.' . $claim . '.' . Util::b64url($sig)]));
         $j = json_decode($body, true);
-        if ($st !== 200 || !isset($j['access_token'])) throw new \RuntimeException('Google OAuth ' . $st);
+        if ($st !== 200 || !isset($j['access_token'])) throw new \RuntimeException('Google OAuth ' . $st, 502);
         return $j['access_token'];
     }
 
@@ -221,22 +239,22 @@ final class Sheets
             // un .xlsx guardado tal cual en Drive (sin «Guardar como hoja de cálculo de Google») no se lee con la API de Sheets: se descarga con la de Drive
             $drive = rtrim((string) Config::get('prices.google_drive_base', 'https://www.googleapis.com'), '/');
             [$ds, $dbody] = Http::request('GET', $drive . '/drive/v3/files/' . rawurlencode($id) . '?alt=media', $auth);
-            if ($ds !== 200) throw new \RuntimeException("No puedo leer el archivo de Drive: Sheets API $st · Drive API $ds (¿está compartido con el correo de la cuenta de servicio?)");
+            if ($ds !== 200) throw new \RuntimeException("No puedo leer el archivo de Drive: Sheets API $st · Drive API $ds (¿está compartido con el correo de la cuenta de servicio?)", 502);
             return [self::xlsxRows($dbody, 'el archivo de Drive no es una hoja de Google ni un .xlsx'), 'drive-xlsx:' . $id];
         }
         $xlsx = (string) Config::get('prices.xlsx_url', '');
         if ($xlsx !== '') {
             [$st, $body] = Http::request('GET', $xlsx);
-            if ($st !== 200) throw new \RuntimeException('XLSX ' . $st);
+            if ($st !== 200) throw new \RuntimeException('XLSX ' . $st, 502);
             return [self::xlsxRows($body, 'la URL no devolvió un libro: ¿el archivo está compartido con enlace?'), 'xlsx-url'];
         }
         $csv = (string) Config::get('prices.csv_url', '');
         if ($csv !== '') {
             [$st, $body] = Http::request('GET', $csv);
-            if ($st !== 200) throw new \RuntimeException('CSV ' . $st);
+            if ($st !== 200) throw new \RuntimeException('CSV ' . $st, 502);
             return [self::parseCsv($body), 'csv-url'];
         }
-        throw new \RuntimeException('Sin origen de precios: configura prices.sheet_id + prices.google_service_account, prices.xlsx_url o prices.csv_url');
+        throw new \RuntimeException('Sin origen de precios: configura prices.sheet_id + prices.google_service_account, prices.xlsx_url o prices.csv_url', 503);
     }
 
     /**
@@ -253,11 +271,15 @@ final class Sheets
         $prev = Prices::load();
         $blockers = [];
         foreach ($report['warnings'] as $w) { if ($w['code'] === 'precio_de_relleno') $blockers[] = $w['message']; }
-        $mass = Prices::massChange($prev, $sheet['items']);
+        $mass = Prices::massChange($prev, $sheet['items'], $report['retire']);
         if ($mass) { $report['warnings'][] = $mass; $blockers[] = $mass['message']; }
         $n = count($sheet['items']); $p = count($prev['items']);
         if ($mode === 'replace' && $p > 0 && $n < $p * 0.5) $blockers[] = "la hoja nueva tiene $n referencias y había $p (¿hoja vacía o rota?)";
         $next = Prices::merge($prev, $sheet, $report['retire'], $mode);
+        $remain = count($next['items']);                                                         // referencias con precio que habría tras aplicar la hoja
+        $gone = $p - count(array_intersect_key($prev['items'], $next['items']));                 // precios vigentes que desaparecerían (en «merge», solo los que la hoja retira)
+        if ($mode === 'merge' && $gone >= 10 && $gone > $p * 0.3) $blockers[] = 'La hoja retira ' . $gone . ' de ' . $p . ' precios (' . (int) round(100 * $gone / $p) . ' %): confírmalo con force';
+        if ($mode === 'merge' && $p >= 10 && $remain < $p * 0.5) $blockers[] = 'Tras aplicar la hoja quedarían ' . $remain . ' de ' . $p . ' precios vigentes (menos de la mitad): confírmalo con force';
         $kept = $mode === 'replace' ? 0 : $p - count(array_intersect_key($prev['items'], $sheet['items'] + array_fill_keys($report['retire'], 1)));
         return ['next' => $next, 'prev' => $prev, 'sheet' => $sheet, 'report' => $report, 'mode' => $mode, 'kept' => $kept, 'blockers' => $blockers];
     }
@@ -269,13 +291,21 @@ final class Sheets
     public static function sync(array $o = []): array
     {
         $o += ['reason' => 'manual', 'force' => false, 'rows' => null, 'source' => null, 'ctx' => null, 'now' => null, 'mode' => null];
-        if ($o['rows'] !== null) { $rows = $o['rows']; $source = $o['source'] ?? 'upload'; }
-        else { [$rows, $source] = self::readRows(); }
-        $plan = self::plan($rows, $source, $o['mode'] ?? Config::get('prices.update_mode', 'merge'), $o['ctx'], $o['now']);
-        if (!$o['force'] && $plan['blockers']) throw new \RuntimeException('Sincronización rechazada: ' . implode('; ', $plan['blockers']) . '. Usa force=true si es intencionado.', 409);
-        $meta = Prices::save($plan['next'], $plan['prev'], $o['reason'], $source, $o['now'], $plan['mode']);
-        $meta['kept'] = $plan['kept'];
-        $meta['warnings'] = array_slice(array_map(function ($w) { return $w['message']; }, $plan['report']['warnings']), 0, 10);
-        return $meta;
+        $state = ['at' => Util::iso($o['now']), 'reason' => (string) $o['reason'], 'ok' => false, 'blocked' => false, 'error' => ''];
+        try {
+            if ($o['rows'] !== null) { $rows = $o['rows']; $source = $o['source'] ?? 'upload'; }
+            else { [$rows, $source] = self::readRows(); }
+            $plan = self::plan($rows, $source, $o['mode'] ?? Config::get('prices.update_mode', 'merge'), $o['ctx'], $o['now']);
+            if (!$o['force'] && $plan['blockers']) { $state['blocked'] = true; throw new \RuntimeException('Sincronización rechazada: ' . implode('; ', $plan['blockers']) . '. Usa force=true si es intencionado.', 409); }
+            $meta = Prices::save($plan['next'], $plan['prev'], $o['reason'], $source, $o['now'], $plan['mode']);
+            $meta['kept'] = $plan['kept'];
+            $meta['warnings'] = array_slice(array_map(function ($w) { return $w['message']; }, $plan['report']['warnings']), 0, 10);
+            Prices::recordSync(['ok' => true, 'refs' => $meta['refs']] + $state);
+            return $meta;
+        } catch (\Throwable $e) {                                                                // los precios vigentes NO se tocan: se anota por qué y se vuelve a lanzar
+            $state['error'] = mb_substr($e->getMessage(), 0, 500);
+            Prices::recordSync($state);
+            throw $e;
+        }
     }
 }

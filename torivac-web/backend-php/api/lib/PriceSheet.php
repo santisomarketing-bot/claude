@@ -26,7 +26,7 @@ final class PriceSheet
         'product_id' => ['productid', 'idproducto', 'idprod', 'pid', 'id'],
         'unit' => ['unit', 'unidad', 'ud'],
         'currency' => ['currency', 'moneda', 'divisa'],
-        'note' => ['note', 'nota', 'notas', 'observaciones', 'comentario'],
+        'note' => ['note', 'notaweb', 'notapublica', 'publicnote'],   // solo columnas explícitamente públicas («Observaciones» o «Notas» suelen llevar anotaciones internas)
         'active' => ['active', 'activo', 'visible'],
         'updated_at' => ['updatedat', 'actualizado', 'fechaactualizacion', 'fecha'],
         'offer' => ['oferta', 'offer', 'sale', 'preciooferta'],
@@ -50,11 +50,14 @@ final class PriceSheet
         return strtoupper(preg_replace('/[\s\x{00a0}]+/u', '', (string) ($r === null ? '' : $r)));
     }
 
-    /** número de una celda («27,75», «1.234,56», «1,234.56», «22 000», «€ 5»…); vacío o ilegible → null */
+    /** Tope de cualquier cifra leída de una hoja: una celda con 1e999 o 99999999999 es un error o un ataque, no un precio. */
+    const MAX_NUMBER = 10000000;
+
+    /** número de una celda («27,75», «1.234,56», «1,234.56», «22 000», «€ 5»…); vacío, ilegible, infinito o por encima de MAX_NUMBER → null */
     public static function parseNumber($x): ?float
     {
         if ($x === null || $x === '') return null;
-        if (is_int($x) || is_float($x)) return is_finite((float) $x) ? (float) $x : null;
+        if (is_int($x) || is_float($x)) return is_finite((float) $x) && abs((float) $x) <= self::MAX_NUMBER ? (float) $x : null;
         $s = preg_replace('/[\s\x{00a0}\x{202f}€$]/u', '', (string) $x);
         if ($s === '' || $s === null) return null;
         $c = strrpos($s, ',');
@@ -66,7 +69,9 @@ final class PriceSheet
         } elseif (substr_count($s, '.') > 1) {
             $s = str_replace('.', '', $s);
         }
-        return is_numeric($s) ? (float) $s : null;
+        if (!is_numeric($s)) return null;
+        $n = (float) $s;
+        return is_finite($n) && abs($n) <= self::MAX_NUMBER ? $n : null;
     }
 
     /** Cabecera: primera fila (de las 12 primeras) con una columna de referencia —o de ID de producto— y una de precio. @return array{index:int,map:array<string,int>,headers:string[]}|null */

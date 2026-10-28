@@ -1,8 +1,9 @@
 <?php
 /**
  * [CREATE-USER] Crea un usuario desde la línea de comandos (el primer manager, o clientes):
- *   php api/tools/create-user.php correo@dominio.com "Nombre Apellido" manager "contraseña de al menos 10 caracteres"
- * Roles: manager (todo) · client (solo sus pedidos). La contraseña se guarda con password_hash.
+ *   php api/tools/create-user.php correo@dominio.com "Nombre Apellido" manager "contraseña de al menos 12 caracteres"
+ * Roles: manager (todo) · client (solo sus pedidos). La contraseña se guarda con password_hash. Se rechaza una contraseña de menos de 12 caracteres, que contenga la parte local del
+ * correo o que sea de las más típicas (password…, 123456…, torivac…, qwerty…). Los usuarios ya creados no se tocan.
  */
 if (PHP_SAPI !== 'cli') { http_response_code(403); exit; }
 require __DIR__ . '/../lib/autoload.php';

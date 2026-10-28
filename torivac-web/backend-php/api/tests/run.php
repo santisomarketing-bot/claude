@@ -1,5 +1,5 @@
 <?php
-/** Ejecuta todas las pruebas: php tests/run.php  (código de salida 1 si alguna falla) */
+/** Ejecuta todas las pruebas: php tests/run.php  (código de salida 1 si alguna falla). Con un argumento solo carga los archivos *Test.php cuyo nombre lo contenga: php tests/run.php Blog */
 require __DIR__ . '/../lib/autoload.php';
 require __DIR__ . '/harness.php';
 
@@ -7,6 +7,8 @@ use Torivac\Tests\T;
 
 $files = glob(__DIR__ . '/*Test.php');
 sort($files);
+$only = $argv[1] ?? '';
+if ($only !== '') $files = array_values(array_filter($files, fn ($f) => stripos(basename($f), $only) !== false));
 foreach ($files as $f) {
     require_once $f;
 }

@@ -14,10 +14,12 @@ return [
     //   administrador: '/var/www/vhosts/DOMINIO/torivac-datos'); si no se puede usar, se avisa y se elige otra. Para cambiar de carpeta con datos ya guardados, copia antes su contenido.
     'storage_dir' => '',
 
-    // Clave para firmar las sesiones: ≥ 32 caracteres aleatorios (https://www.random.org/strings/). Cambiarla cierra todas las sesiones.
+    // Clave para firmar las sesiones: ≥ 32 caracteres aleatorios (https://www.random.org/strings/) y que NO contenga «CAMBIA-ESTO». Si es más corta o es la del ejemplo, nadie
+    // puede iniciar sesión (el acceso responde «Configuración insegura») y el diagnóstico lo marca en rojo. Cambiarla cierra todas las sesiones. Las sesiones duran 24 h.
     'session_secret' => 'CAMBIA-ESTO-por-una-cadena-aleatoria-de-32-o-mas-caracteres',
 
-    // Token maestro opcional (equivale a un manager) para scripts o para crear el primer usuario con curl. Vacío = desactivado.
+    // Token maestro opcional (equivale a un manager) para scripts o para crear el primer usuario con curl. Vacío = desactivado. Si lo pones, ≥ 32 caracteres aleatorios:
+    // uno más corto queda DESACTIVADO (nunca vale) y el diagnóstico lo marca en rojo. Vacíalo cuando ya tengas tu usuario.
     'admin_token' => '',
 
     // Otros orígenes que pueden llamar al API desde un navegador (la propia web siempre puede). Normalmente vacío.
@@ -61,5 +63,17 @@ return [
     'turnstile_secret' => '',
 
     // Para sincronizar precios con una URL si el hosting no permite cron por línea de comandos: https://dominio/api/cron?token=ESTE_VALOR
+    // Si lo pones, ≥ 24 caracteres aleatorios (uno más corto desactiva la URL). Vacío = la URL no existe. 10 intentos fallidos en 10 min desde una IP la bloquean un rato.
     'cron_token' => '',
+
+    // COPIA DEL PRESUPUESTO AL CLIENTE. Cualquier visitante puede enviar un pedido, así que la copia solo lleva texto fijo del servidor (en el idioma del pedido), el número, las líneas
+    // con el importe calculado por el servidor y el total; NUNCA lo que escribió el visitante (nombre, empresa, teléfono, notas) ni adjunto. El PDF del navegador solo va al equipo.
+    //   'capped' (por defecto) = se envía con topes: 2 copias por destinatario cada 24 h y 'order_copy_daily_max' al día en total.
+    //   'off' = nunca se envía copia al cliente.  Cualquier otro valor se trata como 'off' (falla cerrado).
+    // Superado un tope, el pedido se guarda y se avisa al equipo igual; solo la copia no sale (la respuesta lo dice en emailed.customer_reason).
+    'order_copy' => 'capped',
+    'order_copy_daily_max' => 150,
+
+    // Tope global de pedidos por hora (además del de 8 pedidos / 10 min por visitante): protege la cuota del correo (Resend) y el buzón del equipo. Superado: error 429.
+    'orders_per_hour_max' => 120,
 ];

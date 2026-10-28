@@ -18,16 +18,16 @@ use Torivac\Store;
 use Torivac\Users;
 use Torivac\Util;
 
-/** Sesión firmada: válida, manipulada y caducada; la contraseña se guarda con hash. */
+/** Sesión firmada {sub, iat, exp, sid} (sin rol): válida, manipulada y caducada; la contraseña se guarda con hash. */
 function test_auth_sessions()
 {
     fresh();
-    $tok = Auth::signSession(['sub' => 'a@b.es', 'role' => 'manager', 'name' => 'A'], SECRET, 1000);
-    T::same(['sub' => 'a@b.es', 'role' => 'manager', 'name' => 'A'], Auth::verifySession($tok, SECRET, 2000), 'sesión válida');
+    $tok = Auth::signSession(['sub' => 'a@b.es', 'sid' => 'abc123'], SECRET, 1000);
+    T::same(['sub' => 'a@b.es', 'iat' => 1000, 'exp' => 1000 + Auth::TTL_MS, 'sid' => 'abc123'], Auth::verifySession($tok, SECRET, 2000), 'sesión válida: sub, iat, exp y sid');
     T::same(null, Auth::verifySession($tok, SECRET, 1000 + Auth::TTL_MS + 1), 'caducada');
     T::same(null, Auth::verifySession($tok, 'otro-secreto-distinto-de-32-caracteres-xx', 2000), 'firma de otra clave');
     [$p, $s] = explode('.', $tok);
-    T::same(null, Auth::verifySession(Util::b64url('{"sub":"a@b.es","role":"manager","exp":99999999999999}') . '.' . $s, SECRET, 2000), 'payload manipulado');
+    T::same(null, Auth::verifySession(Util::b64url('{"sub":"a@b.es","sid":"abc123","iat":1000,"exp":99999999999999}') . '.' . $s, SECRET, 2000), 'payload manipulado');
     $h = Auth::hashPassword('Clave-Segura-2026');
     T::true(Auth::verifyPassword('Clave-Segura-2026', $h) && !Auth::verifyPassword('otra', $h), 'contraseña');
 }
@@ -37,12 +37,12 @@ function test_users_and_login()
 {
     fresh();
     T::same(['error' => 'Correo no válido'], Users::create(['email' => 'x', 'role' => 'manager', 'password' => '1234567890']), 'correo');
-    T::same(['error' => 'La contraseña necesita al menos 10 caracteres'], Users::create(['email' => 'a@b.es', 'role' => 'manager', 'password' => 'corta']), 'contraseña corta');
-    $r = Users::create(['email' => 'Jefe@Torivac.com', 'name' => 'Jefe', 'role' => 'manager', 'password' => 'Jefe-Clave-2026!']);
+    T::same(['error' => 'La contraseña necesita al menos 12 caracteres'], Users::create(['email' => 'a@b.es', 'role' => 'manager', 'password' => 'corta']), 'contraseña corta');
+    $r = Users::create(['email' => 'Jefe@Torivac.com', 'name' => 'Jefe', 'role' => 'manager', 'password' => PW_JEFE]);
     T::same('jefe@torivac.com', $r['user']['email'], 'correo en minúsculas');
-    T::same(409, Users::create(['email' => 'jefe@torivac.com', 'role' => 'client', 'password' => 'Jefe-Clave-2026!'])['status'], 'duplicado');
-    T::same(true, Users::check('jefe@torivac.com', 'Jefe-Clave-2026!') !== null && Users::check('jefe@torivac.com', 'mala') === null && Users::check('nadie@x.es', 'Jefe-Clave-2026!') === null, 'login');
-    $l = Router::handle(req('POST', '/auth/login', ['email' => 'jefe@torivac.com', 'password' => 'Jefe-Clave-2026!']))->body;
+    T::same(409, Users::create(['email' => 'jefe@torivac.com', 'role' => 'client', 'password' => PW_JEFE])['status'], 'duplicado');
+    T::same(true, Users::check('jefe@torivac.com', PW_JEFE) !== null && Users::check('jefe@torivac.com', 'mala') === null && Users::check('nadie@x.es', PW_JEFE) === null, 'login');
+    $l = Router::handle(req('POST', '/auth/login', ['email' => 'jefe@torivac.com', 'password' => PW_JEFE]))->body;
     T::true($l['ok'] && isset($l['token']) && !isset($l['user']['hash']), 'login devuelve token y usuario sin hash');
     $me = Router::handle(req('GET', '/auth/me', null, ['Authorization' => 'Bearer ' . $l['token']]))->body;
     T::same('manager', $me['user']['role'], '/auth/me');
@@ -173,6 +173,7 @@ function test_order_flow_server_side_pricing()
     T::same('ana@acme.es', $mails[0]['replyTo'], 'reply-to');
     T::same('TV-20261028-0001.pdf', $mails[0]['attachments'][0]['filename'], 'PDF adjunto');
     T::same(['ana@acme.es'], $mails[1]['to'], 'copia al cliente');
+    T::true(empty($mails[1]['attachments']), 'la copia al cliente va SIN adjunto');
     $rec = Store::get('order:TV-20261028-0001');
     T::same([11.9, 142.8], [$rec['lines'][0]['unit'], $rec['total']], 'pedido guardado');
     $r2 = Orders::handleOrder(req('POST', '/order', $body), $body, null, 1793170860000);
@@ -204,15 +205,16 @@ function test_order_with_resend_driver()
     Http::$mock = function ($m, $u, $h, $b) use (&$sent) { $sent[] = ['url' => $u, 'h' => $h, 'b' => json_decode($b, true)]; return [200, '{"id":"m' . count($sent) . '"}']; };
     $body = goodOrder(['pdf' => 'JVBERi0xLjQK']);
     $r = Orders::handleOrder(req('POST', '/order', $body), $body);
-    T::same([true, true, false], [$r->body['emailed']['team'], $r->body['emailed']['customer'], $r->body['emailed']['skipped']], 'envío por Resend');
+    T::same([true, true, false, 'sent'], [$r->body['emailed']['team'], $r->body['emailed']['customer'], $r->body['emailed']['skipped'], $r->body['emailed']['customer_reason']], 'envío por Resend');
     T::same('https://api.resend.com/emails', $sent[0]['url'], 'URL');
     T::true(in_array('Authorization: Bearer re_test', $sent[0]['h'], true), 'clave');
     T::same(['info@grupotorivac.com', 'mzamora@torivac.com'], $sent[0]['b']['to'], 'destinatarios');
     T::same('Torivac Web <pedidos@grupotorivac.com>', $sent[0]['b']['from'], 'remitente');
-    T::same('JVBERi0xLjQK', $sent[0]['b']['attachments'][0]['content'], 'adjunto');
+    T::same('JVBERi0xLjQK', $sent[0]['b']['attachments'][0]['content'], 'adjunto (solo en el correo al equipo)');
+    T::same([['ana@acme.es'], false], [$sent[1]['b']['to'], isset($sent[1]['b']['attachments'])], 'la copia al cliente no lleva adjunto');
     fresh(['mail' => ['driver' => 'none']]); seedPrices();
     $r = Orders::handleOrder(req('POST', '/order'), goodOrder());
-    T::same([true, true], [$r->body['ok'], $r->body['emailed']['skipped']], 'sin controlador no falla: se guarda y se avisa');
+    T::same([true, true, 'skipped'], [$r->body['ok'], $r->body['emailed']['skipped'], $r->body['emailed']['customer_reason']], 'sin controlador no falla: se guarda y se avisa');
 }
 
 /** Cuerpo MIME para mail(): texto y HTML, adjunto y cabeceras. */
@@ -256,8 +258,8 @@ function test_prices_endpoint_etag()
 function test_manager_upload_roles_and_cron()
 {
     fresh(); seedPrices();
-    $cli = Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => 'Ana-Clave-2026!!']);
-    $tok = Router::handle(req('POST', '/auth/login', ['email' => 'ana@acme.es', 'password' => 'Ana-Clave-2026!!']))->body['token'];
+    $cli = Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => PW_ANA]);
+    $tok = Router::handle(req('POST', '/auth/login', ['email' => 'ana@acme.es', 'password' => PW_ANA]))->body['token'];
     T::same(403, Router::handle(req('POST', '/prices/upload', ['csv' => SHEET], ['Authorization' => 'Bearer ' . $tok]))->status, 'cliente no sube precios');
     T::same(401, Router::handle(req('GET', '/orders'))->status, 'sin sesión');
     $dry = Router::handle(req('POST', '/prices/upload', ['csv' => SHEET, 'dry_run' => true], master()))->body;
@@ -273,10 +275,10 @@ function test_manager_upload_roles_and_cron()
     $ord = goodOrder(['lines' => [['ref' => 'TT0099999', 'qty' => 3]]]);
     T::same(136.5, Orders::handleOrder(req('POST', '/order', $ord, [], '10.5.5.5'), $ord)->body['total'], 'y se puede pedir');
     // cron por URL
-    \Torivac\Config::set(['cron_token' => 'cron-secreto', 'prices' => ['csv_url' => 'https://sheet.test/x.csv'], 'storage_dir' => Store::root(), 'session_secret' => SECRET, 'mail' => ['driver' => 'file']]);
+    \Torivac\Config::set(['cron_token' => CRON_TOKEN, 'prices' => ['csv_url' => 'https://sheet.test/x.csv'], 'storage_dir' => Store::root(), 'session_secret' => SECRET, 'mail' => ['driver' => 'file']]);
     Http::$mock = function () { return [200, "ref;price\nR100;9\nTT0020210;12\nP16633;60\n"]; };
     T::same(401, Router::handle(req('GET', '/cron'))->status, 'cron sin token');
-    $q = req('GET', '/cron'); $q->query = ['token' => 'cron-secreto'];
+    $q = req('GET', '/cron'); $q->query = ['token' => CRON_TOKEN];
     T::same(200, Router::handle($q)->status, 'cron con token');
 }
 
@@ -284,12 +286,12 @@ function test_manager_upload_roles_and_cron()
 function test_orders_visibility_and_users_api()
 {
     fresh(); seedPrices();
-    Users::create(['email' => 'jefe@torivac.com', 'name' => 'Jefe', 'role' => 'manager', 'password' => 'Jefe-Clave-2026!']);
-    Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => 'Ana-Clave-2026!!']);
+    Users::create(['email' => 'jefe@torivac.com', 'name' => 'Jefe', 'role' => 'manager', 'password' => PW_JEFE]);
+    Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => PW_ANA]);
     $b1 = goodOrder(); Orders::handleOrder(req('POST', '/order', $b1, [], '10.2.2.2'), $b1);
     $b2 = goodOrder(['customer' => ['name' => 'Otro', 'email' => 'otro@x.es', 'privacy' => true]]); Orders::handleOrder(req('POST', '/order', $b2, [], '10.3.3.3'), $b2);
-    $tJ = Router::handle(req('POST', '/auth/login', ['email' => 'jefe@torivac.com', 'password' => 'Jefe-Clave-2026!']))->body['token'];
-    $tA = Router::handle(req('POST', '/auth/login', ['email' => 'ana@acme.es', 'password' => 'Ana-Clave-2026!!']))->body['token'];
+    $tJ = Router::handle(req('POST', '/auth/login', ['email' => 'jefe@torivac.com', 'password' => PW_JEFE]))->body['token'];
+    $tA = Router::handle(req('POST', '/auth/login', ['email' => 'ana@acme.es', 'password' => PW_ANA]))->body['token'];
     T::same(2, count(Router::handle(req('GET', '/orders', null, ['Authorization' => 'Bearer ' . $tJ]))->body['orders']), 'el manager ve todos');
     T::same(1, count(Router::handle(req('GET', '/orders', null, ['Authorization' => 'Bearer ' . $tA]))->body['orders']), 'el cliente solo los suyos');
     T::same(201, Router::handle(req('POST', '/users', ['email' => 'nuevo@x.es', 'name' => 'N', 'role' => 'client', 'password' => 'Nueva-Clave-2026!'], ['Authorization' => 'Bearer ' . $tJ]))->status, 'alta de usuario');
@@ -354,7 +356,7 @@ function test_diag_checks()
     \Torivac\Config::set(['storage_dir' => Store::root(), 'session_secret' => 'CAMBIA-ESTO-por-una-cadena-aleatoria-de-32-o-mas-caracteres']);
     T::same('fail', $byId(Diag::run(false, __DIR__ . '/../config.sample.php'))['secreto'], 'el session_secret del ejemplo no vale');
     \Torivac\Config::set(['storage_dir' => Store::root(), 'session_secret' => str_repeat('a1b2', 10), 'order_to' => ['info@grupotorivac.com', 'mzamora@torivac.com'], 'mail' => ['driver' => 'resend', 'resend_api_key' => 're_test'], 'prices' => ['xlsx_url' => 'https://x.test/t.xlsx']]);
-    Users::create(['email' => 'jefe@torivac.com', 'name' => 'Jefe', 'role' => 'manager', 'password' => 'Jefe-Clave-2026!']);
+    Users::create(['email' => 'jefe@torivac.com', 'name' => 'Jefe', 'role' => 'manager', 'password' => PW_JEFE]);
     Store::put(Prices::KEY_META, ['at' => gmdate('c'), 'refs' => 9, 'source' => 'xlsx-url']);
     $ok = Diag::run(false, __DIR__ . '/../config.sample.php');
     $s = $byId($ok);
@@ -374,18 +376,18 @@ function test_diag_checks()
 function test_privacy_session_revocation_and_contact_escaping()
 {
     fresh();
-    \Torivac\Config::set(['prices' => ['csv_url' => 'https://sheet.test/x.csv'], 'storage_dir' => Store::root(), 'session_secret' => SECRET, 'admin_token' => 'token-maestro-123', 'allowed_origins' => [], 'order_to' => ['info@grupotorivac.com'], 'mail' => ['driver' => 'file']]);
+    \Torivac\Config::set(['prices' => ['csv_url' => 'https://sheet.test/x.csv'], 'storage_dir' => Store::root(), 'session_secret' => SECRET, 'admin_token' => MASTER_TOKEN, 'allowed_origins' => [], 'order_to' => ['info@grupotorivac.com'], 'mail' => ['driver' => 'file']]);
     Users::create(['email' => 'jefa@torivac.com', 'name' => 'Jefa', 'role' => 'manager', 'password' => 'Manager-Clave-2026']);
-    Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => 'Ana-Clave-2026!!']);
+    Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => PW_ANA]);
     $tok = function ($e, $p) { return Router::handle(req('POST', '/auth/login', ['email' => $e, 'password' => $p]))->body['token']; };
     $jefa = $tok('jefa@torivac.com', 'Manager-Clave-2026');
-    $ana = $tok('ana@acme.es', 'Ana-Clave-2026!!');
+    $ana = $tok('ana@acme.es', PW_ANA);
     Router::handle(req('POST', '/prices/upload', ['csv' => SHEET], ['Authorization' => 'Bearer ' . $jefa]));
     $pub = Router::handle(req('GET', '/prices'));
     $pj = wire($pub);
     T::true(strpos(json_encode($pj), '@') === false && strpos(json_encode($pj), 'jefa') === false, 'ningún correo en la respuesta pública');
     T::same(['upload', 'upload', 'upload'], [$pj['meta']['reason'], $pj['meta']['source'], $pj['prices']['source']], 'origen sin datos personales');
-    T::same([true, 'Authorization'], [strpos($pub->headers['Cache-Control'], 'public') !== false, $pub->headers['Vary']], 'caché pública y Vary');
+    T::same([true, 'Authorization'], [strpos($pub->headers['Cache-Control'], 'public') !== false, $pub->headers['Vary']], 'caché pública y Vary (sin origen no se añade Origin)');
     T::same(5.5, $pj['prices']['items']['R100']['p'], 'los precios siguen siendo públicos');
     $man = Router::handle(req('GET', '/prices', null, ['Authorization' => 'Bearer ' . $jefa]));
     T::same(['upload:jefa@torivac.com', true], [wire($man)['meta']['reason'], strpos($man->headers['Cache-Control'], 'no-store') !== false], 'el manager ve el detalle y no se cachea');
@@ -396,7 +398,8 @@ function test_privacy_session_revocation_and_contact_escaping()
     T::same(401, Router::handle(req('GET', '/auth/me', null, ['Authorization' => 'Bearer ' . $ana]))->status, 'borrado → sin sesión');
     T::same(200, Router::handle(req('GET', '/users', null, master()))->status, 'el token maestro sigue funcionando');
     // contacto con HTML malicioso
-    Router::handle(req('POST', '/contact', ['name' => '<b>Ana</b>', 'email' => 'a<img/src=x/onerror=1>@x.es', 'message' => "hola <script>alert(1)</script>\n& adiós", 'privacy' => true]));
+    T::same(400, Router::handle(req('POST', '/contact', ['name' => 'Ana', 'email' => 'a<img/src=x/onerror=1>@x.es', 'message' => 'hola que tal', 'privacy' => true]))->status, 'un correo con etiquetas HTML ni siquiera llega a enviarse (correo no válido)');
+    Router::handle(req('POST', '/contact', ['name' => '<b>Ana</b>', 'email' => 'ana.p@x.es', 'message' => "hola <script>alert(1)</script>\n& adiós", 'privacy' => true]));
     $mail = outbox()[0] ?? null;
     T::true($mail && !preg_match('/<(img|script)\b/i', $mail['html']) && strpos($mail['html'], '&lt;b&gt;Ana&lt;/b&gt;') !== false, 'sin etiquetas del visitante en el HTML del correo');
 }

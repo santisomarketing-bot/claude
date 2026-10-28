@@ -1,14 +1,20 @@
 <?php
 /**
  * [STORE] Almacén clave-valor en ficheros JSON (sustituye a Cloudflare KV en un hosting con Apache y PHP: cPanel, Plesk…).
- *   claves: user:<email> · order:<nº> · prices:current · prices:meta · prices:history:<ts> · rl:<cubo>:<id> · counter:<yyyymmdd> · proposals:state
+ *   claves: user:<email> · order:<nº> · prices:current · prices:meta · prices:sync · prices:history:<ts> · rl:<cubo>:<sha256 de 32 caracteres del id> · counter:<yyyymmdd> · proposals:state · auth:decoy
  * Escritura atómica (fichero temporal + rename) y bloqueo flock para los contadores. Caducidad opcional (TTL) comprobada al leer.
  * Seguridad: el directorio lleva .htaccess «Require all denied»; lo ideal es ponerlo FUERA de la web (config storage_dir; vacío = automático, ver bootstrap()).
+ * Permisos: ficheros nuevos 0660 y carpetas 0770 (nada legible por otros usuarios del hosting: hay hashes de contraseñas y datos personales de pedidos).
  */
 namespace Torivac;
 
 final class Store
 {
+    /** Permisos de las carpetas nuevas (propietario y grupo; «otros» nada). */
+    const DIR_MODE = 0770;
+    /** Permisos de los ficheros nuevos (propietario y grupo; «otros» nada). */
+    const FILE_MODE = 0660;
+
     private static $root = '';
     private static $note = '';
 
@@ -61,13 +67,20 @@ final class Store
     /** Aviso de bootstrap(): se usó una carpeta distinta de la configurada ('' si todo normal). */
     public static function note(): string { return self::$note; }
 
-    /** crea las carpetas y protege el directorio */
+    /**
+     * crea las carpetas y protege el directorio. Las carpetas nuevas quedan en 0770 aunque el umask del servidor diga otra cosa; en un almacén anterior (0775/0755), kv, locks y
+     * outbox se cierran a «otros»: sin permiso de paso en la carpeta, sus ficheros (aunque sean 0664) dejan de ser alcanzables por otros usuarios del hosting.
+     */
     public static function init(string $dir): void
     {
         self::$root = rtrim($dir, '/\\');
         foreach (['', '/kv', '/locks', '/outbox'] as $d) {
-            if (!@is_dir(self::$root . $d) && !@mkdir(self::$root . $d, 0775, true) && !@is_dir(self::$root . $d)) {
-                throw new \RuntimeException('No puedo crear el directorio de datos: ' . self::$root . $d);
+            $p = self::$root . $d;
+            if (!@is_dir($p)) {
+                if (!@mkdir($p, self::DIR_MODE, true) && !@is_dir($p)) throw new \RuntimeException('No puedo crear el directorio de datos: ' . $p);
+                @chmod($p, self::DIR_MODE);
+            } elseif ($d !== '' && (@fileperms($p) & 0007)) {
+                @chmod($p, self::DIR_MODE);
             }
         }
         $ht = self::$root . '/.htaccess';
@@ -95,15 +108,20 @@ final class Store
         return $o['v'];
     }
 
-    /** Guarda un valor de forma atómica (fichero temporal + rename) con caducidad opcional en segundos. */
+    /**
+     * Guarda un valor de forma atómica (fichero temporal + rename) con caducidad opcional en segundos. Si el valor no se puede codificar a JSON LANZA una excepción
+     * y lo que había guardado queda como estaba (nunca se escribe un «null» que vacíe la clave).
+     */
     public static function put(string $key, $value, ?int $ttl = null): void
     {
         $o = ['v' => $value];
         if ($ttl) $o['x'] = time() + $ttl;
+        $json = Util::enc($o);
         $f = self::file($key);
         $tmp = tempnam(dirname($f), '.tmp');
-        if ($tmp === false || file_put_contents($tmp, Util::enc($o), LOCK_EX) === false) throw new \RuntimeException('No puedo escribir en el directorio de datos');
-        @chmod($tmp, 0664);
+        if ($tmp === false) throw new \RuntimeException('No puedo escribir en el directorio de datos');
+        if (file_put_contents($tmp, $json, LOCK_EX) === false) { @unlink($tmp); throw new \RuntimeException('No puedo escribir en el directorio de datos'); }
+        @chmod($tmp, self::FILE_MODE);
         if (!@rename($tmp, $f)) { @unlink($tmp); throw new \RuntimeException('No puedo guardar ' . $key); }
     }
 
@@ -122,22 +140,52 @@ final class Store
         return $out;
     }
 
+    /** Claves que empiezan por un prefijo SIN leer sus ficheros ni mirar la caducidad, de la más reciente (orden descendente) a la más antigua: para listar «los últimos N». */
+    public static function names(string $prefix): array
+    {
+        $out = [];
+        foreach (glob(self::$root . '/kv/' . rawurlencode($prefix) . '*.json', GLOB_NOSORT) ?: [] as $f) $out[] = rawurldecode(substr(basename($f), 0, -5));
+        rsort($out, SORT_STRING);
+        return $out;
+    }
+
     /** ejecuta $fn con un bloqueo exclusivo (contador de pedidos, límites de uso) */
     public static function locked(string $name, callable $fn)
     {
-        $fh = fopen(self::$root . '/locks/' . preg_replace('/[^A-Za-z0-9_.-]/', '_', $name) . '.lock', 'c');
+        $p = self::$root . '/locks/' . preg_replace('/[^A-Za-z0-9_.-]/', '_', $name) . '.lock';
+        $new = !is_file($p);
+        $fh = fopen($p, 'c');
         if (!$fh) throw new \RuntimeException('No puedo crear el bloqueo');
+        if ($new) @chmod($p, self::FILE_MODE);
         flock($fh, LOCK_EX);
         try { return $fn(); } finally { flock($fh, LOCK_UN); fclose($fh); }
     }
 
-    /** borra lo caducado (lo llama el cron) */
+    /** borra lo caducado (lo llama el cron) y los temporales de escrituras interrumpidas (más de una hora) */
     public static function purge(): int
     {
         $n = 0;
         foreach (glob(self::$root . '/kv/*.json') ?: [] as $f) {
             $o = json_decode((string) @file_get_contents($f), true);
             if (is_array($o) && isset($o['x']) && $o['x'] < time()) { @unlink($f); $n++; }
+        }
+        foreach (glob(self::$root . '/kv/.tmp*') ?: [] as $f) { if ((int) @filemtime($f) < time() - 3600) @unlink($f); }
+        return $n;
+    }
+
+    /**
+     * Borra hasta `$max` registros de límite de uso (rl:*) caducados, mirando como mucho `$maxScan` ficheros (a partir de una posición al azar si hay más): es la limpieza «al vuelo»
+     * que evita que crezcan sin límite aunque nadie llame al cron. Devuelve cuántos borró.
+     */
+    public static function purgeRl(int $max = 200, int $maxScan = 2000): int
+    {
+        $files = glob(self::$root . '/kv/' . rawurlencode('rl:') . '*.json', GLOB_NOSORT) ?: [];
+        if (count($files) > $maxScan) $files = array_slice($files, random_int(0, count($files) - $maxScan), $maxScan);
+        $n = 0;
+        foreach ($files as $f) {
+            if ($n >= $max) break;
+            $o = json_decode((string) @file_get_contents($f), true);
+            if (is_array($o) && isset($o['x']) && $o['x'] < time() && @unlink($f)) $n++;
         }
         return $n;
     }

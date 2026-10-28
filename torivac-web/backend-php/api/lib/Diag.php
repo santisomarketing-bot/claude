@@ -10,7 +10,7 @@ namespace Torivac;
 
 final class Diag
 {
-    const SAMPLE_SECRET = 'CAMBIA-ESTO';
+    const SAMPLE_SECRET = Auth::SAMPLE_SECRET;
 
     /** Una comprobación. */
     private static function c(string $id, string $status, string $msg): array { return ['id' => $id, 'status' => $status, 'msg' => $msg]; }
@@ -68,16 +68,37 @@ final class Diag
             if (Store::note() !== '') $k[] = self::c('datos_desvio', 'warn', Store::note() . ': corrige storage_dir en config.php (o déjalo vacío para que se elija sola)');
         }
         $sec = (string) Config::get('session_secret', '');
-        $k[] = (strlen($sec) < 32 || strpos($sec, self::SAMPLE_SECRET) !== false) ? self::c('secreto', 'fail', 'session_secret debe ser una cadena aleatoria de 32 o más caracteres (no la del ejemplo)') : self::c('secreto', 'ok', 'session_secret definido (' . strlen($sec) . ' caracteres)');
-        $k[] = (string) Config::get('admin_token', '') !== '' ? self::c('token_maestro', 'warn', 'admin_token está activo: úsalo para crear el primer manager y vacíalo después') : self::c('token_maestro', 'ok', 'Sin token maestro (solo entran usuarios con contraseña)');
+        $sp = Auth::secretProblem($sec);
+        $k[] = $sp !== null ? self::c('secreto', 'fail', 'session_secret debe ser una cadena aleatoria de 32 o más caracteres (no la del ejemplo): ' . ($sp === 'sin cambiar' ? 'sigue siendo el valor de ejemplo' : 'ahora tiene ' . strlen($sec)) . '; mientras tanto NADIE puede iniciar sesión') : self::c('secreto', 'ok', 'session_secret definido (' . strlen($sec) . ' caracteres)');
+        $at = (string) Config::get('admin_token', '');
+        if ($at === '') $k[] = self::c('token_maestro', 'ok', 'Sin token maestro (solo entran usuarios con contraseña)');
+        elseif (strlen($at) < Auth::MIN_ADMIN_TOKEN) $k[] = self::c('token_maestro', 'fail', 'admin_token tiene ' . strlen($at) . ' caracteres y hacen falta ' . Auth::MIN_ADMIN_TOKEN . ' o más: mientras tanto el token maestro está DESACTIVADO (no entra nadie con él)');
+        else $k[] = self::c('token_maestro', 'warn', 'admin_token está activo: úsalo para crear el primer manager y vacíalo después');
+        $ct = (string) Config::get('cron_token', '');
+        if ($ct !== '') $k[] = strlen($ct) < Auth::MIN_CRON_TOKEN
+            ? self::c('cron_token', 'fail', 'cron_token tiene ' . strlen($ct) . ' caracteres y hacen falta ' . Auth::MIN_CRON_TOKEN . ' o más: mientras tanto la URL /api/cron?token=… está DESACTIVADA (usa el cron por línea de comandos o alarga el token)')
+            : self::c('cron_token', 'ok', 'cron_token definido (' . strlen($ct) . ' caracteres): la sincronización por URL está activa');
         $to = Orders::team();
-        $bad = array_values(array_filter($to, function ($e) { return !preg_match(Orders::EMAIL, $e); }));
+        $bad = array_values(array_filter($to, function ($e) { return !Orders::validEmail($e); }));
         $k[] = (!$to || $bad) ? self::c('destinatarios', 'fail', 'order_to vacío o con correos no válidos' . ($bad ? ': ' . implode(', ', $bad) : '')) : self::c('destinatarios', 'ok', 'Los pedidos y mensajes llegan a ' . implode(' y ', $to));
         $drv = (string) Config::get('mail.driver', 'none');
         if ($drv === 'resend') $k[] = (string) Config::get('mail.resend_api_key', '') === '' ? self::c('correo', 'fail', 'mail.driver es resend pero falta mail.resend_api_key') : self::c('correo', 'ok', 'Correo con Resend (recuerda verificar el dominio de order_from: SPF y DKIM)');
         elseif ($drv === 'mail') $k[] = self::c('correo', 'warn', 'Correo con mail() del hosting: sin garantías de entrega; se recomienda Resend');
         elseif ($drv === 'file') $k[] = self::c('correo', 'warn', 'Modo pruebas: los correos se guardan en la carpeta de datos (outbox) y no se envían');
         else $k[] = self::c('correo', 'fail', 'mail.driver = none: no se envía ningún correo (el pedido se guarda, pero nadie lo recibe)');
+        $copy = Config::get('order_copy', 'capped');
+        $mode = Orders::copyMode();
+        $dmRaw = Config::get('order_copy_daily_max', null);
+        $dm = Orders::copyDailyMax();
+        if ($mode === 'capped') $k[] = ($dmRaw !== null && !is_numeric($dmRaw)) || $dm > 1000
+            ? self::c('copia_cliente', 'warn', 'Copia del presupuesto al cliente activa (máx. ' . Orders::COPY_PER_RECIPIENT . ' por destinatario cada 24 h) pero order_copy_daily_max ' . (is_numeric($dmRaw) ? 'vale ' . $dm . ', demasiado alto para evitar abusos' : 'no es un número: se usa ' . $dm))
+            : self::c('copia_cliente', 'ok', 'Copia del presupuesto al cliente activa: solo texto fijo y sin adjunto; máx. ' . Orders::COPY_PER_RECIPIENT . ' por destinatario cada 24 h y ' . $dm . ' al día en total');
+        elseif (Orders::copyModeValid()) $k[] = self::c('copia_cliente', 'ok', 'Copia del presupuesto al cliente desactivada (order_copy = off): solo se avisa al equipo');
+        else $k[] = self::c('copia_cliente', 'warn', 'order_copy tiene un valor no válido («' . mb_substr(is_scalar($copy) ? (string) $copy : gettype($copy), 0, 30) . '»): se trata como off y no se envía copia al cliente (valores válidos: capped y off)');
+        $oh = Config::get('orders_per_hour_max', null);
+        $k[] = $oh !== null && !is_numeric($oh)
+            ? self::c('limite_pedidos', 'warn', 'orders_per_hour_max no es un número: se usa ' . Orders::ordersPerHourMax() . ' pedidos por hora')
+            : self::c('limite_pedidos', 'ok', 'Límite global de ' . Orders::ordersPerHourMax() . ' pedidos por hora (protege la cuota del correo y el buzón del equipo)');
         $hasSa = Config::get('prices.google_service_account', '') && Config::get('prices.sheet_id', '');
         $src = $hasSa ? 'cuenta de servicio + id de archivo de Drive' : (Config::get('prices.xlsx_url', '') ? 'descarga directa de un .xlsx' : (Config::get('prices.csv_url', '') ? 'CSV público de una hoja de Google' : ''));
         $k[] = $src === '' ? self::c('precios', 'warn', 'Sin origen de precios: solo se pueden subir hojas a mano desde el panel') : self::c('precios', 'ok', 'Precios desde: ' . $src);
@@ -87,7 +108,9 @@ final class Diag
             $k[] = $age <= 36 ? self::c('sincronizacion', 'ok', 'Últimos precios: ' . $meta['at'] . ' (' . ($meta['refs'] ?? '?') . ' referencias, ' . ($meta['source'] ?? '?') . ')')
                 : self::c('sincronizacion', 'warn', 'Los precios llevan ' . round($age / 24) . ' días sin actualizarse: ¿está programado el cron diario (api/cron.php)?');
         } else $k[] = self::c('sincronizacion', 'warn', 'Todavía no hay precios cargados: sube una hoja desde el panel o ejecuta api/cron.php');
-        $orders = array_slice(Store::keys('order:'), -20);                       // los 20 últimos pedidos: ¿salió el aviso por correo?
+        $sync = Store::get(Prices::KEY_SYNC);
+        if (is_array($sync) && empty($sync['ok'])) $k[] = self::c('sincronizacion_ultima', 'warn', 'La última sincronización de precios (' . ($sync['at'] ?? '?') . ', ' . ($sync['reason'] ?? '?') . ') ' . (!empty($sync['blocked']) ? 'se BLOQUEÓ por seguridad' : 'falló') . ' y se conservan los precios vigentes: ' . ($sync['error'] ?? ''));
+        $orders = array_slice(Store::names('order:'), 0, 20);                    // los 20 últimos pedidos (solo se leen esos, aunque haya miles): ¿salió el aviso por correo?
         $lost = 0;
         foreach ($orders as $key) { $o = Store::get($key); if (is_array($o) && isset($o['emailed']) && empty($o['emailed']['team'])) $lost++; }
         if ($lost) $k[] = self::c('pedidos_sin_correo', 'warn', "$lost de los últimos " . count($orders) . ' pedidos se guardaron pero su aviso por correo no salió (se marcan «sin aviso por correo» en Pedidos): revisa el correo del servidor');
