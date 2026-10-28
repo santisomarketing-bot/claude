@@ -1,0 +1,238 @@
+{
+ "_doc": "Orden de las categorías en la web actual de grupotorivac.com (scripts/probe_original_layout.mjs). Lo usa el aspecto «Original».",
+ "shop": [
+  51,
+  19,
+  60,
+  122,
+  22,
+  63,
+  64,
+  65,
+  83,
+  30,
+  88
+ ],
+ "panel": [
+  19,
+  51,
+  60,
+  122,
+  22,
+  63,
+  64,
+  65,
+  83,
+  88,
+  96,
+  30
+ ],
+ "sub": {
+  "19": [
+   37,
+   33,
+   40,
+   45,
+   28,
+   29
+  ],
+  "22": [
+   119,
+   118
+  ],
+  "30": [
+   77,
+   74,
+   72,
+   73,
+   82,
+   80,
+   81,
+   78,
+   442,
+   76,
+   75
+  ],
+  "33": [
+   44,
+   34
+  ],
+  "37": [
+   38,
+   43
+  ],
+  "40": [
+   41,
+   42
+  ],
+  "45": [
+   700,
+   699,
+   32
+  ],
+  "51": [
+   52,
+   56
+  ],
+  "52": [
+   55,
+   53,
+   54
+  ],
+  "56": [
+   57,
+   58,
+   59
+  ],
+  "60": [
+   61,
+   62
+  ],
+  "61": [
+   103,
+   104
+  ],
+  "62": [
+   105,
+   106
+  ],
+  "65": [
+   69,
+   66,
+   67,
+   68
+  ],
+  "83": [
+   85,
+   86,
+   87,
+   84
+  ],
+  "88": [
+   93,
+   92,
+   120,
+   90,
+   94,
+   444,
+   95
+  ],
+  "96": [
+   101,
+   97,
+   100,
+   99,
+   98
+  ],
+  "107": [
+   111,
+   108
+  ],
+  "122": [
+   107,
+   112
+  ]
+ },
+ "hero": {
+  "19": {
+   "file": "assets/img/original/variadores-de-tension.jpg",
+   "w": 1200,
+   "h": 580,
+   "bytes": 61029,
+   "sha": "206905bc39"
+  },
+  "22": {
+   "file": "assets/img/original/bobinas-encapsuladas.jpg",
+   "w": 1200,
+   "h": 580,
+   "bytes": 57061,
+   "sha": "bce29d1a0b"
+  },
+  "30": {
+   "file": "assets/img/original/botones-de-mando.jpg",
+   "w": 1200,
+   "h": 580,
+   "bytes": 52795,
+   "sha": "1edde71f36"
+  },
+  "51": {
+   "file": "assets/img/original/transformadores.jpg",
+   "w": 1200,
+   "h": 580,
+   "bytes": 62363,
+   "sha": "22d55dab33"
+  },
+  "60": {
+   "file": "assets/img/original/estabilizadores-de-tension.jpg",
+   "w": 1200,
+   "h": 580,
+   "bytes": 63364,
+   "sha": "a4471713c8"
+  },
+  "65": {
+   "file": "assets/img/original/portaled.jpg",
+   "w": 1200,
+   "h": 580,
+   "bytes": 48048,
+   "sha": "82c855c339"
+  },
+  "83": {
+   "file": "assets/img/original/hembrillas.jpg",
+   "w": 1200,
+   "h": 580,
+   "bytes": 49521,
+   "sha": "e6abfa0d0a"
+  },
+  "88": {
+   "file": "assets/img/original/resistencias.jpg",
+   "w": 1200,
+   "h": 580,
+   "bytes": 53902,
+   "sha": "a1066aeddc"
+  },
+  "96": {
+   "file": "assets/img/original/electronica.jpg",
+   "w": 1200,
+   "h": 580,
+   "bytes": 63668,
+   "sha": "633062ee87"
+  },
+  "122": {
+   "file": "assets/img/original/reostatos-y-potenciometros-bobinados.jpg",
+   "w": 1200,
+   "h": 580,
+   "bytes": 59001,
+   "sha": "f6342cb087"
+  }
+ },
+ "sections": {
+  "_doc": "Cómo maqueta la web actual cada sección de las páginas (medido a 1440 px con scripts/probe_original_page.mjs). Clave: id de sección de Elementor (igual en los cuatro idiomas). kind: photo-text | card-photo | photo-card | cards | dark-cta | dark-photo; photo: lado de la foto; title: el h2 va centrado sobre las dos columnas; art: trazos del logotipo de fondo (top-right | bottom-left) o foto de la banda oscura (photo); artImg: foto de fondo cuando el importador no la trae.",
+  "e8b1c32": {
+   "kind": "photo-text",
+   "photo": "left",
+   "art": "top-right"
+  },
+  "a590c5d": {
+   "kind": "cards"
+  },
+  "547d7f2": {
+   "kind": "dark-photo",
+   "art": "photo",
+   "artImg": "assets/media/8fa0e9f9-Blog-Torivac.webp"
+  },
+  "d43b12a": {
+   "kind": "card-photo",
+   "photo": "right",
+   "title": true,
+   "art": "top-right"
+  },
+  "30e6af8": {
+   "kind": "dark-cta"
+  },
+  "743e143": {
+   "kind": "photo-card",
+   "photo": "left",
+   "art": "bottom-left"
+  }
+ }
+}

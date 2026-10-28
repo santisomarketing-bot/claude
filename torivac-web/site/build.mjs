@@ -10,7 +10,9 @@ import { Ctx, writeFile, esc, attr, mapLink, plain, setCleanUrls, setVersionedAs
 import { htaccess, langHtaccess, robotsTxt, basePathOf } from './lib/hosting.mjs';
 import { LANGS, T, t } from './lib/i18n.mjs';
 import * as TPL from './templates.mjs';
-import { productNode, itemListNode, postNode } from './lib/seo.mjs';
+import { productNode, itemListNode, postNode, jsonScript } from './lib/seo.mjs';
+import { THEMES, themeBootJs } from './lib/themes.mjs';
+import crypto from 'node:crypto';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CAT = path.join(ROOT, 'data', 'catalog');
@@ -23,11 +25,12 @@ const ABS = arg('base') || '';
 const STAGING = process.argv.includes('--staging') || process.env.TORIVAC_STAGING === '1';   // dominio de pruebas: noindex, robots Disallow y cinta «entorno de pruebas»
 const PHP_API = process.argv.includes('--php-api');                                          // el API (PHP) vive en la misma web, en /api (hosting con cPanel)
 // [THEME] aspecto de la web: «ficha» = Ficha técnica (nuevo, por defecto) · «clasico» = el de la web original. Ver docs/DISENO-TEMAS.md
-const THEMES = ['ficha', 'clasico'];
 const THEME = arg('theme') || process.env.TORIVAC_THEME || 'ficha';
 if (!THEMES.includes(THEME)) { console.error(`--theme debe ser uno de: ${THEMES.join(', ')} (recibido: ${THEME})`); process.exit(2); }
 // El selector de aspecto (cinta y pie) se muestra por defecto en el demo y en pruebas, para que el cliente compare; en producción se publica UN aspecto salvo que se pida --theme-switch.
 const THEME_SWITCH = process.argv.includes('--theme-switch') || (!process.argv.includes('--no-theme-switch') && (!ABS || STAGING));
+// Aspectos que lleva ESTA compilación: con selector, todos; sin él, solo el elegido (así «Clásico» solo y «Ficha técnica» sola salen exactamente como antes, sin marcado ni hojas de otros aspectos).
+const THEME_LIST = THEME_SWITCH ? THEMES : [THEME];
 setCleanUrls(!!ABS);                                                                         // producción: URLs sin index.html; demo (doble clic): con index.html
 setVersionedAssets(!!ABS);                                                                   // producción: CSS y JS con «?v=huella» (actualizar sin caché vieja); demo: sin versión
 // Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
@@ -133,7 +136,7 @@ const fundES = Object.keys(imageMap).find((k) => /MANUAL-FEDER/i.test(k));
 const fundOT = Object.keys(imageMap).find((k) => /Logotipos_FondosEuropeos/i.test(k));
 const logo = imageMap[logoKey]?.file || 'assets/img/logo.png';
 const NAVKEYS = ['home', 'company', 'products', 'projects', 'catalog', 'blog', 'contact'];
-const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, staging: STAGING, theme: THEME, themeSwitch: THEME_SWITCH, absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
+const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, staging: STAGING, theme: THEME, themeSwitch: THEME_SWITCH, themes: THEME_LIST, O: THEME_LIST.includes('original'), ONLY_O: THEME_LIST.length === 1 && THEME_LIST[0] === 'original', absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
 const QSLUG = { es: '/presupuesto/', en: '/en/quote/', fr: '/fr/devis/', de: '/de/angebot/' };
 meta.catalogHref = {};
 for (const l of LANGS) {
@@ -164,7 +167,25 @@ for (const l of LANGS) {
 }
 
 site.prodById = prodById;
+site.homeEs = (pages.es || {})[site.home.es];                                    // portada en castellano: de ella se toma la foto que falta en las traducidas
 for (const c of flatVisible) c.firstProduct = prodIdsOf(c)[0];
+// [ORIGINAL] datos del aspecto «Original»: el orden de las categorías de la web actual (data/catalog/original-layout.json, de scripts/probe_original_layout.mjs), qué categorías hoja llevan a UN solo producto
+//   (la web actual las redirige a él) y los textos del bloque de contacto de la portada, que la web actual repite al pie de cada ficha de producto.
+site.orderShop = []; site.orderPanel = []; site.orderSub = new Map(); site.leafProduct = new Map(); site.contactBlocks = {}; site.heroOf = new Map(); site.oSections = new Map();
+if (site.O) {
+  const oLayout = jl('original-layout.json', { shop: [], panel: [], sub: {} });
+  // Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
+  const pickCats = (ids) => ids.map(canon).filter((id, i, a) => a.indexOf(id) === i).map((id) => catById.get(id)).filter(Boolean);
+  site.orderShop = pickCats(oLayout.shop); site.orderPanel = pickCats(oLayout.panel);
+  site.orderSub = new Map(Object.entries(oLayout.sub).map(([k, ids]) => [canon(+k), pickCats(ids)]));
+  site.oSections = new Map(Object.entries(oLayout.sections || {}).filter(([k]) => !k.startsWith('_')));          // cómo maqueta la web actual cada sección de las páginas (por id de sección de Elementor)
+  site.heroOf = new Map(Object.entries(oLayout.hero || {}).map(([k, v]) => [canon(+k), v]));          // foto grande de cada categoría que la web actual enseña junto al texto (scripts/probe_original_heroes.mjs)
+  for (const c of flatVisible) if (!c.children.length && prodIdsOf(c).length === 1) site.leafProduct.set(c.id, prodById.get(prodIdsOf(c)[0]));
+  for (const l of LANGS) {
+    const sec = ((pages[l] || {})[site.home[l]]?.sections || [])[6], hs = (sec?.blocks || []).filter((b) => b.t === 'h'), ps = (sec?.blocks || []).filter((b) => b.t === 'p' && !/reCAPTCHA|^\./.test(b.h));
+    site.contactBlocks[l] = { kicker: hs.find((h) => h.l >= 4)?.x || '', title: hs.find((h) => h.l <= 3)?.x || '', titleH: hs.find((h) => h.l <= 3)?.h || '', text: ps[0]?.h || '' };
+  }
+}
 // rutas lógicas existentes (para reescribir enlaces internos)
 for (const l of LANGS) for (const p of Object.keys(pages[l] || {})) site.paths.add(p);
 for (const p of products) for (const l of LANGS) site.paths.add(p.pathFor[l]);
@@ -214,21 +235,24 @@ for (const lang of LANGS) {
     const intro = (L[pp]?.sections || []).flatMap((s) => s.blocks);
     const h1 = intro.find((b) => b.t === 'h');
     const title = h1?.x || t('products', lang);
-    const hero = `<section class="page-hero bp"><div class="container"><h1>${esc(title)}</h1></div></section>`;
+    // «Original»: encima del titular va el rótulo «PRODUCTOS A MEDIDA» y el titular pasa a ser «Nuestros productos» (como la web actual)
+    const hero = `<section class="page-hero bp"><div class="container">${site.O ? `<p class="${TPL.oc(site, 'o-kicker')}">${esc(t('o_shop_kicker', lang))}</p>` : ''}<h1>${TPL.lbl(site, esc(title), esc(t('o_shop_title', lang)))}</h1></div></section>`;
     const alt = Object.fromEntries(LANGS.map((l) => [l, site.products[l]]));
-    emit(pp, TPL.layout(ctx, { title: L[pp]?.title || title, description: L[pp]?.meta_description, template: 'shop', hero, body: TPL.shopBody(ctx, { products, intro: [] }), alts: alt, scripts: ['assets/js/shop.js'], crumbs: [crumbHome(lang), crumbProducts(lang)], ld: [itemListNode(ABS, pp, products.map((x) => ({ path: x.pathFor[lang], name: x.name[lang] || x.name.es })))] }));
+    emit(pp, TPL.layout(ctx, { title: L[pp]?.title || title, description: L[pp]?.meta_description, template: 'shop', bodyClass: 'tv-shop-root', hero, body: TPL.shopBody(ctx, { products, intro: [] }), alts: alt, scripts: ['assets/js/shop.js'], crumbs: [crumbHome(lang), crumbProducts(lang)], ld: [itemListNode(ABS, pp, products.map((x) => ({ path: x.pathFor[lang], name: x.name[lang] || x.name.es })))] }));
   }
 
   // categorías (nombres repetidos en el mismo idioma → se desambiguan en el <title> con el nombre del padre)
   const dupNames = new Map(); for (const c of flatVisible) { const k = `${lang}|${c.name[lang] || c.name.es}`; dupNames.set(k, (dupNames.get(k) || 0) + 1); }
   for (const c of flatVisible) {
     const cp = c.pathFor[lang];
+    const leafP = site.leafProduct.get(c.id);
+    if (site.ONLY_O && leafP) { aliases.set(cp, leafP.pathFor[lang]); continue; }          // solo «Original»: una categoría hoja con UN producto redirige a él, como la web actual (se emite como redirección 301)
     const ctx = mkctx(lang, cp, 'products');
     const ids = new Set(prodIdsOf(c));
     const name = c.name[lang] || c.name.es;
     const hero = `<section class="page-hero bp"><div class="container"><h1>${esc(name)}</h1></div></section>`;
     const alt = Object.fromEntries(LANGS.map((l) => [l, c.pathFor[l]]));
-    emit(cp, TPL.layout(ctx, { title: fitTitle(dupNames.get(`${lang}|${name}`) > 1 && c.trail.length > 1 ? `${name} (${c.trail[c.trail.length - 2].name[lang] || c.trail[c.trail.length - 2].name.es})` : name), description: c.seo?.[lang]?.description || c.seo?.es?.description, template: 'shop', hero, body: TPL.shopBody(ctx, { products: products.filter((p) => ids.has(p.id)), category: c, intro: (c.description[lang] || c.description.es || []) }), alts: alt, scripts: ['assets/js/shop.js', ...(c.id === 19 ? ['assets/js/lab.js'] : [])], crumbs: [crumbHome(lang), crumbProducts(lang), ...c.trail.map((x) => ({ name: x.name[lang] || x.name.es, path: x.pathFor[lang] }))], ld: [itemListNode(ABS, cp, products.filter((x) => ids.has(x.id)).map((x) => ({ path: x.pathFor[lang], name: x.name[lang] || x.name.es })))] }));
+    emit(cp, TPL.layout(ctx, { title: fitTitle(dupNames.get(`${lang}|${name}`) > 1 && c.trail.length > 1 ? `${name} (${c.trail[c.trail.length - 2].name[lang] || c.trail[c.trail.length - 2].name.es})` : name), description: c.seo?.[lang]?.description || c.seo?.es?.description, template: 'shop', bodyClass: 'tv-shop-cat', oRedirect: leafP ? leafP.pathFor[lang] : '', hero, body: TPL.shopBody(ctx, { products: products.filter((p) => ids.has(p.id)), category: c, intro: (c.description[lang] || c.description.es || []) }), alts: alt, scripts: ['assets/js/shop.js', ...(c.id === 19 ? ['assets/js/lab.js'] : [])], crumbs: [crumbHome(lang), crumbProducts(lang), ...c.trail.map((x) => ({ name: x.name[lang] || x.name.es, path: x.pathFor[lang] }))], ld: [itemListNode(ABS, cp, products.filter((x) => ids.has(x.id)).map((x) => ({ path: x.pathFor[lang], name: x.name[lang] || x.name.es })))] }));
   }
 
   // fichas de producto
@@ -268,7 +292,10 @@ for (const lang of LANGS) {
     const h1 = head.find((b) => b.t === 'h');
     const title = h1?.x || t('contact_us', lang);
     const hero = `<section class="page-hero bp"><div class="container"><h1>${esc(title)}</h1></div></section>`;
-    const body = `<section class="sec"><div class="container split" style="align-items:start"><div class="prose">${TPL.contactIntro(ctx, head.filter((b) => b !== h1))}</div>${TPL.contactForm(ctx, 'page')}</div></section>`;
+    const classic = `<section class="sec"><div class="container split" style="align-items:start"><div class="prose">${TPL.contactIntro(ctx, head.filter((b) => b !== h1))}</div>${TPL.contactForm(ctx, 'page')}</div></section>`;
+    // «Original»: formulario en un recuadro y los datos al lado, como la web actual; con selector de aspecto, cada hoja muestra su bloque (el de siempre lleva `o-not`, que «Original» oculta)
+    const original = site.O ? TPL.contactPageOriginal(ctx, head.filter((b) => b !== h1 && !(b.t === 'p' && /^\s*\./.test(b.h.replace(/<[^>]+>/g, '')))), bl.find((b) => b.t === 'img' && b.img?.w >= 400), pg?.sections?.[0]?.bg) : '';
+    const body = !site.O ? classic : site.ONLY_O ? original : `<div class="o-not">${classic}</div>${original}`;
     emit(cp, TPL.layout(ctx, { title: pg?.title || title, description: pg?.meta_description, template: 'contact', hero, body, alts: alts(cp), scripts: ['assets/js/contact.js'], crumbs: [crumbHome(lang), { name: title, path: cp }] }));
   }
 
@@ -328,21 +355,29 @@ for (const p of products) {
 }
 const i18n = Object.fromEntries(LANGS.map((l) => [l, Object.fromEntries(Object.keys(T).map((k) => [k, T[k][l] ?? T[k].es]))]));
 const thumbsUsed = Object.fromEntries(Object.entries(thumbs).filter(([k]) => k !== '__logo' && Object.values(itemsJs).some((i) => i.th === k)));
-const catalogJs = `/* [DATA] generado por site/build.mjs — no editar */\nwindow.TV=window.TV||{};\nTV.meta=${JSON.stringify({ currency: meta.currency || 'EUR', demo: site.demo, recipients: LIVE ? (meta.order_recipients?.to || []).slice(0, 1) : meta.order_recipients?.to || [], api: API_URL, clean: !!ABS, contact: meta.contact })};\nTV.i18n=${JSON.stringify(i18n)};\nTV.items=${JSON.stringify(itemsJs)};\nTV.sheet=${JSON.stringify({ skus: Object.fromEntries(products.filter((p) => p.sku).map((p) => [p.sku, p.id])), rules: jl('ref-rules.json', { rules: [] }).rules.map(({ pattern, pid }) => ({ pattern, pid })) })};\nTV.thumbs=${JSON.stringify(thumbsUsed)};\nTV.logo=${JSON.stringify(thumbs.__logo || null)};\n`;
+const catalogJs = `/* [DATA] generado por site/build.mjs — no editar */\nwindow.TV=window.TV||{};\n(function(){var e=document.getElementById('tv-boot');if(e){try{var b=JSON.parse(e.textContent);window.TV_LANG=b.lang;window.TV_PATHS=b.paths}catch(x){}}})();\nTV.meta=${JSON.stringify({ currency: meta.currency || 'EUR', demo: site.demo, recipients: LIVE ? (meta.order_recipients?.to || []).slice(0, 1) : meta.order_recipients?.to || [], api: API_URL, clean: !!ABS, contact: meta.contact })};\nTV.i18n=${JSON.stringify(i18n)};\nTV.items=${JSON.stringify(itemsJs)};\nTV.sheet=${JSON.stringify({ skus: Object.fromEntries(products.filter((p) => p.sku).map((p) => [p.sku, p.id])), rules: jl('ref-rules.json', { rules: [] }).rules.map(({ pattern, pid }) => ({ pattern, pid })) })};\nTV.thumbs=${JSON.stringify(thumbsUsed)};\nTV.logo=${JSON.stringify(thumbs.__logo || null)};\n`;
 writeFile(DIST, 'assets/data/catalog.js', catalogJs);
 writeFile(DIST, 'assets/data/prices.js', `/* [DATA] precios — se regenera con scripts/build_prices.py (Sesión 6) */\nwindow.TV=window.TV||{};\nTV.prices=${JSON.stringify(prices)};\n`);
-writeFile(DIST, 'assets/data/proposals.js', `window.TV=window.TV||{};TV.proposals=${JSON.stringify(proposals)};\n`);
 
 // [ADMIN] datos de cobertura para la vista Contenido + página /admin/
 const adminProducts = products.map((p) => ({ id: p.id, name: p.name.es, cat: p.mainCategory ? p.mainCategory.name.es : '', st: { en: p.translation_status.en, fr: p.translation_status.fr, de: p.translation_status.de }, variants: p.variants.length, vtags: (p.voltage_tags || []).length, pdfs: p.pdfs.length }));
 const byRef = {}; for (const p of products) { const vs = p.variants.length ? p.variants : [{ ref: 'P' + p.id }]; for (const v of vs) byRef[v.ref] = { cat: p.mainCategory ? p.mainCategory.trail.map((c) => c.name.es).join(' ') : '' }; }
-writeFile(DIST, 'assets/data/admin-data.js', `window.TV=window.TV||{};TV.admin=${JSON.stringify({ products: adminProducts, byRef })};\n`);
-for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (fs.existsSync(path.join(CAT, f))) { fs.mkdirSync(path.join(DIST, 'assets', 'data'), { recursive: true }); fs.copyFileSync(path.join(CAT, f), path.join(DIST, 'assets', 'data', f)); }
+// Propuestas de cambio y cobertura del catálogo son datos INTERNOS de gestión (incluyen carencias legales detectadas en la web original): con servidor solo los ve un manager
+//   (GET /api/admin/data, que lee estos archivos generados); sin servidor (demo con doble clic) van en la propia demo, que no es pública.
+if (LIVE) {
+  const data = { proposals, admin: { products: adminProducts, byRef } };
+  fs.writeFileSync(path.join(ROOT, 'backend-php', 'api', 'generated', 'admin-data.json'), JSON.stringify(data));
+  fs.writeFileSync(path.join(ROOT, 'workers', 'api', 'src', 'generated', 'admin-data.js'), `// GENERADO por site/build.mjs (no editar a mano). Propuestas y cobertura del catálogo: solo para managers (GET /api/admin/data).\nexport default ${JSON.stringify(data)};\n`);
+} else {
+  writeFile(DIST, 'assets/data/proposals.js', `window.TV=window.TV||{};TV.proposals=${JSON.stringify(proposals)};\n`);
+  writeFile(DIST, 'assets/data/admin-data.js', `window.TV=window.TV||{};TV.admin=${JSON.stringify({ products: adminProducts, byRef })};\n`);
+}
+for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (!LIVE && fs.existsSync(path.join(CAT, f))) { fs.mkdirSync(path.join(DIST, 'assets', 'data'), { recursive: true }); fs.copyFileSync(path.join(CAT, f), path.join(DIST, 'assets', 'data', f)); }
 {
   const ctx = mkctx('es', '/admin/', 'admin');
   // Ruta relativa al recurso `s` desde /admin/ (assets del panel).
   const a = (s) => ctx.asset(s);
-  writeFile(DIST, 'admin/index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel · Torivac${API_URL ? '' : ' (demo)'}</title><link rel="icon" href="${a('assets/img/favicon.png')}">${['fonts', 'tokens', 'base', 'layout', 'components', 'admin'].map((c) => `<link rel="stylesheet" href="${a(`assets/css/${c}.css`)}">`).join('')}</head><body class="admin tv-admin" data-path="/admin/"><input type="hidden" id="logo-src" value="${a(site.logo)}"><div id="admin-root"></div><div class="toast" id="toast" role="status"></div><script>window.TV_LANG='es';</script><script src="${a('assets/data/catalog.js')}"></script><script src="${a('assets/data/prices.js')}"></script><script src="${a('assets/data/proposals.js')}"></script><script src="${a('assets/data/admin-data.js')}"></script><script src="${a('assets/js/quote.js')}"></script><script src="${a('assets/vendor/jspdf.umd.min.js')}"></script><script src="${a('assets/vendor/jspdf.plugin.autotable.min.js')}"></script><script src="${a('assets/vendor/xlsx.mini.min.js')}"></script><script src="${a('assets/js/pdf.js')}"></script><script src="${a('assets/js/price-sheet.js')}"></script><script src="${a('assets/js/admin-report.js')}"></script><script src="${a(API_URL ? 'assets/js/admin-live.js' : 'assets/js/admin.js')}"></script></body></html>`);
+  writeFile(DIST, 'admin/index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel · Torivac${API_URL ? '' : ' (demo)'}</title><link rel="icon" href="${a('assets/img/favicon.png')}">${['fonts', 'tokens', 'base', 'layout', 'components', 'admin'].map((c) => `<link rel="stylesheet" href="${a(`assets/css/${c}.css`)}">`).join('')}</head><body class="admin tv-admin" data-path="/admin/"><input type="hidden" id="logo-src" value="${a(site.logo)}"><div id="admin-root"></div><div class="toast" id="toast" role="status"></div>${jsonScript('tv-boot', { lang: 'es', paths: {} })}<script src="${a('assets/data/catalog.js')}"></script><script src="${a('assets/data/prices.js')}"></script>${API_URL ? '' : `<script src="${a('assets/data/proposals.js')}"></script><script src="${a('assets/data/admin-data.js')}"></script>`}<script src="${a('assets/js/quote.js')}"></script><script src="${a('assets/vendor/jspdf.umd.min.js')}"></script><script src="${a('assets/vendor/jspdf.plugin.autotable.min.js')}"></script><script src="${a('assets/vendor/xlsx.mini.min.js')}"></script><script src="${a('assets/js/pdf.js')}"></script><script src="${a('assets/js/price-sheet.js')}"></script><script src="${a('assets/js/admin-report.js')}"></script><script src="${a(API_URL ? 'assets/js/admin-live.js' : 'assets/js/admin.js')}"></script></body></html>`);
   count++;
 }
 
@@ -357,6 +392,8 @@ const SRC = path.join(ROOT, 'site', 'assets');
 // Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
 const copyDir = (a, b) => { fs.mkdirSync(b, { recursive: true }); for (const e of fs.readdirSync(a, { withFileTypes: true })) { const s = path.join(a, e.name), d = path.join(b, e.name); e.isDirectory() ? copyDir(s, d) : fs.copyFileSync(s, d); } };
 copyDir(SRC, path.join(DIST, 'assets'));
+if (!site.O) fs.rmSync(path.join(DIST, 'assets', 'img', 'original'), { recursive: true, force: true });          // fotos de categoría del aspecto «Original»: no van en una web que no lo lleva
+if (LIVE) fs.rmSync(path.join(DIST, 'assets', 'js', 'admin.js'), { force: true });          // panel de demostración (con credenciales de ejemplo): no se publica donde hay servidor real
 // ───────────────────────────────────────────────────────────── [CSS] hoja única site.css: fuentes + aspecto «Clásico» (capa classic) + aspecto «Ficha técnica» (capa ficha, que gana siempre)
 //   Con --base: minificada y con las fuentes como archivos woff2 (cacheables, no bloquean el pintado).
 //   Sin --base (demo con doble clic): legible y con las fuentes en base64, porque file:// no carga fuentes externas.
@@ -364,15 +401,16 @@ copyDir(SRC, path.join(DIST, 'assets'));
 {
   // Texto del archivo site/assets/css/<n>.css.
   const css = (n) => fs.readFileSync(path.join(SRC, 'css', n + '.css'), 'utf8');
-  const withFicha = THEME === 'ficha' || THEME_SWITCH;
-  const fonts = ['fonts', ...(withFicha ? ['fonts-ficha'] : [])].map((n) => css(ABS ? n + '-files' : n)).join('\n');
+  const withFicha = THEME_LIST.includes('ficha'), withOriginal = THEME_LIST.includes('original');
+  const fonts = ['fonts', ...(withFicha ? ['fonts-ficha'] : []), ...(withOriginal ? ['fonts-original'] : [])].map((n) => css(ABS ? n + '-files' : n)).join('\n');
   const classic = ['tokens', 'base', 'layout', 'components', 'art'].map(css).join('\n');
-  const body = withFicha ? `@layer classic,ficha;\n@layer classic{\n${classic}\n}\n@layer ficha{\n${['ficha-tokens', 'ficha'].map(css).join('\n')}\n}` : classic;
+  const layers = ['classic', ...(withFicha ? ['ficha'] : []), ...(withOriginal ? ['original'] : [])];
+  const body = layers.length > 1 ? `@layer ${layers.join(',')};\n@layer classic{\n${classic}\n}` + (withFicha ? `\n@layer ficha{\n${['ficha-tokens', 'ficha'].map(css).join('\n')}\n}` : '') + (withOriginal ? `\n@layer original{\n${['original-tokens', 'original'].map(css).join('\n')}\n}` : '') : classic;
   const all = `${fonts}\n${body}`;
   const out = ABS ? all.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/\s*([{};,>])\s*/g, '$1').replace(/;}/g, '}').trim() : all;
   fs.writeFileSync(path.join(DIST, 'assets', 'css', 'site.css'), out);
-  for (const f of ['ficha.css', 'ficha-tokens.css', 'fonts-ficha.css', 'fonts-ficha-files.css']) fs.rmSync(path.join(DIST, 'assets', 'css', f), { force: true });     // solo viven dentro de site.css
-  console.log(`CSS: site.css ${(out.length / 1024).toFixed(0)} KB · aspecto ${THEME}${withFicha ? '' : ' (solo Clásico)'}${THEME_SWITCH ? ' · con selector de aspecto' : ''}`);
+  for (const f of ['ficha.css', 'ficha-tokens.css', 'fonts-ficha.css', 'fonts-ficha-files.css', 'original.css', 'original-tokens.css', 'fonts-original.css', 'fonts-original-files.css']) fs.rmSync(path.join(DIST, 'assets', 'css', f), { force: true });     // solo viven dentro de site.css
+  console.log(`CSS: site.css ${(out.length / 1024).toFixed(0)} KB · aspecto ${THEME}${layers.length > 1 ? '' : ' (solo Clásico)'}${THEME_SWITCH ? ' · con selector de aspecto' : ''}`);
 }
 fs.mkdirSync(path.join(DIST, 'assets', 'pdf'), { recursive: true });
 for (const f of pdfLocal.keys()) fs.copyFileSync(path.join(pdfDir, f), path.join(DIST, 'assets', 'pdf', f));
@@ -415,7 +453,7 @@ if (ABS && !STAGING) {
 if (ABS) {
   const bp = basePathOf(ABS), origin = new URL(ABS).origin;
   fs.writeFileSync(path.join(DIST, 'robots.txt'), robotsTxt({ base: ABS, staging: STAGING }));
-  fs.writeFileSync(path.join(DIST, '.htaccess'), htaccess({ base: ABS, staging: STAGING, aliases, pdfRedirects: [...pdfLocal], apiOrigin: API_URL ? new URL(API_URL).origin : '', phpApi: PHP_API }));
+  fs.writeFileSync(path.join(DIST, '.htaccess'), htaccess({ base: ABS, staging: STAGING, aliases, pdfRedirects: [...pdfLocal], apiOrigin: API_URL ? new URL(API_URL).origin : '', phpApi: PHP_API, scriptHashes: THEME_SWITCH ? [crypto.createHash('sha256').update(themeBootJs()).digest('base64')] : [] }));
   for (const lang of LANGS) {
     // Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
     const t = (k) => T[k]?.[lang] ?? T[k]?.es ?? k;
@@ -434,7 +472,6 @@ if (ABS) {
 //   Se resuelve al final, con los archivos ya definitivos: «?v=@@TVV:assets/js/app.js@@» → «?v=<10 primeros hex del SHA-256 de ese archivo>».
 //   Un archivo referenciado que no existe aborta la compilación (enlace roto).
 if (ABS) {
-  const crypto = await import('node:crypto');
   const hashes = new Map();
   // Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
   const hashOf = (p) => {

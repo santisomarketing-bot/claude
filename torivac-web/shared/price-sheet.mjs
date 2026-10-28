@@ -23,7 +23,7 @@ export const ALIASES = {
   product_id: ['productid', 'idproducto', 'idprod', 'pid', 'id'],
   unit: ['unit', 'unidad', 'ud'],
   currency: ['currency', 'moneda', 'divisa'],
-  note: ['note', 'nota', 'notas', 'observaciones', 'comentario'],
+  note: ['note', 'notaweb', 'notapublica', 'publicnote'],   // SOLO columnas explícitamente públicas: «Observaciones», «Comentario» o «Notas» suelen llevar anotaciones internas (márgenes, costes) y no se publican
   active: ['active', 'activo', 'visible'],
   updated_at: ['updatedat', 'actualizado', 'fechaactualizacion', 'fecha'],
   offer: ['oferta', 'offer', 'sale', 'preciooferta'],
@@ -36,10 +36,12 @@ export const normHeader = (h) => String(h ?? '').normalize('NFD').replace(/[̀-�
 /** referencia → clave de comparación: mayúsculas, sin espacios */
 export const normRef = (r) => String(r ?? '').replace(/[\s ]+/g, '').toUpperCase();
 
-/** número de una celda: acepta «27,75», «27.75093203», «1.234,56», «1,234.56», «22 000», «€ 5» y números ya numéricos; vacío/ilegible → null */
+/** Tope de cualquier cifra leída de una hoja (precios y escalones): una celda con 1e999 o 99999999999 es un error o un ataque, no un precio. */
+export const MAX_NUMBER = 10000000;
+/** número de una celda: acepta «27,75», «27.75093203», «1.234,56», «1,234.56», «22 000», «€ 5» y números ya numéricos; vacío, ilegible, infinito o por encima de MAX_NUMBER → null */
 export function parseNumber(x) {
   if (x == null || x === '') return null;
-  if (typeof x === 'number') return Number.isFinite(x) ? x : null;
+  if (typeof x === 'number') return Number.isFinite(x) && Math.abs(x) <= MAX_NUMBER ? x : null;
   let s = String(x).replace(/[\s  €$]/g, '');
   if (!s) return null;
   const c = s.lastIndexOf(','), d = s.lastIndexOf('.');
@@ -47,7 +49,7 @@ export function parseNumber(x) {
   else if (c >= 0) s = (s.match(/,/g) || []).length > 1 ? s.replace(/,/g, '') : s.replace(',', '.');   // «27,75» decimal · «1,234,567» miles
   else if ((s.match(/\./g) || []).length > 1) s = s.replace(/\./g, '');                                // «1.234.567» miles
   const n = Number(s);
-  return Number.isFinite(n) ? n : null;
+  return Number.isFinite(n) && Math.abs(n) <= MAX_NUMBER ? n : null;
 }
 /**
  * Aplica los precios que trae una hoja (`sheetItems`) a los vigentes (`prevItems`). «merge» (por defecto): quita las referencias de `retire` y pone o actualiza las que trae la hoja

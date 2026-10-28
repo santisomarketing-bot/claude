@@ -12,14 +12,14 @@ import vm from 'node:vm';
 import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { startBackend } from './lib/backends.mjs';
+import { startBackend, MASTER_TOKEN } from './lib/backends.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 // el sitio se compila con TORIVAC_API (valor provisional) para que /admin/ cargue el panel real; la URL verdadera se inyecta al servir
 const DIST = fs.mkdtempSync(path.join(os.tmpdir(), 'tv-live-'));
 execFileSync('node', [path.join(ROOT, 'site/build.mjs'), `--out=${DIST}`], { env: { ...process.env, TORIVAC_API: 'http://api.invalid' }, stdio: 'pipe' });
-const sb = { window: {} }; sb.window = sb; vm.createContext(sb);
+const sb = { window: {}, document: { getElementById: () => null } }; sb.window = sb; vm.createContext(sb);   // catalog.js lee el bloque JSON de arranque con document.getElementById (aquí no hay página: sin bloque)
 for (const f of ['catalog.js', 'prices.js']) vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data', f), 'utf8'), sb);
 const { items } = sb.TV;
 const prices = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/catalog/prices.json'), 'utf8'));      // hoja de DEMO del catálogo (el sitio con API no la lleva)
@@ -107,7 +107,7 @@ console.log('\n3) precios: subir hoja con vista previa y aplicar');
   ok(pub.prices.items[R_TT].p === 99.99 && JSON.stringify(pub.prices.items[R_TT].t) === '[[10,95]]', 'precio publicado en el servidor (99,99 con tramo 10 uds = 95)');
   ok(Object.keys(pub.prices.items).length === Object.keys(prices.items).length, `y las demás referencias siguen con su precio (${Object.keys(pub.prices.items).length})`);
   await page.click('[data-refresh]'); await page.waitForTimeout(700);
-  const syn = (await fetch(API + '/api/prices', { headers: { Authorization: 'Bearer master-test' } }).then((r) => r.json()));      // el detalle (quién y de dónde) solo lo ve un manager
+  const syn = (await fetch(API + '/api/prices', { headers: { Authorization: 'Bearer ' + MASTER_TOKEN } }).then((r) => r.json()));      // el detalle (quién y de dónde) solo lo ve un manager
   ok(syn.prices.items[R_TT].p === 88.5 && syn.meta.reason.startsWith('manual:') && syn.meta.mode === 'merge' && Object.keys(syn.prices.items).length === Object.keys(prices.items).length, 'botón «Actualizar ahora»: vuelve a leer la hoja de Drive (precio 88,5) y actualiza solo esas 4 referencias');
   await ctx.close(); }
 

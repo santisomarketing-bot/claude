@@ -1039,7 +1039,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "¿Tienes alguna duda? Escríbenos y te la resolveremos"
+       "x": "¿Tienes alguna duda? Escríbenos y te la resolveremos",
+       "h": "¿Tienes alguna duda?<br>Escríbenos y te la resolveremos"
       },
       {
        "t": "p",
@@ -2409,7 +2410,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "¿Necesita asesoramiento técnico o un presupuesto? Escríbenos y te la resolveremos"
+       "x": "¿Necesita asesoramiento técnico o un presupuesto? Escríbenos y te la resolveremos",
+       "h": "¿Necesita asesoramiento técnico o un presupuesto?<br>Escríbenos y te la resolveremos"
       },
       {
        "t": "p",
@@ -4010,7 +4012,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "Soluciones eficientes en la regulación y transformación de la tensión eléctrica."
+       "x": "Soluciones eficientes en la regulación y transformación de la tensión eléctrica.",
+       "h": "Soluciones eficientes en la regulación y transformación<br>de la tensión eléctrica."
       },
       {
        "t": "h",
@@ -5273,7 +5276,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "Do you need technical advice or a quotation? Write us and we will solve it for you"
+       "x": "Do you need technical advice or a quotation? Write us and we will solve it for you",
+       "h": "Do you need technical advice or a quotation?<br>Write us and we will solve it for you"
       },
       {
        "t": "p",
@@ -6301,7 +6305,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "Do you have any doubts? Write us and we will solve it for you"
+       "x": "Do you have any doubts? Write us and we will solve it for you",
+       "h": "Do you have any doubts?<br>Write us and we will solve it for you"
       },
       {
        "t": "p",
@@ -6793,7 +6798,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "Efficient solutions in the regulation and transformation of electrical voltage."
+       "x": "Efficient solutions in the regulation and transformation of electrical voltage.",
+       "h": "Efficient solutions in the regulation and transformation<br>of electrical voltage."
       },
       {
        "t": "h",
@@ -9970,7 +9976,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "Vous avez besoin d'un conseil technique ou d'un devis ? Écrivez-nous et nous résoudrons le problème pour vous."
+       "x": "Vous avez besoin d'un conseil technique ou d'un devis ? Écrivez-nous et nous résoudrons le problème pour vous.",
+       "h": "Vous avez besoin d'un conseil technique ou d'un devis ?<br>Écrivez-nous et nous résoudrons le problème pour vous."
       },
       {
        "t": "p",
@@ -10998,7 +11005,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "Avez-vous des doutes ? Écrivez-nous et nous résoudrons le problème pour vous."
+       "x": "Avez-vous des doutes ? Écrivez-nous et nous résoudrons le problème pour vous.",
+       "h": "Avez-vous des doutes ?<br>Écrivez-nous et nous résoudrons le problème pour vous."
       },
       {
        "t": "p",
@@ -13481,7 +13489,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "Solutions efficaces pour la régulation et la transformation de la tension ."
+       "x": "Solutions efficaces pour la régulation et la transformation de la tension .",
+       "h": "Solutions efficaces pour la régulation et la transformation de la tension<br>."
       },
       {
        "t": "h",
@@ -14667,7 +14676,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "Benötigen Sie eine technische Beratung oder ein Angebot? Schreiben Sie uns und wir werden es für Sie lösen"
+       "x": "Benötigen Sie eine technische Beratung oder ein Angebot? Schreiben Sie uns und wir werden es für Sie lösen",
+       "h": "Benötigen Sie eine technische Beratung oder ein Angebot?<br>Schreiben Sie uns und wir werden es für Sie lösen"
       },
       {
        "t": "p",
@@ -17038,7 +17048,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "Haben Sie irgendwelche Zweifel? Schreiben Sie uns und wir werden es für Sie lösen"
+       "x": "Haben Sie irgendwelche Zweifel? Schreiben Sie uns und wir werden es für Sie lösen",
+       "h": "Haben Sie irgendwelche Zweifel?<br>Schreiben Sie uns und wir werden es für Sie lösen"
       },
       {
        "t": "p",
@@ -18042,7 +18053,8 @@
       {
        "t": "h",
        "l": 2,
-       "x": "Effiziente Lösungen für die Spannungsregulierung und Transformation ."
+       "x": "Effiziente Lösungen für die Spannungsregulierung und Transformation .",
+       "h": "Effiziente Lösungen für die Spannungsregulierung und Transformation<br>."
       },
       {
        "t": "h",

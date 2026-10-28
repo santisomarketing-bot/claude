@@ -20,7 +20,7 @@
         var url = Q.rel(l.item.p && (l.item.p[Q.lang] || l.item.p.es) || '/');
         return '<tr data-ref="' + esc(l.ref) + '"><td class="thumb">' + (th ? '<img src="' + esc(th) + '" alt="" width="52" height="52">' : '') + '</td>' +
           '<td><a class="name" href="' + esc(url) + '">' + esc(l.name) + '</a><span class="refc">' + esc(Q.shownRef(l.ref)) + (l.spec ? ' · ' + esc(l.spec) : '') + '</span></td>' +
-          '<td><div class="qty"><button type="button" data-dec aria-label="−">−</button><input type="number" min="0" value="' + l.qty + '" data-q aria-label="' + esc(Q.t('qty')) + '"><button type="button" data-inc aria-label="+">+</button></div></td>' +
+          '<td><div class="qty"><button type="button" data-dec aria-label="−">−</button><input type="number" min="0" value="' + Number(l.qty) + '" data-q aria-label="' + esc(Q.t('qty')) + '"><button type="button" data-inc aria-label="+">+</button></div></td>' +
           '<td class="num">' + (l.unit == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : esc(Q.unitMoney(l.unit))) + '</td>' +
           '<td class="num"><strong>' + (l.total == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : esc(Q.money(l.total))) + '</strong></td>' +
           '<td><button class="btn sm ghost" type="button" data-rm>' + esc(Q.t('remove')) + '</button></td></tr>';
@@ -102,8 +102,10 @@
     TV.api.post('/api/order', { customer: { name: c.name, company: c.company, email: c.email, phone: c.phone, notes: c.notes, privacy: !!c.privacy }, lines: d.lines.map(function (l) { return { ref: l.ref, qty: l.qty }; }), lang: Q.lang, pdf: pdf, hp: new FormData(form).get('hp') || '' }).then(function (r) {
       btn.disabled = false; btn.textContent = label; out.hidden = false; out.setAttribute('tabindex', '-1');
       if (r && r.ok) {
-        var copy = !!(r.emailed && r.emailed.customer), mailto = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];      // solo se dice «te hemos enviado una copia» si salió
-        out.className = 'notice ok'; out.innerHTML = '<strong>' + esc(Q.t('order_sent')) + ' · ' + esc(r.number) + '</strong><br>' + (copy ? esc(Q.t('order_received')) : esc(Q.t('order_received_nocopy')) + ' <a href="mailto:' + esc(mailto) + '">' + esc(mailto) + '</a>');
+        var copy = !!(r.emailed && r.emailed.customer), mailto = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];      // solo se dice «te hemos enviado una confirmación» si salió (el servidor puede no enviarla: sin correo configurado, tope de envíos…)
+        out.className = 'notice ok'; out.innerHTML = '<strong>' + esc(Q.t('order_sent')) + ' · ' + esc(r.number) + '</strong><br>' + (copy ? esc(Q.t('order_received')) : esc(Q.t('order_received_nocopy')) + ' <a href="mailto:' + esc(mailto) + '">' + esc(mailto) + '</a>') +
+          '<br><button class="btn sm ghost" type="button" style="margin-top:8px" data-pdf-again>' + esc(Q.t('download_pdf')) + '</button>';
+        var again = out.querySelector('[data-pdf-again]'); if (again) again.addEventListener('click', function () { try { download(res); } catch (e) { console.error(e); TV.toast('PDF ⚠'); } });      // la copia por correo NO lleva el PDF: se ofrece aquí, ya generado
         Q.clear(); form.reset();
       } else {
         var mail = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];

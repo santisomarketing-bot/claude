@@ -74,18 +74,24 @@ export function inlineHtml(ctx, h) {
   });
 }
 
+/** Texto de un encabezado. Con «Original» conserva los saltos de línea del original (cuando los tiene); sin «Original», el texto de siempre. */
+export const hText = (site, b) => (!b || !b.h || !site.O ? esc(b ? b.x : '') : site.ONLY_O ? b.h : `<span class="l-n">${esc(b.x)}</span><span class="l-o">${b.h}</span>`);
+
+/** Texto de una celda o del título de una tabla. Con «Original» se conserva el salto de línea y la cursiva de la web actual (castellano arriba y la traducción debajo); sin «Original», el texto de siempre. */
+const cellText = (site, c) => (!c.h || !site.O ? esc(c.x) : site.ONLY_O ? c.h : `<span class="l-n">${esc(c.x)}</span><span class="l-o">${c.h}</span>`);
+
 /** Bloque de tabla → HTML: detecta la cabecera, usa una primera fila de una sola celda como título y añade región con scroll. */
-const tbl = (b, lang) => {
+const tbl = (b, site) => {
   const rows = b.rows;
   const head = rows[0].every((c) => c.th) || rows[0].length > 1 && rows.length > 2 && rows[0].every((c) => c.x) && rows[1].some((c) => /\d/.test(c.x)) ? rows[0] : null;
   const body = head ? rows.slice(1) : rows;
   // Celda th/td con el texto escapado; las th dentro del cuerpo llevan scope="row".
-  const cell = (c, tag) => `<${tag}${c.th && tag === 'td' ? ' scope="row"' : ''}>${esc(c.x)}</${tag}>`;
+  const cell = (c, tag) => `<${tag}${c.th && tag === 'td' ? ' scope="row"' : ''}>${cellText(site, c)}</${tag}>`;
   // fila única con una sola celda = título de la tabla (así la maqueta la original)
-  let caption = b.cap || '';
+  let caption = b.cap || '', captionHtml = esc(caption);
   let rest = body, headRow = head;
-  if (!caption && rows[0].length === 1 && rows.length > 2) { caption = rows[0][0].x; headRow = rows[1]; rest = rows.slice(2); }
-  return `<div class="tbl-wrap" tabindex="0" role="region" aria-label="${attr(caption || 'tabla')}"><table class="spec">${caption ? `<caption>${esc(caption)}</caption>` : ''}${headRow ? `<thead><tr>${headRow.map((c) => cell(c, 'th')).join('')}</tr></thead>` : ''}<tbody>${rest.map((r) => `<tr>${r.map((c) => cell(c, 'td')).join('')}</tr>`).join('')}</tbody></table></div>`;
+  if (!caption && rows[0].length === 1 && rows.length > 2) { caption = rows[0][0].x; captionHtml = cellText(site, rows[0][0]); headRow = rows[1]; rest = rows.slice(2); }
+  return `<div class="tbl-wrap" tabindex="0" role="region" aria-label="${attr(caption || 'tabla')}"><table class="spec">${caption ? `<caption>${captionHtml}</caption>` : ''}${headRow ? `<thead><tr>${headRow.map((c) => cell(c, 'th')).join('')}</tr></thead>` : ''}<tbody>${rest.map((r) => `<tr>${r.map((c) => cell(c, 'td')).join('')}</tr>`).join('')}</tbody></table></div>`;
 };
 
 /** Bloques semánticos → HTML. opts.demote: sube el nivel de los encabezados (h1→h2…) para que la plantilla sea dueña del h1. */
@@ -97,11 +103,11 @@ export function blocksHtml(ctx, blocks = [], opts = {}) {
       case 'h': {
         if (!skipped) { skipped = true; return ''; }
         const l = Math.min(6, Math.max(2, b.l + demote));
-        return `<h${l}>${esc(b.x)}</h${l}>`;
+        return `<h${l}>${hText(ctx.site, b)}</h${l}>`;
       }
       case 'p': return b.q ? `<blockquote>${inlineHtml(ctx, b.h)}</blockquote>` : `<p>${inlineHtml(ctx, b.h)}</p>`;
       case 'ul': { const tag = b.o ? 'ol' : 'ul'; return `<${tag}>${b.i.map((i) => `<li>${inlineHtml(ctx, i)}</li>`).join('')}</${tag}>`; }
-      case 'table': return tbl(b, ctx.lang);
+      case 'table': return tbl(b, ctx.site);
       case 'img': {
         const im = b.img;
         if (!im || im.missing_local) return '';   // nunca se enlaza a imágenes de otros dominios

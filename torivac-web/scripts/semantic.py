@@ -5,10 +5,10 @@ Biblioteca (la usa build_catalog.py) y pequeña CLI de prueba:
     python3 -I scripts/semantic.py data/raw/html/es/home.html
 
 Bloques de salida (siempre dicts JSON):
-  {"t":"h","l":2,"x":"Texto"}                        encabezado
+  {"t":"h","l":2,"x":"Texto","h":"con<br>salto"}      encabezado (`h` solo si el original lleva saltos de línea)
   {"t":"p","h":"HTML inline seguro"}                 párrafo (solo a, strong, em, b, i, br, sup, sub, u)
   {"t":"ul","o":false,"i":["HTML inline",...]}       lista (o=true => numerada)
-  {"t":"table","cap":"..","rows":[[{"x":"..","th":true}]]}
+  {"t":"table","cap":"..","rows":[[{"x":"..","th":true,"h":"HTML inline (solo si hay br/cursiva)"}]]}
   {"t":"img","src":"abs url","alt":"","href":null,"w":0,"h":0}
   {"t":"btn","x":"Texto","href":"abs url","pdf":false}
   {"t":"embed","src":"url"}                          iframe (vídeo/mapa)
@@ -80,12 +80,30 @@ def _img_block(im):
     return {"t": "img", "src": _abs(src.split("?")[0]), "alt": _clean(im.get("alt")), "href": None, "w": int(im.get("width") or 0) if str(im.get("width") or "").isdigit() else 0, "h": int(im.get("height") or 0) if str(im.get("height") or "").isdigit() else 0}
 
 
+def _heading_html(n):
+    """HTML del encabezado solo si el original lleva saltos de línea (<br>) y nada más que texto; si no, cadena vacía."""
+    h = re.sub(r"\s*<br>\s*", "<br>", re.sub(r"\s+", " ", inline_html(n)))
+    return h if "<br>" in h and "<" not in h.replace("<br>", "") else ""
+
+
+def _cell_html(c):
+    """HTML inline de una celda cuando lleva salto de línea o cursiva (p. ej. «Dimensiones (mm.)<br><em>Dimensions (mm.)</em>»); cadena vacía si es texto llano o lleva enlaces."""
+    h = re.sub(r"\s*<br>\s*", "<br>", re.sub(r"\s+", " ", inline_html(c)))
+    return h if re.search(r"<(br|em|i)>", h) and "<a " not in h else ""
+
+
 def _table(t):
-    """Bloque de tabla (título y filas de celdas) de un elemento table; None si ninguna fila tiene texto."""
+    """Bloque de tabla (título y filas de celdas) de un elemento table; None si ninguna fila tiene texto. La celda lleva además `h` (HTML inline) solo si el original tiene salto de línea o cursiva."""
     rows = []
     cap = t.find("caption")
     for tr in t.find_all("tr"):
-        cells = [{"x": _clean(c.get_text(" ", strip=True)), "th": c.name == "th"} for c in tr.find_all(["th", "td"])]
+        cells = []
+        for c in tr.find_all(["th", "td"]):
+            cell = {"x": _clean(c.get_text(" ", strip=True)), "th": c.name == "th"}
+            h = _cell_html(c)
+            if h:
+                cell["h"] = h
+            cells.append(cell)
         if any(c["x"] for c in cells):
             rows.append(cells)
     return {"t": "table", "cap": _clean(cap.get_text(" ")) if cap else "", "rows": rows} if rows else None
@@ -130,7 +148,11 @@ def blocks_from(root):
             flush()
             x = _clean(n.get_text(" ", strip=True))
             if x:
-                blocks.append({"t": "h", "l": int(name[1]), "x": x})
+                hb = {"t": "h", "l": int(name[1]), "x": x}
+                hh = _heading_html(n)
+                if hh:
+                    hb["h"] = hh
+                blocks.append(hb)
         elif name == "p":
             flush()
             if n.find("img") and not _clean(n.get_text()):

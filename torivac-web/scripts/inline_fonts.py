@@ -3,6 +3,7 @@
 
   fonts.css / fonts-files.css              Advent Pro + Archivo (aspecto «Clásico»): en base64 (también con file://) y como archivos woff2 (producción)
   fonts-ficha.css / fonts-ficha-files.css  Archivo extendida + Chivo Mono (aspecto «Ficha técnica»): igual, en las dos formas
+  fonts-original.css / -files.css          PT Sans negrita (menú y títulos de tarjetas de la web actual de Torivac, aspecto «Original»): igual, en las dos formas
 Las fuentes del aspecto nuevo se generan con scripts/make_ficha_fonts.py. Todas son OFL (licencias junto a los archivos).
 """
 import base64, pathlib
@@ -18,6 +19,9 @@ CLASSIC = [
 FICHA = [
   ("Archivo Expanded", "archivo-expanded-latin-wght-normal.woff2", LATIN, "600 900"),
   ("Chivo Mono", "chivo-mono-latin-wght-normal.woff2", LATIN, "400 700"),
+]
+ORIGINAL = [
+  ("PT Sans", "pt-sans-latin-700-normal.woff2", LATIN, "700"),
 ]
 
 
@@ -44,3 +48,6 @@ write(CLASSIC, "fonts",
 write(FICHA, "fonts-ficha",
       "/* [FONTS-FICHA] Archivo extendida + Chivo Mono (OFL) del aspecto «Ficha técnica», en base64 para file://. Generado por scripts/inline_fonts.py */",
       "/* [FONTS-FICHA-FILES] Las mismas como ARCHIVOS woff2 (producción por http). Generado por scripts/inline_fonts.py */")
+write(ORIGINAL, "fonts-original",
+      "/* [FONTS-ORIGINAL] PT Sans negrita (OFL) del aspecto «Original», en base64 para file://. Generado por scripts/inline_fonts.py */",
+      "/* [FONTS-ORIGINAL-FILES] La misma como ARCHIVO woff2 (producción por http). Generado por scripts/inline_fonts.py */")

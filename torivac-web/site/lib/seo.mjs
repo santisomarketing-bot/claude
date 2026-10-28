@@ -76,3 +76,8 @@ export function ldScript(graph) {
   if (!graph) return '';
   return `<script type="application/ld+json">${JSON.stringify(graph).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029')}</script>`;
 }
+
+/** Bloque de datos <script type="application/json" id="…"> (no se ejecuta: la CSP de producción puede prohibir TODO script en línea). Escapa < y los separadores U+2028/2029. */
+export function jsonScript(id, data) {
+  return `<script type="application/json" id="${id}">${JSON.stringify(data).replace(/</g, '\\u003c').replace(/\u2028/g, '\\u2028').replace(/\u2029/g, '\\u2029')}</script>`;
+}

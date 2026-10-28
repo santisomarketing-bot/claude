@@ -8,6 +8,10 @@
 //   await be.useSource('xlsx', bytes) cambia el origen de los precios de la hoja CSV a un libro .xlsx de Drive (descarga directa)
 //   await be.stop()
 // Servicios externos simulados (sin red): Resend (/emails), Anthropic (/v1/messages), la hoja CSV (/precios.csv) y el libro Excel (/precios.xlsx).
+/** Secretos de PRUEBA (no son claves reales): con la longitud mínima que exige el servidor (sesión y token maestro ≥ 32, cron ≥ 24). */
+export const MASTER_TOKEN = 'master-test-' + 'a1b2c3d4e5f6a7b8c9d0'.repeat(2);
+export const CRON_TOKEN = 'cron-test-' + 'f6e5d4c3b2a1f0e9d8c7'.repeat(1);
+export const SESSION_SECRET = 'session-test-' + 'x'.repeat(40);
 import http from 'node:http';
 import net from 'node:net';
 import fs from 'node:fs';
@@ -50,7 +54,7 @@ async function startWorker({ dist, orderTo, orderFrom }) {
   const { KEY_CURRENT } = await import(path.join(ROOT, 'workers/api/src/prices.js'));
   const { st, handle } = externals();
   const { server: site, base: SITE } = await serve(dist);
-  const env = { KV: new FakeKV(), PRICE_CSV_URL: 'https://sheet.test/precios.csv', ORDER_TO: orderTo, ORDER_FROM: orderFrom, RESEND_API_KEY: 're_test', ANTHROPIC_API_KEY: 'sk-test', SESSION_SECRET: 'x'.repeat(40), ADMIN_API_TOKEN: 'master-test', ALLOWED_ORIGINS: SITE };
+  const env = { KV: new FakeKV(), PRICE_CSV_URL: 'https://sheet.test/precios.csv', ORDER_TO: orderTo, ORDER_FROM: orderFrom, RESEND_API_KEY: 're_test', ANTHROPIC_API_KEY: 'sk-test', SESSION_SECRET, ADMIN_API_TOKEN: MASTER_TOKEN, ALLOWED_ORIGINS: SITE };
   /** fetch simulado del Worker: delega en los servicios externos simulados. */
   const mockFetch = async (url, init) => { const r = await handle(url, init); return new Response(r.body, { status: r.status }); };
   const api = http.createServer(async (rq, rs) => {
@@ -97,7 +101,7 @@ async function startPhp({ dist, orderTo, orderFrom, port: wanted }) {
   });
   await new Promise((r) => mock.listen(0, '127.0.0.1', r));
   const MOCK = `http://127.0.0.1:${mock.address().port}`;
-  const cfg = { storage_dir: store, session_secret: 'x'.repeat(40), admin_token: 'master-test', allowed_origins: [], order_to: orderTo.split(','), order_from: orderFrom, cron_token: 'cron-test',
+  const cfg = { storage_dir: store, session_secret: SESSION_SECRET, admin_token: MASTER_TOKEN, allowed_origins: [], order_to: orderTo.split(','), order_from: orderFrom, cron_token: CRON_TOKEN,
     mail: { driver: 'resend', resend_api_key: 're_test', api_base: MOCK }, prices: { csv_url: `${MOCK}/precios.csv`, decimals: 4 }, ai: { anthropic_api_key: 'sk-test', api_base: MOCK, model: 'claude-sonnet-5-5' } };
   /** Escribe api/config.php con la configuración de pruebas (PHP la lee en cada petición). */
   const writeCfg = () => fs.writeFileSync(path.join(apiDir, 'config.php'), `<?php\nreturn json_decode(<<<'JSON'\n${JSON.stringify(cfg, null, 1)}\nJSON\n, true);\n`);

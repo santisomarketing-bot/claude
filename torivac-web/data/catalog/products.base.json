@@ -6544,7 +6544,8 @@
       [
        {
         "x": "MOD. TYPE",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYPE"
        },
        {
         "x": "D",
@@ -6689,7 +6690,8 @@
       [
        {
         "x": "MOD. TYPE",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYPE"
        },
        {
         "x": "D",
@@ -6834,7 +6836,8 @@
       [
        {
         "x": "MOD. TYPE",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYPE"
        },
        {
         "x": "D",
@@ -6979,7 +6982,8 @@
       [
        {
         "x": "MOD. TYP",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYP"
        },
        {
         "x": "D",
@@ -7564,7 +7568,8 @@
       [
        {
         "x": "MOD. TYPE",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYPE"
        },
        {
         "x": "D",
@@ -7655,7 +7660,8 @@
       [
        {
         "x": "MOD. TYPE",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYPE"
        },
        {
         "x": "D",
@@ -7746,7 +7752,8 @@
       [
        {
         "x": "MOD. TYPE",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYPE"
        },
        {
         "x": "D",
@@ -7837,7 +7844,8 @@
       [
        {
         "x": "MOD. TYP",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYP"
        },
        {
         "x": "D",
@@ -8070,7 +8078,8 @@
       [
        {
         "x": "MOD. TYPE",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYPE"
        },
        {
         "x": "D",
@@ -8233,7 +8242,8 @@
       [
        {
         "x": "MOD. TYPE",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYPE"
        },
        {
         "x": "D",
@@ -8396,7 +8406,8 @@
       [
        {
         "x": "MOD. TYPE",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYPE"
        },
        {
         "x": "D",
@@ -8559,7 +8570,8 @@
       [
        {
         "x": "MOD. TYP",
-        "th": true
+        "th": true,
+        "h": "MOD.<br>TYP"
        },
        {
         "x": "D",
@@ -9850,13 +9862,15 @@
       [
        {
         "x": "Dimensiones (mm.) Dimensions (mm.)",
-        "th": true
+        "th": true,
+        "h": "<strong>Dimensiones (mm.)<br><em>Dimensions (mm.)</em></strong>"
        }
       ],
       [
        {
         "x": "Referencia Reference",
-        "th": true
+        "th": true,
+        "h": "Referencia<br><em>Reference</em>"
        },
        {
         "x": "D",
@@ -10114,13 +10128,15 @@
       [
        {
         "x": "Dimensiones (mm.) Dimensions (mm.)",
-        "th": true
+        "th": true,
+        "h": "<strong>Dimensiones (mm.)<br><em>Dimensions (mm.)</em></strong>"
        }
       ],
       [
        {
         "x": "Referencia Reference",
-        "th": true
+        "th": true,
+        "h": "Referencia<br><em>Reference</em>"
        },
        {
         "x": "D",
@@ -10378,13 +10394,15 @@
       [
        {
         "x": "Dimensions (mm.) Dimensions (mm.)",
-        "th": true
+        "th": true,
+        "h": "<strong>Dimensions (mm.)<br><em>Dimensions (mm.)</em></strong>"
        }
       ],
       [
        {
         "x": "Référence Référence",
-        "th": true
+        "th": true,
+        "h": "Référence<br><em>Référence</em>"
        },
        {
         "x": "D",
@@ -10642,13 +10660,15 @@
       [
        {
         "x": "Abmessungen (mm.) Abmessungen (mm.)",
-        "th": true
+        "th": true,
+        "h": "<strong>Abmessungen (mm.)<br><em>Abmessungen (mm.)</em></strong>"
        }
       ],
       [
        {
         "x": "Referenz Referenz",
-        "th": true
+        "th": true,
+        "h": "Referenz<br><em>Referenz</em>"
        },
        {
         "x": "D",
@@ -14996,7 +15016,8 @@
       [
        {
         "x": "Transformadores encapsulados en cajas Transformers packed in casing",
-        "th": true
+        "th": true,
+        "h": "Transformadores encapsulados en cajas<br><em>Transformers packed in casing</em>"
        }
       ],
       [
@@ -15368,7 +15389,8 @@
       [
        {
         "x": "Transformers encapsulated in casing Transformers packed in casing",
-        "th": true
+        "th": true,
+        "h": "Transformers encapsulated in casing<br><em>Transformers packed in casing</em>"
        }
       ],
       [
@@ -15740,7 +15762,8 @@
       [
        {
         "x": "Transformateurs emballés dans un boîtier Transformateurs emballés dans un boîtier",
-        "th": true
+        "th": true,
+        "h": "Transformateurs<em>emballés dans un boîtier</em><br><em>Transformateurs emballés dans un boîtier</em>"
        }
       ],
       [
@@ -16112,7 +16135,8 @@
       [
        {
         "x": "Im Gehäuse verpackte Transformatoren Im Gehäuse verpackte Transformatoren",
-        "th": true
+        "th": true,
+        "h": "<em>Im Gehäuse verpackte</em> Transformatoren<br><em>Im Gehäuse verpackte Transformatoren</em>"
        }
       ],
       [
@@ -16574,7 +16598,8 @@
       [
        {
         "x": "Transformadores encapsulados en cajas Transformers packed in casing",
-        "th": true
+        "th": true,
+        "h": "Transformadores encapsulados en cajas<br><em>Transformers packed in casing</em>"
        }
       ],
       [
@@ -16588,7 +16613,8 @@
        },
        {
         "x": "Altura mm Height mm.",
-        "th": true
+        "th": true,
+        "h": "Altura mm<br>Height mm."
        },
        {
         "x": "Kg.",
@@ -16596,7 +16622,8 @@
        },
        {
         "x": "Fijación Mounting",
-        "th": true
+        "th": true,
+        "h": "Fijación<br>Mounting"
        }
       ],
       [
@@ -17114,7 +17141,8 @@
       [
        {
         "x": "Transformers encapsulated in casing Transformers packed in casing",
-        "th": true
+        "th": true,
+        "h": "Transformers encapsulated in casing<br><em>Transformers packed in casing</em>"
        }
       ],
       [
@@ -17128,7 +17156,8 @@
        },
        {
         "x": "Height mm Height mm.",
-        "th": true
+        "th": true,
+        "h": "Height mm<br>Height mm."
        },
        {
         "x": "Kg.",
@@ -17136,7 +17165,8 @@
        },
        {
         "x": "Mounting Mounting",
-        "th": true
+        "th": true,
+        "h": "Mounting<br>Mounting"
        }
       ],
       [
@@ -17654,7 +17684,8 @@
       [
        {
         "x": "Transformateurs emballés dans un boîtier Transformateurs emballés dans un boîtier",
-        "th": true
+        "th": true,
+        "h": "Transformateurs<em>emballés dans un boîtier</em><br><em>Transformateurs emballés dans un boîtier</em>"
        }
       ],
       [
@@ -17668,7 +17699,8 @@
        },
        {
         "x": "Hauteur mm Hauteur mm.",
-        "th": true
+        "th": true,
+        "h": "Hauteur mm<br>Hauteur mm."
        },
        {
         "x": "Kg.",
@@ -17676,7 +17708,8 @@
        },
        {
         "x": "Montage Montage",
-        "th": true
+        "th": true,
+        "h": "Montage<br>Montage"
        }
       ],
       [
@@ -18194,7 +18227,8 @@
       [
        {
         "x": "Im Gehäuse verpackte Transformatoren Im Gehäuse verpackte Transformatoren",
-        "th": true
+        "th": true,
+        "h": "<em>Im Gehäuse verpackte</em> Transformatoren<br><em>Im Gehäuse verpackte Transformatoren</em>"
        }
       ],
       [
@@ -18208,7 +18242,8 @@
        },
        {
         "x": "Höhe mm Höhe mm.",
-        "th": true
+        "th": true,
+        "h": "Höhe mm<br>Höhe mm."
        },
        {
         "x": "Kg.",
@@ -18216,7 +18251,8 @@
        },
        {
         "x": "Montage Montage",
-        "th": true
+        "th": true,
+        "h": "Montage<br>Montage"
        }
       ],
       [

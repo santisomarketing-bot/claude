@@ -8,7 +8,7 @@
  *  Se carga en lugar de admin.js cuando la web se compila con TORIVAC_API (ver site/build.mjs). Sin API, el demo (admin.js) sigue funcionando solo.
  *
  * Secciones: [HTTP] [AUTH] [UTIL] [VIEWS] [PRICES] [AI] [USERS] [PROPOSALS] [ROUTER]
- * Depende de: quote.js (TV.Quote, TV.api, TV.csvParse), pdf.js (TV.makeQuotePdf), SheetJS (XLSX), assets/data/admin-data.js (TV.admin), proposals.js (TV.proposals)
+ * Depende de: quote.js (TV.Quote, TV.api, TV.csvParse), pdf.js (TV.makeQuotePdf), SheetJS (XLSX). Las propuestas (TV.proposals) y los datos de cobertura (TV.admin) NO van en la web pública: se piden al servidor, solo a managers (GET /api/admin/data).
  */
 (function () {
   'use strict';
@@ -23,7 +23,7 @@
   function http(method, path, body) {
     var s = session();
     return fetch(TV.api.base() + path, { method: method, headers: Object.assign({ 'Content-Type': 'application/json' }, s ? { Authorization: 'Bearer ' + s.token } : {}), body: body === undefined ? undefined : JSON.stringify(body) })
-      .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'HTTP ' + r.status }; }).then(function (j) { j.status = r.status; if (r.status === 401 && s && path !== '/api/auth/login') { logout(); } return j; }); })
+      .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'HTTP ' + r.status }; }).then(function (j) { j.status = r.status; if (r.status === 401 && s && path !== '/api/auth/login') { endSession(); } return j; }); })
       .catch(function () { return { ok: false, error: 'No hay conexión con el servidor', status: 0 }; });
   }
 
@@ -38,8 +38,18 @@
       return null;
     });
   }
-  /** Cierra la sesión y vuelve a la pantalla de acceso. */
-  function logout() { sessionStorage.removeItem('tv_live'); location.hash = ''; render(); }
+  /** Borra la sesión de este navegador y vuelve a la pantalla de acceso (sin avisar al servidor: lo usa también un 401, cuando el servidor ya la ha dado por caducada). */
+  function endSession() { sessionStorage.removeItem('tv_live'); location.hash = ''; render(); }
+  /** Cierra la sesión: el servidor invalida TODOS los tokens anteriores de esta persona (POST /api/auth/logout; si no responde, igualmente se sale de este navegador). */
+  function logout() {
+    var s = session(); if (!s) return endSession();
+    fetch(TV.api.base() + '/api/auth/logout', { method: 'POST', headers: { Authorization: 'Bearer ' + s.token } }).catch(function () { /* sin conexión: se sale igual */ }).then(endSession);
+  }
+  /** Propuestas de cambio y datos de cobertura del catálogo, solo para managers (GET /api/admin/data); se piden una vez y se guardan en TV.proposals y TV.admin. Nunca rechaza. */
+  function adminData() {
+    if (TV.proposals && TV.admin) return Promise.resolve();
+    return http('GET', '/api/admin/data').then(function (r) { TV.proposals = (r.ok && r.proposals) || []; TV.admin = (r.ok && r.admin) || { products: [], byRef: {} }; });
+  }
 
   // ───────────────────────────────────────── [UTIL]
   /** Muestra un aviso breve (3,2 s) en pantalla. */
@@ -65,7 +75,7 @@
 
   /** Vista Resumen (manager): con datos del Worker, KPIs, estado de la hoja de precios y sincronización, y los 5 últimos pedidos. */
   V.resumen = function () {
-    return Promise.all([http('GET', '/api/orders'), http('GET', '/api/prices'), http('GET', '/api/proposals/state')]).then(function (a) {
+    return Promise.all([http('GET', '/api/orders'), http('GET', '/api/prices'), http('GET', '/api/proposals/state'), adminData()]).then(function (a) {
       var o = (a[0].orders || []), P = (a[1].prices || {}), meta = a[1].meta || {}, st = (a[2].state || {}), props = TV.proposals || [];
       var pend = props.filter(function (p) { return !st[p.id]; }).length, tot = o.reduce(function (n, x) { return n + (x.total || 0); }, 0);
       return '<h1>Resumen</h1><div class="kpis">' + kpi('Pedidos', o.length) + kpi('Importe pedido', money(tot)) + kpi('Referencias con precio', Object.keys(P.items || {}).length) + kpi('Propuestas pendientes', pend) + '</div>' +
@@ -93,7 +103,7 @@
   V.lista = function () {
     return http('GET', '/api/prices').then(function (r) {
       var P = r.prices || { items: {} };
-      var rows = Object.keys(TV.items).filter(function (k) { return P.items[k]; }).slice(0, 600).map(function (k) { var p = P.items[k]; return '<tr><td class="mono">' + esc(TV.items[k].d ? '—' : k) + '</td><td>' + esc(TV.items[k].n.es) + '</td><td class="num">' + esc(Q.unitMoney(p.p)) + '</td><td class="small">' + (p.t || []).map(function (t) { return 'desde ' + t[0] + ' uds. · ' + esc(Q.unitMoney(t[1])); }).join('<br>') + '</td></tr>'; }).join('');
+      var rows = Object.keys(TV.items).filter(function (k) { return P.items[k]; }).slice(0, 600).map(function (k) { var p = P.items[k]; return '<tr><td class="mono">' + esc(TV.items[k].d ? '—' : k) + '</td><td>' + esc(TV.items[k].n.es) + '</td><td class="num">' + esc(Q.unitMoney(p.p)) + '</td><td class="small">' + (p.t || []).map(function (t) { return 'desde ' + Number(t[0]) + ' uds. · ' + esc(Q.unitMoney(t[1])); }).join('<br>') + '</td></tr>'; }).join('');
       return '<h1>Lista de precios</h1><p class="muted small">Actualizada ' + esc(when(P.updated_at)) + ' · precios sin IVA</p><div class="tbl-wrap"><table class="spec"><thead><tr><th>Ref.</th><th>Producto</th><th>Precio ud.</th><th>Tramos</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
     });
   };
@@ -102,13 +112,13 @@
   V.presupuestador = function () { return Promise.resolve('<h1>Presupuestador</h1><p class="muted">Sube un CSV o Excel con <em>referencia</em> y <em>cantidad</em> (o añade desde el catálogo), revisa con imágenes y exporta el PDF.</p><iframe class="embed-frame" title="Presupuestador" src="../presupuesto/index.html?embed=1"></iframe>'); };
 
   /** Vista Contenido (manager): estado de traducción por idioma, referencias y etiquetas de voltaje de cada producto. */
-  V.contenido = function () {
+  V.contenido = function () { return adminData().then(function () {
     var A = (TV.admin && TV.admin.products) || [];
     /** Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir). */
     var cell = function (s) { return '<td><span class="st st-' + esc(s) + '">' + ({ ok: 'OK', partial: 'Parcial', missing: 'Falta', identical_to_es: 'Sin traducir' }[s] || esc(s)) + '</span></td>'; };
     return Promise.resolve('<h1>Contenido</h1><p class="muted">Estado de cada ficha por idioma, referencias pedibles y etiquetas de voltaje.</p><div class="tbl-wrap"><table class="spec"><thead><tr><th>Producto</th><th>ES</th><th>EN</th><th>FR</th><th>DE</th><th>Refs.</th><th>Voltaje</th><th>PDF</th></tr></thead><tbody>' +
-      A.map(function (p) { return '<tr><td>' + esc(p.name) + '<br><span class="muted small">' + esc(p.cat) + '</span></td>' + cell('ok') + cell(p.st.en) + cell(p.st.fr) + cell(p.st.de) + '<td class="num">' + p.variants + '</td><td class="num">' + p.vtags + '</td><td class="num">' + p.pdfs + '</td></tr>'; }).join('') + '</tbody></table></div>');
-  };
+      A.map(function (p) { return '<tr><td>' + esc(p.name) + '<br><span class="muted small">' + esc(p.cat) + '</span></td>' + cell('ok') + cell(p.st.en) + cell(p.st.fr) + cell(p.st.de) + '<td class="num">' + Number(p.variants) + '</td><td class="num">' + Number(p.vtags) + '</td><td class="num">' + Number(p.pdfs) + '</td></tr>'; }).join('') + '</tbody></table></div>');
+  }); };
 
   /** Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras. */
   V.estadisticas = function () {
@@ -153,8 +163,8 @@
       var d = r.diff, merge = r.mode !== 'replace';
       /** Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`. */
       var list = function (arr, kind) { return arr.slice(0, 60).map(function (k) { return '<tr><td class="mono">' + esc(k) + '</td><td>' + esc(itemName(k)) + '</td><td>' + kind + '</td></tr>'; }).join(''); };
-      var head = '<strong>' + d.changed.length + '</strong> cambian · <strong>' + d.added.length + '</strong> nuevas · <strong>' + d.removed.length + '</strong> ' + (merge ? 'se quedan sin precio' : 'se quedan sin precio porque no están en la hoja') + ' · ' + d.same + ' iguales' +
-        (merge ? ' · <strong>' + r.kept + '</strong> no vienen en la hoja y se conservan' : '') + ' · ' + r.refs + ' filas reconocidas · ' + r.total + ' referencias con precio al terminar';
+      var head = '<strong>' + d.changed.length + '</strong> cambian · <strong>' + d.added.length + '</strong> nuevas · <strong>' + d.removed.length + '</strong> ' + (merge ? 'se quedan sin precio' : 'se quedan sin precio porque no están en la hoja') + ' · ' + Number(d.same) + ' iguales' +
+        (merge ? ' · <strong>' + Number(r.kept) + '</strong> no vienen en la hoja y se conservan' : '') + ' · ' + Number(r.refs) + ' filas reconocidas · ' + Number(r.total) + ' referencias con precio al terminar';
       var sure = r.needs_force ? '<div class="notice warn"><strong>Para aplicarlo hay que confirmarlo:</strong><ul>' + (r.blockers || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul><label class="small"><input type="checkbox" data-force> Es intencionado: aplícalo</label></div>' : '';
       box.innerHTML = '<section class="panel"><h2>Vista previa · ' + esc(label) + '</h2><p>' + head + '</p>' + TV.priceReportHtml(r.report, esc) +
         ((d.changed.length + d.added.length + d.removed.length) ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Ref.</th><th>Producto</th><th></th></tr></thead><tbody>' + list(d.changed, 'cambia') + list(d.added, 'nueva') + list(d.removed, 'sin precio') + '</tbody></table></div>' : '<p class="notice">No hay diferencias.</p>') +
@@ -178,7 +188,7 @@
     http('POST', '/api/prices/upload', { rows: draftRows, force: force, mode: uploadMode }).then(function (r) {
       if (!r.ok) return fail(r);
       draftRows = null;
-      toast('Precios publicados · ' + r.meta.refs + ' referencias' + (r.meta.mode === 'merge' ? ' (' + r.meta.changed + ' cambian, ' + r.meta.added + ' nuevas, ' + r.meta.kept + ' conservadas)' : ''));
+      toast('Precios publicados · ' + Number(r.meta.refs) + ' referencias' + (r.meta.mode === 'merge' ? ' (' + Number(r.meta.changed) + ' cambian, ' + Number(r.meta.added) + ' nuevas, ' + Number(r.meta.kept) + ' conservadas)' : ''));
       render();
     });
   }
@@ -191,7 +201,7 @@
     http('POST', '/api/prices/ai', { instruction: text }).then(function (r) {
       if (!r.ok) { box.innerHTML = ''; return fail(r); }
       proposal = r;
-      var rows = r.changes.slice(0, 80).map(function (c) { return '<tr' + (c.large ? ' class="warn"' : '') + '><td class="mono">' + esc(c.ref) + '</td><td>' + esc(itemName(c.ref)) + '</td><td class="num">' + (c.old ? esc(Q.unitMoney(c.old.p)) : '—') + '</td><td class="num"><strong>' + esc(Q.unitMoney(c.next.p)) + '</strong></td><td class="num">' + (c.pct == null ? '' : (c.pct > 0 ? '+' : '') + c.pct + ' %') + (c.large ? ' ⚠' : '') + '</td></tr>'; }).join('');
+      var rows = r.changes.slice(0, 80).map(function (c) { return '<tr' + (c.large ? ' class="warn"' : '') + '><td class="mono">' + esc(c.ref) + '</td><td>' + esc(itemName(c.ref)) + '</td><td class="num">' + (c.old ? esc(Q.unitMoney(c.old.p)) : '—') + '</td><td class="num"><strong>' + esc(Q.unitMoney(c.next.p)) + '</strong></td><td class="num">' + (c.pct == null ? '' : (c.pct > 0 ? '+' : '') + Number(c.pct) + ' %') + (c.large ? ' ⚠' : '') + '</td></tr>'; }).join('');
       box.innerHTML = '<section class="panel"><h2>Propuesta de la IA</h2><p>' + esc(r.summary) + '</p>' +
         (r.warnings.length ? '<div class="notice"><strong>Revisa:</strong><ul>' + r.warnings.slice(0, 8).map(function (w) { return '<li>' + esc(w) + '</li>'; }).join('') + '</ul></div>' : '') +
         (r.rejected.length ? '<p class="muted small">Descartado por no ser válido: ' + r.rejected.slice(0, 6).map(function (x) { return esc(x.ref + ' (' + x.why + ')'); }).join(', ') + '</p>' : '') +
@@ -212,8 +222,8 @@
   var propState = {};
   /** Vista Propuestas (manager): lista las propuestas de cambio con su estado en el servidor para aprobar, rechazar o deshacer. */
   V.propuestas = function () {
-    return http('GET', '/api/proposals/state').then(function (r) {
-      propState = r.state || {}; var props = TV.proposals || [];
+    return Promise.all([http('GET', '/api/proposals/state'), adminData()]).then(function (a) {
+      var r = a[0]; propState = r.state || {}; var props = TV.proposals || [];
       if (!props.length) return '<h1>Propuestas</h1><p class="notice">No hay propuestas todavía.</p>';
       return '<h1>Propuestas de cambio</h1><p class="muted">Nada de esto está publicado: la web usa el dato original hasta que lo apruebes.</p>' + props.map(function (p) {
         var s = propState[p.id] && propState[p.id].state;

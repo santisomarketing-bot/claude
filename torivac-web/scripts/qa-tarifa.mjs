@@ -12,14 +12,14 @@ import os from 'node:os';
 import vm from 'node:vm';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { startBackend } from './lib/backends.mjs';
+import { startBackend, MASTER_TOKEN } from './lib/backends.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 // sitio compilado con API (valor provisional; la URL verdadera se inyecta al servir)
 const DIST = fs.mkdtempSync(path.join(os.tmpdir(), 'tv-tarifa-'));
 execFileSync('node', [path.join(ROOT, 'site/build.mjs'), `--out=${DIST}`], { env: { ...process.env, TORIVAC_API: 'http://api.invalid' }, stdio: 'pipe' });
-const sb = { window: {} }; sb.window = sb; vm.createContext(sb);
+const sb = { window: {}, document: { getElementById: () => null } }; sb.window = sb; vm.createContext(sb);   // catalog.js lee el bloque JSON de arranque con document.getElementById (aquí no hay página: sin bloque)
 for (const f of ['catalog.js', 'prices.js']) vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data', f), 'utf8'), sb);
 const { items } = sb.TV;
 const prices = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/catalog/prices.json'), 'utf8'));      // hoja de DEMO del catálogo (el sitio con API no la lleva)
@@ -125,7 +125,7 @@ console.log('\n2) la web pública lee los precios del servidor (sin recompilar) 
   await f.locator('[name=name]').fill('Marta Prueba'); await f.locator('[name=email]').fill('cliente.prueba@example.com'); await f.locator('[name=privacy]').check();
   await f.locator('button[type=submit]').click(); await page.locator('[data-sent]:not([hidden])').waitFor({ timeout: 8000 });
   const sent = await page.locator('[data-sent]').innerText();
-  const num = (sent.match(/TV-\d{8}-\d{4}/) || [])[0];
+  const num = (sent.match(/TV-\d{8}-\d{4}(?:-[0-9A-Z]{3})?/) || [])[0];
   ok(!!num, `el Worker acepta la referencia nueva y da número de pedido ${num}`);
   const rec = await be.order(num);
   ok(rec.total === total && rec.lines[0].ref === 'TT0330212', `el servidor valora igual que la web: ${rec.total} €`);
@@ -142,7 +142,7 @@ console.log('\n2) la web pública lee los precios del servidor (sin recompilar) 
 console.log('\n5) sincronización automática: el mismo Excel, tal cual en Drive (descarga directa del .xlsx), sin pasar por el panel');
 { await be.seedPrices({ updated_at: null, source: 'none', currency: 'EUR', mode: 'none', items: {} });          // servidor sin precios (primera carga: no hay hoja anterior con la que comparar)
   await be.useSource('xlsx', fs.readFileSync(xlsx));
-  const r = await fetch(API + '/api/prices/refresh', { method: 'POST', headers: { Authorization: 'Bearer master-test' } }).then((x) => x.json());
+  const r = await fetch(API + '/api/prices/refresh', { method: 'POST', headers: { Authorization: 'Bearer ' + MASTER_TOKEN } }).then((x) => x.json());
   ok(r.ok === true && r.meta.source === 'xlsx-url', `«Actualizar ahora» lee el libro: origen ${r.meta && r.meta.source}${r.ok ? '' : ' · ' + r.error}`);
   const pub = await fetch(API + '/api/prices').then((x) => x.json());
   ok(Object.keys(pub.prices.items).length === 9, `9 referencias, igual que al subirlo por el panel: ${Object.keys(pub.prices.items).length}`);

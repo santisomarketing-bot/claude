@@ -1,15 +1,16 @@
 // Pruebas de [AUTH], [VALIDATE], [PRICES], [SHEETS], [ORDERS], [USERS] e [INDEX]: contraseñas y sesiones, pedidos, hoja de precios, roles, CORS, límites y cron.
 // Sin red: KV en memoria y Resend/Google simulados con fetchImpl (ver helpers.js). Se ejecutan con `npm test` desde workers/api.
+// Las pruebas de los arreglos de seguridad (D1…D9) están en security-orders.test.js, security-auth.test.js y security-sheets.test.js.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { hashPassword, verifyPassword, signSession, verifySession } from '../src/auth.js';
 import { parseOrder, parseContact } from '../src/validate.js';
 import { unitPrice, priceOrder, rowsToPrices, diffPrices } from '../src/prices.js';
 import { parseCsv, syncPrices, getAccessToken } from '../src/sheets.js';
-import { handleOrder } from '../src/orders.js';
+import { handleOrder, uorderPrefix } from '../src/orders.js';
 import { createUser } from '../src/users.js';
 import api from '../src/index.js';
-import { mkEnv, req, CATALOG, PRICES, SHEET, TCTX } from './helpers.js';
+import { mkEnv, req, CATALOG, PRICES, SHEET, TCTX, MASTER } from './helpers.js';
 
 /** Pedido válido de ejemplo { customer, lines, lang }; over sustituye campos para provocar cada error de validación. */
 const goodOrder = (over = {}) => ({ customer: { name: 'Ana Pérez', company: 'ACME', email: 'ana@acme.es', phone: '600', notes: 'urgente', privacy: true }, lines: [{ ref: 'TT0020210', qty: 12 }, { ref: 'P16633', qty: 1 }], lang: 'es', ...over });
@@ -20,13 +21,15 @@ test('contraseñas: hash verificable y sal distinta', async () => {
   assert.ok(await verifyPassword('Clave-Segura-2026', a.hash, a.salt));
   assert.ok(!(await verifyPassword('otra', a.hash, a.salt)));
 });
-test('sesión firmada: válida, manipulada y caducada', async () => {
-  const t = await signSession({ sub: 'a@b.c', role: 'manager', name: 'A' }, 'secreto-secreto-secreto-secreto-1');
-  assert.deepEqual(await verifySession(t, 'secreto-secreto-secreto-secreto-1'), { sub: 'a@b.c', role: 'manager', name: 'A' });
-  assert.equal(await verifySession(t.slice(0, -2) + 'xx', 'secreto-secreto-secreto-secreto-1'), null);
-  assert.equal(await verifySession(t, 'otro'), null);
-  const old = await signSession({ sub: 'a@b.c', role: 'client', name: 'A' }, 's'.repeat(32), 1000, Date.now() - 5000);
-  assert.equal(await verifySession(old, 's'.repeat(32)), null);
+test('sesión firmada: válida, manipulada y caducada (el token lleva sub, iat, exp y sid; ya no lleva rol)', async () => {
+  const SEC = 'secreto-secreto-secreto-secreto-1', sid = 'ab'.repeat(16);
+  const t = await signSession({ sub: 'a@b.es', sid }, SEC, undefined, 1_000_000);
+  assert.deepEqual(await verifySession(t, SEC, 1_000_001), { sub: 'a@b.es', iat: 1_000_000, exp: 1_000_000 + 24 * 3600 * 1000, sid });
+  assert.equal(await verifySession(t.slice(0, -2) + 'xx', SEC, 1_000_001), null);
+  assert.equal(await verifySession(t, 'otro-secreto-otro-secreto-otro-secreto', 1_000_001), null);
+  assert.equal(await verifySession(t, 'corto', 1_000_001), null, 'con un secreto inseguro nada vale');
+  assert.equal(await verifySession(await signSession({ sub: 'a@b.es', sid }, 's'.repeat(32), 1000, Date.now() - 5000), 's'.repeat(32)), null, 'caducado');
+  assert.equal(await verifySession(t, SEC, 1_000_000 + 24 * 3600 * 1000 + 1), null, 'a las 24 h caduca');
 });
 test('validación de pedidos', () => {
   assert.ok(parseOrder(goodOrder(), CATALOG).order);
@@ -92,13 +95,13 @@ test('pedido: valora en servidor (ignora precios del cliente), guarda y envía a
   const body = goodOrder({ pdf: 'JVBERi0xLjQK', lines: [{ ref: 'TT0020210', qty: 12, unit: 0.01, total: 0.12 }, { ref: 'R100', qty: 4 }] });
   const res = await handleOrder(req('/api/order', { method: 'POST', body }), env, body, { fetchImpl, catalog: CATALOG, now: new Date('2026-10-28T07:00:00Z') });
   const j = await res.json();
-  assert.equal(res.status, 200); assert.equal(j.number, 'TV-20261028-0001'); assert.equal(j.total, 142.8); assert.equal(j.unpriced, 1);
+  assert.equal(res.status, 200); assert.match(j.number, /^TV-20261028-0001-[0-9A-Z]{3}$/); assert.equal(j.total, 142.8); assert.equal(j.unpriced, 1);
   assert.deepEqual(sent[0].to, ['info@grupotorivac.com', 'mzamora@torivac.com']);
-  assert.equal(sent[0].reply_to, 'ana@acme.es'); assert.equal(sent[0].attachments[0].filename, 'TV-20261028-0001.pdf');
-  assert.deepEqual(sent[1].to, ['ana@acme.es']);
-  const rec = JSON.parse(await env.KV.get('order:TV-20261028-0001')); assert.equal(rec.lines[0].unit, 11.9); assert.equal(rec.total, 142.8);
+  assert.equal(sent[0].reply_to, 'ana@acme.es'); assert.equal(sent[0].attachments[0].filename, `${j.number}.pdf`);
+  assert.deepEqual(sent[1].to, ['ana@acme.es']); assert.equal(sent[1].attachments, undefined, 'la copia al cliente no lleva adjunto');
+  const rec = JSON.parse(await env.KV.get(`order:${j.number}`)); assert.equal(rec.lines[0].unit, 11.9); assert.equal(rec.total, 142.8);
   const j2 = await (await handleOrder(req('/api/order', { method: 'POST' }), env, body, { fetchImpl, catalog: CATALOG, now: new Date('2026-10-28T07:01:00Z') })).json();
-  assert.equal(j2.number, 'TV-20261028-0002');
+  assert.match(j2.number, /^TV-20261028-0002-[0-9A-Z]{3}$/);
 });
 test('pedido: sin RESEND_API_KEY no falla (se guarda y se informa)', async () => {
   const env = mkEnv(); await env.KV.put('prices:current', JSON.stringify(PRICES));
@@ -112,26 +115,32 @@ test('pedido: límite por IP', async () => {
 });
 test('API: login, roles, usuarios y pedidos propios', async () => {
   const env = mkEnv();
-  await createUser(env, { email: 'jefe@torivac.com', name: 'Jefe', role: 'manager', password: 'Jefe-Clave-2026!' });
-  await createUser(env, { email: 'ana@acme.es', name: 'Ana', role: 'client', password: 'Ana-Clave-2026!!' });
-  assert.equal((await createUser(env, { email: 'ana@acme.es', role: 'client', password: 'otraclave-larga' })).status, 409);
+  await createUser(env, { email: 'jefe@torivac.com', name: 'Jefe', role: 'manager', password: 'Responsable-2026-ok!' });
+  await createUser(env, { email: 'ana@acme.es', name: 'Ana', role: 'client', password: 'Cliente-Clave-2026!!' });
+  assert.equal((await createUser(env, { email: 'ana@acme.es', role: 'client', password: 'otraclave-larga-123' })).status, 409);
   assert.ok((await createUser(env, { email: 'x@y.es', role: 'client', password: 'corta' })).error);
   /** POST /api/auth/login con el correo y la contraseña dados; devuelve la Response. */
-  const login = async (email, password) => api.fetch(req('/api/auth/login', { method: 'POST', body: { email, password } }), env, {});
+  const login = async (email, password) => api.fetch(req('/api/auth/login', { method: 'POST', body: { email, password } }), env, {}, { purge: false });
   assert.equal((await login('jefe@torivac.com', 'mala')).status, 401);
-  const mt = (await (await login('jefe@torivac.com', 'Jefe-Clave-2026!')).json()).token;
-  const ct = (await (await login('ana@acme.es', 'Ana-Clave-2026!!')).json()).token;
+  const mt = (await (await login('jefe@torivac.com', 'Responsable-2026-ok!')).json()).token;
+  const ct = (await (await login('ana@acme.es', 'Cliente-Clave-2026!!')).json()).token;
   /** Llama al Worker en la ruta p con el token t como Bearer y las opciones o (método, body); devuelve la Response. */
-  const as = (t, p, o = {}) => api.fetch(req(p, { ...o, headers: { Authorization: `Bearer ${t}` } }), env, {});
+  const as = (t, p, o = {}) => api.fetch(req(p, { ...o, headers: { Authorization: `Bearer ${t}` } }), env, {}, { purge: false });
   assert.equal((await as(ct, '/api/users')).status, 403);                         // un cliente no gestiona usuarios
   assert.equal((await as(mt, '/api/users')).status, 200);
   assert.equal((await as(ct, '/api/prices/refresh', { method: 'POST' })).status, 403);
   assert.equal((await api.fetch(req('/api/users'), env, {})).status, 401);
-  await env.KV.put('order:A', JSON.stringify({ number: 'A', at: '2026-10-28', customer: { email: 'ana@acme.es' }, lines: [] }));
-  await env.KV.put('order:B', JSON.stringify({ number: 'B', at: '2026-10-27', customer: { email: 'otro@x.es' }, lines: [] }));
-  assert.equal((await (await as(ct, '/api/orders')).json()).orders.length, 1);
-  assert.equal((await (await as(mt, '/api/orders')).json()).orders.length, 2);
-  assert.equal((await as('master-token-123', '/api/users')).status, 200);        // token maestro = manager
+  /** Registro de pedido de ejemplo con IP y un error de correo (para comprobar qué ve cada rol). */
+  const rec = (number, at, email) => ({ number, at, customer: { email, name: 'x' }, lines: [], ip: '203.0.113.9', emailed: { team: false, customer: false, skipped: false, error: 'Resend respondió 403' } });
+  await env.KV.put('order:TV-20261028-0001-AAA', JSON.stringify(rec('TV-20261028-0001-AAA', '2026-10-28T08:00:00.000Z', 'ana@acme.es')));
+  await env.KV.put('order:TV-20261027-0001-BBB', JSON.stringify(rec('TV-20261027-0001-BBB', '2026-10-27T08:00:00.000Z', 'otro@x.es')));
+  await env.KV.put((await uorderPrefix('ana@acme.es')) + 'TV-20261028-0001-AAA', '1');          // índice de «mis pedidos» de Ana
+  const mine = (await (await as(ct, '/api/orders', {})).json()).orders;
+  assert.equal(mine.length, 1); assert.equal(mine[0].number, 'TV-20261028-0001-AAA');
+  assert.ok(!('ip' in mine[0]) && !('error' in mine[0].emailed), 'el cliente no ve la IP ni el error del correo');
+  const all = (await (await as(mt, '/api/orders')).json()).orders;
+  assert.equal(all.length, 2); assert.equal(all[0].ip, '203.0.113.9', 'el manager sí ve la IP'); assert.equal(all[0].emailed.error, 'Resend respondió 403');
+  assert.equal((await as(MASTER, '/api/users')).status, 200);        // token maestro = manager
 });
 test('API: bloqueo de login por intentos y CORS', async () => {
   const env = mkEnv(); let r;
@@ -145,7 +154,7 @@ test('API: bloqueo de login por intentos y CORS', async () => {
 test('API: subida de hoja (vista previa y aplicar) y cron', async () => {
   const env = mkEnv({ PRICE_CSV_URL: 'https://sheet.test/x.csv' });
   await env.KV.put('prices:current', JSON.stringify(PRICES));
-  const h = { Authorization: 'Bearer master-token-123' };
+  const h = { Authorization: `Bearer ${MASTER}` };
   const dry = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv: SHEET, dry_run: true }, headers: h }), env, {}, { ctx: TCTX })).json();
   assert.equal(dry.dry_run, true); assert.deepEqual(dry.diff.added, ['R100']);
   const done = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv: SHEET }, headers: h }), env, {}, { ctx: TCTX })).json();
@@ -158,7 +167,7 @@ test('API: subida de hoja (vista previa y aplicar) y cron', async () => {
 
 test('hoja de precios con códigos nuevos (tarifa): se publican dentro de su producto y se pueden pedir', async () => {
   const env = mkEnv({ RESEND_API_KEY: 're_test' }); await env.KV.put('prices:current', JSON.stringify(PRICES));
-  const h = { Authorization: 'Bearer master-token-123' };
+  const h = { Authorization: `Bearer ${MASTER}` };
   const csv = 'Artículo,Descripción,Precio venta\nTT0020210,TRAFO TOROID 20VA 230V/2X10V,12.37093203\nTT0099999,TRAFO TOROID 99VA 230V/2X99V,45.5\nQQ1,algo raro,3\n';
   const dry = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv, dry_run: true }, headers: h }), env, {}, { ctx: TCTX })).json();
   assert.deepEqual(dry.report.unknown, ['QQ1']); assert.deepEqual(dry.report.extras, ['TT0099999']);
@@ -197,22 +206,22 @@ test('GET /api/prices: el público no ve quién cargó la hoja ni el id de Drive
   const pub = await api.fetch(req('/api/prices'), env, {}); const pj = await pub.json();
   assert.ok(!JSON.stringify(pj).includes('@') && !JSON.stringify(pj).includes('jefa'), 'ningún correo en la respuesta pública');
   assert.deepEqual([pj.meta.reason, pj.meta.source, pj.prices.source], ['upload', 'upload', 'upload']);
-  assert.match(pub.headers.get('Cache-Control'), /public/); assert.equal(pub.headers.get('Vary'), 'Authorization');
+  assert.match(pub.headers.get('Cache-Control'), /public/); assert.equal(pub.headers.get('Vary'), 'Origin, Authorization');
   assert.equal(pj.prices.items.R100.p, 5.5, 'los precios siguen siendo públicos');
   const man = await api.fetch(req('/api/prices', { headers: h }), env, {}); const mj = await man.json();
   assert.equal(mj.meta.reason, 'upload:jefa@torivac.com'); assert.match(man.headers.get('Cache-Control'), /no-store/);
-  const cli = await createUser(env, { email: 'ana@acme.es', name: 'Ana', role: 'client', password: 'Ana-Clave-2026!!' });
-  const ct = (await (await api.fetch(req('/api/auth/login', { method: 'POST', body: { email: 'ana@acme.es', password: 'Ana-Clave-2026!!' } }), env, {})).json()).token;
+  const cli = await createUser(env, { email: 'ana@acme.es', name: 'Ana', role: 'client', password: 'Cliente-Clave-2026!!' });
+  const ct = (await (await api.fetch(req('/api/auth/login', { method: 'POST', body: { email: 'ana@acme.es', password: 'Cliente-Clave-2026!!' } }), env, {})).json()).token;
   assert.ok(cli.user && !JSON.stringify(await (await api.fetch(req('/api/prices', { headers: { Authorization: `Bearer ${ct}` } }), env, {})).json()).includes('@'), 'un cliente tampoco ve correos');
 });
 test('un usuario borrado pierde la sesión al instante (las sesiones no tienen estado, se comprueba que siga existiendo)', async () => {
   const env = mkEnv();
-  await createUser(env, { email: 'ana@acme.es', name: 'Ana', role: 'client', password: 'Ana-Clave-2026!!' });
-  const tok = (await (await api.fetch(req('/api/auth/login', { method: 'POST', body: { email: 'ana@acme.es', password: 'Ana-Clave-2026!!' } }), env, {})).json()).token;
+  await createUser(env, { email: 'ana@acme.es', name: 'Ana', role: 'client', password: 'Cliente-Clave-2026!!' });
+  const tok = (await (await api.fetch(req('/api/auth/login', { method: 'POST', body: { email: 'ana@acme.es', password: 'Cliente-Clave-2026!!' } }), env, {})).json()).token;
   /** GET /api/auth/me con la sesión de Ana; devuelve la Response. */
   const me = () => api.fetch(req('/api/auth/me', { headers: { Authorization: `Bearer ${tok}` } }), env, {});
   assert.equal((await me()).status, 200);
-  await api.fetch(req('/api/users/ana%40acme.es', { method: 'DELETE', headers: { Authorization: 'Bearer master-token-123' } }), env, {});
+  await api.fetch(req('/api/users/ana%40acme.es', { method: 'DELETE', headers: { Authorization: `Bearer ${MASTER}` } }), env, {});
   assert.equal((await me()).status, 401);
 });
 test('contacto: el correo al equipo escapa el HTML de nombre, correo y mensaje', async () => {
@@ -225,13 +234,14 @@ test('contacto: el correo al equipo escapa el HTML de nombre, correo y mensaje',
   assert.ok(!/<(img|script)\b/i.test(sent[0].html) && sent[0].html.includes('&lt;b&gt;Ana&lt;/b&gt;'), 'sin etiquetas del visitante en el HTML: ' + sent[0].html);
   assert.match(sent[0].html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;<br>&amp; adiós/);
 });
-test('pedido: si el contador de KV va por detrás (no es atómico), el número no pisa un pedido ya guardado', async () => {
+test('pedido: si otro pedido simultáneo ya ocupa el mismo número (contador de KV por detrás), el sufijo aleatorio se vuelve a sortear y no se pisa el registro', async () => {
   const env = mkEnv({ RESEND_API_KEY: 're_test' }); await env.KV.put('prices:current', JSON.stringify(PRICES));
   const now = new Date('2026-10-28T07:00:00Z'); const fetchImpl = async () => new Response('{"id":"m"}', { status: 200 });
-  await env.KV.put('order:TV-20261028-0001', JSON.stringify({ number: 'TV-20261028-0001', marca: 'anterior' }));      // otro pedido simultáneo ya ocupó el 0001
-  const j = await (await handleOrder(req('/api/order', { method: 'POST' }), env, goodOrder(), { fetchImpl, catalog: CATALOG, now })).json();
-  assert.equal(j.number, 'TV-20261028-0002');
-  assert.equal(JSON.parse(await env.KV.get('order:TV-20261028-0001')).marca, 'anterior');
+  await env.KV.put('order:TV-20261028-0001-AAA', JSON.stringify({ number: 'TV-20261028-0001-AAA', marca: 'anterior' }));      // otro pedido ya ocupó 0001-AAA
+  const draws = [[10, 10, 10], [11, 11, 11]];                                                                                 // «AAA» y luego «BBB»
+  const j = await (await handleOrder(req('/api/order', { method: 'POST' }), env, goodOrder(), { fetchImpl, catalog: CATALOG, now, rand: () => draws.shift() })).json();
+  assert.equal(j.number, 'TV-20261028-0001-BBB');
+  assert.equal(JSON.parse(await env.KV.get('order:TV-20261028-0001-AAA')).marca, 'anterior');
 });
 
 // ───────────────────────────────────────── el correo es parte del resultado: nunca se afirma lo que no salió
@@ -266,7 +276,7 @@ test('contacto: si el correo no sale, el servidor responde con error (la web lo 
 
 test('actualización parcial (modo por defecto): la hoja trae solo una parte; se reconoce por referencia, SKU o ID; precio 0 o active = 0 quitan el precio; lo demás se conserva', async () => {
   const env = mkEnv(); await env.KV.put('prices:current', JSON.stringify(PRICES));
-  const h = { Authorization: 'Bearer master-token-123' };
+  const h = { Authorization: `Bearer ${MASTER}` };
   /** Sube una hoja (cuerpo `body`) al API con el catálogo de pruebas y devuelve la respuesta ya leída. */
   const up = async (body) => ({ ...(await (await api.fetch(req('/api/prices/upload', { method: 'POST', body, headers: h }), env, {}, { ctx: TCTX })).clone().json()) });
   /** Precios vigentes guardados en KV. */

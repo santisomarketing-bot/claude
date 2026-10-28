@@ -16,7 +16,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 
 // ───────────────────────────────────────── [DATA]
-const sb = { window: {} }; sb.window = sb; vm.createContext(sb);
+const sb = { window: {}, document: { getElementById: () => null } }; sb.window = sb; vm.createContext(sb);   // catalog.js lee el bloque JSON de arranque con document.getElementById (aquí no hay página: sin bloque)
 for (const f of ['catalog.js', 'prices.js']) vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data', f), 'utf8'), sb);
 const { items, prices } = sb.TV;
 // 1.ª línea pedible de un producto: su código real si el PDF lo da (TT…), o la línea genérica P<id>
@@ -61,7 +61,7 @@ await f.locator('[name=privacy]').check();
 await f.locator('button[type=submit]').click();
 await page.locator('[data-sent]:not([hidden])').waitFor({ timeout: 8000 });
 const sent = await page.locator('[data-sent]').innerText();
-const num = (sent.match(/TV-\d{8}-\d{4}/) || [])[0];
+const num = (sent.match(/TV-\d{8}-\d{4}(?:-[0-9A-Z]{3})?/) || [])[0];
 ok(!!num, `número de pedido del servidor: ${num}`);
 ok(/recibido|copia/i.test(sent), `mensaje de éxito: «${sent.replace(/\s+/g, ' ').slice(0, 90)}»`);
 ok((await page.evaluate(() => TV.Quote.count())) === 0, 'el presupuesto se vacía tras enviarlo');
@@ -114,7 +114,7 @@ const f2 = page.locator('[data-quote-form]');
 await f2.locator('[name=name]').fill('Marta Prueba'); await f2.locator('[name=email]').fill('cliente.prueba@example.com'); await f2.locator('[name=privacy]').check();
 await f2.locator('button[type=submit]').click(); await page.locator('[data-sent]:not([hidden])').waitFor({ timeout: 8000 });
 const t2 = (await page.locator('[data-sent]').innerText()).replace(/\s+/g, ' ');
-const num2 = (t2.match(/TV-\d{8}-\d{4}/) || [])[0];
+const num2 = (t2.match(/TV-\d{8}-\d{4}(?:-[0-9A-Z]{3})?/) || [])[0];
 ok(!!num2 && /no hemos podido enviarte la copia/i.test(t2) && !/te hemos enviado una copia/i.test(t2) && (await page.locator('[data-sent] a[href^="mailto:info@"]').count()) === 1, `pedido registrado SIN afirmar que se envió copia, con el correo directo: «${t2.slice(0, 150)}»`);
 const rec2 = await be.order(num2);
 ok(rec2 && rec2.emailed && rec2.emailed.team === false && /403/.test(rec2.emailed.error), `el pedido queda guardado y marcado «aviso por correo no enviado» (${rec2 && rec2.emailed && rec2.emailed.error})`);

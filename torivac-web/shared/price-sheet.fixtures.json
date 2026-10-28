@@ -995,6 +995,71 @@
     ],
     "warningCodes": []
    }
+  },
+  {
+   "name": "seguridad: «Observaciones» y «Comentario» son internas y NO se publican; «Nota web» sí; precios imposibles se ignoran",
+   "rows": [
+    [
+     "Artículo",
+     "Precio venta",
+     "Observaciones",
+     "Comentario",
+     "Nota web"
+    ],
+    [
+     "TT0030210",
+     24.5,
+     "Margen 45% - coste proveedor 6,90 - NO DIVULGAR",
+     "solo para Marta",
+     "Entrega en 10 días"
+    ],
+    [
+     "TT0020210",
+     "1e999",
+     "",
+     "",
+     " "
+    ],
+    [
+     "TT0150117EM",
+     99999999999,
+     "",
+     "",
+     " "
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0150117EM": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     }
+    }
+   },
+   "expect": {
+    "items": {
+     "TT0030210": {
+      "p": 24.5,
+      "note": "Entrega en 10 días"
+     }
+    },
+    "acceptedCount": 1,
+    "warningCodes": [
+     "sin_precio"
+    ],
+    "ignoredReasons": [
+     "precio ilegible «1e999»",
+     "precio ilegible «99999999999»"
+    ]
+   }
   }
  ],
  "numbers": [
@@ -1045,6 +1110,34 @@
   [
    "0,5",
    0.5
+  ],
+  [
+   "1e999",
+   null
+  ],
+  [
+   "1e300",
+   null
+  ],
+  [
+   1e+300,
+   null
+  ],
+  [
+   "99999999",
+   null
+  ],
+  [
+   "10000000",
+   10000000
+  ],
+  [
+   "9999999,99",
+   9999999.99
+  ],
+  [
+   "-1e999",
+   null
   ]
  ],
  "no_header": [

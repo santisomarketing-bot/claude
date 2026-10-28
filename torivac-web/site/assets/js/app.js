@@ -1,6 +1,6 @@
 /**
  * [APP] Comportamiento común a todas las páginas.
- * Secciones: [UTIL] · [MENU] menú móvil · [DRAWER] cajón del presupuesto · [FAB] botones flotantes · [LANG] idioma (detección + selector manual) · [THEME] aspecto · [PRICE-STAMP]
+ * Secciones: [UTIL] · [MENU] menú móvil · [DRAWER] cajón del presupuesto · [FAB] botones flotantes · [LANG] idioma (detección + selector manual) · [THEME] aspecto · [ORIGINAL] menú flotante del aspecto «Original» · [PRICE-STAMP]
  * Depende de: quote.js (TV.Quote). Sin librerías.
  */
 (function () {
@@ -63,7 +63,7 @@
     body.innerHTML = d.lines.map(function (l) {
       var th = thumbSrc(l.ref);
       return '<div class="mini-line" data-ref="' + esc(l.ref) + '"><img src="' + esc(th) + '" alt="" width="48" height="48"><div><div class="n">' + esc(l.name) + '</div><div class="r">' + esc(Q.shownRef(l.ref)) + (l.spec ? ' · ' + esc(l.spec) : '') + '</div>' +
-        '<div class="qty" style="margin-top:6px"><button type="button" data-d-dec aria-label="−">−</button><input type="number" min="0" value="' + l.qty + '" data-d-qty aria-label="' + esc(Q.t('qty')) + '"><button type="button" data-d-inc aria-label="+">+</button></div></div>' +
+        '<div class="qty" style="margin-top:6px"><button type="button" data-d-dec aria-label="−">−</button><input type="number" min="0" value="' + Number(l.qty) + '" data-d-qty aria-label="' + esc(Q.t('qty')) + '"><button type="button" data-d-inc aria-label="+">+</button></div></div>' +
         '<div style="text-align:right"><div class="mono">' + (l.total == null ? esc(Q.t('on_request')) : esc(Q.money(l.total))) + '</div><button class="btn sm ghost" type="button" data-d-rm style="margin-top:6px">' + esc(Q.t('remove')) + '</button></div></div>';
     }).join('');
     foot.innerHTML = '<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px"><span>' + esc(Q.t('total')) + '</span><strong class="mono" style="font-size:1.4rem">' + esc(Q.money(d.total)) + '</strong></div>' +
@@ -144,6 +144,26 @@
     function paint() { var cur = root.getAttribute('data-theme'); groups.forEach(function (g) { g.hidden = false; $$('[data-set-theme]', g).forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set-theme') === cur ? 'true' : 'false'); }); }); }
     $$('[data-set-theme]').forEach(function (b) { b.addEventListener('click', function () { var v = b.getAttribute('data-set-theme'); root.setAttribute('data-theme', v); store('tv-theme', v); paint(); }); });
     paint();
+  })();
+
+  // ───────────────────────────────────────── [ORIGINAL] aspecto «Original»: menú flotante «Productos-Torivac» y redirección de las categorías de un solo producto
+  //   El menú nace oculto (sin JS no serviría); aquí se enseña, se abre y se cierra (botón, fondo, Escape) y se despliegan sus categorías. La pista «Abrir productos» sale 4 s una vez por sesión, como en la web actual.
+  (function () {
+    var root = document.documentElement;
+    if (root.getAttribute('data-theme') === 'original' && document.body.getAttribute('data-o-redirect')) { location.replace(document.body.getAttribute('data-o-redirect')); return; }   // la web actual manda esas categorías directamente a su producto
+    var fl = $('[data-o-float]'); if (!fl) return;
+    var tg = $('.torivac-sidebar-toggle', fl), panel = $('#o-panel', fl), last = null;
+    fl.hidden = false;
+    /** Abre o cierra el panel de categorías (y lo anuncia a los lectores de pantalla). */
+    function setOpen(o) {
+      fl.classList.toggle('is-open', o); tg.setAttribute('aria-expanded', o ? 'true' : 'false');
+      if (o) { last = document.activeElement; var c = $('.torivac-sidebar-close', fl); if (c) c.focus(); } else if (last && last.focus) { last.focus(); }
+    }
+    tg.addEventListener('click', function () { setOpen(!fl.classList.contains('is-open')); });
+    $$('[data-o-close]', fl).forEach(function (b) { b.addEventListener('click', function () { setOpen(false); }); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && fl.classList.contains('is-open')) setOpen(false); });
+    $$('.cat-icon', fl).forEach(function (b) { b.addEventListener('click', function () { var ul = document.getElementById(b.getAttribute('aria-controls')); var o = ul.hidden; ul.hidden = !o; b.setAttribute('aria-expanded', o ? 'true' : 'false'); b.textContent = o ? '−' : '+'; }); });
+    try { if (!sessionStorage.getItem('tv_o_hint')) { sessionStorage.setItem('tv_o_hint', '1'); fl.classList.add('show-hint'); setTimeout(function () { fl.classList.remove('show-hint'); }, 4200); } } catch (e) { /* sin almacenamiento: sin pista */ }
   })();
 
   // ───────────────────────────────────────── [PRICE-STAMP] marca de demo y fecha de precios

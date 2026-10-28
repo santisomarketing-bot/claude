@@ -8,7 +8,7 @@
 import items from './generated/items.js';
 import { loadPrices } from './prices.js';
 import { savePrices } from './sheets.js';
-import { round2 } from './util.js';
+import { round2, ApiError } from './util.js';
 
 export const TOOL = 'proponer_cambios_de_precios';
 const API_URL = 'https://api.anthropic.com/v1/messages';
@@ -47,7 +47,7 @@ export const TOOL_SCHEMA = {
 
 /** Lista de precios en texto compacto para el prompt: «ref | nombre | 12.3456 | desde 10 uds = 11.9; desde 50 uds = 11.4». */
 export function buildTable(prices, catalog = items) {
-  const rows = Object.entries(prices.items).slice(0, MAX_REFS_IN_PROMPT).map(([ref, p]) => `${ref} | ${(catalog[ref] && catalog[ref].n) || ''} | ${p.p}${(p.t || []).length ? ' | ' + p.t.map(([q, v]) => `desde ${q} uds = ${v}`).join('; ') : ''}`);
+  const rows = Object.entries(prices.items).slice(0, MAX_REFS_IN_PROMPT).map(([ref, p]) => `${ref} | ${(Object.hasOwn(catalog, ref) && catalog[ref].n) || ''} | ${p.p}${(p.t || []).length ? ' | ' + p.t.map(([q, v]) => `desde ${q} uds = ${v}`).join('; ') : ''}`);
   return rows.join('\n');
 }
 
@@ -66,14 +66,14 @@ export function validateChanges(raw, prices, catalog = items) {
   if (list.length > MAX_CHANGES) out.warnings.push(`La IA propuso ${list.length} cambios; se usan los ${MAX_CHANGES} primeros.`);
   const seen = new Set();
   for (const c of list.slice(0, MAX_CHANGES)) {
-    const ref = String((c && c.ref) || '').trim();
+    const ref = (c && typeof c.ref === 'string' ? c.ref : '').trim();                // solo cadenas: una lista anidada como «referencia» no se convierte en texto
     if (!ref) { out.rejected.push({ ref: '(vacía)', why: 'sin referencia' }); continue; }
     if (seen.has(ref)) { out.rejected.push({ ref, why: 'repetida' }); continue; }
     seen.add(ref);
-    if (!prices.items[ref] && !catalog[ref]) { out.rejected.push({ ref, why: 'la referencia no existe' }); continue; }
+    if (!Object.hasOwn(prices.items, ref) && !Object.hasOwn(catalog, ref)) { out.rejected.push({ ref, why: 'la referencia no existe' }); continue; }          // «constructor», «__proto__»… no son referencias
     const p = num(c.price);
     if (p == null || p < 0 || p > MAX_PRICE) { out.rejected.push({ ref, why: 'precio no válido' }); continue; }
-    const old = prices.items[ref] || null;
+    const old = Object.hasOwn(prices.items, ref) ? prices.items[ref] : null;
     let tiers = null;
     if (Array.isArray(c.tiers)) {
       tiers = c.tiers.map((t) => [Math.floor(num(t && t.qty) || 0), num(t && t.price)]).filter(([q, v]) => q >= 2 && v != null && v >= 0 && v <= MAX_PRICE).sort((a, b) => a[0] - b[0]).map(([q, v]) => [q, r4(v)]);
@@ -87,7 +87,7 @@ export function validateChanges(raw, prices, catalog = items) {
     const pct = old && old.p > 0 ? round2(((next.p - old.p) / old.p) * 100) : null;
     const large = !!(old && old.p > 0 && (next.p / old.p > LARGE_RATIO || next.p / old.p < 1 / LARGE_RATIO));
     if (large) out.warnings.push(`${ref}: cambio muy grande (${old.p} → ${next.p}).`);
-    out.changes.push({ ref, name: (catalog[ref] && catalog[ref].n) || '', old: old ? { p: old.p, ...(old.t && old.t.length ? { t: old.t } : {}) } : null, next, pct, large });
+    out.changes.push({ ref, name: (Object.hasOwn(catalog, ref) && catalog[ref].n) || '', old: old ? { p: old.p, ...(old.t && old.t.length ? { t: old.t } : {}) } : null, next, pct, large });
   }
   return out;
 }
@@ -96,7 +96,7 @@ export function validateChanges(raw, prices, catalog = items) {
 export function applyChanges(prices, changes, { now = new Date(), source = 'ia' } = {}) {
   const next = { ...prices, updated_at: now.toISOString(), source, mode: 'live', items: { ...prices.items } };
   for (const c of changes) {
-    const old = prices.items[c.ref] || {};
+    const old = Object.hasOwn(prices.items, c.ref) ? prices.items[c.ref] : {};
     next.items[c.ref] = { ...old, p: c.next.p, ...(c.next.t && c.next.t.length ? { t: c.next.t } : {}) };
     if (!(c.next.t && c.next.t.length)) delete next.items[c.ref].t;
   }
@@ -113,34 +113,36 @@ async function callAnthropic(env, instruction, table, fetchImpl) {
       messages: [{ role: 'user', content: `Instrucción: «${instruction}»\n\nLista de precios actual:\n${table}` }],
     }),
   });
-  if (!res.ok) { const e = new Error(`La API de IA respondió ${res.status}`); e.status = 502; throw e; }
+  if (!res.ok) throw new ApiError(502, `La API de IA respondió ${res.status}`);
   const data = await res.json();
   const use = (data.content || []).find((b) => b.type === 'tool_use' && b.name === TOOL);
-  if (!use) { const e = new Error('La IA no devolvió una propuesta utilizable'); e.status = 502; throw e; }
+  if (!use) throw new ApiError(502, 'La IA no devolvió una propuesta utilizable');
   return { input: use.input || {}, usage: data.usage || null };
 }
 
-/** Propone cambios para una instrucción. Lanza Error con .status (400 instrucción vacía, 503 IA sin configurar, 502 fallo de la IA). */
+/** Propone cambios para una instrucción. Lanza ApiError (400 instrucción vacía o larga, 409 sin precios, 503 IA sin configurar, 502 fallo de la IA). */
 export async function suggestPriceChanges(env, instruction, { fetchImpl = fetch } = {}) {
   const text = String(instruction || '').trim();
-  if (text.length < 5) { const e = new Error('Escribe una instrucción (por ejemplo: «sube un 3 % las resistencias»)'); e.status = 400; throw e; }
-  if (text.length > 1000) { const e = new Error('La instrucción es demasiado larga (máx. 1000 caracteres)'); e.status = 400; throw e; }
-  if (!env.ANTHROPIC_API_KEY) { const e = new Error('La IA no está configurada en el servidor (falta ANTHROPIC_API_KEY)'); e.status = 503; throw e; }
+  if (text.length < 5) throw new ApiError(400, 'Escribe una instrucción (por ejemplo: «sube un 3 % las resistencias»)');
+  if (text.length > 1000) throw new ApiError(400, 'La instrucción es demasiado larga (máx. 1000 caracteres)');
+  if (!env.ANTHROPIC_API_KEY) throw new ApiError(503, 'La IA no está configurada en el servidor (falta ANTHROPIC_API_KEY)');
   const prices = await loadPrices(env);
-  if (!Object.keys(prices.items).length) { const e = new Error('Todavía no hay precios cargados'); e.status = 409; throw e; }
+  if (!Object.keys(prices.items).length) throw new ApiError(409, 'Todavía no hay precios cargados');
   const { input, usage } = await callAnthropic(env, text, buildTable(prices), fetchImpl);
   const v = validateChanges(input.changes, prices);
   const warnings = [...(Array.isArray(input.warnings) ? input.warnings.map(String).slice(0, 10) : []), ...v.warnings];
   return { summary: String(input.summary || '').slice(0, 400), changes: v.changes, rejected: v.rejected, warnings, large: v.changes.some((c) => c.large), usage };
 }
 
+/** Cambio recibido del navegador → { ref, price, tiers } para validarlo de nuevo; las entradas que no son objetos (null, números…) se descartan. */
+const incoming = (c) => (c && typeof c === 'object' && !Array.isArray(c) ? { ref: c.ref, price: c.next && typeof c.next === 'object' ? c.next.p : c.price, tiers: c.next && Array.isArray(c.next.t) ? c.next.t.map((t) => (Array.isArray(t) ? { qty: t[0], price: t[1] } : null)) : c.tiers } : null);
 /** Aplica los cambios que la persona ha revisado. Vuelve a validarlo todo en servidor (no se fía de lo que manda el navegador). */
 export async function applyPriceChanges(env, body, { who = 'manager', now = new Date() } = {}) {
   const prices = await loadPrices(env);
-  const raw = Array.isArray(body && body.changes) ? body.changes.map((c) => ({ ref: c.ref, price: c.next ? c.next.p : c.price, tiers: c.next && c.next.t ? c.next.t.map(([qty, price]) => ({ qty, price })) : c.tiers })) : [];
+  const raw = Array.isArray(body && body.changes) ? body.changes.map(incoming).filter(Boolean) : [];
   const v = validateChanges(raw, prices);
-  if (!v.changes.length) { const e = new Error('No hay cambios válidos que aplicar'); e.status = 400; throw e; }
-  if (v.changes.some((c) => c.large) && body.confirm_large !== true) { const e = new Error('Hay cambios muy grandes: confírmalos expresamente (confirm_large)'); e.status = 409; throw e; }
+  if (!v.changes.length) throw new ApiError(400, 'No hay cambios válidos que aplicar');
+  if (v.changes.some((c) => c.large) && body.confirm_large !== true) throw new ApiError(409, 'Hay cambios muy grandes: confírmalos expresamente (confirm_large)');
   const next = applyChanges(prices, v.changes, { now, source: `ia:${who}` });
   const meta = await savePrices(env, next, prices, { now, reason: `ia:${who}`, source: `ia:${who}` });
   return { meta, applied: v.changes.length, rejected: v.rejected };

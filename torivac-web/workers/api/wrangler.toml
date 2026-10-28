@@ -2,16 +2,17 @@
 name = "torivac-api"
 main = "src/index.js"
 compatibility_date = "2026-09-26"
-workers_dev = true
+workers_dev = true      # si la web usa un dominio propio (route), desactívalo: workers.dev esquiva las reglas WAF / de límite de tu zona
 
 # Un solo namespace KV (menos recursos que crear a mano, como aprendió whynot-sites). Prefijos de clave:
-#   user:<email> · order:<nº> · prices:current · prices:meta · prices:history:<ts> · rl:<ip> · counter:<yyyymmdd>
+#   user:<email> · order:<nº completo TV-AAAAMMDD-NNNN-XXX> · uorder:<sha256(correo)[:32]>:<nº> (índice «mis pedidos» del cliente) · prices:current · prices:meta (último éxito) · prices:sync (último intento, también el fallido) · prices:history:<ts>
+#   rl:<cubo>:<sha256(identificador)[:32]> (límites: nunca llevan IP ni correo en claro) · counter:<yyyymmdd> · proposals:state
 # Crear con:  npx wrangler kv namespace create TORIVAC_KV   y pegar aquí el id.
 [[kv_namespaces]]
 binding = "KV"
 id = "REEMPLAZAR_CON_EL_ID_DEL_KV"
 
-# Sincronización de precios cada 24 h (03:00 UTC). La actualización manual es POST /api/prices/refresh (manager).
+# Sincronización de precios cada 24 h (03:00 UTC; también limpia los registros de límites caducados). La actualización manual es POST /api/prices/refresh (manager).
 [triggers]
 crons = ["0 3 * * *"]
 
@@ -25,9 +26,15 @@ PRICE_XLSX_URL = ""                                      # alternativa sin crede
 PRICE_SHEET_NAME = ""                                    # (.xlsx) nombre de la hoja; vacío = la primera visible con columnas de referencia y precio
 PRICE_CSV_URL = ""                                       # alternativa sin credenciales: URL de exportación CSV de la hoja (compartida con enlace)
 
+# Copia del pedido al cliente (el correo corporativo escribe a un tercero: por eso va con topes y solo con contenido generado por el servidor, sin adjunto):
+ORDER_COPY = "capped"            # «capped» (por defecto): se envía con los topes de abajo · «off»: nunca se envía copia · cualquier otro valor = off (falla cerrado)
+ORDER_COPY_DAILY_MAX = "150"     # tope TOTAL de copias al día (además de 2 copias por destinatario cada 24 h, que no se configura)
+ORDERS_PER_HOUR_MAX = "120"      # tope GLOBAL de pedidos por hora (además de 8 por visitante cada 10 min); protege la cuota de Resend y el buzón del equipo
+
 # Secretos (npx wrangler secret put <NOMBRE>):
 #   RESEND_API_KEY             envío de correo (Resend)
-#   ADMIN_API_TOKEN            token maestro (equivale a un manager) para scripts/CI
-#   SESSION_SECRET             clave HMAC de las sesiones de usuario (≥ 32 caracteres aleatorios)
-#   TURNSTILE_SECRET           (opcional) Cloudflare Turnstile para pedidos/contacto
+#   ADMIN_API_TOKEN            token maestro (equivale a un manager) para scripts/CI: ≥ 32 caracteres aleatorios; si es más corto queda DESACTIVADO (siempre 401)
+#   SESSION_SECRET             clave HMAC de las sesiones de usuario: ≥ 32 caracteres aleatorios y sin «CAMBIA-ESTO»; si no, el login responde 500 «Configuración insegura»
+#   TURNSTILE_SECRET           (recomendado en producción) Cloudflare Turnstile para pedidos/contacto
 #   GOOGLE_SERVICE_ACCOUNT     JSON de la cuenta de servicio con acceso de lectura a la hoja de precios
+#   ANTHROPIC_API_KEY          (opcional) instrucciones de precios con IA

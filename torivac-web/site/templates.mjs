@@ -2,9 +2,10 @@
 // `layout()` lo envuelve con cabecera, pie, elementos flotantes y scripts.
 // Datos: data/catalog/*.json (ver docs/ARQUITECTURA.md). Textos de interfaz: site/lib/i18n.mjs.
 
-import { esc, attr, blocksHtml, inlineHtml, mapLink, plain, fmtDate } from './lib/render.mjs';
+import { esc, attr, blocksHtml, inlineHtml, mapLink, plain, fmtDate, hText } from './lib/render.mjs';
 import { t, LANGS, countLabel, refLabel } from './lib/i18n.mjs';
-import { pageGraph, ldScript, ogLocale, clip } from './lib/seo.mjs';
+import { pageGraph, ldScript, jsonScript, ogLocale, clip } from './lib/seo.mjs';
+import { THEMES, themeBootJs } from './lib/themes.mjs';
 
 const NAMES = { es: 'Español', en: 'English', fr: 'Français', de: 'Deutsch' };
 /** Valor de un campo traducible en el idioma `lang` (español si falta; '' si no hay objeto). */
@@ -73,15 +74,44 @@ export function metaDescription(desc, bodyHtml, lang) {
 const cssGuard = (msg) => `<script>(function(){try{if(!getComputedStyle(document.documentElement).getPropertyValue('--ink').trim()){var d=document.createElement('div');d.setAttribute('role','alert');d.style.cssText='font:16px/1.5 Arial,sans-serif;background:#ffb653;color:#100404;padding:14px 18px;border-bottom:3px solid #9c520f';d.textContent=${JSON.stringify(msg)};document.body.insertBefore(d,document.body.firstChild);}}catch(e){}})();</script>`;
 
 // ───────────────────────────────────────────────────────────── [THEME] aspecto: «Ficha técnica» (nuevo) o «Clásico» (el original). Ver docs/DISENO-TEMAS.md
-/** Script de la cabecera (solo si hay selector de aspecto): aplica ?tema=ficha|clasico o la elección guardada ANTES del primer pintado, para que no parpadee el otro aspecto. */
-const THEME_BOOT = `<script>(function(){try{var m=/[?&]tema=(ficha|clasico)(?:&|$)/.exec(location.search),k='tv-theme',v=m?m[1]:localStorage.getItem(k);if(m)localStorage.setItem(k,v);if(v==='ficha'||v==='clasico')document.documentElement.setAttribute('data-theme',v)}catch(e){}})();</script>`;
+/** Script de la cabecera (solo si hay selector de aspecto): aplica ?tema= o la elección guardada ANTES del primer pintado, para que no parpadee el otro aspecto. */
+const THEME_BOOT = `<script>${themeBootJs()}</script>`;
 /** Fuentes que se precargan en producción según el aspecto por defecto (solo las que se ven en la primera pantalla). */
-const PRELOAD_FONTS = { ficha: ['archivo-latin-wght-normal', 'archivo-expanded-latin-wght-normal', 'chivo-mono-latin-wght-normal'], clasico: ['archivo-latin-wght-normal', 'advent-pro-latin-wght-normal'] };
+const PRELOAD_FONTS = { ficha: ['archivo-latin-wght-normal', 'archivo-expanded-latin-wght-normal', 'chivo-mono-latin-wght-normal'], clasico: ['archivo-latin-wght-normal', 'advent-pro-latin-wght-normal'], original: ['archivo-latin-wght-normal', 'advent-pro-latin-wght-normal', 'pt-sans-latin-700-normal'] };
+
+// ───────────────────────────────────────────────────────────── [ORIGINAL] piezas del aspecto «Original» (la web actual de grupotorivac.com)
+// Con selector de aspecto, el HTML lleva los elementos de los tres aspectos y cada hoja de estilos muestra los suyos (los del resto, con `display:none`).
+// Compilando SOLO «Original» (site.ONLY_O) el HTML sale ya limpio: sin lo que no se ve. Sin «Original» (site.O falso) nada de esto se emite y el HTML es idéntico al de siempre.
+/** Clase de un bloque que solo existe en «Original»: con selector lleva `o-only` (la hoja de los otros aspectos lo oculta); compilando solo «Original», va tal cual. */
+export const oc = (site, cls = '') => (site.ONLY_O ? cls : `${cls} o-only`.trim());
+/** Rótulo que cambia según el aspecto: sin «Original», el de siempre; solo «Original», el de la web actual; con selector, los dos (cada hoja muestra uno). Los textos ya vienen escapados. */
+export const lbl = (site, def, orig) => (!site.O ? def : site.ONLY_O ? orig : `<span class="l-n">${def}</span><span class="l-o">${orig}</span>`);
+/** Dirección a la que apunta una tarjeta o un enlace de categoría: en «Original» solo, una categoría hoja con UN producto lleva directa a ese producto (la web actual la redirige). */
+export const oHref = (site, c, lang) => { const lp = site.ONLY_O && site.leafProduct && site.leafProduct.get(c.id); return lp ? lp.pathFor[lang] : c.pathFor[lang]; };
+/** Menú flotante «Productos-Torivac»: pestaña en el borde izquierdo que abre un panel oscuro con las categorías (dos niveles, en el orden de la web actual). Nace oculto: app.js lo muestra (sin JS no serviría). */
+function floatMenu(ctx) {
+  const { lang, site } = ctx;
+  const roots = site.orderPanel.length ? site.orderPanel : site.catTree;
+  const items = roots.map((c, i) => {
+    const kids = c.children || [], name = esc(pick(c.name, lang));
+    return `<li class="torivac-cat-item${kids.length ? ' has-children' : ''}"><div class="cat-row"><a class="cat-name" href="${attr(ctx.href(oHref(site, c, lang)))}">${name}</a>${kids.length ? `<button type="button" class="cat-icon" aria-expanded="false" aria-controls="o-sub-${i}" aria-label="${attr(pick(c.name, lang))}">+</button>` : ''}</div>${kids.length ? `<ul class="torivac-subcat-list" id="o-sub-${i}" hidden>${kids.map((k) => `<li class="torivac-subcat-item"><a href="${attr(ctx.href(oHref(site, k, lang)))}">${esc(pick(k.name, lang))}</a></li>`).join('')}</ul>` : ''}</li>`;
+  }).join('');
+  return `<div class="${oc(site, 'torivac-floating-sidebar')}" data-o-float hidden>
+  <button class="torivac-sidebar-toggle" type="button" aria-expanded="false" aria-controls="o-panel"><span class="label">${esc(t('o_tab', lang))}</span></button>
+  <span class="torivac-hint" aria-hidden="true">${esc(t('o_hint', lang))}</span>
+  <div class="torivac-sidebar-backdrop" data-o-close></div>
+  <div class="torivac-sidebar-panel" id="o-panel" role="dialog" aria-label="${attr(t('o_panel_title', lang))}">
+    <button class="torivac-sidebar-close" type="button" data-o-close aria-label="${attr(t('o_close', lang))}">×</button>
+    <h3 class="torivac-cat-sidebar-title">${esc(t('o_panel_title', lang))}</h3>
+    <ul class="torivac-cat-list">${items}</ul>
+  </div>
+</div>`;
+}
 /** Selector de aspecto: dos botones con aria-pressed. Nace oculto (sin JS no serviría de nada); assets/js/app.js lo muestra, marca el activo y guarda la elección. `where` distingue el de la cinta y el del pie. */
-const themeSwitch = (lang, where) => `<span class="theme-switch" role="group" aria-label="${attr(t('theme', lang))}" data-theme-switch="${where}" hidden><span class="ts-label">${t('theme', lang)}</span>${['ficha', 'clasico'].map((k) => `<button type="button" data-set-theme="${k}" aria-pressed="false">${t('theme_' + k, lang)}</button>`).join('')}</span>`;
+const themeSwitch = (lang, where) => `<span class="theme-switch" role="group" aria-label="${attr(t('theme', lang))}" data-theme-switch="${where}" hidden><span class="ts-label">${t('theme', lang)}</span>${THEMES.map((k) => `<button type="button" data-set-theme="${k}" aria-pressed="false">${t('theme_' + k, lang)}</button>`).join('')}</span>`;
 
 /** Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap. */
-export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [], preloadImage = null }) {
+export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [], preloadImage = null, bodyClass = '', oRedirect = '' }) {
   const { lang, site } = ctx;
   description = metaDescription(description, body, lang);
   const alt = (l) => (l === lang ? ctx.path : (alts[l] || site.home[l]));         // selector de idioma: sin traducción cae a la portada de ese idioma
@@ -89,7 +119,7 @@ export function layout(ctx, { title, description, body, template, alts = {}, scr
   if (!noindex && site.registry) site.registry.push({ path: ctx.path, lang, template, title, description: description || '', alts: Object.fromEntries(LANGS.filter((l) => alts[l]).map((l) => [l, alts[l]])), images });
   // [NAV] menú principal: mismos 7 ítems y etiquetas que la web original (por idioma). `section` marca el activo.
   const nav = site.navItems[lang].map((n) => ({ label: n.label, pdf: n.key === 'catalog', current: n.key !== 'catalog' && (n.path === ctx.path || (n.key === ctx.section && ['products', 'blog'].includes(n.key))), href: n.key === 'catalog' ? (n.pdfFile ? ctx.asset('assets/pdf/' + n.pdfFile) : n.pdfUrl) : ctx.href(n.path) }));
-  const langLinks = LANGS.map((l) => `<a href="${attr(ctx.href(alt(l)))}" hreflang="${l}" lang="${l}" ${l === lang ? 'aria-current="true"' : ''} title="${NAMES[l]}" data-set-lang="${l}">${l.toUpperCase()}</a>`).join('');
+  const langLinks = LANGS.map((l) => `<a href="${attr(ctx.href(alt(l)))}" hreflang="${l}" lang="${l}" ${l === lang ? 'aria-current="true"' : ''} title="${NAMES[l]}" data-set-lang="${l}"${l !== lang && !alts[l] ? ' class="no-tr"' : ''}>${l.toUpperCase()}</a>`).join('');
   const navHtml = nav.map((n) => `<a href="${attr(n.href)}"${n.current ? ' aria-current="page"' : ''}${n.pdf ? ' target="_blank" rel="noopener"' : ''}>${esc(n.label)}</a>`).join('');
   const f = site.footer[lang];
   // hreflang: SOLO idiomas con traducción real de ESTA página (un hreflang a la portada de otro idioma es un error de SEO)
@@ -117,7 +147,7 @@ ${site.absBase ? PRELOAD_FONTS[site.theme].map((f) => `<link rel="preload" href=
 ${social}
 ${noindex ? '' : ldScript(pageGraph(ctx, { template, title, description, crumbs, extra: ld, image: ogImg }))}
 </head>
-<body class="tv tv-${template}" data-path="${attr(ctx.path)}">
+<body class="tv tv-${template}${bodyClass ? ' ' + bodyClass : ''}" data-path="${attr(ctx.path)}"${oRedirect ? ` data-o-redirect="${attr(ctx.href(oRedirect))}"` : ''}>
 <a class="skip" href="#content">${t('skip', lang)}</a>
 ${site.absBase ? '' : cssGuard(t('css_missing', lang))}
 ${site.demo ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('demo_banner', lang))}"><span>${t('demo_banner', lang)} · ${t('demo_prices', lang)}</span>${site.themeSwitch ? themeSwitch(lang, 'ribbon') : ''}</div>` : ''}
@@ -144,9 +174,10 @@ ${headingOrder(`${hero || ''}${body}`)}
     </div>
     <p class="legal">${esc(f.copyright)} ${f.links.map((l) => `<a href="${attr(l.href)}">${esc(l.label)}</a>`).join(' | ')}<br>${esc(f.devBy)} <a href="https://santisomarketing.com/" target="_blank" rel="noopener">Santiso Marketing</a></p>
     ${site.themeSwitch ? `<div class="theme-row no-print">${themeSwitch(lang, 'footer')}</div>` : ''}
-    <div class="funding"><img src="${ctx.asset(site.funding[lang].img)}" alt="Cofinanciado por la Unión Europea · Ministerio de Hacienda · Fondos Europeos" width="${site.funding[lang].w}" height="${site.funding[lang].h}" loading="lazy"><p>${esc(f.funding)}</p></div>
+    <div class="funding"><img src="${ctx.asset(site.funding[lang].img)}" alt="Cofinanciado por la Unión Europea · Ministerio de Hacienda · Fondos Europeos" width="${site.funding[lang].w}" height="${site.funding[lang].h}" loading="lazy">${site.O ? `<span class="${oc(site, 'o-li')}" aria-hidden="true"><svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor" focusable="false"><rect x="1" y="1" width="22" height="22" rx="3"/><g class="in"><circle cx="7.4" cy="7.6" r="1.7"/><rect x="5.9" y="10.2" width="3" height="8"/><path d="M11.2 10.2h2.9v1.1c.5-.8 1.5-1.3 2.7-1.3 2.3 0 3.1 1.5 3.1 3.6v4.6h-3v-4.1c0-1-.3-1.7-1.3-1.7-1.1 0-1.5.8-1.5 1.8v4h-2.9z"/></g></svg></span>` : ''}<p>${esc(f.funding)}</p></div>
   </div>
 </footer>
+${site.O && ['shop', 'product'].includes(template) ? floatMenu(ctx) : ''}
 <div class="fab-stack no-print">
   <button class="fab fab-top" type="button" data-top aria-label="${attr(t('back_to_top', lang))}">↑</button>
   ${template === 'quote' ? '' : `<button class="fab fab-quote" type="button" data-open-quote aria-haspopup="dialog" aria-controls="quote-drawer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>${t('quote', lang)} <span class="count" data-quote-count>0</span></button>`}
@@ -158,7 +189,7 @@ ${headingOrder(`${hero || ''}${body}`)}
   <footer data-drawer-foot></footer>
 </aside>
 <div class="toast" role="status" aria-live="polite" data-toast></div>
-<script>window.TV_LANG=${JSON.stringify(lang)};window.TV_PATHS=${JSON.stringify({ quote: ctx.href(site.quote[lang]), home: Object.fromEntries(LANGS.map((l) => [l, ctx.href(alt(l))])) })};</script>
+${jsonScript('tv-boot', { lang, paths: { quote: ctx.href(site.quote[lang]), home: Object.fromEntries(LANGS.map((l) => [l, ctx.href(alt(l))])) } })}
 <script src="${ctx.asset('assets/data/catalog.js')}"></script>
 <script src="${ctx.asset('assets/data/prices.js')}"></script>
 <script src="${ctx.asset('assets/js/quote.js')}"></script>
@@ -213,24 +244,39 @@ export function catTree(ctx, activeId = null) {
   return `<nav aria-label="${attr(t('categories', lang))}"><div class="cat-tree" data-tree>${walk(ctx.site.catTree)}</div></nav>`;
 }
 
+/** Texto recortado a `max` caracteres en el último espacio (sin partir palabras) y con «…» si se ha recortado; `max` Infinity = íntegro. */
+const cut = (txt, max) => { if (txt.length <= max) return txt; const k = txt.lastIndexOf(' ', max); return txt.slice(0, k > max * 0.6 ? k : max).replace(/[\s,;:.]+$/, '') + '…'; };
 /** tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original */
 export function categoryCards(ctx, list = null, opts = {}) {
   const { lang, site } = ctx;
-  const nodes = list || site.catTree;
+  let nodes = list || site.catTree;
+  // «Original»: las tarjetas salen en el orden de la web actual (portada de Productos: sus 11 categorías; categoría: sus subcategorías). Con selector, el orden va en --o-i y lo aplica la hoja de «Original»; solo «Original», se ordena aquí.
+  let rank = null;
+  if (site.O) {
+    const order = list ? (site.orderSub.get(opts.parent && opts.parent.id) || []) : site.orderShop;
+    rank = new Map(nodes.map((c, i) => { const k = order.indexOf(c); return [c, k >= 0 ? k : (list ? order.length + i : -1)]; }));
+    if (site.ONLY_O) { nodes = nodes.filter((c) => rank.get(c) >= 0).sort((a, b) => rank.get(a) - rank.get(b)); }
+  }
   const limit = opts.limit === 0 ? Infinity : (opts.limit || 140);   // limit 0 = texto íntegro (páginas de categoría: la original muestra la descripción completa)
   const cards = nodes.map((c) => {
     const desc = (c.description[lang] || c.description.es || []).find((b) => b.t === 'p');
     let txt = desc ? desc.h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim() : '';
     // algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
-    const words = (pick(c.name, lang) || '').toLowerCase().split(/[^a-záéíóúñüçàâêèëîïôûäöß]+/).filter((w) => w.length > 4).map((w) => w.slice(0, 6));
-    if (opts.guard && txt && words.length && !words.some((w) => txt.toLowerCase().includes(w))) txt = '';
+    // sin tildes en la comparación («Nucleos» ↔ «núcleos»)
+    const fold = (x) => String(x).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    const words = fold(pick(c.name, lang) || '').split(/[^a-zñüçß]+/).filter((w) => w.length > 4).map((w) => w.slice(0, 6));
+    if (opts.guard && txt && words.length && !words.some((w) => fold(txt).includes(w))) txt = '';
     const im = c.image || site.prodById.get(c.firstProduct)?.images?.[0];
-    return `<a class="ccard" href="${attr(ctx.href(c.pathFor[lang]))}"><div class="ph">${im ? `<img src="${attr(ctx.thumb(im))}" alt="" loading="lazy" decoding="async">` : ''}</div><div class="tx"><h3>${esc(pick(c.name, lang))}</h3>${txt ? `<p>${esc(txt.slice(0, limit))}${txt.length > limit ? '…' : ''}</p>` : ''}<span class="meta"><span>${countLabel(c.total, lang)}</span><span class="go">${t('view_category', lang)} →</span></span></div></a>`;
+    const oi = rank ? (rank.get(c) >= 0 ? ` style="--o-i:${rank.get(c)}"` : '') : '';
+    const skip = rank && rank.get(c) < 0 ? ' o-skip' : '';          // sin sitio en el orden de la web actual (p. ej. «Equipos electrónicos» en la portada): solo existe en los otros aspectos (la hoja de «Original» lo oculta)
+    return `<a class="ccard${skip}"${oi} href="${attr(ctx.href(oHref(site, c, lang)))}"><div class="ph">${im ? `<img src="${attr(ctx.thumb(im))}" alt="" loading="lazy" decoding="async">` : ''}</div><div class="tx"><h3>${esc(pick(c.name, lang))}</h3>${txt ? `<p>${esc(cut(txt, limit))}</p>` : ''}<span class="meta"><span>${countLabel(c.total, lang)}</span><span class="go">${lbl(site, esc(t('view_category', lang)) + ' →', esc(t('o_more', lang)) + ' ›')}</span></span></div></a>`;
   }).join('');
   return `<h2 class="${opts.heading ? 'sub-h' : 'sr-h'}">${opts.heading || t('categories', lang)}</h2><div class="ccards${opts.long ? ' long' : ''}">${cards}</div>`;
 }
 
 // ───────────────────────────────────────────────────────────── [HOME]
+/** «Original»: atributo style con la foto de fondo de una sección (los trazos del logotipo de la web actual), en una variable que solo pinta la hoja de ese aspecto. Una URL dentro de una variable se resuelve desde la hoja que la usa (assets/css/site.css), de ahí «../media/…» y no la ruta de la página. */
+const oSecImg = (site, sec) => (site.O && sec.bg?.file ? ` style="--o-sec-img:url('${attr(sec.bg.file.replace(/^assets\//, '../'))}')"` : '');
 /** Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla). */
 export function homeBody(ctx, page) {
   const { lang, site } = ctx;
@@ -246,42 +292,51 @@ export function homeBody(ctx, page) {
   const heroBg = heroSec.bg ? ctx.img(heroSec.bg) : '';
   const heroParas = heroSec.blocks.filter((b) => b.t === 'p');
   const heroBtn = btn(heroSec);
-  const hero = `<section class="hero bp" style="${heroBg ? `background-image:url('${attr(heroBg)}')` : ''}" aria-labelledby="h-hero">
+  // «Original»: clase que engancha cada sección de la portada con la hoja de la web actual (sin «Original» no se emite y el HTML sale idéntico)
+  const oh = (cls) => (site.O ? ` ${cls}` : '');
+  // «Original»: variable con la foto de fondo de una sección de la portada.
+  const oBg = (sec) => oSecImg(site, sec);
+  const hero = `<section class="hero bp${oh('o-hero')}" style="${heroBg ? `background-image:url('${attr(heroBg)}')` : ''}" aria-labelledby="h-hero">
   <div class="container"><h1 id="h-hero">${esc(h1?.x || '')}</h1>${heroParas.map((p) => `<p>${inlineHtml(ctx, p.h)}</p>`).join('')}
-  <div class="actions">${heroBtn ? `<a class="btn" href="${attr(mapLink(ctx, heroBtn.href))}">${esc(heroBtn.x)}</a>` : ''}<a class="btn ghost" href="${attr(ctx.href(site.quote[lang]))}">${t('quote', lang)} →</a></div></div>
-  ${heroBg ? `<div class="hero-fig" aria-hidden="true"><div class="hero-img" style="background-image:url('${attr(heroBg)}')"></div></div>` : ''}
-  ${waveSvg()}
+  <div class="actions">${heroBtn ? `<a class="btn" href="${attr(mapLink(ctx, heroBtn.href))}">${esc(heroBtn.x)}</a>` : ''}${site.ONLY_O ? '' : `<a class="btn ghost${oh('o-skip')}" href="${attr(ctx.href(site.quote[lang]))}">${t('quote', lang)} →</a>`}</div></div>
+  ${heroBg && !site.ONLY_O ? `<div class="hero-fig" aria-hidden="true"><div class="hero-img" style="background-image:url('${attr(heroBg)}')"></div></div>` : ''}
+  ${site.ONLY_O ? '' : waveSvg()}
 </section>`;
   const s1 = S[1], s2 = S[2], s3 = S[3], s4 = S[4], s5 = S[5];
   // HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
   const eyebrowAndHead = (sec) => {
     const hs = sec.blocks.filter((b) => b.t === 'h');
     const eb = hs.find((h) => h.l >= 4), main = hs.find((h) => h.l <= 3);
-    return `${eb ? `<p class="eyebrow">${esc(eb.x)}</p>` : ''}${main ? `<h2>${esc(main.x)}</h2>` : ''}`;
+    return `${eb ? `<p class="eyebrow">${esc(eb.x)}</p>` : ''}${main ? `<h2>${hText(site, main)}</h2>` : ''}`;
   };
   // HTML de los párrafos de una sección, con los enlaces internos reescritos.
   const paras = (sec) => sec.blocks.filter((b) => b.t === 'p').map((p) => `<p>${inlineHtml(ctx, p.h)}</p>`).join('');
   // Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
   const bt = (sec, cls = '') => { const b = btn(sec); return b ? `<a class="btn ${cls}" href="${attr(mapLink(ctx, b.href))}">${esc(b.x)}</a>` : ''; };
-  const im1 = imgs(s1)[0];
-  const sec1 = `<section class="sec"><div class="container split">
+  const im1 = imgs(s1)[0] || (site.homeEs ? imgs(site.homeEs.sections[1])[0] : undefined);   // en la web actual la portada traducida no trae la foto de «Fabricación a medida»: se usa la del castellano (es la misma foto)
+  const sec1 = `<section class="sec${oh('o-fab')}"><div class="container split">
     <figure class="photo-frame crop">${im1 ? `<img src="${attr(ctx.img(im1.img))}" alt="${attr(im1.alt || '')}" loading="lazy" width="${im1.img?.w || 768}" height="${im1.img?.h || 512}">` : ''}</figure>
     <div>${eyebrowAndHead(s1)}${paras(s1)}${bt(s1)}</div></div></section>`;
-  const car2 = imgs(s2).map((i) => `<img src="${attr(ctx.thumb(i.img))}" alt="${attr(i.alt || '')}" loading="lazy">`).join('');
+  // «Original»: la web actual enseña un carrusel de una foto cada vez; aquí sale la primera (grande) y, con selector de aspecto, las demás las oculta su hoja
+  const car2 = imgs(s2).slice(0, site.ONLY_O ? 1 : undefined).map((i, k) => `<img src="${attr(site.O && k === 0 ? ctx.img(i.img) : ctx.thumb(i.img))}" alt="${attr(i.alt || '')}" loading="lazy">`).join('');
   const s2h = s2.blocks.filter((b) => b.t === 'h');
-  const sec2 = `<section class="sec alt art-host">${toroidArt()}<div class="container"><h2 class="center">${esc(s2h.find((h) => h.l <= 3)?.x || '')}</h2>
+  const sec2 = `<section class="sec alt art-host${oh('o-mfg')}"${oBg(s2)}>${site.ONLY_O ? '' : toroidArt()}<div class="container"><h2 class="center">${esc(s2h.find((h) => h.l <= 3)?.x || '')}</h2>
     <div class="split"><div class="card-shadow"><h3>${esc(s2h.find((h) => h.l >= 4)?.x || '')}</h3>${paras(s2)}${bt(s2)}</div><div class="photo-grid" aria-label="Fotos">${car2}</div></div></div></section>`;
   const tiles = page.services.map((c) => `<a class="tile" href="${attr(mapLink(ctx, c.href))}"><img src="${attr(ctx.img(c.icon))}" alt="" loading="lazy" width="92" height="92"><span>${esc(c.title)}</span></a>`).join('');
-  const sec3 = `<section class="sec tight"><div class="container">${eyebrowAndHead(s3)}<div class="tiles">${tiles}</div></div></section>`;
+  // «Original»: la web actual cierra la rejilla de servicios con una foto que ocupa dos casillas
+  const s3img = site.O ? imgs(s3)[0] : null;
+  const tilePhoto = s3img ? `<span class="${oc(site, 'tile tile-photo')}"><img src="${attr(ctx.img(s3img.img))}" alt="${attr(s3img.alt || '')}" loading="lazy" width="${s3img.img?.w || 568}" height="${s3img.img?.h || 284}"></span>` : '';
+  const sec3 = `<section class="sec tight${oh('o-serv')}"><div class="container">${eyebrowAndHead(s3)}<div class="tiles">${tiles}${tilePhoto}</div></div></section>`;
   const cat = site.meta.catalogHref[lang];
-  const sec4 = `<section class="sec tight dark on-dark bp"><div class="container split"><div>${eyebrowAndHead(s4)}${paras(s4)}</div><div class="center"><a class="btn" href="${attr(cat.local ? ctx.asset('assets/pdf/' + cat.file) : cat.url)}" target="_blank" rel="noopener">⬇ ${esc(btn(s4)?.x || t('catalog_dl', lang))}</a></div></div></section>`;
-  const car5 = imgs(s5).map((i) => `<img src="${attr(ctx.thumb(i.img))}" alt="${attr(i.alt || '')}" loading="lazy">`).join('');
+  const catTxt = esc(btn(s4)?.x || t('catalog_dl', lang));
+  const sec4 = `<section class="sec tight dark on-dark bp${oh('o-cat')}"><div class="container split"><div>${eyebrowAndHead(s4)}${paras(s4)}</div><div class="center"><a class="btn" href="${attr(cat.local ? ctx.asset('assets/pdf/' + cat.file) : cat.url)}" target="_blank" rel="noopener">${lbl(site, `⬇ ${catTxt}`, `<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><path d="M6 2h8l5 5v15H6z"/><path d="M14 2v5h5M12 10v7m-3-3 3 3 3-3"/></svg>${catTxt}`)}</a></div></div></section>`;
+  const car5 = imgs(s5).slice(0, site.ONLY_O ? 1 : undefined).map((i, k) => `<img src="${attr(site.O && k === 0 ? ctx.img(i.img) : ctx.thumb(i.img))}" alt="${attr(i.alt || '')}" loading="lazy">`).join('');
   const s5h = s5.blocks.filter((b) => b.t === 'h');
-  const sec5 = `<section class="sec"><div class="container"><div class="photo-grid wide" aria-label="Fotos">${car5}</div>
-    <div class="card-shadow" style="margin-top:var(--s-6)"><h2>${esc(s5h.find((h) => h.l <= 3)?.x || '')}</h2><h3>${esc(s5h.find((h) => h.l >= 4)?.x || '')}</h3>${paras(s5)}</div></div></section>`;
+  const sec5 = `<section class="sec${oh('o-pres')}"${oBg(s5)}><div class="container"><div class="photo-grid wide" aria-label="Fotos">${car5}</div>
+    <div class="card-shadow" style="margin-top:var(--s-6)"><h2>${esc(s5h.find((h) => h.l <= 3)?.x || '')}</h2>${site.O ? '<div class="cs-body">' : ''}<h3>${esc(s5h.find((h) => h.l >= 4)?.x || '')}</h3>${paras(s5)}${site.O ? '</div>' : ''}</div></div></section>`;   // «Original»: el título va fuera del recuadro blanco (cs-body) y los otros aspectos no ven la diferencia
   const s6 = S[6];
   const s6h = s6.blocks.filter((b) => b.t === 'h');
-  const contact = `<section class="sec alt" id="contacto"><div class="container split" style="align-items:start"><div><p class="eyebrow">${esc(s6h.find((h) => h.l >= 4)?.x || '')}</p><h2>${esc(s6h.find((h) => h.l <= 3)?.x || '')}</h2>${paras({ blocks: s6.blocks.filter((b) => b.t === 'p' && !/reCAPTCHA|^\./.test(b.h)).slice(0, 1) })}</div>${contactForm(ctx, 'home')}</div></section>`;
+  const contact = `<section class="sec alt${oh('o-contact')}" id="contacto"><div class="container split" style="align-items:start"><div><p class="eyebrow">${esc(s6h.find((h) => h.l >= 4)?.x || '')}</p><h2>${hText(site, s6h.find((h) => h.l <= 3))}</h2>${paras({ blocks: s6.blocks.filter((b) => b.t === 'p' && !/reCAPTCHA|^\./.test(b.h)).slice(0, 1) })}</div>${contactForm(ctx, 'home')}</div></section>`;
   return { hero, body: `${sec1}${sec2}${sec3}${sec4}${sec5}${contact}`, heroImg: heroBg };
 }
 
@@ -293,9 +348,25 @@ export const waveSvg = () => `<svg class="wave" viewBox="0 0 1440 90" preserveAs
 </svg>`;
 
 // ───────────────────────────────────────────────────────────── [PAGES] páginas genéricas (empresa, proyectos, legales)
-/** Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. */
+/** «Original»: bloques de una sección de tarjetas (Misión, Visión, Valores…) con cada icono y el texto que le sigue dentro de su propia tarjeta; lo que va antes del primer icono (título) queda fuera. Los otros aspectos ven el mismo flujo, solo con un div más. */
+function cardsHtml(ctx, blocks) {
+  // Indica si el bloque es un icono pequeño (60 × 60) y no una foto.
+  const isIcon = (b) => b.t === 'img' && b.img && b.img.w && b.img.w <= 160;
+  const k = blocks.findIndex(isIcon);
+  if (k < 0) return blocksHtml(ctx, blocks, { demote: 0 });
+  const groups = [];
+  for (const b of blocks.slice(k)) { if (isIcon(b)) groups.push([b]); else groups[groups.length - 1].push(b); }
+  return `${blocksHtml(ctx, blocks.slice(0, k), { demote: 0 })}<div class="o-card-row">${groups.map((g) => `<div class="o-card">${blocksHtml(ctx, g, { demote: 0 })}</div>`).join('')}</div>`;
+}
+
+/** Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. Con «Original», cada sección lleva además clases según cómo la maqueta la web actual (site.oSections, por id de sección de Elementor, igual en los cuatro idiomas). */
 export function sectionsHtml(ctx, page) {
+  const { site } = ctx;
   return page.sections.map((s, i) => {
+    const oh = (site.O && site.oSections.get(s.id)) || {};                       // cómo la maqueta la web actual: kind (photo-text, card-photo, photo-card, cards, dark-cta, dark-photo), photo (left|right), title (el h2 va centrado sobre las dos columnas), art (trazos del logotipo)
+    // Clases de la sección: las de siempre y, con «Original», las del tipo, el lado de la foto y el arte de fondo.
+    const cls = (base) => (site.O && oh.kind ? `${base} o-sec o-${oh.kind}${oh.photo ? ' o-photo-' + oh.photo : ''}${oh.art ? ' o-art-' + oh.art : ''}` : base);
+    const art = oh.art ? oSecImg(site, { bg: oh.artImg ? { file: oh.artImg } : s.bg }) : '';
     if (s.form) return `<section class="sec alt"><div class="container split" style="align-items:start"><div class="prose">${blocksHtml(ctx, s.blocks.filter((b) => !(b.t === 'p' && /reCAPTCHA/i.test(b.h))), { demote: 0 })}</div>${contactForm(ctx, 'section')}</div></section>`;
     if (!s.blocks.length) return '';
     const isPhoto = (b) => b.t === 'img' && !(b.img && b.img.w && b.img.w <= 160);   // los iconos pequeños se quedan dentro del texto
@@ -306,11 +377,20 @@ export function sectionsHtml(ctx, page) {
     const bg = s.bg ? ` style="background-image:url('${attr(ctx.img(s.bg))}');background-size:cover;background-position:center"` : '';
     const dark = s.bg && !/formatorivac/.test(s.bg.src || '');
     if (hasImg && hasText) {
-      const gal = imgs.length > 1 ? `<div class="carousel" tabindex="0">${imgs.map((b) => `<img src="${attr(ctx.thumb(b.img))}" alt="${attr(b.alt || '')}" loading="lazy">`).join('')}</div>` : `<figure class="photo-frame crop"><img src="${attr(ctx.img(imgs[0].img))}" alt="${attr(imgs[0].alt || '')}" loading="lazy"></figure>`;
-      return `<section class="sec${i % 2 ? ' alt' : ''}"><div class="container split${i % 2 ? ' rev' : ''}">${gal}<div class="prose">${blocksHtml(ctx, rest, { demote: 0 })}</div></div></section>`;
+      const only1 = site.ONLY_O && oh.kind;                                   // «Original» solo: la web actual enseña un carrusel de una foto cada vez; aquí sale la primera
+      const gal = imgs.length > 1 && !only1 ? `<div class="carousel" tabindex="0">${imgs.map((b) => `<img src="${attr(ctx.thumb(b.img))}" alt="${attr(b.alt || '')}" loading="lazy">`).join('')}</div>` : `<figure class="photo-frame crop"><img src="${attr(ctx.img(imgs[0].img))}" alt="${attr(imgs[0].alt || '')}" loading="lazy"></figure>`;
+      let prose = blocksHtml(ctx, rest, { demote: 0 });
+      if (site.O && oh.kind) {
+        // «Original»: el título h2 va fuera del recuadro (centrado sobre las dos columnas) y el resto, dentro de `o-box`; los otros aspectos solo ven un div más
+        const k = oh.title ? rest.findIndex((b) => b.t === 'h' && b.l <= 3) : -1;
+        const head = k >= 0 ? blocksHtml(ctx, [rest[k]], { demote: 0 }) : '';
+        prose = `${head}<div class="o-box">${blocksHtml(ctx, k >= 0 ? rest.filter((_, j) => j !== k) : rest, { demote: 0 })}</div>`;
+      }
+      return `<section class="${cls(`sec${i % 2 ? ' alt' : ''}`)}"${art}><div class="container split${i % 2 ? ' rev' : ''}">${gal}<div class="prose">${prose}</div></div></section>`;
     }
     if (hasImg) return `<section class="sec tight"><div class="container"><div class="carousel" tabindex="0">${imgs.map((b) => `<img src="${attr(ctx.thumb(b.img))}" alt="${attr(b.alt || '')}" loading="lazy">`).join('')}</div></div></section>`;
-    return `<section class="sec${dark ? ' dark on-dark bp' : i % 2 ? ' alt' : ''}"${dark ? bg : ''}><div class="container"><div class="prose wide">${blocksHtml(ctx, s.blocks, { demote: 0 })}</div></div></section>`;
+    const flow = site.O && oh.kind === 'cards' ? cardsHtml(ctx, s.blocks) : blocksHtml(ctx, s.blocks, { demote: 0 });
+    return `<section class="${cls(`sec${dark ? ' dark on-dark bp' : i % 2 ? ' alt' : ''}`)}"${dark ? bg : art}><div class="container"><div class="prose wide">${flow}</div></div></section>`;
   }).join('\n');
 }
 
@@ -329,17 +409,27 @@ export function genericPage(ctx, page) {
   const hs = body.sections.find((s) => s.blocks.length && s.bg);
   if (hs && hs === body.sections.find((s) => s.blocks.length) && hs.blocks.every((b) => b.t === 'p')) { lead = hs.blocks.map((b) => `<p class="lead">${inlineHtml(ctx, b.h)}</p>`).join(''); hs.blocks = []; }
   return {
-    hero: `<section class="page-hero bp${heroBg ? ' has-fig' : ''}" ${heroBg ? `style="background-image:url('${attr(ctx.img(heroBg))}')"` : ''}><div class="container">${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: title }])}<h1>${esc(title)}</h1>${lead}</div>${heroBg ? `<div class="hero-fig" aria-hidden="true"><div class="hero-img" style="background-image:url('${attr(ctx.img(heroBg))}')"></div></div>` : ''}</section>`,
+    hero: `<section class="page-hero bp${heroBg ? ' has-fig' : ''}" ${heroBg ? `style="background-image:url('${attr(ctx.img(heroBg))}')"` : ''}><div class="container">${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: title }])}<h1>${esc(title)}</h1>${lead}</div>${heroBg && !ctx.site.ONLY_O ? `<div class="hero-fig" aria-hidden="true"><div class="hero-img" style="background-image:url('${attr(ctx.img(heroBg))}')"></div></div>` : ''}</section>`,
     body: sectionsHtml(ctx, body),
     title,
   };
 }
 
 // ───────────────────────────────────────────────────────────── [BLOG]
+/** «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno). */
+function contactBlockO(ctx, where, wrap = false) {
+  const { lang, site } = ctx;
+  const cb = site.contactBlocks[lang];
+  if (!(site.O && cb && cb.title)) return '';
+  const id = where === 'prod' ? 'h-pc' : `h-pc-${where}`;
+  const inner = `<div class="split" style="align-items:start"><div>${cb.kicker ? `<p class="eyebrow">${esc(cb.kicker)}</p>` : ''}<h2 id="${id}">${hText(site, { x: cb.title, h: cb.titleH })}</h2>${cb.text ? `<p>${esc(cb.text.replace(/<[^>]+>/g, ''))}</p>` : ''}</div>${contactForm(ctx, where)}</div>`;
+  return `<section class="${oc(site, 'sec o-contact')}" aria-labelledby="${id}">${wrap ? `<div class="container">${inner}</div>` : inner}</section>`;
+}
+
 /** Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada. */
 export function blogIndexBody(ctx, posts) {
   const { lang } = ctx;
-  const cards = posts.map((p) => `<a class="post-card" href="${attr(ctx.href(p.path))}"><div class="im">${p.featured ? `<img src="${attr(ctx.thumb(p.featured))}" alt="" loading="lazy">` : ''}</div><div class="tx"><time datetime="${attr(p.date || '')}">${fmtDate(p.date, lang)}</time><h3>${esc(p.title)}</h3><p class="muted">${esc((p.excerpt || '').slice(0, 150))}${(p.excerpt || '').length > 150 ? '…' : ''}</p></div></a>`).join('');
+  const cards = posts.map((p) => `<a class="post-card" href="${attr(ctx.href(p.path))}"><div class="im">${p.featured ? `<img src="${attr(ctx.thumb(p.featured))}" alt="" loading="lazy">` : ''}</div><div class="tx"><time datetime="${attr(p.date || '')}">${fmtDate(p.date, lang)}</time><h3>${esc(p.title)}</h3><p class="muted">${esc((p.excerpt || '').slice(0, 150))}${(p.excerpt || '').length > 150 ? '…' : ''}</p>${ctx.site.O ? `<span class="${oc(ctx.site, 'o-more')}">${t('read_more', lang)}</span>` : ''}</div></a>`).join('');
   return `<section class="sec"><div class="container"><div class="posts">${cards}</div></div></section>`;
 }
 /** Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. */
@@ -348,14 +438,21 @@ export function postBody(ctx, post) {
   const body = post.sections.flatMap((s) => s.blocks);
   const h1 = body.find((b) => b.t === 'h' && b.l === 1);
   const content = body.filter((b) => b !== h1);
-  const hero = `<section class="page-hero bp" ${post.featured ? `style="background-image:url('${attr(ctx.img(post.featured))}')"` : ''}><div class="container">${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: 'Blog', href: ctx.href(ctx.site.blog[lang]) }, { label: post.title }])}<h1>${esc(post.title)}</h1>${post.date ? `<p class="post-meta">${t('published', lang)} <time datetime="${attr(post.date)}">${fmtDate(post.date, lang)}</time></p>` : ''}</div></section>`;
-  return { hero, body: `<article class="sec"><div class="container"><div class="prose">${blocksHtml(ctx, content, { demote: 0 })}</div></div></article>` };
+  const site = ctx.site;
+  // «Original»: la foto de la entrada va como cabecera de contenido (1140 × 280) y el título debajo; los otros aspectos la usan de fondo del hero
+  const banner = site.O && post.featured ? `<img class="${oc(site, 'o-banner')}" src="${attr(ctx.img(post.featured))}" alt="" width="1140" height="280" decoding="async">` : '';
+  const hero = `<section class="page-hero bp" ${post.featured && !site.ONLY_O ? `style="background-image:url('${attr(ctx.img(post.featured))}')"` : ''}><div class="container">${banner}${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: 'Blog', href: ctx.href(ctx.site.blog[lang]) }, { label: post.title }])}<h1>${esc(post.title)}</h1>${post.date ? `<p class="post-meta">${t('published', lang)} <time datetime="${attr(post.date)}">${fmtDate(post.date, lang)}</time></p>` : ''}</div></section>`;
+  // «Original»: la foto con la que empieza el texto es la misma de la cabecera (la web actual la enseña una sola vez): se oculta en ese aspecto y se omite si va solo
+  const dup = site.O && post.featured && content[0] && content[0].t === 'img' && content[0].img && content[0].img.file === post.featured.file;
+  const text = dup ? `${site.ONLY_O ? '' : `<div class="o-dup">${blocksHtml(ctx, [content[0]], { demote: 0 })}</div>`}${blocksHtml(ctx, content.slice(1), { demote: 0 })}` : blocksHtml(ctx, content, { demote: 0 });
+  return { hero, body: `<article class="sec"><div class="container"><div class="prose">${text}</div></div></article>${contactBlockO(ctx, 'post', true)}` };
 }
 
 // ───────────────────────────────────────────────────────────── [SHOP] listado / categoría
 /** Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas. */
 export function shopBody(ctx, { products, category = null, intro = [] }) {
   const { lang, site } = ctx;
+  const OO = site.ONLY_O;                                                    // compilación solo «Original»: sin barra lateral, filtros ni listado de productos donde la web actual no los tiene
   const vts = [...new Set(products.flatMap((p) => p.voltage_tags || []))].filter((id) => site.vtags.has(id) && site.vtags.get(id).filter !== false);
   vts.sort((a, b) => (site.vtags.get(a).sort ?? 0) - (site.vtags.get(b).sort ?? 0));
   const chips = vts.map((id) => `<button class="chip" type="button" aria-pressed="false" data-vf="${attr(id)}">${esc(vtext(site.vtags.get(id).label, lang))}</button>`).join('');
@@ -367,16 +464,25 @@ export function shopBody(ctx, { products, category = null, intro = [] }) {
   </aside>`;
   const introHtml = intro.length ? `<div class="prose" style="margin-bottom:var(--s-5)">${blocksHtml(ctx, intro, { demote: 0, skipFirstHeading: true })}</div>` : '';
   const crumbsHtml = crumbs(ctx, [{ label: 'Torivac', href: ctx.href(site.home[lang]) }, { label: t('products', lang), href: category ? ctx.href(site.products[lang]) : null }, ...(category ? category.trail.map((c) => ({ label: pick(c.name, lang), href: ctx.href(c.pathFor[lang]) })) : [])]);
+  // «Original»: la categoría lleva su foto grande al lado del texto, como la web actual (solo las categorías que allí la tienen)
+  const heroIm = category && site.O ? site.heroOf.get(category.id) : null;
+  const intro2 = category && site.O && introHtml
+    ? `<div class="cat-split${heroIm ? '' : ' no-media'}">${heroIm ? `<figure class="${oc(site, 'cat-media')}"><img src="${attr(ctx.asset(heroIm.file))}" alt="${attr(pick(category.name, lang))}" width="${heroIm.w}" height="${heroIm.h}" decoding="async"></figure>` : ''}${introHtml}</div>`
+    : introHtml;
+  const showProducts = !(OO && (!category || category.children.length));
+  const skipGrid = site.O && !OO && category && category.children.length ? ' o-skip' : '';   // «Original» con selector de aspecto: la web actual no lista productos en una categoría con subcategorías (los otros aspectos sí)
+  const leafList = site.O && category && !category.children.length && products.length > 1;      // categoría hoja con varios productos: «Productos» + «Mostrando los N resultados»
+  const listHead = leafList ? `<h2 class="${oc(site, 'o-prod-h')}">${esc(t('products', lang))}</h2><p class="${oc(site, 'o-count')}">${esc(t('o_results_n', lang).replace('{n}', products.length))}</p>` : '';
   return `<div class="container shop">
-  ${sidebar}
+  ${OO ? '' : sidebar}
   <div>
     ${crumbsHtml}
-    ${introHtml}
+    ${intro2}
     ${category && category.id === 19 ? waveLab(ctx) : ''}
-    ${category ? (category.children.length ? categoryCards(ctx, category.children, { heading: t('explore_sub', lang), limit: 0, long: true }) : '') : categoryCards(ctx, null, { guard: true })}
-    <div class="toolbar"><button class="btn sm ghost filters-toggle" type="button" data-filters-toggle>☰ ${t('filters', lang)}</button><span class="count" data-count aria-live="polite">${countLabel(products.length, lang)}</span></div>
-    <div class="pgrid" data-grid>${products.map((p) => productCard(ctx, p)).join('')}</div>
-    <p class="notice" data-empty hidden>${t('no_results', lang)}</p>
+    ${category ? (category.children.length ? categoryCards(ctx, category.children, { heading: lbl(site, t('explore_sub', lang), esc(t('o_subcats', lang))), limit: 0, long: true, parent: category }) : '') : categoryCards(ctx, null, { guard: true })}
+    ${showProducts ? `${listHead}${OO ? '' : `<div class="toolbar${skipGrid}"><button class="btn sm ghost filters-toggle" type="button" data-filters-toggle>☰ ${t('filters', lang)}</button><span class="count" data-count aria-live="polite">${countLabel(products.length, lang)}</span></div>`}
+    <div class="pgrid${skipGrid}" data-grid>${products.map((p) => productCard(ctx, p)).join('')}</div>
+    <p class="notice${skipGrid}" data-empty hidden>${t('no_results', lang)}</p>` : ''}
   </div>
 </div>`;
 }
@@ -385,17 +491,24 @@ export function shopBody(ctx, { products, category = null, intro = [] }) {
 /** Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados. */
 export function productBody(ctx, p, related) {
   const { lang, site } = ctx;
+  const OO = site.ONLY_O;                                                    // compilación solo «Original»: sin barra lateral de categorías (la web actual no la tiene en las fichas)
   const name = pick(p.name, lang);
   const useEs = !p.description[lang];
   const desc = useEs ? p.description.es : p.description[lang];
   const short = p.short[lang] || (useEs ? p.short.es : null) || [];
   const cat = p.mainCategory;
   const trail = cat ? cat.trail.map((c) => ({ label: pick(c.name, lang), href: ctx.href(c.pathFor[lang]) })) : [];
-  const gal = p.images.length ? `<div class="gallery"><div class="main crop"><img data-main src="${attr(ctx.img(p.images[0]))}" alt="${attr(pick(p.images[0].alt, lang) || name)}" width="${p.images[0].w || 800}" height="${p.images[0].h || 800}"></div>${p.images.length > 1 ? `<div class="thumbs">${p.images.map((i, k) => `<button type="button" data-thumb="${attr(ctx.img(i))}" aria-current="${k === 0}" aria-label="${attr(name + ' ' + (k + 1))}"><img src="${attr(ctx.thumb(i))}" alt=""></button>`).join('')}</div>` : ''}</div>` : '<div></div>';
-  const pdfs = p.pdfs.map((d) => {
+  // «Original»: lupa que abre la foto grande (como la web actual); shop.js la mantiene al cambiar de miniatura
+  const zoom = p.images.length && site.O ? `<a class="${oc(site, 'zoom')}" data-zoom href="${attr(ctx.img(p.images[0]))}" target="_blank" rel="noopener" aria-label="${attr(t('o_zoom', lang))}"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" focusable="false"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></a>` : '';
+  const gal = p.images.length ? `<div class="gallery"><div class="main crop"><img data-main src="${attr(ctx.img(p.images[0]))}" alt="${attr(pick(p.images[0].alt, lang) || name)}" width="${p.images[0].w || 800}" height="${p.images[0].h || 800}">${zoom}</div>${p.images.length > 1 ? `<div class="thumbs">${p.images.map((i, k) => `<button type="button" data-thumb="${attr(ctx.img(i))}" aria-current="${k === 0}" aria-label="${attr(name + ' ' + (k + 1))}"><img src="${attr(ctx.thumb(i))}" alt=""></button>`).join('')}</div>` : ''}</div>` : '<div></div>';
+  // la ficha original ya lleva en su texto corto el enlace «Ver ficha técnica» (que «Original» pinta como botón): el botón que genera esta plantilla repetiría el mismo PDF
+  const shortHtml = blocksHtml(ctx, short, { demote: 2 });
+  const shortHasPdf = /<a [^>]*href="[^"]*\.pdf/i.test(shortHtml);
+  const pdfs = (OO && shortHasPdf ? [] : p.pdfs).map((d) => {
     const nm = decodeURIComponent(d.url.split('/').pop());
     const local = site.pdfLocal.get(nm);
-    return `<a class="btn ghost" href="${attr(local ? ctx.asset('assets/pdf/' + local) : d.url)}" target="_blank" rel="noopener">⬇ ${t('datasheet', lang)}${p.pdfs.length > 1 ? ' · ' + esc(nm.replace(/\.pdf$/i, '').slice(0, 24)) : ''}</a>`;
+    const more = p.pdfs.length > 1 ? ' · ' + esc(nm.replace(/\.pdf$/i, '').slice(0, 24)) : '';
+    return `<a class="btn ghost${shortHasPdf ? ' o-dup' : ''}" href="${attr(local ? ctx.asset('assets/pdf/' + local) : d.url)}" target="_blank" rel="noopener">${lbl(site, `⬇ ${t('datasheet', lang)}${more}`, `${esc(t('o_datasheet', lang))}${more}`)}</a>`;
   }).join('');
   // tabla de modelos
   const variants = p.variants.length ? p.variants : [{ ref: 'P' + p.id, label: null, specs: {}, default: true }];
@@ -412,20 +525,27 @@ export function productBody(ctx, p, related) {
     <div class="tbl-wrap models" tabindex="0"><table class="spec" role="table"><thead><tr role="row"><th class="ref" role="columnheader">${t('ref_model', lang)}</th>${cols.length ? cols.map((c) => `<th role="columnheader">${esc(c)}</th>`).join('') : `<th role="columnheader"><span class="vh">${t('item', lang)}</span></th>`}<th class="act" role="columnheader">${t('unit_price', lang)} · ${t('qty', lang)}</th></tr></thead><tbody role="rowgroup">${rows}</tbody></table></div>
     <p><button class="btn" type="button" data-add-selected>${t('add_selected', lang)}</button> <a class="btn ghost" href="${attr(ctx.href(site.quote[lang]))}">${t('quote', lang)} →</a></p></section>`;
   const notice = useEs && lang !== 'es' ? `<p class="notice">${t('translation_missing', lang)}</p>` : '';
-  const rel = related.length ? `<section class="sec tight" style="padding-inline:0"><h2>${t('related', lang)}</h2><div class="pgrid">${related.map((r) => productCard(ctx, r)).join('')}</div></section>` : '';
+  // «Original»: la potencia que ofrece el producto, como botones «3000 VA» (solo informativos: se pide por referencia en «Modelos»)
+  const power = site.O ? (p.attributes || []).find((a) => /^potencia$/i.test(a.name)) : null;
+  const attrsHtml = power && power.values.length ? `<div class="${oc(site, 'pdp-attrs')}"><p class="attr-label">${esc(t('o_attr_power', lang))}</p><div class="attr-chips">${power.values.map((v, i) => `<span class="attr-chip${i === 0 ? ' on' : ''}">${esc(v)} VA</span>`).join('')}</div></div>` : '';
+  // «Original»: bloque de contacto de la web actual al pie de cada ficha (mismos textos que el de la portada, en cada idioma)
+  const contact = contactBlockO(ctx, 'prod');
+  const rel = related.length ? `<section class="sec tight related" style="padding-inline:0"><h2>${lbl(site, t('related', lang), esc(t('o_related', lang)))}</h2><div class="pgrid">${related.map((r) => productCard(ctx, r)).join('')}</div>${site.O ? `<p class="${oc(site, 'o-all')}"><a class="btn" href="${attr(ctx.href(site.products[lang]))}">${esc(t('o_all_catalog', lang))}</a></p>` : ''}</section>` : '';
+  const leadImg = site.O && desc && desc[0] && desc[0].t === 'img';                              // la descripción empieza por un dibujo: «Original» lo pone a la izquierda del texto y la tabla
   return `<div class="container shop">
-  <aside class="sidebar no-print" id="filters" aria-label="${attr(t('categories', lang))}"><h2>${t('categories', lang)}</h2>${catTree(ctx, cat?.id)}</aside>
+  ${OO ? '' : `<aside class="sidebar no-print" id="filters" aria-label="${attr(t('categories', lang))}"><h2>${t('categories', lang)}</h2>${catTree(ctx, cat?.id)}</aside>`}
   <div>
     ${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(site.home[lang]) }, { label: t('products', lang), href: ctx.href(site.products[lang]) }, ...trail, { label: name }])}
-    <button class="btn sm ghost filters-toggle" type="button" data-filters-toggle style="margin-bottom:var(--s-4)">☰ ${t('categories', lang)}</button>
+    ${OO ? '' : `<button class="btn sm ghost filters-toggle" type="button" data-filters-toggle style="margin-bottom:var(--s-4)">☰ ${t('categories', lang)}</button>`}
     <article class="pdp" itemscope itemtype="https://schema.org/Product" data-pid="${p.id}">
       ${gal}
       <div><h1 itemprop="name">${esc(name)}</h1>${vtags(site, p.voltage_tags, 8, lang)}
-        <div class="short prose" style="margin-top:var(--s-4)">${blocksHtml(ctx, short, { demote: 2 })}</div>${notice}
+        <div class="short prose" style="margin-top:var(--s-4)">${shortHtml}</div>${notice}${attrsHtml}
         <div class="actions"><a class="btn" href="#modelos">${t('add_to_quote', lang)}</a>${pdfs}</div></div>
     </article>
-    <div class="prose wide" style="margin-bottom:var(--s-6)">${blocksHtml(ctx, desc, { demote: 1 })}</div>
+    <div class="prose wide pdp-desc${leadImg ? ' has-lead' : ''}" style="margin-bottom:var(--s-6)">${blocksHtml(ctx, desc, { demote: 1 })}</div>
     ${models}
+    ${contact}
     ${rel}
   </div>
 </div>`;
@@ -479,4 +599,27 @@ export function contactForm(ctx, where = 'page') {
 /** introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio) */
 export function contactIntro(ctx, blocks) {
   return blocksHtml(ctx, blocks.filter((b) => !(b.t === 'p' && /^\s*\./.test(b.h.replace(/<[^>]+>/g, '')))), { demote: 0 });
+}
+
+/** «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids). */
+export function contactPageOriginal(ctx, blocks, logo, bg) {
+  const { site } = ctx;
+  const k = blocks.findIndex((b, j) => b.t === 'h' && j > 0);                       // el segundo encabezado abre la columna de datos
+  const left = k > 0 ? blocks.slice(0, k) : blocks.slice(0, 2), right = k > 0 ? blocks.slice(k) : blocks.slice(2);
+  // Texto de un párrafo sin etiquetas.
+  const plainOf = (b) => b.h.replace(/<[^>]+>/g, '').trim();
+  const mail = right.find((b) => b.t === 'p' && /@/.test(b.h)), tel = right.find((b) => b.t === 'p' && /^[\s+\d().-]{7,}$/.test(plainOf(b)));
+  const addr = tel ? right[right.indexOf(tel) - 1] : null;
+  const rows = [[addr, 'pin'], [tel, 'tel'], [mail, 'mail']].filter(([b]) => b && b.t === 'p');
+  const text = right.filter((b) => !rows.some(([r]) => r === b));
+  const ICON = { pin: '<path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>', tel: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>', mail: '<rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/>' };
+  // Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
+  const li = ([b, kind]) => { const x = plainOf(b); const inner = kind === 'tel' ? `<a href="tel:${attr(x.replace(/[^\d+]/g, ''))}">${esc(x)}</a>` : kind === 'mail' ? `<a href="mailto:${attr(x)}">${esc(x)}</a>` : esc(x); return `<li><svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false">${ICON[kind]}</svg><span>${inner}</span></li>`; };
+  const logoImg = logo && logo.img && !logo.img.missing_local ? `<img class="o-cp-logo" src="${attr(ctx.img(logo.img))}" alt="" width="130" height="130" loading="lazy">` : '';
+  // Encabezados de un trozo de HTML con aria-level 2.
+  const lv2 = (h) => h.replace(/<h([1-6])>/g, '<h$1 aria-level="2">');                        // todos los encabezados del bloque cuelgan del h1 de la página (con el bloque de siempre oculto al lado, el orden automático los subiría a 3)
+  return `<section class="${oc(site, 'sec o-contact-page')}"${oSecImg(site, { bg })}><div class="container"><div class="o-cp-grid">
+    <div class="o-form-card">${lv2(blocksHtml(ctx, left, { demote: 0 }))}${contactForm(ctx, 'opage')}</div>
+    <div class="o-cp-info">${lv2(blocksHtml(ctx, text, { demote: 0 }))}<ul class="o-rows">${rows.map(li).join('')}</ul>${addr ? `<p class="o-map"><a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(plainOf(addr))}" target="_blank" rel="noopener">${esc(t('o_map', ctx.lang))}</a></p>` : ''}${logoImg}</div>
+  </div></div></section>`;
 }

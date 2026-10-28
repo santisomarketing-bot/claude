@@ -16,10 +16,14 @@
   var lang = window.TV_LANG || document.documentElement.lang || 'es';
   var LOCALE = { es: 'es-ES', en: 'en-GB', fr: 'fr-FR', de: 'de-DE' }[lang] || 'es-ES';
 
+  /** ¿`k` es una clave PROPIA de `o`? (con `o[k]` a secas, «constructor», «__proto__» o «toString» pasarían por referencias válidas) */
+  function own(o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); }
+
   // ───────────────────────────────────────── [OVERRIDE] precios cargados desde el panel (demo): sustituyen a TV.prices en este navegador
-  //   En producción la hoja de Drive manda (Worker + cron 24 h); aquí `tv_prices_override` hace de "hoja viva" para poder probar el flujo Excel → web.
+  //   En producción la hoja de Drive manda (servidor + cron 24 h); aquí `tv_prices_override` hace de "hoja viva" para poder probar el flujo Excel → web.
+  //   Con servidor (TV.meta.api) NO se aplica: un valor ajeno en el almacenamiento del navegador no puede dejar precios falsos persistentes.
   function applyOverride() {
-    try { var o = JSON.parse(localStorage.getItem('tv_prices_override') || 'null'); if (o && o.items) { TV._pricesBase = TV._pricesBase || TV.prices; TV.prices = o; } } catch (e) { /* sin override */ }
+    if (!(TV.meta && TV.meta.api)) { try { var o = JSON.parse(localStorage.getItem('tv_prices_override') || 'null'); if (o && o.items) { TV._pricesBase = TV._pricesBase || TV.prices; TV.prices = o; } } catch (e) { /* sin override */ } }
     mergeSheetItems();
   }
   /** La hoja de precios puede traer referencias nuevas dentro de un producto (prices.items[ref] = {p, n, pid}): se suman a TV.items para poder presupuestarlas (x:1 = viene de la hoja). */
@@ -27,7 +31,7 @@
     var P = TV.prices && TV.prices.items; if (!P || !TV.items) return;
     var byPid = {}; Object.keys(TV.items).forEach(function (r) { var it = TV.items[r]; if (it.pid && !byPid[it.pid]) byPid[it.pid] = it; });
     Object.keys(P).forEach(function (ref) {
-      var sh = P[ref]; if (!sh.pid || TV.items[ref] || !byPid[sh.pid]) return;
+      var sh = P[ref]; if (!sh.pid || own(TV.items, ref) || !byPid[sh.pid]) return;
       var b = byPid[sh.pid];
       TV.items[ref] = { pid: sh.pid, n: b.n, v: sh.n || '', d: false, c: 1, x: 1, p: b.p, img: b.img, th: b.th };
     });
@@ -41,8 +45,9 @@
   //   Se duplica el presupuesto en window.name (viaja con la pestaña) con una marca de tiempo; manda la copia más reciente.
   //   No se usa en http(s): window.name sería legible por otros sitios abiertos en la misma pestaña.
   var STAMP = 'tv_quote_t', NAME = 'tvq1:', FILE = location.protocol === 'file:';
+  //   Las referencias que la hoja de precios añade (x:1) llegan con los precios, después de cargar esto: no se puede exigir que ya estén en TV.items. Solo se descartan las que no son texto y los nombres de Object.prototype.
   /** Filtra las líneas guardadas: conserva solo las {ref, qty > 0} válidas; si `r` no es un array devuelve []. */
-  function clean(r) { return Array.isArray(r) ? r.filter(function (l) { return l && l.ref && l.qty > 0; }) : []; }
+  function clean(r) { return Array.isArray(r) ? r.filter(function (l) { return l && typeof l.ref === 'string' && l.ref && l.qty > 0 && !own(Object.prototype, l.ref); }) : []; }
   /** Carga las líneas del presupuesto de localStorage; con file:// manda la copia de window.name si es más reciente. */
   function load() {
     var ls = [], lt = 0, nm = null;
@@ -89,14 +94,14 @@
   // ───────────────────────────────────────── [PRICES]
   /** precio unitario aplicable a `qty` unidades de `ref` (null = sin precio → "consultar") */
   function priceOf(ref, qty) {
-    var p = TV.prices && TV.prices.items && TV.prices.items[ref];
+    var p = TV.prices && own(TV.prices.items, ref) ? TV.prices.items[ref] : null;
     if (!p || p.p == null) return null;
     var unit = p.p;
     (p.t || []).forEach(function (tier) { if (qty >= tier[0]) unit = tier[1]; });
     return unit;
   }
   /** Tramos de precio por cantidad de `ref` como [[cantMin, precio], …]; [] si no tiene. */
-  function tiersOf(ref) { var p = TV.prices && TV.prices.items && TV.prices.items[ref]; return (p && p.t) || []; }
+  function tiersOf(ref) { var p = TV.prices && own(TV.prices.items, ref) ? TV.prices.items[ref] : null; return (p && p.t) || []; }
   /** Redondea a 2 decimales compensando el error de coma flotante. */
   function round2(n) { return Math.round((n + Number.EPSILON) * 100) / 100; }
 
@@ -120,7 +125,7 @@
     has: function (ref) { return lines.some(function (l) { return l.ref === ref; }); },
     /** Suma `qty` unidades de `ref` (crea la línea si falta); false si la referencia no existe o la cantidad no es válida. */
     add: function (ref, qty) {
-      qty = Math.max(0, Math.floor(Number(qty) || 0)); if (!TV.items || !TV.items[ref] || !qty) return false;
+      qty = Math.max(0, Math.floor(Number(qty) || 0)); if (!own(TV.items, ref) || !qty) return false;
       var l = lines.filter(function (x) { return x.ref === ref; })[0];
       if (l) l.qty += qty; else lines.push({ ref: ref, qty: qty });
       emit({ type: 'add', ref: ref, qty: qty }); return true;
@@ -156,10 +161,10 @@
     /** nombre de línea listo para mostrar */
     label: function (d) { return d.name + (d.spec ? ' — ' + d.spec : ''); },
     /** referencia visible (las líneas genéricas P#### no se muestran como referencia) */
-    shownRef: function (ref) { return TV.items[ref] && TV.items[ref].c ? ref : '—'; },
+    shownRef: function (ref) { return own(TV.items, ref) && TV.items[ref].c ? ref : '—'; },
     /** importa filas {ref, qty}: devuelve {added, unknown[]} */
     importRows: function (rows) {
-      var idx = {}; Object.keys(TV.items).forEach(function (k) { idx[String(k).toLowerCase().replace(/\s+/g, '')] = k; });
+      var idx = Object.create(null); Object.keys(TV.items).forEach(function (k) { idx[String(k).toLowerCase().replace(/\s+/g, '')] = k; });
       var added = 0, unknown = [];
       rows.forEach(function (r) {
         var key = String(r.ref || '').toLowerCase().replace(/\s+/g, ''); var q = qtyOf(r.qty);

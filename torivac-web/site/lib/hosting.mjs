@@ -13,12 +13,13 @@ const rx = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 export const basePathOf = (base) => new URL(base).pathname.replace(/\/+$/, '');
 
 /** Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api. */
-export function htaccess({ base, staging = false, aliases = new Map(), pdfRedirects = [], apiOrigin = '', phpApi = false, langs = ['en', 'fr', 'de'] }) {
+export function htaccess({ base, staging = false, aliases = new Map(), pdfRedirects = [], apiOrigin = '', phpApi = false, langs = ['en', 'fr', 'de'], scriptHashes = [] }) {
   const u = new URL(base), bp = basePathOf(base), https = u.protocol === 'https:';
   const host = u.hostname, www = host.startsWith('www.'), apex = host.split('.').length === 2;
   const origin = u.origin;
   const connect = ["'self'", apiOrigin && apiOrigin !== origin ? apiOrigin : ''].filter(Boolean).join(' ');
-  const csp = `default-src 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src ${connect}; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'`;
+  // script-src SIN 'unsafe-inline': los únicos scripts en línea son constantes y entran por su huella SHA-256 (scriptHashes); todo lo demás son archivos de la propia web. Así una inyección de HTML no puede ejecutar código.
+  const csp = `default-src 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'${scriptHashes.map((h) => ` 'sha256-${h}'`).join('')}; connect-src ${connect}; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'`;
   const L = [];
   L.push(`# GENERADO por site/build.mjs (no editar a mano: se regenera en cada compilación).`);
   L.push(`# Torivac · ${staging ? 'ENTORNO DE PRUEBAS (noindex)' : 'producción'} · ${origin}${bp}/`);
@@ -27,6 +28,7 @@ export function htaccess({ base, staging = false, aliases = new Map(), pdfRedire
   if (https) L.push('# HTTPS siempre (el certificado lo da el hosting: AutoSSL en cPanel, Let\'s Encrypt en Plesk)', 'RewriteCond %{HTTPS} !=on', 'RewriteCond %{HTTP:X-Forwarded-Proto} !=https', `RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]`);
   if (www) L.push('# un solo host: con www', `RewriteCond %{HTTP_HOST} ^${rx(host.slice(4))}$ [NC]`, `RewriteRule ^ ${origin}%{REQUEST_URI} [L,R=301]`);
   else if (apex) L.push('# un solo host: sin www', `RewriteCond %{HTTP_HOST} ^www\\.${rx(host)}$ [NC]`, `RewriteRule ^ ${origin}%{REQUEST_URI} [L,R=301]`);
+  L.push('# nada de ficheros ni carpetas ocultos (.git, .env…), salvo .well-known (certificados)', 'RewriteRule (^|/)\\.(?!well-known(/|$)) - [F,L]');
   L.push('# /index.html → /', 'RewriteCond %{THE_REQUEST} \\s/+(.*/)?index\\.html[\\s?] [NC]', 'RewriteRule ^(.*/)?index\\.html$ ' + (bp || '') + '/$1 [L,R=301,NE]');
   if (phpApi) L.push('# API de pedidos, contacto, precios y panel (PHP). La cabecera Authorization se pasa a PHP de forma explícita: algunos PHP-FPM/CGI de hosting compartido la descartan',
     'RewriteCond %{HTTP:Authorization} .', 'RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]', 'RewriteRule ^api/(?!index\\.php)(.*)$ api/index.php [QSA,L]');

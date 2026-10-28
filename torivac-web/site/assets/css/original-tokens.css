@@ -1,0 +1,43 @@
+/* [ORIGINAL-TOKENS] Aspecto «Original»: la web actual de grupotorivac.com (cabecera y pie negros, naranja cobre, Advent Pro, Archivo, PT Sans en menú y títulos de tarjetas),
+   más las etiquetas de voltaje, los precios y el presupuesto, que son lo único que se suma. Se activa con <html data-theme="original"> y vive en la capa CSS `original`.
+   Valores medidos en la web real (capturas a 1440 px y su CSS): fondo #f4f4f4, cabecera #141414 de 131 px, tarjetas blancas con radio 10 px, tabla con cabecera #e99c3b.
+   Contraste AA: el naranja de los botones de la web (#c46b29, 3,8:1 con texto blanco) y el del texto sobre #f4f4f4 (#ac631e, 4,2:1) no llegan a 4,5:1; aquí se usa el #ac631e (4,6:1 con blanco)
+   en botones y el #a45c18 (4,6:1 sobre #f4f4f4) en texto: una diferencia de tono que no se nota y que cumple la regla de accesibilidad del proyecto. */
+
+[data-theme="original"]{
+  --o-black:#141414;
+  --o-black-2:#333333;
+  --o-card:#ffffff;
+  --o-bg:#f4f4f4;
+  --o-ink:#222222;
+  --o-ink-2:#333333;
+  --o-brand:#ba6b1e;            /* títulos grandes, bandas, iconos */
+  --o-accent:#ac631e;           /* botones con texto blanco, filetes y bordes (el naranja de las categorías de la web) */
+  --o-accent-text:#a45c18;      /* texto y enlaces naranjas sobre claro */
+  --o-accent-hover:#8e5217;
+  --o-on-dark:#d9d9d9;
+  --o-table-head:#e99c3b;       /* cabecera de las tablas de las fichas */
+  --o-line:#e5e5e5;
+  --o-line-2:#dddddd;
+  --o-radius:10px;
+  --o-shadow:0 2px 6px rgba(0,0,0,.08);
+  --o-font-title:"Advent Pro","Archivo",system-ui,sans-serif;
+  --o-font-ui:"PT Sans","Archivo",system-ui,sans-serif;
+  --o-font-body:"Archivo",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --o-header-h:131px;
+  --o-wrap:1170px;
+  /* variables del aspecto «Clásico» que reutiliza (la capa original manda sobre ellas) */
+  --bg:var(--o-bg);
+  --ink:var(--o-ink);
+  --muted:#555555;
+  --copper:var(--o-brand);
+  --copper-strong:var(--o-accent);
+  --copper-hover:var(--o-accent-hover);
+  --copper-on-dark:#e08a2d;
+  --font-display:var(--o-font-title);
+  --font-body:var(--o-font-body);
+  --font-mono:var(--o-font-body);       /* referencias, cifras y etiquetas de voltaje en la misma fuente de la web (con cifras tabulares) */
+  --radius:4px;
+  --shadow-copper:none;
+  --header-h:var(--o-header-h);
+}

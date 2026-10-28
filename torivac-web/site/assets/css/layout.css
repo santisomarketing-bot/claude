@@ -102,8 +102,8 @@
 .fab-top.show{opacity:1;pointer-events:auto}
 
 /* cajón del presupuesto (mini-carrito) */
-.quote-drawer{position:fixed;top:0;right:0;bottom:0;width:min(100vw,440px);background:var(--paper);z-index:var(--z-drawer);transform:translateX(104%);transition:transform .28s ease;display:flex;flex-direction:column;box-shadow:-12px 0 40px -12px rgba(16,4,4,.45)}
-.quote-drawer.open{transform:none}
+.quote-drawer{position:fixed;top:0;right:0;bottom:0;width:min(100vw,440px);background:var(--paper);z-index:var(--z-drawer);transform:translateX(104%);transition:transform .28s ease,box-shadow .28s ease;display:flex;flex-direction:column}
+.quote-drawer.open{transform:none;box-shadow:-12px 0 40px -12px rgba(16,4,4,.45)}   /* la sombra solo con el cajón abierto: cerrado, asomaba como una franja gris en el borde derecho */
 .quote-drawer header{background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:var(--s-4) var(--s-5)}
 .quote-drawer header h2{color:#fff;margin:0;font-size:var(--fs-5)}
 .quote-drawer .body{flex:1;overflow:auto;padding:var(--s-4) var(--s-5)}
@@ -135,3 +135,6 @@
 .site-footer .theme-switch button:hover{background:rgba(255,255,255,.14)}
 .site-footer .theme-switch button[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:var(--ink)}
 .hero-fig{display:none}                  /* foto de la portada en recuadro: solo la usa el aspecto «Ficha técnica» (con display:none el navegador ni la descarga) */
+
+/* ───── [ORIGINAL] elementos y rótulos que solo existen en el aspecto «Original»: ocultos aquí, los muestra su hoja (original.css) */
+.o-only,.l-o{display:none}

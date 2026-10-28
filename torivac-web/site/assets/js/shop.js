@@ -87,7 +87,7 @@
     var u = Q.priceOf(ref, q), tiers = Q.tiersOf(ref);
     if (!cell) return;
     var html = u == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : '<span class="mono">' + esc(Q.unitMoney(u)) + '</span>';
-    if (tiers.length) html += tiers.map(function (t) { return '<span class="tier">' + esc(Q.t('tier_from')) + ' ' + t[0] + ' ' + esc(Q.t('units')) + ' · ' + esc(Q.unitMoney(t[1])) + '</span>'; }).join('');
+    if (tiers.length) html += tiers.map(function (t) { return '<span class="tier">' + esc(Q.t('tier_from')) + ' ' + Number(t[0]) + ' ' + esc(Q.t('units')) + ' · ' + esc(Q.unitMoney(t[1])) + '</span>'; }).join('');
     cell.innerHTML = html;
   }
   /** Actualiza el precio de todas las filas y muestra u oculta el aviso de demo según el modo de la hoja de precios. */
@@ -97,6 +97,6 @@
   refresh(); document.addEventListener('tv:prices', refresh);
 
   // ───────────────────────────────────────── [GALLERY]
-  var main = $('[data-main]');
-  $$('[data-thumb]').forEach(function (b) { b.addEventListener('click', function () { main.src = b.getAttribute('data-thumb'); $$('[data-thumb]').forEach(function (x) { x.setAttribute('aria-current', x === b); }); }); });
+  var main = $('[data-main]'), zoom = $('[data-zoom]');
+  $$('[data-thumb]').forEach(function (b) { b.addEventListener('click', function () { main.src = b.getAttribute('data-thumb'); if (zoom) zoom.href = b.getAttribute('data-thumb'); $$('[data-thumb]').forEach(function (x) { x.setAttribute('aria-current', x === b); }); }); });
 })();

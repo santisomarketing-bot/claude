@@ -1,0 +1,19 @@
+{
+  "_doc": "Casos compartidos de la clave de límite por visitante (PHP: backend-php/api/lib/Request.php ipKey · Worker: workers/api/src/util.js ipKey). Una IPv4 se usa tal cual; una IPv6 se agrupa por su /64 (un visitante controla todo su /64: sin agrupar, cada dirección sería un cubo nuevo y el límite no serviría); una IPv4 escrita como IPv6 (::ffff:a.b.c.d) vale su IPv4; lo ilegible vale «0».",
+  "cases": [
+    ["203.0.113.5", "203.0.113.5"],
+    ["2001:db8:abcd:12::1", "2001:0db8:abcd:0012::/64"],
+    ["2001:db8:abcd:12:ffff:ffff:ffff:ffff", "2001:0db8:abcd:0012::/64"],
+    ["2001:DB8:ABCD:12::7", "2001:0db8:abcd:0012::/64"],
+    ["2001:db8::", "2001:0db8:0000:0000::/64"],
+    ["::1", "0000:0000:0000:0000::/64"],
+    ["fe80::1%eth0", "fe80:0000:0000:0000::/64"],
+    ["::ffff:203.0.113.5", "203.0.113.5"],
+    ["::ffff:cb00:7105", "203.0.113.5"],
+    ["  203.0.113.5 ", "203.0.113.5"],
+    ["not-an-ip", "0"],
+    ["", "0"],
+    ["1.2.3", "0"],
+    ["2001:db8:::1", "0"]
+  ]
+}

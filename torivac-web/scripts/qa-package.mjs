@@ -72,7 +72,7 @@ await f.locator('[name=name]').fill('Marta Paquete'); await f.locator('[name=com
 await f.locator('[name=email]').fill('cliente.prueba@example.com'); await f.locator('[name=privacy]').check();
 await f.locator('button[type=submit]').click();
 await page.locator('[data-sent]:not([hidden])').waitFor({ timeout: 10000 });
-const num = ((await page.locator('[data-sent]').innerText()).match(/TV-\d{8}-\d{4}/) || [])[0];
+const num = ((await page.locator('[data-sent]').innerText()).match(/TV-\d{8}-\d{4}(?:-[0-9A-Z]{3})?/) || [])[0];
 ok(!!num, `pedido aceptado: ${num}`);
 const rec = await be.order(num);
 ok(rec && rec.total === expTotal, `total del servidor ${rec && rec.total} = ${expTotal}`);

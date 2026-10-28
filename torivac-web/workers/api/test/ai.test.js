@@ -3,11 +3,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { validateChanges, buildTable, applyChanges, suggestPriceChanges, applyPriceChanges, TOOL } from '../src/ai.js';
 import api from '../src/index.js';
-import { mkEnv, req } from './helpers.js';
+import { mkEnv, req, MASTER } from './helpers.js';
 
 // referencias REALES del catálogo generado (site/build.mjs → src/generated/items.js)
 const PRICES = { updated_at: '2026-10-28T00:00:00Z', source: 'test', currency: 'EUR', mode: 'live', items: { P8339: { p: 15.82, t: [[10, 15.1], [50, 14.4]] }, P8340: { p: 62.93 }, P884: { p: 49.95 } } };
-const M = { Authorization: 'Bearer master-token-123' };
+const M = { Authorization: `Bearer ${MASTER}` };
 /** Respuesta simulada de la API de Anthropic: un bloque tool_use de la herramienta de precios con el input dado. */
 const aiReply = (input) => new Response(JSON.stringify({ content: [{ type: 'tool_use', name: TOOL, input }], usage: { input_tokens: 900, output_tokens: 120 } }), { status: 200 });
 /** Entorno de pruebas con ANTHROPIC_API_KEY y PRICES ya guardados en KV; devuelve una promesa del entorno. */

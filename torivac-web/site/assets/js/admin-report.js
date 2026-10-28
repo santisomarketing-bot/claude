@@ -14,13 +14,13 @@
     if (!rep) return '';
     var out = '', cols = rep.columns || {};
     var shown = Object.keys(cols).filter(function (k) { return LABEL[k]; }).map(function (k) { return LABEL[k] + ' ← «' + cols[k] + '»'; });
-    if (shown.length) out += '<p class="muted small">Columnas reconocidas: ' + esc(shown.join(' · ')) + (rep.stats ? ' · ' + rep.stats.accepted + ' de ' + rep.stats.rows + ' filas con precio · ' + rep.stats.decimals + ' decimales' : '') + '</p>';
+    if (shown.length) out += '<p class="muted small">Columnas reconocidas: ' + esc(shown.join(' · ')) + (rep.stats ? ' · ' + Number(rep.stats.accepted) + ' de ' + Number(rep.stats.rows) + ' filas con precio · ' + Number(rep.stats.decimals) + ' decimales' : '') + '</p>';
     var by = rep.stats && rep.stats.by, how = [];
     if (by) {
-      if (by.ref) how.push(by.ref + ' por referencia');
-      if (by.sku) how.push(by.sku + ' por SKU');
-      if (by.id) how.push(by.id + ' por ID de producto');
-      if (by.rule) how.push(by.rule + ' como referencia nueva de su familia');
+      if (by.ref) how.push(Number(by.ref) + ' por referencia');
+      if (by.sku) how.push(Number(by.sku) + ' por SKU');
+      if (by.id) how.push(Number(by.id) + ' por ID de producto');
+      if (by.rule) how.push(Number(by.rule) + ' como referencia nueva de su familia');
     }
     if (how.length) out += '<p class="muted small">Filas reconocidas: ' + esc(how.join(' · ')) + '</p>';
     (rep.warnings || []).forEach(function (w) { out += '<p class="notice' + (/relleno|duplicada/.test(w.code || '') ? ' warn' : '') + '">' + esc(w.message) + '</p>'; });
