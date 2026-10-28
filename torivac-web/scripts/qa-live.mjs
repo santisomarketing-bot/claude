@@ -22,7 +22,9 @@ const { KEY_CURRENT } = await import(path.join(ROOT, 'workers/api/src/prices.js'
 const sb = { window: {} }; sb.window = sb; vm.createContext(sb);
 for (const f of ['catalog.js', 'prices.js']) vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data', f), 'utf8'), sb);
 const { items, prices } = sb.TV;
-const REFS = ['P884', 'P8339', 'P932'], QTY = { P884: 12, P8339: 2, P932: 200 };
+// 1.ª línea pedible de un producto: su código real si el PDF lo da (TT…), o la línea genérica P<id>
+const pick = (pid) => Object.keys(items).find((r) => items[r].pid === pid);
+const REFS = [pick(884), pick(8339), pick(932)], QTY = { [REFS[0]]: 12, [REFS[1]]: 2, [REFS[2]]: 200 };
 const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
 const unit = (ref, q) => { const p = prices.items[ref]; let u = p.p; for (const [m, x] of p.t || []) if (q >= m) u = x; return u; };
 const expTotal = round2(REFS.reduce((s, r) => s + round2(unit(r, QTY[r]) * QTY[r]), 0));

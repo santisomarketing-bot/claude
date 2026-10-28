@@ -1,0 +1,17 @@
+{
+ "_doc": "Decisiones documentadas que CAMBIAN lo que muestra la web nueva respecto a la original. Cada una tiene su propuesta en el panel y se revierte borrando la entrada. action=hide_table oculta la tabla de la ficha cuya primera celda empieza por alguno de los textos de first_cell (uno por idioma).",
+ "overrides": [
+  {
+   "product_id": 884,
+   "field": "description",
+   "action": "hide_table",
+   "first_cell": [
+    "Serie T.T. (Estandar",
+    "T.T. Series (Standard",
+    "Série T.T. (Standard",
+    "T.T. Serie (Standard"
+   ],
+   "why": "La tabla original contradice el PDF verificado y la tarifa (códigos inexistentes TT1000210…, tensiones y corrientes desplazadas). Se sustituye por la tabla de «Modelos» generada desde el PDF."
+  }
+ ]
+}

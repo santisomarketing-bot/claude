@@ -1,0 +1,336 @@
+[
+ {
+  "id": "230v",
+  "label": "230 V",
+  "title": {
+   "es": "Tensión de 230 V (entrada o primario, según la ficha)",
+   "en": "230 V (input or primary, as stated on the datasheet)",
+   "fr": "230 V (entrée ou primaire, selon la fiche)",
+   "de": "230 V (Eingang oder Primärseite laut Datenblatt)"
+  },
+  "kind": "ac",
+  "sort": 10,
+  "filter": true
+ },
+ {
+  "id": "400v",
+  "label": "400 V",
+  "title": {
+   "es": "Tensión de 400 V trifásica (entrada, según la ficha)",
+   "en": "400 V three-phase (input, as stated on the datasheet)",
+   "fr": "400 V triphasé (entrée, selon la fiche)",
+   "de": "400 V dreiphasig (Eingang laut Datenblatt)"
+  },
+  "kind": "three-phase",
+  "sort": 20,
+  "filter": true
+ },
+ {
+  "id": "out-0-230",
+  "label": "0–230 V",
+  "title": {
+   "es": "Tensión de salida regulable de 0 a 230 V",
+   "en": "Adjustable output voltage from 0 to 230 V",
+   "fr": "Tension de sortie réglable de 0 à 230 V",
+   "de": "Einstellbare Ausgangsspannung von 0 bis 230 V"
+  },
+  "kind": "range",
+  "sort": 30,
+  "filter": true
+ },
+ {
+  "id": "out-0-240ac",
+  "label": "0–240 V AC",
+  "title": {
+   "es": "Tensión de salida variable de 0 a 240 V AC (monofásico)",
+   "en": "Variable output voltage 0–240 V AC (single-phase)",
+   "fr": "Tension de sortie variable 0–240 V AC (monophasé)",
+   "de": "Variable Ausgangsspannung 0–240 V AC (einphasig)"
+  },
+  "kind": "range",
+  "sort": 31,
+  "filter": true
+ },
+ {
+  "id": "out-0-440ac",
+  "label": "0–440 V AC",
+  "title": {
+   "es": "Tensión de salida variable de 0 a 440 V AC (trifásico)",
+   "en": "Variable output voltage 0–440 V AC (three-phase)",
+   "fr": "Tension de sortie variable 0–440 V AC (triphasé)",
+   "de": "Variable Ausgangsspannung 0–440 V AC (dreiphasig)"
+  },
+  "kind": "range",
+  "sort": 32,
+  "filter": true
+ },
+ {
+  "id": "dc-0-30",
+  "label": "0–30 V DC",
+  "title": {
+   "es": "Salida de corriente continua de 0 a 30 V",
+   "en": "DC output 0–30 V",
+   "fr": "Sortie courant continu 0–30 V",
+   "de": "Gleichstromausgang 0–30 V"
+  },
+  "kind": "dc",
+  "sort": 40,
+  "filter": true
+ },
+ {
+  "id": "dc-15-30",
+  "label": "15–30 V DC",
+  "title": {
+   "es": "Entrada de corriente continua de 15 a 30 V",
+   "en": "DC input 15–30 V",
+   "fr": "Entrée courant continu 15–30 V",
+   "de": "Gleichstromeingang 15–30 V"
+  },
+  "kind": "dc",
+  "sort": 41,
+  "filter": true
+ },
+ {
+  "id": "ctrl-0-10",
+  "label": "0–10 V DC",
+  "title": {
+   "es": "Señal de control analógica 0-10 V DC",
+   "en": "0–10 V DC analogue control signal",
+   "fr": "Signal de commande analogique 0–10 V DC",
+   "de": "Analoges Steuersignal 0–10 V DC"
+  },
+  "kind": "dc",
+  "sort": 42,
+  "filter": false
+ },
+ {
+  "id": "bat-12",
+  "label": {
+   "es": "Batería 12 V",
+   "en": "12 V battery",
+   "fr": "Batterie 12 V",
+   "de": "12-V-Batterie"
+  },
+  "title": {
+   "es": "Tensión nominal de batería 12 V",
+   "en": "Nominal battery voltage 12 V",
+   "fr": "Tension nominale de batterie 12 V",
+   "de": "Nennspannung der Batterie 12 V"
+  },
+  "kind": "dc",
+  "sort": 50,
+  "filter": true
+ },
+ {
+  "id": "bat-24",
+  "label": {
+   "es": "Batería 24 V",
+   "en": "24 V battery",
+   "fr": "Batterie 24 V",
+   "de": "24-V-Batterie"
+  },
+  "title": {
+   "es": "Tensión nominal de batería 24 V",
+   "en": "Nominal battery voltage 24 V",
+   "fr": "Tension nominale de batterie 24 V",
+   "de": "Nennspannung der Batterie 24 V"
+  },
+  "kind": "dc",
+  "sort": 51,
+  "filter": true
+ },
+ {
+  "id": "bat-48",
+  "label": {
+   "es": "Batería 48 V",
+   "en": "48 V battery",
+   "fr": "Batterie 48 V",
+   "de": "48-V-Batterie"
+  },
+  "title": {
+   "es": "Tensión nominal de batería 48 V",
+   "en": "Nominal battery voltage 48 V",
+   "fr": "Tension nominale de batterie 48 V",
+   "de": "Nennspannung der Batterie 48 V"
+  },
+  "kind": "dc",
+  "sort": 52,
+  "filter": true
+ },
+ {
+  "id": "in-15-80",
+  "label": {
+   "es": "Entrada 15–80 V",
+   "en": "Input 15–80 V",
+   "fr": "Entrée 15–80 V",
+   "de": "Eingang 15–80 V"
+  },
+  "title": {
+   "es": "Tensión admisible en la entrada: 15 a 80 V",
+   "en": "Permitted input voltage: 15 to 80 V",
+   "fr": "Tension d'entrée admissible : 15 à 80 V",
+   "de": "Zulässige Eingangsspannung: 15 bis 80 V"
+  },
+  "kind": "dc",
+  "sort": 53,
+  "filter": false
+ },
+ {
+  "id": "line-100",
+  "label": {
+   "es": "Línea 100 V",
+   "en": "100 V line",
+   "fr": "Ligne 100 V",
+   "de": "100-V-Leitung"
+  },
+  "title": {
+   "es": "Transformadores de línea de 100 V (audio)",
+   "en": "100 V line (audio) transformers",
+   "fr": "Transformateurs de ligne 100 V (audio)",
+   "de": "100-V-Leitungsübertrager (Audio)"
+  },
+  "kind": "ac",
+  "sort": 60,
+  "filter": false
+ },
+ {
+  "id": "work-1000ac",
+  "label": "≈1000 V AC",
+  "title": {
+   "es": "Tensión de trabajo aproximada de 1 000 V AC",
+   "en": "Approximate working voltage 1,000 V AC",
+   "fr": "Tension de service approximative 1 000 V AC",
+   "de": "Ungefähre Betriebsspannung 1 000 V AC"
+  },
+  "kind": "ac",
+  "sort": 61,
+  "filter": false
+ },
+ {
+  "id": "scale-230",
+  "label": {
+   "es": "Escala 0–230 V",
+   "en": "0–230 V scale",
+   "fr": "Échelle 0–230 V",
+   "de": "Skala 0–230 V"
+  },
+  "title": {
+   "es": "Escala grabada de 0 a 230 V (no es una tensión de servicio)",
+   "en": "Printed scale 0–230 V (not an operating voltage)",
+   "fr": "Échelle gravée 0–230 V (pas une tension de service)",
+   "de": "Aufgedruckte Skala 0–230 V (keine Betriebsspannung)"
+  },
+  "kind": "range",
+  "sort": 70,
+  "filter": false
+ },
+ {
+  "id": "scale-250",
+  "label": {
+   "es": "Escala 0–250 V",
+   "en": "0–250 V scale",
+   "fr": "Échelle 0–250 V",
+   "de": "Skala 0–250 V"
+  },
+  "title": {
+   "es": "Escala grabada de 0 a 250 V (no es una tensión de servicio)",
+   "en": "Printed scale 0–250 V (not an operating voltage)",
+   "fr": "Échelle gravée 0–250 V (pas une tension de service)",
+   "de": "Aufgedruckte Skala 0–250 V (keine Betriebsspannung)"
+  },
+  "kind": "range",
+  "sort": 71,
+  "filter": false
+ },
+ {
+  "id": "sec-10",
+  "label": "2×10 V",
+  "title": {
+   "es": "Dos secundarios de 10 V (en serie: 20 V)",
+   "en": "Two 10 V secondaries (in series: 20 V)",
+   "fr": "Deux secondaires de 10 V (en série : 20 V)",
+   "de": "Zwei 10-V-Sekundärwicklungen (in Reihe: 20 V)"
+  },
+  "kind": "ac",
+  "filter": true,
+  "sort": 110.0
+ },
+ {
+  "id": "sec-12",
+  "label": "2×12 V",
+  "title": {
+   "es": "Dos secundarios de 12 V (en serie: 24 V)",
+   "en": "Two 12 V secondaries (in series: 24 V)",
+   "fr": "Deux secondaires de 12 V (en série : 24 V)",
+   "de": "Zwei 12-V-Sekundärwicklungen (in Reihe: 24 V)"
+  },
+  "kind": "ac",
+  "filter": true,
+  "sort": 112.0
+ },
+ {
+  "id": "sec-15",
+  "label": "2×15 V",
+  "title": {
+   "es": "Dos secundarios de 15 V (en serie: 30 V)",
+   "en": "Two 15 V secondaries (in series: 30 V)",
+   "fr": "Deux secondaires de 15 V (en série : 30 V)",
+   "de": "Zwei 15-V-Sekundärwicklungen (in Reihe: 30 V)"
+  },
+  "kind": "ac",
+  "filter": true,
+  "sort": 115.0
+ },
+ {
+  "id": "sec-18",
+  "label": "2×18 V",
+  "title": {
+   "es": "Dos secundarios de 18 V (en serie: 36 V)",
+   "en": "Two 18 V secondaries (in series: 36 V)",
+   "fr": "Deux secondaires de 18 V (en série : 36 V)",
+   "de": "Zwei 18-V-Sekundärwicklungen (in Reihe: 36 V)"
+  },
+  "kind": "ac",
+  "filter": true,
+  "sort": 118.0
+ },
+ {
+  "id": "sec-22",
+  "label": "2×22 V",
+  "title": {
+   "es": "Dos secundarios de 22 V (en serie: 44 V)",
+   "en": "Two 22 V secondaries (in series: 44 V)",
+   "fr": "Deux secondaires de 22 V (en série : 44 V)",
+   "de": "Zwei 22-V-Sekundärwicklungen (in Reihe: 44 V)"
+  },
+  "kind": "ac",
+  "filter": true,
+  "sort": 122.0
+ },
+ {
+  "id": "sec-30",
+  "label": "2×30 V",
+  "title": {
+   "es": "Dos secundarios de 30 V (en serie: 60 V)",
+   "en": "Two 30 V secondaries (in series: 60 V)",
+   "fr": "Deux secondaires de 30 V (en série : 60 V)",
+   "de": "Zwei 30-V-Sekundärwicklungen (in Reihe: 60 V)"
+  },
+  "kind": "ac",
+  "filter": true,
+  "sort": 130.0
+ },
+ {
+  "id": "sec-35",
+  "label": "2×35 V",
+  "title": {
+   "es": "Dos secundarios de 35 V (en serie: 70 V)",
+   "en": "Two 35 V secondaries (in series: 70 V)",
+   "fr": "Deux secondaires de 35 V (en série : 70 V)",
+   "de": "Zwei 35-V-Sekundärwicklungen (in Reihe: 70 V)"
+  },
+  "kind": "ac",
+  "filter": true,
+  "sort": 135.0
+ }
+]

@@ -7,7 +7,7 @@ import { parseCsv, syncPrices, getAccessToken } from '../src/sheets.js';
 import { handleOrder } from '../src/orders.js';
 import { createUser } from '../src/users.js';
 import api from '../src/index.js';
-import { mkEnv, req, CATALOG, PRICES, SHEET } from './helpers.js';
+import { mkEnv, req, CATALOG, PRICES, SHEET, TCTX } from './helpers.js';
 
 const goodOrder = (over = {}) => ({ customer: { name: 'Ana Pérez', company: 'ACME', email: 'ana@acme.es', phone: '600', notes: 'urgente', privacy: true }, lines: [{ ref: 'TT0020210', qty: 12 }, { ref: 'P16633', qty: 1 }], lang: 'es', ...over });
 
@@ -140,12 +140,42 @@ test('API: subida de hoja (vista previa y aplicar) y cron', async () => {
   const env = mkEnv({ PRICE_CSV_URL: 'https://sheet.test/x.csv' });
   await env.KV.put('prices:current', JSON.stringify(PRICES));
   const h = { Authorization: 'Bearer master-token-123' };
-  const dry = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv: SHEET, dry_run: true }, headers: h }), env, {})).json();
+  const dry = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv: SHEET, dry_run: true }, headers: h }), env, {}, { ctx: TCTX })).json();
   assert.equal(dry.dry_run, true); assert.deepEqual(dry.diff.added, ['R100']);
-  const done = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv: SHEET }, headers: h }), env, {})).json();
+  const done = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv: SHEET }, headers: h }), env, {}, { ctx: TCTX })).json();
   assert.equal(done.meta.refs, 3);
   const pub = await (await api.fetch(req('/api/prices'), env, {})).json(); assert.equal(pub.prices.items.R100.p, 5.5);
   const realFetch = globalThis.fetch; globalThis.fetch = async () => new Response('ref;price\nR100;9\nTT0020210;12\nP16633;60\n'); 
-  try { await api.scheduled({}, env, {}); } finally { globalThis.fetch = realFetch; }
+  try { await api.scheduled({}, env, {}, { ctx: TCTX }); } finally { globalThis.fetch = realFetch; }
   assert.equal(JSON.parse(await env.KV.get('prices:current')).items.R100.p, 9);   // el cron actualiza
+});
+
+test('hoja de precios con códigos nuevos (tarifa): se publican dentro de su producto y se pueden pedir', async () => {
+  const env = mkEnv({ RESEND_API_KEY: 're_test' }); await env.KV.put('prices:current', JSON.stringify(PRICES));
+  const h = { Authorization: 'Bearer master-token-123' };
+  const csv = 'Artículo,Descripción,Precio venta\nTT0020210,TRAFO TOROID 20VA 230V/2X10V,12.37093203\nTT0099999,TRAFO TOROID 99VA 230V/2X99V,45.5\nQQ1,algo raro,3\n';
+  const dry = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv, dry_run: true }, headers: h }), env, {}, { ctx: TCTX })).json();
+  assert.deepEqual(dry.report.unknown, ['QQ1']); assert.deepEqual(dry.report.extras, ['TT0099999']);
+  assert.ok(dry.report.warnings.some((w) => w.code === 'referencias_nuevas'));
+  assert.equal(dry.report.columns.ref, 'Artículo'); assert.equal(dry.report.columns.price, 'Precio venta');
+  const done = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv }, headers: h }), env, {}, { ctx: TCTX })).json();
+  assert.equal(done.ok, true); assert.equal(done.meta.refs, 2);
+  const pub = await (await api.fetch(req('/api/prices'), env, {})).json();
+  assert.deepEqual(pub.prices.items.TT0099999, { p: 45.5, pid: 884, n: 'TRAFO TOROID 99VA 230V/2X99V' });
+  assert.equal(pub.prices.items.TT0020210.p, 12.3709);                    // 8 decimales → 4
+  const sent = []; const fetchImpl = async (u, o) => { sent.push(JSON.parse(o.body)); return new Response(JSON.stringify({ id: 'm' }), { status: 200 }); };
+  const body = goodOrder({ lines: [{ ref: 'TT0099999', qty: 3 }] });
+  const j = await (await handleOrder(req('/api/order', { method: 'POST' }), env, body, { fetchImpl, catalog: CATALOG })).json();
+  assert.equal(j.ok, true); assert.equal(j.total, 136.5);                  // 3 × 45,5
+  assert.match(sent[0].text, /TRAFO TOROID 99VA/);
+  const bad = await (await handleOrder(req('/api/order', { method: 'POST' }), env, goodOrder({ lines: [{ ref: 'QQ1', qty: 1 }] }), { fetchImpl, catalog: CATALOG })).json();
+  assert.equal(bad.ok, false); assert.match(bad.error, /Referencia desconocida/);
+});
+test('sincronización: un precio de relleno en casi todas las filas se rechaza salvo force', async () => {
+  const env = mkEnv({ PRICE_CSV_URL: 'https://sheet.test/x.csv' });
+  const rows = ['ref;price']; for (let i = 0; i < 12; i++) rows.push(`R${i};22000`);
+  const ok = async () => new Response(rows.join('\n'), { status: 200 });
+  await assert.rejects(() => syncPrices(env, { fetchImpl: ok }), /relleno/);
+  const m = await syncPrices(env, { fetchImpl: ok, force: true });
+  assert.equal(m.refs, 12); assert.ok(m.warnings.some((w) => /relleno/.test(w)));
 });

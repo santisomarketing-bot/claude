@@ -1,0 +1,29 @@
+{
+  "_doc": "Etiquetas de voltaje que salen de frases LITERALES de la propia ficha de la web original (campo corta/descripcion en español). enrich_catalog.py comprueba que cada «quote» aparece de verdad en el texto del producto; si no, falla. Lo que no está aquí ni en un PDF verificado no lleva etiqueta.",
+  "products": {
+    "16633": [{"tag": "out-0-230", "quote": "obtener cualquier valor de tensión entre 0 V y 230V"}],
+    "882":   [{"tag": "ctrl-0-10", "quote": "Señal de control 0-10VDC"}],
+    "304":   [{"tag": "ctrl-0-10", "quote": "consigna analógica de 0-10VDC"}],
+    "969":   [{"tag": "230v", "quote": "Entrada corriente alterna monofásica 230V 50Hz"}, {"tag": "dc-0-30", "quote": "Salida corriente continua 0 a 30V"}],
+    "970":   [{"tag": "230v", "quote": "Entrada corriente alterna monofásica 230V 50Hz"}],
+    "978":   [{"tag": "400v", "quote": "Alimentación a 3x400V sin neutro"}],
+    "977":   [{"tag": "dc-15-30", "quote": "Entrada corriente continua de 15V a 30V"}],
+    "968":   [{"tag": "out-0-240ac", "quote": "0-240VAC en monofásico"}, {"tag": "out-0-440ac", "quote": "0- 440VAC en trifásico"}],
+    "974":   [{"tag": "bat-24", "quote": "Tensiones nominales de baterías 24V y 48V"}, {"tag": "bat-48", "quote": "Tensiones nominales de baterías 24V y 48V"}, {"tag": "230v", "quote": "Tensión de salida 230V ±2%"}],
+    "976":   [{"tag": "in-15-80", "quote": "Tensión admisible en entrada: 15 a 80V"}, {"tag": "230v", "quote": "Tensión de red nominal 230V"}],
+    "973":   [{"tag": "230v", "quote": "Rango admitido de tensión de red : 230V"}],
+    "975":   [{"tag": "bat-12", "quote": "Tensiones nominales de baterías 12V, 24V y 48V"}, {"tag": "bat-24", "quote": "Tensiones nominales de baterías 12V, 24V y 48V"}, {"tag": "bat-48", "quote": "Tensiones nominales de baterías 12V, 24V y 48V"}],
+    "15355": [{"tag": "work-1000ac", "quote": "voltaje de trabajo de aproximadamente 1 000 v.a.c"}],
+    "890":   [{"tag": "line-100", "quote": "audio línea 100V"}],
+    "954":   [{"tag": "230v", "quote": "Intensidad máxima: 10A/230V"}],
+    "955":   [{"tag": "230v", "quote": "Intensidad máxima: 10A/230V"}],
+    "956":   [{"tag": "230v", "quote": "Intensidad máxima: 20A/230V"}],
+    "957":   [{"tag": "230v", "quote": "Intensidad máxima: 20A/230V"}]
+  },
+  "proposals": [
+    {"product_id": 16633, "title": "«Regulación de 0 a 4000V» en el resumen del variador portátil", "web_value": "Regulación de 0 a 4000V", "recommendation": "La descripción larga dice «tensión entre 0 V y 230V … potencia de hasta 4.000…». Lo más probable es que sean 4000 VA y no 4000 V: confirmar y corregir el resumen.", "severity": "media"},
+    {"product_id": 970, "title": "Salida «Tensión máxima de salida 4V» sin tipo de corriente", "web_value": "Tensión máxima de salida 4V", "recommendation": "La ficha no indica si es continua; no se publica etiqueta de salida hasta confirmarlo.", "severity": "baja"},
+    {"product_id": 977, "title": "SAI: la salida «estabilizada 12V ±1%» no dice si es continua", "web_value": "Salida estabilizada 12V ±1%", "recommendation": "Solo se etiqueta la entrada (15-30 V DC). Confirmar el tipo de salida para añadir la etiqueta.", "severity": "baja"},
+    {"product_id": 897, "title": "Los estabilizadores no indican su tensión nominal", "web_value": "sin tensión de red en el texto (solo «90 V/seg» de velocidad)", "recommendation": "Indicar la tensión nominal de entrada (monofásico/trifásico) para poder etiquetarlos y filtrarlos por voltaje.", "severity": "baja"}
+  ]
+}

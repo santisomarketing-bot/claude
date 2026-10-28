@@ -58,7 +58,7 @@ def lines_of_catalog():
         name = p["name"]["es"]
         vs = p.get("variants") or [{"ref": f"P{p['id']}", "specs": {}, "default": True}]
         for v in vs:
-            out.append({"ref": v["ref"], "pid": p["id"], "name": name + ("" if v.get("default") else f" · {v['ref']}"), "specs": v.get("specs") or {}, "custom": bool(re.search(r"medida|custom|especial", name, re.I)), "default": bool(v.get("default"))})
+            out.append({"ref": v["ref"], "pid": p["id"], "name": name + ("" if v.get("default") else f" · {(v.get('label') or {}).get('es') or v['ref']}"), "specs": v.get("specs") or {}, "custom": bool(re.search(r"medida|custom|especial", name, re.I)), "default": bool(v.get("default"))})
     return out
 
 

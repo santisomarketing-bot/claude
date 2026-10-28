@@ -1,0 +1,567 @@
+{
+ "families_es": 42,
+ "families_en": 42,
+ "pairs": [
+  {
+   "es": "Variador de tensión monofásico de regulación manual",
+   "en": "Single-Phase Variable Autotransformer (ManualControl)",
+   "page_es": 5,
+   "page_en": 5,
+   "overlap": 1.0,
+   "models_es": 19,
+   "models_en": 19,
+   "divergences": []
+  },
+  {
+   "es": "Variador de tensión monofásico de regulación motorizada",
+   "en": "Single-Phase Variable Autotransformer (Power-Assisted Control)",
+   "page_es": 5,
+   "page_en": 5,
+   "overlap": 1.0,
+   "models_es": 19,
+   "models_en": 19,
+   "divergences": []
+  },
+  {
+   "es": "Variador tensión doble regulación manual",
+   "en": "Double Variable Autotransformers (Manual Control)",
+   "page_es": 6,
+   "page_en": 6,
+   "overlap": 1.0,
+   "models_es": 20,
+   "models_en": 20,
+   "divergences": []
+  },
+  {
+   "es": "Variador tensión doble regulación motorizada",
+   "en": "Double Variable Autotransformer (Power-Assisted Control)",
+   "page_es": 7,
+   "page_en": 7,
+   "overlap": 1.0,
+   "models_es": 20,
+   "models_en": 20,
+   "divergences": []
+  },
+  {
+   "es": "Variador tensión trifásico regulación manual",
+   "en": "Three phase variable autotransformer (Manual Control)",
+   "page_es": 7,
+   "page_en": 7,
+   "overlap": 1.0,
+   "models_es": 12,
+   "models_en": 12,
+   "divergences": []
+  },
+  {
+   "es": "Variador tensión trifásico regulación manual",
+   "en": "Three phase variable autotransformer (Manual Control)",
+   "page_es": 8,
+   "page_en": 8,
+   "overlap": 1.0,
+   "models_es": 7,
+   "models_en": 7,
+   "divergences": []
+  },
+  {
+   "es": "Variador tensión trifásico regulación motorizada",
+   "en": "Three Phase Variable Autotransformer (Power-Assisted Control)",
+   "page_es": 8,
+   "page_en": 8,
+   "overlap": 1.0,
+   "models_es": 19,
+   "models_en": 19,
+   "divergences": []
+  },
+  {
+   "es": "Variador tensión en cura de aceite",
+   "en": "Installation in an oil bath",
+   "page_es": 10,
+   "page_en": 10,
+   "overlap": 1.0,
+   "models_es": 14,
+   "models_en": 14,
+   "divergences": []
+  },
+  {
+   "es": "Variador tensión sobremesa",
+   "en": "Single-phase Variable Autotransformer in Metallic Cabinet",
+   "page_es": 11,
+   "page_en": 11,
+   "overlap": 1.0,
+   "models_es": 12,
+   "models_en": 12,
+   "divergences": []
+  },
+  {
+   "es": "Variador tensión en caja industrial trifásico",
+   "en": "Three-phase Variable Autotransformer in Metallic Cabinet",
+   "page_es": 11,
+   "page_en": 11,
+   "overlap": 1.0,
+   "models_es": 19,
+   "models_en": 19,
+   "divergences": []
+  },
+  {
+   "es": "Transformadores toroidales – Estándar bajo demanda (Entrada 230V)",
+   "en": "Toroidal Transformers - Fields of application and production series (Standard by order, input 230V)",
+   "page_es": 17,
+   "page_en": 39,
+   "overlap": 1.0,
+   "models_es": 41,
+   "models_en": 41,
+   "divergences": []
+  },
+  {
+   "es": "Serie TT (Estándar, en stock)",
+   "en": "TT Series (Standard, in stock)",
+   "page_es": 18,
+   "page_en": 40,
+   "overlap": 1.0,
+   "models_es": 28,
+   "models_en": 28,
+   "divergences": []
+  },
+  {
+   "es": "Serie TE (Encapsulado en resina)",
+   "en": "TE Series (Resin packed)",
+   "page_es": 19,
+   "page_en": 41,
+   "overlap": 1.0,
+   "models_es": 18,
+   "models_en": 18,
+   "divergences": []
+  },
+  {
+   "es": "Serie TCI (encapsulado para C.I.)",
+   "en": "TCI Series (packed for P.C.)",
+   "page_es": 19,
+   "page_en": 41,
+   "overlap": 1.0,
+   "models_es": 6,
+   "models_en": 6,
+   "divergences": []
+  },
+  {
+   "es": "Choques toroidales de polvo de hierro",
+   "en": "Iron Powder Toroidal Buffers (dimensions)",
+   "page_es": 21,
+   "page_en": 32,
+   "overlap": 1.0,
+   "models_es": 11,
+   "models_en": 11,
+   "divergences": []
+  },
+  {
+   "es": "CHOQUES TOROIDALES",
+   "en": "Toroidal Buffers (intensity depending of type)",
+   "page_es": 22,
+   "page_en": 33,
+   "overlap": 1.0,
+   "models_es": 11,
+   "models_en": 11,
+   "divergences": []
+  },
+  {
+   "es": "NÚCLEOS TOROIDALES",
+   "en": "Toroidal Cores",
+   "page_es": 24,
+   "page_en": 35,
+   "overlap": 1.0,
+   "models_es": 56,
+   "models_en": 56,
+   "divergences": []
+  },
+  {
+   "es": "BOBINAS ENCAPSULADAS",
+   "en": "Packed Electric Coils",
+   "page_es": 26,
+   "page_en": 15,
+   "overlap": 1.0,
+   "models_es": 5,
+   "models_en": 5,
+   "divergences": []
+  },
+  {
+   "es": "ELECTROIMANES DE NUCLEO TOROIDAL",
+   "en": "Laminated Core Electromagnets",
+   "page_es": 27,
+   "page_en": 16,
+   "overlap": 1.0,
+   "models_es": 2,
+   "models_en": 2,
+   "divergences": []
+  },
+  {
+   "es": "Potenciómetro 3W (POTENCIÓMETROS BOBINADOS DE 3W Y 5W)",
+   "en": "3W Potentiometer (3 AND 5W WIRE WOUND POTENTIOMETERS)",
+   "page_es": 29,
+   "page_en": 18,
+   "overlap": 1.0,
+   "models_es": 1,
+   "models_en": 1,
+   "divergences": []
+  },
+  {
+   "es": "Potenciómetro doble (2 x 3 W)",
+   "en": "Twin Potentiometer",
+   "page_es": 29,
+   "page_en": 18,
+   "overlap": 1.0,
+   "models_es": 1,
+   "models_en": 1,
+   "divergences": []
+  },
+  {
+   "es": "Potenciómetro 5W",
+   "en": "5W Potentiometer",
+   "page_es": 30,
+   "page_en": 19,
+   "overlap": 1.0,
+   "models_es": 1,
+   "models_en": 1,
+   "divergences": []
+  },
+  {
+   "es": "Reóstatos cerámicos (Potenciometros)",
+   "en": "Ceramic Rheostats (Potentiometers)",
+   "page_es": 31,
+   "page_en": 20,
+   "overlap": 1.0,
+   "models_es": 9,
+   "models_en": 9,
+   "divergences": []
+  },
+  {
+   "es": "Reóstato tandem doble",
+   "en": "REOSTATO TANDEM DOBLE",
+   "page_es": 32,
+   "page_en": 21,
+   "overlap": 1.0,
+   "models_es": 3,
+   "models_en": 3,
+   "divergences": []
+  },
+  {
+   "es": "Reóstato tandem triple",
+   "en": "REOSTATO TANDEM TRIPLE",
+   "page_es": 33,
+   "page_en": 22,
+   "overlap": 1.0,
+   "models_es": 3,
+   "models_en": 3,
+   "divergences": []
+  },
+  {
+   "es": "Botones de mando - Serie BO (brillante)",
+   "en": "BO Series",
+   "page_es": 35,
+   "page_en": 24,
+   "overlap": 1.0,
+   "models_es": 5,
+   "models_en": 5,
+   "divergences": []
+  },
+  {
+   "es": "Botones de mando - Serie BO con Línea",
+   "en": "BO Series Lined",
+   "page_es": 35,
+   "page_en": 24,
+   "overlap": 1.0,
+   "models_es": 5,
+   "models_en": 5,
+   "divergences": []
+  },
+  {
+   "es": "Botones de mando - Tapas",
+   "en": "Caps",
+   "page_es": 35,
+   "page_en": 24,
+   "overlap": 1.0,
+   "models_es": 4,
+   "models_en": 4,
+   "divergences": []
+  },
+  {
+   "es": "Botones de mando - Aros con Flecha",
+   "en": "Ring With Pointers",
+   "page_es": 35,
+   "page_en": 24,
+   "overlap": 1.0,
+   "models_es": 5,
+   "models_en": 5,
+   "divergences": []
+  },
+  {
+   "es": "Botones de mando - Cubretuercas",
+   "en": "Nut Covers",
+   "page_es": 35,
+   "page_en": 24,
+   "overlap": 1.0,
+   "models_es": 2,
+   "models_en": 2,
+   "divergences": []
+  },
+  {
+   "es": "BOTONES DE MANDO – Discos con Flecha",
+   "en": "Dials With Pointer",
+   "page_es": 36,
+   "page_en": 25,
+   "overlap": 1.0,
+   "models_es": 4,
+   "models_en": 4,
+   "divergences": []
+  },
+  {
+   "es": "BOTONES DE MANDO – Discos Graduados",
+   "en": "Graded Dials (MOD. TYPE table)",
+   "page_es": 36,
+   "page_en": 25,
+   "overlap": 1.0,
+   "models_es": 4,
+   "models_en": 4,
+   "divergences": []
+  },
+  {
+   "es": "BOTONES DE MANDO – Startors",
+   "en": "Startors",
+   "page_es": 36,
+   "page_en": 25,
+   "overlap": 1.0,
+   "models_es": 3,
+   "models_en": 3,
+   "divergences": []
+  },
+  {
+   "es": "BOTONES DE MANDO – Serie BM (mate)",
+   "en": "BM Series",
+   "page_es": 36,
+   "page_en": 25,
+   "overlap": 1.0,
+   "models_es": 2,
+   "models_en": 2,
+   "divergences": []
+  },
+  {
+   "es": "BOTONES DE MANDO – Tapas para Botón BM (mate)",
+   "en": "Matt Caps for BM Series",
+   "page_es": 36,
+   "page_en": 25,
+   "overlap": 1.0,
+   "models_es": 2,
+   "models_en": 2,
+   "divergences": []
+  },
+  {
+   "es": "BOTONES DE MANDO – Botón Baquelita \"DF\"",
+   "en": "\"DF\" Knob Series",
+   "page_es": 37,
+   "page_en": 26,
+   "overlap": 1.0,
+   "models_es": 3,
+   "models_en": 3,
+   "divergences": []
+  },
+  {
+   "es": "BOTONES DE MANDO – Carátulas Graduadas",
+   "en": "Graded Dials (CA code table)",
+   "page_es": 37,
+   "page_en": 26,
+   "overlap": 1.0,
+   "models_es": 13,
+   "models_en": 13,
+   "divergences": []
+  },
+  {
+   "es": "SOPORTES METÁLICOS PARA LED – de 3mm",
+   "en": "Metal Brackets for 3mm. LED",
+   "page_es": 38,
+   "page_en": 27,
+   "overlap": 1.0,
+   "models_es": 2,
+   "models_en": 2,
+   "divergences": [
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 3mm, dibujo 1 (arriba)",
+     "page": 38,
+     "column": "Cota vertical total (dibujo)",
+     "es": "13",
+     "en": "2"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 3mm, dibujo 1 (arriba)",
+     "page": 38,
+     "column": "ROSCA (dibujo)",
+     "es": "6/0,75",
+     "en": "13"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 3mm, dibujo 1 (arriba)",
+     "page": 38,
+     "column": "Cota vertical superior (dibujo)",
+     "es": "2",
+     "en": "6/0,75"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 3mm, dibujo 2 (abajo)",
+     "page": 38,
+     "column": "Cota vertical total (dibujo)",
+     "es": "15",
+     "en": "3"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 3mm, dibujo 2 (abajo)",
+     "page": 38,
+     "column": "ROSCA (dibujo)",
+     "es": "6/0,75",
+     "en": "15"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 3mm, dibujo 2 (abajo)",
+     "page": 38,
+     "column": "Cota vertical superior (dibujo)",
+     "es": "3",
+     "en": "6/0,75"
+    }
+   ],
+   "resolved": {
+    "correct": "es",
+    "why": "Imagen del folio 37 (Soportes-Metalicos.pdf): Ø7, cota superior 2, total 13, rosca 6/0,75. La extracción EN tenía las columnas desplazadas.",
+    "checked_on": "2026-10-28"
+   }
+  },
+  {
+   "es": "SOPORTES METÁLICOS PARA LED – de 5mm",
+   "en": "Metal Brackets for 5mm. LED",
+   "page_es": 38,
+   "page_en": 27,
+   "overlap": 1.0,
+   "models_es": 2,
+   "models_en": 2,
+   "divergences": [
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 5mm, dibujo 1 (arriba)",
+     "page": 38,
+     "column": "Cota vertical total (dibujo)",
+     "es": "15",
+     "en": "3"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 5mm, dibujo 1 (arriba)",
+     "page": 38,
+     "column": "ROSCA (dibujo)",
+     "es": "8/0,75",
+     "en": "15"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 5mm, dibujo 1 (arriba)",
+     "page": 38,
+     "column": "Cota vertical superior (dibujo)",
+     "es": "3",
+     "en": "8/0,75"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 5mm, dibujo 2 (abajo)",
+     "page": 38,
+     "column": "Cota vertical total (dibujo)",
+     "es": "16.5",
+     "en": "3"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 5mm, dibujo 2 (abajo)",
+     "page": 38,
+     "column": "ROSCA (dibujo)",
+     "es": "8/0,75",
+     "en": "16.5"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 5mm, dibujo 2 (abajo)",
+     "page": 38,
+     "column": "Cota vertical superior (dibujo)",
+     "es": "3",
+     "en": "8/0,75"
+    }
+   ],
+   "resolved": {
+    "correct": "es",
+    "why": "Imagen del folio 37: Ø10 / Ø9,5, cota superior 3, total 15 / 16,5, rosca 8/0,75. La extracción EN tenía las columnas desplazadas.",
+    "checked_on": "2026-10-28"
+   }
+  },
+  {
+   "es": "SOPORTES METÁLICOS PARA LED – de 8mm",
+   "en": "Metal Brackets for 8mm. LED",
+   "page_es": 39,
+   "page_en": 28,
+   "overlap": 1.0,
+   "models_es": 2,
+   "models_en": 2,
+   "divergences": [
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 8mm, dibujo 1 (arriba)",
+     "page": 39,
+     "column": "Cota vertical total (dibujo)",
+     "es": "17",
+     "en": "2,5"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 8mm, dibujo 1 (arriba)",
+     "page": 39,
+     "column": "ROSCA (dibujo)",
+     "es": "12/0,75",
+     "en": "17"
+    },
+    {
+     "kind": "cifra_distinta",
+     "ref": "sin referencia impresa – LED 8mm, dibujo 1 (arriba)",
+     "page": 39,
+     "column": "Cota vertical superior (dibujo)",
+     "es": "2,5",
+     "en": "12/0,75"
+    }
+   ],
+   "resolved": {
+    "correct": "es",
+    "why": "Misma estructura de dibujo que 3 y 5 mm (cota total > cota superior); la extracción EN repite el desplazamiento de columnas.",
+    "checked_on": "2026-10-28"
+   }
+  },
+  {
+   "es": "SOPORTES METÁLICOS PARA LED – de 10mm",
+   "en": "Metal Brackets for 10mm. LED",
+   "page_es": 39,
+   "page_en": 28,
+   "overlap": 1.0,
+   "models_es": 2,
+   "models_en": 2,
+   "divergences": []
+  },
+  {
+   "es": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+   "en": "Binding Post, Banana Sockets & Fuse Holders",
+   "page_es": 40,
+   "page_en": 29,
+   "overlap": 1.0,
+   "models_es": 6,
+   "models_en": 6,
+   "divergences": []
+  }
+ ],
+ "unpaired_es": [],
+ "unpaired_en": [],
+ "total_divergences": 15
+}

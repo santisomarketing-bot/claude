@@ -5,8 +5,8 @@
  * Secciones:  [STATE] estado persistente · [FORMAT] formato de importes · [PRICES] precios y tramos · [API] TorivacQuote · [REFRESH] actualización manual de precios
  *
  * Contrato de datos (lo genera site/build.mjs / scripts/build_prices.py):
- *   TV.items[ref]  = { pid, n:{es,en,fr,de}, v:"texto de especificaciones", d:true si es línea genérica, p:{lang:ruta}, img, th:clave de miniatura PDF }
- *   TV.prices      = { updated_at, source, currency, mode:"demo"|"live", items:{ ref:{ p:precioBase, t:[[cantMin,precio],…], note } } }
+ *   TV.items[ref]  = { pid, n:{es,en,fr,de}, v:"texto de especificaciones", d:true si es línea genérica, c:1 si la referencia es un código real de fabricante, p:{lang:ruta}, img, th:clave de miniatura PDF }
+ *   TV.prices      = { updated_at, source, currency, mode:"demo"|"live", items:{ ref:{ p:precioBase, t:[[cantMin,precio],…], note, n?, pid? } } }   (n/pid: referencia nueva que la hoja añade dentro de un producto)
  * Importes: el precio unitario conserva hasta 4 decimales (variaciones de céntimos); el importe de cada línea se redondea a 2.
  */
 (function () {
@@ -20,6 +20,17 @@
   //   En producción la hoja de Drive manda (Worker + cron 24 h); aquí `tv_prices_override` hace de "hoja viva" para poder probar el flujo Excel → web.
   function applyOverride() {
     try { var o = JSON.parse(localStorage.getItem('tv_prices_override') || 'null'); if (o && o.items) { TV._pricesBase = TV._pricesBase || TV.prices; TV.prices = o; } } catch (e) { /* sin override */ }
+    mergeSheetItems();
+  }
+  /** La hoja de precios puede traer referencias nuevas dentro de un producto (prices.items[ref] = {p, n, pid}): se suman a TV.items para poder presupuestarlas (x:1 = viene de la hoja). */
+  function mergeSheetItems() {
+    var P = TV.prices && TV.prices.items; if (!P || !TV.items) return;
+    var byPid = {}; Object.keys(TV.items).forEach(function (r) { var it = TV.items[r]; if (it.pid && !byPid[it.pid]) byPid[it.pid] = it; });
+    Object.keys(P).forEach(function (ref) {
+      var sh = P[ref]; if (!sh.pid || TV.items[ref] || !byPid[sh.pid]) return;
+      var b = byPid[sh.pid];
+      TV.items[ref] = { pid: sh.pid, n: b.n, v: sh.n || '', d: false, c: 1, x: 1, p: b.p, img: b.img, th: b.th };
+    });
   }
   applyOverride();
 
@@ -116,7 +127,7 @@
     /** nombre de línea listo para mostrar */
     label: function (d) { return d.name + (d.spec ? ' — ' + d.spec : ''); },
     /** referencia visible (las líneas genéricas P#### no se muestran como referencia) */
-    shownRef: function (ref) { return TV.items[ref] && TV.items[ref].d ? '—' : ref; },
+    shownRef: function (ref) { return TV.items[ref] && TV.items[ref].c ? ref : '—'; },
     /** importa filas {ref, qty}: devuelve {added, unknown[]} */
     importRows: function (rows) {
       var idx = {}; Object.keys(TV.items).forEach(function (k) { idx[String(k).toLowerCase().replace(/\s+/g, '')] = k; });
@@ -142,6 +153,18 @@
     }
   };
 
+  // ───────────────────────────────────────── [LIVE] precios vigentes del servidor (producción)
+  //   El snapshot de la compilación (assets/data/prices.js) es solo el respaldo: con TV.meta.api manda lo que devuelva GET /api/prices (hoja de Drive, cada 24 h o al pulsar «actualizar»).
+  TV.loadLivePrices = function () {
+    if (!TV.api.live()) return Promise.resolve(false);
+    return fetch(TV.api.base() + '/api/prices', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+      var p = j && j.prices; if (!p || !p.items || p.mode === 'none' || !Object.keys(p.items).length) return false;
+      TV._pricesSnapshot = TV._pricesSnapshot || TV.prices; TV.prices = p; mergeSheetItems(); buildFormats();
+      document.dispatchEvent(new CustomEvent('tv:prices')); emit({ type: 'prices' }); return true;
+    }).catch(function () { return false; });
+  };
+  if (TV.api.live()) TV.loadLivePrices();
+
   TV.csvParse = function (text) {
     text = String(text).replace(/^\ufeff/, '');
     var first = text.split('\n')[0], delim = (first.match(/;/g) || []).length >= (first.match(/,/g) || []).length ? ';' : ',';
@@ -160,6 +183,7 @@
 
   // ───────────────────────────────────────── [REFRESH] recarga manual de precios (el cron de 24 h lo hace el servidor; ver Sesión 6)
   TV.refreshPrices = function () {
+    if (TV.api.live()) return TV.loadLivePrices();
     return new Promise(function (resolve) {
       var s = document.querySelector('script[src*="assets/data/prices.js"]'); if (!s) return resolve(false);
       var url = s.getAttribute('src').split('?')[0] + '?t=' + Date.now();

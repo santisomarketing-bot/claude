@@ -1,0 +1,25 @@
+{
+ "_doc": "Códigos que una tarifa puede añadir sin que la web los tenga: si la referencia encaja con el patrón, se publica dentro del producto indicado (nombre = descripción de la hoja). Un patrón por familia con códigos de fabricante (verificados en los PDF). Lo que no encaje se avisa y no se publica.",
+ "rules": [
+  {
+   "pattern": "^TT\\d{7,8}[A-Z]{0,3}$",
+   "pid": 884,
+   "family": "Serie TT (transformadores toroidales estándar)"
+  },
+  {
+   "pattern": "^CA\\d{7}$",
+   "pid": 951,
+   "family": "Carátulas graduadas"
+  },
+  {
+   "pattern": "^BOS\\d{3}$",
+   "pid": 945,
+   "family": "Startors / Estators"
+  },
+  {
+   "pattern": "^PC\\d{2,4}$",
+   "pid": 910,
+   "family": "Reóstatos cerámicos serie PC"
+  }
+ ]
+}

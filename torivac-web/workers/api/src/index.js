@@ -9,7 +9,8 @@ import { checkLogin, createUser, listUsers, deleteUser } from './users.js';
 import { hit } from './ratelimit.js';
 import { parseContact } from './validate.js';
 import { handleOrder, handleContact } from './orders.js';
-import { loadPrices, KEY_META, rowsToPrices } from './prices.js';
+import { loadPrices, KEY_META, readPrices, diffPrices } from './prices.js';
+import { catalogCtx } from './catalog.js';
 import { syncPrices, parseCsv } from './sheets.js';
 import { suggestPriceChanges, applyPriceChanges } from './ai.js';
 
@@ -42,12 +43,16 @@ export default {
         return json({ ok: true, orders: out.sort((a, b) => b.at.localeCompare(a.at)) }, 200, cors);
       }
       if (!requireRole(who, 'manager')) return json({ ok: false, error: 'Solo para managers' }, 403, cors);
-      if (path === '/api/prices/refresh' && request.method === 'POST') return json({ ok: true, meta: await syncPrices(env, { fetchImpl: deps.fetchImpl || fetch, reason: `manual:${who.sub}`, force: false }) }, 200, cors);
+      if (path === '/api/prices/refresh' && request.method === 'POST') return json({ ok: true, meta: await syncPrices(env, { fetchImpl: deps.fetchImpl || fetch, reason: `manual:${who.sub}`, force: false, ctx: deps.ctx || catalogCtx(env) }) }, 200, cors);
       if (path === '/api/prices/upload' && request.method === 'POST') {
         const b = (await readJson(request, 3_000_000)) || {}; const rows = Array.isArray(b.rows) ? b.rows : typeof b.csv === 'string' ? parseCsv(b.csv) : null;
         if (!rows) return json({ ok: false, error: 'Envía rows[] o csv' }, 400, cors);
-        if (b.dry_run) { const next = rowsToPrices(rows, 'upload'); const cur = await loadPrices(env); const { diffPrices } = await import('./prices.js'); return json({ ok: true, dry_run: true, refs: Object.keys(next.items).length, diff: diffPrices(cur, next) }, 200, cors); }
-        return json({ ok: true, meta: await syncPrices(env, { rows, source: `upload:${who.sub}`, reason: `upload:${who.sub}`, force: b.force === true }) }, 200, cors);
+        const sheetCtx = deps.ctx || catalogCtx(env);
+        if (b.dry_run) {                                                              // vista previa: nada se guarda
+          const { prices: next, report } = readPrices(rows, 'upload', new Date(), sheetCtx); const cur = await loadPrices(env);
+          return json({ ok: true, dry_run: true, refs: Object.keys(next.items).length, diff: diffPrices(cur, next), report: { warnings: report.warnings, ignored: report.ignored.slice(0, 40), unknown: report.unknown.slice(0, 40), extras: report.extras.slice(0, 40), columns: report.columns, stats: report.stats } }, 200, cors);
+        }
+        return json({ ok: true, meta: await syncPrices(env, { rows, source: `upload:${who.sub}`, reason: `upload:${who.sub}`, force: b.force === true, ctx: sheetCtx }) }, 200, cors);
       }
       if (path === '/api/prices/ai' && request.method === 'POST') {                  // la IA PROPONE (no aplica); se limita porque cada llamada cuesta
         const rl = await hit(env, 'ai', who.sub, { max: 15 }); if (!rl.allowed) return json({ ok: false, error: 'Demasiadas consultas a la IA seguidas. Espera unos minutos.' }, 429, cors);
@@ -71,8 +76,8 @@ export default {
       return json({ ok: false, error: 'No encontrado' }, 404, cors);
     } catch (e) { console.error(e); return json({ ok: false, error: e.message || 'Error interno' }, 500, cors); }
   },
-  async scheduled(event, env, ctx) {
-    try { const meta = await syncPrices(env, { reason: 'cron' }); console.log('precios sincronizados', JSON.stringify(meta)); }
+  async scheduled(event, env, cfCtx, deps = {}) {
+    try { const meta = await syncPrices(env, { reason: 'cron', ctx: deps.ctx || catalogCtx(env) }); console.log('precios sincronizados', JSON.stringify(meta)); }
     catch (e) { console.error('Sincronización de precios fallida:', e.message); }
   },
 };

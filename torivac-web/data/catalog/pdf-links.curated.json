@@ -1,0 +1,28 @@
+{
+  "_doc": "Decisiones humanas sobre el enlace producto ↔ familia de PDF. Mandan sobre el algoritmo de scripts/link_pdfs.py. Cada entrada lleva su porqué. Se revisan en el panel (Propuestas) si algo cambia en la web original.",
+  "links": [
+    {"product_id": 306, "pdf": "Variador-tension-en-cura-de-aceite.pdf", "job": "p20-fichas-variadores", "family": "Variador tensión en cura de aceite - Monofásico (Monofasico / Single phase 230V/250V)", "doc_type": "ficha_tecnica", "preferred": true,
+     "why": "La ficha de «Cuba de aceite» enlaza este PDF y el PDF solo tiene dos familias (monofásico y trifásico) de ese producto. «cura» en el nombre del PDF es errata de «cuba»."},
+    {"product_id": 306, "pdf": "Variador-tension-en-cura-de-aceite.pdf", "job": "p20-fichas-variadores", "family": "Variador tensión en cura de aceite - Trifásico (Trifasico / Triple phase 230V/250V)", "doc_type": "ficha_tecnica", "preferred": true,
+     "why": "Ídem: segunda familia del mismo PDF."},
+    {"product_id": 886, "pdf": "Serie-TE-Serie-TCI.pdf", "job": "p17-fichas-transformadores", "family": "Serie TE (Encapsulado en resina)", "doc_type": "catalogo", "preferred": true,
+     "why": "El producto «Transformador serie encapsulada» (categoría Serie TE) enlaza este PDF; su texto dice «encapsulado con resina de epoxi», igual que la familia TE."},
+    {"product_id": 888, "pdf": "Serie-TE-Serie-TCI.pdf", "job": "p17-fichas-transformadores", "family": "Serie TCI (encapsulado para C.I.)", "doc_type": "catalogo", "preferred": true,
+     "why": "El producto «Transformadores en serie circuito impreso» (categoría Serie TCI) enlaza este PDF; C.I. = circuito impreso, y el texto coincide con la descripción de la familia."},
+    {"product_id": 910, "pdf": "REOSTATOS-CERAMICOS.pdf", "job": "p11-fichas-bobinas-potenciometros-reostatos", "family": "REOSTATOS CERÁMICOS (Potenciometros)", "doc_type": "hoja_seleccion", "preferred": true,
+     "why": "La hoja tiene tres familias (cerámicos simples, tándem doble, tándem triple) y los productos «simple», «doble» y «tripes» enlazan esa hoja: por eliminación «simple» es la serie PC."},
+    {"product_id": 919, "pdf": "CHOQUES-TOROIDALES.pdf", "job": "p15-fichas-nucleos-choques", "family": "Choques toroidales de polvo de hierro", "doc_type": "catalogo", "preferred": true, "variants": false,
+     "why": "Único producto y única familia del PDF. No se crean variantes: el PDF da 11 códigos de núcleo y 27 valores de L (297 combinaciones) y no explica cómo se forma la referencia."}
+  ],
+  "reject": [
+    {"product_id": 913, "pdf": "REOSTATOS-CERAMICOS.pdf", "family": "REOSTATOS CERÁMICOS (Potenciometros)", "why": "«en caja» es una instalación del reóstato, no la serie PC."},
+    {"product_id": 1042, "pdf": "REOSTATOS-CERAMICOS.pdf", "family": "REOSTATOS CERÁMICOS (Potenciometros)", "why": "«fabricaciones especiales» es a medida: no tiene tabla de modelos."},
+    {"product_id": 918, "pdf": "4.-Bobinas-encapsuladas.pdf", "family": "ELECTROIMANES DE NUCLEO TOROIDAL (Bobinas encapsuladas)", "why": "El PDF habla de electroimanes de núcleo toroidal («encapsulado parcial/completo»), no de bobinas cuadradas: no se enlaza hasta confirmarlo."},
+    {"product_id": 876, "pdf": "Variador-tension-en-caja-industrial-trifasico.pdf", "family": "Variador tensión sobremesa (1500 VA – 11000 VA)", "why": "El texto de la ficha habla de monofásicos 1500-5000 VA y trifásicos 440-15000 VA; la familia del PDF es 1500-11000 VA. Pendiente de confirmar."}
+  ],
+  "no_variants": [
+    {"product_id": 876, "why": "El PDF enlazado mezcla dos familias (sobremesa 1500-11000 VA y caja industrial trifásico 480-33000 VA) y no coincide con el rango del texto de la web. Se deja la línea genérica y se propone revisarlo."},
+    {"product_id": 874, "why": "El PDF «Variador-tension-sobremesa.pdf» solo tiene una fila de lectura dudosa (1 modelo, confianza media)."},
+    {"product_id": 916, "why": "La tabla repite «200 VA» en dos filas (cotas C y D-G): no se publican variantes hasta confirmar si son dos versiones o una fila partida."}
+  ]
+}

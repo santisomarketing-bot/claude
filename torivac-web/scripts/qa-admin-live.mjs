@@ -25,10 +25,14 @@ const DIST = fs.mkdtempSync(path.join(os.tmpdir(), 'tv-live-'));
 execFileSync('node', [path.join(ROOT, 'site/build.mjs'), `--out=${DIST}`], { env: { ...process.env, TORIVAC_API: 'http://api.invalid' }, stdio: 'pipe' });
 const sb = { window: {} }; sb.window = sb; vm.createContext(sb);
 for (const f of ['catalog.js', 'prices.js']) vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data', f), 'utf8'), sb);
-const { items, prices } = sb.TV;
+const { items } = sb.TV;
+const prices = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/catalog/prices.json'), 'utf8'));      // hoja de DEMO del catálogo (el sitio con API no la lleva)
+// 1.ª línea pedible de un producto: su código real si el PDF lo da (TT…), o la línea genérica P<id>
+const pick = (pid) => Object.keys(items).find((r) => items[r].pid === pid);
+const R_TT = pick(884), R_RES = pick(8339), R_RES2 = pick(8340), R_BO = pick(932);
 
 const { server: site, base: SITE } = await serve(DIST);
-const SHEET_CSV = 'ref;price;qty2;price2\nP884;88,5;10;85\nP8339;15,82;;\nP8340;62,93;;\nP932;49,128;;\n';
+const SHEET_CSV = `ref;price;qty2;price2\n${R_TT};88,5;10;85\n${R_RES};15,82;;\n${R_RES2};62,93;;\n${R_BO};49,128;;\n`;
 const env = { KV: new FakeKV(), PRICE_CSV_URL: 'https://sheet.test/precios.csv', ORDER_TO: 'info@grupotorivac.com,mzamora@torivac.com', RESEND_API_KEY: 're_test', ANTHROPIC_API_KEY: 'sk-test', SESSION_SECRET: 'x'.repeat(40), ADMIN_API_TOKEN: 'master-test', ALLOWED_ORIGINS: SITE };
 await env.KV.put(KEY_CURRENT, JSON.stringify({ ...prices, mode: 'live', updated_at: '2026-10-28T08:00:00.000Z' }));
 await createUser(env, { email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manager', password: 'Manager-Clave-2026' });
@@ -66,7 +70,7 @@ const navs = (page) => page.$$eval('.side nav a', (a) => a.map((x) => x.textCont
 const toastText = async (page) => { await page.waitForTimeout(250); return page.locator('#toast').innerText(); };
 
 // ───────────────────────────────────── pedido de prueba hecho desde la web (público) por Marta
-const order = await fetch(API + '/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: SITE }, body: JSON.stringify({ customer: { name: 'Marta Taller', company: 'Taller S.L.', email: 'marta@taller.es', privacy: true }, lines: [{ ref: 'P884', qty: 12 }, { ref: 'P932', qty: 200 }], lang: 'es' }) }).then((r) => r.json());
+const order = await fetch(API + '/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: SITE }, body: JSON.stringify({ customer: { name: 'Marta Taller', company: 'Taller S.L.', email: 'marta@taller.es', privacy: true }, lines: [{ ref: R_TT, qty: 12 }, { ref: R_BO, qty: 200 }], lang: 'es' }) }).then((r) => r.json());
 
 console.log('\n1) acceso');
 { const { ctx, page, errs } = await newPage();
@@ -102,32 +106,32 @@ console.log('\n2) pedidos: el manager ve todos, cada cliente solo los suyos');
 console.log('\n3) precios: subir hoja con vista previa y aplicar');
 { const { ctx, page } = await newPage(); await login(page, 'jefa@torivac.com', 'Manager-Clave-2026'); await page.click('.side nav a[href="#precios"]'); await page.waitForSelector('[data-drop]');
   ok(/referencias con precio/.test(await page.locator('main').innerText()), 'estado de la hoja');
-  const csv = path.join(DIST, 'hoja.csv'); fs.writeFileSync(csv, 'ref;price;qty2;price2\nP884;99,99;10;95\nP8339;15,82;;\nP932;49,128;;\n');
+  const csv = path.join(DIST, 'hoja.csv'); fs.writeFileSync(csv, `ref;price;qty2;price2\n${R_TT};99,99;10;95\n${R_RES};15,82;;\n${R_BO};49,128;;\n`);
   await page.setInputFiles('[data-file]', csv); await page.waitForSelector('[data-apply-upload]');
   const prev = await page.locator('[data-draft]').innerText();
   ok(/1\s*cambian/.test(prev.replace(/\n/g, ' ')) || /cambian/.test(prev), 'vista previa de diferencias');
   await page.click('[data-force]'); await page.click('[data-apply-upload]'); await page.waitForTimeout(600);
   const pub = await fetch(API + '/api/prices').then((r) => r.json());
-  ok(pub.prices.items.P884.p === 99.99 && JSON.stringify(pub.prices.items.P884.t) === '[[10,95]]', 'precio publicado en el servidor (99,99 con tramo 10 uds = 95)');
+  ok(pub.prices.items[R_TT].p === 99.99 && JSON.stringify(pub.prices.items[R_TT].t) === '[[10,95]]', 'precio publicado en el servidor (99,99 con tramo 10 uds = 95)');
   await page.click('[data-refresh]'); await page.waitForTimeout(700);
   const syn = (await fetch(API + '/api/prices').then((r) => r.json()));
-  ok(syn.prices.items.P884.p === 88.5 && syn.meta.reason.startsWith('manual:') && Object.keys(syn.prices.items).length === 4, 'botón «Actualizar ahora»: vuelve a leer la hoja de Drive (precio 88,5)');
+  ok(syn.prices.items[R_TT].p === 88.5 && syn.meta.reason.startsWith('manual:') && Object.keys(syn.prices.items).length === 4, 'botón «Actualizar ahora»: vuelve a leer la hoja de Drive (precio 88,5)');
   await ctx.close(); }
 
 console.log('\n4) instrucción en castellano con IA: propone → confirma → aplica');
 { const { ctx, page } = await newPage(); await login(page, 'jefa@torivac.com', 'Manager-Clave-2026'); await page.click('.side nav a[href="#precios"]'); await page.waitForSelector('[data-prompt]');
-  const before = (await fetch(API + '/api/prices').then((r) => r.json())).prices.items.P8339.p;
-  aiReply = { summary: 'Sube un 3 % las resistencias de frenado', changes: [{ ref: 'P8339', price: Math.round(before * 1.03 * 10000) / 10000 }, { ref: 'P884', price: 400 }], warnings: [] };
+  const before = (await fetch(API + '/api/prices').then((r) => r.json())).prices.items[R_RES].p;
+  aiReply = { summary: 'Sube un 3 % las resistencias de frenado', changes: [{ ref: R_RES, price: Math.round(before * 1.03 * 10000) / 10000 }, { ref: R_TT, price: 400 }], warnings: [] };
   await page.fill('[data-prompt]', 'sube un 3 % las resistencias'); await page.click('[data-run-prompt]');
   await page.waitForSelector('[data-apply-ai]');
   const txt = await page.locator('[data-draft]').innerText();
-  ok(/Sube un 3 % las resistencias/.test(txt) && /P8339/.test(txt) && /⚠/.test(txt), 'vista previa con los cambios y el aviso del cambio muy grande');
-  ok((await fetch(API + '/api/prices').then((r) => r.json())).prices.items.P8339.p === before, 'la propuesta todavía NO está aplicada');
+  ok(/Sube un 3 % las resistencias/.test(txt) && txt.includes(R_RES) && /⚠/.test(txt), 'vista previa con los cambios y el aviso del cambio muy grande');
+  ok((await fetch(API + '/api/prices').then((r) => r.json())).prices.items[R_RES].p === before, 'la propuesta todavía NO está aplicada');
   await page.click('[data-apply-ai]'); await page.waitForTimeout(400);
   ok(/muy grandes/i.test(await toastText(page)), 'sin confirmar el cambio grande, el servidor lo rechaza');
   await page.click('[data-confirm-large]'); await page.click('[data-apply-ai]'); await page.waitForTimeout(600);
   const after = (await fetch(API + '/api/prices').then((r) => r.json())).prices.items;
-  ok(after.P8339.p === Math.round(before * 1.03 * 10000) / 10000 && after.P884.p === 400, `aplicado tras confirmar (${before} → ${after.P8339.p})`);
+  ok(after[R_RES].p === Math.round(before * 1.03 * 10000) / 10000 && after[R_TT].p === 400, `aplicado tras confirmar (${before} → ${after[R_RES].p})`);
   ok((await env.KV.list({ prefix: 'prices:history:' })).keys.length >= 1, 'queda histórico para poder volver atrás');
   await ctx.close(); }
 

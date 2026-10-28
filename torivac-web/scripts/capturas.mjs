@@ -43,14 +43,15 @@ const settle = (page, ms = 500) => page.waitForLoadState('load').then(() => page
   await shot(page, 'categoria', { fullPage: false });
 
   // ficha del transformador toroidal serie TT, con cantidades
-  const ttPath = items.P884.p.es;
+  const byPid = (pid) => Object.keys(items).find((r) => items[r].pid === pid);
+  const ttPath = items[byPid(884)].p.es;
   await page.goto(base + ttPath); await settle(page);
   await page.locator('[data-qty]').first().fill('12');
   await page.locator('[data-qty]').first().dispatchEvent('input');
   await page.locator('.models').first().scrollIntoViewIfNeeded();
   await shot(page, 'ficha-transformador-TT');
   await page.locator('[data-add-selected]').click();
-  for (const [ref, q] of [['P8339', 2], ['P932', 200]]) await page.evaluate(([r, qq]) => TV.Quote.add(r, qq), [ref, q]);
+  for (const [ref, q] of [[byPid(8339), 2], [byPid(932), 200]]) await page.evaluate(([r, qq]) => TV.Quote.add(r, qq), [ref, q]);
   await page.waitForTimeout(300);
   await page.locator('[data-open-quote]').first().click(); await page.waitForTimeout(500);
   await shot(page, 'cajon-presupuesto');
@@ -82,7 +83,7 @@ const settle = (page, ms = 500) => page.waitForLoadState('load').then(() => page
 for (const lang of ['fr', 'de']) { const { ctx, page } = await mk(1440, 900, lang); await page.goto(base + `/${lang}/`); await settle(page); await shot(page, `inicio-${lang}`); await ctx.close(); }
 { const { ctx, page } = await mk(390, 844);
   await page.goto(base + '/'); await settle(page); await shot(page, 'movil-inicio');
-  await page.goto(base + items.P884.p.es); await settle(page); await page.locator('.models').first().scrollIntoViewIfNeeded(); await shot(page, 'movil-ficha');
+  await page.goto(base + items[byPid(884)].p.es); await settle(page); await page.locator('.models').first().scrollIntoViewIfNeeded(); await shot(page, 'movil-ficha');
   await ctx.close(); }
 
 await browser.close(); server.close();

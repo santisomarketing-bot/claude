@@ -1,8 +1,9 @@
 // [PRICES] Hoja de precios → objeto de precios, tramos por cantidad y valoración de pedidos (siempre en servidor: el cliente nunca fija precios).
 // Formato (idéntico al de scripts/build_prices.py y site/assets/js/quote.js):
-//   { updated_at, source, currency, mode:'demo'|'live', items:{ ref:{ p:precioBase, t:[[cantMin,precio],…], note } } }
+//   { updated_at, source, currency, mode:'demo'|'live', items:{ ref:{ p:precioBase, t:[[cantMin,precio],…], note, n?, pid? } } }   (n/pid: referencia que añade la hoja dentro de un producto)
 // Importes: el precio unitario conserva hasta 4 decimales (variaciones de céntimos); el importe de línea se redondea a 2.
 import { round2 } from './util.js';
+import { readSheet } from '../../../shared/price-sheet.mjs';
 export const KEY_CURRENT = 'prices:current', KEY_META = 'prices:meta';
 
 export async function loadPrices(env) { const raw = await env.KV.get(KEY_CURRENT); return raw ? JSON.parse(raw) : { updated_at: null, source: 'none', currency: 'EUR', mode: 'none', items: {} }; }
@@ -18,24 +19,20 @@ export function priceOrder(prices, lines) {
   return { lines: out, total: round2(total), unpriced };
 }
 
-const num = (x) => { if (x == null || x === '') return null; let s = String(x).replace(/[\s ]/g, ''); s = s.includes(',') && !s.includes('.') ? s.replace(',', '.') : s.replace(/,/g, ''); const n = parseFloat(s); return Number.isNaN(n) ? null : n; };
-
-/** filas (primera = cabecera, en minúsculas o no) → objeto de precios. Ignora filas sin ref/price o con active=0/no/false. */
-export function rowsToPrices(rows, source = 'sheet', now = new Date()) {
-  if (!rows || rows.length < 2) throw new Error('La hoja está vacía');
-  const head = rows[0].map((h) => String(h || '').trim().toLowerCase());
-  const ix = (n) => head.indexOf(n);
-  if (ix('ref') < 0 || ix('price') < 0) throw new Error('La hoja necesita las columnas «ref» y «price»');
-  const items = {};
-  for (const r of rows.slice(1)) {
-    const ref = String(r[ix('ref')] ?? '').trim(); if (!ref) continue;
-    if (ix('active') >= 0 && ['0', 'no', 'false', 'n'].includes(String(r[ix('active')]).trim().toLowerCase())) continue;
-    const p = num(r[ix('price')]); if (p == null || p < 0) continue;
-    const t = []; for (const k of [2, 3, 4]) { const q = num(r[ix(`qty${k}`)]), pp = num(r[ix(`price${k}`)]); if (q && pp != null && pp >= 0) t.push([Math.floor(q), pp]); }
-    t.sort((a, b) => a[0] - b[0]);
-    items[ref] = { p, ...(t.length ? { t } : {}), ...(ix('note') >= 0 && r[ix('note')] ? { note: String(r[ix('note')]) } : {}) };
-  }
-  return { updated_at: now.toISOString(), source, currency: 'EUR', mode: 'live', items };
+/** filas (con filas de título delante si las hay) → { prices, report } usando las reglas compartidas de shared/price-sheet.mjs.
+ *  ctx: { lines, skus, rules, decimals } (ver readSheet). report = { warnings, ignored, unknown, extras, columns, stats } */
+export function readPrices(rows, source = 'sheet', now = new Date(), ctx = {}) {
+  const r = readSheet(rows, ctx);
+  const { items, ...report } = r;
+  return { prices: { updated_at: now.toISOString(), source, currency: 'EUR', mode: 'live', items }, report };
+}
+/** igual que readPrices pero devuelve solo el objeto de precios (lo usan el cron y los tests) */
+export function rowsToPrices(rows, source = 'sheet', now = new Date(), ctx = {}) { return readPrices(rows, source, now, ctx).prices; }
+/** catálogo de referencias pedibles = las del sitio + las que la hoja de precios añadió dentro de un producto ({n, pid}) */
+export function withSheetItems(catalog, prices) {
+  const out = { ...catalog };
+  for (const [ref, v] of Object.entries((prices && prices.items) || {})) if (!out[ref] && v.pid) out[ref] = { n: v.n || ref, pid: v.pid };
+  return out;
 }
 export function diffPrices(a, b) {
   const d = { changed: [], added: [], removed: [], same: 0 };

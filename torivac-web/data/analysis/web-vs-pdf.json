@@ -1,0 +1,230 @@
+{
+ "tables": [
+  {
+   "product_id": 942,
+   "product": "Aros con flecha",
+   "field": "description",
+   "block_index": 3,
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "family": "Aros con Flecha",
+   "rows_web": 5,
+   "rows_pdf": 5,
+   "rows_equal": 5,
+   "rows_different": 0,
+   "only_web": [],
+   "only_pdf": [],
+   "diffs": [],
+   "agree_keys": [
+    "mod10",
+    "mod15",
+    "mod21",
+    "mod30",
+    "mod38"
+   ],
+   "severity": "ok"
+  },
+  {
+   "product_id": 936,
+   "product": "Botones de mando serie BM (Mate)",
+   "field": "description",
+   "block_index": 3,
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "family": "Serie BM (mate)",
+   "rows_web": 2,
+   "rows_pdf": 2,
+   "rows_equal": 2,
+   "rows_different": 0,
+   "only_web": [],
+   "only_pdf": [],
+   "diffs": [],
+   "agree_keys": [
+    "mod15",
+    "mod21"
+   ],
+   "severity": "ok"
+  },
+  {
+   "product_id": 934,
+   "product": "Botones de mando serie BO con linea",
+   "field": "description",
+   "block_index": 3,
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "family": "Serie BO con Línea",
+   "rows_web": 5,
+   "rows_pdf": 5,
+   "rows_equal": 4,
+   "rows_different": 1,
+   "only_web": [],
+   "only_pdf": [],
+   "diffs": [
+    {
+     "ref": "38",
+     "column": "e",
+     "web": "18,5",
+     "pdf": "4,6,8"
+    }
+   ],
+   "agree_keys": [
+    "mod10",
+    "mod15",
+    "mod21",
+    "mod30"
+   ],
+   "severity": "media"
+  },
+  {
+   "product_id": 884,
+   "product": "Transformador Serie TT",
+   "field": "description",
+   "block_index": 10,
+   "pdf": "Serie-TT.pdf",
+   "family": "Serie TT (Estándar, en stock)",
+   "rows_web": 25,
+   "rows_pdf": 28,
+   "rows_equal": 3,
+   "rows_different": 9,
+   "only_web": [
+    "TT1000210",
+    "TT1000212",
+    "TT1000215",
+    "TT1000222",
+    "TT1200210",
+    "TT1200212",
+    "TT1200215",
+    "TT1600210",
+    "TT1600212",
+    "TT1600215",
+    "TT2000210",
+    "TT2000212",
+    "TT2200222"
+   ],
+   "only_pdf": [
+    "TT0030218",
+    "TT0050218",
+    "TT0080218",
+    "TT0100212",
+    "TT0100215",
+    "TT0100222",
+    "TT0120212",
+    "TT0120215",
+    "TT0120222",
+    "TT0160212",
+    "TT0160215",
+    "TT0160222",
+    "TT0220215",
+    "TT0220222",
+    "TT0220230",
+    "TT0220235"
+   ],
+   "diffs": [
+    {
+     "ref": "TT0030210",
+     "column": "V",
+     "web": "2×12",
+     "pdf": "2x10"
+    },
+    {
+     "ref": "TT0030210",
+     "column": "A",
+     "web": "2×1.25",
+     "pdf": "2x1.5"
+    },
+    {
+     "ref": "TT0030212",
+     "column": "A",
+     "web": "2×1",
+     "pdf": "2x1.25"
+    },
+    {
+     "ref": "TT0030215",
+     "column": "A",
+     "web": "2×0.83",
+     "pdf": "2x1"
+    },
+    {
+     "ref": "TT0050210",
+     "column": "V",
+     "web": "2×12",
+     "pdf": "2x10"
+    },
+    {
+     "ref": "TT0050210",
+     "column": "A",
+     "web": "2×1.5",
+     "pdf": "2x2.5"
+    },
+    {
+     "ref": "TT0050212",
+     "column": "V",
+     "web": "2×15",
+     "pdf": "2x12"
+    },
+    {
+     "ref": "TT0050212",
+     "column": "A",
+     "web": "2×0.83",
+     "pdf": "2x2.08"
+    },
+    {
+     "ref": "TT0050215",
+     "column": "V",
+     "web": "2×18",
+     "pdf": "2x15"
+    },
+    {
+     "ref": "TT0050215",
+     "column": "A",
+     "web": "2×1.38",
+     "pdf": "2x1.66"
+    },
+    {
+     "ref": "TT0080210",
+     "column": "A",
+     "web": "2×1.5",
+     "pdf": "2x4"
+    },
+    {
+     "ref": "TT0080212",
+     "column": "A",
+     "web": "2×1.5",
+     "pdf": "2x3.33"
+    },
+    {
+     "ref": "TT0080215",
+     "column": "A",
+     "web": "2×0.83",
+     "pdf": "2x2.66"
+    }
+   ],
+   "agree_keys": [
+    "tt0020210",
+    "tt0020212",
+    "tt0020215"
+   ],
+   "severity": "alta"
+  },
+  {
+   "product_id": 919,
+   "product": "Choques | Inductancias | Reactancias toroidales",
+   "field": "description",
+   "block_index": 4,
+   "pdf": "CHOQUES-TOROIDALES.pdf",
+   "family": "Choques toroidales de polvo de hierro",
+   "rows_web": 11,
+   "rows_pdf": 11,
+   "rows_equal": 11,
+   "rows_different": 0,
+   "only_web": [],
+   "only_pdf": [],
+   "diffs": [],
+   "agree_keys": [],
+   "severity": "ok"
+  }
+ ],
+ "summary": {
+  "tables": 5,
+  "alta": 1,
+  "media": 1,
+  "ok": 3
+ }
+}

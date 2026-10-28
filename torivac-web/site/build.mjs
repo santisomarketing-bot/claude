@@ -25,7 +25,11 @@ const rawCats = jl('categories.json', []);
 const rawProducts = jl('products.json', []);
 const pages = jl('pages.json', {});
 const vtagList = jl('voltage-tags.json', []);
-const prices = jl('prices.json', { updated_at: null, source: 'none', currency: 'EUR', mode: 'demo', items: {} });
+// [LIVE] compilación con servidor (TORIVAC_API o meta.api_base): pedidos y precios reales. Los precios DE DEMOSTRACIÓN nunca viajan en una compilación así
+//   (si el servidor no responde, la web dice «Consultar»; jamás enseña un precio de demostración como si fuera real).
+const LIVE = !!(process.env.TORIVAC_API || jl('meta.json', {}).api_base);
+let prices = jl('prices.json', { updated_at: null, source: 'none', currency: 'EUR', mode: 'demo', items: {} });
+if (LIVE && prices.mode === 'demo') { prices = { updated_at: null, source: 'none', currency: prices.currency || 'EUR', mode: 'none', items: {} }; console.log('[LIVE] precios de demostración omitidos del paquete: los precios los da el servidor'); }
 const thumbs = jl('thumbs.json', {});
 const imageMap = jl('image-map.json', {});
 const proposals = jl('proposals.json', []);
@@ -55,6 +59,16 @@ for (const c of [...byId.values()].sort((a, b) => depthOf(a) - depthOf(b) || a.i
 const aliasPaths = [];            // [{from:{lang:path}, to:canonicalId}]
 for (const [id, to] of canonical) { const c = byId.get(id); aliasPaths.push({ from: c.path, to: canon(to), id }); }
 const products = rawProducts.map((p) => ({ ...p, category_ids: [...new Set(p.category_ids.map(canon))], voltage_tags: p.voltage_tags || [], variants: p.variants || [], pdfs: p.pdfs || [] }));
+// [OVERRIDES] decisiones documentadas que cambian lo que muestra la web respecto a la original (data/catalog/content-overrides.json): hide_table oculta, en todos los idiomas, la tabla cuya primera celda empieza por first_cell
+for (const o of jl('content-overrides.json', { overrides: [] }).overrides) {
+  const p = products.find((x) => x.id === o.product_id); if (!p || o.action !== 'hide_table') continue;
+  let hidden = 0;
+  for (const lang of LANGS) {
+    const bl = p[o.field]?.[lang]; if (!Array.isArray(bl)) continue;
+    p[o.field][lang] = bl.filter((b) => { const hit = b.t === 'table' && [].concat(o.first_cell).some((f) => (b.rows?.[0]?.[0]?.x || '').startsWith(f)); if (hit) hidden++; return !hit; });
+  }
+  console.log(`[OVERRIDE] ${p.name.es}: tabla oculta en ${hidden} idioma(s) · ${o.why.slice(0, 70)}…`);
+}
 const nodes = new Map();
 for (const c of byId.values()) {
   if (canonical.has(c.id)) continue;
@@ -98,7 +112,7 @@ const fundES = Object.keys(imageMap).find((k) => /MANUAL-FEDER/i.test(k));
 const fundOT = Object.keys(imageMap).find((k) => /Logotipos_FondosEuropeos/i.test(k));
 const logo = imageMap[logoKey]?.file || 'assets/img/logo.png';
 const NAVKEYS = ['home', 'company', 'products', 'projects', 'catalog', 'blog', 'contact'];
-const site = { registry: [], meta, demo: meta.price_mode === 'demo', absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
+const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
 const QSLUG = { es: '/presupuesto/', en: '/en/quote/', fr: '/fr/devis/', de: '/de/angebot/' };
 meta.catalogHref = {};
 for (const l of LANGS) {
@@ -265,9 +279,9 @@ const itemsJs = {};
 for (const p of products) {
   const vs = p.variants.length ? p.variants : [{ ref: 'P' + p.id, specs: {}, default: true }];
   for (const v of vs) {
-    const specLabel = Object.entries(v.specs || {}).slice(0, 4).map(([k, x]) => `${k} ${x.raw}`).join(' · ');
+    const specLabel = v.label?.es ? v.label.es : Object.entries(v.specs || {}).slice(0, 4).map(([k, x]) => `${k} ${x.raw}`).join(' · ');
     const im = (v.image || p.images[0]) || {};
-    itemsJs[v.ref] = { pid: p.id, n: Object.fromEntries(LANGS.map((l) => [l, p.name[l] || p.name.es])), v: specLabel, d: !!v.default, p: p.pathFor, img: im.thumb || im.file || null, th: im.file ? (thumbs[im.file] ? im.file : null) : null };
+    itemsJs[v.ref] = { pid: p.id, n: Object.fromEntries(LANGS.map((l) => [l, p.name[l] || p.name.es])), v: specLabel, d: !!v.default, ...(v.code ? { c: 1 } : {}), p: p.pathFor, img: im.thumb || im.file || null, th: im.file ? (thumbs[im.file] ? im.file : null) : null };
   }
 }
 // [WORKER] referencias pedibles para validar pedidos en el servidor (workers/api): { ref: { n: nombre ES, pid } }
@@ -275,11 +289,13 @@ for (const p of products) {
   const wk = path.join(ROOT, 'workers', 'api', 'src', 'generated');
   fs.mkdirSync(wk, { recursive: true });
   const slim = Object.fromEntries(Object.entries(itemsJs).map(([ref, i]) => [ref, { n: i.n.es, pid: i.pid }]));
-  fs.writeFileSync(path.join(wk, 'items.js'), `// GENERADO por site/build.mjs (no editar a mano). refs pedibles: { ref: { n: nombre ES, pid } }\nexport default ${JSON.stringify(slim)};\n`);
+  const skus = Object.fromEntries(products.filter((p) => p.sku).map((p) => [p.sku, p.id]));
+  const rules = jl('ref-rules.json', { rules: [] }).rules.map(({ pattern, pid }) => ({ pattern, pid }));
+  fs.writeFileSync(path.join(wk, 'items.js'), `// GENERADO por site/build.mjs (no editar a mano). refs pedibles: { ref: { n: nombre ES, pid } } · skus: SKU de WooCommerce → id de producto · rules: códigos nuevos de una tarifa que encajan en un producto\nexport default ${JSON.stringify(slim)};\nexport const skus = ${JSON.stringify(skus)};\nexport const rules = ${JSON.stringify(rules)};\n`);
 }
 const i18n = Object.fromEntries(LANGS.map((l) => [l, Object.fromEntries(Object.keys(T).map((k) => [k, T[k][l] ?? T[k].es]))]));
 const thumbsUsed = Object.fromEntries(Object.entries(thumbs).filter(([k]) => k !== '__logo' && Object.values(itemsJs).some((i) => i.th === k)));
-const catalogJs = `/* [DATA] generado por site/build.mjs — no editar */\nwindow.TV=window.TV||{};\nTV.meta=${JSON.stringify({ currency: meta.currency || 'EUR', demo: site.demo, recipients: meta.order_recipients?.to || [], api: process.env.TORIVAC_API || meta.api_base || '', contact: meta.contact })};\nTV.i18n=${JSON.stringify(i18n)};\nTV.items=${JSON.stringify(itemsJs)};\nTV.thumbs=${JSON.stringify(thumbsUsed)};\nTV.logo=${JSON.stringify(thumbs.__logo || null)};\n`;
+const catalogJs = `/* [DATA] generado por site/build.mjs — no editar */\nwindow.TV=window.TV||{};\nTV.meta=${JSON.stringify({ currency: meta.currency || 'EUR', demo: site.demo, recipients: meta.order_recipients?.to || [], api: process.env.TORIVAC_API || meta.api_base || '', contact: meta.contact })};\nTV.i18n=${JSON.stringify(i18n)};\nTV.items=${JSON.stringify(itemsJs)};\nTV.sheet=${JSON.stringify({ skus: Object.fromEntries(products.filter((p) => p.sku).map((p) => [p.sku, p.id])), rules: jl('ref-rules.json', { rules: [] }).rules.map(({ pattern, pid }) => ({ pattern, pid })) })};\nTV.thumbs=${JSON.stringify(thumbsUsed)};\nTV.logo=${JSON.stringify(thumbs.__logo || null)};\n`;
 writeFile(DIST, 'assets/data/catalog.js', catalogJs);
 writeFile(DIST, 'assets/data/prices.js', `/* [DATA] precios — se regenera con scripts/build_prices.py (Sesión 6) */\nwindow.TV=window.TV||{};\nTV.prices=${JSON.stringify(prices)};\n`);
 writeFile(DIST, 'assets/data/proposals.js', `window.TV=window.TV||{};TV.proposals=${JSON.stringify(proposals)};\n`);
@@ -292,8 +308,14 @@ for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (fs.existsSync(path.
 {
   const ctx = mkctx('es', '/admin/', 'admin');
   const a = (s) => ctx.asset(s);
-  writeFile(DIST, 'admin/index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel · Torivac${process.env.TORIVAC_API || meta.api_base ? '' : ' (demo)'}</title><link rel="icon" href="${a('assets/img/favicon.png')}">${['fonts', 'tokens', 'base', 'layout', 'components', 'admin'].map((c) => `<link rel="stylesheet" href="${a(`assets/css/${c}.css`)}">`).join('')}</head><body class="admin tv-admin" data-path="/admin/"><input type="hidden" id="logo-src" value="${a(site.logo)}"><div id="admin-root"></div><div class="toast" id="toast" role="status"></div><script>window.TV_LANG='es';</script><script src="${a('assets/data/catalog.js')}"></script><script src="${a('assets/data/prices.js')}"></script><script src="${a('assets/data/proposals.js')}"></script><script src="${a('assets/data/admin-data.js')}"></script><script src="${a('assets/js/quote.js')}"></script><script src="${a('assets/vendor/jspdf.umd.min.js')}"></script><script src="${a('assets/vendor/jspdf.plugin.autotable.min.js')}"></script><script src="${a('assets/vendor/xlsx.mini.min.js')}"></script><script src="${a('assets/js/pdf.js')}"></script><script src="${a(process.env.TORIVAC_API || meta.api_base ? 'assets/js/admin-live.js' : 'assets/js/admin.js')}"></script></body></html>`);
+  writeFile(DIST, 'admin/index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel · Torivac${process.env.TORIVAC_API || meta.api_base ? '' : ' (demo)'}</title><link rel="icon" href="${a('assets/img/favicon.png')}">${['fonts', 'tokens', 'base', 'layout', 'components', 'admin'].map((c) => `<link rel="stylesheet" href="${a(`assets/css/${c}.css`)}">`).join('')}</head><body class="admin tv-admin" data-path="/admin/"><input type="hidden" id="logo-src" value="${a(site.logo)}"><div id="admin-root"></div><div class="toast" id="toast" role="status"></div><script>window.TV_LANG='es';</script><script src="${a('assets/data/catalog.js')}"></script><script src="${a('assets/data/prices.js')}"></script><script src="${a('assets/data/proposals.js')}"></script><script src="${a('assets/data/admin-data.js')}"></script><script src="${a('assets/js/quote.js')}"></script><script src="${a('assets/vendor/jspdf.umd.min.js')}"></script><script src="${a('assets/vendor/jspdf.plugin.autotable.min.js')}"></script><script src="${a('assets/vendor/xlsx.mini.min.js')}"></script><script src="${a('assets/js/pdf.js')}"></script><script src="${a('assets/js/price-sheet.js')}"></script><script src="${a('assets/js/admin-report.js')}"></script><script src="${a(process.env.TORIVAC_API || meta.api_base ? 'assets/js/admin-live.js' : 'assets/js/admin.js')}"></script></body></html>`);
   count++;
+}
+
+// [PRICE-SHEET] la lectura de hojas de precios es la MISMA que usa el Worker (shared/price-sheet.mjs): se publica como script clásico (TV.PriceSheet) para el panel
+{
+  const src = fs.readFileSync(path.join(ROOT, 'shared', 'price-sheet.mjs'), 'utf8').replace(/^export (const|function) /gm, '$1 ');
+  writeFile(DIST, 'assets/js/price-sheet.js', `/* [PRICE-SHEET] GENERADO desde shared/price-sheet.mjs por site/build.mjs — no editar a mano */\n(function () {\n'use strict';\n${src}\nwindow.TV = window.TV || {}; TV.PriceSheet = { readSheet: readSheet, parseNumber: parseNumber, normHeader: normHeader, normRef: normRef, findHeader: findHeader, ALIASES: ALIASES, DEFAULT_DECIMALS: DEFAULT_DECIMALS };\n})();\n`);
 }
 
 // ───────────────────────────────────────────────────────────── [ASSETS] estáticos

@@ -2,7 +2,7 @@
 // Dos modos, en este orden:  1) cuenta de servicio (GOOGLE_SERVICE_ACCOUNT + PRICE_SHEET_ID) → Sheets API v4;  2) PRICE_CSV_URL (exportación CSV pública con enlace).
 // Seguridad: la sincronización se niega a publicar si la hoja nueva tiene < 50 % de las referencias que ya había (hoja vacía/rota) salvo force=true.
 import { toB64Url } from './util.js';
-import { KEY_CURRENT, KEY_META, loadPrices, rowsToPrices, diffPrices } from './prices.js';
+import { KEY_CURRENT, KEY_META, loadPrices, readPrices, diffPrices } from './prices.js';
 
 const te = new TextEncoder();
 export function parseCsv(text) {
@@ -56,11 +56,16 @@ export async function savePrices(env, next, prev, { now = new Date(), reason = '
   await env.KV.put(KEY_META, JSON.stringify(meta));
   return meta;
 }
-export async function syncPrices(env, { fetchImpl = fetch, now = new Date(), reason = 'manual', force = false, rows = null, source = null } = {}) {
+/** Lee la hoja (Drive, CSV o filas subidas), la valida con las reglas compartidas y la publica. ctx = contexto del catálogo (ver catalog.js); sin ctx se aceptan todas las referencias (pruebas).
+ *  Se rechaza: hoja con < 50 % de las referencias que había, o con «precio de relleno» (más del 60 % de filas con el mismo precio), salvo force=true. */
+export async function syncPrices(env, { fetchImpl = fetch, now = new Date(), reason = 'manual', force = false, rows = null, source = null, ctx = null } = {}) {
   const read = rows ? { rows, source: source || 'upload' } : await readSheetRows(env, fetchImpl);
-  const next = rowsToPrices(read.rows, read.source, now);
+  const { prices: next, report } = readPrices(read.rows, read.source, now, ctx || {});
   const prev = await loadPrices(env);
   const n = Object.keys(next.items).length, p = Object.keys(prev.items).length;
+  const filler = report.warnings.find((w) => w.code === 'precio_de_relleno');
+  if (!force && filler) throw new Error(`Sincronización rechazada: ${filler.message}. Usa force=true si es intencionado.`);
   if (!force && p > 0 && n < p * 0.5) throw new Error(`Sincronización rechazada: la hoja nueva tiene ${n} referencias y había ${p} (¿hoja vacía o rota?). Usa force=true si es intencionado.`);
-  return savePrices(env, next, prev, { now, reason, source: read.source });
+  const meta = await savePrices(env, next, prev, { now, reason, source: read.source });
+  return { ...meta, warnings: report.warnings.map((w) => w.message).slice(0, 10) };
 }

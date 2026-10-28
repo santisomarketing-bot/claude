@@ -32,20 +32,13 @@
   function stem(w) { return w.length > 4 ? w.replace(/(es|s)$/, '') : w; }
   function csvParse(text) { return TV.csvParse(text); }
   function pnum(x) { if (x == null || x === '') return null; var s = String(x).replace(/\s| /g, ''); s = (s.indexOf(',') >= 0 && s.indexOf('.') < 0) ? s.replace(',', '.') : s.replace(/,/g, ''); var n = parseFloat(s); return isNaN(n) ? null : n; }
+  var lastReport = null;
+  /** Hoja → precios con las MISMAS reglas que el servidor (TV.PriceSheet = shared/price-sheet.mjs): cabeceras tolerantes, SKU, referencias nuevas por regla, avisos. */
   function rowsToPrices(rows, source) {
-    var head = rows[0].map(function (h) { return String(h || '').trim().toLowerCase(); }); var ix = function (n) { return head.indexOf(n); };
-    if (ix('ref') < 0 || ix('price') < 0) throw new Error('La hoja necesita las columnas «ref» y «price»');
-    var items = {}, stamp = '';
-    rows.slice(1).forEach(function (r) {
-      var ref = String(r[ix('ref')] || '').trim(); if (!ref) return;
-      var act = ix('active') >= 0 ? String(r[ix('active')]).toLowerCase() : '1'; if (['0', 'no', 'false', 'n'].indexOf(act) >= 0) return;
-      var p = pnum(r[ix('price')]); if (p == null) return;
-      var t = []; [2, 3, 4].forEach(function (k) { var q = pnum(r[ix('qty' + k)]), pp = pnum(r[ix('price' + k)]); if (q && pp != null) t.push([Math.floor(q), pp]); });
-      t.sort(function (a, b) { return a[0] - b[0]; });
-      var it = { p: p }; if (t.length) it.t = t; if (ix('note') >= 0 && r[ix('note')]) it.note = String(r[ix('note')]); items[ref] = it;
-      if (ix('updated_at') >= 0 && String(r[ix('updated_at')]) > stamp) stamp = String(r[ix('updated_at')]);
-    });
-    return { updated_at: new Date().toISOString(), source: source, currency: 'EUR', mode: 'live', items: items };
+    var lines = {}; Object.keys(TV.items).forEach(function (r) { lines[r] = { n: TV.items[r].n.es, pid: TV.items[r].pid }; });
+    var rd = TV.PriceSheet.readSheet(rows, { lines: lines, skus: (TV.sheet || {}).skus, rules: (TV.sheet || {}).rules });
+    lastReport = rd;
+    return { updated_at: new Date().toISOString(), source: source, currency: 'EUR', mode: 'live', items: rd.items };
   }
   function diffPrices(a, b) {
     var out = { added: [], changed: [], removed: [], same: 0 };
@@ -90,7 +83,7 @@
     var P = TV.prices || {}, ov = !!ls.get('tv_prices_override', null), n = Object.keys(P.items || {}).length;
     return '<h1>Precios</h1><div class="cols"><section class="panel"><h2>Estado</h2><p>Origen: <strong>' + esc(P.source || '—') + '</strong> ' + (ov ? '<span class="tag">hoja cargada desde el panel</span>' : '<span class="tag dim">hoja original</span>') + '<br>Modo: <strong>' + esc(P.mode || '—') + '</strong> · ' + n + ' referencias con precio<br>Última actualización: ' + esc(P.updated_at ? new Date(P.updated_at).toLocaleString('es-ES') : '—') + '</p>' +
       '<p><button class="btn" data-refresh>Actualizar ahora (manual)</button> ' + (ov ? '<button class="btn ghost" data-restore>Volver a la hoja original</button>' : '') + '</p><p class="muted small">Producción: la hoja de Drive se sincroniza sola cada 24 h (cron) y este botón fuerza la sincronización al instante.</p></section>' +
-      '<section class="panel"><h2>Subir Excel / CSV</h2><div class="drop" data-drop tabindex="0" role="button"><strong>Arrastra la hoja aquí</strong><br><span class="muted small">.xlsx, .xls o .csv · columnas: ref, price, qty2/price2, qty3/price3, qty4/price4, note, active</span><input type="file" accept=".csv,.xlsx,.xls" hidden data-file></div><p class="small"><a href="../assets/data/prices.demo.xlsx" download>Descargar plantilla Excel (DEMO)</a> · <a href="../assets/data/prices.demo.csv" download>CSV</a></p></section></div>' +
+      '<section class="panel"><h2>Subir Excel / CSV</h2><div class="drop" data-drop tabindex="0" role="button"><strong>Arrastra la hoja aquí</strong><br><span class="muted small">.xlsx, .xls o .csv · acepta la plantilla (ref, price, qty2/price2…), una tarifa (Artículo · Descripción · Precio venta) o la exportación de WooCommerce (SKU · Producto · Precio)</span><input type="file" accept=".csv,.xlsx,.xls" hidden data-file></div><p class="small"><a href="../assets/data/prices.demo.xlsx" download>Descargar plantilla Excel (DEMO)</a> · <a href="../assets/data/prices.demo.csv" download>CSV</a></p></section></div>' +
       '<section class="panel"><h2>Actualizar con una instrucción</h2><p class="muted small">Escribe qué cambiar, en castellano. Se muestra una vista previa y solo se aplica si confirmas. Ej.: <em>sube un 3% las resistencias; baja 0,05 € los núcleos; redondea a 2 decimales</em></p><textarea data-prompt rows="3" placeholder="sube un 3% las resistencias"></textarea><p><button class="btn" data-run-prompt>Previsualizar</button></p><p class="muted small">Demo: reglas locales (sube/baja X% o X €, redondea, por producto o categoría). En producción las interpreta la IA y quedan como propuesta para aprobar.</p></section><div data-draft></div>';
   };
 
@@ -133,10 +126,10 @@
 
   // ───────────────────────────────────────── [PRICES] lógica de la vista Precios
   var draft = null;
-  function showDraft(next, label) {
+  function showDraft(next, label, report) {
     draft = next; var d = diffPrices(TV.prices, next); var box = root.querySelector('[data-draft]');
     var rowsOf = function (arr, kind) { return arr.slice(0, 60).map(function (x) { return '<tr><td class="mono">' + esc(x[0]) + '</td><td>' + esc(itemName(x[0])) + '</td><td class="num">' + (x[1] == null ? '—' : esc(Q.unitMoney(x[1]))) + '</td><td class="num"><strong>' + (x[2] == null ? '—' : esc(Q.unitMoney(x[2]))) + '</strong></td><td><span class="tag ' + (kind === 'removed' ? 'dim' : '') + '">' + kind + '</span></td></tr>'; }).join(''); };
-    box.innerHTML = '<section class="panel"><h2>Vista previa · ' + esc(label) + '</h2><p><strong>' + d.changed.length + '</strong> cambian · <strong>' + d.added.length + '</strong> nuevas · <strong>' + d.removed.length + '</strong> sin precio · ' + d.same + ' iguales</p>' +
+    box.innerHTML = '<section class="panel"><h2>Vista previa · ' + esc(label) + '</h2><p><strong>' + d.changed.length + '</strong> cambian · <strong>' + d.added.length + '</strong> nuevas · <strong>' + d.removed.length + '</strong> sin precio · ' + d.same + ' iguales</p>' + TV.priceReportHtml(report, esc) +
       ((d.changed.length + d.added.length + d.removed.length) ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Ref.</th><th>Producto</th><th>Antes</th><th>Después</th><th></th></tr></thead><tbody>' + rowsOf(d.changed, 'cambia') + rowsOf(d.added, 'nueva') + rowsOf(d.removed, 'removed') + '</tbody></table></div>' : '<p class="notice">No hay diferencias.</p>') +
       '<p><button class="btn" data-apply>Aplicar a la web</button> <button class="btn ghost" data-discard>Descartar</button></p></section>';
     box.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -144,7 +137,7 @@
   function applyDraft() { if (!draft) return; ls.set('tv_prices_override', draft); Q.applyOverride(); draft = null; toast('Precios aplicados a la web (este navegador)'); render(); }
   function readUpload(f) {
     var r = new FileReader(), name = f.name;
-    var go = function (rows) { try { showDraft(rowsToPrices(rows, name), name); } catch (e) { toast('⚠ ' + e.message); } };
+    var go = function (rows) { try { var next = rowsToPrices(rows, name); showDraft(next, name, lastReport); } catch (e) { toast('⚠ ' + e.message); } };
     if (/\.xlsx?$/i.test(name) && window.XLSX) { r.onload = function () { var wb = XLSX.read(r.result, { type: 'array' }); go(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, blankrows: false, raw: true })); }; r.readAsArrayBuffer(f); }
     else { r.onload = function () { go(csvParse(String(r.result))); }; r.readAsText(f); }
   }

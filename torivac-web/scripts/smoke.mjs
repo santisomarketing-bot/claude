@@ -32,7 +32,7 @@ async function visit(name, p, fn) {
   await page.waitForTimeout(300);
   if (fn) await fn();
   // desbordes horizontales
-  const over = await page.evaluate(() => { const w = document.documentElement.clientWidth; return [...document.querySelectorAll('body *')].filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.right > w + 2 && getComputedStyle(e).position !== 'fixed' && !e.closest('.tbl-wrap,.carousel,.quote-drawer,.sidebar,.wave,.hero'); }).slice(0, 4).map((e) => e.tagName + '.' + String(e.className).slice(0, 40)); });
+  const over = await page.evaluate(() => { const w = document.documentElement.clientWidth; const clipped = (e) => { for (let p = e.parentElement; p && p !== document.body; p = p.parentElement) if (/hidden|clip|auto|scroll/.test(getComputedStyle(p).overflowX)) return true; return false; }; return [...document.querySelectorAll('body *')].filter((e) => { const r = e.getBoundingClientRect(); return r.width > 0 && r.right > w + 2 && getComputedStyle(e).position !== 'fixed' && !e.closest('.tbl-wrap,.carousel,.quote-drawer,.sidebar,.wave,.hero') && !clipped(e); }).slice(0, 4).map((e) => e.tagName + '.' + String(e.className.baseVal ?? e.className).slice(0, 40)); });
   if (over.length) problems.push(`desborde horizontal en ${name}: ${over.join(', ')}`);
   if (shots) { await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 90)); } window.scrollTo(0, 0); }); await page.waitForTimeout(250); await page.screenshot({ path: path.join(SHOTS, `${lang}-${name}.png`), fullPage: true }); }
   results.push({ name, path: p, newProblems: problems.length - before });

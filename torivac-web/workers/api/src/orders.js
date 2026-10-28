@@ -1,7 +1,7 @@
 // [ORDERS] POST /api/order → valida, valora en servidor con los precios VIGENTES, guarda y envía por email (equipo + copia al cliente, con el PDF).
 import { json, clientIp } from './util.js';
 import { parseOrder } from './validate.js';
-import { loadPrices, priceOrder } from './prices.js';
+import { loadPrices, priceOrder, withSheetItems } from './prices.js';
 import { verifyTurnstile } from './turnstile.js';
 import { hit } from './ratelimit.js';
 import { sendMail, orderMail } from './email.js';
@@ -14,17 +14,18 @@ export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = 
   const ip = clientIp(request);
   const rl = await hit(env, 'order', ip, { max: 8, now: now.getTime() });
   if (!rl.allowed) return json({ ok: false, error: 'Demasiados pedidos seguidos. Inténtalo en unos minutos.' }, 429, cors);
-  const parsed = parseOrder(raw, catalog);
+  const prices = await loadPrices(env);
+  const cat = withSheetItems(catalog, prices);                      // las referencias que la hoja añadió dentro de un producto también son pedibles
+  const parsed = parseOrder(raw, cat);
   if (parsed.error) return json({ ok: false, error: parsed.error }, 400, cors);
   const o = parsed.order;
   if (!(await verifyTurnstile(env, o.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida' }, 400, cors);
-  const prices = await loadPrices(env);
   const priced = priceOrder(prices, o.lines);                       // el cliente no puede fijar precios
   const number = await nextNumber(env, now);
   const demo = prices.mode !== 'live';
   const record = { number, at: now.toISOString(), customer: o.customer, lines: priced.lines, total: priced.total, unpriced: priced.unpriced, lang: o.lang, prices: { updated_at: prices.updated_at, mode: prices.mode }, ip };
   await env.KV.put(`order:${number}`, JSON.stringify(record), { expirationTtl: 60 * 60 * 24 * 400 });
-  const { html, text } = orderMail({ number, customer: o.customer, priced, lang: o.lang, demo }, catalog);
+  const { html, text } = orderMail({ number, customer: o.customer, priced, lang: o.lang, demo }, cat);
   const to = String(env.ORDER_TO || '').split(',').map((s) => s.trim()).filter(Boolean);
   const attachments = o.pdf ? [{ filename: `${number}.pdf`, content: o.pdf }] : undefined;
   const team = await sendMail(env, { to, subject: `[Web Torivac] Pedido ${number} · ${o.customer.name}`, html, text, replyTo: o.customer.email, attachments }, fetchImpl);

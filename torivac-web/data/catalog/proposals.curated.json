@@ -1,0 +1,25 @@
+{
+ "_doc": "Hallazgos redactados a mano que no salen de un script. Cada uno lleva su evidencia. Se convierten en propuestas del panel con id estable.",
+ "proposals": [
+  {
+   "type": "name_mismatch",
+   "product_id": 945,
+   "title": "El producto se llama «Estators» y el PDF lo llama «Startors»",
+   "web_value": "Estators",
+   "pdf_value": "Startors (códigos BOS014, BOS021, BOS029)",
+   "recommendation": "Confirmar la grafía correcta. La web nueva mantiene el nombre original y enlaza la ficha porque es la única familia sin pareja en BOTONES-DE-MANDO2.pdf.",
+   "severity": "baja",
+   "field": "nombre"
+  },
+  {
+   "type": "web_pdf_table",
+   "product_id": 884,
+   "title": "Serie TT: la tabla de la web no coincide con el PDF ni con la tarifa de Drive (códigos que no existen y tensiones/intensidades desplazadas)",
+   "web_value": "Tabla de la web: 25 filas, 13 códigos que no existen en el PDF (TT1000210, TT1200210, TT1600210…), TT0030210 con 2×12 V y 1,25 A",
+   "pdf_value": "PDF Serie-TT.pdf (28 modelos): TT0030210 = 2×10 V y 1,5 A (30 VA / (2 × 10 V) = 1,5 A)",
+   "recommendation": "La tarifa «tarifa trafos 02-26» de Drive coincide con el PDF (TT0030210 = 30 VA 230 V/2×10 V) y no contiene los códigos TT1000210… Por eso la web nueva oculta la tabla original de esta ficha y muestra los 28 modelos verificados en «Modelos». Para volver a la tabla original, quitar la entrada de data/catalog/content-overrides.json.",
+   "severity": "alta",
+   "field": "tabla de modelos"
+  }
+ ]
+}

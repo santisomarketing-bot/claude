@@ -1,0 +1,842 @@
+{
+ "links": [
+  {
+   "product_id": 957,
+   "product": "Hembrilla de seguridad HSR4",
+   "pdf": "HEMBRILLAS2.pdf",
+   "job": "p14-fichas-hembrillas-bornes",
+   "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "modelo_en_nombre",
+   "score": 0.9,
+   "models": [
+    "HSR - 4"
+   ],
+   "preferred": true
+  },
+  {
+   "product_id": 956,
+   "product": "Hembrilla de seguridad HR4",
+   "pdf": "HEMBRILLAS.pdf",
+   "job": "p14-fichas-hembrillas-bornes",
+   "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "modelo_en_nombre",
+   "score": 0.9,
+   "models": [
+    "HR - 4"
+   ],
+   "preferred": true
+  },
+  {
+   "product_id": 955,
+   "product": "Hembrilla de seguridad HBS4",
+   "pdf": "HEMBRILLAS2.pdf",
+   "job": "p14-fichas-hembrillas-bornes",
+   "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "modelo_en_nombre",
+   "score": 0.9,
+   "models": [
+    "HBS - 4"
+   ],
+   "preferred": true
+  },
+  {
+   "product_id": 954,
+   "product": "Hembrilla HB4",
+   "pdf": "HEMBRILLAS.pdf",
+   "job": "p14-fichas-hembrillas-bornes",
+   "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "modelo_en_nombre",
+   "score": 0.9,
+   "models": [
+    "HB - 4"
+   ],
+   "preferred": true
+  },
+  {
+   "product_id": 951,
+   "product": "Caratulas graduadas",
+   "pdf": "BOTONES-DE-MANDO3.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Carátulas Graduadas",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 949,
+   "product": "Discos con flecha",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Discos con Flecha",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 947,
+   "product": "Cubretuercas",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Cubretuercas",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 945,
+   "product": "Estators",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Startors",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 943,
+   "product": "Discos graduados",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Discos Graduados",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 942,
+   "product": "Aros con flecha",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Aros con Flecha",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 940,
+   "product": "Tapas serie BM",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Tapas para Botón BM (mate)",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.75,
+   "preferred": true
+  },
+  {
+   "product_id": 938,
+   "product": "Tapas serie BO",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Tapas",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.75,
+   "preferred": true
+  },
+  {
+   "product_id": 936,
+   "product": "Botones de mando serie BM (Mate)",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Serie BM (mate)",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.92,
+   "preferred": true
+  },
+  {
+   "product_id": 934,
+   "product": "Botones de mando serie BO con linea",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Serie BO con Línea",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.92,
+   "preferred": true
+  },
+  {
+   "product_id": 932,
+   "product": "Botones de mando serie BO (brillante)",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "job": "p12-fichas-botones-baquelita",
+   "family": "Serie BO (brillante)",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.92,
+   "preferred": true
+  },
+  {
+   "product_id": 929,
+   "product": "Soporte metalico para led 10mm",
+   "pdf": "Soportes-Metalicos-para-LED.pdf",
+   "job": "p16-fichas-soportes-led",
+   "family": "Soportes Metálicos para LED de 10mm.",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 927,
+   "product": "Soporte metalico para led 8mm",
+   "pdf": "Soportes-Metalicos-para-LED.pdf",
+   "job": "p16-fichas-soportes-led",
+   "family": "Soportes Metálicos para LED de 8mm.",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 925,
+   "product": "Soporte metalico para led 5mm",
+   "pdf": "Soportes-Metalicos.pdf",
+   "job": "p16-fichas-soportes-led",
+   "family": "Soportes Metálicos para LED de 5mm.",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 923,
+   "product": "Soporte metalico para led 3mm",
+   "pdf": "Soportes-Metalicos.pdf",
+   "job": "p16-fichas-soportes-led",
+   "family": "Soportes Metálicos para LED de 3mm.",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 921,
+   "product": "Núcleos toroidales",
+   "pdf": "Nucleos-toroidales.pdf",
+   "job": "p15-fichas-nucleos-choques",
+   "family": "Núcleos toroidales",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.0,
+   "preferred": true
+  },
+  {
+   "product_id": 916,
+   "product": "Bobinas para electroimanes",
+   "pdf": "Caracteristicas_Bobinas_Encapsuladas.pdf",
+   "job": "p10-fichas-bobinas-potenciometros-reostatos",
+   "family": "BOBINAS ENCAPSULADAS (bobinas para electroimanes)",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.67,
+   "variants": false,
+   "note": "La tabla repite «200 VA» en dos filas (cotas C y D-G): no se publican variantes hasta confirmar si son dos versiones o una fila partida.",
+   "preferred": true
+  },
+  {
+   "product_id": 912,
+   "product": "Reostatos y potenciometros bobinados tripes",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "job": "p11-fichas-bobinas-potenciometros-reostatos",
+   "family": "REOSTATO TANDEM TRIPLE",
+   "doc_type": "hoja_seleccion",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.65,
+   "preferred": true
+  },
+  {
+   "product_id": 911,
+   "product": "Reostatos y potenciometros bobinados doble",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "job": "p11-fichas-bobinas-potenciometros-reostatos",
+   "family": "REOSTATO TANDEM DOBLE",
+   "doc_type": "hoja_seleccion",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.65,
+   "preferred": true
+  },
+  {
+   "product_id": 908,
+   "product": "Reostatos y potenciometros bobinados doble 2x3W",
+   "pdf": "Potenciometro.pdf",
+   "job": "p11-fichas-bobinas-potenciometros-reostatos",
+   "family": "POTENCIÓMETRO DOBLE",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.65,
+   "preferred": true
+  },
+  {
+   "product_id": 907,
+   "product": "Reostatos y potenciometros bobinados simple 5W",
+   "pdf": "POTENCIOMETRO-5W.pdf",
+   "job": "p11-fichas-bobinas-potenciometros-reostatos",
+   "family": "POTENCIÓMETRO 5W",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.65,
+   "preferred": true
+  },
+  {
+   "product_id": 906,
+   "product": "Reostatos y potenciometros bobinados simple 3W",
+   "pdf": "Potenciometro.pdf",
+   "job": "p11-fichas-bobinas-potenciometros-reostatos",
+   "family": "POTENCIÓMETRO 3W",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.65,
+   "preferred": true
+  },
+  {
+   "product_id": 884,
+   "product": "Transformador Serie TT",
+   "pdf": "Serie-TT.pdf",
+   "job": "p17-fichas-transformadores",
+   "family": "Serie TT (Estándar, en stock)",
+   "doc_type": "catalogo",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.5,
+   "preferred": true
+  },
+  {
+   "product_id": 876,
+   "product": "Variador de tensión Equipos industriales",
+   "pdf": "Variador-tension-en-caja-industrial-trifasico.pdf",
+   "job": "p20-fichas-variadores",
+   "family": "Variador tensión sobremesa (1500 VA – 11000 VA)",
+   "doc_type": "ficha_tecnica",
+   "confidence": "baja",
+   "method": "nombre",
+   "score": 0.17,
+   "variants": false,
+   "note": "El PDF enlazado mezcla dos familias (sobremesa 1500-11000 VA y caja industrial trifásico 480-33000 VA) y no coincide con el rango del texto de la web. Se deja la línea genérica y se propone revisarlo.",
+   "preferred": true
+  },
+  {
+   "product_id": 867,
+   "product": "Variador Monofásico motorizado",
+   "pdf": "1.-Variadores-de-tension_monofasicomotorizado.pdf",
+   "job": "p18-fichas-variadores",
+   "family": "Variador de tensión monofásico de regulación motorizada (160 VA – 4000 VA)",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.85,
+   "preferred": true
+  },
+  {
+   "product_id": 867,
+   "product": "Variador Monofásico motorizado",
+   "pdf": "1.-Variadores-de-tension_monofasicomotorizado.pdf",
+   "job": "p18-fichas-variadores",
+   "family": "Variador de tensión monofásico de regulación motorizada (5000 VA – 11000 VA)",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.85,
+   "preferred": true
+  },
+  {
+   "product_id": 866,
+   "product": "Variador Monofásico manual",
+   "pdf": "1.-Variadores-de-tension_monofasicomanual.pdf",
+   "job": "p18-fichas-variadores",
+   "family": "Variador de tensión monofásico de regulación manual (160 VA – 4000 VA)",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.85,
+   "preferred": true
+  },
+  {
+   "product_id": 866,
+   "product": "Variador Monofásico manual",
+   "pdf": "1.-Variadores-de-tension_monofasicomanual.pdf",
+   "job": "p18-fichas-variadores",
+   "family": "Variador de tensión monofásico de regulación manual (5000 VA – 11000 VA)",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.85,
+   "preferred": true
+  },
+  {
+   "product_id": 328,
+   "product": "Variador Trifasico motorizado",
+   "pdf": "Variador-tension-trifasico-regulacion-motorizada-1.pdf",
+   "job": "p21-fichas-variadores",
+   "family": "Variador tensión trifásico regulación motorizada",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 326,
+   "product": "Variador Trifásico manual",
+   "pdf": "Variador-tension-trifasico-regulacion-manual.pdf",
+   "job": "p21-fichas-variadores",
+   "family": "Variador tensión trifásico regulación manual",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 1.25,
+   "preferred": true
+  },
+  {
+   "product_id": 310,
+   "product": "Variador Doble manual",
+   "pdf": "Variador-tension-doble-regulacion-manual.pdf",
+   "job": "p20-fichas-variadores",
+   "family": "Variador tensión doble regulación manual (160 VA x 2 – 4000 VA x 2)",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.85,
+   "preferred": true
+  },
+  {
+   "product_id": 310,
+   "product": "Variador Doble manual",
+   "pdf": "Variador-tension-doble-regulacion-manual.pdf",
+   "job": "p20-fichas-variadores",
+   "family": "Variador tensión doble regulación manual (5000 VA x 2 – 11000 VA x 2)",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.85,
+   "preferred": true
+  },
+  {
+   "product_id": 308,
+   "product": "Variador Doble motorizado",
+   "pdf": "Variador-tension-doble-regulacion-motorizada.pdf",
+   "job": "p20-fichas-variadores",
+   "family": "Variador tensión doble regulación motorizada (160 VA x 2 – 4000 VA x 2)",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.85,
+   "preferred": true
+  },
+  {
+   "product_id": 308,
+   "product": "Variador Doble motorizado",
+   "pdf": "Variador-tension-doble-regulacion-motorizada.pdf",
+   "job": "p20-fichas-variadores",
+   "family": "Variador tensión doble regulación motorizada (5000 VA x 2 – 11000 VA x 2)",
+   "doc_type": "ficha_tecnica",
+   "confidence": "alta",
+   "method": "nombre",
+   "score": 0.85,
+   "preferred": true
+  },
+  {
+   "product_id": 306,
+   "pdf": "Variador-tension-en-cura-de-aceite.pdf",
+   "job": "p20-fichas-variadores",
+   "family": "Variador tensión en cura de aceite - Monofásico (Monofasico / Single phase 230V/250V)",
+   "doc_type": "ficha_tecnica",
+   "preferred": true,
+   "why": "La ficha de «Cuba de aceite» enlaza este PDF y el PDF solo tiene dos familias (monofásico y trifásico) de ese producto. «cura» en el nombre del PDF es errata de «cuba».",
+   "product": "Cuba de aceite",
+   "method": "curado",
+   "confidence": "alta"
+  },
+  {
+   "product_id": 306,
+   "pdf": "Variador-tension-en-cura-de-aceite.pdf",
+   "job": "p20-fichas-variadores",
+   "family": "Variador tensión en cura de aceite - Trifásico (Trifasico / Triple phase 230V/250V)",
+   "doc_type": "ficha_tecnica",
+   "preferred": true,
+   "why": "Ídem: segunda familia del mismo PDF.",
+   "product": "Cuba de aceite",
+   "method": "curado",
+   "confidence": "alta"
+  },
+  {
+   "product_id": 886,
+   "pdf": "Serie-TE-Serie-TCI.pdf",
+   "job": "p17-fichas-transformadores",
+   "family": "Serie TE (Encapsulado en resina)",
+   "doc_type": "catalogo",
+   "preferred": true,
+   "why": "El producto «Transformador serie encapsulada» (categoría Serie TE) enlaza este PDF; su texto dice «encapsulado con resina de epoxi», igual que la familia TE.",
+   "product": "Transformador serie encapsulada",
+   "method": "curado",
+   "confidence": "alta"
+  },
+  {
+   "product_id": 888,
+   "pdf": "Serie-TE-Serie-TCI.pdf",
+   "job": "p17-fichas-transformadores",
+   "family": "Serie TCI (encapsulado para C.I.)",
+   "doc_type": "catalogo",
+   "preferred": true,
+   "why": "El producto «Transformadores en serie circuito impreso» (categoría Serie TCI) enlaza este PDF; C.I. = circuito impreso, y el texto coincide con la descripción de la familia.",
+   "product": "Transformadores en serie circuito impreso",
+   "method": "curado",
+   "confidence": "alta"
+  },
+  {
+   "product_id": 910,
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "job": "p11-fichas-bobinas-potenciometros-reostatos",
+   "family": "REOSTATOS CERÁMICOS (Potenciometros)",
+   "doc_type": "hoja_seleccion",
+   "preferred": true,
+   "why": "La hoja tiene tres familias (cerámicos simples, tándem doble, tándem triple) y los productos «simple», «doble» y «tripes» enlazan esa hoja: por eliminación «simple» es la serie PC.",
+   "product": "Reostatos y potenciometros bobinados simple",
+   "method": "curado",
+   "confidence": "alta"
+  },
+  {
+   "product_id": 919,
+   "pdf": "CHOQUES-TOROIDALES.pdf",
+   "job": "p15-fichas-nucleos-choques",
+   "family": "Choques toroidales de polvo de hierro",
+   "doc_type": "catalogo",
+   "preferred": true,
+   "variants": false,
+   "why": "Único producto y única familia del PDF. No se crean variantes: el PDF da 11 códigos de núcleo y 27 valores de L (297 combinaciones) y no explica cómo se forma la referencia.",
+   "product": "Choques | Inductancias | Reactancias toroidales",
+   "method": "curado",
+   "confidence": "alta"
+  }
+ ],
+ "families_without_product": [
+  {
+   "pdf": "Torivac_2024.pdf",
+   "family": "Variador tensión sobremesa",
+   "models": 12,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "Torivac_2024.pdf",
+   "family": "Variador tensión en caja industrial trifásico",
+   "models": 19,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "Torivac_2024.pdf",
+   "family": "Transformadores toroidales – Estándar bajo demanda (Entrada 230V)",
+   "models": 41,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "Torivac_2024.pdf",
+   "family": "Serie TE (Encapsulado en resina)",
+   "models": 18,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "Torivac_2024.pdf",
+   "family": "ELECTROIMANES DE NUCLEO TOROIDAL",
+   "models": 2,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "Torivac_2024.pdf",
+   "family": "BOTONES DE MANDO – Botón Baquelita \"DF\"",
+   "models": 3,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "Torivac_2024.pdf",
+   "family": "SOPORTES METÁLICOS PARA LED – de 3mm",
+   "models": 2,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "Torivac_2024.pdf",
+   "family": "SOPORTES METÁLICOS PARA LED – de 5mm",
+   "models": 2,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "Torivac_2024.pdf",
+   "family": "SOPORTES METÁLICOS PARA LED – de 8mm",
+   "models": 2,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "4.-Bobinas-encapsuladas.pdf",
+   "family": "ELECTROIMANES DE NUCLEO TOROIDAL (Bobinas encapsuladas)",
+   "models": 2,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "BOTONES-DE-MANDO3.pdf",
+   "family": "Botón Baquelita \"DF\"",
+   "models": 3,
+   "doc_type": "catalogo"
+  },
+  {
+   "pdf": "Caracteristicas_Boton_Baquelita_DF.pdf",
+   "family": "Botón Baquelita \"DF\"",
+   "models": 3,
+   "doc_type": "ficha_tecnica"
+  },
+  {
+   "pdf": "Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf",
+   "family": "Variador de tensión de sobremesa - Sin instrumentos / Without display",
+   "models": 7,
+   "doc_type": "ficha_tecnica"
+  },
+  {
+   "pdf": "Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf",
+   "family": "Variador de tensión de sobremesa - Con instrumento / With display",
+   "models": 7,
+   "doc_type": "ficha_tecnica"
+  },
+  {
+   "pdf": "Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf",
+   "family": "Variador de tensión de sobremesa - Con dos instrumentos / With two displays",
+   "models": 7,
+   "doc_type": "ficha_tecnica"
+  },
+  {
+   "pdf": "Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf",
+   "family": "Variador tensión en caja industrial monofásico",
+   "models": 12,
+   "doc_type": "ficha_tecnica"
+  },
+  {
+   "pdf": "Caracteristicas_Tecnicas_Variador_de_Tension_en_caja.pdf",
+   "family": "Variador tensión en caja industrial trifásico",
+   "models": 19,
+   "doc_type": "ficha_tecnica"
+  },
+  {
+   "pdf": "Variador-tension-en-caja-industrial-trifasico.pdf",
+   "family": "Variador tensión sobremesa (1500 VA – 11000 VA)",
+   "models": 12,
+   "doc_type": "ficha_tecnica"
+  },
+  {
+   "pdf": "Variador-tension-en-caja-industrial-trifasico.pdf",
+   "family": "Variador tensión en caja industrial trifásico (480 VA – 33000 VA)",
+   "models": 19,
+   "doc_type": "ficha_tecnica"
+  },
+  {
+   "pdf": "Variador-tension-sobremesa.pdf",
+   "family": "Variador tensión sobremesa",
+   "models": 1,
+   "doc_type": "ficha_tecnica"
+  }
+ ],
+ "products_without_family": [
+  {
+   "product_id": 16633,
+   "product": "Variador de tensión portatil"
+  },
+  {
+   "product_id": 15355,
+   "product": "Resistencia en caja"
+  },
+  {
+   "product_id": 8346,
+   "product": "Resistencias de alta potencia cementadas"
+  },
+  {
+   "product_id": 8340,
+   "product": "Resistencias helicoidales"
+  },
+  {
+   "product_id": 8339,
+   "product": "Resistencias de frenado"
+  },
+  {
+   "product_id": 1042,
+   "product": "Reostatos y potenciometros bobinados fabricaciones especiales"
+  },
+  {
+   "product_id": 978,
+   "product": "Regulador a tiristores"
+  },
+  {
+   "product_id": 977,
+   "product": "SAI para control industrial"
+  },
+  {
+   "product_id": 976,
+   "product": "Ondulador para FV Interconectada de 350W autoconsumo"
+  },
+  {
+   "product_id": 975,
+   "product": "Reguladores fotovoltaicos MPPT"
+  },
+  {
+   "product_id": 974,
+   "product": "Ondulador autonomo para instalaciones fotovoltaicas sin conexión a red"
+  },
+  {
+   "product_id": 973,
+   "product": "Ondulador para conexión fotovoltaica a red"
+  },
+  {
+   "product_id": 972,
+   "product": "Fuente de corriente alterna sinusoidal"
+  },
+  {
+   "product_id": 970,
+   "product": "Fuentes de alimentación de 300A"
+  },
+  {
+   "product_id": 969,
+   "product": "Fuentes de alimentación de 150A"
+  },
+  {
+   "product_id": 968,
+   "product": "Variadores de frecuencia"
+  },
+  {
+   "product_id": 967,
+   "product": "Electronica"
+  },
+  {
+   "product_id": 966,
+   "product": "Resistencias de puesta a tierra"
+  },
+  {
+   "product_id": 965,
+   "product": "Resistencias de arranque"
+  },
+  {
+   "product_id": 964,
+   "product": "Resistencias – Banco de carga"
+  },
+  {
+   "product_id": 918,
+   "product": "Bobinas para electroimanes Cuadrada"
+  },
+  {
+   "product_id": 913,
+   "product": "Reostatos y potenciometros bobinados en caja"
+  },
+  {
+   "product_id": 909,
+   "product": "Reostatos y potenciometros bobinados"
+  },
+  {
+   "product_id": 905,
+   "product": "Reostatos y potenciometros bobinados"
+  },
+  {
+   "product_id": 904,
+   "product": "Reostatos y potenciometros bobinados"
+  },
+  {
+   "product_id": 901,
+   "product": "Estabilizador Trifásico Serie BAVS"
+  },
+  {
+   "product_id": 900,
+   "product": "Estabilizador Monofásico Serie BAVS"
+  },
+  {
+   "product_id": 898,
+   "product": "Estabilizador Trifásico Serie AVS"
+  },
+  {
+   "product_id": 897,
+   "product": "Estabilizadores Monofásicos"
+  },
+  {
+   "product_id": 895,
+   "product": "Estabilizadores de tensión"
+  },
+  {
+   "product_id": 892,
+   "product": "Transformador trifásico"
+  },
+  {
+   "product_id": 891,
+   "product": "Transformador convencional encapsulado"
+  },
+  {
+   "product_id": 890,
+   "product": "Transformador convencional estándar"
+  },
+  {
+   "product_id": 882,
+   "product": "Comunicación MODBUS"
+  },
+  {
+   "product_id": 879,
+   "product": "Accesorios de regulacion"
+  },
+  {
+   "product_id": 878,
+   "product": "Fabricaciones a medida"
+  },
+  {
+   "product_id": 874,
+   "product": "En caja"
+  },
+  {
+   "product_id": 304,
+   "product": "Controlador 0-10VDC"
+  },
+  {
+   "product_id": 301,
+   "product": "Accesorios de mando"
+  },
+  {
+   "product_id": 294,
+   "product": "Variador de tensión a medida"
+  },
+  {
+   "product_id": 155,
+   "product": "Tapas para botones – BM mate"
+  }
+ ],
+ "stats": {
+  "alta": 43,
+  "media": 0,
+  "baja": 1
+ }
+}

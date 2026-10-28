@@ -1,0 +1,18 @@
+{
+ "_doc": "Divergencias ES/EN ya resueltas mirando el PDF original. clave = nombre de la familia ES. Se mantienen en el informe, pero no generan propuesta.",
+ "SOPORTES METÁLICOS PARA LED – de 3mm": {
+  "correct": "es",
+  "why": "Imagen del folio 37 (Soportes-Metalicos.pdf): Ø7, cota superior 2, total 13, rosca 6/0,75. La extracción EN tenía las columnas desplazadas.",
+  "checked_on": "2026-10-28"
+ },
+ "SOPORTES METÁLICOS PARA LED – de 5mm": {
+  "correct": "es",
+  "why": "Imagen del folio 37: Ø10 / Ø9,5, cota superior 3, total 15 / 16,5, rosca 8/0,75. La extracción EN tenía las columnas desplazadas.",
+  "checked_on": "2026-10-28"
+ },
+ "SOPORTES METÁLICOS PARA LED – de 8mm": {
+  "correct": "es",
+  "why": "Misma estructura de dibujo que 3 y 5 mm (cota total > cota superior); la extracción EN repite el desplazamiento de columnas.",
+  "checked_on": "2026-10-28"
+ }
+}

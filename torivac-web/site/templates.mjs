@@ -155,12 +155,13 @@ ${scripts.map((s) => `<script src="${ctx.asset(s)}"></script>`).join('\n')}
 // ───────────────────────────────────────────────────────────── [SHARED] migas, etiquetas de tensión, tarjeta de producto
 export const crumbs = (ctx, items) => `<nav aria-label="breadcrumb"><ol class="crumbs">${items.map((i, k) => `<li>${i.href && k < items.length - 1 ? `<a href="${attr(i.href)}">${esc(i.label)}</a>` : `<span${k === items.length - 1 ? ' aria-current="page"' : ''}>${esc(i.label)}</span>`}</li>`).join('')}</ol></nav>`;
 
-export function vtags(site, ids = [], limit = 6) {
+const vtext = (x, lang) => (x && typeof x === 'object' ? x[lang] || x.es : x) || '';
+export function vtags(site, ids = [], limit = 6, lang = 'es') {
   const out = ids.slice(0, limit).map((id) => {
     const v = site.vtags.get(id);
     if (!v) return '';
     const kind = v.kind === 'dc' ? ' dc' : v.kind === 'range' ? ' range' : v.kind === 'three-phase' ? ' three' : '';
-    return `<span class="vtag${kind}" title="${attr(v.title || v.label)}">${esc(v.label)}</span>`;
+    return `<span class="vtag${kind}" title="${attr(vtext(v.title, lang) || vtext(v.label, lang))}">${esc(vtext(v.label, lang))}</span>`;
   }).join('');
   return out ? `<div class="vtag-row">${out}</div>` : '';
 }
@@ -173,7 +174,7 @@ export function productCard(ctx, p) {
   const nVar = p.variants.length;
   return `<a class="pcard" href="${attr(ctx.href(p.pathFor[lang]))}" data-pid="${p.id}" data-cats="${cats}" data-v="${(p.voltage_tags || []).join(',')}" data-q="${attr((name + ' ' + p.variants.map((v) => v.ref).join(' ')).toLowerCase())}">
   <div class="ph">${im ? `<img src="${attr(ctx.thumb(im))}" alt="${attr(pick(im.alt, lang) || name)}" loading="lazy" decoding="async" width="${im.w ? Math.min(480, im.w) : 480}" height="${im.h ? Math.round(Math.min(480, im.w || 480) * (im.h / (im.w || 1))) : 480}">` : ''}</div>
-  <div class="tx"><h3>${esc(name)}</h3>${vtags(ctx.site, p.voltage_tags, 3)}<div class="meta"><span>${nVar ? refLabel(nVar, lang) : ''}</span><span class="go">${t('view_product', lang)} →</span></div></div>
+  <div class="tx"><h3>${esc(name)}</h3>${vtags(ctx.site, p.voltage_tags, 3, lang)}<div class="meta"><span>${nVar ? refLabel(nVar, lang) : ''}</span><span class="go">${t('view_product', lang)} →</span></div></div>
 </a>`;
 }
 
@@ -319,9 +320,9 @@ export function postBody(ctx, post) {
 // ───────────────────────────────────────────────────────────── [SHOP] listado / categoría
 export function shopBody(ctx, { products, category = null, intro = [] }) {
   const { lang, site } = ctx;
-  const vts = [...new Set(products.flatMap((p) => p.voltage_tags || []))].filter((id) => site.vtags.has(id));
+  const vts = [...new Set(products.flatMap((p) => p.voltage_tags || []))].filter((id) => site.vtags.has(id) && site.vtags.get(id).filter !== false);
   vts.sort((a, b) => (site.vtags.get(a).sort ?? 0) - (site.vtags.get(b).sort ?? 0));
-  const chips = vts.map((id) => `<button class="chip" type="button" aria-pressed="false" data-vf="${attr(id)}">${esc(site.vtags.get(id).label)}</button>`).join('');
+  const chips = vts.map((id) => `<button class="chip" type="button" aria-pressed="false" data-vf="${attr(id)}">${esc(vtext(site.vtags.get(id).label, lang))}</button>`).join('');
   const sidebar = `<aside class="sidebar no-print" id="filters" aria-label="${attr(t('filters', lang))}">
     <h2>${t('categories', lang)}</h2>${catTree(ctx, category?.id)}
     ${chips ? `<h2>${t('voltage', lang)}</h2><div class="chips" data-vchips>${chips}</div>` : ''}
@@ -363,16 +364,15 @@ export function productBody(ctx, p, related) {
   const variants = p.variants.length ? p.variants : [{ ref: 'P' + p.id, label: null, specs: {}, default: true }];
   const colCount = {};
   variants.forEach((v) => Object.keys(v.specs || {}).forEach((k) => { colCount[k] = (colCount[k] || 0) + 1; }));
-  const cols = Object.keys(colCount).sort((a, b) => colCount[b] - colCount[a]).slice(0, 7);
-  const rows = variants.map((v) => `<tr data-ref="${attr(v.ref)}">
-    <td class="ref">${v.default ? '—' : esc(v.ref)}</td>
-    ${v.default ? `<td colspan="${Math.max(1, cols.length)}">${esc(t('default_item', lang))}</td>` : cols.map((c) => `<td>${esc(v.specs?.[c]?.raw ?? '')}</td>`).join('')}
-    <td class="price-cell" data-price-for="${attr(v.ref)}"></td>
-    <td class="qty-cell"><div class="qty"><button type="button" data-dec aria-label="−">−</button><input type="number" inputmode="numeric" min="0" step="1" value="0" data-qty aria-label="${attr(t('qty', lang))} ${attr(v.ref)}"><button type="button" data-inc aria-label="+">+</button></div></td>
-    <td class="add-cell"><button class="btn sm" type="button" data-add-row="${attr(v.ref)}">${t('add_to_quote', lang)}</button></td></tr>`).join('');
+  // columnas públicas: las más frecuentes, hasta 9, con nombre corto (las etiquetas largas son descripciones de cotas de un dibujo y no caben como cabecera)
+  const cols = Object.keys(colCount).filter((c) => c.length <= 32).sort((a, b) => colCount[b] - colCount[a]).slice(0, 9);
+  const rows = variants.map((v) => `<tr data-ref="${attr(v.ref)}" role="row">
+    <td class="ref" role="cell" data-label="${attr(t('ref_model', lang))}">${v.default ? '—' : v.code ? esc(v.ref) : esc(pick(v.label, lang) || v.ref)}</td>
+    ${v.default ? `<td class="generic" role="cell" colspan="${Math.max(1, cols.length)}">${esc(t('default_item', lang))}</td>` : cols.map((c) => `<td role="cell" data-label="${attr(c)}">${esc(v.specs?.[c]?.raw ?? '')}</td>`).join('')}
+    <td class="act" role="cell"><div class="act-in"><span class="price-cell" data-price-for="${attr(v.ref)}"></span><div class="qty"><button type="button" data-dec aria-label="−">−</button><input type="number" inputmode="numeric" min="0" step="1" value="0" data-qty aria-label="${attr(t('qty', lang))} ${attr(v.code ? v.ref : pick(v.label, lang) || v.ref)}"><button type="button" data-inc aria-label="+">+</button></div><button class="btn sm" type="button" data-add-row="${attr(v.ref)}">${t('add_to_quote', lang)}</button></div></td></tr>`).join('');
   const models = `<section id="modelos" aria-labelledby="h-models"><div class="models-bar"><h2 id="h-models" style="margin:0">${t('models', lang)}</h2><span><span class="price-demo" data-demo-flag hidden>DEMO</span></span></div>
     <p class="muted">${t('models_hint', lang)}</p>
-    <div class="tbl-wrap models" tabindex="0"><table class="spec"><thead><tr><th>${t('ref', lang)}</th>${cols.length ? cols.map((c) => `<th>${esc(c)}</th>`).join('') : `<th><span class="vh">${t('item', lang)}</span></th>`}<th class="price-cell">${t('unit_price', lang)}</th><th>${t('qty', lang)}</th><th><span class="vh">${t('add_to_quote', lang)}</span></th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="tbl-wrap models" tabindex="0"><table class="spec" role="table"><thead><tr role="row"><th class="ref" role="columnheader">${t('ref_model', lang)}</th>${cols.length ? cols.map((c) => `<th role="columnheader">${esc(c)}</th>`).join('') : `<th role="columnheader"><span class="vh">${t('item', lang)}</span></th>`}<th class="act" role="columnheader">${t('unit_price', lang)} · ${t('qty', lang)}</th></tr></thead><tbody role="rowgroup">${rows}</tbody></table></div>
     <p><button class="btn" type="button" data-add-selected>${t('add_selected', lang)}</button> <a class="btn ghost" href="${attr(ctx.href(site.quote[lang]))}">${t('quote', lang)} →</a></p></section>`;
   const notice = useEs && lang !== 'es' ? `<p class="notice">${t('translation_missing', lang)}</p>` : '';
   const rel = related.length ? `<section class="sec tight" style="padding-inline:0"><h2>${t('related', lang)}</h2><div class="pgrid">${related.map((r) => productCard(ctx, r)).join('')}</div></section>` : '';
@@ -383,7 +383,7 @@ export function productBody(ctx, p, related) {
     <button class="btn sm ghost filters-toggle" type="button" data-filters-toggle style="margin-bottom:var(--s-4)">☰ ${t('categories', lang)}</button>
     <article class="pdp" itemscope itemtype="https://schema.org/Product" data-pid="${p.id}">
       ${gal}
-      <div><h1 itemprop="name">${esc(name)}</h1>${vtags(site, p.voltage_tags, 8)}
+      <div><h1 itemprop="name">${esc(name)}</h1>${vtags(site, p.voltage_tags, 8, lang)}
         <div class="short prose" style="margin-top:var(--s-4)">${blocksHtml(ctx, short, { demote: 2 })}</div>${notice}
         <div class="actions"><a class="btn" href="#modelos">${t('add_to_quote', lang)}</a>${pdfs}</div></div>
     </article>

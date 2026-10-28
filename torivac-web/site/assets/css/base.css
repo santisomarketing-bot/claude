@@ -42,3 +42,6 @@ button,input,select,textarea{font:inherit;color:inherit}
 .crop::before{top:-1px;left:-1px;border-top-width:2px;border-left-width:2px}
 .crop::after{right:-1px;bottom:-1px;border-bottom-width:2px;border-right-width:2px}
 @media print{.no-print,.site-header,.site-footer,.fab-stack,.quote-drawer,.demo-ribbon,.lang-banner{display:none!important}body{background:#fff}}
+
+/* el atributo hidden gana siempre: muchas clases fijan `display` y lo anulaban (p. ej. la marca DEMO seguía visible con precios reales) */
+[hidden]{display:none!important}

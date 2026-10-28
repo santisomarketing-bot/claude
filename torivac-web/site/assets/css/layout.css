@@ -20,13 +20,20 @@
 .lang [aria-current="true"]{color:var(--ink);background:var(--amber)}
 .menu-btn{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:var(--radius);padding:var(--s-2) var(--s-3);font-weight:600;cursor:pointer}
 .header-quote{display:inline-flex;align-items:center;gap:var(--s-2);margin-left:var(--s-3)}
-/* el menú completo (7 enlaces + presupuesto + idiomas) necesita ~1315 px en español: por debajo, menú con botón */
+/* el menú completo (7 enlaces + presupuesto + idiomas) necesita ~1315 px en español: por debajo, menú con botón.
+   El selector de idioma se queda SIEMPRE a la vista en la barra (junto al botón): cambiar de idioma no debe costar dos toques. */
 @media (max-width:1340px){
-  .menu-btn{display:inline-flex}
-  .nav,.lang{display:none}
+  .menu-btn{display:inline-flex;margin-left:0;order:3}
+  .lang{order:2;margin-left:auto;border-left:0;padding-left:0}
+  .nav{display:none}
   .site-header.open .nav{display:flex;position:absolute;left:0;right:0;top:100%;background:var(--ink);flex-direction:column;align-items:stretch;padding:var(--s-3) var(--s-5) var(--s-5);border-bottom:1px solid rgba(255,255,255,.12)}
-  .site-header.open .lang{display:flex;position:absolute;left:var(--s-5);right:var(--s-5);top:calc(100% + 330px);border:0;padding:0}
   .site-header.open .nav a{padding:var(--s-3) 0;border-bottom:1px solid rgba(255,255,255,.1)}
+}
+@media (max-width:400px){
+  .site-header .bar{gap:var(--s-2)}
+  .brand img{height:44px}
+  .lang a{min-width:30px;padding:var(--s-2) 5px}
+  .menu-btn{padding:var(--s-2) var(--s-2)}
 }
 
 /* ---- héroe ---- */

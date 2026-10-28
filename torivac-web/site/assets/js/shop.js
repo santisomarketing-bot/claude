@@ -1,6 +1,6 @@
 /**
  * [SHOP] Listados (filtros por tensión y búsqueda) y fichas de producto (tabla de modelos con cantidades, galería).
- * Secciones: [FILTERS] filtros del listado · [MODELS] tabla de modelos · [GALLERY] galería · [PRICES] precios en las filas
+ * Secciones: [FILTERS] filtros del listado · [MODELS] tabla de modelos · [EXTRAS] referencias que añade la hoja de precios · [GALLERY] galería · [PRICES] precios en las filas
  * Depende de: quote.js, app.js (TV.$, TV.$$, TV.toast).
  */
 (function () {
@@ -32,20 +32,48 @@
   $$('[data-filters-toggle]').forEach(function (b) { b.addEventListener('click', function () { side.classList.add('open'); scrim.classList.add('open'); }); });
 
   // ───────────────────────────────────────── [MODELS]
-  var rows = $$('.models tbody tr');
+  var rows = [];
   function qtyOf(tr) { return Math.max(0, Math.floor(Number($('[data-qty]', tr).value) || 0)); }
-  rows.forEach(function (tr) {
+  function bindRow(tr) {
     var inp = $('[data-qty]', tr), ref = tr.getAttribute('data-ref');
     $('[data-inc]', tr).addEventListener('click', function () { inp.value = qtyOf(tr) + 1; updatePrice(tr); });
     $('[data-dec]', tr).addEventListener('click', function () { inp.value = Math.max(0, qtyOf(tr) - 1); updatePrice(tr); });
     inp.addEventListener('input', function () { updatePrice(tr); });
     $('[data-add-row]', tr).addEventListener('click', function () { var q = qtyOf(tr) || 1; Q.add(ref, q); inp.value = 0; updatePrice(tr); });
-  });
+    rows.push(tr);
+  }
+  $$('.models tbody tr').forEach(bindRow);
   var addSel = $('[data-add-selected]');
   if (addSel) addSel.addEventListener('click', function () {
     var n = 0; rows.forEach(function (tr) { var q = qtyOf(tr); if (q > 0 && Q.add(tr.getAttribute('data-ref'), q)) { n++; $('[data-qty]', tr).value = 0; updatePrice(tr); } });
     if (!n) { TV.toast(Q.t('models_hint')); var f = $('[data-qty]', rows[0]); if (f) f.focus(); }
   });
+
+  // ───────────────────────────────────────── [EXTRAS] referencias que la hoja de precios añade dentro de ESTE producto (una tarifa puede traer más códigos que la ficha)
+  var pdp = $('.pdp'), pid = pdp ? Number(pdp.getAttribute('data-pid')) : 0, extraBox = null;
+  function extraRow(ref, descr) {
+    var a = esc(ref);
+    return '<tr data-ref="' + a + '" data-extra role="row"><td class="ref" role="cell" data-label="' + esc(Q.t('ref_model')) + '">' + a + '</td><td class="generic" role="cell">' + esc(descr) + '</td>' +
+      '<td class="act" role="cell"><div class="act-in"><span class="price-cell" data-price-for="' + a + '"></span><div class="qty"><button type="button" data-dec aria-label="−">−</button><input type="number" inputmode="numeric" min="0" step="1" value="0" data-qty aria-label="' + esc(Q.t('qty')) + ' ' + a + '"><button type="button" data-inc aria-label="+">+</button></div>' +
+      '<button class="btn sm" type="button" data-add-row="' + a + '">' + esc(Q.t('add_to_quote')) + '</button></div></td></tr>';
+  }
+  function renderExtras() {
+    if (!pid || !TV.prices || !TV.prices.items) return;
+    var have = {}; $$('.models tbody tr[data-ref]').forEach(function (tr) { if (!tr.hasAttribute('data-extra')) have[tr.getAttribute('data-ref')] = 1; });
+    var list = Object.keys(TV.prices.items).filter(function (r) { var it = TV.prices.items[r]; return it.pid === pid && !have[r]; });
+    if (extraBox) { rows = rows.filter(function (tr) { return !tr.hasAttribute('data-extra'); }); extraBox.remove(); extraBox = null; }
+    var host = $('#modelos'); if (!list.length || !host) return;
+    extraBox = document.createElement('section'); extraBox.id = 'mas-referencias'; extraBox.setAttribute('aria-labelledby', 'h-more');
+    extraBox.innerHTML = '<h2 id="h-more">' + esc(Q.t('more_refs')) + ' <span class="muted small">(' + list.length + ')</span></h2><p class="muted">' + esc(Q.t('more_refs_hint')) + '</p>' +
+      '<input class="search" type="search" data-extra-filter placeholder="' + esc(Q.t('search_ph')) + '" aria-label="' + esc(Q.t('search_ph')) + '" style="max-width:420px;margin-bottom:var(--s-3)">' +
+      '<div class="tbl-wrap models" tabindex="0"><table class="spec" role="table"><thead><tr role="row"><th class="ref" role="columnheader">' + esc(Q.t('ref_model')) + '</th><th role="columnheader">' + esc(Q.t('description_col')) + '</th><th class="act" role="columnheader">' + esc(Q.t('unit_price')) + ' · ' + esc(Q.t('qty')) + '</th></tr></thead><tbody role="rowgroup">' +
+      list.map(function (r) { return extraRow(r, TV.prices.items[r].n || r); }).join('') + '</tbody></table></div>';
+    host.parentNode.insertBefore(extraBox, host.nextSibling);
+    $$('tbody tr', extraBox).forEach(bindRow);
+    var f = $('[data-extra-filter]', extraBox);
+    f.addEventListener('input', function () { var t = f.value.trim().toLowerCase(); $$('tbody tr', extraBox).forEach(function (tr) { tr.hidden = !!t && tr.textContent.toLowerCase().indexOf(t) < 0; }); });
+    rows.forEach(updatePrice);
+  }
 
   // ───────────────────────────────────────── [PRICES] precio unitario y tramos por fila
   function updatePrice(tr) {
@@ -57,7 +85,8 @@
     cell.innerHTML = html;
   }
   function allPrices() { rows.forEach(updatePrice); $$('[data-demo-flag]').forEach(function (e) { e.hidden = !(TV.prices && TV.prices.mode === 'demo'); }); }
-  allPrices(); document.addEventListener('tv:prices', allPrices);
+  function refresh() { renderExtras(); allPrices(); }
+  refresh(); document.addEventListener('tv:prices', refresh);
 
   // ───────────────────────────────────────── [GALLERY]
   var main = $('[data-main]');
