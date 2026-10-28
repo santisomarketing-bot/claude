@@ -71,14 +71,30 @@ console.log('\n1) el manager sube la tarifa (Excel con cabeceras «Artículo · 
   ok(/3 referencias nuevas/.test(prev), 'avisa de las 3 referencias nuevas que se publican dentro de su producto');
   ok(/1 referencias de la hoja no están en la web/.test(prev), 'avisa del código desconocido y no lo publica');
   ok(!/parece un valor de relleno/.test(prev), 'una tarifa normal no se confunde con precios de relleno');
-  ok(/\b330 sin precio/.test(prev.replace(/\s+/g, ' ')), 'la vista previa cuenta las 330 referencias de la web que se quedarían sin precio («Consultar»)');
-  await page.locator('[data-force]').check();                                  // la tarifa solo trae 9 de 336 referencias: hay que confirmar que es intencionado
+  ok(/Filas reconocidas: 9 por referencia/.test(prev) || /Filas reconocidas: 6 por referencia · 3 como referencia nueva/.test(prev), 'dice cómo se reconoció cada fila de la tarifa');
+  ok(/\b330 no vienen en la hoja y se conservan/.test(prev.replace(/\s+/g, ' ')) && (await page.locator('[data-force]').count()) === 0, 'por defecto (solo lo que trae): la tarifa trae 9 de 336 referencias, las otras 330 se conservan y no hace falta confirmar nada');
+  await page.locator('input[name=upmode][value=replace]').check();                // el mismo archivo, pero reemplazando toda la lista
+  await page.waitForFunction(() => /porque no están en la hoja/.test(document.querySelector('[data-draft]').innerText), null, { timeout: 15000 });
+  ok(/\b330 se quedan sin precio porque no están en la hoja/.test((await page.locator('[data-draft]').innerText()).replace(/\s+/g, ' ')), 'en modo «reemplazar» la vista previa cuenta las 330 que se quedarían sin precio («Consultar»)');
+  ok(await page.locator('[data-apply-upload]').isDisabled(), 'y Aplicar no se activa hasta confirmar que es intencionado');
+  await page.locator('input[name=upmode][value=merge]').check();                  // vuelve a «solo lo que trae» y se aplica
+  await page.waitForFunction(() => /se conservan/.test(document.querySelector('[data-draft]').innerText), null, { timeout: 15000 });
   await page.click('[data-apply-upload]'); await page.waitForTimeout(700);
   const pub = await fetch(API + '/api/prices').then((r) => r.json());
-  ok(Object.keys(pub.prices.items).length === 9, `9 referencias publicadas (6 conocidas + 3 nuevas): ${Object.keys(pub.prices.items).length}`);
+  const total0 = Object.keys(prices.items).length;
+  ok(Object.keys(pub.prices.items).length === total0 + 3, `${total0 + 3} referencias publicadas (las ${total0} de antes + 3 nuevas): ${Object.keys(pub.prices.items).length}`);
+  const other = Object.keys(prices.items).find((r) => !known.includes(r));
+  ok(pub.prices.items[other] && pub.prices.items[other].p === prices.items[other].p, `una referencia que la tarifa no traía (${other}) conserva su precio`);
   ok(pub.prices.items[known[0]].p === 20.1235, `8 decimales de la hoja → 4 en el servidor (20,12345678 → ${pub.prices.items[known[0]].p})`);
   ok(pub.prices.items.TT0150117EM.pid === 884 && /152VA/.test(pub.prices.items.TT0150117EM.n), 'la referencia nueva queda dentro de la Serie TT con la descripción de la tarifa');
   ok(pub.prices.items.ZZ999 === undefined, 'el código desconocido no se publica');
+  // otra hoja parcial: solo identifica por ID de producto (sin columna de referencia)
+  const gen = Object.keys(items).find((r) => /^P\d+$/.test(r)), gid = gen.slice(1), idCsv = path.join(DIST, 'por-id.csv');
+  fs.writeFileSync(idCsv, `ID;Precio\n${gid};12,34\n`);
+  await page.setInputFiles('[data-file]', idCsv); await page.waitForFunction(() => /por ID de producto/.test(document.querySelector('[data-draft]').innerText), null, { timeout: 15000 });
+  await page.click('[data-apply-upload]'); await page.waitForTimeout(700);
+  const pub2 = await fetch(API + '/api/prices').then((r) => r.json());
+  ok(pub2.prices.items[gen] && pub2.prices.items[gen].p === 12.34 && Object.keys(pub2.prices.items).length === total0 + 3, `una hoja solo con el ID de producto (${gid}) actualiza su línea ${gen} y no toca el resto`);
   ok(!errs.length, 'sin errores de JS' + (errs.length ? ': ' + errs[0] : ''));
   await ctx.close(); }
 

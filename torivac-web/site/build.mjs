@@ -349,7 +349,7 @@ for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (fs.existsSync(path.
 // [PRICE-SHEET] la lectura de hojas de precios es la MISMA que usa el Worker (shared/price-sheet.mjs): se publica como script clásico (TV.PriceSheet) para el panel
 {
   const src = fs.readFileSync(path.join(ROOT, 'shared', 'price-sheet.mjs'), 'utf8').replace(/^export (const|function) /gm, '$1 ');
-  writeFile(DIST, 'assets/js/price-sheet.js', `/* [PRICE-SHEET] GENERADO desde shared/price-sheet.mjs por site/build.mjs — no editar a mano */\n(function () {\n'use strict';\n${src}\nwindow.TV = window.TV || {}; TV.PriceSheet = { readSheet: readSheet, parseNumber: parseNumber, normHeader: normHeader, normRef: normRef, findHeader: findHeader, ALIASES: ALIASES, DEFAULT_DECIMALS: DEFAULT_DECIMALS };\n})();\n`);
+  writeFile(DIST, 'assets/js/price-sheet.js', `/* [PRICE-SHEET] GENERADO desde shared/price-sheet.mjs por site/build.mjs — no editar a mano */\n(function () {\n'use strict';\n${src}\nwindow.TV = window.TV || {}; TV.PriceSheet = { readSheet: readSheet, applySheetItems: applySheetItems, parseNumber: parseNumber, normHeader: normHeader, normRef: normRef, findHeader: findHeader, ALIASES: ALIASES, DEFAULT_DECIMALS: DEFAULT_DECIMALS };\n})();\n`);
 }
 
 // ───────────────────────────────────────────────────────────── [ASSETS] estáticos

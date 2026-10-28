@@ -127,29 +127,39 @@
   };
 
   // ───────────────────────────────────────── [PRICES] estado, sincronización, subida de Excel/CSV con vista previa
-  var draftRows = null;
+  var draftRows = null, draftLabel = '', uploadMode = 'merge';
+  /** Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios. */
+  function modeBox() {
+    return '<fieldset class="mode" data-mode-box><legend class="small">¿Qué hace esta hoja?</legend>' +
+      '<label class="small"><input type="radio" name="upmode" value="merge"' + (uploadMode === 'merge' ? ' checked' : '') + '> <strong>Actualizar solo lo que trae</strong> (recomendado). Puede ser una parte del catálogo: cada fila se reconoce por referencia, SKU o ID de producto y solo cambia su precio; lo demás se queda como está.</label>' +
+      '<label class="small"><input type="radio" name="upmode" value="replace"' + (uploadMode === 'replace' ? ' checked' : '') + '> <strong>Reemplazar toda la lista</strong>. Lo que no esté en la hoja se queda sin precio («Consultar»).</label></fieldset>';
+  }
   /** Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA. */
   V.precios = function () {
     return http('GET', '/api/prices').then(function (r) {
       var P = r.prices || { items: {} }, m = r.meta || {};
       return '<h1>Precios</h1><div class="cols"><section class="panel"><h2>Estado</h2><p>Origen: <strong>' + esc(P.source || '—') + '</strong><br>Modo: <strong>' + esc(P.mode || '—') + '</strong> · ' + Object.keys(P.items || {}).length + ' referencias con precio<br>Última actualización: ' + esc(when(P.updated_at)) + '</p>' +
-        '<p class="muted small">Última sincronización: ' + esc(when(m.at)) + ' (' + esc(m.reason || '—') + ')</p><p><button class="btn" data-refresh>Actualizar ahora (manual)</button></p><p class="muted small">La hoja de Drive se sincroniza sola cada 24 h; este botón fuerza la sincronización al instante.</p></section>' +
-        '<section class="panel"><h2>Subir Excel / CSV</h2><div class="drop" data-drop tabindex="0" role="button"><strong>Arrastra la hoja aquí</strong><br><span class="muted small">.xlsx, .xls o .csv · acepta la plantilla (ref, price, qty2/price2…), una tarifa (Artículo · Descripción · Precio venta) o la exportación de WooCommerce (SKU · Producto · Precio)</span><input type="file" accept=".csv,.xlsx,.xls" hidden data-file></div></section></div>' +
+        '<p class="muted small">Última sincronización: ' + esc(when(m.at)) + ' (' + esc(m.reason || '—') + (m.mode ? ' · ' + (m.mode === 'replace' ? 'reemplazó toda la lista' : 'solo lo que traía la hoja') : '') + ')</p><p><button class="btn" data-refresh>Actualizar ahora (manual)</button></p><p class="muted small">La hoja de Drive se sincroniza sola cada 24 h; este botón fuerza la sincronización al instante.</p></section>' +
+        '<section class="panel"><h2>Subir Excel / CSV</h2>' + modeBox() + '<div class="drop" data-drop tabindex="0" role="button"><strong>Arrastra la hoja aquí</strong><br><span class="muted small">.xlsx, .xls o .csv · acepta la plantilla (ref, price, qty2/price2…), una tarifa (Artículo · Descripción · Precio venta), la exportación de WooCommerce (SKU · Producto · Precio) o una hoja por ID de producto (ID · Precio)</span><input type="file" accept=".csv,.xlsx,.xls" hidden data-file></div></section></div>' +
         '<div data-draft></div>' +
         '<section class="panel"><h2>Actualizar con una instrucción</h2><p class="muted small">Escribe qué cambiar, en castellano. La IA <strong>propone</strong> los cambios; ves la vista previa y solo se aplican si confirmas. Ej.: <em>sube un 3 % las resistencias y redondea a 2 decimales</em></p><textarea data-prompt rows="3" placeholder="sube un 3 % las resistencias"></textarea><p><button class="btn" data-run-prompt>Proponer cambios</button></p></section>';
     });
   };
-  /** Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia; no se aplica nada). */
+  /** Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada). */
   function previewUpload(rows, label) {
-    draftRows = rows;
-    return http('POST', '/api/prices/upload', { rows: rows, dry_run: true }).then(function (r) {
+    draftRows = rows; draftLabel = label;
+    return http('POST', '/api/prices/upload', { rows: rows, dry_run: true, mode: uploadMode }).then(function (r) {
       var box = root.querySelector('[data-draft]'); if (!r.ok) { draftRows = null; box.innerHTML = ''; return fail(r); }
-      var d = r.diff;
+      var d = r.diff, merge = r.mode !== 'replace';
       /** Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`. */
       var list = function (arr, kind) { return arr.slice(0, 60).map(function (k) { return '<tr><td class="mono">' + esc(k) + '</td><td>' + esc(itemName(k)) + '</td><td>' + kind + '</td></tr>'; }).join(''); };
-      box.innerHTML = '<section class="panel"><h2>Vista previa · ' + esc(label) + '</h2><p><strong>' + d.changed.length + '</strong> cambian · <strong>' + d.added.length + '</strong> nuevas · <strong>' + d.removed.length + '</strong> sin precio · ' + d.same + ' iguales · ' + r.refs + ' referencias en la hoja</p>' + TV.priceReportHtml(r.report, esc) +
+      var head = '<strong>' + d.changed.length + '</strong> cambian · <strong>' + d.added.length + '</strong> nuevas · <strong>' + d.removed.length + '</strong> ' + (merge ? 'se quedan sin precio' : 'se quedan sin precio porque no están en la hoja') + ' · ' + d.same + ' iguales' +
+        (merge ? ' · <strong>' + r.kept + '</strong> no vienen en la hoja y se conservan' : '') + ' · ' + r.refs + ' filas reconocidas · ' + r.total + ' referencias con precio al terminar';
+      var sure = r.needs_force ? '<div class="notice warn"><strong>Para aplicarlo hay que confirmarlo:</strong><ul>' + (r.blockers || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul><label class="small"><input type="checkbox" data-force> Es intencionado: aplícalo</label></div>' : '';
+      box.innerHTML = '<section class="panel"><h2>Vista previa · ' + esc(label) + '</h2><p>' + head + '</p>' + TV.priceReportHtml(r.report, esc) +
         ((d.changed.length + d.added.length + d.removed.length) ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Ref.</th><th>Producto</th><th></th></tr></thead><tbody>' + list(d.changed, 'cambia') + list(d.added, 'nueva') + list(d.removed, 'sin precio') + '</tbody></table></div>' : '<p class="notice">No hay diferencias.</p>') +
-        '<p><label class="small"><input type="checkbox" data-force> Es intencionado aunque desaparezcan muchas referencias o la hoja tenga precios de relleno</label></p><p><button class="btn" data-apply-upload>Aplicar a la web</button> <button class="btn ghost" data-discard>Descartar</button></p></section>';
+        sure + '<p><button class="btn" data-apply-upload' + (r.needs_force ? ' disabled' : '') + '>Aplicar a la web</button> <button class="btn ghost" data-discard>Descartar</button></p></section>';
+      var cb = box.querySelector('[data-force]'); if (cb) cb.addEventListener('change', function () { box.querySelector('[data-apply-upload]').disabled = !cb.checked; });
       box.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
@@ -165,7 +175,12 @@
   function applyUpload() {
     if (!draftRows) return;
     var force = !!(root.querySelector('[data-force]') || {}).checked;
-    http('POST', '/api/prices/upload', { rows: draftRows, force: force }).then(function (r) { if (!r.ok) return fail(r); draftRows = null; toast('Precios publicados · ' + r.meta.refs + ' referencias'); render(); });
+    http('POST', '/api/prices/upload', { rows: draftRows, force: force, mode: uploadMode }).then(function (r) {
+      if (!r.ok) return fail(r);
+      draftRows = null;
+      toast('Precios publicados · ' + r.meta.refs + ' referencias' + (r.meta.mode === 'merge' ? ' (' + r.meta.changed + ' cambian, ' + r.meta.added + ' nuevas, ' + r.meta.kept + ' conservadas)' : ''));
+      render();
+    });
   }
 
   // ───────────────────────────────────────── [AI] instrucción en castellano → cambios propuestos → vista previa → aplicar (con confirmación)
@@ -248,6 +263,8 @@
       ['dragleave', 'drop'].forEach(function (ev) { drop.addEventListener(ev, function (x) { x.preventDefault(); drop.classList.remove('over'); }); });
       drop.addEventListener('drop', function (x) { if (x.dataTransfer.files[0]) readUpload(x.dataTransfer.files[0]); });
     }
+    var mb = root.querySelector('[data-mode-box]');
+    if (mb) mb.addEventListener('change', function (e) { if (e.target.name !== 'upmode') return; uploadMode = e.target.value; if (draftRows) previewUpload(draftRows, draftLabel); });
     var nu = root.querySelector('[data-new-user]');
     if (nu) nu.addEventListener('submit', function (e) {
       e.preventDefault(); var f = e.target;

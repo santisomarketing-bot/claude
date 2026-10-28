@@ -24,6 +24,9 @@ body.admin{background:var(--bg)}
 .kpi span{font-size:var(--fs-0);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 .kpi strong{font-family:var(--font-display);font-size:var(--fs-6);font-weight:600;line-height:1}
 .panel textarea,.form textarea{width:100%;padding:.7rem;border:1px solid var(--line-strong);border-radius:var(--radius);font-family:inherit}
+.mode{border:0;margin:0 0 var(--s-4);padding:0}
+.mode legend{padding:0;margin-bottom:var(--s-2);font-weight:700}
+.mode label{display:block;margin:0 0 var(--s-2)}
 .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;background:var(--amber);color:var(--ink);padding:2px 7px;border-radius:2px}
 .tag.dim{background:#e6e0da}
 .num{text-align:right;white-space:nowrap}

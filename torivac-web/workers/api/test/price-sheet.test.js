@@ -14,6 +14,8 @@ for (const c of FX.cases) {
     if (e.acceptedCount != null) assert.equal(Object.keys(r.items).length, e.acceptedCount);
     if (e.unknown) assert.deepEqual(r.unknown, e.unknown);
     if (e.extras) assert.deepEqual(r.extras, e.extras);
+    if (e.retire) assert.deepEqual(r.retire, e.retire, 'a retirar');
+    if (e.by) assert.deepEqual(r.stats.by, e.by, 'filas por tipo de coincidencia');
     if (e.ignoredReasons) assert.deepEqual([...new Set(r.ignored.map((x) => x.reason))].sort(), [...new Set(e.ignoredReasons)].sort());
     assert.deepEqual(r.warnings.map((w) => w.code).sort(), [...e.warningCodes].sort(), 'avisos');
   });

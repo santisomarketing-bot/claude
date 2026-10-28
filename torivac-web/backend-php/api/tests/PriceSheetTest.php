@@ -24,6 +24,8 @@ function test_price_sheet_cases()
         if (isset($e['acceptedCount'])) T::same($e['acceptedCount'], count($r['items']), 'nº aceptadas');
         if (isset($e['unknown'])) T::same($e['unknown'], $r['unknown'], 'desconocidas');
         if (isset($e['extras'])) T::same($e['extras'], $r['extras'], 'nuevas');
+        if (isset($e['retire'])) T::same($e['retire'], $r['retire'], 'a retirar');
+        if (isset($e['by'])) T::same($e['by'], $r['stats']['by'], 'filas por tipo de coincidencia');
         if (isset($e['ignoredReasons'])) {
             $got = array_values(array_unique(array_map(function ($x) { return $x['reason']; }, $r['ignored'])));
             $want = array_values(array_unique($e['ignoredReasons']));

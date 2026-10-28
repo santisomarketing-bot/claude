@@ -37,6 +37,17 @@ const ref = row[0];
 await p.goto(`file://${D}/presupuesto/index.html`); await p.waitForTimeout(300);
 const unit = await p.evaluate((r) => window.TV.Quote.priceOf(r, 1), ref);
 ok('la web usa el precio cargado desde el panel', unit === 99.99, `ref ${ref} antes ${oldP} ahora ${unit}`);
+// hoja PARCIAL (2 referencias): por defecto solo cambian esas y el resto se conserva; «reemplazar» dejaría sin precio todo lo demás
+await p.goto(`file://${D}/admin/index.html#precios`); await p.waitForTimeout(300);
+const total = await p.evaluate(() => Object.keys(window.TV.prices.items).length);
+const part = path.join(ROOT, 'data/raw/screens/demo/test-parcial.csv');
+fs.writeFileSync(part, `ref;price\n${ref};11,11\n${csv[2].split(';')[0]};12,12\n`);
+await p.setInputFiles('[data-file]', part); await p.waitForTimeout(500);
+let vista = (await p.innerText('[data-draft]')).replace(/\s+/g, ' ');
+ok('hoja parcial: por defecto el resto se conserva', new RegExp(`${total - 2} no vienen en la hoja y se conservan`).test(vista), vista.slice(0, 200));
+await p.check('input[name=upmode][value=replace]'); await p.waitForTimeout(400);
+vista = (await p.innerText('[data-draft]')).replace(/\s+/g, ' ');
+ok('modo reemplazar: lo que no trae se queda sin precio', new RegExp(`${total - 2} sin precio`).test(vista), vista.slice(0, 200));
 // instrucción en castellano
 await p.goto(`file://${D}/admin/index.html#precios`); await p.waitForTimeout(300);
 const before = await p.evaluate(() => { const i = Object.keys(window.TV.items).find((k) => /resistencia/i.test(window.TV.items[k].n.es) && window.TV.prices.items[k]); return [i, window.TV.prices.items[i].p]; });

@@ -80,19 +80,20 @@ final class Router
         }
         if (!Auth::requireRole($who, 'manager')) return new Response(['ok' => false, 'error' => 'Solo para managers'], 403);
         if ($path === '/diag' && $m === 'GET') return new Response(['ok' => true] + Diag::run(false, null, $req));                            // autodiagnóstico de la instalación (solo managers)
-        if ($path === '/prices/refresh' && $m === 'POST') return new Response(['ok' => true, 'meta' => Sheets::sync(['reason' => 'manual:' . $who['sub']])]);
+        if ($path === '/prices/refresh' && $m === 'POST') return new Response(['ok' => true, 'meta' => Sheets::sync(['reason' => 'manual:' . $who['sub'], 'mode' => ($req->json() ?? [])['mode'] ?? null])]);
         if ($path === '/prices/upload' && $m === 'POST') {
             $b = $req->json(3000000) ?? [];
             $rows = isset($b['rows']) && is_array($b['rows']) ? $b['rows'] : (isset($b['csv']) && is_string($b['csv']) ? Sheets::parseCsv($b['csv']) : null);
             if ($rows === null) return new Response(['ok' => false, 'error' => 'Envía rows[] o csv'], 400);
-            if (!empty($b['dry_run'])) {                                                      // vista previa: nada se guarda
-                $res = Prices::fromRows($rows, 'upload');
-                $cur = Prices::load();
-                $rep = $res['report'];
-                return new Response(['ok' => true, 'dry_run' => true, 'refs' => count($res['prices']['items']), 'diff' => Prices::diff($cur, $res['prices']),
-                    'report' => ['warnings' => $rep['warnings'], 'ignored' => array_slice($rep['ignored'], 0, 40), 'unknown' => array_slice($rep['unknown'], 0, 40), 'extras' => array_slice($rep['extras'], 0, 40), 'columns' => Util::obj($rep['columns']), 'stats' => $rep['stats']]]);
+            $mode = Prices::mode($b['mode'] ?? Config::get('prices.update_mode', 'merge'));
+            if (!empty($b['dry_run'])) {                                                      // vista previa: nada se guarda; es el mismo plan que aplicará la subida
+                $plan = Sheets::plan($rows, 'upload', $mode);
+                $rep = $plan['report'];
+                return new Response(['ok' => true, 'dry_run' => true, 'mode' => $plan['mode'], 'refs' => count($plan['sheet']['items']), 'total' => count($plan['next']['items']), 'kept' => $plan['kept'],
+                    'needs_force' => (bool) $plan['blockers'], 'blockers' => $plan['blockers'], 'diff' => Prices::diff($plan['prev'], $plan['next']),
+                    'report' => ['warnings' => $rep['warnings'], 'ignored' => array_slice($rep['ignored'], 0, 40), 'unknown' => array_slice($rep['unknown'], 0, 40), 'extras' => array_slice($rep['extras'], 0, 40), 'retire' => array_slice($rep['retire'], 0, 40), 'columns' => Util::obj($rep['columns']), 'stats' => $rep['stats']]]);
             }
-            return new Response(['ok' => true, 'meta' => Sheets::sync(['rows' => $rows, 'source' => 'upload:' . $who['sub'], 'reason' => 'upload:' . $who['sub'], 'force' => ($b['force'] ?? null) === true])]);
+            return new Response(['ok' => true, 'meta' => Sheets::sync(['rows' => $rows, 'source' => 'upload:' . $who['sub'], 'reason' => 'upload:' . $who['sub'], 'force' => ($b['force'] ?? null) === true, 'mode' => $mode])]);
         }
         if ($path === '/prices/ai' && $m === 'POST') {                                       // la IA PROPONE (no aplica); se limita porque cada llamada cuesta
             $rl = RateLimit::hit('ai', $who['sub'], 15);

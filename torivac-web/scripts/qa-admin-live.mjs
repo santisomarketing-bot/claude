@@ -101,12 +101,14 @@ console.log('\n3) precios: subir hoja con vista previa y aplicar');
   await page.setInputFiles('[data-file]', csv); await page.waitForSelector('[data-apply-upload]');
   const prev = await page.locator('[data-draft]').innerText();
   ok(/1\s*cambian/.test(prev.replace(/\n/g, ' ')) || /cambian/.test(prev), 'vista previa de diferencias');
-  await page.click('[data-force]'); await page.click('[data-apply-upload]'); await page.waitForTimeout(600);
+  ok(/no vienen en la hoja y se conservan/.test(prev) && (await page.locator('[data-force]').count()) === 0, 'por defecto actualiza solo lo que trae la hoja: el resto se conserva y no hace falta confirmar nada');
+  await page.click('[data-apply-upload]'); await page.waitForTimeout(600);
   const pub = await fetch(API + '/api/prices').then((r) => r.json());
   ok(pub.prices.items[R_TT].p === 99.99 && JSON.stringify(pub.prices.items[R_TT].t) === '[[10,95]]', 'precio publicado en el servidor (99,99 con tramo 10 uds = 95)');
+  ok(Object.keys(pub.prices.items).length === Object.keys(prices.items).length, `y las demás referencias siguen con su precio (${Object.keys(pub.prices.items).length})`);
   await page.click('[data-refresh]'); await page.waitForTimeout(700);
   const syn = (await fetch(API + '/api/prices', { headers: { Authorization: 'Bearer master-test' } }).then((r) => r.json()));      // el detalle (quién y de dónde) solo lo ve un manager
-  ok(syn.prices.items[R_TT].p === 88.5 && syn.meta.reason.startsWith('manual:') && Object.keys(syn.prices.items).length === 4, 'botón «Actualizar ahora»: vuelve a leer la hoja de Drive (precio 88,5)');
+  ok(syn.prices.items[R_TT].p === 88.5 && syn.meta.reason.startsWith('manual:') && syn.meta.mode === 'merge' && Object.keys(syn.prices.items).length === Object.keys(prices.items).length, 'botón «Actualizar ahora»: vuelve a leer la hoja de Drive (precio 88,5) y actualiza solo esas 4 referencias');
   await ctx.close(); }
 
 console.log('\n4) instrucción en castellano con IA: propone → confirma → aplica');

@@ -4,9 +4,11 @@
 //   2) PRICE_XLSX_URL: descarga directa de un .xlsx (Drive «compartir con enlace»: https://drive.google.com/uc?export=download&id=<ID> · hoja de Google: https://docs.google.com/spreadsheets/d/<ID>/export?format=xlsx)
 //   3) PRICE_CSV_URL: exportación CSV pública con enlace
 // Libro .xlsx: PRICE_SHEET_NAME elige la hoja; sin nombre se usa la primera visible con columnas de referencia y precio (lector: shared/xlsx.mjs).
-// Seguridad: la sincronización se niega a publicar si la hoja nueva tiene < 50 % de las referencias que ya había (hoja vacía/rota) salvo force=true.
+// MODOS (PRICE_UPDATE_MODE · parámetro mode): «merge» (por defecto) = la hoja puede traer SOLO UNA PARTE del catálogo: cada fila reconocida (por referencia, SKU o ID) actualiza su referencia,
+//   las filas con precio 0 o active = 0 la dejan sin precio y todo lo demás se conserva; «replace» = la hoja sustituye a toda la lista de precios.
+// Seguridad (se rechaza salvo force=true): «precio de relleno», cambio masivo (más de la mitad de las referencias que ya tenían precio cambian más de un 40 %) y, solo en replace, una hoja con < 50 % de las referencias que había.
 import { toB64Url } from './util.js';
-import { KEY_CURRENT, KEY_META, loadPrices, readPrices, diffPrices } from './prices.js';
+import { KEY_CURRENT, KEY_META, loadPrices, readPrices, diffPrices, updateMode, mergePrices, massChange } from './prices.js';
 import { readXlsx, pickSheet } from '../../../shared/xlsx.mjs';
 
 const te = new TextEncoder();
@@ -73,24 +75,38 @@ export async function readSheetRows(env, fetchImpl = fetch) {
   throw new Error('Sin origen de precios: define GOOGLE_SERVICE_ACCOUNT + PRICE_SHEET_ID, PRICE_XLSX_URL o PRICE_CSV_URL');
 }
 /** Guarda unos precios nuevos: copia el anterior al histórico (90 días), escribe los vigentes y la meta. Lo usan la sincronización y los cambios por IA. */
-export async function savePrices(env, next, prev, { now = new Date(), reason = 'manual', source = 'sheet' } = {}) {
+export async function savePrices(env, next, prev, { now = new Date(), reason = 'manual', source = 'sheet', mode = null } = {}) {
   const diff = diffPrices(prev, next);
   if (Object.keys(prev.items).length > 0) await env.KV.put(`prices:history:${now.toISOString()}`, JSON.stringify(prev), { expirationTtl: 60 * 60 * 24 * 90 });
   await env.KV.put(KEY_CURRENT, JSON.stringify(next));
-  const meta = { at: now.toISOString(), reason, source, refs: Object.keys(next.items).length, changed: diff.changed.length, added: diff.added.length, removed: diff.removed.length };
+  const meta = { at: now.toISOString(), reason, source, refs: Object.keys(next.items).length, changed: diff.changed.length, added: diff.added.length, removed: diff.removed.length, ...(mode ? { mode } : {}) };
   await env.KV.put(KEY_META, JSON.stringify(meta));
   return meta;
 }
-/** Lee la hoja (Drive, CSV o filas subidas), la valida con las reglas compartidas y la publica. ctx = contexto del catálogo (ver catalog.js); sin ctx se aceptan todas las referencias (pruebas).
- *  Se rechaza: hoja con < 50 % de las referencias que había, o con «precio de relleno» (más del 60 % de filas con el mismo precio), salvo force=true. */
-export async function syncPrices(env, { fetchImpl = fetch, now = new Date(), reason = 'manual', force = false, rows = null, source = null, ctx = null } = {}) {
-  const read = rows ? { rows, source: source || 'upload' } : await readSheetRows(env, fetchImpl);
-  const { prices: next, report } = readPrices(read.rows, read.source, now, ctx || {});
+/**
+ * Plan de una actualización, sin guardar nada: lee las filas, las aplica a los precios vigentes según `mode` («merge»: solo lo que trae la hoja; «replace»: sustituye todo) y lista lo que
+ * exigiría confirmar (`blockers`). Lo usan la vista previa y la sincronización, para que enseñen y hagan exactamente lo mismo. → { next, prev, sheet, report, mode, kept, blockers }
+ */
+export async function planPrices(env, rows, source, mode, { now = new Date(), ctx = null } = {}) {
+  mode = updateMode(mode);
+  const { prices: sheet, report } = readPrices(rows, source, now, ctx || {});
   const prev = await loadPrices(env);
-  const n = Object.keys(next.items).length, p = Object.keys(prev.items).length;
-  const filler = report.warnings.find((w) => w.code === 'precio_de_relleno');
-  if (!force && filler) throw new Error(`Sincronización rechazada: ${filler.message}. Usa force=true si es intencionado.`);
-  if (!force && p > 0 && n < p * 0.5) throw new Error(`Sincronización rechazada: la hoja nueva tiene ${n} referencias y había ${p} (¿hoja vacía o rota?). Usa force=true si es intencionado.`);
-  const meta = await savePrices(env, next, prev, { now, reason, source: read.source });
-  return { ...meta, warnings: report.warnings.map((w) => w.message).slice(0, 10) };
+  const blockers = report.warnings.filter((w) => w.code === 'precio_de_relleno').map((w) => w.message), warnings = [...report.warnings];
+  const mass = massChange(prev, sheet.items);
+  if (mass) { warnings.push(mass); blockers.push(mass.message); }
+  const n = Object.keys(sheet.items).length, p = Object.keys(prev.items).length;
+  if (mode === 'replace' && p > 0 && n < p * 0.5) blockers.push(`la hoja nueva tiene ${n} referencias y había ${p} (¿hoja vacía o rota?)`);
+  const next = mergePrices(prev, sheet, report.retire, mode);
+  const touched = new Set([...Object.keys(sheet.items), ...report.retire]);
+  const kept = mode === 'replace' ? 0 : Object.keys(prev.items).filter((k) => !touched.has(k)).length;
+  return { next, prev, sheet, report: { ...report, warnings }, mode, kept, blockers };
+}
+/** Lee la hoja (Drive, CSV o filas subidas), la valida con las reglas compartidas y la publica. `mode`: «merge» (por defecto, o PRICE_UPDATE_MODE) o «replace». ctx = contexto del catálogo (ver catalog.js); sin ctx se aceptan todas las referencias (pruebas).
+ *  Se rechaza (salvo force=true): «precio de relleno» (más del 60 % de filas con el mismo precio), cambio masivo y, en replace, una hoja con < 50 % de las referencias que había. */
+export async function syncPrices(env, { fetchImpl = fetch, now = new Date(), reason = 'manual', force = false, rows = null, source = null, ctx = null, mode = null } = {}) {
+  const read = rows ? { rows, source: source || 'upload' } : await readSheetRows(env, fetchImpl);
+  const plan = await planPrices(env, read.rows, read.source, mode ?? env.PRICE_UPDATE_MODE ?? 'merge', { now, ctx });
+  if (!force && plan.blockers.length) throw new Error(`Sincronización rechazada: ${plan.blockers.join('; ')}. Usa force=true si es intencionado.`);
+  const meta = await savePrices(env, plan.next, plan.prev, { now, reason, source: read.source, mode: plan.mode });
+  return { ...meta, kept: plan.kept, warnings: plan.report.warnings.map((w) => w.message).slice(0, 10) };
 }

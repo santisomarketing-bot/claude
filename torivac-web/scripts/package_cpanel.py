@@ -13,7 +13,9 @@ Qué hace:  1) compila la web con --base y --php-api (URLs limpias, .htaccess, r
            3) verifica: ficheros imprescindibles, nada prohibido (claves, tests, scripts de trabajo, precios), php -l, SEO/enlaces (solo producción)
            4) comprime en entrega/torivac-web-<host>[-pruebas]-<fecha>.zip y da el SHA-256
 Qué NO lleva nunca: precios (la web los lee del servidor), config.php (claves), tests, scripts de trabajo, documentación.
-Funciones: build_site · copy_api · verify · make_zip · main
+           --allow-dirty (permite empaquetar PRODUCCIÓN con cambios sin commitear; por defecto no, para poder rehacer y repetir exactamente ese paquete)
+Cada paquete lleva api/generated/build.json (versión = commit, fecha del commit, URL base, pruebas/producción, aspecto): el Diagnóstico del panel lo enseña, para saber qué hay publicado.
+Funciones: git_version · build_site · copy_api · write_build_info · check_versions · verify · make_zip · main
 """
 import argparse
 import hashlib
@@ -34,7 +36,7 @@ import secret_scan  # noqa: E402  (reutiliza los patrones de claves)
 
 REQUIRED = ["index.html", ".htaccess", "404.html", "robots.txt", "en/index.html", "en/404.html", "en/.htaccess", "fr/index.html", "de/index.html",
             "admin/index.html", "presupuesto/index.html", "contacto/index.html", "assets/data/catalog.js", "assets/data/prices.js", "assets/css/site.css",
-            "api/index.php", "api/.htaccess", "api/cron.php", "api/config.sample.php", "api/generated/catalog.json", "api/lib/Router.php", "api/tools/create-user.php"]
+            "api/index.php", "api/.htaccess", "api/cron.php", "api/config.sample.php", "api/generated/catalog.json", "api/generated/build.json", "api/lib/Router.php", "api/tools/create-user.php"]
 FORBIDDEN_NAMES = {"api/config.php", "README-DEMO.txt"}
 FORBIDDEN_DIRS = ("api/tests/", "api/storage/", "node_modules/", ".git/")
 FORBIDDEN_EXT = {".py", ".sh", ".md", ".map", ".log", ".mjs", ".ts"}
@@ -45,6 +47,23 @@ def run(cmd, **kw):
     """ejecuta y devuelve (código, salida combinada)"""
     p = subprocess.run(cmd, capture_output=True, text=True, **kw)
     return p.returncode, (p.stdout + p.stderr)
+
+
+def git_version() -> tuple:
+    """→ (versión, fecha del commit, limpio): hash corto del commit actual, su fecha y si el árbol de trabajo no tiene cambios sin commitear; ('sin-git', '', True) si no hay git."""
+    code, out = run(["git", "rev-parse", "--short", "HEAD"], cwd=ROOT)
+    if code:
+        return "sin-git", "", True
+    _, when = run(["git", "show", "-s", "--format=%cI", "HEAD"], cwd=ROOT)
+    _, dirty = run(["git", "status", "--porcelain", "--", "."], cwd=ROOT)
+    return out.strip(), when.strip(), not dirty.strip()
+
+
+def write_build_info(www: Path, version: str, committed_at: str, clean: bool, base: str, staging: bool, theme: str, switch) -> None:
+    """escribe api/generated/build.json: qué versión es este paquete (sin hora de compilación, para que el mismo commit dé el mismo .zip)"""
+    info = {"version": version + ("" if clean else "+cambios"), "committed_at": committed_at, "base": base, "staging": staging, "theme": theme,
+            "theme_switch": staging if switch is None else bool(switch)}
+    (www / "api" / "generated" / "build.json").write_text(json.dumps(info, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def build_site(base: str, staging: bool, out: Path, theme: str = "ficha", switch=None) -> None:
@@ -191,6 +210,12 @@ def verify(www: Path, base: str, staging: bool, embed_prices: bool, theme: str =
     if theme == "clasico" and not want_switch and ("@layer" in css or "Archivo Expanded" in css):
         errs.append("publicación solo en «Clásico»: site.css no debería llevar el aspecto nuevo")
     errs += check_versions(www, rel, base)
+    try:
+        bi = json.loads(rel["api/generated/build.json"].read_text(encoding="utf-8"))
+        if bi.get("base") != base or bool(bi.get("staging")) != bool(staging) or bi.get("theme") != theme or not bi.get("version"):
+            errs.append("api/generated/build.json no coincide con lo que se está empaquetando (base, pruebas/producción, aspecto o versión)")
+    except Exception as e:  # noqa: BLE001
+        errs.append(f"no puedo leer api/generated/build.json: {e}")
     # PHP sintácticamente correcto
     if shutil.which("php"):
         for r, p in rel.items():
@@ -230,6 +255,7 @@ def main():
     ap.add_argument("--out", default="entrega")
     ap.add_argument("--keep", action="store_true")
     ap.add_argument("--embed-prices", action="store_true")
+    ap.add_argument("--allow-dirty", action="store_true", help="permite empaquetar PRODUCCIÓN con cambios sin commitear (por defecto no: el paquete no se podría repetir)")
     ap.add_argument("--theme", choices=["ficha", "clasico"], default="ficha", help="aspecto por defecto: ficha (Ficha técnica, el nuevo) o clasico (el de la web original)")
     sw = ap.add_mutually_exclusive_group()
     sw.add_argument("--theme-switch", dest="switch", action="store_true", default=None, help="muestra el selector de aspecto (cinta y pie)")
@@ -241,6 +267,12 @@ def main():
     if u.scheme == "http" and not re.search(r"127\.0\.0\.1|localhost", u.netloc):
         print("⚠ --base sin https: el hosting da el certificado gratis (AutoSSL en cPanel, Let's Encrypt en Plesk); la web redirige a https solo si la URL empieza por https")
     base = a.base.rstrip("/")
+    version, committed_at, clean = git_version()                  # antes de compilar: la compilación regenera archivos y no debe contar como cambios del usuario
+    if not clean:
+        if a.staging or a.allow_dirty:
+            print(f"⚠ hay cambios sin commitear: el paquete se marca como {version}+cambios y no se podrá repetir exactamente")
+        else:
+            sys.exit(f"✗ producción con cambios sin commitear ({version}+cambios): haz commit antes (así el paquete se puede repetir y volver atrás) o usa --allow-dirty")
     tmp = Path(tempfile.mkdtemp(prefix="tv-paquete-"))
     www = tmp / "www"
     try:
@@ -248,6 +280,7 @@ def main():
         build_site(base, a.staging, www, a.theme, a.switch)
         print("2/4 copiando el API PHP …")
         copy_api(www)
+        write_build_info(www, version, committed_at, clean, base, a.staging, a.theme, a.switch)
         print("3/4 verificando …")
         errs, warns = verify(www, base, a.staging, a.embed_prices, a.theme, a.switch)
         for w in warns:
@@ -262,7 +295,7 @@ def main():
         print("4/4 comprimiendo …")
         sha = make_zip(www, dest)
         n = len(files(www))
-        print(f"\n✓ {shown(dest)}  ·  {n} ficheros  ·  {dest.stat().st_size / 1048576:.1f} MB\n  SHA-256 {sha}")
+        print(f"\n✓ {shown(dest)}  ·  {n} ficheros  ·  {dest.stat().st_size / 1048576:.1f} MB\n  versión {version}{'' if clean else '+cambios'}  ·  SHA-256 {sha}")
         print("\nSiguiente: docs/DESPLIEGUE-PLESK.md (Plesk) o docs/DESPLIEGUE-CPANEL.md (cPanel): subir, crear api/config.php, primer usuario manager, cron de precios.")
         if a.keep:
             keep = ROOT / a.out / dest.stem

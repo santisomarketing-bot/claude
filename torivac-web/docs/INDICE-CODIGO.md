@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 778/778 funciones descritas (100 %) · 124/124 archivos con cabecera.
+**Cobertura**: 802/802 funciones descritas (100 %) · 125/125 archivos con cabecera.
 
 
 ## `site/`
@@ -175,19 +175,20 @@ Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[
 - `cell` (l. 108) — Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir).
 - `V.estadisticas` (l. 114) — Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras.
 - `V.ajustes` (l. 120) — Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag).
-- `V.precios` (l. 132) — Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA.
-- `previewUpload` (l. 143) — Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia; no se aplica nada).
-- `list` (l. 149) — Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`.
-- `readUpload` (l. 157) — Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa.
-- `go` (l. 160) — Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo.
-- `applyUpload` (l. 165) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
-- `runPrompt` (l. 174) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
-- `applyProposal` (l. 190) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
-- `V.propuestas` (l. 199) — Vista Propuestas (manager): lista las propuestas de cambio con su estado en el servidor para aprobar, rechazar o deshacer.
-- `V.usuarios` (l. 214) — Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes.
-- `onClick` (l. 224) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF.
-- `bind` (l. 242) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
-- `render` (l. 259) — Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
+- `modeBox` (l. 132) — Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios.
+- `V.precios` (l. 138) — Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA.
+- `previewUpload` (l. 149) — Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada).
+- `list` (l. 155) — Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`.
+- `readUpload` (l. 167) — Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa.
+- `go` (l. 170) — Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo.
+- `applyUpload` (l. 175) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
+- `runPrompt` (l. 189) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
+- `applyProposal` (l. 205) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
+- `V.propuestas` (l. 214) — Vista Propuestas (manager): lista las propuestas de cambio con su estado en el servidor para aprobar, rechazar o deshacer.
+- `V.usuarios` (l. 229) — Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes.
+- `onClick` (l. 239) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF.
+- `bind` (l. 257) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
+- `render` (l. 276) — Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
 
 ### `admin-report.js`
 
@@ -196,7 +197,7 @@ Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[
 Secciones: `[ADMIN-REPORT]`
 
 - `TV.priceReportHtml` (l. 13) — HTML del informe de lectura de la hoja (columnas, avisos y listas plegables); `esc` escapa el texto; '' sin informe.
-- `list` (l. 20) — Bloque <details> con `title` y hasta 40 elementos formateados con `fmt` (añade «…» si hay más); '' si la lista está vacía.
+- `list` (l. 28) — Bloque <details> con `title` y hasta 40 elementos formateados con `fmt` (añade «…» si hay más); '' si la lista está vacía.
 
 ### `admin.js`
 
@@ -213,37 +214,38 @@ Secciones: `[ADMIN]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[PRICES]` · `[PRO
 - `stem` (l. 39) — Raíz tosca de una palabra: quita «es» o «s» finales si tiene más de 4 letras, para comparar singular y plural.
 - `csvParse` (l. 41) — Delega en TV.csvParse (lector CSV de quote.js): texto → filas de celdas.
 - `pnum` (l. 43) — Convierte texto a número con las mismas reglas que el servidor («3,5», «1.234,56», «1,234.5», «€ 5»); null si está vacío o no es numérico.
-- `rowsToPrices` (l. 46) — Hoja → precios con las MISMAS reglas que el servidor (TV.PriceSheet = shared/price-sheet.mjs): cabeceras tolerantes, SKU, referencias nuevas por regla, avisos.
-- `diffPrices` (l. 53) — Compara la hoja vigente `a` con la nueva `b`: {added, changed, removed} como [ref, antes, después] y same = nº sin cambios.
-- `itemName` (l. 60) — Nombre en español de la referencia (con el código si es un modelo concreto); sin ficha devuelve la propia referencia.
-- `toast` (l. 62) — Muestra el aviso flotante #toast con el mensaje `m` durante 2,6 s.
-- `download` (l. 64) — Descarga `blob` como archivo `name` con un enlace temporal y libera la URL a los 800 ms.
-- `orders` (l. 66) — Pedidos de la demo guardados en localStorage (tv_orders); [] si no hay.
-- `V.resumen` (l. 76) — Vista Resumen (manager): KPIs de pedidos, mensajes y propuestas, estado de la hoja de precios y las 5 referencias más pedidas.
-- `kpi` (l. 88) — HTML de una tarjeta KPI con la etiqueta `l` y el valor `v`, ambos escapados.
-- `V.pedidos` (l. 91) — Vista Pedidos (manager): tabla de los pedidos de la demo, los más recientes primero, con PDF por pedido, exportar y borrar.
-- `V.mis` (l. 98) — Vista «Mis presupuestos» (cliente): la tabla de Pedidos con otro título.
-- `V.precios` (l. 101) — Vista Precios (manager): estado de la hoja, actualizar o restaurar, subida de Excel/CSV e instrucción en castellano.
-- `V.lista` (l. 110) — Vista Lista de precios (cliente): precios unitarios y tramos de las primeras 400 referencias con precio.
-- `V.propuestas` (l. 116) — Vista Propuestas (manager): diferencias entre la web y los PDFs para aprobar o rechazar una a una (estado en localStorage).
-- `V.contenido` (l. 127) — Vista Contenido (manager): estado de traducción por idioma, referencias y etiquetas de voltaje de cada producto.
-- `cell` (l. 130) — Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir).
-- `V.estadisticas` (l. 136) — Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras.
-- `V.ajustes` (l. 143) — Vista Ajustes (manager): destinatarios del pedido y usuarios de la demo.
-- `V.presupuestador` (l. 149) — Vista Presupuestador (cliente): incrusta la página del presupuesto en un iframe con ?embed=1.
-- `showDraft` (l. 156) — Guarda `next` como borrador y pinta su vista previa contra los precios vigentes, con el informe `report` y Aplicar/Descartar.
-- `rowsOf` (l. 159) — Filas HTML (máx. 60) de las diferencias `arr` [ref, antes, después], con la etiqueta `kind`.
-- `applyDraft` (l. 166) — Aplica el borrador de precios: lo guarda como hoja del panel (tv_prices_override), actualiza la web, avisa y repinta.
-- `readUpload` (l. 168) — Lee la hoja subida (Excel con SheetJS o CSV) y muestra su vista previa como borrador de precios.
-- `go` (l. 171) — Convierte las filas leídas en un borrador de precios y lo muestra; si la hoja no se puede leer, avisa con el error.
-- `itemHaystack` (l. 178) — Texto en el que se busca una referencia: su nombre, su categoría y su código, normalizado.
-- `targetMatches` (l. 180) — ¿Encaja `ref` con el objetivo? Vacío o «todo» sí; si no, cada palabra del objetivo debe estar en su nombre, categoría o código.
-- `parsePrompt` (l. 185) — Traduce la instrucción en castellano a reglas {op: pct|abs|round|unknown, val, dec, target}; lo ininteligible va como unknown.
-- `runPrompt` (l. 198) — Aplica la instrucción a una copia de los precios y muestra la vista previa; avisa de los fragmentos que no entiende.
-- `f` (l. 208) — Aplica la regla `r` a un precio `v`: porcentaje, suma o resta fija, o redondeo; otra operación lo deja igual.
-- `bind` (l. 219) — Conecta los eventos de la vista recién pintada (zona de arrastre del Excel/CSV, botones y formularios).
-- `onClick` (l. 224) — Gestor único de clics del panel (delegado en #admin-root): salir, precios, instrucción, borrador, propuestas, PDF y pedidos.
-- `render` (l. 238) — Pinta la pantalla de acceso (sin sesión) o el panel con menú lateral y la vista de la ruta #hash según el rol.
+- `modeBox` (l. 46) — Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios.
+- `rowsToPrices` (l. 52) — Hoja → precios con las MISMAS reglas que el servidor (TV.PriceSheet = shared/price-sheet.mjs): cabeceras tolerantes, SKU, referencias nuevas por regla, avisos.
+- `diffPrices` (l. 61) — Compara la hoja vigente `a` con la nueva `b`: {added, changed, removed} como [ref, antes, después] y same = nº sin cambios.
+- `itemName` (l. 68) — Nombre en español de la referencia (con el código si es un modelo concreto); sin ficha devuelve la propia referencia.
+- `toast` (l. 70) — Muestra el aviso flotante #toast con el mensaje `m` durante 2,6 s.
+- `download` (l. 72) — Descarga `blob` como archivo `name` con un enlace temporal y libera la URL a los 800 ms.
+- `orders` (l. 74) — Pedidos de la demo guardados en localStorage (tv_orders); [] si no hay.
+- `V.resumen` (l. 84) — Vista Resumen (manager): KPIs de pedidos, mensajes y propuestas, estado de la hoja de precios y las 5 referencias más pedidas.
+- `kpi` (l. 96) — HTML de una tarjeta KPI con la etiqueta `l` y el valor `v`, ambos escapados.
+- `V.pedidos` (l. 99) — Vista Pedidos (manager): tabla de los pedidos de la demo, los más recientes primero, con PDF por pedido, exportar y borrar.
+- `V.mis` (l. 106) — Vista «Mis presupuestos» (cliente): la tabla de Pedidos con otro título.
+- `V.precios` (l. 109) — Vista Precios (manager): estado de la hoja, actualizar o restaurar, subida de Excel/CSV e instrucción en castellano.
+- `V.lista` (l. 118) — Vista Lista de precios (cliente): precios unitarios y tramos de las primeras 400 referencias con precio.
+- `V.propuestas` (l. 124) — Vista Propuestas (manager): diferencias entre la web y los PDFs para aprobar o rechazar una a una (estado en localStorage).
+- `V.contenido` (l. 135) — Vista Contenido (manager): estado de traducción por idioma, referencias y etiquetas de voltaje de cada producto.
+- `cell` (l. 138) — Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir).
+- `V.estadisticas` (l. 144) — Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras.
+- `V.ajustes` (l. 151) — Vista Ajustes (manager): destinatarios del pedido y usuarios de la demo.
+- `V.presupuestador` (l. 157) — Vista Presupuestador (cliente): incrusta la página del presupuesto en un iframe con ?embed=1.
+- `showDraft` (l. 164) — Guarda `next` como borrador y pinta su vista previa contra los precios vigentes, con el informe `report` y Aplicar/Descartar.
+- `rowsOf` (l. 167) — Filas HTML (máx. 60) de las diferencias `arr` [ref, antes, después], con la etiqueta `kind`.
+- `applyDraft` (l. 174) — Aplica el borrador de precios: lo guarda como hoja del panel (tv_prices_override), actualiza la web, avisa y repinta.
+- `readUpload` (l. 176) — Lee la hoja subida (Excel con SheetJS o CSV) y muestra su vista previa como borrador de precios.
+- `go` (l. 179) — Convierte las filas leídas en un borrador de precios y lo muestra; si la hoja no se puede leer, avisa con el error.
+- `itemHaystack` (l. 186) — Texto en el que se busca una referencia: su nombre, su categoría y su código, normalizado.
+- `targetMatches` (l. 188) — ¿Encaja `ref` con el objetivo? Vacío o «todo» sí; si no, cada palabra del objetivo debe estar en su nombre, categoría o código.
+- `parsePrompt` (l. 193) — Traduce la instrucción en castellano a reglas {op: pct|abs|round|unknown, val, dec, target}; lo ininteligible va como unknown.
+- `runPrompt` (l. 206) — Aplica la instrucción a una copia de los precios y muestra la vista previa; avisa de los fragmentos que no entiende.
+- `f` (l. 216) — Aplica la regla `r` a un precio `v`: porcentaje, suma o resta fija, o redondeo; otra operación lo deja igual.
+- `bind` (l. 227) — Conecta los eventos de la vista recién pintada (zona de arrastre del Excel/CSV, botones y formularios).
+- `onClick` (l. 234) — Gestor único de clics del panel (delegado en #admin-root): salir, precios, instrucción, borrador, propuestas, PDF y pedidos.
+- `render` (l. 248) — Pinta la pantalla de acceso (sin sesión) o el panel con menú lateral y la vista de la ruta #hash según el rol.
 
 ### `app.js`
 
@@ -612,15 +614,17 @@ Sesión 1 · Mapa de traducciones y lotes de trabajo (determinista).    python3 
 
 [PACKAGE-CPANEL] Paquete .zip para subir a un hosting con cPanel o Plesk (Apache + PHP; web estática + API PHP), verificado antes de entregarlo. (El nombre del script es histórico: el paquete es el mismo para cualquier hosting con Apache y PHP 7.4+.)
 
-- `run` (l. 44) — ejecuta y devuelve (código, salida combinada)
-- `build_site` (l. 50) — compila la web de producción (la salida se cuenta línea a línea en la consola de build); `switch` None = el valor por defecto del compilador (sí en pruebas, no en producción)
-- `copy_api` (l. 58) — copia el API PHP sin pruebas, sin almacén de datos y sin la configuración real (config.php lleva claves y la crea quien despliega)
-- `shown` (l. 63) — ruta legible: relativa al proyecto si está dentro, absoluta si no
-- `files` (l. 71) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
-- `check_versions` (l. 76) — Actualizar sin caché vieja: todo CSS y JS local de cada página lleva «?v=<10 hex>» igual a la huella (SHA-256) del archivo, y no queda ningún marcador sin resolver.
-- `verify` (l. 119) — → (errores, avisos). Un error impide entregar el paquete.
-- `make_zip` (l. 213) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
-- `main` (l. 225) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
+- `run` (l. 46) — ejecuta y devuelve (código, salida combinada)
+- `git_version` (l. 52) — → (versión, fecha del commit, limpio): hash corto del commit actual, su fecha y si el árbol de trabajo no tiene cambios sin commitear; ('sin-git', '', True) si no hay git.
+- `write_build_info` (l. 62) — escribe api/generated/build.json: qué versión es este paquete (sin hora de compilación, para que el mismo commit dé el mismo .zip)
+- `build_site` (l. 69) — compila la web de producción (la salida se cuenta línea a línea en la consola de build); `switch` None = el valor por defecto del compilador (sí en pruebas, no en producción)
+- `copy_api` (l. 77) — copia el API PHP sin pruebas, sin almacén de datos y sin la configuración real (config.php lleva claves y la crea quien despliega)
+- `shown` (l. 82) — ruta legible: relativa al proyecto si está dentro, absoluta si no
+- `files` (l. 90) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
+- `check_versions` (l. 95) — Actualizar sin caché vieja: todo CSS y JS local de cada página lleva «?v=<10 hex>» igual a la huella (SHA-256) del archivo, y no queda ningún marcador sin resolver.
+- `verify` (l. 138) — → (errores, avisos). Un error impide entregar el paquete.
+- `make_zip` (l. 238) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
+- `main` (l. 250) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
 
 ### `pdf_jobs.py`
 
@@ -879,6 +883,17 @@ Secciones: `[QA-THEME]` · `[DESIGN]` · `[BUILD]` · `[BROWSER]`
 - `ctxOf` (l. 99) — Contexto de navegador con idioma ya elegido (sin avisos ni redirecciones) y las opciones `o`; `init` se ejecuta en cada página antes que nada.
 - `state` (l. 101) — Estado visible del aspecto en la página: atributo, almacenamiento, fuente y esquina de los botones, y qué botón del selector está pulsado.
 
+### `qa-update.mjs`
+
+[QA-UPDATE] Actualizar la web publicada sin que el navegador mezcle HTML nuevo con CSS o catálogo viejos. Reproduce lo que pasa en un hosting real: el HTML no se guarda (Cache-Control: no-cache) y los CSS/JS se guardan una semana (max-age=604800), igual que el .htaccess. Compila DOS versiones de producción (v1 = Ficha técnica, v2 = Clásico: hoja de estilos distinta), sirve una y, con el MISMO navegador y su caché, «publica» la otra:
+
+Secciones: `[QA-UPDATE]` · `[VERSIONES]` · `[SERVIDOR]` · `[NAVEGADOR]`
+
+- `ok` (l. 49) — Anota una comprobación: la cuenta como fallo si no se cumple y la imprime.
+- `look` (l. 51) — Qué ve la página tras cargar: aspecto, dirección y origen (red o caché) de site.css y catalog.js, y si la hoja en uso lleva la capa de «Ficha técnica».
+- `res` (l. 53) — Dirección (sin el origen) y si vino de la red del recurso cuya URL contiene `needle`; null si la página no lo pidió.
+- `newPage` (l. 60) — Pestaña nueva en un contexto nuevo (caché vacía).
+
 ### `qa-ux.mjs`
 
 [QA-UX] Sesión 10 · Control riguroso de experiencia de usuario sobre TODAS las páginas del demo (Playwright, por http). node scripts/qa-ux.mjs [--limit=N] [--mobile | --width=1280] [--only=/ruta/] [--workers=4] [--out=informe.json] Por página mide (tras recorrerla entera para que carguen las imágenes diferidas):
@@ -1034,7 +1049,7 @@ Secciones: `[EMAIL]`
 Secciones: `[INDEX]`
 
 - `fetch` (l. 19) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx } para pruebas.
-- `scheduled` (l. 86) — Tarea programada (cron): sincroniza los precios con la hoja de origen; un fallo se registra en el log y no se propaga.
+- `scheduled` (l. 87) — Tarea programada (cron): sincroniza los precios con la hoja de origen; un fallo se registra en el log y no se propaga.
 
 ### `orders.js`
 
@@ -1061,7 +1076,10 @@ Secciones: `[PRICES]`
 - `readPrices` (l. 32) — filas (con filas de título delante si las hay) → { prices, report } usando las reglas compartidas de shared/price-sheet.mjs.
 - `rowsToPrices` (l. 38) — igual que readPrices pero devuelve solo el objeto de precios (lo usan el cron y los tests)
 - `withSheetItems` (l. 40) — catálogo de referencias pedibles = las del sitio + las que la hoja de precios añadió dentro de un producto ({n, pid})
-- `diffPrices` (l. 46) — Compara dos precios: { changed, added, removed } con las referencias afectadas y same con el número de las que no cambian.
+- `updateMode` (l. 46) — Modo de actualización válido: «replace» (la hoja sustituye a toda la lista) o «merge» (solo lo que trae la hoja; es lo normal y vale para cualquier otro valor).
+- `mergePrices` (l. 51) — Aplica una hoja ya leída (`sheet`) a los precios vigentes (`prev`). «merge»: quita las referencias de `retire` y pone o actualiza las que trae la hoja (si una referencia sale a la vez
+- `massChange` (l. 55) — Aviso «cambio_masivo» si ≥ 10 referencias de la hoja ya tenían precio y más de la mitad cambia más de un 40 % (¿hoja equivocada, columna movida, otra unidad?); null si no.
+- `diffPrices` (l. 66) — Compara dos precios: { changed, added, removed } con las referencias afectadas y same con el número de las que no cambian.
 
 ### `ratelimit.js`
 
@@ -1077,13 +1095,14 @@ Secciones: `[RATE-LIMIT]`
 
 Secciones: `[SHEETS]`
 
-- `parseCsv` (l. 14) — Texto CSV → filas de celdas: separador «;» o «,» según la primera línea, comillas dobles; omite las filas vacías.
-- `pemToDer` (l. 29) — Clave privada PEM (PKCS8) → bytes DER, sin las líneas de cabecera ni espacios.
-- `getAccessToken` (l. 31) — token de acceso OAuth2 de una cuenta de servicio (JWT RS256 firmado con WebCrypto)
-- `xlsxRows` (l. 42) — filas de la hoja de precios de un libro .xlsx descargado (bytes) → { rows, sheet }; si no es un libro, el error dice qué revisar
-- `readSheetRows` (l. 49) — Lee la hoja de precios de la primera fuente configurada (cuenta de servicio, XLSX o CSV) → { rows, source }; sin fuente, Error.
-- `savePrices` (l. 76) — Guarda unos precios nuevos: copia el anterior al histórico (90 días), escribe los vigentes y la meta. Lo usan la sincronización y los cambios por IA.
-- `syncPrices` (l. 86) — Lee la hoja (Drive, CSV o filas subidas), la valida con las reglas compartidas y la publica. ctx = contexto del catálogo (ver catalog.js); sin ctx se aceptan todas las referencias (pruebas).
+- `parseCsv` (l. 16) — Texto CSV → filas de celdas: separador «;» o «,» según la primera línea, comillas dobles; omite las filas vacías.
+- `pemToDer` (l. 31) — Clave privada PEM (PKCS8) → bytes DER, sin las líneas de cabecera ni espacios.
+- `getAccessToken` (l. 33) — token de acceso OAuth2 de una cuenta de servicio (JWT RS256 firmado con WebCrypto)
+- `xlsxRows` (l. 44) — filas de la hoja de precios de un libro .xlsx descargado (bytes) → { rows, sheet }; si no es un libro, el error dice qué revisar
+- `readSheetRows` (l. 51) — Lee la hoja de precios de la primera fuente configurada (cuenta de servicio, XLSX o CSV) → { rows, source }; sin fuente, Error.
+- `savePrices` (l. 78) — Guarda unos precios nuevos: copia el anterior al histórico (90 días), escribe los vigentes y la meta. Lo usan la sincronización y los cambios por IA.
+- `planPrices` (l. 90) — Plan de una actualización, sin guardar nada: lee las filas, las aplica a los precios vigentes según `mode` («merge»: solo lo que trae la hoja; «replace»: sustituye todo) y lista lo que
+- `syncPrices` (l. 106) — Lee la hoja (Drive, CSV o filas subidas), la valida con las reglas compartidas y la publica. `mode`: «merge» (por defecto, o PRICE_UPDATE_MODE) o «replace». ctx = contexto del catálogo (ver catalog.js); sin ctx se aceptan todas las referencias (pruebas).
 
 ### `turnstile.js`
 
@@ -1162,6 +1181,9 @@ Secciones: `[AUTH]` · `[VALIDATE]` · `[PRICES]` · `[SHEETS]` · `[ORDERS]` ·
 - `fetchImpl` (l. 221) — Resend simulado: guarda cada correo enviado en `sent`.
 - `down` (l. 242) — Resend simulado que rechaza todos los envíos (403: dominio sin verificar).
 - `up` (l. 249) — Resend simulado que acepta todos los envíos.
+- `up` (l. 271) — Sube una hoja (cuerpo `body`) al API con el catálogo de pruebas y devuelve la respuesta ya leída.
+- `items` (l. 273) — Precios vigentes guardados en KV.
+- `rows` (l. 308) — Hoja de 12 referencias R0…R11 con precio base + índice.
 
 ### `helpers.js`
 
@@ -1192,13 +1214,16 @@ Lector de .xlsx del servidor (shared/xlsx.mjs): mismos libros y mismo resultado 
 
 Secciones: `[PRICE-SHEET]`
 
-- `normHeader` (l. 29) — cabecera → clave comparable: minúsculas, sin acentos ni signos («Precio venta» → precioventa)
-- `normRef` (l. 31) — referencia → clave de comparación: mayúsculas, sin espacios
-- `parseNumber` (l. 34) — número de una celda: acepta «27,75», «27.75093203», «1.234,56», «1,234.56», «22 000», «€ 5» y números ya numéricos; vacío/ilegible → null
-- `roundTo` (l. 47) — Redondea n a dec decimales (corrige los errores de coma flotante: 1.005 con 2 decimales da 1.01).
-- `findHeader` (l. 50) — índice de la fila de cabecera (primera con una columna de referencia y una de precio) y mapa columna → posición
-- `readSheet` (l. 68) — rows: matriz (primera fila = cabecera o con filas de título delante). ctx (todo opcional):
-- `col` (l. 78) — Celda de la fila r en la columna del campo f; cadena vacía si la hoja no tiene esa columna.
+- `normHeader` (l. 35) — cabecera → clave comparable: minúsculas, sin acentos ni signos («Precio venta» → precioventa)
+- `normRef` (l. 37) — referencia → clave de comparación: mayúsculas, sin espacios
+- `parseNumber` (l. 40) — número de una celda: acepta «27,75», «27.75093203», «1.234,56», «1,234.56», «22 000», «€ 5» y números ya numéricos; vacío/ilegible → null
+- `applySheetItems` (l. 56) — Aplica los precios que trae una hoja (`sheetItems`) a los vigentes (`prevItems`). «merge» (por defecto): quita las referencias de `retire` y pone o actualiza las que trae la hoja
+- `roundTo` (l. 63) — Redondea n a dec decimales (corrige los errores de coma flotante: 1.005 con 2 decimales da 1.01).
+- `findHeader` (l. 66) — índice de la fila de cabecera (primera con una columna de referencia —o de ID de producto— y una de precio) y mapa columna → posición
+- `readSheet` (l. 85) — rows: matriz (primera fila = cabecera o con filas de título delante). ctx (todo opcional):
+- `col` (l. 95) — Celda de la fila r en la columna del campo f; cadena vacía si la hoja no tiene esa columna.
+- `resolve` (l. 99) — Resuelve la fila a una línea del catálogo: { target, kind:'ref'|'sku'|'id'|'rule', extra? } · { skip: motivo } · { unknown: true }. Primero la referencia, luego el SKU, luego la familia nueva; el ID solo si la fila no trae referencia.
+- `retireRow` (l. 119) — Anota para retirar la línea a la que apunta la fila (si se reconoce); las desconocidas no cuentan como tales.
 
 ### `xlsx.mjs`
 
@@ -1342,16 +1367,16 @@ Secciones: `[ORDERS]`
 
 ### `PriceSheet.php`
 
-[PRICE-SHEET] Lectura tolerante de hojas de precios (Excel/CSV/Google Sheets) → precios. Port FIEL de shared/price-sheet.mjs: las dos implementaciones se prueban con los mismos casos (shared/price-sheet.fixtures.json). FORMATOS: plantilla (ref · price · qty2/price2…), tarifa (Artículo · Descripción · Precio venta) y exportación de WooCommerce (SKU · Producto · Precio · Oferta · Stock).
+[PRICE-SHEET] Lectura tolerante de hojas de precios (Excel/CSV/Google Sheets) → precios. Port FIEL de shared/price-sheet.mjs: las dos implementaciones se prueban con los mismos casos (shared/price-sheet.fixtures.json). FORMATOS: plantilla (ref · price · qty2/price2…), tarifa (Artículo · Descripción · Precio venta), exportación de WooCommerce (SKU · Producto · Precio · Oferta · Stock) y hojas por ID de producto (ID · Precio).
 
 Secciones: `[PRICE-SHEET]`
 
-- `normHeader` (l. 35) — cabecera → clave comparable: minúsculas, sin acentos ni signos («Precio venta» → precioventa)
-- `normRef` (l. 43) — referencia → clave de comparación: mayúsculas y sin espacios
-- `parseNumber` (l. 49) — número de una celda («27,75», «1.234,56», «1,234.56», «22 000», «€ 5»…); vacío o ilegible → null
-- `findHeader` (l. 68) — @return array{index:int,map:array<string,int>,headers:string[]}|null
-- `read` (l. 95) — @param array $rows matriz de celdas
-- `num` (l. 189) — número sin ceros sobrantes, como lo escribe JavaScript (10, 10.5)
+- `normHeader` (l. 40) — cabecera → clave comparable: minúsculas, sin acentos ni signos («Precio venta» → precioventa)
+- `normRef` (l. 48) — referencia → clave de comparación: mayúsculas y sin espacios
+- `parseNumber` (l. 54) — número de una celda («27,75», «1.234,56», «1,234.56», «22 000», «€ 5»…); vacío o ilegible → null
+- `findHeader` (l. 73) — Cabecera: primera fila (de las 12 primeras) con una columna de referencia —o de ID de producto— y una de precio. @return array{index:int,map:array<string,int>,headers:string[]}|null
+- `read` (l. 100) — @param array $rows matriz de celdas
+- `num` (l. 211) — número sin ceros sobrantes, como lo escribe JavaScript (10, 10.5)
 
 ### `Prices.php`
 
@@ -1359,22 +1384,26 @@ Secciones: `[PRICE-SHEET]`
 
 Secciones: `[PRICES]` · `[SHEETS]`
 
-- `load` (l. 18) — Precios vigentes; si todavía no hay, devuelve una hoja vacía (modo none).
-- `coarse` (l. 25) — Origen sin datos personales ni identificadores: «upload:ana@torivac.com» → «upload», «sheet:ID» → «sheet».
-- `publicView` (l. 28) — Lo que ve cualquier visitante de GET /prices: igual que el original pero sin el correo de quien cargó la hoja ni el id del archivo de Drive.
-- `forJson` (l. 36) — para JSON: items vacío → {} y claves numéricas siempre como objeto
-- `unit` (l. 43) — Precio unitario de una referencia para una cantidad, aplicando el último tramo alcanzado; null si no tiene precio.
-- `priceOrder` (l. 53) — valora líneas [{ref,qty}]; sin precio → unit/total null («Consultar»: no suman)
-- `withSheetItems` (l. 66) — catálogo del sitio + referencias que la hoja añadió dentro de un producto
-- `diff` (l. 76) — diferencias entre dos juegos de precios
-- `save` (l. 90) — guarda unos precios nuevos: el anterior pasa al histórico (90 días), se escriben los vigentes y la meta
-- `fromRows` (l. 102) — filas → ['prices' => …, 'report' => …] con las reglas compartidas de PriceSheet
-- `parseCsv` (l. 114) — CSV (RFC 4180: comillas, separador , o ;, saltos de línea dentro de comillas) → filas
-- `serviceAccount` (l. 136) — cuenta de servicio de Google: array, ruta a un .json o texto JSON
-- `accessToken` (l. 148) — token de acceso OAuth2 (JWT RS256 firmado con openssl)
-- `xlsxRows` (l. 163) — filas de la hoja de precios de un libro .xlsx descargado (bytes); si no es un libro, el error dice qué revisar
-- `readRows` (l. 176) — Tres orígenes, en este orden:
-- `sync` (l. 212) — Lee la hoja (Drive, CSV o filas subidas), valida y publica. ctx = contexto del catálogo (null → el del sitio; [] → aceptar todo, pruebas).
+- `load` (l. 21) — Precios vigentes; si todavía no hay, devuelve una hoja vacía (modo none).
+- `coarse` (l. 28) — Origen sin datos personales ni identificadores: «upload:ana@torivac.com» → «upload», «sheet:ID» → «sheet».
+- `publicView` (l. 31) — Lo que ve cualquier visitante de GET /prices: igual que el original pero sin el correo de quien cargó la hoja ni el id del archivo de Drive.
+- `forJson` (l. 39) — para JSON: items vacío → {} y claves numéricas siempre como objeto
+- `unit` (l. 46) — Precio unitario de una referencia para una cantidad, aplicando el último tramo alcanzado; null si no tiene precio.
+- `priceOrder` (l. 56) — valora líneas [{ref,qty}]; sin precio → unit/total null («Consultar»: no suman)
+- `withSheetItems` (l. 69) — catálogo del sitio + referencias que la hoja añadió dentro de un producto
+- `mode` (l. 79) — Modo de actualización válido: «replace» (la hoja sustituye a toda la lista) o «merge» (solo lo que trae la hoja; es lo normal y vale para cualquier otro valor).
+- `merge` (l. 85) — Aplica una hoja ya leída (`$sheet`) a los precios vigentes (`$prev`). «merge»: quita las referencias de `$retire` y pone o actualiza las que trae la hoja (si una referencia
+- `massChange` (l. 95) — Aviso «cambio_masivo» si ≥ 10 referencias de la hoja ya tenían precio y más de la mitad cambia más de un 40 % (¿hoja equivocada, columna movida, otra unidad?); null si no.
+- `diff` (l. 109) — diferencias entre dos juegos de precios
+- `save` (l. 123) — guarda unos precios nuevos: el anterior pasa al histórico (90 días), se escriben los vigentes y la meta
+- `fromRows` (l. 136) — filas → ['prices' => …, 'report' => …] con las reglas compartidas de PriceSheet
+- `parseCsv` (l. 148) — CSV (RFC 4180: comillas, separador , o ;, saltos de línea dentro de comillas) → filas
+- `serviceAccount` (l. 170) — cuenta de servicio de Google: array, ruta a un .json o texto JSON
+- `accessToken` (l. 182) — token de acceso OAuth2 (JWT RS256 firmado con openssl)
+- `xlsxRows` (l. 197) — filas de la hoja de precios de un libro .xlsx descargado (bytes); si no es un libro, el error dice qué revisar
+- `readRows` (l. 210) — Tres orígenes, en este orden:
+- `plan` (l. 247) — Plan de una actualización, sin guardar nada: lee las filas, las aplica a los precios vigentes según `$mode` («merge»: solo lo que trae la hoja; «replace»: sustituye todo) y
+- `sync` (l. 269) — Lee la hoja (Drive, CSV o filas subidas), valida y publica. `mode` («merge» por defecto, o prices.update_mode; «replace» sustituye toda la lista). ctx = contexto del catálogo (null → el del sitio; [] → aceptar todo, pruebas).
 
 ### `Request.php`
 
@@ -1406,7 +1435,7 @@ Secciones: `[ROUTER]`
 
 - `handle` (l. 15) — Atiende una petición: comprueba el origen (CORS), despacha a la ruta y convierte las excepciones en respuestas JSON con su código.
 - `route` (l. 36) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
-- `cron` (l. 128) — sincroniza los precios (cron diario) y limpia lo caducado
+- `cron` (l. 129) — sincroniza los precios (cron diario) y limpia lo caducado
 
 ### `Store.php`
 
@@ -1494,24 +1523,26 @@ Pruebas del API en PHP: equivalen a workers/api/test/api.test.js + ai.test.js (s
 - `test_auth_sessions` (l. 22) — Sesión firmada: válida, manipulada y caducada; la contraseña se guarda con hash.
 - `test_users_and_login` (l. 36) — Alta de usuarios, duplicados, login (sin el hash en la respuesta) y bloqueo tras varios intentos.
 - `test_prices_tiers_and_rounding` (l. 54) — Tramos por cantidad, importe de línea redondeado a 2 decimales y diferencias entre hojas de precios.
-- `test_sheet_sync_rules` (l. 66) — Sincronización de la hoja: rechaza hojas con menos del 50 % de referencias o con precio de relleno salvo force; guarda el histórico.
-- `test_csv_parser` (l. 87) — CSV con comillas, separadores dentro de comillas, BOM y separador coma o punto y coma.
-- `test_google_jwt` (l. 94) — Token de la cuenta de servicio de Google: firma RS256 verificable con la clave pública.
-- `test_order_flow_server_side_pricing` (l. 110) — Pedido: el servidor valora con sus precios (ignora los del cliente), numera, guarda y envía.
-- `test_order_validation_and_limits` (l. 129) — Validación del pedido (campos, cantidades, referencias, PDF, honeypot) y límite por IP.
-- `test_order_with_resend_driver` (l. 146) — Envío con Resend: destinatarios, copia al cliente, responder-a y PDF adjunto.
-- `test_mime_builder` (l. 165) — Cuerpo MIME para mail(): texto y HTML, adjunto y cabeceras.
-- `test_contact_and_cors` (l. 173) — Formulario de contacto y reglas CORS (origen ajeno, el propio sitio y preflight).
-- `test_prices_endpoint_etag` (l. 191) — GET /prices: precios públicos con ETag (304) y `items` como objeto {} aunque esté vacío.
-- `test_manager_upload_roles_and_cron` (l. 202) — Subida de hojas (vista previa y aplicar), permisos por rol, referencia nueva por regla de familia y cron por URL con token.
-- `test_orders_visibility_and_users_api` (l. 230) — Un manager ve todos los pedidos y cada cliente solo los suyos; alta y baja de usuarios por el API.
-- `ai_reply` (l. 253) — Servidor de IA simulado: contesta con una propuesta de cambios de precios (uso de herramienta de Anthropic).
-- `test_ai_validation_and_flow` (l. 259) — IA de precios: valida y limita lo que propone; la propuesta no escribe nada y solo se aplica lo confirmado.
-- `test_diag_checks` (l. 293) — Autodiagnóstico: una instalación a medias da errores que dicen qué arreglar, y una completa pasa sin fallos.
-- `test_privacy_session_revocation_and_contact_escaping` (l. 320) — GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto escapa el HTML.
-- `test_http_client_follows_redirects_without_leaking_credentials` (l. 351) — Cliente HTTP real contra un servidor local: sigue redirecciones de los GET a mano, no manda la credencial a otro servidor y corta los bucles.
-- `test_email_status_is_never_overstated` (l. 384) — El correo es parte del resultado: el pedido se guarda siempre y dice si el aviso salió; el contacto falla si el mensaje no pudo enviarse.
-- `test_diag_warns_about_orders_without_email` (l. 409) — El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo.
+- `test_sheet_sync_rules` (l. 66) — Sincronización de la hoja en modo «replace» (la hoja sustituye a toda la lista): rechaza hojas con menos del 50 % de referencias o con precio de relleno salvo force; guarda el histórico.
+- `test_partial_price_updates` (l. 87) — Actualización parcial (modo por defecto): la hoja puede traer solo una parte del catálogo, reconocida por referencia, SKU o ID; precio 0 o active = 0 quitan el precio; lo demás se conserva.
+- `test_mass_price_change_guard` (l. 126) — Cambio masivo: si más de la mitad de las referencias que ya tenían precio cambia más de un 40 %, la sincronización se rechaza salvo force (hoja equivocada, columna movida, otra unidad).
+- `test_csv_parser` (l. 141) — CSV con comillas, separadores dentro de comillas, BOM y separador coma o punto y coma.
+- `test_google_jwt` (l. 148) — Token de la cuenta de servicio de Google: firma RS256 verificable con la clave pública.
+- `test_order_flow_server_side_pricing` (l. 164) — Pedido: el servidor valora con sus precios (ignora los del cliente), numera, guarda y envía.
+- `test_order_validation_and_limits` (l. 183) — Validación del pedido (campos, cantidades, referencias, PDF, honeypot) y límite por IP.
+- `test_order_with_resend_driver` (l. 200) — Envío con Resend: destinatarios, copia al cliente, responder-a y PDF adjunto.
+- `test_mime_builder` (l. 219) — Cuerpo MIME para mail(): texto y HTML, adjunto y cabeceras.
+- `test_contact_and_cors` (l. 227) — Formulario de contacto y reglas CORS (origen ajeno, el propio sitio y preflight).
+- `test_prices_endpoint_etag` (l. 245) — GET /prices: precios públicos con ETag (304) y `items` como objeto {} aunque esté vacío.
+- `test_manager_upload_roles_and_cron` (l. 256) — Subida de hojas (vista previa y aplicar), permisos por rol, referencia nueva por regla de familia y cron por URL con token.
+- `test_orders_visibility_and_users_api` (l. 284) — Un manager ve todos los pedidos y cada cliente solo los suyos; alta y baja de usuarios por el API.
+- `ai_reply` (l. 307) — Servidor de IA simulado: contesta con una propuesta de cambios de precios (uso de herramienta de Anthropic).
+- `test_ai_validation_and_flow` (l. 313) — IA de precios: valida y limita lo que propone; la propuesta no escribe nada y solo se aplica lo confirmado.
+- `test_diag_checks` (l. 347) — Autodiagnóstico: una instalación a medias da errores que dicen qué arreglar, y una completa pasa sin fallos.
+- `test_privacy_session_revocation_and_contact_escaping` (l. 374) — GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto escapa el HTML.
+- `test_http_client_follows_redirects_without_leaking_credentials` (l. 405) — Cliente HTTP real contra un servidor local: sigue redirecciones de los GET a mano, no manda la credencial a otro servidor y corta los bucles.
+- `test_email_status_is_never_overstated` (l. 438) — El correo es parte del resultado: el pedido se guarda siempre y dice si el aviso salió; el contacto falla si el mensaje no pudo enviarse.
+- `test_diag_warns_about_orders_without_email` (l. 463) — El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo.
 
 ### `HostingTest.php`
 
@@ -1534,8 +1565,8 @@ Pruebas de PriceSheet con los casos compartidos con la versión JavaScript (shar
 
 - `fixtures` (l. 8) — Casos compartidos con la versión JavaScript (shared/price-sheet.fixtures.json).
 - `test_price_sheet_cases` (l. 16) — Cada caso de hoja → precios, desconocidas, nuevas y filas ignoradas esperados.
-- `test_price_sheet_numbers` (l. 41) — Números de celda: coma o punto decimal, miles, símbolos de moneda y texto ilegible.
-- `test_price_sheet_errors` (l. 49) — Hojas sin cabecera reconocible o vacías: error claro.
+- `test_price_sheet_numbers` (l. 43) — Números de celda: coma o punto decimal, miles, símbolos de moneda y texto ilegible.
+- `test_price_sheet_errors` (l. 51) — Hojas sin cabecera reconocible o vacías: error claro.
 
 ### `XlsxTest.php`
 

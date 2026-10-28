@@ -32,7 +32,8 @@ for B in "" "--php"; do
   paso "Panel ↔ backend ${B:-worker}"                   node scripts/qa-admin-live.mjs $B
   paso "Tarifa Excel ↔ backend ${B:-worker}"            node scripts/qa-tarifa.mjs $B
 done
-paso "Paquete de cPanel tal como se sube"       node scripts/qa-package.mjs
+paso "Paquete del hosting tal como se sube"     node scripts/qa-package.mjs
+paso "Actualizar sin caché vieja"               node scripts/qa-update.mjs
 if [ "$RAPIDO" = 0 ]; then
   paso "UX de todas las páginas (escritorio)"   node scripts/qa-ux.mjs
   paso "UX de todas las páginas (móvil)"        node scripts/qa-ux.mjs --mobile

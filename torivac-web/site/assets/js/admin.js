@@ -41,13 +41,21 @@
   function csvParse(text) { return TV.csvParse(text); }
   /** Convierte texto a número con las mismas reglas que el servidor («3,5», «1.234,56», «1,234.5», «€ 5»); null si está vacío o no es numérico. */
   function pnum(x) { return TV.PriceSheet.parseNumber(x); }
-  var lastReport = null;
+  var lastReport = null, lastRows = null, lastName = '', lastKept = null, uploadMode = 'merge';
+  /** Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios. */
+  function modeBox() {
+    return '<fieldset class="mode" data-mode-box><legend class="small">¿Qué hace esta hoja?</legend>' +
+      '<label class="small"><input type="radio" name="upmode" value="merge"' + (uploadMode === 'merge' ? ' checked' : '') + '> <strong>Actualizar solo lo que trae</strong> (recomendado). Puede ser una parte del catálogo: cada fila se reconoce por referencia, SKU o ID de producto y solo cambia su precio; lo demás se queda como está.</label>' +
+      '<label class="small"><input type="radio" name="upmode" value="replace"' + (uploadMode === 'replace' ? ' checked' : '') + '> <strong>Reemplazar toda la lista</strong>. Lo que no esté en la hoja se queda sin precio («Consultar»).</label></fieldset>';
+  }
   /** Hoja → precios con las MISMAS reglas que el servidor (TV.PriceSheet = shared/price-sheet.mjs): cabeceras tolerantes, SKU, referencias nuevas por regla, avisos. */
   function rowsToPrices(rows, source) {
     var lines = {}; Object.keys(TV.items).forEach(function (r) { lines[r] = { n: TV.items[r].n.es, pid: TV.items[r].pid }; });
     var rd = TV.PriceSheet.readSheet(rows, { lines: lines, skus: (TV.sheet || {}).skus, rules: (TV.sheet || {}).rules });
     lastReport = rd;
-    return { updated_at: new Date().toISOString(), source: source, currency: 'EUR', mode: 'live', items: rd.items };
+    var cur = (TV.prices && TV.prices.items) || {}, touched = {}; Object.keys(rd.items).concat(rd.retire).forEach(function (k) { touched[k] = 1; });
+    lastKept = uploadMode === 'replace' ? 0 : Object.keys(cur).filter(function (k) { return !touched[k]; }).length;
+    return { updated_at: new Date().toISOString(), source: source, currency: 'EUR', mode: 'live', items: TV.PriceSheet.applySheetItems(cur, rd.items, rd.retire, uploadMode) };
   }
   /** Compara la hoja vigente `a` con la nueva `b`: {added, changed, removed} como [ref, antes, después] y same = nº sin cambios. */
   function diffPrices(a, b) {
@@ -102,7 +110,7 @@
     var P = TV.prices || {}, ov = !!ls.get('tv_prices_override', null), n = Object.keys(P.items || {}).length;
     return '<h1>Precios</h1><div class="cols"><section class="panel"><h2>Estado</h2><p>Origen: <strong>' + esc(P.source || '—') + '</strong> ' + (ov ? '<span class="tag">hoja cargada desde el panel</span>' : '<span class="tag dim">hoja original</span>') + '<br>Modo: <strong>' + esc(P.mode || '—') + '</strong> · ' + n + ' referencias con precio<br>Última actualización: ' + esc(P.updated_at ? new Date(P.updated_at).toLocaleString('es-ES') : '—') + '</p>' +
       '<p><button class="btn" data-refresh>Actualizar ahora (manual)</button> ' + (ov ? '<button class="btn ghost" data-restore>Volver a la hoja original</button>' : '') + '</p><p class="muted small">Producción: la hoja de Drive se sincroniza sola cada 24 h (cron) y este botón fuerza la sincronización al instante.</p></section>' +
-      '<section class="panel"><h2>Subir Excel / CSV</h2><div class="drop" data-drop tabindex="0" role="button"><strong>Arrastra la hoja aquí</strong><br><span class="muted small">.xlsx, .xls o .csv · acepta la plantilla (ref, price, qty2/price2…), una tarifa (Artículo · Descripción · Precio venta) o la exportación de WooCommerce (SKU · Producto · Precio)</span><input type="file" accept=".csv,.xlsx,.xls" hidden data-file></div><p class="small"><a href="../assets/data/prices.demo.xlsx" download>Descargar plantilla Excel (DEMO)</a> · <a href="../assets/data/prices.demo.csv" download>CSV</a></p></section></div>' +
+      '<section class="panel"><h2>Subir Excel / CSV</h2>' + modeBox() + '<div class="drop" data-drop tabindex="0" role="button"><strong>Arrastra la hoja aquí</strong><br><span class="muted small">.xlsx, .xls o .csv · acepta la plantilla (ref, price, qty2/price2…), una tarifa (Artículo · Descripción · Precio venta), la exportación de WooCommerce (SKU · Producto · Precio) o una hoja por ID de producto (ID · Precio)</span><input type="file" accept=".csv,.xlsx,.xls" hidden data-file></div><p class="small"><a href="../assets/data/prices.demo.xlsx" download>Descargar plantilla Excel (DEMO)</a> · <a href="../assets/data/prices.demo.csv" download>CSV</a></p></section></div>' +
       '<section class="panel"><h2>Actualizar con una instrucción</h2><p class="muted small">Escribe qué cambiar, en castellano. Se muestra una vista previa y solo se aplica si confirmas. Ej.: <em>sube un 3% las resistencias; baja 0,05 € los núcleos; redondea a 2 decimales</em></p><textarea data-prompt rows="3" placeholder="sube un 3% las resistencias"></textarea><p><button class="btn" data-run-prompt>Previsualizar</button></p><p class="muted small">Demo: reglas locales (sube/baja X% o X €, redondea, por producto o categoría). En producción las interpreta la IA y quedan como propuesta para aprobar.</p></section><div data-draft></div>';
   };
 
@@ -157,7 +165,7 @@
     draft = next; var d = diffPrices(TV.prices, next); var box = root.querySelector('[data-draft]');
     /** Filas HTML (máx. 60) de las diferencias `arr` [ref, antes, después], con la etiqueta `kind`. */
     var rowsOf = function (arr, kind) { return arr.slice(0, 60).map(function (x) { return '<tr><td class="mono">' + esc(x[0]) + '</td><td>' + esc(itemName(x[0])) + '</td><td class="num">' + (x[1] == null ? '—' : esc(Q.unitMoney(x[1]))) + '</td><td class="num"><strong>' + (x[2] == null ? '—' : esc(Q.unitMoney(x[2]))) + '</strong></td><td><span class="tag ' + (kind === 'removed' ? 'dim' : '') + '">' + kind + '</span></td></tr>'; }).join(''); };
-    box.innerHTML = '<section class="panel"><h2>Vista previa · ' + esc(label) + '</h2><p><strong>' + d.changed.length + '</strong> cambian · <strong>' + d.added.length + '</strong> nuevas · <strong>' + d.removed.length + '</strong> sin precio · ' + d.same + ' iguales</p>' + TV.priceReportHtml(report, esc) +
+    box.innerHTML = '<section class="panel"><h2>Vista previa · ' + esc(label) + '</h2><p><strong>' + d.changed.length + '</strong> cambian · <strong>' + d.added.length + '</strong> nuevas · <strong>' + d.removed.length + '</strong> sin precio · ' + d.same + ' iguales' + (report && uploadMode === 'merge' && lastKept != null ? ' · <strong>' + lastKept + '</strong> no vienen en la hoja y se conservan' : '') + '</p>' + TV.priceReportHtml(report, esc) +
       ((d.changed.length + d.added.length + d.removed.length) ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Ref.</th><th>Producto</th><th>Antes</th><th>Después</th><th></th></tr></thead><tbody>' + rowsOf(d.changed, 'cambia') + rowsOf(d.added, 'nueva') + rowsOf(d.removed, 'removed') + '</tbody></table></div>' : '<p class="notice">No hay diferencias.</p>') +
       '<p><button class="btn" data-apply>Aplicar a la web</button> <button class="btn ghost" data-discard>Descartar</button></p></section>';
     box.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -168,7 +176,7 @@
   function readUpload(f) {
     var r = new FileReader(), name = f.name;
     /** Convierte las filas leídas en un borrador de precios y lo muestra; si la hoja no se puede leer, avisa con el error. */
-    var go = function (rows) { try { var next = rowsToPrices(rows, name); showDraft(next, name, lastReport); } catch (e) { toast('⚠ ' + e.message); } };
+    var go = function (rows) { lastRows = rows; lastName = name; try { var next = rowsToPrices(rows, name); showDraft(next, name, lastReport); } catch (e) { toast('⚠ ' + e.message); } };
     if (/\.xlsx?$/i.test(name) && window.XLSX) { r.onload = function () { var wb = XLSX.read(r.result, { type: 'array' }); go(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, blankrows: false, raw: true })); }; r.readAsArrayBuffer(f); }
     else { r.onload = function () { go(csvParse(String(r.result))); }; r.readAsText(f); }
   }
@@ -217,6 +225,8 @@
   // ───────────────────────────────────────── [ROUTER]
   /** Conecta los eventos de la vista recién pintada (zona de arrastre del Excel/CSV, botones y formularios). */
   function bind() {
+    var mb = root.querySelector('[data-mode-box]');
+    if (mb) mb.addEventListener('change', function (e) { if (e.target.name !== 'upmode') return; uploadMode = e.target.value; if (lastRows) { try { showDraft(rowsToPrices(lastRows, lastName), lastName, lastReport); } catch (x) { toast('⚠ ' + x.message); } } });
     var drop = root.querySelector('[data-drop]'), file = root.querySelector('[data-file]');
     if (drop) { drop.addEventListener('click', function () { file.click(); }); file.addEventListener('change', function () { if (file.files[0]) readUpload(file.files[0]); }); ['dragenter', 'dragover'].forEach(function (e) { drop.addEventListener(e, function (ev) { ev.preventDefault(); drop.classList.add('over'); }); }); ['dragleave', 'drop'].forEach(function (e) { drop.addEventListener(e, function (ev) { ev.preventDefault(); drop.classList.remove('over'); }); }); drop.addEventListener('drop', function (e) { if (e.dataTransfer.files[0]) readUpload(e.dataTransfer.files[0]); }); }
   }

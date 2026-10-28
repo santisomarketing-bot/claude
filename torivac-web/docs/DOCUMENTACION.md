@@ -1,7 +1,7 @@
 # Torivac · documentación para programadores
 
 Guía para quien tenga que **mantener o ampliar** la web nueva de Torivac. Complementa a `ARQUITECTURA.md` (contrato de datos), `PLAN.md` (sesiones),
-`INDICE-CODIGO.md` (índice generado: cada archivo y cada función), `CONVENCIONES.md` (etiquetas del código) y `ENTREGA-DEMO.md` (qué es real y qué es simulado).
+`INDICE-CODIGO.md` (índice generado: cada archivo y cada función), `CONVENCIONES.md` (etiquetas del código), `ENTREGA-DEMO.md` (qué es real y qué es simulado), `ACTUALIZAR-SIN-ROMPER.md` (cómo publicar cambios con una vuelta atrás), `SEGURIDAD.md` (medidas, pruebas y límites) y `SESION-21.md` (lo siguiente).
 
 ## 1. Qué es
 Una web **100 % estática** (HTML + CSS + JS vanilla, sin frameworks) que replica grupotorivac.com en 4 idiomas (es en la raíz, `/en`, `/fr`, `/de`) y añade:
@@ -89,7 +89,7 @@ También escribe `assets/data/*.js` (datos para el navegador como globales `TV.*
 Mismas rutas, mismas respuestas, mismas reglas: se elige según el hosting y **los guiones de prueba corren contra los dos** (`--php`). Worker: variables y puesta en marcha en `workers/api/README.md`.
 PHP: `docs/DESPLIEGUE-CPANEL.md` o `docs/DESPLIEGUE-PLESK.md`; datos en ficheros JSON de una carpeta (misma estructura de claves que KV, con `flock` para contadores) que elige `Store::bootstrap`: `storage_dir` si sirve, un almacén que ya tenga datos, `/home/CUENTA/torivac-datos` (fuera de la web) o `api/storage` (protegida con `.htaccess`); configuración en `api/config.php`, `cron.php` para los precios y
 `tools/check.php` / `GET /api/diag` para diagnosticar la instalación. La IP del visitante (límites de uso) la calcula `Request::clientIp`: `REMOTE_ADDR`, y solo detrás de un proxy de confianza (nginx de Plesk, Cloudflare, `trusted_proxies`) la cadena `X-Forwarded-For` de derecha a izquierda. Claves KV (o ficheros): `user:<email>`, `order:<nº>`, `prices:current|meta|history:<ts>`, `proposals:state`, `rl:<bucket>:<id>`, `counter:<aaaammdd>`.
-**Precios**: la hoja se lee de un Excel/Hoja de Drive (cuenta de servicio, descarga directa del `.xlsx` o CSV) con `shared/price-sheet.mjs` (+ port PHP) y `shared/xlsx.mjs` (+ port PHP): ver `docs/PRECIOS-DRIVE.md`.
+**Precios**: `Sheets::plan` (PHP) / `planPrices` (Worker) decide qué se publica —solo lo que trae la hoja («merge», por defecto) o toda la lista («replace»)— y qué exige confirmar (relleno, cambio masivo); la vista previa y la subida usan el mismo plan. La hoja se lee de un Excel/Hoja de Drive (cuenta de servicio, descarga directa del `.xlsx` o CSV) con `shared/price-sheet.mjs` (+ port PHP) y `shared/xlsx.mjs` (+ port PHP): ver `docs/PRECIOS-DRIVE.md`.
 Seguridad: PBKDF2 (100 k) + sesión firmada HMAC, límite de intentos de login, CORS por lista de orígenes, honeypot y límite por IP en pedidos/contacto, Turnstile opcional,
 **el servidor revalora siempre el pedido** (ignora precios del navegador), la hoja nueva se rechaza si pierde >50 % de las referencias, la IA de precios solo propone y exige confirmación.
 
@@ -106,6 +106,7 @@ como estructura sin datos: se conectan con las credenciales de Torivac (no se mu
 | `node scripts/qa-quote.mjs` | presupuesto realista (tramos, céntimos, PDF) en 4 idiomas, con cálculo independiente |
 | `node scripts/qa-lang.mjs` | detección de idioma, selector, persistencia, accesibilidad del selector |
 | `node scripts/qa-live.mjs` / `qa-admin-live.mjs` / `qa-tarifa.mjs` (+ `--php`) | web ↔ backend real, **Worker en memoria o API PHP con `php -S`** (pedido, contacto, errores) / panel real completo / tarifa en formato real (Excel, 8 decimales, referencias nuevas, lectura directa del `.xlsx`) |
+| `node scripts/qa-update.mjs` | **actualizar sin caché vieja**: compila dos versiones, las «publica» una tras otra con la caché de una semana del `.htaccess` y comprueba que el HTML y el CSS son siempre de la misma versión, que lo que no cambia no se descarga otra vez, que volver atrás es inmediato, y que sin huellas (control) el problema se reproduce |
 | `node scripts/qa-package.mjs` | el **paquete del hosting (cPanel/Plesk) tal como se sube**: sin precios, precios del servidor, pedido, panel, CSP real del `.htaccess` y API cerrado a ficheros de código |
 | `node scripts/qa-ux.mjs [--mobile \| --width=N]` | **todas** las páginas: desbordes, imágenes rotas/deformadas/borrosas, restos de código, peticiones externas, texto en otro idioma |
 | `node scripts/qa-a11y.mjs` | axe-core (WCAG 2.1 AA) sobre una muestra estratificada |
@@ -117,7 +118,7 @@ como estructura sin datos: se conectan con las credenciales de Torivac (no se mu
 La CI (`ci/ci.yml`) las encadena. `node scripts/capturas.mjs` genera capturas de las vistas clave.
 
 ## 10. Operaciones habituales
-- **Cambiar precios**: Excel/CSV en el panel (vista previa → aplicar) · instrucción en castellano (IA propone, tú confirmas) · hoja de Drive (sincroniza cada 24 h; botón «Actualizar ahora»). Cada cambio guarda un histórico de 90 días en KV.
+- **Cambiar precios**: Excel/CSV en el panel (vista previa → aplicar; la hoja puede traer **solo una parte del catálogo**, reconocida por referencia, SKU o ID de producto, y el resto se conserva: `docs/PRECIOS-DRIVE.md` §2) · instrucción en castellano (IA propone, tú confirmas) · hoja de Drive (sincroniza cada 24 h; botón «Actualizar ahora»). Cada cambio guarda un histórico de 90 días en KV.
 - **Añadir un usuario**: panel → Usuarios (o `POST /api/users` con el token maestro para el primer manager).
 - **Añadir un producto/referencia**: cambiar el origen (la web original o el PDF) y regenerar `data/catalog`; las referencias pedibles salen de `variants[]`. Para un modelo nuevo sin PDF, añadirlo en la hoja de precios con su `ref` **y** en el catálogo.
 - **Publicar en cPanel o Plesk**: `python3 -I scripts/package_cpanel.py --base=https://dominio [--staging]` genera y **verifica** el `.zip` (`docs/DESPLIEGUE-CPANEL.md` · `docs/DESPLIEGUE-PLESK.md`; el nombre del script es histórico, el paquete es el mismo); `ci/deploy.yml` lo hace desde GitHub (artefacto y, si se pide, rsync por SSH con simulacro).
@@ -127,7 +128,7 @@ La CI (`ci/ci.yml`) las encadena. `node scripts/capturas.mjs` genera capturas de
 ## 11. Riesgos y pendiente conocidos
 - **Referencias pedibles y etiquetas de voltaje**: salen de los PDF verificados (24 de 80 productos tienen modelos pedibles por separado; el resto usa una línea genérica `P<id>`). Lo dudoso no se publica y va a propuestas (116 en el panel).
 - **Destinatarios** confirmados: info@grupotorivac.com y mzamora@torivac.com (el pie mantiene info@torivac.com, contenido original). Queda verificar `grupotorivac.com` en Resend (SPF/DKIM).
-- **Precios públicos**: `GET /api/prices` es público (la web los pinta). Si se quieren solo para clientes registrados, es un cambio pequeño en servidor y en `loadLivePrices` (ver `docs/PRECIOS-DRIVE.md` §9).
+- **Precios públicos**: `GET /api/prices` es público (la web los pinta). Si se quieren solo para clientes registrados, es un cambio pequeño en servidor y en `loadLivePrices` (ver `docs/PRECIOS-DRIVE.md` §10).
 - **Estadísticas externas** (Google Business, Ads, Search Console, GA4) sin conectar: faltan las credenciales de Torivac; el panel no muestra cifras inventadas.
 - **Textos legales** publicados tal cual con sus defectos (ver propuestas `legal`). Traducciones inexistentes en el original (5 fichas) mostradas en español con aviso.
 - **No probado contra un Apache ni un Plesk reales** (sí contra `php -S` con la misma reescritura y la CSP del `.htaccess` aplicada, y con pruebas que simulan las cabeceras y permisos de Plesk): la primera subida al subdominio de pruebas se verifica con `tools/check.php` (o *Ajustes → Diagnóstico*) y la lista del apartado 10 de `DESPLIEGUE-PLESK.md` / `DESPLIEGUE-CPANEL.md`.

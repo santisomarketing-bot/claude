@@ -50,7 +50,7 @@ Aquí **sí** funciona todo de verdad: pedidos por correo a `info@grupotorivac.c
 ## Decisiones tuyas (pendientes)
 1. **¿Precios públicos o solo para clientes registrados?** Hoy son públicos (la web original no tenía precios). Cambiarlo es pequeño; mientras tanto, en el subdominio de pruebas no cargues la tarifa real salvo que lo restrinjas por IP.
 2. **Decimales del precio unitario**: 4 por defecto (`27,75093203 → 27,7509`; la línea se redondea a 2). Configurable hasta 6.
-3. **Cómo conectar Drive**: descarga directa del `.xlsx` con enlace (más simple) o cuenta de servicio de Google (privada): [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md) §7.
+3. **Cómo conectar Drive**: descarga directa del `.xlsx` con enlace (más simple) o cuenta de servicio de Google (privada): [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md) §8.
 4. **Resend**: verificar `grupotorivac.com` (SPF/DKIM en el DNS, sin tocar el correo actual) para enviar desde `pedidos@grupotorivac.com`.
 5. **Dominio/subdominio de pruebas** (ahora en Plesk: `torivac.santisomarketing.com`), el paso a cPanel (final de `DESPLIEGUE-PLESK.md`) y, más adelante, el cambio de DNS (`DESPLIEGUE-CPANEL.md` §12).
 6. **Propuestas del panel** (116): aprobar o descartar; las legales (15) requieren a quien lleve lo jurídico.

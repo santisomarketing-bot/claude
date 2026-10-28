@@ -1,5 +1,5 @@
 {
- "_doc": "Casos con los que se prueban TODAS las implementaciones de la lectura de hojas de precios (JS: workers/api/test/price-sheet.test.js · PHP: backend-php/tests). Datos sintéticos con la forma de los reales: no hay precios de Torivac.",
+ "_doc": "Casos con los que se prueban TODAS las implementaciones de la lectura de hojas de precios (JS: workers/api/test/price-sheet.test.js · PHP: backend-php/tests). Datos sintéticos con la forma de los reales: no hay precios de Torivac. Cada caso puede esperar además `retire` (referencias que la hoja pide dejar sin precio) y `by` (filas aceptadas según cómo se reconocieron: ref, sku, id, rule).",
  "cases": [
   {
    "name": "tarifa: Artículo / Descripción / Precio venta, 8 decimales, referencias nuevas por regla y desconocidas",
@@ -705,6 +705,294 @@
       "p": 4
      }
     },
+    "warningCodes": []
+   }
+  },
+  {
+   "name": "identificadores: referencia, SKU e ID de producto en la misma hoja (producto con modelos, ID inexistente y repetida)",
+   "rows": [
+    [
+     "ID",
+     "SKU",
+     "Producto",
+     "Precio"
+    ],
+    [
+     "",
+     "TT0020210",
+     "Trafo",
+     7
+    ],
+    [
+     "",
+     "SKU-866",
+     "Variador",
+     13
+    ],
+    [
+     8339,
+     "",
+     "Resistencias",
+     "12,5"
+    ],
+    [
+     884,
+     "",
+     "Transformador (producto con modelos)",
+     20
+    ],
+    [
+     99999,
+     "",
+     "No existe",
+     5
+    ],
+    [
+     "",
+     "tt0020210",
+     "repetida",
+     8
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "P8339": {
+      "n": "Resistencias de frenado",
+      "pid": 8339
+     },
+     "P866": {
+      "n": "Variador",
+      "pid": 866
+     }
+    },
+    "skus": {
+     "SKU-866": 866
+    },
+    "rules": []
+   },
+   "expect": {
+    "items": {
+     "TT0020210": {
+      "p": 7
+     },
+     "P866": {
+      "p": 13
+     },
+     "P8339": {
+      "p": 12.5
+     }
+    },
+    "acceptedCount": 3,
+    "unknown": [
+     "99999"
+    ],
+    "ignoredReasons": [
+     "el producto tiene modelos: poner el precio en la referencia de cada modelo"
+    ],
+    "by": {
+     "ref": 1,
+     "sku": 1,
+     "id": 1,
+     "rule": 0
+    },
+    "retire": [],
+    "warningCodes": [
+     "duplicada",
+     "referencias_desconocidas"
+    ]
+   }
+  },
+  {
+   "name": "hoja parcial: solo unas referencias; precio 0 o active = 0 piden quitar el precio; precio vacío no toca nada",
+   "rows": [
+    [
+     "ref",
+     "price",
+     "active"
+    ],
+    [
+     "TT0020210",
+     12,
+     1
+    ],
+    [
+     "P8339",
+     0,
+     1
+    ],
+    [
+     "P866",
+     5,
+     0
+    ],
+    [
+     "ZZ-NOEXISTE",
+     0,
+     1
+    ],
+    [
+     "TT0030210",
+     "",
+     1
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "P8339": {
+      "n": "Resistencias de frenado",
+      "pid": 8339
+     },
+     "P866": {
+      "n": "Variador",
+      "pid": 866
+     }
+    }
+   },
+   "expect": {
+    "items": {
+     "TT0020210": {
+      "p": 12
+     }
+    },
+    "acceptedCount": 1,
+    "unknown": [],
+    "retire": [
+     "P8339",
+     "P866"
+    ],
+    "ignoredReasons": [
+     "precio 0 (se muestra «Consultar»)",
+     "desactivada (active = 0)"
+    ],
+    "warningCodes": [
+     "sin_precio"
+    ]
+   }
+  },
+  {
+   "name": "hoja que identifica solo por ID de producto (sin columna de referencia), con «P» delante o sin ella",
+   "rows": [
+    [
+     "ID",
+     "Precio"
+    ],
+    [
+     8339,
+     9.5
+    ],
+    [
+     "P866",
+     "7,25"
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "P8339": {
+      "n": "Resistencias de frenado",
+      "pid": 8339
+     },
+     "P866": {
+      "n": "Variador",
+      "pid": 866
+     }
+    }
+   },
+   "expect": {
+    "items": {
+     "P8339": {
+      "p": 9.5
+     },
+     "P866": {
+      "p": 7.25
+     }
+    },
+    "acceptedCount": 2,
+    "by": {
+     "ref": 0,
+     "sku": 0,
+     "id": 2,
+     "rule": 0
+    },
+    "retire": [],
+    "warningCodes": []
+   }
+  },
+  {
+   "name": "retirar un precio por SKU: precio 0 en una fila de WooCommerce",
+   "rows": [
+    [
+     "SKU",
+     "Precio"
+    ],
+    [
+     "SKU-866",
+     0
+    ],
+    [
+     "P8339",
+     4
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "P8339": {
+      "n": "Resistencias de frenado",
+      "pid": 8339
+     },
+     "P866": {
+      "n": "Variador",
+      "pid": 866
+     }
+    },
+    "skus": {
+     "SKU-866": 866
+    }
+   },
+   "expect": {
+    "items": {
+     "P8339": {
+      "p": 4
+     }
+    },
+    "acceptedCount": 1,
+    "retire": [
+     "P866"
+    ],
+    "ignoredReasons": [
+     "precio 0 (se muestra «Consultar»)"
+    ],
     "warningCodes": []
    }
   }

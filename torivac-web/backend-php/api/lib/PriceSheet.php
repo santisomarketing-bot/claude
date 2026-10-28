@@ -3,7 +3,12 @@
  * [PRICE-SHEET] Lectura tolerante de hojas de precios (Excel/CSV/Google Sheets) → precios. Port FIEL de shared/price-sheet.mjs:
  * las dos implementaciones se prueban con los mismos casos (shared/price-sheet.fixtures.json).
  *
- * FORMATOS: plantilla (ref · price · qty2/price2…), tarifa (Artículo · Descripción · Precio venta) y exportación de WooCommerce (SKU · Producto · Precio · Oferta · Stock).
+ * FORMATOS: plantilla (ref · price · qty2/price2…), tarifa (Artículo · Descripción · Precio venta), exportación de WooCommerce (SKU · Producto · Precio · Oferta · Stock) y hojas por ID de producto (ID · Precio).
+ * IDENTIFICADORES, en este orden por fila: 1) referencia/código técnico tal cual está en el catálogo (incluida la genérica «P<id>»); 2) SKU de WooCommerce → línea genérica de su producto;
+ * 3) familia nueva por patrón (códigos nuevos de una tarifa); 4) si la fila NO trae referencia, el ID de producto de la columna ID/product_id. Un producto con modelos propios no se puede
+ * valorar por SKU ni por ID (habría que elegir un modelo): se avisa y se pide la referencia de cada modelo.
+ * ACTUALIZACIONES PARCIALES: la hoja puede traer solo una parte del catálogo; cada fila reconocida actualiza SOLO su referencia. `retire` lista las que la hoja pide dejar sin precio
+ * (fila con active = 0 o con precio 0): el servidor las quita cuando actualiza «solo lo que trae la hoja» (Prices::merge).
  * Reglas: cabecera = primera fila (de las 12 primeras) con columna de referencia y de precio; «Oferta» y «Stock» no se usan; precio vacío o 0 = «Consultar»;
  * decimales del precio unitario 4 por defecto (máx. 6); «precio de relleno» (>60 % de filas con el mismo precio) se avisa.
  */
@@ -18,7 +23,7 @@ final class PriceSheet
         'ref' => ['ref', 'referencia', 'articulo', 'codigo', 'cod', 'sku', 'item', 'article', 'reference', 'partnumber', 'codigoarticulo', 'refarticulo'],
         'price' => ['price', 'precio', 'precioventa', 'pvp', 'tarifa', 'preciounitario', 'precioud', 'unitprice', 'importe', 'preciotarifa'],
         'name' => ['name_es', 'namees', 'nombre', 'descripcion', 'producto', 'product', 'description', 'concepto', 'denominacion'],
-        'product_id' => ['productid', 'idproducto', 'pid'],
+        'product_id' => ['productid', 'idproducto', 'idprod', 'pid', 'id'],
         'unit' => ['unit', 'unidad', 'ud'],
         'currency' => ['currency', 'moneda', 'divisa'],
         'note' => ['note', 'nota', 'notas', 'observaciones', 'comentario'],
@@ -64,7 +69,7 @@ final class PriceSheet
         return is_numeric($s) ? (float) $s : null;
     }
 
-    /** @return array{index:int,map:array<string,int>,headers:string[]}|null */
+    /** Cabecera: primera fila (de las 12 primeras) con una columna de referencia —o de ID de producto— y una de precio. @return array{index:int,map:array<string,int>,headers:string[]}|null */
     public static function findHeader(array $rows): ?array
     {
         $n = min(count($rows), 12);
@@ -80,7 +85,7 @@ final class PriceSheet
                 if (preg_match('/^(qty|cant|cantidad)(\d)$/', $k, $m)) $map['qty' . $m[2]] = $ix;
                 if (preg_match('/^(price|precio)(\d)$/', $k, $m)) $map['price' . $m[2]] = $ix;
             }
-            if (isset($map['ref'], $map['price'])) {
+            if ((isset($map['ref']) || isset($map['product_id'])) && isset($map['price'])) {
                 return ['index' => $i, 'map' => $map, 'headers' => array_map(function ($h) { return trim((string) ($h === null ? '' : $h)); }, array_values((array) $rows[$i]))];
             }
         }
@@ -90,7 +95,7 @@ final class PriceSheet
     /**
      * @param array $rows matriz de celdas
      * @param array $ctx  lines {ref:{n,pid}} · skus {sku:pid} · rules [{pattern,pid}] · decimals int
-     * @return array{items:array,warnings:array,ignored:array,unknown:array,extras:array,columns:array,stats:array}
+     * @return array{items:array,warnings:array,ignored:array,unknown:array,extras:array,retire:array,columns:array,stats:array}   stats = rows, accepted, decimals, by{ref,sku,id,rule}
      */
     public static function read(array $rows, array $ctx = []): array
     {
@@ -100,16 +105,45 @@ final class PriceSheet
         $rules = isset($ctx['rules']) && is_array($ctx['rules']) ? $ctx['rules'] : [];
         if (count($rows) < 2) throw new \InvalidArgumentException('La hoja está vacía');
         $h = self::findHeader($rows);
-        if (!$h) throw new \InvalidArgumentException('No encuentro la cabecera: la hoja necesita las columnas de referencia (ref, Referencia, Artículo, Código, SKU…) y de precio (price, Precio, Precio venta, PVP…)');
+        if (!$h) throw new \InvalidArgumentException('No encuentro la cabecera: la hoja necesita las columnas de referencia (ref, Referencia, Artículo, Código, SKU… o ID de producto) y de precio (price, Precio, Precio venta, PVP…)');
         $map = $h['map'];
         $headers = $h['headers'];
-        $warnings = []; $ignored = []; $unknown = []; $extras = []; $items = []; $seen = [];
+        $warnings = []; $ignored = []; $unknown = []; $extras = []; $retire = []; $items = []; $seen = []; $by = ['ref' => 0, 'sku' => 0, 'id' => 0, 'rule' => 0];
         $norm = null;
         if ($lines !== null) { $norm = []; foreach (array_keys($lines) as $r) $norm[self::normRef((string) $r)] = (string) $r; }
         $col = function ($r, $f) use ($map) { return isset($map[$f]) && isset($r[$map[$f]]) ? $r[$map[$f]] : ''; };
         foreach (['offer' => 'Oferta', 'stock' => 'Stock'] as $f => $_) {
             if (isset($map[$f])) $warnings[] = ['code' => 'columna_no_usada', 'message' => 'La columna «' . $headers[$map[$f]] . '» no se usa (los precios de oferta y el stock no se publican)'];
         }
+        $models = 'el producto tiene modelos: poner el precio en la referencia de cada modelo';
+        /** Resuelve la fila a una línea del catálogo: ['target','kind','extra'?] · ['skip' => motivo] · ['unknown' => true]. Primero la referencia, luego el SKU, luego la familia nueva; el ID solo si la fila no trae referencia. */
+        $resolve = function ($refRaw, $idRaw, $r) use ($norm, $lines, $skus, $rules, $col, $models) {
+            if ($norm === null) return ['target' => $refRaw !== '' ? $refRaw : 'P' . $idRaw, 'kind' => $refRaw !== '' ? 'ref' : 'id'];
+            if ($refRaw !== '') {
+                $key = self::normRef($refRaw);
+                if (isset($norm[$key])) return ['target' => $norm[$key], 'kind' => 'ref'];
+                $pid = $skus[$refRaw] ?? ($skus[strtolower($refRaw)] ?? null);
+                if ($pid !== null) {                                                           // fila por PRODUCTO (WooCommerce): precio de su línea genérica
+                    $gen = self::normRef('P' . $pid);
+                    return isset($norm[$gen]) ? ['target' => $norm[$gen], 'kind' => 'sku'] : ['skip' => $models];
+                }
+                foreach ($rules as $x) {
+                    if (@preg_match('/' . str_replace('/', '\/', $x['pattern']) . '/i', $key)) {
+                        $nm = trim(preg_replace('/\s+/', ' ', (string) ($col($r, 'name') ?: '')));
+                        return ['target' => $key, 'kind' => 'rule', 'extra' => ['pid' => $x['pid'], 'n' => $nm !== '' ? $nm : $refRaw]];
+                    }
+                }
+                return ['unknown' => true];
+            }
+            if (preg_match('/^P?(\d+)$/i', $idRaw, $m)) {                                       // fila identificada solo por el ID del producto
+                $gen = self::normRef('P' . $m[1]);
+                if (isset($norm[$gen])) return ['target' => $norm[$gen], 'kind' => 'id'];
+                foreach ($lines as $l) { if ((string) ($l['pid'] ?? '') === $m[1]) return ['skip' => $models]; }
+            }
+            return ['unknown' => true];
+        };
+        /** Anota para retirar la línea a la que apunta la fila (si se reconoce); las desconocidas no cuentan como tales. */
+        $retireRow = function ($refRaw, $idRaw, $r) use (&$retire, $resolve) { $rs = $resolve($refRaw, $idRaw, $r); if (isset($rs['target']) && !in_array($rs['target'], $retire, true)) $retire[] = $rs['target']; };
         $rowsRead = 0; $empty = 0;
         foreach (array_slice($rows, $h['index'] + 1) as $r) {
             $r = array_values((array) $r);
@@ -117,9 +151,11 @@ final class PriceSheet
             foreach ($r as $c) { if ($c !== '' && $c !== null) { $blank = false; break; } }
             if ($blank) continue;
             $rowsRead++;
-            $ref = trim(preg_replace('/[\s\x{00a0}]+/u', ' ', (string) $col($r, 'ref')));
+            $refRaw = trim(preg_replace('/[\s\x{00a0}]+/u', ' ', (string) $col($r, 'ref')));
+            $idRaw = trim(preg_replace('/[\s\x{00a0}]+/u', ' ', (string) $col($r, 'product_id')));
+            $ref = $refRaw !== '' ? $refRaw : $idRaw;
             if ($ref === '') continue;
-            if (isset($map['active']) && in_array(strtolower(trim((string) $col($r, 'active'))), ['0', 'no', 'false', 'n', 'inactivo'], true)) { $ignored[] = ['ref' => $ref, 'reason' => 'desactivada (active = 0)']; continue; }
+            if (isset($map['active']) && in_array(strtolower(trim((string) $col($r, 'active'))), ['0', 'no', 'false', 'n', 'inactivo'], true)) { $ignored[] = ['ref' => $ref, 'reason' => 'desactivada (active = 0)']; $retireRow($refRaw, $idRaw, $r); continue; }
             $p0 = self::parseNumber($col($r, 'price'));
             if ($p0 === null) {
                 $empty++;
@@ -127,27 +163,13 @@ final class PriceSheet
                 continue;
             }
             if ($p0 < 0) { $ignored[] = ['ref' => $ref, 'reason' => 'precio negativo']; continue; }
-            if ($p0 == 0.0) { $ignored[] = ['ref' => $ref, 'reason' => 'precio 0 (se muestra «Consultar»)']; continue; }
+            if ($p0 == 0.0) { $ignored[] = ['ref' => $ref, 'reason' => 'precio 0 (se muestra «Consultar»)']; $retireRow($refRaw, $idRaw, $r); continue; }
             $price = round($p0, $dec);
-            $key = self::normRef($ref);
-            $target = $norm !== null ? ($norm[$key] ?? null) : $ref;
-            $extra = null;
-            if ($norm !== null && $target === null) {
-                $pid = $skus[$ref] ?? ($skus[strtolower($ref)] ?? null);
-                if ($pid !== null) {                                                       // fila por PRODUCTO (WooCommerce): precio de su línea genérica
-                    $gen = self::normRef('P' . $pid);
-                    if (isset($norm[$gen])) $target = $norm[$gen];
-                    else { $ignored[] = ['ref' => $ref, 'reason' => 'el producto tiene modelos: poner el precio en la referencia de cada modelo']; continue; }
-                } else {
-                    $rule = null;
-                    foreach ($rules as $x) { if (@preg_match('/' . str_replace('/', '\/', $x['pattern']) . '/i', $key)) { $rule = $x; break; } }
-                    if ($rule) {
-                        $target = $key;
-                        $nm = trim(preg_replace('/\s+/', ' ', (string) ($col($r, 'name') ?: '')));
-                        $extra = ['pid' => $rule['pid'], 'n' => $nm !== '' ? $nm : $ref];
-                    } else { $unknown[] = $ref; continue; }
-                }
-            }
+            $rs = $resolve($refRaw, $idRaw, $r);
+            if (isset($rs['skip'])) { $ignored[] = ['ref' => $ref, 'reason' => $rs['skip']]; continue; }
+            if (isset($rs['unknown'])) { $unknown[] = $ref; continue; }
+            $target = $rs['target'];
+            $extra = $rs['extra'] ?? null;
             $t = [];
             foreach ([2, 3, 4] as $k) {
                 $q = self::parseNumber($r[$map['qty' . $k] ?? -1] ?? null);
@@ -160,7 +182,7 @@ final class PriceSheet
                 if ($seen[$target] != $price) $warnings[] = ['code' => 'duplicada', 'message' => '«' . $target . '» aparece varias veces con precios distintos (' . self::num($seen[$target]) . ' y ' . self::num($price) . '); se usa el primero'];
                 continue;
             }
-            $seen[$target] = $price;
+            $seen[$target] = $price; $by[$rs['kind']]++;
             $item = ['p' => $price];
             if ($t) $item['t'] = $t;
             if ($note !== '') $item['note'] = $note;
@@ -182,7 +204,7 @@ final class PriceSheet
         if ($empty) $warnings[] = ['code' => 'sin_precio', 'message' => $empty . ' filas sin precio: se muestran como «Consultar»', 'count' => $empty];
         $columns = [];
         foreach ($map as $f => $i) $columns[$f] = $headers[$i] ?? '';
-        return ['items' => $items, 'warnings' => $warnings, 'ignored' => $ignored, 'unknown' => $unknown, 'extras' => $extras, 'columns' => $columns, 'stats' => ['rows' => $rowsRead, 'accepted' => $n, 'decimals' => $dec]];
+        return ['items' => $items, 'warnings' => $warnings, 'ignored' => $ignored, 'unknown' => $unknown, 'extras' => $extras, 'retire' => $retire, 'columns' => $columns, 'stats' => ['rows' => $rowsRead, 'accepted' => $n, 'decimals' => $dec, 'by' => $by]];
     }
 
     /** número sin ceros sobrantes, como lo escribe JavaScript (10, 10.5) */

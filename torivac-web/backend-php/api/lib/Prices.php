@@ -4,8 +4,11 @@
  *   { updated_at, source, currency, mode:'demo'|'live'|'none', items:{ ref:{ p, t:[[cantMin,precio],…], note?, n?, pid? } } }
  * Importes: el precio unitario conserva hasta 4 decimales; el importe de línea se redondea a 2.
  *
- * [SHEETS] Lectura de la hoja de Drive (Google Sheets API con cuenta de servicio, o CSV público con enlace), CSV con comillas y sincronización
- * con reglas de seguridad: se rechaza una hoja con < 50 % de las referencias que había o con «precio de relleno», salvo force.
+ * [SHEETS] Lectura de la hoja de Drive (Google Sheets API con cuenta de servicio, o CSV público con enlace), CSV con comillas y sincronización.
+ * MODOS (prices.update_mode · parámetro mode): «merge» (por defecto) = la hoja puede traer SOLO UNA PARTE del catálogo: cada fila reconocida (por referencia, SKU o ID) actualiza su
+ * referencia, las filas con precio 0 o active = 0 la dejan sin precio y todo lo demás se conserva; «replace» = la hoja sustituye a toda la lista de precios.
+ * Reglas de seguridad (se rechaza salvo force): «precio de relleno», cambio masivo (más de la mitad de las referencias que ya tenían precio cambian más de un 40 %) y, solo en replace,
+ * una hoja con < 50 % de las referencias que había.
  */
 namespace Torivac;
 
@@ -72,6 +75,36 @@ final class Prices
         return $out;
     }
 
+    /** Modo de actualización válido: «replace» (la hoja sustituye a toda la lista) o «merge» (solo lo que trae la hoja; es lo normal y vale para cualquier otro valor). */
+    public static function mode($m): string { return $m === 'replace' ? 'replace' : 'merge'; }
+
+    /**
+     * Aplica una hoja ya leída (`$sheet`) a los precios vigentes (`$prev`). «merge»: quita las referencias de `$retire` y pone o actualiza las que trae la hoja (si una referencia
+     * sale a la vez para quitar y con precio, gana el precio); el resto se conserva tal cual. «replace»: la hoja sustituye a todo. Los metadatos (fecha, origen) son los de la hoja nueva.
+     */
+    public static function merge(array $prev, array $sheet, array $retire, string $mode = 'merge'): array
+    {
+        if ($mode === 'replace') return $sheet;
+        $items = $prev['items'] ?? [];
+        foreach ($retire as $ref) unset($items[$ref]);
+        foreach ($sheet['items'] as $ref => $it) $items[$ref] = $it;
+        return ['items' => $items] + $sheet;
+    }
+
+    /** Aviso «cambio_masivo» si ≥ 10 referencias de la hoja ya tenían precio y más de la mitad cambia más de un 40 % (¿hoja equivocada, columna movida, otra unidad?); null si no. */
+    public static function massChange(array $prev, array $sheetItems): ?array
+    {
+        $n = 0; $big = 0;
+        foreach ($sheetItems as $ref => $it) {
+            $old = $prev['items'][$ref]['p'] ?? null;
+            if (!is_numeric($old) || $old <= 0) continue;
+            $n++;
+            if (abs($it['p'] - $old) / $old > 0.4) $big++;
+        }
+        if ($n < 10 || $big / $n <= 0.5) return null;
+        return ['code' => 'cambio_masivo', 'message' => 'Más de la mitad de las referencias que ya tenían precio cambia más de un 40 % (' . $big . ' de ' . $n . '): ¿hoja equivocada, columna movida o cambio de unidades?', 'count' => $big];
+    }
+
     /** diferencias entre dos juegos de precios */
     public static function diff(array $a, array $b): array
     {
@@ -87,13 +120,14 @@ final class Prices
     }
 
     /** guarda unos precios nuevos: el anterior pasa al histórico (90 días), se escriben los vigentes y la meta */
-    public static function save(array $next, array $prev, string $reason = 'manual', string $source = 'sheet', ?float $now = null): array
+    public static function save(array $next, array $prev, string $reason = 'manual', string $source = 'sheet', ?float $now = null, ?string $mode = null): array
     {
         $diff = self::diff($prev, $next);
         $iso = Util::iso($now);
         if ($prev['items']) Store::put('prices:history:' . $iso, self::forJson($prev), 90 * 86400);
         Store::put(self::KEY_CURRENT, self::forJson($next));
         $meta = ['at' => $iso, 'reason' => $reason, 'source' => $source, 'refs' => count($next['items']), 'changed' => count($diff['changed']), 'added' => count($diff['added']), 'removed' => count($diff['removed'])];
+        if ($mode !== null) $meta['mode'] = $mode;
         Store::put(self::KEY_META, $meta);
         return $meta;
     }
@@ -206,24 +240,42 @@ final class Sheets
     }
 
     /**
-     * Lee la hoja (Drive, CSV o filas subidas), valida y publica. ctx = contexto del catálogo (null → el del sitio; [] → aceptar todo, pruebas).
+     * Plan de una actualización, sin guardar nada: lee las filas, las aplica a los precios vigentes según `$mode` («merge»: solo lo que trae la hoja; «replace»: sustituye todo) y
+     * lista lo que exigiría confirmar (`blockers`). Lo usan la vista previa y la sincronización, para que enseñen y hagan exactamente lo mismo.
+     * @return array{next:array,prev:array,sheet:array,report:array,mode:string,kept:int,blockers:string[]}
+     */
+    public static function plan(array $rows, string $source, $mode, ?array $ctx = null, ?float $now = null): array
+    {
+        $mode = Prices::mode($mode);
+        $res = Prices::fromRows($rows, $source, $ctx, $now);
+        $sheet = $res['prices'];
+        $report = $res['report'];
+        $prev = Prices::load();
+        $blockers = [];
+        foreach ($report['warnings'] as $w) { if ($w['code'] === 'precio_de_relleno') $blockers[] = $w['message']; }
+        $mass = Prices::massChange($prev, $sheet['items']);
+        if ($mass) { $report['warnings'][] = $mass; $blockers[] = $mass['message']; }
+        $n = count($sheet['items']); $p = count($prev['items']);
+        if ($mode === 'replace' && $p > 0 && $n < $p * 0.5) $blockers[] = "la hoja nueva tiene $n referencias y había $p (¿hoja vacía o rota?)";
+        $next = Prices::merge($prev, $sheet, $report['retire'], $mode);
+        $kept = $mode === 'replace' ? 0 : $p - count(array_intersect_key($prev['items'], $sheet['items'] + array_fill_keys($report['retire'], 1)));
+        return ['next' => $next, 'prev' => $prev, 'sheet' => $sheet, 'report' => $report, 'mode' => $mode, 'kept' => $kept, 'blockers' => $blockers];
+    }
+
+    /**
+     * Lee la hoja (Drive, CSV o filas subidas), valida y publica. `mode` («merge» por defecto, o prices.update_mode; «replace» sustituye toda la lista). ctx = contexto del catálogo (null → el del sitio; [] → aceptar todo, pruebas).
      * @return array meta + warnings
      */
     public static function sync(array $o = []): array
     {
-        $o += ['reason' => 'manual', 'force' => false, 'rows' => null, 'source' => null, 'ctx' => null, 'now' => null];
+        $o += ['reason' => 'manual', 'force' => false, 'rows' => null, 'source' => null, 'ctx' => null, 'now' => null, 'mode' => null];
         if ($o['rows'] !== null) { $rows = $o['rows']; $source = $o['source'] ?? 'upload'; }
         else { [$rows, $source] = self::readRows(); }
-        $res = Prices::fromRows($rows, $source, $o['ctx'], $o['now']);
-        $next = $res['prices'];
-        $prev = Prices::load();
-        $n = count($next['items']); $p = count($prev['items']);
-        $filler = null;
-        foreach ($res['report']['warnings'] as $w) { if ($w['code'] === 'precio_de_relleno') $filler = $w; }
-        if (!$o['force'] && $filler) throw new \RuntimeException('Sincronización rechazada: ' . $filler['message'] . '. Usa force=true si es intencionado.', 409);
-        if (!$o['force'] && $p > 0 && $n < $p * 0.5) throw new \RuntimeException("Sincronización rechazada: la hoja nueva tiene $n referencias y había $p (¿hoja vacía o rota?). Usa force=true si es intencionado.", 409);
-        $meta = Prices::save($next, $prev, $o['reason'], $source, $o['now']);
-        $meta['warnings'] = array_slice(array_map(function ($w) { return $w['message']; }, $res['report']['warnings']), 0, 10);
+        $plan = self::plan($rows, $source, $o['mode'] ?? Config::get('prices.update_mode', 'merge'), $o['ctx'], $o['now']);
+        if (!$o['force'] && $plan['blockers']) throw new \RuntimeException('Sincronización rechazada: ' . implode('; ', $plan['blockers']) . '. Usa force=true si es intencionado.', 409);
+        $meta = Prices::save($plan['next'], $plan['prev'], $o['reason'], $source, $o['now'], $plan['mode']);
+        $meta['kept'] = $plan['kept'];
+        $meta['warnings'] = array_slice(array_map(function ($w) { return $w['message']; }, $plan['report']['warnings']), 0, 10);
         return $meta;
     }
 }

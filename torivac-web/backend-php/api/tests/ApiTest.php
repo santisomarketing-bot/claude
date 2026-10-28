@@ -62,7 +62,7 @@ function test_prices_tiers_and_rounding()
     T::same(2, $d['same'], 'diff: iguales');
 }
 
-/** Sincronización de la hoja: rechaza hojas con menos del 50 % de referencias o con precio de relleno salvo force; guarda el histórico. */
+/** Sincronización de la hoja en modo «replace» (la hoja sustituye a toda la lista): rechaza hojas con menos del 50 % de referencias o con precio de relleno salvo force; guarda el histórico. */
 function test_sheet_sync_rules()
 {
     fresh();
@@ -73,14 +73,68 @@ function test_sheet_sync_rules()
     T::same(3, $m1['refs'], 'refs publicadas');
     T::same(5.5, Prices::load()['items']['R100']['p'], 'precio');
     Http::$mock = function ($m, $u) { return [200, "ref;price\nR100;1\n"]; };
-    T::throws(function () { Sheets::sync(['ctx' => []]); }, '/rechazada/', 'hoja con < 50 % de referencias');
-    $m2 = Sheets::sync(['ctx' => [], 'force' => true]);
+    T::throws(function () { Sheets::sync(['ctx' => [], 'mode' => 'replace']); }, '/rechazada/', 'hoja con < 50 % de referencias');
+    $m2 = Sheets::sync(['ctx' => [], 'force' => true, 'mode' => 'replace']);
     T::same(1, $m2['refs'], 'force');
     T::same(1, count(Store::keys('prices:history:')), 'histórico: la primera carga no tiene anterior; la segunda guarda la primera');
     $rows = [['ref', 'price']];
     for ($i = 0; $i < 12; $i++) $rows[] = ["R$i", 22000];
-    T::throws(function () use ($rows) { Sheets::sync(['rows' => $rows, 'ctx' => []]); }, '/relleno/', 'precio de relleno');
-    T::same(12, Sheets::sync(['rows' => $rows, 'ctx' => [], 'force' => true])['refs'], 'relleno con force');
+    T::throws(function () use ($rows) { Sheets::sync(['rows' => $rows, 'ctx' => [], 'mode' => 'replace']); }, '/relleno/', 'precio de relleno');
+    T::same(12, Sheets::sync(['rows' => $rows, 'ctx' => [], 'force' => true, 'mode' => 'replace'])['refs'], 'relleno con force');
+}
+
+/** Actualización parcial (modo por defecto): la hoja puede traer solo una parte del catálogo, reconocida por referencia, SKU o ID; precio 0 o active = 0 quitan el precio; lo demás se conserva. */
+function test_partial_price_updates()
+{
+    fresh();
+    seedPrices();                                                                       // TT0020210 (con tramos) y P16633
+    $up = function ($body) { $r = Router::handle(req('POST', '/prices/upload', $body, master())); return $r; };
+    $items = function () { return \Torivac\Prices::load()['items']; };
+    // 1) hoja parcial: una referencia, el SKU de P16633 y un código nuevo de la familia TT; la fila define el precio entero de su referencia (los tramos de antes se van)
+    $r = $up(['csv' => "ref;price\nTT0020210;13,5\naaaa00000001;70\nTT0030210;9\n"]);
+    T::same([200, 'merge', 3, 2, 1], [$r->status, $r->body['meta']['mode'], $r->body['meta']['refs'], $r->body['meta']['changed'], $r->body['meta']['added']], 'parcial: total, cambian 2, nueva 1');
+    T::same([13.5, null, 70, 9, 884], [$items()['TT0020210']['p'], $items()['TT0020210']['t'] ?? null, $items()['P16633']['p'], $items()['TT0030210']['p'], $items()['TT0030210']['pid']], 'precios por referencia, por SKU y por familia nueva');
+    // 2) otra hoja parcial con una sola referencia: el resto no se toca
+    $r = $up(['csv' => "ref;price\nTT0030210;9,5\n"]);
+    T::same([3, 1, 2], [$r->body['meta']['refs'], $r->body['meta']['changed'], $r->body['meta']['kept']], 'la hoja trae 1 referencia: 3 en total, 1 cambia y 2 se conservan');
+    T::same([13.5, 70, 9.5], [$items()['TT0020210']['p'], $items()['P16633']['p'], $items()['TT0030210']['p']], 'lo que no traía la hoja sigue igual');
+    // 3) por ID de producto (sin columna de referencia): P16633 tiene línea genérica; el producto 1 tiene modelos (R100) y se rechaza con motivo
+    $r = $up(['csv' => "ID;Precio\n16633;71\n1;5\n", 'dry_run' => true]);
+    T::same([true, 1, ['ref' => 0, 'sku' => 0, 'id' => 1, 'rule' => 0], 'el producto tiene modelos: poner el precio en la referencia de cada modelo'], [$r->body['dry_run'], $r->body['refs'], $r->body['report']['stats']['by'], $r->body['report']['ignored'][0]['reason']], 'vista previa por ID');
+    T::same(70, $items()['P16633']['p'], 'la vista previa no guarda nada');
+    // 4) vista previa en los dos modos
+    $m = $up(['csv' => "ref;price\nTT0020210;14\n", 'dry_run' => true, 'mode' => 'merge'])->body;
+    T::same(['merge', 3, 2, false, [], 1], [$m['mode'], $m['total'], $m['kept'], $m['needs_force'], $m['diff']['removed'], count($m['diff']['changed'])], 'merge: se conservan 2, nada se quita, no exige confirmar');
+    $rp = $up(['csv' => "ref;price\nTT0020210;14\n", 'dry_run' => true, 'mode' => 'replace'])->body;
+    T::same(['replace', 1, 0, true, 2], [$rp['mode'], $rp['total'], $rp['kept'], $rp['needs_force'], count($rp['diff']['removed'])], 'replace: lo que no trae queda sin precio y hay que confirmar');
+    T::same(409, $up(['csv' => "ref;price\nTT0020210;14\n", 'mode' => 'replace'])->status, 'replace sin confirmar se rechaza');
+    T::same(3, count($items()), 'y no toca nada');
+    // 5) quitar precios: precio 0 y active = 0 (lo que está vacío no toca nada)
+    $r = $up(['csv' => "ref;price;active\nTT0030210;0;1\nP16633;5;0\nTT0020210;;1\n"]);
+    T::same([1, 2, ['TT0020210']], [$r->body['meta']['refs'], $r->body['meta']['removed'], array_keys($items())], 'precio 0 y active=0 quitan el precio; precio vacío no toca nada');
+    // 6) replace con confirmación: la hoja sustituye a todo
+    $up(['csv' => "ref;price\nP16633;80\nTT0030210;8\n", 'mode' => 'replace', 'force' => true]);
+    T::same(['P16633', 'TT0030210'], array_keys($items()), 'replace + force sustituye toda la lista');
+    // 7) el modo por defecto se puede fijar en la configuración
+    fresh(['prices' => ['update_mode' => 'replace']]);
+    seedPrices();
+    $r = Router::handle(req('POST', '/prices/upload', ['csv' => "ref;price\nTT0020210;14\n", 'force' => true], master()));
+    T::same(['replace', ['TT0020210']], [$r->body['meta']['mode'], array_keys(\Torivac\Prices::load()['items'])], 'prices.update_mode = replace');
+}
+
+/** Cambio masivo: si más de la mitad de las referencias que ya tenían precio cambia más de un 40 %, la sincronización se rechaza salvo force (hoja equivocada, columna movida, otra unidad). */
+function test_mass_price_change_guard()
+{
+    fresh();
+    Catalog::set(['items' => [], 'skus' => [], 'rules' => []]);
+    $rows = function ($price) { $r = [['ref', 'price']]; for ($i = 0; $i < 12; $i++) $r[] = ['R' . $i, $price + $i]; return $r; };
+    Sheets::sync(['rows' => $rows(100), 'ctx' => []]);
+    T::throws(function () use ($rows) { Sheets::sync(['rows' => $rows(300), 'ctx' => []]); }, '/cambia más de un 40 %/', 'precios x3 en todas las referencias');
+    T::same(100.0, (float) \Torivac\Prices::load()['items']['R0']['p'], 'y no se aplicó');
+    T::same(3, Sheets::sync(['rows' => $rows(103), 'ctx' => []])['changed'] > 0 ? 3 : 0, 'una subida normal (3 %) pasa');
+    T::same(true, Sheets::sync(['rows' => $rows(300), 'ctx' => [], 'force' => true])['changed'] === 12, 'con force se aplica');
+    $few = [['ref', 'price'], ['R0', 1], ['R1', 1]];
+    T::same(2, Sheets::sync(['rows' => $few, 'ctx' => []])['changed'], 'con menos de 10 referencias coincidentes no se aplica la regla');
 }
 
 /** CSV con comillas, separadores dentro de comillas, BOM y separador coma o punto y coma. */

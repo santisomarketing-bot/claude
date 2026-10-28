@@ -94,7 +94,7 @@ test('sync · cuenta de servicio: hoja de Google → Sheets API; .xlsx subido a 
   assert.equal(m1.source, 'sheet:FILE1');
   assert.ok(/spreadsheets\.readonly/.test(scope) && /drive\.readonly/.test(scope), 'el token pide leer hojas y archivos de Drive');
   calls.length = 0;
-  const m2 = await syncPrices(env, { fetchImpl: mk(false), ctx: TT_CTX, force: true });
+  const m2 = await syncPrices(env, { fetchImpl: mk(false), ctx: TT_CTX, force: true, mode: 'replace' });
   assert.equal(m2.source, 'drive-xlsx:FILE1');
   assert.equal(m2.refs, 3);
   assert.ok(calls.some((u) => u.includes('sheets.googleapis.com')) && calls.some((u) => u.includes('drive/v3/files/FILE1')), 'probó Sheets y luego Drive');

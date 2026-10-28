@@ -3,7 +3,7 @@
 //   { updated_at, source, currency, mode:'demo'|'live', items:{ ref:{ p:precioBase, t:[[cantMin,precio],…], note, n?, pid? } } }   (n/pid: referencia que añade la hoja dentro de un producto)
 // Importes: el precio unitario conserva hasta 4 decimales (variaciones de céntimos); el importe de línea se redondea a 2.
 import { round2 } from './util.js';
-import { readSheet } from '../../../shared/price-sheet.mjs';
+import { readSheet, applySheetItems } from '../../../shared/price-sheet.mjs';
 export const KEY_CURRENT = 'prices:current', KEY_META = 'prices:meta';
 
 /** Precios vigentes guardados en KV; si todavía no hay, una hoja vacía (mode 'none'). */
@@ -41,6 +41,26 @@ export function withSheetItems(catalog, prices) {
   const out = { ...catalog };
   for (const [ref, v] of Object.entries((prices && prices.items) || {})) if (!out[ref] && v.pid) out[ref] = { n: v.n || ref, pid: v.pid };
   return out;
+}
+/** Modo de actualización válido: «replace» (la hoja sustituye a toda la lista) o «merge» (solo lo que trae la hoja; es lo normal y vale para cualquier otro valor). */
+export const updateMode = (m) => (m === 'replace' ? 'replace' : 'merge');
+/**
+ * Aplica una hoja ya leída (`sheet`) a los precios vigentes (`prev`). «merge»: quita las referencias de `retire` y pone o actualiza las que trae la hoja (si una referencia sale a la vez
+ * para quitar y con precio, gana el precio); el resto se conserva tal cual. «replace»: la hoja sustituye a todo. Los metadatos (fecha, origen) son los de la hoja nueva.
+ */
+export function mergePrices(prev, sheet, retire, mode = 'merge') {
+  return { ...sheet, items: applySheetItems(prev.items, sheet.items, retire, mode) };
+}
+/** Aviso «cambio_masivo» si ≥ 10 referencias de la hoja ya tenían precio y más de la mitad cambia más de un 40 % (¿hoja equivocada, columna movida, otra unidad?); null si no. */
+export function massChange(prev, sheetItems) {
+  let n = 0, big = 0;
+  for (const [ref, it] of Object.entries(sheetItems)) {
+    const old = prev.items && prev.items[ref] && prev.items[ref].p;
+    if (typeof old !== 'number' || old <= 0) continue;
+    n++; if (Math.abs(it.p - old) / old > 0.4) big++;
+  }
+  if (n < 10 || big / n <= 0.5) return null;
+  return { code: 'cambio_masivo', message: `Más de la mitad de las referencias que ya tenían precio cambia más de un 40 % (${big} de ${n}): ¿hoja equivocada, columna movida o cambio de unidades?`, count: big };
 }
 /** Compara dos precios: { changed, added, removed } con las referencias afectadas y same con el número de las que no cambian. */
 export function diffPrices(a, b) {

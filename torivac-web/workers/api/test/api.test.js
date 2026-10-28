@@ -63,15 +63,15 @@ test('hoja → precios: coma decimal, tramos, active=0 y cabeceras obligatorias'
 test('CSV con comillas y separadores dentro', () => {
   assert.deepEqual(parseCsv('ref;name\n"A;1";"dice ""hola"""\n'), [['ref', 'name'], ['A;1', 'dice "hola"']]);
 });
-test('sincronización por CSV: guarda, historial y rechaza hojas rotas', async () => {
+test('sincronización por CSV (modo replace): guarda, historial y rechaza hojas rotas', async () => {
   const env = mkEnv({ PRICE_CSV_URL: 'https://sheet.test/export.csv' });
   /** Crea un fetch simulado que responde 200 con el texto dado. */
   const ok = (text) => async () => new Response(text, { status: 200 });
   const m1 = await syncPrices(env, { fetchImpl: ok(SHEET), reason: 'test' });
   assert.equal(m1.refs, 3);
   assert.equal(JSON.parse(await env.KV.get('prices:current')).items.R100.p, 5.5);
-  await assert.rejects(() => syncPrices(env, { fetchImpl: ok('ref;price\nR100;1\n') }), /rechazada/);   // 1 de 3 refs (<50 %)
-  const m2 = await syncPrices(env, { fetchImpl: ok('ref;price\nR100;1\n'), force: true });
+  await assert.rejects(() => syncPrices(env, { fetchImpl: ok('ref;price\nR100;1\n'), mode: 'replace' }), /rechazada/);   // 1 de 3 refs (<50 %)
+  const m2 = await syncPrices(env, { fetchImpl: ok('ref;price\nR100;1\n'), force: true, mode: 'replace' });
   assert.equal(m2.refs, 1);
   assert.ok([...env.KV.m.keys()].some((k) => k.startsWith('prices:history:')));
   await assert.rejects(() => syncPrices(mkEnv(), {}), /Sin origen/);
@@ -165,7 +165,7 @@ test('hoja de precios con códigos nuevos (tarifa): se publican dentro de su pro
   assert.ok(dry.report.warnings.some((w) => w.code === 'referencias_nuevas'));
   assert.equal(dry.report.columns.ref, 'Artículo'); assert.equal(dry.report.columns.price, 'Precio venta');
   const done = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv }, headers: h }), env, {}, { ctx: TCTX })).json();
-  assert.equal(done.ok, true); assert.equal(done.meta.refs, 2);
+  assert.equal(done.ok, true); assert.deepEqual([done.meta.refs, done.meta.kept, done.meta.mode], [3, 1, 'merge']);          // TT0020210 y TT0099999 de la hoja + P16633, que la hoja no trae y se conserva
   const pub = await (await api.fetch(req('/api/prices'), env, {})).json();
   assert.deepEqual(pub.prices.items.TT0099999, { p: 45.5, pid: 884, n: 'TRAFO TOROID 99VA 230V/2X99V' });
   assert.equal(pub.prices.items.TT0020210.p, 12.3709);                    // 8 decimales → 4
@@ -263,3 +263,54 @@ test('contacto: si el correo no sale, el servidor responde con error (la web lo 
   const skipped = await handleContact(req('/api/contact', { method: 'POST' }), mkEnv(), c, {});
   assert.equal(skipped.status, 502); assert.match((await skipped.json()).error, /no está configurado/);
 });
+
+test('actualización parcial (modo por defecto): la hoja trae solo una parte; se reconoce por referencia, SKU o ID; precio 0 o active = 0 quitan el precio; lo demás se conserva', async () => {
+  const env = mkEnv(); await env.KV.put('prices:current', JSON.stringify(PRICES));
+  const h = { Authorization: 'Bearer master-token-123' };
+  /** Sube una hoja (cuerpo `body`) al API con el catálogo de pruebas y devuelve la respuesta ya leída. */
+  const up = async (body) => ({ ...(await (await api.fetch(req('/api/prices/upload', { method: 'POST', body, headers: h }), env, {}, { ctx: TCTX })).clone().json()) });
+  /** Precios vigentes guardados en KV. */
+  const items = async () => JSON.parse(await env.KV.get('prices:current')).items;
+  // 1) hoja parcial: una referencia, el SKU de P16633 y un código nuevo de la familia TT; la fila define el precio entero de su referencia (los tramos de antes se van)
+  let r = await up({ csv: 'ref;price\nTT0020210;13,5\naaaa00000001;70\nTT0030210;9\n' });
+  assert.deepEqual([r.ok, r.meta.mode, r.meta.refs, r.meta.changed, r.meta.added], [true, 'merge', 3, 2, 1]);
+  let it = await items();
+  assert.deepEqual([it.TT0020210.p, it.TT0020210.t ?? null, it.P16633.p, it.TT0030210.p, it.TT0030210.pid], [13.5, null, 70, 9, 884]);
+  // 2) otra hoja parcial con una sola referencia: el resto no se toca
+  r = await up({ csv: 'ref;price\nTT0030210;9,5\n' });
+  assert.deepEqual([r.meta.refs, r.meta.changed, r.meta.kept], [3, 1, 2]);
+  it = await items(); assert.deepEqual([it.TT0020210.p, it.P16633.p, it.TT0030210.p], [13.5, 70, 9.5]);
+  // 3) por ID de producto (sin columna de referencia): P16633 tiene línea genérica; el producto 1 tiene modelos (R100) y se rechaza con motivo
+  r = await up({ csv: 'ID;Precio\n16633;71\n1;5\n', dry_run: true });
+  assert.deepEqual([r.dry_run, r.refs, r.report.stats.by, r.report.ignored[0].reason], [true, 1, { ref: 0, sku: 0, id: 1, rule: 0 }, 'el producto tiene modelos: poner el precio en la referencia de cada modelo']);
+  assert.equal((await items()).P16633.p, 70, 'la vista previa no guarda nada');
+  // 4) vista previa en los dos modos
+  const m = await up({ csv: 'ref;price\nTT0020210;14\n', dry_run: true, mode: 'merge' });
+  assert.deepEqual([m.mode, m.total, m.kept, m.needs_force, m.diff.removed, m.diff.changed.length], ['merge', 3, 2, false, [], 1]);
+  const rp = await up({ csv: 'ref;price\nTT0020210;14\n', dry_run: true, mode: 'replace' });
+  assert.deepEqual([rp.mode, rp.total, rp.kept, rp.needs_force, rp.diff.removed.length], ['replace', 1, 0, true, 2]);
+  const rej = await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv: 'ref;price\nTT0020210;14\n', mode: 'replace' }, headers: h }), env, {}, { ctx: TCTX });
+  assert.equal(rej.status >= 400, true, 'replace sin confirmar se rechaza'); assert.equal(Object.keys(await items()).length, 3);
+  // 5) quitar precios: precio 0 y active = 0 (lo que está vacío no toca nada)
+  r = await up({ csv: 'ref;price;active\nTT0030210;0;1\nP16633;5;0\nTT0020210;;1\n' });
+  assert.deepEqual([r.meta.refs, r.meta.removed, Object.keys(await items())], [1, 2, ['TT0020210']]);
+  // 6) replace con confirmación: la hoja sustituye a todo
+  await up({ csv: 'ref;price\nP16633;80\nTT0030210;8\n', mode: 'replace', force: true });
+  assert.deepEqual(Object.keys(await items()).sort(), ['P16633', 'TT0030210']);
+  // 7) el modo por defecto se puede fijar con PRICE_UPDATE_MODE
+  const env2 = mkEnv({ PRICE_UPDATE_MODE: 'replace' }); await env2.KV.put('prices:current', JSON.stringify(PRICES));
+  const r2 = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv: 'ref;price\nTT0020210;14\n', force: true }, headers: h }), env2, {}, { ctx: TCTX })).json();
+  assert.deepEqual([r2.meta.mode, Object.keys(JSON.parse(await env2.KV.get('prices:current')).items)], ['replace', ['TT0020210']]);
+});
+test('cambio masivo: si más de la mitad de las referencias que ya tenían precio cambia más de un 40 %, la sincronización se rechaza salvo force', async () => {
+  const env = mkEnv();
+  /** Hoja de 12 referencias R0…R11 con precio base + índice. */
+  const rows = (price) => [['ref', 'price'], ...Array.from({ length: 12 }, (_, i) => ['R' + i, price + i])];
+  await syncPrices(env, { rows: rows(100) });
+  await assert.rejects(() => syncPrices(env, { rows: rows(300) }), /cambia más de un 40 %/);
+  assert.equal(JSON.parse(await env.KV.get('prices:current')).items.R0.p, 100, 'y no se aplicó');
+  assert.ok((await syncPrices(env, { rows: rows(103) })).changed > 0, 'una subida normal (3 %) pasa');
+  assert.equal((await syncPrices(env, { rows: rows(300), force: true })).changed, 12, 'con force se aplica');
+  assert.equal((await syncPrices(env, { rows: [['ref', 'price'], ['R0', 1], ['R1', 1]] })).changed, 2, 'con menos de 10 referencias coincidentes no se aplica la regla');
+});
+

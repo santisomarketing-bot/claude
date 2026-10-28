@@ -139,7 +139,7 @@ Alternativas: `mail.driver = 'mail'` (función `mail()` del hosting: sin garant�
 
 ## 11. Actualizar la web
 
-Genera un `.zip` nuevo (paso 3) y **extrae encima** del anterior. El paquete **no contiene** `api/config.php` ni la carpeta de datos, así que no se pierde nada. Si no cambia el catálogo, basta con lo que cambie.
+Genera un `.zip` nuevo (paso 3) y **extrae encima** del anterior. El paquete **no contiene** `api/config.php` ni la carpeta de datos, así que no se pierde nada. El procedimiento completo (pruebas → producción, copia de seguridad, lista de comprobación y vuelta atrás) está en [`ACTUALIZAR-SIN-ROMPER.md`](ACTUALIZAR-SIN-ROMPER.md); no vacíes la carpeta antes de extraer.
 
 ## 12. Pasar a producción
 
@@ -164,7 +164,7 @@ Lo único que no se regenera es la **carpeta de datos** (pedidos 400 días, usua
 | Entras en el panel y vuelve a pedir acceso / 401 | El hosting no pasa la cabecera `Authorization` a PHP | Ya hay una regla en `.htaccess`; si persiste, en `api/.htaccess` añade `SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1` |
 | «Origen no permitido» (403) | Se abre la web con otro host que el compilado (`www` frente a sin `www`) | Entrar por la URL compilada o añadir el otro origen a `allowed_origins` |
 | No llegan los correos | Dominio sin verificar en Resend, o va a spam | `check.php --net`; panel de Resend → *Emails*; probar con `driver = 'file'` y mirar la carpeta `outbox` de la carpeta de datos |
-| Los precios no se actualizan | Origen mal configurado, archivo sin compartir o hoja rechazada | Ejecuta `php api/cron.php` y lee el mensaje; ver [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md) §6-7 |
+| Los precios no se actualizan | Origen mal configurado, archivo sin compartir o hoja rechazada | Ejecuta `php api/cron.php` y lee el mensaje; ver [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md) §7-8 |
 | Enviar un pedido o el contacto da error 403/406 aunque `/api/health` responde | **ModSecurity** (el cortafuegos del hosting) rechaza el cuerpo de la petición (lleva el PDF en base64) | Pedir a soporte una excepción para `/api/` (o que suba el límite del cuerpo); el resto de la web no se ve afectado |
 | El subdominio ya tenía otra web (p. ej. un WordPress de pruebas) | El zip se extrae encima: `index.php`, `.htaccess` y plugins antiguos chocan con los nuevos | Copia de seguridad y vacía la carpeta del subdominio (o usa otro subdominio) antes de extraer |
 | «No puedo escribir en el directorio de datos» | `storage_dir` mal escrito o sin permisos | Dejarlo vacío (se elige una carpeta válida) o crear la carpeta; permisos 755 y mismo usuario de la cuenta |

@@ -115,7 +115,7 @@ function test_sync_service_account_sheets_then_drive_fallback()
     T::same('sheet:FILE1', Sheets::sync(['ctx' => []])['source'], 'hoja de Google → Sheets API');
     T::true(strpos($scope, 'spreadsheets.readonly') !== false && strpos($scope, 'drive.readonly') !== false, 'el token pide leer hojas y archivos de Drive');
     $sheetsOk = false; $calls = [];
-    $m = Sheets::sync(['ctx' => ttCtx(), 'force' => true]);
+    $m = Sheets::sync(['ctx' => ttCtx(), 'force' => true, 'mode' => 'replace']);
     T::same(['drive-xlsx:FILE1', 3], [$m['source'], $m['refs']], '.xlsx de Drive: Sheets falla y se descarga con la API de Drive');
     T::true(count(array_filter($calls, function ($u) { return strpos($u, 'sheets.googleapis.com') !== false; })) === 1 && count(array_filter($calls, function ($u) { return strpos($u, 'drive/v3/files/FILE1') !== false; })) === 1, 'probó Sheets y luego Drive');
     Http::$mock = function ($m, $u) { return strpos($u, 'oauth2') !== false ? [200, '{"access_token":"tok"}'] : [404, 'x']; };

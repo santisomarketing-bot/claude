@@ -48,7 +48,7 @@ jobs:
           node site/build.mjs                   # y de nuevo el aspecto por defecto para el resto de pruebas
           node scripts/qa-live.mjs && node scripts/qa-admin-live.mjs && node scripts/qa-tarifa.mjs
           node scripts/qa-live.mjs --php && node scripts/qa-admin-live.mjs --php && node scripts/qa-tarifa.mjs --php
-          node scripts/qa-package.mjs
+          node scripts/qa-package.mjs && node scripts/qa-update.mjs
           node scripts/perf.mjs --dir=/tmp/prod-dist
       - name: Índice de código (todo archivo con cabecera y cada función descrita)
         run: python3 -I scripts/gen_code_index.py --check

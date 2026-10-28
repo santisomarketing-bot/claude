@@ -9,9 +9,9 @@ import { checkLogin, createUser, listUsers, deleteUser } from './users.js';
 import { hit } from './ratelimit.js';
 import { parseContact } from './validate.js';
 import { handleOrder, handleContact } from './orders.js';
-import { loadPrices, KEY_META, readPrices, diffPrices, publicView } from './prices.js';
+import { loadPrices, KEY_META, diffPrices, publicView, updateMode } from './prices.js';
 import { catalogCtx } from './catalog.js';
-import { syncPrices, parseCsv } from './sheets.js';
+import { syncPrices, planPrices, parseCsv } from './sheets.js';
 import { suggestPriceChanges, applyPriceChanges } from './ai.js';
 
 export default {
@@ -49,16 +49,17 @@ export default {
         return json({ ok: true, orders: out.sort((a, b) => b.at.localeCompare(a.at)) }, 200, cors);
       }
       if (!requireRole(who, 'manager')) return json({ ok: false, error: 'Solo para managers' }, 403, cors);
-      if (path === '/api/prices/refresh' && request.method === 'POST') return json({ ok: true, meta: await syncPrices(env, { fetchImpl: deps.fetchImpl || fetch, reason: `manual:${who.sub}`, force: false, ctx: deps.ctx || catalogCtx(env) }) }, 200, cors);
+      if (path === '/api/prices/refresh' && request.method === 'POST') { const rb = (await readJson(request, 10_000)) || {}; return json({ ok: true, meta: await syncPrices(env, { fetchImpl: deps.fetchImpl || fetch, reason: `manual:${who.sub}`, force: false, mode: rb.mode, ctx: deps.ctx || catalogCtx(env) }) }, 200, cors); }
       if (path === '/api/prices/upload' && request.method === 'POST') {
         const b = (await readJson(request, 3_000_000)) || {}; const rows = Array.isArray(b.rows) ? b.rows : typeof b.csv === 'string' ? parseCsv(b.csv) : null;
         if (!rows) return json({ ok: false, error: 'Envía rows[] o csv' }, 400, cors);
-        const sheetCtx = deps.ctx || catalogCtx(env);
-        if (b.dry_run) {                                                              // vista previa: nada se guarda
-          const { prices: next, report } = readPrices(rows, 'upload', new Date(), sheetCtx); const cur = await loadPrices(env);
-          return json({ ok: true, dry_run: true, refs: Object.keys(next.items).length, diff: diffPrices(cur, next), report: { warnings: report.warnings, ignored: report.ignored.slice(0, 40), unknown: report.unknown.slice(0, 40), extras: report.extras.slice(0, 40), columns: report.columns, stats: report.stats } }, 200, cors);
+        const sheetCtx = deps.ctx || catalogCtx(env), mode = updateMode(b.mode ?? env.PRICE_UPDATE_MODE);
+        if (b.dry_run) {                                                              // vista previa: nada se guarda; es el mismo plan que aplicará la subida
+          const plan = await planPrices(env, rows, 'upload', mode, { ctx: sheetCtx }), rep = plan.report;
+          return json({ ok: true, dry_run: true, mode: plan.mode, refs: Object.keys(plan.sheet.items).length, total: Object.keys(plan.next.items).length, kept: plan.kept, needs_force: plan.blockers.length > 0, blockers: plan.blockers, diff: diffPrices(plan.prev, plan.next),
+            report: { warnings: rep.warnings, ignored: rep.ignored.slice(0, 40), unknown: rep.unknown.slice(0, 40), extras: rep.extras.slice(0, 40), retire: rep.retire.slice(0, 40), columns: rep.columns, stats: rep.stats } }, 200, cors);
         }
-        return json({ ok: true, meta: await syncPrices(env, { rows, source: `upload:${who.sub}`, reason: `upload:${who.sub}`, force: b.force === true, ctx: sheetCtx }) }, 200, cors);
+        return json({ ok: true, meta: await syncPrices(env, { rows, source: `upload:${who.sub}`, reason: `upload:${who.sub}`, force: b.force === true, ctx: sheetCtx, mode }) }, 200, cors);
       }
       if (path === '/api/prices/ai' && request.method === 'POST') {                  // la IA PROPONE (no aplica); se limita porque cada llamada cuesta
         const rl = await hit(env, 'ai', who.sub, { max: 15 }); if (!rl.allowed) return json({ ok: false, error: 'Demasiadas consultas a la IA seguidas. Espera unos minutos.' }, 429, cors);
