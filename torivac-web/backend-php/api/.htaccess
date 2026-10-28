@@ -1,15 +1,17 @@
-# API de Torivac: LISTA BLANCA. Desde la web solo se sirve index.php; todo lo demás de esta carpeta
-# (lib/, tools/, tests/, generated/, storage/, cron.php, config.php, copias como config.php.bak o config.php~, error_log, .env, *.zip…) queda cerrado.
+# API de Torivac: todo lo que EXISTA como fichero o carpeta aquí dentro, salvo index.php, queda cerrado (lib/, tools/, tests/, generated/, storage/, cron.php, config.php, copias como
+# config.php.bak o config.php~, error_log, .env, *.zip…). Las direcciones del API (/api/health, /api/order…) no existen como fichero: pasan y el .htaccess de la raíz las reescribe a index.php.
+# Ojo: Apache comprueba el acceso ANTES de reescribir, así que una regla «todo denegado salvo index.php» bloquearía también esas direcciones (error 403 en TODA la API): por eso la regla
+# mira si el fichero existe. Probado en un Apache real (scripts/qa-apache.mjs).
 Options -Indexes
 <IfModule mod_authz_core.c>
-  Require all denied
-  <FilesMatch "^index\.php$">
-    Require all allowed
-  </FilesMatch>
+  Require expr "%{REQUEST_FILENAME} =~ m#/index\.php$# || ! -e '%{REQUEST_FILENAME}'"
 </IfModule>
 <IfModule !mod_authz_core.c>
-  Order deny,allow
-  Deny from all
+  # Apache 2.2 (sin expresiones): se cierran por tipo los ficheros que pueden existir aquí; index.php sigue abierto
+  <FilesMatch "\.(php|json|md|sh|py|log|bak|ini|env|zip|txt|sample)$|~$|^error_log$">
+    Order allow,deny
+    Deny from all
+  </FilesMatch>
   <FilesMatch "^index\.php$">
     Order allow,deny
     Allow from all

@@ -37,6 +37,7 @@ for B in "" "--php"; do
   paso "Tarifa Excel ↔ backend ${B:-worker}"            node scripts/qa-tarifa.mjs $B
 done
 paso "Paquete del hosting tal como se sube"     node scripts/qa-package.mjs
+paso "Apache real + PHP-FPM (.htaccess de verdad)" node scripts/qa-apache.mjs
 paso "Actualizar sin caché vieja"               node scripts/qa-update.mjs
 if [ "$RAPIDO" = 0 ]; then
   paso "UX de todas las páginas (escritorio)"   node scripts/qa-ux.mjs

@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1360/1360 funciones descritas (100 %) · 174/174 archivos con cabecera.
+**Cobertura**: 1370/1370 funciones descritas (100 %) · 176/176 archivos con cabecera.
 
 
 ## `site/`
@@ -1024,6 +1024,18 @@ Secciones: `[QA-ADMIN-LIVE]`
 - `open` (l. 202) — Busca una propuesta por texto (la búsqueda se confirma con Intro) y la deja abierta; devuelve su tarjeta.
 - `clearQ` (l. 204) — Vacía la búsqueda y la confirma (para volver a ver todas las del estado elegido).
 
+### `qa-apache.mjs`
+
+[QA-APACHE] El paquete tal como se sube, sobre un Apache REAL con PHP-FPM (como Plesk y cPanel), con su .htaccess de verdad: URLs limpias, redirecciones, 404 por idioma, ficheros ocultos, sondeos de WordPress (410), cabeceras de seguridad y CSP, compresión y caché, la carpeta api/ cerrada para lo que existe y abierta para las rutas del API, la cabecera Authorization hasta PHP, un mensaje de verdad, el bloqueo de 1 hora y, con un segundo paquete de PRODUCCIÓN, HTTPS obligatorio, un solo host (www → sin www), HSTS, sitemap, llms.txt y robots.txt.
+
+Secciones: `[QA-APACHE]` · `[PAQUETE]`
+
+- `ok` (l. 23) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `writeCfg` (l. 33) — Escribe api/config.php con la carpeta de datos indicada (fuera de la web por defecto).
+- `get` (l. 39) — GET (sin seguir redirecciones) de una ruta → { s: estado, h: cabeceras, t: cuerpo }
+- `api` (l. 41) — Llamada JSON al API → { s, j }
+- `raw` (l. 126) — GET con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar) → { s, h, t }
+
 ### `qa-art.mjs`
 
 [QA-ART] Sesión 12 · Piezas gráficas: osciloscopio del variador (4 idiomas, ratón/teclado, movimiento reducido) y bobinado toroidal de la portada.
@@ -1066,7 +1078,7 @@ Secciones: `[QA-PACKAGE]` · `[PAQUETE]`
 - `round2` (l. 30) — Redondea a 2 decimales (importe de línea).
 - `unit` (l. 32) — Precio unitario de una referencia para una cantidad, con los tramos de la hoja.
 - `ok` (l. 42) — Anota una comprobación: la cuenta como fallo si no se cumple y la imprime.
-- `peek` (l. 96) — Pide una ruta del API y devuelve el código HTTP y si la respuesta enseña código PHP.
+- `peek` (l. 104) — Pide una ruta del API y devuelve el código HTTP y si la respuesta enseña código PHP.
 
 ### `qa-quote.mjs`
 
@@ -1210,6 +1222,18 @@ Secciones: `[TEST-PROPOSALS]`
 Reconstruye TODO el demo a partir de los datos ya cosechados/analizados (orden importa). bash scripts/rebuild.sh            # contenido + catálogo + precios + sitio
 
 ## `scripts/lib/`
+
+### `apache.mjs`
+
+[APACHE] Un Apache REAL con PHP-FPM (como en Plesk y cPanel) para probar el paquete tal como se sube: el .htaccess de verdad (reescrituras, 410, cabeceras, 404 por idioma, ruta /api, cabecera Authorization hacia PHP-FPM), no un servidor de pruebas que lo imite. Necesita los paquetes apache2 y php8.3-fpm (sudo apt-get install apache2 php8.3-fpm); si no están, las pruebas que lo usan se saltan con un aviso claro (apacheAvailable() devuelve el motivo).
+
+Secciones: `[APACHE]`
+
+- `firstExisting` (l. 17) — Primera ruta que existe de una lista, o ''.
+- `apacheAvailable` (l. 20) — '' si hay Apache y PHP-FPM utilizables; si no, el motivo (qué instalar).
+- `freePort` (l. 30) — Puerto TCP libre en 127.0.0.1.
+- `waitPort` (l. 32) — Espera (hasta `ms`) a que algo responda en el puerto.
+- `startApache` (l. 43) — Arranca PHP-FPM y Apache sobre `docroot`. `extraConf` se añade al final de la configuración de Apache (p. ej. otro <VirtualHost> o directivas de prueba).
 
 ### `backends.mjs`
 
@@ -2372,9 +2396,9 @@ Pruebas de seguridad de los precios, los errores, las descargas, el lector de .x
 - `test_d8_oversized_workbook_keeps_current_prices` (l. 383) — D8 · Una hoja .xlsx hostil hace fallar la sincronización con un error claro, conserva los precios vigentes y deja el motivo anotado.
 - `test_a11_http_client_protocols_size_and_private_redirects` (l. 400) — A11 · El cliente HTTP solo sigue http y https (una redirección a file:/// devolvía el contenido de ese fichero), con tope de tamaño de respuesta y sin llegar a redes internas desde un servidor público.
 - `test_d9_admin_data_is_only_for_managers` (l. 454) — D9 · GET /api/admin/data: las propuestas y los datos de cobertura solo los ve un manager (el token maestro también); clientes y anónimos no; sin fichero → listas vacías, nunca un error.
-- `test_d10_htaccess_is_a_whitelist` (l. 492) — D10/A10 · .htaccess pasa a lista blanca: Require all denied para todo salvo index.php (y la sintaxis equivalente de Apache 2.2); lib/, tools/, cron.php, config.php, generated/ y storage/ no se sirven.
-- `test_d10_new_files_and_dirs_are_private` (l. 515) — D10/A10 · Ficheros nuevos 0660 y carpetas 0770 (con umask 022 salían 0664/0755, legibles por otros usuarios del hosting); un almacén anterior se cierra a «otros» en su siguiente uso.
-- `test_d10_diag_checks_the_new_settings` (l. 545) — D10 · El diagnóstico comprueba lo nuevo: secretos cortos (por su nombre, nunca el valor), modo de la copia al cliente, tope diario y tope de pedidos por hora.
+- `test_d10_htaccess_closes_existing_files_but_not_the_api_routes` (l. 492) — D10/A10 · El .htaccess de api/ cierra todo lo que EXISTA salvo index.php (lib/, tools/, cron.php, config.php, copias, generated/, storage/) pero deja pasar las direcciones del API, que no existen como fichero y la raíz reescribe a index.php: Apache comprueba el acceso ANTES de reescribir, así que un «Require all denied» general (y un «Require all allowed», que ni existe) dejaba TODA la API en 403/500. Comprobado en un Apache real: scripts/qa-apache.mjs.
+- `test_d10_new_files_and_dirs_are_private` (l. 517) — D10/A10 · Ficheros nuevos 0660 y carpetas 0770 (con umask 022 salían 0664/0755, legibles por otros usuarios del hosting); un almacén anterior se cierra a «otros» en su siguiente uso.
+- `test_d10_diag_checks_the_new_settings` (l. 547) — D10 · El diagnóstico comprueba lo nuevo: secretos cortos (por su nombre, nunca el valor), modo de la copia al cliente, tope diario y tope de pedidos por hora.
 
 ### `SecurityOrdersTest.php`
 
