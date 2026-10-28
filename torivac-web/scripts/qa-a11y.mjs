@@ -64,7 +64,7 @@ for (const vp of [{ n: 'escritorio', w: 1440, h: 900 }, { n: 'móvil', w: 390, h
     const contact = (byKey.get(`${lang}|contact`) || [])[0], quote = (byKey.get(`${lang}|quote`) || [])[0];
     if (contact) {
       await page.goto(base + contact, { waitUntil: 'load' }); await page.waitForTimeout(250);
-      const f = page.locator('[data-contact-form]').first();
+      const f = page.locator('[data-contact-form]:visible').first();          // según el aspecto hay dos copias del formulario en el HTML y solo una se ve
       await f.locator('button[type=submit]').click(); await f.locator('.err').first().waitFor({ timeout: 3000 });
       await scan(page, contact + ' (obligatorios sin rellenar)', vp.n);
       await f.locator('[name=name]').fill('Ana <b>Prueba</b>'); await f.locator('[name=email]').fill('ana@example.com'); await f.locator('[name=message]').fill('palabra '.repeat(118)); await f.locator('[name=privacy]').check();
