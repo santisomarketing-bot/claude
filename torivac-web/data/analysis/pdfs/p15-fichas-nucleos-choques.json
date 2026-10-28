@@ -843,7 +843,9 @@
      "item": "Documento duplicado de Nucleos-toroidales.pdf",
      "why": "Mismo texto y misma tabla; para el catálogo web se debe usar una sola vez (las erratas de la tabla se repiten en ambos)."
     }
-   ]
+   ],
+   "corrections": [],
+   "verified": true
   },
   {
    "file": "CHOQUES-TOROIDALES.pdf",
@@ -1057,7 +1059,9 @@
      "item": "Documento duplicado de Cracteristicas_Choques_Toroidales.pdf (p1)",
      "why": "Mismo texto y misma tabla de dimensiones; usar una sola vez en el catálogo web."
     }
-   ]
+   ],
+   "corrections": [],
+   "verified": true
   },
   {
    "file": "Cracteristicas_Choques_Toroidales.pdf",
@@ -1682,7 +1686,7 @@
     {
      "page": 2,
      "item": "2006 @ 18 uH = 3.3",
-     "why": "Impreso 3.3 entre 9.7 (15 uH) y 8.0 (22 uH) en la misma columna; rompe la secuencia decreciente (esperable ~9.x). Confirmado en el render, así que es una errata del PDF. No se corrige; no publicar."
+     "why": "Impreso 3.3 entre 9.7 (15 uH) y 8.0 (22 uH) en la misma columna; rompe la secuencia decreciente (por la tendencia de la columna, I proporcional a 1/raíz(L) en el resto de celdas, cabría ~8.8-8.9; es una estimación mía, no un dato del PDF). Confirmado en el render, así que es una errata del PDF. No se corrige; no publicar."
     },
     {
      "page": 2,
@@ -1704,7 +1708,17 @@
      "item": "Documento duplicado en la p1 de CHOQUES-TOROIDALES.pdf",
      "why": "Mismo texto y misma tabla de dimensiones; usar una sola vez en el catálogo web."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 2,
+     "item": "uncertain['2006 @ 18 uH = 3.3'].why: valor esperable",
+     "was": "(esperable ~9.x)",
+     "now": "(por la tendencia de la columna cabría ~8.8-8.9; estimación, no dato del PDF)",
+     "why": "Con 9.7 (15 uH) y 8.0 (22 uH) en la misma columna, y la ley I ~ 1/raíz(L) que cumplen las otras 10 columnas y el resto de esta (pendiente -0.50), el valor interpolado es ~8.8-8.9, no ~9.x. No cambia ningún valor de la tabla (3.3 sigue transcrito tal cual y marcado como dudoso)."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Nucleos-toroidales.pdf",
@@ -2548,7 +2562,9 @@
      "item": "Documento duplicado de Caracteristicas_Nucleos_Toroidales.pdf",
      "why": "Mismo texto y misma tabla; para el catálogo web se debe usar una sola vez (las erratas de la tabla se repiten en ambos)."
     }
-   ]
+   ],
+   "corrections": [],
+   "verified": true
   }
  ]
 }

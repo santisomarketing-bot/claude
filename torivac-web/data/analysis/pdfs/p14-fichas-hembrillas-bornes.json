@@ -24,8 +24,8 @@
        "specs": {
         "Rótulo intensidad / tensión": "30 A / 230V.",
         "Cota anchura superior (cabeza)": "14",
-        "Cota altura cabeza": "15",
-        "Cota altura base": "4",
+        "Cota vertical superior (del extremo superior al borde superior de la banda inferior)": "15",
+        "Cota altura banda inferior": "4",
         "Cota altura total": "36,5",
         "ROSCA": "4/0,7"
        },
@@ -87,7 +87,7 @@
        "page": 1,
        "specs": {
         "Ø cabeza": "Ø 16",
-        "Cota altura tapa moleteada": "10",
+        "Cota altura tapa (desde el extremo superior)": "10",
         "Cota altura total": "32",
         "ROSCA": "12,50/0,75"
        },
@@ -137,7 +137,7 @@
     },
     {
      "page": 1,
-     "item": "Significado de cada cota de BPB - 30 A / 230V., HB - 4, HR - 4, HBS - 4, HSR - 4, PF - 15 (anchura/altura de cabeza, altura de base, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "item": "Significado de cada cota de BPB - 30 A / 230V., HB - 4, HR - 4, HBS - 4, HSR - 4, PF - 15 (anchura de cabeza, cota vertical superior, altura de banda inferior, altura de tapa, altura total, Ø orificio, cota 2,1, según el modelo)",
      "why": "Los nombres de las claves se deducen de la posición de la línea de cota en el dibujo; el PDF no tiene texto que los nombre. Las cifras sí se leen con claridad."
     },
     {
@@ -148,7 +148,7 @@
     {
      "page": 1,
      "item": "ROSCA de HSR - 4",
-     "why": "El dibujo de HSR - 4 no lleva cota ROSCA, a diferencia de BPB, HB - 4, HR - 4, HBS - 4 y PF - 15 en los PDFs de este trabajo. Se deja en null; no se asume igual que HBS - 4."
+     "why": "El dibujo de HSR - 4 no lleva cota ROSCA, a diferencia de BPB, HB - 4, HR - 4, HBS - 4 y PF - 15 en los PDFs de este trabajo. Se deja en null; no se asume igual que HBS - 4. Verificado a 300 dpi: el dibujo de HSR - 4 no lleva rotulo de rosca. Coincide con la capa de texto del catalogo DE (catalogue-torivac-DE, p. impresa 40): 'Gewinde' aparece junto a HBS - 4 y PF - 15 y no junto a HSR - 4."
     },
     {
      "page": 1,
@@ -175,7 +175,45 @@
      "item": "Duplicidad de contenido",
      "why": "Esta ficha reúne los 6 modelos que el catálogo reparte en HEMBRILLAS.pdf (BPB, HB-4, HR-4) y HEMBRILLAS2.pdf (HBS-4, HSR-4, PF-15). Las cotas coinciden en los tres PDFs; no hay discrepancias."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "BPB - 30 A / 230V. / clave de spec 'Cota altura cabeza' (valor '15')",
+     "was": "Cota altura cabeza",
+     "now": "Cota vertical superior (del extremo superior al borde superior de la banda inferior)",
+     "why": "En el dibujo la cota 15 va del extremo superior de la tapa hasta el borde superior de la banda inferior (abarca tapa y cuerpo troncocónico), no solo la cabeza. El valor 15 es correcto; se corrige el rotulo deducido para no atribuirlo a la 'cabeza'."
+    },
+    {
+     "page": 1,
+     "item": "BPB - 30 A / 230V. / clave de spec 'Cota altura base' (valor '4')",
+     "was": "Cota altura base",
+     "now": "Cota altura banda inferior",
+     "why": "La cota 4 mide la banda ancha situada sobre las tuercas, no la base de toda la pieza. El valor 4 es correcto; rotulo deducido, el PDF no lo nombra."
+    },
+    {
+     "page": 1,
+     "item": "PF - 15 / clave de spec 'Cota altura tapa moleteada' (valor '10')",
+     "was": "Cota altura tapa moleteada",
+     "now": "Cota altura tapa (desde el extremo superior)",
+     "why": "La cota 10 va del extremo superior hasta el borde inferior de la tapa (incluye un anillo liso bajo la zona moleteada). El valor 10 es correcto; se evita atribuirla solo a la parte moleteada. Rotulo deducido, el PDF no lo nombra."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: 'Significado de cada cota ...'",
+     "was": "Significado de cada cota de BPB - 30 A / 230V., HB - 4, HR - 4, HBS - 4, HSR - 4, PF - 15 (anchura/altura de cabeza, altura de base, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "now": "Significado de cada cota de BPB - 30 A / 230V., HB - 4, HR - 4, HBS - 4, HSR - 4, PF - 15 (anchura de cabeza, cota vertical superior, altura de banda inferior, altura de tapa, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "why": "Actualiza la lista de rotulos deducidos tras renombrar las claves de cota (ver correcciones anteriores)."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: ROSCA de HSR - 4 (valor sigue null)",
+     "was": "El dibujo de HSR - 4 no lleva cota ROSCA, a diferencia de BPB, HB - 4, HR - 4, HBS - 4 y PF - 15 en los PDFs de este trabajo. Se deja en null; no se asume igual que HBS - 4.",
+     "now": "El dibujo de HSR - 4 no lleva cota ROSCA, a diferencia de BPB, HB - 4, HR - 4, HBS - 4 y PF - 15 en los PDFs de este trabajo. Se deja en null; no se asume igual que HBS - 4. Verificado a 300 dpi: el dibujo de HSR - 4 no lleva rotulo de rosca. Coincide con la capa de texto del catalogo DE (catalogue-torivac-DE, p. impresa 40): 'Gewinde' aparece junto a HBS - 4 y PF - 15 y no junto a HSR - 4.",
+     "why": "Se anade la comprobacion cruzada con el catalogo DE; el valor no cambia."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "HEMBRILLAS.pdf",
@@ -200,8 +238,8 @@
        "specs": {
         "Rótulo intensidad / tensión": "30 A / 230V.",
         "Cota anchura superior (cabeza)": "14",
-        "Cota altura cabeza": "15",
-        "Cota altura base": "4",
+        "Cota vertical superior (del extremo superior al borde superior de la banda inferior)": "15",
+        "Cota altura banda inferior": "4",
         "Cota altura total": "36,5",
         "ROSCA": "4/0,7"
        },
@@ -275,7 +313,7 @@
     },
     {
      "page": 1,
-     "item": "Significado de cada cota de BPB - 30 A / 230V., HB - 4, HR - 4 (anchura/altura de cabeza, altura de base, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "item": "Significado de cada cota de BPB - 30 A / 230V., HB - 4, HR - 4 (anchura de cabeza, cota vertical superior, altura de banda inferior, altura de tapa, altura total, Ø orificio, cota 2,1, según el modelo)",
      "why": "Los nombres de las claves se deducen de la posición de la línea de cota en el dibujo; el PDF no tiene texto que los nombre. Las cifras sí se leen con claridad."
     },
     {
@@ -308,7 +346,31 @@
      "item": "Duplicidad de contenido",
      "why": "Mismo contenido que los tres primeros modelos de Caracteristicas_Bornes_Hembrillas_Portafusibles.pdf, y texto idéntico al de la hoja del catálogo Torivac_2024 con los mismos códigos (BPB, HB-4, HR-4). Cotas coincidentes."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "BPB - 30 A / 230V. / clave de spec 'Cota altura cabeza' (valor '15')",
+     "was": "Cota altura cabeza",
+     "now": "Cota vertical superior (del extremo superior al borde superior de la banda inferior)",
+     "why": "En el dibujo la cota 15 va del extremo superior de la tapa hasta el borde superior de la banda inferior (abarca tapa y cuerpo troncocónico), no solo la cabeza. El valor 15 es correcto; se corrige el rotulo deducido para no atribuirlo a la 'cabeza'."
+    },
+    {
+     "page": 1,
+     "item": "BPB - 30 A / 230V. / clave de spec 'Cota altura base' (valor '4')",
+     "was": "Cota altura base",
+     "now": "Cota altura banda inferior",
+     "why": "La cota 4 mide la banda ancha situada sobre las tuercas, no la base de toda la pieza. El valor 4 es correcto; rotulo deducido, el PDF no lo nombra."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: 'Significado de cada cota ...'",
+     "was": "Significado de cada cota de BPB - 30 A / 230V., HB - 4, HR - 4 (anchura/altura de cabeza, altura de base, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "now": "Significado de cada cota de BPB - 30 A / 230V., HB - 4, HR - 4 (anchura de cabeza, cota vertical superior, altura de banda inferior, altura de tapa, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "why": "Actualiza la lista de rotulos deducidos tras renombrar las claves de cota (ver correcciones anteriores)."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "HEMBRILLAS2.pdf",
@@ -358,7 +420,7 @@
        "page": 1,
        "specs": {
         "Ø cabeza": "Ø 16",
-        "Cota altura tapa moleteada": "10",
+        "Cota altura tapa (desde el extremo superior)": "10",
         "Cota altura total": "32",
         "ROSCA": "12,50/0,75"
        },
@@ -401,7 +463,7 @@
     },
     {
      "page": 1,
-     "item": "Significado de cada cota de HBS - 4, HSR - 4, PF - 15 (anchura/altura de cabeza, altura de base, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "item": "Significado de cada cota de HBS - 4, HSR - 4, PF - 15 (anchura de cabeza, cota vertical superior, altura de banda inferior, altura de tapa, altura total, Ø orificio, cota 2,1, según el modelo)",
      "why": "Los nombres de las claves se deducen de la posición de la línea de cota en el dibujo; el PDF no tiene texto que los nombre. Las cifras sí se leen con claridad."
     },
     {
@@ -412,7 +474,7 @@
     {
      "page": 1,
      "item": "ROSCA de HSR - 4",
-     "why": "El dibujo de HSR - 4 no lleva cota ROSCA, a diferencia de BPB, HB - 4, HR - 4, HBS - 4 y PF - 15 en los PDFs de este trabajo. Se deja en null; no se asume igual que HBS - 4."
+     "why": "El dibujo de HSR - 4 no lleva cota ROSCA, a diferencia de BPB, HB - 4, HR - 4, HBS - 4 y PF - 15 en los PDFs de este trabajo. Se deja en null; no se asume igual que HBS - 4. Verificado a 300 dpi: el dibujo de HSR - 4 no lleva rotulo de rosca. Coincide con la capa de texto del catalogo DE (catalogue-torivac-DE, p. impresa 40): 'Gewinde' aparece junto a HBS - 4 y PF - 15 y no junto a HSR - 4."
     },
     {
      "page": 1,
@@ -434,7 +496,31 @@
      "item": "Duplicidad de contenido",
      "why": "Mismo contenido que los modelos HBS-4, HSR-4 y PF-15 de Caracteristicas_Bornes_Hembrillas_Portafusibles.pdf, y texto idéntico al de la hoja del catálogo Torivac_2024 con los mismos códigos. Cotas coincidentes."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "PF - 15 / clave de spec 'Cota altura tapa moleteada' (valor '10')",
+     "was": "Cota altura tapa moleteada",
+     "now": "Cota altura tapa (desde el extremo superior)",
+     "why": "La cota 10 va del extremo superior hasta el borde inferior de la tapa (incluye un anillo liso bajo la zona moleteada). El valor 10 es correcto; se evita atribuirla solo a la parte moleteada. Rotulo deducido, el PDF no lo nombra."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: 'Significado de cada cota ...'",
+     "was": "Significado de cada cota de HBS - 4, HSR - 4, PF - 15 (anchura/altura de cabeza, altura de base, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "now": "Significado de cada cota de HBS - 4, HSR - 4, PF - 15 (anchura de cabeza, cota vertical superior, altura de banda inferior, altura de tapa, altura total, Ø orificio, cota 2,1, según el modelo)",
+     "why": "Actualiza la lista de rotulos deducidos tras renombrar las claves de cota (ver correcciones anteriores)."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: ROSCA de HSR - 4 (valor sigue null)",
+     "was": "El dibujo de HSR - 4 no lleva cota ROSCA, a diferencia de BPB, HB - 4, HR - 4, HBS - 4 y PF - 15 en los PDFs de este trabajo. Se deja en null; no se asume igual que HBS - 4.",
+     "now": "El dibujo de HSR - 4 no lleva cota ROSCA, a diferencia de BPB, HB - 4, HR - 4, HBS - 4 y PF - 15 en los PDFs de este trabajo. Se deja en null; no se asume igual que HBS - 4. Verificado a 300 dpi: el dibujo de HSR - 4 no lleva rotulo de rosca. Coincide con la capa de texto del catalogo DE (catalogue-torivac-DE, p. impresa 40): 'Gewinde' aparece junto a HBS - 4 y PF - 15 y no junto a HSR - 4.",
+     "why": "Se anade la comprobacion cruzada con el catalogo DE; el valor no cambia."
+    }
+   ],
+   "verified": true
   }
  ]
 }

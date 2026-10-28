@@ -228,7 +228,7 @@
     {
      "page": 1,
      "item": "Significado de las cotas",
-     "why": "Cada dibujo tiene tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza y una cota total vertical. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'."
+     "why": "Los dibujos de 3, 5 y 8 mm llevan tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza (sin cifra en el 8 mm de la ilustración 2) y una cota total vertical. Los dos dibujos en sección de 10 mm llevan solo dos cotas: una anchura superior (14 y 16, sin símbolo Ø) y una altura total; no tienen cota parcial. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'."
     },
     {
      "page": 1,
@@ -265,7 +265,17 @@
      "item": "Cota 'Ø 9.5' (5mm, ilustración 2)",
      "why": "Es la única cota con '9.5' (resto de Ø: 7, 10, 14). Verificada a 250 ppp en la imagen: se lee 'Ø 9.5'."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "uncertain[Significado de las cotas]: 'Cada dibujo tiene tres cotas'",
+     "was": "Cada dibujo tiene tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza y una cota total vertical. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'.",
+     "now": "Los dibujos de 3, 5 y 8 mm llevan tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza (sin cifra en el 8 mm de la ilustración 2) y una cota total vertical. Los dos dibujos en sección de 10 mm llevan solo dos cotas: una anchura superior (14 y 16, sin símbolo Ø) y una altura total; no tienen cota parcial. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'.",
+     "why": "Descripción inexacta tras re-renderizar a 300-600 ppp: no todos los dibujos tienen tres cotas. Los dos dibujos de 10 mm solo tienen anchura superior (sin Ø) y altura total, y la cota parcial del 8 mm (ilustración 2) existe como flecha pero sin cifra. Ningún valor numérico cambia."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Soportes-Metalicos-para-LED.pdf",
@@ -399,7 +409,7 @@
     {
      "page": 1,
      "item": "Significado de las cotas",
-     "why": "Cada dibujo tiene tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza y una cota total vertical. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'."
+     "why": "Los dibujos de 8 mm llevan tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza (sin cifra en el segundo soporte) y una cota total vertical. Los dos dibujos en sección de 10 mm llevan solo dos cotas: una anchura superior (14 y 16, sin símbolo Ø) y una altura total; no tienen cota parcial. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'."
     },
     {
      "page": 1,
@@ -431,7 +441,17 @@
      "item": "Duplicidad con Caracteristicas_Soportes_Metalicos_para_Leds.pdf",
      "why": "Mismas ilustraciones y cotas de 8 mm y 10 mm. Repetido, no dudoso."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "uncertain[Significado de las cotas]: 'Cada dibujo tiene tres cotas'",
+     "was": "Cada dibujo tiene tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza y una cota total vertical. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'.",
+     "now": "Los dibujos de 8 mm llevan tres cotas sin leyenda: 'Ø' arriba, una cota parcial junto a la cabeza (sin cifra en el segundo soporte) y una cota total vertical. Los dos dibujos en sección de 10 mm llevan solo dos cotas: una anchura superior (14 y 16, sin símbolo Ø) y una altura total; no tienen cota parcial. El significado (diámetro de cabeza, altura de cabeza, altura total) se deduce de la geometría del dibujo, no de un texto. Confirmar antes de publicar como 'Ø cabeza / altura'.",
+     "why": "Descripción inexacta tras re-renderizar a 300-600 ppp: no todos los dibujos tienen tres cotas. Los dos dibujos de 10 mm solo tienen anchura superior (sin Ø) y altura total, y la cota parcial del 8 mm (ilustración 2) existe como flecha pero sin cifra. Ningún valor numérico cambia."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Soportes-Metalicos.pdf",
@@ -585,7 +605,9 @@
      "item": "Cota 'Ø 9.5' (5mm, segundo soporte)",
      "why": "Verificada a 220 ppp: se lee 'Ø 9.5' con punto decimal y altura '16.5'. Se conservan con punto."
     }
-   ]
+   ],
+   "corrections": [],
+   "verified": true
   }
  ]
 }

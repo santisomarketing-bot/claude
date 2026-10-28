@@ -52,6 +52,7 @@ export const T = {
   recaptcha: { es: 'Este sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.', en: 'This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.', fr: 'Ce site est protégé par reCAPTCHA et la Politique de confidentialité et les Conditions d’utilisation de Google s’appliquent.', de: 'Diese Website ist durch reCAPTCHA geschützt; es gelten die Datenschutzerklärung und die Nutzungsbedingungen von Google.' },
   // catálogo / filtros
   categories: { es: 'Categorías', en: 'Categories', fr: 'Catégories', de: 'Kategorien' },
+  home: { es: 'Inicio', en: 'Home', fr: 'Accueil', de: 'Startseite' },
   products: { es: 'Productos', en: 'Products', fr: 'Produits', de: 'Produkte' },
   voltage: { es: 'Tensión', en: 'Voltage', fr: 'Tension', de: 'Spannung' },
   filters: { es: 'Filtros', en: 'Filters', fr: 'Filtres', de: 'Filter' },

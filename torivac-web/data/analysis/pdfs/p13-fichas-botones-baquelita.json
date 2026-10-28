@@ -332,12 +332,12 @@
     {
      "page": 1,
      "item": "Aros con Flecha: significado de las columnas e y H",
-     "why": "La tabla rotula D, e, H pero el dibujo acotado rotula F, d, D (F = longitud de la punta de la flecha, d = diámetro interior, D = diámetro exterior según el dibujo). No se puede asegurar a qué cota del dibujo corresponden e y H; no etiquetar como altura/diámetro interior sin confirmar. Los valores numéricos están leídos de la imagen a 220 dpi."
+     "why": "La tabla rotula D, e, H pero el dibujo acotado rotula F, d, D (según el dibujo: F = longitud de la punta de la flecha que sobresale, d = diámetro interior, D = cota total medida desde la punta de la flecha hasta el borde opuesto del aro, no un diámetro exterior simple). Dato verificable en la tabla: en las cinco filas se cumple H > D > e. No se puede asegurar a qué cota del dibujo corresponden e y H; no etiquetar como altura/diámetro interior sin confirmar. Los valores numéricos están leídos de la imagen a 220 dpi."
     },
     {
      "page": 1,
      "item": "Cubretuercas: columna D de la tabla vs cota C del dibujo",
-     "why": "La tabla rotula A, B, D y el dibujo rotula A, B, C (C = cota horizontal de mayor anchura). Es probable que D de la tabla sea la C del dibujo, pero el PDF no lo aclara."
+     "why": "La tabla rotula A, B, D y el dibujo rotula A, B, C (C = anchura interior, medida entre las caras internas de la falda; la anchura exterior de la pieza es mayor que C). No se puede asegurar que D de la tabla corresponda a C (anchura interior) ni a la anchura exterior; el PDF no lo aclara."
     },
     {
      "page": 1,
@@ -364,7 +364,24 @@
      "item": "PDF sin capa de texto",
      "why": "Toda la página se transcribió desde la imagen (la capa de texto solo contiene el título y la URL). Las cifras se leyeron en renders a 110 y 220 dpi y no pueden verificarse con scripts/check_pdf_extract.py."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "uncertain: Aros con Flecha, significado de D en el dibujo acotado",
+     "was": "D = diámetro exterior según el dibujo",
+     "now": "D = cota total desde la punta de la flecha hasta el borde opuesto del aro (la flecha de cota D arranca en la punta); añadido que en las cinco filas H > D > e",
+     "why": "En el dibujo la línea de cota D parte de la punta de la flecha (extremo izquierdo) y llega al borde derecho, de modo que incluye la punta; presentarla como diámetro exterior podría llevar a etiquetar mal la columna D."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: Cubretuercas, qué mide la cota C del dibujo y relación con la columna D",
+     "was": "C = cota horizontal de mayor anchura. Es probable que D de la tabla sea la C del dibujo",
+     "now": "C = anchura interior, entre las caras internas de la falda (la anchura exterior es mayor); no se puede asegurar que D de la tabla sea C",
+     "why": "En el dibujo ampliado (400 dpi) las flechas de C arrancan en las caras internas de las paredes rayadas, no en el borde exterior; por tanto C no es la mayor anchura y la identificación D=C no es 'probable' sin confirmación."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Caracteristicas_Tapas_para_Botones.pdf",
@@ -533,7 +550,9 @@
      "item": "PDF sin capa de texto",
      "why": "Toda la página se transcribió desde la imagen (la capa de texto solo contiene el título y la URL). Las cifras se leyeron en renders a 110 y 220 dpi y no pueden verificarse con scripts/check_pdf_extract.py."
     }
-   ]
+   ],
+   "corrections": [],
+   "verified": true
   }
  ]
 }

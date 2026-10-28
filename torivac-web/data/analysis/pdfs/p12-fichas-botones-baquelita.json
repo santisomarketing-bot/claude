@@ -93,7 +93,7 @@
      "options_accessories": [
       "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
      ],
-     "ordering_info": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15, 21, 30, 38). Nota del PDF: Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
     },
     {
      "family": "Serie BO con Línea",
@@ -177,13 +177,13 @@
      "options_accessories": [
       "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
      ],
-     "ordering_info": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15, 21, 30, 38). Nota del PDF: Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
     },
     {
      "family": "Tapas",
      "series": null,
      "page": 1,
-     "description": "Tapas (fotografía de una tapa azul con aleta). Tabla con cuatro modelos (MOD. TYPE 15, 21, 30, 38) con columnas D, d, e.",
+     "description": "Tapas (fotografía de una tapa azul con reborde). Tabla con cuatro modelos (MOD. TYPE 15, 21, 30, 38) con columnas D, d, e.",
      "general_specs": {
       "Cotas de la tabla": "D, d, e",
       "Unidad de las cotas": "no indicada en la página",
@@ -241,7 +241,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por MOD. TYPE (15, 21, 30, 38)."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21, 30, 38)."
     },
     {
      "family": "Aros con Flecha",
@@ -317,7 +317,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por MOD. TYPE (10, 15, 21, 30, 38)."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15, 21, 30, 38)."
     },
     {
      "family": "Cubretuercas",
@@ -357,7 +357,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por MOD. TYPE (10, 15)."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15)."
     }
    ],
    "tables": [],
@@ -422,7 +422,52 @@
      "item": "Compatibilidad de Tapas, Aros con Flecha y Cubretuercas con cada modelo de botón",
      "why": "El PDF comparte la numeración MOD. TYPE (10, 15, 21, 30, 38) pero no indica qué accesorio encaja en qué botón. No se publica compatibilidad."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[Serie BO (brillante)].ordering_info",
+     "was": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10.",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15, 21, 30, 38). Nota del PDF: Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10.",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Serie BO con Línea].ordering_info",
+     "was": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10.",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15, 21, 30, 38). Nota del PDF: Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10.",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Tapas].ordering_info",
+     "was": "Se pide por MOD. TYPE (15, 21, 30, 38).",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21, 30, 38).",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Aros con Flecha].ordering_info",
+     "was": "Se pide por MOD. TYPE (10, 15, 21, 30, 38).",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15, 21, 30, 38).",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Cubretuercas].ordering_info",
+     "was": "Se pide por MOD. TYPE (10, 15).",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15).",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Tapas].description",
+     "was": "Tapas (fotografía de una tapa azul con aleta). Tabla con cuatro modelos (MOD. TYPE 15, 21, 30, 38) con columnas D, d, e.",
+     "now": "Tapas (fotografía de una tapa azul con reborde). Tabla con cuatro modelos (MOD. TYPE 15, 21, 30, 38) con columnas D, d, e.",
+     "why": "En la fotografía renderizada (200 ppp) la tapa azul tiene un reborde plano y nervios laterales; no tiene 'aleta'. Descripción visual, no dato técnico."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "BOTONES-DE-MANDO2.pdf",
@@ -496,7 +541,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por MOD. TYPE (15, 21, 30, 38)."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21, 30, 38)."
     },
     {
      "family": "Discos Graduados",
@@ -561,7 +606,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por MOD. TYPE (15, 21, 30, 38)."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21, 30, 38)."
     },
     {
      "family": "Startors",
@@ -610,7 +655,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por código (BOS014, BOS021, BOS029)."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla incluye CÓD. / CODE (BOS014, BOS021, BOS029) y MOD. TYPE (15, 21, 30)."
     },
     {
      "family": "Serie BM (mate)",
@@ -653,7 +698,7 @@
      "options_accessories": [
       "Tapas para Botón BM (mate)"
      ],
-     "ordering_info": "Se pide por MOD. TYPE (15, 21). La columna e indica '4,6,1/4\"' en ambos modelos."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21). La columna e indica '4,6,1/4\"' en ambos modelos."
     },
     {
      "family": "Tapas para Botón BM (mate)",
@@ -693,7 +738,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por MOD. TYPE (15, 21)."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21)."
     }
    ],
    "tables": [],
@@ -712,7 +757,7 @@
      "page": 1
     },
     {
-     "fact": "Startors: únicos productos de la página que se piden por código propio (BOS014, BOS021, BOS029) además del MOD. TYPE.",
+     "fact": "Startors: únicos productos de la página cuya tabla incluye una columna de código propio (CÓD. / CODE: BOS014, BOS021, BOS029) además del MOD. TYPE.",
      "page": 1
     },
     {
@@ -758,7 +803,52 @@
      "item": "Dibujo de la serie BM: cota d",
      "why": "El dibujo acota d (arriba), pero la tabla de la serie BM no tiene columna d. No se infiere ningún valor."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[Discos con Flecha].ordering_info",
+     "was": "Se pide por MOD. TYPE (15, 21, 30, 38).",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21, 30, 38).",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Discos Graduados].ordering_info",
+     "was": "Se pide por MOD. TYPE (15, 21, 30, 38).",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21, 30, 38).",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Startors].ordering_info",
+     "was": "Se pide por código (BOS014, BOS021, BOS029).",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla incluye CÓD. / CODE (BOS014, BOS021, BOS029) y MOD. TYPE (15, 21, 30).",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Serie BM (mate)].ordering_info",
+     "was": "Se pide por MOD. TYPE (15, 21). La columna e indica '4,6,1/4\"' en ambos modelos.",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21). La columna e indica '4,6,1/4\"' en ambos modelos.",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Tapas para Botón BM (mate)].ordering_info",
+     "was": "Se pide por MOD. TYPE (15, 21).",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21).",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "other_facts[Startors código]",
+     "was": "Startors: únicos productos de la página que se piden por código propio (BOS014, BOS021, BOS029) además del MOD. TYPE.",
+     "now": "Startors: únicos productos de la página cuya tabla incluye una columna de código propio (CÓD. / CODE: BOS014, BOS021, BOS029) además del MOD. TYPE.",
+     "why": "El PDF no dice cómo se piden los productos; solo muestra la columna CÓD./CODE en la tabla de Startors. Se elimina la afirmación sobre el modo de pedido (inferencia)."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "BOTONES-DE-MANDO3.pdf",
@@ -823,7 +913,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por MOD. TYPE (29DF, 38DF, 61DF)."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (29DF, 38DF, 61DF)."
     },
     {
      "family": "Carátulas Graduadas",
@@ -1010,7 +1100,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por Código (CA + 7 cifras). El PDF no explica cómo se forma el código."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica cada carátula por Código / Code (formato observado: CA + 7 cifras, de CA0050180 a CA0160330). El PDF no explica cómo se forma el código."
     }
    ],
    "tables": [],
@@ -1104,7 +1194,24 @@
      "item": "Compatibilidad de las carátulas y del botón DF con otros productos (variadores, potenciómetros)",
      "why": "El PDF no indica con qué productos se usan. No se publica compatibilidad."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[Botón Baquelita \"DF\"].ordering_info",
+     "was": "Se pide por MOD. TYPE (29DF, 38DF, 61DF).",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (29DF, 38DF, 61DF).",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Carátulas Graduadas].ordering_info",
+     "was": "Se pide por Código (CA + 7 cifras). El PDF no explica cómo se forma el código.",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica cada carátula por Código / Code (formato observado: CA + 7 cifras, de CA0050180 a CA0160330). El PDF no explica cómo se forma el código.",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Caracteristicas_Boton_Baquelita_DF.pdf",
@@ -1169,7 +1276,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por MOD. TYPE (29DF, 38DF, 61DF)."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (29DF, 38DF, 61DF)."
     },
     {
      "family": "Carátulas Graduadas",
@@ -1356,7 +1463,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por Código (CA + 7 cifras). El PDF no explica cómo se forma el código."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica cada carátula por Código / Code (formato observado: CA + 7 cifras, de CA0050180 a CA0160330). El PDF no explica cómo se forma el código."
     }
    ],
    "tables": [],
@@ -1447,7 +1554,24 @@
      "item": "Compatibilidad de las carátulas y del botón DF con otros productos (variadores, potenciómetros)",
      "why": "El PDF no indica con qué productos se usan. No se publica compatibilidad."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[Botón Baquelita \"DF\"].ordering_info",
+     "was": "Se pide por MOD. TYPE (29DF, 38DF, 61DF).",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (29DF, 38DF, 61DF).",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Carátulas Graduadas].ordering_info",
+     "was": "Se pide por Código (CA + 7 cifras). El PDF no explica cómo se forma el código.",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica cada carátula por Código / Code (formato observado: CA + 7 cifras, de CA0050180 a CA0160330). El PDF no explica cómo se forma el código.",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Caracteristicas_Botones_de_Mando.pdf",
@@ -1543,7 +1667,7 @@
      "options_accessories": [
       "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
      ],
-     "ordering_info": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15, 21, 30, 38). Nota del PDF: Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
     },
     {
      "family": "Serie BO con Línea",
@@ -1629,7 +1753,7 @@
      "options_accessories": [
       "Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10"
      ],
-     "ordering_info": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15, 21, 30, 38). Nota del PDF: Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10."
     },
     {
      "family": "Serie BM (mate)",
@@ -1670,7 +1794,7 @@
       }
      ],
      "options_accessories": [],
-     "ordering_info": "Se pide por MOD. TYPE (15, 21). La columna e indica '4,6,1/4\"' en ambos modelos."
+     "ordering_info": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21). La columna e indica '4,6,1/4\"' en ambos modelos."
     }
    ],
    "tables": [],
@@ -1721,7 +1845,31 @@
      "item": "Dibujo de la serie BM: cota d",
      "why": "El dibujo acota d (arriba), pero la tabla de la serie BM no tiene columna d. No se infiere ningún valor."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[Serie BO (brillante)].ordering_info",
+     "was": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10.",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15, 21, 30, 38). Nota del PDF: Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10.",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Serie BO con Línea].ordering_info",
+     "was": "Se pide por MOD. TYPE (10, 15, 21, 30, 38). Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10.",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (10, 15, 21, 30, 38). Nota del PDF: Bajo pedido fabricamos 1/4\" en todos los modelos excepto Mod.10.",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    },
+    {
+     "page": 1,
+     "item": "families[Serie BM (mate)].ordering_info",
+     "was": "Se pide por MOD. TYPE (15, 21). La columna e indica '4,6,1/4\"' en ambos modelos.",
+     "now": "El PDF no indica el procedimiento de pedido; la tabla identifica los modelos por MOD. TYPE (15, 21). La columna e indica '4,6,1/4\"' en ambos modelos.",
+     "why": "El PDF no dice 'se pide por MOD. TYPE/código': solo tabula los modelos. La frase afirmaba un procedimiento de pedido que no figura en el documento (inferencia). Se sustituye por una descripción neutra de lo que sí contiene la tabla."
+    }
+   ],
+   "verified": true
   }
  ]
 }

@@ -4,20 +4,45 @@
 
 import { esc, attr, blocksHtml, inlineHtml, mapLink, plain, fmtDate } from './lib/render.mjs';
 import { t, LANGS, countLabel, refLabel } from './lib/i18n.mjs';
+import { pageGraph, ldScript, ogLocale, clip } from './lib/seo.mjs';
 
 const NAMES = { es: 'Español', en: 'English', fr: 'Français', de: 'Deutsch' };
 const pick = (obj, lang) => (obj && (obj[lang] ?? obj.es)) ?? '';
 
+
+// ───────────────────────────────────────────────────────────── [META] descripción válida (la web original trae «%» o nada en varias páginas)
+const META_FALLBACK = { es: 'Torivac, fabricante europeo de transformadores toroidales, variadores y estabilizadores de tensión, resistencias y más. Consulta el catálogo y pide presupuesto.', en: 'Torivac, European manufacturer of toroidal transformers, voltage variators and stabilizers, resistors and more. Browse the catalogue and request a quote.', fr: 'Torivac, fabricant européen de transformateurs toroïdaux, régulateurs et stabilisateurs de tension, résistances et plus. Consultez le catalogue et demandez un devis.', de: 'Torivac, europäischer Hersteller von Ringkerntransformatoren, Spannungsreglern und -stabilisatoren, Widerständen und mehr. Katalog ansehen und Angebot anfordern.' };
+/** Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, una frase genérica de marca. */
+export function metaDescription(desc, bodyHtml, lang) {
+  const ok = (d) => d && d.replace(/\s+/g, ' ').trim().length >= 50 && !/^[\W\d_]*$/.test(d);
+  if (ok(desc)) return clip(desc, 158);
+  for (const m of String(bodyHtml || '').matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)) {
+    const txt = m[1].replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
+    if (txt.length >= 60 && !/^[\W\d_]*$/.test(txt)) return clip(txt, 158);
+  }
+  return META_FALLBACK[lang] || META_FALLBACK.es;
+}
+
 // ───────────────────────────────────────────────────────────── [LAYOUT] envoltorio común
-export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false }) {
+export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [] }) {
   const { lang, site } = ctx;
-  const alt = (l) => alts[l] || site.home[l];
+  description = metaDescription(description, body, lang);
+  const alt = (l) => (l === lang ? ctx.path : (alts[l] || site.home[l]));         // selector de idioma: sin traducción cae a la portada de ese idioma
+  // registro de páginas indexables → sitemap (con hreflang e imágenes) y llms.txt; ver site/build.mjs [SEO-FILES]
+  if (!noindex && site.registry) site.registry.push({ path: ctx.path, lang, template, title, description: description || '', alts: Object.fromEntries(LANGS.filter((l) => alts[l]).map((l) => [l, alts[l]])), images });
   // [NAV] menú principal: mismos 7 ítems y etiquetas que la web original (por idioma). `section` marca el activo.
   const nav = site.navItems[lang].map((n) => ({ label: n.label, pdf: n.key === 'catalog', current: n.key !== 'catalog' && (n.path === ctx.path || (n.key === ctx.section && ['products', 'blog'].includes(n.key))), href: n.key === 'catalog' ? (n.pdfFile ? ctx.asset('assets/pdf/' + n.pdfFile) : n.pdfUrl) : ctx.href(n.path) }));
   const langLinks = LANGS.map((l) => `<a href="${attr(ctx.href(alt(l)))}" hreflang="${l}" lang="${l}" ${l === lang ? 'aria-current="true"' : ''} title="${NAMES[l]}" data-set-lang="${l}">${l.toUpperCase()}</a>`).join('');
   const navHtml = nav.map((n) => `<a href="${attr(n.href)}"${n.current ? ' aria-current="page"' : ''}${n.pdf ? ' target="_blank" rel="noopener"' : ''}>${esc(n.label)}</a>`).join('');
   const f = site.footer[lang];
-  const alternates = site.absBase ? LANGS.map((l) => `<link rel="alternate" hreflang="${l}" href="${attr(site.absBase + alt(l))}">`).join('') : '';
+  // hreflang: SOLO idiomas con traducción real de ESTA página (un hreflang a la portada de otro idioma es un error de SEO)
+  const hreflangs = LANGS.filter((l) => l === lang || alts[l]);
+  const alternates = site.absBase && hreflangs.length > 1 ? hreflangs.map((l) => `<link rel="alternate" hreflang="${l}" href="${attr(site.absBase + alt(l))}">`).join('') + `<link rel="alternate" hreflang="x-default" href="${attr(site.absBase + (hreflangs.includes('es') ? alt('es') : alt(hreflangs[0])))}">` : '';
+  // [SOCIAL] Open Graph + Twitter. og:image: la de la página o, si no hay, el logotipo (siempre absoluto: las redes no entienden rutas relativas).
+  const ogImg = site.absBase ? (ogImage || site.absBase + '/' + site.logo.replace(/^\//, '')) : null;
+  const ogDesc = clip(description || title, 200);
+  const social = [`<meta property="og:title" content="${attr(title)}">`, `<meta property="og:description" content="${attr(ogDesc)}">`, '<meta property="og:type" content="' + (template === 'post' ? 'article' : template === 'product' ? 'product' : 'website') + '">', `<meta property="og:site_name" content="Torivac">`, `<meta property="og:locale" content="${ogLocale(lang)}">`,
+    site.absBase ? `<meta property="og:url" content="${attr(site.absBase + ctx.path)}">` : '', ogImg ? `<meta property="og:image" content="${attr(ogImg)}">` : '', `<meta name="twitter:card" content="${ogImg ? 'summary_large_image' : 'summary'}">`].filter(Boolean).join('');
   const canonical = site.absBase ? `<link rel="canonical" href="${attr(site.absBase + ctx.path)}">` : '';
   return `<!doctype html>
 <html lang="${lang}" data-lang="${lang}">
@@ -31,8 +56,8 @@ ${canonical}${alternates}
 <meta name="theme-color" content="#100404">
 <link rel="icon" href="${ctx.asset('assets/img/favicon.png')}" type="image/png">
 ${['fonts', 'tokens', 'base', 'layout', 'components', 'art'].map((c) => `<link rel="stylesheet" href="${ctx.asset(`assets/css/${c}.css`)}">`).join('\n')}
-${ogImage ? `<meta property="og:image" content="${attr(ogImage)}">` : ''}
-<meta property="og:title" content="${attr(title)}"><meta property="og:type" content="website">
+${social}
+${noindex ? '' : ldScript(pageGraph(ctx, { template, title, description, crumbs, extra: ld, image: ogImg }))}
 </head>
 <body class="tv tv-${template}" data-path="${attr(ctx.path)}">
 <a class="skip" href="#content">${t('skip', lang)}</a>
@@ -64,7 +89,7 @@ ${body}
 </footer>
 <div class="fab-stack no-print">
   <button class="fab fab-top" type="button" data-top aria-label="${attr(t('back_to_top', lang))}">↑</button>
-  <button class="fab fab-quote" type="button" data-open-quote aria-haspopup="dialog" aria-controls="quote-drawer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>${t('quote', lang)} <span class="count" data-quote-count>0</span></button>
+  ${template === 'quote' ? '' : `<button class="fab fab-quote" type="button" data-open-quote aria-haspopup="dialog" aria-controls="quote-drawer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/></svg>${t('quote', lang)} <span class="count" data-quote-count>0</span></button>`}
 </div>
 <div class="scrim" data-scrim></div>
 <aside class="quote-drawer no-print" id="quote-drawer" role="dialog" aria-modal="true" aria-label="${attr(t('quote_yours', lang))}" aria-hidden="true">
