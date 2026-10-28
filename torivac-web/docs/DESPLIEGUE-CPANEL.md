@@ -95,7 +95,7 @@ curl -X POST https://pruebas.grupotorivac.com/api/users \
 
 Luego **vacía `admin_token`**. Más usuarios (managers o clientes) se crean desde el panel: **Usuarios**.
 
-**Acceso en dos pasos (código por correo).** Con el correo ya funcionando (paso 8), a los managers se les pide un código de 6 cifras al entrar (con «recordar este dispositivo», una vez cada 30 días por navegador). **Marca tu propia cuenta como de confianza** para no tener que escribirlo: Panel → **Usuarios** → tu fila → «Código por correo» → «No (cuenta de confianza)» (o `'two_step' => ['exempt' => ['tu@correo.com']]` en `config.php`). Si el correo no está completo, no se pide código a nadie. Detalle en [`SEGURIDAD.md`](SEGURIDAD.md) §10.
+**Acceso en dos pasos (código por correo).** Con el correo ya funcionando (paso 8), a los managers se les pide un código de 6 cifras al entrar (con «recordar este dispositivo», una vez cada 30 días por navegador). **Marca tu propia cuenta como de confianza** para no tener que escribirlo: Panel → **Usuarios** → tu fila → «Código por correo» → «No (cuenta de confianza)» (o `'two_step' => ['exempt' => ['tu@correo.com']]` en `config.php`). Solo si alguien ataca tu cuenta de forma repetida, durante 7 días te lo pedirá en los dispositivos nuevos. Si el correo no está completo, no se pide código a nadie. Detalle en [`SEGURIDAD.md`](SEGURIDAD.md) §10.
 
 ## 8. Correo
 

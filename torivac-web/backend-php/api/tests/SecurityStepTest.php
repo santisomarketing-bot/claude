@@ -292,7 +292,7 @@ function test_step_change_own_password()
     T::same(429, ss_call('POST', '/auth/password', ['current' => 'Nueva-Clave-Cliente-2027!', 'password' => 'Otra-Clave-Cliente-2028!!'], $t3)->status, 'ni la buena entra mientras dure');
 }
 
-/** SS9 · Ataques repetidos: tres bloqueos en 24 h → UN aviso por correo y código en dispositivos nuevos 7 días; sin avisos de rutina; una cuenta de confianza solo recibe el aviso. */
+/** SS9 · Ataques repetidos: tres bloqueos en 24 h → UN aviso por correo y código en dispositivos nuevos 7 días; sin avisos de rutina; una cuenta de confianza no pide código de rutina, pero sí mientras dura la protección reforzada. */
 function test_step_repeated_attacks_alert_once_and_require_a_code()
 {
     ss_setup(['enabled' => false]);                                                            // sin código de rutina: solo el reforzado por ataques
@@ -321,13 +321,21 @@ function test_step_repeated_attacks_alert_once_and_require_a_code()
     T::same(200, $ok->status, 'con el código entra');
     $cookie = ss_cookie($ok);
     T::true(isset(ss_login('ana@acme.es', PW_ANA, '10.1.0.21', ['Cookie' => $cookie])->body['token']), 'el dispositivo recordado entra sin código');
-    // una cuenta de confianza solo recibe el aviso
+    // una cuenta de confianza: de rutina no pide código, pero bajo ataques repetidos sí (en dispositivos nuevos)
     ss_setup(['enabled' => false]);
     Router::handle(req('POST', '/users/ana%40acme.es/two-step', ['enabled' => false], master()));
+    T::true(isset(ss_login('ana@acme.es', PW_ANA, '10.2.0.9')->body['token']), 'de rutina, la cuenta de confianza entra solo con la contraseña');
     ss_clear_outbox();
     foreach (['10.2.0.1', '10.2.0.2', '10.2.0.3'] as $ip) $lock('ana@acme.es', $ip);
     T::same(1, count(outbox()), 'la cuenta de confianza recibe el aviso');
-    T::true(isset(ss_login('ana@acme.es', PW_ANA, '10.2.0.30')->body['token']), 'pero no se le pide código');
+    T::true(strpos(outbox()[0]['text'], 'normalmente es una cuenta de confianza') !== false, 'que cuenta que es de confianza');
+    ss_clear_outbox();
+    $r = ss_login('ana@acme.es', PW_ANA, '10.2.0.30');
+    T::same('code', $r->body['step'] ?? null, 'y mientras dura la protección reforzada se le pide código en un dispositivo nuevo');
+    $ok = ss_verify($r->body['challenge'], (string) ss_code('ana@acme.es'), true, '10.2.0.30');
+    T::true(isset(ss_login('ana@acme.es', PW_ANA, '10.2.0.31', ['Cookie' => ss_cookie($ok)])->body['token']), 'con el dispositivo recordado, no');
+    Router::handle(req('POST', '/users/ana%40acme.es/unlock', ['clear_reinforced' => true], master()));
+    T::true(isset(ss_login('ana@acme.es', PW_ANA, '10.2.0.32')->body['token']), 'quitada la protección reforzada, vuelve a entrar solo con la contraseña');
     // lo que no existe no genera avisos ni estado
     ss_setup(['enabled' => false]);
     ss_clear_outbox();

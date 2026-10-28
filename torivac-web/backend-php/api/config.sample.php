@@ -92,10 +92,10 @@ return [
 
     // VERIFICACIÓN EN DOS PASOS POR CORREO (solo managers). Con la contraseña buena, se envía un código de 6 cifras al correo de la cuenta (vale 10 minutos) y hay que escribirlo para entrar. Marcando
     // «recordar este dispositivo» no se vuelve a pedir en ese navegador durante `remember_days`. Solo se pide si el correo de arriba está completo (si no, nadie se queda fuera).
-    //   enabled       true (por defecto) = se pide a los managers; false = nadie lo pide (emergencia: si el correo falla y no puedes entrar, ponlo en false, entra y arregla el correo).
+    //   enabled       true (por defecto) = se pide a los managers; false = no se pide de rutina. EMERGENCIA (el correo falla y no puedes entrar): pon enabled y on_attack en false, entra, arregla el correo y vuelve a ponerlos en true.
     //   remember_days 30 por defecto (1 a 90; 0 = no se ofrece recordar el dispositivo).
-    //   exempt        correos que NUNCA piden código (cuentas de confianza, p. ej. la tuya como administrador): ['tu@correo.com']. También se marca en Panel → Usuarios, casilla «Código por correo».
-    //   on_attack     true (por defecto) = si una cuenta suma 3 bloqueos en 24 h, se avisa por correo (UNA vez al día) y esa cuenta pide el código en dispositivos nuevos durante 7 días.
+    //   exempt        correos que NO piden código de rutina (cuentas de confianza, p. ej. la tuya como administrador): ['tu@correo.com']. También se marca en Panel → Usuarios, casilla «Código por correo». Bajo ataques repetidos (on_attack) también ellas lo piden en dispositivos nuevos.
+    //   on_attack     true (por defecto) = si una cuenta (también una de confianza) suma 3 bloqueos en 24 h, se avisa por correo (UNA vez al día) y esa cuenta pide el código en dispositivos nuevos durante 7 días.
     'two_step' => [
         'enabled' => true,
         'remember_days' => 30,

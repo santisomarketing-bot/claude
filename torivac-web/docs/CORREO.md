@@ -85,7 +85,7 @@ Con el correo bien configurado, el panel manda dos tipos de correo más (se ven 
 - **El código de acceso** (6 cifras, 10 minutos, un solo uso) que se pide al entrar a los managers que no son «de confianza»: el asunto no lleva el código. Detalle en [`SEGURIDAD.md`](SEGURIDAD.md) §10.
 - **El aviso de intentos repetidos** (a `alert_to`, o a quienes reciben los pedidos si está vacío): **un solo correo** cuando una cuenta suma 3 bloqueos en 24 horas, como mucho uno al día. No hay avisos de rutina. §11.
 
-**Si el correo no está completo, no se pide código a nadie** (sería un código que no llega): nadie se queda fuera, y *Usuarios* lo avisa. Por eso **lo primero es dejar el correo funcionando** (apartado 5) y después comprobar que el código llega entrando desde otro navegador. Si un día el correo falla y no puedes entrar, el interruptor de emergencia es `'two_step' => ['enabled' => false]` en `api/config.php`.
+**Si el correo no está completo, no se pide código a nadie** (sería un código que no llega): nadie se queda fuera, y *Usuarios* lo avisa. Por eso **lo primero es dejar el correo funcionando** (apartado 5) y después comprobar que el código llega entrando desde otro navegador. Si un día el correo falla y no puedes entrar, el interruptor de emergencia es `'two_step' => ['enabled' => false, 'on_attack' => false]` en `api/config.php` (no se pide código a nadie).
 
 ## 6. Si falla: qué dice y qué hacer
 

@@ -5,6 +5,7 @@
 //   3) en ese navegador no se lo vuelve a pedir · 4) en otro navegador sí; «Volver», reenviar el código (con la espera) y el código viejo deja de valer
 //   5) cinco códigos erróneos bloquean, y otro manager desbloquea desde Usuarios · 6) Usuarios: la casilla «código por correo», alta, baja y contraseña nueva
 //   7) ataques repetidos: tres visitantes distintos bloquean a una cuenta → UN aviso por correo y código en dispositivos nuevos; los bloqueos sueltos no avisan; «Desbloquear» lo quita
+//      · y la dueña (cuenta de confianza), que de rutina no pide código, SÍ lo pide en dispositivos nuevos mientras la atacan
 //   8) Actividad: filtros, marcas de aviso, descarga CSV sin fórmulas · 9) Ajustes: tu cuenta, olvidar dispositivos, copias de seguridad (crear, descargar, restaurable, borrar), cambiar la contraseña
 //   10) el interruptor de emergencia (two_step.enabled = false) y el correo sin completar (no se pide código a nadie) · 11) clientes: sin Usuarios ni Actividad · 12) móvil: sin desbordes
 // Con axe-core (accesibilidad) sobre la pantalla del código, Usuarios, Actividad y Ajustes. Necesita apache2, php-fpm y Playwright (npm i --no-save playwright); si falta Apache, avisa y sale sin fallo.
@@ -276,6 +277,33 @@ try {
   r = await d.api('/auth/login', { method: 'POST', body: { email: CLIENT, password: 'Bobina-Plata-2026' } });
   ok(r.s === 200 && r.j.token, 'y el cliente vuelve a entrar con la contraseña sola');
 
+  console.log('\n7b) la dueña (cuenta de confianza) solo pide código si la atacan de forma repetida');
+  const before = alerts().length;
+  await hammer(OWNER, 11); await hammer(OWNER, 12);
+  ok(alerts().length === before, 'dos bloqueos de su cuenta no avisan');
+  await hammer(OWNER, 13);
+  const aOwner = alerts().filter((m) => /jefa@torivac\.com/.test(m.text));
+  ok(alerts().length === before + 1 && aOwner.length === 1 && /normalmente es una cuenta de confianza/.test(aOwner[0].text), 'el tercero avisa UNA vez y dice que es una cuenta de confianza');
+  const H1 = await fresh();
+  await signIn(H1.page, OWNER, OWNER_PASS);
+  await codeScreen(H1.page);
+  ok(/intentos repetidos/.test(d.outbox().filter((m) => [].concat(m.to).includes(OWNER)).pop().text), 'en un navegador nuevo, a la dueña ahora se le pide código (y el correo explica por qué)');
+  await H1.page.fill('[name=code]', d.lastCode(OWNER)); await H1.page.click('[data-code-form] button[type=submit]');
+  await panel(H1.page);
+  await H1.ctx.close();
+  await A.page.click('.side nav a[href="#actividad"]'); await A.page.click('.side nav a[href="#usuarios"]');
+  await A.page.waitForSelector('[data-sec-mode=users]');
+  const rowO2 = A.page.locator('tr', { hasText: OWNER });
+  await A.page.waitForFunction((e) => { const t = [...document.querySelectorAll('tr')].find((x) => x.textContent.includes(e)); return t && /protección reforzada hasta/i.test(t.textContent); }, OWNER);
+  ok(/protección reforzada hasta/i.test(await rowO2.innerText()) && await rowO2.locator('select[data-sec-two-step]').inputValue() === '0', 'Usuarios la marca con «Protección reforzada» y sigue figurando como cuenta de confianza');
+  await rowO2.locator('[data-sec-unlock]').click();
+  ok(/desbloqueada/.test(await toast(A.page)), '«Desbloquear» quita la protección reforzada de la dueña');
+  const H2 = await fresh();
+  await signIn(H2.page, OWNER, OWNER_PASS);
+  await panel(H2.page);
+  ok(!(await H2.page.$('[data-code-form]')), 'y vuelve a entrar con la contraseña sola');
+  await H2.ctx.close();
+
   console.log('\n8) Actividad: filtros, marcas y CSV');
   await d.api('/auth/login', { method: 'POST', body: { email: '=1+1@evil.test', password: 'No-importa-nada' }, headers: visitor(9) });
   await A.page.click('.side nav a[href="#actividad"]');
@@ -283,7 +311,7 @@ try {
   const labels = await A.page.$$eval('[data-sec-rows] tr td:nth-child(3)', (t) => t.map((x) => x.textContent.trim()));
   ok(['Código enviado por correo', 'Entró con código', 'Dispositivo recordado', 'Código incorrecto', 'Cuenta desbloqueada', 'Aviso: intentos repetidos', 'Acceso bloqueado una hora'].every((l) => labels.includes(l)), 'el registro tiene lo que pasó: código enviado, entró con código, dispositivo recordado, código incorrecto, desbloqueos, bloqueos y el aviso');
   ok(await A.page.locator('[data-sec-rows] .tag.warn').count() > 3, 'los fallos, bloqueos y avisos salen marcados');
-  const alertRow = A.page.locator('[data-sec-rows] tr', { hasText: 'Aviso: intentos repetidos' }).first();
+  const alertRow = A.page.locator('[data-sec-rows] tr', { hasText: 'Aviso: intentos repetidos' }).filter({ hasText: 'cliente@empresa.com' }).first();
   ok(/cliente@empresa\.com · 3 bloqueos en 24 h/.test(await alertRow.innerText()), 'el aviso dice qué cuenta y cuántos bloqueos');
   ok(/127\.0\.0\.1/.test(await A.page.locator('[data-sec-rows] tr', { hasText: 'Entró con código' }).first().innerText()) && /Chrome|HeadlessChrome|Otro/.test(await A.page.locator('[data-sec-rows] tr', { hasText: 'Entró con código' }).first().innerText()), 'cada hecho lleva la dirección y el navegador desde donde se hizo');
   await shot(A.page, '03-actividad');

@@ -5,7 +5,7 @@
  *     Si marca «recordar este dispositivo», una cookie firmada (HttpOnly, 30 días) evita volver a pedirlo en ese navegador. Quedan fuera las cuentas de confianza (casilla «sin código» en
  *     Usuarios o `two_step.exempt` en config.php) y todo el sistema si `two_step.enabled` es false. Solo se pide si el correo puede salir (Mail::enabled): sin él, nadie se queda fuera.
  *   · ATAQUES REPETIDOS. Sin avisos de rutina: solo cuando una cuenta acumula 3 bloqueos en 24 horas (o el bloqueo por cuenta, que indica un ataque repartido entre muchas direcciones)
- *     se envía UN aviso por correo (como mucho uno al día por cuenta) y, durante 7 días, esa cuenta pide el código por correo en los dispositivos nuevos. Las cuentas de confianza solo reciben el aviso.
+ *     se envía UN aviso por correo (como mucho uno al día por cuenta) y, durante 7 días, esa cuenta pide el código por correo en los dispositivos nuevos. También las cuentas de confianza, que de rutina no piden código, lo piden mientras dura esa protección reforzada.
  *   · DESBLOQUEO. Otro manager puede quitar el bloqueo de una cuenta (y los contadores de fallos) desde el panel: se guarda qué visitantes fallaron contra esa cuenta (lgidx:) para poder limpiarlos.
  *   · CONTRASEÑA. Cambiar la propia (pide la actual) y que un manager ponga una nueva a otra persona: ambos cierran sesiones y olvidan los dispositivos recordados.
  * Todo lo que guarda es mínimo y caduca: el código (hash HMAC con session_secret, nunca en claro) en pin:<id>, los contadores en rl:…, el índice de visitantes en lgidx:… (2 h).
@@ -100,14 +100,13 @@ final class Security
 
     /**
      * Por qué hay que pedir código a esta persona al entrar, o null si no: 'two_step' (manager con verificación activa) o 'attack' (protección reforzada tras ataques repetidos).
-     * Sin correo capaz de enviar no se pide nunca (nadie se queda fuera) y una cuenta de confianza nunca lo pide.
+     * Sin correo capaz de enviar no se pide nunca (nadie se queda fuera). Una cuenta de confianza no lo pide de rutina, pero SÍ mientras dura la protección reforzada tras ataques repetidos (es cuando más hace falta).
      */
     public static function codeReason(array $u, ?int $nowMs = null): ?string
     {
-        if (!Mail::enabled() || self::isExempt($u)) return null;
-        if (($u['role'] ?? '') === 'manager' && self::twoStepEnabled()) return 'two_step';
-        if (self::attackProtection() && self::underAttack($u, $nowMs)) return 'attack';
-        return null;
+        if (!Mail::enabled()) return null;
+        if (!self::isExempt($u) && ($u['role'] ?? '') === 'manager' && self::twoStepEnabled()) return 'two_step';
+        return self::attackProtection() && self::underAttack($u, $nowMs) ? 'attack' : null;
     }
 
     // ───────────────────────────────────────── [DISPOSITIVOS DE CONFIANZA]
@@ -338,7 +337,7 @@ final class Security
             if ($n < self::ATTACK_LOCKS) return;
             Users::set($email, ['atk_until' => Util::nowMs() + self::ATTACK_MS]);
             if (!RateLimit::hit('atkmail', $email, 1, 86400000)['allowed']) return;
-            Audit::log('alert.repeated', ['sub' => 'sistema', 'role' => ''], $req, $email . ' · ' . $n . ' bloqueos en 24 h' . (self::isExempt($u) ? ' (cuenta de confianza: solo aviso)' : ''));
+            Audit::log('alert.repeated', ['sub' => 'sistema', 'role' => ''], $req, $email . ' · ' . $n . ' bloqueos en 24 h' . (self::isExempt($u) ? ' (cuenta de confianza)' : ''));
             self::alertMail($u, $n);
         } catch (\Throwable $e) {
             error_log('torivac-api: aviso de ataque repetido: ' . mb_substr($e->getMessage(), 0, 160));
@@ -349,8 +348,7 @@ final class Security
     private static function alertMail(array $u, int $locks): void
     {
         $email = (string) $u['email'];
-        $exempt = self::isExempt($u);
-        $how = $exempt ? 'Es una cuenta de confianza (no pide código por correo), así que solo se avisa.' : 'Durante 7 días esa cuenta pide un código por correo al entrar desde dispositivos nuevos.';
+        $how = 'Durante 7 días esa cuenta pide un código por correo al entrar desde dispositivos nuevos' . (self::isExempt($u) ? ' (normalmente es una cuenta de confianza y no lo pide).' : '.');
         $text = "Se han detectado intentos repetidos de entrar en la cuenta $email del panel de Torivac: $locks bloqueos de acceso en las últimas 24 horas.\n\n"
             . "Cada intento se bloquea una hora tras 5 contraseñas erróneas. $how\n\n"
             . "Qué hacer: si es una persona de tu equipo que se está equivocando, no hace falta nada. Si no, cambia la contraseña de esa cuenta (Panel → Usuarios) y mira Panel → Actividad para ver desde qué direcciones se intentó.\n\n"

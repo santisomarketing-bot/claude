@@ -74,7 +74,7 @@ curl -X POST https://torivac.santisomarketing.com/api/users \
 ```
 y **vacía `admin_token`** después. (Con SSH: `php api/tools/create-user.php correo "Nombre" manager "contraseña"`.)
 
-**Código por correo al entrar**: con el correo funcionando (paso 8), a los managers se les pide un código de 6 cifras (recordando el navegador 30 días). **Marca tu cuenta como de confianza** en Panel → Usuarios → «Código por correo» → «No (cuenta de confianza)» para no escribirlo. Si el correo no está completo, no se pide a nadie. Más en [`SEGURIDAD.md`](SEGURIDAD.md) §10.
+**Código por correo al entrar**: con el correo funcionando (paso 8), a los managers se les pide un código de 6 cifras (recordando el navegador 30 días). **Marca tu cuenta como de confianza** en Panel → Usuarios → «Código por correo» → «No (cuenta de confianza)» para no escribirlo (solo si alguien ataca tu cuenta de forma repetida te lo pedirá, 7 días y en dispositivos nuevos). Si el correo no está completo, no se pide a nadie. Más en [`SEGURIDAD.md`](SEGURIDAD.md) §10.
 
 ### 8. Correo
 Igual que en cPanel ([paso 8](DESPLIEGUE-CPANEL.md#8-correo)) y con la guía completa en [`CORREO.md`](CORREO.md). En Plesk lo más sencillo es **SMTP con el buzón del dominio**: **Mail → Create Email Address** (`pedidos@torivac.santisomarketing.com` o el del dominio principal), servidor `mail.TUDOMINIO` (el que muestra *Mail → Mail Settings*), puerto 587 con `secure = 'tls'` (o 465 con `ssl`), usuario = la dirección completa. Para SPF y DKIM: *Mail → Mail Settings* del dominio → *Use DKIM spam protection*. Después, **Ajustes → Correo → «Enviar correo de prueba»** en el panel. Si el correo no sale, **el pedido y el mensaje se guardan igual** y se marcan «El aviso por correo falló» con el motivo.

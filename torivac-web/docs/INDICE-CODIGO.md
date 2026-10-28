@@ -1184,7 +1184,7 @@ Secciones: `[QA-APACHE]` · `[PAQUETE]`
 - `writeCfg` (l. 33) — Escribe api/config.php con la carpeta de datos indicada (fuera de la web por defecto).
 - `get` (l. 39) — GET (sin seguir redirecciones) de una ruta → { s: estado, h: cabeceras, t: cuerpo }
 - `api` (l. 41) — Llamada JSON al API → { s, j }
-- `raw` (l. 127) — GET con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar) → { s, h, t }
+- `raw` (l. 138) — GET con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar) → { s, h, t }
 
 ### `qa-art.mjs`
 
@@ -1287,19 +1287,19 @@ Secciones: `[QA-QUOTE]` · `[DATA]` · `[SCENARIO]`
 
 Secciones: `[QA-SECURITY-PANEL]`
 
-- `ok` (l. 27) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
-- `fresh` (l. 37) — Abre un navegador nuevo (sin cookies ni sesión) con sus avisos de error y de confirmación recogidos → { ctx, page, dialogs }
-- `signIn` (l. 48) — Escribe correo y contraseña en la pantalla de acceso y pulsa «Entrar».
-- `panel` (l. 53) — Espera a que el panel esté pintado (menú lateral).
-- `codeScreen` (l. 55) — Espera a la pantalla del código.
-- `toast` (l. 57) — Texto del aviso emergente del panel (#toast), tras una pausa corta para que aparezca.
-- `wrongCode` (l. 59) — Otro código que no sea `real` (para equivocarse a propósito).
-- `axe` (l. 61) — Analiza con axe la pantalla actual y anota las violaciones graves.
-- `shot` (l. 70) — Guarda una captura de la pantalla si se pidió (QA_SHOTS=<carpeta>): sirve para mirar cómo quedó, no es una comprobación.
-- `visitor` (l. 72) — Cabeceras para hacerse pasar por otro visitante en el API.
-- `hammer` (l. 74) — Intentos de acceso con contraseña mala desde otro «visitante» (para provocar un bloqueo de una hora).
-- `alerts` (l. 242) — Los correos de «intentos repetidos» que se han mandado (el aviso al equipo).
-- `bkRows` (l. 316) — Las filas de la tabla de copias de seguridad de Ajustes.
+- `ok` (l. 28) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `fresh` (l. 38) — Abre un navegador nuevo (sin cookies ni sesión) con sus avisos de error y de confirmación recogidos → { ctx, page, dialogs }
+- `signIn` (l. 49) — Escribe correo y contraseña en la pantalla de acceso y pulsa «Entrar».
+- `panel` (l. 54) — Espera a que el panel esté pintado (menú lateral).
+- `codeScreen` (l. 56) — Espera a la pantalla del código.
+- `toast` (l. 58) — Texto del aviso emergente del panel (#toast), tras una pausa corta para que aparezca.
+- `wrongCode` (l. 60) — Otro código que no sea `real` (para equivocarse a propósito).
+- `axe` (l. 62) — Analiza con axe la pantalla actual y anota las violaciones graves.
+- `shot` (l. 71) — Guarda una captura de la pantalla si se pidió (QA_SHOTS=<carpeta>): sirve para mirar cómo quedó, no es una comprobación.
+- `visitor` (l. 73) — Cabeceras para hacerse pasar por otro visitante en el API.
+- `hammer` (l. 75) — Intentos de acceso con contraseña mala desde otro «visitante» (para provocar un bloqueo de una hora).
+- `alerts` (l. 243) — Los correos de «intentos repetidos» que se han mandado (el aviso al equipo).
+- `bkRows` (l. 344) — Las filas de la tabla de copias de seguridad de Ajustes.
 
 ### `qa-tarifa.mjs`
 
@@ -2588,23 +2588,23 @@ Secciones: `[SECURITY]` · `[AJUSTES]` · `[DISPOSITIVOS DE CONFIANZA]`
 - `codeStatus` (l. 91) — Estado para mostrar de un usuario: 'required' (pide código al entrar), 'exempt' (cuenta de confianza), 'off' (la verificación está desactivada en el servidor) o 'n/a' (clientes: solo la piden tras ataques).
 - `underAttack` (l. 99) — ¿Está esa cuenta en protección reforzada (ataques repetidos recientes)?
 - `codeReason` (l. 105) — Por qué hay que pedir código a esta persona al entrar, o null si no: 'two_step' (manager con verificación activa) o 'attack' (protección reforzada tras ataques repetidos).
-- `deviceCookieName` (l. 115) — Nombre de la cookie del dispositivo de una cuenta: una por cuenta (un ordenador compartido entre dos managers no mezcla sus dispositivos).
-- `deviceSig` (l. 118) — Firma de un dispositivo: ligada al identificador de sesión del usuario (si se borra y se vuelve a crear, no vale), a su época de dispositivos (olvidarlos los invalida) y a la caducidad.
-- `issueDevice` (l. 124) — Cookie de un dispositivo recién verificado → ['name', 'value', 'max_age'], o null si no hay secreto seguro o no se ofrece recordar.
-- `deviceTrusted` (l. 135) — ¿Trae la petición una cookie de dispositivo válida (firma buena, sin caducar y de ESTA cuenta)?
-- `cookieHeader` (l. 145) — Valor de la cabecera Set-Cookie de un dispositivo: HttpOnly (el JavaScript de la página no la ve), SameSite=Strict, solo para el API y con Secure si la petición llegó por HTTPS.
-- `forgetDevices` (l. 151) — Hace que todos los dispositivos recordados de esa cuenta dejen de valer (sube su época). Devuelve false si la cuenta no existe.
-- `hint` (l. 159) — «m****@torivac.com»: el correo con casi todo oculto, para decir adónde se mandó el código sin enseñarlo entero.
-- `sendCode` (l. 167) — Envía el código por correo al usuario → resultado de Mail::send. El código no va en el asunto (se vería en notificaciones).
-- `startChallenge` (l. 184) — Crea un código para esa persona, lo guarda (solo su hash HMAC) y se lo manda por correo. `$why`: 'two_step' o 'attack'.
-- `resend` (l. 208) — Reenvía un código nuevo (el anterior deja de valer): como mucho PIN_SENDS envíos por intento de acceso, con PIN_RESEND_WAIT_MS entre ellos.
-- `verify` (l. 238) — Comprueba un código. Bien → ['email', 'why'] y el código queda gastado. Mal → 'error' con 'left' (intentos que quedan) y, con PIN_TRIES fallos, el código se anula. Además de los 5 intentos por
-- `idxKey` (l. 280) — Clave del índice de visitantes que han fallado contra una cuenta.
-- `noteAttempt` (l. 283) — Anota que ese visitante (clave de IP) ha fallado contra esa cuenta: así se puede ver si está bloqueada y desbloquearla sin conocer las IP de antemano. El índice caduca a las 2 horas y guarda 40 como mucho.
-- `lockLeft` (l. 298) — Milisegundos que le quedan de bloqueo a una cuenta por cualquiera de los motivos (contraseña o código, por visitante o por cuenta); 0 si no está bloqueada.
-- `unlock` (l. 311) — Quita el bloqueo de una cuenta y pone a cero sus contadores (por cuenta y por cada visitante que había fallado contra ella; también el bloqueo del propio visitante, para que quien
-- `lockoutHappened` (l. 329) — Un bloqueo acaba de empezar contra una cuenta (`$weight` 1 = el de un visitante; ATTACK_LOCKS = el de la cuenta entera o 20 códigos erróneos: un ataque repartido). Si la cuenta suma ATTACK_LOCKS
-- `alertMail` (l. 349) — Correo de aviso al equipo por intentos repetidos contra una cuenta (sin ninguna contraseña ni código).
+- `deviceCookieName` (l. 114) — Nombre de la cookie del dispositivo de una cuenta: una por cuenta (un ordenador compartido entre dos managers no mezcla sus dispositivos).
+- `deviceSig` (l. 117) — Firma de un dispositivo: ligada al identificador de sesión del usuario (si se borra y se vuelve a crear, no vale), a su época de dispositivos (olvidarlos los invalida) y a la caducidad.
+- `issueDevice` (l. 123) — Cookie de un dispositivo recién verificado → ['name', 'value', 'max_age'], o null si no hay secreto seguro o no se ofrece recordar.
+- `deviceTrusted` (l. 134) — ¿Trae la petición una cookie de dispositivo válida (firma buena, sin caducar y de ESTA cuenta)?
+- `cookieHeader` (l. 144) — Valor de la cabecera Set-Cookie de un dispositivo: HttpOnly (el JavaScript de la página no la ve), SameSite=Strict, solo para el API y con Secure si la petición llegó por HTTPS.
+- `forgetDevices` (l. 150) — Hace que todos los dispositivos recordados de esa cuenta dejen de valer (sube su época). Devuelve false si la cuenta no existe.
+- `hint` (l. 158) — «m****@torivac.com»: el correo con casi todo oculto, para decir adónde se mandó el código sin enseñarlo entero.
+- `sendCode` (l. 166) — Envía el código por correo al usuario → resultado de Mail::send. El código no va en el asunto (se vería en notificaciones).
+- `startChallenge` (l. 183) — Crea un código para esa persona, lo guarda (solo su hash HMAC) y se lo manda por correo. `$why`: 'two_step' o 'attack'.
+- `resend` (l. 207) — Reenvía un código nuevo (el anterior deja de valer): como mucho PIN_SENDS envíos por intento de acceso, con PIN_RESEND_WAIT_MS entre ellos.
+- `verify` (l. 237) — Comprueba un código. Bien → ['email', 'why'] y el código queda gastado. Mal → 'error' con 'left' (intentos que quedan) y, con PIN_TRIES fallos, el código se anula. Además de los 5 intentos por
+- `idxKey` (l. 279) — Clave del índice de visitantes que han fallado contra una cuenta.
+- `noteAttempt` (l. 282) — Anota que ese visitante (clave de IP) ha fallado contra esa cuenta: así se puede ver si está bloqueada y desbloquearla sin conocer las IP de antemano. El índice caduca a las 2 horas y guarda 40 como mucho.
+- `lockLeft` (l. 297) — Milisegundos que le quedan de bloqueo a una cuenta por cualquiera de los motivos (contraseña o código, por visitante o por cuenta); 0 si no está bloqueada.
+- `unlock` (l. 310) — Quita el bloqueo de una cuenta y pone a cero sus contadores (por cuenta y por cada visitante que había fallado contra ella; también el bloqueo del propio visitante, para que quien
+- `lockoutHappened` (l. 328) — Un bloqueo acaba de empezar contra una cuenta (`$weight` 1 = el de un visitante; ATTACK_LOCKS = el de la cuenta entera o 20 códigos erróneos: un ataque repartido). Si la cuenta suma ATTACK_LOCKS
+- `alertMail` (l. 348) — Correo de aviso al equipo por intentos repetidos contra una cuenta (sin ninguna contraseña ni código).
 
 ### `Smtp.php`
 
@@ -3002,15 +3002,15 @@ Pruebas de la seguridad de acceso de la sesión «Seguridad 3»: verificación e
 - `test_step_exemptions_and_switches` (l. 228) — SS6 · Cuentas de confianza (casilla, lista en config.php) y interruptores: nadie se queda fuera. Si el correo falla justo al pedir el código, se dice y no queda nada pendiente.
 - `test_step_user_actions_are_for_managers` (l. 258) — SS7 · La casilla de código por correo, el desbloqueo y la contraseña de otra cuenta son cosas de managers.
 - `test_step_change_own_password` (l. 276) — SS8 · Cambiar la contraseña propia: pide la actual (5 fallos por hora), cierra todas las sesiones y exige entrar de nuevo.
-- `test_step_repeated_attacks_alert_once_and_require_a_code` (l. 296) — SS9 · Ataques repetidos: tres bloqueos en 24 h → UN aviso por correo y código en dispositivos nuevos 7 días; sin avisos de rutina; una cuenta de confianza solo recibe el aviso.
-- `test_step_distributed_attack_counts_at_once` (l. 344) — SS10 · El bloqueo de la cuenta entera (30 fallos repartidos entre muchas direcciones) cuenta como ataque repetido al instante.
-- `test_step_unlock_account` (l. 355) — SS11 · Otro manager desbloquea una cuenta (la pareja visitante+cuenta, la cuenta y el visitante) y la lista dice cuáles están bloqueadas; la protección reforzada se puede quitar aparte.
-- `test_step_audit_log` (l. 375) — SS12 · Registro de actividad: qué se anota, con qué detalle, cuánto ocupa y quién lo lee.
-- `test_step_audit_every_action_has_a_label` (l. 416) — Toda acción que el servidor anota tiene su nombre en castellano (si no, el panel enseñaría un código como «user.password»). Se buscan en el código fuente, así que una acción nueva sin nombre lo rompe.
-- `test_step_audit_caps_and_purge` (l. 430) — SS13 · Tamaño y limpieza del registro: un día no pasa de 2 MB (con una línea de aviso) y lo de más de 180 días se borra.
-- `test_step_backup_create_download_restore` (l. 450) — SS14 · Copia de seguridad: se crea desde el panel, se baja con un enlace firmado de 2 minutos y se restaura entera (datos con su caducidad e imágenes); nada de secretos ni contadores.
-- `test_step_backup_schedule_and_prune` (l. 515) — SS15 · Copias: se guardan solo las 8 últimas, la semanal se hace una vez por semana y se puede apagar.
-- `test_step_health_features_and_diagnostics` (l. 552) — SS16 · /health cuenta qué trae el servidor (y la clave PÚBLICA del CAPTCHA solo si están las dos claves) y el Diagnóstico explica cada medida.
+- `test_step_repeated_attacks_alert_once_and_require_a_code` (l. 296) — SS9 · Ataques repetidos: tres bloqueos en 24 h → UN aviso por correo y código en dispositivos nuevos 7 días; sin avisos de rutina; una cuenta de confianza no pide código de rutina, pero sí mientras dura la protección reforzada.
+- `test_step_distributed_attack_counts_at_once` (l. 352) — SS10 · El bloqueo de la cuenta entera (30 fallos repartidos entre muchas direcciones) cuenta como ataque repetido al instante.
+- `test_step_unlock_account` (l. 363) — SS11 · Otro manager desbloquea una cuenta (la pareja visitante+cuenta, la cuenta y el visitante) y la lista dice cuáles están bloqueadas; la protección reforzada se puede quitar aparte.
+- `test_step_audit_log` (l. 383) — SS12 · Registro de actividad: qué se anota, con qué detalle, cuánto ocupa y quién lo lee.
+- `test_step_audit_every_action_has_a_label` (l. 424) — Toda acción que el servidor anota tiene su nombre en castellano (si no, el panel enseñaría un código como «user.password»). Se buscan en el código fuente, así que una acción nueva sin nombre lo rompe.
+- `test_step_audit_caps_and_purge` (l. 438) — SS13 · Tamaño y limpieza del registro: un día no pasa de 2 MB (con una línea de aviso) y lo de más de 180 días se borra.
+- `test_step_backup_create_download_restore` (l. 458) — SS14 · Copia de seguridad: se crea desde el panel, se baja con un enlace firmado de 2 minutos y se restaura entera (datos con su caducidad e imágenes); nada de secretos ni contadores.
+- `test_step_backup_schedule_and_prune` (l. 523) — SS15 · Copias: se guardan solo las 8 últimas, la semanal se hace una vez por semana y se puede apagar.
+- `test_step_health_features_and_diagnostics` (l. 560) — SS16 · /health cuenta qué trae el servidor (y la clave PÚBLICA del CAPTCHA solo si están las dos claves) y el Diagnóstico explica cada medida.
 
 ### `SmtpTest.php`
 
