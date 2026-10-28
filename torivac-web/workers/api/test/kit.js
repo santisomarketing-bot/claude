@@ -36,3 +36,32 @@ export async function orderEnv(extra = {}) {
 }
 /** Todas las claves de KV (ordenadas) que empiezan por el prefijo. */
 export const keys = (env, prefix = '') => [...env.KV.m.keys()].filter((k) => k.startsWith(prefix)).sort();
+/** Proveedor de correo simulado (Resend o Brevo, según la URL a la que se llame): guarda cada petición { url, headers, body } en `calls`. `status` y `reply` fijan la respuesta (por defecto 200 con { id } de Resend o 201 con { messageId } de Brevo; un texto se envía tal cual); `throws` simula una caída de red. */
+export function provider({ status, reply, throws } = {}) {
+  const calls = [];
+  /** fetch simulado: anota la petición y responde como el proveedor (o lanza, si se pidió una caída de red). */
+  const fetchImpl = async (url, o) => {
+    if (throws) throw new Error(throws);
+    calls.push({ url, headers: o.headers, body: typeof o.body === 'string' ? JSON.parse(o.body) : String(o.body) });
+    const brevo = String(url).includes('brevo.com');
+    return new Response(typeof reply === 'string' ? reply : JSON.stringify(reply ?? (brevo ? { messageId: '<m1@smtp-relay.mailin.fr>' } : { id: 'm1' })), { status: status ?? (brevo ? 201 : 200) });
+  };
+  return { calls, fetchImpl };
+}
+let ipSeq = 0;
+/** IP de prueba nueva en cada llamada (el límite de contacto es de 5 por visitante cada 10 minutos). */
+export const freshIp = () => `10.30.${(ipSeq >> 8) & 255}.${ipSeq++ & 255}`;
+/** POST /api/contact anónimo con un mensaje válido de ejemplo (over sustituye campos; el resto va a deps: now, rand, retryMs…) → { r (Response), j (JSON), ip }. */
+export async function contactPost(env, box, over = {}, { ip = freshIp(), ...extra } = {}) {
+  const r = await call(env, '/api/contact', { method: 'POST', body: { name: 'Ana Pérez', email: 'ana@acme.es', message: 'Necesito 50 toroidales', lang: 'es', privacy: true, ...over }, ip, deps: { fetchImpl: box.fetchImpl, ...extra } });
+  return { r, j: await r.json(), ip };
+}
+/** Ejecuta fn con console.error capturado → las líneas que se escribieron en el registro del servidor (una cadena por llamada). */
+export async function withLog(fn) {
+  const orig = console.error, logs = [];
+  console.error = (...a) => logs.push(a.map(String).join(' '));
+  try { await fn(); } finally { console.error = orig; }
+  return logs;
+}
+/** Registros (ya leídos) de los mensajes de contacto guardados en el KV del entorno, de la clave más reciente a la más antigua. */
+export const messagesIn = (env) => keys(env, 'msg:').map((k) => JSON.parse(env.KV.m.get(k)));

@@ -98,6 +98,14 @@ curl -X POST https://<worker>/api/users -H "Authorization: Bearer $ADMIN_API_TOK
 curl https://<worker>/api/health
 # panel real: compilar la web con  TORIVAC_API=https://<worker>  → /admin/ carga admin-live.js (login real) en lugar del demo
 ```
+### Correo: Resend o Brevo, y por qué ya no hay un «recibido» falso
+`EMAIL_PROVIDER` elige el servicio de envío: `resend` (por defecto; secreto `RESEND_API_KEY`), `brevo` (secreto `BREVO_API_KEY`, API v3 `smtp/email`) o `none` (no envía; todo se guarda igual). En los dos hace falta que el remitente `ORDER_FROM` (`Nombre <correo@dominio>`)
+esté verificado en el servicio: en Resend, el dominio con SPF/DKIM; en Brevo, el remitente o el dominio autenticado. Si no, el servicio rechaza el envío y el motivo se ve en el panel.
+- **Contacto:** `POST /api/contact` guarda SIEMPRE el mensaje (`msg:…`, 400 días) antes de intentar el correo y responde `{ ok, id, emailed:{ sent, reason } }`; `reason` = `sent` · `off` (sin controlador) · `failed` (el servicio respondió error) · `skipped` (faltan clave, remitente o destinatarios). Si no se pudo guardar, 500 y no se envía nada.
+- **Panel (solo managers):** `GET /api/messages?limit=` (1..300, por defecto 100, el más reciente primero), `DELETE /api/messages/:id`, `POST /api/mail/test { to? }` (10 por hora y usuario; devuelve el error corto del servicio) y `GET /api/mail/status` (controlador, ajustes que faltan por NOMBRE y último intento).
+  `GET /api/health` añade `mail:{ driver, configured, last }` sin texto de error ni secretos. El último intento (`mail:last`) se anota en cada envío: pedido, copia al cliente, contacto y prueba.
+- **Seguridad:** ningún error lleva claves (se tachan los valores del entorno y las formas típicas de clave); el contenido del visitante se escapa en el correo y se guarda y devuelve como dato.
+
 Destinatarios confirmados por el cliente: `ORDER_TO = info@grupotorivac.com, mzamora@torivac.com` (info@ también para las pruebas).
 Antes de producción: verificar `grupotorivac.com` en Resend (SPF/DKIM) para que `ORDER_FROM` (`pedidos@grupotorivac.com`) no vaya a spam,
 y poner en `ALLOWED_ORIGINS` el dominio real de la web (y el del cPanel de pruebas).
@@ -108,5 +116,5 @@ lectura de hoja y CSV con comillas, **lector de `.xlsx`** (mismos libros que el 
 servicio, flujo de pedido con Resend simulado, roles, límite de login, CORS, subida y cron, y la IA de precios (validación, propuesta, aplicar con
 confirmación, límite de uso, 403 a clientes). Los arreglos de seguridad tienen sus pruebas de regresión (el ataque ya no funciona y lo legítimo sí) en
 `test/security-orders.test.js` (copia al cliente, PDF, topes, `ipKey`, pedidos), `test/security-auth.test.js` (login, Bearer, secretos, sesiones, errores, cuerpo, `/api/admin/data`) y
-`test/security-sheets.test.js` (borrado masivo de precios, cifras, lector `.xlsx` hostil, descargas). Extremo a extremo: `node scripts/qa-live.mjs` (pedido/contacto), `qa-admin-live.mjs` (panel real) y `qa-tarifa.mjs` (tarifa Excel real);
+`test/security-sheets.test.js` (borrado masivo de precios, cifras, lector `.xlsx` hostil, descargas). El correo veraz (contacto guardado, Resend y Brevo simulados, secretos) está en `test/mail-contact.test.js` y los endpoints de gestión (mensajes, prueba de correo, estado, salud) en `test/mail-admin.test.js`. Extremo a extremo: `node scripts/qa-live.mjs` (pedido/contacto), `qa-admin-live.mjs` (panel real) y `qa-tarifa.mjs` (tarifa Excel real);
 los tres aceptan `--php` para correr contra `backend-php/api`.

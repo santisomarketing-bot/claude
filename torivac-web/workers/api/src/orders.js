@@ -1,12 +1,15 @@
 // [ORDERS] POST /api/order → valida, valora en servidor con los precios VIGENTES, guarda y envía por correo: AVISO al equipo (con el PDF que fabricó el navegador) y, según ORDER_COPY y con topes,
 // COPIA al cliente con contenido generado solo por el servidor (sin PDF ni texto del visitante). Número de pedido TV-AAAAMMDD-NNNN-XXX (XXX aleatorio: dos pedidos simultáneos no se pisan).
-// Claves KV: order:<nº completo> (400 días) · uorder:<sha256(correo)[:32]>:<nº> (índice de «mis pedidos» del cliente, valor mínimo) · counter:<AAAAMMDD> (contador de «mejor esfuerzo»).
-import { json, clientIp, ipKey, esc, sha256Hex } from './util.js';
+// POST /api/contact → guarda SIEMPRE el mensaje (CT-AAAAMMDD-NNNN-XXX, ver messages.js), intenta el correo al equipo y dice la verdad sobre él en `emailed`.
+// Claves KV: order:<nº completo> (400 días) · uorder:<sha256(correo)[:32]>:<nº> (índice de «mis pedidos» del cliente, valor mínimo) · counter:<AAAAMMDD> y counter:ct:<AAAAMMDD> (contadores de «mejor esfuerzo»)
+// · msg:… (mensajes de contacto, 400 días).
+import { json, clientIp, ipKey, sha256Hex } from './util.js';
 import { parseOrder } from './validate.js';
 import { loadPrices, priceOrder, withSheetItems } from './prices.js';
 import { verifyTurnstile } from './turnstile.js';
 import { hit } from './ratelimit.js';
-import { sendMail, orderMail, customerCopyMail } from './email.js';
+import { sendMail, orderMail, customerCopyMail, contactMail, mailReady, teamRecipients } from './email.js';
+import { putMessage, messageExists } from './messages.js';
 import items from './generated/items.js';
 
 const DAY = 24 * 60 * 60 * 1000, HOUR = 60 * 60 * 1000;
@@ -22,12 +25,12 @@ export const intVar = (v, def, min = 0) => { const s = String(v ?? '').trim(); i
 export const copyMode = (env) => (env.ORDER_COPY == null ? 'capped' : String(env.ORDER_COPY).trim().toLowerCase() === 'capped' ? 'capped' : 'off');
 /** 3 caracteres aleatorios base36 en mayúsculas para cerrar el número de pedido; `rand(n)` devuelve n enteros sin signo (se puede inyectar en las pruebas). */
 export function randomSuffix(rand = (n) => crypto.getRandomValues(new Uint32Array(n))) { return Array.from(rand(3), (v) => BASE36[v % 36]).join(''); }
-/** Parte «TV-AAAAMMDD-NNNN» del número: contador diario en KV de «mejor esfuerzo» (no es atómico; si KV lo rechaza, un número de respaldo por segundos del día: el pedido nunca se pierde por esto). */
-async function baseNumber(env, now) {
-  const k = `counter:${ymd(now)}`; let n;
+/** Parte «<prefijo>-AAAAMMDD-NNNN» del número (TV = pedidos, CT = mensajes de contacto): contador diario en KV de «mejor esfuerzo» (no es atómico; si KV lo rechaza, un número de respaldo por segundos del día: el pedido nunca se pierde por esto). */
+async function baseNumber(env, now, prefix = 'TV') {
+  const k = prefix === 'TV' ? `counter:${ymd(now)}` : `counter:${prefix.toLowerCase()}:${ymd(now)}`; let n;
   try { n = Number((await env.KV.get(k)) || 0) + 1; await env.KV.put(k, String(n), { expirationTtl: 60 * 60 * 48 }); }
   catch { n = Math.floor((now.getTime() % DAY) / 1000) + 1; }
-  return `TV-${ymd(now)}-${String(n).padStart(4, '0')}`;
+  return `${prefix}-${ymd(now)}-${String(n).padStart(4, '0')}`;
 }
 /** Siguiente número de pedido completo (TV-AAAAMMDD-NNNN-XXX). */
 export async function nextNumber(env, now, rand) { return `${await baseNumber(env, now)}-${randomSuffix(rand)}`; }
@@ -41,11 +44,11 @@ export async function uorderPrefix(email) { return `uorder:${(await sha256Hex(St
 async function sendCopy(env, { o, number, priced, demo, cat, nowMs, fetchImpl }) {
   if (!o.copyToCustomer) return 'not_requested';
   if (copyMode(env) !== 'capped') return 'off';
-  if (!env.RESEND_API_KEY) return 'skipped';
+  if (!mailReady(env)) return 'skipped';
   if (!(await hit(env, 'copy-to', o.customer.email, { max: 2, windowMs: DAY, now: nowMs })).allowed) return 'limit';
   if (!(await hit(env, 'copy-day', 'all', { max: intVar(env.ORDER_COPY_DAILY_MAX, 150, 0), windowMs: DAY, now: nowMs })).allowed) return 'limit';
   const m = customerCopyMail({ number, priced, lang: o.lang, demo }, cat);
-  const r = await sendMail(env, { to: [o.customer.email], subject: m.subject, html: m.html, text: m.text }, fetchImpl);          // sin adjuntos y sin reply_to: nada del visitante
+  const r = await sendMail(env, { to: [o.customer.email], subject: m.subject, html: m.html, text: m.text }, fetchImpl, { kind: 'order', now: nowMs });          // sin adjuntos y sin reply_to: nada del visitante
   return r.ok ? 'sent' : 'failed';
 }
 
@@ -73,26 +76,50 @@ export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = 
   try { await env.KV.put(`${await uorderPrefix(o.customer.email)}${number}`, '1', ORDER_TTL); }        // índice de «mis pedidos» del cliente
   catch (e) { console.error('No se pudo indexar el pedido', number, e && e.message); }
   const { html, text } = orderMail({ number, customer: o.customer, priced, lang: o.lang, demo, hasPdf: !!o.pdf }, cat);
-  const to = String(env.ORDER_TO || '').split(',').map((s) => s.trim()).filter(Boolean);
   const attachments = o.pdf ? [{ filename: `${number}.pdf`, content: o.pdf }] : undefined;      // el PDF del visitante SOLO va al equipo
-  const team = await sendMail(env, { to, subject: `[Web Torivac] Pedido ${number} · ${o.customer.name}`, html, text, replyTo: o.customer.email, attachments }, fetchImpl);
+  const team = await sendMail(env, { to: teamRecipients(env), subject: `[Web Torivac] Pedido ${number} · ${o.customer.name}`, html, text, replyTo: o.customer.email, attachments }, fetchImpl, { kind: 'order', now: nowMs });
   let reason;
   try { reason = await sendCopy(env, { o, number, priced, demo, cat, nowMs, fetchImpl }); }
   catch (e) { console.error('Copia al cliente fallida', number, e && e.message); reason = 'failed'; }          // el pedido ya está guardado y el equipo avisado: un fallo de KV aquí no lo convierte en un error para el cliente
   const emailed = { team: !!team.ok, customer: reason === 'sent', skipped: !!team.skipped, customer_reason: reason };
-  const why = team.ok ? '' : team.skipped ? 'correo sin configurar' : team.status ? `Resend respondió ${team.status}` : String(team.error || 'fallo de envío').slice(0, 120);
-  try { await env.KV.put(`order:${number}`, JSON.stringify({ ...record, emailed: { ...emailed, error: why } }), ORDER_TTL); }   // el panel marca los pedidos cuyo aviso por correo no salió
+  const why = team.ok ? '' : team.skipped ? 'correo sin configurar' : String(team.error || 'fallo de envío').slice(0, 160);
+  try { await env.KV.put(`order:${number}`, JSON.stringify({ ...record, emailed: { ...emailed, reason: team.reason, error: why } }), ORDER_TTL); }   // el panel marca los pedidos cuyo aviso por correo no salió: reason = sent · off · failed · skipped (aviso al equipo); error, solo para managers (forClient lo quita)
   catch (e) { console.error('No se pudo anotar el resultado del correo', number, e && e.message); }
   return json({ ok: true, number, total: priced.total, unpriced: priced.unpriced, emailed }, 200, cors);
 }
-/** POST /api/contact: límite por visitante, anti-spam y envío del mensaje al equipo; responde { ok, emailed, skipped }. */
-export async function handleContact(request, env, contact, { fetchImpl = fetch, cors = {} } = {}) {
-  const ip = clientIp(request);
-  const rl = await hit(env, 'contact', ipKey(ip), { max: 5 });
+/** Espera `ms` milisegundos (0 = no espera). */
+const sleep = (ms) => (ms > 0 ? new Promise((res) => setTimeout(res, ms)) : Promise.resolve());
+/**
+ * POST /api/contact: límite por visitante y anti-spam como siempre (5 / 10 min por ipKey, Turnstile); luego construye el registro, LO GUARDA (msg:…, 400 días), intenta el correo al equipo, anota el resultado
+ * en el registro y responde { ok:true, id, emailed:{ sent, reason } } con 200 aunque el correo no saliera: el mensaje queda guardado y el equipo lo ve en el panel (`emailed.error`, solo para managers, nunca aquí).
+ * Si no se puede guardar (KV no escribe) → 500 «No se pudo guardar el mensaje» y NO se envía nada: nunca se dice «recibido» de lo que no está guardado. `now`, `rand` y `retryMs` se inyectan en las pruebas.
+ */
+export async function handleContact(request, env, contact, { fetchImpl = fetch, cors = {}, now = new Date(), rand, retryMs = 1100 } = {}) {
+  const at = now instanceof Date ? now : new Date(now), nowMs = at.getTime(), ip = clientIp(request);
+  /** 500 «No se pudo guardar el mensaje» (el detalle va al registro del servidor, sin datos del visitante). */
+  const notSaved = (id, e) => { console.error('[contacto] No se pudo guardar el mensaje', id || '', e && e.message); return json({ ok: false, error: 'No se pudo guardar el mensaje' }, 500, cors); };
+  let rl; try { rl = await hit(env, 'contact', ipKey(ip), { max: 5, now: nowMs }); } catch (e) { return notSaved('', e); }       // si el almacén no responde, tampoco hay límite que aplicar: se falla cerrado
   if (!rl.allowed) return json({ ok: false, error: 'Demasiados mensajes seguidos.' }, 429, cors);
   if (!(await verifyTurnstile(env, contact.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida' }, 400, cors);
-  const to = String(env.ORDER_TO || '').split(',').map((s) => s.trim()).filter(Boolean);
-  const r = await sendMail(env, { to, subject: `[Web Torivac] Contacto · ${contact.name}`, text: `${contact.name} <${contact.email}> (${contact.lang})\n\n${contact.message}`, html: `<p><b>${esc(contact.name)}</b> &lt;${esc(contact.email)}&gt; (${esc(contact.lang)})</p><p>${esc(contact.message).replace(/\n/g, '<br>')}</p>`, replyTo: contact.email }, fetchImpl);
-  if (!r.ok) return json({ ok: false, error: r.skipped ? 'El envío de correo no está configurado en el servidor' : 'No hemos podido enviar el mensaje', emailed: false, skipped: !!r.skipped }, 502, cors);   // sin correo no hay mensaje: la web avisa y ofrece escribir directamente
-  return json({ ok: true, emailed: true, skipped: false }, 200, cors);
+  let id, record;
+  try {
+    const base = await baseNumber(env, at, 'CT');
+    id = `${base}-${randomSuffix(rand)}`;
+    for (let i = 0; i < 4 && (await messageExists(env, id)); i++) id = `${base}-${randomSuffix(rand)}`;           // KV no es atómico: si coincide con uno ya guardado, otro sufijo
+    if (await messageExists(env, id)) throw new Error('No se pudo asignar un id libre');
+    record = { id, at: at.toISOString(), name: contact.name, email: contact.email, message: contact.message, lang: contact.lang, ip, emailed: { sent: false, reason: 'failed', error: 'Envío sin confirmar' } };       // hasta saber el resultado, el registro no afirma nada que no sea cierto
+    await putMessage(env, record);
+  } catch (e) { return notSaved(id, e); }
+  let r;
+  try {
+    const m = contactMail(record);
+    r = await sendMail(env, { to: teamRecipients(env), subject: m.subject, html: m.html, text: m.text, replyTo: contact.email }, fetchImpl, { kind: 'contact', now: nowMs });
+  } catch (e) { console.error('[contacto] Fallo inesperado al enviar', id, e && e.message); r = { ok: false, reason: 'failed', error: 'Fallo interno al enviar el correo' }; }          // el mensaje ya está guardado: nunca se convierte en un error para el visitante
+  const emailed = { sent: !!r.ok, reason: r.reason, ...(!r.ok && r.error ? { error: r.error } : {}) };
+  try { await putMessage(env, { ...record, emailed }); }
+  catch {                                                                                                           // KV admite una escritura por segundo en la misma clave: si la segunda llegó demasiado pronto, se reintenta una vez
+    await sleep(retryMs);
+    try { await putMessage(env, { ...record, emailed }); } catch (e) { console.error('[contacto] No se pudo anotar el resultado del correo', id, e && e.message); }
+  }
+  return json({ ok: true, id, emailed: { sent: emailed.sent, reason: emailed.reason } }, 200, cors);
 }

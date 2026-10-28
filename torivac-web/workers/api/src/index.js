@@ -2,6 +2,7 @@
 //   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login
 //   USUARIO   GET /api/auth/me · POST /api/auth/logout · GET /api/orders (manager: los 300 más recientes; client: solo los suyos, hasta 100)
 //   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · GET /api/admin/data
+//             GET /api/messages · DELETE /api/messages/:id (mensajes de contacto) · POST /api/mail/test · GET /api/mail/status (correo)
 // Todo límite por visitante usa ipKey (IPv6 → su /64). Ninguna respuesta 500 lleva texto interno: {"ok":false,"error":"Error interno","id":"<8 hex>"} y el detalle va al registro con ese id.
 import { json, readJson, ApiError, clientIp, ipKey, randomHex } from './util.js';
 import { isOriginAllowed, corsHeaders } from './cors.js';
@@ -11,6 +12,8 @@ import { hit, isBlocked, reset, purgeExpired } from './ratelimit.js';
 import { parseContact } from './validate.js';
 import { handleOrder, handleContact } from './orders.js';
 import { listOrders } from './orderlist.js';
+import { handleMessageList, handleMessageDelete, handleMailTest, handleMailStatus } from './mailapi.js';
+import { mailStatus, mailSettingProblems } from './email.js';
 import { loadPrices, KEY_META, KEY_SYNC, diffPrices, publicView, updateMode } from './prices.js';
 import { catalogCtx } from './catalog.js';
 import { syncPrices, planPrices, parseCsv } from './sheets.js';
@@ -19,12 +22,13 @@ import adminData from './generated/admin-data.js';
 
 /** 429 con el texto de siempre (el mismo para cualquier límite de acceso: nunca distingue si un usuario existe). */
 const tooMany = (cors) => json({ ok: false, error: 'Demasiados intentos. Espera unos minutos.' }, 429, cors);
-/** Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY), nunca sus valores. */
+/** Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores. */
 export function configProblems(env) {
   const p = [];
   if (!secretOk(env.SESSION_SECRET)) p.push('SESSION_SECRET');                                                                      // ausente, de menos de 32 caracteres o sin cambiar: nadie puede iniciar sesión
   if (env.ADMIN_API_TOKEN != null && env.ADMIN_API_TOKEN !== '' && !secretOk(env.ADMIN_API_TOKEN)) p.push('ADMIN_API_TOKEN');       // de menos de 32 caracteres: el token maestro queda desactivado
   if (env.ORDER_COPY != null && !['capped', 'off'].includes(String(env.ORDER_COPY).trim().toLowerCase())) p.push('ORDER_COPY');      // valor desconocido: la copia al cliente queda en «off»
+  p.push(...mailSettingProblems(env));                                                                                              // EMAIL_PROVIDER desconocido (el correo queda apagado) u ORDER_FROM que no es «Nombre <correo@dominio>» (no se envía)
   return p;
 }
 /** Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id. */
@@ -71,7 +75,11 @@ async function handleLogin(request, env, { ipk, cors, nowMs }) {
 /** Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno». */
 async function route(request, env, deps, { path, cors, nowMs }) {
   const method = request.method, ipk = ipKey(clientIp(request)), fetchImpl = deps.fetchImpl || fetch;
-  if (path === '/api/health') { const problems = configProblems(env); return json({ ok: true, time: new Date(nowMs).toISOString(), ...(problems.length ? { config: { ok: false, problems } } : {}) }, 200, cors); }
+  if (path === '/api/health') {
+    const problems = configProblems(env), { driver, configured, last } = await mailStatus(env);
+    const { error: _error, ...lastPublic } = last || {};                                  // /api/health es público: el último intento de correo va SIN el texto del error (eso es de GET /api/mail/status, solo managers)
+    return json({ ok: true, time: new Date(nowMs).toISOString(), mail: { driver, configured, last: last ? lastPublic : null }, ...(problems.length ? { config: { ok: false, problems } } : {}) }, 200, cors);
+  }
   if (path === '/api/prices' && method === 'GET') {
     const id = await identify(request, env, ipk, nowMs);                                  // con la IP bloqueada por Bearer fallidos no se prueba el token: se sirve la vista pública
     const p = await loadPrices(env); const meta = JSON.parse((await env.KV.get(KEY_META)) || 'null');
@@ -93,6 +101,10 @@ async function route(request, env, deps, { path, cors, nowMs }) {
   if (path === '/api/orders' && method === 'GET') { const r = await listOrders(env, who, { now: nowMs }); return json({ ok: true, orders: r.orders, ...(r.truncated ? { truncated: true } : {}) }, 200, cors); }
   if (!requireRole(who, 'manager')) return json({ ok: false, error: 'Solo para managers' }, 403, cors);
   if (path === '/api/admin/data' && method === 'GET') return json({ ok: true, proposals: Array.isArray(adminData && adminData.proposals) ? adminData.proposals : [], admin: adminData && adminData.admin ? adminData.admin : { products: [], byRef: {} } }, 200, { ...cors, 'Cache-Control': 'no-store' });
+  if (path === '/api/messages' && method === 'GET') return await handleMessageList(request, env, { cors });                  // mensajes de contacto (datos personales: solo managers)
+  if (path.startsWith('/api/messages/') && method === 'DELETE') return await handleMessageDelete(env, path.slice('/api/messages/'.length), { cors });
+  if (path === '/api/mail/test' && method === 'POST') return await handleMailTest(request, env, { who, cors, nowMs, fetchImpl });
+  if (path === '/api/mail/status' && method === 'GET') return await handleMailStatus(env, { cors });
   if (path === '/api/prices/refresh' && method === 'POST') { const rb = (await readJson(request, 10_000)) || {}; return json({ ok: true, meta: await syncPrices(env, { fetchImpl, reason: `manual:${who.sub}`, force: false, mode: rb.mode, ctx: deps.ctx || catalogCtx(env), now: new Date(nowMs) }) }, 200, cors); }
   if (path === '/api/prices/upload' && method === 'POST') {
     const b = (await readJson(request, 3_000_000)) || {}; const rows = Array.isArray(b.rows) ? b.rows : typeof b.csv === 'string' ? parseCsv(b.csv) : null;

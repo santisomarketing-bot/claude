@@ -263,15 +263,18 @@ test('pedido: se guarda siempre y el registro dice si el aviso por correo salió
   const none = await (await handleOrder(req('/api/order', { method: 'POST' }), mkEnv(), goodOrder(), { catalog: CATALOG })).json();     // sin RESEND_API_KEY
   assert.equal(none.emailed.skipped, true);
 });
-test('contacto: si el correo no sale, el servidor responde con error (la web lo dice y ofrece el correo directo); si sale, ok', async () => {
+test('contacto: el mensaje se guarda SIEMPRE y `emailed` dice la verdad del correo (ya no hay 502: «recibido» solo de lo guardado; el detalle completo está en mail-contact.test.js)', async () => {
   const { handleContact } = await import('../src/orders.js');
   const c = { name: 'Ana', email: 'ana@acme.es', message: 'Necesito 50 toroidales', lang: 'es', turnstile: '' };
-  const ok = await handleContact(req('/api/contact', { method: 'POST' }), mkEnv({ RESEND_API_KEY: 're_test' }), c, { fetchImpl: async () => new Response('{"id":"m"}', { status: 200 }) });
-  assert.equal(ok.status, 200); assert.equal((await ok.json()).emailed, true);
-  const bad = await handleContact(req('/api/contact', { method: 'POST' }), mkEnv({ RESEND_API_KEY: 're_test' }), c, { fetchImpl: async () => new Response('x', { status: 500 }) });
-  assert.equal(bad.status, 502); const bj = await bad.json(); assert.equal(bj.ok, false); assert.match(bj.error, /No hemos podido enviar/);
-  const skipped = await handleContact(req('/api/contact', { method: 'POST' }), mkEnv(), c, {});
-  assert.equal(skipped.status, 502); assert.match((await skipped.json()).error, /no está configurado/);
+  /** Envía el contacto de ejemplo a un entorno nuevo (con o sin RESEND_API_KEY) y un Resend simulado con ese estado → { status, j (JSON), env }. */
+  const run = async (extra, status) => { const env = mkEnv(extra); const r = await handleContact(req('/api/contact', { method: 'POST' }), env, c, status ? { fetchImpl: async () => new Response('{"id":"m"}', { status }) } : {}); return { status: r.status, j: await r.json(), env }; };
+  const ok = await run({ RESEND_API_KEY: 're_test' }, 200);
+  assert.equal(ok.status, 200); assert.equal(ok.j.ok, true); assert.deepEqual(ok.j.emailed, { sent: true, reason: 'sent' }); assert.match(ok.j.id, /^CT-\d{8}-\d{4}-[0-9A-Z]{3}$/);
+  const bad = await run({ RESEND_API_KEY: 're_test' }, 500);
+  assert.equal(bad.status, 200); assert.equal(bad.j.ok, true); assert.deepEqual(bad.j.emailed, { sent: false, reason: 'failed' }, 'el correo falló pero el mensaje está guardado');
+  const skipped = await run({});
+  assert.equal(skipped.status, 200); assert.deepEqual(skipped.j.emailed, { sent: false, reason: 'skipped' });
+  for (const x of [ok, bad, skipped]) assert.equal(JSON.parse(await x.env.KV.get([...x.env.KV.m.keys()].find((k) => k.startsWith('msg:')))).message, 'Necesito 50 toroidales', 'guardado en los tres casos');
 });
 
 test('actualización parcial (modo por defecto): la hoja trae solo una parte; se reconoce por referencia, SKU o ID; precio 0 o active = 0 quitan el precio; lo demás se conserva', async () => {

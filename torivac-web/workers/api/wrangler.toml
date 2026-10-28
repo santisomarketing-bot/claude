@@ -6,7 +6,8 @@ workers_dev = true      # si la web usa un dominio propio (route), desactívalo:
 
 # Un solo namespace KV (menos recursos que crear a mano, como aprendió whynot-sites). Prefijos de clave:
 #   user:<email> · order:<nº completo TV-AAAAMMDD-NNNN-XXX> · uorder:<sha256(correo)[:32]>:<nº> (índice «mis pedidos» del cliente) · prices:current · prices:meta (último éxito) · prices:sync (último intento, también el fallido) · prices:history:<ts>
-#   rl:<cubo>:<sha256(identificador)[:32]> (límites: nunca llevan IP ni correo en claro) · counter:<yyyymmdd> · proposals:state
+#   rl:<cubo>:<sha256(identificador)[:32]> (límites: nunca llevan IP ni correo en claro) · counter:<yyyymmdd> · counter:ct:<yyyymmdd> · proposals:state
+#   msg:<fecha y contador invertidos>-<sufijo> (mensajes de contacto, 400 días; el más reciente primero al listar) · mail:last (último intento de envío de correo, solo el último)
 # Crear con:  npx wrangler kv namespace create TORIVAC_KV   y pegar aquí el id.
 [[kv_namespaces]]
 binding = "KV"
@@ -18,7 +19,8 @@ crons = ["0 3 * * *"]
 
 [vars]
 ORDER_TO = "info@grupotorivac.com,mzamora@torivac.com"   # confirmado por el cliente (info@ también para pruebas)
-ORDER_FROM = "Torivac Web <pedidos@grupotorivac.com>"    # el dominio debe estar verificado en Resend (SPF/DKIM en el DNS)
+ORDER_FROM = "Torivac Web <pedidos@grupotorivac.com>"    # «Nombre <correo@dominio>»: el dominio debe estar verificado en Resend (SPF/DKIM en el DNS) o, con Brevo, el remitente/dominio autenticado en Brevo
+EMAIL_PROVIDER = "resend"                                # «resend» (por defecto) · «brevo» · «none» (no envía correo; los pedidos y mensajes se guardan igual). Cualquier otro valor = none (falla cerrado)
 ALLOWED_ORIGINS = "http://localhost:8080,http://127.0.0.1:8080"      # añadir el dominio real/de pruebas de la web en cPanel, p. ej. https://nueva.grupotorivac.com
 PRICE_SHEET_ID = ""                                      # id de la hoja de Google (docs.google.com/spreadsheets/d/<ID>/…)
 PRICE_SHEET_RANGE = "Precios!A:O"
@@ -32,7 +34,8 @@ ORDER_COPY_DAILY_MAX = "150"     # tope TOTAL de copias al día (además de 2 co
 ORDERS_PER_HOUR_MAX = "120"      # tope GLOBAL de pedidos por hora (además de 8 por visitante cada 10 min); protege la cuota de Resend y el buzón del equipo
 
 # Secretos (npx wrangler secret put <NOMBRE>):
-#   RESEND_API_KEY             envío de correo (Resend)
+#   RESEND_API_KEY             envío de correo con Resend (EMAIL_PROVIDER = "resend")
+#   BREVO_API_KEY              envío de correo con Brevo (EMAIL_PROVIDER = "brevo"): la clave API v3 de Brevo; el remitente ORDER_FROM debe estar verificado en Brevo
 #   ADMIN_API_TOKEN            token maestro (equivale a un manager) para scripts/CI: ≥ 32 caracteres aleatorios; si es más corto queda DESACTIVADO (siempre 401)
 #   SESSION_SECRET             clave HMAC de las sesiones de usuario: ≥ 32 caracteres aleatorios y sin «CAMBIA-ESTO»; si no, el login responde 500 «Configuración insegura»
 #   TURNSTILE_SECRET           (recomendado en producción) Cloudflare Turnstile para pedidos/contacto
