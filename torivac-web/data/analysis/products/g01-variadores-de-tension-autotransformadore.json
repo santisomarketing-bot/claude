@@ -155,19 +155,83 @@
     "duplicado_posible",
     "typo",
     "sin_modelos",
-    "sku_no_comercial"
+    "sku_no_comercial",
+    "plantilla_cta_mal_traducida",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "slug_url_en_espanol",
+    "og_image_generica",
+    "relacionados_en_idioma_incorrecto"
    ],
    "gaps": [
     "description vacía en es/en/fr/de: el único texto es la descripción corta (1 frase); la página renderizada no añade secciones, tablas ni pestañas.",
     "Sin imágenes: Store API images=[] en los 4 idiomas y la página muestra el placeholder de WooCommerce ('Esperando la imagen de producto'). La og:image de Yoast es la genérica 'Diseno-sin-titulo-73.png'.",
     "Entrada de tipo portada, no un artículo: no lista accesorios ni modelos. Comparte nombre y slug con la categoría 'Accesorios de regulación' (id 29, count 3: productos 882, 304 y 301), pero este producto está sólo en la categoría 19 'Variadores de tensión - Autotransformadores regulables'.",
-    "Typo en nombre, título SEO y slug: 'regulacion' sin tilde (la categoría homónima sí lleva 'regulación'). Se conserva tal cual.",
+    "Typo en nombre y título SEO: 'regulacion' sin tilde (la categoría homónima sí lleva 'regulación'); el slug 'accesorios-de-regulacion' no puede llevar tilde, por lo que no es errata. Se conserva tal cual.",
     "Sin menciones de tensión ni de potencia (V, VA, W) en ninguna fuente web de este producto.",
     "Sin tabla de modelos: spec_tables=[] y orderable_items=[]; los accesorios pedibles están en productos hermanos (882, 304, 301).",
     "SKU '30d6e59bbbc2' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
     "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
-    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen'), producto relacionado en neerlandés ('Dubbele gemotoriseerde variator')."
-   ]
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen'), producto relacionado en neerlandés ('Dubbele gemotoriseerde variator').",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/accesorios-de-regulacion/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "URL de las traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/accesorios-de-regulacion/; FR https://grupotorivac.com/fr/product/accesorios-de-regulacion/; DE https://grupotorivac.com/de/product/accesorios-de-regulacion/."
+   ],
+   "corrections": [
+    {
+     "field": "gaps[3]",
+     "was": "Typo en nombre, título SEO y slug: 'regulacion' sin tilde (la categoría homónima sí lleva 'regulación'). Se conserva tal cual.",
+     "now": "Typo en nombre y título SEO: 'regulacion' sin tilde (la categoría homónima sí lleva 'regulación'); el slug 'accesorios-de-regulacion' no puede llevar tilde, por lo que no es errata. Se conserva tal cual.",
+     "why": "Inexactitud: el gap señalaba también el slug como typo, pero un slug de WordPress nunca lleva tilde (el de la categoría homónima id 29 es idéntico)."
+    },
+    {
+     "field": "gaps[9]",
+     "was": null,
+     "now": "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/accesorios-de-regulacion/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[10]",
+     "was": null,
+     "now": "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[11]",
+     "was": null,
+     "now": "URL de las traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/accesorios-de-regulacion/; FR https://grupotorivac.com/fr/product/accesorios-de-regulacion/; DE https://grupotorivac.com/de/product/accesorios-de-regulacion/.",
+     "why": "Omisión: slug de EN/FR/DE idéntico al de ES (comprobado en Store API permalink); flag usado en g07."
+    },
+    {
+     "field": "quality_flags",
+     "was": [
+      "descripcion_vacia",
+      "sin_imagen",
+      "nombre_generico",
+      "duplicado_posible",
+      "typo",
+      "sin_modelos",
+      "sku_no_comercial"
+     ],
+     "now": [
+      "descripcion_vacia",
+      "sin_imagen",
+      "nombre_generico",
+      "duplicado_posible",
+      "typo",
+      "sin_modelos",
+      "sku_no_comercial",
+      "plantilla_cta_mal_traducida",
+      "canonical_apunta_a_es",
+      "sin_h1_en_traducciones",
+      "slug_url_en_espanol",
+      "og_image_generica",
+      "relacionados_en_idioma_incorrecto"
+     ],
+     "why": "Omisión: defectos reales de las páginas EN/FR/DE (canonical hacia ES, sin h1, plantilla del bloque de contacto mal traducida) que sí figuran como flags en el resto de lotes (g02, g07, g13). Además: og:image 'Diseno-sin-titulo-73.png' en los 4 idiomas (sin imagen de producto), slug ES en las 3 traducciones y producto relacionado DE en neerlandés ('Dubbele gemotoriseerde variator' = DE 16302, traducción de la ficha ES 308)."
+    }
+   ],
+   "verified": true
   },
   {
    "id_es": 16633,
@@ -356,11 +420,11 @@
      "raw": "3000, 4000",
      "lang": "es",
      "source": "web:pagina",
-     "context": "Atributo 'Potencia' de la ficha (tabla de atributos de la página), sin unidad; la descripción habla de hasta 4.000 VA"
+     "context": "Atributo 'Potencia' de la ficha (tabla de atributos de la página), sin unidad en el dato; el script de la plantilla añade ' VA' al mostrarlo; la descripción habla de hasta 4.000 VA"
     }
    ],
    "variation_axes_hint": [
-    "Potencia (atributo con valores 3000 y 4000; unidad no indicada en el atributo, el texto habla de hasta 4.000 VA)",
+    "Potencia (atributo con valores 3000 y 4000; unidad no indicada en el dato, la página los muestra como '3000 VA' y '4000 VA' por el script de la plantilla; el texto habla de hasta 4.000 VA)",
     "Tensión de salida (cualquier valor de 0 V a 230V o la que pida el cliente)",
     "Monofásico o trifásico",
     "Instrumentos opcionales (voltímetro y amperímetro, analógicos o digitales)"
@@ -368,10 +432,10 @@
    "orderable_items": [],
    "extra_sections": [
     {
-     "title": "Información adicional (tabla de atributos)",
+     "title": "Detalles del producto (tabla de atributos)",
      "text": "Potencia | 3000, 4000",
      "lang": "es",
-     "source": "web:pagina tabla 1"
+     "source": "web:pagina tabla de atributos de WooCommerce (aria-label «Detalles del producto»; tabla 1 de la página; solo en la página ES)"
     },
     {
      "title": "CONTACTA CON NOSOTROS",
@@ -421,17 +485,69 @@
    "gaps": [
     "Sin traducciones EN/FR/DE en la web (coverage.json lo confirma): names, urls, ids, textos y seo de en/fr/de = null.",
     "Valores incoherentes (no se corrigen): short_description y meta description dicen 'Regulación de 0 a 4000V', mientras la descripción dice 'cualquier valor de tensión entre 0 V y 230V ... con una potencia de hasta 4.000 VA'. El 4000 parece ser potencia (VA) y no tensión.",
-    "Atributo 'Potencia' = 3000, 4000 sin unidad y con has_variations=false (no es una variación de WooCommerce); la unidad (VA) sólo se infiere del texto ('hasta 4.000 VA'). Por eso orderable_items=[]: la web no ofrece tabla de modelos ni referencias.",
-    "Tensión de la versión trifásica no indicada: el título y la corta dicen 'monofásico y trifásico', pero el texto sólo da 0 V a 230V (o a petición del cliente).",
+    "Atributo 'Potencia' = 3000, 4000 sin unidad en el dato (Store API: has_variations=false, no es una variación de WooCommerce; tabla de la página: 'Potencia | 3000, 4000'). La unidad VA no consta en el dato: se infiere del texto ('hasta 4.000 VA') y del script del widget HTML de la plantilla de producto (clases trv-attr-block / trv-chip), que al cargar la página vuelve a pintar cada valor de cualquier atributo como un botón con el sufijo fijo ' VA' y oculta la tabla original, de modo que el visitante ve '3000 VA' y '4000 VA'. Se conserva el dato sin unidad. Por eso orderable_items=[]: la web no ofrece tabla de modelos ni referencias.",
+    "Tensión de la versión trifásica no indicada: la descripción corta y la meta description dicen 'monofásico y trifásico' (el nombre del producto no lo dice), pero la descripción larga no menciona ni monofásico ni trifásico y sólo da 0 V a 230V (o la que pida el cliente).",
     "SKU vacío en la fuente (sku=null). Sin ficha técnica PDF ni tabla de modelos.",
     "short_description conserva HTML residual de otra herramienta: <p class=\"font-claude-response-body break-words whitespace-normal leading-[1.7]\"> (texto pegado desde un asistente de IA). Limpiar al reconstruir.",
-    "Contenido de creación reciente (imágenes subidas en 2026/05, frente a 2022 en los demás productos del lote) con afirmaciones no corroboradas por otras fuentes del lote ('Fabricado en España', 'décadas de experiencia', 'chapa magnética de alta permeabilidad', 'contactos de cobre de baja resistencia', 'control de calidad individual'): revisar con Torivac antes de usarlas en presupuestos o PDF.",
+    "Contenido de creación reciente (imágenes en la carpeta uploads/2026/05 y creadas el 2026-05-25, frente a carpetas de 2022 en las demás imágenes del lote) con afirmaciones no corroboradas por otras fuentes del lote ('Fabricado en España', 'décadas de experiencia', 'chapa magnética de alta permeabilidad', 'contactos de cobre de baja resistencia', 'control de calidad individual'): revisar con Torivac antes de usarlas en presupuestos o PDF.",
     "Typos: nombre 'portatil' sin tilde (el cuerpo usa 'portátil') y 'transladarse' en la descripción. Se conservan tal cual.",
     "Imágenes: la Store API repite la imagen 16640 (principal y galería): 10 entradas, 9 únicas. El fichero 16639 se llama 'Sin-titulo-25-de-mayo-de-2026-a-las-12.28.43.jpeg'.",
     "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
     "Alt de la biblioteca de medios vacío en 9 de 9 imágenes (ES); la página renderizada pone como alt el título del producto (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
-    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto."
-   ]
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto.",
+    "Rótulos visibles en las fotografías (observación visual, no dato de la web): en la caja del variador 'INPUT 230VAC' y 'OUTPUT 0-230VAC' (dial graduado de 0 a 230) y en una segunda caja 'VARIABLE INPUT 0-230 VAC', 'FUSSE 16A' y bornes 'N', '125VAC', '250VAC' y '1000VAC' (data/raw/media/ab1888b2-variador-de-tension-portatil-2.jpeg y b171b6ca-variador-de-tension-portatil-5.jpeg). Ninguna de las 9 fotos muestra 4000V ni nada trifásico; no se recogen en voltage_mentions ni en power_mentions, que sólo toman texto de la web. Las 9 imágenes son del mismo equipo (maletas Peli con ruedas), ninguna es de otro producto."
+   ],
+   "corrections": [
+    {
+     "field": "extra_sections[0].title",
+     "was": "Información adicional (tabla de atributos)",
+     "now": "Detalles del producto (tabla de atributos)",
+     "why": "Inexactitud: el rótulo 'Información adicional' no aparece en ningún punto de la página ES (ni en el HTML ni en el texto renderizado); salía del nombre del widget de Elementor. El único rótulo de la tabla es su aria-label «Detalles del producto» (mismo criterio que g13, ficha 918)."
+    },
+    {
+     "field": "extra_sections[0].source",
+     "was": "web:pagina tabla 1",
+     "now": "web:pagina tabla de atributos de WooCommerce (aria-label «Detalles del producto»; tabla 1 de la página; solo en la página ES)",
+     "why": "Precisión: documentar de dónde sale el rótulo corregido."
+    },
+    {
+     "field": "gaps[2]",
+     "was": "Atributo 'Potencia' = 3000, 4000 sin unidad y con has_variations=false (no es una variación de WooCommerce); la unidad (VA) sólo se infiere del texto ('hasta 4.000 VA'). Por eso orderable_items=[]: la web no ofrece tabla de modelos ni referencias.",
+     "now": "Atributo 'Potencia' = 3000, 4000 sin unidad en el dato (Store API: has_variations=false, no es una variación de WooCommerce; tabla de la página: 'Potencia | 3000, 4000'). La unidad VA no consta en el dato: se infiere del texto ('hasta 4.000 VA') y del script del widget HTML de la plantilla de producto (clases trv-attr-block / trv-chip), que al cargar la página vuelve a pintar cada valor de cualquier atributo como un botón con el sufijo fijo ' VA' y oculta la tabla original, de modo que el visitante ve '3000 VA' y '4000 VA'. Se conserva el dato sin unidad. Por eso orderable_items=[]: la web no ofrece tabla de modelos ni referencias.",
+     "why": "Inexactitud: el gap decía que la unidad VA 'sólo se infiere del texto', pero el HTML de la página (widget Elementor 6002e66, script trv-chip) añade ' VA' a cada valor de atributo al mostrarlo. Se documenta la evidencia sin alterar el dato."
+    },
+    {
+     "field": "gaps[3]",
+     "was": "Tensión de la versión trifásica no indicada: el título y la corta dicen 'monofásico y trifásico', pero el texto sólo da 0 V a 230V (o a petición del cliente).",
+     "now": "Tensión de la versión trifásica no indicada: la descripción corta y la meta description dicen 'monofásico y trifásico' (el nombre del producto no lo dice), pero la descripción larga no menciona ni monofásico ni trifásico y sólo da 0 V a 230V (o la que pida el cliente).",
+     "why": "Inexactitud: el gap atribuía 'monofásico y trifásico' al título y a la descripción larga; sólo figura en la descripción corta y en la meta description de Yoast."
+    },
+    {
+     "field": "gaps[12]",
+     "was": null,
+     "now": "Rótulos visibles en las fotografías (observación visual, no dato de la web): en la caja del variador 'INPUT 230VAC' y 'OUTPUT 0-230VAC' (dial graduado de 0 a 230) y en una segunda caja 'VARIABLE INPUT 0-230 VAC', 'FUSSE 16A' y bornes 'N', '125VAC', '250VAC' y '1000VAC' (data/raw/media/ab1888b2-variador-de-tension-portatil-2.jpeg y b171b6ca-variador-de-tension-portatil-5.jpeg). Ninguna de las 9 fotos muestra 4000V ni nada trifásico; no se recogen en voltage_mentions ni en power_mentions, que sólo toman texto de la web. Las 9 imágenes son del mismo equipo (maletas Peli con ruedas), ninguna es de otro producto.",
+     "why": "Omisión: contraste de las fotos con el valor incoherente '0 a 4000V' (gaps[1]); lectura directa de las imágenes del producto en data/raw/media, marcada como observación visual."
+    },
+    {
+     "field": "gaps[6]",
+     "was": "Contenido de creación reciente (imágenes subidas en 2026/05, frente a 2022 en los demás productos del lote) con afirmaciones no corroboradas por otras fuentes del lote ('Fabricado en España', 'décadas de experiencia', 'chapa magnética de alta permeabilidad', 'contactos de cobre de baja resistencia', 'control de calidad individual'): revisar con Torivac antes de usarlas en presupuestos o PDF.",
+     "now": "Contenido de creación reciente (imágenes en la carpeta uploads/2026/05 y creadas el 2026-05-25, frente a carpetas de 2022 en las demás imágenes del lote) con afirmaciones no corroboradas por otras fuentes del lote ('Fabricado en España', 'décadas de experiencia', 'chapa magnética de alta permeabilidad', 'contactos de cobre de baja resistencia', 'control de calidad individual'): revisar con Torivac antes de usarlas en presupuestos o PDF.",
+     "why": "Precisión: 'a 2022 en los demás productos' no es exacto para la imagen del 882, creada el 2026-02-25 aunque se guarde en la carpeta 2022/06; se expresa con la carpeta y la fecha de creación de la biblioteca de medios (data/analysis/media-index.json)."
+    },
+    {
+     "field": "power_mentions[3].context",
+     "was": "Atributo 'Potencia' de la ficha (tabla de atributos de la página), sin unidad; la descripción habla de hasta 4.000 VA",
+     "now": "Atributo 'Potencia' de la ficha (tabla de atributos de la página), sin unidad en el dato; el script de la plantilla añade ' VA' al mostrarlo; la descripción habla de hasta 4.000 VA",
+     "why": "Coherencia con la corrección de gaps[2]: el 'sin unidad' es del dato, no de lo que ve el visitante."
+    },
+    {
+     "field": "variation_axes_hint[0]",
+     "was": "Potencia (atributo con valores 3000 y 4000; unidad no indicada en el atributo, el texto habla de hasta 4.000 VA)",
+     "now": "Potencia (atributo con valores 3000 y 4000; unidad no indicada en el dato, la página los muestra como '3000 VA' y '4000 VA' por el script de la plantilla; el texto habla de hasta 4.000 VA)",
+     "why": "Coherencia con la corrección de gaps[2]."
+    }
+   ],
+   "verified": true
   },
   {
    "id_es": 301,
@@ -614,7 +730,12 @@
     "traduccion_dudosa",
     "sin_alt",
     "sin_modelos",
-    "sku_no_comercial"
+    "sku_no_comercial",
+    "plantilla_cta_mal_traducida",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "slug_url_en_espanol",
+    "imagen_con_id_de_otro_idioma"
    ],
    "gaps": [
     "description vacía en los 4 idiomas: todo el texto es una frase en short_description; la página renderizada no añade nada.",
@@ -622,14 +743,71 @@
     "Sin modelos, diámetros, colores ni referencias: no hay tabla (spec_tables=[], orderable_items=[]).",
     "Gramática ES: 'La serie DF de Baquelita, fabricados por nosotros mismos ofrecen...' (concordancia singular/plural). Se conserva.",
     "Traducción dudosa del nombre: DE 'Zubehör kontrollieren' ('kontrollieren' = comprobar/inspeccionar) y FR 'Accessoires de contrôle' no reflejan 'mando' (accionamiento); EN 'Control accessories'. El texto de las descripciones sí está bien traducido.",
-    "Metadatos de medios: la imagen 15882 (ES y DE) tiene título 'Steuerungstasten2' (alemán) en la biblioteca; EN id 3590 'Control buttons2', FR id 3591 'Boutons de commande2'. Mismo fichero en los 4 idiomas.",
+    "Metadatos de medios: la imagen 15882 (ES y DE) tiene título 'Steuerungstasten2' (alemán) en la biblioteca; EN id 3590 'Control buttons2', FR id 3591 'Boutons de commande2'. Mismo fichero en los 4 idiomas. La biblioteca de medios tiene además el registro 330 'Botones de mando2' (2022-05-17) del mismo fichero, que la galería ES no usa.",
     "Sin menciones de tensión ni de potencia (V, VA, W) en ninguna fuente web de este producto.",
     "SKU '5d7f54e5c99b' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
     "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
     "Alt de la biblioteca de medios vacío en 2 de 2 imágenes (ES); la página renderizada pone como alt el título del producto (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
     "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
-    "El bloque 'productos similares' de la página nombra productos con tensión en el título (Controller 0-10VDC (EN)): pertenecen a otros productos, no se cuentan en voltage_mentions de éste y se conservan en extra_sections."
-   ]
+    "El bloque 'productos similares' de la página nombra productos con tensión en el título (Controller 0-10VDC (EN)): pertenecen a otros productos, no se cuentan en voltage_mentions de éste y se conservan en extra_sections.",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/botones-de-mando-2-2/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "URL de las traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/botones-de-mando-2-2/; FR https://grupotorivac.com/fr/product/botones-de-mando-2-2/; DE https://grupotorivac.com/de/product/botones-de-mando-2-2/."
+   ],
+   "corrections": [
+    {
+     "field": "gaps[12]",
+     "was": null,
+     "now": "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/botones-de-mando-2-2/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[13]",
+     "was": null,
+     "now": "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[14]",
+     "was": null,
+     "now": "URL de las traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/botones-de-mando-2-2/; FR https://grupotorivac.com/fr/product/botones-de-mando-2-2/; DE https://grupotorivac.com/de/product/botones-de-mando-2-2/.",
+     "why": "Omisión: slug de EN/FR/DE idéntico al de ES (comprobado en Store API permalink); flag usado en g07."
+    },
+    {
+     "field": "gaps[5]",
+     "was": "Metadatos de medios: la imagen 15882 (ES y DE) tiene título 'Steuerungstasten2' (alemán) en la biblioteca; EN id 3590 'Control buttons2', FR id 3591 'Boutons de commande2'. Mismo fichero en los 4 idiomas.",
+     "now": "Metadatos de medios: la imagen 15882 (ES y DE) tiene título 'Steuerungstasten2' (alemán) en la biblioteca; EN id 3590 'Control buttons2', FR id 3591 'Boutons de commande2'. Mismo fichero en los 4 idiomas. La biblioteca de medios tiene además el registro 330 'Botones de mando2' (2022-05-17) del mismo fichero, que la galería ES no usa.",
+     "why": "Omisión: la galería ES apunta a la copia alemana (15882) y existe el registro 330 del mismo fichero con título en español (data/raw/rest/media.es.json); mismo patrón que g05 (ficha 936)."
+    },
+    {
+     "field": "quality_flags",
+     "was": [
+      "descripcion_vacia",
+      "nombre_generico",
+      "typo",
+      "traduccion_dudosa",
+      "sin_alt",
+      "sin_modelos",
+      "sku_no_comercial"
+     ],
+     "now": [
+      "descripcion_vacia",
+      "nombre_generico",
+      "typo",
+      "traduccion_dudosa",
+      "sin_alt",
+      "sin_modelos",
+      "sku_no_comercial",
+      "plantilla_cta_mal_traducida",
+      "canonical_apunta_a_es",
+      "sin_h1_en_traducciones",
+      "slug_url_en_espanol",
+      "imagen_con_id_de_otro_idioma"
+     ],
+     "why": "Omisión: defectos reales de las páginas EN/FR/DE (canonical hacia ES, sin h1, plantilla del bloque de contacto mal traducida) que sí figuran como flags en el resto de lotes (g02, g07, g13). Además: la galería ES y DE usa para la 2ª imagen el id 15882 (copia con título alemán), EN el 3590 y FR el 3591; el registro 330 no se usa (patrón de g05)."
+    }
+   ],
+   "verified": true
   },
   {
    "id_es": 882,
@@ -829,13 +1007,17 @@
     "texto_en_idioma_incorrecto",
     "duplicado_posible",
     "sin_modelos",
-    "sku_no_comercial"
+    "sku_no_comercial",
+    "plantilla_cta_mal_traducida",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "imagen_con_id_de_otro_idioma"
    ],
    "gaps": [
     "Sin tabla ni referencias: producto de configuración 'a medida' ('este sistema es programado según las necesidades de cada cliente'); spec_tables=[], orderable_items=[].",
     "Traducciones con errores de sentido (se conservan): ES 'Entradas disponibles' -> EN 'Tickets available', FR 'Billets disponibles', DE 'Tickets erhältlich' (entradas = inputs). DE 'Potencia Aparente' -> 'Scheinenergie' (energía aparente, no potencia). 'motor del variador' -> 'inverter motor' / 'moteur de l'onduleur' / 'Wechselrichtermotor' (un variador de tensión no es un inversor).",
     "Redacción ES: 'Dispone 4 de salidas programables a relé' (orden de palabras) y 'Salidas parámetros visualizados por pantalla' (falta 'de').",
-    "Alt de la imagen 15946 en inglés ('MODBUS communication') también en las páginas ES, FR y DE; el fichero se llama 'WhatsApp-Image-2026-02-25-at-10.48.06.jpeg'. Misma imagen (mismo id) en los 4 idiomas.",
+    "Alt de la imagen 15946 en inglés ('MODBUS communication') también en las páginas ES, FR y DE; el fichero se llama 'WhatsApp-Image-2026-02-25-at-10.48.06.jpeg'. Misma imagen (mismo id) en los 4 idiomas. La biblioteca de medios (data/raw/rest/media.es.json y data/analysis/media-index.json) tiene un registro de este mismo fichero por idioma, cada uno con el alt en su idioma: ES id 15405 'Comunicación MODBUS' (adjunto al producto 882), EN id 15946 'MODBUS communication' (adjunto a 16318), FR id 15945 'Communication MODBUS' (adjunto a 16319) y DE id 15944 'MODBUS-Kommunikation' (adjunto a 16320); pero los cuatro productos (Store API y featured_media de la REST) usan el 15946, por eso las páginas ES, FR y DE sirven el alt en inglés. En 'images[].alt' se guarda el alt renderizado (inglés en los 4 idiomas, fiel a la web); los alt de 15405, 15945 y 15944 son la alternativa en el idioma correcto si se decide corregirlo (propuesta, no aplicada aquí).",
     "Datos técnicos ausentes en la web: tipo de protocolo MODBUS (RTU/TCP), velocidad, registros, tensión de alimentación, rango de la entrada 0-10VDC, intensidad de los relés. Las únicas cifras son 0-10VDC, desfase <0.5% y 4 salidas a relé.",
     "Las menciones de 'Tensión de línea', 'Tensión Fase/neutro', 'Potencia Activa/Reactiva/Aparente' son nombres de parámetros, no valores; por eso no figuran en voltage_mentions ni power_mentions.",
     "El texto habla de actuar sobre 'tres motores simultáneamente' y de 'tensión entre fases' (uso trifásico) sin indicar tensiones de trabajo.",
@@ -843,8 +1025,57 @@
     "SKU 'b0ab88d1a8d1' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
     "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
     "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
-    "El bloque 'productos similares' de la página nombra productos con tensión en el título (Controller 0-10VDC (EN); Steuergerät 0-10VDC (DE)): pertenecen a otros productos, no se cuentan en voltage_mentions de éste y se conservan en extra_sections."
-   ]
+    "El bloque 'productos similares' de la página nombra productos con tensión en el título (Controller 0-10VDC (EN); Steuergerät 0-10VDC (DE)): pertenecen a otros productos, no se cuentan en voltage_mentions de éste y se conservan en extra_sections.",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/comunicacion-modbus-2/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto)."
+   ],
+   "corrections": [
+    {
+     "field": "gaps[12]",
+     "was": null,
+     "now": "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/comunicacion-modbus-2/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[13]",
+     "was": null,
+     "now": "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[3]",
+     "was": "Alt de la imagen 15946 en inglés ('MODBUS communication') también en las páginas ES, FR y DE; el fichero se llama 'WhatsApp-Image-2026-02-25-at-10.48.06.jpeg'. Misma imagen (mismo id) en los 4 idiomas.",
+     "now": "Alt de la imagen 15946 en inglés ('MODBUS communication') también en las páginas ES, FR y DE; el fichero se llama 'WhatsApp-Image-2026-02-25-at-10.48.06.jpeg'. Misma imagen (mismo id) en los 4 idiomas. La biblioteca de medios (data/raw/rest/media.es.json y data/analysis/media-index.json) tiene un registro de este mismo fichero por idioma, cada uno con el alt en su idioma: ES id 15405 'Comunicación MODBUS' (adjunto al producto 882), EN id 15946 'MODBUS communication' (adjunto a 16318), FR id 15945 'Communication MODBUS' (adjunto a 16319) y DE id 15944 'MODBUS-Kommunikation' (adjunto a 16320); pero los cuatro productos (Store API y featured_media de la REST) usan el 15946, por eso las páginas ES, FR y DE sirven el alt en inglés. En 'images[].alt' se guarda el alt renderizado (inglés en los 4 idiomas, fiel a la web); los alt de 15405, 15945 y 15944 son la alternativa en el idioma correcto si se decide corregirlo (propuesta, no aplicada aquí).",
+     "why": "Omisión: el gap documentaba el alt en inglés pero no que la biblioteca de medios ya tiene el registro de cada idioma con su alt (15405 ES, 15945 FR, 15944 DE); los datos de images[] no se cambian porque reflejan lo que sirve la web."
+    },
+    {
+     "field": "quality_flags",
+     "was": [
+      "typo",
+      "traduccion_erronea",
+      "terminologia_dudosa",
+      "texto_en_idioma_incorrecto",
+      "duplicado_posible",
+      "sin_modelos",
+      "sku_no_comercial"
+     ],
+     "now": [
+      "typo",
+      "traduccion_erronea",
+      "terminologia_dudosa",
+      "texto_en_idioma_incorrecto",
+      "duplicado_posible",
+      "sin_modelos",
+      "sku_no_comercial",
+      "plantilla_cta_mal_traducida",
+      "canonical_apunta_a_es",
+      "sin_h1_en_traducciones",
+      "imagen_con_id_de_otro_idioma"
+     ],
+     "why": "Omisión: defectos reales de las páginas EN/FR/DE (canonical hacia ES, sin h1, plantilla del bloque de contacto mal traducida) que sí figuran como flags en el resto de lotes (g02, g07, g13). Además: los productos ES, FR y DE usan la copia inglesa de la imagen (id 15946) en lugar de la suya (15405, 15945, 15944), con lo que el alt sale en inglés (patrón de g05)."
+    }
+   ],
+   "verified": true
   },
   {
    "id_es": 304,
@@ -1080,7 +1311,11 @@
     "duplicado_posible",
     "sin_alt",
     "sin_modelos",
-    "sku_no_comercial"
+    "sku_no_comercial",
+    "plantilla_cta_mal_traducida",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "imagen_con_id_de_otro_idioma"
    ],
    "gaps": [
     "description vacía en los 4 idiomas: el contenido completo (3 párrafos) está en short_description; la página renderizada no añade nada.",
@@ -1091,8 +1326,56 @@
     "SKU '7f6721289dd1' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
     "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
     "Alt de la biblioteca de medios vacío en 3 de 3 imágenes (ES); la página renderizada pone como alt el título del producto (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
-    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen')."
-   ]
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/controlador-0-10vdc-2/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "Las imágenes 2 y 3 (driver0-10VDC-scaled.jpg, driver0-10vdc02-scaled.jpg) tienen ids distintos por idioma en la Store API: EN 3570 y 3572, FR 3571 y 3573, y 16316 y 16317 en ES y DE (copias con título alemán 'Treiber0-10VDC' y 'treiber0-10vdc02'; EN 'driver0-10VDC' y 'driver0-10vdc02'; FR 'pilote0-10VDC' y 'pilote0-10vdc02'). La biblioteca de medios tiene además los registros 313 y 314 ('driver0-10VDC', 'driver0-10vdc02', 2022-05-17) del mismo fichero, que la galería ES no usa. Mismos ficheros en los 4 idiomas; en 'images[].id' se guarda el id de la Store API de ES."
+   ],
+   "corrections": [
+    {
+     "field": "gaps[9]",
+     "was": null,
+     "now": "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/controlador-0-10vdc-2/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[10]",
+     "was": null,
+     "now": "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[11]",
+     "was": null,
+     "now": "Las imágenes 2 y 3 (driver0-10VDC-scaled.jpg, driver0-10vdc02-scaled.jpg) tienen ids distintos por idioma en la Store API: EN 3570 y 3572, FR 3571 y 3573, y 16316 y 16317 en ES y DE (copias con título alemán 'Treiber0-10VDC' y 'treiber0-10vdc02'; EN 'driver0-10VDC' y 'driver0-10vdc02'; FR 'pilote0-10VDC' y 'pilote0-10vdc02'). La biblioteca de medios tiene además los registros 313 y 314 ('driver0-10VDC', 'driver0-10vdc02', 2022-05-17) del mismo fichero, que la galería ES no usa. Mismos ficheros en los 4 idiomas; en 'images[].id' se guarda el id de la Store API de ES.",
+     "why": "Omisión: ids y títulos de medios distintos por idioma para la misma imagen (Store API images[].id/name y data/raw/rest/media.es.json), documentado en 301 y g02 pero no aquí."
+    },
+    {
+     "field": "quality_flags",
+     "was": [
+      "descripcion_vacia",
+      "typo",
+      "duplicado_posible",
+      "sin_alt",
+      "sin_modelos",
+      "sku_no_comercial"
+     ],
+     "now": [
+      "descripcion_vacia",
+      "typo",
+      "duplicado_posible",
+      "sin_alt",
+      "sin_modelos",
+      "sku_no_comercial",
+      "plantilla_cta_mal_traducida",
+      "canonical_apunta_a_es",
+      "sin_h1_en_traducciones",
+      "imagen_con_id_de_otro_idioma"
+     ],
+     "why": "Omisión: defectos reales de las páginas EN/FR/DE (canonical hacia ES, sin h1, plantilla del bloque de contacto mal traducida) que sí figuran como flags en el resto de lotes (g02, g07, g13). Además: la galería ES y DE usa copias con título alemán (16316, 16317) y EN/FR las suyas (3570-3573); los registros 313 y 314 no se usan (patrón de g05)."
+    }
+   ],
+   "verified": true
   },
   {
    "id_es": 306,
@@ -1276,21 +1559,97 @@
     "duplicado_posible",
     "sin_alt",
     "sin_modelos",
-    "sku_no_comercial"
+    "sku_no_comercial",
+    "relacionados_autorreferente",
+    "plantilla_cta_mal_traducida",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "slug_url_en_espanol",
+    "og_image_generica"
    ],
    "gaps": [
     "DE: la ficha alemana es el texto español íntegro (nombre 'Cuba de aceite', descripción corta con el botón 'Ver ficha técnica', título y meta SEO, og:title; og:image genérica 'Diseno-sin-titulo-73.png'). Nunca se tradujo.",
     "FR: el nombre 'Cuba du pétrole' mezcla el español 'Cuba' con 'pétrole' (petróleo, no aceite); el slug FR es 'cuve-a-huile'. El texto FR usa 'convertisseurs de tension' para 'variadores de tensión' y 'fournir de l'énergie' para 'ganar potencia'. EN: 'Oil vat'.",
     "Sin tabla ni modelos en la web. La ficha PDF enlazada (data/analysis/pdf-text/Variador-tension-en-cura-de-aceite/p001.txt) contiene una tabla VA / In 230 / In 250 / A, B, C / Kg con 'Entrada/Input 230V' y 'Salida/Output 230/250V'; su cabecera dice '1500 VA – 11000 VA' pero las filas van de 5000 VA (monofásico) a 33000 VA (trifásico). Incoherencia interna del PDF, sin verificar y NO incorporada aquí (sesión de PDFs).",
-    "URL del PDF con typo 'cura' por 'cuba' (Variador-tension-en-cura-de-aceite.pdf): se conserva porque es la URL real; el fichero existe en data/analysis/pdfs (no es enlace roto).",
+    "URL del PDF con typo 'cura' por 'cuba' (Variador-tension-en-cura-de-aceite.pdf): se conserva porque es la URL real; el fichero existe en data/raw/pdf/ y su lectura está en data/analysis/pdfs/p20-fichas-variadores.json (no es enlace roto).",
     "Sin menciones de tensión ni potencia (V, VA, W) en las fuentes web; sólo existen en el PDF.",
     "Homónimo de la categoría 'Cuba de aceite' (id 32, count 0, hija de 'Equipos de sobremesa'); slug con sufijo '-2'. El producto sólo está asignado a 'Equipos de sobremesa' (id 45).",
-    "Página EN: el bloque 'Explore similar products' lista este mismo producto ('Oil vat') como similar.",
+    "Las páginas EN, FR y DE listan este mismo producto como único elemento de 'productos similares' ('Oil vat', 'Cuba du pétrole', 'Cuba de aceite'); la página ES no muestra ese bloque.",
     "SKU '656b57350c61' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
     "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
     "Alt de la biblioteca de medios vacío en 1 de 1 imágenes (ES); la página renderizada pone como alt el título del producto (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
-    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen')."
-   ]
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/cuba-de-aceite-2/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones de EN y FR sí están traducidos; los de DE están en español (ver gaps[0]). Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "URL de la traducción DE con el slug en español (el mismo de la ficha ES): https://grupotorivac.com/de/product/cuba-de-aceite-2/; los slugs EN 'oil-vat' y FR 'cuve-a-huile' sí están traducidos."
+   ],
+   "corrections": [
+    {
+     "field": "gaps[3]",
+     "was": "URL del PDF con typo 'cura' por 'cuba' (Variador-tension-en-cura-de-aceite.pdf): se conserva porque es la URL real; el fichero existe en data/analysis/pdfs (no es enlace roto).",
+     "now": "URL del PDF con typo 'cura' por 'cuba' (Variador-tension-en-cura-de-aceite.pdf): se conserva porque es la URL real; el fichero existe en data/raw/pdf/ y su lectura está en data/analysis/pdfs/p20-fichas-variadores.json (no es enlace roto).",
+     "why": "Inexactitud: el gap situaba el PDF en data/analysis/pdfs, que sólo contiene los JSON de análisis; el fichero físico está en data/raw/pdf/ (manifest.json: pdf/Variador-tension-en-cura-de-aceite.pdf)."
+    },
+    {
+     "field": "gaps[6]",
+     "was": "Página EN: el bloque 'Explore similar products' lista este mismo producto ('Oil vat') como similar.",
+     "now": "Las páginas EN, FR y DE listan este mismo producto como único elemento de 'productos similares' ('Oil vat', 'Cuba du pétrole', 'Cuba de aceite'); la página ES no muestra ese bloque.",
+     "why": "Inexactitud: el gap sólo citaba la página EN; las páginas FR y DE también listan el propio producto (extra_sections del propio lote y HTML de las tres páginas)."
+    },
+    {
+     "field": "gaps[11]",
+     "was": null,
+     "now": "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/cuba-de-aceite-2/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones de EN y FR sí están traducidos; los de DE están en español (ver gaps[0]). Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[12]",
+     "was": null,
+     "now": "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[13]",
+     "was": null,
+     "now": "URL de la traducción DE con el slug en español (el mismo de la ficha ES): https://grupotorivac.com/de/product/cuba-de-aceite-2/; los slugs EN 'oil-vat' y FR 'cuve-a-huile' sí están traducidos.",
+     "why": "Omisión: slug DE idéntico al de ES (Store API permalink)."
+    },
+    {
+     "field": "quality_flags",
+     "was": [
+      "descripcion_vacia",
+      "nombre_generico",
+      "texto_en_idioma_incorrecto",
+      "traduccion_erronea",
+      "terminologia_dudosa",
+      "typo",
+      "duplicado_posible",
+      "sin_alt",
+      "sin_modelos",
+      "sku_no_comercial"
+     ],
+     "now": [
+      "descripcion_vacia",
+      "nombre_generico",
+      "texto_en_idioma_incorrecto",
+      "traduccion_erronea",
+      "terminologia_dudosa",
+      "typo",
+      "duplicado_posible",
+      "sin_alt",
+      "sin_modelos",
+      "sku_no_comercial",
+      "relacionados_autorreferente",
+      "plantilla_cta_mal_traducida",
+      "canonical_apunta_a_es",
+      "sin_h1_en_traducciones",
+      "slug_url_en_espanol",
+      "og_image_generica"
+     ],
+     "why": "Omisión: defectos reales de las páginas EN/FR/DE (canonical hacia ES, sin h1, plantilla del bloque de contacto mal traducida) que sí figuran como flags en el resto de lotes (g02, g07, g13). Además: bloque de similares autorreferente en EN/FR/DE, slug DE igual al ES y og:image genérica 'Diseno-sin-titulo-73.png' en DE."
+    }
+   ],
+   "verified": true
   },
   {
    "id_es": 874,
@@ -1468,13 +1827,17 @@
     "duplicado_posible",
     "sin_alt",
     "sin_modelos",
-    "sku_no_comercial"
+    "sku_no_comercial",
+    "plantilla_cta_mal_traducida",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "slug_url_en_espanol"
    ],
    "gaps": [
     "EN/FR/DE no traducen el texto ES: dicen que 'todos nuestros inverters/onduleurs/Wechselrichter' se pueden suministrar en caja para conectar y trabajar con seguridad. Faltan en las 3 lenguas la gama 160-1250VA, la lista de componentes (botón de mando, carátula, voltímetros/amperímetros, cable, fusible, interruptor, piloto), las instrumentaciones opcionales, la frase de precisión y el botón 'Ver ficha técnica' (PDF). Se marcan 'partial'.",
     "Terminología dudosa en EN/FR/DE: 'variador' vertido como inverter / onduleur / Wechselrichter (inversor), concepto distinto del variador de tensión.",
     "description vacía; el texto está en short_description. El PDF 'Variador-tension-sobremesa.pdf' sólo se enlaza desde ES (found_in=['es']).",
-    "La extracción de texto del PDF enlazado da 110 caracteres ('Variador tensión sobremesa 160-1250VA'): la tabla de modelos 160-1250VA es probablemente una imagen y requiere lectura visual en la sesión de PDFs. No incorporada aquí.",
+    "El PDF enlazado (data/raw/pdf/Variador-tension-sobremesa.pdf) sólo da 110 caracteres de texto ('Variador tensión sobremesa 160-1250VA') y no contiene tabla de modelos: según data/analysis/pdfs/p21-fichas-variadores.json y la captura data/raw/screens/pdf/Variador-tension-sobremesa-p1-1.png la ficha lleva únicamente ese título con el rango, tres fotografías del equipo y tres dibujos acotados (153,00 / 353,00 / 150,00, sin unidad). No se incorpora nada del PDF aquí (sesión de PDFs).",
     "Potencia sólo como rango (160 a 1250VA); sin tensiones, sin tabla de modelos ni referencias (orderable_items=[]).",
     "Las páginas/productos EN, FR y DE no tienen categorías asignadas (Store API categories=[]); ES sólo 'En caja' (id 700, hija de 'Equipos de sobremesa' id 45).",
     "Nombre 'En caja' (EN 'Boxed', FR 'En boîte', DE 'Boxen') no identifica el producto: es un variador de tensión de sobremesa. Coincide con la categoría 'En caja' (id 700, count 1).",
@@ -1482,8 +1845,82 @@
     "SKU '42d57d5045a9' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
     "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
     "Alt de la biblioteca de medios vacío en 2 de 2 imágenes (ES); la página renderizada pone como alt el título del producto (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
-    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen')."
-   ]
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/en-caja/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+    "URL de las traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/en-caja/; FR https://grupotorivac.com/fr/product/en-caja/; DE https://grupotorivac.com/de/product/en-caja/.",
+    "La 2ª imagen (variadores-tension-caja-sobremesa.png) tiene registro propio en EN (id 3348) y FR (id 3349); ES y DE usan el 146 (mismo fichero). En 'images[].id' se guarda el id de ES.",
+    "Relacionado: la Store API FR contiene un producto sin equivalente ES publicado, 'Equipos de sobremesa' (id 4323, slug 'equipos-de-sobremesa-2', SKU 'c4c2f3236aff', categoría 'Sans catégorie'; coverage.json lo lista en translated_products_without_es_match). Su texto está en español y es una versión reformulada del de esta ficha ES ('…reguladores monofásicos de 160 a 1250 VA…', mismo botón 'Ver ficha técnica' hacia Variador-tension-sobremesa.pdf), comparte la imagen 325 (sobremesa03-scaled.jpg) y su canonical es https://grupotorivac.com/?post_type=product&p=875 (id ES 875, que no figura en la Store API ni en la REST de ES). Es un indicio, sin confirmar, de que el texto ES actual de 'En caja' procede de 'Equipos de sobremesa' y de que las traducciones EN/FR/DE de esta ficha son de un texto ES anterior ('en caja'). No se usa como traducción de 874: no está enlazado por hreflang ni comparte SKU; la traducción FR de 874 es la 15624 (hreflang + SKU 42d57d5045a9)."
+   ],
+   "corrections": [
+    {
+     "field": "gaps[3]",
+     "was": "La extracción de texto del PDF enlazado da 110 caracteres ('Variador tensión sobremesa 160-1250VA'): la tabla de modelos 160-1250VA es probablemente una imagen y requiere lectura visual en la sesión de PDFs. No incorporada aquí.",
+     "now": "El PDF enlazado (data/raw/pdf/Variador-tension-sobremesa.pdf) sólo da 110 caracteres de texto ('Variador tensión sobremesa 160-1250VA') y no contiene tabla de modelos: según data/analysis/pdfs/p21-fichas-variadores.json y la captura data/raw/screens/pdf/Variador-tension-sobremesa-p1-1.png la ficha lleva únicamente ese título con el rango, tres fotografías del equipo y tres dibujos acotados (153,00 / 353,00 / 150,00, sin unidad). No se incorpora nada del PDF aquí (sesión de PDFs).",
+     "why": "Inexactitud: el gap suponía que 'la tabla de modelos 160-1250VA es probablemente una imagen'; la página del PDF no tiene tabla de modelos (comprobado en la captura y en p21)."
+    },
+    {
+     "field": "gaps[12]",
+     "was": null,
+     "now": "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/en-caja/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[13]",
+     "was": null,
+     "now": "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[14]",
+     "was": null,
+     "now": "URL de las traducciones con el slug en español en vez de traducido: EN https://grupotorivac.com/en/product/en-caja/; FR https://grupotorivac.com/fr/product/en-caja/; DE https://grupotorivac.com/de/product/en-caja/.",
+     "why": "Omisión: slug de EN/FR/DE idéntico al de ES (comprobado en Store API permalink); flag usado en g07."
+    },
+    {
+     "field": "gaps[15]",
+     "was": null,
+     "now": "La 2ª imagen (variadores-tension-caja-sobremesa.png) tiene registro propio en EN (id 3348) y FR (id 3349); ES y DE usan el 146 (mismo fichero). En 'images[].id' se guarda el id de ES.",
+     "why": "Omisión: ids de medios distintos por idioma para la misma imagen (Store API images[].id); sin flag porque ES usa su propio registro."
+    },
+    {
+     "field": "gaps[16]",
+     "was": null,
+     "now": "Relacionado: la Store API FR contiene un producto sin equivalente ES publicado, 'Equipos de sobremesa' (id 4323, slug 'equipos-de-sobremesa-2', SKU 'c4c2f3236aff', categoría 'Sans catégorie'; coverage.json lo lista en translated_products_without_es_match). Su texto está en español y es una versión reformulada del de esta ficha ES ('…reguladores monofásicos de 160 a 1250 VA…', mismo botón 'Ver ficha técnica' hacia Variador-tension-sobremesa.pdf), comparte la imagen 325 (sobremesa03-scaled.jpg) y su canonical es https://grupotorivac.com/?post_type=product&p=875 (id ES 875, que no figura en la Store API ni en la REST de ES). Es un indicio, sin confirmar, de que el texto ES actual de 'En caja' procede de 'Equipos de sobremesa' y de que las traducciones EN/FR/DE de esta ficha son de un texto ES anterior ('en caja'). No se usa como traducción de 874: no está enlazado por hreflang ni comparte SKU; la traducción FR de 874 es la 15624 (hreflang + SKU 42d57d5045a9).",
+     "why": "Omisión: evidencia relevante para entender por qué las traducciones EN/FR/DE de 874 no coinciden con el texto ES y para no confundir el huérfano FR 4323 con una traducción de esta ficha."
+    },
+    {
+     "field": "quality_flags",
+     "was": [
+      "descripcion_vacia",
+      "nombre_generico",
+      "traduccion_distinta_de_es",
+      "terminologia_dudosa",
+      "traduccion_sin_enlace_pdf",
+      "duplicado_posible",
+      "sin_alt",
+      "sin_modelos",
+      "sku_no_comercial"
+     ],
+     "now": [
+      "descripcion_vacia",
+      "nombre_generico",
+      "traduccion_distinta_de_es",
+      "terminologia_dudosa",
+      "traduccion_sin_enlace_pdf",
+      "duplicado_posible",
+      "sin_alt",
+      "sin_modelos",
+      "sku_no_comercial",
+      "plantilla_cta_mal_traducida",
+      "canonical_apunta_a_es",
+      "sin_h1_en_traducciones",
+      "slug_url_en_espanol"
+     ],
+     "why": "Omisión: defectos reales de las páginas EN/FR/DE (canonical hacia ES, sin h1, plantilla del bloque de contacto mal traducida) que sí figuran como flags en el resto de lotes (g02, g07, g13). Además: slug ES en las 3 traducciones."
+    }
+   ],
+   "verified": true
   },
   {
    "id_es": 876,
@@ -1698,11 +2135,14 @@
     "sin_alt",
     "imagen_duplicada_en_fuente",
     "sin_modelos",
-    "sku_no_comercial"
+    "sku_no_comercial",
+    "plantilla_cta_mal_traducida",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones"
    ],
    "gaps": [
     "Sin tabla de modelos ni referencias en la web (orderable_items=[]). Rangos: monofásicos 1500-5000VA y trifásicos 440VA-15.000VA; sin ninguna tensión explícita.",
-    "La ficha PDF enlazada (data/analysis/pdf-text/Variador-tension-en-caja-industrial-trifasico/p001.txt) contiene DOS tablas: 'Variador tensión sobremesa 1500 VA – 11000 VA' (entrada 230V, salida 230/250V) y 'Variador tensión en caja industrial trifásico 480 VA – 33000 VA' (entrada 400V, salida 400/430V, columnas VA, In 230, In 250, A, B, C, Kg). El rango trifásico del PDF (480-33000 VA) NO coincide con el de la web (440VA a 15.000VA). Sin verificar y NO incorporado aquí (sesión de PDFs).",
+    "La ficha PDF enlazada (data/analysis/pdf-text/Variador-tension-en-caja-industrial-trifasico/p001.txt) contiene DOS tablas: 'Variador tensión sobremesa 1500 VA – 11000 VA' (entrada 230V, salida 230/250V) y 'Variador tensión en caja industrial trifásico 480 VA – 33000 VA' (entrada 400V, salida 400/430V, columnas VA, In 230, In 250, A, B, C, Kg). Los rangos del PDF NO coinciden con los de la web: tabla monofásica de sobremesa 1500-11000 VA frente a 'monofásicos de 1500 a 5000VA', y tabla trifásica 480-33000 VA frente a 'trifásicos de 440VA a 15.000VA'. Sin verificar y NO incorporado aquí (sesión de PDFs).",
     "Las traducciones EN, FR y DE no tienen categorías asignadas (Store API categories=[]); ES sólo 'Variador de tensión industriales' (id 699), que cuelga de 'Equipos de sobremesa' (id 45) aunque son equipos industriales.",
     "Existen categorías homónimas vacías 'Equipos industriales' (ids 36 y 47, count 0) y el slug del producto lleva sufijo '-2': posible resto de una conversión categoría->producto.",
     "Nombre híbrido ('Variador de tensión Equipos industriales'): mezcla de familia y subcategoría. EN 'Voltage regulator Industrial equipment', FR 'Régulateur de tension Équipement industriel', DE 'Spannungsregler Industrielle Geräte' (traducciones literales).",
@@ -1710,8 +2150,54 @@
     "SKU '43a0b44489f9' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes.",
     "Precio: la Store API devuelve price '0' y price_html vacío en todos los idiomas existentes (catálogo sin precios); no hay ningún dato de precio en las fuentes.",
     "Alt de la biblioteca de medios vacío en 1 de 1 imágenes (ES); la página renderizada pone como alt el título del producto (valor automático, no descriptivo). En 'images[].alt' se ha guardado el alt renderizado.",
-    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen')."
-   ]
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto del lote; se guarda tal cual en extra_sections): ES 'encontrareis' sin tilde en el párrafo del bloque de contacto; EN título del bloque de contacto 'CONTACT WITH US'; FR casilla de privacidad 'Il a accepté et accepté la politique de confidentialité'; DE 'KONTAKT US', casilla de privacidad en neerlandés ('Hij gaat akkoord met het privacybeleid.', botón 'Versturen').",
+    "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/equipos-industriales-2/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+    "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto)."
+   ],
+   "corrections": [
+    {
+     "field": "gaps[1]",
+     "was": "La ficha PDF enlazada (data/analysis/pdf-text/Variador-tension-en-caja-industrial-trifasico/p001.txt) contiene DOS tablas: 'Variador tensión sobremesa 1500 VA – 11000 VA' (entrada 230V, salida 230/250V) y 'Variador tensión en caja industrial trifásico 480 VA – 33000 VA' (entrada 400V, salida 400/430V, columnas VA, In 230, In 250, A, B, C, Kg). El rango trifásico del PDF (480-33000 VA) NO coincide con el de la web (440VA a 15.000VA). Sin verificar y NO incorporado aquí (sesión de PDFs).",
+     "now": "La ficha PDF enlazada (data/analysis/pdf-text/Variador-tension-en-caja-industrial-trifasico/p001.txt) contiene DOS tablas: 'Variador tensión sobremesa 1500 VA – 11000 VA' (entrada 230V, salida 230/250V) y 'Variador tensión en caja industrial trifásico 480 VA – 33000 VA' (entrada 400V, salida 400/430V, columnas VA, In 230, In 250, A, B, C, Kg). Los rangos del PDF NO coinciden con los de la web: tabla monofásica de sobremesa 1500-11000 VA frente a 'monofásicos de 1500 a 5000VA', y tabla trifásica 480-33000 VA frente a 'trifásicos de 440VA a 15.000VA'. Sin verificar y NO incorporado aquí (sesión de PDFs).",
+     "why": "Inexactitud por omisión: el gap sólo señalaba la discrepancia del rango trifásico; el monofásico del PDF (1500-11000 VA) tampoco coincide con la web (1500 a 5000VA). Comprobado en p001.txt y en la captura del PDF."
+    },
+    {
+     "field": "gaps[10]",
+     "was": null,
+     "now": "SEO: en las páginas EN, FR y DE el canonical y el og:url de Yoast apuntan a la URL española (https://grupotorivac.com/product/equipos-industriales-2/), no a la del propio idioma (ver docs/01-analisis/HALLAZGOS.md nº 11); los títulos y descripciones sí están traducidos. Las URLs propias de cada idioma (Store API) se conservan en 'urls'.",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "gaps[11]",
+     "was": null,
+     "now": "Las páginas EN, FR y DE no renderizan ningún <h1> (el primer encabezado es el h3 'Products' / 'Produits' / 'Produkte' del menú lateral); la página ES sí lo hace (h1 = nombre del producto).",
+     "why": "Omisión: en las 7 fichas con traducción el canonical de Yoast de EN/FR/DE es la URL ES y esas páginas no tienen <h1> (comprobado en rest/product.<idioma>.json yoast_head_json.canonical y en el HTML de data/raw/html); el lote hermano g02 ya lo recoge."
+    },
+    {
+     "field": "quality_flags",
+     "was": [
+      "descripcion_vacia",
+      "duplicado_posible",
+      "sin_alt",
+      "imagen_duplicada_en_fuente",
+      "sin_modelos",
+      "sku_no_comercial"
+     ],
+     "now": [
+      "descripcion_vacia",
+      "duplicado_posible",
+      "sin_alt",
+      "imagen_duplicada_en_fuente",
+      "sin_modelos",
+      "sku_no_comercial",
+      "plantilla_cta_mal_traducida",
+      "canonical_apunta_a_es",
+      "sin_h1_en_traducciones"
+     ],
+     "why": "Omisión: defectos reales de las páginas EN/FR/DE (canonical hacia ES, sin h1, plantilla del bloque de contacto mal traducida) que sí figuran como flags en el resto de lotes (g02, g07, g13)."
+    }
+   ],
+   "verified": true
   }
  ]
 }

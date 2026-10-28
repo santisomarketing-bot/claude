@@ -47,16 +47,20 @@ export async function readSheetRows(env, fetchImpl = fetch) {
   throw new Error('Sin origen de precios: define GOOGLE_SERVICE_ACCOUNT + PRICE_SHEET_ID o PRICE_CSV_URL');
 }
 /** Lee la hoja, valida, guarda en KV (con histórico de 10 versiones) y devuelve estadísticas. */
+/** Guarda unos precios nuevos: copia el anterior al histórico (90 días), escribe los vigentes y la meta. Lo usan la sincronización y los cambios por IA. */
+export async function savePrices(env, next, prev, { now = new Date(), reason = 'manual', source = 'sheet' } = {}) {
+  const diff = diffPrices(prev, next);
+  if (Object.keys(prev.items).length > 0) await env.KV.put(`prices:history:${now.toISOString()}`, JSON.stringify(prev), { expirationTtl: 60 * 60 * 24 * 90 });
+  await env.KV.put(KEY_CURRENT, JSON.stringify(next));
+  const meta = { at: now.toISOString(), reason, source, refs: Object.keys(next.items).length, changed: diff.changed.length, added: diff.added.length, removed: diff.removed.length };
+  await env.KV.put(KEY_META, JSON.stringify(meta));
+  return meta;
+}
 export async function syncPrices(env, { fetchImpl = fetch, now = new Date(), reason = 'manual', force = false, rows = null, source = null } = {}) {
   const read = rows ? { rows, source: source || 'upload' } : await readSheetRows(env, fetchImpl);
   const next = rowsToPrices(read.rows, read.source, now);
   const prev = await loadPrices(env);
   const n = Object.keys(next.items).length, p = Object.keys(prev.items).length;
   if (!force && p > 0 && n < p * 0.5) throw new Error(`Sincronización rechazada: la hoja nueva tiene ${n} referencias y había ${p} (¿hoja vacía o rota?). Usa force=true si es intencionado.`);
-  const diff = diffPrices(prev, next);
-  if (p > 0) await env.KV.put(`prices:history:${now.toISOString()}`, JSON.stringify(prev), { expirationTtl: 60 * 60 * 24 * 90 });
-  await env.KV.put(KEY_CURRENT, JSON.stringify(next));
-  const meta = { at: now.toISOString(), reason, source: read.source, refs: n, changed: diff.changed.length, added: diff.added.length, removed: diff.removed.length };
-  await env.KV.put(KEY_META, JSON.stringify(meta));
-  return meta;
+  return savePrices(env, next, prev, { now, reason, source: read.source });
 }

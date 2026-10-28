@@ -1,7 +1,7 @@
 // [INDEX] Router del Worker torivac-api + tarea programada (precios cada 24 h).
 //   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login
 //   USUARIO   GET /api/auth/me · GET /api/orders (manager: todos; client: solo los suyos)
-//   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · GET|POST|DELETE /api/users
+//   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users
 import { json, readJson } from './util.js';
 import { isOriginAllowed, corsHeaders } from './cors.js';
 import { authenticate, requireRole, signSession } from './auth.js';
@@ -11,6 +11,7 @@ import { parseContact } from './validate.js';
 import { handleOrder, handleContact } from './orders.js';
 import { loadPrices, KEY_META, rowsToPrices } from './prices.js';
 import { syncPrices, parseCsv } from './sheets.js';
+import { suggestPriceChanges, applyPriceChanges } from './ai.js';
 
 export default {
   async fetch(request, env, ctx, deps = {}) {
@@ -47,6 +48,22 @@ export default {
         if (!rows) return json({ ok: false, error: 'Envía rows[] o csv' }, 400, cors);
         if (b.dry_run) { const next = rowsToPrices(rows, 'upload'); const cur = await loadPrices(env); const { diffPrices } = await import('./prices.js'); return json({ ok: true, dry_run: true, refs: Object.keys(next.items).length, diff: diffPrices(cur, next) }, 200, cors); }
         return json({ ok: true, meta: await syncPrices(env, { rows, source: `upload:${who.sub}`, reason: `upload:${who.sub}`, force: b.force === true }) }, 200, cors);
+      }
+      if (path === '/api/prices/ai' && request.method === 'POST') {                  // la IA PROPONE (no aplica); se limita porque cada llamada cuesta
+        const rl = await hit(env, 'ai', who.sub, { max: 15 }); if (!rl.allowed) return json({ ok: false, error: 'Demasiadas consultas a la IA seguidas. Espera unos minutos.' }, 429, cors);
+        try { return json({ ok: true, ...(await suggestPriceChanges(env, ((await readJson(request)) || {}).instruction, { fetchImpl: deps.fetchImpl || fetch })) }, 200, cors); }
+        catch (e) { return json({ ok: false, error: e.message }, e.status || 500, cors); }
+      }
+      if (path === '/api/prices/ai/apply' && request.method === 'POST') {          // aplica lo que la persona ha revisado y confirmado
+        try { return json({ ok: true, ...(await applyPriceChanges(env, (await readJson(request)) || {}, { who: who.sub })) }, 200, cors); }
+        catch (e) { return json({ ok: false, error: e.message }, e.status || 500, cors); }
+      }
+      if (path === '/api/proposals/state' && request.method === 'GET') return json({ ok: true, state: JSON.parse((await env.KV.get('proposals:state')) || '{}') }, 200, cors);
+      if (path === '/api/proposals/state' && request.method === 'POST') {            // aprobar / rechazar / deshacer una propuesta del panel (no publica nada por sí solo)
+        const b = (await readJson(request)) || {}; const id = String(b.id || ''), st = String(b.state || '');
+        if (!/^PR-\d{3,5}$/.test(id) || !['ok', 'no', ''].includes(st)) return json({ ok: false, error: 'Propuesta o estado no válidos' }, 400, cors);
+        const state = JSON.parse((await env.KV.get('proposals:state')) || '{}'); if (st) state[id] = { state: st, by: who.sub, at: new Date().toISOString() }; else delete state[id];
+        await env.KV.put('proposals:state', JSON.stringify(state)); return json({ ok: true, state }, 200, cors);
       }
       if (path === '/api/users' && request.method === 'GET') return json({ ok: true, users: await listUsers(env) }, 200, cors);
       if (path === '/api/users' && request.method === 'POST') { const r = await createUser(env, (await readJson(request)) || {}); return r.error ? json({ ok: false, error: r.error }, r.status || 400, cors) : json({ ok: true, user: r.user }, 201, cors); }

@@ -15,6 +15,9 @@ usa `site/assets/js/quote-page.js`.
 | Refrescar precios ahora | `POST /api/prices/refresh` | manager |
 | Subir hoja de precios (vista previa/aplicar) | `POST /api/prices/upload` | manager |
 | Usuarios | `GET/POST /api/users`, `DELETE /api/users/:email` | manager |
+| Instrucción de precios con IA (propone, no aplica) | `POST /api/prices/ai` `{instruction}` | manager (15 consultas / 10 min) |
+| Aplicar lo propuesto tras revisarlo | `POST /api/prices/ai/apply` `{changes, confirm_large?}` | manager |
+| Decisiones sobre propuestas del panel | `GET/POST /api/proposals/state` | manager |
 
 Cron: `0 3 * * *` (UTC) sincroniza precios cada 24 h. La actualización manual es el botón del panel.
 
@@ -34,6 +37,13 @@ Orden de preferencia de la fuente (se usa la primera configurada):
 Columnas: `ref, product_id, name_es, unit, currency, price, qty2, price2, qty3, price3, qty4, price4, note, active, updated_at`.
 Cada sincronización guarda un historial y **se rechaza** si cambia más del 50 % de las referencias o llega vacía.
 
+## Precios por instrucción (IA)
+`POST /api/prices/ai` manda a Claude la lista de precios (ref, nombre, precio y tramos; nada de clientes) y una instrucción en castellano
+(«sube un 3 % las resistencias y redondea a 2 decimales»). La IA solo **propone** con una herramienta de esquema cerrado; el Worker valida
+(referencias que existen, importes razonables, tramos coherentes), devuelve la vista previa y **no escribe nada**. Al confirmar en el panel,
+`/api/prices/ai/apply` vuelve a validar y guarda (con histórico de 90 días); los cambios > ×3 exigen `confirm_large`.
+Variables: secreto `ANTHROPIC_API_KEY` · opcional `AI_MODEL` (por defecto `claude-sonnet-5-5`).
+
 ## Puesta en marcha
 ```
 cd workers/api && npm i
@@ -42,11 +52,16 @@ npx wrangler secret put RESEND_API_KEY
 npx wrangler secret put SESSION_SECRET            # ≥ 32 caracteres aleatorios
 npx wrangler secret put ADMIN_API_TOKEN
 npx wrangler deploy
+# primer manager (con el token maestro; después se gestionan desde el panel → Usuarios):
+curl -X POST https://<worker>/api/users -H "Authorization: Bearer $ADMIN_API_TOKEN" -H "Content-Type: application/json" \
+  -d '{"email":"tu@correo","name":"Tu nombre","role":"manager","password":"mínimo 10 caracteres"}'
+# panel real: compilar la web con  TORIVAC_API=https://<worker>  → /admin/ carga admin-live.js (login real) en lugar del demo
 ```
 Antes de producción: confirmar con el cliente `ORDER_TO` y `ORDER_FROM` (dominio verificado en Resend),
 y poner en `ALLOWED_ORIGINS` el dominio real de la web.
 
 ## Pruebas
-`npm test` (Node ≥ 22, sin dependencias): 14 pruebas — hash/sesión, validación, tramos y céntimos,
+`npm test` (Node ≥ 22, sin dependencias): 24 pruebas — hash/sesión, validación, tramos y céntimos,
 lectura de hoja y CSV con comillas, sincronización con rechazo de hojas rotas, JWT RS256 de cuenta de
-servicio, flujo de pedido con Resend simulado, roles, límite de login, CORS, subida y cron.
+servicio, flujo de pedido con Resend simulado, roles, límite de login, CORS, subida y cron, y la IA de precios (validación, propuesta, aplicar con
+confirmación, límite de uso, 403 a clientes). Extremo a extremo: `node scripts/qa-live.mjs` (pedido/contacto) y `node scripts/qa-admin-live.mjs` (panel real).
