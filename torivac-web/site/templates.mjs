@@ -113,7 +113,7 @@ const themeSwitch = (lang, where) => `<span class="theme-switch" role="group" ar
 /** Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap. */
 export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [], preloadImage = null, bodyClass = '', oRedirect = '', dyn = false }) {
   const { lang, site } = ctx;
-  if (/data-contact-form/.test(`${hero || ''}${body}`)) scripts = [...new Set(['assets/js/plain-text.js', 'assets/js/forms.js', 'assets/js/contact.js', ...scripts])];          // en cualquier página con formulario de contacto (también el bloque «Contacta con nosotros» de las fichas y entradas de «Original»)
+  if (/data-contact-form/.test(`${hero || ''}${body}`)) scripts = [...new Set(['assets/js/plain-text.js', 'assets/js/forms.js', 'assets/js/captcha.js', 'assets/js/contact.js', ...scripts])];          // en cualquier página con formulario de contacto (también el bloque «Contacta con nosotros» de las fichas y entradas de «Original»)
   if (!dyn) description = metaDescription(description, body, site.homeMeta?.[lang]);
   const alt = (l) => (l === lang ? ctx.path : (alts[l] || site.home[l]));         // selector de idioma: sin traducción cae a la portada de ese idioma
   // registro de páginas indexables → sitemap (con hreflang e imágenes) y llms.txt; ver site/build.mjs [SEO-FILES]
@@ -588,8 +588,9 @@ export function quoteBody(ctx) {
       <label>${t('notes', lang)}<textarea name="notes" maxlength="${FIELDS.order.notes}"></textarea></label>
       <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label class="check"><input type="checkbox" name="privacy" required> <span>${t('accept_privacy', lang)}</span></label>
-      <div class="actions" style="display:flex;gap:var(--s-3);flex-wrap:wrap"><button class="btn" type="submit">${t('send_order', lang)}</button><button class="btn ghost" type="button" data-download-pdf>${t('download_pdf', lang)}</button></div>
+      <div><div class="captcha-slot" data-captcha-slot></div><div class="actions" style="display:flex;gap:var(--s-3);flex-wrap:wrap"><button class="btn" type="submit">${t('send_order', lang)}</button><button class="btn ghost" type="button" data-download-pdf>${t('download_pdf', lang)}</button></div></div>
       <p class="small muted">${t('send_hint', lang)}</p>
+      <p class="small muted" data-captcha-note hidden>${t('captcha_note', lang)}</p>
       ${site.demo ? `<p class="notice small">${t('demo_send_note', lang)}</p>` : ''}
       <div data-sent hidden class="notice ok" role="status"></div>
     </form>
@@ -606,8 +607,8 @@ export function contactForm(ctx, where = 'page') {
     <label class="vh" for="cf-msg-${where}">${t('message', lang)}</label><textarea id="cf-msg-${where}" name="message" placeholder="${attr(t('message', lang))}" maxlength="${FIELDS.contact.message}" required></textarea>
     <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label class="check"><input type="checkbox" name="privacy" required><span>${t('accept_privacy', lang)}</span></label>
-    <div><button class="btn" type="submit">${t('send', lang)}</button></div>
-    <p class="small muted">${t('recaptcha', lang)}</p>
+    <div><div class="captcha-slot" data-captcha-slot></div><button class="btn" type="submit">${t('send', lang)}</button></div>
+    <p class="small muted" data-captcha-note hidden>${t('captcha_note', lang)}</p>
     ${site.demo ? `<p class="notice small">${t('demo_send_note', lang)}</p>` : ''}
     <div data-sent hidden class="notice ok" role="status"></div>
   </form>`;

@@ -5,7 +5,7 @@
 //   Código por correo: el paquete se despliega con la verificación en dos pasos DESACTIVADA (two_step.enabled = false) para que las pruebas que no hablan de ella entren con la contraseña sola.
 //   Para probarla: deployPackage({ …, config: { two_step: { enabled: true } } }) o, ya desplegado, d.setConfig({ two_step: {…} }) (sustituye ese apartado entero de config.php).
 //   d.outbox() → los correos guardados (controlador «file») · d.lastCode(correo) → el último código de 6 cifras que se mandó a ese correo, o null
-//   d.kvKeys(prefijo) · d.kvGet(clave) · d.kvEdit(clave, fn): mirar y tocar el almacén de datos (p. ej. adelantar el reloj de un código: kvEdit('pin:<id>', (v) => ({ ...v, last: v.last - 60000 })))
+//   d.kvKeys(prefijo) · d.kvGet(clave) · d.kvEdit(clave, fn) · d.kvDrop(prefijo): mirar y tocar el almacén de datos (p. ej. adelantar el reloj de un código: kvEdit('pin:<id>', (v) => ({ ...v, last: v.last - 60000 })))
 //   d.api(ruta, { headers: { 'x-forwarded-for': '203.0.113.7' } }) se hace pasar por otro visitante.
 //   png(w, h, [r, g, b]) → Buffer con un PNG válido
 import path from 'node:path';
@@ -88,6 +88,8 @@ export async function deployPackage({ staging = false, local = false, config = n
   const kvFile = (key) => path.join(ap.dataDir, 'kv', encodeURIComponent(key) + '.json');
   /** Claves del almacén que empiezan por `prefix`, más recientes primero. */
   const kvKeys = (prefix) => { try { return fs.readdirSync(path.join(ap.dataDir, 'kv')).filter((f) => f.endsWith('.json')).map((f) => decodeURIComponent(f.slice(0, -5))).filter((k) => k.startsWith(prefix)).sort((a, b) => fs.statSync(kvFile(b)).mtimeMs - fs.statSync(kvFile(a)).mtimeMs); } catch { return []; } };
+  /** Borra del almacén todas las claves que empiezan por `prefix` (p. ej. 'rl:contact:' para volver a empezar los límites por visitante) → cuántas. */
+  const kvDrop = (prefix) => { let n = 0; for (const k of kvKeys(prefix)) { try { fs.unlinkSync(kvFile(k)); n++; } catch { /* ya no está */ } } return n; };
   /** Lee el valor guardado en una clave del almacén, o null. */
   const kvGet = (key) => { try { return JSON.parse(fs.readFileSync(kvFile(key), 'utf8')).v; } catch { return null; } };
   /** Cambia el valor de una clave del almacén con `fn(valor) → valor nuevo` (para adelantar el reloj de un código, por ejemplo). */
@@ -106,5 +108,5 @@ export async function deployPackage({ staging = false, local = false, config = n
   r = await api('/auth/login', { method: 'POST', body: { email: 'jefa@torivac.com', password: MANAGER_PASS } });
   const token = r.j.token;
   if (config) setConfig(config);
-  return { www, ap, port, host, BASE, req, api, token, setConfig, outbox, lastCode, kvKeys, kvGet, kvEdit, stop: async () => { await ap.stop(); fs.rmSync(OUT, { recursive: true, force: true }); } };
+  return { www, ap, port, host, BASE, req, api, token, setConfig, outbox, lastCode, kvKeys, kvGet, kvEdit, kvDrop, stop: async () => { await ap.stop(); fs.rmSync(OUT, { recursive: true, force: true }); } };
 }

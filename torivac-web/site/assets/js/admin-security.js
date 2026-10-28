@@ -86,6 +86,7 @@
     return ctx.http('GET', q).then(function (r) {
       if (!r.ok) return unavailable('Actividad', r);
       act.items = r.items || []; act.truncated = !!r.truncated;
+      /** Una opción de un desplegable: valor `v`, texto `t`, marcada si es igual a `cur`. */
       var opt = function (v, t, cur) { return '<option value="' + esc(v) + '"' + (String(cur) === String(v) ? ' selected' : '') + '>' + esc(t) + '</option>'; };
       return '<div data-sec-root data-sec-mode="activity"><h1>Actividad</h1><p class="muted">Quién entró al panel y quién cambió qué, con la hora y la dirección desde la que lo hizo. Se conserva ' + Number(r.keep_days || 180) + ' días y solo lo ven los managers. Los intentos de acceso fallidos se anotan de forma resumida (uno cada 10 minutos por visitante y cuenta).</p>' +
         '<form class="prop-bar" data-sec-filters><label>Período<select name="days">' + [[1, 'Hoy'], [7, 'Últimos 7 días'], [30, 'Últimos 30 días'], [180, 'Todo (180 días)']].map(function (d) { return opt(d[0], d[1], act.days); }).join('') + '</select></label>' +

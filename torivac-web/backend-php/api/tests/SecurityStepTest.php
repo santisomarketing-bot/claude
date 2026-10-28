@@ -412,7 +412,6 @@ function test_step_audit_log()
     T::same(1, count(array_filter(Audit::read(1, 100)['items'], function ($e) { return $e['a'] === 'login.locked'; })), 'y el bloqueo, otra');
 }
 
-/** SS13 · Tamaño y limpieza del registro: un día no pasa de 2 MB (con una línea de aviso) y lo de más de 180 días se borra. */
 /** Toda acción que el servidor anota tiene su nombre en castellano (si no, el panel enseñaría un código como «user.password»). Se buscan en el código fuente, así que una acción nueva sin nombre lo rompe. */
 function test_step_audit_every_action_has_a_label()
 {
@@ -427,6 +426,7 @@ function test_step_audit_every_action_has_a_label()
     T::same([], array_values(array_filter($codes, function ($c) { return Audit::label($c) === $c; })), 'todas tienen nombre en castellano para el panel');
 }
 
+/** SS13 · Tamaño y limpieza del registro: un día no pasa de 2 MB (con una línea de aviso) y lo de más de 180 días se borra. */
 function test_step_audit_caps_and_purge()
 {
     ss_setup();
@@ -564,6 +564,11 @@ function test_step_health_features_and_diagnostics()
     T::same(['codigo_correo' => 'ok', 'alertas' => 'ok', 'actividad' => 'ok', 'copias' => 'warn', 'captcha' => 'ok'], $st(), 'con el código activo, sin copias todavía y el CAPTCHA puesto');
     ss_config(['turnstile_secret' => 'solo-secreto-123456']);
     T::same('fail', $st()['captcha'], 'el secreto sin la clave pública bloquearía los formularios: fallo');
+    ss_config(['turnstile_sitekey' => '', 'turnstile_secret' => 'solo-secreto-123456']);
+    $hp = Router::handle(req('GET', '/health'))->body;
+    T::true(in_array('turnstile_sitekey', $hp['config']['problems'] ?? [], true) && !isset($hp['features']['turnstile']) && strpos(json_encode($hp), 'solo-secreto') === false, '/health lo avisa por el nombre del ajuste, no ofrece el CAPTCHA y no suelta el secreto');
+    ss_config(['turnstile_sitekey' => '<script>', 'turnstile_secret' => 'solo-secreto-123456']);
+    T::true(!isset(Router::handle(req('GET', '/health'))->body['features']['turnstile']), 'una clave pública con caracteres raros no se publica');
     ss_config([]);
     Router::handle(req('POST', '/users/jefa%40torivac.com/two-step', ['enabled' => false], master()));
     T::same('warn', $st()['codigo_correo'], 'si todos los managers son de confianza, el Diagnóstico avisa de que nadie pide código');

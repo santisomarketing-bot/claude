@@ -29,6 +29,8 @@ export const BLOG_RULES = ({ staging = false } = {}) => [
   ...(staging ? [] : ['RewriteRule ^(?:sitemap\\.xml|llms\\.txt|llms-full\\.txt)$ api/page.php [L]']),
 ];
 
+/** Único origen de terceros que admite la política de seguridad: el CAPTCHA opcional de Cloudflare (Turnstile), que solo se carga si el servidor lo activa y alguien usa un formulario (site/assets/js/captcha.js). */
+const TURNSTILE = 'https://challenges.cloudflare.com';
 /** Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api. */
 export function htaccess({ base, staging = false, aliases = new Map(), pdfRedirects = [], apiOrigin = '', phpApi = false, langs = ['en', 'fr', 'de'], scriptHashes = [] }) {
   const u = new URL(base), bp = basePathOf(base), https = u.protocol === 'https:';
@@ -36,7 +38,7 @@ export function htaccess({ base, staging = false, aliases = new Map(), pdfRedire
   const origin = u.origin;
   const connect = ["'self'", apiOrigin && apiOrigin !== origin ? apiOrigin : ''].filter(Boolean).join(' ');
   // script-src SIN 'unsafe-inline': los únicos scripts en línea son constantes y entran por su huella SHA-256 (scriptHashes); todo lo demás son archivos de la propia web. Así una inyección de HTML no puede ejecutar código.
-  const csp = `default-src 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'${scriptHashes.map((h) => ` 'sha256-${h}'`).join('')}; connect-src ${connect}; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'`;
+  const csp = `default-src 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'${scriptHashes.map((h) => ` 'sha256-${h}'`).join('')} ${TURNSTILE}; connect-src ${connect}; frame-src 'self' ${TURNSTILE}; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'`;
   const L = [];
   L.push(`# GENERADO por site/build.mjs (no editar a mano: se regenera en cada compilación).`);
   L.push(`# Torivac · ${staging ? 'ENTORNO DE PRUEBAS (noindex)' : 'producción'} · ${origin}${bp}/`);

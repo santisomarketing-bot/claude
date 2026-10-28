@@ -329,7 +329,7 @@ for (const lang of LANGS) {
     const ctx = mkctx(lang, qp, 'quote');
     const hero = `<section class="page-hero bp"><div class="container"><h1>${t('quote_yours', lang)}</h1></div></section>`;
     const alt = Object.fromEntries(LANGS.map((l) => [l, site.quote[l]]));
-    emit(qp, TPL.layout(ctx, { title: `${t('quote', lang)} · Torivac`, description: '', template: 'quote', hero, body: TPL.quoteBody(ctx), alts: alt, scripts: ['assets/vendor/jspdf.umd.min.js', 'assets/vendor/jspdf.plugin.autotable.min.js', 'assets/vendor/xlsx.mini.min.js', 'assets/js/pdf.js', 'assets/js/plain-text.js', 'assets/js/forms.js', 'assets/js/quote-page.js'], noindex: true }));
+    emit(qp, TPL.layout(ctx, { title: `${t('quote', lang)} · Torivac`, description: '', template: 'quote', hero, body: TPL.quoteBody(ctx), alts: alt, scripts: ['assets/vendor/jspdf.umd.min.js', 'assets/vendor/jspdf.plugin.autotable.min.js', 'assets/vendor/xlsx.mini.min.js', 'assets/js/pdf.js', 'assets/js/plain-text.js', 'assets/js/forms.js', 'assets/js/captcha.js', 'assets/js/quote-page.js'], noindex: true }));
   }
 
   // páginas genéricas (empresa, proyectos, legales…)

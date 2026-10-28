@@ -95,6 +95,8 @@ curl -X POST https://pruebas.grupotorivac.com/api/users \
 
 Luego **vacía `admin_token`**. Más usuarios (managers o clientes) se crean desde el panel: **Usuarios**.
 
+**Acceso en dos pasos (código por correo).** Con el correo ya funcionando (paso 8), a los managers se les pide un código de 6 cifras al entrar (con «recordar este dispositivo», una vez cada 30 días por navegador). **Marca tu propia cuenta como de confianza** para no tener que escribirlo: Panel → **Usuarios** → tu fila → «Código por correo» → «No (cuenta de confianza)» (o `'two_step' => ['exempt' => ['tu@correo.com']]` en `config.php`). Si el correo no está completo, no se pide código a nadie. Detalle en [`SEGURIDAD.md`](SEGURIDAD.md) §10.
+
 ## 8. Correo
 
 Los pedidos y los mensajes de contacto avisan por correo a `order_to`; en los pedidos, el PDF va adjunto y el cliente recibe una copia. **Guía completa, con los errores más típicos: [`CORREO.md`](CORREO.md).** Lo esencial:
@@ -156,7 +158,9 @@ Genera un `.zip` nuevo (paso 3) y **extrae encima** del anterior. El paquete **n
 
 ## 13. Copias de seguridad
 
-Lo único que no se regenera es la **carpeta de datos** (pedidos 400 días, mensajes de contacto, usuarios, precios vigentes e histórico de 90 días, **entradas del blog y sus imágenes** en `media/`) y `api/config.php`. Inclúyelos en la copia de cPanel (o descárgalos de vez en cuando). La web en sí siempre se puede volver a generar del repositorio.
+Lo único que no se regenera es la **carpeta de datos** (pedidos 400 días, mensajes de contacto, usuarios, precios vigentes e histórico de 90 días, **entradas del blog y sus imágenes** en `media/`, el registro de actividad en `audit/` y las copias en `backups/`) y `api/config.php`. La web en sí siempre se puede volver a generar del repositorio.
+
+**El panel ya hace copias solo**: una por semana (la primera, al entrar un manager por primera vez), se guardan las 8 últimas y se descargan desde **Ajustes → Copias de seguridad** (enlace firmado de 2 minutos). **Descarga alguna de vez en cuando y guárdala fuera del servidor**, y hazla también antes de actualizar (botón «Crear copia ahora» o `php api/tools/backup.php`). Para restaurar: `php api/tools/restore.php ARCHIVO.jsonl.gz --dry-run` (comprueba) y después sin `--dry-run` (ver [`SEGURIDAD.md`](SEGURIDAD.md) §13). La copia **no incluye `api/config.php`**: guarda ese archivo aparte (lleva tus claves). Inclúyelo también en la copia que haga cPanel.
 
 ## 14. Si algo falla
 

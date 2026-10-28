@@ -238,6 +238,7 @@ try {
   ok(A.dialogs.some((m) => /nueva@empresa\.com/.test(m)), 'borrar un usuario pide confirmación y lo quita');
 
   console.log('\n7) ataques repetidos: un solo aviso, y código en dispositivos nuevos');
+  /** Los correos de «intentos repetidos» que se han mandado (el aviso al equipo). */
   const alerts = () => d.outbox().filter((m) => /intentos repetidos/.test(m.subject || ''));
   ok(alerts().length === 0, 'hasta ahora (varios bloqueos sueltos y desbloqueos) no se ha mandado ningún aviso de rutina');
   await hammer(CLIENT, 1);
@@ -311,6 +312,7 @@ try {
   await A.page.waitForSelector('[data-sec-account]');
   ok(/cuenta es de confianza/.test(await A.page.locator('[data-sec-account] p').first().innerText()), '«Tu cuenta y tu seguridad» explica que la cuenta de la dueña es de confianza');
   await A.page.waitForSelector('[data-sec-mode=backups]');
+  /** Las filas de la tabla de copias de seguridad de Ajustes. */
   const bkRows = () => A.page.locator('[data-sec-mode=backups] tbody tr');
   const bk0 = await bkRows().allInnerTexts();
   ok(bk0.length === 1 && /automática/.test(bk0[0]) && /una cada semana/.test(await A.page.locator('[data-sec-mode=backups]').innerText()), 'ya hay una copia, hecha sola con la primera entrada de un manager (después, una cada semana)');

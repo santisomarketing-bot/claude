@@ -1,7 +1,7 @@
 /**
  * [QUOTE-PAGE] Página completa del presupuesto: tabla editable, importación CSV/Excel, PDF y envío (simulado en demo).
  * Secciones: [TABLE] · [IMPORT] · [PDF] · [SEND] · [REFRESH]
- * Depende de: quote.js, app.js, forms.js (TV.Forms), plain-text.js (TV.PlainText), pdf.js, SheetJS (window.XLSX) para .xlsx/.xls.
+ * Depende de: quote.js, app.js, forms.js (TV.Forms), plain-text.js (TV.PlainText), captcha.js (TV.Captcha, opcional), pdf.js, SheetJS (window.XLSX) para .xlsx/.xls.
  * Producción (Sesión 3/6): el envío pasa a un Worker (Resend) que manda a info@ y mzamora@ con el PDF adjunto.
  */
 (function () {
@@ -72,6 +72,7 @@
   // ───────────────────────────────────────── [PDF] + [SEND]
   var form = $('[data-quote-form]');
   F.counters(form);
+  if (TV.Captcha) TV.Captcha.init(form);                                                       // el CAPTCHA solo se activa si el servidor lo anuncia (config.php)
   /** Datos del formulario del presupuesto como objeto {campo: valor}, sin el campo honeypot `hp` (antispam). */
   function customer() { var o = {}; new FormData(form).forEach(function (v, k) { if (k !== 'hp') o[k] = v; }); return o; }
   /** Descarga el PDF `res` ({blob(), filename}) con un enlace temporal y libera la URL del blob a los 800 ms. */
@@ -100,7 +101,8 @@
   function sendLive(c, res, d, out) {
     var btn = form.querySelector('button[type=submit]'); btn.disabled = true; var label = btn.textContent; btn.textContent = Q.t('sending');
     var pdf = String(res.doc.output('datauristring')).replace(/^data:[^,]*,/, '');
-    TV.api.post('/api/order', { customer: { name: c.name, company: c.company, email: c.email, phone: c.phone, notes: c.notes, privacy: !!c.privacy }, lines: d.lines.map(function (l) { return { ref: l.ref, qty: l.qty }; }), lang: Q.lang, pdf: pdf, hp: new FormData(form).get('hp') || '', _e: F.elapsed() }).then(function (r) {
+    var body = { customer: { name: c.name, company: c.company, email: c.email, phone: c.phone, notes: c.notes, privacy: !!c.privacy }, lines: d.lines.map(function (l) { return { ref: l.ref, qty: l.qty }; }), lang: Q.lang, pdf: pdf, hp: new FormData(form).get('hp') || '', _e: F.elapsed() };
+    (TV.Captcha ? TV.Captcha.attach(form, body) : Promise.resolve(body)).then(function (b) { return TV.api.post('/api/order', b); }).then(function (r) {
       btn.disabled = false; btn.textContent = label; out.hidden = false; out.setAttribute('tabindex', '-1');
       if (r && r.ok) {
         var copy = !!(r.emailed && r.emailed.customer), mailto = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];      // solo se dice «te hemos enviado una confirmación» si salió (el servidor puede no enviarla: sin correo configurado, tope de envíos…)

@@ -65,6 +65,8 @@ La web estática habla con **un backend de contrato único** (`/api/health|price
 | Cron de precios | trigger `0 3 * * *` | `php api/cron.php` (cPanel «Trabajos de Cron» · Plesk «Tareas programadas») o `GET /api/cron?token=` |
 | Hojas de precios | `shared/price-sheet.mjs`, `shared/xlsx.mjs` | `lib/PriceSheet.php`, `lib/Xlsx.php` (ports con las mismas pruebas) |
 | **Blog del panel** (`/api/blog/*`, páginas `/blog/…`, `/media/blog/…`) | **no existe**: responde 501 `blog_unavailable` y `/api/health` lo dice (`features.blog`) | `lib/Blog*.php` + `api/page.php`; las páginas las pinta PHP con las plantillas que deja la compilación en `api/generated/blog-shell.*.json` ([`BLOG.md`](BLOG.md)) |
+| **Seguridad 3** (código por correo, actividad, copias; `/api/auth/verify`, `/api/activity`, `/api/backups…`) | **no existe**: el panel lo dice y no muestra esos apartados (`features` de `/api/health`) | `lib/Security.php` (código, dispositivos, ataques), `lib/Audit.php` (actividad), `lib/Backup.php` + `tools/backup.php` y `tools/restore.php` ([`SEGURIDAD.md`](SEGURIDAD.md) §10–§13) |
+| CAPTCHA (Turnstile) | verifica con `TURNSTILE_SECRET`; anuncia la clave pública con `TURNSTILE_SITEKEY` | verifica con `turnstile_secret`; anuncia `turnstile_sitekey`; `site/assets/js/captcha.js` lo carga solo si el servidor lo anuncia |
 | Pruebas de navegador | `node scripts/qa-*.mjs` | `node scripts/qa-*.mjs --php` (`scripts/lib/backends.mjs`) |
 
 La compilación con API (**LIVE**: `--php-api` o `TORIVAC_API`) no lleva precios (los da el servidor) ni más de un destinatario en el código público. El paquete (cPanel o Plesk) se genera y verifica con `scripts/package_cpanel.py`.

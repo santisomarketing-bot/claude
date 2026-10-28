@@ -68,7 +68,8 @@ try {
 
   console.log('\n3) cabeceras de seguridad, compresión y caché');
   r = await get('/'); const csp = r.h.get('content-security-policy') || '';
-  ok(/script-src 'self'( 'sha256-[^']+')*;/.test(csp) && !/unsafe-inline'[^;]*;?\s*connect/.test(csp.split(';').find((d) => d.trim().startsWith('script-src')) || '') && /frame-ancestors 'self'/.test(csp) && /object-src 'none'/.test(csp), 'CSP: scripts solo propios o con huella, sin unsafe-inline; frame-ancestors y object-src');
+  ok(/script-src 'self'( 'sha256-[^']+')* https:\/\/challenges\.cloudflare\.com;/.test(csp) && !/unsafe-inline/.test(csp.split(';').find((d) => d.trim().startsWith('script-src')) || '') && /frame-src 'self' https:\/\/challenges\.cloudflare\.com;/.test(csp) && /frame-ancestors 'self'/.test(csp) && /object-src 'none'/.test(csp), 'CSP: scripts solo propios, con huella o del CAPTCHA de Cloudflare (opcional), sin unsafe-inline; frame-ancestors y object-src');
+  ok(!/https:\/\/(?!challenges\.cloudflare\.com)[a-z0-9.-]+/i.test(csp.replace(/connect-src[^;]*;?/, '')), 'y la CSP no admite ningún otro origen de terceros (Cloudflare Turnstile es el único)');
   ok(r.h.get('x-content-type-options') === 'nosniff' && r.h.get('x-frame-options') === 'SAMEORIGIN' && /strict-origin/.test(r.h.get('referrer-policy') || '') && /camera=\(\)/.test(r.h.get('permissions-policy') || ''), 'nosniff, X-Frame-Options, Referrer-Policy y Permissions-Policy');
   ok(/noindex/.test(r.h.get('x-robots-tag') || ''), 'entorno de pruebas: X-Robots-Tag noindex');
   ok(!r.h.get('strict-transport-security'), 'sin HSTS sobre http (solo se manda cuando la web es https)');

@@ -256,7 +256,7 @@ final class Orders
         $parsed = self::parseOrder($raw, $cat);
         if (isset($parsed['error'])) return self::badRequest($parsed);
         $o = $parsed['order'];
-        if (!self::verifyTurnstile($o['turnstile'], $req->ip)) return new Response(['ok' => false, 'error' => 'Verificación anti-spam fallida'], 400);
+        if (!self::verifyTurnstile($o['turnstile'], $req->ip)) return new Response(['ok' => false, 'error' => 'Verificación anti-spam fallida', 'code' => 'captcha'], 400);
         $gl = RateLimit::hit('orderhour', 'all', self::ordersPerHourMax(), 3600000, $nowMs);       // tope global: protege la cuota del correo y el buzón del equipo (solo cuentan pedidos válidos)
         if (!$gl['allowed']) return new Response(['ok' => false, 'error' => 'Demasiados pedidos seguidos. Inténtalo en unos minutos.'], 429);
         $priced = Prices::priceOrder($prices, $o['lines']);                                        // el cliente no puede fijar precios
@@ -294,7 +294,7 @@ final class Orders
         try { $rl = RateLimit::hit('contact', Request::ipKey($req->ip), 5, 600000, $nowMs); }
         catch (\Throwable $e) { return $notSaved($e); }                                           // sin almacén tampoco hay contador que aplicar: falla cerrado
         if (!$rl['allowed']) return new Response(['ok' => false, 'error' => 'Demasiados mensajes seguidos.'], 429);
-        if (!self::verifyTurnstile($c['turnstile'], $req->ip)) return new Response(['ok' => false, 'error' => 'Verificación anti-spam fallida'], 400);
+        if (!self::verifyTurnstile($c['turnstile'], $req->ip)) return new Response(['ok' => false, 'error' => 'Verificación anti-spam fallida', 'code' => 'captcha'], 400);
         try { $rec = Messages::create($c, $req->ip, $nowMs); }
         catch (\Throwable $e) { return $notSaved($e); }
         try {

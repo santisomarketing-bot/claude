@@ -28,9 +28,9 @@ data/
 site/
   build.mjs       generador (lee data/catalog → escribe dist/)           templates.mjs  plantillas HTML (funciones puras)
   lib/            i18n.mjs (textos UI ×4 idiomas) · render.mjs (enlaces, bloques, imágenes) · seo.mjs (JSON-LD, OG) · hosting.mjs (.htaccess, robots.txt, 404, reglas del blog) · blog-shell.mjs (plantillas del blog del panel)
-  assets/         css/ (tokens, base, layout, components, art, admin) · js/ (quote, app, shop, pdf, quote-page, contact, lab, admin, admin-live, admin-blog, admin-proposals) · vendor/ · fonts/ · img/
+  assets/         css/ (tokens, base, layout, components, art, admin) · js/ (quote, app, shop, pdf, quote-page, contact, forms, captcha, lab, admin, admin-live, admin-blog, admin-proposals, admin-security) · vendor/ · fonts/ · img/
 workers/api/      Worker torivac-api (pedidos, contacto, precios, login, IA de precios, propuestas) + pruebas (`npm test`)
-backend-php/api/  el MISMO API en PHP para cPanel o Plesk: Router, Orders, Prices/Sheets, Xlsx, Auth/Users, Ai, Mail, Store (ficheros JSON), Diag, **Blog/BlogApi/BlogPage/BlogMarkdown + page.php (blog del panel, solo PHP)**, tools/ (create-user, check), cron.php + pruebas (`php tests/run.php`)
+backend-php/api/  el MISMO API en PHP para cPanel o Plesk: Router, Orders, Prices/Sheets, Xlsx, Auth/Users, Ai, Mail, Store (ficheros JSON), Diag, **Blog/BlogApi/BlogPage/BlogMarkdown + page.php (blog del panel, solo PHP)**, **Security/Audit/Backup (código por correo, actividad y copias, solo PHP)**, tools/ (create-user, check, backup, restore), cron.php + pruebas (`php tests/run.php`)
 shared/           código y casos de prueba que comparten JS y PHP: price-sheet.mjs (lector de hojas), xlsx.mjs (lector de .xlsx), plain-text.mjs (formularios), blog-markdown.mjs (conversor del blog), fixtures
 scripts/          cosecha y construcción del catálogo (Python/Node) + todas las pruebas de calidad (qa-*.mjs, seo_check.py, perf.mjs…)
 ci/               plantillas de GitHub Actions (ci.yml, deploy.yml) para copiar a .github/workflows/
@@ -95,7 +95,7 @@ Seguridad: PBKDF2 (100 k) + sesión firmada HMAC, límite de intentos de login, 
 
 ## 8. Panel
 `/admin/` carga `admin.js` (demo, sin servidor) o `admin-live.js` (real). Manager: Resumen · Pedidos · Precios (estado, sincronizar, subir Excel/CSV con vista previa, instrucción con IA) · Propuestas ·
-Contenido · **Blog** (`admin-blog.js`: listado, editor con vista previa, imágenes, SEO, programar y traducciones; [`BLOG.md`](BLOG.md)) · Usuarios · Estadísticas · Ajustes. Cliente: Presupuestador · Mis presupuestos · Lista de precios · Estadísticas. **Estadísticas** (Google Business, Ads, Search Console, GA4) están
+Contenido · **Blog** (`admin-blog.js`: listado, editor con vista previa, imágenes, SEO, programar y traducciones; [`BLOG.md`](BLOG.md)) · **Usuarios** (`admin-security.js`: último acceso, código por correo, bloqueos y «Desbloquear», contraseña nueva) · **Actividad** (quién entró y quién cambió qué, con filtros y CSV) · Estadísticas · **Ajustes** (tu cuenta y tu seguridad, copias de seguridad, correo, diagnóstico). El acceso pide un código por correo (`admin-live.js`, segunda pantalla; [`SEGURIDAD.md`](SEGURIDAD.md) §10). Cliente: Presupuestador · Mis presupuestos · Lista de precios · Estadísticas. **Estadísticas** (Google Business, Ads, Search Console, GA4) están
 como estructura sin datos: se conectan con las credenciales de Torivac (no se muestran cifras inventadas). Para **añadir una vista**: entrada en `NAV`, función `V.<nombre>` que devuelva HTML (en `admin-live.js`, una *Promise*) y, si hace falta, su ruta en el Worker.
 
 ## 9. Pruebas (todas locales y reproducibles)
@@ -109,6 +109,8 @@ como estructura sin datos: se conectan con las credenciales de Torivac (no se mu
 | `node scripts/qa-update.mjs` | **actualizar sin caché vieja**: compila dos versiones, las «publica» una tras otra con la caché de una semana del `.htaccess` y comprueba que el HTML y el CSS son siempre de la misma versión, que lo que no cambia no se descarga otra vez, que volver atrás es inmediato, y que sin huellas (control) el problema se reproduce |
 | `node scripts/test-blog-markdown.mjs` · `test-blog-markdown-php.mjs` | conversor del blog contra el contrato (`shared/blog-markdown.fixtures.json`) y 20 000 textos hostiles; **JS = PHP** con ~195 000 comparaciones (0 diferencias) |
 | `node scripts/qa-blog-apache.mjs` · `qa-blog-panel.mjs` | el **blog sobre un Apache real + PHP-FPM** con el paquete tal como se sube (SEO, hreflang, JSON-LD, sitemap, `llms`, imágenes, borradores, programadas, redirecciones) y el **editor del panel en Chromium** (escribir, imagen, SEO, publicar, traducir, previsualizar, programar, validar, borrar, axe) |
+| `node scripts/qa-security-panel.mjs` | el **acceso en dos pasos y la seguridad del panel en Chromium sobre un Apache real**: código por correo (leído de la carpeta de correo de pruebas), recordar el dispositivo, reenviar, códigos erróneos y bloqueo, ataques repetidos (un solo aviso), Usuarios, Actividad con CSV, copias de seguridad, cambio de contraseña, interruptor de emergencia, móvil y axe |
+| `node scripts/qa-captcha.mjs` | el **CAPTCHA invisible opcional** (Turnstile) en contacto y pedido: sin claves no pasa nada; con claves, con una réplica de la API de Cloudflare **y con Cloudflare de verdad** (claves de prueba oficiales, si hay red); carga diferida, token, errores en los 4 idiomas y la CSP real |
 | `node scripts/qa-package.mjs` | el **paquete del hosting (cPanel/Plesk) tal como se sube**: sin precios, precios del servidor, pedido, panel, CSP real del `.htaccess` y API cerrado a ficheros de código |
 | `node scripts/qa-ux.mjs [--mobile \| --width=N]` | **todas** las páginas: desbordes, imágenes rotas/deformadas/borrosas, restos de código, peticiones externas, texto en otro idioma |
 | `node scripts/qa-a11y.mjs` | axe-core (WCAG 2.1 AA) sobre una muestra estratificada |

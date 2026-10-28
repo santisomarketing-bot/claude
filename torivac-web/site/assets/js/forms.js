@@ -22,12 +22,13 @@
     Object.keys(vars || {}).forEach(function (k) { s = s.split('{' + k + '}').join(String(vars[k])); });
     return s;
   }
-  /** Aviso, en el idioma de la página, de un código de error de texto del servidor (plain_text, too_long, too_many_links, too_fast); '' si no se conoce. `max` es el límite del campo. */
+  /** Aviso, en el idioma de la página, de un código de error del servidor (plain_text, too_long, too_many_links, too_fast y captcha: no se pudo comprobar que es una persona); '' si no se conoce. `max` es el límite del campo. */
   F.codeText = function (code, max) {
     if (code === 'plain_text') return text('err_plain_text');
     if (code === 'too_long') return text('err_too_long', { max: max });
     if (code === 'too_many_links') return text('err_too_many_links', { max: TV.PlainText ? TV.PlainText.MAX_LINKS : 2 });
     if (code === 'too_fast') return text('err_too_fast');
+    if (code === 'captcha') return text('captcha_failed');
     return '';
   };
 

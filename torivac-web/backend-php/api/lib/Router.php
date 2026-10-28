@@ -127,6 +127,10 @@ final class Router
     {
         $b = ['ok' => true, 'time' => Util::iso()];
         $p = Auth::configProblems();
+        $site = trim((string) Config::get('turnstile_sitekey', ''));
+        $siteOk = preg_match('/^[0-9A-Za-z_-]{8,80}$/D', $site) === 1;
+        $captcha = trim((string) Config::get('turnstile_secret', '')) !== '';
+        if ($captcha && !$siteOk) $p[] = 'turnstile_sitekey';                                   // con el secreto y sin la clave pública (o mal escrita) los formularios exigirían un CAPTCHA que la web no puede mostrar
         if (!Orders::copyModeValid()) $p[] = 'order_copy';
         if (Mail::driverUnknown()) $p[] = 'mail.driver';
         if (!Mail::sender()['ok']) $p[] = 'order_from';
@@ -136,8 +140,7 @@ final class Router
         $b['mail'] = ['driver' => $st['driver'], 'configured' => $st['configured'], 'last' => $last];
         if ($p) $b['config'] = ['ok' => false, 'problems' => $p];
         $b['features'] = ['blog' => true, 'activity' => true, 'backups' => true, 'two_step' => Security::twoStepEnabled() && Mail::enabled()];      // el panel enseña estas partes solo si el servidor las trae (el Worker de Cloudflare no)
-        $site = trim((string) Config::get('turnstile_sitekey', ''));
-        if ($site !== '' && trim((string) Config::get('turnstile_secret', '')) !== '' && preg_match('/^[0-9A-Za-z_-]{8,80}$/D', $site)) $b['features']['turnstile'] = ['sitekey' => $site];   // la clave PÚBLICA del CAPTCHA: los formularios cargan el widget solo si hay clave y secreto
+        if ($captcha && $siteOk) $b['features']['turnstile'] = ['sitekey' => $site];   // la clave PÚBLICA del CAPTCHA: los formularios cargan el widget solo si hay clave y secreto
         return new Response($b);
     }
 

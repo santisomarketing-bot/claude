@@ -1,15 +1,16 @@
 /**
  * [CONTACT] Formularios de contacto (página Contacto, bloque de la portada y bloque «Contacta con nosotros» de las fichas y entradas de «Original»).
  * Con TV.meta.api (producción): POST /api/contact al servidor (workers/api o backend-php: honeypot, tiempo mínimo de relleno, solo texto plano y con límite de caracteres, límite por IP,
- * Turnstile opcional). El servidor guarda el mensaje SIEMPRE (se ve en el panel) y avisa por correo al equipo; aquí se avisa de lo que no vale en el idioma de la página.
+ * Turnstile opcional: captcha.js). El servidor guarda el mensaje SIEMPRE (se ve en el panel) y avisa por correo al equipo; aquí se avisa de lo que no vale en el idioma de la página.
  * Sin API (DEMO): no se envía nada; se valida, se guarda el mensaje en localStorage (tv_messages) y se muestra un borrador mailto:.
- * Depende de: quote.js (TV.Quote, TV.api), app.js, forms.js (TV.Forms), plain-text.js (TV.PlainText).
+ * Depende de: quote.js (TV.Quote, TV.api), app.js, forms.js (TV.Forms), plain-text.js (TV.PlainText), captcha.js (TV.Captcha, opcional).
  */
 (function () {
   'use strict';
   var TV = window.TV, Q = TV.Quote, F = TV.Forms;
   TV.$$('[data-contact-form]').forEach(function (f) {
     F.counters(f);
+    if (TV.Captcha) TV.Captcha.init(f);                                               // el CAPTCHA solo se activa si el servidor lo anuncia (config.php)
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       var d = {}; new FormData(f).forEach(function (v, k) { d[k] = v; });
@@ -25,7 +26,8 @@
       if (bad) { bad.focus(); return; }
       if (TV.api.live()) {                                                              // producción
         var btn = f.querySelector('button[type=submit]'), label = btn.textContent; btn.disabled = true; btn.textContent = Q.t('sending');
-        TV.api.post('/api/contact', { name: d.name, email: d.email, message: d.message, privacy: !!d.privacy, lang: Q.lang, hp: d.hp || '', _e: F.elapsed() }).then(function (r) {
+        var body = { name: d.name, email: d.email, message: d.message, privacy: !!d.privacy, lang: Q.lang, hp: d.hp || '', _e: F.elapsed() };
+        (TV.Captcha ? TV.Captcha.attach(f, body) : Promise.resolve(body)).then(function (b) { return TV.api.post('/api/contact', b); }).then(function (r) {
           btn.disabled = false; btn.textContent = label;
           if (r && r.ok) { out.hidden = false; out.className = 'notice ok'; out.innerHTML = '<strong>' + TV.esc(Q.t('message_received')) + '</strong>'; out.setAttribute('tabindex', '-1'); out.focus(); f.reset(); return; }
           var why = F.explain(f, r);

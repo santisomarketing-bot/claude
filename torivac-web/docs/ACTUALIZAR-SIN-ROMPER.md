@@ -7,7 +7,7 @@ Vale para Plesk y para cPanel (el paquete es el mismo). La regla es una: **nada 
 | Se sustituye con cada paquete | **No se toca** (vive solo en el servidor) |
 |---|---|
 | La web (HTML de los 4 idiomas, CSS, JS, imágenes, PDF, catálogo, las 21 entradas de blog de siempre) | `api/config.php` (claves, correo, origen de precios) |
-| El código del API (`api/lib/*.php`, `api/index.php`, `api/page.php`…) y las plantillas del blog (`api/generated/`) | La carpeta de datos: pedidos, mensajes, usuarios, precios vigentes e histórico, **entradas del blog escritas en el panel y sus imágenes** (`api/storage/`, o `torivac-datos`, o la que pongas en `storage_dir`) |
+| El código del API (`api/lib/*.php`, `api/index.php`, `api/page.php`…) y las plantillas del blog (`api/generated/`) | La carpeta de datos: pedidos, mensajes, usuarios, precios vigentes e histórico, **entradas del blog escritas en el panel y sus imágenes**, el **registro de actividad** (`audit/`) y las **copias de seguridad** (`backups/`) (`api/storage/`, o `torivac-datos`, o la que pongas en `storage_dir`) |
 | El `.htaccess` y `robots.txt` (se generan en cada compilación) | `.well-known/` (certificados) |
 
 El `.zip` **no lleva** `config.php`, ni datos, ni precios, ni tests: aunque lo extraigas encima, no puede pisarlos. Lo verifica el propio empaquetado antes de dejarte descargarlo.
@@ -91,4 +91,4 @@ Pasos:
 
 ## 6. Qué viene (sesión 21)
 
-Hoy el procedimiento es manual pero seguro. En la sesión 21 se automatiza: una publicación guiada con copia de seguridad previa en el servidor, comprobaciones de humo contra la URL real y vuelta atrás automática si fallan, y la versión instalada visible en el panel. Ver [`SESION-21.md`](SESION-21.md). **El panel nunca se actualizará a sí mismo**: que una web pueda reescribir su propio código es justo el tipo de puerta que no se debe abrir; la actualización la dispara siempre una persona desde GitHub o desde la línea de comandos.
+Hoy el procedimiento es manual pero seguro. **Antes de actualizar, pulsa «Crear copia ahora»** (Panel → Ajustes → Copias de seguridad) o ejecuta `php api/tools/backup.php`: tardas diez segundos y tienes cómo volver (`php api/tools/restore.php`, ver [`SEGURIDAD.md`](SEGURIDAD.md) §13). En la sesión 21 se automatiza: una publicación guiada con copia de seguridad previa en el servidor, comprobaciones de humo contra la URL real y vuelta atrás automática si fallan, y la versión instalada visible en el panel. Ver [`SESION-21.md`](SESION-21.md). **El panel nunca se actualizará a sí mismo**: que una web pueda reescribir su propio código es justo el tipo de puerta que no se debe abrir; la actualización la dispara siempre una persona desde GitHub o desde la línea de comandos.

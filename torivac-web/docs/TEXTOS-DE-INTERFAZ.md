@@ -34,7 +34,7 @@ Las filas con ✓ ya existen tal cual en la web original en ese idioma (por ejem
 
 Ojo: la web original no es del todo uniforme: «variador de tensión» aparece como *voltage variators*, *voltage regulator* o *variator* según la ficha, y hay categorías sin traducir o con texto en otro idioma que no se listan aquí (están como propuestas en el panel). Cuando un texto de interfaz nombre uno de estos términos, se usa el de la categoría correspondiente de la tabla, nunca uno inventado.
 
-## Inglés (83 textos a validar; 39 ya existen tal cual en la web original)
+## Inglés (84 textos a validar; 39 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Inglés |
 |---|---|---|
@@ -83,7 +83,8 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `err_too_fast` | El formulario se ha enviado demasiado rápido. Espera un momento y vuelve a intentarlo. | The form was submitted too quickly. Please wait a moment and try again. |
 | `err_rate` | Demasiados envíos seguidos desde tu conexión. Espera unos minutos e inténtalo de nuevo. | Too many submissions from your connection. Please wait a few minutes and try again. |
 | `chars_left` | Quedan {n} caracteres. | {n} characters left. |
-| `recaptcha` | Este sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google. | This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply. |
+| `captcha_note` | Este sitio está protegido por Cloudflare Turnstile y se aplican la Política de Privacidad y los Términos del Servicio de Cloudflare. | This site is protected by Cloudflare Turnstile and the Cloudflare Privacy Policy and Terms of Service apply. |
+| `captcha_failed` | No hemos podido comprobar que eres una persona. Recarga la página y vuelve a intentarlo; si usas un bloqueador de contenido, desactívalo para esta página. | We could not verify that you are a person. Reload the page and try again; if you use a content blocker, turn it off for this page. |
 | `search_ph` | Buscar por nombre o referencia | Search by name or reference |
 | `clear_filters` | Quitar filtros | Clear filters |
 | `no_results` | No hay productos con estos filtros. | No products match these filters. |
@@ -122,7 +123,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Indicative quote subject to confirmation by Torivac. |
 | `quote_slug` | presupuesto | quote |
 
-## Francés (81 textos a validar; 41 ya existen tal cual en la web original)
+## Francés (82 textos a validar; 41 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Francés |
 |---|---|---|
@@ -170,7 +171,8 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `err_too_fast` | El formulario se ha enviado demasiado rápido. Espera un momento y vuelve a intentarlo. | Le formulaire a été envoyé trop rapidement. Patientez un instant et réessayez. |
 | `err_rate` | Demasiados envíos seguidos desde tu conexión. Espera unos minutos e inténtalo de nuevo. | Trop d’envois consécutifs depuis votre connexion. Patientez quelques minutes et réessayez. |
 | `chars_left` | Quedan {n} caracteres. | Il reste {n} caractères. |
-| `recaptcha` | Este sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google. | Ce site est protégé par reCAPTCHA et la Politique de confidentialité et les Conditions d’utilisation de Google s’appliquent. |
+| `captcha_note` | Este sitio está protegido por Cloudflare Turnstile y se aplican la Política de Privacidad y los Términos del Servicio de Cloudflare. | Ce site est protégé par Cloudflare Turnstile et la Politique de confidentialité et les Conditions d’utilisation de Cloudflare s’appliquent. |
+| `captcha_failed` | No hemos podido comprobar que eres una persona. Recarga la página y vuelve a intentarlo; si usas un bloqueador de contenido, desactívalo para esta página. | Nous n’avons pas pu vérifier que vous êtes une personne. Rechargez la page et réessayez ; si vous utilisez un bloqueur de contenu, désactivez-le pour cette page. |
 | `categories` | Categorías | Catégories |
 | `search_ph` | Buscar por nombre o referencia | Rechercher par nom ou référence |
 | `clear_filters` | Quitar filtros | Effacer les filtres |
@@ -208,7 +210,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `demo_banner` | Versión de demostración | Version de démonstration |
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Devis indicatif soumis à confirmation par Torivac. |
 
-## Alemán (85 textos a validar; 37 ya existen tal cual en la web original)
+## Alemán (86 textos a validar; 37 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Alemán |
 |---|---|---|
@@ -258,7 +260,8 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `err_too_fast` | El formulario se ha enviado demasiado rápido. Espera un momento y vuelve a intentarlo. | Das Formular wurde zu schnell abgeschickt. Bitte kurz warten und erneut versuchen. |
 | `err_rate` | Demasiados envíos seguidos desde tu conexión. Espera unos minutos e inténtalo de nuevo. | Zu viele Absendungen von Ihrer Verbindung. Bitte einige Minuten warten und erneut versuchen. |
 | `chars_left` | Quedan {n} caracteres. | Noch {n} Zeichen. |
-| `recaptcha` | Este sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google. | Diese Website ist durch reCAPTCHA geschützt; es gelten die Datenschutzerklärung und die Nutzungsbedingungen von Google. |
+| `captcha_note` | Este sitio está protegido por Cloudflare Turnstile y se aplican la Política de Privacidad y los Términos del Servicio de Cloudflare. | Diese Website ist durch Cloudflare Turnstile geschützt; es gelten die Datenschutzerklärung und die Nutzungsbedingungen von Cloudflare. |
+| `captcha_failed` | No hemos podido comprobar que eres una persona. Recarga la página y vuelve a intentarlo; si usas un bloqueador de contenido, desactívalo para esta página. | Wir konnten nicht prüfen, ob Sie ein Mensch sind. Laden Sie die Seite neu und versuchen Sie es erneut; wenn Sie einen Inhaltsblocker verwenden, schalten Sie ihn für diese Seite aus. |
 | `categories` | Categorías | Kategorien |
 | `home` | Inicio | Startseite |
 | `search_ph` | Buscar por nombre o referencia | Nach Name oder Artikelnummer suchen |

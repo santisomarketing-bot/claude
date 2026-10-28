@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1774/1778 funciones descritas (100 %) · 200/200 archivos con cabecera.
+**Cobertura**: 1804/1804 funciones descritas (100 %) · 202/202 archivos con cabecera.
 
 
 ## `site/`
@@ -98,12 +98,12 @@ Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[T
 - `shopBody` (l. 470) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
 - `productBody` (l. 509) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
 - `quoteBody` (l. 573) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
-- `contactForm` (l. 601) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
-- `contactIntro` (l. 617) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
-- `contactPageOriginal` (l. 622) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
-- `plainOf` (l. 627) — Texto de un párrafo sin etiquetas.
-- `li` (l. 634) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
-- `lv2` (l. 637) — Encabezados de un trozo de HTML con aria-level 2.
+- `contactForm` (l. 602) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
+- `contactIntro` (l. 618) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
+- `contactPageOriginal` (l. 623) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
+- `plainOf` (l. 628) — Texto de un párrafo sin etiquetas.
+- `li` (l. 635) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
+- `lv2` (l. 638) — Encabezados de un trozo de HTML con aria-level 2.
 
 ## `site/lib/`
 
@@ -128,9 +128,9 @@ Secciones: `[HOSTING]`
 - `WP_PROBES` (l. 13) — Expresión de Apache con las rutas que solo existen en un WordPress (y que los escáneres prueban a diario). `bp` es la ruta base del sitio. Se comprueba en scripts/package_cpanel.py.
 - `basePathOf` (l. 16) — ruta base del sitio: «https://x.com/prueba/» → «/prueba» («» si está en la raíz del dominio)
 - `BLOG_RULES` (l. 23) — Reglas del blog que se escribe en el panel (PHP, api/page.php): las entradas nuevas (/blog/<slug>/ y /en|fr|de/blog/<slug>/), el listado del blog (que mezcla las nuevas con las de la web original), las imágenes
-- `htaccess` (l. 33) — Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api.
-- `langHtaccess` (l. 82) — .htaccess de /en, /fr, /de: solo cambia la página 404 para que se muestre en el idioma de la sección
-- `robotsTxt` (l. 85) — Genera robots.txt: en pruebas prohíbe todo; en producción permite el sitio, cierra /admin/ y /api/ y enlaza el sitemap.
+- `htaccess` (l. 35) — Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api.
+- `langHtaccess` (l. 84) — .htaccess de /en, /fr, /de: solo cambia la página 404 para que se muestre en el idioma de la sección
+- `robotsTxt` (l. 87) — Genera robots.txt: en pruebas prohíbe todo; en producción permite el sitio, cierra /admin/ y /api/ y enlaza el sitemap.
 
 ### `i18n.mjs`
 
@@ -138,9 +138,9 @@ Secciones: `[HOSTING]`
 
 Secciones: `[I18N]`
 
-- `countLabel` (l. 138) — «1 producto / 2 productos» en los 4 idiomas
-- `refLabel` (l. 140) — «1 referencia / 2 referencias» en los 4 idiomas.
-- `t` (l. 142) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
+- `countLabel` (l. 139) — «1 producto / 2 productos» en los 4 idiomas
+- `refLabel` (l. 141) — «1 referencia / 2 referencias» en los 4 idiomas.
+- `t` (l. 143) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
 
 ### `proposals-apply.mjs`
 
@@ -428,15 +428,15 @@ Secciones: `[ADMIN-SECURITY]` · `[UTIL]` · `[USUARIOS]` · `[ACTIVIDAD]` · `[
 - `S.usersView` (l. 49) — Vista Usuarios (manager): la lista con su seguridad, alta de usuarios y contraseña nueva para una cuenta.
 - `activityRows` (l. 75) — Filas de la tabla de actividad.
 - `S.activityView` (l. 84) — Vista Actividad (manager): filtros, tabla y descarga.
-- `opt` (l. 89) — ⚠ sin describir
-- `csvCell` (l. 100) — Una celda de CSV: entre comillas y sin que una fórmula de hoja de cálculo (= + - @) se ejecute al abrirlo.
-- `downloadCsv` (l. 102) — Descarga lo que se está viendo como CSV (con BOM para que Excel respete las tildes).
-- `codeExplain` (l. 111) — Texto de lo que le pasa a esta persona al entrar, según el estado que da el servidor (user.code en /api/auth/me).
-- `accountPanel` (l. 118) — Panel «Tu cuenta y tu seguridad» de Ajustes: estado del código, olvidar dispositivos y cambiar la contraseña propia.
-- `S.settingsPanels` (l. 125) — Los paneles de seguridad de Ajustes (solo manager): tu cuenta y las copias de seguridad. Nunca rechaza. Cada uno sale solo si el servidor lo trae (el de la cuenta, si /api/auth/me da `code`; el de las copias, si /api/backups responde).
-- `backupsPanel` (l. 131) — Panel «Copias de seguridad»: la lista, crear una ahora, descargar y borrar. '' si el servidor no las trae.
-- `downloadBackup` (l. 143) — Pide el enlace firmado de una copia y la descarga.
-- `S.bind` (l. 156) — Engancha los eventos de lo que pinten usersView, activityView y settingsPanels (delegación sobre `root`, una sola vez). `ctx.render()` repinta la vista; `ctx.relogin(msg)` cierra
+- `opt` (l. 90) — Una opción de un desplegable: valor `v`, texto `t`, marcada si es igual a `cur`.
+- `csvCell` (l. 101) — Una celda de CSV: entre comillas y sin que una fórmula de hoja de cálculo (= + - @) se ejecute al abrirlo.
+- `downloadCsv` (l. 103) — Descarga lo que se está viendo como CSV (con BOM para que Excel respete las tildes).
+- `codeExplain` (l. 112) — Texto de lo que le pasa a esta persona al entrar, según el estado que da el servidor (user.code en /api/auth/me).
+- `accountPanel` (l. 119) — Panel «Tu cuenta y tu seguridad» de Ajustes: estado del código, olvidar dispositivos y cambiar la contraseña propia.
+- `S.settingsPanels` (l. 126) — Los paneles de seguridad de Ajustes (solo manager): tu cuenta y las copias de seguridad. Nunca rechaza. Cada uno sale solo si el servidor lo trae (el de la cuenta, si /api/auth/me da `code`; el de las copias, si /api/backups responde).
+- `backupsPanel` (l. 132) — Panel «Copias de seguridad»: la lista, crear una ahora, descargar y borrar. '' si el servidor no las trae.
+- `downloadBackup` (l. 144) — Pide el enlace firmado de una copia y la descarga.
+- `S.bind` (l. 157) — Engancha los eventos de lo que pinten usersView, activityView y settingsPanels (delegación sobre `root`, una sola vez). `ctx.render()` repinta la vista; `ctx.relogin(msg)` cierra
 
 ### `admin.js`
 
@@ -508,9 +508,29 @@ Secciones: `[APP]` · `[UTIL]` · `[MENU]` · `[DRAWER]` · `[FAB]` · `[LANG]` 
 - `setOpen` (l. 158) — Abre o cierra el panel de categorías (y lo anuncia a los lectores de pantalla).
 - `stamp` (l. 171) — Pinta la marca «DEMO» (solo con precios de demostración) y la fecha de los precios.
 
+### `captcha.js`
+
+[CAPTCHA] CAPTCHA invisible OPCIONAL (Cloudflare Turnstile) en los formularios de contacto y de pedido. Solo se activa si el servidor lo dice: GET /api/health trae `features.turnstile.sitekey` cuando en config.php (o en el Worker) están puestas la clave pública Y la secreta. Sin eso este fichero no hace nada, no carga nada de terceros y los formularios se envían como siempre (la defensa de siempre sigue: trampa, tiempo mínimo, texto plano, topes por visitante).
+
+Secciones: `[CAPTCHA]` · `[SERVIDOR]` · `[SCRIPT]` · `[WIDGET]` · `[API]`
+
+- `sitekey` (l. 29) — Promise<string>: la clave pública de Turnstile que anuncia el servidor, o '' si el CAPTCHA no está activado (o no hay API, o el servidor no responde). Una sola consulta por página. Nunca rechaza.
+- `load` (l. 41) — Promise<turnstile>: descarga el script de Cloudflare la primera vez (y lo vuelve a intentar si falló: bloqueador, red).
+- `s.onload` (l. 48) — El script cargó: ya existe `window.turnstile`.
+- `s.onerror` (l. 50) — El script no se pudo descargar (bloqueador de contenido, sin red).
+- `state` (l. 59) — Estado del widget de un formulario: {id, slot, waiting}.
+- `settle` (l. 61) — Entrega el token (o '' si falló) a quien lo está esperando.
+- `ensure` (l. 63) — Promise<turnstile>: carga el script y crea el widget del formulario (invisible hasta que se ejecuta; solo se ve si Cloudflare pide una interacción).
+- `callback` (l. 69) — Cloudflare dio el token: se entrega a quien espera el envío.
+- `C.token` (l. 85) — Promise<string>: un token nuevo de Turnstile para este envío, o '' si el CAPTCHA no está activo o no se pudo conseguir. Nunca rechaza.
+- `finish` (l. 93) — Termina la espera una sola vez con el token (o '').
+- `C.attach` (l. 101) — Promise<object>: `body` con `turnstileToken` si hay CAPTCHA y se consiguió token; si no, tal cual.
+- `C.init` (l. 105) — Engancha un formulario: si el servidor activó el CAPTCHA, enseña el aviso y precarga el script cuando alguien empieza a usarlo. Sin CAPTCHA no hace nada.
+- `warm` (l. 113) — Primer uso del formulario: se descarga el script (no antes).
+
 ### `contact.js`
 
-[CONTACT] Formularios de contacto (página Contacto, bloque de la portada y bloque «Contacta con nosotros» de las fichas y entradas de «Original»). Con TV.meta.api (producción): POST /api/contact al servidor (workers/api o backend-php: honeypot, tiempo mínimo de relleno, solo texto plano y con límite de caracteres, límite por IP, Turnstile opcional). El servidor guarda el mensaje SIEMPRE (se ve en el panel) y avisa por correo al equipo; aquí se avisa de lo que no vale en el idioma de la página.
+[CONTACT] Formularios de contacto (página Contacto, bloque de la portada y bloque «Contacta con nosotros» de las fichas y entradas de «Original»). Con TV.meta.api (producción): POST /api/contact al servidor (workers/api o backend-php: honeypot, tiempo mínimo de relleno, solo texto plano y con límite de caracteres, límite por IP, Turnstile opcional: captcha.js). El servidor guarda el mensaje SIEMPRE (se ve en el panel) y avisa por correo al equipo; aquí se avisa de lo que no vale en el idioma de la página.
 
 Secciones: `[CONTACT]`
 
@@ -522,14 +542,14 @@ Secciones: `[FORMS]` · `[TEXTOS]` · `[CAMPOS]` · `[CONTADOR]` · `[SERVIDOR]`
 
 - `F.elapsed` (l. 16) — Milisegundos desde que se empezó a cargar la página: el servidor exige un mínimo (`_e`) y un robot que envía sin cargarla no lo cumple.
 - `text` (l. 20) — Texto de interfaz `key` con {n} y {max} sustituidos por los valores de `vars`.
-- `F.codeText` (l. 26) — Aviso, en el idioma de la página, de un código de error de texto del servidor (plain_text, too_long, too_many_links, too_fast); '' si no se conoce. `max` es el límite del campo.
-- `F.clear` (l. 36) — Quita los avisos de error del formulario y la marca de campo no válido.
-- `F.fail` (l. 41) — Marca el campo `el` como no válido y pone `msg` justo debajo, enlazado con aria-describedby para que el lector de pantalla lo lea al enfocar el campo.
-- `maxOf` (l. 50) — Límite de caracteres del campo (su maxlength); 1000 si no lo tiene.
-- `F.checkText` (l. 52) — Revisa con las reglas del servidor los campos de texto `names` del formulario: marca los que no valen y devuelve el primero (o null si todo está bien). Sin TV.PlainText no hace nada.
-- `F.counters` (l. 65) — Contador «n / máx» bajo cada textarea con maxlength, y un aviso para lectores de pantalla solo al acercarse al límite (a 50, 20 y 10 caracteres y al llegar a él) para no leer cada letra.
-- `update` (l. 72) — Pone el recuento actual y, si se cruza un umbral, el aviso hablado.
-- `F.explain` (l. 87) — Muestra la respuesta de error `r` del servidor ({status, code, field, error}). Si es un error de un campo (code + field) lo marca, lo enfoca y devuelve true; si no, devuelve el
+- `F.codeText` (l. 26) — Aviso, en el idioma de la página, de un código de error del servidor (plain_text, too_long, too_many_links, too_fast y captcha: no se pudo comprobar que es una persona); '' si no se conoce. `max` es el límite del campo.
+- `F.clear` (l. 37) — Quita los avisos de error del formulario y la marca de campo no válido.
+- `F.fail` (l. 42) — Marca el campo `el` como no válido y pone `msg` justo debajo, enlazado con aria-describedby para que el lector de pantalla lo lea al enfocar el campo.
+- `maxOf` (l. 51) — Límite de caracteres del campo (su maxlength); 1000 si no lo tiene.
+- `F.checkText` (l. 53) — Revisa con las reglas del servidor los campos de texto `names` del formulario: marca los que no valen y devuelve el primero (o null si todo está bien). Sin TV.PlainText no hace nada.
+- `F.counters` (l. 66) — Contador «n / máx» bajo cada textarea con maxlength, y un aviso para lectores de pantalla solo al acercarse al límite (a 50, 20 y 10 caracteres y al llegar a él) para no leer cada letra.
+- `update` (l. 73) — Pone el recuento actual y, si se cruza un umbral, el aviso hablado.
+- `F.explain` (l. 88) — Muestra la respuesta de error `r` del servidor ({status, code, field, error}). Si es un error de un campo (code + field) lo marca, lo enfoca y devuelve true; si no, devuelve el
 
 ### `lab.js`
 
@@ -552,7 +572,7 @@ Secciones: `[PDF]`
 
 ### `quote-page.js`
 
-[QUOTE-PAGE] Página completa del presupuesto: tabla editable, importación CSV/Excel, PDF y envío (simulado en demo). Secciones: [TABLE] · [IMPORT] · [PDF] · [SEND] · [REFRESH] Depende de: quote.js, app.js, forms.js (TV.Forms), plain-text.js (TV.PlainText), pdf.js, SheetJS (window.XLSX) para .xlsx/.xls.
+[QUOTE-PAGE] Página completa del presupuesto: tabla editable, importación CSV/Excel, PDF y envío (simulado en demo). Secciones: [TABLE] · [IMPORT] · [PDF] · [SEND] · [REFRESH] Depende de: quote.js, app.js, forms.js (TV.Forms), plain-text.js (TV.PlainText), captcha.js (TV.Captcha, opcional), pdf.js, SheetJS (window.XLSX) para .xlsx/.xls.
 
 Secciones: `[QUOTE-PAGE]` · `[TABLE]` · `[IMPORT]` · `[PDF]` · `[SEND]` · `[REFRESH]` · `[SEND-LIVE]` · `[SEND-DEMO]`
 
@@ -560,10 +580,10 @@ Secciones: `[QUOTE-PAGE]` · `[TABLE]` · `[IMPORT]` · `[PDF]` · `[SEND]` · `
 - `handleRows` (l. 46) — Importa filas de CSV/Excel: detecta las columnas de referencia y cantidad (o usa la 1.ª y 2.ª) y avisa de las desconocidas.
 - `parseCsv` (l. 58) — Convierte texto CSV en filas de celdas con el lector compartido TV.csvParse (quote.js).
 - `readFile` (l. 60) — Lee el archivo elegido o soltado (Excel con SheetJS, primera hoja, o CSV como texto) y pasa sus filas a handleRows.
-- `customer` (l. 76) — Datos del formulario del presupuesto como objeto {campo: valor}, sin el campo honeypot `hp` (antispam).
-- `download` (l. 78) — Descarga el PDF `res` ({blob(), filename}) con un enlace temporal y libera la URL del blob a los 800 ms.
-- `sendLive` (l. 100) — Envía el pedido al servidor (POST /api/order) con el PDF adjunto; los precios y totales los fija el servidor.
-- `sendDemo` (l. 124) — Demo sin servidor: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador de correo (mailto:).
+- `customer` (l. 77) — Datos del formulario del presupuesto como objeto {campo: valor}, sin el campo honeypot `hp` (antispam).
+- `download` (l. 79) — Descarga el PDF `res` ({blob(), filename}) con un enlace temporal y libera la URL del blob a los 800 ms.
+- `sendLive` (l. 101) — Envía el pedido al servidor (POST /api/order) con el PDF adjunto; los precios y totales los fija el servidor.
+- `sendDemo` (l. 126) — Demo sin servidor: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador de correo (mailto:).
 
 ### `quote.js`
 
@@ -1164,7 +1184,7 @@ Secciones: `[QA-APACHE]` · `[PAQUETE]`
 - `writeCfg` (l. 33) — Escribe api/config.php con la carpeta de datos indicada (fuera de la web por defecto).
 - `get` (l. 39) — GET (sin seguir redirecciones) de una ruta → { s: estado, h: cabeceras, t: cuerpo }
 - `api` (l. 41) — Llamada JSON al API → { s, j }
-- `raw` (l. 126) — GET con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar) → { s, h, t }
+- `raw` (l. 127) — GET con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar) → { s, h, t }
 
 ### `qa-art.mjs`
 
@@ -1196,6 +1216,23 @@ Secciones: `[QA-BLOG-PANEL]`
 - `axe` (l. 38) — Analiza con axe la pantalla actual y anota las violaciones graves.
 - `id1` (l. 149) — identificador de la primera entrada creada (sale de la dirección del panel: #blog/<id>)
 - `id2` (l. 202) — identificador de la entrada en inglés (traducción de la primera)
+
+### `qa-captcha.mjs`
+
+[QA-CAPTCHA] El CAPTCHA invisible OPCIONAL (Cloudflare Turnstile) en los formularios de contacto y de pedido, en un navegador de verdad (Chromium) sobre el paquete desplegado en un Apache real con PHP-FPM: A) SIN claves (cómo se entrega): la página no habla con Cloudflare, no sale el aviso y los formularios funcionan como siempre. B) CON claves, con una RÉPLICA de la API de Cloudflare (determinista, sin red): el script solo se descarga cuando alguien usa el formulario, el token viaja con el envío y el servidor lo comprueba
+
+Secciones: `[QA-CAPTCHA]`
+
+- `ok` (l. 26) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `render` (l. 51) — Crea un widget en el elemento y apunta con qué ajustes se creó (la prueba los lee).
+- `execute` (l. 53) — Lanza la comprobación del widget de ese elemento: según el comportamiento elegido, da un token bueno, uno malo, un error o no contesta.
+- `reset` (l. 60) — Vuelve el widget a su estado inicial (la réplica no guarda nada).
+- `open` (l. 67) — Abre una página nueva (contexto limpio) con los avisos de error recogidos; `replica` sustituye el script de Cloudflare por la réplica y cuenta las descargas.
+- `fillContact` (l. 81) — Rellena el formulario de contacto con datos válidos (tras un envío bueno el formulario se vacía).
+- `sendContact` (l. 88) — Rellena el formulario de contacto de la página y lo envía; devuelve el aviso que sale.
+- `form` (l. 95) — El formulario de contacto que se ve en la página (según el aspecto hay dos copias en el HTML y solo una se muestra).
+- `messages` (l. 97) — Los mensajes de contacto que hay guardados en el servidor (los ve un manager).
+- `axe` (l. 99) — Analiza con axe la pantalla actual y anota las violaciones graves.
 
 ### `qa-lang.mjs`
 
@@ -1261,8 +1298,8 @@ Secciones: `[QA-SECURITY-PANEL]`
 - `shot` (l. 70) — Guarda una captura de la pantalla si se pidió (QA_SHOTS=<carpeta>): sirve para mirar cómo quedó, no es una comprobación.
 - `visitor` (l. 72) — Cabeceras para hacerse pasar por otro visitante en el API.
 - `hammer` (l. 74) — Intentos de acceso con contraseña mala desde otro «visitante» (para provocar un bloqueo de una hora).
-- `alerts` (l. 241) — ⚠ sin describir
-- `bkRows` (l. 314) — ⚠ sin describir
+- `alerts` (l. 242) — Los correos de «intentos repetidos» que se han mandado (el aviso al equipo).
+- `bkRows` (l. 316) — Las filas de la tabla de copias de seguridad de Ajustes.
 
 ### `qa-tarifa.mjs`
 
@@ -1457,11 +1494,12 @@ Secciones: `[PKG-APACHE]`
 - `outbox` (l. 86) — Correos guardados por el controlador «file», del más antiguo al más reciente (por la hora del fichero: el nombre solo tiene segundos) → [{ file, to, subject, text, html }]
 - `kvFile` (l. 88) — Fichero del almacén de una clave (p. ej. «pin:<id>»): kv/<clave con % >.json.
 - `kvKeys` (l. 90) — Claves del almacén que empiezan por `prefix`, más recientes primero.
-- `kvGet` (l. 92) — Lee el valor guardado en una clave del almacén, o null.
-- `kvEdit` (l. 94) — Cambia el valor de una clave del almacén con `fn(valor) → valor nuevo` (para adelantar el reloj de un código, por ejemplo).
-- `lastCode` (l. 96) — El último código de acceso (6 cifras, sin espacio) que se mandó a `email`, o null si no se mandó ninguno.
-- `req` (l. 98) — Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b }
-- `api` (l. 103) — Llamada JSON al API → { s, j, h }. `headers` añade cabeceras (p. ej. X-Forwarded-For: 203.0.113.7 para hacerse pasar por otro visitante: el Apache de pruebas confía en la conexión local).
+- `kvDrop` (l. 92) — Borra del almacén todas las claves que empiezan por `prefix` (p. ej. 'rl:contact:' para volver a empezar los límites por visitante) → cuántas.
+- `kvGet` (l. 94) — Lee el valor guardado en una clave del almacén, o null.
+- `kvEdit` (l. 96) — Cambia el valor de una clave del almacén con `fn(valor) → valor nuevo` (para adelantar el reloj de un código, por ejemplo).
+- `lastCode` (l. 98) — El último código de acceso (6 cifras, sin espacio) que se mandó a `email`, o null si no se mandó ninguno.
+- `req` (l. 100) — Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b }
+- `api` (l. 105) — Llamada JSON al API → { s, j, h }. `headers` añade cabeceras (p. ej. X-Forwarded-For: 203.0.113.7 para hacerse pasar por otro visitante: el Apache de pruebas confía en la conexión local).
 
 ### `static-server.mjs`
 
@@ -1556,13 +1594,14 @@ Secciones: `[INDEX]`
 - `tooMany` (l. 26) — 429 con el texto de siempre (inundación, Bearer): el mismo para cualquier límite de acceso, nunca distingue si un usuario existe.
 - `lockWait` (l. 28) — Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba).
 - `locked` (l. 30) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
-- `configProblems` (l. 36) — Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores.
-- `fail` (l. 45) — Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id.
-- `identify` (l. 52) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
-- `handleLogin` (l. 65) — POST /api/auth/login, con protección contra la fuerza bruta: 5 contraseñas erróneas del mismo visitante (ipKey) contra una cuenta bloquean ESA pareja 1 HORA desde el 5.º fallo (ni la contraseña
-- `route` (l. 91) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
-- `fetch` (l. 166) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
-- `scheduled` (l. 182) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
+- `turnstileSitekey` (l. 36) — Clave PÚBLICA de Cloudflare Turnstile (TURNSTILE_SITEKEY) si está bien escrita; '' si no. Los formularios de la web solo piden el CAPTCHA cuando /api/health la anuncia junto al secreto.
+- `configProblems` (l. 41) — Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores.
+- `fail` (l. 51) — Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id.
+- `identify` (l. 58) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
+- `handleLogin` (l. 71) — POST /api/auth/login, con protección contra la fuerza bruta: 5 contraseñas erróneas del mismo visitante (ipKey) contra una cuenta bloquean ESA pareja 1 HORA desde el 5.º fallo (ni la contraseña
+- `route` (l. 97) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
+- `fetch` (l. 172) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
+- `scheduled` (l. 188) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
 
 ### `mailapi.js`
 
@@ -1866,6 +1905,7 @@ Secciones: `[PRUEBAS-CONTACTO]`
 - `ttlOf` (l. 13) — Segundos de caducidad que le quedan a una clave del KV de pruebas (la fecha de caducidad se anota al guardar).
 - `stored` (l. 15) — Registro del mensaje con ese id, tal como está guardado en KV.
 - `conTurnstile` (l. 111) — fetch que responde al desafío de Turnstile con éxito o fracaso y deja pasar lo demás al proveedor simulado.
+- `health` (l. 225) — Lo que responde GET /api/health con esas variables de entorno.
 
 ### `price-sheet.test.js`
 
@@ -2517,20 +2557,20 @@ Secciones: `[ROUTER]` · `[LIMITES]` · `[ERRORES]`
 - `locked` (l. 104) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
 - `authenticate` (l. 115) — Autentica la petición. Devuelve [quién|null, respuesta 429|null]. Sin Bearer no hay nada que probar. Con Bearer, un visitante (ipKey) con 30 fallos en 10 min ni siquiera llega a
 - `health` (l. 126) — GET /health: vivo, estado del correo (controlador, si está configurado y último intento SIN el texto del error) y, si algún ajuste está mal (secreto de sesión, token maestro o de cron, modo de la copia al cliente, mail.driver, order_from), lo dice con su NOMBRE (nunca el valor).
-- `prices` (l. 145) — GET /prices: el público ve la lista sin quién la cargó ni de dónde; un manager lo ve todo (y el estado de la última sincronización). Con la IP bloqueada por tokens fallidos se sirve la vista pública.
-- `login` (l. 170) — POST /auth/login: contraseña con coste igual exista o no el usuario, token ligado al sid del usuario y protección contra la fuerza bruta (ver la cabecera): 5 fallos de un visitante contra una cuenta,
-- `enter` (l. 213) — Abre la sesión: anota el acceso (y el último acceso de la persona), programa la copia de seguridad semanal si es manager y devuelve el token con el usuario.
-- `verifyCode` (l. 226) — POST /auth/verify { challenge, code, remember? }: comprueba el código que llegó por correo y, si vale, abre la sesión. Con `remember: true` deja una cookie de dispositivo (HttpOnly, firmada) para no volver a
-- `resendCode` (l. 249) — POST /auth/resend { challenge }: manda un código nuevo por correo (el anterior deja de valer); como mucho 2 reenvíos y con espera entre ellos.
-- `changePassword` (l. 260) — POST /auth/password { current, password }: cambia la contraseña PROPIA (pide la actual: 5 fallos por hora y cuenta → 429). Cierra todas las sesiones (también esta: hay que entrar de nuevo) y olvida los dispositivos
-- `cronByUrl` (l. 281) — GET /cron?token=…: sincroniza los precios si el token es el de cron_token (≥ 24 caracteres); 10 fallos / 10 min por visitante → 429; sin cron_token válido la URL está desactivada (401).
-- `forClient` (l. 296) — Un pedido tal como lo ve un cliente: sin la IP desde la que se hizo ni el motivo técnico del fallo del correo (eso es solo para managers).
-- `orders` (l. 304) — GET /orders: un manager recibe los 300 pedidos más recientes; un cliente, los suyos (los que llevan su correo) hasta 100, mirando solo los 3000 más recientes. `truncated:true` si se cortó.
-- `messages` (l. 326) — GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite.
-- `mailTest` (l. 336) — POST /mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de order_to. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
-- `userAction` (l. 356) — POST /users/:correo/unlock { clear_reinforced? } quita el bloqueo de esa cuenta (y, si se pide, su protección reforzada) · /two-step { enabled } pide o no el código por correo a esa cuenta (false = cuenta de confianza)
-- `route` (l. 376) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
-- `cron` (l. 470) — sincroniza los precios (cron diario), hace la copia de seguridad semanal si toca y limpia lo caducado, también si la hoja se rechaza (esa limpieza no depende de la hoja)
+- `prices` (l. 148) — GET /prices: el público ve la lista sin quién la cargó ni de dónde; un manager lo ve todo (y el estado de la última sincronización). Con la IP bloqueada por tokens fallidos se sirve la vista pública.
+- `login` (l. 173) — POST /auth/login: contraseña con coste igual exista o no el usuario, token ligado al sid del usuario y protección contra la fuerza bruta (ver la cabecera): 5 fallos de un visitante contra una cuenta,
+- `enter` (l. 216) — Abre la sesión: anota el acceso (y el último acceso de la persona), programa la copia de seguridad semanal si es manager y devuelve el token con el usuario.
+- `verifyCode` (l. 229) — POST /auth/verify { challenge, code, remember? }: comprueba el código que llegó por correo y, si vale, abre la sesión. Con `remember: true` deja una cookie de dispositivo (HttpOnly, firmada) para no volver a
+- `resendCode` (l. 252) — POST /auth/resend { challenge }: manda un código nuevo por correo (el anterior deja de valer); como mucho 2 reenvíos y con espera entre ellos.
+- `changePassword` (l. 263) — POST /auth/password { current, password }: cambia la contraseña PROPIA (pide la actual: 5 fallos por hora y cuenta → 429). Cierra todas las sesiones (también esta: hay que entrar de nuevo) y olvida los dispositivos
+- `cronByUrl` (l. 284) — GET /cron?token=…: sincroniza los precios si el token es el de cron_token (≥ 24 caracteres); 10 fallos / 10 min por visitante → 429; sin cron_token válido la URL está desactivada (401).
+- `forClient` (l. 299) — Un pedido tal como lo ve un cliente: sin la IP desde la que se hizo ni el motivo técnico del fallo del correo (eso es solo para managers).
+- `orders` (l. 307) — GET /orders: un manager recibe los 300 pedidos más recientes; un cliente, los suyos (los que llevan su correo) hasta 100, mirando solo los 3000 más recientes. `truncated:true` si se cortó.
+- `messages` (l. 329) — GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite.
+- `mailTest` (l. 339) — POST /mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de order_to. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
+- `userAction` (l. 359) — POST /users/:correo/unlock { clear_reinforced? } quita el bloqueo de esa cuenta (y, si se pide, su protección reforzada) · /two-step { enabled } pide o no el código por correo a esa cuenta (false = cuenta de confianza)
+- `route` (l. 379) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
+- `cron` (l. 473) — sincroniza los precios (cron diario), hace la copia de seguridad semanal si toca y limpia lo caducado, también si la hoja se rechaza (esa limpieza no depende de la hoja)
 
 ### `Security.php`
 
@@ -2824,19 +2864,19 @@ Pruebas del formulario de contacto que de verdad funciona (Messages.php, Orders:
 - `test_contact_email_status_failed_off_skipped` (l. 69) — M1 · Si el correo falla, se omite o está apagado: 200 igualmente, el mensaje queda guardado y `reason` dice por qué (el detalle solo en el registro).
 - `test_contact_not_saved_is_a_500_and_sends_nothing` (l. 94) — M1 · Si el almacén no deja guardar: 500 «No se pudo guardar el mensaje», se registra y NO se envía nada; nunca «recibido» de lo que no está guardado.
 - `test_contact_limits_and_antispam_still_apply` (l. 116) — M1 · Los límites y el antispam de siempre siguen: 6.º mensaje → 429 sin guardar; honeypot, campos no válidos, privacidad y Turnstile fallido → 400 sin guardar ni enviar.
-- `test_invalid_contact_does_not_spend_the_budget` (l. 137) — M1b · Lo no válido no gasta el cupo de 5 mensajes de 10 min: seis intentos con el texto mal (cada uno con su aviso) y después sus 5 mensajes bien se aceptan; el 6.º bueno es 429. Igual que el Worker.
-- `test_contact_plain_text_and_limits_over_the_api` (l. 147) — Texto plano y límites: etiquetas, scripts, SQL, plantillas, consola y rutas se rechazan con code y field; demasiado largo o con muchos enlaces también; nada se guarda ni se envía.
-- `test_contact_and_order_fill_time_check` (l. 177) — Antispam por tiempo: con form_min_fill_ms = 1200 el cuerpo debe traer `_e` (entero ≥ 1200); sin él, con un número menor o con un texto → 400 too_fast. 0 lo desactiva.
-- `test_order_plain_text_and_limits_over_the_api` (l. 199) — Pedido: mismos límites de texto plano (nombre 80, empresa 120, teléfono 40, notas 500) y mismo 400 con code y field.
-- `test_messages_list_permissions_order_and_limit` (l. 217) — M2 · GET /messages: solo gestor (anónimo 401, cliente 403), más recientes primero, todos los campos, sin caché y límite acotado a 1..300 (100 por defecto).
-- `test_messages_list_tolerates_corrupt_records` (l. 240) — M2 · Un registro corrupto se omite sin romper la lista y el hueco se rellena con el siguiente; un registro sin id válido tampoco vale.
-- `test_messages_list_returns_visitor_text_as_data` (l. 252) — M2/M4 · El contenido del visitante es dato: se devuelve tal cual dentro del JSON, nunca como HTML ni con cabeceras.
-- `test_messages_delete_and_cannot_reach_other_keys` (l. 263) — M2 · DELETE /messages/:id borra uno (derecho de supresión); 404 si no existe, ya se borró o el id no tiene forma de id; nunca alcanza otras claves; cliente 403.
-- `test_mail_test_endpoint` (l. 281) — M2 · POST /mail/test: envía «Torivac · prueba de correo» a los destinatarios del equipo o a `to`; 200 aunque falle (con el error corto); 400 si `to` no vale; 10 por hora y usuario; cliente 403.
-- `test_mail_test_endpoint_rate_limit` (l. 315) — M2 · 10 pruebas por hora y usuario: la 11.ª es 429, otro gestor tiene su cupo.
-- `test_mail_status_endpoint_and_health` (l. 328) — M2 · GET /mail/status: driver, configured, problems (nombres), last (null al principio; luego el último intento); cliente 403; sin secretos.
-- `test_mail_endpoints_never_leak_the_key` (l. 360) — M4 · Con una clave «sk-SECRETO-123» configurada, no aparece en ninguna respuesta de los endpoints de correo ni en el almacén aunque el proveedor la repita.
-- `test_diag_warns_about_messages_without_email` (l. 373) — El diagnóstico avisa si los últimos mensajes de contacto se guardaron sin que saliera su aviso por correo.
+- `test_invalid_contact_does_not_spend_the_budget` (l. 138) — M1b · Lo no válido no gasta el cupo de 5 mensajes de 10 min: seis intentos con el texto mal (cada uno con su aviso) y después sus 5 mensajes bien se aceptan; el 6.º bueno es 429. Igual que el Worker.
+- `test_contact_plain_text_and_limits_over_the_api` (l. 148) — Texto plano y límites: etiquetas, scripts, SQL, plantillas, consola y rutas se rechazan con code y field; demasiado largo o con muchos enlaces también; nada se guarda ni se envía.
+- `test_contact_and_order_fill_time_check` (l. 178) — Antispam por tiempo: con form_min_fill_ms = 1200 el cuerpo debe traer `_e` (entero ≥ 1200); sin él, con un número menor o con un texto → 400 too_fast. 0 lo desactiva.
+- `test_order_plain_text_and_limits_over_the_api` (l. 200) — Pedido: mismos límites de texto plano (nombre 80, empresa 120, teléfono 40, notas 500) y mismo 400 con code y field.
+- `test_messages_list_permissions_order_and_limit` (l. 218) — M2 · GET /messages: solo gestor (anónimo 401, cliente 403), más recientes primero, todos los campos, sin caché y límite acotado a 1..300 (100 por defecto).
+- `test_messages_list_tolerates_corrupt_records` (l. 241) — M2 · Un registro corrupto se omite sin romper la lista y el hueco se rellena con el siguiente; un registro sin id válido tampoco vale.
+- `test_messages_list_returns_visitor_text_as_data` (l. 253) — M2/M4 · El contenido del visitante es dato: se devuelve tal cual dentro del JSON, nunca como HTML ni con cabeceras.
+- `test_messages_delete_and_cannot_reach_other_keys` (l. 264) — M2 · DELETE /messages/:id borra uno (derecho de supresión); 404 si no existe, ya se borró o el id no tiene forma de id; nunca alcanza otras claves; cliente 403.
+- `test_mail_test_endpoint` (l. 282) — M2 · POST /mail/test: envía «Torivac · prueba de correo» a los destinatarios del equipo o a `to`; 200 aunque falle (con el error corto); 400 si `to` no vale; 10 por hora y usuario; cliente 403.
+- `test_mail_test_endpoint_rate_limit` (l. 316) — M2 · 10 pruebas por hora y usuario: la 11.ª es 429, otro gestor tiene su cupo.
+- `test_mail_status_endpoint_and_health` (l. 329) — M2 · GET /mail/status: driver, configured, problems (nombres), last (null al principio; luego el último intento); cliente 403; sin secretos.
+- `test_mail_endpoints_never_leak_the_key` (l. 361) — M4 · Con una clave «sk-SECRETO-123» configurada, no aparece en ninguna respuesta de los endpoints de correo ni en el almacén aunque el proveedor la repita.
+- `test_diag_warns_about_messages_without_email` (l. 374) — El diagnóstico avisa si los últimos mensajes de contacto se guardaron sin que saliera su aviso por correo.
 
 ### `PlainTextTest.php`
 
@@ -2966,8 +3006,8 @@ Pruebas de la seguridad de acceso de la sesión «Seguridad 3»: verificación e
 - `test_step_distributed_attack_counts_at_once` (l. 344) — SS10 · El bloqueo de la cuenta entera (30 fallos repartidos entre muchas direcciones) cuenta como ataque repetido al instante.
 - `test_step_unlock_account` (l. 355) — SS11 · Otro manager desbloquea una cuenta (la pareja visitante+cuenta, la cuenta y el visitante) y la lista dice cuáles están bloqueadas; la protección reforzada se puede quitar aparte.
 - `test_step_audit_log` (l. 375) — SS12 · Registro de actividad: qué se anota, con qué detalle, cuánto ocupa y quién lo lee.
-- `test_step_audit_every_action_has_a_label` (l. 417) — SS13 · Tamaño y limpieza del registro: un día no pasa de 2 MB (con una línea de aviso) y lo de más de 180 días se borra.
-- `test_step_audit_caps_and_purge` (l. 430) — ⚠ sin describir
+- `test_step_audit_every_action_has_a_label` (l. 416) — Toda acción que el servidor anota tiene su nombre en castellano (si no, el panel enseñaría un código como «user.password»). Se buscan en el código fuente, así que una acción nueva sin nombre lo rompe.
+- `test_step_audit_caps_and_purge` (l. 430) — SS13 · Tamaño y limpieza del registro: un día no pasa de 2 MB (con una línea de aviso) y lo de más de 180 días se borra.
 - `test_step_backup_create_download_restore` (l. 450) — SS14 · Copia de seguridad: se crea desde el panel, se baja con un enlace firmado de 2 minutos y se restaura entera (datos con su caducidad e imágenes); nada de secretos ni contadores.
 - `test_step_backup_schedule_and_prune` (l. 515) — SS15 · Copias: se guardan solo las 8 últimas, la semanal se hace una vez por semana y se puede apagar.
 - `test_step_health_features_and_diagnostics` (l. 552) — SS16 · /health cuenta qué trae el servidor (y la clave PÚBLICA del CAPTCHA solo si están las dos claves) y el Diagnóstico explica cada medida.

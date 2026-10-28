@@ -111,8 +111,9 @@ return [
     //   auto  true (por defecto) = la copia semanal se hace sola · media  true (por defecto) = con las imágenes del blog.
     'backup' => ['auto' => true, 'media' => true],
 
-    // CAPTCHA invisible opcional (Cloudflare Turnstile, gratuito): dash.cloudflare.com → Turnstile → Añadir sitio (modo «Gestionado» o «Invisible»). Pon LAS DOS claves o ninguna:
-    //   turnstile_sitekey = la clave pública (la ve cualquiera, va en la página) · turnstile_secret = la clave secreta (NUNCA fuera de este archivo). Solo el secreto sin la clave pública bloquearía los formularios.
+    // CAPTCHA invisible opcional (Cloudflare Turnstile, gratuito; NO hace falta pasar la web a Cloudflare): dash.cloudflare.com → Turnstile → Añadir sitio → tu dominio → modo «Gestionado» (o «Invisible»). Pon LAS DOS claves o ninguna:
+    //   turnstile_sitekey = la clave del sitio (pública: la ve cualquiera, va en la página) · turnstile_secret = la clave secreta (NUNCA fuera de este archivo). Solo el secreto sin la clave pública bloquearía los formularios.
+    // Nada más que hacer: los formularios cargan el CAPTCHA solos cuando las dos están puestas (Ajustes → Diagnóstico lo confirma). Vacías = apagado. Guía y nota de privacidad: docs/SEGURIDAD.md §14.
     'turnstile_sitekey' => '',
     'turnstile_secret' => '',
 

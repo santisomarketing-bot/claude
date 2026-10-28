@@ -63,7 +63,7 @@ export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = 
   const parsed = parseOrder(raw, cat, { minFillMs: minFillMs(env) });
   if (parsed.error) return json({ ok: false, error: parsed.error, ...(parsed.code ? { code: parsed.code } : {}), ...(parsed.field ? { field: parsed.field } : {}) }, 400, cors);
   const o = parsed.order;
-  if (!(await verifyTurnstile(env, o.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida' }, 400, cors);
+  if (!(await verifyTurnstile(env, o.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida', code: 'captcha' }, 400, cors);
   if (!(await hit(env, 'order-hour', 'all', { max: intVar(env.ORDERS_PER_HOUR_MAX, 120, 0), windowMs: HOUR, now: nowMs })).allowed) return json({ ok: false, error: TOO_MANY }, 429, cors);   // global: protege la cuota de Resend y el buzón
   const priced = priceOrder(prices, o.lines);                       // el cliente no puede fijar precios
   const base = await baseNumber(env, at);
@@ -100,7 +100,7 @@ export async function handleContact(request, env, contact, { fetchImpl = fetch, 
   const notSaved = (id, e) => { console.error('[contacto] No se pudo guardar el mensaje', id || '', e && e.message); return json({ ok: false, error: 'No se pudo guardar el mensaje' }, 500, cors); };
   let rl; try { rl = await hit(env, 'contact', ipKey(ip), { max: 5, now: nowMs }); } catch (e) { return notSaved('', e); }       // si el almacén no responde, tampoco hay límite que aplicar: se falla cerrado
   if (!rl.allowed) return json({ ok: false, error: 'Demasiados mensajes seguidos.' }, 429, cors);
-  if (!(await verifyTurnstile(env, contact.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida' }, 400, cors);
+  if (!(await verifyTurnstile(env, contact.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida', code: 'captcha' }, 400, cors);
   let id, record;
   try {
     const base = await baseNumber(env, at, 'CT');

@@ -131,6 +131,7 @@ function test_contact_limits_and_antispam_still_apply()
     Http::$mock = function () { return [200, '{"success":false}']; };
     $r = ms_post(ms_contact(['turnstileToken' => 'abc']));
     T::same([400, 'Verificación anti-spam fallida', 0, 0], [$r->status, $r->body['error'], count(Store::names('msg:')), count(outbox())], 'Turnstile fallido: ni guarda ni envía');
+    T::same('captcha', $r->body['code'] ?? '', 'y con su código, para que la web lo explique en el idioma del visitante');
 }
 
 /** M1b · Lo no válido no gasta el cupo de 5 mensajes de 10 min: seis intentos con el texto mal (cada uno con su aviso) y después sus 5 mensajes bien se aceptan; el 6.º bueno es 429. Igual que el Worker. */

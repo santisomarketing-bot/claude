@@ -32,12 +32,18 @@ const locked = (cors, leftMs) => {
   return json({ ok: false, error: `Demasiados intentos fallidos. Vuelve a intentarlo en ${lockWait(secs)}.`, retry_after: secs }, 429, { ...cors, 'Retry-After': String(secs) });
 };
 const HOUR_MS = 60 * 60 * 1000;
+/** Clave PÚBLICA de Cloudflare Turnstile (TURNSTILE_SITEKEY) si está bien escrita; '' si no. Los formularios de la web solo piden el CAPTCHA cuando /api/health la anuncia junto al secreto. */
+export function turnstileSitekey(env) {
+  const k = String(env.TURNSTILE_SITEKEY || '').trim();
+  return /^[0-9A-Za-z_-]{8,80}$/.test(k) ? k : '';
+}
 /** Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores. */
 export function configProblems(env) {
   const p = [];
   if (!secretOk(env.SESSION_SECRET)) p.push('SESSION_SECRET');                                                                      // ausente, de menos de 32 caracteres o sin cambiar: nadie puede iniciar sesión
   if (env.ADMIN_API_TOKEN != null && env.ADMIN_API_TOKEN !== '' && !secretOk(env.ADMIN_API_TOKEN)) p.push('ADMIN_API_TOKEN');       // de menos de 32 caracteres: el token maestro queda desactivado
   if (env.ORDER_COPY != null && !['capped', 'off'].includes(String(env.ORDER_COPY).trim().toLowerCase())) p.push('ORDER_COPY');      // valor desconocido: la copia al cliente queda en «off»
+  if (String(env.TURNSTILE_SECRET || '').trim() && !turnstileSitekey(env)) p.push('TURNSTILE_SITEKEY');                          // con el secreto y sin la clave pública (o mal escrita) los formularios exigirían un CAPTCHA que la web no puede mostrar
   p.push(...mailSettingProblems(env));                                                                                              // EMAIL_PROVIDER desconocido (el correo queda apagado) u ORDER_FROM que no es «Nombre <correo@dominio>» (no se envía)
   return p;
 }
@@ -93,7 +99,7 @@ async function route(request, env, deps, { path, cors, nowMs }) {
   if (path === '/api/health') {
     const problems = configProblems(env), { driver, configured, last } = await mailStatus(env);
     const { error: _error, ...lastPublic } = last || {};                                  // /api/health es público: el último intento de correo va SIN el texto del error (eso es de GET /api/mail/status, solo managers)
-    return json({ ok: true, time: new Date(nowMs).toISOString(), mail: { driver, configured, last: last ? lastPublic : null }, ...(problems.length ? { config: { ok: false, problems } } : {}) }, 200, cors);
+    return json({ ok: true, time: new Date(nowMs).toISOString(), mail: { driver, configured, last: last ? lastPublic : null }, ...(problems.length ? { config: { ok: false, problems } } : {}), ...(String(env.TURNSTILE_SECRET || '').trim() && turnstileSitekey(env) ? { features: { turnstile: { sitekey: turnstileSitekey(env) } } } : {}) }, 200, cors);
   }
   if (path === '/api/prices' && method === 'GET') {
     const id = await identify(request, env, ipk, nowMs);                                  // con la IP bloqueada por Bearer fallidos no se prueba el token: se sirve la vista pública

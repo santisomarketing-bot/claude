@@ -109,7 +109,7 @@ test('M1 · los límites de contacto siguen igual: 6.º mensaje de un visitante 
   const e3 = mkEnv({ RESEND_API_KEY: 're_test', TURNSTILE_SECRET: 'turnstile-falso' }), b3 = provider();
   /** fetch que responde al desafío de Turnstile con éxito o fracaso y deja pasar lo demás al proveedor simulado. */
   const conTurnstile = (ok) => ({ calls: b3.calls, fetchImpl: async (u, o) => (String(u).includes('turnstile') ? new Response(JSON.stringify({ success: ok })) : b3.fetchImpl(u, o)) });
-  const mal = await contactPost(e3, conTurnstile(false), { turnstileToken: 'tok' }); assert.equal(mal.r.status, 400); assert.equal(mal.j.error, 'Verificación anti-spam fallida');
+  const mal = await contactPost(e3, conTurnstile(false), { turnstileToken: 'tok' }); assert.equal(mal.r.status, 400); assert.equal(mal.j.error, 'Verificación anti-spam fallida'); assert.equal(mal.j.code, 'captcha', 'con su código, para que la web lo explique en el idioma del visitante');
   assert.equal((await contactPost(e3, conTurnstile(true), {})).r.status, 400, 'sin token'); assert.equal(messagesIn(e2).length + messagesIn(e3).length, 0, 'nada guardado'); assert.equal(b2.calls.length + b3.calls.length, 0, 'nada enviado');
   assert.equal((await contactPost(e3, conTurnstile(true), { turnstileToken: 'tok' })).r.status, 200, 'con Turnstile bueno sí pasa'); assert.equal(messagesIn(e3).length, 1);
 });
@@ -219,4 +219,17 @@ test('M3 · pedido con el aviso rechazado o sin controlador: el pedido guarda em
     assert.equal(x.ok, true); assert.deepEqual([x.emailed.team, x.emailed.skipped, x.emailed.customer_reason], [false, true, 'skipped']); assert.equal(b2.calls.length, 0);
     const rec2 = JSON.parse(e2.KV.m.get(`order:${x.number}`)); assert.deepEqual([rec2.emailed.reason, rec2.emailed.error], [reason, 'correo sin configurar']);
   }
+});
+test('M1c · /api/health anuncia el CAPTCHA (la clave PÚBLICA) solo si están la clave y el secreto, nunca el secreto, y avisa por su nombre si solo hay secreto o la clave está mal escrita', async () => {
+  /** Lo que responde GET /api/health con esas variables de entorno. */
+  const health = async (vars) => (await (await call(mkEnv(vars), '/api/health')).json());
+  assert.equal((await health({})).features, undefined, 'sin claves, nada');
+  assert.equal((await health({ TURNSTILE_SITEKEY: '0x4AAAAAAABBBBCCCC' })).features, undefined, 'solo la clave pública: no se ofrece');
+  const h = await health({ TURNSTILE_SITEKEY: '0x4AAAAAAABBBBCCCC', TURNSTILE_SECRET: 'secreto-turnstile-123456' });
+  assert.deepEqual(h.features, { turnstile: { sitekey: '0x4AAAAAAABBBBCCCC' } }); assert.ok(!JSON.stringify(h).includes('secreto-turnstile'), 'el secreto jamás sale');
+  assert.ok(!(h.config && h.config.problems || []).includes('TURNSTILE_SITEKEY'));
+  const solo = await health({ TURNSTILE_SECRET: 'secreto-turnstile-123456' });
+  assert.equal(solo.features, undefined); assert.ok(solo.config.problems.includes('TURNSTILE_SITEKEY'), 'el secreto sin clave pública bloquearía los formularios: se avisa (solo el nombre)');
+  const rara = await health({ TURNSTILE_SITEKEY: '<script>', TURNSTILE_SECRET: 'secreto-turnstile-123456' });
+  assert.equal(rara.features, undefined, 'una clave con caracteres raros no se publica'); assert.ok(rara.config.problems.includes('TURNSTILE_SITEKEY'));
 });

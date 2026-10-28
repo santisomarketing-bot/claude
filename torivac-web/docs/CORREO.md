@@ -78,6 +78,15 @@ Un correo sin firmar de un dominio que no lo autoriza acaba en spam o se rechaza
 3. Públicamente, `https://TU-DOMINIO/api/health` enseña `mail: { driver, configured, last: { ok, reason } }` **sin** el texto del error (ese solo lo ve un manager).
 4. Haz un pedido y un mensaje de contacto de verdad: deben aparecer en *Pedidos* y *Mensajes* con «✓ Avisado por correo» y llegar a las dos bandejas.
 
+## 5b. Correos de seguridad (el código de acceso y el aviso de intentos repetidos)
+
+Con el correo bien configurado, el panel manda dos tipos de correo más (se ven en *Ajustes → Correo* como «seguridad»):
+
+- **El código de acceso** (6 cifras, 10 minutos, un solo uso) que se pide al entrar a los managers que no son «de confianza»: el asunto no lleva el código. Detalle en [`SEGURIDAD.md`](SEGURIDAD.md) §10.
+- **El aviso de intentos repetidos** (a `alert_to`, o a quienes reciben los pedidos si está vacío): **un solo correo** cuando una cuenta suma 3 bloqueos en 24 horas, como mucho uno al día. No hay avisos de rutina. §11.
+
+**Si el correo no está completo, no se pide código a nadie** (sería un código que no llega): nadie se queda fuera, y *Usuarios* lo avisa. Por eso **lo primero es dejar el correo funcionando** (apartado 5) y después comprobar que el código llega entrando desde otro navegador. Si un día el correo falla y no puedes entrar, el interruptor de emergencia es `'two_step' => ['enabled' => false]` en `api/config.php`.
+
 ## 6. Si falla: qué dice y qué hacer
 
 | El panel muestra | Qué significa | Qué hacer |
