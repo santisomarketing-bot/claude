@@ -4,7 +4,7 @@
  *   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login
  *   USUARIO   GET /api/auth/me · POST /api/auth/logout (cierra TODAS las sesiones de esa persona) · GET /api/orders (manager: los 300 últimos; cliente: los suyos, hasta 100)
  *   MANAGER   GET /api/diag · GET /api/admin/data · GET /api/messages?limit= · DELETE /api/messages/:id · POST /api/mail/test · GET /api/mail/status · POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
- *             GET|POST /api/proposals/state · GET|POST|DELETE /api/users
+ *             GET|POST /api/proposals/state · GET|POST|DELETE /api/users · /api/blog/… (entradas del blog e imágenes: ver BlogApi.php)
  *   CRON      GET /api/cron?token=… (alternativa a `php cron.php` si el hosting no deja programar por línea de comandos)
  *
  * [LIMITES] Todo límite por visitante usa Request::ipKey (una IPv6 cuenta por su /64). ACCESO (POST /auth/login), contra la fuerza bruta: 5 contraseñas erróneas desde el mismo visitante contra la misma
@@ -130,6 +130,7 @@ final class Router
         if ($last !== null) unset($last['error']);                                              // /health es público: el texto del error es de GET /mail/status (solo managers)
         $b['mail'] = ['driver' => $st['driver'], 'configured' => $st['configured'], 'last' => $last];
         if ($p) $b['config'] = ['ok' => false, 'problems' => $p];
+        $b['features'] = ['blog' => true];                                                      // el panel enseña el blog solo si el servidor lo trae (el Worker de Cloudflare no)
         return new Response($b);
     }
 
@@ -326,6 +327,7 @@ final class Router
             Store::put('proposals:state', (object) $state);
             return new Response(['ok' => true, 'state' => Util::obj($state)]);
         }
+        if ($path === '/blog' || strpos($path, '/blog/') === 0) return BlogApi::handle($req, $who);       // blog del panel (entradas e imágenes): solo managers
         if ($path === '/users' && $m === 'GET') return new Response(['ok' => true, 'users' => Users::all()]);
         if ($path === '/users' && $m === 'POST') {
             $r = Users::create($req->json() ?? []);

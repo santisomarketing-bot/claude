@@ -32,6 +32,6 @@ export function blogMarkdownScript(root) {
   return classicScript(root, 'blog-markdown.mjs', {
     title: 'BLOG-MARKDOWN',
     global: 'BlogMarkdown',
-    expose: '{ render: render, inline: inline, toPlain: toPlain, excerpt: excerpt, slugify: slugify, safeUrl: safeUrl, safeImageUrl: safeImageUrl, escapeHtml: escapeHtml, clean: clean }',
+    expose: '{ render: render, inline: inline, toPlain: toPlain, excerpt: excerpt, lead: lead, slugify: slugify, safeUrl: safeUrl, safeImageUrl: safeImageUrl, escapeHtml: escapeHtml, clean: clean }',
   });
 }

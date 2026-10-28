@@ -368,10 +368,9 @@ RX,
     }
 
     // ───────────────────────────────────────── [TEXTO PLANO]
-    /** Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt. */
-    public static function toPlain(string $md): string
+    /** Texto plano de un trozo de HTML del conversor (sin etiquetas, sin entidades y con los espacios normalizados). */
+    private static function plainOfHtml(string $h): string
     {
-        $h = self::render($md, ['tableLabel' => 'x']);
         $h = (string) preg_replace('%</(p|h[2-4]|li|tr|th|td|blockquote|figure|figcaption)>%u', ' ', $h);
         $h = str_replace('<br>', ' ', $h);
         $h = (string) preg_replace('%<[^>]+>%u', '', $h);
@@ -379,14 +378,26 @@ RX,
         return self::jstrim((string) preg_replace('%[' . self::WS . ']+%u', ' ', $h));
     }
 
-    /** Extracto de hasta `$n` caracteres (códigos de punto) cortado en una palabra entera (con «…» si se recorta). */
-    public static function excerpt(string $md, int $n = 155): string
+    /** Texto de hasta `$n` caracteres (códigos de punto) cortado en una palabra entera (con «…» si se recorta). */
+    private static function cutAtWord(string $t, int $n): string
     {
-        $t = self::toPlain($md);
         if (mb_strlen($t, 'UTF-8') <= $n) return $t;
         $cut = mb_substr($t, 0, $n, 'UTF-8');
         $cut = (string) preg_replace('%[' . self::WS . ']+[^' . self::WS . ']*$%u', '', $cut);
         $cut = (string) preg_replace('%[' . self::WS . ',;:.\-–—]+$%u', '', $cut);
         return $cut . '…';
+    }
+
+    /** Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt. */
+    public static function toPlain(string $md): string { return self::plainOfHtml(self::render($md, ['tableLabel' => 'x'])); }
+
+    /** Extracto de hasta `$n` caracteres cortado en una palabra entera (con «…» si se recorta). */
+    public static function excerpt(string $md, int $n = 155): string { return self::cutAtWord(self::toPlain($md), $n); }
+
+    /** Descripción automática: el primer párrafo del texto (sin títulos, listas ni tablas) cortado en una palabra entera; si no hay párrafos, el extracto de todo. */
+    public static function lead(string $md, int $n = 155): string
+    {
+        $h = self::render($md, ['tableLabel' => 'x']);
+        return self::cutAtWord(self::plainOfHtml(preg_match('%<p>([\s\S]*?)</p>%u', $h, $m) === 1 ? $m[1] : $h), $n);
     }
 }

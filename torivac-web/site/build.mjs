@@ -10,10 +10,11 @@ import { Ctx, writeFile, esc, attr, mapLink, plain, setCleanUrls, setVersionedAs
 import { htaccess, langHtaccess, robotsTxt, basePathOf } from './lib/hosting.mjs';
 import { LANGS, T, t } from './lib/i18n.mjs';
 import * as TPL from './templates.mjs';
-import { productNode, itemListNode, postNode, jsonScript } from './lib/seo.mjs';
+import { productNode, itemListNode, postNode, jsonScript, clip } from './lib/seo.mjs';
 import { THEMES, themeBootJs } from './lib/themes.mjs';
 import { plainTextScript, blogMarkdownScript } from './lib/shared-client.mjs';
 import { applyApproved } from './lib/proposals-apply.mjs';
+import { blogShell, splitIndex, llmsHeads } from './lib/blog-shell.mjs';
 import crypto from 'node:crypto';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -231,6 +232,8 @@ const pickAlt = (a, lang) => (a && (a[lang] || a.es)) || '';
 // URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
 const absImg = (im) => (ABS && im && im.file ? ABS + '/' + im.file : null);
 
+// [BLOG] lo que el servidor necesita para pintar las entradas que se crean desde el panel (ver site/lib/blog-shell.mjs): listado terminado, plantillas y entradas de la web original, por idioma
+const blog = { index: {}, shell: {}, posts: {} };
 for (const lang of LANGS) {
   const L = pages[lang] || {};
   // Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
@@ -289,7 +292,10 @@ for (const lang of LANGS) {
     const ctx = mkctx(lang, bp, 'blog');
     const first = (L[bp]?.sections || []).flatMap((s) => s.blocks).find((b) => b.t === 'h');
     const hero = `<section class="page-hero bp"><div class="container"><h1>${esc(first?.x || 'Blog')}</h1></div></section>`;
-    emit(bp, TPL.layout(ctx, { title: L[bp]?.title || 'Blog', description: L[bp]?.meta_description, template: 'blog', hero, body: TPL.blogIndexBody(ctx, posts), alts: alts(bp), crumbs: [crumbHome(lang), { name: first?.x || 'Blog', path: bp }] }));
+    const indexHtml = TPL.layout(ctx, { title: L[bp]?.title || 'Blog', description: L[bp]?.meta_description, template: 'blog', hero, body: TPL.blogIndexBody(ctx, posts), alts: alts(bp), crumbs: [crumbHome(lang), { name: first?.x || 'Blog', path: bp }] });
+    emit(bp, indexHtml);
+    blog.index[lang] = indexHtml;
+    blog.posts[lang] = posts;
   }
   const bp0 = site.blog[lang];
   for (const post of posts) {
@@ -297,6 +303,8 @@ for (const lang of LANGS) {
     const b = TPL.postBody(ctx, post);
     emit(post.path, TPL.layout(ctx, { title: post.title, description: post.meta_description || post.excerpt, template: 'post', hero: b.hero, body: b.body, alts: alts(post.path), ogImage: post.featured && ABS ? ABS + '/' + post.featured.file : undefined, crumbs: [crumbHome(lang), { name: 'Blog', path: bp0 }, { name: post.title, path: post.path }], ld: [postNode(ABS, lang, { path: post.path, title: post.title, description: post.meta_description || post.excerpt, date: post.date, image: post.featured && ABS ? ABS + '/' + post.featured.file : undefined })] }));
   }
+
+  if (PHP_API && ABS) blog.shell[lang] = blogShell({ lang, site, mkctx, posts });          // plantillas para las entradas que se crean desde el panel (se guardan al final, con las huellas de versión ya resueltas)
 
   // contacto
   {
@@ -464,6 +472,11 @@ if (ABS && !STAGING) {
     short += sec(`${LNAME[lang]} · páginas`, key.map((r) => `- [${r.title}](${ABS}${r.path})${r.description ? ': ' + r.description : ''}`));
     const prods = products.map((x) => ({ x, path: x.pathFor[lang], name: x.name[lang] || x.name.es, desc: plain(x.short?.[lang] || x.short?.es || []) }));
     short += sec(`${LNAME[lang]} · productos`, prods.map((r) => `- [${r.name}](${ABS}${r.path})${r.desc ? ': ' + r.desc.slice(0, 160) : ''}`));
+    const bposts = blog.posts[lang] || [], heads = llmsHeads(lang);
+    if (bposts.length) {          // entradas del blog de la web original (las que se creen desde el panel las añade el servidor justo debajo de estos títulos)
+      short += sec(heads.short.slice(3), bposts.map((p) => `- [${p.title}](${ABS}${p.path})${p.meta_description || p.excerpt ? ': ' + clip(p.meta_description || p.excerpt, 160) : ''}`));
+      full += sec(heads.full.slice(3), bposts.map((p) => `### ${p.title}\n${ABS}${p.path}\n${String(p.date || '').slice(0, 10)}\n${plain(p.sections.flatMap((x) => x.blocks))}\n`));
+    }
     full += sec(`${LNAME[lang]} · productos (texto completo)`, prods.map((r) => `### ${r.name}\n${ABS}${r.path}\n${r.desc}\n${r.x.voltage_tags?.length ? 'Tensiones: ' + r.x.voltage_tags.map((id) => { const v = vtags.get(id); const l = v && (typeof v.label === 'string' ? v.label : v.label[lang] || v.label.es); return l || id; }).join(', ') + '\n' : ''}`));
   }
   fs.writeFileSync(path.join(DIST, 'llms.txt'), short);
@@ -519,5 +532,16 @@ if (ABS) {
   };
   walk(DIST);
   console.log(`VERSIONES: ${hashes.size} archivos CSS/JS con huella en ${pagesN} páginas`);
+  if (PHP_API) {          // [BLOG-SHELL] plantillas del blog para el servidor: api/generated/blog-shell.<idioma>.json (la carpeta api/ no sirve estos archivos: solo los lee PHP)
+    const gen = path.join(DIST, 'api', 'generated');
+    fs.mkdirSync(gen, { recursive: true });
+    for (const lang of LANGS) {
+      const sh = blog.shell[lang];
+      sh.post = sh.post.replace(VERSION_MARK, (_, p) => hashOf(p));
+      sh.index = splitIndex(blog.index[lang].replace(VERSION_MARK, (_, p) => hashOf(p)));
+      fs.writeFileSync(path.join(gen, `blog-shell.${lang}.json`), JSON.stringify(sh));
+    }
+    console.log(`BLOG: plantillas del servidor en api/generated/blog-shell.{${LANGS.join(',')}}.json (${LANGS.map((l) => blog.posts[l].length).join(' + ')} entradas estáticas)`);
+  }
 }
 console.log('dist listo:', DIST);

@@ -299,7 +299,7 @@ function test_d3_secret_minimum_lengths_fail_closed()
     T::same([true, false, ['session_secret', 'admin_token', 'cron_token']], [$h->body['ok'], $h->body['config']['ok'], $h->body['config']['problems']], '/health sigue vivo y marca los ajustes inseguros por su nombre');
     T::true(strpos(json_encode($h->body), 'corto') === false || strpos(json_encode($h->body), 'corto-secreto') === false, '/health no enseña ningún valor');
     fresh();
-    T::same(['ok', 'time', 'mail'], array_keys(Router::handle(req('GET', '/health'))->body), 'con la configuración bien, /health es el de siempre (más el estado del correo, sin textos de error)');
+    T::same(['ok', 'time', 'mail', 'features'], array_keys(Router::handle(req('GET', '/health'))->body), 'con la configuración bien, /health es el de siempre (más el estado del correo, sin textos de error, y qué funciones trae: el blog)');
     fresh(['admin_token' => '', 'cron_token' => '']);
     T::same(false, array_key_exists('config', Router::handle(req('GET', '/health'))->body), 'admin_token y cron_token vacíos no son un problema (están desactivados a propósito)');
     foreach (['banana', '', 1, true] as $v) { fresh(['order_copy' => $v]); T::same(['order_copy'], Router::handle(req('GET', '/health'))->body['config']['problems'], 'order_copy = ' . json_encode($v) . ' (ni capped ni off) también se avisa en /health, por su nombre'); }

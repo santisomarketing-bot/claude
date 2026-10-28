@@ -15,6 +15,20 @@ export const WP_PROBES = (bp) => `^${rx(bp)}/(?:wp-login\\.php|xmlrpc\\.php|wp-(
 /** ruta base del sitio: «https://x.com/prueba/» → «/prueba» («» si está en la raíz del dominio) */
 export const basePathOf = (base) => new URL(base).pathname.replace(/\/+$/, '');
 
+/**
+ * Reglas del blog que se escribe en el panel (PHP, api/page.php): las entradas nuevas (/blog/<slug>/ y /en|fr|de/blog/<slug>/), el listado del blog (que mezcla las nuevas con las de la web original), las imágenes
+ * subidas (/media/blog/<archivo>) y, en producción, sitemap.xml, llms.txt y llms-full.txt (que añaden las entradas nuevas). Todo con la dirección original, sin parámetros (page.php decide por REQUEST_URI).
+ * En el dominio de pruebas no hay sitemap ni llms (no se indexa), así que esas tres no se reescriben.
+ */
+export const BLOG_RULES = ({ staging = false } = {}) => [
+  '# Blog escrito en el panel: PHP pinta las entradas con las plantillas de la web (api/page.php). El listado también pasa por PHP para mezclar las entradas nuevas con las de siempre',
+  'RewriteCond %{REQUEST_FILENAME} !-d',
+  'RewriteRule ^(?:(?:en|fr|de)/)?blog/[a-z0-9][a-z0-9-]{1,78}[a-z0-9]/?$ api/page.php [L]',
+  'RewriteRule ^(?:(?:en|fr|de)/)?blog/?$ api/page.php [L]',
+  'RewriteRule ^media/blog/[a-z0-9][a-z0-9-]{0,50}-[0-9a-f]{12}\\.(?:jpg|png|webp)$ api/page.php [L]',
+  ...(staging ? [] : ['RewriteRule ^(?:sitemap\\.xml|llms\\.txt|llms-full\\.txt)$ api/page.php [L]']),
+];
+
 /** Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api. */
 export function htaccess({ base, staging = false, aliases = new Map(), pdfRedirects = [], apiOrigin = '', phpApi = false, langs = ['en', 'fr', 'de'], scriptHashes = [] }) {
   const u = new URL(base), bp = basePathOf(base), https = u.protocol === 'https:';
@@ -34,7 +48,8 @@ export function htaccess({ base, staging = false, aliases = new Map(), pdfRedire
   L.push('# nada de ficheros ni carpetas ocultos (.git, .env…), salvo .well-known (certificados)', 'RewriteRule (^|/)\\.(?!well-known(/|$)) - [F,L]');
   L.push('# /index.html → /', 'RewriteCond %{THE_REQUEST} \\s/+(.*/)?index\\.html[\\s?] [NC]', 'RewriteRule ^(.*/)?index\\.html$ ' + (bp || '') + '/$1 [L,R=301,NE]');
   if (phpApi) L.push('# API de pedidos, contacto, precios y panel (PHP). La cabecera Authorization se pasa a PHP de forma explícita: algunos PHP-FPM/CGI de hosting compartido la descartan',
-    'RewriteCond %{HTTP:Authorization} .', 'RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]', 'RewriteRule ^api/(?!index\\.php)(.*)$ api/index.php [QSA,L]');
+    'RewriteCond %{HTTP:Authorization} .', 'RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]', 'RewriteRule ^api/(?!(?:index|page)\\.php)(.*)$ api/index.php [QSA,L]');
+  if (phpApi) L.push(...BLOG_RULES({ staging }));
   L.push('</IfModule>', '');
   if (aliases.size || pdfRedirects.length) {
     L.push('# URLs antiguas → URL actual (duplicados de la web original fusionados; PDF que antes vivían en /wp-content/uploads)', '<IfModule mod_alias.c>');

@@ -96,6 +96,7 @@ export const T = {
   back_to_top: { es: 'Subir', en: 'Top', fr: 'Haut', de: 'Nach oben' },
   read_more: { es: 'Leer más', en: 'Read more', fr: 'Lire la suite', de: 'Weiterlesen' },
   published: { es: 'Publicado', en: 'Published', fr: 'Publié', de: 'Veröffentlicht' },
+  blog_table: { es: 'Tabla', en: 'Table', fr: 'Tableau', de: 'Tabelle' },
   catalog: { es: 'Catálogo', en: 'Catalogue', fr: 'Catalogue', de: 'Katalog' },
   catalog_dl: { es: 'Descargar catálogo', en: 'Download catalogue', fr: 'Télécharger le catalogue', de: 'Katalog herunterladen' },
   lang_banner: { es: 'Esta página está disponible en tu idioma.', en: 'This page is available in your language.', fr: 'Cette page est disponible dans votre langue.', de: 'Diese Seite ist in Ihrer Sprache verfügbar.' },

@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1409/1409 funciones descritas (100 %) · 180/180 archivos con cabecera.
+**Cobertura**: 1549/1549 funciones descritas (100 %) · 189/189 archivos con cabecera.
 
 
 ## `site/`
@@ -11,37 +11,37 @@
 
 [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio] [--out=carpeta] Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS). Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
 
-Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[PROPOSALS-APPLIED]` · `[ORIGINAL]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
+Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[PROPOSALS-APPLIED]` · `[ORIGINAL]` · `[SEO]` · `[BLOG]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
 
-- `arg0` (l. 22) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `arg` (l. 25) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `jl` (l. 39) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
-- `normName` (l. 62) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
-- `depthOf` (l. 66) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
-- `canon` (l. 69) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
-- `subtreeIds` (l. 116) — Ids de una categoría y de todas sus descendientes.
-- `prodIdsOf` (l. 118) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
-- `visible` (l. 122) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
-- `prune` (l. 124) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
-- `pth` (l. 145) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
-- `pickCats` (l. 194) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
-- `emit` (l. 217) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
-- `mkctx` (l. 219) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
-- `fitTitle` (l. 224) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
-- `crumbHome` (l. 226) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
-- `crumbProducts` (l. 228) — Miga de pan «Productos» del idioma `lang`: { name, path }.
-- `pickAlt` (l. 230) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
-- `absImg` (l. 232) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
-- `alts` (l. 237) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
-- `a` (l. 397) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 415) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `css` (l. 425) — Texto del archivo site/assets/css/<n>.css.
-- `xml` (l. 445) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 447) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 459) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 481) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
-- `hashOf` (l. 499) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
-- `walk` (l. 509) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
+- `arg0` (l. 23) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `arg` (l. 26) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `jl` (l. 40) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
+- `normName` (l. 63) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
+- `depthOf` (l. 67) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
+- `canon` (l. 70) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
+- `subtreeIds` (l. 117) — Ids de una categoría y de todas sus descendientes.
+- `prodIdsOf` (l. 119) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
+- `visible` (l. 123) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
+- `prune` (l. 125) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
+- `pth` (l. 146) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
+- `pickCats` (l. 195) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
+- `emit` (l. 218) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
+- `mkctx` (l. 220) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
+- `fitTitle` (l. 225) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
+- `crumbHome` (l. 227) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
+- `crumbProducts` (l. 229) — Miga de pan «Productos» del idioma `lang`: { name, path }.
+- `pickAlt` (l. 231) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
+- `absImg` (l. 233) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
+- `alts` (l. 240) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
+- `a` (l. 405) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
+- `copyDir` (l. 423) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 433) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 453) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 455) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 467) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 494) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `hashOf` (l. 512) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+- `walk` (l. 522) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
 
 ### `templates.mjs`
 
@@ -92,19 +92,31 @@ Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[T
 - `isPhoto` (l. 373) — los iconos pequeños se quedan dentro del texto
 - `genericPage` (l. 399) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
 - `contactBlockO` (l. 421) — «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno).
-- `blogIndexBody` (l. 431) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
-- `postBody` (l. 437) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original.
-- `shopBody` (l. 454) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
-- `productBody` (l. 493) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
-- `quoteBody` (l. 557) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
-- `contactForm` (l. 585) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
-- `contactIntro` (l. 601) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
-- `contactPageOriginal` (l. 606) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
-- `plainOf` (l. 611) — Texto de un párrafo sin etiquetas.
-- `li` (l. 618) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
-- `lv2` (l. 621) — Encabezados de un trozo de HTML con aria-level 2.
+- `postCard` (l. 434) — Tarjeta de una entrada en el listado del blog. Con `dyn` (plantilla de las entradas que se crean desde el panel, ver backend-php/api/lib/BlogPage.php) cada dato variable es una marca @@TV:…@@
+- `blogIndexBody` (l. 442) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
+- `postBody` (l. 449) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. Con `dyn` es la plantilla de las entradas que se crean desde el panel: lo variable son marcas
+- `shopBody` (l. 469) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
+- `productBody` (l. 508) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
+- `quoteBody` (l. 572) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
+- `contactForm` (l. 600) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
+- `contactIntro` (l. 616) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
+- `contactPageOriginal` (l. 621) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
+- `plainOf` (l. 626) — Texto de un párrafo sin etiquetas.
+- `li` (l. 633) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
+- `lv2` (l. 636) — Encabezados de un trozo de HTML con aria-level 2.
 
 ## `site/lib/`
+
+### `blog-shell.mjs`
+
+[BLOG-SHELL] Plantillas de las páginas del blog que genera el SERVIDOR (backend-php/api/lib/BlogPage.php) para las entradas que se escriben en el panel. La web compilada ya trae las 21 entradas por idioma de la web original como páginas estáticas; las nuevas viven en la carpeta de datos y se pintan al pedirlas, con ESTA misma cabecera, menú, pie y estilos: aquí se prepara, para cada idioma, la página completa con marcas @@TV:…@@ en lo variable (título, fecha, texto, imagen, enlaces de idioma…) y el servidor solo las rellena (escapando siempre).
+
+Secciones: `[BLOG-SHELL]`
+
+- `dateKit` (l. 20) — Cómo se escribe una fecha larga en ese idioma: patrón con {d} {m} {y} y nombres de los doce meses (de Intl: lo mismo que enseñan las fechas de las entradas de la web).
+- `llmsHeads` (l. 28) — Títulos de las secciones de entradas del blog en llms.txt (corto) y llms-full.txt (con el texto), por idioma.
+- `splitIndex` (l. 31) — Parte el HTML del listado del blog (/blog/) en lo que va antes y después de las tarjetas. Falla si la estructura de blogIndexBody cambió (nunca se queda a medias en silencio).
+- `blogShell` (l. 43) — Plantillas del blog de un idioma. `mkctx(lang, ruta, sección)` crea el contexto de render; `posts` son las entradas estáticas de la web original (sus tarjetas se guardan para mezclarlas, por fecha, con las nuevas).
 
 ### `hosting.mjs`
 
@@ -115,9 +127,10 @@ Secciones: `[HOSTING]`
 - `rx` (l. 10) — Escapa un texto para usarlo literal dentro de una expresión regular de Apache.
 - `WP_PROBES` (l. 13) — Expresión de Apache con las rutas que solo existen en un WordPress (y que los escáneres prueban a diario). `bp` es la ruta base del sitio. Se comprueba en scripts/package_cpanel.py.
 - `basePathOf` (l. 16) — ruta base del sitio: «https://x.com/prueba/» → «/prueba» («» si está en la raíz del dominio)
-- `htaccess` (l. 19) — Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api.
-- `langHtaccess` (l. 67) — .htaccess de /en, /fr, /de: solo cambia la página 404 para que se muestre en el idioma de la sección
-- `robotsTxt` (l. 70) — Genera robots.txt: en pruebas prohíbe todo; en producción permite el sitio, cierra /admin/ y /api/ y enlaza el sitemap.
+- `BLOG_RULES` (l. 23) — Reglas del blog que se escribe en el panel (PHP, api/page.php): las entradas nuevas (/blog/<slug>/ y /en|fr|de/blog/<slug>/), el listado del blog (que mezcla las nuevas con las de la web original), las imágenes
+- `htaccess` (l. 33) — Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api.
+- `langHtaccess` (l. 82) — .htaccess de /en, /fr, /de: solo cambia la página 404 para que se muestre en el idioma de la sección
+- `robotsTxt` (l. 85) — Genera robots.txt: en pruebas prohíbe todo; en producción permite el sitio, cierra /admin/ y /api/ y enlaza el sitemap.
 
 ### `i18n.mjs`
 
@@ -125,9 +138,9 @@ Secciones: `[HOSTING]`
 
 Secciones: `[I18N]`
 
-- `countLabel` (l. 137) — «1 producto / 2 productos» en los 4 idiomas
-- `refLabel` (l. 139) — «1 referencia / 2 referencias» en los 4 idiomas.
-- `t` (l. 141) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
+- `countLabel` (l. 138) — «1 producto / 2 productos» en los 4 idiomas
+- `refLabel` (l. 140) — «1 referencia / 2 referencias» en los 4 idiomas.
+- `t` (l. 142) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
 
 ### `proposals-apply.mjs`
 
@@ -768,19 +781,20 @@ Sesión 1 · Mapa de traducciones y lotes de trabajo (determinista).    python3 
 
 [PACKAGE-CPANEL] Paquete .zip para subir a un hosting con cPanel o Plesk (Apache + PHP; web estática + API PHP), verificado antes de entregarlo. (El nombre del script es histórico: el paquete es el mismo para cualquier hosting con Apache y PHP 7.4+.)
 
-- `run` (l. 51) — ejecuta y devuelve (código, salida combinada)
-- `git_version` (l. 57) — → (versión, fecha del commit, limpio): hash corto del commit actual, su fecha y si el árbol de trabajo no tiene cambios sin commitear; ('sin-git', '', True) si no hay git.
-- `write_build_info` (l. 67) — escribe api/generated/build.json: qué versión es este paquete (sin hora de compilación, para que el mismo commit dé el mismo .zip)
-- `build_site` (l. 74) — compila la web de producción (la salida se cuenta línea a línea en la consola de build); `switch` None = el valor por defecto del compilador (sí en pruebas, no en producción)
-- `copy_api` (l. 82) — copia SOLO los archivos permitidos del API PHP (lista blanca API_ALLOWED): sin pruebas, sin almacén de datos, sin copias de seguridad y sin la configuración real (config.php lleva claves y la crea quien despliega)
-- `shown` (l. 93) — ruta legible: relativa al proyecto si está dentro, absoluta si no
-- `files` (l. 101) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
-- `check_versions` (l. 106) — Actualizar sin caché vieja: todo CSS y JS local de cada página lleva «?v=<10 hex>» igual a la huella (SHA-256) del archivo, y no queda ningún marcador sin resolver.
-- `check_csp` (l. 149) — Política de seguridad de contenido: script-src sin 'unsafe-inline' y cada script en línea ejecutable de cada página con su huella SHA-256 en la cabecera (los bloques de datos application/json y ld+json no se ejecutan).
-- `check_wp_probes` (l. 178) — El .htaccess corta con 410 los sondeos de WordPress (wp-login.php, xmlrpc.php, wp-admin…) sin tocar las fotos y PDF antiguos de wp-content/uploads ni las páginas de la web: se prueba la expresión con rutas de ejemplo.
-- `verify` (l. 199) — → (errores, avisos). Un error impide entregar el paquete.
-- `make_zip` (l. 311) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
-- `main` (l. 323) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
+- `run` (l. 52) — ejecuta y devuelve (código, salida combinada)
+- `git_version` (l. 58) — → (versión, fecha del commit, limpio): hash corto del commit actual, su fecha y si el árbol de trabajo no tiene cambios sin commitear; ('sin-git', '', True) si no hay git.
+- `write_build_info` (l. 68) — escribe api/generated/build.json: qué versión es este paquete (sin hora de compilación, para que el mismo commit dé el mismo .zip)
+- `build_site` (l. 75) — compila la web de producción (la salida se cuenta línea a línea en la consola de build); `switch` None = el valor por defecto del compilador (sí en pruebas, no en producción)
+- `copy_api` (l. 83) — copia SOLO los archivos permitidos del API PHP (lista blanca API_ALLOWED): sin pruebas, sin almacén de datos, sin copias de seguridad y sin la configuración real (config.php lleva claves y la crea quien despliega)
+- `shown` (l. 94) — ruta legible: relativa al proyecto si está dentro, absoluta si no
+- `files` (l. 102) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
+- `check_versions` (l. 107) — Actualizar sin caché vieja: todo CSS y JS local de cada página lleva «?v=<10 hex>» igual a la huella (SHA-256) del archivo, y no queda ningún marcador sin resolver.
+- `check_csp` (l. 150) — Política de seguridad de contenido: script-src sin 'unsafe-inline' y cada script en línea ejecutable de cada página con su huella SHA-256 en la cabecera (los bloques de datos application/json y ld+json no se ejecutan).
+- `check_wp_probes` (l. 179) — El .htaccess corta con 410 los sondeos de WordPress (wp-login.php, xmlrpc.php, wp-admin…) sin tocar las fotos y PDF antiguos de wp-content/uploads ni las páginas de la web: se prueba la expresión con rutas de ejemplo.
+- `check_blog` (l. 200) — Blog del panel: las cuatro plantillas del servidor (api/generated/blog-shell.<idioma>.json) se leen, son de ESTA compilación (misma base y mismo modo pruebas/producción), traen todas las marcas que rellena PHP,
+- `verify` (l. 238) — → (errores, avisos). Un error impide entregar el paquete.
+- `make_zip` (l. 351) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
+- `main` (l. 363) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
 
 ### `pdf_jobs.py`
 
@@ -1046,6 +1060,22 @@ Secciones: `[QA-ART]`
 - `ok` (l. 13) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
 - `amp` (l. 29) — Amplitud vertical (máx − mín de y) de los tramos «L x y» de un trazado SVG d.
 
+### `qa-blog-apache.mjs`
+
+[QA-BLOG-APACHE] El blog del panel sobre un Apache REAL con PHP-FPM, con los paquetes tal como se suben: se crean entradas por el API como lo haría el panel (entrada publicada con imagen y tabla, su traducción, un borrador, una programada y una con la dirección cambiada) y se mira lo que ve el público y los buscadores: la página de la entrada con la cabecera, menú y pie de la web (todos sus enlaces relativos resuelven), título, descripción, canonical, hreflang, Open Graph, JSON-LD, una sola h1; el listado /blog/ con las entradas nuevas entre las de siempre; sitemap.xml, llms.txt y
+
+Secciones: `[QA-BLOG-APACHE]`
+
+- `ok` (l. 24) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `freePort` (l. 26) — Puerto TCP libre en 127.0.0.1.
+- `png` (l. 29) — PNG de colores lisos de w×h píxeles (válido de verdad: con sus sumas de control).
+- `crc` (l. 31) — Suma de control CRC-32 de un trozo de bytes.
+- `chunk` (l. 33) — Trozo de PNG: longitud, tipo, datos y suma de control.
+- `deploy` (l. 41) — Despliega un paquete (producción o pruebas) en un Apache real → { www, ap, port, host, req(), api(), stop() }
+- `req` (l. 54) — Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b }
+- `api` (l. 59) — Llamada JSON al API → { s, j }
+- `localLinks` (l. 67) — Todas las direcciones relativas (href/src) de una página → absolutas contra la dirección de la propia página.
+
 ### `qa-lang.mjs`
 
 [QA-LANG] Sesión 13 · Detección de idioma del navegador + selector manual (Playwright, por http). node scripts/qa-lang.mjs Casos: idioma del navegador soportado / no soportado / lista con preferencia secundaria · página interior · enlace directo a /fr/ ·
@@ -1190,7 +1220,7 @@ Secciones: `[TEST-BLOG-MD-PHP]`
 - `rnd` (l. 21) — Número pseudoaleatorio en [0,1) con semilla fija: la misma tanda en cada ejecución.
 - `pick` (l. 23) — Un elemento al azar de una lista.
 - `gen` (l. 30) — Un texto al azar con entre 1 y `max` piezas.
-- `bad` (l. 54) — Muestra los primeros desacuerdos con detalle.
+- `bad` (l. 57) — Muestra los primeros desacuerdos con detalle.
 
 ### `test-blog-markdown.mjs`
 
@@ -1200,8 +1230,8 @@ Secciones: `[TEST-BLOG-MD]`
 
 - `ok` (l. 18) — Anota una comprobación correcta o, si no se cumple, un fallo con su mensaje.
 - `eq` (l. 20) — Comprueba que `got` es exactamente `want` y, si no, enseña los dos.
-- `audit` (l. 40) — Devuelve la lista de problemas del HTML (vacía si todo es lo permitido).
-- `rnd` (l. 79) — Número pseudoaleatorio en [0,1) con semilla fija: la misma tanda de entradas hostiles en cada ejecución.
+- `audit` (l. 41) — Devuelve la lista de problemas del HTML (vacía si todo es lo permitido).
+- `rnd` (l. 80) — Número pseudoaleatorio en [0,1) con semilla fija: la misma tanda de entradas hostiles en cada ejecución.
 
 ### `test-plain-text.mjs`
 
@@ -1365,8 +1395,8 @@ Secciones: `[INDEX]`
 - `identify` (l. 52) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
 - `handleLogin` (l. 65) — POST /api/auth/login, con protección contra la fuerza bruta: 5 contraseñas erróneas del mismo visitante (ipKey) contra una cuenta bloquean ESA pareja 1 HORA desde el 5.º fallo (ni la contraseña
 - `route` (l. 91) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
-- `fetch` (l. 165) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
-- `scheduled` (l. 181) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
+- `fetch` (l. 166) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
+- `scheduled` (l. 182) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
 
 ### `mailapi.js`
 
@@ -1620,6 +1650,10 @@ Secciones: `[AUTH]` · `[VALIDATE]` · `[PRICES]` · `[SHEETS]` · `[ORDERS]` ·
 - `items` (l. 286) — Precios vigentes guardados en KV.
 - `rows` (l. 321) — Hoja de 12 referencias R0…R11 con precio base + índice.
 
+### `blog.test.js`
+
+El blog del panel (entradas, imágenes, páginas públicas) vive en el servidor PHP del hosting (backend-php/api): el Worker de Cloudflare no lo incluye y lo dice con claridad, sin esconder la ruta.
+
 ### `helpers.js`
 
 Utilidades de test: KV en memoria que imita las reglas de Cloudflare KV (clave ≤ 512 bytes, TTL ≥ 60 s, listado ordenado con páginas y fecha de caducidad), entorno de pruebas con secretos largos y fetch simulado. El TTL NO hace desaparecer las claves en get (los tests inyectan `now`): solo se anota para que list y la purga puedan verlo.
@@ -1764,9 +1798,12 @@ Secciones: `[BLOG-MD]`
 - `startsTable` (l. 141) — ¿Esta línea y la siguiente abren una tabla? (una fila con barras y debajo la fila de guiones con las mismas columnas)
 - `startsBlock` (l. 143) — ¿Esta línea empieza un bloque distinto de un párrafo?
 - `render` (l. 146) — Markdown reducido → HTML. Opciones: tableLabel (nombre accesible de las tablas, «Tabla»), imgAttrs(src) (width/height de las imágenes que el servidor conoce).
-- `toPlain` (l. 203) — Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt.
-- `excerpt` (l. 213) — Extracto de hasta `n` caracteres cortado en una palabra entera (con «…» si se recorta).
-- `slugify` (l. 221) — Título → dirección: minúsculas, sin acentos, letras y cifras separadas por guiones, hasta 80 caracteres (cortado en un guion).
+- `plainOfHtml` (l. 203) — Texto plano de un trozo de HTML del conversor (sin etiquetas, sin entidades y con los espacios normalizados).
+- `cutAtWord` (l. 212) — Texto de hasta `n` caracteres cortado en una palabra entera (con «…» si se recorta).
+- `toPlain` (l. 219) — Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt.
+- `excerpt` (l. 224) — Extracto de hasta `n` caracteres cortado en una palabra entera (con «…» si se recorta).
+- `lead` (l. 229) — Descripción automática: el primer párrafo del texto (sin títulos, listas ni tablas) cortado en una palabra entera; si no hay párrafos, el extracto de todo. Es lo que se usa cuando no se escribe resumen ni descripción para buscadores.
+- `slugify` (l. 237) — Título → dirección: minúsculas, sin acentos, letras y cifras separadas por guiones, hasta 80 caracteres (cortado en un guion).
 
 ### `plain-text.mjs`
 
@@ -1837,6 +1874,12 @@ Secciones: `[CRON]`
 
 Secciones: `[INDEX]`
 
+### `page.php`
+
+[PAGE] Punto de entrada de las páginas que pinta el servidor (api/page.php): las entradas del blog escritas en el panel, el listado del blog con ellas, sus imágenes y el sitemap.xml, llms.txt y llms-full.txt con ellas añadidas. El .htaccess de la web reescribe hasta aquí SOLO esas direcciones (/blog/…, /media/blog/…, /sitemap.xml, /llms.txt, /llms-full.txt); lo que se sirve se decide por la dirección original (REQUEST_URI), no por parámetros, así que llamar a este archivo directamente no sirve nada. Ver lib/BlogPage.php.
+
+Secciones: `[PAGE]`
+
 ## `backend-php/api/lib/`
 
 ### `AdminData.php`
@@ -1895,6 +1938,65 @@ Secciones: `[AUTH]` · `[USERS]`
 - `check` (l. 261) — comprueba credenciales y devuelve el usuario público (sin sid), o null
 - `upgrade` (l. 268) — Pone al día el registro tras un acceso correcto: sid si no lo tenía y hash nuevo si el coste de PASSWORD_DEFAULT subió. Devuelve el registro, o null si lo borraron entre medias.
 
+### `Blog.php`
+
+[BLOG] Entradas de blog que se escriben en el panel (solo managers) y viven en la carpeta de datos, no en los archivos de la web: una actualización de la web (borrar y volver a subir) no las toca. Se publican en /blog/<slug>/ (y /en/blog/…, /fr/blog/…, /de/blog/…) a través de api/page.php (BlogPage.php); las 21 entradas por idioma de la web original siguen siendo páginas estáticas. Claves del almacén (Store):
+
+Secciones: `[BLOG]` · `[PIEZAS]` · `[LECTURA]` · `[ESCRITURA]` · `[VISTA PREVIA]`
+
+- `slugify` (l. 43) — Título → dirección: minúsculas, sin acentos, letras y cifras separadas por guiones, hasta 80 caracteres (cortado en un guion). Igual que slugify de shared/blog-markdown.mjs.
+- `path` (l. 56) — Ruta pública de una entrada: /blog/<slug>/ en español y /<idioma>/blog/<slug>/ en los demás.
+- `kPost` (l. 59) — Clave del almacén de una entrada.
+- `kSlug` (l. 61) — Clave de una dirección (slug) de un idioma.
+- `kIx` (l. 63) — Clave del resumen de un idioma.
+- `kMedia` (l. 65) — Clave de los datos de una imagen.
+- `withLock` (l. 71) — Ejecuta `$fn` con el bloqueo del blog (o directamente, si ya se tiene).
+- `err` (l. 81) — Error de validación: ['error' => mensaje para quien edita, 'code' => …, 'field' => campo].
+- `len` (l. 84) — Número de caracteres (códigos de punto).
+- `oneLine` (l. 87) — Texto de una línea de un campo: limpio de controles y recortado de espacios; ['ok' => texto] o ['error' => …].
+- `parseDate` (l. 97) — ISO 8601 con zona → «AAAA-MM-DDTHH:MM:SSZ» en UTC; null si no es una fecha válida entre 2000 y 5 años en el futuro.
+- `ts` (l. 107) — Segundos desde 1970 de una fecha guardada («…Z»); 0 si no hay.
+- `isLive` (l. 110) — ¿Se ve en la web? Publicada y con fecha ya llegada (una publicada con fecha futura está programada).
+- `get` (l. 117) — La entrada completa o null.
+- `index` (l. 125) — Resumen de un idioma: { id → entrada resumida }. Si no existe pero hay entradas guardadas, se reconstruye (por si se borró a mano o se copió la carpeta de datos).
+- `listing` (l. 135) — Todas las entradas resumidas (de todos los idiomas), la más reciente primero (las sin fecha, al final). Para el panel.
+- `liveEntries` (l. 144) — Las entradas visibles de un idioma, la más reciente primero.
+- `resolve` (l. 152) — Dirección → ['id' => …, 'alias' => bool] o null (también si la entrada ya no existe).
+- `translationsOf` (l. 160) — Las traducciones de una entrada (mismas `grp`, otro idioma): { idioma → entrada resumida }. Con `$liveOnly` solo las visibles.
+- `entry` (l. 172) — Resumen de una entrada para el listado y la web.
+- `reindex` (l. 181) — Vuelve a escribir los resúmenes de todos los idiomas a partir de las entradas guardadas (arregla cualquier desajuste). Devuelve cuántas entradas hay.
+- `fields` (l. 199) — Valida y normaliza los campos recibidos. `$cur` = la entrada actual (al actualizar); solo se miran los campos presentes. Devuelve ['set' => campos normalizados] o ['error' …].
+- `publishable` (l. 249) — Comprobaciones para publicar: lo imprescindible (título, dirección, texto y, si hay imagen, su texto alternativo).
+- `members` (l. 258) — Miembros (id → idioma) del grupo de traducciones `$grp`, mirando los resúmenes y los cambios pendientes de esta operación (`$pending`: id → entrada ya con su grupo nuevo).
+- `linkTranslations` (l. 272) — Aplica los enlaces de traducción pedidos (idioma → id | '' para desenlazar) a la entrada `$p` (ya con su `grp`). Enlazar junta los dos grupos (cada uno puede traer más traducciones) siempre que no
+- `persist` (l. 302) — Guarda la entrada, las direcciones y los resúmenes (dentro del bloqueo). `$others` = otras entradas cambiadas (traducciones).
+- `create` (l. 321) — Crea una entrada. Campos: lang (obligatorio) · title (obligatorio) · slug (si falta sale del título) · excerpt · seo_title · seo_description · markdown · image {file, alt} · status (draft por defecto) · date · translations {idioma: id}.
+- `update` (l. 354) — Actualiza una entrada (solo los campos que llegan). El idioma no se puede cambiar. Si cambia la dirección de una que ya se publicó, la antigua redirige (301) a la nueva.
+- `delete` (l. 388) — Borra una entrada y sus direcciones (la web deja de servirla); las traducciones enlazadas siguen existiendo. true si existía.
+- `mediaDir` (l. 405) — Carpeta donde están los bytes de las imágenes (dentro de la carpeta de datos, nunca servida directamente).
+- `mediaMeta` (l. 408) — Datos de una imagen subida (o null).
+- `images` (l. 416) — Todas las imágenes subidas, la más reciente primero.
+- `saveImage` (l. 429) — Guarda una imagen subida: solo JPEG, PNG o WebP de verdad (se mira el contenido, no el nombre ni lo que diga el navegador), hasta 2,5 MB y 6000 px por lado. El archivo se llama
+- `imageUsedBy` (l. 462) — ¿Alguna entrada usa esta imagen (como destacada o dentro del texto)? Devuelve los títulos.
+- `deleteImage` (l. 474) — Borra una imagen si ninguna entrada la usa. @return array{ok?:bool,error?:string,code?:string,status?:int,used_by?:array}
+- `previewToken` (l. 486) — Código de la vista previa de una entrada, válido `$ttl` segundos: «<caducidad>.<firma>»; null si el servidor no tiene session_secret válido.
+- `verifyPreview` (l. 495) — ¿Es válido y vigente ese código para esa entrada?
+
+### `BlogApi.php`
+
+[BLOG-API] Rutas del blog para el panel (solo managers; Router::route las despacha aquí). Cuerpo y respuestas en JSON; los errores de validación llevan { error, code, field } y el código HTTP que toca (400 datos no válidos · 404 no existe · 409 dirección repetida, traducción ya enlazada, imagen en uso o límite · 429 demasiadas peticiones). GET    /api/blog/posts                  listado de todas las entradas (resumidas) de todos los idiomas, con la hora del servidor para saber cuáles están programadas
+
+Secciones: `[BLOG-API]`
+
+- `handle` (l. 26) — Despacha una ruta /blog/… (el que llama ya comprobó que es un manager).
+- `limits` (l. 46) — Límites que el panel enseña junto a cada campo.
+- `result` (l. 53) — Un resultado de Blog::* → respuesta: los errores llevan su código HTTP; lo demás sale con ok.
+- `view` (l. 64) — La entrada tal como la ve el panel: completa, con sus traducciones, su ruta y si ya se ve en la web.
+- `one` (l. 72) — GET /blog/posts/:id
+- `save` (l. 79) — POST /blog/posts (crear) y POST /blog/posts/:id (actualizar).
+- `preview` (l. 90) — POST /blog/posts/:id/preview
+- `upload` (l. 100) — POST /blog/images { name, data }
+
 ### `BlogMarkdown.php`
 
 [BLOG-MD] Conversor de texto (Markdown reducido) a HTML para las entradas del blog que se escriben en el panel: el MISMO que shared/blog-markdown.mjs (el panel lo usa para la vista previa y este lo usa para la página que se publica). shared/blog-markdown.fixtures.json es el contrato que cumplen los dos, y scripts/test-blog-markdown-php.mjs compara las salidas de los dos con decenas de miles de textos al azar. Si cambia una regla en uno, cambia en el otro.
@@ -1919,8 +2021,48 @@ Secciones: `[BLOG-MD]` · `[PIEZAS]` · `[BLOQUES]` · `[TEXTO PLANO]`
 - `startsTable` (l. 289) — ¿Esta línea y la siguiente abren una tabla? (una fila con barras y debajo la fila de guiones con las mismas columnas)
 - `startsBlock` (l. 296) — ¿Esta línea empieza un bloque distinto de un párrafo?
 - `render` (l. 303) — Markdown reducido → HTML. Opciones: tableLabel (nombre accesible de las tablas, «Tabla»), imgAttrs(src) (width/height de las imágenes que el servidor conoce).
-- `toPlain` (l. 372) — Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt.
-- `excerpt` (l. 383) — Extracto de hasta `$n` caracteres (códigos de punto) cortado en una palabra entera (con «…» si se recorta).
+- `plainOfHtml` (l. 372) — Texto plano de un trozo de HTML del conversor (sin etiquetas, sin entidades y con los espacios normalizados).
+- `cutAtWord` (l. 382) — Texto de hasta `$n` caracteres (códigos de punto) cortado en una palabra entera (con «…» si se recorta).
+- `toPlain` (l. 392) — Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt.
+- `excerpt` (l. 395) — Extracto de hasta `$n` caracteres cortado en una palabra entera (con «…» si se recorta).
+- `lead` (l. 398) — Descripción automática: el primer párrafo del texto (sin títulos, listas ni tablas) cortado en una palabra entera; si no hay párrafos, el extracto de todo.
+
+### `BlogPage.php`
+
+[BLOG-PAGE] Páginas públicas del blog que pinta el servidor (api/page.php): las entradas escritas en el panel (/blog/<slug>/ y /en|fr|de/blog/<slug>/), el listado del blog con las entradas nuevas mezcladas con las de la web original, las imágenes subidas (/media/blog/<archivo>) y el mapa del sitio (sitemap.xml, llms.txt, llms-full.txt) con las entradas nuevas añadidas. El resto de la web es estático. Cómo se pinta: la compilación deja en api/generated/blog-shell.<idioma>.json la página COMPLETA (cabecera, menú, pie, estilos y scripts del sitio) con marcas @@TV:…@@ en lo variable
+
+Secciones: `[BLOG-PAGE]` · `[PIEZAS]` · `[RUTAS]` · `[LISTADO]` · `[ENTRADA]` · `[MAPA DEL SITIO]` · `[SALIDA]`
+
+- `root` (l. 28) — Carpeta de la web.
+- `shellDir` (l. 31) — Carpeta de las plantillas generadas.
+- `reset` (l. 34) — Olvida las plantillas leídas (las pruebas cambian de carpeta).
+- `esc` (l. 38) — Escapa & < > " (igual que la compilación).
+- `clip` (l. 41) — Texto recortado a `$max` caracteres sin partir palabras y con «…» si se cortó (igual que clip() de site/lib/seo.mjs).
+- `json` (l. 52) — JSON para incrustar en una página: sin < ni > literales, sin separadores de línea Unicode.
+- `shell` (l. 60) — Plantilla de un idioma (o null si falta o está dañada).
+- `bp` (l. 73) — Ruta base del sitio dentro del dominio («» o «/prueba»), sacada de la dirección base de la plantilla.
+- `fmtDate` (l. 76) — Fecha larga en el idioma de la plantilla y en la zona horaria del sitio (igual que las fechas de las entradas estáticas).
+- `localNaive` (l. 83) — Fecha y hora local naive «AAAA-MM-DDTHH:MM:SS» (la de las tarjetas estáticas) de un instante UTC: sirve para ordenar las tarjetas nuevas entre las viejas.
+- `withBase` (l. 89) — Antepone la ruta base del sitio a los enlaces e imágenes que empiezan por «/» (solo si el sitio vive en una subcarpeta).
+- `imgAttrs` (l. 95) — width/height de una imagen de /media/blog/ que el servidor conoce (evita saltos de maquetación).
+- `cache` (l. 106) — Cabeceras de caché: `$seconds` > 0 = pública durante ese tiempo; 0 = nada de caché. Se manda también Expires: sin él, el mod_expires del .htaccess de la web (que da «max-age=0» al HTML) añade su propia
+- `out` (l. 113) — Respuesta HTML/texto con estas cabeceras.
+- `plain` (l. 116) — Respuesta de error corta (sin plantilla: no depende de nada que pueda estar roto).
+- `moved` (l. 122) — Redirección 301 a una ruta del mismo sitio, conservando los parámetros de la dirección.
+- `cacheable` (l. 128) — Añade ETag y devuelve 304 si el navegador ya tiene esta versión.
+- `route` (l. 142) — Qué pide la dirección (solo la cola de la ruta cuenta, así vale también en una subcarpeta): ['kind' => post|index|media|file, …] o null.
+- `handle` (l. 157) — Atiende una petición. `$reqHeaders` lleva los nombres en minúsculas. Solo GET y HEAD. Nunca lanza para una petición normal; api/page.php recoge cualquier excepción inesperada.
+- `card` (l. 173) — Tarjeta de una entrada nueva, rellenando la plantilla de tarjeta.
+- `index` (l. 185) — /blog/ (y /en|fr|de/blog/): el listado de la web con las entradas nuevas mezcladas por fecha.
+- `staticFallback` (l. 199) — Sin plantilla (una compilación sin --php-api o un paquete a medias): se sirve el listado estático que haya, para no dejar el blog roto.
+- `languageLinks` (l. 208) — Marcas y enlaces de idioma de una entrada: canonical + hreflang, y los cuatro enlaces del selector de idioma.
+- `structuredData` (l. 233) — JSON-LD de la entrada (mismos tipos y campos que las entradas estáticas: ver pageGraph y postNode de site/lib/seo.mjs).
+- `post` (l. 259) — La página de una entrada, o 404/301.
+- `notFound` (l. 308) — 404 con la página «no encontrado» del idioma (la que ya tiene la web), o un texto corto si no está.
+- `media` (l. 317) — /media/blog/<archivo>: el contenido de la imagen subida, con caché de un año (el nombre lleva la huella del contenido, así que nunca cambia).
+- `xml` (l. 332) — Escapa para XML.
+- `siteFile` (l. 335) — sitemap.xml, llms.txt o llms-full.txt: el archivo de la compilación con las entradas nuevas añadidas.
+- `send` (l. 386) — Envía la respuesta al navegador (para api/page.php). Una respuesta con `file` envía el archivo tal cual.
 
 ### `Catalog.php`
 
@@ -2158,15 +2300,15 @@ Secciones: `[ROUTER]` · `[LIMITES]` · `[ERRORES]`
 - `locked` (l. 99) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
 - `authenticate` (l. 110) — Autentica la petición. Devuelve [quién|null, respuesta 429|null]. Sin Bearer no hay nada que probar. Con Bearer, un visitante (ipKey) con 30 fallos en 10 min ni siquiera llega a
 - `health` (l. 121) — GET /health: vivo, estado del correo (controlador, si está configurado y último intento SIN el texto del error) y, si algún ajuste está mal (secreto de sesión, token maestro o de cron, modo de la copia al cliente, mail.driver, order_from), lo dice con su NOMBRE (nunca el valor).
-- `prices` (l. 137) — GET /prices: el público ve la lista sin quién la cargó ni de dónde; un manager lo ve todo (y el estado de la última sincronización). Con la IP bloqueada por tokens fallidos se sirve la vista pública.
-- `login` (l. 160) — POST /auth/login: contraseña con coste igual exista o no el usuario, token ligado al sid del usuario y protección contra la fuerza bruta (ver la cabecera): 5 fallos de un visitante contra una cuenta,
-- `cronByUrl` (l. 190) — GET /cron?token=…: sincroniza los precios si el token es el de cron_token (≥ 24 caracteres); 10 fallos / 10 min por visitante → 429; sin cron_token válido la URL está desactivada (401).
-- `forClient` (l. 205) — Un pedido tal como lo ve un cliente: sin la IP desde la que se hizo ni el motivo técnico del fallo del correo (eso es solo para managers).
-- `orders` (l. 213) — GET /orders: un manager recibe los 300 pedidos más recientes; un cliente, los suyos (los que llevan su correo) hasta 100, mirando solo los 3000 más recientes. `truncated:true` si se cortó.
-- `messages` (l. 235) — GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite.
-- `mailTest` (l. 245) — POST /mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de order_to. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
-- `route` (l. 262) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
-- `cron` (l. 339) — sincroniza los precios (cron diario) y limpia lo caducado (también si la hoja se rechaza: esa limpieza no depende de la hoja)
+- `prices` (l. 138) — GET /prices: el público ve la lista sin quién la cargó ni de dónde; un manager lo ve todo (y el estado de la última sincronización). Con la IP bloqueada por tokens fallidos se sirve la vista pública.
+- `login` (l. 161) — POST /auth/login: contraseña con coste igual exista o no el usuario, token ligado al sid del usuario y protección contra la fuerza bruta (ver la cabecera): 5 fallos de un visitante contra una cuenta,
+- `cronByUrl` (l. 191) — GET /cron?token=…: sincroniza los precios si el token es el de cron_token (≥ 24 caracteres); 10 fallos / 10 min por visitante → 429; sin cron_token válido la URL está desactivada (401).
+- `forClient` (l. 206) — Un pedido tal como lo ve un cliente: sin la IP desde la que se hizo ni el motivo técnico del fallo del correo (eso es solo para managers).
+- `orders` (l. 214) — GET /orders: un manager recibe los 300 pedidos más recientes; un cliente, los suyos (los que llevan su correo) hasta 100, mirando solo los 3000 más recientes. `truncated:true` si se cortó.
+- `messages` (l. 236) — GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite.
+- `mailTest` (l. 246) — POST /mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de order_to. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
+- `route` (l. 263) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
+- `cron` (l. 341) — sincroniza los precios (cron diario) y limpia lo caducado (también si la hoja se rechaza: esa limpieza no depende de la hoja)
 
 ### `Smtp.php`
 
@@ -2311,14 +2453,65 @@ Pruebas de BlogMarkdown con los casos compartidos con la versión JavaScript (sh
 - `test_blog_markdown_fixtures_copy_is_identical` (l. 18) — La copia de los casos junto a las pruebas es idéntica a la compartida (si el repositorio completo está presente).
 - `test_blog_markdown_render_matches_contract` (l. 26) — El HTML de cada caso es EXACTAMENTE el que da JavaScript.
 - `test_blog_markdown_plain_and_excerpt_match_contract` (l. 32) — Texto plano y extracto, igual que en JavaScript.
-- `test_blog_markdown_safe_url_matches_contract` (l. 40) — Direcciones permitidas y prohibidas, igual que en JavaScript.
-- `bm_audit` (l. 46) — Auditoría del HTML: solo etiquetas y atributos permitidos, texto sin < ni > sueltos y todo cerrado. Devuelve la lista de problemas.
-- `test_blog_markdown_known_attacks_never_produce_forbidden_html` (l. 83) — Los ataques conocidos (scripts, javascript:, data:, atributos que se cuelan, // , etc.) salen como texto o no salen: nunca como HTML fuera de la lista.
-- `test_blog_markdown_random_input_stays_inside_allowed_html` (l. 98) — Texto cualquiera (también con bytes que no son UTF-8) nunca rompe el conversor ni deja HTML fuera de la lista.
-- `test_blog_markdown_huge_hostile_inputs_are_fast` (l. 114) — Entradas hostiles enormes se resuelven rápido (sin retroceso exponencial ni cuadrático) y sin salirse de lo permitido.
-- `test_blog_markdown_url_limit_counts_code_points` (l. 134) — Los límites cuentan letras (códigos de punto), no bytes: una dirección de 2000 emojis cabe y una de 2001 no.
-- `test_blog_markdown_longest_link_still_converts` (l. 143) — El tamaño de la dirección máxima (2000) sigue siendo un enlace en la página (PCRE no se rinde por la pila).
-- `test_blog_markdown_invalid_utf8_is_cleaned` (l. 152) — Bytes que no son UTF-8 se limpian (nunca llegan al HTML ni rompen el análisis).
+- `test_blog_markdown_safe_url_matches_contract` (l. 41) — Direcciones permitidas y prohibidas, igual que en JavaScript.
+- `bm_audit` (l. 47) — Auditoría del HTML: solo etiquetas y atributos permitidos, texto sin < ni > sueltos y todo cerrado. Devuelve la lista de problemas.
+- `test_blog_markdown_known_attacks_never_produce_forbidden_html` (l. 84) — Los ataques conocidos (scripts, javascript:, data:, atributos que se cuelan, // , etc.) salen como texto o no salen: nunca como HTML fuera de la lista.
+- `test_blog_markdown_random_input_stays_inside_allowed_html` (l. 99) — Texto cualquiera (también con bytes que no son UTF-8) nunca rompe el conversor ni deja HTML fuera de la lista.
+- `test_blog_markdown_huge_hostile_inputs_are_fast` (l. 115) — Entradas hostiles enormes se resuelven rápido (sin retroceso exponencial ni cuadrático) y sin salirse de lo permitido.
+- `test_blog_markdown_url_limit_counts_code_points` (l. 135) — Los límites cuentan letras (códigos de punto), no bytes: una dirección de 2000 emojis cabe y una de 2001 no.
+- `test_blog_markdown_longest_link_still_converts` (l. 144) — El tamaño de la dirección máxima (2000) sigue siendo un enlace en la página (PCRE no se rinde por la pila).
+- `test_blog_markdown_invalid_utf8_is_cleaned` (l. 153) — Bytes que no son UTF-8 se limpian (nunca llegan al HTML ni rompen el análisis).
+
+### `BlogPageTest.php`
+
+Pruebas de las páginas públicas del blog (BlogPage.php): rutas, entrada (SEO, JSON-LD, hreflang, escapado), borradores y programadas, vista previa firmada, direcciones antiguas, listado mezclado, imágenes, sitemap.xml / llms.txt / llms-full.txt con las entradas nuevas y respuestas condicionales. Se prueba con una plantilla mínima hecha a mano (la real sale de la compilación y se prueba en qa-apache).
+
+- `bp_shell` (l. 19) — Plantilla mínima de un idioma con todas las marcas que rellena el servidor.
+- `bp_site` (l. 39) — Carpeta de la web de pruebas con las plantillas (y, si se pide, 404, sitemap y llms) → ruta.
+- `bp_post` (l. 61) — Entrada publicada (por defecto en español, con fecha ya llegada).
+- `bp_get` (l. 70) — GET a esa dirección → respuesta.
+- `bp_ld` (l. 73) — Extrae el JSON-LD de una página → array.
+- `test_blogpage_routes` (l. 80) — BP1 · Las direcciones se reconocen por su cola (valen también en una subcarpeta) y lo demás no es del blog.
+- `test_blogpage_published_post_has_complete_seo` (l. 97) — BP2 · Una entrada publicada sale con todo el SEO: título, descripción, canonical, Open Graph, JSON-LD, una sola h1, fecha en la zona del sitio, texto convertido y sin marcas sin rellenar.
+- `test_blogpage_dates_use_the_site_timezone` (l. 130) — BP3 · La fecha se enseña en la zona horaria del sitio (Madrid), no en UTC.
+- `test_blogpage_image_in_header_social_and_structured_data` (l. 141) — BP4 · Con imagen: fondo de la cabecera, og:image con texto alternativo y ImageObject; sin imagen, el logotipo.
+- `test_blogpage_hostile_content_is_escaped` (l. 161) — BP5 · Todo lo que se escribe se escapa: título, descripción, texto y alt no pueden cerrar etiquetas, atributos ni el JSON-LD, y las marcas @@TV:…@@ escritas por una persona se quedan como texto.
+- `test_blogpage_drafts_and_scheduled_are_invisible` (l. 181) — BP6 · Borradores y programadas no existen para el público (404 con la página «no encontrado» del idioma); borrar también.
+- `test_blogpage_preview_with_signed_address` (l. 204) — BP7 · La vista previa firmada enseña un borrador sin indexar ni cachear; una firma mala, caducada o de otra entrada no vale.
+- `test_blogpage_redirects` (l. 229) — BP8 · Direcciones: la antigua redirige (301) a la nueva con sus parámetros; sin barra final también; y la entrada solo vive en su idioma.
+- `test_blogpage_hreflang_and_language_links` (l. 248) — BP9 · Traducciones: hreflang solo con las visibles (más x-default), enlaces del selector de idioma con la traducción o la portada, y marcas de «sin traducción».
+- `test_blogpage_index_merges_new_posts_by_date` (l. 272) — BP10 · El listado mezcla las entradas nuevas con las de la web por fecha (la más reciente primero), solo las visibles y de su idioma, con imagen y texto escapado.
+- `test_blogpage_index_fallbacks` (l. 297) — BP11 · Sin entradas nuevas el listado es el de la plantilla; sin plantilla se sirve el estático que dejó la compilación; sin nada, 503.
+- `test_blogpage_media` (l. 315) — BP12 · Imágenes: se sirven con su tipo, caché de un año, 304 por ETag y cabeceras que impiden ejecutar nada; las que no existen o con nombre raro, 404.
+- `test_blogpage_conditional_and_methods` (l. 333) — BP13 · Respuestas condicionales de las páginas: 304 con el mismo ETag; solo GET y HEAD.
+- `test_blogpage_sitemap_gets_the_new_posts` (l. 351) — BP14 · sitemap.xml: las entradas visibles se añaden con hreflang (traducciones visibles + x-default), imágenes con texto alternativo y lastmod; borradores y programadas no; sin entradas, el archivo tal cual.
+- `test_blogpage_llms_get_the_new_posts` (l. 376) — BP15 · llms.txt y llms-full.txt: las entradas nuevas se añaden bajo el título de su idioma (la más reciente arriba), con resumen o texto completo; si falta el título se crea la sección; lo escrito no puede romper el formato.
+
+### `BlogTest.php`
+
+Pruebas del blog del panel (Blog.php y las rutas /api/blog/… de BlogApi.php): entradas (borrador, publicada, programada), direcciones únicas por idioma con redirección de las antiguas, traducciones enlazadas, imágenes de verdad (JPEG, PNG, WebP), vista previa firmada, permisos y límites.
+
+- `bl_post` (l. 20) — Entrada mínima válida (se puede sobrescribir cualquier campo).
+- `bl_make` (l. 23) — Crea una entrada y devuelve la entrada (falla la prueba si da error).
+- `bl_tokens` (l. 31) — Manager y cliente con sesión → [token del manager, token del cliente].
+- `bl_api` (l. 39) — Llamada al API con token → Response.
+- `test_blog_slugify_matches_javascript` (l. 42) — B1 · slugify da lo mismo que la versión de JavaScript (casos compartidos).
+- `test_blog_create_draft_defaults` (l. 49) — B2 · Crear un borrador: id con su forma, campos por defecto, nada visible, y aparece en el listado de su idioma.
+- `test_blog_create_validates_fields` (l. 68) — B3 · Validación de los campos: obligatorios, límites en caracteres (no bytes), tipos y limpieza de controles.
+- `test_blog_publish_schedule_and_visibility` (l. 88) — B4 · Publicar exige título y texto; sin fecha se pone la de ahora; con fecha futura queda programada y no se ve hasta entonces.
+- `test_blog_slug_unique_per_language` (l. 112) — B5 · La dirección es única POR IDIOMA: repetida en el mismo idioma da 409; en otro idioma vale; las inválidas se rechazan; vacía se deriva del título.
+- `test_blog_slug_change_keeps_redirects_for_published_posts` (l. 139) — B6 · Cambiar la dirección de una entrada ya publicada deja la antigua como redirección; la de un borrador nunca publicado se libera; no se puede coger la dirección antigua de otra entrada.
+- `test_blog_update_is_partial` (l. 161) — B7 · Actualizar cambia solo los campos enviados, no deja cambiar el idioma y responde 404 si no existe.
+- `test_blog_translations_link_unlink_and_conflicts` (l. 180) — B8 · Traducciones: se enlazan por pares y en grupo, son simétricas, se desenlazan, no se repiten por idioma ni se enlazan con sí mismas, y borrar una no borra las demás.
+- `test_blog_delete_frees_everything` (l. 217) — B9 · Borrar quita la entrada, su dirección (y las antiguas) y su resumen; la dirección vuelve a estar libre.
+- `test_blog_index_rebuilds_without_deadlock` (l. 231) — B10 · El resumen se reconstruye solo (y a mano) si falta, sin quedarse esperando a sí mismo por el bloqueo.
+- `test_blog_images_accept_real_images_only` (l. 250) — B11 · Imágenes: JPEG, PNG y WebP de verdad se aceptan, se nombran por su contenido y la misma imagen no se guarda dos veces; lo demás (GIF, SVG, PHP, texto con extensión de imagen, truncadas, enormes) se rechaza.
+- `test_blog_post_image_needs_alt_and_cannot_be_deleted_while_used` (l. 280) — B12 · La imagen de una entrada necesita estar subida y llevar texto alternativo; no se puede borrar mientras se use (en la imagen destacada o en el texto).
+- `test_blog_preview_token` (l. 304) — B13 · La vista previa lleva una firma que solo vale para esa entrada, caduca y no se puede falsear.
+- `test_blog_api_roles_and_crud` (l. 323) — B14 · El API: sin sesión 401, cliente 403, manager y token maestro entran; crear (201), leer, actualizar, borrar y los errores con su código y campo.
+- `test_blog_api_images_preview_and_reindex` (l. 357) — B15 · API de imágenes: subir en base64 (con o sin prefijo data:), listar, borrar; rechaza lo que no es una imagen y lo que no es base64; la vista previa y el reindex funcionan.
+- `test_blog_api_rate_limits` (l. 385) — B16 · Límites por hora: guardados y subidas se cortan con 429 sin dejar entradas a medias.
+- `test_blog_post_limit` (l. 397) — B17 · Tope de entradas: al llegar al máximo no se crean más (409) hasta borrar alguna.
 
 ### `HostingTest.php`
 
@@ -2454,7 +2647,7 @@ Pruebas de seguridad de los precios, los errores, las descargas, el lector de .x
 - `test_d8_oversized_workbook_keeps_current_prices` (l. 383) — D8 · Una hoja .xlsx hostil hace fallar la sincronización con un error claro, conserva los precios vigentes y deja el motivo anotado.
 - `test_a11_http_client_protocols_size_and_private_redirects` (l. 400) — A11 · El cliente HTTP solo sigue http y https (una redirección a file:/// devolvía el contenido de ese fichero), con tope de tamaño de respuesta y sin llegar a redes internas desde un servidor público.
 - `test_d9_admin_data_is_only_for_managers` (l. 454) — D9 · GET /api/admin/data: las propuestas y los datos de cobertura solo los ve un manager (el token maestro también); clientes y anónimos no; sin fichero → listas vacías, nunca un error.
-- `test_d10_htaccess_closes_existing_files_but_not_the_api_routes` (l. 492) — D10/A10 · El .htaccess de api/ cierra todo lo que EXISTA salvo index.php (lib/, tools/, cron.php, config.php, copias, generated/, storage/) pero deja pasar las direcciones del API, que no existen como fichero y la raíz reescribe a index.php: Apache comprueba el acceso ANTES de reescribir, así que un «Require all denied» general (y un «Require all allowed», que ni existe) dejaba TODA la API en 403/500. Comprobado en un Apache real: scripts/qa-apache.mjs.
+- `test_d10_htaccess_closes_existing_files_but_not_the_api_routes` (l. 492) — D10/A10 · El .htaccess de api/ cierra todo lo que EXISTA salvo index.php y page.php (lib/, tools/, cron.php, config.php, copias, generated/, storage/) pero deja pasar las direcciones del API, que no existen como fichero y la raíz reescribe a index.php: Apache comprueba el acceso ANTES de reescribir, así que un «Require all denied» general (y un «Require all allowed», que ni existe) dejaba TODA la API en 403/500. Comprobado en un Apache real: scripts/qa-apache.mjs.
 - `test_d10_new_files_and_dirs_are_private` (l. 517) — D10/A10 · Ficheros nuevos 0660 y carpetas 0770 (con umask 022 salían 0664/0755, legibles por otros usuarios del hosting); un almacén anterior se cierra a «otros» en su siguiente uso.
 - `test_d10_diag_checks_the_new_settings` (l. 547) — D10 · El diagnóstico comprueba lo nuevo: secretos cortos (por su nombre, nunca el valor), modo de la copia al cliente, tope diario y tope de pedidos por hora.
 
@@ -2513,7 +2706,7 @@ Pruebas del lector de .xlsx con los mismos libros y el mismo resultado esperado 
 
 ### `blog-markdown-batch.php`
 
-[BLOG-MD] Ejecutor por lotes para comparar PHP con JavaScript: php blog-markdown-batch.php entradas.json Lee una lista de {md, n} y escribe en la salida estándar, en JSON, las salidas de BlogMarkdown (render, toPlain, excerpt) y cuántas veces falló PCRE. Lo usa scripts/test-blog-markdown-php.mjs.
+[BLOG-MD] Ejecutor por lotes para comparar PHP con JavaScript: php blog-markdown-batch.php entradas.json Lee una lista de {md, n} y escribe en la salida estándar, en JSON, las salidas de BlogMarkdown (render, toPlain, excerpt, lead) y cuántas veces falló PCRE. Lo usa scripts/test-blog-markdown-php.mjs.
 
 Secciones: `[BLOG-MD]`
 
@@ -2561,4 +2754,6 @@ Preparación común de las pruebas: almacén temporal, configuración de pruebas
 - `deflate_bomb` (l. 196) — Flujo deflate (sin cabecera zlib) de `$mb` megabytes de espacios, hecho por trozos: ocupa unos 300 KB comprimido y 300 MB descomprimido (la «bomba» del informe).
 - `mt_msg` (l. 206) — Correo de ejemplo al equipo con todos los campos.
 - `mt_http` (l. 212) — HTTP simulado que guarda cada petición en `$calls` y responde `$status` / `$body` (o lanza si `$throw`).
+- `bl_img` (l. 222) — Imágenes de 1×1 píxel válidas (PNG, JPEG y WebP).
+- `bl_png_dims` (l. 231) — PNG que dice tener esas dimensiones (solo la cabecera: basta para que se rechace por tamaño).
 

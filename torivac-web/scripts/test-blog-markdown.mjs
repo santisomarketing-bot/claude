@@ -7,7 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { render, toPlain, excerpt, slugify, safeUrl } from '../shared/blog-markdown.mjs';
+import { render, toPlain, excerpt, lead, slugify, safeUrl } from '../shared/blog-markdown.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FIX = path.join(ROOT, 'shared', 'blog-markdown.fixtures.json');
@@ -23,6 +23,7 @@ const eq = (got, want, msg) => { if (got === want) pass++; else { fail++; consol
 for (const c of fx.render) { const got = render(c.md, { tableLabel: 'Tabla' }); if (UPDATE) c.html = got; else eq(got, c.html, `render «${c.name}»`); }
 for (const c of fx.plain) { const got = toPlain(c.md); if (UPDATE) c.text = got; else eq(got, c.text, `toPlain ${JSON.stringify(c.md.slice(0, 40))}`); }
 for (const c of fx.excerpt) { const got = excerpt(c.md, c.n); if (UPDATE) c.text = got; else eq(got, c.text, `excerpt ${JSON.stringify(c.md.slice(0, 40))}/${c.n}`); }
+for (const c of fx.lead) { const got = lead(c.md, c.n); if (UPDATE) c.text = got; else eq(got, c.text, `lead ${JSON.stringify(c.md.slice(0, 40))}/${c.n}`); }
 for (const c of fx.slug) { const got = slugify(c.title); if (UPDATE) c.slug = got; else eq(got, c.slug, `slugify ${JSON.stringify(c.title.slice(0, 40))}`); }
 for (const c of fx.safeUrl) { const got = safeUrl(c.url) !== null; if (UPDATE) c.ok = got; else eq(got, c.ok, `safeUrl ${JSON.stringify(c.url)}`); }
 if (UPDATE) {

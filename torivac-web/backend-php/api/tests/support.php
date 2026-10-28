@@ -217,3 +217,15 @@ function mt_http(array &$calls, int $status = 200, string $body = '{"id":"m1"}',
         return [$status, $body];
     };
 }
+
+/** Imágenes de 1×1 píxel válidas (PNG, JPEG y WebP). */
+function bl_img(string $kind = 'png'): string
+{
+    $b = ['png' => 'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
+        'jpg' => '/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=',
+        'webp' => 'UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA=='][$kind];
+    return (string) base64_decode($b, true);
+}
+
+/** PNG que dice tener esas dimensiones (solo la cabecera: basta para que se rechace por tamaño). */
+function bl_png_dims(int $w, int $h): string { return "\x89PNG\r\n\x1a\n" . pack('N', 13) . 'IHDR' . pack('NN', $w, $h) . "\x08\x02\x00\x00\x00" . pack('N', 0) . pack('N', 0) . 'IEND' . pack('N', 0); }

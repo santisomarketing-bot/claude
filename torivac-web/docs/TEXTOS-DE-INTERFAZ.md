@@ -34,7 +34,7 @@ Las filas con ✓ ya existen tal cual en la web original en ese idioma (por ejem
 
 Ojo: la web original no es del todo uniforme: «variador de tensión» aparece como *voltage variators*, *voltage regulator* o *variator* según la ficha, y hay categorías sin traducir o con texto en otro idioma que no se listan aquí (están como propuestas en el panel). Cuando un texto de interfaz nombre uno de estos términos, se usa el de la categoría correspondiente de la tabla, nunca uno inventado.
 
-## Inglés (83 textos a validar; 38 ya existen tal cual en la web original)
+## Inglés (83 textos a validar; 39 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Inglés |
 |---|---|---|
@@ -122,7 +122,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Indicative quote subject to confirmation by Torivac. |
 | `quote_slug` | presupuesto | quote |
 
-## Francés (81 textos a validar; 40 ya existen tal cual en la web original)
+## Francés (81 textos a validar; 41 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Francés |
 |---|---|---|
@@ -208,7 +208,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `demo_banner` | Versión de demostración | Version de démonstration |
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Devis indicatif soumis à confirmation par Torivac. |
 
-## Alemán (84 textos a validar; 37 ya existen tal cual en la web original)
+## Alemán (85 textos a validar; 37 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Alemán |
 |---|---|---|
@@ -276,6 +276,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `translation_missing` | Esta ficha aún no está traducida: se muestra el texto en español. | Diese Seite ist noch nicht übersetzt: Es wird der spanische Text angezeigt. |
 | `back_to_top` | Subir | Nach oben |
 | `read_more` | Leer más | Weiterlesen |
+| `blog_table` | Tabla | Tabelle |
 | `lang_banner` | Esta página está disponible en tu idioma. | Diese Seite ist in Ihrer Sprache verfügbar. |
 | `staging_banner` | Entorno de pruebas — no es la web oficial y no está indexado | Testumgebung — nicht die offizielle Website und nicht indexiert |
 | `css_missing` | La página se ha abierto sin sus estilos (por eso no se ve la imagen de marca). Descomprime el .zip por completo (clic derecho → «Extraer todo») y abre index.html desde la carpeta resultante, o sírvela con «python3 -m http.server». | Die Seite wurde ohne ihre Stile geöffnet (daher fehlt das Markenbild). Entpacken Sie die ZIP-Datei vollständig (Rechtsklick → „Alle extrahieren“) und öffnen Sie index.html im entstandenen Ordner oder starten Sie «python3 -m http.server». |

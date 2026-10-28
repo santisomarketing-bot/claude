@@ -199,21 +199,37 @@ export function render(md, o = {}) {
   return out.join('\n');
 }
 
-/** Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt. */
-export function toPlain(md) {
-  return render(md, { tableLabel: 'x' })
+/** Texto plano de un trozo de HTML del conversor (sin etiquetas, sin entidades y con los espacios normalizados). */
+function plainOfHtml(html) {
+  return html
     .replace(/<\/(p|h[2-4]|li|tr|th|td|blockquote|figure|figcaption)>/gu, ' ')
     .replace(/<br>/gu, ' ')
     .replace(/<[^>]+>/gu, '')
     .replace(/&lt;/gu, '<').replace(/&gt;/gu, '>').replace(/&quot;/gu, '"').replace(/&amp;/gu, '&')
     .replace(/\s+/gu, ' ').trim();
 }
+/** Texto de hasta `n` caracteres cortado en una palabra entera (con «…» si se recorta). */
+function cutAtWord(text, n) {
+  const t = Array.from(text);
+  if (t.length <= n) return t.join('');
+  return t.slice(0, n).join('').replace(/\s+\S*$/u, '').replace(/[\s,;:.\-–—]+$/u, '') + '…';
+}
+
+/** Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt. */
+export function toPlain(md) {
+  return plainOfHtml(render(md, { tableLabel: 'x' }));
+}
 
 /** Extracto de hasta `n` caracteres cortado en una palabra entera (con «…» si se recorta). */
 export function excerpt(md, n = 155) {
-  const t = Array.from(toPlain(md));
-  if (t.length <= n) return t.join('');
-  return t.slice(0, n).join('').replace(/\s+\S*$/u, '').replace(/[\s,;:.\-–—]+$/u, '') + '…';
+  return cutAtWord(toPlain(md), n);
+}
+
+/** Descripción automática: el primer párrafo del texto (sin títulos, listas ni tablas) cortado en una palabra entera; si no hay párrafos, el extracto de todo. Es lo que se usa cuando no se escribe resumen ni descripción para buscadores. */
+export function lead(md, n = 155) {
+  const html = render(md, { tableLabel: 'x' });
+  const m = /<p>([\s\S]*?)<\/p>/u.exec(html);
+  return cutAtWord(plainOfHtml(m ? m[1] : html), n);
 }
 
 const FOLD = { 'á': 'a', 'à': 'a', 'ä': 'a', 'â': 'a', 'ã': 'a', 'å': 'a', 'é': 'e', 'è': 'e', 'ë': 'e', 'ê': 'e', 'í': 'i', 'ì': 'i', 'ï': 'i', 'î': 'i', 'ó': 'o', 'ò': 'o', 'ö': 'o', 'ô': 'o', 'õ': 'o', 'ú': 'u', 'ù': 'u', 'ü': 'u', 'û': 'u', 'ñ': 'n', 'ç': 'c', 'ß': 'ss', 'œ': 'oe', 'æ': 'ae' };

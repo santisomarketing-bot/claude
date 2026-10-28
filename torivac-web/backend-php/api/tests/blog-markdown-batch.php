@@ -1,7 +1,7 @@
 <?php
 /**
  * [BLOG-MD] Ejecutor por lotes para comparar PHP con JavaScript: php blog-markdown-batch.php entradas.json
- * Lee una lista de {md, n} y escribe en la salida estándar, en JSON, las salidas de BlogMarkdown (render, toPlain, excerpt) y cuántas veces falló PCRE. Lo usa scripts/test-blog-markdown-php.mjs.
+ * Lee una lista de {md, n} y escribe en la salida estándar, en JSON, las salidas de BlogMarkdown (render, toPlain, excerpt, lead) y cuántas veces falló PCRE. Lo usa scripts/test-blog-markdown-php.mjs.
  */
 require __DIR__ . '/../lib/autoload.php';
 
@@ -13,8 +13,9 @@ $out = [];
 foreach ($in as $c) {
     $f0 = BlogMarkdown::$failures;
     $row = ['html' => BlogMarkdown::render($c['md'], ['tableLabel' => 'Tabla'])];
-    if (isset($c['n'])) { $row['plain'] = BlogMarkdown::toPlain($c['md']); $row['excerpt'] = BlogMarkdown::excerpt($c['md'], (int) $c['n']); }
+    if (isset($c['n'])) { $row['plain'] = BlogMarkdown::toPlain($c['md']); $row['excerpt'] = BlogMarkdown::excerpt($c['md'], (int) $c['n']); $row['lead'] = BlogMarkdown::lead($c['md'], (int) $c['n']); }
     if (isset($c['url'])) $row['url'] = BlogMarkdown::safeUrl($c['url']);
+    if (isset($c['title'])) $row['slug'] = \Torivac\Blog::slugify($c['title']);
     $row['fail'] = BlogMarkdown::$failures - $f0;
     $out[] = $row;
 }

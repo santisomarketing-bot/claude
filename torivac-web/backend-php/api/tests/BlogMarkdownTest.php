@@ -34,6 +34,7 @@ function test_blog_markdown_plain_and_excerpt_match_contract()
     $fx = bm_fixtures();
     foreach ($fx['plain'] as $c) T::same($c['text'], BlogMarkdown::toPlain($c['md']), 'toPlain ' . json_encode(mb_substr($c['md'], 0, 40), JSON_UNESCAPED_UNICODE));
     foreach ($fx['excerpt'] as $c) T::same($c['text'], BlogMarkdown::excerpt($c['md'], $c['n']), 'excerpt ' . json_encode(mb_substr($c['md'], 0, 40), JSON_UNESCAPED_UNICODE) . '/' . $c['n']);
+    foreach ($fx['lead'] as $c) T::same($c['text'], BlogMarkdown::lead($c['md'], $c['n']), 'lead ' . json_encode(mb_substr($c['md'], 0, 40), JSON_UNESCAPED_UNICODE) . '/' . $c['n']);
 }
 
 /** Direcciones permitidas y prohibidas, igual que en JavaScript. */

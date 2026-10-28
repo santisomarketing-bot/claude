@@ -8,7 +8,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { render, toPlain, excerpt, safeUrl } from '../shared/blog-markdown.mjs';
+import { render, toPlain, excerpt, lead, slugify, safeUrl } from '../shared/blog-markdown.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 /** Valor de la opción --k=valor (o el valor por defecto). */
@@ -38,6 +38,9 @@ for (let i = 0; i < Math.floor(N / 5); i++) {
 }
 const urls = ['', ' ', 'https://x', 'https://', 'http://a/b?c#d', 'HTTP://A', 'Https://A.example', 'httpſ://a.example', 'ftp://a', 'mailto:a@b', 'mailto:a@', 'MailTo:a@b.c', 'tel:123', 'tel:+34 123', 'TEL:+34', '/a', '//a', '/', '#a', '#', '#a b', 'javascript:alert(1)', 'a"b', 'a<b', 'a\\b', 'a\tb', 'a b', 'a\u0085b', '​https://x.example', 'https://x.example/' + 'é'.repeat(1982), 'https://x.example/' + 'é'.repeat(1983), '/' + '😀'.repeat(1999), '/' + '😀'.repeat(2000)];
 for (const u of urls) cases.push({ md: 'x', n: 10, url: u });
+// títulos al azar para la dirección (slugify)
+const WORDS = ['Transformador', 'toroidal', 'año', 'NUEVO', 'Ñandú', 'çà', 'Straße', 'Œuvre', 'Æsir', 'über', 'ÉCOLE', 'İstanbul', 'ẞ', 'Ǆ', 'ǅ', 'µ', 'ʼn', 'ﬁ', 'Ａｂｃ', '１２３', '😀', '漢字', 'Ω', 'ß', '--', '  ', '¿qué?', '(100 W)', 'a/b', '@#$', '_', '.', 'x'.repeat(30)];
+for (let i = 0; i < Math.floor(N / 10); i++) { let t = ''; const k = 1 + Math.floor(rnd() * 14); for (let j = 0; j < k; j++) t += pick(WORDS) + pick(['', ' ', ' ', '-', ', ']); cases.push({ md: 'x', title: t }); }
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'bmd-'));
 const inFile = path.join(tmp, 'in.json');
@@ -53,12 +56,14 @@ const bad = (kind, c, a, b) => { fail++; if (fail <= 8) console.error(`  ✗ ${k
 cases.forEach((c, i) => {
   const p = php[i];
   if (p.fail) bad('PCRE falló ' + p.fail + ' vez/veces', c, '', '');
+  if (c.title !== undefined) { const sl = slugify(c.title); if (sl === p.slug) pass++; else bad('slugify', { md: c.title }, sl, p.slug); return; }
   if (c.url !== undefined) { const js = safeUrl(c.url); if (js === p.url) pass++; else bad('safeUrl', { md: c.url }, js, p.url); }
   const h = render(c.md, { tableLabel: 'Tabla' });
   if (h === p.html) pass++; else bad('render', c, h, p.html);
   if (c.n !== undefined && c.url === undefined) {
     const t = toPlain(c.md); if (t === p.plain) pass++; else bad('toPlain', c, t, p.plain);
     const e = excerpt(c.md, c.n); if (e === p.excerpt) pass++; else bad('excerpt/' + c.n, c, e, p.excerpt);
+    const ld = lead(c.md, c.n); if (ld === p.lead) pass++; else bad('lead/' + c.n, c, ld, p.lead);
   }
 });
 console.log(`  (${cases.length} textos comparados en ${Date.now() - t0} ms)`);

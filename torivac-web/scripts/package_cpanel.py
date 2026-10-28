@@ -15,7 +15,7 @@ Qué hace:  1) compila la web con --base y --php-api (URLs limpias, .htaccess, r
 Qué NO lleva nunca: precios (la web los lee del servidor), config.php (claves), tests, scripts de trabajo, documentación.
            --allow-dirty (permite empaquetar PRODUCCIÓN con cambios sin commitear; por defecto no, para poder rehacer y repetir exactamente ese paquete)
 Cada paquete lleva api/generated/build.json (versión = commit, fecha del commit, URL base, pruebas/producción, aspecto): el Diagnóstico del panel lo enseña, para saber qué hay publicado.
-Funciones: git_version · build_site · copy_api · write_build_info · check_versions · check_csp · check_wp_probes · verify · make_zip · main
+Funciones: git_version · build_site · copy_api · write_build_info · check_versions · check_csp · check_wp_probes · check_blog · verify · make_zip · main
 """
 import argparse
 import base64
@@ -37,7 +37,8 @@ import secret_scan  # noqa: E402  (reutiliza los patrones de claves)
 
 REQUIRED = ["index.html", ".htaccess", "404.html", "robots.txt", "en/index.html", "en/404.html", "en/.htaccess", "fr/index.html", "de/index.html",
             "admin/index.html", "presupuesto/index.html", "contacto/index.html", "assets/data/catalog.js", "assets/data/prices.js", "assets/css/site.css",
-            "api/index.php", "api/.htaccess", "api/cron.php", "api/config.sample.php", "api/generated/catalog.json", "api/generated/admin-data.json", "api/generated/build.json", "api/lib/Router.php", "api/tools/create-user.php"]
+            "api/index.php", "api/page.php", "api/.htaccess", "api/cron.php", "api/config.sample.php", "api/generated/catalog.json", "api/generated/admin-data.json", "api/generated/build.json", "api/lib/Router.php", "api/lib/BlogPage.php", "api/tools/create-user.php",
+            "api/generated/blog-shell.es.json", "api/generated/blog-shell.en.json", "api/generated/blog-shell.fr.json", "api/generated/blog-shell.de.json"]
 # material de demostración o de gestión interna que NO debe ser público en una web con servidor: el panel de demo (lleva credenciales de ejemplo), las hojas de precios de demostración
 # y las propuestas/cobertura del catálogo (solo las sirve el servidor a un manager: GET /api/admin/data)
 FORBIDDEN_NAMES = {"api/config.php", "README-DEMO.txt", "assets/js/admin.js", "assets/data/prices.demo.csv", "assets/data/prices.demo.xlsx", "assets/data/proposals.js", "assets/data/admin-data.js"}
@@ -45,7 +46,7 @@ FORBIDDEN_DIRS = ("api/tests/", "api/storage/", "node_modules/", ".git/")
 FORBIDDEN_EXT = {".py", ".sh", ".md", ".map", ".log", ".mjs", ".ts"}
 TEXT_EXT = {".html", ".js", ".css", ".json", ".php", ".txt", ".xml", ".htaccess", ".svg", ""}
 # LISTA BLANCA del API: dentro de api/ solo estos archivos pueden ir en el paquete (un config.php.bak, un volcado o un .env olvidados no llegan jamás al servidor)
-API_ALLOWED = re.compile(r"^api/(index\.php|\.htaccess|cron\.php|config\.sample\.php|lib/[A-Za-z0-9_]+\.php|tools/[a-z0-9\-]+\.php|generated/(catalog|admin-data|build)\.json)$")
+API_ALLOWED = re.compile(r"^api/(index\.php|page\.php|\.htaccess|cron\.php|config\.sample\.php|lib/[A-Za-z0-9_]+\.php|tools/[a-z0-9\-]+\.php|generated/(catalog|admin-data|build)\.json|generated/blog-shell\.(es|en|fr|de)\.json)$")
 
 
 def run(cmd, **kw):
@@ -196,6 +197,44 @@ def check_wp_probes(rel: dict, base: str) -> list:
     return errs
 
 
+def check_blog(rel: dict, base: str, staging: bool) -> list:
+    """Blog del panel: las cuatro plantillas del servidor (api/generated/blog-shell.<idioma>.json) se leen, son de ESTA compilación (misma base y mismo modo pruebas/producción), traen todas las marcas que rellena PHP,
+    ninguna huella de versión sin resolver y el listado partido donde van las tarjetas; y el .htaccess lleva las reglas que mandan las direcciones del blog a api/page.php (sitemap y llms solo en producción)."""
+    errs = []
+    need = ["seotitle", "description", "links", "social", "ld", "path", "langlinks", "boot", "title", "date", "datefmt", "content"]
+    for lang in ("es", "en", "fr", "de"):
+        key = f"api/generated/blog-shell.{lang}.json"
+        if key not in rel:
+            continue                                             # ya lo dice REQUIRED
+        try:
+            sh = json.loads(rel[key].read_text(encoding="utf-8"))
+        except Exception as e:  # noqa: BLE001
+            errs.append(f"no puedo leer {key}: {e}")
+            continue
+        if sh.get("v") != 1 or sh.get("lang") != lang:
+            errs.append(f"{key}: versión o idioma inesperados")
+        if sh.get("base") != base.rstrip("/") or bool(sh.get("staging")) != bool(staging):
+            errs.append(f"{key} no es de esta compilación (base o modo pruebas/producción distintos)")
+        post = sh.get("post", "")
+        for k in need:
+            if post.count(f"@@TV:{k}@@") < 1:
+                errs.append(f"{key}: la plantilla de la entrada no trae la marca @@TV:{k}@@")
+        if "@@TVV:" in post or "@@TVV:" in sh.get("index", {}).get("pre", "") or "@@TVV:" in sh.get("index", {}).get("post", ""):
+            errs.append(f"{key}: quedan marcadores de versión sin resolver")
+        if not sh.get("index", {}).get("pre", "").endswith('<div class="posts">') or not sh.get("index", {}).get("post", "").startswith("</div></div></section>"):
+            errs.append(f"{key}: el listado del blog no está partido donde van las tarjetas")
+        if len(sh.get("cards", [])) < 1 or any("@@TV:" in c.get("h", "") for c in sh.get("cards", [])):
+            errs.append(f"{key}: tarjetas de las entradas existentes ausentes o con marcas sin rellenar")
+    ht = rel[".htaccess"].read_text(encoding="utf-8") if ".htaccess" in rel else ""
+    if ht.count("api/page.php [L]") < (3 if staging else 4):
+        errs.append(".htaccess sin todas las reglas del blog hacia api/page.php")
+    if staging and "sitemap" in ht.split("api/page.php")[0] + ht.split("api/page.php")[-1] and "sitemap\\.xml|llms" in ht:
+        errs.append("el .htaccess de pruebas reescribe sitemap/llms (no existen en pruebas)")
+    if not staging and "sitemap\\.xml|llms\\.txt|llms-full\\.txt" not in ht:
+        errs.append(".htaccess de producción sin la regla de sitemap.xml, llms.txt y llms-full.txt hacia api/page.php")
+    return errs
+
+
 def verify(www: Path, base: str, staging: bool, embed_prices: bool, theme: str = "ficha", switch=None):
     """→ (errores, avisos). Un error impide entregar el paquete."""
     errs, warns = [], []
@@ -283,6 +322,7 @@ def verify(www: Path, base: str, staging: bool, embed_prices: bool, theme: str =
     errs += check_versions(www, rel, base)
     errs += check_csp(www, rel)
     errs += check_wp_probes(rel, base)
+    errs += check_blog(rel, base, staging)
     try:
         bi = json.loads(rel["api/generated/build.json"].read_text(encoding="utf-8"))
         if bi.get("base") != base or bool(bi.get("staging")) != bool(staging) or bi.get("theme") != theme or not bi.get("version"):

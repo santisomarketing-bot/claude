@@ -111,13 +111,13 @@ function floatMenu(ctx) {
 const themeSwitch = (lang, where) => `<span class="theme-switch" role="group" aria-label="${attr(t('theme', lang))}" data-theme-switch="${where}" hidden><span class="ts-label">${t('theme', lang)}</span>${THEMES.map((k) => `<button type="button" data-set-theme="${k}" aria-pressed="false">${t('theme_' + k, lang)}</button>`).join('')}</span>`;
 
 /** Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap. */
-export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [], preloadImage = null, bodyClass = '', oRedirect = '' }) {
+export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [], preloadImage = null, bodyClass = '', oRedirect = '', dyn = false }) {
   const { lang, site } = ctx;
   if (/data-contact-form/.test(`${hero || ''}${body}`)) scripts = [...new Set(['assets/js/plain-text.js', 'assets/js/forms.js', 'assets/js/contact.js', ...scripts])];          // en cualquier página con formulario de contacto (también el bloque «Contacta con nosotros» de las fichas y entradas de «Original»)
-  description = metaDescription(description, body, site.homeMeta?.[lang]);
+  if (!dyn) description = metaDescription(description, body, site.homeMeta?.[lang]);
   const alt = (l) => (l === lang ? ctx.path : (alts[l] || site.home[l]));         // selector de idioma: sin traducción cae a la portada de ese idioma
   // registro de páginas indexables → sitemap (con hreflang e imágenes) y llms.txt; ver site/build.mjs [SEO-FILES]
-  if (!noindex && site.registry) site.registry.push({ path: ctx.path, lang, template, title, description: description || '', alts: Object.fromEntries(LANGS.filter((l) => alts[l]).map((l) => [l, alts[l]])), images });
+  if (!noindex && !dyn && site.registry) site.registry.push({ path: ctx.path, lang, template, title, description: description || '', alts: Object.fromEntries(LANGS.filter((l) => alts[l]).map((l) => [l, alts[l]])), images });
   // [NAV] menú principal: mismos 7 ítems y etiquetas que la web original (por idioma). `section` marca el activo.
   const nav = site.navItems[lang].map((n) => ({ label: n.label, pdf: n.key === 'catalog', current: n.key !== 'catalog' && (n.path === ctx.path || (n.key === ctx.section && ['products', 'blog'].includes(n.key))), href: n.key === 'catalog' ? (n.pdfFile ? ctx.asset('assets/pdf/' + n.pdfFile) : n.pdfUrl) : ctx.href(n.path) }));
   const langLinks = LANGS.map((l) => `<a href="${attr(ctx.href(alt(l)))}" hreflang="${l}" lang="${l}" ${l === lang ? 'aria-current="true"' : ''} title="${NAMES[l]}" data-set-lang="${l}"${l !== lang && !alts[l] ? ' class="no-tr"' : ''}>${l.toUpperCase()}</a>`).join('');
@@ -140,15 +140,15 @@ export function layout(ctx, { title, description, body, template, alts = {}, scr
 <title>${esc(title)}</title>
 <meta name="description" content="${attr(description || '')}">
 ${noindex || site.staging ? '<meta name="robots" content="noindex,nofollow">' : ''}
-${canonical}${alternates}
+${dyn ? '@@TV:links@@' : canonical + alternates}
 <meta name="theme-color" content="#100404">
 <link rel="icon" href="${ctx.asset('assets/img/favicon.png')}" type="image/png">
 ${site.themeSwitch ? THEME_BOOT : ''}
 ${site.absBase ? PRELOAD_FONTS[site.theme].map((f) => `<link rel="preload" href="${ctx.asset(`assets/fonts/${f}.woff2`)}" as="font" type="font/woff2" crossorigin>`).join('') : ''}${preloadImage ? `<link rel="preload" href="${attr(preloadImage)}" as="image" fetchpriority="high">` : ''}<link rel="stylesheet" href="${ctx.asset('assets/css/site.css')}">
-${social}
-${noindex ? '' : ldScript(pageGraph(ctx, { template, title, description, crumbs, extra: ld, image: ogImg }))}
+${dyn ? '@@TV:social@@' : social}
+${dyn ? '@@TV:ld@@' : noindex ? '' : ldScript(pageGraph(ctx, { template, title, description, crumbs, extra: ld, image: ogImg }))}
 </head>
-<body class="tv tv-${template}${bodyClass ? ' ' + bodyClass : ''}" data-path="${attr(ctx.path)}"${oRedirect ? ` data-o-redirect="${attr(ctx.href(oRedirect))}"` : ''}>
+<body class="tv tv-${template}${bodyClass ? ' ' + bodyClass : ''}" data-path="${dyn ? '@@TV:path@@' : attr(ctx.path)}"${oRedirect ? ` data-o-redirect="${attr(ctx.href(oRedirect))}"` : ''}>
 <a class="skip" href="#content">${t('skip', lang)}</a>
 ${site.absBase ? '' : cssGuard(t('css_missing', lang))}
 ${site.demo ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('demo_banner', lang))}"><span>${t('demo_banner', lang)} · ${t('demo_prices', lang)}</span>${site.themeSwitch ? themeSwitch(lang, 'ribbon') : ''}</div>` : ''}
@@ -159,7 +159,7 @@ ${site.staging ? `<div class="demo-ribbon no-print" role="region" aria-label="${
     <a class="brand" href="${attr(ctx.href(site.home[lang]))}" aria-label="Torivac"><img src="${ctx.asset(site.logo)}" alt="Torivac" width="54" height="54"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle>☰ ${t('menu', lang)}</button>
     <nav class="nav" id="main-nav" aria-label="${attr(t('menu', lang))}">${navHtml}<a class="btn sm header-quote" href="${attr(ctx.href(site.quote[lang]))}" data-quote-link>${t('quote', lang)} <span class="count" data-quote-count>0</span></a></nav>
-    <div class="lang" role="group" aria-label="${attr(t('language', lang))}">${langLinks}</div>
+    <div class="lang" role="group" aria-label="${attr(t('language', lang))}">${dyn ? '@@TV:langlinks@@' : langLinks}</div>
   </div>
 </header>
 <main id="content" tabindex="-1">
@@ -190,7 +190,7 @@ ${site.O && ['shop', 'product'].includes(template) ? floatMenu(ctx) : ''}
   <footer data-drawer-foot></footer>
 </aside>
 <div class="toast" role="status" aria-live="polite" data-toast></div>
-${jsonScript('tv-boot', { lang, paths: { quote: ctx.href(site.quote[lang]), home: Object.fromEntries(LANGS.map((l) => [l, ctx.href(alt(l))])) } })}
+${dyn ? '<script type="application/json" id="tv-boot">@@TV:boot@@</script>' : jsonScript('tv-boot', { lang, paths: { quote: ctx.href(site.quote[lang]), home: Object.fromEntries(LANGS.map((l) => [l, ctx.href(alt(l))])) } })}
 <script src="${ctx.asset('assets/data/catalog.js')}"></script>
 <script src="${ctx.asset('assets/data/prices.js')}"></script>
 <script src="${ctx.asset('assets/js/quote.js')}"></script>
@@ -427,25 +427,40 @@ function contactBlockO(ctx, where, wrap = false) {
   return `<section class="${oc(site, 'sec o-contact')}" aria-labelledby="${id}">${wrap ? `<div class="container">${inner}</div>` : inner}</section>`;
 }
 
+/**
+ * Tarjeta de una entrada en el listado del blog. Con `dyn` (plantilla de las entradas que se crean desde el panel, ver backend-php/api/lib/BlogPage.php) cada dato variable es una marca @@TV:…@@
+ * que rellena el servidor: href (con @@TV:slug@@), cardimg (la <img> o nada), date, datefmt, title y excerpt.
+ */
+export function postCard(ctx, p, dyn = false) {
+  const { lang } = ctx;
+  const href = dyn ? ctx.href(`${lang === 'es' ? '' : '/' + lang}/blog/@@TV:slug@@/`) : ctx.href(p.path);
+  const im = dyn ? '@@TV:cardimg@@' : p.featured ? `<img src="${attr(ctx.thumb(p.featured))}" alt="" loading="lazy">` : '';
+  const excerpt = dyn ? '@@TV:excerpt@@' : `${esc((p.excerpt || '').slice(0, 150))}${(p.excerpt || '').length > 150 ? '…' : ''}`;
+  return `<a class="post-card" href="${attr(href)}"><div class="im">${im}</div><div class="tx"><time datetime="${dyn ? '@@TV:date@@' : attr(p.date || '')}">${dyn ? '@@TV:datefmt@@' : fmtDate(p.date, lang)}</time><h3>${dyn ? '@@TV:title@@' : esc(p.title)}</h3><p class="muted">${excerpt}</p>${ctx.site.O ? `<span class="${oc(ctx.site, 'o-more')}">${t('read_more', lang)}</span>` : ''}</div></a>`;
+}
 /** Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada. */
 export function blogIndexBody(ctx, posts) {
-  const { lang } = ctx;
-  const cards = posts.map((p) => `<a class="post-card" href="${attr(ctx.href(p.path))}"><div class="im">${p.featured ? `<img src="${attr(ctx.thumb(p.featured))}" alt="" loading="lazy">` : ''}</div><div class="tx"><time datetime="${attr(p.date || '')}">${fmtDate(p.date, lang)}</time><h3>${esc(p.title)}</h3><p class="muted">${esc((p.excerpt || '').slice(0, 150))}${(p.excerpt || '').length > 150 ? '…' : ''}</p>${ctx.site.O ? `<span class="${oc(ctx.site, 'o-more')}">${t('read_more', lang)}</span>` : ''}</div></a>`).join('');
-  return `<section class="sec"><div class="container"><div class="posts">${cards}</div></div></section>`;
+  return `<section class="sec"><div class="container"><div class="posts">${posts.map((p) => postCard(ctx, p)).join('')}</div></div></section>`;
 }
-/** Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. */
-export function postBody(ctx, post) {
+/**
+ * Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. Con `dyn` es la plantilla de las entradas que se crean desde el panel: lo variable son marcas
+ * @@TV:…@@ (title, date, datefmt, herostyle, banner, content) que rellena el servidor (BlogPage.php); la estructura es la misma que la de las entradas de la web original.
+ */
+export function postBody(ctx, post, dyn = false) {
   const { lang } = ctx;
-  const body = post.sections.flatMap((s) => s.blocks);
+  const site = ctx.site;
+  const body = dyn ? [] : post.sections.flatMap((s) => s.blocks);
   const h1 = body.find((b) => b.t === 'h' && b.l === 1);
   const content = body.filter((b) => b !== h1);
-  const site = ctx.site;
+  const title = dyn ? '@@TV:title@@' : post.title;
   // «Original»: la foto de la entrada va como cabecera de contenido (1140 × 280) y el título debajo; los otros aspectos la usan de fondo del hero
-  const banner = site.O && post.featured ? `<img class="${oc(site, 'o-banner')}" src="${attr(ctx.img(post.featured))}" alt="" width="1140" height="280" decoding="async">` : '';
-  const hero = `<section class="page-hero bp" ${post.featured && !site.ONLY_O ? `style="background-image:url('${attr(ctx.img(post.featured))}')"` : ''}><div class="container">${banner}${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: 'Blog', href: ctx.href(ctx.site.blog[lang]) }, { label: post.title }])}<h1>${esc(post.title)}</h1>${post.date ? `<p class="post-meta">${t('published', lang)} <time datetime="${attr(post.date)}">${fmtDate(post.date, lang)}</time></p>` : ''}</div></section>`;
+  const banner = dyn ? (site.O ? '@@TV:banner@@' : '') : site.O && post.featured ? `<img class="${oc(site, 'o-banner')}" src="${attr(ctx.img(post.featured))}" alt="" width="1140" height="280" decoding="async">` : '';
+  const heroStyle = dyn ? (!site.ONLY_O ? '@@TV:herostyle@@' : '') : (post.featured && !site.ONLY_O ? `style="background-image:url('${attr(ctx.img(post.featured))}')"` : '');
+  const when = dyn || post.date ? `<p class="post-meta">${t('published', lang)} <time datetime="${dyn ? '@@TV:date@@' : attr(post.date)}">${dyn ? '@@TV:datefmt@@' : fmtDate(post.date, lang)}</time></p>` : '';
+  const hero = `<section class="page-hero bp" ${heroStyle}><div class="container">${banner}${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: 'Blog', href: ctx.href(ctx.site.blog[lang]) }, { label: title }])}<h1>${esc(title)}</h1>${when}</div></section>`;
   // «Original»: la foto con la que empieza el texto es la misma de la cabecera (la web actual la enseña una sola vez): se oculta en ese aspecto y se omite si va solo
-  const dup = site.O && post.featured && content[0] && content[0].t === 'img' && content[0].img && content[0].img.file === post.featured.file;
-  const text = dup ? `${site.ONLY_O ? '' : `<div class="o-dup">${blocksHtml(ctx, [content[0]], { demote: 0 })}</div>`}${blocksHtml(ctx, content.slice(1), { demote: 0 })}` : blocksHtml(ctx, content, { demote: 0 });
+  const dup = !dyn && site.O && post.featured && content[0] && content[0].t === 'img' && content[0].img && content[0].img.file === post.featured.file;
+  const text = dyn ? '@@TV:content@@' : dup ? `${site.ONLY_O ? '' : `<div class="o-dup">${blocksHtml(ctx, [content[0]], { demote: 0 })}</div>`}${blocksHtml(ctx, content.slice(1), { demote: 0 })}` : blocksHtml(ctx, content, { demote: 0 });
   return { hero, body: `<article class="sec"><div class="container"><div class="prose">${text}</div></div></article>${contactBlockO(ctx, 'post', true)}` };
 }
 

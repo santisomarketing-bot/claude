@@ -488,13 +488,13 @@ function test_d9_admin_data_is_only_for_managers()
     } finally { AdminData::setFile(null); rmtree_all($dir); }
 }
 
-/** D10/A10 · El .htaccess de api/ cierra todo lo que EXISTA salvo index.php (lib/, tools/, cron.php, config.php, copias, generated/, storage/) pero deja pasar las direcciones del API, que no existen como fichero y la raíz reescribe a index.php: Apache comprueba el acceso ANTES de reescribir, así que un «Require all denied» general (y un «Require all allowed», que ni existe) dejaba TODA la API en 403/500. Comprobado en un Apache real: scripts/qa-apache.mjs. */
+/** D10/A10 · El .htaccess de api/ cierra todo lo que EXISTA salvo index.php y page.php (lib/, tools/, cron.php, config.php, copias, generated/, storage/) pero deja pasar las direcciones del API, que no existen como fichero y la raíz reescribe a index.php: Apache comprueba el acceso ANTES de reescribir, así que un «Require all denied» general (y un «Require all allowed», que ni existe) dejaba TODA la API en 403/500. Comprobado en un Apache real: scripts/qa-apache.mjs. */
 function test_d10_htaccess_closes_existing_files_but_not_the_api_routes()
 {
     $ht = (string) file_get_contents(dirname(__DIR__) . '/.htaccess');
     $code = implode("\n", array_filter(array_map('trim', explode("\n", $ht)), function ($l) { return $l !== '' && $l[0] !== '#'; }));
     T::true(stripos($ht, 'Require all allowed') === false, '«Require all allowed» no existe en Apache («granted» o «denied»)');
-    T::true(preg_match('/<IfModule mod_authz_core\.c>\s*Require expr "%\{REQUEST_FILENAME\} =~ m#\/index\\\\\.php\$# \|\| ! -e \'%\{REQUEST_FILENAME\}\'"\s*<\/IfModule>/', $code) === 1, 'Apache 2.4: pasa index.php y lo que NO existe como fichero (las direcciones del API); lo que existe se cierra');
+    T::true(preg_match('/<IfModule mod_authz_core\.c>\s*Require expr "%\{REQUEST_FILENAME\} =~ m#\/\(index\|page\)\\\\\.php\$# \|\| ! -e \'%\{REQUEST_FILENAME\}\'"\s*<\/IfModule>/', $code) === 1, 'Apache 2.4: pasa index.php y lo que NO existe como fichero (las direcciones del API); lo que existe se cierra');
     $m24 = preg_match('/<IfModule mod_authz_core\.c>(.*?)<\/IfModule>/s', $code, $b24) ? $b24[1] : '';
     T::true(stripos($m24, 'Require all denied') === false, 'en Apache 2.4 NO hay «Require all denied» general: bloquearía /api/health y todas las rutas antes de que se reescriban');
     T::true(strpos($ht, 'Options -Indexes') !== false, 'sin listado de carpetas');
@@ -503,7 +503,7 @@ function test_d10_htaccess_closes_existing_files_but_not_the_api_routes()
     preg_match('/<FilesMatch "([^"]+)">\s*Order allow,deny\s*Deny from all/', $m22, $m);
     $re = '/' . $m[1] . '/';
     foreach (['config.php', 'config.sample.php', 'cron.php', 'config.php.bak', 'config.php~', 'config.bak', 'error_log', 'backup.zip', 'admin-data.json', 'catalog.json', 'create-user.php', 'check.php', 'Router.php', 'autoload.php', 'README.md', 'x.log', 'x.env', 'x.ini'] as $no) T::same(1, preg_match($re, $no), "Apache 2.2 cierra $no");
-    T::true(preg_match('/<FilesMatch "\^index\\\\\.php\$">\s*Order allow,deny\s*Allow from all\s*<\/FilesMatch>/', $m22) === 1, 'Apache 2.2: index.php se vuelve a abrir (la sección posterior manda)');
+    T::true(preg_match('/<FilesMatch "\^\(index\|page\)\\\\\.php\$">\s*Order allow,deny\s*Allow from all\s*<\/FilesMatch>/', $m22) === 1, 'Apache 2.2: index.php y page.php se vuelven a abrir (la sección posterior manda)');
     // la raíz de la web ya reescribe /api/* a index.php: lo que hay en cada carpeta del API no necesita servirse
     foreach (['lib', 'tools', 'generated', 'tests'] as $d) T::true(is_dir(dirname(__DIR__) . '/' . $d), "existe api/$d (y queda cerrada por la lista blanca)");
     $base = tmp_dir('tv-ht-');                                                                 // api/storage no se versiona (en una copia limpia no existe): se comprueba lo que crea el almacén al iniciarse

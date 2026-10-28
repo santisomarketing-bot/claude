@@ -2,7 +2,7 @@
 //   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login
 // Acceso: 5 contraseñas erróneas del mismo visitante contra una cuenta (o 15 contra cualquiera, o 30 contra una cuenta de cualquier visitante) = bloqueo de 1 hora; ver handleLogin.
 //   USUARIO   GET /api/auth/me · POST /api/auth/logout · GET /api/orders (manager: los 300 más recientes; client: solo los suyos, hasta 100)
-//   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · GET /api/admin/data
+//   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · GET /api/admin/data · /api/blog/… (solo existe en el servidor PHP: aquí responde 501)
 //             GET /api/messages · DELETE /api/messages/:id (mensajes de contacto) · POST /api/mail/test · GET /api/mail/status (correo)
 // Todo límite por visitante usa ipKey (IPv6 → su /64). Ninguna respuesta 500 lleva texto interno: {"ok":false,"error":"Error interno","id":"<8 hex>"} y el detalle va al registro con ese id.
 import { json, readJson, ApiError, clientIp, ipKey, randomHex } from './util.js';
@@ -157,6 +157,7 @@ async function route(request, env, deps, { path, cors, nowMs }) {
     if (!email || email.length > 254) return json({ ok: false, error: 'Correo no válido' }, 400, cors);
     await deleteUser(env, email); return json({ ok: true }, 200, cors);
   }
+  if (path === '/api/blog' || path.startsWith('/api/blog/')) return json({ ok: false, error: 'El blog del panel necesita el servidor PHP del hosting (esta instalación usa Cloudflare Workers, que no lo incluye).', code: 'blog_unavailable' }, 501, cors);
   return json({ ok: false, error: 'No encontrado' }, 404, cors);
 }
 

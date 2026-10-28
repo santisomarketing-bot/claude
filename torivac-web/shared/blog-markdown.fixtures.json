@@ -501,5 +501,32 @@
    "url": "blog/sin-barra",
    "ok": false
   }
+ ],
+ "lead": [
+  {
+   "md": "## Potencia\n\nElige la potencia con un **20 %** de margen.\n\nSegundo párrafo.",
+   "n": 155,
+   "text": "Elige la potencia con un 20 % de margen."
+  },
+  {
+   "md": "- uno\n- dos",
+   "n": 155,
+   "text": "uno dos"
+  },
+  {
+   "md": "![foto](/media/blog/a.jpg)\n\nTexto después de la imagen.",
+   "n": 155,
+   "text": "Texto después de la imagen."
+  },
+  {
+   "md": "Párrafo muy largo de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas de palabras sueltas fin.",
+   "n": 60,
+   "text": "Párrafo muy largo de palabras sueltas de palabras sueltas…"
+  },
+  {
+   "md": "",
+   "n": 155,
+   "text": ""
+  }
  ]
 }
