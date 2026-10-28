@@ -13,6 +13,7 @@ import * as TPL from './templates.mjs';
 import { productNode, itemListNode, postNode, jsonScript } from './lib/seo.mjs';
 import { THEMES, themeBootJs } from './lib/themes.mjs';
 import { plainTextScript } from './lib/shared-client.mjs';
+import { applyApproved } from './lib/proposals-apply.mjs';
 import crypto from 'node:crypto';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -92,6 +93,17 @@ for (const o of jl('content-overrides.json', { overrides: [] }).overrides) {
     p[o.field][lang] = bl.filter((b) => { const hit = b.t === 'table' && [].concat(o.first_cell).some((f) => (b.rows?.[0]?.[0]?.x || '').startsWith(f)); if (hit) hidden++; return !hit; });
   }
   console.log(`[OVERRIDE] ${p.name.es}: tabla oculta en ${hidden} idioma(s) · ${o.why.slice(0, 70)}…`);
+}
+// [PROPOSALS-APPLIED] propuestas aprobadas con SU texto desde el panel (data/catalog/proposals.applied.json, que sale de scripts/apply_proposals.mjs): sustituyen un párrafo, traducen una ficha o cambian
+//   el título de la portada. Se aplica sobre los datos en memoria (los JSON de data/catalog no se tocan) y todo lo escrito se escapa. Lo que no encaja se avisa aquí y en apply_proposals.mjs.
+{
+  const ap = jl('proposals.applied.json', { entries: [] }), entries = Array.isArray(ap.entries) ? ap.entries : [];
+  if (entries.length) {
+    const rep = applyApproved({ entries, pages, products, categories: [...byId.values()], seo: seoOv, langs: LANGS });
+    for (const a of rep.applied) console.log(`[PROPUESTA] ${a.id} aplicada: ${a.where}`);
+    for (const n of rep.notFound) console.warn(`[PROPUESTA] ${n.id} NO se aplicó: ${n.why}`);
+    if (rep.manual.length) console.log(`[PROPUESTA] ${rep.manual.length} aprobada(s) esperan trabajo a mano (${rep.manual.map((m) => m.id).join(', ')})`);
+  }
 }
 const nodes = new Map();
 for (const c of byId.values()) {
@@ -364,24 +376,26 @@ writeFile(DIST, 'assets/data/catalog.js', catalogJs);
 writeFile(DIST, 'assets/data/prices.js', `/* [DATA] precios — se regenera con scripts/build_prices.py (Sesión 6) */\nwindow.TV=window.TV||{};\nTV.prices=${JSON.stringify(prices)};\n`);
 
 // [ADMIN] datos de cobertura para la vista Contenido + página /admin/
-const adminProducts = products.map((p) => ({ id: p.id, name: p.name.es, cat: p.mainCategory ? p.mainCategory.name.es : '', st: { en: p.translation_status.en, fr: p.translation_status.fr, de: p.translation_status.de }, variants: p.variants.length, vtags: (p.voltage_tags || []).length, pdfs: p.pdfs.length }));
+const adminProducts = products.map((p) => ({ id: p.id, name: p.name.es, cat: p.mainCategory ? p.mainCategory.name.es : '', st: { en: p.translation_status.en, fr: p.translation_status.fr, de: p.translation_status.de }, variants: p.variants.length, vtags: (p.voltage_tags || []).length, pdfs: p.pdfs.length, paths: p.pathFor }));
+// Rutas de las páginas de cada categoría y de las portadas por idioma: la vista Propuestas las usa para enseñar la página real donde se probaría un cambio
+const adminCats = Object.fromEntries([...nodes.values()].map((c) => [c.id, c.pathFor])), adminHomes = Object.fromEntries(LANGS.map((l) => [l, site.home[l]]));
 const byRef = {}; for (const p of products) { const vs = p.variants.length ? p.variants : [{ ref: 'P' + p.id }]; for (const v of vs) byRef[v.ref] = { cat: p.mainCategory ? p.mainCategory.trail.map((c) => c.name.es).join(' ') : '' }; }
 // Propuestas de cambio y cobertura del catálogo son datos INTERNOS de gestión (incluyen carencias legales detectadas en la web original): con servidor solo los ve un manager
 //   (GET /api/admin/data, que lee estos archivos generados); sin servidor (demo con doble clic) van en la propia demo, que no es pública.
 if (LIVE) {
-  const data = { proposals, admin: { products: adminProducts, byRef } };
+  const data = { proposals, admin: { products: adminProducts, byRef, cats: adminCats, homes: adminHomes } };
   fs.writeFileSync(path.join(ROOT, 'backend-php', 'api', 'generated', 'admin-data.json'), JSON.stringify(data));
   fs.writeFileSync(path.join(ROOT, 'workers', 'api', 'src', 'generated', 'admin-data.js'), `// GENERADO por site/build.mjs (no editar a mano). Propuestas y cobertura del catálogo: solo para managers (GET /api/admin/data).\nexport default ${JSON.stringify(data)};\n`);
 } else {
   writeFile(DIST, 'assets/data/proposals.js', `window.TV=window.TV||{};TV.proposals=${JSON.stringify(proposals)};\n`);
-  writeFile(DIST, 'assets/data/admin-data.js', `window.TV=window.TV||{};TV.admin=${JSON.stringify({ products: adminProducts, byRef })};\n`);
+  writeFile(DIST, 'assets/data/admin-data.js', `window.TV=window.TV||{};TV.admin=${JSON.stringify({ products: adminProducts, byRef, cats: adminCats, homes: adminHomes })};\n`);
 }
 for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (!LIVE && fs.existsSync(path.join(CAT, f))) { fs.mkdirSync(path.join(DIST, 'assets', 'data'), { recursive: true }); fs.copyFileSync(path.join(CAT, f), path.join(DIST, 'assets', 'data', f)); }
 {
   const ctx = mkctx('es', '/admin/', 'admin');
   // Ruta relativa al recurso `s` desde /admin/ (assets del panel).
   const a = (s) => ctx.asset(s);
-  writeFile(DIST, 'admin/index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel · Torivac${API_URL ? '' : ' (demo)'}</title><link rel="icon" href="${a('assets/img/favicon.png')}">${['fonts', 'tokens', 'base', 'layout', 'components', 'admin'].map((c) => `<link rel="stylesheet" href="${a(`assets/css/${c}.css`)}">`).join('')}</head><body class="admin tv-admin" data-path="/admin/"><input type="hidden" id="logo-src" value="${a(site.logo)}"><div id="admin-root"></div><div class="toast" id="toast" role="status"></div>${jsonScript('tv-boot', { lang: 'es', paths: {} })}<script src="${a('assets/data/catalog.js')}"></script><script src="${a('assets/data/prices.js')}"></script>${API_URL ? '' : `<script src="${a('assets/data/proposals.js')}"></script><script src="${a('assets/data/admin-data.js')}"></script>`}<script src="${a('assets/js/quote.js')}"></script><script src="${a('assets/vendor/jspdf.umd.min.js')}"></script><script src="${a('assets/vendor/jspdf.plugin.autotable.min.js')}"></script><script src="${a('assets/vendor/xlsx.mini.min.js')}"></script><script src="${a('assets/js/pdf.js')}"></script><script src="${a('assets/js/price-sheet.js')}"></script><script src="${a('assets/js/admin-report.js')}"></script><script src="${a(API_URL ? 'assets/js/admin-live.js' : 'assets/js/admin.js')}"></script></body></html>`);
+  writeFile(DIST, 'admin/index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel · Torivac${API_URL ? '' : ' (demo)'}</title><link rel="icon" href="${a('assets/img/favicon.png')}">${['fonts', 'tokens', 'base', 'layout', 'components', 'admin'].map((c) => `<link rel="stylesheet" href="${a(`assets/css/${c}.css`)}">`).join('')}</head><body class="admin tv-admin" data-path="/admin/"><input type="hidden" id="logo-src" value="${a(site.logo)}"><div id="admin-root"></div><div class="toast" id="toast" role="status"></div>${jsonScript('tv-boot', { lang: 'es', paths: {} })}<script src="${a('assets/data/catalog.js')}"></script><script src="${a('assets/data/prices.js')}"></script>${API_URL ? '' : `<script src="${a('assets/data/proposals.js')}"></script><script src="${a('assets/data/admin-data.js')}"></script>`}<script src="${a('assets/js/quote.js')}"></script><script src="${a('assets/vendor/jspdf.umd.min.js')}"></script><script src="${a('assets/vendor/jspdf.plugin.autotable.min.js')}"></script><script src="${a('assets/vendor/xlsx.mini.min.js')}"></script><script src="${a('assets/js/pdf.js')}"></script><script src="${a('assets/js/price-sheet.js')}"></script><script src="${a('assets/js/admin-report.js')}"></script>${API_URL ? `<script src="${a('assets/js/admin-proposals.js')}"></script>` : ''}<script src="${a(API_URL ? 'assets/js/admin-live.js' : 'assets/js/admin.js')}"></script></body></html>`);
   count++;
 }
 

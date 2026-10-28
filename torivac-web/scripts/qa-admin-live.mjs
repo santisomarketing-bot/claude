@@ -4,14 +4,14 @@
 //   node scripts/qa-admin-live.mjs --php      contra el API PHP de cPanel (php -S) · ver scripts/lib/backends.mjs
 // Comprueba: login (error y acierto), menús por rol, pedidos (manager ve todos, cliente solo los suyos), precios (estado, subida con vista previa y aplicar,
 // sincronización manual), instrucción por IA (propone → vista previa → confirmar cambios grandes → aplicar), usuarios (alta/baja), propuestas persistentes,
-// que un cliente NO puede llamar a la API de un manager (403) aunque lo intente desde la consola, los mensajes de contacto (ver, estado del aviso, borrar), el panel de Correo (prueba
+// que un cliente NO puede llamar a la API de un manager (403) aunque lo intente desde la consola, las propuestas editables (editar, probar en la página real, aplicar, descartar y descargar), los mensajes de contacto (ver, estado del aviso, borrar), el panel de Correo (prueba
 // y fallo explicado) y el bloqueo de una hora tras 5 contraseñas erróneas.
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import os from 'node:os';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { startBackend, MASTER_TOKEN } from './lib/backends.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
@@ -48,7 +48,7 @@ const newPage = async () => {
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, acceptDownloads: true });
   await ctx.route('**/assets/data/catalog.js', async (route) => { const r = await route.fetch(); await route.fulfill({ response: r, body: (await r.text()).replace('http://api.invalid', API) }); });
   const page = await ctx.newPage(); const errs = [];
-  page.on('pageerror', (e) => errs.push(e.message)); page.on('console', (m) => { if (m.type() === 'error' && !/favicon|Failed to load resource/.test(m.text())) errs.push(m.text()); });
+  page.on('pageerror', (e) => errs.push(e.message)); page.on('console', (m) => { if (m.type() === 'error' && !/favicon|Failed to load resource|Blocked script execution/.test(m.text())) errs.push(m.text()); });          // «Blocked script execution»: el marco de la vista previa de Propuestas no ejecuta scripts a propósito (sandbox)
   return { ctx, page, errs };
 };
 /** Abre /admin/ y envía el formulario de acceso con el correo y la contraseña dados (no espera al resultado). */
@@ -130,7 +130,7 @@ console.log('\n4) instrucción en castellano con IA: propone → confirma → ap
   ok((await be.historyCount()) >= 1, 'queda histórico para poder volver atrás');
   await ctx.close(); }
 
-console.log('\n5) usuarios y propuestas');
+console.log('\n5) usuarios y salir');
 { const { ctx, page } = await newPage(); await login(page, 'jefa@torivac.com', 'Manager-Clave-2026');
   await page.click('.side nav a[href="#usuarios"]'); await page.waitForSelector('[data-new-user]');
   ok((await page.locator('table.spec tbody tr').count()) === 4, '4 usuarios');
@@ -141,12 +141,6 @@ console.log('\n5) usuarios y propuestas');
   ok(ok2.ok === true && ok2.user.role === 'client', 'el usuario nuevo puede entrar como cliente');
   page.once('dialog', (d) => d.accept()); await page.click('[data-del-user="nuevo@cliente.es"]'); await page.waitForFunction(() => document.querySelectorAll('table.spec tbody tr').length === 4);
   ok(true, 'usuario borrado (4)');
-  await page.click('.side nav a[href="#propuestas"]'); await page.waitForSelector('article.prop');
-  const id = await page.locator('[data-prop][data-v="ok"]').first().getAttribute('data-prop');
-  await page.locator('[data-prop][data-v="ok"]').first().click(); await page.waitForTimeout(500);
-  await page.reload(); await page.waitForSelector('article.prop');
-  const art = await page.locator(`article.prop:has([data-prop="${id}"])`).innerText();
-  ok(/aprobada/i.test(art), `la aprobación de ${id} se conserva tras recargar (guardada en el servidor)` + (/aprobada/i.test(art) ? '' : ' — «' + art.replace(/\s+/g, ' ').slice(0, 160) + '»'));
   await page.click('[data-logout]'); await page.waitForSelector('[data-login]'); ok(true, 'salir devuelve al acceso');
   await ctx.close(); }
 
@@ -197,6 +191,83 @@ console.log('\n8) fuerza bruta: 5 contraseñas erróneas bloquean ese acceso dur
   ok(/una hora/i.test(await page.locator('[data-err]').innerText()) && (await page.locator('.side nav a').count()) === 0, `el panel lo muestra: «${await page.locator('[data-err]').innerText()}»`);
   const other = await fetch(API + '/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: SITE }, body: JSON.stringify({ email: 'marta@taller.es', password: 'Cliente-Clave-2026' }) }).then((r) => r.status);
   ok(other === 200, `otra cuenta del mismo visitante sigue entrando (${other})`);
+  await ctx.close(); }
+
+console.log('\n9) propuestas editables: escribir tu versión, probarla en la página real, aplicarla y descargar lo aprobado');
+{ const { ctx, page, errs } = await newPage(); await login(page, 'jefa@torivac.com', 'Manager-Clave-2026');
+  await page.click('.side nav a[href="#propuestas"]'); await page.waitForSelector('details.prop');
+  const total = await page.locator('details.prop').count();
+  ok(total > 100, `la vista lista las propuestas pendientes (${total})`);
+  /** Busca una propuesta por texto (la búsqueda se confirma con Intro) y la deja abierta; devuelve su tarjeta. */
+  const open = async (q) => { await page.fill('[data-pa-q]', q); await page.press('[data-pa-q]', 'Enter'); await page.waitForFunction((n) => document.querySelectorAll('details.prop').length === n, 1, { timeout: 5000 }); const card = page.locator('details.prop').first(); await card.locator('summary').click(); return card; };
+  /** Vacía la búsqueda y la confirma (para volver a ver todas las del estado elegido). */
+  const clearQ = async () => { await page.fill('[data-pa-q]', ''); await page.press('[data-pa-q]', 'Enter'); };
+  // a) sustituir un párrafo del aviso legal: traer el párrafo, cambiarlo, probarlo y aplicarlo
+  let card = await open('PR-57830');
+  ok((await card.locator('[name=find]').inputValue()).startsWith('preferencias de navegación u publicitarias'), 'el trozo a sustituir sale de lo que la propuesta cita');
+  ok((await card.locator('input[type=radio]:checked').getAttribute('value')) === 'replace', 'por defecto: sustituir el párrafo');
+  await card.locator('[data-pa=load]').click(); await page.waitForFunction(() => /perfiles demogr/.test(document.querySelector('details.prop[open] [name=text]').value), null, { timeout: 8000 });
+  const par = await card.locator('[name=text]').inputValue();
+  ok(par.length > 80 && /preferencias de navegación u publicitarias/.test(par), `«Traer el párrafo de la web» pone el párrafo entero para editarlo (${par.length} caracteres)`);
+  const fixed = par.replace('navegación u publicitarias', 'navegación o publicitarias');
+  await card.locator('[name=text]').fill(fixed);
+  await card.locator('[data-pa=try]').click(); await page.waitForFunction(() => /Así quedaría el párrafo/.test(document.querySelector('details.prop[open] [data-try-msg]').textContent), null, { timeout: 8000 });
+  const fr = card.locator('iframe.tryframe'); const inner = await (await fr.elementHandle()).contentFrame();
+  const hl = await inner.evaluate(() => { const e = document.querySelector('[data-tv-try]'); return e ? e.textContent : null; });
+  ok(hl && /navegación o publicitarias/.test(hl) && !/navegación u publicitarias/.test(hl), 'la vista previa enseña la página real con el párrafo cambiado y resaltado');
+  const live = await fetch(SITE + '/aviso-legal-2/index.html').then((r) => r.text());
+  ok(/navegación u publicitarias/.test(live) && !/navegación o publicitarias/.test(live), 'y la web de verdad NO ha cambiado');
+  await card.locator('button[type=submit]').click(); await page.waitForFunction((n) => document.querySelectorAll('details.prop').length < n, 1, { timeout: 5000 }).catch(() => {});
+  ok(/Aprobada con tu texto/.test(await toastText(page)), 'Aplicar guarda la propuesta aprobada con tu texto');
+  // b) persiste en el servidor
+  await page.reload(); await page.waitForSelector('[data-pa-list]');
+  await page.click('[data-pa=status][data-v=ok]'); await page.waitForSelector('details.prop');
+  card = page.locator('details.prop').first(); await card.locator('summary').click();
+  ok((await page.locator('details.prop').count()) === 1 && /aprobada con tu versión/i.test(await card.locator('summary').innerText()) && (await card.locator('[name=text]').inputValue()) === fixed, 'tras recargar sigue aprobada y con SU texto (guardado en el servidor)');
+  // c) lo descargado se puede aplicar a la web
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('[data-pa=export]')]);
+  const exp = JSON.parse(fs.readFileSync(await dl.path(), 'utf8'));
+  ok(exp.kind === 'torivac-propuestas-aprobadas' && exp.approved.length === 1 && exp.approved[0].id === 'PR-57830' && exp.approved[0].mode === 'replace' && exp.approved[0].text === fixed && exp.approved[0].targets.some((t) => t.path === '/aviso-legal-2/'), 'Descargar aprobadas: JSON con el texto, el modo y la página destino');
+  const expFile = path.join(os.tmpdir(), 'tv-aprobadas-' + process.pid + '.json'); fs.writeFileSync(expFile, JSON.stringify(exp));
+  const cli = spawnSync('node', [path.join(ROOT, 'scripts/apply_proposals.mjs'), `--file=${expFile}`, '--dry'], { encoding: 'utf8' });
+  ok(cli.status === 0 && /✓ PR-57830/.test(cli.stdout), `scripts/apply_proposals.mjs lo acepta: ${(cli.stdout || cli.stderr).split('\n').find((l) => /PR-57830/.test(l)) || (cli.stderr || '').slice(0, 120)}`);
+  fs.rmSync(expFile, { force: true });
+  // d) texto no válido: el servidor lo rechaza y la tarjeta lo dice junto al campo
+  await page.click('[data-pa=status][data-v=all]'); await clearQ(); await page.waitForSelector('details.prop');
+  card = await open('PR-57830');
+  await card.locator('[name=text]').fill('Esto lleva <script>alert(1)</script> dentro');
+  await card.locator('button[type=submit]').click(); await page.waitForFunction(() => /Escribe solo texto/.test(document.querySelector('details.prop[open] [data-msg]').textContent), null, { timeout: 5000 });
+  ok((await card.locator('[name=text]').getAttribute('aria-invalid')) === 'true', 'un texto con código se rechaza con aviso junto al campo');
+  await card.locator('[name=text]').fill(fixed);
+  // e) deshacer
+  await card.locator('[data-pa=undo]').click(); await page.waitForFunction(() => !/aprobada con tu versión/i.test(document.querySelector('details.prop[open] summary').textContent), null, { timeout: 5000 });
+  ok(Object.keys((await fetch(API + '/api/proposals/state', { headers: { Authorization: 'Bearer ' + MASTER_TOKEN } }).then((r) => r.json())).state).length === 0, 'Deshacer deja el servidor como estaba');
+  // f) traducción que falta: se prueba en la ficha, con el aviso de «traducción pendiente» fuera
+  await page.click('[data-pa=status][data-v=pending]'); await clearQ(); await page.waitForSelector('details.prop');
+  card = await open('PR-14427');
+  ok((await card.locator('[name=text]').inputValue()) === '' && /Traducción/.test(await card.locator('[data-lbl]').innerText()), 'una traducción que falta empieza vacía (nunca se traduce sola) y pide la traducción');
+  await card.locator('[name=text]').fill('Single-phase voltage stabiliser, BAVS series.\n\nSecond paragraph of the translation.');
+  await card.locator('[data-pa=try]').click(); await page.waitForFunction(() => /Así se vería la descripción/.test(document.querySelector('details.prop[open] [data-try-msg]').textContent), null, { timeout: 8000 });
+  const inner2 = await (await card.locator('iframe.tryframe').elementHandle()).contentFrame();
+  const desc = await inner2.evaluate(() => { const d = document.querySelector('.pdp-desc'); return d ? d.textContent.trim() : null; });
+  ok(desc && /Single-phase voltage stabiliser/.test(desc) && /Second paragraph/.test(desc), 'la ficha en inglés enseña tu traducción');
+  await card.locator('button[type=submit]').click(); await page.waitForTimeout(500);
+  // g) descartar con una nota
+  card = await open('PR-14528');
+  await card.locator('[name=note]').fill('Lo traduce la agencia');
+  await card.locator('[data-pa=discard]').click(); await page.waitForTimeout(500);
+  await page.click('[data-pa=status][data-v=no]'); await clearQ(); await page.waitForSelector('details.prop');
+  ok((await page.locator('details.prop').count()) === 1 && /descartada/i.test(await page.locator('details.prop').first().innerText()), 'Descartar la manda a «Descartadas»');
+  const st = (await fetch(API + '/api/proposals/state', { headers: { Authorization: 'Bearer ' + MASTER_TOKEN } }).then((r) => r.json())).state;
+  ok(st['PR-14528'] && st['PR-14528'].state === 'no' && st['PR-14528'].note === 'Lo traduce la agencia' && st['PR-14427'] && st['PR-14427'].mode === 'translate' && /Second paragraph/.test(st['PR-14427'].text), 'el servidor guarda la nota del descarte y la traducción aprobada');
+  // h) título SEO: sale con los cuatro idiomas y se ve como en una búsqueda
+  await page.click('[data-pa=status][data-v=pending]'); await clearQ(); await page.waitForSelector('details.prop');
+  card = await open('PR-94529');
+  const lines = (await card.locator('[name=text]').inputValue()).split('\n');
+  ok(lines.length === 4 && lines.every((l, i) => l.startsWith(['es', 'en', 'fr', 'de'][i] + ': ')), 'el título de la portada sale con una línea por idioma: ' + lines.map((l) => l.slice(0, 18)).join(' | '));
+  await card.locator('[data-pa=try]').click(); await page.waitForSelector('details.prop[open] .serp:not([hidden])', { timeout: 8000 });
+  ok(/Torivac/.test(await card.locator('.serp-title').innerText()) && (await card.locator('.serp-url').innerText()).startsWith('http'), 'se dibuja como resultado de búsqueda');
+  ok(!errs.length, 'sin errores de JS' + (errs.length ? ': ' + errs[0] : ''));
   await ctx.close(); }
 
 await browser.close(); await be.stop(); fs.rmSync(DIST, { recursive: true, force: true });

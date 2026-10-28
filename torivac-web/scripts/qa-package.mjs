@@ -49,7 +49,7 @@ await ctx.route('**/*', async (route) => {
   const r = await route.fetch(); await route.fulfill({ response: r, headers: { ...r.headers(), 'content-security-policy': csp } });
 });
 const page = await ctx.newPage();
-const errs = []; page.on('pageerror', (e) => errs.push(e.message)); page.on('console', (m) => { if (m.type() === 'error' && !/favicon|Failed to load resource/.test(m.text())) errs.push(m.text()); });
+const errs = []; page.on('pageerror', (e) => errs.push(e.message)); page.on('console', (m) => { if (m.type() === 'error' && !/favicon|Failed to load resource|Blocked script execution/.test(m.text())) errs.push(m.text()); });          // «Blocked script execution»: el marco de la vista previa de Propuestas no ejecuta scripts a propósito
 
 console.log('\n1) el paquete no lleva precios; llegan del servidor');
 ok(bundled.mode === 'none' && Object.keys(bundled.items).length === 0, `prices.js del paquete vacío (modo ${bundled.mode})`);
@@ -90,6 +90,14 @@ ok((await page.locator('.kpi').count()) === 4, 'el manager entra en el panel y v
 await page.click('.side nav a[href="#ajustes"]'); await page.waitForSelector('.diag li', { timeout: 8000 });
 const diag = await page.locator('.diag').innerText();
 ok((await page.locator('.diag li').count()) >= 10 && !/✗/.test(diag), `Ajustes → Diagnóstico del servidor: ${await page.locator('.diag li').count()} comprobaciones, sin fallos`);
+
+// la vista previa de una propuesta abre la página real en un marco: con la CSP del .htaccess aplicada (frame-src 'self') tiene que cargarse y enseñar el cambio
+await page.click('.side nav a[href="#propuestas"]'); await page.waitForSelector('details.prop', { timeout: 8000 });
+await page.fill('[data-pa-q]', 'PR-57830'); await page.press('[data-pa-q]', 'Enter'); await page.waitForFunction(() => document.querySelectorAll('details.prop').length === 1);
+await page.locator('details.prop summary').click(); await page.locator('[data-pa=load]').click();
+await page.waitForFunction(() => /perfiles demogr/.test(document.querySelector('details.prop[open] [name=text]').value), null, { timeout: 8000 });
+await page.locator('[data-pa=try]').click(); await page.waitForFunction(() => /Así quedaría el párrafo/.test(document.querySelector('details.prop[open] [data-try-msg]').textContent), null, { timeout: 8000 });
+ok(true, 'Propuestas: la vista previa de la página real carga bajo la CSP del paquete y enseña el cambio');
 
 console.log('\n4) seguridad del API');
 /** Pide una ruta del API y devuelve el código HTTP y si la respuesta enseña código PHP. */

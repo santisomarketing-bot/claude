@@ -45,3 +45,22 @@ body.admin{background:var(--bg)}
 .small{font-size:var(--fs-0)}
 @media (max-width:860px){.shell{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center}.side nav{flex-direction:row;flex-wrap:wrap;flex:1 1 100%;order:3}.cols,.cols3{grid-template-columns:1fr}.main{padding:var(--s-4)}}
 .diag{list-style:none;margin:.6rem 0 0;padding:0}.diag li{padding:.3rem 0;border-bottom:1px solid var(--line)}.diag li:last-child{border-bottom:0}
+/* ---- Propuestas editables (admin-proposals.js) ---- */
+.prop-bar{display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:flex-end;margin:0 0 var(--s-4);padding:var(--s-3);background:var(--paper);border:1px solid var(--line)}
+.prop-bar label{display:grid;gap:4px;font-size:var(--fs-0);font-weight:600}
+.prop-bar select,.prop-bar input[type=search]{padding:.45rem .6rem;border:1px solid var(--line-strong);border-radius:var(--radius);min-width:180px}
+details.prop>summary{cursor:pointer;display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center;list-style-position:inside}
+details.prop>summary:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+details.prop[open]>summary{margin-bottom:var(--s-3)}
+details.prop .prop-body{display:grid;gap:var(--s-2)}
+details.prop .prop-body>p{margin:0}
+details.prop .modes{border:0;margin:0 0 var(--s-2);padding:0}
+details.prop .modes legend{padding:0;margin-bottom:var(--s-1);font-weight:700;font-size:var(--fs-0)}
+details.prop .actions{display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center}
+details.prop [aria-invalid=true]{border-color:var(--err);outline:2px solid var(--err)}
+.tryarea{margin-top:var(--s-3);padding:var(--s-3);background:#fffaf0;border:1px dashed var(--line-strong)}
+.tryframe{width:100%;height:480px;border:1px solid var(--line-strong);background:#fff}
+.serp{max-width:600px;margin:0 0 var(--s-3);padding:var(--s-3);background:#fff;border:1px solid var(--line);font-family:Arial,sans-serif}
+.serp-title{color:#1a0dab;font-size:18px;line-height:1.3}
+.serp-url{color:#188038;font-size:13px}
+.serp-desc{color:#4d5156;font-size:13px;line-height:1.5}

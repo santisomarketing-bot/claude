@@ -311,13 +311,18 @@ final class Router
         }
         if ($path === '/prices/ai/apply' && $m === 'POST') return new Response(['ok' => true] + Ai::apply($req->json() ?? [], $who['sub'], $catalog));      // aplica lo que la persona ha revisado y confirmado
         if ($path === '/proposals/state' && $m === 'GET') return new Response(['ok' => true, 'state' => Util::obj((array) Store::get('proposals:state'))]);
-        if ($path === '/proposals/state' && $m === 'POST') {                                 // aprobar / rechazar / deshacer una propuesta (no publica nada por sí solo)
+        if ($path === '/proposals/state' && $m === 'POST') {                                 // aprobar (con SU texto), rechazar o deshacer una propuesta (no publica nada por sí solo)
             $b = $req->json() ?? [];
             $id = is_string($b['id'] ?? null) ? $b['id'] : '';
             $st = is_string($b['state'] ?? null) ? $b['state'] : '';
             if (!preg_match('/^PR-\d{3,6}$/', $id) || !in_array($st, ['ok', 'no', ''], true)) return new Response(['ok' => false, 'error' => 'Propuesta o estado no válidos'], 400);
             $state = (array) Store::get('proposals:state');
-            if ($st !== '') $state[$id] = ['state' => $st, 'by' => $who['sub'], 'at' => Util::iso()]; else unset($state[$id]);
+            if ($st === '') unset($state[$id]);
+            else {
+                $e = Proposals::entry($b, $st, $who['sub']);
+                if (isset($e['error'])) return Orders::badRequest($e);
+                $state[$id] = $e['entry'];
+            }
             Store::put('proposals:state', (object) $state);
             return new Response(['ok' => true, 'state' => Util::obj($state)]);
         }

@@ -1,7 +1,7 @@
 # Torivac · documentación para programadores
 
 Guía para quien tenga que **mantener o ampliar** la web nueva de Torivac. Complementa a `ARQUITECTURA.md` (contrato de datos), `PLAN.md` (sesiones),
-`INDICE-CODIGO.md` (índice generado: cada archivo y cada función), `CONVENCIONES.md` (etiquetas del código), `ENTREGA-DEMO.md` (qué es real y qué es simulado), `ACTUALIZAR-SIN-ROMPER.md` (cómo publicar cambios con una vuelta atrás), `SEGURIDAD.md` (medidas, pruebas y límites), `CORREO.md` (SMTP, Brevo o Resend; probar y arreglar el envío) y `SESION-21.md` (lo siguiente).
+`INDICE-CODIGO.md` (índice generado: cada archivo y cada función), `CONVENCIONES.md` (etiquetas del código), `ENTREGA-DEMO.md` (qué es real y qué es simulado), `ACTUALIZAR-SIN-ROMPER.md` (cómo publicar cambios con una vuelta atrás), `SEGURIDAD.md` (medidas, pruebas y límites), `CORREO.md` (SMTP, Brevo o Resend; probar y arreglar el envío), `PROPUESTAS.md` (editar, probar y aplicar las mejoras del panel) y `SESION-21.md` (lo siguiente).
 
 ## 1. Qué es
 Una web **100 % estática** (HTML + CSS + JS vanilla, sin frameworks) que replica grupotorivac.com en 4 idiomas (es en la raíz, `/en`, `/fr`, `/de`) y añade:
@@ -163,3 +163,6 @@ Motivo: en el entorno de pruebas el formulario de contacto decía «Mensaje reci
 - **Contacto, orden de comprobaciones** (PHP): primero se valida y después se gasta el cupo de 5 mensajes cada 10 min (como el Worker): un aviso de texto no deja sin cupo a quien escribe de buena fe.
 - **Sondeos de WordPress**: `.htaccess` responde 410 a `wp-login.php`, `xmlrpc.php`, `wp-admin`… (el paquete lo verifica con rutas de ejemplo).
 - Contraseñas nuevas de **12 o más** caracteres (la guía y el panel decían 10).
+
+## 15. Propuestas editables (S24b)
+Las 118 propuestas del panel ya no son solo «aprobar o rechazar»: cada una se **edita** (la persona escribe SU texto), se **prueba** en la página real (marco aislado, sin publicar nada) y se **aplica** (queda aprobada con su texto en `proposals:state`, con `mode`, `text`, `find` y `note`). El panel descarga lo aprobado (JSON) y `scripts/apply_proposals.mjs` lo comprueba sobre el catálogo real y lo guarda en `data/catalog/proposals.applied.json`, que `site/build.mjs` aplica al compilar (`site/lib/proposals-apply.mjs`: sustituir un párrafo, traducir una ficha, cambiar el título de la portada; todo escapado). Guía: `PROPUESTAS.md`. Código: `site/assets/js/admin-proposals.js`, `backend-php/api/lib/Proposals.php`, `workers/api/src/proposals.js`. Pruebas: `ProposalsTest.php`, `proposals.test.js`, `scripts/test-proposals.mjs` y la sección 9 de `scripts/qa-admin-live.mjs`. Los identificadores `PR-…` aceptan de 3 a 6 cifras en los dos servidores (el Worker aceptaba solo hasta 5).

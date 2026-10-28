@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1284/1284 funciones descritas (100 %) · 166/166 archivos con cabecera.
+**Cobertura**: 1360/1360 funciones descritas (100 %) · 174/174 archivos con cabecera.
 
 
 ## `site/`
@@ -11,37 +11,37 @@
 
 [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio] [--out=carpeta] Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS). Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
 
-Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[ORIGINAL]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
+Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[PROPOSALS-APPLIED]` · `[ORIGINAL]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
 
-- `arg0` (l. 21) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `arg` (l. 24) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `jl` (l. 38) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
-- `normName` (l. 61) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
-- `depthOf` (l. 65) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
-- `canon` (l. 68) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
-- `subtreeIds` (l. 104) — Ids de una categoría y de todas sus descendientes.
-- `prodIdsOf` (l. 106) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
-- `visible` (l. 110) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
-- `prune` (l. 112) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
-- `pth` (l. 133) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
-- `pickCats` (l. 182) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
-- `emit` (l. 205) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
-- `mkctx` (l. 207) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
-- `fitTitle` (l. 212) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
-- `crumbHome` (l. 214) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
-- `crumbProducts` (l. 216) — Miga de pan «Productos» del idioma `lang`: { name, path }.
-- `pickAlt` (l. 218) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
-- `absImg` (l. 220) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
-- `alts` (l. 225) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
-- `a` (l. 383) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 400) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `css` (l. 410) — Texto del archivo site/assets/css/<n>.css.
-- `xml` (l. 430) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 432) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 444) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 466) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
-- `hashOf` (l. 484) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
-- `walk` (l. 494) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
+- `arg0` (l. 22) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `arg` (l. 25) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `jl` (l. 39) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
+- `normName` (l. 62) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
+- `depthOf` (l. 66) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
+- `canon` (l. 69) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
+- `subtreeIds` (l. 116) — Ids de una categoría y de todas sus descendientes.
+- `prodIdsOf` (l. 118) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
+- `visible` (l. 122) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
+- `prune` (l. 124) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
+- `pth` (l. 145) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
+- `pickCats` (l. 194) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
+- `emit` (l. 217) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
+- `mkctx` (l. 219) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
+- `fitTitle` (l. 224) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
+- `crumbHome` (l. 226) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
+- `crumbProducts` (l. 228) — Miga de pan «Productos» del idioma `lang`: { name, path }.
+- `pickAlt` (l. 230) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
+- `absImg` (l. 232) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
+- `alts` (l. 237) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
+- `a` (l. 397) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
+- `copyDir` (l. 414) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 424) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 444) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 446) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 458) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 480) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `hashOf` (l. 498) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+- `walk` (l. 508) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
 
 ### `templates.mjs`
 
@@ -128,6 +128,24 @@ Secciones: `[I18N]`
 - `countLabel` (l. 137) — «1 producto / 2 productos» en los 4 idiomas
 - `refLabel` (l. 139) — «1 referencia / 2 referencias» en los 4 idiomas.
 - `t` (l. 141) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
+
+### `proposals-apply.mjs`
+
+[PROPOSALS-APPLY] Aplica al contenido de la web las propuestas que el manager aprobó con SU texto desde el panel (data/catalog/proposals.applied.json, que sale de scripts/apply_proposals.mjs a partir del archivo que descarga el panel). La usan site/build.mjs (al compilar) y scripts/apply_proposals.mjs (para probar antes de guardar): la misma función, así lo que se comprueba es lo que se publica.
+
+Secciones: `[PROPOSALS-APPLY]`
+
+- `decode` (l. 16) — Entidades HTML más comunes → texto.
+- `textOfHtml` (l. 23) — Texto de un trozo de HTML en línea (sin etiquetas ni entidades).
+- `norm` (l. 25) — Texto comparable: sin tildes de comillas y guiones tipográficos, espacios únicos, minúsculas.
+- `paragraphs` (l. 28) — Texto del manager → bloques `p` (un párrafo por grupo de líneas separado por una línea en blanco; los saltos sueltos son <br>), todo escapado.
+- `spots` (l. 33) — Dónde está el texto de un bloque que se puede sustituir → lista de «sitios»: { text, set(newText) } (cada sitio sabe cómo cambiarse). Tipos: p · h · ul/ol · celdas de tabla.
+- `pageBlocks` (l. 47) — Todas las listas de bloques de una página (secciones) → array de arrays.
+- `replaceIn` (l. 49) — Sustituye el primer sitio de `lists` cuyo texto contiene `find` → true si lo encontró.
+- `listsFor` (l. 57) — Listas de bloques de la página `path` en `lang`: una página suelta (pages), la ficha de un producto (description y short) o una categoría (description); [] si no existe. Las rutas se comparan sin barra final.
+- `same` (l. 59) — ¿Son la misma ruta (sin contar la barra final)?
+- `parseTitles` (l. 70) — Líneas «es: título» → { es, en, fr, de } (solo los idiomas que vengan); null si no hay ninguna válida.
+- `applyApproved` (l. 77) — Aplica las entradas aprobadas (ver arriba) → { applied, notFound, manual }. No lanza por una entrada que no encaja: la anota en notFound.
 
 ### `render.mjs`
 
@@ -229,11 +247,58 @@ Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[
 - `applyUpload` (l. 219) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
 - `runPrompt` (l. 233) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
 - `applyProposal` (l. 249) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
-- `V.propuestas` (l. 258) — Vista Propuestas (manager): lista las propuestas de cambio con su estado en el servidor para aprobar, rechazar o deshacer.
-- `V.usuarios` (l. 273) — Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes.
-- `onClick` (l. 283) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF.
-- `bind` (l. 302) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
-- `render` (l. 333) — Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
+- `V.propuestas` (l. 259) — Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js).
+- `V.usuarios` (l. 263) — Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes.
+- `onClick` (l. 273) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF.
+- `bind` (l. 291) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
+- `render` (l. 323) — Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
+
+### `admin-proposals.js`
+
+[ADMIN-PROPOSALS] Vista «Propuestas» del panel real (admin-live.js): cada propuesta de mejora se puede EDITAR, PROBAR en la página real y APLICAR. · Editar: la persona escribe SU texto (cómo debe quedar el párrafo, la traducción que falta, el título de la portada o la decisión que toma). · Probar: abre la página real en un marco y enseña el cambio puesto en su sitio (resaltado) sin publicar nada; la web de verdad no cambia.
+
+Secciones: `[ADMIN-PROPOSALS]` · `[CLASES]` · `[DESTINOS]` · `[HTML]` · `[PREVIA]` · `[ACCIONES]` · `[EXPORTAR]`
+
+- `esc` (l. 18) — Escapa & < > " para insertar texto en HTML; null y undefined dan cadena vacía.
+- `kindOf` (l. 29) — Cómo se edita una propuesta: replace (sustituir un párrafo de la web) · translate (descripción de un producto en otro idioma) · title (títulos de la portada) · decide (una decisión o dato para el equipo).
+- `literal` (l. 36) — Fragmento literal de la web que describe la propuesta: el texto más largo entre comillas ('…' o «…») de web_value o, si no hay, web_value entero (sin puntos suspensivos al final).
+- `hasQuoted` (l. 43) — ¿Aparece entre comillas en web_value (es decir, es un trozo literal de la página y no una descripción del problema)?
+- `defaultMode` (l. 45) — Modo por defecto de una propuesta de tipo «replace»: sustituir si hay un trozo literal; añadir un párrafo nuevo si solo hay una descripción del problema.
+- `langOfPath` (l. 55) — Idioma de una ruta de la web (/en/…, /fr/…, /de/…; el resto es español).
+- `targets` (l. 57) — Páginas [{lang, path, label}] donde la propuesta se aplicaría, sin repetir: las que trae (pages), la ruta entre paréntesis del nombre, la ficha del producto, la categoría o las portadas (títulos).
+- `add` (l. 60) — Añade una página destino si no estaba ya.
+- `frameUrl` (l. 71) — Ruta de la web → dirección que se abre desde /admin/ (un nivel por encima), en modo «embed» y con index.html si la web no usa URL limpias.
+- `statusOf` (l. 79) — Estado guardado de una propuesta: 'ok' · 'no' · ''.
+- `stateTag` (l. 81) — Etiqueta de estado de la cabecera de una tarjeta.
+- `labelText` (l. 83) — Texto del campo principal según el tipo de edición.
+- `initialText` (l. 90) — Valor inicial del campo de texto: lo guardado y, si no hay, los títulos actuales (propuesta SEO) o nada.
+- `modeRadios` (l. 96) — HTML de los botones de modo (sustituir / añadir / solo decisión) de una propuesta de tipo «replace».
+- `cardHtml` (l. 101) — HTML de una propuesta: cabecera plegable con su estado y, dentro, lo que dice la web, el formulario de edición y el sitio de la vista previa.
+- `filtered` (l. 118) — Propuestas que cumplen el filtro actual (estado, tipo y búsqueda), las más graves primero.
+- `counts` (l. 130) — Contadores por estado (pendientes · aprobadas · descartadas · todas).
+- `barHtml` (l. 136) — Barra de filtros: estado (botones), tipo, búsqueda y la descarga de las aprobadas.
+- `listHtml` (l. 145) — HTML de la lista (tarjetas) del filtro actual; el sitio de las tarjetas se rellena aparte para no perder el foco al teclear en la búsqueda.
+- `A.view` (l. 150) — Vista Propuestas: explicación en tres pasos, barra de filtros y la lista.
+- `norm` (l. 162) — Texto comparable: sin comillas ni guiones tipográficos, espacios únicos, minúsculas.
+- `findBlock` (l. 164) — Elemento de texto más pequeño de la página (párrafo, título, elemento de lista o celda) cuyo texto contiene `find`; null si no hay.
+- `mark` (l. 175) — Resalta un elemento del marco para que se vea dónde cae el cambio.
+- `paras` (l. 177) — Párrafos de un texto: separados por líneas en blanco, sin vacíos.
+- `putText` (l. 179) — Pone el texto de la persona en un elemento (con textContent) y, si hay varios párrafos y el elemento es un párrafo, añade los demás detrás.
+- `metaDesc` (l. 185) — Descripción meta de la página del marco ('' si no la tiene).
+- `previewIn` (l. 190) — Pone en el documento `doc` del marco la versión `v` ({mode, find, text}) de la propuesta `p` para la página `t` → { ok, msg, serp? }. Cada modo cambia un sitio distinto: replace (el párrafo), add (un
+- `drawSerp` (l. 223) — Dibuja el resultado de búsqueda de ejemplo (título, dirección y descripción) con los textos de la persona, sin HTML.
+- `readForm` (l. 229) — Lee la versión de la persona del formulario de una tarjeta → {mode, find, text, note}.
+- `runTry` (l. 234) — Abre (o actualiza) la vista previa de una tarjeta: el marco con la página destino elegida y el cambio puesto.
+- `runLoad` (l. 251) — «Traer el párrafo de la web»: abre la página, busca el párrafo que contiene el texto indicado y lo pone entero en el recuadro para editarlo en su sitio.
+- `showError` (l. 267) — Mensaje de error del servidor para un campo: lo pone en la tarjeta y marca el campo si el servidor dijo cuál.
+- `redraw` (l. 273) — Vuelve a pintar una tarjeta con el estado actual, manteniéndola abierta.
+- `refreshBar` (l. 280) — Repinta la barra de filtros (los contadores cambian al aprobar o descartar).
+- `save` (l. 282) — Guarda el estado de una propuesta en el servidor (ok con su texto, no con nota, o '' para deshacer) y repinta la tarjeta.
+- `exportData` (l. 304) — Datos de las propuestas aprobadas con su texto → objeto que se descarga como JSON (lo lee scripts/apply_proposals.mjs).
+- `doExport` (l. 316) — Descarga las propuestas aprobadas como archivo JSON (propuestas-aprobadas-AAAA-MM-DD.json).
+- `A.bind` (l. 324) — Engancha los clics, cambios y envíos de la vista (delegación de eventos sobre `root`). Los eventos se enlazan UNA sola vez (root no se repinta, sus nodos sí); `ctx` se actualiza cada vez.
+- `cardOf` (l. 329) — Propuesta de la tarjeta que contiene el elemento.
+- `relist` (l. 331) — Repinta la lista con el filtro actual.
 
 ### `admin-report.js`
 
@@ -829,6 +894,19 @@ Sesión 2 · Mapa de traducciones según WPML (sondeo de solo lectura: GET sin s
 - `main` (l. 57) — Sondea la URL de cada categoría en en/fr/de, guarda wpml-probe.json y, con --compare, lista las discrepancias.
 - `compare` (l. 76) — Discrepancias entre el mapa actual (hreflang + co-ocurrencia) y lo que dice WPML.
 
+### `apply_proposals.mjs`
+
+[APPLY-PROPOSALS] Pasa a la web las propuestas que el manager aprobó con su texto en el panel (Propuestas → «Descargar aprobadas»). node scripts/apply_proposals.mjs --file=propuestas-aprobadas-2026-10-28.json            comprueba y guarda en data/catalog/proposals.applied.json (se mezcla con lo que ya hubiera, por id) node scripts/apply_proposals.mjs --file=… --replace                                       el archivo guardado pasa a ser EXACTAMENTE lo del archivo descargado (así se deshace lo que ya no está aprobado)
+
+Secciones: `[APPLY-PROPOSALS]`
+
+- `arg` (l. 17) — Valor de la opción --k=valor de la línea de comandos ('' si no se pasó).
+- `flag` (l. 19) — ¿Se pasó la opción --k?
+- `load` (l. 21) — Lee un JSON de data/catalog (o el valor por defecto si no existe).
+- `die` (l. 23) — Termina con un mensaje de error.
+- `str` (l. 34) — Texto recortado de una entrada del archivo (cadena o vacío).
+- `clone` (l. 50) — prueba sobre el catálogo real (copias: no se toca nada)
+
 ### `audit_i18n.mjs`
 
 [AUDIT-I18N] Lista, por idioma, los textos de interfaz que escribió el proyecto (los de site/lib/i18n.mjs) y que NO existen tal cual en la web original, para que alguien que domine cada idioma los valide antes de publicar. Los textos del contenido (fichas, páginas, entradas, menús y pie) vienen de la web original sin tocar y no pasan por aquí. node scripts/audit_i18n.mjs            reescribe docs/TEXTOS-DE-INTERFAZ.md
@@ -943,6 +1021,8 @@ Secciones: `[QA-ADMIN-LIVE]`
 - `login` (l. 55) — Abre /admin/ y envía el formulario de acceso con el correo y la contraseña dados (no espera al resultado).
 - `navs` (l. 57) — Textos de los enlaces del menú lateral del panel.
 - `toastText` (l. 59) — Texto del aviso emergente (#toast), leído tras una pausa corta para que aparezca.
+- `open` (l. 202) — Busca una propuesta por texto (la búsqueda se confirma con Intro) y la deja abierta; devuelve su tarjeta.
+- `clearQ` (l. 204) — Vacía la búsqueda y la confirma (para volver a ver todas las del estado elegido).
 
 ### `qa-art.mjs`
 
@@ -1108,6 +1188,19 @@ Secciones: `[TEST-PLAIN-TEXT]`
 - `load` (l. 31) — Ejecuta el script generado en un entorno aislado (con `RegExp` propio si se indica) y devuelve TV.PlainText.
 - `Old` (l. 41) — Constructor de RegExp de un navegador antiguo: lanza si la expresión usa lookbehind, como Safari anterior a 16.4.
 
+### `test-proposals.mjs`
+
+[TEST-PROPOSALS] Pruebas de la aplicación de las propuestas aprobadas con texto propio (site/lib/proposals-apply.mjs) y del archivo data/catalog/proposals.applied.json: sustituir un párrafo, traducir una descripción, cambiar el título de la portada, escapar siempre lo escrito y avisar de lo que no encaja. Con datos sintéticos y con el catálogo real. node scripts/test-proposals.mjs
+
+Secciones: `[TEST-PROPOSALS]`
+
+- `load` (l. 13) — Lee un JSON de data/catalog.
+- `ok` (l. 16) — Anota una comprobación: correcta, o fallo con su mensaje.
+- `clone` (l. 18) — Copia profunda de datos JSON.
+- `synth` (l. 30) — Datos de prueba sintéticos: una página con título, párrafo, lista y tabla, una ficha de producto, una categoría y los títulos SEO.
+- `real` (l. 72) — Copia del catálogo real (páginas, productos, categorías y títulos SEO) para aplicar propuestas sin tocar los JSON.
+- `has` (l. 84) — Texto JSON de un objeto, para comparar datos completos.
+
 ### `qa-all.sh`
 
 [QA-ALL] Todas las pruebas del proyecto, una tras otra, con resumen final (la CI hace lo mismo en ci/ci.yml). bash scripts/qa-all.sh             # todo (unos 15-25 min; qa-ux recorre las ~770 páginas en escritorio y en móvil) bash scripts/qa-all.sh --rapido    # sin qa-ux, qa-a11y ni perf (unos 4-6 min)
@@ -1227,16 +1320,16 @@ Secciones: `[EMAIL]` · `[CONTROLADORES]` · `[COPIA]` · `[CONTACTO]`
 
 Secciones: `[INDEX]`
 
-- `tooMany` (l. 25) — 429 con el texto de siempre (inundación, Bearer): el mismo para cualquier límite de acceso, nunca distingue si un usuario existe.
-- `lockWait` (l. 27) — Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba).
-- `locked` (l. 29) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
-- `configProblems` (l. 35) — Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores.
-- `fail` (l. 44) — Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id.
-- `identify` (l. 51) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
-- `handleLogin` (l. 64) — POST /api/auth/login, con protección contra la fuerza bruta: 5 contraseñas erróneas del mismo visitante (ipKey) contra una cuenta bloquean ESA pareja 1 HORA desde el 5.º fallo (ni la contraseña
-- `route` (l. 90) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
-- `fetch` (l. 158) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
-- `scheduled` (l. 174) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
+- `tooMany` (l. 26) — 429 con el texto de siempre (inundación, Bearer): el mismo para cualquier límite de acceso, nunca distingue si un usuario existe.
+- `lockWait` (l. 28) — Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba).
+- `locked` (l. 30) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
+- `configProblems` (l. 36) — Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores.
+- `fail` (l. 45) — Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id.
+- `identify` (l. 52) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
+- `handleLogin` (l. 65) — POST /api/auth/login, con protección contra la fuerza bruta: 5 contraseñas erróneas del mismo visitante (ipKey) contra una cuenta bloquean ESA pareja 1 HORA desde el 5.º fallo (ni la contraseña
+- `route` (l. 91) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
+- `fetch` (l. 165) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
+- `scheduled` (l. 181) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
 
 ### `mailapi.js`
 
@@ -1342,6 +1435,14 @@ Secciones: `[PRICES]`
 - `diffPrices` (l. 78) — Compara dos precios: { changed, added, removed } con las referencias afectadas y same con el número de las que no cambian.
 - `assertFinitePrices` (l. 85) — Comprueba que todos los importes y tramos sean cifras finitas y razonables antes de guardar (JSON.stringify convierte NaN e Infinity en null y vaciaría la lista); si no, lanza Error.
 - `bad` (l. 88) — true si x no es una cifra finita entre 0 y 10 000 000 (el tope de cualquier cifra de una hoja)
+
+### `proposals.js`
+
+[PROPOSALS] Decisiones del manager sobre las propuestas de mejora del panel (clave KV proposals:state: id de la propuesta → entrada). Igual que backend-php/api/lib/Proposals.php. Una entrada es { state: ok|no, by, at } y, si el manager ha editado la propuesta, también: mode  → qué hace su texto: replace (sustituye el párrafo de la web que contiene `find`) · translate (descripción del producto en otro idioma) · title (título de la portada, una línea
+
+Secciones: `[PROPOSALS]`
+
+- `proposalEntry` (l. 19) — Valida el cuerpo de POST /api/proposals/state para el estado `ok` o `no` → { entry } con los textos ya normalizados (sin controles ni invisibles) o { error, code?, field? }. Los campos
 
 ### `ratelimit.js`
 
@@ -1532,6 +1633,14 @@ Secciones: `[PRUEBAS-CONTACTO]`
 ### `price-sheet.test.js`
 
 Pruebas de la lectura tolerante de hojas de precios (shared/price-sheet.mjs) con los casos compartidos (shared/price-sheet.fixtures.json).
+
+### `proposals.test.js`
+
+Pruebas de las propuestas EDITABLES del panel (src/proposals.js y POST/GET /api/proposals/state): el manager aprueba con SU texto, rechaza con una nota o deshace; todo es texto plano con límites, solo lo hacen los managers y aprobar no publica nada por sí solo. Mismos casos que backend-php/api/tests/ProposalsTest.php.
+
+- `setup` (l. 10) — Entorno con un manager y un cliente con sesión → { env, tj, ta, post(body, token), get(token) }.
+- `post` (l. 14) — POST /api/proposals/state con ese cuerpo y token (sin token = sin sesión) → { status, body }.
+- `get` (l. 16) — GET /api/proposals/state con ese token → { status, body }.
 
 ### `security-auth.test.js`
 
@@ -1930,6 +2039,14 @@ Secciones: `[PRICES]` · `[SHEETS]`
 - `plan` (l. 265) — Plan de una actualización, sin guardar nada: lee las filas, las aplica a los precios vigentes según `$mode` («merge»: solo lo que trae la hoja; «replace»: sustituye todo) y
 - `sync` (l. 291) — Lee la hoja (Drive, CSV o filas subidas), valida y publica. `mode` («merge» por defecto, o prices.update_mode; «replace» sustituye toda la lista). ctx = contexto del catálogo (null → el del sitio; [] → aceptar todo, pruebas).
 
+### `Proposals.php`
+
+[PROPOSALS] Decisiones del manager sobre las propuestas de mejora del panel (clave proposals:state: id de la propuesta → entrada). Una entrada es { state: ok|no, by, at } y, si el manager ha editado la propuesta, también: mode  → qué hace su texto: replace (sustituye el párrafo de la web que contiene `find`) · translate (descripción del producto en otro idioma) · title (título de la portada, una línea
+
+Secciones: `[PROPOSALS]`
+
+- `entry` (l. 27) — Valida el cuerpo de POST /api/proposals/state para el estado `ok` o `no` y devuelve la entrada que se guarda, con los textos ya normalizados (sin controles ni invisibles). Los campos
+
 ### `Request.php`
 
 [REQUEST] Petición entrante (método, ruta tras /api, cabeceras, JSON, IP del visitante) + respuesta JSON + CORS + límite de uso. Pensado para que las pruebas puedan construir peticiones sin servidor web (Request::fake). [CLIENT-IP] La IP del visitante sale de REMOTE_ADDR; solo si quien conecta es un proxy de confianza (una red privada, la propia dirección del servidor, Cloudflare
@@ -1984,7 +2101,7 @@ Secciones: `[ROUTER]` · `[LIMITES]` · `[ERRORES]`
 - `messages` (l. 235) — GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite.
 - `mailTest` (l. 245) — POST /mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de order_to. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
 - `route` (l. 262) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
-- `cron` (l. 334) — sincroniza los precios (cron diario) y limpia lo caducado (también si la hoja se rechaza: esa limpieza no depende de la hoja)
+- `cron` (l. 339) — sincroniza los precios (cron diario) y limpia lo caducado (también si la hoja se rechaza: esa limpieza no depende de la hoja)
 
 ### `Smtp.php`
 
@@ -2197,6 +2314,17 @@ Pruebas de PriceSheet con los casos compartidos con la versión JavaScript (shar
 - `test_price_sheet_cases` (l. 16) — Cada caso de hoja → precios, desconocidas, nuevas y filas ignoradas esperados.
 - `test_price_sheet_numbers` (l. 43) — Números de celda: coma o punto decimal, miles, símbolos de moneda y texto ilegible.
 - `test_price_sheet_errors` (l. 51) — Hojas sin cabecera reconocible o vacías: error claro.
+
+### `ProposalsTest.php`
+
+Pruebas de las propuestas EDITABLES del panel (Proposals.php y POST/GET /api/proposals/state): el manager aprueba con SU texto, rechaza con una nota o deshace; todo es texto plano con límites, solo lo hacen los managers y aprobar no publica nada por sí solo.
+
+- `pr_tokens` (l. 16) — Gestor y cliente con sesión → [token del gestor, token del cliente].
+- `pr_post` (l. 24) — POST /proposals/state con ese cuerpo y token (null = sin sesión) → Response.
+- `test_proposals_approve_with_the_managers_own_text` (l. 27) — P1 · Aprobar con SU texto: se guarda tal cual (limpio de controles y espacios repetidos) con modo, fragmento a sustituir y nota; el GET lo devuelve y quien lo hizo y cuándo.
+- `test_proposals_plain_approve_reject_and_undo_still_work` (l. 46) — P2 · Sin texto sigue funcionando como siempre (aprobar, rechazar y deshacer); rechazar admite una nota.
+- `test_proposals_text_is_plain_and_limited` (l. 59) — P3 · Solo texto plano y con límites: etiquetas, scripts y código se rechazan con code y field; demasiado largo también; no se guarda nada.
+- `test_proposals_ids_and_roles` (l. 84) — P4 · Identificadores: PR- y de 3 a 6 cifras; solo managers (cliente 403, sin sesión 401); un cuerpo roto no rompe nada.
 
 ### `SecurityAuthTest.php`
 

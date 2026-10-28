@@ -11,6 +11,7 @@ import { authenticate, requireRole, signSession, secretOk } from './auth.js';
 import { createUser, listUsers, deleteUser, getUser, verifyUser, ensureSession, logoutUser, publicUser } from './users.js';
 import { hit, isBlocked, reset, purgeExpired, failLock, lockedFor } from './ratelimit.js';
 import { parseContact, minFillMs } from './validate.js';
+import { proposalEntry } from './proposals.js';
 import { handleOrder, handleContact } from './orders.js';
 import { listOrders } from './orderlist.js';
 import { handleMessageList, handleMessageDelete, handleMailTest, handleMailStatus } from './mailapi.js';
@@ -137,10 +138,16 @@ async function route(request, env, deps, { path, cors, nowMs }) {
   }
   if (path === '/api/prices/ai/apply' && method === 'POST') return json({ ok: true, ...(await applyPriceChanges(env, (await readJson(request)) || {}, { who: who.sub, now: new Date(nowMs) })) }, 200, cors);      // aplica lo que la persona ha revisado y confirmado
   if (path === '/api/proposals/state' && method === 'GET') return json({ ok: true, state: JSON.parse((await env.KV.get('proposals:state')) || '{}') }, 200, cors);
-  if (path === '/api/proposals/state' && method === 'POST') {                            // aprobar / rechazar / deshacer una propuesta del panel (no publica nada por sí solo)
+  if (path === '/api/proposals/state' && method === 'POST') {                            // aprobar (con SU texto), rechazar o deshacer una propuesta del panel (no publica nada por sí solo)
     const b = (await readJson(request, 20_000)) || {}; const pid = typeof b.id === 'string' ? b.id : '', st = typeof b.state === 'string' ? b.state : '';
-    if (!/^PR-\d{3,5}$/.test(pid) || !['ok', 'no', ''].includes(st)) return json({ ok: false, error: 'Propuesta o estado no válidos' }, 400, cors);
-    const state = JSON.parse((await env.KV.get('proposals:state')) || '{}'); if (st) state[pid] = { state: st, by: who.sub, at: new Date(nowMs).toISOString() }; else delete state[pid];
+    if (!/^PR-\d{3,6}$/.test(pid) || !['ok', 'no', ''].includes(st)) return json({ ok: false, error: 'Propuesta o estado no válidos' }, 400, cors);
+    const state = JSON.parse((await env.KV.get('proposals:state')) || '{}');
+    if (!st) delete state[pid];
+    else {
+      const e = proposalEntry(b, st, who.sub, nowMs);
+      if (e.error) return json({ ok: false, error: e.error, ...(e.code ? { code: e.code } : {}), ...(e.field ? { field: e.field } : {}) }, 400, cors);
+      state[pid] = e.entry;
+    }
     await env.KV.put('proposals:state', JSON.stringify(state)); return json({ ok: true, state }, 200, cors);
   }
   if (path === '/api/users' && method === 'GET') return json({ ok: true, users: await listUsers(env) }, 200, cors);

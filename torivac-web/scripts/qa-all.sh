@@ -21,6 +21,7 @@ paso "Worker: pruebas"                          bash -c 'cd workers/api && npm t
 paso "PHP: pruebas"                             php backend-php/api/tests/run.php
 paso "Texto plano (navegador = Worker = PHP)"    node scripts/test-plain-text.mjs
 paso "Conversor de texto del blog"              node scripts/test-blog-markdown.mjs
+paso "Propuestas aprobadas con texto propio"    node scripts/test-proposals.mjs
 paso "Textos de interfaz al día (para validar)" node scripts/audit_i18n.mjs --check
 paso "Compilar el demo (precios de demostración)" bash -c 'python3 -I scripts/build_prices.py --demo && node site/build.mjs'
 paso "Compilar producción + auditoría SEO/GEO"  bash -c 'node site/build.mjs --base=https://demo.torivac.example --out=/tmp/tv-prod-dist >/dev/null && python3 -I scripts/seo_check.py /tmp/tv-prod-dist --base=https://demo.torivac.example'

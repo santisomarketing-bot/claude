@@ -8,7 +8,7 @@
  *  Se carga en lugar de admin.js cuando la web se compila con TORIVAC_API (ver site/build.mjs). Sin API, el demo (admin.js) sigue funcionando solo.
  *
  * Secciones: [HTTP] [AUTH] [UTIL] [VIEWS] [PRICES] [AI] [USERS] [PROPOSALS] [ROUTER]
- * Depende de: quote.js (TV.Quote, TV.api, TV.csvParse), pdf.js (TV.makeQuotePdf), SheetJS (XLSX). Las propuestas (TV.proposals) y los datos de cobertura (TV.admin) NO van en la web pública: se piden al servidor, solo a managers (GET /api/admin/data).
+ * Depende de: quote.js (TV.Quote, TV.api, TV.csvParse), pdf.js (TV.makeQuotePdf), SheetJS (XLSX), admin-proposals.js (TV.AdminProposals: vista Propuestas). Las propuestas (TV.proposals) y los datos de cobertura (TV.admin) NO van en la web pública: se piden al servidor, solo a managers (GET /api/admin/data).
  */
 (function () {
   'use strict';
@@ -252,21 +252,11 @@
     http('POST', '/api/prices/ai/apply', { changes: proposal.changes, confirm_large: confirmLarge }).then(function (r) { if (!r.ok) return fail(r); proposal = null; toast('Aplicados ' + r.applied + ' cambios de precio'); render(); });
   }
 
-  // ───────────────────────────────────────── [PROPOSALS] decisiones sobre propuestas (se guardan en el servidor; aprobar NO publica nada por sí solo)
-  var propState = {};
-  /** Vista Propuestas (manager): lista las propuestas de cambio con su estado en el servidor para aprobar, rechazar o deshacer. */
-  V.propuestas = function () {
-    return Promise.all([http('GET', '/api/proposals/state'), adminData()]).then(function (a) {
-      var r = a[0]; propState = r.state || {}; var props = TV.proposals || [];
-      if (!props.length) return '<h1>Propuestas</h1><p class="notice">No hay propuestas todavía.</p>';
-      return '<h1>Propuestas de cambio</h1><p class="muted">Nada de esto está publicado: la web usa el dato original hasta que lo apruebes.</p>' + props.map(function (p) {
-        var s = propState[p.id] && propState[p.id].state;
-        return '<article class="panel prop' + (s ? ' done' : '') + '"><div class="small muted">' + esc(p.type) + ' · ' + esc(p.product_name || p.product_id || '') + (p.ref ? ' · <span class="mono">' + esc(p.ref) + '</span>' : '') + '</div><h3 aria-level="2">' + esc(p.title || p.field || 'Cambio') + '</h3>' +
-          (p.web_value ? '<p class="small"><strong>Web:</strong> ' + esc(p.web_value) + '</p>' : '') + (p.pdf_value ? '<p class="small"><strong>PDF:</strong> ' + esc(p.pdf_value) + '</p>' : '') + (p.recommendation ? '<p class="small muted">' + esc(p.recommendation) + '</p>' : '') +
-          (s ? '<p><span class="tag">' + (s === 'ok' ? 'Aprobada (pendiente de publicar)' : 'Rechazada') + '</span> <button class="btn sm ghost" data-prop="' + esc(p.id) + '" data-v="">Deshacer</button></p>' : '<p><button class="btn sm" data-prop="' + esc(p.id) + '" data-v="ok">Aprobar</button> <button class="btn sm ghost" data-prop="' + esc(p.id) + '" data-v="no">Rechazar</button></p>') + '</article>';
-      }).join('');
-    });
-  };
+  // ───────────────────────────────────────── [PROPOSALS] propuestas de mejora: se editan, se prueban en la página real y se aplican (admin-proposals.js); aprobar NO publica nada por sí solo
+  /** Lo que el módulo de propuestas necesita del panel: llamadas al servidor, avisos, fechas y los datos de gestión. */
+  var PCTX = { http: function (m, p, b) { return http(m, p, b); }, toast: function (m) { toast(m); }, when: function (i) { return when(i); }, adminData: function () { return adminData(); } };
+  /** Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js). */
+  V.propuestas = function () { return TV.AdminProposals.view(PCTX); };
 
   // ───────────────────────────────────────── [USERS] altas y bajas de usuarios (managers y clientes)
   /** Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes. */
@@ -288,7 +278,6 @@
     else if (b.hasAttribute('data-apply-ai')) applyProposal();
     else if (b.hasAttribute('data-apply-upload')) applyUpload();
     else if (b.hasAttribute('data-discard')) { draftRows = null; proposal = null; root.querySelector('[data-draft]').innerHTML = ''; }
-    else if (b.hasAttribute('data-prop')) { http('POST', '/api/proposals/state', { id: b.getAttribute('data-prop'), state: b.getAttribute('data-v') }).then(function (r) { if (!r.ok) return fail(r); render(); }); }
     else if (b.hasAttribute('data-del-user')) { if (confirm('¿Borrar a ' + b.getAttribute('data-del-user') + '?')) http('DELETE', '/api/users/' + encodeURIComponent(b.getAttribute('data-del-user'))).then(function (r) { if (!r.ok) return fail(r); toast('Usuario borrado'); render(); }); }
     else if (b.hasAttribute('data-del-msg')) { if (confirm('¿Borrar este mensaje? No se puede deshacer.')) http('DELETE', '/api/messages/' + encodeURIComponent(b.getAttribute('data-del-msg'))).then(function (r) { if (!r.ok) return fail(r); toast('Mensaje borrado'); render(); }); }
     else if (b.hasAttribute('data-export-orders')) download(new Blob([JSON.stringify(cache.orders, null, 1)], { type: 'application/json' }), 'pedidos.json');
@@ -322,6 +311,7 @@
         out.textContent = r.sent ? '✓ Enviado a ' + to + ' con «' + (r.driver || '') + '». Si no llega en unos minutos, mira el spam y el SPF/DKIM del dominio.' : '✗ No se envió (' + (r.reason || 'error') + ')' + (r.error ? ': ' + r.error : '') + '.';
       });
     });
+    if (root.querySelector('[data-pa-list]')) TV.AdminProposals.bind(root, PCTX);
     var nu = root.querySelector('[data-new-user]');
     if (nu) nu.addEventListener('submit', function (e) {
       e.preventDefault(); var f = e.target;
