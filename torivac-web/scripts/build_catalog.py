@@ -36,6 +36,7 @@ UA = "Mozilla/5.0 (compatible; SantisoMarketing-Migration/1.0)"
 
 # ----------------------------------------------------------------------------- [UTIL]
 def jl(p, default=None):
+    """JSON de un fichero, o `default` si no existe o no es válido."""
     try:
         return json.loads(Path(p).read_text())
     except Exception:
@@ -49,11 +50,13 @@ def pth(u):
 
 
 def lang_of_path(p):
+    """Idioma de una ruta lógica: en, fr o de si empieza por ese prefijo; es en cualquier otro caso."""
     m = re.match(r"^/(en|fr|de)(/|$)", p)
     return m.group(1) if m else "es"
 
 
 def text_of(blocks):
+    """Texto plano de una lista de bloques semánticos (encabezados, párrafos, listas y tablas), con los espacios normalizados."""
     out = []
     for b in blocks:
         if b["t"] == "h": out.append(b["x"])
@@ -64,6 +67,7 @@ def text_of(blocks):
 
 
 def fetch(url, dst: Path):
+    """Descarga la URL a la caché en disco `dst` (si ya existe, la lee) y devuelve el texto; cadena vacía si falla."""
     if dst.exists():
         return dst.read_text(errors="replace")
     try:
@@ -86,6 +90,7 @@ IMG = jl(CAT / "image-map.json", {})
 
 
 def size_base(u):
+    """URL de imagen sin parámetros ni sufijo de tamaño de WordPress (-300x200): la de la imagen original."""
     return re.sub(r"-\d+x\d+(?=\.\w+$)", "", u.split("?")[0])
 
 
@@ -101,6 +106,7 @@ def img_ref(src):
 
 
 def localize_blocks(blocks):
+    """Sustituye en los bloques de imagen la URL original por su copia local (img_ref); devuelve la misma lista."""
     for b in blocks:
         if b["t"] == "img":
             b["img"] = img_ref(b["src"])
@@ -116,6 +122,7 @@ rest_pages = {l: jl(RAW / f"rest/pages.{l}.json", []) for l in LANGS}
 pmap = {p["id_es"]: p for p in jl(AN / "product-map.json", {"products": []})["products"]}
 pidx = jl(AN / "pages-index.json", {"pages": []})["pages"]
 def _expected_stem(path):
+    """Nombre de fichero (sin extensión) que le corresponde a una ruta: /en/a/ → en__a, y / → home."""
     return path.strip("/").replace("/", "__") or "home"
 
 
@@ -193,6 +200,7 @@ COOC = cooccurrence()
 
 
 def build_categories():
+    """Registros de categorías con sus traducciones: por hreflang, luego por WPML (si respeta el árbol) y por productos coincidentes."""
     es = rest_cat["es"]
     store_cat = {c["id"]: c for c in jl(RAW / "store/categories.es.json", [])}
     by_link = {l: {pth(c["link"]): c for c in rest_cat[l]} for l in LANGS}
@@ -262,10 +270,12 @@ def build_categories():
 
 # ----------------------------------------------------------------------------- [PRODUCTS]
 def blocks_pdfs(blocks):
+    """Botones de descarga de PDF (bloques btn con pdf) de una lista de bloques."""
     return [b for b in blocks if b["t"] == "btn" and b.get("pdf")]
 
 
 def build_products(categories):
+    """Registros de productos (ES y traducciones): bloques de texto, imágenes con alt, estado de traducción, PDFs y relacionados."""
     cat_by_id = {c["id"]: c for c in categories}
     prods = []
     for pid, pm in pmap.items():
@@ -396,6 +406,7 @@ def services_cards(section_html_root):
 
 
 def build_pages():
+    """Páginas, home y entradas del blog por idioma ({idioma: {ruta: registro}}), con secciones en bloques y datos de REST."""
     pages = {l: {} for l in LANGS}
     kinds = {}
     for p, r in by_url.items():
@@ -450,6 +461,7 @@ def build_pages():
 
 # ----------------------------------------------------------------------------- [SITE] menús, pie, datos de empresa
 def build_site():
+    """Devuelve (nav, foot): menú de cabecera y datos del pie por idioma, leídos de la home original."""
     nav, foot = {}, {}
     for l, f in [("es", "home"), ("en", "en"), ("fr", "fr"), ("de", "de")]:
         s = BeautifulSoup((RAW / "html" / l / f"{f}.html").read_text(errors="replace"), "lxml")
@@ -468,6 +480,7 @@ def build_site():
 
 
 def main():
+    """Construye categorías, productos, páginas y datos del sitio, y los escribe en data/catalog (JSON) con un resumen por consola."""
     cats = build_categories()
     prods = build_products(cats)
     pages = build_pages()

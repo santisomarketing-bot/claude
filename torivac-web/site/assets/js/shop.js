@@ -12,6 +12,7 @@
   if (grid) {
     var cards = $$('.pcard', grid), active = {}, text = '';
     var count = $('[data-count]'), empty = $('[data-empty]');
+    /** Aplica los filtros (tensiones marcadas y texto): oculta las fichas que no encajan y actualiza el contador y el aviso de vacío. */
     var apply = function () {
       var n = 0, vs = Object.keys(active).filter(function (k) { return active[k]; });
       cards.forEach(function (c) {
@@ -33,7 +34,9 @@
 
   // ───────────────────────────────────────── [MODELS]
   var rows = [];
+  /** Cantidad entera ≥ 0 escrita en la fila `tr` (0 si el campo está vacío o no es un número). */
   function qtyOf(tr) { return Math.max(0, Math.floor(Number($('[data-qty]', tr).value) || 0)); }
+  /** Conecta una fila de modelos (−, +, cantidad y «añadir») con el presupuesto y la registra para refrescar su precio. */
   function bindRow(tr) {
     var inp = $('[data-qty]', tr), ref = tr.getAttribute('data-ref');
     $('[data-inc]', tr).addEventListener('click', function () { inp.value = qtyOf(tr) + 1; updatePrice(tr); });
@@ -51,12 +54,14 @@
 
   // ───────────────────────────────────────── [EXTRAS] referencias que la hoja de precios añade dentro de ESTE producto (una tarifa puede traer más códigos que la ficha)
   var pdp = $('.pdp'), pid = pdp ? Number(pdp.getAttribute('data-pid')) : 0, extraBox = null;
+  /** HTML de la fila de una referencia que añade la hoja de precios: código, descripción, celda de precio, cantidad y botón añadir. */
   function extraRow(ref, descr) {
     var a = esc(ref);
     return '<tr data-ref="' + a + '" data-extra role="row"><td class="ref" role="cell" data-label="' + esc(Q.t('ref_model')) + '">' + a + '</td><td class="generic" role="cell">' + esc(descr) + '</td>' +
       '<td class="act" role="cell"><div class="act-in"><span class="price-cell" data-price-for="' + a + '"></span><div class="qty"><button type="button" data-dec aria-label="−">−</button><input type="number" inputmode="numeric" min="0" step="1" value="0" data-qty aria-label="' + esc(Q.t('qty')) + ' ' + a + '"><button type="button" data-inc aria-label="+">+</button></div>' +
       '<button class="btn sm" type="button" data-add-row="' + a + '">' + esc(Q.t('add_to_quote')) + '</button></div></td></tr>';
   }
+  /** Pinta (o repinta) tras la tabla de modelos las referencias que la hoja de precios añade a ESTE producto, con su filtro. */
   function renderExtras() {
     if (!pid || !TV.prices || !TV.prices.items) return;
     var have = {}; $$('.models tbody tr[data-ref]').forEach(function (tr) { if (!tr.hasAttribute('data-extra')) have[tr.getAttribute('data-ref')] = 1; });
@@ -76,6 +81,7 @@
   }
 
   // ───────────────────────────────────────── [PRICES] precio unitario y tramos por fila
+  /** Actualiza el precio unitario, los tramos y el importe de una fila de la tabla de modelos según la cantidad escrita. */
   function updatePrice(tr) {
     var ref = tr.getAttribute('data-ref'), cell = $('[data-price-for]', tr), q = qtyOf(tr) || 1;
     var u = Q.priceOf(ref, q), tiers = Q.tiersOf(ref);
@@ -84,7 +90,9 @@
     if (tiers.length) html += tiers.map(function (t) { return '<span class="tier">' + esc(Q.t('tier_from')) + ' ' + t[0] + ' ' + esc(Q.t('units')) + ' · ' + esc(Q.unitMoney(t[1])) + '</span>'; }).join('');
     cell.innerHTML = html;
   }
+  /** Actualiza el precio de todas las filas y muestra u oculta el aviso de demo según el modo de la hoja de precios. */
   function allPrices() { rows.forEach(updatePrice); $$('[data-demo-flag]').forEach(function (e) { e.hidden = !(TV.prices && TV.prices.mode === 'demo'); }); }
+  /** Rehace las referencias extra y los precios de las filas; corre al cargar y en cada evento tv:prices. */
   function refresh() { renderExtras(); allPrices(); }
   refresh(); document.addEventListener('tv:prices', refresh);
 

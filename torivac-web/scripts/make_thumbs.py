@@ -22,12 +22,14 @@ CAT, RAW, SITE = ROOT / "data" / "catalog", ROOT / "data" / "raw", ROOT / "site"
 
 
 def data_url(im, fmt="JPEG", **kw):
+    """Imagen PIL → URI data: en base64 con el formato indicado (`kw` se pasa a `save`)."""
     b = io.BytesIO()
     im.save(b, fmt, **kw)
     return f"data:image/{fmt.lower()};base64," + base64.b64encode(b.getvalue()).decode()
 
 
 def thumb(path, size=96):
+    """Miniatura cuadrada `size`×`size` en JPEG (fondo blanco, imagen centrada) del archivo `path`, como URI data:."""
     im = Image.open(path)
     im.load()
     if im.mode in ("RGBA", "LA", "P"):
@@ -43,6 +45,7 @@ def thumb(path, size=96):
 
 
 def main():
+    """Genera thumbs.json (miniaturas de producto y logo negativo para el PDF), site/assets/img/logo.png y favicon.png."""
     products = json.loads((CAT / "products.json").read_text())
     files = set()
     for p in products:

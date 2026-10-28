@@ -14,6 +14,7 @@ import { serve } from './lib/static-server.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
+/** Valor de la opción --k=valor de la línea de comandos, o d si no se indicó. */
 const opt = (k, d) => { const a = process.argv.find((x) => x.startsWith(`--${k}=`)); return a ? a.split('=').slice(1).join('=') : d; };
 const MOBILE = process.argv.includes('--mobile');
 const WIDTH = Number(opt('width', MOBILE ? 390 : 1440));
@@ -37,9 +38,12 @@ let todo = ONLY ? pages.filter((p) => p.startsWith(ONLY)) : pages;
 if (LIMIT) { const step = Math.max(1, Math.floor(todo.length / LIMIT)); todo = todo.filter((_, i) => i % step === 0).slice(0, LIMIT); }
 
 // ───────────────────────────────────────── comprobaciones dentro de la página (se serializa a texto: sin cierres externos)
+/** Comprobaciones que se ejecutan DENTRO de la página (se serializa a texto): desbordes, imágenes rotas o deformadas, restos de código, ids duplicados… */
 const inPage = () => {
   const out = { overflow: [], broken: [], distorted: [], cropped: [], upscaled: [], clipped: [], noname: [], shortcode: [], dupIds: [], lang: [], notice: false };
+  /** True si el elemento es visible: mide más de 1 px y no está oculto por visibility, display ni opacity. */
   const vis = (el) => { const r = el.getBoundingClientRect(); const cs = getComputedStyle(el); return r.width > 1 && r.height > 1 && cs.visibility !== 'hidden' && cs.display !== 'none' && cs.opacity !== '0'; };
+  /** Descripción corta del elemento para el informe: etiqueta#id.clase1.clase2. */
   const desc = (el) => `${el.tagName.toLowerCase()}${el.id ? '#' + el.id : ''}${el.className && typeof el.className === 'string' ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.') : ''}`;
   // desborde horizontal
   const W = window.innerWidth;
@@ -97,6 +101,7 @@ const inPage = () => {
   };
   const lang = document.documentElement.lang || 'es';
   out.notice = !!document.querySelector('.notice');
+  /** Palabras de un texto en minúsculas (solo letras), para contarlas contra las listas de palabras frecuentes de cada idioma. */
   const words = (t) => t.toLowerCase().replace(/[^\p{L}\s]/gu, ' ').split(/\s+/).filter(Boolean);
   for (const el of document.querySelectorAll('main p, main li, main td, main dd')) {
     if (!vis(el) || el.closest('.notice, .demo-ribbon, [data-drawer-body]')) continue;
@@ -114,6 +119,7 @@ const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: WIDTH, height: WIDTH <= 600 ? 844 : 900 }, locale: 'es-ES' });
 await ctx.addInitScript(() => { try { localStorage.setItem('tv_lang_auto_done', '1'); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang', document.documentElement.lang || 'es'); } catch (e) { /* ignorar */ } });
 const results = []; let idx = 0, done = 0; const t0 = Date.now();
+/** Trabajador en paralelo: toma la siguiente página de todo, la recorre entera y guarda en results sus incidencias y errores. */
 async function worker() {
   const page = await ctx.newPage();
   const errs = [];

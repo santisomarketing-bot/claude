@@ -18,10 +18,16 @@ jobs:
         with: { node-version: 22 }
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
+      - uses: shivammathur/setup-php@v2
+        with: { php-version: '8.3', extensions: 'curl, mbstring, openssl, zlib' }
       - name: Escáner de secretos
         run: python3 -I scripts/secret_scan.py
-      - name: Pruebas del Worker (24)
+      - name: Pruebas del Worker (pedidos, precios, hojas, lector de .xlsx, IA)
         run: cd workers/api && npm test
+      - name: Pruebas del API PHP (mismo contrato que el Worker) y sintaxis de todos los .php
+        run: |
+          php backend-php/api/tests/run.php
+          find backend-php -name '*.php' -print0 | xargs -0 -n1 php -l > /dev/null
       - name: Compilar la web (demo, sin base) y con dominio (producción)
         run: |
           python3 -I scripts/build_prices.py --demo
@@ -29,14 +35,17 @@ jobs:
           node site/build.mjs --base=https://${{ vars.SITE_HOST || 'demo.torivac.example' }} --out=/tmp/prod-dist
       - name: Auditoría SEO/GEO (JSON-LD, hreflang, sitemap, llms.txt, enlaces)
         run: python3 -I scripts/seo_check.py /tmp/prod-dist --base=https://${{ vars.SITE_HOST || 'demo.torivac.example' }}
-      - name: Navegador (Playwright) · presupuesto, idioma, UX, accesibilidad, gráficos, Worker y panel
+      - name: Navegador (Playwright) · presupuesto, idioma, UX, accesibilidad, gráficos, panel y tarifa contra el Worker Y contra el PHP, y el paquete cPanel
         run: |
+          pip install openpyxl
           npm i --no-save playwright@1.49.1 axe-core@4.10.2
           npx playwright install --with-deps chromium
           export AXE_PATH=$PWD/node_modules/axe-core/axe.min.js
           node scripts/qa-quote.mjs && node scripts/qa-lang.mjs && node scripts/qa-art.mjs
           node scripts/qa-ux.mjs && node scripts/qa-ux.mjs --mobile && node scripts/qa-a11y.mjs
-          node scripts/qa-live.mjs && node scripts/qa-admin-live.mjs
+          node scripts/qa-live.mjs && node scripts/qa-admin-live.mjs && node scripts/qa-tarifa.mjs
+          node scripts/qa-live.mjs --php && node scripts/qa-admin-live.mjs --php && node scripts/qa-tarifa.mjs --php
+          node scripts/qa-package.mjs
           node scripts/perf.mjs --dir=/tmp/prod-dist
       - name: Índice de código (todo archivo con cabecera y cada función descrita)
         run: python3 -I scripts/gen_code_index.py --check

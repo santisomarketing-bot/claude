@@ -43,6 +43,7 @@ export function parseNumber(x) {
   const n = Number(s);
   return Number.isFinite(n) ? n : null;
 }
+/** Redondea n a dec decimales (corrige los errores de coma flotante: 1.005 con 2 decimales da 1.01). */
 const roundTo = (n, dec) => { const f = 10 ** dec; return Math.round((n + Number.EPSILON) * f) / f; };
 
 /** índice de la fila de cabecera (primera con una columna de referencia y una de precio) y mapa columna → posición */
@@ -60,7 +61,7 @@ export function findHeader(rows) {
  * rows: matriz (primera fila = cabecera o con filas de título delante). ctx (todo opcional):
  *   lines   { ref: {n, pid} }     líneas pedibles del catálogo (código real o genérica P<id>)
  *   skus    { sku: pid }          SKU de WooCommerce → id de producto
- *   rules   [{prefix, pid, label}] referencias nuevas que encajan en un producto por su prefijo (tarifas que añaden códigos)
+ *   rules   [{pattern, pid}]       referencias nuevas que encajan en un producto por un patrón (RegExp, sin distinguir mayúsculas) de su familia (tarifas que añaden códigos)
  *   decimals                      decimales del precio unitario (4 por defecto, máx. 6)
  * Devuelve { items, warnings:[{code,message,count?}], ignored:[{ref,reason}], unknown:[ref], extras:[ref], columns, stats }.
  */
@@ -73,6 +74,7 @@ export function readSheet(rows, ctx = {}) {
   const { map, headers } = h;
   const warnings = [], ignored = [], unknown = [], extras = [], items = {}, seen = new Map();
   const norm = lines ? new Map(Object.keys(lines).map((r) => [normRef(r), r])) : null;
+  /** Celda de la fila r en la columna del campo f; cadena vacía si la hoja no tiene esa columna. */
   const col = (r, f) => (map[f] == null ? '' : r[map[f]]);
   for (const f of Object.keys(IGNORED_COLS)) if (map[f] != null) warnings.push({ code: 'columna_no_usada', message: `La columna «${headers[map[f]]}» no se usa (los precios de oferta y el stock no se publican)` });
   let rowsRead = 0, empty = 0;

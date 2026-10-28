@@ -44,6 +44,7 @@ final class Mail
         return ['ok' => false, 'skipped' => true];
     }
 
+    /** Codifica un asunto con caracteres no ASCII como palabra MIME UTF-8 en base64. */
     private static function encodeHeader(string $s): string { return preg_match('/[^\x20-\x7e]/', $s) ? '=?UTF-8?B?' . base64_encode($s) . '?=' : $s; }
 
     /** cabeceras y cuerpo MIME (alternativa texto/HTML + adjuntos) para mail() */

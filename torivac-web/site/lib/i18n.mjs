@@ -106,5 +106,7 @@ export const T = {
 
 /** «1 producto / 2 productos» en los 4 idiomas */
 export const countLabel = (n, lang) => `${n} ${({ es: ['producto', 'productos'], en: ['product', 'products'], fr: ['produit', 'produits'], de: ['Produkt', 'Produkte'] }[lang] || ['', ''])[n === 1 ? 0 : 1]}`;
+/** «1 referencia / 2 referencias» en los 4 idiomas. */
 export const refLabel = (n, lang) => `${n} ${({ es: ['referencia', 'referencias'], en: ['reference', 'references'], fr: ['référence', 'références'], de: ['Artikelnummer', 'Artikelnummern'] }[lang] || ['', ''])[n === 1 ? 0 : 1]}`;
+/** Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe). */
 export const t = (key, lang) => (T[key] && (T[key][lang] ?? T[key].es)) ?? key;

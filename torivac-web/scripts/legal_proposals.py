@@ -13,6 +13,7 @@ SEV = {"alta": "alta", "media": "media", "baja": "baja"}
 
 
 def main():
+    """Convierte los hallazgos de las páginas legales (content/es.json) en propuestas para el panel (legal-proposals-raw.json)."""
     d = json.loads((ROOT / "data" / "analysis" / "content" / "es.json").read_text())
     out = []
     for lp in d.get("legal_pages", []):

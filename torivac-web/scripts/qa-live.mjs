@@ -22,7 +22,9 @@ const { items, prices } = sb.TV;
 // 1.ª línea pedible de un producto: su código real si el PDF lo da (TT…), o la línea genérica P<id>
 const pick = (pid) => Object.keys(items).find((r) => items[r].pid === pid);
 const REFS = [pick(884), pick(8339), pick(932)], QTY = { [REFS[0]]: 12, [REFS[1]]: 2, [REFS[2]]: 200 };
+/** Redondea un importe a 2 decimales (cálculo propio de la prueba, independiente del código de la web). */
 const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
+/** Precio unitario esperado de ref para q unidades: el del último tramo por cantidad alcanzado, o el base. */
 const unit = (ref, q) => { const p = prices.items[ref]; let u = p.p; for (const [m, x] of p.t || []) if (q >= m) u = x; return u; };
 const expTotal = round2(REFS.reduce((s, r) => s + round2(unit(r, QTY[r]) * QTY[r]), 0));
 
@@ -35,6 +37,7 @@ await be.seedPrices({ ...prices, mode: 'live', updated_at: new Date().toISOStrin
 // ───────────────────────────────────────── [BROWSER]
 const browser = await chromium.launch();
 let fails = 0;
+/** Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo. */
 const ok = (c, m) => { if (!c) { fails++; console.error('  ✗ ' + m); } else console.log('  ✓ ' + m); };
 const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, locale: 'es-ES' });
 await ctx.addInitScript(() => { try { localStorage.setItem('tv_lang', 'es'); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang_auto_done', '1'); } catch (e) { /* ignorar */ } });
@@ -65,7 +68,7 @@ ok((await page.evaluate(() => TV.Quote.count())) === 0, 'el presupuesto se vací
 ok(mails.length === 2, `2 correos (equipo + copia al cliente): ${mails.length}`);
 const team = mails[0] || {}, copy = mails[1] || {};
 ok(JSON.stringify(team.to) === JSON.stringify(['info@grupotorivac.com', 'mzamora@torivac.com']), `equipo: ${JSON.stringify(team.to)}`);
-ok(team.reply_to === 'cliente.prueba@example.com' || team.replyTo === 'cliente.prueba@example.com' || JSON.stringify(team).includes('cliente.prueba@example.com'), 'responder-a = cliente');
+ok(team.reply_to === 'cliente.prueba@example.com', `responder-a = cliente (${team.reply_to})`);
 ok(JSON.stringify(copy.to) === JSON.stringify(['cliente.prueba@example.com']), 'copia al cliente');
 const att = (team.attachments || [])[0];
 ok(att && /\.pdf$/.test(att.filename) && String(att.content).startsWith('JVBER'), `PDF adjunto (${att && att.filename}, ${att ? Math.round(att.content.length * 0.75 / 1024) : 0} KB)`);

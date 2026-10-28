@@ -16,17 +16,21 @@ idx = json.loads((ROOT / "data/analysis/pages-index.json").read_text())["pages"]
 worst = int((next((a for a in sys.argv if a.startswith("--worst=")), "--worst=25")).split("=")[1])
 only = next((a.split("=")[1] for a in sys.argv if a.startswith("--lang=")), None)
 STOP = re.compile(r"^(https?|www)")
+# Conjunto de palabras de 5 o más letras de un texto, en minúsculas y sin restos de URL (http, https, www).
 def words(t): return {w for w in re.findall(r"[a-záéíóúñüçàâêèëîïôûäöß]{5,}", t.lower()) if not STOP.match(w)}
 def dist_file(path):
+    """Ruta de dist/<path>/index.html si existe; None si esa página no está generada."""
     p = ROOT / "dist" / path.strip("/") / "index.html"
     return p if p.exists() else None
 def mine(f):
+    """Texto del main de una página generada, sin script, style, aside, nav ni form (barra lateral, migas y formularios fuera)."""
     h = f.read_text(encoding="utf-8")
     m = re.search(r"<main[^>]*>(.*)</main>", h, re.S)
     h = m.group(1) if m else h
     h = re.sub(r"(?is)<(script|style|aside|nav|form)\b.*?</\1>", " ", h)   # sin barra lateral, migas, formularios
     return html.unescape(re.sub(r"<[^>]+>", " ", h))
 def orig(rec):
+    """Texto original de una página (data/analysis/pages), sin el bloque de contacto de las fichas ni «Explora productos similares»."""
     pg = json.loads((ROOT / rec["json"]).read_text())
     t = pg["text"]
     # fuera: bloques de plantilla repetidos en todas las páginas
@@ -41,6 +45,7 @@ for r in idx:
     for ln in set(l.strip() for l in json.loads((ROOT / r["json"]).read_text())["text"].split("\n") if l.strip()):
         c[ln] += 1
 def orig_clean(rec):
+    """Texto original sin las líneas de plantilla (las que se repiten en más de 8 páginas del idioma: menú, cookies, widgets)."""
     c = FREQ[rec["lang"]]
     return "\n".join(l for l in orig(rec).split("\n") if c[l.strip()] <= 8)
 rows = []
@@ -58,6 +63,8 @@ for r in idx:
     if len(o) < 8: continue
     rows.append((len(o & m) / len(o), len(o & m) / max(1, len(m)), path, len(o), sorted(o - m)[:8]))
 rows.sort()
+if not rows:
+    sys.exit("✗ no hay páginas que comparar (¿falta dist/ o data/raw?)")
 print(f"{len(rows)} páginas comparadas | recall medio {sum(r[0] for r in rows)/len(rows):.3f} | páginas con recall < 0.90: {sum(1 for r in rows if r[0] < .9)} | < 0.97: {sum(1 for r in rows if r[0] < .97)}")
 for rc, pr, path, n, miss in rows[:worst]:
     print(f"  recall {rc:.2f} precision {pr:.2f} {path} ({n} pal.)  faltan: {', '.join(miss)}")

@@ -22,6 +22,7 @@ FIXED = (2026, 1, 1, 0, 0, 0)
 
 
 def openpyxl_book():
+    """Escribe tarifa-openpyxl.xlsx con openpyxl: dos hojas (Notas y Tarifa) y precios con 8 decimales."""
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Notas"
@@ -36,12 +37,14 @@ def openpyxl_book():
 
 
 def put(z, name, data, stored=False):
+    """Añade una entrada al zip con fecha fija (salida reproducible), comprimida o sin comprimir."""
     zi = zipfile.ZipInfo(name, date_time=FIXED)
     zi.compress_type = zipfile.ZIP_STORED if stored else zipfile.ZIP_DEFLATED
     z.writestr(zi, data)
 
 
 def handmade_book():
+    """Escribe artesanal.xlsx a mano (XML) con lo que openpyxl no genera: texto enriquecido, «inline», fórmulas, booleanos, hoja oculta y una entrada sin comprimir."""
     ns = 'xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"'
     rel = 'xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"'
     hdr = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n'
@@ -75,6 +78,7 @@ def handmade_book():
 
 
 def expected():
+    """Resultado que deben devolver los dos lectores (JS y PHP) para cada libro."""
     return {
         "tarifa-openpyxl.xlsx": [
             {"name": "Notas", "hidden": False, "rows": [["Tarifa de ejemplo", "no es una tarifa real"]]},

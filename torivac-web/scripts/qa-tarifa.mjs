@@ -46,8 +46,11 @@ await be.addUser({ email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manag
 
 const browser = await chromium.launch();
 let fails = 0;
+/** Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo. */
 const ok = (c, m) => { if (!c) { fails++; console.error('  ✗ ' + m); } else console.log('  ✓ ' + m); };
+/** Redondea un importe a 2 decimales (cálculo propio de la prueba, independiente del código de la web). */
 const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
+/** Abre un contexto (1440×1000, español fijado a mano) con el catálogo apuntando al API de pruebas; devuelve { ctx, page, errs }. */
 const newPage = async () => {
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 1000 }, locale: 'es-ES', acceptDownloads: true });
   await ctx.addInitScript(() => { try { localStorage.setItem('tv_lang', 'es'); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang_auto_done', '1'); } catch (e) { /* ignorar */ } });
@@ -68,7 +71,7 @@ console.log('\n1) el manager sube la tarifa (Excel con cabeceras «Artículo · 
   ok(/3 referencias nuevas/.test(prev), 'avisa de las 3 referencias nuevas que se publican dentro de su producto');
   ok(/1 referencias de la hoja no están en la web/.test(prev), 'avisa del código desconocido y no lo publica');
   ok(!/parece un valor de relleno/.test(prev), 'una tarifa normal no se confunde con precios de relleno');
-  ok(/sin precio/.test(prev) && /330|\d{3} /.test(prev), 'la vista previa cuenta las referencias de la web que se quedarían sin precio («Consultar»)');
+  ok(/\b330 sin precio/.test(prev.replace(/\s+/g, ' ')), 'la vista previa cuenta las 330 referencias de la web que se quedarían sin precio («Consultar»)');
   await page.locator('[data-force]').check();                                  // la tarifa solo trae 9 de 336 referencias: hay que confirmar que es intencionado
   await page.click('[data-apply-upload]'); await page.waitForTimeout(700);
   const pub = await fetch(API + '/api/prices').then((r) => r.json());

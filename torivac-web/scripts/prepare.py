@@ -29,15 +29,18 @@ LANGS = ["es", "en", "fr", "de"]
 
 
 def clean(s):
+    """Colapsa espacios y líneas vacías repetidas de un texto y lo recorta."""
     return re.sub(r"[ \t\r\f\v]+", " ", re.sub(r"\n\s*\n+", "\n\n", s or "")).strip()
 
 
 def lang_of(url):
+    """Idioma de una URL por su prefijo de ruta (en, fr, de); es si no lleva ninguno."""
     m = re.match(r"^/(en|fr|de)(/|$)", urlparse(url).path)
     return m.group(1) if m else "es"
 
 
 def parse_page(path: Path, lang: str):
+    """Extrae de un HTML de data/raw/html título, metas, hreflang, encabezados, texto, tablas, enlaces, imágenes y formularios (dict)."""
     html = path.read_text(encoding="utf-8", errors="replace")
     soup = BeautifulSoup(html, "lxml")
     meta = lambda **kw: (soup.find("meta", attrs=kw) or {}).get("content")
@@ -107,6 +110,7 @@ def parse_page(path: Path, lang: str):
 
 
 def do_pages():
+    """Convierte los HTML de data/raw/html en JSON limpio (data/analysis/pages) y escribe pages-index.json con los grupos de traducción."""
     (OUT / "pages").mkdir(parents=True, exist_ok=True)
     index = []
     for lang in LANGS:
@@ -149,6 +153,7 @@ def do_media():
 
 
 def sh(*a):
+    """Ejecuta el comando (con sus argumentos) y devuelve su salida estándar como texto, sin comprobar el código de salida."""
     return subprocess.run(a, capture_output=True, text=True, errors="replace").stdout
 
 

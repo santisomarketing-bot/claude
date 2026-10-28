@@ -18,14 +18,18 @@ import { fileURLToPath } from 'node:url';
 import { serve } from './static-server.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
+/** Backend elegido por la línea de comandos: 'php' con --php (o TV_BACKEND=php), 'worker' por defecto. */
 export const backendKind = () => (process.argv.includes('--php') || process.env.TV_BACKEND === 'php' ? 'php' : 'worker');
 
+/** Puerto TCP libre en 127.0.0.1. */
 export const freePort = () => new Promise((res) => { const s = net.createServer(); s.listen(0, '127.0.0.1', () => { const p = s.address().port; s.close(() => res(p)); }); });
+/** Cuerpo completo de una petición HTTP entrante, como Buffer. */
 const readBody = async (rq) => { const c = []; for await (const x of rq) c.push(x); return Buffer.concat(c); };
 
 /** servicios de terceros simulados; la misma lógica sirve al Worker (fetchImpl) y al PHP (servidor http) */
 function externals() {
   const st = { mails: [], aiReply: null, csv: '', xlsx: null };
+  /** Responde a los servicios externos simulados (Resend, Anthropic, hoja CSV, libro Excel) y guarda lo que se les envía. */
   const handle = async (url, init = {}) => {
     const u = String(url);
     if (/\/emails$/.test(u) || u.includes('api.resend.com')) { st.mails.push(JSON.parse(init.body)); return { status: 200, body: JSON.stringify({ id: 'mail_' + st.mails.length }) }; }
@@ -38,6 +42,7 @@ function externals() {
 }
 
 // ───────────────────────────────────────────────────────────── [WORKER]
+/** Arranca el Worker torivac-api en memoria (KV simulado) detrás de un servidor http, con la web en otro puerto; misma interfaz que startPhp. */
 async function startWorker({ dist, orderTo, orderFrom }) {
   const { default: worker } = await import(path.join(ROOT, 'workers/api/src/index.js'));
   const { FakeKV } = await import(path.join(ROOT, 'workers/api/test/helpers.js'));
@@ -46,6 +51,7 @@ async function startWorker({ dist, orderTo, orderFrom }) {
   const { st, handle } = externals();
   const { server: site, base: SITE } = await serve(dist);
   const env = { KV: new FakeKV(), PRICE_CSV_URL: 'https://sheet.test/precios.csv', ORDER_TO: orderTo, ORDER_FROM: orderFrom, RESEND_API_KEY: 're_test', ANTHROPIC_API_KEY: 'sk-test', SESSION_SECRET: 'x'.repeat(40), ADMIN_API_TOKEN: 'master-test', ALLOWED_ORIGINS: SITE };
+  /** fetch simulado del Worker: delega en los servicios externos simulados. */
   const mockFetch = async (url, init) => { const r = await handle(url, init); return new Response(r.body, { status: r.status }); };
   const api = http.createServer(async (rq, rs) => {
     const body = await readBody(rq);
@@ -74,6 +80,7 @@ if (preg_match('#^/api(/|$)#', $path)) { $_SERVER['SCRIPT_NAME'] = '/api/index.p
 return false;
 `;
 
+/** Arranca el API PHP con php -S sobre una copia de api/ y enlaces a la web; devuelve la misma interfaz que startWorker. */
 async function startPhp({ dist, orderTo, orderFrom, port: wanted }) {
   const { st, handle } = externals();
   const work = fs.mkdtempSync(path.join(os.tmpdir(), 'tv-php-be-'));
@@ -92,6 +99,7 @@ async function startPhp({ dist, orderTo, orderFrom, port: wanted }) {
   const MOCK = `http://127.0.0.1:${mock.address().port}`;
   const cfg = { storage_dir: store, session_secret: 'x'.repeat(40), admin_token: 'master-test', allowed_origins: [], order_to: orderTo.split(','), order_from: orderFrom, cron_token: 'cron-test',
     mail: { driver: 'resend', resend_api_key: 're_test', api_base: MOCK }, prices: { csv_url: `${MOCK}/precios.csv`, decimals: 4 }, ai: { anthropic_api_key: 'sk-test', api_base: MOCK, model: 'claude-sonnet-5-5' } };
+  /** Escribe api/config.php con la configuración de pruebas (PHP la lee en cada petición). */
   const writeCfg = () => fs.writeFileSync(path.join(apiDir, 'config.php'), `<?php\nreturn json_decode(<<<'JSON'\n${JSON.stringify(cfg, null, 1)}\nJSON\n, true);\n`);
   writeCfg();
   fs.writeFileSync(path.join(work, 'router.php'), ROUTER);
@@ -105,7 +113,9 @@ async function startPhp({ dist, orderTo, orderFrom, port: wanted }) {
     if (i === 59) throw new Error('php -S no arranca:\n' + log);
     await new Promise((r) => setTimeout(r, 100));
   }
+  /** Ruta del fichero del almacén que corresponde a una clave. */
   const kv = (key) => path.join(store, 'kv', encodeURIComponent(key) + '.json');
+  /** Valor guardado en el almacén del PHP para una clave (null si no existe). */
   const read = (key) => { try { return JSON.parse(fs.readFileSync(kv(key), 'utf8')).v; } catch { return null; } };
   return {
     kind: 'php', SITE, API: SITE, mails: st.mails, log: () => log,
@@ -120,6 +130,7 @@ async function startPhp({ dist, orderTo, orderFrom, port: wanted }) {
   };
 }
 
+/** Arranca el backend pedido ('worker' o 'php') y devuelve su interfaz común. */
 export async function startBackend({ kind = backendKind(), dist, port, orderTo = 'info@grupotorivac.com,mzamora@torivac.com', orderFrom = 'Torivac Web <pedidos@grupotorivac.com>' }) {
   return kind === 'php' ? startPhp({ dist, orderTo, orderFrom, port }) : startWorker({ dist, orderTo, orderFrom });
 }

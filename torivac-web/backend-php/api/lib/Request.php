@@ -47,6 +47,7 @@ final class Request
         return $r;
     }
 
+    /** Valor de una cabecera de la petición (nombre sin distinguir mayúsculas); cadena vacía si no existe. */
     public function header(string $name): string { return $this->headers[strtolower($name)] ?? ''; }
 
     /** cuerpo JSON como array (null si no es válido o supera el límite) */
@@ -57,6 +58,7 @@ final class Request
         return is_array($j) ? $j : null;
     }
 
+    /** Token de la cabecera «Authorization: Bearer …», o null. */
     public function bearer(): ?string
     {
         return preg_match('/^Bearer\s+(.+)$/i', $this->header('authorization'), $m) ? trim($m[1]) : null;
@@ -70,6 +72,7 @@ final class Response
     public $body;
     public $headers;
 
+    /** Respuesta con cuerpo JSON, código HTTP y cabeceras (por defecto JSON UTF-8 y sin caché). */
     public function __construct(array $body, int $status = 200, array $headers = [])
     {
         $this->status = $status;
@@ -77,6 +80,7 @@ final class Response
         $this->headers = $headers + ['Content-Type' => 'application/json; charset=utf-8', 'Cache-Control' => 'no-store'];
     }
 
+    /** Envía código, cabeceras y cuerpo JSON (sin cuerpo en 204 y 304). */
     public function send(): void
     {
         http_response_code($this->status);
@@ -88,6 +92,7 @@ final class Response
 /** [CORS] Mismo origen siempre permitido; otros orígenes solo si están en config allowed_origins */
 final class Cors
 {
+    /** Dice si un origen puede usar el API: el propio sitio, las peticiones sin Origin o los de allowed_origins. */
     public static function allowed(?string $origin, ?string $host = null): bool
     {
         if ($origin === null || $origin === '') return true;                       // servidor a servidor / curl
@@ -102,6 +107,7 @@ final class Cors
         return in_array($origin, (array) $list, true);
     }
 
+    /** Cabeceras CORS para un origen permitido. */
     public static function headers(string $origin): array
     {
         return ['Access-Control-Allow-Origin' => $origin, 'Access-Control-Allow-Methods' => 'GET,POST,DELETE,OPTIONS', 'Access-Control-Allow-Headers' => 'Content-Type,Authorization', 'Access-Control-Max-Age' => '86400', 'Vary' => 'Origin'];

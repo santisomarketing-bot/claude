@@ -6,14 +6,19 @@
 (function () {
   'use strict';
   var TV = window.TV, Q = TV.Quote, lang = window.TV_LANG || 'es';
+  /** Primer elemento que cumple el selector `s` dentro de `r` (por defecto, el documento); null si no hay ninguno. */
   var $ = function (s, r) { return (r || document).querySelector(s); };
+  /** Todos los elementos que cumplen el selector `s` dentro de `r`, como array de verdad (no NodeList). */
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  /** Escapa & < > " para insertar texto en HTML; null y undefined dan cadena vacía. */
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
 
   // ───────────────────────────────────────── [UTIL]
   var toastEl = $('[data-toast]'), toastT;
+  /** Muestra `msg` durante 2,6 s en el aviso flotante de la página (no hace nada si la página no lo incluye). */
   TV.toast = function (msg) { if (!toastEl) return; toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(function () { toastEl.classList.remove('show'); }, 2600); };
   TV.esc = esc; TV.$ = $; TV.$$ = $$;
+  /** URL de la imagen del producto `ref` relativa a la página actual, o '' si no tiene imagen. */
   function thumbSrc(ref) {
     var it = TV.items[ref] || {};
     if (it.img) return Q.assetUrl(it.img);
@@ -40,7 +45,9 @@
 
   // ───────────────────────────────────────── [DRAWER] mini-presupuesto flotante
   var drawer = $('#quote-drawer'), scrim = $('[data-scrim]'), lastFocus = null;
+  /** Abre el cajón del presupuesto: guarda el foco previo, muestra cajón y velo, pinta las líneas y enfoca el botón de cerrar. */
   function openDrawer() { if (!drawer) return; lastFocus = document.activeElement; drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false'); scrim.classList.add('open'); renderDrawer(); var c = $('[data-close-quote]', drawer); if (c) c.focus(); }
+  /** Cierra el cajón del presupuesto y el velo, y devuelve el foco al elemento que lo abrió. */
   function closeDrawer() { if (!drawer) return; drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true'); scrim.classList.remove('open'); if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   TV.openDrawer = openDrawer; TV.closeDrawer = closeDrawer;
   $$('[data-open-quote]').forEach(function (b) { b.addEventListener('click', openDrawer); });
@@ -48,6 +55,7 @@
   if (scrim) scrim.addEventListener('click', function () { closeDrawer(); var s = $('#filters'); if (s) s.classList.remove('open'); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeDrawer(); var s = $('#filters'); if (s) { s.classList.remove('open'); scrim.classList.remove('open'); } } });
 
+  /** Pinta el cajón: líneas con miniatura, cantidades y total, o el aviso de presupuesto vacío con enlace a la página. */
   function renderDrawer() {
     var body = $('[data-drawer-body]', drawer), foot = $('[data-drawer-foot]', drawer);
     var d = Q.detail();
@@ -80,6 +88,7 @@
 
   // ───────────────────────────────────────── [FAB] contadores y "subir"
   var fab = $('.fab-quote');
+  /** Actualiza los contadores [data-quote-count] con el total de unidades del presupuesto. */
   function refreshCounts() { var n = Q.count(); $$('[data-quote-count]').forEach(function (el) { el.textContent = n; }); }
   Q.onChange(function (d) {
     refreshCounts();
@@ -96,7 +105,9 @@
   //         3) la redirección automática ocurre una sola vez por visitante y SOLO desde una página en español (la versión por defecto, sin prefijo);
   //            quien llega a /en/, /fr/ o /de/ ya ha elegido idioma (enlace compartido, buscador): ahí solo se ofrece un aviso (cambiar / mantener).
   var SITE_LANGS = ['es', 'en', 'fr', 'de'];
+  /** Lee la clave `k` de localStorage (sin `v`) o la guarda (con `v`); si el almacenamiento falla, devuelve null. */
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  /** Primer idioma preferido del navegador que exista en la web (es, en, fr, de); null si ninguno. */
   function browserLang() { var arr = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'es']); for (var i = 0; i < arr.length; i++) { var c = String(arr[i]).toLowerCase().slice(0, 2); if (SITE_LANGS.indexOf(c) >= 0) return c; } return null; }
   $$('[data-set-lang]').forEach(function (a) { a.addEventListener('click', function () { store('tv_lang', a.getAttribute('data-set-lang')); store('tv_lang_src', 'manual'); }); });
   (function detect() {
@@ -112,6 +123,7 @@
     }
     if (bl !== lang && !sessionStorage.getItem('tv_lang_dismiss')) offer(bl);
   })();
+  /** Muestra el aviso para cambiar al idioma `target` (en ese idioma): «cambiar» fija la elección y «mantener» conserva la actual. */
   function offer(target) {
     var bar = $('#lang-banner'); if (!bar || !window.TV_PATHS.home[target]) return;
     var d = (TV.i18n && TV.i18n[target]) || {};
@@ -124,6 +136,7 @@
   }
 
   // ───────────────────────────────────────── [PRICE-STAMP] marca de demo y fecha de precios
+  /** Pinta la marca «DEMO» (solo con precios de demostración) y la fecha de los precios. */
   function stamp() {
     var P = TV.prices || {};
     $$('[data-demo-flag]').forEach(function (e) { e.hidden = P.mode !== 'demo'; });

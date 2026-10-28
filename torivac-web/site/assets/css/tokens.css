@@ -21,7 +21,7 @@
   --copper-hover:#7f410a;
   --copper-on-dark:#f0a259; /* acento sobre fondo oscuro */
   --amber:#ffb653;
-  --ac:#ba6b1e;             /* etiquetas de tensión alterna */
+  --ac:#8f4a0d;             /* etiquetas de tensión alterna: cobre oscuro, AA (≥5:1) sobre el tinte de la etiqueta en cualquier fondo de la web */
   --dc:#2a2523;             /* continua */
   --ok:#1f6b3a;
   --warn:#8a5a00;

@@ -1,8 +1,10 @@
 // [VALIDATE] Validación estricta de pedidos y mensajes de contacto. Todo lo que llega del navegador es no fiable.
 const EMAIL = /^[^@\s]{1,64}@[^@\s]{1,255}\.[^@\s]{2,}$/;
 const LANGS = ['es', 'en', 'fr', 'de'];
+/** Texto sin caracteres de control (conserva tabulador y saltos de línea), recortado y limitado a max caracteres. */
 const clean = (s, max) => String(s ?? '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').trim().slice(0, max);
 
+/** Valida y normaliza el pedido del navegador (cliente, líneas pedibles de items, idioma, PDF) → { order } o { error }. */
 export function parseOrder(raw, items) {
   if (!raw || typeof raw !== 'object') return { error: 'Petición no válida' };
   if (raw.hp) return { error: 'Solicitud no válida' };                                // honeypot
@@ -25,6 +27,7 @@ export function parseOrder(raw, items) {
   if (raw.pdf) { if (typeof raw.pdf !== 'string' || raw.pdf.length > 5_500_000 || !raw.pdf.startsWith('JVBER')) return { error: 'PDF adjunto no válido' }; pdf = raw.pdf; }
   return { order: { customer, lines: [...seen].map(([ref, qty]) => ({ ref, qty })), lang, pdf, copyToCustomer: raw.copy !== false, turnstile: raw.turnstileToken || '' } };
 }
+/** Valida y normaliza el formulario de contacto (honeypot, nombre, correo, mensaje, privacidad) → { contact } o { error }. */
 export function parseContact(raw) {
   if (!raw || typeof raw !== 'object') return { error: 'Petición no válida' };
   if (raw.hp) return { error: 'Solicitud no válida' };

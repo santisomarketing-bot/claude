@@ -13,6 +13,7 @@ const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist
 const { server, base } = await serve(DIST);
 const browser = await chromium.launch();
 let fails = 0;
+/** Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo. */
 const ok = (c, m) => { if (!c) { fails++; console.error('  ✗ ' + m); } else console.log('  ✓ ' + m); };
 const pathOf = (p) => new URL(p.url()).pathname.replace(/index\.html$/, '');   // los enlaces del sitio terminan en index.html (funcionan también por file://)
 
@@ -24,7 +25,9 @@ async function visitor(languages, { storage } = {}) {
   const page = await ctx.newPage();
   return { ctx, page };
 }
+/** Espera a que la página termine de cargar y 150 ms más para que actúe la detección de idioma. */
 const settle = (page) => page.waitForLoadState('load').then(() => page.waitForTimeout(150));
+/** Valor de localStorage para la clave k en la página (null si no existe). */
 const ls = (page, k) => page.evaluate((key) => localStorage.getItem(key), k);
 
 console.log('\n1) navegador en francés, primera visita a la portada española → va a /fr/ una sola vez');

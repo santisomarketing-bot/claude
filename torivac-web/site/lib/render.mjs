@@ -7,6 +7,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+/** Escapa &, <, > y comillas dobles para insertar texto en HTML o en atributos. */
 export const esc = (s = '') => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export const attr = esc;
 
@@ -15,6 +16,7 @@ export const dirOf = (p) => p.replace(/^\/|\/$/g, '');
 
 // Demo (file://): los enlaces a carpetas terminan en index.html. Producción (--base): URLs limpias, sin index.html (Apache sirve la carpeta).
 let clean = false;
+/** Activa (producción) o desactiva (demo con file://) las URLs sin index.html que genera rel(). */
 export const setCleanUrls = (v) => { clean = !!v; };
 /** URL relativa desde la página `from` hasta la página lógica `to` (+hash opcional). */
 export function rel(from, to, hash = '') {
@@ -65,10 +67,12 @@ export function inlineHtml(ctx, h) {
   });
 }
 
+/** Bloque de tabla → HTML: detecta la cabecera, usa una primera fila de una sola celda como título y añade región con scroll. */
 const tbl = (b, lang) => {
   const rows = b.rows;
   const head = rows[0].every((c) => c.th) || rows[0].length > 1 && rows.length > 2 && rows[0].every((c) => c.x) && rows[1].some((c) => /\d/.test(c.x)) ? rows[0] : null;
   const body = head ? rows.slice(1) : rows;
+  // Celda th/td con el texto escapado; las th dentro del cuerpo llevan scope="row".
   const cell = (c, tag) => `<${tag}${c.th && tag === 'td' ? ' scope="row"' : ''}>${esc(c.x)}</${tag}>`;
   // fila única con una sola celda = título de la tabla (así la maqueta la original)
   let caption = b.cap || '';
@@ -115,10 +119,13 @@ export function blocksHtml(ctx, blocks = [], opts = {}) {
   }).join('\n');
 }
 
+/** Texto plano de una lista de bloques (encabezados, párrafos sin etiquetas y listas), con los espacios normalizados. */
 export const plain = (blocks = []) => blocks.map((b) => (b.t === 'h' ? b.x : b.t === 'p' ? b.h.replace(/<[^>]+>/g, '') : b.t === 'ul' ? b.i.join(' ') : '')).join(' ').replace(/\s+/g, ' ').trim();
 
-export const fmtDate = (iso, lang) => { try { return new Date(iso).toLocaleDateString({ es: 'es-ES', en: 'en-GB', fr: 'fr-FR', de: 'de-DE' }[lang], { year: 'numeric', month: 'long', day: 'numeric' }); } catch { return iso || ''; } };
+/** Fecha ISO → fecha larga localizada según el idioma (p. ej. «12 de marzo de 2024»). */
+export const fmtDate = (iso, lang) => { try { if (!iso || isNaN(new Date(iso))) return iso || ''; return new Date(iso).toLocaleDateString({ es: 'es-ES', en: 'en-GB', fr: 'fr-FR', de: 'de-DE' }[lang], { year: 'numeric', month: 'long', day: 'numeric' }); } catch { return iso || ''; } };
 
+/** Escribe `content` en root/p creando las carpetas intermedias que falten. */
 export function writeFile(root, p, content) {
   const f = path.join(root, p);
   fs.mkdirSync(path.dirname(f), { recursive: true });

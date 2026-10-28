@@ -1,0 +1,173 @@
+# Despliegue en un hosting con cPanel
+
+Se despliega **una sola cosa**: un `.zip` con la web estática (HTML por idioma) y la carpeta `api/` (PHP: pedidos, contacto, precios, panel). No hace falta Node, ni base de datos, ni WordPress en el hosting. La web actual de grupotorivac.com **no se toca**: se prueba en un subdominio y el cambio de dominio se hace al final.
+
+## Resumen: 10 pasos
+
+1. [Subdominio de pruebas](#1-subdominio-de-pruebas-y-https) con HTTPS (AutoSSL).
+2. [PHP 8.1+](#2-php) con las extensiones habituales.
+3. [Generar el paquete](#3-generar-el-paquete) `.zip` para ese subdominio.
+4. [Subirlo y descomprimirlo](#4-subir-y-descomprimir) en la carpeta del subdominio.
+5. [Carpeta de datos](#5-carpeta-de-datos-fuera-de-la-web) fuera de la web.
+6. [`api/config.php`](#6-configuración-apiconfigphp) (copiando el ejemplo).
+7. [Primer usuario manager](#7-primer-usuario-manager).
+8. [Correo con Resend](#8-correo-resend) (dominio verificado).
+9. [Precios desde Drive y cron diario](#9-precios-y-cron-diario).
+10. [Comprobar](#10-comprobar) con `check.php`, las URL clave y un pedido de prueba.
+
+Después: [actualizar la web](#11-actualizar-la-web) · [pasar a producción](#12-pasar-a-producción) · [copias de seguridad](#13-copias-de-seguridad) · [si algo falla](#14-si-algo-falla) · [alternativa con Cloudflare](#15-alternativa-api-en-cloudflare-worker).
+
+---
+
+## 1. Subdominio de pruebas y HTTPS
+
+1. En el DNS de grupotorivac.com (donde esté gestionado hoy) crea un registro **A** para `pruebas` apuntando a la IP del hosting nuevo. **No cambies nada más**: el dominio principal sigue en el hosting actual.
+2. cPanel → **Dominios** → *Crear un nuevo dominio* → `pruebas.grupotorivac.com` (sin «compartir raíz»). La carpeta será, por ejemplo, `public_html/pruebas`.
+3. cPanel → **SSL/TLS Status** → *Run AutoSSL*. Cuando el DNS haya propagado, el candado aparece solo.
+
+> Cualquier otro dominio o subdominio sirve (p. ej. uno de la agencia). Solo cambia la URL que das en el paso 3.
+
+## 2. PHP
+
+cPanel → **MultiPHP Manager** → elige **PHP 8.1 o superior** (probado con 8.3; funciona desde 7.4). Extensiones necesarias (**Seleccionar versión de PHP → Extensiones**): `curl`, `mbstring`, `openssl`, `json`, `zlib`. Suelen venir activas.
+
+## 3. Generar el paquete
+
+En un ordenador con Node 22 y Python 3 (o con el flujo de GitHub del apartado [12](#12-pasar-a-producción)):
+
+```bash
+python3 -I scripts/package_cpanel.py --base=https://pruebas.grupotorivac.com --staging
+```
+
+Crea `entrega/torivac-cpanel-pruebas-grupotorivac-com-AAAAMMDD.zip` y antes **verifica**: que están todos los ficheros, que no hay claves ni tests ni scripts de trabajo, que **no lleva precios**, que el PHP es válido y que la URL del API es la de la propia web.
+`--staging` añade `noindex` (cabecera, meta y `robots.txt` que prohíbe todo) y una cinta «entorno de pruebas»: Google no indexa el subdominio.
+
+## 4. Subir y descomprimir
+
+cPanel → **Administrador de archivos** → entra en la carpeta del subdominio → *Cargar* el `.zip` → clic derecho → **Extract**. Activa *Configuración → Mostrar archivos ocultos* para ver `.htaccess`.
+Debe quedar `…/pruebas/index.html`, `…/pruebas/.htaccess`, `…/pruebas/api/index.php`, `…/pruebas/en/`, etc. (no una carpeta intermedia). Borra el `.zip`.
+
+**Cerrar el subdominio de pruebas a tu IP (opcional, recomendable si cargas la tarifa real):** el `.htaccess` de pruebas trae un bloque comentado `Require ip 203.0.113.7`; descoméntalo con tu IP pública. No uses *Privacidad de directorios* de cPanel (contraseña): choca con la cabecera `Authorization` que usa el panel.
+
+El `.htaccess` ya incluye: HTTPS obligatorio, un solo host (con o sin `www`), URLs limpias, las redirecciones 301 de URLs antiguas (duplicados fusionados y PDF de `/wp-content/uploads/`), compresión, caché, cabeceras de seguridad y la reescritura de `/api`. Funciona igual en Apache y en LiteSpeed.
+
+## 5. Carpeta de datos (fuera de la web)
+
+Pedidos, usuarios y precios se guardan como ficheros JSON. Créala **fuera** de `public_html`, p. ej. `/home/CUENTA/torivac-datos` (Administrador de archivos → *Nueva carpeta* a la altura de `public_html`). Se protege sola con un `.htaccess`, pero fuera de la web no hay riesgo ninguno.
+
+## 6. Configuración: `api/config.php`
+
+1. En `…/pruebas/api/` copia **`config.sample.php`** como **`config.php`** y edítalo (los comentarios explican cada línea). Lo imprescindible:
+
+| Ajuste | Qué poner |
+|---|---|
+| `storage_dir` | `/home/CUENTA/torivac-datos` (paso 5) |
+| `session_secret` | 32+ caracteres aleatorios (`openssl rand -hex 32` o random.org). Cambiarla cierra todas las sesiones |
+| `order_to` | `['info@grupotorivac.com', 'mzamora@torivac.com']` (confirmado; `info@` también para las pruebas) |
+| `order_from` | `Torivac Web <pedidos@grupotorivac.com>` (dominio verificado en Resend, paso 8) |
+| `mail` | `driver` = `resend` y `resend_api_key` |
+| `prices` | origen de la hoja de Drive (paso 9) |
+| `admin_token` | solo para crear el primer manager (paso 7); **vacíalo después** |
+
+2. Permisos recomendados de `config.php`: **640**. **No lo subas a ningún repositorio** (está en `.gitignore`).
+3. Un cambio en `config.php` se aplica **al instante** (no hay caché que esperar).
+
+## 7. Primer usuario manager
+
+**Con Terminal** (cPanel → Terminal, o SSH):
+
+```bash
+cd ~/public_html/pruebas
+php api/tools/create-user.php jefa@torivac.com "Nombre Apellido" manager "una contraseña de 10+ caracteres"
+```
+
+**Sin Terminal**: pon un `admin_token` largo en `config.php` y, desde cualquier ordenador:
+
+```bash
+curl -X POST https://pruebas.grupotorivac.com/api/users \
+  -H "Authorization: Bearer EL_TOKEN" -H "Content-Type: application/json" \
+  -d '{"email":"jefa@torivac.com","name":"Nombre Apellido","role":"manager","password":"una contraseña de 10+ caracteres"}'
+```
+
+Luego **vacía `admin_token`**. Más usuarios (managers o clientes) se crean desde el panel: **Usuarios**.
+
+## 8. Correo (Resend)
+
+Los pedidos llegan por correo a `order_to`, con el PDF adjunto, y el cliente recibe una copia.
+
+1. Cuenta en resend.com → **Domains** → añade `grupotorivac.com` y copia en el DNS los registros que indica (SPF y DKIM). No tocan el correo actual (los `MX` siguen igual).
+2. **API Keys** → crea una → `mail.resend_api_key`.
+3. Hasta que el dominio esté verificado, Resend solo permite enviar desde `onboarding@resend.dev` y solo a la dirección de tu cuenta: para probar, pon provisionalmente `order_from` = `Torivac Web <onboarding@resend.dev>` y `order_to` = tu correo.
+
+Alternativas: `mail.driver = 'mail'` (función `mail()` del hosting: sin garantías de entrega si el SPF de grupotorivac.com no incluye el servidor) o `'file'` (no envía; deja cada correo en la carpeta `outbox` dentro de la carpeta de datos, útil para ver cómo quedan).
+
+## 9. Precios y cron diario
+
+1. Origen de la hoja de Drive: elige una de las formas de [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md) (descarga directa del `.xlsx`, cuenta de servicio, CSV o subida manual) y rellena `prices` en `config.php`.
+2. cPanel → **Trabajos de Cron** → una vez al día:
+
+```
+0 3 * * *  /usr/local/bin/php /home/CUENTA/public_html/pruebas/api/cron.php >> /home/CUENTA/torivac-datos/cron.log 2>&1
+```
+
+   (la ruta de `php` la muestra cPanel en la ayuda de la pantalla de cron). Si el hosting no deja programar por línea de comandos, pon un `cron_token` y programa `curl -fsS "https://pruebas.grupotorivac.com/api/cron?token=EL_TOKEN" > /dev/null`.
+3. A mano, cuando quieras: Panel → **Precios → Actualizar ahora**.
+
+## 10. Comprobar
+
+**a) Autodiagnóstico** (Terminal): `php api/tools/check.php --net` — revisa PHP, extensiones, carpeta de datos, `config.php`, correo, precios, manager y salida a Internet; dice qué arreglar. También en el panel: **Ajustes → Diagnóstico** (solo managers).
+
+**b) URL clave** (todas deben dar lo indicado):
+
+| URL | Debe… |
+|---|---|
+| `https://pruebas…/` y `/en/` `/fr/` `/de/` | cargar con candado y la cinta «entorno de pruebas» |
+| `…/api/health` | `{"ok":true,…}` |
+| `…/api/config.php`, `…/api/lib/Config.php` | **nunca enseñar código** (401/403/404) |
+| `…/robots.txt` | `Disallow: /` (pruebas) |
+| `…/admin/` | pedir acceso; entrar con el manager |
+| una ficha de producto | mostrar precio (o «Consultar» si aún no hay hoja) |
+| una URL inexistente | la página 404 del idioma |
+
+**c) Pedido de prueba**: añadir dos referencias en una ficha → *Presupuesto* → rellenar → *Enviar pedido*. Debe salir «Pedido registrado · TV-AAAAMMDD-NNNN», llegar a `info@` y `mzamora@` con el PDF y aparecer en el panel (**Pedidos**).
+
+## 11. Actualizar la web
+
+Genera un `.zip` nuevo (paso 3) y **extrae encima** del anterior. El paquete **no contiene** `api/config.php` ni la carpeta de datos, así que no se pierde nada. Si no cambia el catálogo, basta con lo que cambie.
+
+## 12. Pasar a producción
+
+1. `python3 -I scripts/package_cpanel.py --base=https://www.grupotorivac.com` (sin `--staging`; usa la URL final, con o sin `www`: el `.htaccess` fija ese host como único). Además de lo anterior ejecuta la **auditoría SEO/GEO** (H1, hreflang, canonical, JSON-LD, sitemap, enlaces).
+2. Sube y extrae en la carpeta del dominio definitivo, copia `config.php` (cambia solo lo necesario, p. ej. quitar el aviso de pruebas del correo si lo habías puesto) y repite los pasos 7-10.
+3. Baja el TTL del DNS unas horas antes y apunta `grupotorivac.com`/`www` al hosting nuevo. **Mantén el hosting antiguo** hasta comprobar todo.
+4. Search Console: añade la propiedad y envía `https://www.grupotorivac.com/sitemap.xml`. Las URL son las mismas que las de la web original (con 301 donde había duplicados), así que el posicionamiento se conserva.
+5. HSTS (un año) solo se activa en producción: asegúrate de que HTTPS funciona en todo antes de cambiar el DNS.
+
+**Con GitHub**: copia `ci/deploy.yml` a `.github/workflows/deploy-cpanel.yml`; el flujo empaqueta, verifica y sube por SSH/rsync (con *simulacro* previo) o deja el `.zip` como artefacto para subirlo a mano. Secretos y variables: cabecera del fichero.
+
+## 13. Copias de seguridad
+
+Lo único que no se regenera es la **carpeta de datos** (pedidos 400 días, usuarios, precios vigentes e histórico de 90 días) y `api/config.php`. Inclúyelos en la copia de cPanel (o descárgalos de vez en cuando). La web en sí siempre se puede volver a generar del repositorio.
+
+## 14. Si algo falla
+
+| Síntoma | Causa probable | Qué hacer |
+|---|---|---|
+| Error 500 en todas las páginas tras subir | El hosting no admite alguna directiva del `.htaccess` | Mira el `error_log` de la carpeta; comenta la línea indicada (suele ser `Options -Indexes` o `AddDefaultCharset`) |
+| La web va pero `/api/…` da 404 | Falta el `.htaccess` (oculto) o `mod_rewrite` | Mostrar ocultos y comprobar que se extrajo; pedir a soporte `mod_rewrite` |
+| Entras en el panel y vuelve a pedir acceso / 401 | El hosting no pasa la cabecera `Authorization` a PHP | Ya hay una regla en `.htaccess`; si persiste, en `api/.htaccess` añade `SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1` |
+| «Origen no permitido» (403) | Se abre la web con otro host que el compilado (`www` frente a sin `www`) | Entrar por la URL compilada o añadir el otro origen a `allowed_origins` |
+| No llegan los correos | Dominio sin verificar en Resend, o va a spam | `check.php --net`; panel de Resend → *Emails*; probar con `driver = 'file'` y mirar la carpeta `outbox` de la carpeta de datos |
+| Los precios no se actualizan | Origen mal configurado, archivo sin compartir o hoja rechazada | Ejecuta `php api/cron.php` y lee el mensaje; ver [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md) §6-7 |
+| «No puedo escribir en el directorio de datos» | `storage_dir` mal escrito o sin permisos | Crear la carpeta; permisos 755 y mismo usuario de la cuenta |
+
+## 15. Alternativa: API en Cloudflare Worker
+
+La web estática puede ir al cPanel y el API a Cloudflare (`workers/api`, plan gratuito): compilar con `TORIVAC_API=https://<worker>` en vez de `--php-api`, añadir el dominio del cPanel a `ALLOWED_ORIGINS` y seguir `workers/api/README.md`. El contrato es idéntico (los mismos guiones de prueba corren contra los dos). Con cPanel todo queda en un solo sitio y sin cuentas extra; con Worker el correo y el cron no dependen del hosting.
+
+## Qué hace el API y qué no
+
+- Pedidos y contacto: validación en servidor, límite por IP, *honeypot* anti-bots, Turnstile opcional, **el importe lo calcula el servidor** con sus precios.
+- Panel: sesiones firmadas (HMAC) con caducidad, contraseñas con `password_hash`, bloqueo tras varios intentos, un cliente solo ve sus pedidos.
+- La IA de precios **propone**, nunca aplica: una persona revisa y confirma (los cambios grandes piden confirmación extra).
+- No guarda datos de tarjetas ni cobra: es un sistema de **presupuestos/pedidos** que llegan por correo.

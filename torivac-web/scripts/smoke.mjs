@@ -10,10 +10,12 @@ const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
 const SHOTS = path.join(ROOT, 'data', 'raw', 'screens', 'demo');
+/** Valor de la opción --k=valor de la línea de comandos (undefined si no se indicó). */
 const arg = (k) => (process.argv.find((a) => a.startsWith(`--${k}`)) || '').split('=')[1];
 const shots = process.argv.includes('--shots');
 const lang = arg('lang') || 'es';
 fs.mkdirSync(SHOTS, { recursive: true });
+/** URL file:// de la ruta p dentro de dist/ (las que acaban en «/» apuntan a su index.html). */
 const url = (p) => 'file://' + path.join(DIST, p.replace(/^\//, ''), p.endsWith('/') ? 'index.html' : '');
 const home = lang === 'es' ? '/' : `/${lang}/`;
 
@@ -26,6 +28,7 @@ page.on('pageerror', (e) => problems.push('pageerror: ' + e.message));
 page.on('requestfailed', (r) => { if (!/google|gstatic|grupotorivac\.com\/wp-/.test(r.url())) problems.push('requestfailed: ' + r.url()); });
 
 const results = [];
+/** Visita la ruta p, ejecuta fn si se da, busca desbordes horizontales y (con --shots) captura la página; anota los problemas nuevos. */
 async function visit(name, p, fn) {
   const before = problems.length;
   await page.goto(url(p), { waitUntil: 'load' });

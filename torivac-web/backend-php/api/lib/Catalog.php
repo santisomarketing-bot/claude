@@ -9,6 +9,7 @@ final class Catalog
 {
     private static $c = null;
 
+    /** Catálogo de referencias pedibles (generated/catalog.json, o el fichero dado); se guarda en memoria. */
     public static function load(?string $file = null): array
     {
         if (self::$c !== null && $file === null) return self::$c;
@@ -21,6 +22,7 @@ final class Catalog
     /** sustituye el catálogo (pruebas) */
     public static function set(array $c): void { self::$c = $c + ['items' => [], 'skus' => [], 'rules' => []]; }
 
+    /** Referencias pedibles: {ref: {n: nombre, pid: producto}}. */
     public static function items(): array { return self::load()['items']; }
 
     /** contexto para PriceSheet::read */

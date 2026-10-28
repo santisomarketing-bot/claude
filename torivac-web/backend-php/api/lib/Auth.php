@@ -10,10 +10,13 @@ final class Auth
 {
     const TTL_MS = 604800000;
 
+    /** Hash de contraseña (bcrypt/argon2 según el hosting) para guardar en el usuario. */
     public static function hashPassword(string $pw): string { return password_hash($pw, PASSWORD_DEFAULT); }
 
+    /** Comprueba una contraseña contra su hash; un hash vacío nunca valida. */
     public static function verifyPassword(string $pw, string $hash): bool { return $hash !== '' && password_verify($pw, $hash); }
 
+    /** Firma una sesión {sub, role, name, exp} con HMAC-SHA256 y la devuelve como token. */
     public static function signSession(array $u, string $secret, ?int $now = null, int $ttl = self::TTL_MS): string
     {
         $payload = Util::enc(['sub' => $u['sub'], 'role' => $u['role'], 'name' => $u['name'] ?? $u['sub'], 'exp' => ($now ?? Util::nowMs()) + $ttl]);
@@ -40,17 +43,21 @@ final class Auth
         if ($t === null) return null;
         $master = (string) Config::get('admin_token', '');
         if ($master !== '' && hash_equals($master, $t)) return ['role' => 'manager', 'sub' => 'master', 'name' => 'master', 'master' => true];
-        return self::verifySession($t, (string) Config::get('session_secret', ''));
+        $s = self::verifySession($t, (string) Config::get('session_secret', ''));
+        return ($s && Users::exists($s['sub'])) ? $s : null;                  // las sesiones no tienen estado: un usuario borrado pierde el acceso al instante
     }
 
+    /** Dice si la sesión existe y su rol es uno de los permitidos. */
     public static function requireRole(?array $who, string ...$roles): bool { return $who !== null && in_array($who['role'], $roles, true); }
 }
 
 /** [USERS] Usuarios en el almacén (clave user:<email>); nunca se devuelve ni se guarda la contraseña en claro */
 final class Users
 {
+    /** Clave del almacén de un usuario: user:<correo en minúsculas>. */
     private static function key(string $email): string { return 'user:' . strtolower(trim($email)); }
 
+    /** Usuario sin el hash de la contraseña (lo que puede salir al navegador). */
     private static function pub(array $u): array { return ['email' => $u['email'], 'name' => $u['name'], 'role' => $u['role'], 'created' => $u['created']]; }
 
     /** @return array{user?:array,error?:string,status?:int} */
@@ -68,6 +75,7 @@ final class Users
         return ['user' => self::pub($u)];
     }
 
+    /** Lista de todos los usuarios sin hash, ordenados por correo. */
     public static function all(): array
     {
         $out = [];
@@ -75,6 +83,10 @@ final class Users
         return $out;
     }
 
+    /** ¿Existe ese usuario? */
+    public static function exists(string $email): bool { return Store::get(self::key($email)) !== null; }
+
+    /** Borra un usuario por su correo. */
     public static function delete(string $email): void { Store::delete(self::key($email)); }
 
     /** comprueba credenciales (mismo coste si el usuario no existe: no se puede enumerar usuarios por tiempo) */

@@ -39,7 +39,9 @@ await be.addUser({ email: 'otro@cliente.es', name: 'Otro Cliente', role: 'client
 
 const browser = await chromium.launch();
 let fails = 0;
+/** Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo. */
 const ok = (c, m) => { if (!c) { fails++; console.error('  ✗ ' + m); } else console.log('  ✓ ' + m); };
+/** Abre un contexto (1440×900) con el catálogo apuntando al API de pruebas; devuelve { ctx, page, errs } (errs = errores de JS). */
 const newPage = async () => {
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, acceptDownloads: true });
   await ctx.route('**/assets/data/catalog.js', async (route) => { const r = await route.fetch(); await route.fulfill({ response: r, body: (await r.text()).replace('http://api.invalid', API) }); });
@@ -47,8 +49,11 @@ const newPage = async () => {
   page.on('pageerror', (e) => errs.push(e.message)); page.on('console', (m) => { if (m.type() === 'error' && !/favicon|Failed to load resource/.test(m.text())) errs.push(m.text()); });
   return { ctx, page, errs };
 };
+/** Abre /admin/ y envía el formulario de acceso con el correo y la contraseña dados (no espera al resultado). */
 const login = async (page, email, pass) => { await page.goto(SITE + '/admin/index.html'); await page.fill('[name=email]', email); await page.fill('[name=pass]', pass); await page.click('button[type=submit]'); };
+/** Textos de los enlaces del menú lateral del panel. */
 const navs = (page) => page.$$eval('.side nav a', (a) => a.map((x) => x.textContent.trim()));
+/** Texto del aviso emergente (#toast), leído tras una pausa corta para que aparezca. */
 const toastText = async (page) => { await page.waitForTimeout(250); return page.locator('#toast').innerText(); };
 
 // ───────────────────────────────────── pedido de prueba hecho desde la web (público) por Marta
@@ -97,7 +102,7 @@ console.log('\n3) precios: subir hoja con vista previa y aplicar');
   const pub = await fetch(API + '/api/prices').then((r) => r.json());
   ok(pub.prices.items[R_TT].p === 99.99 && JSON.stringify(pub.prices.items[R_TT].t) === '[[10,95]]', 'precio publicado en el servidor (99,99 con tramo 10 uds = 95)');
   await page.click('[data-refresh]'); await page.waitForTimeout(700);
-  const syn = (await fetch(API + '/api/prices').then((r) => r.json()));
+  const syn = (await fetch(API + '/api/prices', { headers: { Authorization: 'Bearer master-test' } }).then((r) => r.json()));      // el detalle (quién y de dónde) solo lo ve un manager
   ok(syn.prices.items[R_TT].p === 88.5 && syn.meta.reason.startsWith('manual:') && Object.keys(syn.prices.items).length === 4, 'botón «Actualizar ahora»: vuelve a leer la hoja de Drive (precio 88,5)');
   await ctx.close(); }
 

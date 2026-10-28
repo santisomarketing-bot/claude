@@ -33,6 +33,7 @@ for d in (RAW / "media", OUTD, CAT):
 
 
 def norm(u):
+    """URL absoluta de una referencia a imagen, sin ancla; None si está vacía o es un data: URI."""
     u = (u or "").strip().split("#")[0]
     if not u or u.startswith("data:"):
         return None
@@ -40,8 +41,10 @@ def norm(u):
 
 
 def collect():
+    """Reúne las URLs de imágenes de la web original y los CSS de Elementor; devuelve ({url: orígenes}, lista de CSS)."""
     urls = {}
     def add(u, src):
+        """Registra la URL `u` con su origen `src` si es una imagen (jpg, png, webp, gif, svg) alojada en grupotorivac.com."""
         u = norm(u)
         if u and re.search(r"\.(jpe?g|png|webp|gif|svg)(\?.*)?$", urlparse(u).path, re.I) and urlparse(u).netloc.endswith("grupotorivac.com"):
             urls.setdefault(u.split("?")[0], set()).add(src)
@@ -80,6 +83,7 @@ def collect():
 
 
 def get(url, binary=True, tries=3):
+    """Descarga `url` con reintentos y devuelve bytes (o texto si `binary` es False); relanza el último error si todos fallan."""
     for i in range(tries):
         try:
             req = urllib.request.Request(url, headers={"User-Agent": UA})
@@ -92,8 +96,10 @@ def get(url, binary=True, tries=3):
 
 
 def css_images(css_urls):
+    """Descarga en paralelo los CSS de Elementor y devuelve {URL de imagen de fondo: orígenes} de grupotorivac.com."""
     out = {}
     def one(u):
+        """Descarga el CSS `u` y devuelve (`u`, URLs absolutas de sus url(...)); lista vacía si la descarga falla."""
         try:
             css = get(u, binary=False)
         except Exception:
@@ -108,6 +114,7 @@ def css_images(css_urls):
 
 
 def process(url):
+    """Descarga una imagen y genera su WebP (máx. 1200 px) y miniatura (480 px) en site/assets/media; SVG tal cual. Devuelve su registro."""
     name = Path(urlparse(url).path).name
     key = hashlib.sha1(url.encode()).hexdigest()[:8]
     raw = RAW / "media" / f"{key}-{name}"

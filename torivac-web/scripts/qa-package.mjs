@@ -23,9 +23,12 @@ const sb = { window: {} }; sb.window = sb; vm.createContext(sb);
 for (const f of ['catalog.js', 'prices.js']) vm.runInContext(fs.readFileSync(path.join(WWW, 'assets/data', f), 'utf8'), sb);
 const { items, prices: bundled } = sb.TV;
 const demo = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/catalog/prices.json'), 'utf8'));      // hoja de DEMO: hace de hoja de Drive en el servidor
+/** Primera referencia pedible de un producto (código real del PDF o línea genérica P<id>). */
 const pick = (pid) => Object.keys(items).find((r) => items[r].pid === pid);
 const R = [pick(884), pick(8339)], Q = { [R[0]]: 12, [R[1]]: 2 };
+/** Redondea a 2 decimales (importe de línea). */
 const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
+/** Precio unitario de una referencia para una cantidad, con los tramos de la hoja. */
 const unit = (ref, q) => { const p = demo.items[ref]; let u = p.p; for (const [m, x] of p.t || []) if (q >= m) u = x; return u; };
 const expTotal = round2(R.reduce((s, r) => s + round2(unit(r, Q[r]) * Q[r]), 0));
 
@@ -35,6 +38,7 @@ await be.addUser({ email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manag
 
 const browser = await chromium.launch();
 let fails = 0;
+/** Anota una comprobación: la cuenta como fallo si no se cumple y la imprime. */
 const ok = (c, m) => { if (!c) { fails++; console.error('  ✗ ' + m); } else console.log('  ✓ ' + m); };
 const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, locale: 'es-ES' });
 await ctx.addInitScript(() => { try { localStorage.setItem('tv_lang', 'es'); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang_auto_done', '1'); } catch (e) { /* ignorar */ } });
@@ -83,8 +87,12 @@ await page.fill('[name=email]', 'jefa@torivac.com'); await page.fill('[name=pass
 await page.waitForSelector('.side nav a', { timeout: 8000 });
 await page.waitForFunction(() => document.querySelectorAll('.kpi').length === 4, null, { timeout: 5000 }).catch(() => {});
 ok((await page.locator('.kpi').count()) === 4, 'el manager entra en el panel y ve el resumen');
+await page.click('.side nav a[href="#ajustes"]'); await page.waitForSelector('.diag li', { timeout: 8000 });
+const diag = await page.locator('.diag').innerText();
+ok((await page.locator('.diag li').count()) >= 10 && !/✗/.test(diag), `Ajustes → Diagnóstico del servidor: ${await page.locator('.diag li').count()} comprobaciones, sin fallos`);
 
 console.log('\n4) seguridad del API');
+/** Pide una ruta del API y devuelve el código HTTP y si la respuesta enseña código PHP. */
 const peek = async (p) => { const r = await fetch(BASE + p); const t = await r.text(); return { s: r.status, php: /<\?php|namespace Torivac|session_secret/.test(t) }; };
 for (const p of ['/api/config.php', '/api/config.sample.php', '/api/lib/Config.php', '/api/lib/autoload.php', '/api/cron.php', '/api/tools/create-user.php', '/api/generated/catalog.json']) {
   const r = await peek(p); ok(!r.php && [401, 403, 404].includes(r.s), `${p} no se sirve ni enseña código (HTTP ${r.s})`);

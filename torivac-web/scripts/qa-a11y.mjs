@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { serve } from './lib/static-server.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+/** Valor de la opción --k=valor de la línea de comandos, o d si no se indicó. */
 const opt = (k, d) => { const a = process.argv.find((x) => x.startsWith(`--${k}=`)); return a ? a.split('=').slice(1).join('=') : d; };
 const DIST = path.resolve(ROOT, opt('dir', 'dist')), PER = Number(opt('per', 2));
 const AXE = [process.env.AXE_PATH, path.join(ROOT, 'node_modules/axe-core/axe.min.js'), '/tmp/axe-install/node_modules/axe-core/axe.min.js'].filter(Boolean).find((p) => fs.existsSync(p));

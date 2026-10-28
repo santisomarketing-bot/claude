@@ -11,6 +11,7 @@
 import { findHeader } from './price-sheet.mjs';
 
 const td = new TextDecoder();
+/** Enteros little-endian de 16 y 32 bits en la posición o de un DataView (formato del zip). */
 const u16 = (d, o) => d.getUint16(o, true), u32 = (d, o) => d.getUint32(o, true);
 
 /** índice del contenido del zip por nombre: { método, tamaño comprimido, posición de la cabecera local } (se lee del directorio central, al final del fichero) */
@@ -83,6 +84,7 @@ function sheetRows(xml, shared) {
 /** @returns {Promise<{name:string, hidden:boolean, rows:any[][]}[]>} */
 export async function readXlsx(bytes) {
   const z = zipEntries(bytes);
+  /** Texto de una entrada del zip por su nombre ('' si no existe). */
   const text = async (name) => { const e = z.get(name); return e ? entryText(bytes, e) : ''; };
   const wb = await text('xl/workbook.xml');
   if (!wb) throw new Error('El fichero es un zip pero no un libro de Excel (.xlsx)');

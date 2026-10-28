@@ -9,6 +9,7 @@ final class Config
 {
     private static $data = [];
 
+    /** Carga la configuración desde config.php (si falta, queda vacía) y fuerza a OPcache a releerla. */
     public static function load(string $file): void
     {
         if (is_file($file) && function_exists('opcache_invalidate')) @opcache_invalidate($file, true);      // un cambio en config.php se nota al instante aunque OPcache revalide cada minuto

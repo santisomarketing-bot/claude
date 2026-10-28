@@ -8,7 +8,9 @@ import { mkEnv, req } from './helpers.js';
 // referencias REALES del catálogo generado (site/build.mjs → src/generated/items.js)
 const PRICES = { updated_at: '2026-10-28T00:00:00Z', source: 'test', currency: 'EUR', mode: 'live', items: { P8339: { p: 15.82, t: [[10, 15.1], [50, 14.4]] }, P8340: { p: 62.93 }, P884: { p: 49.95 } } };
 const M = { Authorization: 'Bearer master-token-123' };
+/** Respuesta simulada de la API de Anthropic: un bloque tool_use de la herramienta de precios con el input dado. */
 const aiReply = (input) => new Response(JSON.stringify({ content: [{ type: 'tool_use', name: TOOL, input }], usage: { input_tokens: 900, output_tokens: 120 } }), { status: 200 });
+/** Entorno de pruebas con ANTHROPIC_API_KEY y PRICES ya guardados en KV; devuelve una promesa del entorno. */
 const env0 = (extra = {}) => { const env = mkEnv({ ANTHROPIC_API_KEY: 'sk-test', ...extra }); return env.KV.put('prices:current', JSON.stringify(PRICES)).then(() => env); };
 
 test('IA · validación: referencias inexistentes, repetidas, precios absurdos y cambios nulos', () => {
@@ -51,6 +53,7 @@ test('IA · sin clave de API → 503; instrucción corta → 400; sin precios �
 });
 test('IA · propone con la herramienta, envía la lista de precios y descarta lo inventado', async () => {
   const env = await env0(); let sent;
+  /** fetch simulado de la IA: guarda en sent la URL, las cabeceras y el cuerpo de la llamada y responde con una propuesta. */
   const fetchImpl = async (url, init) => { sent = { url, init, body: JSON.parse(init.body) }; return aiReply({ summary: 'Sube un 3 % las resistencias', changes: [{ ref: 'P8339', price: 16.2946, tiers: [{ qty: 10, price: 15.553 }, { qty: 50, price: 14.832 }] }, { ref: 'P-FANTASMA', price: 9 }], warnings: ['Redondeo a 4 decimales'] }); };
   const r = await suggestPriceChanges(env, 'sube un 3 % las resistencias', { fetchImpl });
   assert.equal(sent.url, 'https://api.anthropic.com/v1/messages');
@@ -85,6 +88,7 @@ test('API · /api/prices/ai y /apply: solo manager, límite de uso y flujo compl
   const env = await env0();
   const real = globalThis.fetch; globalThis.fetch = async () => aiReply({ summary: 'Resistencias +3 %', changes: [{ ref: 'P8339', price: 16.3, tiers: [{ qty: 10, price: 15.55 }] }] });
   try {
+    /** POST a la ruta p del Worker con body JSON y cabeceras (por defecto el token maestro); devuelve la Response. */
     const call = (p, body, headers = M) => api.fetch(req(p, { method: 'POST', body, headers }), env, {});
     assert.equal((await call('/api/prices/ai', { instruction: 'sube un 3 % las resistencias' }, {})).status, 401);                  // sin sesión
     const r = await (await call('/api/prices/ai', { instruction: 'sube un 3 % las resistencias' })).json();
@@ -100,6 +104,7 @@ test('API · /api/prices/ai y /apply: solo manager, límite de uso y flujo compl
 
 test('API · decisiones sobre propuestas: se guardan por manager, se validan y se pueden deshacer', async () => {
   const env = await env0();
+  /** Llama a /api/proposals/state con el método m, body y cabeceras (por defecto el token maestro); devuelve la Response. */
   const call = (m, body, headers = M) => api.fetch(req('/api/proposals/state', { method: m, body, headers }), env, {});
   assert.equal((await call('GET', undefined, {})).status, 401);
   assert.deepEqual((await (await call('GET')).json()).state, {});

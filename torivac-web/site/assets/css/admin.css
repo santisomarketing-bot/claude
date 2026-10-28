@@ -39,3 +39,4 @@ body.admin{background:var(--bg)}
 .err{color:var(--err);font-weight:600}
 .small{font-size:var(--fs-0)}
 @media (max-width:860px){.shell{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center}.side nav{flex-direction:row;flex-wrap:wrap;flex:1 1 100%;order:3}.cols,.cols3{grid-template-columns:1fr}.main{padding:var(--s-4)}}
+.diag{list-style:none;margin:.6rem 0 0;padding:0}.diag li{padding:.3rem 0;border-bottom:1px solid var(--line)}.diag li:last-child{border-bottom:0}

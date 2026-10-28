@@ -13,12 +13,14 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const RAW = path.join(ROOT, "data", "raw");
 const BASE = "https://grupotorivac.com";
+/** Lee data/raw/<p> y lo devuelve ya parseado como JSON. */
 const rj = async p => JSON.parse(await readFile(path.join(RAW, p), "utf8"));
 
 const posts = await rj("rest/posts.es.json");
 const store = await rj("store/products.es.json");
 const variable = store.find(p => p.type === "variable");
 const withTable = store.find(p => /<table/i.test(p.description || ""));
+/** Permalink del primer elemento de arr que cumple f (o del primero si ninguno cumple). */
 const pick = (arr, f) => (arr.find(f) || arr[0] || {}).permalink;
 
 const PAGES = [
@@ -55,9 +57,11 @@ for (const [name, url] of PAGES) {
       await page.waitForTimeout(700);
       if (vp === "desktop") {
         dump.pages[name] = { url, ...(await page.evaluate(() => {
+          /** Estilos calculados del elemento para las propiedades CSS props, como objeto { propiedad: valor }. */
           const cs = (el, props) => { const s = getComputedStyle(el); return Object.fromEntries(props.map(p => [p, s.getPropertyValue(p)])); };
           const rootVars = {};
           for (const sheet of document.styleSheets) { try { for (const r of sheet.cssRules) if (r.selectorText === ":root" || r.selectorText === ".elementor-kit-5" || /^\.elementor-kit/.test(r.selectorText || "")) for (const p of r.style) if (p.startsWith("--")) rootVars[p] = r.style.getPropertyValue(p).trim(); } catch { /* CORS */ } }
+          /** Muestra del primer elemento que casa con sel (texto y estilos de tipografía, color, caja y sombra); null si no existe. */
           const sample = sel => { const e = document.querySelector(sel); return e ? { sel, text: (e.textContent || "").trim().slice(0, 60), ...cs(e, ["font-family", "font-size", "font-weight", "line-height", "letter-spacing", "color", "background-color", "background-image", "border", "border-radius", "padding", "margin", "text-transform", "box-shadow"]) } : null; };
           const fixed = [...document.querySelectorAll("*")].filter(e => { const p = getComputedStyle(e).position; return (p === "fixed" || p === "sticky") && e.offsetWidth > 0; }).slice(0, 25).map(e => ({ tag: e.tagName.toLowerCase(), id: e.id, cls: String(e.className).slice(0, 100), position: getComputedStyle(e).position, rect: (r => ({ x: Math.round(r.x), y: Math.round(r.y), w: Math.round(r.width), h: Math.round(r.height) }))(e.getBoundingClientRect()), text: (e.textContent || "").trim().slice(0, 50) }));
           const navLinks = [...document.querySelectorAll("header a, .elementor-location-header a, nav a")].slice(0, 80).map(a => ({ t: (a.textContent || "").trim().slice(0, 50), h: a.href })).filter(x => x.t);

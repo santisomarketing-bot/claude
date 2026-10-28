@@ -9,12 +9,13 @@ import { checkLogin, createUser, listUsers, deleteUser } from './users.js';
 import { hit } from './ratelimit.js';
 import { parseContact } from './validate.js';
 import { handleOrder, handleContact } from './orders.js';
-import { loadPrices, KEY_META, readPrices, diffPrices } from './prices.js';
+import { loadPrices, KEY_META, readPrices, diffPrices, publicView } from './prices.js';
 import { catalogCtx } from './catalog.js';
 import { syncPrices, parseCsv } from './sheets.js';
 import { suggestPriceChanges, applyPriceChanges } from './ai.js';
 
 export default {
+  /** Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx } para pruebas. */
   async fetch(request, env, ctx, deps = {}) {
     const url = new URL(request.url); const origin = request.headers.get('Origin');
     if (origin && !isOriginAllowed(origin, env)) return json({ ok: false, error: 'Origen no permitido' }, 403);
@@ -23,7 +24,12 @@ export default {
     const path = url.pathname.replace(/\/+$/, '') || '/';
     try {
       if (path === '/api/health') return json({ ok: true, time: new Date().toISOString() }, 200, cors);
-      if (path === '/api/prices' && request.method === 'GET') { const p = await loadPrices(env); const meta = JSON.parse((await env.KV.get(KEY_META)) || 'null'); return json({ prices: p, meta }, 200, { ...cors, 'Cache-Control': 'public, max-age=300' }); }
+      if (path === '/api/prices' && request.method === 'GET') {
+        const p = await loadPrices(env); const meta = JSON.parse((await env.KV.get(KEY_META)) || 'null');
+        const me = await authenticate(request, env);                                  // un manager ve quién cargó la hoja y de dónde; el público, no
+        if (me && me.role === 'manager') return json({ prices: p, meta }, 200, { ...cors, 'Cache-Control': 'private, no-store', Vary: 'Authorization' });
+        return json(publicView(p, meta), 200, { ...cors, 'Cache-Control': 'public, max-age=300', Vary: 'Authorization' });
+      }
       if (path === '/api/order' && request.method === 'POST') return handleOrder(request, env, await readJson(request), { ...deps, cors });
       if (path === '/api/contact' && request.method === 'POST') { const p = parseContact(await readJson(request)); if (p.error) return json({ ok: false, error: p.error }, 400, cors); return handleContact(request, env, p.contact, { ...deps, cors }); }
       if (path === '/api/auth/login' && request.method === 'POST') {
@@ -76,6 +82,7 @@ export default {
       return json({ ok: false, error: 'No encontrado' }, 404, cors);
     } catch (e) { console.error(e); return json({ ok: false, error: e.message || 'Error interno' }, 500, cors); }
   },
+  /** Tarea programada (cron): sincroniza los precios con la hoja de origen; un fallo se registra en el log y no se propaga. */
   async scheduled(event, env, cfCtx, deps = {}) {
     try { const meta = await syncPrices(env, { reason: 'cron', ctx: deps.ctx || catalogCtx(env) }); console.log('precios sincronizados', JSON.stringify(meta)); }
     catch (e) { console.error('Sincronización de precios fallida:', e.message); }

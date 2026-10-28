@@ -3,7 +3,7 @@
  * [ROUTER] Rutas del API (equivalentes a workers/api/src/index.js: la web usa el mismo contrato con el Worker o con este PHP).
  *   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login
  *   USUARIO   GET /api/auth/me · GET /api/orders (manager: todos; cliente: solo los suyos)
- *   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
+ *   MANAGER   GET /api/diag · POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
  *             GET|POST /api/proposals/state · GET|POST|DELETE /api/users
  *   CRON      GET /api/cron?token=… (alternativa a `php cron.php` si el hosting no deja programar por línea de comandos)
  */
@@ -11,6 +11,7 @@ namespace Torivac;
 
 final class Router
 {
+    /** Atiende una petición: comprueba el origen (CORS), despacha a la ruta y convierte las excepciones en respuestas JSON con su código. */
     public static function handle(Request $req, ?array $catalog = null): Response
     {
         $cors = [];
@@ -31,15 +32,21 @@ final class Router
         }
     }
 
+    /** Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera). */
     private static function route(Request $req, ?array $catalog): Response
     {
         $path = $req->path;
         $m = $req->method;
         if ($path === '/health') return new Response(['ok' => true, 'time' => Util::iso()]);
         if ($path === '/prices' && $m === 'GET') {
-            $body = ['prices' => Prices::forJson(Prices::load()), 'meta' => Store::get(Prices::KEY_META)];
+            $prices = Prices::load();
+            $meta = Store::get(Prices::KEY_META);
+            $me = $req->bearer() !== null ? Auth::authenticate($req) : null;                   // un manager ve quién cargó la hoja y de dónde; el público, no
+            if ($me && $me['role'] === 'manager') return new Response(['prices' => Prices::forJson($prices), 'meta' => $meta], 200, ['Cache-Control' => 'private, no-store', 'Vary' => 'Authorization']);
+            $pub = Prices::publicView($prices, $meta);
+            $body = ['prices' => Prices::forJson($pub['prices']), 'meta' => $pub['meta']];
             $etag = '"' . md5(Util::enc($body)) . '"';
-            $h = ['Cache-Control' => 'public, max-age=300', 'ETag' => $etag];
+            $h = ['Cache-Control' => 'public, max-age=300', 'ETag' => $etag, 'Vary' => 'Authorization'];
             if ($req->header('if-none-match') === $etag) return new Response([], 304, $h);
             return new Response($body, 200, $h);
         }
@@ -72,6 +79,7 @@ final class Router
             return new Response(['ok' => true, 'orders' => $out]);
         }
         if (!Auth::requireRole($who, 'manager')) return new Response(['ok' => false, 'error' => 'Solo para managers'], 403);
+        if ($path === '/diag' && $m === 'GET') return new Response(['ok' => true] + Diag::run());                            // autodiagnóstico de la instalación (solo managers)
         if ($path === '/prices/refresh' && $m === 'POST') return new Response(['ok' => true, 'meta' => Sheets::sync(['reason' => 'manual:' . $who['sub']])]);
         if ($path === '/prices/upload' && $m === 'POST') {
             $b = $req->json(3000000) ?? [];

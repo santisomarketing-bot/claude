@@ -17,6 +17,7 @@ final class Ai
     const LARGE_RATIO = 3;
     const MAX_PRICE = 1000000;
 
+    /** Instrucciones de sistema de la IA: propone cambios de precios (no los aplica), solo con referencias de la lista y con importes en euros. */
     public static function system(): string
     {
         return 'Eres el asistente de precios de Torivac (fabricante de transformadores toroidales, variadores y estabilizadores de tensión, resistencias, botones de mando, etc.).' . "\n" .
@@ -29,6 +30,7 @@ final class Ai
             '- summary: una frase en castellano que resuma lo que cambia (cuántas referencias, por qué criterio).';
     }
 
+    /** Esquema JSON de la herramienta que debe rellenar la IA: resumen, cambios {ref, price, tiers} y avisos. */
     public static function toolSchema(): array
     {
         return ['type' => 'object', 'additionalProperties' => false, 'required' => ['summary', 'changes'], 'properties' => [
@@ -55,6 +57,7 @@ final class Ai
         return implode("\n", $rows);
     }
 
+    /** Número con hasta 8 decimales y sin ceros sobrantes, para escribirlo en la tabla que ve la IA. */
     private static function n($x): string { return rtrim(rtrim(sprintf('%.8F', (float) $x), '0'), '.'); }
 
     /**

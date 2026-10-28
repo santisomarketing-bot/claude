@@ -29,11 +29,13 @@ SKIP_EXT = {".png", ".jpg", ".jpeg", ".webp", ".pdf", ".woff2", ".xlsx", ".zip",
 
 
 def tracked():
+    """Rutas absolutas de los archivos versionados en git (git ls-files)."""
     out = subprocess.run(["git", "ls-files", "--", "."], cwd=ROOT, capture_output=True, text=True).stdout.split("\n")
     return [ROOT / p for p in out if p]
 
 
 def main():
+    """Busca patrones de claves y tokens en los archivos versionados; sale con código 1 si hay alguno fuera de la lista blanca."""
     hits = []
     for f in tracked():
         rel = f.relative_to(ROOT)

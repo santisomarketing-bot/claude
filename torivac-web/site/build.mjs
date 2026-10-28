@@ -14,13 +14,16 @@ import { productNode, itemListNode, postNode } from './lib/seo.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const CAT = path.join(ROOT, 'data', 'catalog');
+// Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
 const arg0 = (k) => (process.argv.find((a) => a.startsWith(`--${k}=`)) || '').split('=').slice(1).join('=');
 const DIST = arg0('out') ? path.resolve(arg0('out')) : path.join(ROOT, 'dist');            // --out=carpeta (p. ej. para auditar SEO con --base sin tocar dist/)
+// Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
 const arg = (k) => (process.argv.find((a) => a.startsWith(`--${k}=`)) || '').split('=').slice(1).join('=');
 const ABS = arg('base') || '';
 const STAGING = process.argv.includes('--staging') || process.env.TORIVAC_STAGING === '1';   // dominio de pruebas: noindex, robots Disallow y cinta «entorno de pruebas»
 const PHP_API = process.argv.includes('--php-api');                                          // el API (PHP) vive en la misma web, en /api (hosting con cPanel)
 setCleanUrls(!!ABS);                                                                         // producción: URLs sin index.html; demo (doble clic): con index.html
+// Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
 const jl = (f, d) => { try { return JSON.parse(fs.readFileSync(path.join(CAT, f), 'utf8')); } catch { return d; } };
 
 // ───────────────────────────────────────────────────────────── [LOAD]
@@ -43,11 +46,14 @@ fs.rmSync(DIST, { recursive: true, force: true });
 fs.mkdirSync(DIST, { recursive: true });
 
 // ───────────────────────────────────────────────────────────── [CATS] limpieza del árbol (duplicados → fusionados) y rutas
+// Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
 const normName = (s = '') => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9 ]+/g, ' ').split(/\s+/).filter(Boolean).map((w) => w.replace(/s$/, '')).join(' ');
 const byId = new Map(rawCats.map((c) => [c.id, { ...c, children: [], direct: new Set() }]));
 for (const p of rawProducts) for (const cid of p.category_ids) byId.get(cid)?.direct.add(p.id);
+// Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
 const depthOf = (c) => { let d = 0, x = c; while (x && x.parent) { d++; x = byId.get(x.parent); } return d; };
 const canonical = new Map();
+// Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
 const canon = (id) => { while (canonical.has(id)) id = canonical.get(id); return id; };
 const groups = new Map();
 for (const c of [...byId.values()].sort((a, b) => depthOf(a) - depthOf(b) || a.id - b.id)) {
@@ -81,11 +87,15 @@ for (const c of byId.values()) {
 }
 for (const c of nodes.values()) for (const l of LANGS) c.pathFor[l] = c.path[l] || (l === 'es' ? c.path.es : `/${l}${c.path.es}`);
 for (const c of nodes.values()) { const par = nodes.get(c.parent); if (par && par !== c) par.children.push(c); }
+// Ids de una categoría y de todas sus descendientes.
 const subtreeIds = (c) => [c.id, ...c.children.flatMap(subtreeIds)];
+// Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
 const prodIdsOf = (c) => { const ids = new Set(subtreeIds(c)); return products.filter((p) => p.category_ids.some((x) => ids.has(x))).map((p) => p.id); };
 for (const c of nodes.values()) c.total = prodIdsOf(c).length;
 const HIDE = new Set(['sin-categorizar']);
+// Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
 const visible = (c) => c.total > 0 && !HIDE.has(c.slug.es);
+// Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
 const prune = (arr) => arr.filter(visible).sort((a, b) => (a.name.es || '').localeCompare(b.name.es || 'es')).map((c) => { c.children = prune(c.children); return c; });
 const catTree = prune([...nodes.values()].filter((c) => !nodes.get(c.parent) || c.parent === 0));
 const flatVisible = []; (function w(a, trail = []) { for (const c of a) { c.trail = [...trail, c]; flatVisible.push(c); w(c.children, c.trail); } })(catTree);
@@ -103,11 +113,10 @@ for (const p of products) {
   // aún no hay variantes (se rellenan en la sesión 2 desde PDFs): cada producto sigue siendo pedible como línea genérica
 }
 const prodById = new Map(products.map((p) => [p.id, p]));
-site_prodById_placeholder();
-function site_prodById_placeholder() {}
 const vtags = new Map(vtagList.map((v, i) => [v.id, { ...v, sort: v.sort ?? i }]));
 
 // ───────────────────────────────────────────────────────────── [SITE] estructura global por idioma
+// Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
 const pth = (u) => { const p = new URL(u, 'https://grupotorivac.com').pathname; return p.endsWith('/') || /\.\w{2,5}$/.test(p) ? p : p + '/'; };
 const pdfDir = path.join(ROOT, 'data', 'raw', 'pdf');
 const pdfLocal = new Map();
@@ -160,19 +169,27 @@ for (const l of LANGS) for (const old of ['/carrito/', '/en/carrito/', '/fr/carr
 
 // ───────────────────────────────────────────────────────────── [EMIT]
 let count = 0;
+// Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
 const emit = (p, html) => { writeFile(DIST, p.replace(/^\//, '') + (p.endsWith('/') ? 'index.html' : ''), html); count++; };
+// Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
 const mkctx = (lang, p, section) => { const c = new Ctx({ lang, path: p, site }); c.section = section; return c; };
 const LEGAL_MIN = 700;
 // [SEO] migas de pan y nodos JSON-LD (solo se emiten con --base; ver site/lib/seo.mjs)
+
 // título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
 const fitTitle = (name) => { const full = `${name} · Torivac`; return full.length <= 65 ? full : (name.length <= 65 ? name : name.slice(0, 64).replace(/\s+\S*$/, '') + '…'); };
+// Miga de pan «Inicio» del idioma `lang`: { name, path }.
 const crumbHome = (lang) => ({ name: t('home', lang), path: site.home[lang] });
+// Miga de pan «Productos» del idioma `lang`: { name, path }.
 const crumbProducts = (lang) => ({ name: t('products', lang), path: site.products[lang] });
+// Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
 const pickAlt = (a, lang) => (a && (a[lang] || a.es)) || '';
+// URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
 const absImg = (im) => (ABS && im && im.file ? ABS + '/' + im.file : null);
 
 for (const lang of LANGS) {
   const L = pages[lang] || {};
+  // Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
   const alts = (pagePath) => { const a = L[pagePath]?.alternates || {}; return Object.fromEntries(Object.entries(a).filter(([, v]) => v && site.paths.has(v))); };
 
   // home
@@ -316,6 +333,7 @@ writeFile(DIST, 'assets/data/admin-data.js', `window.TV=window.TV||{};TV.admin=$
 for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (fs.existsSync(path.join(CAT, f))) { fs.mkdirSync(path.join(DIST, 'assets', 'data'), { recursive: true }); fs.copyFileSync(path.join(CAT, f), path.join(DIST, 'assets', 'data', f)); }
 {
   const ctx = mkctx('es', '/admin/', 'admin');
+  // Ruta relativa al recurso `s` desde /admin/ (assets del panel).
   const a = (s) => ctx.asset(s);
   writeFile(DIST, 'admin/index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel · Torivac${API_URL ? '' : ' (demo)'}</title><link rel="icon" href="${a('assets/img/favicon.png')}">${['fonts', 'tokens', 'base', 'layout', 'components', 'admin'].map((c) => `<link rel="stylesheet" href="${a(`assets/css/${c}.css`)}">`).join('')}</head><body class="admin tv-admin" data-path="/admin/"><input type="hidden" id="logo-src" value="${a(site.logo)}"><div id="admin-root"></div><div class="toast" id="toast" role="status"></div><script>window.TV_LANG='es';</script><script src="${a('assets/data/catalog.js')}"></script><script src="${a('assets/data/prices.js')}"></script><script src="${a('assets/data/proposals.js')}"></script><script src="${a('assets/data/admin-data.js')}"></script><script src="${a('assets/js/quote.js')}"></script><script src="${a('assets/vendor/jspdf.umd.min.js')}"></script><script src="${a('assets/vendor/jspdf.plugin.autotable.min.js')}"></script><script src="${a('assets/vendor/xlsx.mini.min.js')}"></script><script src="${a('assets/js/pdf.js')}"></script><script src="${a('assets/js/price-sheet.js')}"></script><script src="${a('assets/js/admin-report.js')}"></script><script src="${a(API_URL ? 'assets/js/admin-live.js' : 'assets/js/admin.js')}"></script></body></html>`);
   count++;
@@ -329,6 +347,7 @@ for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (fs.existsSync(path.
 
 // ───────────────────────────────────────────────────────────── [ASSETS] estáticos
 const SRC = path.join(ROOT, 'site', 'assets');
+// Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
 const copyDir = (a, b) => { fs.mkdirSync(b, { recursive: true }); for (const e of fs.readdirSync(a, { withFileTypes: true })) { const s = path.join(a, e.name), d = path.join(b, e.name); e.isDirectory() ? copyDir(s, d) : fs.copyFileSync(s, d); } };
 copyDir(SRC, path.join(DIST, 'assets'));
 // [CSS-PROD] con --base: un solo site.css minificado (1 petición en vez de 6) y fuentes como archivos woff2 (cacheables, no bloquean el pintado).
@@ -346,7 +365,9 @@ if (!ABS) fs.writeFileSync(path.join(DIST, 'README-DEMO.txt'), `Torivac · demo 
 // ───────────────────────────────────────────────────────────── [SEO-FILES] sitemap.xml (hreflang + imágenes), robots.txt, llms.txt, llms-full.txt (solo con --base)
 if (ABS && !STAGING) {
   const reg = site.registry, regPaths = new Set(reg.map((r) => r.path));
+  // Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
   const xml = (x) => String(x ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  // Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
   const url = (r) => {
     const alt = Object.entries({ ...r.alts, [r.lang]: r.path }).filter(([, pth]) => regPaths.has(pth));
     const links = alt.length > 1 ? alt.map(([l, pth]) => `<xhtml:link rel="alternate" hreflang="${l}" href="${xml(ABS + pth)}"/>`).join('') + (r.alts.es || r.lang === 'es' ? `<xhtml:link rel="alternate" hreflang="x-default" href="${xml(ABS + (r.lang === 'es' ? r.path : r.alts.es))}"/>` : '') : '';
@@ -358,6 +379,7 @@ if (ABS && !STAGING) {
   const LNAME = { es: 'Español', en: 'English', fr: 'Français', de: 'Deutsch' };
   const c = meta.contact || {};
   const head = `# Torivac\n\n> ${meta.legal_name || 'Torivac S.L.'} — fabricante europeo de transformadores toroidales y convencionales, variadores y estabilizadores de tensión, resistencias y bancos de carga, reóstatos y potenciómetros bobinados, botones de mando, hembrillas, portaleds, bobinas encapsuladas y núcleos. ${(c.address || []).join(', ')}. Tel. ${c.phone}. ${c.email}.\n\nPrecios: la web no publica tarifas; los pedidos se hacen por referencia y cantidad y se reciben como presupuesto en PDF.\n`;
+  // Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
   const sec = (title, rows) => `\n## ${title}\n${rows.join('\n')}\n`;
   let short = head, full = head;
   for (const lang of LANGS) {
@@ -379,6 +401,7 @@ if (ABS) {
   fs.writeFileSync(path.join(DIST, 'robots.txt'), robotsTxt({ base: ABS, staging: STAGING }));
   fs.writeFileSync(path.join(DIST, '.htaccess'), htaccess({ base: ABS, staging: STAGING, aliases, pdfRedirects: [...pdfLocal], apiOrigin: API_URL ? new URL(API_URL).origin : '', phpApi: PHP_API }));
   for (const lang of LANGS) {
+    // Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
     const t = (k) => T[k]?.[lang] ?? T[k]?.es ?? k;
     const ctx = mkctx(lang, '/', 'page');
     const homeAlts = Object.fromEntries(LANGS.map((l) => [l, site.home[l]]));

@@ -14,8 +14,10 @@ namespace Torivac;
 
 final class Xlsx
 {
+    /** Entero de 16 bits little-endian en la posición o del texto binario (formato del zip). */
     private static function u16(string $b, int $o): int { return ord($b[$o]) | (ord($b[$o + 1]) << 8); }
 
+    /** Entero de 32 bits little-endian en la posición o del texto binario (formato del zip). */
     private static function u32(string $b, int $o): int { return ord($b[$o]) | (ord($b[$o + 1]) << 8) | (ord($b[$o + 2]) << 16) | (ord($b[$o + 3]) << 24); }
 
     /** índice del contenido del zip por nombre: método, tamaño comprimido y posición de la cabecera local (del directorio central, al final del fichero) */

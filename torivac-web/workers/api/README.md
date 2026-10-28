@@ -3,6 +3,7 @@
 Un solo Worker para todo lo que la web estática no puede hacer sola. **No está desplegado**: el demo
 (`dist/`) simula estos pasos en el navegador. Este Worker es el reemplazo real, con la misma API que
 usa `site/assets/js/quote-page.js`.
+> **Alternativa para hosting con cPanel:** `backend-php/api` implementa exactamente este mismo contrato en PHP (sin base de datos); ver `docs/DESPLIEGUE-CPANEL.md`. La web, el panel y las pruebas de navegador funcionan igual con uno u otro.
 
 | Función | Ruta | Quién |
 |---|---|---|
@@ -30,12 +31,13 @@ Cron: `0 3 * * *` (UTC) sincroniza precios cada 24 h. La actualización manual e
 
 ## Precios desde Excel / Drive
 Orden de preferencia de la fuente (se usa la primera configurada):
-1. `GOOGLE_SERVICE_ACCOUNT` + `PRICE_SHEET_ID` (Google Sheets API; la hoja se comparte con el email de la cuenta de servicio).
-2. `PRICE_CSV_URL` (hoja compartida «con enlace», exportada como CSV; sin credenciales).
-3. Subida manual de `.csv/.xlsx` desde el panel (`/api/prices/upload`).
+1. `GOOGLE_SERVICE_ACCOUNT` (secreto) + `PRICE_SHEET_ID`: el archivo de Drive compartido con el correo de la cuenta de servicio. Hoja de Google → Sheets API (`PRICE_SHEET_RANGE`); **Excel `.xlsx` subido tal cual → se descarga con la API de Drive y se lee el libro**.
+2. `PRICE_XLSX_URL`: descarga directa de un `.xlsx` (Drive «cualquiera con el enlace»: `https://drive.google.com/uc?export=download&id=<ID>`; hoja de Google: `…/export?format=xlsx`). `PRICE_SHEET_NAME` fija la hoja; sin nombre, la primera visible con columnas de referencia y precio.
+3. `PRICE_CSV_URL` (hoja compartida «con enlace», exportada como CSV; sin credenciales).
+4. Subida manual de `.csv/.xlsx` desde el panel (`/api/prices/upload`).
 
-Columnas: `ref, product_id, name_es, unit, currency, price, qty2, price2, qty3, price3, qty4, price4, note, active, updated_at`.
-Cada sincronización guarda un historial y **se rechaza** si cambia más del 50 % de las referencias o llega vacía.
+Formatos de hoja entendidos (tarifa «Artículo · Descripción · Precio venta», canónico y WooCommerce), decimales (`PRICE_DECIMALS`, 4 por defecto), tramos, referencias nuevas por familia y protecciones: **`docs/PRECIOS-DRIVE.md`**.
+Cada sincronización guarda un historial y **se rechaza** si la hoja nueva pierde más de la mitad de las referencias, llega vacía o trae un precio de relleno (salvo `force`).
 
 ## Precios por instrucción (IA)
 `POST /api/prices/ai` manda a Claude la lista de precios (ref, nombre, precio y tramos; nada de clientes) y una instrucción en castellano
@@ -62,7 +64,8 @@ Antes de producción: verificar `grupotorivac.com` en Resend (SPF/DKIM) para que
 y poner en `ALLOWED_ORIGINS` el dominio real de la web (y el del cPanel de pruebas).
 
 ## Pruebas
-`npm test` (Node ≥ 22, sin dependencias): 24 pruebas — hash/sesión, validación, tramos y céntimos,
-lectura de hoja y CSV con comillas, sincronización con rechazo de hojas rotas, JWT RS256 de cuenta de
+`npm test` (Node ≥ 22, sin dependencias): hash/sesión, validación, tramos y céntimos,
+lectura de hoja y CSV con comillas, **lector de `.xlsx`** (mismos libros que el port PHP), sincronización con rechazo de hojas rotas y desde Drive (URL directa, Sheets → respaldo Drive), JWT RS256 de cuenta de
 servicio, flujo de pedido con Resend simulado, roles, límite de login, CORS, subida y cron, y la IA de precios (validación, propuesta, aplicar con
-confirmación, límite de uso, 403 a clientes). Extremo a extremo: `node scripts/qa-live.mjs` (pedido/contacto) y `node scripts/qa-admin-live.mjs` (panel real).
+confirmación, límite de uso, 403 a clientes). Extremo a extremo: `node scripts/qa-live.mjs` (pedido/contacto), `qa-admin-live.mjs` (panel real) y `qa-tarifa.mjs` (tarifa Excel real);
+los tres aceptan `--php` para correr contra `backend-php/api`.

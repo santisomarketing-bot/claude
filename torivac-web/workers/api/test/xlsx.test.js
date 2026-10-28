@@ -7,6 +7,7 @@ import { readSheet } from '../../../shared/price-sheet.mjs';
 
 const dir = new URL('../../../shared/xlsx/', import.meta.url);
 const esperado = JSON.parse(fs.readFileSync(new URL('esperado.json', dir), 'utf8'));
+/** Bytes del libro .xlsx de pruebas f, leído de shared/xlsx/. */
 const book = (f) => new Uint8Array(fs.readFileSync(new URL(f, dir)));
 
 for (const [file, exp] of Object.entries(esperado)) {
@@ -44,6 +45,7 @@ test('xlsx · ficheros que no son un libro dan un error claro', async () => {
 import { syncPrices } from '../src/sheets.js';
 import { mkEnv, TCTX } from './helpers.js';
 
+/** Response simulada con los bytes del libro f y el estado indicado (200 por defecto). */
 const bytesRes = (f, status = 200) => new Response(book(f), { status });
 const TT_CTX = { lines: { TT0150117EM: { n: 'x', pid: 884 }, TT0330212: { n: 'x', pid: 884 } }, rules: [{ pattern: '^TT\\d{7,8}[A-Z]{0,3}$', pid: 884 }] };
 
@@ -60,6 +62,7 @@ test('sync · PRICE_XLSX_URL: lee el Excel (varias hojas), publica referencias n
 });
 
 test('sync · PRICE_SHEET_NAME elige la hoja del libro y un nombre inexistente da un error que lista las hojas', async () => {
+  /** fetch simulado que siempre devuelve el libro artesanal.xlsx. */
   const fetchImpl = async () => bytesRes('artesanal.xlsx');
   const ok = mkEnv({ PRICE_XLSX_URL: 'https://x.test/a.xlsx', PRICE_SHEET_NAME: 'Tarifa' });
   assert.equal((await syncPrices(ok, { fetchImpl, ctx: { lines: { TT0020210: { n: 'x', pid: 884 } } } })).refs, 1);
@@ -78,6 +81,7 @@ test('sync · cuenta de servicio: hoja de Google → Sheets API; .xlsx subido a 
   const pkcs8 = Buffer.from(await crypto.subtle.exportKey('pkcs8', kp.privateKey)).toString('base64');
   const sa = JSON.stringify({ client_email: 'svc@proj.iam.gserviceaccount.com', private_key: `-----BEGIN PRIVATE KEY-----\n${pkcs8}\n-----END PRIVATE KEY-----\n` });
   const calls = []; let scope;
+  /** Crea el fetch simulado de Google: OAuth siempre válido; Sheets da valores si sheetsOk o falla con 400; Drive sirve el libro. */
   const mk = (sheetsOk) => async (u, o) => {
     u = String(u); calls.push(u);
     if (u.includes('oauth2')) { scope = JSON.parse(Buffer.from(o.body.get('assertion').split('.')[1], 'base64url')).scope; return new Response('{"access_token":"tok"}', { status: 200 }); }

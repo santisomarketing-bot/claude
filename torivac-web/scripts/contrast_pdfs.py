@@ -86,6 +86,7 @@ def compare(a, b):
 
 
 def main():
+    """Compara los catálogos ES y EN; escribe contrast-es-en.json y, como propuestas, las divergencias aún sin resolver."""
     resolved = json.loads((PDFS / "contrast-resolutions.json").read_text()) if (PDFS / "contrast-resolutions.json").exists() else {}
     es = load(glob.glob(str(PDFS / "p0[1-6]-catalogo-es.json")))
     en = load(glob.glob(str(PDFS / "p0[7-9]-catalogo-en.json")))

@@ -50,6 +50,7 @@ EXCL = [{"mono", "tri"}, {"manual", "motor"}, {"simple", "doble", "triple"}, {"3
 
 
 def fold(s):
+    """Texto en minúsculas y sin tildes (los caracteres no ASCII se descartan), para comparar nombres."""
     return unicodedata.normalize("NFKD", str(s or "")).encode("ascii", "ignore").decode().lower()
 
 
@@ -101,6 +102,7 @@ def code_of(ref):
 
 # ───── [LOAD]
 def load_docs():
+    """Documentos de data/analysis/pdfs/p*.json, cada uno con el trabajo (`job`) del que procede."""
     docs = []
     for f in sorted(glob.glob(str(AN / "pdfs" / "p*.json"))):
         job = Path(f).stem
@@ -110,6 +112,7 @@ def load_docs():
 
 
 def main():
+    """Enlaza cada producto con las familias de los PDF verificados (confianza alta, media o baja) y escribe pdf-product-links.json."""
     review = "--review" in sys.argv
     products = json.loads((CAT / "products.base.json").read_text())
     docs = [d for d in load_docs() if d.get("language") == "es" and d.get("verified")]
@@ -198,6 +201,7 @@ def main():
 
     # familias de PDFs (ES) sin ningún producto enlazado y que NO sean duplicado (catálogo ↔ ficha) de una ya enlazada → candidatas a ficha nueva (propuesta)
     def mkeys(fam):
+        """Conjunto de claves de modelo (model_key) de las referencias de una familia de PDF."""
         return {model_key(m["reference"]) for m in fam.get("models", [])}
     linked_sets = []
     for d in docs:

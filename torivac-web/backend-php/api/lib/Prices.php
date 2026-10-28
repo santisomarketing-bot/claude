@@ -14,10 +14,22 @@ final class Prices
     const KEY_CURRENT = 'prices:current';
     const KEY_META = 'prices:meta';
 
+    /** Precios vigentes; si todavía no hay, devuelve una hoja vacía (modo none). */
     public static function load(): array
     {
         $p = Store::get(self::KEY_CURRENT);
         return is_array($p) ? $p + ['items' => []] : ['updated_at' => null, 'source' => 'none', 'currency' => 'EUR', 'mode' => 'none', 'items' => []];
+    }
+
+    /** Origen sin datos personales ni identificadores: «upload:ana@torivac.com» → «upload», «sheet:ID» → «sheet». */
+    public static function coarse($s): string { return explode(':', (string) $s)[0]; }
+
+    /** Lo que ve cualquier visitante de GET /prices: igual que el original pero sin el correo de quien cargó la hoja ni el id del archivo de Drive. */
+    public static function publicView(array $prices, $meta): array
+    {
+        $prices['source'] = self::coarse($prices['source'] ?? '');
+        if (is_array($meta)) { $meta['reason'] = self::coarse($meta['reason'] ?? ''); $meta['source'] = self::coarse($meta['source'] ?? ''); }
+        return ['prices' => $prices, 'meta' => $meta];
     }
 
     /** para JSON: items vacío → {} y claves numéricas siempre como objeto */
@@ -27,6 +39,7 @@ final class Prices
         return $p;
     }
 
+    /** Precio unitario de una referencia para una cantidad, aplicando el último tramo alcanzado; null si no tiene precio. */
     public static function unit(array $prices, string $ref, int $qty): ?float
     {
         $p = $prices['items'][$ref] ?? null;

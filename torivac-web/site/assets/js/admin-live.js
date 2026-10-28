@@ -13,7 +13,9 @@
 (function () {
   'use strict';
   var TV = window.TV, Q = TV.Quote, root = document.getElementById('admin-root');
+  /** Escapa & < > " para insertar texto en HTML; null y undefined dan cadena vacía. */
   var esc = function (s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  /** Importe formateado con la divisa y el idioma de la página (Q.money); un valor vacío cuenta como 0. */
   var money = function (n) { return Q.money(n || 0); };
 
   // ───────────────────────────────────────── [HTTP] llamadas al Worker con el token de la sesión
@@ -40,11 +42,15 @@
   function logout() { sessionStorage.removeItem('tv_live'); location.hash = ''; render(); }
 
   // ───────────────────────────────────────── [UTIL]
+  /** Muestra un aviso breve (3,2 s) en pantalla. */
   function toast(m) { var t = document.getElementById('toast'); t.textContent = m; t.classList.add('show'); clearTimeout(toast._t); toast._t = setTimeout(function () { t.classList.remove('show'); }, 3200); }
+  /** HTML de una tarjeta KPI con la etiqueta `l` y el valor `v`, ambos escapados. */
   function kpi(l, v) { return '<div class="kpi"><span>' + esc(l) + '</span><strong>' + esc(v) + '</strong></div>'; }
   /** Nombre legible de una referencia (nombre ES + ref si es un modelo concreto). */
   function itemName(ref) { var it = TV.items[ref]; return it ? (it.n.es + (it.d ? '' : ' · ' + ref)) : ref; }
+  /** Fecha y hora local (es-ES) de una fecha ISO; «—» si viene vacía. */
   function when(iso) { return iso ? new Date(iso).toLocaleString('es-ES') : '—'; }
+  /** Descarga `blob` como archivo `name` con un enlace temporal y libera la URL a los 800 ms. */
   function download(blob, name) { var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 800); }
   /** Aviso de error del servidor con el mensaje devuelto. */
   function fail(r) { toast('⚠ ' + ((r && r.error) || 'Error')); }
@@ -57,6 +63,7 @@
   var V = {};
   var cache = { orders: [] };                       // últimos pedidos cargados (para regenerar su PDF sin volver a pedirlos)
 
+  /** Vista Resumen (manager): con datos del Worker, KPIs, estado de la hoja de precios y sincronización, y los 5 últimos pedidos. */
   V.resumen = function () {
     return Promise.all([http('GET', '/api/orders'), http('GET', '/api/prices'), http('GET', '/api/proposals/state')]).then(function (a) {
       var o = (a[0].orders || []), P = (a[1].prices || {}), meta = a[1].meta || {}, st = (a[2].state || {}), props = TV.proposals || [];
@@ -77,9 +84,12 @@
       return '<h1>' + esc(title) + '</h1>' + (cache.orders.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Nº</th><th>Fecha</th><th>Cliente</th><th>Líneas</th><th>Importe</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div><p><button class="btn sm ghost" data-export-orders>Exportar JSON</button></p>' : '<p class="notice">Todavía no hay pedidos.</p>');
     });
   }
+  /** Vista Pedidos (manager): tabla de todos los pedidos que devuelve el Worker. */
   V.pedidos = function () { return ordersView('Pedidos'); };
+  /** Vista «Mis presupuestos» (cliente): sus propios pedidos; el filtro por usuario lo aplica el servidor. */
   V.mis = function () { return ordersView('Mis presupuestos'); };
 
+  /** Vista Lista de precios (cliente): precios vigentes del Worker, sin IVA, con sus tramos (hasta 600 referencias). */
   V.lista = function () {
     return http('GET', '/api/prices').then(function (r) {
       var P = r.prices || { items: {} };
@@ -88,29 +98,37 @@
     });
   };
 
+  /** Vista Presupuestador (cliente): incrusta la página del presupuesto en un iframe con ?embed=1. */
   V.presupuestador = function () { return Promise.resolve('<h1>Presupuestador</h1><p class="muted">Sube un CSV o Excel con <em>referencia</em> y <em>cantidad</em> (o añade desde el catálogo), revisa con imágenes y exporta el PDF.</p><iframe class="embed-frame" title="Presupuestador" src="../presupuesto/index.html?embed=1"></iframe>'); };
 
+  /** Vista Contenido (manager): estado de traducción por idioma, referencias y etiquetas de voltaje de cada producto. */
   V.contenido = function () {
     var A = (TV.admin && TV.admin.products) || [];
+    /** Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir). */
     var cell = function (s) { return '<td><span class="st st-' + esc(s) + '">' + ({ ok: 'OK', partial: 'Parcial', missing: 'Falta', identical_to_es: 'Sin traducir' }[s] || esc(s)) + '</span></td>'; };
     return Promise.resolve('<h1>Contenido</h1><p class="muted">Estado de cada ficha por idioma, referencias pedibles y etiquetas de voltaje.</p><div class="tbl-wrap"><table class="spec"><thead><tr><th>Producto</th><th>ES</th><th>EN</th><th>FR</th><th>DE</th><th>Refs.</th><th>Voltaje</th><th>PDF</th></tr></thead><tbody>' +
       A.map(function (p) { return '<tr><td>' + esc(p.name) + '<br><span class="muted small">' + esc(p.cat) + '</span></td>' + cell('ok') + cell(p.st.en) + cell(p.st.fr) + cell(p.st.de) + '<td class="num">' + p.variants + '</td><td class="num">' + p.vtags + '</td><td class="num">' + p.pdfs + '</td></tr>'; }).join('') + '</tbody></table></div>');
   };
 
+  /** Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras. */
   V.estadisticas = function () {
     var cards = [['Google Business Profile', 'Búsquedas, vistas, llamadas, rutas y reseñas.', 'Business Profile Performance API'], ['Google Ads', 'Inversión, clics, conversiones y CPA.', 'Google Ads API (cuenta de Torivac)'], ['SEO (Search Console)', 'Impresiones, clics, posición media, páginas y consultas.', 'Search Console API'], ['Guías y blog', 'Visitas y conversiones por entrada.', 'Analytics 4 Data API']];
     return Promise.resolve('<h1>Estadísticas</h1><p class="notice">Sin conexión todavía: cada fuente se conecta con las credenciales de Torivac. Este panel no muestra cifras inventadas.</p><div class="cols cols3">' + cards.map(function (c) { return '<section class="panel"><h2>' + esc(c[0]) + '</h2><p>' + esc(c[1]) + '</p><p class="small muted">Fuente: ' + esc(c[2]) + '</p></section>'; }).join('') + '</div>');
   };
 
+  /** Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag). */
   V.ajustes = function () {
-    return http('GET', '/api/auth/me').then(function (r) {
-      var u = r.user || {};
-      return '<h1>Ajustes</h1><section class="panel"><h2>Tu sesión</h2><p>' + esc(u.name || '') + ' · <span class="mono">' + esc(u.sub || u.email || '') + '</span> · ' + esc(u.role || '') + '</p></section><section class="panel"><h2>Destinatarios del pedido</h2><p>Se configuran en el servidor, no en la web: en cPanel, <span class="mono">order_to</span> de <span class="mono">api/config.php</span>; en Cloudflare, la variable <span class="mono">ORDER_TO</span> del Worker. La web pública solo muestra el primero (' + esc(((TV.meta && TV.meta.recipients) || [])[0] || '—') + ') por si falla el envío.</p></section>';
+    return Promise.all([http('GET', '/api/auth/me'), http('GET', '/api/diag')]).then(function (a) {
+      var r = a[0], dg = a[1] || {}, u = r.user || {};
+      var sym = { ok: '✓', warn: '⚠', fail: '✗' };
+      var diag = dg.ok && dg.checks ? '<section class="panel"><h2>Diagnóstico del servidor</h2><p class="small ' + (dg.fail ? 'notice' : 'muted') + '">' + (dg.fail ? esc(dg.fail) + ' problema(s) impiden que funcione' : 'Puede funcionar') + (dg.warn ? ' · ' + esc(dg.warn) + ' aviso(s)' : '') + '</p><ul class="diag">' + dg.checks.map(function (c) { return '<li><span aria-hidden="true">' + sym[c.status] + '</span> <span class="vh">' + esc(c.status) + ': </span>' + esc(c.msg) + '</li>'; }).join('') + '</ul></section>' : '';
+      return '<h1>Ajustes</h1><section class="panel"><h2>Tu sesión</h2><p>' + esc(u.name || '') + ' · <span class="mono">' + esc(u.sub || u.email || '') + '</span> · ' + esc(u.role || '') + '</p></section><section class="panel"><h2>Destinatarios del pedido</h2><p>Se configuran en el servidor, no en la web: en cPanel, <span class="mono">order_to</span> de <span class="mono">api/config.php</span>; en Cloudflare, la variable <span class="mono">ORDER_TO</span> del Worker. La web pública solo muestra el primero (' + esc(((TV.meta && TV.meta.recipients) || [])[0] || '—') + ') por si falla el envío.</p></section>' + diag;
     });
   };
 
   // ───────────────────────────────────────── [PRICES] estado, sincronización, subida de Excel/CSV con vista previa
   var draftRows = null;
+  /** Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA. */
   V.precios = function () {
     return http('GET', '/api/prices').then(function (r) {
       var P = r.prices || { items: {} }, m = r.meta || {};
@@ -127,6 +145,7 @@
     return http('POST', '/api/prices/upload', { rows: rows, dry_run: true }).then(function (r) {
       var box = root.querySelector('[data-draft]'); if (!r.ok) { draftRows = null; box.innerHTML = ''; return fail(r); }
       var d = r.diff;
+      /** Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`. */
       var list = function (arr, kind) { return arr.slice(0, 60).map(function (k) { return '<tr><td class="mono">' + esc(k) + '</td><td>' + esc(itemName(k)) + '</td><td>' + kind + '</td></tr>'; }).join(''); };
       box.innerHTML = '<section class="panel"><h2>Vista previa · ' + esc(label) + '</h2><p><strong>' + d.changed.length + '</strong> cambian · <strong>' + d.added.length + '</strong> nuevas · <strong>' + d.removed.length + '</strong> sin precio · ' + d.same + ' iguales · ' + r.refs + ' referencias en la hoja</p>' + TV.priceReportHtml(r.report, esc) +
         ((d.changed.length + d.added.length + d.removed.length) ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Ref.</th><th>Producto</th><th></th></tr></thead><tbody>' + list(d.changed, 'cambia') + list(d.added, 'nueva') + list(d.removed, 'sin precio') + '</tbody></table></div>' : '<p class="notice">No hay diferencias.</p>') +
@@ -137,10 +156,12 @@
   /** Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa. */
   function readUpload(f) {
     var r = new FileReader(), name = f.name;
+    /** Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo. */
     var go = function (rows) { previewUpload(rows, name); };
     if (/\.xlsx?$/i.test(name) && window.XLSX) { r.onload = function () { var wb = XLSX.read(r.result, { type: 'array' }); go(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, blankrows: false, raw: true })); }; r.readAsArrayBuffer(f); }
     else { r.onload = function () { go(TV.csvParse(String(r.result))); }; r.readAsText(f); }
   }
+  /** Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada. */
   function applyUpload() {
     if (!draftRows) return;
     var force = !!(root.querySelector('[data-force]') || {}).checked;
@@ -149,6 +170,7 @@
 
   // ───────────────────────────────────────── [AI] instrucción en castellano → cambios propuestos → vista previa → aplicar (con confirmación)
   var proposal = null;
+  /** Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada. */
   function runPrompt(text) {
     var box = root.querySelector('[data-draft]'); box.innerHTML = '<p class="notice">Consultando a la IA…</p>';
     http('POST', '/api/prices/ai', { instruction: text }).then(function (r) {
@@ -164,6 +186,7 @@
       box.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
+  /** Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta. */
   function applyProposal() {
     if (!proposal) return;
     var confirmLarge = !!(root.querySelector('[data-confirm-large]') || {}).checked;
@@ -172,6 +195,7 @@
 
   // ───────────────────────────────────────── [PROPOSALS] decisiones sobre propuestas (se guardan en el servidor; aprobar NO publica nada por sí solo)
   var propState = {};
+  /** Vista Propuestas (manager): lista las propuestas de cambio con su estado en el servidor para aprobar, rechazar o deshacer. */
   V.propuestas = function () {
     return http('GET', '/api/proposals/state').then(function (r) {
       propState = r.state || {}; var props = TV.proposals || [];
@@ -186,6 +210,7 @@
   };
 
   // ───────────────────────────────────────── [USERS] altas y bajas de usuarios (managers y clientes)
+  /** Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes. */
   V.usuarios = function () {
     return http('GET', '/api/users').then(function (r) {
       var rows = (r.users || []).map(function (u) { return '<tr><td>' + esc(u.name) + '</td><td class="mono">' + esc(u.email) + '</td><td>' + (u.role === 'manager' ? 'Manager' : 'Cliente') + '</td><td>' + esc(when(u.created)) + '</td><td><button class="btn sm ghost" data-del-user="' + esc(u.email) + '">Borrar</button></td></tr>'; }).join('');
@@ -195,6 +220,7 @@
   };
 
   // ───────────────────────────────────────── [ROUTER]
+  /** Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF. */
   function onClick(e) {
     var b = e.target.closest('button,a'); if (!b) return;
     if (b.hasAttribute('data-logout')) logout();
@@ -228,8 +254,8 @@
       http('POST', '/api/users', { name: f.name.value, email: f.email.value, role: f.role.value, password: f.password.value }).then(function (r) { if (!r.ok) return fail(r); toast('Usuario creado'); render(); });
     });
   }
-  /** Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash). */
   var renderSeq = 0;
+  /** Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra. */
   function render() {
     var seq = ++renderSeq, s = session(), logo = esc(document.getElementById('logo-src').value);
     if (!s) {

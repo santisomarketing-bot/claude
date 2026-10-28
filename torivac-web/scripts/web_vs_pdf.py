@@ -42,16 +42,19 @@ def head_key(h):
 
 
 def walk_tables(blocks):
+    """Genera los bloques de tipo tabla de una lista de bloques semánticos (None equivale a lista vacía)."""
     for b in blocks or []:
         if b.get("t") == "table":
             yield b
 
 
 def table_rows(b):
+    """Filas de un bloque de tabla como listas de textos de celda, recortados."""
     return [[(c.get("x") or "").strip() for c in r] for r in b.get("rows", [])]
 
 
 def main():
+    """Compara las tablas de las fichas con las del PDF verificado enlazado (celda a celda) y escribe web-vs-pdf.json con la gravedad."""
     products = {p["id"]: p for p in json.loads((CAT / "products.base.json").read_text())}
     links = json.loads((AN / "pdf-product-links.json").read_text())["links"]
     docs = {}

@@ -26,14 +26,17 @@ VOLT = re.compile(r"(?<![\w.])(\d{1,4}(?:[.,]\d+)?(?:\s?[-–/]\s?\d{1,4}(?:[.,]
 
 
 def strip(s):
+    """Texto plano de un fragmento HTML: sin etiquetas, con entidades decodificadas y espacios normalizados."""
     return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", " ", s or ""))).strip()
 
 
 def nz(s):
+    """Texto normalizado para comparar: espacios colapsados, recortado y en minúsculas."""
     return re.sub(r"\s+", " ", (s or "")).strip().lower()
 
 
 def main(path, as_json=False):
+    """Valida un lote de data/analysis/products contra groups.json, product-map.json y la Store API; devuelve 1 si hay problemas."""
     data = json.loads(Path(path).read_text())
     groups = json.loads((AN / "groups.json").read_text())["groups"]
     pmap = {p["id_es"]: p for p in json.loads((AN / "product-map.json").read_text())["products"]}
@@ -99,6 +102,7 @@ def main(path, as_json=False):
 
 
 def norm_url(u):
+    """URL sin ancla (#...) ni barra final, para comparar."""
     return (u or "").split("#")[0].rstrip("/")
 
 

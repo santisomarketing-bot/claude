@@ -76,6 +76,7 @@ final class Orders
         return array_values(array_filter(array_map('trim', (array) $t)));
     }
 
+    /** Siguiente número de pedido TV-AAAAMMDD-NNNN (contador diario con bloqueo para que dos pedidos no repitan número). */
     public static function nextNumber(?int $nowMs = null): string
     {
         $ymd = gmdate('Ymd', (int) floor(($nowMs ?? Util::nowMs()) / 1000));
@@ -88,6 +89,7 @@ final class Orders
         return 'TV-' . $ymd . '-' . str_pad((string) $n, 4, '0', STR_PAD_LEFT);
     }
 
+    /** POST /order: valida, valora con los precios del servidor, guarda el pedido y envía el correo al equipo y la copia al cliente. */
     public static function handleOrder(Request $req, $raw, ?array $catalog = null, ?int $nowMs = null): Response
     {
         $rl = RateLimit::hit('order', $req->ip, 8, 600000, $nowMs);
@@ -111,6 +113,7 @@ final class Orders
         return new Response(['ok' => true, 'number' => $number, 'total' => $priced['total'], 'unpriced' => $priced['unpriced'], 'emailed' => ['team' => !empty($team['ok']), 'customer' => !empty($cust['ok']), 'skipped' => !empty($team['skipped'])]]);
     }
 
+    /** POST /contact: valida el mensaje y lo envía al equipo con el correo del visitante como responder-a. */
     public static function handleContact(Request $req, $raw): Response
     {
         $rl = RateLimit::hit('contact', $req->ip, 5);

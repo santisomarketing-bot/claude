@@ -27,6 +27,7 @@ FAMS = [
 
 
 def fam(name):
+    """Familia de producto (variadores, transformadores…) de un nombre de PDF según FAMS; otros si ninguna encaja."""
     n = name.lower()
     for k, rx in FAMS:
         if re.search(rx, n):
@@ -35,6 +36,7 @@ def fam(name):
 
 
 def norm_text(stem, pages):
+    """Texto de todas las páginas de un PDF en minúsculas alfanuméricas, para detectar PDF con el mismo texto."""
     t = ""
     for p in range(1, pages + 1):
         f = AN / "pdf-text" / stem / f"p{p:03d}.txt"
@@ -56,6 +58,7 @@ jobs, n = [], 0
 
 
 def add(kind, files, note=""):
+    """Añade a `jobs` un trabajo `p<nn>-<kind>` numerado con el contador global `n`."""
     global n
     n += 1
     jobs.append({"key": f"p{n:02d}-{kind}", "kind": kind, "note": note, "files": files})

@@ -13,16 +13,29 @@ precios desde una hoja de Drive (actualización cada 24 h + manual) y un **dashb
 
 ## Sesiones
 
-| # | Sesión | Entrega | Criterio de "hecho" |
-|---|--------|---------|---------------------|
-| 0 | Desbloqueo | Dominio correcto y acceso | `grupotorivac.com` accesible; REST y sitemaps cosechados |
-| 1 | **Análisis profundo** | `data/raw`, `data/analysis`, `docs/01-analisis/` | 100 % de páginas, productos, PDFs y 4 idiomas inventariados; huecos y contradicciones listados; tokens de diseño extraídos |
-| 2 | Organización | `data/catalog/*.json` limpios + diccionario de datos | Cada producto con categoría limpia, 4 idiomas, PDFs vinculados y etiquetas de voltaje normalizadas |
-| 3 | Estructura | Esquema JSON + generador HTML + carrito/presupuesto funcional | Se puede armar un pedido con cantidades y "Enviar pedido" |
-| 4 | Estética y UX | Diseño final responsive, menú lateral, flotantes, PDF de presupuesto | Misma identidad que la web actual, mejor flujo de compra |
-| 5 | QA de punta a punta | Informe de pruebas | Presupuesto real (toroidales + resistencias + baquelitas) cuadra en los 4 idiomas, PDF y email |
-| 6 | Precios | Hoja de Drive ⇄ web, sync 24 h + botón manual, variaciones (incl. céntimos) | Cambiar un precio en la hoja se refleja en la web ≤ 24 h o al instante con el botón |
-| 7 | Dashboard | Login + vista Manager + vista Cliente (Google Business, Ads, SEO, guías) | Dos roles con permisos distintos y datos reales conectados |
+Estado: ✅ hecha y probada · 🟡 hecha en lo que no depende de terceros (se indica qué falta).
+
+| # | Sesión | Entrega | Criterio de "hecho" | Estado |
+|---|--------|---------|---------------------|--------|
+| 0 | Desbloqueo | Dominio correcto y acceso | `grupotorivac.com` accesible; REST y sitemaps cosechados | ✅ |
+| 1 | **Análisis profundo** | `data/raw`, `data/analysis`, `docs/01-analisis/` | 100 % de páginas, productos, PDFs y 4 idiomas inventariados; huecos y contradicciones listados; tokens de diseño extraídos | ✅ (hallazgos en `01-analisis/HALLAZGOS.md`) |
+| 2 | Organización | `data/catalog/*.json` limpios + diccionario de datos | Cada producto con categoría limpia, 4 idiomas, PDFs vinculados y etiquetas de voltaje normalizadas | ✅ |
+| 3 | Estructura | Esquema JSON + generador HTML + carrito/presupuesto funcional | Se puede armar un pedido con cantidades y "Enviar pedido" | ✅ |
+| 4 | Estética y UX | Diseño final responsive, menú lateral, flotantes, PDF de presupuesto | Misma identidad que la web actual, mejor flujo de compra | ✅ |
+| 5 | QA de punta a punta | Informe de pruebas | Presupuesto real (toroidales + resistencias + baquelitas) cuadra en los 4 idiomas, PDF y email | ✅ (`qa-quote`, `qa-live`) |
+| 6 | Precios | Hoja de Drive ⇄ web, sync 24 h + botón manual, variaciones (incl. céntimos) | Cambiar un precio en la hoja se refleja en la web ≤ 24 h o al instante con el botón | ✅ (Excel/Hoja/CSV, 4 decimales, tarifa real) |
+| 7 | Dashboard | Login + vista Manager + vista Cliente (Google Business, Ads, SEO, guías) | Dos roles con permisos distintos y datos reales conectados | 🟡 login, roles, pedidos, precios, usuarios y propuestas reales; **Estadísticas sin conectar** (faltan credenciales de Google) |
+| 8 | Plataforma de presupuestos del cliente | Zona cliente: subir CSV/Excel → presupuesto con imágenes → PDF | Un cliente sube su lista y obtiene el PDF | ✅ |
+| 9 | Contacto y legales | Formulario real y páginas legales en 4 idiomas | Mensaje llega a info@ y mzamora@ | ✅ (textos legales tal cual; 15 propuestas legales) |
+| 10 | Control riguroso de UX y contenido | `qa-ux` (todas las páginas), contenido frente al original | Sin desbordes, imágenes rotas ni texto en otro idioma | ✅ |
+| 11 | Verificar PDFs técnicos | Enlace producto ↔ PDF, contrastes, voltaje | Lo dudoso no se publica: va a Propuestas | ✅ (283 modelos pedibles; 116 propuestas) |
+| 12 | Elementos gráficos | Osciloscopio del variador y arte toroidal, sin estilo genérico | Accesibles y con movimiento reducido | ✅ |
+| 13 | Idioma | Detección por navegador + selector manual fiable | `qa-lang` | ✅ |
+| 14 | QA final y entrega | Demo (doble clic) + paquete de pruebas para cPanel | Todas las suites en verde | ✅ |
+| 15 | Documentación para programadores | Guía, convenciones e índice de código (cada archivo y cada función) | `gen_code_index.py --check` sin avisos | ✅ |
+| 16 | Revisión final | Superar la versión de Why Not (SEO/GEO, rendimiento, a11y, calidad) | `seo_check`, `perf`, `qa-a11y` | ✅ |
+| 17 | Despliegue en cPanel | Paquete `.zip` verificado, `.htaccess`, 404, noindex de pruebas, API PHP, CI | `qa-package.mjs` y `DESPLIEGUE-CPANEL.md` | ✅ (falta solo la primera subida a tu hosting) |
+| 18 | Precios reales desde Drive | Formatos de hoja reales, decimales, referencias nuevas, lectura del `.xlsx` | `qa-tarifa.mjs` (Worker y PHP) | ✅ |
 
 Cada sesión termina con commit + push a la rama de trabajo, para no perder nada si el entorno se recicla.
 
@@ -42,13 +55,12 @@ Se reutiliza el patrón de **`whynot-sites`** (ya en producción) y del **CRM**:
 Reglas heredadas de `whynot-sites/CLAUDE.md`: salida 100 % estática, tokens de diseño (nunca colores a fuego),
 accesibilidad AA, `alt` obligatorio, todo dato debe existir en el esquema.
 
-## Puntos que necesito confirmados
+## Puntos que había que confirmar (resueltos)
 
-1. **Correos de destino del pedido:** `info@grupotorivac.com` y el de mzamora. Asumo `mzamora@torivac.com`
-   (el dictado dice "toriback.com"). Pruebas de envío solo a `info@grupotorivac.com` y **con tu OK antes de enviar**.
-2. **Hosting:** propongo Cloudflare (Pages/Workers), como ya hacen `whynot-sites` y el CRM. Alternativa: seguir en el hosting actual del WordPress.
-3. **Qué hacer con la web actual:** ¿sustituye a la de WordPress o convive (subdominio) mientras se valida?
-4. **Hoja de precios:** ¿Excel ya existente en Drive o la creo yo con la estructura propuesta en la Sesión 6?
+1. **Correos de destino del pedido:** `info@grupotorivac.com` y `mzamora@torivac.com` — **confirmado** (info@ también para las pruebas).
+2. **Hosting:** un **hosting con cPanel** (distinto del actual); por eso el API existe también en PHP. El Worker de Cloudflare queda como alternativa.
+3. **Qué hacer con la web actual:** **no se toca**. Todo se prueba en un subdominio de pruebas (o con el demo); el cambio de DNS es el último paso.
+4. **Hoja de precios:** un **Excel existente en tu Drive** («tarifa trafos» y «Torivac Precios»); se lee tal cual (`PRECIOS-DRIVE.md`).
 
 ## Convenciones
 

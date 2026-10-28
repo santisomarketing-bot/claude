@@ -9,6 +9,7 @@ const DIST = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist
 const { server, base } = await serve(DIST);
 const browser = await chromium.launch();
 let fails = 0;
+/** Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo. */
 const ok = (c, m) => { if (!c) { fails++; console.error('  ✗ ' + m); } else console.log('  ✓ ' + m); };
 const CAT = { es: '/categoria-producto/variadores-de-tension/', en: '/en/categoria-producto/voltage-variators-adjustable-autotransformers/', fr: '/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/', de: '/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/' };
 for (const lang of ['es', 'en', 'fr', 'de']) {
@@ -24,6 +25,7 @@ for (const lang of ['es', 'en', 'fr', 'de']) {
   await lab.locator('[data-wl-range]').fill('40'); await page.waitForTimeout(700);
   ok((await lab.locator('[data-wl-readout]').innerText()) === '40 V ~', 'la lectura sigue al mando (40 V)');
   const d1 = await lab.locator('[data-wl-out-path]').getAttribute('d');
+  /** Amplitud vertical (máx − mín de y) de los tramos «L x y» de un trazado SVG d. */
   const amp = (d) => { const ys = [...d.matchAll(/L\d+ ([\d.]+)/g)].map((m) => +m[1]); return Math.max(...ys) - Math.min(...ys); };
   ok(amp(d1) < amp(d0) * 0.5, `la amplitud de salida baja (${amp(d0).toFixed(0)} → ${amp(d1).toFixed(0)})`);
   await lab.locator('[data-wl-range]').focus(); await page.keyboard.press('Home'); await page.waitForTimeout(500);

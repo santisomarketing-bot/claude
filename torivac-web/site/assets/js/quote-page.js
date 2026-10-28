@@ -10,6 +10,7 @@
   var host = $('[data-quote-table]');
 
   // ───────────────────────────────────────── [TABLE]
+  /** Pinta la tabla del presupuesto (imagen, línea, cantidad editable, precio y total) o el aviso de presupuesto vacío. */
   function render() {
     var d = Q.detail();
     if (!d.lines.length) { host.innerHTML = '<p class="muted">' + esc(Q.t('quote_empty')) + '</p>'; $('[data-price-note]').textContent = ''; return; }
@@ -41,6 +42,7 @@
   // ───────────────────────────────────────── [IMPORT] CSV / Excel con columnas referencia + cantidad
   var drop = $('[data-drop]'), file = $('[data-file]');
   var RX_REF = /^(ref|referencia|reference|r[ée]f[ée]rence|artikel|artikelnummer|codigo|código|code|sku|modelo|model)/i, RX_QTY = /^(cant|qty|quantity|quantit|uds|unid|menge|stk|pcs|units)/i;
+  /** Importa filas de CSV/Excel: detecta las columnas de referencia y cantidad (o usa la 1.ª y 2.ª) y avisa de las desconocidas. */
   function handleRows(rows) {
     if (!rows.length) return TV.toast('⚠');
     var head = rows[0].map(function (x) { return String(x || '').trim(); });
@@ -52,7 +54,9 @@
     var n = $('[data-import-note]') || (function () { var p = document.createElement('p'); p.className = 'notice small'; p.setAttribute('data-import-note', ''); drop.insertAdjacentElement('afterend', p); return p; })();
     n.hidden = !res.unknown.length; n.textContent = res.unknown.length ? '? ' + res.unknown.slice(0, 12).join(', ') + (res.unknown.length > 12 ? '…' : '') : '';
   }
+  /** Convierte texto CSV en filas de celdas con el lector compartido TV.csvParse (quote.js). */
   function parseCsv(text) { return TV.csvParse(text); }
+  /** Lee el archivo elegido o soltado (Excel con SheetJS, primera hoja, o CSV como texto) y pasa sus filas a handleRows. */
   function readFile(f) {
     if (!f) return; var name = f.name.toLowerCase(), r = new FileReader();
     if (/\.xlsx?$/.test(name) && window.XLSX) { r.onload = function () { var wb = XLSX.read(r.result, { type: 'array' }); handleRows(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { header: 1, blankrows: false })); }; r.readAsArrayBuffer(f); }
@@ -67,7 +71,9 @@
 
   // ───────────────────────────────────────── [PDF] + [SEND]
   var form = $('[data-quote-form]');
+  /** Datos del formulario del presupuesto como objeto {campo: valor}, sin el campo honeypot `hp` (antispam). */
   function customer() { var o = {}; new FormData(form).forEach(function (v, k) { if (k !== 'hp') o[k] = v; }); return o; }
+  /** Descarga el PDF `res` ({blob(), filename}) con un enlace temporal y libera la URL del blob a los 800 ms. */
   function download(res) { var a = document.createElement('a'); a.href = URL.createObjectURL(res.blob()); a.download = res.filename; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 800); }
   $('[data-download-pdf]').addEventListener('click', function () {
     if (!Q.lines().length) return TV.toast(Q.t('quote_empty'));
@@ -89,6 +95,7 @@
     sendDemo(c, res, d, out);
   });
   // ───────────────────────────────────────── [SEND-LIVE] producción: POST al Worker (precios y totales los fija el servidor)
+  /** Envía el pedido al servidor (POST /api/order) con el PDF adjunto; los precios y totales los fija el servidor. */
   function sendLive(c, res, d, out) {
     var btn = form.querySelector('button[type=submit]'); btn.disabled = true; var label = btn.textContent; btn.textContent = Q.t('sending');
     var pdf = String(res.doc.output('datauristring')).replace(/^data:[^,]*,/, '');
@@ -106,6 +113,7 @@
   }
 
   // ───────────────────────────────────────── [SEND-DEMO] demo: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador mailto:
+  /** Demo sin servidor: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador de correo (mailto:). */
   function sendDemo(c, res, d, out) {
     download(res);
     var body = Q.t('quote') + ' ' + res.number + '\n\n' + d.lines.map(function (l) { return '- ' + (l.generic ? '' : l.ref + ' · ') + l.name + ' × ' + l.qty + (l.total == null ? '' : ' = ' + Q.money(l.total)); }).join('\n') + '\n\n' + Q.t('total') + ': ' + Q.money(d.total) + '\n\n' + [c.name, c.company, c.email, c.phone].filter(Boolean).join(' · ') + (c.notes ? '\n\n' + c.notes : '') + '\n\n(PDF: ' + res.filename + ')';

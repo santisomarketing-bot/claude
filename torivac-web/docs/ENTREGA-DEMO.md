@@ -1,48 +1,57 @@
-# Torivac · demo de la web nueva — guía de entrega
+# Torivac · web nueva — guía de entrega
 
-> **Esto es una demo, no la web oficial.** No se ha tocado grupotorivac.com (solo se han hecho lecturas GET para copiar su contenido).
+> **Esto no es la web oficial.** No se ha tocado grupotorivac.com (solo lecturas GET para copiar su contenido). La web nueva se prueba en un **subdominio de pruebas** (paquete para cPanel) o, sin servidor, con el **demo** que se abre con doble clic.
 
-## Cómo abrirla
-1. Descomprime `torivac-demo.zip` y abre **`index.html`** con doble clic (español).
-   Idiomas: `en/index.html`, `fr/index.html`, `de/index.html` (también se elige con el selector ES · EN · FR · DE del menú).
-2. **Recomendado** para probar el carrito sin sorpresas del navegador: sirve la carpeta por http
-   (`python3 -m http.server 8080` dentro de la carpeta y abre http://localhost:8080). Al abrirla con doble clic (`file://`)
-   algunos navegadores no comparten bien el almacenamiento entre páginas; hay un respaldo, pero por http es 100 % fiable.
-3. Panel de gestión: `admin/index.html`.
-   - Manager: `manager@torivac.demo` / `Torivac-Manager-2026`
-   - Cliente: `cliente@torivac.demo` / `Torivac-Cliente-2026`
-   (acceso **solo de demostración**; el login real va en el Worker, ver más abajo).
+## Dos formas de verla
+
+### A) Demo sin servidor (doble clic)
+1. Descomprime `torivac-demo.zip` y abre **`index.html`** (español). Idiomas: `en/index.html`, `fr/index.html`, `de/index.html` (también con el selector ES · EN · FR · DE del menú).
+2. Recomendado: sirve la carpeta por http (`python3 -m http.server 8080` y abre http://localhost:8080). Con `file://` algunos navegadores no comparten bien el almacenamiento entre páginas (hay un respaldo, pero por http es 100 % fiable).
+3. Panel: `admin/index.html`. Manager `manager@torivac.demo` / `Torivac-Manager-2026` · cliente `cliente@torivac.demo` / `Torivac-Cliente-2026` (acceso **solo de demostración**).
+4. **Precios, envío del pedido y contacto están SIMULADOS** en este modo (precios inventados y marcados «DEMO»; el pedido genera el PDF y un borrador de correo, no envía nada).
+
+### B) Subdominio de pruebas en tu hosting con cPanel (real)
+`python3 -I scripts/package_cpanel.py --base=https://pruebas.grupotorivac.com --staging` genera un `.zip` **verificado** (sin claves, sin tests, sin precios, PHP válido) con la web y el API PHP. Pasos de subida, configuración, correo, precios y cron: **[`DESPLIEGUE-CPANEL.md`](DESPLIEGUE-CPANEL.md)**. El subdominio sale con `noindex` y cinta «entorno de pruebas».
+Aquí **sí** funciona todo de verdad: pedidos por correo a `info@grupotorivac.com` y `mzamora@torivac.com` con el PDF adjunto (y copia al cliente), contacto, login real del panel, precios desde tu Drive.
 
 ## Qué puedes probar
-- **Pedido por cantidades como un e-commerce**: en cada ficha, tabla de modelos con cantidades → «Añadir» → botón flotante «Presupuesto» (cajón lateral) → página de presupuesto.
-- **Presupuesto en PDF** (descarga en el navegador, con logotipo, imágenes de referencia, tramos de precio y céntimos) y **«Enviar pedido»**.
+- **Pedido por cantidades como un e-commerce**: en cada ficha, tabla de modelos con cantidades → «Añadir» → botón flotante «Presupuesto» (cajón lateral) → página de presupuesto → «Enviar pedido».
+- **Presupuesto en PDF** (descarga en el navegador, con logotipo, imágenes de referencia, tramos de precio y céntimos).
 - **Importar CSV/Excel** con columnas «referencia» y «cantidad» en la página de presupuesto.
-- **Precios con variaciones de céntimos y tramos por cantidad** (1, 10, 50, 200 uds.). Se actualizan cargando un Excel/CSV (hoja `precios.demo.xlsx` / `.csv` en `assets/data/`) o con una instrucción en lenguaje natural desde el panel.
-- **Idioma**: detección por el idioma del navegador (una sola redirección, solo desde páginas en español), aviso para cambiar o mantener y selector manual que siempre manda.
-- **Propuestas** (panel → Propuestas): diferencias web ≠ PDF y traducciones que faltan. Nada dudoso se ha añadido a la web; queda para tu aprobación.
+- **Etiquetas de voltaje** en 27 productos (filtro por tensión), sacadas de los PDF verificados o de frases literales de la ficha; lo dudoso no se etiqueta.
+- **Referencias pedibles reales** (códigos de fabricante de los PDF) en 24 productos / 283 modelos; el resto se pide por línea genérica «consultar modelo».
+- **Precios con céntimos y tramos por cantidad**. Se actualizan desde una hoja de Drive (cada 24 h y con el botón «Actualizar ahora»), subiendo un Excel/CSV con vista previa, o con una instrucción en castellano que la IA **propone** y tú confirmas: [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md).
+- **Idioma**: detección por el navegador (una sola redirección, solo desde páginas en español), aviso para cambiar o mantener y selector manual que siempre manda.
+- **Propuestas** (panel → Propuestas): lo que no se ha dado por seguro — diferencias web ≠ PDF, traducciones que faltan, familias de los PDF sin ficha, textos legales. Nada dudoso se ha añadido a la web.
 
 ## Qué es REAL y qué es SIMULADO
-| Cosa | Estado |
-|---|---|
-| Contenido (textos, imágenes, PDFs, categorías, 4 idiomas) | Real, copiado de grupotorivac.com; sin precios en el original |
-| **Precios** | **DEMO** (inventados, marcados «DEMO» en pantalla y en el PDF). No son tarifas de Torivac |
-| Envío del pedido / contacto en la demo | **Simulado**: genera el PDF y un borrador de correo; no se envía nada |
-| Login del panel | Solo demostración (credenciales en el código) |
-| Etiquetas de voltaje y referencias pedibles por modelo | Parcial: pendiente de terminar el enlace producto ↔ PDF (ver «Pendiente») |
+| Cosa | Demo (doble clic) | Subdominio de pruebas con cPanel |
+|---|---|---|
+| Contenido (textos, imágenes, PDFs, categorías, 4 idiomas) | Real, copiado de grupotorivac.com; sin precios en el original | Igual |
+| **Precios** | **DEMO** (inventados, marcados «DEMO»; no son tarifas de Torivac) | **Los que haya en tu hoja de Drive**; sin hoja, «Consultar». La web no lleva precios dentro |
+| Envío del pedido / contacto | Simulado (PDF + borrador de correo) | **Real** (Resend → info@ y mzamora@) cuando se configura el correo |
+| Login del panel | Solo demostración (credenciales en el código) | **Real** (usuarios con contraseña, sesiones firmadas) |
+| Estadísticas (Google Business, Ads, Search Console, GA4) | Sin conectar | Sin conectar: faltan las credenciales de Torivac; el panel no muestra cifras inventadas |
 
-## Producción (ya construida y probada, sin desplegar)
-`workers/api/` — Worker de Cloudflare `torivac-api`: pedidos por email (Resend) a **info@** y **mzamora@** con el PDF adjunto y copia al cliente,
-precios desde Google Sheets/CSV con cron cada 24 h + actualización manual, login manager/cliente (PBKDF2 + sesión firmada), límite de intentos, CORS, honeypot.
-14 pruebas del Worker + prueba de extremo a extremo navegador → Worker (`node scripts/qa-live.mjs`). Para activarlo: `workers/api/README.md` y compilar la web con `TORIVAC_API=https://…`.
+## Cómo se ha comprobado (todo reproducible y sin red)
+- `cd workers/api && npm test` · `php backend-php/api/tests/run.php`: pedidos, precios, hojas, lectura de `.xlsx`, login, IA, CORS… (el mismo contrato en Worker y en PHP).
+- Navegador (Playwright), **contra el Worker y contra el API PHP**: `qa-live.mjs` (pedido/contacto/errores), `qa-admin-live.mjs` (panel completo), `qa-tarifa.mjs` (tarifa Excel real), y `qa-package.mjs` (el paquete de cPanel tal como se sube, con la CSP real del `.htaccess`).
+- Calidad de la web: `qa-quote` (presupuesto en 4 idiomas con cálculo independiente), `qa-lang`, `qa-ux` (todas las páginas, escritorio y móvil), `qa-a11y` (axe-core AA), `qa-art`, `seo_check.py` (H1, canonical, hreflang, JSON-LD, sitemap, enlaces), `perf.mjs`, `secret_scan.py`.
+- **Lo único que no se ha podido probar aquí** es un Apache/LiteSpeed real de cPanel: se probó con `php -S` aplicando la misma reescritura y la misma CSP. La primera subida se verifica con `php api/tools/check.php --net` y la lista de `DESPLIEGUE-CPANEL.md` §10.
 
-## Pruebas automáticas (todas en verde a la hora de entrega)
-`node scripts/qa-quote.mjs` (presupuesto realista en 4 idiomas, totales y PDF) · `qa-lang.mjs` (idiomas) · `qa-live.mjs` (web + Worker) · `smoke.mjs` · `smoke-admin.mjs` · `cd workers/api && npm test`.
+## Qué se hizo distinto a lo previsto (y por qué)
+1. **Enlace producto ↔ PDF y contrastes**: el análisis con agentes (tres procesos largos) se cortó por el límite de uso. No se reanudó: se hizo con **scripts deterministas** (`link_pdfs`, `contrast_pdfs`, `web_vs_pdf`, `enrich_catalog`), reproducibles y sin IA, que además dejan cada duda como propuesta con su evidencia. Resultado: 42 familias de los catálogos PDF contrastadas ES↔EN, tablas web ↔ PDF comparadas, 283 modelos pedibles.
+2. **Tabla de la ficha «Transformador Serie TT»**: la de la web original **no coincide con el PDF ni con tu tarifa de Drive** (códigos que no existen, tensiones desplazadas). La web nueva muestra los 28 modelos verificados y oculta esa tabla (reversible: `data/catalog/content-overrides.json`); queda la propuesta `PR-17604` para que lo confirmes.
+3. **Backend PHP para cPanel** (además del Worker de Cloudflare): lo pediste en otro hosting con cPanel, así que el API completo (pedidos, contacto, precios, panel, IA de precios, cron) corre también en PHP sin base de datos. El Worker sigue disponible como alternativa.
+4. **Lectura de la tarifa real**: formato «Artículo · Descripción · Precio venta» con 8 decimales, referencias nuevas dentro de su familia verificada y lectura directa del `.xlsx` en Drive. Se rechaza el precio de relleno (la hoja «Torivac Precios» trae uno, 22 000, y filas por producto en vez de por modelo).
 
-## Pendiente / decisiones tuyas
-1. ~~Destinatarios~~ **Confirmado**: los pedidos y mensajes llegan a `info@grupotorivac.com` (también para las pruebas) y a `mzamora@torivac.com`. El pie de la web conserva `info@torivac.com` (es contenido original). Falta verificar el dominio `grupotorivac.com` en Resend (SPF/DKIM) para enviar desde `pedidos@grupotorivac.com`: ver `docs/DESPLIEGUE-CPANEL.md`.
-2. **Hosting**: la web estática irá a un **hosting con cPanel** (no Cloudflare Pages). El Worker de la API sigue en Cloudflare salvo que prefieras un backend PHP en el mismo cPanel (pendiente de tu decisión). Los **precios reales** saldrán de un Excel/Google Sheet en tu Drive (formatos reconocidos: `docs/PRECIOS-DRIVE.md`).
-3. Enlace producto ↔ PDF (referencias pedibles reales, etiquetas de voltaje, fichas) y verificación de los PDF: el análisis se cortó por el límite de uso de las 5 h; se relanza y todo lo dudoso irá a «Propuestas».
-4. Traducciones que faltan en el original (variador portátil, SAI, 2 onduladores y fuente de CA; «Trifásico manual» sin alemán): se buscaron leyendo las redirecciones públicas de WPML de la web original y **no hay traducción publicada**; mientras tanto la web nueva muestra el español con aviso. **La web nueva no usa WPML ni ningún plugin de idioma** (HTML estático con selector y detección propios); WPML solo se consultó, en lectura, para emparejar traducciones al migrar.
-5. Gráficos extra (sesión 12), documentación para programadores (sesión 15) y la sesión final de revisión para superar la versión de Why Not (sesión 16).
+## Decisiones tuyas (pendientes)
+1. **¿Precios públicos o solo para clientes registrados?** Hoy son públicos (la web original no tenía precios). Cambiarlo es pequeño; mientras tanto, en el subdominio de pruebas no cargues la tarifa real salvo que lo restrinjas por IP.
+2. **Decimales del precio unitario**: 4 por defecto (`27,75093203 → 27,7509`; la línea se redondea a 2). Configurable hasta 6.
+3. **Cómo conectar Drive**: descarga directa del `.xlsx` con enlace (más simple) o cuenta de servicio de Google (privada): [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md) §7.
+4. **Resend**: verificar `grupotorivac.com` (SPF/DKIM en el DNS, sin tocar el correo actual) para enviar desde `pedidos@grupotorivac.com`.
+5. **Dominio/subdominio de pruebas** y, más adelante, el cambio de DNS (`DESPLIEGUE-CPANEL.md` §12).
+6. **Propuestas del panel** (116): aprobar o descartar; las legales (15) requieren a quien lleve lo jurídico.
+7. **Traducciones inexistentes en el original** (variador portátil, SAI, 2 onduladores y fuente de CA; «Trifásico manual» sin alemán): la web nueva muestra el español con aviso. **La web nueva no usa WPML ni ningún plugin de idioma** (HTML estático con selector y detección propios); WPML solo se consultó, en lectura, para emparejar traducciones.
 
-Hallazgos del sitio original (errores, discrepancias web ≠ PDF, textos copiados entre fichas): `docs/01-analisis/HALLAZGOS.md`.
+Hallazgos del sitio original (errores, discrepancias web ≠ PDF, textos copiados entre fichas): [`01-analisis/HALLAZGOS.md`](01-analisis/HALLAZGOS.md). Guía para programadores: [`DOCUMENTACION.md`](DOCUMENTACION.md) · índice de código: [`INDICE-CODIGO.md`](INDICE-CODIGO.md).

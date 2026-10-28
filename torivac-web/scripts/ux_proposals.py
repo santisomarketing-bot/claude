@@ -18,6 +18,7 @@ LANGS = {"es": "español", "en": "inglés", "fr": "francés", "de": "alemán", "
 
 
 def main():
+    """Convierte los textos en otro idioma no esperables de qa-ux-desktop.json en propuestas (ux-proposals-raw.json)."""
     d = json.loads((ROOT / "data" / "analysis" / "qa-ux-desktop.json").read_text())
     by_text = defaultdict(list)
     for r in d["results"]:

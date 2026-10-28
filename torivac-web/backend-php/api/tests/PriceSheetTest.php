@@ -4,6 +4,7 @@ namespace Torivac\Tests;
 
 use Torivac\PriceSheet;
 
+/** Casos compartidos con la versión JavaScript (shared/price-sheet.fixtures.json). */
 function fixtures(): array
 {
     $f = __DIR__ . '/../../../shared/price-sheet.fixtures.json';
@@ -11,6 +12,7 @@ function fixtures(): array
     return json_decode(file_get_contents($f), true);
 }
 
+/** Cada caso de hoja → precios, desconocidas, nuevas y filas ignoradas esperados. */
 function test_price_sheet_cases()
 {
     foreach (fixtures()['cases'] as $c) {
@@ -35,6 +37,7 @@ function test_price_sheet_cases()
     }
 }
 
+/** Números de celda: coma o punto decimal, miles, símbolos de moneda y texto ilegible. */
 function test_price_sheet_numbers()
 {
     foreach (fixtures()['numbers'] as [$raw, $want]) {
@@ -42,6 +45,7 @@ function test_price_sheet_numbers()
     }
 }
 
+/** Hojas sin cabecera reconocible o vacías: error claro. */
 function test_price_sheet_errors()
 {
     T::throws(function () { PriceSheet::read(fixtures()['no_header']); }, '/columnas de referencia/');

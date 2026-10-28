@@ -61,7 +61,7 @@ def comment_above(lines, idx):
     while j >= 0 and lines[j].strip().startswith(("//", "*", "/*", "*/", "#")):
         buf.append(re.sub(r"^(//+|/\*+|\*+/?|#+)\s?", "", lines[j].strip()).rstrip("*/ ").strip())
         j -= 1
-    buf = [b for b in reversed(buf) if b]
+    buf = [b for b in reversed(buf) if b and not b.startswith("─")]       # las líneas «// ───── [ETIQUETA] …» rotulan secciones: no describen la función
     if buf:
         return buf[0]
     m = re.search(r"//\s*(.+)$", lines[idx]) or re.search(r"/\*\s*(.+?)\s*\*/", lines[idx])
@@ -69,6 +69,7 @@ def comment_above(lines, idx):
 
 
 def scan_js(path):
+    """Lee un archivo JS/MJS: cabecera, etiquetas [SECCIÓN] y funciones con el comentario que llevan encima."""
     lines = path.read_text(encoding="utf-8", errors="ignore").splitlines()
     funcs, tags = [], []
     for i, ln in enumerate(lines):
@@ -100,6 +101,7 @@ def scan_php(path):
 
 
 def scan_py(path):
+    """Lee un archivo Python: cabecera, etiquetas [SECCIÓN] y funciones con su docstring o comentario."""
     text = path.read_text(encoding="utf-8", errors="ignore")
     lines = text.splitlines()
     funcs, tags = [], []
@@ -125,6 +127,7 @@ def scan_py(path):
 
 
 def scan_css(path):
+    """Lee un archivo CSS: comentario de cabecera y etiquetas [SECCIÓN]."""
     text = path.read_text(encoding="utf-8", errors="ignore")
     lines = text.splitlines()
     head = [re.sub(r"^/\*+\s?|\s?\*+/$", "", l.strip()) for l in lines[:3] if l.strip().startswith("/*")]
@@ -137,6 +140,7 @@ def scan_css(path):
 
 
 def main():
+    """Recorre los archivos, escribe docs/INDICE-CODIGO.md y, con --check, falla si hay archivos sin cabecera o funciones sin describir."""
     check = "--check" in sys.argv
     out = ["# Índice de código (generado)", "", "> Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.",
            "> Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).", ""]

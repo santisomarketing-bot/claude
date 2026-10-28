@@ -30,16 +30,26 @@ COLS = ["ref", "product_id", "name_es", "unit", "currency", "price", "qty2", "pr
 
 
 def seed(ref):
+    """Semilla numérica estable (8 primeros hex del SHA-1 de la referencia) para los precios DEMO deterministas."""
     return int(hashlib.sha1(ref.encode()).hexdigest()[:8], 16)
 
 
 def num(x):
+    """Número (float) de un valor escrito como «27,75», «27.75», «1.234,56» o «1,234.56» (el último separador es el decimal); None si está vacío o no es un número."""
     if x is None:
         return None
-    s = str(x).strip().replace(" ", "").replace(" ", "")
+    s = str(x).strip()
+    for ch in (" ", "\u00a0", "\u202f", "€", "$"):
+        s = s.replace(ch, "")
     if not s:
         return None
-    s = s.replace(",", ".") if s.count(",") == 1 and "." not in s else s.replace(",", "")
+    c, d = s.rfind(","), s.rfind(".")
+    if c >= 0 and d >= 0:
+        s = s.replace(".", "").replace(",", ".") if c > d else s.replace(",", "")
+    elif c >= 0:
+        s = s.replace(",", ".") if s.count(",") == 1 else s.replace(",", "")
+    elif s.count(".") > 1:
+        s = s.replace(".", "")
     try:
         return float(s)
     except ValueError:
@@ -47,6 +57,7 @@ def num(x):
 
 
 def first_number(raw):
+    """Primer número (con coma o punto decimal) que aparece en un texto, como float; None si no hay ninguno."""
     m = re.search(r"\d+(?:[.,]\d+)?", raw or "")
     return num(m.group(0)) if m else None
 
@@ -89,6 +100,7 @@ def demo_price(line):
 
 
 def write_demo_sheet():
+    """Genera la hoja DEMO (prices.demo.csv y, si hay openpyxl, prices.demo.xlsx) con un precio por línea pedible; devuelve las filas."""
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     rows = []
     for ln in lines_of_catalog():
@@ -126,6 +138,7 @@ def write_demo_sheet():
 
 
 def read_sheet(path):
+    """Lee una hoja de precios .xlsx/.xls (primera hoja) o .csv (separador , o ;) como lista de filas {columna en minúsculas: valor}."""
     path = Path(path)
     if path.suffix.lower() in (".xlsx", ".xls"):
         import openpyxl
@@ -139,6 +152,7 @@ def read_sheet(path):
 
 
 def build(rows, source, mode):
+    """Filas de la hoja → contenido de prices.json (updated_at, source, currency, mode, items); omite filas inactivas o sin precio."""
     items, stamp = {}, None
     for r in rows:
         ref = str(r.get("ref") or "").strip()
@@ -159,6 +173,7 @@ def build(rows, source, mode):
 
 
 def main():
+    """Genera prices.json desde la hoja indicada (--src), la de data/catalog o, si no hay ninguna (o con --demo), la hoja DEMO."""
     args = sys.argv[1:]
     src = next((a.split("=", 1)[1] for a in args if a.startswith("--src=")), None)
     if "--demo" in args or (not src and not (CAT / "prices.csv").exists() and not (CAT / "prices.xlsx").exists()):

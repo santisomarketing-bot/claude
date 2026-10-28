@@ -11,6 +11,7 @@ use Torivac\Store;
 
 const SECRET = 'x-secreto-de-pruebas-de-al-menos-32-caracteres';
 
+/** Almacén temporal nuevo, configuración y catálogo sintéticos de las pruebas. */
 function fresh(array $cfg = []): void
 {
     $dir = sys_get_temp_dir() . '/tv-php-test-' . bin2hex(random_bytes(4));
@@ -22,23 +23,28 @@ function fresh(array $cfg = []): void
     Http::$mock = null;
 }
 
+/** Precios de ejemplo: TT0020210 con tramos y P16633. */
 function prices(): array
 {
     return ['updated_at' => '2026-10-27T00:00:00.000Z', 'source' => 'test', 'currency' => 'EUR', 'mode' => 'live', 'items' => ['TT0020210' => ['p' => 12.37, 't' => [[10, 11.9], [50, 11.4]]], 'P16633' => ['p' => 67.65]]];
 }
 
+/** Guarda los precios de ejemplo en el almacén. */
 function seedPrices(): void { Store::put(Prices::KEY_CURRENT, Prices::forJson(prices())); }
 
+/** Pedido válido de ejemplo (se puede sobrescribir cualquier campo). */
 function goodOrder(array $over = []): array
 {
     return $over + ['customer' => ['name' => 'Ana Pérez', 'company' => 'ACME', 'email' => 'ana@acme.es', 'phone' => '600', 'notes' => 'urgente', 'privacy' => true], 'lines' => [['ref' => 'TT0020210', 'qty' => 12], ['ref' => 'P16633', 'qty' => 3]], 'lang' => 'es'];
 }
 
+/** Petición simulada para llamar al Router sin servidor web. */
 function req(string $method, string $path, $body = null, array $headers = [], string $ip = '10.0.0.1'): Request { return Request::fake($method, $path, $body, $headers, $ip); }
 
 /** cuerpo de una respuesta tal y como lo recibe un cliente (JSON → arrays): los `items` de precios viajan como objeto y en el servidor son stdClass */
 function wire($resp): array { return json_decode(\Torivac\Util::enc($resp->body), true); }
 
+/** Cabecera de autenticación con el token maestro. */
 function master(): array { return ['Authorization' => 'Bearer token-maestro-123']; }
 
 /** correos guardados por el controlador «file» */

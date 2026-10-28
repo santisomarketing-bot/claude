@@ -30,10 +30,12 @@ INLINE_OK = {"a", "strong", "b", "em", "i", "br", "sup", "sub", "u", "span"}
 
 
 def _abs(u):
+    """URL absoluta (respecto a grupotorivac.com) con &amp; resuelto; devuelve `u` tal cual si viene vacía."""
     return urljoin(BASE + "/", (u or "").strip().replace("&amp;", "&")) if u else u
 
 
 def _clean(s):
+    """Colapsa los blancos de un texto en un solo espacio y lo recorta (cadena vacía si es None)."""
     return re.sub(r"[ \t\r\f\v ]+", " ", s or "").strip()
 
 
@@ -41,6 +43,7 @@ def _clean(s):
 def inline_html(node):
     out = []
     def walk(n):
+        """Añade a `out` el HTML inline seguro del nodo `n` y sus hijos (texto escapado, br, enlaces y énfasis; el resto se desenvuelve)."""
         if isinstance(n, NavigableString):
             t = str(n)
             out.append(t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"))
@@ -67,6 +70,7 @@ def inline_html(node):
 
 
 def _img_block(im):
+    """Bloque de imagen (src, alt, ancho y alto) de una etiqueta img, con carga diferida y srcset; None si no hay URL válida."""
     src = im.get("data-src") or im.get("data-lazy-src") or im.get("data-orig-src") or im.get("src") or ""
     if not src or src.startswith("data:"):
         ss = im.get("data-srcset") or im.get("srcset") or ""
@@ -77,6 +81,7 @@ def _img_block(im):
 
 
 def _table(t):
+    """Bloque de tabla (título y filas de celdas) de un elemento table; None si ninguna fila tiene texto."""
     rows = []
     cap = t.find("caption")
     for tr in t.find_all("tr"):
@@ -87,6 +92,7 @@ def _table(t):
 
 
 def _is_button(a):
+    """Indica si el enlace `a` tiene clase de botón (Elementor, ElementsKit, Gutenberg o genérica)."""
     cls = " ".join(a.get("class", []))
     return bool(re.search(r"elementor-button|ekit-btn|ekit_btn|btn\b|button\b|wp-block-button", cls))
 
@@ -97,6 +103,7 @@ def blocks_from(root):
     pending = []  # nodos inline sueltos que forman un párrafo
 
     def flush():
+        """Convierte en un párrafo los nodos inline sueltos acumulados en `pending` y vacía la lista."""
         nonlocal pending
         if pending:
             wrap = BeautifulSoup("<div></div>", "lxml").div
@@ -108,6 +115,7 @@ def blocks_from(root):
             pending = []
 
     def visit(n):
+        """Añade a `blocks` los bloques del nodo `n` (encabezado, párrafo, lista, tabla, imagen, botón…); en contenedores recorre sus hijos."""
         if isinstance(n, NavigableString):
             if str(n).strip():
                 pending.append(n)
@@ -216,6 +224,7 @@ def clean_wp_html(html):
     """[WPBAKERY] Restos de shortcodes sin renderizar en la web original: [vc_raw_html]BASE64[/vc_raw_html] se decodifica (base64 → URL-decode → HTML);
     el resto de [vc_*] / [/vc_*] se elimina. Así el texto real no se pierde ni se muestra como código."""
     def raw(m):
+        """Decodifica el base64 de un shortcode vc_raw_html (base64 → URL-decode → HTML); cadena vacía si falla."""
         try:
             return urllib.parse.unquote(base64.b64decode(m.group(1)).decode("utf-8", "replace"))
         except Exception:
@@ -225,6 +234,7 @@ def clean_wp_html(html):
 
 
 def blocks_from_html(html):
+    """HTML (fragmento o página) → lista de bloques semánticos, tras limpiar los shortcodes de WPBakery sin renderizar."""
     html = clean_wp_html(html)
     soup = BeautifulSoup(html or "", "lxml")
     return blocks_from(soup.body or soup)

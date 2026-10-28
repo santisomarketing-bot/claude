@@ -6,4 +6,5 @@ export function isOriginAllowed(origin, env) {
   if (env.ALLOW_PAGES_DEV === '1' && /^https:\/\/[a-z0-9-]+(\.[a-z0-9-]+)*\.pages\.dev$/.test(origin)) return true;
   return false;
 }
+/** Cabeceras CORS para un origen ya permitido (métodos, cabeceras admitidas y caché del preflight). */
 export const corsHeaders = (origin) => ({ 'Access-Control-Allow-Origin': origin, 'Access-Control-Allow-Methods': 'GET,POST,DELETE,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type,Authorization', 'Access-Control-Max-Age': '86400', Vary: 'Origin' });

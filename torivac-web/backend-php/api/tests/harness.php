@@ -12,6 +12,7 @@ final class T
     public static $fail = 0;
     public static $name = '';
 
+    /** Compara valor esperado y obtenido (como JSON) y cuenta acierto o fallo. */
     public static function same($expected, $actual, string $msg = ''): void
     {
         $e = json_encode($expected, JSON_UNESCAPED_UNICODE);
@@ -21,6 +22,7 @@ final class T
         fwrite(STDERR, "  ✗ " . self::$name . ($msg ? " · $msg" : '') . "\n      esperado: $e\n      obtenido: $a\n");
     }
 
+    /** Comprueba que una condición es cierta. */
     public static function true($cond, string $msg = ''): void
     {
         if ($cond) { self::$pass++; return; }
@@ -28,6 +30,7 @@ final class T
         fwrite(STDERR, "  ✗ " . self::$name . ($msg ? " · $msg" : '') . "\n");
     }
 
+    /** Comprueba que una función lanza una excepción cuyo mensaje cumple el patrón. */
     public static function throws(callable $fn, string $pattern, string $msg = ''): void
     {
         try { $fn(); } catch (\Throwable $e) {

@@ -7,6 +7,7 @@ require_once __DIR__ . '/support.php';
 use Torivac\Ai;
 use Torivac\Auth;
 use Torivac\Catalog;
+use Torivac\Diag;
 use Torivac\Http;
 use Torivac\Mail;
 use Torivac\Orders;
@@ -17,6 +18,7 @@ use Torivac\Store;
 use Torivac\Users;
 use Torivac\Util;
 
+/** Sesión firmada: válida, manipulada y caducada; la contraseña se guarda con hash. */
 function test_auth_sessions()
 {
     fresh();
@@ -30,6 +32,7 @@ function test_auth_sessions()
     T::true(Auth::verifyPassword('Clave-Segura-2026', $h) && !Auth::verifyPassword('otra', $h), 'contraseña');
 }
 
+/** Alta de usuarios, duplicados, login (sin el hash en la respuesta) y bloqueo tras varios intentos. */
 function test_users_and_login()
 {
     fresh();
@@ -47,6 +50,7 @@ function test_users_and_login()
     T::same(429, $last->status, 'límite de intentos');
 }
 
+/** Tramos por cantidad, importe de línea redondeado a 2 decimales y diferencias entre hojas de precios. */
 function test_prices_tiers_and_rounding()
 {
     $p = prices();
@@ -58,6 +62,7 @@ function test_prices_tiers_and_rounding()
     T::same(2, $d['same'], 'diff: iguales');
 }
 
+/** Sincronización de la hoja: rechaza hojas con menos del 50 % de referencias o con precio de relleno salvo force; guarda el histórico. */
 function test_sheet_sync_rules()
 {
     fresh();
@@ -78,12 +83,14 @@ function test_sheet_sync_rules()
     T::same(12, Sheets::sync(['rows' => $rows, 'ctx' => [], 'force' => true])['refs'], 'relleno con force');
 }
 
+/** CSV con comillas, separadores dentro de comillas, BOM y separador coma o punto y coma. */
 function test_csv_parser()
 {
     T::same([['ref', 'name'], ['A;1', 'dice "hola"']], Sheets::parseCsv("ref;name\n\"A;1\";\"dice \"\"hola\"\"\"\n"), 'comillas');
     T::same([['a', 'b'], ['1', '2']], Sheets::parseCsv("\xEF\xBB\xBFa,b\r\n1,2\r\n"), 'BOM y coma');
 }
 
+/** Token de la cuenta de servicio de Google: firma RS256 verificable con la clave pública. */
 function test_google_jwt()
 {
     fresh();
@@ -99,6 +106,7 @@ function test_google_jwt()
     T::same('svc@proj.iam.gserviceaccount.com', json_decode(Util::unb64url($c), true)['iss'], 'iss');
 }
 
+/** Pedido: el servidor valora con sus precios (ignora los del cliente), numera, guarda y envía. */
 function test_order_flow_server_side_pricing()
 {
     fresh(); seedPrices();
@@ -117,6 +125,7 @@ function test_order_flow_server_side_pricing()
     T::same('TV-20261028-0002', $r2->body['number'], 'numeración correlativa');
 }
 
+/** Validación del pedido (campos, cantidades, referencias, PDF, honeypot) y límite por IP. */
 function test_order_validation_and_limits()
 {
     fresh(); seedPrices();
@@ -133,6 +142,7 @@ function test_order_validation_and_limits()
     T::same(429, $last->status, 'límite por IP');
 }
 
+/** Envío con Resend: destinatarios, copia al cliente, responder-a y PDF adjunto. */
 function test_order_with_resend_driver()
 {
     fresh(['mail' => ['driver' => 'resend', 'resend_api_key' => 're_test']]); seedPrices();
@@ -151,6 +161,7 @@ function test_order_with_resend_driver()
     T::same([true, true], [$r->body['ok'], $r->body['emailed']['skipped']], 'sin controlador no falla: se guarda y se avisa');
 }
 
+/** Cuerpo MIME para mail(): texto y HTML, adjunto y cabeceras. */
 function test_mime_builder()
 {
     [$h, $b] = Mail::mime('Torivac <p@t.com>', ['to' => ['a@b.es'], 'subject' => 'x', 'html' => '<b>hola</b>', 'text' => 'hola', 'replyTo' => 'c@d.es', 'attachments' => [['filename' => 'TV 1.pdf', 'content' => 'JVBERi0xLjQK']]]);
@@ -158,6 +169,7 @@ function test_mime_builder()
     T::true(strpos($b, 'filename="TV_1.pdf"') !== false && strpos($b, 'text/html') !== false && strpos($b, 'JVBERi0xLjQK') !== false, 'cuerpo con adjunto');
 }
 
+/** Formulario de contacto y reglas CORS (origen ajeno, el propio sitio y preflight). */
 function test_contact_and_cors()
 {
     fresh();
@@ -175,6 +187,7 @@ function test_contact_and_cors()
     T::same(204, Router::handle(req('OPTIONS', '/order', null, ['Origin' => 'https://demo.example']))->status, 'preflight');
 }
 
+/** GET /prices: precios públicos con ETag (304) y `items` como objeto {} aunque esté vacío. */
 function test_prices_endpoint_etag()
 {
     fresh(); seedPrices();
@@ -185,6 +198,7 @@ function test_prices_endpoint_etag()
     T::same(true, json_encode(Router::handle(req('GET', '/prices'))->body['prices']['items']) === '{}', 'sin precios: items es {} y no []');
 }
 
+/** Subida de hojas (vista previa y aplicar), permisos por rol, referencia nueva por regla de familia y cron por URL con token. */
 function test_manager_upload_roles_and_cron()
 {
     fresh(); seedPrices();
@@ -212,6 +226,7 @@ function test_manager_upload_roles_and_cron()
     T::same(200, Router::handle($q)->status, 'cron con token');
 }
 
+/** Un manager ve todos los pedidos y cada cliente solo los suyos; alta y baja de usuarios por el API. */
 function test_orders_visibility_and_users_api()
 {
     fresh(); seedPrices();
@@ -234,11 +249,13 @@ function test_orders_visibility_and_users_api()
     T::same('{}', json_encode(Router::handle(req('GET', '/proposals/state', null, ['Authorization' => 'Bearer ' . $tJ]))->body['state']), 'deshacer');
 }
 
+/** Servidor de IA simulado: contesta con una propuesta de cambios de precios (uso de herramienta de Anthropic). */
 function ai_reply(array $input): callable
 {
     return function ($m, $u, $h, $b) use ($input) { return [200, json_encode(['content' => [['type' => 'tool_use', 'name' => Ai::TOOL, 'input' => $input]], 'usage' => ['input_tokens' => 1, 'output_tokens' => 1]])]; };
 }
 
+/** IA de precios: valida y limita lo que propone; la propuesta no escribe nada y solo se aplica lo confirmado. */
 function test_ai_validation_and_flow()
 {
     fresh(['ai' => ['anthropic_api_key' => 'sk-test']]);
@@ -270,4 +287,95 @@ function test_ai_validation_and_flow()
     fresh(['ai' => ['anthropic_api_key' => 'sk']]);
     T::same(400, Router::handle(req('POST', '/prices/ai', ['instruction' => 'ok'], master()))->status, 'instrucción corta');
     T::same(409, Router::handle(req('POST', '/prices/ai', ['instruction' => 'sube un 3 % las resistencias'], master()))->status, 'sin precios cargados');
+}
+
+/** Autodiagnóstico: una instalación a medias da errores que dicen qué arreglar, y una completa pasa sin fallos. */
+function test_diag_checks()
+{
+    fresh();
+    $byId = function ($r) { $o = []; foreach ($r['checks'] as $c) $o[$c['id']] = $c['status']; return $o; };
+    $r = Diag::run(false, '/no/existe/config.php');
+    $s = $byId($r);
+    T::same(['fail', 'fail', 'ok'], [$s['config'], $s['manager'], $s['datos']], 'sin config.php ni managers falla; la carpeta de pruebas es escribible');
+    \Torivac\Config::set(['storage_dir' => Store::root(), 'session_secret' => 'CAMBIA-ESTO-por-una-cadena-aleatoria-de-32-o-mas-caracteres']);
+    T::same('fail', $byId(Diag::run(false, __DIR__ . '/../config.sample.php'))['secreto'], 'el session_secret del ejemplo no vale');
+    \Torivac\Config::set(['storage_dir' => Store::root(), 'session_secret' => str_repeat('a1b2', 10), 'order_to' => ['info@grupotorivac.com', 'mzamora@torivac.com'], 'mail' => ['driver' => 'resend', 'resend_api_key' => 're_test'], 'prices' => ['xlsx_url' => 'https://x.test/t.xlsx']]);
+    Users::create(['email' => 'jefe@torivac.com', 'name' => 'Jefe', 'role' => 'manager', 'password' => 'Jefe-Clave-2026!']);
+    Store::put(Prices::KEY_META, ['at' => gmdate('c'), 'refs' => 9, 'source' => 'xlsx-url']);
+    $ok = Diag::run(false, __DIR__ . '/../config.sample.php');
+    $s = $byId($ok);
+    T::same(0, $ok['fail'], 'instalación completa: ningún fallo');
+    T::same(['ok', 'ok', 'ok', 'ok', 'ok'], [$s['destinatarios'], $s['correo'], $s['precios'], $s['sincronizacion'], $s['manager']], 'destinatarios, correo, precios, sincronización y manager');
+    \Torivac\Config::set(['storage_dir' => Store::root(), 'session_secret' => str_repeat('a1b2', 10), 'order_to' => ['no-es-un-correo'], 'mail' => ['driver' => 'none']]);
+    $s = $byId(Diag::run(false, __DIR__ . '/../config.sample.php'));
+    T::same(['fail', 'fail', 'warn'], [$s['destinatarios'], $s['correo'], $s['precios']], 'correos mal escritos, sin envío y sin origen de precios');
+    // por el API: solo managers
+    fresh();
+    T::same(401, Router::handle(req('GET', '/diag'))->status, 'sin sesión');
+    $d = Router::handle(req('GET', '/diag', null, master()));
+    T::same([200, true], [$d->status, isset($d->body['checks'][0]['msg'])], 'el manager lo ve');
+}
+
+/** GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto escapa el HTML. */
+function test_privacy_session_revocation_and_contact_escaping()
+{
+    fresh();
+    \Torivac\Config::set(['prices' => ['csv_url' => 'https://sheet.test/x.csv'], 'storage_dir' => Store::root(), 'session_secret' => SECRET, 'admin_token' => 'token-maestro-123', 'allowed_origins' => [], 'order_to' => ['info@grupotorivac.com'], 'mail' => ['driver' => 'file']]);
+    Users::create(['email' => 'jefa@torivac.com', 'name' => 'Jefa', 'role' => 'manager', 'password' => 'Manager-Clave-2026']);
+    Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => 'Ana-Clave-2026!!']);
+    $tok = function ($e, $p) { return Router::handle(req('POST', '/auth/login', ['email' => $e, 'password' => $p]))->body['token']; };
+    $jefa = $tok('jefa@torivac.com', 'Manager-Clave-2026');
+    $ana = $tok('ana@acme.es', 'Ana-Clave-2026!!');
+    Router::handle(req('POST', '/prices/upload', ['csv' => SHEET], ['Authorization' => 'Bearer ' . $jefa]));
+    $pub = Router::handle(req('GET', '/prices'));
+    $pj = wire($pub);
+    T::true(strpos(json_encode($pj), '@') === false && strpos(json_encode($pj), 'jefa') === false, 'ningún correo en la respuesta pública');
+    T::same(['upload', 'upload', 'upload'], [$pj['meta']['reason'], $pj['meta']['source'], $pj['prices']['source']], 'origen sin datos personales');
+    T::same([true, 'Authorization'], [strpos($pub->headers['Cache-Control'], 'public') !== false, $pub->headers['Vary']], 'caché pública y Vary');
+    T::same(5.5, $pj['prices']['items']['R100']['p'], 'los precios siguen siendo públicos');
+    $man = Router::handle(req('GET', '/prices', null, ['Authorization' => 'Bearer ' . $jefa]));
+    T::same(['upload:jefa@torivac.com', true], [wire($man)['meta']['reason'], strpos($man->headers['Cache-Control'], 'no-store') !== false], 'el manager ve el detalle y no se cachea');
+    T::true(strpos(json_encode(wire(Router::handle(req('GET', '/prices', null, ['Authorization' => 'Bearer ' . $ana])))), '@') === false, 'un cliente tampoco ve correos');
+    // sesión de un usuario borrado
+    T::same(200, Router::handle(req('GET', '/auth/me', null, ['Authorization' => 'Bearer ' . $ana]))->status, 'sesión válida');
+    Router::handle(req('DELETE', '/users/ana%40acme.es', null, ['Authorization' => 'Bearer ' . $jefa]));
+    T::same(401, Router::handle(req('GET', '/auth/me', null, ['Authorization' => 'Bearer ' . $ana]))->status, 'borrado → sin sesión');
+    T::same(200, Router::handle(req('GET', '/users', null, master()))->status, 'el token maestro sigue funcionando');
+    // contacto con HTML malicioso
+    Router::handle(req('POST', '/contact', ['name' => '<b>Ana</b>', 'email' => 'a<img/src=x/onerror=1>@x.es', 'message' => "hola <script>alert(1)</script>\n& adiós", 'privacy' => true]));
+    $mail = outbox()[0] ?? null;
+    T::true($mail && !preg_match('/<(img|script)\b/i', $mail['html']) && strpos($mail['html'], '&lt;b&gt;Ana&lt;/b&gt;') !== false, 'sin etiquetas del visitante en el HTML del correo');
+}
+
+/** Cliente HTTP real contra un servidor local: sigue redirecciones de los GET a mano, no manda la credencial a otro servidor y corta los bucles. */
+function test_http_client_follows_redirects_without_leaking_credentials()
+{
+    if (!function_exists('curl_init') || !function_exists('proc_open')) { fwrite(STDERR, "  · http: sin cURL o proc_open, se omite\n"); return; }
+    $dir = sys_get_temp_dir() . '/tv-http-' . bin2hex(random_bytes(4));
+    mkdir($dir);
+    file_put_contents("$dir/r.php", '<?php
+$p = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+if ($p === "/a") { header("Location: /b", true, 302); return true; }
+if ($p === "/x") { header("Location: http://localhost:" . $_SERVER["SERVER_PORT"] . "/b", true, 302); return true; }
+if ($p === "/loop") { header("Location: /loop", true, 302); return true; }
+if ($p === "/b") { header("Content-Type: text/plain"); echo isset($_SERVER["HTTP_AUTHORIZATION"]) ? "con-credencial" : "sin-credencial"; return true; }
+http_response_code(404);');
+    $s = stream_socket_server('tcp://127.0.0.1:0');
+    $port = (int) substr(stream_socket_get_name($s, false), strrpos(stream_socket_get_name($s, false), ':') + 1);
+    fclose($s);
+    putenv('NO_PROXY=127.0.0.1,localhost'); putenv('no_proxy=127.0.0.1,localhost');
+    $proc = proc_open([PHP_BINARY, '-S', "127.0.0.1:$port", "$dir/r.php"], [1 => ['file', '/dev/null', 'w'], 2 => ['file', '/dev/null', 'w']], $pipes, $dir);
+    try {
+        for ($i = 0; $i < 50; $i++) { $c = @fsockopen('127.0.0.1', $port, $en, $es, 0.2); if ($c) { fclose($c); break; } usleep(100000); }
+        $auth = ['Authorization: Bearer secreto'];
+        T::same([200, 'con-credencial'], Http::request('GET', "http://127.0.0.1:$port/a", $auth, null, 5), 'mismo servidor: sigue la redirección y conserva la credencial');
+        T::same([200, 'sin-credencial'], Http::request('GET', "http://127.0.0.1:$port/x", $auth, null, 5), 'otro servidor: sigue la redirección pero sin la credencial');
+        T::same([0, ''], Http::request('GET', "http://127.0.0.1:$port/loop", [], null, 5), 'un bucle de redirecciones se corta');
+        T::same(302, Http::request('POST', "http://127.0.0.1:$port/a", [], '{}', 5)[0], 'un POST no se redirige');
+    } finally {
+        proc_terminate($proc);
+        proc_close($proc);
+        @unlink("$dir/r.php");
+        @rmdir($dir);
+    }
 }

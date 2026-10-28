@@ -6,11 +6,13 @@
 //   robotsTxt({ base, staging })                                                    → robots.txt (en pruebas: Disallow total)
 // Todo va envuelto en <IfModule> para que un módulo ausente nunca provoque un error 500.
 
+/** Escapa un texto para usarlo literal dentro de una expresión regular de Apache. */
 const rx = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /** ruta base del sitio: «https://x.com/prueba/» → «/prueba» («» si está en la raíz del dominio) */
 export const basePathOf = (base) => new URL(base).pathname.replace(/\/+$/, '');
 
+/** Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api. */
 export function htaccess({ base, staging = false, aliases = new Map(), pdfRedirects = [], apiOrigin = '', phpApi = false, langs = ['en', 'fr', 'de'] }) {
   const u = new URL(base), bp = basePathOf(base), https = u.protocol === 'https:';
   const host = u.hostname, www = host.startsWith('www.'), apex = host.split('.').length === 2;
@@ -46,6 +48,8 @@ export function htaccess({ base, staging = false, aliases = new Map(), pdfRedire
     ...(https ? [`  Header always set Strict-Transport-Security "max-age=${staging ? 300 : 31536000}"`] : []),
     ...(staging ? ['  Header always set X-Robots-Tag "noindex, nofollow, noarchive"'] : []),
     '  <FilesMatch "\\.(html)$">', '    Header set Cache-Control "no-cache"', '  </FilesMatch>', '</IfModule>', '');
+  if (staging) L.push('# ENTORNO DE PRUEBAS · para cerrarlo a tu IP (no uses «Privacidad de directorios» de cPanel: la contraseña choca con la cabecera Authorization del panel), descomenta y pon tu IP:',
+    '# <IfModule mod_authz_core.c>', '#   Require ip 203.0.113.7', '# </IfModule>', '');
   L.push('# nada de ficheros ocultos ni de trabajo', '<IfModule mod_authz_core.c>', '  <FilesMatch "^\\.(?!well-known)|\\.(md|map|sh|py|log)$">', '    Require all denied', '  </FilesMatch>', '</IfModule>', '');
   void langs;
   return L.join('\n');
@@ -54,6 +58,7 @@ export function htaccess({ base, staging = false, aliases = new Map(), pdfRedire
 /** .htaccess de /en, /fr, /de: solo cambia la página 404 para que se muestre en el idioma de la sección */
 export const langHtaccess = (lang, bp) => `# GENERADO por site/build.mjs\nErrorDocument 404 ${bp}/${lang}/404.html\n`;
 
+/** Genera robots.txt: en pruebas prohíbe todo; en producción permite el sitio, cierra /admin/ y /api/ y enlaza el sitemap. */
 export const robotsTxt = ({ base, staging }) => staging
   ? `# ENTORNO DE PRUEBAS: no indexar\nUser-agent: *\nDisallow: /\n`
   : `User-agent: *\nAllow: /\nDisallow: /admin/\nDisallow: /api/\n\nSitemap: ${base.replace(/\/$/, '')}/sitemap.xml\n`;

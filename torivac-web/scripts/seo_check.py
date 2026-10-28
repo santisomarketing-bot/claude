@@ -27,6 +27,7 @@ class Page(HTMLParser):
     """Extrae lo que importa de un HTML sin dependencias."""
 
     def __init__(self):
+        """Inicializa el estado del analizador: idioma, título, metas, enlaces, encabezados, imágenes, anclas y bloques JSON-LD."""
         super().__init__(convert_charrefs=True)
         self.lang = None
         self.title = ""
@@ -45,6 +46,7 @@ class Page(HTMLParser):
         self._skip = 0
 
     def handle_starttag(self, tag, attrs):
+        """Procesa una etiqueta de apertura: registra lang, metas, link, encabezados, imágenes, anclas y bloques JSON-LD."""
         a = dict(attrs)
         if tag == "html":
             self.lang = a.get("lang")
@@ -75,6 +77,7 @@ class Page(HTMLParser):
             self._skip += 1
 
     def handle_endtag(self, tag):
+        """Procesa una etiqueta de cierre: cierra el título, el encabezado (con su texto), el bloque JSON-LD o el script/style ignorado."""
         if tag == "title":
             self._in_title = False
         elif re.fullmatch(r"h[1-6]", tag) and self._h:
@@ -90,6 +93,7 @@ class Page(HTMLParser):
             self._skip -= 1
 
     def handle_data(self, data):
+        """Acumula el texto en el título, en el bloque JSON-LD o en el encabezado abiertos (sin el texto de script/style)."""
         if self._in_title:
             self.title += data
         if self._in_ld:
@@ -99,16 +103,19 @@ class Page(HTMLParser):
 
 
 def route_of(root, f):
+    """Ruta lógica (por ejemplo /en/product/x/) de un index.html generado, relativa a la carpeta de salida `root`."""
     rel = "/" + str(f.relative_to(root)).replace("\\", "/")
     return rel[: -len("index.html")] if rel.endswith("/index.html") else rel
 
 
 def lang_of(route):
+    """Idioma de una ruta por su prefijo (en, fr, de); es si no lleva ninguno."""
     m = re.match(r"^/(en|fr|de)(/|$)", route)
     return m.group(1) if m else "es"
 
 
 def main():
+    """Audita la carpeta de un build estático (páginas, enlaces, sitemap, robots, llms) e imprime el informe; sale con 1 si hay errores."""
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     opts = dict(a[2:].split("=", 1) if "=" in a else (a[2:], True) for a in sys.argv[1:] if a.startswith("--"))
     root = Path(args[0]).resolve()
@@ -117,9 +124,11 @@ def main():
     pages, errors, warns = {}, defaultdict(list), defaultdict(list)
 
     def err(code, route, msg=""):
+        """Registra un error de la auditoría con el código `code` para la ruta `route`."""
         errors[code].append(f"{route} {msg}".strip())
 
     def warn(code, route, msg=""):
+        """Registra un aviso (no hace fallar la auditoría) con el código `code` para la ruta `route`."""
         warns[code].append(f"{route} {msg}".strip())
 
     for f in files:
@@ -133,10 +142,12 @@ def main():
             continue
         pages[route] = p
     index = {r: p for r, p in pages.items() if p}
-    if not base:
-        m = re.search(r"https?://[^\"']+", next(iter(index.values())).links and (next((l[2] for l in next(iter(index.values())).links if l[0] == "canonical"), "") or "") or "")
-        base = (m.group(0).rstrip("/") if m else "")
-        base = re.sub(r"(/[^/]*)+$", "", base) if False else (urlparse(base).scheme + "://" + urlparse(base).netloc if base else "")
+    if not index:
+        sys.exit(f"✗ no hay páginas HTML indexables en {root}")
+    if not base:                                              # sin --base se deduce del canonical de la primera página
+        canon = next((l[2] for l in next(iter(index.values())).links if l[0] == "canonical"), "")
+        m = re.search(r"https?://[^\"']+", canon or "")
+        base = urlparse(m.group(0)).scheme + "://" + urlparse(m.group(0)).netloc if m else ""
 
     titles = defaultdict(list)
     for route, p in index.items():
@@ -239,7 +250,7 @@ def main():
             u = urlparse(href)
             path = unquote(u.path)
             tgt = (Path(route).parent / path) if not path.startswith("/") else Path(path)
-            tgt = Path(*[x for x in str(tgt).split("/") if x not in ("", ".")]) if False else Path(__import__("os").path.normpath(str(tgt)))
+            tgt = Path(__import__("os").path.normpath(str(tgt)))
             rel = str(tgt).lstrip("/")
             fp = root / rel
             ok = fp.is_file() or (fp / "index.html").is_file()

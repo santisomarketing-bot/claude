@@ -21,6 +21,7 @@ MAX_GROUP = 10
 
 
 def load(p, default=None):
+    """JSON del archivo `p`, o `default` si no existe o no es válido."""
     try:
         return json.loads(Path(p).read_text())
     except Exception:
@@ -28,6 +29,7 @@ def load(p, default=None):
 
 
 def norm(u):
+    """URL sin ancla (#...) ni barra final, para comparar rutas."""
     return (u or "").split("#")[0].rstrip("/")
 
 
@@ -53,6 +55,7 @@ cat_es = {c["id"]: c for c in cats["es"]}
 
 
 def chain(cid):
+    """Cadena de categorías ES desde la raíz hasta la categoría `cid` (lista de registros, de padre a hijo)."""
     out, seen = [], set()
     while cid and cid in cat_es and cid not in seen:
         seen.add(cid)

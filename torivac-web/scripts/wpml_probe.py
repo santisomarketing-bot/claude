@@ -43,6 +43,7 @@ def probe(url):
 
 
 def classify(lang, code, dest):
+    """Clasifica un sondeo WPML: same_slug (200), product/category (redirige a la traducción), no_translation o http_<código>."""
     if code == 200:
         return "same_slug"
     if code in (301, 302, 307, 308):
@@ -54,6 +55,7 @@ def classify(lang, code, dest):
 
 
 def main():
+    """Sondea la URL de cada categoría en en/fr/de, guarda wpml-probe.json y, con --compare, lista las discrepancias."""
     cats = json.loads((CAT / "categories.json").read_text())
     jobs = [(c["id"], l, f"{BASE}/{l}{c['path']['es']}") for c in cats for l in LANGS]
     with ThreadPoolExecutor(max_workers=4) as ex:

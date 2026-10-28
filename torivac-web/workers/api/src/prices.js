@@ -6,8 +6,16 @@ import { round2 } from './util.js';
 import { readSheet } from '../../../shared/price-sheet.mjs';
 export const KEY_CURRENT = 'prices:current', KEY_META = 'prices:meta';
 
+/** Precios vigentes guardados en KV; si todavía no hay, una hoja vacía (mode 'none'). */
 export async function loadPrices(env) { const raw = await env.KV.get(KEY_CURRENT); return raw ? JSON.parse(raw) : { updated_at: null, source: 'none', currency: 'EUR', mode: 'none', items: {} }; }
 
+/** Origen sin datos personales ni identificadores: «upload:ana@torivac.com» → «upload», «sheet:ID» → «sheet». */
+export const coarse = (s) => String(s ?? '').split(':')[0];
+/** Lo que ve cualquier visitante de GET /api/prices: igual que el original pero sin el correo de quien cargó la hoja ni el id del archivo de Drive. */
+export function publicView(prices, meta) {
+  return { prices: { ...prices, source: coarse(prices.source) }, meta: meta ? { ...meta, reason: coarse(meta.reason), source: coarse(meta.source) } : meta };
+}
+/** Precio unitario de ref para qty unidades (último tramo por cantidad alcanzado); null si no tiene precio. */
 export function unitPrice(prices, ref, qty) {
   const p = prices.items && prices.items[ref]; if (!p || typeof p.p !== 'number') return null;
   let u = p.p; for (const [min, price] of p.t || []) if (qty >= min) u = price; return u;
@@ -34,6 +42,7 @@ export function withSheetItems(catalog, prices) {
   for (const [ref, v] of Object.entries((prices && prices.items) || {})) if (!out[ref] && v.pid) out[ref] = { n: v.n || ref, pid: v.pid };
   return out;
 }
+/** Compara dos precios: { changed, added, removed } con las referencias afectadas y same con el número de las que no cambian. */
 export function diffPrices(a, b) {
   const d = { changed: [], added: [], removed: [], same: 0 };
   for (const [k, y] of Object.entries(b.items)) { const x = a.items[k]; if (!x) d.added.push(k); else if (x.p !== y.p || JSON.stringify(x.t || []) !== JSON.stringify(y.t || [])) d.changed.push(k); else d.same++; }

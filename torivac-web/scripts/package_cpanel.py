@@ -66,6 +66,7 @@ def shown(p: Path) -> str:
 
 
 def files(www: Path):
+    """Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess)."""
     return sorted(p for p in www.rglob("*") if p.is_file())
 
 
@@ -164,6 +165,7 @@ def make_zip(www: Path, dest: Path) -> str:
 
 
 def main():
+    """Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip."""
     ap = argparse.ArgumentParser(description="Paquete cPanel de Torivac")
     ap.add_argument("--base", required=True, help="URL pública con https, sin barra final salvo subcarpeta (https://pruebas.dominio.com)")
     ap.add_argument("--staging", action="store_true", help="entorno de pruebas: noindex y robots.txt cerrado")

@@ -21,13 +21,16 @@ vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data/catalog.js'), 'utf8
 const items = sb.TV.items;
 
 const browser = await chromium.launch();
+/** Abre un contexto de navegador de w×h con el idioma fijado a mano (sin autodetección) y devuelve { ctx, page }. */
 const mk = async (w, h, lang = 'es') => {
   const ctx = await browser.newContext({ viewport: { width: w, height: h }, locale: lang === 'es' ? 'es-ES' : lang, acceptDownloads: true, deviceScaleFactor: w < 600 ? 2 : 1 });
   await ctx.addInitScript(([l]) => { try { localStorage.setItem('tv_lang', l); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang_auto_done', '1'); } catch (e) { /* ignorar */ } }, [lang]);
   return { ctx, page: await ctx.newPage() };
 };
 let n = 0;
+/** Guarda una captura PNG numerada (NN-nombre.png) en la carpeta de salida y la muestra por consola; opts va a page.screenshot. */
 const shot = async (page, name, opts = {}) => { n++; const f = path.join(OUT, `${String(n).padStart(2, '0')}-${name}.png`); await page.screenshot({ path: f, ...opts }); console.log('  ' + path.basename(f)); };
+/** Espera a que la página termine de cargar y deja ms milisegundos más para que se asienten los scripts. */
 const settle = (page, ms = 500) => page.waitForLoadState('load').then(() => page.waitForTimeout(ms));
 
 // ───────────────────────────── escritorio, español

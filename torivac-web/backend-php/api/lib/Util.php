@@ -31,6 +31,7 @@ final class Util
     /** comparación en tiempo constante */
     public static function eq($a, $b): bool { return hash_equals((string) $a, (string) $b); }
 
+    /** Dice si un texto empieza por otro. */
     public static function startsWith(string $h, string $n): bool { return $n === '' || strncmp($h, $n, strlen($n)) === 0; }
 
     /** milisegundos desde 1970 */

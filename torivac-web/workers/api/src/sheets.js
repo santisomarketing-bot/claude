@@ -10,6 +10,7 @@ import { KEY_CURRENT, KEY_META, loadPrices, readPrices, diffPrices } from './pri
 import { readXlsx, pickSheet } from '../../../shared/xlsx.mjs';
 
 const te = new TextEncoder();
+/** Texto CSV → filas de celdas: separador «;» o «,» según la primera línea, comillas dobles; omite las filas vacías. */
 export function parseCsv(text) {
   text = String(text).replace(/^﻿/, '');
   const first = text.split('\n')[0]; const delim = (first.match(/;/g) || []).length >= (first.match(/,/g) || []).length ? ';' : ',';
@@ -24,6 +25,7 @@ export function parseCsv(text) {
   row.push(cell.trim()); if (row.some((c) => c !== '')) rows.push(row);
   return rows;
 }
+/** Clave privada PEM (PKCS8) → bytes DER, sin las líneas de cabecera ni espacios. */
 const pemToDer = (pem) => Uint8Array.from(atob(pem.replace(/-----[^-]+-----|\s/g, '')), (c) => c.charCodeAt(0));
 /** token de acceso OAuth2 de una cuenta de servicio (JWT RS256 firmado con WebCrypto) */
 export async function getAccessToken(sa, fetchImpl = fetch, now = Date.now()) {
@@ -43,6 +45,7 @@ async function xlsxRows(bytes, name, hint) {
   const s = pickSheet(sheets, name);
   return { rows: s.rows, sheet: s.name };
 }
+/** Lee la hoja de precios de la primera fuente configurada (cuenta de servicio, XLSX o CSV) → { rows, source }; sin fuente, Error. */
 export async function readSheetRows(env, fetchImpl = fetch) {
   const sheetName = env.PRICE_SHEET_NAME || '';
   if (env.GOOGLE_SERVICE_ACCOUNT && env.PRICE_SHEET_ID) {
@@ -69,7 +72,6 @@ export async function readSheetRows(env, fetchImpl = fetch) {
   }
   throw new Error('Sin origen de precios: define GOOGLE_SERVICE_ACCOUNT + PRICE_SHEET_ID, PRICE_XLSX_URL o PRICE_CSV_URL');
 }
-/** Lee la hoja, valida, guarda en KV (con histórico de 10 versiones) y devuelve estadísticas. */
 /** Guarda unos precios nuevos: copia el anterior al histórico (90 días), escribe los vigentes y la meta. Lo usan la sincronización y los cambios por IA. */
 export async function savePrices(env, next, prev, { now = new Date(), reason = 'manual', source = 'sheet' } = {}) {
   const diff = diffPrices(prev, next);

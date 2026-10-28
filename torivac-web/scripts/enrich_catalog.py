@@ -87,6 +87,7 @@ def slug(label):
 
 # ───── [IDS] identificador estable de propuesta: no cambia aunque aparezcan o desaparezcan otras
 def pid_of(identity, taken):
+    """Id estable `PR-nnnnn` de una propuesta, derivado del hash de su identidad; si ya está en `taken`, toma otro libre."""
     n = int(hashlib.sha1(identity.encode()).hexdigest()[:8], 16) % 90000 + 10000
     while n in taken:
         n = n % 90000 + 10000 + 1
@@ -95,6 +96,7 @@ def pid_of(identity, taken):
 
 
 def main():
+    """Parte de products.base.json y añade variantes, tensiones y potencia (PDF verificados); escribe products, voltage-tags y proposals."""
     base = CAT / "products.base.json"
     if not base.exists():
         base.write_text((CAT / "products.json").read_text())      # primera vez: la salida de build_catalog es la base
@@ -113,6 +115,7 @@ def main():
     extra_prop = []
 
     def prop(type_, pid, title, web, pdf, rec, sev="media", field=None, conf="alta", ref=None, evidence=None):
+        """Añade a `extra_prop` una propuesta para el panel (tipo, producto, título, valor web/PDF, recomendación, severidad, evidencia)."""
         extra_prop.append({"type": type_, "product_id": pid, "product_name": (byid.get(pid) or {}).get("name", {}).get("es") if pid else None, "field": field, "title": title, "web_value": web, "pdf_value": pdf, "severity": sev,
                            "recommendation": rec, "confidence": conf, **({"ref": ref} if ref else {}), **({"evidence": evidence} if evidence else {})})
 
@@ -212,6 +215,7 @@ def main():
         ev, tags = [], []
 
         def add(tag, source, why):
+            """Anota la etiqueta de tensión `tag` en el producto actual (sin repetirla) con su evidencia: origen y motivo."""
             if tag not in tags:
                 tags.append(tag)
             ev.append({"tag": tag, "source": source, "why": why})

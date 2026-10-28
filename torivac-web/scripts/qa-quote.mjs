@@ -24,7 +24,9 @@ sandbox.window = sandbox;
 vm.createContext(sandbox);
 for (const f of ['catalog.js', 'prices.js']) vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data', f), 'utf8'), sandbox);
 const { items, prices } = sandbox.TV;
+/** Redondea un importe a 2 decimales (cálculo propio de la prueba, independiente del código de la web). */
 const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
+/** Precio unitario esperado de ref para qty unidades (último tramo alcanzado, o el base); null si no tiene precio. */
 function unitPrice(ref, qty) {
   const p = prices.items[ref]; if (!p) return null;
   let u = p.p; for (const [q, x] of p.t || []) if (qty >= q) u = x; return u;
@@ -56,7 +58,9 @@ const served = useFile ? null : await serve(DIST);
 const server = served && served.server, BASE = served && served.base;
 const browser = await chromium.launch();
 let fails = 0;
+/** Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo. */
 const ok = (c, m) => { if (!c) { fails++; console.error('  ✗ ' + m); } else console.log('  ✓ ' + m); };
+/** Texto con los espacios duros (U+00A0, U+202F) pasados a espacio normal y los repetidos colapsados, para comparar importes. */
 const norm = (s) => String(s).replace(/[  ]/g, ' ').replace(/\s+/g, ' ');
 
 for (const lang of ['es', 'en', 'fr', 'de']) {
@@ -66,6 +70,7 @@ for (const lang of ['es', 'en', 'fr', 'de']) {
   const errs = [];
   page.on('pageerror', (e) => errs.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error' && !/favicon/.test(m.text())) errs.push(m.text()); });
+  /** URL de la ruta p: por http si hay servidor de pruebas (BASE) o file:// sobre dist/ con --file. */
   const file = (p) => BASE ? BASE + (p.startsWith('/') ? p : '/' + p) : 'file://' + path.join(DIST, p.replace(/^\//, ''), p.endsWith('/') ? 'index.html' : '');
   // un idioma elegido a mano no se pisa: así la prueba no depende de la detección automática (cada idioma usa un contexto nuevo = almacenamiento vacío)
   await page.addInitScript(([l]) => { try { localStorage.setItem('tv_lang', l); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang_auto_done', '1'); } catch (e) { /* ignorar */ } }, [lang]);

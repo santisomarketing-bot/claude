@@ -7,6 +7,7 @@ const LOCALE = { es: 'es_ES', en: 'en_GB', fr: 'fr_FR', de: 'de_DE' };
 const LANG_NAME = { es: 'Spanish', en: 'English', fr: 'French', de: 'German' };
 const PAGE_TYPE = { contact: 'ContactPage', blog: 'CollectionPage', shop: 'CollectionPage', home: 'WebPage', page: 'WebPage', post: 'WebPage', product: 'WebPage', quote: 'WebPage' };
 
+/** Código de locale de Open Graph (es_ES, en_GB, fr_FR, de_DE) del idioma; es_ES si no se reconoce. */
 export const ogLocale = (lang) => LOCALE[lang] || 'es_ES';
 
 /** Recorta un texto a `max` caracteres sin partir palabras. */

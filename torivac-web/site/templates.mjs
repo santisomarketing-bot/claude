@@ -7,6 +7,7 @@ import { t, LANGS, countLabel, refLabel } from './lib/i18n.mjs';
 import { pageGraph, ldScript, ogLocale, clip } from './lib/seo.mjs';
 
 const NAMES = { es: 'Español', en: 'English', fr: 'Français', de: 'Deutsch' };
+/** Valor de un campo traducible en el idioma `lang` (español si falta; '' si no hay objeto). */
 const pick = (obj, lang) => (obj && (obj[lang] ?? obj.es)) ?? '';
 
 
@@ -57,6 +58,7 @@ export function headingOrder(html) {
 const META_FALLBACK = { es: 'Torivac, fabricante europeo de transformadores toroidales, variadores y estabilizadores de tensión, resistencias y más. Consulta el catálogo y pide presupuesto.', en: 'Torivac, European manufacturer of toroidal transformers, voltage variators and stabilizers, resistors and more. Browse the catalogue and request a quote.', fr: 'Torivac, fabricant européen de transformateurs toroïdaux, régulateurs et stabilisateurs de tension, résistances et plus. Consultez le catalogue et demandez un devis.', de: 'Torivac, europäischer Hersteller von Ringkerntransformatoren, Spannungsreglern und -stabilisatoren, Widerständen und mehr. Katalog ansehen und Angebot anfordern.' };
 /** Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, una frase genérica de marca. */
 export function metaDescription(desc, bodyHtml, lang) {
+  // Una descripción sirve si tiene al menos 50 caracteres y no es solo signos o cifras.
   const ok = (d) => d && d.replace(/\s+/g, ' ').trim().length >= 50 && !/^[\W\d_]*$/.test(d);
   if (ok(desc)) return clip(desc, 158);
   for (const m of String(bodyHtml || '').matchAll(/<p[^>]*>([\s\S]*?)<\/p>/g)) {
@@ -67,6 +69,7 @@ export function metaDescription(desc, bodyHtml, lang) {
 }
 
 // ───────────────────────────────────────────────────────────── [LAYOUT] envoltorio común
+/** Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap. */
 export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [] }) {
   const { lang, site } = ctx;
   description = metaDescription(description, body, lang);
@@ -154,9 +157,12 @@ ${scripts.map((s) => `<script src="${ctx.asset(s)}"></script>`).join('\n')}
 }
 
 // ───────────────────────────────────────────────────────────── [SHARED] migas, etiquetas de tensión, tarjeta de producto
+/** Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page. */
 export const crumbs = (ctx, items) => `<nav aria-label="breadcrumb"><ol class="crumbs">${items.map((i, k) => `<li>${i.href && k < items.length - 1 ? `<a href="${attr(i.href)}">${esc(i.label)}</a>` : `<span${k === items.length - 1 ? ' aria-current="page"' : ''}>${esc(i.label)}</span>`}</li>`).join('')}</ol></nav>`;
 
+/** Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español. */
 const vtext = (x, lang) => (x && typeof x === 'object' ? x[lang] || x.es : x) || '';
+/** Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida. */
 export function vtags(site, ids = [], limit = 6, lang = 'es') {
   const out = ids.slice(0, limit).map((id) => {
     const v = site.vtags.get(id);
@@ -167,6 +173,7 @@ export function vtags(site, ids = [], limit = 6, lang = 'es') {
   return out ? `<div class="vtag-row">${out}</div>` : '';
 }
 
+/** Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar. */
 export function productCard(ctx, p) {
   const lang = ctx.lang;
   const name = pick(p.name, lang);
@@ -183,8 +190,11 @@ export function productCard(ctx, p) {
  *  La rama de la categoría activa queda abierta (data-open). */
 export function catTree(ctx, activeId = null) {
   const lang = ctx.lang;
+  // Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
   const holds = (c) => c.id === activeId || c.children.some(holds);
+  // Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
   const link = (c) => `<a href="${attr(ctx.href(c.pathFor[lang]))}"${c.id === activeId ? ' aria-current="page"' : ''}><span>${esc(pick(c.name, lang))}</span><span class="n">${c.total}</span></a>`;
+  // Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
   const walk = (nodes) => `<ul>${nodes.map((c) => c.children.length
     ? `<li class="has-kids"${holds(c) ? ' data-open' : ''}>${link(c)}${walk(c.children)}</li>`
     : `<li>${link(c)}</li>`).join('')}</ul>`;
@@ -209,11 +219,15 @@ export function categoryCards(ctx, list = null, opts = {}) {
 }
 
 // ───────────────────────────────────────────────────────────── [HOME]
+/** Portada: devuelve { hero, body } con el hero, cinco secciones (fotos, servicios, catálogo) y el formulario de contacto. */
 export function homeBody(ctx, page) {
   const { lang, site } = ctx;
   const S = page.sections;
+  // Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
   const text = (sec) => sec.blocks.filter((b) => b.t === 'h' || b.t === 'p');
+  // Bloques de imagen de una sección.
   const imgs = (sec) => sec.blocks.filter((b) => b.t === 'img');
+  // Primer bloque de botón de una sección (undefined si no tiene).
   const btn = (sec) => sec.blocks.find((b) => b.t === 'btn');
   const heroSec = S[0];
   const h1 = heroSec.blocks.find((b) => b.t === 'h');
@@ -226,12 +240,15 @@ export function homeBody(ctx, page) {
   ${waveSvg()}
 </section>`;
   const s1 = S[1], s2 = S[2], s3 = S[3], s4 = S[4], s5 = S[5];
+  // HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
   const eyebrowAndHead = (sec) => {
     const hs = sec.blocks.filter((b) => b.t === 'h');
     const eb = hs.find((h) => h.l >= 4), main = hs.find((h) => h.l <= 3);
     return `${eb ? `<p class="eyebrow">${esc(eb.x)}</p>` : ''}${main ? `<h2>${esc(main.x)}</h2>` : ''}`;
   };
+  // HTML de los párrafos de una sección, con los enlaces internos reescritos.
   const paras = (sec) => sec.blocks.filter((b) => b.t === 'p').map((p) => `<p>${inlineHtml(ctx, p.h)}</p>`).join('');
+  // Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
   const bt = (sec, cls = '') => { const b = btn(sec); return b ? `<a class="btn ${cls}" href="${attr(mapLink(ctx, b.href))}">${esc(b.x)}</a>` : ''; };
   const im1 = imgs(s1)[0];
   const sec1 = `<section class="sec"><div class="container split">
@@ -263,6 +280,7 @@ export const waveSvg = () => `<svg class="wave" viewBox="0 0 1440 90" preserveAs
 </svg>`;
 
 // ───────────────────────────────────────────────────────────── [PAGES] páginas genéricas (empresa, proyectos, legales)
+/** Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. */
 export function sectionsHtml(ctx, page) {
   return page.sections.map((s, i) => {
     if (s.form) return `<section class="sec alt"><div class="container split" style="align-items:start"><div class="prose">${blocksHtml(ctx, s.blocks.filter((b) => !(b.t === 'p' && /reCAPTCHA/i.test(b.h))), { demote: 0 })}</div>${contactForm(ctx, 'section')}</div></section>`;
@@ -283,6 +301,7 @@ export function sectionsHtml(ctx, page) {
   }).join('\n');
 }
 
+/** Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero. */
 export function genericPage(ctx, page) {
   const { lang } = ctx;
   const first = page.sections.find((s) => s.blocks.length);
@@ -304,11 +323,13 @@ export function genericPage(ctx, page) {
 }
 
 // ───────────────────────────────────────────────────────────── [BLOG]
+/** Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada. */
 export function blogIndexBody(ctx, posts) {
   const { lang } = ctx;
   const cards = posts.map((p) => `<a class="post-card" href="${attr(ctx.href(p.path))}"><div class="im">${p.featured ? `<img src="${attr(ctx.thumb(p.featured))}" alt="" loading="lazy">` : ''}</div><div class="tx"><time datetime="${attr(p.date || '')}">${fmtDate(p.date, lang)}</time><h3>${esc(p.title)}</h3><p class="muted">${esc((p.excerpt || '').slice(0, 150))}${(p.excerpt || '').length > 150 ? '…' : ''}</p></div></a>`).join('');
   return `<section class="sec"><div class="container"><div class="posts">${cards}</div></div></section>`;
 }
+/** Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. */
 export function postBody(ctx, post) {
   const { lang } = ctx;
   const body = post.sections.flatMap((s) => s.blocks);
@@ -319,6 +340,7 @@ export function postBody(ctx, post) {
 }
 
 // ───────────────────────────────────────────────────────────── [SHOP] listado / categoría
+/** Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas. */
 export function shopBody(ctx, { products, category = null, intro = [] }) {
   const { lang, site } = ctx;
   const vts = [...new Set(products.flatMap((p) => p.voltage_tags || []))].filter((id) => site.vtags.has(id) && site.vtags.get(id).filter !== false);
@@ -347,6 +369,7 @@ export function shopBody(ctx, { products, category = null, intro = [] }) {
 }
 
 // ───────────────────────────────────────────────────────────── [PRODUCT] ficha
+/** Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados. */
 export function productBody(ctx, p, related) {
   const { lang, site } = ctx;
   const name = pick(p.name, lang);
@@ -396,6 +419,7 @@ export function productBody(ctx, p, related) {
 }
 
 // ───────────────────────────────────────────────────────────── [QUOTE] página del presupuesto
+/** Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF. */
 export function quoteBody(ctx) {
   const { lang, site } = ctx;
   return `<section class="sec"><div class="container">
@@ -423,6 +447,7 @@ export function quoteBody(ctx) {
 }
 
 // ───────────────────────────────────────────────────────────── [CONTACT] formulario
+/** Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids. */
 export function contactForm(ctx, where = 'page') {
   const { lang, site } = ctx;
   return `<form class="form" data-contact-form novalidate aria-label="${attr(t('contact_us', lang))}">

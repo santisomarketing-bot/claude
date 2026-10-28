@@ -53,3 +53,17 @@ Bloques de descripción: `{t:"p"|"h2"|"h3"|"ul"|"table"|"image"|"pdf", …}` (na
 - Sin emails reales: "Enviar pedido" crea el borrador (`mailto:` + descarga de `.eml`/JSON) y registra el pedido en localStorage.
 - El login del admin/cliente del demo es **solo de demostración** (sin backend): se avisa con un banner. El login real (PBKDF2 + sesión HMAC en un Worker) va en la Sesión 7 como en `whynot-sites/workers/admin`.
 - Precios `price_mode: "demo"`: banner visible "Precios de demostración".
+
+## Backends (producción)
+
+La web estática habla con **un backend de contrato único** (`/api/health|prices|order|contact|auth/*|orders|prices/refresh|prices/upload|prices/ai|prices/ai/apply|proposals/state|users`, más `/api/diag` y `/api/cron` en PHP):
+
+| | Worker de Cloudflare (`workers/api`) | API PHP para cPanel (`backend-php/api`) |
+|---|---|---|
+| Almacén | KV (`user:`, `order:`, `prices:…`) | ficheros JSON en `storage_dir` con la misma estructura de claves |
+| Correo / IA / Drive | Resend, Anthropic, Google (fetch) | Resend, Anthropic, Google (cURL) |
+| Cron de precios | trigger `0 3 * * *` | `php api/cron.php` (cPanel) o `GET /api/cron?token=` |
+| Hojas de precios | `shared/price-sheet.mjs`, `shared/xlsx.mjs` | `lib/PriceSheet.php`, `lib/Xlsx.php` (ports con las mismas pruebas) |
+| Pruebas de navegador | `node scripts/qa-*.mjs` | `node scripts/qa-*.mjs --php` (`scripts/lib/backends.mjs`) |
+
+La compilación con API (**LIVE**: `--php-api` o `TORIVAC_API`) no lleva precios (los da el servidor) ni más de un destinatario en el código público. El paquete de cPanel se genera y verifica con `scripts/package_cpanel.py`.

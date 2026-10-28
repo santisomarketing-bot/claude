@@ -12,6 +12,7 @@
 
   // ───────────────────────────────────────── [WAVE] y = 120 − A·sin(2π·ciclos·x/640 + fase); amplitud máxima 100 u. (de 240 de alto)
   var W = 640, MID = 120, MAX = 100, CYCLES = 3, STEP = 8;
+  /** Trazado SVG (atributo d) de una senoide de amplitud `amp` y fase `phase`: 3 ciclos a lo ancho de 640 unidades. */
   function path(amp, phase) {
     var d = '';
     for (var x = 0; x <= W; x += STEP) {
@@ -24,6 +25,7 @@
   // ───────────────────────────────────────── [UI] mando (0–230 V) → amplitud y lectura
   var range = root.querySelector('[data-wl-range]'), outPath = root.querySelector('[data-wl-out-path]'), inPath = root.querySelector('[data-wl-in]'), read = root.querySelector('[data-wl-readout]');
   var phase = 0, volts = Number(range.value), shown = volts, reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /** Repinta las dos ondas: la de entrada con amplitud fija y la de salida escalada por la tensión mostrada (0–230 V). */
   function draw() {
     inPath.setAttribute('d', path(MAX, phase));
     outPath.setAttribute('d', path((MAX * shown) / 230, phase));
@@ -38,6 +40,7 @@
 
   // ───────────────────────────────────────── [LOOP] la fase avanza y la amplitud «persigue» al mando (sensación de regulación continua); se pausa fuera de pantalla
   var raf = 0, visible = true;
+  /** Un fotograma de la animación: avanza la fase, acerca la tensión mostrada al mando, repinta y pide otro si la sección es visible. */
   function tick() {
     phase += 0.045;
     shown += (volts - shown) * 0.18;

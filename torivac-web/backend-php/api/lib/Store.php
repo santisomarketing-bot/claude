@@ -26,8 +26,10 @@ final class Store
         if (!is_file($ix)) @file_put_contents($ix, '');
     }
 
+    /** Carpeta de datos en uso. */
     public static function root(): string { return self::$root; }
 
+    /** Fichero JSON que guarda una clave (la clave se codifica para que sea un nombre de fichero válido). */
     private static function file(string $key): string { return self::$root . '/kv/' . rawurlencode($key) . '.json'; }
 
     /** valor guardado (array/escalar) o null si no existe o caducó */
@@ -43,6 +45,7 @@ final class Store
         return $o['v'];
     }
 
+    /** Guarda un valor de forma atómica (fichero temporal + rename) con caducidad opcional en segundos. */
     public static function put(string $key, $value, ?int $ttl = null): void
     {
         $o = ['v' => $value];
@@ -54,6 +57,7 @@ final class Store
         if (!@rename($tmp, $f)) { @unlink($tmp); throw new \RuntimeException('No puedo guardar ' . $key); }
     }
 
+    /** Borra una clave. */
     public static function delete(string $key): void { @unlink(self::file($key)); }
 
     /** claves que empiezan por un prefijo (sin las caducadas) */

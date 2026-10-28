@@ -1,5 +1,6 @@
 // [EMAIL] Envío por Resend (HTTP). Sin RESEND_API_KEY no se envía nada y se devuelve {skipped:true} (entornos de prueba).
 import { esc } from './util.js';
+/** Envía un correo por Resend → { ok, id }; sin RESEND_API_KEY { ok:false, skipped:true }; si falla { ok:false, status | error }. */
 export async function sendMail(env, { to, cc, subject, html, text, replyTo, attachments }, fetchImpl = fetch) {
   if (!env.RESEND_API_KEY) return { ok: false, skipped: true };
   const body = { from: env.ORDER_FROM || 'Torivac Web <pedidos@torivac.com>', to, subject, html, text };
@@ -10,7 +11,9 @@ export async function sendMail(env, { to, cc, subject, html, text, replyTo, atta
     return { ok: true, id: (await r.json()).id };
   } catch (e) { return { ok: false, error: String(e) }; }
 }
+/** Importe en euros con el formato del idioma (es, en, fr, de); «—» si no hay importe. */
 const money = (n, lang = 'es') => (n == null ? '—' : new Intl.NumberFormat({ es: 'es-ES', en: 'en-GB', fr: 'fr-FR', de: 'de-DE' }[lang] || 'es-ES', { style: 'currency', currency: 'EUR' }).format(n));
+/** Correo de aviso de un pedido para el equipo → { html, text } con cliente, líneas, total y marca de precios de demostración. */
 export function orderMail({ number, customer, priced, lang, demo }, items) {
   const rows = priced.lines.map((l) => `<tr><td style="font-family:monospace">${esc(l.ref)}</td><td>${esc(items[l.ref]?.n || '')}</td><td style="text-align:right">${l.qty}</td><td style="text-align:right">${money(l.unit, lang)}</td><td style="text-align:right"><b>${money(l.total, lang)}</b></td></tr>`).join('');
   const html = `<div style="font-family:Arial,sans-serif;max-width:720px"><h2 style="margin:0;color:#9c520f">Nuevo pedido ${esc(number)}${demo ? ' (PRECIOS DE DEMOSTRACIÓN)' : ''}</h2>

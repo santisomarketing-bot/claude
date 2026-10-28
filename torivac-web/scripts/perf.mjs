@@ -10,6 +10,7 @@ import { fileURLToPath } from 'node:url';
 import { serve } from './lib/static-server.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+/** Valor de --dir=… de la línea de comandos (carpeta del sitio a medir); si falta se usa dist. */
 const dirArg = (process.argv.find((a) => a.startsWith('--dir=')) || '').split('=')[1];
 const DIST = path.resolve(ROOT, dirArg || 'dist');
 const { server, base } = await serve(DIST, { gzip: true });
@@ -42,6 +43,7 @@ for (const [url, name] of PAGES) {
   await ctx.close();
 }
 await browser.close(); server.close();
+/** Texto s rellenado con espacios a la derecha hasta n caracteres, para alinear la tabla. */
 const pad = (s, n) => String(s).padEnd(n);
 console.log(pad('página', 14), pad('FCP ms', 8), pad('LCP ms', 8), pad('CLS', 7), pad('TBT~ms', 8), pad('KB', 7), 'peticiones');
 for (const r of rows) console.log(pad(r.name, 14), pad(r.fcp, 8), pad(r.lcp, 8), pad(r.cls, 7), pad(r.tbt, 8), pad(r.kb, 7), r.reqs);

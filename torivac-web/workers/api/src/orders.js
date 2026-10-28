@@ -1,5 +1,5 @@
 // [ORDERS] POST /api/order → valida, valora en servidor con los precios VIGENTES, guarda y envía por email (equipo + copia al cliente, con el PDF).
-import { json, clientIp } from './util.js';
+import { json, clientIp, esc } from './util.js';
 import { parseOrder } from './validate.js';
 import { loadPrices, priceOrder, withSheetItems } from './prices.js';
 import { verifyTurnstile } from './turnstile.js';
@@ -7,9 +7,12 @@ import { hit } from './ratelimit.js';
 import { sendMail, orderMail } from './email.js';
 import items from './generated/items.js';
 
+/** Fecha en UTC como AAAAMMDD, para el número de pedido y su contador diario. */
 const ymd = (d) => d.toISOString().slice(0, 10).replace(/-/g, '');
+/** Siguiente número de pedido del día (TV-AAAAMMDD-NNNN), con un contador en KV que caduca a las 48 h. */
 export async function nextNumber(env, now) { const k = `counter:${ymd(now)}`; const n = Number((await env.KV.get(k)) || 0) + 1; await env.KV.put(k, String(n), { expirationTtl: 60 * 60 * 48 }); return `TV-${ymd(now)}-${String(n).padStart(4, '0')}`; }
 
+/** POST /api/order: límite por IP, validación, valoración en servidor con los precios vigentes, guardado en KV y correos. */
 export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = new Date(), catalog = items, cors = {} } = {}) {
   const ip = clientIp(request);
   const rl = await hit(env, 'order', ip, { max: 8, now: now.getTime() });
@@ -21,7 +24,8 @@ export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = 
   const o = parsed.order;
   if (!(await verifyTurnstile(env, o.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida' }, 400, cors);
   const priced = priceOrder(prices, o.lines);                       // el cliente no puede fijar precios
-  const number = await nextNumber(env, now);
+  let number = await nextNumber(env, now);
+  for (let i = 0; i < 4 && (await env.KV.get(`order:${number}`)); i++) number = await nextNumber(env, now);   // KV no es atómico: si dos pedidos coinciden, el segundo coge el siguiente número
   const demo = prices.mode !== 'live';
   const record = { number, at: now.toISOString(), customer: o.customer, lines: priced.lines, total: priced.total, unpriced: priced.unpriced, lang: o.lang, prices: { updated_at: prices.updated_at, mode: prices.mode }, ip };
   await env.KV.put(`order:${number}`, JSON.stringify(record), { expirationTtl: 60 * 60 * 24 * 400 });
@@ -33,12 +37,13 @@ export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = 
   if (o.copyToCustomer) customerMail = await sendMail(env, { to: [o.customer.email], subject: `Torivac · copia de tu presupuesto ${number}`, html, text, attachments }, fetchImpl);
   return json({ ok: true, number, total: priced.total, unpriced: priced.unpriced, emailed: { team: !!team.ok, customer: !!customerMail.ok, skipped: !!team.skipped } }, 200, cors);
 }
+/** POST /api/contact: límite por IP, anti-spam y envío del mensaje al equipo; responde { ok, emailed, skipped }. */
 export async function handleContact(request, env, contact, { fetchImpl = fetch, cors = {} } = {}) {
   const ip = clientIp(request);
   const rl = await hit(env, 'contact', ip, { max: 5 });
   if (!rl.allowed) return json({ ok: false, error: 'Demasiados mensajes seguidos.' }, 429, cors);
   if (!(await verifyTurnstile(env, contact.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida' }, 400, cors);
   const to = String(env.ORDER_TO || '').split(',').map((s) => s.trim()).filter(Boolean);
-  const r = await sendMail(env, { to, subject: `[Web Torivac] Contacto · ${contact.name}`, text: `${contact.name} <${contact.email}> (${contact.lang})\n\n${contact.message}`, html: `<p><b>${contact.name.replace(/[<>&]/g, '')}</b> &lt;${contact.email}&gt; (${contact.lang})</p><p>${contact.message.replace(/[<>&]/g, '').replace(/\n/g, '<br>')}</p>`, replyTo: contact.email }, fetchImpl);
+  const r = await sendMail(env, { to, subject: `[Web Torivac] Contacto · ${contact.name}`, text: `${contact.name} <${contact.email}> (${contact.lang})\n\n${contact.message}`, html: `<p><b>${esc(contact.name)}</b> &lt;${esc(contact.email)}&gt; (${esc(contact.lang)})</p><p>${esc(contact.message).replace(/\n/g, '<br>')}</p>`, replyTo: contact.email }, fetchImpl);
   return json({ ok: true, emailed: !!r.ok, skipped: !!r.skipped }, 200, cors);
 }

@@ -9,6 +9,7 @@
   var TV = window.TV, Q = TV.Quote;
   var INK = [16, 4, 4], COPPER = [156, 82, 15], AMBER = [255, 182, 83];
 
+  /** Genera el PDF del presupuesto con jsPDF; `opts` = {customer, number, detail, date}; devuelve {doc, number, filename, blob()}. */
   TV.makeQuotePdf = function (opts) {
     // jsPDF usa Helvetica (WinAnsi): el espacio fino (U+202F) que usan fr/de en los miles sale como «/» → se cambia por espacio normal
     var fmt = { money: function (n) { return String(Q.money(n)).replace(/[\u202f\u2009\u00a0]/g, ' '); }, unit: function (n) { return String(Q.unitMoney(n)).replace(/[\u202f\u2009\u00a0]/g, ' '); } };
@@ -47,6 +48,7 @@
       body: body, theme: 'grid', styles: { font: 'helvetica', fontSize: 8.5, cellPadding: 2, valign: 'middle', lineColor: [225, 220, 214], lineWidth: 0.2, textColor: 30 },
       headStyles: { fillColor: INK, textColor: 255, fontSize: 8, halign: 'left' },
       columnStyles: { 0: { cellWidth: 20, minCellHeight: 18 }, 1: { cellWidth: 'auto' }, 2: { cellWidth: 16, halign: 'right' }, 3: { cellWidth: 28, halign: 'right' }, 4: { cellWidth: 28, halign: 'right', fontStyle: 'bold' } },
+      /** Gancho de autoTable: tras pintar cada celda de la columna «Imagen» estampa la miniatura JPEG de su línea, si existe. */
       didDrawCell: function (data) {
         if (data.section === 'body' && data.column.index === 0 && thumbs[data.row.index]) {
           try { doc.addImage(thumbs[data.row.index], 'JPEG', data.cell.x + 2, data.cell.y + 2, 14, 14); } catch (e) { /* miniatura inválida */ }

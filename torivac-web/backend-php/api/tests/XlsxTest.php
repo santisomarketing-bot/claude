@@ -5,12 +5,14 @@ namespace Torivac\Tests;
 use Torivac\PriceSheet;
 use Torivac\Xlsx;
 
+/** Carpeta con los libros de ejemplo (solo existe en el repositorio completo). */
 function xlsxDir(): ?string
 {
     $d = __DIR__ . '/../../../shared/xlsx';
     return is_dir($d) ? $d : null;                                          // solo existe en el repositorio completo (no en el paquete del hosting)
 }
 
+/** Los dos libros de ejemplo dan las hojas, el orden, las ocultas y las filas esperadas. */
 function test_xlsx_books_match_expected()
 {
     $d = xlsxDir();
@@ -22,6 +24,7 @@ function test_xlsx_books_match_expected()
     }
 }
 
+/** Elección de hoja (primera visible con cabecera o por nombre) y paso del libro por las reglas de precios. */
 function test_xlsx_pick_and_price_rules()
 {
     $d = xlsxDir();
@@ -38,6 +41,7 @@ function test_xlsx_pick_and_price_rules()
     T::same(['ZZ999'], $r['unknown'], 'código desconocido fuera');
 }
 
+/** Un fichero que no es un libro Excel da un error claro. */
 function test_xlsx_rejects_non_books()
 {
     T::throws(function () { Xlsx::read("ref;price\nA;1\n"); }, '/no es un zip válido/', 'texto plano');
@@ -50,10 +54,13 @@ use Torivac\Http;
 use Torivac\Sheets;
 use Torivac\Store;
 
+/** Contexto de catálogo de las pruebas de tarifa: dos referencias TT y la regla de la familia TT. */
 function ttCtx(): array { return ['lines' => ['TT0150117EM' => ['n' => 'x', 'pid' => 884], 'TT0330212' => ['n' => 'x', 'pid' => 884]], 'rules' => [['pattern' => '^TT\d{7,8}[A-Z]{0,3}$', 'pid' => 884]]]; }
 
+/** Sustituye la configuración de precios de las pruebas. */
 function setPrices(array $p): void { Config::set(['prices' => $p, 'storage_dir' => Store::root(), 'session_secret' => SECRET]); }
 
+/** Sincronización desde la URL de un .xlsx: referencias nuevas por regla y desconocidas fuera. */
 function test_sync_from_xlsx_url()
 {
     $d = xlsxDir();
@@ -70,6 +77,7 @@ function test_sync_from_xlsx_url()
     T::same(884, $cur['items']['TT00302075']['pid'], 'referencia nueva dentro de su familia');
 }
 
+/** Hoja elegida por nombre y errores de descarga (nombre inexistente, página en vez de libro, HTTP 404). */
 function test_sync_from_xlsx_sheet_name_and_bad_downloads()
 {
     $d = xlsxDir();
@@ -87,6 +95,7 @@ function test_sync_from_xlsx_sheet_name_and_bad_downloads()
     T::throws(function () { Sheets::sync(['ctx' => []]); }, '/XLSX 404/', 'HTTP 404');
 }
 
+/** Cuenta de servicio: hoja de Google por Sheets API; si es un .xlsx de Drive, respaldo con la API de Drive y errores si fallan las dos. */
 function test_sync_service_account_sheets_then_drive_fallback()
 {
     $d = xlsxDir();

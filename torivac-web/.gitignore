@@ -7,8 +7,16 @@ data/raw/rest/media.*.json
 data/raw/pdf/
 entrega/
 
+# configuración con claves del API PHP y su carpeta de datos: nunca al repositorio
+backend-php/api/config.php
+backend-php/api/storage/
+
 # salida generada y datos privados (precios reales): nunca al repositorio
 dist/
 data/private/
 private/
 *.private.*
+
+# bytecode de Python
+__pycache__/
+*.pyc

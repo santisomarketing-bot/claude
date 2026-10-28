@@ -24,12 +24,16 @@ const LANGS = ["es", "en", "fr", "de"];
 const UA = "Mozilla/5.0 (compatible; SantisoMarketing-Migration/1.0; +https://santisomarketing.com)";
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "data", "raw");
 const only = (process.argv.find(a => a.startsWith("--only=")) || "").replace("--only=", "").split(",").filter(Boolean);
+/** True si hay que ejecutar la fase s: sin --only se hacen todas; con --only, solo las indicadas. */
 const want = s => only.length === 0 || only.includes(s);
 
+/** Pausa asíncrona de ms milisegundos (ritmo educado con el servidor). */
 const sleep = ms => new Promise(r => setTimeout(r, ms));
+/** True si existe el fichero o la carpeta p. */
 const exists = async p => { try { await stat(p); return true; } catch { return false; } };
 const manifest = { generated: null, base: BASE, sitemaps: {}, urls: {}, rest: {}, store: {}, pdfs: [], failures: [] };
 
+/** GET con reintentos y espera creciente (429/5xx; un 4xx no se reintenta) → { data (texto o Buffer), total, pages, ct }. */
 async function get(url, { binary = false, tries = 4 } = {}) {
   let last;
   for (let i = 0; i < tries; i++) {
@@ -50,6 +54,7 @@ async function get(url, { binary = false, tries = 4 } = {}) {
   throw last;
 }
 
+/** Escribe content en data/raw/<rel>, creando las carpetas que falten; devuelve la ruta absoluta. */
 async function save(rel, content) {
   const p = path.join(ROOT, rel);
   await mkdir(path.dirname(p), { recursive: true });
@@ -57,6 +62,7 @@ async function save(rel, content) {
   return p;
 }
 
+/** Aplica fn(item, índice) a los items con n tareas en paralelo y 120 ms de pausa entre peticiones; devuelve los resultados en orden. */
 async function pool(items, n, fn) {
   const out = []; let i = 0;
   await Promise.all(Array.from({ length: n }, async () => {
@@ -65,8 +71,11 @@ async function pool(items, n, fn) {
   return out;
 }
 
+/** Idioma de una URL de WPML según su prefijo (/en, /fr o /de); sin prefijo, español. */
 const langOf = u => { const m = new URL(u).pathname.match(/^\/(en|fr|de)(\/|$)/); return m ? m[1] : "es"; };
+/** Nombre de fichero de una URL: su ruta con «/» cambiado por «__» (home para la raíz). */
 const slugOf = u => (new URL(u).pathname.replace(/^\/|\/$/g, "").replace(/\//g, "__")) || "home";
+/** Direcciones <loc> de un sitemap XML, en el orden en que aparecen. */
 const locs = xml => [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1].trim());
 
 // ---------- 1. Sitemaps ----------
@@ -89,6 +98,7 @@ async function sitemaps() {
 
 // ---------- 2. REST (wp/v2) ----------
 const REST_TYPES = ["pages", "posts", "product", "product_cat", "categories", "tags", "media", "product_tag", "product_brand", "elementor_library"];
+/** Descarga el contenido REST (wp/v2) de cada tipo e idioma, paginado y unido, en rest/<tipo>.<lang>.json; salta lo ya descargado. */
 async function rest() {
   for (const lang of LANGS) {
     for (const type of REST_TYPES) {
@@ -149,6 +159,7 @@ async function store() {
 async function knownLinks() {
   const out = new Set();
   const host = new URL(BASE).host;
+  /** Añade u (sin hash) al conjunto out si es del mismo dominio que BASE; ignora las URL no válidas. */
   const keep = u => { try { const x = new URL(u); if (x.host === host) { x.hash = ""; out.add(x.toString()); } } catch { /* ignora */ } };
   for (const lang of LANGS) {
     for (const type of ["pages", "posts", "product", "product_cat", "categories"]) {
@@ -162,6 +173,7 @@ async function knownLinks() {
   }
   return out;
 }
+/** URL del mismo dominio que el HTML ya cosechado de urls declara como alternativas de idioma (<link rel=alternate hreflang>). */
 async function hreflangs(urls) {
   const found = new Set();
   for (const u of urls) {
@@ -175,6 +187,7 @@ async function hreflangs(urls) {
   }
   return found;
 }
+/** Descarga el HTML de cada URL conocida (sitemap, REST, Store API y hreflang), hasta 3 rondas, saltando las ya guardadas. */
 async function html(urls) {
   const all = new Set([...urls, ...(await knownLinks())]);
   let ok = 0, skip = 0, round = 0;
@@ -199,6 +212,7 @@ async function html(urls) {
 // ---------- 5. PDFs ----------
 async function pdfs() {
   const found = new Map(); // url -> fuentes
+  /** Si u es un PDF lo registra en found (URL absoluta sin hash) con src como una de sus fuentes; ignora las URL rotas. */
   const add = (u, src) => {
     try {
       const abs = new URL(u.replace(/&amp;/g, "&"), BASE);

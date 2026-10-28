@@ -22,10 +22,12 @@ NUM = re.compile(r"(?<![\w])\d+(?:[.,]\d+)*")
 
 
 def toks(s):
+    """Conjunto de números que aparecen en un texto, normalizados (coma decimal → punto, sin punto final)."""
     return {t.replace(",", ".").rstrip(".") for t in NUM.findall(s or "")}
 
 
 def walk(o):
+    """Recorre en profundidad dicts y listas y genera todas las cadenas que contienen."""
     if isinstance(o, str):
         yield o
     elif isinstance(o, dict):
@@ -37,11 +39,13 @@ def walk(o):
 
 
 def page_text(stem, p):
+    """Texto extraído de la página `p` del PDF `stem` (data/analysis/pdf-text); cadena vacía si no existe."""
     f = AN / "pdf-text" / stem / f"p{p:03d}.txt"
     return f.read_text() if f.exists() else ""
 
 
 def main(path, as_json=False):
+    """Contrasta los números del JSON de extracción con el texto de cada página (precisión y recall); 1 si hay números sin respaldo."""
     d = json.loads(Path(path).read_text())
     idx = {r["file"]: r for r in json.loads((AN / "pdf-index.json").read_text())["pdfs"]}
     problems, notes, per_page = [], [], {}
@@ -55,6 +59,7 @@ def main(path, as_json=False):
         # agrupa todo lo extraído por página
         bucket = {}
         def put(page, obj):
+            """Añade `obj` a lo extraído de la página `page` (en el cubo `bucket`)."""
             bucket.setdefault(page, []).append(obj)
         for fam in doc.get("families", []):
             for m in fam.get("models", []):

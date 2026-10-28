@@ -51,7 +51,9 @@ export function buildTable(prices, catalog = items) {
   return rows.join('\n');
 }
 
+/** El valor si es un número finito; si no, null. */
 const num = (x) => (typeof x === 'number' && Number.isFinite(x) ? x : null);
+/** Redondea un precio a 4 decimales. */
 const r4 = (n) => Math.round((n + Number.EPSILON) * 10000) / 10000;
 
 /**
@@ -101,6 +103,7 @@ export function applyChanges(prices, changes, { now = new Date(), source = 'ia' 
   return next;
 }
 
+/** Llama a la API de Anthropic forzando la herramienta de propuesta → { input, usage }; lanza Error 502 si falla o no hay propuesta. */
 async function callAnthropic(env, instruction, table, fetchImpl) {
   const res = await fetchImpl(API_URL, {
     method: 'POST', headers: { 'x-api-key': env.ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01', 'Content-Type': 'application/json' },
