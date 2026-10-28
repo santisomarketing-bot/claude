@@ -46,7 +46,7 @@
 .tile:hover img{transform:scale(1.08)}
 .tile:hover span{border-top-color:#fff}
 @media (max-width:980px){.tiles{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.tiles{grid-template-columns:1fr 1fr}.tile{aspect-ratio:1/1;padding:var(--s-3)}}
+@media (max-width:520px){.tiles{grid-template-columns:1fr 1fr}.tile{aspect-ratio:1/1;padding:var(--s-3)}.tile span{font-size:var(--fs-3)}}
 .photo-frame{position:relative}
 .photo-frame img{width:100%;height:auto}
 .photo-frame.crop{padding:10px;background:#fff;border:1px solid var(--line)}

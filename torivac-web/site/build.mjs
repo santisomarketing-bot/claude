@@ -115,7 +115,7 @@ for (const l of LANGS) {
   });
   for (const n of site.navItems[l]) if (n.key !== 'catalog') site[n.key][l] = n.path;
   site.quote[l] = QSLUG[l];
-  site.funding[l] = { img: imageMap[l === 'es' ? fundES : fundOT]?.file || '' };
+  { const im = imageMap[l === 'es' ? fundES : fundOT] || {}; site.funding[l] = { img: im.file || '', w: im.w || 520, h: im.h || 62 }; }
   const f = meta.footer[l];
   const lines = f.lines;
   site.footer[l] = {

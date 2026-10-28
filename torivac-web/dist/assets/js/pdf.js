@@ -22,7 +22,7 @@
 
     // banda de marca
     doc.setFillColor.apply(doc, INK); doc.rect(0, 0, W, 30, 'F');
-    if (TV.logo) { try { doc.addImage(TV.logo, 'PNG', 12, 6, 42, 18); } catch (e) { /* sin logo */ } } else { doc.setTextColor(255); doc.setFontSize(20); doc.text('TORIVAC', 12, 19); }
+    if (TV.logo) { try { doc.addImage(TV.logo, 'PNG', 12, 3, 24, 24); /* el logotipo es CIRCULAR (1:1): nunca estirarlo */ } catch (e) { /* sin logo */ } } else { doc.setTextColor(255); doc.setFontSize(20); doc.text('TORIVAC', 12, 19); }
     doc.setTextColor(255); doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
     doc.text(Q.t('quote').toUpperCase() + ' · ' + number, W - 12, 13, { align: 'right' });
     doc.text((opts.date ? new Date(opts.date) : new Date()).toLocaleDateString(Q.lang === 'en' ? 'en-GB' : Q.lang), W - 12, 19, { align: 'right' });

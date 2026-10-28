@@ -1,0 +1,1119 @@
+{
+ "group": "g11-hembrillas",
+ "products": [
+  {
+   "id_es": 954,
+   "slug": "hembrilla-hb4",
+   "url_es": "https://grupotorivac.com/product/hembrilla-hb4/",
+   "sku": "4beda945df2e",
+   "names": {
+    "es": "Hembrilla HB4",
+    "en": "HB4 socket",
+    "fr": "Prise HB4",
+    "de": "HB4-Buchse"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/hembrilla-hb4/",
+    "en": "https://grupotorivac.com/en/product/hb4-socket/",
+    "fr": "https://grupotorivac.com/fr/product/prise-hb4/",
+    "de": "https://grupotorivac.com/de/product/hb4-buchse/"
+   },
+   "ids": {
+    "es": 954,
+    "en": 16368,
+    "fr": 16369,
+    "de": 16370
+   },
+   "category_path_es": [
+    "Hembrillas",
+    "Hembrilla HB4"
+   ],
+   "categories_all_es": [
+    {
+     "id": 84,
+     "name": "Hembrilla HB4",
+     "slug": "hembrilla-hb4"
+    },
+    {
+     "id": 83,
+     "name": "Hembrillas",
+     "slug": "hembrillas"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Intensidad máxima: 10A/230V.\n\nCasquillo y tuerca de latón niquelado.\n\nCuerpo de Poliamida 6/6, auto extinguible.\n\nConexión faston de 3,9mm ó soldadura.\n\nColores: negro, rojo, amarillo, verde y azul.\n\nVer ficha técnica",
+    "en": "Maximum current: 10A/230V.\n\nNickel-plated brass socket and nut.\n\nPolyamide 6/6 body, self-extinguishing.\n\n3.9mm faston connection or solder.\n\nColors: black, red, yellow, green and blue.\n\nSee technical data sheet",
+    "fr": "Courant maximum : 10A/230V.\n\nDouille et écrou en laiton nickelé.\n\nCorps en polyamide 6/6, autoextinguible.\n\nConnexion faston de 3,9mm ou soudure.\n\nCouleurs : noir, rouge, jaune, vert et bleu.\n\nVoir la fiche technique",
+    "de": "Maximale Stromstärke: 10A/230V.\n\nBuchse und Mutter aus vernickeltem Messing.\n\nGehäuse aus Polyamid 6/6, selbstverlöschend.\n\n3,9mm Faston-Anschluss oder Löten.\n\nFarben: schwarz, rot, gelb, grün und blau.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-torivac.jpg",
+     "alt": {
+      "es": "Hembrilla HB4",
+      "en": "HB4 socket",
+      "fr": "Prise HB4",
+      "de": "HB4-Buchse"
+     },
+     "id": 834,
+     "ids": {
+      "es": 834,
+      "en": 834,
+      "fr": 834,
+      "de": 834
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/HEMBRILLAS.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Intensidad máxima: 10A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:pagina",
+     "context": "meta description: Intensidad máxima: 10A/230V. Casquillo y tuerca de latón niquelado. Cuerpo de Poliamida 6/6, auto extinguible. Conexión faston de 3,9mm ó soldadura."
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "Maximum current: 10A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:pagina",
+     "context": "meta description: Maximum current: 10A/230V. Nickel-plated brass socket and nut. Polyamide 6/6 body, self-extinguishing. 3.9mm faston connection or solder."
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Courant maximum : 10A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:pagina",
+     "context": "meta description: Courant maximum : 10A/230V. Douille et écrou en laiton nickelé. Corps en polyamide 6/6, autoextinguible. Connexion faston de 3,9mm ou soudure."
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Maximale Stromstärke: 10A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:pagina",
+     "context": "meta description: Maximale Stromstärke: 10A/230V. Buchse und Mutter aus vernickeltem Messing. Gehäuse aus Polyamid 6/6, selbstverlöschend. 3,9mm Faston-Anschluss oder Löten."
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Color (negro, rojo, amarillo, verde y azul)",
+    "Tipo de conexión (faston de 3,9mm o soldadura) [la web no dice si son dos opciones de pedido o dos formas de montaje]"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- HB4 socket\n\nView full catalog",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Prise HB4\n\nVoir tout le catalogue",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- HB4-Buchse\n\nGesamten Katalog ansehen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Hembrilla HB4 - Torivac",
+     "meta_description": "Intensidad máxima: 10A/230V. Casquillo y tuerca de latón niquelado. Cuerpo de Poliamida 6/6, auto extinguible. Conexión faston de 3,9mm ó soldadura.",
+     "og_title": "Hembrilla HB4 - Torivac",
+     "og_description": "Intensidad máxima: 10A/230V. Casquillo y tuerca de latón niquelado. Cuerpo de Poliamida 6/6, auto extinguible. Conexión faston de 3,9mm ó soldadura.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/hembrilla-hb4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:06",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__hembrilla-hb4.json"
+    },
+    "en": {
+     "title": "HB4 socket - Torivac",
+     "meta_description": "Maximum current: 10A/230V. Nickel-plated brass socket and nut. Polyamide 6/6 body, self-extinguishing. 3.9mm faston connection or solder.",
+     "og_title": "HB4 socket - Torivac",
+     "og_description": "Maximum current: 10A/230V. Nickel-plated brass socket and nut. Polyamide 6/6 body, self-extinguishing. 3.9mm faston connection or solder.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/hembrilla-hb4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:31",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__hb4-socket.json"
+    },
+    "fr": {
+     "title": "Prise HB4 - Torivac",
+     "meta_description": "Courant maximum : 10A/230V. Douille et écrou en laiton nickelé. Corps en polyamide 6/6, autoextinguible. Connexion faston de 3,9mm ou soudure.",
+     "og_title": "Prise HB4 - Torivac",
+     "og_description": "Courant maximum : 10A/230V. Douille et écrou en laiton nickelé. Corps en polyamide 6/6, autoextinguible. Connexion faston de 3,9mm ou soudure.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/hembrilla-hb4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:32",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__prise-hb4.json"
+    },
+    "de": {
+     "title": "HB4-Buchse - Torivac",
+     "meta_description": "Maximale Stromstärke: 10A/230V. Buchse und Mutter aus vernickeltem Messing. Gehäuse aus Polyamid 6/6, selbstverlöschend. 3,9mm Faston-Anschluss oder Löten.",
+     "og_title": "HB4-Buchse - Torivac",
+     "og_description": "Maximale Stromstärke: 10A/230V. Buchse und Mutter aus vernickeltem Messing. Gehäuse aus Polyamid 6/6, selbstverlöschend. 3,9mm Faston-Anschluss oder Löten.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/hembrilla-hb4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:32",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__hb4-buchse.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "sin_referencias_comerciales",
+    "sku_no_comercial",
+    "sin_alt",
+    "imagen_con_id_de_otro_idioma",
+    "pdf_compartido_entre_fichas",
+    "pdf_solo_imagen",
+    "tension_sin_especificar_ca_cc",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "relacionados_autorreferente",
+    "plantilla_cta_mal_traducida",
+    "texto_en_idioma_incorrecto",
+    "texto_plantilla_repetido",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "typo",
+    "nombre_de_archivo_poco_descriptivo",
+    "imagen_extension_no_coincide_con_formato"
+   ],
+   "gaps": [
+    "Descripción larga vacía en los 4 idiomas: la Store API devuelve description='' y la REST content.rendered='' (ids 954/16368/16369/16370). Todo el contenido de la ficha (intensidad, material, conexión, colores y botón de ficha técnica) está en short_description (en la REST, excerpt). description_text queda en '' y spec_tables=[]: la web no tiene tabla de modelos para este producto.",
+    "Sin referencia comercial: SKU '4beda945df2e' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia de fabricante; la Store API lo repite igual en EN/FR/DE. El modelo solo se identifica por el nombre ('HB4'); orderable_items=[] porque no hay tabla de modelos. Grafías del modelo: nombre sin guion, texto de otras fichas con guion ('HB-4', 'HBS-4') y PDF con espacios ('HB - 4', 'HR - 4', 'HBS - 4', 'HSR - 4', según lectura visual previa).",
+    "Tensión: única mención '230V' dentro de 'Intensidad máxima: 10A/230V.' (web:corta y meta description de los 4 idiomas, 8 registros en voltage_mentions; el cuerpo renderizado solo repite la descripción corta). No indica si 230 V es tensión nominal o máxima, ni si es CA o CC. Intensidad máxima declarada: 10 A. Ninguna mención de potencia (VA, W, kVA, kW) en el nombre, la descripción corta, la meta ni la página renderizada: power_mentions=[]. Etiqueta de voltaje propuesta solo como '230 V (tipo no indicado)'.",
+    "Datos técnicos solo como frases en short_description (WooCommerce attributes=[] en los 4 idiomas): intensidad máxima, material (latón niquelado, poliamida 6/6 autoextinguible), tipo de conexión y colores. Variantes de pedido deducibles de la web: color (negro, rojo, amarillo, verde y azul) y tipo de conexión (faston de 3,9mm o soldadura). Peso y dimensiones vacíos, sin etiquetas ni marcas. Sin precio: price '0', price_html vacío, is_purchasable=false y botón 'Leer más' (catálogo sin precios); is_in_stock=true sin cantidad.",
+    "Ficha técnica: HEMBRILLAS.pdf (enlace en short_description y en la página, en los 4 idiomas). Es la página 39 del catálogo con tres modelos (BPB - 30 A / 230V., HB - 4 y HR - 4) y la comparte la ficha 956 (HR4); el enlace no indica cuál es el del producto. Su texto extraído (data/analysis/pdf-text/HEMBRILLAS/p001.txt) solo trae 'BORNES HEMBRILLAS Y PORTAFUSIBLES', 'BPB - 30 A / 230V.', 'HB - 4', 'HR - 4', '39'; las cotas son gráficos. Riesgo de falso positivo al etiquetar voltaje desde este PDF: el '230V.' del texto extraído pertenece al rótulo 'BPB - 30 A / 230V.' (modelo que no es de esta ficha), no a la hembrilla de esta ficha. Lectura visual previa en data/analysis/pdfs/p14-fichas-hembrillas-bornes.json (no re-verificada aquí): HB - 4: cotas Ø 11 / Ø 4 / 24,1 y ROSCA 8/0,75, sin unidad; el PDF no trae intensidad, tensión ni material para esta hembrilla, solo la web. Sobre los otros modelos del PDF: BPB - 30 A / 230V. no tiene ficha de producto en la web (ningún nombre de product-map.json lo menciona) y HR - 4 es la ficha 956.",
+    "Imagen única (id 834, 'hembrilla-banana-torivac.jpg', 800×800): la biblioteca de medios tiene alt='' en todos los idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático, no descriptivo) y es el que se guarda en images[].alt. En las páginas EN/FR/DE la tarjeta de 'relacionados' muestra además la miniatura -300x300 con alt=\"\". El fichero 'hembrilla-banana-torivac.jpg' es en realidad un PNG (copia local b4e16a90-hembrilla-banana-torivac.jpg: PNG 800×800), coherente con el mime image/png de media-index y de og:image (Yoast); extensión .jpg y formato no coinciden.",
+    "Imagen con id de otro idioma: la Store API devuelve el id ES 834 también en los productos EN/FR/DE (images[].ids); la biblioteca de medios guarda copias WPML por idioma del mismo fichero: EN 3790, FR 3791, DE 9382 (adjuntas a los productos traducidos).",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/hembrilla-hb4/); el campo hreflang sí está completo (es, en, fr, de, x-default→ES). Ver docs/01-analisis/HALLAZGOS.md n.º 11. Meta description = primeras frases de la descripción corta, cortadas en límite de frase (nunca incluye la línea de colores ni el botón); title = nombre + ' - Torivac'; sin focus keyword.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (outline: H3 de menú 'Products'/'Produits'/'Produkte', H4 de CTA, H2 de CTA, H2 de relacionados y el nombre del producto solo como H4 dentro de 'relacionados'); la ES sí tiene H1 = 'Hembrilla HB4' (precedido por el H3 'Productos' del menú). La ES no muestra bloque de relacionados; EN/FR/DE muestran 'Explore similar products' / 'Découvrez des produits similaires' / 'Ähnliche Produkte erkunden' con el propio producto como único elemento (extra_sections).",
+    "Plantilla de contacto (CTA) reutilizada sin adaptar: el texto habla de 'productos especializados para la regulación de la tensión' (plantilla común, no específica de hembrillas). DE: título 'KONTAKT US' (inglés mezclado) y casilla de consentimiento/botón en neerlandés ('Hij gaat akkoord met het privacybeleid.' / 'Versturen'); FR: 'Il a accepté et accepté la politique de confidentialité' (frase de consentimiento mal formada); EN 'CONTACT WITH US'. Se conserva en extra_sections.",
+    "Terminología inconsistente entre idiomas: 'hembrilla' → EN 'socket', FR 'prise' (toma de corriente), DE 'Buchse' en HB4 pero 'Steckdose' (toma de corriente) en HBS4/HR4/HSR4; 'casquillo' → EN 'socket'/'bushing', FR 'douille'/'prise', DE 'Buchse'/'Steckdose'. En DE el nombre de la ficha HB4 ('HB4-Buchse') no sigue el patrón de las otras tres ('Sicherheitssteckdose …'). Se conserva tal cual; a confirmar por un traductor técnico (FR 'prise' y DE 'Steckdose' son vocabulario de toma de corriente/enchufe).",
+    "Relación entre fichas (sin fusionar, como están en la web): HB4 y HR4 son variantes de 10 A y 20 A ('Idénticas características que las HB-4, pero con el casquillo reforzado para 20A'); HBS4 y HSR4 igual (10 A / 20 A). La conexión por faston o soldadura solo aparece en HB4/HBS4; HR4/HSR4 declaran solo soldadura. Decisión de modelado (familia con eje 'intensidad' o 4 fichas) pendiente del equipo.",
+    "Erratas/inconsistencias de redacción en ES: 'auto extinguible' en dos palabras (la ficha 955 escribe 'autoextinguible'), 'ó' con tilde en 'faston de 3,9mm ó soldadura' y '3,9mm' sin espacio. FR/DE/EN las traducen sin el defecto. Se conservan tal cual.",
+    "Texto distinto al de la ficha HBS4 (955): HB4 dice 'Casquillo y tuerca de latón niquelado' y 'Conexión faston de 3,9mm ó soldadura'; HBS4 dice 'Conexión con faston hembra 3,9 o soldadura' y solo 'Casquillo de latón niquelado' (sin tuerca). La web no explica la diferencia entre HB4 y HBS4 más allá del nombre ('de seguridad').",
+    "Categorías: la ficha 954 es la única del lote asignada a la vez a la subcategoría 'Hembrilla HB4' (id 84) y al padre 'Hembrillas' (id 83); las otras tres solo a su subcategoría. EN: 'HB4 socket' (646, slug 'socket-jack-2') + 'Sockets' (575, 'socket-jack'); FR: 'Prise HB4' (650, 'prise-jack-hb4') + 'Prises' (576, 'prise-jack'); DE: 'HB4-Buchse' (651, 'socket-jack-hb4-10a') + 'Socket Jack' (577, 'socket-jack'): el padre alemán conserva el nombre en inglés y el slug del hijo añade '10a', que no existe en ES. Existe además una categoría 'Hembrillas de seguridad' (id 25, 0 productos, hermana de 'Hembrillas') sin relación con ningún producto del lote."
+   ]
+  },
+  {
+   "id_es": 955,
+   "slug": "hembrilla-de-seguridad-hbs4",
+   "url_es": "https://grupotorivac.com/product/hembrilla-de-seguridad-hbs4/",
+   "sku": "ead0c27ca8b8",
+   "names": {
+    "es": "Hembrilla de seguridad HBS4",
+    "en": "Safety socket HBS4",
+    "fr": "Prise de sécurité HBS4",
+    "de": "Sicherheitssteckdose HBS4"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/hembrilla-de-seguridad-hbs4/",
+    "en": "https://grupotorivac.com/en/product/safety-socket-hbs4/",
+    "fr": "https://grupotorivac.com/fr/product/prise-de-securite-hbs4/",
+    "de": "https://grupotorivac.com/de/product/sicherheitssteckdose-hbs4/"
+   },
+   "ids": {
+    "es": 955,
+    "en": 16361,
+    "fr": 16362,
+    "de": 16363
+   },
+   "category_path_es": [
+    "Hembrillas",
+    "Hembrilla de seguridad HBS4"
+   ],
+   "categories_all_es": [
+    {
+     "id": 85,
+     "name": "Hembrilla de seguridad HBS4",
+     "slug": "hembrilla-de-seguridad-hbs4"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Intensidad máxima: 10A/230V.\n\nConexión con faston hembra 3,9 o soldadura.\n\nCuerpo de Poliamida 6/6, autoextinguible.\n\nCasquillo de latón niquelado.\n\nColores: negro, rojo, amarillo, verde, azul y gris.\n\nVer ficha técnica",
+    "en": "Maximum current: 10A/230V.\n\nConnection with female faston 3,9 or solder.\n\nPolyamide 6/6 body, self-extinguishing.\n\nNickel-plated brass bushing.\n\nColors: black, red, yellow, green, blue and gray.\n\nSee data sheet",
+    "fr": "Courant maximum : 10A/230V.\n\nRaccordement par faston femelle 3,9 ou soudure.\n\nCorps en polyamide 6/6, auto-extinguible.\n\nDouille en laiton nickelé.\n\nCouleurs : noir, rouge, jaune, vert, bleu et gris.\n\nVoir fiche technique",
+    "de": "Maximale Stromstärke: 10A/230V.\n\nAnschluss mit Flachsteckhülse 3,9 oder durch Löten.\n\nGehäuse aus Polyamid 6/6, selbstverlöschend.\n\nSteckdose aus vernickeltem Messing.\n\nFarben: schwarz, rot, gelb, grün, blau und grau.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-4.png",
+     "alt": {
+      "es": "Hembrilla de seguridad HBS4",
+      "en": "Safety socket HBS4",
+      "fr": "Prise de sécurité HBS4",
+      "de": "Sicherheitssteckdose HBS4"
+     },
+     "id": 1058,
+     "ids": {
+      "es": 1058,
+      "en": 1058,
+      "fr": 1058,
+      "de": 1058
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/HEMBRILLAS2.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See data sheet",
+      "fr": "Voir fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Intensidad máxima: 10A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:pagina",
+     "context": "meta description: Intensidad máxima: 10A/230V. Conexión con faston hembra 3,9 o soldadura. Cuerpo de Poliamida 6/6, autoextinguible. Casquillo de latón niquelado."
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "Maximum current: 10A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:pagina",
+     "context": "meta description: Maximum current: 10A/230V. Connection with female faston 3,9 or solder. Polyamide 6/6 body, self-extinguishing. Nickel-plated brass bushing."
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Courant maximum : 10A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:pagina",
+     "context": "meta description: Courant maximum : 10A/230V. Raccordement par faston femelle 3,9 ou soudure. Corps en polyamide 6/6, auto-extinguible. Douille en laiton nickelé."
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Maximale Stromstärke: 10A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:pagina",
+     "context": "meta description: Maximale Stromstärke: 10A/230V. Anschluss mit Flachsteckhülse 3,9 oder durch Löten. Gehäuse aus Polyamid 6/6, selbstverlöschend."
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Color (negro, rojo, amarillo, verde, azul y gris)",
+    "Tipo de conexión (faston hembra 3,9 o soldadura) [la web no dice si son dos opciones de pedido o dos formas de montaje]"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Safety socket HBS4\n\nView full catalog",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Prise de sécurité HBS4\n\nVoir tout le catalogue",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Sicherheitssteckdose HBS4\n\nGesamten Katalog ansehen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Hembrilla de seguridad HBS4 - Torivac",
+     "meta_description": "Intensidad máxima: 10A/230V. Conexión con faston hembra 3,9 o soldadura. Cuerpo de Poliamida 6/6, autoextinguible. Casquillo de latón niquelado.",
+     "og_title": "Hembrilla de seguridad HBS4 - Torivac",
+     "og_description": "Intensidad máxima: 10A/230V. Conexión con faston hembra 3,9 o soldadura. Cuerpo de Poliamida 6/6, autoextinguible. Casquillo de latón niquelado.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-4.png",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hbs4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:06",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__hembrilla-de-seguridad-hbs4.json"
+    },
+    "en": {
+     "title": "Safety socket HBS4 - Torivac",
+     "meta_description": "Maximum current: 10A/230V. Connection with female faston 3,9 or solder. Polyamide 6/6 body, self-extinguishing. Nickel-plated brass bushing.",
+     "og_title": "Safety socket HBS4 - Torivac",
+     "og_description": "Maximum current: 10A/230V. Connection with female faston 3,9 or solder. Polyamide 6/6 body, self-extinguishing. Nickel-plated brass bushing.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-4.png",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hbs4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:29",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__safety-socket-hbs4.json"
+    },
+    "fr": {
+     "title": "Prise de sécurité HBS4 - Torivac",
+     "meta_description": "Courant maximum : 10A/230V. Raccordement par faston femelle 3,9 ou soudure. Corps en polyamide 6/6, auto-extinguible. Douille en laiton nickelé.",
+     "og_title": "Prise de sécurité HBS4 - Torivac",
+     "og_description": "Courant maximum : 10A/230V. Raccordement par faston femelle 3,9 ou soudure. Corps en polyamide 6/6, auto-extinguible. Douille en laiton nickelé.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-4.png",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hbs4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:29",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__prise-de-securite-hbs4.json"
+    },
+    "de": {
+     "title": "Sicherheitssteckdose HBS4 - Torivac",
+     "meta_description": "Maximale Stromstärke: 10A/230V. Anschluss mit Flachsteckhülse 3,9 oder durch Löten. Gehäuse aus Polyamid 6/6, selbstverlöschend.",
+     "og_title": "Sicherheitssteckdose HBS4 - Torivac",
+     "og_description": "Maximale Stromstärke: 10A/230V. Anschluss mit Flachsteckhülse 3,9 oder durch Löten. Gehäuse aus Polyamid 6/6, selbstverlöschend.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-4.png",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hbs4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:30",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__sicherheitssteckdose-hbs4.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "sin_referencias_comerciales",
+    "sku_no_comercial",
+    "sin_alt",
+    "imagen_con_id_de_otro_idioma",
+    "pdf_compartido_entre_fichas",
+    "pdf_solo_imagen",
+    "tension_sin_especificar_ca_cc",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "relacionados_autorreferente",
+    "plantilla_cta_mal_traducida",
+    "texto_en_idioma_incorrecto",
+    "texto_plantilla_repetido",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "typo",
+    "nombre_de_archivo_poco_descriptivo",
+    "etiqueta_boton_inconsistente"
+   ],
+   "gaps": [
+    "Descripción larga vacía en los 4 idiomas: la Store API devuelve description='' y la REST content.rendered='' (ids 955/16361/16362/16363). Todo el contenido de la ficha (intensidad, material, conexión, colores y botón de ficha técnica) está en short_description (en la REST, excerpt). description_text queda en '' y spec_tables=[]: la web no tiene tabla de modelos para este producto.",
+    "Sin referencia comercial: SKU 'ead0c27ca8b8' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia de fabricante; la Store API lo repite igual en EN/FR/DE. El modelo solo se identifica por el nombre ('HBS4'); orderable_items=[] porque no hay tabla de modelos. Grafías del modelo: nombre sin guion, texto de otras fichas con guion ('HB-4', 'HBS-4') y PDF con espacios ('HB - 4', 'HR - 4', 'HBS - 4', 'HSR - 4', según lectura visual previa).",
+    "Tensión: única mención '230V' dentro de 'Intensidad máxima: 10A/230V.' (web:corta y meta description de los 4 idiomas, 8 registros en voltage_mentions; el cuerpo renderizado solo repite la descripción corta). No indica si 230 V es tensión nominal o máxima, ni si es CA o CC. Intensidad máxima declarada: 10 A. Ninguna mención de potencia (VA, W, kVA, kW) en el nombre, la descripción corta, la meta ni la página renderizada: power_mentions=[]. Etiqueta de voltaje propuesta solo como '230 V (tipo no indicado)'.",
+    "Datos técnicos solo como frases en short_description (WooCommerce attributes=[] en los 4 idiomas): intensidad máxima, material (latón niquelado, poliamida 6/6 autoextinguible), tipo de conexión y colores. Variantes de pedido deducibles de la web: color (negro, rojo, amarillo, verde, azul y gris) y tipo de conexión (faston hembra 3,9 o soldadura). Peso y dimensiones vacíos, sin etiquetas ni marcas. Sin precio: price '0', price_html vacío, is_purchasable=false y botón 'Leer más' (catálogo sin precios); is_in_stock=true sin cantidad.",
+    "Ficha técnica: HEMBRILLAS2.pdf (enlace en short_description y en la página, en los 4 idiomas). Es la página 40 del catálogo con tres modelos (HBS - 4, HSR - 4 y PF - 15) y la comparte la ficha 957 (HSR4); el enlace no indica cuál es el del producto. Su texto extraído (data/analysis/pdf-text/HEMBRILLAS2/p001.txt) solo trae 'BORNES HEMBRILLAS Y PORTAFUSIBLES', 'HBS - 4', 'HSR - 4', 'PF - 15', '40'; las cotas son gráficos. Lectura visual previa en data/analysis/pdfs/p14-fichas-hembrillas-bornes.json (no re-verificada aquí): HBS - 4: cotas 15 / Ø 4 / 2,1 / 24,6 y ROSCA 12,50/0,75, sin unidad; el PDF no trae intensidad, tensión ni material para esta hembrilla, solo la web. Sobre los otros modelos del PDF: PF - 15 no tiene ficha de producto en la web (ningún nombre de product-map.json lo menciona) y HSR - 4 es la ficha 957.",
+    "Imagen única (id 1058, 'hembrilla-seguridad-HBS-torivac-600x600-4.png', 600×600): la biblioteca de medios tiene alt='' en todos los idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático, no descriptivo) y es el que se guarda en images[].alt. En las páginas EN/FR/DE la tarjeta de 'relacionados' muestra además la miniatura -300x300 con alt=\"\".",
+    "Imagen con id de otro idioma: la Store API devuelve el id ES 1058 también en los productos EN/FR/DE (images[].ids); la biblioteca de medios guarda copias WPML por idioma del mismo fichero: EN 3852, FR 3853, DE 9368 (adjuntas a los productos traducidos).",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/hembrilla-de-seguridad-hbs4/); el campo hreflang sí está completo (es, en, fr, de, x-default→ES). Ver docs/01-analisis/HALLAZGOS.md n.º 11. Meta description = primeras frases de la descripción corta, cortadas en límite de frase (nunca incluye la línea de colores ni el botón; en DE omite además 'Steckdose aus vernickeltem Messing.'); title = nombre + ' - Torivac'; sin focus keyword.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (outline: H3 de menú 'Products'/'Produits'/'Produkte', H4 de CTA, H2 de CTA, H2 de relacionados y el nombre del producto solo como H4 dentro de 'relacionados'); la ES sí tiene H1 = 'Hembrilla de seguridad HBS4' (precedido por el H3 'Productos' del menú). La ES no muestra bloque de relacionados; EN/FR/DE muestran 'Explore similar products' / 'Découvrez des produits similaires' / 'Ähnliche Produkte erkunden' con el propio producto como único elemento (extra_sections).",
+    "Plantilla de contacto (CTA) reutilizada sin adaptar: el texto habla de 'productos especializados para la regulación de la tensión' (plantilla común, no específica de hembrillas). DE: título 'KONTAKT US' (inglés mezclado) y casilla de consentimiento/botón en neerlandés ('Hij gaat akkoord met het privacybeleid.' / 'Versturen'); FR: 'Il a accepté et accepté la politique de confidentialité' (frase de consentimiento mal formada); EN 'CONTACT WITH US'. Se conserva en extra_sections.",
+    "Terminología inconsistente entre idiomas: 'hembrilla' → EN 'socket', FR 'prise' (toma de corriente), DE 'Buchse' en HB4 pero 'Steckdose' (toma de corriente) en HBS4/HR4/HSR4; 'casquillo' → EN 'socket'/'bushing', FR 'douille'/'prise', DE 'Buchse'/'Steckdose'. En DE el nombre de la ficha HB4 ('HB4-Buchse') no sigue el patrón de las otras tres ('Sicherheitssteckdose …'). Se conserva tal cual; a confirmar por un traductor técnico (FR 'prise' y DE 'Steckdose' son vocabulario de toma de corriente/enchufe).",
+    "Relación entre fichas (sin fusionar, como están en la web): HB4 y HR4 son variantes de 10 A y 20 A ('Idénticas características que las HB-4, pero con el casquillo reforzado para 20A'); HBS4 y HSR4 igual (10 A / 20 A). La conexión por faston o soldadura solo aparece en HB4/HBS4; HR4/HSR4 declaran solo soldadura. Decisión de modelado (familia con eje 'intensidad' o 4 fichas) pendiente del equipo.",
+    "Etiqueta del botón al PDF inconsistente: ES 'Ver ficha técnica' pero EN 'See data sheet' (el resto del lote: 'See technical data sheet') y FR 'Voir fiche technique' (el resto: 'Voir la fiche technique'). DE 'Siehe technisches Datenblatt' coincide con el resto.",
+    "Redacción: EN usa coma decimal en 'female faston 3,9' (la ficha EN de HB4 escribe '3.9mm'); DE 'Flachsteckhülse 3,9' y FR 'faston femelle 3,9' sin unidad; ES '3,9' sin unidad (la ficha HB4 escribe '3,9mm'). La web no indica la unidad (mm no se asume en HBS4). El nombre de archivo de la imagen incluye '600x600-4' (sufijo de importación). Se conserva todo tal cual.",
+    "Categorías: ES 'Hembrilla de seguridad HBS4' (id 85, hija de 'Hembrillas' id 83; el producto solo está asignado a la hija, product-map añade el padre en category_path_es); EN 'Safety socket HBS4' (647, 'socket-jack-hbs4'); FR 'Prise de sécurité HBS4' (652, 'prise-de-securite-hbs4'); DE 'Sicherheitssteckdose HBS4' (653, slug 'hbs4-veiligheidsaansluiting', en neerlandés)."
+   ]
+  },
+  {
+   "id_es": 957,
+   "slug": "hembrilla-de-seguridad-hsr4",
+   "url_es": "https://grupotorivac.com/product/hembrilla-de-seguridad-hsr4/",
+   "sku": "9d0144f29a4f",
+   "names": {
+    "es": "Hembrilla de seguridad HSR4",
+    "en": "HSR4 safety socket",
+    "fr": "Prise de sécurité HSR4",
+    "de": "Sicherheitssteckdose HSR4"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/hembrilla-de-seguridad-hsr4/",
+    "en": "https://grupotorivac.com/en/product/hsr4-safety-socket/",
+    "fr": "https://grupotorivac.com/fr/product/prise-de-securite-hsr4/",
+    "de": "https://grupotorivac.com/de/product/sicherheitssteckdose-hsr4/"
+   },
+   "ids": {
+    "es": 957,
+    "en": 16358,
+    "fr": 16359,
+    "de": 16360
+   },
+   "category_path_es": [
+    "Hembrillas",
+    "Hembrilla de seguridad HSR4"
+   ],
+   "categories_all_es": [
+    {
+     "id": 87,
+     "name": "Hembrilla de seguridad HSR4",
+     "slug": "hembrilla-de-seguridad-hsr4"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Intensidad máxima: 20A/230V.\n\nConexión por soldadura.\n\nIdénticas características que las HBS-4, pero con el casquillo reforzado para 20A.\n\nColores: negro, rojo, amarillo, verde y azul.\n\nVer ficha técnica",
+    "en": "Maximum current: 20A/230V.\n\nConnection by welding.\n\nIdentical characteristics as HBS-4, but with reinforced socket for 20A.\n\nColors: black, red, yellow, green and blue.\n\nSee technical data sheet",
+    "fr": "Courant maximum : 20A/230V.\n\nRaccordement par soudure.\n\nMêmes caractéristiques que HBS-4, mais avec prise renforcée 20A.\n\nCouleurs : noir, rouge, jaune, vert et bleu.\n\nVoir la fiche technique",
+    "de": "Maximalstrom: 20A/230V.\n\nAnschluss durch Schweißen.\n\nGleiche Eigenschaften wie HBS-4, aber mit verstärkter 20A-Steckdose.\n\nFarben: schwarz, rot, gelb, grün und blau.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HSR-torivac-600x600-4.png",
+     "alt": {
+      "es": "Hembrilla de seguridad HSR4",
+      "en": "HSR4 safety socket",
+      "fr": "Prise de sécurité HSR4",
+      "de": "Sicherheitssteckdose HSR4"
+     },
+     "id": 1059,
+     "ids": {
+      "es": 1059,
+      "en": 1059,
+      "fr": 1059,
+      "de": 1059
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/HEMBRILLAS2.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Intensidad máxima: 20A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:pagina",
+     "context": "meta description: Intensidad máxima: 20A/230V. Conexión por soldadura. Idénticas características que las HBS-4, pero con el casquillo reforzado para 20A."
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "Maximum current: 20A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:pagina",
+     "context": "meta description: Maximum current: 20A/230V. Connection by welding. Identical characteristics as HBS-4, but with reinforced socket for 20A."
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Courant maximum : 20A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:pagina",
+     "context": "meta description: Courant maximum : 20A/230V. Raccordement par soudure. Mêmes caractéristiques que HBS-4, mais avec prise renforcée 20A."
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Maximalstrom: 20A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:pagina",
+     "context": "meta description: Maximalstrom: 20A/230V. Anschluss durch Schweißen. Gleiche Eigenschaften wie HBS-4, aber mit verstärkter 20A-Steckdose."
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Color (negro, rojo, amarillo, verde y azul)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- HSR4 safety socket\n\nView full catalog",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Prise de sécurité HSR4\n\nVoir tout le catalogue",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Sicherheitssteckdose HSR4\n\nGesamten Katalog ansehen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Hembrilla de seguridad HSR4 - Torivac",
+     "meta_description": "Intensidad máxima: 20A/230V. Conexión por soldadura. Idénticas características que las HBS-4, pero con el casquillo reforzado para 20A.",
+     "og_title": "Hembrilla de seguridad HSR4 - Torivac",
+     "og_description": "Intensidad máxima: 20A/230V. Conexión por soldadura. Idénticas características que las HBS-4, pero con el casquillo reforzado para 20A.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HSR-torivac-600x600-4.png",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hsr4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:07",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__hembrilla-de-seguridad-hsr4.json"
+    },
+    "en": {
+     "title": "HSR4 safety socket - Torivac",
+     "meta_description": "Maximum current: 20A/230V. Connection by welding. Identical characteristics as HBS-4, but with reinforced socket for 20A.",
+     "og_title": "HSR4 safety socket - Torivac",
+     "og_description": "Maximum current: 20A/230V. Connection by welding. Identical characteristics as HBS-4, but with reinforced socket for 20A.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HSR-torivac-600x600-4.png",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hsr4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:21",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__hsr4-safety-socket.json"
+    },
+    "fr": {
+     "title": "Prise de sécurité HSR4 - Torivac",
+     "meta_description": "Courant maximum : 20A/230V. Raccordement par soudure. Mêmes caractéristiques que HBS-4, mais avec prise renforcée 20A.",
+     "og_title": "Prise de sécurité HSR4 - Torivac",
+     "og_description": "Courant maximum : 20A/230V. Raccordement par soudure. Mêmes caractéristiques que HBS-4, mais avec prise renforcée 20A.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HSR-torivac-600x600-4.png",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hsr4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:28",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__prise-de-securite-hsr4.json"
+    },
+    "de": {
+     "title": "Sicherheitssteckdose HSR4 - Torivac",
+     "meta_description": "Maximalstrom: 20A/230V. Anschluss durch Schweißen. Gleiche Eigenschaften wie HBS-4, aber mit verstärkter 20A-Steckdose.",
+     "og_title": "Sicherheitssteckdose HSR4 - Torivac",
+     "og_description": "Maximalstrom: 20A/230V. Anschluss durch Schweißen. Gleiche Eigenschaften wie HBS-4, aber mit verstärkter 20A-Steckdose.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HSR-torivac-600x600-4.png",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hsr4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:29",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__sicherheitssteckdose-hsr4.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "sin_referencias_comerciales",
+    "sku_no_comercial",
+    "sin_alt",
+    "imagen_con_id_de_otro_idioma",
+    "pdf_compartido_entre_fichas",
+    "pdf_solo_imagen",
+    "tension_sin_especificar_ca_cc",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "relacionados_autorreferente",
+    "plantilla_cta_mal_traducida",
+    "texto_en_idioma_incorrecto",
+    "texto_plantilla_repetido",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "traduccion_dudosa",
+    "nombre_de_archivo_poco_descriptivo"
+   ],
+   "gaps": [
+    "Descripción larga vacía en los 4 idiomas: la Store API devuelve description='' y la REST content.rendered='' (ids 957/16358/16359/16360). Todo el contenido de la ficha (intensidad, material, conexión, colores y botón de ficha técnica) está en short_description (en la REST, excerpt). description_text queda en '' y spec_tables=[]: la web no tiene tabla de modelos para este producto.",
+    "Sin referencia comercial: SKU '9d0144f29a4f' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia de fabricante; la Store API lo repite igual en EN/FR/DE. El modelo solo se identifica por el nombre ('HSR4'); orderable_items=[] porque no hay tabla de modelos. Grafías del modelo: nombre sin guion, texto de otras fichas con guion ('HB-4', 'HBS-4') y PDF con espacios ('HB - 4', 'HR - 4', 'HBS - 4', 'HSR - 4', según lectura visual previa).",
+    "Tensión: única mención '230V' dentro de 'Intensidad máxima: 20A/230V.' (web:corta y meta description de los 4 idiomas, 8 registros en voltage_mentions; el cuerpo renderizado solo repite la descripción corta). No indica si 230 V es tensión nominal o máxima, ni si es CA o CC. Intensidad máxima declarada: 20 A. Ninguna mención de potencia (VA, W, kVA, kW) en el nombre, la descripción corta, la meta ni la página renderizada: power_mentions=[]. Etiqueta de voltaje propuesta solo como '230 V (tipo no indicado)'.",
+    "Datos técnicos solo como frases en short_description (WooCommerce attributes=[] en los 4 idiomas): intensidad máxima, material (latón niquelado, poliamida 6/6 autoextinguible), tipo de conexión y colores. Variantes de pedido deducibles de la web: color (negro, rojo, amarillo, verde y azul); la conexión es solo por soldadura. Peso y dimensiones vacíos, sin etiquetas ni marcas. Sin precio: price '0', price_html vacío, is_purchasable=false y botón 'Leer más' (catálogo sin precios); is_in_stock=true sin cantidad.",
+    "Ficha técnica: HEMBRILLAS2.pdf (enlace en short_description y en la página, en los 4 idiomas). Es la página 40 del catálogo con tres modelos (HBS - 4, HSR - 4 y PF - 15) y la comparte la ficha 955 (HBS4); el enlace no indica cuál es el del producto. Su texto extraído (data/analysis/pdf-text/HEMBRILLAS2/p001.txt) solo trae 'BORNES HEMBRILLAS Y PORTAFUSIBLES', 'HBS - 4', 'HSR - 4', 'PF - 15', '40'; las cotas son gráficos. Lectura visual previa en data/analysis/pdfs/p14-fichas-hembrillas-bornes.json (no re-verificada aquí): HSR - 4: cotas 15 / Ø 4 / 2,1 / 25,5, sin cota ROSCA en el dibujo, sin unidad; el PDF no trae intensidad, tensión ni material para esta hembrilla, solo la web. Sobre los otros modelos del PDF: PF - 15 no tiene ficha de producto en la web (ningún nombre de product-map.json lo menciona) y HBS - 4 es la ficha 955.",
+    "Imagen única (id 1059, 'hembrilla-seguridad-HSR-torivac-600x600-4.png', 600×600): la biblioteca de medios tiene alt='' en todos los idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático, no descriptivo) y es el que se guarda en images[].alt. En las páginas EN/FR/DE la tarjeta de 'relacionados' muestra además la miniatura -300x300 con alt=\"\".",
+    "Imagen con id de otro idioma: la Store API devuelve el id ES 1059 también en los productos EN/FR/DE (images[].ids); la biblioteca de medios guarda copias WPML por idioma del mismo fichero: EN 3854, FR 3855, DE 9377 (adjuntas a los productos traducidos).",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/hembrilla-de-seguridad-hsr4/); el campo hreflang sí está completo (es, en, fr, de, x-default→ES). Ver docs/01-analisis/HALLAZGOS.md n.º 11. Meta description = primeras frases de la descripción corta, cortadas en límite de frase (nunca incluye la línea de colores ni el botón); title = nombre + ' - Torivac'; sin focus keyword.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (outline: H3 de menú 'Products'/'Produits'/'Produkte', H4 de CTA, H2 de CTA, H2 de relacionados y el nombre del producto solo como H4 dentro de 'relacionados'); la ES sí tiene H1 = 'Hembrilla de seguridad HSR4' (precedido por el H3 'Productos' del menú). La ES no muestra bloque de relacionados; EN/FR/DE muestran 'Explore similar products' / 'Découvrez des produits similaires' / 'Ähnliche Produkte erkunden' con el propio producto como único elemento (extra_sections).",
+    "Plantilla de contacto (CTA) reutilizada sin adaptar: el texto habla de 'productos especializados para la regulación de la tensión' (plantilla común, no específica de hembrillas). DE: título 'KONTAKT US' (inglés mezclado) y casilla de consentimiento/botón en neerlandés ('Hij gaat akkoord met het privacybeleid.' / 'Versturen'); FR: 'Il a accepté et accepté la politique de confidentialité' (frase de consentimiento mal formada); EN 'CONTACT WITH US'. Se conserva en extra_sections.",
+    "Terminología inconsistente entre idiomas: 'hembrilla' → EN 'socket', FR 'prise' (toma de corriente), DE 'Buchse' en HB4 pero 'Steckdose' (toma de corriente) en HBS4/HR4/HSR4; 'casquillo' → EN 'socket'/'bushing', FR 'douille'/'prise', DE 'Buchse'/'Steckdose'. En DE el nombre de la ficha HB4 ('HB4-Buchse') no sigue el patrón de las otras tres ('Sicherheitssteckdose …'). Se conserva tal cual; a confirmar por un traductor técnico (FR 'prise' y DE 'Steckdose' son vocabulario de toma de corriente/enchufe).",
+    "Relación entre fichas (sin fusionar, como están en la web): HB4 y HR4 son variantes de 10 A y 20 A ('Idénticas características que las HB-4, pero con el casquillo reforzado para 20A'); HBS4 y HSR4 igual (10 A / 20 A). La conexión por faston o soldadura solo aparece en HB4/HBS4; HR4/HSR4 declaran solo soldadura. Decisión de modelado (familia con eje 'intensidad' o 4 fichas) pendiente del equipo.",
+    "Traducción de 'Conexión por soldadura': EN 'Connection by welding' y DE 'Anschluss durch Schweißen' ('welding'/'Schweißen' designan soldadura por fusión), mientras HB4 y HBS4 usan 'solder' / 'Löten' (soldadura blanda) para la misma palabra ES; FR 'soudure'. Posible inconsistencia a confirmar. 'Casquillo reforzado' se traduce 'reinforced socket' (EN; la ficha EN de HR4 dice 'reinforced bushing'), 'prise renforcée' (FR) y 'verstärkter 20A-Steckdose' (DE). Se conserva.",
+    "Redacción DE: 'Maximalstrom' (HR4/HSR4) frente a 'Maximale Stromstärke' (HB4/HBS4) para 'Intensidad máxima'. El nombre de archivo de la imagen incluye '600x600-4' (sufijo de importación).",
+    "Categorías: ES 'Hembrilla de seguridad HSR4' (id 87, hija de 'Hembrillas' id 83; el producto solo está asignado a la hija); EN 'HSR4 safety socket' (648, 'socket-jack-hsr4'); FR 'Prise de sécurité HSR4' (654, 'prise-de-securite-hsr4'); DE 'Sicherheitssteckdose HSR4' (655, slug 'hsr4-veiligheidsaansluiting', en neerlandés).",
+    "Las referencias a otras fichas se escriben 'HBS-4' (con guion) mientras el nombre del producto es 'HBS4' y el PDF rotula 'HBS - 4'; el texto 'las HBS-4' no enlaza a la ficha 955."
+   ]
+  },
+  {
+   "id_es": 956,
+   "slug": "hembrilla-de-seguridad-hr4",
+   "url_es": "https://grupotorivac.com/product/hembrilla-de-seguridad-hr4/",
+   "sku": "f363f052982a",
+   "names": {
+    "es": "Hembrilla de seguridad HR4",
+    "en": "HR4 safety socket",
+    "fr": "Prise de sécurité HR4",
+    "de": "Sicherheitssteckdose HR4"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/hembrilla-de-seguridad-hr4/",
+    "en": "https://grupotorivac.com/en/product/hr4-safety-socket/",
+    "fr": "https://grupotorivac.com/fr/product/prise-de-securite-hr4/",
+    "de": "https://grupotorivac.com/de/product/sicherheitssteckdose-hr4/"
+   },
+   "ids": {
+    "es": 956,
+    "en": 16365,
+    "fr": 16366,
+    "de": 16367
+   },
+   "category_path_es": [
+    "Hembrillas",
+    "hembrilla de seguridad HR4"
+   ],
+   "categories_all_es": [
+    {
+     "id": 86,
+     "name": "hembrilla de seguridad HR4",
+     "slug": "hembrilla-de-seguridad-hr4"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Intensidad máxima: 20A/230V.\n\nConexión por soldadura.\n\nIdénticas características que las HB-4, pero con el casquillo reforzado para 20A.\n\nColores: negro, rojo, amarillo, verde y azul.\n\nVer ficha técnica",
+    "en": "Maximum current: 20A/230V.\n\nConnection by welding.\n\nIdentical characteristics as HB-4, but with reinforced bushing for 20A.\n\nColors: black, red, yellow, green and blue.\n\nSee technical data sheet",
+    "fr": "Courant maximum : 20A/230V.\n\nRaccordement par soudure.\n\nMêmes caractéristiques que HB-4, mais avec une prise renforcée de 20A.\n\nCouleurs : noir, rouge, jaune, vert et bleu.\n\nVoir la fiche technique",
+    "de": "Maximalstrom: 20A/230V.\n\nAnschluss durch Schweißen.\n\nGleiche Eigenschaften wie HB-4, aber mit verstärkter 20A-Steckdose.\n\nFarben: schwarz, rot, gelb, grün und blau.\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-hr4-torivac.jpg",
+     "alt": {
+      "es": "Hembrilla de seguridad HR4",
+      "en": "HR4 safety socket",
+      "fr": "Prise de sécurité HR4",
+      "de": "Sicherheitssteckdose HR4"
+     },
+     "id": 838,
+     "ids": {
+      "es": 838,
+      "en": 838,
+      "fr": 838,
+      "de": 838
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/HEMBRILLAS.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:corta",
+     "context": "Intensidad máxima: 20A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "es",
+     "source": "web:pagina",
+     "context": "meta description: Intensidad máxima: 20A/230V. Conexión por soldadura. Idénticas características que las HB-4, pero con el casquillo reforzado para 20A."
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:corta",
+     "context": "Maximum current: 20A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "en",
+     "source": "web:pagina",
+     "context": "meta description: Maximum current: 20A/230V. Connection by welding. Identical characteristics as HB-4, but with reinforced bushing for 20A."
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:corta",
+     "context": "Courant maximum : 20A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "fr",
+     "source": "web:pagina",
+     "context": "meta description: Courant maximum : 20A/230V. Raccordement par soudure. Mêmes caractéristiques que HB-4, mais avec une prise renforcée de 20A."
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:corta",
+     "context": "Maximalstrom: 20A/230V."
+    },
+    {
+     "raw": "230V",
+     "lang": "de",
+     "source": "web:pagina",
+     "context": "meta description: Maximalstrom: 20A/230V. Anschluss durch Schweißen. Gleiche Eigenschaften wie HB-4, aber mit verstärkter 20A-Steckdose."
+    }
+   ],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Color (negro, rojo, amarillo, verde y azul)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- HR4 safety socket\n\nView full catalog",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Prise de sécurité HR4\n\nVoir tout le catalogue",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Sicherheitssteckdose HR4\n\nGesamten Katalog ansehen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Hembrilla de seguridad HR4 - Torivac",
+     "meta_description": "Intensidad máxima: 20A/230V. Conexión por soldadura. Idénticas características que las HB-4, pero con el casquillo reforzado para 20A.",
+     "og_title": "Hembrilla de seguridad HR4 - Torivac",
+     "og_description": "Intensidad máxima: 20A/230V. Conexión por soldadura. Idénticas características que las HB-4, pero con el casquillo reforzado para 20A.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-hr4-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hr4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:07",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__hembrilla-de-seguridad-hr4.json"
+    },
+    "en": {
+     "title": "HR4 safety socket - Torivac",
+     "meta_description": "Maximum current: 20A/230V. Connection by welding. Identical characteristics as HB-4, but with reinforced bushing for 20A.",
+     "og_title": "HR4 safety socket - Torivac",
+     "og_description": "Maximum current: 20A/230V. Connection by welding. Identical characteristics as HB-4, but with reinforced bushing for 20A.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-hr4-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hr4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:30",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__hr4-safety-socket.json"
+    },
+    "fr": {
+     "title": "Prise de sécurité HR4 - Torivac",
+     "meta_description": "Courant maximum : 20A/230V. Raccordement par soudure. Mêmes caractéristiques que HB-4, mais avec une prise renforcée de 20A.",
+     "og_title": "Prise de sécurité HR4 - Torivac",
+     "og_description": "Courant maximum : 20A/230V. Raccordement par soudure. Mêmes caractéristiques que HB-4, mais avec une prise renforcée de 20A.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-hr4-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hr4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:31",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__prise-de-securite-hr4.json"
+    },
+    "de": {
+     "title": "Sicherheitssteckdose HR4 - Torivac",
+     "meta_description": "Maximalstrom: 20A/230V. Anschluss durch Schweißen. Gleiche Eigenschaften wie HB-4, aber mit verstärkter 20A-Steckdose.",
+     "og_title": "Sicherheitssteckdose HR4 - Torivac",
+     "og_description": "Maximalstrom: 20A/230V. Anschluss durch Schweißen. Gleiche Eigenschaften wie HB-4, aber mit verstärkter 20A-Steckdose.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-hr4-torivac.jpg",
+     "canonical": "https://grupotorivac.com/product/hembrilla-de-seguridad-hr4/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:31",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__sicherheitssteckdose-hr4.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "sin_referencias_comerciales",
+    "sku_no_comercial",
+    "sin_alt",
+    "imagen_con_id_de_otro_idioma",
+    "pdf_compartido_entre_fichas",
+    "pdf_solo_imagen",
+    "tension_sin_especificar_ca_cc",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "relacionados_autorreferente",
+    "plantilla_cta_mal_traducida",
+    "texto_en_idioma_incorrecto",
+    "texto_plantilla_repetido",
+    "terminologia_inconsistente_entre_idiomas",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "typo",
+    "terminologia_dudosa",
+    "traduccion_dudosa",
+    "imagen_extension_no_coincide_con_formato"
+   ],
+   "gaps": [
+    "Descripción larga vacía en los 4 idiomas: la Store API devuelve description='' y la REST content.rendered='' (ids 956/16365/16366/16367). Todo el contenido de la ficha (intensidad, material, conexión, colores y botón de ficha técnica) está en short_description (en la REST, excerpt). description_text queda en '' y spec_tables=[]: la web no tiene tabla de modelos para este producto.",
+    "Sin referencia comercial: SKU 'f363f052982a' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia de fabricante; la Store API lo repite igual en EN/FR/DE. El modelo solo se identifica por el nombre ('HR4'); orderable_items=[] porque no hay tabla de modelos. Grafías del modelo: nombre sin guion, texto de otras fichas con guion ('HB-4', 'HBS-4') y PDF con espacios ('HB - 4', 'HR - 4', 'HBS - 4', 'HSR - 4', según lectura visual previa).",
+    "Tensión: única mención '230V' dentro de 'Intensidad máxima: 20A/230V.' (web:corta y meta description de los 4 idiomas, 8 registros en voltage_mentions; el cuerpo renderizado solo repite la descripción corta). No indica si 230 V es tensión nominal o máxima, ni si es CA o CC. Intensidad máxima declarada: 20 A. Ninguna mención de potencia (VA, W, kVA, kW) en el nombre, la descripción corta, la meta ni la página renderizada: power_mentions=[]. Etiqueta de voltaje propuesta solo como '230 V (tipo no indicado)'.",
+    "Datos técnicos solo como frases en short_description (WooCommerce attributes=[] en los 4 idiomas): intensidad máxima, material (latón niquelado, poliamida 6/6 autoextinguible), tipo de conexión y colores. Variantes de pedido deducibles de la web: color (negro, rojo, amarillo, verde y azul); la conexión es solo por soldadura. Peso y dimensiones vacíos, sin etiquetas ni marcas. Sin precio: price '0', price_html vacío, is_purchasable=false y botón 'Leer más' (catálogo sin precios); is_in_stock=true sin cantidad.",
+    "Ficha técnica: HEMBRILLAS.pdf (enlace en short_description y en la página, en los 4 idiomas). Es la página 39 del catálogo con tres modelos (BPB - 30 A / 230V., HB - 4 y HR - 4) y la comparte la ficha 954 (HB4); el enlace no indica cuál es el del producto. Su texto extraído (data/analysis/pdf-text/HEMBRILLAS/p001.txt) solo trae 'BORNES HEMBRILLAS Y PORTAFUSIBLES', 'BPB - 30 A / 230V.', 'HB - 4', 'HR - 4', '39'; las cotas son gráficos. Riesgo de falso positivo al etiquetar voltaje desde este PDF: el '230V.' del texto extraído pertenece al rótulo 'BPB - 30 A / 230V.' (modelo que no es de esta ficha), no a la hembrilla de esta ficha. Lectura visual previa en data/analysis/pdfs/p14-fichas-hembrillas-bornes.json (no re-verificada aquí): HR - 4: cotas Ø 11 / Ø 4 / 25 y ROSCA 8/0,75, sin unidad; el PDF no trae intensidad, tensión ni material para esta hembrilla, solo la web. Sobre los otros modelos del PDF: BPB - 30 A / 230V. no tiene ficha de producto en la web (ningún nombre de product-map.json lo menciona) y HB - 4 es la ficha 954.",
+    "Imagen única (id 838, 'hembrilla-banana-hr4-torivac.jpg', 800×800): la biblioteca de medios tiene alt='' en todos los idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático, no descriptivo) y es el que se guarda en images[].alt. En las páginas EN/FR/DE la tarjeta de 'relacionados' muestra además la miniatura -300x300 con alt=\"\". El fichero 'hembrilla-banana-hr4-torivac.jpg' es en realidad un PNG (copia local 47e0e72e-hembrilla-banana-hr4-torivac.jpg: PNG 800×800), coherente con el mime image/png de media-index y de og:image (Yoast); extensión .jpg y formato no coinciden.",
+    "Imagen con id de otro idioma: la Store API devuelve el id ES 838 también en los productos EN/FR/DE (images[].ids); la biblioteca de medios guarda copias WPML por idioma del mismo fichero: EN 3794, FR 3795, DE 9373 (adjuntas a los productos traducidos).",
+    "Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/hembrilla-de-seguridad-hr4/); el campo hreflang sí está completo (es, en, fr, de, x-default→ES). Ver docs/01-analisis/HALLAZGOS.md n.º 11. Meta description = primeras frases de la descripción corta, cortadas en límite de frase (nunca incluye la línea de colores ni el botón); title = nombre + ' - Torivac'; sin focus keyword.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (outline: H3 de menú 'Products'/'Produits'/'Produkte', H4 de CTA, H2 de CTA, H2 de relacionados y el nombre del producto solo como H4 dentro de 'relacionados'); la ES sí tiene H1 = 'Hembrilla de seguridad HR4' (precedido por el H3 'Productos' del menú). La ES no muestra bloque de relacionados; EN/FR/DE muestran 'Explore similar products' / 'Découvrez des produits similaires' / 'Ähnliche Produkte erkunden' con el propio producto como único elemento (extra_sections).",
+    "Plantilla de contacto (CTA) reutilizada sin adaptar: el texto habla de 'productos especializados para la regulación de la tensión' (plantilla común, no específica de hembrillas). DE: título 'KONTAKT US' (inglés mezclado) y casilla de consentimiento/botón en neerlandés ('Hij gaat akkoord met het privacybeleid.' / 'Versturen'); FR: 'Il a accepté et accepté la politique de confidentialité' (frase de consentimiento mal formada); EN 'CONTACT WITH US'. Se conserva en extra_sections.",
+    "Terminología inconsistente entre idiomas: 'hembrilla' → EN 'socket', FR 'prise' (toma de corriente), DE 'Buchse' en HB4 pero 'Steckdose' (toma de corriente) en HBS4/HR4/HSR4; 'casquillo' → EN 'socket'/'bushing', FR 'douille'/'prise', DE 'Buchse'/'Steckdose'. En DE el nombre de la ficha HB4 ('HB4-Buchse') no sigue el patrón de las otras tres ('Sicherheitssteckdose …'). Se conserva tal cual; a confirmar por un traductor técnico (FR 'prise' y DE 'Steckdose' son vocabulario de toma de corriente/enchufe).",
+    "Relación entre fichas (sin fusionar, como están en la web): HB4 y HR4 son variantes de 10 A y 20 A ('Idénticas características que las HB-4, pero con el casquillo reforzado para 20A'); HBS4 y HSR4 igual (10 A / 20 A). La conexión por faston o soldadura solo aparece en HB4/HBS4; HR4/HSR4 declaran solo soldadura. Decisión de modelado (familia con eje 'intensidad' o 4 fichas) pendiente del equipo.",
+    "Nombre aparentemente contradictorio: la ficha se llama 'Hembrilla de seguridad HR4' (y EN 'HR4 safety socket', FR 'Prise de sécurité HR4', DE 'Sicherheitssteckdose HR4'), pero su texto dice 'Idénticas características que las HB-4' (la ficha 'Hembrilla HB4', que no lleva 'de seguridad' en el nombre) y su imagen se llama 'hembrilla-banana-hr4-torivac.jpg' ('banana', mientras HBS4/HSR4 usan 'seguridad'). La web no define qué significa 'de seguridad'. Se conserva; confirmar con Torivac si HR4 es realmente de seguridad.",
+    "Categoría con minúscula inicial en los tres idiomas: ES 'hembrilla de seguridad HR4' (id 86), EN 'safety socket HR4' (649, slug 'socket-jack-hr4'), FR 'prise de sécurité HR4' (656); DE 'Sicherheitssteckdose HR4' (657) con slug 'hr4-veiligheidsaansluiting' (neerlandés). El nombre del producto sí lleva mayúscula.",
+    "Traducción de 'Conexión por soldadura': EN 'Connection by welding' y DE 'Anschluss durch Schweißen' ('welding'/'Schweißen' designan soldadura por fusión), mientras las fichas HB4 y HBS4 traducen la misma palabra ES 'soldadura' como 'solder' / 'Löten' (soldadura blanda); FR usa 'soudure' en todas. Posible inconsistencia a confirmar. Además 'casquillo reforzado' se traduce 'reinforced bushing' (EN), 'prise renforcée' (FR) y 'verstärkter 20A-Steckdose' (DE): FR y DE usan términos de toma de corriente. Se conserva.",
+    "Las referencias a otras fichas se escriben 'HB-4' (con guion) mientras el nombre del producto es 'HB4' y el PDF rotula 'HB - 4'; el texto 'las HB-4' no enlaza a la ficha 954.",
+    "Redacción DE: 'Maximalstrom' (HR4/HSR4) frente a 'Maximale Stromstärke' (HB4/HBS4) para 'Intensidad máxima'."
+   ]
+  }
+ ]
+}

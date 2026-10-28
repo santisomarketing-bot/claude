@@ -65,7 +65,7 @@ ${site.demo ? `<div class="demo-ribbon no-print" role="note">${t('demo_banner', 
 <div class="lang-banner no-print" id="lang-banner" hidden><div class="container"><span data-lang-msg></span><a class="btn sm" href="#" data-lang-go></a><button class="btn sm ghost" type="button" data-lang-keep>${t('lang_dismiss', lang)}</button></div></div>
 <header class="site-header no-print" id="site-header">
   <div class="container bar">
-    <a class="brand" href="${attr(ctx.href(site.home[lang]))}" aria-label="Torivac"><img src="${ctx.asset(site.logo)}" alt="Torivac" width="150" height="54"></a>
+    <a class="brand" href="${attr(ctx.href(site.home[lang]))}" aria-label="Torivac"><img src="${ctx.asset(site.logo)}" alt="Torivac" width="54" height="54"></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-toggle>☰ ${t('menu', lang)}</button>
     <nav class="nav" id="main-nav" aria-label="${attr(t('menu', lang))}">${navHtml}<a class="btn sm header-quote" href="${attr(ctx.href(site.quote[lang]))}" data-quote-link>${t('quote', lang)} <span class="count" data-quote-count>0</span></a></nav>
     <div class="lang" role="group" aria-label="${attr(t('language', lang))}">${langLinks}</div>
@@ -77,14 +77,14 @@ ${body}
 </main>
 <footer class="site-footer on-dark">
   <div class="container">
-    <div class="logo-row"><img src="${ctx.asset(site.logo)}" alt="Torivac" width="190" height="84" loading="lazy"></div>
+    <div class="logo-row"><img src="${ctx.asset(site.logo)}" alt="Torivac" width="84" height="84" loading="lazy"></div>
     <div class="facts">
       <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 21V5l9-2v18M13 8h7v13M4 21h16M7 8h3M7 12h3M7 16h3M16 12h1M16 16h1"/></svg><span>${site.meta.contact.address.map(esc).join('<br>')}</span></span>
       <a class="fact" href="tel:${attr(site.meta.contact.phone.replace(/\s/g, ''))}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>${esc(site.meta.contact.phone)}</a>
       <a class="fact" href="mailto:${attr(site.meta.contact.email)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>${esc(site.meta.contact.email)}</a>
     </div>
     <p class="legal">${esc(f.copyright)} ${f.links.map((l) => `<a href="${attr(l.href)}">${esc(l.label)}</a>`).join(' | ')}<br>${esc(f.devBy)} <a href="https://santisomarketing.com/" target="_blank" rel="noopener">Santiso Marketing</a></p>
-    <div class="funding"><img src="${ctx.asset(site.funding[lang].img)}" alt="Cofinanciado por la Unión Europea · Ministerio de Hacienda · Fondos Europeos" width="520" height="68" loading="lazy"><p>${esc(f.funding)}</p></div>
+    <div class="funding"><img src="${ctx.asset(site.funding[lang].img)}" alt="Cofinanciado por la Unión Europea · Ministerio de Hacienda · Fondos Europeos" width="${site.funding[lang].w}" height="${site.funding[lang].h}" loading="lazy"><p>${esc(f.funding)}</p></div>
   </div>
 </footer>
 <div class="fab-stack no-print">

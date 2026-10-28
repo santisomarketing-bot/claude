@@ -5,6 +5,8 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:cal
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:var(--fs-2);line-height:var(--lh);font-weight:400;font-synthesis:none;text-rendering:optimizeLegibility}
 img,svg,video{max-width:100%;height:auto;display:block}
 img{background:transparent}
+/* palabras largas (alemán: «Datenschutzbestimmungen») no deben desbordar en móvil: se parten con guion (lang del <html>) o, si no, donde haga falta */
+h1,h2,h3,h4,h5,h6,.tile span,.pcard h3,.prose{overflow-wrap:break-word;hyphens:auto}
 h1,h2,h3,h4,h5,h6{font-family:var(--font-display);font-weight:600;line-height:1.12;margin:0 0 var(--s-4);letter-spacing:.01em;color:var(--ink)}
 h1{font-size:var(--fs-7);font-weight:300}
 h2{font-size:var(--fs-6);color:var(--copper-strong)}

@@ -146,6 +146,10 @@ def main():
             if st in ("missing", "partial", "identical_to_es"):
                 n += 1
                 proposals.append({"id": f"PR-{n:03d}", "status": "pending", "type": "missing_translation", "product_id": p["id"], "product_name": p["name"]["es"], "lang": l, "field": f"description[{l}]", "title": {"missing": "Falta la traducción", "partial": "Traducción incompleta", "identical_to_es": "Texto sin traducir (idéntico al español)"}[st], "web_value": st, "pdf_value": None, "severity": "media", "recommendation": "Traducir antes de publicar; mientras tanto la web muestra el texto en español con aviso.", "confidence": "alta"})
+    # hallazgos de idioma de la prueba de UX (texto en otro idioma sin aviso)
+    for x in jl(AN / "ux-proposals-raw.json", []) or []:
+        n += 1
+        proposals.append({"id": f"PR-{n:03d}", "status": "pending", **x})
     # enlaces de traducción (WPML) incoherentes con el árbol de categorías → propuesta (la web original los tiene mal enlazados)
     for c in jl(CAT / "categories.json", []) or []:
         for l, cf in (c.get("wpml_conflict") or {}).items():

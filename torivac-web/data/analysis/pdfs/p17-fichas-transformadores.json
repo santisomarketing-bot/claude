@@ -151,7 +151,7 @@
      "page": 1
     },
     {
-     "fact": "Conexionado configurable según las necesidades de cada cliente (bajo petición)",
+     "fact": "Conexionado configurable según las necesidades de cada cliente",
      "page": 1
     },
     {
@@ -159,7 +159,7 @@
      "page": 1
     },
     {
-     "fact": "La ficha de la serie TCI no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, cotas y peso",
+     "fact": "En texto y tablas, la ficha de la serie TCI no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, cotas y peso. La etiqueta de la foto de ejemplo sí lleva potencia, tensiones, intensidad y frecuencia (lectura dudosa, ver uncertain)",
      "page": 1
     },
     {
@@ -190,6 +190,11 @@
     },
     {
      "page": 1,
+     "item": "Etiqueta de ejemplar en la foto de la serie TCI (lectura probable): 'POTENCIA 50VA; PRIMARIO 230v (Az-Az) 50-60Hz; SECUNDARIO 10v (Bl-Bl) 5A'",
+     "why": "Texto de una foto de baja resolución, no de una tabla: la lectura no es segura. Si es correcta, 50 VA no figura entre las potencias de la tabla TCI (15, 30, 60, 100, 200, 400 VA), que no da tensiones ni intensidades. No publicar; sugiere primario 230 V con terminales Azul-Azul y 50-60 Hz, a confirmar con Torivac."
+    },
+    {
+     "page": 1,
      "item": "Marcado CE visible en la etiqueta del producto en la foto",
      "why": "Solo se ve en la imagen; el texto no menciona certificaciones ni normas. No publicar como certificación sin confirmarlo con Torivac."
     },
@@ -198,7 +203,31 @@
      "item": "Contenido duplicado en Serie-TE-Serie-TCI.pdf (parte TCI)",
      "why": "Las tablas y textos coinciden fila a fila con ese PDF (comprobado por script); se extraen igualmente. Sin discrepancias de cifras."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "other_facts: conexionado",
+     "was": "Conexionado configurable según las necesidades de cada cliente (bajo petición)",
+     "now": "Conexionado configurable según las necesidades de cada cliente",
+     "why": "'(bajo petición)' no está en el PDF: el texto solo dice 'Se puede configurar el conexionado según las necesidades de cada cliente'."
+    },
+    {
+     "page": 1,
+     "item": "other_facts: datos que no indica la ficha TCI",
+     "was": "La ficha de la serie TCI no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, cotas y peso",
+     "now": "En texto y tablas, la ficha de la serie TCI no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, cotas y peso. La etiqueta de la foto de ejemplo sí lleva potencia, tensiones, intensidad y frecuencia (lectura dudosa, ver uncertain)",
+     "why": "La foto de ejemplar lleva una etiqueta con potencia, tensiones, intensidades y frecuencia. La afirmación absoluta era inexacta: solo vale para el texto y las tablas. Esas cifras de la foto no se publican y quedan como propuesta en uncertain."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: etiqueta de la foto TCI",
+     "was": "(no figuraba)",
+     "now": "Etiqueta de ejemplar en la foto de la serie TCI (lectura probable): 'POTENCIA 50VA; PRIMARIO 230v (Az-Az) 50-60Hz; SECUNDARIO 10v (Bl-Bl) 5A'",
+     "why": "Omisión: la foto TCI lleva una etiqueta con potencia, primario y secundario, igual que la foto TE (que sí estaba listada). Se registra como propuesta no publicable; las cifras no están en el texto de la página."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Carcateristicas_transformadores_toroidales_Torivac_serie_TE.pdf",
@@ -221,7 +250,7 @@
       "Ventaja indicada": "permiten alargar la vida y mejorar el aislamiento del transformador",
       "Ambiente indicado": "ambientes húmedos o con polvo",
       "Título de la tabla": "Transformadores encapsulados en cajas / Transformers packed in casing",
-      "Cabeceras de la tabla": "VA; Ø mm. / Ø mm.; Altura mm / Height mm.; Kg.; Fijación / Mounting",
+      "Cabeceras de la tabla": "VA; Ø mm.; Altura mm / Height mm.; Kg.; Fijación / Mounting",
       "Rango de potencias en la tabla": "15 VA a 750 VA"
      },
      "models": [
@@ -484,7 +513,7 @@
      "page": 1
     },
     {
-     "fact": "La ficha de la serie TE no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, dimensiones, peso y fijación",
+     "fact": "En texto y tablas, la ficha de la serie TE no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, dimensiones, peso y fijación. La etiqueta de la foto de ejemplo sí lleva potencia, tensiones, intensidades y frecuencia (ver uncertain)",
      "page": 1
     },
     {
@@ -528,7 +557,24 @@
      "item": "Contenido duplicado en Serie-TE-Serie-TCI.pdf (parte TE)",
      "why": "Las tablas y textos coinciden fila a fila con ese PDF (comprobado por script); se extraen igualmente. Sin discrepancias de cifras."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[Serie TE].general_specs['Cabeceras de la tabla']",
+     "was": "VA; Ø mm. / Ø mm.; Altura mm / Height mm.; Kg.; Fijación / Mounting",
+     "now": "VA; Ø mm.; Altura mm / Height mm.; Kg.; Fijación / Mounting",
+     "why": "En la tabla renderizada la cabecera del diámetro es solo 'Ø mm.' (Ø sobre mm.); no existe versión inglesa de esa cabecera. 'Ø mm. / Ø mm.' era un duplicado de transcripción."
+    },
+    {
+     "page": 1,
+     "item": "other_facts: datos que no indica la ficha TE",
+     "was": "La ficha de la serie TE no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, dimensiones, peso y fijación",
+     "now": "En texto y tablas, la ficha de la serie TE no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, dimensiones, peso y fijación. La etiqueta de la foto de ejemplo sí lleva potencia, tensiones, intensidades y frecuencia (ver uncertain)",
+     "why": "La foto de ejemplar lleva una etiqueta con potencia, tensiones, intensidades y frecuencia. La afirmación absoluta era inexacta: solo vale para el texto y las tablas. Esas cifras de la foto no se publican y quedan como propuesta en uncertain."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Carcateristicas_transformadores_toroidales_Torivac_serie_TT.pdf",
@@ -1131,6 +1177,12 @@
      "normalized_hint": "230 V (primario)"
     },
     {
+     "raw": "230 V",
+     "page": 1,
+     "context": "T.T Serie (Standard in stock) 230 V Secondaries in serially or in parallel",
+     "normalized_hint": "230 V (primario)"
+    },
+    {
      "raw": "2x10",
      "page": 1,
      "context": "columna V de la tabla (dos secundarios idénticos)",
@@ -1213,7 +1265,7 @@
      "page": 1
     },
     {
-     "fact": "Esquema de conexión (dibujo): primario con dos terminales Azul; terminales Rojo, Amarillo, Blanco y Negro en el otro lado; serie = unir amarillo con blanco, paralelo = unir rojo con blanco y amarillo con negro",
+     "fact": "Esquema de conexión (dibujo): dos terminales Azul en un lado del esquema (sin rótulo de primario/secundario); terminales Rojo, Amarillo, Blanco y Negro en el otro lado. Según el texto de la ficha: serie = unir amarillo con blanco, paralelo = unir rojo con blanco y amarillo con negro",
      "page": 1
     },
     {
@@ -1250,7 +1302,7 @@
     {
      "page": 1,
      "item": "Datos no incluidos en la ficha TT",
-     "why": "No se indican frecuencia, clase de aislamiento, tensión de ensayo ni normas; no se deben añadir sin otra fuente."
+     "why": "En texto y tablas no se indican frecuencia, clase de aislamiento, tensión de ensayo ni normas; no se deben añadir sin otra fuente. La etiqueta de la tapa de la caja en la foto lleva texto (potencia, primario, secundarios, fecha, referencia) demasiado borroso para transcribirlo con certeza: no usarlo."
     },
     {
      "page": 1,
@@ -1262,7 +1314,31 @@
      "item": "Contenido duplicado en Serie-TT.pdf",
      "why": "Las tablas y textos coinciden fila a fila con ese PDF (comprobado por script); se extraen igualmente. Sin discrepancias de cifras. Numeración impresa distinta (16 aquí, 17 en Serie-TT.pdf): ediciones o maquetaciones distintas del mismo catálogo."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "other_facts: esquema de conexión",
+     "was": "Esquema de conexión (dibujo): primario con dos terminales Azul; terminales Rojo, Amarillo, Blanco y Negro en el otro lado; serie = unir amarillo con blanco, paralelo = unir rojo con blanco y amarillo con negro",
+     "now": "Esquema de conexión (dibujo): dos terminales Azul en un lado del esquema (sin rótulo de primario/secundario); terminales Rojo, Amarillo, Blanco y Negro en el otro lado. Según el texto de la ficha: serie = unir amarillo con blanco, paralelo = unir rojo con blanco y amarillo con negro",
+     "why": "El dibujo solo rotula colores; llamar 'primario' a los terminales Azul es una inferencia (ya recogida como propuesta en uncertain) y no puede figurar como dato. La regla serie/paralelo viene del texto, no del dibujo."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions",
+     "was": "(ausente)",
+     "now": "{\"raw\": \"230 V\", \"page\": 1, \"context\": \"T.T Serie (Standard in stock) 230 V Secondaries in serially or in parallel\", \"normalized_hint\": \"230 V (primario)\"}",
+     "why": "Omisión: el subtítulo inglés de la tabla principal repite '230 V' y no estaba en voltage_mentions (solo la versión en español). Se añade para que recoja todas las tensiones de la página."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: Datos no incluidos en la ficha TT",
+     "was": "No se indican frecuencia, clase de aislamiento, tensión de ensayo ni normas; no se deben añadir sin otra fuente.",
+     "now": "En texto y tablas no se indican frecuencia, clase de aislamiento, tensión de ensayo ni normas; no se deben añadir sin otra fuente. La etiqueta de la tapa de la caja en la foto lleva texto (potencia, primario, secundarios, fecha, referencia) demasiado borroso para transcribirlo con certeza: no usarlo.",
+     "why": "La foto de la caja lleva una etiqueta con texto de potencia, tensiones y frecuencia (casi ilegible); decir que la ficha 'no indica frecuencia' sin matiz era inexacto. No se transcriben cifras de la etiqueta por no ser legibles."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Serie-TE-Serie-TCI.pdf",
@@ -1285,7 +1361,7 @@
       "Ventaja indicada": "permiten alargar la vida y mejorar el aislamiento del transformador",
       "Ambiente indicado": "ambientes húmedos o con polvo",
       "Título de la tabla": "Transformadores encapsulados en cajas / Transformers packed in casing",
-      "Cabeceras de la tabla": "VA; Ø mm. / Ø mm.; Altura mm / Height mm.; Kg.; Fijación / Mounting",
+      "Cabeceras de la tabla": "VA; Ø mm.; Altura mm / Height mm.; Kg.; Fijación / Mounting",
       "Rango de potencias en la tabla": "15 VA a 750 VA"
      },
      "models": [
@@ -1659,47 +1735,47 @@
      "page": 1
     },
     {
-     "fact": "Material y acabado: transformadores de la serie TT encapsulados con resina de epoxi, en cajas de PVC",
+     "fact": "[Serie TE] Material y acabado: transformadores de la serie TT encapsulados con resina de epoxi, en cajas de PVC",
      "page": 1
     },
     {
-     "fact": "Aplicación indicada: ambientes húmedos o con polvo",
+     "fact": "[Serie TE] Aplicación indicada: ambientes húmedos o con polvo",
      "page": 1
     },
     {
-     "fact": "Beneficio indicado: el encapsulado permite alargar la vida y mejorar el aislamiento del transformador",
+     "fact": "[Serie TE] Beneficio indicado: el encapsulado permite alargar la vida y mejorar el aislamiento del transformador",
      "page": 1
     },
     {
-     "fact": "Dibujo de cotas con rótulos Ø, ALT y TOR; fijación con tornillo, tuerca y arandela (rótulo 'Fijación / Fixació / Mounting'); cables de salida en un lateral",
+     "fact": "[Serie TE] Dibujo de cotas con rótulos Ø, ALT y TOR; tornillo, tuerca y arandela de fijación dibujados; cables de salida en un lateral. A diferencia de la ficha individual, este dibujo no lleva el rótulo 'Fijación / Fixació / Mounting'",
      "page": 1
     },
     {
-     "fact": "La ficha de la serie TE no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, dimensiones, peso y fijación",
+     "fact": "[Serie TE] En texto y tablas no se indican tensiones, frecuencia, códigos de pedido ni normas; solo potencia, dimensiones, peso y fijación. La etiqueta de la foto de ejemplo sí lleva potencia, tensiones, intensidades y frecuencia, pero es casi ilegible en esta página (ver uncertain)",
      "page": 1
     },
     {
-     "fact": "Material y acabado: transformadores de la serie TT encapsulados en resina de epoxi, en cajas de PVC",
+     "fact": "[Serie TCI] Material y acabado: transformadores de la serie TT encapsulados en resina de epoxi, en cajas de PVC",
      "page": 1
     },
     {
-     "fact": "Aplicación indicada: montaje directo sobre circuitos impresos, con conexión interna a los pins",
+     "fact": "[Serie TCI] Aplicación indicada: montaje directo sobre circuitos impresos, con conexión interna a los pins",
      "page": 1
     },
     {
-     "fact": "Raster entre pins de 5mm; el número de pins varía según el tamaño de la caja",
+     "fact": "[Serie TCI] Raster entre pins de 5mm; el número de pins varía según el tamaño de la caja",
      "page": 1
     },
     {
-     "fact": "Conexionado configurable según las necesidades de cada cliente (bajo petición)",
+     "fact": "[Serie TCI] Conexionado configurable según las necesidades de cada cliente",
      "page": 1
     },
     {
-     "fact": "Dibujos con cotas A a G (alzado, planta y vista inferior de pins); las letras no se definen en texto",
+     "fact": "[Serie TCI] Dibujos con cotas A a G (alzado, planta y vista inferior de pins); las letras no se definen en texto",
      "page": 1
     },
     {
-     "fact": "La ficha de la serie TCI no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, cotas y peso",
+     "fact": "[Serie TCI] En texto y tablas no se indican tensiones, frecuencia, códigos de pedido ni normas; solo potencia, cotas y peso. La etiqueta de la foto de ejemplo sí lleva potencia, tensiones, intensidad y frecuencia, pero es poco legible en esta página (ver uncertain)",
      "page": 1
     }
    ],
@@ -1723,7 +1799,7 @@
     {
      "page": 1,
      "item": "Etiqueta de ejemplar en la foto de la serie TE: 'POTENCIA 170VA; PRIMARIO 230v (Az-Az) 50/60Hz; SECUNDARIO 50v (Ne-Ne) 3A, 85v (Bl-Bl) 12A'",
-     "why": "Texto de una foto, no de una tabla; las cifras no son coherentes entre sí (50 V x 3 A + 85 V x 12 A no suma 170 VA) y no se corrigen. No publicar; sugiere primario 230 V con terminales Azul-Azul y 50/60 Hz, a confirmar."
+     "why": "Texto de una foto, no de una tabla; las cifras no son coherentes entre sí (50 V x 3 A + 85 V x 12 A no suma 170 VA) y no se corrigen. No publicar; sugiere primario 230 V con terminales Azul-Azul y 50/60 Hz, a confirmar. En esta página la foto es de menor resolución y la etiqueta apenas se lee; la lectura procede de la ficha individual de la serie TE (misma foto, verificada con zoom)."
     },
     {
      "page": 1,
@@ -1742,6 +1818,11 @@
     },
     {
      "page": 1,
+     "item": "Etiqueta de ejemplar en la foto de la serie TCI (lectura probable): 'POTENCIA 50VA; PRIMARIO 230v (Az-Az) 50-60Hz; SECUNDARIO 10v (Bl-Bl) 5A'",
+     "why": "Texto de una foto de baja resolución, no de una tabla: la lectura no es segura. Si es correcta, 50 VA no figura entre las potencias de la tabla TCI (15, 30, 60, 100, 200, 400 VA), que no da tensiones ni intensidades. No publicar; sugiere primario 230 V con terminales Azul-Azul y 50-60 Hz, a confirmar con Torivac. En esta página la foto es de menor resolución y la etiqueta apenas se lee; la lectura procede de la ficha individual TCI (misma foto)."
+    },
+    {
+     "page": 1,
      "item": "Marcado CE visible en la etiqueta del producto en la foto",
      "why": "Solo se ve en la imagen; el texto no menciona certificaciones ni normas. No publicar como certificación sin confirmarlo con Torivac."
     },
@@ -1750,7 +1831,66 @@
      "item": "Contenido duplicado en Carcateristicas_transformadores_toroidales_Torivac_serie_TE.pdf y ..._serie_TCI.pdf",
      "why": "Las tablas y textos coinciden fila a fila con ese PDF (comprobado por script); se extraen igualmente. Sin discrepancias de cifras. same_text_as del trabajo está vacío porque la maquetación difiere, pero el contenido es el mismo."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "families[Serie TE].general_specs['Cabeceras de la tabla']",
+     "was": "VA; Ø mm. / Ø mm.; Altura mm / Height mm.; Kg.; Fijación / Mounting",
+     "now": "VA; Ø mm.; Altura mm / Height mm.; Kg.; Fijación / Mounting",
+     "why": "En la tabla renderizada la cabecera del diámetro es solo 'Ø mm.' (Ø sobre mm.); no existe versión inglesa de esa cabecera. 'Ø mm. / Ø mm.' era un duplicado de transcripción."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: etiqueta de la foto TCI",
+     "was": "(no figuraba)",
+     "now": "Etiqueta de ejemplar en la foto de la serie TCI (lectura probable): 'POTENCIA 50VA; PRIMARIO 230v (Az-Az) 50-60Hz; SECUNDARIO 10v (Bl-Bl) 5A'",
+     "why": "Omisión: la foto TCI lleva una etiqueta con potencia, primario y secundario, igual que la foto TE (que sí estaba listada). Se registra como propuesta no publicable; las cifras no están en el texto de la página."
+    },
+    {
+     "page": 1,
+     "item": "other_facts: dibujo de la serie TE",
+     "was": "Dibujo de cotas con rótulos Ø, ALT y TOR; fijación con tornillo, tuerca y arandela (rótulo 'Fijación / Fixació / Mounting'); cables de salida en un lateral",
+     "now": "[Serie TE] Dibujo de cotas con rótulos Ø, ALT y TOR; tornillo, tuerca y arandela de fijación dibujados; cables de salida en un lateral. A diferencia de la ficha individual, este dibujo no lleva el rótulo 'Fijación / Fixació / Mounting'",
+     "why": "Dato de otra página: el rótulo 'Fijación / Fixació / Mounting' solo aparece en la ficha individual de la serie TE (Carcateristicas_..._TE.pdf). En el dibujo renderizado de esta página solo hay Ø, ALT y TOR."
+    },
+    {
+     "page": 1,
+     "item": "other_facts: datos que no indica la serie TE",
+     "was": "La ficha de la serie TE no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, dimensiones, peso y fijación",
+     "now": "[Serie TE] En texto y tablas no se indican tensiones, frecuencia, códigos de pedido ni normas; solo potencia, dimensiones, peso y fijación. La etiqueta de la foto de ejemplo sí lleva potencia, tensiones, intensidades y frecuencia, pero es casi ilegible en esta página (ver uncertain)",
+     "why": "La foto de ejemplar lleva una etiqueta con potencia, tensiones, intensidades y frecuencia. La afirmación absoluta era inexacta: solo vale para el texto y las tablas. Esas cifras de la foto no se publican y quedan como propuesta en uncertain."
+    },
+    {
+     "page": 1,
+     "item": "other_facts: conexionado (serie TCI)",
+     "was": "Conexionado configurable según las necesidades de cada cliente (bajo petición)",
+     "now": "[Serie TCI] Conexionado configurable según las necesidades de cada cliente",
+     "why": "'(bajo petición)' no está en el PDF: el texto solo dice 'Se puede configurar el conexionado según las necesidades de cada cliente'."
+    },
+    {
+     "page": 1,
+     "item": "other_facts: datos que no indica la serie TCI",
+     "was": "La ficha de la serie TCI no indica tensiones, frecuencia, códigos de pedido ni normas; solo potencia, cotas y peso",
+     "now": "[Serie TCI] En texto y tablas no se indican tensiones, frecuencia, códigos de pedido ni normas; solo potencia, cotas y peso. La etiqueta de la foto de ejemplo sí lleva potencia, tensiones, intensidad y frecuencia, pero es poco legible en esta página (ver uncertain)",
+     "why": "La foto de ejemplar lleva una etiqueta con potencia, tensiones, intensidades y frecuencia. La afirmación absoluta era inexacta: solo vale para el texto y las tablas. Esas cifras de la foto no se publican y quedan como propuesta en uncertain."
+    },
+    {
+     "page": 1,
+     "item": "other_facts: rótulo de serie en los 11 hechos de familia",
+     "was": "hechos de dos familias en una lista plana, sin indicar a cuál pertenece cada uno (p. ej. 'Material y acabado' y 'Aplicación indicada' aparecen dos veces, una por serie)",
+     "now": "prefijo '[Serie TE]' (5 hechos) y '[Serie TCI]' (6 hechos); solo el nº de página impreso queda sin prefijo. Hechos solo con prefijo (sin otro cambio): [Serie TE] Material y acabado: transformadores de la serie TT encapsulados con resina de epoxi, en cajas de PVC; [Serie TE] Aplicación indicada: ambientes húmedos o con polvo; [Serie TE] Beneficio indicado: el encapsulado permite alargar la vida y mejorar el aislamiento del transformador; [Serie TCI] Material y acabado: transformadores de la serie TT encapsulados en resina de epoxi, en cajas de PVC; [Serie TCI] Aplicación indicada: montaje directo sobre circuitos impresos, con conexión interna a los pins; [Serie TCI] Raster entre pins de 5mm; el número de pins varía según el tamaño de la caja; [Serie TCI] Dibujos con cotas A a G (alzado, planta y vista inferior de pins); las letras no se definen en texto",
+     "why": "Familias mezcladas sin rótulo: la página tiene dos series y other_facts es una lista plana a nivel de documento; se prefija la serie para evitar atribuir un hecho a la serie equivocada."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: etiqueta de la foto TE",
+     "was": "Texto de una foto, no de una tabla; las cifras no son coherentes entre sí (50 V x 3 A + 85 V x 12 A no suma 170 VA) y no se corrigen. No publicar; sugiere primario 230 V con terminales Azul-Azul y 50/60 Hz, a confirmar.",
+     "now": "Texto de una foto, no de una tabla; las cifras no son coherentes entre sí (50 V x 3 A + 85 V x 12 A no suma 170 VA) y no se corrigen. No publicar; sugiere primario 230 V con terminales Azul-Azul y 50/60 Hz, a confirmar. En esta página la foto es de menor resolución y la etiqueta apenas se lee; la lectura procede de la ficha individual de la serie TE (misma foto, verificada con zoom).",
+     "why": "La transcripción se hizo sobre la foto de la ficha individual (300x343 px); en esta página la misma foto es de 152x174 px y la etiqueta no se puede leer. Se aclara el origen de la lectura. La transcripción (170VA; 230v (Az-Az) 50/60Hz; 50v (Ne-Ne) 3A; 85v (Bl-Bl) 12A) se verificó correcta en la foto de la ficha."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Serie-TT.pdf",
@@ -2353,6 +2493,12 @@
      "normalized_hint": "230 V (primario)"
     },
     {
+     "raw": "230 V",
+     "page": 1,
+     "context": "T.T Serie (Standard in stock) 230 V Secondaries in serially or in parallel",
+     "normalized_hint": "230 V (primario)"
+    },
+    {
      "raw": "2x10",
      "page": 1,
      "context": "columna V de la tabla (dos secundarios idénticos)",
@@ -2439,7 +2585,7 @@
      "page": 1
     },
     {
-     "fact": "Esquema de conexión (dibujo): primario con dos terminales Azul; terminales Rojo, Amarillo, Blanco y Negro en el otro lado; serie = unir amarillo con blanco, paralelo = unir rojo con blanco y amarillo con negro",
+     "fact": "Esquema de conexión (dibujo): dos terminales Azul en un lado del esquema (sin rótulo de primario/secundario); terminales Rojo, Amarillo, Blanco y Negro en el otro lado. Según el texto de la ficha: serie = unir amarillo con blanco, paralelo = unir rojo con blanco y amarillo con negro",
      "page": 1
     }
    ],
@@ -2468,7 +2614,7 @@
     {
      "page": 1,
      "item": "Datos no incluidos en la ficha TT",
-     "why": "No se indican frecuencia, clase de aislamiento, tensión de ensayo ni normas; no se deben añadir sin otra fuente."
+     "why": "En texto y tablas no se indican frecuencia, clase de aislamiento, tensión de ensayo ni normas; no se deben añadir sin otra fuente. La etiqueta de la tapa de la caja en la foto lleva texto (potencia, primario, secundarios, fecha, referencia) ilegible a la resolución de esta página: no usarlo."
     },
     {
      "page": 1,
@@ -2480,7 +2626,31 @@
      "item": "Contenido duplicado en Carcateristicas_transformadores_toroidales_Torivac_serie_TT.pdf",
      "why": "Las tablas y textos coinciden fila a fila con ese PDF (comprobado por script); se extraen igualmente. Sin discrepancias de cifras. Numeración impresa distinta (17 aquí, 16 en la ficha)."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "other_facts: esquema de conexión",
+     "was": "Esquema de conexión (dibujo): primario con dos terminales Azul; terminales Rojo, Amarillo, Blanco y Negro en el otro lado; serie = unir amarillo con blanco, paralelo = unir rojo con blanco y amarillo con negro",
+     "now": "Esquema de conexión (dibujo): dos terminales Azul en un lado del esquema (sin rótulo de primario/secundario); terminales Rojo, Amarillo, Blanco y Negro en el otro lado. Según el texto de la ficha: serie = unir amarillo con blanco, paralelo = unir rojo con blanco y amarillo con negro",
+     "why": "El dibujo solo rotula colores; llamar 'primario' a los terminales Azul es una inferencia (ya recogida como propuesta en uncertain) y no puede figurar como dato. La regla serie/paralelo viene del texto, no del dibujo."
+    },
+    {
+     "page": 1,
+     "item": "voltage_mentions",
+     "was": "(ausente)",
+     "now": "{\"raw\": \"230 V\", \"page\": 1, \"context\": \"T.T Serie (Standard in stock) 230 V Secondaries in serially or in parallel\", \"normalized_hint\": \"230 V (primario)\"}",
+     "why": "Omisión: el subtítulo inglés de la tabla principal repite '230 V' y no estaba en voltage_mentions (solo la versión en español). Se añade para que recoja todas las tensiones de la página."
+    },
+    {
+     "page": 1,
+     "item": "uncertain: Datos no incluidos en la ficha TT",
+     "was": "No se indican frecuencia, clase de aislamiento, tensión de ensayo ni normas; no se deben añadir sin otra fuente.",
+     "now": "En texto y tablas no se indican frecuencia, clase de aislamiento, tensión de ensayo ni normas; no se deben añadir sin otra fuente. La etiqueta de la tapa de la caja en la foto lleva texto (potencia, primario, secundarios, fecha, referencia) ilegible a la resolución de esta página: no usarlo.",
+     "why": "Misma imprecisión que en la ficha individual: la foto lleva una etiqueta (ilegible aquí) con potencia, tensiones y frecuencia. No se transcriben cifras."
+    }
+   ],
+   "verified": true
   }
  ]
 }

@@ -96,7 +96,9 @@ export function blocksHtml(ctx, blocks = [], opts = {}) {
         const w = im?.w ? ` width="${im.w}" height="${im.h}"` : '';
         if (im?.w && im.w <= 160) return `<img class="icon" src="${attr(src)}" alt="" aria-hidden="true"${w} loading="lazy" decoding="async">`;   // iconos (60×60 de Misión/Visión/Valores): en línea, sin marco
         const el = `<img src="${attr(src)}" alt="${attr(b.alt || '')}"${w} loading="lazy" decoding="async">`;
-        return `<figure>${b.href ? `<a href="${attr(mapLink(ctx, b.href))}">${el}</a>` : el}</figure>`;
+        // la web original enlaza las fotos a su versión grande (lightbox) en SU servidor: aquí no se hotlinkea (y un enlace con solo una imagen sin alt no tiene nombre accesible)
+        const lightbox = b.href && /\.(jpe?g|png|webp|gif|svg)(\?.*)?$/i.test(b.href);
+        return `<figure>${b.href && !lightbox ? `<a href="${attr(mapLink(ctx, b.href))}"${b.alt ? '' : ' aria-label="' + attr(mapLink(ctx, b.href)) + '"'}>${el}</a>` : el}</figure>`;
       }
       case 'btn': {
         const href = mapLink(ctx, b.href);

@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """Sesión 2 · Mapa de traducciones según WPML (sondeo de solo lectura: GET sin seguir redirecciones).
 
+OJO: WPML es el plugin de la web ORIGINAL (grupotorivac.com). La web nueva NO usa WPML ni ningún plugin de idioma: es HTML estático con su
+propio selector y su propia detección de idioma (site/assets/js/app.js). Esta herramienta solo LEE las redirecciones públicas de WPML para
+saber qué página es traducción de cuál al migrar el contenido; no forma parte de la web entregada.
+
+
   python3 -I scripts/wpml_probe.py            # sondea categorías y fichas sin traducción; escribe data/analysis/wpml-probe.json
   python3 -I scripts/wpml_probe.py --compare  # además compara con data/catalog/categories.json y lista discrepancias
 

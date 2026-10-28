@@ -42,7 +42,7 @@ precios desde Google Sheets/CSV con cron cada 24 h + actualización manual, logi
 1. **Destinatarios**: ¿`info@torivac.com` o `info@grupotorivac.com`? ¿`mzamora@torivac.com`? (hoy figuran como «por confirmar»).
 2. **Hosting** del dominio de prueba (propuesta: Cloudflare Pages + el Worker) y de dónde saldrán los **precios reales** (Excel en Drive).
 3. Enlace producto ↔ PDF (referencias pedibles reales, etiquetas de voltaje, fichas) y verificación de los PDF: el análisis se cortó por el límite de uso de las 5 h; se relanza y todo lo dudoso irá a «Propuestas».
-4. Traducciones que faltan en el original (p. ej. variador portátil, SAI y otros): se buscarán por WPML; mientras tanto la web muestra el español con aviso.
+4. Traducciones que faltan en el original (variador portátil, SAI, 2 onduladores y fuente de CA; «Trifásico manual» sin alemán): se buscaron leyendo las redirecciones públicas de WPML de la web original y **no hay traducción publicada**; mientras tanto la web nueva muestra el español con aviso. **La web nueva no usa WPML ni ningún plugin de idioma** (HTML estático con selector y detección propios); WPML solo se consultó, en lectura, para emparejar traducciones al migrar.
 5. Gráficos extra (sesión 12), documentación para programadores (sesión 15) y la sesión final de revisión para superar la versión de Why Not (sesión 16).
 
 Hallazgos del sitio original (errores, discrepancias web ≠ PDF, textos copiados entre fichas): `docs/01-analisis/HALLAZGOS.md`.

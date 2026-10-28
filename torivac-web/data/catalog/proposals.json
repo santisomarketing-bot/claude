@@ -482,6 +482,148 @@
  {
   "id": "PR-033",
   "status": "pending",
+  "type": "wrong_language",
+  "lang": "de",
+  "product_name": "/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/",
+  "field": "texto visible",
+  "title": "Texto en otro idioma dentro de la web en alemán",
+  "web_value": "Binaire spanningsregelaar met IGBT-elektronica voor driefasennetwerken",
+  "pdf_value": null,
+  "pages": [
+   "/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/",
+   "/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/driefasen/"
+  ],
+  "severity": "media",
+  "recommendation": "El texto parece estar en neerlandés (o en neerlandés) y aparece en 2 página(s) en alemán. Es así en la web original; la web nueva lo respeta. Revisar y traducir antes de publicar.",
+  "confidence": "media"
+ },
+ {
+  "id": "PR-034",
+  "status": "pending",
+  "type": "wrong_language",
+  "lang": "de",
+  "product_name": "/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/",
+  "field": "texto visible",
+  "title": "Texto en otro idioma dentro de la web en alemán",
+  "web_value": "Binaire spanningsregelaar met IGBT-elektronica voor eenfasige netwerke",
+  "pdf_value": null,
+  "pages": [
+   "/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/",
+   "/de/categoria-producto/spannungsstabilisatoren/bavs-serie-elektronica/monofase/"
+  ],
+  "severity": "media",
+  "recommendation": "El texto parece estar en neerlandés (o en neerlandés) y aparece en 2 página(s) en alemán. Es así en la web original; la web nueva lo respeta. Revisar y traducir antes de publicar.",
+  "confidence": "media"
+ },
+ {
+  "id": "PR-035",
+  "status": "pending",
+  "type": "wrong_language",
+  "lang": "de",
+  "product_name": "/de/product/reostatos-y-potenciometros-bobinados-8-2/",
+  "field": "texto visible",
+  "title": "Texto en otro idioma dentro de la web en alemán",
+  "web_value": "Dit type module wordt gebruikt om het vermogen te verhogen of om speci",
+  "pdf_value": null,
+  "pages": [
+   "/de/product/reostatos-y-potenciometros-bobinados-8-2/"
+  ],
+  "severity": "media",
+  "recommendation": "El texto parece estar en neerlandés (o en neerlandés) y aparece en 1 página(s) en alemán. Es así en la web original; la web nueva lo respeta. Revisar y traducir antes de publicar.",
+  "confidence": "media"
+ },
+ {
+  "id": "PR-036",
+  "status": "pending",
+  "type": "wrong_language",
+  "lang": "de",
+  "product_name": "/de/product/cuba-de-aceite-2/",
+  "field": "texto visible",
+  "title": "Texto en otro idioma dentro de la web en alemán",
+  "web_value": "Este tipo de instalaciones, de variadores de tensión sumergidos en ace",
+  "pdf_value": null,
+  "pages": [
+   "/de/product/cuba-de-aceite-2/"
+  ],
+  "severity": "media",
+  "recommendation": "El texto parece estar en español (o en neerlandés) y aparece en 1 página(s) en alemán. Es así en la web original; la web nueva lo respeta. Revisar y traducir antes de publicar.",
+  "confidence": "media"
+ },
+ {
+  "id": "PR-037",
+  "status": "pending",
+  "type": "wrong_language",
+  "lang": "de",
+  "product_name": "/de/categoria-producto/geportaliseerd/geperforeerde-led-10mm/",
+  "field": "texto visible",
+  "title": "Texto en otro idioma dentro de la web en alemán",
+  "web_value": "Metalen beugels voor 10 mm LED's, gemaakt van messing of duraluminium,",
+  "pdf_value": null,
+  "pages": [
+   "/de/categoria-producto/geportaliseerd/geperforeerde-led-10mm/",
+   "/de/categoria-producto/portaleds/"
+  ],
+  "severity": "media",
+  "recommendation": "El texto parece estar en neerlandés (o en neerlandés) y aparece en 2 página(s) en alemán. Es así en la web original; la web nueva lo respeta. Revisar y traducir antes de publicar.",
+  "confidence": "media"
+ },
+ {
+  "id": "PR-038",
+  "status": "pending",
+  "type": "wrong_language",
+  "lang": "de",
+  "product_name": "/de/categoria-producto/geportaliseerd/geportaliseerde-led-3mm/",
+  "field": "texto visible",
+  "title": "Texto en otro idioma dentro de la web en alemán",
+  "web_value": "Metalen beugels voor 3 mm LED's, vervaardigd uit messing of duralumini",
+  "pdf_value": null,
+  "pages": [
+   "/de/categoria-producto/geportaliseerd/geportaliseerde-led-3mm/",
+   "/de/categoria-producto/portaleds/"
+  ],
+  "severity": "media",
+  "recommendation": "El texto parece estar en neerlandés (o en neerlandés) y aparece en 2 página(s) en alemán. Es así en la web original; la web nueva lo respeta. Revisar y traducir antes de publicar.",
+  "confidence": "media"
+ },
+ {
+  "id": "PR-039",
+  "status": "pending",
+  "type": "wrong_language",
+  "lang": "de",
+  "product_name": "/de/categoria-producto/geportaliseerd/geportaliseerde-led-5mm/",
+  "field": "texto visible",
+  "title": "Texto en otro idioma dentro de la web en alemán",
+  "web_value": "Metalen beugels voor 5 mm LED's, vervaardigd uit messing of duralumini",
+  "pdf_value": null,
+  "pages": [
+   "/de/categoria-producto/geportaliseerd/geportaliseerde-led-5mm/",
+   "/de/categoria-producto/portaleds/"
+  ],
+  "severity": "media",
+  "recommendation": "El texto parece estar en neerlandés (o en neerlandés) y aparece en 2 página(s) en alemán. Es así en la web original; la web nueva lo respeta. Revisar y traducir antes de publicar.",
+  "confidence": "media"
+ },
+ {
+  "id": "PR-040",
+  "status": "pending",
+  "type": "wrong_language",
+  "lang": "de",
+  "product_name": "/de/categoria-producto/geportaliseerd/geporteerde-led-8mm/",
+  "field": "texto visible",
+  "title": "Texto en otro idioma dentro de la web en alemán",
+  "web_value": "Metalen beugels voor 8 mm LED's, vervaardigd uit messing of duralumini",
+  "pdf_value": null,
+  "pages": [
+   "/de/categoria-producto/geportaliseerd/geporteerde-led-8mm/",
+   "/de/categoria-producto/portaleds/"
+  ],
+  "severity": "media",
+  "recommendation": "El texto parece estar en neerlandés (o en neerlandés) y aparece en 2 página(s) en alemán. Es así en la web original; la web nueva lo respeta. Revisar y traducir antes de publicar.",
+  "confidence": "media"
+ },
+ {
+  "id": "PR-041",
+  "status": "pending",
   "type": "wpml_link",
   "category_id": 39,
   "product_name": "Equipos de sobremesa",
@@ -495,7 +637,7 @@
   "confidence": "alta"
  },
  {
-  "id": "PR-034",
+  "id": "PR-042",
   "status": "pending",
   "type": "wpml_link",
   "category_id": 39,
@@ -510,7 +652,7 @@
   "confidence": "alta"
  },
  {
-  "id": "PR-035",
+  "id": "PR-043",
   "status": "pending",
   "type": "wpml_link",
   "category_id": 39,
@@ -525,7 +667,7 @@
   "confidence": "alta"
  },
  {
-  "id": "PR-036",
+  "id": "PR-044",
   "status": "pending",
   "type": "wpml_link",
   "category_id": 41,
@@ -540,7 +682,7 @@
   "confidence": "alta"
  },
  {
-  "id": "PR-037",
+  "id": "PR-045",
   "status": "pending",
   "type": "wpml_link",
   "category_id": 105,
@@ -555,7 +697,7 @@
   "confidence": "alta"
  },
  {
-  "id": "PR-038",
+  "id": "PR-046",
   "status": "pending",
   "type": "wpml_link",
   "category_id": 105,
@@ -570,7 +712,7 @@
   "confidence": "alta"
  },
  {
-  "id": "PR-039",
+  "id": "PR-047",
   "status": "pending",
   "type": "wpml_link",
   "category_id": 42,
@@ -585,7 +727,7 @@
   "confidence": "alta"
  },
  {
-  "id": "PR-040",
+  "id": "PR-048",
   "status": "pending",
   "type": "wpml_link",
   "category_id": 43,
@@ -600,7 +742,7 @@
   "confidence": "alta"
  },
  {
-  "id": "PR-041",
+  "id": "PR-049",
   "status": "pending",
   "type": "wpml_link",
   "category_id": 106,
@@ -615,7 +757,7 @@
   "confidence": "alta"
  },
  {
-  "id": "PR-042",
+  "id": "PR-050",
   "status": "pending",
   "type": "wpml_link",
   "category_id": 106,

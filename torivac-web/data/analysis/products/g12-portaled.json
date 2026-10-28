@@ -1,0 +1,1040 @@
+{
+ "group": "g12-portaled",
+ "products": [
+  {
+   "id_es": 929,
+   "slug": "soporte-metalico-para-led-10mm-2",
+   "url_es": "https://grupotorivac.com/product/soporte-metalico-para-led-10mm-2/",
+   "sku": "71b0ae5dc762",
+   "names": {
+    "es": "Soporte metalico para led 10mm",
+    "en": "Metal support for led 10mm",
+    "fr": "Support métallique pour led 10mm",
+    "de": "Metallbügel für led 10mm"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/soporte-metalico-para-led-10mm-2/",
+    "en": "https://grupotorivac.com/en/product/soporte-metalico-para-led-10mm/",
+    "fr": "https://grupotorivac.com/fr/product/support-metallique-pour-led-10mm/",
+    "de": "https://grupotorivac.com/de/product/metallbuegel-fuer-led-10mm/"
+   },
+   "ids": {
+    "es": 929,
+    "en": 4117,
+    "fr": 16350,
+    "de": 16351
+   },
+   "category_path_es": [
+    "Portaled",
+    "led 10mm"
+   ],
+   "categories_all_es": [
+    {
+     "id": 69,
+     "name": "led 10mm",
+     "slug": "led-10mm"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Soporte metálico para led de 10mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel, o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)\n\nVer ficha técnica",
+    "en": "Metal support for 10mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.\nAvailable with two different heads (inner cone / outer cone).\n\nSee technical data sheet",
+    "fr": "Support métallique pour LED de 10 mm, en laiton ou duraluminium, avec des revêtements chromés, nickelés ou anodisés noirs.\nDisponible avec deux têtes différentes (cône intérieur / cône extérieur).\n\nVoir la fiche technique",
+    "de": "Metallhalterung für 10mm LEDs, aus Messing oder Duraluminium und mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.\nErhältlich mit zwei verschiedenen Köpfen (Innenkonus / Außenkonus).\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-10mm-600x600-1.png",
+     "alt": {
+      "es": "Soporte metalico para led 10mm",
+      "en": "Metal support for led 10mm",
+      "fr": "Support métallique pour led 10mm",
+      "de": "Metallbügel für led 10mm"
+     },
+     "id": 1057,
+     "ids": {
+      "es": 1057,
+      "en": 1057,
+      "fr": 1057,
+      "de": 1057
+     },
+     "filename": "soporte-metalico-led-10mm-600x600-1.png",
+     "title": {
+      "es": "soporte-metalico-led-10mm-600×600",
+      "en": "soporte-metalico-led-10mm-600×600",
+      "fr": "soporte-metalico-led-10mm-600×600",
+      "de": "soporte-metalico-led-10mm-600×600"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/Soportes-Metalicos-para-LED.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Material (latón o duraluminio)",
+    "Recubrimiento (cromo, níquel o anodizado negro)",
+    "Tipo de cabeza (cono interior / cono exterior)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Metal support for led 10mm\n\nView full catalog",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Support métallique pour led 10mm\n\nVoir tout le catalogue",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Metallbügel für led 10mm\n\nGesamten Katalog ansehen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Soporte metalico para led 10mm - Torivac",
+     "meta_description": "Soporte metálico para led de 10mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel, o anodizado negro.",
+     "og_title": "Soporte metalico para led 10mm - Torivac",
+     "og_description": "Soporte metálico para led de 10mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel, o anodizado negro.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-10mm-600x600-1.png",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-10mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:58",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__soporte-metalico-para-led-10mm-2.json"
+    },
+    "en": {
+     "title": "Metal support for led 10mm - Torivac",
+     "meta_description": "Metal support for 10mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.",
+     "og_title": "Metal support for led 10mm - Torivac",
+     "og_description": "Metal support for 10mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-10mm-600x600-1.png",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-10mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:22",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__soporte-metalico-para-led-10mm.json"
+    },
+    "fr": {
+     "title": "Support métallique pour led 10mm - Torivac",
+     "meta_description": "Support métallique pour LED de 10 mm, en laiton ou duraluminium, avec des revêtements chromés, nickelés ou anodisés noirs.",
+     "og_title": "Support métallique pour led 10mm - Torivac",
+     "og_description": "Support métallique pour LED de 10 mm, en laiton ou duraluminium, avec des revêtements chromés, nickelés ou anodisés noirs.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-10mm-600x600-1.png",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-10mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:19",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__support-metallique-pour-led-10mm.json"
+    },
+    "de": {
+     "title": "Metallbügel für led 10mm - Torivac",
+     "meta_description": "Metallhalterung für 10mm LEDs, aus Messing oder Duraluminium und mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.",
+     "og_title": "Metallbügel für led 10mm - Torivac",
+     "og_description": "Metallhalterung für 10mm LEDs, aus Messing oder Duraluminium und mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-10mm-600x600-1.png",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-10mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:19",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__metallbuegel-fuer-led-10mm.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "ficha_sin_datos_numericos",
+    "sin_referencias_comerciales",
+    "sku_no_comercial",
+    "contenido_por_verificar",
+    "sin_alt",
+    "imagen_con_id_de_otro_idioma",
+    "pdf_compartido_entre_fichas",
+    "pdf_solo_imagen",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "estructura_de_encabezados_dudosa",
+    "relacionados_autorreferente",
+    "plantilla_cta_mal_traducida",
+    "texto_en_idioma_incorrecto",
+    "texto_plantilla_repetido",
+    "breadcrumb_raiz_sin_traducir",
+    "jsonld_sin_schema_product",
+    "terminologia_inconsistente_entre_idiomas",
+    "terminologia_inconsistente_entre_fichas",
+    "typo",
+    "slug_url_en_espanol",
+    "slug_numerico_no_descriptivo",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "categoria_padre_mal_traducida",
+    "categoria_raiz_no_asignada",
+    "duplicado_posible"
+   ],
+   "gaps": [
+    "Descripción larga vacía en los 4 idiomas: la Store API devuelve description='' y la REST content.rendered='' (ids 929/4117/16350/16351). Todo el contenido de la ficha está en short_description (en la REST, excerpt): una frase con diámetro, material y recubrimientos, una línea sobre las cabezas disponibles y el botón a la ficha técnica. description_text queda en '' y spec_tables=[]: la web no tiene tabla de modelos para este producto, por eso orderable_items=[]. La página renderizada de los 4 idiomas solo repite la descripción corta más el bloque de contacto (y, en EN/FR/DE, el de relacionados): no hay pestañas, descargas ni texto adicional (contrastado con el HTML crudo; lo demás es menú, pie y banner de cookies).",
+    "Datos técnicos que da la web (solo en el nombre y en la descripción corta): diámetro de LED 10 mm; material latón o duraluminio; recubrimientos cromo, níquel o anodizado negro; dos cabezas (cono interior / cono exterior). No hay dimensiones, rosca, peso, color de la cabeza, unidades por envase ni referencias de modelo (attributes=[] en los 4 idiomas; weight y dimensions vacíos en la Store API). La web no dice si material, recubrimiento y cabeza son opciones independientes ni qué combinaciones existen, ni si 'dos cabezas diferentes' son dos modelos o dos opciones de un mismo modelo: variation_axes_hint recoge los tres ejes tal como están en el texto. El diámetro lo fija la propia ficha (hay fichas separadas para 3, 5, 8 y 10 mm); si la web nueva los modela como una familia con eje 'diámetro' o como 4 fichas es decisión pendiente del equipo.",
+    "Sin referencia comercial: SKU '71b0ae5dc762' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia de fabricante; la Store API lo repite igual en EN/FR/DE. El modelo solo se identifica por el nombre y el diámetro. orderable_items=[].",
+    "Tensión y potencia: ninguna mención numérica de tensión (V, kV, VAC/VDC, voltios), potencia (VA, W, kVA, kW) ni intensidad en el nombre, la descripción corta, la meta description ni la página renderizada de los 4 idiomas: voltage_mentions=[] y power_mentions=[]. La única aparición del concepto (ES 'tensión', EN 'voltage', FR 'tension', DE 'Spannung' y 'Leistung') está en el texto genérico de la plantilla de contacto ('productos especializados para la regulación de la tensión…'), que no describe este producto: no usarlo para etiquetas de voltaje. Un soporte metálico para LED no declara tensión en la web, así que las fuentes no dan base para una etiqueta de voltaje.",
+    "Ficha técnica: el botón (ES 'Ver ficha técnica' / EN 'See technical data sheet' / FR 'Voir la fiche technique' / DE 'Siehe technisches Datenblatt') enlaza en los 4 idiomas a Soportes-Metalicos-para-LED.pdf (https://grupotorivac.com/wp-content/uploads/2023/02/Soportes-Metalicos-para-LED.pdf), que comparte con la ficha 927 (LED 8 mm); el enlace no indica cuál de los dos diámetros es el de esta ficha. Es la página 38 del catálogo (1 página, 60131 bytes), con rótulos solo en castellano ('Soportes Metálicos para LED de 10mm.' y de 8mm.): su texto extraído (data/analysis/pdf-text/Soportes-Metalicos-para-LED/p001.txt, 218 caracteres) solo trae cabecera, rótulos y número de página; las cotas y roscas están en los dibujos (pdf_solo_imagen). Lectura visual previa (data/analysis/pdfs/p16-fichas-soportes-led.json, verified=true; no re-verificada en esta tarea) para 10 mm: Portaled 8 Cono Mixto: 14 / (cota sin cifra) / 16,5 / ROSCA 12 / 75; Portaled 10 Cono Mixto: 16 / (cota sin cifra) / 22 / ROSCA 10 / 100 (orden: cota superior / cota parcial / cota total / rosca; sin unidad ni leyenda de cotas impresas ni referencias de pedido). No se vuelca a este JSON porque la fuente de esta tarea es la web; pendiente de verificación en la tarea de PDFs (S11).",
+    "Contraste web ≠ PDF pendiente: el PDF no menciona material, recubrimientos ni 'cono interior / cono exterior' (la web sí); muestra dos ilustraciones por diámetro sin decir cuál es cada cabeza. El PDF no permite confirmar ni desmentir el texto de la web. Además, bajo el rótulo 'LED de 10mm' el PDF muestra dos dibujos en sección rotulados 'Portaled 8 Cono Mixto' y 'Portaled 10 Cono Mixto' (con roscas 'ROSCA 12 / 75' y 'ROSCA 10 / 100', distintas de la notación 'ROSCA 12/0,75' de los demás), y 'Cono Mixto' no coincide con la redacción de la web ('cono interior / cono exterior'): a confirmar con Torivac a qué diámetro pertenece cada dibujo.",
+    "Existe en la biblioteca de medios otra ficha, 'Caracteristicas_Soportes_Metalicos_para_Leds.pdf' (media id 204, 2022/03, cabecera bilingüe 'SOPORTES METALICOS PARA LED/METAL BRACKET FOR LEDS', 348785 bytes), que según la lectura visual previa reúne las mismas ilustraciones y cotas de 3, 5, 8 y 10 mm; ninguna página de producto ni de categoría la enlaza (solo aparece en la REST media). Las fichas enlazan las páginas 37 y 38 del catálogo 2023/02.",
+    "Imagen única (id 1057, 'soporte-metalico-led-10mm-600x600-1.png', 600×600): la biblioteca de medios tiene alt='' en todos los idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático de WooCommerce, no descriptivo) y es el que se guarda en images[].alt (alt_source='web:pagina'). El título del medio es 'soporte-metalico-led-10mm-600×600'. El fichero es un PNG real (copia local data/raw/media/e44d3449-soporte-metalico-led-10mm-600x600-1.png: PNG image data, 600 x 600, 8-bit/color RGBA, non-interlaced); extensión y formato coinciden. En EN/FR/DE la tarjeta de 'relacionados' muestra además la miniatura -300x300 con alt=\"\".",
+    "Imagen con id de otro idioma: la Store API devuelve el id ES 1057 también en los productos EN/FR/DE (images[].ids) y la REST featured_media es 1057 en los 4; la biblioteca de medios guarda copias WPML por idioma del mismo fichero: EN 3850, FR 3851, DE 9308 (adjuntas a los productos traducidos 4117, 16350, 16351).",
+    "SEO: canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/soporte-metalico-para-led-10mm-2/); hreflang completo (es, en, fr, de, x-default→ES). Ver docs/01-analisis/HALLAZGOS.md n.º 11. Meta description = primera frase de la descripción corta en los 4 idiomas (no incluye la línea de cabezas ni el botón; sin truncar); title = nombre + ' - Torivac'; sin focus keyword (_yoast_wpseo_focuskw vacío; la meta description está escrita a mano en _yoast_wpseo_metadesc). og:image 600×600 px (por debajo de los 1200×630 px recomendados habitualmente para compartir) y declarado como image/png.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (outline: H3 de menú 'Products'/'Produits'/'Produkte', H4 de la cabecera del bloque de contacto, H2 con la pregunta de contacto, H2 de relacionados y el nombre del producto solo como H4 dentro de 'relacionados'); la ES sí tiene H1 = 'Soporte metalico para led 10mm', precedido por el H3 'Productos' del menú, y su H4 de contacto va antes del H2 (jerarquía de encabezados dudosa).",
+    "Migas de pan y datos estructurados: el nivel raíz visible de la miga ('Productos') sigue en castellano en EN/FR/DE. El JSON-LD de Yoast (WebPage, ImageObject, BreadcrumbList, WebSite, Organization) no incluye esquema Product; su BreadcrumbList usa 'Portada' (castellano) como primer nivel en los 4 idiomas (en EN apunta a /de/) y 'Products' → https://grupotorivac.com/en/shop/ como segundo en los 4.",
+    "Plantilla de contacto (CTA) reutilizada sin adaptar: habla de 'productos especializados para la regulación de la tensión' (plantilla común, no específica de soportes para LED). Textos mal traducidos o en idioma equivocado (se guardan tal cual en extra_sections): EN título 'CONTACT WITH US'; FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE título 'KONTAKT US' (inglés mezclado), casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés); ES 'encontrareis' sin tilde. En EN/FR/DE el bloque 'productos relacionados' solo lista el propio producto y su botón de catálogo enlaza al listado general de productos (/en/torivac-products/, /fr/produits-torivac/, /de/torivac-produkte/); la página ES no muestra bloque de relacionados.",
+    "Erratas e inconsistencias de redacción en ES (se conservan tal cual): 'metalico' sin tilde en el nombre (el texto dice 'metálico'), 'niquel' sin tilde, 'fabricados' en plural concordando con 'Soporte' en singular, 'led' en minúscula (acrónimo LED) y '10mm' sin espacio; en esta ficha además 'niquel, o anodizado negro' con coma sobrante antes de la 'o' (las otras tres fichas no la llevan).",
+    "Terminología inconsistente: EN: el nombre usa 'Metal support' y el texto también 'Metal support for 10mm LEDs' (las otras tres fichas dicen 'Metal bracket'); DE: el nombre usa 'Metallbügel' y el texto 'Metallhalterung'; FR coherente ('Support métallique') pero el nombre escribe 'led 10mm' y el texto 'LED de 10 mm'. Las traducciones de la descripción corta están completas respecto a ES (translation_status='ok'), pero la redacción varía de una ficha a otra del lote (p. ej. FR: 'avec revêtement chromé, nickelé ou anodisé noir' en 3 y 8 mm frente a 'avec des revêtements chromés, nickelés ou anodisés noirs' en 5 y 10 mm; DE: 'und mit Chrom-…' en 3 y 10 mm frente a ', mit Chrom-…' en 5 y 8 mm). Se conservan tal cual; a confirmar por un traductor técnico.",
+    "Etiqueta del botón al PDF en EN: 'See technical data sheet'. Las 4 fichas del lote usan 3 grafías distintas ('See technical datasheet' en 923 y 927, 'See data sheet' en 925, 'See technical data sheet' en 929); ES, FR y DE son iguales en las 4 ('Ver ficha técnica' / 'Voir la fiche technique' / 'Siehe technisches Datenblatt'). El texto del botón queda dentro de short_description y se registra en pdf_links[].labels.",
+    "Slugs: el slug ES lleva sufijo numérico '-2' ('soporte-metalico-para-led-10mm-2'), sin significado y sin equivalente en las otras lenguas; la URL EN conserva el slug en español sin sufijo (/en/product/soporte-metalico-para-led-10mm/), mientras que FR ('support-metallique-pour-led-10mm') y DE ('metallbuegel-fuer-led-10mm') sí lo traducen. Relevante para las redirecciones de la web nueva.",
+    "Categorías: la Store API y la REST asignan el producto solo a la subcategoría 'led 10mm' (id 69, slug 'led-10mm', hija de 'Portaled' id 65); no está asignado al padre y category_path_es lo añade porque así lo da product-map.json (categoria_raiz_no_asignada). La subcategoría contiene solo este producto, su descripción repite la descripción corta de la ficha y su URL (/categoria-producto/portaled/led-10mm/) devuelve la propia ficha (body class single-product postid-929, canonical a la URL del producto). Traducciones de la categoría: EN 'led 10mm' (id 642, slug 'led-10mm'; la de 10 mm usa 'led-10mm' y las de 3, 5 y 8 mm 'portaled-led-Nmm'); FR 'led 10mm' (id 634, slug 'porte-10-mm') bajo 'Porté' (id 564, slug 'portail'); DE 'led 10mm' (id 635, slug 'geperforeerde-led-10mm') bajo 'Portiert' (id 565, slug 'geportaliseerd'). Los padres FR 'Porté' (slug 'portail', que en francés es portón o portal web) y DE 'Portiert' (slug 'geportaliseerd') no equivalen a 'Portaled', el nombre de la familia de soportes para LED que EN sí conserva; y los slugs DE de las 4 subcategorías tienen forma neerlandesa, no alemana ('geportaliseerde-led-3mm', 'geportaliseerde-led-5mm', 'geporteerde-led-8mm', 'geperforeerde-led-10mm'). Existe además una categoría 'Portaleds' (id 24, 0 productos) duplicada respecto a 'Portaled' (docs/01-analisis/HALLAZGOS.md n.º 4).",
+    "Información de familia que solo está en la categoría padre 'Portaled' (REST product_cat id 65, no en la ficha): \"Estos soportes metálicos para LED están formados por un cuerpo de latón o duraluminio, bañado en níquel, cromo o anodinado, tuerca y arandela de latón niquelado y además el tapón de Poliamida-6.\" (ES; con la errata 'anodinado'); añade tuerca y arandela de latón niquelado y tapón de poliamida-6. Existe en EN/FR/DE (ids 563/564/565). No se ha volcado a description_text porque no forma parte de la página del producto; queda para el análisis de categorías.",
+    "Duplicación entre fichas: las 4 fichas del lote (3, 5, 8 y 10 mm) tienen el mismo texto salvo el diámetro, y comparten PDF por pares (3 y 5 mm: Soportes-Metalicos.pdf; 8 y 10 mm: Soportes-Metalicos-para-LED.pdf); la descripción de cada subcategoría repite la de su ficha (duplicado_posible).",
+    "Sin precio: la Store API devuelve price '0' y price_html vacío en los 4 idiomas (catálogo sin precios; is_purchasable=false, botón 'Leer más'); is_in_stock=true sin cantidad; sin etiquetas, marcas ni valoraciones (average_rating '0', review_count 0)."
+   ]
+  },
+  {
+   "id_es": 923,
+   "slug": "soporte-metalico-para-led-3mm-2",
+   "url_es": "https://grupotorivac.com/product/soporte-metalico-para-led-3mm-2/",
+   "sku": "2262440b3e6c",
+   "names": {
+    "es": "Soporte metalico para led 3mm",
+    "en": "Metal support for led 3mm",
+    "fr": "Support métallique pour led 3mm",
+    "de": "Metallbügel für led 3mm"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/soporte-metalico-para-led-3mm-2/",
+    "en": "https://grupotorivac.com/en/product/soporte-metalico-para-led-3mm/",
+    "fr": "https://grupotorivac.com/fr/product/support-metallique-pour-led-3mm/",
+    "de": "https://grupotorivac.com/de/product/metallbuegel-fuer-led-3mm/"
+   },
+   "ids": {
+    "es": 923,
+    "en": 4108,
+    "fr": 16352,
+    "de": 16353
+   },
+   "category_path_es": [
+    "Portaled",
+    "led 3mm"
+   ],
+   "categories_all_es": [
+    {
+     "id": 66,
+     "name": "led 3mm",
+     "slug": "led-3mm"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Soporte metálico para led de 3mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)\n\nVer ficha técnica",
+    "en": "Metal bracket for 3mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.\nAvailable with two different heads (inner cone / outer cone).\n\nSee technical datasheet",
+    "fr": "Support métallique pour LED de 3 mm, en laiton ou duraluminium, avec revêtement chromé, nickelé ou anodisé noir.\nDisponible avec deux têtes différentes (cône intérieur / cône extérieur).\n\nVoir la fiche technique",
+    "de": "Metallhalterung für 3mm LEDs, aus Messing oder Duraluminium und mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.\nErhältlich mit zwei verschiedenen Köpfen (Innenkonus / Außenkonus).\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-3mm-600x600-2.jpg",
+     "alt": {
+      "es": "Soporte metalico para led 3mm",
+      "en": "Metal support for led 3mm",
+      "fr": "Support métallique pour led 3mm",
+      "de": "Metallbügel für led 3mm"
+     },
+     "id": 924,
+     "ids": {
+      "es": 924,
+      "en": 924,
+      "fr": 924,
+      "de": 924
+     },
+     "filename": "soporte-metalico-led-3mm-600x600-2.jpg",
+     "title": {
+      "es": "soporte-metalico-led-3mm-600×600",
+      "en": "soporte-metalico-led-3mm-600×600",
+      "fr": "soporte-metalico-led-3mm-600×600",
+      "de": "soporte-metalico-led-3mm-600×600"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/Soportes-Metalicos.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical datasheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Material (latón o duraluminio)",
+    "Recubrimiento (cromo, níquel o anodizado negro)",
+    "Tipo de cabeza (cono interior / cono exterior)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Metal support for led 3mm\n\nView full catalog",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Support métallique pour led 3mm\n\nVoir tout le catalogue",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Metallbügel für led 3mm\n\nGesamten Katalog ansehen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Soporte metalico para led 3mm - Torivac",
+     "meta_description": "Soporte metálico para led de 3mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.",
+     "og_title": "Soporte metalico para led 3mm - Torivac",
+     "og_description": "Soporte metálico para led de 3mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-3mm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-3mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:57",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__soporte-metalico-para-led-3mm-2.json"
+    },
+    "en": {
+     "title": "Metal support for led 3mm - Torivac",
+     "meta_description": "Metal bracket for 3mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.",
+     "og_title": "Metal support for led 3mm - Torivac",
+     "og_description": "Metal bracket for 3mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-3mm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-3mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:11",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__soporte-metalico-para-led-3mm.json"
+    },
+    "fr": {
+     "title": "Support métallique pour led 3mm - Torivac",
+     "meta_description": "Support métallique pour LED de 3 mm, en laiton ou duraluminium, avec revêtement chromé, nickelé ou anodisé noir.",
+     "og_title": "Support métallique pour led 3mm - Torivac",
+     "og_description": "Support métallique pour LED de 3 mm, en laiton ou duraluminium, avec revêtement chromé, nickelé ou anodisé noir.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-3mm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-3mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:19",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__support-metallique-pour-led-3mm.json"
+    },
+    "de": {
+     "title": "Metallbügel für led 3mm - Torivac",
+     "meta_description": "Metallhalterung für 3mm LEDs, aus Messing oder Duraluminium und mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.",
+     "og_title": "Metallbügel für led 3mm - Torivac",
+     "og_description": "Metallhalterung für 3mm LEDs, aus Messing oder Duraluminium und mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-3mm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-3mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:20",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__metallbuegel-fuer-led-3mm.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "ficha_sin_datos_numericos",
+    "sin_referencias_comerciales",
+    "sku_no_comercial",
+    "contenido_por_verificar",
+    "sin_alt",
+    "imagen_con_id_de_otro_idioma",
+    "pdf_compartido_entre_fichas",
+    "pdf_solo_imagen",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "estructura_de_encabezados_dudosa",
+    "relacionados_autorreferente",
+    "plantilla_cta_mal_traducida",
+    "texto_en_idioma_incorrecto",
+    "texto_plantilla_repetido",
+    "breadcrumb_raiz_sin_traducir",
+    "jsonld_sin_schema_product",
+    "terminologia_inconsistente_entre_idiomas",
+    "terminologia_inconsistente_entre_fichas",
+    "typo",
+    "slug_url_en_espanol",
+    "slug_numerico_no_descriptivo",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "categoria_padre_mal_traducida",
+    "categoria_raiz_no_asignada",
+    "duplicado_posible",
+    "imagen_extension_no_coincide_con_formato",
+    "imagen_renderizada_variante_pagespeed",
+    "etiqueta_boton_inconsistente"
+   ],
+   "gaps": [
+    "Descripción larga vacía en los 4 idiomas: la Store API devuelve description='' y la REST content.rendered='' (ids 923/4108/16352/16353). Todo el contenido de la ficha está en short_description (en la REST, excerpt): una frase con diámetro, material y recubrimientos, una línea sobre las cabezas disponibles y el botón a la ficha técnica. description_text queda en '' y spec_tables=[]: la web no tiene tabla de modelos para este producto, por eso orderable_items=[]. La página renderizada de los 4 idiomas solo repite la descripción corta más el bloque de contacto (y, en EN/FR/DE, el de relacionados): no hay pestañas, descargas ni texto adicional (contrastado con el HTML crudo; lo demás es menú, pie y banner de cookies).",
+    "Datos técnicos que da la web (solo en el nombre y en la descripción corta): diámetro de LED 3 mm; material latón o duraluminio; recubrimientos cromo, níquel o anodizado negro; dos cabezas (cono interior / cono exterior). No hay dimensiones, rosca, peso, color de la cabeza, unidades por envase ni referencias de modelo (attributes=[] en los 4 idiomas; weight y dimensions vacíos en la Store API). La web no dice si material, recubrimiento y cabeza son opciones independientes ni qué combinaciones existen, ni si 'dos cabezas diferentes' son dos modelos o dos opciones de un mismo modelo: variation_axes_hint recoge los tres ejes tal como están en el texto. El diámetro lo fija la propia ficha (hay fichas separadas para 3, 5, 8 y 10 mm); si la web nueva los modela como una familia con eje 'diámetro' o como 4 fichas es decisión pendiente del equipo.",
+    "Sin referencia comercial: SKU '2262440b3e6c' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia de fabricante; la Store API lo repite igual en EN/FR/DE. El modelo solo se identifica por el nombre y el diámetro. orderable_items=[].",
+    "Tensión y potencia: ninguna mención numérica de tensión (V, kV, VAC/VDC, voltios), potencia (VA, W, kVA, kW) ni intensidad en el nombre, la descripción corta, la meta description ni la página renderizada de los 4 idiomas: voltage_mentions=[] y power_mentions=[]. La única aparición del concepto (ES 'tensión', EN 'voltage', FR 'tension', DE 'Spannung' y 'Leistung') está en el texto genérico de la plantilla de contacto ('productos especializados para la regulación de la tensión…'), que no describe este producto: no usarlo para etiquetas de voltaje. Un soporte metálico para LED no declara tensión en la web, así que las fuentes no dan base para una etiqueta de voltaje.",
+    "Ficha técnica: el botón (ES 'Ver ficha técnica' / EN 'See technical datasheet' / FR 'Voir la fiche technique' / DE 'Siehe technisches Datenblatt') enlaza en los 4 idiomas a Soportes-Metalicos.pdf (https://grupotorivac.com/wp-content/uploads/2023/02/Soportes-Metalicos.pdf), que comparte con la ficha 925 (LED 5 mm); el enlace no indica cuál de los dos diámetros es el de esta ficha. Es la página 37 del catálogo (1 página, 69816 bytes), con rótulos solo en castellano ('Soportes Metálicos para LED de 3mm.' y de 5mm.): su texto extraído (data/analysis/pdf-text/Soportes-Metalicos/p001.txt, 265 caracteres) solo trae cabecera, rótulos y número de página; las cotas y roscas están en los dibujos (pdf_solo_imagen). Lectura visual previa (data/analysis/pdfs/p16-fichas-soportes-led.json, verified=true; no re-verificada en esta tarea) para 3 mm: ilustración 1: Ø 7 / 2 / 13 / ROSCA 6/0,75; ilustración 2: Ø 7 / 3 / 15 / ROSCA 6/0,75 (orden: cota superior / cota parcial / cota total / rosca; sin unidad ni leyenda de cotas impresas ni referencias de pedido). No se vuelca a este JSON porque la fuente de esta tarea es la web; pendiente de verificación en la tarea de PDFs (S11).",
+    "Contraste web ≠ PDF pendiente: el PDF no menciona material, recubrimientos ni 'cono interior / cono exterior' (la web sí); muestra dos ilustraciones por diámetro sin decir cuál es cada cabeza. El PDF no permite confirmar ni desmentir el texto de la web.",
+    "Existe en la biblioteca de medios otra ficha, 'Caracteristicas_Soportes_Metalicos_para_Leds.pdf' (media id 204, 2022/03, cabecera bilingüe 'SOPORTES METALICOS PARA LED/METAL BRACKET FOR LEDS', 348785 bytes), que según la lectura visual previa reúne las mismas ilustraciones y cotas de 3, 5, 8 y 10 mm; ninguna página de producto ni de categoría la enlaza (solo aparece en la REST media). Las fichas enlazan las páginas 37 y 38 del catálogo 2023/02.",
+    "Imagen única (id 924, 'soporte-metalico-led-3mm-600x600-2.jpg', 600×600): la biblioteca de medios tiene alt='' en todos los idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático de WooCommerce, no descriptivo) y es el que se guarda en images[].alt (alt_source='web:pagina'). El título del medio es 'soporte-metalico-led-3mm-600×600'. El fichero 'soporte-metalico-led-3mm-600x600-2.jpg' es en realidad un PNG (copia local data/raw/media/e8c0c760-soporte-metalico-led-3mm-600x600-2.jpg: PNG image data, 600 x 600, 8-bit/color RGBA, non-interlaced), coherente con el mime image/png de media-index y con el type image/png de og:image (Yoast): extensión .jpg y formato no coinciden. En EN/FR/DE la tarjeta de 'relacionados' muestra además la miniatura -300x300 con alt=\"\".",
+    "Imagen con id de otro idioma: la Store API devuelve el id ES 924 también en los productos EN/FR/DE (images[].ids) y la REST featured_media es 924 en los 4; la biblioteca de medios guarda copias WPML por idioma del mismo fichero: EN 3820, FR 3821, DE 9293 (adjuntas a los productos traducidos 4108, 16352, 16353).",
+    "Las páginas renderizadas EN/FR/DE sirven la miniatura de 300 px como variante de PageSpeed ('xsoporte-metalico-led-3mm-600x600-2-300x300.jpg.pagespeed.ic.….png'): en EN solo dentro del srcset (de la imagen principal y de la tarjeta de relacionados); en FR y DE también como src de la tarjeta de relacionados. La página ES no la usa. images[].src guarda el original (el de la Store API y el og:image).",
+    "SEO: canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/soporte-metalico-para-led-3mm-2/); hreflang completo (es, en, fr, de, x-default→ES). Ver docs/01-analisis/HALLAZGOS.md n.º 11. Meta description = primera frase de la descripción corta en los 4 idiomas (no incluye la línea de cabezas ni el botón; sin truncar); title = nombre + ' - Torivac'; sin focus keyword (_yoast_wpseo_focuskw vacío; la meta description está escrita a mano en _yoast_wpseo_metadesc). og:image 600×600 px (por debajo de los 1200×630 px recomendados habitualmente para compartir) y declarado como image/png.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (outline: H3 de menú 'Products'/'Produits'/'Produkte', H4 de la cabecera del bloque de contacto, H2 con la pregunta de contacto, H2 de relacionados y el nombre del producto solo como H4 dentro de 'relacionados'); la ES sí tiene H1 = 'Soporte metalico para led 3mm', precedido por el H3 'Productos' del menú, y su H4 de contacto va antes del H2 (jerarquía de encabezados dudosa).",
+    "Migas de pan y datos estructurados: el nivel raíz visible de la miga ('Productos') sigue en castellano en EN/FR/DE. El JSON-LD de Yoast (WebPage, ImageObject, BreadcrumbList, WebSite, Organization) no incluye esquema Product; su BreadcrumbList usa 'Portada' (castellano) como primer nivel en los 4 idiomas (en EN apunta a /de/) y 'Products' → https://grupotorivac.com/en/shop/ como segundo en los 4.",
+    "Plantilla de contacto (CTA) reutilizada sin adaptar: habla de 'productos especializados para la regulación de la tensión' (plantilla común, no específica de soportes para LED). Textos mal traducidos o en idioma equivocado (se guardan tal cual en extra_sections): EN título 'CONTACT WITH US'; FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE título 'KONTAKT US' (inglés mezclado), casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés); ES 'encontrareis' sin tilde. En EN/FR/DE el bloque 'productos relacionados' solo lista el propio producto y su botón de catálogo enlaza al listado general de productos (/en/torivac-products/, /fr/produits-torivac/, /de/torivac-produkte/); la página ES no muestra bloque de relacionados.",
+    "Erratas e inconsistencias de redacción en ES (se conservan tal cual): 'metalico' sin tilde en el nombre (el texto dice 'metálico'), 'niquel' sin tilde, 'fabricados' en plural concordando con 'Soporte' en singular, 'led' en minúscula (acrónimo LED) y '3mm' sin espacio.",
+    "Terminología inconsistente: EN: el nombre usa 'Metal support' pero el texto 'Metal bracket' ('Metal bracket for 3mm LEDs'); DE: el nombre usa 'Metallbügel' y el texto 'Metallhalterung'; FR coherente ('Support métallique') pero el nombre escribe 'led 3mm' y el texto 'LED de 3 mm'. Las traducciones de la descripción corta están completas respecto a ES (translation_status='ok'), pero la redacción varía de una ficha a otra del lote (p. ej. FR: 'avec revêtement chromé, nickelé ou anodisé noir' en 3 y 8 mm frente a 'avec des revêtements chromés, nickelés ou anodisés noirs' en 5 y 10 mm; DE: 'und mit Chrom-…' en 3 y 10 mm frente a ', mit Chrom-…' en 5 y 8 mm). Se conservan tal cual; a confirmar por un traductor técnico.",
+    "Etiqueta del botón al PDF en EN: 'See technical datasheet'. Las 4 fichas del lote usan 3 grafías distintas ('See technical datasheet' en 923 y 927, 'See data sheet' en 925, 'See technical data sheet' en 929); ES, FR y DE son iguales en las 4 ('Ver ficha técnica' / 'Voir la fiche technique' / 'Siehe technisches Datenblatt'). El texto del botón queda dentro de short_description y se registra en pdf_links[].labels.",
+    "Slugs: el slug ES lleva sufijo numérico '-2' ('soporte-metalico-para-led-3mm-2'), sin significado y sin equivalente en las otras lenguas; la URL EN conserva el slug en español sin sufijo (/en/product/soporte-metalico-para-led-3mm/), mientras que FR ('support-metallique-pour-led-3mm') y DE ('metallbuegel-fuer-led-3mm') sí lo traducen. Relevante para las redirecciones de la web nueva.",
+    "Categorías: la Store API y la REST asignan el producto solo a la subcategoría 'led 3mm' (id 66, slug 'led-3mm', hija de 'Portaled' id 65); no está asignado al padre y category_path_es lo añade porque así lo da product-map.json (categoria_raiz_no_asignada). La subcategoría contiene solo este producto, su descripción repite la descripción corta de la ficha y su URL (/categoria-producto/portaled/led-3mm/) devuelve la propia ficha (body class single-product postid-923, canonical a la URL del producto). Traducciones de la categoría: EN 'led 3mm' (id 645, slug 'portaled-led-3mm'; la de 10 mm usa 'led-10mm' y las de 3, 5 y 8 mm 'portaled-led-Nmm'); FR 'led 3mm' (id 636, slug 'led-portique-3-mm') bajo 'Porté' (id 564, slug 'portail'); DE 'led 3mm' (id 637, slug 'geportaliseerde-led-3mm') bajo 'Portiert' (id 565, slug 'geportaliseerd'). Los padres FR 'Porté' (slug 'portail', que en francés es portón o portal web) y DE 'Portiert' (slug 'geportaliseerd') no equivalen a 'Portaled', el nombre de la familia de soportes para LED que EN sí conserva; y los slugs DE de las 4 subcategorías tienen forma neerlandesa, no alemana ('geportaliseerde-led-3mm', 'geportaliseerde-led-5mm', 'geporteerde-led-8mm', 'geperforeerde-led-10mm'). Existe además una categoría 'Portaleds' (id 24, 0 productos) duplicada respecto a 'Portaled' (docs/01-analisis/HALLAZGOS.md n.º 4).",
+    "Información de familia que solo está en la categoría padre 'Portaled' (REST product_cat id 65, no en la ficha): \"Estos soportes metálicos para LED están formados por un cuerpo de latón o duraluminio, bañado en níquel, cromo o anodinado, tuerca y arandela de latón niquelado y además el tapón de Poliamida-6.\" (ES; con la errata 'anodinado'); añade tuerca y arandela de latón niquelado y tapón de poliamida-6. Existe en EN/FR/DE (ids 563/564/565). No se ha volcado a description_text porque no forma parte de la página del producto; queda para el análisis de categorías.",
+    "Duplicación entre fichas: las 4 fichas del lote (3, 5, 8 y 10 mm) tienen el mismo texto salvo el diámetro, y comparten PDF por pares (3 y 5 mm: Soportes-Metalicos.pdf; 8 y 10 mm: Soportes-Metalicos-para-LED.pdf); la descripción de cada subcategoría repite la de su ficha (duplicado_posible).",
+    "Sin precio: la Store API devuelve price '0' y price_html vacío en los 4 idiomas (catálogo sin precios; is_purchasable=false, botón 'Leer más'); is_in_stock=true sin cantidad; sin etiquetas, marcas ni valoraciones (average_rating '0', review_count 0)."
+   ]
+  },
+  {
+   "id_es": 925,
+   "slug": "soporte-metalico-para-led-5mm-2",
+   "url_es": "https://grupotorivac.com/product/soporte-metalico-para-led-5mm-2/",
+   "sku": "15b9f0f7e5b8",
+   "names": {
+    "es": "Soporte metalico para led 5mm",
+    "en": "Metal support for led 5mm",
+    "fr": "Support métallique pour led de 5mm",
+    "de": "Metallhalterung für 5mm Led"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/soporte-metalico-para-led-5mm-2/",
+    "en": "https://grupotorivac.com/en/product/soporte-metalico-para-led-5mm/",
+    "fr": "https://grupotorivac.com/fr/product/support-metallique-pour-led-de-5mm/",
+    "de": "https://grupotorivac.com/de/product/metallhalterung-fuer-5mm-led/"
+   },
+   "ids": {
+    "es": 925,
+    "en": 4110,
+    "fr": 16354,
+    "de": 16355
+   },
+   "category_path_es": [
+    "Portaled",
+    "led 5mm"
+   ],
+   "categories_all_es": [
+    {
+     "id": 67,
+     "name": "led 5mm",
+     "slug": "led-5mm"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Soporte metálico para led de 5mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)\n\nVer ficha técnica",
+    "en": "Metal bracket for 5mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.\nAvailable with two different heads (inner cone / outer cone).\n\nSee data sheet",
+    "fr": "Support métallique pour LED de 5 mm, en laiton ou en duraluminium, avec des revêtements chromés, nickelés ou anodisés noirs.\nDisponible avec deux têtes différentes (cône intérieur / cône extérieur).\n\nVoir la fiche technique",
+    "de": "Metallhalterung für 5 mm LEDs, aus Messing oder Duraluminium, mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.\nErhältlich mit zwei verschiedenen Köpfen (Innenkonus / Außenkonus).\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-5mm-600x600-2.jpg",
+     "alt": {
+      "es": "Soporte metalico para led 5mm",
+      "en": "Metal support for led 5mm",
+      "fr": "Support métallique pour led de 5mm",
+      "de": "Metallhalterung für 5mm Led"
+     },
+     "id": 926,
+     "ids": {
+      "es": 926,
+      "en": 926,
+      "fr": 926,
+      "de": 926
+     },
+     "filename": "soporte-metalico-led-5mm-600x600-2.jpg",
+     "title": {
+      "es": "soporte-metalico-led-5mm-600×600",
+      "en": "soporte-metalico-led-5mm-600×600",
+      "fr": "soporte-metalico-led-5mm-600×600",
+      "de": "soporte-metalico-led-5mm-600×600"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/Soportes-Metalicos.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See data sheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Material (latón o duraluminio)",
+    "Recubrimiento (cromo, níquel o anodizado negro)",
+    "Tipo de cabeza (cono interior / cono exterior)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Metal support for led 5mm\n\nView full catalog",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Support métallique pour led de 5mm\n\nVoir tout le catalogue",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Metallhalterung für 5mm Led\n\nGesamten Katalog ansehen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Soporte metalico para led 5mm - Torivac",
+     "meta_description": "Soporte metálico para led de 5mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.",
+     "og_title": "Soporte metalico para led 5mm - Torivac",
+     "og_description": "Soporte metálico para led de 5mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-5mm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-5mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:57",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__soporte-metalico-para-led-5mm-2.json"
+    },
+    "en": {
+     "title": "Metal support for led 5mm - Torivac",
+     "meta_description": "Metal bracket for 5mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.",
+     "og_title": "Metal support for led 5mm - Torivac",
+     "og_description": "Metal bracket for 5mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-5mm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-5mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:12",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__soporte-metalico-para-led-5mm.json"
+    },
+    "fr": {
+     "title": "Support métallique pour led de 5mm - Torivac",
+     "meta_description": "Support métallique pour LED de 5 mm, en laiton ou en duraluminium, avec des revêtements chromés, nickelés ou anodisés noirs.",
+     "og_title": "Support métallique pour led de 5mm - Torivac",
+     "og_description": "Support métallique pour LED de 5 mm, en laiton ou en duraluminium, avec des revêtements chromés, nickelés ou anodisés noirs.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-5mm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-5mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:20",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__support-metallique-pour-led-de-5mm.json"
+    },
+    "de": {
+     "title": "Metallhalterung für 5mm Led - Torivac",
+     "meta_description": "Metallhalterung für 5 mm LEDs, aus Messing oder Duraluminium, mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.",
+     "og_title": "Metallhalterung für 5mm Led - Torivac",
+     "og_description": "Metallhalterung für 5 mm LEDs, aus Messing oder Duraluminium, mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-5mm-600x600-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-5mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:20",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__metallhalterung-fuer-5mm-led.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "ficha_sin_datos_numericos",
+    "sin_referencias_comerciales",
+    "sku_no_comercial",
+    "contenido_por_verificar",
+    "sin_alt",
+    "imagen_con_id_de_otro_idioma",
+    "pdf_compartido_entre_fichas",
+    "pdf_solo_imagen",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "estructura_de_encabezados_dudosa",
+    "relacionados_autorreferente",
+    "plantilla_cta_mal_traducida",
+    "texto_en_idioma_incorrecto",
+    "texto_plantilla_repetido",
+    "breadcrumb_raiz_sin_traducir",
+    "jsonld_sin_schema_product",
+    "terminologia_inconsistente_entre_idiomas",
+    "terminologia_inconsistente_entre_fichas",
+    "typo",
+    "slug_url_en_espanol",
+    "slug_numerico_no_descriptivo",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "categoria_padre_mal_traducida",
+    "categoria_raiz_no_asignada",
+    "duplicado_posible",
+    "imagen_extension_no_coincide_con_formato",
+    "imagen_renderizada_variante_pagespeed",
+    "etiqueta_boton_inconsistente"
+   ],
+   "gaps": [
+    "Descripción larga vacía en los 4 idiomas: la Store API devuelve description='' y la REST content.rendered='' (ids 925/4110/16354/16355). Todo el contenido de la ficha está en short_description (en la REST, excerpt): una frase con diámetro, material y recubrimientos, una línea sobre las cabezas disponibles y el botón a la ficha técnica. description_text queda en '' y spec_tables=[]: la web no tiene tabla de modelos para este producto, por eso orderable_items=[]. La página renderizada de los 4 idiomas solo repite la descripción corta más el bloque de contacto (y, en EN/FR/DE, el de relacionados): no hay pestañas, descargas ni texto adicional (contrastado con el HTML crudo; lo demás es menú, pie y banner de cookies).",
+    "Datos técnicos que da la web (solo en el nombre y en la descripción corta): diámetro de LED 5 mm; material latón o duraluminio; recubrimientos cromo, níquel o anodizado negro; dos cabezas (cono interior / cono exterior). No hay dimensiones, rosca, peso, color de la cabeza, unidades por envase ni referencias de modelo (attributes=[] en los 4 idiomas; weight y dimensions vacíos en la Store API). La web no dice si material, recubrimiento y cabeza son opciones independientes ni qué combinaciones existen, ni si 'dos cabezas diferentes' son dos modelos o dos opciones de un mismo modelo: variation_axes_hint recoge los tres ejes tal como están en el texto. El diámetro lo fija la propia ficha (hay fichas separadas para 3, 5, 8 y 10 mm); si la web nueva los modela como una familia con eje 'diámetro' o como 4 fichas es decisión pendiente del equipo.",
+    "Sin referencia comercial: SKU '15b9f0f7e5b8' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia de fabricante; la Store API lo repite igual en EN/FR/DE. El modelo solo se identifica por el nombre y el diámetro. orderable_items=[].",
+    "Tensión y potencia: ninguna mención numérica de tensión (V, kV, VAC/VDC, voltios), potencia (VA, W, kVA, kW) ni intensidad en el nombre, la descripción corta, la meta description ni la página renderizada de los 4 idiomas: voltage_mentions=[] y power_mentions=[]. La única aparición del concepto (ES 'tensión', EN 'voltage', FR 'tension', DE 'Spannung' y 'Leistung') está en el texto genérico de la plantilla de contacto ('productos especializados para la regulación de la tensión…'), que no describe este producto: no usarlo para etiquetas de voltaje. Un soporte metálico para LED no declara tensión en la web, así que las fuentes no dan base para una etiqueta de voltaje.",
+    "Ficha técnica: el botón (ES 'Ver ficha técnica' / EN 'See data sheet' / FR 'Voir la fiche technique' / DE 'Siehe technisches Datenblatt') enlaza en los 4 idiomas a Soportes-Metalicos.pdf (https://grupotorivac.com/wp-content/uploads/2023/02/Soportes-Metalicos.pdf), que comparte con la ficha 923 (LED 3 mm); el enlace no indica cuál de los dos diámetros es el de esta ficha. Es la página 37 del catálogo (1 página, 69816 bytes), con rótulos solo en castellano ('Soportes Metálicos para LED de 5mm.' y de 3mm.): su texto extraído (data/analysis/pdf-text/Soportes-Metalicos/p001.txt, 265 caracteres) solo trae cabecera, rótulos y número de página; las cotas y roscas están en los dibujos (pdf_solo_imagen). Lectura visual previa (data/analysis/pdfs/p16-fichas-soportes-led.json, verified=true; no re-verificada en esta tarea) para 5 mm: ilustración 1: Ø 10 / 3 / 15 / ROSCA 8/0,75; ilustración 2: Ø 9.5 / 3 / 16.5 / ROSCA 8/0,75 (orden: cota superior / cota parcial / cota total / rosca; sin unidad ni leyenda de cotas impresas ni referencias de pedido). No se vuelca a este JSON porque la fuente de esta tarea es la web; pendiente de verificación en la tarea de PDFs (S11).",
+    "Contraste web ≠ PDF pendiente: el PDF no menciona material, recubrimientos ni 'cono interior / cono exterior' (la web sí); muestra dos ilustraciones por diámetro sin decir cuál es cada cabeza. El PDF no permite confirmar ni desmentir el texto de la web.",
+    "Existe en la biblioteca de medios otra ficha, 'Caracteristicas_Soportes_Metalicos_para_Leds.pdf' (media id 204, 2022/03, cabecera bilingüe 'SOPORTES METALICOS PARA LED/METAL BRACKET FOR LEDS', 348785 bytes), que según la lectura visual previa reúne las mismas ilustraciones y cotas de 3, 5, 8 y 10 mm; ninguna página de producto ni de categoría la enlaza (solo aparece en la REST media). Las fichas enlazan las páginas 37 y 38 del catálogo 2023/02.",
+    "Imagen única (id 926, 'soporte-metalico-led-5mm-600x600-2.jpg', 600×600): la biblioteca de medios tiene alt='' en todos los idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático de WooCommerce, no descriptivo) y es el que se guarda en images[].alt (alt_source='web:pagina'). El título del medio es 'soporte-metalico-led-5mm-600×600'. El fichero 'soporte-metalico-led-5mm-600x600-2.jpg' es en realidad un PNG (copia local data/raw/media/60b745cd-soporte-metalico-led-5mm-600x600-2.jpg: PNG image data, 600 x 600, 8-bit/color RGBA, non-interlaced), coherente con el mime image/png de media-index y con el type image/png de og:image (Yoast): extensión .jpg y formato no coinciden. En EN/FR/DE la tarjeta de 'relacionados' muestra además la miniatura -300x300 con alt=\"\".",
+    "Imagen con id de otro idioma: la Store API devuelve el id ES 926 también en los productos EN/FR/DE (images[].ids) y la REST featured_media es 926 en los 4; la biblioteca de medios guarda copias WPML por idioma del mismo fichero: EN 3822, FR 3823, DE 9297 (adjuntas a los productos traducidos 4110, 16354, 16355).",
+    "Las páginas renderizadas EN/FR/DE sirven la miniatura de 300 px como variante de PageSpeed ('xsoporte-metalico-led-5mm-600x600-2-300x300.jpg.pagespeed.ic.….png'): en EN solo dentro del srcset (de la imagen principal y de la tarjeta de relacionados); en FR y DE también como src de la tarjeta de relacionados. La página ES no la usa. images[].src guarda el original (el de la Store API y el og:image).",
+    "SEO: canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/soporte-metalico-para-led-5mm-2/); hreflang completo (es, en, fr, de, x-default→ES). Ver docs/01-analisis/HALLAZGOS.md n.º 11. Meta description = primera frase de la descripción corta en los 4 idiomas (no incluye la línea de cabezas ni el botón; sin truncar); title = nombre + ' - Torivac'; sin focus keyword (_yoast_wpseo_focuskw vacío; la meta description está escrita a mano en _yoast_wpseo_metadesc). og:image 600×600 px (por debajo de los 1200×630 px recomendados habitualmente para compartir) y declarado como image/png.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (outline: H3 de menú 'Products'/'Produits'/'Produkte', H4 de la cabecera del bloque de contacto, H2 con la pregunta de contacto, H2 de relacionados y el nombre del producto solo como H4 dentro de 'relacionados'); la ES sí tiene H1 = 'Soporte metalico para led 5mm', precedido por el H3 'Productos' del menú, y su H4 de contacto va antes del H2 (jerarquía de encabezados dudosa).",
+    "Migas de pan y datos estructurados: el nivel raíz visible de la miga ('Productos') sigue en castellano en EN/FR/DE. El JSON-LD de Yoast (WebPage, ImageObject, BreadcrumbList, WebSite, Organization) no incluye esquema Product; su BreadcrumbList usa 'Portada' (castellano) como primer nivel en los 4 idiomas (en EN apunta a /de/) y 'Products' → https://grupotorivac.com/en/shop/ como segundo en los 4.",
+    "Plantilla de contacto (CTA) reutilizada sin adaptar: habla de 'productos especializados para la regulación de la tensión' (plantilla común, no específica de soportes para LED). Textos mal traducidos o en idioma equivocado (se guardan tal cual en extra_sections): EN título 'CONTACT WITH US'; FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE título 'KONTAKT US' (inglés mezclado), casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés); ES 'encontrareis' sin tilde. En EN/FR/DE el bloque 'productos relacionados' solo lista el propio producto y su botón de catálogo enlaza al listado general de productos (/en/torivac-products/, /fr/produits-torivac/, /de/torivac-produkte/); la página ES no muestra bloque de relacionados.",
+    "Erratas e inconsistencias de redacción en ES (se conservan tal cual): 'metalico' sin tilde en el nombre (el texto dice 'metálico'), 'niquel' sin tilde, 'fabricados' en plural concordando con 'Soporte' en singular, 'led' en minúscula (acrónimo LED) y '5mm' sin espacio.",
+    "Terminología inconsistente: EN: el nombre usa 'Metal support' pero el texto 'Metal bracket'; DE: el nombre usa 'Metallhalterung für 5mm Led' (otro patrón que las otras tres fichas: 'Metallbügel für led Nmm', y con 'Led' en vez de 'led'), y el slug DE 'metallhalterung-fuer-5mm-led' tampoco sigue el patrón 'metallbuegel-fuer-led-Nmm'; FR: el nombre y el slug llevan 'led de 5mm' (con 'de'), las otras tres fichas 'led Nmm'. Las traducciones de la descripción corta están completas respecto a ES (translation_status='ok'), pero la redacción varía de una ficha a otra del lote (p. ej. FR: 'avec revêtement chromé, nickelé ou anodisé noir' en 3 y 8 mm frente a 'avec des revêtements chromés, nickelés ou anodisés noirs' en 5 y 10 mm; DE: 'und mit Chrom-…' en 3 y 10 mm frente a ', mit Chrom-…' en 5 y 8 mm). Se conservan tal cual; a confirmar por un traductor técnico.",
+    "Etiqueta del botón al PDF en EN: 'See data sheet'. Las 4 fichas del lote usan 3 grafías distintas ('See technical datasheet' en 923 y 927, 'See data sheet' en 925, 'See technical data sheet' en 929); ES, FR y DE son iguales en las 4 ('Ver ficha técnica' / 'Voir la fiche technique' / 'Siehe technisches Datenblatt'). El texto del botón queda dentro de short_description y se registra en pdf_links[].labels.",
+    "Slugs: el slug ES lleva sufijo numérico '-2' ('soporte-metalico-para-led-5mm-2'), sin significado y sin equivalente en las otras lenguas; la URL EN conserva el slug en español sin sufijo (/en/product/soporte-metalico-para-led-5mm/), mientras que FR ('support-metallique-pour-led-de-5mm') y DE ('metallhalterung-fuer-5mm-led') sí lo traducen. Relevante para las redirecciones de la web nueva.",
+    "Categorías: la Store API y la REST asignan el producto solo a la subcategoría 'led 5mm' (id 67, slug 'led-5mm', hija de 'Portaled' id 65); no está asignado al padre y category_path_es lo añade porque así lo da product-map.json (categoria_raiz_no_asignada). La subcategoría contiene solo este producto, su descripción repite la descripción corta de la ficha y su URL (/categoria-producto/portaled/led-5mm/) devuelve la propia ficha (body class single-product postid-925, canonical a la URL del producto). Traducciones de la categoría: EN 'led 5mm' (id 644, slug 'portaled-led-5mm'; la de 10 mm usa 'led-10mm' y las de 3, 5 y 8 mm 'portaled-led-Nmm'); FR 'led 5mm' (id 638, slug 'led-portale-5-mm') bajo 'Porté' (id 564, slug 'portail'); DE 'led 5mm' (id 640, slug 'geportaliseerde-led-5mm') bajo 'Portiert' (id 565, slug 'geportaliseerd'). Los padres FR 'Porté' (slug 'portail', que en francés es portón o portal web) y DE 'Portiert' (slug 'geportaliseerd') no equivalen a 'Portaled', el nombre de la familia de soportes para LED que EN sí conserva; y los slugs DE de las 4 subcategorías tienen forma neerlandesa, no alemana ('geportaliseerde-led-3mm', 'geportaliseerde-led-5mm', 'geporteerde-led-8mm', 'geperforeerde-led-10mm'). Existe además una categoría 'Portaleds' (id 24, 0 productos) duplicada respecto a 'Portaled' (docs/01-analisis/HALLAZGOS.md n.º 4).",
+    "Información de familia que solo está en la categoría padre 'Portaled' (REST product_cat id 65, no en la ficha): \"Estos soportes metálicos para LED están formados por un cuerpo de latón o duraluminio, bañado en níquel, cromo o anodinado, tuerca y arandela de latón niquelado y además el tapón de Poliamida-6.\" (ES; con la errata 'anodinado'); añade tuerca y arandela de latón niquelado y tapón de poliamida-6. Existe en EN/FR/DE (ids 563/564/565). No se ha volcado a description_text porque no forma parte de la página del producto; queda para el análisis de categorías.",
+    "Duplicación entre fichas: las 4 fichas del lote (3, 5, 8 y 10 mm) tienen el mismo texto salvo el diámetro, y comparten PDF por pares (3 y 5 mm: Soportes-Metalicos.pdf; 8 y 10 mm: Soportes-Metalicos-para-LED.pdf); la descripción de cada subcategoría repite la de su ficha (duplicado_posible).",
+    "Sin precio: la Store API devuelve price '0' y price_html vacío en los 4 idiomas (catálogo sin precios; is_purchasable=false, botón 'Leer más'); is_in_stock=true sin cantidad; sin etiquetas, marcas ni valoraciones (average_rating '0', review_count 0)."
+   ]
+  },
+  {
+   "id_es": 927,
+   "slug": "soporte-metalico-para-led-8mm-2",
+   "url_es": "https://grupotorivac.com/product/soporte-metalico-para-led-8mm-2/",
+   "sku": "b99f0ea0881f",
+   "names": {
+    "es": "Soporte metalico para led 8mm",
+    "en": "Metal support for led 8mm",
+    "fr": "Support métallique pour led 8mm",
+    "de": "Metallbügel für led 8mm"
+   },
+   "urls": {
+    "es": "https://grupotorivac.com/product/soporte-metalico-para-led-8mm-2/",
+    "en": "https://grupotorivac.com/en/product/soporte-metalico-para-led-8mm/",
+    "fr": "https://grupotorivac.com/fr/product/support-metallique-pour-led-8mm/",
+    "de": "https://grupotorivac.com/de/product/metallbuegel-fuer-led-8mm/"
+   },
+   "ids": {
+    "es": 927,
+    "en": 4112,
+    "fr": 16356,
+    "de": 16357
+   },
+   "category_path_es": [
+    "Portaled",
+    "led 8mm"
+   ],
+   "categories_all_es": [
+    {
+     "id": 68,
+     "name": "led 8mm",
+     "slug": "led-8mm"
+    }
+   ],
+   "type": "simple",
+   "short_description": {
+    "es": "Soporte metálico para led de 8mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.\nDisponible con dos cabezas diferentes (cono interior / cono exterior)\n\nVer ficha técnica",
+    "en": "Metal bracket for 8mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.\nAvailable with two different heads (inner cone / outer cone).\n\nSee technical datasheet",
+    "fr": "Support métallique pour LED de 8 mm, en laiton ou duraluminium, avec revêtement chromé, nickelé ou anodisé noir.\nDisponible avec deux têtes différentes (cône intérieur / cône extérieur).\n\nVoir la fiche technique",
+    "de": "Metallhalterung für 8mm LEDs, aus Messing oder Duraluminium, mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.\nErhältlich mit zwei verschiedenen Köpfen (Innenkonus / Außenkonus).\n\nSiehe technisches Datenblatt"
+   },
+   "description_text": {
+    "es": "",
+    "en": "",
+    "fr": "",
+    "de": ""
+   },
+   "spec_tables": [],
+   "attributes": [],
+   "images": [
+    {
+     "src": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-8mm-300x300-2.jpg",
+     "alt": {
+      "es": "Soporte metalico para led 8mm",
+      "en": "Metal support for led 8mm",
+      "fr": "Support métallique pour led 8mm",
+      "de": "Metallbügel für led 8mm"
+     },
+     "id": 928,
+     "ids": {
+      "es": 928,
+      "en": 928,
+      "fr": 928,
+      "de": 928
+     },
+     "filename": "soporte-metalico-led-8mm-300x300-2.jpg",
+     "title": {
+      "es": "soporte-metalico-led-8mm-300×300",
+      "en": "soporte-metalico-led-8mm-300×300",
+      "fr": "soporte-metalico-led-8mm-300×300",
+      "de": "soporte-metalico-led-8mm-300×300"
+     },
+     "alt_source": {
+      "es": "web:pagina",
+      "en": "web:pagina",
+      "fr": "web:pagina",
+      "de": "web:pagina"
+     }
+    }
+   ],
+   "pdf_links": [
+    {
+     "url": "https://grupotorivac.com/wp-content/uploads/2023/02/Soportes-Metalicos-para-LED.pdf",
+     "label": "Ver ficha técnica",
+     "labels": {
+      "es": "Ver ficha técnica",
+      "en": "See technical datasheet",
+      "fr": "Voir la fiche technique",
+      "de": "Siehe technisches Datenblatt"
+     },
+     "found_in": [
+      "es",
+      "en",
+      "fr",
+      "de"
+     ]
+    }
+   ],
+   "voltage_mentions": [],
+   "power_mentions": [],
+   "variation_axes_hint": [
+    "Material (latón o duraluminio)",
+    "Recubrimiento (cromo, níquel o anodizado negro)",
+    "Tipo de cabeza (cono interior / cono exterior)"
+   ],
+   "orderable_items": [],
+   "extra_sections": [
+    {
+     "title": "CONTACTA CON NOSOTROS",
+     "text": "¿Necesita asesoramiento técnico o un presupuesto?\n Escríbenos y te la resolveremos\n\nEn Torivac encontrareis una amplia gama de productos especializados para la regulación de la tensión, diseñados para ofrecer el máximo rendimiento en aplicaciones industriales y sistemas eléctricos de alta exigencia. Disponemos de múltiples medidas y formatos, además de opciones de fabricación a medida que garantizan una solución adaptada a cada necesidad. Nuestro equipo de expertos está preparado para asesorarle en la mejor elección para su proyecto.\n\nPor favor, activa JavaScript en tu navegador para completar este formulario.\n\n*\nHe leído y acepto la política de privacidad\nEnviar\n\nEste sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google.",
+     "lang": "es",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "CONTACT WITH US",
+     "text": "Do you need technical advice or a quotation?\n Write us and we will solve it for you\n\nIn Torivac you will find a wide range of specialized products for voltage regulation, designed to offer maximum performance in industrial applications and high demanding electrical systems. We have multiple sizes and formats, as well as custom manufacturing options that guarantee a solution adapted to every need. Our team of experts is ready to advise you on the best choice for your project. \n\nPlease enable JavaScript in your browser to complete this form.\n\n*\nI agree to the privacy policy\nSend\n\nThis site is protected by reCAPTCHA and Google’s Privacy Policy and Terms of Service apply.",
+     "lang": "en",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Explore similar products",
+     "text": "- Metal support for led 8mm\n\nView full catalog",
+     "lang": "en",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "CONTACTEZ-NOUS",
+     "text": "Vous avez besoin d'un conseil technique ou d'un devis ?\n Écrivez-nous et nous résoudrons le problème pour vous.\n\nChez Torivac, vous trouverez une large gamme de produits spécialisés pour la régulation de la tension, conçus pour offrir des performances maximales dans les applications industrielles et les systèmes électriques très exigeants. Nous disposons d’une large gamme de tailles et de formats, ainsi que d’options de fabrication sur mesure qui garantissent une solution adaptée à chaque besoin. Notre équipe d’experts est prête à vous conseiller sur le meilleur choix pour votre projet. \n\nVeuillez activer JavaScript dans votre navigateur pour remplir ce formulaire.\n\n*\nIl a accepté et accepté la politique de confidentialité\nEnvoyer\n\nCe site est protégé par reCAPTCHA et les règles de confidentialité et les conditions d’utilisation de Google s’appliquent.",
+     "lang": "fr",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Découvrez des produits similaires",
+     "text": "- Support métallique pour led 8mm\n\nVoir tout le catalogue",
+     "lang": "fr",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    },
+    {
+     "title": "KONTAKT US",
+     "text": "Benötigen Sie eine technische Beratung oder ein Angebot?\n Schreiben Sie uns und wir werden es für Sie lösen\n\nBei Torivac finden Sie eine große Auswahl an spezialisierten Produkten für die Spannungsregelung, die für maximale Leistung in industriellen Anwendungen und sehr anspruchsvollen elektrischen Systemen entwickelt wurden. Wir verfügen über eine große Auswahl an Größen und Formaten sowie über kundenspezifische Fertigungsmöglichkeiten, die Ihnen eine an jeden Bedarf angepasste Lösung garantieren. Unser Expertenteam berät Sie gerne bei der Auswahl der besten Lösung für Ihr Projekt. \n\nBitte aktiviere JavaScript in deinem Browser, um dieses Formular fertigzustellen.\n\n*\nHij gaat akkoord met het privacybeleid.\nVersturen\n\nDiese Seite ist durch reCAPTCHA geschützt und es gelten die Datenschutzbestimmungen und Nutzungsbedingungen von Google.",
+     "lang": "de",
+     "source": "web:pagina bloque CTA (plantilla común de contacto/presupuesto)"
+    },
+    {
+     "title": "Ähnliche Produkte erkunden",
+     "text": "- Metallbügel für led 8mm\n\nGesamten Katalog ansehen",
+     "lang": "de",
+     "source": "web:pagina productos relacionados (generado por WooCommerce; solo lista el propio producto) + enlace al catálogo completo"
+    }
+   ],
+   "seo": {
+    "es": {
+     "title": "Soporte metalico para led 8mm - Torivac",
+     "meta_description": "Soporte metálico para led de 8mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.",
+     "og_title": "Soporte metalico para led 8mm - Torivac",
+     "og_description": "Soporte metálico para led de 8mm, fabricados en latón o duraluminio, y con recubrimientos de cromo, niquel o anodizado negro.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-8mm-300x300-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-8mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:04:58",
+     "source": "rest/product.es.json yoast_head_json; pages/es/product__soporte-metalico-para-led-8mm-2.json"
+    },
+    "en": {
+     "title": "Metal support for led 8mm - Torivac",
+     "meta_description": "Metal bracket for 8mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.",
+     "og_title": "Metal support for led 8mm - Torivac",
+     "og_description": "Metal bracket for 8mm LEDs, made of brass or duralumin, and with chrome, nickel or black anodized coatings.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-8mm-300x300-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-8mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:05:21",
+     "source": "rest/product.en.json yoast_head_json; pages/en/en__product__soporte-metalico-para-led-8mm.json"
+    },
+    "fr": {
+     "title": "Support métallique pour led 8mm - Torivac",
+     "meta_description": "Support métallique pour LED de 8 mm, en laiton ou duraluminium, avec revêtement chromé, nickelé ou anodisé noir.",
+     "og_title": "Support métallique pour led 8mm - Torivac",
+     "og_description": "Support métallique pour LED de 8 mm, en laiton ou duraluminium, avec revêtement chromé, nickelé ou anodisé noir.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-8mm-300x300-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-8mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:21",
+     "source": "rest/product.fr.json yoast_head_json; pages/fr/fr__product__support-metallique-pour-led-8mm.json"
+    },
+    "de": {
+     "title": "Metallbügel für led 8mm - Torivac",
+     "meta_description": "Metallhalterung für 8mm LEDs, aus Messing oder Duraluminium, mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.",
+     "og_title": "Metallbügel für led 8mm - Torivac",
+     "og_description": "Metallhalterung für 8mm LEDs, aus Messing oder Duraluminium, mit Chrom-, Nickel- oder schwarzer Eloxalbeschichtung.",
+     "og_image": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-8mm-300x300-2.jpg",
+     "canonical": "https://grupotorivac.com/product/soporte-metalico-para-led-8mm-2/",
+     "focus_keyword": null,
+     "modified": "2026-10-16T12:07:21",
+     "source": "rest/product.de.json yoast_head_json; pages/de/de__product__metallbuegel-fuer-led-8mm.json"
+    }
+   },
+   "translation_status": {
+    "en": "ok",
+    "fr": "ok",
+    "de": "ok"
+   },
+   "quality_flags": [
+    "descripcion_vacia",
+    "sin_modelos",
+    "sin_tabla_de_modelos",
+    "ficha_sin_datos_numericos",
+    "sin_referencias_comerciales",
+    "sku_no_comercial",
+    "contenido_por_verificar",
+    "sin_alt",
+    "imagen_con_id_de_otro_idioma",
+    "pdf_compartido_entre_fichas",
+    "pdf_solo_imagen",
+    "canonical_apunta_a_es",
+    "sin_h1_en_traducciones",
+    "estructura_de_encabezados_dudosa",
+    "relacionados_autorreferente",
+    "plantilla_cta_mal_traducida",
+    "texto_en_idioma_incorrecto",
+    "texto_plantilla_repetido",
+    "breadcrumb_raiz_sin_traducir",
+    "jsonld_sin_schema_product",
+    "terminologia_inconsistente_entre_idiomas",
+    "terminologia_inconsistente_entre_fichas",
+    "typo",
+    "slug_url_en_espanol",
+    "slug_numerico_no_descriptivo",
+    "slug_categoria_de_en_idioma_incorrecto",
+    "categoria_padre_mal_traducida",
+    "categoria_raiz_no_asignada",
+    "duplicado_posible",
+    "imagen_extension_no_coincide_con_formato",
+    "imagen_baja_resolucion",
+    "etiqueta_boton_inconsistente"
+   ],
+   "gaps": [
+    "Descripción larga vacía en los 4 idiomas: la Store API devuelve description='' y la REST content.rendered='' (ids 927/4112/16356/16357). Todo el contenido de la ficha está en short_description (en la REST, excerpt): una frase con diámetro, material y recubrimientos, una línea sobre las cabezas disponibles y el botón a la ficha técnica. description_text queda en '' y spec_tables=[]: la web no tiene tabla de modelos para este producto, por eso orderable_items=[]. La página renderizada de los 4 idiomas solo repite la descripción corta más el bloque de contacto (y, en EN/FR/DE, el de relacionados): no hay pestañas, descargas ni texto adicional (contrastado con el HTML crudo; lo demás es menú, pie y banner de cookies).",
+    "Datos técnicos que da la web (solo en el nombre y en la descripción corta): diámetro de LED 8 mm; material latón o duraluminio; recubrimientos cromo, níquel o anodizado negro; dos cabezas (cono interior / cono exterior). No hay dimensiones, rosca, peso, color de la cabeza, unidades por envase ni referencias de modelo (attributes=[] en los 4 idiomas; weight y dimensions vacíos en la Store API). La web no dice si material, recubrimiento y cabeza son opciones independientes ni qué combinaciones existen, ni si 'dos cabezas diferentes' son dos modelos o dos opciones de un mismo modelo: variation_axes_hint recoge los tres ejes tal como están en el texto. El diámetro lo fija la propia ficha (hay fichas separadas para 3, 5, 8 y 10 mm); si la web nueva los modela como una familia con eje 'diámetro' o como 4 fichas es decisión pendiente del equipo.",
+    "Sin referencia comercial: SKU 'b99f0ea0881f' (12 caracteres hexadecimales) parece un hash generado por la importación, no una referencia de fabricante; la Store API lo repite igual en EN/FR/DE. El modelo solo se identifica por el nombre y el diámetro. orderable_items=[].",
+    "Tensión y potencia: ninguna mención numérica de tensión (V, kV, VAC/VDC, voltios), potencia (VA, W, kVA, kW) ni intensidad en el nombre, la descripción corta, la meta description ni la página renderizada de los 4 idiomas: voltage_mentions=[] y power_mentions=[]. La única aparición del concepto (ES 'tensión', EN 'voltage', FR 'tension', DE 'Spannung' y 'Leistung') está en el texto genérico de la plantilla de contacto ('productos especializados para la regulación de la tensión…'), que no describe este producto: no usarlo para etiquetas de voltaje. Un soporte metálico para LED no declara tensión en la web, así que las fuentes no dan base para una etiqueta de voltaje.",
+    "Ficha técnica: el botón (ES 'Ver ficha técnica' / EN 'See technical datasheet' / FR 'Voir la fiche technique' / DE 'Siehe technisches Datenblatt') enlaza en los 4 idiomas a Soportes-Metalicos-para-LED.pdf (https://grupotorivac.com/wp-content/uploads/2023/02/Soportes-Metalicos-para-LED.pdf), que comparte con la ficha 929 (LED 10 mm); el enlace no indica cuál de los dos diámetros es el de esta ficha. Es la página 38 del catálogo (1 página, 60131 bytes), con rótulos solo en castellano ('Soportes Metálicos para LED de 8mm.' y de 10mm.): su texto extraído (data/analysis/pdf-text/Soportes-Metalicos-para-LED/p001.txt, 218 caracteres) solo trae cabecera, rótulos y número de página; las cotas y roscas están en los dibujos (pdf_solo_imagen). Lectura visual previa (data/analysis/pdfs/p16-fichas-soportes-led.json, verified=true; no re-verificada en esta tarea) para 8 mm: ilustración 1: Ø 14 / 2,5 / 17 / ROSCA 12/0,75; ilustración 2: Ø 14 / (cota sin cifra) / 20 / ROSCA 12/0,75 (orden: cota superior / cota parcial / cota total / rosca; sin unidad ni leyenda de cotas impresas ni referencias de pedido). No se vuelca a este JSON porque la fuente de esta tarea es la web; pendiente de verificación en la tarea de PDFs (S11).",
+    "Contraste web ≠ PDF pendiente: el PDF no menciona material, recubrimientos ni 'cono interior / cono exterior' (la web sí); muestra dos ilustraciones por diámetro sin decir cuál es cada cabeza. El PDF no permite confirmar ni desmentir el texto de la web.",
+    "Existe en la biblioteca de medios otra ficha, 'Caracteristicas_Soportes_Metalicos_para_Leds.pdf' (media id 204, 2022/03, cabecera bilingüe 'SOPORTES METALICOS PARA LED/METAL BRACKET FOR LEDS', 348785 bytes), que según la lectura visual previa reúne las mismas ilustraciones y cotas de 3, 5, 8 y 10 mm; ninguna página de producto ni de categoría la enlaza (solo aparece en la REST media). Las fichas enlazan las páginas 37 y 38 del catálogo 2023/02.",
+    "Imagen única (id 928, 'soporte-metalico-led-8mm-300x300-2.jpg', 300×300): la biblioteca de medios tiene alt='' en todos los idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático de WooCommerce, no descriptivo) y es el que se guarda en images[].alt (alt_source='web:pagina'). El título del medio es 'soporte-metalico-led-8mm-300×300'. El fichero 'soporte-metalico-led-8mm-300x300-2.jpg' es en realidad un PNG (copia local data/raw/media/033b29e6-soporte-metalico-led-8mm-300x300-2.jpg: PNG image data, 300 x 300, 8-bit/color RGBA, non-interlaced), coherente con el mime image/png de media-index y con el type image/png de og:image (Yoast): extensión .jpg y formato no coinciden. Es de 300×300 px, la mitad por lado que las de las otras tres fichas (600×600), y es también el og:image. En EN/FR/DE la tarjeta de 'relacionados' muestra además la miniatura -300x300 con alt=\"\".",
+    "Imagen con id de otro idioma: la Store API devuelve el id ES 928 también en los productos EN/FR/DE (images[].ids) y la REST featured_media es 928 en los 4; la biblioteca de medios guarda copias WPML por idioma del mismo fichero: EN 3824, FR 3825, DE 9302 (adjuntas a los productos traducidos 4112, 16356, 16357).",
+    "SEO: canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/soporte-metalico-para-led-8mm-2/); hreflang completo (es, en, fr, de, x-default→ES). Ver docs/01-analisis/HALLAZGOS.md n.º 11. Meta description = primera frase de la descripción corta en los 4 idiomas (no incluye la línea de cabezas ni el botón; sin truncar); title = nombre + ' - Torivac'; sin focus keyword (_yoast_wpseo_focuskw vacío; la meta description está escrita a mano en _yoast_wpseo_metadesc). og:image 300×300 px (por debajo de los 1200×630 px recomendados habitualmente para compartir) y declarado como image/png.",
+    "Las páginas renderizadas EN/FR/DE no tienen H1 (outline: H3 de menú 'Products'/'Produits'/'Produkte', H4 de la cabecera del bloque de contacto, H2 con la pregunta de contacto, H2 de relacionados y el nombre del producto solo como H4 dentro de 'relacionados'); la ES sí tiene H1 = 'Soporte metalico para led 8mm', precedido por el H3 'Productos' del menú, y su H4 de contacto va antes del H2 (jerarquía de encabezados dudosa).",
+    "Migas de pan y datos estructurados: el nivel raíz visible de la miga ('Productos') sigue en castellano en EN/FR/DE. El JSON-LD de Yoast (WebPage, ImageObject, BreadcrumbList, WebSite, Organization) no incluye esquema Product; su BreadcrumbList usa 'Portada' (castellano) como primer nivel en los 4 idiomas (en EN apunta a /de/) y 'Products' → https://grupotorivac.com/en/shop/ como segundo en los 4.",
+    "Plantilla de contacto (CTA) reutilizada sin adaptar: habla de 'productos especializados para la regulación de la tensión' (plantilla común, no específica de soportes para LED). Textos mal traducidos o en idioma equivocado (se guardan tal cual en extra_sections): EN título 'CONTACT WITH US'; FR casilla 'Il a accepté et accepté la politique de confidentialité'; DE título 'KONTAKT US' (inglés mezclado), casilla 'Hij gaat akkoord met het privacybeleid.' y botón 'Versturen' (neerlandés); ES 'encontrareis' sin tilde. En EN/FR/DE el bloque 'productos relacionados' solo lista el propio producto y su botón de catálogo enlaza al listado general de productos (/en/torivac-products/, /fr/produits-torivac/, /de/torivac-produkte/); la página ES no muestra bloque de relacionados.",
+    "Erratas e inconsistencias de redacción en ES (se conservan tal cual): 'metalico' sin tilde en el nombre (el texto dice 'metálico'), 'niquel' sin tilde, 'fabricados' en plural concordando con 'Soporte' en singular, 'led' en minúscula (acrónimo LED) y '8mm' sin espacio.",
+    "Terminología inconsistente: EN: el nombre usa 'Metal support' pero el texto 'Metal bracket'; DE: el nombre usa 'Metallbügel' y el texto 'Metallhalterung'; FR coherente ('Support métallique') pero el nombre escribe 'led 8mm' y el texto 'LED de 8 mm'. Las traducciones de la descripción corta están completas respecto a ES (translation_status='ok'), pero la redacción varía de una ficha a otra del lote (p. ej. FR: 'avec revêtement chromé, nickelé ou anodisé noir' en 3 y 8 mm frente a 'avec des revêtements chromés, nickelés ou anodisés noirs' en 5 y 10 mm; DE: 'und mit Chrom-…' en 3 y 10 mm frente a ', mit Chrom-…' en 5 y 8 mm). Se conservan tal cual; a confirmar por un traductor técnico.",
+    "Etiqueta del botón al PDF en EN: 'See technical datasheet'. Las 4 fichas del lote usan 3 grafías distintas ('See technical datasheet' en 923 y 927, 'See data sheet' en 925, 'See technical data sheet' en 929); ES, FR y DE son iguales en las 4 ('Ver ficha técnica' / 'Voir la fiche technique' / 'Siehe technisches Datenblatt'). El texto del botón queda dentro de short_description y se registra en pdf_links[].labels.",
+    "Slugs: el slug ES lleva sufijo numérico '-2' ('soporte-metalico-para-led-8mm-2'), sin significado y sin equivalente en las otras lenguas; la URL EN conserva el slug en español sin sufijo (/en/product/soporte-metalico-para-led-8mm/), mientras que FR ('support-metallique-pour-led-8mm') y DE ('metallbuegel-fuer-led-8mm') sí lo traducen. Relevante para las redirecciones de la web nueva.",
+    "Categorías: la Store API y la REST asignan el producto solo a la subcategoría 'led 8mm' (id 68, slug 'led-8mm', hija de 'Portaled' id 65); no está asignado al padre y category_path_es lo añade porque así lo da product-map.json (categoria_raiz_no_asignada). La subcategoría contiene solo este producto, su descripción repite la descripción corta de la ficha y su URL (/categoria-producto/portaled/led-8mm/) devuelve la propia ficha (body class single-product postid-927, canonical a la URL del producto). Traducciones de la categoría: EN 'led 8mm' (id 643, slug 'portaled-led-8mm'; la de 10 mm usa 'led-10mm' y las de 3, 5 y 8 mm 'portaled-led-Nmm'); FR 'led 8mm' (id 639, slug 'led-portique-8-mm') bajo 'Porté' (id 564, slug 'portail'); DE 'led 8mm' (id 641, slug 'geporteerde-led-8mm') bajo 'Portiert' (id 565, slug 'geportaliseerd'). Los padres FR 'Porté' (slug 'portail', que en francés es portón o portal web) y DE 'Portiert' (slug 'geportaliseerd') no equivalen a 'Portaled', el nombre de la familia de soportes para LED que EN sí conserva; y los slugs DE de las 4 subcategorías tienen forma neerlandesa, no alemana ('geportaliseerde-led-3mm', 'geportaliseerde-led-5mm', 'geporteerde-led-8mm', 'geperforeerde-led-10mm'). Existe además una categoría 'Portaleds' (id 24, 0 productos) duplicada respecto a 'Portaled' (docs/01-analisis/HALLAZGOS.md n.º 4).",
+    "Información de familia que solo está en la categoría padre 'Portaled' (REST product_cat id 65, no en la ficha): \"Estos soportes metálicos para LED están formados por un cuerpo de latón o duraluminio, bañado en níquel, cromo o anodinado, tuerca y arandela de latón niquelado y además el tapón de Poliamida-6.\" (ES; con la errata 'anodinado'); añade tuerca y arandela de latón niquelado y tapón de poliamida-6. Existe en EN/FR/DE (ids 563/564/565). No se ha volcado a description_text porque no forma parte de la página del producto; queda para el análisis de categorías.",
+    "Duplicación entre fichas: las 4 fichas del lote (3, 5, 8 y 10 mm) tienen el mismo texto salvo el diámetro, y comparten PDF por pares (3 y 5 mm: Soportes-Metalicos.pdf; 8 y 10 mm: Soportes-Metalicos-para-LED.pdf); la descripción de cada subcategoría repite la de su ficha (duplicado_posible).",
+    "Sin precio: la Store API devuelve price '0' y price_html vacío en los 4 idiomas (catálogo sin precios; is_purchasable=false, botón 'Leer más'); is_in_stock=true sin cantidad; sin etiquetas, marcas ni valoraciones (average_rating '0', review_count 0)."
+   ]
+  }
+ ]
+}
