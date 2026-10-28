@@ -55,7 +55,9 @@ ${noindex ? '<meta name="robots" content="noindex,nofollow">' : ''}
 ${canonical}${alternates}
 <meta name="theme-color" content="#100404">
 <link rel="icon" href="${ctx.asset('assets/img/favicon.png')}" type="image/png">
-${['fonts', 'tokens', 'base', 'layout', 'components', 'art'].map((c) => `<link rel="stylesheet" href="${ctx.asset(`assets/css/${c}.css`)}">`).join('\n')}
+${site.absBase
+  ? `<link rel="preload" href="${ctx.asset('assets/fonts/archivo-latin-wght-normal.woff2')}" as="font" type="font/woff2" crossorigin><link rel="preload" href="${ctx.asset('assets/fonts/advent-pro-latin-wght-normal.woff2')}" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="${ctx.asset('assets/css/site.css')}">`
+  : ['fonts', 'tokens', 'base', 'layout', 'components', 'art'].map((c) => `<link rel="stylesheet" href="${ctx.asset(`assets/css/${c}.css`)}">`).join('\n')}
 ${social}
 ${noindex ? '' : ldScript(pageGraph(ctx, { template, title, description, crumbs, extra: ld, image: ogImg }))}
 </head>

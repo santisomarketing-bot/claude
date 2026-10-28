@@ -51,6 +51,12 @@ def collect():
             for pr in json.loads(p.read_text()):
                 for im in pr.get("images", []):
                     add(im.get("src"), f"store:{l}")
+    # imágenes de las CATEGORÍAS (Store API y REST): sin esto las tarjetas de /productos/ enlazarían a la web original
+    for l in LANGS:
+        p = RAW / f"store/categories.{l}.json"
+        if p.exists():
+            for c in json.loads(p.read_text()):
+                add((c.get("image") or {}).get("src"), f"cat:{l}")
     for f in AN.glob("pages/*/*.json"):
         pg = json.loads(f.read_text())
         for im in pg.get("images", []):

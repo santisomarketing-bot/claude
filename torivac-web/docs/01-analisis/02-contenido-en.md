@@ -24,10 +24,10 @@ Alcance: páginas y entradas cuya URL está en inglés (prefijo `/en/`) más la 
 
 Conclusiones:
 
-1. **La versión EN es una traducción frase a frase de la ES, no contenido propio.** En las 30 piezas comparadas las líneas de texto, las frases y las cifras coinciden con las de ES (diferencias solo en el ruido de los formularios y en la lista de subcategorías de Productos). Por eso la decisión de migración de cada entrada es la de su original ES, y el valor de EN está en ser un buen punto de partida de traducción, no en aportar texto nuevo. La única pieza con contenido propio es la entrada técnica `/en/el-variador-de-tension-y-sus-funciones/`, que no tiene original ES, FR ni DE.
+1. **La versión EN es una traducción frase a frase de la ES, no contenido propio.** En las 30 piezas comparadas las líneas de texto, las frases y las cifras coinciden con las de ES (las líneas solo difieren en portada, contacto, Productos y política de cookies, por el ruido de los formularios, una subcategoría ausente y el formato de la lista de enlaces). Por eso la decisión de migración de cada entrada es la de su original ES, y el valor de EN está en ser un buen punto de partida de traducción, no en aportar texto nuevo. La única pieza con contenido propio es la entrada técnica `/en/el-variador-de-tension-y-sus-funciones/`, que no tiene original ES, FR ni DE.
 2. **La traducción es automática de buena calidad, con errores que cambian el sentido.** 13 de 37 piezas llevan al menos un falso amigo o término técnico equivocado: 'processors' por 'transformers' (2 entradas), 'millions of dollars' por 'pérdidas millonarias' (2), 'European Green Pact' por 'European Green Deal', 'Toroidal shocks' por chokes, 'load benches' por load banks, 'Single Phase Inverters' y 'variable speed drives' por variadores. El término más inestable es **'variador de tensión'**, que aparece como 'voltage variators', 'voltage regulators' y 'drives' según la pieza, aunque el catálogo EN oficial dice 'variator' y 'voltage variator' y nunca 'regulator'. Hace falta un glosario antes de reutilizar ningún texto.
 3. **Hay texto en español dentro del inglés, sobre todo en la interfaz y los metadatos.** El banner de cookies está en español en las 194 páginas EN; el buscador dice 'Busar'; los formularios de portada y contacto tienen las etiquetas 'Correo' y 'Mensaje'; las tarjetas del blog dicen 'Leer más'; la meta description y el alt de la entrada EN-only están en español; el JSON-LD de la portada conserva el tagline en español con errata; el carrito de WooCommerce está en español; hay alts en francés y español. El cuerpo de las páginas y entradas sí está íntegro en inglés.
-4. **Frescura frente a ES.** En las entradas la EN va por delante (re-guardada el 2026-03-23, 84-97 días después que la ES). Están desactualizadas la portada (215 días más antigua que la ES, que ya usa imágenes WebP optimizadas), Proyectos (35 días, con otras imágenes) y la política de cookies (2,2 años). El texto visible no difiere de ES, pero las imágenes y el pie sí.
+4. **Frescura frente a ES.** En las entradas la EN va por delante (re-guardada entre el 2026-03-13 y el 2026-03-23, 84-97 días después que la ES). Están desactualizadas la portada (215 días más antigua que la ES, que ya usa imágenes WebP optimizadas), Proyectos (35 días, con otras imágenes) y la política de cookies (2,2 años). El texto visible no difiere de ES, pero las imágenes y el pie sí.
 5. **Datos de empresa iguales a ES, con dos diferencias.** Teléfono (+34 93 312 01 61), correo (info@torivac.com) y dirección coinciden; el pie EN traduce la dirección ('No. 2, 6th Floor') mientras Contacto y Privacidad la dejan en español ('Nº 2, Planta 6ª'). Y el pie de las 194 páginas EN **no incluye el aviso de ICEX-Next/FEDER** ni el logotipo nuevo que sí tienen 186 de las 208 páginas ES.
 6. **Problemas de SEO que no existen en ES:** la home EN declara como canonical la home alemana, Contacto la de contacto alemana, la política de cookies la española y la entrada EN-only una URL sin `/en/` que no existe. Los formularios de las 22 entradas no tienen etiquetas `<label>` y los de portada y contacto piden aceptar el 'Legal Notice', que no existe en inglés.
 7. **Los textos legales EN son los de ES traducidos con sus mismos defectos.** El titular está en blanco en la política de privacidad, falta la variable `correodelcliente`, la declaración de accesibilidad se contradice y la política de cookies no inventaría las cookies reales. No existe aviso legal en inglés (`HALLAZGOS.md` #10 cita una URL `/en/aviso-legal-2/` que no consta en ninguna fuente).
@@ -44,7 +44,7 @@ Conclusiones:
 | `/en/torivac-company/` | 15713 | Torivac_Torivac Company | Our company | 2025-11-03 / 2026-03-09 | 350 | `/torivac-empresa/` | Presenta la empresa: trayectoria desde 1964, presencia internacional, misión, visión, valores y liderazgo de Mr. Ramón Zamora. | Buena. Traducción fluida; única página con trayectoria (1964), misión, visión y valores. Heredados: 'Grupor' en el título SEO, meta description '%' y CTA a /contacto/ en español. | ok | Copiar con correcciones |
 | `/en/torivac-products/` | 15728 | Torivac Products | (sin H1) Products | 2025-11-02 / 2026-03-10 | 401 | `/productos/` | Índice de productos EN: árbol de categorías (modal) y tarjetas de las 11 familias con recuento de productos y extracto. | Pobre como texto. Árbol de menú más extractos cortados con '…', restos de interfaz ('Torivac-Products', '×') y falsos amigos ('Single Phase Inverters', 'Nuclei', 'variable speed drives'). Sin tarjeta de Electronic equipment. | automática sospechosa | Regenerar desde datos |
 | `/en/entrepreneurial-projects/` | 15749 | Torivac_Entrepreneurial Projects | Turnkey projects | 2025-11-03 / 2026-03-09 | 201 | `/proyectos-empresariales/` | Describe la oferta de proyectos llave en mano y a medida (diseño, fabricación y puesta en marcha) y la colaboración con clientes y aliados. | Buena. Texto propio correcto, pero 'Entrepreneurial' traduce mal 'Empresariales', el CTA se queda en 'Contact us at' y las imágenes son anteriores a la actualización de ES. | ok | Copiar con correcciones |
-| `/en/blog/` | 15828 | Torivac_Blog | (sin H1) sin encabezado propio | 2024-06-25 / 2026-03-10 | 133 | `/blog/` | Índice del blog EN: rejilla de entradas (3 páginas, 10 visibles en la captura) con imagen, fecha, título, extracto y botón 'Leer más'. | Sin texto propio: rejilla automática con 'Leer más' en español, fechas en inglés y extractos sin puntuación. | parcial | Regenerar desde datos |
+| `/en/blog/` | 15828 | Torivac_Blog | (sin H1) sin encabezado propio | 2024-06-25 / 2026-03-10 | 133 | `/blog/` | Índice del blog EN: rejilla de entradas (3 páginas; 10 visibles en la primera cosechada) con imagen, fecha, título, extracto y botón 'Leer más'. | Sin texto propio: rejilla automática con 'Leer más' en español, fechas en inglés y extractos sin puntuación. | parcial | Regenerar desde datos |
 | `/en/contact/` | 15736 | Torivac_Contact | (sin H1) CONTACT US | 2025-11-03 / 2026-03-13 | 154 | `/contacto/` | Página de contacto EN: formulario, texto de acompañamiento, dirección, teléfono, correo y mapa de Google embebido. | Correcta y completa. Etiquetas 'Correo'/'Mensaje' en español, dirección sin traducir, consentimiento sin enlace y canonical a la página de contacto alemana. | parcial | Copiar con correcciones |
 | `/en/privacy-policy/` | 15707 | Privacy Policy | (sin H1) Privacy Policy | 2025-12-10 / 2026-03-09 | 842 | `/politica-de-privacidad/` | Política de privacidad EN (RGPD): responsable, principios, datos recogidos, legitimación, derechos y fecha de actualización (December 2025). | Plantilla incompleta con traducción fiel: titular en blanco, 'correodelcliente' sin resolver y terminología de derechos no alineada con el RGPD en inglés. | ok | Revisión legal antes de migrar |
 | `/en/politica-de-cookies/` | 15830 | Cookie Policy | (sin H1) sin encabezado propio | 2022-12-16 / 2022-12-16 | 594 | `/politica-de-cookies/` | Política de cookies EN genérica: qué son las cookies, propias, de redes sociales (con enlaces a sus políticas) y cómo deshabilitarlas. | Plantilla de generador gratuito sin inventario de cookies; traducción fiel con una frase ininteligible, enlaces a políticas en español/México y página sin re-guardar desde 2022. | parcial | Reescribir |
@@ -85,7 +85,7 @@ Se inventarían sin analizar a fondo: son plantillas de WooCommerce o archivos d
 |---|---|---|---|---|---|---|---|
 | `/en/carrito/` | 11513 | WooCommerce | Carrito - Torivac | noindex | sí | Carrito de WooCommerce (id 11513, publicado 2025-06-11): páginas de plantilla de la tienda del sitio original; solo se inventaría. | Sin contenido propio: plantilla de WooCommerce con los títulos en español. Título del navegador 'Carrito - Torivac' y slug /en/carrito/ en español. Robots: noindex, follow. El texto del analizador (408 caracteres) es solo el pie; el cuerpo se tomó del HTML. |
 | `/en/finalizar-compra/` | 11514 | WooCommerce | Finalizar compra - Torivac | noindex | no | Página de finalizar compra (checkout) de WooCommerce (id 11514, publicada 2025-06-11); solo se inventaría. | Sin contenido propio: bloques de checkout de WooCommerce. REST content.rendered: 3.250 caracteres de marcado de bloques WooCommerce Checkout (contacto, envío, facturación, pago, resumen del pedido) y 0 caracteres de texto visible. El HTML cosechado para /en/finalizar-compra/ devuelve la plantilla del carrito (canonica… |
-| `/en/mi-cuenta/` | 11515 | WooCommerce | Mi cuenta - Torivac | noindex | sí | Página 'Mi cuenta' de WooCommerce (id 11515, publicada 2025-06-11): formulario de acceso; solo se inventaría. | Sin contenido propio: formulario de acceso de WooCommerce. Título 'Mi cuenta - Torivac', slug /en/mi-cuenta/ en español. Robots: noindex, follow. REST content.rendered: '<div class="woocommerce"></div>' (el formulario lo genera WooCommerce). |
+| `/en/mi-cuenta/` | 11515 | WooCommerce | Mi cuenta - Torivac | noindex | sí | Página 'Mi cuenta' de WooCommerce (id 11515, publicada 2025-06-11): formulario de acceso; solo se inventaría. | Sin contenido propio: formulario de acceso de WooCommerce. Título 'Mi cuenta - Torivac', slug /en/mi-cuenta/ en español. Robots: noindex, follow. REST content.rendered: '&lt;div class="woocommerce">&lt;/div>' (el formulario lo genera WooCommerce). |
 | `/en/tienda/` | 11512 | WooCommerce | Tienda - Torivac | index | sí | Página 'Tienda' de WooCommerce (id 11512, publicada 2025-06-11); vacía en el HTML cosechado. | Vacía. Título 'Tienda - Torivac', slug /en/tienda/ en español. Según el HTML servido es la única de las cuatro páginas de WooCommerce indexable (robots 'index, follow'; carrito y mi-cuenta salen noindex y la de finalizar-compra devolvió la plantilla del carrito) y no tiene contenido. Yoast (REST) declara 'index, follo… |
 | `/en/category/blog/` | 606 | Categoría de entradas | blog - Torivac | index | no | Archivo de la categoría 'blog' (id 606): lista las entradas con la misma plantilla de tarjetas que el índice del blog. | Archivo automático de entradas con 'Leer más' en español. Título del navegador 'blog - Torivac' (nombre de categoría en minúscula). El cuerpo es una rejilla automática de tarjetas idéntica a /en/blog/; no se transcribe en full_text. El contador de la categoría EN es 21 (no incluye la entrada EN-only id 8196, asignada… |
 | `/en/category/uncategorized/` | 132 | Categoría de entradas | Uncategorized - Torivac | index | no | Archivo de la categoría 'Uncategorized' (id 132): categoría por defecto de WordPress, sin entradas. | Archivo vacío (0 entradas). Categoría con 0 entradas e indexable ('index, follow'). Equivalentes: ES 'sin-categorizar' (id 1), FR 'non-classifiee', DE 'unkategorisiert'. |
@@ -109,7 +109,7 @@ Ninguna pieza se puede copiar literalmente: hasta las mejores tienen alguna erra
 **Regenerar desde datos (3)**. No se copia: la web nueva lo genera desde los datos (catálogo, entradas, menú, selector de idioma).
 
 - `/en/torivac-products/`: No se copia: la web nueva debe generar el índice desde los datos de catálogo (S2). Reutilizar solo los nombres de familia, tras corregir 'Single Phase Inverters', 'Nuclei', 'Estators', 'Casing covers' y 'variable speed drives'.
-- `/en/blog/`: Generar el índice desde las entradas migradas; no copiar tal cual (contiene interfaz en español 'Leer más', 'Do you like it?' en inglés dentro de ES/FR/DE y fechas en formato anglosajón).
+- `/en/blog/`: Generar el índice desde las entradas migradas; no copiar tal cual (contiene el botón 'Leer más' en español, el contador 'Do you like it?' del tema y fechas en formato anglosajón).
 - `/en/category/blog/`: Archivo de taxonomía; la web nueva generará su propio listado.
 
 **Reescribir (8)**. Hay una base temática aprovechable, pero el texto actual no se puede publicar: afirmaciones sin respaldo, comparaciones por países o texto de plantilla.
@@ -188,9 +188,7 @@ Ninguna pieza se puede copiar literalmente: hasta las mejores tienen alguna erra
 | `/en/descargadores-de-bateria/` | `/descargadores-de-bateria/` | 2026-03-13 | 2025-12-19 | +84 | EN más reciente |
 | `/en/el-variador-de-tension-y-sus-funciones/` | `-` | 2025-12-19 | - | - | sin original ES |
 | `/en/la-importancia-del-transformador-toroidal-en-la-industria/` | `/la-importancia-del-transformador-toroidal-en-la-industria/` | 2026-03-13 | 2025-12-19 | +84 | EN más reciente |
-| `/en/finalizar-compra/` | `/confirmar/` | 2025-06-11 | 2025-06-11 | -0 | sincronizada |
-| `/en/category/blog/` | `/category/blog/` | - | - | - | - |
-| `/en/category/uncategorized/` | `/category/sin-categorizar/` | - | - | - | - |
+| `/en/finalizar-compra/` | `/confirmar/` | 2025-06-11 | 2025-06-11 | +0 | sincronizada |
 
 Lectura: las 21 entradas con original ES se re-guardaron en EN entre el 2026-03-13 y el 2026-03-23, entre 84 y 97 días después de la última edición de ES (dic. 2025, salvo Normativas, sincronizada): no hay evidencia de texto EN anterior al ES. Las excepciones son:
 
@@ -255,7 +253,18 @@ Para las demás piezas con original ES no falta ninguna sección: el número de 
 | `/en/tienda/` | seo | Tienda - Torivac | Título del navegador |
 | `/en/category/blog/` | text | Leer más | Botón de las tarjetas |
 
-Sitio entero (194 páginas EN): «Busar» en placeholder del buscador del encabezado (194 páginas EN); «Gestionar consentimiento / Aceptar / Denegar / Ver preferencias / Guar» en banner de cookies (Complianz); «Carrusel de imágenes» en aria-label de los carruseles de la portada.
+En el sitio entero (194 páginas EN) hay además estas cadenas en español:
+
+- «Busar»: placeholder del buscador del encabezado (194 páginas EN) (194 páginas).
+- «Gestionar consentimiento / Aceptar / Denegar / Ver preferencias / Guardar preferencias»: banner de cookies (Complianz) (194 páginas).
+- «Carrusel de imágenes»: aria-label de los carruseles de la portada (1 página).
+- «Correo / Mensaje / Name Mensaje Correo»: etiquetas del formulario 16157 (portada y contacto) (2 páginas).
+- «Leer más»: botón de las tarjetas del blog y de la categoría (2 páginas).
+- «Especializados en diseño y fabricación de variados de tensión»: JSON-LD WebSite.description de la portada (1 página).
+- «Desde Torivac os contamos cómo funciona...»: meta description de la entrada EN-only (1 página).
+- «Carrito / Tienda / Mi cuenta / Finalizar compra»: títulos y slugs de WooCommerce; mensaje '¡Tu carrito está actualmente vacío!' (4 páginas).
+- «C/ Potosi Nº 2, Planta 6ª»: dirección en Contacto y Privacidad (2 páginas).
+- «alts: triphasé servomoteur, resistencia, sobremesa03, transformador toroideal»: portada, proyectos y entrada EN-only (3 páginas).
 
 ### 4.4 Terminología: cuatro traducciones de «variador de tensión»
 
@@ -272,7 +281,7 @@ Propuesta: Fijar en el glosario EN: variador de tensión = 'voltage variator' (a
 
 ## 5. Datos de empresa que aparecen en el sitio EN (frente a ES)
 
-Contados sobre los HTML completos: 194 páginas EN y 208 ES. Lo que no consta se deja vacío y se anota en la sección 10.
+Contados sobre los HTML completos: 194 páginas EN y 208 ES (las apariciones incluyen el pie, que en EN se repite dos veces por página). Lo que no consta se deja vacío y se anota en la sección 10.
 
 | Dato | EN | ES | Diferencia |
 |---|---|---|---|
@@ -326,8 +335,8 @@ Cada hallazgo tiene una evidencia que se comprobó automáticamente contra el te
 
 | Pieza | Tipo | Hallazgo | ES |
 |---|---|---|---|
-| `/en/` | seo | El <link rel="canonical"> de la home EN apunta a la home alemana (/de/); og:url y WebPage.url del JSON-LD también. Hasta que se corrija, Google puede indexar la versión DE en lugar de la EN. Ya registrado en HALLAZGOS.md (#1 y #11). | no |
-| `/en/contact/` | seo | El <link rel="canonical"> de /en/contact/ apunta a la página de contacto alemana (/de/kontakt-us/). | no |
+| `/en/` | seo | El &lt;link rel="canonical"> de la home EN apunta a la home alemana (/de/); og:url y WebPage.url del JSON-LD también. Hasta que se corrija, Google puede indexar la versión DE en lugar de la EN. Ya registrado en HALLAZGOS.md (#1 y #11). | no |
+| `/en/contact/` | seo | El &lt;link rel="canonical"> de /en/contact/ apunta a la página de contacto alemana (/de/kontakt-us/). | no |
 | `/en/privacy-policy/` | placeholder | El titular está en blanco: 'is held by: , with NIF: B60784584'. | sí |
 | `/en/privacy-policy/` | placeholder | Variable de plantilla sin resolver: 'send us a communication to correodelcliente' (no hay dirección). | sí |
 | `/en/privacy-policy/` | legal | Faltan plazos concretos de conservación, destinatarios/encargados (Google reCAPTCHA, Analytics, hosting), derecho a reclamar ante la autoridad de control y bases por finalidad; menciona 'Financial data' aunque el sitio no vende. Revisar con asesoría legal. | sí |
@@ -360,6 +369,7 @@ Cada hallazgo tiene una evidencia que se comprobó automáticamente contra el te
 | media | typo | `/en/entrepreneurial-projects/` | El título SEO dice 'Grupor Torivac - Business Projects' ('Grupor'). | «Grupor Torivac - Business Projects» | sí |
 | media | typo | `/en/torivac-consolida-su-liderazgo-en-el-sector-electrico-tras-su-participacion-en-coiltech-deutschland-2025/` | Nombres propios en minúscula en titulares y cuerpo ('coiltech deutschland', 'messe augsburg', 'torivac'). | «torivac innovation and technology highlighted at coiltech deutschland 2025» | sí |
 | media | typo | `/en/torivac-en-beyond-catalonia/` | Errata: 'Beyond Catalona' (Catalonia) en el primer párrafo. | «Beyond Catalona» | sí |
+| baja | grammar | `/en/privacy-policy/` | Sintaxis por calco: 'we will treat your data as we reflect in this Privacy Policy' (ES: 'tal y como reflejamos'). | «as we reflect in this Privacy Policy» | no |
 | baja | grammar | `/en/torivac-en-beyond-catalonia/` | 'we have deepened on the concept' (calco de 'profundizamos en'). | «we have deepened on the concept» | no |
 | baja | style | `/en/` | Calcos del español: 'CONTACT WITH US' (Contact us), 'In Torivac you will find' (At Torivac), 'high demanding' (highly demanding) y 'Write us and we will solve it for you' (sin antecedente en inglés para 'it'). | «In Torivac you will find a wide range» | no |
 | baja | style | `/en/contact/` | Calcos: 'CONTACT WITH US', 'Do you have any doubts?' (questions), 'In Torivac you will find', 'Write us'. | «Do you have any doubts?» | no |
@@ -374,7 +384,6 @@ Cada hallazgo tiene una evidencia que se comprobó automáticamente contra el te
 | baja | typo | `/en/torivac-products/` | Frase con palabras duplicadas: 'Voltage stabilizers or also called voltage regulators or voltage regulators.' | «voltage regulators or voltage regulators» | no |
 | baja | typo | `/en/torivac-products/` | Mayúsculas y puntuación incoherentes: 'led 10mm', 'safety socket HR4', 'Resistors : Load banks' (espacio antes de los dos puntos), 'Squares' en lugar de 'Square', 'Sockets' para 'Hembrillas' (la URL usa 'socket-jack'). | «Resistors : Load banks» | sí |
 | baja | typo | `/en/contact/` | 'Potosi' sin tilde (el mapa usa 'Potosí'). | «Potosi» | sí |
-| baja | typo | `/en/privacy-policy/` | Sintaxis: 'we will treat your data as we reflect in this Privacy Policy' y 'The types of data requested' (calco de 'tal y como reflejamos'). | «as we reflect in this Privacy Policy» | no |
 | baja | typo | `/en/politica-de-cookies/` | 'Cookies are those that are sent...' (bajo 'Own Cookies') carece de sujeto; 'Web Site'/'Website' se usan de forma indistinta; 'Twitter' (hoy X). | «Cookies are those that are sent to the User» | sí |
 | baja | typo | `/en/normativas-sobre-transformadores-electricos-en-europa/` | Topónimo y marca en minúscula en los titulares: 'spain', 'torivac'. | «technical regulations in spain and europe» | sí |
 | baja | typo | `/en/mantenimiento-de-transformadores-electricos/` | Subtítulo H3 que empieza en minúscula: 'pressure on the market...'. | «pressure on the market and doubts about the quality of Asian manufacturers» | sí |
@@ -413,18 +422,22 @@ Cada hallazgo tiene una evidencia que se comprobó automáticamente contra el te
 | baja | terminology | `/en/estabilizadores-de-tension-con-cobre/` | Alternancia 'stabilizer'/'regulator' para el mismo producto en un mismo párrafo ('Our copper voltage regulators reduce equipment wear'). | «Our copper voltage regulators reduce equipment wear» | no |
 | baja | terminology | `/en/estabilizadores-de-tension/` | 'Implementing voltage regulators' mezcla 'regulator' y 'stabilizer' para el mismo producto. | «Implementing voltage regulators helps to comply» | no |
 | baja | translation | `/en/` | Etiquetas de la rejilla con orden o término no estándar: 'Cores toroidal' (toroidal cores) y 'Coil for electromagnets' (la categoría EN es 'Encapsulated coils'; 'Nuclei' en la taxonomía). | «Cores / toroidal» | no |
-| baja | translation | `/en/torivac-products/` | 'Estators' (ES 'Estators' = estátores) debería ser 'Stators'; 'Casing covers' traduce 'Cubretercas' (cubretuercas, 'nut covers' en la URL del producto); 'Graded covers' es incoherente con 'Graduated discs'. | «Casing covers» | no |
+| baja | translation | `/en/torivac-products/` | 'Estators' debería ser 'Stators' (el ES también escribe 'Estators'); 'Casing covers' traduce 'Cubretercas' (cubretuercas, 'nut covers' en la URL del producto); 'Graded covers' es incoherente con 'Graduated discs'. | «Casing covers» | no |
 | baja | translation | `/en/normativas-sobre-transformadores-electricos-en-europa/` | La meta description empieza con 'Complies with...' (imperativo 'Cumple con' sin sujeto en inglés). | «Complies with European electrical transformer regulations» | no |
 | baja | translation | `/en/descargadores-de-bateria/` | Frase sin sentido por calco: 'Such as energy, these devices are essential...' (ES: 'Como la energética'). | «Such as energy, these devices are essential» | no |
 | baja | translation | `/en/el-variador-de-tension-y-sus-funciones/` | 'with a cursor moving along it' traduce 'cursor' (en un autotransformador variable, el contacto deslizante se llama 'wiper' o 'brush'). | «with a cursor moving along it» | no |
 
-### 8.3 Idioma equivocado y texto de interfaz en otro idioma (15)
+### 8.3 Idioma equivocado y texto de interfaz en otro idioma (19)
 
 | Gravedad | Tipo | Pieza | Hallazgo | Evidencia | ES |
 |---|---|---|---|---|---|
+| media | wrong_language | `/en/` | Tres CTA enlazan a páginas en español (/torivac-empresa/, /proyectos-empresariales/ x2) aunque existen /en/torivac-company/ y /en/entrepreneurial-projects/. Además el tercero ('Conocer la empresa Torivac' en ES) sigue enviando a Proyectos. | «https://grupotorivac.com/torivac-empresa/» | no |
+| media | wrong_language | `/en/` | Cuatro de las diez tarjetas de familia enlazan a categorías con slug español y sin prefijo /en/ (choques, botones-de-mando, portaled, nucleos); las otras seis sí usan /en/categoria-producto/. | «https://grupotorivac.com/categoria-producto/choques/» | no |
 | media | wrong_language | `/en/` | 'Download Catalog' enlaza al catálogo en español (Torivac_2024.pdf) mientras que el menú EN apunta a Torivac_2024_EN.pdf (41 páginas, existe en data/raw/pdf). | «https://grupotorivac.com/wp-content/uploads/2024/10/Torivac_2024.pdf» | no |
 | media | wrong_language | `/en/` | Etiquetas de formulario en español en la página EN: el campo E-mail se llama 'Correo' y el de mensaje 'Mensaje' (ocultas a la vista, pero las leen los lectores de pantalla); el honeypot se titula 'Name Mensaje Correo'. | «Correo» | no |
 | media | wrong_language | `/en/` | Alts en otro idioma: 'triphasé servomoteur' (francés), 'resistencia' y 'sobremesa03' (español). | «triphasé servomoteur» | no |
+| media | wrong_language | `/en/torivac-company/` | El CTA 'More Information' enlaza a /contacto/ (español) en lugar de /en/contact/. | «https://grupotorivac.com/contacto/» | no |
+| media | wrong_language | `/en/entrepreneurial-projects/` | El CTA enlaza a /contacto/ (español) en lugar de /en/contact/. | «https://grupotorivac.com/contacto/» | no |
 | media | wrong_language | `/en/blog/` | El botón de cada tarjeta dice 'Leer más' (español) en la página EN. | «Leer más» | no |
 | media | wrong_language | `/en/contact/` | Etiquetas de formulario en español: 'Correo' y 'Mensaje' (campos E-mail y mensaje). | «Correo» | no |
 | media | wrong_language | `/en/politica-de-cookies/` | Los enlaces a las políticas de terceros son de la versión en español: twitter.com/es/privacy, policies.google.com/privacy?hl=es-419&gl=mx (español de México) y policy.pinterest.com/es. | «https://policies.google.com/privacy?hl=es-419&gl=mx» | no |
@@ -445,14 +458,10 @@ Cada hallazgo tiene una evidencia que se comprobó automáticamente contra el te
 | alta | placeholder | `/en/privacy-policy/` | El titular está en blanco: 'is held by: , with NIF: B60784584'. | «is held by: , with NIF: B60784584» | sí |
 | alta | placeholder | `/en/privacy-policy/` | Variable de plantilla sin resolver: 'send us a communication to correodelcliente' (no hay dirección). | «correodelcliente» | sí |
 
-### 8.5 Enlaces rotos aparentes y enlaces ausentes (8)
+### 8.5 Enlaces rotos aparentes y enlaces ausentes (4)
 
 | Gravedad | Tipo | Pieza | Hallazgo | Evidencia | ES |
 |---|---|---|---|---|---|
-| media | broken_link | `/en/` | Tres CTA enlazan a páginas en español (/torivac-empresa/, /proyectos-empresariales/ x2) aunque existen /en/torivac-company/ y /en/entrepreneurial-projects/. Además el tercero ('Conocer la empresa Torivac' en ES) sigue enviando a Proyectos. | «https://grupotorivac.com/torivac-empresa/» | no |
-| media | broken_link | `/en/` | Cuatro de las diez tarjetas de familia enlazan a categorías con slug español y sin prefijo /en/ (choques, botones-de-mando, portaled, nucleos); las otras seis sí usan /en/categoria-producto/. | «https://grupotorivac.com/categoria-producto/choques/» | no |
-| media | broken_link | `/en/torivac-company/` | El CTA 'More Information' enlaza a /contacto/ (español) en lugar de /en/contact/. | «https://grupotorivac.com/contacto/» | no |
-| media | broken_link | `/en/entrepreneurial-projects/` | El CTA enlaza a /contacto/ (español) en lugar de /en/contact/. | «https://grupotorivac.com/contacto/» | no |
 | media | broken_link | `/en/blog/` | La paginación (1, 2, 3) apunta a /en/blog/page/2/ y /en/blog/page/3/, que no se cosecharon: solo se capturó la primera página (10 de 22 entradas). | «Page 2» | sí |
 | media | broken_link | `/en/el-variador-de-tension-y-sus-funciones/` | El enlace 'assist you!' apunta a https://grupotorivac.com/en/contacto/, URL que no existe (la página de contacto EN es /en/contact/): enlace roto aparente, no comprobado por red. | «https://grupotorivac.com/en/contacto/» | no |
 | media | broken_link | `/en/la-importancia-del-transformador-toroidal-en-la-industria/` | Dice 'just click here' y 'contact us here' pero no hay ningún enlace en el HTML (texto plano). | «Then just click here.» | sí |
@@ -542,17 +551,17 @@ Cada hallazgo tiene una evidencia que se comprobó automáticamente contra el te
 
 | Gravedad | Tipo | Pieza | Hallazgo | Evidencia | ES |
 |---|---|---|---|---|---|
-| alta | seo | `/en/` | El <link rel="canonical"> de la home EN apunta a la home alemana (/de/); og:url y WebPage.url del JSON-LD también. Hasta que se corrija, Google puede indexar la versión DE en lugar de la EN. Ya registrado en HALLAZGOS.md (#1 y #11). | «https://grupotorivac.com/de/» | no |
-| alta | seo | `/en/contact/` | El <link rel="canonical"> de /en/contact/ apunta a la página de contacto alemana (/de/kontakt-us/). | «https://grupotorivac.com/de/kontakt-us/» | no |
+| alta | seo | `/en/` | El &lt;link rel="canonical"> de la home EN apunta a la home alemana (/de/); og:url y WebPage.url del JSON-LD también. Hasta que se corrija, Google puede indexar la versión DE en lugar de la EN. Ya registrado en HALLAZGOS.md (#1 y #11). | «https://grupotorivac.com/de/» | no |
+| alta | seo | `/en/contact/` | El &lt;link rel="canonical"> de /en/contact/ apunta a la página de contacto alemana (/de/kontakt-us/). | «https://grupotorivac.com/de/kontakt-us/» | no |
 | alta | seo | `/en/el-variador-de-tension-y-sus-funciones/` | El canonical y og:url apuntan a https://grupotorivac.com/el-variador-de-tension-y-sus-funciones/ (sin /en/), una URL que no está en el sitemap (el sitemap lista la /en/) ni en la REST ES: la entrada EN se declara duplicado de una página ES que no existe. | «https://grupotorivac.com/el-variador-de-tension-y-sus-funciones/» | no |
 | media | accessibility | `/en/` | Los tres CTA se llaman igual ('More Information') y llevan a destinos distintos; fuera de contexto no describen su función. En ES cada CTA tiene un texto propio. | «More Information» | no |
 | media | accessibility | `/en/` | Alts sin significado o con nombre de archivo en las fotos del hero y los carruseles ('transo', '_B7T4306', 'DOBLE-MOTORIZADO', 'A_Medida02', '4Z0A9179', 'convertidor1-1-1024x1024', 'Adobe Express - file'). | «transo» | sí |
 | media | accessibility | `/en/` | Los 10 iconos de familia y la imagen decorativa 'disipador.jpg' tienen alt vacío (11 imágenes); en los iconos es aceptable porque el enlace ya tiene texto, pero conviene confirmar que son decorativos. | «https://grupotorivac.com/wp-content/uploads/2022/04/disipador.jpg» | sí |
-| media | accessibility | 22 piezas (todas las entradas del blog o casi: ver `quality_flags`) | El formulario de contacto del pie (WPForms 16204) no tiene etiquetas <label> en nombre, correo ni mensaje: solo placeholders ('Name', 'E-mail', 'Message'), que no sustituyen a una etiqueta accesible; el campo honeypot trae una etiqueta vacía. La versión ES del pie (14511) sí tiene etiquetas. | [campos sin <label>] | no |
+| media | accessibility | las 22 entradas del blog | El formulario de contacto del pie (WPForms 16204) no tiene etiquetas &lt;label> en nombre, correo ni mensaje: solo placeholders ('Name', 'E-mail', 'Message'), que no sustituyen a una etiqueta accesible; el campo honeypot trae una etiqueta vacía. La versión ES del pie (14511) sí tiene etiquetas. | [campos sin &lt;label>] | no |
 | media | outdated | `/en/` | La home EN (2026-03-13) es 215 días más antigua que la ES (2026-10-14). El texto visible coincide bloque a bloque, pero las imágenes no se actualizaron (ES usa WebP optimizados). | [modified anterior al de ES] | no |
 | media | outdated | `/en/entrepreneurial-projects/` | La EN es 35 días más antigua que la ES y conserva imágenes anteriores. | [modified anterior al de ES] | no |
 | media | outdated | `/en/politica-de-cookies/` | La página EN (2022-12-16) es 2,2 años más antigua que la ES (2025-02-11). | [modified anterior al de ES] | no |
-| media | seo | `/en/` | El <title> es solo 'Torivac' (sin palabra clave descriptiva). | «Torivac» | sí |
+| media | seo | `/en/` | El &lt;title> es solo 'Torivac' (sin palabra clave descriptiva). | «Torivac» | sí |
 | media | seo | `/en/` | JSON-LD de la home EN: WebSite.description sigue en español y con errata ('variados de tensión'), y WebSite.url y el SearchAction apuntan a la raíz española (https://grupotorivac.com/?s=...). | «Especializados en diseño y fabricación de variados de tensión» | sí |
 | media | seo | `/en/torivac-company/` | Meta description sin resolver: el valor es el literal '%' (variable de Yoast vacía). | «%» | sí |
 | media | seo | `/en/torivac-products/` | Meta description sin resolver ('%') y sin H1 (el primer encabezado es un H3). | «%» | sí |
@@ -562,7 +571,7 @@ Cada hallazgo tiene una evidencia que se comprobó automáticamente contra el te
 | media | seo | `/en/privacy-policy/` | Meta description '%'; la página no tiene H1 (el título visible es un H2). | «%» | sí |
 | media | seo | `/en/politica-de-cookies/` | El canonical de /en/politica-de-cookies/ apunta a la versión española (/politica-de-cookies/) y el índice de páginas registra la URL española como URL de la pieza EN. | «https://grupotorivac.com/politica-de-cookies/» | no |
 | media | seo | `/en/declaracion-de-accesibilidad/` | Meta description '%'; la página no tiene H1. | «%» | sí |
-| media | seo | 22 piezas (todas las entradas del blog o casi: ver `quality_flags`) | La página no tiene <h1>: el título visible es un H2. | [sin <h1>] | sí |
+| media | seo | las 22 entradas del blog | La página no tiene &lt;h1>: el título visible es un H2. | [sin &lt;h1>] | sí |
 | media | seo | `/en/fallos-comunes-en-transformadores-y-sus-soluciones-efectivas/` | Palabra clave repetida de forma mecánica en titulares y cuerpo ('common transformer failures and their solutions'). | «common transformer failures and their solutions» | sí |
 | media | seo | `/en/torivac-consolida-su-liderazgo-en-el-sector-electrico-tras-su-participacion-en-coiltech-deutschland-2025/` | El título SEO ('Torivac consolidates strategic alliances in europe during coiltech deutschland 2025') difiere del H2 ('...consolidates its leadership in the electricity sector...') y del slug. | «Torivac consolidates strategic alliances in europe during coiltech deutschland…» | sí |
 | media | seo | `/en/torivac-en-matelec-2024-explorando-el-mercado-y-reforzando-conexiones-2/` | Sin meta description en Yoast y slug con sufijo '-2' (duplicado). | [meta description ausente] | sí |
@@ -583,7 +592,7 @@ Cada hallazgo tiene una evidencia que se comprobó automáticamente contra el te
 | baja | accessibility | `/en/descargadores-de-bateria/` | Nombre de imagen con restos de PageSpeed ('xbancos-de-carga.jpg.pagespeed.ic._FgzNCz6tC.jpg') y alt largo promocional. | «xbancos-de-carga.jpg.pagespeed.ic._FgzNCz6tC.jpg» | sí |
 | baja | accessibility | `/en/el-variador-de-tension-y-sus-funciones/` | El enlace 'assist you!' está partido en dos nodos y su texto no describe el destino ('contact'). | «assist you!» | no |
 | baja | accessibility | `/en/la-importancia-del-transformador-toroidal-en-la-industria/` | El alt de la imagen ('importance of the toroidal transformer') repite el título; en ES está en alemán. | «importance of the toroidal transformer» | no |
-| baja | seo | `/en/blog/` | La página no tiene encabezado propio: el único H2 es el título de la primera tarjeta. | [sin <h1>] | sí |
+| baja | seo | `/en/blog/` | La página no tiene encabezado propio: el único H2 es el título de la primera tarjeta. | [sin &lt;h1>] | sí |
 | baja | seo | `/en/politica-de-cookies/` | Meta description '%'; sin H1 (el título visible es un H2); el extractor HTML solo recoge el pie. | «%» | sí |
 | baja | seo | `/en/eficiencia-de-los-transformadores-clave-en-europa/` | La meta description afirma 'the European leader' sin respaldo. | «Torivac, the European leader» | sí |
 | baja | seo | `/en/carrito/` | Título 'Carrito - Torivac' y slug /en/carrito/ en español. | «Carrito - Torivac» | no |
@@ -601,7 +610,7 @@ Cada hallazgo tiene una evidencia que se comprobó automáticamente contra el te
 | media | legal | `/en/contact/` | La casilla de consentimiento dice 'I have read and accept the Legal Notice' (ES: política de privacidad) y no enlaza a ningún documento; no hay aviso legal en inglés. | «I have read and accept the Legal Notice» | no |
 | media | legal | `/en/privacy-policy/` | Remite a una sección 'Use of Cookies' 'below' que no existe en el texto. | «described in the “Use of Cookies” section below» | sí |
 | media | legal | `/en/politica-de-cookies/` | Texto de un generador gratuito de terceros con fecha 11/02/2025, ambigua en inglés (11 de febrero o 2 de noviembre). | «on 11/02/2025» | no |
-| media | legal | `/en/declaracion-de-accesibilidad/` | Plantilla de generador gratuito del sector público (habla de 'this Unit' y del RD 1112/2018); comprobar su aplicabilidad a una empresa privada. | «such as images, interactive maps» | sí |
+| media | legal | `/en/declaracion-de-accesibilidad/` | Plantilla de generador gratuito del sector público (habla de 'this Unit' y del RD 1112/2018); comprobar su aplicabilidad a una empresa privada. | «under the control of this Unit» | sí |
 | media | ux | `/en/contact/` | Teléfono y correo son texto plano: no hay enlaces tel: ni mailto: en ninguna página EN. | [0 enlaces tel:/mailto:] | sí |
 | baja | ux | `/en/torivac-products/` | Restos de interfaz en el texto: 'Torivac-Products' y '×' (cierre de modal). | «Torivac-Products» | sí |
 | baja | ux | `/en/blog/` | El contador 'Do you like it?' es interfaz del tema (inglés también en ES). | «Do you like it?» | sí |
@@ -616,7 +625,7 @@ No hay ninguno. Se buscaron 'lorem ipsum', 'dolor sit amet', 'sample page', 'hel
 
 - El `full_text` de las 30 piezas de contenido (todas salvo la política de cookies y las 6 técnicas) coincide carácter a carácter con el texto del análisis tras normalizar espacios; y palabra a palabra con el cuerpo de la API REST en 27 de 30 (las 3 diferencias son el aviso `Please enable JavaScript...`, que la REST trae duplicado en portada y contacto, y los números 1, 2 y 3 de la paginación del blog).
 - Las 278 evidencias de `quality_flags` se encontraron en la fuente indicada (278 verificadas, 0 no verificadas); los 184 `key_facts` están en el texto, o en el HTML o los enlaces cuando son datos derivados (0 sin verificar).
-- Comparación EN-ES por líneas, frases y números de las piezas con original: mismas líneas y mismas cifras, con tres diferencias de frase en entradas (descargadores, cobre y normativas) que son uniones o divisiones de oraciones sin cambio de sentido.
+- Comparación EN-ES por líneas, frases y números de las piezas con original: las líneas de texto coinciden en 26 de 30 (portada, contacto, productos y política de cookies difieren por el ruido de los formularios, una subcategoría ausente y el formato de la lista de enlaces); las frases coinciden salvo tres uniones o divisiones de oraciones sin cambio de sentido (descargadores, cobre y normativas); las cifras coinciden salvo el formato de la fecha de accesibilidad y el recuento de variadores en Productos (12 frente a 15).
 - Las divergencias de traducción ('processors', 'millions of dollars', 'European Green Pact', 'drives', 'load benches', 'shocks') se contrastaron una a una con la frase ES alineada (`also_in_es = no`); 'technified adaptability' y 'technical rigidity' resultaron ser calcos fieles del ES y no se marcan como error de EN.
 - Datos de contacto, NIF, financiación ICEX/FEDER, JSON-LD, identificadores de analítica, banner de cookies, listado de URL EN en los sitemaps y catálogo `Torivac_2024_EN.pdf` (terminología, pp. 12-13) contrastados con el HTML, la REST, los sitemaps y el texto del PDF.
 - Búsqueda de enlaces `tel:` y `mailto:`, redes sociales, horarios y texto de relleno en los 194 HTML EN.

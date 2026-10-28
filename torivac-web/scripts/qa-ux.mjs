@@ -2,7 +2,7 @@
 // [QA-UX] Sesión 10 · Control riguroso de experiencia de usuario sobre TODAS las páginas del demo (Playwright, por http).
 //   node scripts/qa-ux.mjs [--limit=N] [--mobile] [--only=/ruta/] [--workers=4] [--out=informe.json]
 // Por página mide (tras recorrerla entera para que carguen las imágenes diferidas):
-//   DUROS (fallan la prueba)   desborde horizontal · imagen rota · imagen deformada (relación de aspecto distinta con object-fit:fill) ·
+//   DUROS (fallan la prueba)   cualquier petición a otro dominio (la demo debe ser autónoma) · desborde horizontal · imagen rota · imagen deformada (relación de aspecto distinta con object-fit:fill) ·
 //                              restos de código visibles ([vc_…], &#…, {{…}}, undefined/NaN…) · errores de consola o de red local · ids duplicados
 //   AVISOS                     imagen recortada >40 % por object-fit:cover · imagen ampliada >1,6× su tamaño real (borrosa) · texto cortado por overflow ·
 //                              enlaces/botones sin nombre accesible · bloques de texto en otro idioma que el de la página (sin el aviso de «sin traducir»)
@@ -119,6 +119,7 @@ async function worker() {
   page.on('pageerror', (e) => errs.push('JS: ' + e.message.slice(0, 120)));
   page.on('console', (m) => { if (m.type() === 'error' && !/favicon/.test(m.text())) errs.push('consola: ' + m.text().slice(0, 120)); });
   page.on('requestfailed', (r) => { if (r.url().startsWith(base)) errs.push('red: ' + r.url().replace(base, '')); });
+  page.on('request', (r) => { const u = r.url(); if (!u.startsWith(base) && !/^(data|blob|about):/.test(u)) errs.push('externo (la demo debe ser autónoma): ' + u.slice(0, 110)); });
   page.on('response', (r) => { if (r.url().startsWith(base) && r.status() >= 400 && !/favicon/.test(r.url())) errs.push(`HTTP ${r.status()}: ${r.url().replace(base, '')}`); });
   while (true) {
     const i = idx++; if (i >= todo.length) break;

@@ -710,7 +710,7 @@
     },
     {
      "severity": "media",
-     "type": "broken_link",
+     "type": "wrong_language",
      "detail": "Tres CTA enlazan a páginas en español (/torivac-empresa/, /proyectos-empresariales/ x2) aunque existen /en/torivac-company/ y /en/entrepreneurial-projects/. Además el tercero ('Conocer la empresa Torivac' en ES) sigue enviando a Proyectos.",
      "evidence": "https://grupotorivac.com/torivac-empresa/",
      "where": "link",
@@ -719,7 +719,7 @@
     },
     {
      "severity": "media",
-     "type": "broken_link",
+     "type": "wrong_language",
      "detail": "Cuatro de las diez tarjetas de familia enlazan a categorías con slug español y sin prefijo /en/ (choques, botones-de-mando, portaled, nucleos); las otras seis sí usan /en/categoria-producto/.",
      "evidence": "https://grupotorivac.com/categoria-producto/choques/",
      "where": "link",
@@ -1106,7 +1106,7 @@
     },
     {
      "severity": "media",
-     "type": "broken_link",
+     "type": "wrong_language",
      "detail": "El CTA 'More Information' enlaza a /contacto/ (español) en lugar de /en/contact/.",
      "evidence": "https://grupotorivac.com/contacto/",
      "where": "link",
@@ -1633,7 +1633,7 @@
     {
      "severity": "baja",
      "type": "translation",
-     "detail": "'Estators' (ES 'Estators' = estátores) debería ser 'Stators'; 'Casing covers' traduce 'Cubretercas' (cubretuercas, 'nut covers' en la URL del producto); 'Graded covers' es incoherente con 'Graduated discs'.",
+     "detail": "'Estators' debería ser 'Stators' (el ES también escribe 'Estators'); 'Casing covers' traduce 'Cubretercas' (cubretuercas, 'nut covers' en la URL del producto); 'Graded covers' es incoherente con 'Graduated discs'.",
      "evidence": "Casing covers",
      "where": "text",
      "also_in_es": false,
@@ -1965,7 +1965,7 @@
     },
     {
      "severity": "media",
-     "type": "broken_link",
+     "type": "wrong_language",
      "detail": "El CTA enlaza a /contacto/ (español) en lugar de /en/contact/.",
      "evidence": "https://grupotorivac.com/contacto/",
      "where": "link",
@@ -2049,7 +2049,7 @@
     "status": "placeholder_sin_resolver"
    },
    "og_image": "https://grupotorivac.com/wp-content/uploads/2025/12/Transformador_normativas-internacionales-960x720.jpg",
-   "purpose": "Índice del blog EN: rejilla de entradas (3 páginas, 10 visibles en la captura) con imagen, fecha, título, extracto y botón 'Leer más'.",
+   "purpose": "Índice del blog EN: rejilla de entradas (3 páginas; 10 visibles en la primera cosechada) con imagen, fecha, título, extracto y botón 'Leer más'.",
    "sections": [
     {
      "heading": "Electrical transformer regulations in Europe",
@@ -2341,7 +2341,7 @@
    },
    "migration": {
     "decision": "regenerar",
-    "notes": "Generar el índice desde las entradas migradas; no copiar tal cual (contiene interfaz en español 'Leer más', 'Do you like it?' en inglés dentro de ES/FR/DE y fechas en formato anglosajón)."
+    "notes": "Generar el índice desde las entradas migradas; no copiar tal cual (contiene el botón 'Leer más' en español, el contador 'Do you like it?' del tema y fechas en formato anglosajón)."
    },
    "quality_flags": [
     {
@@ -2918,8 +2918,8 @@
     },
     {
      "severity": "baja",
-     "type": "typo",
-     "detail": "Sintaxis: 'we will treat your data as we reflect in this Privacy Policy' y 'The types of data requested' (calco de 'tal y como reflejamos').",
+     "type": "grammar",
+     "detail": "Sintaxis por calco: 'we will treat your data as we reflect in this Privacy Policy' (ES: 'tal y como reflejamos').",
      "evidence": "as we reflect in this Privacy Policy",
      "where": "text",
      "also_in_es": false,
@@ -3369,7 +3369,7 @@
      "severity": "media",
      "type": "legal",
      "detail": "Plantilla de generador gratuito del sector público (habla de 'this Unit' y del RD 1112/2018); comprobar su aplicabilidad a una empresa privada.",
-     "evidence": "such as images, interactive maps",
+     "evidence": "under the control of this Unit",
      "where": "text",
      "also_in_es": true,
      "verified": true
@@ -9459,8 +9459,6 @@
     "sections_missing_in_en": [],
     "sections_outdated_in_en": [],
     "other_differences": [
-     "Divergencia de traducción: Falsa coherencia terminológica: el encabezado dice 'Types of Voltage Regulators' y el párrafo 'Voltage regulators can come in three different forms', pero lo que describe son variadores ('voltage variators').",
-     "Divergencia de traducción: 'with a cursor moving along it' traduce 'cursor' (en un autotransformador variable, el contacto deslizante se llama 'wiper' o 'brush').",
      "No existe versión ES, FR ni DE de esta entrada (solo EN)."
     ]
    },
@@ -11135,19 +11133,19 @@
    "style": 10,
    "consistency": 12,
    "accessibility": 50,
-   "broken_link": 8,
-   "wrong_language": 15,
+   "wrong_language": 19,
    "legal": 7,
    "outdated": 3,
    "structure": 5,
-   "typo": 18,
+   "typo": 17,
    "content": 7,
    "unverified_claim": 33,
    "ux": 3,
+   "broken_link": 4,
    "placeholder": 2,
+   "grammar": 3,
    "reputation": 16,
    "accuracy": 3,
-   "grammar": 2,
    "duplicate_content": 4
   },
   "banderas_total": 278,

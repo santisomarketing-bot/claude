@@ -110,18 +110,17 @@
    "page:en"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2022/03/choque_toroidal-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/choque_toroidal-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2022/03/choque_toroidal.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/choque_toroidal.png",
   "ok": true,
-  "file": "assets/media/ddf68bc4-choque_toroidal-300x300.webp",
-  "thumb": "assets/media/ddf68bc4-choque_toroidal-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/9d47972a-choque_toroidal.webp",
+  "thumb": "assets/media/9d47972a-choque_toroidal-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "html:es",
-   "page:es"
+   "cat:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/03/cropped-Logo_Torivac.png": {
@@ -142,18 +141,17 @@
    "page:de"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2022/03/hembrilla-banana-hr4-torivac-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/hembrilla-banana-hr4-torivac-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2022/03/hembrilla-banana-hr4-torivac.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/hembrilla-banana-hr4-torivac.png",
   "ok": true,
-  "file": "assets/media/9e672ef6-hembrilla-banana-hr4-torivac-300x300.webp",
-  "thumb": "assets/media/9e672ef6-hembrilla-banana-hr4-torivac-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/aec993d3-hembrilla-banana-hr4-torivac.webp",
+  "thumb": "assets/media/aec993d3-hembrilla-banana-hr4-torivac-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "html:es",
-   "page:es"
+   "cat:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/03/portaleds.png": {
@@ -174,63 +172,62 @@
    "page:en"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2022/03/potenciometro-3w-torivac-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/potenciometro-3w-torivac-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2022/03/potenciometro-3w-torivac.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/potenciometro-3w-torivac.png",
   "ok": true,
-  "file": "assets/media/7c010612-potenciometro-3w-torivac-300x300.webp",
-  "thumb": "assets/media/7c010612-potenciometro-3w-torivac-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/9e35e41c-potenciometro-3w-torivac.webp",
+  "thumb": "assets/media/9e35e41c-potenciometro-3w-torivac-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "page:es"
+   "cat:es"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2022/03/reostato-ceramico-torivac-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/reostato-ceramico-torivac-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2022/03/reostato-ceramico-torivac.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/reostato-ceramico-torivac.png",
   "ok": true,
-  "file": "assets/media/6ed557cf-reostato-ceramico-torivac-300x300.webp",
-  "thumb": "assets/media/6ed557cf-reostato-ceramico-torivac-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/0aff69ed-reostato-ceramico-torivac.webp",
+  "thumb": "assets/media/0aff69ed-reostato-ceramico-torivac-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-10mm-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-10mm-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-10mm.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-10mm.png",
   "ok": true,
-  "file": "assets/media/71f5d2d7-soporte-metalico-led-10mm-300x300.webp",
-  "thumb": "assets/media/71f5d2d7-soporte-metalico-led-10mm-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/62554408-soporte-metalico-led-10mm.webp",
+  "thumb": "assets/media/62554408-soporte-metalico-led-10mm-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-8mm-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-8mm-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-8mm.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-8mm.png",
   "ok": true,
-  "file": "assets/media/b59d43fe-soporte-metalico-led-8mm-300x300.webp",
-  "thumb": "assets/media/b59d43fe-soporte-metalico-led-8mm-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/0fafb072-soporte-metalico-led-8mm.webp",
+  "thumb": "assets/media/0fafb072-soporte-metalico-led-8mm-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "html:es",
-   "page:es"
+   "cat:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/03/tapas-para-boton-bm.png": {
@@ -243,12 +240,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/03/transformador-serie-tci.png": {
@@ -297,12 +294,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:es",
    "page:de",
    "page:en",
    "page:es",
    "page:fr",
-   "store:de",
-   "store:en"
+   "store:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/04/Iconopdf.png": {
@@ -685,12 +682,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/05/TRIFASICO-MANUAL-scaled-1.jpg": {
@@ -703,12 +700,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
    "page:en",
-   "page:es",
-   "page:fr",
-   "store:en",
-   "store:es"
+   "page:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/05/botones-de-mando01-scaled-1.jpg": {
@@ -757,12 +754,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/05/driver0-10VDC-scaled.jpg": {
@@ -811,12 +808,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "page:de",
    "page:en",
    "page:es",
    "page:fr",
-   "store:de",
-   "store:en"
+   "store:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/05/sobremesa02-scaled.jpg": {
@@ -895,12 +892,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/Bobinas-encapsuladas-potenciometros-03-1.jpg": {
@@ -1030,12 +1027,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/TCE.jpg": {
@@ -1066,12 +1063,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/TCT2.png": {
@@ -1120,12 +1117,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/banco-de-carga1-1.jpg": {
@@ -1138,12 +1135,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-cuadrada-1-1.jpg": {
@@ -1164,20 +1161,20 @@
    "store:de"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-cuadrada-1-300x300.jpg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-cuadrada-1-300x300.jpg",
+ "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-cuadrada-1.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-cuadrada-1.jpg",
   "ok": true,
-  "file": "assets/media/16684f54-bobina-cuadrada-1-300x300.webp",
-  "thumb": "assets/media/16684f54-bobina-cuadrada-1-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/d12ba48f-bobina-cuadrada-1.webp",
+  "thumb": "assets/media/d12ba48f-bobina-cuadrada-1-t.webp",
+  "w": 1500,
+  "h": 1500,
   "kind": "raster",
   "alpha": false,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-redonda-288x300.jpg": {
@@ -1191,6 +1188,19 @@
   "alpha": false,
   "used_in": [
    "page:es"
+  ]
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-redonda-scaled.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-redonda-scaled.jpg",
+  "ok": true,
+  "file": "assets/media/719e6465-bobina-redonda-scaled.webp",
+  "thumb": "assets/media/719e6465-bobina-redonda-scaled-t.webp",
+  "w": 2458,
+  "h": 2560,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/bobina_redonda.png": {
@@ -1239,12 +1249,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-torivac-600x600-2.jpg": {
@@ -1257,12 +1267,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2.jpg": {
@@ -1275,12 +1285,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/boton_01.jpg": {
@@ -1329,12 +1339,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/choque_toroidal-300x300-2.jpg": {
@@ -1364,12 +1374,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-scaled.jpg": {
@@ -1454,12 +1464,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-graduado-600x600-2.jpg": {
@@ -1472,12 +1482,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-stators-600x600-2.jpg": {
@@ -1490,12 +1500,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/discos-para-botones-cubretuercas-600x600-2.jpg": {
@@ -1508,12 +1518,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/discos-para-botones-disco-con-flecha-600x600-2.jpg": {
@@ -1526,11 +1536,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "store:de",
-   "store:en",
-   "store:es",
-   "store:fr"
+   "store:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/doble-1.png": {
@@ -1630,28 +1641,28 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-1-300x300.jpg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-1-300x300.jpg",
+ "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-1.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-1.jpg",
   "ok": true,
-  "file": "assets/media/09ac20c2-hembrilla-seguridad-HBS-torivac-600x600-1-300x300.webp",
-  "thumb": "assets/media/09ac20c2-hembrilla-seguridad-HBS-torivac-600x600-1-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/5f319a59-hembrilla-seguridad-HBS-torivac-600x600-1.webp",
+  "thumb": "assets/media/5f319a59-hembrilla-seguridad-HBS-torivac-600x600-1-t.webp",
+  "w": 600,
+  "h": 600,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-4.png": {
@@ -1682,12 +1693,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-1.jpg": {
@@ -1708,20 +1719,6 @@
    "store:de"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-300x225.jpg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-300x225.jpg",
-  "ok": true,
-  "file": "assets/media/7eb045dd-ondulador-300x225.webp",
-  "thumb": "assets/media/7eb045dd-ondulador-300x225-t.webp",
-  "w": 300,
-  "h": 225,
-  "kind": "raster",
-  "alpha": false,
-  "used_in": [
-   "html:es",
-   "page:es"
-  ]
- },
  "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-auton-1.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-auton-1.jpg",
   "ok": true,
@@ -1735,6 +1732,19 @@
    "og",
    "page:es",
    "store:es"
+  ]
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador.jpg",
+  "ok": true,
+  "file": "assets/media/8402362e-ondulador.webp",
+  "thumb": "assets/media/8402362e-ondulador-t.webp",
+  "w": 800,
+  "h": 600,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador2-scaled-1.jpg": {
@@ -1762,12 +1772,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-torivac.jpg": {
@@ -1780,12 +1790,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-5w-torivac.jpg": {
@@ -1816,12 +1826,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/reostato-ceramico-torivac.jpg": {
@@ -1834,12 +1844,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/simple-1.png": {
@@ -1888,12 +1898,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-5mm-600x600-2.jpg": {
@@ -1906,12 +1916,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-8mm-300x300-2.jpg": {
@@ -1942,12 +1952,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-bm-600x600-2.jpg": {
@@ -1960,12 +1970,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/tci-300x300.jpg": {
@@ -1994,12 +2004,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/te-1280x1000.jpg": {
@@ -2059,12 +2069,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:en",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/trifasico-1.png": {
@@ -2127,12 +2137,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/xB7T3102.jpg.pagespeed.ic.azQ2x9xWwW.jpg": {
@@ -2236,12 +2246,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/Sin-titulo-7.jpeg": {
@@ -2272,12 +2282,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg": {
@@ -2290,12 +2300,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/control-src.png": {
@@ -2308,12 +2318,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/controlador0-10.jpg": {
@@ -2326,12 +2336,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/fa300a.png": {
@@ -2344,12 +2354,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/fabricaciones-especiales-1-1.png": {
@@ -2369,17 +2379,17 @@
    "store:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2022/12/fuentes_alimentacion_ca-300x300.jpg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/12/fuentes_alimentacion_ca-300x300.jpg",
+ "https://grupotorivac.com/wp-content/uploads/2022/12/fuentes_alimentacion_ca.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/12/fuentes_alimentacion_ca.jpg",
   "ok": true,
-  "file": "assets/media/e88b7bfe-fuentes_alimentacion_ca-300x300.webp",
-  "thumb": "assets/media/e88b7bfe-fuentes_alimentacion_ca-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/6ad1c77c-fuentes_alimentacion_ca.webp",
+  "thumb": "assets/media/6ad1c77c-fuentes_alimentacion_ca-t.webp",
+  "w": 900,
+  "h": 900,
   "kind": "raster",
   "alpha": false,
   "used_in": [
-   "page:es"
+   "cat:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/regulador.jpg": {
@@ -2392,12 +2402,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/sobremesa03.jpg": {
@@ -2410,9 +2420,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:fr",
-   "store:fr"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/trifasico-servomotor.jpg": {
@@ -2425,12 +2438,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/xfabricaciones-especiales-1-1.png.pagespeed.ic.62NxIQfiUN.png": {
@@ -2472,12 +2485,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:en",
+   "cat:es",
    "og",
    "page:de",
    "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2024/06/DSC06625.jpg": {
@@ -2653,12 +2666,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "html:en",
-   "html:es",
-   "og",
-   "page:de",
-   "page:en",
-   "page:es"
+   "html:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2024/11/en-caja.png": {
@@ -2671,12 +2684,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2024/11/evolucion-del-cobre.jpg": {
@@ -2707,12 +2720,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "html:en",
-   "html:es",
-   "og",
-   "page:de",
-   "page:en",
-   "page:es"
+   "html:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2025/01/600x600xcontrolador0-10.jpg.pagespeed.ic.b8CZG9warL.jpg": {
@@ -2741,83 +2754,80 @@
    "page:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO-1024x1024.jpg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO-1024x1024.jpg",
+ "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO.jpg",
   "ok": true,
-  "file": "assets/media/b09e55a9-DOBLE-MOTORIZADO-1024x1024.webp",
-  "thumb": "assets/media/b09e55a9-DOBLE-MOTORIZADO-1024x1024-t.webp",
-  "w": 1024,
-  "h": 1024,
+  "file": "assets/media/0ee65cd8-DOBLE-MOTORIZADO.webp",
+  "thumb": "assets/media/0ee65cd8-DOBLE-MOTORIZADO-t.webp",
+  "w": 1500,
+  "h": 1500,
   "kind": "raster",
   "alpha": false,
   "used_in": [
-   "html:de",
-   "html:en",
-   "html:fr",
-   "page:de",
-   "page:en",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO-300x300.jpg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO-300x300.jpg",
+ "https://grupotorivac.com/wp-content/uploads/2025/01/MONOFASICO-MOTORIZADO.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/MONOFASICO-MOTORIZADO.jpg",
   "ok": true,
-  "file": "assets/media/b0f66d32-DOBLE-MOTORIZADO-300x300.webp",
-  "thumb": "assets/media/b0f66d32-DOBLE-MOTORIZADO-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/2cc45a12-MONOFASICO-MOTORIZADO.webp",
+  "thumb": "assets/media/2cc45a12-MONOFASICO-MOTORIZADO-t.webp",
+  "w": 1000,
+  "h": 1132,
   "kind": "raster",
   "alpha": false,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2025/01/TCE-300x225.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/TCE-300x225.png",
+ "https://grupotorivac.com/wp-content/uploads/2025/01/TCE.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/TCE.png",
   "ok": true,
-  "file": "assets/media/48a84a8f-TCE-300x225.webp",
-  "thumb": "assets/media/48a84a8f-TCE-300x225-t.webp",
-  "w": 300,
-  "h": 225,
+  "file": "assets/media/b581d08f-TCE.webp",
+  "thumb": "assets/media/b581d08f-TCE-t.webp",
+  "w": 800,
+  "h": 600,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "page:es"
+   "cat:es"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2025/01/TRIFASICO-MOTORIZADO-1-300x300.jpg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/TRIFASICO-MOTORIZADO-1-300x300.jpg",
+ "https://grupotorivac.com/wp-content/uploads/2025/01/TRIFASICO-MOTORIZADO-1.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/TRIFASICO-MOTORIZADO-1.jpg",
   "ok": true,
-  "file": "assets/media/0daf6211-TRIFASICO-MOTORIZADO-1-300x300.webp",
-  "thumb": "assets/media/0daf6211-TRIFASICO-MOTORIZADO-1-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/3daa07e8-TRIFASICO-MOTORIZADO-1.webp",
+  "thumb": "assets/media/3daa07e8-TRIFASICO-MOTORIZADO-1-t.webp",
+  "w": 1500,
+  "h": 1500,
   "kind": "raster",
   "alpha": false,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2025/01/bavs-tri-300x300.jpg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/bavs-tri-300x300.jpg",
+ "https://grupotorivac.com/wp-content/uploads/2025/01/bavs-tri.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/bavs-tri.jpg",
   "ok": true,
-  "file": "assets/media/d3532e7e-bavs-tri-300x300.webp",
-  "thumb": "assets/media/d3532e7e-bavs-tri-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/288d5229-bavs-tri.webp",
+  "thumb": "assets/media/288d5229-bavs-tri-t.webp",
+  "w": 1500,
+  "h": 1500,
   "kind": "raster",
   "alpha": false,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2025/01/bobina-redonda-288x300.jpg": {
@@ -2845,28 +2855,28 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:fr",
    "page:de",
    "page:en",
-   "page:es",
-   "page:fr",
-   "store:de",
-   "store:en"
+   "page:es"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2025/01/boton-serie-bo-torivac-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/boton-serie-bo-torivac-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2025/01/boton-serie-bo-torivac.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/boton-serie-bo-torivac.png",
   "ok": true,
-  "file": "assets/media/fb9ec7f9-boton-serie-bo-torivac-300x300.webp",
-  "thumb": "assets/media/fb9ec7f9-boton-serie-bo-torivac-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/9832b8f1-boton-serie-bo-torivac.webp",
+  "thumb": "assets/media/9832b8f1-boton-serie-bo-torivac-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2025/01/controlador0-10.jpg": {
@@ -2879,12 +2889,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:fr",
    "page:de",
    "page:en",
-   "page:es",
-   "page:fr",
-   "store:de",
-   "store:en"
+   "page:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2025/01/especial01-2048x1970.jpg": {
@@ -2914,54 +2924,52 @@
    "og"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2025/01/hembrilla-banana-hr4-torivac-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/hembrilla-banana-hr4-torivac-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2025/01/hembrilla-banana-hr4-torivac.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/hembrilla-banana-hr4-torivac.png",
   "ok": true,
-  "file": "assets/media/d967d1fe-hembrilla-banana-hr4-torivac-300x300.webp",
-  "thumb": "assets/media/d967d1fe-hembrilla-banana-hr4-torivac-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/fb9ff327-hembrilla-banana-hr4-torivac.webp",
+  "thumb": "assets/media/fb9ff327-hembrilla-banana-hr4-torivac-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "html:de",
-   "html:fr",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2025/01/potenciometro-3w-torivac-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/potenciometro-3w-torivac-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2025/01/potenciometro-3w-torivac.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/potenciometro-3w-torivac.png",
   "ok": true,
-  "file": "assets/media/fda59320-potenciometro-3w-torivac-300x300.webp",
-  "thumb": "assets/media/fda59320-potenciometro-3w-torivac-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/65270f01-potenciometro-3w-torivac.webp",
+  "thumb": "assets/media/65270f01-potenciometro-3w-torivac-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2025/01/resistencia-300x300.jpg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/resistencia-300x300.jpg",
+ "https://grupotorivac.com/wp-content/uploads/2025/01/resistencia.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/resistencia.jpg",
   "ok": true,
-  "file": "assets/media/b3a0b051-resistencia-300x300.webp",
-  "thumb": "assets/media/b3a0b051-resistencia-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/66042ad4-resistencia.webp",
+  "thumb": "assets/media/66042ad4-resistencia-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": false,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2025/01/sobremesa03-1024x1024.jpg": {
@@ -2982,22 +2990,20 @@
    "page:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2025/01/soporte-metalico-led-8mm-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/soporte-metalico-led-8mm-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2025/01/soporte-metalico-led-8mm.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/soporte-metalico-led-8mm.png",
   "ok": true,
-  "file": "assets/media/93b32a0e-soporte-metalico-led-8mm-300x300.webp",
-  "thumb": "assets/media/93b32a0e-soporte-metalico-led-8mm-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/3669a9e9-soporte-metalico-led-8mm.webp",
+  "thumb": "assets/media/3669a9e9-soporte-metalico-led-8mm-t.webp",
+  "w": 800,
+  "h": 800,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "html:de",
-   "html:fr",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2025/01/te-281x300.jpg": {
@@ -3015,6 +3021,21 @@
    "page:fr"
   ]
  },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/te-scaled.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/te-scaled.jpg",
+  "ok": true,
+  "file": "assets/media/3dff52d7-te-scaled.webp",
+  "thumb": "assets/media/3dff52d7-te-scaled-t.webp",
+  "w": 2395,
+  "h": 2560,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:de",
+   "cat:es",
+   "cat:fr"
+  ]
+ },
  "https://grupotorivac.com/wp-content/uploads/2025/01/trifasico-servomotor.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/trifasico-servomotor.jpg",
   "ok": true,
@@ -3025,12 +3046,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de",
-   "store:en"
+   "page:en"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2025/01/xMONOFASICO-MOTORIZADO-265x300.jpg.pagespeed.ic.tG0JjkwhVU.jpg": {
@@ -3071,12 +3092,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "css:post-15755.css",
-   "css:post-15764.css",
-   "css:post-15773.css",
-   "og",
-   "page:de",
-   "page:en"
+   "css:post-15764.css"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2025/02/Diseno-sin-titulo-73.png": {
@@ -3308,12 +3329,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:fr",
    "html:de",
    "html:en",
    "html:fr",
-   "page:de",
-   "page:en",
-   "page:fr"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2025/12/Aplicaciones_Transformadores-1.jpg": {
@@ -3697,20 +3718,20 @@
    "page:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2026/02/B7T3114-300x203.jpg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/B7T3114-300x203.jpg",
+ "https://grupotorivac.com/wp-content/uploads/2026/02/B7T3114.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/B7T3114.jpg",
   "ok": true,
-  "file": "assets/media/772fca1b-B7T3114-300x203.webp",
-  "thumb": "assets/media/772fca1b-B7T3114-300x203-t.webp",
-  "w": 300,
-  "h": 203,
+  "file": "assets/media/20c9b11e-B7T3114.webp",
+  "thumb": "assets/media/20c9b11e-B7T3114-t.webp",
+  "w": 1000,
+  "h": 676,
   "kind": "raster",
   "alpha": false,
   "used_in": [
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2026/02/B7T4306-1280x1000.jpg": {
@@ -3731,45 +3752,30 @@
    "page:fr"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen-259x300.jpeg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen-259x300.jpeg",
+ "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen.jpeg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen.jpeg",
   "ok": true,
-  "file": "assets/media/0ec3853f-Proyecto-Cambiar-tamano-de-imagen-259x300.webp",
-  "thumb": "assets/media/0ec3853f-Proyecto-Cambiar-tamano-de-imagen-259x300-t.webp",
-  "w": 259,
-  "h": 300,
+  "file": "assets/media/c0de3a76-Proyecto-Cambiar-tamano-de-imagen.webp",
+  "thumb": "assets/media/c0de3a76-Proyecto-Cambiar-tamano-de-imagen-t.webp",
+  "w": 2000,
+  "h": 2313,
   "kind": "raster",
   "alpha": false,
   "used_in": [
-   "html:es",
-   "page:es"
+   "cat:es"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen-300x300.jpeg": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen-300x300.jpeg",
+ "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Eliminar-fondo-1.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Eliminar-fondo-1.png",
   "ok": true,
-  "file": "assets/media/887da1f5-Proyecto-Cambiar-tamano-de-imagen-300x300.webp",
-  "thumb": "assets/media/887da1f5-Proyecto-Cambiar-tamano-de-imagen-300x300-t.webp",
-  "w": 300,
-  "h": 300,
-  "kind": "raster",
-  "alpha": false,
-  "used_in": [
-   "page:es"
-  ]
- },
- "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Eliminar-fondo-1-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Eliminar-fondo-1-300x300.png",
-  "ok": true,
-  "file": "assets/media/b50bad90-Proyecto-Eliminar-fondo-1-300x300.webp",
-  "thumb": "assets/media/b50bad90-Proyecto-Eliminar-fondo-1-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/ee44f4f1-Proyecto-Eliminar-fondo-1.webp",
+  "thumb": "assets/media/ee44f4f1-Proyecto-Eliminar-fondo-1-t.webp",
+  "w": 1004,
+  "h": 1004,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "html:es",
-   "page:es"
+   "cat:es"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2026/02/Reostatos-potenciometros-hero.jpg": {
@@ -3868,22 +3874,20 @@
    "page:es"
   ]
  },
- "https://grupotorivac.com/wp-content/uploads/2026/03/B7T3102-300x300.png": {
-  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/03/B7T3102-300x300.png",
+ "https://grupotorivac.com/wp-content/uploads/2026/03/B7T3102.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/03/B7T3102.png",
   "ok": true,
-  "file": "assets/media/0106ee4d-B7T3102-300x300.webp",
-  "thumb": "assets/media/0106ee4d-B7T3102-300x300-t.webp",
-  "w": 300,
-  "h": 300,
+  "file": "assets/media/477766e1-B7T3102.webp",
+  "thumb": "assets/media/477766e1-B7T3102-t.webp",
+  "w": 1000,
+  "h": 1000,
   "kind": "raster",
   "alpha": true,
   "used_in": [
-   "html:de",
-   "html:es",
-   "html:fr",
-   "page:de",
-   "page:en",
-   "page:es"
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2026/03/Proyecto-Cambiar-tamano-de-imagen-300x3001-1.jpeg": {
@@ -3896,11 +3900,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:fr",
    "html:de",
    "html:fr",
-   "page:de",
-   "page:en",
-   "page:fr"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2026/03/Proyecto-Eliminar-fondo-1-300x3001-1.png": {
@@ -3913,11 +3918,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:fr",
    "html:de",
    "html:fr",
-   "page:de",
-   "page:en",
-   "page:fr"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2026/03/TC-300x2251-1.png": {
@@ -3930,6 +3936,9 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:fr",
    "page:de",
    "page:en",
    "page:fr"
@@ -3945,6 +3954,9 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:fr",
    "page:de",
    "page:en",
    "page:fr"
@@ -3960,6 +3972,7 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:es",
    "html:es",
    "page:es"
   ]
@@ -3974,11 +3987,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:fr",
    "html:de",
    "html:fr",
-   "page:de",
-   "page:en",
-   "page:fr"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2026/03/choque_toroidal-300x3001-1.png": {
@@ -3991,11 +4005,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:fr",
    "html:de",
    "html:fr",
-   "page:de",
-   "page:en",
-   "page:fr"
+   "page:de"
   ]
  },
  "https://grupotorivac.com/wp-content/uploads/2026/03/transformadores-hero.jpg": {
@@ -4220,6 +4235,10 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "html:es",
    "page:es"
   ]
@@ -4426,12 +4445,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-mate-troivac-600x598-2.jpg"
  },
@@ -4445,12 +4464,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/discos-para-botones-cubretuercas-600x600-2.jpg"
  },
@@ -4464,11 +4483,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "store:de",
-   "store:en",
-   "store:es",
-   "store:fr"
+   "store:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/discos-para-botones-disco-con-flecha-600x600-2.jpg"
  },
@@ -4482,12 +4502,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-600x600-2.jpg"
  },
@@ -4501,12 +4521,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/caratulas-graduadas-aluminio-anodizado-torivac-600x600-2.jpg"
  },
@@ -4520,12 +4540,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-graduado-600x600-2.jpg"
  },
@@ -4539,14 +4559,31 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-banana-torivac.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-cuadrada-1-300x300.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-cuadrada-1.jpg",
+  "ok": true,
+  "file": "assets/media/d12ba48f-bobina-cuadrada-1.webp",
+  "thumb": "assets/media/d12ba48f-bobina-cuadrada-1-t.webp",
+  "w": 1500,
+  "h": 1500,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/bobina-cuadrada-1.jpg"
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri-300x300.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg",
@@ -4558,12 +4595,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/12/bavs-tri.jpg"
  },
@@ -4615,12 +4652,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/12/DOBLE-MOTORIZADO.jpg"
  },
@@ -4634,12 +4671,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/TC.jpg"
  },
@@ -4653,12 +4690,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/reostato-ceramico-torivac.jpg"
  },
@@ -4672,12 +4709,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/03/tapas-para-boton-bm.png"
  },
@@ -4691,12 +4728,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/banco-de-carga1-1.jpg"
  },
@@ -4710,12 +4747,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/05/doble_manual-1.png"
  },
@@ -4748,12 +4785,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/tapas-para-boton-bm-600x600-2.jpg"
  },
@@ -4767,12 +4804,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-aro-con-flecha.jpg"
  },
@@ -4786,12 +4823,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/arranque.jpg"
  },
@@ -4805,12 +4842,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-torivac.jpg"
  },
@@ -4843,12 +4880,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/disco-para-botones-stators-600x600-2.jpg"
  },
@@ -4862,12 +4899,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/12/controlador0-10.jpg"
  },
@@ -4881,14 +4918,31 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de",
-   "store:en"
+   "page:en"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/trifasico-servomotor.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO-300x300.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO.jpg",
+  "ok": true,
+  "file": "assets/media/0ee65cd8-DOBLE-MOTORIZADO.webp",
+  "thumb": "assets/media/0ee65cd8-DOBLE-MOTORIZADO-t.webp",
+  "w": 1500,
+  "h": 1500,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO.jpg"
  },
  "https://grupotorivac.com/wp-content/uploads/2025/12/Aplicaciones_Transformadores-1-2048x1367.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2025/12/Aplicaciones_Transformadores-1.jpg",
@@ -4923,6 +4977,23 @@
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/trifasico-1.png"
  },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/boton-serie-bo-torivac-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/boton-serie-bo-torivac.png",
+  "ok": true,
+  "file": "assets/media/9832b8f1-boton-serie-bo-torivac.webp",
+  "thumb": "assets/media/9832b8f1-boton-serie-bo-torivac-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/boton-serie-bo-torivac.png"
+ },
  "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-torivac-600x600-2-300x300.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-torivac-600x600-2.jpg",
   "ok": true,
@@ -4933,14 +5004,31 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bm-torivac-600x600-2.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/bavs-tri-300x300.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/bavs-tri.jpg",
+  "ok": true,
+  "file": "assets/media/288d5229-bavs-tri.webp",
+  "thumb": "assets/media/288d5229-bavs-tri-t.webp",
+  "w": 1500,
+  "h": 1500,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/bavs-tri.jpg"
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/TCE-300x300.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/TCE.jpg",
@@ -4971,12 +5059,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/12/trifasico-servomotor.jpg"
  },
@@ -5009,14 +5097,48 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/BAVS-mono-1.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-1-300x300.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-1.jpg",
+  "ok": true,
+  "file": "assets/media/5f319a59-hembrilla-seguridad-HBS-torivac-600x600-1.webp",
+  "thumb": "assets/media/5f319a59-hembrilla-seguridad-HBS-torivac-600x600-1-t.webp",
+  "w": 600,
+  "h": 600,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HBS-torivac-600x600-1.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/hembrilla-banana-hr4-torivac-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/hembrilla-banana-hr4-torivac.png",
+  "ok": true,
+  "file": "assets/media/fb9ff327-hembrilla-banana-hr4-torivac.webp",
+  "thumb": "assets/media/fb9ff327-hembrilla-banana-hr4-torivac-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/hembrilla-banana-hr4-torivac.png"
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HSR-torivac-600x600-4-300x300.png": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HSR-torivac-600x600-4.png",
@@ -5028,12 +5150,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/hembrilla-seguridad-HSR-torivac-600x600-4.png"
  },
@@ -5047,12 +5169,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/12/TRIFASICO-MOTORIZADO.jpg"
  },
@@ -5094,6 +5216,23 @@
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2024/11/1000067540.jpg"
  },
+ "https://grupotorivac.com/wp-content/uploads/2026/02/B7T3114-300x203.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/B7T3114.jpg",
+  "ok": true,
+  "file": "assets/media/20c9b11e-B7T3114.webp",
+  "thumb": "assets/media/20c9b11e-B7T3114-t.webp",
+  "w": 1000,
+  "h": 676,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2026/02/B7T3114.jpg"
+ },
  "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2-300x300.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2.jpg",
   "ok": true,
@@ -5104,14 +5243,48 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/boton-serie-bo-torivac-600x600-2.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/soporte-metalico-led-8mm-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/soporte-metalico-led-8mm.png",
+  "ok": true,
+  "file": "assets/media/3669a9e9-soporte-metalico-led-8mm.webp",
+  "thumb": "assets/media/3669a9e9-soporte-metalico-led-8mm-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/soporte-metalico-led-8mm.png"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-10mm-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-10mm.png",
+  "ok": true,
+  "file": "assets/media/62554408-soporte-metalico-led-10mm.webp",
+  "thumb": "assets/media/62554408-soporte-metalico-led-10mm-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-10mm.png"
  },
  "https://grupotorivac.com/wp-content/uploads/2022/05/industrial02-1024x683.png": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2022/05/industrial02.png",
@@ -5123,12 +5296,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "page:de",
    "page:en",
    "page:es",
    "page:fr",
-   "store:de",
-   "store:en"
+   "store:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/05/industrial02.png"
  },
@@ -5142,14 +5315,31 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de",
-   "store:en"
+   "page:en"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/trifasico-servomotor.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO-1024x1024.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO.jpg",
+  "ok": true,
+  "file": "assets/media/0ee65cd8-DOBLE-MOTORIZADO.webp",
+  "thumb": "assets/media/0ee65cd8-DOBLE-MOTORIZADO-t.webp",
+  "w": 1500,
+  "h": 1500,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/DOBLE-MOTORIZADO.jpg"
  },
  "https://grupotorivac.com/wp-content/uploads/2025/12/Transformador_normativas-internacionales-960x720.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2025/12/Transformador_normativas-internacionales.jpg",
@@ -5270,12 +5460,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2024/11/en-caja.png"
  },
@@ -5289,14 +5479,48 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/arranque.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/resistencia-300x300.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/resistencia.jpg",
+  "ok": true,
+  "file": "assets/media/66042ad4-resistencia.webp",
+  "thumb": "assets/media/66042ad4-resistencia-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/resistencia.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/03/reostato-ceramico-torivac-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/reostato-ceramico-torivac.png",
+  "ok": true,
+  "file": "assets/media/0aff69ed-reostato-ceramico-torivac.webp",
+  "thumb": "assets/media/0aff69ed-reostato-ceramico-torivac-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/03/reostato-ceramico-torivac.png"
  },
  "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-tandem-torivac-300x300.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-tandem-torivac.jpg",
@@ -5308,12 +5532,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/potenciometro-3w-tandem-torivac.jpg"
  },
@@ -5327,10 +5551,31 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "html:es",
    "page:es"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2026/04/trifasico-servomotor-optimized.webp"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2026/03/B7T3102-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/03/B7T3102.png",
+  "ok": true,
+  "file": "assets/media/477766e1-B7T3102.webp",
+  "thumb": "assets/media/477766e1-B7T3102-t.webp",
+  "w": 1000,
+  "h": 1000,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2026/03/B7T3102.png"
  },
  "https://grupotorivac.com/wp-content/uploads/2025/11/resistencia-300x300.png": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2025/11/resistencia.png",
@@ -5342,14 +5587,48 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:fr",
    "html:de",
    "html:en",
    "html:fr",
-   "page:de",
-   "page:en",
-   "page:fr"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/11/resistencia.png"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/TRIFASICO-MOTORIZADO-1-300x300.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/TRIFASICO-MOTORIZADO-1.jpg",
+  "ok": true,
+  "file": "assets/media/3daa07e8-TRIFASICO-MOTORIZADO-1.webp",
+  "thumb": "assets/media/3daa07e8-TRIFASICO-MOTORIZADO-1-t.webp",
+  "w": 1500,
+  "h": 1500,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/TRIFASICO-MOTORIZADO-1.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/potenciometro-3w-torivac-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/potenciometro-3w-torivac.png",
+  "ok": true,
+  "file": "assets/media/65270f01-potenciometro-3w-torivac.webp",
+  "thumb": "assets/media/65270f01-potenciometro-3w-torivac-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/potenciometro-3w-torivac.png"
  },
  "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199-300x200.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg",
@@ -5361,12 +5640,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "css:post-15755.css",
-   "css:post-15764.css",
-   "css:post-15773.css",
-   "og",
-   "page:de",
-   "page:en"
+   "css:post-15764.css"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/02/4Z0A9199.jpg"
  },
@@ -5380,12 +5659,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:fr",
    "page:de",
    "page:en",
-   "page:es",
-   "page:fr",
-   "store:de",
-   "store:en"
+   "page:es"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/controlador0-10.jpg"
  },
@@ -5399,9 +5678,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:fr",
-   "store:fr"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/12/sobremesa03.jpg"
  },
@@ -5415,12 +5697,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
    "page:en",
-   "page:es",
-   "page:fr",
-   "store:en",
-   "store:es"
+   "page:es"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/05/TRIFASICO-MANUAL-scaled-1.jpg"
  },
@@ -5453,12 +5735,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-5mm-600x600-2.jpg"
  },
@@ -5472,12 +5754,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:de",
+   "cat:en",
+   "cat:es",
+   "cat:fr",
    "og",
-   "page:de",
-   "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/soporte-metalico-led-3mm-600x600-2.jpg"
  },
@@ -5491,12 +5773,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:en",
+   "cat:es",
    "og",
    "page:de",
    "page:en",
-   "page:es",
-   "page:fr",
-   "store:de"
+   "page:es"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2023/05/resistencia.jpg"
  },
@@ -5510,12 +5792,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:es",
    "page:de",
    "page:en",
    "page:es",
    "page:fr",
-   "store:de",
-   "store:en"
+   "store:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/03/variadores-tension-caja-sobremesa.png"
  },
@@ -5529,14 +5811,28 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "page:de",
    "page:en",
    "page:es",
    "page:fr",
-   "store:de",
-   "store:en"
+   "store:de"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/05/industrial02.png"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/03/potenciometro-3w-torivac-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/potenciometro-3w-torivac.png",
+  "ok": true,
+  "file": "assets/media/9e35e41c-potenciometro-3w-torivac.webp",
+  "thumb": "assets/media/9e35e41c-potenciometro-3w-torivac-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:es"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/03/potenciometro-3w-torivac.png"
  },
  "https://grupotorivac.com/wp-content/uploads/2026/04/Proyecto-Cambiar-tamano-de-imagen-4-1024x1024.png": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2026/04/Proyecto-Cambiar-tamano-de-imagen-4.png",
@@ -5552,6 +5848,104 @@
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2026/04/Proyecto-Cambiar-tamano-de-imagen-4.png"
  },
+ "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen-300x300.jpeg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen.jpeg",
+  "ok": true,
+  "file": "assets/media/c0de3a76-Proyecto-Cambiar-tamano-de-imagen.webp",
+  "thumb": "assets/media/c0de3a76-Proyecto-Cambiar-tamano-de-imagen-t.webp",
+  "w": 2000,
+  "h": 2313,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:es"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen.jpeg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Eliminar-fondo-1-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Eliminar-fondo-1.png",
+  "ok": true,
+  "file": "assets/media/ee44f4f1-Proyecto-Eliminar-fondo-1.webp",
+  "thumb": "assets/media/ee44f4f1-Proyecto-Eliminar-fondo-1-t.webp",
+  "w": 1004,
+  "h": 1004,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:es"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Eliminar-fondo-1.png"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/03/choque_toroidal-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/choque_toroidal.png",
+  "ok": true,
+  "file": "assets/media/9d47972a-choque_toroidal.webp",
+  "thumb": "assets/media/9d47972a-choque_toroidal-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:es"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/03/choque_toroidal.png"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-8mm-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-8mm.png",
+  "ok": true,
+  "file": "assets/media/0fafb072-soporte-metalico-led-8mm.webp",
+  "thumb": "assets/media/0fafb072-soporte-metalico-led-8mm-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:es"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/03/soporte-metalico-led-8mm.png"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/03/hembrilla-banana-hr4-torivac-300x300.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/03/hembrilla-banana-hr4-torivac.png",
+  "ok": true,
+  "file": "assets/media/aec993d3-hembrilla-banana-hr4-torivac.webp",
+  "thumb": "assets/media/aec993d3-hembrilla-banana-hr4-torivac-t.webp",
+  "w": 800,
+  "h": 800,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:es"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/03/hembrilla-banana-hr4-torivac.png"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador-300x225.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador.jpg",
+  "ok": true,
+  "file": "assets/media/8402362e-ondulador.webp",
+  "thumb": "assets/media/8402362e-ondulador-t.webp",
+  "w": 800,
+  "h": 600,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:es"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/ondulador.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen-259x300.jpeg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen.jpeg",
+  "ok": true,
+  "file": "assets/media/c0de3a76-Proyecto-Cambiar-tamano-de-imagen.webp",
+  "thumb": "assets/media/c0de3a76-Proyecto-Cambiar-tamano-de-imagen-t.webp",
+  "w": 2000,
+  "h": 2313,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:es"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2026/02/Proyecto-Cambiar-tamano-de-imagen.jpeg"
+ },
  "https://grupotorivac.com/wp-content/uploads/2022/12/control-src-300x300.png": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2022/12/control-src.png",
   "ok": true,
@@ -5562,12 +5956,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/12/control-src.png"
  },
@@ -5581,12 +5975,12 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/convertidor1-1.jpg"
  },
@@ -5600,14 +5994,28 @@
   "kind": "raster",
   "alpha": false,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/12/regulador.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2022/12/fuentes_alimentacion_ca-300x300.jpg": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2022/12/fuentes_alimentacion_ca.jpg",
+  "ok": true,
+  "file": "assets/media/6ad1c77c-fuentes_alimentacion_ca.webp",
+  "thumb": "assets/media/6ad1c77c-fuentes_alimentacion_ca-t.webp",
+  "w": 900,
+  "h": 900,
+  "kind": "raster",
+  "alpha": false,
+  "used_in": [
+   "cat:es"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/12/fuentes_alimentacion_ca.jpg"
  },
  "https://grupotorivac.com/wp-content/uploads/2022/12/fa300a-300x300.png": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2022/12/fa300a.png",
@@ -5619,12 +6027,12 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/12/fa300a.png"
  },
@@ -5638,14 +6046,28 @@
   "kind": "raster",
   "alpha": true,
   "used_in": [
+   "cat:es",
    "og",
    "page:de",
    "page:en",
    "page:es",
-   "page:fr",
-   "store:de"
+   "page:fr"
   ],
   "alias_of": "https://grupotorivac.com/wp-content/uploads/2022/06/TC.jpg"
+ },
+ "https://grupotorivac.com/wp-content/uploads/2025/01/TCE-300x225.png": {
+  "src_url": "https://grupotorivac.com/wp-content/uploads/2025/01/TCE.png",
+  "ok": true,
+  "file": "assets/media/b581d08f-TCE.webp",
+  "thumb": "assets/media/b581d08f-TCE-t.webp",
+  "w": 800,
+  "h": 600,
+  "kind": "raster",
+  "alpha": true,
+  "used_in": [
+   "cat:es"
+  ],
+  "alias_of": "https://grupotorivac.com/wp-content/uploads/2025/01/TCE.png"
  },
  "https://grupotorivac.com/wp-content/uploads/2025/12/Transformador_VidaUtil-960x720.jpg": {
   "src_url": "https://grupotorivac.com/wp-content/uploads/2025/12/Transformador_VidaUtil.jpg",

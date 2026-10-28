@@ -298,6 +298,14 @@ for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (fs.existsSync(path.
 const SRC = path.join(ROOT, 'site', 'assets');
 const copyDir = (a, b) => { fs.mkdirSync(b, { recursive: true }); for (const e of fs.readdirSync(a, { withFileTypes: true })) { const s = path.join(a, e.name), d = path.join(b, e.name); e.isDirectory() ? copyDir(s, d) : fs.copyFileSync(s, d); } };
 copyDir(SRC, path.join(DIST, 'assets'));
+// [CSS-PROD] con --base: un solo site.css minificado (1 petición en vez de 6) y fuentes como archivos woff2 (cacheables, no bloquean el pintado).
+//   Sin --base (demo para abrir con doble clic) se mantienen los 6 CSS y las fuentes en base64, porque file:// no carga fuentes externas.
+if (ABS) {
+  const css = ['fonts-files', 'tokens', 'base', 'layout', 'components', 'art'].map((n) => fs.readFileSync(path.join(SRC, 'css', n + '.css'), 'utf8')).join('\n');
+  const min = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/\s*([{};,>])\s*/g, '$1').replace(/;}/g, '}').trim();
+  fs.writeFileSync(path.join(DIST, 'assets', 'css', 'site.css'), min);
+  console.log(`CSS producción: site.css ${(min.length / 1024).toFixed(0)} KB`);
+}
 fs.mkdirSync(path.join(DIST, 'assets', 'pdf'), { recursive: true });
 for (const f of pdfLocal.keys()) fs.copyFileSync(path.join(pdfDir, f), path.join(DIST, 'assets', 'pdf', f));
 // portada del demo: abre el español; selector con los 4 idiomas en demo.html
