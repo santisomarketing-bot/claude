@@ -124,6 +124,8 @@ for (const l of LANGS) {
     funding: f.funding_text || '',
     links: f.links.slice(0, 3).map((x) => ({ label: x.label, href: x.href })),
   };
+  // la web original enlaza la política de cookies solo desde el banner de consentimiento; sin banner (la web nueva no usa cookies de seguimiento) va en el pie
+  { const cp = Object.keys(pages[l] || {}).find((k) => /politica-de-cookies/.test(k)); if (cp) site.footer[l].links.push({ label: (pages[l][cp].title || '').replace(/\s*-\s*Torivac$/, ''), href: 'https://grupotorivac.com' + cp }); }
 }
 
 site.prodById = prodById;

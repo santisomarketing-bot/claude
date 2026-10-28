@@ -112,6 +112,7 @@ store = {l: {p["id"]: p for p in jl(RAW / f"store/products.{l}.json", [])} for l
 rest_prod = {l: {p["id"]: p for p in jl(RAW / f"rest/product.{l}.json", [])} for l in LANGS}
 rest_cat = {l: jl(RAW / f"rest/product_cat.{l}.json", []) for l in LANGS}
 rest_posts = {l: jl(RAW / f"rest/posts.{l}.json", []) for l in LANGS}
+rest_pages = {l: jl(RAW / f"rest/pages.{l}.json", []) for l in LANGS}
 pmap = {p["id_es"]: p for p in jl(AN / "product-map.json", {"products": []})["products"]}
 pidx = jl(AN / "pages-index.json", {"pages": []})["pages"]
 def _expected_stem(path):
@@ -419,7 +420,22 @@ def build_pages():
             html = Path(ROOT / r["file"]).read_text(errors="replace")
             soup = BeautifulSoup(html, "lxml")
             rec["services"] = services_cards(soup)
+        # política de cookies: el HTML publicado solo trae un shortcode dinámico (Complianz); el texto real está en el contenido de la página (REST)
+        if k == "page" and "politica-de-cookies" in p and len(" ".join((b.get("h") or b.get("x") or "") for s_ in rec["sections"] for b in s_["blocks"] if isinstance(b.get("h") or b.get("x"), str))) < 1500:
+            rp = next((x for x in rest_pages[l] if pth(x["link"]) == p), None)
+            if rp:
+                rec["sections"].append({"id": "rest-content", "form": False, "blocks": blocks_from_html(rp["content"]["rendered"])})
+                rec["content_from"] = "rest"
         pages[l][p] = rec
+    # política de cookies en EN/FR/DE: publicadas en la web original pero ausentes del rastreo HTML (el sitemap de Yoast omite las traducidas)
+    cookie_paths = {l: next((pth(x["link"]) for x in rest_pages[l] if "politica-de-cookies" in x["slug"]), None) for l in LANGS}
+    for l in LANGS:
+        cp = cookie_paths[l]
+        rp = next((x for x in rest_pages[l] if cp and pth(x["link"]) == cp), None)
+        if rp and cp not in pages[l]:
+            title = htmllib.unescape(re.sub(r"<[^>]+>", "", rp["title"]["rendered"]))
+            pages[l][cp] = {"kind": "page", "lang": l, "path": cp, "title": f"{title} - Torivac", "meta_description": "", "alternates": {x: cookie_paths[x] for x in LANGS if x != l and cookie_paths[x]},
+                            "source_url": rp["link"], "content_from": "rest", "sections": [{"id": "rest-content", "form": False, "blocks": [{"t": "h", "l": 1, "x": title}] + blocks_from_html(rp["content"]["rendered"])}]}
     # entradas del blog: fecha, imagen destacada, extracto desde REST
     for l in LANGS:
         for po in rest_posts[l]:

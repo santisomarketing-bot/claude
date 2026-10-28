@@ -70,10 +70,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "JPEG",
-     "mime_media_index": "image/jpeg",
-     "w": 2560,
-     "h": 2496
+     "real_format": "JPEG",
+     "mime": "image/jpeg",
+     "width": 2560,
+     "height": 2496
     },
     {
      "src": "https://grupotorivac.com/wp-content/uploads/2022/05/A_Medida012-scaled.jpg",
@@ -103,10 +103,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "JPEG",
-     "mime_media_index": "image/jpeg",
-     "w": 2560,
-     "h": 2027
+     "real_format": "JPEG",
+     "mime": "image/jpeg",
+     "width": 2560,
+     "height": 2027
     },
     {
      "src": "https://grupotorivac.com/wp-content/uploads/2022/05/A_Medida03.jpg",
@@ -136,10 +136,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "JPEG",
-     "mime_media_index": "image/jpeg",
-     "w": 733,
-     "h": 1024
+     "real_format": "JPEG",
+     "mime": "image/jpeg",
+     "width": 733,
+     "height": 1024
     },
     {
      "src": "https://grupotorivac.com/wp-content/uploads/2022/06/especial01-scaled.jpg",
@@ -169,10 +169,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "JPEG",
-     "mime_media_index": "image/jpeg",
-     "w": 2560,
-     "h": 2463
+     "real_format": "JPEG",
+     "mime": "image/jpeg",
+     "width": 2560,
+     "height": 2463
     }
    ],
    "pdf_links": [],
@@ -316,10 +316,10 @@
     "Terminología inconsistente entre idiomas: el nombre se traduce «Custom fabrications» (EN), «Produits sur mesure» (FR), «Maßgeschneiderte Produkte» (DE), mientras que el menú del sitio llama a la categoría homóloga «Custom manufacturing» / «Production sur mesure» / «Maßgeschneiderte Fertigung»; «variador de tensión» sale como «voltage variator» (EN), «variateur de tension» (FR) y «Spannungsregler» (DE).",
     "Imágenes (4): A_Medida01-scaled.jpg, A_Medida012-scaled.jpg, A_Medida03.jpg y especial01-scaled.jpg (nombres no descriptivos). Los ids de medio difieren por idioma y los títulos están localizados de forma inconsistente (p. ej. «A_Medida012» / «A_Measure012» / «A_Mesure012» / «A_Maß012»; «especial01» / «special01» / «spécial01»). Se conservan tal cual.",
     "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
-    "SEO: la meta description ES lleva el sufijo de plantilla «Fabricado por Torivac.»; EN/FR/DE no. Canonical y og:url de EN/FR/DE apuntan a la URL española ({url_es}); solo la ES es autocanónica (ver docs/01-analisis/HALLAZGOS.md n.º 11).",
-    "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados), ni la descripción larga, ni la tabla de atributos; la página ES sí tiene H1 (= nombre del producto).",
+    "SEO: la meta description ES lleva el sufijo de plantilla «Fabricado por Torivac.»; EN/FR/DE no. Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/fabricaciones-a-medida/); solo la ES es autocanónica (ver docs/01-analisis/HALLAZGOS.md n.º 11).",
+    "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados); la página ES sí tiene H1 (= nombre del producto). Como la ficha no tiene descripción larga, el contenido visible (short_description) coincide en los 4 idiomas.",
     "Slug 'fabricaciones-a-medida' idéntico (en español) en las URLs EN/FR/DE.",
-    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla «Il a accepté et accepté la politique de confidentialité»; DE título «KONTAKT US», casilla «Hij gaat akkoord met het privacybeleid.» y botón «Versturen» (neerlandés); ES «encontrareis» sin tilde. La página FR muestra entre los relacionados «Equipos de sobremesa» (título en español): es el producto FR 4323 (slug 'equipos-de-sobremesa-2', categoría 'Sans catégorie'), sin equivalente ES/EN/DE en product-map.json (único producto huérfano de los 4 idiomas). Fuera de este lote; se guarda en extra_sections.",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla «Il a accepté et accepté la politique de confidentialité»; DE título «KONTAKT US», casilla «Hij gaat akkoord met het privacybeleid.» y botón «Versturen» (neerlandés); ES «encontrareis» sin tilde. La página FR muestra entre los relacionados «Equipos de sobremesa» (título y texto en español): es el producto FR 4323 (slug 'equipos-de-sobremesa-2', categoría 'Sans catégorie'), el único producto de la Store API de cualquier idioma que no figura en product-map.json (sin equivalente ES/EN/DE). Fuera de este lote; se guarda en extra_sections.",
     "SKU '8cca38630446': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes web (orderable_items=[] y sin_referencias_comerciales).",
     "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes."
    ]
@@ -535,8 +535,8 @@
     "Meta description truncada a mitad de frase en ES («…una amplia variedad de potencias en montajes.»; falta «ensamblados»), FR («…jusqu'à une large gamme de puissances.») y DE («…in montierten.»); EN termina en «in assembled assemblies.» (frase completa).",
     "Categoría: Store API ES categories=[] (product-map: top_category 'Sin categoría', category_path_es=[]); la REST ES trae product_cat=[18] «Sin categorizar» y la miga de pan ES muestra «Productos / Sin categorizar».",
     "SEO: Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-6/); solo la ES es autocanónica (ver docs/01-analisis/HALLAZGOS.md n.º 11).",
-    "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados), ni la descripción larga, ni la tabla de atributos; la página ES sí tiene H1 (= nombre del producto).",
-    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla «Il a accepté et accepté la politique de confidentialité»; DE título «KONTAKT US», casilla «Hij gaat akkoord met het privacybeleid.» y botón «Versturen» (neerlandés); ES «encontrareis» sin tilde. La página FR muestra entre los relacionados «Equipos de sobremesa» (título en español): es el producto FR 4323 (slug 'equipos-de-sobremesa-2', categoría 'Sans catégorie'), sin equivalente ES/EN/DE en product-map.json (único producto huérfano de los 4 idiomas). Fuera de este lote; se guarda en extra_sections.",
+    "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados); la página ES sí tiene H1 (= nombre del producto). Como la ficha no tiene descripción larga, el contenido visible (short_description) coincide en los 4 idiomas.",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla «Il a accepté et accepté la politique de confidentialité»; DE título «KONTAKT US», casilla «Hij gaat akkoord met het privacybeleid.» y botón «Versturen» (neerlandés); ES «encontrareis» sin tilde. La página FR muestra entre los relacionados «Equipos de sobremesa» (título y texto en español): es el producto FR 4323 (slug 'equipos-de-sobremesa-2', categoría 'Sans catégorie'), el único producto de la Store API de cualquier idioma que no figura en product-map.json (sin equivalente ES/EN/DE). Fuera de este lote; se guarda en extra_sections.",
     "SKU 'e47de8b46e1a': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes web (orderable_items=[] y sin_referencias_comerciales).",
     "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes."
    ]
@@ -610,10 +610,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "PNG",
-     "mime_media_index": "image/png",
-     "w": 800,
-     "h": 800
+     "real_format": "PNG",
+     "mime": "image/png",
+     "width": 800,
+     "height": 800
     }
    ],
    "pdf_links": [],
@@ -806,7 +806,7 @@
     "description idéntica a short_description en los 4 idiomas (misma cadena HTML): no hay descripción larga distinta. La página ES renderiza el párrafo dos veces seguidas (corta + larga); EN/FR/DE solo una vez porque no muestran la descripción larga. description_text repite el texto de short_description.",
     "Ficha introductoria de la familia (potenciómetros de 3 y 5 vatios + reóstatos): no es un modelo concreto. Sin tabla, atributos, PDF, referencias ni gama de valores óhmicos; orderable_items=[].",
     "Potencia: «3 y 5 watios» (EN «3 and 5 watt», FR «3 et 5 watts», DE «3- und 5-Watt») en short_description y description; los reóstatos solo se describen con «amplia gama de potencias». Mención cualitativa sin cifra de tensión: «niveles de voltaje o de corriente» (EN «voltage or current levels», FR «tension ou de courant», DE «Spannung oder Stromstärke»). Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[].",
-    "Erratas/terminología en ES: «monofasicas» sin tilde y «reostatos» sin tilde; «potencias tanto monofasicas, dobles o triples» usa «monofásicas» (EN «single-phase», FR «monophasées», DE «einphasigen») para lo que parece ser reóstatos de un solo devanado frente a dobles y triples; no se refiere a una tensión. Falta la coma tras «por su parte». Se conserva tal cual.",
+    "Erratas/terminología en ES: «monofasicas» y «reostatos» sin tilde; falta la coma tras «por su parte». «amplia gama de potencias tanto monofasicas, dobles o triples» (EN «single-phase, double or triple power», FR «monophasées, doubles ou triples», DE «einphasigen, doppelten oder dreifachen Wattzahlen») usa «monofásicas» donde las fichas hermanas 910, 911 y 912 de la misma gama hablan de reóstatos «simple», «doble» y «tripes»; aquí no se refiere a una tensión. Se conserva tal cual.",
     "Nombre duplicado: «Reostatos y potenciometros bobinados» es también el nombre exacto de las fichas 904 y 909 en los 4 idiomas (textos distintos). Slug numérico («-2») y en español en las URLs EN/FR/DE.",
     "Meta description truncada: ES y FR cortan la frase en la coma («…niveles de voltaje o de corriente.»), DE a mitad de cláusula («…benötigt werden, je nachdem.») y EN la corta igual y añade el sufijo «Made by Torivac.».",
     "Imagen reostato-ceramico-torivac.jpg (id 778, igual en los 4 idiomas): la copia local y la REST (og_image type image/png, 800×800) indican que el fichero es PNG aunque la extensión es .jpg.",
@@ -814,7 +814,7 @@
     "Categoría: Store API ES categories=[] (product-map: top_category 'Sin categoría', category_path_es=[]); la REST ES trae product_cat=[18] «Sin categorizar» y la miga de pan ES muestra «Productos / Sin categorizar».",
     "SEO: Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/reostatos-y-potenciometros-bobinados-2/); solo la ES es autocanónica (ver docs/01-analisis/HALLAZGOS.md n.º 11).",
     "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados), ni la descripción larga, ni la tabla de atributos; la página ES sí tiene H1 (= nombre del producto).",
-    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla «Il a accepté et accepté la politique de confidentialité»; DE título «KONTAKT US», casilla «Hij gaat akkoord met het privacybeleid.» y botón «Versturen» (neerlandés); ES «encontrareis» sin tilde. La página FR muestra entre los relacionados «Equipos de sobremesa» (título en español): es el producto FR 4323 (slug 'equipos-de-sobremesa-2', categoría 'Sans catégorie'), sin equivalente ES/EN/DE en product-map.json (único producto huérfano de los 4 idiomas). Fuera de este lote; se guarda en extra_sections.",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla «Il a accepté et accepté la politique de confidentialité»; DE título «KONTAKT US», casilla «Hij gaat akkoord met het privacybeleid.» y botón «Versturen» (neerlandés); ES «encontrareis» sin tilde. La página FR muestra entre los relacionados «Equipos de sobremesa» (título y texto en español): es el producto FR 4323 (slug 'equipos-de-sobremesa-2', categoría 'Sans catégorie'), el único producto de la Store API de cualquier idioma que no figura en product-map.json (sin equivalente ES/EN/DE). Fuera de este lote; se guarda en extra_sections.",
     "SKU '57a0fa4e8a28': parece un hash generado por la importación, no una referencia comercial; la Store API lo repite igual en las traducciones. No hay referencia de fabricante en las fuentes web (orderable_items=[] y sin_referencias_comerciales).",
     "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes."
    ]
@@ -901,10 +901,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "PNG",
-     "mime_media_index": "image/png",
-     "w": 1949,
-     "h": 1949
+     "real_format": "PNG",
+     "mime": "image/png",
+     "width": 1949,
+     "height": 1949
     },
     {
      "src": "https://grupotorivac.com/wp-content/uploads/2022/06/bobina_redonda_2.png",
@@ -934,10 +934,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "PNG",
-     "mime_media_index": "image/png",
-     "w": 1949,
-     "h": 1949
+     "real_format": "PNG",
+     "mime": "image/png",
+     "width": 1949,
+     "height": 1949
     },
     {
      "src": "https://grupotorivac.com/wp-content/uploads/2025/01/bobina-redonda-scaled.jpg",
@@ -967,10 +967,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "JPEG",
-     "mime_media_index": "image/jpeg",
-     "w": 2458,
-     "h": 2560
+     "real_format": "JPEG",
+     "mime": "image/jpeg",
+     "width": 2458,
+     "height": 2560
     }
    ],
    "pdf_links": [
@@ -1121,11 +1121,12 @@
     "sku_no_comercial",
     "sin_referencias_comerciales",
     "sin_tabla_de_modelos",
+    "categoria_con_un_solo_producto",
     "sin_h1_en_traducciones",
     "plantilla_cta_mal_traducida"
    ],
    "gaps": [
-    "Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[]. Tampoco hay potencia (VA/W), tabla, atributos ni referencias en la web: voltage_mentions=[], power_mentions=[], orderable_items=[]. Menciones cualitativas sin cifra: «cuando se le aplica una corriente eléctrica», «consumo eficiente de electricidad»; la descripción DE traduce «variadores de tensión» como «Antrieben mit variabler Spannung».",
+    "Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[]. Tampoco hay potencia (VA/W), tabla, atributos ni referencias en la web (power_mentions=[], orderable_items=[]). Menciones cualitativas sin cifra: «cuando se le aplica una corriente eléctrica», «consumo eficiente de electricidad»; el encabezado final de la descripción DE traduce «variadores de tensión» como «Antrieben mit variabler Spannung».",
     "PDF enlazado Caracteristicas_Bobinas_Encapsuladas.pdf (1 página, compartido en los 4 idiomas): según data/analysis/pdfs/p10-fichas-bobinas-potenciometros-reostatos.json (verified:true) trae una tabla de 5 filas (50, 100, 150, 200 y 200 VA) con cotas A–G (sin unidad rotulada) y peso en Kg, y dice «encapsuladas en resina de epóxi». Esos datos NO están en la web (por eso orderable_items=[]) y no se vuelcan aquí porque la fuente de esta tarea es la web; pendiente de verificación (S11).",
     "Erratas en ES: «las vibraciones mas exigentes» (sin tilde), «Las bobinas para electroimanes es un componente…» (sujeto plural con verbo singular) y «garantiza la fabricación dispositivos» (falta «de»). La meta description (campo Yoast propio, no copiada del texto) también es incorrecta: «Comercializamos bobinas para electroimanes consumen una cantidad mínima de energía…» (falta «que»). Se conservan tal cual.",
     "Nombre genérico: «Bobinas para electroimanes» no dice que son las redondas (la ficha hermana 918 se llama «Bobinas para electroimanes Cuadrada»); la categoría hija es «Redondas» (118). El texto corto sí abre con «Bobinas redondas con orificio central pasante para ejes lisos o escalonados».",
@@ -1136,6 +1137,7 @@
     "Las páginas renderizadas EN/FR/DE solo muestran la short_description y el botón al PDF (más CTA y relacionados): NO muestran la descripción larga, que sí existe en la Store API y la REST de cada idioma (EN = 90 % de los caracteres de ES). translation_status='ok' por el dato; la web pública de EN/FR/DE enseña menos que la ES.",
     "Slug 'bobinas-para-electroimanes' idéntico (en español) en las URLs EN/FR/DE. Las traducciones sí son autocanónicas (canonical = su propia URL); og:image bobina_redonda.png (1949×1949).",
     "Imágenes (3): bobina_redonda.png (id 14483, igual en los 4 idiomas), bobina_redonda_2.png (ids ES 14482 / EN 15602 / FR 15601 / DE 15872) y bobina-redonda-scaled.jpg (ids ES 9256 / EN 9255 / FR 9256 / DE 9254). El título del medio de la tercera es «bobine-rouleau» (francés) en los 4 idiomas, y los de la segunda se localizan («coil_round_2», «bobine_ronde_2», «spule_rund_2»). Sin alt en la biblioteca.",
+    "Categoría con un solo producto: la URL de la categoría «Redondas» (https://grupotorivac.com/categoria-producto/bobinas-encapsuladas/redondas/, y sus equivalentes EN/FR/DE) devuelve esta misma ficha: el HTML guardado de la categoría tiene el mismo texto que la ficha y canonical = URL del producto, porque la categoría solo contiene este producto (count 1). Tenerlo en cuenta en las redirecciones y al decidir si la categoría existe como página propia en la web nueva.",
     "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
     "La short_description incluye el texto del botón al PDF (p. ej. «Ver ficha técnica» / «See technical data sheet»); se deja en short_description y se registra en pdf_links[].labels.",
     "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados), ni la descripción larga, ni la tabla de atributos; la página ES sí tiene H1 (= nombre del producto).",
@@ -1255,10 +1257,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "JPEG",
-     "mime_media_index": "image/jpeg",
-     "w": 1500,
-     "h": 1500
+     "real_format": "JPEG",
+     "mime": "image/jpeg",
+     "width": 1500,
+     "height": 1500
     },
     {
      "src": "https://grupotorivac.com/wp-content/uploads/2022/06/Bobinas-encapsuladas-potenciometros-03-47.jpg",
@@ -1288,10 +1290,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "JPEG",
-     "mime_media_index": "image/jpeg",
-     "w": 435,
-     "h": 435
+     "real_format": "JPEG",
+     "mime": "image/jpeg",
+     "width": 435,
+     "height": 435
     },
     {
      "src": "https://grupotorivac.com/wp-content/uploads/2022/06/Bobinas-encapsuladas-potenciometros-03-1.jpg",
@@ -1321,10 +1323,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "JPEG",
-     "mime_media_index": "image/jpeg",
-     "w": 435,
-     "h": 435
+     "real_format": "JPEG",
+     "mime": "image/jpeg",
+     "width": 435,
+     "height": 435
     }
    ],
    "pdf_links": [
@@ -1478,26 +1480,29 @@
     "nombre_de_archivo_poco_descriptivo",
     "pagina_traducida_sin_descripcion_ni_tabla",
     "slug_numerico_no_descriptivo",
+    "slug_categoria_de_en_idioma_incorrecto",
     "pdf_con_datos_que_no_estan_en_la_web",
     "canonical_apunta_a_es",
     "sin_h1_en_traducciones",
     "plantilla_cta_mal_traducida",
     "sku_no_comercial",
     "sin_referencias_comerciales",
-    "sin_tabla_de_modelos"
+    "sin_tabla_de_modelos",
+    "categoria_con_un_solo_producto"
    ],
    "gaps": [
-    "Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[]. Sin potencia (VA/W) ni tabla de modelos: voltage_mentions=[], power_mentions=[], orderable_items=[]. Menciones cualitativas: «tanto en dimensiones como en voltaje y potencia» (EN «voltage and power», FR «la tension et la puissance», DE «Spannung und Leistung»).",
-    "Atributos de WooCommerce: «largo» = 99 y «ancho» = 96, sin unidad ni has_variations (false); no son una variación. Nombres por idioma: EN «length»/«width», FR «long»/«largeur», DE «lang»/«Breite» (DE «lang» es el adjetivo «largo»; faltaría «Länge»). Solo la página ES los muestra (tabla «Detalles del producto» sin encabezados); las páginas EN/FR/DE no la renderizan aunque la Store API los devuelve. Se guardan en attributes (source 'store') y la tabla ES en extra_sections.",
+    "Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[]. Sin potencia (VA/W) ni tabla de modelos (power_mentions=[], orderable_items=[]). Menciones cualitativas: «tanto en dimensiones como en voltaje y potencia» (EN «voltage and power», FR «la tension et la puissance», DE «Spannung und Leistung») y «excelente rigidez dieléctrica» en la short_description (EN «dielectric strength», FR «résistance diélectrique», DE «Durchschlagsfestigkeit»), sin valor.",
+    "Atributos de WooCommerce: «largo» = 99 y «ancho» = 96, sin unidad ni has_variations (false); no son una variación. Nombres por idioma: EN «length»/«width», FR «long»/«largeur», DE «lang»/«Breite» (en alemán «lang» es el adjetivo «largo»; el sustantivo sería «Länge»). Solo la página ES los muestra (tabla «Detalles del producto» sin encabezados); las páginas EN/FR/DE no la renderizan aunque la Store API los devuelve. Se guardan en attributes (source 'store') y la tabla ES en extra_sections.",
     "Los valores 99 y 96 coinciden con las cotas del «Encapsulado parcial» (alzado 99, planta 96) de 4.-Bobinas-encapsuladas.pdf según data/analysis/pdfs/p10-fichas-bobinas-potenciometros-reostatos.json (verified:true); ni la web ni el PDF rotulan la unidad. Es solo una coincidencia numérica: no se asume 'mm' ni qué mide cada cota.",
     "PDF enlazado 4.-Bobinas-encapsuladas.pdf (1 página, compartido en los 4 idiomas, distinto del de la ficha 916): según el análisis p10 es una hoja casi solo gráfica («BOBINAS ENCAPSULADAS – ELECTROIMANES DE NUCLEO TOROIDAL», dos versiones «Encapsulado parcial» y «Encapsulado completo» con cotas y peso, sin VA ni tensión). La web dice «Bobinas con núcleo de sección rectangular»; el rótulo del PDF dice núcleo toroidal (no son necesariamente contradictorios), confirmar con Torivac. No se vuelca aquí (fuente = web).",
     "Erratas/concordancia en ES: el nombre «Bobinas para electroimanes Cuadrada» (singular) frente a la categoría «Cuadradas» y a «Bobinas» (plural); EN «Square», FR «Carré», DE «Quadratisch» van igual en singular. Slug ES numérico («bobinas-para-electroimanes-3-2») mientras EN/FR/DE tienen slug traducido ('coils-for-electromagnets-square', 'bobines-pour-electro-aimants-carre', 'spulen-fuer-elektromagnete-quadratisch').",
     "Etiqueta del botón al PDF inconsistente: ES «Ver ficha técnica», FR «Voir la fiche technique», pero EN «View datasheet» y DE «Datenblatt ansehen» (en las fichas hermanas 916/919/921 EN dice «See technical data sheet» y DE «Siehe technisches Datenblatt»).",
-    "Imágenes (3): bobina-cuadrada-1-1.jpg (id 15939, igual en los 4 idiomas, título del medio «Quadrat-Spule-1» en alemán incluso en ES/EN/FR) y dos ficheros reutilizados de la ficha de potenciómetros, Bobinas-encapsuladas-potenciometros-03-47.jpg y -03-1.jpg (435×435; ids ES/DE 15940/15941, EN 15934/15935, FR 15937/15938; títulos «Spulen-gekapselte-Potentiometer-03 (47)» en alemán también en ES, «Coils-encapsulated-potentiometers-03 (47)» en EN, «Bobines-potentiomètres encapsulés-03 (47)» en FR). Nombres de archivo no descriptivos («potenciometros» en una bobina). Sin alt en la biblioteca.",
+    "Imágenes (3): bobina-cuadrada-1-1.jpg (id 15939, igual en los 4 idiomas, título del medio «Quadrat-Spule-1» en alemán incluso en ES/EN/FR) y dos ficheros llamados Bobinas-encapsuladas-potenciometros-03-47.jpg y -03-1.jpg (nombre que mezcla «bobinas encapsuladas» y «potenciómetros»; 435×435; ids ES/DE 15940/15941, EN 15934/15935, FR 15937/15938; títulos «Spulen-gekapselte-Potentiometer-03 (47)» en alemán también en ES, «Coils-encapsulated-potentiometers-03 (47)» en EN, «Bobines-potentiomètres encapsulés-03 (47)» en FR). Nombres de archivo poco descriptivos («potenciometros» en la ficha de una bobina, números entre paréntesis). Sin alt en la biblioteca.",
     "Las páginas renderizadas EN/FR/DE solo muestran la short_description y el botón al PDF (más CTA y relacionados): NO muestran la descripción larga ni los atributos, que sí existen en la Store API y la REST de cada idioma (EN = 91 % de los caracteres de ES). translation_status='ok' por el dato; la web pública de EN/FR/DE enseña menos que la ES.",
-    "Meta description (Yoast) de los 4 idiomas = primera cláusula de la short_description cortada en la coma («…fabricadas con materiales de alta calidad.»); Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/bobinas-para-electroimanes-3-2/); solo la ES es autocanónica (ver docs/01-analisis/HALLAZGOS.md n.º 11).",
+    "Meta description (Yoast) en los 4 idiomas = primera cláusula de la short_description, cortada en la coma (ES «…fabricadas con materiales de alta calidad.»). Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/bobinas-para-electroimanes-3-2/); solo la ES es autocanónica (ver docs/01-analisis/HALLAZGOS.md n.º 11).",
     "Categorías: Store API ES asigna 22 «Bobinas encapsuladas» y 119 «Cuadradas» (hija de 22); category_path_es (product-map) solo trae el padre ['Bobinas encapsuladas']. EN «Encapsulated coils» (515) + «Squares» (578, slug 'square'), FR «Bobines encapsulées» (512) + «Carrés» (579), DE «Gekapselte Spulen» (518) + «Quadrate» (580, slug 'vierkant', neerlandés).",
     "Traducción de la descripción: FR «noyaux d’air» y DE «Luftspulen» para «núcleos al aire»; EN «wire lengths» / FR «longueurs de fil» / DE «Drahtlängen» para «longitudes de cables» (cables → hilo), lo que cambia el sentido.",
+    "Categoría con un solo producto: la URL de la categoría «Cuadradas» (https://grupotorivac.com/categoria-producto/bobinas-encapsuladas/cuadradas/, y sus equivalentes EN/FR/DE) devuelve esta misma ficha: el HTML guardado de la categoría tiene el mismo texto que la ficha y canonical = URL del producto, porque la categoría solo contiene este producto (count 1). Tenerlo en cuenta en las redirecciones y al decidir si la categoría existe como página propia en la web nueva.",
     "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
     "La short_description incluye el texto del botón al PDF (p. ej. «Ver ficha técnica» / «See technical data sheet»); se deja en short_description y se registra en pdf_links[].labels.",
     "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados), ni la descripción larga, ni la tabla de atributos; la página ES sí tiene H1 (= nombre del producto).",
@@ -1583,10 +1588,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "JPEG",
-     "mime_media_index": "image/jpeg",
-     "w": 1000,
-     "h": 667
+     "real_format": "JPEG",
+     "mime": "image/jpeg",
+     "width": 1000,
+     "height": 667
     }
    ],
    "pdf_links": [
@@ -1728,24 +1733,27 @@
     "nombre_de_archivo_poco_descriptivo",
     "pdf_con_datos_que_no_estan_en_la_web",
     "jerarquia_encabezados_incorrecta",
+    "caracteres_invisibles",
     "slug_categoria_de_en_idioma_incorrecto",
     "sin_h1_en_traducciones",
     "plantilla_cta_mal_traducida",
     "sku_no_comercial",
     "sin_referencias_comerciales",
-    "sin_tabla_de_modelos"
+    "sin_tabla_de_modelos",
+    "categoria_con_un_solo_producto"
    ],
    "gaps": [
-    "Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[]. Sin potencia numérica ni tabla de modelos: voltage_mentions=[], power_mentions=[], orderable_items=[]. «potencia» y «corriente» aparecen solo como criterio cualitativo («núcleo más adecuado según tus requerimientos de frecuencia, potencia y entorno de operación», «transformadores de corriente y de potencia»). Cifras no eléctricas: «aproximadamente un 40%» de mejora de permeabilidad, «30% de fibra de vidrio», «155 grados centigrados».",
+    "Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[]. Sin potencia numérica ni tabla de modelos (power_mentions=[], orderable_items=[]). «potencia» y «corriente» aparecen solo como criterio cualitativo («núcleo más adecuado según tus requerimientos de frecuencia, potencia y entorno de operación», «transformadores de corriente y de potencia»). Cifras no eléctricas: «aproximadamente un 40%» de mejora de permeabilidad, «30% de fibra de vidrio», «155 grados centigrados».",
     "Contradicción interna de material (se conserva tal cual): la short_description dice que los núcleos están hechos de «plancha magnética de aleaciones de hierro-silicio, de grano orientado» (calidades M4 o M5), mientras la descripción larga habla de «núcleos toroidales fabricados con materiales de alta permeabilidad como ferrita, polvo de hierro y aleaciones amorfas». Lo mismo en EN/FR/DE.",
     "PDF enlazado Nucleos-toroidales.pdf (1 página, compartido en los 4 idiomas): según data/analysis/pdfs/p15-fichas-nucleos-choques.json (verified:true) contiene una tabla de 56 filas (A, B, C, PESO (KG), CM2) dibujada como imagen, sin capa de texto, que NO está en la web (por eso orderable_items=[]); el propio análisis marca dudas (unidad de A/B/C no rotulada; fila 85/40/13 con peso 4.280, etc.). No se vuelca aquí porque la fuente de esta tarea es la web; pendiente de verificación (S11).",
     "Datos que difieren entre web y PDF (texto extraído data/analysis/pdf-text/Nucleos-toroidales/p001.txt): la web dice «soldados al inicio y final del enrollado» y «temperaturas próximas a los 155 grados centigrados»; el PDF dice «soldados al final del enrollado» y «próximas a los 150º C» (y «tipo M4 ó M5»). No se corrige ninguno; confirmar con Torivac.",
-    "Erratas en ES: «postetiormente» (por «posteriormente») y «grados centigrados» sin tilde; el H4 de la descripción lleva color en línea (style) y espacios duros (U+00A0) que se normalizan en description_text. La categoría se llama «Nucleos» sin tilde (id 64). FR «idéaux pour.. :» y DE «ideal für..:» arrastran un doble punto de la traducción automática (ES termina en «ideales para:»).",
+    "Erratas en ES: «postetiormente» (por «posteriormente»), «grados centigrados» sin tilde y «cápsulas de poliamida-6… ideal para soportar» (singular; el PDF escribe «ideales»); el H4 de la descripción lleva color en línea (style). La descripción ES contiene 5 espacios duros U+00A0 (p. ej. entre «Filtros de línea» y «y supresión de ruido»), que se normalizan a espacio en description_text. La categoría se llama «Nucleos» sin tilde (id 64). FR «idéaux pour.. :» y DE «ideal für..:» llevan un doble punto (ES termina en «ideales para:»).",
     "Traducción de «Núcleos»: la categoría EN se llama «Nuclei» (slug 'cores') mientras el producto es «Toroidal cores»; la categoría DE «Kerne» tiene slug 'kernen' (neerlandés) y la FR «Noyaux» (561). DE usa «Ringkerne», «Ringbandkerne» y «Toroidale Kerne» indistintamente.",
     "Estructura: la descripción abre con un H4 (frase en negrita con color, sin H2/H3 previos) y una lista de 4 viñetas; en description_text el H4 va con '## ' y la lista con '- '. En la página ES el H3 de menú «Productos» precede al H1.",
     "Las páginas renderizadas EN/FR/DE solo muestran la short_description y el botón al PDF (más CTA y relacionados): NO muestran la descripción larga, que sí existe en la Store API y la REST de cada idioma (EN = 85 % de los caracteres de ES). translation_status='ok' por el dato; la web pública de EN/FR/DE enseña menos que la ES.",
     "Productos relacionados: la página ES no tiene bloque «Explora productos similares»; las páginas EN/FR/DE sí lo tienen y el único elemento es el propio producto («Toroidal cores» / «Noyaux toroïdaux» / «Toroidale Kerne»). Su og:image es la genérica Diseno-sin-titulo-73.png (250×250), no la foto del producto (la ES sí usa B7T3102.jpg, 1000×667). Las traducciones son autocanónicas.",
     "Imagen B7T3102.jpg (id 15424 en ES, 16349 en EN/FR/DE; título «_B7T3102», nombre de cámara no descriptivo). En las páginas EN/FR/DE la imagen principal se sirve con el prefijo de PageSpeed «600x400xB7T3102.jpg.pagespeed.ic…». Sin alt en la biblioteca.",
+    "Categoría con un solo producto: la URL de la categoría «Nucleos» (https://grupotorivac.com/categoria-producto/nucleos/, y sus equivalentes EN/FR/DE) devuelve esta misma ficha: el HTML guardado de la categoría tiene el mismo texto que la ficha y canonical = URL del producto, porque la categoría solo contiene este producto (count 1). Tenerlo en cuenta en las redirecciones y al decidir si la categoría existe como página propia en la web nueva.",
     "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
     "La short_description incluye el texto del botón al PDF (p. ej. «Ver ficha técnica» / «See technical data sheet»); se deja en short_description y se registra en pdf_links[].labels.",
     "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados), ni la descripción larga, ni la tabla de atributos; la página ES sí tiene H1 (= nombre del producto).",
@@ -2148,10 +2156,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "PNG",
-     "mime_media_index": "image/png",
-     "w": 300,
-     "h": 300
+     "real_format": "PNG",
+     "mime": "image/png",
+     "width": 300,
+     "height": 300
     },
     {
      "src": "https://grupotorivac.com/wp-content/uploads/2022/06/CHOQUES-TOROIDALES.jpg",
@@ -2182,10 +2190,10 @@
       "de": "web:descripcion"
      },
      "kind": "descripcion",
-     "formato_real": "JPEG",
-     "mime_media_index": "image/jpeg",
-     "w": 570,
-     "h": 760
+     "real_format": "JPEG",
+     "mime": "image/jpeg",
+     "width": 570,
+     "height": 760
     }
    ],
    "pdf_links": [
@@ -2476,23 +2484,25 @@
     "caracteres_invisibles",
     "slug_categoria_de_en_idioma_incorrecto",
     "relacionados_autorreferente",
+    "categoria_con_un_solo_producto",
     "sku_no_comercial",
     "sin_h1_en_traducciones",
     "plantilla_cta_mal_traducida"
    ],
    "gaps": [
-    "Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[]. Sin potencia: power_mentions=[]. Menciones de tipo de conversión sin cifra: «convetidores CC/CC o fuentes conmutadas CA/CC» (EN «DC/DC converters or AC/DC switched-mode power supplies»). Cifras no eléctricas: «-50ºC a + 90ºC» y «10Khz a 150Khz».",
+    "Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[]. Sin potencia (power_mentions=[]). Menciones de tipo de conversión sin cifra: «convetidores CC/CC o fuentes conmutadas CA/CC» (EN «DC/DC converters or AC/DC switched-mode power supplies»). Cifras no eléctricas: «-50ºC a + 90ºC» y «10Khz a 150Khz».",
     "Tipo 'variable' sin variaciones: Store API type='variable', has_options=true, is_in_stock=false, is_purchasable=false, variations=[] y attributes=[] en los 4 idiomas (botón «Leer más» / «Elige las opciones para…»). La ficha no define ningún atributo seleccionable; el valor inductivo y el núcleo solo existen en el texto y la tabla.",
     "Tabla «Dimensiones (mm.)» (11 filas × 4 columnas; presente en la descripción de los 4 idiomas, source web:descripcion tabla 1): la cabecera es bilingüe ES/EN en dos líneas («Dimensiones (mm.)/Dimensions (mm.)», «Referencia/Reference») y las celdas del cuerpo van marcadas como <th>. Las cotas D, A y L no se definen en el texto (L=30 en las 11 filas). Código y cotas se guardan tal cual en spec_tables y como 11 orderable_items.",
     "Referencia de pedido incompleta: el texto dice «27 valores inductivos distintos… y de 11 núcleos distintos, obteniéndose 297 referencias distintas»; la tabla solo da los 11 códigos de núcleo (1305…5122) y NO los 27 valores de inductancia, así que la referencia completa no se puede formar con la web (orderable_items = 11 filas de núcleo, con row_flags). Según data/analysis/pdfs/p15-fichas-nucleos-choques.json el PDF CHOQUES-TOROIDALES.pdf repite la misma tabla y tampoco da cómo se forma la referencia completa; la tabla de intensidades por L está en otro PDF (Cracteristicas_Choques_Toroidales.pdf, p2) que no enlaza esta ficha. Ese análisis duda además de 4715 frente a 4718 en esa segunda tabla; la web solo trae 4715.",
     "Las páginas renderizadas EN/FR/DE solo muestran la short_description y el botón al PDF (más CTA y relacionados): NO muestran la descripción larga, ni la lista de características, ni la tabla, que sí existen en la Store API y la REST de cada idioma (EN = 87 % de los caracteres de ES). translation_status='ok' por el dato (spec_tables presentes en los 4 idiomas); la web pública de EN/FR/DE enseña menos que la ES.",
     "Texto en idioma equivocado: la meta description (Yoast y <meta> de la página) de EN está en español («Los choques toroidales de polvo de hierro, son los componentes inductivos ideales…», idéntica a la ES, con su errata «convetidores»); la cabecera de la tabla EN conserva «Dimensiones (mm.)» y «Referencia» en español; en FR y DE la cabecera repite la misma palabra dos veces («Dimensions (mm.) Dimensions (mm.)», «Référence Référence»; «Abmessungen (mm.) Abmessungen (mm.)», «Referenz Referenz»).",
     "Traducciones dudosas: el nombre FR («Inductances | Réactances toroïdales») omite «Choques» (ES/EN/DE sí lo traducen: «Chokes», «Drosseln»); FR short_description dice «selfs toriques» y su meta «selfs toroïdales»; en FR el eslogan de la lista usa «Ses principales caractéristiques sont les suivantes» sin los dos puntos finales de ES. EN/FR/DE traducen la unidad «10Khz a 150Khz» como «10kHz to 150kHz» / «10Khz à 150Khz» / «10Khz bis 150Khz» (FR y DE mantienen la errata «Khz»).",
-    "Erratas en ES: «convetidores» (por «convertidores»; también en la meta), «Khz» (por kHz), «Podemos, fabricar» (coma sobrante) y «Sus características principales son:» seguido de viñetas que ya llevan un «* » literal dentro del <li> (doble viñeta; en description_text queda «- * …»). En EN hay caracteres invisibles U+200B («standardized values ​​for passive», «other values ​​or with»), que se eliminan en description_text.",
+    "Erratas en ES: «convetidores» (por «convertidores»; también en la meta), «Khz» (por kHz), «Podemos, fabricar» (coma sobrante) y «Sus características principales son:» seguido de viñetas que ya llevan un «* » literal dentro del <li> (doble viñeta; en description_text queda «- * …»). La descripción EN contiene 4 caracteres invisibles U+200B (dos entre «standardized values» y «for passive» y dos entre «other values» y «or with»), que se eliminan en description_text.",
     "Meta description cortada en ~160 caracteres en los 4 idiomas (ES «…fuentes conmutadas CA/CC.»; FR «…d'alimentations à découpage AC/DC.»; DE «…Schaltnetzteilen.») antes de «así como para filtros de red…»; la de EN está en español (ver arriba).",
-    "Imágenes: choque_toroidal-300x300-2.jpg (id 920, igual en los 4 idiomas; el nombre arrastra un sufijo de miniatura «-300x300-2» y el fichero es PNG de 300×300 aunque la extensión es .jpg; título del medio «choque_toroidal-300&#215;300») y CHOQUES-TOROIDALES.jpg (id 14479, 570×760, JPEG), incrustada dentro de la descripción con alt='' y no listada en images[] de la Store API. Sin alt en la biblioteca para ninguna de las dos; en la página la primera recibe como alt el nombre del producto y la segunda alt vacío. El og:image ES es la primera y el de EN/FR/DE la segunda.",
+    "Imágenes: choque_toroidal-300x300-2.jpg (id 920, igual en los 4 idiomas; el nombre arrastra un sufijo de miniatura «-300x300-2» y el fichero es PNG de 300×300 aunque la extensión es .jpg; título del medio «choque_toroidal-300×300», que la Store API devuelve como entidad &#215;) y CHOQUES-TOROIDALES.jpg (id 14479, 570×760, JPEG), incrustada dentro de la descripción con alt='' y no listada en images[] de la Store API. Sin alt en la biblioteca para ninguna de las dos; en la página la primera recibe como alt el nombre del producto y la segunda alt vacío. El og:image ES es la primera y el de EN/FR/DE la segunda.",
     "Categorías: ES «Choques | Inductancias | Reactancias toroidales» (63, slug 'choques'); EN «Chokes | Inductances | Toroidal Reactances» (572); FR «Inductances | Réactances toroïdales» (573, slug 'bobines-darret-inductances-reactances-toroidales'); DE «Drosseln | Induktivitäten | Ringkerndrosseln» (574, slug 'smoorspoelen-inductanties-toroidale-reactanties', neerlandés). Productos relacionados: la página ES no tiene el bloque; EN/FR/DE solo se listan a sí mismos.",
     "Slugs de producto traducidos en EN/FR/DE; las traducciones son autocanónicas. Estructura: la descripción no usa encabezados HTML (la frase «Sus características principales son:» va en negrita dentro de un <p>); el contenido está dentro de dos <div> anidados con estilos en línea (flex 70 %/100 %) y la foto de la ficha va a la izquierda.",
+    "Categoría con un solo producto: la URL de la categoría «Choques | Inductancias | Reactancias toroidales» (https://grupotorivac.com/categoria-producto/choques/, y sus equivalentes EN/FR/DE) devuelve esta misma ficha: el HTML guardado de la categoría tiene el mismo texto que la ficha y canonical = URL del producto, porque la categoría solo contiene este producto (count 1). Tenerlo en cuenta en las redirecciones y al decidir si la categoría existe como página propia en la web nueva.",
     "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
     "La short_description incluye el texto del botón al PDF (p. ej. «Ver ficha técnica» / «See technical data sheet»); se deja en short_description y se registra en pdf_links[].labels.",
     "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados), ni la descripción larga, ni la tabla de atributos; la página ES sí tiene H1 (= nombre del producto).",
@@ -2578,10 +2588,10 @@
       "fr": "web:pagina",
       "de": "web:pagina"
      },
-     "formato_real": "PNG",
-     "mime_media_index": "image/png",
-     "w": 800,
-     "h": 800
+     "real_format": "PNG",
+     "mime": "image/png",
+     "width": 800,
+     "height": 800
     }
    ],
    "pdf_links": [],
@@ -2713,24 +2723,25 @@
     "sin_h1_en_traducciones",
     "plantilla_cta_mal_traducida",
     "relacionados_en_idioma_incorrecto",
+    "categoria_con_un_solo_producto",
     "sin_referencias_comerciales",
     "sin_tabla_de_modelos"
    ],
    "gaps": [
     "description vacía en la Store API y en la REST en los 4 idiomas: todo el texto está en short_description (dos párrafos, el segundo en negrita: «Colores: negro, rojo, azul, gris y verde.»), que es lo que muestra la página. description_text='' (no hay descripción larga).",
-    "Duplicado posible de la ficha 940 «Tapas serie BM» (categorías 'Botones de mando' > 'Tapas Serie BM', con PDF y SKU): su primer párrafo es idéntico a esta short_description («Las tapas correspondientes a la serie BM son mates, de perfil plano, lo que facilita cualquier grabado en su superficie. Se piden separadamente de los botones y se suministran lisas o con una línea grabada.»); esta ficha añade la línea de colores, no tiene PDF y está en una categoría distinta. Decidir en la web nueva si se fusionan.",
+    "Duplicado posible de la ficha 940 «Tapas serie BM» (categorías 'Botones de mando' y 'Tapas Serie BM'; con PDF BOTONES-DE-MANDO2.pdf y SKU): su primer párrafo es idéntico a esta short_description («Las tapas correspondientes a la serie BM son mates, de perfil plano, lo que facilita cualquier grabado en su superficie. Se piden separadamente de los botones y se suministran lisas o con una línea grabada.»); esta ficha añade la línea de colores, no tiene PDF y está en una categoría distinta. Decidir en la web nueva si se fusionan.",
     "SKU vacío en la Store API en los 4 idiomas (sku=''): se guarda sku=null. Es la única ficha del lote sin SKU; el resto lleva un hash de importación.",
     "Categoría atípica: «Botones de mando y accesorios» (id 27, 1 producto, slug 'botones-de-mando-y-accesorios') es distinta de la categoría «Botones de mando» (id 30) donde están las demás tapas y botones. Además la REST ES trae product_cat=[27, 18] (18 = «Sin categorizar», que la Store API ES y la miga de pan ES no muestran); en EN/FR/DE la Store API sí lista también «Uncategorized» (517) / «Sans catégorie» (451) / «Nicht kategorisiert» (446). EN «Control buttons and accessories» (550), FR «Boutons de commande et accessoires» (452), DE «Steuertasten und Zubehör» (447).",
     "Traducción inexacta de la lista de colores (se conserva tal cual): ES y EN dan 5 colores («negro, rojo, azul, gris y verde» / «black, red, blue, gray and green») pero FR dice «noir, rouge, bleu, bleu, gris et vert» y DE «schwarz, rot, blau, blau, grau und grün» (azul repetido, 6 elementos). No hay otro color en las fuentes que explique el duplicado.",
     "Terminología inconsistente: «Tapas» se traduce «Button covers» (nombre EN) y «caps» (texto EN), «Cache-boutons» (nombre FR) y «capuchons» (texto FR), «Knopfabdeckungen» (nombre DE) y «Abdeckungen» (texto DE); la categoría hermana «Tapas Serie BM» sale «BM Series Covers» / «Couvercles de la série BM» / «BM Serie Abdeckungen». El nombre ES usa un guion largo («Tapas para botones – BM mate»); la Store API lo devuelve como entidad «&#8211;» y aquí se guarda ya decodificado (el <title>/Yoast usa un guion corto).",
-    "Sin datos técnicos numéricos: no hay medidas, modelo de botón, SKU ni PDF; Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[]. power_mentions=[] y orderable_items=[]. Datos cualitativos: perfil plano, acabado mate, lisas o con una línea grabada, 5 colores.",
+    "Sin datos técnicos numéricos: no hay medidas, modelo de botón, SKU ni PDF. Sin cifras de tensión en ninguna fuente web (nombre, short_description, description, tablas y página renderizada, en los 4 idiomas): voltage_mentions=[]. Tampoco hay potencia (power_mentions=[]) ni modelos (orderable_items=[]). Datos cualitativos: perfil plano, acabado mate, lisas o con una línea grabada, 5 colores.",
+    "Categoría con un solo producto: la URL de la categoría «Botones de mando y accesorios» (https://grupotorivac.com/categoria-producto/botones-de-mando-y-accesorios/, y sus equivalentes EN/FR/DE) devuelve esta misma ficha: el HTML guardado de la categoría tiene el mismo texto que la ficha y canonical = URL del producto, porque la categoría solo contiene este producto (count 1). Tenerlo en cuenta en las redirecciones y al decidir si la categoría existe como página propia en la web nueva.",
     "Imagen tapas-para-boton-bm.png (id 185, igual en los 4 idiomas; PNG 800×800; el título del medio incluye la extensión «tapas-para-boton-bm.png»). Sin alt en la biblioteca.",
     "Alt: la biblioteca de medios tiene alt vacío (Store API images[].alt='') en los 4 idiomas; la página renderizada pone como alt el nombre del producto de cada idioma (valor automático del tema, no descriptivo). En images[].alt se ha guardado ese alt renderizado (images[].alt_source='web:pagina').",
     "Slug 'tapas-para-botones-bm-mate' idéntico (en español) en las URLs EN/FR/DE. Canonical y og:url de EN/FR/DE apuntan a la URL española (https://grupotorivac.com/product/tapas-para-botones-bm-mate/); solo la ES es autocanónica (ver docs/01-analisis/HALLAZGOS.md n.º 11).",
-    "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados), ni la descripción larga, ni la tabla de atributos; la página ES sí tiene H1 (= nombre del producto).",
-    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla «Il a accepté et accepté la politique de confidentialité»; DE título «KONTAKT US», casilla «Hij gaat akkoord met het privacybeleid.» y botón «Versturen» (neerlandés); ES «encontrareis» sin tilde. La página FR muestra entre los relacionados «Equipos de sobremesa» (título en español): es el producto FR 4323 (slug 'equipos-de-sobremesa-2', categoría 'Sans catégorie'), sin equivalente ES/EN/DE en product-map.json (único producto huérfano de los 4 idiomas). Fuera de este lote; se guarda en extra_sections.",
-    "Productos relacionados (ES): «Fabricaciones a medida», «Reostatos y potenciometros bobinados» ×2 (dos fichas con el mismo nombre: 905 y 909), no relacionados por tipo de producto: selección automática por categoría por defecto.",
-    "SKU: ver arriba (vacío).",
+    "Las páginas renderizadas EN/FR/DE usan otra plantilla Elementor que la ES: no muestran el nombre del producto (sin H1: su outline solo tiene el H3 de menú, el bloque de contacto y los productos relacionados); la página ES sí tiene H1 (= nombre del producto). Como la ficha no tiene descripción larga, el contenido visible (short_description) coincide en los 4 idiomas.",
+    "Plantilla de página con textos mal traducidos o en idioma equivocado (afecta a todas las páginas de producto; se guarda tal cual en extra_sections): FR casilla «Il a accepté et accepté la politique de confidentialité»; DE título «KONTAKT US», casilla «Hij gaat akkoord met het privacybeleid.» y botón «Versturen» (neerlandés); ES «encontrareis» sin tilde. La página FR muestra entre los relacionados «Equipos de sobremesa» (título y texto en español): es el producto FR 4323 (slug 'equipos-de-sobremesa-2', categoría 'Sans catégorie'), el único producto de la Store API de cualquier idioma que no figura en product-map.json (sin equivalente ES/EN/DE). Fuera de este lote; se guarda en extra_sections.",
+    "Productos relacionados (ES): «Fabricaciones a medida» (878) y «Reostatos y potenciometros bobinados» (905 y 909, dos fichas con el mismo nombre): son los otros tres productos de la categoría por defecto «Sin categorizar», no relacionados por tipo de producto (selección automática de WooCommerce).",
     "Precio: la Store API devuelve price '0', price_html vacío e is_purchasable=false en los 4 idiomas (catálogo sin precios); no hay ningún dato de precio en las fuentes."
    ]
   }

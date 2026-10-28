@@ -3661,8 +3661,84 @@
       }
      ],
      "bg": null
+    },
+    {
+     "id": "rest-content",
+     "form": false,
+     "blocks": [
+      {
+       "t": "h",
+       "l": 2,
+       "x": "POLÍTICA DE COOKIES"
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "https://grupotorivac.com/"
+      },
+      {
+       "t": "p",
+       "h": "El acceso a este Sitio Web puede implicar la utilización de cookies. Las cookies son pequeñas cantidades de información que se almacenan en el navegador utilizado por cada Usuario —en los distintos dispositivos que pueda utilizar para navegar— para que el servidor recuerde cierta información que posteriormente y únicamente el servidor que la implementó leerá. Las cookies facilitan la navegación, la hacen más amigable, y no dañan el dispositivo de navegación."
+      },
+      {
+       "t": "p",
+       "h": "Las cookies son procedimientos automáticos de recogida de información relativa a las preferencias determinadas por el Usuario durante su visita al Sitio Web con el fin de reconocerlo como Usuario, y personalizar su experiencia y el uso del Sitio Web, y pueden también, por ejemplo, ayudar a identificar y resolver errores."
+      },
+      {
+       "t": "p",
+       "h": "La información recabada a través de las cookies puede incluir la fecha y hora de visitas al Sitio Web, las páginas visionadas, el tiempo que ha estado en el Sitio Web y los sitios visitados justo antes y después del mismo. Sin embargo, ninguna cookie permite que esta misma pueda contactarse con el número de teléfono del Usuario o con cualquier otro medio de contacto personal. Ninguna cookie puede extraer información del disco duro del Usuario o robar información personal. La única manera de que la información privada del Usuario forme parte del archivo Cookie es que el usuario dé personalmente esa información al servidor."
+      },
+      {
+       "t": "p",
+       "h": "Las cookies que permiten identificar a una persona se consideran datos personales. Por tanto, a las mismas les será de aplicación la Política de Privacidad anteriormente descrita. En este sentido, para la utilización de las mismas será necesario el consentimiento del Usuario. Este consentimiento será comunicado, en base a una elección auténtica, ofrecido mediante una decisión afirmativa y positiva, antes del tratamiento inicial, removible y documentado."
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Cookies propias"
+      },
+      {
+       "t": "p",
+       "h": "Son aquellas cookies que son enviadas al ordenador o dispositivo del Usuario y gestionadas exclusivamente por https://grupotorivac.com/ para el mejor funcionamiento del Sitio Web. La información que se recaba se emplea para mejorar la calidad del Sitio Web y su Contenido y su experiencia como Usuario. Estas cookies permiten reconocer al Usuario como visitante recurrente del Sitio Web y adaptar el contenido para ofrecerle contenidos que se ajusten a sus preferencias."
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Cookies de redes sociales"
+      },
+      {
+       "t": "p",
+       "h": "https://grupotorivac.com/ incorpora plugins de redes sociales, que permiten acceder a las mismas a partir del Sitio Web. Por esta razón, las cookies de redes sociales pueden almacenarse en el navegador del Usuario. Los titulares de dichas redes sociales disponen de sus propias políticas de protección de datos y de cookies, siendo ellos mismos, en cada caso, responsables de sus propios ficheros y de sus propias prácticas de privacidad. El Usuario debe referirse a las mismas para informarse acerca de dichas cookies y, en su caso, del tratamiento de sus datos personales. Únicamente a título informativo se indican a continuación los enlaces en los que se pueden consultar dichas políticas de privacidad y/o de cookies:"
+      },
+      {
+       "t": "ul",
+       "o": false,
+       "i": [
+        "Facebook: <a href=\"https://www.facebook.com/policies/cookies/\">https://www.facebook.com/policies/cookies/</a>",
+        "Twitter: <a href=\"https://twitter.com/es/privacy\">https://twitter.com/es/privacy</a>",
+        "Instagram: <a href=\"https://help.instagram.com/1896641480634370?ref=ig\">https://help.instagram.com/1896641480634370?ref=ig</a>",
+        "YouTube: <a href=\"https://policies.google.com/privacy?hl=es-419&gl=mx\">https://policies.google.com/privacy?hl=es-419&amp;gl=mx</a>",
+        "Pinterest: <a href=\"https://policy.pinterest.com/es/privacy-policy\">https://policy.pinterest.com/es/privacy-policy</a>",
+        "LinkedIn: <a href=\"https://www.linkedin.com/legal/cookie-policy?trk=hp-cookies\">https://www.linkedin.com/legal/cookie-policy?trk=hp-cookies</a>"
+       ]
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Deshabilitar, rechazar y eliminar cookies"
+      },
+      {
+       "t": "p",
+       "h": "El Usuario puede deshabilitar, rechazar y eliminar las cookies —total o parcialmente— instaladas en su dispositivo mediante la configuración de su navegador (entre los que se encuentran, por ejemplo, Chrome, Firefox, Safari, Explorer). En este sentido, los procedimientos para rechazar y eliminar las cookies pueden diferir de un navegador de Internet a otro. En consecuencia, el Usuario debe acudir a las instrucciones facilitadas por el propio navegador de Internet que esté utilizando. En el supuesto de que rechace el uso de cookies —total o parcialmente— podrá seguir usando el Sitio Web, si bien podrá tener limitada la utilización de algunas de las prestaciones del mismo."
+      },
+      {
+       "t": "p",
+       "h": "Este documento de Política de Cookies ha sido creado mediante el generador de <a href=\"https://textos-legales.edgartamarit.com/\">plantilla de política de cookies web gratis</a> online el día 11/02/2025."
+      }
+     ]
     }
-   ]
+   ],
+   "content_from": "rest"
   },
   "/politica-de-privacidad/": {
    "kind": "page",
@@ -9402,6 +9478,102 @@
      "bg": null
     }
    ]
+  },
+  "/en/politica-de-cookies/": {
+   "kind": "page",
+   "lang": "en",
+   "path": "/en/politica-de-cookies/",
+   "title": "Cookie Policy - Torivac",
+   "meta_description": "",
+   "alternates": {
+    "es": "/politica-de-cookies/",
+    "fr": "/fr/politica-de-cookies/",
+    "de": "/de/politica-de-cookies/"
+   },
+   "source_url": "https://grupotorivac.com/en/politica-de-cookies/",
+   "content_from": "rest",
+   "sections": [
+    {
+     "id": "rest-content",
+     "form": false,
+     "blocks": [
+      {
+       "t": "h",
+       "l": 1,
+       "x": "Cookie Policy"
+      },
+      {
+       "t": "h",
+       "l": 2,
+       "x": "COOKIES POLICY"
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "https://grupotorivac.com/"
+      },
+      {
+       "t": "p",
+       "h": "Access to this Web Site may involve the use of cookies. Cookies are small amounts of information that are stored in the browser used by each User -in the different devices that can be used to navigate- so that the server remembers certain information that later and only the server that implemented it will read. Cookies make browsing easier, more user-friendly, and do not damage the browsing device."
+      },
+      {
+       "t": "p",
+       "h": "Cookies are automatic procedures for collecting information relating to the preferences determined by the User during his/her visit to the Website in order to recognize him/her as a User, and to personalize his/her experience and use of the Website, and may also, for example, help to identify and resolve errors."
+      },
+      {
+       "t": "p",
+       "h": "The information collected through cookies may include the date and time of visits to the Web Site, the pages viewed, the time spent on the Web Site and the sites visited just before and just after the same. However, no cookie allows this cookie to contact the User’s telephone number or any other means of personal contact. No cookie can extract information from the User’s hard drive or steal personal information. The only way for the User’s private information to be part of the Cookie file is for the User to personally give that information to the server."
+      },
+      {
+       "t": "p",
+       "h": "Cookies that allow a person to be identified are considered personal data. Therefore, the Privacy Policy described above shall apply to them. In this sense, the use of cookies requires the consent of the User. This consent will be communicated, on the basis of a genuine choice, offered by means of an affirmative and positive decision, before the initial processing, removable and documented."
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Own Cookies"
+      },
+      {
+       "t": "p",
+       "h": "Cookies are those that are sent to the User’s computer or device and managed exclusively by https://grupotorivac.com/ for the better functioning of the Website. The information collected is used to improve the quality of the Website and its Content and your experience as a User. These cookies make it possible to recognize the User as a recurring visitor to the Website and to adapt the content to offer him/her content that suits his/her preferences."
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Social media cookies"
+      },
+      {
+       "t": "p",
+       "h": "https://grupotorivac.com/ incorporates social network plugins, which allow access to them from the Website. For this reason, social network cookies may be stored in the User’s browser. The owners of these social networks have their own data protection policies and cookies, being themselves, in each case, responsible for their own files and their own privacy practices. The User must refer to them for information about these cookies and, where appropriate, the processing of personal data. For information purposes only, the links where you can consult these privacy policies and / or cookies are indicated below:"
+      },
+      {
+       "t": "ul",
+       "o": false,
+       "i": [
+        "Facebook: <a href=\"https://www.facebook.com/policies/cookies/\">https://www.facebook.com/policies/cookies/</a>",
+        "Twitter: <a href=\"https://twitter.com/es/privacy\">https://twitter.com/es/privacy</a>",
+        "Instagram: <a href=\"https://help.instagram.com/1896641480634370?ref=ig\">https://help.instagram.com/1896641480634370?ref=ig</a>",
+        "YouTube: <a href=\"https://policies.google.com/privacy?hl=es-419&gl=mx\">https://policies.google.com/privacy?hl=es-419&amp;gl=mx</a>",
+        "Pinterest: <a href=\"https://policy.pinterest.com/es/privacy-policy\">https://policy.pinterest.com/es/privacy-policy</a>",
+        "LinkedIn: <a href=\"https://www.linkedin.com/legal/cookie-policy?trk=hp-cookies\">https://www.linkedin.com/legal/cookie-policy?trk=hp-cookies</a>"
+       ]
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Disabling, rejecting and deleting cookies"
+      },
+      {
+       "t": "p",
+       "h": "The User can disable, reject and delete cookies – in whole or in part – installed on their device by configuring their browser (among which are, for example, Chrome, Firefox, Safari, Explorer). In this regard, the procedures for rejecting and deleting cookies may differ from one Internet browser to another. Consequently, the User must follow the instructions provided by the Internet browser that he/she is using. In the event that you reject the use of cookies – in whole or in part – you may continue to use the Web Site, although you may be limited in the use of some of its features."
+      },
+      {
+       "t": "p",
+       "h": "This Cookie Policy document has been created using the <a href=\"https://textos-legales.edgartamarit.com/\">free online web cookie policy template</a> generator on 11/02/2025."
+      }
+     ]
+    }
+   ]
   }
  },
  "fr": {
@@ -14003,6 +14175,102 @@
     "src": "https://grupotorivac.com/wp-content/uploads/2024/11/1000067538.jpg"
    },
    "excerpt": "Notre visite annuelle à Matelec Comme à chaque édition, certains membres de l’équipe de Torivac se sont rendus à Madrid pour assister à la conférence de […]"
+  },
+  "/fr/politica-de-cookies/": {
+   "kind": "page",
+   "lang": "fr",
+   "path": "/fr/politica-de-cookies/",
+   "title": "Politique en matière de cookies - Torivac",
+   "meta_description": "",
+   "alternates": {
+    "es": "/politica-de-cookies/",
+    "en": "/en/politica-de-cookies/",
+    "de": "/de/politica-de-cookies/"
+   },
+   "source_url": "https://grupotorivac.com/fr/politica-de-cookies/",
+   "content_from": "rest",
+   "sections": [
+    {
+     "id": "rest-content",
+     "form": false,
+     "blocks": [
+      {
+       "t": "h",
+       "l": 1,
+       "x": "Politique en matière de cookies"
+      },
+      {
+       "t": "h",
+       "l": 2,
+       "x": "POLITIQUE EN MATIÈRE DE COOKIES"
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "https://grupotorivac.com/"
+      },
+      {
+       "t": "p",
+       "h": "L’accès à ce site Web peut impliquer l’utilisation de cookies. Les cookies sont de petites quantités d’informations qui sont stockées dans le navigateur utilisé par chaque utilisateur – dans les différents dispositifs qui peuvent être utilisés pour naviguer – afin que le serveur se souvienne de certaines informations qui ne seront ensuite lues que par le serveur qui les a implémentées. Les cookies facilitent la navigation, la rendent plus conviviale et n’endommagent pas le dispositif de navigation."
+      },
+      {
+       "t": "p",
+       "h": "Les cookies sont des procédures automatiques de collecte d’informations relatives aux préférences déterminées par l’utilisateur lors de sa visite sur le site Web afin de le reconnaître en tant qu’utilisateur et de personnaliser son expérience et son utilisation du site Web, et peuvent également, par exemple, aider à identifier et à résoudre des erreurs."
+      },
+      {
+       "t": "p",
+       "h": "Les informations collectées par le biais des cookies peuvent inclure la date et l’heure des visites sur le site web, les pages consultées, le temps passé sur le site web et les sites visités juste avant et juste après le site web. Cependant, aucun cookie ne permet de contacter le numéro de téléphone de l’utilisateur ou tout autre moyen de contact personnel. Aucun cookie ne peut extraire des informations du disque dur de l’utilisateur ou voler des informations personnelles. Le seul moyen pour que les informations privées de l’utilisateur fassent partie du fichier Cookie est que l’utilisateur donne personnellement ces informations au serveur."
+      },
+      {
+       "t": "p",
+       "h": "Les cookies qui permettent d’identifier une personne sont considérés comme des données à caractère personnel. Par conséquent, la politique de confidentialité susmentionnée s’applique à eux. À cet égard, l’utilisation de cookies requiert le consentement de l’utilisateur. Ce consentement sera communiqué, sur la base d’un véritable choix, offert par le biais d’une décision affirmative et positive, avant le traitement initial, amovible et documenté."
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Vos propres biscuits"
+      },
+      {
+       "t": "p",
+       "h": "Il s’agit de cookies envoyés à l’ordinateur ou à l’appareil de l’utilisateur et gérés exclusivement par https://grupotorivac.com/ pour le meilleur fonctionnement du site web. Les informations collectées sont utilisées pour améliorer la qualité du site web et de son contenu ainsi que votre expérience en tant qu’utilisateur. Ces cookies permettent de reconnaître l’Utilisateur en tant que visiteur récurrent du Site et d’adapter le contenu afin de lui proposer un contenu adapté à ses préférences."
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Cookies pour les médias sociaux"
+      },
+      {
+       "t": "p",
+       "h": "https://grupotorivac.com/ intègre des plugins de médias sociaux qui permettent d’accéder aux réseaux sociaux à partir du site web. Pour cette raison, des cookies de réseaux sociaux peuvent être stockés dans le navigateur de l’utilisateur. Les propriétaires de ces réseaux sociaux ont leurs propres politiques en matière de protection des données et de cookies, étant eux-mêmes, dans chaque cas, responsables de leurs propres fichiers et de leurs propres pratiques en matière de confidentialité. L’utilisateur doit s’y référer pour obtenir des informations sur ces cookies et, le cas échéant, sur le traitement de ses données personnelles. À titre d’information uniquement, les liens où ces politiques de confidentialité et/ou de cookies peuvent être consultées sont indiqués ci-dessous :"
+      },
+      {
+       "t": "ul",
+       "o": false,
+       "i": [
+        "Facebook <a href=\"https://www.facebook.com/policies/cookies/\">: https://www.facebook.com/policies/cookies/</a>",
+        "Twitter <a href=\"https://twitter.com/es/privacy\">: https://twitter.com/es/privacy</a>",
+        "Instagram <a href=\"https://help.instagram.com/1896641480634370?ref=ig\">: https://help.instagram.com/1896641480634370?ref=ig</a>",
+        "YouTube <a href=\"https://policies.google.com/privacy?hl=es-419&gl=mx\">: https://policies.google.com/privacy?hl=es-419&amp;gl=mx</a>",
+        "Pinterest <a href=\"https://policy.pinterest.com/es/privacy-policy\">: https://policy.pinterest.com/es/privacy-policy</a>",
+        "LinkedIn <a href=\"https://www.linkedin.com/legal/cookie-policy?trk=hp-cookies\">: https://www.linkedin.com/legal/cookie-policy?trk=hp-cookies</a>"
+       ]
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Désactiver, rejeter et supprimer les cookies"
+      },
+      {
+       "t": "p",
+       "h": "L’utilisateur peut désactiver, refuser et supprimer les cookies – en tout ou en partie – installés sur son appareil en configurant son navigateur (notamment Chrome, Firefox, Safari, Explorer). A cet égard, les procédures de refus et de suppression des cookies peuvent différer d’un navigateur Internet à l’autre. Par conséquent, l’Utilisateur doit suivre les instructions fournies par le navigateur Internet qu’il utilise. Si vous refusez l’utilisation de cookies – totalement ou partiellement – vous pouvez continuer à utiliser le site Web, bien que l’utilisation de certaines de ses fonctions puisse être limitée."
+      },
+      {
+       "t": "p",
+       "h": "Ce document sur la politique en matière de cookies a été créé à l’aide du générateur <a href=\"https://textos-legales.edgartamarit.com/\">gratuit de modèles de politique en matière de cookies</a> en ligne le 11/02/2025."
+      }
+     ]
+    }
+   ]
   }
  },
  "de": {
@@ -18740,6 +19008,102 @@
       }
      ],
      "bg": null
+    }
+   ]
+  },
+  "/de/politica-de-cookies/": {
+   "kind": "page",
+   "lang": "de",
+   "path": "/de/politica-de-cookies/",
+   "title": "Cookies Politik - Torivac",
+   "meta_description": "",
+   "alternates": {
+    "es": "/politica-de-cookies/",
+    "en": "/en/politica-de-cookies/",
+    "fr": "/fr/politica-de-cookies/"
+   },
+   "source_url": "https://grupotorivac.com/de/politica-de-cookies/",
+   "content_from": "rest",
+   "sections": [
+    {
+     "id": "rest-content",
+     "form": false,
+     "blocks": [
+      {
+       "t": "h",
+       "l": 1,
+       "x": "Cookies Politik"
+      },
+      {
+       "t": "h",
+       "l": 2,
+       "x": "COOKIES-POLITIK"
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "https://grupotorivac.com/"
+      },
+      {
+       "t": "p",
+       "h": "Der Zugriff auf diese Website kann die Verwendung von Cookies beinhalten. Cookies sind kleine Informationsmengen, die in dem von jedem Nutzer verwendeten Browser – in den verschiedenen Geräten, die zum Surfen verwendet werden können – gespeichert werden, so dass sich der Server bestimmte Informationen merkt, die später nur von dem Server gelesen werden können, der sie implementiert hat. Cookies machen das Surfen einfacher, benutzerfreundlicher und beschädigen das Gerät nicht."
+      },
+      {
+       "t": "p",
+       "h": "Cookies sind automatische Verfahren zur Sammlung von Informationen über die vom Benutzer während seines Besuchs auf der Website festgelegten Präferenzen, um ihn als Benutzer zu erkennen und seine Erfahrung und Nutzung der Website zu personalisieren, und können beispielsweise auch helfen, Fehler zu erkennen und zu beheben."
+      },
+      {
+       "t": "p",
+       "h": "Die durch Cookies gesammelten Informationen können das Datum und die Uhrzeit der Besuche auf der Website, die aufgerufenen Seiten, die auf der Website verbrachte Zeit und die unmittelbar vor und nach der Website besuchten Websites umfassen. Kein Cookie erlaubt es dem Cookie jedoch, die Telefonnummer des Nutzers oder ein anderes Mittel zur persönlichen Kontaktaufnahme zu ermitteln. Kein Cookie kann Informationen von der Festplatte des Benutzers extrahieren oder persönliche Daten stehlen. Die einzige Möglichkeit, wie die privaten Informationen des Nutzers in die Cookie-Datei aufgenommen werden können, besteht darin, dass der Nutzer diese Informationen persönlich an den Server weitergibt."
+      },
+      {
+       "t": "p",
+       "h": "Cookies, die die Identifizierung einer Person ermöglichen, gelten als personenbezogene Daten. Daher gilt für sie die oben genannte Datenschutzrichtlinie. In diesem Zusammenhang erfordert die Verwendung von Cookies die Zustimmung des Nutzers. Diese Zustimmung wird auf der Grundlage einer echten Wahl mitgeteilt, die durch eine bestätigende und positive Entscheidung vor der anfänglichen Verarbeitung gegeben wird, und ist entfernbar und dokumentiert."
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Eigene Cookies"
+      },
+      {
+       "t": "p",
+       "h": "Dies sind Cookies, die an den Computer oder das Gerät des Nutzers gesendet und ausschließlich von https://grupotorivac.com/ verwaltet werden, um das Funktionieren der Website zu verbessern. Die gesammelten Informationen werden verwendet, um die Qualität der Website und ihrer Inhalte sowie Ihre Erfahrung als Nutzer zu verbessern. Diese Cookies ermöglichen es, den Nutzer als wiederkehrenden Besucher der Website zu erkennen und die Inhalte anzupassen, um ihm Inhalte anzubieten, die seinen Vorlieben entsprechen."
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Cookies für soziale Medien"
+      },
+      {
+       "t": "p",
+       "h": "https://grupotorivac.com/ enthält Plugins für soziale Medien, die den Zugang zu sozialen Netzwerken von der Website aus ermöglichen. Aus diesem Grund können Cookies der sozialen Netzwerke im Browser des Benutzers gespeichert werden. Die Eigentümer dieser sozialen Netzwerke haben ihre eigenen Datenschutz- und Cookie-Richtlinien und sind in jedem Fall selbst für ihre eigenen Dateien und ihre eigenen Datenschutzpraktiken verantwortlich. Der Nutzer sollte sich bei ihnen über diese Cookies und gegebenenfalls über die Verarbeitung seiner persönlichen Daten informieren. Zu Informationszwecken sind im Folgenden die Links angegeben, unter denen diese Datenschutz- und/oder Cookie-Richtlinien eingesehen werden können:"
+      },
+      {
+       "t": "ul",
+       "o": false,
+       "i": [
+        "Facebook: <a href=\"https://www.facebook.com/policies/cookies/\">https://www.facebook.com/policies/cookies/</a>",
+        "Twitter: <a href=\"https://twitter.com/es/privacy\">https://twitter.com/es/privacy</a>",
+        "Instagram: <a href=\"https://help.instagram.com/1896641480634370?ref=ig\">https://help.instagram.com/1896641480634370?ref=ig</a>",
+        "YouTube: <a href=\"https://policies.google.com/privacy?hl=es-419&gl=mx\">https://policies.google.com/privacy?hl=es-419&amp;gl=mx</a>",
+        "Pinterest: <a href=\"https://policy.pinterest.com/es/privacy-policy\">https://policy.pinterest.com/es/privacy-policy</a>",
+        "LinkedIn: <a href=\"https://www.linkedin.com/legal/cookie-policy?trk=hp-cookies\">https://www.linkedin.com/legal/cookie-policy?trk=hp-cookies</a>"
+       ]
+      },
+      {
+       "t": "h",
+       "l": 4,
+       "x": "Deaktivieren, Ablehnen und Löschen von Cookies"
+      },
+      {
+       "t": "p",
+       "h": "Der Nutzer kann die auf seinem Gerät installierten Cookies ganz oder teilweise deaktivieren, ablehnen und löschen, indem er seinen Browser (z.B. Chrome, Firefox, Safari, Explorer) konfiguriert. Die Verfahren zur Ablehnung und Löschung von Cookies können sich von einem Internetbrowser zum anderen unterscheiden. Daher muss der Nutzer die Anweisungen des von ihm verwendeten Internetbrowsers befolgen. Wenn Sie die Verwendung von Cookies – ganz oder teilweise – ablehnen, können Sie die Website weiterhin nutzen, auch wenn die Nutzung einiger ihrer Funktionen eingeschränkt sein kann."
+      },
+      {
+       "t": "p",
+       "h": "Dieses Dokument zur Cookie-Richtlinie wurde mit dem <a href=\"https://textos-legales.edgartamarit.com/\">kostenlosen Online-Generator für Cookie-Richtlinien</a> am 11/02/2025 erstellt."
+      }
+     ]
     }
    ]
   }

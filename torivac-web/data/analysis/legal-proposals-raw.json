@@ -1,0 +1,239 @@
+[
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Aviso legal (/aviso-legal-2/)",
+  "field": "placeholder",
+  "title": "Aviso legal: El titular del sitio está en blanco: 'la ostenta: , con NIF: B60784584'. Falta denominació…",
+  "web_value": "El titular del sitio está en blanco: 'la ostenta: , con NIF: B60784584'. Falta denominación social completa.",
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=1109"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Aviso legal (/aviso-legal-2/)",
+  "field": "legal",
+  "title": "Aviso legal: Faltan datos registrales (Registro Mercantil) y razón social completa en los datos identif…",
+  "web_value": "Faltan datos registrales (Registro Mercantil) y razón social completa en los datos identificativos (art. 10 LSSI); revisar con asesoría legal.",
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=1109"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Aviso legal (/aviso-legal-2/)",
+  "field": "legal",
+  "title": "Aviso legal: Plantilla genérica no adaptada: alterna 'Sitio Web', 'Espacio Web', 'la empresa', 'la Enti…",
+  "web_value": "Plantilla genérica no adaptada: alterna 'Sitio Web', 'Espacio Web', 'la empresa', 'la Entidad', 'la sociedad'; no contempla presupuestos ni cuentas de cliente de la nueva web.",
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=1109"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Aviso legal (/aviso-legal-2/)",
+  "field": "typo",
+  "title": "Aviso legal: Frase rota en COOKIES: 'preferencias de navegación u publicitarias que el Usuario, a los p…",
+  "web_value": "Frase rota en COOKIES: 'preferencias de navegación u publicitarias que el Usuario, a los perfiles demográficos...'.",
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=1109"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Aviso legal (/aviso-legal-2/)",
+  "field": "consistency",
+  "title": "Aviso legal: La sección COOKIES atribuye la recogida de IP a Google, pero la política de cookies no inv…",
+  "web_value": "La sección COOKIES atribuye la recogida de IP a Google, pero la política de cookies no inventaría proveedores.",
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=1109"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Política de privacidad (/politica-de-privacidad/)",
+  "field": "placeholder",
+  "title": "Política de privacidad: El titular está en blanco: 'la ostenta: , con NIF: B60784584'.",
+  "web_value": "El titular está en blanco: 'la ostenta: , con NIF: B60784584'.",
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=14762"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Política de privacidad (/politica-de-privacidad/)",
+  "field": "placeholder",
+  "title": "Política de privacidad: Variable de plantilla sin resolver: para ejercer derechos 'puede enviarnos una comunicació…",
+  "web_value": "Variable de plantilla sin resolver: para ejercer derechos 'puede enviarnos una comunicación a correodelcliente' (no hay dirección).",
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=14762"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Política de privacidad (/politica-de-privacidad/)",
+  "field": "legal",
+  "title": "Política de privacidad: Faltan plazos concretos de conservación, destinatarios/encargados (Google reCAPTCHA, Analy…",
+  "web_value": "Faltan plazos concretos de conservación, destinatarios/encargados (Google reCAPTCHA, Analytics, hosting), derecho a reclamar ante la AEPD y bases por finalidad; menciona 'datos económicos' aunque el sitio no vende. Revisar con asesoría legal.",
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=14762"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Política de cookies (/politica-de-cookies/)",
+  "field": "legal",
+  "title": "Política de cookies: Sin inventario de cookies (nombre, finalidad, duración, proveedor): el sitio carga Google …",
+  "web_value": "Sin inventario de cookies (nombre, finalidad, duración, proveedor): el sitio carga Google Analytics 4 (G-QXLKHV4Y7X), Google Tag Manager (GTM-K93FKL89), reCAPTCHA y el banner Complianz.",
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=1117"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Política de cookies (/politica-de-cookies/)",
+  "field": "unverified_claim",
+  "title": "Política de cookies: Dice que el sitio incorpora plugins de redes sociales, pero no hay perfiles ni plugins soc…",
+  "web_value": "Dice que el sitio incorpora plugins de redes sociales, pero no hay perfiles ni plugins sociales en el HTML cosechado.",
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=1117"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Política de cookies (/politica-de-cookies/)",
+  "field": "legal",
+  "title": "Política de cookies: Texto de generador de plantillas gratuito de terceros fechado el 11/02/2025.",
+  "web_value": "Texto de generador de plantillas gratuito de terceros fechado el 11/02/2025.",
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=1117"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Declaración de accesibilidad (/declaracion-de-accesibilidad/)",
+  "field": "consistency",
+  "title": "Declaración de accesibilidad: Contradicción: se declara 'parcialmente conforme' y a la vez que el incumplimiento 'No apl…",
+  "web_value": "Contradicción: se declara 'parcialmente conforme' y a la vez que el incumplimiento 'No aplica. Cumple el 100%'.",
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=14774"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Declaración de accesibilidad (/declaracion-de-accesibilidad/)",
+  "field": "unverified_claim",
+  "title": "Declaración de accesibilidad: Declara nivel AA de WCAG 2.1 por autoevaluación, mientras el sitio actual tiene alts vacío…",
+  "web_value": "Declara nivel AA de WCAG 2.1 por autoevaluación, mientras el sitio actual tiene alts vacíos o con nombre de archivo, ausencia de H1 y enlaces rotos aparentes en el pie de las entradas.",
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=14774"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Declaración de accesibilidad (/declaracion-de-accesibilidad/)",
+  "field": "consistency",
+  "title": "Declaración de accesibilidad: Cita estándares contradictorios: 'XHTML 1.0, CSS 3.0, WAI AA' frente a 'HTML5'.",
+  "web_value": "Cita estándares contradictorios: 'XHTML 1.0, CSS 3.0, WAI AA' frente a 'HTML5'.",
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=14774"
+  }
+ },
+ {
+  "type": "legal",
+  "lang": "es",
+  "product_name": "Declaración de accesibilidad (/declaracion-de-accesibilidad/)",
+  "field": "legal",
+  "title": "Declaración de accesibilidad: Plantilla de generador gratuito (26/08/2024) que habla de 'esta Unidad' y del RD 1112/2018…",
+  "web_value": "Plantilla de generador gratuito (26/08/2024) que habla de 'esta Unidad' y del RD 1112/2018 (accesibilidad del sector público); comprobar su aplicabilidad.",
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Revisar con quien lleve lo legal (asesoría) y, si procede, corregir el texto en el original. La web nueva publica el texto tal cual; no se ha modificado nada.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "data/raw/rest/pages.es.json#id=14774"
+  }
+ },
+ {
+  "type": "missing_data",
+  "lang": "es",
+  "product_name": "Datos del titular (aviso legal y privacidad)",
+  "field": "titular",
+  "title": "Falta la razón social completa y los datos registrales del titular",
+  "web_value": "la ostenta: , con NIF: B60784584",
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Indicar la denominación social completa (en el pie de página consta «Torivac S.L.») y los datos del Registro Mercantil. Pendiente de confirmar con el cliente.",
+  "confidence": "alta"
+ }
+]
