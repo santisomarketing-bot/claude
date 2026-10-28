@@ -340,8 +340,25 @@
   function pickerHtml() {
     return '<form method="dialog" class="bl-picker"><h2>Imágenes</h2><p class="muted small">Sube una imagen nueva (JPG, PNG o WebP) o elige una de las ya subidas.</p><p><label class="btn sm">Subir una imagen<input type="file" accept="image/*" hidden data-bl-file></label></p>' +
       '<div class="bl-grid" role="list">' + (S.images.length ? S.images.map(function (im) { return '<button type="button" class="bl-thumb" role="listitem" data-bl="choose" data-file="' + esc(im.file) + '"><img src="' + esc(siteBase() + '/media/blog/' + im.file) + '" alt="" loading="lazy" width="120" height="80"><span class="small">' + esc(im.w + '×' + im.h) + '</span></button>'; }).join('') : '<p class="muted">Todavía no hay imágenes subidas.</p>') + '</div>' +
-      '<div data-bl-picked hidden><h3>Imagen elegida</h3><label>Texto alternativo (obligatorio)<input data-bl-pickalt maxlength="' + (S.limits.alt || 200) + '" placeholder="Describe lo que se ve"></label><label data-bl-capwrap hidden>Pie de foto (opcional)<input data-bl-pickcap maxlength="200"></label><p><button class="btn" type="button" data-bl="use">Usar esta imagen</button></p></div>' +
+      '<div data-bl-picked hidden><h3>Imagen elegida</h3><label>Texto alternativo (obligatorio)<input data-bl-pickalt maxlength="' + (S.limits.alt || 200) + '" placeholder="Describe lo que se ve"></label><label data-bl-capwrap hidden>Pie de foto (opcional)<input data-bl-pickcap maxlength="200"></label><p><button class="btn" type="button" data-bl="use">Usar esta imagen</button> <button class="btn ghost" type="button" data-bl="del-img">Borrar esta imagen</button></p></div>' +
+      '<p class="notice" role="alert" data-bl-dlgmsg hidden></p>' +
       '<p><button class="btn ghost" value="cancel">Cerrar</button></p></form>';
+  }
+  /** Aviso dentro del cuadro de imágenes (el aviso del editor queda detrás del cuadro y no se ve). */
+  function dlgMsg(text) { var m = document.querySelector('[data-bl-dialog] [data-bl-dlgmsg]'); if (!m) return; m.hidden = !text; m.textContent = text || ''; }
+  /** Borra del servidor la imagen elegida en el cuadro, tras confirmar: si alguna entrada la usa, el servidor no la borra y dice en cuáles. Después vuelve a pintar la rejilla. */
+  function removeImage() {
+    var f = S.picking && S.picking.file;
+    if (!f || !confirm('¿Borrar esta imagen del servidor? Si alguna entrada la usa, no se borra.')) return;
+    ctx.http('DELETE', '/api/blog/images/' + encodeURIComponent(f)).then(function (r) {
+      if (!r.ok) return dlgMsg('⚠ ' + (r.error || 'No se pudo borrar la imagen'));
+      S.images = S.images.filter(function (x) { return x.file !== f; });
+      var dlg = document.querySelector('[data-bl-dialog]'), tg = S.picking.target;
+      S.picking.file = '';
+      dlg.innerHTML = pickerHtml();
+      var cap = dlg.querySelector('[data-bl-capwrap]'); if (cap) cap.hidden = tg !== 'text';
+      ctx.toast('Imagen borrada');
+    });
   }
   /** Abre el cuadro de imágenes para `target` («cover» = imagen destacada, «text» = insertar en el texto). */
   function openPicker(target) {
@@ -358,6 +375,7 @@
   function chooseImage(file) {
     var dlg = document.querySelector('[data-bl-dialog]'); if (!dlg || !S.picking) return;
     S.picking.file = file;
+    dlgMsg('');
     [].forEach.call(dlg.querySelectorAll('.bl-thumb'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-file') === file)); });
     var box = dlg.querySelector('[data-bl-picked]'); box.hidden = false;
     var alt = dlg.querySelector('[data-bl-pickalt]'); if (S.picking.target === 'cover' && S.cur.image && S.cur.image.file === file) alt.value = S.cur.image.alt; alt.focus();
@@ -483,7 +501,7 @@
     // el cuadro de imágenes vive fuera de root (es un <dialog>): sus clics y su selector de archivo se enganchan una vez en el documento
     if (!document.__blDlgBound) {
       document.__blDlgBound = true;
-      document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-bl-dialog] [data-bl]'); if (!b) return; var a = b.getAttribute('data-bl'); if (a === 'choose') chooseImage(b.getAttribute('data-file')); else if (a === 'use') useImage(); });
+      document.addEventListener('click', function (e) { var b = e.target.closest && e.target.closest('[data-bl-dialog] [data-bl]'); if (!b) return; var a = b.getAttribute('data-bl'); if (a === 'choose') chooseImage(b.getAttribute('data-file')); else if (a === 'use') useImage(); else if (a === 'del-img') removeImage(); });
       document.addEventListener('change', function (e) {
         var f = e.target; if (!f.hasAttribute || !f.hasAttribute('data-bl-file') || !f.files[0]) return;
         upload(f.files[0]).then(function (im) { if (!im) return; var dlg = document.querySelector('[data-bl-dialog]'); if (!dlg) return; var tg = S.picking && S.picking.target; dlg.innerHTML = pickerHtml(); var cap = dlg.querySelector('[data-bl-capwrap]'); if (cap) cap.hidden = tg !== 'text'; chooseImage(im.file); });

@@ -497,6 +497,7 @@
 [data-theme="original"] .post-card .im{aspect-ratio:auto;background:none}
 [data-theme="original"] .post-card .im img{display:block;width:100%;height:auto;aspect-ratio:326/171;object-fit:cover}
 [data-theme="original"] .post-card:first-child .im img{aspect-ratio:422/317}
+[data-theme="original"] .post-card .im img.im-ph{object-fit:contain;padding:28px;box-sizing:border-box;background:#141414}
 [data-theme="original"] .post-card .tx{padding:14px 14px 0;gap:0}
 [data-theme="original"] .post-card time{order:-1;font:400 12px/25px var(--o-font-body);color:#000}
 [data-theme="original"] .post-card h3{margin:0 0 6px;font:600 16px/20.8px var(--o-font-ui);letter-spacing:1px;color:#141414}

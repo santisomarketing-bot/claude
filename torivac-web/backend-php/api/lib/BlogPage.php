@@ -172,6 +172,13 @@ final class BlogPage
     }
 
     // ───────────────────────────────────────── [LISTADO]
+    /** Imagen de la tarjeta de una entrada sin imagen destacada: el logotipo de la web (así el listado no tiene huecos vacíos). */
+    private static function placeholder(array $sh): string
+    {
+        $src = (string) parse_url((string) ($sh['logo'] ?? ''), PHP_URL_PATH);
+        return $src === '' ? '' : '<img class="im-ph" src="' . self::esc($src) . '" alt="" loading="lazy" width="120" height="120">';
+    }
+
     /** Tarjeta de una entrada nueva, rellenando la plantilla de tarjeta. */
     private static function card(array $sh, array $e): string
     {
@@ -180,7 +187,7 @@ final class BlogPage
         $cut = mb_strlen($ex, 'UTF-8') > 150 ? mb_substr($ex, 0, 150, 'UTF-8') . '…' : $ex;
         return strtr((string) $sh['card'], [
             '@@TV:slug@@' => $e['slug'], '@@TV:date@@' => self::esc($e['date']), '@@TV:datefmt@@' => self::esc(self::fmtDate($sh, $e['date'])), '@@TV:title@@' => self::esc($e['title']), '@@TV:excerpt@@' => self::esc($cut),
-            '@@TV:cardimg@@' => $img ? strtr((string) $sh['parts']['cardimg'], ['@@TV:imgsrc@@' => self::esc(self::bp($sh) . '/media/blog/' . $img['file'])]) : '',
+            '@@TV:cardimg@@' => $img ? strtr((string) $sh['parts']['cardimg'], ['@@TV:imgsrc@@' => self::esc(self::bp($sh) . '/media/blog/' . $img['file'])]) : self::placeholder($sh),
         ]);
     }
 

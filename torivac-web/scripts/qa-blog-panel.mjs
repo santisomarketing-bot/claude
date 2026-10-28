@@ -172,6 +172,22 @@ try {
   await page.waitForFunction(() => (document.querySelector('[data-bl-msg]') || {}).hidden === true, null, { timeout: 8000 });
   ok(true, 'y al guardarla otra vez con la web funcionando, el aviso desaparece');
 
+  console.log('\n6b) borrar imágenes: una en uso no se borra (dice dónde); una sin usar sí');
+  await page.click('[data-bl=pick-cover]');
+  await page.waitForSelector('dialog[open] .bl-thumb');
+  await page.click('dialog[open] .bl-thumb');
+  await page.click('dialog[open] [data-bl=del-img]');
+  await page.waitForFunction(() => /en uso en/.test((document.querySelector('dialog[open] [data-bl-dlgmsg]') || {}).textContent || ''), null, { timeout: 8000 });
+  ok(/Cómo elegir un transformador toroidal/.test(await page.locator('dialog[open] [data-bl-dlgmsg]').innerText()) && await page.locator('dialog[open] .bl-thumb').count() === 1 && fs.readdirSync(path.join(d.ap.dataDir, 'media')).length === 1, 'una imagen en uso no se borra: el cuadro dice en qué entrada está y el archivo sigue ahí');
+  await page.setInputFiles('dialog[open] [data-bl-file]', { name: 'Sin usar.png', mimeType: 'image/png', buffer: png(600, 300, [160, 60, 40]) });
+  await page.waitForFunction(() => document.querySelectorAll('dialog[open] .bl-thumb').length === 2, null, { timeout: 15000 });
+  ok(fs.readdirSync(path.join(d.ap.dataDir, 'media')).length === 2, 'se sube otra imagen (sin usar en ninguna entrada)');
+  await page.click('dialog[open] [data-bl=del-img]');
+  await page.waitForFunction(() => document.querySelectorAll('dialog[open] .bl-thumb').length === 1, null, { timeout: 8000 });
+  ok(fs.readdirSync(path.join(d.ap.dataDir, 'media')).length === 1 && /Imagen borrada/.test(await toast()), 'una imagen sin usar se borra del cuadro y del servidor');
+  await page.click('dialog[open] button[value=cancel]');
+  await page.waitForFunction(() => !document.querySelector('dialog[open]'));
+
   console.log('\n7) traducción: crear, enlazar y comprobar el hreflang');
   await page.click('a[href^="#blog/nueva?lang=en"]');
   await editor();

@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1630/1630 funciones descritas (100 %) · 192/192 archivos con cabecera.
+**Cobertura**: 1645/1645 funciones descritas (100 %) · 193/193 archivos con cabecera.
 
 
 ## `site/`
@@ -277,20 +277,22 @@ Secciones: `[ADMIN-BLOG]` · `[UTIL]` · `[DATOS]` · `[LISTA]` · `[EDITOR]` ·
 - `img.onerror` (l. 321) — Si el navegador no puede abrir el archivo como imagen.
 - `upload` (l. 326) — Sube un archivo de imagen (comprimido) y devuelve Promise<imagen del servidor | null si falló, con el aviso ya mostrado>.
 - `pickerHtml` (l. 340) — Contenido del cuadro de imágenes: subir una nueva y rejilla de las ya subidas.
-- `openPicker` (l. 347) — Abre el cuadro de imágenes para `target` («cover» = imagen destacada, «text» = insertar en el texto).
-- `closePicker` (l. 356) — Cierra el cuadro de imágenes.
-- `chooseImage` (l. 358) — Marca una imagen del cuadro como elegida y pide su texto alternativo.
-- `useImage` (l. 366) — Usa la imagen elegida: como destacada o insertada en el texto.
-- `payload` (l. 378) — Cuerpo que se envía al servidor con lo que hay en el formulario.
-- `showError` (l. 385) — Marca el campo con error que dijo el servidor y enseña el mensaje.
-- `verifyLive` (l. 392) — Tras guardar una entrada ya visible, pide su página pública para comprobar que la web la sirve de verdad; si no (404, 500…), avisa: lo habitual es que el servidor no esté aplicando las reglas del .htaccess del blog.
-- `save` (l. 402) — Guarda la entrada (crea o actualiza). Devuelve Promise<boolean>.
-- `preview` (l. 421) — «Ver como saldrá»: guarda y abre la página real con una dirección firmada de una hora (sirve también para borradores y programadas).
-- `remove` (l. 433) — Borra la entrada indicada tras confirmar.
-- `fieldChanged` (l. 440) — Lee un campo del formulario y lo pasa a la entrada que se edita.
-- `B.bind` (l. 454) — Engancha los clics, cambios y teclas del listado y del editor (delegación de eventos sobre `root`, una sola vez).
-- `B.view` (l. 502) — Vista del blog: listado o editor según `arg` (ver la cabecera).
-- `B.dirty` (l. 512) — ¿Hay cambios sin guardar en el editor?
+- `dlgMsg` (l. 348) — Aviso dentro del cuadro de imágenes (el aviso del editor queda detrás del cuadro y no se ve).
+- `removeImage` (l. 350) — Borra del servidor la imagen elegida en el cuadro, tras confirmar: si alguna entrada la usa, el servidor no la borra y dice en cuáles. Después vuelve a pintar la rejilla.
+- `openPicker` (l. 364) — Abre el cuadro de imágenes para `target` («cover» = imagen destacada, «text» = insertar en el texto).
+- `closePicker` (l. 373) — Cierra el cuadro de imágenes.
+- `chooseImage` (l. 375) — Marca una imagen del cuadro como elegida y pide su texto alternativo.
+- `useImage` (l. 384) — Usa la imagen elegida: como destacada o insertada en el texto.
+- `payload` (l. 396) — Cuerpo que se envía al servidor con lo que hay en el formulario.
+- `showError` (l. 403) — Marca el campo con error que dijo el servidor y enseña el mensaje.
+- `verifyLive` (l. 410) — Tras guardar una entrada ya visible, pide su página pública para comprobar que la web la sirve de verdad; si no (404, 500…), avisa: lo habitual es que el servidor no esté aplicando las reglas del .htaccess del blog.
+- `save` (l. 420) — Guarda la entrada (crea o actualiza). Devuelve Promise<boolean>.
+- `preview` (l. 439) — «Ver como saldrá»: guarda y abre la página real con una dirección firmada de una hora (sirve también para borradores y programadas).
+- `remove` (l. 451) — Borra la entrada indicada tras confirmar.
+- `fieldChanged` (l. 458) — Lee un campo del formulario y lo pasa a la entrada que se edita.
+- `B.bind` (l. 472) — Engancha los clics, cambios y teclas del listado y del editor (delegación de eventos sobre `root`, una sola vez).
+- `B.view` (l. 520) — Vista del blog: listado o editor según `arg` (ver la cabecera).
+- `B.dirty` (l. 530) — ¿Hay cambios sin guardar en el editor?
 
 ### `admin-live.js`
 
@@ -1155,7 +1157,7 @@ Secciones: `[QA-BLOG-PANEL]`
 - `editor` (l. 36) — Espera a que el editor esté pintado.
 - `axe` (l. 38) — Analiza con axe la pantalla actual y anota las violaciones graves.
 - `id1` (l. 149) — identificador de la primera entrada creada (sale de la dirección del panel: #blog/<id>)
-- `id2` (l. 186) — identificador de la entrada en inglés (traducción de la primera)
+- `id2` (l. 202) — identificador de la entrada en inglés (traducción de la primera)
 
 ### `qa-lang.mjs`
 
@@ -2004,6 +2006,25 @@ Secciones: `[AI]`
 - `suggest` (l. 122) — Propone cambios (lanza \RuntimeException con código HTTP: 400 instrucción vacía, 503 IA sin configurar, 409 sin precios, 502 fallo de la IA)
 - `apply` (l. 148) — Aplica los cambios revisados por la persona; vuelve a validarlo todo en servidor
 
+### `Audit.php`
+
+[AUDIT] Registro de actividad del panel: quién entró, cuándo y desde dónde, y quién cambió qué (usuarios, precios, propuestas, blog, correo, copias). Un fichero por día (UTC) en <datos>/audit/AAAA-MM-DD.jsonl, una línea JSON por hecho: { t: ISO, a: acción, u: quién (correo, «master» o «sistema»), r: rol, ip, ua: «Chrome · Windows», d: detalle corto }
+
+Secciones: `[AUDIT]` · `[DESDE EL ROUTER]` · `[LECTURA]`
+
+- `dir` (l. 44) — Carpeta del registro dentro de la carpeta de datos.
+- `file` (l. 47) — Fichero de un día (AAAA-MM-DD en UTC).
+- `label` (l. 50) — Nombre legible de una acción (si no se conoce, la propia clave).
+- `agent` (l. 53) — «Chrome · Windows» a partir de la cabecera User-Agent (solo familia del navegador y del sistema: el texto entero es largo y no aporta).
+- `log` (l. 67) — Anota un hecho. `$who` es el que lo hace (['sub','role'] como devuelve Auth::authenticate), o null si no hay sesión (un intento de acceso: entonces `$detail` suele llevar el correo).
+- `worthLoggingFail` (l. 95) — ¿Conviene anotar este fallo de contraseña? Una vez por visitante y cuenta cada 10 minutos (un ataque no llena el registro).
+- `describe` (l. 102) — Código del hecho y detalle (sin secretos) de una petición de un manager que salió bien, o null si no hay que anotarla.
+- `fromRequest` (l. 135) — Anota la acción de un manager (o cliente) que acaba de hacer `$req` con la respuesta `$res`, si es de las que se registran. Nunca lanza.
+- `days` (l. 146) — Días (AAAA-MM-DD, el más reciente primero) de los últimos `$days`.
+- `read` (l. 158) — Hechos de los últimos `$days` días, el más reciente primero, como mucho `$limit`. Filtros: `u` (parte del correo), `cat` (categoría = lo que va antes del punto de la acción: login, user, prices…) y
+- `summary` (l. 185) — Resumen para el Diagnóstico: hechos de los últimos 7 días y de cuántos días hay fichero (sin leer más que contar líneas). @return array{events:int,days:int}
+- `purge` (l. 199) — Borra los ficheros de más de KEEP_DAYS días; devuelve cuántos. Nunca lanza.
+
 ### `Auth.php`
 
 [AUTH] Contraseñas (password_hash: bcrypt/argon2 según el hosting) y sesiones firmadas HMAC-SHA256. Roles: 'manager' (todo) y 'client' (solo lo suyo). Token: base64url(payload).base64url(firma); payload = {sub, iat, exp(ms), sid}; caduca a las 24 h. El token NO dice qué rol tiene ni qué nombre: al verificarlo se busca a la persona y de su registro salen el rol y el nombre. Además va ligado al registro del usuario:
@@ -2150,17 +2171,18 @@ Secciones: `[BLOG-PAGE]` · `[PIEZAS]` · `[RUTAS]` · `[LISTADO]` · `[ENTRADA]
 - `cacheable` (l. 133) — Añade ETag y devuelve 304 si el navegador ya tiene esta versión.
 - `route` (l. 147) — Qué pide la dirección (solo la cola de la ruta cuenta, así vale también en una subcarpeta): ['kind' => post|index|media|file, …] o null.
 - `handle` (l. 162) — Atiende una petición. `$reqHeaders` lleva los nombres en minúsculas. Solo GET y HEAD. Nunca lanza para una petición normal; api/page.php recoge cualquier excepción inesperada.
-- `card` (l. 178) — Tarjeta de una entrada nueva, rellenando la plantilla de tarjeta.
-- `index` (l. 190) — /blog/ (y /en|fr|de/blog/): el listado de la web con las entradas nuevas mezcladas por fecha.
-- `staticFallback` (l. 204) — Sin plantilla (una compilación sin --php-api o un paquete a medias): se sirve el listado estático que haya, para no dejar el blog roto.
-- `languageLinks` (l. 213) — Marcas y enlaces de idioma de una entrada: canonical + hreflang, y los cuatro enlaces del selector de idioma.
-- `structuredData` (l. 238) — JSON-LD de la entrada (mismos tipos y campos que las entradas estáticas: ver pageGraph y postNode de site/lib/seo.mjs).
-- `post` (l. 264) — La página de una entrada, o 404/301.
-- `notFound` (l. 314) — 404 con la página «no encontrado» del idioma (la que ya tiene la web), o un texto corto si no está.
-- `media` (l. 323) — /media/blog/<archivo>: el contenido de la imagen subida, con caché de un año (el nombre lleva la huella del contenido, así que nunca cambia).
-- `xml` (l. 338) — Escapa para XML.
-- `siteFile` (l. 341) — sitemap.xml, llms.txt o llms-full.txt: el archivo de la compilación con las entradas nuevas añadidas.
-- `send` (l. 392) — Envía la respuesta al navegador (para api/page.php). Una respuesta con `file` envía el archivo tal cual.
+- `placeholder` (l. 178) — Imagen de la tarjeta de una entrada sin imagen destacada: el logotipo de la web (así el listado no tiene huecos vacíos).
+- `card` (l. 185) — Tarjeta de una entrada nueva, rellenando la plantilla de tarjeta.
+- `index` (l. 197) — /blog/ (y /en|fr|de/blog/): el listado de la web con las entradas nuevas mezcladas por fecha.
+- `staticFallback` (l. 211) — Sin plantilla (una compilación sin --php-api o un paquete a medias): se sirve el listado estático que haya, para no dejar el blog roto.
+- `languageLinks` (l. 220) — Marcas y enlaces de idioma de una entrada: canonical + hreflang, y los cuatro enlaces del selector de idioma.
+- `structuredData` (l. 245) — JSON-LD de la entrada (mismos tipos y campos que las entradas estáticas: ver pageGraph y postNode de site/lib/seo.mjs).
+- `post` (l. 271) — La página de una entrada, o 404/301.
+- `notFound` (l. 321) — 404 con la página «no encontrado» del idioma (la que ya tiene la web), o un texto corto si no está.
+- `media` (l. 330) — /media/blog/<archivo>: el contenido de la imagen subida, con caché de un año (el nombre lleva la huella del contenido, así que nunca cambia).
+- `xml` (l. 345) — Escapa para XML.
+- `siteFile` (l. 348) — sitemap.xml, llms.txt o llms-full.txt: el archivo de la compilación con las entradas nuevas añadidas.
+- `send` (l. 399) — Envía la respuesta al navegador (para api/page.php). Una respuesta con `file` envía el archivo tal cual.
 
 ### `Catalog.php`
 
@@ -2582,11 +2604,11 @@ Pruebas de las páginas públicas del blog (BlogPage.php): rutas, entrada (SEO, 
 - `test_blogpage_redirects` (l. 256) — BP8 · Direcciones: la antigua redirige (301) a la nueva con sus parámetros; sin barra final también; y la entrada solo vive en su idioma.
 - `test_blogpage_hreflang_and_language_links` (l. 275) — BP9 · Traducciones: hreflang solo con las visibles (más x-default), enlaces del selector de idioma con la traducción o la portada, y marcas de «sin traducción».
 - `test_blogpage_index_merges_new_posts_by_date` (l. 299) — BP10 · El listado mezcla las entradas nuevas con las de la web por fecha (la más reciente primero), solo las visibles y de su idioma, con imagen y texto escapado.
-- `test_blogpage_index_fallbacks` (l. 324) — BP11 · Sin entradas nuevas el listado es el de la plantilla; sin plantilla se sirve el estático que dejó la compilación; sin nada, 503.
-- `test_blogpage_media` (l. 342) — BP12 · Imágenes: se sirven con su tipo, caché de un año, 304 por ETag y cabeceras que impiden ejecutar nada; las que no existen o con nombre raro, 404.
-- `test_blogpage_conditional_and_methods` (l. 360) — BP13 · Respuestas condicionales de las páginas: 304 con el mismo ETag; solo GET y HEAD.
-- `test_blogpage_sitemap_gets_the_new_posts` (l. 378) — BP14 · sitemap.xml: las entradas visibles se añaden con hreflang (traducciones visibles + x-default), imágenes con texto alternativo y lastmod; borradores y programadas no; sin entradas, el archivo tal cual.
-- `test_blogpage_llms_get_the_new_posts` (l. 403) — BP15 · llms.txt y llms-full.txt: las entradas nuevas se añaden bajo el título de su idioma (la más reciente arriba), con resumen o texto completo; si falta el título se crea la sección; lo escrito no puede romper el formato.
+- `test_blogpage_index_fallbacks` (l. 325) — BP11 · Sin entradas nuevas el listado es el de la plantilla; sin plantilla se sirve el estático que dejó la compilación; sin nada, 503.
+- `test_blogpage_media` (l. 343) — BP12 · Imágenes: se sirven con su tipo, caché de un año, 304 por ETag y cabeceras que impiden ejecutar nada; las que no existen o con nombre raro, 404.
+- `test_blogpage_conditional_and_methods` (l. 361) — BP13 · Respuestas condicionales de las páginas: 304 con el mismo ETag; solo GET y HEAD.
+- `test_blogpage_sitemap_gets_the_new_posts` (l. 379) — BP14 · sitemap.xml: las entradas visibles se añaden con hreflang (traducciones visibles + x-default), imágenes con texto alternativo y lastmod; borradores y programadas no; sin entradas, el archivo tal cual.
+- `test_blogpage_llms_get_the_new_posts` (l. 404) — BP15 · llms.txt y llms-full.txt: las entradas nuevas se añaden bajo el título de su idioma (la más reciente arriba), con resumen o texto completo; si falta el título se crea la sección; lo escrito no puede romper el formato.
 
 ### `BlogTest.php`
 

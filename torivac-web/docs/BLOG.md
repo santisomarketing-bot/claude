@@ -17,7 +17,7 @@ Las entradas se escriben en el panel (**Blog**), se ven en `/blog/…` con la mi
 | **Título** | Es el título principal (`h1`) de la página. Hasta 120 caracteres |
 | **Dirección (slug)** | Sale sola del título (`como-elegir-un-transformador` → `/blog/como-elegir-un-transformador/`). Se puede cambiar; si cambias la de una entrada ya publicada, la antigua redirige a la nueva (301) |
 | **Resumen** | Sale en el listado del blog y es la descripción para Google si no escribes otra. Hasta 300 caracteres. Si lo dejas vacío se usa el principio del texto |
-| **Imagen destacada** | Sale al principio de la entrada, en el listado y al compartirla en redes. **Texto alternativo obligatorio** (lo leen los lectores de pantalla y Google) |
+| **Imagen destacada** | Sale al principio de la entrada, en el listado y al compartirla en redes (sin imagen, la tarjeta del listado lleva el logotipo y al compartir sale el logotipo). **Texto alternativo obligatorio** (lo leen los lectores de pantalla y Google) |
 | **Texto** | Formato sencillo (tabla de abajo). Hasta 60 000 caracteres. Hay vista previa en vivo igual a la página publicada |
 | **SEO** | Título y descripción para buscadores (opcionales, ver §5) |
 | **Publicación** | Estado y fecha (§2) |

@@ -314,6 +314,7 @@ function test_blogpage_index_merges_new_posts_by_date()
     T::true(strpos($h, '<h3>Nueva &lt;b&gt;</h3>') !== false, 'título escapado');
     T::true(strpos($h, "<img src=\"/media/blog/{$im['file']}\" alt=\"\" loading=\"lazy\">") !== false, 'imagen de la tarjeta');
     T::true(strpos($h, '<time datetime="2026-10-20T08:00:00Z">20 de octubre de 2026</time>') !== false, 'fecha de la tarjeta');
+    T::true(strpos($h, '<div class="im"><img class="im-ph" src="/assets/logo.webp" alt="" loading="lazy" width="120" height="120"></div><div class="tx"><time datetime="2025-09-01T08:00:00Z">') !== false, 'una entrada sin imagen lleva el logotipo en su tarjeta');
     T::true(preg_match('#<p class="muted">(palabra ){18}palabra…</p>#u', $h) === 1 || preg_match('#<p class="muted">[^<]{148,152}…</p>#u', $h) === 1, 'resumen cortado a 150 caracteres con «…»');
     T::true(strpos($h, '<div class="posts">') !== false && substr($h, -strlen('</div></div></section></main></html>')) === '</div></div></section></main></html>', 'la estructura de la plantilla se conserva');
     T::same(['../blog/english/', '../vieja-2/', '../vieja-1/'], (function () { preg_match_all('#<a class="post-card" href="([^"]+)"#', bp_get('/en/blog/')['body'], $mm); return $mm[1]; })(), 'listado en inglés');
