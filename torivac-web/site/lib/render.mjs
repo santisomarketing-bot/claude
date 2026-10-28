@@ -24,10 +24,17 @@ export function rel(from, to, hash = '') {
   const target = to.replace(/^\//, '');
   return up + target + (to.endsWith('/') && !clean ? 'index.html' : '') + hash;
 }
-/** URL relativa a un asset ('assets/css/x.css') desde la página `from`. */
+// Con --base (servidor real) las URLs de CSS y JS llevan «?v=<huella del contenido>»: al actualizar la web, el HTML nuevo apunta a direcciones nuevas y ningún navegador
+// mezcla HTML nuevo con CSS, JS o catálogo viejos guardados en caché. La huella se calcula al final de la compilación (versionAssets en build.mjs); aquí solo se deja el marcador.
+let versioned = false;
+export const VERSION_MARK = /@@TVV:([^@]+)@@/g;
+/** Activa (servidor real) o desactiva (demo con file://) el marcador de versión en las URLs de CSS y JS. */
+export const setVersionedAssets = (v) => { versioned = !!v; };
+/** URL relativa a un asset ('assets/css/x.css') desde la página `from`; los .css y .js llevan el marcador de versión si está activado. */
 export function asset(from, a) {
   const up = '../'.repeat(dirOf(from).split('/').filter(Boolean).length) || './';
-  return up + a.replace(/^\//, '');
+  const p = a.replace(/^\//, '');
+  return up + p + (versioned && /\.(css|js)$/i.test(p) ? `?v=@@TVV:${p}@@` : '');
 }
 
 /** Contexto de render: se crea una vez por página */

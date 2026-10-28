@@ -6,7 +6,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { Ctx, writeFile, esc, attr, mapLink, plain, setCleanUrls } from './lib/render.mjs';
+import { Ctx, writeFile, esc, attr, mapLink, plain, setCleanUrls, setVersionedAssets, VERSION_MARK } from './lib/render.mjs';
 import { htaccess, langHtaccess, robotsTxt, basePathOf } from './lib/hosting.mjs';
 import { LANGS, T, t } from './lib/i18n.mjs';
 import * as TPL from './templates.mjs';
@@ -29,6 +29,7 @@ if (!THEMES.includes(THEME)) { console.error(`--theme debe ser uno de: ${THEMES.
 // El selector de aspecto (cinta y pie) se muestra por defecto en el demo y en pruebas, para que el cliente compare; en producción se publica UN aspecto salvo que se pida --theme-switch.
 const THEME_SWITCH = process.argv.includes('--theme-switch') || (!process.argv.includes('--no-theme-switch') && (!ABS || STAGING));
 setCleanUrls(!!ABS);                                                                         // producción: URLs sin index.html; demo (doble clic): con index.html
+setVersionedAssets(!!ABS);                                                                   // producción: CSS y JS con «?v=huella» (actualizar sin caché vieja); demo: sin versión
 // Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
 const jl = (f, d) => { try { return JSON.parse(fs.readFileSync(path.join(CAT, f), 'utf8')); } catch { return d; } };
 
@@ -428,5 +429,36 @@ if (ABS) {
   }
   void origin;
   console.log(`HOSTING: .htaccess (${aliases.size} redirecciones 301 + ${pdfLocal.size} PDF antiguos) · robots.txt${STAGING ? ' (pruebas: Disallow total)' : ''} · 404 en ${LANGS.length} idiomas`);
+}
+// ───────────────────────────────────────────────────────────── [VERSIONES] huella de cada CSS y JS en las URLs (actualizar sin que quede caché vieja)
+//   Se resuelve al final, con los archivos ya definitivos: «?v=@@TVV:assets/js/app.js@@» → «?v=<10 primeros hex del SHA-256 de ese archivo>».
+//   Un archivo referenciado que no existe aborta la compilación (enlace roto).
+if (ABS) {
+  const crypto = await import('node:crypto');
+  const hashes = new Map();
+  // Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+  const hashOf = (p) => {
+    if (!hashes.has(p)) {
+      const f = path.join(DIST, p);
+      if (!fs.existsSync(f)) { console.error(`✗ HTML referencia ${p}, que no existe en dist/`); process.exit(1); }
+      hashes.set(p, crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex').slice(0, 10));
+    }
+    return hashes.get(p);
+  };
+  let pagesN = 0;
+  // Recorre dist/ y resuelve los marcadores de versión de cada .html.
+  const walk = (dir) => {
+    for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+      const f = path.join(dir, e.name);
+      if (e.isDirectory()) { walk(f); continue; }
+      if (!e.name.endsWith('.html')) continue;
+      const html = fs.readFileSync(f, 'utf8');
+      if (!html.includes('@@TVV:')) continue;
+      fs.writeFileSync(f, html.replace(VERSION_MARK, (_, p) => hashOf(p)));
+      pagesN++;
+    }
+  };
+  walk(DIST);
+  console.log(`VERSIONES: ${hashes.size} archivos CSS/JS con huella en ${pagesN} páginas`);
 }
 console.log('dist listo:', DIST);

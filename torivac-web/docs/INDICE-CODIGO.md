@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 774/774 funciones descritas (100 %) · 124/124 archivos con cabecera.
+**Cobertura**: 778/778 funciones descritas (100 %) · 124/124 archivos con cabecera.
 
 
 ## `site/`
@@ -11,34 +11,36 @@
 
 [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio] [--out=carpeta] Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS). Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
 
-Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[OVERRIDES]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]`
+Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[OVERRIDES]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
 
 - `arg0` (l. 18) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
 - `arg` (l. 21) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `jl` (l. 33) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
-- `normName` (l. 56) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
-- `depthOf` (l. 60) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
-- `canon` (l. 63) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
-- `subtreeIds` (l. 97) — Ids de una categoría y de todas sus descendientes.
-- `prodIdsOf` (l. 99) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
-- `visible` (l. 103) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
-- `prune` (l. 105) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
-- `pth` (l. 126) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
-- `emit` (l. 179) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
-- `mkctx` (l. 181) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
-- `fitTitle` (l. 186) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
-- `crumbHome` (l. 188) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
-- `crumbProducts` (l. 190) — Miga de pan «Productos» del idioma `lang`: { name, path }.
-- `pickAlt` (l. 192) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
-- `absImg` (l. 194) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
-- `alts` (l. 199) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
-- `a` (l. 343) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 357) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `css` (l. 365) — Texto del archivo site/assets/css/<n>.css.
-- `xml` (l. 384) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 386) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 398) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 420) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `jl` (l. 34) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
+- `normName` (l. 57) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
+- `depthOf` (l. 61) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
+- `canon` (l. 64) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
+- `subtreeIds` (l. 98) — Ids de una categoría y de todas sus descendientes.
+- `prodIdsOf` (l. 100) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
+- `visible` (l. 104) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
+- `prune` (l. 106) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
+- `pth` (l. 127) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
+- `emit` (l. 180) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
+- `mkctx` (l. 182) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
+- `fitTitle` (l. 187) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
+- `crumbHome` (l. 189) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
+- `crumbProducts` (l. 191) — Miga de pan «Productos» del idioma `lang`: { name, path }.
+- `pickAlt` (l. 193) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
+- `absImg` (l. 195) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
+- `alts` (l. 200) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
+- `a` (l. 344) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
+- `copyDir` (l. 358) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 366) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 385) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 387) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 399) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 421) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `hashOf` (l. 440) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+- `walk` (l. 450) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
 
 ### `templates.mjs`
 
@@ -118,15 +120,16 @@ Secciones: `[RENDER]`
 - `dirOf` (l. 15) — ruta lógica de página ('/en/product/x/') → carpeta de salida relativa a dist ('en/product/x')
 - `setCleanUrls` (l. 20) — Activa (producción) o desactiva (demo con file://) las URLs sin index.html que genera rel().
 - `rel` (l. 22) — URL relativa desde la página `from` hasta la página lógica `to` (+hash opcional).
-- `asset` (l. 28) — URL relativa a un asset ('assets/css/x.css') desde la página `from`.
-- `mapLink` (l. 43) — Reescribe un enlace de la web original a su equivalente local (página, PDF) o lo deja absoluto.
-- `inlineHtml` (l. 62) — HTML inline de un bloque (los enlaces internos se reescriben).
-- `tbl` (l. 71) — Bloque de tabla → HTML: detecta la cabecera, usa una primera fila de una sola celda como título y añade región con scroll.
-- `cell` (l. 76) — Celda th/td con el texto escapado; las th dentro del cuerpo llevan scope="row".
-- `blocksHtml` (l. 85) — Bloques semánticos → HTML. opts.demote: sube el nivel de los encabezados (h1→h2…) para que la plantilla sea dueña del h1.
-- `plain` (l. 123) — Texto plano de una lista de bloques (encabezados, párrafos sin etiquetas y listas), con los espacios normalizados.
-- `fmtDate` (l. 126) — Fecha ISO → fecha larga localizada según el idioma (p. ej. «12 de marzo de 2024»).
-- `writeFile` (l. 129) — Escribe `content` en root/p creando las carpetas intermedias que falten.
+- `setVersionedAssets` (l. 32) — Activa (servidor real) o desactiva (demo con file://) el marcador de versión en las URLs de CSS y JS.
+- `asset` (l. 34) — URL relativa a un asset ('assets/css/x.css') desde la página `from`; los .css y .js llevan el marcador de versión si está activado.
+- `mapLink` (l. 50) — Reescribe un enlace de la web original a su equivalente local (página, PDF) o lo deja absoluto.
+- `inlineHtml` (l. 69) — HTML inline de un bloque (los enlaces internos se reescriben).
+- `tbl` (l. 78) — Bloque de tabla → HTML: detecta la cabecera, usa una primera fila de una sola celda como título y añade región con scroll.
+- `cell` (l. 83) — Celda th/td con el texto escapado; las th dentro del cuerpo llevan scope="row".
+- `blocksHtml` (l. 92) — Bloques semánticos → HTML. opts.demote: sube el nivel de los encabezados (h1→h2…) para que la plantilla sea dueña del h1.
+- `plain` (l. 130) — Texto plano de una lista de bloques (encabezados, párrafos sin etiquetas y listas), con los espacios normalizados.
+- `fmtDate` (l. 133) — Fecha ISO → fecha larga localizada según el idioma (p. ej. «12 de marzo de 2024»).
+- `writeFile` (l. 136) — Escribe `content` en root/p creando las carpetas intermedias que falten.
 
 ### `seo.mjs`
 
@@ -614,9 +617,10 @@ Sesión 1 · Mapa de traducciones y lotes de trabajo (determinista).    python3 
 - `copy_api` (l. 58) — copia el API PHP sin pruebas, sin almacén de datos y sin la configuración real (config.php lleva claves y la crea quien despliega)
 - `shown` (l. 63) — ruta legible: relativa al proyecto si está dentro, absoluta si no
 - `files` (l. 71) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
-- `verify` (l. 76) — → (errores, avisos). Un error impide entregar el paquete.
-- `make_zip` (l. 169) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
-- `main` (l. 181) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
+- `check_versions` (l. 76) — Actualizar sin caché vieja: todo CSS y JS local de cada página lleva «?v=<10 hex>» igual a la huella (SHA-256) del archivo, y no queda ningún marcador sin resolver.
+- `verify` (l. 119) — → (errores, avisos). Un error impide entregar el paquete.
+- `make_zip` (l. 213) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
+- `main` (l. 225) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
 
 ### `pdf_jobs.py`
 

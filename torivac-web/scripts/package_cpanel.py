@@ -73,6 +73,49 @@ def files(www: Path):
     return sorted(p for p in www.rglob("*") if p.is_file())
 
 
+def check_versions(www: Path, rel: dict, base: str) -> list:
+    """Actualizar sin caché vieja: todo CSS y JS local de cada página lleva «?v=<10 hex>» igual a la huella (SHA-256) del archivo, y no queda ningún marcador sin resolver."""
+    errs, seen, bad = [], {}, 0
+    bp = urlparse(base).path.strip("/")
+    root = www.resolve()
+    ref = re.compile(r'(?:href|src)="([^"#?]+?\.(?:css|js))(\?[^"#]*)?"')
+    for r, p in rel.items():
+        if p.suffix.lower() != ".html":
+            continue
+        html = p.read_text(encoding="utf-8", errors="ignore")
+        if "@@TVV:" in html:
+            errs.append(f"marcador de versión sin resolver en {r}")
+            continue
+        for m in ref.finditer(html):
+            url, query = m.group(1), m.group(2) or ""
+            if re.match(r"([a-z]+:)?//", url):
+                continue                                              # recurso externo: no es del paquete
+            if url.startswith("/"):
+                key = url.lstrip("/")
+            else:
+                try:
+                    key = (p.parent / url).resolve().relative_to(root).as_posix()
+                except ValueError:
+                    continue
+            if bp and key.startswith(bp + "/"):
+                key = key[len(bp) + 1:]
+            f = www / key
+            if not f.is_file():
+                bad += 1
+                if bad <= 5:
+                    errs.append(f"{r} referencia {url}, que no está en el paquete")
+                continue
+            if key not in seen:
+                seen[key] = hashlib.sha256(f.read_bytes()).hexdigest()[:10]
+            if query != "?v=" + seen[key]:
+                bad += 1
+                if bad <= 5:
+                    errs.append(f"{r}: {url}{query} " + ("sin huella de versión" if not query else f"debería terminar en ?v={seen[key]}"))
+    if bad > 5:
+        errs.append(f"… {bad} referencias de CSS/JS con problemas de versión en total")
+    return errs
+
+
 def verify(www: Path, base: str, staging: bool, embed_prices: bool, theme: str = "ficha", switch=None):
     """→ (errores, avisos). Un error impide entregar el paquete."""
     errs, warns = [], []
@@ -147,6 +190,7 @@ def verify(www: Path, base: str, staging: bool, embed_prices: bool, theme: str =
         errs.append("site.css no lleva el aspecto «Ficha técnica» (capa ficha)")
     if theme == "clasico" and not want_switch and ("@layer" in css or "Archivo Expanded" in css):
         errs.append("publicación solo en «Clásico»: site.css no debería llevar el aspecto nuevo")
+    errs += check_versions(www, rel, base)
     # PHP sintácticamente correcto
     if shutil.which("php"):
         for r, p in rel.items():

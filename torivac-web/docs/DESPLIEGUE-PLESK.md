@@ -39,7 +39,13 @@ python3 -I scripts/package_cpanel.py --base=https://torivac.santisomarketing.com
 Crea `entrega/torivac-web-torivac-santisomarketing-com-pruebas-AAAAMMDD.zip` (`--staging`: `noindex` en cabecera, meta y `robots.txt`; cinta «entorno de pruebas» y selector de aspecto). El paquete se **verifica** antes de entregarse (ficheros, sin claves ni precios, PHP válido, URL del API).
 
 ### 4. Subir y descomprimir
-**Files** → carpeta del subdominio → *Upload* del `.zip` → clic en el `.zip` → **Extract Files**. Debe quedar `index.html`, `.htaccess` y `api/index.php` directamente en la carpeta (no dentro de otra). Si Plesk dejó una página de bienvenida (`index.html`/`index.php`), el zip la sustituye; si el subdominio tenía otra web, vacíalo antes. **Para actualizar, extrae encima** (el paquete no lleva `api/config.php` ni datos); si alguna vez vacías la carpeta, **conserva `api/config.php` y `api/storage/`**: ahí están tu configuración y, si no usas B o C del paso 5, tus datos.
+**Files** → carpeta del subdominio → *Upload* del `.zip` → clic en el `.zip` → **Extract Files**. Debe quedar `index.html`, `.htaccess` y `api/index.php` directamente en la carpeta (no dentro de otra). Si Plesk dejó una página de bienvenida (`index.html`/`index.php`), el zip la sustituye; si el subdominio tenía otra web, vacíalo antes (ver el recuadro de abajo). **Para actualizar, extrae encima** (el paquete no lleva `api/config.php` ni datos); si alguna vez vacías la carpeta, **conserva `api/config.php` y `api/storage/`**: ahí están tu configuración y, si no usas B o C del paso 5, tus datos.
+
+> **Si el subdominio ya tiene un WordPress (u otra web): bórralo antes, no pegues el zip encima.** Los archivos de WordPress (`wp-config.php` con la clave de su base de datos, `wp-login.php`, `wp-admin`, plugins) se quedarían junto a la web y a los datos de Torivac: una puerta abierta si no se actualiza.
+> 1. *Hosting Settings* del subdominio → mira el **Document root** y vacía **solo esa carpeta**. Si es `httpdocs` (la del dominio principal), no borres nada: primero dale al subdominio una carpeta propia. El usuario del sistema es el de toda la suscripción, así que nada fuera de esa carpeta.
+> 2. Si hay algo que conservar, copia de seguridad antes (WordPress Toolkit → *Back up*, o descarga la carpeta desde *Files*).
+> 3. Con WordPress Toolkit: abre la instalación → **Remove** (archivos y base de datos). Sin él: *Files* → *Show hidden files* → seleccionar todo → *Remove*; y en *Databases*, borra la base de datos de ese WordPress.
+> 4. Sube y extrae el `.zip` en la carpeta vacía.
 
 No protejas el subdominio con **Password-Protected Directories** (contraseña HTTP): choca con la cabecera `Authorization` del panel. Para cerrarlo a tu IP, descomenta en el `.htaccess` el bloque `Require ip` de pruebas.
 
