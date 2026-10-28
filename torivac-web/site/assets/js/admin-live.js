@@ -1,7 +1,7 @@
 /**
  * [ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales.
  *
- *  Roles:  manager → Resumen · Pedidos · Precios · Propuestas · Contenido · Usuarios · Estadísticas · Ajustes
+ *  Roles:  manager → Resumen · Pedidos · Mensajes · Precios · Propuestas · Contenido · Usuarios · Estadísticas · Ajustes
  *          cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
  *  El rol lo decide SIEMPRE el servidor (token firmado); este fichero solo decide qué menús mostrar. Un cliente que llamase a la API de un manager recibiría 403.
  *
@@ -67,18 +67,24 @@
 
   // ───────────────────────────────────────── [VIEWS] cada vista devuelve Promise<string> (HTML)
   var NAV = {
-    manager: [['resumen', 'Resumen', '◧'], ['pedidos', 'Pedidos', '☰'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['usuarios', 'Usuarios', '☺'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
+    manager: [['resumen', 'Resumen', '◧'], ['pedidos', 'Pedidos', '☰'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['usuarios', 'Usuarios', '☺'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
     cliente: [['presupuestador', 'Presupuestador', '✚'], ['mis', 'Mis presupuestos', '☰'], ['lista', 'Lista de precios', '€'], ['estadisticas', 'Estadísticas', '◔']],
   };
   var V = {};
   var cache = { orders: [] };                       // últimos pedidos cargados (para regenerar su PDF sin volver a pedirlos)
 
+  /** Aviso del Resumen cuando el correo no funciona (sin completar o el último envío falló): los pedidos y mensajes se guardan igual, pero nadie recibe el aviso. '' si todo va bien. */
+  function mailWarn(ms) {
+    if (!ms.ok) return '';
+    var bad = !ms.configured || (ms.last && !ms.last.ok);
+    return bad ? '<p class="notice"><strong>El correo no está funcionando.</strong> ' + (!ms.configured ? 'Falta configurar el envío' + (ms.problems && ms.problems.length ? ' (' + ms.problems.map(esc).join(', ') + ')' : '') + '.' : 'El último envío falló' + (ms.last && ms.last.error ? ': ' + esc(ms.last.error) : '') + '.') + ' Los pedidos y los mensajes se guardan igualmente (míralos en Pedidos y Mensajes). <a href="#ajustes">Revisar y enviar una prueba</a></p>' : '';
+  }
   /** Vista Resumen (manager): con datos del Worker, KPIs, estado de la hoja de precios y sincronización, y los 5 últimos pedidos. */
   V.resumen = function () {
-    return Promise.all([http('GET', '/api/orders'), http('GET', '/api/prices'), http('GET', '/api/proposals/state'), adminData()]).then(function (a) {
+    return Promise.all([http('GET', '/api/orders'), http('GET', '/api/prices'), http('GET', '/api/proposals/state'), adminData(), http('GET', '/api/mail/status')]).then(function (a) {
       var o = (a[0].orders || []), P = (a[1].prices || {}), meta = a[1].meta || {}, st = (a[2].state || {}), props = TV.proposals || [];
       var pend = props.filter(function (p) { return !st[p.id]; }).length, tot = o.reduce(function (n, x) { return n + (x.total || 0); }, 0);
-      return '<h1>Resumen</h1><div class="kpis">' + kpi('Pedidos', o.length) + kpi('Importe pedido', money(tot)) + kpi('Referencias con precio', Object.keys(P.items || {}).length) + kpi('Propuestas pendientes', pend) + '</div>' +
+      return '<h1>Resumen</h1><div class="kpis">' + kpi('Pedidos', o.length) + kpi('Importe pedido', money(tot)) + kpi('Referencias con precio', Object.keys(P.items || {}).length) + kpi('Propuestas pendientes', pend) + '</div>' + mailWarn(a[4] || {}) +
         '<div class="cols"><section class="panel"><h2>Hoja de precios</h2><p>Origen: <strong>' + esc(P.source || '—') + '</strong><br>Modo: <strong>' + esc(P.mode || '—') + '</strong> · actualizada ' + esc(when(P.updated_at)) + '</p>' +
         '<p class="muted small">Última sincronización: ' + esc(when(meta.at)) + ' (' + esc(meta.reason || '—') + ') · ' + esc(meta.changed || 0) + ' cambian, ' + esc(meta.added || 0) + ' nuevas.</p></section>' +
         '<section class="panel"><h2>Últimos pedidos</h2>' + (o.length ? '<ul>' + o.slice(0, 5).map(function (x) { return '<li><span class="mono">' + esc(x.number) + '</span> · ' + esc(x.customer.name) + ' · ' + money(x.total) + '</li>'; }).join('') + '</ul>' : '<p class="muted">Todavía no hay pedidos.</p>') + '</section></div>';
@@ -126,13 +132,41 @@
     return Promise.resolve('<h1>Estadísticas</h1><p class="notice">Sin conexión todavía: cada fuente se conecta con las credenciales de Torivac. Este panel no muestra cifras inventadas.</p><div class="cols cols3">' + cards.map(function (c) { return '<section class="panel"><h2>' + esc(c[0]) + '</h2><p>' + esc(c[1]) + '</p><p class="small muted">Fuente: ' + esc(c[2]) + '</p></section>'; }).join('') + '</div>');
   };
 
+  /** Etiqueta con el estado del aviso por correo de un mensaje o de un pedido (emailed.sent / reason; el texto del error solo lo trae el servidor a los gestores). */
+  function mailTag(em) {
+    em = em || {};
+    var txt = { sent: 'Avisado por correo', off: 'Sin correo configurado', failed: 'El aviso por correo falló', skipped: 'Correo sin completar' }[em.reason] || (em.sent ? 'Avisado por correo' : 'Sin aviso por correo');
+    return '<span class="tag' + (em.sent ? '' : ' warn') + '" title="' + esc(em.error || '') + '">' + (em.sent ? '✓ ' : '⚠ ') + esc(txt) + '</span>' + (em.error && !em.sent ? '<br><span class="muted small">' + esc(em.error) + '</span>' : '');
+  }
+  /** Vista Mensajes (manager): los mensajes del formulario de contacto, que el servidor guarda aunque el correo falle, con el estado del aviso por correo y el borrado individual. */
+  V.mensajes = function () {
+    return http('GET', '/api/messages?limit=200').then(function (r) {
+      if (!r.ok) return '<h1>Mensajes</h1><p class="notice">' + esc(r.error || 'No se pudieron cargar los mensajes') + '</p>';
+      var items = r.items || [];
+      var rows = items.map(function (m) {
+        return '<tr><td>' + esc(when(m.at)) + '<br><span class="mono small">' + esc(m.id) + '</span></td><td>' + esc(m.name) + '<br><a href="mailto:' + esc(m.email) + '">' + esc(m.email) + '</a></td><td class="msg">' + esc(m.message) + '</td><td>' + mailTag(m.emailed) + '</td><td><button class="btn sm ghost" data-del-msg="' + esc(m.id) + '">Borrar</button></td></tr>';
+      }).join('');
+      return '<h1>Mensajes</h1><p class="muted small">Lo que escriben los visitantes en los formularios de contacto. Se guardan aquí aunque el correo falle; se borran solos a los 400 días.</p>' +
+        (items.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Recibido</th><th>De</th><th>Mensaje</th><th>Aviso</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div>' + (r.truncated ? '<p class="muted small">Se muestran los más recientes; hay más.</p>' : '') : '<p class="muted">Todavía no hay mensajes.</p>');
+    });
+  };
+  /** Panel «Correo» de Ajustes: controlador, si está completo, qué falta, el último intento (también el fallo) y el botón para mandar un correo de prueba. */
+  function mailPanel(ms) {
+    if (!ms.ok) return '';
+    var l = ms.last;
+    var last = l ? '<p class="small ' + (l.ok ? 'muted' : 'notice') + '">Último envío: ' + esc(when(l.at)) + ' (' + esc({ contact: 'contacto', order: 'pedido', test: 'prueba' }[l.kind] || l.kind || '') + ') · ' + (l.ok ? 'correcto' : 'falló: ' + esc(l.error || l.reason || '')) + '</p>' : '<p class="muted small">Todavía no se ha enviado ningún correo.</p>';
+    return '<section class="panel"><h2>Correo</h2><p>Controlador: <strong>' + esc(ms.driver || 'ninguno') + '</strong> · ' + (ms.configured ? '<span class="tag">✓ completo</span>' : '<span class="tag warn">⚠ incompleto</span>') + '</p>' +
+      (ms.problems && ms.problems.length ? '<p class="notice small">Falta configurar: <span class="mono">' + ms.problems.map(esc).join('</span>, <span class="mono">') + '</span></p>' : '') + last +
+      '<form class="form" data-mail-test-form><label>Enviar un correo de prueba a<input type="email" name="to" placeholder="tu@correo.com (vacío: a los destinatarios del pedido)" autocomplete="email"></label><p><button class="btn" type="submit">Enviar correo de prueba</button></p><div data-mail-result role="status" aria-live="polite"></div></form></section>';
+  }
+
   /** Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag). */
   V.ajustes = function () {
-    return Promise.all([http('GET', '/api/auth/me'), http('GET', '/api/diag')]).then(function (a) {
-      var r = a[0], dg = a[1] || {}, u = r.user || {};
+    return Promise.all([http('GET', '/api/auth/me'), http('GET', '/api/diag'), http('GET', '/api/mail/status')]).then(function (a) {
+      var r = a[0], dg = a[1] || {}, u = r.user || {}, ms = a[2] || {};
       var sym = { ok: '✓', warn: '⚠', fail: '✗' };
       var diag = dg.ok && dg.checks ? '<section class="panel"><h2>Diagnóstico del servidor</h2><p class="small ' + (dg.fail ? 'notice' : 'muted') + '">' + (dg.fail ? esc(dg.fail) + ' problema(s) impiden que funcione' : 'Puede funcionar') + (dg.warn ? ' · ' + esc(dg.warn) + ' aviso(s)' : '') + '</p><ul class="diag">' + dg.checks.map(function (c) { return '<li><span aria-hidden="true">' + sym[c.status] + '</span> <span class="vh">' + esc(c.status) + ': </span>' + esc(c.msg) + '</li>'; }).join('') + '</ul></section>' : '';
-      return '<h1>Ajustes</h1><section class="panel"><h2>Tu sesión</h2><p>' + esc(u.name || '') + ' · <span class="mono">' + esc(u.sub || u.email || '') + '</span> · ' + esc(u.role || '') + '</p></section><section class="panel"><h2>Destinatarios del pedido</h2><p>Se configuran en el servidor, no en la web: en cPanel, <span class="mono">order_to</span> de <span class="mono">api/config.php</span>; en Cloudflare, la variable <span class="mono">ORDER_TO</span> del Worker. La web pública solo muestra el primero (' + esc(((TV.meta && TV.meta.recipients) || [])[0] || '—') + ') por si falla el envío.</p></section>' + diag;
+      return '<h1>Ajustes</h1><section class="panel"><h2>Tu sesión</h2><p>' + esc(u.name || '') + ' · <span class="mono">' + esc(u.sub || u.email || '') + '</span> · ' + esc(u.role || '') + '</p></section>' + mailPanel(ms) + '<section class="panel"><h2>Destinatarios del pedido</h2><p>Se configuran en el servidor, no en la web: en cPanel, <span class="mono">order_to</span> de <span class="mono">api/config.php</span>; en Cloudflare, la variable <span class="mono">ORDER_TO</span> del Worker. La web pública solo muestra el primero (' + esc(((TV.meta && TV.meta.recipients) || [])[0] || '—') + ') por si falla el envío.</p></section>' + diag;
     });
   };
 
@@ -256,6 +290,7 @@
     else if (b.hasAttribute('data-discard')) { draftRows = null; proposal = null; root.querySelector('[data-draft]').innerHTML = ''; }
     else if (b.hasAttribute('data-prop')) { http('POST', '/api/proposals/state', { id: b.getAttribute('data-prop'), state: b.getAttribute('data-v') }).then(function (r) { if (!r.ok) return fail(r); render(); }); }
     else if (b.hasAttribute('data-del-user')) { if (confirm('¿Borrar a ' + b.getAttribute('data-del-user') + '?')) http('DELETE', '/api/users/' + encodeURIComponent(b.getAttribute('data-del-user'))).then(function (r) { if (!r.ok) return fail(r); toast('Usuario borrado'); render(); }); }
+    else if (b.hasAttribute('data-del-msg')) { if (confirm('¿Borrar este mensaje? No se puede deshacer.')) http('DELETE', '/api/messages/' + encodeURIComponent(b.getAttribute('data-del-msg'))).then(function (r) { if (!r.ok) return fail(r); toast('Mensaje borrado'); render(); }); }
     else if (b.hasAttribute('data-export-orders')) download(new Blob([JSON.stringify(cache.orders, null, 1)], { type: 'application/json' }), 'pedidos.json');
     else if (b.hasAttribute('data-pdf')) {
       var o = cache.orders[+b.getAttribute('data-pdf')]; if (!o) return;
@@ -275,6 +310,18 @@
     }
     var mb = root.querySelector('[data-mode-box]');
     if (mb) mb.addEventListener('change', function (e) { if (e.target.name !== 'upmode') return; uploadMode = e.target.value; if (draftRows) previewUpload(draftRows, draftLabel); });
+    var mt = root.querySelector('[data-mail-test-form]');
+    if (mt) mt.addEventListener('submit', function (e) {
+      e.preventDefault(); var f = e.target, out = f.querySelector('[data-mail-result]'), btn = f.querySelector('button[type=submit]');
+      btn.disabled = true; out.className = ''; out.textContent = 'Enviando…';
+      http('POST', '/api/mail/test', f.to.value.trim() ? { to: f.to.value.trim() } : {}).then(function (r) {
+        btn.disabled = false;
+        if (r.sent === undefined) { out.className = 'notice'; out.textContent = '⚠ ' + (r.error || 'No se pudo enviar la prueba'); return; }
+        var to = (r.to || []).join(', ');
+        out.className = r.sent ? 'notice ok' : 'notice';
+        out.textContent = r.sent ? '✓ Enviado a ' + to + ' con «' + (r.driver || '') + '». Si no llega en unos minutos, mira el spam y el SPF/DKIM del dominio.' : '✗ No se envió (' + (r.reason || 'error') + ')' + (r.error ? ': ' + r.error : '') + '.';
+      });
+    });
     var nu = root.querySelector('[data-new-user]');
     if (nu) nu.addEventListener('submit', function (e) {
       e.preventDefault(); var f = e.target;

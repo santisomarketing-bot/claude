@@ -1130,9 +1130,9 @@
   "field": "título de la portada (SEO)",
   "title": "La portada se titula solo «Torivac» en los cuatro idiomas: la web nueva usa un título descriptivo",
   "web_value": "«Torivac» (es, en, fr y de)",
-  "pdf_value": "es: Torivac · Transformadores toroidales y variadores de tensión · en: Torivac · Toroidal transformers and voltage regulators · fr: Torivac · Transformateurs toroïdaux et variateurs de tension · de: Torivac · Ringkerntransformatoren und Spannungsregler",
+  "pdf_value": "es: Torivac · Transformadores toroidales, variadores y estabilizadores de tensión · en: Torivac · Toroidal transformers, variators and voltage stabilizers · fr: Torivac · Transformateurs toroïdaux, variateurs et stabilisateurs de tension · de: Torivac · Ringkerntransformatoren, Variatoren und Spannungsstabilisatoren",
   "severity": "media",
-  "recommendation": "El título de la portada es lo que Google muestra como titular y lo que usan llms.txt y las vistas previas al compartir; con solo «Torivac» no dice a qué se dedica la empresa. La web nueva publica estos títulos (data/catalog/seo-overrides.json); para volver al original basta borrar la entrada home_title. Confirmar la redacción.",
+  "recommendation": "El título de la portada es lo que Google muestra como titular y lo que usan llms.txt y las vistas previas al compartir; con solo «Torivac» no dice a qué se dedica la empresa. La web nueva publica estos títulos (data/catalog/seo-overrides.json) con las palabras exactas de la frase de presentación de la propia portada en cada idioma (nada traducido ni reformulado por nosotros). Miden entre 65 y 79 caracteres: Google recorta hacia los 60, pero las palabras clave van delante. Para volver al título original basta borrar la entrada home_title. Confirmar la redacción.",
   "confidence": "alta",
   "id": "PR-94529"
  },

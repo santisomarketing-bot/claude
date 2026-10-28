@@ -56,9 +56,8 @@ export function headingOrder(html) {
 }
 
 // ───────────────────────────────────────────────────────────── [META] descripción válida (la web original trae «%» o nada en varias páginas)
-const META_FALLBACK = { es: 'Torivac, fabricante europeo de transformadores toroidales, variadores y estabilizadores de tensión, resistencias y más. Consulta el catálogo y pide presupuesto.', en: 'Torivac, European manufacturer of toroidal transformers, voltage variators and stabilizers, resistors and more. Browse the catalogue and request a quote.', fr: 'Torivac, fabricant européen de transformateurs toroïdaux, régulateurs et stabilisateurs de tension, résistances et plus. Consultez le catalogue et demandez un devis.', de: 'Torivac, europäischer Hersteller von Ringkerntransformatoren, Spannungsreglern und -stabilisatoren, Widerständen und mehr. Katalog ansehen und Angebot anfordern.' };
-/** Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, una frase genérica de marca. */
-export function metaDescription(desc, bodyHtml, lang) {
+/** Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, la descripción de la portada en ese idioma (`fallback`, texto de la web original; sin ella, ninguna). */
+export function metaDescription(desc, bodyHtml, fallback = '') {
   // Una descripción sirve si tiene al menos 50 caracteres y no es solo signos o cifras.
   const ok = (d) => d && d.replace(/\s+/g, ' ').trim().length >= 50 && !/^[\W\d_]*$/.test(d);
   if (ok(desc)) return clip(desc, 158);
@@ -66,7 +65,7 @@ export function metaDescription(desc, bodyHtml, lang) {
     const txt = m[1].replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim();
     if (txt.length >= 60 && !/^[\W\d_]*$/.test(txt)) return clip(txt, 158);
   }
-  return META_FALLBACK[lang] || META_FALLBACK.es;
+  return fallback ? clip(fallback, 158) : '';
 }
 
 // ───────────────────────────────────────────────────────────── [LAYOUT] envoltorio común
@@ -113,7 +112,7 @@ const themeSwitch = (lang, where) => `<span class="theme-switch" role="group" ar
 /** Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap. */
 export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [], preloadImage = null, bodyClass = '', oRedirect = '' }) {
   const { lang, site } = ctx;
-  description = metaDescription(description, body, lang);
+  description = metaDescription(description, body, site.homeMeta?.[lang]);
   const alt = (l) => (l === lang ? ctx.path : (alts[l] || site.home[l]));         // selector de idioma: sin traducción cae a la portada de ese idioma
   // registro de páginas indexables → sitemap (con hreflang e imágenes) y llms.txt; ver site/build.mjs [SEO-FILES]
   if (!noindex && site.registry) site.registry.push({ path: ctx.path, lang, template, title, description: description || '', alts: Object.fromEntries(LANGS.filter((l) => alts[l]).map((l) => [l, alts[l]])), images });
@@ -562,7 +561,7 @@ export function quoteBody(ctx) {
       <div data-quote-table></div>
       <p class="muted small" data-price-note></p>
       <p class="no-print"><button class="btn ghost sm" type="button" data-clear-quote>${t('clear', lang)}</button> <button class="btn ghost sm" type="button" data-refresh-prices>${t('refresh_prices', lang)}</button> <span class="muted small" data-price-stamp></span></p>
-      <div class="drop no-print" data-drop tabindex="0" role="button" aria-label="CSV / Excel"><strong>CSV / Excel</strong><br><span class="muted small">${{ es: 'Arrastra aquí un archivo con columnas «referencia» y «cantidad», o haz clic para elegirlo.', en: 'Drop a file with “reference” and “quantity” columns here, or click to choose one.', fr: 'Déposez ici un fichier avec les colonnes « référence » et « quantité », ou cliquez pour le choisir.', de: 'Datei mit den Spalten „Artikelnummer“ und „Menge“ hierher ziehen oder klicken.' }[lang]}</span><input type="file" accept=".csv,.xlsx,.xls,text/csv" hidden data-file></div>
+      <div class="drop no-print" data-drop tabindex="0" role="button" aria-label="CSV / Excel"><strong>CSV / Excel</strong><br><span class="muted small">${esc(t('drop_hint', lang))}</span><input type="file" accept=".csv,.xlsx,.xls,text/csv" hidden data-file></div>
     </div>
     <form class="panel form no-print" data-quote-form novalidate>
       <h2>${t('your_data', lang)}</h2>

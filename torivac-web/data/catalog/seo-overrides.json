@@ -1,9 +1,9 @@
 {
- "_doc": "Decisiones de SEO que CAMBIAN lo que muestra la web nueva respecto a la original. Cada una tiene su propuesta en el panel y se revierte borrando la entrada. home_title: título (<title>) de la portada en cada idioma; la original usa solo «Torivac» y ese texto es lo que Google muestra como titular y lo que usan llms.txt y las vistas previas al compartir. Longitud recomendada: hasta 65 caracteres.",
+ "_doc": "Decisiones de SEO que CAMBIAN lo que muestra la web nueva respecto a la original. Cada una tiene su propuesta en el panel y se revierte borrando la entrada. home_title: título (<title>) de la portada en cada idioma; la original usa solo «Torivac» y ese texto es lo que Google muestra como titular y lo que usan llms.txt y las vistas previas al compartir. Las palabras de cada idioma son EXACTAMENTE las de la frase de presentación de la propia portada (su descripción en ese idioma): no se traduce ni se reformula nada; en francés solo se quitan las preposiciones «de» que la frase original lleva por su construcción («conception et fabrication de…»).",
  "home_title": {
-  "es": "Torivac · Transformadores toroidales y variadores de tensión",
-  "en": "Torivac · Toroidal transformers and voltage regulators",
-  "fr": "Torivac · Transformateurs toroïdaux et variateurs de tension",
-  "de": "Torivac · Ringkerntransformatoren und Spannungsregler"
+  "es": "Torivac · Transformadores toroidales, variadores y estabilizadores de tensión",
+  "en": "Torivac · Toroidal transformers, variators and voltage stabilizers",
+  "fr": "Torivac · Transformateurs toroïdaux, variateurs et stabilisateurs de tension",
+  "de": "Torivac · Ringkerntransformatoren, Variatoren und Spannungsstabilisatoren"
  }
 }

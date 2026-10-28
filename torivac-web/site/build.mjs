@@ -169,6 +169,7 @@ for (const l of LANGS) {
 }
 
 site.prodById = prodById;
+site.homeMeta = Object.fromEntries(LANGS.map((l) => [l, ((pages[l] || {})[site.home[l]] || {}).meta_description || '']));   // descripción de la portada en cada idioma (texto de la web original): último recurso de <meta description>
 site.homeEs = (pages.es || {})[site.home.es];                                    // portada en castellano: de ella se toma la foto que falta en las traducidas
 for (const c of flatVisible) c.firstProduct = prodIdsOf(c)[0];
 // [ORIGINAL] datos del aspecto «Original»: el orden de las categorías de la web actual (data/catalog/original-layout.json, de scripts/probe_original_layout.mjs), qué categorías hoja llevan a UN solo producto

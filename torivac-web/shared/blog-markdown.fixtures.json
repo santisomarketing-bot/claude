@@ -1,0 +1,455 @@
+{
+ "_doc": "Contrato de shared/blog-markdown.mjs (JS) y backend-php/api/lib/BlogMarkdown.php (PHP): las dos implementaciones deben dar EXACTAMENTE estas salidas. Se regenera con `node scripts/test-blog-markdown.mjs --update` a partir de los textos de entrada (que se escriben a mano) y se revisa a mano.",
+ "render": [
+  {
+   "name": "titulos",
+   "md": "# Uno\n## Dos\n### Tres\n#### Cuatro\n##### Cinco\n###### Seis\n#sin espacio",
+   "html": "<h2>Uno</h2>\n<h2>Dos</h2>\n<h3>Tres</h3>\n<h4>Cuatro</h4>\n<h4>Cinco</h4>\n<h4>Seis</h4>\n<p>#sin espacio</p>"
+  },
+  {
+   "name": "titulo_con_almohadillas_finales",
+   "md": "## Título cerrado ##\n\n### Otro   ###  ",
+   "html": "<h2>Título cerrado</h2>\n<h3>Otro</h3>"
+  },
+  {
+   "name": "titulo_con_formato",
+   "md": "## **Voltaje** de *salida* y `código`",
+   "html": "<h2><strong>Voltaje</strong> de <em>salida</em> y <code>código</code></h2>"
+  },
+  {
+   "name": "parrafos_y_saltos_suaves",
+   "md": "Primera línea\nsegunda línea del mismo párrafo.\n\n\n\nOtro párrafo.",
+   "html": "<p>Primera línea segunda línea del mismo párrafo.</p>\n<p>Otro párrafo.</p>"
+  },
+  {
+   "name": "salto_forzado_con_espacios",
+   "md": "Línea con dos espacios  \nsiguiente línea",
+   "html": "<p>Línea con dos espacios<br>siguiente línea</p>"
+  },
+  {
+   "name": "salto_forzado_con_barra",
+   "md": "Línea con barra\\\nsiguiente línea",
+   "html": "<p>Línea con barra<br>siguiente línea</p>"
+  },
+  {
+   "name": "enfasis",
+   "md": "Con **negrita**, *cursiva*, _otra cursiva_ y __otra negrita__.",
+   "html": "<p>Con <strong>negrita</strong>, <em>cursiva</em>, <em>otra cursiva</em> y <strong>otra negrita</strong>.</p>"
+  },
+  {
+   "name": "enfasis_anidado",
+   "md": "**negrita con *cursiva* dentro** y *cursiva con **negrita** dentro*",
+   "html": "<p><strong>negrita con <em>cursiva</em> dentro</strong> y <em>cursiva con <strong>negrita</strong> dentro</em></p>"
+  },
+  {
+   "name": "enfasis_que_no_es",
+   "md": "Operación 2 * 3 * 4, nombre_de_variable_larga y snake_case, **abierta sin cerrar, y * suelto",
+   "html": "<p>Operación 2 * 3 * 4, nombre_de_variable_larga y snake_case, **abierta sin cerrar, y * suelto</p>"
+  },
+  {
+   "name": "enfasis_en_palabras_con_acentos",
+   "md": "Es *único* y _último_ y **ñandú**.",
+   "html": "<p>Es <em>único</em> y <em>último</em> y <strong>ñandú</strong>.</p>"
+  },
+  {
+   "name": "enfasis_triple",
+   "md": "***negrita y cursiva*** y ___también___ y ***mal cerrada** fin",
+   "html": "<p><em><strong>negrita y cursiva</strong></em> y <em><strong>también</strong></em> y *<strong>mal cerrada</strong> fin</p>"
+  },
+  {
+   "name": "enfasis_cruzado",
+   "md": "*a **b* c** y **d *e** f*",
+   "html": "<p><em>a **b</em> c** y <strong>d *e</strong> f*</p>"
+  },
+  {
+   "name": "enfasis_intrapalabra",
+   "md": "a*b*c y a_b_c y 2*3*4 y foo__bar__baz y x**y**z",
+   "html": "<p>a<em>b</em>c y a_b_c y 2<em>3</em>4 y foo__bar__baz y x<strong>y</strong>z</p>"
+  },
+  {
+   "name": "enfasis_junto_a_signos",
+   "md": "(**negrita**), \"*cursiva*\", ¡**ya**! y _guion_bajo_. Y **a**.**b**",
+   "html": "<p>(<strong>negrita</strong>), &quot;<em>cursiva</em>&quot;, ¡<strong>ya</strong>! y <em>guion_bajo</em>. Y <strong>a</strong>.<strong>b</strong></p>"
+  },
+  {
+   "name": "enfasis_con_enlaces_y_codigo",
+   "md": "**[Torivac](https://x.example)** y *`código`* y [*cursiva* en enlace](/blog/)",
+   "html": "<p><strong><a href=\"https://x.example\" target=\"_blank\" rel=\"noopener\">Torivac</a></strong> y <em><code>código</code></em> y <a href=\"/blog/\"><em>cursiva</em> en enlace</a></p>"
+  },
+  {
+   "name": "enfasis_con_salto_forzado",
+   "md": "**negrita  \nque sigue** y *cursiva\nsuave*",
+   "html": "<p><strong>negrita<br>que sigue</strong> y <em>cursiva suave</em></p>"
+  },
+  {
+   "name": "enfasis_con_muchos_delimitadores",
+   "md": "* * * ** ** *** **** ***** _ _ __ ___ ____",
+   "html": "<ul><li>* * ** ** *** **** ***** _ _ __ ___ ____</li></ul>"
+  },
+  {
+   "name": "codigo_en_linea",
+   "md": "Usa `2 * 3 * 4`, `<b>negrita</b>` y `**no**` aquí y `sin cerrar",
+   "html": "<p>Usa <code>2 * 3 * 4</code>, <code>&lt;b&gt;negrita&lt;/b&gt;</code> y <code>**no**</code> aquí y `sin cerrar</p>"
+  },
+  {
+   "name": "escapes",
+   "md": "Precio \\*sin cursiva\\*, \\[no enlace\\](x), 5\\% de \\# almohadilla, barra \\\\ y guion bajo \\_x\\_",
+   "html": "<p>Precio *sin cursiva*, [no enlace](x), 5\\% de # almohadilla, barra \\ y guion bajo _x_</p>"
+  },
+  {
+   "name": "listas_con_vinetas",
+   "md": "- uno\n- dos con **negrita**\n* tres\n+ cuatro",
+   "html": "<ul><li>uno</li><li>dos con <strong>negrita</strong></li><li>tres</li><li>cuatro</li></ul>"
+  },
+  {
+   "name": "listas_numeradas",
+   "md": "1. a\n2. b\n3) c",
+   "html": "<ol><li>a</li><li>b</li><li>c</li></ol>"
+  },
+  {
+   "name": "lista_tras_parrafo_sin_linea_en_blanco",
+   "md": "Ventajas:\n- ligero\n- silencioso\n\nY luego:\n1. primero\n2. segundo",
+   "html": "<p>Ventajas:</p>\n<ul><li>ligero</li><li>silencioso</li></ul>\n<p>Y luego:</p>\n<ol><li>primero</li><li>segundo</li></ol>"
+  },
+  {
+   "name": "lista_con_lineas_en_blanco_entre_elementos",
+   "md": "- x\n\n- y\n  continuación del elemento\n\n- z",
+   "html": "<ul><li>x</li><li>y continuación del elemento</li><li>z</li></ul>"
+  },
+  {
+   "name": "lista_que_cambia_de_tipo",
+   "md": "- viñeta\n1. número\n2. otro\n- viñeta de nuevo",
+   "html": "<ul><li>viñeta</li></ul>\n<ol><li>número</li><li>otro</li></ol>\n<ul><li>viñeta de nuevo</li></ul>"
+  },
+  {
+   "name": "no_es_lista",
+   "md": "2026 fue un buen año\n\n1.5 V de tensión\n\n-sin espacio",
+   "html": "<p>2026 fue un buen año</p>\n<p>1.5 V de tensión</p>\n<p>-sin espacio</p>"
+  },
+  {
+   "name": "cita",
+   "md": "> Una cita\n> en dos líneas\n>\n> y otro párrafo con **negrita**",
+   "html": "<blockquote><p>Una cita en dos líneas</p><p>y otro párrafo con <strong>negrita</strong></p></blockquote>"
+  },
+  {
+   "name": "reglas",
+   "md": "antes\n\n---\n\n***\n\n___\n\n- - -\n\ndespués",
+   "html": "<p>antes</p>\n<hr>\n<hr>\n<hr>\n<hr>\n<p>después</p>"
+  },
+  {
+   "name": "tabla",
+   "md": "| Modelo | VA | Tensión |\n|---|:--:|--:|\n| TT0030210 | 30 | 230/2x10 |\n| TT0050210 | 50 | 230/2x12 \\| x |\n| corta |\n| larga | 1 | 2 | 3 |",
+   "html": "<div class=\"tbl-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Tabla\"><table class=\"spec\"><thead><tr><th>Modelo</th><th>VA</th><th>Tensión</th></tr></thead><tbody><tr><td>TT0030210</td><td>30</td><td>230/2x10</td></tr><tr><td>TT0050210</td><td>50</td><td>230/2x12 | x</td></tr><tr><td>corta</td><td></td><td></td></tr><tr><td>larga</td><td>1</td><td>2</td></tr></tbody></table></div>"
+  },
+  {
+   "name": "tabla_con_formato_y_sin_barras_laterales",
+   "md": "Modelo | Potencia\n--- | ---\n**TT1** | 30 VA\n`TT2` | 50 VA",
+   "html": "<div class=\"tbl-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Tabla\"><table class=\"spec\"><thead><tr><th>Modelo</th><th>Potencia</th></tr></thead><tbody><tr><td><strong>TT1</strong></td><td>30 VA</td></tr><tr><td><code>TT2</code></td><td>50 VA</td></tr></tbody></table></div>"
+  },
+  {
+   "name": "tabla_solo_cabecera",
+   "md": "| A | B |\n|---|---|",
+   "html": "<div class=\"tbl-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Tabla\"><table class=\"spec\"><thead><tr><th>A</th><th>B</th></tr></thead><tbody></tbody></table></div>"
+  },
+  {
+   "name": "tabla_tras_parrafo",
+   "md": "Texto previo\n| a | b |\n|---|---|\n| 1 | 2 |\n\nTexto posterior",
+   "html": "<p>Texto previo</p>\n<div class=\"tbl-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Tabla\"><table class=\"spec\"><thead><tr><th>a</th><th>b</th></tr></thead><tbody><tr><td>1</td><td>2</td></tr></tbody></table></div>\n<p>Texto posterior</p>"
+  },
+  {
+   "name": "tabla_sin_separador_es_texto",
+   "md": "| a | b |\n| c | d |",
+   "html": "<p>| a | b | | c | d |</p>"
+  },
+  {
+   "name": "tabla_con_distinto_numero_de_columnas_es_texto",
+   "md": "| a | b | c |\n|---|---|\n| 1 | 2 | 3 |",
+   "html": "<p>| a | b | c | |---|---| | 1 | 2 | 3 |</p>"
+  },
+  {
+   "name": "enlaces_validos",
+   "md": "[Torivac](https://www.grupotorivac.com/) · [interno](/blog/) · [ancla](#seccion) · [correo](mailto:info@torivac.com) · [teléfono](tel:+34933120161) · [con título](https://example.com \"Título del enlace\") · [http](http://example.com/a?b=1&c=2)",
+   "html": "<p><a href=\"https://www.grupotorivac.com/\" target=\"_blank\" rel=\"noopener\">Torivac</a> · <a href=\"/blog/\">interno</a> · <a href=\"#seccion\">ancla</a> · <a href=\"mailto:info@torivac.com\">correo</a> · <a href=\"tel:+34933120161\">teléfono</a> · <a href=\"https://example.com\" target=\"_blank\" rel=\"noopener\" title=\"Título del enlace\">con título</a> · <a href=\"http://example.com/a?b=1&amp;c=2\" target=\"_blank\" rel=\"noopener\">http</a></p>"
+  },
+  {
+   "name": "enlace_con_formato_dentro",
+   "md": "[**Torivac** *toroidales*](https://example.com/x)",
+   "html": "<p><a href=\"https://example.com/x\" target=\"_blank\" rel=\"noopener\"><strong>Torivac</strong> <em>toroidales</em></a></p>"
+  },
+  {
+   "name": "enlaces_peligrosos",
+   "md": "[x](javascript:alert(1)) [y](data:text/html,<script>alert(1)</script>) [z](//evil.example/x) [w](vbscript:x) [v](https://a.example/\"onmouseover=\"x) [u](JaVaScRiPt:alert(1)) [t](  javascript:alert(1))",
+   "html": "<p>x y z w v u [t](  javascript:alert(1))</p>"
+  },
+  {
+   "name": "enlace_con_parentesis_en_la_direccion",
+   "md": "[wiki](https://es.wikipedia.org/wiki/Transformador_(electricidad)) y texto",
+   "html": "<p><a href=\"https://es.wikipedia.org/wiki/Transformador_(electricidad)\" target=\"_blank\" rel=\"noopener\">wiki</a> y texto</p>"
+  },
+  {
+   "name": "imagen_con_pie",
+   "md": "![Transformador toroidal de 500 VA](/media/blog/3fa9c1d2e4b5.jpg \"Un toroidal de 500 VA\")",
+   "html": "<figure><img src=\"/media/blog/3fa9c1d2e4b5.jpg\" alt=\"Transformador toroidal de 500 VA\" loading=\"lazy\" decoding=\"async\"><figcaption>Un toroidal de 500 VA</figcaption></figure>"
+  },
+  {
+   "name": "imagen_sin_pie",
+   "md": "![Núcleo de chapa](/media/blog/aaaaaaaaaaaa.png)",
+   "html": "<figure><img src=\"/media/blog/aaaaaaaaaaaa.png\" alt=\"Núcleo de chapa\" loading=\"lazy\" decoding=\"async\"></figure>"
+  },
+  {
+   "name": "imagen_sin_alt",
+   "md": "![](/media/blog/aaaaaaaaaaaa.png)",
+   "html": "<figure><img src=\"/media/blog/aaaaaaaaaaaa.png\" alt=\"\" loading=\"lazy\" decoding=\"async\"></figure>"
+  },
+  {
+   "name": "imagen_https",
+   "md": "![Esquema](https://cdn.example.com/esquema.webp)",
+   "html": "<figure><img src=\"https://cdn.example.com/esquema.webp\" alt=\"Esquema\" loading=\"lazy\" decoding=\"async\"></figure>"
+  },
+  {
+   "name": "imagen_en_linea",
+   "md": "Texto ![icono](/media/blog/aaaaaaaaaaaa.png) en línea, y otra ![dos](/media/blog/bbbbbbbbbbbb.jpg).",
+   "html": "<p>Texto <img src=\"/media/blog/aaaaaaaaaaaa.png\" alt=\"icono\" loading=\"lazy\" decoding=\"async\"> en línea, y otra <img src=\"/media/blog/bbbbbbbbbbbb.jpg\" alt=\"dos\" loading=\"lazy\" decoding=\"async\">.</p>"
+  },
+  {
+   "name": "imagenes_peligrosas",
+   "md": "![x](javascript:alert(1))\n\n![y](http://inseguro.example/a.jpg)\n\n![z](data:image/png;base64,AAAA)\n\n![w](//evil.example/a.png)",
+   "html": "<p>x</p>\n<p>y</p>\n<p>z</p>\n<p>w</p>"
+  },
+  {
+   "name": "alt_con_comillas_y_etiquetas",
+   "md": "![Dice \"hola\" <b>&</b>](/media/blog/aaaaaaaaaaaa.png)",
+   "html": "<figure><img src=\"/media/blog/aaaaaaaaaaaa.png\" alt=\"Dice &quot;hola&quot; &lt;b&gt;&amp;&lt;/b&gt;\" loading=\"lazy\" decoding=\"async\"></figure>"
+  },
+  {
+   "name": "html_se_escapa",
+   "md": "<script>alert(1)</script> <img src=x onerror=alert(1)> &amp; \"comillas\" <b>no</b> <a href=\"javascript:x\">y</a>",
+   "html": "<p>&lt;script&gt;alert(1)&lt;/script&gt; &lt;img src=x onerror=alert(1)&gt; &amp;amp; &quot;comillas&quot; &lt;b&gt;no&lt;/b&gt; &lt;a href=&quot;javascript:x&quot;&gt;y&lt;/a&gt;</p>"
+  },
+  {
+   "name": "html_en_titulo_lista_cita_y_tabla",
+   "md": "## <i>t</i>\n\n- <b>l</b>\n\n> <u>c</u>\n\n| <s>h</s> |\n|---|\n| <em>d</em> |",
+   "html": "<h2>&lt;i&gt;t&lt;/i&gt;</h2>\n<ul><li>&lt;b&gt;l&lt;/b&gt;</li></ul>\n<blockquote><p>&lt;u&gt;c&lt;/u&gt;</p></blockquote>\n<div class=\"tbl-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Tabla\"><table class=\"spec\"><thead><tr><th>&lt;s&gt;h&lt;/s&gt;</th></tr></thead><tbody><tr><td>&lt;em&gt;d&lt;/em&gt;</td></tr></tbody></table></div>"
+  },
+  {
+   "name": "unicode",
+   "md": "Ñandú, über, çà et là — « guillemets » 変圧器 ✓ 😀",
+   "html": "<p>Ñandú, über, çà et là — « guillemets » 変圧器 ✓ 😀</p>"
+  },
+  {
+   "name": "solo_espacios",
+   "md": "   \n\n  \t \n",
+   "html": ""
+  },
+  {
+   "name": "vacio",
+   "md": "",
+   "html": ""
+  },
+  {
+   "name": "saltos_windows_y_tabuladores",
+   "md": "Uno\r\ndos\r\n\r\n-\tlista con tabulador\r\n- otra",
+   "html": "<p>Uno dos</p>\n<ul><li>lista con tabulador</li><li>otra</li></ul>"
+  },
+  {
+   "name": "caracteres_de_control",
+   "md": "a\u0001b\u0002c\u0000d\u0007e",
+   "html": "<p>abcde</p>"
+  },
+  {
+   "name": "marcas_internas_en_el_texto",
+   "md": "ni \u0001 0 \u0002 ni 1 en este texto",
+   "html": "<p>ni  0  ni 1 en este texto</p>"
+  },
+  {
+   "name": "mezcla_realista",
+   "md": "## Qué es un transformador toroidal\n\nUn **transformador toroidal** tiene el núcleo en forma de anillo. Ventajas:\n\n- menos pérdidas en vacío\n- campo disperso reducido\n- menor peso ([ver gama](/productos/))\n\n![Transformador toroidal](/media/blog/3fa9c1d2e4b5.jpg \"Serie TT\")\n\n### Modelos habituales\n\n| Modelo | Potencia | Secundario |\n|---|---|---|\n| TT0030210 | 30 VA | 2×10 V |\n| TT0050210 | 50 VA | 2×12 V |\n\n> Consulta siempre la ficha técnica antes de elegir.\n\nMás información en [info@torivac.com](mailto:info@torivac.com).",
+   "html": "<h2>Qué es un transformador toroidal</h2>\n<p>Un <strong>transformador toroidal</strong> tiene el núcleo en forma de anillo. Ventajas:</p>\n<ul><li>menos pérdidas en vacío</li><li>campo disperso reducido</li><li>menor peso (<a href=\"/productos/\">ver gama</a>)</li></ul>\n<figure><img src=\"/media/blog/3fa9c1d2e4b5.jpg\" alt=\"Transformador toroidal\" loading=\"lazy\" decoding=\"async\"><figcaption>Serie TT</figcaption></figure>\n<h3>Modelos habituales</h3>\n<div class=\"tbl-wrap\" tabindex=\"0\" role=\"region\" aria-label=\"Tabla\"><table class=\"spec\"><thead><tr><th>Modelo</th><th>Potencia</th><th>Secundario</th></tr></thead><tbody><tr><td>TT0030210</td><td>30 VA</td><td>2×10 V</td></tr><tr><td>TT0050210</td><td>50 VA</td><td>2×12 V</td></tr></tbody></table></div>\n<blockquote><p>Consulta siempre la ficha técnica antes de elegir.</p></blockquote>\n<p>Más información en <a href=\"mailto:info@torivac.com\">info@torivac.com</a>.</p>"
+  }
+ ],
+ "plain": [
+  {
+   "md": "## Título\n\nUn **párrafo** con [enlace](https://x.example/) y `código`.\n\n- uno\n- dos\n\n> cita",
+   "text": "Título Un párrafo con enlace y código. uno dos cita"
+  },
+  {
+   "md": "| a | b |\n|---|---|\n| 1 | 2 |",
+   "text": "a b 1 2"
+  },
+  {
+   "md": "![Foto de un toroidal](/media/blog/aaaaaaaaaaaa.png \"Pie de foto\")\n\nTexto & más <b>x</b>",
+   "text": "Pie de foto Texto & más <b>x</b>"
+  },
+  {
+   "md": "",
+   "text": ""
+  }
+ ],
+ "excerpt": [
+  {
+   "md": "Un párrafo corto.",
+   "n": 155,
+   "text": "Un párrafo corto."
+  },
+  {
+   "md": "Este es un texto bastante más largo que el máximo permitido para el extracto, de modo que debe cortarse en una palabra entera y terminar con puntos suspensivos.",
+   "n": 60,
+   "text": "Este es un texto bastante más largo que el máximo permitido…"
+  },
+  {
+   "md": "Palabra_única_larguísima_sin_espacios_que_supera_el_máximo_permitido_del_extracto_aunque_no_haya_donde_cortar",
+   "n": 40,
+   "text": "Palabra_única_larguísima_sin_espacios_qu…"
+  },
+  {
+   "md": "Termina con coma, y más texto aquí para cortar justo después de una coma, sí",
+   "n": 38,
+   "text": "Termina con coma, y más texto aquí…"
+  },
+  {
+   "md": "",
+   "n": 155,
+   "text": ""
+  }
+ ],
+ "slug": [
+  {
+   "title": "Cómo elegir un transformador toroidal",
+   "slug": "como-elegir-un-transformador-toroidal"
+  },
+  {
+   "title": "  Años de ÑANDÚ & café con leche!!  ",
+   "slug": "anos-de-nandu-cafe-con-leche"
+  },
+  {
+   "title": "Über Ringkerntransformatoren: Größe, Wärme, Æther",
+   "slug": "uber-ringkerntransformatoren-grosse-warme-aether"
+  },
+  {
+   "title": "Œuvres déjà vues à Noël — çà et là",
+   "slug": "oeuvres-deja-vues-a-noel-ca-et-la"
+  },
+  {
+   "title": "¿Qué es un variador de tensión? (guía 2026)",
+   "slug": "que-es-un-variador-de-tension-guia-2026"
+  },
+  {
+   "title": "---",
+   "slug": ""
+  },
+  {
+   "title": "",
+   "slug": ""
+  },
+  {
+   "title": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+   "slug": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  {
+   "title": "palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra",
+   "slug": "palabra-palabra-palabra-palabra-palabra-palabra-palabra-palabra-palabra-palabra"
+  },
+  {
+   "title": "Tensión 230V/2x10V 50-60Hz",
+   "slug": "tension-230v-2x10v-50-60hz"
+  }
+ ],
+ "safeUrl": [
+  {
+   "url": "https://www.grupotorivac.com/",
+   "ok": true
+  },
+  {
+   "url": "http://example.com/a?b=1",
+   "ok": true
+  },
+  {
+   "url": "HTTPS://EXAMPLE.COM",
+   "ok": true
+  },
+  {
+   "url": "/blog/",
+   "ok": true
+  },
+  {
+   "url": "/media/blog/x.jpg",
+   "ok": true
+  },
+  {
+   "url": "#ancla",
+   "ok": true
+  },
+  {
+   "url": "#con espacio",
+   "ok": false
+  },
+  {
+   "url": "mailto:info@torivac.com",
+   "ok": true
+  },
+  {
+   "url": "mailto:sin-arroba",
+   "ok": false
+  },
+  {
+   "url": "tel:+34 933 12 01 61",
+   "ok": false
+  },
+  {
+   "url": "tel:abc",
+   "ok": false
+  },
+  {
+   "url": "//evil.example",
+   "ok": false
+  },
+  {
+   "url": "javascript:alert(1)",
+   "ok": false
+  },
+  {
+   "url": " javascript:alert(1)",
+   "ok": false
+  },
+  {
+   "url": "data:text/html,x",
+   "ok": false
+  },
+  {
+   "url": "https://",
+   "ok": false
+  },
+  {
+   "url": "https:///x",
+   "ok": false
+  },
+  {
+   "url": "https://a.example/\"x",
+   "ok": false
+  },
+  {
+   "url": "https://a.example/<x>",
+   "ok": false
+  },
+  {
+   "url": "https://a.example/a b",
+   "ok": false
+  },
+  {
+   "url": "ftp://example.com",
+   "ok": false
+  },
+  {
+   "url": "",
+   "ok": false
+  },
+  {
+   "url": "/",
+   "ok": true
+  },
+  {
+   "url": "blog/sin-barra",
+   "ok": false
+  }
+ ]
+}

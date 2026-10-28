@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1061/1061 funciones descritas (100 %) · 144/144 archivos con cabecera.
+**Cobertura**: 1137/1137 funciones descritas (100 %) · 151/151 archivos con cabecera.
 
 
 ## `site/`
@@ -11,7 +11,7 @@
 
 [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio] [--out=carpeta] Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS). Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
 
-Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[OVERRIDES]` · `[ORIGINAL]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
+Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[ORIGINAL]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
 
 - `arg0` (l. 20) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
 - `arg` (l. 23) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
@@ -19,29 +19,29 @@ Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EM
 - `normName` (l. 60) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
 - `depthOf` (l. 64) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
 - `canon` (l. 67) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
-- `subtreeIds` (l. 101) — Ids de una categoría y de todas sus descendientes.
-- `prodIdsOf` (l. 103) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
-- `visible` (l. 107) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
-- `prune` (l. 109) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
-- `pth` (l. 130) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
-- `pickCats` (l. 178) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
-- `emit` (l. 201) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
-- `mkctx` (l. 203) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
-- `fitTitle` (l. 208) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
-- `crumbHome` (l. 210) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
-- `crumbProducts` (l. 212) — Miga de pan «Productos» del idioma `lang`: { name, path }.
-- `pickAlt` (l. 214) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
-- `absImg` (l. 216) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
-- `alts` (l. 221) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
-- `a` (l. 379) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 393) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `css` (l. 403) — Texto del archivo site/assets/css/<n>.css.
-- `xml` (l. 423) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 425) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 437) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 459) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
-- `hashOf` (l. 477) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
-- `walk` (l. 487) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
+- `subtreeIds` (l. 103) — Ids de una categoría y de todas sus descendientes.
+- `prodIdsOf` (l. 105) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
+- `visible` (l. 109) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
+- `prune` (l. 111) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
+- `pth` (l. 132) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
+- `pickCats` (l. 181) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
+- `emit` (l. 204) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
+- `mkctx` (l. 206) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
+- `fitTitle` (l. 211) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
+- `crumbHome` (l. 213) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
+- `crumbProducts` (l. 215) — Miga de pan «Productos» del idioma `lang`: { name, path }.
+- `pickAlt` (l. 217) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
+- `absImg` (l. 219) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
+- `alts` (l. 224) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
+- `a` (l. 382) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
+- `copyDir` (l. 396) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 406) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 426) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 428) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 440) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 462) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `hashOf` (l. 480) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+- `walk` (l. 490) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
 
 ### `templates.mjs`
 
@@ -53,56 +53,56 @@ Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[T
 - `toroidArt` (l. 19) — Bobinado toroidal visto desde arriba (mismo motivo que el logotipo): 56 espiras que se «dibujan» al entrar en pantalla (CSS + IntersectionObserver en app.js).
 - `waveLab` (l. 28) — Osciloscopio esquemático de un variador de tensión: la onda de salida (cobre) se reduce al mover el mando; la de entrada (230 V) queda fija. JS: assets/js/lab.js
 - `headingOrder` (l. 48) — El contenido original salta de nivel (H1→H4). Se corrige en la ACCESIBILIDAD (aria-level) sin tocar la etiqueta, así el diseño no cambia:
-- `metaDescription` (l. 61) — Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, una frase genérica de marca.
-- `ok` (l. 63) — Una descripción sirve si tiene al menos 50 caracteres y no es solo signos o cifras.
-- `cssGuard` (l. 74) — Aviso para el demo (solo sin --base): si la página se abre sin sus hojas de estilo (p. ej. index.html dentro del .zip sin extraer), enseña arriba cómo abrirla bien.
-- `oc` (l. 86) — Con selector de aspecto, el HTML lleva los elementos de los tres aspectos y cada hoja de estilos muestra los suyos (los del resto, con `display:none`).
-- `lbl` (l. 88) — Rótulo que cambia según el aspecto: sin «Original», el de siempre; solo «Original», el de la web actual; con selector, los dos (cada hoja muestra uno). Los textos ya vienen escapados.
-- `oHref` (l. 90) — Dirección a la que apunta una tarjeta o un enlace de categoría: en «Original» solo, una categoría hoja con UN producto lleva directa a ese producto (la web actual la redirige).
-- `floatMenu` (l. 92) — Menú flotante «Productos-Torivac»: pestaña en el borde izquierdo que abre un panel oscuro con las categorías (dos niveles, en el orden de la web actual). Nace oculto: app.js lo muestra (sin JS no serviría).
-- `themeSwitch` (l. 111) — Selector de aspecto: dos botones con aria-pressed. Nace oculto (sin JS no serviría de nada); assets/js/app.js lo muestra, marca el activo y guarda la elección. `where` distingue el de la cinta y el del pie.
-- `layout` (l. 114) — Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap.
-- `alt` (l. 117) — selector de idioma: sin traducción cae a la portada de ese idioma
-- `crumbs` (l. 204) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
-- `vtext` (l. 207) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
-- `vtags` (l. 209) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
-- `productCard` (l. 220) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
-- `catTree` (l. 234) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
-- `holds` (l. 237) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
-- `link` (l. 239) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
-- `walk` (l. 241) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
-- `cut` (l. 248) — Texto recortado a `max` caracteres en el último espacio (sin partir palabras) y con «…» si se ha recortado; `max` Infinity = íntegro.
-- `categoryCards` (l. 250) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
-- `fold` (l. 266) — algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
-- `oSecImg` (l. 279) — «Original»: atributo style con la foto de fondo de una sección (los trazos del logotipo de la web actual), en una variable que solo pinta la hoja de ese aspecto. Una URL dentro de una variable se resuelve desde la hoja que la usa (assets/css/site.css), de ahí «../media/…» y no la ruta de la página.
-- `homeBody` (l. 281) — Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla).
-- `text` (l. 285) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
-- `imgs` (l. 287) — Bloques de imagen de una sección.
-- `btn` (l. 289) — Primer bloque de botón de una sección (undefined si no tiene).
-- `oh` (l. 296) — «Original»: clase que engancha cada sección de la portada con la hoja de la web actual (sin «Original» no se emite y el HTML sale idéntico)
-- `oBg` (l. 298) — «Original»: variable con la foto de fondo de una sección de la portada.
-- `eyebrowAndHead` (l. 307) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
-- `paras` (l. 313) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
-- `bt` (l. 315) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
-- `waveSvg` (l. 344) — onda de tensión animada (SVG) — elemento gráfico base del hero
-- `cardsHtml` (l. 352) — «Original»: bloques de una sección de tarjetas (Misión, Visión, Valores…) con cada icono y el texto que le sigue dentro de su propia tarjeta; lo que va antes del primer icono (título) queda fuera. Los otros aspectos ven el mismo flujo, solo con un div más.
-- `isIcon` (l. 354) — Indica si el bloque es un icono pequeño (60 × 60) y no una foto.
-- `sectionsHtml` (l. 363) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. Con «Original», cada sección lleva además clases según cómo la maqueta la web actual (site.oSections, por id de sección de Elementor, igual en los cuatro idiomas).
-- `cls` (l. 368) — Clases de la sección: las de siempre y, con «Original», las del tipo, el lado de la foto y el arte de fondo.
-- `isPhoto` (l. 372) — los iconos pequeños se quedan dentro del texto
-- `genericPage` (l. 398) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
-- `contactBlockO` (l. 420) — «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno).
-- `blogIndexBody` (l. 430) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
-- `postBody` (l. 436) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original.
-- `shopBody` (l. 453) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
-- `productBody` (l. 492) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
-- `quoteBody` (l. 556) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
-- `contactForm` (l. 584) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
-- `contactIntro` (l. 600) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
-- `contactPageOriginal` (l. 605) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
-- `plainOf` (l. 610) — Texto de un párrafo sin etiquetas.
-- `li` (l. 617) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
-- `lv2` (l. 620) — Encabezados de un trozo de HTML con aria-level 2.
+- `metaDescription` (l. 60) — Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, la descripción de la portada en ese idioma (`fallback`, texto de la web original; sin ella, ninguna).
+- `ok` (l. 62) — Una descripción sirve si tiene al menos 50 caracteres y no es solo signos o cifras.
+- `cssGuard` (l. 73) — Aviso para el demo (solo sin --base): si la página se abre sin sus hojas de estilo (p. ej. index.html dentro del .zip sin extraer), enseña arriba cómo abrirla bien.
+- `oc` (l. 85) — Con selector de aspecto, el HTML lleva los elementos de los tres aspectos y cada hoja de estilos muestra los suyos (los del resto, con `display:none`).
+- `lbl` (l. 87) — Rótulo que cambia según el aspecto: sin «Original», el de siempre; solo «Original», el de la web actual; con selector, los dos (cada hoja muestra uno). Los textos ya vienen escapados.
+- `oHref` (l. 89) — Dirección a la que apunta una tarjeta o un enlace de categoría: en «Original» solo, una categoría hoja con UN producto lleva directa a ese producto (la web actual la redirige).
+- `floatMenu` (l. 91) — Menú flotante «Productos-Torivac»: pestaña en el borde izquierdo que abre un panel oscuro con las categorías (dos niveles, en el orden de la web actual). Nace oculto: app.js lo muestra (sin JS no serviría).
+- `themeSwitch` (l. 110) — Selector de aspecto: dos botones con aria-pressed. Nace oculto (sin JS no serviría de nada); assets/js/app.js lo muestra, marca el activo y guarda la elección. `where` distingue el de la cinta y el del pie.
+- `layout` (l. 113) — Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap.
+- `alt` (l. 116) — selector de idioma: sin traducción cae a la portada de ese idioma
+- `crumbs` (l. 203) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
+- `vtext` (l. 206) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
+- `vtags` (l. 208) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
+- `productCard` (l. 219) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
+- `catTree` (l. 233) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
+- `holds` (l. 236) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
+- `link` (l. 238) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
+- `walk` (l. 240) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
+- `cut` (l. 247) — Texto recortado a `max` caracteres en el último espacio (sin partir palabras) y con «…» si se ha recortado; `max` Infinity = íntegro.
+- `categoryCards` (l. 249) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
+- `fold` (l. 265) — algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
+- `oSecImg` (l. 278) — «Original»: atributo style con la foto de fondo de una sección (los trazos del logotipo de la web actual), en una variable que solo pinta la hoja de ese aspecto. Una URL dentro de una variable se resuelve desde la hoja que la usa (assets/css/site.css), de ahí «../media/…» y no la ruta de la página.
+- `homeBody` (l. 280) — Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla).
+- `text` (l. 284) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
+- `imgs` (l. 286) — Bloques de imagen de una sección.
+- `btn` (l. 288) — Primer bloque de botón de una sección (undefined si no tiene).
+- `oh` (l. 295) — «Original»: clase que engancha cada sección de la portada con la hoja de la web actual (sin «Original» no se emite y el HTML sale idéntico)
+- `oBg` (l. 297) — «Original»: variable con la foto de fondo de una sección de la portada.
+- `eyebrowAndHead` (l. 306) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
+- `paras` (l. 312) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
+- `bt` (l. 314) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
+- `waveSvg` (l. 343) — onda de tensión animada (SVG) — elemento gráfico base del hero
+- `cardsHtml` (l. 351) — «Original»: bloques de una sección de tarjetas (Misión, Visión, Valores…) con cada icono y el texto que le sigue dentro de su propia tarjeta; lo que va antes del primer icono (título) queda fuera. Los otros aspectos ven el mismo flujo, solo con un div más.
+- `isIcon` (l. 353) — Indica si el bloque es un icono pequeño (60 × 60) y no una foto.
+- `sectionsHtml` (l. 362) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. Con «Original», cada sección lleva además clases según cómo la maqueta la web actual (site.oSections, por id de sección de Elementor, igual en los cuatro idiomas).
+- `cls` (l. 367) — Clases de la sección: las de siempre y, con «Original», las del tipo, el lado de la foto y el arte de fondo.
+- `isPhoto` (l. 371) — los iconos pequeños se quedan dentro del texto
+- `genericPage` (l. 397) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
+- `contactBlockO` (l. 419) — «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno).
+- `blogIndexBody` (l. 429) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
+- `postBody` (l. 435) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original.
+- `shopBody` (l. 452) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
+- `productBody` (l. 491) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
+- `quoteBody` (l. 555) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
+- `contactForm` (l. 583) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
+- `contactIntro` (l. 599) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
+- `contactPageOriginal` (l. 604) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
+- `plainOf` (l. 609) — Texto de un párrafo sin etiquetas.
+- `li` (l. 616) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
+- `lv2` (l. 619) — Encabezados de un trozo de HTML con aria-level 2.
 
 ## `site/lib/`
 
@@ -124,9 +124,9 @@ Secciones: `[HOSTING]`
 
 Secciones: `[I18N]`
 
-- `countLabel` (l. 130) — «1 producto / 2 productos» en los 4 idiomas
-- `refLabel` (l. 132) — «1 referencia / 2 referencias» en los 4 idiomas.
-- `t` (l. 134) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
+- `countLabel` (l. 131) — «1 producto / 2 productos» en los 4 idiomas
+- `refLabel` (l. 133) — «1 referencia / 2 referencias» en los 4 idiomas.
+- `t` (l. 135) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
 
 ### `render.mjs`
 
@@ -178,7 +178,7 @@ Secciones: `[THEMES]` · `[CSS]`
 
 ### `admin-live.js`
 
-[ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales. Roles:  manager → Resumen · Pedidos · Precios · Propuestas · Contenido · Usuarios · Estadísticas · Ajustes cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
+[ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales. Roles:  manager → Resumen · Pedidos · Mensajes · Precios · Propuestas · Contenido · Usuarios · Estadísticas · Ajustes cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
 
 Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[PRICES]` · `[AI]` · `[USERS]` · `[PROPOSALS]` · `[ROUTER]`
 
@@ -196,30 +196,34 @@ Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[
 - `when` (l. 62) — Fecha y hora local (es-ES) de una fecha ISO; «—» si viene vacía.
 - `download` (l. 64) — Descarga `blob` como archivo `name` con un enlace temporal y libera la URL a los 800 ms.
 - `fail` (l. 66) — Aviso de error del servidor con el mensaje devuelto.
-- `V.resumen` (l. 77) — Vista Resumen (manager): con datos del Worker, KPIs, estado de la hoja de precios y sincronización, y los 5 últimos pedidos.
-- `ordersView` (l. 89) — Tabla de pedidos (manager: todos · cliente: solo los suyos, lo filtra el servidor).
-- `V.pedidos` (l. 98) — Vista Pedidos (manager): tabla de todos los pedidos que devuelve el Worker.
-- `V.mis` (l. 100) — Vista «Mis presupuestos» (cliente): sus propios pedidos; el filtro por usuario lo aplica el servidor.
-- `V.lista` (l. 103) — Vista Lista de precios (cliente): precios vigentes del Worker, sin IVA, con sus tramos (hasta 600 referencias).
-- `V.presupuestador` (l. 112) — Vista Presupuestador (cliente): incrusta la página del presupuesto en un iframe con ?embed=1.
-- `V.contenido` (l. 115) — Vista Contenido (manager): estado de traducción por idioma, referencias y etiquetas de voltaje de cada producto.
-- `cell` (l. 118) — Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir).
-- `V.estadisticas` (l. 124) — Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras.
-- `V.ajustes` (l. 130) — Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag).
-- `modeBox` (l. 142) — Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios.
-- `V.precios` (l. 148) — Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA.
-- `previewUpload` (l. 159) — Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada).
-- `list` (l. 165) — Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`.
-- `readUpload` (l. 177) — Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa.
-- `go` (l. 180) — Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo.
-- `applyUpload` (l. 185) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
-- `runPrompt` (l. 199) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
-- `applyProposal` (l. 215) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
-- `V.propuestas` (l. 224) — Vista Propuestas (manager): lista las propuestas de cambio con su estado en el servidor para aprobar, rechazar o deshacer.
-- `V.usuarios` (l. 239) — Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes.
-- `onClick` (l. 249) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF.
-- `bind` (l. 267) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
-- `render` (l. 286) — Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
+- `mailWarn` (l. 77) — Aviso del Resumen cuando el correo no funciona (sin completar o el último envío falló): los pedidos y mensajes se guardan igual, pero nadie recibe el aviso. '' si todo va bien.
+- `V.resumen` (l. 83) — Vista Resumen (manager): con datos del Worker, KPIs, estado de la hoja de precios y sincronización, y los 5 últimos pedidos.
+- `ordersView` (l. 95) — Tabla de pedidos (manager: todos · cliente: solo los suyos, lo filtra el servidor).
+- `V.pedidos` (l. 104) — Vista Pedidos (manager): tabla de todos los pedidos que devuelve el Worker.
+- `V.mis` (l. 106) — Vista «Mis presupuestos» (cliente): sus propios pedidos; el filtro por usuario lo aplica el servidor.
+- `V.lista` (l. 109) — Vista Lista de precios (cliente): precios vigentes del Worker, sin IVA, con sus tramos (hasta 600 referencias).
+- `V.presupuestador` (l. 118) — Vista Presupuestador (cliente): incrusta la página del presupuesto en un iframe con ?embed=1.
+- `V.contenido` (l. 121) — Vista Contenido (manager): estado de traducción por idioma, referencias y etiquetas de voltaje de cada producto.
+- `cell` (l. 124) — Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir).
+- `V.estadisticas` (l. 130) — Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras.
+- `mailTag` (l. 136) — Etiqueta con el estado del aviso por correo de un mensaje o de un pedido (emailed.sent / reason; el texto del error solo lo trae el servidor a los gestores).
+- `V.mensajes` (l. 142) — Vista Mensajes (manager): los mensajes del formulario de contacto, que el servidor guarda aunque el correo falle, con el estado del aviso por correo y el borrado individual.
+- `mailPanel` (l. 154) — Panel «Correo» de Ajustes: controlador, si está completo, qué falta, el último intento (también el fallo) y el botón para mandar un correo de prueba.
+- `V.ajustes` (l. 164) — Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag).
+- `modeBox` (l. 176) — Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios.
+- `V.precios` (l. 182) — Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA.
+- `previewUpload` (l. 193) — Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada).
+- `list` (l. 199) — Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`.
+- `readUpload` (l. 211) — Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa.
+- `go` (l. 214) — Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo.
+- `applyUpload` (l. 219) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
+- `runPrompt` (l. 233) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
+- `applyProposal` (l. 249) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
+- `V.propuestas` (l. 258) — Vista Propuestas (manager): lista las propuestas de cambio con su estado en el servidor para aprobar, rechazar o deshacer.
+- `V.usuarios` (l. 273) — Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes.
+- `onClick` (l. 283) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF.
+- `bind` (l. 302) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
+- `render` (l. 333) — Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
 
 ### `admin-report.js`
 
@@ -797,6 +801,20 @@ Sesión 2 · Mapa de traducciones según WPML (sondeo de solo lectura: GET sin s
 - `main` (l. 57) — Sondea la URL de cada categoría en en/fr/de, guarda wpml-probe.json y, con --compare, lista las discrepancias.
 - `compare` (l. 76) — Discrepancias entre el mapa actual (hreflang + co-ocurrencia) y lo que dice WPML.
 
+### `audit_i18n.mjs`
+
+[AUDIT-I18N] Lista, por idioma, los textos de interfaz que escribió el proyecto (los de site/lib/i18n.mjs) y que NO existen tal cual en la web original, para que alguien que domine cada idioma los valide antes de publicar. Los textos del contenido (fichas, páginas, entradas, menús y pie) vienen de la web original sin tocar y no pasan por aquí. node scripts/audit_i18n.mjs            reescribe docs/TEXTOS-DE-INTERFAZ.md
+
+Secciones: `[AUDIT-I18N]`
+
+- `j` (l. 16) — Lee un JSON de data/catalog.
+- `norm` (l. 22) — Texto comparable: minúsculas, comillas tipográficas normalizadas y espacios simples.
+- `blockTexts` (l. 24) — Texto de una lista de bloques semánticos (títulos, párrafos, listas y tablas) como lista de cadenas sin etiquetas.
+- `corpusOf` (l. 36) — Todo el texto de la web original en el idioma `l`, normalizado en una sola cadena.
+- `cell` (l. 44) — Escapa las barras verticales de una celda de tabla Markdown.
+- `build` (l. 47) — Genera el texto del documento.
+- `orig` (l. 52) — ¿El texto de la clave `key` en el idioma `l` aparece tal cual en la web original?
+
 ### `capturas.mjs`
 
 [CAPTURAS] Capturas de pantalla de las vistas clave del demo (para revisar sin abrir nada) + PDF de ejemplo. node scripts/capturas.mjs [carpeta-salida] [--theme=clasico|ficha]        (por defecto entrega/capturas y el aspecto que traiga dist/; --theme fuerza uno de los dos aspectos) Sirve dist/ por http, recorre el flujo de un cliente (ficha → presupuesto → PDF) y el panel de gestión, y guarda PNG numerados.
@@ -1031,6 +1049,17 @@ Secciones: `[SMOKE]`
 - `url` (l. 19) — URL file:// de la ruta p dentro de dist/ (las que acaban en «/» apuntan a su index.html).
 - `visit` (l. 32) — Visita la ruta p, ejecuta fn si se da, busca desbordes horizontales y (con --shots) captura la página; anota los problemas nuevos.
 
+### `test-blog-markdown.mjs`
+
+[TEST-BLOG-MD] Pruebas del conversor de texto del blog (shared/blog-markdown.mjs). node scripts/test-blog-markdown.mjs            recorre shared/blog-markdown.fixtures.json (el contrato que también cumple backend-php/api/lib/BlogMarkdown.php), comprueba que NUNCA sale HTML fuera de la lista permitida (con miles de entradas al azar y ataques conocidos)
+
+Secciones: `[TEST-BLOG-MD]`
+
+- `ok` (l. 18) — Anota una comprobación correcta o, si no se cumple, un fallo con su mensaje.
+- `eq` (l. 20) — Comprueba que `got` es exactamente `want` y, si no, enseña los dos.
+- `audit` (l. 35) — Devuelve la lista de problemas del HTML (vacía si todo es lo permitido).
+- `rnd` (l. 74) — Número pseudoaleatorio en [0,1) con semilla fija: la misma tanda de entradas hostiles en cada ejecución.
+
 ### `qa-all.sh`
 
 [QA-ALL] Todas las pruebas del proyecto, una tras otra, con resumen final (la CI hace lo mismo en ci/ci.yml). bash scripts/qa-all.sh             # todo (unos 15-25 min; qa-ux recorre las ~770 páginas en escritorio y en móvil) bash scripts/qa-all.sh --rapido    # sin qa-ux, qa-a11y ni perf (unos 4-6 min)
@@ -1119,15 +1148,30 @@ Secciones: `[CORS]`
 
 ### `email.js`
 
-[EMAIL] Envío por Resend (HTTP). Sin RESEND_API_KEY no se envía nada y se devuelve {skipped:true} (entornos de prueba). Dos correos por pedido: el AVISO al equipo (con los datos del cliente y el PDF que fabricó su navegador) y la COPIA al cliente, que solo lleva texto fijo y datos valorados por el servidor.
+[EMAIL] Envío de correo por Resend o Brevo (HTTP, sin SDK) según EMAIL_PROVIDER (resend por defecto · brevo · none), con el MOTIVO veraz de cada intento y sin secretos en los errores. Resultado de sendMail: { ok, id?, reason:'sent'|'off'|'failed'|'skipped', error?, driver, status?, skipped? }. off = sin controlador (EMAIL_PROVIDER=none); skipped = faltan credenciales, remitente o destinatarios; failed = el proveedor respondió error o no respondió. `error` es un texto CORTO (≤ 160) y sin secretos, solo para gestores. Cada envío anota su resultado en mail:last (ver mailstate.js).
 
-Secciones: `[EMAIL]` · `[COPIA]`
+Secciones: `[EMAIL]` · `[CONTROLADORES]` · `[COPIA]` · `[CONTACTO]`
 
-- `sendMail` (l. 5) — Envía un correo por Resend → { ok, id }; sin RESEND_API_KEY { ok:false, skipped:true }; si falla { ok:false, status | error }. El asunto va siempre en una línea.
-- `money` (l. 16) — Importe en euros con el formato del idioma (es, en, fr, de); «—» si no hay importe.
-- `orderMail` (l. 20) — Correo de aviso de un pedido para el equipo → { html, text } con cliente, líneas, total, marca de precios de demostración y, si va PDF adjunto, el aviso de que el importe válido es el del servidor.
-- `copySubject` (l. 40) — Asunto fijo de la copia al cliente (el mismo en todos los idiomas).
-- `customerCopyMail` (l. 45) — Copia del pedido para el CLIENTE → { subject, html, text }. Solo contenido generado por el servidor: texto fijo en el idioma del pedido, número, líneas (ref, nombre del catálogo, cantidad e
+- `providerUnknown` (l. 18) — True si EMAIL_PROVIDER trae un valor que no es resend, brevo ni none (se trata como «none»: falla cerrado). Vacío o ausente = resend.
+- `mailDriver` (l. 20) — Controlador de correo activo según EMAIL_PROVIDER: «resend» (por defecto), «brevo» o «none»; un valor desconocido falla cerrado y cuenta como «none».
+- `parseSender` (l. 29) — Remitente de ORDER_FROM («Nombre <correo@dominio>» o solo el correo; si falta, Torivac Web <pedidos@torivac.com>) → { ok:true, name, email, from } con `from` normalizado, o { ok:false }
+- `teamRecipients` (l. 37) — Destinatarios del equipo: los correos válidos de ORDER_TO (separados por comas); los que no lo son se ignoran (y mailProblems avisa de ORDER_TO).
+- `blocker` (l. 39) — Por qué NO se puede enviar ahora → { reason:'off'|'skipped', error }, o null si el controlador está listo (clave del proveedor y remitente válidos).
+- `mailReady` (l. 47) — True si el controlador activo puede enviar ahora (no es «none» y tiene su clave y un remitente válido).
+- `mailSettingProblems` (l. 49) — Ajustes de correo MAL puestos (solo nombres, nunca valores): EMAIL_PROVIDER desconocido u ORDER_FROM que no es «Nombre <correo@dominio>». Los avisa /api/health en config.problems.
+- `mailProblems` (l. 56) — Ajustes que impiden o estorban el envío (solo nombres, nunca valores): los mal puestos, la clave del controlador activo (RESEND_API_KEY o BREVO_API_KEY) y los destinatarios de ORDER_TO.
+- `mailStatus` (l. 66) — Estado del correo para el panel y la salud → { driver, configured, problems (nombres de ajustes), last (último intento o null) }; nunca lleva valores secretos.
+- `providerError` (l. 73) — Texto corto y sin secretos del fallo de un proveedor: «Brevo 401: mensaje» (mensaje ≤ 120 caracteres) o, si no dio mensaje, «Brevo respondió 401».
+- `callProvider` (l. 79) — POST JSON a la API de un proveedor y traduce la respuesta → { ok:true, reason:'sent', id? } o { ok:false, reason:'failed', status?, error }. Cualquier 2xx cuenta como aceptado; sin respuesta en 15 s se corta.
+- `toList` (l. 88) — Lista de direcciones: una lista tal cual, un texto suelto como lista de uno, nada como lista vacía.
+- `deliver` (l. 90) — Prepara y envía por el controlador activo, sin anotar nada → { ok, id?, reason, skipped?, status?, error? }. Sin controlador, credenciales, remitente o destinatarios válidos no llama a ningún proveedor.
+- `sendMail` (l. 112) — Envía un correo por el controlador activo → { ok, id?, reason, error?, driver, status?, skipped? } y anota el intento en mail:last (`kind`: 'order' · 'contact' · 'test'). El asunto va siempre en una línea;
+- `money` (l. 120) — Importe en euros con el formato del idioma (es, en, fr, de); «—» si no hay importe.
+- `orderMail` (l. 124) — Correo de aviso de un pedido para el equipo → { html, text } con cliente, líneas, total, marca de precios de demostración y, si va PDF adjunto, el aviso de que el importe válido es el del servidor.
+- `copySubject` (l. 144) — Asunto fijo de la copia al cliente (el mismo en todos los idiomas).
+- `customerCopyMail` (l. 149) — Copia del pedido para el CLIENTE → { subject, html, text }. Solo contenido generado por el servidor: texto fijo en el idioma del pedido, número, líneas (ref, nombre del catálogo, cantidad e
+- `contactMail` (l. 165) — Correo de un mensaje de contacto PARA EL EQUIPO → { subject, html, text }. Asunto «Contacto web · <nombre>» en una línea; nombre, correo, idioma, id del mensaje y texto del visitante van SIEMPRE
+- `testMail` (l. 177) — Correo de PRUEBA del panel → { subject, html, text }: asunto «Torivac · prueba de correo», texto fijo y, como datos, el controlador y la hora (ISO).
 
 ### `index.js`
 
@@ -1135,14 +1179,53 @@ Secciones: `[EMAIL]` · `[COPIA]`
 
 Secciones: `[INDEX]`
 
-- `tooMany` (l. 21) — 429 con el texto de siempre (el mismo para cualquier límite de acceso: nunca distingue si un usuario existe).
-- `configProblems` (l. 23) — Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY), nunca sus valores.
-- `fail` (l. 31) — Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id.
-- `identify` (l. 38) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
-- `handleLogin` (l. 49) — POST /api/auth/login. Límites (todos devuelven el mismo 429 y nunca distinguen si el usuario existe): por ipKey+correo 6 / 10 min · por ipKey sola 30 / 10 min contra cualquier cuenta ·
-- `route` (l. 72) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
-- `fetch` (l. 132) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
-- `scheduled` (l. 148) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
+- `tooMany` (l. 24) — 429 con el texto de siempre (el mismo para cualquier límite de acceso: nunca distingue si un usuario existe).
+- `configProblems` (l. 26) — Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores.
+- `fail` (l. 35) — Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id.
+- `identify` (l. 42) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
+- `handleLogin` (l. 53) — POST /api/auth/login. Límites (todos devuelven el mismo 429 y nunca distinguen si el usuario existe): por ipKey+correo 6 / 10 min · por ipKey sola 30 / 10 min contra cualquier cuenta ·
+- `route` (l. 76) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
+- `fetch` (l. 144) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
+- `scheduled` (l. 160) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
+
+### `mailapi.js`
+
+[MAILAPI] Endpoints de gestión de los mensajes de contacto y del correo. SOLO managers (sesión de manager o token maestro): index.js ya comprobó el rol antes de llegar aquí. GET /api/messages?limit=100        → { ok, items:[{ id, at, name, email, message, lang, ip, emailed:{ sent, reason, error? } }], truncated }   (más recientes primero; limit 1..300) DELETE /api/messages/:id           → { ok:true } · 404 si no existe (derecho de supresión)
+
+Secciones: `[MAILAPI]`
+
+- `priv` (l. 14) — Cabeceras de estas respuestas: nada de caché (son datos personales y estado vivo) y sin que el navegador adivine el tipo del contenido.
+- `handleMessageList` (l. 18) — GET /api/messages?limit=N: los mensajes más recientes primero (hasta 300; por defecto 100) con la IP y el estado del correo; un registro corrupto se omite.
+- `handleMessageDelete` (l. 23) — DELETE /api/messages/:id (el id llega tal cual viene en la URL, aún codificado): borra el mensaje; 404 si no existe o el id no tiene la forma CT-AAAAMMDD-NNNN-XXX.
+- `optionalBody` (l. 29) — Cuerpo JSON opcional de la petición → objeto ({} si no hay cuerpo), o null si es demasiado grande, anida demasiado, no es JSON o no es un objeto.
+- `handleMailTest` (l. 41) — POST /api/mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de ORDER_TO. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
+- `handleMailStatus` (l. 57) — GET /api/mail/status: controlador activo, si está configurado, los NOMBRES de los ajustes que faltan (nunca valores) y el último intento de envío (null si todavía no hubo ninguno).
+
+### `mailstate.js`
+
+[MAILSTATE] Último intento de envío de correo (clave KV mail:last, solo el último, igual que prices:sync) y limpieza de secretos en los textos de error que ven los gestores. mail:last = { at, kind:'contact'|'order'|'test', ok, reason:'sent'|'off'|'failed'|'skipped', error? }. No lleva datos del visitante (ni correo, ni nombre, ni mensaje).
+
+Secciones: `[MAILSTATE]`
+
+- `scrub` (l. 19) — Texto de error de UNA línea, sin secretos y de como mucho `max` caracteres: tacha los valores exactos de los secretos del entorno (claves, tokens, contraseñas) y las formas típicas de clave.
+- `recordMail` (l. 26) — Anota en mail:last el resultado del último intento de envío (también el fallido, el omitido y el de un controlador apagado); sobrescribe. Un fallo al anotarlo nunca tapa el resultado real del envío.
+- `readLast` (l. 33) — Último intento de envío guardado en mail:last → { at, kind, ok, reason, error? }, o null si no hay ninguno o está dañado.
+
+### `messages.js`
+
+[MESSAGES] Mensajes del formulario de contacto guardados en KV (retención de 400 días, como los pedidos: la caducidad la hace KV con expirationTtl, sin cron) y su listado/borrado acotados para el panel. Clave: msg:<fecha invertida>-<contador invertido>-<sufijo>, derivada del id CT-AAAAMMDD-NNNN-XXX. KV solo lista en orden ascendente; al invertir fecha y contador, UN list() devuelve primero los más recientes (1 operación de list + como mucho 300 de get —más los registros corruptos que se salten— por petición, sin recorrer todo el almacén). El id se puede volver a convertir en clave, así que borrar un mensaje es directo (sin índices aparte).
+
+Secciones: `[MESSAGES]`
+
+- `messageKey` (l. 12) — Clave KV del mensaje con ese id (CT-AAAAMMDD-NNNN-XXX), o null si el id no tiene esa forma. Fecha y contador van invertidos (restados de 99999999 y 99999) y con ancho fijo para que el orden de claves sea el de más reciente primero.
+- `putMessage` (l. 17) — Guarda (o sobrescribe) el registro de un mensaje con caducidad de 400 días; lanza si KV no deja escribir.
+- `messageExists` (l. 19) — True si ya hay un mensaje guardado con ese id.
+- `deleteMessage` (l. 21) — Borra el mensaje con ese id → true si existía, false si no existe (o el id no es válido).
+- `str` (l. 27) — Texto de un campo del registro, o '' si no es una cadena (un registro dañado nunca rompe el listado).
+- `view` (l. 29) — Registro de KV (texto JSON) → vista para el gestor { id, at, name, email, message, lang, ip, emailed:{ sent, reason, error? } }, o null si falta, no es JSON o no trae id y fecha.
+- `messageLimit` (l. 36) — `limit` pedido en la URL (texto o número) → entero entre 1 y 300; ausente o ilegible = 100.
+- `newestKeys` (l. 41) — Nombres de las `fetch` claves de mensaje más recientes → { names, complete } (complete = KV ya no tiene más); sigue el cursor si devuelve páginas más cortas (como mucho 8 páginas).
+- `listMessages` (l. 56) — Mensajes para el panel (solo gestores) → { items (más recientes primero, hasta `limit`, 1..300), truncated }. Un list de KV (con unas claves de margen para los registros corruptos) + un get por mensaje, en grupos de 10:
 
 ### `orderlist.js`
 
@@ -1159,20 +1242,22 @@ Secciones: `[ORDERLIST]`
 
 ### `orders.js`
 
-[ORDERS] POST /api/order → valida, valora en servidor con los precios VIGENTES, guarda y envía por correo: AVISO al equipo (con el PDF que fabricó el navegador) y, según ORDER_COPY y con topes, COPIA al cliente con contenido generado solo por el servidor (sin PDF ni texto del visitante). Número de pedido TV-AAAAMMDD-NNNN-XXX (XXX aleatorio: dos pedidos simultáneos no se pisan). Claves KV: order:<nº completo> (400 días) · uorder:<sha256(correo)[:32]>:<nº> (índice de «mis pedidos» del cliente, valor mínimo) · counter:<AAAAMMDD> (contador de «mejor esfuerzo»).
+[ORDERS] POST /api/order → valida, valora en servidor con los precios VIGENTES, guarda y envía por correo: AVISO al equipo (con el PDF que fabricó el navegador) y, según ORDER_COPY y con topes, COPIA al cliente con contenido generado solo por el servidor (sin PDF ni texto del visitante). Número de pedido TV-AAAAMMDD-NNNN-XXX (XXX aleatorio: dos pedidos simultáneos no se pisan). POST /api/contact → guarda SIEMPRE el mensaje (CT-AAAAMMDD-NNNN-XXX, ver messages.js), intenta el correo al equipo y dice la verdad sobre él en `emailed`.
 
 Secciones: `[ORDERS]`
 
-- `ymd` (l. 18) — Fecha en UTC como AAAAMMDD, para el número de pedido y su contador diario.
-- `intVar` (l. 20) — Entero de una variable de entorno (texto de cifras); si falta, no es un entero o es menor que `min`, vale `def`.
-- `copyMode` (l. 22) — Modo de la copia al cliente: «capped» (por defecto, con topes) u «off» (nunca); cualquier otro valor falla cerrado y cuenta como «off».
-- `randomSuffix` (l. 24) — 3 caracteres aleatorios base36 en mayúsculas para cerrar el número de pedido; `rand(n)` devuelve n enteros sin signo (se puede inyectar en las pruebas).
-- `baseNumber` (l. 26) — Parte «TV-AAAAMMDD-NNNN» del número: contador diario en KV de «mejor esfuerzo» (no es atómico; si KV lo rechaza, un número de respaldo por segundos del día: el pedido nunca se pierde por esto).
-- `nextNumber` (l. 33) — Siguiente número de pedido completo (TV-AAAAMMDD-NNNN-XXX).
-- `uorderPrefix` (l. 35) — Prefijo de las claves del índice de pedidos de un cliente: uorder:<32 primeros hex del SHA-256 de su correo en minúsculas>: (nunca el correo en la clave).
-- `sendCopy` (l. 41) — Decide y, si procede, envía la copia al cliente → motivo: 'sent' | 'failed' | 'not_requested' (el visitante mandó copy:false) | 'off' (ORDER_COPY no es «capped») | 'skipped' (correo sin configurar) |
-- `handleOrder` (l. 53) — POST /api/order: límites (por visitante y global), validación, valoración en servidor con los precios vigentes, guardado en KV, aviso al equipo y copia al cliente.
-- `handleContact` (l. 89) — POST /api/contact: límite por visitante, anti-spam y envío del mensaje al equipo; responde { ok, emailed, skipped }.
+- `ymd` (l. 21) — Fecha en UTC como AAAAMMDD, para el número de pedido y su contador diario.
+- `intVar` (l. 23) — Entero de una variable de entorno (texto de cifras); si falta, no es un entero o es menor que `min`, vale `def`.
+- `copyMode` (l. 25) — Modo de la copia al cliente: «capped» (por defecto, con topes) u «off» (nunca); cualquier otro valor falla cerrado y cuenta como «off».
+- `randomSuffix` (l. 27) — 3 caracteres aleatorios base36 en mayúsculas para cerrar el número de pedido; `rand(n)` devuelve n enteros sin signo (se puede inyectar en las pruebas).
+- `baseNumber` (l. 29) — Parte «<prefijo>-AAAAMMDD-NNNN» del número (TV = pedidos, CT = mensajes de contacto): contador diario en KV de «mejor esfuerzo» (no es atómico; si KV lo rechaza, un número de respaldo por segundos del día: el pedido nunca se pierde por esto).
+- `nextNumber` (l. 36) — Siguiente número de pedido completo (TV-AAAAMMDD-NNNN-XXX).
+- `uorderPrefix` (l. 38) — Prefijo de las claves del índice de pedidos de un cliente: uorder:<32 primeros hex del SHA-256 de su correo en minúsculas>: (nunca el correo en la clave).
+- `sendCopy` (l. 44) — Decide y, si procede, envía la copia al cliente → motivo: 'sent' | 'failed' | 'not_requested' (el visitante mandó copy:false) | 'off' (ORDER_COPY no es «capped») | 'skipped' (correo sin configurar) |
+- `handleOrder` (l. 56) — POST /api/order: límites (por visitante y global), validación, valoración en servidor con los precios vigentes, guardado en KV, aviso al equipo y copia al cliente.
+- `sleep` (l. 91) — Espera `ms` milisegundos (0 = no espera).
+- `handleContact` (l. 97) — POST /api/contact: límite por visitante y anti-spam como siempre (5 / 10 min por ipKey, Turnstile); luego construye el registro, LO GUARDA (msg:…, 400 días), intenta el correo al equipo, anota el resultado
+- `notSaved` (l. 100) — 500 «No se pudo guardar el mensaje» (el detalle va al registro del servidor, sin datos del visitante).
 
 ### `passwords.js`
 
@@ -1337,9 +1422,10 @@ Secciones: `[AUTH]` · `[VALIDATE]` · `[PRICES]` · `[SHEETS]` · `[ORDERS]` ·
 - `fetchImpl` (l. 230) — Resend simulado: guarda cada correo enviado en `sent`.
 - `down` (l. 252) — Resend simulado que rechaza todos los envíos (403: dominio sin verificar).
 - `up` (l. 259) — Resend simulado que acepta todos los envíos.
-- `up` (l. 281) — Sube una hoja (cuerpo `body`) al API con el catálogo de pruebas y devuelve la respuesta ya leída.
-- `items` (l. 283) — Precios vigentes guardados en KV.
-- `rows` (l. 318) — Hoja de 12 referencias R0…R11 con precio base + índice.
+- `run` (l. 270) — Envía el contacto de ejemplo a un entorno nuevo (con o sin RESEND_API_KEY) y un Resend simulado con ese estado → { status, j (JSON), env }.
+- `up` (l. 284) — Sube una hoja (cuerpo `body`) al API con el catálogo de pruebas y devuelve la respuesta ya leída.
+- `items` (l. 286) — Precios vigentes guardados en KV.
+- `rows` (l. 321) — Hoja de 12 referencias R0…R11 con precio base + índice.
 
 ### `helpers.js`
 
@@ -1362,6 +1448,22 @@ Ayudas de las pruebas de seguridad: llamadas al Worker con IP, token y hora simu
 - `order` (l. 30) — Pedido válido de ejemplo con referencias REALES del catálogo generado; over sustituye campos de primer nivel.
 - `orderEnv` (l. 32) — Entorno de pruebas con Resend configurado, precios vigentes de ejemplo (P16633 y P8339) y los extras indicados.
 - `keys` (l. 38) — Todas las claves de KV (ordenadas) que empiezan por el prefijo.
+- `provider` (l. 40) — Proveedor de correo simulado (Resend o Brevo, según la URL a la que se llame): guarda cada petición { url, headers, body } en `calls`. `status` y `reply` fijan la respuesta (por defecto 200 con { id } de Resend o 201 con { messageId } de Brevo; un texto se envía tal cual); `throws` simula una caída de red.
+- `fetchImpl` (l. 43) — fetch simulado: anota la petición y responde como el proveedor (o lanza, si se pidió una caída de red).
+- `freshIp` (l. 53) — IP de prueba nueva en cada llamada (el límite de contacto es de 5 por visitante cada 10 minutos).
+- `contactPost` (l. 55) — POST /api/contact anónimo con un mensaje válido de ejemplo (over sustituye campos; el resto va a deps: now, rand, retryMs…) → { r (Response), j (JSON), ip }.
+- `withLog` (l. 60) — Ejecuta fn con console.error capturado → las líneas que se escribieron en el registro del servidor (una cadena por llamada).
+- `messagesIn` (l. 67) — Registros (ya leídos) de los mensajes de contacto guardados en el KV del entorno, de la clave más reciente a la más antigua.
+
+### `mail-contact.test.js`
+
+[PRUEBAS-CONTACTO] Pruebas de M1 (POST /api/contact guarda SIEMPRE y `emailed` dice la verdad), M3 (controladores Resend y Brevo con fetch simulado, remitente, EMAIL_PROVIDER) y M4 (secretos y datos del visitante). Sin red: KV en memoria y proveedores simulados con provider() (ver kit.js). Mismos nombres que en el PHP en lo posible (M1 · …).
+
+Secciones: `[PRUEBAS-CONTACTO]`
+
+- `ttlOf` (l. 13) — Segundos de caducidad que le quedan a una clave del KV de pruebas (la fecha de caducidad se anota al guardar).
+- `stored` (l. 15) — Registro del mensaje con ese id, tal como está guardado en KV.
+- `conTurnstile` (l. 111) — fetch que responde al desafío de Turnstile con éxito o fracaso y deja pasar lo demás al proveedor simulado.
 
 ### `price-sheet.test.js`
 
@@ -1430,6 +1532,29 @@ Constructor mínimo de libros .xlsx para las pruebas (zip con deflate o sin comp
 - `rowXml` (l. 23) — Fila de texto en línea: <row><c r="A1" t="inlineStr"><is><t>…</t></is></c>…</row> con las celdas dadas (números → <v>).
 
 ## `shared/`
+
+### `blog-markdown.mjs`
+
+[BLOG-MD] Conversor de texto (Markdown reducido) a HTML para las entradas del blog que se escriben en el panel. LA MISMA lógica vive en PHP (backend-php/api/lib/BlogMarkdown.php): shared/blog-markdown.fixtures.json es el contrato que cumplen las dos (scripts/test-blog-markdown.mjs y backend-php/api/tests/BlogMarkdownTest.php lo recorren). Si cambia una regla aquí, cambia en los dos y en las pruebas.
+
+Secciones: `[BLOG-MD]`
+
+- `escapeHtml` (l. 12) — Escapa & < > " para texto y atributos.
+- `safeUrl` (l. 18) — Dirección permitida en un enlace, o null. Admite https://, http://, mailto:, tel:, /ruta (no //), #ancla.
+- `safeImageUrl` (l. 30) — Dirección permitida en una imagen, o null: https:// o una ruta del propio sitio (/media/blog/…).
+- `imgHtml` (l. 36) — <img> de una imagen en Markdown (o null si la dirección no vale). `o.imgAttrs(src)` puede devolver width/height ya escapados (el servidor los conoce).
+- `emphasis` (l. 46) — Negrita y cursiva (** __ * _ y *** para las dos) con anidación SIEMPRE bien formada: un emparejamiento con pila; lo que no cierra se queda como texto. Trabaja sobre texto ya escapado.
+- `flush` (l. 52) — Pasa el texto acumulado a la lista de trozos.
+- `inline` (l. 91) — Texto en línea (negrita, cursiva, código, enlaces, imágenes) → HTML ya escapado.
+- `put` (l. 94) — Guarda un trozo de HTML ya seguro y devuelve su marca de posición.
+- `isBlank` (l. 120) — ¿La línea está vacía o solo tiene espacios?
+- `splitRow` (l. 129) — Celdas de una fila de tabla (\| escapa la barra).
+- `startsTable` (l. 136) — ¿Esta línea y la siguiente abren una tabla? (una fila con barras y debajo la fila de guiones con las mismas columnas)
+- `startsBlock` (l. 138) — ¿Esta línea empieza un bloque distinto de un párrafo?
+- `render` (l. 141) — Markdown reducido → HTML. Opciones: tableLabel (nombre accesible de las tablas, «Tabla»), imgAttrs(src) (width/height de las imágenes que el servidor conoce).
+- `toPlain` (l. 198) — Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt.
+- `excerpt` (l. 208) — Extracto de hasta `n` caracteres cortado en una palabra entera (con «…» si se recorta).
+- `slugify` (l. 216) — Título → dirección: minúsculas, sin acentos, letras y cifras separadas por guiones, hasta 80 caracteres (cortado en un guion).
 
 ### `price-sheet.mjs`
 
@@ -1954,7 +2079,7 @@ Secciones: `[TESTS]`
 
 ### `run.php`
 
-Ejecuta todas las pruebas: php tests/run.php  (código de salida 1 si alguna falla)
+Ejecuta todas las pruebas: php tests/run.php  (código de salida 1 si alguna falla). Con un argumento solo carga los archivos *Test.php cuyo nombre lo contenga: php tests/run.php Blog
 
 ### `support.php`
 
