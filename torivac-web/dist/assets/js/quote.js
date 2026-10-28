@@ -131,6 +131,17 @@
   TV.Quote = API;
 
   // ───────────────────────────────────────── [CSV] lector RFC 4180 (comillas, separador , o ;, saltos de línea dentro de comillas)
+  // ───────────────────────────────────────── [API] Worker de producción (workers/api). Sin TV.meta.api → modo demo (envío simulado).
+  TV.api = {
+    base: function () { return String((TV.meta && TV.meta.api) || '').replace(/\/+$/, ''); },
+    live: function () { return !!TV.api.base(); },
+    post: function (path, body) {
+      return fetch(TV.api.base() + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+        .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'HTTP ' + r.status }; }).then(function (j) { j.status = r.status; return j; }); })
+        .catch(function () { return { ok: false, error: 'network', status: 0 }; });
+    }
+  };
+
   TV.csvParse = function (text) {
     text = String(text).replace(/^\ufeff/, '');
     var first = text.split('\n')[0], delim = (first.match(/;/g) || []).length >= (first.match(/,/g) || []).length ? ';' : ',';

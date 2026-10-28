@@ -5,3 +5,4 @@ node_modules/
 # mediateca en bruto (10 MB x4, idéntica entre idiomas): se usa data/analysis/media-index.json
 data/raw/rest/media.*.json
 data/raw/pdf/
+entrega/

@@ -103,7 +103,9 @@
      "item": "Página sin capa de texto numérica",
      "why": "El texto extraíble solo contiene los rótulos y el número de página; las cotas y pesos se transcribieron de la imagen renderizada (110-220 ppp)."
     }
-   ]
+   ],
+   "corrections": [],
+   "verified": true
   },
   {
    "file": "Bobinas_encapsuladas_-potenciometros_ENd.pdf",
@@ -227,7 +229,9 @@
      "item": "Página renderizada para las cotas del dibujo",
      "why": "El texto extraíble contiene los datos de 'Characteristics' pero no las cotas del dibujo; la página se marca como visual_only para esas cotas."
     }
-   ]
+   ],
+   "corrections": [],
+   "verified": true
   },
   {
    "file": "Caracteristicas_Bobinas_Encapsuladas.pdf",
@@ -389,8 +393,23 @@
      "page": 1,
      "item": "Decimales con punto (0.450 ... 1.225)",
      "why": "Conservados tal cual; en la hoja de la p. 26 el peso usa coma (2,635). Formato no uniforme entre fichas."
+    },
+    {
+     "page": 1,
+     "item": "Sufijos '[fila 4: cotas D, E, F, G]' y '[fila 5: cota C]' en 'reference'",
+     "why": "Son etiquetas de desambiguación del analista para las dos filas de 200 VA; el PDF no da referencias. No publicar como nombre ni código de modelo (usar '200 VA' más las cotas)."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "uncertain (aviso nuevo sobre 'reference' de las dos filas de 200 VA)",
+     "was": "sin aviso",
+     "now": "añadido aviso en 'uncertain'",
+     "why": "Los sufijos entre corchetes no vienen del PDF; el aviso evita que se publiquen como código de modelo. Valores de la tabla sin cambios."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Caracteristicas_Potenciometros_3W.pdf",
@@ -481,8 +500,8 @@
         "Peso neto": "40 grs.",
         "Embalaje": "Caja de 25 pzas.",
         "Dibujo - diámetro del cuerpo": "27",
-        "Dibujo - longitud total": "48",
-        "Dibujo - longitud del cuerpo (cota superior)": "40",
+        "Dibujo - cota horizontal inferior del alzado": "48",
+        "Dibujo - cota horizontal superior del alzado": "40",
         "Dibujo - longitud del eje": "12",
         "Dibujo - diámetro del eje": "6",
         "Dibujo - separación angular entre terminales": "40° / 40°",
@@ -552,7 +571,7 @@
     {
      "page": 1,
      "item": "Serie E-10 y valor de 5 Ω",
-     "why": "El PDF no lista los valores de la serie E-10. 5 Ω no es un valor normalizado típico de E-10 (el más cercano es 4,7 Ω). Propuesta para admin: pedir a Torivac la lista real de valores; no generar una lista propia."
+     "why": "El PDF no lista los valores de la serie E-10. Si 5 Ω encaja en la serie citada no se puede comprobar con el PDF. Propuesta para admin: pedir a Torivac la lista real de valores; no generar una lista propia."
     },
     {
      "page": 1,
@@ -572,7 +591,7 @@
     {
      "page": 1,
      "item": "Cotas de los dibujos (8, 6, 2,5, M10/100, 22,5, 48, 40)",
-     "why": "Sin unidad ni significado rotulado; solo 25 (diámetro), 12 (eje) y Ø6 (eje) se confirman con el texto. 'M10/100' se transcribe tal cual sin interpretar (rosca del casquillo, probable). Cota 40 en el doble: lectura de dibujo."
+     "why": "Sin unidad ni significado rotulado; solo 25 (diámetro), 12 (eje) y Ø6 (eje) se confirman con el texto. 'M10/100' se transcribe tal cual sin interpretar (rosca del casquillo, probable). En el potenciómetro doble, 48 y 40 se guardan solo por su posición en el dibujo (cota horizontal inferior / superior del alzado), sin decidir qué tramo miden."
     },
     {
      "page": 1,
@@ -584,7 +603,38 @@
      "item": "Sin referencias de producto",
      "why": "La ficha no da códigos de pedido. Propuesta para admin: solicitar códigos a Torivac."
     }
-   ]
+   ],
+   "corrections": [
+    {
+     "page": 1,
+     "item": "POTENCIOMETRO DOBLE, specs, clave de la cota 48",
+     "was": "'Dibujo - longitud total': '48'",
+     "now": "'Dibujo - cota horizontal inferior del alzado': '48'",
+     "why": "El valor 48 es correcto (visto en la imagen), pero 'longitud total' era una interpretación: la línea de cota llega hasta la cara frontal y no incluye el eje (12) ni la rosca. Se deja solo la posición en el dibujo; sin unidad rotulada."
+    },
+    {
+     "page": 1,
+     "item": "POTENCIOMETRO DOBLE, specs, clave de la cota 40",
+     "was": "'Dibujo - longitud del cuerpo (cota superior)': '40'",
+     "now": "'Dibujo - cota horizontal superior del alzado': '40'",
+     "why": "El valor 40 es correcto, pero 'longitud del cuerpo' no está rotulado en el PDF y 40 vs 48 no permite decidir qué tramo mide cada una (el saliente posterior entra solo en la 48). Se deja solo la posición."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Cotas de los dibujos (8, 6, 2,5, M10/100, 22,5, 48, 40)'",
+     "was": "Sin unidad ni significado rotulado; solo 25 (diámetro), 12 (eje) y Ø6 (eje) se confirman con el texto. 'M10/100' se transcribe tal cual sin interpretar (rosca del casquillo, probable). Cota 40 en el doble: lectura de dibujo.",
+     "now": "Sin unidad ni significado rotulado; solo 25 (diámetro), 12 (eje) y Ø6 (eje) se confirman con el texto. 'M10/100' se transcribe tal cual sin interpretar (rosca del casquillo, probable). En el potenciómetro doble, 48 y 40 se guardan solo por su posición en el dibujo (cota horizontal inferior / superior del alzado), sin decidir qué tramo miden.",
+     "why": "Coherencia con el cambio de claves 48/40: se elimina la afirmación 'Cota 40 en el doble: lectura de dibujo' y se aclara que ambas son solo posicionales."
+    },
+    {
+     "page": 1,
+     "item": "uncertain 'Serie E-10 y valor de 5 Ω'",
+     "was": "El PDF no lista los valores de la serie E-10. 5 Ω no es un valor normalizado típico de E-10 (el más cercano es 4,7 Ω). Propuesta para admin: pedir a Torivac la lista real de valores; no generar una lista propia.",
+     "now": "El PDF no lista los valores de la serie E-10. Si 5 Ω encaja en la serie citada no se puede comprobar con el PDF. Propuesta para admin: pedir a Torivac la lista real de valores; no generar una lista propia.",
+     "why": "El texto citaba '4,7 Ω' y una norma de series que no figuran en el PDF (regla 1: toda cifra debe estar en el PDF). Se elimina la cifra ajena; la duda queda como propuesta."
+    }
+   ],
+   "verified": true
   },
   {
    "file": "Caracteristicas_Potenciometros_5W.pdf",
@@ -712,7 +762,9 @@
      "item": "Sin referencias de producto",
      "why": "La ficha no incluye códigos de pedido."
     }
-   ]
+   ],
+   "corrections": [],
+   "verified": true
   }
  ]
 }

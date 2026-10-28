@@ -67,7 +67,7 @@
 
   // ───────────────────────────────────────── [PDF] + [SEND]
   var form = $('[data-quote-form]');
-  function customer() { var o = {}; new FormData(form).forEach(function (v, k) { o[k] = v; }); return o; }
+  function customer() { var o = {}; new FormData(form).forEach(function (v, k) { if (k !== 'hp') o[k] = v; }); return o; }
   function download(res) { var a = document.createElement('a'); a.href = URL.createObjectURL(res.blob()); a.download = res.filename; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 800); }
   $('[data-download-pdf]').addEventListener('click', function () {
     if (!Q.lines().length) return TV.toast(Q.t('quote_empty'));
@@ -84,14 +84,36 @@
     });
     if (!Q.lines().length) { TV.toast(Q.t('quote_empty')); return; }
     if (bad.length) { bad[0].focus(); return; }
-    var c = customer(), res = TV.makeQuotePdf({ customer: c }), d = Q.detail();
+    var c = customer(), res = TV.makeQuotePdf({ customer: c }), d = Q.detail(), out = $('[data-sent]');
+    if (TV.api.live()) return sendLive(c, res, d, out);
+    sendDemo(c, res, d, out);
+  });
+  // ───────────────────────────────────────── [SEND-LIVE] producción: POST al Worker (precios y totales los fija el servidor)
+  function sendLive(c, res, d, out) {
+    var btn = form.querySelector('button[type=submit]'); btn.disabled = true; var label = btn.textContent; btn.textContent = Q.t('sending');
+    var pdf = String(res.doc.output('datauristring')).replace(/^data:[^,]*,/, '');
+    TV.api.post('/api/order', { customer: { name: c.name, company: c.company, email: c.email, phone: c.phone, notes: c.notes, privacy: !!c.privacy }, lines: d.lines.map(function (l) { return { ref: l.ref, qty: l.qty }; }), lang: Q.lang, pdf: pdf, hp: new FormData(form).get('hp') || '' }).then(function (r) {
+      btn.disabled = false; btn.textContent = label; out.hidden = false; out.setAttribute('tabindex', '-1');
+      if (r && r.ok) {
+        out.className = 'notice ok'; out.innerHTML = '<strong>' + esc(Q.t('order_sent')) + ' · ' + esc(r.number) + '</strong><br>' + esc(Q.t('order_received'));
+        Q.clear(); form.reset();
+      } else {
+        var mail = ((TV.meta && TV.meta.recipients) || ['info@torivac.com'])[0];
+        out.className = 'notice'; out.innerHTML = esc(Q.t('send_failed')) + ' <a href="mailto:' + esc(mail) + '">' + esc(mail) + '</a>' + (r && r.error && r.error !== 'network' ? '<br><span class="small muted">' + esc(r.error) + '</span>' : '');
+      }
+      out.focus();
+    });
+  }
+
+  // ───────────────────────────────────────── [SEND-DEMO] demo: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador mailto:
+  function sendDemo(c, res, d, out) {
     download(res);
     var body = Q.t('quote') + ' ' + res.number + '\n\n' + d.lines.map(function (l) { return '- ' + (l.generic ? '' : l.ref + ' · ') + l.name + ' × ' + l.qty + (l.total == null ? '' : ' = ' + Q.money(l.total)); }).join('\n') + '\n\n' + Q.t('total') + ': ' + Q.money(d.total) + '\n\n' + [c.name, c.company, c.email, c.phone].filter(Boolean).join(' · ') + (c.notes ? '\n\n' + c.notes : '') + '\n\n(PDF: ' + res.filename + ')';
     var to = ((TV.meta && TV.meta.recipients) || ['info@torivac.com']).join(',');
     var href = 'mailto:' + to + '?cc=' + encodeURIComponent(c.email) + '&subject=' + encodeURIComponent(Q.t('quote') + ' ' + res.number) + '&body=' + encodeURIComponent(body);
     try { var arr = JSON.parse(localStorage.getItem('tv_orders') || '[]'); arr.push({ number: res.number, at: new Date().toISOString(), customer: c, lines: d.lines.map(function (l) { return { ref: l.ref, qty: l.qty, unit: l.unit, total: l.total }; }), total: d.total, demo: !!(TV.prices && TV.prices.mode === 'demo') }); localStorage.setItem('tv_orders', JSON.stringify(arr)); } catch (x) { /* ignorar */ }
-    var out = $('[data-sent]'); out.hidden = false;
+    out.hidden = false;
     out.innerHTML = '<strong>' + esc(Q.t('order_sent')) + ' · ' + esc(res.number) + '</strong><br>' + esc(Q.t('order_sent_text')) + '<br><a class="btn sm" style="margin-top:8px" href="' + esc(href) + '">' + esc(Q.t('open_email')) + '</a>';
     out.focus && out.setAttribute('tabindex', '-1'); out.focus();
-  });
+  }
 })();

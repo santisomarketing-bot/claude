@@ -341,6 +341,7 @@ export function quoteBody(ctx) {
       <div class="grid2"><label>${t('name', lang)}<input type="text" name="name" autocomplete="name" required></label><label>${t('company', lang)}<input type="text" name="company" autocomplete="organization"></label></div>
       <div class="grid2"><label>${t('email', lang)}<input type="email" name="email" autocomplete="email" required></label><label>${t('phone', lang)}<input type="tel" name="phone" autocomplete="tel"></label></div>
       <label>${t('notes', lang)}<textarea name="notes"></textarea></label>
+      <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label class="check"><input type="checkbox" name="privacy" required> <span>${t('accept_privacy', lang)}</span></label>
       <div class="actions" style="display:flex;gap:var(--s-3);flex-wrap:wrap"><button class="btn" type="submit">${t('send_order', lang)}</button><button class="btn ghost" type="button" data-download-pdf>${t('download_pdf', lang)}</button></div>
       <p class="small muted">${t('send_hint', lang)}</p>
@@ -357,6 +358,7 @@ export function contactForm(ctx, where = 'page') {
     <label class="vh" for="cf-name-${where}">${t('name', lang)}</label><input id="cf-name-${where}" type="text" name="name" placeholder="${attr(t('name', lang))}" autocomplete="name" required>
     <label class="vh" for="cf-email-${where}">${t('email', lang)}</label><input id="cf-email-${where}" type="email" name="email" placeholder="${attr(t('email', lang))}" autocomplete="email" required>
     <label class="vh" for="cf-msg-${where}">${t('message', lang)}</label><textarea id="cf-msg-${where}" name="message" placeholder="${attr(t('message', lang))}" required></textarea>
+    <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label class="check"><input type="checkbox" name="privacy" required><span>${t('accept_privacy', lang)}</span></label>
     <div><button class="btn" type="submit">${t('send', lang)}</button></div>
     <p class="small muted">${t('recaptcha', lang)}</p>
