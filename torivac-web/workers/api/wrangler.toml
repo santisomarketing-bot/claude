@@ -21,6 +21,8 @@ ORDER_FROM = "Torivac Web <pedidos@grupotorivac.com>"    # el dominio debe estar
 ALLOWED_ORIGINS = "http://localhost:8080,http://127.0.0.1:8080"      # añadir el dominio real/de pruebas de la web en cPanel, p. ej. https://nueva.grupotorivac.com
 PRICE_SHEET_ID = ""                                      # id de la hoja de Google (docs.google.com/spreadsheets/d/<ID>/…)
 PRICE_SHEET_RANGE = "Precios!A:O"
+PRICE_XLSX_URL = ""                                      # alternativa sin credenciales: descarga directa de un .xlsx (Drive «compartir con enlace»: https://drive.google.com/uc?export=download&id=<ID>)
+PRICE_SHEET_NAME = ""                                    # (.xlsx) nombre de la hoja; vacío = la primera visible con columnas de referencia y precio
 PRICE_CSV_URL = ""                                       # alternativa sin credenciales: URL de exportación CSV de la hoja (compartida con enlace)
 
 # Secretos (npx wrangler secret put <NOMBRE>):

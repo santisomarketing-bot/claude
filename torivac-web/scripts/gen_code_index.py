@@ -18,7 +18,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SCAN = [
     ("site", ["*.mjs"]), ("site/lib", ["*.mjs"]), ("site/assets/js", ["*.js"]), ("site/assets/css", ["*.css"]),
     ("scripts", ["*.py", "*.mjs", "*.sh"]), ("scripts/lib", ["*.mjs"]),
-    ("workers/api/src", ["*.js"]), ("workers/api/test", ["*.js"]),
+    ("workers/api/src", ["*.js"]), ("workers/api/test", ["*.js"]), ("shared", ["*.mjs"]),
+    ("backend-php/api", ["*.php"]), ("backend-php/api/lib", ["*.php"]), ("backend-php/api/tools", ["*.php"]), ("backend-php/api/tests", ["*.php"]),
 ]
 JS_FUNC = [
     re.compile(r"^\s*(?:export\s+)?(?:default\s+)?(?:async\s+)?function\s*\*?\s*([A-Za-z_$][\w$]*)\s*\("),
@@ -26,6 +27,7 @@ JS_FUNC = [
     re.compile(r"^\s*([A-Za-z_$][\w$.]*)\s*[:=]\s*(?:async\s+)?function\s*\("),            # TV.csvParse = function (…)   |   clave: function (…)
     re.compile(r"^\s{2,}(?:async\s+)?([a-z][\w$]*)\s*\([^)]*\)\s*\{\s*$"),                   # método de objeto/clase (sangrado)
 ]
+PHP_FUNC = re.compile(r"^\s*(?:(?:public|private|protected|static|final|abstract)\s+)*function\s+&?([A-Za-z_]\w*)\s*\(")
 KEYWORDS = {"if", "for", "while", "switch", "catch", "function", "return", "else", "do", "with"}
 TAG = re.compile(r"\[([A-Z][A-Z0-9\-_/ ]{1,30})\]")
 
@@ -79,6 +81,22 @@ def scan_js(path):
                 funcs.append((i + 1, m.group(1), comment_above(lines, i)))
                 break
     return header_of(lines, "js"), tags, funcs
+
+
+def scan_php(path):
+    """PHP: la cabecera es el primer docblock tras `<?php`; cada método/función lleva encima un docblock o un comentario `//`."""
+    lines = path.read_text(encoding="utf-8", errors="ignore").splitlines()
+    body = lines[1:] if lines and lines[0].startswith("<?php") else lines
+    funcs, tags = [], []
+    for i, ln in enumerate(lines):
+        if ln.strip().startswith(("//", "/*", "*")):
+            for t in TAG.findall(ln):
+                if t not in tags:
+                    tags.append(t)
+        m = PHP_FUNC.match(ln)
+        if m and not ln.strip().startswith(("//", "*")):
+            funcs.append((i + 1, m.group(1), comment_above(lines, i)))
+    return header_of(body, "js"), tags, funcs
 
 
 def scan_py(path):
@@ -135,6 +153,8 @@ def main():
                     head, tags, funcs = scan_py(f)
                 elif ext == ".css":
                     head, tags, funcs = scan_css(f)
+                elif ext == ".php":
+                    head, tags, funcs = scan_php(f)
                 elif ext == ".sh":
                     head, tags, funcs = header_of(f.read_text().splitlines(), "js"), [], []
                 else:

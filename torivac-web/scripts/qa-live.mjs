@@ -1,22 +1,19 @@
 #!/usr/bin/env node
-// [QA-LIVE] Sesión 9/6 · La web de producción contra el Worker REAL (workers/api) en memoria: sin red, sin enviar correo de verdad.
-//   node scripts/qa-live.mjs
-// Cadena: navegador (Playwright) → dist/ servido por http → Worker torivac-api (KV en memoria, Resend simulado).
+// [QA-LIVE] Sesión 9/6 · La web de producción contra el backend REAL: sin red, sin enviar correo de verdad.
+//   node scripts/qa-live.mjs            contra el Worker torivac-api (workers/api, KV en memoria)
+//   node scripts/qa-live.mjs --php      contra el API PHP de cPanel (backend-php/api, php -S, almacén en ficheros)
+// Cadena: navegador (Playwright) → dist/ servido por http → backend (Resend simulado) · ver scripts/lib/backends.mjs.
 // Se comprueba: pedido con PDF adjunto a info@ y mzamora@ + copia al cliente, repricing en servidor, vaciado del presupuesto,
 // fallo del servidor (mensaje + mailto, el presupuesto se conserva), honeypot, formulario de contacto, CORS.
 import { createRequire } from 'node:module';
-import http from 'node:http';
 import path from 'node:path';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
-import { serve } from './lib/static-server.mjs';
+import { startBackend } from './lib/backends.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
-const { default: worker } = await import(path.join(ROOT, 'workers/api/src/index.js'));
-const { FakeKV } = await import(path.join(ROOT, 'workers/api/test/helpers.js'));
-const { KEY_CURRENT } = await import(path.join(ROOT, 'workers/api/src/prices.js'));
 
 // ───────────────────────────────────────── [DATA]
 const sb = { window: {} }; sb.window = sb; vm.createContext(sb);
@@ -29,21 +26,11 @@ const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
 const unit = (ref, q) => { const p = prices.items[ref]; let u = p.p; for (const [m, x] of p.t || []) if (q >= m) u = x; return u; };
 const expTotal = round2(REFS.reduce((s, r) => s + round2(unit(r, QTY[r]) * QTY[r]), 0));
 
-// ───────────────────────────────────────── [SITE] + [WORKER]
-const { server: site, base: SITE } = await serve(DIST);
-const env = { KV: new FakeKV(), ORDER_TO: 'info@grupotorivac.com,mzamora@torivac.com', ORDER_FROM: 'Torivac Web <pedidos@grupotorivac.com>', RESEND_API_KEY: 're_test', SESSION_SECRET: 'x'.repeat(40), ADMIN_API_TOKEN: 'master-test', ALLOWED_ORIGINS: SITE };
-await env.KV.put(KEY_CURRENT, JSON.stringify({ ...prices, mode: 'live', updated_at: new Date().toISOString() }));
-const mails = []; let failNext = false;
-const mockFetch = async (url, init) => { if (String(url).includes('api.resend.com')) { mails.push(JSON.parse(init.body)); return new Response(JSON.stringify({ id: 'mail_' + mails.length }), { status: 200 }); } throw new Error('red no permitida en el test: ' + url); };
-const api = http.createServer(async (rq, rs) => {
-  const chunks = []; for await (const c of rq) chunks.push(c);
-  const body = Buffer.concat(chunks);
-  const request = new Request(`http://127.0.0.1:${api.address().port}${rq.url}`, { method: rq.method, headers: rq.headers, body: ['GET', 'HEAD'].includes(rq.method) ? undefined : body });
-  const res = failNext && rq.url.startsWith('/api/order') && rq.method === 'POST' ? (failNext = false, new Response(JSON.stringify({ ok: false, error: 'fallo simulado' }), { status: 500, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': SITE } })) : await worker.fetch(request, env, {}, { fetchImpl: mockFetch });
-  rs.writeHead(res.status, Object.fromEntries(res.headers)); rs.end(Buffer.from(await res.arrayBuffer()));
-});
-await new Promise((r) => api.listen(0, '127.0.0.1', r));
-const API = `http://127.0.0.1:${api.address().port}`;
+// ───────────────────────────────────────── [SITE] + [BACKEND]
+const be = await startBackend({ dist: DIST });
+const { SITE, API, mails } = be;
+console.log(`backend: ${be.kind}`);
+await be.seedPrices({ ...prices, mode: 'live', updated_at: new Date().toISOString() });
 
 // ───────────────────────────────────────── [BROWSER]
 const browser = await chromium.launch();
@@ -54,6 +41,8 @@ await ctx.addInitScript(() => { try { localStorage.setItem('tv_lang', 'es'); loc
 // el sitio se compila SIN API (demo); aquí se le «enchufa» el Worker como haría TORIVAC_API en el build de producción
 await ctx.route('**/assets/data/catalog.js', async (route) => { const r = await route.fetch(); await route.fulfill({ response: r, body: (await r.text()) + `\nTV.meta.api=${JSON.stringify(API)};TV.meta.demo=false;\n` }); });
 const page = await ctx.newPage();
+let failNext = false;                                                  // el servidor «se cae» una vez: la web debe avisar y no perder el presupuesto
+await page.route('**/api/order', (route) => { if (failNext && route.request().method() === 'POST') { failNext = false; return route.fulfill({ status: 500, contentType: 'application/json', headers: { 'Access-Control-Allow-Origin': '*' }, body: '{"ok":false,"error":"fallo simulado"}' }); } return route.fallback(); });
 const errs = []; page.on('pageerror', (e) => errs.push(e.message)); page.on('console', (m) => { if (m.type() === 'error' && !/favicon|Failed to load resource/.test(m.text())) errs.push(m.text()); });
 
 console.log('\n1) pedido real');
@@ -81,7 +70,7 @@ ok(JSON.stringify(copy.to) === JSON.stringify(['cliente.prueba@example.com']), '
 const att = (team.attachments || [])[0];
 ok(att && /\.pdf$/.test(att.filename) && String(att.content).startsWith('JVBER'), `PDF adjunto (${att && att.filename}, ${att ? Math.round(att.content.length * 0.75 / 1024) : 0} KB)`);
 for (const r of REFS) ok(String(team.html).includes(r), `el correo incluye ${r}`);
-const stored = JSON.parse((await env.KV.get(`order:${num}`)) || 'null');
+const stored = await be.order(num);
 ok(stored && stored.total === expTotal, `total fijado en servidor ${stored && stored.total} = ${expTotal}`);
 ok(stored && stored.customer.company === 'Taller Test S.L.' && stored.lines.length === 3, 'pedido guardado con cliente y 3 líneas');
 
@@ -118,6 +107,6 @@ const bad = await fetch(API + '/api/order', { method: 'POST', headers: { 'Conten
 ok(bad.status === 403, `origen ajeno → ${bad.status}`);
 ok(!errs.length, 'sin errores de consola' + (errs.length ? ': ' + errs.slice(0, 3).join(' | ') : ''));
 
-await browser.close(); site.close(); api.close();
-console.log(fails ? `\n✗ ${fails} comprobaciones fallidas` : '\n✓ web + Worker: pedido, contacto y errores correctos');
+await browser.close(); await be.stop();
+console.log(fails ? `\n✗ ${fails} comprobaciones fallidas` : `\n✓ web + ${be.kind}: pedido, contacto y errores correctos`);
 process.exit(fails ? 1 : 0);

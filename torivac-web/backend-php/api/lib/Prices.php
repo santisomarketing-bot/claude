@@ -136,7 +136,7 @@ final class Sheets
     {
         $iat = $now ?? time();
         $head = Util::b64url(Util::enc(['alg' => 'RS256', 'typ' => 'JWT']));
-        $claim = Util::b64url(Util::enc(['iss' => $sa['client_email'], 'scope' => 'https://www.googleapis.com/auth/spreadsheets.readonly', 'aud' => 'https://oauth2.googleapis.com/token', 'iat' => $iat, 'exp' => $iat + 3600]));
+        $claim = Util::b64url(Util::enc(['iss' => $sa['client_email'], 'scope' => 'https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive.readonly', 'aud' => 'https://oauth2.googleapis.com/token', 'iat' => $iat, 'exp' => $iat + 3600]));
         $key = openssl_pkey_get_private($sa['private_key']);
         if (!$key || !openssl_sign($head . '.' . $claim, $sig, $key, OPENSSL_ALGO_SHA256)) throw new \RuntimeException('La clave de la cuenta de servicio no es válida');
         $url = (string) Config::get('prices.google_oauth_url', 'https://oauth2.googleapis.com/token');
@@ -146,19 +146,42 @@ final class Sheets
         return $j['access_token'];
     }
 
-    /** @return array{0:array,1:string} [filas, origen] */
+    /** filas de la hoja de precios de un libro .xlsx descargado (bytes); si no es un libro, el error dice qué revisar */
+    private static function xlsxRows(string $bytes, string $hint): array
+    {
+        try { $sheets = Xlsx::read($bytes); } catch (\InvalidArgumentException $e) { throw new \InvalidArgumentException($e->getMessage() . ' (' . $hint . ')'); }
+        return Xlsx::pick($sheets, (string) Config::get('prices.sheet_name', ''))['rows'];
+    }
+
+    /**
+     * Tres orígenes, en este orden:
+     *   1) cuenta de servicio + prices.sheet_id: hoja de Google → Sheets API; si es un .xlsx subido a Drive sin convertir → se descarga con la API de Drive y se lee el libro
+     *   2) prices.xlsx_url: descarga directa de un .xlsx (Drive «compartir con enlace»: https://drive.google.com/uc?export=download&id=<ID> · hoja de Google: …/export?format=xlsx)
+     *   3) prices.csv_url: exportación CSV pública con enlace
+     * @return array{0:array,1:string} [filas, origen]
+     */
     public static function readRows(): array
     {
         $sa = self::serviceAccount();
         $id = (string) Config::get('prices.sheet_id', '');
         if ($sa && $id !== '') {
             $token = self::accessToken($sa);
+            $auth = ['Authorization: Bearer ' . $token];
             $base = rtrim((string) Config::get('prices.google_sheets_base', 'https://sheets.googleapis.com'), '/');
             $range = rawurlencode((string) Config::get('prices.sheet_range', 'Precios!A:O'));
-            [$st, $body] = Http::request('GET', $base . '/v4/spreadsheets/' . rawurlencode($id) . '/values/' . $range . '?valueRenderOption=UNFORMATTED_VALUE', ['Authorization: Bearer ' . $token]);
-            if ($st !== 200) throw new \RuntimeException('Sheets API ' . $st);
-            $j = json_decode($body, true);
-            return [$j['values'] ?? [], 'sheet:' . $id];
+            [$st, $body] = Http::request('GET', $base . '/v4/spreadsheets/' . rawurlencode($id) . '/values/' . $range . '?valueRenderOption=UNFORMATTED_VALUE', $auth);
+            if ($st === 200) { $j = json_decode($body, true); return [$j['values'] ?? [], 'sheet:' . $id]; }
+            // un .xlsx guardado tal cual en Drive (sin «Guardar como hoja de cálculo de Google») no se lee con la API de Sheets: se descarga con la de Drive
+            $drive = rtrim((string) Config::get('prices.google_drive_base', 'https://www.googleapis.com'), '/');
+            [$ds, $dbody] = Http::request('GET', $drive . '/drive/v3/files/' . rawurlencode($id) . '?alt=media', $auth);
+            if ($ds !== 200) throw new \RuntimeException("No puedo leer el archivo de Drive: Sheets API $st · Drive API $ds (¿está compartido con el correo de la cuenta de servicio?)");
+            return [self::xlsxRows($dbody, 'el archivo de Drive no es una hoja de Google ni un .xlsx'), 'drive-xlsx:' . $id];
+        }
+        $xlsx = (string) Config::get('prices.xlsx_url', '');
+        if ($xlsx !== '') {
+            [$st, $body] = Http::request('GET', $xlsx);
+            if ($st !== 200) throw new \RuntimeException('XLSX ' . $st);
+            return [self::xlsxRows($body, 'la URL no devolvió un libro: ¿el archivo está compartido con enlace?'), 'xlsx-url'];
         }
         $csv = (string) Config::get('prices.csv_url', '');
         if ($csv !== '') {
@@ -166,7 +189,7 @@ final class Sheets
             if ($st !== 200) throw new \RuntimeException('CSV ' . $st);
             return [self::parseCsv($body), 'csv-url'];
         }
-        throw new \RuntimeException('Sin origen de precios: configura prices.sheet_id + prices.google_service_account o prices.csv_url');
+        throw new \RuntimeException('Sin origen de precios: configura prices.sheet_id + prices.google_service_account, prices.xlsx_url o prices.csv_url');
     }
 
     /**

@@ -105,7 +105,7 @@
   V.ajustes = function () {
     return http('GET', '/api/auth/me').then(function (r) {
       var u = r.user || {};
-      return '<h1>Ajustes</h1><section class="panel"><h2>Tu sesión</h2><p>' + esc(u.name || '') + ' · <span class="mono">' + esc(u.sub || u.email || '') + '</span> · ' + esc(u.role || '') + '</p></section><section class="panel"><h2>Destinatarios del pedido</h2><p>Se configuran en el Worker (variable <span class="mono">ORDER_TO</span>); hoy: ' + esc(((TV.meta && TV.meta.recipients) || []).join(' · ')) + '</p></section>';
+      return '<h1>Ajustes</h1><section class="panel"><h2>Tu sesión</h2><p>' + esc(u.name || '') + ' · <span class="mono">' + esc(u.sub || u.email || '') + '</span> · ' + esc(u.role || '') + '</p></section><section class="panel"><h2>Destinatarios del pedido</h2><p>Se configuran en el servidor, no en la web: en cPanel, <span class="mono">order_to</span> de <span class="mono">api/config.php</span>; en Cloudflare, la variable <span class="mono">ORDER_TO</span> del Worker. La web pública solo muestra el primero (' + esc(((TV.meta && TV.meta.recipients) || [])[0] || '—') + ') por si falla el envío.</p></section>';
     });
   };
 

@@ -3,22 +3,18 @@
 // datos SINTÉTICOS (no hay precios de Torivac en el repositorio):
 //   panel real → subir .xlsx → vista previa (columnas, referencias nuevas, desconocidas) → aplicar → ficha del producto con las referencias nuevas
 //   → presupuesto → pedido → el Worker acepta la referencia nueva y valora con la hoja → cambio de precios en el servidor llega a la web sin recompilar.
-//   node scripts/qa-tarifa.mjs
+//   node scripts/qa-tarifa.mjs            contra el Worker torivac-api (en memoria)
+//   node scripts/qa-tarifa.mjs --php      contra el API PHP de cPanel (php -S) · ver scripts/lib/backends.mjs
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import fs from 'node:fs';
 import os from 'node:os';
-import http from 'node:http';
 import vm from 'node:vm';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { serve } from './lib/static-server.mjs';
+import { startBackend } from './lib/backends.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const { default: worker } = await import(path.join(ROOT, 'workers/api/src/index.js'));
-const { FakeKV } = await import(path.join(ROOT, 'workers/api/test/helpers.js'));
-const { createUser } = await import(path.join(ROOT, 'workers/api/src/users.js'));
-const { KEY_CURRENT } = await import(path.join(ROOT, 'workers/api/src/prices.js'));
 
 // sitio compilado con API (valor provisional; la URL verdadera se inyecta al servir)
 const DIST = fs.mkdtempSync(path.join(os.tmpdir(), 'tv-tarifa-'));
@@ -41,20 +37,12 @@ ws.append(['Artículo', 'Descripción', 'Precio venta'])
 for r in rows: ws.append(r)
 wb.save(sys.argv[1])`, xlsx, JSON.stringify(rowsPy)]);
 
-// ───────────────────────────────────── Worker + sitio
-const { server: site, base: SITE } = await serve(DIST);
-const env = { KV: new FakeKV(), ORDER_TO: 'info@grupotorivac.com,mzamora@torivac.com', RESEND_API_KEY: 're_test', SESSION_SECRET: 'x'.repeat(40), ADMIN_API_TOKEN: 'master-test', ALLOWED_ORIGINS: SITE };
-await env.KV.put(KEY_CURRENT, JSON.stringify({ ...prices, mode: 'live', updated_at: '2026-10-28T08:00:00.000Z' }));
-await createUser(env, { email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manager', password: 'Manager-Clave-2026' });
-const mails = [];
-const mockFetch = async (url, init) => { if (String(url).includes('api.resend.com')) { mails.push(JSON.parse(init.body)); return new Response('{"id":"m"}', { status: 200 }); } throw new Error('red no permitida en el test: ' + url); };
-const api = http.createServer(async (rq, rs) => {
-  const chunks = []; for await (const c of rq) chunks.push(c);
-  const res = await worker.fetch(new Request(`http://127.0.0.1:${api.address().port}${rq.url}`, { method: rq.method, headers: rq.headers, body: ['GET', 'HEAD'].includes(rq.method) ? undefined : Buffer.concat(chunks) }), env, {}, { fetchImpl: mockFetch });
-  rs.writeHead(res.status, Object.fromEntries(res.headers)); rs.end(Buffer.from(await res.arrayBuffer()));
-});
-await new Promise((r) => api.listen(0, '127.0.0.1', r));
-const API = `http://127.0.0.1:${api.address().port}`;
+// ───────────────────────────────────── backend + sitio
+const be = await startBackend({ dist: DIST });
+const { SITE, API, mails } = be;
+console.log(`backend: ${be.kind}`);
+await be.seedPrices({ ...prices, mode: 'live', updated_at: '2026-10-28T08:00:00.000Z' });
+await be.addUser({ email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manager', password: 'Manager-Clave-2026' });
 
 const browser = await chromium.launch();
 let fails = 0;
@@ -120,18 +108,27 @@ console.log('\n2) la web pública lee los precios del servidor (sin recompilar) 
   const sent = await page.locator('[data-sent]').innerText();
   const num = (sent.match(/TV-\d{8}-\d{4}/) || [])[0];
   ok(!!num, `el Worker acepta la referencia nueva y da número de pedido ${num}`);
-  const rec = JSON.parse(await env.KV.get(`order:${num}`));
+  const rec = await be.order(num);
   ok(rec.total === total && rec.lines[0].ref === 'TT0330212', `el servidor valora igual que la web: ${rec.total} €`);
   ok(mails.length === 2 && /TRAFO\. TOROIDAL 330VA/.test(mails[0].text), 'el correo al equipo lleva la descripción de la tarifa');
 
   console.log('\n4) el precio cambia en el servidor y llega a la web con «actualizar», sin recompilar');
-  const cur = JSON.parse(await env.KV.get(KEY_CURRENT)); cur.items[known[1]].p = 99.5; cur.updated_at = '2026-10-29T03:00:00.000Z'; await env.KV.put(KEY_CURRENT, JSON.stringify(cur));
+  const cur = await be.getPrices(); cur.items[known[1]].p = 99.5; cur.updated_at = '2026-10-29T03:00:00.000Z'; await be.seedPrices(cur);
   await page.goto(SITE + TT_PAGE); await page.waitForTimeout(700);
   const after = await page.locator(`tr[data-ref="${known[1]}"] [data-price-for]`).innerText();
   ok(/99,5/.test(after), `la ficha muestra el precio nuevo del servidor: «${after.replace(/\s+/g, ' ')}»`);
   ok(!errs.length, 'sin errores de JS' + (errs.length ? ': ' + errs[0] : ''));
   await ctx.close(); }
 
-await browser.close(); site.close(); api.close();
+console.log('\n5) sincronización automática: el mismo Excel, tal cual en Drive (descarga directa del .xlsx), sin pasar por el panel');
+{ await be.seedPrices({ updated_at: null, source: 'none', currency: 'EUR', mode: 'none', items: {} });          // servidor sin precios (primera carga: no hay hoja anterior con la que comparar)
+  await be.useSource('xlsx', fs.readFileSync(xlsx));
+  const r = await fetch(API + '/api/prices/refresh', { method: 'POST', headers: { Authorization: 'Bearer master-test' } }).then((x) => x.json());
+  ok(r.ok === true && r.meta.source === 'xlsx-url', `«Actualizar ahora» lee el libro: origen ${r.meta && r.meta.source}${r.ok ? '' : ' · ' + r.error}`);
+  const pub = await fetch(API + '/api/prices').then((x) => x.json());
+  ok(Object.keys(pub.prices.items).length === 9, `9 referencias, igual que al subirlo por el panel: ${Object.keys(pub.prices.items).length}`);
+  ok(pub.prices.items[known[0]].p === 20.1235 && pub.prices.items.TT0330212.pid === 884 && pub.prices.items.ZZ999 === undefined, 'mismos 4 decimales, referencia nueva dentro de la Serie TT y código desconocido fuera'); }
+
+await browser.close(); await be.stop();
 if (fails) { console.error(`\n✗ ${fails} fallos`); process.exit(1); }
-console.log('\n✓ tarifa real: lectura de columnas, referencias nuevas, precios en vivo y pedido correctos');
+console.log(`\n✓ tarifa real + ${be.kind}: lectura de columnas, referencias nuevas, precios en vivo y pedido correctos`);

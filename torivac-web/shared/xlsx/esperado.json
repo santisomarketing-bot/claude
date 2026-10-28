@@ -1,0 +1,97 @@
+{
+ "tarifa-openpyxl.xlsx": [
+  {
+   "name": "Notas",
+   "hidden": false,
+   "rows": [
+    [
+     "Tarifa de ejemplo",
+     "no es una tarifa real"
+    ]
+   ]
+  },
+  {
+   "name": "Tarifa",
+   "hidden": false,
+   "rows": [
+    [
+     "Artículo",
+     "Descripción",
+     "Precio venta"
+    ],
+    [
+     "TT0150117EM",
+     "TRAFO TOROID 152VA 230V/117V-1.3A.",
+     37.01215908
+    ],
+    [
+     "TT0330212",
+     "TRAFO. TOROIDAL 330VA 230V/2x12V ",
+     60.09588284
+    ],
+    [
+     "TT00302075",
+     "",
+     24.38303161
+    ],
+    [
+     "ZZ999",
+     "código que no es de ninguna familia",
+     5
+    ]
+   ]
+  }
+ ],
+ "artesanal.xlsx": [
+  {
+   "name": "Notas & avisos",
+   "hidden": false,
+   "rows": [
+    [
+     "Hoja de avisos"
+    ]
+   ]
+  },
+  {
+   "name": "Oculta",
+   "hidden": true,
+   "rows": [
+    [
+     "oculta"
+    ]
+   ]
+  },
+  {
+   "name": "Tarifa",
+   "hidden": false,
+   "rows": [
+    [
+     "Artículo",
+     " Descripción ",
+     "Precio venta"
+    ],
+    [
+     "TT0020210",
+     "TRAFO & \"TOROIDAL\" <30VA> ÁÑ",
+     12.37
+    ],
+    [
+     "TT0030210",
+     "",
+     27.75093203
+    ],
+    [
+     "FIN",
+     "",
+     0.0015,
+     true
+    ],
+    [
+     "",
+     "",
+     22000
+    ]
+   ]
+  }
+ ]
+}

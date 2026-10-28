@@ -30,12 +30,17 @@ return [
     ],
 
     'prices' => [
-        // Hoja de precios en Google Sheets. Dos formas (se usa la primera que esté rellena):
-        //  A) cuenta de servicio de Google con acceso de lectura a la hoja: ruta al .json (fuera de public_html) + id de la hoja
+        // Hoja de precios en Drive. Tres formas (se usa la primera que esté rellena):
+        //  A) cuenta de servicio de Google con acceso de lectura al archivo: ruta al .json (fuera de public_html) + id del archivo.
+        //     Vale una hoja de Google (se lee 'sheet_range') o un Excel .xlsx subido a Drive tal cual (se lee la hoja 'sheet_name').
         'sheet_id' => '',
         'sheet_range' => 'Precios!A:O',
         'google_service_account' => '',        // '/home/CUENTA/torivac-datos/cuenta-servicio.json'
-        //  B) hoja compartida «con enlace» exportada como CSV:  https://docs.google.com/spreadsheets/d/<ID>/export?format=csv&gid=0
+        //  B) un Excel .xlsx con descarga directa (Drive «cualquiera con el enlace puede ver»):
+        //     https://drive.google.com/uc?export=download&id=<ID>   ·   hoja de Google como Excel: https://docs.google.com/spreadsheets/d/<ID>/export?format=xlsx
+        'xlsx_url' => '',
+        'sheet_name' => '',                    // hoja del libro; vacío = la primera visible con columnas de referencia y precio
+        //  C) hoja de Google compartida «con enlace» exportada como CSV:  https://docs.google.com/spreadsheets/d/<ID>/export?format=csv&gid=0
         'csv_url' => '',
         // Decimales del precio unitario al importar (4 por defecto; máximo 6). El importe de cada línea siempre se redondea a 2.
         'decimals' => 4,

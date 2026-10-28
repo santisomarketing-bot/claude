@@ -26,7 +26,8 @@ export function htaccess({ base, staging = false, aliases = new Map(), pdfRedire
   if (www) L.push('# un solo host: con www', `RewriteCond %{HTTP_HOST} ^${rx(host.slice(4))}$ [NC]`, `RewriteRule ^ ${origin}%{REQUEST_URI} [L,R=301]`);
   else if (apex) L.push('# un solo host: sin www', `RewriteCond %{HTTP_HOST} ^www\\.${rx(host)}$ [NC]`, `RewriteRule ^ ${origin}%{REQUEST_URI} [L,R=301]`);
   L.push('# /index.html → /', 'RewriteCond %{THE_REQUEST} \\s/+(.*/)?index\\.html[\\s?] [NC]', 'RewriteRule ^(.*/)?index\\.html$ ' + (bp || '') + '/$1 [L,R=301,NE]');
-  if (phpApi) L.push('# API de pedidos, contacto, precios y panel (PHP)', 'RewriteRule ^api/(?!index\\.php)(.*)$ api/index.php [QSA,L]');
+  if (phpApi) L.push('# API de pedidos, contacto, precios y panel (PHP). La cabecera Authorization se pasa a PHP de forma explícita: algunos PHP-FPM/CGI de cPanel la descartan',
+    'RewriteCond %{HTTP:Authorization} .', 'RewriteRule ^ - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]', 'RewriteRule ^api/(?!index\\.php)(.*)$ api/index.php [QSA,L]');
   L.push('</IfModule>', '');
   if (aliases.size || pdfRedirects.length) {
     L.push('# URLs antiguas → URL actual (duplicados de la web original fusionados; PDF que antes vivían en /wp-content/uploads)', '<IfModule mod_alias.c>');

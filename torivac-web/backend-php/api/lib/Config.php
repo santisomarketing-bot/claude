@@ -11,6 +11,7 @@ final class Config
 
     public static function load(string $file): void
     {
+        if (is_file($file) && function_exists('opcache_invalidate')) @opcache_invalidate($file, true);      // un cambio en config.php se nota al instante aunque OPcache revalide cada minuto
         $c = is_file($file) ? require $file : [];
         self::$data = is_array($c) ? $c : [];
     }
