@@ -117,6 +117,8 @@ final class Diag
         $managers = array_filter(Users::all(), function ($u) { return $u['role'] === 'manager'; });
         $k[] = $managers ? self::c('manager', 'ok', count($managers) . ' manager(s) creado(s)') : self::c('manager', 'fail', 'No hay ningún manager: crea el primero con  php api/tools/create-user.php correo "Nombre" manager "contraseña"');
         $k[] = is_file(dirname(__DIR__) . '/generated/catalog.json') ? self::c('catalogo', 'ok', 'Catálogo de referencias presente') : self::c('catalogo', 'fail', 'Falta api/generated/catalog.json (se genera al compilar la web)');
+        foreach (self::build() as $c) $k[] = $c;
+        $k[] = self::blog();
         if (PHP_SAPI !== 'cli') $k = array_merge($k, self::web($req, $_SERVER));
         if ($net) {
             foreach (['https://api.resend.com' => 'Resend', 'https://oauth2.googleapis.com' => 'Google', 'https://api.anthropic.com' => 'Anthropic'] as $url => $name) {
@@ -127,6 +129,52 @@ final class Diag
         $fail = count(array_filter($k, function ($x) { return $x['status'] === 'fail'; }));
         $warn = count(array_filter($k, function ($x) { return $x['status'] === 'warn'; }));
         return ['checks' => $k, 'fail' => $fail, 'warn' => $warn];
+    }
+
+    /**
+     * Qué versión del paquete está instalada (api/generated/build.json, que escribe scripts/package_cpanel.py: versión = commit, fecha, dirección base, pruebas o producción, aspecto) y, si se mira por
+     * web, si el dominio desde el que se sirve es aquel para el que se compiló (si no, el canonical, el sitemap y el CORS apuntan a otro sitio: lo típico al subir a producción el paquete de pruebas).
+     * @param string|null $file build.json (en las pruebas, uno de prueba) · @param array|null $server $_SERVER (en las pruebas, uno simulado)
+     * @return array<int,array{id:string,status:string,msg:string}>
+     */
+    public static function build(?string $file = null, ?array $server = null): array
+    {
+        $f = $file ?? (dirname(__DIR__) . '/generated/build.json');
+        $j = is_file($f) ? json_decode((string) @file_get_contents($f), true) : null;
+        if (!is_array($j) || !is_string($j['version'] ?? null)) return [self::c('version', 'warn', 'Falta api/generated/build.json (el sello de versión que lleva cada paquete): no se puede saber qué versión está instalada. Extrae el paquete completo encima')];
+        $base = Util::line((string) ($j['base'] ?? ''), 120);
+        $dirty = strpos($j['version'], '+cambios') !== false;
+        $k = [self::c('version', $dirty ? 'warn' : 'ok', 'Versión instalada: ' . Util::line($j['version'], 40) . (!empty($j['committed_at']) ? ' (' . substr((string) $j['committed_at'], 0, 10) . ')' : '') . ' · ' . (!empty($j['staging']) ? 'paquete de PRUEBAS (noindex)' : 'paquete de PRODUCCIÓN')
+            . ' · ' . $base . ' · aspecto ' . Util::line((string) ($j['theme'] ?? '?'), 20) . ($dirty ? '. Se generó con cambios sin guardar en git: no se puede repetir ni volver atrás con exactitud' : ''))];
+        $s = $server ?? $_SERVER;
+        $host = strtolower((string) preg_replace('/:\d+$/', '', (string) ($s['HTTP_HOST'] ?? '')));
+        $want = strtolower((string) parse_url($base, PHP_URL_HOST));
+        if ($host === '' || $want === '' || in_array($host, ['localhost', '127.0.0.1', '[::1]'], true)) return $k;
+        $k[] = $host === $want
+            ? self::c('dominio', 'ok', 'El dominio desde el que se sirve (' . $host . ') es el del paquete')
+            : self::c('dominio', 'warn', 'Esta web se sirve desde ' . Util::line($host, 80) . ' pero el paquete se compiló para ' . Util::line($want, 80) . ': las direcciones canónicas, el sitemap y los permisos CORS apuntan a otro sitio. Genera el paquete con --base=https://' . Util::line($host, 80) . ' (o sirve la web desde ' . Util::line($want, 80) . ')');
+        return $k;
+    }
+
+    /**
+     * Estado del blog del panel: ¿están las plantillas de las cuatro lenguas (api/generated/blog-shell.<idioma>.json)? y cuántas entradas e imágenes hay. Sin plantillas la web no falla (las entradas de siempre
+     * son páginas estáticas), pero las entradas nuevas del panel no se podrían mostrar: se avisa.
+     * @return array{id:string,status:string,msg:string}
+     */
+    public static function blog(): array
+    {
+        try {
+            $miss = [];
+            foreach (Blog::LANGS as $l) if (BlogPage::shell($l) === null) $miss[] = $l;
+            if ($miss) return self::c('blog', 'warn', 'Faltan las plantillas del blog (' . implode(', ', $miss) . '): las entradas nuevas del panel no se podrían mostrar. Vuelve a subir el paquete completo (api/generated/blog-shell.IDIOMA.json) o, si es el paquete de demostración, ignóralo: el blog solo funciona en la web publicada con PHP');
+            $live = $sched = $draft = 0;
+            $now = time();
+            foreach (Blog::listing() as $e) { if (Blog::isLive($e, $now)) $live++; elseif (($e['status'] ?? '') === 'published') $sched++; else $draft++; }
+            $imgs = count(Store::keys('blog:media:'));
+            return self::c('blog', 'ok', "Blog del panel listo: $live publicada(s), $sched programada(s), $draft borrador(es) y $imgs imagen(es) subida(s)");
+        } catch (\Throwable $e) {
+            return self::c('blog', 'warn', 'No se pudo leer el blog: ' . Util::line($e->getMessage(), 160));
+        }
     }
 
     /**

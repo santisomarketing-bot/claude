@@ -134,6 +134,7 @@ Otras opciones de `mail.driver`: `'mail'` (función `mail()` del hosting: **sin 
 | `…/robots.txt` | `Disallow: /` (pruebas) |
 | `…/admin/` | pedir acceso; entrar con el manager |
 | una ficha de producto | mostrar precio (o «Consultar» si aún no hay hoja) |
+| `…/blog/` | el listado de entradas (las 21 de siempre por idioma, más las que escribas en el panel) |
 | una URL inexistente | la página 404 del idioma |
 
 **c) Pedido de prueba**: añadir dos referencias en una ficha → *Presupuesto* → rellenar → *Enviar pedido*. Debe salir «Pedido registrado · TV-AAAAMMDD-NNNN» y «te hemos enviado una copia», llegar a `info@` y `mzamora@` con el PDF y aparecer en el panel (**Pedidos**, sin la marca «sin aviso por correo»). Si sale «no hemos podido enviarte la copia» es que el correo no está bien configurado (paso 8).
@@ -149,12 +150,13 @@ Genera un `.zip` nuevo (paso 3) y **extrae encima** del anterior. El paquete **n
 3. Baja el TTL del DNS unas horas antes y apunta `grupotorivac.com`/`www` al hosting nuevo. **Mantén el hosting antiguo** hasta comprobar todo.
 4. Search Console: añade la propiedad y envía `https://www.grupotorivac.com/sitemap.xml`. Las URL son las mismas que las de la web original (con 301 donde había duplicados), así que el posicionamiento se conserva.
 5. HSTS (un año) solo se activa en producción: asegúrate de que HTTPS funciona en todo antes de cambiar el DNS.
+6. **Blog**: las entradas que escribiste en el subdominio de pruebas están en *su* carpeta de datos y no pasan a producción; escribe allí las definitivas (guía [`BLOG.md`](BLOG.md)). En producción el blog también aparece en `sitemap.xml` y en `llms.txt`/`llms-full.txt` (en pruebas no hay, porque no se indexa).
 
 **Con GitHub**: copia `ci/deploy.yml` a `.github/workflows/deploy-cpanel.yml`; el flujo empaqueta, verifica y sube por SSH/rsync (con *simulacro* previo) o deja el `.zip` como artefacto para subirlo a mano. Secretos y variables: cabecera del fichero.
 
 ## 13. Copias de seguridad
 
-Lo único que no se regenera es la **carpeta de datos** (pedidos 400 días, usuarios, precios vigentes e histórico de 90 días) y `api/config.php`. Inclúyelos en la copia de cPanel (o descárgalos de vez en cuando). La web en sí siempre se puede volver a generar del repositorio.
+Lo único que no se regenera es la **carpeta de datos** (pedidos 400 días, mensajes de contacto, usuarios, precios vigentes e histórico de 90 días, **entradas del blog y sus imágenes** en `media/`) y `api/config.php`. Inclúyelos en la copia de cPanel (o descárgalos de vez en cuando). La web en sí siempre se puede volver a generar del repositorio.
 
 ## 14. Si algo falla
 

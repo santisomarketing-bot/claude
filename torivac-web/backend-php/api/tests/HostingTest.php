@@ -172,3 +172,30 @@ function test_diag_web_checks()
     T::same('ok:real', $ipOf('198.51.100.7', '198.51.100.7', ['SERVER_ADDR' => '198.51.100.20']), 'Apache ya ve la IP real (mod_remoteip o conexión directa)');
     T::same('nada', $ipOf('', '0.0.0.0'), 'sin REMOTE_ADDR no se afirma nada');
 }
+
+/** El Diagnóstico enseña la versión instalada (build.json) y avisa si falta, si se compiló con cambios sin guardar o si el dominio no es el del paquete. */
+function test_diag_build_stamp_and_domain()
+{
+    $f = tmp_dir('tv-build-') . '/build.json';
+    $put = function (array $j) use ($f) { file_put_contents($f, json_encode($j)); };
+    $put(['version' => 'a1b2c3d', 'committed_at' => '2026-10-28T09:00:00+01:00', 'base' => 'https://torivac.santisomarketing.com', 'staging' => true, 'theme' => 'ficha', 'theme_switch' => true]);
+    $c = hosting_status(Diag::build($f, ['HTTP_HOST' => 'torivac.santisomarketing.com']));
+    T::same(['ok', 'ok'], [$c['version'], $c['dominio']], 'versión y dominio correctos');
+    $m = Diag::build($f, [])[0]['msg'];
+    T::true(strpos($m, 'a1b2c3d (2026-10-28)') !== false && strpos($m, 'PRUEBAS') !== false && strpos($m, 'torivac.santisomarketing.com') !== false && strpos($m, 'ficha') !== false, 'el mensaje dice versión, fecha, pruebas, dirección y aspecto: ' . $m);
+    T::same(['version'], array_map(function ($x) { return $x['id']; }, Diag::build($f, ['HTTP_HOST' => 'localhost:8080'])), 'en local no se compara el dominio');
+    T::same(['version'], array_map(function ($x) { return $x['id']; }, Diag::build($f, [])), 'por línea de comandos tampoco');
+    $w = Diag::build($f, ['HTTP_HOST' => 'www.grupotorivac.com:443']);
+    T::same(['ok', 'warn'], [$w[0]['status'], $w[1]['status']], 'otro dominio: aviso');
+    T::true(strpos($w[1]['msg'], '--base=https://www.grupotorivac.com') !== false && strpos($w[1]['msg'], 'torivac.santisomarketing.com') !== false, 'dice con qué dirección generar el paquete: ' . $w[1]['msg']);
+    $put(['version' => 'a1b2c3d+cambios', 'base' => 'https://www.grupotorivac.com', 'staging' => false, 'theme' => 'original']);
+    $d = Diag::build($f, [])[0];
+    T::same('warn', $d['status'], 'compilado con cambios sin guardar: aviso');
+    T::true(strpos($d['msg'], 'PRODUCCIÓN') !== false && strpos($d['msg'], 'sin guardar en git') !== false, 'y lo dice');
+    $put(['sin' => 'version']);
+    T::same('warn', Diag::build($f, [])[0]['status'], 'un build.json sin versión no vale');
+    T::same('warn', Diag::build($f . '.no-existe', [])[0]['status'], 'sin build.json: no se sabe qué versión hay');
+    file_put_contents($f, '{no es json');
+    T::same('warn', Diag::build($f, [])[0]['status'], 'un build.json dañado: aviso, no error');
+    T::true(in_array('version', array_map(function ($x) { return $x['id']; }, Diag::run()['checks']), true), 'forma parte del autodiagnóstico completo');
+}

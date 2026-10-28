@@ -18,8 +18,8 @@
   var B = (TV.AdminBlog = {});
   var ctx = null;
   var LANGS = ['es', 'en', 'fr', 'de'], LANG_NAME = { es: 'Español', en: 'Inglés', fr: 'Francés', de: 'Alemán' };
-  /** Estado del módulo: entradas del listado, hora del servidor, límites, imágenes subidas, la entrada que se edita y si tiene cambios sin guardar. */
-  var S = { posts: [], skew: 0, limits: {}, images: [], cur: null, dirty: false, slugAuto: false, filter: { lang: '', status: '', q: '' }, tab: 'both', picking: null };
+  /** Estado del módulo: entradas del listado, hora del servidor, límites, imágenes subidas, la entrada que se edita, si tiene cambios sin guardar y el aviso de «guardada pero la web no la muestra» ({ id, text }). */
+  var S = { posts: [], skew: 0, limits: {}, images: [], cur: null, dirty: false, slugAuto: false, filter: { lang: '', status: '', q: '' }, tab: 'both', picking: null, liveWarn: null };
 
   // ───────────────────────────────────────── [UTIL]
   /** Escapa & < > " para insertar texto en HTML; null y undefined dan cadena vacía. */
@@ -388,9 +388,20 @@
     var el = r && r.field && document.querySelector('[data-bl-f=' + (map[r.field] || r.field) + ']');
     if (el) { el.setAttribute('aria-invalid', 'true'); el.focus(); }
   }
+  /** Tras guardar una entrada ya visible, pide su página pública para comprobar que la web la sirve de verdad; si no (404, 500…), avisa: lo habitual es que el servidor no esté aplicando las reglas del .htaccess del blog. */
+  function verifyLive(p) {
+    if (stateOf(p) !== 'live' || !window.fetch) return;
+    fetch(publicUrl(p.path), { method: 'GET', cache: 'no-store', credentials: 'omit' }).then(function (r) {
+      if (r.status === 200) return;
+      // se guarda el aviso además de enseñarlo: al crear una entrada el editor se vuelve a pintar justo después y el aviso se pondría en la pantalla vieja
+      S.liveWarn = { id: p.id, text: '⚠ La entrada está guardada, pero la web todavía no la muestra (error ' + r.status + '). Si es la primera vez que publicas, puede que el servidor no esté aplicando las reglas del .htaccess para el blog: mira la guía del blog (docs/BLOG.md, «Si la entrada no aparece») o el Diagnóstico de Ajustes.' };
+      msg(S.liveWarn.text);
+    }).catch(function () { /* sin red: no se puede comprobar, no es un fallo de la entrada */ });
+  }
   /** Guarda la entrada (crea o actualiza). Devuelve Promise<boolean>. */
   function save() {
     var c = S.cur;
+    S.liveWarn = null;
     msg('Guardando…', 'ok');
     [].forEach.call(document.querySelectorAll('[aria-invalid]'), function (e) { e.removeAttribute('aria-invalid'); });
     return ctx.http('POST', c.id ? '/api/blog/posts/' + encodeURIComponent(c.id) : '/api/blog/posts', payload()).then(function (r) {
@@ -398,6 +409,7 @@
       var wasNew = !c.id;
       S.cur = r.post; S.cur.translations = r.post.translations || {};
       setDirty(false); msg(''); ctx.toast(wasNew ? 'Entrada creada' : 'Guardado');
+      verifyLive(r.post);
       if (wasNew) { location.hash = '#blog/' + r.post.id; return true; }
       var ix = S.posts.map(function (p) { return p.id; }).indexOf(r.post.id);
       if (ix >= 0) S.posts[ix] = Object.assign({}, S.posts[ix], { title: r.post.title, slug: r.post.slug, status: r.post.status, date: r.post.date, path: r.post.path, image: r.post.image });
@@ -484,7 +496,7 @@
       }, true);
       window.addEventListener('hashchange', function () { if (!/^#blog\//.test(location.hash)) S.dirty = false; });
     }
-    if (root.querySelector('[data-bl-mode=edit]')) { updatePreview(); refresh(); setDirty(S.dirty); }
+    if (root.querySelector('[data-bl-mode=edit]')) { updatePreview(); refresh(); setDirty(S.dirty); if (S.liveWarn && S.cur && S.cur.id === S.liveWarn.id) msg(S.liveWarn.text); }
   };
   /** Vista del blog: listado o editor según `arg` (ver la cabecera). */
   B.view = function (c, arg) {

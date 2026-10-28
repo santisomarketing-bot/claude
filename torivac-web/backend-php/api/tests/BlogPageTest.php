@@ -8,6 +8,7 @@ namespace Torivac\Tests;
 use Torivac\Blog;
 use Torivac\BlogPage;
 use Torivac\Config;
+use Torivac\Diag;
 
 require_once __DIR__ . '/harness.php';
 require_once __DIR__ . '/support.php';
@@ -157,6 +158,23 @@ function test_blogpage_image_in_header_social_and_structured_data()
     T::true(strpos($h, 'background-image') === false && strpos($h, 'og:image:alt') === false && strpos($h, 'o-dup') === false, 'sin imagen: sin fondo, sin foto en el texto ni alt');
     T::true(strpos($h, 'og:image" content="https://demo.example/assets/logo.webp"') !== false, 'sin imagen: el logotipo');
     T::true(!isset(bp_ld($h)['@graph'][4]['image']), 'sin imagen: BlogPosting sin image');
+}
+
+/** BP4b · El autodiagnóstico cuenta las entradas y avisa si faltan las plantillas del blog. */
+function test_blogpage_diag_reports_blog_state()
+{
+    fresh(); bp_site(['es', 'en', 'fr', 'de']);
+    bp_post(['slug' => 'viva']);
+    bp_post(['slug' => 'futura', 'date' => '2028-01-01T08:00:00Z']);
+    bp_post(['slug' => 'borrador', 'status' => 'draft']);
+    $c = Diag::blog();
+    T::same(['blog', 'ok'], [$c['id'], $c['status']], 'con las plantillas: bien');
+    T::true(strpos($c['msg'], '1 publicada(s), 1 programada(s), 1 borrador(es) y 0 imagen(es)') !== false, 'cuenta publicadas, programadas, borradores e imágenes: ' . $c['msg']);
+    bp_site(['es', 'en']);
+    $c = Diag::blog();
+    T::same('warn', $c['status'], 'faltan plantillas: aviso');
+    T::true(strpos($c['msg'], '(fr, de)') !== false, 'dice cuáles faltan: ' . $c['msg']);
+    T::true(in_array('blog', array_map(function ($x) { return $x['id']; }, Diag::run()['checks']), true), 'forma parte del autodiagnóstico completo');
 }
 
 /** BP5 · Todo lo que se escribe se escapa: título, descripción, texto y alt no pueden cerrar etiquetas, atributos ni el JSON-LD, y las marcas @@TV:…@@ escritas por una persona se quedan como texto. */

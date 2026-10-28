@@ -88,7 +88,8 @@ Igual que en cPanel ([paso 10](DESPLIEGUE-CPANEL.md#10-comprobar)): URL clave, *
 | *Servidor web* | `Apache…` | `nginx…` sin Apache → paso 2 (PHP servido por Apache) |
 | Cabeceras (a mano: `curl -sI https://torivac.santisomarketing.com/ \| grep -i -E 'content-security\|x-robots'`) | Las dos (en pruebas) | Faltan → nginx sirve los estáticos sin leer el `.htaccess`: paso 2 (desmarcar *Serve static files directly by nginx* y, si hace falta, *Smart static files processing*). Sin ellas la web funciona igual y el entorno de pruebas sigue sin indexarse (meta `noindex` y `robots.txt`), pero no queda cerrado a tu IP |
 | *IP del visitante* | «El servidor ve la IP real…» o «Hay un proxy delante… se lee de sus cabeceras» | «Todas las visitas llegan con la IP interna…» → el proxy no pasa la IP real; pide que envíe `X-Forwarded-For` o añade el proxy a `trusted_proxies` |
-| *Carpeta de datos* | fuera de la web (B o C) | dentro de la web (A): válido para pruebas; ver paso 5 |
+| *Blog* | «Blog del panel listo: N publicada(s)…» | «Faltan las plantillas del blog»: paquete subido a medias (extráelo entero encima). Si tras publicar una entrada el panel avisa «la web todavía no la muestra (error 404)», nginx está sirviendo sin pasar por Apache: paso 2. Ver [`BLOG.md`](BLOG.md) §7 y §9 |
+| *Carpeta de datos* | fuera de la web (B o C) | dentro de la web (A): válido para pruebas; ver paso 5. Ahí también viven las entradas del blog y sus imágenes |
 | *Carpeta de datos (desvío)* | no aparece | `storage_dir` apuntaba a un sitio que no se puede escribir y se usó otro: corrige `storage_dir` o vacíalo |
 
 ## Si algo falla en Plesk

@@ -64,6 +64,7 @@ La web estática habla con **un backend de contrato único** (`/api/health|price
 | Correo / IA / Drive | Resend, Anthropic, Google (fetch) | Resend, Anthropic, Google (cURL) |
 | Cron de precios | trigger `0 3 * * *` | `php api/cron.php` (cPanel «Trabajos de Cron» · Plesk «Tareas programadas») o `GET /api/cron?token=` |
 | Hojas de precios | `shared/price-sheet.mjs`, `shared/xlsx.mjs` | `lib/PriceSheet.php`, `lib/Xlsx.php` (ports con las mismas pruebas) |
+| **Blog del panel** (`/api/blog/*`, páginas `/blog/…`, `/media/blog/…`) | **no existe**: responde 501 `blog_unavailable` y `/api/health` lo dice (`features.blog`) | `lib/Blog*.php` + `api/page.php`; las páginas las pinta PHP con las plantillas que deja la compilación en `api/generated/blog-shell.*.json` ([`BLOG.md`](BLOG.md)) |
 | Pruebas de navegador | `node scripts/qa-*.mjs` | `node scripts/qa-*.mjs --php` (`scripts/lib/backends.mjs`) |
 
 La compilación con API (**LIVE**: `--php-api` o `TORIVAC_API`) no lleva precios (los da el servidor) ni más de un destinatario en el código público. El paquete (cPanel o Plesk) se genera y verifica con `scripts/package_cpanel.py`.

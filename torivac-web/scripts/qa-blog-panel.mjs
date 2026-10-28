@@ -161,6 +161,16 @@ try {
   ok(await pub.locator('link[rel=canonical]').getAttribute('href') === d.BASE + '/blog/elegir-toroidal/', 'canonical correcto');
   ok(await pub.locator('header.site-header').count() === 1 && await pub.locator('footer.site-footer').count() === 1, 'con la cabecera y el pie de la web');
   await pub.close();
+  // si la web no sirviera la entrada (el servidor no aplica las reglas del .htaccess del blog), el panel lo avisa al guardar y lo dice con claridad
+  await page.route('**/blog/elegir-toroidal/', (route) => route.fulfill({ status: 404, body: 'no' }));
+  await page.fill('[data-bl-f=excerpt]', 'Guía rápida para elegir la potencia de un transformador toroidal.');
+  await page.click('[data-bl=save]');
+  await page.waitForFunction(() => /todavía no la muestra \(error 404\)/.test((document.querySelector('[data-bl-msg]') || {}).textContent || ''), null, { timeout: 8000 });
+  ok(/docs\/BLOG\.md/.test(await page.locator('[data-bl-msg]').innerText()), 'si la web no sirve la entrada guardada, el panel avisa (error 404) y remite a la guía');
+  await page.unroute('**/blog/elegir-toroidal/');
+  await page.click('[data-bl=save]');
+  await page.waitForFunction(() => (document.querySelector('[data-bl-msg]') || {}).hidden === true, null, { timeout: 8000 });
+  ok(true, 'y al guardarla otra vez con la web funcionando, el aviso desaparece');
 
   console.log('\n7) traducción: crear, enlazar y comprobar el hreflang');
   await page.click('a[href^="#blog/nueva?lang=en"]');

@@ -21,6 +21,7 @@ Este documento cuenta, sin humo, las medidas de seguridad que lleva la web de To
 | **Web y cabeceras** | CSP **sin scripts en línea** (una inyección de HTML no puede ejecutar código), `X-Frame-Options`, `nosniff`, `Referrer-Policy`, `Permissions-Policy`, HSTS | `.htaccess` generado |
 | **Carpeta `api/`** | Lista blanca: desde fuera solo se sirve `index.php`; `lib/`, `generated/`, `config.php`, copias y registros quedan cerrados | `qa-package` lo comprueba |
 | **Sondeos de WordPress** | `wp-login.php`, `xmlrpc.php`, `wp-admin`, `wp-json`, plugins y temas reciben **410 sin tocar PHP**; las fotos y PDF antiguos de `wp-content/uploads` siguen redirigiendo | `.htaccess` generado |
+| **Blog del panel** | Lo que escribe un manager se trata como no fiable: el texto solo emite una lista cerrada de etiquetas, todo se escapa al pintar, las imágenes se validan por su contenido y la vista previa de borradores va firmada y caduca en una hora (§9) | `qa-blog-apache.mjs`, `test-blog-markdown.mjs` |
 | **Paquete** | Nunca lleva `config.php`, claves, precios, pruebas ni scripts de trabajo; un escáner de secretos lo revisa antes de entregarlo | `package_cpanel.py` |
 
 ## 2. Bloqueo por fuerza bruta («5 fallos → esperar una hora»)
@@ -77,7 +78,8 @@ Se rechaza (con un aviso claro y sin guardar ni enviar nada):
 | Servidor PHP | `php backend-php/api/tests/run.php` | 1502 comprobaciones, 0 fallos (con ataques reales de entrada hostil, fuerza bruta, relé de correo, SSRF…) |
 | Worker | `cd workers/api && npm test` | 157 pruebas, 0 fallos |
 | Texto plano (navegador = Worker = PHP) | `node scripts/test-plain-text.mjs` | 194 comprobaciones; incluye navegador sin *lookbehind* y textos hostiles de 60 000 caracteres (sin eternizarse) |
-| Conversor de texto del blog | `node scripts/test-blog-markdown.mjs` | 20 000 entradas aleatorias hostiles + los casos del contrato: nunca produce HTML peligroso |
+| Conversor de texto del blog | `node scripts/test-blog-markdown.mjs` · `test-blog-markdown-php.mjs` | 20 000 entradas aleatorias hostiles + los casos del contrato: nunca produce HTML peligroso; JS y PHP dan lo mismo en ~195 000 comparaciones |
+| Blog en un Apache real | `node scripts/qa-blog-apache.mjs` · `qa-blog-panel.mjs` | Entradas, imágenes, borradores, vista previa firmada y editor del panel en un navegador, con el paquete tal como se sube y sin errores ni avisos de PHP |
 | Web ↔ servidor | `node scripts/qa-live.mjs [--php]` | Pedido, contacto, texto plano, límites y tiempo de relleno en un navegador real |
 | Panel ↔ servidor | `node scripts/qa-admin-live.mjs [--php]` | Roles, mensajes, correo y el bloqueo de 1 hora |
 | Paquete tal como se sube | `node scripts/qa-package.mjs` | Con la CSP real aplicada: ni un solo incumplimiento; `api/` cerrada |
@@ -110,3 +112,21 @@ Además: **revisión independiente** del servidor PHP (13 hallazgos, todos corre
 | 4 | **Copia de seguridad semanal** de pedidos, mensajes y usuarios, descargable desde el panel | Recuperarse de un borrado o un fallo del hosting | Baja-media |
 | 5 | **CAPTCHA invisible (Turnstile)** en los formularios | Frena a los robots que sí cargan la página | Media (widget + pruebas) |
 | 6 | Desbloqueo de cuentas desde el panel por otro manager | Evita esperar la hora o tocar ficheros | Baja |
+
+## 9. Blog del panel (entradas e imágenes)
+
+Las entradas las escribe un manager pero las lee **cualquiera**, así que se tratan como contenido no fiable hasta el último paso (por si se pega algo de otra web o alguien roba una sesión). Guía de uso: [`BLOG.md`](BLOG.md).
+
+| Riesgo | Medida | Cómo se prueba |
+|---|---|---|
+| **Código en el texto** (XSS) | El texto pasa por un conversor que solo emite una lista cerrada de etiquetas; todo lo demás se escapa y sale como texto. Enlaces solo `https://`, `http://`, `mailto:`, `tel:`, `/ruta` y `#ancla`; imágenes solo `https://` o `/ruta`. Sin HTML, sin `javascript:` | 20 000 textos hostiles al azar (`test-blog-markdown.mjs`) y `BlogMarkdownTest.php` |
+| **Código en título, resumen, SEO, texto alternativo o dirección** | Texto plano (las mismas reglas que los formularios). Al pintar, todo se escapa en **un solo paso**: ni `"><script>` ni una marca interna `@@TV:…@@` escrita por una persona se vuelven a interpretar; el JSON-LD se codifica sin `<` ni `>` | `BlogPageTest.php` (BP5) |
+| **Imagen disfrazada** (SVG con script, HTML con extensión `.png`…) | El servidor mira los **bytes** (no el nombre ni lo que diga el navegador): solo JPEG, PNG y WebP con medidas razonables. El nombre lleva la huella del contenido; se sirve con su tipo, `nosniff` y la CSP de la web | `BlogTest.php`, `qa-blog-apache.mjs` |
+| **Llenar el disco o inundar el servidor** | 600 entradas, 1 500 imágenes, 2,5 MB por imagen, 60 000 caracteres por texto, cuerpo máximo por petición y 600 guardados / 120 subidas por usuario y hora | `BlogTest.php` |
+| **Ver un borrador sin permiso** | Solo con una dirección **firmada** (HMAC con `session_secret`) de una hora, válida para esa entrada y no para otra; con `noindex`, `no-store` y sin entrar en sitemap ni `llms` | `BlogPageTest.php` (BP7) |
+| **Pisarse dos personas** | Escrituras bajo bloqueo: no se repite una dirección ni se rompe un grupo de traducciones | `BlogTest.php` |
+| **Usar el API del blog sin ser manager** | Sin sesión, 401; un cliente, 403; solo managers crean, editan, suben y borran | `BlogTest.php` |
+| **Servir archivos de trabajo** | `api/page.php` solo responde por la dirección pedida (`REQUEST_URI`): llamarlo directamente no sirve nada; el `.htaccess` de `api/` sigue cerrando todo salvo `index.php` y `page.php` | `SecurityDataTest.php` (D10), `qa-package.mjs` |
+| **Si PHP falla** | El listado, el sitemap y `llms.txt` caen al archivo estático de la compilación; una entrada da 503. El error va al registro con un identificador, nunca a la página | `BlogPageTest.php` |
+
+**Límite conocido:** un manager puede publicar cualquier **texto** (no código): la protección es técnica, no editorial. Quien tenga rol de manager responde de lo que publica; por eso el panel solo da ese rol a quien se crea expresamente.

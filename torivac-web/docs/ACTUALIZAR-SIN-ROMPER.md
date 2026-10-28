@@ -6,8 +6,8 @@ Vale para Plesk y para cPanel (el paquete es el mismo). La regla es una: **nada 
 
 | Se sustituye con cada paquete | **No se toca** (vive solo en el servidor) |
 |---|---|
-| La web (HTML de los 4 idiomas, CSS, JS, imágenes, PDF, catálogo) | `api/config.php` (claves, correo, origen de precios) |
-| El código del API (`api/lib/*.php`, `api/index.php`…) | La carpeta de datos: pedidos, usuarios, precios vigentes e histórico (`api/storage/`, o `torivac-datos`, o la que pongas en `storage_dir`) |
+| La web (HTML de los 4 idiomas, CSS, JS, imágenes, PDF, catálogo, las 21 entradas de blog de siempre) | `api/config.php` (claves, correo, origen de precios) |
+| El código del API (`api/lib/*.php`, `api/index.php`, `api/page.php`…) y las plantillas del blog (`api/generated/`) | La carpeta de datos: pedidos, mensajes, usuarios, precios vigentes e histórico, **entradas del blog escritas en el panel y sus imágenes** (`api/storage/`, o `torivac-datos`, o la que pongas en `storage_dir`) |
 | El `.htaccess` y `robots.txt` (se generan en cada compilación) | `.well-known/` (certificados) |
 
 El `.zip` **no lleva** `config.php`, ni datos, ni precios, ni tests: aunque lo extraigas encima, no puede pisarlos. Lo verifica el propio empaquetado antes de dejarte descargarlo.
@@ -43,7 +43,7 @@ Se puede, y funciona, **con una condición: antes de borrar te bajas lo único q
 | Qué guardar | Dónde está | Cómo saberlo |
 |---|---|---|
 | `api/config.php` | Siempre en la carpeta `api` del servidor | Descárgalo con el administrador de archivos (*Download*) |
-| La carpeta de datos (pedidos, mensajes de contacto, usuarios, precios vigentes e histórico) | **Fuera de la web** (`torivac-datos`, o la ruta de `storage_dir`): no la toques, no se borra al vaciar la web · **Dentro de la web** (`api/storage/`): se borraría con todo lo demás | Panel → *Ajustes → Diagnóstico → Carpeta de datos* dice la ruta exacta. Si no entras al panel, mira `storage_dir` en `config.php` (vacío = automática, mira el Diagnóstico o prueba si existe `torivac-datos` junto a la web) |
+| La carpeta de datos (pedidos, mensajes de contacto, usuarios, precios vigentes e histórico, **entradas del blog y sus imágenes**) | **Fuera de la web** (`torivac-datos`, o la ruta de `storage_dir`): no la toques, no se borra al vaciar la web · **Dentro de la web** (`api/storage/`): se borraría con todo lo demás | Panel → *Ajustes → Diagnóstico → Carpeta de datos* dice la ruta exacta. Si no entras al panel, mira `storage_dir` en `config.php` (vacío = automática, mira el Diagnóstico o prueba si existe `torivac-datos` junto a la web) |
 
 Pasos:
 1. Descarga `api/config.php`. Si los datos están dentro de la web (`api/storage/`), comprime esa carpeta (*Compress*) y descarga también el `.zip` resultante.
@@ -52,7 +52,7 @@ Pasos:
 4. Vuelve a subir `api/config.php` en su sitio (permisos 640). Si los datos estaban dentro de la web, sube y extrae de nuevo la carpeta `api/storage/`.
 5. Pasa la lista corta (§3). Mientras `config.php` no esté puesto, `…/api/health` no da `ok:true` y el Diagnóstico dice «No existe api/config.php»: es la señal de que falta ese paso, no de que algo se haya roto.
 
-**No hace falta volver a configurar nada más**: ni claves, ni usuarios, ni precios, ni pedidos, ni mensajes. Lo único que se pierde si olvidas el paso 1 es lo que no se puede reconstruir (los datos de `api/storage/`), de ahí que el paso 1 sea el importante. El paquete trae la web, el código del API y los datos del catálogo; los precios los vuelve a leer la web desde la hoja de Drive o desde el último Excel que subiste (que está en la carpeta de datos).
+**No hace falta volver a configurar nada más**: ni claves, ni usuarios, ni precios, ni pedidos, ni mensajes, ni entradas del blog. Lo único que se pierde si olvidas el paso 1 es lo que no se puede reconstruir (los datos de `api/storage/`), de ahí que el paso 1 sea el importante. El paquete trae la web, el código del API y los datos del catálogo; los precios los vuelve a leer la web desde la hoja de Drive o desde el último Excel que subiste (que está en la carpeta de datos).
 
 ## 3. Lista corta de comprobación (5 minutos)
 
@@ -64,6 +64,7 @@ Pasos:
 | Cabeceras | `curl -sI https://DOMINIO/ \| grep -i -E 'content-security\|x-robots'` | CSP siempre; `x-robots-tag` solo en pruebas |
 | Una ficha | Abrir un producto con precio | Precio de la hoja de Drive (o «Consultar») |
 | Un pedido | Armar un presupuesto de 2 líneas y *Enviar pedido* | «Pedido registrado» y los correos en `info@` y `mzamora@` |
+| El blog | Abrir `/blog/` y una entrada escrita en el panel; Diagnóstico → línea «blog» | Salen el listado y la entrada con el diseño de la web; el Diagnóstico cuenta las entradas y las plantillas de los 4 idiomas ([`BLOG.md`](BLOG.md)) |
 | Estilos | Recarga normal (no forzada) tras actualizar | La versión nueva a la primera, sin «mezclas» |
 
 ## 4. Por qué no se rompe (lo que hay de verdad)
@@ -79,7 +80,7 @@ Pasos:
 
 | Riesgo | Qué pasa | Cómo se evita |
 |---|---|---|
-| Vaciar la carpeta antes de subir | Se borran `api/config.php` y los datos si están en `api/storage/` | **Extraer encima, no vaciar.** Si hay que vaciar, conserva `api/config.php` y la carpeta de datos |
+| Vaciar la carpeta antes de subir | Se borran `api/config.php` y los datos si están en `api/storage/` (**también las entradas del blog y sus imágenes**) | **Extraer encima, no vaciar.** Si hay que vaciar, conserva `api/config.php` y la carpeta de datos |
 | Subir el paquete de pruebas a producción (o al revés) | Producción con `noindex`, o pruebas indexables; CORS y direcciones no coinciden | El Diagnóstico avisa si la URL con la que se compiló no es la del sitio; el nombre del `.zip` lleva el dominio y `-pruebas` |
 | Imagen o fuente cambiada con el mismo nombre | Se guardan un año en el navegador: unos visitantes ven la vieja | Cambia el nombre del archivo al sustituirlo (el CSS y el JS ya están protegidos con huella) |
 | Plesk con nginx sirviendo los estáticos | El `.htaccess` (cabeceras, caché, restricción por IP) no se aplica a esos archivos | Ver [`DESPLIEGUE-PLESK.md`](DESPLIEGUE-PLESK.md) paso 2 y la comprobación de cabeceras de §3 |

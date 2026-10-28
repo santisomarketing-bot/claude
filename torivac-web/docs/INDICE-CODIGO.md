@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1625/1625 funciones descritas (100 %) · 192/192 archivos con cabecera.
+**Cobertura**: 1630/1630 funciones descritas (100 %) · 192/192 archivos con cabecera.
 
 
 ## `site/`
@@ -283,13 +283,14 @@ Secciones: `[ADMIN-BLOG]` · `[UTIL]` · `[DATOS]` · `[LISTA]` · `[EDITOR]` ·
 - `useImage` (l. 366) — Usa la imagen elegida: como destacada o insertada en el texto.
 - `payload` (l. 378) — Cuerpo que se envía al servidor con lo que hay en el formulario.
 - `showError` (l. 385) — Marca el campo con error que dijo el servidor y enseña el mensaje.
-- `save` (l. 392) — Guarda la entrada (crea o actualiza). Devuelve Promise<boolean>.
-- `preview` (l. 409) — «Ver como saldrá»: guarda y abre la página real con una dirección firmada de una hora (sirve también para borradores y programadas).
-- `remove` (l. 421) — Borra la entrada indicada tras confirmar.
-- `fieldChanged` (l. 428) — Lee un campo del formulario y lo pasa a la entrada que se edita.
-- `B.bind` (l. 442) — Engancha los clics, cambios y teclas del listado y del editor (delegación de eventos sobre `root`, una sola vez).
-- `B.view` (l. 490) — Vista del blog: listado o editor según `arg` (ver la cabecera).
-- `B.dirty` (l. 500) — ¿Hay cambios sin guardar en el editor?
+- `verifyLive` (l. 392) — Tras guardar una entrada ya visible, pide su página pública para comprobar que la web la sirve de verdad; si no (404, 500…), avisa: lo habitual es que el servidor no esté aplicando las reglas del .htaccess del blog.
+- `save` (l. 402) — Guarda la entrada (crea o actualiza). Devuelve Promise<boolean>.
+- `preview` (l. 421) — «Ver como saldrá»: guarda y abre la página real con una dirección firmada de una hora (sirve también para borradores y programadas).
+- `remove` (l. 433) — Borra la entrada indicada tras confirmar.
+- `fieldChanged` (l. 440) — Lee un campo del formulario y lo pasa a la entrada que se edita.
+- `B.bind` (l. 454) — Engancha los clics, cambios y teclas del listado y del editor (delegación de eventos sobre `root`, una sola vez).
+- `B.view` (l. 502) — Vista del blog: listado o editor según `arg` (ver la cabecera).
+- `B.dirty` (l. 512) — ¿Hay cambios sin guardar en el editor?
 
 ### `admin-live.js`
 
@@ -1140,8 +1141,8 @@ Secciones: `[QA-ART]`
 
 Secciones: `[QA-BLOG-APACHE]`
 
-- `ok` (l. 21) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
-- `localLinks` (l. 24) — Todas las direcciones relativas (href/src) de una página → absolutas contra la dirección de la propia página.
+- `ok` (l. 19) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `localLinks` (l. 22) — Todas las direcciones relativas (href/src) de una página → absolutas contra la dirección de la propia página.
 
 ### `qa-blog-panel.mjs`
 
@@ -1154,7 +1155,7 @@ Secciones: `[QA-BLOG-PANEL]`
 - `editor` (l. 36) — Espera a que el editor esté pintado.
 - `axe` (l. 38) — Analiza con axe la pantalla actual y anota las violaciones graves.
 - `id1` (l. 149) — identificador de la primera entrada creada (sale de la dirección del panel: #blog/<id>)
-- `id2` (l. 176) — identificador de la entrada en inglés (traducción de la primera)
+- `id2` (l. 186) — identificador de la entrada en inglés (traducción de la primera)
 
 ### `qa-lang.mjs`
 
@@ -2193,8 +2194,10 @@ Secciones: `[DIAG]`
 - `insideWebRoot` (l. 22) — Dice si un directorio está dentro de la web (cualquiera podría pedir sus ficheros si el .htaccess no se respetara): bajo la carpeta que contiene api/ (la web)
 - `bytes` (l. 36) — Valor de php.ini con sufijo (8M, 512K, 1G) → bytes; 0 o -1 = sin límite → null.
 - `run` (l. 48) — Ejecuta todas las comprobaciones.
-- `mail` (l. 138) — Comprobaciones del correo según el controlador activo: si está listo (clave o servidor), los avisos propios de cada uno (mail() no garantiza la entrega, SMTP sin verificar el certificado…)
-- `web` (l. 173) — Comprobaciones que solo tienen sentido al mirar por web: qué servidor atiende (¿se aplica el .htaccess?), qué IP ve del visitante detrás de un proxy y si la
+- `build` (l. 140) — Qué versión del paquete está instalada (api/generated/build.json, que escribe scripts/package_cpanel.py: versión = commit, fecha, dirección base, pruebas o producción, aspecto) y, si se mira por
+- `blog` (l. 164) — Estado del blog del panel: ¿están las plantillas de las cuatro lenguas (api/generated/blog-shell.<idioma>.json)? y cuántas entradas e imágenes hay. Sin plantillas la web no falla (las entradas de siempre
+- `mail` (l. 186) — Comprobaciones del correo según el controlador activo: si está listo (clave o servidor), los avisos propios de cada uno (mail() no garantiza la entrega, SMTP sin verificar el certificado…)
+- `web` (l. 221) — Comprobaciones que solo tienen sentido al mirar por web: qué servidor atiende (¿se aplica el .htaccess?), qué IP ve del visitante detrás de un proxy y si la
 
 ### `Http.php`
 
@@ -2563,26 +2566,27 @@ Pruebas de BlogMarkdown con los casos compartidos con la versión JavaScript (sh
 
 Pruebas de las páginas públicas del blog (BlogPage.php): rutas, entrada (SEO, JSON-LD, hreflang, escapado), borradores y programadas, vista previa firmada, direcciones antiguas, listado mezclado, imágenes, sitemap.xml / llms.txt / llms-full.txt con las entradas nuevas y respuestas condicionales. Se prueba con una plantilla mínima hecha a mano (la real sale de la compilación y se prueba en qa-apache).
 
-- `bp_shell` (l. 19) — Plantilla mínima de un idioma con todas las marcas que rellena el servidor.
-- `bp_site` (l. 39) — Carpeta de la web de pruebas con las plantillas (y, si se pide, 404, sitemap y llms) → ruta.
-- `bp_post` (l. 61) — Entrada publicada (por defecto en español, con fecha ya llegada).
-- `bp_get` (l. 70) — GET a esa dirección → respuesta.
-- `bp_ld` (l. 73) — Extrae el JSON-LD de una página → array.
-- `test_blogpage_routes` (l. 80) — BP1 · Las direcciones se reconocen por su cola (valen también en una subcarpeta) y lo demás no es del blog.
-- `test_blogpage_published_post_has_complete_seo` (l. 97) — BP2 · Una entrada publicada sale con todo el SEO: título, descripción, canonical, Open Graph, JSON-LD, una sola h1, fecha en la zona del sitio, texto convertido y sin marcas sin rellenar.
-- `test_blogpage_dates_use_the_site_timezone` (l. 130) — BP3 · La fecha se enseña en la zona horaria del sitio (Madrid), no en UTC.
-- `test_blogpage_image_in_header_social_and_structured_data` (l. 141) — BP4 · Con imagen: fondo de la cabecera, foto al principio del texto (con su texto alternativo y medidas), og:image con texto alternativo y ImageObject; sin imagen, el logotipo.
-- `test_blogpage_hostile_content_is_escaped` (l. 163) — BP5 · Todo lo que se escribe se escapa: título, descripción, texto y alt no pueden cerrar etiquetas, atributos ni el JSON-LD, y las marcas @@TV:…@@ escritas por una persona se quedan como texto.
-- `test_blogpage_drafts_and_scheduled_are_invisible` (l. 190) — BP6 · Borradores y programadas no existen para el público (404 con la página «no encontrado» del idioma); borrar también.
-- `test_blogpage_preview_with_signed_address` (l. 213) — BP7 · La vista previa firmada enseña un borrador sin indexar ni cachear; una firma mala, caducada o de otra entrada no vale.
-- `test_blogpage_redirects` (l. 238) — BP8 · Direcciones: la antigua redirige (301) a la nueva con sus parámetros; sin barra final también; y la entrada solo vive en su idioma.
-- `test_blogpage_hreflang_and_language_links` (l. 257) — BP9 · Traducciones: hreflang solo con las visibles (más x-default), enlaces del selector de idioma con la traducción o la portada, y marcas de «sin traducción».
-- `test_blogpage_index_merges_new_posts_by_date` (l. 281) — BP10 · El listado mezcla las entradas nuevas con las de la web por fecha (la más reciente primero), solo las visibles y de su idioma, con imagen y texto escapado.
-- `test_blogpage_index_fallbacks` (l. 306) — BP11 · Sin entradas nuevas el listado es el de la plantilla; sin plantilla se sirve el estático que dejó la compilación; sin nada, 503.
-- `test_blogpage_media` (l. 324) — BP12 · Imágenes: se sirven con su tipo, caché de un año, 304 por ETag y cabeceras que impiden ejecutar nada; las que no existen o con nombre raro, 404.
-- `test_blogpage_conditional_and_methods` (l. 342) — BP13 · Respuestas condicionales de las páginas: 304 con el mismo ETag; solo GET y HEAD.
-- `test_blogpage_sitemap_gets_the_new_posts` (l. 360) — BP14 · sitemap.xml: las entradas visibles se añaden con hreflang (traducciones visibles + x-default), imágenes con texto alternativo y lastmod; borradores y programadas no; sin entradas, el archivo tal cual.
-- `test_blogpage_llms_get_the_new_posts` (l. 385) — BP15 · llms.txt y llms-full.txt: las entradas nuevas se añaden bajo el título de su idioma (la más reciente arriba), con resumen o texto completo; si falta el título se crea la sección; lo escrito no puede romper el formato.
+- `bp_shell` (l. 20) — Plantilla mínima de un idioma con todas las marcas que rellena el servidor.
+- `bp_site` (l. 40) — Carpeta de la web de pruebas con las plantillas (y, si se pide, 404, sitemap y llms) → ruta.
+- `bp_post` (l. 62) — Entrada publicada (por defecto en español, con fecha ya llegada).
+- `bp_get` (l. 71) — GET a esa dirección → respuesta.
+- `bp_ld` (l. 74) — Extrae el JSON-LD de una página → array.
+- `test_blogpage_routes` (l. 81) — BP1 · Las direcciones se reconocen por su cola (valen también en una subcarpeta) y lo demás no es del blog.
+- `test_blogpage_published_post_has_complete_seo` (l. 98) — BP2 · Una entrada publicada sale con todo el SEO: título, descripción, canonical, Open Graph, JSON-LD, una sola h1, fecha en la zona del sitio, texto convertido y sin marcas sin rellenar.
+- `test_blogpage_dates_use_the_site_timezone` (l. 131) — BP3 · La fecha se enseña en la zona horaria del sitio (Madrid), no en UTC.
+- `test_blogpage_image_in_header_social_and_structured_data` (l. 142) — BP4 · Con imagen: fondo de la cabecera, foto al principio del texto (con su texto alternativo y medidas), og:image con texto alternativo y ImageObject; sin imagen, el logotipo.
+- `test_blogpage_diag_reports_blog_state` (l. 164) — BP4b · El autodiagnóstico cuenta las entradas y avisa si faltan las plantillas del blog.
+- `test_blogpage_hostile_content_is_escaped` (l. 181) — BP5 · Todo lo que se escribe se escapa: título, descripción, texto y alt no pueden cerrar etiquetas, atributos ni el JSON-LD, y las marcas @@TV:…@@ escritas por una persona se quedan como texto.
+- `test_blogpage_drafts_and_scheduled_are_invisible` (l. 208) — BP6 · Borradores y programadas no existen para el público (404 con la página «no encontrado» del idioma); borrar también.
+- `test_blogpage_preview_with_signed_address` (l. 231) — BP7 · La vista previa firmada enseña un borrador sin indexar ni cachear; una firma mala, caducada o de otra entrada no vale.
+- `test_blogpage_redirects` (l. 256) — BP8 · Direcciones: la antigua redirige (301) a la nueva con sus parámetros; sin barra final también; y la entrada solo vive en su idioma.
+- `test_blogpage_hreflang_and_language_links` (l. 275) — BP9 · Traducciones: hreflang solo con las visibles (más x-default), enlaces del selector de idioma con la traducción o la portada, y marcas de «sin traducción».
+- `test_blogpage_index_merges_new_posts_by_date` (l. 299) — BP10 · El listado mezcla las entradas nuevas con las de la web por fecha (la más reciente primero), solo las visibles y de su idioma, con imagen y texto escapado.
+- `test_blogpage_index_fallbacks` (l. 324) — BP11 · Sin entradas nuevas el listado es el de la plantilla; sin plantilla se sirve el estático que dejó la compilación; sin nada, 503.
+- `test_blogpage_media` (l. 342) — BP12 · Imágenes: se sirven con su tipo, caché de un año, 304 por ETag y cabeceras que impiden ejecutar nada; las que no existen o con nombre raro, 404.
+- `test_blogpage_conditional_and_methods` (l. 360) — BP13 · Respuestas condicionales de las páginas: 304 con el mismo ETag; solo GET y HEAD.
+- `test_blogpage_sitemap_gets_the_new_posts` (l. 378) — BP14 · sitemap.xml: las entradas visibles se añaden con hreflang (traducciones visibles + x-default), imágenes con texto alternativo y lastmod; borradores y programadas no; sin entradas, el archivo tal cual.
+- `test_blogpage_llms_get_the_new_posts` (l. 403) — BP15 · llms.txt y llms-full.txt: las entradas nuevas se añaden bajo el título de su idioma (la más reciente arriba), con resumen o texto completo; si falta el título se crea la sección; lo escrito no puede romper el formato.
 
 ### `BlogTest.php`
 
@@ -2624,6 +2628,7 @@ Pruebas de lo que cambia de un hosting a otro (cPanel, Plesk…): la carpeta de 
 - `test_store_picks_a_usable_data_folder` (l. 100) — Carpeta de datos: la configurada, un almacén que ya tiene datos, la primera que se pueda crear, o error claro; un fichero en medio hace de «raíz de solo lectura» (Plesk).
 - `test_diag_reports_data_folder_deviation` (l. 134) — El diagnóstico avisa cuando la carpeta de datos configurada no sirvió y se usó otra; por línea de comandos sabe si la carpeta cae dentro de la web.
 - `test_diag_web_checks` (l. 155) — Comprobaciones de servidor del diagnóstico: nginx sin Apache ignora el .htaccess; la IP del visitante tras un proxy; HTTPS.
+- `test_diag_build_stamp_and_domain` (l. 177) — El Diagnóstico enseña la versión instalada (build.json) y avisa si falta, si se compiló con cambios sin guardar o si el dominio no es el del paquete.
 
 ### `MailTest.php`
 
