@@ -69,6 +69,9 @@ export function metaDescription(desc, bodyHtml, lang) {
 }
 
 // ───────────────────────────────────────────────────────────── [LAYOUT] envoltorio común
+/** Aviso para el demo (solo sin --base): si la página se abre sin sus hojas de estilo (p. ej. index.html dentro del .zip sin extraer), enseña arriba cómo abrirla bien. */
+const cssGuard = (msg) => `<script>(function(){try{if(!getComputedStyle(document.documentElement).getPropertyValue('--ink').trim()){var d=document.createElement('div');d.setAttribute('role','alert');d.style.cssText='font:16px/1.5 Arial,sans-serif;background:#ffb653;color:#100404;padding:14px 18px;border-bottom:3px solid #9c520f';d.textContent=${JSON.stringify(msg)};document.body.insertBefore(d,document.body.firstChild);}}catch(e){}})();</script>`;
+
 /** Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap. */
 export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [] }) {
   const { lang, site } = ctx;
@@ -109,6 +112,7 @@ ${noindex ? '' : ldScript(pageGraph(ctx, { template, title, description, crumbs,
 </head>
 <body class="tv tv-${template}" data-path="${attr(ctx.path)}">
 <a class="skip" href="#content">${t('skip', lang)}</a>
+${site.absBase ? '' : cssGuard(t('css_missing', lang))}
 ${site.demo ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('demo_banner', lang))}">${t('demo_banner', lang)} · ${t('demo_prices', lang)}</div>` : ''}
 ${site.staging ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('staging_banner', lang))}">${t('staging_banner', lang)}</div>` : ''}
 <div class="lang-banner no-print" id="lang-banner" role="region" aria-label="${attr(t('language', lang))}" hidden><div class="container"><span data-lang-msg></span><a class="btn sm" href="#" data-lang-go></a><button class="btn sm ghost" type="button" data-lang-keep>${t('lang_dismiss', lang)}</button></div></div>

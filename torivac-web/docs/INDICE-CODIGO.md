@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 725/725 funciones descritas (100 %) · 116/116 archivos con cabecera.
+**Cobertura**: 732/732 funciones descritas (100 %) · 117/117 archivos con cabecera.
 
 
 ## `site/`
@@ -51,35 +51,36 @@ Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[S
 - `headingOrder` (l. 47) — El contenido original salta de nivel (H1→H4). Se corrige en la ACCESIBILIDAD (aria-level) sin tocar la etiqueta, así el diseño no cambia:
 - `metaDescription` (l. 60) — Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, una frase genérica de marca.
 - `ok` (l. 62) — Una descripción sirve si tiene al menos 50 caracteres y no es solo signos o cifras.
-- `layout` (l. 73) — Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap.
-- `alt` (l. 76) — selector de idioma: sin traducción cae a la portada de ese idioma
-- `crumbs` (l. 161) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
-- `vtext` (l. 164) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
-- `vtags` (l. 166) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
-- `productCard` (l. 177) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
-- `catTree` (l. 191) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
-- `holds` (l. 194) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
-- `link` (l. 196) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
-- `walk` (l. 198) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
-- `categoryCards` (l. 205) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
-- `homeBody` (l. 223) — Portada: devuelve { hero, body } con el hero, cinco secciones (fotos, servicios, catálogo) y el formulario de contacto.
-- `text` (l. 227) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
-- `imgs` (l. 229) — Bloques de imagen de una sección.
-- `btn` (l. 231) — Primer bloque de botón de una sección (undefined si no tiene).
-- `eyebrowAndHead` (l. 244) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
-- `paras` (l. 250) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
-- `bt` (l. 252) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
-- `waveSvg` (l. 276) — onda de tensión animada (SVG) — elemento gráfico base del hero
-- `sectionsHtml` (l. 284) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo.
-- `isPhoto` (l. 288) — los iconos pequeños se quedan dentro del texto
-- `genericPage` (l. 305) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
-- `blogIndexBody` (l. 327) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
-- `postBody` (l. 333) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original.
-- `shopBody` (l. 344) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
-- `productBody` (l. 373) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
-- `quoteBody` (l. 423) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
-- `contactForm` (l. 451) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
-- `contactIntro` (l. 467) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
+- `cssGuard` (l. 73) — Aviso para el demo (solo sin --base): si la página se abre sin sus hojas de estilo (p. ej. index.html dentro del .zip sin extraer), enseña arriba cómo abrirla bien.
+- `layout` (l. 76) — Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap.
+- `alt` (l. 79) — selector de idioma: sin traducción cae a la portada de ese idioma
+- `crumbs` (l. 165) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
+- `vtext` (l. 168) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
+- `vtags` (l. 170) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
+- `productCard` (l. 181) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
+- `catTree` (l. 195) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
+- `holds` (l. 198) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
+- `link` (l. 200) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
+- `walk` (l. 202) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
+- `categoryCards` (l. 209) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
+- `homeBody` (l. 227) — Portada: devuelve { hero, body } con el hero, cinco secciones (fotos, servicios, catálogo) y el formulario de contacto.
+- `text` (l. 231) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
+- `imgs` (l. 233) — Bloques de imagen de una sección.
+- `btn` (l. 235) — Primer bloque de botón de una sección (undefined si no tiene).
+- `eyebrowAndHead` (l. 248) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
+- `paras` (l. 254) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
+- `bt` (l. 256) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
+- `waveSvg` (l. 280) — onda de tensión animada (SVG) — elemento gráfico base del hero
+- `sectionsHtml` (l. 288) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo.
+- `isPhoto` (l. 292) — los iconos pequeños se quedan dentro del texto
+- `genericPage` (l. 309) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
+- `blogIndexBody` (l. 331) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
+- `postBody` (l. 337) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original.
+- `shopBody` (l. 348) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
+- `productBody` (l. 377) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
+- `quoteBody` (l. 427) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
+- `contactForm` (l. 455) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
+- `contactIntro` (l. 471) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
 
 ## `site/lib/`
 
@@ -101,9 +102,9 @@ Secciones: `[HOSTING]`
 
 Secciones: `[I18N]`
 
-- `countLabel` (l. 108) — «1 producto / 2 productos» en los 4 idiomas
-- `refLabel` (l. 110) — «1 referencia / 2 referencias» en los 4 idiomas.
-- `t` (l. 112) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
+- `countLabel` (l. 109) — «1 producto / 2 productos» en los 4 idiomas
+- `refLabel` (l. 111) — «1 referencia / 2 referencias» en los 4 idiomas.
+- `t` (l. 113) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
 
 ### `render.mjs`
 
@@ -841,6 +842,19 @@ Sesión 1 · Capturas y volcado de estilos de las plantillas clave de grupotoriv
 - `pick` (l. 24) — Permalink del primer elemento de arr que cumple f (o del primero si ninguno cumple).
 - `cs` (l. 61) — Estilos calculados del elemento para las propiedades CSS props, como objeto { propiedad: valor }.
 - `sample` (l. 65) — Muestra del primer elemento que casa con sel (texto y estilos de tipografía, color, caja y sombra); null si no existe.
+
+### `single_file.mjs`
+
+[SINGLE-FILE] Convierte una página del demo en UN solo .html autosuficiente: hojas de estilo, scripts, fuentes e imágenes van dentro (base64). node scripts/single_file.mjs dist/index.html entrega/Torivac-portada.html Sirve para enseñar la web donde no se puede descomprimir nada (vista previa del móvil, correo, un visor de archivos): se ve igual que en el navegador.
+
+Secciones: `[SINGLE-FILE]` · `[FILES]` · `[INLINE]`
+
+- `localFile` (l. 13) — Archivo local al que apunta una referencia del HTML o del CSS (null si es http, data:, un ancla o no existe).
+- `dataUri` (l. 20) — data: URI de un archivo de imagen o fuente (null si el tipo no se incrusta, p. ej. los PDF).
+- `inlineCss` (l. 27) — CSS con cada url(...) local sustituida por su data: URI; `dir` es la carpeta del propio CSS.
+- `attrOf` (l. 32) — Valor de un atributo de una etiqueta HTML (comillas dobles o simples); null si no lo lleva.
+- `singleFile` (l. 35) — Página → HTML autosuficiente. Devuelve { html, images, bytes }.
+- `inline` (l. 52) — data: URI de la imagen o fuente local a la que apunta `ref` (la cuenta en `images`); null si no hay nada que incrustar.
 
 ### `smoke-admin.mjs`
 
