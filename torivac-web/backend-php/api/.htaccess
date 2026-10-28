@@ -1,0 +1,12 @@
+# API de Torivac: solo index.php es accesible desde la web; el resto de ficheros PHP/JSON queda cerrado.
+Options -Indexes
+<IfModule mod_authz_core.c>
+  <FilesMatch "^(?!index\.php$).*\.(php|json|md|sample)$">
+    Require all denied
+  </FilesMatch>
+</IfModule>
+<IfModule mod_authz_core.c>
+  <FilesMatch "^config\.sample\.php$">
+    Require all denied
+  </FilesMatch>
+</IfModule>

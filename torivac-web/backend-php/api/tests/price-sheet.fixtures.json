@@ -1,0 +1,772 @@
+{
+ "_doc": "Casos con los que se prueban TODAS las implementaciones de la lectura de hojas de precios (JS: workers/api/test/price-sheet.test.js · PHP: backend-php/tests). Datos sintéticos con la forma de los reales: no hay precios de Torivac.",
+ "cases": [
+  {
+   "name": "tarifa: Artículo / Descripción / Precio venta, 8 decimales, referencias nuevas por regla y desconocidas",
+   "rows": [
+    [
+     "Artículo",
+     "Descripción",
+     "Precio venta"
+    ],
+    [
+     "TT0030210",
+     "TRAFO TOROIDAL 30VA 230V/2X10V",
+     24.38303161
+    ],
+    [
+     "TT0020210",
+     "TRAFO TOROID. 20VA, 230V/2X10V ",
+     30.1277091
+    ],
+    [
+     "TT0150117EM",
+     "TRAFO TOROID 152VA 230V/117V-1.3A.",
+     37.01215908
+    ],
+    [
+     "tt00302075",
+     "TRAFO TOROIDAL 30VA 230V/2x7.5V",
+     "24,38303161"
+    ],
+    [
+     "ZZ999",
+     "otra cosa",
+     5
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "P8339": {
+      "n": "Resistencias de frenado",
+      "pid": 8339
+     },
+     "P8340": {
+      "n": "Resistencias helicoidales",
+      "pid": 8340
+     },
+     "P884A": {
+      "n": "x",
+      "pid": 1
+     },
+     "P932-MOD10": {
+      "n": "Botón BO",
+      "pid": 932
+     },
+     "P866": {
+      "n": "Variador",
+      "pid": 866
+     }
+    },
+    "skus": {},
+    "rules": [
+     {
+      "pattern": "^TT\\d{7,8}[A-Z]{0,3}$",
+      "pid": 884
+     },
+     {
+      "pattern": "^CA\\d{7}$",
+      "pid": 951
+     }
+    ]
+   },
+   "expect": {
+    "items": {
+     "TT0030210": {
+      "p": 24.383
+     },
+     "TT0020210": {
+      "p": 30.1277
+     },
+     "TT0150117EM": {
+      "p": 37.0122,
+      "pid": 884,
+      "n": "TRAFO TOROID 152VA 230V/117V-1.3A."
+     },
+     "TT00302075": {
+      "p": 24.383,
+      "pid": 884,
+      "n": "TRAFO TOROIDAL 30VA 230V/2x7.5V"
+     }
+    },
+    "unknown": [
+     "ZZ999"
+    ],
+    "extras": [
+     "TT0150117EM",
+     "TT00302075"
+    ],
+    "warningCodes": [
+     "referencias_desconocidas",
+     "referencias_nuevas"
+    ]
+   }
+  },
+  {
+   "name": "decimales: 2",
+   "rows": [
+    [
+     "Artículo",
+     "Precio venta"
+    ],
+    [
+     "TT0030210",
+     24.38303161
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "P8339": {
+      "n": "Resistencias de frenado",
+      "pid": 8339
+     },
+     "P8340": {
+      "n": "Resistencias helicoidales",
+      "pid": 8340
+     },
+     "P884A": {
+      "n": "x",
+      "pid": 1
+     },
+     "P932-MOD10": {
+      "n": "Botón BO",
+      "pid": 932
+     },
+     "P866": {
+      "n": "Variador",
+      "pid": 866
+     }
+    },
+    "decimals": 2
+   },
+   "expect": {
+    "items": {
+     "TT0030210": {
+      "p": 24.38
+     }
+    },
+    "warningCodes": []
+   }
+  },
+  {
+   "name": "WooCommerce: SKU por producto, precio de relleno, duplicados y producto con modelos",
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SKU",
+     "Producto",
+     "Precio",
+     "Oferta",
+     "Stock"
+    ],
+    [
+     "aaaa00000000",
+     "Producto 0",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000001",
+     "Producto 1",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000002",
+     "Producto 2",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000003",
+     "Producto 3",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000004",
+     "Producto 4",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000005",
+     "Producto 5",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000006",
+     "Producto 6",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000007",
+     "Producto 7",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000008",
+     "Producto 8",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000009",
+     "Producto 9",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000010",
+     "Producto 10",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa00000011",
+     "Producto 11",
+     22000,
+     0,
+     5
+    ],
+    [
+     "aaaa000000000",
+     "Producto 0 (EN)",
+     22000,
+     0,
+     5
+    ],
+    [
+     "bbbb11112222",
+     "Variador con modelos",
+     8000,
+     0,
+     5
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "P1000": {
+      "n": "Producto 0",
+      "pid": 1000
+     },
+     "P1001": {
+      "n": "Producto 1",
+      "pid": 1001
+     },
+     "P1002": {
+      "n": "Producto 2",
+      "pid": 1002
+     },
+     "P1003": {
+      "n": "Producto 3",
+      "pid": 1003
+     },
+     "P1004": {
+      "n": "Producto 4",
+      "pid": 1004
+     },
+     "P1005": {
+      "n": "Producto 5",
+      "pid": 1005
+     },
+     "P1006": {
+      "n": "Producto 6",
+      "pid": 1006
+     },
+     "P1007": {
+      "n": "Producto 7",
+      "pid": 1007
+     },
+     "P1008": {
+      "n": "Producto 8",
+      "pid": 1008
+     },
+     "P1009": {
+      "n": "Producto 9",
+      "pid": 1009
+     },
+     "P1010": {
+      "n": "Producto 10",
+      "pid": 1010
+     },
+     "P1011": {
+      "n": "Producto 11",
+      "pid": 1011
+     },
+     "P866-160VA": {
+      "n": "Variador 160 VA",
+      "pid": 866
+     }
+    },
+    "skus": {
+     "aaaa00000000": 1000,
+     "aaaa00000001": 1001,
+     "aaaa00000002": 1002,
+     "aaaa00000003": 1003,
+     "aaaa00000004": 1004,
+     "aaaa00000005": 1005,
+     "aaaa00000006": 1006,
+     "aaaa00000007": 1007,
+     "aaaa00000008": 1008,
+     "aaaa00000009": 1009,
+     "aaaa00000010": 1010,
+     "aaaa00000011": 1011,
+     "bbbb11112222": 866,
+     "aaaa000000000": 1000
+    },
+    "rules": []
+   },
+   "expect": {
+    "acceptedCount": 12,
+    "warningCodes": [
+     "columna_no_usada",
+     "columna_no_usada",
+     "precio_de_relleno"
+    ],
+    "ignoredReasons": [
+     "el producto tiene modelos: poner el precio en la referencia de cada modelo"
+    ],
+    "itemSample": {
+     "P1000": {
+      "p": 22000
+     }
+    }
+   }
+  },
+  {
+   "name": "canónico: tramos, active=0, coma decimal y filas sin precio",
+   "rows": [
+    [
+     "ref",
+     "product_id",
+     "name_es",
+     "unit",
+     "currency",
+     "price",
+     "qty2",
+     "price2",
+     "qty3",
+     "price3",
+     "note",
+     "active"
+    ],
+    [
+     "P8339",
+     8339,
+     "Frenado",
+     "ud",
+     "EUR",
+     "15,82",
+     10,
+     "15,1",
+     50,
+     "14,4",
+     "DEMO",
+     1
+    ],
+    [
+     "P8340",
+     8340,
+     "Helicoidales",
+     "ud",
+     "EUR",
+     62.93,
+     "",
+     "",
+     "",
+     "",
+     "",
+     0
+    ],
+    [
+     "P884A",
+     1,
+     "x",
+     "ud",
+     "EUR",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     1
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "P8339": {
+      "n": "Resistencias de frenado",
+      "pid": 8339
+     },
+     "P8340": {
+      "n": "Resistencias helicoidales",
+      "pid": 8340
+     },
+     "P884A": {
+      "n": "x",
+      "pid": 1
+     },
+     "P932-MOD10": {
+      "n": "Botón BO",
+      "pid": 932
+     },
+     "P866": {
+      "n": "Variador",
+      "pid": 866
+     }
+    }
+   },
+   "expect": {
+    "items": {
+     "P8339": {
+      "p": 15.82,
+      "t": [
+       [
+        10,
+        15.1
+       ],
+       [
+        50,
+        14.4
+       ]
+      ],
+      "note": "DEMO"
+     }
+    },
+    "ignoredReasons": [
+     "desactivada (active = 0)"
+    ],
+    "warningCodes": [
+     "sin_precio"
+    ]
+   }
+  },
+  {
+   "name": "cabecera tras filas de título, mayúsculas y acentos",
+   "rows": [
+    [
+     "TARIFA 2026",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "CÓDIGO",
+     "PVP"
+    ],
+    [
+     "P8339",
+     "1.234,56"
+    ],
+    [
+     "P8340",
+     "1,234.56"
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "P8339": {
+      "n": "Resistencias de frenado",
+      "pid": 8339
+     },
+     "P8340": {
+      "n": "Resistencias helicoidales",
+      "pid": 8340
+     },
+     "P884A": {
+      "n": "x",
+      "pid": 1
+     },
+     "P932-MOD10": {
+      "n": "Botón BO",
+      "pid": 932
+     },
+     "P866": {
+      "n": "Variador",
+      "pid": 866
+     }
+    }
+   },
+   "expect": {
+    "items": {
+     "P8339": {
+      "p": 1234.56
+     },
+     "P8340": {
+      "p": 1234.56
+     }
+    },
+    "warningCodes": []
+   }
+  },
+  {
+   "name": "referencia repetida con precios distintos: gana la primera y se avisa",
+   "rows": [
+    [
+     "ref",
+     "price"
+    ],
+    [
+     "P8339",
+     10
+    ],
+    [
+     "P8339",
+     11
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "P8339": {
+      "n": "Resistencias de frenado",
+      "pid": 8339
+     },
+     "P8340": {
+      "n": "Resistencias helicoidales",
+      "pid": 8340
+     },
+     "P884A": {
+      "n": "x",
+      "pid": 1
+     },
+     "P932-MOD10": {
+      "n": "Botón BO",
+      "pid": 932
+     },
+     "P866": {
+      "n": "Variador",
+      "pid": 866
+     }
+    }
+   },
+   "expect": {
+    "items": {
+     "P8339": {
+      "p": 10
+     }
+    },
+    "warningCodes": [
+     "duplicada"
+    ]
+   }
+  },
+  {
+   "name": "precio 0 y negativo no se publican",
+   "rows": [
+    [
+     "ref",
+     "price"
+    ],
+    [
+     "P8339",
+     0
+    ],
+    [
+     "P8340",
+     -4
+    ],
+    [
+     "TT0030210",
+     5
+    ]
+   ],
+   "ctx": {
+    "lines": {
+     "TT0030210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "TT0020210": {
+      "n": "Transformador Serie TT",
+      "pid": 884
+     },
+     "P8339": {
+      "n": "Resistencias de frenado",
+      "pid": 8339
+     },
+     "P8340": {
+      "n": "Resistencias helicoidales",
+      "pid": 8340
+     },
+     "P884A": {
+      "n": "x",
+      "pid": 1
+     },
+     "P932-MOD10": {
+      "n": "Botón BO",
+      "pid": 932
+     },
+     "P866": {
+      "n": "Variador",
+      "pid": 866
+     }
+    }
+   },
+   "expect": {
+    "items": {
+     "TT0030210": {
+      "p": 5
+     }
+    },
+    "ignoredReasons": [
+     "precio 0 (se muestra «Consultar»)",
+     "precio negativo"
+    ],
+    "warningCodes": []
+   }
+  },
+  {
+   "name": "sin contexto de catálogo se aceptan todas las referencias",
+   "rows": [
+    [
+     "ref",
+     "price"
+    ],
+    [
+     "X1",
+     3
+    ],
+    [
+     "x 2",
+     4
+    ]
+   ],
+   "ctx": {},
+   "expect": {
+    "items": {
+     "X1": {
+      "p": 3
+     },
+     "x 2": {
+      "p": 4
+     }
+    },
+    "warningCodes": []
+   }
+  }
+ ],
+ "numbers": [
+  [
+   "27,75",
+   27.75
+  ],
+  [
+   "27.75093203",
+   27.75093203
+  ],
+  [
+   "1.234,56",
+   1234.56
+  ],
+  [
+   "1,234.56",
+   1234.56
+  ],
+  [
+   "22 000",
+   22000
+  ],
+  [
+   "€ 5,5",
+   5.5
+  ],
+  [
+   "1.234.567",
+   1234567
+  ],
+  [
+   "1,234,567",
+   1234567
+  ],
+  [
+   "abc",
+   null
+  ],
+  [
+   "",
+   null
+  ],
+  [
+   12,
+   12
+  ],
+  [
+   "0,5",
+   0.5
+  ]
+ ],
+ "no_header": [
+  [
+   "a",
+   "b"
+  ],
+  [
+   1,
+   2
+  ]
+ ]
+}

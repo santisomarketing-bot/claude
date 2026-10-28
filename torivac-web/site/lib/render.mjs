@@ -13,11 +13,14 @@ export const attr = esc;
 /** ruta lógica de página ('/en/product/x/') → carpeta de salida relativa a dist ('en/product/x') */
 export const dirOf = (p) => p.replace(/^\/|\/$/g, '');
 
+// Demo (file://): los enlaces a carpetas terminan en index.html. Producción (--base): URLs limpias, sin index.html (Apache sirve la carpeta).
+let clean = false;
+export const setCleanUrls = (v) => { clean = !!v; };
 /** URL relativa desde la página `from` hasta la página lógica `to` (+hash opcional). */
 export function rel(from, to, hash = '') {
   const up = '../'.repeat(dirOf(from).split('/').filter(Boolean).length) || './';
   const target = to.replace(/^\//, '');
-  return up + target + (to.endsWith('/') ? 'index.html' : '') + hash;
+  return up + target + (to.endsWith('/') && !clean ? 'index.html' : '') + hash;
 }
 /** URL relativa a un asset ('assets/css/x.css') desde la página `from`. */
 export function asset(from, a) {

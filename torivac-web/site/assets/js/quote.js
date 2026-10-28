@@ -73,7 +73,7 @@
   /** ruta relativa a una página lógica (/en/product/x/) desde la página actual */
   function rel(logical) {
     var cur = (document.body.getAttribute('data-path') || '/').split('/').filter(Boolean).length;
-    return (cur ? new Array(cur + 1).join('../') : './') + logical.replace(/^\//, '') + (logical.slice(-1) === '/' ? 'index.html' : '');
+    return (cur ? new Array(cur + 1).join('../') : './') + logical.replace(/^\//, '') + (logical.slice(-1) === '/' && !(TV.meta && TV.meta.clean) ? 'index.html' : '');
   }
   function assetUrl(a) { var cur = (document.body.getAttribute('data-path') || '/').split('/').filter(Boolean).length; return (cur ? new Array(cur + 1).join('../') : './') + a; }
 

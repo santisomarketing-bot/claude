@@ -94,7 +94,7 @@ export function layout(ctx, { title, description, body, template, alts = {}, scr
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${attr(description || '')}">
-${noindex ? '<meta name="robots" content="noindex,nofollow">' : ''}
+${noindex || site.staging ? '<meta name="robots" content="noindex,nofollow">' : ''}
 ${canonical}${alternates}
 <meta name="theme-color" content="#100404">
 <link rel="icon" href="${ctx.asset('assets/img/favicon.png')}" type="image/png">
@@ -107,6 +107,7 @@ ${noindex ? '' : ldScript(pageGraph(ctx, { template, title, description, crumbs,
 <body class="tv tv-${template}" data-path="${attr(ctx.path)}">
 <a class="skip" href="#content">${t('skip', lang)}</a>
 ${site.demo ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('demo_banner', lang))}">${t('demo_banner', lang)} · ${t('demo_prices', lang)}</div>` : ''}
+${site.staging ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('staging_banner', lang))}">${t('staging_banner', lang)}</div>` : ''}
 <div class="lang-banner no-print" id="lang-banner" role="region" aria-label="${attr(t('language', lang))}" hidden><div class="container"><span data-lang-msg></span><a class="btn sm" href="#" data-lang-go></a><button class="btn sm ghost" type="button" data-lang-keep>${t('lang_dismiss', lang)}</button></div></div>
 <header class="site-header no-print" id="site-header">
   <div class="container bar">

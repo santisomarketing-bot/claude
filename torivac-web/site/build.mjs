@@ -6,7 +6,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { Ctx, writeFile, esc, attr, mapLink, plain } from './lib/render.mjs';
+import { Ctx, writeFile, esc, attr, mapLink, plain, setCleanUrls } from './lib/render.mjs';
+import { htaccess, langHtaccess, robotsTxt, basePathOf } from './lib/hosting.mjs';
 import { LANGS, T, t } from './lib/i18n.mjs';
 import * as TPL from './templates.mjs';
 import { productNode, itemListNode, postNode } from './lib/seo.mjs';
@@ -17,6 +18,9 @@ const arg0 = (k) => (process.argv.find((a) => a.startsWith(`--${k}=`)) || '').sp
 const DIST = arg0('out') ? path.resolve(arg0('out')) : path.join(ROOT, 'dist');            // --out=carpeta (p. ej. para auditar SEO con --base sin tocar dist/)
 const arg = (k) => (process.argv.find((a) => a.startsWith(`--${k}=`)) || '').split('=').slice(1).join('=');
 const ABS = arg('base') || '';
+const STAGING = process.argv.includes('--staging') || process.env.TORIVAC_STAGING === '1';   // dominio de pruebas: noindex, robots Disallow y cinta «entorno de pruebas»
+const PHP_API = process.argv.includes('--php-api');                                          // el API (PHP) vive en la misma web, en /api (hosting con cPanel)
+setCleanUrls(!!ABS);                                                                         // producción: URLs sin index.html; demo (doble clic): con index.html
 const jl = (f, d) => { try { return JSON.parse(fs.readFileSync(path.join(CAT, f), 'utf8')); } catch { return d; } };
 
 // ───────────────────────────────────────────────────────────── [LOAD]
@@ -27,7 +31,8 @@ const pages = jl('pages.json', {});
 const vtagList = jl('voltage-tags.json', []);
 // [LIVE] compilación con servidor (TORIVAC_API o meta.api_base): pedidos y precios reales. Los precios DE DEMOSTRACIÓN nunca viajan en una compilación así
 //   (si el servidor no responde, la web dice «Consultar»; jamás enseña un precio de demostración como si fuera real).
-const LIVE = !!(process.env.TORIVAC_API || jl('meta.json', {}).api_base);
+const API_URL = process.env.TORIVAC_API || jl('meta.json', {}).api_base || (PHP_API && ABS ? ABS.replace(/\/$/, '') : '');
+const LIVE = !!API_URL;
 let prices = jl('prices.json', { updated_at: null, source: 'none', currency: 'EUR', mode: 'demo', items: {} });
 if (LIVE && prices.mode === 'demo') { prices = { updated_at: null, source: 'none', currency: prices.currency || 'EUR', mode: 'none', items: {} }; console.log('[LIVE] precios de demostración omitidos del paquete: los precios los da el servidor'); }
 const thumbs = jl('thumbs.json', {});
@@ -112,7 +117,7 @@ const fundES = Object.keys(imageMap).find((k) => /MANUAL-FEDER/i.test(k));
 const fundOT = Object.keys(imageMap).find((k) => /Logotipos_FondosEuropeos/i.test(k));
 const logo = imageMap[logoKey]?.file || 'assets/img/logo.png';
 const NAVKEYS = ['home', 'company', 'products', 'projects', 'catalog', 'blog', 'contact'];
-const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
+const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, staging: STAGING, absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
 const QSLUG = { es: '/presupuesto/', en: '/en/quote/', fr: '/fr/devis/', de: '/de/angebot/' };
 meta.catalogHref = {};
 for (const l of LANGS) {
@@ -291,11 +296,15 @@ for (const p of products) {
   const slim = Object.fromEntries(Object.entries(itemsJs).map(([ref, i]) => [ref, { n: i.n.es, pid: i.pid }]));
   const skus = Object.fromEntries(products.filter((p) => p.sku).map((p) => [p.sku, p.id]));
   const rules = jl('ref-rules.json', { rules: [] }).rules.map(({ pattern, pid }) => ({ pattern, pid }));
+  // el mismo catálogo para el API en PHP (hosting con cPanel)
+  const php = path.join(ROOT, 'backend-php', 'api', 'generated');
+  fs.mkdirSync(php, { recursive: true });
+  fs.writeFileSync(path.join(php, 'catalog.json'), JSON.stringify({ items: slim, skus, rules }));
   fs.writeFileSync(path.join(wk, 'items.js'), `// GENERADO por site/build.mjs (no editar a mano). refs pedibles: { ref: { n: nombre ES, pid } } · skus: SKU de WooCommerce → id de producto · rules: códigos nuevos de una tarifa que encajan en un producto\nexport default ${JSON.stringify(slim)};\nexport const skus = ${JSON.stringify(skus)};\nexport const rules = ${JSON.stringify(rules)};\n`);
 }
 const i18n = Object.fromEntries(LANGS.map((l) => [l, Object.fromEntries(Object.keys(T).map((k) => [k, T[k][l] ?? T[k].es]))]));
 const thumbsUsed = Object.fromEntries(Object.entries(thumbs).filter(([k]) => k !== '__logo' && Object.values(itemsJs).some((i) => i.th === k)));
-const catalogJs = `/* [DATA] generado por site/build.mjs — no editar */\nwindow.TV=window.TV||{};\nTV.meta=${JSON.stringify({ currency: meta.currency || 'EUR', demo: site.demo, recipients: meta.order_recipients?.to || [], api: process.env.TORIVAC_API || meta.api_base || '', contact: meta.contact })};\nTV.i18n=${JSON.stringify(i18n)};\nTV.items=${JSON.stringify(itemsJs)};\nTV.sheet=${JSON.stringify({ skus: Object.fromEntries(products.filter((p) => p.sku).map((p) => [p.sku, p.id])), rules: jl('ref-rules.json', { rules: [] }).rules.map(({ pattern, pid }) => ({ pattern, pid })) })};\nTV.thumbs=${JSON.stringify(thumbsUsed)};\nTV.logo=${JSON.stringify(thumbs.__logo || null)};\n`;
+const catalogJs = `/* [DATA] generado por site/build.mjs — no editar */\nwindow.TV=window.TV||{};\nTV.meta=${JSON.stringify({ currency: meta.currency || 'EUR', demo: site.demo, recipients: meta.order_recipients?.to || [], api: API_URL, clean: !!ABS, contact: meta.contact })};\nTV.i18n=${JSON.stringify(i18n)};\nTV.items=${JSON.stringify(itemsJs)};\nTV.sheet=${JSON.stringify({ skus: Object.fromEntries(products.filter((p) => p.sku).map((p) => [p.sku, p.id])), rules: jl('ref-rules.json', { rules: [] }).rules.map(({ pattern, pid }) => ({ pattern, pid })) })};\nTV.thumbs=${JSON.stringify(thumbsUsed)};\nTV.logo=${JSON.stringify(thumbs.__logo || null)};\n`;
 writeFile(DIST, 'assets/data/catalog.js', catalogJs);
 writeFile(DIST, 'assets/data/prices.js', `/* [DATA] precios — se regenera con scripts/build_prices.py (Sesión 6) */\nwindow.TV=window.TV||{};\nTV.prices=${JSON.stringify(prices)};\n`);
 writeFile(DIST, 'assets/data/proposals.js', `window.TV=window.TV||{};TV.proposals=${JSON.stringify(proposals)};\n`);
@@ -308,7 +317,7 @@ for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (fs.existsSync(path.
 {
   const ctx = mkctx('es', '/admin/', 'admin');
   const a = (s) => ctx.asset(s);
-  writeFile(DIST, 'admin/index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel · Torivac${process.env.TORIVAC_API || meta.api_base ? '' : ' (demo)'}</title><link rel="icon" href="${a('assets/img/favicon.png')}">${['fonts', 'tokens', 'base', 'layout', 'components', 'admin'].map((c) => `<link rel="stylesheet" href="${a(`assets/css/${c}.css`)}">`).join('')}</head><body class="admin tv-admin" data-path="/admin/"><input type="hidden" id="logo-src" value="${a(site.logo)}"><div id="admin-root"></div><div class="toast" id="toast" role="status"></div><script>window.TV_LANG='es';</script><script src="${a('assets/data/catalog.js')}"></script><script src="${a('assets/data/prices.js')}"></script><script src="${a('assets/data/proposals.js')}"></script><script src="${a('assets/data/admin-data.js')}"></script><script src="${a('assets/js/quote.js')}"></script><script src="${a('assets/vendor/jspdf.umd.min.js')}"></script><script src="${a('assets/vendor/jspdf.plugin.autotable.min.js')}"></script><script src="${a('assets/vendor/xlsx.mini.min.js')}"></script><script src="${a('assets/js/pdf.js')}"></script><script src="${a('assets/js/price-sheet.js')}"></script><script src="${a('assets/js/admin-report.js')}"></script><script src="${a(process.env.TORIVAC_API || meta.api_base ? 'assets/js/admin-live.js' : 'assets/js/admin.js')}"></script></body></html>`);
+  writeFile(DIST, 'admin/index.html', `<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Panel · Torivac${API_URL ? '' : ' (demo)'}</title><link rel="icon" href="${a('assets/img/favicon.png')}">${['fonts', 'tokens', 'base', 'layout', 'components', 'admin'].map((c) => `<link rel="stylesheet" href="${a(`assets/css/${c}.css`)}">`).join('')}</head><body class="admin tv-admin" data-path="/admin/"><input type="hidden" id="logo-src" value="${a(site.logo)}"><div id="admin-root"></div><div class="toast" id="toast" role="status"></div><script>window.TV_LANG='es';</script><script src="${a('assets/data/catalog.js')}"></script><script src="${a('assets/data/prices.js')}"></script><script src="${a('assets/data/proposals.js')}"></script><script src="${a('assets/data/admin-data.js')}"></script><script src="${a('assets/js/quote.js')}"></script><script src="${a('assets/vendor/jspdf.umd.min.js')}"></script><script src="${a('assets/vendor/jspdf.plugin.autotable.min.js')}"></script><script src="${a('assets/vendor/xlsx.mini.min.js')}"></script><script src="${a('assets/js/pdf.js')}"></script><script src="${a('assets/js/price-sheet.js')}"></script><script src="${a('assets/js/admin-report.js')}"></script><script src="${a(API_URL ? 'assets/js/admin-live.js' : 'assets/js/admin.js')}"></script></body></html>`);
   count++;
 }
 
@@ -333,9 +342,9 @@ if (ABS) {
 fs.mkdirSync(path.join(DIST, 'assets', 'pdf'), { recursive: true });
 for (const f of pdfLocal.keys()) fs.copyFileSync(path.join(pdfDir, f), path.join(DIST, 'assets', 'pdf', f));
 // portada del demo: abre el español; selector con los 4 idiomas en demo.html
-fs.writeFileSync(path.join(DIST, 'README-DEMO.txt'), `Torivac · demo (no es la web oficial)\nAbre index.html (español). Idiomas: en/index.html, fr/index.html, de/index.html.\nPrecios y envío de pedido: SIMULADOS.\n`);
+if (!ABS) fs.writeFileSync(path.join(DIST, 'README-DEMO.txt'), `Torivac · demo (no es la web oficial)\nAbre index.html (español). Idiomas: en/index.html, fr/index.html, de/index.html.\nPrecios y envío de pedido: SIMULADOS.\n`);
 // ───────────────────────────────────────────────────────────── [SEO-FILES] sitemap.xml (hreflang + imágenes), robots.txt, llms.txt, llms-full.txt (solo con --base)
-if (ABS) {
+if (ABS && !STAGING) {
   const reg = site.registry, regPaths = new Set(reg.map((r) => r.path));
   const xml = (x) => String(x ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   const url = (r) => {
@@ -345,7 +354,6 @@ if (ABS) {
     return `<url><loc>${xml(ABS + r.path)}</loc>${links}${imgs}</url>`;
   };
   fs.writeFileSync(path.join(DIST, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">${reg.map(url).join('')}</urlset>`);
-  fs.writeFileSync(path.join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${ABS}/sitemap.xml\n`);
   // llms.txt: índice para modelos de lenguaje (qué es Torivac, páginas clave y fichas por idioma). llms-full.txt: lo mismo con el texto de cada ficha.
   const LNAME = { es: 'Español', en: 'English', fr: 'Français', de: 'Deutsch' };
   const c = meta.contact || {};
@@ -358,10 +366,29 @@ if (ABS) {
     short += sec(`${LNAME[lang]} · páginas`, key.map((r) => `- [${r.title}](${ABS}${r.path})${r.description ? ': ' + r.description : ''}`));
     const prods = products.map((x) => ({ x, path: x.pathFor[lang], name: x.name[lang] || x.name.es, desc: plain(x.short?.[lang] || x.short?.es || []) }));
     short += sec(`${LNAME[lang]} · productos`, prods.map((r) => `- [${r.name}](${ABS}${r.path})${r.desc ? ': ' + r.desc.slice(0, 160) : ''}`));
-    full += sec(`${LNAME[lang]} · productos (texto completo)`, prods.map((r) => `### ${r.name}\n${ABS}${r.path}\n${r.desc}\n${r.x.voltage_tags?.length ? 'Tensiones: ' + r.x.voltage_tags.join(', ') + '\n' : ''}`));
+    full += sec(`${LNAME[lang]} · productos (texto completo)`, prods.map((r) => `### ${r.name}\n${ABS}${r.path}\n${r.desc}\n${r.x.voltage_tags?.length ? 'Tensiones: ' + r.x.voltage_tags.map((id) => { const v = vtags.get(id); const l = v && (typeof v.label === 'string' ? v.label : v.label[lang] || v.label.es); return l || id; }).join(', ') + '\n' : ''}`));
   }
   fs.writeFileSync(path.join(DIST, 'llms.txt'), short);
   fs.writeFileSync(path.join(DIST, 'llms-full.txt'), full);
   console.log(`SEO: sitemap ${reg.length} URLs · llms.txt ${(short.length / 1024).toFixed(0)} KB · llms-full.txt ${(full.length / 1024).toFixed(0)} KB`);
+}
+
+// ───────────────────────────────────────────────────────────── [HOSTING] .htaccess, robots.txt y 404 por idioma para cPanel (solo con --base)
+if (ABS) {
+  const bp = basePathOf(ABS), origin = new URL(ABS).origin;
+  fs.writeFileSync(path.join(DIST, 'robots.txt'), robotsTxt({ base: ABS, staging: STAGING }));
+  fs.writeFileSync(path.join(DIST, '.htaccess'), htaccess({ base: ABS, staging: STAGING, aliases, pdfRedirects: [...pdfLocal], apiOrigin: API_URL ? new URL(API_URL).origin : '', phpApi: PHP_API }));
+  for (const lang of LANGS) {
+    const t = (k) => T[k]?.[lang] ?? T[k]?.es ?? k;
+    const ctx = mkctx(lang, '/', 'page');
+    const homeAlts = Object.fromEntries(LANGS.map((l) => [l, site.home[l]]));
+    const body = `<section class="sec"><div class="container"><h1>${esc(t('not_found_title'))}</h1><p>${esc(t('not_found_text'))}</p><p><a class="btn" href="${attr(ctx.href(site.home[lang]))}">${esc(t('home'))}</a> <a class="btn ghost" href="${attr(ctx.href(site.products[lang]))}">${esc(t('products'))}</a> <a class="btn ghost" href="${attr(ctx.href(site.contact[lang]))}">${esc(t('contact'))}</a></p></div></section>`;
+    // el 404 se sirve en cualquier profundidad: sus rutas relativas pasan a absolutas desde la raíz del sitio
+    const html = TPL.layout(ctx, { title: `${t('not_found_title')} · Torivac`, description: '', template: 'page', body, alts: homeAlts, scripts: [], noindex: true }).replace(/(href|src)="\.\//g, `$1="${bp}/`);
+    writeFile(DIST, lang === 'es' ? '404.html' : `${lang}/404.html`, html);
+    if (lang !== 'es') fs.writeFileSync(path.join(DIST, lang, '.htaccess'), langHtaccess(lang, bp));
+  }
+  void origin;
+  console.log(`HOSTING: .htaccess (${aliases.size} redirecciones 301 + ${pdfLocal.size} PDF antiguos) · robots.txt${STAGING ? ' (pruebas: Disallow total)' : ''} · 404 en ${LANGS.length} idiomas`);
 }
 console.log('dist listo:', DIST);
