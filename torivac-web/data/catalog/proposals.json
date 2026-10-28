@@ -1124,6 +1124,20 @@
  },
  {
   "status": "pending",
+  "type": "seo_title",
+  "product_id": null,
+  "product_name": null,
+  "field": "título de la portada (SEO)",
+  "title": "La portada se titula solo «Torivac» en los cuatro idiomas: la web nueva usa un título descriptivo",
+  "web_value": "«Torivac» (es, en, fr y de)",
+  "pdf_value": "es: Torivac · Transformadores toroidales y variadores de tensión · en: Torivac · Toroidal transformers and voltage regulators · fr: Torivac · Transformateurs toroïdaux et variateurs de tension · de: Torivac · Ringkerntransformatoren und Spannungsregler",
+  "severity": "media",
+  "recommendation": "El título de la portada es lo que Google muestra como titular y lo que usan llms.txt y las vistas previas al compartir; con solo «Torivac» no dice a qué se dedica la empresa. La web nueva publica estos títulos (data/catalog/seo-overrides.json); para volver al original basta borrar la entrada home_title. Confirmar la redacción.",
+  "confidence": "alta",
+  "id": "PR-94529"
+ },
+ {
+  "status": "pending",
   "type": "voltage_tag",
   "product_id": 16633,
   "product_name": "Variador de tensión portatil",
@@ -1295,6 +1309,20 @@
   "recommendation": "El texto parece estar en neerlandés (o en neerlandés) y aparece en 2 página(s) en alemán. Es así en la web original; la web nueva lo respeta. Revisar y traducir antes de publicar.",
   "confidence": "media",
   "id": "PR-94527"
+ },
+ {
+  "status": "pending",
+  "type": "duplicate_product",
+  "product_id": 909,
+  "product_name": "Reostatos y potenciometros bobinados",
+  "field": "fichas duplicadas",
+  "title": "Tres fichas se llaman «Reostatos y potenciometros bobinados» (mismo título SEO) y dos están sin categoría; una de ellas, vacía",
+  "web_value": "/product/reostatos-y-potenciometros-bobinados/ (categoría 122, sin texto) · …-2/ (sin categoría, un párrafo) · …-6/ (sin categoría, sin texto ni imagen)",
+  "pdf_value": null,
+  "severity": "baja",
+  "recommendation": "La web nueva las conserva con las mismas direcciones que la original para no romper enlaces. Google ve tres páginas con el mismo título y dos de ellas casi sin contenido. Decidir si se redirigen a la ficha de la categoría (o a «simple»/«doble») o si se completan. No se ha tocado nada.",
+  "confidence": "alta",
+  "id": "PR-94328"
  },
  {
   "status": "pending",

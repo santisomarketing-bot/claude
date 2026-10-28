@@ -80,6 +80,8 @@ for (const c of [...byId.values()].sort((a, b) => depthOf(a) - depthOf(b) || a.i
 const aliasPaths = [];            // [{from:{lang:path}, to:canonicalId}]
 for (const [id, to] of canonical) { const c = byId.get(id); aliasPaths.push({ from: c.path, to: canon(to), id }); }
 const products = rawProducts.map((p) => ({ ...p, category_ids: [...new Set(p.category_ids.map(canon))], voltage_tags: p.voltage_tags || [], variants: p.variants || [], pdfs: p.pdfs || [] }));
+// [SEO-OVERRIDES] decisiones de SEO documentadas (data/catalog/seo-overrides.json): home_title = <title> de la portada por idioma (la original solo dice «Torivac»)
+const seoOv = jl('seo-overrides.json', {});
 // [OVERRIDES] decisiones documentadas que cambian lo que muestra la web respecto a la original (data/catalog/content-overrides.json): hide_table oculta, en todos los idiomas, la tabla cuya primera celda empieza por first_cell
 for (const o of jl('content-overrides.json', { overrides: [] }).overrides) {
   const p = products.find((x) => x.id === o.product_id); if (!p || o.action !== 'hide_table') continue;
@@ -225,7 +227,7 @@ for (const lang of LANGS) {
   if (L[homePath]) {
     const ctx = mkctx(lang, homePath, 'home');
     const h = TPL.homeBody(ctx, L[homePath]);
-    emit(homePath, TPL.layout(ctx, { title: L[homePath].title || 'Torivac', description: L[homePath].meta_description, template: 'home', hero: h.hero, body: h.body, alts: alts(homePath), scripts: ['assets/js/contact.js'], crumbs: [crumbHome(lang)], preloadImage: h.heroImg }));
+    emit(homePath, TPL.layout(ctx, { title: seoOv.home_title?.[lang] || L[homePath].title || 'Torivac', description: L[homePath].meta_description, template: 'home', hero: h.hero, body: h.body, alts: alts(homePath), scripts: ['assets/js/contact.js'], crumbs: [crumbHome(lang)], preloadImage: h.heroImg }));
   }
 
   // listado de productos (la página "Productos" de la web original aporta el texto de introducción)

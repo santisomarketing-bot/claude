@@ -20,6 +20,25 @@
    "recommendation": "La tarifa «tarifa trafos 02-26» de Drive coincide con el PDF (TT0030210 = 30 VA 230 V/2×10 V) y no contiene los códigos TT1000210… Por eso la web nueva oculta la tabla original de esta ficha y muestra los 28 modelos verificados en «Modelos». Para volver a la tabla original, quitar la entrada de data/catalog/content-overrides.json.",
    "severity": "alta",
    "field": "tabla de modelos"
+  },
+  {
+   "type": "seo_title",
+   "title": "La portada se titula solo «Torivac» en los cuatro idiomas: la web nueva usa un título descriptivo",
+   "web_value": "«Torivac» (es, en, fr y de)",
+   "pdf_value": "es: Torivac · Transformadores toroidales y variadores de tensión · en: Torivac · Toroidal transformers and voltage regulators · fr: Torivac · Transformateurs toroïdaux et variateurs de tension · de: Torivac · Ringkerntransformatoren und Spannungsregler",
+   "recommendation": "El título de la portada es lo que Google muestra como titular y lo que usan llms.txt y las vistas previas al compartir; con solo «Torivac» no dice a qué se dedica la empresa. La web nueva publica estos títulos (data/catalog/seo-overrides.json); para volver al original basta borrar la entrada home_title. Confirmar la redacción.",
+   "severity": "media",
+   "field": "título de la portada (SEO)"
+  },
+  {
+   "type": "duplicate_product",
+   "product_id": 909,
+   "title": "Tres fichas se llaman «Reostatos y potenciometros bobinados» (mismo título SEO) y dos están sin categoría; una de ellas, vacía",
+   "web_value": "/product/reostatos-y-potenciometros-bobinados/ (categoría 122, sin texto) · …-2/ (sin categoría, un párrafo) · …-6/ (sin categoría, sin texto ni imagen)",
+   "pdf_value": null,
+   "recommendation": "La web nueva las conserva con las mismas direcciones que la original para no romper enlaces. Google ve tres páginas con el mismo título y dos de ellas casi sin contenido. Decidir si se redirigen a la ficha de la categoría (o a «simple»/«doble») o si se completan. No se ha tocado nada.",
+   "severity": "baja",
+   "field": "fichas duplicadas"
   }
  ]
 }

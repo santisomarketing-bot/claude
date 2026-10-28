@@ -36,6 +36,24 @@ El `.zip` **no lleva** `config.php`, ni datos, ni precios, ni tests: aunque lo e
 **E. Si algo va mal: volver atrás (2 minutos)**
 10. Extrae encima el `.zip` anterior (el del paso 5). Los datos no se han tocado; si por cualquier motivo hubo que restaurarlos, restaura la copia.
 
+### Variante: «prefiero borrar todo y volver a subir»
+
+Se puede, y funciona, **con una condición: antes de borrar te bajas lo único que no está en el paquete**. Es esto, y solo esto:
+
+| Qué guardar | Dónde está | Cómo saberlo |
+|---|---|---|
+| `api/config.php` | Siempre en la carpeta `api` del servidor | Descárgalo con el administrador de archivos (*Download*) |
+| La carpeta de datos (pedidos, mensajes de contacto, usuarios, precios vigentes e histórico) | **Fuera de la web** (`torivac-datos`, o la ruta de `storage_dir`): no la toques, no se borra al vaciar la web · **Dentro de la web** (`api/storage/`): se borraría con todo lo demás | Panel → *Ajustes → Diagnóstico → Carpeta de datos* dice la ruta exacta. Si no entras al panel, mira `storage_dir` en `config.php` (vacío = automática, mira el Diagnóstico o prueba si existe `torivac-datos` junto a la web) |
+
+Pasos:
+1. Descarga `api/config.php`. Si los datos están dentro de la web (`api/storage/`), comprime esa carpeta (*Compress*) y descarga también el `.zip` resultante.
+2. Vacía la carpeta de la web (si había una WordPress u otra web antes, ver el recuadro de [`DESPLIEGUE-PLESK.md`](DESPLIEGUE-PLESK.md)). **No borres** `.well-known/` (certificados) ni una carpeta de datos que esté fuera de la web.
+3. Sube el `.zip` del paquete y extráelo (debe quedar `index.html`, `.htaccess` y `api/index.php` directamente en la carpeta de la web).
+4. Vuelve a subir `api/config.php` en su sitio (permisos 640). Si los datos estaban dentro de la web, sube y extrae de nuevo la carpeta `api/storage/`.
+5. Pasa la lista corta (§3). Mientras `config.php` no esté puesto, `…/api/health` no da `ok:true` y el Diagnóstico dice «No existe api/config.php»: es la señal de que falta ese paso, no de que algo se haya roto.
+
+**No hace falta volver a configurar nada más**: ni claves, ni usuarios, ni precios, ni pedidos, ni mensajes. Lo único que se pierde si olvidas el paso 1 es lo que no se puede reconstruir (los datos de `api/storage/`), de ahí que el paso 1 sea el importante. El paquete trae la web, el código del API y los datos del catálogo; los precios los vuelve a leer la web desde la hoja de Drive o desde el último Excel que subiste (que está en la carpeta de datos).
+
 ## 3. Lista corta de comprobación (5 minutos)
 
 | Qué | Cómo | Debe dar |
