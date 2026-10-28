@@ -7,9 +7,14 @@
 //   Bloques  # ## ### #### títulos (# y ## → h2: el h1 de la página es el título de la entrada) · párrafos · - * + listas · 1. 2) listas numeradas · > cita · --- línea · tablas con | · ![texto](imagen "pie")
 //   En línea **negrita** · *cursiva* (o _cursiva_) · `código` · [texto](https://… | /ruta | #ancla | mailto: | tel:) · \* para escribir el signo tal cual
 // Sin HTML en el texto, sin listas anidadas, sin código en bloque: lo que un blog técnico necesita y nada que pueda romper la página.
+// La dirección de un enlace o imagen no lleva límite en la expresión (PCRE no admite repeticiones tan grandes de un grupo): safeUrl() la descarta si pasa de 2000 caracteres y queda solo el texto.
+// PARIDAD CON PHP: todas las expresiones llevan el indicador `u` (cuentan CÓDIGOS DE PUNTO, como PCRE con /u) y los largos se cuentan en códigos de punto; `clean()` quita antes los caracteres de control e invisibles.
 
 /** Escapa & < > " para texto y atributos. */
 export const escapeHtml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+/** Quita los caracteres de control (salvo tabulador y salto de línea), los separadores de línea Unicode, los invisibles y las marcas de dirección de texto, y unifica los saltos de línea: lo que el conversor nunca debe ver. */
+export const clean = (s) => String(s).replace(/\r\n?/g, '\n').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f-\u009f\u00ad\u200b-\u200f\u2028-\u202e\u2060-\u2064\u2066-\u2069\ufeff]/gu, '');
 
 const STASH_OPEN = '\u0001';
 const STASH_CLOSE = '\u0002';
@@ -17,19 +22,19 @@ const STASH_CLOSE = '\u0002';
 /** Dirección permitida en un enlace, o null. Admite https://, http://, mailto:, tel:, /ruta (no //), #ancla. */
 export function safeUrl(u) {
   const s = String(u || '').trim();
-  if (!s || s.length > 2000 || /[\s"<>\\\u0000-\u001f]/.test(s)) return null;
-  if (/^https?:\/\/[^/?#]+/i.test(s)) return s;
-  if (/^mailto:[^\s@]+@[^\s@]+$/i.test(s)) return s;
-  if (/^tel:[+0-9 ()-]+$/i.test(s)) return s;
-  if (/^\/(?!\/)/.test(s)) return s;
-  if (/^#[A-Za-z0-9_-]+$/.test(s)) return s;
+  if (!s || Array.from(s).length > 2000 || /[\s"<>\\\u0000-\u001f]/u.test(s)) return null;
+  if (/^[Hh][Tt][Tt][Pp][Ss]?:\/\/[^/?#]+/u.test(s)) return s;
+  if (/^[Mm][Aa][Ii][Ll][Tt][Oo]:[^\s@]+@[^\s@]+$/u.test(s)) return s;
+  if (/^[Tt][Ee][Ll]:[+0-9()-]+$/u.test(s)) return s;
+  if (/^\/(?!\/)/u.test(s)) return s;
+  if (/^#[A-Za-z0-9_-]+$/u.test(s)) return s;
   return null;
 }
 
 /** Dirección permitida en una imagen, o null: https:// o una ruta del propio sitio (/media/blog/…). */
 export function safeImageUrl(u) {
   const s = safeUrl(u);
-  return s && /^(https:\/\/|\/)/i.test(s) ? s : null;
+  return s && /^([Hh][Tt][Tt][Pp][Ss]:\/\/|\/)/u.test(s) ? s : null;
 }
 
 /** <img> de una imagen en Markdown (o null si la dirección no vale). `o.imgAttrs(src)` puede devolver width/height ya escapados (el servidor los conoce). */
@@ -40,8 +45,8 @@ function imgHtml(alt, url, o) {
   return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt)}"${extra} loading="lazy" decoding="async">`;
 }
 
-const WORD = /[A-Za-z0-9À-ɏ]/;
-const SPACE = /\s/;
+const WORD = /[A-Za-z0-9À-ɏ]/u;
+const SPACE = /\s/u;
 /** Negrita y cursiva (** __ * _ y *** para las dos) con anidación SIEMPRE bien formada: un emparejamiento con pila; lo que no cierra se queda como texto. Trabaja sobre texto ya escapado. */
 function emphasis(s) {
   const ch = Array.from(s);
@@ -92,54 +97,54 @@ export function inline(text, o = {}) {
   const stash = [];
   /** Guarda un trozo de HTML ya seguro y devuelve su marca de posición. */
   const put = (html) => { stash.push(html); return STASH_OPEN + (stash.length - 1) + STASH_CLOSE; };
-  let s = String(text).replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '');
+  let s = clean(text);
   // 1) código: lo de dentro no se interpreta
-  s = s.replace(/`([^`\n]+)`/g, (m, c) => put(`<code>${escapeHtml(c)}</code>`));
+  s = s.replace(/`([^`\n]+)`/gu, (m, c) => put(`<code>${escapeHtml(c)}</code>`));
   // 2) imágenes ![texto](dirección "pie")
-  s = s.replace(/(?<!\\)!\[([^\]\n]{0,300})\]\(((?:[^()\s]|\([^()\s]*\)){1,2000})(?:\s+"[^"\n]{0,300}")?\)/g, (m, alt, url) => { const h = imgHtml(alt, url, o); return h ? put(h) : alt; });
+  s = s.replace(/(?<!\\)!\[([^\]\n]{0,300})\]\(((?:[^()\s]|\([^()\s]*\))+)(?:\s+"[^"\n]{0,300}")?\)/gu, (m, alt, url) => { const h = imgHtml(alt, url, o); return h ? put(h) : alt; });
   // 3) enlaces [texto](dirección "título"): las marcas de apertura y cierre se guardan aparte y el texto sigue su camino (así admite negrita dentro)
-  s = s.replace(/(?<!\\)\[([^\]\n]{1,300})\]\(((?:[^()\s]|\([^()\s]*\)){1,2000})(?:\s+"([^"\n]{0,300})")?\)/g, (m, txt, url, title) => {
+  s = s.replace(/(?<!\\)\[([^\]\n]{1,300})\]\(((?:[^()\s]|\([^()\s]*\))+)(?:\s+"([^"\n]{0,300})")?\)/gu, (m, txt, url, title) => {
     const href = safeUrl(url);
     if (!href) return txt;
-    const ext = /^https?:/i.test(href) ? ' target="_blank" rel="noopener"' : '';
+    const ext = /^[Hh][Tt][Tt][Pp][Ss]?:/u.test(href) ? ' target="_blank" rel="noopener"' : '';
     return put(`<a href="${escapeHtml(href)}"${ext}${title ? ` title="${escapeHtml(title)}"` : ''}>`) + txt + put('</a>');
   });
   // 4) \* \_ \[ … → el signo tal cual
-  s = s.replace(/\\([\\`*_{}[\]()#+\-.!|>~])/g, (m, c) => put(escapeHtml(c)));
+  s = s.replace(/\\([\\`*_{}[\]()#+\-.!|>~])/gu, (m, c) => put(escapeHtml(c)));
   // 5) todo lo demás es texto
   s = escapeHtml(s);
   // 6) énfasis
   s = emphasis(s);
   // 7) saltos de línea forzados y devolver lo guardado
-  s = s.replace(/(?: {2,}|\\)\n/g, '<br>\n').replace(/\n/g, ' ').replace(/<br> /g, '<br>');
-  return s.replace(/\u0001(\d+)\u0002/g, (m, n) => stash[+n]);
+  s = s.replace(/(?:(?<! ) {2,}|\\)\n/gu, '<br>\n').replace(/\n/gu, ' ').replace(/<br> /gu, '<br>');
+  return s.replace(/\u0001([0-9]+)\u0002/gu, (m, n) => stash[+n]);
 }
 
 // ── bloques ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 /** ¿La línea está vacía o solo tiene espacios? */
-const isBlank = (l) => /^\s*$/.test(l);
-const HEADING = /^(#{1,6})[ ]+(.+?)[ #]*$/;
-const RULE = /^ {0,3}([-*_])( ?\1){2,}\s*$/;
-const QUOTE = /^ {0,3}>/;
-const ITEM = /^ {0,3}([-*+]|\d{1,9}[.)])[ ]+(.*)$/;
-const SEP = /^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?\s*$/;
-const FIGURE = /^!\[([^\]\n]{0,300})\]\(((?:[^()\s]|\([^()\s]*\)){1,2000})(?:\s+"([^"\n]{0,300})")?\)$/;
+const isBlank = (l) => /^\s*$/u.test(l);
+const HEADING = /^(#{1,6})[ ]+(.{1,300}?)[ #]*$/u;
+const RULE = /^ {0,3}([-*_])( ?\1){2,}\s*$/u;
+const QUOTE = /^ {0,3}>/u;
+const ITEM = /^ {0,3}([-*+]|[0-9]{1,9}[.)])[ ]+(.*)$/u;
+const SEP = /^\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)*\|?$/u;
+const FIGURE = /^!\[([^\]\n]{0,300})\]\(((?:[^()\s]|\([^()\s]*\))+)(?:\s+"([^"\n]{0,300})")?\)$/u;
 
 /** Celdas de una fila de tabla (\| escapa la barra). */
 function splitRow(l) {
   let t = l.trim();
   if (t.startsWith('|')) t = t.slice(1);
   if (t.endsWith('|') && !t.endsWith('\\|')) t = t.slice(0, -1);
-  return t.split(/(?<!\\)\|/).map((c) => c.trim().replace(/\\\|/g, '|'));
+  return t.split(/(?<!\\)\|/u).map((c) => c.trim().replace(/\\\|/gu, '|'));
 }
 /** ¿Esta línea y la siguiente abren una tabla? (una fila con barras y debajo la fila de guiones con las mismas columnas) */
-const startsTable = (lines, i) => lines[i].includes('|') && i + 1 < lines.length && lines[i + 1].includes('|') && SEP.test(lines[i + 1]) && splitRow(lines[i]).length === splitRow(lines[i + 1]).length;
+const startsTable = (lines, i) => lines[i].includes('|') && i + 1 < lines.length && lines[i + 1].includes('|') && SEP.test(lines[i + 1].trim()) && splitRow(lines[i]).length === splitRow(lines[i + 1]).length;
 /** ¿Esta línea empieza un bloque distinto de un párrafo? */
 const startsBlock = (lines, i) => HEADING.test(lines[i]) || RULE.test(lines[i]) || QUOTE.test(lines[i]) || ITEM.test(lines[i]) || startsTable(lines, i);
 
 /** Markdown reducido → HTML. Opciones: tableLabel (nombre accesible de las tablas, «Tabla»), imgAttrs(src) (width/height de las imágenes que el servidor conoce). */
 export function render(md, o = {}) {
-  const lines = String(md).replace(/\r\n?/g, '\n').replace(/\t/g, '    ').split('\n');
+  const lines = clean(md).replace(/\t/gu, '    ').split('\n');
   const label = o.tableLabel || 'Tabla';
   const out = [];
   let i = 0;
@@ -162,19 +167,19 @@ export function render(md, o = {}) {
     }
     if (QUOTE.test(line)) {
       const paras = [[]];
-      while (i < lines.length && QUOTE.test(lines[i])) { const t = lines[i].replace(/^ {0,3}> ?/, ''); if (isBlank(t)) paras.push([]); else paras[paras.length - 1].push(t); i++; }
+      while (i < lines.length && QUOTE.test(lines[i])) { const t = lines[i].replace(/^ {0,3}> ?/u, ''); if (isBlank(t)) paras.push([]); else paras[paras.length - 1].push(t); i++; }
       out.push(`<blockquote>${paras.filter((p) => p.length).map((p) => `<p>${inline(p.join('\n'), o)}</p>`).join('')}</blockquote>`);
       continue;
     }
     m = ITEM.exec(line);
     if (m) {
-      const ordered = /^\d/.test(m[1]);
+      const ordered = /^[0-9]/u.test(m[1]);
       const items = [];
       while (i < lines.length) {
         const mm = ITEM.exec(lines[i]);
-        if (mm && /^\d/.test(mm[1]) === ordered) { items.push(mm[2]); i++; continue; }
-        if (!mm && !isBlank(lines[i]) && /^ {2,}\S/.test(lines[i]) && items.length) { items[items.length - 1] += '\n' + lines[i].trim(); i++; continue; }   // continuación del elemento anterior
-        if (isBlank(lines[i]) && i + 1 < lines.length) { const nx = ITEM.exec(lines[i + 1]); if (nx && /^\d/.test(nx[1]) === ordered) { i++; continue; } }   // línea en blanco entre elementos de la misma lista
+        if (mm && /^[0-9]/u.test(mm[1]) === ordered) { items.push(mm[2]); i++; continue; }
+        if (!mm && !isBlank(lines[i]) && /^ {2,}\S/u.test(lines[i]) && items.length) { items[items.length - 1] += '\n' + lines[i].trim(); i++; continue; }   // continuación del elemento anterior
+        if (isBlank(lines[i]) && i + 1 < lines.length) { const nx = ITEM.exec(lines[i + 1]); if (nx && /^[0-9]/u.test(nx[1]) === ordered) { i++; continue; } }   // línea en blanco entre elementos de la misma lista
         break;
       }
       const tag = ordered ? 'ol' : 'ul';
@@ -197,18 +202,18 @@ export function render(md, o = {}) {
 /** Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt. */
 export function toPlain(md) {
   return render(md, { tableLabel: 'x' })
-    .replace(/<\/(p|h[2-4]|li|tr|th|td|blockquote|figure|figcaption)>/g, ' ')
-    .replace(/<br>/g, ' ')
-    .replace(/<[^>]+>/g, '')
-    .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&amp;/g, '&')
-    .replace(/\s+/g, ' ').trim();
+    .replace(/<\/(p|h[2-4]|li|tr|th|td|blockquote|figure|figcaption)>/gu, ' ')
+    .replace(/<br>/gu, ' ')
+    .replace(/<[^>]+>/gu, '')
+    .replace(/&lt;/gu, '<').replace(/&gt;/gu, '>').replace(/&quot;/gu, '"').replace(/&amp;/gu, '&')
+    .replace(/\s+/gu, ' ').trim();
 }
 
 /** Extracto de hasta `n` caracteres cortado en una palabra entera (con «…» si se recorta). */
 export function excerpt(md, n = 155) {
-  const t = toPlain(md);
-  if (t.length <= n) return t;
-  return t.slice(0, n).replace(/\s+\S*$/, '').replace(/[\s,;:.\-–—]+$/, '') + '…';
+  const t = Array.from(toPlain(md));
+  if (t.length <= n) return t.join('');
+  return t.slice(0, n).join('').replace(/\s+\S*$/u, '').replace(/[\s,;:.\-–—]+$/u, '') + '…';
 }
 
 const FOLD = { 'á': 'a', 'à': 'a', 'ä': 'a', 'â': 'a', 'ã': 'a', 'å': 'a', 'é': 'e', 'è': 'e', 'ë': 'e', 'ê': 'e', 'í': 'i', 'ì': 'i', 'ï': 'i', 'î': 'i', 'ó': 'o', 'ò': 'o', 'ö': 'o', 'ô': 'o', 'õ': 'o', 'ú': 'u', 'ù': 'u', 'ü': 'u', 'û': 'u', 'ñ': 'n', 'ç': 'c', 'ß': 'ss', 'œ': 'oe', 'æ': 'ae' };

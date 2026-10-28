@@ -26,3 +26,12 @@ export function plainTextScript(root) {
     patches: [['const COMPILED = RULES.map((r) => new RegExp(r.re, r.flags));', 'const COMPILED = RULES.map((r) => { try { return new RegExp(r.re, r.flags); } catch (e) { return null; } }).filter(Boolean);']],
   });
 }
+
+/** Script del conversor de texto del blog: TV.BlogMarkdown.render(texto, { tableLabel }) y compañía (la vista previa del editor del panel usa EXACTAMENTE el código que publica la página). En un navegador sin lookbehind (Safari < 16.4) el script no carga: el panel lo detecta y avisa de que no hay vista previa. */
+export function blogMarkdownScript(root) {
+  return classicScript(root, 'blog-markdown.mjs', {
+    title: 'BLOG-MARKDOWN',
+    global: 'BlogMarkdown',
+    expose: '{ render: render, inline: inline, toPlain: toPlain, excerpt: excerpt, slugify: slugify, safeUrl: safeUrl, safeImageUrl: safeImageUrl, escapeHtml: escapeHtml, clean: clean }',
+  });
+}

@@ -12,7 +12,7 @@ import { LANGS, T, t } from './lib/i18n.mjs';
 import * as TPL from './templates.mjs';
 import { productNode, itemListNode, postNode, jsonScript } from './lib/seo.mjs';
 import { THEMES, themeBootJs } from './lib/themes.mjs';
-import { plainTextScript } from './lib/shared-client.mjs';
+import { plainTextScript, blogMarkdownScript } from './lib/shared-client.mjs';
 import { applyApproved } from './lib/proposals-apply.mjs';
 import crypto from 'node:crypto';
 
@@ -407,6 +407,7 @@ for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (!LIVE && fs.existsS
 
 // [PLAIN-TEXT] el aviso de «solo texto plano» del navegador es el MISMO validador que aplican el Worker y el servidor PHP (shared/plain-text.mjs): TV.PlainText
 writeFile(DIST, 'assets/js/plain-text.js', plainTextScript(ROOT));
+writeFile(DIST, 'assets/js/blog-markdown.js', blogMarkdownScript(ROOT));
 
 // ───────────────────────────────────────────────────────────── [ASSETS] estáticos
 const SRC = path.join(ROOT, 'site', 'assets');

@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1370/1370 funciones descritas (100 %) · 176/176 archivos con cabecera.
+**Cobertura**: 1409/1409 funciones descritas (100 %) · 180/180 archivos con cabecera.
 
 
 ## `site/`
@@ -34,14 +34,14 @@ Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EM
 - `absImg` (l. 232) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
 - `alts` (l. 237) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
 - `a` (l. 397) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 414) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `css` (l. 424) — Texto del archivo site/assets/css/<n>.css.
-- `xml` (l. 444) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 446) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 458) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 480) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
-- `hashOf` (l. 498) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
-- `walk` (l. 508) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
+- `copyDir` (l. 415) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 425) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 445) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 447) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 459) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 481) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `hashOf` (l. 499) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+- `walk` (l. 509) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
 
 ### `templates.mjs`
 
@@ -193,6 +193,7 @@ Secciones: `[SHARED-CLIENT]`
 
 - `classicScript` (l. 9) — Texto del script clásico generado desde shared/<file>. `expose` es la expresión del objeto que se publica (p. ej. `{ check: checkText }`) en TV.<global>.
 - `plainTextScript` (l. 21) — Script del validador de texto plano: TV.PlainText.check(valor, { max, multiline }) y los límites de cada campo. En un navegador sin lookbehind en las expresiones regulares (Safari < 16.4) se omiten las reglas que no entiende: el aviso es solo una cortesía y el servidor las aplica todas siempre.
+- `blogMarkdownScript` (l. 31) — Script del conversor de texto del blog: TV.BlogMarkdown.render(texto, { tableLabel }) y compañía (la vista previa del editor del panel usa EXACTAMENTE el código que publica la página). En un navegador sin lookbehind (Safari < 16.4) el script no carga: el panel lo detecta y avisa de que no hay vista previa.
 
 ### `themes.mjs`
 
@@ -1179,6 +1180,18 @@ Secciones: `[SMOKE]`
 - `url` (l. 19) — URL file:// de la ruta p dentro de dist/ (las que acaban en «/» apuntan a su index.html).
 - `visit` (l. 32) — Visita la ruta p, ejecuta fn si se da, busca desbordes horizontales y (con --shots) captura la página; anota los problemas nuevos.
 
+### `test-blog-markdown-php.mjs`
+
+[TEST-BLOG-MD-PHP] Compara el conversor de texto del blog de JavaScript (shared/blog-markdown.mjs, el que usa la vista previa del panel) con el de PHP (backend-php/api/lib/BlogMarkdown.php, el que publica la página): decenas de miles de textos al azar —con las piezas más peligrosas, espacios raros de Unicode, emojis, acentos y direcciones de todo tipo— y la salida tiene que ser IDÉNTICA en las dos. Además PCRE no puede fallar (límites de retroceso o de pila) con ninguno de esos textos.
+
+Secciones: `[TEST-BLOG-MD-PHP]`
+
+- `arg` (l. 15) — Valor de la opción --k=valor (o el valor por defecto).
+- `rnd` (l. 21) — Número pseudoaleatorio en [0,1) con semilla fija: la misma tanda en cada ejecución.
+- `pick` (l. 23) — Un elemento al azar de una lista.
+- `gen` (l. 30) — Un texto al azar con entre 1 y `max` piezas.
+- `bad` (l. 54) — Muestra los primeros desacuerdos con detalle.
+
 ### `test-blog-markdown.mjs`
 
 [TEST-BLOG-MD] Pruebas del conversor de texto del blog (shared/blog-markdown.mjs). node scripts/test-blog-markdown.mjs            recorre shared/blog-markdown.fixtures.json (el contrato que también cumple backend-php/api/lib/BlogMarkdown.php), comprueba que NUNCA sale HTML fuera de la lista permitida (con miles de entradas al azar y ataques conocidos)
@@ -1187,8 +1200,8 @@ Secciones: `[TEST-BLOG-MD]`
 
 - `ok` (l. 18) — Anota una comprobación correcta o, si no se cumple, un fallo con su mensaje.
 - `eq` (l. 20) — Comprueba que `got` es exactamente `want` y, si no, enseña los dos.
-- `audit` (l. 35) — Devuelve la lista de problemas del HTML (vacía si todo es lo permitido).
-- `rnd` (l. 74) — Número pseudoaleatorio en [0,1) con semilla fija: la misma tanda de entradas hostiles en cada ejecución.
+- `audit` (l. 40) — Devuelve la lista de problemas del HTML (vacía si todo es lo permitido).
+- `rnd` (l. 79) — Número pseudoaleatorio en [0,1) con semilla fija: la misma tanda de entradas hostiles en cada ejecución.
 
 ### `test-plain-text.mjs`
 
@@ -1737,22 +1750,23 @@ Constructor mínimo de libros .xlsx para las pruebas (zip con deflate o sin comp
 
 Secciones: `[BLOG-MD]`
 
-- `escapeHtml` (l. 12) — Escapa & < > " para texto y atributos.
-- `safeUrl` (l. 18) — Dirección permitida en un enlace, o null. Admite https://, http://, mailto:, tel:, /ruta (no //), #ancla.
-- `safeImageUrl` (l. 30) — Dirección permitida en una imagen, o null: https:// o una ruta del propio sitio (/media/blog/…).
-- `imgHtml` (l. 36) — <img> de una imagen en Markdown (o null si la dirección no vale). `o.imgAttrs(src)` puede devolver width/height ya escapados (el servidor los conoce).
-- `emphasis` (l. 46) — Negrita y cursiva (** __ * _ y *** para las dos) con anidación SIEMPRE bien formada: un emparejamiento con pila; lo que no cierra se queda como texto. Trabaja sobre texto ya escapado.
-- `flush` (l. 52) — Pasa el texto acumulado a la lista de trozos.
-- `inline` (l. 91) — Texto en línea (negrita, cursiva, código, enlaces, imágenes) → HTML ya escapado.
-- `put` (l. 94) — Guarda un trozo de HTML ya seguro y devuelve su marca de posición.
-- `isBlank` (l. 120) — ¿La línea está vacía o solo tiene espacios?
-- `splitRow` (l. 129) — Celdas de una fila de tabla (\| escapa la barra).
-- `startsTable` (l. 136) — ¿Esta línea y la siguiente abren una tabla? (una fila con barras y debajo la fila de guiones con las mismas columnas)
-- `startsBlock` (l. 138) — ¿Esta línea empieza un bloque distinto de un párrafo?
-- `render` (l. 141) — Markdown reducido → HTML. Opciones: tableLabel (nombre accesible de las tablas, «Tabla»), imgAttrs(src) (width/height de las imágenes que el servidor conoce).
-- `toPlain` (l. 198) — Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt.
-- `excerpt` (l. 208) — Extracto de hasta `n` caracteres cortado en una palabra entera (con «…» si se recorta).
-- `slugify` (l. 216) — Título → dirección: minúsculas, sin acentos, letras y cifras separadas por guiones, hasta 80 caracteres (cortado en un guion).
+- `escapeHtml` (l. 14) — Escapa & < > " para texto y atributos.
+- `clean` (l. 17) — Quita los caracteres de control (salvo tabulador y salto de línea), los separadores de línea Unicode, los invisibles y las marcas de dirección de texto, y unifica los saltos de línea: lo que el conversor nunca debe ver.
+- `safeUrl` (l. 23) — Dirección permitida en un enlace, o null. Admite https://, http://, mailto:, tel:, /ruta (no //), #ancla.
+- `safeImageUrl` (l. 35) — Dirección permitida en una imagen, o null: https:// o una ruta del propio sitio (/media/blog/…).
+- `imgHtml` (l. 41) — <img> de una imagen en Markdown (o null si la dirección no vale). `o.imgAttrs(src)` puede devolver width/height ya escapados (el servidor los conoce).
+- `emphasis` (l. 51) — Negrita y cursiva (** __ * _ y *** para las dos) con anidación SIEMPRE bien formada: un emparejamiento con pila; lo que no cierra se queda como texto. Trabaja sobre texto ya escapado.
+- `flush` (l. 57) — Pasa el texto acumulado a la lista de trozos.
+- `inline` (l. 96) — Texto en línea (negrita, cursiva, código, enlaces, imágenes) → HTML ya escapado.
+- `put` (l. 99) — Guarda un trozo de HTML ya seguro y devuelve su marca de posición.
+- `isBlank` (l. 125) — ¿La línea está vacía o solo tiene espacios?
+- `splitRow` (l. 134) — Celdas de una fila de tabla (\| escapa la barra).
+- `startsTable` (l. 141) — ¿Esta línea y la siguiente abren una tabla? (una fila con barras y debajo la fila de guiones con las mismas columnas)
+- `startsBlock` (l. 143) — ¿Esta línea empieza un bloque distinto de un párrafo?
+- `render` (l. 146) — Markdown reducido → HTML. Opciones: tableLabel (nombre accesible de las tablas, «Tabla»), imgAttrs(src) (width/height de las imágenes que el servidor conoce).
+- `toPlain` (l. 203) — Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt.
+- `excerpt` (l. 213) — Extracto de hasta `n` caracteres cortado en una palabra entera (con «…» si se recorta).
+- `slugify` (l. 221) — Título → dirección: minúsculas, sin acentos, letras y cifras separadas por guiones, hasta 80 caracteres (cortado en un guion).
 
 ### `plain-text.mjs`
 
@@ -1880,6 +1894,33 @@ Secciones: `[AUTH]` · `[USERS]`
 - `login` (l. 250) — Comprueba credenciales (mismo coste si el usuario no existe: no se puede enumerar usuarios por tiempo). Si valen, devuelve el usuario público y su sid para firmar la sesión;
 - `check` (l. 261) — comprueba credenciales y devuelve el usuario público (sin sid), o null
 - `upgrade` (l. 268) — Pone al día el registro tras un acceso correcto: sid si no lo tenía y hash nuevo si el coste de PASSWORD_DEFAULT subió. Devuelve el registro, o null si lo borraron entre medias.
+
+### `BlogMarkdown.php`
+
+[BLOG-MD] Conversor de texto (Markdown reducido) a HTML para las entradas del blog que se escriben en el panel: el MISMO que shared/blog-markdown.mjs (el panel lo usa para la vista previa y este lo usa para la página que se publica). shared/blog-markdown.fixtures.json es el contrato que cumplen los dos, y scripts/test-blog-markdown-php.mjs compara las salidas de los dos con decenas de miles de textos al azar. Si cambia una regla en uno, cambia en el otro.
+
+Secciones: `[BLOG-MD]` · `[PIEZAS]` · `[BLOQUES]` · `[TEXTO PLANO]`
+
+- `rx` (l. 28) — Expresión PCRE por nombre: el código fuente está aquí abajo, escrito tal cual (nowdoc) con {WS} por el \s de JavaScript.
+- `escapeHtml` (l. 126) — Escapa & < > " para texto y atributos.
+- `jstrim` (l. 129) — Recorta los espacios como String.trim de JavaScript.
+- `isSpace` (l. 139) — ¿Es un solo carácter de espacio (el \s de JavaScript)?
+- `isDigit` (l. 142) — ¿Empieza por una cifra ASCII?
+- `isWord` (l. 145) — ¿Es una letra o cifra de las que cuentan para el subrayado (_)? (A-Z a-z 0-9 y U+00C0–U+024F)
+- `clean` (l. 148) — Texto sin caracteres de control (salvo tabulador y salto de línea), separadores de línea Unicode, invisibles ni marcas de dirección, y con los saltos de línea unificados.
+- `safeUrl` (l. 157) — Dirección permitida en un enlace, o null. Admite https://, http://, mailto:, tel:, /ruta (no //), #ancla.
+- `safeImageUrl` (l. 166) — Dirección permitida en una imagen, o null: https:// o una ruta del propio sitio (/media/blog/…).
+- `imgHtml` (l. 173) — <img> de una imagen en Markdown (o null si la dirección no vale). `$o['imgAttrs']($src)` puede devolver width/height ya escapados (el servidor los conoce).
+- `emphasis` (l. 183) — Negrita y cursiva (** __ * _ y *** para las dos) con anidación SIEMPRE bien formada: un emparejamiento con pila; lo que no cierra se queda como texto. Trabaja sobre texto ya escapado.
+- `rcb` (l. 233) — preg_replace_callback que, si PCRE falla (límite de retroceso o de pila), deja el texto como estaba: el paso siguiente lo escapa igualmente.
+- `inline` (l. 242) — Texto en línea (negrita, cursiva, código, enlaces, imágenes) → HTML ya escapado.
+- `isBlank` (l. 275) — ¿La línea está vacía o solo tiene espacios?
+- `splitRow` (l. 278) — Celdas de una fila de tabla (\| escapa la barra).
+- `startsTable` (l. 289) — ¿Esta línea y la siguiente abren una tabla? (una fila con barras y debajo la fila de guiones con las mismas columnas)
+- `startsBlock` (l. 296) — ¿Esta línea empieza un bloque distinto de un párrafo?
+- `render` (l. 303) — Markdown reducido → HTML. Opciones: tableLabel (nombre accesible de las tablas, «Tabla»), imgAttrs(src) (width/height de las imágenes que el servidor conoce).
+- `toPlain` (l. 372) — Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt.
+- `excerpt` (l. 383) — Extracto de hasta `$n` caracteres (códigos de punto) cortado en una palabra entera (con «…» si se recorta).
 
 ### `Catalog.php`
 
@@ -2262,6 +2303,23 @@ Pruebas del API en PHP: equivalen a workers/api/test/api.test.js + ai.test.js (s
 - `test_email_status_is_never_overstated` (l. 444) — El correo es parte del resultado: el pedido y el mensaje de contacto se guardan siempre y dicen si el aviso salió (y por qué no).
 - `test_diag_warns_about_orders_without_email` (l. 472) — El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo.
 
+### `BlogMarkdownTest.php`
+
+Pruebas de BlogMarkdown con los casos compartidos con la versión JavaScript (shared/blog-markdown.fixtures.json) y comprobaciones de seguridad propias.
+
+- `bm_fixtures` (l. 10) — Casos compartidos con JavaScript (en el paquete del hosting no van las pruebas; junto a ellas hay una copia para trabajar solo con backend-php/).
+- `test_blog_markdown_fixtures_copy_is_identical` (l. 18) — La copia de los casos junto a las pruebas es idéntica a la compartida (si el repositorio completo está presente).
+- `test_blog_markdown_render_matches_contract` (l. 26) — El HTML de cada caso es EXACTAMENTE el que da JavaScript.
+- `test_blog_markdown_plain_and_excerpt_match_contract` (l. 32) — Texto plano y extracto, igual que en JavaScript.
+- `test_blog_markdown_safe_url_matches_contract` (l. 40) — Direcciones permitidas y prohibidas, igual que en JavaScript.
+- `bm_audit` (l. 46) — Auditoría del HTML: solo etiquetas y atributos permitidos, texto sin < ni > sueltos y todo cerrado. Devuelve la lista de problemas.
+- `test_blog_markdown_known_attacks_never_produce_forbidden_html` (l. 83) — Los ataques conocidos (scripts, javascript:, data:, atributos que se cuelan, // , etc.) salen como texto o no salen: nunca como HTML fuera de la lista.
+- `test_blog_markdown_random_input_stays_inside_allowed_html` (l. 98) — Texto cualquiera (también con bytes que no son UTF-8) nunca rompe el conversor ni deja HTML fuera de la lista.
+- `test_blog_markdown_huge_hostile_inputs_are_fast` (l. 114) — Entradas hostiles enormes se resuelven rápido (sin retroceso exponencial ni cuadrático) y sin salirse de lo permitido.
+- `test_blog_markdown_url_limit_counts_code_points` (l. 134) — Los límites cuentan letras (códigos de punto), no bytes: una dirección de 2000 emojis cabe y una de 2001 no.
+- `test_blog_markdown_longest_link_still_converts` (l. 143) — El tamaño de la dirección máxima (2000) sigue siendo un enlace en la página (PCRE no se rinde por la pila).
+- `test_blog_markdown_invalid_utf8_is_cleaned` (l. 152) — Bytes que no son UTF-8 se limpian (nunca llegan al HTML ni rompen el análisis).
+
 ### `HostingTest.php`
 
 Pruebas de lo que cambia de un hosting a otro (cPanel, Plesk…): la carpeta de datos que se elige, la IP real del visitante detrás de un proxy (el nginx de Plesk, Cloudflare) y las comprobaciones del diagnóstico que dependen del servidor. Sin red ni servidor web: todo con rutas temporales y $_SERVER simulado.
@@ -2452,6 +2510,12 @@ Pruebas del lector de .xlsx con los mismos libros y el mismo resultado esperado 
 - `test_sync_from_xlsx_url` (l. 64) — Sincronización desde la URL de un .xlsx: referencias nuevas por regla y desconocidas fuera.
 - `test_sync_from_xlsx_sheet_name_and_bad_downloads` (l. 81) — Hoja elegida por nombre y errores de descarga (nombre inexistente, página en vez de libro, HTTP 404).
 - `test_sync_service_account_sheets_then_drive_fallback` (l. 99) — Cuenta de servicio: hoja de Google por Sheets API; si es un .xlsx de Drive, respaldo con la API de Drive y errores si fallan las dos.
+
+### `blog-markdown-batch.php`
+
+[BLOG-MD] Ejecutor por lotes para comparar PHP con JavaScript: php blog-markdown-batch.php entradas.json Lee una lista de {md, n} y escribe en la salida estándar, en JSON, las salidas de BlogMarkdown (render, toPlain, excerpt) y cuántas veces falló PCRE. Lo usa scripts/test-blog-markdown-php.mjs.
+
+Secciones: `[BLOG-MD]`
 
 ### `fake-smtp.php`
 

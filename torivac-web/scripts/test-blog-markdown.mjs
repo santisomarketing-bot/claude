@@ -25,7 +25,12 @@ for (const c of fx.plain) { const got = toPlain(c.md); if (UPDATE) c.text = got;
 for (const c of fx.excerpt) { const got = excerpt(c.md, c.n); if (UPDATE) c.text = got; else eq(got, c.text, `excerpt ${JSON.stringify(c.md.slice(0, 40))}/${c.n}`); }
 for (const c of fx.slug) { const got = slugify(c.title); if (UPDATE) c.slug = got; else eq(got, c.slug, `slugify ${JSON.stringify(c.title.slice(0, 40))}`); }
 for (const c of fx.safeUrl) { const got = safeUrl(c.url) !== null; if (UPDATE) c.ok = got; else eq(got, c.ok, `safeUrl ${JSON.stringify(c.url)}`); }
-if (UPDATE) { fs.writeFileSync(FIX, JSON.stringify(fx, null, 1) + '\n'); console.log('contrato reescrito: ' + path.relative(ROOT, FIX)); process.exit(0); }
+if (UPDATE) {
+  fs.writeFileSync(FIX, JSON.stringify(fx, null, 1) + '\n');
+  fs.copyFileSync(FIX, path.join(ROOT, 'backend-php', 'api', 'tests', 'blog-markdown.fixtures.json'));     // copia junto a las pruebas de PHP (para trabajar solo con backend-php/)
+  console.log('contrato reescrito: ' + path.relative(ROOT, FIX) + ' (y su copia en backend-php/api/tests/)');
+  process.exit(0);
+}
 
 // ── 2) el HTML que sale solo puede ser el permitido ───────────────────────────────────────────────────────────────────────────
 const TAGS = new Set(['h2', 'h3', 'h4', 'p', 'ul', 'ol', 'li', 'blockquote', 'hr', 'br', 'strong', 'em', 'code', 'a', 'img', 'figure', 'figcaption', 'div', 'table', 'thead', 'tbody', 'tr', 'th', 'td']);
