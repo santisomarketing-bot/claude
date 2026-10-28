@@ -29,34 +29,65 @@ const payloadOf = (token) => JSON.parse(Buffer.from(token.split('.')[0], 'base64
 async function withLog(fn) { const orig = console.error, logs = []; console.error = (...a) => logs.push(a.map(String).join(' ')); try { await fn(); } finally { console.error = orig; } return logs; }
 
 // ───────────────────────────────────────── D3 · límites de login
-test('D3 · login: límite por IP sola, 30 intentos / 10 min contra cualquier cuenta (pulverizado de contraseñas) (W2)', async () => {
-  const env = mkEnv(); const codes = [];
-  for (let i = 0; i < 33; i++) codes.push((await attempt(env, `user${i}@torivac.com`, 'Primavera2026', '203.0.113.5')).status);       // 33 cuentas distintas, una sola IP
-  assert.deepEqual(codes.slice(0, 30), Array(30).fill(401)); assert.deepEqual(codes.slice(30), [429, 429, 429]);
-  const r = await attempt(env, 'user0@torivac.com', 'x', '203.0.113.5'); assert.equal(r.status, 429); assert.equal((await r.json()).error, TOO_MANY);
-  assert.equal((await attempt(env, 'user0@torivac.com', 'x', '203.0.113.6')).status, 401, 'otra IP no se ve afectada');
-  assert.equal((await attempt(env, 'user0@torivac.com', 'x', '203.0.113.5', { now: Date.now() + 11 * 60_000 })).status, 401, 'a los 10 minutos se libera');
+const LOCKED = 'Demasiados intentos fallidos. Vuelve a intentarlo en una hora.';
+/** Cuerpo y cabecera de una respuesta de bloqueo: [error, claves, Retry-After === retry_after, retry_after entre 3590 y 3600]. */
+async function lockShape(r) { const j = await r.json(); return [j.error, Object.keys(j), r.headers.get('Retry-After') === String(j.retry_after), j.retry_after >= 3590 && j.retry_after <= 3600]; }
+// ───────────────────────────────────────── Seguridad 2 · fuerza bruta: 5 fallos → 1 hora
+test('Fuerza bruta · 5 contraseñas erróneas del mismo visitante contra una cuenta la bloquean 1 hora; existe o no la cuenta, el 429 es idéntico y trae retry_after y Retry-After', async () => {
+  const env = mkEnv(); await signIn(env, 'jefa@torivac.com', 'manager'); const shapes = [];
+  for (const email of ['jefa@torivac.com', 'nadie@torivac.com']) {
+    const r = []; for (let i = 0; i < 8; i++) r.push(await attempt(env, email, 'mala-clave-1234', '203.0.113.9'));
+    assert.deepEqual(r.map((x) => x.status), [401, 401, 401, 401, 401, 429, 429, 429], `${email}: 5 intentos fallidos y luego 429`);
+    shapes.push(await lockShape(r[5]));
+  }
+  assert.deepEqual(shapes[0], [LOCKED, ['ok', 'error', 'retry_after'], true, true], 'dice «una hora» y trae retry_after y Retry-After en segundos');
+  assert.deepEqual(shapes[0], shapes[1], 'idéntico exista o no la cuenta');
+  assert.equal((await attempt(env, 'jefa@torivac.com', PW.manager, '203.0.113.9')).status, 429, 'durante el bloqueo ni la contraseña buena entra');
+  assert.equal((await attempt(env, 'jefa@torivac.com', PW.manager, '203.0.113.10')).status, 200, 'otro visitante con la misma cuenta NO está bloqueado: nadie deja fuera al gestor equivocándose a propósito desde su IP');
 });
-test('D3 · login: límite por IP+correo, 6 / 10 min, como antes; el mismo texto de siempre', async () => {
-  const env = mkEnv(); const r = []; for (let i = 0; i < 8; i++) r.push(await attempt(env, 'a@b.es', 'x', '203.0.113.9'));
-  assert.deepEqual(r.map((x) => x.status), [401, 401, 401, 401, 401, 401, 429, 429]); assert.equal((await r[7].json()).error, TOO_MANY);
+test('Fuerza bruta · el bloqueo no se alarga con más intentos, dura 1 hora desde el 5.º fallo y después empieza de cero', async () => {
+  const env = mkEnv(); await signIn(env, 'jefa@torivac.com', 'manager'); const t0 = Date.now();
+  for (let i = 0; i < 5; i++) await attempt(env, 'jefa@torivac.com', 'mala-clave-1234', '203.0.113.20', { now: t0 + i * 1000 });
+  const key = [...env.KV.m.keys()].find((k) => k.startsWith('rl:lgpair:')), until = JSON.parse(env.KV.m.get(key)).lockedUntil;
+  assert.equal(until, t0 + 4000 + 3_600_000, '1 hora exacta desde el 5.º fallo');
+  for (let i = 0; i < 5; i++) assert.equal((await attempt(env, 'jefa@torivac.com', 'mala-clave-1234', '203.0.113.20', { now: t0 + 60_000 + i })).status, 429);
+  assert.equal(JSON.parse(env.KV.m.get(key)).lockedUntil, until, 'los intentos durante el bloqueo no lo alargan');
+  const r = await attempt(env, 'jefa@torivac.com', PW.manager, '203.0.113.20', { now: t0 + 30 * 60_000 }); const j = await r.json();
+  assert.equal(r.status, 429); assert.match(j.error, /31 minutos/, 'a media hora dice cuánto falta (redondeado hacia arriba)'); assert.equal(j.retry_after, 1804);
+  assert.equal((await attempt(env, 'jefa@torivac.com', PW.manager, '203.0.113.20', { now: until + 1000 })).status, 200, 'pasada la hora vuelve a entrar');
+  assert.equal(env.KV.m.has(key), false, 'y el contador de la pareja vuelve a cero');
 });
-test('D3 · login: límite por CUENTA, 12 fallos / 15 min desde IPs distintas; solo cuentas que existen (sin crear claves por correos inexistentes) (W2/A2)', async () => {
+test('Fuerza bruta · un acceso correcto antes del 5.º fallo pone a cero la pareja y la cuenta', async () => {
   const env = mkEnv(); const u = await signIn(env, 'jefa@torivac.com', 'manager');
-  for (let i = 0; i < 12; i++) assert.equal((await attempt(env, 'jefa@torivac.com', 'mala-clave-1234')).status, 401, `fallo ${i + 1}`);      // 12 IPs distintas: ningún límite por IP salta
-  const bloqueado = await attempt(env, 'jefa@torivac.com', u.password);                                                                       // la contraseña CORRECTA, desde una IP nueva
-  assert.equal(bloqueado.status, 429); assert.equal((await bloqueado.json()).error, TOO_MANY, 'mismo texto de siempre');
-  for (let i = 0; i < 15; i++) assert.equal((await attempt(env, 'fantasma@torivac.com', 'mala-clave-1234')).status, 401, 'una cuenta inexistente nunca se bloquea por cuenta');
-  assert.equal(keys(env, 'rl:login-acct:').length, 1, 'solo la cuenta que existe tiene contador');
-  assert.equal((await attempt(env, 'jefa@torivac.com', u.password, nextIp(), { now: Date.now() + 16 * 60_000 })).status, 200, 'pasados 15 minutos vuelve a entrar');
+  for (let i = 0; i < 4; i++) await attempt(env, 'jefa@torivac.com', 'mala-clave-1234', '203.0.113.30');
+  assert.equal((await attempt(env, 'jefa@torivac.com', u.password, '203.0.113.30')).status, 200, '4 fallos y luego la contraseña buena: entra');
+  assert.equal(keys(env, 'rl:lgpair:').length + keys(env, 'rl:lgacct:').length, 0, 'contadores a cero');
+  for (let i = 0; i < 5; i++) assert.equal((await attempt(env, 'jefa@torivac.com', 'mala-clave-1234', '203.0.113.30')).status, 401, `otros 5 fallos, ninguno bloqueado antes de tiempo (${i + 1})`);
 });
-test('D3 · login: el contador por cuenta se pone a cero tras un acceso correcto', async () => {
+test('Fuerza bruta · un visitante con 15 fallos contra cuentas distintas (pulverizado de contraseñas) queda bloqueado 1 hora; otro visitante no', async () => {
+  const env = mkEnv(); const u = await signIn(env, 'jefa@torivac.com', 'manager'); const codes = [];
+  for (let i = 0; i < 17; i++) codes.push((await attempt(env, `user${i}@torivac.com`, 'Primavera2026', '203.0.113.40')).status);
+  assert.deepEqual([codes.filter((c) => c === 401).length, codes.filter((c) => c === 429).length], [15, 2], 'el 16.º ya es 429');
+  const r = await attempt(env, 'jefa@torivac.com', u.password, '203.0.113.40'); assert.equal(r.status, 429); assert.equal((await r.json()).error, LOCKED, 'con esa IP bloqueada ni la contraseña buena entra');
+  assert.equal((await attempt(env, 'jefa@torivac.com', u.password, '203.0.113.41')).status, 200, 'otra IP sigue entrando');
+});
+test('Fuerza bruta · 30 fallos contra una cuenta desde 30 visitantes distintos la bloquean 1 hora para todos (último recurso contra un ataque repartido); no se crean claves con el correo en claro', async () => {
   const env = mkEnv(); const u = await signIn(env, 'jefa@torivac.com', 'manager');
-  for (let i = 0; i < 5; i++) await attempt(env, 'jefa@torivac.com', 'mala-clave-1234');
-  assert.equal(keys(env, 'rl:login-acct:').length, 1);
-  assert.equal((await attempt(env, 'jefa@torivac.com', u.password)).status, 200); assert.equal(keys(env, 'rl:login-acct:').length, 0, 'a cero');
-  for (let i = 0; i < 11; i++) assert.equal((await attempt(env, 'jefa@torivac.com', 'mala-clave-1234')).status, 401);                          // 5 + 11 = 16 sin el reinicio ya estaría bloqueada
-  assert.equal((await attempt(env, 'jefa@torivac.com', u.password)).status, 200, 'sigue pudiendo entrar');
+  for (let i = 0; i < 30; i++) assert.equal((await attempt(env, 'jefa@torivac.com', 'mala-clave-1234')).status, 401, `fallo ${i + 1} desde una IP nueva`);
+  const r = await attempt(env, 'jefa@torivac.com', u.password); assert.equal(r.status, 429); assert.equal((await r.json()).error, LOCKED, 'el 31.º, con la contraseña buena y una IP nueva, recibe el mismo 429');
+  const ks = [...keys(env, 'rl:lgpair:'), ...keys(env, 'rl:lgip:'), ...keys(env, 'rl:lgacct:')];
+  assert.ok(ks.length >= 3 && ks.every((k) => /^rl:lg(pair|ip|acct):[0-9a-f]{32}$/.test(k)), 'solo el resumen sha-256: ni el correo ni la IP');
+});
+test('Fuerza bruta · tope de inundación: 30 intentos por visitante cada 10 min, también los correctos; con el texto de siempre', async () => {
+  const env = mkEnv(); const u = await signIn(env, 'jefa@torivac.com', 'manager'); const codes = [];
+  for (let i = 0; i < 31; i++) codes.push((await attempt(env, 'jefa@torivac.com', u.password, '203.0.113.50')).status);
+  assert.deepEqual([codes.filter((c) => c === 200).length, codes.filter((c) => c === 429).length], [30, 1]);
+  assert.equal((await (await attempt(env, 'jefa@torivac.com', u.password, '203.0.113.50')).json()).error, TOO_MANY);
+  assert.equal((await attempt(env, 'jefa@torivac.com', u.password, '203.0.113.50', { now: Date.now() + 11 * 60_000 })).status, 200, 'a los 10 minutos se libera');
+});
+test('Fuerza bruta · lockWait: «una hora» si falta casi una hora entera; si no, minutos redondeados hacia arriba', async () => {
+  const { lockWait } = await import('../src/index.js');
+  assert.deepEqual([3600, 3300, 3299, 61, 60, 1].map(lockWait), ['una hora', 'una hora', '55 minutos', '2 minutos', 'un minuto', 'un minuto']);
 });
 test('D3 · Bearer inválido: 30 fallos / 10 min por IP → 429; las peticiones válidas no gastan cupo; en /api/prices un Bearer falso cuenta pero la IP bloqueada recibe la vista pública (A12)', async () => {
   const env = mkEnv(); const codes = [];

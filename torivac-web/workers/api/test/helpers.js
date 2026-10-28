@@ -32,8 +32,8 @@ export class CountKV extends FakeKV {
 /** Secretos de PRUEBA (no son claves reales) con la longitud mínima que exige el Worker: token maestro y secreto de sesión ≥ 32 caracteres. */
 export const MASTER = 'master-test-0123456789abcdef0123456789abcdef';
 export const SESSION = 'session-test-' + 'x'.repeat(40);
-/** Entorno de pruebas del Worker: KV en memoria, destinatarios, token maestro, secreto de sesión y origen; extra sobrescribe valores. */
-export const mkEnv = (extra = {}) => ({ KV: new FakeKV(), ORDER_TO: 'info@grupotorivac.com, mzamora@torivac.com', ADMIN_API_TOKEN: MASTER, SESSION_SECRET: SESSION, ALLOWED_ORIGINS: 'https://demo.example', ...extra });
+/** Entorno de pruebas del Worker: KV en memoria, destinatarios, token maestro, secreto de sesión y origen; extra sobrescribe valores. FORM_MIN_FILL_MS = 0: las pruebas de formularios no mandan `_e` salvo las que prueban justo eso. */
+export const mkEnv = (extra = {}) => ({ KV: new FakeKV(), ORDER_TO: 'info@grupotorivac.com, mzamora@torivac.com', ADMIN_API_TOKEN: MASTER, SESSION_SECRET: SESSION, ALLOWED_ORIGINS: 'https://demo.example', FORM_MIN_FILL_MS: '0', ...extra });
 /** Request de prueba a https://api.test: método, cabeceras y body (un objeto se serializa a JSON; un texto se envía tal cual). */
 export const req = (path, { method = 'GET', body, headers = {} } = {}) => new Request(`https://api.test${path}`, { method, headers: { 'Content-Type': 'application/json', ...headers }, body: body === undefined ? undefined : typeof body === 'string' ? body : JSON.stringify(body) });
 export const CATALOG = { 'TT0020210': { n: 'Transformador serie TT 20 VA', pid: 884 }, P16633: { n: 'Variador portátil', pid: 16633 }, R100: { n: 'Resistencia 100 W', pid: 1 } };

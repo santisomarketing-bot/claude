@@ -303,7 +303,7 @@ function test_d6_real_server_hides_php_warnings_and_rejects_oversized_bodies()
         T::same(401, $st, 'y exige sesión');
         $cat = json_decode((string) file_get_contents(dirname(__DIR__) . '/generated/catalog.json'), true)['items'];
         $ref = array_keys($cat)[0];
-        [$st, $body] = $post('/api/order', ['customer' => ['name' => 'Ana Pérez', 'email' => 'ana@acme.es', 'privacy' => true], 'lines' => [['ref' => (string) $ref, 'qty' => 2]], 'lang' => 'es']);
+        [$st, $body] = $post('/api/order', ['customer' => ['name' => 'Ana Pérez', 'email' => 'ana@acme.es', 'privacy' => true], 'lines' => [['ref' => (string) $ref, 'qty' => 2]], 'lang' => 'es', '_e' => 5000]);
         $j = json_decode($body, true);
         T::same([200, true, 'sent'], [$st, $j['ok'] ?? null, $j['emailed']['customer_reason'] ?? null], 'un pedido normal por el API real: 200 y copia enviada');
         $perm = fileperms($srv['dir'] . '/datos/kv') & 0777;

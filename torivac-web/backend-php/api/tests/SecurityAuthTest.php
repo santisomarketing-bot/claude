@@ -76,7 +76,7 @@ function test_a2_ipv6_addresses_of_one_slash64_share_every_limit()
     $v6 = function ($i, $block = '12') { return sprintf('2001:db8:abcd:%s::%x', $block, $i); };
     $c401 = $c429 = 0;
     for ($i = 1; $i <= 30; $i++) { $st = sa_login('boss@torivac.test', 'mala' . $i, $v6($i))->status; if ($st === 401) $c401++; elseif ($st === 429) $c429++; }
-    T::same([6, 24], [$c401, $c429], 'A2: 30 intentos contra boss@ desde 30 IPv6 de un /64 → 6 respuestas 401 y 24 respuestas 429 (antes 30 × 401)');
+    T::same([5, 25], [$c401, $c429], 'A2: 30 intentos contra boss@ desde 30 IPv6 de un /64 → 5 respuestas 401 y 25 respuestas 429 (antes 30 × 401)');
     T::same(401, sa_login('boss@torivac.test', 'mala', $v6(1, '13'))->status, 'otro /64 tiene su propio cupo');
     T::same(401, sa_login('boss@torivac.test', 'mala', '203.0.113.200')->status, 'y una IPv4 también');
     $codes = [];
@@ -93,56 +93,76 @@ function test_a2_ipv6_addresses_of_one_slash64_share_every_limit()
     T::same('2001:db8:abcd:20::1', Store::get(Store::keys('order:')[0])['ip'], 'el registro del pedido sigue guardando la IP COMPLETA');
 }
 
-/** D3 · Tres límites de acceso con el mismo 429: por visitante y correo (6), por visitante contra cualquier cuenta (30) y por cuenta de cualquier IP (12 fallos, solo cuentas que existen). */
+/**
+ * Seguridad 2 · Fuerza bruta: 5 contraseñas erróneas del mismo visitante contra una cuenta la bloquean 1 hora (desde el 5.º fallo; ni la contraseña buena entra); 15 fallos de un visitante contra
+ * cualquier cuenta lo bloquean 1 hora; 30 fallos contra una cuenta, de cualquier visitante, la bloquean 1 hora. Todos cuentan también los correos que no existen y responden lo mismo.
+ */
 function test_d3_login_limits_per_ip_and_per_account()
 {
     fresh();
     Users::create(['email' => 'boss@torivac.test', 'name' => 'Boss', 'role' => 'manager', 'password' => PW_JEFE]);
-    $tooMany = ['ok' => false, 'error' => 'Demasiados intentos. Espera unos minutos.'];
-    // (a) visitante + correo: 6; existe o no el usuario, igual
+    $msg = 'Demasiados intentos fallidos. Vuelve a intentarlo en una hora.';
+    // (a) visitante + cuenta: 5 fallos y el 6.º ya es 429; existe o no el usuario, igual
+    $bodies = [];
     foreach (['boss@torivac.test', 'nadie@torivac.test'] as $email) {
         $codes = [];
         for ($i = 1; $i <= 8; $i++) $codes[] = sa_login($email, 'mala', '198.51.100.20')->status;
-        T::same([401, 401, 401, 401, 401, 401, 429, 429], $codes, "(a) $email: 6 intentos y luego 429");
+        T::same([401, 401, 401, 401, 401, 429, 429, 429], $codes, "(a) $email: 5 intentos fallidos y luego 429");
+        $r = sa_login($email, 'mala', '198.51.100.20');
+        $bodies[] = [$r->body['error'], array_keys($r->body), $r->headers['Retry-After'] === (string) $r->body['retry_after'], $r->body['retry_after'] >= 3590 && $r->body['retry_after'] <= 3600];
     }
-    T::same($tooMany, sa_login('boss@torivac.test', 'mala', '198.51.100.20')->body, '(a) el 429 es el de siempre');
-    // (b) visitante contra cualquier cuenta: 30 en 10 min (pulverizado de contraseñas)
-    $codes = [];
-    for ($i = 1; $i <= 31; $i++) $codes[] = sa_login("u$i@torivac.test", 'mala', '198.51.100.30')->status;
-    T::same([30, 1], [count(array_filter($codes, function ($c) { return $c === 401; })), count(array_filter($codes, function ($c) { return $c === 429; }))], '(b) 30 intentos con correos distintos desde una IP y el 31.º recibe 429');
-    $r = sa_login('boss@torivac.test', PW_JEFE, '198.51.100.30');
-    T::same([429, $tooMany], [$r->status, $r->body], '(b) con esa IP bloqueada ni la contraseña buena entra, y el 429 es idéntico');
-    T::same(200, sa_login('boss@torivac.test', PW_JEFE, '198.51.100.31')->status, '(b) otra IP sigue entrando con su contraseña');
-    // (c) por cuenta, de cualquier IP
-    fresh();
-    Users::create(['email' => 'boss@torivac.test', 'name' => 'Boss', 'role' => 'manager', 'password' => PW_JEFE]);
-    $codes = [];
-    for ($i = 1; $i <= 12; $i++) $codes[] = sa_login('boss@torivac.test', 'mala' . $i, "192.0.2.$i")->status;
-    T::same(array_fill(0, 12, 401), $codes, '(c) 12 fallos desde 12 IP distintas: 401 los 12');
-    $r = sa_login('boss@torivac.test', PW_JEFE, '192.0.2.100');
-    T::same([429, $tooMany], [$r->status, $r->body], '(c) el 13.º intento, desde una IP nueva y con la contraseña buena, recibe el mismo 429');
-    T::same(429, sa_login('boss@torivac.test', 'otra-mala', '192.0.2.101')->status, '(c) y con una mala también');
-    // se pone a cero tras un acceso correcto
-    fresh();
+    T::same([$msg, ['ok', 'error', 'retry_after'], true, true], $bodies[0], '(a) el 429 dice «una hora» y trae retry_after y Retry-After en segundos');
+    T::same($bodies[0], $bodies[1], '(a) y es IDÉNTICO exista o no la cuenta');
+    T::same(429, sa_login('boss@torivac.test', PW_JEFE, '198.51.100.20')->status, '(a) durante el bloqueo ni la contraseña buena entra');
+    T::same(200, sa_login('boss@torivac.test', PW_JEFE, '198.51.100.21')->status, '(a) otro visitante con la misma cuenta NO está bloqueado: nadie puede dejar fuera al gestor equivocándose a propósito desde su IP');
+    // el bloqueo no se alarga con más intentos
+    $key = RateLimit::key('lgpair', '198.51.100.20:boss@torivac.test');
+    $until = Store::get($key)['lockedUntil'];
+    for ($i = 0; $i < 5; $i++) sa_login('boss@torivac.test', 'mala', '198.51.100.20');
+    T::same($until, Store::get($key)['lockedUntil'], '(a) los intentos durante el bloqueo no lo alargan');
+    // pasada la hora, vuelve a poder entrar (y a contar desde cero)
+    $past = Util::nowMs() - 1000;
+    Store::put($key, ['count' => 5, 'resetAt' => $past, 'lockedUntil' => $past], 3600);
+    T::same(401, sa_login('boss@torivac.test', 'mala', '198.51.100.20')->status, '(a) tras la hora el intento se comprueba otra vez');
+    T::same(1, Store::get($key)['count'], '(a) y la cuenta empieza de cero');
+    // un acceso correcto antes del 5.º fallo pone a cero
+    foreach ([1, 2, 3, 4] as $i) sa_login('carla@torivac.test', 'mala', '198.51.100.40');
     Users::create(['email' => 'carla@torivac.test', 'name' => 'Carla', 'role' => 'client', 'password' => PW_JEFE]);
-    for ($i = 1; $i <= 5; $i++) sa_login('carla@torivac.test', 'mala' . $i, "192.0.2.$i");
-    T::same(1, count(kv_files('rl%3Aacct%3A')), '(c) tras 5 fallos hay un contador de cuenta');
-    T::same(200, sa_login('carla@torivac.test', PW_JEFE, '192.0.2.50')->status, '(c) acceso correcto');
-    T::same(0, count(kv_files('rl%3Aacct%3A')), '(c) y el contador vuelve a cero');
+    T::same(200, sa_login('carla@torivac.test', PW_JEFE, '198.51.100.40')->status, '(a) 4 fallos y luego la contraseña buena: entra');
     $codes = [];
-    for ($i = 1; $i <= 12; $i++) $codes[] = sa_login('carla@torivac.test', 'mala' . $i, "192.0.2." . (60 + $i))->status;
-    T::same(array_fill(0, 12, 401), $codes, '(c) otros 12 fallos: ninguno bloqueado antes de tiempo');
-    T::same(429, sa_login('carla@torivac.test', PW_JEFE, '192.0.2.99')->status, '(c) y entonces sí');
-    // solo cuentas que existen: ningún fichero por correos inventados
+    for ($i = 1; $i <= 5; $i++) $codes[] = sa_login('carla@torivac.test', 'mala', '198.51.100.40')->status;
+    T::same([401, 401, 401, 401, 401], $codes, '(a) y el acceso correcto puso a cero la cuenta: otros 5 fallos, ninguno bloqueado antes de tiempo');
+    // (b) un visitante contra cualquier cuenta: 15 fallos en una hora (pulverizado de contraseñas)
+    $codes = [];
+    for ($i = 1; $i <= 17; $i++) $codes[] = sa_login("u$i@torivac.test", 'mala', '198.51.100.30')->status;
+    T::same([15, 2], [count(array_filter($codes, function ($c) { return $c === 401; })), count(array_filter($codes, function ($c) { return $c === 429; }))], '(b) 15 intentos fallidos con correos distintos desde una IP y el 16.º recibe 429');
+    $r = sa_login('boss@torivac.test', PW_JEFE, '198.51.100.30');
+    T::same([429, $msg], [$r->status, $r->body['error']], '(b) con esa IP bloqueada ni la contraseña buena entra, y el mensaje es el mismo');
+    T::same(200, sa_login('boss@torivac.test', PW_JEFE, '198.51.100.31')->status, '(b) otra IP sigue entrando con su contraseña');
+    // (c) una cuenta contra la que fallan 30 visitantes distintos
     fresh();
     Users::create(['email' => 'boss@torivac.test', 'name' => 'Boss', 'role' => 'manager', 'password' => PW_JEFE]);
     $codes = [];
-    for ($i = 1; $i <= 15; $i++) $codes[] = sa_login('nadie@torivac.test', 'mala' . $i, "192.0.2.$i")->status;
-    T::same(array_fill(0, 15, 401), $codes, 'una cuenta inexistente con 15 fallos desde 15 IP: 401 siempre (no hay contador por cuenta)');
-    T::same(0, count(kv_files('rl%3Aacct%3A')), 'y no se crea ningún fichero de cuenta por correos inexistentes');
-    sa_login('boss@torivac.test', 'mala', '192.0.2.1');
-    $acct = kv_files('rl%3Aacct%3A');
-    T::true(count($acct) === 1 && preg_match('/^rl%3Aacct%3A[0-9a-f]{32}\.json$/', $acct[0]) === 1, 'el de una cuenta que existe lleva solo el resumen sha-256 del correo');
+    for ($i = 1; $i <= 30; $i++) $codes[] = sa_login('boss@torivac.test', 'mala' . $i, "192.0.2.$i")->status;
+    T::same(array_fill(0, 30, 401), $codes, '(c) 30 fallos desde 30 IP distintas: 401 los 30');
+    $r = sa_login('boss@torivac.test', PW_JEFE, '192.0.2.100');
+    T::same([429, $msg], [$r->status, $r->body['error']], '(c) el 31.º intento, desde una IP nueva y con la contraseña buena, recibe el mismo 429 (último recurso contra un ataque repartido)');
+    // las claves no llevan ni el correo ni la IP en claro
+    $files = array_merge(kv_files('rl%3Algpair%3A'), kv_files('rl%3Algip%3A'), kv_files('rl%3Algacct%3A'));
+    T::true(count($files) >= 3 && count(array_filter($files, function ($f) { return preg_match('/^rl%3Alg(pair|ip|acct)%3A[0-9a-f]{32}\.json$/', $f) === 1; })) === count($files), 'los contadores llevan solo el resumen sha-256 (nunca el correo ni la IP)');
+    // tope de inundación: 30 intentos por visitante en 10 min, también los correctos
+    fresh();
+    Users::create(['email' => 'boss@torivac.test', 'name' => 'Boss', 'role' => 'manager', 'password' => PW_JEFE]);
+    $codes = [];
+    for ($i = 1; $i <= 31; $i++) $codes[] = sa_login('boss@torivac.test', PW_JEFE, '198.51.100.50')->status;
+    T::same([30, 1], [count(array_filter($codes, function ($c) { return $c === 200; })), count(array_filter($codes, function ($c) { return $c === 429; }))], 'inundación: 30 accesos correctos y el 31.º recibe 429');
+    T::same('Demasiados intentos. Espera unos minutos.', sa_login('boss@torivac.test', PW_JEFE, '198.51.100.50')->body['error'], 'con el texto de la inundación');
+}
+
+/** El texto del tiempo de espera: «una hora» si falta casi una hora entera; si no, minutos redondeados hacia arriba. */
+function test_login_lock_wait_text()
+{
+    T::same(['una hora', 'una hora', '55 minutos', '2 minutos', 'un minuto', 'un minuto'], [Router::lockWait(3600), Router::lockWait(3300), Router::lockWait(3299), Router::lockWait(61), Router::lockWait(60), Router::lockWait(1)], 'lockWait');
 }
 
 /** Contadores de fallos (exceeded / fail / clear): ventana fija desde el primer fallo, sin sumar al mirar, y hit() sigue contando cada llamada. */
@@ -279,7 +299,7 @@ function test_d3_secret_minimum_lengths_fail_closed()
     T::same([true, false, ['session_secret', 'admin_token', 'cron_token']], [$h->body['ok'], $h->body['config']['ok'], $h->body['config']['problems']], '/health sigue vivo y marca los ajustes inseguros por su nombre');
     T::true(strpos(json_encode($h->body), 'corto') === false || strpos(json_encode($h->body), 'corto-secreto') === false, '/health no enseña ningún valor');
     fresh();
-    T::same(['ok', 'time'], array_keys(Router::handle(req('GET', '/health'))->body), 'con la configuración bien, /health es el de siempre');
+    T::same(['ok', 'time', 'mail'], array_keys(Router::handle(req('GET', '/health'))->body), 'con la configuración bien, /health es el de siempre (más el estado del correo, sin textos de error)');
     fresh(['admin_token' => '', 'cron_token' => '']);
     T::same(false, array_key_exists('config', Router::handle(req('GET', '/health'))->body), 'admin_token y cron_token vacíos no son un problema (están desactivados a propósito)');
     foreach (['banana', '', 1, true] as $v) { fresh(['order_copy' => $v]); T::same(['order_copy'], Router::handle(req('GET', '/health'))->body['config']['problems'], 'order_copy = ' . json_encode($v) . ' (ni capped ni off) también se avisa en /health, por su nombre'); }

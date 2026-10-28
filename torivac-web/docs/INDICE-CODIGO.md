@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1137/1137 funciones descritas (100 %) · 151/151 archivos con cabecera.
+**Cobertura**: 1266/1266 funciones descritas (100 %) · 164/164 archivos con cabecera.
 
 
 ## `site/`
@@ -827,6 +827,15 @@ Secciones: `[CAPTURAS]`
 - `shot` (l. 36) — Guarda una captura PNG numerada (NN-nombre.png) en la carpeta de salida y la muestra por consola; opts va a page.screenshot.
 - `settle` (l. 38) — Espera a que la página termine de cargar y deja ms milisegundos más para que se asienten los scripts.
 
+### `gen_plain_text_php.mjs`
+
+[GEN-PLAIN-TEXT-PHP] Escribe backend-php/api/lib/PlainTextRules.php a partir de shared/plain-text.mjs: las MISMAS expresiones, límites y rangos de caracteres para el servidor PHP. node scripts/gen_plain_text_php.mjs            reescribe el archivo node scripts/gen_plain_text_php.mjs --check    no escribe; sale con 1 si el archivo está desfasado
+
+Secciones: `[GEN-PLAIN-TEXT-PHP]` · `[PLAIN-TEXT-RULES]`
+
+- `q` (l. 13) — Cadena PHP entre comillas simples (escapa \ y ').
+- `build` (l. 18) — Texto del archivo PHP.
+
 ### `harvest.mjs`
 
 Sesión 1 · Cosecha de datos en bruto de grupotorivac.com (WordPress + WooCommerce + WPML). Reanudable: si un fichero ya existe, se salta. Ritmo educado (concurrencia 4 + pausa). node scripts/harvest.mjs            # todo
@@ -1060,6 +1069,14 @@ Secciones: `[TEST-BLOG-MD]`
 - `audit` (l. 35) — Devuelve la lista de problemas del HTML (vacía si todo es lo permitido).
 - `rnd` (l. 74) — Número pseudoaleatorio en [0,1) con semilla fija: la misma tanda de entradas hostiles en cada ejecución.
 
+### `test-plain-text.mjs`
+
+[TEST-PLAIN-TEXT] Pruebas del validador de texto plano de los formularios (shared/plain-text.mjs) contra su contrato (shared/plain-text.fixtures.json), que también cumple el servidor PHP. Además comprueba que backend-php/api/lib/PlainTextRules.php está al día y que ningún texto razonable de las pruebas de aceptación se rechaza. node scripts/test-plain-text.mjs
+
+Secciones: `[TEST-PLAIN-TEXT]`
+
+- `ok` (l. 15) — Anota una comprobación: correcta, o fallo con su mensaje.
+
 ### `qa-all.sh`
 
 [QA-ALL] Todas las pruebas del proyecto, una tras otra, con resumen final (la CI hace lo mismo en ci/ci.yml). bash scripts/qa-all.sh             # todo (unos 15-25 min; qa-ux recorre las ~770 páginas en escritorio y en móvil) bash scripts/qa-all.sh --rapido    # sin qa-ux, qa-a11y ni perf (unos 4-6 min)
@@ -1175,18 +1192,20 @@ Secciones: `[EMAIL]` · `[CONTROLADORES]` · `[COPIA]` · `[CONTACTO]`
 
 ### `index.js`
 
-[INDEX] Router del Worker torivac-api + tarea programada (precios cada 24 h). PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login USUARIO   GET /api/auth/me · POST /api/auth/logout · GET /api/orders (manager: los 300 más recientes; client: solo los suyos, hasta 100)
+[INDEX] Router del Worker torivac-api + tarea programada (precios cada 24 h). PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login Acceso: 5 contraseñas erróneas del mismo visitante contra una cuenta (o 15 contra cualquiera, o 30 contra una cuenta de cualquier visitante) = bloqueo de 1 hora; ver handleLogin.
 
 Secciones: `[INDEX]`
 
-- `tooMany` (l. 24) — 429 con el texto de siempre (el mismo para cualquier límite de acceso: nunca distingue si un usuario existe).
-- `configProblems` (l. 26) — Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores.
-- `fail` (l. 35) — Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id.
-- `identify` (l. 42) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
-- `handleLogin` (l. 53) — POST /api/auth/login. Límites (todos devuelven el mismo 429 y nunca distinguen si el usuario existe): por ipKey+correo 6 / 10 min · por ipKey sola 30 / 10 min contra cualquier cuenta ·
-- `route` (l. 76) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
-- `fetch` (l. 144) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
-- `scheduled` (l. 160) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
+- `tooMany` (l. 25) — 429 con el texto de siempre (inundación, Bearer): el mismo para cualquier límite de acceso, nunca distingue si un usuario existe.
+- `lockWait` (l. 27) — Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba).
+- `locked` (l. 29) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
+- `configProblems` (l. 35) — Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores.
+- `fail` (l. 44) — Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id.
+- `identify` (l. 51) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
+- `handleLogin` (l. 64) — POST /api/auth/login, con protección contra la fuerza bruta: 5 contraseñas erróneas del mismo visitante (ipKey) contra una cuenta bloquean ESA pareja 1 HORA desde el 5.º fallo (ni la contraseña
+- `route` (l. 90) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
+- `fetch` (l. 158) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
+- `scheduled` (l. 174) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
 
 ### `mailapi.js`
 
@@ -1303,8 +1322,10 @@ Secciones: `[RATE-LIMIT]`
 - `read` (l. 9) — Lee el registro { count, resetAt } vigente del cubo, o null si no hay o ya caducó.
 - `hit` (l. 14) — Cuenta una acción en el cubo (ventana fija de windowMs desde la primera) → { allowed, remaining, resetAt, count }; allowed es false cuando se supera `max`.
 - `isBlocked` (l. 22) — True si el cubo ya está en el máximo dentro de su ventana vigente. Solo lee: sirve para contadores que cuentan únicamente los fallos (se llama a hit tras cada fallo).
-- `reset` (l. 27) — Pone a cero el cubo (p. ej. tras un acceso correcto).
-- `purgeExpired` (l. 29) — Borra hasta `limit` registros rl:* caducados (por su dato de caducidad en KV o, si no lo trae, por su resetAt) → cuántos borró. Se llama «al vuelo» en 1 de cada 50 peticiones.
+- `failLock` (l. 30) — Anota un fallo de un contador con BLOQUEO: los fallos se cuentan en una ventana de `windowMs` desde el primero y, al llegar al `max`-ésimo, el contador queda bloqueado `lockMs` desde ESE momento
+- `lockedFor` (l. 41) — Milisegundos que le quedan de bloqueo a un contador con bloqueo (failLock); 0 si no está bloqueado. Solo lee.
+- `reset` (l. 46) — Pone a cero el cubo (p. ej. tras un acceso correcto).
+- `purgeExpired` (l. 48) — Borra hasta `limit` registros rl:* caducados (por su dato de caducidad en KV o, si no lo trae, por su resetAt) → cuántos borró. Se llama «al vuelo» en 1 de cada 50 peticiones.
 
 ### `sheets.js`
 
@@ -1383,14 +1404,17 @@ Secciones: `[UTIL]` · `[IPKEY]` · `[BODY]`
 
 Secciones: `[VALIDATE]`
 
-- `oneLine` (l. 13) — Texto de UNA línea: sin \r \n \t ni otros caracteres de control (se sustituyen por un espacio), espacios colapsados, recortado y limitado a max caracteres.
-- `multiLine` (l. 15) — Texto con saltos de línea (notas, mensajes): conserva \n y el tabulador, convierte \r\n y \r en \n y quita el resto de controles; recortado y limitado a max caracteres.
-- `isEmail` (l. 17) — True si `s` es un correo válido y estricto (≤ 254 caracteres, parte local ≤ 64).
-- `optText` (l. 19) — True si el valor es ausente (undefined o null) o una cadena.
-- `isObj` (l. 21) — True si v es un objeto «de verdad» (no null ni lista).
-- `parsePdf` (l. 27) — Valida el PDF que manda el navegador → { b64 } normalizado (sin saltos de línea) o { error }. Base64 estricto (^[A-Za-z0-9+/]+={0,2}$ tras quitar los saltos de línea, con longitud múltiplo de 4),
-- `parseOrder` (l. 39) — Valida y normaliza el pedido del navegador (cliente, líneas pedibles de items, idioma, PDF) → { order } o { error }.
-- `parseContact` (l. 66) — Valida y normaliza el formulario de contacto (honeypot, nombre, correo, mensaje, privacidad) → { contact } o { error }.
+- `oneLine` (l. 16) — Texto de UNA línea: sin \r \n \t ni otros caracteres de control (se sustituyen por un espacio), espacios colapsados, recortado y limitado a max caracteres.
+- `multiLine` (l. 18) — Texto con saltos de línea (notas, mensajes): conserva \n y el tabulador, convierte \r\n y \r en \n y quita el resto de controles; recortado y limitado a max caracteres.
+- `isEmail` (l. 20) — True si `s` es un correo válido y estricto (≤ 254 caracteres, parte local ≤ 64).
+- `optText` (l. 22) — True si el valor es ausente (undefined o null) o una cadena.
+- `isObj` (l. 24) — True si v es un objeto «de verdad» (no null ni lista).
+- `parsePdf` (l. 30) — Valida el PDF que manda el navegador → { b64 } normalizado (sin saltos de línea) o { error }. Base64 estricto (^[A-Za-z0-9+/]+={0,2}$ tras quitar los saltos de línea, con longitud múltiplo de 4),
+- `minFillMs` (l. 42) — Milisegundos mínimos entre cargar la página y enviar el formulario (variable FORM_MIN_FILL_MS; 1200 si falta o no es un número; 0 = no se exige `_e`).
+- `fillTimeError` (l. 49) — Error de `_e`: null si trae un entero ≥ el mínimo (o el mínimo es 0); si no, { error, code:'too_fast' }: un bot que postea sin cargar la página.
+- `textFields` (l. 57) — Revisa los campos de texto (`spec`: nombre → multilínea sí/no) de `src` con shared/plain-text.mjs y los límites de `form` → { out } con los textos NORMALIZADOS o { error, code, field }.
+- `parseOrder` (l. 71) — Valida y normaliza el pedido del navegador (cliente, líneas pedibles de items, idioma, PDF) → { order } o { error, code?, field? }. `minFillMs` = tiempo mínimo de relleno (0 = no se exige; quien llama pasa minFillMs(env)).
+- `parseContact` (l. 100) — Valida y normaliza el formulario de contacto (honeypot, tiempo de relleno, nombre, correo, mensaje, privacidad) → { contact } o { error, code?, field? }.
 
 ## `workers/api/test/`
 
@@ -1434,7 +1458,7 @@ Utilidades de test: KV en memoria que imita las reglas de Cloudflare KV (clave �
 - `checkKey` (l. 5) — Comprueba la clave como lo haría KV: no vacía y de 512 bytes como máximo.
 - `put` (l. 10) — Guarda un valor; anota la caducidad si trae expirationTtl (KV exige al menos 60 s).
 - `list` (l. 17) — Claves con el prefijo, ordenadas, por páginas (cursor), con su dato de caducidad si lo tienen.
-- `mkEnv` (l. 36) — Entorno de pruebas del Worker: KV en memoria, destinatarios, token maestro, secreto de sesión y origen; extra sobrescribe valores.
+- `mkEnv` (l. 36) — Entorno de pruebas del Worker: KV en memoria, destinatarios, token maestro, secreto de sesión y origen; extra sobrescribe valores. FORM_MIN_FILL_MS = 0: las pruebas de formularios no mandan `_e` salvo las que prueban justo eso.
 - `req` (l. 38) — Request de prueba a https://api.test: método, cabeceras y body (un objeto se serializa a JSON; un texto se envía tal cual).
 
 ### `kit.js`
@@ -1454,6 +1478,15 @@ Ayudas de las pruebas de seguridad: llamadas al Worker con IP, token y hora simu
 - `contactPost` (l. 55) — POST /api/contact anónimo con un mensaje válido de ejemplo (over sustituye campos; el resto va a deps: now, rand, retryMs…) → { r (Response), j (JSON), ip }.
 - `withLog` (l. 60) — Ejecuta fn con console.error capturado → las líneas que se escribieron en el registro del servidor (una cadena por llamada).
 - `messagesIn` (l. 67) — Registros (ya leídos) de los mensajes de contacto guardados en el KV del entorno, de la clave más reciente a la más antigua.
+
+### `mail-admin.test.js`
+
+[PRUEBAS-CORREO-PANEL] Pruebas de M2 (endpoints de gestión: GET/DELETE /api/messages, POST /api/mail/test, GET /api/mail/status y el bloque `mail` de /api/health) y de su seguridad (M4): solo gestores, nada de secretos en ninguna respuesta y los datos del visitante tratados como dato. Sin red: KV en memoria y proveedores simulados con provider() (ver kit.js).
+
+Secciones: `[PRUEBAS-CORREO-PANEL]`
+
+- `setup` (l. 10) — Entorno con Resend configurado y un gestor y un cliente con sesión → { env, mgr (token), cli (token) }.
+- `seed` (l. 16) — Guarda `n` mensajes de contacto de ejemplo (uno por minuto desde `t0`) → ids, del más antiguo al más reciente.
 
 ### `mail-contact.test.js`
 
@@ -1477,11 +1510,12 @@ Pruebas de los arreglos de seguridad del ACCESO: D3 (límites de login, de Beare
 - `forge` (l. 22) — Token firmado a mano con HMAC-SHA256 (para forjar tokens con cualquier contenido y la clave que se quiera).
 - `payloadOf` (l. 27) — Contenido (payload) de un token de sesión ya emitido.
 - `withLog` (l. 29) — Ejecuta fn con console.error capturado → lo que se escribió en el registro (una cadena por llamada).
-- `visto` (l. 69) — Origen (source) de la lista de precios que ve quien llama con ese token desde esa IP: completo para un manager, solo «upload» para el público.
-- `con` (l. 225) — Cuerpo de pedido con un nivel de anidamiento de n corchetes en un campo extra.
-- `rnd` (l. 258) — Número pseudoaleatorio en [0, 1) con semilla fija (la prueba es reproducible).
-- `pick` (l. 260) — Elemento al azar de una lista.
-- `gen` (l. 263) — Valor JSON raro al azar: átomos, listas y objetos con las claves que usa el API.
+- `lockShape` (l. 34) — Cuerpo y cabecera de una respuesta de bloqueo: [error, claves, Retry-After === retry_after, retry_after entre 3590 y 3600].
+- `visto` (l. 100) — Origen (source) de la lista de precios que ve quien llama con ese token desde esa IP: completo para un manager, solo «upload» para el público.
+- `con` (l. 256) — Cuerpo de pedido con un nivel de anidamiento de n corchetes en un campo extra.
+- `rnd` (l. 289) — Número pseudoaleatorio en [0, 1) con semilla fija (la prueba es reproducible).
+- `pick` (l. 291) — Elemento al azar de una lista.
+- `gen` (l. 294) — Valor JSON raro al azar: átomos, listas y objetos con las claves que usa el API.
 
 ### `security-orders.test.js`
 
@@ -1555,6 +1589,16 @@ Secciones: `[BLOG-MD]`
 - `toPlain` (l. 198) — Texto plano de un Markdown (sin marcas ni etiquetas, espacios normalizados): extracto, longitud y llms.txt.
 - `excerpt` (l. 208) — Extracto de hasta `n` caracteres cortado en una palabra entera (con «…» si se recorta).
 - `slugify` (l. 216) — Título → dirección: minúsculas, sin acentos, letras y cifras separadas por guiones, hasta 80 caracteres (cortado en un guion).
+
+### `plain-text.mjs`
+
+[PLAIN-TEXT] Los formularios públicos (contacto, pedido) aceptan SOLO TEXTO PLANO y con límites: nada de etiquetas HTML, scripts, enlaces en exceso ni líneas de código (inyección de HTML/JS, SQL, plantillas, órdenes de consola, rutas…). Es una defensa EN PROFUNDIDAD: la salida ya se escapa siempre (correo, panel, páginas) y no hay SQL; esto rechaza de entrada lo que no es un mensaje de una persona y le dice por qué a quien escribe de buena fe.
+
+Secciones: `[PLAIN-TEXT]`
+
+- `normalizeText` (l. 55) — Texto limpio: sin controles ni caracteres invisibles, saltos de línea \n, tabuladores y espacios repetidos como un espacio y, si el campo es de una línea, sin saltos.
+- `length` (l. 63) — Número de caracteres (puntos de código, no unidades UTF-16 ni bytes).
+- `checkText` (l. 66) — Revisa un texto de formulario: { ok:true, text } con el texto ya limpio, o { ok:false, code } (`not_text` si ni siquiera es una cadena). Un campo vacío es válido: si es obligatorio lo decide quien llama.
 
 ### `price-sheet.mjs`
 
@@ -1692,7 +1736,8 @@ Secciones: `[CONFIG]`
 
 - `load` (l. 13) — Carga la configuración desde config.php (si falta, queda vacía) y fuerza a OPcache a releerla.
 - `set` (l. 21) — sustituye toda la configuración (pruebas)
-- `get` (l. 24) — valor por ruta con puntos: 'prices.sheet_id'
+- `all` (l. 24) — toda la configuración cargada (para tachar los secretos de los textos de error; nunca se devuelve por la API)
+- `get` (l. 27) — valor por ruta con puntos: 'prices.sheet_id'
 
 ### `Diag.php`
 
@@ -1704,7 +1749,8 @@ Secciones: `[DIAG]`
 - `insideWebRoot` (l. 22) — Dice si un directorio está dentro de la web (cualquiera podría pedir sus ficheros si el .htaccess no se respetara): bajo la carpeta que contiene api/ (la web)
 - `bytes` (l. 36) — Valor de php.ini con sufijo (8M, 512K, 1G) → bytes; 0 o -1 = sin límite → null.
 - `run` (l. 48) — Ejecuta todas las comprobaciones.
-- `web` (l. 137) — Comprobaciones que solo tienen sentido al mirar por web: qué servidor atiende (¿se aplica el .htaccess?), qué IP ve del visitante detrás de un proxy y si la
+- `mail` (l. 138) — Comprobaciones del correo según el controlador activo: si está listo (clave o servidor), los avisos propios de cada uno (mail() no garantiza la entrega, SMTP sin verificar el certificado…)
+- `web` (l. 173) — Comprobaciones que solo tienen sentido al mirar por web: qué servidor atiende (¿se aplica el .htaccess?), qué IP ve del visitante detrás de un proxy y si la
 
 ### `Http.php`
 
@@ -1720,39 +1766,97 @@ Secciones: `[HTTP]`
 
 ### `Mail.php`
 
-[MAIL] Envío de correo con tres controladores (config mail.driver): resend → API HTTP de Resend (recomendado; hay que verificar el dominio con SPF/DKIM) mail   → función mail() de PHP (el propio hosting; sin garantías de entrega si el SPF del dominio no incluye el servidor)
+[MAIL] Envío de correo con seis controladores (config mail.driver) y el MOTIVO veraz de cada intento: resend → API HTTP de Resend (hay que verificar el dominio de order_from con SPF/DKIM) brevo  → API HTTP de Brevo (el remitente o su dominio debe estar verificado/autenticado en Brevo)
 
-Secciones: `[MAIL]`
+Secciones: `[MAIL]` · `[CONTROLADORES]` · `[SECRETOS]` · `[CONTACTO Y PRUEBA]`
 
-- `enabled` (l. 37) — ¿Hay un controlador de correo listo para enviar? (resend con clave, mail o file)
-- `send` (l. 45) — @param array{to:string[],cc?:string[],subject:string,html?:string,text?:string,replyTo?:string,attachments?:array} $m
-- `encodeHeader` (l. 80) — Codifica un asunto con caracteres no ASCII como palabra MIME UTF-8 en base64.
-- `mime` (l. 83) — cabeceras y cuerpo MIME (alternativa texto/HTML + adjuntos) para mail()
-- `money` (l. 108) — importe con el formato del idioma del cliente (es 1.234,56 €, en €1,234.56, fr 1 234,56 €, de 1.234,56 €)
-- `orderMail` (l. 123) — Correo del pedido PARA EL EQUIPO. `$d['pdf']` (bool) dice si lleva el PDF del cliente: entonces añade la línea fija de que lo generó el navegador y el importe que vale es el del servidor.
-- `copyMail` (l. 152) — Copia del presupuesto PARA EL CLIENTE: asunto fijo «Torivac · copia de tu presupuesto <número>», sin adjunto, y un cuerpo hecho SOLO con texto fijo en el idioma del pedido
+- `driverUnknown` (l. 55) — ¿mail.driver tiene un valor que no es ninguno de los conocidos? (vacío o ausente = none, que no es un error).
+- `driver` (l. 62) — Controlador activo según mail.driver: resend, brevo, smtp, mail, file o none; ausente o un valor desconocido = none (falla cerrado).
+- `sender` (l. 74) — Remitente de order_from («Nombre <correo@dominio>» o solo el correo; si falta, Torivac Web <pedidos@torivac.com>) → ['ok'=>true, 'name', 'email', 'from' (normalizado, para las APIs),
+- `smtpConfig` (l. 88) — Ajustes del servidor SMTP (mail.smtp): host, port, secure, user, pass, helo, timeout, insecure_tls, tls_name.
+- `blocker` (l. 95) — Por qué NO se puede enviar ahora → ['reason' => 'off'|'skipped', 'error' => …], o null si el controlador está listo (credenciales y remitente válidos).
+- `enabled` (l. 111) — ¿Hay un controlador de correo listo para enviar? (no es none y tiene sus credenciales y un remitente válido)
+- `problems` (l. 114) — Ajustes que impiden o estorban el envío (solo NOMBRES, nunca valores): mail.driver desconocido, la clave o el servidor del controlador activo, order_from y order_to.
+- `status` (l. 135) — Estado del correo para el panel, /health y el diagnóstico → ['driver', 'configured', 'problems' (nombres de ajustes), 'last' (último intento o null)]; nunca lleva valores secretos.
+- `last` (l. 143) — Último intento de envío guardado en mail:last → ['at', 'kind', 'ok', 'reason', 'error'?] o null si no hay ninguno o está dañado.
+- `record` (l. 153) — Anota el resultado de un envío en mail:last (sobrescribe; un fallo al anotar nunca tapa el resultado real del envío). `$kind`: order · contact · test.
+- `secrets` (l. 164) — Valores secretos de la configuración (de claves cuyo nombre contiene key, secret, token, pass, account, auth o user), de 6 o más caracteres.
+- `scrub` (l. 187) — Texto de UNA línea, sin secretos y de como mucho `$max` caracteres: tacha los valores exactos de los secretos de la configuración y las formas típicas de clave
+- `send` (l. 209) — Envía un correo por el controlador activo → ['ok', 'id'?, 'reason', 'error'?, 'driver', 'skipped'?, 'status'?, 'note'?] y anota el intento en mail:last (`$kind`: 'order' · 'contact' · 'test').
+- `deliver` (l. 221) — Prepara y envía por `$driver`, sin anotar nada. Sin controlador, credenciales, remitente o destinatarios válidos no llama a ningún proveedor.
+- `viaResend` (l. 242) — Resend: POST /emails con la clave en Authorization.
+- `viaBrevo` (l. 253) — Brevo: POST /v3/smtp/email con la clave en api-key (sender, to, cc, replyTo, subject, htmlContent, textContent y attachment[{name, content}]).
+- `callProvider` (l. 264) — POST JSON a la API de un proveedor y traduce la respuesta → ['ok'=>true,'reason'=>'sent','id'?] o ['ok'=>false,'reason'=>'failed','status'?,'error']. Cualquier 2xx cuenta como aceptado.
+- `providerError` (l. 276) — Texto corto y sin secretos del fallo de un proveedor: «Brevo 401: mensaje» (mensaje ≤ 120 caracteres) o, si no dio mensaje, «Brevo respondió 401».
+- `viaSmtp` (l. 288) — SMTP: compone el mensaje completo y lo entrega con Smtp (destinatarios = to + cc). Un destinatario rechazado por el servidor no impide el envío a los demás, pero se avisa.
+- `viaMail` (l. 299) — mail() de PHP: true = lo aceptó el servicio de correo LOCAL del hosting (no que llegue); false = lo rechazó. Pasa el remitente al sobre con -f cuando es seguro.
+- `viaFile` (l. 309) — file: guarda el correo como JSON en la carpeta outbox de los datos (pruebas y entornos sin correo: no sale por correo).
+- `encodeHeader` (l. 320) — Codifica un texto con caracteres no ASCII como palabras MIME UTF-8 en base64 (varias, de como mucho ~45 bytes, sin partir un carácter) unidas por un salto de línea plegado.
+- `message` (l. 333) — Mensaje completo para SMTP: Date, Message-ID, To, Subject y las cabeceras MIME de mime(), una línea en blanco y el cuerpo.
+- `mime` (l. 342) — cabeceras y cuerpo MIME (alternativa texto/HTML + adjuntos) para mail() y SMTP
+- `contactMail` (l. 373) — Aviso de un mensaje de contacto PARA EL EQUIPO → ['subject', 'html', 'text']. Asunto «Contacto web · <nombre>» en una línea; nombre, correo, idioma, id del mensaje y texto del visitante
+- `testMail` (l. 386) — Correo de PRUEBA del panel → ['subject', 'html', 'text']: asunto «Torivac · prueba de correo», texto fijo y, como datos, el controlador y la hora (ISO).
+- `money` (l. 393) — importe con el formato del idioma del cliente (es 1.234,56 €, en €1,234.56, fr 1 234,56 €, de 1.234,56 €)
+- `orderMail` (l. 408) — Correo del pedido PARA EL EQUIPO. `$d['pdf']` (bool) dice si lleva el PDF del cliente: entonces añade la línea fija de que lo generó el navegador y el importe que vale es el del servidor.
+- `copyMail` (l. 437) — Copia del presupuesto PARA EL CLIENTE: asunto fijo «Torivac · copia de tu presupuesto <número>», sin adjunto, y un cuerpo hecho SOLO con texto fijo en el idioma del pedido
+
+### `Messages.php`
+
+[MESSAGES] Mensajes del formulario de contacto: se guardan SIEMPRE (antes de intentar el correo) para que nadie pierda un mensaje ni se quede sin saber si salió el aviso. Clave del almacén: msg:<id> con id CT-AAAAMMDD-NNNN-XXX (CT = contacto; NNNN = contador diario; XXX = 3 caracteres aleatorios base36 en mayúsculas, por si dos mensajes coinciden). Retención de 400 días como los pedidos (Store caduca el registro; el cron lo borra). Son DATOS PERSONALES: solo los ve un gestor (GET /api/messages) y la IP completa solo se guarda aquí.
+
+Secciones: `[MESSAGES]`
+
+- `nextId` (l. 24) — Id nuevo CT-AAAAMMDD-NNNN-XXX: contador diario con bloqueo (dos mensajes no repiten número) + sufijo aleatorio. Lanza si el almacén no deja escribir.
+- `validId` (l. 39) — ¿Tiene esa forma un id de mensaje?
+- `create` (l. 46) — Crea y GUARDA el registro de un mensaje ya validado y limpio (name, email, message, lang) con la IP del visitante. Hasta saber el resultado del correo, el registro no afirma nada falso
+- `setEmailed` (l. 55) — Anota en el registro el resultado del correo: ['sent' => bool, 'reason' => …, 'error'? => …]. Lanza si no se puede guardar.
+- `view` (l. 62) — Vista de un registro para el gestor, o null si falta algo esencial (id y fecha en texto) o no es un registro.
+- `limit` (l. 73) — `limit` pedido en la URL → entero entre 1 y 300; ausente o ilegible = 100.
+- `recent` (l. 83) — Los mensajes más recientes primero (hasta `$limit`, 1..300) → ['items' => […], 'truncated' => bool]. Solo se leen los ficheros necesarios (los nombres se ordenan sin abrirlos);
+- `delete` (l. 100) — Borra el mensaje con ese id → true si existía; false si no existe o el id no tiene la forma CT-AAAAMMDD-NNNN-XXX (nunca alcanza otras claves del almacén).
 
 ### `Orders.php`
 
 [ORDERS] POST /api/order y POST /api/contact: valida lo que llega del navegador (no es fiable), valora el pedido en servidor con los precios VIGENTES (ignora cualquier precio que mande el cliente), numera TV-AAAAMMDD-NNNN, guarda y envía por correo al equipo (con el PDF) y, si procede, una copia al cliente. Defensas: honeypot, límite por visitante (Request::ipKey) y límite global de pedidos por hora, Turnstile opcional, referencias solo del catálogo (o añadidas por la hoja de
 
-Secciones: `[ORDERS]` · `[COPIA-AL-CLIENTE]` · `[PDF]`
+Secciones: `[ORDERS]` · `[COPIA-AL-CLIENTE]` · `[PDF]` · `[TEXTO-PLANO]` · `[CONTACTO]`
 
-- `validEmail` (l. 27) — ¿Es un correo válido? Cadena de ≤ 254 caracteres que cumple EMAIL y además pasa filter_var(FILTER_VALIDATE_EMAIL).
-- `str` (l. 33) — Texto de un campo del cuerpo: '' si falta o es null; null si NO es una cadena (número, lista, objeto…), y entonces la petición se rechaza.
-- `normalizePdf` (l. 43) — Valida el PDF que manda el navegador y lo devuelve normalizado (base64 canónico, sin saltos), o null si no vale: cadena base64 estricta (tras quitar saltos de línea), que
-- `parseOrder` (l. 57) — @return array{order?:array,error?:string}
-- `parseContact` (l. 99) — @return array{contact?:array,error?:string}
-- `verifyTurnstile` (l. 117) — Turnstile opcional: sin secreto se omite; con secreto, falla cerrado
-- `team` (l. 130) — destinatarios del equipo: config order_to (array o texto separado por comas)
-- `copyMode` (l. 138) — Modo de la copia al cliente: 'capped' (con topes) o 'off'. Solo el texto «capped» (sin importar mayúsculas ni espacios alrededor) activa la copia; si no está puesto, es capped; CUALQUIER otro valor (también uno que no sea un texto) es off.
-- `copyModeValid` (l. 145) — ¿Tiene order_copy un valor reconocido (capped u off, sin importar mayúsculas ni espacios) o no está puesto? Si no, se trata como off y el diagnóstico y /health avisan.
-- `copyDailyMax` (l. 152) — Tope de copias al cliente en total por cada 24 h (config order_copy_daily_max; 150 si falta o no es un número; 0 = ninguna).
-- `ordersPerHourMax` (l. 159) — Tope global de pedidos por hora (config orders_per_hour_max; 120 si falta o no es un número): protege la cuota del correo y el buzón del equipo.
-- `nextNumber` (l. 166) — Siguiente número de pedido TV-AAAAMMDD-NNNN (contador diario con bloqueo para que dos pedidos no repitan número).
-- `sendCopy` (l. 182) — Decide y envía la copia al cliente. Devuelve el motivo para emailed.customer_reason: 'not_requested' (el visitante mandó copy:false), 'off' (order_copy no es capped),
-- `handleOrder` (l. 197) — POST /order: valida, valora con los precios del servidor, guarda el pedido y envía el correo al equipo (con el PDF del cliente) y, si procede, la copia al cliente.
-- `handleContact` (l. 228) — POST /contact: valida el mensaje y lo envía al equipo con el correo del visitante como responder-a.
+- `validEmail` (l. 34) — ¿Es un correo válido? Cadena de ≤ 254 caracteres que cumple EMAIL y además pasa filter_var(FILTER_VALIDATE_EMAIL).
+- `str` (l. 40) — Texto de un campo del cuerpo: '' si falta o es null; null si NO es una cadena (número, lista, objeto…), y entonces la petición se rechaza.
+- `normalizePdf` (l. 50) — Valida el PDF que manda el navegador y lo devuelve normalizado (base64 canónico, sin saltos), o null si no vale: cadena base64 estricta (tras quitar saltos de línea), que
+- `plainError` (l. 64) — Error de validación de un campo de texto → ['error' => castellano, 'code' => plain_text|too_long|too_many_links, 'field' => campo]; `code` y `field` son para que el navegador lo muestre traducido.
+- `minFillMs` (l. 71) — Milisegundos mínimos entre cargar la página y enviar (config form_min_fill_ms; 1200 si falta o no es un número; 0 = no se exige `_e`).
+- `fillTimeError` (l. 78) — ¿Trae el cuerpo el campo `_e` (ms que tardó la persona) con un entero ≥ el mínimo? Si no, es un bot que no cargó la página: error con code too_fast. Con el mínimo en 0 no se exige.
+- `badRequest` (l. 88) — Respuesta 400 de una validación fallida: el error en castellano y, si los hay, `code` y `field`.
+- `parseOrder` (l. 94) — @return array{order?:array,error?:string,code?:string,field?:string}
+- `parseContact` (l. 144) — @return array{contact?:array,error?:string,code?:string,field?:string}
+- `verifyTurnstile` (l. 170) — Turnstile opcional: sin secreto se omite; con secreto, falla cerrado
+- `team` (l. 183) — destinatarios del equipo: config order_to (array o texto separado por comas)
+- `copyMode` (l. 191) — Modo de la copia al cliente: 'capped' (con topes) o 'off'. Solo el texto «capped» (sin importar mayúsculas ni espacios alrededor) activa la copia; si no está puesto, es capped; CUALQUIER otro valor (también uno que no sea un texto) es off.
+- `copyModeValid` (l. 198) — ¿Tiene order_copy un valor reconocido (capped u off, sin importar mayúsculas ni espacios) o no está puesto? Si no, se trata como off y el diagnóstico y /health avisan.
+- `copyDailyMax` (l. 205) — Tope de copias al cliente en total por cada 24 h (config order_copy_daily_max; 150 si falta o no es un número; 0 = ninguna).
+- `ordersPerHourMax` (l. 212) — Tope global de pedidos por hora (config orders_per_hour_max; 120 si falta o no es un número): protege la cuota del correo y el buzón del equipo.
+- `nextNumber` (l. 219) — Siguiente número de pedido TV-AAAAMMDD-NNNN (contador diario con bloqueo para que dos pedidos no repitan número).
+- `sendCopy` (l. 235) — Decide y envía la copia al cliente. Devuelve el motivo para emailed.customer_reason: 'not_requested' (el visitante mandó copy:false), 'off' (order_copy no es capped),
+- `handleOrder` (l. 250) — POST /order: valida, valora con los precios del servidor, guarda el pedido y envía el correo al equipo (con el PDF del cliente) y, si procede, la copia al cliente.
+- `handleContact` (l. 285) — POST /contact: límite por visitante y anti-spam como siempre (5 / 10 min por ipKey, honeypot, `_e`, Turnstile); luego construye el registro, LO GUARDA (400 días), intenta el correo al equipo,
+
+### `PlainText.php`
+
+[PLAIN-TEXT] Los formularios públicos (contacto, pedido) aceptan SOLO TEXTO PLANO y con límites: sin etiquetas HTML, scripts, enlaces en exceso ni líneas de código (HTML/JS, SQL, plantillas, órdenes de consola, rutas…). Defensa en profundidad: la salida ya se escapa siempre y no hay SQL; esto rechaza de entrada lo que no es un mensaje de una persona. Es la misma lógica que shared/plain-text.mjs (navegador y Worker); las expresiones y límites vienen de PlainTextRules.php (generado desde ese módulo) y
+
+Secciones: `[PLAIN-TEXT]`
+
+- `normalize` (l. 20) — Texto limpio: sin controles ni caracteres invisibles, saltos de línea \n, tabuladores y espacios repetidos como un espacio y, si el campo es de una línea, sin saltos.
+- `length` (l. 32) — Número de caracteres (letras, no bytes: «é» y un emoji cuentan 1).
+- `max` (l. 38) — Límite de caracteres del campo `$field` del formulario `$form` (PlainTextRules::FIELDS).
+- `check` (l. 49) — Revisa un texto de formulario. null = campo ausente (válido y vacío). Si no es una cadena → not_text; si no es UTF-8 válido o salta una regla → plain_text (también si el motor
+
+### `PlainTextRules.php`
+
+[PLAIN-TEXT-RULES] GENERADO por scripts/gen_plain_text_php.mjs desde shared/plain-text.mjs (no editar a mano: se regenera con `node scripts/gen_plain_text_php.mjs`). Las mismas expresiones, límites y rangos de caracteres invisibles que usan el navegador y el Worker; PlainText.php las aplica.
+
+Secciones: `[PLAIN-TEXT-RULES]`
 
 ### `PriceSheet.php`
 
@@ -1810,20 +1914,22 @@ Secciones: `[REQUEST]` · `[CLIENT-IP]` · `[IP-KEY]` · `[CORS]` · `[RATE-LIMI
 - `clientIp` (l. 118) — IP del visitante. Una conexión directa NO se puede falsear con cabeceras (se usa REMOTE_ADDR tal cual). Solo si quien conecta es un proxy de confianza
 - `ipKey` (l. 139) — Clave de límite por visitante: una IPv4 tal cual; una IPv6, su /64 en forma canónica «xxxx:xxxx:xxxx:xxxx::/64» (hextetos de 4 dígitos en minúsculas); una IPv4 escrita
 - `fake` (l. 153) — petición simulada para pruebas
-- `header` (l. 165) — Valor de una cabecera de la petición (nombre sin distinguir mayúsculas); cadena vacía si no existe.
-- `json` (l. 168) — cuerpo JSON como array (null si no es válido, está anidado a más de 32 niveles o supera el límite de bytes)
-- `bearer` (l. 176) — Token de la cabecera «Authorization: Bearer …», o null.
-- `__construct` (l. 190) — Respuesta con cuerpo JSON, código HTTP y cabeceras (por defecto JSON UTF-8 y sin caché).
-- `send` (l. 198) — Envía código, cabeceras y cuerpo JSON (sin cuerpo en 204 y 304). Si el cuerpo no se puede codificar responde un 500 genérico con un id (el detalle va al registro).
-- `allowed` (l. 221) — Dice si un origen puede usar el API: el propio sitio, las peticiones sin Origin o los de allowed_origins.
-- `headers` (l. 236) — Cabeceras CORS para un origen permitido.
-- `key` (l. 257) — Clave del almacén de un contador: rl:<cubo>:<sha256 del identificador, 32 caracteres>.
-- `hit` (l. 260) — @return array{allowed:bool,remaining:int,resetAt:int}
-- `exceeded` (l. 276) — ¿Ha llegado el contador de fallos de ese cubo e identificador a `$max` en la ventana actual? No suma nada.
-- `fail` (l. 283) — Anota un fallo (la ventana cuenta desde el primero) y devuelve cuántos lleva en ella.
-- `clear` (l. 299) — Pone a cero el contador de fallos (tras un acceso correcto).
-- `purgeExpired` (l. 306) — Borra ahora hasta PURGE_MAX registros de límite caducados; devuelve cuántos.
-- `maybePurge` (l. 312) — Con probabilidad 1/purgeOneIn limpia registros caducados; un fallo al limpiar nunca rompe la petición.
+- `header` (l. 166) — Valor de una cabecera de la petición (nombre sin distinguir mayúsculas); cadena vacía si no existe.
+- `json` (l. 169) — cuerpo JSON como array (null si no es válido, está anidado a más de 32 niveles o supera el límite de bytes)
+- `bearer` (l. 177) — Token de la cabecera «Authorization: Bearer …», o null.
+- `__construct` (l. 191) — Respuesta con cuerpo JSON, código HTTP y cabeceras (por defecto JSON UTF-8 y sin caché).
+- `send` (l. 199) — Envía código, cabeceras y cuerpo JSON (sin cuerpo en 204 y 304). Si el cuerpo no se puede codificar responde un 500 genérico con un id (el detalle va al registro).
+- `allowed` (l. 222) — Dice si un origen puede usar el API: el propio sitio, las peticiones sin Origin o los de allowed_origins.
+- `headers` (l. 237) — Cabeceras CORS para un origen permitido.
+- `key` (l. 258) — Clave del almacén de un contador: rl:<cubo>:<sha256 del identificador, 32 caracteres>.
+- `hit` (l. 261) — @return array{allowed:bool,remaining:int,resetAt:int}
+- `exceeded` (l. 277) — ¿Ha llegado el contador de fallos de ese cubo e identificador a `$max` en la ventana actual? No suma nada.
+- `fail` (l. 284) — Anota un fallo (la ventana cuenta desde el primero) y devuelve cuántos lleva en ella.
+- `failLock` (l. 303) — Anota un fallo de un contador con BLOQUEO: los fallos se cuentan en una ventana de `$windowMs` desde el primero y, al llegar al `$max`-ésimo, el contador queda bloqueado `$lockMs`
+- `lockedFor` (l. 321) — Milisegundos que le quedan de bloqueo a un contador con bloqueo (failLock); 0 si no está bloqueado. No suma nada.
+- `clear` (l. 329) — Pone a cero el contador de fallos (tras un acceso correcto).
+- `purgeExpired` (l. 336) — Borra ahora hasta PURGE_MAX registros de límite caducados; devuelve cuántos.
+- `maybePurge` (l. 342) — Con probabilidad 1/purgeOneIn limpia registros caducados; un fallo al limpiar nunca rompe la petición.
 
 ### `Router.php`
 
@@ -1831,19 +1937,42 @@ Secciones: `[REQUEST]` · `[CLIENT-IP]` · `[IP-KEY]` · `[CORS]` · `[RATE-LIMI
 
 Secciones: `[ROUTER]` · `[LIMITES]` · `[ERRORES]`
 
-- `handle` (l. 41) — Atiende una petición: comprueba el origen (CORS), despacha a la ruta y convierte las excepciones en respuestas JSON con su código.
-- `mergeVary` (l. 61) — Une dos valores de la cabecera Vary sin repetir (Origin va primero): la respuesta depende del origen Y de la sesión, y una caché compartida debe saberlo.
-- `failure` (l. 73) — Convierte una excepción en la respuesta que ve quien llama: una petición o hoja mal formada (InvalidArgumentException) = 400 con su mensaje; un RuntimeException con código HTTP
-- `tooMany` (l. 84) — El 429 de siempre: mismo texto para todos los límites de acceso, exista o no el usuario.
-- `authenticate` (l. 91) — Autentica la petición. Devuelve [quién|null, respuesta 429|null]. Sin Bearer no hay nada que probar. Con Bearer, un visitante (ipKey) con 30 fallos en 10 min ni siquiera llega a
-- `health` (l. 102) — GET /health: vivo, y si algún ajuste de seguridad está mal (secreto de sesión, token maestro o de cron, modo de la copia al cliente) lo dice con su NOMBRE (nunca el valor).
-- `prices` (l. 112) — GET /prices: el público ve la lista sin quién la cargó ni de dónde; un manager lo ve todo (y el estado de la última sincronización). Con la IP bloqueada por tokens fallidos se sirve la vista pública.
-- `login` (l. 132) — POST /auth/login: tres límites (visitante+correo, visitante, cuenta), contraseña con coste igual exista o no el usuario y token ligado al sid del usuario.
-- `cronByUrl` (l. 160) — GET /cron?token=…: sincroniza los precios si el token es el de cron_token (≥ 24 caracteres); 10 fallos / 10 min por visitante → 429; sin cron_token válido la URL está desactivada (401).
-- `forClient` (l. 175) — Un pedido tal como lo ve un cliente: sin la IP desde la que se hizo ni el motivo técnico del fallo del correo (eso es solo para managers).
-- `orders` (l. 183) — GET /orders: un manager recibe los 300 pedidos más recientes; un cliente, los suyos (los que llevan su correo) hasta 100, mirando solo los 3000 más recientes. `truncated:true` si se cortó.
-- `route` (l. 205) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
-- `cron` (l. 273) — sincroniza los precios (cron diario) y limpia lo caducado (también si la hoja se rechaza: esa limpieza no depende de la hoja)
+- `handle` (l. 45) — Atiende una petición: comprueba el origen (CORS), despacha a la ruta y convierte las excepciones en respuestas JSON con su código.
+- `mergeVary` (l. 65) — Une dos valores de la cabecera Vary sin repetir (Origin va primero): la respuesta depende del origen Y de la sesión, y una caché compartida debe saberlo.
+- `failure` (l. 77) — Convierte una excepción en la respuesta que ve quien llama: una petición o hoja mal formada (InvalidArgumentException) = 400 con su mensaje; un RuntimeException con código HTTP
+- `tooMany` (l. 88) — El 429 de siempre (inundación, Bearer, cron): mismo texto para todos, exista o no el usuario.
+- `lockWait` (l. 91) — Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba).
+- `locked` (l. 99) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
+- `authenticate` (l. 110) — Autentica la petición. Devuelve [quién|null, respuesta 429|null]. Sin Bearer no hay nada que probar. Con Bearer, un visitante (ipKey) con 30 fallos en 10 min ni siquiera llega a
+- `health` (l. 121) — GET /health: vivo, estado del correo (controlador, si está configurado y último intento SIN el texto del error) y, si algún ajuste está mal (secreto de sesión, token maestro o de cron, modo de la copia al cliente, mail.driver, order_from), lo dice con su NOMBRE (nunca el valor).
+- `prices` (l. 137) — GET /prices: el público ve la lista sin quién la cargó ni de dónde; un manager lo ve todo (y el estado de la última sincronización). Con la IP bloqueada por tokens fallidos se sirve la vista pública.
+- `login` (l. 160) — POST /auth/login: contraseña con coste igual exista o no el usuario, token ligado al sid del usuario y protección contra la fuerza bruta (ver la cabecera): 5 fallos de un visitante contra una cuenta,
+- `cronByUrl` (l. 190) — GET /cron?token=…: sincroniza los precios si el token es el de cron_token (≥ 24 caracteres); 10 fallos / 10 min por visitante → 429; sin cron_token válido la URL está desactivada (401).
+- `forClient` (l. 205) — Un pedido tal como lo ve un cliente: sin la IP desde la que se hizo ni el motivo técnico del fallo del correo (eso es solo para managers).
+- `orders` (l. 213) — GET /orders: un manager recibe los 300 pedidos más recientes; un cliente, los suyos (los que llevan su correo) hasta 100, mirando solo los 3000 más recientes. `truncated:true` si se cortó.
+- `messages` (l. 235) — GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite.
+- `mailTest` (l. 245) — POST /mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de order_to. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
+- `route` (l. 262) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
+- `cron` (l. 334) — sincroniza los precios (cron diario) y limpia lo caducado (también si la hoja se rechaza: esa limpieza no depende de la hoja)
+
+### `Smtp.php`
+
+[SMTP] Cliente SMTP mínimo y seguro (sin librerías) para enviar el correo por el buzón del propio hosting (Plesk, cPanel…) o por cualquier servidor SMTP. Habla con stream_socket_client: saludo 220 → EHLO → STARTTLS (secure = tls) → AUTH PLAIN o LOGIN → MAIL FROM → RCPT TO (uno por destinatario) → DATA → QUIT. · Cifrado: secure = 'ssl' (TLS implícito, puerto 465), 'tls' (STARTTLS, puerto 587; si el servidor no lo ofrece NO se envía) o 'none' (sin cifrar, puerto 25). El certificado del servidor se
+
+Secciones: `[SMTP]`
+
+- `send` (l. 33) — Envía un mensaje ya compuesto (cabeceras + cuerpo MIME) por SMTP.
+- `problem` (l. 103) — Primer problema de los datos de entrada (null = todo bien): servidor, puerto, cifrado, usuario, contraseña, remitente y destinatarios.
+- `heloName` (l. 118) — Nombre con el que nos presentamos en EHLO: mail.smtp.helo, o el del servidor web, o el de la máquina; solo letras, cifras, puntos y guiones.
+- `caps` (l. 128) — Capacidades que anuncia el servidor en su respuesta a EHLO: nombre en mayúsculas → resto de la línea.
+- `auth` (l. 140) — Autentica con PLAIN (si lo anuncia) o LOGIN. Error: «SMTP 535 …» si el servidor rechaza las credenciales; nunca incluye el usuario ni la contraseña.
+- `cmd` (l. 159) — Envía una orden (sin CR/LF dentro) y devuelve la respuesta [código, texto]. `$secret` = la orden lleva credenciales: nunca entra en ningún mensaje de error.
+- `write` (l. 167) — Escribe todo el texto, por trozos, sin pasarse del plazo.
+- `reply` (l. 181) — Lee una respuesta completa (varias líneas «250-…» y la última «250 …») → [código, texto de las líneas unidas por salto]. Con tope de líneas, de bytes y de tiempo.
+- `fail` (l. 203) — Excepción «SMTP <código> <texto>» para una respuesta que no es la esperada.
+- `short` (l. 209) — «550 5.1.1 texto…» recortado a 100 caracteres y en una línea.
+- `oneLine` (l. 212) — Texto de UNA línea recortado a `$max` caracteres (sin saltos ni caracteres de control).
+- `why` (l. 219) — Motivo legible de un fallo de conexión o de cifrado: el texto del sistema y, si lo hay, la causa de OpenSSL (certificado caducado, nombre que no coincide…).
 
 ### `Store.php`
 
@@ -1956,10 +2085,10 @@ Pruebas del API en PHP: equivalen a workers/api/test/api.test.js + ai.test.js (s
 - `ai_reply` (l. 309) — Servidor de IA simulado: contesta con una propuesta de cambios de precios (uso de herramienta de Anthropic).
 - `test_ai_validation_and_flow` (l. 315) — IA de precios: valida y limita lo que propone; la propuesta no escribe nada y solo se aplica lo confirmado.
 - `test_diag_checks` (l. 349) — Autodiagnóstico: una instalación a medias da errores que dicen qué arreglar, y una completa pasa sin fallos.
-- `test_privacy_session_revocation_and_contact_escaping` (l. 376) — GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto escapa el HTML.
-- `test_http_client_follows_redirects_without_leaking_credentials` (l. 408) — Cliente HTTP real contra un servidor local: sigue redirecciones de los GET a mano, no manda la credencial a otro servidor y corta los bucles.
-- `test_email_status_is_never_overstated` (l. 441) — El correo es parte del resultado: el pedido se guarda siempre y dice si el aviso salió; el contacto falla si el mensaje no pudo enviarse.
-- `test_diag_warns_about_orders_without_email` (l. 466) — El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo.
+- `test_privacy_session_revocation_and_contact_escaping` (l. 376) — GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto solo admite texto plano y su correo escapa el HTML.
+- `test_http_client_follows_redirects_without_leaking_credentials` (l. 411) — Cliente HTTP real contra un servidor local: sigue redirecciones de los GET a mano, no manda la credencial a otro servidor y corta los bucles.
+- `test_email_status_is_never_overstated` (l. 444) — El correo es parte del resultado: el pedido y el mensaje de contacto se guardan siempre y dicen si el aviso salió (y por qué no).
+- `test_diag_warns_about_orders_without_email` (l. 472) — El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo.
 
 ### `HostingTest.php`
 
@@ -1975,6 +2104,58 @@ Pruebas de lo que cambia de un hosting a otro (cPanel, Plesk…): la carpeta de 
 - `test_store_picks_a_usable_data_folder` (l. 100) — Carpeta de datos: la configurada, un almacén que ya tiene datos, la primera que se pueda crear, o error claro; un fichero en medio hace de «raíz de solo lectura» (Plesk).
 - `test_diag_reports_data_folder_deviation` (l. 134) — El diagnóstico avisa cuando la carpeta de datos configurada no sirvió y se usó otra; por línea de comandos sabe si la carpeta cae dentro de la web.
 - `test_diag_web_checks` (l. 155) — Comprobaciones de servidor del diagnóstico: nginx sin Apache ignora el .htaccess; la IP del visitante tras un proxy; HTTPS.
+
+### `MailTest.php`
+
+Pruebas del correo (Mail.php): controladores y su elección, remitente, ajustes que faltan, Resend y Brevo con HTTP simulado (Http::$mock), último intento (mail:last), secretos fuera de cualquier error y los correos de contacto y de prueba. El SMTP tiene sus pruebas en SmtpTest.php y los endpoints del panel en MessagesTest.php.
+
+- `test_mail_driver_normalization` (l. 17) — mail.driver: resend, brevo, smtp, mail, file y none se reconocen (mayúsculas y espacios no importan); ausente = none; un valor desconocido falla cerrado como none y se avisa.
+- `test_mail_sender_parsing` (l. 29) — Remitente de order_from: «Nombre <correo>» o solo el correo; por defecto Torivac Web <pedidos@torivac.com>; cabeceras con salto, < > " \ o un correo roto no valen.
+- `test_mail_blockers_and_problems` (l. 51) — Sin controlador, con credenciales incompletas, remitente roto o sin destinatarios válidos: nada se envía y reason dice por qué (off · skipped).
+- `test_mail_resend_request_and_errors` (l. 88) — Resend: POST /emails con la clave, cuerpo completo y errores cortos («Resend 403: …», «Resend respondió 500», «no se pudo conectar»).
+- `test_mail_brevo_request_and_errors` (l. 119) — Brevo: POST /v3/smtp/email con api-key, sender, to, cc, replyTo, subject, htmlContent, textContent y attachment[{name, content}]; errores «Brevo <estado>: <mensaje ≤ 120>».
+- `test_mail_secrets_never_leak` (l. 147) — Ninguna clave sale en ningún error ni en el último intento, aunque el proveedor la repita: «sk-SECRETO-123» configurada como clave no aparece en ninguna parte.
+- `test_mail_last_attempt_is_recorded_on_every_send` (l. 171) — mail:last se anota en CADA envío (pedido, copia, contacto, prueba), solo el último, con el tipo, la hora y el motivo; también el fallido, el omitido y el de un controlador apagado.
+- `test_mail_contact_and_test_composers` (l. 198) — Correo de un mensaje de contacto para el equipo: asunto en una línea, todo lo del visitante escapado en el HTML y completo en el texto; y el correo de prueba del panel.
+- `test_diag_mail_checks` (l. 215) — Diag::mail: avisa según el controlador (none, mail(), file, SMTP sin verificar…) y según el resultado del último envío real.
+
+### `MessagesTest.php`
+
+Pruebas del formulario de contacto que de verdad funciona (Messages.php, Orders::handleContact y las rutas del panel): el mensaje se guarda SIEMPRE y el estado del correo es veraz; GET/DELETE /messages, POST /mail/test, GET /mail/status y el bloque `mail` de /health; solo texto plano con límites; antispam por tiempo de relleno (`_e`) y sin secretos en ninguna respuesta.
+
+- `ms_contact` (l. 20) — Contacto válido de ejemplo (se puede sobrescribir cualquier campo).
+- `ms_post` (l. 23) — POST /contact desde esa IP → Response.
+- `ms_tokens` (l. 26) — Un gestor y un cliente con sesión → [token del gestor, token del cliente].
+- `ms_seed` (l. 34) — Guarda `$n` mensajes de ejemplo, uno por minuto desde `$t0` (ms), y devuelve sus ids del más antiguo al más reciente.
+- `test_contact_saves_message_and_reports_the_truth` (l. 46) — M1 · El mensaje se guarda con todos los campos, 400 días de retención y contador propio, y la respuesta es { ok, id, emailed:{ sent, reason } } sin error.
+- `test_contact_email_status_failed_off_skipped` (l. 69) — M1 · Si el correo falla, se omite o está apagado: 200 igualmente, el mensaje queda guardado y `reason` dice por qué (el detalle solo en el registro).
+- `test_contact_not_saved_is_a_500_and_sends_nothing` (l. 94) — M1 · Si el almacén no deja guardar: 500 «No se pudo guardar el mensaje», se registra y NO se envía nada; nunca «recibido» de lo que no está guardado.
+- `test_contact_limits_and_antispam_still_apply` (l. 116) — M1 · Los límites y el antispam de siempre siguen: 6.º mensaje → 429 sin guardar; honeypot, campos no válidos, privacidad y Turnstile fallido → 400 sin guardar ni enviar.
+- `test_contact_plain_text_and_limits_over_the_api` (l. 137) — Texto plano y límites: etiquetas, scripts, SQL, plantillas, consola y rutas se rechazan con code y field; demasiado largo o con muchos enlaces también; nada se guarda ni se envía.
+- `test_contact_and_order_fill_time_check` (l. 167) — Antispam por tiempo: con form_min_fill_ms = 1200 el cuerpo debe traer `_e` (entero ≥ 1200); sin él, con un número menor o con un texto → 400 too_fast. 0 lo desactiva.
+- `test_order_plain_text_and_limits_over_the_api` (l. 189) — Pedido: mismos límites de texto plano (nombre 80, empresa 120, teléfono 40, notas 500) y mismo 400 con code y field.
+- `test_messages_list_permissions_order_and_limit` (l. 207) — M2 · GET /messages: solo gestor (anónimo 401, cliente 403), más recientes primero, todos los campos, sin caché y límite acotado a 1..300 (100 por defecto).
+- `test_messages_list_tolerates_corrupt_records` (l. 230) — M2 · Un registro corrupto se omite sin romper la lista y el hueco se rellena con el siguiente; un registro sin id válido tampoco vale.
+- `test_messages_list_returns_visitor_text_as_data` (l. 242) — M2/M4 · El contenido del visitante es dato: se devuelve tal cual dentro del JSON, nunca como HTML ni con cabeceras.
+- `test_messages_delete_and_cannot_reach_other_keys` (l. 253) — M2 · DELETE /messages/:id borra uno (derecho de supresión); 404 si no existe, ya se borró o el id no tiene forma de id; nunca alcanza otras claves; cliente 403.
+- `test_mail_test_endpoint` (l. 271) — M2 · POST /mail/test: envía «Torivac · prueba de correo» a los destinatarios del equipo o a `to`; 200 aunque falle (con el error corto); 400 si `to` no vale; 10 por hora y usuario; cliente 403.
+- `test_mail_test_endpoint_rate_limit` (l. 305) — M2 · 10 pruebas por hora y usuario: la 11.ª es 429, otro gestor tiene su cupo.
+- `test_mail_status_endpoint_and_health` (l. 318) — M2 · GET /mail/status: driver, configured, problems (nombres), last (null al principio; luego el último intento); cliente 403; sin secretos.
+- `test_mail_endpoints_never_leak_the_key` (l. 350) — M4 · Con una clave «sk-SECRETO-123» configurada, no aparece en ninguna respuesta de los endpoints de correo ni en el almacén aunque el proveedor la repita.
+- `test_diag_warns_about_messages_without_email` (l. 363) — El diagnóstico avisa si los últimos mensajes de contacto se guardaron sin que saliera su aviso por correo.
+
+### `PlainTextTest.php`
+
+Pruebas de PlainText con los casos compartidos con la versión JavaScript (shared/plain-text.fixtures.json).
+
+- `pt_fixtures` (l. 10) — Casos compartidos con JavaScript (en el paquete del hosting hay una copia junto a las pruebas).
+- `test_plain_text_fixtures_copy_is_identical` (l. 18) — La copia de los casos junto a las pruebas es idéntica a la compartida (si el repositorio completo está presente).
+- `test_plain_text_accepts_real_messages` (l. 26) — Lo que una persona escribe de verdad (técnico, con signos, en cuatro idiomas) se acepta.
+- `test_plain_text_rejects_code_and_markup` (l. 35) — HTML, scripts, SQL, plantillas, consola, rutas, signos de programación, demasiados enlaces y lo que no es texto se rechazan con el código esperado.
+- `test_plain_text_normalize_matches_javascript` (l. 44) — La limpieza (invisibles, controles, saltos, espacios, recorte) da lo mismo que en JavaScript.
+- `test_plain_text_limits_count_characters_not_bytes` (l. 50) — Los límites cuentan letras (un acento o un emoji cuenta 1) y rechazan con too_long.
+- `test_plain_text_field_limits` (l. 62) — Los límites de cada campo son los acordados (contacto: mensaje 1000; pedido: notas 500).
+- `test_plain_text_hostile_long_inputs_are_fast` (l. 71) — Textos hostiles enormes no se eternizan ni agotan el motor de expresiones (se rechazan o se aceptan, pero rápido).
 
 ### `PriceSheetTest.php`
 
@@ -1997,16 +2178,17 @@ Pruebas de seguridad del acceso, las sesiones y los límites (informe del reviso
 - `sa_forge` (l. 56) — Token firmado a mano con el secreto de pruebas (para probar tokens que el servidor nunca emitiría).
 - `test_d2_ip_key_shared_cases` (l. 63) — D2 · Los mismos casos de ipKey que el Worker (shared/ip-key.fixtures.json): IPv4 tal cual, IPv6 por su /64, IPv4 dentro de IPv6 y lo ilegible = «0».
 - `test_a2_ipv6_addresses_of_one_slash64_share_every_limit` (l. 72) — A2 · Los límites por visitante (acceso, pedido, contacto) cuentan por /64: 30 direcciones de un mismo /64 ya no son 30 visitantes, y otro /64 u otra IPv4 sí tienen cupo propio.
-- `test_d3_login_limits_per_ip_and_per_account` (l. 97) — D3 · Tres límites de acceso con el mismo 429: por visitante y correo (6), por visitante contra cualquier cuenta (30) y por cuenta de cualquier IP (12 fallos, solo cuentas que existen).
-- `test_d3_failure_counters_window_and_reset` (l. 149) — Contadores de fallos (exceeded / fail / clear): ventana fija desde el primer fallo, sin sumar al mirar, y hit() sigue contando cada llamada.
-- `test_a4_rate_limit_keys_are_bounded_and_expired_ones_purged` (l. 164) — A4 · Un correo de 300 caracteres ya no rompe el guardado ni se hace eco de la clave en el error; los contadores caducados se purgan «al vuelo» y no crecen sin límite.
-- `test_a12_bearer_and_cron_failure_limits` (l. 195) — A12 · Un Bearer inválido (30 fallos / 10 min por visitante) y una llamada al cron con token erróneo (10 / 10 min) acaban en 429; una petición válida no consume cupo.
-- `test_d3_secret_minimum_lengths_fail_closed` (l. 239) — D3 · Secretos con longitud mínima que fallan cerrado: session_secret ≥ 32 y sin «CAMBIA-ESTO», admin_token ≥ 32, cron_token ≥ 24; el diagnóstico y /health lo dicen con el NOMBRE del ajuste.
-- `test_d3_password_policy_for_new_users` (l. 290) — D3 · Contraseñas nuevas: ≥ 12, sin la parte local del correo y fuera de la lista de triviales; por la API y por la herramienta de línea de comandos. Los usuarios ya creados no se tocan.
-- `test_d4_sessions_are_bound_to_the_user_record` (l. 344) — D4 · La sesión va ligada al usuario: el token lleva {sub, iat, exp, sid} (sin rol), el rol sale del registro, los tokens sin sid no valen y el borrado + alta con el mismo correo no los resucita (A5).
-- `test_d4_logout_revokes_every_earlier_token` (l. 392) — D4 · POST /api/auth/logout invalida TODOS los tokens anteriores de esa persona (sess_after); el token maestro no tiene sesión; los de otras personas no se tocan.
-- `test_a3_decoy_hash_follows_the_current_default_cost` (l. 426) — A3 · El hash «señuelo» que iguala el tiempo de un usuario inexistente se genera con el coste actual de PASSWORD_DEFAULT (10 en PHP ≤ 8.3, 12 en 8.4) y se cachea; ya no es un literal de 61 caracteres.
-- `test_d6_vary_merges_origin_and_authorization` (l. 455) — Las respuestas con Origin ajeno o propio siguen igual y Vary lleva Origin y Authorization a la vez (antes el de la ruta pisaba al de CORS).
+- `test_d3_login_limits_per_ip_and_per_account` (l. 100) — Seguridad 2 · Fuerza bruta: 5 contraseñas erróneas del mismo visitante contra una cuenta la bloquean 1 hora (desde el 5.º fallo; ni la contraseña buena entra); 15 fallos de un visitante contra
+- `test_login_lock_wait_text` (l. 163) — El texto del tiempo de espera: «una hora» si falta casi una hora entera; si no, minutos redondeados hacia arriba.
+- `test_d3_failure_counters_window_and_reset` (l. 169) — Contadores de fallos (exceeded / fail / clear): ventana fija desde el primer fallo, sin sumar al mirar, y hit() sigue contando cada llamada.
+- `test_a4_rate_limit_keys_are_bounded_and_expired_ones_purged` (l. 184) — A4 · Un correo de 300 caracteres ya no rompe el guardado ni se hace eco de la clave en el error; los contadores caducados se purgan «al vuelo» y no crecen sin límite.
+- `test_a12_bearer_and_cron_failure_limits` (l. 215) — A12 · Un Bearer inválido (30 fallos / 10 min por visitante) y una llamada al cron con token erróneo (10 / 10 min) acaban en 429; una petición válida no consume cupo.
+- `test_d3_secret_minimum_lengths_fail_closed` (l. 259) — D3 · Secretos con longitud mínima que fallan cerrado: session_secret ≥ 32 y sin «CAMBIA-ESTO», admin_token ≥ 32, cron_token ≥ 24; el diagnóstico y /health lo dicen con el NOMBRE del ajuste.
+- `test_d3_password_policy_for_new_users` (l. 310) — D3 · Contraseñas nuevas: ≥ 12, sin la parte local del correo y fuera de la lista de triviales; por la API y por la herramienta de línea de comandos. Los usuarios ya creados no se tocan.
+- `test_d4_sessions_are_bound_to_the_user_record` (l. 364) — D4 · La sesión va ligada al usuario: el token lleva {sub, iat, exp, sid} (sin rol), el rol sale del registro, los tokens sin sid no valen y el borrado + alta con el mismo correo no los resucita (A5).
+- `test_d4_logout_revokes_every_earlier_token` (l. 412) — D4 · POST /api/auth/logout invalida TODOS los tokens anteriores de esa persona (sess_after); el token maestro no tiene sesión; los de otras personas no se tocan.
+- `test_a3_decoy_hash_follows_the_current_default_cost` (l. 446) — A3 · El hash «señuelo» que iguala el tiempo de un usuario inexistente se genera con el coste actual de PASSWORD_DEFAULT (10 en PHP ≤ 8.3, 12 en 8.4) y se cachea; ya no es un literal de 61 caracteres.
+- `test_d6_vary_merges_origin_and_authorization` (l. 475) — Las respuestas con Origin ajeno o propio siguen igual y Vary lleva Origin y Authorization a la vez (antes el de la ruta pisaba al de CORS).
 
 ### `SecurityDataTest.php`
 
@@ -2041,17 +2223,37 @@ Pruebas de seguridad de los pedidos y del contacto (informe del revisor del PHP:
 - `so_mail_to` (l. 23) — El correo guardado en la bandeja de salida cuyo destinatario es `$to` (o null).
 - `so_warnings` (l. 30) — Ejecuta `$fn` y devuelve los avisos y notas de PHP que haya provocado (deben ser ninguno).
 - `test_a1_copy_to_customer_has_only_server_text_and_no_attachment` (l. 39) — A1 · La copia al cliente solo lleva contenido del servidor: nada de lo que escribió el visitante y SIN adjunto; el PDF y los datos del visitante solo van al equipo.
-- `test_d1_copy_text_follows_the_order_language` (l. 63) — A1 · El texto fijo de la copia sale en el idioma del pedido (es, en, fr, de) y el asunto es siempre el mismo.
-- `test_a1_pdf_is_validated_and_normalized` (l. 83) — A1 · El PDF del visitante se valida de verdad (base64 estricto, %PDF-, ≤ 4 MB) y se reenvía normalizado, solo al equipo.
-- `test_d1_copy_mode_off_unknown_values_and_reasons` (l. 120) — D1 · order_copy: capped por defecto, off y cualquier otro valor = no se envía copia (falla cerrado); copy:false y correo sin configurar también tienen su motivo.
-- `test_d1_copy_caps_per_recipient_and_per_day` (l. 150) — D1 · Topes de la copia: 2 por destinatario cada 24 h (clave = sha256 del correo) y `order_copy_daily_max` al día en total; superado un tope, el pedido y el aviso al equipo salen igual.
-- `test_d1_global_orders_per_hour_cap` (l. 183) — D1 · Tope global de pedidos por hora (orders_per_hour_max, 120 por defecto): 429 y no se guarda nada; solo cuentan los pedidos válidos.
-- `test_a13_single_line_fields_and_notes_are_cleaned` (l. 201) — A13 · Los campos de una línea no admiten saltos de línea ni controles (asunto del correo al equipo); las notas conservan los saltos pero no los controles raros.
-- `test_a13_email_validation_is_strict` (l. 226) — A13 · Correo del visitante: la expresión del servidor es más estricta que la de antes (sin , ; < > " ( ) [ ] \ | ni espacios) y además pasa filter_var.
-- `test_a9_non_string_fields_are_rejected_without_php_warnings` (l. 246) — A9 · Todos los campos de texto del pedido, el contacto y el acceso deben ser cadenas: un array o un número se rechaza con 400 y sin avisos de PHP.
-- `test_d7_client_orders_hide_ip_and_mail_error` (l. 276) — D7 · A un cliente no se le devuelve la IP del pedido ni el motivo técnico del fallo del correo; un manager (y el token maestro) lo ve todo.
-- `test_d7_orders_list_is_capped` (l. 302) — D7 · El listado de pedidos no revienta con miles: un manager recibe los 300 más recientes y un cliente hasta 100 de los suyos, con truncated:true si se cortó.
-- `test_d7_prototype_names_are_not_valid_references` (l. 326) — D7/W8 · Nombres como «constructor», «__proto__» o «toString» no son referencias del catálogo (en PHP los arrays no tienen el problema; se cubre con una prueba).
+- `test_d1_copy_text_follows_the_order_language` (l. 65) — A1 · El texto fijo de la copia sale en el idioma del pedido (es, en, fr, de) y el asunto es siempre el mismo.
+- `test_a1_pdf_is_validated_and_normalized` (l. 85) — A1 · El PDF del visitante se valida de verdad (base64 estricto, %PDF-, ≤ 4 MB) y se reenvía normalizado, solo al equipo.
+- `test_d1_copy_mode_off_unknown_values_and_reasons` (l. 122) — D1 · order_copy: capped por defecto, off y cualquier otro valor = no se envía copia (falla cerrado); copy:false y correo sin configurar también tienen su motivo.
+- `test_d1_copy_caps_per_recipient_and_per_day` (l. 152) — D1 · Topes de la copia: 2 por destinatario cada 24 h (clave = sha256 del correo) y `order_copy_daily_max` al día en total; superado un tope, el pedido y el aviso al equipo salen igual.
+- `test_d1_global_orders_per_hour_cap` (l. 185) — D1 · Tope global de pedidos por hora (orders_per_hour_max, 120 por defecto): 429 y no se guarda nada; solo cuentan los pedidos válidos.
+- `test_a13_single_line_fields_and_notes_are_cleaned` (l. 203) — A13 · Los campos de una línea no admiten saltos de línea ni controles (asunto del correo al equipo); las notas conservan los saltos pero no los controles raros.
+- `test_a13_email_validation_is_strict` (l. 228) — A13 · Correo del visitante: la expresión del servidor es más estricta que la de antes (sin , ; < > " ( ) [ ] \ | ni espacios) y además pasa filter_var.
+- `test_a9_non_string_fields_are_rejected_without_php_warnings` (l. 248) — A9 · Todos los campos de texto del pedido, el contacto y el acceso deben ser cadenas: un array o un número se rechaza con 400 y sin avisos de PHP.
+- `test_d7_client_orders_hide_ip_and_mail_error` (l. 278) — D7 · A un cliente no se le devuelve la IP del pedido ni el motivo técnico del fallo del correo; un manager (y el token maestro) lo ve todo.
+- `test_d7_orders_list_is_capped` (l. 304) — D7 · El listado de pedidos no revienta con miles: un manager recibe los 300 más recientes y un cliente hasta 100 de los suyos, con truncated:true si se cortó.
+- `test_d7_prototype_names_are_not_valid_references` (l. 328) — D7/W8 · Nombres como «constructor», «__proto__» o «toString» no son referencias del catálogo (en PHP los arrays no tienen el problema; se cubre con una prueba).
+
+### `SmtpTest.php`
+
+Pruebas del cliente SMTP (Smtp.php) y del controlador smtp de Mail contra un servidor SMTP FALSO (fake-smtp.php, lanzado con proc_open en 127.0.0.1 y un puerto libre): éxito, STARTTLS y TLS implícito con certificado autofirmado (verificado y sin verificar), AUTH PLAIN y LOGIN, 535 de autenticación, 550 de destinatario, conexión rechazada, servidor mudo (tiempo máximo), respuestas absurdas, inyección de cabeceras y órdenes, contraseña sin cifrar a un servidor remoto y que ni el usuario ni la contraseña salen jamás en un error.
+
+- `smtp_cert` (l. 18) — Certificado autofirmado de pruebas (PEM con certificado y clave) creado una vez por ejecución; null si OpenSSL no puede crearlo (entonces se omiten las pruebas de TLS).
+- `smtp_fake` (l. 41) — Lanza el servidor SMTP falso con ese guion → ['port' => int, 'events' => fn(): array (lo recibido hasta ahora), 'stop' => fn()] o null si no se puede lanzar procesos.
+- `with_smtp` (l. 64) — Ejecuta `$fn($puerto, $eventos)` con un servidor falso levantado y lo para siempre al terminar. Si no se puede lanzar procesos, lo dice y se omite.
+- `smtp_cfg` (l. 72) — Configuración SMTP de pruebas hacia el servidor falso (sin cifrar, pues es la propia máquina).
+- `smtp_cmds` (l. 75) — Órdenes recibidas por el servidor falso, en orden (sin los datos del mensaje).
+- `test_smtp_success_commands_and_dot_stuffing` (l. 81) — Éxito sin cifrar: órdenes en el orden correcto, un RCPT por destinatario y mensaje entregado con «dot-stuffing».
+- `test_smtp_auth_plain_and_login` (l. 98) — AUTH PLAIN y AUTH LOGIN: el servidor recibe usuario y contraseña bien codificados.
+- `test_smtp_535_error_never_echoes_credentials` (l. 118) — 535: el error dice «SMTP 535 …» y NUNCA lleva el usuario ni la contraseña, aunque el servidor los repita en su texto.
+- `test_smtp_recipient_rejected` (l. 131) — 550 de destinatario: con uno solo, error; con dos y uno rechazado, el mensaje sale al bueno y el rechazado se avisa.
+- `test_smtp_server_errors_are_reported` (l. 147) — Fallos del servidor: saludo 554, MAIL FROM rechazado, DATA rechazado.
+- `test_smtp_refused_mute_and_flooding_servers` (l. 164) — Conexión rechazada, servidor mudo (tiempo máximo) y respuestas absurdas (sin fin): nada se queda colgado ni agota la memoria.
+- `test_smtp_rejects_bad_input_before_connecting` (l. 191) — Lo que no debe llegar a conectar: saltos de línea en remitente, destinatarios, usuario o contraseña; contraseña sin cifrar a un servidor remoto; ajustes absurdos.
+- `test_smtp_starttls_and_implicit_tls` (l. 217) — STARTTLS y TLS implícito con un certificado autofirmado: con verificación fallan; sin ella (insecure_tls) funcionan, y la contraseña solo viaja ya cifrada.
+- `test_mail_send_via_smtp_end_to_end` (l. 254) — Mail::send con el controlador smtp: mensaje completo (cabeceras, MIME, adjunto), resultado veraz y último intento anotado, sin secretos.
+- `test_mail_message_headers_are_encoded_safely` (l. 288) — El mensaje completo: nombre del remitente y asunto largos con caracteres no ASCII se codifican en palabras MIME cortas y sin partir ninguna letra.
 
 ### `XlsxTest.php`
 
@@ -2066,6 +2268,10 @@ Pruebas del lector de .xlsx con los mismos libros y el mismo resultado esperado 
 - `test_sync_from_xlsx_url` (l. 64) — Sincronización desde la URL de un .xlsx: referencias nuevas por regla y desconocidas fuera.
 - `test_sync_from_xlsx_sheet_name_and_bad_downloads` (l. 81) — Hoja elegida por nombre y errores de descarga (nombre inexistente, página en vez de libro, HTTP 404).
 - `test_sync_service_account_sheets_then_drive_fallback` (l. 99) — Cuenta de servicio: hoja de Google por Sheets API; si es un .xlsx de Drive, respaldo con la API de Drive y errores si fallan las dos.
+
+### `fake-smtp.php`
+
+Servidor SMTP falso SOLO para las pruebas (SmtpTest.php): escucha en 127.0.0.1 en un puerto libre, habla SMTP según un guion y anota todo lo que recibe. php fake-smtp.php <guion.json> <registro.jsonl> Escribe «PORT=<puerto>» en la salida estándar cuando está listo y atiende UNA conexión (o hasta `connections`). Guion (todo opcional):
 
 ### `harness.php`
 
@@ -2105,4 +2311,6 @@ Preparación común de las pruebas: almacén temporal, configuración de pruebas
 - `so_customer` (l. 182) — Datos del cliente de un pedido de prueba (cualquier campo se puede sobrescribir).
 - `so_post` (l. 188) — Envía un pedido por el manejador; cada llamada usa por defecto una IP distinta (no se tropieza con el límite por visitante).
 - `deflate_bomb` (l. 196) — Flujo deflate (sin cabecera zlib) de `$mb` megabytes de espacios, hecho por trozos: ocupa unos 300 KB comprimido y 300 MB descomprimido (la «bomba» del informe).
+- `mt_msg` (l. 206) — Correo de ejemplo al equipo con todos los campos.
+- `mt_http` (l. 212) — HTTP simulado que guarda cada petición en `$calls` y responde `$status` / `$body` (o lanza si `$throw`).
 

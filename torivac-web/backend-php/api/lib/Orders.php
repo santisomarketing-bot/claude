@@ -10,6 +10,11 @@
  *   'off' o CUALQUIER otro valor = nunca se envía copia (falla cerrado; «capped» se reconoce sin importar mayúsculas ni espacios). Superado un tope el pedido se registra y se avisa al equipo igual; solo la copia no sale.
  * La respuesta dice qué pasó con la copia en emailed.customer_reason: sent · not_requested · off · limit · failed · skipped (correo sin configurar).
  * [PDF] El PDF que manda el navegador solo va al EQUIPO: base64 estricto, decodificado empieza por «%PDF-» y pesa ≤ 4 MB; se reenvía ya normalizado.
+ * [TEXTO-PLANO] Los campos de texto de pedido y contacto solo admiten TEXTO PLANO y con límite de caracteres (PlainText: nada de etiquetas, código ni más de 2 enlaces): si no, 400 con
+ * { error, code: plain_text | too_long | too_many_links, field }. Además el navegador manda `_e` (milisegundos entre cargar la página y enviar): si falta o es < 1200, 400 con code too_fast
+ * (un bot que postea sin cargar la página). El texto que se guarda y se envía es el NORMALIZADO por PlainText, no el original.
+ * [CONTACTO] POST /contact guarda SIEMPRE el mensaje (Messages, 400 días) antes de intentar el correo y responde { ok, id, emailed:{ sent, reason } } con 200 aunque el correo no saliera
+ * (reason = sent · off · failed · skipped; el detalle, solo para gestores, queda en el registro). Si no se pudo guardar: 500 «No se pudo guardar el mensaje» y no se envía nada.
  */
 namespace Torivac;
 
@@ -18,6 +23,8 @@ final class Orders
     /** Correo válido de un visitante: sin , ; < > " ( ) [ ] \ | ni espacios; parte local de ≤ 64 (letras, cifras y . _ % + ' -, sin puntos al principio, al final ni dobles); dominio con al menos un punto y extensión de 2 o más letras (o xn--). Ver validEmail. */
     const EMAIL = '/^(?=[^@]{1,64}@)[A-Za-z0-9_%+\'-]+(?:\.[A-Za-z0-9_%+\'-]+)*@(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+(?:[A-Za-z]{2,63}|xn--[A-Za-z0-9-]{1,59})$/D';
     const LANGS = ['es', 'en', 'fr', 'de'];
+    /** Milisegundos mínimos por defecto entre cargar la página y enviar el formulario (campo `_e`): menos = un bot. Se cambia con form_min_fill_ms en config.php (0 = no se exige `_e`). */
+    const MIN_FILL_MS = 1200;
     /** Peso máximo del PDF del navegador una vez decodificado (4 MB). */
     const PDF_MAX_BYTES = 4000000;
     /** Copias al cliente que puede recibir un mismo destinatario cada 24 h. */
@@ -53,18 +60,56 @@ final class Orders
         return base64_encode($bin);
     }
 
-    /** @return array{order?:array,error?:string} */
+    /** Error de validación de un campo de texto → ['error' => castellano, 'code' => plain_text|too_long|too_many_links, 'field' => campo]; `code` y `field` son para que el navegador lo muestre traducido. */
+    public static function plainError(string $code, string $field, int $max): array
+    {
+        $msg = $code === 'too_long' ? 'El texto es demasiado largo (máximo ' . $max . ' caracteres).' : ($code === 'too_many_links' ? 'Máximo ' . PlainTextRules::MAX_LINKS . ' enlaces por texto.' : 'Escribe solo texto: sin etiquetas, código ni más de ' . PlainTextRules::MAX_LINKS . ' enlaces.');
+        return ['error' => $msg, 'code' => $code === 'not_text' ? 'plain_text' : $code, 'field' => $field];
+    }
+
+    /** Milisegundos mínimos entre cargar la página y enviar (config form_min_fill_ms; 1200 si falta o no es un número; 0 = no se exige `_e`). */
+    public static function minFillMs(): int
+    {
+        $v = Config::get('form_min_fill_ms', self::MIN_FILL_MS);
+        return is_numeric($v) ? max(0, (int) $v) : self::MIN_FILL_MS;
+    }
+
+    /** ¿Trae el cuerpo el campo `_e` (ms que tardó la persona) con un entero ≥ el mínimo? Si no, es un bot que no cargó la página: error con code too_fast. Con el mínimo en 0 no se exige. */
+    private static function fillTimeError($raw): ?array
+    {
+        $min = self::minFillMs();
+        if ($min === 0) return null;
+        $e = $raw['_e'] ?? null;
+        $ok = (is_int($e) || (is_float($e) && is_finite($e) && floor($e) == $e)) && $e >= $min;
+        return $ok ? null : ['error' => 'Formulario incompleto. Recarga la página e inténtalo de nuevo.', 'code' => 'too_fast'];
+    }
+
+    /** Respuesta 400 de una validación fallida: el error en castellano y, si los hay, `code` y `field`. */
+    public static function badRequest(array $p): Response
+    {
+        return new Response(['ok' => false, 'error' => $p['error']] + (isset($p['code']) ? ['code' => $p['code']] : []) + (isset($p['field']) ? ['field' => $p['field']] : []), 400);
+    }
+
+    /** @return array{order?:array,error?:string,code?:string,field?:string} */
     public static function parseOrder($raw, array $items): array
     {
         if (!is_array($raw)) return ['error' => 'Petición no válida'];
         if (!empty($raw['hp'])) return ['error' => 'Solicitud no válida'];                       // honeypot
+        if (($t = self::fillTimeError($raw)) !== null) return $t;
         $c = is_array($raw['customer'] ?? null) ? $raw['customer'] : [];
         $f = [];
         foreach (['name', 'company', 'email', 'phone', 'notes'] as $k) {
             $f[$k] = self::str($c, $k);
             if ($f[$k] === null) return ['error' => 'Petición no válida'];                      // un campo de texto que no es una cadena (p. ej. un array) no se acepta
         }
-        $customer = ['name' => Util::line($f['name'], 120), 'company' => Util::line($f['company'], 120), 'email' => strtolower(Util::line($f['email'], 254)), 'phone' => Util::line($f['phone'], 40), 'notes' => Util::text($f['notes'], 2000)];
+        $t = [];
+        foreach (['name' => false, 'company' => false, 'phone' => false, 'notes' => true] as $k => $multiline) {          // solo texto plano y con el límite de cada campo
+            $max = PlainText::max('order', $k);
+            $r = PlainText::check($f[$k], $max, $multiline);
+            if (!$r['ok']) return self::plainError($r['code'], $k, $max);
+            $t[$k] = $r['text'];
+        }
+        $customer = ['name' => $t['name'], 'company' => $t['company'], 'email' => strtolower(Util::line($f['email'], 254)), 'phone' => $t['phone'], 'notes' => $t['notes']];
         if (mb_strlen($customer['name']) < 2) return ['error' => 'Falta el nombre'];
         if (!self::validEmail($customer['email'])) return ['error' => 'Correo no válido'];
         if (($c['privacy'] ?? null) !== true) return ['error' => 'Debes aceptar la política de privacidad'];
@@ -95,17 +140,25 @@ final class Orders
         return ['order' => ['customer' => $customer, 'lines' => $lines, 'lang' => $lang, 'pdf' => $pdf, 'copyToCustomer' => ($raw['copy'] ?? true) !== false, 'turnstile' => $token]];
     }
 
-    /** @return array{contact?:array,error?:string} */
+    /** @return array{contact?:array,error?:string,code?:string,field?:string} */
     public static function parseContact($raw): array
     {
         if (!is_array($raw)) return ['error' => 'Petición no válida'];
         if (!empty($raw['hp'])) return ['error' => 'Solicitud no válida'];
+        if (($t = self::fillTimeError($raw)) !== null) return $t;
         $f = [];
         foreach (['name', 'email', 'message', 'lang', 'turnstileToken'] as $k) {
             $f[$k] = self::str($raw, $k);
             if ($f[$k] === null) return ['error' => 'Petición no válida'];
         }
-        $m = ['name' => Util::line($f['name'], 120), 'email' => strtolower(Util::line($f['email'], 254)), 'message' => Util::text($f['message'], 5000), 'lang' => in_array($f['lang'], self::LANGS, true) ? $f['lang'] : 'es', 'turnstile' => $f['turnstileToken']];
+        $text = [];
+        foreach (['name' => false, 'message' => true] as $k => $multiline) {                   // solo texto plano y con el límite de cada campo
+            $max = PlainText::max('contact', $k);
+            $r = PlainText::check($f[$k], $max, $multiline);
+            if (!$r['ok']) return self::plainError($r['code'], $k, $max);
+            $text[$k] = $r['text'];
+        }
+        $m = ['name' => $text['name'], 'email' => strtolower(Util::line($f['email'], 254)), 'message' => $text['message'], 'lang' => in_array($f['lang'], self::LANGS, true) ? $f['lang'] : 'es', 'turnstile' => $f['turnstileToken']];
         if (mb_strlen($m['name']) < 2) return ['error' => 'Falta el nombre'];
         if (!self::validEmail($m['email'])) return ['error' => 'Correo no válido'];
         if (mb_strlen($m['message']) < 3) return ['error' => 'Falta el mensaje'];
@@ -188,7 +241,7 @@ final class Orders
         if (!RateLimit::hit('copyto', $to, self::COPY_PER_RECIPIENT, 86400000, $nowMs)['allowed']) return 'limit';                  // clave = sha256 del correo, nunca el correo
         if (!RateLimit::hit('copyday', 'all', self::copyDailyMax(), 86400000, $nowMs)['allowed']) return 'limit';
         $c = Mail::copyMail(['number' => $number, 'priced' => $priced, 'lang' => $o['lang'], 'demo' => $demo], $cat);
-        $r = Mail::send(['to' => [$to], 'subject' => $c['subject'], 'html' => $c['html'], 'text' => $c['text']]);                    // sin adjunto y sin nada del visitante
+        $r = Mail::send(['to' => [$to], 'subject' => $c['subject'], 'html' => $c['html'], 'text' => $c['text']], 'order', $nowMs);       // sin adjunto y sin nada del visitante
         if (!empty($r['ok'])) return 'sent';
         return !empty($r['skipped']) ? 'skipped' : 'failed';
     }
@@ -201,7 +254,7 @@ final class Orders
         $prices = Prices::load();
         $cat = Prices::withSheetItems($catalog ?? Catalog::items(), $prices);                      // las referencias que la hoja añadió dentro de un producto también son pedibles
         $parsed = self::parseOrder($raw, $cat);
-        if (isset($parsed['error'])) return new Response(['ok' => false, 'error' => $parsed['error']], 400);
+        if (isset($parsed['error'])) return self::badRequest($parsed);
         $o = $parsed['order'];
         if (!self::verifyTurnstile($o['turnstile'], $req->ip)) return new Response(['ok' => false, 'error' => 'Verificación anti-spam fallida'], 400);
         $gl = RateLimit::hit('orderhour', 'all', self::ordersPerHourMax(), 3600000, $nowMs);       // tope global: protege la cuota del correo y el buzón del equipo (solo cuentan pedidos válidos)
@@ -215,27 +268,46 @@ final class Orders
         $hasPdf = $o['pdf'] !== null;
         $mail = Mail::orderMail(['number' => $number, 'customer' => $o['customer'], 'priced' => $priced, 'lang' => $o['lang'], 'demo' => $demo, 'pdf' => $hasPdf], $cat);
         $att = $hasPdf ? [['filename' => $number . '.pdf', 'content' => $o['pdf']]] : [];         // el PDF del visitante solo va al equipo
-        $team = Mail::send(['to' => self::team(), 'subject' => '[Web Torivac] Pedido ' . $number . ' · ' . $o['customer']['name'], 'html' => $mail['html'], 'text' => $mail['text'], 'replyTo' => $o['customer']['email'], 'attachments' => $att]);
+        $team = Mail::send(['to' => self::team(), 'subject' => '[Web Torivac] Pedido ' . $number . ' · ' . $o['customer']['name'], 'html' => $mail['html'], 'text' => $mail['text'], 'replyTo' => $o['customer']['email'], 'attachments' => $att], 'order', $nowMs);
         $reason = self::sendCopy($o, $number, $priced, $demo, $cat, $nowMs);
         $emailed = ['team' => !empty($team['ok']), 'customer' => $reason === 'sent', 'skipped' => !empty($team['skipped']), 'customer_reason' => $reason];
-        $why = !empty($team['ok']) ? '' : (!empty($team['skipped']) ? 'correo sin configurar' : (isset($team['status']) ? 'Resend respondió ' . $team['status'] : mb_substr((string) ($team['error'] ?? 'fallo de envío'), 0, 120)));
-        $record['emailed'] = $emailed + ['error' => $why];
+        $why = !empty($team['ok']) ? '' : (!empty($team['skipped']) ? 'correo sin configurar' : mb_substr((string) ($team['error'] ?? 'fallo de envío'), 0, 160));
+        $record['emailed'] = $emailed + ['reason' => (string) ($team['reason'] ?? (!empty($team['ok']) ? 'sent' : 'failed')), 'error' => $why];       // reason = sent · off · failed · skipped (aviso al equipo); error, solo para gestores
         Store::put('order:' . $number, $record, 400 * 86400);                                     // el panel marca los pedidos cuyo aviso por correo no salió
         return new Response(['ok' => true, 'number' => $number, 'total' => $priced['total'], 'unpriced' => $priced['unpriced'], 'emailed' => $emailed]);
     }
 
-    /** POST /contact: valida el mensaje y lo envía al equipo con el correo del visitante como responder-a. */
-    public static function handleContact(Request $req, $raw): Response
+    /**
+     * POST /contact: límite por visitante y anti-spam como siempre (5 / 10 min por ipKey, honeypot, `_e`, Turnstile); luego construye el registro, LO GUARDA (400 días), intenta el correo al equipo,
+     * anota el resultado en el registro y responde { ok:true, id, emailed:{ sent, reason } } con 200 aunque el correo no saliera: el mensaje queda guardado y el equipo lo ve en el panel
+     * (`emailed.error`, solo para gestores, nunca aquí). Si no se puede guardar → 500 «No se pudo guardar el mensaje» y NO se envía nada: nunca se dice «recibido» de lo que no está guardado.
+     */
+    public static function handleContact(Request $req, $raw, ?int $nowMs = null): Response
     {
-        $rl = RateLimit::hit('contact', Request::ipKey($req->ip), 5);
+        $notSaved = function (\Throwable $e) {                                                   // nunca «recibido» de lo que no está guardado: si el almacén falla, 500 con el texto acordado y el detalle al registro
+            error_log('torivac-api: [contacto] No se pudo guardar el mensaje: ' . mb_substr($e->getMessage(), 0, 160));
+            return new Response(['ok' => false, 'error' => 'No se pudo guardar el mensaje'], 500);
+        };
+        try { $rl = RateLimit::hit('contact', Request::ipKey($req->ip), 5, 600000, $nowMs); }
+        catch (\Throwable $e) { return $notSaved($e); }                                           // sin almacén tampoco hay contador que aplicar: falla cerrado
         if (!$rl['allowed']) return new Response(['ok' => false, 'error' => 'Demasiados mensajes seguidos.'], 429);
         $p = self::parseContact($raw);
-        if (isset($p['error'])) return new Response(['ok' => false, 'error' => $p['error']], 400);
+        if (isset($p['error'])) return self::badRequest($p);
         $c = $p['contact'];
         if (!self::verifyTurnstile($c['turnstile'], $req->ip)) return new Response(['ok' => false, 'error' => 'Verificación anti-spam fallida'], 400);
-        $r = Mail::send(['to' => self::team(), 'subject' => '[Web Torivac] Contacto · ' . $c['name'], 'text' => $c['name'] . ' <' . $c['email'] . '> (' . $c['lang'] . ")\n\n" . $c['message'],
-            'html' => '<p><b>' . Util::esc($c['name']) . '</b> &lt;' . Util::esc($c['email']) . '&gt; (' . Util::esc($c['lang']) . ')</p><p>' . nl2br(Util::esc($c['message'])) . '</p>', 'replyTo' => $c['email']]);
-        if (empty($r['ok'])) return new Response(['ok' => false, 'error' => !empty($r['skipped']) ? 'El envío de correo no está configurado en el servidor' : 'No hemos podido enviar el mensaje', 'emailed' => false, 'skipped' => !empty($r['skipped'])], 502);   // sin correo no hay mensaje: la web avisa y ofrece escribir directamente
-        return new Response(['ok' => true, 'emailed' => true, 'skipped' => false]);
+        try { $rec = Messages::create($c, $req->ip, $nowMs); }
+        catch (\Throwable $e) { return $notSaved($e); }
+        try {
+            $m = Mail::contactMail($rec);
+            $r = Mail::send(['to' => self::team(), 'subject' => $m['subject'], 'html' => $m['html'], 'text' => $m['text'], 'replyTo' => $c['email']], 'contact', $nowMs);
+        } catch (\Throwable $e) {                                                                // el mensaje ya está guardado: nunca se convierte en un error para el visitante
+            error_log('torivac-api: [contacto] Fallo inesperado al enviar ' . $rec['id'] . ': ' . mb_substr($e->getMessage(), 0, 160));
+            $r = ['ok' => false, 'reason' => 'failed', 'error' => 'Fallo interno al enviar el correo'];
+        }
+        $emailed = ['sent' => !empty($r['ok']), 'reason' => (string) ($r['reason'] ?? (!empty($r['ok']) ? 'sent' : 'failed'))];
+        if (!empty($r['error'])) $emailed['error'] = Mail::scrub($r['error']);
+        try { Messages::setEmailed($rec, $emailed); }
+        catch (\Throwable $e) { error_log('torivac-api: [contacto] No se pudo anotar el resultado del correo de ' . $rec['id'] . ': ' . mb_substr($e->getMessage(), 0, 160)); }
+        return new Response(['ok' => true, 'id' => $rec['id'], 'emailed' => ['sent' => $emailed['sent'], 'reason' => $emailed['reason']]]);
     }
 }

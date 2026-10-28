@@ -27,7 +27,7 @@ function fresh(array $cfg = []): void
     $dir = sys_get_temp_dir() . '/tv-php-test-' . bin2hex(random_bytes(4));
     Store::init($dir);
     Config::set($cfg + ['storage_dir' => $dir, 'session_secret' => SECRET, 'admin_token' => MASTER_TOKEN, 'allowed_origins' => ['https://demo.example'],
-        'order_to' => ['info@grupotorivac.com', 'mzamora@torivac.com'], 'order_from' => 'Torivac Web <pedidos@grupotorivac.com>', 'mail' => ['driver' => 'file']]);
+        'order_to' => ['info@grupotorivac.com', 'mzamora@torivac.com'], 'order_from' => 'Torivac Web <pedidos@grupotorivac.com>', 'mail' => ['driver' => 'file'], 'form_min_fill_ms' => 0]);        // las pruebas de formularios no mandan `_e` salvo las que prueban justo eso
     Catalog::set(['items' => ['TT0020210' => ['n' => 'Transformador serie TT 20 VA', 'pid' => 884], 'P16633' => ['n' => 'Variador portátil', 'pid' => 16633], 'R100' => ['n' => 'Resistencia 100 W', 'pid' => 1]],
         'skus' => ['aaaa00000001' => 16633], 'rules' => [['pattern' => '^TT\d{7}$', 'pid' => 884]]]);
     Http::$mock = null;
@@ -200,4 +200,20 @@ function deflate_bomb(int $mb = 300): string
     $out = '';
     for ($i = 0; $i < $mb; $i++) $out .= deflate_add($ctx, $chunk, ZLIB_NO_FLUSH);
     return $out . deflate_add($ctx, '', ZLIB_FINISH);
+}
+
+/** Correo de ejemplo al equipo con todos los campos. */
+function mt_msg(array $over = []): array
+{
+    return $over + ['to' => ['info@grupotorivac.com', 'mzamora@torivac.com'], 'subject' => 'Contacto web · Ana', 'html' => '<p>Hola</p>', 'text' => 'Hola', 'replyTo' => 'ana@acme.es'];
+}
+
+/** HTTP simulado que guarda cada petición en `$calls` y responde `$status` / `$body` (o lanza si `$throw`). */
+function mt_http(array &$calls, int $status = 200, string $body = '{"id":"m1"}', ?string $throw = null): void
+{
+    Http::$mock = function ($method, $url, $headers, $payload) use (&$calls, $status, $body, $throw) {
+        if ($throw !== null) throw new \RuntimeException($throw);
+        $calls[] = ['method' => $method, 'url' => $url, 'headers' => $headers, 'body' => json_decode((string) $payload, true)];
+        return [$status, $body];
+    };
 }

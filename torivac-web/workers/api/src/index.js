@@ -1,5 +1,6 @@
 // [INDEX] Router del Worker torivac-api + tarea programada (precios cada 24 h).
 //   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login
+// Acceso: 5 contraseñas erróneas del mismo visitante contra una cuenta (o 15 contra cualquiera, o 30 contra una cuenta de cualquier visitante) = bloqueo de 1 hora; ver handleLogin.
 //   USUARIO   GET /api/auth/me · POST /api/auth/logout · GET /api/orders (manager: los 300 más recientes; client: solo los suyos, hasta 100)
 //   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · GET /api/admin/data
 //             GET /api/messages · DELETE /api/messages/:id (mensajes de contacto) · POST /api/mail/test · GET /api/mail/status (correo)
@@ -8,8 +9,8 @@ import { json, readJson, ApiError, clientIp, ipKey, randomHex } from './util.js'
 import { isOriginAllowed, corsHeaders } from './cors.js';
 import { authenticate, requireRole, signSession, secretOk } from './auth.js';
 import { createUser, listUsers, deleteUser, getUser, verifyUser, ensureSession, logoutUser, publicUser } from './users.js';
-import { hit, isBlocked, reset, purgeExpired } from './ratelimit.js';
-import { parseContact } from './validate.js';
+import { hit, isBlocked, reset, purgeExpired, failLock, lockedFor } from './ratelimit.js';
+import { parseContact, minFillMs } from './validate.js';
 import { handleOrder, handleContact } from './orders.js';
 import { listOrders } from './orderlist.js';
 import { handleMessageList, handleMessageDelete, handleMailTest, handleMailStatus } from './mailapi.js';
@@ -20,8 +21,16 @@ import { syncPrices, planPrices, parseCsv } from './sheets.js';
 import { suggestPriceChanges, applyPriceChanges } from './ai.js';
 import adminData from './generated/admin-data.js';
 
-/** 429 con el texto de siempre (el mismo para cualquier límite de acceso: nunca distingue si un usuario existe). */
+/** 429 con el texto de siempre (inundación, Bearer): el mismo para cualquier límite de acceso, nunca distingue si un usuario existe. */
 const tooMany = (cors) => json({ ok: false, error: 'Demasiados intentos. Espera unos minutos.' }, 429, cors);
+/** Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba). */
+export const lockWait = (secs) => { if (secs >= 3300) return 'una hora'; const m = Math.max(1, Math.ceil(secs / 60)); return m === 1 ? 'un minuto' : `${m} minutos`; };
+/** El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos). */
+const locked = (cors, leftMs) => {
+  const secs = Math.max(1, Math.ceil(leftMs / 1000));
+  return json({ ok: false, error: `Demasiados intentos fallidos. Vuelve a intentarlo en ${lockWait(secs)}.`, retry_after: secs }, 429, { ...cors, 'Retry-After': String(secs) });
+};
+const HOUR_MS = 60 * 60 * 1000;
 /** Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores. */
 export function configProblems(env) {
   const p = [];
@@ -47,8 +56,10 @@ async function identify(request, env, ipk, nowMs) {
   return { who };
 }
 /**
- * POST /api/auth/login. Límites (todos devuelven el mismo 429 y nunca distinguen si el usuario existe): por ipKey+correo 6 / 10 min · por ipKey sola 30 / 10 min contra cualquier cuenta ·
- * por CUENTA (independiente de la IP) 12 fallos / 15 min, contados solo para cuentas que existen y a cero tras un acceso correcto. Con SESSION_SECRET inseguro → 500 «Configuración insegura».
+ * POST /api/auth/login, con protección contra la fuerza bruta: 5 contraseñas erróneas del mismo visitante (ipKey) contra una cuenta bloquean ESA pareja 1 HORA desde el 5.º fallo (ni la contraseña
+ * correcta entra mientras dure, y no se comprueba); 15 fallos de un visitante contra cualquier cuenta lo bloquean 1 hora; 30 fallos contra una cuenta, de cualquier visitante, la bloquean 1 hora.
+ * Los contadores cuentan también los correos que no existen y la respuesta es idéntica (429 con retry_after y Retry-After): no se distingue si la cuenta existe. Un acceso correcto pone a cero los
+ * contadores de esa pareja y de esa cuenta. Además, tope de inundación: 30 intentos / 10 min por visitante. Con SESSION_SECRET inseguro → 500 «Configuración insegura».
  */
 async function handleLogin(request, env, { ipk, cors, nowMs }) {
   if (!secretOk(env.SESSION_SECRET)) {
@@ -58,15 +69,18 @@ async function handleLogin(request, env, { ipk, cors, nowMs }) {
   const b = await readJson(request, 10_000);
   if (!b || typeof b.email !== 'string' || typeof b.password !== 'string') return json({ ok: false, error: 'Petición no válida' }, 400, cors);
   const email = b.email.trim().toLowerCase();
-  if (!(await hit(env, 'login-ip', ipk, { max: 30, now: nowMs })).allowed) return tooMany(cors);
-  if (!(await hit(env, 'login', `${ipk}:${email}`, { max: 6, now: nowMs })).allowed) return tooMany(cors);
-  const u = email.length <= 254 ? await getUser(env, email) : null;                       // un «correo» absurdo no llega a KV (clave demasiado larga): cuenta como inexistente
-  if (u && (await isBlocked(env, 'login-acct', u.email, { max: 12, now: nowMs }))) return tooMany(cors);
+  if (!(await hit(env, 'login-ip', ipk, { max: 30, now: nowMs })).allowed) return tooMany(cors);   // inundación: ni se comprueba la contraseña
+  const pair = `${ipk}:${email}`;
+  const left = Math.max(await lockedFor(env, 'lgpair', pair, { now: nowMs }), await lockedFor(env, 'lgip', ipk, { now: nowMs }), await lockedFor(env, 'lgacct', email, { now: nowMs }));
+  if (left > 0) return locked(cors, left);                                                         // bloqueado: ni la contraseña correcta entra
+  const u = email.length <= 254 ? await getUser(env, email) : null;                                // un «correo» absurdo no llega a KV (clave demasiado larga): cuenta como inexistente
   if (!(await verifyUser(u, b.password))) {
-    if (u) await hit(env, 'login-acct', u.email, { max: 12, windowMs: 15 * 60 * 1000, now: nowMs });
+    await failLock(env, 'lgpair', pair, { max: 5, windowMs: HOUR_MS, lockMs: HOUR_MS, now: nowMs });
+    await failLock(env, 'lgip', ipk, { max: 15, windowMs: HOUR_MS, lockMs: HOUR_MS, now: nowMs });
+    await failLock(env, 'lgacct', email, { max: 30, windowMs: HOUR_MS, lockMs: HOUR_MS, now: nowMs });
     return json({ ok: false, error: 'Credenciales incorrectas' }, 401, cors);
   }
-  await reset(env, 'login-acct', u.email);
+  await reset(env, 'lgpair', pair); await reset(env, 'lgacct', email);
   const user = await ensureSession(env, u);                                              // los usuarios antiguos reciben su sid ahora
   const iat = Math.max(nowMs, (Number(user.sess_after) || 0) + 1);                      // nunca antes del último «cerrar sesión»
   return json({ ok: true, token: await signSession({ sub: user.email, sid: user.sid }, env.SESSION_SECRET, undefined, iat), user: publicUser(user) }, 200, cors);
@@ -88,7 +102,7 @@ async function route(request, env, deps, { path, cors, nowMs }) {
     return json(publicView(p, meta), 200, { ...cors, 'Cache-Control': 'public, max-age=300', ...vary });
   }
   if (path === '/api/order' && method === 'POST') return await handleOrder(request, env, await readJson(request), { ...deps, cors });
-  if (path === '/api/contact' && method === 'POST') { const p = parseContact(await readJson(request)); if (p.error) return json({ ok: false, error: p.error }, 400, cors); return await handleContact(request, env, p.contact, { ...deps, cors }); }
+  if (path === '/api/contact' && method === 'POST') { const p = parseContact(await readJson(request), { minFillMs: minFillMs(env) }); if (p.error) return json({ ok: false, error: p.error, ...(p.code ? { code: p.code } : {}), ...(p.field ? { field: p.field } : {}) }, 400, cors); return await handleContact(request, env, p.contact, { ...deps, cors }); }
   if (path === '/api/auth/login' && method === 'POST') return await handleLogin(request, env, { ipk, cors, nowMs });
   const id = await identify(request, env, ipk, nowMs); if (id.limited) return tooMany(cors);
   const who = id.who;

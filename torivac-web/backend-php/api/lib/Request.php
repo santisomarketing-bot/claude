@@ -154,6 +154,7 @@ final class Request
     {
         $r = new self();
         $r->method = $method;
+        if (($q = strpos($path, '?')) !== false) { parse_str(substr($path, $q + 1), $r->query); $path = substr($path, 0, $q); }          // «/messages?limit=5»: la ruta por un lado y los parámetros por otro, como en una petición real
         $r->path = $path;
         foreach ($headers as $k => $v) $r->headers[strtolower($k)] = $v;
         $r->body = $body === null ? '' : (is_string($body) ? $body : Util::enc($body));
@@ -293,6 +294,35 @@ final class RateLimit
         });
         self::maybePurge();
         return $n;
+    }
+
+    /**
+     * Anota un fallo de un contador con BLOQUEO: los fallos se cuentan en una ventana de `$windowMs` desde el primero y, al llegar al `$max`-ésimo, el contador queda bloqueado `$lockMs`
+     * desde ESE momento (pasado ese tiempo empieza de cero). Un fallo anotado durante el bloqueo no lo alarga. Devuelve cuántos milisegundos de bloqueo quedan (0 = no bloqueado).
+     */
+    public static function failLock(string $bucket, string $id, int $max, int $windowMs, int $lockMs, ?int $nowMs = null): int
+    {
+        $now = $nowMs ?? Util::nowMs();
+        $key = self::key($bucket, $id);
+        $left = Store::locked('rl', function () use ($key, $now, $max, $windowMs, $lockMs) {
+            $r = Store::get($key);
+            if (is_array($r) && isset($r['lockedUntil']) && $r['lockedUntil'] > $now) return (int) ($r['lockedUntil'] - $now);          // ya bloqueado: no se alarga
+            if (!is_array($r) || !isset($r['resetAt'], $r['count']) || $r['resetAt'] <= $now || (isset($r['lockedUntil']) && $r['lockedUntil'] <= $now)) $r = ['count' => 0, 'resetAt' => $now + $windowMs];
+            $r['count']++;
+            if ($r['count'] >= $max) { $r['lockedUntil'] = $now + $lockMs; $r['resetAt'] = $r['lockedUntil']; }
+            Store::put($key, $r, max(60, (int) ceil(($r['resetAt'] - $now) / 1000)));
+            return isset($r['lockedUntil']) ? (int) ($r['lockedUntil'] - $now) : 0;
+        });
+        self::maybePurge();
+        return (int) $left;
+    }
+
+    /** Milisegundos que le quedan de bloqueo a un contador con bloqueo (failLock); 0 si no está bloqueado. No suma nada. */
+    public static function lockedFor(string $bucket, string $id, ?int $nowMs = null): int
+    {
+        $r = Store::get(self::key($bucket, $id));
+        $now = $nowMs ?? Util::nowMs();
+        return is_array($r) && isset($r['lockedUntil']) && $r['lockedUntil'] > $now ? (int) ($r['lockedUntil'] - $now) : 0;
     }
 
     /** Pone a cero el contador de fallos (tras un acceso correcto). */

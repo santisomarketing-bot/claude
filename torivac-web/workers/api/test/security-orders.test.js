@@ -121,7 +121,7 @@ test('D1 · campos de una línea sin \\r \\n \\t ni controles: el asunto del cor
   assert.ok(!/[\r\n]/.test(team.subject), 'el asunto va en una línea'); assert.match(team.subject, /^\[Web Torivac\] Pedido TV-\d{8}-\d{4}-[0-9A-Z]{3} · Ana Bcc: espia@evil\.example X-Foo: 1$/);
   const rec = JSON.parse(await env.KV.get(`order:${j.number}`)).customer;
   assert.equal(rec.name, 'Ana Bcc: espia@evil.example X-Foo: 1'); assert.equal(rec.company, 'ACME S.L.'); assert.equal(rec.phone, '600 123');
-  assert.equal(rec.notes, 'línea 1\nlínea 2[31m rojo\tfin', 'las notas conservan \\n y el tabulador pero no los controles raros');
+  assert.equal(rec.notes, 'línea 1\nlínea 2[31m rojo fin', 'las notas conservan \\n; el tabulador pasa a un espacio y se quitan los controles raros');
   for (const bad of ['\r', '\u0007', '\u001b']) assert.ok(!rec.notes.includes(bad));
   const c = parseContact({ name: 'Eve\r\nBcc: x@y.zz', email: 'e@e.es', message: 'hola\r\ndos\u0007', privacy: true }).contact;
   assert.equal(c.name, 'Eve Bcc: x@y.zz'); assert.equal(c.message, 'hola\ndos');

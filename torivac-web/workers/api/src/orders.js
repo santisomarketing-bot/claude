@@ -4,7 +4,7 @@
 // Claves KV: order:<nº completo> (400 días) · uorder:<sha256(correo)[:32]>:<nº> (índice de «mis pedidos» del cliente, valor mínimo) · counter:<AAAAMMDD> y counter:ct:<AAAAMMDD> (contadores de «mejor esfuerzo»)
 // · msg:… (mensajes de contacto, 400 días).
 import { json, clientIp, ipKey, sha256Hex } from './util.js';
-import { parseOrder } from './validate.js';
+import { parseOrder, minFillMs } from './validate.js';
 import { loadPrices, priceOrder, withSheetItems } from './prices.js';
 import { verifyTurnstile } from './turnstile.js';
 import { hit } from './ratelimit.js';
@@ -60,8 +60,8 @@ export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = 
   if (!rl.allowed) return json({ ok: false, error: TOO_MANY }, 429, cors);
   const prices = await loadPrices(env);
   const cat = withSheetItems(catalog, prices);                      // las referencias que la hoja añadió dentro de un producto también son pedibles
-  const parsed = parseOrder(raw, cat);
-  if (parsed.error) return json({ ok: false, error: parsed.error }, 400, cors);
+  const parsed = parseOrder(raw, cat, { minFillMs: minFillMs(env) });
+  if (parsed.error) return json({ ok: false, error: parsed.error, ...(parsed.code ? { code: parsed.code } : {}), ...(parsed.field ? { field: parsed.field } : {}) }, 400, cors);
   const o = parsed.order;
   if (!(await verifyTurnstile(env, o.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida' }, 400, cors);
   if (!(await hit(env, 'order-hour', 'all', { max: intVar(env.ORDERS_PER_HOUR_MAX, 120, 0), windowMs: HOUR, now: nowMs })).allowed) return json({ ok: false, error: TOO_MANY }, 429, cors);   // global: protege la cuota de Resend y el buzón

@@ -20,6 +20,9 @@ final class Config
     /** sustituye toda la configuración (pruebas) */
     public static function set(array $c): void { self::$data = $c; }
 
+    /** toda la configuración cargada (para tachar los secretos de los textos de error; nunca se devuelve por la API) */
+    public static function all(): array { return self::$data; }
+
     /** valor por ruta con puntos: 'prices.sheet_id' */
     public static function get(string $path, $default = null)
     {

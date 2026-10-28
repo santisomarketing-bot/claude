@@ -81,11 +81,8 @@ final class Diag
         $to = Orders::team();
         $bad = array_values(array_filter($to, function ($e) { return !Orders::validEmail($e); }));
         $k[] = (!$to || $bad) ? self::c('destinatarios', 'fail', 'order_to vacío o con correos no válidos' . ($bad ? ': ' . implode(', ', $bad) : '')) : self::c('destinatarios', 'ok', 'Los pedidos y mensajes llegan a ' . implode(' y ', $to));
-        $drv = (string) Config::get('mail.driver', 'none');
-        if ($drv === 'resend') $k[] = (string) Config::get('mail.resend_api_key', '') === '' ? self::c('correo', 'fail', 'mail.driver es resend pero falta mail.resend_api_key') : self::c('correo', 'ok', 'Correo con Resend (recuerda verificar el dominio de order_from: SPF y DKIM)');
-        elseif ($drv === 'mail') $k[] = self::c('correo', 'warn', 'Correo con mail() del hosting: sin garantías de entrega; se recomienda Resend');
-        elseif ($drv === 'file') $k[] = self::c('correo', 'warn', 'Modo pruebas: los correos se guardan en la carpeta de datos (outbox) y no se envían');
-        else $k[] = self::c('correo', 'fail', 'mail.driver = none: no se envía ningún correo (el pedido se guarda, pero nadie lo recibe)');
+        $mst = Mail::status();
+        foreach (self::mail($mst) as $c) $k[] = $c;
         $copy = Config::get('order_copy', 'capped');
         $mode = Orders::copyMode();
         $dmRaw = Config::get('order_copy_daily_max', null);
@@ -114,6 +111,9 @@ final class Diag
         $lost = 0;
         foreach ($orders as $key) { $o = Store::get($key); if (is_array($o) && isset($o['emailed']) && empty($o['emailed']['team'])) $lost++; }
         if ($lost) $k[] = self::c('pedidos_sin_correo', 'warn', "$lost de los últimos " . count($orders) . ' pedidos se guardaron pero su aviso por correo no salió (se marcan «sin aviso por correo» en Pedidos): revisa el correo del servidor');
+        $msgs = Messages::recent(20)['items'];                                     // los 20 últimos mensajes de contacto: ¿salió el aviso por correo?
+        $nomail = count(array_filter($msgs, function ($x) { return empty($x['emailed']['sent']); }));
+        if ($nomail) $k[] = self::c('mensajes_sin_correo', 'warn', "$nomail de los últimos " . count($msgs) . ' mensajes de contacto se guardaron pero su aviso por correo no salió (los ves en Mensajes con el motivo): revisa el correo del servidor');
         $managers = array_filter(Users::all(), function ($u) { return $u['role'] === 'manager'; });
         $k[] = $managers ? self::c('manager', 'ok', count($managers) . ' manager(s) creado(s)') : self::c('manager', 'fail', 'No hay ningún manager: crea el primero con  php api/tools/create-user.php correo "Nombre" manager "contraseña"');
         $k[] = is_file(dirname(__DIR__) . '/generated/catalog.json') ? self::c('catalogo', 'ok', 'Catálogo de referencias presente') : self::c('catalogo', 'fail', 'Falta api/generated/catalog.json (se genera al compilar la web)');
@@ -127,6 +127,42 @@ final class Diag
         $fail = count(array_filter($k, function ($x) { return $x['status'] === 'fail'; }));
         $warn = count(array_filter($k, function ($x) { return $x['status'] === 'warn'; }));
         return ['checks' => $k, 'fail' => $fail, 'warn' => $warn];
+    }
+
+    /**
+     * Comprobaciones del correo según el controlador activo: si está listo (clave o servidor), los avisos propios de cada uno (mail() no garantiza la entrega, SMTP sin verificar el certificado…)
+     * y el resultado del ÚLTIMO envío real (pedido, contacto o prueba), que es lo que de verdad dice si el correo funciona. Nunca lleva claves ni contraseñas.
+     * @param array{driver:string,configured:bool,problems:string[],last:?array} $st Mail::status()
+     * @return array<int,array{id:string,status:string,msg:string}>
+     */
+    public static function mail(array $st): array
+    {
+        $k = [];
+        $d = $st['driver'];
+        $has = function ($name) use ($st) { return in_array($name, $st['problems'], true); };
+        $smtp = Mail::smtpConfig();
+        if (Mail::driverUnknown()) $k[] = self::c('correo', 'fail', 'mail.driver tiene un valor que no es válido (usa resend, brevo, smtp, mail, file o none): se trata como none y no se envía ningún correo');
+        elseif ($d === 'none') $k[] = self::c('correo', 'fail', 'mail.driver = none: no se envía ningún correo (los pedidos y mensajes se guardan, pero nadie recibe el aviso)');
+        elseif ($has('mail.resend_api_key')) $k[] = self::c('correo', 'fail', 'mail.driver es resend pero falta mail.resend_api_key');
+        elseif ($has('mail.brevo_api_key')) $k[] = self::c('correo', 'fail', 'mail.driver es brevo pero falta mail.brevo_api_key');
+        elseif ($has('mail.smtp.host') || $has('mail.smtp.pass') || $has('mail.smtp.secure') || $has('mail.smtp.port')) $k[] = self::c('correo', 'fail', 'Correo por SMTP mal configurado: revisa ' . implode(', ', array_values(array_filter($st['problems'], function ($x) { return strpos($x, 'mail.smtp.') === 0; }))));
+        elseif ($has('order_from')) $k[] = self::c('correo', 'fail', 'order_from no es una dirección válida (usa «Nombre <correo@dominio>»): no se puede enviar ningún correo');
+        elseif ($d === 'resend') $k[] = self::c('correo', 'ok', 'Correo con Resend (recuerda verificar el dominio de order_from: SPF y DKIM)');
+        elseif ($d === 'brevo') $k[] = self::c('correo', 'ok', 'Correo con Brevo (el remitente de order_from tiene que estar verificado en Brevo, con el dominio autenticado)');
+        elseif ($d === 'smtp') $k[] = self::c('correo', 'ok', 'Correo por SMTP (' . Util::line((string) ($smtp['host'] ?? ''), 80) . ':' . (int) ($smtp['port'] ?? (($smtp['secure'] ?? 'tls') === 'ssl' ? 465 : 587)) . ', cifrado ' . Util::line((string) ($smtp['secure'] ?? 'tls'), 8) . '). Para que llegue y no vaya a spam, el dominio de order_from necesita SPF y DKIM');
+        elseif ($d === 'mail') $k[] = self::c('correo', 'warn', 'Correo con mail() del hosting: el servidor lo acepta pero NO garantiza que llegue (puede perderse o ir a spam y aquí no hay forma de saberlo). Usa smtp (el buzón del dominio) o un servicio con API (Brevo, Resend)');
+        else $k[] = self::c('correo', 'warn', 'Modo pruebas: los correos se guardan en la carpeta de datos (outbox) y NO se envían');
+        if ($d === 'smtp' && !empty($smtp['insecure_tls'])) $k[] = self::c('correo_tls', 'warn', 'mail.smtp.insecure_tls = true: el certificado del servidor SMTP NO se verifica (vale para pruebas o para localhost; mejor poner en mail.smtp.tls_name el nombre del certificado)');
+        if ($d === 'smtp' && strtolower((string) ($smtp['secure'] ?? 'tls')) === 'none' && !in_array(strtolower((string) ($smtp['host'] ?? '')), ['localhost', '127.0.0.1', '::1'], true)) $k[] = self::c('correo_cifrado', 'warn', 'El correo por SMTP va SIN cifrar a un servidor que no es esta máquina: usa secure = tls (587) o ssl (465)');
+        $last = $st['last'];
+        if ($last !== null) {
+            $kinds = ['order' => 'pedido', 'contact' => 'contacto', 'test' => 'prueba'];
+            $when = ($last['at'] ?? '?') . ' (' . ($kinds[$last['kind']] ?? $last['kind']) . ')';
+            if (empty($last['ok'])) $k[] = self::c('correo_ultimo', 'warn', 'El último envío de correo, ' . $when . ', FALLÓ (' . ($last['reason'] ?? '?') . ')' . (!empty($last['error']) ? ': ' . $last['error'] : '') . '. Envía un correo de prueba desde Ajustes → Correo');
+            elseif (!empty($last['error'])) $k[] = self::c('correo_ultimo', 'warn', 'El último envío de correo, ' . $when . ', salió con un aviso: ' . $last['error']);
+            else $k[] = self::c('correo_ultimo', 'ok', 'El último envío de correo, ' . $when . ', salió bien');
+        } else $k[] = self::c('correo_ultimo', 'warn', 'Todavía no se ha enviado ningún correo desde este servidor: envía uno de prueba desde Ajustes → Correo para comprobar que llega');
+        return $k;
     }
 
     /**

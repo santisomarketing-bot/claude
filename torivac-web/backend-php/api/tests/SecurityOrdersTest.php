@@ -40,23 +40,25 @@ function test_a1_copy_to_customer_has_only_server_text_and_no_attachment()
 {
     fresh(); seedPrices();
     $pdf = base64_encode("%PDF-1.4\n% pdf escrito por el atacante\n");
-    $b = goodOrder(['customer' => so_customer(['name' => 'Soporte Banco <b>X</b>', 'company' => 'Banco Falso S.A.', 'email' => 'victima@tercero.example', 'phone' => '+34 600 111 222', 'notes' => 'Su cuenta está bloqueada, verifique en http://phishing.example/login']), 'pdf' => $pdf]);
+    $b = goodOrder(['customer' => so_customer(['name' => 'Soporte Banco X', 'company' => 'Banco Falso S.A.', 'email' => 'victima@tercero.example', 'phone' => '+34 600 111 222', 'notes' => 'Su cuenta está bloqueada, verifique en http://phishing.example/login (importe < 50 € & envío)']), 'pdf' => $pdf]);
     $r = so_post($b, '203.0.113.9', 1793170800000);
     T::same([200, true, true, false, 'sent'], [$r->status, $r->body['emailed']['team'], $r->body['emailed']['customer'], $r->body['emailed']['skipped'], $r->body['emailed']['customer_reason']], 'pedido aceptado y copia enviada');
     $copy = so_mail_to(['victima@tercero.example']);
     $team = so_mail_to(['info@grupotorivac.com', 'mzamora@torivac.com']);
     T::true($copy !== null && $team !== null, 'salen dos correos: el del equipo y la copia');
     $all = $copy['subject'] . "\n" . $copy['html'] . "\n" . $copy['text'];
-    foreach (['Soporte Banco', 'Banco Falso', 'phishing', '600 111 222', 'bloqueada', 'victima@tercero.example', '<b>X'] as $needle) T::true(stripos($all, $needle) === false, "la copia no lleva «{$needle}»");
+    foreach (['Soporte Banco', 'Banco Falso', 'phishing', '600 111 222', 'bloqueada', 'victima@tercero.example', 'Banco X'] as $needle) T::true(stripos($all, $needle) === false, "la copia no lleva «{$needle}»");
     T::same('Torivac · copia de tu presupuesto TV-20261028-0001', $copy['subject'], 'asunto fijo con el número de pedido');
     T::true(empty($copy['attachments']) && !isset($copy['replyTo']) && !isset($copy['cc']), 'la copia va sin adjunto, sin responder-a y sin copia oculta');
     foreach (['TT0020210', 'Transformador serie TT 20 VA', 'P16633', 'Variador portátil', '345,75', 'TV-20261028-0001', 'Si no has pedido tú este presupuesto, ignora este mensaje.'] as $must) T::true(strpos($copy['text'], $must) !== false, "la copia lleva «{$must}»");
     T::true(strpos($copy['html'], 'Si no has pedido tú este presupuesto, ignora este mensaje.') !== false, 'y la línea de «ignora este mensaje» también en el HTML');
     T::same(['TV-20261028-0001.pdf', $pdf], [$team['attachments'][0]['filename'], $team['attachments'][0]['content']], 'el PDF solo va al equipo');
-    T::true(strpos($team['text'], 'phishing.example') !== false && strpos($team['html'], '&lt;b&gt;X&lt;/b&gt;') !== false, 'al equipo sí le llega lo que escribió el visitante (escapado en el HTML)');
+    T::true(strpos($team['text'], 'phishing.example') !== false && strpos($team['html'], 'importe &lt; 50 € &amp; envío') !== false, 'al equipo sí le llega lo que escribió el visitante (escapado en el HTML)');
     T::true(strpos($team['text'], Mail::PDF_NOTE) !== false && strpos($team['html'], 'El PDF adjunto lo ha generado el navegador del cliente') !== false, 'y el correo al equipo avisa de que el PDF lo fabricó el navegador');
     $rec = Store::get('order:TV-20261028-0001');
-    T::same([200, 'sent', 'Soporte Banco <b>X</b>'], [$r->status, $rec['emailed']['customer_reason'], $rec['customer']['name']], 'el pedido queda guardado con lo que escribió el visitante');
+    T::same([200, 'sent', 'Soporte Banco X'], [$r->status, $rec['emailed']['customer_reason'], $rec['customer']['name']], 'el pedido queda guardado con lo que escribió el visitante');
+    $h = Orders::handleOrder(req('POST', '/order', goodOrder(['customer' => so_customer(['name' => 'Soporte Banco <b>X</b>'])]), [], '10.8.8.9'), goodOrder(['customer' => so_customer(['name' => 'Soporte Banco <b>X</b>'])]));
+    T::same([400, 'plain_text', 'name'], [$h->status, $h->body['code'] ?? null, $h->body['field'] ?? null], 'y una etiqueta HTML en el nombre ya ni se acepta: solo texto plano');
 }
 
 /** A1 · El texto fijo de la copia sale en el idioma del pedido (es, en, fr, de) y el asunto es siempre el mismo. */
@@ -206,7 +208,7 @@ function test_a13_single_line_fields_and_notes_are_cleaned()
     $r = so_post($b, null, 1793170800000);
     $rec = Store::get('order:' . $r->body['number']);
     T::same(['Juan Bcc: espia@evil.test X-Inyectado: si', 'ACME Content-Type: text/html', '1 2 Subject: hola', 'ana@acme.es'], [$rec['customer']['name'], $rec['customer']['company'], $rec['customer']['phone'], $rec['customer']['email']], 'sin saltos de línea ni tabuladores');
-    T::same("linea1\nlinea2[31m rojofin\ttab", $rec['customer']['notes'], 'las notas conservan los saltos de línea y los tabuladores, pero no los demás controles');
+    T::same("linea1\nlinea2[31m rojofin tab", $rec['customer']['notes'], 'las notas conservan los saltos de línea; los tabuladores pasan a un espacio y se quitan los demás controles y los separadores de línea Unicode');
     $team = so_mail_to(['info@grupotorivac.com', 'mzamora@torivac.com']);
     T::true(preg_match('/[\r\n]/', $team['subject']) === 0 && $team['subject'] === '[Web Torivac] Pedido ' . $r->body['number'] . ' · Juan Bcc: espia@evil.test X-Inyectado: si', 'el asunto del correo al equipo es de una sola línea');
     T::same('ana@acme.es', $team['replyTo'], 'responder-a limpio');
@@ -216,7 +218,7 @@ function test_a13_single_line_fields_and_notes_are_cleaned()
     T::true(strpos($h, 'Bcc:') === false && strpos($h, 'Reply-To') === false && strpos($h, 'Cc:') === false, 'mime(): un responder-a o un cc con saltos de línea no entran en las cabeceras');
     T::true(strpos($body, 'X-Header') === false && strpos($body, "JVBERi0xLjQKXHeaderinyectadoenel") !== false, 'mime(): el adjunto se reduce a base64 puro');
     $sent = Mail::send(['to' => ['victima@x.co,root'], 'subject' => "Asunto\r\nBcc: x@y.co", 'text' => 'x']);
-    T::same(['ok' => false, 'error' => 'Destinatario no válido'], $sent, 'send(): una coma en el destinatario no manda el correo a otro');
+    T::same([false, 'Destinatario no válido', 'skipped'], [$sent['ok'], $sent['error'], $sent['reason']], 'send(): una coma en el destinatario no manda el correo a otro');
     $sent2 = Mail::send(['to' => ['info@grupotorivac.com'], 'subject' => "Asunto\r\nBcc: x@y.co", 'text' => 'x']);
     $stored = so_mail_to(['info@grupotorivac.com']);
     T::true($sent2['ok'] && $stored !== null && $stored['subject'] === 'Asunto Bcc: x@y.co', 'send(): el asunto pierde los saltos de línea');

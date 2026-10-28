@@ -31,13 +31,44 @@ return [
 
     // Quién recibe los pedidos y mensajes (confirmado por el cliente; info@ también para pruebas) y desde qué dirección se envían.
     'order_to' => ['info@grupotorivac.com', 'mzamora@torivac.com'],
-    'order_from' => 'Torivac Web <pedidos@grupotorivac.com>',   // el dominio debe estar verificado en Resend (SPF/DKIM) si usas Resend
+    // Remitente: «Nombre <correo@dominio>». Con SMTP debe ser una dirección del propio buzón (o que el servidor deje usar); con Resend o Brevo, de un dominio/remitente VERIFICADO en ese servicio.
+    'order_from' => 'Torivac Web <pedidos@grupotorivac.com>',
 
+    // CORREO. Cómo se envían los avisos de pedidos y mensajes. Elige UNO en 'driver':
+    //   'smtp'   → el buzón de correo de tu propio dominio (RECOMENDADO en Plesk y cPanel: no depende de ningún servicio externo). Rellena 'smtp' más abajo.
+    //   'brevo'  → API de Brevo (clave API v3: Brevo → SMTP y API → Claves API). El remitente de order_from tiene que estar verificado en Brevo (Remitentes y dominios).
+    //   'resend' → API de Resend. El dominio de order_from tiene que estar verificado en Resend (SPF y DKIM).
+    //   'mail'   → la función mail() del hosting: el servidor local la acepta pero NO garantiza que llegue (puede perderse o ir a spam y aquí no hay forma de saberlo). Solo como último recurso.
+    //   'file'   → pruebas: guarda cada correo en la carpeta de datos (outbox) y NO lo envía.
+    //   'none'   → no envía nada (los pedidos y los mensajes de contacto se guardan igualmente y se ven en el panel).
+    // Para saber si funciona: panel → Ajustes → Correo → «Enviar correo de prueba» (te dice el motivo exacto si falla) o /api/health. Para que no vaya a spam, el dominio de order_from
+    // necesita SPF y DKIM (SPF: qué servidores pueden enviar por él; DKIM: la firma): en Plesk, Correo → Ajustes; en cPanel, «Entregabilidad de correo» (Email Deliverability).
     'mail' => [
-        // 'resend' (recomendado), 'mail' (función mail() del hosting) o 'none' (no enviar; el pedido se guarda igualmente)
-        'driver' => 'resend',
+        'driver' => 'smtp',
+        // SMTP — Plesk: crea el buzón (Correo → Crear dirección de correo, p. ej. pedidos@grupotorivac.com). Servidor: normalmente mail.TUDOMINIO.com (o el nombre del servidor que sale en Correo →
+        //   Ajustes); puerto 587 con STARTTLS ('tls') o 465 con SSL ('ssl'); usuario = la dirección completa y su contraseña.
+        // SMTP — cPanel: «Cuentas de correo → Conectar dispositivos» muestra el servidor (mail.TUDOMINIO.com), 465 (SSL) y 587 (TLS) y el usuario = la dirección completa.
+        // secure: 'tls' (587, STARTTLS), 'ssl' (465, cifrado desde el primer byte) o 'none' (25, sin cifrar: solo hacia la propia máquina). La contraseña NUNCA se envía sin cifrar a otro servidor.
+        // El certificado del servidor SE VERIFICA. Si sale «certificate verify failed» porque el certificado es de otro nombre (p. ej. conectas a localhost pero es de mail.midominio.com), pon en
+        //   'tls_name' el nombre del certificado; solo como último recurso 'insecure_tls' => true (no verifica nada: el diagnóstico lo marca con un aviso).
+        'smtp' => [
+            'host' => '',                    // p. ej. 'mail.grupotorivac.com'
+            'port' => 587,
+            'secure' => 'tls',               // 'tls' | 'ssl' | 'none'
+            'user' => '',                    // p. ej. 'pedidos@grupotorivac.com'
+            'pass' => '',
+            // 'tls_name' => 'mail.grupotorivac.com',
+            // 'insecure_tls' => false,
+            // 'helo' => 'grupotorivac.com',   // con qué nombre se presenta; vacío = el del servidor web
+            // 'timeout' => 15,                // segundos para toda la conversación (3..60)
+        ],
+        'brevo_api_key' => '',
         'resend_api_key' => '',
     ],
+
+    // Antispam de los formularios: milisegundos mínimos entre cargar la página y pulsar enviar (el navegador manda `_e`). Un bot que envía sin cargar la página queda fuera.
+    // 1200 por defecto; 0 = no se exige. Los formularios (contacto y pedido) además solo admiten texto plano y con límite de caracteres (ver PlainText.php).
+    'form_min_fill_ms' => 1200,
 
     'prices' => [
         // Hoja de precios en Drive. Tres formas (se usa la primera que esté rellena):

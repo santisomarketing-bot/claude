@@ -1,14 +1,22 @@
 <?php
 /**
- * [MAIL] Envío de correo con tres controladores (config mail.driver):
- *   resend → API HTTP de Resend (recomendado; hay que verificar el dominio con SPF/DKIM)
- *   mail   → función mail() de PHP (el propio hosting; sin garantías de entrega si el SPF del dominio no incluye el servidor)
+ * [MAIL] Envío de correo con seis controladores (config mail.driver) y el MOTIVO veraz de cada intento:
+ *   resend → API HTTP de Resend (hay que verificar el dominio de order_from con SPF/DKIM)
+ *   brevo  → API HTTP de Brevo (el remitente o su dominio debe estar verificado/autenticado en Brevo)
+ *   smtp   → servidor SMTP (el buzón del propio hosting, Plesk o cPanel, o cualquier otro): ver Smtp.php y mail.smtp en config.sample.php
+ *   mail   → función mail() de PHP (el propio hosting; devuelve true cuando el servidor LOCAL acepta el mensaje, no cuando llega: sin garantías de entrega)
  *   file   → guarda cada correo como JSON en storage/outbox (pruebas y entornos sin correo)
- * Sin controlador configurado no se envía nada y se devuelve ['skipped' => true]: el pedido se guarda igualmente.
+ *   none   → no envía nada (cualquier otro valor se trata como none: falla cerrado)
+ * send() devuelve { ok, id?, reason, error?, driver, skipped?, status?, note? } SIN lanzar nunca por un fallo del proveedor:
+ *   reason = sent · off (sin controlador) · failed (el proveedor respondió error o no respondió) · skipped (faltan credenciales, remitente o destinatarios).
+ *   error = texto CORTO (≤ 160) y SIN secretos (scrub) para los gestores; con ok = true, un error es un AVISO (p. ej. un destinatario rechazado por el servidor SMTP).
+ * Cada envío (pedido, copia al cliente, contacto y prueba) anota su resultado en la clave mail:last (solo el último, sin datos del visitante). status() lo junta con el controlador y los ajustes
+ * que faltan (por NOMBRE, nunca valores) para el panel, /health y el diagnóstico.
  *
  * orderMail() compone el correo del pedido para el EQUIPO (HTML + texto, con los datos que escribió el visitante y su PDF adjunto).
  * copyMail() compone la copia para el CLIENTE: solo contenido generado por el servidor (texto fijo en el idioma del pedido, número, líneas valoradas, total); NADA escrito
  * por el visitante (ni nombre, ni empresa, ni teléfono, ni notas) y SIN adjunto: si no, el correo corporativo sería un relé de mensajes de cualquiera hacia terceros.
+ * contactMail() compone el aviso de un mensaje de contacto para el equipo (todo lo del visitante, escapado) y testMail() el correo de prueba del panel.
  */
 namespace Torivac;
 
@@ -16,6 +24,14 @@ final class Mail
 {
     /** Línea fija que acompaña al PDF en el correo al equipo: el PDF lo fabrica el navegador del cliente y no vincula. */
     const PDF_NOTE = 'El PDF adjunto lo ha generado el navegador del cliente: el importe que vale es el calculado por el servidor (arriba).';
+    /** Línea fija del correo de prueba del panel. */
+    const TEST_LINE = 'Si lees esto, el envío de correo de la web funciona.';
+    /** Controladores de correo que se reconocen. */
+    const DRIVERS = ['resend', 'brevo', 'smtp', 'mail', 'file', 'none'];
+    /** Clave del almacén con el resultado del último intento de envío. */
+    const KEY_LAST = 'mail:last';
+    /** Remitente si order_from falta. */
+    const DEFAULT_FROM = 'Torivac Web <pedidos@torivac.com>';
 
     /** Textos FIJOS de la copia al cliente, por idioma (es, en, fr, de). {n} = nº de líneas «a consultar». */
     private const COPY = [
@@ -33,58 +49,301 @@ final class Mail
             'unpriced' => '{n} Position(en) „Auf Anfrage“ sind in der Summe nicht enthalten', 'demo' => '(DEMO-PREISE)', 'ignore' => 'Wenn Sie dieses Angebot nicht angefordert haben, ignorieren Sie diese Nachricht bitte.'],
     ];
 
-    /** ¿Hay un controlador de correo listo para enviar? (resend con clave, mail o file) */
-    public static function enabled(): bool
+
+    // ───────────────────────────────────────── [CONTROLADORES] qué se usa, con qué ajustes y qué falta
+    /** ¿mail.driver tiene un valor que no es ninguno de los conocidos? (vacío o ausente = none, que no es un error). */
+    public static function driverUnknown(): bool
     {
-        $driver = (string) Config::get('mail.driver', 'none');
-        if ($driver === 'resend') return (string) Config::get('mail.resend_api_key', '') !== '';
-        return $driver === 'mail' || $driver === 'file';
+        $v = Config::get('mail.driver', '');
+        return is_string($v) ? (trim($v) !== '' && !in_array(strtolower(trim($v)), self::DRIVERS, true)) : true;
     }
 
-    /** @param array{to:string[],cc?:string[],subject:string,html?:string,text?:string,replyTo?:string,attachments?:array} $m */
-    public static function send(array $m): array
+    /** Controlador activo según mail.driver: resend, brevo, smtp, mail, file o none; ausente o un valor desconocido = none (falla cerrado). */
+    public static function driver(): string
     {
-        $driver = (string) Config::get('mail.driver', 'none');
-        $from = (string) Config::get('order_from', 'Torivac Web <pedidos@torivac.com>');
-        foreach ((array) ($m['to'] ?? []) as $a) { if (!is_string($a) || !Orders::validEmail($a)) return ['ok' => false, 'error' => 'Destinatario no válido']; }     // nunca «a@b.co,otro»: una coma en To: manda el correo a quien no toca
+        $v = Config::get('mail.driver', 'none');
+        $v = is_string($v) ? strtolower(trim($v)) : '';
+        return in_array($v, self::DRIVERS, true) ? $v : 'none';
+    }
+
+    /**
+     * Remitente de order_from («Nombre <correo@dominio>» o solo el correo; si falta, Torivac Web <pedidos@torivac.com>) → ['ok'=>true, 'name', 'email', 'from' (normalizado, para las APIs),
+     * 'header' (para las cabeceras del correo: el nombre con caracteres no ASCII va codificado)] o ['ok'=>false] si el correo no es válido, el nombre lleva < > " \ o caracteres de control
+     * (inyección de cabeceras) o es larguísimo.
+     */
+    public static function sender(): array
+    {
+        $raw = Config::get('order_from', self::DEFAULT_FROM);
+        $raw = is_string($raw) && trim($raw) !== '' ? trim($raw) : self::DEFAULT_FROM;
+        if (preg_match('/[\x00-\x1f\x7f]|\xc2[\x80-\x9f]|\xe2\x80[\xa8\xa9]/', $raw)) return ['ok' => false];
+        if (preg_match('/^(.*?)\s*<([^<>]+)>$/s', $raw, $m)) { $name = trim($m[1]); $email = trim($m[2]); if (preg_match('/^"(.*)"$/s', $name, $q)) $name = trim($q[1]); }
+        else { $name = ''; $email = $raw; }
+        if (!Orders::validEmail($email) || preg_match('/["<>\\\\]/', $name) || mb_strlen($name) > 80) return ['ok' => false];
+        $quoted = $name !== '' && preg_match('/[,;:@()\[\]]/', $name) ? '"' . $name . '"' : $name;
+        $display = $name === '' ? '' : (preg_match('/[^\x20-\x7e]/', $name) ? self::encodeHeader($name) : $quoted);
+        return ['ok' => true, 'name' => $name, 'email' => $email, 'from' => $name === '' ? $email : $quoted . ' <' . $email . '>', 'header' => $display === '' ? $email : $display . ' <' . $email . '>'];
+    }
+
+    /** Ajustes del servidor SMTP (mail.smtp): host, port, secure, user, pass, helo, timeout, insecure_tls, tls_name. */
+    public static function smtpConfig(): array
+    {
+        $c = Config::get('mail.smtp', []);
+        return is_array($c) ? $c : [];
+    }
+
+    /** Por qué NO se puede enviar ahora → ['reason' => 'off'|'skipped', 'error' => …], o null si el controlador está listo (credenciales y remitente válidos). */
+    public static function blocker(string $driver): ?array
+    {
+        if (self::driverUnknown()) return ['reason' => 'off', 'error' => 'mail.driver no válido (usa resend, brevo, smtp, mail, file o none)'];
+        if ($driver === 'none') return ['reason' => 'off', 'error' => 'Sin controlador de correo (mail.driver = none)'];
+        if ($driver === 'resend' && trim((string) Config::get('mail.resend_api_key', '')) === '') return ['reason' => 'skipped', 'error' => 'Falta mail.resend_api_key'];
+        if ($driver === 'brevo' && trim((string) Config::get('mail.brevo_api_key', '')) === '') return ['reason' => 'skipped', 'error' => 'Falta mail.brevo_api_key'];
+        if ($driver === 'smtp') {
+            $c = self::smtpConfig();
+            if (trim((string) ($c['host'] ?? '')) === '') return ['reason' => 'skipped', 'error' => 'Falta mail.smtp.host'];
+            if ((string) ($c['user'] ?? '') !== '' && (string) ($c['pass'] ?? '') === '') return ['reason' => 'skipped', 'error' => 'Falta mail.smtp.pass'];
+        }
+        if (!self::sender()['ok']) return ['reason' => 'skipped', 'error' => 'order_from no válido (usa «Nombre <correo@dominio>»)'];
+        return null;
+    }
+
+    /** ¿Hay un controlador de correo listo para enviar? (no es none y tiene sus credenciales y un remitente válido) */
+    public static function enabled(): bool { return self::blocker(self::driver()) === null; }
+
+    /** Ajustes que impiden o estorban el envío (solo NOMBRES, nunca valores): mail.driver desconocido, la clave o el servidor del controlador activo, order_from y order_to. */
+    public static function problems(): array
+    {
+        $p = [];
+        $d = self::driver();
+        if (self::driverUnknown()) $p[] = 'mail.driver';
+        if ($d === 'resend' && trim((string) Config::get('mail.resend_api_key', '')) === '') $p[] = 'mail.resend_api_key';
+        if ($d === 'brevo' && trim((string) Config::get('mail.brevo_api_key', '')) === '') $p[] = 'mail.brevo_api_key';
+        if ($d === 'smtp') {
+            $c = self::smtpConfig();
+            if (trim((string) ($c['host'] ?? '')) === '') $p[] = 'mail.smtp.host';
+            if ((string) ($c['user'] ?? '') !== '' && (string) ($c['pass'] ?? '') === '') $p[] = 'mail.smtp.pass';
+            if (isset($c['secure']) && !in_array(strtolower((string) $c['secure']), ['ssl', 'tls', 'none'], true)) $p[] = 'mail.smtp.secure';
+            if (isset($c['port']) && (!is_numeric($c['port']) || (int) $c['port'] < 1 || (int) $c['port'] > 65535)) $p[] = 'mail.smtp.port';
+        }
+        if (!self::sender()['ok']) $p[] = 'order_from';
+        $to = Orders::team();
+        if (!$to || array_filter($to, function ($e) { return !Orders::validEmail($e); })) $p[] = 'order_to';
+        return $p;
+    }
+
+    /** Estado del correo para el panel, /health y el diagnóstico → ['driver', 'configured', 'problems' (nombres de ajustes), 'last' (último intento o null)]; nunca lleva valores secretos. */
+    public static function status(): array
+    {
+        $d = self::driver();
+        $problems = self::problems();
+        return ['driver' => $d, 'configured' => $d !== 'none' && !$problems, 'problems' => $problems, 'last' => self::last()];
+    }
+
+    /** Último intento de envío guardado en mail:last → ['at', 'kind', 'ok', 'reason', 'error'?] o null si no hay ninguno o está dañado. */
+    public static function last(): ?array
+    {
+        $o = Store::get(self::KEY_LAST);
+        if (!is_array($o) || !isset($o['at']) || !is_string($o['at']) || !isset($o['kind']) || !is_string($o['kind'])) return null;
+        $r = ['at' => $o['at'], 'kind' => $o['kind'], 'ok' => ($o['ok'] ?? false) === true, 'reason' => is_string($o['reason'] ?? null) ? $o['reason'] : ''];
+        if (is_string($o['error'] ?? null) && $o['error'] !== '') $r['error'] = $o['error'];
+        return $r;
+    }
+
+    /** Anota el resultado de un envío en mail:last (sobrescribe; un fallo al anotar nunca tapa el resultado real del envío). `$kind`: order · contact · test. */
+    private static function record(string $kind, array $r, ?int $nowMs): void
+    {
+        try {
+            $st = ['at' => Util::iso($nowMs === null ? null : $nowMs / 1000), 'kind' => $kind, 'ok' => !empty($r['ok']), 'reason' => (string) ($r['reason'] ?? (!empty($r['ok']) ? 'sent' : 'failed'))];
+            if (!empty($r['error'])) $st['error'] = self::scrub($r['error']);
+            Store::put(self::KEY_LAST, $st);
+        } catch (\Throwable $e) { error_log('torivac-api: no se pudo anotar el último intento de correo: ' . mb_substr($e->getMessage(), 0, 160)); }
+    }
+
+    // ───────────────────────────────────────── [SECRETOS] ningún error lleva claves, contraseñas ni usuarios
+    /** Valores secretos de la configuración (de claves cuyo nombre contiene key, secret, token, pass, account, auth o user), de 6 o más caracteres. */
+    private static function secrets(): array
+    {
+        $out = [];
+        $walk = function ($a) use (&$walk, &$out) {
+            foreach ($a as $k => $v) {
+                if (is_array($v)) { $walk($v); continue; }
+                if (is_string($v) && strlen($v) >= 6 && preg_match('/key|secret|token|pass|account|auth|user/i', (string) $k)) $out[$v] = true;
+            }
+        };
+        $walk(Config::all());
+        foreach (['mail.resend_api_key', 'mail.brevo_api_key', 'mail.smtp.pass', 'mail.smtp.user', 'admin_token', 'session_secret', 'cron_token', 'turnstile_secret'] as $path) {
+            $v = Config::get($path, '');
+            if (is_string($v) && strlen($v) >= 6) $out[$v] = true;                          // también si vienen de una variable de entorno TORIVAC_…
+        }
+        $list = array_keys($out);
+        usort($list, function ($a, $b) { return strlen($b) - strlen($a); });                // primero los largos
+        return $list;
+    }
+
+    /**
+     * Texto de UNA línea, sin secretos y de como mucho `$max` caracteres: tacha los valores exactos de los secretos de la configuración y las formas típicas de clave
+     * (Bearer …, api-key: …, re_…, sk-…, xkeysib-…, cadenas opacas de 32 o más caracteres).
+     */
+    public static function scrub($text, int $max = 160): string
+    {
+        $s = Util::line(is_scalar($text) ? (string) $text : '', 2000);
+        foreach (self::secrets() as $v) $s = str_replace($v, '***', $s);
+        $shapes = [
+            ['/\b(Bearer|Basic)\s+[A-Za-z0-9._~+\/=-]{6,}/i', '$1 ***'],
+            ['/\b(api[-_ ]?key|apikey|token|secret|password|passwd|authorization)(\s*[:=]\s*)[^\s,;]+/i', '$1$2***'],
+            ['/\bre_[A-Za-z0-9]{16,}/', '***'],
+            ['/\b(?:sk|pk|rk)[-_][A-Za-z0-9_-]{6,}/', '***'],
+            ['/\bx(?:keysib|smtpsib)-[A-Za-z0-9-]{16,}/', '***'],
+            ['/\b[A-Za-z0-9_-]{32,}\b/', '***'],
+        ];
+        foreach ($shapes as [$re, $to]) { $r = preg_replace($re, $to, $s); if ($r !== null) $s = $r; }
+        return rtrim(mb_substr($s, 0, $max, 'UTF-8'));
+    }
+
+    // ───────────────────────────────────────── [ENVÍO] send → el controlador activo
+    /**
+     * Envía un correo por el controlador activo → ['ok', 'id'?, 'reason', 'error'?, 'driver', 'skipped'?, 'status'?, 'note'?] y anota el intento en mail:last (`$kind`: 'order' · 'contact' · 'test').
+     * El asunto va siempre en una línea; un Reply-To no válido se omite; un destinatario no válido (también «a@b.co,otro») impide el envío. Nunca lanza por un fallo del proveedor.
+     * @param array{to:string[],cc?:string[],subject:string,html?:string,text?:string,replyTo?:string,attachments?:array} $m
+     */
+    public static function send(array $m, string $kind = 'order', ?int $nowMs = null): array
+    {
+        $driver = self::driver();
+        try { $r = self::deliver($driver, $m); }
+        catch (\Throwable $e) { $r = ['ok' => false, 'reason' => 'failed', 'error' => self::scrub(get_class($e) === 'RuntimeException' ? $e->getMessage() : 'Fallo interno al enviar el correo')]; }
+        $r['driver'] = $driver;
+        if (!empty($r['reason']) && in_array($r['reason'], ['off', 'skipped'], true)) $r['skipped'] = true;
+        self::record($kind, $r, $nowMs);
+        return $r;
+    }
+
+    /** Prepara y envía por `$driver`, sin anotar nada. Sin controlador, credenciales, remitente o destinatarios válidos no llama a ningún proveedor. */
+    private static function deliver(string $driver, array $m): array
+    {
+        $block = self::blocker($driver);
+        if ($block) return ['ok' => false, 'reason' => $block['reason'], 'error' => $block['error']];
+        $to = array_values((array) ($m['to'] ?? []));
+        $cc = array_values((array) ($m['cc'] ?? []));
+        if (!$to) return ['ok' => false, 'reason' => 'skipped', 'error' => 'Sin destinatarios (revisa order_to)'];
+        foreach (array_merge($to, $cc) as $a) { if (!is_string($a) || !Orders::validEmail($a)) return ['ok' => false, 'reason' => 'skipped', 'error' => 'Destinatario no válido']; }     // nunca «a@b.co,otro»: una coma en To: manda el correo a quien no toca
+        $sender = self::sender();
+        $m['to'] = $to;
+        $m['cc'] = $cc;
         $m['subject'] = trim((string) preg_replace('/[\x00-\x1f\x7f]+/', ' ', (string) ($m['subject'] ?? '')));                                           // un asunto nunca lleva saltos de línea
-        if ($driver === 'resend') {
-            $key = (string) Config::get('mail.resend_api_key', '');
-            if ($key === '') return ['ok' => false, 'skipped' => true];
-            $body = ['from' => $from, 'to' => $m['to'], 'subject' => $m['subject'], 'html' => $m['html'] ?? '', 'text' => $m['text'] ?? ''];
-            if (!empty($m['cc'])) $body['cc'] = $m['cc'];
-            if (!empty($m['replyTo'])) $body['reply_to'] = $m['replyTo'];
-            if (!empty($m['attachments'])) $body['attachments'] = $m['attachments'];
-            try {
-                [$st, $resp] = Http::request('POST', rtrim((string) Config::get('mail.api_base', 'https://api.resend.com'), '/') . '/emails', ['Authorization: Bearer ' . $key, 'Content-Type: application/json'], Util::enc($body));
-            } catch (\Throwable $e) { return ['ok' => false, 'error' => $e->getMessage()]; }
-            if ($st < 200 || $st >= 300) return ['ok' => false, 'status' => $st];
-            $j = json_decode($resp, true);
-            return ['ok' => true, 'id' => $j['id'] ?? null];
-        }
-        if ($driver === 'mail') {
-            [$headers, $body] = self::mime($from, $m);
-            $ok = @mail(implode(',', $m['to']), self::encodeHeader($m['subject']), $body, $headers);
-            return ['ok' => (bool) $ok];
-        }
-        if ($driver === 'file') {
-            $f = Store::root() . '/outbox/' . gmdate('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.json';
-            file_put_contents($f, Util::enc($m + ['from' => $from]));
-            @chmod($f, Store::FILE_MODE);
-            return ['ok' => true, 'id' => basename($f)];
-        }
-        return ['ok' => false, 'skipped' => true];
+        $m['replyTo'] = isset($m['replyTo']) && is_string($m['replyTo']) && Orders::validEmail($m['replyTo']) ? $m['replyTo'] : '';                      // un Reply-To no válido se omite
+        if ($driver === 'resend') return self::viaResend($m, $sender);
+        if ($driver === 'brevo') return self::viaBrevo($m, $sender);
+        if ($driver === 'smtp') return self::viaSmtp($m, $sender);
+        if ($driver === 'mail') return self::viaMail($m, $sender);
+        return self::viaFile($m, $sender);
     }
 
-    /** Codifica un asunto con caracteres no ASCII como palabra MIME UTF-8 en base64. */
-    private static function encodeHeader(string $s): string { return preg_match('/[^\x20-\x7e]/', $s) ? '=?UTF-8?B?' . base64_encode($s) . '?=' : $s; }
+    /** Resend: POST /emails con la clave en Authorization. */
+    private static function viaResend(array $m, array $sender): array
+    {
+        $body = ['from' => $sender['from'], 'to' => $m['to'], 'subject' => $m['subject'], 'html' => $m['html'] ?? '', 'text' => $m['text'] ?? ''];
+        if (!empty($m['cc'])) $body['cc'] = $m['cc'];
+        if ($m['replyTo'] !== '') $body['reply_to'] = $m['replyTo'];
+        if (!empty($m['attachments'])) $body['attachments'] = $m['attachments'];
+        $key = trim((string) Config::get('mail.resend_api_key', ''));
+        return self::callProvider('Resend', rtrim((string) Config::get('mail.api_base', 'https://api.resend.com'), '/') . '/emails', ['Authorization: Bearer ' . $key, 'Content-Type: application/json'], $body, 'id');
+    }
 
-    /** cabeceras y cuerpo MIME (alternativa texto/HTML + adjuntos) para mail() */
+    /** Brevo: POST /v3/smtp/email con la clave en api-key (sender, to, cc, replyTo, subject, htmlContent, textContent y attachment[{name, content}]). */
+    private static function viaBrevo(array $m, array $sender): array
+    {
+        $body = ['sender' => ($sender['name'] !== '' ? ['name' => $sender['name']] : []) + ['email' => $sender['email']], 'to' => array_map(function ($e) { return ['email' => $e]; }, $m['to']), 'subject' => $m['subject'], 'htmlContent' => $m['html'] ?? '', 'textContent' => $m['text'] ?? ''];
+        if (!empty($m['cc'])) $body['cc'] = array_map(function ($e) { return ['email' => $e]; }, $m['cc']);
+        if ($m['replyTo'] !== '') $body['replyTo'] = ['email' => $m['replyTo']];
+        if (!empty($m['attachments'])) $body['attachment'] = array_map(function ($a) { return ['name' => (string) $a['filename'], 'content' => (string) $a['content']]; }, $m['attachments']);
+        $key = trim((string) Config::get('mail.brevo_api_key', ''));
+        return self::callProvider('Brevo', rtrim((string) Config::get('mail.brevo_api_base', 'https://api.brevo.com'), '/') . '/v3/smtp/email', ['api-key: ' . $key, 'Content-Type: application/json', 'accept: application/json'], $body, 'messageId');
+    }
+
+    /** POST JSON a la API de un proveedor y traduce la respuesta → ['ok'=>true,'reason'=>'sent','id'?] o ['ok'=>false,'reason'=>'failed','status'?,'error']. Cualquier 2xx cuenta como aceptado. */
+    private static function callProvider(string $name, string $url, array $headers, array $body, string $idField): array
+    {
+        try { [$st, $resp] = Http::request('POST', $url, $headers, Util::enc($body), 15); }
+        catch (\Throwable $e) { return ['ok' => false, 'reason' => 'failed', 'error' => self::scrub($name . ': ' . $e->getMessage())]; }
+        if ($st === 0) return ['ok' => false, 'reason' => 'failed', 'error' => self::scrub($name . ': no se pudo conectar (sin respuesta del servicio)')];
+        if ($st < 200 || $st >= 300) return ['ok' => false, 'reason' => 'failed', 'status' => $st, 'error' => self::providerError($name, $st, (string) $resp)];
+        $j = json_decode((string) $resp, true);
+        $id = is_array($j) && isset($j[$idField]) && is_scalar($j[$idField]) ? (string) $j[$idField] : null;
+        return ['ok' => true, 'reason' => 'sent', 'id' => $id];
+    }
+
+    /** Texto corto y sin secretos del fallo de un proveedor: «Brevo 401: mensaje» (mensaje ≤ 120 caracteres) o, si no dio mensaje, «Brevo respondió 401». */
+    private static function providerError(string $name, int $status, string $resp): string
+    {
+        $msg = '';
+        $j = json_decode(substr($resp, 0, 4000), true);
+        if (is_array($j)) {
+            $v = $j['message'] ?? (is_array($j['error'] ?? null) ? ($j['error']['message'] ?? null) : ($j['error'] ?? null)) ?? ($j['name'] ?? null);
+            if (is_string($v)) $msg = self::scrub($v, 120);
+        }
+        return self::scrub($msg !== '' ? $name . ' ' . $status . ': ' . $msg : $name . ' respondió ' . $status);
+    }
+
+    /** SMTP: compone el mensaje completo y lo entrega con Smtp (destinatarios = to + cc). Un destinatario rechazado por el servidor no impide el envío a los demás, pero se avisa. */
+    private static function viaSmtp(array $m, array $sender): array
+    {
+        $data = self::message($sender, $m);
+        $r = Smtp::send(self::smtpConfig(), $sender['email'], array_merge($m['to'], $m['cc']), $data);
+        if (empty($r['ok'])) return ['ok' => false, 'reason' => 'failed', 'error' => self::scrub($r['error'] ?? 'SMTP: fallo de envío')];
+        $out = ['ok' => true, 'reason' => 'sent'];
+        if (!empty($r['rejected'])) $out['error'] = self::scrub('El servidor SMTP rechazó a: ' . implode('; ', $r['rejected']));
+        return $out;
+    }
+
+    /** mail() de PHP: true = lo aceptó el servicio de correo LOCAL del hosting (no que llegue); false = lo rechazó. Pasa el remitente al sobre con -f cuando es seguro. */
+    private static function viaMail(array $m, array $sender): array
+    {
+        if (!function_exists('mail')) return ['ok' => false, 'reason' => 'failed', 'error' => 'La función mail() no está disponible en este hosting'];
+        [$headers, $body] = self::mime($sender['header'], $m);
+        $extra = preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+$/', $sender['email']) ? '-f' . $sender['email'] : '';
+        $ok = $extra !== '' ? @mail(implode(',', $m['to']), self::encodeHeader($m['subject']), $body, $headers, $extra) : @mail(implode(',', $m['to']), self::encodeHeader($m['subject']), $body, $headers);
+        return $ok ? ['ok' => true, 'reason' => 'sent', 'note' => 'mail() no garantiza la entrega'] : ['ok' => false, 'reason' => 'failed', 'error' => 'mail() devolvió false (revisa el servicio de correo del hosting)'];
+    }
+
+    /** file: guarda el correo como JSON en la carpeta outbox de los datos (pruebas y entornos sin correo: no sale por correo). */
+    private static function viaFile(array $m, array $sender): array
+    {
+        $f = Store::root() . '/outbox/' . gmdate('Ymd-His') . '-' . bin2hex(random_bytes(3)) . '.json';
+        if (empty($m['cc'])) unset($m['cc']);
+        if (($m['replyTo'] ?? '') === '') unset($m['replyTo']);
+        if (@file_put_contents($f, Util::enc($m + ['from' => $sender['from']])) === false) return ['ok' => false, 'reason' => 'failed', 'error' => 'No se pudo escribir en la carpeta outbox'];
+        @chmod($f, Store::FILE_MODE);
+        return ['ok' => true, 'reason' => 'sent', 'id' => basename($f), 'note' => 'solo guardado en outbox, no sale por correo'];
+    }
+
+    /** Codifica un texto con caracteres no ASCII como palabras MIME UTF-8 en base64 (varias, de como mucho ~45 bytes, sin partir un carácter) unidas por un salto de línea plegado. */
+    private static function encodeHeader(string $s): string
+    {
+        if (!preg_match('/[^\x20-\x7e]/', $s)) return $s;
+        $words = []; $cur = '';
+        foreach (preg_split('//u', $s, -1, PREG_SPLIT_NO_EMPTY) ?: [$s] as $ch) {
+            if ($cur !== '' && strlen($cur . $ch) > 45) { $words[] = $cur; $cur = ''; }
+            $cur .= $ch;
+        }
+        if ($cur !== '') $words[] = $cur;
+        return implode("\r\n ", array_map(function ($w) { return '=?UTF-8?B?' . base64_encode($w) . '?='; }, $words));
+    }
+
+    /** Mensaje completo para SMTP: Date, Message-ID, To, Subject y las cabeceras MIME de mime(), una línea en blanco y el cuerpo. */
+    public static function message(array $sender, array $m): string
+    {
+        [$headers, $body] = self::mime($sender['header'], $m);
+        $domain = substr((string) strrchr($sender['email'], '@'), 1);
+        $extra = ['Date: ' . gmdate('D, d M Y H:i:s') . ' +0000', 'Message-ID: <' . bin2hex(random_bytes(12)) . '@' . $domain . '>', 'To: ' . implode(', ', $m['to']), 'Subject: ' . self::encodeHeader((string) $m['subject'])];
+        return implode("\r\n", $extra) . "\r\n" . $headers . "\r\n\r\n" . $body;
+    }
+
+    /** cabeceras y cuerpo MIME (alternativa texto/HTML + adjuntos) para mail() y SMTP */
     public static function mime(string $from, array $m): array
     {
         $b1 = 'tv-' . bin2hex(random_bytes(8));
         $b2 = 'tv-' . bin2hex(random_bytes(8));
-        $h = ['From: ' . preg_replace('/[\r\n]+/', ' ', $from), 'MIME-Version: 1.0'];
+        $h = ['From: ' . preg_replace('/[\r\n]+(?![ \t])/', ' ', $from), 'MIME-Version: 1.0'];
         $cc = array_filter((array) ($m['cc'] ?? []), function ($a) { return is_string($a) && Orders::validEmail($a); });
         if ($cc) $h[] = 'Cc: ' . implode(', ', $cc);
         if (!empty($m['replyTo']) && is_string($m['replyTo']) && Orders::validEmail($m['replyTo'])) $h[] = 'Reply-To: ' . $m['replyTo'];
@@ -102,6 +361,32 @@ final class Mail
             $body .= "--$b1\r\nContent-Type: application/pdf; name=\"$name\"\r\nContent-Transfer-Encoding: base64\r\nContent-Disposition: attachment; filename=\"$name\"\r\n\r\n" . chunk_split($content);
         }
         return [implode("\r\n", $h), $body . "--$b1--\r\n"];
+    }
+
+
+    // ───────────────────────────────────────── [CONTACTO Y PRUEBA] correos que no son pedidos
+    /**
+     * Aviso de un mensaje de contacto PARA EL EQUIPO → ['subject', 'html', 'text']. Asunto «Contacto web · <nombre>» en una línea; nombre, correo, idioma, id del mensaje y texto del visitante
+     * van SIEMPRE escapados en el HTML (aunque el formulario ya solo admite texto plano); el Reply-To lo pone quien envía (send). Es dato no fiable: aquí solo se muestra.
+     * @param array{id:string,name:string,email:string,lang:string,message:string} $r
+     */
+    public static function contactMail(array $r): array
+    {
+        $n = Util::line($r['name'] ?? '', 120); $e = Util::line($r['email'] ?? '', 254); $l = Util::line($r['lang'] ?? '', 8); $i = Util::line($r['id'] ?? '', 40);
+        $msg = (string) ($r['message'] ?? '');
+        $html = '<div style="font-family:Arial,sans-serif;max-width:720px"><h2 style="margin:0;color:#9c520f">Mensaje de contacto de la web</h2>' .
+            '<p><b>' . Util::esc($n) . '</b> &lt;' . Util::esc($e) . '&gt;<br><span style="color:#777;font-size:12px">Idioma: ' . Util::esc($l) . ' · Mensaje ' . Util::esc($i) . '</span></p>' .
+            '<p>' . nl2br(Util::esc($msg), false) . '</p>' .
+            '<p style="color:#777;font-size:12px">Responde a este correo para escribir a ' . Util::esc($n) . '. El mensaje queda guardado en el panel (Mensajes) con el id ' . Util::esc($i) . '.</p></div>';
+        $text = implode("\n", ['Mensaje de contacto de la web', 'Nombre: ' . $n, 'Correo: ' . $e, 'Idioma: ' . $l, 'Mensaje: ' . $i, '', $msg, '', 'Responde a este correo para escribir a ' . $n . '. Queda guardado en el panel (Mensajes) con el id ' . $i . '.']);
+        return ['subject' => 'Contacto web · ' . $n, 'html' => $html, 'text' => $text];
+    }
+
+    /** Correo de PRUEBA del panel → ['subject', 'html', 'text']: asunto «Torivac · prueba de correo», texto fijo y, como datos, el controlador y la hora (ISO). */
+    public static function testMail(string $driver, string $at): array
+    {
+        $d = Util::line($driver, 20); $t = Util::line($at, 40);
+        return ['subject' => 'Torivac · prueba de correo', 'html' => '<div style="font-family:Arial,sans-serif;max-width:720px"><p>' . Util::esc(self::TEST_LINE) . '</p><p style="color:#777;font-size:12px">Controlador: ' . Util::esc($d) . ' · Hora: ' . Util::esc($t) . '</p></div>', 'text' => self::TEST_LINE . "\n\nControlador: " . $d . "\nHora: " . $t];
     }
 
     /** importe con el formato del idioma del cliente (es 1.234,56 €, en €1,234.56, fr 1 234,56 €, de 1.234,56 €) */

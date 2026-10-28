@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { FakeKV, mkEnv, MASTER } from './helpers.js';
 import { call, signIn, provider, contactPost, withLog, messagesIn, orderEnv, order, keys, freshIp, PDF_B64 } from './kit.js';
 import { messageKey } from '../src/messages.js';
-import { mailDriver, parseSender, teamRecipients, mailProblems } from '../src/email.js';
+import { mailDriver, parseSender, teamRecipients, mailProblems, contactMail } from '../src/email.js';
 import { scrub } from '../src/mailstate.js';
 
 const DAY400 = 400 * 86_400;
@@ -125,16 +125,24 @@ test('M1 · ids CT-AAAAMMDD-NNNN-XXX: el contador sube por día, el sufijo es al
 });
 
 // ───────────────────────────────────────── M4 · el mensaje del visitante es dato, nunca marcado
-test('M4 · <script> y cabeceras en el nombre: se guardan tal cual como dato, el HTML del correo va escapado y el asunto en una sola línea', async () => {
-  const env = mkEnv({ RESEND_API_KEY: 're_test' }), box = provider(), jefa = await signIn(env, 'jefa@torivac.com', 'manager');
-  const msg = '<script>alert(1)</script>\n<img src=x onerror=alert(2)> & "comillas" \'simples\'';
-  const { j } = await contactPost(env, box, { name: '<b>Eve</b>\r\nBcc: espia@evil.example', message: msg });
-  const c = box.calls[0].body; assert.ok(!/[\r\n]/.test(c.subject), 'asunto en una línea'); assert.equal(c.subject, 'Contacto web · <b>Eve</b> Bcc: espia@evil.example');
-  assert.ok(!/<(script|img)\b/i.test(c.html), 'sin etiquetas del visitante en el HTML: ' + c.html);
-  assert.ok(c.html.includes('&lt;script&gt;alert(1)&lt;/script&gt;<br>&lt;img src=x onerror=alert(2)&gt; &amp; &quot;comillas&quot; &#39;simples&#39;') && c.html.includes('<b>&lt;b&gt;Eve&lt;/b&gt; Bcc: espia@evil.example</b>'));
-  assert.equal(stored(env, j.id).message, msg, 'se guarda tal cual');
-  const lista = await call(env, '/api/messages', { token: jefa.token }); assert.match(lista.headers.get('Content-Type'), /^application\/json/); assert.equal(lista.headers.get('X-Content-Type-Options'), 'nosniff');
-  assert.equal((await lista.json()).items[0].message, msg, 'el gestor lo recibe como dato JSON, sin tocar (el panel lo escapa al pintarlo)');
+test('M4 · el formulario solo admite texto plano: etiquetas y scripts → 400 (no se guarda ni se envía nada); un texto normal con & < \" \' sí, guardado tal cual y con el HTML del correo escapado', async () => {
+  const env = mkEnv({ RESEND_API_KEY: 're_test' }), box = provider();
+  for (const [field, bad] of [['name', '<b>Eve</b>'], ['message', '<script>alert(1)</script>'], ['message', '<img src=x onerror=alert(2)>']]) {
+    const { r, j } = await contactPost(env, box, { [field]: bad });
+    assert.equal(r.status, 400, bad); assert.equal(j.code, 'plain_text'); assert.equal(j.field, field);
+  }
+  assert.equal(box.calls.length, 0, 'no se envió nada'); assert.equal(keys(env, 'msg:').length, 0, 'ni se guardó');
+  const msg = 'Precio < 50 € & envío "urgente" \'simples\'\nSi V<Vn y I>In ¿qué protección?';
+  const { r, j } = await contactPost(env, box, { name: 'Eva\r\nBcc: espia@evil.example', message: msg });
+  assert.equal(r.status, 200);
+  const c = box.calls[0].body; assert.ok(!/[\r\n]/.test(c.subject), 'asunto en una línea'); assert.equal(c.subject, 'Contacto web · Eva Bcc: espia@evil.example');
+  assert.ok(c.html.includes('Precio &lt; 50 € &amp; envío &quot;urgente&quot; &#39;simples&#39;<br>Si V&lt;Vn y I&gt;In'), 'el HTML del correo va escapado: ' + c.html);
+  assert.equal(stored(env, j.id).message, msg, 'se guarda tal cual'); assert.equal(stored(env, j.id).name, 'Eva Bcc: espia@evil.example', 'y el nombre en una sola línea');
+});
+test('M4 · defensa en profundidad: aunque llegara marcado hasta el compositor del correo (contactMail), el HTML sale escapado y el asunto en una línea', () => {
+  const m = contactMail({ id: 'CT-20261028-0001-AAA', name: '<b>Eve</b>\r\nBcc: espia@evil.example', email: 'e@e.es', lang: 'es', message: '<script>alert(1)</script>\n<img src=x onerror=alert(2)> & "comillas"' });
+  assert.ok(!/[\r\n]/.test(m.subject)); assert.ok(!/<(script|img)\b/i.test(m.html), m.html);
+  assert.ok(m.html.includes('&lt;script&gt;alert(1)&lt;/script&gt;<br>&lt;img src=x onerror=alert(2)&gt; &amp; &quot;comillas&quot;') && m.html.includes('<b>&lt;b&gt;Eve&lt;/b&gt; Bcc: espia@evil.example</b>'));
 });
 test('M4 · una clave «sk-SECRETO-123» que el proveedor repite en su error no aparece en ninguna respuesta, registro, estado, correo ni log (Resend y Brevo)', async () => {
   const KEY = 'sk-SECRETO-123', SECRETO = 'SECRETO-123';

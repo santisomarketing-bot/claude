@@ -372,11 +372,11 @@ function test_diag_checks()
     T::same([200, true], [$d->status, isset($d->body['checks'][0]['msg'])], 'el manager lo ve');
 }
 
-/** GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto escapa el HTML. */
+/** GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto solo admite texto plano y su correo escapa el HTML. */
 function test_privacy_session_revocation_and_contact_escaping()
 {
     fresh();
-    \Torivac\Config::set(['prices' => ['csv_url' => 'https://sheet.test/x.csv'], 'storage_dir' => Store::root(), 'session_secret' => SECRET, 'admin_token' => MASTER_TOKEN, 'allowed_origins' => [], 'order_to' => ['info@grupotorivac.com'], 'mail' => ['driver' => 'file']]);
+    \Torivac\Config::set(['prices' => ['csv_url' => 'https://sheet.test/x.csv'], 'storage_dir' => Store::root(), 'session_secret' => SECRET, 'admin_token' => MASTER_TOKEN, 'allowed_origins' => [], 'order_to' => ['info@grupotorivac.com'], 'mail' => ['driver' => 'file'], 'form_min_fill_ms' => 0]);
     Users::create(['email' => 'jefa@torivac.com', 'name' => 'Jefa', 'role' => 'manager', 'password' => 'Manager-Clave-2026']);
     Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => PW_ANA]);
     $tok = function ($e, $p) { return Router::handle(req('POST', '/auth/login', ['email' => $e, 'password' => $p]))->body['token']; };
@@ -397,11 +397,14 @@ function test_privacy_session_revocation_and_contact_escaping()
     Router::handle(req('DELETE', '/users/ana%40acme.es', null, ['Authorization' => 'Bearer ' . $jefa]));
     T::same(401, Router::handle(req('GET', '/auth/me', null, ['Authorization' => 'Bearer ' . $ana]))->status, 'borrado → sin sesión');
     T::same(200, Router::handle(req('GET', '/users', null, master()))->status, 'el token maestro sigue funcionando');
-    // contacto con HTML malicioso
+    // contacto con HTML malicioso: el formulario solo admite texto plano → 400 y no se guarda ni se envía nada
     T::same(400, Router::handle(req('POST', '/contact', ['name' => 'Ana', 'email' => 'a<img/src=x/onerror=1>@x.es', 'message' => 'hola que tal', 'privacy' => true]))->status, 'un correo con etiquetas HTML ni siquiera llega a enviarse (correo no válido)');
-    Router::handle(req('POST', '/contact', ['name' => '<b>Ana</b>', 'email' => 'ana.p@x.es', 'message' => "hola <script>alert(1)</script>\n& adiós", 'privacy' => true]));
-    $mail = outbox()[0] ?? null;
-    T::true($mail && !preg_match('/<(img|script)\b/i', $mail['html']) && strpos($mail['html'], '&lt;b&gt;Ana&lt;/b&gt;') !== false, 'sin etiquetas del visitante en el HTML del correo');
+    $h = Router::handle(req('POST', '/contact', ['name' => '<b>Ana</b>', 'email' => 'ana.p@x.es', 'message' => "hola <script>alert(1)</script>\n& adiós", 'privacy' => true]));
+    T::same([400, 'plain_text', 'name'], [$h->status, $h->body['code'] ?? null, $h->body['field'] ?? null], 'HTML en el nombre → 400 plain_text');
+    T::same(0, count(outbox()) + count(Store::names('msg:')), 'no se guarda ni se envía nada');
+    // defensa en profundidad: aunque llegara hasta el compositor del correo, el HTML escapa todo lo del visitante
+    $c = Mail::contactMail(['id' => 'CT-20261028-0001-AAA', 'name' => '<b>Ana</b>', 'email' => 'ana.p@x.es', 'lang' => 'es', 'message' => "hola <script>alert(1)</script>\n& adiós"]);
+    T::true(!preg_match('/<(img|script)\b/i', $c['html']) && strpos($c['html'], '&lt;b&gt;Ana&lt;/b&gt;') !== false, 'sin etiquetas del visitante en el HTML del correo');
 }
 
 /** Cliente HTTP real contra un servidor local: sigue redirecciones de los GET a mano, no manda la credencial a otro servidor y corta los bucles. */
@@ -437,7 +440,7 @@ http_response_code(404);');
     }
 }
 
-/** El correo es parte del resultado: el pedido se guarda siempre y dice si el aviso salió; el contacto falla si el mensaje no pudo enviarse. */
+/** El correo es parte del resultado: el pedido y el mensaje de contacto se guardan siempre y dicen si el aviso salió (y por qué no). */
 function test_email_status_is_never_overstated()
 {
     fresh(['mail' => ['driver' => 'resend', 'resend_api_key' => 're_test']]);
@@ -453,13 +456,16 @@ function test_email_status_is_never_overstated()
     $r2 = Orders::handleOrder(req('POST', '/order', $b2, [], '10.7.7.8'), $b2);
     T::same([true, true, ''], [$r2->body['emailed']['team'], $r2->body['emailed']['customer'], Store::get('order:' . $r2->body['number'])['emailed']['error']], 'con correo: team y cliente, sin error');
     $c = ['name' => 'Ana', 'email' => 'ana@acme.es', 'message' => 'Necesito 50 toroidales', 'privacy' => true];
-    T::same(200, Router::handle(req('POST', '/contact', $c, [], '10.7.7.9'))->status, 'contacto con correo');
+    $ok = Router::handle(req('POST', '/contact', $c, [], '10.7.7.9'));
+    T::same([200, true, 'sent'], [$ok->status, $ok->body['emailed']['sent'], $ok->body['emailed']['reason']], 'contacto con correo');
     Http::$mock = function () { return [500, 'x']; };
     $bad = Router::handle(req('POST', '/contact', $c, [], '10.7.7.10'));
-    T::same([502, false], [$bad->status, $bad->body['ok']], 'contacto sin correo → error (la web lo dice)');
+    T::same([200, true, false, 'failed'], [$bad->status, $bad->body['ok'], $bad->body['emailed']['sent'], $bad->body['emailed']['reason']], 'el correo falla: 200, el mensaje queda guardado y la respuesta dice la verdad (ya no un «recibido» a secas)');
+    T::same(['failed', 'Resend respondió 500'], [Store::get('msg:' . $bad->body['id'])['emailed']['reason'], Store::get('msg:' . $bad->body['id'])['emailed']['error']], 'el registro guarda el motivo');
     fresh(['mail' => ['driver' => 'none']]);
     $skip = Router::handle(req('POST', '/contact', $c, [], '10.7.7.11'));
-    T::same([502, true], [$skip->status, strpos($skip->body['error'], 'no está configurado') !== false], 'sin correo configurado → error claro');
+    T::same([200, true, false, 'off'], [$skip->status, $skip->body['ok'], $skip->body['emailed']['sent'], $skip->body['emailed']['reason']], 'sin controlador de correo: guardado y reason off');
+    T::true(!isset($skip->body['emailed']['error']), 'la respuesta pública nunca lleva el error técnico');
 }
 
 /** El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo. */

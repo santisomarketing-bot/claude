@@ -3,12 +3,14 @@
  * [ROUTER] Rutas del API (equivalentes a workers/api/src/index.js: la web usa el mismo contrato con el Worker o con este PHP).
  *   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login
  *   USUARIO   GET /api/auth/me · POST /api/auth/logout (cierra TODAS las sesiones de esa persona) · GET /api/orders (manager: los 300 últimos; cliente: los suyos, hasta 100)
- *   MANAGER   GET /api/diag · GET /api/admin/data · POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
+ *   MANAGER   GET /api/diag · GET /api/admin/data · GET /api/messages?limit= · DELETE /api/messages/:id · POST /api/mail/test · GET /api/mail/status · POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
  *             GET|POST /api/proposals/state · GET|POST|DELETE /api/users
  *   CRON      GET /api/cron?token=… (alternativa a `php cron.php` si el hosting no deja programar por línea de comandos)
  *
- * [LIMITES] Todo límite por visitante usa Request::ipKey (una IPv6 cuenta por su /64). Acceso: 6 intentos / 10 min por visitante y correo, 30 / 10 min por visitante contra cualquier
- * cuenta y 12 FALLOS / 15 min por cuenta (de cualquier IP; solo cuentas que existen, a cero tras un acceso correcto); todos responden el mismo 429 sin distinguir si el usuario existe.
+ * [LIMITES] Todo límite por visitante usa Request::ipKey (una IPv6 cuenta por su /64). ACCESO (POST /auth/login), contra la fuerza bruta: 5 contraseñas erróneas desde el mismo visitante contra la misma
+ * cuenta bloquean ESA pareja durante 1 HORA (desde el 5.º fallo; durante el bloqueo ni la contraseña correcta entra y no se comprueba); 15 fallos en 1 hora desde un visitante con cualquier cuenta lo
+ * bloquean 1 hora; 30 fallos en 1 hora contra una cuenta (desde cualquier visitante) la bloquean 1 hora; todos cuentan también los correos que no existen y responden lo mismo (429 con retry_after y
+ * Retry-After en segundos, sin distinguir si la cuenta existe). Un acceso correcto pone a cero los contadores de esa pareja y de esa cuenta. Además, tope de inundación: 30 intentos / 10 min por visitante.
  * Un Bearer inválido (30 fallos / 10 min por visitante) y una llamada al cron con token erróneo (10 / 10 min) también acaban en 429; solo cuentan los fallos.
  * [ERRORES] Un 500 nunca enseña el mensaje interno: {"ok":false,"error":"Error interno","id":"<8 hex>"} y el detalle va a error_log con ese mismo id.
  */
@@ -16,14 +18,16 @@ namespace Torivac;
 
 final class Router
 {
-    /** Intentos de acceso por visitante y correo en 10 min (cuentan todos). */
-    const LOGIN_PER_ACCOUNT_IP = 6;
-    /** Intentos de acceso por visitante contra cualquier cuenta en 10 min. */
+    /** Intentos de acceso por visitante en 10 min (cuentan todos, también los correctos): tope de inundación. */
     const LOGIN_PER_IP = 30;
-    /** Fallos de acceso por cuenta (venga de la IP que venga) antes de bloquearla. */
-    const LOGIN_FAILS_PER_ACCOUNT = 12;
-    /** Ventana de los fallos por cuenta: 15 min. */
-    const LOGIN_ACCOUNT_WINDOW_MS = 900000;
+    /** Contraseñas erróneas seguidas de un visitante contra una misma cuenta antes de bloquear esa pareja. */
+    const LOGIN_FAILS_PAIR = 5;
+    /** Contraseñas erróneas de un visitante contra cualquier cuenta, en una hora, antes de bloquear al visitante. */
+    const LOGIN_FAILS_VISITOR = 15;
+    /** Contraseñas erróneas contra una cuenta, de cualquier visitante, en una hora, antes de bloquear la cuenta. */
+    const LOGIN_FAILS_ACCOUNT = 30;
+    /** Ventana en la que se cuentan los fallos de acceso, y duración del bloqueo: 1 hora. */
+    const LOGIN_LOCK_MS = 3600000;
     /** Fallos con un Bearer inválido por visitante antes de bloquearle. */
     const BEARER_FAILS = 30;
     /** Fallos en la llamada al cron por visitante antes de bloquearle. */
@@ -80,8 +84,23 @@ final class Router
         return new Response(['ok' => false, 'error' => 'Error interno', 'id' => $id], 500);
     }
 
-    /** El 429 de siempre: mismo texto para todos los límites de acceso, exista o no el usuario. */
+    /** El 429 de siempre (inundación, Bearer, cron): mismo texto para todos, exista o no el usuario. */
     private static function tooMany(): Response { return new Response(['ok' => false, 'error' => 'Demasiados intentos. Espera unos minutos.'], 429); }
+
+    /** Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba). */
+    public static function lockWait(int $secs): string
+    {
+        if ($secs >= 3300) return 'una hora';
+        $m = max(1, (int) ceil($secs / 60));
+        return $m === 1 ? 'un minuto' : $m . ' minutos';
+    }
+
+    /** El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos). */
+    private static function locked(int $leftMs): Response
+    {
+        $secs = max(1, (int) ceil($leftMs / 1000));
+        return new Response(['ok' => false, 'error' => 'Demasiados intentos fallidos. Vuelve a intentarlo en ' . self::lockWait($secs) . '.', 'retry_after' => $secs], 429, ['Retry-After' => (string) $secs]);
+    }
 
     /**
      * Autentica la petición. Devuelve [quién|null, respuesta 429|null]. Sin Bearer no hay nada que probar. Con Bearer, un visitante (ipKey) con 30 fallos en 10 min ni siquiera llega a
@@ -98,12 +117,18 @@ final class Router
         return [$who, null];
     }
 
-    /** GET /health: vivo, y si algún ajuste de seguridad está mal (secreto de sesión, token maestro o de cron, modo de la copia al cliente) lo dice con su NOMBRE (nunca el valor). */
+    /** GET /health: vivo, estado del correo (controlador, si está configurado y último intento SIN el texto del error) y, si algún ajuste está mal (secreto de sesión, token maestro o de cron, modo de la copia al cliente, mail.driver, order_from), lo dice con su NOMBRE (nunca el valor). */
     private static function health(): Response
     {
         $b = ['ok' => true, 'time' => Util::iso()];
         $p = Auth::configProblems();
         if (!Orders::copyModeValid()) $p[] = 'order_copy';
+        if (Mail::driverUnknown()) $p[] = 'mail.driver';
+        if (!Mail::sender()['ok']) $p[] = 'order_from';
+        $st = Mail::status();
+        $last = $st['last'];
+        if ($last !== null) unset($last['error']);                                              // /health es público: el texto del error es de GET /mail/status (solo managers)
+        $b['mail'] = ['driver' => $st['driver'], 'configured' => $st['configured'], 'last' => $last];
         if ($p) $b['config'] = ['ok' => false, 'problems' => $p];
         return new Response($b);
     }
@@ -128,7 +153,10 @@ final class Router
         return new Response($body, 200, $h);
     }
 
-    /** POST /auth/login: tres límites (visitante+correo, visitante, cuenta), contraseña con coste igual exista o no el usuario y token ligado al sid del usuario. */
+    /**
+     * POST /auth/login: contraseña con coste igual exista o no el usuario, token ligado al sid del usuario y protección contra la fuerza bruta (ver la cabecera): 5 fallos de un visitante contra una cuenta,
+     * 15 de un visitante contra cualquiera y 30 contra una cuenta desde cualquiera → bloqueo de 1 hora. Los contadores cuentan los correos que no existen igual que los que sí (la respuesta no los distingue).
+     */
     private static function login(Request $req): Response
     {
         $b = $req->json() ?? [];
@@ -142,17 +170,19 @@ final class Router
         }
         $email = strtolower(trim(substr($email, 0, 320)));
         $ipk = Request::ipKey($req->ip);
-        $a = RateLimit::hit('login', $ipk . ':' . $email, self::LOGIN_PER_ACCOUNT_IP);
-        $c = RateLimit::hit('loginip', $ipk, self::LOGIN_PER_IP);
-        if (!$a['allowed'] || !$c['allowed']) return self::tooMany();
-        $known = Users::exists($email);                                                         // el contador por cuenta solo existe para cuentas que existen (no crea ficheros por correos inventados)
-        if ($known && RateLimit::exceeded('acct', $email, self::LOGIN_FAILS_PER_ACCOUNT)) return self::tooMany();
+        if (!RateLimit::hit('loginip', $ipk, self::LOGIN_PER_IP)['allowed']) return self::tooMany();       // inundación: ni se comprueba la contraseña
+        $pair = $ipk . ':' . $email;
+        $left = max(RateLimit::lockedFor('lgpair', $pair), RateLimit::lockedFor('lgip', $ipk), RateLimit::lockedFor('lgacct', $email));
+        if ($left > 0) return self::locked($left);                                                          // bloqueado: ni la contraseña correcta entra, y no se gasta tiempo en comprobarla
         $r = Users::login($email, $pass);
         if ($r === null) {
-            if ($known) RateLimit::fail('acct', $email, self::LOGIN_ACCOUNT_WINDOW_MS);
+            RateLimit::failLock('lgpair', $pair, self::LOGIN_FAILS_PAIR, self::LOGIN_LOCK_MS, self::LOGIN_LOCK_MS);
+            RateLimit::failLock('lgip', $ipk, self::LOGIN_FAILS_VISITOR, self::LOGIN_LOCK_MS, self::LOGIN_LOCK_MS);
+            RateLimit::failLock('lgacct', $email, self::LOGIN_FAILS_ACCOUNT, self::LOGIN_LOCK_MS, self::LOGIN_LOCK_MS);
             return new Response(['ok' => false, 'error' => 'Credenciales incorrectas'], 401);
         }
-        if ($known) RateLimit::clear('acct', $email);
+        RateLimit::clear('lgpair', $pair);
+        RateLimit::clear('lgacct', $email);
         return new Response(['ok' => true, 'token' => Auth::signSession(['sub' => $r['user']['email'], 'sid' => $r['sid']], $secret), 'user' => $r['user']]);
     }
 
@@ -201,6 +231,33 @@ final class Router
         return new Response($body);
     }
 
+    /** GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite. */
+    private static function messages(Request $req): Response
+    {
+        $r = Messages::recent(Messages::limit($req->query['limit'] ?? null));
+        return new Response(['ok' => true, 'items' => $r['items'], 'truncated' => $r['truncated']], 200, ['Cache-Control' => 'no-store', 'X-Content-Type-Options' => 'nosniff']);
+    }
+
+    /**
+     * POST /mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de order_to. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
+     * proveedor falle (aquí SÍ va el `error` corto y sin secretos: es el diagnóstico); 400 si el cuerpo o `to` no valen; 429 pasadas 10 pruebas por hora y usuario. Se anota como último intento (kind test).
+     */
+    private static function mailTest(Request $req, array $who): Response
+    {
+        $b = trim($req->body) === '' ? [] : $req->json(10000);
+        if (!is_array($b) || (Util::isList($b) && $b)) return new Response(['ok' => false, 'error' => 'Petición no válida'], 400);
+        if (!array_key_exists('to', $b) || $b['to'] === null || (is_string($b['to']) && trim($b['to']) === '')) $to = Orders::team();
+        else {
+            $t = is_string($b['to']) ? Util::line($b['to'], 254) : '';
+            if (!Orders::validEmail($t)) return new Response(['ok' => false, 'error' => 'Correo de destino no válido'], 400);
+            $to = [$t];
+        }
+        if (!RateLimit::hit('mailtest', (string) $who['sub'], 10, 3600000)['allowed']) return new Response(['ok' => false, 'error' => 'Demasiadas pruebas de correo. Espera una hora.'], 429);
+        $m = Mail::testMail(Mail::driver(), Util::iso());
+        $r = Mail::send(['to' => $to, 'subject' => $m['subject'], 'html' => $m['html'], 'text' => $m['text']], 'test');
+        return new Response(['ok' => !empty($r['ok']), 'driver' => $r['driver'], 'to' => $to, 'sent' => !empty($r['ok']), 'reason' => (string) $r['reason']] + (!empty($r['error']) ? ['error' => $r['error']] : []));
+    }
+
     /** Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera). */
     private static function route(Request $req, ?array $catalog): Response
     {
@@ -228,6 +285,10 @@ final class Router
             $d = AdminData::load();
             return new Response(['ok' => true, 'proposals' => $d['proposals'], 'admin' => $d['admin']], 200, ['Cache-Control' => 'no-store']);
         }
+        if ($path === '/messages' && $m === 'GET') return self::messages($req);                                // mensajes de contacto (datos personales: solo managers)
+        if (strpos($path, '/messages/') === 0 && $m === 'DELETE') return Messages::delete(rawurldecode(substr($path, 10))) ? new Response(['ok' => true]) : new Response(['ok' => false, 'error' => 'No existe ese mensaje'], 404);
+        if ($path === '/mail/test' && $m === 'POST') return self::mailTest($req, $who);
+        if ($path === '/mail/status' && $m === 'GET') return new Response(['ok' => true] + Mail::status());
         if ($path === '/prices/refresh' && $m === 'POST') return new Response(['ok' => true, 'meta' => Sheets::sync(['reason' => 'manual:' . $who['sub'], 'mode' => ($req->json() ?? [])['mode'] ?? null])]);
         if ($path === '/prices/upload' && $m === 'POST') {
             $b = $req->json(3000000) ?? [];

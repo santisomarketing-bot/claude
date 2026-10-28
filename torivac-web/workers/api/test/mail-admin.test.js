@@ -73,14 +73,15 @@ test('M2 · GET /api/messages: un registro corrupto se omite sin romper la lista
   assert.equal(j.ok, true); assert.deepEqual(j.items.map((m) => m.id), [ids[3], ids[1], ids[0]], 'se salta los dos dañados y rellena hasta 3');
   assert.equal(j.truncated, false);
 });
-test('M2/M4 · el contenido del visitante es dato: <script> y cabeceras se devuelven tal cual dentro del JSON, nunca como HTML', async () => {
+test('M2/M4 · el contenido del visitante es dato: se devuelve tal cual dentro del JSON (JSON, nunca HTML), con el nombre en una sola línea; las etiquetas ni se aceptan', async () => {
   const { env, mgr } = await setup();
-  const xss = '<img src=x onerror=alert(1)> "comillas" & </script>';
-  const { j } = await contactPost(env, provider(), { name: 'Eva\r\nBcc: espia@evil.example', message: xss });
+  const txt = 'Precio < 50 € & "comillas" y </ese> final';
+  assert.equal((await contactPost(env, provider(), { message: '<img src=x onerror=alert(1)>' })).r.status, 400, 'una etiqueta HTML no entra');
+  const { j } = await contactPost(env, provider(), { name: 'Eva\r\nBcc: espia@evil.example', message: 'Precio < 50 € & "comillas"' });
   const r = await call(env, '/api/messages', { token: mgr });
   assert.match(r.headers.get('Content-Type'), /application\/json/); const x = await r.json();
-  assert.equal(x.items[0].message, xss, 'se guarda y se devuelve tal cual'); assert.ok(!/[\r\n]/.test(x.items[0].name), 'el nombre es de una sola línea');
-  assert.equal(x.items[0].id, j.id);
+  assert.equal(x.items[0].message, 'Precio < 50 € & "comillas"', 'se guarda y se devuelve tal cual'); assert.ok(!/[\r\n]/.test(x.items[0].name), 'el nombre es de una sola línea');
+  assert.equal(x.items[0].id, j.id); assert.ok(txt);
 });
 
 // ───────────────────────────────────────── DELETE /api/messages/:id
