@@ -119,6 +119,7 @@ final class Diag
         $k[] = is_file(dirname(__DIR__) . '/generated/catalog.json') ? self::c('catalogo', 'ok', 'Catálogo de referencias presente') : self::c('catalogo', 'fail', 'Falta api/generated/catalog.json (se genera al compilar la web)');
         foreach (self::build() as $c) $k[] = $c;
         $k[] = self::blog();
+        foreach (self::security() as $c) $k[] = $c;
         if (PHP_SAPI !== 'cli') $k = array_merge($k, self::web($req, $_SERVER));
         if ($net) {
             foreach (['https://api.resend.com' => 'Resend', 'https://oauth2.googleapis.com' => 'Google', 'https://api.anthropic.com' => 'Anthropic'] as $url => $name) {
@@ -153,6 +154,44 @@ final class Diag
         $k[] = $host === $want
             ? self::c('dominio', 'ok', 'El dominio desde el que se sirve (' . $host . ') es el del paquete')
             : self::c('dominio', 'warn', 'Esta web se sirve desde ' . Util::line($host, 80) . ' pero el paquete se compiló para ' . Util::line($want, 80) . ': las direcciones canónicas, el sitemap y los permisos CORS apuntan a otro sitio. Genera el paquete con --base=https://' . Util::line($host, 80) . ' (o sirve la web desde ' . Util::line($want, 80) . ')');
+        return $k;
+    }
+
+    /**
+     * Las medidas de acceso y de recuperación: verificación por correo (¿se pide y a quién?), adónde van los avisos de ataques repetidos, registro de actividad, copias de seguridad y CAPTCHA.
+     * @return array<int,array{id:string,status:string,msg:string}>
+     */
+    public static function security(): array
+    {
+        $k = [];
+        try {
+            $mgr = array_values(array_filter(Users::adminList(), function ($u) { return $u['role'] === 'manager'; }));
+            $exempt = count(array_filter($mgr, function ($u) { return $u['code'] === 'exempt'; }));
+            if (!Security::twoStepEnabled()) $k[] = self::c('codigo_correo', 'warn', 'La verificación por correo está desactivada (two_step.enabled = false en config.php): los managers entran solo con la contraseña');
+            elseif (!Mail::enabled()) $k[] = self::c('codigo_correo', 'warn', 'La verificación por correo está activa pero el correo no está completo, así que de momento NO se pide código a nadie. Completa el correo (Ajustes → Correo) y se activa sola');
+            elseif ($mgr && $exempt === count($mgr)) $k[] = self::c('codigo_correo', 'warn', 'La verificación por correo está activa pero todos los managers son cuentas de confianza (sin código): en la práctica nadie la pide');
+            else $k[] = self::c('codigo_correo', 'ok', 'Verificación por correo activa: ' . (count($mgr) - $exempt) . ' de ' . count($mgr) . ' managers piden código al entrar' . ($exempt ? ' (' . $exempt . ' de confianza)' : '') . '; el dispositivo se recuerda ' . Security::rememberDays() . ' días');
+            $k[] = self::c('alertas', 'ok', 'Los avisos de intentos repetidos van a ' . implode(', ', Security::alertRecipients()) . (Security::attackProtection() ? '' : ' (desactivados: two_step.on_attack = false)'));
+            $a = Audit::summary(7);
+            $k[] = is_dir(Audit::dir()) || @mkdir(Audit::dir(), Store::DIR_MODE, true) ? self::c('actividad', 'ok', 'Registro de actividad: ' . $a['events'] . ' hechos en los últimos 7 días (se conserva ' . Audit::KEEP_DAYS . ' días)') : self::c('actividad', 'warn', 'No se puede crear la carpeta del registro de actividad (' . Audit::dir() . '): revisa los permisos de la carpeta de datos');
+            $b = Backup::list();
+            if (!Backup::enabled()) $k[] = self::c('copias', 'warn', 'Las copias de seguridad automáticas están desactivadas (backup.auto = false): hazlas a mano en Ajustes → Copias de seguridad');
+            elseif (!$b) $k[] = self::c('copias', 'warn', 'Todavía no hay copias de seguridad: se hace una sola, cada semana, cuando entra alguien al panel (o con el cron). También puedes pulsar «Crear copia ahora» en Ajustes');
+            else {
+                $days = (int) floor((time() - (int) strtotime($b[0]['at'])) / 86400);
+                $k[] = $days > 10
+                    ? self::c('copias', 'warn', 'La última copia de seguridad es de hace ' . $days . ' días (' . $b[0]['at'] . '): comprueba que entra alguien al panel o que corre el cron diario')
+                    : self::c('copias', 'ok', 'Última copia de seguridad: ' . $b[0]['at'] . ' (' . $b[0]['keys'] . ' registros, ' . $b[0]['media'] . ' imágenes, ' . round($b[0]['size'] / 1048576, 1) . ' MB); se guardan las ' . Backup::KEEP . ' últimas');
+            }
+            $site = trim((string) Config::get('turnstile_sitekey', ''));
+            $sec = trim((string) Config::get('turnstile_secret', ''));
+            if ($sec !== '' && $site === '') $k[] = self::c('captcha', 'fail', 'turnstile_secret está puesto pero falta turnstile_sitekey: los formularios exigirían un CAPTCHA que la web no puede mostrar y no se podría enviar nada. Pon la clave pública (o vacía el secreto)');
+            elseif ($site !== '' && $sec === '') $k[] = self::c('captcha', 'warn', 'turnstile_sitekey está puesta pero falta turnstile_secret: el CAPTCHA no se usa hasta que pongas las dos');
+            elseif ($site !== '') $k[] = self::c('captcha', 'ok', 'CAPTCHA invisible (Cloudflare Turnstile) activo en los formularios de contacto y pedido');
+            else $k[] = self::c('captcha', 'ok', 'CAPTCHA (Cloudflare Turnstile) sin configurar: es opcional; la defensa actual es la trampa, el tiempo de relleno, el texto plano y los topes');
+        } catch (\Throwable $e) {
+            $k[] = self::c('seguridad', 'warn', 'No se pudieron comprobar las medidas de seguridad: ' . Util::line($e->getMessage(), 160));
+        }
         return $k;
     }
 
@@ -204,7 +243,7 @@ final class Diag
         if ($d === 'smtp' && strtolower((string) ($smtp['secure'] ?? 'tls')) === 'none' && !in_array(strtolower((string) ($smtp['host'] ?? '')), ['localhost', '127.0.0.1', '::1'], true)) $k[] = self::c('correo_cifrado', 'warn', 'El correo por SMTP va SIN cifrar a un servidor que no es esta máquina: usa secure = tls (587) o ssl (465)');
         $last = $st['last'];
         if ($last !== null) {
-            $kinds = ['order' => 'pedido', 'contact' => 'contacto', 'test' => 'prueba'];
+            $kinds = ['order' => 'pedido', 'contact' => 'contacto', 'test' => 'prueba', 'security' => 'seguridad'];
             $when = ($last['at'] ?? '?') . ' (' . ($kinds[$last['kind']] ?? $last['kind']) . ')';
             if (empty($last['ok'])) $k[] = self::c('correo_ultimo', 'warn', 'El último envío de correo, ' . $when . ', FALLÓ (' . ($last['reason'] ?? '?') . ')' . (!empty($last['error']) ? ': ' . $last['error'] : '') . '. Envía un correo de prueba desde Ajustes → Correo');
             elseif (!empty($last['error'])) $k[] = self::c('correo_ultimo', 'warn', 'El último envío de correo, ' . $when . ', salió con un aviso: ' . $last['error']);

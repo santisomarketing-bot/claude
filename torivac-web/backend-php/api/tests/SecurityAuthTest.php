@@ -374,8 +374,8 @@ function test_d4_sessions_are_bound_to_the_user_record()
     T::same(['ana@acme.es', 86400000, true], [$payload['sub'], $payload['exp'] - $payload['iat'], preg_match('/^[0-9a-f]{32}$/', $payload['sid']) === 1], 'sub, 24 h de vida y un sid de 16 bytes en hex');
     T::same(Users::find('ana@acme.es')['sid'], $payload['sid'], 'el sid es el del registro del usuario');
     T::same(['email', 'name', 'role', 'created'], array_keys($login->body['user']), 'la respuesta del acceso no enseña hash, sid ni sess_after');
-    T::same([['email', 'name', 'role', 'created'], ['email', 'name', 'role', 'created']], [array_keys(Users::all()[0]), array_keys(Router::handle(req('GET', '/users', null, master()))->body['users'][1])], 'ni la lista de usuarios');
-    T::same(['ok' => true, 'user' => ['sub' => 'ana@acme.es', 'role' => 'client', 'name' => 'Ana']], sa_get('/auth/me', $t1)->body, '/auth/me devuelve sub, role y name (del registro)');
+    T::same([['email', 'name', 'role', 'created'], ['email', 'name', 'role', 'created', 'two_step', 'code', 'last_login', 'reinforced_until', 'locked_for']], [array_keys(Users::all()[0]), array_keys(Router::handle(req('GET', '/users', null, master()))->body['users'][1])], 'ni la lista de usuarios (solo lo público más su estado de seguridad: nunca hash, sid ni sess_after)');
+    T::same(['ok' => true, 'user' => ['sub' => 'ana@acme.es', 'role' => 'client', 'name' => 'Ana', 'code' => 'n/a']], sa_get('/auth/me', $t1)->body, '/auth/me devuelve sub, role y name (del registro) y si pide código por correo');
     // el rol sale del registro, no del token
     $now = Util::nowMs(); $sid = $payload['sid'];
     $forged = sa_forge(['sub' => 'ana@acme.es', 'iat' => $now - 1000, 'exp' => $now + 3600000, 'sid' => $sid, 'role' => 'manager', 'name' => 'Admin']);

@@ -376,7 +376,7 @@ function test_diag_checks()
 function test_privacy_session_revocation_and_contact_escaping()
 {
     fresh();
-    \Torivac\Config::set(['prices' => ['csv_url' => 'https://sheet.test/x.csv'], 'storage_dir' => Store::root(), 'session_secret' => SECRET, 'admin_token' => MASTER_TOKEN, 'allowed_origins' => [], 'order_to' => ['info@grupotorivac.com'], 'mail' => ['driver' => 'file'], 'form_min_fill_ms' => 0]);
+    \Torivac\Config::set(['prices' => ['csv_url' => 'https://sheet.test/x.csv'], 'storage_dir' => Store::root(), 'session_secret' => SECRET, 'admin_token' => MASTER_TOKEN, 'allowed_origins' => [], 'order_to' => ['info@grupotorivac.com'], 'mail' => ['driver' => 'file'], 'form_min_fill_ms' => 0, 'two_step' => ['enabled' => false]]);
     Users::create(['email' => 'jefa@torivac.com', 'name' => 'Jefa', 'role' => 'manager', 'password' => 'Manager-Clave-2026']);
     Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => PW_ANA]);
     $tok = function ($e, $p) { return Router::handle(req('POST', '/auth/login', ['email' => $e, 'password' => $p]))->body['token']; };

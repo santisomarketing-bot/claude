@@ -3,6 +3,7 @@
 namespace Torivac\Tests;
 
 use Torivac\AdminData;
+use Torivac\Backup;
 use Torivac\Catalog;
 use Torivac\Config;
 use Torivac\Http;
@@ -27,13 +28,14 @@ function fresh(array $cfg = []): void
     $dir = sys_get_temp_dir() . '/tv-php-test-' . bin2hex(random_bytes(4));
     Store::init($dir);
     Config::set($cfg + ['storage_dir' => $dir, 'session_secret' => SECRET, 'admin_token' => MASTER_TOKEN, 'allowed_origins' => ['https://demo.example'],
-        'order_to' => ['info@grupotorivac.com', 'mzamora@torivac.com'], 'order_from' => 'Torivac Web <pedidos@grupotorivac.com>', 'mail' => ['driver' => 'file'], 'form_min_fill_ms' => 0]);        // las pruebas de formularios no mandan `_e` salvo las que prueban justo eso
+        'order_to' => ['info@grupotorivac.com', 'mzamora@torivac.com'], 'order_from' => 'Torivac Web <pedidos@grupotorivac.com>', 'mail' => ['driver' => 'file'], 'form_min_fill_ms' => 0, 'two_step' => ['enabled' => false]]);        // las pruebas de formularios no mandan `_e` salvo las que prueban justo eso; el código por correo está apagado salvo en SecurityStepTest (con la configuración normal, todo manager lo pide y las pruebas de acceso no tendrían token)
     Catalog::set(['items' => ['TT0020210' => ['n' => 'Transformador serie TT 20 VA', 'pid' => 884], 'P16633' => ['n' => 'Variador portátil', 'pid' => 16633], 'R100' => ['n' => 'Resistencia 100 W', 'pid' => 1]],
         'skus' => ['aaaa00000001' => 16633], 'rules' => [['pattern' => '^TT\d{7}$', 'pid' => 884]]]);
     Http::$mock = null;
     Http::$resolver = null;
     AdminData::setFile(null);
     RateLimit::$purgeOneIn = 0;                                                           // las pruebas no dejan que una limpieza al azar cambie lo que miran
+    Backup::$scheduling = false;                                                          // la copia semanal programada para el final de la petición no se crea al terminar el proceso de pruebas
 }
 
 /** Precios de ejemplo: TT0020210 con tramos y P16633. */

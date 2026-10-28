@@ -28,6 +28,10 @@ final class Request
     public $body = '';
     public $ip = '0.0.0.0';
     public $query = [];
+    /** Ruta del API dentro del dominio («/api», o «/prueba/api» si la web vive en una subcarpeta): es el `Path` de las cookies del API. */
+    public $apiBase = '/api';
+    /** ¿Llegó por HTTPS? (directo, o por un proxy que lo dice en X-Forwarded-Proto): decide si las cookies llevan `Secure`. */
+    public $https = false;
 
     /** construye la petición real a partir de $_SERVER; la ruta es lo que sigue a «/api» */
     public static function fromGlobals(): self
@@ -37,6 +41,8 @@ final class Request
         $uri = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
         $p = preg_match('#/api(?=/|$)#', $uri, $m, PREG_OFFSET_CAPTURE) ? substr($uri, $m[0][1] + 4) : $uri;   // «/prueba/api/prices» → «/prices» (la web puede vivir en una subcarpeta)
         $r->path = rtrim($p === '' ? '/' : $p, '/') ?: '/';
+        if (preg_match('#^((?:/[A-Za-z0-9._~-]+)*/api)(?=/|$)#', $uri, $ab)) $r->apiBase = $ab[1];
+        $r->https = (!empty($_SERVER['HTTPS']) && strtolower((string) $_SERVER['HTTPS']) !== 'off') || strtolower((string) ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '')) === 'https';
         foreach ($_SERVER as $k => $v) {
             if (Util::startsWith($k, 'HTTP_')) $r->headers[strtolower(str_replace('_', '-', substr($k, 5)))] = (string) $v;
         }
@@ -162,6 +168,16 @@ final class Request
         return $r;
     }
 
+    /** Valor de una cookie de la petición (cabecera Cookie); cadena vacía si no existe. Los valores que usa el API son hexadecimales y puntos: nada se decodifica ni se interpreta. */
+    public function cookie(string $name): string
+    {
+        foreach (explode(';', $this->header('cookie')) as $kv) {
+            $p = strpos($kv, '=');
+            if ($p !== false && trim(substr($kv, 0, $p)) === $name) return trim(substr($kv, $p + 1));
+        }
+        return '';
+    }
+
     /** Valor de una cabecera de la petición (nombre sin distinguir mayúsculas); cadena vacía si no existe. */
     public function header(string $name): string { return $this->headers[strtolower($name)] ?? ''; }
 
@@ -186,6 +202,8 @@ final class Response
     public $status;
     public $body;
     public $headers;
+    /** Ruta de un archivo que se envía tal cual en lugar del cuerpo JSON (descarga de una copia de seguridad); null en todas las demás respuestas. */
+    public $file = null;
 
     /** Respuesta con cuerpo JSON, código HTTP y cabeceras (por defecto JSON UTF-8 y sin caché). */
     public function __construct(array $body, int $status = 200, array $headers = [])
@@ -211,6 +229,7 @@ final class Response
         }
         http_response_code($status);
         foreach ($this->headers as $k => $v) header($k . ': ' . $v);
+        if ($this->file !== null && $status === 200) { header('Content-Length: ' . (string) @filesize($this->file)); @readfile($this->file); return; }
         echo $out;
     }
 }

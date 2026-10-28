@@ -90,7 +90,30 @@ return [
     // Instrucciones de precios en castellano (la IA propone; tú confirmas). Vacío = desactivado.
     'ai' => ['anthropic_api_key' => '', 'model' => 'claude-sonnet-5-5'],
 
-    // Anti-spam opcional (Cloudflare Turnstile). Vacío = desactivado.
+    // VERIFICACIÓN EN DOS PASOS POR CORREO (solo managers). Con la contraseña buena, se envía un código de 6 cifras al correo de la cuenta (vale 10 minutos) y hay que escribirlo para entrar. Marcando
+    // «recordar este dispositivo» no se vuelve a pedir en ese navegador durante `remember_days`. Solo se pide si el correo de arriba está completo (si no, nadie se queda fuera).
+    //   enabled       true (por defecto) = se pide a los managers; false = nadie lo pide (emergencia: si el correo falla y no puedes entrar, ponlo en false, entra y arregla el correo).
+    //   remember_days 30 por defecto (1 a 90; 0 = no se ofrece recordar el dispositivo).
+    //   exempt        correos que NUNCA piden código (cuentas de confianza, p. ej. la tuya como administrador): ['tu@correo.com']. También se marca en Panel → Usuarios, casilla «Código por correo».
+    //   on_attack     true (por defecto) = si una cuenta suma 3 bloqueos en 24 h, se avisa por correo (UNA vez al día) y esa cuenta pide el código en dispositivos nuevos durante 7 días.
+    'two_step' => [
+        'enabled' => true,
+        'remember_days' => 30,
+        'exempt' => [],
+        'on_attack' => true,
+    ],
+
+    // Quién recibe el aviso de intentos repetidos contra una cuenta (solo se envía si el patrón se repite). Vacío = los mismos que reciben los pedidos (order_to).
+    'alert_to' => [],
+
+    // COPIAS DE SEGURIDAD de los datos (pedidos, mensajes, usuarios, precios, propuestas, blog e imágenes). Una por semana, sola, y se guardan las 8 últimas en <carpeta de datos>/backups.
+    // Se bajan desde Panel → Ajustes → Copias de seguridad. Para restaurar: php api/tools/restore.php archivo.jsonl.gz (ver docs/SEGURIDAD.md).
+    //   auto  true (por defecto) = la copia semanal se hace sola · media  true (por defecto) = con las imágenes del blog.
+    'backup' => ['auto' => true, 'media' => true],
+
+    // CAPTCHA invisible opcional (Cloudflare Turnstile, gratuito): dash.cloudflare.com → Turnstile → Añadir sitio (modo «Gestionado» o «Invisible»). Pon LAS DOS claves o ninguna:
+    //   turnstile_sitekey = la clave pública (la ve cualquiera, va en la página) · turnstile_secret = la clave secreta (NUNCA fuera de este archivo). Solo el secreto sin la clave pública bloquearía los formularios.
+    'turnstile_sitekey' => '',
     'turnstile_secret' => '',
 
     // Para sincronizar precios con una URL si el hosting no permite cron por línea de comandos: https://dominio/api/cron?token=ESTE_VALOR

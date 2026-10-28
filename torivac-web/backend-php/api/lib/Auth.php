@@ -230,6 +230,67 @@ final class Users
         Store::locked('users', function () use ($email) { Store::delete(self::key($email)); });
     }
 
+    /** Campos de seguridad que `set` puede cambiar (el hash, el sid y la sesión tienen sus propios caminos): código por correo, época de los dispositivos recordados, protección reforzada y último acceso. */
+    private const SETTABLE = ['two_step', 'dev_epoch', 'atk_until', 'last_login'];
+
+    /** Cambia campos de seguridad de un usuario (`null` quita el campo) bajo el bloqueo de usuarios; devuelve el registro nuevo o null si no existe. */
+    public static function set(string $email, array $fields): ?array
+    {
+        $r = Store::locked('users', function () use ($email, $fields) {
+            $u = Store::get(self::key($email));
+            if (!is_array($u)) return null;
+            foreach ($fields as $k => $v) {
+                if (!in_array($k, self::SETTABLE, true)) continue;
+                if ($v === null) unset($u[$k]); else $u[$k] = $v;
+            }
+            Store::put(self::key($email), $u);
+            return $u;
+        });
+        return is_array($r) ? $r : null;
+    }
+
+    /**
+     * Lista para los managers: lo público de cada usuario más su estado de seguridad → two_step (lo guardado: true, false o null = lo normal), code ('required' pide código por correo al entrar ·
+     * 'exempt' cuenta de confianza · 'off' el código está desactivado en el servidor · 'n/a' no aplica a clientes), last_login, reinforced_until (protección reforzada tras ataques) y locked_for (segundos de bloqueo).
+     */
+    public static function adminList(): array
+    {
+        $out = [];
+        foreach (Store::keys('user:') as $k) {
+            $u = Store::get($k);
+            if (!is_array($u)) continue;
+            $atk = (int) ($u['atk_until'] ?? 0);
+            $out[] = self::pub($u) + [
+                'two_step' => array_key_exists('two_step', $u) && is_bool($u['two_step']) ? $u['two_step'] : null, 'code' => Security::codeStatus($u),
+                'last_login' => is_string($u['last_login'] ?? null) ? $u['last_login'] : null, 'reinforced_until' => $atk > Util::nowMs() ? Util::iso($atk / 1000) : null,
+                'locked_for' => (int) ceil(Security::lockLeft((string) $u['email']) / 1000),
+            ];
+        }
+        return $out;
+    }
+
+    /**
+     * Pone una contraseña nueva a una cuenta (la propia, tras comprobar la actual, o la de otra persona por un manager): mismas reglas que al crear un usuario. Cierra TODAS sus sesiones y hace que sus
+     * dispositivos recordados dejen de valer (un ladrón de contraseña no sigue dentro con lo que ya tenía).
+     * @return array{ok?:bool,error?:string,status?:int}
+     */
+    public static function setPassword(string $email, string $new): array
+    {
+        $bad = self::passwordProblem($new, $email);
+        if ($bad !== null) return ['error' => $bad, 'status' => 400];
+        $hash = Auth::hashPassword($new);                                                   // lento: fuera del bloqueo
+        $ok = Store::locked('users', function () use ($email, $hash) {
+            $u = Store::get(self::key($email));
+            if (!is_array($u)) return false;
+            $u['hash'] = $hash;
+            $u['sess_after'] = Util::nowMs();
+            $u['dev_epoch'] = (int) ($u['dev_epoch'] ?? 0) + 1;
+            Store::put(self::key($email), $u);
+            return true;
+        });
+        return $ok ? ['ok' => true] : ['error' => 'No existe ese usuario', 'status' => 404];
+    }
+
     /** Invalida TODOS los tokens emitidos hasta ahora para ese usuario (sess_after = ahora). Devuelve false si el usuario no existe. */
     public static function revokeSessions(string $email): bool
     {

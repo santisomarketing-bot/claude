@@ -1,10 +1,10 @@
 <?php
 /**
  * [ROUTER] Rutas del API (equivalentes a workers/api/src/index.js: la web usa el mismo contrato con el Worker o con este PHP).
- *   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login
- *   USUARIO   GET /api/auth/me · POST /api/auth/logout (cierra TODAS las sesiones de esa persona) · GET /api/orders (manager: los 300 últimos; cliente: los suyos, hasta 100)
+ *   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login · POST /api/auth/verify · POST /api/auth/resend (código por correo) · GET /api/backups/<archivo>?t=… (descarga firmada)
+ *   USUARIO   GET /api/auth/me · POST /api/auth/logout (cierra TODAS las sesiones de esa persona) · POST /api/auth/password (cambiar la propia) · POST /api/auth/devices/forget · GET /api/orders (manager: los 300 últimos; cliente: los suyos, hasta 100)
  *   MANAGER   GET /api/diag · GET /api/admin/data · GET /api/messages?limit= · DELETE /api/messages/:id · POST /api/mail/test · GET /api/mail/status · POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
- *             GET|POST /api/proposals/state · GET|POST|DELETE /api/users · /api/blog/… (entradas del blog e imágenes: ver BlogApi.php)
+ *             GET|POST /api/proposals/state · GET|POST|DELETE /api/users · POST /api/users/:correo/unlock|two-step|password · GET /api/activity · /api/backups (copias de seguridad) · /api/blog/… (entradas del blog e imágenes: ver BlogApi.php)
  *   CRON      GET /api/cron?token=… (alternativa a `php cron.php` si el hosting no deja programar por línea de comandos)
  *
  * [LIMITES] Todo límite por visitante usa Request::ipKey (una IPv6 cuenta por su /64). ACCESO (POST /auth/login), contra la fuerza bruta: 5 contraseñas erróneas desde el mismo visitante contra la misma
@@ -41,9 +41,13 @@ final class Router
     /** Ficheros de pedidos (los más recientes) que se miran como mucho al listar los de un cliente. */
     const ORDERS_CLIENT_SCAN = 3000;
 
+    /** Quién hace la petición que se está atendiendo (lo pone route() al autenticar; handle() lo usa para anotar la acción en el registro de actividad). */
+    private static $actor = null;
+
     /** Atiende una petición: comprueba el origen (CORS), despacha a la ruta y convierte las excepciones en respuestas JSON con su código. */
     public static function handle(Request $req, ?array $catalog = null): Response
     {
+        self::$actor = null;
         $cors = [];
         $origin = $req->header('origin');
         if ($origin !== '' && !Cors::allowed($origin, $req->header('host'))) return new Response(['ok' => false, 'error' => 'Origen no permitido'], 403);
@@ -54,6 +58,7 @@ final class Router
         } catch (\Throwable $e) {
             $r = self::failure($e);
         }
+        Audit::fromRequest($req, self::$actor, $r);                                             // acciones de los managers que salieron bien → registro de actividad (nunca rompe la petición)
         if ($cors) {
             $r->headers += $cors;
             $r->headers['Vary'] = self::mergeVary((string) ($r->headers['Vary'] ?? ''), 'Origin');
@@ -130,7 +135,9 @@ final class Router
         if ($last !== null) unset($last['error']);                                              // /health es público: el texto del error es de GET /mail/status (solo managers)
         $b['mail'] = ['driver' => $st['driver'], 'configured' => $st['configured'], 'last' => $last];
         if ($p) $b['config'] = ['ok' => false, 'problems' => $p];
-        $b['features'] = ['blog' => true];                                                      // el panel enseña el blog solo si el servidor lo trae (el Worker de Cloudflare no)
+        $b['features'] = ['blog' => true, 'activity' => true, 'backups' => true, 'two_step' => Security::twoStepEnabled() && Mail::enabled()];      // el panel enseña estas partes solo si el servidor las trae (el Worker de Cloudflare no)
+        $site = trim((string) Config::get('turnstile_sitekey', ''));
+        if ($site !== '' && trim((string) Config::get('turnstile_secret', '')) !== '' && preg_match('/^[0-9A-Za-z_-]{8,80}$/D', $site)) $b['features']['turnstile'] = ['sitekey' => $site];   // la clave PÚBLICA del CAPTCHA: los formularios cargan el widget solo si hay clave y secreto
         return new Response($b);
     }
 
@@ -157,6 +164,8 @@ final class Router
     /**
      * POST /auth/login: contraseña con coste igual exista o no el usuario, token ligado al sid del usuario y protección contra la fuerza bruta (ver la cabecera): 5 fallos de un visitante contra una cuenta,
      * 15 de un visitante contra cualquiera y 30 contra una cuenta desde cualquiera → bloqueo de 1 hora. Los contadores cuentan los correos que no existen igual que los que sí (la respuesta no los distingue).
+     * Con la contraseña buena, si la cuenta tiene que dar un código por correo (Security::codeReason) y este navegador no es un dispositivo recordado, NO se abre sesión: se manda el código por correo y se
+     * responde { ok, step: 'code', challenge, hint, ttl, resend_after, remember_days }; la sesión se abre en POST /auth/verify. Cada bloqueo nuevo se anota y se cuenta para la protección contra ataques repetidos.
      */
     private static function login(Request $req): Response
     {
@@ -177,14 +186,95 @@ final class Router
         if ($left > 0) return self::locked($left);                                                          // bloqueado: ni la contraseña correcta entra, y no se gasta tiempo en comprobarla
         $r = Users::login($email, $pass);
         if ($r === null) {
-            RateLimit::failLock('lgpair', $pair, self::LOGIN_FAILS_PAIR, self::LOGIN_LOCK_MS, self::LOGIN_LOCK_MS);
-            RateLimit::failLock('lgip', $ipk, self::LOGIN_FAILS_VISITOR, self::LOGIN_LOCK_MS, self::LOGIN_LOCK_MS);
-            RateLimit::failLock('lgacct', $email, self::LOGIN_FAILS_ACCOUNT, self::LOGIN_LOCK_MS, self::LOGIN_LOCK_MS);
+            $lp = RateLimit::failLock('lgpair', $pair, self::LOGIN_FAILS_PAIR, self::LOGIN_LOCK_MS, self::LOGIN_LOCK_MS);
+            $lv = RateLimit::failLock('lgip', $ipk, self::LOGIN_FAILS_VISITOR, self::LOGIN_LOCK_MS, self::LOGIN_LOCK_MS);
+            $la = RateLimit::failLock('lgacct', $email, self::LOGIN_FAILS_ACCOUNT, self::LOGIN_LOCK_MS, self::LOGIN_LOCK_MS);
+            Security::noteAttempt($email, $ipk);
+            if ($lp > 0 || $la > 0 || $lv > 0) Audit::log('login.locked', null, $req, Util::line($email, 120) . ($la > 0 ? ' (la cuenta, desde varias direcciones)' : ($lp > 0 ? '' : ' (el visitante, con varias cuentas)')));
+            elseif (Audit::worthLoggingFail($ipk, $email)) Audit::log('login.fail', null, $req, Util::line($email, 120));
+            if ($lp > 0 || $la > 0) Security::lockoutHappened($email, $req, $la > 0 ? Security::ATTACK_LOCKS : 1);
             return new Response(['ok' => false, 'error' => 'Credenciales incorrectas'], 401);
         }
         RateLimit::clear('lgpair', $pair);
         RateLimit::clear('lgacct', $email);
-        return new Response(['ok' => true, 'token' => Auth::signSession(['sub' => $r['user']['email'], 'sid' => $r['sid']], $secret), 'user' => $r['user']]);
+        $u = Users::find($email);
+        $why = $u === null ? null : Security::codeReason($u);
+        if ($why !== null && !Security::deviceTrusted($req, $u)) {
+            $pl = max(RateLimit::lockedFor('pinpair', $pair), RateLimit::lockedFor('pinacct', $email));
+            if ($pl > 0) return self::locked($pl);                                                          // demasiados códigos erróneos: mientras dure el bloqueo no se manda otro por correo
+            $c = Security::startChallenge($u, $req, $why);
+            if (isset($c['error'])) return new Response(['ok' => false, 'error' => $c['error'], 'code' => $c['code'] ?? ''], $c['status'] ?? 503);
+            return new Response(['ok' => true, 'step' => 'code', 'challenge' => $c['id'], 'hint' => $c['hint'], 'ttl' => Security::PIN_TTL, 'resend_after' => (int) (Security::PIN_RESEND_WAIT_MS / 1000), 'remember_days' => Security::rememberDays()]);
+        }
+        return self::enter($req, $r['user'], $r['sid'], $secret, $why !== null ? 'login.device' : 'login.ok', $why !== null ? 'dispositivo recordado' : '');
+    }
+
+    /** Abre la sesión: anota el acceso (y el último acceso de la persona), programa la copia de seguridad semanal si es manager y devuelve el token con el usuario. */
+    private static function enter(Request $req, array $user, string $sid, string $secret, string $action, string $detail = ''): Response
+    {
+        $who = ['sub' => $user['email'], 'role' => $user['role']];
+        Audit::log($action, $who, $req, $detail);
+        try { Users::set($user['email'], ['last_login' => Util::iso()]); } catch (\Throwable $e) { /* el último acceso es informativo */ }
+        if ($user['role'] === 'manager') Backup::scheduleWeekly();
+        return new Response(['ok' => true, 'token' => Auth::signSession(['sub' => $user['email'], 'sid' => $sid], $secret), 'user' => $user]);
+    }
+
+    /**
+     * POST /auth/verify { challenge, code, remember? }: comprueba el código que llegó por correo y, si vale, abre la sesión. Con `remember: true` deja una cookie de dispositivo (HttpOnly, firmada) para no volver a
+     * pedirlo en este navegador durante `two_step.remember_days`. Errores: 401 código incorrecto (con `left`, los intentos que quedan), 410 caducado, 429 bloqueado.
+     */
+    private static function verifyCode(Request $req): Response
+    {
+        $b = $req->json(4000) ?? [];
+        $id = is_string($b['challenge'] ?? null) ? $b['challenge'] : '';
+        $code = is_string($b['code'] ?? null) ? substr($b['code'], 0, 40) : '';
+        $v = Security::verify($id, $code, $req);
+        if (isset($v['error'])) {
+            $body = ['ok' => false, 'error' => $v['error'], 'code' => $v['code'] ?? ''] + (isset($v['left']) ? ['left' => $v['left']] : []) + (isset($v['retry_after']) ? ['retry_after' => $v['retry_after']] : []);
+            return new Response($body, $v['status'] ?? 400, isset($v['retry_after']) ? ['Retry-After' => (string) $v['retry_after']] : []);
+        }
+        $u = Users::find($v['email']);
+        $secret = Auth::sessionSecret();
+        if ($u === null || $secret === null || empty($u['sid'])) return new Response(['ok' => false, 'error' => 'Credenciales incorrectas'], 401);
+        $pub = ['email' => $u['email'], 'name' => $u['name'], 'role' => $u['role'], 'created' => $u['created']];
+        $res = self::enter($req, $pub, (string) $u['sid'], $secret, 'login.pin_ok', $v['why'] === 'attack' ? 'protección reforzada' : '');
+        if (($b['remember'] ?? false) === true && ($dev = Security::issueDevice($u)) !== null) {
+            $res->headers['Set-Cookie'] = Security::cookieHeader($dev, $req);
+            Audit::log('login.device', ['sub' => $u['email'], 'role' => $u['role']], $req, Security::rememberDays() . ' días');
+        }
+        return $res;
+    }
+
+    /** POST /auth/resend { challenge }: manda un código nuevo por correo (el anterior deja de valer); como mucho 2 reenvíos y con espera entre ellos. */
+    private static function resendCode(Request $req): Response
+    {
+        $b = $req->json(2000) ?? [];
+        $r = Security::resend(is_string($b['challenge'] ?? null) ? $b['challenge'] : '', $req);
+        return isset($r['error']) ? new Response(['ok' => false, 'error' => $r['error'], 'code' => $r['code'] ?? ''], $r['status'] ?? 400) : new Response(['ok' => true, 'resend_after' => (int) (Security::PIN_RESEND_WAIT_MS / 1000)]);
+    }
+
+    /**
+     * POST /auth/password { current, password }: cambia la contraseña PROPIA (pide la actual: 5 fallos por hora y cuenta → 429). Cierra todas las sesiones (también esta: hay que entrar de nuevo) y olvida los dispositivos
+     * recordados. La contraseña nueva sigue las mismas reglas que al crear un usuario.
+     */
+    private static function changePassword(Request $req, array $who): Response
+    {
+        if (!empty($who['master'])) return new Response(['ok' => false, 'error' => 'El token maestro no tiene contraseña'], 400);
+        $b = $req->json(4000) ?? [];
+        $cur = is_string($b['current'] ?? null) ? $b['current'] : '';
+        $new = is_string($b['password'] ?? null) ? $b['password'] : '';
+        $email = (string) $who['sub'];
+        $left = RateLimit::lockedFor('pwcur', $email);
+        if ($left > 0) return self::locked($left);
+        if (Users::check($email, $cur) === null) {
+            RateLimit::failLock('pwcur', $email, 5, self::LOGIN_LOCK_MS, self::LOGIN_LOCK_MS);
+            return new Response(['ok' => false, 'error' => 'La contraseña actual no es correcta'], 400);
+        }
+        RateLimit::clear('pwcur', $email);
+        $r = Users::setPassword($email, $new);
+        if (isset($r['error'])) return new Response(['ok' => false, 'error' => $r['error']], $r['status'] ?? 400);
+        Audit::log('user.password', $who, $req, 'la propia');
+        return new Response(['ok' => true, 'relogin' => true]);
     }
 
     /** GET /cron?token=…: sincroniza los precios si el token es el de cron_token (≥ 24 caracteres); 10 fallos / 10 min por visitante → 429; sin cron_token válido la URL está desactivada (401). */
@@ -259,6 +349,29 @@ final class Router
         return new Response(['ok' => !empty($r['ok']), 'driver' => $r['driver'], 'to' => $to, 'sent' => !empty($r['ok']), 'reason' => (string) $r['reason']] + (!empty($r['error']) ? ['error' => $r['error']] : []));
     }
 
+    /**
+     * POST /users/:correo/unlock { clear_reinforced? } quita el bloqueo de esa cuenta (y, si se pide, su protección reforzada) · /two-step { enabled } pide o no el código por correo a esa cuenta (false = cuenta de confianza)
+     * · /password { password } le pone una contraseña nueva (cierra sus sesiones y olvida sus dispositivos). Las hace un manager; 404 si la cuenta no existe.
+     */
+    private static function userAction(Request $req, string $email, string $action, array $b, array $who): Response
+    {
+        $email = strtolower(trim($email));
+        if (Users::find($email) === null) return new Response(['ok' => false, 'error' => 'No existe ese usuario'], 404);
+        if ($action === 'unlock') {
+            Security::unlock($email, ($b['clear_reinforced'] ?? false) === true);
+            return new Response(['ok' => true]);
+        }
+        if ($action === 'two-step') {
+            if (!is_bool($b['enabled'] ?? null)) return new Response(['ok' => false, 'error' => 'Indica enabled: true o false'], 400);
+            $u = Users::set($email, ['two_step' => $b['enabled'] ? null : false]);
+            return new Response(['ok' => true, 'code' => Security::codeStatus((array) $u)]);
+        }
+        $r = Users::setPassword($email, is_string($b['password'] ?? null) ? $b['password'] : '');
+        if (isset($r['error'])) return new Response(['ok' => false, 'error' => $r['error']], $r['status'] ?? 400);
+        Audit::log('user.password', $who, $req, 'nueva contraseña para ' . Util::line($email, 120));
+        return new Response(['ok' => true]);
+    }
+
     /** Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera). */
     private static function route(Request $req, ?array $catalog): Response
     {
@@ -269,15 +382,24 @@ final class Router
         if ($path === '/order' && $m === 'POST') return Orders::handleOrder($req, $req->json(), $catalog);
         if ($path === '/contact' && $m === 'POST') return Orders::handleContact($req, $req->json());
         if ($path === '/auth/login' && $m === 'POST') return self::login($req);
+        if ($path === '/auth/verify' && $m === 'POST') return self::verifyCode($req);
+        if ($path === '/auth/resend' && $m === 'POST') return self::resendCode($req);
+        if ($m === 'GET' && Backup::isDownloadPath($path)) return Backup::download($req);                  // descarga firmada de una copia de seguridad: el enlace lo da un manager y vale 2 minutos
         if ($path === '/cron' && $m === 'GET') return self::cronByUrl($req);
         [$who, $blocked] = self::authenticate($req);
         if ($blocked) return $blocked;
-        if ($path === '/auth/me') return $who ? new Response(['ok' => true, 'user' => $who]) : new Response(['ok' => false], 401);
+        self::$actor = $who;
+        if ($path === '/auth/me') return $who ? new Response(['ok' => true, 'user' => $who + (empty($who['master']) ? ['code' => Security::codeStatus((array) Users::find((string) $who['sub']))] : [])]) : new Response(['ok' => false], 401);
         if (!$who) return new Response(['ok' => false, 'error' => 'No autorizado'], 401);
         if ($path === '/auth/logout' && $m === 'POST') {                                        // invalida TODOS los tokens anteriores de esta persona
             if (!empty($who['master'])) return new Response(['ok' => false, 'error' => 'El token maestro no tiene sesión que cerrar'], 400);
             Users::revokeSessions($who['sub']);
             return new Response(['ok' => true]);
+        }
+        if ($path === '/auth/password' && $m === 'POST') return self::changePassword($req, $who);
+        if ($path === '/auth/devices/forget' && $m === 'POST') {                                // olvida los dispositivos recordados de esta persona (vuelven a pedirle el código)
+            if (!empty($who['master'])) return new Response(['ok' => false, 'error' => 'El token maestro no tiene dispositivos'], 400);
+            return Security::forgetDevices((string) $who['sub']) ? new Response(['ok' => true]) : new Response(['ok' => false, 'error' => 'No existe ese usuario'], 404);
         }
         if ($path === '/orders' && $m === 'GET') return self::orders($who);
         if (!Auth::requireRole($who, 'manager')) return new Response(['ok' => false, 'error' => 'Solo para managers'], 403);
@@ -328,7 +450,14 @@ final class Router
             return new Response(['ok' => true, 'state' => Util::obj($state)]);
         }
         if ($path === '/blog' || strpos($path, '/blog/') === 0) return BlogApi::handle($req, $who);       // blog del panel (entradas e imágenes): solo managers
-        if ($path === '/users' && $m === 'GET') return new Response(['ok' => true, 'users' => Users::all()]);
+        if ($path === '/users' && $m === 'GET') return new Response(['ok' => true, 'users' => Users::adminList(), 'two_step' => ['enabled' => Security::twoStepEnabled(), 'mail' => Mail::enabled(), 'remember_days' => Security::rememberDays()]]);
+        if (preg_match('#^/users/([^/]+)/(unlock|two-step|password)$#', $path, $um) && $m === 'POST') return self::userAction($req, rawurldecode($um[1]), $um[2], $req->json() ?? [], $who);
+        if ($path === '/activity' && $m === 'GET') {                                            // registro de actividad del panel (solo managers)
+            $q = $req->query;
+            $r = Audit::read((int) ($q['days'] ?? 7), (int) ($q['limit'] ?? 300), ['u' => is_string($q['u'] ?? null) ? $q['u'] : '', 'cat' => is_string($q['cat'] ?? null) ? $q['cat'] : '', 'q' => is_string($q['q'] ?? null) ? $q['q'] : '']);
+            return new Response(['ok' => true, 'items' => $r['items'], 'truncated' => $r['truncated'], 'keep_days' => Audit::KEEP_DAYS], 200, ['Cache-Control' => 'no-store', 'X-Content-Type-Options' => 'nosniff']);
+        }
+        if ($path === '/backups' || strpos($path, '/backups/') === 0) return Backup::handle($req, $who);       // copias de seguridad: listar, crear, enlace de descarga y borrar (solo managers)
         if ($path === '/users' && $m === 'POST') {
             $r = Users::create($req->json() ?? []);
             return isset($r['error']) ? new Response(['ok' => false, 'error' => $r['error']], $r['status'] ?? 400) : new Response(['ok' => true, 'user' => $r['user']], 201);
@@ -337,10 +466,10 @@ final class Router
         return new Response(['ok' => false, 'error' => 'No encontrado'], 404);
     }
 
-    /** sincroniza los precios (cron diario) y limpia lo caducado (también si la hoja se rechaza: esa limpieza no depende de la hoja) */
+    /** sincroniza los precios (cron diario), hace la copia de seguridad semanal si toca y limpia lo caducado, también si la hoja se rechaza (esa limpieza no depende de la hoja) */
     public static function cron(): array
     {
         try { return Sheets::sync(['reason' => 'cron']); }
-        finally { Store::purge(); }
+        finally { Store::purge(); Audit::purge(); Backup::maybeWeekly('cron'); }
     }
 }
