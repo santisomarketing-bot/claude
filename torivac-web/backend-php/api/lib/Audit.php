@@ -33,7 +33,7 @@ final class Audit
     const LABELS = [
         'login.ok' => 'Entró al panel', 'login.fail' => 'Contraseña incorrecta', 'login.locked' => 'Acceso bloqueado una hora', 'login.pin_sent' => 'Código enviado por correo',
         'login.pin_ok' => 'Entró con código', 'login.pin_fail' => 'Código incorrecto', 'login.device' => 'Dispositivo recordado', 'logout' => 'Cerró sesión', 'devices.forget' => 'Olvidó sus dispositivos',
-        'alert.repeated' => 'Aviso: intentos repetidos', 'user.create' => 'Usuario creado', 'user.delete' => 'Usuario borrado', 'user.unlock' => 'Cuenta desbloqueada', 'user.two_step' => 'Cambió el código por correo',
+        'alert.repeated' => 'Aviso: intentos repetidos', 'user.create' => 'Usuario creado', 'user.delete' => 'Usuario borrado', 'user.unlock' => 'Cuenta desbloqueada', 'user.two_step' => 'Cambió el código por correo', 'user.password' => 'Cambió una contraseña',
         'prices.upload' => 'Subió una hoja de precios', 'prices.refresh' => 'Sincronizó los precios', 'prices.ai_apply' => 'Aplicó cambios de precios (IA)', 'prices.sync' => 'Sincronización automática de precios',
         'proposal.state' => 'Decidió una propuesta', 'blog.create' => 'Creó una entrada', 'blog.update' => 'Guardó una entrada', 'blog.delete' => 'Borró una entrada', 'blog.image_upload' => 'Subió una imagen',
         'blog.image_delete' => 'Borró una imagen', 'message.delete' => 'Borró un mensaje', 'mail.test' => 'Envió un correo de prueba', 'backup.create' => 'Creó una copia de seguridad',

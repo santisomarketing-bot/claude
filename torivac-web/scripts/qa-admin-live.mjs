@@ -70,7 +70,7 @@ console.log('\n1) acceso');
   ok(/incorrect/i.test(await page.locator('[data-err]').innerText()), 'contraseña errónea → mensaje del servidor');
   await page.fill('[name=pass]', 'Manager-Clave-2026'); await page.click('button[type=submit]');
   await page.waitForSelector('.side nav a');
-  ok((await navs(page)).length === 10 && (await navs(page)).some((n) => /Blog/.test(n)), `manager: ${(await navs(page)).join(' · ')}`);
+  ok((await navs(page)).length === 11 && (await navs(page)).some((n) => /Blog/.test(n)) && (await navs(page)).some((n) => /Actividad/.test(n)), `manager: ${(await navs(page)).join(' · ')}`);
   await page.waitForFunction(() => document.querySelectorAll('.kpi').length === 4, null, { timeout: 5000 }).catch(() => {});      // los indicadores se pintan al llegar los pedidos
   ok(await page.locator('.kpi').count() === 4, 'Resumen con 4 indicadores');
   ok(/1/.test(await page.locator('.kpi').first().innerText()), 'cuenta el pedido hecho desde la web');
@@ -132,15 +132,20 @@ console.log('\n4) instrucción en castellano con IA: propone → confirma → ap
 
 console.log('\n5) usuarios y salir');
 { const { ctx, page } = await newPage(); await login(page, 'jefa@torivac.com', 'Manager-Clave-2026');
-  await page.click('.side nav a[href="#usuarios"]'); await page.waitForSelector('[data-new-user]');
+  await page.click('.side nav a[href="#usuarios"]'); await page.waitForSelector('[data-sec-new-user]');
   ok((await page.locator('table.spec tbody tr').count()) === 4, '4 usuarios');
-  await page.fill('[data-new-user] [name=name]', 'Nuevo Cliente'); await page.fill('[data-new-user] [name=email]', 'nuevo@cliente.es'); await page.fill('[data-new-user] [name=password]', 'Clave-Nueva-2026'); await page.click('[data-new-user] button[type=submit]');
+  await page.fill('[data-sec-new-user] [name=name]', 'Nuevo Cliente'); await page.fill('[data-sec-new-user] [name=email]', 'nuevo@cliente.es'); await page.fill('[data-sec-new-user] [name=password]', 'Clave-Nueva-2026'); await page.click('[data-sec-new-user] button[type=submit]');
   await page.waitForFunction(() => document.querySelectorAll('table.spec tbody tr').length === 5);
   ok(true, 'usuario creado (5)');
   const ok2 = await fetch(API + '/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: 'nuevo@cliente.es', password: 'Clave-Nueva-2026' }) }).then((r) => r.json());
   ok(ok2.ok === true && ok2.user.role === 'client', 'el usuario nuevo puede entrar como cliente');
-  page.once('dialog', (d) => d.accept()); await page.click('[data-del-user="nuevo@cliente.es"]'); await page.waitForFunction(() => document.querySelectorAll('table.spec tbody tr').length === 4);
+  page.once('dialog', (d) => d.accept()); await page.click('[data-sec-del-user="nuevo@cliente.es"]'); await page.waitForFunction(() => document.querySelectorAll('table.spec tbody tr').length === 4);
   ok(true, 'usuario borrado (4)');
+  await page.click('.side nav a[href="#actividad"]'); await page.waitForSelector('#main h1:has-text("Actividad")');
+  if (be.kind === 'php') { await page.waitForSelector('[data-sec-rows] tr'); ok(/Entró al panel/.test(await page.locator('[data-sec-rows]').innerText()) && /Usuario creado/.test(await page.locator('[data-sec-rows]').innerText()), 'Actividad (servidor PHP): se ve quién entró y quién creó el usuario'); }
+  else ok(/solo está disponible con el servidor PHP/.test(await page.locator('#main .notice').innerText()), 'Actividad (Worker de Cloudflare): lo dice con claridad en vez de romperse');
+  await page.click('.side nav a[href="#ajustes"]'); await page.waitForSelector('[data-mail-test-form]');
+  ok(be.kind === 'php' ? (await page.locator('[data-sec-account]').count()) === 1 && (await page.locator('[data-sec-mode=backups]').count()) === 1 : (await page.locator('[data-sec-account]').count()) === 0 && (await page.locator('[data-sec-mode=backups]').count()) === 0, be.kind === 'php' ? 'Ajustes (servidor PHP): salen «Tu cuenta y tu seguridad» y las copias' : 'Ajustes (Worker): no salen paneles que el Worker no tiene');
   await page.click('[data-logout]'); await page.waitForSelector('[data-login]'); ok(true, 'salir devuelve al acceso');
   await ctx.close(); }
 

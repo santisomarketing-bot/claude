@@ -1,14 +1,15 @@
 /**
  * [ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales.
  *
- *  Roles:  manager → Resumen · Pedidos · Mensajes · Precios · Propuestas · Contenido · Blog · Usuarios · Estadísticas · Ajustes
+ *  Roles:  manager → Resumen · Pedidos · Mensajes · Precios · Propuestas · Contenido · Blog · Usuarios · Actividad · Estadísticas · Ajustes
  *          cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
  *  El rol lo decide SIEMPRE el servidor (token firmado); este fichero solo decide qué menús mostrar. Un cliente que llamase a la API de un manager recibiría 403.
+ *  Acceso en dos pasos: con la contraseña buena el servidor puede pedir un código que llega por correo (POST /api/auth/login → {step:'code'}); aquí se pinta esa segunda pantalla y se abre la sesión con POST /api/auth/verify.
  *
  *  Se carga en lugar de admin.js cuando la web se compila con TORIVAC_API (ver site/build.mjs). Sin API, el demo (admin.js) sigue funcionando solo.
  *
- * Secciones: [HTTP] [AUTH] [UTIL] [VIEWS] [PRICES] [AI] [USERS] [PROPOSALS] [BLOG] [ROUTER]
- * Depende de: quote.js (TV.Quote, TV.api, TV.csvParse), pdf.js (TV.makeQuotePdf), SheetJS (XLSX), admin-proposals.js (TV.AdminProposals: vista Propuestas), blog-markdown.js y admin-blog.js (TV.BlogMarkdown y TV.AdminBlog: vista Blog). Las propuestas (TV.proposals) y los datos de cobertura (TV.admin) NO van en la web pública: se piden al servidor, solo a managers (GET /api/admin/data).
+ * Secciones: [HTTP] [AUTH] [UTIL] [VIEWS] [PRICES] [AI] [PROPOSALS] [BLOG] [SECURITY] [ROUTER]
+ * Depende de: quote.js (TV.Quote, TV.api, TV.csvParse), pdf.js (TV.makeQuotePdf), SheetJS (XLSX), admin-proposals.js (TV.AdminProposals: vista Propuestas), blog-markdown.js y admin-blog.js (TV.BlogMarkdown y TV.AdminBlog: vista Blog), admin-security.js (TV.AdminSecurity: Usuarios, Actividad y los paneles de seguridad de Ajustes). Las propuestas (TV.proposals) y los datos de cobertura (TV.admin) NO van en la web pública: se piden al servidor, solo a managers (GET /api/admin/data).
  */
 (function () {
   'use strict';
@@ -30,16 +31,44 @@
   // ───────────────────────────────────────── [AUTH] sesión en sessionStorage (se borra al cerrar la pestaña)
   /** Sesión actual {token, email, name, role} o null. El rol del servidor ('client') se muestra como 'cliente'. */
   function session() { try { return JSON.parse(sessionStorage.getItem('tv_live') || 'null'); } catch (e) { return null; } }
-  /** Entra con correo y contraseña. Devuelve Promise<string|null>: null si ha ido bien, o el mensaje de error. */
+  /** Segunda pantalla del acceso: null mientras se pide la contraseña; {challenge, hint, days, resendAt} cuando el servidor ha mandado un código por correo y falta escribirlo. Solo en memoria. */
+  var pending = null;
+  /** Aviso (una sola vez) en la pantalla de acceso: «Contraseña cambiada…», «El código ha caducado…». */
+  var loginNote = '';
+  /** Guarda la sesión que devuelve el servidor (token y datos de la persona). El rol del servidor ('client') se muestra como 'cliente'. */
+  function openSession(r) { sessionStorage.setItem('tv_live', JSON.stringify({ token: r.token, email: r.user.email, name: r.user.name, role: r.user.role === 'manager' ? 'manager' : 'cliente' })); }
+  /**
+   * Entra con correo y contraseña. Devuelve Promise<string|null>: null si ha ido bien (sesión abierta) o si el servidor pide un código por correo (queda en `pending` y se pinta la pantalla del código), o el mensaje de error.
+   */
   function login(email, pass) {
     return http('POST', '/api/auth/login', { email: email, password: pass }).then(function (r) {
-      if (!r.ok) return r.error || 'No se pudo entrar';
-      sessionStorage.setItem('tv_live', JSON.stringify({ token: r.token, email: r.user.email, name: r.user.name, role: r.user.role === 'manager' ? 'manager' : 'cliente' }));
+      if (r.ok && r.step === 'code' && r.challenge) { pending = { challenge: r.challenge, hint: r.hint || '', days: Number(r.remember_days) || 30, resendAt: Date.now() + (Number(r.resend_after) || 45) * 1000 }; return null; }
+      if (!r.ok || !r.token) return r.error || 'No se pudo entrar';
+      openSession(r);
       return null;
     });
   }
+  /** Comprueba el código escrito (POST /api/auth/verify). Promise<{done}|{back,msg}|{msg}>: sesión abierta · el código ya no sirve (se vuelve a la contraseña con el aviso) · error para mostrar sin salir de la pantalla. */
+  function verifyCode(code, remember) {
+    return http('POST', '/api/auth/verify', { challenge: pending.challenge, code: code, remember: !!remember }).then(function (r) {
+      if (r.ok && r.token) { pending = null; openSession(r); return { done: true }; }
+      if (r.status === 410 || r.code === 'expired' || r.code === 'exhausted') { pending = null; return { back: true, msg: r.error || 'El código ya no vale. Entra de nuevo.' }; }
+      var left = r.code === 'wrong' && typeof r.left === 'number' ? '. Te quedan ' + r.left + (r.left === 1 ? ' intento.' : ' intentos.') : '';
+      return { msg: (r.error || 'No se pudo comprobar el código') + left };
+    });
+  }
+  /** Pide otro código por correo (el anterior deja de valer). Promise<{ok}|{back,msg}|{msg}>. */
+  function resendCode() {
+    return http('POST', '/api/auth/resend', { challenge: pending.challenge }).then(function (r) {
+      if (r.ok) { pending.resendAt = Date.now() + (Number(r.resend_after) || 45) * 1000; return { ok: true }; }
+      if (r.status === 410 || r.code === 'expired') { pending = null; return { back: true, msg: r.error || 'El código ha caducado. Entra de nuevo.' }; }
+      return { msg: r.error || 'No se pudo reenviar el código' };
+    });
+  }
   /** Borra la sesión de este navegador y vuelve a la pantalla de acceso (sin avisar al servidor: lo usa también un 401, cuando el servidor ya la ha dado por caducada). */
-  function endSession() { sessionStorage.removeItem('tv_live'); location.hash = ''; render(); }
+  function endSession() { sessionStorage.removeItem('tv_live'); pending = null; location.hash = ''; render(); }
+  /** Vuelve a la pantalla de acceso con un aviso (tras cambiar la contraseña propia: el servidor ya cerró todas las sesiones). */
+  function relogin(msg) { loginNote = msg || ''; endSession(); }
   /** Cierra la sesión: el servidor invalida TODOS los tokens anteriores de esta persona (POST /api/auth/logout; si no responde, igualmente se sale de este navegador). */
   function logout() {
     var s = session(); if (!s) return endSession();
@@ -61,13 +90,13 @@
   /** Fecha y hora local (es-ES) de una fecha ISO; «—» si viene vacía. */
   function when(iso) { return iso ? new Date(iso).toLocaleString('es-ES') : '—'; }
   /** Descarga `blob` como archivo `name` con un enlace temporal y libera la URL a los 800 ms. */
-  function download(blob, name) { var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 800); }
+  function download(blob, name) { var a = document.createElement('a'); a.hidden = true; a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 800); }
   /** Aviso de error del servidor con el mensaje devuelto. */
   function fail(r) { toast('⚠ ' + ((r && r.error) || 'Error')); }
 
   // ───────────────────────────────────────── [VIEWS] cada vista devuelve Promise<string> (HTML)
   var NAV = {
-    manager: [['resumen', 'Resumen', '◧'], ['pedidos', 'Pedidos', '☰'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['blog', 'Blog', '✍'], ['usuarios', 'Usuarios', '☺'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
+    manager: [['resumen', 'Resumen', '◧'], ['pedidos', 'Pedidos', '☰'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['blog', 'Blog', '✍'], ['usuarios', 'Usuarios', '☺'], ['actividad', 'Actividad', '☷'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
     cliente: [['presupuestador', 'Presupuestador', '✚'], ['mis', 'Mis presupuestos', '☰'], ['lista', 'Lista de precios', '€'], ['estadisticas', 'Estadísticas', '◔']],
   };
   var V = {};
@@ -154,19 +183,21 @@
   function mailPanel(ms) {
     if (!ms.ok) return '';
     var l = ms.last;
-    var last = l ? '<p class="small ' + (l.ok ? 'muted' : 'notice') + '">Último envío: ' + esc(when(l.at)) + ' (' + esc({ contact: 'contacto', order: 'pedido', test: 'prueba' }[l.kind] || l.kind || '') + ') · ' + (l.ok ? 'correcto' : 'falló: ' + esc(l.error || l.reason || '')) + '</p>' : '<p class="muted small">Todavía no se ha enviado ningún correo.</p>';
+    var last = l ? '<p class="small ' + (l.ok ? 'muted' : 'notice') + '">Último envío: ' + esc(when(l.at)) + ' (' + esc({ contact: 'contacto', order: 'pedido', test: 'prueba', security: 'seguridad' }[l.kind] || l.kind || '') + ') · ' + (l.ok ? 'correcto' : 'falló: ' + esc(l.error || l.reason || '')) + '</p>' : '<p class="muted small">Todavía no se ha enviado ningún correo.</p>';
     return '<section class="panel"><h2>Correo</h2><p>Controlador: <strong>' + esc(ms.driver || 'ninguno') + '</strong> · ' + (ms.configured ? '<span class="tag">✓ completo</span>' : '<span class="tag warn">⚠ incompleto</span>') + '</p>' +
       (ms.problems && ms.problems.length ? '<p class="notice small">Falta configurar: <span class="mono">' + ms.problems.map(esc).join('</span>, <span class="mono">') + '</span></p>' : '') + last +
       '<form class="form" data-mail-test-form><label>Enviar un correo de prueba a<input type="email" name="to" placeholder="tu@correo.com (vacío: a los destinatarios del pedido)" autocomplete="email"></label><p><button class="btn" type="submit">Enviar correo de prueba</button></p><div data-mail-result role="status" aria-live="polite"></div></form></section>';
   }
 
-  /** Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag). */
+  /** Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), tu cuenta y las copias de seguridad (admin-security.js), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag). */
   V.ajustes = function () {
     return Promise.all([http('GET', '/api/auth/me'), http('GET', '/api/diag'), http('GET', '/api/mail/status')]).then(function (a) {
-      var r = a[0], dg = a[1] || {}, u = r.user || {}, ms = a[2] || {};
+      return TV.AdminSecurity.settingsPanels(PCTX, (a[0] || {}).user).then(function (sec) { return a.concat([sec]); });
+    }).then(function (a) {
+      var r = a[0], dg = a[1] || {}, u = r.user || {}, ms = a[2] || {}, sec = a[3] || '';
       var sym = { ok: '✓', warn: '⚠', fail: '✗' };
       var diag = dg.ok && dg.checks ? '<section class="panel"><h2>Diagnóstico del servidor</h2><p class="small ' + (dg.fail ? 'notice' : 'muted') + '">' + (dg.fail ? esc(dg.fail) + ' problema(s) impiden que funcione' : 'Puede funcionar') + (dg.warn ? ' · ' + esc(dg.warn) + ' aviso(s)' : '') + '</p><ul class="diag">' + dg.checks.map(function (c) { return '<li><span aria-hidden="true">' + sym[c.status] + '</span> <span class="vh">' + esc(c.status) + ': </span>' + esc(c.msg) + '</li>'; }).join('') + '</ul></section>' : '';
-      return '<h1>Ajustes</h1><section class="panel"><h2>Tu sesión</h2><p>' + esc(u.name || '') + ' · <span class="mono">' + esc(u.sub || u.email || '') + '</span> · ' + esc(u.role || '') + '</p></section>' + mailPanel(ms) + '<section class="panel"><h2>Destinatarios del pedido</h2><p>Se configuran en el servidor, no en la web: en cPanel, <span class="mono">order_to</span> de <span class="mono">api/config.php</span>; en Cloudflare, la variable <span class="mono">ORDER_TO</span> del Worker. La web pública solo muestra el primero (' + esc(((TV.meta && TV.meta.recipients) || [])[0] || '—') + ') por si falla el envío.</p></section>' + diag;
+      return '<h1>Ajustes</h1><section class="panel"><h2>Tu sesión</h2><p>' + esc(u.name || '') + ' · <span class="mono">' + esc(u.sub || u.email || '') + '</span> · ' + esc(u.role || '') + '</p></section>' + sec + mailPanel(ms) + '<section class="panel"><h2>Destinatarios del pedido</h2><p>Se configuran en el servidor, no en la web: en cPanel, <span class="mono">order_to</span> de <span class="mono">api/config.php</span>; en Cloudflare, la variable <span class="mono">ORDER_TO</span> del Worker. La web pública solo muestra el primero (' + esc(((TV.meta && TV.meta.recipients) || [])[0] || '—') + ') por si falla el envío.</p></section>' + diag;
     });
   };
 
@@ -253,8 +284,8 @@
   }
 
   // ───────────────────────────────────────── [PROPOSALS] propuestas de mejora: se editan, se prueban en la página real y se aplican (admin-proposals.js); aprobar NO publica nada por sí solo
-  /** Lo que el módulo de propuestas necesita del panel: llamadas al servidor, avisos, fechas y los datos de gestión. */
-  var PCTX = { http: function (m, p, b) { return http(m, p, b); }, toast: function (m) { toast(m); }, when: function (i) { return when(i); }, adminData: function () { return adminData(); } };
+  /** Lo que los módulos del panel (propuestas, blog, seguridad) necesitan de él: llamadas al servidor, avisos, fechas, los datos de gestión, la sesión, repintar la vista y volver a la pantalla de acceso con un aviso. */
+  var PCTX = { http: function (m, p, b) { return http(m, p, b); }, toast: function (m) { toast(m); }, when: function (i) { return when(i); }, adminData: function () { return adminData(); }, session: function () { return session(); }, render: function () { render(); }, relogin: function (m) { relogin(m); } };
   /** Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js). */
   V.propuestas = function () { return TV.AdminProposals.view(PCTX); };
 
@@ -262,15 +293,11 @@
   /** Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección. */
   V.blog = function (s, arg) { return TV.AdminBlog.view(PCTX, arg || ''); };
 
-  // ───────────────────────────────────────── [USERS] altas y bajas de usuarios (managers y clientes)
-  /** Vista «Usuarios» (manager): lista de usuarios con alta y baja de managers y clientes. */
-  V.usuarios = function () {
-    return http('GET', '/api/users').then(function (r) {
-      var rows = (r.users || []).map(function (u) { return '<tr><td>' + esc(u.name) + '</td><td class="mono">' + esc(u.email) + '</td><td>' + (u.role === 'manager' ? 'Manager' : 'Cliente') + '</td><td>' + esc(when(u.created)) + '</td><td><button class="btn sm ghost" data-del-user="' + esc(u.email) + '">Borrar</button></td></tr>'; }).join('');
-      return '<h1>Usuarios</h1><div class="tbl-wrap"><table class="spec"><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Alta</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-        '<section class="panel"><h2>Nuevo usuario</h2><form class="form" data-new-user><div class="grid2"><label>Nombre<input name="name" required></label><label>Correo<input name="email" type="email" required></label></div><div class="grid2"><label>Rol<select name="role"><option value="client">Cliente</option><option value="manager">Manager</option></select></label><label>Contraseña (mín. 12)<input name="password" type="password" minlength="12" required autocomplete="new-password"></label></div><p><button class="btn" type="submit">Crear usuario</button></p></form></section>';
-    });
-  };
+  // ───────────────────────────────────────── [SECURITY] usuarios (con su código por correo, bloqueos y contraseñas), actividad del panel y, en Ajustes, tu cuenta y las copias de seguridad (admin-security.js)
+  /** Vista «Usuarios» (manager): lista con último acceso, código por correo y bloqueos, alta, baja y contraseña nueva a una cuenta. */
+  V.usuarios = function () { return TV.AdminSecurity.usersView(PCTX); };
+  /** Vista «Actividad» (manager): quién entró y quién cambió qué, con filtros y descarga en CSV. */
+  V.actividad = function () { return TV.AdminSecurity.activityView(PCTX); };
 
   // ───────────────────────────────────────── [ROUTER]
   /** Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF. */
@@ -282,7 +309,6 @@
     else if (b.hasAttribute('data-apply-ai')) applyProposal();
     else if (b.hasAttribute('data-apply-upload')) applyUpload();
     else if (b.hasAttribute('data-discard')) { draftRows = null; proposal = null; root.querySelector('[data-draft]').innerHTML = ''; }
-    else if (b.hasAttribute('data-del-user')) { if (confirm('¿Borrar a ' + b.getAttribute('data-del-user') + '?')) http('DELETE', '/api/users/' + encodeURIComponent(b.getAttribute('data-del-user'))).then(function (r) { if (!r.ok) return fail(r); toast('Usuario borrado'); render(); }); }
     else if (b.hasAttribute('data-del-msg')) { if (confirm('¿Borrar este mensaje? No se puede deshacer.')) http('DELETE', '/api/messages/' + encodeURIComponent(b.getAttribute('data-del-msg'))).then(function (r) { if (!r.ok) return fail(r); toast('Mensaje borrado'); render(); }); }
     else if (b.hasAttribute('data-export-orders')) download(new Blob([JSON.stringify(cache.orders, null, 1)], { type: 'application/json' }), 'pedidos.json');
     else if (b.hasAttribute('data-pdf')) {
@@ -317,24 +343,66 @@
     });
     if (root.querySelector('[data-pa-list]')) TV.AdminProposals.bind(root, PCTX);
     if (root.querySelector('[data-bl-root]')) TV.AdminBlog.bind(root, PCTX);
-    var nu = root.querySelector('[data-new-user]');
-    if (nu) nu.addEventListener('submit', function (e) {
-      e.preventDefault(); var f = e.target;
-      http('POST', '/api/users', { name: f.name.value, email: f.email.value, role: f.role.value, password: f.password.value }).then(function (r) { if (!r.ok) return fail(r); toast('Usuario creado'); render(); });
+    if (root.querySelector('[data-sec-root],[data-sec-account]')) TV.AdminSecurity.bind(root, PCTX);
+  }
+  /** Logotipo de las pantallas de acceso (el mismo que el menú, sobre fondo oscuro). */
+  function loginLogo() { return '<img src="' + esc(document.getElementById('logo-src').value) + '" alt="Torivac" width="84" height="84" style="background:#100404;padding:10px;margin-bottom:16px;height:84px;width:84px">'; }
+  /** Muestra un error en el párrafo [data-err] de la pantalla de acceso (role=alert: lo anuncia el lector de pantalla). */
+  function loginError(msg) { var err = root.querySelector('[data-err]'); err.textContent = msg; err.hidden = false; }
+  /** Pantalla de acceso, primer paso: correo y contraseña. Si el servidor pide un código por correo, `login` deja el reto en `pending` y se repinta con la segunda pantalla. */
+  function renderLogin() {
+    var note = loginNote;                                // se queda hasta que la persona vuelva a entrar: un repintado (p. ej. por el cambio de #) no lo borra
+    root.innerHTML = '<main class="login"><form class="panel form" data-login>' + loginLogo() + '<h1>Acceso</h1>' + (note ? '<p class="notice" role="status">' + esc(note) + '</p>' : '') + '<label>Correo<input name="email" type="email" autocomplete="username" required></label><label>Contraseña<input name="pass" type="password" autocomplete="current-password" required></label><p class="err" data-err hidden role="alert"></p><button class="btn" type="submit">Entrar</button></form></main>';
+    root.querySelector('[data-login]').addEventListener('submit', function (e) {
+      e.preventDefault(); var f = e.target, btn = f.querySelector('button[type=submit]'); root.querySelector('[data-err]').hidden = true; btn.disabled = true; loginNote = '';
+      login(f.email.value, f.pass.value).then(function (msg) { if (!msg) { location.hash = ''; render(); } else { btn.disabled = false; loginError(msg); } });
     });
   }
+  /** Segundo paso del acceso: el código de 6 cifras que llegó por correo, «recordar este dispositivo», «Reenviar» (con la espera que marca el servidor) y «Volver». */
+  function renderCode() {
+    var p = pending;
+    root.innerHTML = '<main class="login"><form class="panel form" data-code-form novalidate>' + loginLogo() + '<h1>Código de verificación</h1>' +
+      '<p>Te hemos mandado un código de 6 cifras a <strong class="mono">' + esc(p.hint) + '</strong>. Escríbelo aquí: caduca en 10 minutos y solo vale una vez.</p>' +
+      '<label>Código<input name="code" type="text" class="code-input" inputmode="numeric" autocomplete="one-time-code" maxlength="12" required></label>' +
+      '<label class="check"><input type="checkbox" name="remember" checked><span>Recordar este dispositivo ' + Number(p.days) + ' días <span class="muted small">(desmárcalo si es un ordenador compartido)</span></span></label>' +
+      '<p class="err" data-err hidden role="alert"></p><button class="btn" type="submit">Entrar</button>' +
+      '<p class="login-alt"><button class="btn sm ghost" type="button" data-code-resend></button> <button class="btn sm ghost" type="button" data-code-back>Volver</button></p></form></main>';
+    var f = root.querySelector('[data-code-form]'), rs = f.querySelector('[data-code-resend]'), submit = f.querySelector('button[type=submit]');
+    /** Pone en el botón de reenviar la espera que falta (o lo activa); se detiene solo cuando la pantalla se repinta. */
+    var tick = function () {
+      if (!document.body.contains(rs) || !pending) return clearInterval(renderCode._t);
+      var left = Math.ceil((pending.resendAt - Date.now()) / 1000);
+      rs.disabled = left > 0; rs.textContent = left > 0 ? 'Reenviar el código (' + left + ' s)' : 'Reenviar el código';
+      if (left <= 0) clearInterval(renderCode._t);
+    };
+    clearInterval(renderCode._t); renderCode._t = setInterval(tick, 1000); tick();
+    /** Vuelve a la primera pantalla (con un aviso, si lo hay). */
+    var back = function (msg) { pending = null; loginNote = msg || ''; render(); };
+    f.addEventListener('submit', function (e) {
+      e.preventDefault(); root.querySelector('[data-err]').hidden = true; submit.disabled = true;
+      verifyCode(f.code.value, f.remember.checked).then(function (r) {
+        if (r.done) { location.hash = ''; return render(); }
+        if (r.back) return back(r.msg);
+        submit.disabled = false; loginError(r.msg); f.code.select();
+      });
+    });
+    rs.addEventListener('click', function () {
+      rs.disabled = true;
+      resendCode().then(function (r) {
+        if (r.back) return back(r.msg);
+        if (r.msg) { loginError(r.msg); return tick(); }
+        root.querySelector('[data-err]').hidden = true; toast('Código reenviado'); clearInterval(renderCode._t); renderCode._t = setInterval(tick, 1000); tick(); f.code.focus();
+      });
+    });
+    f.querySelector('[data-code-back]').addEventListener('click', function () { back(''); });
+    f.code.focus();
+  }
+
   var renderSeq = 0;
-  /** Pinta la pantalla de acceso o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra. */
+  /** Pinta la pantalla de acceso (contraseña, o el código por correo si falta) o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra. */
   function render() {
     var seq = ++renderSeq, s = session(), logo = esc(document.getElementById('logo-src').value);
-    if (!s) {
-      root.innerHTML = '<main class="login"><form class="panel form" data-login><img src="' + logo + '" alt="Torivac" width="84" height="84" style="background:#100404;padding:10px;margin-bottom:16px;height:84px;width:84px"><h1>Acceso</h1><label>Correo<input name="email" type="email" autocomplete="username" required></label><label>Contraseña<input name="pass" type="password" autocomplete="current-password" required></label><p class="err" data-err hidden role="alert"></p><button class="btn" type="submit">Entrar</button></form></main>';
-      root.querySelector('[data-login]').addEventListener('submit', function (e) {
-        e.preventDefault(); var f = e.target, err = root.querySelector('[data-err]'); err.hidden = true;
-        login(f.email.value, f.pass.value).then(function (msg) { if (!msg) { location.hash = ''; render(); } else { err.textContent = msg; err.hidden = false; } });
-      });
-      return;
-    }
+    if (!s) { if (pending) renderCode(); else renderLogin(); return; }
     var nav = NAV[s.role], raw = (location.hash || '#').slice(1) || nav[0][0], cur = raw.split('/')[0], arg = raw.slice(cur.length + 1); if (!nav.some(function (n) { return n[0] === cur; })) { cur = nav[0][0]; arg = ''; }
     root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + logo + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : 'Cliente') + '</span></div><nav aria-label="Panel">' +
       nav.map(function (n) { return '<a href="#' + n[0] + '"' + (n[0] === cur ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + n[2] + '</span>' + esc(n[1]) + '</a>'; }).join('') + '</nav><div class="side-bot"><a href="../index.html">← Ir a la web</a><button class="btn sm ghost" data-logout type="button">Salir (' + esc(s.name || s.email) + ')</button></div></aside><main class="main" id="main"><p class="notice">Cargando…</p></main></div>';

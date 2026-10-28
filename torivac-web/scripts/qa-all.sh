@@ -41,6 +41,7 @@ paso "Paquete del hosting tal como se sube"     node scripts/qa-package.mjs
 paso "Apache real + PHP-FPM (.htaccess de verdad)" node scripts/qa-apache.mjs
 paso "Blog en Apache real (SEO, sitemap, llms)"   node scripts/qa-blog-apache.mjs
 paso "Blog: editor del panel en un navegador"   node scripts/qa-blog-panel.mjs
+paso "Acceso en dos pasos y seguridad del panel" node scripts/qa-security-panel.mjs
 paso "Actualizar sin caché vieja"               node scripts/qa-update.mjs
 if [ "$RAPIDO" = 0 ]; then
   paso "UX de todas las páginas (escritorio)"   node scripts/qa-ux.mjs

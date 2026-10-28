@@ -99,3 +99,10 @@ details.prop [aria-invalid=true]{border-color:var(--err);outline:2px solid var(-
 .bl-thumb[aria-pressed=true]{border-color:var(--copper);background:#fff3e2}
 @media (max-width:1100px){.bl-text{grid-template-columns:minmax(0,1fr)}}
 
+/* ---- Acceso en dos pasos y seguridad (admin-live.js, admin-security.js) ---- */
+.admin .form input[type=password],.admin .form input[type=search]{width:100%;padding:.7rem .85rem;border:1px solid var(--line-strong);border-radius:var(--radius);background:#fff;font-weight:400}
+.login .code-input{font-family:var(--font-mono);font-size:var(--fs-5);letter-spacing:.35em;text-align:center;padding:.5rem .85rem}
+.login .login-alt{display:flex;flex-wrap:wrap;gap:var(--s-2);margin:0}
+.login .notice{margin:0}
+.spec select{padding:.35rem .5rem;border:1px solid var(--line-strong);border-radius:var(--radius);background:#fff;font:inherit;font-size:var(--fs-0)}
+.main .sec-sub{font-size:var(--fs-3);margin:var(--s-3) 0 0}

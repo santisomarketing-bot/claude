@@ -104,7 +104,8 @@ async function startPhp({ dist, orderTo, orderFrom, port: wanted }) {
   await new Promise((r) => mock.listen(0, '127.0.0.1', r));
   const MOCK = `http://127.0.0.1:${mock.address().port}`;
   const cfg = { storage_dir: store, form_min_fill_ms: 0, session_secret: SESSION_SECRET, admin_token: MASTER_TOKEN, allowed_origins: [], order_to: orderTo.split(','), order_from: orderFrom, cron_token: CRON_TOKEN,
-    mail: { driver: 'resend', resend_api_key: 're_test', api_base: MOCK }, prices: { csv_url: `${MOCK}/precios.csv`, decimals: 4 }, ai: { anthropic_api_key: 'sk-test', api_base: MOCK, model: 'claude-sonnet-5-5' } };
+    mail: { driver: 'resend', resend_api_key: 're_test', api_base: MOCK }, prices: { csv_url: `${MOCK}/precios.csv`, decimals: 4 }, ai: { anthropic_api_key: 'sk-test', api_base: MOCK, model: 'claude-sonnet-5-5' },
+    two_step: { enabled: false } };          // el código por correo se prueba aparte (scripts/qa-security-panel.mjs): aquí los managers entran con la contraseña sola
   /** Escribe api/config.php con la configuración de pruebas (PHP la lee en cada petición). */
   const writeCfg = () => fs.writeFileSync(path.join(apiDir, 'config.php'), `<?php\nreturn json_decode(<<<'JSON'\n${JSON.stringify(cfg, null, 1)}\nJSON\n, true);\n`);
   writeCfg();

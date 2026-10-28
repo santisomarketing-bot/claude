@@ -413,6 +413,20 @@ function test_step_audit_log()
 }
 
 /** SS13 · Tamaño y limpieza del registro: un día no pasa de 2 MB (con una línea de aviso) y lo de más de 180 días se borra. */
+/** Toda acción que el servidor anota tiene su nombre en castellano (si no, el panel enseñaría un código como «user.password»). Se buscan en el código fuente, así que una acción nueva sin nombre lo rompe. */
+function test_step_audit_every_action_has_a_label()
+{
+    $codes = ['login.ok', 'login.device', 'login.pin_ok'];                     // las que se pasan en una variable (Router::enter)
+    foreach (glob(dirname(__DIR__) . '/lib/*.php') ?: [] as $f) {
+        $src = (string) file_get_contents($f);
+        if (preg_match_all("/Audit::log\\('([a-z_]+(?:\\.[a-z_]+)?)'/", $src, $m)) $codes = array_merge($codes, $m[1]);
+        if (basename($f) === 'Audit.php' && preg_match_all("/return \\['([a-z_]+(?:\\.[a-z_]+)?)', /", $src, $m)) $codes = array_merge($codes, $m[1]);
+    }
+    $codes = array_values(array_unique($codes));
+    T::true(count($codes) >= 25, 'se encuentran las acciones que se anotan (' . count($codes) . ')');
+    T::same([], array_values(array_filter($codes, function ($c) { return Audit::label($c) === $c; })), 'todas tienen nombre en castellano para el panel');
+}
+
 function test_step_audit_caps_and_purge()
 {
     ss_setup();

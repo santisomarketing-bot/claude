@@ -2,6 +2,11 @@
 // llamadas al API con la sesión de un manager recién creado y una imagen PNG válida de cualquier tamaño. Lo usan scripts/qa-blog-apache.mjs (peticiones directas) y scripts/qa-blog-panel.mjs (navegador).
 //   const d = await deployPackage({ staging, local })    local = true: la web es http://127.0.0.1:<puerto> (para abrirla con un navegador); si no, https://example.test (o pruebas.example.test) detrás de un «proxy» (cabecera X-Forwarded-Proto)
 //   d.req(ruta, { method, headers, body }) → { s, h, t, b }     d.api(ruta, { method, body, token }) → { s, j, h }     d.token (sesión del manager jefa@torivac.com)     d.BASE · d.www · d.ap · await d.stop()
+//   Código por correo: el paquete se despliega con la verificación en dos pasos DESACTIVADA (two_step.enabled = false) para que las pruebas que no hablan de ella entren con la contraseña sola.
+//   Para probarla: deployPackage({ …, config: { two_step: { enabled: true } } }) o, ya desplegado, d.setConfig({ two_step: {…} }) (sustituye ese apartado entero de config.php).
+//   d.outbox() → los correos guardados (controlador «file») · d.lastCode(correo) → el último código de 6 cifras que se mandó a ese correo, o null
+//   d.kvKeys(prefijo) · d.kvGet(clave) · d.kvEdit(clave, fn): mirar y tocar el almacén de datos (p. ej. adelantar el reloj de un código: kvEdit('pin:<id>', (v) => ({ ...v, last: v.last - 60000 })))
+//   d.api(ruta, { headers: { 'x-forwarded-for': '203.0.113.7' } }) se hace pasar por otro visitante.
 //   png(w, h, [r, g, b]) → Buffer con un PNG válido
 import path from 'node:path';
 import fs from 'node:fs';
@@ -62,7 +67,7 @@ export const MASTER = 'master-test-' + 'a1b2c3d4e5f6a7b8c9d0'.repeat(2);
 export const MANAGER_PASS = 'Manager-Clave-2026';
 
 /** Despliega el paquete en un Apache real → { www, ap, port, host, BASE, req, api, token, stop } (ver la cabecera). */
-export async function deployPackage({ staging = false, local = false } = {}) {
+export async function deployPackage({ staging = false, local = false, config = null } = {}) {
   const port = await freePort();
   const host = local ? `127.0.0.1:${port}` : staging ? 'pruebas.example.test' : 'example.test';
   const BASE = local ? `http://${host}` : `https://${host}`;
@@ -70,18 +75,36 @@ export async function deployPackage({ staging = false, local = false } = {}) {
   execFileSync('python3', ['-I', path.join(ROOT, 'scripts/package_cpanel.py'), `--base=${BASE}`, ...(staging || local ? ['--staging'] : []), `--out=${OUT}`, '--keep', '--allow-dirty'], { stdio: 'pipe' });
   const www = path.join(OUT, fs.readdirSync(OUT).find((d) => fs.statSync(path.join(OUT, d)).isDirectory()));
   spawnSync('chmod', ['-R', 'a+rX', www]);
-  const ap = await startApache({ docroot: www, port });
-  const cfg = { storage_dir: ap.dataDir, session_secret: 'session-test-' + 'x'.repeat(40), admin_token: MASTER, order_to: ['info@grupotorivac.com'], order_from: 'Torivac Web <pedidos@grupotorivac.com>', mail: { driver: 'file' }, form_min_fill_ms: 0 };
-  fs.writeFileSync(path.join(www, 'api/config.php'), `<?php\nreturn json_decode(<<<'JSON'\n${JSON.stringify(cfg)}\nJSON\n, true);\n`); fs.chmodSync(path.join(www, 'api/config.php'), 0o644);
+  const ap = await startApache({ docroot: www, port, phpIni: { 'opcache.enable': '0' } });          // sin caché de código: un config.php reescrito vale en la petición siguiente
+  let cfg = { storage_dir: ap.dataDir, session_secret: 'session-test-' + 'x'.repeat(40), admin_token: MASTER, order_to: ['info@grupotorivac.com'], order_from: 'Torivac Web <pedidos@grupotorivac.com>', mail: { driver: 'file' }, form_min_fill_ms: 0, two_step: { enabled: false } };
+  /** Escribe api/config.php con `c`. */
+  const writeCfg = (c) => { fs.writeFileSync(path.join(www, 'api/config.php'), `<?php\nreturn json_decode(<<<'JSON'\n${JSON.stringify(c)}\nJSON\n, true);\n`); fs.chmodSync(path.join(www, 'api/config.php'), 0o644); };
+  writeCfg(cfg);
+  /** Cambia apartados de config.php (cada clave de primer nivel que se pase sustituye a la de antes). */
+  const setConfig = (patch) => { cfg = { ...cfg, ...patch }; writeCfg(cfg); };
+  /** Correos guardados por el controlador «file», del más antiguo al más reciente (por la hora del fichero: el nombre solo tiene segundos) → [{ file, to, subject, text, html }] */
+  const outbox = () => { const dir = path.join(ap.dataDir, 'outbox'); try { return fs.readdirSync(dir).filter((f) => f.endsWith('.json')).map((f) => ({ f, t: fs.statSync(path.join(dir, f)).mtimeMs })).sort((a, b) => a.t - b.t || (a.f < b.f ? -1 : 1)).map(({ f }) => ({ file: f, ...JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')) })); } catch { return []; } };
+  /** Fichero del almacén de una clave (p. ej. «pin:<id>»): kv/<clave con % >.json. */
+  const kvFile = (key) => path.join(ap.dataDir, 'kv', encodeURIComponent(key) + '.json');
+  /** Claves del almacén que empiezan por `prefix`, más recientes primero. */
+  const kvKeys = (prefix) => { try { return fs.readdirSync(path.join(ap.dataDir, 'kv')).filter((f) => f.endsWith('.json')).map((f) => decodeURIComponent(f.slice(0, -5))).filter((k) => k.startsWith(prefix)).sort((a, b) => fs.statSync(kvFile(b)).mtimeMs - fs.statSync(kvFile(a)).mtimeMs); } catch { return []; } };
+  /** Lee el valor guardado en una clave del almacén, o null. */
+  const kvGet = (key) => { try { return JSON.parse(fs.readFileSync(kvFile(key), 'utf8')).v; } catch { return null; } };
+  /** Cambia el valor de una clave del almacén con `fn(valor) → valor nuevo` (para adelantar el reloj de un código, por ejemplo). */
+  const kvEdit = (key, fn) => { const o = JSON.parse(fs.readFileSync(kvFile(key), 'utf8')); o.v = fn(o.v); fs.writeFileSync(kvFile(key), JSON.stringify(o)); };
+  /** El último código de acceso (6 cifras, sin espacio) que se mandó a `email`, o null si no se mandó ninguno. */
+  const lastCode = (email) => { const m = outbox().reverse().find((x) => [].concat(x.to || []).map((t) => String(t).toLowerCase()).includes(String(email).toLowerCase()) && /Tu código de acceso/.test(x.text || '')); const c = m && /^ {4}(\d{3}) (\d{3})$/m.exec(m.text); return c ? c[1] + c[2] : null; };
   /** Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b } */
   const req = (p, { method = 'GET', headers = {}, body = null } = {}) => new Promise((res, rej) => {
     const r = http.request({ host: '127.0.0.1', port, path: p, method, agent: false, headers: { host, ...(local ? {} : { 'x-forwarded-proto': 'https' }), ...(body ? { 'content-length': Buffer.byteLength(body) } : {}), ...headers } }, (rs) => { const ch = []; rs.on('data', (d) => ch.push(d)); rs.on('end', () => { const b = Buffer.concat(ch); res({ s: rs.statusCode, h: rs.headers, t: b.toString('utf8'), b }); }); });
     r.on('error', rej); if (body) r.write(body); r.end();
   });
-  /** Llamada JSON al API → { s, j, h } */
-  const api = async (p, { method = 'GET', body, token } = {}) => { const r = await req('/api' + p, { method, headers: { 'content-type': 'application/json', origin: BASE, ...(token ? { authorization: 'Bearer ' + token } : {}) }, body: body === undefined ? null : JSON.stringify(body) }); let j = null; try { j = JSON.parse(r.t); } catch { /* no es JSON */ } return { s: r.s, j, h: r.h }; };
+  /** Llamada JSON al API → { s, j, h }. `headers` añade cabeceras (p. ej. X-Forwarded-For: 203.0.113.7 para hacerse pasar por otro visitante: el Apache de pruebas confía en la conexión local). */
+  const api = async (p, { method = 'GET', body, token, headers = {} } = {}) => { const r = await req('/api' + p, { method, headers: { 'content-type': 'application/json', origin: BASE, ...(token ? { authorization: 'Bearer ' + token } : {}), ...headers }, body: body === undefined ? null : JSON.stringify(body) }); let j = null; try { j = JSON.parse(r.t); } catch { /* no es JSON */ } return { s: r.s, j, h: r.h }; };
   let r = await api('/users', { method: 'POST', token: MASTER, body: { email: 'jefa@torivac.com', name: 'Jefa', role: 'manager', password: MANAGER_PASS } });
   if (r.s !== 201) throw new Error('no se pudo crear el manager: ' + r.s + ' ' + JSON.stringify(r.j));
   r = await api('/auth/login', { method: 'POST', body: { email: 'jefa@torivac.com', password: MANAGER_PASS } });
-  return { www, ap, port, host, BASE, req, api, token: r.j.token, stop: async () => { await ap.stop(); fs.rmSync(OUT, { recursive: true, force: true }); } };
+  const token = r.j.token;
+  if (config) setConfig(config);
+  return { www, ap, port, host, BASE, req, api, token, setConfig, outbox, lastCode, kvKeys, kvGet, kvEdit, stop: async () => { await ap.stop(); fs.rmSync(OUT, { recursive: true, force: true }); } };
 }
