@@ -107,6 +107,17 @@ try {
   ok(files.length > 0, `el almacén escribe dentro de api/storage/kv (${files.length} ficheros)`);
   for (const f of files.slice(0, 3)) { const x = await get('/api/storage/kv/' + encodeURIComponent(f)); ok(!/luis|Luis|torivac|"v"/.test(x.t) && [401, 403, 404].includes(x.s), `api/storage/kv/${f.slice(0, 30)}… no se sirve (${x.s})`); }
   const sx = await get('/api/storage/'); ok([401, 403, 404].includes(sx.s), `api/storage/ no se lista (${sx.s})`);
+  // la copia de seguridad y el registro de actividad también viven en la carpeta de datos: tampoco se bajan por la web
+  await api('/users', { method: 'POST', token: MASTER, body: { email: 'jefa2@torivac.com', name: 'Jefa Dos', role: 'manager', password: 'Manager-Clave-2026' } });
+  r = await api('/auth/login', { method: 'POST', body: { email: 'jefa2@torivac.com', password: 'Manager-Clave-2026' } });
+  const tok2 = r.j && r.j.token;
+  r = await api('/backups', { method: 'POST', token: tok2, body: {} });
+  ok(r.s === 200 && r.j && r.j.backup && r.j.backup.file, 'con el almacén dentro de la web se puede hacer una copia de seguridad desde el panel');
+  const bf = r.j && r.j.backup && r.j.backup.file, day = new Date().toISOString().slice(0, 10);
+  ok(!!bf && fs.existsSync(path.join(inside, 'backups', bf)) && fs.existsSync(path.join(inside, 'audit', day + '.jsonl')), 'la copia y el registro de actividad existen en la carpeta de datos');
+  for (const p of ['/api/storage/backups/' + bf, '/api/storage/backups/' + bf + '.json', '/api/storage/audit/' + day + '.jsonl', '/api/storage/audit/']) {
+    const x = await get(p); ok([401, 403, 404].includes(x.s) && !/torivac_backup|"a":"login|"k":"user:/.test(x.t), `${p.slice(0, 56)}… no se sirve (${x.s}): ni la copia ni el registro de actividad se bajan por la web`);
+  }
 
   const errLog = ap.log();
   const bad = errLog.split('\n').filter((l) => /\[core:alert\]|Invalid command|Argument for|Syntax error|AH\d+: .*(\.htaccess)/.test(l) && !/AH01630/.test(l));
