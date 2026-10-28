@@ -53,7 +53,7 @@ El `.htaccess` ya incluye: HTTPS obligatorio, un solo host (con o sin `www`), UR
 
 ## 5. Carpeta de datos (fuera de la web)
 
-Pedidos, usuarios y precios se guardan como ficheros JSON. Créala **fuera** de `public_html`, p. ej. `/home/CUENTA/torivac-datos` (Administrador de archivos → *Nueva carpeta* a la altura de `public_html`). Se protege sola con un `.htaccess`, pero fuera de la web no hay riesgo ninguno.
+Pedidos, usuarios y precios se guardan como ficheros JSON. Por defecto se usa `torivac-datos` en la carpeta personal de la cuenta (`/home/CUENTA/torivac-datos`, **fuera** de la web) y **se crea sola** al primer uso; no tienes que hacer nada. Si prefieres otra ruta, cámbiala en `storage_dir` (paso 6). Dentro de la web también funciona (se protege con `.htaccess`), pero fuera no hay riesgo ninguno.
 
 ## 6. Configuración: `api/config.php`
 
@@ -61,7 +61,7 @@ Pedidos, usuarios y precios se guardan como ficheros JSON. Créala **fuera** de 
 
 | Ajuste | Qué poner |
 |---|---|
-| `storage_dir` | `/home/CUENTA/torivac-datos` (paso 5) |
+| `storage_dir` | ya apunta a `/home/CUENTA/torivac-datos` (paso 5); solo cámbialo si quieres otra ruta |
 | `session_secret` | 32+ caracteres aleatorios (`openssl rand -hex 32` o random.org). Cambiarla cierra todas las sesiones |
 | `order_to` | `['info@grupotorivac.com', 'mzamora@torivac.com']` (confirmado; `info@` también para las pruebas) |
 | `order_from` | `Torivac Web <pedidos@grupotorivac.com>` (dominio verificado en Resend, paso 8) |
@@ -99,6 +99,8 @@ Los pedidos llegan por correo a `order_to`, con el PDF adjunto, y el cliente rec
 2. **API Keys** → crea una → `mail.resend_api_key`.
 3. Hasta que el dominio esté verificado, Resend solo permite enviar desde `onboarding@resend.dev` y solo a la dirección de tu cuenta: para probar, pon provisionalmente `order_from` = `Torivac Web <onboarding@resend.dev>` y `order_to` = tu correo.
 
+**Qué pasa si el correo no sale** (clave vacía, dominio sin verificar, Resend caído): el **pedido no se pierde**, se guarda igualmente y en el panel (Pedidos) aparece con la marca **«sin aviso por correo»**; al cliente la web le dice la verdad (pedido registrado, sin copia por correo, con tu correo para escribir). El **formulario de contacto**, en cambio, responde con error y ofrece tu correo (un mensaje sin correo no tendría adónde ir). `check.php` y Ajustes → Diagnóstico avisan si los últimos pedidos se quedaron sin aviso.
+
 Alternativas: `mail.driver = 'mail'` (función `mail()` del hosting: sin garantías de entrega si el SPF de grupotorivac.com no incluye el servidor) o `'file'` (no envía; deja cada correo en la carpeta `outbox` dentro de la carpeta de datos, útil para ver cómo quedan).
 
 ## 9. Precios y cron diario
@@ -129,7 +131,7 @@ Alternativas: `mail.driver = 'mail'` (función `mail()` del hosting: sin garant�
 | una ficha de producto | mostrar precio (o «Consultar» si aún no hay hoja) |
 | una URL inexistente | la página 404 del idioma |
 
-**c) Pedido de prueba**: añadir dos referencias en una ficha → *Presupuesto* → rellenar → *Enviar pedido*. Debe salir «Pedido registrado · TV-AAAAMMDD-NNNN», llegar a `info@` y `mzamora@` con el PDF y aparecer en el panel (**Pedidos**).
+**c) Pedido de prueba**: añadir dos referencias en una ficha → *Presupuesto* → rellenar → *Enviar pedido*. Debe salir «Pedido registrado · TV-AAAAMMDD-NNNN» y «te hemos enviado una copia», llegar a `info@` y `mzamora@` con el PDF y aparecer en el panel (**Pedidos**, sin la marca «sin aviso por correo»). Si sale «no hemos podido enviarte la copia» es que el correo no está bien configurado (paso 8).
 
 ## 11. Actualizar la web
 
@@ -159,6 +161,8 @@ Lo único que no se regenera es la **carpeta de datos** (pedidos 400 días, usua
 | «Origen no permitido» (403) | Se abre la web con otro host que el compilado (`www` frente a sin `www`) | Entrar por la URL compilada o añadir el otro origen a `allowed_origins` |
 | No llegan los correos | Dominio sin verificar en Resend, o va a spam | `check.php --net`; panel de Resend → *Emails*; probar con `driver = 'file'` y mirar la carpeta `outbox` de la carpeta de datos |
 | Los precios no se actualizan | Origen mal configurado, archivo sin compartir o hoja rechazada | Ejecuta `php api/cron.php` y lee el mensaje; ver [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md) §6-7 |
+| Enviar un pedido o el contacto da error 403/406 aunque `/api/health` responde | **ModSecurity** (el cortafuegos del hosting) rechaza el cuerpo de la petición (lleva el PDF en base64) | Pedir a soporte una excepción para `/api/` (o que suba el límite del cuerpo); el resto de la web no se ve afectado |
+| El subdominio ya tenía otra web (p. ej. un WordPress de pruebas) | El zip se extrae encima: `index.php`, `.htaccess` y plugins antiguos chocan con los nuevos | Copia de seguridad y vacía la carpeta del subdominio (o usa otro subdominio) antes de extraer |
 | «No puedo escribir en el directorio de datos» | `storage_dir` mal escrito o sin permisos | Crear la carpeta; permisos 755 y mismo usuario de la cuenta |
 
 ## 15. Alternativa: API en Cloudflare Worker

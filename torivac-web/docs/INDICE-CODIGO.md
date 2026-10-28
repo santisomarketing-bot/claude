@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 732/732 funciones descritas (100 %) · 117/117 archivos con cabecera.
+**Cobertura**: 736/736 funciones descritas (100 %) · 117/117 archivos con cabecera.
 
 
 ## `site/`
@@ -102,9 +102,9 @@ Secciones: `[HOSTING]`
 
 Secciones: `[I18N]`
 
-- `countLabel` (l. 109) — «1 producto / 2 productos» en los 4 idiomas
-- `refLabel` (l. 111) — «1 referencia / 2 referencias» en los 4 idiomas.
-- `t` (l. 113) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
+- `countLabel` (l. 110) — «1 producto / 2 productos» en los 4 idiomas
+- `refLabel` (l. 112) — «1 referencia / 2 referencias» en los 4 idiomas.
+- `t` (l. 114) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
 
 ### `render.mjs`
 
@@ -298,7 +298,7 @@ Secciones: `[QUOTE-PAGE]` · `[TABLE]` · `[IMPORT]` · `[PDF]` · `[SEND]` · `
 - `customer` (l. 75) — Datos del formulario del presupuesto como objeto {campo: valor}, sin el campo honeypot `hp` (antispam).
 - `download` (l. 77) — Descarga el PDF `res` ({blob(), filename}) con un enlace temporal y libera la URL del blob a los 800 ms.
 - `sendLive` (l. 99) — Envía el pedido al servidor (POST /api/order) con el PDF adjunto; los precios y totales los fija el servidor.
-- `sendDemo` (l. 117) — Demo sin servidor: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador de correo (mailto:).
+- `sendDemo` (l. 118) — Demo sin servidor: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador de correo (mailto:).
 
 ### `quote.js`
 
@@ -987,7 +987,7 @@ Secciones: `[ORDERS]`
 - `ymd` (l. 11) — Fecha en UTC como AAAAMMDD, para el número de pedido y su contador diario.
 - `nextNumber` (l. 13) — Siguiente número de pedido del día (TV-AAAAMMDD-NNNN), con un contador en KV que caduca a las 48 h.
 - `handleOrder` (l. 16) — POST /api/order: límite por IP, validación, valoración en servidor con los precios vigentes, guardado en KV y correos.
-- `handleContact` (l. 41) — POST /api/contact: límite por IP, anti-spam y envío del mensaje al equipo; responde { ok, emailed, skipped }.
+- `handleContact` (l. 45) — POST /api/contact: límite por IP, anti-spam y envío del mensaje al equipo; responde { ok, emailed, skipped }.
 
 ### `prices.js`
 
@@ -1102,6 +1102,8 @@ Secciones: `[AUTH]` · `[VALIDATE]` · `[PRICES]` · `[SHEETS]` · `[ORDERS]` ·
 - `ok` (l. 184) — fetch simulado que responde 200 con las filas del CSV de precio de relleno (rows).
 - `me` (l. 213) — GET /api/auth/me con la sesión de Ana; devuelve la Response.
 - `fetchImpl` (l. 221) — Resend simulado: guarda cada correo enviado en `sent`.
+- `down` (l. 242) — Resend simulado que rechaza todos los envíos (403: dominio sin verificar).
+- `up` (l. 249) — Resend simulado que acepta todos los envíos.
 
 ### `helpers.js`
 
@@ -1277,7 +1279,7 @@ Secciones: `[ORDERS]`
 - `team` (l. 72) — destinatarios del equipo: config order_to (array o texto separado por comas)
 - `nextNumber` (l. 80) — Siguiente número de pedido TV-AAAAMMDD-NNNN (contador diario con bloqueo para que dos pedidos no repitan número).
 - `handleOrder` (l. 93) — POST /order: valida, valora con los precios del servidor, guarda el pedido y envía el correo al equipo y la copia al cliente.
-- `handleContact` (l. 117) — POST /contact: valida el mensaje y lo envía al equipo con el correo del visitante como responder-a.
+- `handleContact` (l. 122) — POST /contact: valida el mensaje y lo envía al equipo con el correo del visitante como responder-a.
 
 ### `PriceSheet.php`
 
@@ -1439,6 +1441,8 @@ Pruebas del API en PHP: equivalen a workers/api/test/api.test.js + ai.test.js (s
 - `test_diag_checks` (l. 293) — Autodiagnóstico: una instalación a medias da errores que dicen qué arreglar, y una completa pasa sin fallos.
 - `test_privacy_session_revocation_and_contact_escaping` (l. 320) — GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto escapa el HTML.
 - `test_http_client_follows_redirects_without_leaking_credentials` (l. 351) — Cliente HTTP real contra un servidor local: sigue redirecciones de los GET a mano, no manda la credencial a otro servidor y corta los bucles.
+- `test_email_status_is_never_overstated` (l. 384) — El correo es parte del resultado: el pedido se guarda siempre y dice si el aviso salió; el contacto falla si el mensaje no pudo enviarse.
+- `test_diag_warns_about_orders_without_email` (l. 409) — El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo.
 
 ### `PriceSheetTest.php`
 

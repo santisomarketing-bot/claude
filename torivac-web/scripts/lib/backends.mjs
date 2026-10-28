@@ -3,7 +3,7 @@
 //
 //   const be = await startBackend({ kind: backendKind(), dist, port? });   (port: solo PHP, cuando la web ya lleva la URL compilada)   kind: 'worker' (por defecto) | 'php' (flag --php o TV_BACKEND=php)
 //   be.SITE   web que ve el navegador            be.API   URL base del API (Worker: otro puerto con CORS · PHP: el mismo origen que la web)
-//   be.mails  correos «enviados» (Resend simulado) · be.setAi(reply) lo que contestará la IA · be.setCsv(texto) la hoja de Drive
+//   be.mails  correos «enviados» (Resend simulado) · be.setMailDown(true) Resend rechaza los envíos · be.setAi(reply) lo que contestará la IA · be.setCsv(texto) la hoja de Drive
 //   await be.seedPrices(obj) · be.getPrices() · be.addUser({ email, name, role, password }) · be.order(número) · be.historyCount()
 //   await be.useSource('xlsx', bytes) cambia el origen de los precios de la hoja CSV a un libro .xlsx de Drive (descarga directa)
 //   await be.stop()
@@ -28,11 +28,11 @@ const readBody = async (rq) => { const c = []; for await (const x of rq) c.push(
 
 /** servicios de terceros simulados; la misma lógica sirve al Worker (fetchImpl) y al PHP (servidor http) */
 function externals() {
-  const st = { mails: [], aiReply: null, csv: '', xlsx: null };
+  const st = { mails: [], aiReply: null, csv: '', xlsx: null, mailDown: false };
   /** Responde a los servicios externos simulados (Resend, Anthropic, hoja CSV, libro Excel) y guarda lo que se les envía. */
   const handle = async (url, init = {}) => {
     const u = String(url);
-    if (/\/emails$/.test(u) || u.includes('api.resend.com')) { st.mails.push(JSON.parse(init.body)); return { status: 200, body: JSON.stringify({ id: 'mail_' + st.mails.length }) }; }
+    if (/\/emails$/.test(u) || u.includes('api.resend.com')) { if (st.mailDown) return { status: 403, body: '{"message":"dominio sin verificar"}' }; st.mails.push(JSON.parse(init.body)); return { status: 200, body: JSON.stringify({ id: 'mail_' + st.mails.length }) }; }
     if (/\/precios\.xlsx$/.test(u)) return st.xlsx ? { status: 200, body: st.xlsx, binary: true } : { status: 404, body: 'sin libro' };
     if (/\/precios\.csv$/.test(u) || u.includes('sheet.test')) return { status: 200, body: st.csv };
     if (/\/v1\/messages$/.test(u) || u.includes('api.anthropic.com')) return { status: 200, body: JSON.stringify({ content: [{ type: 'tool_use', name: 'proponer_cambios_de_precios', input: st.aiReply }], usage: { input_tokens: 1, output_tokens: 1 } }) };
@@ -61,7 +61,7 @@ async function startWorker({ dist, orderTo, orderFrom }) {
   await new Promise((r) => api.listen(0, '127.0.0.1', r));
   return {
     kind: 'worker', SITE, API: `http://127.0.0.1:${api.address().port}`, mails: st.mails, env,
-    setAi: (reply) => { st.aiReply = reply; }, setCsv: (text) => { st.csv = text; },
+    setAi: (reply) => { st.aiReply = reply; }, setCsv: (text) => { st.csv = text; }, setMailDown: (v) => { st.mailDown = !!v; },
     useSource: async (kind, bytes) => { if (kind !== 'xlsx') throw new Error('origen no soportado: ' + kind); st.xlsx = Buffer.from(bytes); env.PRICE_XLSX_URL = 'https://sheet.test/precios.xlsx'; env.PRICE_CSV_URL = ''; },
     seedPrices: async (p) => { await env.KV.put(KEY_CURRENT, JSON.stringify(p)); },
     getPrices: async () => JSON.parse(await env.KV.get(KEY_CURRENT)),
@@ -119,7 +119,7 @@ async function startPhp({ dist, orderTo, orderFrom, port: wanted }) {
   const read = (key) => { try { return JSON.parse(fs.readFileSync(kv(key), 'utf8')).v; } catch { return null; } };
   return {
     kind: 'php', SITE, API: SITE, mails: st.mails, log: () => log,
-    setAi: (reply) => { st.aiReply = reply; }, setCsv: (text) => { st.csv = text; },
+    setAi: (reply) => { st.aiReply = reply; }, setCsv: (text) => { st.csv = text; }, setMailDown: (v) => { st.mailDown = !!v; },
     useSource: async (kind, bytes) => { if (kind !== 'xlsx') throw new Error('origen no soportado: ' + kind); st.xlsx = Buffer.from(bytes); cfg.prices = { xlsx_url: `${MOCK}/precios.xlsx`, decimals: 4 }; writeCfg(); },
     seedPrices: async (p) => { fs.writeFileSync(kv('prices:current'), JSON.stringify({ v: p })); },
     getPrices: async () => read('prices:current'),

@@ -103,14 +103,19 @@ final class Orders
         $priced = Prices::priceOrder($prices, $o['lines']);                                        // el cliente no puede fijar precios
         $number = self::nextNumber($nowMs);
         $demo = ($prices['mode'] ?? '') !== 'live';
-        Store::put('order:' . $number, ['number' => $number, 'at' => Util::iso($nowMs === null ? null : $nowMs / 1000), 'customer' => $o['customer'], 'lines' => $priced['lines'], 'total' => $priced['total'], 'unpriced' => $priced['unpriced'], 'lang' => $o['lang'],
-            'prices' => ['updated_at' => $prices['updated_at'] ?? null, 'mode' => $prices['mode'] ?? null], 'ip' => $req->ip], 400 * 86400);
+        $record = ['number' => $number, 'at' => Util::iso($nowMs === null ? null : $nowMs / 1000), 'customer' => $o['customer'], 'lines' => $priced['lines'], 'total' => $priced['total'], 'unpriced' => $priced['unpriced'], 'lang' => $o['lang'],
+            'prices' => ['updated_at' => $prices['updated_at'] ?? null, 'mode' => $prices['mode'] ?? null], 'ip' => $req->ip];
+        Store::put('order:' . $number, $record, 400 * 86400);                                     // primero se guarda (si el correo falla, el pedido no se pierde)
         $mail = Mail::orderMail(['number' => $number, 'customer' => $o['customer'], 'priced' => $priced, 'lang' => $o['lang'], 'demo' => $demo], $cat);
         $att = $o['pdf'] ? [['filename' => $number . '.pdf', 'content' => $o['pdf']]] : [];
         $team = Mail::send(['to' => self::team(), 'subject' => '[Web Torivac] Pedido ' . $number . ' · ' . $o['customer']['name'], 'html' => $mail['html'], 'text' => $mail['text'], 'replyTo' => $o['customer']['email'], 'attachments' => $att]);
         $cust = ['ok' => false, 'skipped' => true];
         if ($o['copyToCustomer']) $cust = Mail::send(['to' => [$o['customer']['email']], 'subject' => 'Torivac · copia de tu presupuesto ' . $number, 'html' => $mail['html'], 'text' => $mail['text'], 'attachments' => $att]);
-        return new Response(['ok' => true, 'number' => $number, 'total' => $priced['total'], 'unpriced' => $priced['unpriced'], 'emailed' => ['team' => !empty($team['ok']), 'customer' => !empty($cust['ok']), 'skipped' => !empty($team['skipped'])]]);
+        $emailed = ['team' => !empty($team['ok']), 'customer' => !empty($cust['ok']), 'skipped' => !empty($team['skipped'])];
+        $why = !empty($team['ok']) ? '' : (!empty($team['skipped']) ? 'correo sin configurar' : (isset($team['status']) ? 'Resend respondió ' . $team['status'] : mb_substr((string) ($team['error'] ?? 'fallo de envío'), 0, 120)));
+        $record['emailed'] = $emailed + ['error' => $why];
+        Store::put('order:' . $number, $record, 400 * 86400);                                     // el panel marca los pedidos cuyo aviso por correo no salió
+        return new Response(['ok' => true, 'number' => $number, 'total' => $priced['total'], 'unpriced' => $priced['unpriced'], 'emailed' => $emailed]);
     }
 
     /** POST /contact: valida el mensaje y lo envía al equipo con el correo del visitante como responder-a. */
@@ -124,6 +129,7 @@ final class Orders
         if (!self::verifyTurnstile($c['turnstile'], $req->ip)) return new Response(['ok' => false, 'error' => 'Verificación anti-spam fallida'], 400);
         $r = Mail::send(['to' => self::team(), 'subject' => '[Web Torivac] Contacto · ' . $c['name'], 'text' => $c['name'] . ' <' . $c['email'] . '> (' . $c['lang'] . ")\n\n" . $c['message'],
             'html' => '<p><b>' . Util::esc($c['name']) . '</b> &lt;' . Util::esc($c['email']) . '&gt; (' . Util::esc($c['lang']) . ')</p><p>' . nl2br(Util::esc($c['message'])) . '</p>', 'replyTo' => $c['email']]);
-        return new Response(['ok' => true, 'emailed' => !empty($r['ok']), 'skipped' => !empty($r['skipped'])]);
+        if (empty($r['ok'])) return new Response(['ok' => false, 'error' => !empty($r['skipped']) ? 'El envío de correo no está configurado en el servidor' : 'No hemos podido enviar el mensaje', 'emailed' => false, 'skipped' => !empty($r['skipped'])], 502);   // sin correo no hay mensaje: la web avisa y ofrece escribir directamente
+        return new Response(['ok' => true, 'emailed' => true, 'skipped' => false]);
     }
 }

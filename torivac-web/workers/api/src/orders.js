@@ -28,14 +28,18 @@ export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = 
   for (let i = 0; i < 4 && (await env.KV.get(`order:${number}`)); i++) number = await nextNumber(env, now);   // KV no es atómico: si dos pedidos coinciden, el segundo coge el siguiente número
   const demo = prices.mode !== 'live';
   const record = { number, at: now.toISOString(), customer: o.customer, lines: priced.lines, total: priced.total, unpriced: priced.unpriced, lang: o.lang, prices: { updated_at: prices.updated_at, mode: prices.mode }, ip };
-  await env.KV.put(`order:${number}`, JSON.stringify(record), { expirationTtl: 60 * 60 * 24 * 400 });
+  const TTL = { expirationTtl: 60 * 60 * 24 * 400 };
+  await env.KV.put(`order:${number}`, JSON.stringify(record), TTL);                // primero se guarda (si el correo falla, el pedido no se pierde)
   const { html, text } = orderMail({ number, customer: o.customer, priced, lang: o.lang, demo }, cat);
   const to = String(env.ORDER_TO || '').split(',').map((s) => s.trim()).filter(Boolean);
   const attachments = o.pdf ? [{ filename: `${number}.pdf`, content: o.pdf }] : undefined;
   const team = await sendMail(env, { to, subject: `[Web Torivac] Pedido ${number} · ${o.customer.name}`, html, text, replyTo: o.customer.email, attachments }, fetchImpl);
   let customerMail = { ok: false, skipped: true };
   if (o.copyToCustomer) customerMail = await sendMail(env, { to: [o.customer.email], subject: `Torivac · copia de tu presupuesto ${number}`, html, text, attachments }, fetchImpl);
-  return json({ ok: true, number, total: priced.total, unpriced: priced.unpriced, emailed: { team: !!team.ok, customer: !!customerMail.ok, skipped: !!team.skipped } }, 200, cors);
+  const emailed = { team: !!team.ok, customer: !!customerMail.ok, skipped: !!team.skipped };
+  const why = team.ok ? '' : team.skipped ? 'correo sin configurar' : team.status ? `Resend respondió ${team.status}` : String(team.error || 'fallo de envío').slice(0, 120);
+  await env.KV.put(`order:${number}`, JSON.stringify({ ...record, emailed: { ...emailed, error: why } }), TTL);   // el panel marca los pedidos cuyo aviso por correo no salió
+  return json({ ok: true, number, total: priced.total, unpriced: priced.unpriced, emailed }, 200, cors);
 }
 /** POST /api/contact: límite por IP, anti-spam y envío del mensaje al equipo; responde { ok, emailed, skipped }. */
 export async function handleContact(request, env, contact, { fetchImpl = fetch, cors = {} } = {}) {
@@ -45,5 +49,6 @@ export async function handleContact(request, env, contact, { fetchImpl = fetch, 
   if (!(await verifyTurnstile(env, contact.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida' }, 400, cors);
   const to = String(env.ORDER_TO || '').split(',').map((s) => s.trim()).filter(Boolean);
   const r = await sendMail(env, { to, subject: `[Web Torivac] Contacto · ${contact.name}`, text: `${contact.name} <${contact.email}> (${contact.lang})\n\n${contact.message}`, html: `<p><b>${esc(contact.name)}</b> &lt;${esc(contact.email)}&gt; (${esc(contact.lang)})</p><p>${esc(contact.message).replace(/\n/g, '<br>')}</p>`, replyTo: contact.email }, fetchImpl);
-  return json({ ok: true, emailed: !!r.ok, skipped: !!r.skipped }, 200, cors);
+  if (!r.ok) return json({ ok: false, error: r.skipped ? 'El envío de correo no está configurado en el servidor' : 'No hemos podido enviar el mensaje', emailed: false, skipped: !!r.skipped }, 502, cors);   // sin correo no hay mensaje: la web avisa y ofrece escribir directamente
+  return json({ ok: true, emailed: true, skipped: false }, 200, cors);
 }

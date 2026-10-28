@@ -6,9 +6,9 @@
  * Cualquier valor puede darse también como variable de entorno TORIVAC_<CLAVE> (p. ej. TORIVAC_SESSION_SECRET, TORIVAC_MAIL_RESEND_API_KEY).
  */
 return [
-    // Dónde se guardan pedidos, usuarios y precios (ficheros JSON). LO IDEAL: fuera de public_html, p. ej. '/home/CUENTA/torivac-datos'.
-    // Si lo dejas dentro, el directorio se protege con .htaccess (Require all denied).
-    'storage_dir' => __DIR__ . '/storage',
+    // Dónde se guardan pedidos, usuarios y precios (ficheros JSON). Por defecto: «torivac-datos» en la carpeta personal de la cuenta de cPanel
+    // (fuera de la web). Se crea sola. Puedes poner otra ruta, p. ej. '/home/CUENTA/torivac-datos'. Dentro de la web también funciona (se protege con .htaccess), pero no es lo ideal.
+    'storage_dir' => (function_exists('posix_getpwuid') && function_exists('posix_geteuid') && ($pw = @posix_getpwuid(posix_geteuid())) && !empty($pw['dir']) ? $pw['dir'] : __DIR__ . '/..') . '/torivac-datos',
 
     // Clave para firmar las sesiones: ≥ 32 caracteres aleatorios (https://www.random.org/strings/). Cambiarla cierra todas las sesiones.
     'session_secret' => 'CAMBIA-ESTO-por-una-cadena-aleatoria-de-32-o-mas-caracteres',

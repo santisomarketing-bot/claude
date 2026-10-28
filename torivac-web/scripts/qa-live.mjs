@@ -105,6 +105,27 @@ ok(/recibido/i.test(await cf.locator('[data-sent]').innerText()), 'mensaje de co
 const cm = mails.at(-1) || {};
 ok(JSON.stringify(cm.to) === JSON.stringify(['info@grupotorivac.com', 'mzamora@torivac.com']) && /toroidal/.test(JSON.stringify(cm)), 'llega a info@ y mzamora@ con el texto del mensaje');
 
+console.log('\n4b) el correo falla (Resend rechaza, p. ej. dominio sin verificar): la web no promete una copia que no sale y el contacto no se da por enviado');
+be.setMailDown(true); mails.length = 0;
+await page.goto(SITE + '/presupuesto/');
+await page.evaluate(([refs, qty]) => { refs.forEach((r) => TV.Quote.add(r, qty[r])); }, [REFS, QTY]);
+await page.reload();
+const f2 = page.locator('[data-quote-form]');
+await f2.locator('[name=name]').fill('Marta Prueba'); await f2.locator('[name=email]').fill('cliente.prueba@example.com'); await f2.locator('[name=privacy]').check();
+await f2.locator('button[type=submit]').click(); await page.locator('[data-sent]:not([hidden])').waitFor({ timeout: 8000 });
+const t2 = (await page.locator('[data-sent]').innerText()).replace(/\s+/g, ' ');
+const num2 = (t2.match(/TV-\d{8}-\d{4}/) || [])[0];
+ok(!!num2 && /no hemos podido enviarte la copia/i.test(t2) && !/te hemos enviado una copia/i.test(t2) && (await page.locator('[data-sent] a[href^="mailto:info@"]').count()) === 1, `pedido registrado SIN afirmar que se envió copia, con el correo directo: «${t2.slice(0, 150)}»`);
+const rec2 = await be.order(num2);
+ok(rec2 && rec2.emailed && rec2.emailed.team === false && /403/.test(rec2.emailed.error), `el pedido queda guardado y marcado «aviso por correo no enviado» (${rec2 && rec2.emailed && rec2.emailed.error})`);
+await page.goto(SITE + '/contacto/');
+const cf2 = page.locator('[data-contact-form]').first();
+await cf2.locator('[name=name]').fill('Pedro Contacto'); await cf2.locator('[name=email]').fill('pedro@example.com'); await cf2.locator('[name=message]').fill('Necesito un transformador de 50 VA.'); await cf2.locator('[name=privacy]').check();
+await cf2.locator('button[type=submit]').click(); await cf2.locator('[data-sent]:not([hidden])').waitFor({ timeout: 8000 });
+const ct2 = (await cf2.locator('[data-sent]').innerText()).replace(/\s+/g, ' ');
+ok(/no hemos podido enviarlo/i.test(ct2) && !/recibido/i.test(ct2) && (await cf2.locator('[data-sent] a[href^="mailto:info@"]').count()) === 1, `contacto: no se da por enviado y ofrece el correo directo: «${ct2.slice(0, 120)}»`);
+be.setMailDown(false);
+
 console.log('\n5) CORS: un origen ajeno no puede usar el API');
 const bad = await fetch(API + '/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: 'https://evil.example' }, body: '{}' });
 ok(bad.status === 403, `origen ajeno → ${bad.status}`);

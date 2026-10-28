@@ -102,7 +102,8 @@
     TV.api.post('/api/order', { customer: { name: c.name, company: c.company, email: c.email, phone: c.phone, notes: c.notes, privacy: !!c.privacy }, lines: d.lines.map(function (l) { return { ref: l.ref, qty: l.qty }; }), lang: Q.lang, pdf: pdf, hp: new FormData(form).get('hp') || '' }).then(function (r) {
       btn.disabled = false; btn.textContent = label; out.hidden = false; out.setAttribute('tabindex', '-1');
       if (r && r.ok) {
-        out.className = 'notice ok'; out.innerHTML = '<strong>' + esc(Q.t('order_sent')) + ' · ' + esc(r.number) + '</strong><br>' + esc(Q.t('order_received'));
+        var copy = !!(r.emailed && r.emailed.customer), mailto = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];      // solo se dice «te hemos enviado una copia» si salió
+        out.className = 'notice ok'; out.innerHTML = '<strong>' + esc(Q.t('order_sent')) + ' · ' + esc(r.number) + '</strong><br>' + (copy ? esc(Q.t('order_received')) : esc(Q.t('order_received_nocopy')) + ' <a href="mailto:' + esc(mailto) + '">' + esc(mailto) + '</a>');
         Q.clear(); form.reset();
       } else {
         var mail = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];

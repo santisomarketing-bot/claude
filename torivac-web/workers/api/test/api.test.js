@@ -233,3 +233,33 @@ test('pedido: si el contador de KV va por detrás (no es atómico), el número n
   assert.equal(j.number, 'TV-20261028-0002');
   assert.equal(JSON.parse(await env.KV.get('order:TV-20261028-0001')).marca, 'anterior');
 });
+
+// ───────────────────────────────────────── el correo es parte del resultado: nunca se afirma lo que no salió
+test('pedido: se guarda siempre y el registro dice si el aviso por correo salió (el panel marca los que no)', async () => {
+  const env = mkEnv({ RESEND_API_KEY: 're_test' }); await env.KV.put('prices:current', JSON.stringify(PRICES));
+  const now = new Date('2026-10-28T07:00:00Z');
+  /** Resend simulado que rechaza todos los envíos (403: dominio sin verificar). */
+  const down = async () => new Response('x', { status: 403 });                         // Resend rechaza (p. ej. dominio sin verificar)
+  const j = await (await handleOrder(req('/api/order', { method: 'POST' }), env, goodOrder(), { fetchImpl: down, catalog: CATALOG, now })).json();
+  assert.equal(j.ok, true); assert.deepEqual([j.emailed.team, j.emailed.customer], [false, false]);
+  const rec = JSON.parse(await env.KV.get(`order:${j.number}`));
+  assert.equal(rec.emailed.team, false); assert.equal(rec.emailed.error, 'Resend respondió 403');
+  assert.equal(rec.customer.email, 'ana@acme.es', 'el pedido está completo aunque el correo fallara');
+  /** Resend simulado que acepta todos los envíos. */
+  const up = async () => new Response('{"id":"m"}', { status: 200 });
+  const j2 = await (await handleOrder(req('/api/order', { method: 'POST' }), env, goodOrder(), { fetchImpl: up, catalog: CATALOG, now })).json();
+  assert.deepEqual([j2.emailed.team, j2.emailed.customer], [true, true]);
+  assert.equal(JSON.parse(await env.KV.get(`order:${j2.number}`)).emailed.error, '');
+  const none = await (await handleOrder(req('/api/order', { method: 'POST' }), mkEnv(), goodOrder(), { catalog: CATALOG })).json();     // sin RESEND_API_KEY
+  assert.equal(none.emailed.skipped, true);
+});
+test('contacto: si el correo no sale, el servidor responde con error (la web lo dice y ofrece el correo directo); si sale, ok', async () => {
+  const { handleContact } = await import('../src/orders.js');
+  const c = { name: 'Ana', email: 'ana@acme.es', message: 'Necesito 50 toroidales', lang: 'es', turnstile: '' };
+  const ok = await handleContact(req('/api/contact', { method: 'POST' }), mkEnv({ RESEND_API_KEY: 're_test' }), c, { fetchImpl: async () => new Response('{"id":"m"}', { status: 200 }) });
+  assert.equal(ok.status, 200); assert.equal((await ok.json()).emailed, true);
+  const bad = await handleContact(req('/api/contact', { method: 'POST' }), mkEnv({ RESEND_API_KEY: 're_test' }), c, { fetchImpl: async () => new Response('x', { status: 500 }) });
+  assert.equal(bad.status, 502); const bj = await bad.json(); assert.equal(bj.ok, false); assert.match(bj.error, /No hemos podido enviar/);
+  const skipped = await handleContact(req('/api/contact', { method: 'POST' }), mkEnv(), c, {});
+  assert.equal(skipped.status, 502); assert.match((await skipped.json()).error, /no está configurado/);
+});

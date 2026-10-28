@@ -77,6 +77,10 @@ final class Diag
             $k[] = $age <= 36 ? self::c('sincronizacion', 'ok', 'Últimos precios: ' . $meta['at'] . ' (' . ($meta['refs'] ?? '?') . ' referencias, ' . ($meta['source'] ?? '?') . ')')
                 : self::c('sincronizacion', 'warn', 'Los precios llevan ' . round($age / 24) . ' días sin actualizarse: ¿está programado el cron diario (api/cron.php)?');
         } else $k[] = self::c('sincronizacion', 'warn', 'Todavía no hay precios cargados: sube una hoja desde el panel o ejecuta api/cron.php');
+        $orders = array_slice(Store::keys('order:'), -20);                       // los 20 últimos pedidos: ¿salió el aviso por correo?
+        $lost = 0;
+        foreach ($orders as $key) { $o = Store::get($key); if (is_array($o) && isset($o['emailed']) && empty($o['emailed']['team'])) $lost++; }
+        if ($lost) $k[] = self::c('pedidos_sin_correo', 'warn', "$lost de los últimos " . count($orders) . ' pedidos se guardaron pero su aviso por correo no salió (se marcan «sin aviso por correo» en Pedidos): revisa el correo del servidor');
         $managers = array_filter(Users::all(), function ($u) { return $u['role'] === 'manager'; });
         $k[] = $managers ? self::c('manager', 'ok', count($managers) . ' manager(s) creado(s)') : self::c('manager', 'fail', 'No hay ningún manager: crea el primero con  php api/tools/create-user.php correo "Nombre" manager "contraseña"');
         $k[] = is_file(dirname(__DIR__) . '/generated/catalog.json') ? self::c('catalogo', 'ok', 'Catálogo de referencias presente') : self::c('catalogo', 'fail', 'Falta api/generated/catalog.json (se genera al compilar la web)');

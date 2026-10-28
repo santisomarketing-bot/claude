@@ -139,6 +139,7 @@ Una pasada de lectura de todo el código (al documentar cada función) y de las 
 - **Correo de contacto** (Worker): el correo del visitante iba sin escapar en el HTML que recibe el equipo; ahora nombre, correo y mensaje se escapan (el PHP ya lo hacía).
 - **Número de pedido** (Worker): KV no es atómico; si dos pedidos coinciden, el segundo coge el siguiente número en vez de pisar el registro (el PHP usa `flock`).
 - **Importar CSV/Excel**: la cantidad `1.000` se importaba como 1; ahora es mil. **Importes en español** (`1.234,56`): la demo del panel y `build_prices.py` los leían mal; ahora usan la misma regla que el servidor (el último separador es el decimal).
+- **El correo es parte del resultado**: la web decía «te hemos enviado una copia» aunque el correo no hubiera salido (y el formulario de contacto daba por enviado un mensaje que nadie recibía). Ahora el pedido guarda siempre si el aviso salió (`emailed`), el panel marca los que no («sin aviso por correo»), la web solo promete la copia si salió, el contacto responde con error si no pudo enviarse y el diagnóstico avisa. Probado en los dos backends con Resend caído.
 - **Servidor de pruebas** (`static-server.mjs`): ya no sale de su carpeta ni se cae con un `%` mal formado. Dos comprobaciones de las pruebas eran más laxas de lo que parecían (responder-a del correo y recuento de referencias sin precio) y se han afinado.
 - Código muerto y casos límite de los scripts de desarrollo (`seo_check.py` sin páginas, `qa_content.py` sin filas, fechas inválidas en el blog).
 

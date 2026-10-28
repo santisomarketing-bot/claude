@@ -379,3 +379,46 @@ http_response_code(404);');
         @rmdir($dir);
     }
 }
+
+/** El correo es parte del resultado: el pedido se guarda siempre y dice si el aviso salió; el contacto falla si el mensaje no pudo enviarse. */
+function test_email_status_is_never_overstated()
+{
+    fresh(['mail' => ['driver' => 'resend', 'resend_api_key' => 're_test']]);
+    seedPrices();
+    Http::$mock = function () { return [403, 'x']; };                                    // Resend rechaza (p. ej. dominio sin verificar)
+    $b = goodOrder();
+    $r = Orders::handleOrder(req('POST', '/order', $b, [], '10.7.7.7'), $b);
+    T::same([true, false, false], [$r->body['ok'], $r->body['emailed']['team'], $r->body['emailed']['customer']], 'pedido ok pero sin correo');
+    $rec = Store::get('order:' . $r->body['number']);
+    T::same([false, 'Resend respondió 403', 'ana@acme.es'], [$rec['emailed']['team'], $rec['emailed']['error'], $rec['customer']['email']], 'el registro lo dice y el pedido está completo');
+    Http::$mock = function () { return [200, '{"id":"m"}']; };
+    $b2 = goodOrder();
+    $r2 = Orders::handleOrder(req('POST', '/order', $b2, [], '10.7.7.8'), $b2);
+    T::same([true, true, ''], [$r2->body['emailed']['team'], $r2->body['emailed']['customer'], Store::get('order:' . $r2->body['number'])['emailed']['error']], 'con correo: team y cliente, sin error');
+    $c = ['name' => 'Ana', 'email' => 'ana@acme.es', 'message' => 'Necesito 50 toroidales', 'privacy' => true];
+    T::same(200, Router::handle(req('POST', '/contact', $c, [], '10.7.7.9'))->status, 'contacto con correo');
+    Http::$mock = function () { return [500, 'x']; };
+    $bad = Router::handle(req('POST', '/contact', $c, [], '10.7.7.10'));
+    T::same([502, false], [$bad->status, $bad->body['ok']], 'contacto sin correo → error (la web lo dice)');
+    fresh(['mail' => ['driver' => 'none']]);
+    $skip = Router::handle(req('POST', '/contact', $c, [], '10.7.7.11'));
+    T::same([502, true], [$skip->status, strpos($skip->body['error'], 'no está configurado') !== false], 'sin correo configurado → error claro');
+}
+
+/** El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo. */
+function test_diag_warns_about_orders_without_email()
+{
+    fresh(['mail' => ['driver' => 'resend', 'resend_api_key' => 're_test']]);
+    seedPrices();
+    Http::$mock = function () { return [403, 'x']; };
+    $b = goodOrder();
+    Orders::handleOrder(req('POST', '/order', $b, [], '10.8.8.8'), $b);
+    $ids = array_map(function ($c) { return $c['id']; }, array_filter(Diag::run()['checks'], function ($c) { return $c['status'] === 'warn'; }));
+    T::true(in_array('pedidos_sin_correo', $ids, true), 'avisa de pedidos sin correo');
+    fresh(['mail' => ['driver' => 'file']]);
+    seedPrices();
+    $b2 = goodOrder();
+    Orders::handleOrder(req('POST', '/order', $b2, [], '10.8.8.9'), $b2);
+    $ids2 = array_map(function ($c) { return $c['id']; }, Diag::run()['checks']);
+    T::true(!in_array('pedidos_sin_correo', $ids2, true), 'sin aviso cuando salió');
+}

@@ -57,7 +57,9 @@ const navs = (page) => page.$$eval('.side nav a', (a) => a.map((x) => x.textCont
 const toastText = async (page) => { await page.waitForTimeout(250); return page.locator('#toast').innerText(); };
 
 // ───────────────────────────────────── pedido de prueba hecho desde la web (público) por Marta
+be.setMailDown(true);                                                      // este pedido se hace con Resend rechazando los envíos: el panel debe marcarlo
 const order = await fetch(API + '/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: SITE }, body: JSON.stringify({ customer: { name: 'Marta Taller', company: 'Taller S.L.', email: 'marta@taller.es', privacy: true }, lines: [{ ref: R_TT, qty: 12 }, { ref: R_BO, qty: 200 }], lang: 'es' }) }).then((r) => r.json());
+be.setMailDown(false);
 
 console.log('\n1) acceso');
 { const { ctx, page, errs } = await newPage();
@@ -76,12 +78,13 @@ console.log('\n1) acceso');
 console.log('\n2) pedidos: el manager ve todos, cada cliente solo los suyos');
 { const m = await newPage(); await login(m.page, 'jefa@torivac.com', 'Manager-Clave-2026'); await m.page.click('.side nav a[href="#pedidos"]'); await m.page.waitForSelector('table.spec');
   ok((await m.page.locator('table.spec tbody tr').count()) === 1 && /Marta Taller/.test(await m.page.locator('table.spec tbody').innerText()), `manager ve el pedido ${order.number}`);
+  ok(/sin aviso por correo/i.test(await m.page.locator('table.spec tbody').innerText()), 'el manager ve la marca «sin aviso por correo» (el correo no salió)');
   const [dl] = await Promise.all([m.page.waitForEvent('download'), m.page.click('[data-pdf]')]); ok(/\.pdf$/.test(dl.suggestedFilename()), `PDF regenerado (${dl.suggestedFilename()})`);
   await m.ctx.close();
   const c = await newPage(); await login(c.page, 'marta@taller.es', 'Cliente-Clave-2026'); await c.page.waitForSelector('.side nav a');
   ok((await navs(c.page)).length === 4 && !(await navs(c.page)).some((n) => /Usuarios|Precios$/.test(n)), `cliente: ${(await navs(c.page)).join(' · ')}`);
   await c.page.click('.side nav a[href="#mis"]'); await c.page.waitForSelector('table.spec');
-  ok((await c.page.locator('table.spec tbody tr').count()) === 1, 'Marta ve su pedido');
+  ok((await c.page.locator('table.spec tbody tr').count()) === 1 && !/sin aviso por correo/i.test(await c.page.locator('table.spec tbody').innerText()), 'Marta ve su pedido (sin la marca interna)');
   // un cliente NO puede usar la API de manager aunque lo intente a mano
   const tok = JSON.parse(await c.page.evaluate(() => sessionStorage.getItem('tv_live'))).token;
   const st = await c.page.evaluate(async ([a, t]) => ({ users: (await fetch(a + '/api/users', { headers: { Authorization: 'Bearer ' + t } })).status, refresh: (await fetch(a + '/api/prices/refresh', { method: 'POST', headers: { Authorization: 'Bearer ' + t } })).status, ai: (await fetch(a + '/api/prices/ai', { method: 'POST', headers: { Authorization: 'Bearer ' + t, 'Content-Type': 'application/json' }, body: '{"instruction":"sube todo un 50 %"}' })).status }), [API, tok]);
