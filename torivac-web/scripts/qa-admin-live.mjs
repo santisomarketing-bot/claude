@@ -70,7 +70,7 @@ console.log('\n1) acceso');
   ok(/incorrect/i.test(await page.locator('[data-err]').innerText()), 'contraseña errónea → mensaje del servidor');
   await page.fill('[name=pass]', 'Manager-Clave-2026'); await page.click('button[type=submit]');
   await page.waitForSelector('.side nav a');
-  ok((await navs(page)).length === 9, `manager: ${(await navs(page)).join(' · ')}`);
+  ok((await navs(page)).length === 10 && (await navs(page)).some((n) => /Blog/.test(n)), `manager: ${(await navs(page)).join(' · ')}`);
   await page.waitForFunction(() => document.querySelectorAll('.kpi').length === 4, null, { timeout: 5000 }).catch(() => {});      // los indicadores se pintan al llegar los pedidos
   ok(await page.locator('.kpi').count() === 4, 'Resumen con 4 indicadores');
   ok(/1/.test(await page.locator('.kpi').first().innerText()), 'cuenta el pedido hecho desde la web');
@@ -84,7 +84,7 @@ console.log('\n2) pedidos: el manager ve todos, cada cliente solo los suyos');
   const [dl] = await Promise.all([m.page.waitForEvent('download'), m.page.click('[data-pdf]')]); ok(/\.pdf$/.test(dl.suggestedFilename()), `PDF regenerado (${dl.suggestedFilename()})`);
   await m.ctx.close();
   const c = await newPage(); await login(c.page, 'marta@taller.es', 'Cliente-Clave-2026'); await c.page.waitForSelector('.side nav a');
-  ok((await navs(c.page)).length === 4 && !(await navs(c.page)).some((n) => /Usuarios|Precios$/.test(n)), `cliente: ${(await navs(c.page)).join(' · ')}`);
+  ok((await navs(c.page)).length === 4 && !(await navs(c.page)).some((n) => /Usuarios|Precios$|Blog/.test(n)), `cliente: ${(await navs(c.page)).join(' · ')}`);
   await c.page.click('.side nav a[href="#mis"]'); await c.page.waitForSelector('table.spec');
   ok((await c.page.locator('table.spec tbody tr').count()) === 1 && !/sin aviso por correo/i.test(await c.page.locator('table.spec tbody').innerText()), 'Marta ve su pedido (sin la marca interna)');
   // un cliente NO puede usar la API de manager aunque lo intente a mano

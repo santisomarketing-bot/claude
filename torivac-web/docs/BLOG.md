@@ -56,9 +56,9 @@ Los enlaces a otras páginas de la propia web (`/product/transformadores-toroida
 ## 3. Imágenes
 
 - **Se comprimen en tu navegador** antes de subirlas (máximo 1600 px de lado, WebP o JPEG): subir una foto de 8 MB de un móvil funciona y no hace falta prepararla.
-- El servidor **no se fía del archivo**: comprueba por su contenido que sea JPEG, PNG o WebP (no se admite SVG ni GIF), tamaño (máx. 2,5 MB y 6000 px por lado) y lo guarda con un nombre con huella (`toroidal-300-va-ab12cd34ef56.webp`). Si cambias la imagen, el nombre cambia: nunca se ve una versión vieja y se guardan un año en caché.
+- El servidor **no se fía del archivo**: comprueba por su contenido que sea JPEG, PNG o WebP (no se admite SVG ni GIF), tamaño (máx. 2,5 MB y 6000 px por lado) y lo guarda con un nombre que lleva la huella de su contenido (`toroidal-300-va-ab12cd34ef56.webp`): una imagen nueva siempre tiene un nombre nuevo (nunca se ve una versión vieja) y el navegador puede guardarla un año.
 - **El texto alternativo es obligatorio** en la imagen destacada y en cada imagen del texto (la lista de comprobación lo recuerda).
-- Una imagen **en uso no se borra** (el panel dice en qué entradas está). Máximo 1 500 imágenes y 600 entradas.
+- Para quitar una imagen que ya no uses: en el cuadro de imágenes, elígela y pulsa **Borrar esta imagen**. Si alguna entrada la usa (destacada o dentro del texto) **no se borra** y el cuadro dice en cuáles. Máximo 1 500 imágenes y 600 entradas.
 
 ## 4. Traducciones
 
@@ -84,6 +84,26 @@ Nada se traduce solo: cada idioma lo escribe quien traduce y **se guarda como un
 | **`llms.txt` y `llms-full.txt`** | Cada entrada visible, en la sección de su idioma: título, enlace y descripción (el completo, con el texto limpio) |
 | `robots.txt` | Permite el sitio; cierra `/admin/` y `/api/` |
 | Dominio de pruebas | Cabecera, meta y `robots.txt` con `noindex`; sin sitemap ni `llms` (no se indexa) |
+
+**Ejemplo de lo que se añade** al publicar «Cómo elegir un transformador toroidal» (con su traducción al inglés y una imagen), en producción:
+
+```text
+llms.txt  →  ## Español · entradas del blog
+             - [Cómo elegir un transformador toroidal](https://www.grupotorivac.com/blog/como-elegir-un-transformador-toroidal/): Guía rápida para elegir la potencia…
+
+llms-full.txt  →  ### Cómo elegir un transformador toroidal
+                  https://www.grupotorivac.com/blog/como-elegir-un-transformador-toroidal/
+                  2026-10-28
+                  Elegir un transformador toroidal empieza por la potencia… (el texto completo, sin formato)
+```
+```xml
+<url><loc>https://www.grupotorivac.com/blog/como-elegir-un-transformador-toroidal/</loc>
+  <xhtml:link rel="alternate" hreflang="es" href="https://www.grupotorivac.com/blog/como-elegir-un-transformador-toroidal/"/>
+  <xhtml:link rel="alternate" hreflang="en" href="https://www.grupotorivac.com/en/blog/how-to-choose-a-toroidal-transformer/"/>
+  <xhtml:link rel="alternate" hreflang="x-default" href="https://www.grupotorivac.com/blog/como-elegir-un-transformador-toroidal/"/>
+  <lastmod>2026-10-28</lastmod>
+  <image:image><image:loc>https://www.grupotorivac.com/media/blog/toroidal-300-va-ab12cd34ef56.webp</image:loc><image:caption>Transformador toroidal de 300 VA</image:caption></image:image></url>
+```
 
 **Lo que haces tú** (el editor tiene una lista de comprobación con ✓ y ⚠ que se actualiza al escribir y una vista previa de cómo sale en Google):
 
