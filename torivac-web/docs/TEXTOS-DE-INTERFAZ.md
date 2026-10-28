@@ -34,7 +34,7 @@ Las filas con ✓ ya existen tal cual en la web original en ese idioma (por ejem
 
 Ojo: la web original no es del todo uniforme: «variador de tensión» aparece como *voltage variators*, *voltage regulator* o *variator* según la ficha, y hay categorías sin traducir o con texto en otro idioma que no se listan aquí (están como propuestas en el panel). Cuando un texto de interfaz nombre uno de estos términos, se usa el de la categoría correspondiente de la tabla, nunca uno inventado.
 
-## Inglés (77 textos a validar; 38 ya existen tal cual en la web original)
+## Inglés (83 textos a validar; 38 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Inglés |
 |---|---|---|
@@ -77,6 +77,12 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `notes` | Notas para Torivac | Notes for Torivac |
 | `accept_privacy` | He leído y acepto la política de privacidad | I have read and accept the privacy policy |
 | `required` | Campo obligatorio | Required field |
+| `err_plain_text` | Escribe solo texto normal: sin código, etiquetas HTML ni símbolos de programación. | Please use plain text only: no code, HTML tags or programming symbols. |
+| `err_too_long` | El texto es demasiado largo (máximo {max} caracteres). | The text is too long (maximum {max} characters). |
+| `err_too_many_links` | Incluye como máximo {max} enlaces. | Include no more than {max} links. |
+| `err_too_fast` | El formulario se ha enviado demasiado rápido. Espera un momento y vuelve a intentarlo. | The form was submitted too quickly. Please wait a moment and try again. |
+| `err_rate` | Demasiados envíos seguidos desde tu conexión. Espera unos minutos e inténtalo de nuevo. | Too many submissions from your connection. Please wait a few minutes and try again. |
+| `chars_left` | Quedan {n} caracteres. | {n} characters left. |
 | `recaptcha` | Este sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google. | This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply. |
 | `search_ph` | Buscar por nombre o referencia | Search by name or reference |
 | `clear_filters` | Quitar filtros | Clear filters |
@@ -116,7 +122,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Indicative quote subject to confirmation by Torivac. |
 | `quote_slug` | presupuesto | quote |
 
-## Francés (75 textos a validar; 40 ya existen tal cual en la web original)
+## Francés (81 textos a validar; 40 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Francés |
 |---|---|---|
@@ -158,6 +164,12 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `notes` | Notas para Torivac | Notes pour Torivac |
 | `accept_privacy` | He leído y acepto la política de privacidad | J’ai lu et j’accepte la politique de confidentialité |
 | `required` | Campo obligatorio | Champ obligatoire |
+| `err_plain_text` | Escribe solo texto normal: sin código, etiquetas HTML ni símbolos de programación. | Veuillez saisir du texte simple uniquement : sans code, balises HTML ni symboles de programmation. |
+| `err_too_long` | El texto es demasiado largo (máximo {max} caracteres). | Le texte est trop long ({max} caractères maximum). |
+| `err_too_many_links` | Incluye como máximo {max} enlaces. | Indiquez {max} liens au maximum. |
+| `err_too_fast` | El formulario se ha enviado demasiado rápido. Espera un momento y vuelve a intentarlo. | Le formulaire a été envoyé trop rapidement. Patientez un instant et réessayez. |
+| `err_rate` | Demasiados envíos seguidos desde tu conexión. Espera unos minutos e inténtalo de nuevo. | Trop d’envois consécutifs depuis votre connexion. Patientez quelques minutes et réessayez. |
+| `chars_left` | Quedan {n} caracteres. | Il reste {n} caractères. |
 | `recaptcha` | Este sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google. | Ce site est protégé par reCAPTCHA et la Politique de confidentialité et les Conditions d’utilisation de Google s’appliquent. |
 | `categories` | Categorías | Catégories |
 | `search_ph` | Buscar por nombre o referencia | Rechercher par nom ou référence |
@@ -196,7 +208,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `demo_banner` | Versión de demostración | Version de démonstration |
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Devis indicatif soumis à confirmation par Torivac. |
 
-## Alemán (78 textos a validar; 37 ya existen tal cual en la web original)
+## Alemán (84 textos a validar; 37 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Alemán |
 |---|---|---|
@@ -240,6 +252,12 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `notes` | Notas para Torivac | Hinweise an Torivac |
 | `accept_privacy` | He leído y acepto la política de privacidad | Ich habe die Datenschutzrichtlinie gelesen und akzeptiere sie |
 | `required` | Campo obligatorio | Pflichtfeld |
+| `err_plain_text` | Escribe solo texto normal: sin código, etiquetas HTML ni símbolos de programación. | Bitte nur normalen Text eingeben: kein Code, keine HTML-Tags und keine Programmiersymbole. |
+| `err_too_long` | El texto es demasiado largo (máximo {max} caracteres). | Der Text ist zu lang (höchstens {max} Zeichen). |
+| `err_too_many_links` | Incluye como máximo {max} enlaces. | Bitte höchstens {max} Links angeben. |
+| `err_too_fast` | El formulario se ha enviado demasiado rápido. Espera un momento y vuelve a intentarlo. | Das Formular wurde zu schnell abgeschickt. Bitte kurz warten und erneut versuchen. |
+| `err_rate` | Demasiados envíos seguidos desde tu conexión. Espera unos minutos e inténtalo de nuevo. | Zu viele Absendungen von Ihrer Verbindung. Bitte einige Minuten warten und erneut versuchen. |
+| `chars_left` | Quedan {n} caracteres. | Noch {n} Zeichen. |
 | `recaptcha` | Este sitio está protegido por reCAPTCHA y se aplican la Política de Privacidad y los Términos del Servicio de Google. | Diese Website ist durch reCAPTCHA geschützt; es gelten die Datenschutzerklärung und die Nutzungsbedingungen von Google. |
 | `categories` | Categorías | Kategorien |
 | `home` | Inicio | Startseite |

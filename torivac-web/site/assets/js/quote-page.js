@@ -1,12 +1,12 @@
 /**
  * [QUOTE-PAGE] Página completa del presupuesto: tabla editable, importación CSV/Excel, PDF y envío (simulado en demo).
  * Secciones: [TABLE] · [IMPORT] · [PDF] · [SEND] · [REFRESH]
- * Depende de: quote.js, app.js, pdf.js, SheetJS (window.XLSX) para .xlsx/.xls.
+ * Depende de: quote.js, app.js, forms.js (TV.Forms), plain-text.js (TV.PlainText), pdf.js, SheetJS (window.XLSX) para .xlsx/.xls.
  * Producción (Sesión 3/6): el envío pasa a un Worker (Resend) que manda a info@ y mzamora@ con el PDF adjunto.
  */
 (function () {
   'use strict';
-  var TV = window.TV, Q = TV.Quote, $ = TV.$, esc = TV.esc;
+  var TV = window.TV, Q = TV.Quote, F = TV.Forms, $ = TV.$, esc = TV.esc;
   var host = $('[data-quote-table]');
 
   // ───────────────────────────────────────── [TABLE]
@@ -14,7 +14,7 @@
   function render() {
     var d = Q.detail();
     if (!d.lines.length) { host.innerHTML = '<p class="muted">' + esc(Q.t('quote_empty')) + '</p>'; $('[data-price-note]').textContent = ''; return; }
-    host.innerHTML = '<div class="tbl-wrap"><table class="qtable"><thead><tr><th>' + esc(Q.t('image')) + '</th><th>' + esc(Q.t('item')) + '</th><th>' + esc(Q.t('qty')) + '</th><th class="num">' + esc(Q.t('unit_price')) + '</th><th class="num">' + esc(Q.t('line_total')) + '</th><th></th></tr></thead><tbody>' +
+    host.innerHTML = '<div class="tbl-wrap"><table class="qtable"><thead><tr><th>' + esc(Q.t('image')) + '</th><th>' + esc(Q.t('item')) + '</th><th>' + esc(Q.t('qty')) + '</th><th class="num">' + esc(Q.t('unit_price')) + '</th><th class="num">' + esc(Q.t('line_total')) + '</th><th><span class="vh">' + esc(Q.t('remove')) + '</span></th></tr></thead><tbody>' +
       d.lines.map(function (l) {
         var th = TV.thumbSrc(l.ref);
         var url = Q.rel(l.item.p && (l.item.p[Q.lang] || l.item.p.es) || '/');
@@ -71,6 +71,7 @@
 
   // ───────────────────────────────────────── [PDF] + [SEND]
   var form = $('[data-quote-form]');
+  F.counters(form);
   /** Datos del formulario del presupuesto como objeto {campo: valor}, sin el campo honeypot `hp` (antispam). */
   function customer() { var o = {}; new FormData(form).forEach(function (v, k) { if (k !== 'hp') o[k] = v; }); return o; }
   /** Descarga el PDF `res` ({blob(), filename}) con un enlace temporal y libera la URL del blob a los 800 ms. */
@@ -81,15 +82,15 @@
   });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    form.querySelectorAll('.err').forEach(function (n) { n.remove(); });
-    var bad = [];
+    F.clear(form); $('[data-sent]').hidden = true;
     ['name', 'email', 'privacy'].forEach(function (k) {
       var el = form.elements[k]; var ok = el.type === 'checkbox' ? el.checked : (el.value || '').trim() && (k !== 'email' || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));
-      el.setAttribute('aria-invalid', ok ? 'false' : 'true');
-      if (!ok) { bad.push(el); var m = document.createElement('span'); m.className = 'err'; m.textContent = Q.t('required'); (el.closest('label') || el).insertAdjacentElement('afterend', m); }
+      if (!ok) F.fail(el, Q.t('required'));
     });
+    F.checkText(form, ['name', 'company', 'phone', 'notes']);                                   // solo texto plano y con el límite de cada campo (el servidor lo vuelve a comprobar)
     if (!Q.lines().length) { TV.toast(Q.t('quote_empty')); return; }
-    if (bad.length) { bad[0].focus(); return; }
+    var bad = form.querySelector('[aria-invalid="true"]');
+    if (bad) { bad.focus(); return; }
     var c = customer(), res = TV.makeQuotePdf({ customer: c }), d = Q.detail(), out = $('[data-sent]');
     if (TV.api.live()) return sendLive(c, res, d, out);
     sendDemo(c, res, d, out);
@@ -99,7 +100,7 @@
   function sendLive(c, res, d, out) {
     var btn = form.querySelector('button[type=submit]'); btn.disabled = true; var label = btn.textContent; btn.textContent = Q.t('sending');
     var pdf = String(res.doc.output('datauristring')).replace(/^data:[^,]*,/, '');
-    TV.api.post('/api/order', { customer: { name: c.name, company: c.company, email: c.email, phone: c.phone, notes: c.notes, privacy: !!c.privacy }, lines: d.lines.map(function (l) { return { ref: l.ref, qty: l.qty }; }), lang: Q.lang, pdf: pdf, hp: new FormData(form).get('hp') || '' }).then(function (r) {
+    TV.api.post('/api/order', { customer: { name: c.name, company: c.company, email: c.email, phone: c.phone, notes: c.notes, privacy: !!c.privacy }, lines: d.lines.map(function (l) { return { ref: l.ref, qty: l.qty }; }), lang: Q.lang, pdf: pdf, hp: new FormData(form).get('hp') || '', _e: F.elapsed() }).then(function (r) {
       btn.disabled = false; btn.textContent = label; out.hidden = false; out.setAttribute('tabindex', '-1');
       if (r && r.ok) {
         var copy = !!(r.emailed && r.emailed.customer), mailto = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];      // solo se dice «te hemos enviado una confirmación» si salió (el servidor puede no enviarla: sin correo configurado, tope de envíos…)
@@ -108,8 +109,11 @@
         var again = out.querySelector('[data-pdf-again]'); if (again) again.addEventListener('click', function () { try { download(res); } catch (e) { console.error(e); TV.toast('PDF ⚠'); } });      // la copia por correo NO lleva el PDF: se ofrece aquí, ya generado
         Q.clear(); form.reset();
       } else {
+        var why = F.explain(form, r);
+        if (why === true) { out.hidden = true; return; }                                         // error de un campo: ya está marcado y enfocado
         var mail = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];
-        out.className = 'notice'; out.innerHTML = esc(Q.t('send_failed')) + ' <a href="mailto:' + esc(mail) + '">' + esc(mail) + '</a>' + (r && r.error && r.error !== 'network' ? '<br><span class="small muted">' + esc(r.error) + '</span>' : '');
+        out.className = 'notice';
+        out.innerHTML = why ? esc(why) : esc(Q.t('send_failed')) + ' <a href="mailto:' + esc(mail) + '">' + esc(mail) + '</a>' + (r && r.error && r.error !== 'network' ? '<br><span class="small muted">' + esc(r.error) + '</span>' : '');
       }
       out.focus();
     });

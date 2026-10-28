@@ -3,6 +3,7 @@
 //   node scripts/qa-a11y.mjs [--per=2] [--dir=dist]
 // axe-core: `npm i -D axe-core` o AXE_PATH=/ruta/axe.min.js (la prueba lo busca en node_modules y en /tmp/axe-install).
 // Falla con violaciones «serious» o «critical» (contraste, nombres accesibles, ARIA, formularios…). Las «moderate/minor» se listan como aviso.
+// Además de la muestra de páginas, analiza los formularios de contacto y de presupuesto EN ESTADO DE ERROR (campos obligatorios vacíos, texto no válido, contador cerca del límite) en los cuatro idiomas.
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import fs from 'node:fs';
@@ -39,24 +40,53 @@ const { server, base } = await serve(DIST);
 const browser = await chromium.launch();
 const found = new Map();   // regla|impacto → { help, nodes:[{url, vp, target, summary}] }
 let runs = 0;
+/** Analiza con axe la página que `page` tiene abierta y anota las violaciones bajo la etiqueta `label` (ruta o ruta + estado) en el tamaño `vpName`. */
+async function scan(page, label, vpName) {
+  await page.mouse.move(0, 0); await page.waitForTimeout(400);                    // el puntero fuera y las transiciones de color terminadas: si no, axe mide un color intermedio del botón recién pulsado
+  await page.evaluate(axeSrc);
+  const res = await page.evaluate(() => axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'] }, resultTypes: ['violations'] }));
+  runs++;
+  for (const v of res.violations) {
+    const k = `${v.id}|${v.impact}`; if (!found.has(k)) found.set(k, { id: v.id, impact: v.impact, help: v.help, nodes: [] });
+    for (const n of v.nodes.slice(0, 3)) found.get(k).nodes.push({ url: label, vp: vpName, target: n.target.join(' ').slice(0, 90), summary: (n.failureSummary || '').split('\n')[1] || '' });
+  }
+}
 for (const vp of [{ n: 'escritorio', w: 1440, h: 900 }, { n: 'móvil', w: 390, h: 844 }]) {
   const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h } });
   await ctx.addInitScript(() => { try { localStorage.setItem('tv_lang_auto_done', '1'); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang', document.documentElement.lang || 'es'); } catch (e) { /* ignorar */ } });
   const page = await ctx.newPage();
   for (const url of sample) {
     await page.goto(base + url, { waitUntil: 'load' }); await page.waitForTimeout(250);
-    await page.evaluate(axeSrc);
-    const res = await page.evaluate(() => axe.run(document, { runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'best-practice'] }, resultTypes: ['violations'] }));
-    runs++;
-    for (const v of res.violations) {
-      const k = `${v.id}|${v.impact}`; if (!found.has(k)) found.set(k, { id: v.id, impact: v.impact, help: v.help, nodes: [] });
-      for (const n of v.nodes.slice(0, 3)) found.get(k).nodes.push({ url, vp: vp.n, target: n.target.join(' ').slice(0, 90), summary: (n.failureSummary || '').split('\n')[1] || '' });
+    await scan(page, url, vp.n);
+  }
+  // formularios en estado de error: obligatorios vacíos, texto no válido y contador cerca del límite, en los cuatro idiomas
+  for (const lang of ['es', 'en', 'fr', 'de']) {
+    const contact = (byKey.get(`${lang}|contact`) || [])[0], quote = (byKey.get(`${lang}|quote`) || [])[0];
+    if (contact) {
+      await page.goto(base + contact, { waitUntil: 'load' }); await page.waitForTimeout(250);
+      const f = page.locator('[data-contact-form]').first();
+      await f.locator('button[type=submit]').click(); await f.locator('.err').first().waitFor({ timeout: 3000 });
+      await scan(page, contact + ' (obligatorios sin rellenar)', vp.n);
+      await f.locator('[name=name]').fill('Ana <b>Prueba</b>'); await f.locator('[name=email]').fill('ana@example.com'); await f.locator('[name=message]').fill('palabra '.repeat(118)); await f.locator('[name=privacy]').check();
+      await f.locator('button[type=submit]').click(); await f.locator('.err').first().waitFor({ timeout: 3000 });
+      await scan(page, contact + ' (texto no válido y contador cerca del límite)', vp.n);
+    }
+    if (quote) {
+      await page.goto(base + quote, { waitUntil: 'load' }); await page.waitForTimeout(250);
+      await page.evaluate(() => { const r = Object.keys(TV.items)[0]; TV.Quote.add(r, 3); });
+      await page.reload({ waitUntil: 'load' }); await page.waitForTimeout(250);
+      const q = page.locator('[data-quote-form]');
+      await q.locator('button[type=submit]').click(); await q.locator('.err').first().waitFor({ timeout: 3000 });
+      await scan(page, quote + ' (obligatorios sin rellenar)', vp.n);
+      await q.locator('[name=name]').fill('Ana'); await q.locator('[name=email]').fill('ana@example.com'); await q.locator('[name=privacy]').check(); await q.locator('[name=notes]').fill('Entrega <script>x</script>');
+      await q.locator('button[type=submit]').click(); await q.locator('.err').first().waitFor({ timeout: 3000 });
+      await scan(page, quote + ' (notas no válidas)', vp.n);
     }
   }
   await ctx.close();
 }
 await browser.close(); server.close();
-console.log(`${sample.length} páginas × 2 tamaños = ${runs} análisis axe (${path.basename(path.dirname(path.dirname(AXE)))})`);
+console.log(`${sample.length} páginas + formularios con errores × 2 tamaños = ${runs} análisis axe (${path.basename(path.dirname(path.dirname(AXE)))})`);
 let hard = 0;
 for (const impact of ['critical', 'serious', 'moderate', 'minor']) {
   const rows = [...found.values()].filter((f) => f.impact === impact);

@@ -12,11 +12,11 @@ Es **el mismo paquete** que para cPanel: un `.zip` con la web estática y la car
 |---|---|---|---|
 | **Quién atiende** | Apache (o LiteSpeed): el `.htaccess` se aplica a todo | **nginx delante de Apache** por defecto. Con PHP «servido por nginx», o con nginx sirviendo directamente los ficheros estáticos, **el `.htaccess` se ignora** (en esos casos) | Elegir *FPM application served by Apache* y no activar *Serve static files directly by nginx* (paso 2) |
 | **Carpeta de datos** | `/home/CUENTA/torivac-datos`, fuera de la web, **se crea sola** | La raíz de la cuenta (`/var/www/vhosts/…`) normalmente **no se puede escribir** con el usuario de la web: los datos caen en `api/storage` (dentro de la web, protegida con `.htaccess`) | Para pruebas vale; para la tarifa real o producción, sacarla de la web (paso 5) |
-| **Correo, cron, HTTPS** | Resend · *Cron Jobs* · AutoSSL | Resend · *Scheduled Tasks* · *SSL It!* / Let's Encrypt | Pasos 8, 9 y 1 |
+| **Correo, cron, HTTPS** | SMTP del buzón (o Brevo/Resend) · *Cron Jobs* · AutoSSL | SMTP del buzón (o Brevo/Resend) · *Scheduled Tasks* · *SSL It!* / Let's Encrypt | Pasos 8, 9 y 1 |
 | **Terminal** | *Terminal* en el panel | Solo si quien administra el servidor da acceso SSH | Todo se puede hacer sin terminal (paso 7) |
 | **Cortafuegos ModSecurity** | A veces | Suele venir activo | Si un pedido da 403/406 (paso 10) |
 
-Lo que **no** cambia: el `.zip`, el `.htaccess` generado, `config.php`, el correo con Resend, el origen de precios de Drive, el panel, los usuarios. La IP real del visitante (que usan los límites de uso) también funciona sola: Plesk lo resuelve con `mod_remoteip` y, si no lo hiciera, el API lee `X-Forwarded-For` del nginx de forma segura.
+Lo que **no** cambia: el `.zip`, el `.htaccess` generado, `config.php`, el correo (mismo `mail.driver`), el origen de precios de Drive, el panel, los usuarios. La IP real del visitante (que usan los límites de uso) también funciona sola: Plesk lo resuelve con `mod_remoteip` y, si no lo hiciera, el API lee `X-Forwarded-For` del nginx de forma segura.
 
 ## Pasos (los mismos 10; solo se detalla lo distinto)
 
@@ -70,12 +70,12 @@ Pon un `admin_token` largo en `config.php` y, desde cualquier ordenador:
 ```bash
 curl -X POST https://torivac.santisomarketing.com/api/users \
   -H "Authorization: Bearer EL_TOKEN" -H "Content-Type: application/json" \
-  -d '{"email":"jefa@torivac.com","name":"Nombre Apellido","role":"manager","password":"una contraseña de 10+ caracteres"}'
+  -d '{"email":"jefa@torivac.com","name":"Nombre Apellido","role":"manager","password":"una contraseña de 12 o más caracteres"}'
 ```
 y **vacía `admin_token`** después. (Con SSH: `php api/tools/create-user.php correo "Nombre" manager "contraseña"`.)
 
-### 8. Correo (Resend)
-Igual que en cPanel ([paso 8](DESPLIEGUE-CPANEL.md#8-correo-resend)): dominio verificado (SPF y DKIM en el DNS) y la clave en `mail.resend_api_key`. Si el correo no sale, **el pedido se guarda igual** y se marca «sin aviso por correo».
+### 8. Correo
+Igual que en cPanel ([paso 8](DESPLIEGUE-CPANEL.md#8-correo)) y con la guía completa en [`CORREO.md`](CORREO.md). En Plesk lo más sencillo es **SMTP con el buzón del dominio**: **Mail → Create Email Address** (`pedidos@torivac.santisomarketing.com` o el del dominio principal), servidor `mail.TUDOMINIO` (el que muestra *Mail → Mail Settings*), puerto 587 con `secure = 'tls'` (o 465 con `ssl`), usuario = la dirección completa. Para SPF y DKIM: *Mail → Mail Settings* del dominio → *Use DKIM spam protection*. Después, **Ajustes → Correo → «Enviar correo de prueba»** en el panel. Si el correo no sale, **el pedido y el mensaje se guardan igual** y se marcan «El aviso por correo falló» con el motivo.
 
 ### 9. Precios y cron diario
 Origen de la hoja: [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md). Para la sincronización diaria: **Scheduled Tasks → Add Task** → tipo **Run a PHP script** → ruta `…/api/cron.php` (p. ej. `/var/www/vhosts/santisomarketing.com/torivac.santisomarketing.com/api/cron.php`), PHP 8.x, *Daily* a las 03:00; marca recibir por correo solo los errores. Sin esa opción: tipo **Fetch a URL** con `https://torivac.santisomarketing.com/api/cron?token=EL_TOKEN` (pon `cron_token` en `config.php`). La tarea corre con el usuario de la web, el mismo que escribe los datos.
@@ -109,6 +109,6 @@ Igual que en cPanel ([paso 10](DESPLIEGUE-CPANEL.md#10-comprobar)): URL clave, *
 2. **`config.php`**: se copia casi entero (`order_to`, `mail`, `prices`…). Cambia o **vacía `storage_dir`**: una ruta de Plesk (`/var/www/vhosts/…`) no existe allí; si se deja, el API se desvía solo a un sitio válido y el Diagnóstico lo avisa, pero es mejor dejarlo vacío (en cPanel se crea `/home/CUENTA/torivac-datos`, fuera de la web, sin hacer nada). `session_secret` nuevo (se cierran las sesiones de pruebas).
 3. **Datos de pruebas**: lo normal es empezar limpio (crear los managers otra vez, paso 7) y no llevar los pedidos de prueba. Si hay que conservar usuarios: copiar `kv/user%3A*.json` de la carpeta de datos antigua a la nueva.
 4. **Cron** (*Cron Jobs*): `0 3 * * * /usr/local/bin/php /home/CUENTA/public_html/api/cron.php` ([paso 9 de cPanel](DESPLIEGUE-CPANEL.md#9-precios-y-cron-diario)). **HTTPS**: AutoSSL.
-5. **Resend**: verifica `grupotorivac.com` y ajusta `order_from`.
+5. **Correo**: con SMTP, crea el buzón en cPanel y cambia `mail.smtp` (host, usuario, contraseña) y `order_from`; con Resend o Brevo, verifica `grupotorivac.com`. Luego «Enviar correo de prueba».
 6. **ModSecurity** en cPanel: si un pedido da 403/406, pedir a soporte una excepción para `/api/`.
 7. El `.htaccess` es el mismo (Apache o LiteSpeed): nada que tocar. Después, DNS y Search Console como en [Pasar a producción](DESPLIEGUE-CPANEL.md#12-pasar-a-producción).

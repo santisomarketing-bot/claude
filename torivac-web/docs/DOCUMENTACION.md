@@ -1,7 +1,7 @@
 # Torivac · documentación para programadores
 
 Guía para quien tenga que **mantener o ampliar** la web nueva de Torivac. Complementa a `ARQUITECTURA.md` (contrato de datos), `PLAN.md` (sesiones),
-`INDICE-CODIGO.md` (índice generado: cada archivo y cada función), `CONVENCIONES.md` (etiquetas del código), `ENTREGA-DEMO.md` (qué es real y qué es simulado), `ACTUALIZAR-SIN-ROMPER.md` (cómo publicar cambios con una vuelta atrás), `SEGURIDAD.md` (medidas, pruebas y límites) y `SESION-21.md` (lo siguiente).
+`INDICE-CODIGO.md` (índice generado: cada archivo y cada función), `CONVENCIONES.md` (etiquetas del código), `ENTREGA-DEMO.md` (qué es real y qué es simulado), `ACTUALIZAR-SIN-ROMPER.md` (cómo publicar cambios con una vuelta atrás), `SEGURIDAD.md` (medidas, pruebas y límites), `CORREO.md` (SMTP, Brevo o Resend; probar y arreglar el envío) y `SESION-21.md` (lo siguiente).
 
 ## 1. Qué es
 Una web **100 % estática** (HTML + CSS + JS vanilla, sin frameworks) que replica grupotorivac.com en 4 idiomas (es en la raíz, `/en`, `/fr`, `/de`) y añade:
@@ -14,7 +14,7 @@ Dos modos de la misma base de código:
 |---|---|---|---|
 | Se abre con | doble clic (`file://`) o cualquier servidor | hosting cPanel o Plesk (Apache/LiteSpeed) | cualquier hosting estático (cPanel, Cloudflare Pages…) |
 | Precios | `prices.demo.*` (inventados, marcados DEMO) | **ninguno en la web**: los lee de `/api/prices` (hoja de Drive, cron 24 h + botón manual) | igual, desde el Worker |
-| Envío de pedido/contacto | simulado (PDF + borrador `mailto:`) | `POST /api/order` y `/api/contact` → Resend (info@ + mzamora@ + copia al cliente) | igual |
+| Envío de pedido/contacto | simulado (PDF + borrador `mailto:`) | `POST /api/order` y `/api/contact` → correo (SMTP del buzón, Brevo o Resend: info@ + mzamora@ + copia al cliente) y, el contacto, guardado en *Mensajes* | igual |
 | Panel `/admin/` | `admin.js` (credenciales de demo en el código) | `admin-live.js` (login real, datos del servidor) | igual |
 | CSS / fuentes | 1 `site.css` legible (dos aspectos en capas) + fuentes en base64 (para `file://`) | 1 `site.css` minificado + fuentes `woff2` | igual |
 | SEO y servidor | sin canonical/sitemap | canonical, hreflang, JSON-LD, sitemap con imágenes, `llms.txt`, `robots.txt`, **`.htaccess`** (HTTPS, host único, 301, caché, CSP), 404 por idioma, URLs limpias | igual (el `.htaccess` solo si el estático va a cPanel/Plesk) |
@@ -136,11 +136,11 @@ La CI (`ci/ci.yml`) las encadena. `node scripts/capturas.mjs` genera capturas de
 ## 12. Revisión final (S16): lo que se encontró y se corrigió
 Una pasada de lectura de todo el código (al documentar cada función) y de las pruebas dejó estos arreglos, cada uno con su prueba en **los dos backends**:
 - **Privacidad**: `GET /api/prices` es público y devolvía `meta.reason`/`source` con el correo de quien cargó la hoja (`upload:ana@…`) y el id del archivo de Drive. Ahora el público ve solo `upload`, `sheet`… y un manager (con sesión) ve el detalle (`Cache-Control: private, no-store`, `Vary: Authorization`).
-- **Sesiones**: borrar un usuario no cerraba su sesión (las sesiones no tienen estado y duran 7 días). Ahora se comprueba que el usuario siga existiendo (una lectura por petición autenticada).
+- **Sesiones**: borrar un usuario no cerraba su sesión (las sesiones no tienen estado y duran 24 h). Ahora se comprueba que el usuario siga existiendo (una lectura por petición autenticada).
 - **Correo de contacto** (Worker): el correo del visitante iba sin escapar en el HTML que recibe el equipo; ahora nombre, correo y mensaje se escapan (el PHP ya lo hacía).
 - **Número de pedido** (Worker): KV no es atómico; si dos pedidos coinciden, el segundo coge el siguiente número en vez de pisar el registro (el PHP usa `flock`).
 - **Importar CSV/Excel**: la cantidad `1.000` se importaba como 1; ahora es mil. **Importes en español** (`1.234,56`): la demo del panel y `build_prices.py` los leían mal; ahora usan la misma regla que el servidor (el último separador es el decimal).
-- **El correo es parte del resultado**: la web decía «te hemos enviado una copia» aunque el correo no hubiera salido (y el formulario de contacto daba por enviado un mensaje que nadie recibía). Ahora el pedido guarda siempre si el aviso salió (`emailed`), el panel marca los que no («sin aviso por correo»), la web solo promete la copia si salió, el contacto responde con error si no pudo enviarse y el diagnóstico avisa. Probado en los dos backends con Resend caído.
+- **El correo es parte del resultado**: la web decía «te hemos enviado una copia» aunque el correo no hubiera salido (y el formulario de contacto daba por enviado un mensaje que nadie recibía). Ahora el pedido guarda siempre si el aviso salió (`emailed`), el panel marca los que no («sin aviso por correo»), la web solo promete la copia si salió y el diagnóstico avisa. *Actualización (S24):* el mensaje de contacto ahora se **guarda siempre** (*Mensajes* del panel) antes de intentar el correo y la web dice «Mensaje recibido» porque lo está de verdad; el aviso por correo queda marcado en el panel (enviado o fallido, con el motivo). Probado en los dos backends con Resend caído.
 - **Servidor de pruebas** (`static-server.mjs`): ya no sale de su carpeta ni se cae con un `%` mal formado. Dos comprobaciones de las pruebas eran más laxas de lo que parecían (responder-a del correo y recuento de referencias sin precio) y se han afinado.
 - Código muerto y casos límite de los scripts de desarrollo (`seo_check.py` sin páginas, `qa_content.py` sin filas, fechas inválidas en el blog).
 
@@ -152,3 +152,14 @@ Al pasar las pruebas a un subdominio de Plesk (producción irá a cPanel) se rev
 - **IP del visitante** (límites por IP de pedidos, mensajes y **bloqueo de intentos de acceso**): el PHP se fiaba de la cabecera `CF-Connecting-IP` sin comprobar que viniera de Cloudflare (cualquiera podía falsearla y saltarse esos límites) y, detrás del nginx de Plesk, todas las visitas podían contar como una sola IP. Ahora `Request::clientIp` usa `REMOTE_ADDR` y solo mira las cabeceras si quien conecta es un proxy de confianza; la cadena `X-Forwarded-For` se lee de derecha a izquierda, de modo que lo que escriba el visitante no cuenta.
 - **PHP servido por nginx** (opción de Plesk): ignora el `.htaccess` y rompe URLs limpias, cabeceras y la ruta `/api`; el Diagnóstico lo detecta (*Servidor web*).
 - **Diagnóstico** más preciso por línea de comandos (sabe si la carpeta de datos cae dentro de la web sin `DOCUMENT_ROOT`), con textos para cPanel y Plesk.
+
+## 14. Formularios, correo y acceso (S24): lo que se encontró y se corrigió
+Motivo: en el entorno de pruebas el formulario de contacto decía «Mensaje recibido» y los correos nunca llegaban (el servidor daba el envío por bueno en cuanto el sistema lo aceptaba). Y se pidió endurecer el acceso y los formularios. Cada punto tiene sus pruebas en **los dos backends** (`backend-php/api/tests/*`, `workers/api/test/*`) y en el navegador (`scripts/qa-live.mjs`, `qa-admin-live.mjs`):
+- **Correo veraz y configurable**: seis controladores (`smtp` —el buzón del dominio, con cliente propio y certificado verificado—, `brevo`, `resend`, `mail`, `file`, `none`); cada envío devuelve `{ ok, reason, error }` con un motivo corto y sin secretos; el último intento se guarda (`mail:last`) y se ve en *Ajustes → Correo* (con «Enviar correo de prueba»), en el *Resumen* y, sin el texto del error, en `/api/health`. Guía: `CORREO.md`.
+- **Mensajes de contacto guardados**: `msg:` (400 días), `GET /api/messages`, `DELETE /api/messages/:id`; el contacto responde `{ ok, id, emailed }` y solo es error si no se pudo **guardar** (500).
+- **Acceso**: 5 contraseñas erróneas del mismo visitante contra una cuenta → bloqueo de 1 hora (más 15/h por visitante y 30/h por cuenta); contraseña buena durante el bloqueo → mismo 429; `Retry-After`. Sesiones de 24 h.
+- **Formularios solo texto plano y con límite** (`shared/plain-text.mjs` → navegador, Worker y `PlainTextRules.php`), tiempo mínimo de relleno (`_e`), contador de caracteres y avisos en los cuatro idiomas (`assets/js/forms.js`, textos nuevos en `TEXTOS-DE-INTERFAZ.md` para validar).
+- **Bloque «Contacta con nosotros» de «Original»** (al pie de fichas y entradas): no cargaba `contact.js`, así que su formulario no hacía nada (enviaba la página con los datos en la dirección). Ahora `layout()` añade los scripts de formulario en toda página que lleve un formulario de contacto.
+- **Contacto, orden de comprobaciones** (PHP): primero se valida y después se gasta el cupo de 5 mensajes cada 10 min (como el Worker): un aviso de texto no deja sin cupo a quien escribe de buena fe.
+- **Sondeos de WordPress**: `.htaccess` responde 410 a `wp-login.php`, `xmlrpc.php`, `wp-admin`… (el paquete lo verifica con rutas de ejemplo).
+- Contraseñas nuevas de **12 o más** caracteres (la guía y el panel decían 10).

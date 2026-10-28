@@ -19,7 +19,7 @@ const DIST = path.join(ROOT, 'dist');
 const TMP = fs.mkdtempSync(path.join(process.env.TMPDIR || '/tmp', 'qa-quote-'));
 
 // ───────────────────────────────────────── [DATA] mismos datos que carga el navegador, leídos en Node
-const sandbox = { window: {}, TV: undefined };
+const sandbox = { window: {}, TV: undefined, document: { getElementById: () => null } };          // catalog.js lee el bloque JSON de arranque con document.getElementById (aquí no hay página: sin bloque)
 sandbox.window = sandbox;
 vm.createContext(sandbox);
 for (const f of ['catalog.js', 'prices.js']) vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data', f), 'utf8'), sandbox);

@@ -74,7 +74,7 @@ try {
   const looseO = oRules.flatMap((r) => splitSelectors(r.selector)).filter((s) => !s.startsWith('[data-theme="original"]'));
   ok(!looseO.length, 'todo selector de original.css empieza por [data-theme="original"] (si no, la regla se colaría en los otros aspectos)' + (looseO.length ? ': ' + looseO.slice(0, 3).join(' | ') : ''));
   const imp = origCss.match(/[a-z-]+:[^;{}]*!important/g) || [];
-  ok(imp.length <= 9 && imp.every((d) => /^(background:none|display:none|margin(-bottom)?:[^;!]*|padding:40px)!important$/.test(d)), `original.css solo usa !important para ocultar lo que no es del aspecto, anular el fondo en línea de las entradas y los márgenes que fijan las plantillas (${imp.length})`);
+  ok(imp.length <= 9 && imp.every((d) => /^(background:none|display:none|margin(-bottom)?:[^;!]*|padding:(24|40)px)!important$/.test(d)), `original.css solo usa !important para ocultar lo que no es del aspecto, anular el fondo en línea de las entradas y los márgenes y rellenos que fijan las plantillas (${imp.length})`);
   const oTok = rulesOf(origTok);
   ok(oTok.length === 1 && oTok[0].selector === '[data-theme="original"]' && !/[^-\w]color\s*:/.test(oTok[0].body.replace(/--[\w-]+\s*:/g, '')), 'original-tokens.css solo define variables dentro de [data-theme="original"]');
   for (const k of ['--o-black', '--o-bg', '--o-brand', '--o-accent', '--o-font-title', '--o-font-body', '--font-display', '--radius']) ok(new RegExp(`${k}\\s*:`).test(origTok), `original-tokens.css define ${k}`);

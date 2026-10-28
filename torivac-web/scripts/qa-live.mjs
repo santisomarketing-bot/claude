@@ -4,7 +4,8 @@
 //   node scripts/qa-live.mjs --php      contra el API PHP de cPanel (backend-php/api, php -S, almacén en ficheros)
 // Cadena: navegador (Playwright) → dist/ servido por http → backend (Resend simulado) · ver scripts/lib/backends.mjs.
 // Se comprueba: pedido con PDF adjunto a info@ y mzamora@ + copia al cliente, repricing en servidor, vaciado del presupuesto,
-// fallo del servidor (mensaje + mailto, el presupuesto se conserva), honeypot, formulario de contacto, CORS.
+// fallo del servidor (mensaje + mailto, el presupuesto se conserva), honeypot, formulario de contacto (el mensaje queda guardado aunque el correo falle), solo texto plano y con límite
+// (aviso en el idioma de la página, y el servidor lo exige aunque se salte el navegador), tiempo mínimo de relleno, CORS.
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import fs from 'node:fs';
@@ -105,7 +106,7 @@ ok(/recibido/i.test(await cf.locator('[data-sent]').innerText()), 'mensaje de co
 const cm = mails.at(-1) || {};
 ok(JSON.stringify(cm.to) === JSON.stringify(['info@grupotorivac.com', 'mzamora@torivac.com']) && /toroidal/.test(JSON.stringify(cm)), 'llega a info@ y mzamora@ con el texto del mensaje');
 
-console.log('\n4b) el correo falla (Resend rechaza, p. ej. dominio sin verificar): la web no promete una copia que no sale y el contacto no se da por enviado');
+console.log('\n4b) el correo falla (Resend rechaza, p. ej. dominio sin verificar): el pedido y el mensaje quedan guardados y la web no promete una copia que no sale');
 be.setMailDown(true); mails.length = 0;
 await page.goto(SITE + '/presupuesto/');
 await page.evaluate(([refs, qty]) => { refs.forEach((r) => TV.Quote.add(r, qty[r])); }, [REFS, QTY]);
@@ -115,7 +116,7 @@ await f2.locator('[name=name]').fill('Marta Prueba'); await f2.locator('[name=em
 await f2.locator('button[type=submit]').click(); await page.locator('[data-sent]:not([hidden])').waitFor({ timeout: 8000 });
 const t2 = (await page.locator('[data-sent]').innerText()).replace(/\s+/g, ' ');
 const num2 = (t2.match(/TV-\d{8}-\d{4}(?:-[0-9A-Z]{3})?/) || [])[0];
-ok(!!num2 && /no hemos podido enviarte la copia/i.test(t2) && !/te hemos enviado una copia/i.test(t2) && (await page.locator('[data-sent] a[href^="mailto:info@"]').count()) === 1, `pedido registrado SIN afirmar que se envió copia, con el correo directo: «${t2.slice(0, 150)}»`);
+ok(!!num2 && /no hemos podido enviarte la confirmación/i.test(t2) && !/te hemos enviado una confirmación/i.test(t2) && (await page.locator('[data-sent] a[href^="mailto:info@"]').count()) === 1, `pedido registrado SIN afirmar que se envió copia, con el correo directo: «${t2.slice(0, 150)}»`);
 const rec2 = await be.order(num2);
 ok(rec2 && rec2.emailed && rec2.emailed.team === false && /403/.test(rec2.emailed.error), `el pedido queda guardado y marcado «aviso por correo no enviado» (${rec2 && rec2.emailed && rec2.emailed.error})`);
 await page.goto(SITE + '/contacto/');
@@ -123,8 +124,70 @@ const cf2 = page.locator('[data-contact-form]').first();
 await cf2.locator('[name=name]').fill('Pedro Contacto'); await cf2.locator('[name=email]').fill('pedro@example.com'); await cf2.locator('[name=message]').fill('Necesito un transformador de 50 VA.'); await cf2.locator('[name=privacy]').check();
 await cf2.locator('button[type=submit]').click(); await cf2.locator('[data-sent]:not([hidden])').waitFor({ timeout: 8000 });
 const ct2 = (await cf2.locator('[data-sent]').innerText()).replace(/\s+/g, ' ');
-ok(/no hemos podido enviarlo/i.test(ct2) && !/recibido/i.test(ct2) && (await cf2.locator('[data-sent] a[href^="mailto:info@"]').count()) === 1, `contacto: no se da por enviado y ofrece el correo directo: «${ct2.slice(0, 120)}»`);
+const saved2 = (await be.messages()).find((m) => /transformador de 50 VA/.test(m.message));
+ok(/recibido/i.test(ct2) && saved2 && saved2.emailed && saved2.emailed.sent === false, `contacto con el correo caído: el mensaje queda GUARDADO (se ve en el panel) y marcado «sin enviar por correo» (${saved2 && JSON.stringify(saved2.emailed).slice(0, 80)})`);
 be.setMailDown(false);
+
+console.log('\n4c) solo texto plano y con límite de caracteres: el navegador avisa en el idioma de la página y no envía nada');
+await page.goto(SITE + '/contacto/');
+const cf3 = page.locator('[data-contact-form]').first();
+const nMsgs = (await be.messages()).length; mails.length = 0;
+await cf3.locator('[name=message]').fill('Hola');
+ok(((await cf3.locator('.count').innerText()) || '').replace(/\s+/g, '') === '4/1000', `contador de caracteres: «${await cf3.locator('.count').innerText()}»`);
+ok((await cf3.locator('[name=message]').getAttribute('maxlength')) === '1000' && (await cf3.locator('[name=name]').getAttribute('maxlength')) === '80', 'maxlength en los campos');
+await cf3.locator('[name=name]').fill('Pedro <script>alert(1)</script>'); await cf3.locator('[name=email]').fill('pedro@example.com');
+await cf3.locator('[name=message]').fill('Necesito un transformador de 50 VA.'); await cf3.locator('[name=privacy]').check();
+await cf3.locator('button[type=submit]').click();
+await cf3.locator('.err').first().waitFor({ timeout: 4000 });
+ok(/solo texto normal/i.test(await cf3.locator('.err').first().innerText()) && (await cf3.locator('[name=name]').getAttribute('aria-invalid')) === 'true', `etiquetas HTML en el nombre: «${await cf3.locator('.err').first().innerText()}»`);
+ok((await cf3.locator('[name=name]').getAttribute('aria-describedby')) === (await cf3.locator('.err').first().getAttribute('id')), 'el aviso está enlazado con el campo (aria-describedby)');
+await cf3.locator('[name=name]').fill('Pedro Contacto'); await cf3.locator('[name=message]').fill('palabra '.repeat(126));
+ok((await cf3.locator('[name=message]').inputValue()).length === 1000 && /1000\s*\/\s*1000/.test(await cf3.locator('.count').innerText()) && (await cf3.locator('.count.full').count()) === 1, 'al escribir más de 1000 caracteres el navegador corta en 1000 y el contador lo marca');
+await cf3.locator('[name=message]').evaluate((el) => { el.value = 'palabra '.repeat(126); el.dispatchEvent(new Event('input', { bubbles: true })); });         // sin maxlength efectivo (valor puesto por un script)
+await cf3.locator('button[type=submit]').click();
+await cf3.locator('.err').first().waitFor({ timeout: 4000 });
+ok(/demasiado largo.*1000/i.test(await cf3.locator('.err').first().innerText()), `más de 1000 caracteres (valor puesto por programa): «${await cf3.locator('.err').first().innerText()}»`);
+ok((await be.messages()).length === nMsgs && mails.length === 0, 'no se envió nada al servidor');
+// si alguien se salta el navegador, el servidor lo rechaza igual (con el código y el campo para que la web lo muestre)
+const hostile = await fetch(API + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: SITE }, body: JSON.stringify({ name: 'Eva', email: 'eva@example.com', message: '<img src=x onerror=alert(1)> hola', privacy: true, _e: 9000 }) });
+const hb = await hostile.json().catch(() => ({}));
+ok(hostile.status === 400 && hb.code === 'plain_text' && hb.field === 'message', `servidor: HTML en el mensaje → ${hostile.status} ${hb.code}/${hb.field}`);
+const longMsg = await fetch(API + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: SITE }, body: JSON.stringify({ name: 'Eva', email: 'eva@example.com', message: 'palabra '.repeat(126), privacy: true, _e: 9000 }) });
+const lb = await longMsg.json().catch(() => ({}));
+ok(longMsg.status === 400 && lb.code === 'too_long' && lb.field === 'message', `servidor: 1008 caracteres → ${longMsg.status} ${lb.code}/${lb.field}`);
+ok((await be.messages()).length === nMsgs, 'el servidor no guardó nada de lo rechazado');
+// presupuesto: las notas también
+await page.goto(SITE + '/presupuesto/');
+await page.evaluate(([refs, qty]) => { refs.forEach((r) => TV.Quote.add(r, qty[r])); }, [REFS, QTY]);
+await page.reload();
+const f3 = page.locator('[data-quote-form]');
+await f3.locator('[name=name]').fill('Marta Prueba'); await f3.locator('[name=email]').fill('cliente.prueba@example.com'); await f3.locator('[name=privacy]').check();
+await f3.locator('[name=notes]').fill('Mira esto: <b onmouseover=alert(1)>entrega</b>');
+await f3.locator('button[type=submit]').click();
+await f3.locator('.err').first().waitFor({ timeout: 4000 });
+ok(/solo texto normal/i.test(await f3.locator('.err').first().innerText()) && mails.length === 0 && (await page.evaluate(() => TV.Quote.kinds())) === 3, 'presupuesto: etiquetas HTML en las notas → aviso, no se envía y el presupuesto se conserva');
+await f3.locator('[name=notes]').evaluate((el) => { el.value = 'x'.repeat(501); el.dispatchEvent(new Event('input', { bubbles: true })); });
+await f3.locator('button[type=submit]').click();
+await f3.locator('.err').first().waitFor({ timeout: 4000 });
+ok(/demasiado largo.*500/i.test(await f3.locator('.err').first().innerText()), `presupuesto: más de 500 caracteres en las notas: «${await f3.locator('.err').first().innerText()}»`);
+
+console.log('\n4d) tiempo mínimo de relleno: enviar al instante de cargar la página (un robot) no vale; esperando un poco, sí');
+await be.setMinFill(1200);
+await page.goto(SITE + '/contacto/');
+const cf4 = page.locator('[data-contact-form]').first();
+const nMsgs2 = (await be.messages()).length;
+await cf4.locator('[name=name]').fill('Pedro Contacto'); await cf4.locator('[name=email]').fill('pedro@example.com'); await cf4.locator('[name=message]').fill('Necesito un transformador de 80 VA.'); await cf4.locator('[name=privacy]').check();
+const elapsed = await page.evaluate(() => TV.Forms.elapsed());
+if (elapsed < 1100) await cf4.locator('button[type=submit]').click(); else console.log('  (la máquina es lenta: ' + elapsed + ' ms desde la carga; se omite el envío «rápido»)');
+if (elapsed < 1100) {
+  await cf4.locator('[data-sent]:not([hidden])').waitFor({ timeout: 8000 });
+  ok(/demasiado rápido/i.test(await cf4.locator('[data-sent]').innerText()) && (await be.messages()).length === nMsgs2, `enviado a los ${elapsed} ms: «${(await cf4.locator('[data-sent]').innerText()).replace(/\s+/g, ' ')}» y no se guardó nada`);
+  await page.waitForTimeout(1300);
+  await cf4.locator('button[type=submit]').click();
+  await page.waitForFunction(() => /recibido/i.test(document.querySelector('[data-contact-form] [data-sent]').textContent), null, { timeout: 8000 });
+  ok((await be.messages()).length === nMsgs2 + 1, 'pasado el tiempo mínimo, el mismo formulario se acepta');
+}
+await be.setMinFill(0);
 
 console.log('\n5) CORS: un origen ajeno no puede usar el API');
 const bad = await fetch(API + '/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: 'https://evil.example' }, body: '{}' });

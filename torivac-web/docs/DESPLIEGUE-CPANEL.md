@@ -13,7 +13,7 @@ Se despliega **una sola cosa**: un `.zip` con la web estática (HTML por idioma)
 5. [Carpeta de datos](#5-carpeta-de-datos-fuera-de-la-web) fuera de la web.
 6. [`api/config.php`](#6-configuración-apiconfigphp) (copiando el ejemplo).
 7. [Primer usuario manager](#7-primer-usuario-manager).
-8. [Correo con Resend](#8-correo-resend) (dominio verificado).
+8. [Correo](#8-correo) (buzón del dominio por SMTP, Brevo o Resend; guía completa en [`CORREO.md`](CORREO.md)).
 9. [Precios desde Drive y cron diario](#9-precios-y-cron-diario).
 10. [Comprobar](#10-comprobar) con `check.php`, las URL clave y un pedido de prueba.
 
@@ -68,8 +68,8 @@ Pedidos, usuarios y precios se guardan como ficheros JSON. Con `storage_dir` vac
 | `storage_dir` | déjalo vacío (se usa `/home/CUENTA/torivac-datos`, paso 5); solo ponlo si quieres otra ruta |
 | `session_secret` | 32+ caracteres aleatorios (`openssl rand -hex 32` o random.org). Cambiarla cierra todas las sesiones |
 | `order_to` | `['info@grupotorivac.com', 'mzamora@torivac.com']` (confirmado; `info@` también para las pruebas) |
-| `order_from` | `Torivac Web <pedidos@grupotorivac.com>` (dominio verificado en Resend, paso 8) |
-| `mail` | `driver` = `resend` y `resend_api_key` |
+| `order_from` | `Torivac Web <pedidos@grupotorivac.com>` (con SMTP, el mismo buzón; con Resend o Brevo, un dominio o remitente verificado: paso 8) |
+| `mail` | `driver` = `smtp` (recomendado: el buzón del dominio) con su bloque `smtp` (`host`, `port`, `secure`, `user`, `pass`); o `brevo` / `resend` con su clave. Ver [`CORREO.md`](CORREO.md) |
 | `prices` | origen de la hoja de Drive (paso 9) |
 | `admin_token` | solo para crear el primer manager (paso 7); **vacíalo después** |
 
@@ -82,7 +82,7 @@ Pedidos, usuarios y precios se guardan como ficheros JSON. Con `storage_dir` vac
 
 ```bash
 cd ~/public_html/pruebas
-php api/tools/create-user.php jefa@torivac.com "Nombre Apellido" manager "una contraseña de 10+ caracteres"
+php api/tools/create-user.php jefa@torivac.com "Nombre Apellido" manager "una contraseña de 12 o más caracteres"
 ```
 
 **Sin Terminal**: pon un `admin_token` largo en `config.php` y, desde cualquier ordenador:
@@ -90,22 +90,23 @@ php api/tools/create-user.php jefa@torivac.com "Nombre Apellido" manager "una co
 ```bash
 curl -X POST https://pruebas.grupotorivac.com/api/users \
   -H "Authorization: Bearer EL_TOKEN" -H "Content-Type: application/json" \
-  -d '{"email":"jefa@torivac.com","name":"Nombre Apellido","role":"manager","password":"una contraseña de 10+ caracteres"}'
+  -d '{"email":"jefa@torivac.com","name":"Nombre Apellido","role":"manager","password":"una contraseña de 12 o más caracteres"}'
 ```
 
 Luego **vacía `admin_token`**. Más usuarios (managers o clientes) se crean desde el panel: **Usuarios**.
 
-## 8. Correo (Resend)
+## 8. Correo
 
-Los pedidos llegan por correo a `order_to`, con el PDF adjunto, y el cliente recibe una copia.
+Los pedidos y los mensajes de contacto avisan por correo a `order_to`; en los pedidos, el PDF va adjunto y el cliente recibe una copia. **Guía completa, con los errores más típicos: [`CORREO.md`](CORREO.md).** Lo esencial:
 
-1. Cuenta en resend.com → **Domains** → añade `grupotorivac.com` y copia en el DNS los registros que indica (SPF y DKIM). No tocan el correo actual (los `MX` siguen igual).
-2. **API Keys** → crea una → `mail.resend_api_key`.
-3. Hasta que el dominio esté verificado, Resend solo permite enviar desde `onboarding@resend.dev` y solo a la dirección de tu cuenta: para probar, pon provisionalmente `order_from` = `Torivac Web <onboarding@resend.dev>` y `order_to` = tu correo.
+1. **Recomendado: `driver = 'smtp'` con el buzón del dominio.** Crea el buzón (*Cuentas de correo → Crear*: `pedidos@grupotorivac.com`), mira en *Conectar dispositivos* el servidor (`mail.TUDOMINIO.com`), el puerto (587 con TLS o 465 con SSL) y el usuario (la dirección completa), y rellena el bloque `mail.smtp` de `config.php`. `order_from` debe ser ese mismo buzón.
+2. Alternativas con servicio externo: `brevo` (clave API v3 + remitente verificado) o `resend` (dominio verificado con SPF y DKIM; hasta entonces solo envía desde `onboarding@resend.dev` y solo a la dirección de tu cuenta).
+3. Para que no vaya a spam, el dominio necesita **SPF y DKIM**: en cPanel, *Entregabilidad de correo (Email Deliverability)*.
+4. **Pruébalo:** panel → **Ajustes → Correo → «Enviar correo de prueba»**. Dice «Enviado a…» o el motivo exacto del fallo.
 
-**Qué pasa si el correo no sale** (clave vacía, dominio sin verificar, Resend caído): el **pedido no se pierde**, se guarda igualmente y en el panel (Pedidos) aparece con la marca **«sin aviso por correo»**; al cliente la web le dice la verdad (pedido registrado, sin copia por correo, con tu correo para escribir). El **formulario de contacto**, en cambio, responde con error y ofrece tu correo (un mensaje sin correo no tendría adónde ir). `check.php` y Ajustes → Diagnóstico avisan si los últimos pedidos se quedaron sin aviso.
+**Qué pasa si el correo no sale** (contraseña mal, dominio sin verificar, servicio caído): **no se pierde nada**. El pedido y el mensaje de contacto se guardan igualmente y se ven en el panel (*Pedidos* y *Mensajes*) con la marca **«El aviso por correo falló»** y el motivo; el *Resumen* avisa de que «El correo no está funcionando». Al cliente la web le dice la verdad: pedido registrado, sin copia por correo y con tu correo para escribir. El visitante que usa el formulario de contacto ve «Mensaje recibido» porque **de verdad está guardado** (aunque el aviso por correo haya fallado: por eso conviene mirar *Mensajes* y arreglar el correo). `check.php` y *Ajustes → Diagnóstico* avisan si el correo no está completo.
 
-Alternativas: `mail.driver = 'mail'` (función `mail()` del hosting: sin garantías de entrega si el SPF de grupotorivac.com no incluye el servidor) o `'file'` (no envía; deja cada correo en la carpeta `outbox` dentro de la carpeta de datos, útil para ver cómo quedan).
+Otras opciones de `mail.driver`: `'mail'` (función `mail()` del hosting: **sin garantías de entrega**, el servidor la da por buena en cuanto la recibe), `'file'` (no envía; deja cada correo en la carpeta `outbox` de la carpeta de datos, útil para ver cómo quedan) y `'none'` (no envía nada).
 
 ## 9. Precios y cron diario
 
@@ -163,7 +164,7 @@ Lo único que no se regenera es la **carpeta de datos** (pedidos 400 días, usua
 | La web va pero `/api/…` da 404 | Falta el `.htaccess` (oculto) o `mod_rewrite` | Mostrar ocultos y comprobar que se extrajo; pedir a soporte `mod_rewrite` |
 | Entras en el panel y vuelve a pedir acceso / 401 | El hosting no pasa la cabecera `Authorization` a PHP | Ya hay una regla en `.htaccess`; si persiste, en `api/.htaccess` añade `SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1` |
 | «Origen no permitido» (403) | Se abre la web con otro host que el compilado (`www` frente a sin `www`) | Entrar por la URL compilada o añadir el otro origen a `allowed_origins` |
-| No llegan los correos | Dominio sin verificar en Resend, o va a spam | `check.php --net`; panel de Resend → *Emails*; probar con `driver = 'file'` y mirar la carpeta `outbox` de la carpeta de datos |
+| No llegan los correos | Contraseña o remitente mal (SMTP), dominio sin verificar (Resend/Brevo), o va a spam (falta SPF/DKIM) | Panel → *Ajustes → Correo → «Enviar correo de prueba»* (dice el motivo exacto); [`CORREO.md`](CORREO.md) §6; probar con `driver = 'file'` y mirar la carpeta `outbox` de la carpeta de datos |
 | Los precios no se actualizan | Origen mal configurado, archivo sin compartir o hoja rechazada | Ejecuta `php api/cron.php` y lee el mensaje; ver [`PRECIOS-DRIVE.md`](PRECIOS-DRIVE.md) §7-8 |
 | Enviar un pedido o el contacto da error 403/406 aunque `/api/health` responde | **ModSecurity** (el cortafuegos del hosting) rechaza el cuerpo de la petición (lleva el PDF en base64) | Pedir a soporte una excepción para `/api/` (o que suba el límite del cuerpo); el resto de la web no se ve afectado |
 | El subdominio ya tenía otra web (p. ej. un WordPress de pruebas) | El zip se extrae encima: `index.php`, `.htaccess` y plugins antiguos chocan con los nuevos | Copia de seguridad y vacía la carpeta del subdominio (o usa otro subdominio) antes de extraer |

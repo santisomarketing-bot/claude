@@ -288,12 +288,12 @@ final class Orders
             error_log('torivac-api: [contacto] No se pudo guardar el mensaje: ' . mb_substr($e->getMessage(), 0, 160));
             return new Response(['ok' => false, 'error' => 'No se pudo guardar el mensaje'], 500);
         };
+        $p = self::parseContact($raw);                                                           // primero se valida: lo no válido (con el aviso que el visitante necesita) no gasta su cupo de 5 mensajes (igual que el Worker)
+        if (isset($p['error'])) return self::badRequest($p);
+        $c = $p['contact'];
         try { $rl = RateLimit::hit('contact', Request::ipKey($req->ip), 5, 600000, $nowMs); }
         catch (\Throwable $e) { return $notSaved($e); }                                           // sin almacén tampoco hay contador que aplicar: falla cerrado
         if (!$rl['allowed']) return new Response(['ok' => false, 'error' => 'Demasiados mensajes seguidos.'], 429);
-        $p = self::parseContact($raw);
-        if (isset($p['error'])) return self::badRequest($p);
-        $c = $p['contact'];
         if (!self::verifyTurnstile($c['turnstile'], $req->ip)) return new Response(['ok' => false, 'error' => 'Verificación anti-spam fallida'], 400);
         try { $rec = Messages::create($c, $req->ip, $nowMs); }
         catch (\Throwable $e) { return $notSaved($e); }

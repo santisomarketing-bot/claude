@@ -133,6 +133,16 @@ function test_contact_limits_and_antispam_still_apply()
     T::same([400, 'Verificación anti-spam fallida', 0, 0], [$r->status, $r->body['error'], count(Store::names('msg:')), count(outbox())], 'Turnstile fallido: ni guarda ni envía');
 }
 
+/** M1b · Lo no válido no gasta el cupo de 5 mensajes de 10 min: seis intentos con el texto mal (cada uno con su aviso) y después sus 5 mensajes bien se aceptan; el 6.º bueno es 429. Igual que el Worker. */
+function test_invalid_contact_does_not_spend_the_budget()
+{
+    fresh(['mail' => ['driver' => 'file']]);
+    for ($i = 0; $i < 6; $i++) T::same(400, ms_post(ms_contact(['message' => '<script>x</script>']), '10.9.5.1')->status, 'texto no válido ' . $i);
+    $codes = [];
+    for ($i = 0; $i < 6; $i++) $codes[] = ms_post(ms_contact(), '10.9.5.1')->status;
+    T::same([200, 200, 200, 200, 200, 429], $codes, 'después de los avisos siguen quedando sus 5 mensajes');
+}
+
 /** Texto plano y límites: etiquetas, scripts, SQL, plantillas, consola y rutas se rechazan con code y field; demasiado largo o con muchos enlaces también; nada se guarda ni se envía. */
 function test_contact_plain_text_and_limits_over_the_api()
 {

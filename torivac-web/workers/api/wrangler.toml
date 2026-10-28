@@ -32,6 +32,7 @@ PRICE_CSV_URL = ""                                       # alternativa sin crede
 ORDER_COPY = "capped"            # «capped» (por defecto): se envía con los topes de abajo · «off»: nunca se envía copia · cualquier otro valor = off (falla cerrado)
 ORDER_COPY_DAILY_MAX = "150"     # tope TOTAL de copias al día (además de 2 copias por destinatario cada 24 h, que no se configura)
 ORDERS_PER_HOUR_MAX = "120"      # tope GLOBAL de pedidos por hora (además de 8 por visitante cada 10 min); protege la cuota de Resend y el buzón del equipo
+FORM_MIN_FILL_MS = "1200"        # antispam de los formularios: milisegundos mínimos entre cargar la página y enviar (el navegador manda `_e`); "0" = no se exige
 
 # Secretos (npx wrangler secret put <NOMBRE>):
 #   RESEND_API_KEY             envío de correo con Resend (EMAIL_PROVIDER = "resend")

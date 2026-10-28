@@ -12,6 +12,7 @@ import { LANGS, T, t } from './lib/i18n.mjs';
 import * as TPL from './templates.mjs';
 import { productNode, itemListNode, postNode, jsonScript } from './lib/seo.mjs';
 import { THEMES, themeBootJs } from './lib/themes.mjs';
+import { plainTextScript } from './lib/shared-client.mjs';
 import crypto from 'node:crypto';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -308,7 +309,7 @@ for (const lang of LANGS) {
     const ctx = mkctx(lang, qp, 'quote');
     const hero = `<section class="page-hero bp"><div class="container"><h1>${t('quote_yours', lang)}</h1></div></section>`;
     const alt = Object.fromEntries(LANGS.map((l) => [l, site.quote[l]]));
-    emit(qp, TPL.layout(ctx, { title: `${t('quote', lang)} · Torivac`, description: '', template: 'quote', hero, body: TPL.quoteBody(ctx), alts: alt, scripts: ['assets/vendor/jspdf.umd.min.js', 'assets/vendor/jspdf.plugin.autotable.min.js', 'assets/vendor/xlsx.mini.min.js', 'assets/js/pdf.js', 'assets/js/quote-page.js'], noindex: true }));
+    emit(qp, TPL.layout(ctx, { title: `${t('quote', lang)} · Torivac`, description: '', template: 'quote', hero, body: TPL.quoteBody(ctx), alts: alt, scripts: ['assets/vendor/jspdf.umd.min.js', 'assets/vendor/jspdf.plugin.autotable.min.js', 'assets/vendor/xlsx.mini.min.js', 'assets/js/pdf.js', 'assets/js/plain-text.js', 'assets/js/forms.js', 'assets/js/quote-page.js'], noindex: true }));
   }
 
   // páginas genéricas (empresa, proyectos, legales…)
@@ -389,6 +390,9 @@ for (const f of ['prices.demo.xlsx', 'prices.demo.csv']) if (!LIVE && fs.existsS
   const src = fs.readFileSync(path.join(ROOT, 'shared', 'price-sheet.mjs'), 'utf8').replace(/^export (const|function) /gm, '$1 ');
   writeFile(DIST, 'assets/js/price-sheet.js', `/* [PRICE-SHEET] GENERADO desde shared/price-sheet.mjs por site/build.mjs — no editar a mano */\n(function () {\n'use strict';\n${src}\nwindow.TV = window.TV || {}; TV.PriceSheet = { readSheet: readSheet, applySheetItems: applySheetItems, parseNumber: parseNumber, normHeader: normHeader, normRef: normRef, findHeader: findHeader, ALIASES: ALIASES, DEFAULT_DECIMALS: DEFAULT_DECIMALS };\n})();\n`);
 }
+
+// [PLAIN-TEXT] el aviso de «solo texto plano» del navegador es el MISMO validador que aplican el Worker y el servidor PHP (shared/plain-text.mjs): TV.PlainText
+writeFile(DIST, 'assets/js/plain-text.js', plainTextScript(ROOT));
 
 // ───────────────────────────────────────────────────────────── [ASSETS] estáticos
 const SRC = path.join(ROOT, 'site', 'assets');

@@ -113,6 +113,13 @@ test('M1 · los límites de contacto siguen igual: 6.º mensaje de un visitante 
   assert.equal((await contactPost(e3, conTurnstile(true), {})).r.status, 400, 'sin token'); assert.equal(messagesIn(e2).length + messagesIn(e3).length, 0, 'nada guardado'); assert.equal(b2.calls.length + b3.calls.length, 0, 'nada enviado');
   assert.equal((await contactPost(e3, conTurnstile(true), { turnstileToken: 'tok' })).r.status, 200, 'con Turnstile bueno sí pasa'); assert.equal(messagesIn(e3).length, 1);
 });
+test('M1b · lo no válido no gasta el cupo de 5 mensajes de 10 min (igual que el servidor PHP): seis avisos de texto y después sus 5 mensajes bien se aceptan; el 6.º bueno es 429', async () => {
+  const env = mkEnv({ RESEND_API_KEY: 're_test' }), box = provider(), ip = '203.0.113.78', malos = [], codes = [];
+  for (let i = 0; i < 6; i++) malos.push((await contactPost(env, box, { message: '<script>x</script>' }, { ip })).r.status);
+  assert.deepEqual(malos, [400, 400, 400, 400, 400, 400]);
+  for (let i = 0; i < 6; i++) codes.push((await contactPost(env, box, { message: `mensaje ${i}` }, { ip })).r.status);
+  assert.deepEqual(codes, [200, 200, 200, 200, 200, 429]); assert.equal(messagesIn(env).length, 5);
+});
 test('M1 · ids CT-AAAAMMDD-NNNN-XXX: el contador sube por día, el sufijo es aleatorio y 30 mensajes simultáneos con el contador de KV por detrás no se pisan', async () => {
   const env = mkEnv({ RESEND_API_KEY: 're_test' }), box = provider(); const ids = [];
   for (const [i, when] of ['2026-10-28T08:00:00Z', '2026-10-28T08:01:00Z', '2026-10-29T08:00:00Z'].entries()) ids.push((await contactPost(env, box, { message: `mensaje ${i}` }, { now: Date.parse(when) })).j.id);

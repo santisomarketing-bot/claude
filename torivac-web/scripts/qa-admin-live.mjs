@@ -4,7 +4,8 @@
 //   node scripts/qa-admin-live.mjs --php      contra el API PHP de cPanel (php -S) · ver scripts/lib/backends.mjs
 // Comprueba: login (error y acierto), menús por rol, pedidos (manager ve todos, cliente solo los suyos), precios (estado, subida con vista previa y aplicar,
 // sincronización manual), instrucción por IA (propone → vista previa → confirmar cambios grandes → aplicar), usuarios (alta/baja), propuestas persistentes,
-// y que un cliente NO puede llamar a la API de un manager (403) aunque lo intente desde la consola.
+// que un cliente NO puede llamar a la API de un manager (403) aunque lo intente desde la consola, los mensajes de contacto (ver, estado del aviso, borrar), el panel de Correo (prueba
+// y fallo explicado) y el bloqueo de una hora tras 5 contraseñas erróneas.
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import fs from 'node:fs';
@@ -36,6 +37,7 @@ await be.seedPrices({ ...prices, mode: 'live', updated_at: '2026-10-28T08:00:00.
 await be.addUser({ email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manager', password: 'Manager-Clave-2026' });
 await be.addUser({ email: 'marta@taller.es', name: 'Marta Taller', role: 'client', password: 'Cliente-Clave-2026' });
 await be.addUser({ email: 'otro@cliente.es', name: 'Otro Cliente', role: 'client', password: 'Cliente-Clave-2026' });
+await be.addUser({ email: 'bloqueo@cliente.es', name: 'Cliente Bloqueo', role: 'client', password: 'Cliente-Clave-2026' });          // solo para la prueba de fuerza bruta (la última: bloquea a este visitante con esta cuenta)
 
 const browser = await chromium.launch();
 let fails = 0;
@@ -68,7 +70,7 @@ console.log('\n1) acceso');
   ok(/incorrect/i.test(await page.locator('[data-err]').innerText()), 'contraseña errónea → mensaje del servidor');
   await page.fill('[name=pass]', 'Manager-Clave-2026'); await page.click('button[type=submit]');
   await page.waitForSelector('.side nav a');
-  ok((await navs(page)).length === 8, `manager: ${(await navs(page)).join(' · ')}`);
+  ok((await navs(page)).length === 9, `manager: ${(await navs(page)).join(' · ')}`);
   await page.waitForFunction(() => document.querySelectorAll('.kpi').length === 4, null, { timeout: 5000 }).catch(() => {});      // los indicadores se pintan al llegar los pedidos
   ok(await page.locator('.kpi').count() === 4, 'Resumen con 4 indicadores');
   ok(/1/.test(await page.locator('.kpi').first().innerText()), 'cuenta el pedido hecho desde la web');
@@ -131,14 +133,14 @@ console.log('\n4) instrucción en castellano con IA: propone → confirma → ap
 console.log('\n5) usuarios y propuestas');
 { const { ctx, page } = await newPage(); await login(page, 'jefa@torivac.com', 'Manager-Clave-2026');
   await page.click('.side nav a[href="#usuarios"]'); await page.waitForSelector('[data-new-user]');
-  ok((await page.locator('table.spec tbody tr').count()) === 3, '3 usuarios');
+  ok((await page.locator('table.spec tbody tr').count()) === 4, '4 usuarios');
   await page.fill('[data-new-user] [name=name]', 'Nuevo Cliente'); await page.fill('[data-new-user] [name=email]', 'nuevo@cliente.es'); await page.fill('[data-new-user] [name=password]', 'Clave-Nueva-2026'); await page.click('[data-new-user] button[type=submit]');
-  await page.waitForFunction(() => document.querySelectorAll('table.spec tbody tr').length === 4);
-  ok(true, 'usuario creado (4)');
+  await page.waitForFunction(() => document.querySelectorAll('table.spec tbody tr').length === 5);
+  ok(true, 'usuario creado (5)');
   const ok2 = await fetch(API + '/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: 'nuevo@cliente.es', password: 'Clave-Nueva-2026' }) }).then((r) => r.json());
   ok(ok2.ok === true && ok2.user.role === 'client', 'el usuario nuevo puede entrar como cliente');
-  page.once('dialog', (d) => d.accept()); await page.click('[data-del-user="nuevo@cliente.es"]'); await page.waitForFunction(() => document.querySelectorAll('table.spec tbody tr').length === 3);
-  ok(true, 'usuario borrado (3)');
+  page.once('dialog', (d) => d.accept()); await page.click('[data-del-user="nuevo@cliente.es"]'); await page.waitForFunction(() => document.querySelectorAll('table.spec tbody tr').length === 4);
+  ok(true, 'usuario borrado (4)');
   await page.click('.side nav a[href="#propuestas"]'); await page.waitForSelector('article.prop');
   const id = await page.locator('[data-prop][data-v="ok"]').first().getAttribute('data-prop');
   await page.locator('[data-prop][data-v="ok"]').first().click(); await page.waitForTimeout(500);
@@ -146,6 +148,55 @@ console.log('\n5) usuarios y propuestas');
   const art = await page.locator(`article.prop:has([data-prop="${id}"])`).innerText();
   ok(/aprobada/i.test(art), `la aprobación de ${id} se conserva tras recargar (guardada en el servidor)` + (/aprobada/i.test(art) ? '' : ' — «' + art.replace(/\s+/g, ' ').slice(0, 160) + '»'));
   await page.click('[data-logout]'); await page.waitForSelector('[data-login]'); ok(true, 'salir devuelve al acceso');
+  await ctx.close(); }
+
+console.log('\n6) mensajes de contacto: el panel los muestra aunque el correo falle, con su estado, y se pueden borrar');
+{ const post = (over) => fetch(API + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: SITE }, body: JSON.stringify({ name: 'Pedro Contacto', email: 'pedro@example.com', message: 'Necesito un transformador de 50 VA.', privacy: true, lang: 'es', _e: 9000, ...over }) }).then((r) => r.json());
+  const a = await post({ message: 'Primer mensaje: aviso correcto.' });
+  be.setMailDown(true); const b = await post({ name: 'Eva Segunda', email: 'eva@example.com', message: 'Segundo mensaje: el correo estaba caído.' }); be.setMailDown(false);
+  ok(a.ok && a.emailed.sent === true && b.ok && b.emailed.sent === false, `la API guarda los dos y dice si el aviso salió (${a.emailed && a.emailed.sent}/${b.emailed && b.emailed.sent})`);
+  const { ctx, page } = await newPage(); await login(page, 'jefa@torivac.com', 'Manager-Clave-2026');
+  await page.click('.side nav a[href="#mensajes"]'); await page.waitForSelector('table.spec');
+  const txt = await page.locator('table.spec tbody').innerText();
+  ok((await page.locator('table.spec tbody tr').count()) === 2 && /Primer mensaje/.test(txt) && /Segundo mensaje/.test(txt), 'Mensajes: los dos, el más reciente primero');
+  ok(/Avisado por correo/i.test(txt) && /El aviso por correo falló/i.test(txt) && /dominio sin verificar/.test(txt), 'cada uno con el estado de su aviso por correo (y el motivo del fallo)' + (/Avisado por correo/i.test(txt) && /El aviso por correo falló/i.test(txt) && /dominio sin verificar/.test(txt) ? '' : ' — «' + txt.replace(/\s+/g, ' ').slice(0, 400) + '»'));
+  ok(/Eva Segunda/.test(await page.locator('table.spec tbody tr').first().innerText()), 'el más reciente va arriba');
+  page.once('dialog', (d) => d.accept()); await page.click(`[data-del-msg="${b.id}"]`); await page.waitForFunction(() => document.querySelectorAll('table.spec tbody tr').length === 1);
+  ok(!/Segundo mensaje/.test(await page.locator('table.spec tbody').innerText()), 'borrar uno lo quita (y solo ese)');
+  const cl = await newPage(); await login(cl.page, 'marta@taller.es', 'Cliente-Clave-2026'); await cl.page.waitForSelector('.side nav a');
+  const ctok = JSON.parse(await cl.page.evaluate(() => sessionStorage.getItem('tv_live'))).token;
+  const cst = await cl.page.evaluate(async ([ap, t]) => ({ list: (await fetch(ap + '/api/messages', { headers: { Authorization: 'Bearer ' + t } })).status, del: (await fetch(ap + '/api/messages/x', { method: 'DELETE', headers: { Authorization: 'Bearer ' + t } })).status, test: (await fetch(ap + '/api/mail/test', { method: 'POST', headers: { Authorization: 'Bearer ' + t } })).status, mail: (await fetch(ap + '/api/mail/status', { headers: { Authorization: 'Bearer ' + t } })).status }), [API, ctok]);
+  ok(cst.list === 403 && cst.del === 403 && cst.test === 403 && cst.mail === 403, `un cliente no ve mensajes ni toca el correo: ${JSON.stringify(cst)}`);
+  const anon = await fetch(API + '/api/messages', { headers: { Origin: SITE } }); ok(anon.status === 401, `sin sesión → ${anon.status}`);
+  await cl.ctx.close(); await ctx.close(); }
+
+console.log('\n7) correo: el panel dice cómo está, manda una prueba y, si falla, explica por qué');
+{ const { ctx, page } = await newPage(); await login(page, 'jefa@torivac.com', 'Manager-Clave-2026');
+  await page.click('.side nav a[href="#ajustes"]'); await page.waitForSelector('[data-mail-test-form]');
+  const panel = await page.locator('main').innerText();
+  ok(/Controlador:\s*resend/i.test(panel) && /completo/i.test(panel), 'Ajustes → Correo: controlador y si está completo' + (/Controlador:\s*resend/i.test(panel) && /completo/i.test(panel) ? '' : ' — «' + panel.replace(/\s+/g, ' ').slice(0, 400) + '»'));
+  be.mails.length = 0;
+  await page.click('[data-mail-test-form] button[type=submit]'); await page.waitForFunction(() => /Enviado a|No se envió/.test(document.querySelector('[data-mail-result]').textContent), null, { timeout: 8000 });
+  ok(/Enviado a/.test(await page.locator('[data-mail-result]').innerText()) && be.mails.length === 1 && /prueba/i.test(be.mails[0].subject || ''), `correo de prueba enviado a los destinatarios del pedido: «${(await page.locator('[data-mail-result]').innerText()).slice(0, 70)}»`);
+  be.setMailDown(true);
+  await page.click('[data-mail-test-form] button[type=submit]'); await page.waitForFunction(() => /No se envió/.test(document.querySelector('[data-mail-result]').textContent), null, { timeout: 8000 });
+  ok(/dominio sin verificar/.test(await page.locator('[data-mail-result]').innerText()), `si falla, el motivo exacto: «${(await page.locator('[data-mail-result]').innerText()).slice(0, 90)}»`);
+  await page.click('.side nav a[href="#resumen"]'); await page.waitForSelector('.kpi');
+  ok(/El correo no está funcionando/.test(await page.locator('main').innerText()), 'el Resumen avisa de que el correo no funciona');
+  const health = await fetch(API + '/api/health', { headers: { Origin: SITE } }).then((r) => r.json());
+  ok(health.mail && health.mail.driver === 'resend' && health.mail.configured === true && health.mail.last && health.mail.last.ok === false && !('error' in health.mail.last), `/api/health (público) cuenta el estado del correo sin revelar el error: ${JSON.stringify(health.mail)}`);
+  be.setMailDown(false); await ctx.close(); }
+
+console.log('\n8) fuerza bruta: 5 contraseñas erróneas bloquean ese acceso durante una hora (aunque la siguiente sea la buena)');
+{ const login1 = (password) => fetch(API + '/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: SITE }, body: JSON.stringify({ email: 'bloqueo@cliente.es', password }) }).then(async (r) => ({ status: r.status, retry: r.headers.get('retry-after'), body: await r.json().catch(() => ({})) }));
+  const seen = []; for (let i = 0; i < 5; i++) seen.push((await login1('mala-clave-' + i)).status);
+  ok(seen.slice(0, 4).every((c) => c === 401), `los 4 primeros fallos: 401 (${seen.join(', ')})`);
+  const good = await login1('Cliente-Clave-2026');
+  ok(good.status === 429 && /una hora/i.test(good.body.error || '') && Number(good.retry) > 3500 && Number(good.retry) <= 3600 && good.body.retry_after === Number(good.retry), `con la contraseña BUENA tras 5 fallos: ${good.status}, «${good.body.error}», espera ${good.retry} s`);
+  const { ctx, page } = await newPage(); await login(page, 'bloqueo@cliente.es', 'Cliente-Clave-2026'); await page.waitForSelector('[data-err]:not([hidden])', { timeout: 5000 });
+  ok(/una hora/i.test(await page.locator('[data-err]').innerText()) && (await page.locator('.side nav a').count()) === 0, `el panel lo muestra: «${await page.locator('[data-err]').innerText()}»`);
+  const other = await fetch(API + '/api/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: SITE }, body: JSON.stringify({ email: 'marta@taller.es', password: 'Cliente-Clave-2026' }) }).then((r) => r.status);
+  ok(other === 200, `otra cuenta del mismo visitante sigue entrando (${other})`);
   await ctx.close(); }
 
 await browser.close(); await be.stop(); fs.rmSync(DIST, { recursive: true, force: true });

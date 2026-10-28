@@ -4,10 +4,13 @@
 //   htaccess({ base, staging, aliases, pdfRedirects, apiOrigin, phpApi, langs })  → texto del .htaccess de la raíz
 //   langHtaccess(lang, basePath)                                                    → .htaccess de /en /fr /de (solo fija su 404)
 //   robotsTxt({ base, staging })                                                    → robots.txt (en pruebas: Disallow total)
-// Todo va envuelto en <IfModule> para que un módulo ausente nunca provoque un error 500.
+// Todo va envuelto en <IfModule> para que un módulo ausente nunca provoque un error 500. Los sondeos de WordPress (wp-login.php, xmlrpc.php, wp-admin…) reciben 410 sin llegar a PHP.
 
 /** Escapa un texto para usarlo literal dentro de una expresión regular de Apache. */
 const rx = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/** Expresión de Apache con las rutas que solo existen en un WordPress (y que los escáneres prueban a diario). `bp` es la ruta base del sitio. Se comprueba en scripts/package_cpanel.py. */
+export const WP_PROBES = (bp) => `^${rx(bp)}/(?:wp-login\\.php|xmlrpc\\.php|wp-(?:config|cron|signup|activate|mail|trackback|comments-post|links-opml)\\.php|wp-(?:admin|includes|json)(?:/.*)?|wp-content/(?:plugins|themes|mu-plugins|upgrade)(?:/.*)?)$`;
 
 /** ruta base del sitio: «https://x.com/prueba/» → «/prueba» («» si está en la raíz del dominio) */
 export const basePathOf = (base) => new URL(base).pathname.replace(/\/+$/, '');
@@ -39,6 +42,9 @@ export function htaccess({ base, staging = false, aliases = new Map(), pdfRedire
     for (const [name, local] of pdfRedirects) L.push(`RedirectMatch 301 ^${rx(bp)}/wp-content/uploads/.+/${rx(name)}$ ${bp}/assets/pdf/${local}`);
     L.push('</IfModule>', '');
   }
+  // Esta web NO es WordPress. Los escáneres que buscan WordPress (wp-login, xmlrpc, wp-admin, plugins…) reciben «410 Gone» al instante: no llegan a PHP, no llenan el registro de errores y se dan por vencidos antes.
+  // Las fotos y PDF antiguos de /wp-content/uploads siguen redirigiendo (arriba); solo se cierran el acceso, la administración, el API y los plugins y temas.
+  L.push('# Sondeos de WordPress (esta web no lo usa): 410 sin gastar PHP', '<IfModule mod_alias.c>', `RedirectMatch 410 ${WP_PROBES(bp)}`, '</IfModule>', '');
   L.push(`ErrorDocument 404 ${bp}/404.html`, '');
   L.push('<IfModule mod_deflate.c>', '  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/javascript text/javascript application/json image/svg+xml', '</IfModule>', '');
   L.push('<IfModule mod_expires.c>', '  ExpiresActive On',

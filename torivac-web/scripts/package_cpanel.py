@@ -15,7 +15,7 @@ Qué hace:  1) compila la web con --base y --php-api (URLs limpias, .htaccess, r
 Qué NO lleva nunca: precios (la web los lee del servidor), config.php (claves), tests, scripts de trabajo, documentación.
            --allow-dirty (permite empaquetar PRODUCCIÓN con cambios sin commitear; por defecto no, para poder rehacer y repetir exactamente ese paquete)
 Cada paquete lleva api/generated/build.json (versión = commit, fecha del commit, URL base, pruebas/producción, aspecto): el Diagnóstico del panel lo enseña, para saber qué hay publicado.
-Funciones: git_version · build_site · copy_api · write_build_info · check_versions · check_csp · verify · make_zip · main
+Funciones: git_version · build_site · copy_api · write_build_info · check_versions · check_csp · check_wp_probes · verify · make_zip · main
 """
 import argparse
 import base64
@@ -175,6 +175,27 @@ def check_csp(www: Path, rel: dict) -> list:
     return errs
 
 
+def check_wp_probes(rel: dict, base: str) -> list:
+    """El .htaccess corta con 410 los sondeos de WordPress (wp-login.php, xmlrpc.php, wp-admin…) sin tocar las fotos y PDF antiguos de wp-content/uploads ni las páginas de la web: se prueba la expresión con rutas de ejemplo."""
+    ht = rel[".htaccess"].read_text(encoding="utf-8") if ".htaccess" in rel else ""
+    m = re.search(r"^RedirectMatch 410 (\S+)$", ht, re.M)
+    if not m:
+        return [".htaccess sin la regla que corta con 410 los sondeos de WordPress"]
+    bp = urlparse(base).path.rstrip("/")
+    try:
+        rx = re.compile(m.group(1))
+    except re.error as e:
+        return [f"la regla 410 de WordPress no es una expresión válida: {e}"]
+    errs = []
+    for path in ("/wp-login.php", "/xmlrpc.php", "/wp-admin/", "/wp-admin/admin-ajax.php", "/wp-json/wp/v2/users", "/wp-includes/js/jquery.js", "/wp-content/plugins/x/readme.txt", "/wp-content/themes/y/style.css", "/wp-config.php"):
+        if not rx.search(bp + path):
+            errs.append(f"la regla 410 no corta {bp + path}")
+    for path in ("/", "/en/", "/productos/", "/blog/", "/wp-content/uploads/2020/01/ficha.pdf", "/api/health", "/admin/", "/robots.txt", "/sitemap.xml"):
+        if rx.search(bp + path):
+            errs.append(f"la regla 410 corta una ruta legítima: {bp + path}")
+    return errs
+
+
 def verify(www: Path, base: str, staging: bool, embed_prices: bool, theme: str = "ficha", switch=None):
     """→ (errores, avisos). Un error impide entregar el paquete."""
     errs, warns = [], []
@@ -261,6 +282,7 @@ def verify(www: Path, base: str, staging: bool, embed_prices: bool, theme: str =
         errs.append("falta assets/img/original (fotos del aspecto «Original»)")
     errs += check_versions(www, rel, base)
     errs += check_csp(www, rel)
+    errs += check_wp_probes(rel, base)
     try:
         bi = json.loads(rel["api/generated/build.json"].read_text(encoding="utf-8"))
         if bi.get("base") != base or bool(bi.get("staging")) != bool(staging) or bi.get("theme") != theme or not bi.get("version"):

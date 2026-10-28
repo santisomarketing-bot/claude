@@ -97,7 +97,7 @@
       if (!r.ok) return '<h1>' + esc(title) + '</h1><p class="notice">' + esc(r.error || 'No se pudieron cargar los pedidos') + '</p>';
       cache.orders = r.orders || [];
       var rows = cache.orders.map(function (x, i) { return '<tr><td class="mono">' + esc(x.number) + (x.emailed && !x.emailed.team && (session() || {}).role === 'manager' ? '<br><span class="tag" title="' + esc(x.emailed.error || '') + '">sin aviso por correo</span>' : '') + '</td><td>' + esc(when(x.at)) + '</td><td>' + esc(x.customer.name || '') + '<br><span class="muted small">' + esc(x.customer.company || '') + ' ' + esc(x.customer.email || '') + '</span></td><td class="num">' + x.lines.length + '</td><td class="num">' + money(x.total) + (x.prices && x.prices.mode !== 'live' ? ' <span class="tag">DEMO</span>' : '') + '</td><td><button class="btn sm ghost" data-pdf="' + i + '">PDF</button></td></tr>'; }).join('');
-      return '<h1>' + esc(title) + '</h1>' + (cache.orders.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Nº</th><th>Fecha</th><th>Cliente</th><th>Líneas</th><th>Importe</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div><p><button class="btn sm ghost" data-export-orders>Exportar JSON</button></p>' : '<p class="notice">Todavía no hay pedidos.</p>');
+      return '<h1>' + esc(title) + '</h1>' + (cache.orders.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Nº</th><th>Fecha</th><th>Cliente</th><th>Líneas</th><th>Importe</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + rows + '</tbody></table></div><p><button class="btn sm ghost" data-export-orders>Exportar JSON</button></p>' : '<p class="notice">Todavía no hay pedidos.</p>');
     });
   }
   /** Vista Pedidos (manager): tabla de todos los pedidos que devuelve el Worker. */
@@ -147,7 +147,7 @@
         return '<tr><td>' + esc(when(m.at)) + '<br><span class="mono small">' + esc(m.id) + '</span></td><td>' + esc(m.name) + '<br><a href="mailto:' + esc(m.email) + '">' + esc(m.email) + '</a></td><td class="msg">' + esc(m.message) + '</td><td>' + mailTag(m.emailed) + '</td><td><button class="btn sm ghost" data-del-msg="' + esc(m.id) + '">Borrar</button></td></tr>';
       }).join('');
       return '<h1>Mensajes</h1><p class="muted small">Lo que escriben los visitantes en los formularios de contacto. Se guardan aquí aunque el correo falle; se borran solos a los 400 días.</p>' +
-        (items.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Recibido</th><th>De</th><th>Mensaje</th><th>Aviso</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div>' + (r.truncated ? '<p class="muted small">Se muestran los más recientes; hay más.</p>' : '') : '<p class="muted">Todavía no hay mensajes.</p>');
+        (items.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Recibido</th><th>De</th><th>Mensaje</th><th>Aviso</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + rows + '</tbody></table></div>' + (r.truncated ? '<p class="muted small">Se muestran los más recientes; hay más.</p>' : '') : '<p class="muted">Todavía no hay mensajes.</p>');
     });
   };
   /** Panel «Correo» de Ajustes: controlador, si está completo, qué falta, el último intento (también el fallo) y el botón para mandar un correo de prueba. */
@@ -201,7 +201,7 @@
         (merge ? ' · <strong>' + Number(r.kept) + '</strong> no vienen en la hoja y se conservan' : '') + ' · ' + Number(r.refs) + ' filas reconocidas · ' + Number(r.total) + ' referencias con precio al terminar';
       var sure = r.needs_force ? '<div class="notice warn"><strong>Para aplicarlo hay que confirmarlo:</strong><ul>' + (r.blockers || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul><label class="small"><input type="checkbox" data-force> Es intencionado: aplícalo</label></div>' : '';
       box.innerHTML = '<section class="panel"><h2>Vista previa · ' + esc(label) + '</h2><p>' + head + '</p>' + TV.priceReportHtml(r.report, esc) +
-        ((d.changed.length + d.added.length + d.removed.length) ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Ref.</th><th>Producto</th><th></th></tr></thead><tbody>' + list(d.changed, 'cambia') + list(d.added, 'nueva') + list(d.removed, 'sin precio') + '</tbody></table></div>' : '<p class="notice">No hay diferencias.</p>') +
+        ((d.changed.length + d.added.length + d.removed.length) ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Ref.</th><th>Producto</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + list(d.changed, 'cambia') + list(d.added, 'nueva') + list(d.removed, 'sin precio') + '</tbody></table></div>' : '<p class="notice">No hay diferencias.</p>') +
         sure + '<p><button class="btn" data-apply-upload' + (r.needs_force ? ' disabled' : '') + '>Aplicar a la web</button> <button class="btn ghost" data-discard>Descartar</button></p></section>';
       var cb = box.querySelector('[data-force]'); if (cb) cb.addEventListener('change', function () { box.querySelector('[data-apply-upload]').disabled = !cb.checked; });
       box.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -273,8 +273,8 @@
   V.usuarios = function () {
     return http('GET', '/api/users').then(function (r) {
       var rows = (r.users || []).map(function (u) { return '<tr><td>' + esc(u.name) + '</td><td class="mono">' + esc(u.email) + '</td><td>' + (u.role === 'manager' ? 'Manager' : 'Cliente') + '</td><td>' + esc(when(u.created)) + '</td><td><button class="btn sm ghost" data-del-user="' + esc(u.email) + '">Borrar</button></td></tr>'; }).join('');
-      return '<h1>Usuarios</h1><div class="tbl-wrap"><table class="spec"><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Alta</th><th></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-        '<section class="panel"><h2>Nuevo usuario</h2><form class="form" data-new-user><div class="grid2"><label>Nombre<input name="name" required></label><label>Correo<input name="email" type="email" required></label></div><div class="grid2"><label>Rol<select name="role"><option value="client">Cliente</option><option value="manager">Manager</option></select></label><label>Contraseña (mín. 10)<input name="password" type="password" minlength="10" required autocomplete="new-password"></label></div><p><button class="btn" type="submit">Crear usuario</button></p></form></section>';
+      return '<h1>Usuarios</h1><div class="tbl-wrap"><table class="spec"><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Alta</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+        '<section class="panel"><h2>Nuevo usuario</h2><form class="form" data-new-user><div class="grid2"><label>Nombre<input name="name" required></label><label>Correo<input name="email" type="email" required></label></div><div class="grid2"><label>Rol<select name="role"><option value="client">Cliente</option><option value="manager">Manager</option></select></label><label>Contraseña (mín. 12)<input name="password" type="password" minlength="12" required autocomplete="new-password"></label></div><p><button class="btn" type="submit">Crear usuario</button></p></form></section>';
     });
   };
 

@@ -6,6 +6,7 @@ import { esc, attr, blocksHtml, inlineHtml, mapLink, plain, fmtDate, hText } fro
 import { t, LANGS, countLabel, refLabel } from './lib/i18n.mjs';
 import { pageGraph, ldScript, jsonScript, ogLocale, clip } from './lib/seo.mjs';
 import { THEMES, themeBootJs } from './lib/themes.mjs';
+import { FIELDS } from '../shared/plain-text.mjs';
 
 const NAMES = { es: 'Español', en: 'English', fr: 'Français', de: 'Deutsch' };
 /** Valor de un campo traducible en el idioma `lang` (español si falta; '' si no hay objeto). */
@@ -112,6 +113,7 @@ const themeSwitch = (lang, where) => `<span class="theme-switch" role="group" ar
 /** Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap. */
 export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [], preloadImage = null, bodyClass = '', oRedirect = '' }) {
   const { lang, site } = ctx;
+  if (/data-contact-form/.test(`${hero || ''}${body}`)) scripts = [...new Set(['assets/js/plain-text.js', 'assets/js/forms.js', 'assets/js/contact.js', ...scripts])];          // en cualquier página con formulario de contacto (también el bloque «Contacta con nosotros» de las fichas y entradas de «Original»)
   description = metaDescription(description, body, site.homeMeta?.[lang]);
   const alt = (l) => (l === lang ? ctx.path : (alts[l] || site.home[l]));         // selector de idioma: sin traducción cae a la portada de ese idioma
   // registro de páginas indexables → sitemap (con hreflang e imágenes) y llms.txt; ver site/build.mjs [SEO-FILES]
@@ -565,9 +567,9 @@ export function quoteBody(ctx) {
     </div>
     <form class="panel form no-print" data-quote-form novalidate>
       <h2>${t('your_data', lang)}</h2>
-      <div class="grid2"><label>${t('name', lang)}<input type="text" name="name" autocomplete="name" required></label><label>${t('company', lang)}<input type="text" name="company" autocomplete="organization"></label></div>
-      <div class="grid2"><label>${t('email', lang)}<input type="email" name="email" autocomplete="email" required></label><label>${t('phone', lang)}<input type="tel" name="phone" autocomplete="tel"></label></div>
-      <label>${t('notes', lang)}<textarea name="notes"></textarea></label>
+      <div class="grid2"><label>${t('name', lang)}<input type="text" name="name" autocomplete="name" maxlength="${FIELDS.order.name}" required></label><label>${t('company', lang)}<input type="text" name="company" autocomplete="organization" maxlength="${FIELDS.order.company}"></label></div>
+      <div class="grid2"><label>${t('email', lang)}<input type="email" name="email" autocomplete="email" maxlength="${FIELDS.order.email}" required></label><label>${t('phone', lang)}<input type="tel" name="phone" autocomplete="tel" maxlength="${FIELDS.order.phone}"></label></div>
+      <label>${t('notes', lang)}<textarea name="notes" maxlength="${FIELDS.order.notes}"></textarea></label>
       <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
       <label class="check"><input type="checkbox" name="privacy" required> <span>${t('accept_privacy', lang)}</span></label>
       <div class="actions" style="display:flex;gap:var(--s-3);flex-wrap:wrap"><button class="btn" type="submit">${t('send_order', lang)}</button><button class="btn ghost" type="button" data-download-pdf>${t('download_pdf', lang)}</button></div>
@@ -583,9 +585,9 @@ export function quoteBody(ctx) {
 export function contactForm(ctx, where = 'page') {
   const { lang, site } = ctx;
   return `<form class="form" data-contact-form novalidate aria-label="${attr(t('contact_us', lang))}">
-    <label class="vh" for="cf-name-${where}">${t('name', lang)}</label><input id="cf-name-${where}" type="text" name="name" placeholder="${attr(t('name', lang))}" autocomplete="name" required>
-    <label class="vh" for="cf-email-${where}">${t('email', lang)}</label><input id="cf-email-${where}" type="email" name="email" placeholder="${attr(t('email', lang))}" autocomplete="email" required>
-    <label class="vh" for="cf-msg-${where}">${t('message', lang)}</label><textarea id="cf-msg-${where}" name="message" placeholder="${attr(t('message', lang))}" required></textarea>
+    <label class="vh" for="cf-name-${where}">${t('name', lang)}</label><input id="cf-name-${where}" type="text" name="name" placeholder="${attr(t('name', lang))}" autocomplete="name" maxlength="${FIELDS.contact.name}" required>
+    <label class="vh" for="cf-email-${where}">${t('email', lang)}</label><input id="cf-email-${where}" type="email" name="email" placeholder="${attr(t('email', lang))}" autocomplete="email" maxlength="${FIELDS.contact.email}" required>
+    <label class="vh" for="cf-msg-${where}">${t('message', lang)}</label><textarea id="cf-msg-${where}" name="message" placeholder="${attr(t('message', lang))}" maxlength="${FIELDS.contact.message}" required></textarea>
     <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label class="check"><input type="checkbox" name="privacy" required><span>${t('accept_privacy', lang)}</span></label>
     <div><button class="btn" type="submit">${t('send', lang)}</button></div>

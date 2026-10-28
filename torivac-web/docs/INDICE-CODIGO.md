@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1266/1266 funciones descritas (100 %) · 164/164 archivos con cabecera.
+**Cobertura**: 1284/1284 funciones descritas (100 %) · 166/166 archivos con cabecera.
 
 
 ## `site/`
@@ -11,37 +11,37 @@
 
 [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio] [--out=carpeta] Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS). Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
 
-Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[ORIGINAL]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
+Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[ORIGINAL]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
 
-- `arg0` (l. 20) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `arg` (l. 23) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `jl` (l. 37) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
-- `normName` (l. 60) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
-- `depthOf` (l. 64) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
-- `canon` (l. 67) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
-- `subtreeIds` (l. 103) — Ids de una categoría y de todas sus descendientes.
-- `prodIdsOf` (l. 105) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
-- `visible` (l. 109) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
-- `prune` (l. 111) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
-- `pth` (l. 132) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
-- `pickCats` (l. 181) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
-- `emit` (l. 204) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
-- `mkctx` (l. 206) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
-- `fitTitle` (l. 211) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
-- `crumbHome` (l. 213) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
-- `crumbProducts` (l. 215) — Miga de pan «Productos» del idioma `lang`: { name, path }.
-- `pickAlt` (l. 217) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
-- `absImg` (l. 219) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
-- `alts` (l. 224) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
-- `a` (l. 382) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 396) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `css` (l. 406) — Texto del archivo site/assets/css/<n>.css.
-- `xml` (l. 426) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 428) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 440) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 462) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
-- `hashOf` (l. 480) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
-- `walk` (l. 490) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
+- `arg0` (l. 21) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `arg` (l. 24) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `jl` (l. 38) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
+- `normName` (l. 61) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
+- `depthOf` (l. 65) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
+- `canon` (l. 68) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
+- `subtreeIds` (l. 104) — Ids de una categoría y de todas sus descendientes.
+- `prodIdsOf` (l. 106) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
+- `visible` (l. 110) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
+- `prune` (l. 112) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
+- `pth` (l. 133) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
+- `pickCats` (l. 182) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
+- `emit` (l. 205) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
+- `mkctx` (l. 207) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
+- `fitTitle` (l. 212) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
+- `crumbHome` (l. 214) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
+- `crumbProducts` (l. 216) — Miga de pan «Productos» del idioma `lang`: { name, path }.
+- `pickAlt` (l. 218) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
+- `absImg` (l. 220) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
+- `alts` (l. 225) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
+- `a` (l. 383) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
+- `copyDir` (l. 400) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 410) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 430) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 432) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 444) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 466) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `hashOf` (l. 484) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+- `walk` (l. 494) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
 
 ### `templates.mjs`
 
@@ -49,60 +49,60 @@ Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EM
 
 Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[THEME]` · `[ORIGINAL]` · `[SEO-FILES]` · `[NAV]` · `[SOCIAL]` · `[SHARED]` · `[HOME]` · `[PAGES]` · `[BLOG]` · `[SHOP]` · `[PRODUCT]` · `[QUOTE]` · `[CONTACT]`
 
-- `pick` (l. 12) — Valor de un campo traducible en el idioma `lang` (español si falta; '' si no hay objeto).
-- `toroidArt` (l. 19) — Bobinado toroidal visto desde arriba (mismo motivo que el logotipo): 56 espiras que se «dibujan» al entrar en pantalla (CSS + IntersectionObserver en app.js).
-- `waveLab` (l. 28) — Osciloscopio esquemático de un variador de tensión: la onda de salida (cobre) se reduce al mover el mando; la de entrada (230 V) queda fija. JS: assets/js/lab.js
-- `headingOrder` (l. 48) — El contenido original salta de nivel (H1→H4). Se corrige en la ACCESIBILIDAD (aria-level) sin tocar la etiqueta, así el diseño no cambia:
-- `metaDescription` (l. 60) — Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, la descripción de la portada en ese idioma (`fallback`, texto de la web original; sin ella, ninguna).
-- `ok` (l. 62) — Una descripción sirve si tiene al menos 50 caracteres y no es solo signos o cifras.
-- `cssGuard` (l. 73) — Aviso para el demo (solo sin --base): si la página se abre sin sus hojas de estilo (p. ej. index.html dentro del .zip sin extraer), enseña arriba cómo abrirla bien.
-- `oc` (l. 85) — Con selector de aspecto, el HTML lleva los elementos de los tres aspectos y cada hoja de estilos muestra los suyos (los del resto, con `display:none`).
-- `lbl` (l. 87) — Rótulo que cambia según el aspecto: sin «Original», el de siempre; solo «Original», el de la web actual; con selector, los dos (cada hoja muestra uno). Los textos ya vienen escapados.
-- `oHref` (l. 89) — Dirección a la que apunta una tarjeta o un enlace de categoría: en «Original» solo, una categoría hoja con UN producto lleva directa a ese producto (la web actual la redirige).
-- `floatMenu` (l. 91) — Menú flotante «Productos-Torivac»: pestaña en el borde izquierdo que abre un panel oscuro con las categorías (dos niveles, en el orden de la web actual). Nace oculto: app.js lo muestra (sin JS no serviría).
-- `themeSwitch` (l. 110) — Selector de aspecto: dos botones con aria-pressed. Nace oculto (sin JS no serviría de nada); assets/js/app.js lo muestra, marca el activo y guarda la elección. `where` distingue el de la cinta y el del pie.
-- `layout` (l. 113) — Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap.
-- `alt` (l. 116) — selector de idioma: sin traducción cae a la portada de ese idioma
-- `crumbs` (l. 203) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
-- `vtext` (l. 206) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
-- `vtags` (l. 208) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
-- `productCard` (l. 219) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
-- `catTree` (l. 233) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
-- `holds` (l. 236) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
-- `link` (l. 238) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
-- `walk` (l. 240) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
-- `cut` (l. 247) — Texto recortado a `max` caracteres en el último espacio (sin partir palabras) y con «…» si se ha recortado; `max` Infinity = íntegro.
-- `categoryCards` (l. 249) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
-- `fold` (l. 265) — algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
-- `oSecImg` (l. 278) — «Original»: atributo style con la foto de fondo de una sección (los trazos del logotipo de la web actual), en una variable que solo pinta la hoja de ese aspecto. Una URL dentro de una variable se resuelve desde la hoja que la usa (assets/css/site.css), de ahí «../media/…» y no la ruta de la página.
-- `homeBody` (l. 280) — Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla).
-- `text` (l. 284) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
-- `imgs` (l. 286) — Bloques de imagen de una sección.
-- `btn` (l. 288) — Primer bloque de botón de una sección (undefined si no tiene).
-- `oh` (l. 295) — «Original»: clase que engancha cada sección de la portada con la hoja de la web actual (sin «Original» no se emite y el HTML sale idéntico)
-- `oBg` (l. 297) — «Original»: variable con la foto de fondo de una sección de la portada.
-- `eyebrowAndHead` (l. 306) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
-- `paras` (l. 312) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
-- `bt` (l. 314) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
-- `waveSvg` (l. 343) — onda de tensión animada (SVG) — elemento gráfico base del hero
-- `cardsHtml` (l. 351) — «Original»: bloques de una sección de tarjetas (Misión, Visión, Valores…) con cada icono y el texto que le sigue dentro de su propia tarjeta; lo que va antes del primer icono (título) queda fuera. Los otros aspectos ven el mismo flujo, solo con un div más.
-- `isIcon` (l. 353) — Indica si el bloque es un icono pequeño (60 × 60) y no una foto.
-- `sectionsHtml` (l. 362) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. Con «Original», cada sección lleva además clases según cómo la maqueta la web actual (site.oSections, por id de sección de Elementor, igual en los cuatro idiomas).
-- `cls` (l. 367) — Clases de la sección: las de siempre y, con «Original», las del tipo, el lado de la foto y el arte de fondo.
-- `isPhoto` (l. 371) — los iconos pequeños se quedan dentro del texto
-- `genericPage` (l. 397) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
-- `contactBlockO` (l. 419) — «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno).
-- `blogIndexBody` (l. 429) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
-- `postBody` (l. 435) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original.
-- `shopBody` (l. 452) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
-- `productBody` (l. 491) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
-- `quoteBody` (l. 555) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
-- `contactForm` (l. 583) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
-- `contactIntro` (l. 599) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
-- `contactPageOriginal` (l. 604) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
-- `plainOf` (l. 609) — Texto de un párrafo sin etiquetas.
-- `li` (l. 616) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
-- `lv2` (l. 619) — Encabezados de un trozo de HTML con aria-level 2.
+- `pick` (l. 13) — Valor de un campo traducible en el idioma `lang` (español si falta; '' si no hay objeto).
+- `toroidArt` (l. 20) — Bobinado toroidal visto desde arriba (mismo motivo que el logotipo): 56 espiras que se «dibujan» al entrar en pantalla (CSS + IntersectionObserver en app.js).
+- `waveLab` (l. 29) — Osciloscopio esquemático de un variador de tensión: la onda de salida (cobre) se reduce al mover el mando; la de entrada (230 V) queda fija. JS: assets/js/lab.js
+- `headingOrder` (l. 49) — El contenido original salta de nivel (H1→H4). Se corrige en la ACCESIBILIDAD (aria-level) sin tocar la etiqueta, así el diseño no cambia:
+- `metaDescription` (l. 61) — Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, la descripción de la portada en ese idioma (`fallback`, texto de la web original; sin ella, ninguna).
+- `ok` (l. 63) — Una descripción sirve si tiene al menos 50 caracteres y no es solo signos o cifras.
+- `cssGuard` (l. 74) — Aviso para el demo (solo sin --base): si la página se abre sin sus hojas de estilo (p. ej. index.html dentro del .zip sin extraer), enseña arriba cómo abrirla bien.
+- `oc` (l. 86) — Con selector de aspecto, el HTML lleva los elementos de los tres aspectos y cada hoja de estilos muestra los suyos (los del resto, con `display:none`).
+- `lbl` (l. 88) — Rótulo que cambia según el aspecto: sin «Original», el de siempre; solo «Original», el de la web actual; con selector, los dos (cada hoja muestra uno). Los textos ya vienen escapados.
+- `oHref` (l. 90) — Dirección a la que apunta una tarjeta o un enlace de categoría: en «Original» solo, una categoría hoja con UN producto lleva directa a ese producto (la web actual la redirige).
+- `floatMenu` (l. 92) — Menú flotante «Productos-Torivac»: pestaña en el borde izquierdo que abre un panel oscuro con las categorías (dos niveles, en el orden de la web actual). Nace oculto: app.js lo muestra (sin JS no serviría).
+- `themeSwitch` (l. 111) — Selector de aspecto: dos botones con aria-pressed. Nace oculto (sin JS no serviría de nada); assets/js/app.js lo muestra, marca el activo y guarda la elección. `where` distingue el de la cinta y el del pie.
+- `layout` (l. 114) — Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap.
+- `alt` (l. 118) — selector de idioma: sin traducción cae a la portada de ese idioma
+- `crumbs` (l. 205) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
+- `vtext` (l. 208) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
+- `vtags` (l. 210) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
+- `productCard` (l. 221) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
+- `catTree` (l. 235) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
+- `holds` (l. 238) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
+- `link` (l. 240) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
+- `walk` (l. 242) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
+- `cut` (l. 249) — Texto recortado a `max` caracteres en el último espacio (sin partir palabras) y con «…» si se ha recortado; `max` Infinity = íntegro.
+- `categoryCards` (l. 251) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
+- `fold` (l. 267) — algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
+- `oSecImg` (l. 280) — «Original»: atributo style con la foto de fondo de una sección (los trazos del logotipo de la web actual), en una variable que solo pinta la hoja de ese aspecto. Una URL dentro de una variable se resuelve desde la hoja que la usa (assets/css/site.css), de ahí «../media/…» y no la ruta de la página.
+- `homeBody` (l. 282) — Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla).
+- `text` (l. 286) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
+- `imgs` (l. 288) — Bloques de imagen de una sección.
+- `btn` (l. 290) — Primer bloque de botón de una sección (undefined si no tiene).
+- `oh` (l. 297) — «Original»: clase que engancha cada sección de la portada con la hoja de la web actual (sin «Original» no se emite y el HTML sale idéntico)
+- `oBg` (l. 299) — «Original»: variable con la foto de fondo de una sección de la portada.
+- `eyebrowAndHead` (l. 308) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
+- `paras` (l. 314) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
+- `bt` (l. 316) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
+- `waveSvg` (l. 345) — onda de tensión animada (SVG) — elemento gráfico base del hero
+- `cardsHtml` (l. 353) — «Original»: bloques de una sección de tarjetas (Misión, Visión, Valores…) con cada icono y el texto que le sigue dentro de su propia tarjeta; lo que va antes del primer icono (título) queda fuera. Los otros aspectos ven el mismo flujo, solo con un div más.
+- `isIcon` (l. 355) — Indica si el bloque es un icono pequeño (60 × 60) y no una foto.
+- `sectionsHtml` (l. 364) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. Con «Original», cada sección lleva además clases según cómo la maqueta la web actual (site.oSections, por id de sección de Elementor, igual en los cuatro idiomas).
+- `cls` (l. 369) — Clases de la sección: las de siempre y, con «Original», las del tipo, el lado de la foto y el arte de fondo.
+- `isPhoto` (l. 373) — los iconos pequeños se quedan dentro del texto
+- `genericPage` (l. 399) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
+- `contactBlockO` (l. 421) — «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno).
+- `blogIndexBody` (l. 431) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
+- `postBody` (l. 437) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original.
+- `shopBody` (l. 454) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
+- `productBody` (l. 493) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
+- `quoteBody` (l. 557) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
+- `contactForm` (l. 585) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
+- `contactIntro` (l. 601) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
+- `contactPageOriginal` (l. 606) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
+- `plainOf` (l. 611) — Texto de un párrafo sin etiquetas.
+- `li` (l. 618) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
+- `lv2` (l. 621) — Encabezados de un trozo de HTML con aria-level 2.
 
 ## `site/lib/`
 
@@ -113,10 +113,11 @@ Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[T
 Secciones: `[HOSTING]`
 
 - `rx` (l. 10) — Escapa un texto para usarlo literal dentro de una expresión regular de Apache.
-- `basePathOf` (l. 13) — ruta base del sitio: «https://x.com/prueba/» → «/prueba» («» si está en la raíz del dominio)
-- `htaccess` (l. 16) — Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api.
-- `langHtaccess` (l. 61) — .htaccess de /en, /fr, /de: solo cambia la página 404 para que se muestre en el idioma de la sección
-- `robotsTxt` (l. 64) — Genera robots.txt: en pruebas prohíbe todo; en producción permite el sitio, cierra /admin/ y /api/ y enlaza el sitemap.
+- `WP_PROBES` (l. 13) — Expresión de Apache con las rutas que solo existen en un WordPress (y que los escáneres prueban a diario). `bp` es la ruta base del sitio. Se comprueba en scripts/package_cpanel.py.
+- `basePathOf` (l. 16) — ruta base del sitio: «https://x.com/prueba/» → «/prueba» («» si está en la raíz del dominio)
+- `htaccess` (l. 19) — Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api.
+- `langHtaccess` (l. 67) — .htaccess de /en, /fr, /de: solo cambia la página 404 para que se muestre en el idioma de la sección
+- `robotsTxt` (l. 70) — Genera robots.txt: en pruebas prohíbe todo; en producción permite el sitio, cierra /admin/ y /api/ y enlaza el sitemap.
 
 ### `i18n.mjs`
 
@@ -124,9 +125,9 @@ Secciones: `[HOSTING]`
 
 Secciones: `[I18N]`
 
-- `countLabel` (l. 131) — «1 producto / 2 productos» en los 4 idiomas
-- `refLabel` (l. 133) — «1 referencia / 2 referencias» en los 4 idiomas.
-- `t` (l. 135) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
+- `countLabel` (l. 137) — «1 producto / 2 productos» en los 4 idiomas
+- `refLabel` (l. 139) — «1 referencia / 2 referencias» en los 4 idiomas.
+- `t` (l. 141) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
 
 ### `render.mjs`
 
@@ -165,6 +166,15 @@ Secciones: `[SEO]`
 - `pageGraph` (l. 48) — Grafo completo de una página.
 - `ldScript` (l. 75) — <script type="application/ld+json"> seguro para incrustar (escapa < y el separador U+2028/2029).
 - `jsonScript` (l. 81) — Bloque de datos <script type="application/json" id="…"> (no se ejecuta: la CSP de producción puede prohibir TODO script en línea). Escapa < y los separadores U+2028/2029.
+
+### `shared-client.mjs`
+
+[SHARED-CLIENT] Convierte un módulo ES de shared/ (la lógica que comparten el navegador, el Worker y el servidor PHP) en un script clásico para el navegador: sin `export`, dentro de una función propia y colgado de TV.<nombre>. Así el navegador usa EXACTAMENTE el código que usan el servidor y el Worker (y las mismas pruebas con los mismos casos). classicScript(raíz, 'plain-text.mjs', { title, expose, patches }) → texto del script
+
+Secciones: `[SHARED-CLIENT]`
+
+- `classicScript` (l. 9) — Texto del script clásico generado desde shared/<file>. `expose` es la expresión del objeto que se publica (p. ej. `{ check: checkText }`) en TV.<global>.
+- `plainTextScript` (l. 21) — Script del validador de texto plano: TV.PlainText.check(valor, { max, multiline }) y los límites de cada campo. En un navegador sin lookbehind en las expresiones regulares (Safari < 16.4) se omiten las reglas que no entiende: el aviso es solo una cortesía y el servidor las aplica todas siempre.
 
 ### `themes.mjs`
 
@@ -306,9 +316,26 @@ Secciones: `[APP]` · `[UTIL]` · `[MENU]` · `[DRAWER]` · `[FAB]` · `[LANG]` 
 
 ### `contact.js`
 
-[CONTACT] Formularios de contacto (página Contacto y bloque de la home). Con TV.meta.api (producción): POST /api/contact al Worker (workers/api: honeypot, límite por IP, Turnstile opcional, Resend). Sin API (DEMO): no se envía nada; se valida, se guarda el mensaje en localStorage (tv_messages) y se muestra un borrador mailto:.
+[CONTACT] Formularios de contacto (página Contacto, bloque de la portada y bloque «Contacta con nosotros» de las fichas y entradas de «Original»). Con TV.meta.api (producción): POST /api/contact al servidor (workers/api o backend-php: honeypot, tiempo mínimo de relleno, solo texto plano y con límite de caracteres, límite por IP, Turnstile opcional). El servidor guarda el mensaje SIEMPRE (se ve en el panel) y avisa por correo al equipo; aquí se avisa de lo que no vale en el idioma de la página.
 
 Secciones: `[CONTACT]`
+
+### `forms.js`
+
+[FORMS] Ayudas comunes de los formularios públicos (contacto y pedido): contador de caracteres, aviso por campo, traducción de los errores del servidor y tiempo de relleno. Los límites (atributo maxlength) y las reglas de «solo texto plano» son las del servidor (TV.PlainText, generado desde shared/plain-text.mjs): aquí solo se avisa antes y en el idioma de la página; el servidor lo vuelve a comprobar SIEMPRE.
+
+Secciones: `[FORMS]` · `[TEXTOS]` · `[CAMPOS]` · `[CONTADOR]` · `[SERVIDOR]`
+
+- `F.elapsed` (l. 16) — Milisegundos desde que se empezó a cargar la página: el servidor exige un mínimo (`_e`) y un robot que envía sin cargarla no lo cumple.
+- `text` (l. 20) — Texto de interfaz `key` con {n} y {max} sustituidos por los valores de `vars`.
+- `F.codeText` (l. 26) — Aviso, en el idioma de la página, de un código de error de texto del servidor (plain_text, too_long, too_many_links, too_fast); '' si no se conoce. `max` es el límite del campo.
+- `F.clear` (l. 36) — Quita los avisos de error del formulario y la marca de campo no válido.
+- `F.fail` (l. 41) — Marca el campo `el` como no válido y pone `msg` justo debajo, enlazado con aria-describedby para que el lector de pantalla lo lea al enfocar el campo.
+- `maxOf` (l. 50) — Límite de caracteres del campo (su maxlength); 1000 si no lo tiene.
+- `F.checkText` (l. 52) — Revisa con las reglas del servidor los campos de texto `names` del formulario: marca los que no valen y devuelve el primero (o null si todo está bien). Sin TV.PlainText no hace nada.
+- `F.counters` (l. 65) — Contador «n / máx» bajo cada textarea con maxlength, y un aviso para lectores de pantalla solo al acercarse al límite (a 50, 20 y 10 caracteres y al llegar a él) para no leer cada letra.
+- `update` (l. 72) — Pone el recuento actual y, si se cruza un umbral, el aviso hablado.
+- `F.explain` (l. 87) — Muestra la respuesta de error `r` del servidor ({status, code, field, error}). Si es un error de un campo (code + field) lo marca, lo enfoca y devuelve true; si no, devuelve el
 
 ### `lab.js`
 
@@ -331,7 +358,7 @@ Secciones: `[PDF]`
 
 ### `quote-page.js`
 
-[QUOTE-PAGE] Página completa del presupuesto: tabla editable, importación CSV/Excel, PDF y envío (simulado en demo). Secciones: [TABLE] · [IMPORT] · [PDF] · [SEND] · [REFRESH] Depende de: quote.js, app.js, pdf.js, SheetJS (window.XLSX) para .xlsx/.xls.
+[QUOTE-PAGE] Página completa del presupuesto: tabla editable, importación CSV/Excel, PDF y envío (simulado en demo). Secciones: [TABLE] · [IMPORT] · [PDF] · [SEND] · [REFRESH] Depende de: quote.js, app.js, forms.js (TV.Forms), plain-text.js (TV.PlainText), pdf.js, SheetJS (window.XLSX) para .xlsx/.xls.
 
 Secciones: `[QUOTE-PAGE]` · `[TABLE]` · `[IMPORT]` · `[PDF]` · `[SEND]` · `[REFRESH]` · `[SEND-LIVE]` · `[SEND-DEMO]`
 
@@ -339,10 +366,10 @@ Secciones: `[QUOTE-PAGE]` · `[TABLE]` · `[IMPORT]` · `[PDF]` · `[SEND]` · `
 - `handleRows` (l. 46) — Importa filas de CSV/Excel: detecta las columnas de referencia y cantidad (o usa la 1.ª y 2.ª) y avisa de las desconocidas.
 - `parseCsv` (l. 58) — Convierte texto CSV en filas de celdas con el lector compartido TV.csvParse (quote.js).
 - `readFile` (l. 60) — Lee el archivo elegido o soltado (Excel con SheetJS, primera hoja, o CSV como texto) y pasa sus filas a handleRows.
-- `customer` (l. 75) — Datos del formulario del presupuesto como objeto {campo: valor}, sin el campo honeypot `hp` (antispam).
-- `download` (l. 77) — Descarga el PDF `res` ({blob(), filename}) con un enlace temporal y libera la URL del blob a los 800 ms.
-- `sendLive` (l. 99) — Envía el pedido al servidor (POST /api/order) con el PDF adjunto; los precios y totales los fija el servidor.
-- `sendDemo` (l. 120) — Demo sin servidor: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador de correo (mailto:).
+- `customer` (l. 76) — Datos del formulario del presupuesto como objeto {campo: valor}, sin el campo honeypot `hp` (antispam).
+- `download` (l. 78) — Descarga el PDF `res` ({blob(), filename}) con un enlace temporal y libera la URL del blob a los 800 ms.
+- `sendLive` (l. 100) — Envía el pedido al servidor (POST /api/order) con el PDF adjunto; los precios y totales los fija el servidor.
+- `sendDemo` (l. 124) — Demo sin servidor: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador de correo (mailto:).
 
 ### `quote.js`
 
@@ -684,9 +711,10 @@ Sesión 1 · Mapa de traducciones y lotes de trabajo (determinista).    python3 
 - `files` (l. 101) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
 - `check_versions` (l. 106) — Actualizar sin caché vieja: todo CSS y JS local de cada página lleva «?v=<10 hex>» igual a la huella (SHA-256) del archivo, y no queda ningún marcador sin resolver.
 - `check_csp` (l. 149) — Política de seguridad de contenido: script-src sin 'unsafe-inline' y cada script en línea ejecutable de cada página con su huella SHA-256 en la cabecera (los bloques de datos application/json y ld+json no se ejecutan).
-- `verify` (l. 178) — → (errores, avisos). Un error impide entregar el paquete.
-- `make_zip` (l. 289) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
-- `main` (l. 301) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
+- `check_wp_probes` (l. 178) — El .htaccess corta con 410 los sondeos de WordPress (wp-login.php, xmlrpc.php, wp-admin…) sin tocar las fotos y PDF antiguos de wp-content/uploads ni las páginas de la web: se prueba la expresión con rutas de ejemplo.
+- `verify` (l. 199) — → (errores, avisos). Un error impide entregar el paquete.
+- `make_zip` (l. 311) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
+- `main` (l. 323) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
 
 ### `pdf_jobs.py`
 
@@ -900,7 +928,8 @@ Secciones: `[PROBE-PAGE]`
 
 Secciones: `[QA-A11Y]`
 
-- `opt` (l. 14) — Valor de la opción --k=valor de la línea de comandos, o d si no se indicó.
+- `opt` (l. 15) — Valor de la opción --k=valor de la línea de comandos, o d si no se indicó.
+- `scan` (l. 44) — Analiza con axe la página que `page` tiene abierta y anota las violaciones bajo la etiqueta `label` (ruta o ruta + estado) en el tamaño `vpName`.
 
 ### `qa-admin-live.mjs`
 
@@ -908,12 +937,12 @@ Secciones: `[QA-A11Y]`
 
 Secciones: `[QA-ADMIN-LIVE]`
 
-- `pick` (l. 27) — 1.ª línea pedible de un producto: su código real si el PDF lo da (TT…), o la línea genérica P<id>
-- `ok` (l. 43) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
-- `newPage` (l. 45) — Abre un contexto (1440×900) con el catálogo apuntando al API de pruebas; devuelve { ctx, page, errs } (errs = errores de JS).
-- `login` (l. 53) — Abre /admin/ y envía el formulario de acceso con el correo y la contraseña dados (no espera al resultado).
-- `navs` (l. 55) — Textos de los enlaces del menú lateral del panel.
-- `toastText` (l. 57) — Texto del aviso emergente (#toast), leído tras una pausa corta para que aparezca.
+- `pick` (l. 28) — 1.ª línea pedible de un producto: su código real si el PDF lo da (TT…), o la línea genérica P<id>
+- `ok` (l. 45) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `newPage` (l. 47) — Abre un contexto (1440×900) con el catálogo apuntando al API de pruebas; devuelve { ctx, page, errs } (errs = errores de JS).
+- `login` (l. 55) — Abre /admin/ y envía el formulario de acceso con el correo y la contraseña dados (no espera al resultado).
+- `navs` (l. 57) — Textos de los enlaces del menú lateral del panel.
+- `toastText` (l. 59) — Texto del aviso emergente (#toast), leído tras una pausa corta para que aparezca.
 
 ### `qa-art.mjs`
 
@@ -942,10 +971,10 @@ Secciones: `[QA-LANG]`
 
 Secciones: `[QA-LIVE]` · `[DATA]` · `[SITE]` · `[BACKEND]` · `[BROWSER]`
 
-- `pick` (l. 23) — 1.ª línea pedible de un producto: su código real si el PDF lo da (TT…), o la línea genérica P<id>
-- `round2` (l. 26) — Redondea un importe a 2 decimales (cálculo propio de la prueba, independiente del código de la web).
-- `unit` (l. 28) — Precio unitario esperado de ref para q unidades: el del último tramo por cantidad alcanzado, o el base.
-- `ok` (l. 41) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `pick` (l. 24) — 1.ª línea pedible de un producto: su código real si el PDF lo da (TT…), o la línea genérica P<id>
+- `round2` (l. 27) — Redondea un importe a 2 decimales (cálculo propio de la prueba, independiente del código de la web).
+- `unit` (l. 29) — Precio unitario esperado de ref para q unidades: el del último tramo por cantidad alcanzado, o el base.
+- `ok` (l. 42) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
 
 ### `qa-package.mjs`
 
@@ -1075,7 +1104,9 @@ Secciones: `[TEST-BLOG-MD]`
 
 Secciones: `[TEST-PLAIN-TEXT]`
 
-- `ok` (l. 15) — Anota una comprobación: correcta, o fallo con su mensaje.
+- `ok` (l. 17) — Anota una comprobación: correcta, o fallo con su mensaje.
+- `load` (l. 31) — Ejecuta el script generado en un entorno aislado (con `RegExp` propio si se indica) y devuelve TV.PlainText.
+- `Old` (l. 41) — Constructor de RegExp de un navegador antiguo: lanza si la expresión usa lookbehind, como Safari anterior a 16.4.
 
 ### `qa-all.sh`
 
@@ -1093,18 +1124,18 @@ Reconstruye TODO el demo a partir de los datos ya cosechados/analizados (orden i
 
 Secciones: `[BACKENDS]` · `[WORKER]` · `[PHP]`
 
-- `backendKind` (l. 26) — Backend elegido por la línea de comandos: 'php' con --php (o TV_BACKEND=php), 'worker' por defecto.
-- `freePort` (l. 29) — Puerto TCP libre en 127.0.0.1.
-- `readBody` (l. 31) — Cuerpo completo de una petición HTTP entrante, como Buffer.
-- `externals` (l. 34) — servicios de terceros simulados; la misma lógica sirve al Worker (fetchImpl) y al PHP (servidor http)
-- `handle` (l. 37) — Responde a los servicios externos simulados (Resend, Anthropic, hoja CSV, libro Excel) y guarda lo que se les envía.
-- `startWorker` (l. 50) — Arranca el Worker torivac-api en memoria (KV simulado) detrás de un servidor http, con la web en otro puerto; misma interfaz que startPhp.
-- `mockFetch` (l. 59) — fetch simulado del Worker: delega en los servicios externos simulados.
-- `startPhp` (l. 88) — Arranca el API PHP con php -S sobre una copia de api/ y enlaces a la web; devuelve la misma interfaz que startWorker.
-- `writeCfg` (l. 107) — Escribe api/config.php con la configuración de pruebas (PHP la lee en cada petición).
-- `kv` (l. 121) — Ruta del fichero del almacén que corresponde a una clave.
-- `read` (l. 123) — Valor guardado en el almacén del PHP para una clave (null si no existe).
-- `startBackend` (l. 138) — Arranca el backend pedido ('worker' o 'php') y devuelve su interfaz común.
+- `backendKind` (l. 27) — Backend elegido por la línea de comandos: 'php' con --php (o TV_BACKEND=php), 'worker' por defecto.
+- `freePort` (l. 30) — Puerto TCP libre en 127.0.0.1.
+- `readBody` (l. 32) — Cuerpo completo de una petición HTTP entrante, como Buffer.
+- `externals` (l. 35) — servicios de terceros simulados; la misma lógica sirve al Worker (fetchImpl) y al PHP (servidor http)
+- `handle` (l. 38) — Responde a los servicios externos simulados (Resend, Anthropic, hoja CSV, libro Excel) y guarda lo que se les envía.
+- `startWorker` (l. 51) — Arranca el Worker torivac-api en memoria (KV simulado) detrás de un servidor http, con la web en otro puerto; misma interfaz que startPhp.
+- `mockFetch` (l. 60) — fetch simulado del Worker: delega en los servicios externos simulados.
+- `startPhp` (l. 90) — Arranca el API PHP con php -S sobre una copia de api/ y enlaces a la web; devuelve la misma interfaz que startWorker.
+- `writeCfg` (l. 109) — Escribe api/config.php con la configuración de pruebas (PHP la lee en cada petición).
+- `kv` (l. 123) — Ruta del fichero del almacén que corresponde a una clave.
+- `read` (l. 125) — Valor guardado en el almacén del PHP para una clave (null si no existe).
+- `startBackend` (l. 141) — Arranca el backend pedido ('worker' o 'php') y devuelve su interfaz común.
 
 ### `static-server.mjs`
 
@@ -2131,18 +2162,19 @@ Pruebas del formulario de contacto que de verdad funciona (Messages.php, Orders:
 - `test_contact_email_status_failed_off_skipped` (l. 69) — M1 · Si el correo falla, se omite o está apagado: 200 igualmente, el mensaje queda guardado y `reason` dice por qué (el detalle solo en el registro).
 - `test_contact_not_saved_is_a_500_and_sends_nothing` (l. 94) — M1 · Si el almacén no deja guardar: 500 «No se pudo guardar el mensaje», se registra y NO se envía nada; nunca «recibido» de lo que no está guardado.
 - `test_contact_limits_and_antispam_still_apply` (l. 116) — M1 · Los límites y el antispam de siempre siguen: 6.º mensaje → 429 sin guardar; honeypot, campos no válidos, privacidad y Turnstile fallido → 400 sin guardar ni enviar.
-- `test_contact_plain_text_and_limits_over_the_api` (l. 137) — Texto plano y límites: etiquetas, scripts, SQL, plantillas, consola y rutas se rechazan con code y field; demasiado largo o con muchos enlaces también; nada se guarda ni se envía.
-- `test_contact_and_order_fill_time_check` (l. 167) — Antispam por tiempo: con form_min_fill_ms = 1200 el cuerpo debe traer `_e` (entero ≥ 1200); sin él, con un número menor o con un texto → 400 too_fast. 0 lo desactiva.
-- `test_order_plain_text_and_limits_over_the_api` (l. 189) — Pedido: mismos límites de texto plano (nombre 80, empresa 120, teléfono 40, notas 500) y mismo 400 con code y field.
-- `test_messages_list_permissions_order_and_limit` (l. 207) — M2 · GET /messages: solo gestor (anónimo 401, cliente 403), más recientes primero, todos los campos, sin caché y límite acotado a 1..300 (100 por defecto).
-- `test_messages_list_tolerates_corrupt_records` (l. 230) — M2 · Un registro corrupto se omite sin romper la lista y el hueco se rellena con el siguiente; un registro sin id válido tampoco vale.
-- `test_messages_list_returns_visitor_text_as_data` (l. 242) — M2/M4 · El contenido del visitante es dato: se devuelve tal cual dentro del JSON, nunca como HTML ni con cabeceras.
-- `test_messages_delete_and_cannot_reach_other_keys` (l. 253) — M2 · DELETE /messages/:id borra uno (derecho de supresión); 404 si no existe, ya se borró o el id no tiene forma de id; nunca alcanza otras claves; cliente 403.
-- `test_mail_test_endpoint` (l. 271) — M2 · POST /mail/test: envía «Torivac · prueba de correo» a los destinatarios del equipo o a `to`; 200 aunque falle (con el error corto); 400 si `to` no vale; 10 por hora y usuario; cliente 403.
-- `test_mail_test_endpoint_rate_limit` (l. 305) — M2 · 10 pruebas por hora y usuario: la 11.ª es 429, otro gestor tiene su cupo.
-- `test_mail_status_endpoint_and_health` (l. 318) — M2 · GET /mail/status: driver, configured, problems (nombres), last (null al principio; luego el último intento); cliente 403; sin secretos.
-- `test_mail_endpoints_never_leak_the_key` (l. 350) — M4 · Con una clave «sk-SECRETO-123» configurada, no aparece en ninguna respuesta de los endpoints de correo ni en el almacén aunque el proveedor la repita.
-- `test_diag_warns_about_messages_without_email` (l. 363) — El diagnóstico avisa si los últimos mensajes de contacto se guardaron sin que saliera su aviso por correo.
+- `test_invalid_contact_does_not_spend_the_budget` (l. 137) — M1b · Lo no válido no gasta el cupo de 5 mensajes de 10 min: seis intentos con el texto mal (cada uno con su aviso) y después sus 5 mensajes bien se aceptan; el 6.º bueno es 429. Igual que el Worker.
+- `test_contact_plain_text_and_limits_over_the_api` (l. 147) — Texto plano y límites: etiquetas, scripts, SQL, plantillas, consola y rutas se rechazan con code y field; demasiado largo o con muchos enlaces también; nada se guarda ni se envía.
+- `test_contact_and_order_fill_time_check` (l. 177) — Antispam por tiempo: con form_min_fill_ms = 1200 el cuerpo debe traer `_e` (entero ≥ 1200); sin él, con un número menor o con un texto → 400 too_fast. 0 lo desactiva.
+- `test_order_plain_text_and_limits_over_the_api` (l. 199) — Pedido: mismos límites de texto plano (nombre 80, empresa 120, teléfono 40, notas 500) y mismo 400 con code y field.
+- `test_messages_list_permissions_order_and_limit` (l. 217) — M2 · GET /messages: solo gestor (anónimo 401, cliente 403), más recientes primero, todos los campos, sin caché y límite acotado a 1..300 (100 por defecto).
+- `test_messages_list_tolerates_corrupt_records` (l. 240) — M2 · Un registro corrupto se omite sin romper la lista y el hueco se rellena con el siguiente; un registro sin id válido tampoco vale.
+- `test_messages_list_returns_visitor_text_as_data` (l. 252) — M2/M4 · El contenido del visitante es dato: se devuelve tal cual dentro del JSON, nunca como HTML ni con cabeceras.
+- `test_messages_delete_and_cannot_reach_other_keys` (l. 263) — M2 · DELETE /messages/:id borra uno (derecho de supresión); 404 si no existe, ya se borró o el id no tiene forma de id; nunca alcanza otras claves; cliente 403.
+- `test_mail_test_endpoint` (l. 281) — M2 · POST /mail/test: envía «Torivac · prueba de correo» a los destinatarios del equipo o a `to`; 200 aunque falle (con el error corto); 400 si `to` no vale; 10 por hora y usuario; cliente 403.
+- `test_mail_test_endpoint_rate_limit` (l. 315) — M2 · 10 pruebas por hora y usuario: la 11.ª es 429, otro gestor tiene su cupo.
+- `test_mail_status_endpoint_and_health` (l. 328) — M2 · GET /mail/status: driver, configured, problems (nombres), last (null al principio; luego el último intento); cliente 403; sin secretos.
+- `test_mail_endpoints_never_leak_the_key` (l. 360) — M4 · Con una clave «sk-SECRETO-123» configurada, no aparece en ninguna respuesta de los endpoints de correo ni en el almacén aunque el proveedor la repita.
+- `test_diag_warns_about_messages_without_email` (l. 373) — El diagnóstico avisa si los últimos mensajes de contacto se guardaron sin que saliera su aviso por correo.
 
 ### `PlainTextTest.php`
 

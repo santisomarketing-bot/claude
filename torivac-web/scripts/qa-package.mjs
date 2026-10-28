@@ -19,7 +19,7 @@ const port = await freePort(), BASE = `http://127.0.0.1:${port}`;
 const OUT = fs.mkdtempSync(path.join(os.tmpdir(), 'tv-pkg-'));
 execFileSync('python3', ['-I', path.join(ROOT, 'scripts/package_cpanel.py'), `--base=${BASE}`, `--out=${OUT}`, '--keep', '--allow-dirty'], { stdio: 'pipe' });      // --allow-dirty: las pruebas empaquetan también con cambios sin commitear
 const WWW = path.join(OUT, fs.readdirSync(OUT).find((d) => fs.statSync(path.join(OUT, d)).isDirectory()));
-const sb = { window: {} }; sb.window = sb; vm.createContext(sb);
+const sb = { window: {}, document: { getElementById: () => null } }; sb.window = sb; vm.createContext(sb);          // catalog.js lee el bloque JSON de arranque con document.getElementById (aquí no hay página: sin bloque)
 for (const f of ['catalog.js', 'prices.js']) vm.runInContext(fs.readFileSync(path.join(WWW, 'assets/data', f), 'utf8'), sb);
 const { items, prices: bundled } = sb.TV;
 const demo = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/catalog/prices.json'), 'utf8'));      // hoja de DEMO: hace de hoja de Drive en el servidor
