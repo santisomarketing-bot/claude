@@ -178,7 +178,7 @@
       if (!props.length) return '<h1>Propuestas</h1><p class="notice">No hay propuestas todavía.</p>';
       return '<h1>Propuestas de cambio</h1><p class="muted">Nada de esto está publicado: la web usa el dato original hasta que lo apruebes.</p>' + props.map(function (p) {
         var s = propState[p.id] && propState[p.id].state;
-        return '<article class="panel prop' + (s ? ' done' : '') + '"><div class="small muted">' + esc(p.type) + ' · ' + esc(p.product_name || p.product_id || '') + (p.ref ? ' · <span class="mono">' + esc(p.ref) + '</span>' : '') + '</div><h3>' + esc(p.title || p.field || 'Cambio') + '</h3>' +
+        return '<article class="panel prop' + (s ? ' done' : '') + '"><div class="small muted">' + esc(p.type) + ' · ' + esc(p.product_name || p.product_id || '') + (p.ref ? ' · <span class="mono">' + esc(p.ref) + '</span>' : '') + '</div><h3 aria-level="2">' + esc(p.title || p.field || 'Cambio') + '</h3>' +
           (p.web_value ? '<p class="small"><strong>Web:</strong> ' + esc(p.web_value) + '</p>' : '') + (p.pdf_value ? '<p class="small"><strong>PDF:</strong> ' + esc(p.pdf_value) + '</p>' : '') + (p.recommendation ? '<p class="small muted">' + esc(p.recommendation) + '</p>' : '') +
           (s ? '<p><span class="tag">' + (s === 'ok' ? 'Aprobada (pendiente de publicar)' : 'Rechazada') + '</span> <button class="btn sm ghost" data-prop="' + esc(p.id) + '" data-v="">Deshacer</button></p>' : '<p><button class="btn sm" data-prop="' + esc(p.id) + '" data-v="ok">Aprobar</button> <button class="btn sm ghost" data-prop="' + esc(p.id) + '" data-v="no">Rechazar</button></p>') + '</article>';
       }).join('');
@@ -233,7 +233,7 @@
   function render() {
     var seq = ++renderSeq, s = session(), logo = esc(document.getElementById('logo-src').value);
     if (!s) {
-      root.innerHTML = '<div class="login"><form class="panel form" data-login><img src="' + logo + '" alt="Torivac" width="84" height="84" style="background:#100404;padding:10px;margin-bottom:16px;height:84px;width:84px"><h1>Acceso</h1><label>Correo<input name="email" type="email" autocomplete="username" required></label><label>Contraseña<input name="pass" type="password" autocomplete="current-password" required></label><p class="err" data-err hidden role="alert"></p><button class="btn" type="submit">Entrar</button></form></div>';
+      root.innerHTML = '<main class="login"><form class="panel form" data-login><img src="' + logo + '" alt="Torivac" width="84" height="84" style="background:#100404;padding:10px;margin-bottom:16px;height:84px;width:84px"><h1>Acceso</h1><label>Correo<input name="email" type="email" autocomplete="username" required></label><label>Contraseña<input name="pass" type="password" autocomplete="current-password" required></label><p class="err" data-err hidden role="alert"></p><button class="btn" type="submit">Entrar</button></form></main>';
       root.querySelector('[data-login]').addEventListener('submit', function (e) {
         e.preventDefault(); var f = e.target, err = root.querySelector('[data-err]'); err.hidden = true;
         login(f.email.value, f.pass.value).then(function (msg) { if (!msg) { location.hash = ''; render(); } else { err.textContent = msg; err.hidden = false; } });

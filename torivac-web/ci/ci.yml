@@ -1,0 +1,42 @@
+# Integración continua de torivac-web. COPIAR a .github/workflows/ci.yml en la raíz del repositorio de la web
+# (GitHub solo lee workflows de la raíz; en el monorepo de trabajo viven aquí como plantilla). Ajusta `working-directory` si la web no está en torivac-web/.
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+defaults:
+  run:
+    working-directory: torivac-web
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - name: Escáner de secretos
+        run: python3 -I scripts/secret_scan.py
+      - name: Pruebas del Worker (24)
+        run: cd workers/api && npm test
+      - name: Compilar la web (demo, sin base) y con dominio (producción)
+        run: |
+          python3 -I scripts/build_prices.py --demo
+          node site/build.mjs
+          node site/build.mjs --base=https://${{ vars.SITE_HOST || 'demo.torivac.example' }} --out=/tmp/prod-dist
+      - name: Auditoría SEO/GEO (JSON-LD, hreflang, sitemap, llms.txt, enlaces)
+        run: python3 -I scripts/seo_check.py /tmp/prod-dist --base=https://${{ vars.SITE_HOST || 'demo.torivac.example' }}
+      - name: Navegador (Playwright) · presupuesto, idioma, UX, accesibilidad, gráficos, Worker y panel
+        run: |
+          npm i --no-save playwright@1.49.1 axe-core@4.10.2
+          npx playwright install --with-deps chromium
+          export AXE_PATH=$PWD/node_modules/axe-core/axe.min.js
+          node scripts/qa-quote.mjs && node scripts/qa-lang.mjs && node scripts/qa-art.mjs
+          node scripts/qa-ux.mjs && node scripts/qa-ux.mjs --mobile && node scripts/qa-a11y.mjs
+          node scripts/qa-live.mjs && node scripts/qa-admin-live.mjs
+          node scripts/perf.mjs --dir=/tmp/prod-dist
+      - name: Índice de código (todo archivo con cabecera y cada función descrita)
+        run: python3 -I scripts/gen_code_index.py --check
