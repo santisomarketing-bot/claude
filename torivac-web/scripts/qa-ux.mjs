@@ -85,7 +85,7 @@ const inPage = () => {
   }
   // restos de código y marcadores
   const txt = document.body.innerText || '';
-  for (const rx of [/\[\/?(vc_|et_pb|elementor|wpforms|caption|gallery)[^\]]{0,40}\]/i, /&#\d{2,5};/, /\{\{|\{%|%\}/, /\b(undefined|NaN|\[object Object\])\b/, /<\/?(div|span|p|br|strong)[ >]/i, /lorem ipsum/i, /Â[^\s]|â€/]) {
+  for (const rx of [/\[\/?(vc_|et_pb|elementor|wpforms|caption|gallery)[^\]]{0,40}\]/i, /&#\d{2,5};/, /\{\{|\{%|%\}/, /\b(undefined|NaN|\[object Object\])\b/, /<\/?(div|span|p|br|strong)[ >]/i, /lorem ipsum/i, /[ÂÃ][\u00A0-\u00BF]|â€/]) {      // mojibake: «Â©», «Ã©», «â€™» (no «GRÂCE»: con los titulares en mayúsculas de la Ficha técnica «Â» + letra es francés correcto)
     const m = txt.match(rx); if (m) out.shortcode.push(`${rx.source.slice(0, 30)} → «${txt.slice(Math.max(0, m.index - 20), m.index + 40).replace(/\s+/g, ' ')}»`);
   }
   // ids duplicados

@@ -36,6 +36,7 @@ Estado: ✅ hecha y probada · 🟡 hecha en lo que no depende de terceros (se i
 | 16 | Revisión final | Superar la versión de Why Not (SEO/GEO, rendimiento, a11y, calidad) | `seo_check`, `perf`, `qa-a11y` | ✅ |
 | 17 | Despliegue en cPanel | Paquete `.zip` verificado, `.htaccess`, 404, noindex de pruebas, API PHP, CI | `qa-package.mjs` y `DESPLIEGUE-CPANEL.md` | ✅ (falta solo la primera subida a tu hosting) |
 | 18 | Precios reales desde Drive | Formatos de hoja reales, decimales, referencias nuevas, lectura del `.xlsx` | `qa-tarifa.mjs` (Worker y PHP) | ✅ |
+| 19 | Identidad visual «Ficha técnica» + aspecto Clásico | Aspecto nuevo por defecto (papel, tinta, cobre, Archivo extendida + Chivo Mono) y el actual como segunda opción, con selector; banderas de compilación; documentación | `qa-theme.mjs`, `qa-ux` y `qa-a11y` con los dos aspectos, [`DISENO-TEMAS.md`](DISENO-TEMAS.md) | ✅ (falta que Torivac elija cuál se publica) |
 
 Cada sesión termina con commit + push a la rama de trabajo, para no perder nada si el entorno se recicla.
 

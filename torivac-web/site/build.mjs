@@ -22,6 +22,12 @@ const arg = (k) => (process.argv.find((a) => a.startsWith(`--${k}=`)) || '').spl
 const ABS = arg('base') || '';
 const STAGING = process.argv.includes('--staging') || process.env.TORIVAC_STAGING === '1';   // dominio de pruebas: noindex, robots Disallow y cinta «entorno de pruebas»
 const PHP_API = process.argv.includes('--php-api');                                          // el API (PHP) vive en la misma web, en /api (hosting con cPanel)
+// [THEME] aspecto de la web: «ficha» = Ficha técnica (nuevo, por defecto) · «clasico» = el de la web original. Ver docs/DISENO-TEMAS.md
+const THEMES = ['ficha', 'clasico'];
+const THEME = arg('theme') || process.env.TORIVAC_THEME || 'ficha';
+if (!THEMES.includes(THEME)) { console.error(`--theme debe ser uno de: ${THEMES.join(', ')} (recibido: ${THEME})`); process.exit(2); }
+// El selector de aspecto (cinta y pie) se muestra por defecto en el demo y en pruebas, para que el cliente compare; en producción se publica UN aspecto salvo que se pida --theme-switch.
+const THEME_SWITCH = process.argv.includes('--theme-switch') || (!process.argv.includes('--no-theme-switch') && (!ABS || STAGING));
 setCleanUrls(!!ABS);                                                                         // producción: URLs sin index.html; demo (doble clic): con index.html
 // Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
 const jl = (f, d) => { try { return JSON.parse(fs.readFileSync(path.join(CAT, f), 'utf8')); } catch { return d; } };
@@ -126,7 +132,7 @@ const fundES = Object.keys(imageMap).find((k) => /MANUAL-FEDER/i.test(k));
 const fundOT = Object.keys(imageMap).find((k) => /Logotipos_FondosEuropeos/i.test(k));
 const logo = imageMap[logoKey]?.file || 'assets/img/logo.png';
 const NAVKEYS = ['home', 'company', 'products', 'projects', 'catalog', 'blog', 'contact'];
-const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, staging: STAGING, absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
+const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, staging: STAGING, theme: THEME, themeSwitch: THEME_SWITCH, absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
 const QSLUG = { es: '/presupuesto/', en: '/en/quote/', fr: '/fr/devis/', de: '/de/angebot/' };
 meta.catalogHref = {};
 for (const l of LANGS) {
@@ -197,7 +203,7 @@ for (const lang of LANGS) {
   if (L[homePath]) {
     const ctx = mkctx(lang, homePath, 'home');
     const h = TPL.homeBody(ctx, L[homePath]);
-    emit(homePath, TPL.layout(ctx, { title: L[homePath].title || 'Torivac', description: L[homePath].meta_description, template: 'home', hero: h.hero, body: h.body, alts: alts(homePath), scripts: ['assets/js/contact.js'], crumbs: [crumbHome(lang)] }));
+    emit(homePath, TPL.layout(ctx, { title: L[homePath].title || 'Torivac', description: L[homePath].meta_description, template: 'home', hero: h.hero, body: h.body, alts: alts(homePath), scripts: ['assets/js/contact.js'], crumbs: [crumbHome(lang)], preloadImage: h.heroImg }));
   }
 
   // listado de productos (la página "Productos" de la web original aporta el texto de introducción)
@@ -350,18 +356,27 @@ const SRC = path.join(ROOT, 'site', 'assets');
 // Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
 const copyDir = (a, b) => { fs.mkdirSync(b, { recursive: true }); for (const e of fs.readdirSync(a, { withFileTypes: true })) { const s = path.join(a, e.name), d = path.join(b, e.name); e.isDirectory() ? copyDir(s, d) : fs.copyFileSync(s, d); } };
 copyDir(SRC, path.join(DIST, 'assets'));
-// [CSS-PROD] con --base: un solo site.css minificado (1 petición en vez de 6) y fuentes como archivos woff2 (cacheables, no bloquean el pintado).
-//   Sin --base (demo para abrir con doble clic) se mantienen los 6 CSS y las fuentes en base64, porque file:// no carga fuentes externas.
-if (ABS) {
-  const css = ['fonts-files', 'tokens', 'base', 'layout', 'components', 'art'].map((n) => fs.readFileSync(path.join(SRC, 'css', n + '.css'), 'utf8')).join('\n');
-  const min = css.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/\s*([{};,>])\s*/g, '$1').replace(/;}/g, '}').trim();
-  fs.writeFileSync(path.join(DIST, 'assets', 'css', 'site.css'), min);
-  console.log(`CSS producción: site.css ${(min.length / 1024).toFixed(0)} KB`);
+// ───────────────────────────────────────────────────────────── [CSS] hoja única site.css: fuentes + aspecto «Clásico» (capa classic) + aspecto «Ficha técnica» (capa ficha, que gana siempre)
+//   Con --base: minificada y con las fuentes como archivos woff2 (cacheables, no bloquean el pintado).
+//   Sin --base (demo con doble clic): legible y con las fuentes en base64, porque file:// no carga fuentes externas.
+//   Si la web se publica solo en «Clásico» (sin selector) no se incluye el aspecto nuevo: la hoja es la de siempre, sin capas.
+{
+  // Texto del archivo site/assets/css/<n>.css.
+  const css = (n) => fs.readFileSync(path.join(SRC, 'css', n + '.css'), 'utf8');
+  const withFicha = THEME === 'ficha' || THEME_SWITCH;
+  const fonts = ['fonts', ...(withFicha ? ['fonts-ficha'] : [])].map((n) => css(ABS ? n + '-files' : n)).join('\n');
+  const classic = ['tokens', 'base', 'layout', 'components', 'art'].map(css).join('\n');
+  const body = withFicha ? `@layer classic,ficha;\n@layer classic{\n${classic}\n}\n@layer ficha{\n${['ficha-tokens', 'ficha'].map(css).join('\n')}\n}` : classic;
+  const all = `${fonts}\n${body}`;
+  const out = ABS ? all.replace(/\/\*[\s\S]*?\*\//g, '').replace(/\s+/g, ' ').replace(/\s*([{};,>])\s*/g, '$1').replace(/;}/g, '}').trim() : all;
+  fs.writeFileSync(path.join(DIST, 'assets', 'css', 'site.css'), out);
+  for (const f of ['ficha.css', 'ficha-tokens.css', 'fonts-ficha.css', 'fonts-ficha-files.css']) fs.rmSync(path.join(DIST, 'assets', 'css', f), { force: true });     // solo viven dentro de site.css
+  console.log(`CSS: site.css ${(out.length / 1024).toFixed(0)} KB · aspecto ${THEME}${withFicha ? '' : ' (solo Clásico)'}${THEME_SWITCH ? ' · con selector de aspecto' : ''}`);
 }
 fs.mkdirSync(path.join(DIST, 'assets', 'pdf'), { recursive: true });
 for (const f of pdfLocal.keys()) fs.copyFileSync(path.join(pdfDir, f), path.join(DIST, 'assets', 'pdf', f));
 // portada del demo: abre el español; selector con los 4 idiomas en demo.html
-if (!ABS) fs.writeFileSync(path.join(DIST, 'README-DEMO.txt'), `Torivac · demo (no es la web oficial)\nAbre index.html (español). Idiomas: en/index.html, fr/index.html, de/index.html.\nPrecios y envío de pedido: SIMULADOS.\n`);
+if (!ABS) fs.writeFileSync(path.join(DIST, 'README-DEMO.txt'), `Torivac · demo (no es la web oficial)\nAbre index.html (español). Idiomas: en/index.html, fr/index.html, de/index.html.\nPrecios y envío de pedido: SIMULADOS.\n${THEME_SWITCH ? 'Aspecto: «Ficha técnica» (nuevo) o «Clásico» (el de la web original) con el selector «Aspecto» de la cinta superior o del pie; el navegador recuerda la elección.\n' : ''}`);
 // ───────────────────────────────────────────────────────────── [SEO-FILES] sitemap.xml (hreflang + imágenes), robots.txt, llms.txt, llms-full.txt (solo con --base)
 if (ABS && !STAGING) {
   const reg = site.registry, regPaths = new Set(reg.map((r) => r.path));

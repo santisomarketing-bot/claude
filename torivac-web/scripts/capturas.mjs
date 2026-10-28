@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // [CAPTURAS] Capturas de pantalla de las vistas clave del demo (para revisar sin abrir nada) + PDF de ejemplo.
-//   node scripts/capturas.mjs [carpeta-salida]        (por defecto entrega/capturas)
+//   node scripts/capturas.mjs [carpeta-salida] [--theme=clasico|ficha]        (por defecto entrega/capturas y el aspecto que traiga dist/; --theme fuerza uno de los dos aspectos)
 // Sirve dist/ por http, recorre el flujo de un cliente (ficha → presupuesto → PDF) y el panel de gestión, y guarda PNG numerados.
 import { createRequire } from 'node:module';
 import path from 'node:path';
@@ -12,19 +12,23 @@ import { serve } from './lib/static-server.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
-const OUT = path.resolve(process.argv[2] || path.join(ROOT, 'entrega', 'capturas'));
+// Aspecto forzado con --theme=clasico|ficha ('' = el que traiga dist/).
+const THEME = (process.argv.find((a) => a.startsWith('--theme=')) || '').split('=')[1] || '';
+const OUT = path.resolve(process.argv.slice(2).find((a) => !a.startsWith('--')) || path.join(ROOT, 'entrega', 'capturas'));
 fs.rmSync(OUT, { recursive: true, force: true }); fs.mkdirSync(OUT, { recursive: true });
 const { server, base } = await serve(DIST);
 
 const sb = { window: {} }; sb.window = sb; vm.createContext(sb);
 vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data/catalog.js'), 'utf8'), sb);
 const items = sb.TV.items;
+/** Referencia (clave de TV.items) de la primera línea del producto `pid`. */
+const byPid = (pid) => Object.keys(items).find((r) => items[r].pid === pid);
 
 const browser = await chromium.launch();
 /** Abre un contexto de navegador de w×h con el idioma fijado a mano (sin autodetección) y devuelve { ctx, page }. */
 const mk = async (w, h, lang = 'es') => {
   const ctx = await browser.newContext({ viewport: { width: w, height: h }, locale: lang === 'es' ? 'es-ES' : lang, acceptDownloads: true, deviceScaleFactor: w < 600 ? 2 : 1 });
-  await ctx.addInitScript(([l]) => { try { localStorage.setItem('tv_lang', l); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang_auto_done', '1'); } catch (e) { /* ignorar */ } }, [lang]);
+  await ctx.addInitScript(([l, t]) => { try { localStorage.setItem('tv_lang', l); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang_auto_done', '1'); if (t) localStorage.setItem('tv-theme', t); } catch (e) { /* ignorar */ } }, [lang, THEME]);
   return { ctx, page: await ctx.newPage() };
 };
 let n = 0;
@@ -46,7 +50,6 @@ const settle = (page, ms = 500) => page.waitForLoadState('load').then(() => page
   await shot(page, 'categoria', { fullPage: false });
 
   // ficha del transformador toroidal serie TT, con cantidades
-  const byPid = (pid) => Object.keys(items).find((r) => items[r].pid === pid);
   const ttPath = items[byPid(884)].p.es;
   await page.goto(base + ttPath); await settle(page);
   await page.locator('[data-qty]').first().fill('12');

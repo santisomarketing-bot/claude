@@ -15,6 +15,7 @@
 Aquí **sí** funciona todo de verdad: pedidos por correo a `info@grupotorivac.com` y `mzamora@torivac.com` con el PDF adjunto (y copia al cliente), contacto, login real del panel, precios desde tu Drive.
 
 ## Qué puedes probar
+- **Dos aspectos de la web**: **«Ficha técnica»** (identidad nueva, por defecto) y **«Clásico»** (el de la web original). Se alternan con el selector **Aspecto** de la cinta superior o del pie (o con `?tema=clasico` / `?tema=ficha` al final de la dirección) y el navegador recuerda la elección. Qué es cada uno y cómo se elige para producción: [`DISENO-TEMAS.md`](DISENO-TEMAS.md).
 - **Pedido por cantidades como un e-commerce**: en cada ficha, tabla de modelos con cantidades → «Añadir» → botón flotante «Presupuesto» (cajón lateral) → página de presupuesto → «Enviar pedido».
 - **Presupuesto en PDF** (descarga en el navegador, con logotipo, imágenes de referencia, tramos de precio y céntimos).
 - **Importar CSV/Excel** con columnas «referencia» y «cantidad» en la página de presupuesto.
@@ -36,6 +37,7 @@ Aquí **sí** funciona todo de verdad: pedidos por correo a `info@grupotorivac.c
 ## Cómo se ha comprobado (todo reproducible y sin red)
 - `cd workers/api && npm test` · `php backend-php/api/tests/run.php`: pedidos, precios, hojas, lectura de `.xlsx`, login, IA, CORS… (el mismo contrato en Worker y en PHP).
 - Navegador (Playwright), **contra el Worker y contra el API PHP**: `qa-live.mjs` (pedido/contacto/errores), `qa-admin-live.mjs` (panel completo), `qa-tarifa.mjs` (tarifa Excel real), y `qa-package.mjs` (el paquete de cPanel tal como se sube, con la CSP real del `.htaccess`).
+- Aspectos: `qa-theme.mjs` (selector, persistencia, fuentes, sin JS, sin desbordes en los dos aspectos, hoja por capas) y `qa-ux` / `qa-a11y` con ambos.
 - Calidad de la web: `qa-quote` (presupuesto en 4 idiomas con cálculo independiente), `qa-lang`, `qa-ux` (todas las páginas, escritorio y móvil), `qa-a11y` (axe-core AA), `qa-art`, `seo_check.py` (H1, canonical, hreflang, JSON-LD, sitemap, enlaces), `perf.mjs`, `secret_scan.py`.
 - **Lo único que no se ha podido probar aquí** es un Apache/LiteSpeed real de cPanel: se probó con `php -S` aplicando la misma reescritura y la misma CSP. La primera subida se verifica con `php api/tools/check.php --net` y la lista de `DESPLIEGUE-CPANEL.md` §10.
 

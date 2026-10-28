@@ -6,7 +6,7 @@
  },
  "results": [
   {
-   "url": "/aplicaciones-de-los-transformadores-en-la-industria-actual/",
+   "url": "/aviso-legal-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -21,7 +21,7 @@
    "errors": []
   },
   {
-   "url": "/aviso-legal-2/",
+   "url": "/aplicaciones-de-los-transformadores-en-la-industria-actual/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -81,21 +81,6 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/bobinas-encapsuladas/cuadradas/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/categoria-producto/bobinas-encapsuladas/redondas/",
    "overflow": [],
    "broken": [],
@@ -111,7 +96,37 @@
    "errors": []
   },
   {
+   "url": "/categoria-producto/bobinas-encapsuladas/cuadradas/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/categoria-producto/botones-de-mando-y-accesorios/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/categoria-producto/botones-de-mando/aros-con-flecha/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -142,21 +157,6 @@
   },
   {
    "url": "/categoria-producto/botones-de-mando/botones-de-mando-serie-bm-mate/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/categoria-producto/botones-de-mando/aros-con-flecha/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -321,37 +321,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/electronica/convertidores/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/categoria-producto/electronica/control-industrial/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/categoria-producto/electronica/energias-renovables/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -381,7 +351,22 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/electronica/fuente-de-alimentacion-ca/",
+   "url": "/categoria-producto/electronica/convertidores/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/categoria-producto/electronica/energias-renovables/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -411,7 +396,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/estabilizadores-de-tension/",
+   "url": "/categoria-producto/electronica/fuente-de-alimentacion-ca/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -427,6 +412,21 @@
   },
   {
    "url": "/categoria-producto/estabilizadores-de-tension/serie-avs/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/categoria-producto/estabilizadores-de-tension/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -471,7 +471,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/estabilizadores-de-tension/serie-bavs/",
+   "url": "/categoria-producto/estabilizadores-de-tension/serie-bavs/monofasico-serie-bavs/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -486,7 +486,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/estabilizadores-de-tension/serie-bavs/monofasico-serie-bavs/",
+   "url": "/categoria-producto/estabilizadores-de-tension/serie-bavs/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -546,7 +546,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/hembrillas/hembrilla-de-seguridad-hr4/",
+   "url": "/categoria-producto/hembrillas/hembrilla-de-seguridad-hsr4/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -561,7 +561,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/hembrillas/hembrilla-de-seguridad-hsr4/",
+   "url": "/categoria-producto/hembrillas/hembrilla-de-seguridad-hr4/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -591,7 +591,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/portaled/led-10mm/",
+   "url": "/categoria-producto/nucleos/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -606,7 +606,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/nucleos/",
+   "url": "/categoria-producto/portaled/led-10mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -651,7 +651,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/portaleds/",
+   "url": "/categoria-producto/portaled/led-8mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -666,7 +666,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/portaled/led-8mm/",
+   "url": "/categoria-producto/portaleds/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -816,21 +816,6 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/resistencias/resistencias-de-frenado/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/categoria-producto/resistencias/helicoidales/",
    "overflow": [],
    "broken": [],
@@ -861,7 +846,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/resistencias/resistencias-de-puesta-a-tierra/",
+   "url": "/categoria-producto/resistencias/resistencias-de-frenado/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -876,7 +861,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/transformadores/transformador-convencional/serie-tc/",
+   "url": "/categoria-producto/resistencias/resistencias-de-puesta-a-tierra/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -906,7 +891,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/transformadores/transformador-convencional/",
+   "url": "/categoria-producto/transformadores/transformador-convencional/serie-tc/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -936,6 +921,21 @@
    "errors": []
   },
   {
+   "url": "/categoria-producto/transformadores/transformador-convencional/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/categoria-producto/transformadores/transformador-convencional/tct/",
    "overflow": [],
    "broken": [],
@@ -951,7 +951,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tci/",
+   "url": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-te/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -966,7 +966,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-te/",
+   "url": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/serie-tci/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1026,21 +1026,6 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/variadores-de-tension/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/categoria-producto/variadores-de-tension/dobles/",
    "overflow": [],
    "broken": [],
@@ -1071,6 +1056,21 @@
    "errors": []
   },
   {
+   "url": "/categoria-producto/variadores-de-tension/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/categoria-producto/variadores-de-tension/dobles/doble-motorizado/",
    "overflow": [],
    "broken": [],
@@ -1086,7 +1086,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/variadores-de-tension/en-caja/",
+   "url": "/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-en-caja/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1101,7 +1101,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-en-caja/",
+   "url": "/categoria-producto/variadores-de-tension/en-caja/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1146,6 +1146,21 @@
    "errors": []
   },
   {
+   "url": "/categoria-producto/variadores-de-tension/monofasico/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/categoria-producto/variadores-de-tension/monofasico/monofasicos-manual/",
    "overflow": [],
    "broken": [],
@@ -1176,21 +1191,6 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/variadores-de-tension/monofasico/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/categoria-producto/variadores-de-tension/trifasico/",
    "overflow": [],
    "broken": [],
@@ -1206,7 +1206,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/variadores-de-tension/trifasico/manual-trifasico/",
+   "url": "/categoria-producto/variadores-de-tension/trifasico/motorizado/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1221,7 +1221,7 @@
    "errors": []
   },
   {
-   "url": "/categoria-producto/variadores-de-tension/trifasico/motorizado/",
+   "url": "/categoria-producto/variadores-de-tension/trifasico/manual-trifasico/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1296,6 +1296,21 @@
    "errors": []
   },
   {
+   "url": "/de/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/de/angebot/",
    "overflow": [],
    "broken": [],
@@ -1326,21 +1341,6 @@
    "errors": []
   },
   {
-   "url": "/de/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/de/aviso-legal-2/",
    "overflow": [],
    "broken": [],
@@ -1353,21 +1353,6 @@
    "dupIds": [],
    "lang": [],
    "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/de/categoria-producto/bedieningsknoppen/bm-serie-covers/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
    "errors": []
   },
   {
@@ -1431,22 +1416,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/bedieningsknoppen/bo-serie-deksels/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/de/categoria-producto/bedieningsknoppen/gegradueerde-covers/",
+   "url": "/de/categoria-producto/bedieningsknoppen/bm-serie-covers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1476,6 +1446,21 @@
    "errors": []
   },
   {
+   "url": "/de/categoria-producto/bedieningsknoppen/bo-serie-deksels/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/de/categoria-producto/bedieningsknoppen/gegradueerde-schijven/",
    "overflow": [],
    "broken": [],
@@ -1491,7 +1476,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/bedieningsknoppen/knoppen-estators/",
+   "url": "/de/categoria-producto/bedieningsknoppen/gegradueerde-covers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1507,6 +1492,21 @@
   },
   {
    "url": "/de/categoria-producto/bedieningsknoppen/hoepels-met-pijl/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/de/categoria-producto/bedieningsknoppen/knoppen-estators/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1568,6 +1568,21 @@
    "errors": []
   },
   {
+   "url": "/de/categoria-producto/elektronische-ausrustung/dc-stromversorgungen/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/de/categoria-producto/elektronische-ausrustung/",
    "overflow": [],
    "broken": [],
@@ -1586,21 +1601,6 @@
   },
   {
    "url": "/de/categoria-producto/elektronische-ausrustung/erneuerbare-energien/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/de/categoria-producto/elektronische-ausrustung/dc-stromversorgungen/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1645,7 +1645,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/gekapselte-spulen/rund/",
+   "url": "/de/categoria-producto/gekapselte-spulen/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1660,7 +1660,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/gekapselte-spulen/",
+   "url": "/de/categoria-producto/gekapselte-spulen/rund/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1690,23 +1690,6 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/geportaliseerd/geportaliseerde-led-3mm/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [
-    "nl: «Metalen beugels voor 3 mm LED's, vervaardigd uit messing of duralumini»"
-   ],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/de/categoria-producto/geportaliseerd/geperforeerde-led-10mm/",
    "overflow": [],
    "broken": [],
@@ -1724,7 +1707,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/geportaliseerd/geportaliseerde-led-5mm/",
+   "url": "/de/categoria-producto/geportaliseerd/geportaliseerde-led-3mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1735,7 +1718,7 @@
    "shortcode": [],
    "dupIds": [],
    "lang": [
-    "nl: «Metalen beugels voor 5 mm LED's, vervaardigd uit messing of duralumini»"
+    "nl: «Metalen beugels voor 3 mm LED's, vervaardigd uit messing of duralumini»"
    ],
    "notice": true,
    "errors": []
@@ -1753,6 +1736,23 @@
    "dupIds": [],
    "lang": [
     "nl: «Metalen beugels voor 8 mm LED's, vervaardigd uit messing of duralumini»"
+   ],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/de/categoria-producto/geportaliseerd/geportaliseerde-led-5mm/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [
+    "nl: «Metalen beugels voor 5 mm LED's, vervaardigd uit messing of duralumini»"
    ],
    "notice": true,
    "errors": []
@@ -1793,21 +1793,6 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/rheostate-und-spulenpotentiometer/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/de/categoria-producto/rheostate-und-spulenpotentiometer/keramische-rheostate/",
    "overflow": [],
    "broken": [],
@@ -1824,6 +1809,21 @@
   },
   {
    "url": "/de/categoria-producto/rheostate-und-spulenpotentiometer/potentiometer/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/de/categoria-producto/rheostate-und-spulenpotentiometer/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1913,7 +1913,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/socket-jack/hsr4-veiligheidsaansluiting/",
+   "url": "/de/categoria-producto/socket-jack/hr4-veiligheidsaansluiting/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1928,7 +1928,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/socket-jack/hr4-veiligheidsaansluiting/",
+   "url": "/de/categoria-producto/socket-jack/hsr4-veiligheidsaansluiting/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1958,7 +1958,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/handmatige-driefasen/",
+   "url": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -1988,7 +1988,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/",
+   "url": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dreiphasige-antriebe/handmatige-driefasen/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2033,7 +2033,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/dubbele-handleiding/",
+   "url": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/dubbele-motor/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2048,7 +2048,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/dubbele-motor/",
+   "url": "/de/categoria-producto/spannungsregler-einstellbare-spartransformatoren/dubbele-variator/dubbele-handleiding/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2156,21 +2156,6 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/de/categoria-producto/spannungsstabilisatoren/",
    "overflow": [],
    "broken": [],
@@ -2186,7 +2171,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/monofase/",
+   "url": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2202,6 +2187,21 @@
   },
   {
    "url": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/driefasen/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/de/categoria-producto/spannungsstabilisatoren/avs-serie-stabilisatoren-elektromechanisch-met-servomotor/monofase/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2287,7 +2287,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/transformatoren/konventioneller-transformator/tc-serie/",
+   "url": "/de/categoria-producto/transformatoren/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2302,7 +2302,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/transformatoren/konventioneller-transformator/tce-serie/",
+   "url": "/de/categoria-producto/transformatoren/konventioneller-transformator/tc-serie/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2332,7 +2332,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/transformatoren/",
+   "url": "/de/categoria-producto/transformatoren/konventioneller-transformator/tce-serie/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2362,7 +2362,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/transformatoren/ringkerntransformatoren/te-serie/",
+   "url": "/de/categoria-producto/transformatoren/ringkerntransformatoren/tci-serie-verkapselung-von-leiterplatten/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2392,7 +2392,7 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/transformatoren/ringkerntransformatoren/tci-serie-verkapselung-von-leiterplatten/",
+   "url": "/de/categoria-producto/transformatoren/ringkerntransformatoren/te-serie/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2422,23 +2422,6 @@
    "errors": []
   },
   {
-   "url": "/de/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-en-caja/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [
-    "es: «Todos nuestros variadores se pueden suministrar como un equipo acabado»"
-   ],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/de/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-industriales/",
    "overflow": [],
    "broken": [],
@@ -2451,6 +2434,23 @@
    "dupIds": [],
    "lang": [
     "es: «Gama diseñada para monofásicos de 1500 a 5000VA y trifásicos de 440VA »"
+   ],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/de/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-en-caja/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [
+    "es: «Todos nuestros variadores se pueden suministrar como un equipo acabado»"
    ],
    "notice": true,
    "errors": []
@@ -2591,21 +2591,6 @@
    "errors": []
   },
   {
-   "url": "/de/como-se-mejora-un-transformador-con-tecnicas-expertas/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/de/como-se-fabrica-un-transformador-proceso-y-calidad-europea/",
    "overflow": [],
    "broken": [],
@@ -2636,6 +2621,21 @@
    "errors": []
   },
   {
+   "url": "/de/como-se-mejora-un-transformador-con-tecnicas-expertas/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/de/declaracion-de-accesibilidad/",
    "overflow": [],
    "broken": [],
@@ -2651,7 +2651,7 @@
    "errors": []
   },
   {
-   "url": "/de/estabilizadores-de-tension-con-cobre/",
+   "url": "/de/descargadores-de-bateria/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2666,7 +2666,7 @@
    "errors": []
   },
   {
-   "url": "/de/descargadores-de-bateria/",
+   "url": "/de/estabilizadores-de-tension-con-cobre/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2726,21 +2726,6 @@
    "errors": []
   },
   {
-   "url": "/de/impacto-medioambiental-de-los-transformadores-hoy/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/de/kontakt-us/",
    "overflow": [],
    "broken": [],
@@ -2771,6 +2756,21 @@
    "errors": []
   },
   {
+   "url": "/de/impacto-medioambiental-de-los-transformadores-hoy/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/de/la-importancia-del-transformador-toroidal-en-la-industria/",
    "overflow": [],
    "broken": [],
@@ -2786,7 +2786,7 @@
    "errors": []
   },
   {
-   "url": "/de/mantenimiento-de-transformadores-electricos/",
+   "url": "/de/limites-de-un-transformador-y-como-afectan-su-rendimiento/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2801,7 +2801,7 @@
    "errors": []
   },
   {
-   "url": "/de/limites-de-un-transformador-y-como-afectan-su-rendimiento/",
+   "url": "/de/mantenimiento-de-transformadores-electricos/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2846,7 +2846,7 @@
    "errors": []
   },
   {
-   "url": "/de/politica-de-cookies/",
+   "url": "/de/para-que-sirve-un-transformador-descubre-su-funcion-clave/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2861,7 +2861,7 @@
    "errors": []
   },
   {
-   "url": "/de/para-que-sirve-un-transformador-descubre-su-funcion-clave/",
+   "url": "/de/politica-de-cookies/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2891,7 +2891,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/abgestufte-scheiben/",
+   "url": "/de/product/abgestufte-bezuege/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2906,7 +2906,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/abgestufte-bezuege/",
+   "url": "/de/product/abgestufte-scheiben/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -2936,21 +2936,6 @@
    "errors": []
   },
   {
-   "url": "/de/product/bancos-de-carga/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/de/product/bedientasten-der-bo-serie-glaenzend/",
    "overflow": [],
    "broken": [],
@@ -2966,7 +2951,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/bo-serie-umfasst/",
+   "url": "/de/product/bancos-de-carga/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3011,7 +2996,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/botones-de-mando-2-2/",
+   "url": "/de/product/bo-serie-umfasst/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3027,6 +3012,21 @@
   },
   {
    "url": "/de/product/bobinas-para-electroimanes/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/de/product/botones-de-mando-2-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3103,7 +3103,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/doppelter-manueller-variator/",
+   "url": "/de/product/drosseln-induktivitaeten-ringkerndrosseln/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3118,7 +3118,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/drosseln-induktivitaeten-ringkerndrosseln/",
+   "url": "/de/product/doppelter-manueller-variator/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3208,7 +3208,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/fuente-de-corriente-alterna-sinusoidal/",
+   "url": "/de/product/fuente-de-alimentacion-de-corriente-constante-150a/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3218,10 +3218,8 @@
    "noname": [],
    "shortcode": [],
    "dupIds": [],
-   "lang": [
-    "es: «Son una gama de generadores de corriente alterna sinusoidal, con tensi»"
-   ],
-   "notice": true,
+   "lang": [],
+   "notice": false,
    "errors": []
   },
   {
@@ -3240,6 +3238,23 @@
    "errors": []
   },
   {
+   "url": "/de/product/fuente-de-corriente-alterna-sinusoidal/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [
+    "es: «Son una gama de generadores de corriente alterna sinusoidal, con tensi»"
+   ],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/de/product/metallbuegel-fuer-led-10mm/",
    "overflow": [],
    "broken": [],
@@ -3255,7 +3270,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/fuente-de-alimentacion-de-corriente-constante-150a/",
+   "url": "/de/product/metallbuegel-fuer-led-3mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3271,21 +3286,6 @@
   },
   {
    "url": "/de/product/metallbuegel-fuer-led-8mm/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/de/product/metallbuegel-fuer-led-3mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3330,7 +3330,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/monofasico-manual/",
+   "url": "/de/product/mutternabdeckungen/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3345,7 +3345,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/mutternabdeckungen/",
+   "url": "/de/product/monofasico-manual/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3393,6 +3393,21 @@
    "errors": []
   },
   {
+   "url": "/de/product/ondulador-para-conexion-fotovoltaica-a-red/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/de/product/ondulador-para-fv-interconectada-de-350w-autoconsumo/",
    "overflow": [],
    "broken": [],
@@ -3407,21 +3422,6 @@
     "es: «Se ha previsto en el diseño de este producto la posibilidad de funcion»"
    ],
    "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/de/product/ondulador-para-conexion-fotovoltaica-a-red/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
    "errors": []
   },
   {
@@ -3470,21 +3470,6 @@
    "errors": []
   },
   {
-   "url": "/de/product/reguladores-fotovoltaicos-torivac/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/de/product/reostatos-y-potenciometros-bobinados-10/",
    "overflow": [],
    "broken": [],
@@ -3501,6 +3486,21 @@
   },
   {
    "url": "/de/product/reostatos-y-potenciometros-bobinados-2/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/de/product/reguladores-fotovoltaicos-torivac/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3547,21 +3547,6 @@
    "errors": []
   },
   {
-   "url": "/de/product/reostatos-y-potenciometros-bobinados/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/de/product/reostatos-y-potenciometros-bobinados-especiales/",
    "overflow": [],
    "broken": [],
@@ -3577,7 +3562,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/resistencias-de-alta-potencia-cementadas/",
+   "url": "/de/product/reostatos-y-potenciometros-bobinados/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3593,6 +3578,21 @@
   },
   {
    "url": "/de/product/resistencia-en-caja/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/de/product/resistencias-de-alta-potencia-cementadas/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3637,6 +3637,21 @@
    "errors": []
   },
   {
+   "url": "/de/product/resistencias-helicoidales/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/de/product/rheostate-und-potentiometer-dreifach-gewickelt/",
    "overflow": [],
    "broken": [],
@@ -3652,7 +3667,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/resistencias-helicoidales/",
+   "url": "/de/product/rheostate-und-potentiometer-einfache-wicklungen/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3698,21 +3713,6 @@
   },
   {
    "url": "/de/product/rheostate-und-potentiometer-mit-zwei-wicklungen-2x3w/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/de/product/rheostate-und-potentiometer-einfache-wicklungen/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3804,7 +3804,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/sicherheitssteckdose-hbs4/",
+   "url": "/de/product/serie-circuito-impreso-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3819,7 +3819,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/serie-circuito-impreso-2/",
+   "url": "/de/product/sicherheitssteckdose-hbs4/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3849,7 +3849,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/sicherheitssteckdose-hsr4/",
+   "url": "/de/product/serie-encapsulada-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3864,7 +3864,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/serie-encapsulada-2/",
+   "url": "/de/product/sicherheitssteckdose-hsr4/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3909,6 +3909,21 @@
    "errors": []
   },
   {
+   "url": "/de/product/statoren/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/de/product/steuergeraet-0-10vdc/",
    "overflow": [],
    "broken": [],
@@ -3924,7 +3939,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/statoren/",
+   "url": "/de/product/tapas-para-botones-bm-mate/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3954,7 +3969,7 @@
    "errors": []
   },
   {
-   "url": "/de/product/tapas-para-botones-bm-mate/",
+   "url": "/de/product/toroidale-kerne/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -3985,21 +4000,6 @@
   },
   {
    "url": "/de/product/transformador-trifasico-2/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/de/product/toroidale-kerne/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4046,21 +4046,6 @@
    "errors": []
   },
   {
-   "url": "/de/product/transformadores-serie-tt/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/de/product/variador-de-tension-portatil/",
    "overflow": [],
    "broken": [],
@@ -4080,6 +4065,21 @@
     "es: «¿Necesitas una potencia diferente o una configuración especial? Contac»"
    ],
    "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/de/product/transformadores-serie-tt/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
    "errors": []
   },
   {
@@ -4113,7 +4113,7 @@
    "errors": []
   },
   {
-   "url": "/de/torivac-consolida-su-liderazgo-en-el-sector-electrico-tras-su-participacion-en-coiltech-deutschland-2025/",
+   "url": "/de/seguridad-en-el-uso-de-transformadores/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4128,7 +4128,7 @@
    "errors": []
   },
   {
-   "url": "/de/seguridad-en-el-uso-de-transformadores/",
+   "url": "/de/torivac-consolida-su-liderazgo-en-el-sector-electrico-tras-su-participacion-en-coiltech-deutschland-2025/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4218,21 +4218,6 @@
    "errors": []
   },
   {
-   "url": "/de/torivac-produkte/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/eficiencia-de-los-transformadores-clave-en-europa/",
    "overflow": [],
    "broken": [],
@@ -4263,7 +4248,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/chokes-inductances-toroidal-reactances/",
+   "url": "/de/torivac-produkte/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4293,7 +4278,7 @@
    "errors": []
   },
   {
-   "url": "/en/blog/",
+   "url": "/en/categoria-producto/chokes-inductances-toroidal-reactances/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4304,7 +4289,7 @@
    "shortcode": [],
    "dupIds": [],
    "lang": [],
-   "notice": false,
+   "notice": true,
    "errors": []
   },
   {
@@ -4327,7 +4312,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/control-buttons/bm-series-control-buttons-matte/",
+   "url": "/en/blog/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4338,7 +4323,7 @@
    "shortcode": [],
    "dupIds": [],
    "lang": [],
-   "notice": true,
+   "notice": false,
    "errors": []
   },
   {
@@ -4358,6 +4343,21 @@
   },
   {
    "url": "/en/categoria-producto/control-buttons/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/en/categoria-producto/control-buttons/bm-series-control-buttons-matte/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4447,7 +4447,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/control-buttons/graduated-covers/",
+   "url": "/en/categoria-producto/control-buttons/covers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4462,7 +4462,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/control-buttons/covers/",
+   "url": "/en/categoria-producto/control-buttons/graduated-covers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4599,6 +4599,21 @@
    "errors": []
   },
   {
+   "url": "/en/categoria-producto/encapsulated-coils/round/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/en/categoria-producto/encapsulated-coils/",
    "overflow": [],
    "broken": [],
@@ -4627,21 +4642,6 @@
    "lang": [
     "es: «Son una gama de generadores de corriente alterna sinusoidal, con tensi»"
    ],
-   "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/en/categoria-producto/encapsulated-coils/round/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
    "notice": true,
    "errors": []
   },
@@ -4676,7 +4676,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/portaled/led-10mm/",
+   "url": "/en/categoria-producto/portaled/portaled-led-5mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4691,7 +4691,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/portaled/portaled-led-5mm/",
+   "url": "/en/categoria-producto/portaled/led-10mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4856,21 +4856,6 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/rheostats-and-coiled-potentiometers/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/en/categoria-producto/rheostats-and-coiled-potentiometers/ceramic-rheostats/",
    "overflow": [],
    "broken": [],
@@ -4886,7 +4871,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/",
+   "url": "/en/categoria-producto/rheostats-and-coiled-potentiometers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4916,7 +4901,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/socket-jack/socket-jack-2/",
+   "url": "/en/categoria-producto/rheostats-and-coiled-potentiometers/potentiometers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -4946,21 +4931,6 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/socket-jack/socket-jack-hbs4/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/en/categoria-producto/socket-jack/",
    "overflow": [],
    "broken": [],
@@ -4976,7 +4946,22 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/socket-jack/socket-jack-hsr4/",
+   "url": "/en/categoria-producto/socket-jack/socket-jack-hbs4/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/en/categoria-producto/socket-jack/socket-jack-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5006,7 +4991,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/transformers/",
+   "url": "/en/categoria-producto/socket-jack/socket-jack-hsr4/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5051,37 +5036,22 @@
    "errors": []
   },
   {
+   "url": "/en/categoria-producto/transformers/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/en/categoria-producto/transformers/conventional-transformer/tce-series/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/en/categoria-producto/transformers/conventional-transformer/tct/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/en/categoria-producto/transformers/toroidal-transformers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5126,7 +5096,22 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/transformers/toroidal-transformers/tt-series/",
+   "url": "/en/categoria-producto/transformers/conventional-transformer/tct/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/en/categoria-producto/transformers/toroidal-transformers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5154,6 +5139,21 @@
    "lang": [
     "es: «Todos nuestros variadores se pueden suministrar como un equipo acabado»"
    ],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/en/categoria-producto/transformers/toroidal-transformers/tt-series/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
    "notice": true,
    "errors": []
   },
@@ -5190,21 +5190,6 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/serie-avs-three-phase/",
    "overflow": [],
    "broken": [],
@@ -5220,7 +5205,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/single-phase-avs/",
+   "url": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5250,7 +5235,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/serie-bavs-three-phase/",
+   "url": "/en/categoria-producto/voltage-stabilizers/avs-series-stabilizers-electromechanical-with-servomotor/single-phase-avs/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5266,6 +5251,21 @@
   },
   {
    "url": "/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/monofasico-serie-bavs/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/en/categoria-producto/voltage-stabilizers/bavs-series-electronics/serie-bavs-three-phase/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5313,7 +5313,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/",
+   "url": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5328,7 +5328,7 @@
    "errors": []
   },
   {
-   "url": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/",
+   "url": "/en/categoria-producto/voltage-variators-adjustable-autotransformers/dual-variator/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5493,6 +5493,21 @@
    "errors": []
   },
   {
+   "url": "/en/contact/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/en/como-se-fabrica-un-transformador-proceso-y-calidad-europea/",
    "overflow": [],
    "broken": [],
@@ -5523,37 +5538,7 @@
    "errors": []
   },
   {
-   "url": "/en/contact/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/en/declaracion-de-accesibilidad/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/en/descargadores-de-bateria/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5584,6 +5569,21 @@
   },
   {
    "url": "/en/eficiencia-de-los-transformadores-clave-en-europa/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/en/descargadores-de-bateria/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5658,7 +5658,7 @@
    "errors": []
   },
   {
-   "url": "/en/impacto-medioambiental-de-los-transformadores-hoy/",
+   "url": "/en/la-importancia-del-transformador-toroidal-en-la-industria/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5673,7 +5673,7 @@
    "errors": []
   },
   {
-   "url": "/en/la-importancia-del-transformador-toroidal-en-la-industria/",
+   "url": "/en/impacto-medioambiental-de-los-transformadores-hoy/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5718,7 +5718,7 @@
    "errors": []
   },
   {
-   "url": "/en/materiales-de-un-transformador-clave-en-su-rendimiento/",
+   "url": "/en/normativas-sobre-transformadores-electricos-en-europa/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5733,7 +5733,7 @@
    "errors": []
   },
   {
-   "url": "/en/normativas-sobre-transformadores-electricos-en-europa/",
+   "url": "/en/materiales-de-un-transformador-clave-en-su-rendimiento/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5868,6 +5868,21 @@
    "errors": []
   },
   {
+   "url": "/en/product/bancos-de-carga/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/en/product/bm-series-covers/",
    "overflow": [],
    "broken": [],
@@ -5883,7 +5898,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/bancos-de-carga/",
+   "url": "/en/product/bo-series-covers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -5914,21 +5929,6 @@
   },
   {
    "url": "/en/product/bo-series-control-buttons-with-line/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/en/product/bo-series-covers/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6048,7 +6048,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/electronica/",
+   "url": "/en/product/double-manual-variator/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6063,7 +6063,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/double-manual-variator/",
+   "url": "/en/product/electronica/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6185,6 +6185,21 @@
    "errors": []
   },
   {
+   "url": "/en/product/graded-covers/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/en/product/graduated-discs/",
    "overflow": [],
    "broken": [],
@@ -6215,7 +6230,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/graded-covers/",
+   "url": "/en/product/hsr4-safety-socket/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6245,6 +6260,21 @@
    "errors": []
   },
   {
+   "url": "/en/product/modbus-communication/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/en/product/manual-three-phase-inverter/",
    "overflow": [],
    "broken": [],
@@ -6260,22 +6290,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/hsr4-safety-socket/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/en/product/modbus-communication/",
+   "url": "/en/product/monofasico-motorizado/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6335,21 +6350,6 @@
    "errors": []
   },
   {
-   "url": "/en/product/monofasico-motorizado/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/en/product/ondulador-autonomo-para-instalaciones-fotovoltaicas-sin-conexion-a-red/",
    "overflow": [],
    "broken": [],
@@ -6363,23 +6363,6 @@
    "lang": [
     "es: «El sistema de doble conversión y acumulación de energía en un bus inte»",
     "es: «Bajo rizado de la corriente de baterías gracias al sistema de doble co»"
-   ],
-   "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/en/product/ondulador-para-fv-interconectada-de-350w-autoconsumo/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [
-    "es: «Se ha previsto en el diseño de este producto la posibilidad de funcion»"
    ],
    "notice": true,
    "errors": []
@@ -6400,6 +6383,23 @@
    "errors": []
   },
   {
+   "url": "/en/product/ondulador-para-fv-interconectada-de-350w-autoconsumo/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [
+    "es: «Se ha previsto en el diseño de este producto la posibilidad de funcion»"
+   ],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/en/product/ondulador-para-conexion-fotovoltaica-a-red/",
    "overflow": [],
    "broken": [],
@@ -6416,21 +6416,6 @@
   },
   {
    "url": "/en/product/reguladores-fotovoltaicos-torivac/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/en/product/reostatos-y-potenciometros-bobinados-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6490,7 +6475,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/reostatos-y-potenciometros-bobinados-9/",
+   "url": "/en/product/reostatos-y-potenciometros-bobinados-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6505,7 +6490,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/reostatos-y-potenciometros-bobinados-especiales/",
+   "url": "/en/product/reostatos-y-potenciometros-bobinados-9/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6536,6 +6521,21 @@
   },
   {
    "url": "/en/product/resistencia-en-caja/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/en/product/reostatos-y-potenciometros-bobinados-especiales/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6595,7 +6595,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/resistencias-de-puesta-a-tierra/",
+   "url": "/en/product/resistencias-helicoidales/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6610,7 +6610,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/resistencias-helicoidales/",
+   "url": "/en/product/resistencias-de-puesta-a-tierra/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6670,6 +6670,21 @@
    "errors": []
   },
   {
+   "url": "/en/product/safety-socket-hbs4/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/en/product/rheostats-and-potentiometers-single-windings/",
    "overflow": [],
    "broken": [],
@@ -6702,37 +6717,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/safety-socket-hbs4/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/en/product/serie-avs-2/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/en/product/serie-bavs-3/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6777,7 +6762,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/serie-circuito-impreso-2/",
+   "url": "/en/product/serie-bavs-3/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6807,7 +6792,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/soporte-metalico-para-led-3mm/",
+   "url": "/en/product/serie-circuito-impreso-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6822,7 +6807,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/soporte-metalico-para-led-5mm/",
+   "url": "/en/product/soporte-metalico-para-led-3mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6852,7 +6837,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/soporte-metalico-para-led-8mm/",
+   "url": "/en/product/soporte-metalico-para-led-5mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6882,7 +6867,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/transformador-convencional-estandar-2/",
+   "url": "/en/product/soporte-metalico-para-led-8mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6897,7 +6882,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/transformador-trifasico-2/",
+   "url": "/en/product/transformador-convencional-estandar-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6927,7 +6912,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/transformadores-convencionales-encapsulados/",
+   "url": "/en/product/transformador-trifasico-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6942,7 +6927,7 @@
    "errors": []
   },
   {
-   "url": "/en/product/voltage-regulator-industrial-equipment/",
+   "url": "/en/product/transformadores-convencionales-encapsulados/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -6980,6 +6965,21 @@
   },
   {
    "url": "/en/product/variador-trifasico-motorizado/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/en/product/voltage-regulator-industrial-equipment/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7144,7 +7144,7 @@
    "errors": []
   },
   {
-   "url": "/en/torivac-products/",
+   "url": "/fr/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7159,7 +7159,7 @@
    "errors": []
   },
   {
-   "url": "/fr/",
+   "url": "/en/torivac-products/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7189,21 +7189,6 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/bobines-darret-inductances-reactances-toroidales/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/fr/blog/",
    "overflow": [],
    "broken": [],
@@ -7220,6 +7205,21 @@
   },
   {
    "url": "/fr/categoria-producto/bobines-encapsulees/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/fr/categoria-producto/bobines-darret-inductances-reactances-toroidales/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7313,7 +7313,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-brillants/",
+   "url": "/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-avec-ligne/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7328,7 +7328,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-avec-ligne/",
+   "url": "/fr/categoria-producto/boutons-de-commande/boutons-de-commande-de-la-serie-bo-brillants/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7478,21 +7478,6 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/equipements-electroniques/controle-industriel/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/fr/categoria-producto/equipements-electroniques/alimentations-en-courant-continu/",
    "overflow": [],
    "broken": [],
@@ -7509,6 +7494,21 @@
   },
   {
    "url": "/fr/categoria-producto/equipements-electroniques/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/fr/categoria-producto/equipements-electroniques/controle-industriel/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7643,7 +7643,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/prise-jack/prise-de-securite-hbs4/",
+   "url": "/fr/categoria-producto/prise-jack/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7658,7 +7658,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/prise-jack/",
+   "url": "/fr/categoria-producto/prise-jack/prise-de-securite-hbs4/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7763,7 +7763,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/",
+   "url": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/motorise/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7778,7 +7778,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/entrainements-triphases/motorise/",
+   "url": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7838,21 +7838,6 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/production-sur-mesure/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/unites-de-paillasse/",
    "overflow": [],
    "broken": [],
@@ -7866,6 +7851,21 @@
    "lang": [
     "es: «Todos nuestros variadores se pueden suministrar como un equipo acabado»"
    ],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/fr/categoria-producto/regulateurs-de-tension-autotransformateurs-reglables/production-sur-mesure/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
    "notice": true,
    "errors": []
   },
@@ -7915,21 +7915,6 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/resistances-bancs-de-charge/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/fr/categoria-producto/resistances-bancs-de-charge/bancs-de-charge/",
    "overflow": [],
    "broken": [],
@@ -7960,7 +7945,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/resistances-bancs-de-charge/en-boite/",
+   "url": "/fr/categoria-producto/resistances-bancs-de-charge/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -7975,7 +7960,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-demarrage/",
+   "url": "/fr/categoria-producto/resistances-bancs-de-charge/en-boite/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8035,6 +8020,36 @@
    "errors": []
   },
   {
+   "url": "/fr/categoria-producto/resistances-bancs-de-charge/resistances-de-demarrage/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/potentiometres-doubles/",
    "overflow": [],
    "broken": [],
@@ -8051,21 +8066,6 @@
   },
   {
    "url": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/potentiometres/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/fr/categoria-producto/rheostats-et-potentiometres-a-boudin/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8125,7 +8125,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/",
+   "url": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/monophase/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8140,7 +8140,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/monophase/",
+   "url": "/fr/categoria-producto/stabilisateurs-de-tension/estabilizadores-serie-avs-electromecanicos-con-servomotor/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8170,7 +8170,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/triphase/",
+   "url": "/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8185,7 +8185,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/",
+   "url": "/fr/categoria-producto/stabilisateurs-de-tension/serie-bavs-electronique/triphase/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8290,7 +8290,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-tci-encapsulation-de-circuits-imprimes/",
+   "url": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-te/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8320,7 +8320,7 @@
    "errors": []
   },
   {
-   "url": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-te/",
+   "url": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-tci-encapsulation-de-circuits-imprimes/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8336,21 +8336,6 @@
   },
   {
    "url": "/fr/categoria-producto/transformateurs/transformateurs-toroidaux/serie-tt/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
-   "url": "/fr/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-industriales/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8382,6 +8367,21 @@
    "errors": []
   },
   {
+   "url": "/fr/categoria-producto/variadores-de-tension/en-caja/variador-de-tension-industriales/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/fr/como-extender-la-vida-util-de-un-transformador/",
    "overflow": [],
    "broken": [],
@@ -8394,21 +8394,6 @@
    "dupIds": [],
    "lang": [],
    "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/fr/contactez-nous/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
    "errors": []
   },
   {
@@ -8442,7 +8427,37 @@
    "errors": []
   },
   {
+   "url": "/fr/contactez-nous/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/fr/declaracion-de-accesibilidad/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/fr/descargadores-de-bateria/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8472,7 +8487,7 @@
    "errors": []
   },
   {
-   "url": "/fr/descargadores-de-bateria/",
+   "url": "/fr/estabilizadores-de-tension-con-cobre/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8488,21 +8503,6 @@
   },
   {
    "url": "/fr/eficiencia-de-los-transformadores-clave-en-europa/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/fr/estabilizadores-de-tension-con-cobre/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8547,7 +8547,7 @@
    "errors": []
   },
   {
-   "url": "/fr/funcionamiento-de-un-transformador-en-la-industria/",
+   "url": "/fr/impacto-medioambiental-de-los-transformadores-hoy/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8562,7 +8562,7 @@
    "errors": []
   },
   {
-   "url": "/fr/impacto-medioambiental-de-los-transformadores-hoy/",
+   "url": "/fr/funcionamiento-de-un-transformador-en-la-industria/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8742,7 +8742,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/bancos-de-carga/",
+   "url": "/fr/product/bobinas-para-electroimanes/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8757,7 +8757,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/bobinas-para-electroimanes/",
+   "url": "/fr/product/bancos-de-carga/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8952,7 +8952,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/disques-arrow/",
+   "url": "/fr/product/disques-gradues/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8967,7 +8967,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/disques-gradues/",
+   "url": "/fr/product/disques-arrow/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -8997,7 +8997,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/en-caja/",
+   "url": "/fr/product/electronica/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9012,7 +9012,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/electronica/",
+   "url": "/fr/product/en-caja/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9132,7 +9132,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/la-serie-bm-couvre/",
+   "url": "/fr/product/inductances-reactances-toroidales/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9147,7 +9147,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/inductances-reactances-toroidales/",
+   "url": "/fr/product/la-serie-bm-couvre/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9207,21 +9207,6 @@
    "errors": []
   },
   {
-   "url": "/fr/product/noyaux-toroidaux/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/fr/product/ondulador-autonomo-para-instalaciones-fotovoltaicas-sin-conexion-a-red/",
    "overflow": [],
    "broken": [],
@@ -9237,7 +9222,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/ondulador-para-conexion-fotovoltaica-a-red/",
+   "url": "/fr/product/noyaux-toroidaux/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9252,7 +9237,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/onduleur-triphase-manuel/",
+   "url": "/fr/product/ondulador-para-conexion-fotovoltaica-a-red/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9282,6 +9267,21 @@
    "errors": []
   },
   {
+   "url": "/fr/product/onduleur-triphase-manuel/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/fr/product/prise-de-securite-hbs4/",
    "overflow": [],
    "broken": [],
@@ -9298,6 +9298,21 @@
   },
   {
    "url": "/fr/product/prise-de-securite-hr4/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/fr/product/prise-de-securite-hsr4/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9342,7 +9357,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/prise-de-securite-hsr4/",
+   "url": "/fr/product/regulateur-de-tension-equipement-industriel/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9358,21 +9373,6 @@
   },
   {
    "url": "/fr/product/reguladores-fotovoltaicos-torivac/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/fr/product/regulateur-de-tension-equipement-industriel/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9447,7 +9447,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/resistances-cimentees-de-haute-puissance/",
+   "url": "/fr/product/resistances-de-freinage/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9462,7 +9462,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/resistances-de-freinage/",
+   "url": "/fr/product/resistances-cimentees-de-haute-puissance/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9612,7 +9612,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/rheostats-et-potentiometres-bobinages-simples/",
+   "url": "/fr/product/rheostats-et-potentiometres-enroules-dans-des-boites/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9627,7 +9627,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/rheostats-et-potentiometres-enroules-dans-des-boites/",
+   "url": "/fr/product/rheostats-et-potentiometres-bobinages-simples/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9717,7 +9717,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/support-metallique-pour-led-3mm/",
+   "url": "/fr/product/support-metallique-pour-led-10mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9747,7 +9747,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/support-metallique-pour-led-10mm/",
+   "url": "/fr/product/support-metallique-pour-led-3mm/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9837,21 +9837,6 @@
    "errors": []
   },
   {
-   "url": "/fr/product/transformadores-convencionales-encapsulados/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/fr/product/transformador-trifasico-2/",
    "overflow": [],
    "broken": [],
@@ -9867,7 +9852,7 @@
    "errors": []
   },
   {
-   "url": "/fr/product/transformadores-serie-tt/",
+   "url": "/fr/product/transformadores-convencionales-encapsulados/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -9898,6 +9883,21 @@
     "es: «¿Necesitas una potencia diferente o una configuración especial? Contac»"
    ],
    "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/fr/product/transformadores-serie-tt/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
    "errors": []
   },
   {
@@ -9961,21 +9961,6 @@
    "errors": []
   },
   {
-   "url": "/fr/torivac-en-beyond-catalonia/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/fr/produits-torivac/",
    "overflow": [],
    "broken": [],
@@ -10006,6 +9991,21 @@
    "errors": []
   },
   {
+   "url": "/fr/torivac-en-beyond-catalonia/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/funcionamiento-de-un-transformador-en-la-industria/",
    "overflow": [],
    "broken": [],
@@ -10021,7 +10021,7 @@
    "errors": []
   },
   {
-   "url": "/la-importancia-del-transformador-toroidal-en-la-industria/",
+   "url": "/impacto-medioambiental-de-los-transformadores-hoy/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10036,7 +10036,7 @@
    "errors": []
   },
   {
-   "url": "/impacto-medioambiental-de-los-transformadores-hoy/",
+   "url": "/la-importancia-del-transformador-toroidal-en-la-industria/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10156,21 +10156,6 @@
    "errors": []
   },
   {
-   "url": "/presupuesto/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": true,
-   "errors": []
-  },
-  {
    "url": "/product/a-medida-2/",
    "overflow": [],
    "broken": [],
@@ -10186,7 +10171,37 @@
    "errors": []
   },
   {
+   "url": "/presupuesto/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": true,
+   "errors": []
+  },
+  {
    "url": "/product/accesorios-de-regulacion/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/product/aros-con-flecha-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10217,21 +10232,6 @@
   },
   {
    "url": "/product/bobinas-para-electroimanes-3-2/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/product/aros-con-flecha-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10291,6 +10291,21 @@
    "errors": []
   },
   {
+   "url": "/product/botones-de-mando-serie-bo-con-linea-2/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/product/botones-de-mando-serie-bm-mate-2/",
    "overflow": [],
    "broken": [],
@@ -10321,7 +10336,7 @@
    "errors": []
   },
   {
-   "url": "/product/botones-de-mando-serie-bo-con-linea-2/",
+   "url": "/product/choques-inductancias-reactancias-toroidales/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10336,7 +10351,7 @@
    "errors": []
   },
   {
-   "url": "/product/choques-inductancias-reactancias-toroidales/",
+   "url": "/product/controlador-0-10vdc-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10381,7 +10396,7 @@
    "errors": []
   },
   {
-   "url": "/product/controlador-0-10vdc-2/",
+   "url": "/product/cuba-de-aceite-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10397,21 +10412,6 @@
   },
   {
    "url": "/product/cubretercas-2/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/product/cuba-de-aceite-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10471,6 +10471,21 @@
    "errors": []
   },
   {
+   "url": "/product/doble-motorizado/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/product/electronica/",
    "overflow": [],
    "broken": [],
@@ -10487,21 +10502,6 @@
   },
   {
    "url": "/product/en-caja/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/product/doble-motorizado/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10546,21 +10546,6 @@
    "errors": []
   },
   {
-   "url": "/product/estators-2/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/product/fabricaciones-a-medida/",
    "overflow": [],
    "broken": [],
@@ -10576,7 +10561,7 @@
    "errors": []
   },
   {
-   "url": "/product/fuente-de-alimentacion-de-300a/",
+   "url": "/product/estators-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10592,6 +10577,21 @@
   },
   {
    "url": "/product/fuente-de-alimentacion-de-corriente-constante-150a/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/product/fuente-de-alimentacion-de-300a/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10636,7 +10636,7 @@
    "errors": []
   },
   {
-   "url": "/product/hembrilla-de-seguridad-hsr4/",
+   "url": "/product/hembrilla-de-seguridad-hr4/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10651,7 +10651,7 @@
    "errors": []
   },
   {
-   "url": "/product/hembrilla-de-seguridad-hr4/",
+   "url": "/product/hembrilla-de-seguridad-hsr4/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10741,21 +10741,6 @@
    "errors": []
   },
   {
-   "url": "/product/regulador-a-tiristores/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/product/ondulador-para-conexion-fotovoltaica-a-red/",
    "overflow": [],
    "broken": [],
@@ -10772,6 +10757,36 @@
   },
   {
    "url": "/product/ondulador-para-fv-interconectada-de-350w-autoconsumo/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/product/regulador-a-tiristores/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/product/reostatos-y-potenciometros-bobinados-10-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10816,21 +10831,6 @@
    "errors": []
   },
   {
-   "url": "/product/reostatos-y-potenciometros-bobinados-10-2/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/product/reostatos-y-potenciometros-bobinados-3/",
    "overflow": [],
    "broken": [],
@@ -10861,7 +10861,7 @@
    "errors": []
   },
   {
-   "url": "/product/reostatos-y-potenciometros-bobinados-6/",
+   "url": "/product/reostatos-y-potenciometros-bobinados-5/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10876,7 +10876,7 @@
    "errors": []
   },
   {
-   "url": "/product/reostatos-y-potenciometros-bobinados-5/",
+   "url": "/product/reostatos-y-potenciometros-bobinados-6/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -10996,7 +10996,7 @@
    "errors": []
   },
   {
-   "url": "/product/resistencias-de-frenado/",
+   "url": "/product/resistencias-de-arranque/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11011,7 +11011,7 @@
    "errors": []
   },
   {
-   "url": "/product/resistencias-de-arranque/",
+   "url": "/product/resistencias-de-frenado/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11056,6 +11056,21 @@
    "errors": []
   },
   {
+   "url": "/product/serie-avs-2/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
    "url": "/product/sai-para-control-industrial/",
    "overflow": [],
    "broken": [],
@@ -11071,7 +11086,7 @@
    "errors": []
   },
   {
-   "url": "/product/serie-avs-2/",
+   "url": "/product/serie-avs-3/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11102,21 +11117,6 @@
   },
   {
    "url": "/product/serie-bavs-3/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
-   "url": "/product/serie-avs-3/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11176,21 +11176,6 @@
    "errors": []
   },
   {
-   "url": "/product/serie-encapsulada-2/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/product/soporte-metalico-para-led-5mm-2/",
    "overflow": [],
    "broken": [],
@@ -11206,7 +11191,7 @@
    "errors": []
   },
   {
-   "url": "/product/tapas-para-botones-bm-mate/",
+   "url": "/product/serie-encapsulada-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11236,7 +11221,7 @@
    "errors": []
   },
   {
-   "url": "/product/tapas-serie-bo-2/",
+   "url": "/product/tapas-para-botones-bm-mate/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11266,7 +11251,7 @@
    "errors": []
   },
   {
-   "url": "/product/transformador-trifasico-2/",
+   "url": "/product/transformador-convencional-estandar-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11281,7 +11266,22 @@
    "errors": []
   },
   {
-   "url": "/product/transformador-convencional-estandar-2/",
+   "url": "/product/tapas-serie-bo-2/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
+   "errors": []
+  },
+  {
+   "url": "/product/transformador-trifasico-2/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11311,7 +11311,7 @@
    "errors": []
   },
   {
-   "url": "/product/transformadores-serie-tt/",
+   "url": "/product/trifasico-manual/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11341,7 +11341,7 @@
    "errors": []
   },
   {
-   "url": "/product/trifasico-manual/",
+   "url": "/product/variador-trifasico-motorizado/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11356,7 +11356,7 @@
    "errors": []
   },
   {
-   "url": "/product/variador-trifasico-motorizado/",
+   "url": "/product/transformadores-serie-tt/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11386,21 +11386,6 @@
    "errors": []
   },
   {
-   "url": "/seguridad-en-el-uso-de-transformadores/",
-   "overflow": [],
-   "broken": [],
-   "distorted": [],
-   "cropped": [],
-   "upscaled": [],
-   "clipped": [],
-   "noname": [],
-   "shortcode": [],
-   "dupIds": [],
-   "lang": [],
-   "notice": false,
-   "errors": []
-  },
-  {
    "url": "/torivac-consolida-su-liderazgo-en-el-sector-electrico-tras-su-participacion-en-coiltech-deutschland-2025/",
    "overflow": [],
    "broken": [],
@@ -11416,7 +11401,7 @@
    "errors": []
   },
   {
-   "url": "/torivac-empresa/",
+   "url": "/seguridad-en-el-uso-de-transformadores/",
    "overflow": [],
    "broken": [],
    "distorted": [],
@@ -11443,6 +11428,21 @@
    "dupIds": [],
    "lang": [],
    "notice": true,
+   "errors": []
+  },
+  {
+   "url": "/torivac-empresa/",
+   "overflow": [],
+   "broken": [],
+   "distorted": [],
+   "cropped": [],
+   "upscaled": [],
+   "clipped": [],
+   "noname": [],
+   "shortcode": [],
+   "dupIds": [],
+   "lang": [],
+   "notice": false,
    "errors": []
   },
   {

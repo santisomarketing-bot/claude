@@ -38,7 +38,7 @@ Bloques de descripción: `{t:"p"|"h2"|"h3"|"ul"|"table"|"image"|"pdf", …}` (na
 ## `site/` (generador, S3/S4)
 
 - `build.mjs`: lee `data/catalog`, escribe `dist/`. Plantillas Nunjucks en `site/templates/`. URLs idénticas a la web original (mismo slug, mismo prefijo de idioma) para conservar SEO.
-- `site/assets/css/`: `tokens.css` (variables), `base.css`, `components.css`, `layout.css` (menú lateral fijo, flotantes).
+- `site/assets/css/`: `tokens.css` (variables), `base.css`, `components.css`, `layout.css` (menú lateral fijo, flotantes), `art.css` (piezas gráficas) = aspecto **Clásico**; `ficha-tokens.css` + `ficha.css` = aspecto **Ficha técnica** (nuevo, por defecto); `fonts*.css` (fuentes). El generador los junta en un único `site.css` con dos capas (`@layer classic, ficha`): ver [`DISENO-TEMAS.md`](DISENO-TEMAS.md).
 - `site/assets/js/` (cada módulo es un IIFE o ES module con cabecera de etiquetas, ver S15):
   - `i18n.js` — detección de idioma por navegador + selector manual, cookie `tv_lang` (S13)
   - `quote.js` — **motor del presupuesto/pedido**: líneas `{ref, qty}`, localStorage `tv_quote_v1`, API pública `TorivacQuote`

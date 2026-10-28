@@ -41,8 +41,11 @@ jobs:
           npm i --no-save playwright@1.49.1 axe-core@4.10.2
           npx playwright install --with-deps chromium
           export AXE_PATH=$PWD/node_modules/axe-core/axe.min.js
-          node scripts/qa-quote.mjs && node scripts/qa-lang.mjs && node scripts/qa-art.mjs
+          node scripts/qa-quote.mjs && node scripts/qa-lang.mjs && node scripts/qa-art.mjs && node scripts/qa-theme.mjs
           node scripts/qa-ux.mjs && node scripts/qa-ux.mjs --mobile && node scripts/qa-a11y.mjs
+          node site/build.mjs --theme=clasico   # segundo aspecto (Clásico): muestra de UX y accesibilidad completa
+          node scripts/qa-ux.mjs --limit=80 --out=/tmp/qa-ux-clasico-d.json && node scripts/qa-ux.mjs --mobile --limit=80 --out=/tmp/qa-ux-clasico-m.json && node scripts/qa-a11y.mjs
+          node site/build.mjs                   # y de nuevo el aspecto por defecto para el resto de pruebas
           node scripts/qa-live.mjs && node scripts/qa-admin-live.mjs && node scripts/qa-tarifa.mjs
           node scripts/qa-live.mjs --php && node scripts/qa-admin-live.mjs --php && node scripts/qa-tarifa.mjs --php
           node scripts/qa-package.mjs

@@ -72,8 +72,16 @@ export function metaDescription(desc, bodyHtml, lang) {
 /** Aviso para el demo (solo sin --base): si la página se abre sin sus hojas de estilo (p. ej. index.html dentro del .zip sin extraer), enseña arriba cómo abrirla bien. */
 const cssGuard = (msg) => `<script>(function(){try{if(!getComputedStyle(document.documentElement).getPropertyValue('--ink').trim()){var d=document.createElement('div');d.setAttribute('role','alert');d.style.cssText='font:16px/1.5 Arial,sans-serif;background:#ffb653;color:#100404;padding:14px 18px;border-bottom:3px solid #9c520f';d.textContent=${JSON.stringify(msg)};document.body.insertBefore(d,document.body.firstChild);}}catch(e){}})();</script>`;
 
+// ───────────────────────────────────────────────────────────── [THEME] aspecto: «Ficha técnica» (nuevo) o «Clásico» (el original). Ver docs/DISENO-TEMAS.md
+/** Script de la cabecera (solo si hay selector de aspecto): aplica ?tema=ficha|clasico o la elección guardada ANTES del primer pintado, para que no parpadee el otro aspecto. */
+const THEME_BOOT = `<script>(function(){try{var m=/[?&]tema=(ficha|clasico)(?:&|$)/.exec(location.search),k='tv-theme',v=m?m[1]:localStorage.getItem(k);if(m)localStorage.setItem(k,v);if(v==='ficha'||v==='clasico')document.documentElement.setAttribute('data-theme',v)}catch(e){}})();</script>`;
+/** Fuentes que se precargan en producción según el aspecto por defecto (solo las que se ven en la primera pantalla). */
+const PRELOAD_FONTS = { ficha: ['archivo-latin-wght-normal', 'archivo-expanded-latin-wght-normal', 'chivo-mono-latin-wght-normal'], clasico: ['archivo-latin-wght-normal', 'advent-pro-latin-wght-normal'] };
+/** Selector de aspecto: dos botones con aria-pressed. Nace oculto (sin JS no serviría de nada); assets/js/app.js lo muestra, marca el activo y guarda la elección. `where` distingue el de la cinta y el del pie. */
+const themeSwitch = (lang, where) => `<span class="theme-switch" role="group" aria-label="${attr(t('theme', lang))}" data-theme-switch="${where}" hidden><span class="ts-label">${t('theme', lang)}</span>${['ficha', 'clasico'].map((k) => `<button type="button" data-set-theme="${k}" aria-pressed="false">${t('theme_' + k, lang)}</button>`).join('')}</span>`;
+
 /** Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap. */
-export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [] }) {
+export function layout(ctx, { title, description, body, template, alts = {}, scripts = [], hero = null, ogImage = null, noindex = false, crumbs = null, ld = [], images = [], preloadImage = null }) {
   const { lang, site } = ctx;
   description = metaDescription(description, body, lang);
   const alt = (l) => (l === lang ? ctx.path : (alts[l] || site.home[l]));         // selector de idioma: sin traducción cae a la portada de ese idioma
@@ -94,7 +102,7 @@ export function layout(ctx, { title, description, body, template, alts = {}, scr
     site.absBase ? `<meta property="og:url" content="${attr(site.absBase + ctx.path)}">` : '', ogImg ? `<meta property="og:image" content="${attr(ogImg)}">` : '', `<meta name="twitter:card" content="${ogImg ? 'summary_large_image' : 'summary'}">`].filter(Boolean).join('');
   const canonical = site.absBase ? `<link rel="canonical" href="${attr(site.absBase + ctx.path)}">` : '';
   return `<!doctype html>
-<html lang="${lang}" data-lang="${lang}">
+<html lang="${lang}" data-lang="${lang}" data-theme="${site.theme}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -104,17 +112,16 @@ ${noindex || site.staging ? '<meta name="robots" content="noindex,nofollow">' : 
 ${canonical}${alternates}
 <meta name="theme-color" content="#100404">
 <link rel="icon" href="${ctx.asset('assets/img/favicon.png')}" type="image/png">
-${site.absBase
-  ? `<link rel="preload" href="${ctx.asset('assets/fonts/archivo-latin-wght-normal.woff2')}" as="font" type="font/woff2" crossorigin><link rel="preload" href="${ctx.asset('assets/fonts/advent-pro-latin-wght-normal.woff2')}" as="font" type="font/woff2" crossorigin><link rel="stylesheet" href="${ctx.asset('assets/css/site.css')}">`
-  : ['fonts', 'tokens', 'base', 'layout', 'components', 'art'].map((c) => `<link rel="stylesheet" href="${ctx.asset(`assets/css/${c}.css`)}">`).join('\n')}
+${site.themeSwitch ? THEME_BOOT : ''}
+${site.absBase ? PRELOAD_FONTS[site.theme].map((f) => `<link rel="preload" href="${ctx.asset(`assets/fonts/${f}.woff2`)}" as="font" type="font/woff2" crossorigin>`).join('') : ''}${preloadImage ? `<link rel="preload" href="${attr(preloadImage)}" as="image" fetchpriority="high">` : ''}<link rel="stylesheet" href="${ctx.asset('assets/css/site.css')}">
 ${social}
 ${noindex ? '' : ldScript(pageGraph(ctx, { template, title, description, crumbs, extra: ld, image: ogImg }))}
 </head>
 <body class="tv tv-${template}" data-path="${attr(ctx.path)}">
 <a class="skip" href="#content">${t('skip', lang)}</a>
 ${site.absBase ? '' : cssGuard(t('css_missing', lang))}
-${site.demo ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('demo_banner', lang))}">${t('demo_banner', lang)} · ${t('demo_prices', lang)}</div>` : ''}
-${site.staging ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('staging_banner', lang))}">${t('staging_banner', lang)}</div>` : ''}
+${site.demo ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('demo_banner', lang))}"><span>${t('demo_banner', lang)} · ${t('demo_prices', lang)}</span>${site.themeSwitch ? themeSwitch(lang, 'ribbon') : ''}</div>` : ''}
+${site.staging ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('staging_banner', lang))}"><span>${t('staging_banner', lang)}</span>${site.themeSwitch ? themeSwitch(lang, 'ribbon') : ''}</div>` : ''}
 <div class="lang-banner no-print" id="lang-banner" role="region" aria-label="${attr(t('language', lang))}" hidden><div class="container"><span data-lang-msg></span><a class="btn sm" href="#" data-lang-go></a><button class="btn sm ghost" type="button" data-lang-keep>${t('lang_dismiss', lang)}</button></div></div>
 <header class="site-header no-print" id="site-header">
   <div class="container bar">
@@ -136,6 +143,7 @@ ${headingOrder(`${hero || ''}${body}`)}
       <a class="fact" href="mailto:${attr(site.meta.contact.email)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>${esc(site.meta.contact.email)}</a>
     </div>
     <p class="legal">${esc(f.copyright)} ${f.links.map((l) => `<a href="${attr(l.href)}">${esc(l.label)}</a>`).join(' | ')}<br>${esc(f.devBy)} <a href="https://santisomarketing.com/" target="_blank" rel="noopener">Santiso Marketing</a></p>
+    ${site.themeSwitch ? `<div class="theme-row no-print">${themeSwitch(lang, 'footer')}</div>` : ''}
     <div class="funding"><img src="${ctx.asset(site.funding[lang].img)}" alt="Cofinanciado por la Unión Europea · Ministerio de Hacienda · Fondos Europeos" width="${site.funding[lang].w}" height="${site.funding[lang].h}" loading="lazy"><p>${esc(f.funding)}</p></div>
   </div>
 </footer>
@@ -223,7 +231,7 @@ export function categoryCards(ctx, list = null, opts = {}) {
 }
 
 // ───────────────────────────────────────────────────────────── [HOME]
-/** Portada: devuelve { hero, body } con el hero, cinco secciones (fotos, servicios, catálogo) y el formulario de contacto. */
+/** Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla). */
 export function homeBody(ctx, page) {
   const { lang, site } = ctx;
   const S = page.sections;
@@ -241,6 +249,7 @@ export function homeBody(ctx, page) {
   const hero = `<section class="hero bp" style="${heroBg ? `background-image:url('${attr(heroBg)}')` : ''}" aria-labelledby="h-hero">
   <div class="container"><h1 id="h-hero">${esc(h1?.x || '')}</h1>${heroParas.map((p) => `<p>${inlineHtml(ctx, p.h)}</p>`).join('')}
   <div class="actions">${heroBtn ? `<a class="btn" href="${attr(mapLink(ctx, heroBtn.href))}">${esc(heroBtn.x)}</a>` : ''}<a class="btn ghost" href="${attr(ctx.href(site.quote[lang]))}">${t('quote', lang)} →</a></div></div>
+  ${heroBg ? `<div class="hero-fig" aria-hidden="true"><div class="hero-img" style="background-image:url('${attr(heroBg)}')"></div></div>` : ''}
   ${waveSvg()}
 </section>`;
   const s1 = S[1], s2 = S[2], s3 = S[3], s4 = S[4], s5 = S[5];
@@ -273,7 +282,7 @@ export function homeBody(ctx, page) {
   const s6 = S[6];
   const s6h = s6.blocks.filter((b) => b.t === 'h');
   const contact = `<section class="sec alt" id="contacto"><div class="container split" style="align-items:start"><div><p class="eyebrow">${esc(s6h.find((h) => h.l >= 4)?.x || '')}</p><h2>${esc(s6h.find((h) => h.l <= 3)?.x || '')}</h2>${paras({ blocks: s6.blocks.filter((b) => b.t === 'p' && !/reCAPTCHA|^\./.test(b.h)).slice(0, 1) })}</div>${contactForm(ctx, 'home')}</div></section>`;
-  return { hero, body: `${sec1}${sec2}${sec3}${sec4}${sec5}${contact}` };
+  return { hero, body: `${sec1}${sec2}${sec3}${sec4}${sec5}${contact}`, heroImg: heroBg };
 }
 
 /** onda de tensión animada (SVG) — elemento gráfico base del hero */
@@ -320,7 +329,7 @@ export function genericPage(ctx, page) {
   const hs = body.sections.find((s) => s.blocks.length && s.bg);
   if (hs && hs === body.sections.find((s) => s.blocks.length) && hs.blocks.every((b) => b.t === 'p')) { lead = hs.blocks.map((b) => `<p class="lead">${inlineHtml(ctx, b.h)}</p>`).join(''); hs.blocks = []; }
   return {
-    hero: `<section class="page-hero bp" ${heroBg ? `style="background-image:url('${attr(ctx.img(heroBg))}')"` : ''}><div class="container">${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: title }])}<h1>${esc(title)}</h1>${lead}</div></section>`,
+    hero: `<section class="page-hero bp${heroBg ? ' has-fig' : ''}" ${heroBg ? `style="background-image:url('${attr(ctx.img(heroBg))}')"` : ''}><div class="container">${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(ctx.site.home[lang]) }, { label: title }])}<h1>${esc(title)}</h1>${lead}</div>${heroBg ? `<div class="hero-fig" aria-hidden="true"><div class="hero-img" style="background-image:url('${attr(ctx.img(heroBg))}')"></div></div>` : ''}</section>`,
     body: sectionsHtml(ctx, body),
     title,
   };

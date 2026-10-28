@@ -2,71 +2,71 @@
  {
   "name": "portada",
   "url": "/",
-  "fcp": 1128,
-  "lcp": 2140,
+  "fcp": 1328,
+  "lcp": 2072,
   "cls": 0,
-  "tbt": 321,
-  "kb": 362,
-  "reqs": 12
+  "tbt": 339,
+  "kb": 383,
+  "reqs": 13
  },
  {
   "name": "portada EN",
   "url": "/en/",
-  "fcp": 916,
-  "lcp": 916,
-  "cls": 0.099,
-  "tbt": 136,
-  "kb": 300,
-  "reqs": 11
+  "fcp": 1268,
+  "lcp": 1708,
+  "cls": 0.102,
+  "tbt": 244,
+  "kb": 321,
+  "reqs": 12
  },
  {
   "name": "productos",
   "url": "/productos/",
-  "fcp": 1116,
-  "lcp": 1116,
+  "fcp": 1160,
+  "lcp": 1160,
   "cls": 0,
-  "tbt": 337,
-  "kb": 459,
+  "tbt": 319,
+  "kb": 465,
   "reqs": 22
  },
  {
   "name": "ficha TT",
   "url": "/product/transformadores-serie-tt/",
-  "fcp": 1180,
-  "lcp": 1380,
+  "fcp": 1264,
+  "lcp": 1484,
   "cls": 0,
-  "tbt": 390,
-  "kb": 287,
-  "reqs": 11
+  "tbt": 319,
+  "kb": 308,
+  "reqs": 12
  },
  {
   "name": "ficha botones",
   "url": "/product/botones-de-mando-serie-bo-brillante-2/",
-  "fcp": 1104,
-  "lcp": 1120,
+  "fcp": 1176,
+  "lcp": 1244,
   "cls": 0,
-  "tbt": 318,
-  "kb": 253,
-  "reqs": 11
+  "tbt": 223,
+  "kb": 274,
+  "reqs": 12
  },
  {
   "name": "presupuesto",
   "url": "/presupuesto/",
-  "fcp": 940,
-  "lcp": 940,
-  "cls": 0.115,
-  "tbt": 164,
-  "kb": 441,
-  "reqs": 14
+  "fcp": 1092,
+  "lcp": 1092,
+  "cls": 0.138,
+  "tbt": 159,
+  "kb": 462,
+  "reqs": 15
  },
  {
   "name": "contacto",
   "url": "/contacto/",
-  "fcp": 896,
-  "lcp": 896,
+  "fcp": 1084,
+  "lcp": 1084,
   "cls": 0,
-  "tbt": 101,
-  "kb": 232,
-  "reqs": 10
+  "tbt": 187,
+  "kb": 266,
+  "reqs": 12
  }
 ]

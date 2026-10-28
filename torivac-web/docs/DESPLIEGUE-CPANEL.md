@@ -42,6 +42,8 @@ python3 -I scripts/package_cpanel.py --base=https://pruebas.grupotorivac.com --s
 Crea `entrega/torivac-cpanel-pruebas-grupotorivac-com-AAAAMMDD.zip` y antes **verifica**: que están todos los ficheros, que no hay claves ni tests ni scripts de trabajo, que **no lleva precios**, que el PHP es válido y que la URL del API es la de la propia web.
 `--staging` añade `noindex` (cabecera, meta y `robots.txt` que prohíbe todo) y una cinta «entorno de pruebas»: Google no indexa el subdominio.
 
+**Aspecto de la web** (hay dos: «Ficha técnica», el nuevo, y «Clásico», el de la web original). En pruebas el paquete sale con la Ficha técnica por defecto y un selector «Aspecto» en la cinta y en el pie para que se comparen. Para fijar otro por defecto o quitar/poner el selector: `--theme=clasico`, `--theme-switch`, `--no-theme-switch` (en producción no hay selector salvo que lo pidas). Detalle en [`DISENO-TEMAS.md`](DISENO-TEMAS.md).
+
 ## 4. Subir y descomprimir
 
 cPanel → **Administrador de archivos** → entra en la carpeta del subdominio → *Cargar* el `.zip` → clic derecho → **Extract**. Activa *Configuración → Mostrar archivos ocultos* para ver `.htaccess`.
@@ -139,7 +141,7 @@ Genera un `.zip` nuevo (paso 3) y **extrae encima** del anterior. El paquete **n
 
 ## 12. Pasar a producción
 
-1. `python3 -I scripts/package_cpanel.py --base=https://www.grupotorivac.com` (sin `--staging`; usa la URL final, con o sin `www`: el `.htaccess` fija ese host como único). Además de lo anterior ejecuta la **auditoría SEO/GEO** (H1, hreflang, canonical, JSON-LD, sitemap, enlaces).
+1. `python3 -I scripts/package_cpanel.py --base=https://www.grupotorivac.com [--theme=ficha|clasico]` (sin `--staging`; el aspecto que se publica es el que decida Torivac, sin selector salvo `--theme-switch`; usa la URL final, con o sin `www`: el `.htaccess` fija ese host como único). Además de lo anterior ejecuta la **auditoría SEO/GEO** (H1, hreflang, canonical, JSON-LD, sitemap, enlaces).
 2. Sube y extrae en la carpeta del dominio definitivo, copia `config.php` (cambia solo lo necesario, p. ej. quitar el aviso de pruebas del correo si lo habías puesto) y repite los pasos 7-10.
 3. Baja el TTL del DNS unas horas antes y apunta `grupotorivac.com`/`www` al hosting nuevo. **Mantén el hosting antiguo** hasta comprobar todo.
 4. Search Console: añade la propiedad y envía `https://www.grupotorivac.com/sitemap.xml`. Las URL son las mismas que las de la web original (con 301 donde había duplicados), así que el posicionamiento se conserva.

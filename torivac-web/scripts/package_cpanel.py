@@ -4,6 +4,8 @@
   python3 -I scripts/package_cpanel.py --base=https://pruebas.grupotorivac.com --staging     # subdominio/dominio de PRUEBAS (noindex, sin robots)
   python3 -I scripts/package_cpanel.py --base=https://www.grupotorivac.com                    # producción
 Opciones:  --out=entrega (carpeta de salida) · --keep (deja también la carpeta sin comprimir) · --embed-prices (permite precios dentro de la web; NO recomendado)
+           --theme=ficha|clasico (aspecto por defecto; ficha = «Ficha técnica», el nuevo) · --theme-switch / --no-theme-switch (botones para que quien visita elija aspecto:
+           por defecto SÍ en pruebas, para que el cliente compare, y NO en producción, donde se publica uno solo)
 
 Qué hace:  1) compila la web con --base y --php-api (URLs limpias, .htaccess, robots, 404 por idioma, sitemap, llms.txt)
            2) copia backend-php/api (sin tests, sin config.php) a api/
@@ -44,9 +46,9 @@ def run(cmd, **kw):
     return p.returncode, (p.stdout + p.stderr)
 
 
-def build_site(base: str, staging: bool, out: Path) -> None:
-    """compila la web de producción (la salida se cuenta línea a línea en la consola de build)"""
-    cmd = ["node", str(ROOT / "site/build.mjs"), f"--base={base}", "--php-api", f"--out={out}"] + (["--staging"] if staging else [])
+def build_site(base: str, staging: bool, out: Path, theme: str = "ficha", switch=None) -> None:
+    """compila la web de producción (la salida se cuenta línea a línea en la consola de build); `switch` None = el valor por defecto del compilador (sí en pruebas, no en producción)"""
+    cmd = ["node", str(ROOT / "site/build.mjs"), f"--base={base}", "--php-api", f"--out={out}", f"--theme={theme}"] + (["--staging"] if staging else []) + ([] if switch is None else ["--theme-switch" if switch else "--no-theme-switch"])
     code, txt = run(cmd, cwd=ROOT)
     if code:
         sys.exit("✗ la compilación falló:\n" + txt[-1500:])
@@ -70,7 +72,7 @@ def files(www: Path):
     return sorted(p for p in www.rglob("*") if p.is_file())
 
 
-def verify(www: Path, base: str, staging: bool, embed_prices: bool):
+def verify(www: Path, base: str, staging: bool, embed_prices: bool, theme: str = "ficha", switch=None):
     """→ (errores, avisos). Un error impide entregar el paquete."""
     errs, warns = [], []
     rel = {p.relative_to(www).as_posix(): p for p in files(www)}
@@ -133,6 +135,17 @@ def verify(www: Path, base: str, staging: bool, embed_prices: bool):
             errs.append("la portada de producción lleva noindex")
     if "api/index.php" not in htaccess:
         errs.append(".htaccess sin la reescritura de /api")
+    # aspecto: el pedido (--theme / selector) es el que acaba en la portada y en la hoja de estilos
+    css = rel["assets/css/site.css"].read_text(encoding="utf-8", errors="ignore") if "assets/css/site.css" in rel else ""
+    want_switch = staging if switch is None else switch
+    if f'data-theme="{theme}"' not in home:
+        errs.append(f"la portada no lleva el aspecto pedido (data-theme=\"{theme}\")")
+    if want_switch != ('data-theme-switch="footer"' in home):
+        errs.append("el selector de aspecto del pie " + ("falta" if want_switch else "sobra") + " en la portada")
+    if (theme == "ficha" or want_switch) and "@layer classic,ficha;" not in css:
+        errs.append("site.css no lleva el aspecto «Ficha técnica» (capa ficha)")
+    if theme == "clasico" and not want_switch and ("@layer" in css or "Archivo Expanded" in css):
+        errs.append("publicación solo en «Clásico»: site.css no debería llevar el aspecto nuevo")
     # PHP sintácticamente correcto
     if shutil.which("php"):
         for r, p in rel.items():
@@ -172,6 +185,10 @@ def main():
     ap.add_argument("--out", default="entrega")
     ap.add_argument("--keep", action="store_true")
     ap.add_argument("--embed-prices", action="store_true")
+    ap.add_argument("--theme", choices=["ficha", "clasico"], default="ficha", help="aspecto por defecto: ficha (Ficha técnica, el nuevo) o clasico (el de la web original)")
+    sw = ap.add_mutually_exclusive_group()
+    sw.add_argument("--theme-switch", dest="switch", action="store_true", default=None, help="muestra el selector de aspecto (cinta y pie)")
+    sw.add_argument("--no-theme-switch", dest="switch", action="store_false", help="oculta el selector de aspecto (por defecto: visible en pruebas, oculto en producción)")
     a = ap.parse_args()
     u = urlparse(a.base)
     if u.scheme not in ("https", "http") or not u.netloc:
@@ -182,12 +199,12 @@ def main():
     tmp = Path(tempfile.mkdtemp(prefix="tv-cpanel-"))
     www = tmp / "www"
     try:
-        print(f"1/4 compilando {base}{' (PRUEBAS)' if a.staging else ''} …")
-        build_site(base, a.staging, www)
+        print(f"1/4 compilando {base}{' (PRUEBAS)' if a.staging else ''} · aspecto {a.theme} …")
+        build_site(base, a.staging, www, a.theme, a.switch)
         print("2/4 copiando el API PHP …")
         copy_api(www)
         print("3/4 verificando …")
-        errs, warns = verify(www, base, a.staging, a.embed_prices)
+        errs, warns = verify(www, base, a.staging, a.embed_prices, a.theme, a.switch)
         for w in warns:
             print("  ⚠", w)
         if errs:

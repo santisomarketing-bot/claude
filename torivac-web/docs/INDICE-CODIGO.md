@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 736/736 funciones descritas (100 %) · 117/117 archivos con cabecera.
+**Cobertura**: 753/753 funciones descritas (100 %) · 123/123 archivos con cabecera.
 
 
 ## `site/`
@@ -11,39 +11,40 @@
 
 [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio] [--out=carpeta] Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS). Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
 
-Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[LIVE]` · `[OVERRIDES]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[CSS-PROD]` · `[SEO-FILES]` · `[HOSTING]`
+Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[OVERRIDES]` · `[SEO]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]`
 
 - `arg0` (l. 18) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
 - `arg` (l. 21) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `jl` (l. 27) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
-- `normName` (l. 50) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
-- `depthOf` (l. 54) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
-- `canon` (l. 57) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
-- `subtreeIds` (l. 91) — Ids de una categoría y de todas sus descendientes.
-- `prodIdsOf` (l. 93) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
-- `visible` (l. 97) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
-- `prune` (l. 99) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
-- `pth` (l. 120) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
-- `emit` (l. 173) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
-- `mkctx` (l. 175) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
-- `fitTitle` (l. 180) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
-- `crumbHome` (l. 182) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
-- `crumbProducts` (l. 184) — Miga de pan «Productos» del idioma `lang`: { name, path }.
-- `pickAlt` (l. 186) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
-- `absImg` (l. 188) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
-- `alts` (l. 193) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
-- `a` (l. 337) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 351) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `xml` (l. 369) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 371) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 383) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 405) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `jl` (l. 33) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
+- `normName` (l. 56) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
+- `depthOf` (l. 60) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
+- `canon` (l. 63) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
+- `subtreeIds` (l. 97) — Ids de una categoría y de todas sus descendientes.
+- `prodIdsOf` (l. 99) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
+- `visible` (l. 103) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
+- `prune` (l. 105) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
+- `pth` (l. 126) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
+- `emit` (l. 179) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
+- `mkctx` (l. 181) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
+- `fitTitle` (l. 186) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
+- `crumbHome` (l. 188) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
+- `crumbProducts` (l. 190) — Miga de pan «Productos» del idioma `lang`: { name, path }.
+- `pickAlt` (l. 192) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
+- `absImg` (l. 194) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
+- `alts` (l. 199) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
+- `a` (l. 343) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
+- `copyDir` (l. 357) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 365) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 384) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 386) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 398) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 420) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
 
 ### `templates.mjs`
 
 [TEMPLATES] Plantillas HTML (funciones puras: datos → string). Cada una devuelve el <main> de su página; `layout()` lo envuelve con cabecera, pie, elementos flotantes y scripts. Datos: data/catalog/*.json (ver docs/ARQUITECTURA.md). Textos de interfaz: site/lib/i18n.mjs.
 
-Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[SEO-FILES]` · `[NAV]` · `[SOCIAL]` · `[SHARED]` · `[HOME]` · `[PAGES]` · `[BLOG]` · `[SHOP]` · `[PRODUCT]` · `[QUOTE]` · `[CONTACT]`
+Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[THEME]` · `[SEO-FILES]` · `[NAV]` · `[SOCIAL]` · `[SHARED]` · `[HOME]` · `[PAGES]` · `[BLOG]` · `[SHOP]` · `[PRODUCT]` · `[QUOTE]` · `[CONTACT]`
 
 - `pick` (l. 11) — Valor de un campo traducible en el idioma `lang` (español si falta; '' si no hay objeto).
 - `toroidArt` (l. 18) — Bobinado toroidal visto desde arriba (mismo motivo que el logotipo): 56 espiras que se «dibujan» al entrar en pantalla (CSS + IntersectionObserver en app.js).
@@ -52,35 +53,36 @@ Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[S
 - `metaDescription` (l. 60) — Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, una frase genérica de marca.
 - `ok` (l. 62) — Una descripción sirve si tiene al menos 50 caracteres y no es solo signos o cifras.
 - `cssGuard` (l. 73) — Aviso para el demo (solo sin --base): si la página se abre sin sus hojas de estilo (p. ej. index.html dentro del .zip sin extraer), enseña arriba cómo abrirla bien.
-- `layout` (l. 76) — Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap.
-- `alt` (l. 79) — selector de idioma: sin traducción cae a la portada de ese idioma
-- `crumbs` (l. 165) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
-- `vtext` (l. 168) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
-- `vtags` (l. 170) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
-- `productCard` (l. 181) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
-- `catTree` (l. 195) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
-- `holds` (l. 198) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
-- `link` (l. 200) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
-- `walk` (l. 202) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
-- `categoryCards` (l. 209) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
-- `homeBody` (l. 227) — Portada: devuelve { hero, body } con el hero, cinco secciones (fotos, servicios, catálogo) y el formulario de contacto.
-- `text` (l. 231) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
-- `imgs` (l. 233) — Bloques de imagen de una sección.
-- `btn` (l. 235) — Primer bloque de botón de una sección (undefined si no tiene).
-- `eyebrowAndHead` (l. 248) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
-- `paras` (l. 254) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
-- `bt` (l. 256) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
-- `waveSvg` (l. 280) — onda de tensión animada (SVG) — elemento gráfico base del hero
-- `sectionsHtml` (l. 288) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo.
-- `isPhoto` (l. 292) — los iconos pequeños se quedan dentro del texto
-- `genericPage` (l. 309) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
-- `blogIndexBody` (l. 331) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
-- `postBody` (l. 337) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original.
-- `shopBody` (l. 348) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
-- `productBody` (l. 377) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
-- `quoteBody` (l. 427) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
-- `contactForm` (l. 455) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
-- `contactIntro` (l. 471) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
+- `themeSwitch` (l. 81) — Selector de aspecto: dos botones con aria-pressed. Nace oculto (sin JS no serviría de nada); assets/js/app.js lo muestra, marca el activo y guarda la elección. `where` distingue el de la cinta y el del pie.
+- `layout` (l. 84) — Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap.
+- `alt` (l. 87) — selector de idioma: sin traducción cae a la portada de ese idioma
+- `crumbs` (l. 173) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
+- `vtext` (l. 176) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
+- `vtags` (l. 178) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
+- `productCard` (l. 189) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
+- `catTree` (l. 203) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
+- `holds` (l. 206) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
+- `link` (l. 208) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
+- `walk` (l. 210) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
+- `categoryCards` (l. 217) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
+- `homeBody` (l. 235) — Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla).
+- `text` (l. 239) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
+- `imgs` (l. 241) — Bloques de imagen de una sección.
+- `btn` (l. 243) — Primer bloque de botón de una sección (undefined si no tiene).
+- `eyebrowAndHead` (l. 257) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
+- `paras` (l. 263) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
+- `bt` (l. 265) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
+- `waveSvg` (l. 289) — onda de tensión animada (SVG) — elemento gráfico base del hero
+- `sectionsHtml` (l. 297) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo.
+- `isPhoto` (l. 301) — los iconos pequeños se quedan dentro del texto
+- `genericPage` (l. 318) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
+- `blogIndexBody` (l. 340) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
+- `postBody` (l. 346) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original.
+- `shopBody` (l. 357) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
+- `productBody` (l. 386) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
+- `quoteBody` (l. 436) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
+- `contactForm` (l. 464) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
+- `contactIntro` (l. 480) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
 
 ## `site/lib/`
 
@@ -102,9 +104,9 @@ Secciones: `[HOSTING]`
 
 Secciones: `[I18N]`
 
-- `countLabel` (l. 110) — «1 producto / 2 productos» en los 4 idiomas
-- `refLabel` (l. 112) — «1 referencia / 2 referencias» en los 4 idiomas.
-- `t` (l. 114) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
+- `countLabel` (l. 113) — «1 producto / 2 productos» en los 4 idiomas
+- `refLabel` (l. 115) — «1 referencia / 2 referencias» en los 4 idiomas.
+- `t` (l. 117) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
 
 ### `render.mjs`
 
@@ -242,9 +244,9 @@ Secciones: `[ADMIN]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[PRICES]` · `[PRO
 
 ### `app.js`
 
-[APP] Comportamiento común a todas las páginas. Secciones: [UTIL] · [MENU] menú móvil · [DRAWER] cajón del presupuesto · [FAB] botones flotantes · [LANG] idioma (detección + selector manual) · [PRICE-STAMP] Depende de: quote.js (TV.Quote). Sin librerías.
+[APP] Comportamiento común a todas las páginas. Secciones: [UTIL] · [MENU] menú móvil · [DRAWER] cajón del presupuesto · [FAB] botones flotantes · [LANG] idioma (detección + selector manual) · [THEME] aspecto · [PRICE-STAMP] Depende de: quote.js (TV.Quote). Sin librerías.
 
-Secciones: `[APP]` · `[UTIL]` · `[MENU]` · `[DRAWER]` · `[FAB]` · `[LANG]` · `[PRICE-STAMP]` · `[EMBED]` · `[TREE]` · `[ART]`
+Secciones: `[APP]` · `[UTIL]` · `[MENU]` · `[DRAWER]` · `[FAB]` · `[LANG]` · `[THEME]` · `[PRICE-STAMP]` · `[EMBED]` · `[TREE]` · `[ART]`
 
 - `$` (l. 10) — Primer elemento que cumple el selector `s` dentro de `r` (por defecto, el documento); null si no hay ninguno.
 - `$$` (l. 12) — Todos los elementos que cumplen el selector `s` dentro de `r`, como array de verdad (no NodeList).
@@ -258,7 +260,8 @@ Secciones: `[APP]` · `[UTIL]` · `[MENU]` · `[DRAWER]` · `[FAB]` · `[LANG]` 
 - `store` (l. 109) — Lee la clave `k` de localStorage (sin `v`) o la guarda (con `v`); si el almacenamiento falla, devuelve null.
 - `browserLang` (l. 111) — Primer idioma preferido del navegador que exista en la web (es, en, fr, de); null si ninguno.
 - `offer` (l. 127) — Muestra el aviso para cambiar al idioma `target` (en ese idioma): «cambiar» fija la elección y «mantener» conserva la actual.
-- `stamp` (l. 140) — Pinta la marca «DEMO» (solo con precios de demostración) y la fecha de los precios.
+- `paint` (l. 144) — Muestra los selectores (sin JS no hay botones inútiles) y marca como pulsado el del aspecto activo.
+- `stamp` (l. 151) — Pinta la marca «DEMO» (solo con precios de demostración) y la fecha de los precios.
 
 ### `contact.js`
 
@@ -386,6 +389,30 @@ Secciones: `[BASE]`
 
 Secciones: `[COMPONENTS]`
 
+### `ficha-tokens.css`
+
+[FICHA-TOKENS] Aspecto «Ficha técnica» (el nuevo, por defecto): papel de documentación, tinta y UN solo acento: el cobre, que es el material del bobinado.
+
+Secciones: `[FICHA-TOKENS]`
+
+### `ficha.css`
+
+[FICHA] Aspecto «Ficha técnica»: la web como una hoja de datos impresa. Papel mate, tinta, UN acento (cobre), filetes visibles, ángulos rectos, titulares en Archivo extendida
+
+Secciones: `[FICHA]` · `[BASE]` · `[BUTTONS]` · `[HEADER]` · `[HERO]` · `[SECTIONS]` · `[CATALOG]` · `[PRODUCT]` · `[TABLES]` · `[FORMS]` · `[QUOTE]` · `[BLOG]` · `[FOOTER]` · `[ART]` · `[SWITCH]` · `[PRINT]`
+
+### `fonts-ficha-files.css`
+
+[FONTS-FICHA-FILES] Las mismas como ARCHIVOS woff2 (producción por http). Generado por scripts/inline_fonts.py
+
+Secciones: `[FONTS-FICHA-FILES]`
+
+### `fonts-ficha.css`
+
+[FONTS-FICHA] Archivo extendida + Chivo Mono (OFL) del aspecto «Ficha técnica», en base64 para file://. Generado por scripts/inline_fonts.py
+
+Secciones: `[FONTS-FICHA]`
+
 ### `fonts-files.css`
 
 [FONTS-FILES] Mismas fuentes como ARCHIVOS woff2 (producción por http: cacheables y sin bloquear el pintado). Generado por scripts/inline_fonts.py
@@ -400,9 +427,9 @@ Secciones: `[FONTS]`
 
 ### `layout.css`
 
-[LAYOUT] cabecera, héroe, secciones, pie, disposición con barra lateral, elementos flotantes cinta de demo
+[LAYOUT] cabecera, héroe, secciones, pie, disposición con barra lateral, elementos flotantes cinta de demo (centrada; si lleva el selector de aspecto, este va a su lado)
 
-Secciones: `[LAYOUT]`
+Secciones: `[LAYOUT]` · `[THEME-SWITCH]`
 
 ### `tokens.css`
 
@@ -519,7 +546,10 @@ Sesión 15 · Índice de código para programadores: archivo → propósito → 
 
 ### `inline_fonts.py`
 
-Regenera site/assets/css/fonts.css (fuentes en base64) a partir de site/assets/fonts/*.woff2. Ver cabecera de fonts.css.
+Regenera los CSS de fuentes a partir de site/assets/fonts/*.woff2 (ver la cabecera de cada CSS).    fonts.css / fonts-files.css              Advent Pro + Archivo (aspecto «Clásico»): en base64 (también con file://) y como archivos woff2 (producción)
+
+- `face` (l. 24) — Regla @font-face de la familia `fam` con el rango de pesos `weight`, el origen `src` (url(...)) y el rango Unicode `rng`.
+- `write` (l. 29) — Escribe <name>.css (base64) y <name>-files.css (archivos woff2) con las familias de `faces`.
 
 ### `legal_proposals.py`
 
@@ -541,6 +571,14 @@ Secciones: `[TOKENS]` · `[LOAD]`
 - `load_docs` (l. 104) — Documentos de data/analysis/pdfs/p*.json, cada uno con el trabajo (`job`) del que procede.
 - `main` (l. 114) — Enlaza cada producto con las familias de los PDF verificados (confianza alta, media o baja) y escribe pdf-product-links.json.
 - `mkeys` (l. 203) — Conjunto de claves de modelo (model_key) de las referencias de una familia de PDF.
+
+### `make_ficha_fonts.py`
+
+Genera las dos fuentes del tema «Ficha técnica» a partir de los paquetes de Fontsource (licencia OFL).    · archivo-expanded-latin-wght-normal.woff2  Archivo con el ancho fijado al 125 % (extendida) y peso variable 600-900: solo titulares grandes (~25 KB).
+
+- `option` (l. 20) — Valor de `--nombre=valor` en la línea de comandos (None si falta).
+- `instance` (l. 28) — Guarda en `out` la fuente variable `src` con los ejes recortados a `limits` (p. ej. {"wdth": 125, "wght": (600, 900)}): un número fija el eje, un par lo acota.
+- `main` (l. 38) — Lee las dos rutas de origen, genera las dos fuentes en site/assets/fonts y avisa de qué hacer a continuación.
 
 ### `make_thumbs.py`
 
@@ -571,14 +609,14 @@ Sesión 1 · Mapa de traducciones y lotes de trabajo (determinista).    python3 
 
 [PACKAGE-CPANEL] Paquete .zip para subir a un hosting con cPanel (web estática + API PHP), verificado antes de entregarlo.    python3 -I scripts/package_cpanel.py --base=https://pruebas.grupotorivac.com --staging     # subdominio/dominio de PRUEBAS (noindex, sin robots)
 
-- `run` (l. 41) — ejecuta y devuelve (código, salida combinada)
-- `build_site` (l. 47) — compila la web de producción (la salida se cuenta línea a línea en la consola de build)
-- `copy_api` (l. 55) — copia el API PHP sin pruebas, sin almacén de datos y sin la configuración real (config.php lleva claves y la crea quien despliega)
-- `shown` (l. 60) — ruta legible: relativa al proyecto si está dentro, absoluta si no
-- `files` (l. 68) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
-- `verify` (l. 73) — → (errores, avisos). Un error impide entregar el paquete.
-- `make_zip` (l. 155) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
-- `main` (l. 167) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
+- `run` (l. 43) — ejecuta y devuelve (código, salida combinada)
+- `build_site` (l. 49) — compila la web de producción (la salida se cuenta línea a línea en la consola de build); `switch` None = el valor por defecto del compilador (sí en pruebas, no en producción)
+- `copy_api` (l. 57) — copia el API PHP sin pruebas, sin almacén de datos y sin la configuración real (config.php lleva claves y la crea quien despliega)
+- `shown` (l. 62) — ruta legible: relativa al proyecto si está dentro, absoluta si no
+- `files` (l. 70) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
+- `verify` (l. 75) — → (errores, avisos). Un error impide entregar el paquete.
+- `make_zip` (l. 168) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
+- `main` (l. 180) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
 
 ### `pdf_jobs.py`
 
@@ -693,14 +731,15 @@ Sesión 2 · Mapa de traducciones según WPML (sondeo de solo lectura: GET sin s
 
 ### `capturas.mjs`
 
-[CAPTURAS] Capturas de pantalla de las vistas clave del demo (para revisar sin abrir nada) + PDF de ejemplo. node scripts/capturas.mjs [carpeta-salida]        (por defecto entrega/capturas) Sirve dist/ por http, recorre el flujo de un cliente (ficha → presupuesto → PDF) y el panel de gestión, y guarda PNG numerados.
+[CAPTURAS] Capturas de pantalla de las vistas clave del demo (para revisar sin abrir nada) + PDF de ejemplo. node scripts/capturas.mjs [carpeta-salida] [--theme=clasico|ficha]        (por defecto entrega/capturas y el aspecto que traiga dist/; --theme fuerza uno de los dos aspectos) Sirve dist/ por http, recorre el flujo de un cliente (ficha → presupuesto → PDF) y el panel de gestión, y guarda PNG numerados.
 
 Secciones: `[CAPTURAS]`
 
-- `mk` (l. 25) — Abre un contexto de navegador de w×h con el idioma fijado a mano (sin autodetección) y devuelve { ctx, page }.
-- `shot` (l. 32) — Guarda una captura PNG numerada (NN-nombre.png) en la carpeta de salida y la muestra por consola; opts va a page.screenshot.
-- `settle` (l. 34) — Espera a que la página termine de cargar y deja ms milisegundos más para que se asienten los scripts.
-- `byPid` (l. 49) — ficha del transformador toroidal serie TT, con cantidades
+- `THEME` (l. 16) — Aspecto forzado con --theme=clasico|ficha ('' = el que traiga dist/).
+- `byPid` (l. 25) — Referencia (clave de TV.items) de la primera línea del producto `pid`.
+- `mk` (l. 29) — Abre un contexto de navegador de w×h con el idioma fijado a mano (sin autodetección) y devuelve { ctx, page }.
+- `shot` (l. 36) — Guarda una captura PNG numerada (NN-nombre.png) en la carpeta de salida y la muestra por consola; opts va a page.screenshot.
+- `settle` (l. 38) — Espera a que la página termine de cargar y deja ms milisegundos más para que se asienten los scripts.
 
 ### `harvest.mjs`
 
@@ -820,6 +859,21 @@ Secciones: `[QA-TARIFA]`
 - `ok` (l. 50) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
 - `round2` (l. 52) — Redondea un importe a 2 decimales (cálculo propio de la prueba, independiente del código de la web).
 - `newPage` (l. 54) — Abre un contexto (1440×1000, español fijado a mano) con el catálogo apuntando al API de pruebas; devuelve { ctx, page, errs }.
+
+### `qa-theme.mjs`
+
+[QA-THEME] Aspectos de la web (Ficha técnica / Clásico): compilaciones y banderas, hoja por capas, selector y persistencia, fuentes, sin JS, sin desbordes y reglas de diseño. node scripts/qa-theme.mjs Compila 4 variantes en una carpeta temporal (no toca dist/) y las prueba por http:
+
+Secciones: `[QA-THEME]` · `[DESIGN]` · `[BUILD]` · `[BROWSER]`
+
+- `ok` (l. 23) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `build` (l. 25) — Compila una variante del sitio en TMP/<name> con las opciones `args` y devuelve su carpeta.
+- `read` (l. 27) — Texto del archivo `f` (ruta relativa) de la variante `dir`.
+- `rulesOf` (l. 29) — Lista las reglas de estilo de un CSS (sin comentarios) como [{ selector, body, media }]; entra en los @media y salta @keyframes/@font-face.
+- `walk` (l. 32) — Recorre src[i..] hasta cerrar el bloque actual; `media` es el @media que lo envuelve (o '').
+- `splitSelectors` (l. 52) — Divide una lista de selectores por las comas de primer nivel (sin romper los paréntesis de :is(), :not()…).
+- `ctxOf` (l. 99) — Contexto de navegador con idioma ya elegido (sin avisos ni redirecciones) y las opciones `o`; `init` se ejecuta en cada página antes que nada.
+- `state` (l. 101) — Estado visible del aspecto en la página: atributo, almacenamiento, fuente y esquina de los botones, y qué botón del selector está pulsado.
 
 ### `qa-ux.mjs`
 

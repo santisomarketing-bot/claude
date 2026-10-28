@@ -1,6 +1,6 @@
 /**
  * [APP] Comportamiento común a todas las páginas.
- * Secciones: [UTIL] · [MENU] menú móvil · [DRAWER] cajón del presupuesto · [FAB] botones flotantes · [LANG] idioma (detección + selector manual) · [PRICE-STAMP]
+ * Secciones: [UTIL] · [MENU] menú móvil · [DRAWER] cajón del presupuesto · [FAB] botones flotantes · [LANG] idioma (detección + selector manual) · [THEME] aspecto · [PRICE-STAMP]
  * Depende de: quote.js (TV.Quote). Sin librerías.
  */
 (function () {
@@ -134,6 +134,17 @@
     $('[data-lang-keep]', bar).addEventListener('click', function () { try { sessionStorage.setItem('tv_lang_dismiss', '1'); } catch (e) { /* ignorar */ } store('tv_lang', lang); store('tv_lang_src', 'manual'); bar.hidden = true; });
     bar.hidden = false;
   }
+
+  // ───────────────────────────────────────── [THEME] selector de aspecto (Ficha técnica / Clásico)
+  // El aspecto lo fija <html data-theme>: el script de la cabecera ya aplicó ?tema= o la elección guardada antes de pintar. Aquí solo se enlazan los botones y se recuerda la elección.
+  (function () {
+    var groups = $$('[data-theme-switch]'), root = document.documentElement;
+    if (!groups.length) return;
+    /** Muestra los selectores (sin JS no hay botones inútiles) y marca como pulsado el del aspecto activo. */
+    function paint() { var cur = root.getAttribute('data-theme'); groups.forEach(function (g) { g.hidden = false; $$('[data-set-theme]', g).forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set-theme') === cur ? 'true' : 'false'); }); }); }
+    $$('[data-set-theme]').forEach(function (b) { b.addEventListener('click', function () { var v = b.getAttribute('data-set-theme'); root.setAttribute('data-theme', v); store('tv-theme', v); paint(); }); });
+    paint();
+  })();
 
   // ───────────────────────────────────────── [PRICE-STAMP] marca de demo y fecha de precios
   /** Pinta la marca «DEMO» (solo con precios de demostración) y la fecha de los precios. */

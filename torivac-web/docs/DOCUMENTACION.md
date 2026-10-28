@@ -16,7 +16,7 @@ Dos modos de la misma base de código:
 | Precios | `prices.demo.*` (inventados, marcados DEMO) | **ninguno en la web**: los lee de `/api/prices` (hoja de Drive, cron 24 h + botón manual) | igual, desde el Worker |
 | Envío de pedido/contacto | simulado (PDF + borrador `mailto:`) | `POST /api/order` y `/api/contact` → Resend (info@ + mzamora@ + copia al cliente) | igual |
 | Panel `/admin/` | `admin.js` (credenciales de demo en el código) | `admin-live.js` (login real, datos del servidor) | igual |
-| CSS / fuentes | 6 CSS y fuentes en base64 (para `file://`) | 1 `site.css` minificado + fuentes `woff2` | igual |
+| CSS / fuentes | 1 `site.css` legible (dos aspectos en capas) + fuentes en base64 (para `file://`) | 1 `site.css` minificado + fuentes `woff2` | igual |
 | SEO y servidor | sin canonical/sitemap | canonical, hreflang, JSON-LD, sitemap con imágenes, `llms.txt`, `robots.txt`, **`.htaccess`** (HTTPS, host único, 301, caché, CSP), 404 por idioma, URLs limpias | igual (el `.htaccess` solo si el estático va a cPanel) |
 
 ## 2. Mapa del repositorio
@@ -67,7 +67,7 @@ Reglas de oro: (1) **nunca se escribe en la web original** (solo `GET`); (2) **n
 - **meta.json** — empresa, contacto, destinatarios (`order_recipients`, marcados POR CONFIRMAR), menús, pie.
 
 ## 5. El generador (`site/build.mjs`)
-Secciones `[LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS] [CSS-PROD] [SEO-FILES]`. Emite por idioma: portada, listado de productos, categorías (con sus subcategorías), fichas, blog, contacto,
+Secciones `[LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS] [CSS] [SEO-FILES]`. Banderas de aspecto: `--theme=ficha|clasico` y `--theme-switch`/`--no-theme-switch` ([`DISENO-TEMAS.md`](DISENO-TEMAS.md)). Emite por idioma: portada, listado de productos, categorías (con sus subcategorías), fichas, blog, contacto,
 presupuesto (`/presupuesto/`, `/en/quote/`, `/fr/devis/`, `/de/angebot/`), páginas genéricas y legales, redirecciones de rutas fusionadas y `/admin/`. Los enlaces son **relativos y terminan en `index.html`**
 (así funciona por `file://`).
 Opciones: `--base=URL` (modo producción: URLs limpias, SEO, `.htaccess`, `robots.txt`, 404 por idioma), `--out=carpeta`, `--staging` (entorno de pruebas: `noindex`, `robots.txt` cerrado, cinta),
@@ -81,7 +81,7 @@ También escribe `assets/data/*.js` (datos para el navegador como globales `TV.*
 - **`app.js`** — menú, cajón del presupuesto, botones flotantes, detección de idioma, sello de precios, arte toroidal. **`shop.js`** — filtros por tensión/búsqueda, tabla de modelos, galería.
   **`pdf.js`** — `TV.makeQuotePdf` (jsPDF + autoTable locales). **`quote-page.js`** — tabla editable, importar CSV/Excel, enviar (demo/real). **`contact.js`**. **`lab.js`** — osciloscopio del variador.
 - **Idioma**: elección manual > idioma del navegador. Redirección automática **una sola vez** y **solo desde páginas en español**; en `/en/`, `/fr/`, `/de/` solo se ofrece un aviso. Claves: `tv_lang`, `tv_lang_src`, `tv_lang_auto_done`.
-- **CSS**: todo sale de tokens (`tokens.css`); nunca colores o fuentes sueltos. `art.css` = piezas gráficas. Contraste AA, foco visible, `prefers-reduced-motion` respetado.
+- **CSS**: todo sale de tokens (`tokens.css`; `ficha-tokens.css` en el aspecto nuevo); nunca colores o fuentes sueltos. `art.css` = piezas gráficas. Contraste AA, foco visible, `prefers-reduced-motion` respetado. **Dos aspectos** (Ficha técnica, por defecto, y Clásico) en capas de una sola hoja: [`DISENO-TEMAS.md`](DISENO-TEMAS.md).
 - **Accesibilidad**: landmarks, «saltar al contenido», un H1, niveles de encabezado sin saltos (`headingOrder` usa `aria-level` para no cambiar el diseño), `alt` en todas las imágenes.
 - **Textos de interfaz**: `site/lib/i18n.mjs` (objeto `T` con es/en/fr/de). Para **añadir un idioma**: añadirlo a `LANGS`, a cada clave de `T`, a `meta.json` (menús/pie) y a `scripts/build_catalog.py`.
 

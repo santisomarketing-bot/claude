@@ -26,6 +26,7 @@ paso "Humo del panel (file://)"                 node scripts/smoke-admin.mjs
 paso "Presupuesto en 4 idiomas"                 node scripts/qa-quote.mjs
 paso "Idioma"                                   node scripts/qa-lang.mjs
 paso "Gráficos"                                 node scripts/qa-art.mjs
+paso "Aspectos (Ficha técnica / Clásico)"       node scripts/qa-theme.mjs
 for B in "" "--php"; do
   paso "Web ↔ backend ${B:-worker}: pedido y contacto"  node scripts/qa-live.mjs $B
   paso "Panel ↔ backend ${B:-worker}"                   node scripts/qa-admin-live.mjs $B
@@ -37,6 +38,12 @@ if [ "$RAPIDO" = 0 ]; then
   paso "UX de todas las páginas (móvil)"        node scripts/qa-ux.mjs --mobile
   paso "Accesibilidad AA (axe-core)"            node scripts/qa-a11y.mjs
   paso "Rendimiento en móvil"                   node scripts/perf.mjs --dir=/tmp/tv-prod-dist
+  # el segundo aspecto (Clásico) se vuelve a pasar por UX (muestra de 80 páginas) y accesibilidad; al final se deja dist/ con el aspecto por defecto
+  paso "Compilar el demo en aspecto Clásico"    bash -c 'node site/build.mjs --theme=clasico >/dev/null'
+  paso "UX (Clásico, escritorio, muestra)"      node scripts/qa-ux.mjs --limit=80 --out=/tmp/qa-ux-clasico-desktop.json
+  paso "UX (Clásico, móvil, muestra)"           node scripts/qa-ux.mjs --mobile --limit=80 --out=/tmp/qa-ux-clasico-mobile.json
+  paso "Accesibilidad AA (Clásico)"             node scripts/qa-a11y.mjs
+  paso "Volver a compilar el demo (Ficha técnica)" bash -c 'node site/build.mjs >/dev/null'
 fi
 echo; echo "━━━ RESUMEN"
 FALLOS=0

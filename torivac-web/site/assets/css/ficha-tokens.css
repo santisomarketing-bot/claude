@@ -1,0 +1,47 @@
+/* [FICHA-TOKENS] Aspecto «Ficha técnica» (el nuevo, por defecto): papel de documentación, tinta y UN solo acento: el cobre, que es el material del bobinado.
+   Se activa con <html data-theme="ficha"> y vive en la capa CSS `ficha`, que gana siempre a la capa `classic` (el aspecto original, que no se toca).
+   Todo color, fuente y medida de este aspecto sale de aquí; ficha.css solo usa var(--…). El contraste está medido con axe (AA) en las dos hojas de papel.
+   Origen de la identidad: negro cálido #100404 y cobre #BA6B1E de la web original; Archivo (la fuente de texto de la web original) en ancho extendido para los titulares y Chivo Mono para referencias, etiquetas y cifras. */
+
+[data-theme="ficha"]{
+  /* papel y tinta */
+  --ink:#100404;              /* tinta: el negro cálido de la marca */
+  --ink-2:#2a2523;
+  --ink-3:#463f3b;
+  --muted:#5a524d;            /* texto secundario: ≥6:1 sobre el papel */
+  --bg:#ece8e0;               /* papel mate sin blanquear: fondo de página */
+  --paper:#f6f3ec;            /* papel claro: paneles, casillas, secciones alternas */
+  --paper-2:#e0dacf;          /* papel oscuro: cabeceras de tabla y relleno */
+  --photo-bg:#ffffff;         /* fondo de las fotografías de producto (casi todas vienen sobre blanco) */
+  --line:rgba(16,4,4,.2);     /* filete fino */
+  --line-strong:#100404;      /* filete de tinta */
+  --paper-line:rgba(246,243,236,.28);   /* filete sobre fondo oscuro */
+  --on-dark:#d9d1ca;          /* texto secundario sobre tinta */
+  --on-dark-muted:#c9c0b8;    /* texto terciario sobre tinta (≥8:1) */
+  --grid-line-dark:rgba(240,162,89,.09);   /* retícula sobre tinta: cobre muy tenue */
+  --white:#ffffff;            /* solo papel de impresión */
+  /* acento único: cobre */
+  --copper:#ba6b1e;           /* rellenos: texto de tinta encima, 5:1 */
+  --copper-strong:#8f4a0d;    /* texto sobre papel: ≥5:1 */
+  --copper-hover:#7f410a;
+  --copper-on-dark:#f0a259;   /* acento sobre tinta */
+  --copper-tint:rgba(186,107,30,.16);   /* resalte de fila o de enlace */
+  --copper-tint-solid:#e8d5bb;          /* el mismo resalte opaco (columnas fijas de las tablas) */
+  --amber:#ffb653;            /* solo anillo de foco y cinta de demo */
+  --ac:#8f4a0d;               /* tensión alterna */
+  --dc:#100404;               /* tensión continua */
+  /* tipografía: Archivo (ancho normal) para texto y títulos, Archivo extendida solo para el titular grande, Chivo Mono para datos */
+  --font-display:"Archivo",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --font-expanded:"Archivo Expanded","Archivo",system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --font-mono:"Chivo Mono",ui-monospace,"SF Mono","Cascadia Mono","Roboto Mono",Menlo,Consolas,monospace;
+  /* forma: ángulos rectos, filetes en vez de sombras */
+  --radius:0;
+  --shadow-copper:none;
+  --shadow-soft:none;
+  --rule:2px;                 /* filete normal */
+  --rule-heavy:4px;           /* filete grueso: cierre de portadas y pie */
+  --caps:.08em;               /* espaciado de las etiquetas en mayúsculas */
+  /* retícula de papel milimetrado */
+  --grid-line:rgba(16,4,4,.07);
+  --grid-size:24px;
+}
