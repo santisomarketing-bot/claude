@@ -191,6 +191,7 @@ try {
   console.log('\n7) traducción: crear, enlazar y comprobar el hreflang');
   await page.click('a[href^="#blog/nueva?lang=en"]');
   await editor();
+  await page.waitForFunction(() => { const l = document.querySelector('[data-bl-f=lang]'); return !!l && l.value === 'en'; }, null, { timeout: 8000 });          // el editor de la entrada anterior sigue en pantalla hasta que se pinta el nuevo
   ok(await page.inputValue('[data-bl-f=lang]') === 'en' && await page.locator('[data-bl-tr=es] option[selected]').count() === 1, 'la traducción nace en inglés y ya enlazada con la original');
   await page.fill('[data-bl-f=title]', 'How to choose a toroidal transformer');
   await page.fill('[data-bl-f=markdown]', 'Choosing a toroidal transformer starts with power: add up everything it will supply and leave a **20 %** margin.\n\n## Power and margin\n\nA 120 VA load calls for a 150 VA transformer.');
@@ -228,7 +229,7 @@ try {
   console.log('\n9) validación, programación y cambios sin guardar');
   await page.goto(d.BASE + '/admin/index.html#blog/nueva'); await editor();
   await page.fill('[data-bl-f=title]', ''); await page.click('[data-bl=save]');
-  await page.waitForSelector('[data-bl-msg]:not([hidden])');
+  await page.waitForFunction(() => { const m = document.querySelector('[data-bl-msg]'); return !!m && !m.hidden && !/Guardando/.test(m.textContent); }, null, { timeout: 8000 });          // «Guardando…» también es un mensaje visible: se espera a la respuesta del servidor
   ok(/título es obligatorio/i.test(await page.locator('[data-bl-msg]').innerText()) && await page.locator('[data-bl-f=title][aria-invalid=true]').count() === 1, 'sin título: el servidor lo dice y el campo queda marcado');
   await page.fill('[data-bl-f=title]', 'Entrada programada'); await page.fill('[data-bl-f=markdown]', 'Saldrá dentro de unos días.');
   await page.fill('[data-bl-f=slug]', 'Elegir-Toroidal'); await page.click('[data-bl=save]');
