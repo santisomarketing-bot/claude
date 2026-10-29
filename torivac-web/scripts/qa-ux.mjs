@@ -79,7 +79,7 @@ const inPage = () => {
   }
   // nombres accesibles
   for (const el of document.querySelectorAll('a[href], button')) {
-    if (!vis(el)) continue;
+    if (!vis(el) || el.closest('[aria-hidden="true"]')) continue;                       // un enlace repetido y oculto a los lectores de pantalla (la foto de una tarjeta, con el nombre al lado) no necesita nombre
     const name = (el.getAttribute('aria-label') || el.innerText || el.getAttribute('title') || [...el.querySelectorAll('img')].map((i) => i.alt).join('') || '').trim();
     if (!name) out.noname.push(`${desc(el)} ${(el.getAttribute('href') || '').slice(0, 50)}`);
   }

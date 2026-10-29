@@ -48,6 +48,8 @@ try {
     ok(ld.flatMap((g) => g['@graph'] || [g]).some((n) => n['@type'] === 'CollectionPage'), `${lang}: la página se declara como colección`);
     ok(/<nav class="nav"[^>]*>.*?<a href="[^"]*"[^>]*class="o-skip">/.test(h.replace(/\n/g, ' ')) || h.includes(`class="o-skip">${T.shop[lang]}</a>`) || h.includes(`>${T.shop[lang]}</a>`), `${lang}: el menú trae «${T.shop[lang]}»`);
     ok(!/<a [^>]*class="pcard"/.test(h), `${lang}: las tarjetas de tienda no son enlaces enteros (llevan botones dentro)`);
+    const goTo = [...h.matchAll(/<div class="buy" data-buy><a class="btn sm" href="([^"]+)"/g)].map((m) => m[1]);
+    ok(goTo.length >= 10 && goTo.every((u) => /^(\.\.\/)+[^#]*\/product\/[^#]+\/#modelos$/.test(u) || /\/product\/[^#]+\/#modelos$/.test(u)) && goTo.every((u) => fs.existsSync(path.join(prod, u.replace(/^(\.\.\/)+/, '').replace(/^\//, '').replace(/#modelos$/, '') + 'index.html'))), `${lang}: los ${goTo.length} enlaces «Elegir modelo» del HTML (sin JavaScript) apuntan a la tabla de modelos de una ficha que existe`);
   }
   const sm = read(prod, 'sitemap.xml');
   ok(Object.values(SHOP).every((p) => sm.includes(`<loc>${BASE}${p}</loc>`)), 'sitemap.xml: las 4 tiendas');
@@ -223,6 +225,7 @@ try {
     const n = await page.locator('.pcard.store:visible').count();
     const links = await page.locator('.pcard.store h3 a').evaluateAll((a) => a.filter((x) => /product\//.test(x.getAttribute('href'))).length);
     ok(n === cards && links === cards, `se ven las ${n} tarjetas y cada una enlaza a su ficha (${links})`);
+    ok((await page.locator('.pcard.store .buy a').evaluateAll((a) => a.filter((x) => /(#modelos|\/product\/[^#]*)$/.test(x.getAttribute('href') || '') || /index\.html(#modelos)?$/.test(x.getAttribute('href') || '')).length)) === cards, 'y sin JavaScript todas llevan un enlace a la ficha o a su tabla de modelos');
     await ctx.close();
   }
   await browser.close(); S.server.close();

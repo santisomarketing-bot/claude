@@ -516,7 +516,7 @@ export function storeCard(ctx, p, tops) {
   const nVar = p.variants.length;
   const top = p.mainCategory ? p.mainCategory.trail[0] : null;
   const ref = nVar <= 1 ? (nVar ? p.variants[0].ref : 'P' + p.id) : '';          // referencia única: se puede añadir desde la tarjeta; con varias hay que elegir modelo en la ficha
-  const go = nVar > 1 ? `<a class="btn sm" href="${attr(ctx.href(p.pathFor[lang], 'modelos'))}">${esc(t('choose_model', lang))}</a>` : `<a class="btn sm ghost" href="${attr(href)}">${esc(t('view_product', lang))}</a>`;
+  const go = nVar > 1 ? `<a class="btn sm" href="${attr(ctx.href(p.pathFor[lang], '#modelos'))}">${esc(t('choose_model', lang))}</a>` : `<a class="btn sm ghost" href="${attr(href)}">${esc(t('view_product', lang))}</a>`;
   return `<article class="pcard store" data-pid="${p.id}"${ref ? ` data-ref="${attr(ref)}"` : ''} data-cats="${p.category_ids.join(',')}" data-top="${tops.join(',')}" data-v="${(p.voltage_tags || []).join(',')}" data-name="${attr(name.toLowerCase())}" data-cat="${attr(top ? pick(top.name, lang).toLowerCase() : '')}" data-q="${attr((name + ' ' + p.variants.map((v) => v.ref).join(' ')).toLowerCase())}">
   <a class="ph${im ? '' : ' noimg'}" href="${attr(href)}" tabindex="-1" aria-hidden="true">${im ? `<img src="${attr(ctx.thumb(im))}" alt="" loading="lazy" decoding="async" width="${im.w ? Math.min(480, im.w) : 480}" height="${im.h ? Math.round(Math.min(480, im.w || 480) * (im.h / (im.w || 1))) : 480}">` : `<img src="${attr(ctx.asset(site.logo))}" alt="" loading="lazy" decoding="async" width="120" height="120">`}</a>
   <div class="tx">${top ? `<p class="pcat">${esc(pick(top.name, lang))}</p>` : ''}<h3><a href="${attr(href)}">${esc(name)}</a></h3>${vtags(site, p.voltage_tags, 3, lang)}

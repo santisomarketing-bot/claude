@@ -1322,10 +1322,10 @@ Secciones: `[QA-SHOP]` · `[HTML]` · `[BROWSER]` · `[NAV]` · `[LANG]` · `[NO
 - `ok` (l. 23) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
 - `build` (l. 25) — Compila una variante del sitio en TMP/<name> con las opciones `args` y devuelve su carpeta.
 - `read` (l. 27) — Texto del archivo `f` (ruta relativa) de la variante `dir`.
-- `ctxOf` (l. 81) — Contexto de navegador con idioma ya elegido, el aspecto `theme` ya guardado y las opciones `o`.
-- `visible` (l. 83) — Visibles: las tarjetas de la tienda que el filtro deja a la vista, con su nombre, precio mínimo y categoría.
-- `priced` (l. 85) — Espera a que todas las tarjetas tengan su precio pintado.
-- `orderOf` (l. 114) — orden
+- `ctxOf` (l. 83) — Contexto de navegador con idioma ya elegido, el aspecto `theme` ya guardado y las opciones `o`.
+- `visible` (l. 85) — Visibles: las tarjetas de la tienda que el filtro deja a la vista, con su nombre, precio mínimo y categoría.
+- `priced` (l. 87) — Espera a que todas las tarjetas tengan su precio pintado.
+- `orderOf` (l. 116) — orden
 
 ### `qa-tarifa.mjs`
 
