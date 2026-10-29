@@ -17,6 +17,7 @@ Aquí **sí** funciona todo de verdad: pedidos por correo a `info@grupotorivac.c
 ## Qué puedes probar
 - **Dos aspectos de la web**: **«Ficha técnica»** (identidad nueva, por defecto) y **«Clásico»** (el de la web original). Se alternan con el selector **Aspecto** de la cinta superior o del pie (o con `?tema=clasico` / `?tema=ficha` al final de la dirección) y el navegador recuerda la elección. Qué es cada uno y cómo se elige para producción: [`DISENO-TEMAS.md`](DISENO-TEMAS.md).
 - **Pedido por cantidades como un e-commerce**: en cada ficha, tabla de modelos con cantidades → «Añadir» → botón flotante «Presupuesto» (cajón lateral) → página de presupuesto → «Enviar pedido».
+- **La tienda** (ítem «Tienda» del menú, o el botón de «Productos»): todos los productos en un listado, con filtros por categoría, tensión y texto, orden por nombre, precio o categoría, y en cada tarjeta el precio y «Añadir al presupuesto» (si el producto tiene varios modelos, «Elegir modelo» lleva a la tabla de su ficha). Está en los tres aspectos y en los cuatro idiomas: [`DISENO-TEMAS.md`](DISENO-TEMAS.md) §1c.
 - **Presupuesto en PDF** (descarga en el navegador, con logotipo, imágenes de referencia, tramos de precio y céntimos).
 - **Importar CSV/Excel** con columnas «referencia» y «cantidad» en la página de presupuesto.
 - **Etiquetas de voltaje** en 27 productos (filtro por tensión), sacadas de los PDF verificados o de frases literales de la ficha; lo dudoso no se etiqueta.
