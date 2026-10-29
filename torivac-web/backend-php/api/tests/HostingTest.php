@@ -47,7 +47,11 @@ function test_client_ip_behind_proxies()
     T::same('2001:db8::5', $ip('::1', ['x-forwarded-for' => '2001:DB8:0:0:0:0:0:5']), 'IPv6 en forma normal');
     T::same('198.51.100.7', $ip('::ffff:127.0.0.1', ['x-forwarded-for' => '198.51.100.7:5555']), 'IPv4 dentro de IPv6 y con puerto');
     T::same('198.51.100.7', $ip('104.16.0.1', ['cf-connecting-ip' => '198.51.100.7', 'x-forwarded-for' => '9.9.9.9']), 'Cloudflare: CF-Connecting-IP');
-    T::same('198.51.100.7', $ip('104.16.0.1', ['x-forwarded-for' => '9.9.9.9, 198.51.100.7']), 'Cloudflare sin CF-Connecting-IP: la cadena');
+    T::same('104.16.0.1', $ip('104.16.0.1', ['x-forwarded-for' => '9.9.9.9, 198.51.100.7']), 'Cloudflare sin CF-Connecting-IP: no se lee la cadena (la escribe quien quiera) y vale el propio salto');
+    T::same('172.69.10.20', $ip('172.69.10.20', ['x-forwarded-for' => '9.9.9.9']), 'un Worker de otra persona (sale de Cloudflare sin CF-Connecting-IP) no puede ponerse la IP que quiera');
+    T::same('198.51.100.7', $ip('127.0.0.1', ['x-forwarded-for' => '9.9.9.9, 198.51.100.7, 104.16.0.1', 'cf-connecting-ip' => '198.51.100.7']), 'nginx delante con Cloudflare por detrás: manda CF-Connecting-IP');
+    T::same('104.16.0.1', $ip('127.0.0.1', ['x-forwarded-for' => '9.9.9.9, 104.16.0.1']), 'nginx delante con Cloudflare sin CF-Connecting-IP: ni lo de la izquierda ni nada que no diga Cloudflare');
+    T::same('198.51.100.7', $ip('104.16.0.1', ['x-forwarded-for' => '198.51.100.7'], ['104.16.0.0/13']), 'si el propio hosting da esa red en trusted_proxies, es su proxy de casa y se lee la cadena');
     T::same('127.0.0.1', $ip('127.0.0.1', ['cf-connecting-ip' => '198.51.100.7']), 'CF-Connecting-IP no vale si quien conecta no es Cloudflare');
     T::same('198.51.100.7', $ip('127.0.0.1', ['cf-connecting-ip' => '9.9.9.9', 'x-forwarded-for' => '198.51.100.7']), 'nginx delante de Apache con Cloudflare por detrás: manda la cadena');
     T::same('10.0.0.5', $ip('127.0.0.1', ['x-forwarded-for' => '10.0.0.5']), 'red interna entera: vale la primera dirección');

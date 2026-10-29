@@ -11,6 +11,7 @@ use Torivac\Prices;
 use Torivac\RateLimit;
 use Torivac\Request;
 use Torivac\Router;
+use Torivac\Security;
 use Torivac\Store;
 
 const SECRET = 'x-secreto-de-pruebas-de-al-menos-32-caracteres';
@@ -36,6 +37,7 @@ function fresh(array $cfg = []): void
     AdminData::setFile(null);
     RateLimit::$purgeOneIn = 0;                                                           // las pruebas no dejan que una limpieza al azar cambie lo que miran
     Backup::$scheduling = false;                                                          // la copia semanal programada para el final de la petición no se crea al terminar el proceso de pruebas
+    Security::$defer = false;                                                             // el aviso por ataque repetido sale al instante (en producción sale al terminar la respuesta)
 }
 
 /** Precios de ejemplo: TT0020210 con tramos y P16633. */

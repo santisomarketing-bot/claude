@@ -360,6 +360,7 @@ final class Router
     {
         $email = strtolower(trim($email));
         if (Users::find($email) === null) return new Response(['ok' => false, 'error' => 'No existe ese usuario'], 404);
+        if ($action === 'password' && empty($who['master']) && $email === strtolower((string) ($who['sub'] ?? ''))) return new Response(['ok' => false, 'error' => 'Tu propia contraseña se cambia en Ajustes → «Cambiar mi contraseña» (te pide la actual)'], 400);
         if ($action === 'unlock') {
             Security::unlock($email, ($b['clear_reinforced'] ?? false) === true);
             return new Response(['ok' => true]);
@@ -465,7 +466,12 @@ final class Router
             $r = Users::create($req->json() ?? []);
             return isset($r['error']) ? new Response(['ok' => false, 'error' => $r['error']], $r['status'] ?? 400) : new Response(['ok' => true, 'user' => $r['user']], 201);
         }
-        if (strpos($path, '/users/') === 0 && $m === 'DELETE') { Users::delete(rawurldecode(substr($path, 7))); return new Response(['ok' => true]); }
+        if (strpos($path, '/users/') === 0 && $m === 'DELETE') {
+            $target = strtolower(trim(rawurldecode(substr($path, 7))));
+            if (empty($who['master']) && $target === strtolower((string) ($who['sub'] ?? ''))) return new Response(['ok' => false, 'error' => 'No puedes borrar tu propia cuenta: pídeselo a otro manager'], 400);       // así nunca se queda la web sin ningún manager por un clic
+            Users::delete($target);
+            return new Response(['ok' => true]);
+        }
         return new Response(['ok' => false, 'error' => 'No encontrado'], 404);
     }
 

@@ -85,6 +85,8 @@ Con el correo bien configurado, el panel manda dos tipos de correo más (se ven 
 - **El código de acceso** (6 cifras, 10 minutos, un solo uso) que se pide al entrar a los managers que no son «de confianza»: el asunto no lleva el código. Detalle en [`SEGURIDAD.md`](SEGURIDAD.md) §10.
 - **El aviso de intentos repetidos** (a `alert_to`, o a quienes reciben los pedidos si está vacío): **un solo correo** cuando una cuenta suma 3 bloqueos en 24 horas, como mucho uno al día. No hay avisos de rutina. §11.
 
+Estos correos **no** salen como «último envío» en *Ajustes → Correo* ni en `/api/health` (que es público): desde fuera no debe verse cuándo alguien pidió un código. Si uno falla, queda en *Actividad*.
+
 **Si el correo no está completo, no se pide código a nadie** (sería un código que no llega): nadie se queda fuera, y *Usuarios* lo avisa. Por eso **lo primero es dejar el correo funcionando** (apartado 5) y después comprobar que el código llega entrando desde otro navegador. Si un día el correo falla y no puedes entrar, el interruptor de emergencia es `'two_step' => ['enabled' => false, 'on_attack' => false]` en `api/config.php` (no se pide código a nadie).
 
 ## 6. Si falla: qué dice y qué hacer
@@ -105,6 +107,6 @@ Si el panel dice «Enviado» y aun así no llega: mira la carpeta de spam y los 
 ## 7. Resumen técnico (para quien programe)
 
 - Código: `backend-php/api/lib/Mail.php` (controladores, composición de correos, estado), `lib/Smtp.php` (cliente SMTP propio: STARTTLS/SSL con verificación, AUTH PLAIN/LOGIN, temporizador global), `lib/Messages.php` (mensajes de contacto); en el Worker `workers/api/src/email.js`, `messages.js`, `mailstate.js`, `mailapi.js`.
-- Cada envío devuelve `{ ok, reason: sent | off | failed | skipped, error?, driver }`; el error es corto (≤ 160 caracteres) y **sin secretos** (`Mail::scrub`). El último intento queda en la clave `mail:last`.
+- Cada envío devuelve `{ ok, reason: sent | off | failed | skipped, error?, driver }`; el error es corto (≤ 160 caracteres) y **sin secretos** (`Mail::scrub`). El último intento queda en la clave `mail:last` (salvo los correos de seguridad, que no se anotan ahí: `/api/health` es público).
 - Endpoints de manager: `GET /api/messages`, `DELETE /api/messages/:id`, `POST /api/mail/test`, `GET /api/mail/status`. Público: `GET /api/health` (sin el texto del error).
 - Pruebas: `php backend-php/api/tests/run.php Mail` / `Smtp` / `Messages` (el cliente SMTP se prueba contra un servidor falso en 127.0.0.1: STARTTLS, AUTH, rechazos, temporizadores, inyección de cabeceras), `cd workers/api && npm test`, y `node scripts/qa-admin-live.mjs [--php]` (panel: Mensajes, Correo, prueba y fallo explicado).

@@ -1,7 +1,7 @@
 <?php
 /**
  * [BACKUP] Copias de seguridad de los datos de la web (pedidos, mensajes, usuarios, precios, propuestas, entradas del blog e imágenes subidas) que se pueden descargar desde el panel.
- * Una copia es UN archivo `backup-AAAAMMDD-HHMMSS-xxxx.jsonl.gz` en <datos>/backups/ (junto a una ficha .json con su resumen): gzip de líneas JSON, una por dato:
+ * Una copia es UN archivo `backup-AAAAMMDD-HHMMSS-<32 hex al azar>.jsonl.gz` en <datos>/backups/ (junto a una ficha .json con su resumen): gzip de líneas JSON, una por dato:
  *   { torivac_backup: 1, created, by, auto }                         cabecera
  *   { k: «order:TV-…», v: {…}, x?: caducidad }                       un dato del almacén (x = cuándo caduca, en segundos; los pedidos y mensajes caducan a los 400 días)
  *   { m: «archivo.webp», b64: «…» }                                   una imagen del blog
@@ -27,7 +27,7 @@ final class Backup
     /** Bytes de imágenes que entran como mucho en una copia (si hay más, se avisa y las que no caben se dejan fuera). */
     const MAX_MEDIA_BYTES = 400000000;
     /** Nombre de un archivo de copia. */
-    const NAME = 'backup-[0-9]{8}-[0-9]{6}-[0-9a-f]{4}\.jsonl\.gz';
+    const NAME = 'backup-[0-9]{8}-[0-9]{6}-[0-9a-f]{4,32}\.jsonl\.gz';
     /** Claves del almacén que NO entran en una copia (por su comienzo). */
     const SKIP = ['rl:', 'pin:', 'lgidx:', 'auth:decoy', 'backup:'];
 
@@ -138,7 +138,7 @@ final class Backup
             }
             gzwrite($gz, Util::enc(['end' => 1, 'keys' => $keys, 'media' => $media]) . "\n");
             gzclose($gz);
-            $name = 'backup-' . gmdate('Ymd-His') . '-' . bin2hex(random_bytes(2)) . '.jsonl.gz';
+            $name = 'backup-' . gmdate('Ymd-His') . '-' . bin2hex(random_bytes(16)) . '.jsonl.gz';
             @chmod($tmp, Store::FILE_MODE);
             if (!@rename($tmp, $dir . '/' . $name)) { @unlink($tmp); return ['error' => 'No se pudo guardar la copia', 'status' => 500]; }
             $size = (int) @filesize($dir . '/' . $name);

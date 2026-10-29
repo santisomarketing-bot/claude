@@ -42,6 +42,9 @@ final class Security
     const ATTACK_MS = 604800000;
 
     // ───────────────────────────────────────── [AJUSTES]
+    /** Si es true (por defecto), el correo del aviso por ataque repetido sale cuando ya se ha enviado la respuesta: no retrasa la petición ni delata con el tiempo que la cuenta existe. Las pruebas lo ponen en false. */
+    public static $defer = true;
+
     /** Un ajuste booleano de config.php o de una variable de entorno (que llega como texto: «false», «off», «0», «no» = no). */
     private static function flag($v, bool $default): bool
     {
@@ -283,6 +286,7 @@ final class Security
     {
         try {
             $email = strtolower($email);
+            if (Users::find($email) === null) return;                                              // un correo inventado no crea ficheros (el índice solo sirve para desbloquear cuentas que existen)
             Store::locked('lgidx', function () use ($email, $ipKey) {
                 $k = self::idxKey($email);
                 $list = Store::get($k);
@@ -338,13 +342,21 @@ final class Security
             Users::set($email, ['atk_until' => Util::nowMs() + self::ATTACK_MS]);
             if (!RateLimit::hit('atkmail', $email, 1, 86400000)['allowed']) return;
             Audit::log('alert.repeated', ['sub' => 'sistema', 'role' => ''], $req, $email . ' · ' . $n . ' bloqueos en 24 h' . (self::isExempt($u) ? ' (cuenta de confianza)' : ''));
-            self::alertMail($u, $n);
+            self::deferred(function () use ($u, $n) { self::alertMail($u, $n); });
         } catch (\Throwable $e) {
             error_log('torivac-api: aviso de ataque repetido: ' . mb_substr($e->getMessage(), 0, 160));
         }
     }
 
-    /** Correo de aviso al equipo por intentos repetidos contra una cuenta (sin ninguna contraseña ni código). */
+    /** Ejecuta `$job` cuando ya se ha enviado la respuesta (con PHP-FPM, quien hizo la petición no espera al correo); con `$defer` en false, al instante. Nunca lanza. */
+    private static function deferred(callable $job): void
+    {
+        $run = function () use ($job) { try { $job(); } catch (\Throwable $e) { error_log('torivac-api: tarea diferida: ' . mb_substr($e->getMessage(), 0, 160)); } };
+        if (!self::$defer) { $run(); return; }
+        register_shutdown_function(function () use ($run) { if (function_exists('fastcgi_finish_request')) @fastcgi_finish_request(); $run(); });
+    }
+
+    /** Correo de aviso al equipo por intentos repetidos contra una cuenta (sin ninguna contraseña ni código). Si no sale, queda anotado en la actividad (no en mail:last, que es público). */
     private static function alertMail(array $u, int $locks): void
     {
         $email = (string) $u['email'];
@@ -357,6 +369,7 @@ final class Security
             . '<p>Cada intento se bloquea una hora tras 5 contraseñas erróneas. ' . Util::esc($how) . '</p>'
             . '<p><strong>Qué hacer:</strong> si es una persona de tu equipo que se está equivocando, no hace falta nada. Si no, cambia la contraseña de esa cuenta (Panel → Usuarios) y mira Panel → Actividad para ver desde qué direcciones se intentó.</p>'
             . '<p style="color:#666;font-size:12px">Este aviso solo se envía cuando el patrón se repite, como mucho una vez al día por cuenta.</p>';
-        Mail::send(['to' => self::alertRecipients(), 'subject' => 'Torivac · intentos repetidos de acceso a una cuenta', 'text' => $text, 'html' => $html], 'security');
+        $r = Mail::send(['to' => self::alertRecipients(), 'subject' => 'Torivac · intentos repetidos de acceso a una cuenta', 'text' => $text, 'html' => $html], 'security');
+        if (empty($r['ok'])) Audit::log('alert.mail_failed', ['sub' => 'sistema', 'role' => ''], null, Mail::scrub((string) ($r['error'] ?? $r['reason'] ?? '?'), 120));
     }
 }

@@ -73,6 +73,10 @@ const shot = async (page, name) => { if (process.env.QA_SHOTS) { fs.mkdirSync(pr
 const visitor = (n) => ({ 'x-forwarded-for': `203.0.113.${n}` });
 /** Intentos de acceso con contraseña mala desde otro «visitante» (para provocar un bloqueo de una hora). */
 const hammer = async (email, n) => { for (let i = 0; i < 5; i++) await d.api('/auth/login', { method: 'POST', body: { email, password: 'No-es-esta-' + i }, headers: visitor(n) }); };
+/** Espera (hasta `ms`) a que se cumpla `fn`: los avisos por ataque repetido salen cuando la respuesta ya terminó, así que no están en la carpeta al instante. */
+const until = async (fn, ms = 6000) => { const t0 = Date.now(); while (Date.now() - t0 < ms) { if (fn()) return true; await new Promise((x) => setTimeout(x, 100)); } return !!fn(); };
+/** Pausa corta para que, si iba a salir un aviso al terminar la respuesta, ya haya salido (se usa antes de afirmar que NO salió). */
+const settle = () => new Promise((x) => setTimeout(x, 800));
 
 try {
   console.log(`panel: ${d.BASE}/admin/ (Apache real + PHP-FPM, correo en carpeta)`);
@@ -241,17 +245,24 @@ try {
   console.log('\n7) ataques repetidos: un solo aviso, y código en dispositivos nuevos');
   /** Los correos de «intentos repetidos» que se han mandado (el aviso al equipo). */
   const alerts = () => d.outbox().filter((m) => /intentos repetidos/.test(m.subject || ''));
+  await settle();
   ok(alerts().length === 0, 'hasta ahora (varios bloqueos sueltos y desbloqueos) no se ha mandado ningún aviso de rutina');
   await hammer(CLIENT, 1);
   r = await d.api('/auth/login', { method: 'POST', body: { email: CLIENT, password: 'Bobina-Plata-2026' }, headers: visitor(1) });
   ok(r.s === 429, 'cinco contraseñas malas desde un visitante bloquean la cuenta una hora (ni la buena entra desde ahí)');
+  await settle();
   ok(alerts().length === 0, 'un bloqueo suelto NO avisa por correo');
   await hammer(CLIENT, 2);
+  await settle();
   ok(alerts().length === 0, 'dos tampoco');
   await hammer(CLIENT, 3);
+  await until(() => alerts().length >= 1);
   ok(alerts().length === 1 && /3 bloqueos/.test(alerts()[0].text) && !/Bobina|No-es-esta/.test(alerts()[0].text + alerts()[0].html), 'al tercero en 24 h llega UN aviso al equipo, sin contraseñas');
   ok([].concat(alerts()[0].to).includes('info@grupotorivac.com'), 'va a quien recibe los pedidos');
+  r = await d.api('/health');
+  ok(r.s === 200 && !/security/.test(JSON.stringify(((r.j || {}).mail || {}).last || {})), 'y el /api/health público no enseña ese envío como «último envío» (los correos de seguridad no se anotan ahí)');
   await hammer(CLIENT, 4);
+  await settle();
   ok(alerts().length === 1, 'y no se repite el mismo día');
   await A.page.click('.side nav a[href="#usuarios"]'); await A.page.click('.side nav a[href="#actividad"]'); await A.page.click('.side nav a[href="#usuarios"]');
   await A.page.waitForSelector('[data-sec-mode=users]');
@@ -280,8 +291,10 @@ try {
   console.log('\n7b) la dueña (cuenta de confianza) solo pide código si la atacan de forma repetida');
   const before = alerts().length;
   await hammer(OWNER, 11); await hammer(OWNER, 12);
+  await settle();
   ok(alerts().length === before, 'dos bloqueos de su cuenta no avisan');
   await hammer(OWNER, 13);
+  await until(() => alerts().length >= before + 1);
   const aOwner = alerts().filter((m) => /jefa@torivac\.com/.test(m.text));
   ok(alerts().length === before + 1 && aOwner.length === 1 && /normalmente es una cuenta de confianza/.test(aOwner[0].text), 'el tercero avisa UNA vez y dice que es una cuenta de confianza');
   const H1 = await fresh();
@@ -352,7 +365,7 @@ try {
   const dl2 = A.page.waitForEvent('download');
   await bkRows().first().locator('[data-sec-dl]').click();
   const dl2r = await dl2;
-  ok(/^backup-\d{8}-\d{6}-[0-9a-f]{4}\.jsonl\.gz$/.test(dl2r.suggestedFilename()), `la descarga se llama ${dl2r.suggestedFilename()}`);
+  ok(/^backup-\d{8}-\d{6}-[0-9a-f]{32}\.jsonl\.gz$/.test(dl2r.suggestedFilename()), `la descarga se llama ${dl2r.suggestedFilename()} (con un sufijo de 128 bits que no se puede adivinar)`);
   const gz = zlib.gunzipSync(fs.readFileSync(await dl2r.path())).toString('utf8').trim().split('\n').map((l) => JSON.parse(l));
   ok(gz[0].torivac_backup === 1 && gz[gz.length - 1].end === 1 && gz[gz.length - 1].keys === gz.filter((x) => x.k).length && gz.some((x) => x.k && x.k.startsWith('user:')), `el archivo es una copia completa (${gz.length} líneas, con su cabecera, su cierre con el recuento y los usuarios)`);
   ok(!gz.some((x) => x.k && /^(rl:|pin:|lgidx:|backup:)/.test(x.k)), 'y no mete contadores, códigos temporales ni su propio estado');

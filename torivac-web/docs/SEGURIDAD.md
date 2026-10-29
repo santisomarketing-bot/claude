@@ -13,7 +13,7 @@ Este documento cuenta, sin humo, las medidas de seguridad que lleva la web de To
 | **Sesiones** | Firmadas (HMAC), caducan a las **24 h**, atadas al usuario: borrar al usuario o pulsar *Salir* anula sus sesiones. La clave de firma (`session_secret`) tiene que tener ≥ 32 caracteres o **nadie puede entrar** (a propósito) | Ajustes → Diagnóstico |
 | **Acceso al panel: código por correo** | Con la contraseña buena, a los managers se les manda un **código de 6 cifras** al correo (vale 10 minutos, una sola vez, 5 intentos). «Recordar este dispositivo» lo evita **30 días** en ese navegador. La cuenta de quien administra la web puede ser **de confianza** y no lo pide de rutina (§10) | Panel: pantalla «Código de verificación» |
 | **Intentos repetidos** | **Sin avisos de rutina.** Solo si una cuenta suma 3 bloqueos en 24 h: **un** aviso por correo (como mucho uno al día) y esa cuenta pide el código en dispositivos nuevos durante 7 días (§11) | Correo · Usuarios: «Protección reforzada» |
-| **Desbloqueo** | Un manager desbloquea una cuenta desde Panel → Usuarios (§11) | Usuarios → «Desbloquear» |
+| **Desbloqueo** | Un manager desbloquea una cuenta desde Panel → Usuarios; sin panel, `php api/tools/unlock.php correo@…` en la terminal del hosting (§11) | Usuarios → «Desbloquear» |
 | **Registro de actividad** | Quién entró y quién cambió qué, con la hora y la dirección; 180 días; solo managers; sin contraseñas ni códigos (§12) | Panel → Actividad |
 | **Copias de seguridad** | Una a la semana, sola, descargable con un enlace firmado de 2 minutos; se pueden restaurar (§13) | Panel → Ajustes → Copias de seguridad |
 | **CAPTCHA invisible** (opcional) | Cloudflare Turnstile en contacto y pedido; **apagado hasta que pongas las dos claves** en `config.php` (§14) | Diagnóstico: «CAPTCHA» |
@@ -70,7 +70,7 @@ Se rechaza (con un aviso claro y sin guardar ni enviar nada):
 ## 4. Servidor, cabeceras y paquete
 
 - **Lista blanca en `api/`**: el `.htaccess` de esa carpeta lo cierra todo salvo `index.php`. En el paquete solo entra una lista cerrada de ficheros (código, `.htaccess` y datos generados): sin pruebas, sin `config.php`, sin copias (`.bak`, `~`), sin registros.
-- **IP real del visitante** (de la que dependen los límites): se lee de `REMOTE_ADDR`; solo si quien conecta es la propia máquina, una red privada (el nginx de Plesk) o Cloudflare se acepta `X-Forwarded-For`, y se descartan las direcciones falsas. IPv6 se agrupa por su /64 para que un atacante no cambie de dirección a cada intento.
+- **IP real del visitante** (de la que dependen los límites): se lee de `REMOTE_ADDR`; solo si quien conecta es la propia máquina, una red privada (el nginx de Plesk) o Cloudflare se acepta `X-Forwarded-For`, y se descartan las direcciones falsas. Con Cloudflare por delante se usa su cabecera `CF-Connecting-IP`; las direcciones que un visitante escriba a la izquierda en `X-Forwarded-For` no cuentan nunca (si esa cabecera no llega, se usa la dirección del propio Cloudflare, nunca una inventada). IPv6 se agrupa por su /64 para que un atacante no cambie de dirección a cada intento.
 - **CORS por lista**: un origen ajeno que intenta usar el API recibe 403.
 - **CSP**: `script-src 'self'` + la huella SHA-256 de cada script en línea (que son constantes). Nada de `unsafe-inline` ni `eval` en scripts. `frame-ancestors 'self'`, `object-src 'none'`, `base-uri 'self'`, `form-action 'self'`, `connect-src` solo a la propia web y al API.
 - **Errores**: ninguna respuesta de error enseña texto interno del servidor; un fallo inesperado devuelve «Error interno» con un identificador de 8 caracteres y el detalle va al registro.
@@ -82,7 +82,7 @@ Se rechaza (con un aviso claro y sin guardar ni enviar nada):
 
 | Qué | Comando | Resultado de esta versión |
 |---|---|---|
-| Servidor PHP | `php backend-php/api/tests/run.php` | 5390 comprobaciones, 0 fallos (con ataques reales de entrada hostil, fuerza bruta, relé de correo, SSRF, código por correo, ataques repetidos, actividad y copias…) |
+| Servidor PHP | `php backend-php/api/tests/run.php` | 5420 comprobaciones, 0 fallos (con ataques reales de entrada hostil, fuerza bruta, relé de correo, SSRF, código por correo, ataques repetidos, actividad y copias…) |
 | Worker | `cd workers/api && npm test` | 164 pruebas, 0 fallos |
 | Texto plano (navegador = Worker = PHP) | `node scripts/test-plain-text.mjs` | 194 comprobaciones; incluye navegador sin *lookbehind* y textos hostiles de 60 000 caracteres (sin eternizarse) |
 | Conversor de texto del blog | `node scripts/test-blog-markdown.mjs` · `test-blog-markdown-php.mjs` | 20 000 entradas aleatorias hostiles + los casos del contrato: nunca produce HTML peligroso; JS y PHP dan lo mismo en ~195 000 comparaciones |
@@ -95,6 +95,8 @@ Se rechaza (con un aviso claro y sin guardar ni enviar nada):
 | Secretos | `python3 -I scripts/secret_scan.py` | Ninguna clave en los ficheros versionados |
 
 Además: **revisión independiente** del servidor PHP (13 hallazgos, todos corregidos, más 10 de diseño) y del Worker, con pruebas de mutación (36 mutaciones del código se detectaron). Los arreglos más importantes fueron cerrar el **relé de correo** (la copia al cliente), poner las **sesiones de 24 h con revocación**, los **límites de acceso**, los **secretos obligatoriamente largos**, la **lista blanca** de `api/` y que `GET /api/admin/data` sea solo para managers.
+
+**Segunda revisión independiente (Seguridad 3: código por correo, actividad, copias, CAPTCHA y desbloqueo).** Se corrigió todo lo que tenía riesgo real: una ráfaga de intentos en paralelo contaba varios bloqueos en vez de uno (con un solo ataque se llegaba a los 3 que disparan el aviso); detrás de Cloudflare, un visitante podía elegir su propia IP con una cabecera `X-Forwarded-For` falsa; los correos de seguridad quedaban a la vista en `/api/health` como «último envío»; el aviso retrasaba la respuesta de quien fallaba la contraseña (ahora sale cuando la respuesta ya se ha enviado) y, si no se podía mandar, no dejaba rastro (ahora queda en Actividad); los intentos contra correos que no existen llenaban el registro; el nombre de las copias llevaba solo 16 bits al azar (ahora 128); un manager podía borrar su propia cuenta o cambiarse la contraseña sin dar la actual; y el token del CAPTCHA no tenía límite de tamaño. Lo que **se dejó a propósito** está en §7 (cuenta bloqueable desde fuera, código pendiente tras cambiar la contraseña, cerrojo de códigos durante el envío).
 
 ## 6. Secretos: dónde van y dónde no
 
@@ -112,6 +114,9 @@ Además: **revisión independiente** del servidor PHP (13 hallazgos, todos corre
 - **El código por correo depende de que el correo funcione.** Por eso, si el correo está sin completar, no se pide a nadie; y si un día el correo falla y no puedes entrar, el interruptor de emergencia es `two_step.enabled = false` y `two_step.on_attack = false` en `config.php` (§10).
 - **El Worker de Cloudflare no trae** el código por correo, la actividad ni las copias (solo el servidor PHP del hosting): el panel lo dice en vez de romperse.
 - **Las copias de seguridad están en el mismo servidor** que los datos: no te salvan si el servidor desaparece. Descarga alguna de vez en cuando y guárdala en un sitio privado (llevan datos personales y los *hash* de las contraseñas). El hosting suele hacer además su propia copia diaria.
+- **Una cuenta se puede bloquear desde fuera.** Quien conozca el correo de un manager puede, con muchos intentos desde sitios distintos, bloquearle la cuenta una hora (el límite por cuenta existe para que nadie adivine contraseñas repartiendo los intentos entre muchas IP; este es su precio). No da acceso, solo molesta, y se arregla con **Desbloquear** (otro manager) o, si nadie puede entrar, con `php api/tools/unlock.php correo@…` (§11).
+- **Un código ya enviado sigue valiendo hasta 10 minutos aunque se cambie la contraseña en ese rato.** Para usarlo hay que haber pasado la contraseña antigua y tener el buzón a la vez; pasados esos 10 minutos ya no queda nada pendiente.
+- **Al reenviar un código, el cerrojo de códigos está cogido mientras sale el correo.** Si el servidor de correo tarda en contestar, quien escribe su código en ese mismo momento espera (como mucho el tiempo máximo del correo, 15 s por defecto). Solo pasa con un correo lento y varias personas entrando a la vez.
 - **No se avisa de lo normal** (a propósito): solo hay aviso por correo cuando un patrón se repite (§11). Si quieres ver qué pasa día a día, mira Panel → Actividad.
 - Los límites por IP no frenan a un atacante con **muchas** IP; para eso están el límite por cuenta (30/hora) y las contraseñas largas. Un cortafuegos delante (Cloudflare, ModSecurity) suma una capa más.
 
@@ -164,18 +169,22 @@ Después de la contraseña, a los **managers** se les manda un código de 6 cifr
 
 **No te deja fuera.** Si el correo está sin completar (Ajustes → Correo), el código **no se pide a nadie**: sería un código que no llega, y Usuarios lo avisa. Si un día el correo falla y no puedes entrar: pon `'two_step' => ['enabled' => false, 'on_attack' => false]` en `api/config.php` (así no se pide código a nadie, ni de rutina ni por ataques), entra, arregla el correo y quítalo. Si el servidor no puede mandar el código en ese momento, la persona lo lee («No hemos podido enviarte el código por correo») y queda anotado en Actividad.
 
+**El correo de seguridad no se anota en ningún sitio público.** Los códigos y los avisos no salen como «último envío» en Ajustes → Correo ni en `/api/health` (que es público y enseñaría cuándo alguien pidió un código); si uno falla, queda en Actividad («Código incorrecto» con el detalle «no se pudo enviar el código por correo», o «El aviso por correo no se pudo enviar»).
+
 ## 11. Ataques repetidos, avisos y desbloqueo
 
 **Principio: nada de avisos de rutina.** Un bloqueo suelto (alguien que se equivoca de contraseña) no manda ningún correo. Solo se avisa cuando **el patrón se repite**:
 
 1. Una cuenta suma **3 bloqueos en 24 horas** (cada bloqueo de un visitante cuenta 1; el bloqueo de la cuenta entera, o 20 códigos erróneos, cuentan 3 de golpe: un ataque repartido).
-2. Se manda **un** correo a `alert_to` (o, si está vacío, a quienes reciben los pedidos) diciendo qué cuenta y cuántos bloqueos, **sin contraseñas ni códigos**. Como mucho uno al día por cuenta.
+2. Se manda **un** correo a `alert_to` (o, si está vacío, a quienes reciben los pedidos) diciendo qué cuenta y cuántos bloqueos, **sin contraseñas ni códigos**. Como mucho uno al día por cuenta. Sale cuando la respuesta ya se ha enviado (quien falla la contraseña no espera al correo) y, si no se puede mandar, queda en Actividad como «El aviso por correo no se pudo enviar».
 3. **Protección reforzada 7 días**: esa cuenta (también si es de un cliente) pide el código por correo en cualquier dispositivo nuevo; el correo del código lo explica. Se ve en Usuarios como «Protección reforzada hasta …» y queda en Actividad como «Aviso: intentos repetidos».
 4. **Las cuentas de confianza (§10) también**: de rutina no piden código, pero mientras dura la protección reforzada sí lo piden en los dispositivos nuevos (es cuando más falta hace). Una cuenta que no existe no genera avisos ni protección.
 
 Se desactiva con `two_step.on_attack = false`.
 
 **Desbloquear.** Panel → Usuarios: las cuentas bloqueadas salen con «Bloqueada · 1 h» y un botón **Desbloquear**: quita el bloqueo, pone a cero los contadores (también el de quien se bloqueó a sí mismo y el de los códigos) y, si la cuenta tiene protección reforzada, también la quita. Queda anotado en Actividad.
+
+**Sin panel.** Si ninguna cuenta de manager puede entrar (por ejemplo, han bloqueado la tuya y eres la única), en la terminal del hosting: `php api/tools/unlock.php correo@dominio.com` hace lo mismo que el botón; con `--todo` quita además la protección reforzada. No toca contraseñas ni sesiones.
 
 ## 12. Registro de actividad
 
@@ -184,6 +193,7 @@ Panel → **Actividad** (solo managers): quién entró y quién cambió qué, co
 - **Qué anota**: entradas (con contraseña, con código, con dispositivo recordado), salidas, códigos enviados e incorrectos, bloqueos y avisos, altas y bajas de usuarios, cambios del código por correo y de contraseñas (sin la contraseña), desbloqueos, precios (subir hoja, sincronizar, IA), propuestas, blog, mensajes borrados, correos de prueba y copias (crear, descargar, borrar y la automática).
 - **Qué no anota nunca**: contraseñas, códigos, tokens ni textos largos. El detalle son hasta 200 caracteres sin saltos de línea (un correo escrito con «\n» no puede inventar líneas del registro) y se enseña siempre escapado.
 - **Fallos de contraseña**: se anotan **resumidos** (una vez cada 10 minutos por visitante y cuenta), así que un ataque no llena el registro; los bloqueos y los avisos sí se anotan siempre.
+- **Cuentas que no existen**: los intentos con un correo que no es de ningún usuario se anotan, pero ocupan como mucho la mitad del tope diario (nadie puede llenar el registro con correos inventados y tapar lo que hacen las cuentas reales) y no generan avisos ni protección reforzada.
 - **Dónde y cuánto**: un fichero por día en `<carpeta de datos>/audit/AAAA-MM-DD.jsonl`; 2 MB como máximo por día (al llegar se anota «Registro lleno por hoy» y se calla el resto) y **180 días** de historia. El Diagnóstico cuenta los hechos de la última semana.
 - **Es un dato personal** (correos y direcciones IP): solo lo ven los managers y se borra solo a los 180 días.
 
@@ -193,7 +203,7 @@ Panel → **Actividad** (solo managers): quién entró y quién cambió qué, co
 
 - **Cuándo**: **una por semana, sola** (con la primera entrada de un manager pasada la semana, sin hacerle esperar, o con el cron diario) y cuando pulsas **Crear copia ahora** (Panel → Ajustes → Copias de seguridad) o ejecutas `php api/tools/backup.php`. Se guardan las **8 últimas** en `<carpeta de datos>/backups/`.
 - **Descargar**: botón «Descargar» → enlace firmado, válido **2 minutos**, para ese archivo y esa persona; queda anotado en Actividad. **Guarda alguna fuera del servidor**: la copia está en el mismo sitio que los datos.
-- **Privada**: lleva datos personales y los *hash* de las contraseñas; solo la descarga un manager y la carpeta de datos está cerrada a la web.
+- **Privada**: lleva datos personales y los *hash* de las contraseñas; solo la descarga un manager y la carpeta de datos está cerrada a la web. Además, el nombre de cada archivo lleva 128 bits al azar (`backup-AAAAMMDD-HHMMSS-<32 cifras hexadecimales>.jsonl.gz`): no se puede adivinar.
 - **Restaurar** (a propósito se hace por línea de comandos, no desde el panel: es una operación delicada): con la terminal del hosting (cPanel «Terminal», Plesk «SSH» o «Tareas programadas»):
   1. `php api/tools/restore.php ARCHIVO.jsonl.gz --dry-run` comprueba que la copia **está entera** (tiene su cierre y los recuentos coinciden) y cuenta lo que trae, sin escribir nada.
   2. `php api/tools/restore.php ARCHIVO.jsonl.gz` restaura si la carpeta de datos está **vacía**; con `--force` sobrescribe lo que ya haya con lo que trae la copia (lo que la copia no trae se queda).
@@ -223,4 +233,5 @@ Para apagarlo, vacía las dos claves.
 
 - **La tuya**: Panel → Ajustes → *Tu cuenta y tu seguridad* → «Cambiar mi contraseña». Pide la actual (5 fallos por hora → bloqueo), cierra **todas** tus sesiones y olvida tus dispositivos recordados; vuelves a entrar con la nueva.
 - **La de otra persona** (la olvidó, o sospechas que la conocen otros): Panel → Usuarios → «Poner una contraseña nueva a una cuenta». Cierra todas sus sesiones y olvida sus dispositivos. **Díselo por un canal seguro**; no la mandes por correo.
+- **Lo que no se puede hacer**: un manager no puede borrar su propia cuenta (así nunca se queda la web sin nadie; se lo pide a otro) ni «poner una contraseña nueva» a la suya por esa vía (para la tuya está «Cambiar mi contraseña», que pide la actual). El token maestro del servidor sí puede.
 - Las reglas son las de siempre (§1): mínimo 12 caracteres, sin el correo dentro, sin palabras típicas y con variedad. Borrar un usuario también cierra sus sesiones.

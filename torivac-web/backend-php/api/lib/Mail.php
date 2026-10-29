@@ -213,7 +213,7 @@ final class Mail
         catch (\Throwable $e) { $r = ['ok' => false, 'reason' => 'failed', 'error' => self::scrub(get_class($e) === 'RuntimeException' ? $e->getMessage() : 'Fallo interno al enviar el correo')]; }
         $r['driver'] = $driver;
         if (!empty($r['reason']) && in_array($r['reason'], ['off', 'skipped'], true)) $r['skipped'] = true;
-        self::record($kind, $r, $nowMs);
+        if ($kind !== 'security') self::record($kind, $r, $nowMs);               // los correos de seguridad (códigos y avisos) NO se anotan: /api/health es público y enseñaría cuándo se mandó uno (y, con ello, que esa cuenta existe); sus fallos van a la actividad del panel
         return $r;
     }
 

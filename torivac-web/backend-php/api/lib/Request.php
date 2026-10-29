@@ -106,6 +106,14 @@ final class Request
         return true;
     }
 
+    /** True si `$ip` es una dirección de Cloudflare que no está también entre las redes privadas ni entre los proxies propios de `trusted_proxies` (esas se tratan como el proxy de casa que son). */
+    private static function isCloudflareHop(string $ip, array $extra = []): bool
+    {
+        foreach (array_merge(self::PRIVATE_NETS, array_map('strval', array_values($extra))) as $net) if (self::inNet($ip, $net)) return false;
+        foreach (self::CLOUDFLARE_NETS as $net) if (self::inNet($ip, $net)) return true;
+        return false;
+    }
+
     /** True si `$ip` es un proxy de confianza: red privada o local, Cloudflare o una de las redes extra de `trusted_proxies`. */
     public static function isTrustedProxy(string $ip, array $extra = []): bool
     {
@@ -127,14 +135,17 @@ final class Request
         if ($peer === null) return '0.0.0.0';
         if (!self::isTrustedProxy($peer, $extra)) return $peer;
         $cf = self::normalizeIp((string) ($headers['cf-connecting-ip'] ?? ''));
-        if ($cf !== null) foreach (self::CLOUDFLARE_NETS as $net) if (self::inNet($peer, $net)) return $cf;
         $chain = [];
         foreach (explode(',', (string) ($headers['x-forwarded-for'] ?? '')) as $part) {
             $ip = self::normalizeIp($part);
             if ($ip !== null) $chain[] = $ip;
         }
         $chain[] = $peer;
-        for ($i = count($chain) - 1; $i >= 0; $i--) if (!self::isTrustedProxy($chain[$i], $extra)) return $chain[$i];
+        for ($i = count($chain) - 1; $i >= 0; $i--) {
+            $hop = $chain[$i];
+            if (self::isCloudflareHop($hop, $extra)) return $cf ?? $hop;                         // un salto de Cloudflare: lo que haya a su izquierda en X-Forwarded-For lo puede haber escrito cualquiera (p. ej. un Worker ajeno); vale CF-Connecting-IP o, si no viene, el propio salto
+            if (!self::isTrustedProxy($hop, $extra)) return $hop;
+        }
         return $chain[0];
     }
 
@@ -317,7 +328,9 @@ final class RateLimit
 
     /**
      * Anota un fallo de un contador con BLOQUEO: los fallos se cuentan en una ventana de `$windowMs` desde el primero y, al llegar al `$max`-ésimo, el contador queda bloqueado `$lockMs`
-     * desde ESE momento (pasado ese tiempo empieza de cero). Un fallo anotado durante el bloqueo no lo alarga. Devuelve cuántos milisegundos de bloqueo quedan (0 = no bloqueado).
+     * desde ESE momento (pasado ese tiempo empieza de cero). Un fallo anotado durante el bloqueo no lo alarga.
+     * Devuelve cuántos milisegundos de bloqueo quedan SOLO si ESTE fallo es el que ha empezado el bloqueo; 0 en cualquier otro caso (también si ya estaba bloqueado: para saberlo, lockedFor).
+     * Así una ráfaga de peticiones simultáneas, que pasan juntas la comprobación previa, cuenta UN bloqueo y no uno por petición.
      */
     public static function failLock(string $bucket, string $id, int $max, int $windowMs, int $lockMs, ?int $nowMs = null): int
     {
@@ -325,7 +338,7 @@ final class RateLimit
         $key = self::key($bucket, $id);
         $left = Store::locked('rl', function () use ($key, $now, $max, $windowMs, $lockMs) {
             $r = Store::get($key);
-            if (is_array($r) && isset($r['lockedUntil']) && $r['lockedUntil'] > $now) return (int) ($r['lockedUntil'] - $now);          // ya bloqueado: no se alarga
+            if (is_array($r) && isset($r['lockedUntil']) && $r['lockedUntil'] > $now) return 0;          // ya bloqueado: no se alarga ni cuenta como un bloqueo nuevo
             if (!is_array($r) || !isset($r['resetAt'], $r['count']) || $r['resetAt'] <= $now || (isset($r['lockedUntil']) && $r['lockedUntil'] <= $now)) $r = ['count' => 0, 'resetAt' => $now + $windowMs];
             $r['count']++;
             if ($r['count'] >= $max) { $r['lockedUntil'] = $now + $lockMs; $r['resetAt'] = $r['lockedUntil']; }

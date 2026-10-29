@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1804/1804 funciones descritas (100 %) · 202/202 archivos con cabecera.
+**Cobertura**: 1812/1812 funciones descritas (100 %) · 203/203 archivos con cabecera.
 
 
 ## `site/`
@@ -1298,8 +1298,10 @@ Secciones: `[QA-SECURITY-PANEL]`
 - `shot` (l. 71) — Guarda una captura de la pantalla si se pidió (QA_SHOTS=<carpeta>): sirve para mirar cómo quedó, no es una comprobación.
 - `visitor` (l. 73) — Cabeceras para hacerse pasar por otro visitante en el API.
 - `hammer` (l. 75) — Intentos de acceso con contraseña mala desde otro «visitante» (para provocar un bloqueo de una hora).
-- `alerts` (l. 243) — Los correos de «intentos repetidos» que se han mandado (el aviso al equipo).
-- `bkRows` (l. 344) — Las filas de la tabla de copias de seguridad de Ajustes.
+- `until` (l. 77) — Espera (hasta `ms`) a que se cumpla `fn`: los avisos por ataque repetido salen cuando la respuesta ya terminó, así que no están en la carpeta al instante.
+- `settle` (l. 79) — Pausa corta para que, si iba a salir un aviso al terminar la respuesta, ya haya salido (se usa antes de afirmar que NO salió).
+- `alerts` (l. 247) — Los correos de «intentos repetidos» que se han mandado (el aviso al equipo).
+- `bkRows` (l. 357) — Las filas de la tabla de copias de seguridad de Ajustes.
 
 ### `qa-tarifa.mjs`
 
@@ -2123,13 +2125,13 @@ Secciones: `[AUDIT]` · `[DESDE EL ROUTER]` · `[LECTURA]`
 - `label` (l. 50) — Nombre legible de una acción (si no se conoce, la propia clave).
 - `agent` (l. 53) — «Chrome · Windows» a partir de la cabecera User-Agent (solo familia del navegador y del sistema: el texto entero es largo y no aporta).
 - `log` (l. 67) — Anota un hecho. `$who` es el que lo hace (['sub','role'] como devuelve Auth::authenticate), o null si no hay sesión (un intento de acceso: entonces `$detail` suele llevar el correo).
-- `worthLoggingFail` (l. 99) — ¿Conviene anotar este fallo de contraseña? Una vez por visitante y cuenta cada 10 minutos (un ataque no llena el registro).
-- `describe` (l. 106) — Código del hecho y detalle (sin secretos) de una petición de un manager que salió bien, o null si no hay que anotarla.
-- `fromRequest` (l. 139) — Anota la acción de un manager (o cliente) que acaba de hacer `$req` con la respuesta `$res`, si es de las que se registran. Nunca lanza.
-- `days` (l. 150) — Días (AAAA-MM-DD, el más reciente primero) de los últimos `$days`.
-- `read` (l. 162) — Hechos de los últimos `$days` días, el más reciente primero, como mucho `$limit`. Filtros: `u` (parte del correo), `cat` (categoría = lo que va antes del punto de la acción: login, user, prices…) y
-- `summary` (l. 189) — Resumen para el Diagnóstico: hechos de los últimos 7 días y de cuántos días hay fichero (sin leer más que contar líneas). @return array{events:int,days:int}
-- `purge` (l. 203) — Borra los ficheros de más de KEEP_DAYS días; devuelve cuántos. Nunca lanza.
+- `worthLoggingFail` (l. 100) — ¿Conviene anotar este fallo de contraseña? Una vez por visitante y cuenta cada 10 minutos (un ataque no llena el registro).
+- `describe` (l. 107) — Código del hecho y detalle (sin secretos) de una petición de un manager que salió bien, o null si no hay que anotarla.
+- `fromRequest` (l. 140) — Anota la acción de un manager (o cliente) que acaba de hacer `$req` con la respuesta `$res`, si es de las que se registran. Nunca lanza.
+- `days` (l. 151) — Días (AAAA-MM-DD, el más reciente primero) de los últimos `$days`.
+- `read` (l. 163) — Hechos de los últimos `$days` días, el más reciente primero, como mucho `$limit`. Filtros: `u` (parte del correo), `cat` (categoría = lo que va antes del punto de la acción: login, user, prices…) y
+- `summary` (l. 190) — Resumen para el Diagnóstico: hechos de los últimos 7 días y de cuántos días hay fichero (sin leer más que contar líneas). @return array{events:int,days:int}
+- `purge` (l. 204) — Borra los ficheros de más de KEEP_DAYS días; devuelve cuántos. Nunca lanza.
 
 ### `Auth.php`
 
@@ -2168,7 +2170,7 @@ Secciones: `[AUTH]` · `[USERS]`
 
 ### `Backup.php`
 
-[BACKUP] Copias de seguridad de los datos de la web (pedidos, mensajes, usuarios, precios, propuestas, entradas del blog e imágenes subidas) que se pueden descargar desde el panel. Una copia es UN archivo `backup-AAAAMMDD-HHMMSS-xxxx.jsonl.gz` en <datos>/backups/ (junto a una ficha .json con su resumen): gzip de líneas JSON, una por dato: { torivac_backup: 1, created, by, auto }                         cabecera
+[BACKUP] Copias de seguridad de los datos de la web (pedidos, mensajes, usuarios, precios, propuestas, entradas del blog e imágenes subidas) que se pueden descargar desde el panel. Una copia es UN archivo `backup-AAAAMMDD-HHMMSS-<32 hex al azar>.jsonl.gz` en <datos>/backups/ (junto a una ficha .json con su resumen): gzip de líneas JSON, una por dato: { torivac_backup: 1, created, by, auto }                         cabecera
 
 Secciones: `[BACKUP]` · `[AJUSTES Y RUTAS]` · `[LISTA]` · `[CREAR]` · `[API]` · `[RESTAURAR]`
 
@@ -2521,27 +2523,28 @@ Secciones: `[REQUEST]` · `[CLIENT-IP]` · `[IP-KEY]` · `[CORS]` · `[RATE-LIMI
 - `proxyList` (l. 70) — Proxies de confianza además de las redes privadas y Cloudflare: los de config `trusted_proxies` (lista o texto separado por comas) y la propia dirección
 - `normalizeIp` (l. 80) — Una IP escrita de cualquier forma (con corchetes, con puerto, IPv4 dentro de IPv6…) en su forma normal; null si no es una IP.
 - `inNet` (l. 92) — True si la IP está dentro de la red `a.b.c.d/n` o `x::/n` (una IP suelta cuenta como red de una sola dirección).
-- `isTrustedProxy` (l. 110) — True si `$ip` es un proxy de confianza: red privada o local, Cloudflare o una de las redes extra de `trusted_proxies`.
-- `clientIp` (l. 124) — IP del visitante. Una conexión directa NO se puede falsear con cabeceras (se usa REMOTE_ADDR tal cual). Solo si quien conecta es un proxy de confianza
-- `ipKey` (l. 145) — Clave de límite por visitante: una IPv4 tal cual; una IPv6, su /64 en forma canónica «xxxx:xxxx:xxxx:xxxx::/64» (hextetos de 4 dígitos en minúsculas); una IPv4 escrita
-- `fake` (l. 159) — petición simulada para pruebas
-- `cookie` (l. 172) — Valor de una cookie de la petición (cabecera Cookie); cadena vacía si no existe. Los valores que usa el API son hexadecimales y puntos: nada se decodifica ni se interpreta.
-- `header` (l. 182) — Valor de una cabecera de la petición (nombre sin distinguir mayúsculas); cadena vacía si no existe.
-- `json` (l. 185) — cuerpo JSON como array (null si no es válido, está anidado a más de 32 niveles o supera el límite de bytes)
-- `bearer` (l. 193) — Token de la cabecera «Authorization: Bearer …», o null.
-- `__construct` (l. 209) — Respuesta con cuerpo JSON, código HTTP y cabeceras (por defecto JSON UTF-8 y sin caché).
-- `send` (l. 217) — Envía código, cabeceras y cuerpo JSON (sin cuerpo en 204 y 304). Si el cuerpo no se puede codificar responde un 500 genérico con un id (el detalle va al registro).
-- `allowed` (l. 241) — Dice si un origen puede usar el API: el propio sitio, las peticiones sin Origin o los de allowed_origins.
-- `headers` (l. 256) — Cabeceras CORS para un origen permitido.
-- `key` (l. 277) — Clave del almacén de un contador: rl:<cubo>:<sha256 del identificador, 32 caracteres>.
-- `hit` (l. 280) — @return array{allowed:bool,remaining:int,resetAt:int}
-- `exceeded` (l. 296) — ¿Ha llegado el contador de fallos de ese cubo e identificador a `$max` en la ventana actual? No suma nada.
-- `fail` (l. 303) — Anota un fallo (la ventana cuenta desde el primero) y devuelve cuántos lleva en ella.
-- `failLock` (l. 322) — Anota un fallo de un contador con BLOQUEO: los fallos se cuentan en una ventana de `$windowMs` desde el primero y, al llegar al `$max`-ésimo, el contador queda bloqueado `$lockMs`
-- `lockedFor` (l. 340) — Milisegundos que le quedan de bloqueo a un contador con bloqueo (failLock); 0 si no está bloqueado. No suma nada.
-- `clear` (l. 348) — Pone a cero el contador de fallos (tras un acceso correcto).
-- `purgeExpired` (l. 355) — Borra ahora hasta PURGE_MAX registros de límite caducados; devuelve cuántos.
-- `maybePurge` (l. 361) — Con probabilidad 1/purgeOneIn limpia registros caducados; un fallo al limpiar nunca rompe la petición.
+- `isCloudflareHop` (l. 110) — True si `$ip` es una dirección de Cloudflare que no está también entre las redes privadas ni entre los proxies propios de `trusted_proxies` (esas se tratan como el proxy de casa que son).
+- `isTrustedProxy` (l. 118) — True si `$ip` es un proxy de confianza: red privada o local, Cloudflare o una de las redes extra de `trusted_proxies`.
+- `clientIp` (l. 132) — IP del visitante. Una conexión directa NO se puede falsear con cabeceras (se usa REMOTE_ADDR tal cual). Solo si quien conecta es un proxy de confianza
+- `ipKey` (l. 156) — Clave de límite por visitante: una IPv4 tal cual; una IPv6, su /64 en forma canónica «xxxx:xxxx:xxxx:xxxx::/64» (hextetos de 4 dígitos en minúsculas); una IPv4 escrita
+- `fake` (l. 170) — petición simulada para pruebas
+- `cookie` (l. 183) — Valor de una cookie de la petición (cabecera Cookie); cadena vacía si no existe. Los valores que usa el API son hexadecimales y puntos: nada se decodifica ni se interpreta.
+- `header` (l. 193) — Valor de una cabecera de la petición (nombre sin distinguir mayúsculas); cadena vacía si no existe.
+- `json` (l. 196) — cuerpo JSON como array (null si no es válido, está anidado a más de 32 niveles o supera el límite de bytes)
+- `bearer` (l. 204) — Token de la cabecera «Authorization: Bearer …», o null.
+- `__construct` (l. 220) — Respuesta con cuerpo JSON, código HTTP y cabeceras (por defecto JSON UTF-8 y sin caché).
+- `send` (l. 228) — Envía código, cabeceras y cuerpo JSON (sin cuerpo en 204 y 304). Si el cuerpo no se puede codificar responde un 500 genérico con un id (el detalle va al registro).
+- `allowed` (l. 252) — Dice si un origen puede usar el API: el propio sitio, las peticiones sin Origin o los de allowed_origins.
+- `headers` (l. 267) — Cabeceras CORS para un origen permitido.
+- `key` (l. 288) — Clave del almacén de un contador: rl:<cubo>:<sha256 del identificador, 32 caracteres>.
+- `hit` (l. 291) — @return array{allowed:bool,remaining:int,resetAt:int}
+- `exceeded` (l. 307) — ¿Ha llegado el contador de fallos de ese cubo e identificador a `$max` en la ventana actual? No suma nada.
+- `fail` (l. 314) — Anota un fallo (la ventana cuenta desde el primero) y devuelve cuántos lleva en ella.
+- `failLock` (l. 335) — Anota un fallo de un contador con BLOQUEO: los fallos se cuentan en una ventana de `$windowMs` desde el primero y, al llegar al `$max`-ésimo, el contador queda bloqueado `$lockMs`
+- `lockedFor` (l. 353) — Milisegundos que le quedan de bloqueo a un contador con bloqueo (failLock); 0 si no está bloqueado. No suma nada.
+- `clear` (l. 361) — Pone a cero el contador de fallos (tras un acceso correcto).
+- `purgeExpired` (l. 368) — Borra ahora hasta PURGE_MAX registros de límite caducados; devuelve cuántos.
+- `maybePurge` (l. 374) — Con probabilidad 1/purgeOneIn limpia registros caducados; un fallo al limpiar nunca rompe la petición.
 
 ### `Router.php`
 
@@ -2569,8 +2572,8 @@ Secciones: `[ROUTER]` · `[LIMITES]` · `[ERRORES]`
 - `messages` (l. 329) — GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite.
 - `mailTest` (l. 339) — POST /mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de order_to. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
 - `userAction` (l. 359) — POST /users/:correo/unlock { clear_reinforced? } quita el bloqueo de esa cuenta (y, si se pide, su protección reforzada) · /two-step { enabled } pide o no el código por correo a esa cuenta (false = cuenta de confianza)
-- `route` (l. 379) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
-- `cron` (l. 473) — sincroniza los precios (cron diario), hace la copia de seguridad semanal si toca y limpia lo caducado, también si la hoja se rechaza (esa limpieza no depende de la hoja)
+- `route` (l. 380) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
+- `cron` (l. 479) — sincroniza los precios (cron diario), hace la copia de seguridad semanal si toca y limpia lo caducado, también si la hoja se rechaza (esa limpieza no depende de la hoja)
 
 ### `Security.php`
 
@@ -2578,33 +2581,34 @@ Secciones: `[ROUTER]` · `[LIMITES]` · `[ERRORES]`
 
 Secciones: `[SECURITY]` · `[AJUSTES]` · `[DISPOSITIVOS DE CONFIANZA]`
 
-- `flag` (l. 46) — Un ajuste booleano de config.php o de una variable de entorno (que llega como texto: «false», «off», «0», «no» = no).
-- `twoStepEnabled` (l. 54) — ¿Está activa la verificación por correo para los managers? (config two_step.enabled; sí por defecto).
-- `attackProtection` (l. 57) — ¿Se refuerza una cuenta tras ataques repetidos? (config two_step.on_attack; sí por defecto).
-- `rememberDays` (l. 60) — Días que se recuerda un dispositivo tras dar el código (config two_step.remember_days; 30 por defecto, de 1 a 90; 0 = no se ofrece recordar).
-- `exemptList` (l. 67) — Correos que nunca piden código (config two_step.exempt: lista o texto separado por comas), en minúsculas.
-- `alertRecipients` (l. 75) — Quién recibe el aviso de ataques repetidos: config alert_to (lista o texto separado por comas, solo correos válidos) o, si está vacío, los destinatarios de los pedidos (order_to).
-- `isExempt` (l. 85) — ¿Es una cuenta de confianza? Con la casilla «sin código» (two_step = false) o en la lista two_step.exempt.
-- `codeStatus` (l. 91) — Estado para mostrar de un usuario: 'required' (pide código al entrar), 'exempt' (cuenta de confianza), 'off' (la verificación está desactivada en el servidor) o 'n/a' (clientes: solo la piden tras ataques).
-- `underAttack` (l. 99) — ¿Está esa cuenta en protección reforzada (ataques repetidos recientes)?
-- `codeReason` (l. 105) — Por qué hay que pedir código a esta persona al entrar, o null si no: 'two_step' (manager con verificación activa) o 'attack' (protección reforzada tras ataques repetidos).
-- `deviceCookieName` (l. 114) — Nombre de la cookie del dispositivo de una cuenta: una por cuenta (un ordenador compartido entre dos managers no mezcla sus dispositivos).
-- `deviceSig` (l. 117) — Firma de un dispositivo: ligada al identificador de sesión del usuario (si se borra y se vuelve a crear, no vale), a su época de dispositivos (olvidarlos los invalida) y a la caducidad.
-- `issueDevice` (l. 123) — Cookie de un dispositivo recién verificado → ['name', 'value', 'max_age'], o null si no hay secreto seguro o no se ofrece recordar.
-- `deviceTrusted` (l. 134) — ¿Trae la petición una cookie de dispositivo válida (firma buena, sin caducar y de ESTA cuenta)?
-- `cookieHeader` (l. 144) — Valor de la cabecera Set-Cookie de un dispositivo: HttpOnly (el JavaScript de la página no la ve), SameSite=Strict, solo para el API y con Secure si la petición llegó por HTTPS.
-- `forgetDevices` (l. 150) — Hace que todos los dispositivos recordados de esa cuenta dejen de valer (sube su época). Devuelve false si la cuenta no existe.
-- `hint` (l. 158) — «m****@torivac.com»: el correo con casi todo oculto, para decir adónde se mandó el código sin enseñarlo entero.
-- `sendCode` (l. 166) — Envía el código por correo al usuario → resultado de Mail::send. El código no va en el asunto (se vería en notificaciones).
-- `startChallenge` (l. 183) — Crea un código para esa persona, lo guarda (solo su hash HMAC) y se lo manda por correo. `$why`: 'two_step' o 'attack'.
-- `resend` (l. 207) — Reenvía un código nuevo (el anterior deja de valer): como mucho PIN_SENDS envíos por intento de acceso, con PIN_RESEND_WAIT_MS entre ellos.
-- `verify` (l. 237) — Comprueba un código. Bien → ['email', 'why'] y el código queda gastado. Mal → 'error' con 'left' (intentos que quedan) y, con PIN_TRIES fallos, el código se anula. Además de los 5 intentos por
-- `idxKey` (l. 279) — Clave del índice de visitantes que han fallado contra una cuenta.
-- `noteAttempt` (l. 282) — Anota que ese visitante (clave de IP) ha fallado contra esa cuenta: así se puede ver si está bloqueada y desbloquearla sin conocer las IP de antemano. El índice caduca a las 2 horas y guarda 40 como mucho.
-- `lockLeft` (l. 297) — Milisegundos que le quedan de bloqueo a una cuenta por cualquiera de los motivos (contraseña o código, por visitante o por cuenta); 0 si no está bloqueada.
-- `unlock` (l. 310) — Quita el bloqueo de una cuenta y pone a cero sus contadores (por cuenta y por cada visitante que había fallado contra ella; también el bloqueo del propio visitante, para que quien
-- `lockoutHappened` (l. 328) — Un bloqueo acaba de empezar contra una cuenta (`$weight` 1 = el de un visitante; ATTACK_LOCKS = el de la cuenta entera o 20 códigos erróneos: un ataque repartido). Si la cuenta suma ATTACK_LOCKS
-- `alertMail` (l. 348) — Correo de aviso al equipo por intentos repetidos contra una cuenta (sin ninguna contraseña ni código).
+- `flag` (l. 49) — Un ajuste booleano de config.php o de una variable de entorno (que llega como texto: «false», «off», «0», «no» = no).
+- `twoStepEnabled` (l. 57) — ¿Está activa la verificación por correo para los managers? (config two_step.enabled; sí por defecto).
+- `attackProtection` (l. 60) — ¿Se refuerza una cuenta tras ataques repetidos? (config two_step.on_attack; sí por defecto).
+- `rememberDays` (l. 63) — Días que se recuerda un dispositivo tras dar el código (config two_step.remember_days; 30 por defecto, de 1 a 90; 0 = no se ofrece recordar).
+- `exemptList` (l. 70) — Correos que nunca piden código (config two_step.exempt: lista o texto separado por comas), en minúsculas.
+- `alertRecipients` (l. 78) — Quién recibe el aviso de ataques repetidos: config alert_to (lista o texto separado por comas, solo correos válidos) o, si está vacío, los destinatarios de los pedidos (order_to).
+- `isExempt` (l. 88) — ¿Es una cuenta de confianza? Con la casilla «sin código» (two_step = false) o en la lista two_step.exempt.
+- `codeStatus` (l. 94) — Estado para mostrar de un usuario: 'required' (pide código al entrar), 'exempt' (cuenta de confianza), 'off' (la verificación está desactivada en el servidor) o 'n/a' (clientes: solo la piden tras ataques).
+- `underAttack` (l. 102) — ¿Está esa cuenta en protección reforzada (ataques repetidos recientes)?
+- `codeReason` (l. 108) — Por qué hay que pedir código a esta persona al entrar, o null si no: 'two_step' (manager con verificación activa) o 'attack' (protección reforzada tras ataques repetidos).
+- `deviceCookieName` (l. 117) — Nombre de la cookie del dispositivo de una cuenta: una por cuenta (un ordenador compartido entre dos managers no mezcla sus dispositivos).
+- `deviceSig` (l. 120) — Firma de un dispositivo: ligada al identificador de sesión del usuario (si se borra y se vuelve a crear, no vale), a su época de dispositivos (olvidarlos los invalida) y a la caducidad.
+- `issueDevice` (l. 126) — Cookie de un dispositivo recién verificado → ['name', 'value', 'max_age'], o null si no hay secreto seguro o no se ofrece recordar.
+- `deviceTrusted` (l. 137) — ¿Trae la petición una cookie de dispositivo válida (firma buena, sin caducar y de ESTA cuenta)?
+- `cookieHeader` (l. 147) — Valor de la cabecera Set-Cookie de un dispositivo: HttpOnly (el JavaScript de la página no la ve), SameSite=Strict, solo para el API y con Secure si la petición llegó por HTTPS.
+- `forgetDevices` (l. 153) — Hace que todos los dispositivos recordados de esa cuenta dejen de valer (sube su época). Devuelve false si la cuenta no existe.
+- `hint` (l. 161) — «m****@torivac.com»: el correo con casi todo oculto, para decir adónde se mandó el código sin enseñarlo entero.
+- `sendCode` (l. 169) — Envía el código por correo al usuario → resultado de Mail::send. El código no va en el asunto (se vería en notificaciones).
+- `startChallenge` (l. 186) — Crea un código para esa persona, lo guarda (solo su hash HMAC) y se lo manda por correo. `$why`: 'two_step' o 'attack'.
+- `resend` (l. 210) — Reenvía un código nuevo (el anterior deja de valer): como mucho PIN_SENDS envíos por intento de acceso, con PIN_RESEND_WAIT_MS entre ellos.
+- `verify` (l. 240) — Comprueba un código. Bien → ['email', 'why'] y el código queda gastado. Mal → 'error' con 'left' (intentos que quedan) y, con PIN_TRIES fallos, el código se anula. Además de los 5 intentos por
+- `idxKey` (l. 282) — Clave del índice de visitantes que han fallado contra una cuenta.
+- `noteAttempt` (l. 285) — Anota que ese visitante (clave de IP) ha fallado contra esa cuenta: así se puede ver si está bloqueada y desbloquearla sin conocer las IP de antemano. El índice caduca a las 2 horas y guarda 40 como mucho.
+- `lockLeft` (l. 301) — Milisegundos que le quedan de bloqueo a una cuenta por cualquiera de los motivos (contraseña o código, por visitante o por cuenta); 0 si no está bloqueada.
+- `unlock` (l. 314) — Quita el bloqueo de una cuenta y pone a cero sus contadores (por cuenta y por cada visitante que había fallado contra ella; también el bloqueo del propio visitante, para que quien
+- `lockoutHappened` (l. 332) — Un bloqueo acaba de empezar contra una cuenta (`$weight` 1 = el de un visitante; ATTACK_LOCKS = el de la cuenta entera o 20 códigos erróneos: un ataque repartido). Si la cuenta suma ATTACK_LOCKS
+- `deferred` (l. 352) — Ejecuta `$job` cuando ya se ha enviado la respuesta (con PHP-FPM, quien hizo la petición no espera al correo); con `$defer` en false, al instante. Nunca lanza.
+- `alertMail` (l. 360) — Correo de aviso al equipo por intentos repetidos contra una cuenta (sin ninguna contraseña ni código). Si no sale, queda anotado en la actividad (no en mail:last, que es público).
 
 ### `Smtp.php`
 
@@ -2723,6 +2727,12 @@ Secciones: `[CREATE-USER]`
 
 Secciones: `[RESTORE]`
 
+### `unlock.php`
+
+[UNLOCK-TOOL] Quita el bloqueo de una cuenta desde la línea de comandos: la salida si ningún manager puede entrar al panel para pulsar «Desbloquear» (por ejemplo, si alguien ha agotado el bloqueo de la cuenta de quien administra la web): php api/tools/unlock.php correo@dominio.com          quita los bloqueos y pone a cero los contadores de esa cuenta (contraseñas, códigos y visitantes que fallaron contra ella)
+
+Secciones: `[UNLOCK-TOOL]`
+
 ## `backend-php/api/tests/`
 
 ### `ApiTest.php`
@@ -2830,13 +2840,13 @@ Pruebas de lo que cambia de un hosting a otro (cPanel, Plesk…): la carpeta de 
 - `hosting_rmtree` (l. 24) — Borra una carpeta temporal con todo lo que lleva dentro.
 - `hosting_status` (l. 32) — Estado de cada comprobación del diagnóstico por su id.
 - `test_client_ip_behind_proxies` (l. 40) — IP del visitante: sin proxy no se puede falsear con cabeceras; detrás de un proxy de confianza (nginx de Plesk, Cloudflare) se lee X-Forwarded-For de derecha a izquierda.
-- `test_ip_in_net` (l. 62) — Pertenencia a una red: límites, máscaras que no son múltiplo de 8, IPv6, familias distintas, IP suelta y /0.
-- `test_proxy_list` (l. 72) — Proxies de confianza extra: los de config (lista o texto con comas) más la dirección del propio servidor.
-- `test_request_from_globals_ip` (l. 83) — Petición real (a partir de $_SERVER): nginx de Plesk que llama a Apache por la IP pública de la máquina, y conexión directa con cabeceras falsas.
-- `test_store_picks_a_usable_data_folder` (l. 100) — Carpeta de datos: la configurada, un almacén que ya tiene datos, la primera que se pueda crear, o error claro; un fichero en medio hace de «raíz de solo lectura» (Plesk).
-- `test_diag_reports_data_folder_deviation` (l. 134) — El diagnóstico avisa cuando la carpeta de datos configurada no sirvió y se usó otra; por línea de comandos sabe si la carpeta cae dentro de la web.
-- `test_diag_web_checks` (l. 155) — Comprobaciones de servidor del diagnóstico: nginx sin Apache ignora el .htaccess; la IP del visitante tras un proxy; HTTPS.
-- `test_diag_build_stamp_and_domain` (l. 177) — El Diagnóstico enseña la versión instalada (build.json) y avisa si falta, si se compiló con cambios sin guardar o si el dominio no es el del paquete.
+- `test_ip_in_net` (l. 66) — Pertenencia a una red: límites, máscaras que no son múltiplo de 8, IPv6, familias distintas, IP suelta y /0.
+- `test_proxy_list` (l. 76) — Proxies de confianza extra: los de config (lista o texto con comas) más la dirección del propio servidor.
+- `test_request_from_globals_ip` (l. 87) — Petición real (a partir de $_SERVER): nginx de Plesk que llama a Apache por la IP pública de la máquina, y conexión directa con cabeceras falsas.
+- `test_store_picks_a_usable_data_folder` (l. 104) — Carpeta de datos: la configurada, un almacén que ya tiene datos, la primera que se pueda crear, o error claro; un fichero en medio hace de «raíz de solo lectura» (Plesk).
+- `test_diag_reports_data_folder_deviation` (l. 138) — El diagnóstico avisa cuando la carpeta de datos configurada no sirvió y se usó otra; por línea de comandos sabe si la carpeta cae dentro de la web.
+- `test_diag_web_checks` (l. 159) — Comprobaciones de servidor del diagnóstico: nginx sin Apache ignora el .htaccess; la IP del visitante tras un proxy; HTTPS.
+- `test_diag_build_stamp_and_domain` (l. 181) — El Diagnóstico enseña la versión instalada (build.json) y avisa si falta, si se compiló con cambios sin guardar o si el dominio no es el del paquete.
 
 ### `MailTest.php`
 
@@ -2984,33 +2994,37 @@ Pruebas de seguridad de los pedidos y del contacto (informe del revisor del PHP:
 
 Pruebas de la seguridad de acceso de la sesión «Seguridad 3»: verificación en dos pasos por correo (código, dispositivo recordado, cuentas de confianza), respuesta a ataques repetidos, desbloqueo de cuentas, cambio de contraseña, registro de actividad y copias de seguridad (crear, descargar con enlace firmado, restaurar). El correo es el controlador «file»: el código se lee de la carpeta outbox.
 
-- `ss_setup` (l. 26) — Prepara el almacén con el código por correo ACTIVADO (la configuración normal) y un manager (jefa) y un cliente (ana). `$extra` cambia ajustes de two_step.
-- `ss_clear_outbox` (l. 34) — Vacía el outbox (los correos que ha «enviado» el controlador file).
-- `ss_code` (l. 37) — El código de 6 cifras del último correo de seguridad enviado a `$to` (null si no hay). Se vacía el outbox antes de cada acción para que no haya dudas.
-- `ss_login` (l. 46) — POST /auth/login.
-- `ss_verify` (l. 52) — POST /auth/verify.
-- `ss_manager_token` (l. 58) — Entra como manager con su código (sin recordar el dispositivo) y devuelve el token.
-- `ss_call` (l. 67) — Llamada autenticada con un token.
-- `ss_reset_sends` (l. 73) — Pone a cero el tope de códigos por hora de una cuenta (una prueba que pide muchos no debe chocar con él salvo que lo pruebe).
-- `ss_config` (l. 76) — La configuración normal de las pruebas con estos cambios encima (a diferencia de `Config::all() + [...]`, aquí gana lo nuevo).
-- `ss_cookie` (l. 83) — El valor de la cookie de dispositivo que fijó una respuesta (null si no la hay).
-- `test_step_manager_must_give_the_email_code` (l. 90) — SS1 · Un manager con la contraseña buena recibe un código por correo y solo con él obtiene la sesión; el código no va en el asunto ni en claro en el almacén.
-- `test_step_clients_and_missing_mail_do_not_need_a_code` (l. 116) — SS2 · Los clientes no piden código (solo si hay ataques repetidos); sin correo capaz de enviar, nadie lo pide (no se queda nadie fuera).
-- `test_step_five_wrong_codes_kill_the_challenge` (l. 128) — SS3 · Cinco códigos erróneos anulan ese código (y bloquean la pareja visitante+cuenta una hora); hay que volver a entrar con la contraseña.
-- `test_step_resend_rules` (l. 151) — SS4 · Reenviar el código: espera entre envíos, como mucho 3 envíos por intento, y el código anterior deja de valer.
-- `test_step_remembered_device` (l. 176) — SS5 · Dispositivo recordado: cookie firmada, HttpOnly, de 30 días y solo de esa cuenta; deja de valer al olvidarla, al cambiar la contraseña o al borrar y recrear la cuenta.
-- `test_step_exemptions_and_switches` (l. 228) — SS6 · Cuentas de confianza (casilla, lista en config.php) y interruptores: nadie se queda fuera. Si el correo falla justo al pedir el código, se dice y no queda nada pendiente.
-- `test_step_user_actions_are_for_managers` (l. 258) — SS7 · La casilla de código por correo, el desbloqueo y la contraseña de otra cuenta son cosas de managers.
-- `test_step_change_own_password` (l. 276) — SS8 · Cambiar la contraseña propia: pide la actual (5 fallos por hora), cierra todas las sesiones y exige entrar de nuevo.
-- `test_step_repeated_attacks_alert_once_and_require_a_code` (l. 296) — SS9 · Ataques repetidos: tres bloqueos en 24 h → UN aviso por correo y código en dispositivos nuevos 7 días; sin avisos de rutina; una cuenta de confianza no pide código de rutina, pero sí mientras dura la protección reforzada.
-- `test_step_distributed_attack_counts_at_once` (l. 352) — SS10 · El bloqueo de la cuenta entera (30 fallos repartidos entre muchas direcciones) cuenta como ataque repetido al instante.
-- `test_step_unlock_account` (l. 363) — SS11 · Otro manager desbloquea una cuenta (la pareja visitante+cuenta, la cuenta y el visitante) y la lista dice cuáles están bloqueadas; la protección reforzada se puede quitar aparte.
-- `test_step_audit_log` (l. 383) — SS12 · Registro de actividad: qué se anota, con qué detalle, cuánto ocupa y quién lo lee.
-- `test_step_audit_every_action_has_a_label` (l. 424) — Toda acción que el servidor anota tiene su nombre en castellano (si no, el panel enseñaría un código como «user.password»). Se buscan en el código fuente, así que una acción nueva sin nombre lo rompe.
-- `test_step_audit_caps_and_purge` (l. 438) — SS13 · Tamaño y limpieza del registro: un día no pasa de 2 MB (con una línea de aviso) y lo de más de 180 días se borra.
-- `test_step_backup_create_download_restore` (l. 458) — SS14 · Copia de seguridad: se crea desde el panel, se baja con un enlace firmado de 2 minutos y se restaura entera (datos con su caducidad e imágenes); nada de secretos ni contadores.
-- `test_step_backup_schedule_and_prune` (l. 523) — SS15 · Copias: se guardan solo las 8 últimas, la semanal se hace una vez por semana y se puede apagar.
-- `test_step_health_features_and_diagnostics` (l. 560) — SS16 · /health cuenta qué trae el servidor (y la clave PÚBLICA del CAPTCHA solo si están las dos claves) y el Diagnóstico explica cada medida.
+- `ss_setup` (l. 27) — Prepara el almacén con el código por correo ACTIVADO (la configuración normal) y un manager (jefa) y un cliente (ana). `$extra` cambia ajustes de two_step.
+- `ss_clear_outbox` (l. 35) — Vacía el outbox (los correos que ha «enviado» el controlador file).
+- `ss_code` (l. 38) — El código de 6 cifras del último correo de seguridad enviado a `$to` (null si no hay). Se vacía el outbox antes de cada acción para que no haya dudas.
+- `ss_login` (l. 47) — POST /auth/login.
+- `ss_verify` (l. 53) — POST /auth/verify.
+- `ss_manager_token` (l. 59) — Entra como manager con su código (sin recordar el dispositivo) y devuelve el token.
+- `ss_call` (l. 68) — Llamada autenticada con un token.
+- `ss_reset_sends` (l. 74) — Pone a cero el tope de códigos por hora de una cuenta (una prueba que pide muchos no debe chocar con él salvo que lo pruebe).
+- `ss_config` (l. 77) — La configuración normal de las pruebas con estos cambios encima (a diferencia de `Config::all() + [...]`, aquí gana lo nuevo).
+- `ss_cookie` (l. 84) — El valor de la cookie de dispositivo que fijó una respuesta (null si no la hay).
+- `test_step_manager_must_give_the_email_code` (l. 91) — SS1 · Un manager con la contraseña buena recibe un código por correo y solo con él obtiene la sesión; el código no va en el asunto ni en claro en el almacén.
+- `test_step_clients_and_missing_mail_do_not_need_a_code` (l. 117) — SS2 · Los clientes no piden código (solo si hay ataques repetidos); sin correo capaz de enviar, nadie lo pide (no se queda nadie fuera).
+- `test_step_five_wrong_codes_kill_the_challenge` (l. 129) — SS3 · Cinco códigos erróneos anulan ese código (y bloquean la pareja visitante+cuenta una hora); hay que volver a entrar con la contraseña.
+- `test_step_resend_rules` (l. 152) — SS4 · Reenviar el código: espera entre envíos, como mucho 3 envíos por intento, y el código anterior deja de valer.
+- `test_step_remembered_device` (l. 177) — SS5 · Dispositivo recordado: cookie firmada, HttpOnly, de 30 días y solo de esa cuenta; deja de valer al olvidarla, al cambiar la contraseña o al borrar y recrear la cuenta.
+- `test_step_exemptions_and_switches` (l. 229) — SS6 · Cuentas de confianza (casilla, lista en config.php) y interruptores: nadie se queda fuera. Si el correo falla justo al pedir el código, se dice y no queda nada pendiente.
+- `test_step_user_actions_are_for_managers` (l. 259) — SS7 · La casilla de código por correo, el desbloqueo y la contraseña de otra cuenta son cosas de managers.
+- `test_step_change_own_password` (l. 277) — SS8 · Cambiar la contraseña propia: pide la actual (5 fallos por hora), cierra todas las sesiones y exige entrar de nuevo.
+- `test_step_repeated_attacks_alert_once_and_require_a_code` (l. 297) — SS9 · Ataques repetidos: tres bloqueos en 24 h → UN aviso por correo y código en dispositivos nuevos 7 días; sin avisos de rutina; una cuenta de confianza no pide código de rutina, pero sí mientras dura la protección reforzada.
+- `test_step_distributed_attack_counts_at_once` (l. 353) — SS10 · El bloqueo de la cuenta entera (30 fallos repartidos entre muchas direcciones) cuenta como ataque repetido al instante.
+- `test_step_unlock_account` (l. 364) — SS11 · Otro manager desbloquea una cuenta (la pareja visitante+cuenta, la cuenta y el visitante) y la lista dice cuáles están bloqueadas; la protección reforzada se puede quitar aparte.
+- `test_step_audit_log` (l. 384) — SS12 · Registro de actividad: qué se anota, con qué detalle, cuánto ocupa y quién lo lee.
+- `test_step_audit_every_action_has_a_label` (l. 425) — Toda acción que el servidor anota tiene su nombre en castellano (si no, el panel enseñaría un código como «user.password»). Se buscan en el código fuente, así que una acción nueva sin nombre lo rompe.
+- `test_step_burst_counts_one_lockout` (l. 439) — SSR1 · Revisión independiente: una ráfaga de peticiones simultáneas contra una cuenta cuenta UN bloqueo (no uno por petición), así que un solo visitante no puede provocar el aviso ni la protección reforzada.
+- `test_step_security_mail_is_not_public` (l. 453) — SSR2 · Revisión independiente: los correos de seguridad (código y aviso) no se anotan en mail:last, que publica /api/health; un fallo del aviso queda en la actividad.
+- `test_step_audit_anonymous_cap_and_no_junk` (l. 474) — SSR3 · Revisión independiente: lo que hacen visitantes sin sesión no llena el registro del día entero (la mitad queda para los managers), y un correo inventado no deja ficheros de bloqueo.
+- `test_step_self_protection_and_turnstile_token` (l. 493) — SSR4 · Revisión independiente: un manager no se borra a sí mismo ni se cambia la contraseña sin la actual; el token maestro sí puede; un token de Turnstile enorme se rechaza sin llamar a Cloudflare.
+- `test_step_audit_caps_and_purge` (l. 514) — SS13 · Tamaño y limpieza del registro: un día no pasa de 2 MB (con una línea de aviso) y lo de más de 180 días se borra.
+- `test_step_backup_create_download_restore` (l. 534) — SS14 · Copia de seguridad: se crea desde el panel, se baja con un enlace firmado de 2 minutos y se restaura entera (datos con su caducidad e imágenes); nada de secretos ni contadores.
+- `test_step_backup_schedule_and_prune` (l. 599) — SS15 · Copias: se guardan solo las 8 últimas, la semanal se hace una vez por semana y se puede apagar.
+- `test_step_health_features_and_diagnostics` (l. 636) — SS16 · /health cuenta qué trae el servidor (y la clave PÚBLICA del CAPTCHA solo si están las dos claves) y el Diagnóstico explica cada medida.
 
 ### `SmtpTest.php`
 
@@ -3074,28 +3088,28 @@ Ejecuta todas las pruebas: php tests/run.php  (código de salida 1 si alguna fal
 
 Preparación común de las pruebas: almacén temporal, configuración de pruebas, catálogo sintético y peticiones simuladas
 
-- `fresh` (l. 26) — Almacén temporal nuevo, configuración y catálogo sintéticos de las pruebas.
-- `prices` (l. 42) — Precios de ejemplo: TT0020210 con tramos y P16633.
-- `seedPrices` (l. 48) — Guarda los precios de ejemplo en el almacén.
-- `goodOrder` (l. 51) — Pedido válido de ejemplo (se puede sobrescribir cualquier campo).
-- `req` (l. 57) — Petición simulada para llamar al Router sin servidor web.
-- `wire` (l. 60) — cuerpo de una respuesta tal y como lo recibe un cliente (JSON → arrays): los `items` de precios viajan como objeto y en el servidor son stdClass
-- `master` (l. 63) — Cabecera de autenticación con el token maestro.
-- `bearer` (l. 66) — Cabecera de autenticación con un token de sesión.
-- `login_token` (l. 69) — Inicia sesión por el API y devuelve el token (null si no entra).
-- `kv_files` (l. 76) — Nombres de los ficheros del almacén (kv/) que empiezan por un prefijo ya codificado como en disco («rl%3A» para las claves rl:).
-- `outbox` (l. 84) — correos guardados por el controlador «file»
-- `tmp_dir` (l. 94) — Carpeta temporal nueva y vacía para una prueba (la borra quien la pide con rmtree_all).
-- `rmtree_all` (l. 102) — Borra una carpeta temporal con todo lo que lleva dentro.
-- `php_child` (l. 113) — Ejecuta código PHP en un proceso aparte (con la autocarga del API) y devuelve [código de salida, salida estándar, salida de error]. Sirve para lo que no debe tumbar la prueba si falla
-- `api_server` (l. 134) — Arranca el API REAL (api/index.php) con `php -S` en un puerto libre; la configuración va por variables de entorno TORIVAC_* (no hay config.php). La ruta /control hace saltar un aviso
-- `zip_build` (l. 158) — Zip mínimo hecho a mano con las entradas que se le den: nombre => contenido (se comprime con deflate; los nombres que acaban en «!» se guardan SIN comprimir) o nombre =>
-- `xlsx_with_sheet` (l. 175) — Libro con una sola hoja «Precios» cuyo XML de hoja es `$sheetXml` (más, si se quiere, las cadenas compartidas).
-- `so_customer` (l. 184) — Datos del cliente de un pedido de prueba (cualquier campo se puede sobrescribir).
-- `so_post` (l. 190) — Envía un pedido por el manejador; cada llamada usa por defecto una IP distinta (no se tropieza con el límite por visitante).
-- `deflate_bomb` (l. 198) — Flujo deflate (sin cabecera zlib) de `$mb` megabytes de espacios, hecho por trozos: ocupa unos 300 KB comprimido y 300 MB descomprimido (la «bomba» del informe).
-- `mt_msg` (l. 208) — Correo de ejemplo al equipo con todos los campos.
-- `mt_http` (l. 214) — HTTP simulado que guarda cada petición en `$calls` y responde `$status` / `$body` (o lanza si `$throw`).
-- `bl_img` (l. 224) — Imágenes de 1×1 píxel válidas (PNG, JPEG y WebP).
-- `bl_png_dims` (l. 233) — PNG que dice tener esas dimensiones (solo la cabecera: basta para que se rechace por tamaño).
+- `fresh` (l. 27) — Almacén temporal nuevo, configuración y catálogo sintéticos de las pruebas.
+- `prices` (l. 44) — Precios de ejemplo: TT0020210 con tramos y P16633.
+- `seedPrices` (l. 50) — Guarda los precios de ejemplo en el almacén.
+- `goodOrder` (l. 53) — Pedido válido de ejemplo (se puede sobrescribir cualquier campo).
+- `req` (l. 59) — Petición simulada para llamar al Router sin servidor web.
+- `wire` (l. 62) — cuerpo de una respuesta tal y como lo recibe un cliente (JSON → arrays): los `items` de precios viajan como objeto y en el servidor son stdClass
+- `master` (l. 65) — Cabecera de autenticación con el token maestro.
+- `bearer` (l. 68) — Cabecera de autenticación con un token de sesión.
+- `login_token` (l. 71) — Inicia sesión por el API y devuelve el token (null si no entra).
+- `kv_files` (l. 78) — Nombres de los ficheros del almacén (kv/) que empiezan por un prefijo ya codificado como en disco («rl%3A» para las claves rl:).
+- `outbox` (l. 86) — correos guardados por el controlador «file»
+- `tmp_dir` (l. 96) — Carpeta temporal nueva y vacía para una prueba (la borra quien la pide con rmtree_all).
+- `rmtree_all` (l. 104) — Borra una carpeta temporal con todo lo que lleva dentro.
+- `php_child` (l. 115) — Ejecuta código PHP en un proceso aparte (con la autocarga del API) y devuelve [código de salida, salida estándar, salida de error]. Sirve para lo que no debe tumbar la prueba si falla
+- `api_server` (l. 136) — Arranca el API REAL (api/index.php) con `php -S` en un puerto libre; la configuración va por variables de entorno TORIVAC_* (no hay config.php). La ruta /control hace saltar un aviso
+- `zip_build` (l. 160) — Zip mínimo hecho a mano con las entradas que se le den: nombre => contenido (se comprime con deflate; los nombres que acaban en «!» se guardan SIN comprimir) o nombre =>
+- `xlsx_with_sheet` (l. 177) — Libro con una sola hoja «Precios» cuyo XML de hoja es `$sheetXml` (más, si se quiere, las cadenas compartidas).
+- `so_customer` (l. 186) — Datos del cliente de un pedido de prueba (cualquier campo se puede sobrescribir).
+- `so_post` (l. 192) — Envía un pedido por el manejador; cada llamada usa por defecto una IP distinta (no se tropieza con el límite por visitante).
+- `deflate_bomb` (l. 200) — Flujo deflate (sin cabecera zlib) de `$mb` megabytes de espacios, hecho por trozos: ocupa unos 300 KB comprimido y 300 MB descomprimido (la «bomba» del informe).
+- `mt_msg` (l. 210) — Correo de ejemplo al equipo con todos los campos.
+- `mt_http` (l. 216) — HTTP simulado que guarda cada petición en `$calls` y responde `$status` / `$body` (o lanza si `$throw`).
+- `bl_img` (l. 226) — Imágenes de 1×1 píxel válidas (PNG, JPEG y WebP).
+- `bl_png_dims` (l. 235) — PNG que dice tener esas dimensiones (solo la cabecera: basta para que se rechace por tamaño).
 

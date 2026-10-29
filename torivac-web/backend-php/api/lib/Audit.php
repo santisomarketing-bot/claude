@@ -33,7 +33,7 @@ final class Audit
     const LABELS = [
         'login.ok' => 'Entró al panel', 'login.fail' => 'Contraseña incorrecta', 'login.locked' => 'Acceso bloqueado una hora', 'login.pin_sent' => 'Código enviado por correo',
         'login.pin_ok' => 'Entró con código', 'login.pin_fail' => 'Código incorrecto', 'login.device' => 'Dispositivo recordado', 'logout' => 'Cerró sesión', 'devices.forget' => 'Olvidó sus dispositivos',
-        'alert.repeated' => 'Aviso: intentos repetidos', 'user.create' => 'Usuario creado', 'user.delete' => 'Usuario borrado', 'user.unlock' => 'Cuenta desbloqueada', 'user.two_step' => 'Cambió el código por correo', 'user.password' => 'Cambió una contraseña',
+        'alert.repeated' => 'Aviso: intentos repetidos', 'alert.mail_failed' => 'El aviso por correo no se pudo enviar', 'user.create' => 'Usuario creado', 'user.delete' => 'Usuario borrado', 'user.unlock' => 'Cuenta desbloqueada', 'user.two_step' => 'Cambió el código por correo', 'user.password' => 'Cambió una contraseña',
         'prices.upload' => 'Subió una hoja de precios', 'prices.refresh' => 'Sincronizó los precios', 'prices.ai_apply' => 'Aplicó cambios de precios (IA)', 'prices.sync' => 'Sincronización automática de precios',
         'proposal.state' => 'Decidió una propuesta', 'blog.create' => 'Creó una entrada', 'blog.update' => 'Guardó una entrada', 'blog.delete' => 'Borró una entrada', 'blog.image_upload' => 'Subió una imagen',
         'blog.image_delete' => 'Borró una imagen', 'message.delete' => 'Borró un mensaje', 'mail.test' => 'Envió un correo de prueba', 'backup.create' => 'Creó una copia de seguridad',
@@ -82,6 +82,7 @@ final class Audit
             ];
             $size = is_file($f) ? (int) @filesize($f) : 0;
             if ($size >= self::MAX_DAY_BYTES) return;
+            if ($who === null && $size >= (int) (self::MAX_DAY_BYTES / 2)) return;                    // lo que hace alguien SIN sesión (intentos de acceso) no puede llenar el día entero: la mitad queda para lo que hacen los managers
             $line = Util::enc($e) . "\n";
             if ($size >= self::MAX_DAY_BYTES - 1000) {                                                // zona final: UNA línea que avisa y se rellena de saltos de línea hasta el tope (vacíos, nadie los lee) para que no entre nada más
                 $line = Util::enc(['t' => $e['t'], 'a' => 'limite', 'u' => 'sistema', 'r' => '', 'ip' => '', 'ua' => '', 'd' => 'Se alcanzó el tamaño máximo del registro de hoy: no se anotan más hechos hasta mañana']) . "\n";

@@ -171,7 +171,7 @@ final class Orders
     {
         $secret = (string) Config::get('turnstile_secret', '');
         if ($secret === '') return true;
-        if ($token === '') return false;
+        if ($token === '' || strlen($token) > 2048) return false;                                  // los tokens de Cloudflare no pasan de 2048 caracteres
         try {
             [$st, $body] = Http::request('POST', (string) Config::get('turnstile_url', 'https://challenges.cloudflare.com/turnstile/v0/siteverify'), ['Content-Type: application/x-www-form-urlencoded'], http_build_query(['secret' => $secret, 'response' => $token, 'remoteip' => $ip]));
             $j = json_decode($body, true);

@@ -12,6 +12,7 @@ use Torivac\Config;
 use Torivac\Diag;
 use Torivac\Http;
 use Torivac\Mail;
+use Torivac\Orders;
 use Torivac\RateLimit;
 use Torivac\Router;
 use Torivac\Security;
@@ -434,6 +435,81 @@ function test_step_audit_every_action_has_a_label()
     T::same([], array_values(array_filter($codes, function ($c) { return Audit::label($c) === $c; })), 'todas tienen nombre en castellano para el panel');
 }
 
+/** SSR1 · Revisión independiente: una ráfaga de peticiones simultáneas contra una cuenta cuenta UN bloqueo (no uno por petición), así que un solo visitante no puede provocar el aviso ni la protección reforzada. */
+function test_step_burst_counts_one_lockout()
+{
+    ss_setup(['enabled' => false]);
+    $starts = 0;
+    for ($i = 0; $i < 12; $i++) if (RateLimit::failLock('lgpair', '10.9.0.1:ana@acme.es', 5, 3600000, 3600000) > 0) $starts++;
+    T::same(1, $starts, 'de 12 fallos que llegan juntos solo uno empieza el bloqueo (los demás lo encuentran ya puesto y no cuentan)');
+    T::true(RateLimit::lockedFor('lgpair', '10.9.0.1:ana@acme.es') > 0, 'y el bloqueo sigue puesto');
+    ss_clear_outbox();
+    for ($i = 0; $i < 12; $i++) ss_login('ana@acme.es', 'mala-' . $i, '10.9.0.2');
+    T::same([0, false], [count(outbox()), isset(Users::find('ana@acme.es')['atk_until'])], 'doce contraseñas malas seguidas de un visitante: un bloqueo, ningún aviso y la cuenta no queda reforzada');
+    T::same(1, count(array_filter(Audit::read(1, 100)['items'], function ($e) { return $e['a'] === 'login.locked'; })), 'y en la actividad, una sola línea de bloqueo');
+}
+
+/** SSR2 · Revisión independiente: los correos de seguridad (código y aviso) no se anotan en mail:last, que publica /api/health; un fallo del aviso queda en la actividad. */
+function test_step_security_mail_is_not_public()
+{
+    ss_setup();
+    ss_clear_outbox();
+    $before = Store::get(Mail::KEY_LAST);
+    $r = ss_login('jefa@torivac.com', PW_JEFE, '10.9.1.1');
+    T::same('code', $r->body['step'] ?? null, 'el código sale');
+    T::same($before, Store::get(Mail::KEY_LAST), 'y no cambia mail:last (lo que /api/health cuenta del último correo)');
+    T::true(!isset(Router::handle(req('GET', '/health'))->body['mail']['last']['kind']) || Router::handle(req('GET', '/health'))->body['mail']['last']['kind'] !== 'security', '/health nunca dice que se mandó un correo de seguridad');
+    // el aviso que no puede salir queda anotado en la actividad, sin el texto del proveedor
+    ss_setup(['enabled' => false]);
+    ss_config(['mail' => ['driver' => 'resend', 'resend_api_key' => 're_test', 'api_base' => 'http://127.0.0.1:9']]);
+    Http::$mock = function () { return [403, '{"message":"dominio sin verificar"}']; };
+    foreach (['10.9.2.1', '10.9.2.2', '10.9.2.3'] as $ip) for ($i = 0; $i < 5; $i++) ss_login('ana@acme.es', 'mala-' . $i, $ip);
+    Http::$mock = null;
+    $ev = array_values(array_filter(Audit::read(1, 200)['items'], function ($e) { return $e['a'] === 'alert.mail_failed'; }));
+    T::same(1, count($ev), 'si el aviso no sale, queda anotado en la actividad');
+    T::true($ev && strpos($ev[0]['d'], 're_test') === false, 'sin claves en el detalle');
+}
+
+/** SSR3 · Revisión independiente: lo que hacen visitantes sin sesión no llena el registro del día entero (la mitad queda para los managers), y un correo inventado no deja ficheros de bloqueo. */
+function test_step_audit_anonymous_cap_and_no_junk()
+{
+    ss_setup(['enabled' => false]);
+    $dir = Audit::dir();
+    if (!is_dir($dir)) mkdir($dir, 0770, true);
+    $f = $dir . '/' . gmdate('Y-m-d') . '.jsonl';
+    file_put_contents($f, str_repeat('x', (int) (Audit::MAX_DAY_BYTES / 2) + 10));
+    Audit::log('login.fail', null, null, 'anónimo');
+    T::true(strpos((string) file_get_contents($f), 'anónimo') === false, 'pasada la mitad del día, lo anónimo ya no se anota');
+    Audit::log('user.create', ['sub' => 'jefa@torivac.com', 'role' => 'manager'], null, 'de un manager');
+    T::true(strpos((string) file_get_contents($f), 'de un manager') !== false, 'pero lo de un manager sí');
+    unlink($f);
+    for ($i = 0; $i < 6; $i++) ss_login('inventado' . $i . '@x.es', 'mala-' . $i, '10.9.3.' . $i);
+    T::same([], kv_files('lgidx'), 'correos que no existen: ni un fichero de índice de bloqueos');
+    for ($i = 0; $i < 5; $i++) ss_login('ana@acme.es', 'mala-' . $i, '10.9.4.1');
+    T::true(count(kv_files('lgidx')) === 1, 'una cuenta que existe sí lo tiene (para poder desbloquearla)');
+}
+
+/** SSR4 · Revisión independiente: un manager no se borra a sí mismo ni se cambia la contraseña sin la actual; el token maestro sí puede; un token de Turnstile enorme se rechaza sin llamar a Cloudflare. */
+function test_step_self_protection_and_turnstile_token()
+{
+    ss_setup();
+    $tok = ss_manager_token();
+    T::same(400, ss_call('DELETE', '/users/jefa%40torivac.com', null, $tok)->status, 'un manager no se borra a sí mismo');
+    T::true(Users::find('jefa@torivac.com') !== null, 'y sigue existiendo');
+    T::same(200, ss_call('DELETE', '/users/ana%40acme.es', null, $tok)->status, 'pero sí a otra cuenta');
+    $r = ss_call('POST', '/users/jefa%40torivac.com/password', ['password' => 'Otra-Clave-Larga-2027!'], $tok);
+    T::same(400, $r->status, 'tampoco se pone la contraseña propia por el camino de «otra cuenta» (sin pedir la actual)');
+    T::true(strpos($r->body['error'] ?? '', 'Cambiar mi contraseña') !== false, 'y el mensaje dice por dónde se hace');
+    T::same(200, ss_call('POST', '/users/jefa%40torivac.com/two-step', ['enabled' => false], $tok)->status, 'marcar la propia cuenta como de confianza sí se puede (así lo hace quien administra)');
+    T::same(200, Router::handle(req('DELETE', '/users/jefa%40torivac.com', null, master()))->status, 'el token maestro puede borrar a cualquiera (es la salida si se pierde el acceso)');
+    fresh(['turnstile_secret' => 'ts-secreto']);
+    $calls = 0;
+    Http::$mock = function () use (&$calls) { $calls++; return [200, '{"success":true}']; };
+    T::same([false, 0], [Orders::verifyTurnstile(str_repeat('a', 2049), '10.0.0.1'), $calls], 'un token de más de 2048 caracteres no es de Cloudflare: se rechaza sin llamarle');
+    T::same([true, 1], [Orders::verifyTurnstile(str_repeat('a', 2048), '10.0.0.1'), $calls], 'uno de 2048 sí se comprueba');
+    Http::$mock = null;
+}
+
 /** SS13 · Tamaño y limpieza del registro: un día no pasa de 2 MB (con una línea de aviso) y lo de más de 180 días se borra. */
 function test_step_audit_caps_and_purge()
 {
@@ -469,7 +545,7 @@ function test_step_backup_create_download_restore()
     $r = ss_call('POST', '/backups', [], $tok);
     T::same([200, true], [$r->status, $r->body['ok']], 'un manager crea una copia');
     $b = $r->body['backup'];
-    T::true(preg_match('/^backup-\d{8}-\d{6}-[0-9a-f]{4}\.jsonl\.gz$/', $b['file']) === 1 && $b['media'] === 1 && $b['keys'] >= 5, 'nombre, imágenes y registros: ' . json_encode($b));
+    T::true(preg_match('/^backup-\d{8}-\d{6}-[0-9a-f]{32}\.jsonl\.gz$/', $b['file']) === 1 && $b['media'] === 1 && $b['keys'] >= 5, 'nombre, imágenes y registros: ' . json_encode($b));
     $path = Backup::dir() . '/' . $b['file'];
     T::same('0660', substr(sprintf('%o', fileperms($path)), -4), 'permisos 0660 (nada legible por otros usuarios del hosting)');
     $dump = (string) shell_exec('zcat ' . escapeshellarg($path));
