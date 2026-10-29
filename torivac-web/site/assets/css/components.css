@@ -251,5 +251,36 @@
 .ccards.long .ccard{grid-template-columns:120px 1fr}
 .ccards.long .ccard p{font-size:var(--fs-1);line-height:1.5;color:var(--ink-3)}
 
+/* ---- tienda (todos los productos): filtro de categorías, orden y tarjetas con precio y compra ---- */
+.catf-list{display:flex;flex-direction:column;gap:1px}
+.catf{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s-2);width:100%;text-align:left;background:none;border:0;border-left:2px solid transparent;margin-left:-2px;padding:5px 6px;font:inherit;font-size:var(--fs-1);color:var(--ink);cursor:pointer}
+.catf:hover{color:var(--copper-strong);background:rgba(186,107,30,.07)}
+.catf[aria-pressed="true"]{border-left-color:var(--copper);font-weight:700;color:var(--copper-strong);background:rgba(186,107,30,.1)}
+.catf .n{color:var(--muted);font-size:var(--fs-0);font-variant-numeric:tabular-nums;font-weight:400}
+.store-intro{margin:0 0 var(--s-4);max-width:70ch;color:var(--ink-3)}
+.toolbar .tb-l{display:flex;align-items:center;gap:var(--s-3);flex-wrap:wrap}
+.sort{display:inline-flex;align-items:center;gap:var(--s-2);font-size:var(--fs-0);color:var(--muted)}
+.sort select{font:inherit;font-size:var(--fs-1);color:var(--ink);background:#fff;border:1px solid var(--line-strong);border-radius:var(--radius);padding:.45rem .6rem;max-width:100%}
+.sort select:focus-visible{outline:2px solid var(--copper);outline-offset:1px}
+.pcard.store .ph{text-decoration:none}
+.pcard.store .pcat{margin:0;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);line-height:1.3}
+.pcard.store h3 a{color:inherit;text-decoration:none}
+.pcard.store h3 a::after{content:"";position:absolute;inset:0;z-index:1}
+.pcard.store h3 a:focus-visible{outline:none}
+.pcard.store:focus-within{outline:2px solid var(--copper);outline-offset:2px}
+.pcard.store .price{margin:0;font-family:var(--font-mono);font-weight:700;font-size:var(--fs-3);color:var(--ink);line-height:1.2}
+.pcard.store .price small{font-weight:400;font-size:.72em;color:var(--muted);margin-right:3px}
+.pcard.store .price .muted{font-weight:400;font-size:var(--fs-1)}
+.pcard.store .buy{display:flex;align-items:center;flex-wrap:wrap;gap:var(--s-2);margin-top:auto;position:relative;z-index:2}
+.pcard.store .buy .qty input{width:42px}
+.pcard.store .buy .qty button{width:30px}
+.pcard.store .meta{margin-top:0}
+.shop-cta{margin:0 0 var(--s-5)}
+.fgroup+.fgroup{margin-top:var(--s-5)}
+.sidebar .fgroup>h2{margin-top:0}
+.pcard.store .ph{aspect-ratio:4/3;padding:var(--s-3)}
+.pcard.store .ph.noimg{background:var(--ink)}
+.pcard.store .ph.noimg img{width:42%;max-width:130px;height:auto;opacity:.9}
+
 /* trampa para bots (honeypot): fuera de pantalla, invisible para personas y lectores de pantalla */
 .hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}

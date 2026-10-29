@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1812/1812 funciones descritas (100 %) · 203/203 archivos con cabecera.
+**Cobertura**: 1829/1829 funciones descritas (100 %) · 204/204 archivos con cabecera.
 
 
 ## `site/`
@@ -24,30 +24,30 @@ Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EM
 - `visible` (l. 123) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
 - `prune` (l. 125) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
 - `pth` (l. 146) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
-- `pickCats` (l. 195) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
-- `emit` (l. 218) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
-- `mkctx` (l. 220) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
-- `fitTitle` (l. 225) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
-- `crumbHome` (l. 227) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
-- `crumbProducts` (l. 229) — Miga de pan «Productos» del idioma `lang`: { name, path }.
-- `pickAlt` (l. 231) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
-- `absImg` (l. 233) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
-- `alts` (l. 240) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
-- `a` (l. 405) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 423) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `css` (l. 433) — Texto del archivo site/assets/css/<n>.css.
-- `xml` (l. 453) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 455) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 467) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 494) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
-- `hashOf` (l. 512) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
-- `walk` (l. 522) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
+- `pickCats` (l. 199) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
+- `emit` (l. 222) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
+- `mkctx` (l. 224) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
+- `fitTitle` (l. 229) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
+- `crumbHome` (l. 231) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
+- `crumbProducts` (l. 233) — Miga de pan «Productos» del idioma `lang`: { name, path }.
+- `pickAlt` (l. 235) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
+- `absImg` (l. 237) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
+- `alts` (l. 244) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
+- `a` (l. 419) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
+- `copyDir` (l. 437) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 447) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 467) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 469) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 481) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 508) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `hashOf` (l. 526) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+- `walk` (l. 536) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
 
 ### `templates.mjs`
 
 [TEMPLATES] Plantillas HTML (funciones puras: datos → string). Cada una devuelve el <main> de su página; `layout()` lo envuelve con cabecera, pie, elementos flotantes y scripts. Datos: data/catalog/*.json (ver docs/ARQUITECTURA.md). Textos de interfaz: site/lib/i18n.mjs.
 
-Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[THEME]` · `[ORIGINAL]` · `[SEO-FILES]` · `[NAV]` · `[SOCIAL]` · `[SHARED]` · `[HOME]` · `[PAGES]` · `[BLOG]` · `[SHOP]` · `[PRODUCT]` · `[QUOTE]` · `[CONTACT]`
+Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[THEME]` · `[ORIGINAL]` · `[SEO-FILES]` · `[NAV]` · `[SOCIAL]` · `[SHARED]` · `[HOME]` · `[PAGES]` · `[BLOG]` · `[SHOP]` · `[STORE]` · `[PRODUCT]` · `[QUOTE]` · `[CONTACT]`
 
 - `pick` (l. 13) — Valor de un campo traducible en el idioma `lang` (español si falta; '' si no hay objeto).
 - `toroidArt` (l. 20) — Bobinado toroidal visto desde arriba (mismo motivo que el logotipo): 56 espiras que se «dibujan» al entrar en pantalla (CSS + IntersectionObserver en app.js).
@@ -96,14 +96,17 @@ Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[T
 - `blogIndexBody` (l. 442) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
 - `postBody` (l. 450) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. Con `dyn` es la plantilla de las entradas que se crean desde el panel: lo variable son marcas
 - `shopBody` (l. 470) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
-- `productBody` (l. 509) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
-- `quoteBody` (l. 573) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
-- `contactForm` (l. 602) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
-- `contactIntro` (l. 618) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
-- `contactPageOriginal` (l. 623) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
-- `plainOf` (l. 628) — Texto de un párrafo sin etiquetas.
-- `li` (l. 635) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
-- `lv2` (l. 638) — Encabezados de un trozo de HTML con aria-level 2.
+- `storeCard` (l. 511) — Tarjeta de un producto en la tienda: foto, categoría, nombre, tensiones, precio y compra (el precio y el «añadir al presupuesto» los pinta shop.js con los precios vigentes; sin JS queda el enlace a la ficha).
+- `storeBody` (l. 528) — Tienda: barra lateral con categorías (de primer nivel), tensiones y búsqueda; barra de orden y contador; y todos los productos como tarjetas de tienda. Filtros y orden: assets/js/shop.js.
+- `topsOf` (l. 531) — Ids de las categorías de primer nivel a las que pertenece el producto `p` (la tienda filtra por ellas).
+- `productBody` (l. 562) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
+- `quoteBody` (l. 626) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
+- `contactForm` (l. 655) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
+- `contactIntro` (l. 671) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
+- `contactPageOriginal` (l. 676) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
+- `plainOf` (l. 681) — Texto de un párrafo sin etiquetas.
+- `li` (l. 688) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
+- `lv2` (l. 691) — Encabezados de un trozo de HTML con aria-level 2.
 
 ## `site/lib/`
 
@@ -138,9 +141,9 @@ Secciones: `[HOSTING]`
 
 Secciones: `[I18N]`
 
-- `countLabel` (l. 139) — «1 producto / 2 productos» en los 4 idiomas
-- `refLabel` (l. 141) — «1 referencia / 2 referencias» en los 4 idiomas.
-- `t` (l. 143) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
+- `countLabel` (l. 151) — «1 producto / 2 productos» en los 4 idiomas
+- `refLabel` (l. 153) — «1 referencia / 2 referencias» en los 4 idiomas.
+- `t` (l. 155) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
 
 ### `proposals-apply.mjs`
 
@@ -633,18 +636,25 @@ Secciones: `[QUOTE-ENGINE]` · `[STATE]` · `[FORMAT]` · `[PRICES]` · `[API]` 
 
 ### `shop.js`
 
-[SHOP] Listados (filtros por tensión y búsqueda) y fichas de producto (tabla de modelos con cantidades, galería). Secciones: [FILTERS] filtros del listado · [MODELS] tabla de modelos · [EXTRAS] referencias que añade la hoja de precios · [GALLERY] galería · [PRICES] precios en las filas Depende de: quote.js, app.js (TV.$, TV.$$, TV.toast).
+[SHOP] Listados (filtros por categoría, tensión y búsqueda; en la tienda también orden, precio y compra rápida en cada tarjeta) y fichas de producto (tabla de modelos con cantidades, galería). Secciones: [FILTERS] filtros del listado y [STORE] tienda · [MODELS] tabla de modelos · [EXTRAS] referencias que añade la hoja de precios · [GALLERY] galería · [PRICES] precios en las filas Depende de: quote.js, app.js (TV.$, TV.$$, TV.toast).
 
-Secciones: `[SHOP]` · `[FILTERS]` · `[MODELS]` · `[EXTRAS]` · `[GALLERY]` · `[PRICES]`
+Secciones: `[SHOP]` · `[FILTERS]` · `[STORE]` · `[MODELS]` · `[EXTRAS]` · `[GALLERY]` · `[PRICES]`
 
-- `apply` (l. 16) — Aplica los filtros (tensiones marcadas y texto): oculta las fichas que no encajan y actualiza el contador y el aviso de vacío.
-- `qtyOf` (l. 38) — Cantidad entera ≥ 0 escrita en la fila `tr` (0 si el campo está vacío o no es un número).
-- `bindRow` (l. 40) — Conecta una fila de modelos (−, +, cantidad y «añadir») con el presupuesto y la registra para refrescar su precio.
-- `extraRow` (l. 58) — HTML de la fila de una referencia que añade la hoja de precios: código, descripción, celda de precio, cantidad y botón añadir.
-- `renderExtras` (l. 65) — Pinta (o repinta) tras la tabla de modelos las referencias que la hoja de precios añade a ESTE producto, con su filtro.
-- `updatePrice` (l. 85) — Actualiza el precio unitario, los tramos y el importe de una fila de la tabla de modelos según la cantidad escrita.
-- `allPrices` (l. 94) — Actualiza el precio de todas las filas y muestra u oculta el aviso de demo según el modo de la hoja de precios.
-- `refresh` (l. 96) — Rehace las referencias extra y los precios de las filas; corre al cargar y en cada evento tv:prices.
+- `on` (l. 16) — Claves marcadas de un mapa de filtros ({clave: true|false}).
+- `apply` (l. 18) — Aplica los filtros (categorías, tensiones y texto): oculta las fichas que no encajan y actualiza el contador y el aviso de vacío.
+- `cmp` (l. 38) — Compara dos textos con las reglas del idioma de la página (sin distinguir mayúsculas ni tildes).
+- `minOf` (l. 40) — Precio mínimo de la tarjeta (número) o null si no tiene ninguno conocido.
+- `sortCards` (l. 42) — Reordena las tarjetas EN EL DOCUMENTO (así el orden de lectura y de tabulación es el que se ve) según el criterio elegido; a igualdad, por nombre. Sin precio, al final.
+- `qtyIn` (l. 56) — Cantidad entera ≥ 1 escrita en el campo de la tarjeta.
+- `buyFor` (l. 58) — Pone en la tarjeta la compra que toca: una sola referencia → cantidad y «añadir al presupuesto»; varias → «elegir modelo» (la tabla de la ficha); ninguna conocida → lo que trae el HTML.
+- `paintStore` (l. 71) — Pinta en cada tarjeta de la tienda el precio (el menor de sus referencias, con «desde» si hay varios) y la compra; corre al cargar y con cada cambio de precios.
+- `qtyOf` (l. 98) — Cantidad entera ≥ 0 escrita en la fila `tr` (0 si el campo está vacío o no es un número).
+- `bindRow` (l. 100) — Conecta una fila de modelos (−, +, cantidad y «añadir») con el presupuesto y la registra para refrescar su precio.
+- `extraRow` (l. 118) — HTML de la fila de una referencia que añade la hoja de precios: código, descripción, celda de precio, cantidad y botón añadir.
+- `renderExtras` (l. 125) — Pinta (o repinta) tras la tabla de modelos las referencias que la hoja de precios añade a ESTE producto, con su filtro.
+- `updatePrice` (l. 145) — Actualiza el precio unitario, los tramos y el importe de una fila de la tabla de modelos según la cantidad escrita.
+- `allPrices` (l. 154) — Actualiza el precio de todas las filas y muestra u oculta el aviso de demo según el modo de la hoja de precios.
+- `refresh` (l. 156) — Rehace las referencias extra y los precios de las filas; corre al cargar y en cada evento tv:prices.
 
 ## `site/assets/css/`
 
@@ -736,7 +746,7 @@ Secciones: `[ORIGINAL-TOKENS]`
 
 [ORIGINAL] Aspecto «Original»: la web actual de grupotorivac.com tal como es (cabecera y pie negros, naranja cobre, Advent Pro, Archivo, tarjetas blancas, fichas con galería y tablas naranjas),
 
-Secciones: `[ORIGINAL]` · `[BASE]` · `[HEADER]` · `[FOOTER]` · `[BUTTONS]` · `[FLOAT]` · `[SHOP-ROOT]` · `[CATEGORY]` · `[LISTING]` · `[PRODUCT]` · `[TABLES]` · `[RELATED]` · `[CONTACT]` · `[HOME]` · `[PAGES]` · `[QUOTE]` · `[MOBILE]`
+Secciones: `[ORIGINAL]` · `[BASE]` · `[HEADER]` · `[FOOTER]` · `[BUTTONS]` · `[FLOAT]` · `[SHOP-ROOT]` · `[CATEGORY]` · `[LISTING]` · `[PRODUCT]` · `[TABLES]` · `[RELATED]` · `[CONTACT]` · `[HOME]` · `[PAGES]` · `[QUOTE]` · `[MOBILE]` · `[STORE]`
 
 ### `tokens.css`
 
@@ -1215,7 +1225,7 @@ Secciones: `[QA-BLOG-PANEL]`
 - `editor` (l. 36) — Espera a que el editor esté pintado.
 - `axe` (l. 38) — Analiza con axe la pantalla actual y anota las violaciones graves.
 - `id1` (l. 149) — identificador de la primera entrada creada (sale de la dirección del panel: #blog/<id>)
-- `id2` (l. 202) — identificador de la entrada en inglés (traducción de la primera)
+- `id2` (l. 203) — identificador de la entrada en inglés (traducción de la primera)
 
 ### `qa-captcha.mjs`
 
@@ -1302,6 +1312,20 @@ Secciones: `[QA-SECURITY-PANEL]`
 - `settle` (l. 79) — Pausa corta para que, si iba a salir un aviso al terminar la respuesta, ya haya salido (se usa antes de afirmar que NO salió).
 - `alerts` (l. 247) — Los correos de «intentos repetidos» que se han mandado (el aviso al equipo).
 - `bkRows` (l. 357) — Las filas de la tabla de copias de seguridad de Ajustes.
+
+### `qa-shop.mjs`
+
+[QA-SHOP] La tienda (todos los productos): página propia en los 4 idiomas y en los tres aspectos (Ficha técnica, Clásico, Original), con filtros por categoría, tensión y texto, orden por nombre, precio y categoría, precio y «añadir al presupuesto» en cada tarjeta, y la portada de «Productos» solo con categorías. node scripts/qa-shop.mjs
+
+Secciones: `[QA-SHOP]` · `[HTML]` · `[BROWSER]` · `[NAV]` · `[LANG]` · `[NOJS]`
+
+- `ok` (l. 23) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `build` (l. 25) — Compila una variante del sitio en TMP/<name> con las opciones `args` y devuelve su carpeta.
+- `read` (l. 27) — Texto del archivo `f` (ruta relativa) de la variante `dir`.
+- `ctxOf` (l. 81) — Contexto de navegador con idioma ya elegido, el aspecto `theme` ya guardado y las opciones `o`.
+- `visible` (l. 83) — Visibles: las tarjetas de la tienda que el filtro deja a la vista, con su nombre, precio mínimo y categoría.
+- `priced` (l. 85) — Espera a que todas las tarjetas tengan su precio pintado.
+- `orderOf` (l. 114) — orden
 
 ### `qa-tarifa.mjs`
 

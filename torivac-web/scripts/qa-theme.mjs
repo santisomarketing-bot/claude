@@ -185,7 +185,7 @@ try {
     await ctx.close();
   }
   console.log('\nSin desbordes ni textos fuera de la pantalla, en los tres aspectos');
-  const PAGES = ['/', '/productos/', '/categoria-producto/transformadores/', '/product/transformadores-serie-tt/', '/presupuesto/', '/contacto/', '/torivac-empresa/', '/proyectos-empresariales/', '/blog/', '/aviso-legal-2/', '/en/', '/fr/', '/de/', '/de/product/transformadores-serie-tt/'];
+  const PAGES = ['/', '/productos/', '/tienda/', '/categoria-producto/transformadores/', '/product/transformadores-serie-tt/', '/presupuesto/', '/contacto/', '/torivac-empresa/', '/proyectos-empresariales/', '/blog/', '/aviso-legal-2/', '/en/', '/fr/', '/de/', '/de/product/transformadores-serie-tt/'];
   for (const t of ['ficha', 'clasico', 'original']) for (const w of [390, 768, 1024, 1240, 1440]) {
     const ctx = await ctxOf({ viewport: { width: w, height: 800 } }, `try{localStorage.setItem('tv-theme','${t}')}catch(e){}`); const page = await ctx.newPage(); const wide = [];
     for (const u of PAGES) {

@@ -17,7 +17,7 @@ const { server, base } = await serve(DIST, { gzip: true });
 const sb = { window: {}, document: { getElementById: () => null } }; sb.window = sb; vm.createContext(sb);               // catalog.js lee #tv-boot de la página: aquí no hay página
 vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data/catalog.js'), 'utf8'), sb);
 const it = sb.TV.items;
-const PAGES = [['/', 'portada'], ['/en/', 'portada EN'], ['/productos/', 'productos'], [Object.values(it).find((i) => i.pid === 884).p.es, 'ficha TT'], [Object.values(it).find((i) => i.pid === 932).p.es, 'ficha botones'], ['/presupuesto/', 'presupuesto'], ['/contacto/', 'contacto']];
+const PAGES = [['/', 'portada'], ['/en/', 'portada EN'], ['/productos/', 'productos'], ['/tienda/', 'tienda'], [Object.values(it).find((i) => i.pid === 884).p.es, 'ficha TT'], [Object.values(it).find((i) => i.pid === 932).p.es, 'ficha botones'], ['/presupuesto/', 'presupuesto'], ['/contacto/', 'contacto']];
 const browser = await chromium.launch();
 const rows = [];
 for (const [url, name] of PAGES) {

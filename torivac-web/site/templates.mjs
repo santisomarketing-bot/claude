@@ -103,7 +103,7 @@ function floatMenu(ctx) {
   <div class="torivac-sidebar-panel" id="o-panel" role="dialog" aria-label="${attr(t('o_panel_title', lang))}">
     <button class="torivac-sidebar-close" type="button" data-o-close aria-label="${attr(t('o_close', lang))}">×</button>
     <h3 class="torivac-cat-sidebar-title">${esc(t('o_panel_title', lang))}</h3>
-    <ul class="torivac-cat-list">${items}</ul>
+    <ul class="torivac-cat-list"><li class="torivac-cat-item o-shoplink"><div class="cat-row"><a class="cat-name" href="${attr(ctx.href(site.shop[lang]))}">${esc(t('shop', lang))}</a></div></li>${items}</ul>
   </div>
 </div>`;
 }
@@ -119,9 +119,9 @@ export function layout(ctx, { title, description, body, template, alts = {}, scr
   // registro de páginas indexables → sitemap (con hreflang e imágenes) y llms.txt; ver site/build.mjs [SEO-FILES]
   if (!noindex && !dyn && site.registry) site.registry.push({ path: ctx.path, lang, template, title, description: description || '', alts: Object.fromEntries(LANGS.filter((l) => alts[l]).map((l) => [l, alts[l]])), images });
   // [NAV] menú principal: mismos 7 ítems y etiquetas que la web original (por idioma). `section` marca el activo.
-  const nav = site.navItems[lang].map((n) => ({ label: n.label, pdf: n.key === 'catalog', current: n.key !== 'catalog' && (n.path === ctx.path || (n.key === ctx.section && ['products', 'blog'].includes(n.key))), href: n.key === 'catalog' ? (n.pdfFile ? ctx.asset('assets/pdf/' + n.pdfFile) : n.pdfUrl) : ctx.href(n.path) }));
+  const nav = site.navItems[lang].map((n) => ({ label: n.label, pdf: n.key === 'catalog', shop: n.key === 'shop', current: n.key !== 'catalog' && (n.path === ctx.path || (n.key === ctx.section && ['products', 'blog'].includes(n.key))), href: n.key === 'catalog' ? (n.pdfFile ? ctx.asset('assets/pdf/' + n.pdfFile) : n.pdfUrl) : ctx.href(n.path) }));
   const langLinks = LANGS.map((l) => `<a href="${attr(ctx.href(alt(l)))}" hreflang="${l}" lang="${l}" ${l === lang ? 'aria-current="true"' : ''} title="${NAMES[l]}" data-set-lang="${l}"${l !== lang && !alts[l] ? ' class="no-tr"' : ''}>${l.toUpperCase()}</a>`).join('');
-  const navHtml = nav.map((n) => `<a href="${attr(n.href)}"${n.current ? ' aria-current="page"' : ''}${n.pdf ? ' target="_blank" rel="noopener"' : ''}>${esc(n.label)}</a>`).join('');
+  const navHtml = nav.map((n) => `<a href="${attr(n.href)}"${n.shop ? ' class="o-skip"' : ''}${n.current ? ' aria-current="page"' : ''}${n.pdf ? ' target="_blank" rel="noopener"' : ''}>${esc(n.label)}</a>`).join('');
   const f = site.footer[lang];
   // hreflang: SOLO idiomas con traducción real de ESTA página (un hreflang a la portada de otro idioma es un error de SEO)
   const hreflangs = LANGS.filter((l) => l === lang || alts[l]);
@@ -475,9 +475,9 @@ export function shopBody(ctx, { products, category = null, intro = [] }) {
   const chips = vts.map((id) => `<button class="chip" type="button" aria-pressed="false" data-vf="${attr(id)}">${esc(vtext(site.vtags.get(id).label, lang))}</button>`).join('');
   const sidebar = `<aside class="sidebar no-print" id="filters" aria-label="${attr(t('filters', lang))}">
     <h2>${t('categories', lang)}</h2>${catTree(ctx, category?.id)}
-    ${chips ? `<h2>${t('voltage', lang)}</h2><div class="chips" data-vchips>${chips}</div>` : ''}
+    ${!category ? `<p class="side-shop" style="margin-top:var(--s-4)"><a class="btn sm" href="${attr(ctx.href(site.shop[lang]))}">${esc(t('shop', lang))} →</a></p>` : `${chips ? `<h2>${t('voltage', lang)}</h2><div class="chips" data-vchips>${chips}</div>` : ''}
     <h2>${t('search_ph', lang)}</h2><input class="search" type="search" placeholder="${attr(t('search_ph', lang))}" data-search aria-label="${attr(t('search_ph', lang))}">
-    <p style="margin-top:var(--s-4)"><button class="btn sm ghost" type="button" data-clear-filters>${t('clear_filters', lang)}</button></p>
+    <p style="margin-top:var(--s-4)"><button class="btn sm ghost" type="button" data-clear-filters>${t('clear_filters', lang)}</button></p>`}
   </aside>`;
   const introHtml = intro.length ? `<div class="prose" style="margin-bottom:var(--s-5)">${blocksHtml(ctx, intro, { demote: 0, skipFirstHeading: true })}</div>` : '';
   const crumbsHtml = crumbs(ctx, [{ label: 'Torivac', href: ctx.href(site.home[lang]) }, { label: t('products', lang), href: category ? ctx.href(site.products[lang]) : null }, ...(category ? category.trail.map((c) => ({ label: pick(c.name, lang), href: ctx.href(c.pathFor[lang]) })) : [])]);
@@ -486,7 +486,7 @@ export function shopBody(ctx, { products, category = null, intro = [] }) {
   const intro2 = category && site.O && introHtml
     ? `<div class="cat-split${heroIm ? '' : ' no-media'}">${heroIm ? `<figure class="${oc(site, 'cat-media')}"><img src="${attr(ctx.asset(heroIm.file))}" alt="${attr(pick(category.name, lang))}" width="${heroIm.w}" height="${heroIm.h}" decoding="async"></figure>` : ''}${introHtml}</div>`
     : introHtml;
-  const showProducts = !(OO && (!category || category.children.length));
+  const showProducts = !!category && !(OO && category.children.length);                      // la portada de «Productos» solo enseña categorías: todos los productos están en la tienda
   const skipGrid = site.O && !OO && category && category.children.length ? ' o-skip' : '';   // «Original» con selector de aspecto: la web actual no lista productos en una categoría con subcategorías (los otros aspectos sí)
   const leafList = site.O && category && !category.children.length && products.length > 1;      // categoría hoja con varios productos: «Productos» + «Mostrando los N resultados»
   const listHead = leafList ? `<h2 class="${oc(site, 'o-prod-h')}">${esc(t('products', lang))}</h2><p class="${oc(site, 'o-count')}">${esc(t('o_results_n', lang).replace('{n}', products.length))}</p>` : '';
@@ -496,10 +496,63 @@ export function shopBody(ctx, { products, category = null, intro = [] }) {
     ${crumbsHtml}
     ${intro2}
     ${category && category.id === 19 ? waveLab(ctx) : ''}
+    ${category ? '' : `<p class="shop-cta"><a class="btn" href="${attr(ctx.href(site.shop[lang]))}">${esc(t('shop_cta', lang))} →</a></p>`}
     ${category ? (category.children.length ? categoryCards(ctx, category.children, { heading: lbl(site, t('explore_sub', lang), esc(t('o_subcats', lang))), limit: 0, long: true, parent: category }) : '') : categoryCards(ctx, null, { guard: true })}
     ${showProducts ? `${listHead}${OO ? '' : `<div class="toolbar${skipGrid}"><button class="btn sm ghost filters-toggle" type="button" data-filters-toggle>☰ ${t('filters', lang)}</button><span class="count" data-count aria-live="polite">${countLabel(products.length, lang)}</span></div>`}
     <div class="pgrid${skipGrid}" data-grid>${products.map((p) => productCard(ctx, p)).join('')}</div>
     <p class="notice${skipGrid}" data-empty hidden>${t('no_results', lang)}</p>` : ''}
+  </div>
+</div>`;
+}
+
+// ───────────────────────────────────────────────────────────── [STORE] tienda: todos los productos
+/** Tarjeta de un producto en la tienda: foto, categoría, nombre, tensiones, precio y compra (el precio y el «añadir al presupuesto» los pinta shop.js con los precios vigentes; sin JS queda el enlace a la ficha).
+ *  No es un enlace entero (dentro llevaría botones): el enlace del nombre se estira sobre la tarjeta con CSS. `data-*` sirven para filtrar y ordenar. */
+export function storeCard(ctx, p, tops) {
+  const { lang, site } = ctx;
+  const name = pick(p.name, lang);
+  const href = ctx.href(p.pathFor[lang]);
+  const im = p.images[0];
+  const nVar = p.variants.length;
+  const top = p.mainCategory ? p.mainCategory.trail[0] : null;
+  const ref = nVar <= 1 ? (nVar ? p.variants[0].ref : 'P' + p.id) : '';          // referencia única: se puede añadir desde la tarjeta; con varias hay que elegir modelo en la ficha
+  const go = nVar > 1 ? `<a class="btn sm" href="${attr(ctx.href(p.pathFor[lang], 'modelos'))}">${esc(t('choose_model', lang))}</a>` : `<a class="btn sm ghost" href="${attr(href)}">${esc(t('view_product', lang))}</a>`;
+  return `<article class="pcard store" data-pid="${p.id}"${ref ? ` data-ref="${attr(ref)}"` : ''} data-cats="${p.category_ids.join(',')}" data-top="${tops.join(',')}" data-v="${(p.voltage_tags || []).join(',')}" data-name="${attr(name.toLowerCase())}" data-cat="${attr(top ? pick(top.name, lang).toLowerCase() : '')}" data-q="${attr((name + ' ' + p.variants.map((v) => v.ref).join(' ')).toLowerCase())}">
+  <a class="ph${im ? '' : ' noimg'}" href="${attr(href)}" tabindex="-1" aria-hidden="true">${im ? `<img src="${attr(ctx.thumb(im))}" alt="" loading="lazy" decoding="async" width="${im.w ? Math.min(480, im.w) : 480}" height="${im.h ? Math.round(Math.min(480, im.w || 480) * (im.h / (im.w || 1))) : 480}">` : `<img src="${attr(ctx.asset(site.logo))}" alt="" loading="lazy" decoding="async" width="120" height="120">`}</a>
+  <div class="tx">${top ? `<p class="pcat">${esc(pick(top.name, lang))}</p>` : ''}<h3><a href="${attr(href)}">${esc(name)}</a></h3>${vtags(site, p.voltage_tags, 3, lang)}
+    <p class="price" data-price hidden></p>
+    <div class="buy" data-buy>${go}</div>${nVar > 1 ? `<p class="meta"><span>${refLabel(nVar, lang)}</span></p>` : ''}</div>
+</article>`;
+}
+/** Tienda: barra lateral con categorías (de primer nivel), tensiones y búsqueda; barra de orden y contador; y todos los productos como tarjetas de tienda. Filtros y orden: assets/js/shop.js. */
+export function storeBody(ctx, { products }) {
+  const { lang, site } = ctx;
+  /** Ids de las categorías de primer nivel a las que pertenece el producto `p` (la tienda filtra por ellas). */
+  const topsOf = (p) => [...new Set(p.category_ids.map((id) => site.catById.get(id)).filter(Boolean).map((c) => c.trail[0].id))];
+  const list = products.slice().sort((a, b) => pick(a.name, lang).localeCompare(pick(b.name, lang), lang, { sensitivity: 'base' }));
+  const counts = new Map();
+  for (const p of list) for (const id of topsOf(p)) counts.set(id, (counts.get(id) || 0) + 1);
+  const catBtns = site.catTree.filter((c) => counts.get(c.id)).map((c) => `<button class="catf" type="button" aria-pressed="false" data-cf="${c.id}"><span>${esc(pick(c.name, lang))}</span><span class="n">${counts.get(c.id)}</span></button>`).join('');
+  const vts = [...new Set(list.flatMap((p) => p.voltage_tags || []))].filter((id) => site.vtags.has(id) && site.vtags.get(id).filter !== false);
+  vts.sort((a, b) => (site.vtags.get(a).sort ?? 0) - (site.vtags.get(b).sort ?? 0));
+  const chips = vts.map((id) => `<button class="chip" type="button" aria-pressed="false" data-vf="${attr(id)}">${esc(vtext(site.vtags.get(id).label, lang))}</button>`).join('');
+  const sidebar = `<aside class="sidebar no-print" id="filters" aria-label="${attr(t('filters', lang))}">
+    <div class="fgroup"><h2>${t('categories', lang)}</h2><div class="catf-list" role="group" aria-label="${attr(t('categories', lang))}">${catBtns}</div></div>
+    ${chips ? `<div class="fgroup"><h2>${t('voltage', lang)}</h2><div class="chips" data-vchips>${chips}</div></div>` : ''}
+    <div class="fgroup"><h2>${t('search_ph', lang)}</h2><input class="search" type="search" placeholder="${attr(t('search_ph', lang))}" data-search aria-label="${attr(t('search_ph', lang))}">
+    <p style="margin-top:var(--s-4)"><button class="btn sm ghost" type="button" data-clear-filters>${t('clear_filters', lang)}</button></p></div>
+  </aside>`;
+  const crumbsHtml = crumbs(ctx, [{ label: 'Torivac', href: ctx.href(site.home[lang]) }, { label: t('products', lang), href: ctx.href(site.products[lang]) }, { label: t('shop', lang) }]);
+  const sorts = [['name', 'sort_name'], ['price_asc', 'sort_price_asc'], ['price_desc', 'sort_price_desc'], ['category', 'sort_category']];
+  const sort = `<label class="sort">${t('sort_by', lang)} <select data-sort>${sorts.map(([v, k]) => `<option value="${v}"${v.startsWith('price') ? ' data-needs-price' : ''}>${esc(t(k, lang))}</option>`).join('')}</select></label>`;
+  return `<div class="container shop store-page">
+  ${sidebar}
+  <div>
+    ${crumbsHtml}
+    <p class="store-intro">${esc(t('shop_intro', lang))}</p>
+    <div class="toolbar"><div class="tb-l"><button class="btn sm ghost filters-toggle" type="button" data-filters-toggle>☰ ${t('filters', lang)}</button><span class="count" data-count aria-live="polite">${countLabel(list.length, lang)}</span><span class="price-demo" data-demo-flag hidden>DEMO</span></div>${sort}</div>
+    <div class="pgrid store-grid" data-grid>${list.map((p) => storeCard(ctx, p, topsOf(p))).join('')}</div>
+    <p class="notice" data-empty hidden>${t('no_results', lang)}</p>
   </div>
 </div>`;
 }

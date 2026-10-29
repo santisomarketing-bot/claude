@@ -43,9 +43,11 @@ async function visit(name, p, fn) {
 
 await visit('home', home);
 await visit('productos', (await page.evaluate(() => 0), JSON.parse(fs.readFileSync(path.join(ROOT, 'data/catalog/meta.json'))).nav[lang][2].href.replace('https://grupotorivac.com', '')));
-// ficha: primer producto de la lista
-const firstProd = await page.$eval('.pcard', (a) => a.getAttribute('href'));
-await page.goto(page.url().replace(/[^/]*$/, '') + firstProd, { waitUntil: 'load' });
+// tienda: todos los productos; de ahí, la ficha del primero
+const SHOP = { es: '/tienda/', en: '/en/shop/', fr: '/fr/boutique/', de: '/de/shop/' };
+await visit('tienda', SHOP[lang]);
+const firstProd = await page.$eval('.pcard.store h3 a', (a) => a.getAttribute('href'));
+await page.goto(new URL(firstProd, page.url()).href, { waitUntil: 'load' });
 if (shots) await page.screenshot({ path: path.join(SHOTS, `${lang}-ficha.png`), fullPage: true });
 // añadir al presupuesto
 await page.fill('.models tbody tr:first-child [data-qty]', '12');

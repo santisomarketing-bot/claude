@@ -34,7 +34,7 @@ Las filas con ✓ ya existen tal cual en la web original en ese idioma (por ejem
 
 Ojo: la web original no es del todo uniforme: «variador de tensión» aparece como *voltage variators*, *voltage regulator* o *variator* según la ficha, y hay categorías sin traducir o con texto en otro idioma que no se listan aquí (están como propuestas en el panel). Cuando un texto de interfaz nombre uno de estos términos, se usa el de la categoría correspondiente de la tabla, nunca uno inventado.
 
-## Inglés (84 textos a validar; 39 ya existen tal cual en la web original)
+## Inglés (94 textos a validar; 40 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Inglés |
 |---|---|---|
@@ -91,6 +91,16 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `explore_sub` | Explora las subcategorías | Explore subcategories |
 | `view_category` | Ver categoría | View category |
 | `view_product` | Ver ficha | View product |
+| `shop_seo_title` | Tienda de productos | Product shop |
+| `shop_meta` | Todos los productos Torivac en un listado: transformadores, variadores, estabilizadores, resistencias y más. Filtra por tensión y añade al presupuesto. | All Torivac products in one list: transformers, voltage variators, stabilizers, resistors and more. Filter by voltage and add items to your quote. |
+| `shop_intro` | Todos los productos en un solo listado. Filtra por categoría o tensión y añade al presupuesto lo que necesites. | All products in one list. Filter by category or voltage and add what you need to your quote. |
+| `shop_cta` | Ver todos los productos en la tienda | See all products in the shop |
+| `sort_by` | Ordenar por | Sort by |
+| `sort_name` | Nombre (A–Z) | Name (A–Z) |
+| `sort_price_asc` | Precio: de menor a mayor | Price: low to high |
+| `sort_price_desc` | Precio: de mayor a menor | Price: high to low |
+| `sort_category` | Categoría | Category |
+| `choose_model` | Elegir modelo | Choose model |
 | `models` | Modelos y referencias | Models and references |
 | `models_hint` | Indica la cantidad de cada referencia y añádelas al presupuesto. | Enter the quantity of each reference and add them to your quote. |
 | `add_selected` | Añadir selección al presupuesto | Add selection to quote |
@@ -123,7 +133,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Indicative quote subject to confirmation by Torivac. |
 | `quote_slug` | presupuesto | quote |
 
-## Francés (82 textos a validar; 41 ya existen tal cual en la web original)
+## Francés (91 textos a validar; 43 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Francés |
 |---|---|---|
@@ -179,6 +189,15 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `no_results` | No hay productos con estos filtros. | Aucun produit ne correspond à ces filtres. |
 | `explore_sub` | Explora las subcategorías | Explorer les sous-catégories |
 | `view_category` | Ver categoría | Voir la catégorie |
+| `shop` | Tienda | Boutique |
+| `shop_seo_title` | Tienda de productos | Boutique de produits |
+| `shop_meta` | Todos los productos Torivac en un listado: transformadores, variadores, estabilizadores, resistencias y más. Filtra por tensión y añade al presupuesto. | Tous les produits Torivac en une liste : transformateurs, régulateurs, stabilisateurs, résistances et plus. Filtrez par tension et ajoutez au devis. |
+| `shop_intro` | Todos los productos en un solo listado. Filtra por categoría o tensión y añade al presupuesto lo que necesites. | Tous les produits en une seule liste. Filtrez par catégorie ou par tension et ajoutez au devis ce dont vous avez besoin. |
+| `shop_cta` | Ver todos los productos en la tienda | Voir tous les produits dans la boutique |
+| `sort_by` | Ordenar por | Trier par |
+| `sort_name` | Nombre (A–Z) | Nom (A–Z) |
+| `sort_price_asc` | Precio: de menor a mayor | Prix : du plus bas au plus haut |
+| `sort_price_desc` | Precio: de mayor a menor | Prix : du plus haut au plus bas |
 | `models` | Modelos y referencias | Modèles et références |
 | `models_hint` | Indica la cantidad de cada referencia y añádelas al presupuesto. | Indiquez la quantité de chaque référence et ajoutez-les au devis. |
 | `add_selected` | Añadir selección al presupuesto | Ajouter la sélection au devis |
@@ -210,7 +229,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `demo_banner` | Versión de demostración | Version de démonstration |
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Devis indicatif soumis à confirmation par Torivac. |
 
-## Alemán (86 textos a validar; 37 ya existen tal cual en la web original)
+## Alemán (96 textos a validar; 38 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Alemán |
 |---|---|---|
@@ -270,6 +289,16 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `explore_sub` | Explora las subcategorías | Unterkategorien erkunden |
 | `view_category` | Ver categoría | Kategorie ansehen |
 | `view_product` | Ver ficha | Produkt ansehen |
+| `shop_seo_title` | Tienda de productos | Produkt-Shop |
+| `shop_meta` | Todos los productos Torivac en un listado: transformadores, variadores, estabilizadores, resistencias y más. Filtra por tensión y añade al presupuesto. | Alle Torivac-Produkte in einer Liste: Transformatoren, Spannungsregler, Stabilisatoren, Widerstände und mehr. Nach Spannung filtern, zum Angebot hinzufügen. |
+| `shop_intro` | Todos los productos en un solo listado. Filtra por categoría o tensión y añade al presupuesto lo que necesites. | Alle Produkte in einer Liste. Nach Kategorie oder Spannung filtern und das Benötigte zum Angebot hinzufügen. |
+| `shop_cta` | Ver todos los productos en la tienda | Alle Produkte im Shop ansehen |
+| `sort_by` | Ordenar por | Sortieren nach |
+| `sort_name` | Nombre (A–Z) | Name (A–Z) |
+| `sort_price_asc` | Precio: de menor a mayor | Preis: aufsteigend |
+| `sort_price_desc` | Precio: de mayor a menor | Preis: absteigend |
+| `sort_category` | Categoría | Kategorie |
+| `choose_model` | Elegir modelo | Modell wählen |
 | `models` | Modelos y referencias | Modelle und Artikelnummern |
 | `models_hint` | Indica la cantidad de cada referencia y añádelas al presupuesto. | Geben Sie die Menge je Artikelnummer ein und fügen Sie sie dem Angebot hinzu. |
 | `add_selected` | Añadir selección al presupuesto | Auswahl zum Angebot hinzufügen |

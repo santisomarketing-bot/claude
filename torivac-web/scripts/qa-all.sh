@@ -32,6 +32,7 @@ paso "Presupuesto en 4 idiomas"                 node scripts/qa-quote.mjs
 paso "Idioma"                                   node scripts/qa-lang.mjs
 paso "Gráficos"                                 node scripts/qa-art.mjs
 paso "Aspectos (Ficha técnica / Clásico)"       node scripts/qa-theme.mjs
+paso "Tienda: filtros, orden, precio y compra"  node scripts/qa-shop.mjs
 for B in "" "--php"; do
   paso "Web ↔ backend ${B:-worker}: pedido y contacto"  node scripts/qa-live.mjs $B
   paso "Panel ↔ backend ${B:-worker}"                   node scripts/qa-admin-live.mjs $B

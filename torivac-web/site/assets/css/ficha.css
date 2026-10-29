@@ -193,6 +193,25 @@
 [data-theme="ficha"] .notice.ok{border-left-color:var(--ok);background:var(--paper)}
 [data-theme="ficha"] .notice.err{border-left-color:var(--err);background:var(--paper)}
 [data-theme="ficha"] .price-demo{background:var(--copper);color:var(--ink);border-radius:0;font-family:var(--font-mono)}
+/* tienda: la tarjeta lleva botones, así que no se invierte al pasar el ratón (se resalta con el tinte de cobre) */
+[data-theme="ficha"] .pcard.store:hover{background:var(--copper-tint-solid);color:var(--ink)}
+[data-theme="ficha"] .pcard.store:hover h3{color:var(--ink)}
+[data-theme="ficha"] .pcard.store:hover .meta{color:var(--muted);border-top-color:var(--line)}
+[data-theme="ficha"] .pcard.store:hover .vtag{color:var(--ink);background:transparent;border-color:var(--ink)}
+[data-theme="ficha"] .pcard.store:hover .vtag::before{background:var(--copper)}
+[data-theme="ficha"] .pcard.store .ph.noimg{background:var(--ink)}
+[data-theme="ficha"] .pcard.store .pcat{color:var(--muted);letter-spacing:var(--caps)}
+[data-theme="ficha"] .pcard.store .price{font-size:1.125rem;letter-spacing:-.01em}
+[data-theme="ficha"] .pcard.store:focus-within{outline:3px solid var(--amber);outline-offset:-3px}
+[data-theme="ficha"] .pcard.store .buy{padding-top:var(--s-3);border-top:1px solid var(--line)}
+[data-theme="ficha"] .pcard.store .qty{border:1px solid var(--ink);border-radius:0;background:var(--photo-bg)}
+[data-theme="ficha"] .catf{font-family:var(--font-body);color:var(--ink);border-left-width:4px;margin-left:-4px;border-radius:0}
+[data-theme="ficha"] .catf:hover{background:var(--copper-tint);color:var(--ink)}
+[data-theme="ficha"] .catf[aria-pressed="true"]{border-left-color:var(--copper);background:var(--paper-2);color:var(--ink)}
+[data-theme="ficha"] .catf .n{font-family:var(--font-mono)}
+[data-theme="ficha"] .sort{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:var(--caps);text-transform:uppercase}
+[data-theme="ficha"] .sort select{font-family:var(--font-body);font-size:.9375rem;text-transform:none;letter-spacing:0;border:1px solid var(--ink);border-radius:0;background:var(--photo-bg)}
+[data-theme="ficha"] .store-intro{color:var(--ink-3)}
 @media (max-width:980px){[data-theme="ficha"] .sidebar{border-width:0 var(--rule) 0 0;box-shadow:none}}
 
 /* ───── [PRODUCT] ficha de producto */

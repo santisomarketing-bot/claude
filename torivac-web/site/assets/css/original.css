@@ -58,6 +58,12 @@
   [data-theme="original"] .menu-btn{display:none}
   [data-theme="original"] .lang{order:0;margin-left:12px}
 }
+/* francés y alemán necesitan más sitio: de 1241 a 1400 px el menú y los idiomas se aprietan (menos relleno) para que no haya desborde horizontal */
+@media (min-width:1241px) and (max-width:1400px){
+  [data-theme="original"] .nav a:not(.btn){padding-inline:5px}
+  [data-theme="original"] .lang a{padding-inline:5px;gap:4px}
+  [data-theme="original"] .nav,[data-theme="original"] .lang{margin-left:4px}
+}
 @media (max-width:1240px){
   [data-theme="original"] .nav{display:none}
   [data-theme="original"] .site-header .bar{min-height:61px}
@@ -143,11 +149,11 @@
 @media (prefers-reduced-motion:reduce){[data-theme="original"] .torivac-sidebar-panel,[data-theme="original"] .torivac-sidebar-toggle{transition:none}[data-theme="original"] .torivac-floating-sidebar.show-hint .torivac-hint{animation:none;opacity:1}}
 
 /* ───── [SHOP-ROOT] «Productos»: rótulo, banda naranja «Nuestros productos» y las categorías en tarjetas blancas de tres columnas */
-[data-theme="original"] .tv-shop-root .page-hero{background:none;color:var(--o-ink)}
-[data-theme="original"] .tv-shop-root .page-hero::before{display:none}
-[data-theme="original"] .tv-shop-root .page-hero .container{width:min(100% - 40px,1234px);padding:68px 0 0}
+[data-theme="original"] :is(.tv-shop-root,.tv-shop-store) .page-hero{background:none;color:var(--o-ink)}
+[data-theme="original"] :is(.tv-shop-root,.tv-shop-store) .page-hero::before{display:none}
+[data-theme="original"] :is(.tv-shop-root,.tv-shop-store) .page-hero .container{width:min(100% - 40px,1234px);padding:68px 0 0}
 [data-theme="original"] .o-kicker{display:block;margin:0 0 20px;text-align:center;font:600 24px/1.2 var(--o-font-title);letter-spacing:.5px;text-transform:uppercase;color:var(--o-ink)}
-[data-theme="original"] .tv-shop-root .page-hero h1{margin:0;background:var(--o-brand);color:#fff;text-align:center;font:600 44px/60px var(--o-font-title);height:60px;padding:0;overflow:hidden}
+[data-theme="original"] :is(.tv-shop-root,.tv-shop-store) .page-hero h1{margin:0;background:var(--o-brand);color:#fff;text-align:center;font:600 44px/60px var(--o-font-title);height:60px;padding:0;overflow:hidden}
 [data-theme="original"] .tv-shop-root .shop{display:block;width:min(100% - 40px,1234px);padding:21px 0 60px}
 [data-theme="original"] .tv-shop-root .shop>div{display:block}
 [data-theme="original"] .tv-shop-root :is(.sidebar,.crumbs,.toolbar,.pgrid,.notice,.filters-toggle){display:none}
@@ -163,6 +169,46 @@
 [data-theme="original"] .tv-shop-root .ccard p{order:3;margin:0;font-size:14px;line-height:21px;color:var(--o-accent-text);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
 [data-theme="original"] .tv-shop-root .ccard .meta{display:none}
 
+/* ───── [STORE] tienda: la misma cabecera que «Productos», los filtros en un panel blanco encima y las tarjetas blancas de tres columnas con precio y «añadir al presupuesto» (lo único que se suma a la web actual) */
+[data-theme="original"] .tv-shop-store .shop{display:block;width:min(100% - 40px,1234px);padding:21px 0 60px}
+[data-theme="original"] .tv-shop-store .shop>div{display:block}
+[data-theme="original"] .tv-shop-store nav[aria-label="breadcrumb"]{display:none}
+[data-theme="original"] .store-intro{max-width:none;margin:6px 0 22px;text-align:center;font-size:15px;color:var(--o-ink-2)}
+[data-theme="original"] .tv-shop-store .sidebar{background:var(--o-card);border:0;border-radius:var(--o-radius);box-shadow:var(--o-shadow)}
+[data-theme="original"] .tv-shop-store .sidebar :is(h2,h3){font:700 17px/1.2 var(--o-font-title);letter-spacing:.08em;text-transform:uppercase;color:var(--o-ink-2);margin:0 0 10px}
+[data-theme="original"] .tv-shop-store .catf-list{flex-direction:row;flex-wrap:wrap;gap:6px}
+[data-theme="original"] .tv-shop-store .catf{display:inline-flex;align-items:baseline;gap:7px;width:auto;margin:0;padding:5px 11px;border:1px solid #999;border-radius:999px;background:#fff;color:var(--o-ink);font-family:var(--o-font-body);font-size:13px;line-height:1.2;text-align:left}
+[data-theme="original"] .tv-shop-store .catf:hover{border-color:var(--o-accent);background:#fff;color:var(--o-ink)}
+[data-theme="original"] .tv-shop-store .catf[aria-pressed="true"]{background:var(--o-black);border-color:var(--o-black);color:#fff;font-weight:600}
+[data-theme="original"] .tv-shop-store .catf .n{font-size:12px;color:inherit;opacity:.8}
+[data-theme="original"] .chip{font-family:var(--o-font-body);font-size:13px;border-color:#999}
+[data-theme="original"] .chip:hover{border-color:var(--o-accent)}
+[data-theme="original"] .chip[aria-pressed="true"]{background:var(--o-black);border-color:var(--o-black)}
+[data-theme="original"] .search{border-color:#999;border-radius:3px}
+@media (min-width:981px){
+  [data-theme="original"] .tv-shop-store .sidebar{position:static;max-height:none;overflow:visible;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(0,.85fr);gap:0 38px;align-items:start;padding:24px 28px;margin:0 0 22px}
+  [data-theme="original"] .tv-shop-store .fgroup+.fgroup{margin-top:0}
+}
+[data-theme="original"] .tv-shop-store .toolbar{border:0;padding:0;margin-bottom:18px}
+[data-theme="original"] .tv-shop-store .count{font-family:var(--o-font-body)}
+[data-theme="original"] .sort select{border-color:#999;border-radius:3px;font-family:var(--o-font-body)}
+[data-theme="original"] .tv-shop-store .pgrid{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+[data-theme="original"] .pcard.store{border-radius:var(--o-radius);overflow:hidden;box-shadow:var(--o-shadow)}
+[data-theme="original"] .pgrid .pcard.store .ph{aspect-ratio:4/3;padding:12px}
+[data-theme="original"] .pgrid .pcard.store .ph img{object-fit:contain}
+[data-theme="original"] .pgrid .pcard.store .ph.noimg{background:var(--o-black)}
+[data-theme="original"] .pgrid .pcard.store .ph.noimg img{width:42%;max-width:130px;height:auto}
+[data-theme="original"] .pgrid .pcard.store .tx{padding:0 20px 20px;gap:8px}
+[data-theme="original"] .pcard.store .pcat{font:700 12px/1.3 var(--o-font-ui);letter-spacing:.06em;color:var(--o-accent-text)}
+[data-theme="original"] .pgrid .pcard.store h3{font:700 20px/26px var(--o-font-ui);min-height:0;color:#141414}
+[data-theme="original"] .pcard.store .price{font:700 19px/1.2 var(--o-font-ui);color:#000}
+[data-theme="original"] .pcard.store .price small{font-family:var(--o-font-body);color:#555}
+[data-theme="original"] .pcard.store .price .mono{font-family:var(--o-font-ui)}
+[data-theme="original"] .pgrid .pcard.store .meta{display:flex;font-size:13px;color:#555}
+[data-theme="original"] .pcard.store:focus-within{outline:3px solid var(--o-accent);outline-offset:2px}
+[data-theme="original"] .shop-cta{margin:0 0 22px;text-align:center}
+[data-theme="original"] .torivac-cat-item.o-shoplink .cat-name{font-weight:700;color:#f0a259}
+
 /* ───── [CATEGORY] migas, título con filete, foto + texto y «Explora las subcategorías»: se aplana el contenedor para ordenar las piezas como en la web actual */
 [data-theme="original"] .tv-shop-cat main{display:flex;flex-direction:column;padding-bottom:50px}
 [data-theme="original"] .tv-shop-cat .shop,[data-theme="original"] .tv-shop-cat .shop>div{display:contents}
@@ -177,7 +223,7 @@
 [data-theme="original"] .wave-lab{display:none}                                                      /* el osciloscopio es un añadido nuestro: la web actual no lo tiene */
 [data-theme="original"] .cat-split.no-media{grid-template-columns:1fr}
 [data-theme="original"] .cat-split{order:3;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
-[data-theme="original"] .cat-media{margin:0;overflow:hidden;background:none;position:relative}
+[data-theme="original"] .cat-media{display:block;margin:0;overflow:hidden;background:none;position:relative}
 [data-theme="original"] .cat-media img{width:100%;height:100%;min-height:360px;object-fit:cover;display:block}
 [data-theme="original"] .cat-split .prose{max-width:none;background:rgba(255,255,255,.55);padding:18px 18px 16px;margin-bottom:0!important;font-size:15px;line-height:1.67}
 [data-theme="original"] .cat-split .prose p{margin:0 0 12px;color:var(--o-ink-2)}
@@ -303,7 +349,7 @@
 [data-theme="original"] .related .pgrid .pcard .tx::before{width:100px;margin:0 auto 14px;transform:none;align-self:center}
 [data-theme="original"] .related .pgrid .pcard h3{font:700 17px/1.3 var(--o-font-ui);min-height:0;text-align:center}
 [data-theme="original"] .related .vtag-row{justify-content:center}
-[data-theme="original"] .o-all{margin:36px 0 0;text-align:center}
+[data-theme="original"] .o-all{display:block;margin:36px 0 0;text-align:center}
 [data-theme="original"] .o-all .btn{padding:12px 30px;border-radius:4px;font-weight:600}
 
 /* ───── [CONTACT] «Contacta con nosotros» al pie de cada ficha, como en la web actual */
@@ -624,13 +670,13 @@
   [data-theme="original"] .related .pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   [data-theme="original"] .tv-product .related{padding:24px!important}
   /* categorías: la foto arriba y el texto debajo */
-  [data-theme="original"] .tv-shop-cat .pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  [data-theme="original"] :is(.tv-shop-cat,.tv-shop-store) .pgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   [data-theme="original"] .cat-split{grid-template-columns:minmax(0,1fr)}
   [data-theme="original"] .cat-media img{min-height:0;height:auto;max-height:340px}
   [data-theme="original"] .tv-shop-cat .page-hero h1{font-size:34px}
-  [data-theme="original"] .tv-shop-root .page-hero h1{font-size:34px;line-height:50px;height:auto;min-height:50px}
+  [data-theme="original"] :is(.tv-shop-root,.tv-shop-store) .page-hero h1{font-size:34px;line-height:50px;height:auto;min-height:50px}
   [data-theme="original"] .o-kicker{font-size:20px}
 }
 @media (max-width:520px){
-  [data-theme="original"] .related .pgrid,[data-theme="original"] .tv-shop-cat .pgrid{grid-template-columns:minmax(0,1fr)}
+  [data-theme="original"] .related .pgrid,[data-theme="original"] .tv-shop-cat .pgrid,[data-theme="original"] .tv-shop-store .pgrid{grid-template-columns:minmax(0,1fr)}
 }

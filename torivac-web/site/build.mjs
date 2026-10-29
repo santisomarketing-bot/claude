@@ -152,8 +152,9 @@ const fundES = Object.keys(imageMap).find((k) => /MANUAL-FEDER/i.test(k));
 const fundOT = Object.keys(imageMap).find((k) => /Logotipos_FondosEuropeos/i.test(k));
 const logo = imageMap[logoKey]?.file || 'assets/img/logo.png';
 const NAVKEYS = ['home', 'company', 'products', 'projects', 'catalog', 'blog', 'contact'];
-const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, staging: STAGING, theme: THEME, themeSwitch: THEME_SWITCH, themes: THEME_LIST, O: THEME_LIST.includes('original'), ONLY_O: THEME_LIST.length === 1 && THEME_LIST[0] === 'original', absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
+const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, staging: STAGING, theme: THEME, themeSwitch: THEME_SWITCH, themes: THEME_LIST, O: THEME_LIST.includes('original'), ONLY_O: THEME_LIST.length === 1 && THEME_LIST[0] === 'original', absBase: ABS, logo, catTree, vtags, pdfLocal, aliases, paths: new Set(), funding: {}, home: {}, products: {}, shop: {}, blog: {}, quote: {}, contact: {}, company: {}, projects: {}, navItems: {}, footer: {}, nav: {} };
 const QSLUG = { es: '/presupuesto/', en: '/en/quote/', fr: '/fr/devis/', de: '/de/angebot/' };
+const SHOPSLUG = { es: '/tienda/', en: '/en/shop/', fr: '/fr/boutique/', de: '/de/shop/' };          // la tienda (todos los productos): página nueva, no existe en la web original
 meta.catalogHref = {};
 for (const l of LANGS) {
   const items = meta.nav[l];
@@ -167,6 +168,8 @@ for (const l of LANGS) {
     }
     return { key, label: n.label, path: pth(n.href) };
   });
+  site.shop[l] = SHOPSLUG[l];
+  if (!site.ONLY_O) site.navItems[l].splice(site.navItems[l].findIndex((n) => n.key === 'products') + 1, 0, { key: 'shop', label: t('shop', l), path: SHOPSLUG[l] });          // «Original» (selector) lo oculta con la clase o-skip; compilado solo «Original», no existe
   for (const n of site.navItems[l]) if (n.key !== 'catalog') site[n.key][l] = n.path;
   site.quote[l] = QSLUG[l];
   { const im = imageMap[l === 'es' ? fundES : fundOT] || {}; site.funding[l] = { img: im.file || '', w: im.w || 520, h: im.h || 62 }; }
@@ -183,6 +186,7 @@ for (const l of LANGS) {
 }
 
 site.prodById = prodById;
+site.catById = catById;
 site.homeMeta = Object.fromEntries(LANGS.map((l) => [l, ((pages[l] || {})[site.home[l]] || {}).meta_description || '']));   // descripción de la portada en cada idioma (texto de la web original): último recurso de <meta description>
 site.homeEs = (pages.es || {})[site.home.es];                                    // portada en castellano: de ella se toma la foto que falta en las traducidas
 for (const c of flatVisible) c.firstProduct = prodIdsOf(c)[0];
@@ -207,10 +211,10 @@ if (site.O) {
 for (const l of LANGS) for (const p of Object.keys(pages[l] || {})) site.paths.add(p);
 for (const p of products) for (const l of LANGS) site.paths.add(p.pathFor[l]);
 for (const c of flatVisible) for (const l of LANGS) site.paths.add(c.pathFor[l]);
-for (const l of LANGS) { site.paths.add(site.quote[l]); site.paths.add(site.products[l]); }
+for (const l of LANGS) { site.paths.add(site.quote[l]); site.paths.add(site.products[l]); site.paths.add(site.shop[l]); }
 for (const [from] of aliases) site.paths.add(from);
 // el carrito / tienda de WooCommerce se sustituyen por el presupuesto y el listado
-for (const l of LANGS) for (const old of ['/carrito/', '/en/carrito/', '/fr/carrito/', '/de/carrito/', '/tienda/', '/en/tienda/', '/shop/', '/en/shop/']) if (!site.paths.has(old)) aliases.set(old, old.includes('carrito') ? QSLUG[old.startsWith('/en') ? 'en' : old.startsWith('/fr') ? 'fr' : old.startsWith('/de') ? 'de' : 'es'] : site.products[old.startsWith('/en') ? 'en' : 'es']);
+for (const l of LANGS) for (const old of ['/carrito/', '/en/carrito/', '/fr/carrito/', '/de/carrito/', '/tienda/', '/en/tienda/', '/shop/', '/en/shop/']) if (!site.paths.has(old)) aliases.set(old, old.includes('carrito') ? QSLUG[old.startsWith('/en') ? 'en' : old.startsWith('/fr') ? 'fr' : old.startsWith('/de') ? 'de' : 'es'] : site.shop[old.startsWith('/en') ? 'en' : 'es']);
 
 // ───────────────────────────────────────────────────────────── [EMIT]
 let count = 0;
@@ -257,7 +261,17 @@ for (const lang of LANGS) {
     // «Original»: encima del titular va el rótulo «PRODUCTOS A MEDIDA» y el titular pasa a ser «Nuestros productos» (como la web actual)
     const hero = `<section class="page-hero bp"><div class="container">${site.O ? `<p class="${TPL.oc(site, 'o-kicker')}">${esc(t('o_shop_kicker', lang))}</p>` : ''}<h1>${TPL.lbl(site, esc(title), esc(t('o_shop_title', lang)))}</h1></div></section>`;
     const alt = Object.fromEntries(LANGS.map((l) => [l, site.products[l]]));
-    emit(pp, TPL.layout(ctx, { title: L[pp]?.title || title, description: L[pp]?.meta_description, template: 'shop', bodyClass: 'tv-shop-root', hero, body: TPL.shopBody(ctx, { products, intro: [] }), alts: alt, scripts: ['assets/js/shop.js'], crumbs: [crumbHome(lang), crumbProducts(lang)], ld: [itemListNode(ABS, pp, products.map((x) => ({ path: x.pathFor[lang], name: x.name[lang] || x.name.es })))] }));
+    emit(pp, TPL.layout(ctx, { title: L[pp]?.title || title, description: L[pp]?.meta_description, template: 'shop', bodyClass: 'tv-shop-root', hero, body: TPL.shopBody(ctx, { products: [], intro: [] }), alts: alt, crumbs: [crumbHome(lang), crumbProducts(lang)], ld: [itemListNode(ABS, pp, catTree.map((c) => ({ path: c.pathFor[lang], name: c.name[lang] || c.name.es })))] }));          // «Productos» = las categorías; los productos están en la tienda
+  }
+
+  // tienda: TODOS los productos en un listado (tarjetas con foto, tensión, precio y «añadir al presupuesto»), con filtros por categoría, tensión y texto, y orden
+  {
+    const sp = site.shop[lang];
+    const ctx = mkctx(lang, sp, 'shop');
+    const title = t('shop', lang);
+    const hero = `<section class="page-hero bp"><div class="container">${site.O ? `<p class="${TPL.oc(site, 'o-kicker')}">${esc(t('o_shop_kicker', lang))}</p>` : ''}<h1>${esc(title)}</h1></div></section>`;
+    const alt = Object.fromEntries(LANGS.map((l) => [l, site.shop[l]]));
+    emit(sp, TPL.layout(ctx, { title: `${t('shop_seo_title', lang)} · Torivac`, description: t('shop_meta', lang), template: 'shop', bodyClass: 'tv-shop-store', hero, body: TPL.storeBody(ctx, { products }), alts: alt, scripts: ['assets/js/shop.js'], crumbs: [crumbHome(lang), crumbProducts(lang), { name: title, path: sp }], ld: [itemListNode(ABS, sp, products.map((x) => ({ path: x.pathFor[lang], name: x.name[lang] || x.name.es })))] }));
   }
 
   // categorías (nombres repetidos en el mismo idioma → se desambiguan en el <title> con el nombre del padre)
@@ -468,7 +482,7 @@ if (ABS && !STAGING) {
   let short = head, full = head;
   for (const lang of LANGS) {
     const pagesL = reg.filter((r) => r.lang === lang);
-    const key = pagesL.filter((r) => ['home', 'contact', 'blog'].includes(r.template) || r.path === site.products[lang]);
+    const key = pagesL.filter((r) => ['home', 'contact', 'blog'].includes(r.template) || r.path === site.products[lang] || r.path === site.shop[lang]);
     short += sec(`${LNAME[lang]} · páginas`, key.map((r) => `- [${r.title}](${ABS}${r.path})${r.description ? ': ' + r.description : ''}`));
     const prods = products.map((x) => ({ x, path: x.pathFor[lang], name: x.name[lang] || x.name.es, desc: plain(x.short?.[lang] || x.short?.es || []) }));
     short += sec(`${LNAME[lang]} · productos`, prods.map((r) => `- [${r.name}](${ABS}${r.path})${r.desc ? ': ' + r.desc.slice(0, 160) : ''}`));

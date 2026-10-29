@@ -67,7 +67,7 @@ Reglas de oro: (1) **nunca se escribe en la web original** (solo `GET`); (2) **n
 - **meta.json** — empresa, contacto, destinatarios (`order_recipients`, marcados POR CONFIRMAR), menús, pie.
 
 ## 5. El generador (`site/build.mjs`)
-Secciones `[LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS] [CSS] [SEO-FILES]`. Banderas de aspecto: `--theme=ficha|clasico` y `--theme-switch`/`--no-theme-switch` ([`DISENO-TEMAS.md`](DISENO-TEMAS.md)). Emite por idioma: portada, listado de productos, categorías (con sus subcategorías), fichas, blog, contacto,
+Secciones `[LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS] [CSS] [SEO-FILES]`. Banderas de aspecto: `--theme=ficha|clasico` y `--theme-switch`/`--no-theme-switch` ([`DISENO-TEMAS.md`](DISENO-TEMAS.md)). Emite por idioma: portada, «Productos» (solo las categorías), **la tienda con todos los productos** (`/tienda/`, `/en/shop/`, `/fr/boutique/`, `/de/shop/`), categorías (con sus subcategorías), fichas, blog, contacto,
 presupuesto (`/presupuesto/`, `/en/quote/`, `/fr/devis/`, `/de/angebot/`), páginas genéricas y legales, redirecciones de rutas fusionadas y `/admin/`. Los enlaces son **relativos y terminan en `index.html`**
 (así funciona por `file://`).
 Opciones: `--base=URL` (modo producción: URLs limpias, SEO, `.htaccess`, `robots.txt`, 404 por idioma), `--out=carpeta`, `--staging` (entorno de pruebas: `noindex`, `robots.txt` cerrado, cinta),
@@ -78,7 +78,7 @@ También escribe `assets/data/*.js` (datos para el navegador como globales `TV.*
 - **Sin JS la web se lee y navega**; el JS añade presupuesto, filtros, PDF, idioma, gráficos. Datos para el navegador: `TV.meta`, `TV.i18n`, `TV.items`, `TV.thumbs`, `TV.logo`, `TV.prices`, `TV.proposals`, `TV.admin`.
 - **`quote.js`** — API `TV.Quote` (`add/set/remove/clear/detail/priceOf/tiersOf/importRows/onChange`), formato de importes por idioma, `TV.csvParse` (RFC 4180), `TV.refreshPrices`, `TV.api` (llamadas al Worker).
   El presupuesto vive en `localStorage` (`tv_quote_v1`); en `file://` hay un respaldo en `window.name` porque Chrome a veces entrega un almacenamiento vacío entre ficheros.
-- **`app.js`** — menú, cajón del presupuesto, botones flotantes, detección de idioma, sello de precios, arte toroidal. **`shop.js`** — filtros por tensión/búsqueda, tabla de modelos, galería.
+- **`app.js`** — menú, cajón del presupuesto, botones flotantes, detección de idioma, sello de precios, arte toroidal. **`shop.js`** — filtros por categoría/tensión/búsqueda, orden, precio y compra rápida de las tarjetas de la tienda, tabla de modelos, galería.
   **`pdf.js`** — `TV.makeQuotePdf` (jsPDF + autoTable locales). **`quote-page.js`** — tabla editable, importar CSV/Excel, enviar (demo/real). **`contact.js`**. **`lab.js`** — osciloscopio del variador.
 - **Idioma**: elección manual > idioma del navegador. Redirección automática **una sola vez** y **solo desde páginas en español**; en `/en/`, `/fr/`, `/de/` solo se ofrece un aviso. Claves: `tv_lang`, `tv_lang_src`, `tv_lang_auto_done`.
 - **CSS**: todo sale de tokens (`tokens.css`; `ficha-tokens.css` en el aspecto nuevo); nunca colores o fuentes sueltos. `art.css` = piezas gráficas. Contraste AA, foco visible, `prefers-reduced-motion` respetado. **Dos aspectos** (Ficha técnica, por defecto, y Clásico) en capas de una sola hoja: [`DISENO-TEMAS.md`](DISENO-TEMAS.md).

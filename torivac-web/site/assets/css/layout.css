@@ -20,8 +20,12 @@
 .lang [aria-current="true"]{color:var(--ink);background:var(--amber)}
 .menu-btn{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:var(--radius);padding:var(--s-2) var(--s-3);font-weight:600;cursor:pointer}
 .header-quote{display:inline-flex;align-items:center;gap:var(--s-2);margin-left:var(--s-3)}
-/* el menú completo (7 enlaces + presupuesto + idiomas) necesita ~1315 px en español: por debajo, menú con botón.
+/* el menú completo (8 enlaces con «Tienda» + presupuesto + idiomas) necesita ~1380 px en español con el espaciado normal y ~1330 px con el compacto de 1341–1440 px: por debajo, menú con botón.
    El selector de idioma se queda SIEMPRE a la vista en la barra (junto al botón): cambiar de idioma no debe costar dos toques. */
+@media (min-width:1341px) and (max-width:1440px){
+  .nav a{padding-inline:6px;letter-spacing:.02em}
+  .site-header .bar{gap:var(--s-3)}
+}
 @media (max-width:1340px){
   .menu-btn{display:inline-flex;margin-left:0;order:3}
   .lang{order:2;margin-left:auto;border-left:0;padding-left:0}

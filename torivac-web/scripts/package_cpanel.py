@@ -191,7 +191,7 @@ def check_wp_probes(rel: dict, base: str) -> list:
     for path in ("/wp-login.php", "/xmlrpc.php", "/wp-admin/", "/wp-admin/admin-ajax.php", "/wp-json/wp/v2/users", "/wp-includes/js/jquery.js", "/wp-content/plugins/x/readme.txt", "/wp-content/themes/y/style.css", "/wp-config.php"):
         if not rx.search(bp + path):
             errs.append(f"la regla 410 no corta {bp + path}")
-    for path in ("/", "/en/", "/productos/", "/blog/", "/wp-content/uploads/2020/01/ficha.pdf", "/api/health", "/admin/", "/robots.txt", "/sitemap.xml"):
+    for path in ("/", "/en/", "/productos/", "/tienda/", "/en/shop/", "/blog/", "/wp-content/uploads/2020/01/ficha.pdf", "/api/health", "/admin/", "/robots.txt", "/sitemap.xml"):
         if rx.search(bp + path):
             errs.append(f"la regla 410 corta una ruta legítima: {bp + path}")
     return errs
