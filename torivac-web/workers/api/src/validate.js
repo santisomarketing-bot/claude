@@ -3,6 +3,8 @@
 // se comprueban con Object.hasOwn (nombres como «constructor» o «__proto__» NO son referencias); el correo es estricto; el PDF se valida de verdad (base64 estricto, %PDF-, ≤ 4 MB).
 // Los campos de texto de pedido y contacto solo admiten TEXTO PLANO y con límite de caracteres (shared/plain-text.mjs: sin etiquetas, código ni más de 2 enlaces): si no, 400 con
 // { error, code: plain_text | too_long | too_many_links, field }. El navegador manda además `_e` (ms entre cargar la página y enviar): si falta o es < FORM_MIN_FILL_MS (1200), 400 con code too_fast.
+// Presupuestos recibidos (docs/PRESUPUESTOS-RECIBIDOS.md): parseEdit valida la EDICIÓN de un presupuesto (PUT /api/orders/:número: solicitante, líneas con precio manual opcional, nota, `rev`) y parseSend el REENVÍO
+// por correo (POST /api/orders/:número/send: 1 a 3 destinatarios, mensaje, PDF y copia al emisor). Ambas dan los mismos errores de texto que parseOrder; no exigen privacidad, honeypot, `_e` ni Turnstile (hay sesión).
 import { checkText, FIELDS, MAX_LINKS } from '../../../shared/plain-text.mjs';
 const LANGS = ['es', 'en', 'fr', 'de'];
 /** Caracteres de control (C0 y C1), separadores de línea/párrafo Unicode y marcas de dirección de texto (igual que el API PHP): nunca van en un campo de una línea. */
@@ -25,7 +27,7 @@ const isObj = (v) => !!v && typeof v === 'object' && !Array.isArray(v);
 
 /**
  * Valida el PDF que manda el navegador → { b64 } normalizado (sin saltos de línea) o { error }. Base64 estricto (^[A-Za-z0-9+/]+={0,2}$ tras quitar los saltos de línea, con longitud múltiplo de 4),
- * que decodificado empiece por «%PDF-» y que no pase de 4 MB decodificados. El PDF lo fabrica el navegador del visitante: solo se adjunta al correo del equipo, nunca a terceros.
+ * que decodificado empiece por «%PDF-» y que no pase de 4 MB decodificados. El PDF lo fabrica el navegador (del visitante o del panel): en un pedido solo se adjunta al correo del equipo; el reenvío de un presupuesto (parseSend) lo adjunta a los destinatarios que elige quien tiene sesión.
  */
 export function parsePdf(raw) {
   if (typeof raw !== 'string' || raw.length > 6_000_000) return { error: 'PDF adjunto no válido' };
@@ -53,11 +55,12 @@ function fillTimeError(raw, min) {
 /**
  * Revisa los campos de texto (`spec`: nombre → multilínea sí/no) de `src` con shared/plain-text.mjs y los límites de `form` → { out } con los textos NORMALIZADOS o { error, code, field }.
  * code = plain_text (etiquetas, código…) · too_long · too_many_links; el error va en castellano y code/field son para que el navegador lo muestre traducido.
+ * `limits` fija el máximo de los campos que no están en FIELDS (nota del presupuesto, mensaje del reenvío); con `form` null solo valen esos.
  */
-function textFields(src, form, spec) {
+function textFields(src, form, spec, limits = {}) {
   const out = {};
   for (const [k, multiline] of Object.entries(spec)) {
-    const max = FIELDS[form][k], r = checkText(src[k], { max, multiline });
+    const max = limits[k] ?? FIELDS[form][k], r = checkText(src[k], { max, multiline });
     if (!r.ok) {
       const code = r.code === 'not_text' ? 'plain_text' : r.code;
       return { error: code === 'too_long' ? `El texto es demasiado largo (máximo ${max} caracteres).` : code === 'too_many_links' ? `Máximo ${MAX_LINKS} enlaces por texto.` : `Escribe solo texto: sin etiquetas, código ni más de ${MAX_LINKS} enlaces.`, code, field: k };
@@ -95,6 +98,78 @@ export function parseOrder(raw, items, { minFillMs: min = 0 } = {}) {
   let pdf = null;
   if (raw.pdf !== undefined && raw.pdf !== null && raw.pdf !== '' && raw.pdf !== false) { const p = parsePdf(raw.pdf); if (p.error) return { error: p.error }; pdf = p.b64; }          // ausente, nulo, vacío o false = sin PDF; cualquier otra cosa se valida
   return { order: { customer, lines: [...seen].map(([ref, qty]) => ({ ref, qty })), lang, pdf, copyToCustomer: raw.copy !== false, turnstile: raw.turnstileToken || '' } };
+}
+/** Cliente de un presupuesto EDITADO: las 5 claves deben ser cadenas; texto plano con los límites de `order`, nombre ≥ 2 y correo válido en minúsculas (sin privacidad: ya hay sesión) → { customer } o { error, code?, field? }. */
+function parseEditCustomer(c) {
+  if (!isObj(c) || !['name', 'company', 'email', 'phone', 'notes'].every((k) => typeof c[k] === 'string')) return { error: 'Petición no válida' };
+  const t = textFields(c, 'order', { name: false, company: false, phone: false, notes: true }); if (t.error) return t;
+  const customer = { name: t.out.name, company: t.out.company, email: oneLine(c.email, 254).toLowerCase(), phone: t.out.phone, notes: t.out.notes };
+  if (customer.name.length < 2) return { error: 'Falta el nombre' };
+  if (!isEmail(customer.email)) return { error: 'Correo no válido' };
+  return { customer };
+}
+/** True si `x` es un precio unitario manual válido: número finito entre 0 y 10 000 000 con hasta 4 decimales. */
+const validPrice = (x) => typeof x === 'number' && Number.isFinite(x) && x >= 0 && x <= 10_000_000 && Math.abs(x * 1e4 - Math.round(x * 1e4)) < 1e-6;
+/** Líneas de un presupuesto EDITADO (1..200, referencias del catálogo `items` y SIN repetir, cantidad entera 1..1 000 000) → { lines:[{ref, qty, price?}] } o { error }. `price` solo está si la línea lo traía (número = precio manual; null = volver a la tarifa). */
+function parseEditLines(raw, items) {
+  if (!Array.isArray(raw) || !raw.length) return { error: 'El presupuesto está vacío' };
+  if (raw.length > 200) return { error: 'Demasiadas líneas (máx. 200)' };
+  const seen = new Set(), lines = [];
+  for (const l of raw) {
+    const rawRef = isObj(l) ? l.ref ?? '' : '';
+    if (typeof rawRef !== 'string') return { error: 'Petición no válida' };
+    const ref = oneLine(rawRef, 60), qty = isObj(l) ? l.qty : undefined;
+    if (!ref || !Object.hasOwn(items, ref)) return { error: `Referencia desconocida: ${ref || '(vacía)'}` };
+    if (seen.has(ref)) return { error: `Línea repetida: ${ref}` };
+    if (typeof qty !== 'number' || !Number.isInteger(qty) || qty < 1 || qty > 1_000_000) return { error: `Cantidad no válida para ${ref}` };
+    seen.add(ref);
+    const line = { ref, qty };
+    if (Object.hasOwn(l, 'price')) {
+      if (l.price !== null && !validPrice(l.price)) return { error: `Precio no válido para ${ref}` };
+      line.price = l.price === null ? null : l.price + 0;                                                          // + 0 convierte -0 en 0
+    }
+    lines.push(line);
+  }
+  return { lines };
+}
+/**
+ * Valida la EDICIÓN de un presupuesto (cuerpo del PUT /api/orders/:número) → { edit:{ rev, customer?, lines, quoteNote? } } o { error, code?, field? }. `rev` (entero ≥ 0) es obligatorio; `customer` y `quoteNote`
+ * son opcionales (si faltan no se tocan; si vienen deben ser válidos, también con null; `quoteNote` '' = quitarla). `items` es el catálogo pedible (el del sitio más las referencias que la hoja de precios añadió).
+ */
+export function parseEdit(raw, items) {
+  if (!isObj(raw)) return { error: 'Petición no válida' };
+  if (!Number.isInteger(raw.rev) || raw.rev < 0 || raw.rev > 1_000_000_000) return { error: 'Falta rev: la revisión del presupuesto que cargaste', field: 'rev' };
+  const edit = { rev: raw.rev };
+  if (Object.hasOwn(raw, 'customer')) { const c = parseEditCustomer(raw.customer); if (c.error) return c; edit.customer = c.customer; }
+  const l = parseEditLines(raw.lines, items); if (l.error) return l;
+  edit.lines = l.lines;
+  if (Object.hasOwn(raw, 'quoteNote')) {
+    if (typeof raw.quoteNote !== 'string') return { error: 'Petición no válida' };
+    const t = textFields(raw, null, { quoteNote: true }, { quoteNote: 1000 }); if (t.error) return t;
+    edit.quoteNote = t.out.quoteNote;
+  }
+  return { edit };
+}
+/**
+ * Valida el REENVÍO de un presupuesto (cuerpo del POST /api/orders/:número/send) → { send:{ to, message, pdf, copyToMe } } o { error, code?, field? }. `to`: 1 a 3 correos válidos, en minúsculas y sin repetir (se puede
+ * escribir a cualquiera); `message`: texto plano multilínea ≤ 1500 (opcional); `pdf`: obligatorio y validado con parsePdf; `copyToMe`: verdadero salvo que sea exactamente false.
+ */
+export function parseSend(raw) {
+  if (!isObj(raw)) return { error: 'Petición no válida' };
+  if (!Array.isArray(raw.to) || !raw.to.length) return { error: 'Indica al menos un destinatario', field: 'to' };
+  if (raw.to.length > 20) return { error: 'Máximo 3 destinatarios', field: 'to' };
+  const to = [];
+  for (const a of raw.to) {
+    if (typeof a !== 'string') return { error: 'Petición no válida' };
+    const e = oneLine(a, 254).toLowerCase();
+    if (!isEmail(e)) return { error: 'Correo de destino no válido', field: 'to' };
+    if (!to.includes(e)) to.push(e);
+  }
+  if (to.length > 3) return { error: 'Máximo 3 destinatarios', field: 'to' };
+  if (raw.message != null && typeof raw.message !== 'string') return { error: 'Petición no válida' };
+  const t = textFields(raw, null, { message: true }, { message: 1500 }); if (t.error) return t;
+  const p = parsePdf(raw.pdf); if (p.error) return { error: p.error, field: 'pdf' };
+  return { send: { to, message: t.out.message, pdf: p.b64, copyToMe: raw.copyToMe !== false } };
 }
 /** Valida y normaliza el formulario de contacto (honeypot, tiempo de relleno, nombre, correo, mensaje, privacidad) → { contact } o { error, code?, field? }. */
 export function parseContact(raw, { minFillMs: min = 0 } = {}) {

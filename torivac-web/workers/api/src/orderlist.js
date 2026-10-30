@@ -1,10 +1,11 @@
 // [ORDERLIST] GET /api/orders sin recorrer todo el almacén: acotado en pedidos y en operaciones de KV por petición.
-//   MANAGER  recorre los prefijos de fecha order:TV-AAAAMMDD- hacia atrás desde hoy hasta reunir 300 pedidos o llegar a 120 días, con un máximo de 400 operaciones de KV (list + get).
-//   CLIENTE  lista su índice uorder:<sha256(correo)[:32]>:<nº> (se escribe al crear el pedido) y lee como mucho sus 100 pedidos más recientes. Los pedidos anteriores a este índice no le aparecen.
-// Si se corta antes de agotar lo que había, la respuesta lleva truncated:true. A un cliente nunca se le devuelve la IP del pedido ni emailed.error.
-import { ymd, uorderPrefix } from './orders.js';
+//   MANAGER y CLIENTE recorren igual los prefijos de fecha order:TV-AAAAMMDD- hacia atrás desde hoy hasta reunir 300 pedidos o llegar a 120 días, con un máximo de 400 operaciones de KV (list + get).
+//   El rol «client» es el PROPIETARIO de la web (no un comprador): ve TODOS los presupuestos recibidos, pero nunca la IP del pedido ni emailed.error (forClient). El índice uorder:<sha256(correo)[:32]>:<nº>
+//   se sigue escribiendo al crear el pedido (orders.js) pero ya no se usa para listar.
+// Si se corta antes de agotar lo que había, la respuesta lleva truncated:true.
+import { ymd } from './orders.js';
 
-export const MAX_MANAGER = 300, MAX_CLIENT = 100, MAX_DAYS = 120, MAX_OPS = 400, CHUNK = 10;
+export const MAX_MANAGER = 300, MAX_DAYS = 120, MAX_OPS = 400, CHUNK = 10;
 
 /** Pedido de KV (texto JSON) → objeto, o null si falta o está dañado. */
 const parse = (raw) => { if (!raw) return null; try { const o = JSON.parse(raw); return o && typeof o === 'object' ? o : null; } catch { return null; } };
@@ -36,37 +37,29 @@ async function readOrders(env, names, out, want, ops) {
   }
   return true;
 }
-/** Pedidos visibles para `who` (manager: los más recientes de todos; cliente: los suyos, sin IP ni error de correo) → { orders (más recientes primero), truncated }. `now` en ms (para pruebas). */
+/** Pedidos visibles para `who` (los más recientes de todos; el rol client, sin IP ni error de correo) → { orders (más recientes primero), truncated }. `now` en ms (para pruebas). */
 export async function listOrders(env, who, { now = Date.now() } = {}) {
   const ops = { n: 0 }, out = []; let truncated = false;
-  try { truncated = await scan(env, who, now, ops, out); }
+  try { truncated = await scan(env, now, ops, out); }
   catch (e) { if (!out.length) throw e; console.error('Listado de pedidos cortado por KV:', e && e.message); truncated = true; }          // p. ej. el tope de subconsultas del plan gratuito: se devuelve lo leído, marcado como cortado
   let orders = out.filter((o) => o && typeof o.at === 'string' && o.customer && typeof o.customer === 'object');
-  if (who.role !== 'manager') orders = orders.filter((o) => o.customer.email === who.sub).map(forClient);       // el índice es una pista: se vuelve a comprobar que el pedido es suyo
+  if (who.role !== 'manager') orders = orders.map(forClient);                                                    // el propietario (client) ve todos, pero sin IP ni emailed.error
   orders.sort((a, b) => b.at.localeCompare(a.at));
   return { orders, truncated };
 }
-/** Recorre KV según el rol llenando `out` con los pedidos leídos (los más recientes primero) → true si se cortó antes de agotar lo que había. */
-async function scan(env, who, now, ops, out) {
+/** Recorre KV llenando `out` con los pedidos leídos (los más recientes primero) → true si se cortó antes de agotar lo que había. */
+async function scan(env, now, ops, out) {
   let truncated = false;
-  if (who.role === 'manager') {
-    for (let d0 = 0; d0 < MAX_DAYS && !truncated && out.length < MAX_MANAGER; d0 += CHUNK) {
-      const days = Array.from({ length: Math.min(CHUNK, MAX_DAYS - d0) }, (_, i) => ymd(new Date(now - (d0 + i) * 86_400_000)));
-      const lists = await Promise.all(days.map((day) => listKeys(env, `order:TV-${day}-`, ops)));         // las listas de unos días a la vez (cada una cuenta como operación)
-      for (const l of lists) {
-        if (!l.complete) truncated = true;
-        const names = l.keys.sort().reverse();                                                          // dentro de un día, el contador más alto = el más reciente
-        if (out.length >= MAX_MANAGER) { if (names.length) truncated = true; continue; }
-        if (!(await readOrders(env, names, out, MAX_MANAGER, ops))) truncated = true;
-      }
+  for (let d0 = 0; d0 < MAX_DAYS && !truncated && out.length < MAX_MANAGER; d0 += CHUNK) {
+    const days = Array.from({ length: Math.min(CHUNK, MAX_DAYS - d0) }, (_, i) => ymd(new Date(now - (d0 + i) * 86_400_000)));
+    const lists = await Promise.all(days.map((day) => listKeys(env, `order:TV-${day}-`, ops)));         // las listas de unos días a la vez (cada una cuenta como operación)
+    for (const l of lists) {
+      if (!l.complete) truncated = true;
+      const names = l.keys.sort().reverse();                                                          // dentro de un día, el contador más alto = el más reciente
+      if (out.length >= MAX_MANAGER) { if (names.length) truncated = true; continue; }
+      if (!(await readOrders(env, names, out, MAX_MANAGER, ops))) truncated = true;
     }
-    if (!truncated && out.length >= MAX_MANAGER) truncated = true;                                      // justo 300: puede haber más antiguos sin mirar
-  } else {
-    const prefix = await uorderPrefix(who.sub);
-    const l = await listKeys(env, prefix, ops);
-    if (!l.complete) truncated = true;
-    const names = l.keys.sort().reverse().map((k) => `order:${k.slice(prefix.length)}`);
-    if (!(await readOrders(env, names, out, MAX_CLIENT, ops))) truncated = true;
   }
+  if (!truncated && out.length >= MAX_MANAGER) truncated = true;                                      // justo 300: puede haber más antiguos sin mirar
   return truncated;
 }

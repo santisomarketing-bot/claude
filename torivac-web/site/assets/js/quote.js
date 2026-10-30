@@ -14,7 +14,8 @@
   var TV = (window.TV = window.TV || {});
   var KEY = 'tv_quote_v1';
   var lang = window.TV_LANG || document.documentElement.lang || 'es';
-  var LOCALE = { es: 'es-ES', en: 'en-GB', fr: 'fr-FR', de: 'de-DE' }[lang] || 'es-ES';
+  var LOCALES = { es: 'es-ES', en: 'en-GB', fr: 'fr-FR', de: 'de-DE' };
+  var LOCALE = LOCALES[lang] || 'es-ES';
 
   /** ¿`k` es una clave PROPIA de `o`? (con `o[k]` a secas, «constructor», «__proto__» o «toString» pasarían por referencias válidas) */
   function own(o, k) { return !!o && Object.prototype.hasOwnProperty.call(o, k); }
@@ -157,6 +158,13 @@
     onChange: function (fn) { listeners.push(fn); },
     /** Reaplica los precios cargados desde el panel, rehace los formatos y avisa a la página (evento tv:prices y cambio «prices»). */
     applyOverride: function () { applyOverride(); buildFormats(); document.dispatchEvent(new CustomEvent('tv:prices')); emit({ type: 'prices' }); },
+    /** Ejecuta `fn()` con el idioma, los textos y los formatos de importe de `l` (es, en, fr o de) y vuelve después al de la página: sirve para fabricar el PDF de un presupuesto en el idioma de quien lo pidió. Devuelve lo que devuelva `fn`. */
+    withLang: function (l, fn) {
+      if (!own(LOCALES, l) || l === lang) return fn();
+      var prev = { lang: lang, locale: LOCALE, shown: API.lang };
+      lang = l; LOCALE = LOCALES[l]; API.lang = l; buildFormats();
+      try { return fn(); } finally { lang = prev.lang; LOCALE = prev.locale; API.lang = prev.shown; buildFormats(); }
+    },
     money: money, unitMoney: unitMoney, priceOf: priceOf, tiersOf: tiersOf, t: t, rel: rel, assetUrl: assetUrl, lang: lang,
     /** nombre de línea listo para mostrar */
     label: function (d) { return d.name + (d.spec ? ' — ' + d.spec : ''); },

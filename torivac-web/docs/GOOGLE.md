@@ -1,6 +1,8 @@
 # Google · Analytics 4, Google Ads y Search Console
 
-Cómo mide la web, cómo se activa y qué se probó. **Estado de entrega: todo apagado** (`site/google.config.json` vacío): la web no carga nada de Google, no enseña aviso de cookies y la política de seguridad no abre ningún dominio de Google.
+Cómo mide la web, cómo se activa y qué se probó. **Estado de entrega: todo apagado** (sin IDs ni en el panel ni en `site/google.config.json`): la web no carga nada de Google y no enseña aviso de cookies.
+
+**Dónde se configura (dos sitios).** Lo normal es el **panel: Ajustes → Google** (§11): el manager escribe el ID de Analytics, el de Ads y la etiqueta de cada conversión y la web lo aplica en unos minutos, **sin recompilar**. `site/google.config.json` queda como valor de arranque (y es el único sitio para la verificación de **Search Console**, que tiene que estar en el HTML que ve el robot). Si el panel tiene IDs, mandan sobre los del archivo.
 
 ## 0. Antes de activar: lo que ya mide la web actual (Google Tag Manager)
 
@@ -14,15 +16,20 @@ El informe de Santiso Marketing de mayo de 2026 dice que la web actual (WordPres
 
 | Pieza | Dónde | Qué hace |
 |---|---|---|
-| Configuración | `site/google.config.json` | Los IDs **públicos** (salen en el código de cualquier web; no son claves). Vacío = nada. Un ID mal escrito **detiene la compilación** con el motivo (un ID roto dejaría la medición muerta sin avisar). |
-| Módulo de compilación | `site/lib/google.mjs` | Valida los IDs, decide el modo (producción «live» / pruebas «test»), calcula los orígenes de la CSP y la etiqueta de Search Console. |
-| Aviso de cookies | `site/templates.mjs` (`cookieBar`) + `site/assets/js/consent.js` | Banda inferior sin bloquear la página: **Rechazar todas** y **Aceptar todas** con el mismo peso visual y **Configurar** para elegir por categoría. Va en el HTML oculto: sin JavaScript no sale y tampoco se mide nada. |
-| Política de cookies | `site/lib/cookies.mjs` + `cookiePage` | Página propia en los 4 idiomas, **en la misma dirección que la de la web original** (`/politica-de-cookies/`, `/en/politica-de-cookies/`, …): la original era un *shortcode* de Complianz que no se puede copiar y esa dirección dejaría de existir. Lista solo lo que la web usa de verdad. |
-| CSP | `site/lib/hosting.mjs` + `cspHosts()` | Solo con IDs y solo en producción abre los dominios de Google necesarios. Sigue sin `unsafe-inline` ni `eval`. |
+| Ajustes del panel | `site/assets/js/admin-google.js` + `GoogleSettings.php` / `workers/api/src/google.js` | Los IDs y etiquetas que escribe el manager; se guardan en el servidor y la web los lee en `GET /api/google` (§11). |
+| Configuración de arranque | `site/google.config.json` | Los IDs **públicos** (salen en el código de cualquier web; no son claves) con los que se compila. Vacío = nada. Un ID mal escrito **detiene la compilación** con el motivo (un ID roto dejaría la medición muerta sin avisar). Search Console solo se configura aquí. |
+| Módulo de compilación | `site/lib/google.mjs` | Valida los IDs, decide el modo (producción «live» / pruebas «test» / **`runtime`**: la compilación lleva el servidor y por eso incluye siempre todo el mecanismo apagado), calcula los orígenes de la CSP y la etiqueta de Search Console. |
+| Aviso de cookies | `site/templates.mjs` (`cookieBar`) + `site/assets/js/consent.js` | Banda inferior sin bloquear la página: **Rechazar todas** y **Aceptar todas** con el mismo peso visual y **Configurar** para elegir por categoría. Va en el HTML oculto: sin JavaScript no sale y tampoco se mide nada. Con servidor lleva las dos categorías y los dos textos; `consent.js` enseña solo las que tienen ID. |
+| Política de cookies | `site/lib/cookies.mjs` + `cookiePage` | Página propia en los 4 idiomas, **en la misma dirección que la de la web original** (`/politica-de-cookies/`, `/en/politica-de-cookies/`, …): la original era un *shortcode* de Complianz que no se puede copiar y esa dirección dejaría de existir. Con servidor lleva todas las secciones (`data-cookie-sec`) y `consent.js` deja visibles solo las que corresponden a lo configurado. |
+| CSP | `site/lib/hosting.mjs` + `cspHosts()` | En producción **con servidor** abre siempre los dominios de Google (lo que se active desde el panel no puede quedar bloqueado); sin servidor, solo si hay IDs en el archivo. Solo en producción, nunca en pruebas. Sigue sin `unsafe-inline` ni `eval`. |
 | Eventos | `TV.track()` en `consent.js`; llamadas en `quote-page.js` y `contact.js` | Solo **envíos completados** (presupuesto y contacto). |
 | Pruebas | `scripts/qa-google.mjs` (en `qa-all.sh` y CI) | ~150 comprobaciones; `--real` además carga el `gtag.js` **de verdad**. |
 
-## 2. Cómo se activa (3 pasos)
+## 2. Cómo se activa
+
+**Con el panel (lo normal, sin recompilar):** conseguir los IDs (§3) → entrar en el panel como manager → **Ajustes → Google** → pegar el ID de Analytics, el de Ads y la etiqueta de cada conversión → **Guardar** → **Comprobar qué carga la web** → comprobar con la web publicada (§7). Un visitante lo recibe en la primera página de cada sesión (el navegador lo guarda 2 minutos). Para **apagarlo**: vaciar los campos y guardar. La etiqueta se puede pegar completa (`AW-123456789/AbCdEfGhIjK`) o solo la parte final.
+
+**Con el archivo (valor de arranque, o si no hay servidor), 3 pasos:**
 
 1. **Conseguir los IDs** (§3) y escribirlos en `site/google.config.json`:
    ```json
@@ -39,7 +46,7 @@ El informe de Santiso Marketing de mayo de 2026 dice que la web actual (WordPres
 
 Para **apagarlo**: vaciar los IDs y repetir 2-3.
 
-> Los IDs entran **al compilar**, no se leen en el servidor: así la etiqueta de Search Console está en el HTML que ve el robot de Google sin ejecutar nada, y el aviso no necesita ninguna petición extra. Cambiar un ID = recompilar. Cuando exista el panel de ajustes (S21) se podrá editar desde ahí.
+> **Search Console va siempre al compilar** (no se puede cambiar desde el panel): su etiqueta tiene que estar en el HTML que ve el robot de Google sin ejecutar nada. Los IDs de Analytics y Ads sí se pueden cambiar desde el panel; los del archivo solo son el valor de arranque.
 
 ## 3. De dónde sale cada ID
 
@@ -78,7 +85,7 @@ En la web **presupuesto y pedido son el mismo envío** (`POST /api/order`), por 
 
 ## 6. La política de seguridad (CSP)
 
-Con IDs, en **producción**, `cspHosts()` abre (y solo lo de lo que esté configurado):
+En **producción con servidor** (la compilación lleva el API y los IDs se editan en el panel) `cspHosts()` abre **siempre** los dominios de Analytics y Ads, aunque hoy no haya ID: así lo que el manager active después no queda bloqueado por la política. Sin servidor, solo se abre lo que tenga ID en `google.config.json`. En pruebas no se abre nada. Qué se abre:
 
 - **Siempre que haya algo**: `script-src https://www.googletagmanager.com`; `connect-src`/`img-src https://*.googletagmanager.com`.
 - **GA4**: `connect-src https://*.google-analytics.com https://*.analytics.google.com`; `img-src https://*.google-analytics.com`.
@@ -114,5 +121,30 @@ Escritos por el proyecto, **borrador**:
 
 - No se ha podido verificar contra **cuentas reales** (no hay IDs de Torivac accesibles desde aquí); sí contra el `gtag.js` real con IDs inventados (sin violaciones de la CSP; cookies `_ga`, `_ga_<ID>` y `_gcl_au` creadas).
 - Modo «básico»: quien rechaza no se cuenta (ver §4).
+- Un cambio en el panel tarda hasta ~3 minutos en llegar a un visitante (caché pública de 60 s del API + 2 min guardado en su navegador). Si aparece una categoría nueva (p. ej. se añade Ads donde solo había Analytics), `consent.js` **vuelve a preguntar**: lo aceptado antes no vale para una categoría que no se ofreció.
+- Si el servidor no responde, `consent.js` usa los IDs de arranque de la compilación; si tampoco hay, no hace nada (la web nunca se rompe por esto).
 - Los nombres y duraciones de cookies de Google son los documentados por Google; pueden cambiar.
 - La verificación de Search Console por **Google Analytics o Tag Manager** no sirve aquí (la etiqueta solo carga tras aceptar cookies): usar la etiqueta meta o el archivo.
+
+## 11. Ajustes en el panel (contrato de los dos servidores)
+
+El manager configura Analytics, Ads y las conversiones en **Ajustes → Google · medición y conversiones** (`site/assets/js/admin-google.js`). Se guardan en el servidor (PHP: `Store` clave `settings:google`; Worker: KV `settings:google`; sin caducidad) y la web los lee en `GET /api/google`.
+
+### `GET /api/google` — público
+`200 { ok:true, google:{ ga4, ads, conv:{ quote, contact } } }` con cadenas (`''` = no hay). Solo contiene lo que sale en el código de cualquier web (IDs); `conv.x` es la etiqueta **completa** `AW-123456789/AbCdEfGhIjK` y solo si esa conversión está activada y hay ID de Ads. Sin nada guardado devuelve todo vacío. Cabeceras: `Cache-Control: public, max-age=60`, CORS como el resto de rutas públicas. Es de solo lectura: ningún límite de IP especial más allá del general.
+
+### `GET /api/settings/google` — manager
+`200 { ok:true, settings:{ ga4, ads, conversions:{ quote:{ label, on }, contact:{ label, on } }, updated:{ at, by } | null } }`. `label` es lo que se guardó (completa o solo la parte final); `on` es booleano (por defecto `true`). Un propietario (`client`) recibe 403 «Solo para managers».
+
+### `PUT /api/settings/google` — manager
+Cuerpo `{ ga4, ads, conversions:{ quote:{ label, on }, contact:{ label, on } } }` (≤ 5 KB; cualquier clave que falte se toma vacía/`on:true`; las claves desconocidas se ignoran). Validación (las mismas reglas que `site/lib/google.mjs`):
+
+- `ga4`: vacío o `^(?:G|GT)-[A-Z0-9]{6,14}$` · `ads`: vacío o `^AW-\d{6,12}$`.
+- `label`: vacío, o `AW-<id>/<etiqueta>` completa (`^(AW-\d{6,12})/([A-Za-z0-9_-]{8,40})$`), o solo `<etiqueta>` (`^[A-Za-z0-9_-]{8,40}$`). Solo la etiqueta exige `ads`. Completa con otro ID que `ads` → error. Si hay etiquetas completas y `ads` está vacío, `ads` se toma de ellas.
+- `on`: booleano; cualquier otra cosa → 400.
+- Error: `400 { ok:false, error:'<texto en castellano>', field:'ga4'|'ads'|'conversions.quote'|'conversions.contact' }`.
+- Éxito: guarda con `updated = { at: ahora (ISO UTC), by: correo (o 'maestro') }` y responde `200 { ok:true, settings }` (ya normalizados). PHP: `Audit::log('settings.google', $who, $req, 'ga4=… ads=… conv=…')` (categoría de ajustes).
+- Un propietario → 403; sin sesión → 401.
+
+### Cómo lo usa la web
+`consent.js` pide `GET /api/google` una vez por sesión (guardado 2 min), valida cada ID con la forma de Google y, si no hay ningún ID, **no hace nada**. Si el servidor no tiene IDs, valen los de arranque que lleva la página (`site/google.config.json`; en el paquete de pruebas, los ficticios de `--google-demo`). La política de seguridad de las compilaciones de producción con servidor abre siempre los dominios de Google (así lo que se active desde el panel no queda bloqueado); nada se carga hasta que la persona acepta.

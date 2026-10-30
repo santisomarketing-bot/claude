@@ -131,4 +131,8 @@ return [
 
     // Tope global de pedidos por hora (además del de 8 pedidos / 10 min por visitante): protege la cuota del correo (Resend) y el buzón del equipo. Superado: error 429.
     'orders_per_hour_max' => 120,
+
+    // REENVÍO DE PRESUPUESTOS desde el panel (Presupuestos recibidos → Reenviar): manda el PDF a hasta 3 destinatarios cualesquiera, así que tiene topes. 20 por hora y persona (fijo) y, en total al día,
+    // 'order_send_daily_max' (0 = sin tope). Superado: error 429. Cada reenvío queda en Actividad. Sin correo configurado el panel avisa (409) y no se envía nada.
+    'order_send_daily_max' => 150,
 ];

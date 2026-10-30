@@ -90,6 +90,27 @@ final class Orders
         return new Response(['ok' => false, 'error' => $p['error']] + (isset($p['code']) ? ['code' => $p['code']] : []) + (isset($p['field']) ? ['field' => $p['field']] : []), 400);
     }
 
+    /**
+     * Limpia y valida los datos del solicitante (name, company, email, phone, notes: todas CADENAS) con las reglas de siempre: texto plano con el límite de cada campo (PlainText), nombre de al menos
+     * 2 caracteres y correo válido en minúsculas. Lo usan el pedido de la web (parseOrder) y la edición desde el panel (Quotes), para que las dos apliquen exactamente lo mismo.
+     * @param array<string,string> $f
+     * @return array{customer?:array,error?:string,code?:string,field?:string}
+     */
+    public static function cleanCustomer(array $f): array
+    {
+        $t = [];
+        foreach (['name' => false, 'company' => false, 'phone' => false, 'notes' => true] as $k => $multiline) {          // solo texto plano y con el límite de cada campo
+            $max = PlainText::max('order', $k);
+            $r = PlainText::check($f[$k], $max, $multiline);
+            if (!$r['ok']) return self::plainError($r['code'], $k, $max);
+            $t[$k] = $r['text'];
+        }
+        $customer = ['name' => $t['name'], 'company' => $t['company'], 'email' => strtolower(Util::line($f['email'], 254)), 'phone' => $t['phone'], 'notes' => $t['notes']];
+        if (mb_strlen($customer['name']) < 2) return ['error' => 'Falta el nombre'];
+        if (!self::validEmail($customer['email'])) return ['error' => 'Correo no válido'];
+        return ['customer' => $customer];
+    }
+
     /** @return array{order?:array,error?:string,code?:string,field?:string} */
     public static function parseOrder($raw, array $items): array
     {
@@ -102,16 +123,9 @@ final class Orders
             $f[$k] = self::str($c, $k);
             if ($f[$k] === null) return ['error' => 'Petición no válida'];                      // un campo de texto que no es una cadena (p. ej. un array) no se acepta
         }
-        $t = [];
-        foreach (['name' => false, 'company' => false, 'phone' => false, 'notes' => true] as $k => $multiline) {          // solo texto plano y con el límite de cada campo
-            $max = PlainText::max('order', $k);
-            $r = PlainText::check($f[$k], $max, $multiline);
-            if (!$r['ok']) return self::plainError($r['code'], $k, $max);
-            $t[$k] = $r['text'];
-        }
-        $customer = ['name' => $t['name'], 'company' => $t['company'], 'email' => strtolower(Util::line($f['email'], 254)), 'phone' => $t['phone'], 'notes' => $t['notes']];
-        if (mb_strlen($customer['name']) < 2) return ['error' => 'Falta el nombre'];
-        if (!self::validEmail($customer['email'])) return ['error' => 'Correo no válido'];
+        $cc = self::cleanCustomer($f);
+        if (isset($cc['error'])) return $cc;
+        $customer = $cc['customer'];
         if (($c['privacy'] ?? null) !== true) return ['error' => 'Debes aceptar la política de privacidad'];
         if (!is_array($raw['lines'] ?? null) || !$raw['lines']) return ['error' => 'El presupuesto está vacío'];
         if (count($raw['lines']) > 200) return ['error' => 'Demasiadas líneas (máx. 200)'];

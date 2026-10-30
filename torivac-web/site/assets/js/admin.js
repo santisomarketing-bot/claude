@@ -2,7 +2,7 @@
  * [ADMIN] Panel de gestión de Torivac (DEMO sin servidor): login con dos roles, menú lateral y vistas.
  *
  *  Roles:  manager → Resumen · Pedidos · Precios · Propuestas · Contenido · Estadísticas · Ajustes
- *          cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
+ *          Propietario (internamente «cliente») → Nuevo presupuesto · Presupuestos recibidos · Lista de precios · Estadísticas
  *
  * ⚠ DEMO: el login es SOLO de demostración (credenciales en este fichero, sesión en sessionStorage). En producción (Sesión 7) el login
  *   lo resuelve un Worker (PBKDF2 + cookie HMAC, como whynot-sites/workers/admin) y los datos viven en un backend, no en localStorage.
@@ -23,7 +23,7 @@
   // ───────────────────────────────────────── [AUTH] (DEMO)
   var USERS = [
     { email: 'manager@torivac.demo', pass: 'Torivac-Manager-2026', role: 'manager', name: 'Manager (demo)' },
-    { email: 'cliente@torivac.demo', pass: 'Torivac-Cliente-2026', role: 'cliente', name: 'Cliente (demo)' },
+    { email: 'cliente@torivac.demo', pass: 'Torivac-Cliente-2026', role: 'cliente', name: 'Propietario (demo)' },
   ];
   /** Sesión demo guardada en sessionStorage {email, role, name}; null si no hay sesión o está dañada. */
   function session() { try { return JSON.parse(sessionStorage.getItem('tv_session') || 'null'); } catch (e) { return null; } }
@@ -76,7 +76,7 @@
   // ───────────────────────────────────────── [VIEWS]
   var NAV = {
     manager: [['resumen', 'Resumen', '◧'], ['pedidos', 'Pedidos', '☰'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
-    cliente: [['presupuestador', 'Presupuestador', '✚'], ['mis', 'Mis presupuestos', '☰'], ['lista', 'Lista de precios', '€'], ['estadisticas', 'Estadísticas', '◔']],
+    cliente: [['presupuestador', 'Nuevo presupuesto', '✚'], ['mis', 'Presupuestos recibidos', '☰'], ['lista', 'Lista de precios', '€'], ['estadisticas', 'Estadísticas', '◔']],
   };
   var V = {};
 
@@ -99,11 +99,11 @@
   V.pedidos = function () {
     var o = orders().slice().reverse();
     var rows = o.map(function (x, i) { return '<tr><td class="mono">' + esc(x.number) + '</td><td>' + esc(new Date(x.at).toLocaleString('es-ES')) + '</td><td>' + esc(x.customer.name || '') + '<br><span class="muted small">' + esc(x.customer.company || '') + ' ' + esc(x.customer.email || '') + '</span></td><td class="num">' + x.lines.length + '</td><td class="num">' + money(x.total) + (x.demo ? ' <span class="tag">DEMO</span>' : '') + '</td><td><button class="btn sm ghost" data-pdf="' + (o.length - 1 - i) + '">PDF</button></td></tr>'; }).join('');
-    return '<h1>Pedidos</h1>' + (o.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Nº</th><th>Fecha</th><th>Cliente</th><th>Líneas</th><th>Importe</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + rows + '</tbody></table></div><p><button class="btn sm ghost" data-export-orders>Exportar JSON</button> <button class="btn sm ghost" data-clear-orders>Borrar pedidos de la demo</button></p>' : '<p class="notice">No hay pedidos todavía. Haz un pedido de prueba desde la web.</p>');
+    return '<h1>Pedidos</h1>' + (o.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Nº</th><th>Fecha</th><th>Solicitante</th><th>Líneas</th><th>Importe</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + rows + '</tbody></table></div><p><button class="btn sm ghost" data-export-orders>Exportar JSON</button> <button class="btn sm ghost" data-clear-orders>Borrar pedidos de la demo</button></p>' : '<p class="notice">No hay pedidos todavía. Haz un pedido de prueba desde la web.</p>');
   };
 
-  /** Vista «Mis presupuestos» (cliente): la tabla de Pedidos con otro título. */
-  V.mis = function () { return V.pedidos().replace('<h1>Pedidos</h1>', '<h1>Mis presupuestos</h1>'); };
+  /** Vista «Presupuestos recibidos» (propietario): la tabla de Pedidos con otro título. */
+  V.mis = function () { return V.pedidos().replace('<h1>Pedidos</h1>', '<h1>Presupuestos recibidos</h1>'); };
 
   /** Vista Precios (manager): estado de la hoja, actualizar o restaurar, subida de Excel/CSV e instrucción en castellano. */
   V.precios = function () {
@@ -144,7 +144,7 @@
   V.estadisticas = function (s) {
     var cards = [['Google Business Profile', 'Búsquedas, vistas, llamadas, rutas y reseñas.', 'Business Profile Performance API'], ['Google Ads', 'Inversión, clics, conversiones y CPA.', 'Google Ads API (cuenta de Torivac)'], ['SEO (Search Console)', 'Impresiones, clics, posición media, páginas y consultas.', 'Search Console API'], ['Guías y contenido', 'Lecturas, descargas de catálogo/fichas y origen.', 'GA4 Data API + eventos de descarga']];
     return '<h1>Estadísticas</h1><p class="notice">Sin conexión todavía. Los datos reales se conectan en la <strong>Sesión 7</strong>; este panel no muestra cifras inventadas.</p><div class="cols cols3">' + cards.map(function (c) { return '<section class="panel"><h2>' + esc(c[0]) + '</h2><p>' + esc(c[1]) + '</p><p class="small muted">Fuente: ' + esc(c[2]) + '</p><p><span class="tag dim">Pendiente de conectar</span></p></section>'; }).join('') + '</div>' +
-      (s && s.role === 'cliente' ? '<p class="muted small">Vista cliente: se mostrarán solo sus propios datos y los informes mensuales aprobados.</p>' : '<p class="muted small">Vista manager: todas las cuentas, comparativas y alertas. Estructura de conexiones reutilizada de los repos <code>reports</code>, <code>GOOGLE-BUSINESS---NOVEDADES-Y-LINKEDIN</code> y <code>aeo-core</code>.</p>');
+      (s && s.role === 'cliente' ? '<p class="muted small">Vista propietario: se mostrarán solo sus propios datos y los informes mensuales aprobados.</p>' : '<p class="muted small">Vista manager: todas las cuentas, comparativas y alertas. Estructura de conexiones reutilizada de los repos <code>reports</code>, <code>GOOGLE-BUSINESS---NOVEDADES-Y-LINKEDIN</code> y <code>aeo-core</code>.</p>');
   };
 
   /** Vista Ajustes (manager): destinatarios del pedido y usuarios de la demo. */
@@ -253,7 +253,7 @@
       return;
     }
     var nav = NAV[s.role], cur = (location.hash || '#').slice(1) || nav[0][0]; if (!nav.some(function (n) { return n[0] === cur; })) cur = nav[0][0];
-    root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + esc(document.getElementById('logo-src').value) + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : 'Cliente') + '</span></div><nav aria-label="Panel">' + nav.map(function (n) { return '<a href="#' + n[0] + '"' + (n[0] === cur ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + n[2] + '</span>' + esc(n[1]) + '</a>'; }).join('') + '</nav><div class="side-bot"><a href="../index.html">← Ir a la web</a><button class="btn sm ghost" data-logout type="button">Salir (' + esc(s.name) + ')</button></div></aside><main class="main">' + (V[cur] ? V[cur](s) : '') + '</main></div>';
+    root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + esc(document.getElementById('logo-src').value) + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : 'Propietario') + '</span></div><nav aria-label="Panel">' + nav.map(function (n) { return '<a href="#' + n[0] + '"' + (n[0] === cur ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + n[2] + '</span>' + esc(n[1]) + '</a>'; }).join('') + '</nav><div class="side-bot"><a href="../index.html">← Ir a la web</a><button class="btn sm ghost" data-logout type="button">Salir (' + esc(s.name) + ')</button></div></aside><main class="main">' + (V[cur] ? V[cur](s) : '') + '</main></div>';
     bind();
   }
   root.addEventListener('click', onClick);   // una sola vez (los nodos se repintan, el contenedor no)

@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 // [QA-GOOGLE] Medición de Google (Analytics 4, Google Ads) y Search Console: aviso de cookies, consentimiento, eventos de conversión, política de seguridad (CSP) y política de cookies.
-//   1) COMPILACIÓN (sin navegador): sin IDs no sale NADA de Google; con IDs sueltos solo lo que corresponde (solo GA4, solo Ads); un ID mal escrito detiene la compilación; --google-demo solo en pruebas;
+//   1) COMPILACIÓN (sin navegador): web estática sola: sin IDs no sale NADA de Google; con IDs sueltos solo lo que corresponde (solo GA4, solo Ads); un ID mal escrito detiene la compilación; --google-demo solo en pruebas;
 //      la etiqueta y el archivo de Search Console solo en producción; la política de cookies existe en los 4 idiomas y dice lo que de verdad se usa.
-//   2) NAVEGADOR sobre el paquete de PRODUCCIÓN en un Apache real con PHP-FPM y la CSP real del .htaccess, con una réplica de Google (determinista, sin red):
-//      antes de decidir no sale ni una petición a Google; «Rechazar» no carga nada; «Aceptar» carga gtag.js una vez, con el consentimiento y los IDs correctos; elegir solo estadísticas no abre Ads;
+//      Con servidor (modo «runtime», el de todo paquete): la compilación deja lista la maquinaria (aviso con las dos categorías, política con secciones, CSP de Google) y los IDs los da el servidor.
+//   2) NAVEGADOR sobre el paquete de PRODUCCIÓN en un Apache real con PHP-FPM y la CSP real del .htaccess, con una réplica de Google (determinista, sin red). Los IDs se configuran como lo hace el manager:
+//      PUT /api/settings/google. Sin ajustes en el servidor no sale nada; solo Analytics / solo Ads / todo enseñan solo lo que toca (aviso y política); una categoría nueva vuelve a preguntar; si el servidor falla, no pasa nada.
+//      Luego: antes de decidir no sale ni una petición a Google; «Rechazar» no carga nada; «Aceptar» carga gtag.js una vez, con el consentimiento y los IDs correctos; elegir solo estadísticas no abre Ads;
 //      retirar el permiso borra las cookies y recarga sin Google; los envíos de presupuesto y de contacto generan sus conversiones solo con el permiso de su categoría; los clics en teléfono, WhatsApp y correo NO miden nada;
 //      la CSP deja pasar a Google y sigue bloqueando a cualquier otro; teclado, lectores de pantalla (axe), móvil y los 4 idiomas.
 //   3) ENTORNO DE PRUEBAS (modo «test», IDs ficticios) en los 3 aspectos y en escritorio/móvil: el aviso sale y funciona, y NO sale ni una petición a Google.
@@ -33,11 +35,13 @@ const TMP = fs.mkdtempSync(path.join(os.tmpdir(), 'tv-google-'));
 /** Escribe un google.config.json de prueba y devuelve su ruta. */
 const cfgFile = (name, o) => { const f = path.join(TMP, name + '.json'); fs.writeFileSync(f, typeof o === 'string' ? o : JSON.stringify(o)); return f; };
 const FULL = { ga4: 'G-TEST123456', ads: 'AW-123456789', conversions: { quote: 'AW-123456789/AbCdEfGhIj12', contact: 'AbCdEfGhIj34' }, searchConsole: { meta: 'abcdefghijklmnopqrstuvwxyz0123456789ABCD', htmlFile: 'google0123456789abcdef.html' } };
-const FILES = { full: cfgFile('full', FULL), ga: cfgFile('ga', { ga4: 'G-TEST123456' }), ads: cfgFile('ads', { ads: 'AW-123456789', conversions: { quote: 'AbCdEfGhIj12' } }) };
+const FILES = { full: cfgFile('full', FULL), ga: cfgFile('ga', { ga4: 'G-TEST123456' }), ads: cfgFile('ads', { ads: 'AW-123456789', conversions: { quote: 'AbCdEfGhIj12' } }), sc: cfgFile('sc', { searchConsole: FULL.searchConsole }) };
+/** Ajustes de Google tal como los manda el panel (PUT /api/settings/google). */
+const SET = (over = {}) => ({ ga4: 'G-TEST123456', ads: 'AW-123456789', conversions: { quote: { label: 'AW-123456789/AbCdEfGhIj12', on: true }, contact: { label: 'AbCdEfGhIj34', on: true } }, ...over });
 
 // ═══════════════════════════════════════════════ 1) COMPILACIÓN
 /** Compila la web con la configuración de Google indicada y devuelve { code, out, dir } (code ≠ 0: la compilación se detuvo). */
-function build(cfg, args = ['--base=https://example.test', '--php-api'], name = 'b' + Math.random().toString(36).slice(2, 8)) {
+function build(cfg, args = ['--base=https://example.test'], name = 'b' + Math.random().toString(36).slice(2, 8)) {
   const dir = path.join(TMP, name);
   const r = spawnSync('node', [path.join(ROOT, 'site/build.mjs'), ...args, `--out=${dir}`, '--theme=ficha'], { encoding: 'utf8', env: { ...process.env, ...(cfg ? { TORIVAC_GOOGLE_CONFIG: cfg } : {}) } });
   return { code: r.status, out: (r.stdout || '') + (r.stderr || ''), dir };
@@ -49,7 +53,7 @@ const csp = (b) => (/Content-Security-Policy "([^"]+)"/.exec(rd(b, '.htaccess'))
 const GH = /googletagmanager|google-analytics|analytics\.google|doubleclick|googleadservices|googlesyndication|www\.google\.(com|es|fr|de)/;
 const COOKIEP = { es: '/politica-de-cookies/', en: '/en/politica-de-cookies/', fr: '/fr/politica-de-cookies/', de: '/de/politica-de-cookies/' };
 
-console.log('1) compilación');
+console.log('1) compilación (web estática sola, sin servidor)');
 {
   console.log('   sin IDs (como se entrega)');
   const b = build(null);
@@ -100,6 +104,19 @@ console.log('1) compilación');
   const js = fs.readdirSync(path.join(ROOT, 'site/assets/js')).filter((f) => f.endsWith('.js')).map((f) => [f, fs.readFileSync(path.join(ROOT, 'site/assets/js', f), 'utf8')]);
   const kinds = js.flatMap(([f, t]) => [...t.matchAll(/TV\.track\(\s*'([^']*)'/g)].map((m) => `${f}:${m[1]}`));
   ok(tel && kinds.length === 2 && kinds.every((k) => /:(quote|contact)$/.test(k)) && /kind !== 'quote' && kind !== 'contact'/.test(js.find(([f]) => f === 'consent.js')[1]), `solo se mide el envío de presupuesto y el de contacto (${kinds.join(', ')}); consent.js rechaza cualquier otro tipo, aunque la web tenga enlaces de teléfono${wa ? ' y de WhatsApp' : ''}`);
+}
+{
+  console.log('   con servidor (modo runtime: los IDs los da el panel)');
+  const b = build(null, ['--base=https://example.test', '--php-api']), home = rd(b, 'index.html'), c = csp(b), pol = rd(b, 'politica-de-cookies/index.html');
+  ok(b.code === 0 && /GOOGLE: ajustes en el servidor/.test(b.out), 'compila y dice que los ajustes viven en el servidor');
+  const boot = JSON.parse(/id="tv-google">([^<]+)</.exec(home)[1]);
+  ok(boot.runtime === true && boot.v === 2 && boot.ga4 === '' && boot.ads === '', 'la página lleva el bloque con runtime:true y los IDs de arranque vacíos');
+  ok(/data-cat="a"/.test(home) && /data-cat="p"/.test(home) && /data-cookie-text="both"/.test(home) && /data-cookie-text="stats"/.test(home) && /data-cookie-settings hidden/.test(home), 'el aviso lleva las dos categorías y los dos textos, y el botón del pie nace oculto');
+  ok(/googletagmanager\.com/.test(c) && /google-analytics\.com/.test(c) && /doubleclick\.net/.test(c) && !/unsafe-inline|unsafe-eval/.test(c.match(/script-src[^;]*/)[0]), 'la CSP abre los dominios de Analytics y de Ads (lo que se active en el panel no queda bloqueado) y sigue sin scripts en línea');
+  ok(['a', 'p', 'any', 'none'].every((k) => pol.includes(`data-cookie-sec="${k}"`)), 'la política lleva todas sus secciones etiquetadas (a, p, any, none)');
+  ok(/data-cookie-sec="a" hidden/.test(pol) && /data-cookie-sec="p" hidden/.test(pol) && !/data-cookie-sec="none" hidden/.test(pol), 'sin IDs de arranque, la política nace diciendo «sin cookies de Google» y con las tablas de Google ocultas');
+  const g = build(FILES.ga, ['--base=https://example.test', '--php-api']);
+  ok(/"ga4":"G-TEST123456"/.test(rd(g, 'index.html')) && !/data-cookie-sec="a" hidden/.test(rd(g, 'politica-de-cookies/index.html')), 'con un ID de arranque, la política nace enseñando lo de Analytics');
 }
 {
   console.log('   entorno de pruebas');
@@ -203,8 +220,8 @@ async function sendQuote(page, d) {
   return (await page.locator('[data-sent]').innerText()).replace(/\s+/g, ' ');
 }
 
-process.env.TORIVAC_GOOGLE_CONFIG = FILES.full;
-console.log('\n2) navegador · paquete de producción en Apache real (IDs de prueba, Google simulado)');
+process.env.TORIVAC_GOOGLE_CONFIG = FILES.sc;                                           // solo Search Console: los IDs de Analytics y Ads se configuran como hace el manager (PUT /api/settings/google)
+console.log('\n2) navegador · paquete de producción en Apache real (ajustes por la API, Google simulado)');
 const d = await deployPackage({ local: true, live: true });
 const browser = await chromium.launch();
 try {
@@ -216,6 +233,61 @@ try {
       ok(b.s === 200 && /id="tv-google"/.test(b.t) && /id="tv-cookies"/.test(b.t) && !!m && /google-site-verification/.test(b.t) && !/@@TV/.test(b.t), 'el blog (páginas que genera el servidor PHP) también lleva el aviso, los IDs, la etiqueta y consent.js con su versión'); }
     const ss = (/script-src[^;]*/.exec(h) || [''])[0];
     ok(/googletagmanager\.com/.test(ss) && !/unsafe-inline|unsafe-eval/.test(ss), 'la cabecera CSP real deja pasar a Google en script-src y sigue sin scripts en línea ni eval'); }
+
+  console.log('\n   ajustes desde el panel: lo que configura el manager es lo que hace la web');
+  /** Guarda los ajustes como lo hace el manager desde Ajustes → Google. */
+  const put = async (b) => { const r = await d.api('/settings/google', { method: 'PUT', token: d.token, body: b }); if (r.s !== 200) throw new Error('PUT /settings/google → ' + r.s + ' ' + JSON.stringify(r.j)); };
+  /** ¿Se ve el primer elemento que cumple el selector? */
+  const vis = (page, sel) => page.locator(sel).first().isVisible();
+  const NOCONV = { quote: { label: '', on: true }, contact: { label: '', on: true } };
+  { const { ctx, page, st } = await open(browser, d); const calls = []; page.on('request', (r) => { if (/\/api\/google$/.test(r.url())) calls.push(r.url()); });
+    await page.goto(d.BASE + '/'); await page.waitForFunction(() => window.TV && window.TV.Consent); await page.waitForTimeout(300);
+    ok(calls.length === 1, 'la web pregunta al servidor qué medir (una sola petición)');
+    ok(!(await page.evaluate(() => window.TV.Consent.config().active)) && await bar(page).isHidden() && st.gtag === 0 && st.google.length === 0 && !(await page.evaluate(() => !!window.dataLayer)) && !(await vis(page, '[data-cookie-settings]')), 'sin IDs en el servidor: ni aviso, ni dataLayer, ni botón del pie, ni una petición a Google');
+    ok(!(await page.evaluate(() => localStorage.getItem('tv-consent'))) && !/(^|; )_g(a|cl)/.test(await page.evaluate(() => document.cookie)), 'ni decisión guardada ni cookies');
+    await page.goto(d.BASE + COOKIEP.es); await page.waitForFunction(() => window.TV && window.TV.Consent);
+    ok(await vis(page, '[data-cookie-sec=none]') && !(await vis(page, '[data-cookie-sec=a]')) && !(await vis(page, '[data-cookie-sec=p]')), 'la política dice que no hay cookies de estadística ni de publicidad y esconde las tablas de Google');
+    ok(st.errs.length === 0, 'sin errores de JavaScript' + (st.errs.length ? ': ' + st.errs[0] : '')); await ctx.close(); }
+
+  await put(SET({ ads: '', conversions: NOCONV }));                                       // el manager pone solo Analytics
+  { const { ctx, page, st } = await open(browser, d); await page.goto(d.BASE + '/'); await bar(page).waitFor({ state: 'visible' });
+    ok(await vis(page, '[data-cookie-text=stats]') && !(await vis(page, '[data-cookie-text=both]')), 'solo Analytics: el aviso usa el texto de solo estadísticas');
+    await btn(page, 'config').click();
+    ok(await vis(page, '#tv-cookies input[data-cat=a]') && !(await vis(page, '#tv-cookies input[data-cat=p]')), 'y solo ofrece «Estadísticas»');
+    await btn(page, 'accept').click(); await gtagReady(page);
+    const dl = await DL(page);
+    ok(JSON.stringify(dl.filter((a) => a[0] === 'config').map((a) => a[1])) === '["G-TEST123456"]' && /gtag\/js\?id=G-TEST123456/.test(await page.evaluate(() => [...document.scripts].map((x) => x.src).find((x) => /gtag/.test(x)) || '')), 'aceptar carga gtag.js con el ID de Analytics y no configura Ads');
+    await page.goto(d.BASE + COOKIEP.es); await page.waitForFunction(() => window.TV && window.TV.Consent);
+    ok(await vis(page, '[data-cookie-sec=a]') && !(await vis(page, '[data-cookie-sec=p]')) && !(await vis(page, '[data-cookie-sec=none]')), 'la política enseña las cookies de Analytics y esconde las de Ads');
+    ok(st.errs.length === 0, 'sin errores de JavaScript' + (st.errs.length ? ': ' + st.errs[0] : '')); await ctx.close(); }
+
+  await put(SET({ ga4: '' }));                                                              // el manager pone solo Ads
+  { const { ctx, page, st } = await open(browser, d); await page.goto(d.BASE + '/'); await bar(page).waitFor({ state: 'visible' });
+    ok(await vis(page, '[data-cookie-text=both]') && !(await vis(page, '[data-cookie-text=stats]')), 'solo Ads: el aviso habla de publicidad');
+    await btn(page, 'config').click();
+    ok(await vis(page, '#tv-cookies input[data-cat=p]') && !(await vis(page, '#tv-cookies input[data-cat=a]')), 'y solo ofrece «Publicidad»');
+    await btn(page, 'accept').click(); await gtagReady(page);
+    ok(JSON.stringify((await DL(page)).filter((a) => a[0] === 'config').map((a) => a[1])) === '["AW-123456789"]' && /gtag\/js\?id=AW-123456789/.test(await page.evaluate(() => [...document.scripts].map((x) => x.src).find((x) => /gtag/.test(x)) || '')), 'aceptar carga gtag.js con el ID de Ads y no configura Analytics');
+    await page.goto(d.BASE + COOKIEP.es); await page.waitForFunction(() => window.TV && window.TV.Consent);
+    ok(!(await vis(page, '[data-cookie-sec=a]')) && await vis(page, '[data-cookie-sec=p]'), 'la política enseña las cookies de Ads y esconde las de Analytics');
+    await ctx.close(); }
+
+  await put(SET({ ads: '', conversions: NOCONV }));                                         // una categoría nueva vuelve a preguntar
+  { const { ctx, page, st } = await open(browser, d); await page.goto(d.BASE + '/'); await btn(page, 'accept').click(); await gtagReady(page);
+    await put(SET());                                                                       // el manager añade Ads
+    await page.evaluate(() => sessionStorage.removeItem('tv-google-cfg')); await page.goto(d.BASE + '/'); await bar(page).waitFor({ state: 'visible' });
+    ok(st.gtag === 1, 'al aparecer una categoría nueva (Publicidad) se vuelve a preguntar y, hasta decidir, no se carga nada más');
+    await btn(page, 'accept').click(); await page.waitForFunction(() => window.__gtag && window.__gtag.loaded >= 1); await page.waitForTimeout(300);
+    ok(JSON.stringify((await DL(page)).filter((a) => a[0] === 'config').map((a) => a[1]).sort()) === '["AW-123456789","G-TEST123456"]', 'tras aceptar, mide con las dos');
+    await ctx.close(); }
+
+  { const { ctx, page, st } = await open(browser, d); await ctx.route('**/api/google', (r) => r.abort());       // servidor que no contesta
+    await page.goto(d.BASE + '/'); await page.waitForTimeout(800);
+    ok(await bar(page).isHidden() && st.gtag === 0 && st.errs.length === 0, 'si el servidor no contesta, la web sigue igual: sin aviso, sin Google y sin errores'); await ctx.close(); }
+  { const { ctx, page, st } = await open(browser, d); await ctx.route('**/api/google', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ ok: true, google: { ga4: 'G-<script>', ads: 'javascript:alert(1)', conv: { quote: 'x', contact: '"><img src=x>' } } }) }));
+    await page.goto(d.BASE + '/'); await page.waitForFunction(() => window.TV && window.TV.Consent); await page.waitForTimeout(300);
+    ok(await bar(page).isHidden() && st.gtag === 0 && !(await page.evaluate(() => window.TV.Consent.config().active)), 'una respuesta con IDs mal formados (dañada o manipulada) se ignora entera: nada de Google'); await ctx.close(); }
+  await put(SET());                                                                         // todo configurado para el resto de pruebas
 
   console.log('\n   primera visita: sin decisión no hay nada de Google');
   { const { ctx, page, st } = await open(browser, d); await page.goto(d.BASE + '/'); await bar(page).waitFor({ state: 'visible' }); await page.waitForTimeout(600);
@@ -398,6 +470,7 @@ console.log('\n3) entorno de pruebas (modo «test»): 3 aspectos, escritorio y m
       const ctx = await b2.newContext({ viewport: mobile ? { width: 390, height: 844 } : { width: 1440, height: 900 }, locale: 'es-ES', isMobile: mobile, hasTouch: mobile });
       await ctx.addInitScript(() => { localStorage.setItem('tv_lang', 'es'); localStorage.setItem('tv_lang_src', 'manual'); localStorage.setItem('tv_lang_auto_done', '1'); });
       const google = []; await ctx.route((u) => GOOGLE_URL.test(u.href), (route) => { google.push(route.request().url()); return route.fulfill({ status: 204 }); });
+      await ctx.route('**/api/google', (route) => route.fulfill({ status: 404, body: '' }));                  // sin servidor en este recorrido: valen los IDs ficticios de arranque del paquete de pruebas
       const page = await ctx.newPage(); const logs = []; const errs = []; page.on('console', (m) => { if (/Google · prueba/.test(m.text())) logs.push(m.text()); }); page.on('pageerror', (e) => errs.push(e.message));
       const tag = `${th} · ${mobile ? 'móvil' : 'escritorio'}`;
       await page.goto(`${BASE}/?tema=${th}`); await bar(page).waitFor({ state: 'visible' });

@@ -31,6 +31,7 @@ PRICE_CSV_URL = ""                                       # alternativa sin crede
 # Copia del pedido al cliente (el correo corporativo escribe a un tercero: por eso va con topes y solo con contenido generado por el servidor, sin adjunto):
 ORDER_COPY = "capped"            # «capped» (por defecto): se envía con los topes de abajo · «off»: nunca se envía copia · cualquier otro valor = off (falla cerrado)
 ORDER_COPY_DAILY_MAX = "150"     # tope TOTAL de copias al día (además de 2 copias por destinatario cada 24 h, que no se configura)
+ORDER_SEND_DAILY_MAX = "150"     # tope TOTAL de reenvíos de presupuestos desde el panel al día (además de 20 por hora y persona, que no se configura); 0 = sin tope diario
 ORDERS_PER_HOUR_MAX = "120"      # tope GLOBAL de pedidos por hora (además de 8 por visitante cada 10 min); protege la cuota de Resend y el buzón del equipo
 TURNSTILE_SITEKEY = ""            # CAPTCHA invisible (opcional, Cloudflare Turnstile): la clave PÚBLICA del sitio (la ve cualquiera). Hace falta junto al secreto TURNSTILE_SECRET (de abajo): sin las dos, los formularios no piden CAPTCHA
 FORM_MIN_FILL_MS = "1200"        # antispam de los formularios: milisegundos mínimos entre cargar la página y enviar (el navegador manda `_e`); "0" = no se exige

@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { ipKey } from '../src/util.js';
 import { parseOrder, parseContact, isEmail, parsePdf } from '../src/validate.js';
-import { copyMode, intVar, uorderPrefix } from '../src/orders.js';
+import { copyMode, intVar } from '../src/orders.js';
 import { mkEnv, CountKV, FakeKV, CATALOG, MASTER } from './helpers.js';
 import { call, signIn, mailbox, order, orderEnv, keys, PDF_B64, REF, REF2 } from './kit.js';
 
@@ -186,7 +186,7 @@ test('D2 · el límite del contacto también agrupa por /64', async () => {
 });
 
 // ───────────────────────────────────────── D7 · pedidos: visibilidad, número, listado, referencias
-test('D7 · un cliente nunca ve la IP del pedido ni emailed.error (solo los managers); y sigue viendo los pedidos cuyo correo coincide con el suyo (W7)', async () => {
+test('D7 · un cliente (propietario) nunca ve la IP del pedido ni emailed.error (solo los managers) y ve los pedidos de cualquier correo (W7)', async () => {
   const env = await orderEnv(); const box = mailbox({ fail: true }); const ana = await signIn(env, 'ana.compras@acme.es', 'client'), jefa = await signIn(env, 'jefa@torivac.com', 'manager');
   const { j } = await post(env, box, order({ customer: { name: 'Pedido falso', email: 'ANA.COMPRAS@acme.es', privacy: true } }), '5.5.5.5');        // cualquiera puede poner el correo de Ana en un pedido
   assert.equal(j.ok, true);
@@ -194,7 +194,8 @@ test('D7 · un cliente nunca ve la IP del pedido ni emailed.error (solo los mana
   assert.equal(verCliente.number, j.number); assert.ok(!('ip' in verCliente), 'sin IP'); assert.ok(verCliente.emailed && !('error' in verCliente.emailed), 'sin emailed.error'); assert.equal(verCliente.emailed.team, false);
   const verManager = (await (await call(env, '/api/orders', { token: jefa.token })).json()).orders[0];
   assert.equal(verManager.ip, '5.5.5.5'); assert.equal(verManager.emailed.error, 'Resend respondió 403');
-  const otra = await signIn(env, 'otra.persona@acme.es', 'client'); assert.deepEqual((await (await call(env, '/api/orders', { token: otra.token })).json()).orders, [], 'otro cliente no ve nada');
+  const otra = await signIn(env, 'otra.persona@acme.es', 'client'), deOtra = (await (await call(env, '/api/orders', { token: otra.token })).json()).orders;
+  assert.deepEqual(deOtra.map((o) => o.number), [j.number], 'el rol client es el propietario de la web: otra cuenta también ve el pedido'); assert.ok(!('ip' in deOtra[0]) && !('error' in deOtra[0].emailed));
 });
 test('D7 · número de pedido TV-AAAAMMDD-NNNN-XXX (XXX aleatorio base36): 30 pedidos simultáneos con el contador de KV por detrás ya no se pisan (W5)', async () => {
   class StaleKV extends FakeKV { async get(k) { return k.startsWith('counter:') ? null : super.get(k); } }                            // el contador nunca avanza: todos reciben el mismo NNNN
@@ -233,22 +234,22 @@ test('D7 · GET /api/orders del manager con pocos pedidos: devuelve todos (inclu
   assert.ok(!('truncated' in r), 'no se cortó nada');
   assert.equal((await (await call(env, '/api/orders', { token: MASTER, deps: { now } })).json()).orders.length, 4, 'el token maestro también');
 });
-test('D7 · GET /api/orders del cliente: índice uorder:<sha256(correo)[:32]>:<nº> (máx. 100, más recientes); los pedidos antiguos sin índice dejan de aparecer', async () => {
+test('D7 · GET /api/orders del cliente (propietario): ve todos los pedidos, con o sin índice uorder, sin IP; el índice se sigue escribiendo pero no se usa para listar', async () => {
   const kv = new CountKV(); const env = await orderEnv({ KV: kv }); await kv.put('prices:current', JSON.stringify({ items: { [REF]: { p: 1 } } })); const box = mailbox();
   const ana = await signIn(env, 'ana.compras@acme.es', 'client');
-  await kv.put('order:TV-20260101-0001', JSON.stringify({ number: 'TV-20260101-0001', at: '2026-01-01T09:00:00.000Z', customer: { name: 'Ana', email: 'ana.compras@acme.es' }, lines: [], total: 1 }));      // pedido antiguo SIN índice
+  await kv.put('order:TV-20261001-0001', JSON.stringify({ number: 'TV-20261001-0001', at: '2026-10-01T09:00:00.000Z', customer: { name: 'Ana', email: 'ana.compras@acme.es' }, lines: [], total: 1, ip: '203.0.113.9' }));      // pedido antiguo SIN índice
   const t0 = Date.parse('2026-10-28T08:00:00Z');
   for (let i = 0; i < 3; i++) await post(env, box, order({ customer: { name: 'Ana', email: 'ana.compras@acme.es', privacy: true }, copy: false }), `203.0.113.${i + 1}`, { now: new Date(t0 + i * 60_000) });
   await post(env, box, order({ customer: { name: 'Otro', email: 'otro@x.es', privacy: true } }), '203.0.113.50', { now: new Date(t0) });
-  assert.equal(keys(env, 'uorder:').length, 4); assert.ok(keys(env, 'uorder:').every((k) => /^uorder:[0-9a-f]{32}:TV-\d{8}-\d{4}-[0-9A-Z]{3}$/.test(k)), 'sin el correo en la clave'); assert.ok(!keys(env).filter((k) => !k.startsWith('user:')).some((k) => k.includes('acme')), 'ninguna clave (salvo la del propio usuario) lleva el correo');
+  assert.equal(keys(env, 'uorder:').length, 4, 'el índice se sigue escribiendo'); assert.ok(keys(env, 'uorder:').every((k) => /^uorder:[0-9a-f]{32}:TV-\d{8}-\d{4}-[0-9A-Z]{3}$/.test(k)), 'sin el correo en la clave'); assert.ok(!keys(env).filter((k) => !k.startsWith('user:')).some((k) => k.includes('acme')), 'ninguna clave (salvo la del propio usuario) lleva el correo');
   kv.ops = { get: 0, put: 0, list: 0, delete: 0 };
   const r = await (await call(env, '/api/orders', { token: ana.token, deps: { now: t0 + 3_600_000 } })).json();
-  assert.equal(r.orders.length, 3, 'sus 3 pedidos; el antiguo sin índice no aparece'); assert.ok(r.orders.every((o) => o.customer.email === 'ana.compras@acme.es' && !('ip' in o)));
-  assert.ok(kv.ops.list <= 2 && kv.ops.get <= 5, 'sin recorrer todo el almacén: ' + JSON.stringify(kv.ops)); assert.ok(!('truncated' in r));
-  const muchos = mkEnv({ KV: new FakeKV({ pageSize: 40 }) }); const bea = await signIn(muchos, 'bea.compras@acme.es', 'client'); const pre = await uorderPrefix('bea.compras@acme.es');
-  for (let i = 0; i < 130; i++) { const number = `TV-20261028-${String(i + 1).padStart(4, '0')}-AAA`; await muchos.KV.put(`order:${number}`, JSON.stringify({ number, at: new Date(t0 + i * 1000).toISOString(), customer: { name: 'B', email: 'bea.compras@acme.es' }, lines: [], total: 1 })); await muchos.KV.put(pre + number, '1'); }
-  const b = await (await call(muchos, '/api/orders', { token: bea.token })).json();
-  assert.equal(b.orders.length, 100); assert.equal(b.truncated, true); assert.equal(b.orders[0].number, 'TV-20261028-0130-AAA', 'las 100 más recientes, a través de varias páginas de list'); assert.equal(b.orders[99].number, 'TV-20261028-0031-AAA');
+  assert.equal(r.orders.length, 5, 'los 4 de esta semana (3 de Ana y 1 de otro correo) y el antiguo sin índice'); assert.ok(r.orders.every((o) => !('ip' in o)), 'nunca la IP');
+  assert.ok(r.orders.some((o) => o.customer.email === 'otro@x.es'), 'también los de otros correos'); assert.ok(kv.total <= 403, 'como el manager: prefijos de fecha, ≤ 400 operaciones de KV: ' + JSON.stringify(kv.ops)); assert.ok(!('truncated' in r));
+  const muchos = mkEnv({ KV: new FakeKV({ pageSize: 40 }) }); const bea = await signIn(muchos, 'bea.compras@acme.es', 'client');
+  for (let i = 0; i < 130; i++) { const number = `TV-20261028-${String(i + 1).padStart(4, '0')}-AAA`; await muchos.KV.put(`order:${number}`, JSON.stringify({ number, at: new Date(t0 + i * 1000).toISOString(), customer: { name: 'B', email: i % 2 ? 'bea.compras@acme.es' : 'otro@x.es' }, lines: [], total: 1 })); }
+  const b = await (await call(muchos, '/api/orders', { token: bea.token, deps: { now: t0 } })).json();
+  assert.equal(b.orders.length, 130, 'todos, a través de varias páginas de list'); assert.ok(!('truncated' in b)); assert.equal(b.orders[0].number, 'TV-20261028-0130-AAA'); assert.equal(b.orders[129].number, 'TV-20261028-0001-AAA');
 });
 test('D7 · referencias: «constructor», «__proto__», «toString»… no son referencias válidas (Object.hasOwn) ni en el pedido ni al aplicar cambios de IA (W8)', async () => {
   const env = await orderEnv(); const box = mailbox(); const jefa = await signIn(env, 'jefa@torivac.com', 'manager');

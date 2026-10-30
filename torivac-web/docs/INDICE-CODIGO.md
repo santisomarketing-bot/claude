@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1880/1880 funciones descritas (100 %) · 208/208 archivos con cabecera.
+**Cobertura**: 2051/2051 funciones descritas (100 %) · 218/218 archivos con cabecera.
 
 
 ## `site/`
@@ -11,11 +11,11 @@
 
 [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio] [--out=carpeta] Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS). Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
 
-Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[GOOGLE]` · `[LIVE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[PROPOSALS-APPLIED]` · `[ORIGINAL]` · `[SEO]` · `[BLOG]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
+Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[GOOGLE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[PROPOSALS-APPLIED]` · `[ORIGINAL]` · `[SEO]` · `[BLOG]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
 
 - `arg0` (l. 25) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
 - `arg` (l. 28) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `jl` (l. 46) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
+- `jl` (l. 42) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
 - `normName` (l. 69) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
 - `depthOf` (l. 73) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
 - `canon` (l. 76) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
@@ -66,52 +66,55 @@ Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[T
 - `dyn404` (l. 209) — Las páginas de error no llevan aviso (se sirven en cualquier profundidad y no miden nada).
 - `cookieBar` (l. 214) — Aviso de cookies: banda inferior sin bloquear la página, con «Rechazar todas» y «Aceptar todas» con el mismo peso visual y «Configurar» para elegir por categoría.
 - `row` (l. 218) — Casilla de una categoría opcional del aviso (a = estadísticas, p = publicidad) con su explicación.
-- `policyInline` (l. 236) — Convierte [texto](destino) de los textos de la política en enlaces: legal/privacy → los del pie del idioma; https://… → externo. Todo lo demás se escapa.
-- `cookiePage` (l. 245) — Página «Política de cookies»: { hero, body, title } como genericPage. Lo que lista depende de lo configurado (cookieBlocks).
-- `crumbs` (l. 264) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
-- `vtext` (l. 267) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
-- `vtags` (l. 269) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
-- `productCard` (l. 280) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
-- `catTree` (l. 294) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
-- `holds` (l. 297) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
-- `link` (l. 299) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
-- `walk` (l. 301) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
-- `cut` (l. 308) — Texto recortado a `max` caracteres en el último espacio (sin partir palabras) y con «…» si se ha recortado; `max` Infinity = íntegro.
-- `categoryCards` (l. 310) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
-- `fold` (l. 326) — algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
-- `oSecImg` (l. 339) — «Original»: atributo style con la foto de fondo de una sección (los trazos del logotipo de la web actual), en una variable que solo pinta la hoja de ese aspecto. Una URL dentro de una variable se resuelve desde la hoja que la usa (assets/css/site.css), de ahí «../media/…» y no la ruta de la página.
-- `homeBody` (l. 341) — Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla).
-- `text` (l. 345) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
-- `imgs` (l. 347) — Bloques de imagen de una sección.
-- `btn` (l. 349) — Primer bloque de botón de una sección (undefined si no tiene).
-- `oh` (l. 356) — «Original»: clase que engancha cada sección de la portada con la hoja de la web actual (sin «Original» no se emite y el HTML sale idéntico)
-- `oBg` (l. 358) — «Original»: variable con la foto de fondo de una sección de la portada.
-- `eyebrowAndHead` (l. 367) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
-- `paras` (l. 373) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
-- `bt` (l. 375) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
-- `waveSvg` (l. 404) — onda de tensión animada (SVG) — elemento gráfico base del hero
-- `cardsHtml` (l. 412) — «Original»: bloques de una sección de tarjetas (Misión, Visión, Valores…) con cada icono y el texto que le sigue dentro de su propia tarjeta; lo que va antes del primer icono (título) queda fuera. Los otros aspectos ven el mismo flujo, solo con un div más.
-- `isIcon` (l. 414) — Indica si el bloque es un icono pequeño (60 × 60) y no una foto.
-- `sectionsHtml` (l. 423) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. Con «Original», cada sección lleva además clases según cómo la maqueta la web actual (site.oSections, por id de sección de Elementor, igual en los cuatro idiomas).
-- `cls` (l. 428) — Clases de la sección: las de siempre y, con «Original», las del tipo, el lado de la foto y el arte de fondo.
-- `isPhoto` (l. 432) — los iconos pequeños se quedan dentro del texto
-- `genericPage` (l. 458) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
-- `contactBlockO` (l. 480) — «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno).
-- `postCard` (l. 493) — Tarjeta de una entrada en el listado del blog. Con `dyn` (plantilla de las entradas que se crean desde el panel, ver backend-php/api/lib/BlogPage.php) cada dato variable es una marca @@TV:…@@
-- `blogIndexBody` (l. 501) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
-- `postBody` (l. 509) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. Con `dyn` es la plantilla de las entradas que se crean desde el panel: lo variable son marcas
-- `shopBody` (l. 529) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
-- `storeCard` (l. 570) — Tarjeta de un producto en la tienda: foto, categoría, nombre, tensiones, precio y compra (el precio y el «añadir al presupuesto» los pinta shop.js con los precios vigentes; sin JS queda el enlace a la ficha).
-- `storeBody` (l. 587) — Tienda: barra lateral con categorías (de primer nivel), tensiones y búsqueda; barra de orden y contador; y todos los productos como tarjetas de tienda. Filtros y orden: assets/js/shop.js.
-- `topsOf` (l. 590) — Ids de las categorías de primer nivel a las que pertenece el producto `p` (la tienda filtra por ellas).
-- `productBody` (l. 621) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
-- `quoteBody` (l. 685) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
-- `contactForm` (l. 714) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
-- `contactIntro` (l. 730) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
-- `contactPageOriginal` (l. 735) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
-- `plainOf` (l. 740) — Texto de un párrafo sin etiquetas.
-- `li` (l. 747) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
-- `lv2` (l. 750) — Encabezados de un trozo de HTML con aria-level 2.
+- `text` (l. 220) — Párrafo del aviso (`both` = estadísticas y publicidad · `stats` = solo estadísticas); en runtime salen los dos y consent.js deja visible el que toca.
+- `policyInline` (l. 238) — Convierte [texto](destino) de los textos de la política en enlaces: legal/privacy → los del pie del idioma; https://… → externo. Todo lo demás se escapa.
+- `cookiePage` (l. 247) — Página «Política de cookies»: { hero, body, title } como genericPage. Lo que lista depende de lo configurado (cookieBlocks).
+- `on` (l. 251) — ¿Se ve ahora una sección etiquetada `sec`, según lo configurado al compilar? (consent.js la corrige después con los ajustes del servidor).
+- `at` (l. 255) — Atributos de una sección etiquetada (solo en runtime): `data-cookie-sec` y, si no toca, `hidden`.
+- `crumbs` (l. 271) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
+- `vtext` (l. 274) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
+- `vtags` (l. 276) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
+- `productCard` (l. 287) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
+- `catTree` (l. 301) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
+- `holds` (l. 304) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
+- `link` (l. 306) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
+- `walk` (l. 308) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
+- `cut` (l. 315) — Texto recortado a `max` caracteres en el último espacio (sin partir palabras) y con «…» si se ha recortado; `max` Infinity = íntegro.
+- `categoryCards` (l. 317) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
+- `fold` (l. 333) — algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
+- `oSecImg` (l. 346) — «Original»: atributo style con la foto de fondo de una sección (los trazos del logotipo de la web actual), en una variable que solo pinta la hoja de ese aspecto. Una URL dentro de una variable se resuelve desde la hoja que la usa (assets/css/site.css), de ahí «../media/…» y no la ruta de la página.
+- `homeBody` (l. 348) — Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla).
+- `text` (l. 352) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
+- `imgs` (l. 354) — Bloques de imagen de una sección.
+- `btn` (l. 356) — Primer bloque de botón de una sección (undefined si no tiene).
+- `oh` (l. 363) — «Original»: clase que engancha cada sección de la portada con la hoja de la web actual (sin «Original» no se emite y el HTML sale idéntico)
+- `oBg` (l. 365) — «Original»: variable con la foto de fondo de una sección de la portada.
+- `eyebrowAndHead` (l. 374) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
+- `paras` (l. 380) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
+- `bt` (l. 382) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
+- `waveSvg` (l. 411) — onda de tensión animada (SVG) — elemento gráfico base del hero
+- `cardsHtml` (l. 419) — «Original»: bloques de una sección de tarjetas (Misión, Visión, Valores…) con cada icono y el texto que le sigue dentro de su propia tarjeta; lo que va antes del primer icono (título) queda fuera. Los otros aspectos ven el mismo flujo, solo con un div más.
+- `isIcon` (l. 421) — Indica si el bloque es un icono pequeño (60 × 60) y no una foto.
+- `sectionsHtml` (l. 430) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. Con «Original», cada sección lleva además clases según cómo la maqueta la web actual (site.oSections, por id de sección de Elementor, igual en los cuatro idiomas).
+- `cls` (l. 435) — Clases de la sección: las de siempre y, con «Original», las del tipo, el lado de la foto y el arte de fondo.
+- `isPhoto` (l. 439) — los iconos pequeños se quedan dentro del texto
+- `genericPage` (l. 465) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
+- `contactBlockO` (l. 487) — «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno).
+- `postCard` (l. 500) — Tarjeta de una entrada en el listado del blog. Con `dyn` (plantilla de las entradas que se crean desde el panel, ver backend-php/api/lib/BlogPage.php) cada dato variable es una marca @@TV:…@@
+- `blogIndexBody` (l. 508) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
+- `postBody` (l. 516) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. Con `dyn` es la plantilla de las entradas que se crean desde el panel: lo variable son marcas
+- `shopBody` (l. 536) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
+- `storeCard` (l. 577) — Tarjeta de un producto en la tienda: foto, categoría, nombre, tensiones, precio y compra (el precio y el «añadir al presupuesto» los pinta shop.js con los precios vigentes; sin JS queda el enlace a la ficha).
+- `storeBody` (l. 594) — Tienda: barra lateral con categorías (de primer nivel), tensiones y búsqueda; barra de orden y contador; y todos los productos como tarjetas de tienda. Filtros y orden: assets/js/shop.js.
+- `topsOf` (l. 597) — Ids de las categorías de primer nivel a las que pertenece el producto `p` (la tienda filtra por ellas).
+- `productBody` (l. 628) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
+- `quoteBody` (l. 692) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
+- `contactForm` (l. 721) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
+- `contactIntro` (l. 737) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
+- `contactPageOriginal` (l. 742) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
+- `plainOf` (l. 747) — Texto de un párrafo sin etiquetas.
+- `li` (l. 754) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
+- `lv2` (l. 757) — Encabezados de un trozo de HTML con aria-level 2.
 
 ## `site/lib/`
 
@@ -133,23 +136,24 @@ Secciones: `[BLOG-SHELL]`
 Secciones: `[COOKIES]`
 
 - `cookieTitle` (l. 158) — Título de la página en el idioma `lang` (el pie y el h1 usan el de la web original si existe; este es el respaldo).
-- `cookieBlocks` (l. 165) — Bloques de la política en el idioma `lang`, según lo que la web mide de verdad:
-- `row` (l. 169) — Fila de tabla [nombre, dónde, para qué, cuánto dura] de la clave `k`, con «dónde» ya en el idioma.
+- `cookieBlocks` (l. 167) — Bloques de la política en el idioma `lang`, según lo que la web mide de verdad:
+- `row` (l. 171) — Fila de tabla [nombre, dónde, para qué, cuánto dura, sec?] de la clave `k`, con «dónde» ya en el idioma.
+- `S` (l. 173) — Etiqueta `sec` de un bloque (solo en modo runtime).
 
 ### `google.mjs`
 
-[GOOGLE] Configuración de Google Analytics 4, Google Ads y Search Console (site/google.config.json) y todo lo que de ella depende en la compilación. · Con los IDs vacíos NO se añade nada: ni script, ni aviso de cookies, ni ampliación de la política de seguridad (es el estado de entrega). · Los IDs son públicos (salen en el código de cualquier web); aquí no hay claves. Si uno está mal escrito la compilación se detiene con el motivo (un ID roto dejaría la medición muerta sin avisar).
+[GOOGLE] Configuración de Google Analytics 4, Google Ads y Search Console (site/google.config.json) y todo lo que de ella depende en la compilación. · MODO «runtime» (compilaciones con servidor, que son todas las que se publican): los IDs de GA4/Ads y las conversiones se guardan en el SERVIDOR y se cambian desde el panel del manager (Ajustes → Google); la web lleva siempre el aviso (oculto) y consent.js, que pregunta al servidor (GET /api/google) qué hay configurado; sin IDs allí no sale NADA visible, no se pide nada a Google y no se pone ninguna cookie.
 
 Secciones: `[GOOGLE]`
 
-- `s` (l. 22) — Texto limpio de un valor de configuración ('' si no es una cadena).
-- `normalize` (l. 28) — Lee y comprueba la configuración. Devuelve { cfg, errors }: cfg ya normalizado ({ ga4, ads, conv:{quote,contact}, meta, htmlFile }) y la lista de errores (vacía si todo está bien).
-- `loadGoogle` (l. 56) — Configuración efectiva de ESTA compilación.
-- `inactive` (l. 76) — Configuración sin nada activo.
-- `bootData` (l. 79) — Datos que lee consent.js (bloque <script type="application/json" id="tv-google">). Solo IDs públicos y el modo.
-- `verifyMeta` (l. 84) — Etiqueta meta de verificación de Search Console ('' si no hay token). Va en todas las páginas; no mide nada.
-- `verifyFileBody` (l. 89) — Contenido del archivo HTML de verificación de Search Console (Google lo exige exactamente así).
-- `cspHosts` (l. 95) — Orígenes de Google que la política de seguridad (CSP) debe dejar pasar, por directiva. Solo en modo «live» y solo los de lo que está configurado:
+- `s` (l. 25) — Texto limpio de un valor de configuración ('' si no es una cadena).
+- `normalize` (l. 31) — Lee y comprueba la configuración. Devuelve { cfg, errors }: cfg ya normalizado ({ ga4, ads, conv:{quote,contact}, meta, htmlFile }) y la lista de errores (vacía si todo está bien).
+- `loadGoogle` (l. 59) — Configuración efectiva de ESTA compilación.
+- `inactive` (l. 81) — Configuración sin nada activo.
+- `bootData` (l. 84) — Datos que lee consent.js (bloque <script type="application/json" id="tv-google">). Solo IDs públicos (los de arranque), el modo y si debe preguntar al servidor (`runtime`).
+- `verifyMeta` (l. 89) — Etiqueta meta de verificación de Search Console ('' si no hay token). Va en todas las páginas; no mide nada.
+- `verifyFileBody` (l. 94) — Contenido del archivo HTML de verificación de Search Console (Google lo exige exactamente así).
+- `cspHosts` (l. 100) — Orígenes de Google que la política de seguridad (CSP) debe dejar pasar, por directiva. Solo en modo «live» y solo los de lo que está configurado:
 
 ### `hosting.mjs`
 
@@ -328,9 +332,28 @@ Secciones: `[ADMIN-BLOG]` · `[UTIL]` · `[DATOS]` · `[LISTA]` · `[EDITOR]` ·
 - `B.view` (l. 520) — Vista del blog: listado o editor según `arg` (ver la cabecera).
 - `B.dirty` (l. 530) — ¿Hay cambios sin guardar en el editor?
 
+### `admin-google.js`
+
+[ADMIN-GOOGLE] Sección «Google · medición y conversiones» de Ajustes (solo managers): el ID de Google Analytics 4, el de Google Ads y la etiqueta de cada conversión, sin recompilar la web. Lo que se guarda vive en el servidor (PUT /api/settings/google); la web lo lee con GET /api/google (público: solo IDs, que salen en el código de cualquier página) en la primera página de cada sesión y lo aplica en unos minutos (consent.js). Con todo vacío la web no carga nada de Google ni enseña aviso de cookies. Contrato: docs/GOOGLE.md §Ajustes en el panel.
+
+Secciones: `[ADMIN-GOOGLE]` · `[UTIL]` · `[PANEL]` · `[EVENTOS]`
+
+- `esc` (l. 24) — Escapa & < > " para insertar texto en HTML; null y undefined dan cadena vacía.
+- `say` (l. 26) — Pone un aviso en [data-gg-msg] (clase `ok` si salió bien); `field` (opcional) marca el campo con el error.
+- `full` (l. 33) — Etiqueta de conversión completa (AW-…/etiqueta) a partir de lo escrito y del ID de Ads; '' si no se puede completar.
+- `read` (l. 38) — Lo escrito en el formulario como cuerpo del PUT.
+- `q` (l. 40) — Texto escrito (sin espacios de los lados) en el campo `k` del formulario; vacío si el campo no existe.
+- `on` (l. 42) — ¿Está marcada la casilla «Medir» de la conversión `k`?
+- `problem` (l. 46) — Primer problema evidente del cuerpo (ID mal escrito, etiqueta sin ID de Ads…) → { field, text } o null.
+- `html` (l. 62) — HTML de la sección con los ajustes `s` ({ ga4, ads, conversions:{quote:{label,on}, contact:{…}}, updated }).
+- `G.panel` (l. 82) — Promise<string> con la sección (vacía si el servidor no la ofrece, p. ej. una versión antigua).
+- `save` (l. 89) — Guarda los ajustes (PUT) y repinta el estado; los errores del servidor marcan su campo.
+- `check` (l. 100) — Pide a la web lo mismo que un visitante (GET /api/google) y cuenta qué cargaría y qué categorías de cookies ofrecería.
+- `G.bind` (l. 111) — Engancha el formulario y el botón «Comprobar» una sola vez (los nodos se repintan, el contenedor del panel no).
+
 ### `admin-live.js`
 
-[ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales. Roles:  manager → Resumen · Pedidos · Mensajes · Precios · Propuestas · Contenido · Blog · Usuarios · Actividad · Estadísticas · Ajustes cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
+[ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales. Roles:  manager → Resumen · Presupuestos recibidos · Mensajes · Precios · Propuestas · Contenido · Blog · Usuarios · Actividad · Estadísticas · Ajustes Propietario (rol `client` del API: las personas DUEÑAS de la web, no compradores; internamente 'cliente') → Nuevo presupuesto · Presupuestos recibidos · Lista de precios · Estadísticas
 
 Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[PRICES]` · `[AI]` · `[PROPOSALS]` · `[BLOG]` · `[SECURITY]` · `[ROUTER]`
 
@@ -352,42 +375,40 @@ Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[
 - `when` (l. 91) — Fecha y hora local (es-ES) de una fecha ISO; «—» si viene vacía.
 - `download` (l. 93) — Descarga `blob` como archivo `name` con un enlace temporal y libera la URL a los 800 ms.
 - `fail` (l. 95) — Aviso de error del servidor con el mensaje devuelto.
-- `mailWarn` (l. 106) — Aviso del Resumen cuando el correo no funciona (sin completar o el último envío falló): los pedidos y mensajes se guardan igual, pero nadie recibe el aviso. '' si todo va bien.
-- `V.resumen` (l. 112) — Vista Resumen (manager): con datos del Worker, KPIs, estado de la hoja de precios y sincronización, y los 5 últimos pedidos.
-- `ordersView` (l. 124) — Tabla de pedidos (manager: todos · cliente: solo los suyos, lo filtra el servidor).
-- `V.pedidos` (l. 133) — Vista Pedidos (manager): tabla de todos los pedidos que devuelve el Worker.
-- `V.mis` (l. 135) — Vista «Mis presupuestos» (cliente): sus propios pedidos; el filtro por usuario lo aplica el servidor.
-- `V.lista` (l. 138) — Vista Lista de precios (cliente): precios vigentes del Worker, sin IVA, con sus tramos (hasta 600 referencias).
-- `V.presupuestador` (l. 147) — Vista Presupuestador (cliente): incrusta la página del presupuesto en un iframe con ?embed=1.
-- `V.contenido` (l. 150) — Vista Contenido (manager): estado de traducción por idioma, referencias y etiquetas de voltaje de cada producto.
-- `cell` (l. 153) — Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir).
-- `V.estadisticas` (l. 159) — Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras.
-- `mailTag` (l. 165) — Etiqueta con el estado del aviso por correo de un mensaje o de un pedido (emailed.sent / reason; el texto del error solo lo trae el servidor a los gestores).
-- `V.mensajes` (l. 171) — Vista Mensajes (manager): los mensajes del formulario de contacto, que el servidor guarda aunque el correo falle, con el estado del aviso por correo y el borrado individual.
-- `mailPanel` (l. 183) — Panel «Correo» de Ajustes: controlador, si está completo, qué falta, el último intento (también el fallo) y el botón para mandar un correo de prueba.
-- `V.ajustes` (l. 193) — Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), tu cuenta y las copias de seguridad (admin-security.js), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag).
-- `modeBox` (l. 207) — Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios.
-- `V.precios` (l. 213) — Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA.
-- `previewUpload` (l. 224) — Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada).
-- `list` (l. 230) — Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`.
-- `readUpload` (l. 242) — Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa.
-- `go` (l. 245) — Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo.
-- `applyUpload` (l. 250) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
-- `runPrompt` (l. 264) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
-- `applyProposal` (l. 280) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
-- `V.propuestas` (l. 290) — Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js).
-- `V.blog` (l. 294) — Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección.
-- `V.usuarios` (l. 298) — Vista «Usuarios» (manager): lista con último acceso, código por correo y bloqueos, alta, baja y contraseña nueva a una cuenta.
-- `V.actividad` (l. 300) — Vista «Actividad» (manager): quién entró y quién cambió qué, con filtros y descarga en CSV.
-- `onClick` (l. 304) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF.
-- `bind` (l. 321) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
-- `loginLogo` (l. 349) — Logotipo de las pantallas de acceso (el mismo que el menú, sobre fondo oscuro).
-- `loginError` (l. 351) — Muestra un error en el párrafo [data-err] de la pantalla de acceso (role=alert: lo anuncia el lector de pantalla).
-- `renderLogin` (l. 353) — Pantalla de acceso, primer paso: correo y contraseña. Si el servidor pide un código por correo, `login` deja el reto en `pending` y se repinta con la segunda pantalla.
-- `renderCode` (l. 362) — Segundo paso del acceso: el código de 6 cifras que llegó por correo, «recordar este dispositivo», «Reenviar» (con la espera que marca el servidor) y «Volver».
-- `tick` (l. 372) — Pone en el botón de reenviar la espera que falta (o lo activa); se detiene solo cuando la pantalla se repinta.
-- `back` (l. 380) — Vuelve a la primera pantalla (con un aviso, si lo hay).
-- `render` (l. 403) — Pinta la pantalla de acceso (contraseña, o el código por correo si falta) o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
+- `mailWarn` (l. 105) — Aviso del Resumen cuando el correo no funciona (sin completar o el último envío falló): los pedidos y mensajes se guardan igual, pero nadie recibe el aviso. '' si todo va bien.
+- `V.resumen` (l. 111) — Vista Resumen (manager): con datos del Worker, KPIs, estado de la hoja de precios y sincronización, y los 5 últimos pedidos.
+- `V.recibidos` (l. 123) — Vista «Presupuestos recibidos» (manager y propietario): lista, detalle, edición, PDF y reenvío por correo (admin-quotes.js; contrato en docs/PRESUPUESTOS-RECIBIDOS.md).
+- `V.lista` (l. 126) — Vista Lista de precios (cliente): precios vigentes del Worker, sin IVA, con sus tramos (hasta 600 referencias).
+- `V.presupuestador` (l. 135) — Vista Presupuestador (cliente): incrusta la página del presupuesto en un iframe con ?embed=1.
+- `V.contenido` (l. 138) — Vista Contenido (manager): estado de traducción por idioma, referencias y etiquetas de voltaje de cada producto.
+- `cell` (l. 141) — Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir).
+- `V.estadisticas` (l. 147) — Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras.
+- `mailTag` (l. 153) — Etiqueta con el estado del aviso por correo de un mensaje o de un pedido (emailed.sent / reason; el texto del error solo lo trae el servidor a los gestores).
+- `V.mensajes` (l. 159) — Vista Mensajes (manager): los mensajes del formulario de contacto, que el servidor guarda aunque el correo falle, con el estado del aviso por correo y el borrado individual.
+- `mailPanel` (l. 171) — Panel «Correo» de Ajustes: controlador, si está completo, qué falta, el último intento (también el fallo) y el botón para mandar un correo de prueba.
+- `V.ajustes` (l. 181) — Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), tu cuenta y las copias de seguridad (admin-security.js), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag).
+- `modeBox` (l. 195) — Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios.
+- `V.precios` (l. 201) — Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA.
+- `previewUpload` (l. 212) — Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada).
+- `list` (l. 218) — Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`.
+- `readUpload` (l. 230) — Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa.
+- `go` (l. 233) — Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo.
+- `applyUpload` (l. 238) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
+- `runPrompt` (l. 252) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
+- `applyProposal` (l. 268) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
+- `V.propuestas` (l. 278) — Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js).
+- `V.blog` (l. 282) — Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección.
+- `V.usuarios` (l. 286) — Vista «Usuarios» (manager): lista con último acceso, código por correo y bloqueos, alta, baja y contraseña nueva a una cuenta.
+- `V.actividad` (l. 288) — Vista «Actividad» (manager): quién entró y quién cambió qué, con filtros y descarga en CSV.
+- `onClick` (l. 292) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios y mensajes. Presupuestos, propuestas, blog y usuarios tienen sus propios manejadores.
+- `bind` (l. 303) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
+- `loginLogo` (l. 333) — Logotipo de las pantallas de acceso (el mismo que el menú, sobre fondo oscuro).
+- `loginError` (l. 335) — Muestra un error en el párrafo [data-err] de la pantalla de acceso (role=alert: lo anuncia el lector de pantalla).
+- `renderLogin` (l. 337) — Pantalla de acceso, primer paso: correo y contraseña. Si el servidor pide un código por correo, `login` deja el reto en `pending` y se repinta con la segunda pantalla.
+- `renderCode` (l. 346) — Segundo paso del acceso: el código de 6 cifras que llegó por correo, «recordar este dispositivo», «Reenviar» (con la espera que marca el servidor) y «Volver».
+- `tick` (l. 356) — Pone en el botón de reenviar la espera que falta (o lo activa); se detiene solo cuando la pantalla se repinta.
+- `back` (l. 364) — Vuelve a la primera pantalla (con un aviso, si lo hay).
+- `render` (l. 387) — Pinta la pantalla de acceso (contraseña, o el código por correo si falta) o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
 
 ### `admin-proposals.js`
 
@@ -436,6 +457,51 @@ Secciones: `[ADMIN-PROPOSALS]` · `[CLASES]` · `[DESTINOS]` · `[HTML]` · `[PR
 - `cardOf` (l. 329) — Propuesta de la tarjeta que contiene el elemento.
 - `relist` (l. 331) — Repinta la lista con el filtro actual.
 
+### `admin-quotes.js`
+
+[ADMIN-QUOTES] «Presupuestos recibidos» del panel real (admin-live.js): ver, EDITAR, DESCARGAR en PDF y REENVIAR por correo los presupuestos que la gente ha pedido desde la web. Lo usan el rol Propietario (en el API, `client`: las personas dueñas de la web, NO compradores) y el manager. Contrato de las rutas: docs/PRESUPUESTOS-RECIBIDOS.md. · Lista con búsqueda (número, nombre, empresa, correo, referencia) y filtros (editados, reenviados, sin avisar al equipo).
+
+Secciones: `[ADMIN-QUOTES]` · `[UTIL]` · `[DATOS]` · `[PDF]` · `[LISTA]` · `[DETALLE]` · `[EDITAR]` · `[ENVIAR]` · `[EVENTOS]`
+
+- `esc` (l. 29) — Escapa & < > " para insertar texto en HTML; null y undefined dan cadena vacía.
+- `money` (l. 31) — Importe con la divisa de los precios (2 decimales); un valor vacío cuenta como 0.
+- `unit` (l. 33) — Importe unitario (2 a 4 decimales) o «A consultar» si no hay precio.
+- `isManager` (l. 35) — ¿Es la persona que entró un manager? (si no, es un propietario).
+- `nameOf` (l. 37) — Nombre de una línea en el idioma del pedido (el del catálogo; la propia referencia si no está).
+- `download` (l. 39) — Descarga `blob` como archivo `name` con un enlace temporal.
+- `say` (l. 41) — Pone un aviso (clase `ok` si salió bien) en el elemento [data-qr-msg] de la pantalla.
+- `whyFail` (l. 43) — Texto de error del servidor para una respuesta fallida (con el aviso de conflicto y de correo apagado ya redactados).
+- `clone` (l. 48) — Copia profunda de un dato JSON.
+- `num` (l. 50) — Número escrito por una persona («12,5» o «12.5») → número, o NaN si no vale.
+- `loadList` (l. 54) — Carga la lista de pedidos del servidor → Promise<{ok, error?}> (deja el resultado en el estado).
+- `loadOne` (l. 58) — Carga un presupuesto del servidor → Promise<respuesta> (en `order` viene el registro).
+- `keep` (l. 62) — Sustituye en la lista y en el estado el presupuesto `o` (tras guardar o reenviar).
+- `detailOf` (l. 66) — Líneas del presupuesto `o` con la forma que espera el generador del PDF (precios guardados, nombres en el idioma del pedido).
+- `makePdf` (l. 71) — Fabrica el PDF del presupuesto `o` en el idioma del pedido (con su nota si la tiene) → { doc, filename, blob() }.
+- `downloadPdf` (l. 76) — Descarga el PDF de `o`; si el generador falla lo dice (no se queda mudo).
+- `tags` (l. 83) — Etiquetas de estado de un presupuesto (editado, reenviado, reenvío fallido y, para managers, sin aviso al equipo).
+- `when` (l. 92) — Fecha y hora legibles (la función del panel).
+- `matches` (l. 94) — ¿Cumple el presupuesto `o` el filtro actual (texto y estado)?
+- `rowsHtml` (l. 105) — Filas de la tabla de la lista según el filtro.
+- `listView` (l. 114) — Vista de la lista: barra de búsqueda y filtro y tabla de presupuestos recibidos.
+- `linesTable` (l. 127) — Tabla de líneas de un presupuesto (referencia, nombre, cantidad, precio y total) con la etiqueta «precio manual» donde la persona fijó el precio.
+- `historyHtml` (l. 134) — Historial de un presupuesto: ediciones y reenvíos, del más reciente al más antiguo.
+- `detailView` (l. 142) — Vista de detalle de un presupuesto.
+- `startDraft` (l. 159) — Prepara el borrador de edición a partir del registro `o` (precio vacío = tarifa; el precio manual se enseña escrito).
+- `field` (l. 165) — Campo de texto del formulario de edición (`k` = clave de `customer` o «quoteNote»).
+- `editLines` (l. 170) — Tabla editable de líneas del borrador (cantidad y precio por línea, quitar).
+- `paintLines` (l. 180) — Pinta (o repinta) la zona de líneas del formulario de edición.
+- `editView` (l. 182) — Vista de edición de un presupuesto.
+- `draftProblem` (l. 196) — Comprueba el borrador antes de mandarlo → texto del primer problema o ''.
+- `draftBody` (l. 209) — Cuerpo del PUT con el borrador: el precio solo viaja si la persona lo escribió (o si había uno manual que ha vaciado: null = volver a la tarifa).
+- `saveEdit` (l. 215) — Guarda la edición (PUT) y vuelve al detalle; si hay conflicto de revisión o un error de texto, lo dice sin perder lo escrito.
+- `sendView` (l. 227) — Vista de reenvío: destinatarios (el del solicitante ya puesto), mensaje y copia para quien envía.
+- `doSend` (l. 240) — Lee, comprueba y manda el reenvío: fabrica el PDF del presupuesto cargado y lo envía con POST; cuenta lo que pasó (salió, no salió, correo apagado, límite).
+- `A.view` (l. 259) — Vista según la ruta: «» lista · «<nº>» detalle · «<nº>/editar» · «<nº>/enviar».
+- `A.bind` (l. 267) — Engancha los eventos de la sección una sola vez (el contenedor del panel no se repinta, sus vistas sí).
+- `repaintRows` (l. 293) — Repinta solo las filas de la lista con el filtro actual (así no se pierde el foco del buscador).
+- `addLine` (l. 295) — Añade al borrador la referencia escrita (si ya está, suma 1 a su cantidad; si no existe en el catálogo, avisa).
+
 ### `admin-report.js`
 
 [ADMIN-REPORT] Informe de lectura de una hoja de precios para la vista previa del panel: columnas reconocidas, avisos, referencias nuevas y filas que no se publican. Lo comparten admin.js (demo, en el navegador) y admin-live.js (real, el informe viene del servidor). Sin dependencias. TV.priceReportHtml(report, esc) → HTML ('' si no hay informe)
@@ -458,7 +524,7 @@ Secciones: `[ADMIN-SECURITY]` · `[UTIL]` · `[USUARIOS]` · `[ACTIVIDAD]` · `[
 - `fail` (l. 30) — Aviso de error del servidor con su mensaje.
 - `unavailable` (l. 32) — Un mensaje de «no disponible en este servidor» (el Worker de Cloudflare no trae estas partes) o el error que devolvió el servidor.
 - `stateTags` (l. 36) — Texto y marca del estado de seguridad de un usuario: bloqueo, protección reforzada o nada.
-- `codeCell` (l. 43) — La casilla «código por correo» de una cuenta de manager (los clientes no la usan salvo tras ataques repetidos).
+- `codeCell` (l. 43) — La casilla «código por correo» de una cuenta de manager (los propietarios no la usan salvo tras ataques repetidos).
 - `S.usersView` (l. 49) — Vista Usuarios (manager): la lista con su seguridad, alta de usuarios y contraseña nueva para una cuenta.
 - `activityRows` (l. 75) — Filas de la tabla de actividad.
 - `S.activityView` (l. 84) — Vista Actividad (manager): filtros, tabla y descarga.
@@ -474,7 +540,7 @@ Secciones: `[ADMIN-SECURITY]` · `[UTIL]` · `[USUARIOS]` · `[ACTIVIDAD]` · `[
 
 ### `admin.js`
 
-[ADMIN] Panel de gestión de Torivac (DEMO sin servidor): login con dos roles, menú lateral y vistas. Roles:  manager → Resumen · Pedidos · Precios · Propuestas · Contenido · Estadísticas · Ajustes cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
+[ADMIN] Panel de gestión de Torivac (DEMO sin servidor): login con dos roles, menú lateral y vistas. Roles:  manager → Resumen · Pedidos · Precios · Propuestas · Contenido · Estadísticas · Ajustes Propietario (internamente «cliente») → Nuevo presupuesto · Presupuestos recibidos · Lista de precios · Estadísticas
 
 Secciones: `[ADMIN]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[PRICES]` · `[PROMPT]` · `[ROUTER]`
 
@@ -497,7 +563,7 @@ Secciones: `[ADMIN]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[PRICES]` · `[PRO
 - `V.resumen` (l. 84) — Vista Resumen (manager): KPIs de pedidos, mensajes y propuestas, estado de la hoja de precios y las 5 referencias más pedidas.
 - `kpi` (l. 96) — HTML de una tarjeta KPI con la etiqueta `l` y el valor `v`, ambos escapados.
 - `V.pedidos` (l. 99) — Vista Pedidos (manager): tabla de los pedidos de la demo, los más recientes primero, con PDF por pedido, exportar y borrar.
-- `V.mis` (l. 106) — Vista «Mis presupuestos» (cliente): la tabla de Pedidos con otro título.
+- `V.mis` (l. 106) — Vista «Presupuestos recibidos» (propietario): la tabla de Pedidos con otro título.
 - `V.precios` (l. 109) — Vista Precios (manager): estado de la hoja, actualizar o restaurar, subida de Excel/CSV e instrucción en castellano.
 - `V.lista` (l. 118) — Vista Lista de precios (cliente): precios unitarios y tramos de las primeras 400 referencias con precio.
 - `V.propuestas` (l. 124) — Vista Propuestas (manager): diferencias entre la web y los PDFs para aprobar o rechazar una a una (estado en localStorage).
@@ -564,23 +630,30 @@ Secciones: `[CAPTCHA]` · `[SERVIDOR]` · `[SCRIPT]` · `[WIDGET]` · `[API]`
 
 ### `consent.js`
 
-[CONSENT] Aviso de cookies y medición de Google (Analytics 4 y Google Ads) con Consent Mode v2 en modo «básico». Solo existe en compilaciones con IDs de Google (site/google.config.json → bloque #tv-google de cada página). Sin IDs, la página no carga este archivo ni nada de Google. · NADA de Google se descarga hasta que la persona acepta (analítica y/o publicidad). Antes solo se declara el consentimiento por defecto en «denegado» (una lista en memoria, sin red).
+[CONSENT] Aviso de cookies y medición de Google (Analytics 4 y Google Ads) con Consent Mode v2 en modo «básico». Qué se mide lo decide el manager en el panel (Ajustes → Google) y se guarda en el SERVIDOR: esta web lo pide con GET /api/google (una petición pequeña por sesión, guardada 2 minutos). Sin servidor (web estática sola) se usan los IDs de arranque que lleva la propia página (bloque #tv-google, de site/google.config.json). Si no hay ningún ID, este archivo no hace NADA:
 
-Secciones: `[CONSENT]` · `[GTAG]` · `[EVENTOS]` · `[AVISO]`
+Secciones: `[CONSENT]` · `[AJUSTES]` · `[GTAG]` · `[EVENTOS]` · `[AVISO]` · `[ARRANQUE]`
 
-- `log` (l. 23) — Mensaje en la consola solo en modo prueba (para ver qué mandaría la web a Google).
-- `read` (l. 27) — Elección guardada {a,p,t} si existe, es de esta versión y no ha caducado; si no, null (hay que preguntar).
-- `write` (l. 34) — Guarda la elección (si el navegador no deja, se recuerda solo en esta página).
-- `gtag` (l. 42) — gtag exige recibir el objeto `arguments`, no un array.
-- `load` (l. 46) — Descarga gtag.js una sola vez (en modo prueba, no).
-- `conf` (l. 56) — Activa la medición de un ID una sola vez por página.
-- `apply` (l. 58) — Aplica la elección: actualiza el consentimiento y, si hay algo permitido, carga Google y activa solo los IDs permitidos.
-- `wipe` (l. 64) — Borra las cookies de Google de esta web (en el dominio y en los de arriba).
-- `TV.track` (l. 73) — Registra una conversión: 'quote' (presupuesto/pedido enviado) o 'contact' (mensaje enviado). Sin elección o sin el permiso de esa categoría, no hace nada.
-- `setConfig` (l. 87) — Abre o cierra el panel de categorías (con «Configurar»); al abrir, las casillas reflejan la elección actual.
-- `open` (l. 92) — Muestra el aviso (con el panel abierto si viene del pie) y lleva el foco a su primera casilla opcional.
-- `close` (l. 97) — Cierra el aviso y devuelve el foco a donde estaba (el botón del pie) o al inicio de la página.
-- `save` (l. 103) — Guarda la elección, cierra el aviso y la aplica; si se retira un permiso que ya estaba en uso, borra las cookies y recarga.
+- `log` (l. 27) — Mensaje en la consola solo en modo prueba (para ver qué mandaría la web a Google).
+- `clean` (l. 31) — Ajustes comprobados: solo se aceptan IDs con la forma que genera Google (lo demás se ignora); → { ga4, ads, conv:{quote, contact} }.
+- `fetchRuntime` (l. 36) — Promise<ajustes del servidor | null>: GET /api/google (guardado 2 minutos en sessionStorage); null si no hay servidor, tarda más de 4 s o responde mal. Nunca rechaza.
+- `offered` (l. 50) — Categorías que se ofrecen ahora, como texto: «a», «p», «ap» o «».
+- `read` (l. 52) — Elección guardada {a,p,t} si existe, es de esta versión, no ha caducado y ya cubría todas las categorías que se ofrecen ahora; si no, null (hay que preguntar).
+- `write` (l. 62) — Guarda la elección con las categorías que se ofrecían (si el navegador no deja, se recuerda solo en esta página).
+- `gtag` (l. 69) — gtag exige recibir el objeto `arguments`, no un array.
+- `load` (l. 71) — Descarga gtag.js una sola vez (en modo prueba, no).
+- `conf` (l. 81) — Activa la medición de un ID una sola vez por página.
+- `apply` (l. 83) — Aplica la elección: actualiza el consentimiento y, si hay algo permitido, carga Google y activa solo los IDs permitidos.
+- `wipe` (l. 89) — Borra las cookies de Google de esta web (en el dominio y en los de arriba).
+- `TV.track` (l. 98) — Registra una conversión: 'quote' (presupuesto/pedido enviado) o 'contact' (mensaje enviado). Sin elección o sin el permiso de esa categoría, no hace nada.
+- `secOn` (l. 110) — ¿Se ve ahora una sección etiquetada `sec` de la política de cookies? (a = hay GA4 · p = hay Ads · any = alguna · none = ninguna).
+- `adaptUi` (l. 112) — Adapta el aviso y la política a lo que hay configurado: categorías, texto del aviso, secciones de la política y botón del pie.
+- `setConfig` (l. 122) — Abre o cierra el panel de categorías (con «Configurar»); al abrir, las casillas reflejan la elección actual.
+- `open` (l. 127) — Muestra el aviso (con el panel abierto si viene del pie) y lleva el foco a su primera casilla opcional.
+- `close` (l. 132) — Cierra el aviso y devuelve el foco a donde estaba (el botón del pie) o al inicio de la página.
+- `save` (l. 138) — Guarda la elección, cierra el aviso y la aplica; si se retira un permiso que ya estaba en uso, borra las cookies y recarga.
+- `wireBar` (l. 150) — Engancha los botones del aviso y la tecla Esc (una vez).
+- `start` (l. 166) — Arranca con los ajustes definitivos `g`: sin ningún ID no hace nada; con alguno declara el consentimiento por defecto, adapta la página y pregunta o aplica la elección guardada.
 
 ### `contact.js`
 
@@ -645,45 +718,46 @@ Secciones: `[QUOTE-PAGE]` · `[TABLE]` · `[IMPORT]` · `[PDF]` · `[SEND]` · `
 
 Secciones: `[QUOTE-ENGINE]` · `[STATE]` · `[FORMAT]` · `[PRICES]` · `[API]` · `[REFRESH]` · `[OVERRIDE]` · `[CSV]` · `[LIVE]`
 
-- `own` (l. 20) — ¿`k` es una clave PROPIA de `o`? (con `o[k]` a secas, «constructor», «__proto__» o «toString» pasarían por referencias válidas)
-- `applyOverride` (l. 25) — En producción la hoja de Drive manda (servidor + cron 24 h); aquí `tv_prices_override` hace de "hoja viva" para poder probar el flujo Excel → web.
-- `mergeSheetItems` (l. 30) — La hoja de precios puede traer referencias nuevas dentro de un producto (prices.items[ref] = {p, n, pid}): se suman a TV.items para poder presupuestarlas (x:1 = viene de la hoja).
-- `clean` (l. 50) — Las referencias que la hoja de precios añade (x:1) llegan con los precios, después de cargar esto: no se puede exigir que ya estén en TV.items. Solo se descartan las que no son texto y los nombres de Object.prototype.
-- `load` (l. 52) — Carga las líneas del presupuesto de localStorage; con file:// manda la copia de window.name si es más reciente.
-- `save` (l. 59) — Guarda las líneas y su marca de tiempo en localStorage (si falla, quedan en memoria) y, con file://, una copia en window.name.
-- `emit` (l. 65) — Guarda el presupuesto y avisa del cambio `detail` a los oyentes registrados y con el evento tv:quote del documento.
-- `buildFormats` (l. 74) — Crea los formateadores de moneda (importes a 2 decimales, precios unitarios de 2 a 4) con la divisa de los precios o EUR.
-- `money` (l. 81) — Formatea un importe (2 decimales) en la divisa y el idioma de la página.
-- `unitMoney` (l. 83) — Formatea un precio unitario (de 2 a 4 decimales) en la divisa y el idioma de la página.
-- `t` (l. 85) — Texto de interfaz `key` en el idioma de la página (TV.i18n); si no existe devuelve la propia clave.
-- `rel` (l. 87) — ruta relativa a una página lógica (/en/product/x/) desde la página actual
-- `assetUrl` (l. 92) — Ruta relativa al archivo `a` del sitio desde la página actual (antepone tantos «../» como niveles indica data-path).
-- `priceOf` (l. 96) — precio unitario aplicable a `qty` unidades de `ref` (null = sin precio → "consultar")
-- `tiersOf` (l. 104) — Tramos de precio por cantidad de `ref` como [[cantMin, precio], …]; [] si no tiene.
-- `round2` (l. 106) — Redondea a 2 decimales compensando el error de coma flotante.
-- `qtyOf` (l. 109) — Cantidad de una celda CSV/Excel: entero ≥ 0; «1.000» y «1,000» son mil (millares), «12,0» es doce; 0 si no se entiende.
-- `lines` (l. 119) — Copia de las líneas del presupuesto [{ref, qty}]; modificarla no altera el estado.
-- `count` (l. 121) — Total de unidades del presupuesto (suma de las cantidades de todas las líneas).
-- `kinds` (l. 123) — Número de referencias distintas (líneas) del presupuesto.
-- `has` (l. 125) — Indica si el presupuesto ya tiene una línea con la referencia `ref`.
-- `add` (l. 127) — Suma `qty` unidades de `ref` (crea la línea si falta); false si la referencia no existe o la cantidad no es válida.
-- `set` (l. 134) — Fija la cantidad de `ref`: 0 elimina la línea y, si la línea no existía, equivale a añadirla.
-- `remove` (l. 142) — Elimina la línea de `ref` (fija su cantidad a 0).
-- `clear` (l. 144) — Vacía el presupuesto y avisa del cambio.
-- `detail` (l. 146) — líneas detalladas + total (solo suma las que tienen precio)
-- `onChange` (l. 157) — Registra `fn(detail)` para que se llame en cada cambio del presupuesto o de los precios.
-- `applyOverride` (l. 159) — Reaplica los precios cargados desde el panel, rehace los formatos y avisa a la página (evento tv:prices y cambio «prices»).
-- `label` (l. 162) — nombre de línea listo para mostrar
-- `shownRef` (l. 164) — referencia visible (las líneas genéricas P#### no se muestran como referencia)
-- `importRows` (l. 166) — importa filas {ref, qty}: devuelve {added, unknown[]}
-- `base` (l. 182) — URL base del Worker de la API (TV.meta.api) sin barras finales; cadena vacía si no hay API.
-- `live` (l. 184) — Indica si hay API de producción configurada (false = modo demo, con el envío simulado).
-- `post` (l. 186) — POST JSON a `path` de la API; devuelve siempre una Promise con la respuesta y su `status` (los fallos vuelven como {ok:false}).
-- `TV.loadLivePrices` (l. 195) — El snapshot de la compilación (assets/data/prices.js) es solo el respaldo: con TV.meta.api manda lo que devuelva GET /api/prices (hoja de Drive, cada 24 h o al pulsar «actualizar»).
-- `TV.csvParse` (l. 206) — Lector CSV (RFC 4180): texto → filas de celdas; detecta el separador , o ; en la 1.ª línea, admite comillas y quita el BOM.
-- `TV.refreshPrices` (l. 224) — Recarga los precios a mano: del servidor si hay API; en la demo, volviendo a cargar assets/data/prices.js.
-- `n.onload` (l. 231) — Al cargar el script de precios recién pedido: reaplica el override, rehace formatos, avisa del cambio y resuelve con true.
-- `n.onerror` (l. 233) — Si falla la carga del script de precios, resuelve la promesa con false.
+- `own` (l. 21) — ¿`k` es una clave PROPIA de `o`? (con `o[k]` a secas, «constructor», «__proto__» o «toString» pasarían por referencias válidas)
+- `applyOverride` (l. 26) — En producción la hoja de Drive manda (servidor + cron 24 h); aquí `tv_prices_override` hace de "hoja viva" para poder probar el flujo Excel → web.
+- `mergeSheetItems` (l. 31) — La hoja de precios puede traer referencias nuevas dentro de un producto (prices.items[ref] = {p, n, pid}): se suman a TV.items para poder presupuestarlas (x:1 = viene de la hoja).
+- `clean` (l. 51) — Las referencias que la hoja de precios añade (x:1) llegan con los precios, después de cargar esto: no se puede exigir que ya estén en TV.items. Solo se descartan las que no son texto y los nombres de Object.prototype.
+- `load` (l. 53) — Carga las líneas del presupuesto de localStorage; con file:// manda la copia de window.name si es más reciente.
+- `save` (l. 60) — Guarda las líneas y su marca de tiempo en localStorage (si falla, quedan en memoria) y, con file://, una copia en window.name.
+- `emit` (l. 66) — Guarda el presupuesto y avisa del cambio `detail` a los oyentes registrados y con el evento tv:quote del documento.
+- `buildFormats` (l. 75) — Crea los formateadores de moneda (importes a 2 decimales, precios unitarios de 2 a 4) con la divisa de los precios o EUR.
+- `money` (l. 82) — Formatea un importe (2 decimales) en la divisa y el idioma de la página.
+- `unitMoney` (l. 84) — Formatea un precio unitario (de 2 a 4 decimales) en la divisa y el idioma de la página.
+- `t` (l. 86) — Texto de interfaz `key` en el idioma de la página (TV.i18n); si no existe devuelve la propia clave.
+- `rel` (l. 88) — ruta relativa a una página lógica (/en/product/x/) desde la página actual
+- `assetUrl` (l. 93) — Ruta relativa al archivo `a` del sitio desde la página actual (antepone tantos «../» como niveles indica data-path).
+- `priceOf` (l. 97) — precio unitario aplicable a `qty` unidades de `ref` (null = sin precio → "consultar")
+- `tiersOf` (l. 105) — Tramos de precio por cantidad de `ref` como [[cantMin, precio], …]; [] si no tiene.
+- `round2` (l. 107) — Redondea a 2 decimales compensando el error de coma flotante.
+- `qtyOf` (l. 110) — Cantidad de una celda CSV/Excel: entero ≥ 0; «1.000» y «1,000» son mil (millares), «12,0» es doce; 0 si no se entiende.
+- `lines` (l. 120) — Copia de las líneas del presupuesto [{ref, qty}]; modificarla no altera el estado.
+- `count` (l. 122) — Total de unidades del presupuesto (suma de las cantidades de todas las líneas).
+- `kinds` (l. 124) — Número de referencias distintas (líneas) del presupuesto.
+- `has` (l. 126) — Indica si el presupuesto ya tiene una línea con la referencia `ref`.
+- `add` (l. 128) — Suma `qty` unidades de `ref` (crea la línea si falta); false si la referencia no existe o la cantidad no es válida.
+- `set` (l. 135) — Fija la cantidad de `ref`: 0 elimina la línea y, si la línea no existía, equivale a añadirla.
+- `remove` (l. 143) — Elimina la línea de `ref` (fija su cantidad a 0).
+- `clear` (l. 145) — Vacía el presupuesto y avisa del cambio.
+- `detail` (l. 147) — líneas detalladas + total (solo suma las que tienen precio)
+- `onChange` (l. 158) — Registra `fn(detail)` para que se llame en cada cambio del presupuesto o de los precios.
+- `applyOverride` (l. 160) — Reaplica los precios cargados desde el panel, rehace los formatos y avisa a la página (evento tv:prices y cambio «prices»).
+- `withLang` (l. 162) — Ejecuta `fn()` con el idioma, los textos y los formatos de importe de `l` (es, en, fr o de) y vuelve después al de la página: sirve para fabricar el PDF de un presupuesto en el idioma de quien lo pidió. Devuelve lo que devuelva `fn`.
+- `label` (l. 170) — nombre de línea listo para mostrar
+- `shownRef` (l. 172) — referencia visible (las líneas genéricas P#### no se muestran como referencia)
+- `importRows` (l. 174) — importa filas {ref, qty}: devuelve {added, unknown[]}
+- `base` (l. 190) — URL base del Worker de la API (TV.meta.api) sin barras finales; cadena vacía si no hay API.
+- `live` (l. 192) — Indica si hay API de producción configurada (false = modo demo, con el envío simulado).
+- `post` (l. 194) — POST JSON a `path` de la API; devuelve siempre una Promise con la respuesta y su `status` (los fallos vuelven como {ok:false}).
+- `TV.loadLivePrices` (l. 203) — El snapshot de la compilación (assets/data/prices.js) es solo el respaldo: con TV.meta.api manda lo que devuelva GET /api/prices (hoja de Drive, cada 24 h o al pulsar «actualizar»).
+- `TV.csvParse` (l. 214) — Lector CSV (RFC 4180): texto → filas de celdas; detecta el separador , o ; en la 1.ª línea, admite comillas y quita el BOM.
+- `TV.refreshPrices` (l. 232) — Recarga los precios a mano: del servidor si hay API; en la demo, volviendo a cargar assets/data/prices.js.
+- `n.onload` (l. 239) — Al cargar el script de precios recién pedido: reaplica el override, rehace formatos, avisa del cambio y resuelve con true.
+- `n.onerror` (l. 241) — Si falla la carga del script de precios, resuelve la promesa con false.
 
 ### `shop.js`
 
@@ -986,12 +1060,12 @@ Sesión 1 · Mapa de traducciones y lotes de trabajo (determinista).    python3 
 - `files` (l. 102) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
 - `check_versions` (l. 107) — Actualizar sin caché vieja: todo CSS y JS local de cada página lleva «?v=<10 hex>» igual a la huella (SHA-256) del archivo, y no queda ningún marcador sin resolver.
 - `check_csp` (l. 150) — Política de seguridad de contenido: script-src sin 'unsafe-inline' y cada script en línea ejecutable de cada página con su huella SHA-256 en la cabecera (los bloques de datos application/json y ld+json no se ejecutan).
-- `check_google` (l. 182) — Google (Analytics/Ads/Search Console): sin IDs no hay nada de Google (ni aviso, ni script, ni orígenes en la CSP); con IDs, la CSP los abre SOLO en producción; los IDs ficticios del paquete de pruebas no llegan a producción; el entorno de pruebas no se verifica en Search Console.
-- `check_wp_probes` (l. 221) — El .htaccess corta con 410 los sondeos de WordPress (wp-login.php, xmlrpc.php, wp-admin…) sin tocar las fotos y PDF antiguos de wp-content/uploads ni las páginas de la web: se prueba la expresión con rutas de ejemplo.
-- `check_blog` (l. 242) — Blog del panel: las cuatro plantillas del servidor (api/generated/blog-shell.<idioma>.json) se leen, son de ESTA compilación (misma base y mismo modo pruebas/producción), traen todas las marcas que rellena PHP,
-- `verify` (l. 280) — → (errores, avisos). Un error impide entregar el paquete.
-- `make_zip` (l. 394) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
-- `main` (l. 406) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
+- `check_google` (l. 182) — Google (Analytics/Ads/Search Console): el paquete lleva el aviso y consent.js en modo «runtime» (los IDs los da el servidor, desde el panel); la CSP abre los dominios de Google SOLO en producción; los IDs ficticios del paquete de pruebas no llegan a producción; el entorno de pruebas no se verifica en Search Console.
+- `check_wp_probes` (l. 225) — El .htaccess corta con 410 los sondeos de WordPress (wp-login.php, xmlrpc.php, wp-admin…) sin tocar las fotos y PDF antiguos de wp-content/uploads ni las páginas de la web: se prueba la expresión con rutas de ejemplo.
+- `check_blog` (l. 246) — Blog del panel: las cuatro plantillas del servidor (api/generated/blog-shell.<idioma>.json) se leen, son de ESTA compilación (misma base y mismo modo pruebas/producción), traen todas las marcas que rellena PHP,
+- `verify` (l. 284) — → (errores, avisos). Un error impide entregar el paquete.
+- `make_zip` (l. 398) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
+- `main` (l. 410) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
 
 ### `pdf_jobs.py`
 
@@ -1233,8 +1307,12 @@ Secciones: `[QA-ADMIN-LIVE]`
 - `login` (l. 55) — Abre /admin/ y envía el formulario de acceso con el correo y la contraseña dados (no espera al resultado).
 - `navs` (l. 57) — Textos de los enlaces del menú lateral del panel.
 - `toastText` (l. 59) — Texto del aviso emergente (#toast), leído tras una pausa corta para que aparezca.
-- `open` (l. 207) — Busca una propuesta por texto (la búsqueda se confirma con Intro) y la deja abierta; devuelve su tarjeta.
-- `clearQ` (l. 209) — Vacía la búsqueda y la confirma (para volver a ver todas las del estado elegido).
+- `open` (l. 215) — Busca una propuesta por texto (la búsqueda se confirma con Intro) y la deja abierta; devuelve su tarjeta.
+- `clearQ` (l. 217) — Vacía la búsqueda y la confirma (para volver a ver todas las del estado elegido).
+- `pubG` (l. 289) — La vista pública de los ajustes de Google (GET /api/google): lo mismo que recibe un visitante.
+- `getO` (l. 343) — El registro del presupuesto `n` (por defecto el de la prueba), tal como lo ve el manager.
+- `go` (l. 345) — Va a la dirección `hash` del panel y espera a que aparezca el elemento `sel`.
+- `say` (l. 347) — Texto del aviso de la pantalla de presupuestos (data-qr-msg).
 
 ### `qa-apache.mjs`
 
@@ -1298,30 +1376,33 @@ Secciones: `[QA-CAPTCHA]`
 
 ### `qa-google.mjs`
 
-[QA-GOOGLE] Medición de Google (Analytics 4, Google Ads) y Search Console: aviso de cookies, consentimiento, eventos de conversión, política de seguridad (CSP) y política de cookies. 1) COMPILACIÓN (sin navegador): sin IDs no sale NADA de Google; con IDs sueltos solo lo que corresponde (solo GA4, solo Ads); un ID mal escrito detiene la compilación; --google-demo solo en pruebas; la etiqueta y el archivo de Search Console solo en producción; la política de cookies existe en los 4 idiomas y dice lo que de verdad se usa.
+[QA-GOOGLE] Medición de Google (Analytics 4, Google Ads) y Search Console: aviso de cookies, consentimiento, eventos de conversión, política de seguridad (CSP) y política de cookies. 1) COMPILACIÓN (sin navegador): web estática sola: sin IDs no sale NADA de Google; con IDs sueltos solo lo que corresponde (solo GA4, solo Ads); un ID mal escrito detiene la compilación; --google-demo solo en pruebas; la etiqueta y el archivo de Search Console solo en producción; la política de cookies existe en los 4 idiomas y dice lo que de verdad se usa.
 
 Secciones: `[QA-GOOGLE]`
 
-- `ok` (l. 31) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
-- `cfgFile` (l. 34) — Escribe un google.config.json de prueba y devuelve su ruta.
-- `build` (l. 40) — ═══════════════════════════════════════════════ 1) COMPILACIÓN
-- `rd` (l. 46) — Texto de un archivo de la compilación ('' si no existe).
-- `csp` (l. 48) — Política de seguridad (CSP) que la compilación `b` escribe en su .htaccess.
-- `SECURITY_INIT` (l. 145) — Script de arranque de cada página de prueba: apunta qué direcciones bloquea la política de seguridad.
-- `open` (l. 147) — Abre una página nueva (contexto limpio) con Google simulado (gtag.js de réplica; el resto de Google se contesta vacío) y registra lo que pide.
-- `DL` (l. 165) — El dataLayer de la página como listas (gtag mete objetos `arguments`).
-- `EV` (l. 167) — Eventos (gtag('event', …)) del dataLayer.
-- `CSP` (l. 169) — Las URLs bloqueadas por la CSP en esta página.
-- `axe` (l. 171) — Analiza la pantalla con axe y devuelve las violaciones graves o críticas (texto breve).
-- `bar` (l. 178) — El aviso de cookies de la página.
-- `btn` (l. 180) — Un botón del aviso (data-cookie = accept, reject, config o save).
-- `gtagReady` (l. 182) — Espera a que la réplica de gtag.js haya cargado.
-- `form` (l. 185) — El formulario de contacto que se ve en la página.
-- `sendContact` (l. 187) — Rellena el formulario de contacto y lo envía (espera al aviso de «enviado»).
-- `sendQuote` (l. 195) — Añade un producto, rellena el presupuesto y lo envía (espera al aviso de «enviado»).
-- `idx` (l. 251) — Posición de una llamada de gtag (['consent','default'], …) en el dataLayer.
-- `m` (l. 340) — Medidas del aviso en móvil: alto, desbordes, botones y si caben en la pantalla.
-- `finish` (l. 420) — Resumen final y código de salida (limpia lo temporal).
+- `ok` (l. 33) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `cfgFile` (l. 36) — Escribe un google.config.json de prueba y devuelve su ruta.
+- `SET` (l. 40) — Ajustes de Google tal como los manda el panel (PUT /api/settings/google).
+- `build` (l. 44) — ═══════════════════════════════════════════════ 1) COMPILACIÓN
+- `rd` (l. 50) — Texto de un archivo de la compilación ('' si no existe).
+- `csp` (l. 52) — Política de seguridad (CSP) que la compilación `b` escribe en su .htaccess.
+- `SECURITY_INIT` (l. 162) — Script de arranque de cada página de prueba: apunta qué direcciones bloquea la política de seguridad.
+- `open` (l. 164) — Abre una página nueva (contexto limpio) con Google simulado (gtag.js de réplica; el resto de Google se contesta vacío) y registra lo que pide.
+- `DL` (l. 182) — El dataLayer de la página como listas (gtag mete objetos `arguments`).
+- `EV` (l. 184) — Eventos (gtag('event', …)) del dataLayer.
+- `CSP` (l. 186) — Las URLs bloqueadas por la CSP en esta página.
+- `axe` (l. 188) — Analiza la pantalla con axe y devuelve las violaciones graves o críticas (texto breve).
+- `bar` (l. 195) — El aviso de cookies de la página.
+- `btn` (l. 197) — Un botón del aviso (data-cookie = accept, reject, config o save).
+- `gtagReady` (l. 199) — Espera a que la réplica de gtag.js haya cargado.
+- `form` (l. 202) — El formulario de contacto que se ve en la página.
+- `sendContact` (l. 204) — Rellena el formulario de contacto y lo envía (espera al aviso de «enviado»).
+- `sendQuote` (l. 212) — Añade un producto, rellena el presupuesto y lo envía (espera al aviso de «enviado»).
+- `put` (l. 239) — Guarda los ajustes como lo hace el manager desde Ajustes → Google.
+- `vis` (l. 241) — ¿Se ve el primer elemento que cumple el selector?
+- `idx` (l. 325) — Posición de una llamada de gtag (['consent','default'], …) en el dataLayer.
+- `m` (l. 414) — Medidas del aviso en móvil: alto, desbordes, botones y si caben en la pantalla.
+- `finish` (l. 495) — Resumen final y código de salida (limpia lo temporal).
 
 ### `qa-lang.mjs`
 
@@ -1667,7 +1748,7 @@ Secciones: `[CORS]`
 
 [EMAIL] Envío de correo por Resend o Brevo (HTTP, sin SDK) según EMAIL_PROVIDER (resend por defecto · brevo · none), con el MOTIVO veraz de cada intento y sin secretos en los errores. Resultado de sendMail: { ok, id?, reason:'sent'|'off'|'failed'|'skipped', error?, driver, status?, skipped? }. off = sin controlador (EMAIL_PROVIDER=none); skipped = faltan credenciales, remitente o destinatarios; failed = el proveedor respondió error o no respondió. `error` es un texto CORTO (≤ 160) y sin secretos, solo para gestores. Cada envío anota su resultado en mail:last (ver mailstate.js).
 
-Secciones: `[EMAIL]` · `[CONTROLADORES]` · `[COPIA]` · `[CONTACTO]`
+Secciones: `[EMAIL]` · `[CONTROLADORES]` · `[COPIA]` · `[PRESUPUESTO]` · `[CONTACTO]`
 
 - `providerUnknown` (l. 18) — True si EMAIL_PROVIDER trae un valor que no es resend, brevo ni none (se trata como «none»: falla cerrado). Vacío o ausente = resend.
 - `mailDriver` (l. 20) — Controlador de correo activo según EMAIL_PROVIDER: «resend» (por defecto), «brevo» o «none»; un valor desconocido falla cerrado y cuenta como «none».
@@ -1687,26 +1768,44 @@ Secciones: `[EMAIL]` · `[CONTROLADORES]` · `[COPIA]` · `[CONTACTO]`
 - `orderMail` (l. 124) — Correo de aviso de un pedido para el equipo → { html, text } con cliente, líneas, total, marca de precios de demostración y, si va PDF adjunto, el aviso de que el importe válido es el del servidor.
 - `copySubject` (l. 144) — Asunto fijo de la copia al cliente (el mismo en todos los idiomas).
 - `customerCopyMail` (l. 149) — Copia del pedido para el CLIENTE → { subject, html, text }. Solo contenido generado por el servidor: texto fijo en el idioma del pedido, número, líneas (ref, nombre del catálogo, cantidad e
-- `contactMail` (l. 165) — Correo de un mensaje de contacto PARA EL EQUIPO → { subject, html, text }. Asunto «Contacto web · <nombre>» en una línea; nombre, correo, idioma, id del mensaje y texto del visitante van SIEMPRE
-- `testMail` (l. 177) — Correo de PRUEBA del panel → { subject, html, text }: asunto «Torivac · prueba de correo», texto fijo y, como datos, el controlador y la hora (ISO).
+- `htmlText` (l. 169) — Texto de una persona para el HTML del correo: escapado y con los saltos de línea como <br> (nunca HTML de la persona).
+- `quoteMail` (l. 174) — Presupuesto REENVIADO desde el panel → { subject, html, text }. Asunto y textos fijos en el idioma del pedido (`lang`); `lines` y `total` son los GUARDADOS en el registro (con los precios que se pactaron,
+- `contactMail` (l. 190) — Correo de un mensaje de contacto PARA EL EQUIPO → { subject, html, text }. Asunto «Contacto web · <nombre>» en una línea; nombre, correo, idioma, id del mensaje y texto del visitante van SIEMPRE
+- `testMail` (l. 202) — Correo de PRUEBA del panel → { subject, html, text }: asunto «Torivac · prueba de correo», texto fijo y, como datos, el controlador y la hora (ISO).
+
+### `google.js`
+
+[GOOGLE] Ajustes de medición de Google (Analytics 4, Google Ads y la etiqueta de cada conversión) que el manager edita en el panel (Ajustes → Google) y que la web lee SIN recompilar. Se guardan en KV (clave `settings:google`, sin caducidad). Contrato único con el servidor PHP: docs/GOOGLE.md §11 (mismas reglas que site/lib/google.mjs y site/assets/js/consent.js). GET  /api/google            PÚBLICO: { ok, google:{ ga4, ads, conv:{ quote, contact } } } — solo IDs (salen en el código de cualquier web); conv = etiqueta COMPLETA y solo si está activada y hay ID de Ads.
+
+Secciones: `[GOOGLE]`
+
+- `blank` (l. 18) — Ajustes vacíos (nada que medir).
+- `isObj` (l. 20) — ¿Es `v` un objeto «normal» (no lista ni null)?
+- `loadSettings` (l. 23) — Ajustes guardados; si no hay o están dañados, los vacíos. Siempre con la forma completa y solo valores que cumplen las reglas (lo guardado a mano o por una versión vieja no se cuela).
+- `fullLabel` (l. 40) — Etiqueta COMPLETA (AW-…/etiqueta) a partir de lo guardado y del ID de Ads; '' si no se puede completar.
+- `publicView` (l. 46) — Lo que la web puede ver: IDs y etiquetas completas de las conversiones activadas (con ID de Ads).
+- `validate` (l. 56) — Valida el cuerpo del PUT → { settings } (normalizados, sin `updated`) o { error, field }.
+- `handlePublic` (l. 87) — GET /api/google (público): lo que necesita la web, con caché corta.
+- `handleGet` (l. 91) — GET /api/settings/google (manager): los ajustes tal como están guardados.
+- `handlePut` (l. 95) — PUT /api/settings/google (manager): valida, guarda con quién y cuándo y devuelve los ajustes; `raw` es el cuerpo ya leído (null si no era JSON válido).
 
 ### `index.js`
 
-[INDEX] Router del Worker torivac-api + tarea programada (precios cada 24 h). PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login Acceso: 5 contraseñas erróneas del mismo visitante contra una cuenta (o 15 contra cualquiera, o 30 contra una cuenta de cualquier visitante) = bloqueo de 1 hora; ver handleLogin.
+[INDEX] Router del Worker torivac-api + tarea programada (precios cada 24 h). PÚBLICO   GET /api/health · GET /api/prices · GET /api/google (qué mide la web: solo IDs públicos) · POST /api/order · POST /api/contact · POST /api/auth/login Acceso: 5 contraseñas erróneas del mismo visitante contra una cuenta (o 15 contra cualquiera, o 30 contra una cuenta de cualquier visitante) = bloqueo de 1 hora; ver handleLogin.
 
 Secciones: `[INDEX]`
 
-- `tooMany` (l. 26) — 429 con el texto de siempre (inundación, Bearer): el mismo para cualquier límite de acceso, nunca distingue si un usuario existe.
-- `lockWait` (l. 28) — Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba).
-- `locked` (l. 30) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
-- `turnstileSitekey` (l. 36) — Clave PÚBLICA de Cloudflare Turnstile (TURNSTILE_SITEKEY) si está bien escrita; '' si no. Los formularios de la web solo piden el CAPTCHA cuando /api/health la anuncia junto al secreto.
-- `configProblems` (l. 41) — Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores.
-- `fail` (l. 51) — Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id.
-- `identify` (l. 58) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
-- `handleLogin` (l. 71) — POST /api/auth/login, con protección contra la fuerza bruta: 5 contraseñas erróneas del mismo visitante (ipKey) contra una cuenta bloquean ESA pareja 1 HORA desde el 5.º fallo (ni la contraseña
-- `route` (l. 97) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
-- `fetch` (l. 172) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
-- `scheduled` (l. 188) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
+- `tooMany` (l. 30) — 429 con el texto de siempre (inundación, Bearer): el mismo para cualquier límite de acceso, nunca distingue si un usuario existe.
+- `lockWait` (l. 32) — Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba).
+- `locked` (l. 34) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
+- `turnstileSitekey` (l. 40) — Clave PÚBLICA de Cloudflare Turnstile (TURNSTILE_SITEKEY) si está bien escrita; '' si no. Los formularios de la web solo piden el CAPTCHA cuando /api/health la anuncia junto al secreto.
+- `configProblems` (l. 45) — Ajustes mal puestos que se avisan en /api/health: solo sus NOMBRES (SESSION_SECRET, ADMIN_API_TOKEN, ORDER_COPY, EMAIL_PROVIDER, ORDER_FROM), nunca sus valores.
+- `fail` (l. 55) — Respuesta de error: un ApiError enseña su mensaje y estado; cualquier otra excepción se responde como «Error interno» con un id de 8 hex y el detalle va al registro con ese id.
+- `identify` (l. 62) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
+- `handleLogin` (l. 75) — POST /api/auth/login, con protección contra la fuerza bruta: 5 contraseñas erróneas del mismo visitante (ipKey) contra una cuenta bloquean ESA pareja 1 HORA desde el 5.º fallo (ni la contraseña
+- `route` (l. 101) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
+- `fetch` (l. 181) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
+- `scheduled` (l. 197) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
 
 ### `mailapi.js`
 
@@ -1749,16 +1848,16 @@ Secciones: `[MESSAGES]`
 
 ### `orderlist.js`
 
-[ORDERLIST] GET /api/orders sin recorrer todo el almacén: acotado en pedidos y en operaciones de KV por petición. MANAGER  recorre los prefijos de fecha order:TV-AAAAMMDD- hacia atrás desde hoy hasta reunir 300 pedidos o llegar a 120 días, con un máximo de 400 operaciones de KV (list + get). CLIENTE  lista su índice uorder:<sha256(correo)[:32]>:<nº> (se escribe al crear el pedido) y lee como mucho sus 100 pedidos más recientes. Los pedidos anteriores a este índice no le aparecen.
+[ORDERLIST] GET /api/orders sin recorrer todo el almacén: acotado en pedidos y en operaciones de KV por petición. MANAGER y CLIENTE recorren igual los prefijos de fecha order:TV-AAAAMMDD- hacia atrás desde hoy hasta reunir 300 pedidos o llegar a 120 días, con un máximo de 400 operaciones de KV (list + get). El rol «client» es el PROPIETARIO de la web (no un comprador): ve TODOS los presupuestos recibidos, pero nunca la IP del pedido ni emailed.error (forClient). El índice uorder:<sha256(correo)[:32]>:<nº>
 
 Secciones: `[ORDERLIST]`
 
-- `parse` (l. 10) — Pedido de KV (texto JSON) → objeto, o null si falta o está dañado.
-- `forClient` (l. 12) — Versión de un pedido para un CLIENTE: sin la IP del emisor ni el texto de error del aviso por correo (eso es solo para managers).
-- `listKeys` (l. 18) — Todas las claves de KV con ese prefijo (cada página es una operación; para si se agotan las operaciones) → { keys, complete }.
-- `readOrders` (l. 29) — Lee los pedidos de las claves dadas (las más recientes primero) hasta `want` pedidos o hasta agotar las operaciones → { done } con false si quedaron claves sin leer.
-- `listOrders` (l. 40) — Pedidos visibles para `who` (manager: los más recientes de todos; cliente: los suyos, sin IP ni error de correo) → { orders (más recientes primero), truncated }. `now` en ms (para pruebas).
-- `scan` (l. 50) — Recorre KV según el rol llenando `out` con los pedidos leídos (los más recientes primero) → true si se cortó antes de agotar lo que había.
+- `parse` (l. 11) — Pedido de KV (texto JSON) → objeto, o null si falta o está dañado.
+- `forClient` (l. 13) — Versión de un pedido para un CLIENTE: sin la IP del emisor ni el texto de error del aviso por correo (eso es solo para managers).
+- `listKeys` (l. 19) — Todas las claves de KV con ese prefijo (cada página es una operación; para si se agotan las operaciones) → { keys, complete }.
+- `readOrders` (l. 30) — Lee los pedidos de las claves dadas (las más recientes primero) hasta `want` pedidos o hasta agotar las operaciones → { done } con false si quedaron claves sin leer.
+- `listOrders` (l. 41) — Pedidos visibles para `who` (los más recientes de todos; el rol client, sin IP ni error de correo) → { orders (más recientes primero), truncated }. `now` en ms (para pruebas).
+- `scan` (l. 51) — Recorre KV llenando `out` con los pedidos leídos (los más recientes primero) → true si se cortó antes de agotar lo que había.
 
 ### `orders.js`
 
@@ -1766,18 +1865,18 @@ Secciones: `[ORDERLIST]`
 
 Secciones: `[ORDERS]`
 
-- `ymd` (l. 21) — Fecha en UTC como AAAAMMDD, para el número de pedido y su contador diario.
-- `intVar` (l. 23) — Entero de una variable de entorno (texto de cifras); si falta, no es un entero o es menor que `min`, vale `def`.
-- `copyMode` (l. 25) — Modo de la copia al cliente: «capped» (por defecto, con topes) u «off» (nunca); cualquier otro valor falla cerrado y cuenta como «off».
-- `randomSuffix` (l. 27) — 3 caracteres aleatorios base36 en mayúsculas para cerrar el número de pedido; `rand(n)` devuelve n enteros sin signo (se puede inyectar en las pruebas).
-- `baseNumber` (l. 29) — Parte «<prefijo>-AAAAMMDD-NNNN» del número (TV = pedidos, CT = mensajes de contacto): contador diario en KV de «mejor esfuerzo» (no es atómico; si KV lo rechaza, un número de respaldo por segundos del día: el pedido nunca se pierde por esto).
-- `nextNumber` (l. 36) — Siguiente número de pedido completo (TV-AAAAMMDD-NNNN-XXX).
-- `uorderPrefix` (l. 38) — Prefijo de las claves del índice de pedidos de un cliente: uorder:<32 primeros hex del SHA-256 de su correo en minúsculas>: (nunca el correo en la clave).
-- `sendCopy` (l. 44) — Decide y, si procede, envía la copia al cliente → motivo: 'sent' | 'failed' | 'not_requested' (el visitante mandó copy:false) | 'off' (ORDER_COPY no es «capped») | 'skipped' (correo sin configurar) |
-- `handleOrder` (l. 56) — POST /api/order: límites (por visitante y global), validación, valoración en servidor con los precios vigentes, guardado en KV, aviso al equipo y copia al cliente.
-- `sleep` (l. 91) — Espera `ms` milisegundos (0 = no espera).
-- `handleContact` (l. 97) — POST /api/contact: límite por visitante y anti-spam como siempre (5 / 10 min por ipKey, Turnstile); luego construye el registro, LO GUARDA (msg:…, 400 días), intenta el correo al equipo, anota el resultado
-- `notSaved` (l. 100) — 500 «No se pudo guardar el mensaje» (el detalle va al registro del servidor, sin datos del visitante).
+- `ymd` (l. 23) — Fecha en UTC como AAAAMMDD, para el número de pedido y su contador diario.
+- `intVar` (l. 25) — Entero de una variable de entorno (texto de cifras); si falta, no es un entero o es menor que `min`, vale `def`.
+- `copyMode` (l. 27) — Modo de la copia al cliente: «capped» (por defecto, con topes) u «off» (nunca); cualquier otro valor falla cerrado y cuenta como «off».
+- `randomSuffix` (l. 29) — 3 caracteres aleatorios base36 en mayúsculas para cerrar el número de pedido; `rand(n)` devuelve n enteros sin signo (se puede inyectar en las pruebas).
+- `baseNumber` (l. 31) — Parte «<prefijo>-AAAAMMDD-NNNN» del número (TV = pedidos, CT = mensajes de contacto): contador diario en KV de «mejor esfuerzo» (no es atómico; si KV lo rechaza, un número de respaldo por segundos del día: el pedido nunca se pierde por esto).
+- `nextNumber` (l. 38) — Siguiente número de pedido completo (TV-AAAAMMDD-NNNN-XXX).
+- `uorderPrefix` (l. 40) — Prefijo de las claves del índice de pedidos de un cliente: uorder:<32 primeros hex del SHA-256 de su correo en minúsculas>: (nunca el correo en la clave).
+- `sendCopy` (l. 46) — Decide y, si procede, envía la copia al cliente → motivo: 'sent' | 'failed' | 'not_requested' (el visitante mandó copy:false) | 'off' (ORDER_COPY no es «capped») | 'skipped' (correo sin configurar) |
+- `handleOrder` (l. 58) — POST /api/order: límites (por visitante y global), validación, valoración en servidor con los precios vigentes, guardado en KV, aviso al equipo y copia al cliente.
+- `sleep` (l. 93) — Espera `ms` milisegundos (0 = no espera).
+- `handleContact` (l. 99) — POST /api/contact: límite por visitante y anti-spam como siempre (5 / 10 min por ipKey, Turnstile); luego construye el registro, LO GUARDA (msg:…, 400 días), intenta el correo al equipo, anota el resultado
+- `notSaved` (l. 102) — 500 «No se pudo guardar el mensaje» (el detalle va al registro del servidor, sin datos del visitante).
 
 ### `passwords.js`
 
@@ -1820,6 +1919,28 @@ Secciones: `[PRICES]`
 Secciones: `[PROPOSALS]`
 
 - `proposalEntry` (l. 19) — Valida el cuerpo de POST /api/proposals/state para el estado `ok` o `no` → { entry } con los textos ya normalizados (sin controles ni invisibles) o { error, code?, field? }. Los campos
+
+### `quotes.js`
+
+[QUOTES] Presupuestos recibidos (docs/PRESUPUESTOS-RECIBIDOS.md): ver, editar y reenviar por correo un pedido ya guardado. Las pueden usar `manager` y `client` (el PROPIETARIO de la web); el token maestro cuenta como manager. GET  /api/orders/:número        → 200 { ok, order } · 404 { ok:false, error:'No existe ese presupuesto' } (también si el número no tiene la forma TV-AAAAMMDD-NNNN[-XXX]: el texto de la URL nunca llega a KV) PUT  /api/orders/:número        → (cuerpo ≤ 100 KB; más → 413) edita solicitante, líneas (precio manual opcional) y nota; protegido por `rev`: 409 { code:'conflict', order } si otra persona lo cambió. Guarda `original` una vez, `rev`, `edited` e `history` (≤ 50).
+
+Secciones: `[QUOTES]`
+
+- `notFound` (l. 25) — 404 con el texto de siempre (número con forma no válida o presupuesto inexistente).
+- `badRequest` (l. 27) — 400 con el error de validación { ok:false, error, code?, field? } (los dos últimos solo en errores de texto).
+- `readCapped` (l. 29) — Lee el cuerpo JSON con su tope → { body } (null si está vacío o roto: quien valida lo rechaza con 400) o { res } con el 413 si supera `max` bytes.
+- `view` (l. 34) — El pedido tal como lo ve `who`: el manager (y el token maestro) lo ve entero; el propietario, sin la IP ni el texto de error del correo.
+- `author` (l. 36) — Quién figura como autor de un cambio: el correo de la sesión, o «maestro» si es el token maestro.
+- `revOf` (l. 38) — Revisión guardada de un pedido: `rev` si es un entero ≥ 1; si falta (nunca editado), 0.
+- `pushHistory` (l. 40) — Lista `history` con una entrada más, limitada a las MAX_HISTORY últimas.
+- `readRecord` (l. 43) — Pedido de KV por su número → objeto, o null si el número no tiene la forma válida, no existe o está dañado. Nunca toca KV con un número que no cumpla ORDER_NUMBER.
+- `saveRecord` (l. 49) — Guarda el pedido con el plazo de siempre (400 días desde ahora).
+- `handleGet` (l. 52) — GET /api/orders/:número → 200 { ok, order } (según el rol) o 404.
+- `priceLines` (l. 61) — Líneas nuevas del presupuesto editado → { lines, total, unpriced, revalued }. Sin `price`, una línea que ya existía con la misma referencia y la misma cantidad conserva su unit/total/manual tal cual;
+- `handleEdit` (l. 78) — PUT /api/orders/:número → 200 { ok, order } con la edición guardada; 400 si el cuerpo no es válido; 404; 409 { code:'conflict', order } si `rev` no es la guardada.
+- `sendAllowed` (l. 102) — Topes del reenvío, que se reservan ANTES de enviar y no se devuelven si el envío falla → true si se puede enviar. 20 por hora y persona (qsend) y ORDER_SEND_DAILY_MAX al día en total
+- `handleSend` (l. 112) — POST /api/orders/:número/send → 200 { ok, sent, reason:'sent'|'failed'|'skipped', order, error? } (error solo para managers); 400 si el cuerpo no es válido; 404; 409 { code:'mail_off' } sin correo configurado
+- `quoteRoute` (l. 136) — Atiende GET /api/orders/:número · PUT /api/orders/:número · POST /api/orders/:número/send para `who` (ya autenticado como manager o propietario) → Response, o null si la ruta no es de este módulo.
 
 ### `ratelimit.js`
 
@@ -1905,7 +2026,8 @@ Secciones: `[UTIL]` · `[IPKEY]` · `[BODY]`
 - `ipKey` (l. 68) — Clave de límite por visitante: IPv4 tal cual; IPv6 → su /64 en formato canónico «xxxx:xxxx:xxxx:xxxx::/64» (quien controla una dirección controla todo su /64: sin agrupar,
 - `jsonDepthOk` (l. 78) — True si el JSON `text` no anida más de `max` niveles de [] o {} (recorrido lineal; las cadenas largas se saltan con indexOf, sin mirarlas carácter a carácter).
 - `readBody` (l. 96) — Lee el cuerpo de la petición contando los bytes que llegan de verdad (no basta Content-Length: con transferencia por trozos no existe); más de maxBytes → null.
-- `readJson` (l. 112) — Cuerpo JSON de la petición, o null si supera maxBytes (contados de verdad), anida más de 32 niveles o no es JSON válido.
+- `jsonOf` (l. 112) — Valor JSON de unos bytes, o null si están vacíos, anidan más de 32 niveles o no son JSON válido.
+- `readJson` (l. 119) — Cuerpo JSON de la petición, o null si supera maxBytes (contados de verdad), anida más de 32 niveles o no es JSON válido.
 
 ### `validate.js`
 
@@ -1913,17 +2035,22 @@ Secciones: `[UTIL]` · `[IPKEY]` · `[BODY]`
 
 Secciones: `[VALIDATE]`
 
-- `oneLine` (l. 16) — Texto de UNA línea: sin \r \n \t ni otros caracteres de control (se sustituyen por un espacio), espacios colapsados, recortado y limitado a max caracteres.
-- `multiLine` (l. 18) — Texto con saltos de línea (notas, mensajes): conserva \n y el tabulador, convierte \r\n y \r en \n y quita el resto de controles; recortado y limitado a max caracteres.
-- `isEmail` (l. 20) — True si `s` es un correo válido y estricto (≤ 254 caracteres, parte local ≤ 64).
-- `optText` (l. 22) — True si el valor es ausente (undefined o null) o una cadena.
-- `isObj` (l. 24) — True si v es un objeto «de verdad» (no null ni lista).
-- `parsePdf` (l. 30) — Valida el PDF que manda el navegador → { b64 } normalizado (sin saltos de línea) o { error }. Base64 estricto (^[A-Za-z0-9+/]+={0,2}$ tras quitar los saltos de línea, con longitud múltiplo de 4),
-- `minFillMs` (l. 42) — Milisegundos mínimos entre cargar la página y enviar el formulario (variable FORM_MIN_FILL_MS; 1200 si falta o no es un número; 0 = no se exige `_e`).
-- `fillTimeError` (l. 49) — Error de `_e`: null si trae un entero ≥ el mínimo (o el mínimo es 0); si no, { error, code:'too_fast' }: un bot que postea sin cargar la página.
-- `textFields` (l. 57) — Revisa los campos de texto (`spec`: nombre → multilínea sí/no) de `src` con shared/plain-text.mjs y los límites de `form` → { out } con los textos NORMALIZADOS o { error, code, field }.
-- `parseOrder` (l. 71) — Valida y normaliza el pedido del navegador (cliente, líneas pedibles de items, idioma, PDF) → { order } o { error, code?, field? }. `minFillMs` = tiempo mínimo de relleno (0 = no se exige; quien llama pasa minFillMs(env)).
-- `parseContact` (l. 100) — Valida y normaliza el formulario de contacto (honeypot, tiempo de relleno, nombre, correo, mensaje, privacidad) → { contact } o { error, code?, field? }.
+- `oneLine` (l. 18) — Texto de UNA línea: sin \r \n \t ni otros caracteres de control (se sustituyen por un espacio), espacios colapsados, recortado y limitado a max caracteres.
+- `multiLine` (l. 20) — Texto con saltos de línea (notas, mensajes): conserva \n y el tabulador, convierte \r\n y \r en \n y quita el resto de controles; recortado y limitado a max caracteres.
+- `isEmail` (l. 22) — True si `s` es un correo válido y estricto (≤ 254 caracteres, parte local ≤ 64).
+- `optText` (l. 24) — True si el valor es ausente (undefined o null) o una cadena.
+- `isObj` (l. 26) — True si v es un objeto «de verdad» (no null ni lista).
+- `parsePdf` (l. 32) — Valida el PDF que manda el navegador → { b64 } normalizado (sin saltos de línea) o { error }. Base64 estricto (^[A-Za-z0-9+/]+={0,2}$ tras quitar los saltos de línea, con longitud múltiplo de 4),
+- `minFillMs` (l. 44) — Milisegundos mínimos entre cargar la página y enviar el formulario (variable FORM_MIN_FILL_MS; 1200 si falta o no es un número; 0 = no se exige `_e`).
+- `fillTimeError` (l. 51) — Error de `_e`: null si trae un entero ≥ el mínimo (o el mínimo es 0); si no, { error, code:'too_fast' }: un bot que postea sin cargar la página.
+- `textFields` (l. 60) — Revisa los campos de texto (`spec`: nombre → multilínea sí/no) de `src` con shared/plain-text.mjs y los límites de `form` → { out } con los textos NORMALIZADOS o { error, code, field }.
+- `parseOrder` (l. 74) — Valida y normaliza el pedido del navegador (cliente, líneas pedibles de items, idioma, PDF) → { order } o { error, code?, field? }. `minFillMs` = tiempo mínimo de relleno (0 = no se exige; quien llama pasa minFillMs(env)).
+- `parseEditCustomer` (l. 103) — Cliente de un presupuesto EDITADO: las 5 claves deben ser cadenas; texto plano con los límites de `order`, nombre ≥ 2 y correo válido en minúsculas (sin privacidad: ya hay sesión) → { customer } o { error, code?, field? }.
+- `validPrice` (l. 112) — True si `x` es un precio unitario manual válido: número finito entre 0 y 10 000 000 con hasta 4 decimales.
+- `parseEditLines` (l. 114) — Líneas de un presupuesto EDITADO (1..200, referencias del catálogo `items` y SIN repetir, cantidad entera 1..1 000 000) → { lines:[{ref, qty, price?}] } o { error }. `price` solo está si la línea lo traía (número = precio manual; null = volver a la tarifa).
+- `parseEdit` (l. 139) — Valida la EDICIÓN de un presupuesto (cuerpo del PUT /api/orders/:número) → { edit:{ rev, customer?, lines, quoteNote? } } o { error, code?, field? }. `rev` (entero ≥ 0) es obligatorio; `customer` y `quoteNote`
+- `parseSend` (l. 157) — Valida el REENVÍO de un presupuesto (cuerpo del POST /api/orders/:número/send) → { send:{ to, message, pdf, copyToMe } } o { error, code?, field? }. `to`: 1 a 3 correos válidos, en minúsculas y sin repetir (se puede
+- `parseContact` (l. 175) — Valida y normaliza el formulario de contacto (honeypot, tiempo de relleno, nombre, correo, mensaje, privacidad) → { contact } o { error, code?, field? }.
 
 ## `workers/api/test/`
 
@@ -1963,6 +2090,15 @@ Secciones: `[AUTH]` · `[VALIDATE]` · `[PRICES]` · `[SHEETS]` · `[ORDERS]` ·
 ### `blog.test.js`
 
 El blog del panel (entradas, imágenes, páginas públicas) vive en el servidor PHP del hosting (backend-php/api): el Worker de Cloudflare no lo incluye y lo dice con claridad, sin esconder la ruta.
+
+### `google.test.js`
+
+[PRUEBAS-GOOGLE] Ajustes de Google del panel (src/google.js): validación de IDs y etiquetas (mismas reglas que el servidor PHP y que site/lib/google.mjs), lectura pública que solo enseña IDs y etiquetas completas de las conversiones activadas, y las rutas GET /api/google (público), GET y PUT /api/settings/google (solo managers). Sin red: KV en memoria.
+
+Secciones: `[PRUEBAS-GOOGLE]`
+
+- `body` (l. 10) — Cuerpo válido de ejemplo del PUT (se puede sobrescribir cualquier parte).
+- `pub` (l. 12) — La vista pública que ve un visitante.
 
 ### `helpers.js`
 
@@ -2024,6 +2160,24 @@ Pruebas de las propuestas EDITABLES del panel (src/proposals.js y POST/GET /api/
 - `post` (l. 14) — POST /api/proposals/state con ese cuerpo y token (sin token = sin sesión) → { status, body }.
 - `get` (l. 16) — GET /api/proposals/state con ese token → { status, body }.
 
+### `quotes.test.js`
+
+[PRUEBAS-PRESUPUESTOS] Presupuestos recibidos (docs/PRESUPUESTOS-RECIBIDOS.md, sección 5): el rol client (propietario) ve todos los pedidos sin IP; GET /api/orders/:número; PUT (editar con rev/409, precios manuales, original, history ≤ 50); POST send (reenvío con PDF, 1 a 3 destinatarios, topes, mail_off, historial y lastSent) y el correo quoteMail. Sin red: KV en memoria y proveedor de correo simulado.
+
+Secciones: `[PRUEBAS-PRESUPUESTOS]`
+
+- `setup` (l. 15) — Entorno con precios de ejemplo, un propietario (client) y un manager ya con sesión.
+- `place` (l. 20) — Hace un pedido real por la API pública (el equipo y la copia salen con `box`) → su número. `over` sustituye campos del pedido de ejemplo.
+- `stored` (l. 25) — Registro guardado en KV (sin pasar por la API).
+- `q` (l. 27) — Llamada autenticada: GET/PUT/POST a /api/orders/<resto>.
+- `edit` (l. 29) — Cuerpo mínimo válido del PUT con las líneas de ejemplo (REF×2 y REF2×3) y la revisión indicada.
+- `send` (l. 31) — Cuerpo válido del POST send.
+- `setPrices` (l. 33) — Cambia la tarifa vigente (precios de REF y REF2) para comprobar qué líneas se revaloran.
+- `cust` (l. 140) — Solicitante válido de ejemplo con los campos que se indiquen cambiados.
+- `go` (l. 188) — POST send como `who` con ese cuerpo; comprueba el 200 y devuelve el cuerpo del último correo enviado.
+- `go` (l. 242) — POST send como `who`, `ms` milisegundos después del instante base de la prueba → Response.
+- `go` (l. 253) — POST send como `who`, `ms` milisegundos después del instante base de la prueba → Response.
+
 ### `security-auth.test.js`
 
 Pruebas de los arreglos de seguridad del ACCESO: D3 (límites de login, de Bearer, claves acotadas, secretos mínimos, contraseñas nuevas, comparación de secretos, purga), D4 (sesiones ligadas al usuario, revocables y de 24 h), D6 (errores sin texto interno, tope real del cuerpo, CORS en excepciones, anidamiento) y D9 (datos de gestión solo para managers). Cada prueba reproduce el ataque del informe y comprueba que ya no funciona y que lo legítimo sigue funcionando.
@@ -2047,9 +2201,9 @@ Pruebas de los arreglos de seguridad del PEDIDO y de la CLAVE DE LÍMITE: D1 (co
 - `send` (l. 63) — Envía un pedido de ejemplo con la fecha y el correo dados desde una IP nueva.
 - `pdfDe` (l. 106) — PDF en base64 que decodificado pesa exactamente n bytes (empieza por «%PDF-»).
 - `q` (l. 157) — Valida un pedido con esas líneas contra el catálogo de pruebas.
-- `ago` (l. 225) — Fecha AAAAMMDD y marca de tiempo de hace n días respecto a `now`.
-- `put` (l. 227) — Guarda un pedido mínimo en KV con su número y fecha.
-- `quiet` (l. 285) — Ejecuta fn con console.error silenciado (los fallos provocados a propósito no ensucian la salida de las pruebas).
+- `ago` (l. 226) — Fecha AAAAMMDD y marca de tiempo de hace n días respecto a `now`.
+- `put` (l. 228) — Guarda un pedido mínimo en KV con su número y fecha.
+- `quiet` (l. 286) — Ejecuta fn con console.error silenciado (los fallos provocados a propósito no ensucian la salida de las pruebas).
 
 ### `security-sheets.test.js`
 
@@ -2460,6 +2614,21 @@ Secciones: `[DIAG]`
 - `mail` (l. 225) — Comprobaciones del correo según el controlador activo: si está listo (clave o servidor), los avisos propios de cada uno (mail() no garantiza la entrega, SMTP sin verificar el certificado…)
 - `web` (l. 260) — Comprobaciones que solo tienen sentido al mirar por web: qué servidor atiende (¿se aplica el .htaccess?), qué IP ve del visitante detrás de un proxy y si la
 
+### `GoogleSettings.php`
+
+[GOOGLE-SETTINGS] Ajustes de medición de Google (Analytics 4, Google Ads y la etiqueta de cada conversión) que el manager edita en el panel (Ajustes → Google) y que la web lee SIN recompilar. Se guardan en el almacén (clave `settings:google`, sin caducidad). Contrato único con el Worker: docs/GOOGLE.md §11 (mismas reglas que site/lib/google.mjs y site/assets/js/consent.js). GET  /api/google            PÚBLICO: { ok, google:{ ga4, ads, conv:{ quote, contact } } } — solo IDs (salen en el código de cualquier web); conv = etiqueta COMPLETA y solo si está activada y hay ID de Ads.
+
+Secciones: `[GOOGLE-SETTINGS]`
+
+- `blank` (l. 26) — Ajustes vacíos (nada que medir).
+- `load` (l. 32) — Ajustes guardados; si no hay o están dañados, los vacíos. Siempre con la forma completa y solo valores que cumplen las reglas (lo guardado a mano o por una versión vieja no se cuela).
+- `fullLabel` (l. 50) — Etiqueta COMPLETA (AW-…/etiqueta) a partir de lo guardado y del ID de Ads; '' si no se puede completar.
+- `publicView` (l. 57) — Lo que la web puede ver: IDs y etiquetas completas de las conversiones activadas (con ID de Ads).
+- `validate` (l. 72) — Valida el cuerpo del PUT y devuelve ['settings' => ajustes normalizados (sin `updated`)] o ['error' => castellano, 'field' => ga4|ads|conversions.quote|conversions.contact].
+- `handlePublic` (l. 107) — GET /google (público): lo que necesita la web, con caché corta.
+- `handleGet` (l. 113) — GET /settings/google (manager): los ajustes tal como están guardados.
+- `handlePut` (l. 119) — PUT /settings/google (manager): valida, guarda con quién y cuándo, lo anota en Actividad y devuelve los ajustes.
+
 ### `Http.php`
 
 [HTTP] Cliente HTTP saliente (cURL) para Resend, Anthropic y Google (sigue hasta 5 redirecciones de los GET, p. ej. la descarga de Drive). En las pruebas se sustituye por una función (Http::$mock) para no salir a Internet. Defensas (la URL sale de la configuración, pero un salto de la cadena de redirecciones no es de fiar):
@@ -2478,35 +2647,36 @@ Secciones: `[HTTP]`
 
 Secciones: `[MAIL]` · `[CONTROLADORES]` · `[SECRETOS]` · `[CONTACTO Y PRUEBA]`
 
-- `driverUnknown` (l. 55) — ¿mail.driver tiene un valor que no es ninguno de los conocidos? (vacío o ausente = none, que no es un error).
-- `driver` (l. 62) — Controlador activo según mail.driver: resend, brevo, smtp, mail, file o none; ausente o un valor desconocido = none (falla cerrado).
-- `sender` (l. 74) — Remitente de order_from («Nombre <correo@dominio>» o solo el correo; si falta, Torivac Web <pedidos@torivac.com>) → ['ok'=>true, 'name', 'email', 'from' (normalizado, para las APIs),
-- `smtpConfig` (l. 88) — Ajustes del servidor SMTP (mail.smtp): host, port, secure, user, pass, helo, timeout, insecure_tls, tls_name.
-- `blocker` (l. 95) — Por qué NO se puede enviar ahora → ['reason' => 'off'|'skipped', 'error' => …], o null si el controlador está listo (credenciales y remitente válidos).
-- `enabled` (l. 111) — ¿Hay un controlador de correo listo para enviar? (no es none y tiene sus credenciales y un remitente válido)
-- `problems` (l. 114) — Ajustes que impiden o estorban el envío (solo NOMBRES, nunca valores): mail.driver desconocido, la clave o el servidor del controlador activo, order_from y order_to.
-- `status` (l. 135) — Estado del correo para el panel, /health y el diagnóstico → ['driver', 'configured', 'problems' (nombres de ajustes), 'last' (último intento o null)]; nunca lleva valores secretos.
-- `last` (l. 143) — Último intento de envío guardado en mail:last → ['at', 'kind', 'ok', 'reason', 'error'?] o null si no hay ninguno o está dañado.
-- `record` (l. 153) — Anota el resultado de un envío en mail:last (sobrescribe; un fallo al anotar nunca tapa el resultado real del envío). `$kind`: order · contact · test.
-- `secrets` (l. 164) — Valores secretos de la configuración (de claves cuyo nombre contiene key, secret, token, pass, account, auth o user), de 6 o más caracteres.
-- `scrub` (l. 187) — Texto de UNA línea, sin secretos y de como mucho `$max` caracteres: tacha los valores exactos de los secretos de la configuración y las formas típicas de clave
-- `send` (l. 209) — Envía un correo por el controlador activo → ['ok', 'id'?, 'reason', 'error'?, 'driver', 'skipped'?, 'status'?, 'note'?] y anota el intento en mail:last (`$kind`: 'order' · 'contact' · 'test').
-- `deliver` (l. 221) — Prepara y envía por `$driver`, sin anotar nada. Sin controlador, credenciales, remitente o destinatarios válidos no llama a ningún proveedor.
-- `viaResend` (l. 242) — Resend: POST /emails con la clave en Authorization.
-- `viaBrevo` (l. 253) — Brevo: POST /v3/smtp/email con la clave en api-key (sender, to, cc, replyTo, subject, htmlContent, textContent y attachment[{name, content}]).
-- `callProvider` (l. 264) — POST JSON a la API de un proveedor y traduce la respuesta → ['ok'=>true,'reason'=>'sent','id'?] o ['ok'=>false,'reason'=>'failed','status'?,'error']. Cualquier 2xx cuenta como aceptado.
-- `providerError` (l. 276) — Texto corto y sin secretos del fallo de un proveedor: «Brevo 401: mensaje» (mensaje ≤ 120 caracteres) o, si no dio mensaje, «Brevo respondió 401».
-- `viaSmtp` (l. 288) — SMTP: compone el mensaje completo y lo entrega con Smtp (destinatarios = to + cc). Un destinatario rechazado por el servidor no impide el envío a los demás, pero se avisa.
-- `viaMail` (l. 299) — mail() de PHP: true = lo aceptó el servicio de correo LOCAL del hosting (no que llegue); false = lo rechazó. Pasa el remitente al sobre con -f cuando es seguro.
-- `viaFile` (l. 309) — file: guarda el correo como JSON en la carpeta outbox de los datos (pruebas y entornos sin correo: no sale por correo).
-- `encodeHeader` (l. 320) — Codifica un texto con caracteres no ASCII como palabras MIME UTF-8 en base64 (varias, de como mucho ~45 bytes, sin partir un carácter) unidas por un salto de línea plegado.
-- `message` (l. 333) — Mensaje completo para SMTP: Date, Message-ID, To, Subject y las cabeceras MIME de mime(), una línea en blanco y el cuerpo.
-- `mime` (l. 342) — cabeceras y cuerpo MIME (alternativa texto/HTML + adjuntos) para mail() y SMTP
-- `contactMail` (l. 373) — Aviso de un mensaje de contacto PARA EL EQUIPO → ['subject', 'html', 'text']. Asunto «Contacto web · <nombre>» en una línea; nombre, correo, idioma, id del mensaje y texto del visitante
-- `testMail` (l. 386) — Correo de PRUEBA del panel → ['subject', 'html', 'text']: asunto «Torivac · prueba de correo», texto fijo y, como datos, el controlador y la hora (ISO).
-- `money` (l. 393) — importe con el formato del idioma del cliente (es 1.234,56 €, en €1,234.56, fr 1 234,56 €, de 1.234,56 €)
-- `orderMail` (l. 408) — Correo del pedido PARA EL EQUIPO. `$d['pdf']` (bool) dice si lleva el PDF del cliente: entonces añade la línea fija de que lo generó el navegador y el importe que vale es el del servidor.
-- `copyMail` (l. 437) — Copia del presupuesto PARA EL CLIENTE: asunto fijo «Torivac · copia de tu presupuesto <número>», sin adjunto, y un cuerpo hecho SOLO con texto fijo en el idioma del pedido
+- `driverUnknown` (l. 68) — ¿mail.driver tiene un valor que no es ninguno de los conocidos? (vacío o ausente = none, que no es un error).
+- `driver` (l. 75) — Controlador activo según mail.driver: resend, brevo, smtp, mail, file o none; ausente o un valor desconocido = none (falla cerrado).
+- `sender` (l. 87) — Remitente de order_from («Nombre <correo@dominio>» o solo el correo; si falta, Torivac Web <pedidos@torivac.com>) → ['ok'=>true, 'name', 'email', 'from' (normalizado, para las APIs),
+- `smtpConfig` (l. 101) — Ajustes del servidor SMTP (mail.smtp): host, port, secure, user, pass, helo, timeout, insecure_tls, tls_name.
+- `blocker` (l. 108) — Por qué NO se puede enviar ahora → ['reason' => 'off'|'skipped', 'error' => …], o null si el controlador está listo (credenciales y remitente válidos).
+- `enabled` (l. 124) — ¿Hay un controlador de correo listo para enviar? (no es none y tiene sus credenciales y un remitente válido)
+- `problems` (l. 127) — Ajustes que impiden o estorban el envío (solo NOMBRES, nunca valores): mail.driver desconocido, la clave o el servidor del controlador activo, order_from y order_to.
+- `status` (l. 148) — Estado del correo para el panel, /health y el diagnóstico → ['driver', 'configured', 'problems' (nombres de ajustes), 'last' (último intento o null)]; nunca lleva valores secretos.
+- `last` (l. 156) — Último intento de envío guardado en mail:last → ['at', 'kind', 'ok', 'reason', 'error'?] o null si no hay ninguno o está dañado.
+- `record` (l. 166) — Anota el resultado de un envío en mail:last (sobrescribe; un fallo al anotar nunca tapa el resultado real del envío). `$kind`: order · contact · test.
+- `secrets` (l. 177) — Valores secretos de la configuración (de claves cuyo nombre contiene key, secret, token, pass, account, auth o user), de 6 o más caracteres.
+- `scrub` (l. 200) — Texto de UNA línea, sin secretos y de como mucho `$max` caracteres: tacha los valores exactos de los secretos de la configuración y las formas típicas de clave
+- `send` (l. 222) — Envía un correo por el controlador activo → ['ok', 'id'?, 'reason', 'error'?, 'driver', 'skipped'?, 'status'?, 'note'?] y anota el intento en mail:last (`$kind`: 'order' · 'contact' · 'test').
+- `deliver` (l. 234) — Prepara y envía por `$driver`, sin anotar nada. Sin controlador, credenciales, remitente o destinatarios válidos no llama a ningún proveedor.
+- `viaResend` (l. 255) — Resend: POST /emails con la clave en Authorization.
+- `viaBrevo` (l. 266) — Brevo: POST /v3/smtp/email con la clave en api-key (sender, to, cc, replyTo, subject, htmlContent, textContent y attachment[{name, content}]).
+- `callProvider` (l. 277) — POST JSON a la API de un proveedor y traduce la respuesta → ['ok'=>true,'reason'=>'sent','id'?] o ['ok'=>false,'reason'=>'failed','status'?,'error']. Cualquier 2xx cuenta como aceptado.
+- `providerError` (l. 289) — Texto corto y sin secretos del fallo de un proveedor: «Brevo 401: mensaje» (mensaje ≤ 120 caracteres) o, si no dio mensaje, «Brevo respondió 401».
+- `viaSmtp` (l. 301) — SMTP: compone el mensaje completo y lo entrega con Smtp (destinatarios = to + cc). Un destinatario rechazado por el servidor no impide el envío a los demás, pero se avisa.
+- `viaMail` (l. 312) — mail() de PHP: true = lo aceptó el servicio de correo LOCAL del hosting (no que llegue); false = lo rechazó. Pasa el remitente al sobre con -f cuando es seguro.
+- `viaFile` (l. 322) — file: guarda el correo como JSON en la carpeta outbox de los datos (pruebas y entornos sin correo: no sale por correo).
+- `encodeHeader` (l. 333) — Codifica un texto con caracteres no ASCII como palabras MIME UTF-8 en base64 (varias, de como mucho ~45 bytes, sin partir un carácter) unidas por un salto de línea plegado.
+- `message` (l. 346) — Mensaje completo para SMTP: Date, Message-ID, To, Subject y las cabeceras MIME de mime(), una línea en blanco y el cuerpo.
+- `mime` (l. 355) — cabeceras y cuerpo MIME (alternativa texto/HTML + adjuntos) para mail() y SMTP
+- `contactMail` (l. 386) — Aviso de un mensaje de contacto PARA EL EQUIPO → ['subject', 'html', 'text']. Asunto «Contacto web · <nombre>» en una línea; nombre, correo, idioma, id del mensaje y texto del visitante
+- `testMail` (l. 399) — Correo de PRUEBA del panel → ['subject', 'html', 'text']: asunto «Torivac · prueba de correo», texto fijo y, como datos, el controlador y la hora (ISO).
+- `money` (l. 406) — importe con el formato del idioma del cliente (es 1.234,56 €, en €1,234.56, fr 1 234,56 €, de 1.234,56 €)
+- `orderMail` (l. 421) — Correo del pedido PARA EL EQUIPO. `$d['pdf']` (bool) dice si lleva el PDF del cliente: entonces añade la línea fija de que lo generó el navegador y el importe que vale es el del servidor.
+- `copyMail` (l. 450) — Copia del presupuesto PARA EL CLIENTE: asunto fijo «Torivac · copia de tu presupuesto <número>», sin adjunto, y un cuerpo hecho SOLO con texto fijo en el idioma del pedido
+- `quoteMail` (l. 486) — Correo de un presupuesto REENVIADO desde el panel (POST /orders/:número/send) → ['subject', 'html', 'text']. Asunto y texto fijos del servidor en el idioma del pedido (es, en, fr, de);
 
 ### `Messages.php`
 
@@ -2536,18 +2706,19 @@ Secciones: `[ORDERS]` · `[COPIA-AL-CLIENTE]` · `[PDF]` · `[TEXTO-PLANO]` · `
 - `minFillMs` (l. 71) — Milisegundos mínimos entre cargar la página y enviar (config form_min_fill_ms; 1200 si falta o no es un número; 0 = no se exige `_e`).
 - `fillTimeError` (l. 78) — ¿Trae el cuerpo el campo `_e` (ms que tardó la persona) con un entero ≥ el mínimo? Si no, es un bot que no cargó la página: error con code too_fast. Con el mínimo en 0 no se exige.
 - `badRequest` (l. 88) — Respuesta 400 de una validación fallida: el error en castellano y, si los hay, `code` y `field`.
-- `parseOrder` (l. 94) — @return array{order?:array,error?:string,code?:string,field?:string}
-- `parseContact` (l. 144) — @return array{contact?:array,error?:string,code?:string,field?:string}
-- `verifyTurnstile` (l. 170) — Turnstile opcional: sin secreto se omite; con secreto, falla cerrado
-- `team` (l. 183) — destinatarios del equipo: config order_to (array o texto separado por comas)
-- `copyMode` (l. 191) — Modo de la copia al cliente: 'capped' (con topes) o 'off'. Solo el texto «capped» (sin importar mayúsculas ni espacios alrededor) activa la copia; si no está puesto, es capped; CUALQUIER otro valor (también uno que no sea un texto) es off.
-- `copyModeValid` (l. 198) — ¿Tiene order_copy un valor reconocido (capped u off, sin importar mayúsculas ni espacios) o no está puesto? Si no, se trata como off y el diagnóstico y /health avisan.
-- `copyDailyMax` (l. 205) — Tope de copias al cliente en total por cada 24 h (config order_copy_daily_max; 150 si falta o no es un número; 0 = ninguna).
-- `ordersPerHourMax` (l. 212) — Tope global de pedidos por hora (config orders_per_hour_max; 120 si falta o no es un número): protege la cuota del correo y el buzón del equipo.
-- `nextNumber` (l. 219) — Siguiente número de pedido TV-AAAAMMDD-NNNN (contador diario con bloqueo para que dos pedidos no repitan número).
-- `sendCopy` (l. 235) — Decide y envía la copia al cliente. Devuelve el motivo para emailed.customer_reason: 'not_requested' (el visitante mandó copy:false), 'off' (order_copy no es capped),
-- `handleOrder` (l. 250) — POST /order: valida, valora con los precios del servidor, guarda el pedido y envía el correo al equipo (con el PDF del cliente) y, si procede, la copia al cliente.
-- `handleContact` (l. 285) — POST /contact: límite por visitante y anti-spam como siempre (5 / 10 min por ipKey, honeypot, `_e`, Turnstile); luego construye el registro, LO GUARDA (400 días), intenta el correo al equipo,
+- `cleanCustomer` (l. 99) — Limpia y valida los datos del solicitante (name, company, email, phone, notes: todas CADENAS) con las reglas de siempre: texto plano con el límite de cada campo (PlainText), nombre de al menos
+- `parseOrder` (l. 115) — @return array{order?:array,error?:string,code?:string,field?:string}
+- `parseContact` (l. 158) — @return array{contact?:array,error?:string,code?:string,field?:string}
+- `verifyTurnstile` (l. 184) — Turnstile opcional: sin secreto se omite; con secreto, falla cerrado
+- `team` (l. 197) — destinatarios del equipo: config order_to (array o texto separado por comas)
+- `copyMode` (l. 205) — Modo de la copia al cliente: 'capped' (con topes) o 'off'. Solo el texto «capped» (sin importar mayúsculas ni espacios alrededor) activa la copia; si no está puesto, es capped; CUALQUIER otro valor (también uno que no sea un texto) es off.
+- `copyModeValid` (l. 212) — ¿Tiene order_copy un valor reconocido (capped u off, sin importar mayúsculas ni espacios) o no está puesto? Si no, se trata como off y el diagnóstico y /health avisan.
+- `copyDailyMax` (l. 219) — Tope de copias al cliente en total por cada 24 h (config order_copy_daily_max; 150 si falta o no es un número; 0 = ninguna).
+- `ordersPerHourMax` (l. 226) — Tope global de pedidos por hora (config orders_per_hour_max; 120 si falta o no es un número): protege la cuota del correo y el buzón del equipo.
+- `nextNumber` (l. 233) — Siguiente número de pedido TV-AAAAMMDD-NNNN (contador diario con bloqueo para que dos pedidos no repitan número).
+- `sendCopy` (l. 249) — Decide y envía la copia al cliente. Devuelve el motivo para emailed.customer_reason: 'not_requested' (el visitante mandó copy:false), 'off' (order_copy no es capped),
+- `handleOrder` (l. 264) — POST /order: valida, valora con los precios del servidor, guarda el pedido y envía el correo al equipo (con el PDF del cliente) y, si procede, la copia al cliente.
+- `handleContact` (l. 299) — POST /contact: límite por visitante y anti-spam como siempre (5 / 10 min por ipKey, honeypot, `_e`, Turnstile); luego construye el registro, LO GUARDA (400 días), intenta el correo al equipo,
 
 ### `PlainText.php`
 
@@ -2615,6 +2786,30 @@ Secciones: `[PROPOSALS]`
 
 - `entry` (l. 27) — Valida el cuerpo de POST /api/proposals/state para el estado `ok` o `no` y devuelve la entrada que se guarda, con los textos ya normalizados (sin controles ni invisibles). Los campos
 
+### `Quotes.php`
+
+[QUOTES] Presupuestos recibidos: ver, editar y reenviar por correo desde el panel (contrato único con workers/api: docs/PRESUPUESTOS-RECIBIDOS.md). Las personas con rol `client` son las PROPIETARIAS de la web (no compradores) y, igual que un manager, ven todos los presupuestos; el token maestro cuenta como manager. Todas las rutas exigen sesión (las atiende Router tras autenticar): GET  /orders/:número        → { ok, order } (un propietario, sin `ip` ni `emailed.error`) · 404 si no existe o el número no tiene la forma TV-AAAAMMDD-NNNN[-XXX]
+
+Secciones: `[QUOTES]` · `[RECORD]` · `[SEGURIDAD]` · `[VER]` · `[EDITAR]` · `[REENVIAR]`
+
+- `sendDailyMax` (l. 38) — Tope de reenvíos en total por cada 24 h (config order_send_daily_max / env ORDER_SEND_DAILY_MAX; 150 si falta o no es un número; 0 = sin tope).
+- `handle` (l. 45) — Atiende cualquier ruta que empiece por /orders/ de una persona ya autenticada: valida la forma del número (404 si no vale) y despacha a ver, editar o reenviar. `$nowMs` solo lo usan las pruebas.
+- `missing` (l. 58) — El 404 de un presupuesto que no existe.
+- `isManager` (l. 61) — ¿Es manager (o el token maestro)? Un propietario (client) no ve la IP ni el motivo técnico del fallo del correo.
+- `view` (l. 64) — El registro tal como lo ve quien llama: completo para un manager; sin `ip` ni `emailed.error` para un propietario.
+- `by` (l. 67) — Quién firma una edición o un reenvío: el correo de la persona, o «maestro» si entra con el token maestro.
+- `at` (l. 70) — Instante ISO (UTC) de la operación; `$nowMs` solo lo fijan las pruebas.
+- `mask` (l. 73) — Parte local enmascarada de un correo para el registro de Actividad: «a***@dominio.com».
+- `body` (l. 83) — Lee el cuerpo JSON (objeto) con su tope: [objeto, null] o [null, respuesta de error]. Pasado el tope → 413; vacío, mal formado o una lista → 400.
+- `whole` (l. 92) — Entero ≥ 0 de un valor JSON (un entero, o un decimal sin parte fraccionaria); null si no lo es.
+- `show` (l. 100) — GET /orders/:número → 200 { ok, order } (sin ip ni emailed.error para un propietario) o 404.
+- `parseEdit` (l. 113) — Valida el cuerpo de una edición contra el catálogo `$items`, sin tocar el almacén. Devuelve ['rev' => int, 'customer'? => limpio, 'lines' => [{ref, qty, mode: keep|tariff|manual, price?}], 'note'? => texto]
+- `priceLines` (l. 167) — Valora las líneas de una edición. `keep` (sin `price`): si la línea ya estaba con la misma referencia Y la misma cantidad se conserva tal cual (unit, total, manual); si no, tarifa vigente.
+- `edit` (l. 203) — PUT /orders/:número: edita el presupuesto (ver la cabecera y docs/PRESUPUESTOS-RECIBIDOS.md §3). Orden de los errores: 404 → 413/400 (cuerpo y texto) → 409 (rev distinta de la guardada, con el registro actual).
+- `pushHistory` (l. 239) — `history` del registro con una anotación más, quedándose con las HISTORY_MAX últimas.
+- `parseSend` (l. 252) — Valida el cuerpo de un reenvío: `to` (lista de 1..3 correos válidos; se pasan a minúsculas y se quitan los repetidos), `message` (texto plano ≤ 1500, opcional), `pdf` (obligatorio, Orders::normalizePdf)
+- `send` (l. 279) — POST /orders/:número/send: reenvía el presupuesto por correo con el PDF adjunto. Orden: 404 → 413/400 → 409 mail_off (no gasta cupo ni anota nada) → 429 (topes: 20/hora por persona y el diario; cuentan
+
 ### `Request.php`
 
 [REQUEST] Petición entrante (método, ruta tras /api, cabeceras, JSON, IP del visitante) + respuesta JSON + CORS + límite de uso. Pensado para que las pruebas puedan construir peticiones sin servidor web (Request::fake). [CLIENT-IP] La IP del visitante sale de REMOTE_ADDR; solo si quien conecta es un proxy de confianza (una red privada, la propia dirección del servidor, Cloudflare
@@ -2651,32 +2846,32 @@ Secciones: `[REQUEST]` · `[CLIENT-IP]` · `[IP-KEY]` · `[CORS]` · `[RATE-LIMI
 
 ### `Router.php`
 
-[ROUTER] Rutas del API (equivalentes a workers/api/src/index.js: la web usa el mismo contrato con el Worker o con este PHP). PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login · POST /api/auth/verify · POST /api/auth/resend (código por correo) · GET /api/backups/<archivo>?t=… (descarga firmada) USUARIO   GET /api/auth/me · POST /api/auth/logout (cierra TODAS las sesiones de esa persona) · POST /api/auth/password (cambiar la propia) · POST /api/auth/devices/forget · GET /api/orders (manager: los 300 últimos; cliente: los suyos, hasta 100)
+[ROUTER] Rutas del API (equivalentes a workers/api/src/index.js: la web usa el mismo contrato con el Worker o con este PHP). PÚBLICO   GET /api/health · GET /api/prices · GET /api/google (qué mide la web: solo IDs públicos) · POST /api/order · POST /api/contact · POST /api/auth/login · POST /api/auth/verify · POST /api/auth/resend (código por correo) · GET /api/backups/<archivo>?t=… (descarga firmada) USUARIO   GET /api/auth/me · POST /api/auth/logout (cierra TODAS las sesiones de esa persona) · POST /api/auth/password (cambiar la propia) · POST /api/auth/devices/forget · PRESUPUESTOS RECIBIDOS (manager y client = propietario, mismo contrato que workers/api: docs/PRESUPUESTOS-RECIBIDOS.md, lógica en Quotes.php):
 
 Secciones: `[ROUTER]` · `[LIMITES]` · `[ERRORES]`
 
-- `handle` (l. 48) — Atiende una petición: comprueba el origen (CORS), despacha a la ruta y convierte las excepciones en respuestas JSON con su código.
-- `mergeVary` (l. 70) — Une dos valores de la cabecera Vary sin repetir (Origin va primero): la respuesta depende del origen Y de la sesión, y una caché compartida debe saberlo.
-- `failure` (l. 82) — Convierte una excepción en la respuesta que ve quien llama: una petición o hoja mal formada (InvalidArgumentException) = 400 con su mensaje; un RuntimeException con código HTTP
-- `tooMany` (l. 93) — El 429 de siempre (inundación, Bearer, cron): mismo texto para todos, exista o no el usuario.
-- `lockWait` (l. 96) — Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba).
-- `locked` (l. 104) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
-- `authenticate` (l. 115) — Autentica la petición. Devuelve [quién|null, respuesta 429|null]. Sin Bearer no hay nada que probar. Con Bearer, un visitante (ipKey) con 30 fallos en 10 min ni siquiera llega a
-- `health` (l. 126) — GET /health: vivo, estado del correo (controlador, si está configurado y último intento SIN el texto del error) y, si algún ajuste está mal (secreto de sesión, token maestro o de cron, modo de la copia al cliente, mail.driver, order_from), lo dice con su NOMBRE (nunca el valor).
-- `prices` (l. 148) — GET /prices: el público ve la lista sin quién la cargó ni de dónde; un manager lo ve todo (y el estado de la última sincronización). Con la IP bloqueada por tokens fallidos se sirve la vista pública.
-- `login` (l. 173) — POST /auth/login: contraseña con coste igual exista o no el usuario, token ligado al sid del usuario y protección contra la fuerza bruta (ver la cabecera): 5 fallos de un visitante contra una cuenta,
-- `enter` (l. 216) — Abre la sesión: anota el acceso (y el último acceso de la persona), programa la copia de seguridad semanal si es manager y devuelve el token con el usuario.
-- `verifyCode` (l. 229) — POST /auth/verify { challenge, code, remember? }: comprueba el código que llegó por correo y, si vale, abre la sesión. Con `remember: true` deja una cookie de dispositivo (HttpOnly, firmada) para no volver a
-- `resendCode` (l. 252) — POST /auth/resend { challenge }: manda un código nuevo por correo (el anterior deja de valer); como mucho 2 reenvíos y con espera entre ellos.
-- `changePassword` (l. 263) — POST /auth/password { current, password }: cambia la contraseña PROPIA (pide la actual: 5 fallos por hora y cuenta → 429). Cierra todas las sesiones (también esta: hay que entrar de nuevo) y olvida los dispositivos
-- `cronByUrl` (l. 284) — GET /cron?token=…: sincroniza los precios si el token es el de cron_token (≥ 24 caracteres); 10 fallos / 10 min por visitante → 429; sin cron_token válido la URL está desactivada (401).
-- `forClient` (l. 299) — Un pedido tal como lo ve un cliente: sin la IP desde la que se hizo ni el motivo técnico del fallo del correo (eso es solo para managers).
-- `orders` (l. 307) — GET /orders: un manager recibe los 300 pedidos más recientes; un cliente, los suyos (los que llevan su correo) hasta 100, mirando solo los 3000 más recientes. `truncated:true` si se cortó.
-- `messages` (l. 329) — GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite.
-- `mailTest` (l. 339) — POST /mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de order_to. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
-- `userAction` (l. 359) — POST /users/:correo/unlock { clear_reinforced? } quita el bloqueo de esa cuenta (y, si se pide, su protección reforzada) · /two-step { enabled } pide o no el código por correo a esa cuenta (false = cuenta de confianza)
-- `route` (l. 380) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
-- `cron` (l. 479) — sincroniza los precios (cron diario), hace la copia de seguridad semanal si toca y limpia lo caducado, también si la hoja se rechaza (esa limpieza no depende de la hoja)
+- `handle` (l. 45) — Atiende una petición: comprueba el origen (CORS), despacha a la ruta y convierte las excepciones en respuestas JSON con su código.
+- `mergeVary` (l. 67) — Une dos valores de la cabecera Vary sin repetir (Origin va primero): la respuesta depende del origen Y de la sesión, y una caché compartida debe saberlo.
+- `failure` (l. 79) — Convierte una excepción en la respuesta que ve quien llama: una petición o hoja mal formada (InvalidArgumentException) = 400 con su mensaje; un RuntimeException con código HTTP
+- `tooMany` (l. 90) — El 429 de siempre (inundación, Bearer, cron): mismo texto para todos, exista o no el usuario.
+- `lockWait` (l. 93) — Texto del tiempo que queda de bloqueo: «una hora» si falta casi una hora entera; si no, «N minutos» (redondeado hacia arriba).
+- `locked` (l. 101) — El 429 del bloqueo por fallos de contraseña: el mismo para los tres motivos y exista o no la cuenta; dice cuánto falta (retry_after y Retry-After, en segundos).
+- `authenticate` (l. 112) — Autentica la petición. Devuelve [quién|null, respuesta 429|null]. Sin Bearer no hay nada que probar. Con Bearer, un visitante (ipKey) con 30 fallos en 10 min ni siquiera llega a
+- `health` (l. 123) — GET /health: vivo, estado del correo (controlador, si está configurado y último intento SIN el texto del error) y, si algún ajuste está mal (secreto de sesión, token maestro o de cron, modo de la copia al cliente, mail.driver, order_from), lo dice con su NOMBRE (nunca el valor).
+- `prices` (l. 145) — GET /prices: el público ve la lista sin quién la cargó ni de dónde; un manager lo ve todo (y el estado de la última sincronización). Con la IP bloqueada por tokens fallidos se sirve la vista pública.
+- `login` (l. 170) — POST /auth/login: contraseña con coste igual exista o no el usuario, token ligado al sid del usuario y protección contra la fuerza bruta (ver la cabecera): 5 fallos de un visitante contra una cuenta,
+- `enter` (l. 213) — Abre la sesión: anota el acceso (y el último acceso de la persona), programa la copia de seguridad semanal si es manager y devuelve el token con el usuario.
+- `verifyCode` (l. 226) — POST /auth/verify { challenge, code, remember? }: comprueba el código que llegó por correo y, si vale, abre la sesión. Con `remember: true` deja una cookie de dispositivo (HttpOnly, firmada) para no volver a
+- `resendCode` (l. 249) — POST /auth/resend { challenge }: manda un código nuevo por correo (el anterior deja de valer); como mucho 2 reenvíos y con espera entre ellos.
+- `changePassword` (l. 260) — POST /auth/password { current, password }: cambia la contraseña PROPIA (pide la actual: 5 fallos por hora y cuenta → 429). Cierra todas las sesiones (también esta: hay que entrar de nuevo) y olvida los dispositivos
+- `cronByUrl` (l. 281) — GET /cron?token=…: sincroniza los precios si el token es el de cron_token (≥ 24 caracteres); 10 fallos / 10 min por visitante → 429; sin cron_token válido la URL está desactivada (401).
+- `forClient` (l. 296) — Un pedido tal como lo ve un propietario (rol client): sin la IP desde la que se hizo ni el motivo técnico del fallo del correo (eso es solo para managers).
+- `orders` (l. 304) — GET /orders: los 300 presupuestos más recientes, el último primero, para un manager y también para un propietario (rol client), que los ve todos pero sin `ip` ni `emailed.error`. `truncated:true` si se cortó.
+- `messages` (l. 323) — GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite.
+- `mailTest` (l. 333) — POST /mail/test { to? }: envía «Torivac · prueba de correo» a `to` (un correo válido) o, si no se da, a los destinatarios de order_to. Responde 200 { ok, driver, to, sent, reason, error? } aunque el
+- `userAction` (l. 353) — POST /users/:correo/unlock { clear_reinforced? } quita el bloqueo de esa cuenta (y, si se pide, su protección reforzada) · /two-step { enabled } pide o no el código por correo a esa cuenta (false = cuenta de confianza)
+- `route` (l. 374) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
+- `cron` (l. 477) — sincroniza los precios (cron diario), hace la copia de seguridad semanal si toca y limpia lo caducado, también si la hoja se rechaza (esa limpieza no depende de la hoja)
 
 ### `Security.php`
 
@@ -2857,7 +3052,7 @@ Pruebas del API en PHP: equivalen a workers/api/test/api.test.js + ai.test.js (s
 - `test_contact_and_cors` (l. 229) — Formulario de contacto y reglas CORS (origen ajeno, el propio sitio y preflight).
 - `test_prices_endpoint_etag` (l. 247) — GET /prices: precios públicos con ETag (304) y `items` como objeto {} aunque esté vacío.
 - `test_manager_upload_roles_and_cron` (l. 258) — Subida de hojas (vista previa y aplicar), permisos por rol, referencia nueva por regla de familia y cron por URL con token.
-- `test_orders_visibility_and_users_api` (l. 286) — Un manager ve todos los pedidos y cada cliente solo los suyos; alta y baja de usuarios por el API.
+- `test_orders_visibility_and_users_api` (l. 286) — Un manager y un propietario (rol client) ven todos los presupuestos; alta y baja de usuarios por el API.
 - `ai_reply` (l. 309) — Servidor de IA simulado: contesta con una propuesta de cambios de precios (uso de herramienta de Anthropic).
 - `test_ai_validation_and_flow` (l. 315) — IA de precios: valida y limita lo que propone; la propuesta no escribe nada y solo se aplica lo confirmado.
 - `test_diag_checks` (l. 349) — Autodiagnóstico: una instalación a medias da errores que dicen qué arreglar, y una completa pasa sin fallos.
@@ -2934,6 +3129,19 @@ Pruebas del blog del panel (Blog.php y las rutas /api/blog/… de BlogApi.php): 
 - `test_blog_api_images_preview_and_reindex` (l. 357) — B15 · API de imágenes: subir en base64 (con o sin prefijo data:), listar, borrar; rechaza lo que no es una imagen y lo que no es base64; la vista previa y el reindex funcionan.
 - `test_blog_api_rate_limits` (l. 385) — B16 · Límites por hora: guardados y subidas se cortan con 429 sin dejar entradas a medias.
 - `test_blog_post_limit` (l. 397) — B17 · Tope de entradas: al llegar al máximo no se crean más (409) hasta borrar alguna.
+
+### `GoogleSettingsTest.php`
+
+Pruebas de los ajustes de Google del panel (GoogleSettings.php): validación de IDs y etiquetas (las mismas reglas que el Worker y que site/lib/google.mjs), lectura pública que solo enseña IDs y etiquetas completas de las conversiones activadas, y las rutas GET /google (público), GET y PUT /settings/google (solo managers, con anotación en Actividad).
+
+- `gs_body` (l. 18) — Cuerpo válido de ejemplo del PUT (se puede sobrescribir cualquier parte).
+- `gs_tokens` (l. 24) — Un manager y un cliente (propietario) con sesión → [token del manager, token del propietario].
+- `test_google_vacio_por_defecto` (l. 32) — Sin nada guardado todo está vacío y la vista pública no trae IDs.
+- `test_google_validacion_acepta` (l. 42) — La validación acepta lo bueno, completa etiquetas con el ID de Ads y toma el ID de Ads de las etiquetas completas.
+- `test_google_validacion_rechaza` (l. 57) — La validación rechaza lo mal escrito diciendo el campo.
+- `test_google_vista_publica` (l. 78) — La vista pública solo trae etiquetas completas de conversiones activadas y con ID de Ads.
+- `test_google_load_ignora_basura` (l. 91) — Lo dañado o manipulado en el almacén no se cuela: load() solo devuelve valores que cumplen las reglas.
+- `test_google_rutas_y_permisos` (l. 105) — Rutas: la lectura pública no pide sesión; ver y guardar es solo de managers; un propietario recibe 403 y sin sesión 401; guardar queda en Actividad.
 
 ### `HostingTest.php`
 
@@ -3024,6 +3232,35 @@ Pruebas de las propuestas EDITABLES del panel (Proposals.php y POST/GET /api/pro
 - `test_proposals_text_is_plain_and_limited` (l. 59) — P3 · Solo texto plano y con límites: etiquetas, scripts y código se rechazan con code y field; demasiado largo también; no se guarda nada.
 - `test_proposals_ids_and_roles` (l. 84) — P4 · Identificadores: PR- y de 3 a 6 cifras; solo managers (cliente 403, sin sesión 401); un cuerpo roto no rompe nada.
 
+### `QuotesTest.php`
+
+Pruebas de «Presupuestos recibidos» (Quotes.php, docs/PRESUPUESTOS-RECIBIDOS.md §5): el rol client (propietario) ve todos los presupuestos; GET /orders/:número; PUT (editar: rev/409, precios manuales, original, history ≤ 50); POST /orders/:número/send (reenvío con PDF, topes, mail_off, historial y lastSent) y el correo que compone Mail::quoteMail. Sin red ni servidor web: el correo es el controlador «file» (bandeja de salida) o un Http::$mock.
+
+- `qt_pdf` (l. 23) — PDF mínimo válido (base64 canónico) para los reenvíos.
+- `qt_setup` (l. 26) — Prepara el almacén con precios, un manager y un propietario con sesión y tres presupuestos de tres correos distintos → ['mgr' => token, 'own' => token, 'n' => [números]].
+- `qt_call` (l. 37) — Llama al API como lo haría el navegador: método, ruta, cuerpo (array o texto) y cabeceras.
+- `qt_rec` (l. 40) — El registro guardado de un presupuesto.
+- `qt_body` (l. 43) — Cuerpo de edición «sin cambios» a partir del registro guardado (rev, solicitante y líneas sin precio); `$over` sobrescribe cualquier clave.
+- `qt_tariff` (l. 52) — Cambia la tarifa vigente (para comprobar que lo guardado no se revalora solo).
+- `qt_sent` (l. 58) — Correos de presupuesto reenviado que hay en la bandeja de salida (asunto «Torivac · presupuesto/quote/devis/Angebot TV-…»).
+- `qt_send` (l. 69) — POST /orders/:número/send con el PDF de prueba y los destinatarios dados (más cualquier campo extra).
+- `test_qt_client_sees_all_orders_without_ip_and_mail_error` (l. 77) — 1 · client (propietario) ve los presupuestos de TODOS los correos, sin ip ni emailed.error; manager y token maestro los ven con ambos.
+- `test_qt_get_one_order_and_weird_numbers` (l. 98) — 2 · Ver uno: 200 con y sin ip según el rol, 404 si no existe, 404 con números raros (también para el propietario, nunca 403) y 401 sin sesión.
+- `test_qt_put_edits_customer_lines_and_note` (l. 133) — 3 · Editar: solicitante en minúsculas, líneas, nota; conserva unit de las líneas sin tocar, revalora al cambiar qty, guarda original, rev, edited y history, y no pierde ip ni emailed.
+- `test_qt_put_pricing_rules` (l. 166) — 3 · Precios: sin price se conserva si ref y qty son los mismos; price número = manual; price:null = tarifa; a consultar; 0 vale; decimales y topes.
+- `test_qt_put_original_once_and_history_capped_at_50` (l. 201) — 3 · original se guarda una sola vez; rev sube de uno en uno; history crece y se corta en 50 (se descartan las más antiguas).
+- `test_qt_put_conflict_on_stale_rev` (l. 222) — 3 · rev viejo → 409 con el registro actual; rev ausente o raro → 400; el 409 no cambia nada.
+- `test_qt_put_validation` (l. 243) — 3 · Validación del PUT: referencia desconocida o repetida, cantidades, texto con HTML, correo, nombre, cuerpo grande o roto; nada de eso modifica el registro.
+- `test_qt_put_roles_and_master` (l. 308) — 3 · Roles: el propietario (client) edita y no ve la ip; el token maestro firma como «maestro»; el registro conserva la ip.
+- `test_qt_send_basic_recipients_cc_and_history` (l. 324) — 4 · Reenviar a 1 y a 3 destinatarios con adjunto: lista normalizada (minúsculas, sin repetir), Reply-To del equipo, cc solo con copyToMe, asunto fijo, historial y lastSent.
+- `test_qt_send_validation_does_not_send_or_spend_quota` (l. 362) — 4 · Validación del envío: 4 destinatarios, correo malo, sin pdf o pdf falso, mensaje con HTML, 404, 413; nada sale, nada se anota y no gastan cupo.
+- `test_qt_send_language_escaping_and_stored_prices` (l. 409) — 4 · Asunto y texto fijo según el idioma del pedido (es, en, fr, de; otro = es); mensaje escapado con <br>; tabla con los precios GUARDADOS (no los de la tarifa); nota del presupuesto.
+- `test_qt_quote_mail_escapes_everything` (l. 456) — 4 · Mail::quoteMail escapa SIEMPRE lo que escribe una persona, aunque no pasara por PlainText (defensa en profundidad).
+- `test_qt_send_rate_limits` (l. 468) — 4 · Topes: 20 por hora y persona (la 21.ª es 429 sin enviar), por persona y no global, la ventana se renueva, 150 al día en total (configurable, 0 = ninguno).
+- `test_qt_send_mail_off` (l. 499) — 4 · Sin correo configurado: 409 mail_off, sin gastar cupo y sin anotar historial; al configurarlo, el mismo envío funciona.
+- `test_qt_send_provider_failure` (l. 514) — 4 · Fallo del proveedor: 200 con sent:false, historial ok:false y lastSent; error solo para manager y sin secretos; el cupo no se devuelve; el texto del error no se guarda.
+- `test_qt_edit_and_send_are_audited` (l. 538) — Auditoría: cada edición y cada reenvío queda en Actividad; el correo del destinatario va con la parte local enmascarada.
+
 ### `SecurityAuthTest.php`
 
 Pruebas de seguridad del acceso, las sesiones y los límites (informe del revisor del PHP: A2, A3, A4, A5, A12 · decisiones D2, D3 y D4). Cada hallazgo reproduce el ataque del informe y comprueba que ya no funciona, y que lo legítimo sigue funcionando. Sin red ni servidor web.
@@ -3089,9 +3326,9 @@ Pruebas de seguridad de los pedidos y del contacto (informe del revisor del PHP:
 - `test_a13_single_line_fields_and_notes_are_cleaned` (l. 203) — A13 · Los campos de una línea no admiten saltos de línea ni controles (asunto del correo al equipo); las notas conservan los saltos pero no los controles raros.
 - `test_a13_email_validation_is_strict` (l. 228) — A13 · Correo del visitante: la expresión del servidor es más estricta que la de antes (sin , ; < > " ( ) [ ] \ | ni espacios) y además pasa filter_var.
 - `test_a9_non_string_fields_are_rejected_without_php_warnings` (l. 248) — A9 · Todos los campos de texto del pedido, el contacto y el acceso deben ser cadenas: un array o un número se rechaza con 400 y sin avisos de PHP.
-- `test_d7_client_orders_hide_ip_and_mail_error` (l. 278) — D7 · A un cliente no se le devuelve la IP del pedido ni el motivo técnico del fallo del correo; un manager (y el token maestro) lo ve todo.
-- `test_d7_orders_list_is_capped` (l. 304) — D7 · El listado de pedidos no revienta con miles: un manager recibe los 300 más recientes y un cliente hasta 100 de los suyos, con truncated:true si se cortó.
-- `test_d7_prototype_names_are_not_valid_references` (l. 328) — D7/W8 · Nombres como «constructor», «__proto__» o «toString» no son referencias del catálogo (en PHP los arrays no tienen el problema; se cubre con una prueba).
+- `test_d7_client_orders_hide_ip_and_mail_error` (l. 278) — D7 · A un propietario (rol client) no se le devuelve la IP del pedido ni el motivo técnico del fallo del correo; un manager (y el token maestro) lo ve todo. El propietario ve TODOS los presupuestos, no solo los de su correo.
+- `test_d7_orders_list_is_capped` (l. 301) — D7 · El listado de pedidos no revienta con miles: un manager y un propietario (client) reciben los 300 más recientes, con truncated:true si se cortó.
+- `test_d7_prototype_names_are_not_valid_references` (l. 325) — D7/W8 · Nombres como «constructor», «__proto__» o «toString» no son referencias del catálogo (en PHP los arrays no tienen el problema; se cubre con una prueba).
 
 ### `SecurityStepTest.php`
 

@@ -106,3 +106,18 @@ details.prop [aria-invalid=true]{border-color:var(--err);outline:2px solid var(-
 .login .notice{margin:0}
 .spec select{padding:.35rem .5rem;border:1px solid var(--line-strong);border-radius:var(--radius);background:#fff;font:inherit;font-size:var(--fs-0)}
 .main .sec-sub{font-size:var(--fs-3);margin:var(--s-3) 0 0}
+/* ---- Presupuestos recibidos (admin-quotes.js) ---- */
+.qr-bar{display:flex;flex-wrap:wrap;gap:var(--s-2);align-items:center;margin:0 0 var(--s-4)}
+.qr-act{white-space:nowrap}
+.qr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-3)}
+.qr-f{display:grid;gap:4px;font-size:var(--fs-0);font-weight:600}
+.qr-f.wide{grid-column:1/-1}
+.qr-f input,.qr-f textarea{width:100%;padding:.5rem .6rem;border:1px solid var(--line-strong);border-radius:var(--radius);font:inherit;font-weight:400}
+.qr-n{width:9rem;max-width:100%;padding:.45rem .6rem;border:1px solid var(--line-strong);border-radius:var(--radius);font:inherit;text-align:right}
+.qr-add{display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:flex-end;margin-top:var(--s-3)}
+.qr-add .qr-f{flex:1 1 280px}
+.qr-chk{display:flex;gap:var(--s-2);align-items:center;margin-top:var(--s-2);font-weight:600}
+.qr-hist{list-style:none;margin:0;padding:0;display:grid;gap:var(--s-2)}
+.qr-hist li{padding-bottom:var(--s-2);border-bottom:1px solid var(--line);font-size:var(--fs-0)}
+.qr-hist li:last-child{border-bottom:0}
+@media (max-width:860px){.qr-grid{grid-template-columns:1fr}}

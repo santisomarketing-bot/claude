@@ -159,22 +159,29 @@ export const cookieTitle = (lang) => (X[lang] || X.es).title;
 
 /**
  * Bloques de la política en el idioma `lang`, según lo que la web mide de verdad:
- *   g = { ga4: bool, ads: bool }, themeSwitch: la compilación lleva selector de aspecto (si no, no se guarda `tv-theme`).
- * Devuelve [{ t: 'h2'|'h3'|'p'|'table', … }]; el HTML lo monta templates.mjs (cookiePageBody).
+ *   ga4 / ads: qué hay configurado (los valores de arranque de la compilación) · themeSwitch: la compilación lleva selector de aspecto (si no, no se guarda `tv-theme`)
+ *   all: compilación con servidor (modo runtime): lo que se mide se decide en el panel y consent.js enseña u oculta cada sección según los ajustes del servidor, así que se emiten TODAS las secciones
+ *        etiquetadas con `sec` (a = hay GA4 · p = hay Ads · any = hay alguna · none = no hay ninguna); sin `all` solo salen las que corresponden y sin etiqueta.
+ * Devuelve [{ t: 'lead'|'h2'|'h3'|'p'|'table', x?, cols?, rows?, sec? }]; en las tablas cada fila es [nombre, dónde, para qué, cuánto dura, sec?]. El HTML lo monta templates.mjs (cookiePage).
  */
-export function cookieBlocks(lang, { ga4 = false, ads = false, themeSwitch = false } = {}) {
+export function cookieBlocks(lang, { ga4 = false, ads = false, themeSwitch = false, all = false } = {}) {
   const x = X[lang] || X.es;
   const active = ga4 || ads;
-  /** Fila de tabla [nombre, dónde, para qué, cuánto dura] de la clave `k`, con «dónde» ya en el idioma. */
-  const row = (k) => { const [n, w, p, d] = x[k]; return [n, x[w] || w, p, d]; };
+  /** Fila de tabla [nombre, dónde, para qué, cuánto dura, sec?] de la clave `k`, con «dónde» ya en el idioma. */
+  const row = (k, sec) => { const [n, w, p, d] = x[k]; return [n, x[w] || w, p, d, ...(all && sec ? [sec] : [])]; };
+  /** Etiqueta `sec` de un bloque (solo en modo runtime). */
+  const S = (sec) => (all ? { sec } : {});
   const b = [{ t: 'lead', x: x.lead }, { t: 'h2', x: x.h_what }, { t: 'p', x: x.p_what }, { t: 'h2', x: x.h_who }, { t: 'p', x: x.p_who }, { t: 'h2', x: x.h_used }];
-  b.push({ t: 'h3', x: x.h_nec }, { t: 'p', x: x.p_nec }, { t: 'table', cols: x.cols, rows: ['r_quote', 'r_lang', 'r_session', ...(themeSwitch ? ['r_theme'] : []), ...(active ? ['r_consent'] : [])].map(row) });
-  if (ga4) b.push({ t: 'h3', x: x.h_stats }, { t: 'p', x: x.p_stats }, { t: 'table', cols: x.cols, rows: ['r_ga', 'r_ga_id'].map(row) });
-  if (ads) b.push({ t: 'h3', x: x.h_ads }, { t: 'p', x: x.p_ads }, { t: 'table', cols: x.cols, rows: ['r_gcl_au', 'r_gcl_aw', 'r_gac'].map(row) });
-  if (!active) b.push({ t: 'p', x: x.p_none });
-  b.push({ t: 'h2', x: x.h_change }, { t: 'p', x: active ? x.p_change : x.p_change_browser });
-  if (ga4) b.push({ t: 'p', x: x.p_optout });
-  if (active) b.push({ t: 'h2', x: x.h_google }, { t: 'p', x: x.p_google });
+  b.push({ t: 'h3', x: x.h_nec }, { t: 'p', x: x.p_nec }, { t: 'table', cols: x.cols, rows: [row('r_quote'), row('r_lang'), row('r_session'), ...(themeSwitch ? [row('r_theme')] : []), ...(all ? [row('r_consent', 'any')] : active ? [row('r_consent')] : [])] });
+  if (all || ga4) b.push({ t: 'h3', x: x.h_stats, ...S('a') }, { t: 'p', x: x.p_stats, ...S('a') }, { t: 'table', cols: x.cols, rows: [row('r_ga'), row('r_ga_id')], ...S('a') });
+  if (all || ads) b.push({ t: 'h3', x: x.h_ads, ...S('p') }, { t: 'p', x: x.p_ads, ...S('p') }, { t: 'table', cols: x.cols, rows: [row('r_gcl_au'), row('r_gcl_aw'), row('r_gac')], ...S('p') });
+  if (all || !active) b.push({ t: 'p', x: x.p_none, ...S('none') });
+  b.push({ t: 'h2', x: x.h_change });
+  if (all) b.push({ t: 'p', x: x.p_change, ...S('any') }, { t: 'p', x: x.p_change_browser, ...S('none') });
+  else b.push({ t: 'p', x: active ? x.p_change : x.p_change_browser });
+  if (all || ga4) b.push({ t: 'p', x: x.p_optout, ...S('a') });
+  if (all) b.push({ t: 'h2', x: x.h_google, ...S('any') }, { t: 'p', x: x.p_google, ...S('any') });
+  else if (active) b.push({ t: 'h2', x: x.h_google }, { t: 'p', x: x.p_google });
   b.push({ t: 'h2', x: x.h_upd }, { t: 'p', x: x.p_upd });
   return b;
 }

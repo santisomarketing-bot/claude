@@ -2,7 +2,7 @@
 // Resultado de sendMail: { ok, id?, reason:'sent'|'off'|'failed'|'skipped', error?, driver, status?, skipped? }. off = sin controlador (EMAIL_PROVIDER=none); skipped = faltan credenciales, remitente o destinatarios;
 // failed = el proveedor respondió error o no respondió. `error` es un texto CORTO (≤ 160) y sin secretos, solo para gestores. Cada envío anota su resultado en mail:last (ver mailstate.js).
 // Correos que se componen aquí: AVISO de pedido al equipo (con los datos del cliente y el PDF que fabricó su navegador), COPIA al cliente (solo texto fijo y datos valorados por el servidor),
-// mensaje de CONTACTO para el equipo y PRUEBA del panel.
+// PRESUPUESTO reenviado desde el panel (texto fijo + mensaje de quien lo envía ESCAPADO + los precios guardados en el registro + PDF adjunto), mensaje de CONTACTO para el equipo y PRUEBA del panel.
 import { esc } from './util.js';
 import { oneLine, isEmail } from './validate.js';
 import { scrub, recordMail, readLast } from './mailstate.js';
@@ -155,6 +155,31 @@ export function customerCopyMail({ number, priced, lang, demo }, items) {
 <p style="color:#777;font-size:12px">${esc(t.ignore)}</p></div>`;
   const text = [`${t.title} ${number}${demo ? ` ${t.demo}` : ''}`, '', t.intro, '', ...priced.lines.map((l) => `${l.ref}\t${items[l.ref]?.n || ''}\tx${l.qty}\t${am(l.total)}`), '', `${t.total}: ${money(priced.total, lang)}`, priced.unpriced ? t.unpriced(priced.unpriced) : '', '', t.ignore].join('\n');
   return { subject: copySubject(number), html, text };
+}
+
+// ───────────────────────────────────────── [PRESUPUESTO] reenvío desde el panel (docs/PRESUPUESTOS-RECIBIDOS.md)
+/** Textos fijos del presupuesto reenviado en cada idioma del pedido (es, en, fr, de): asunto, título, introducción, etiqueta de la nota y despedida. El resto de etiquetas sale de COPY_TEXT. */
+const QUOTE_TEXT = {
+  es: { subject: (n) => `Torivac · presupuesto ${n}`, title: 'Presupuesto', intro: 'Te enviamos el presupuesto con los importes de Torivac. Lo encontrarás también adjunto en PDF.', note: 'Nota del presupuesto', outro: 'Si tienes cualquier duda, responde a este correo.' },
+  en: { subject: (n) => `Torivac · quote ${n}`, title: 'Quote', intro: 'Here is the quote with the amounts from Torivac. You will also find it attached as a PDF.', note: 'Quote note', outro: 'If you have any questions, just reply to this email.' },
+  fr: { subject: (n) => `Torivac · devis ${n}`, title: 'Devis', intro: 'Voici le devis avec les montants de Torivac. Vous le trouverez aussi en pièce jointe au format PDF.', note: 'Note du devis', outro: 'Pour toute question, répondez simplement à cet e-mail.' },
+  de: { subject: (n) => `Torivac · Angebot ${n}`, title: 'Angebot', intro: 'Hier ist das Angebot mit den Beträgen von Torivac. Sie finden es auch als PDF im Anhang.', note: 'Hinweis zum Angebot', outro: 'Bei Fragen antworten Sie einfach auf diese E-Mail.' },
+};
+/** Texto de una persona para el HTML del correo: escapado y con los saltos de línea como <br> (nunca HTML de la persona). */
+const htmlText = (s) => esc(s).replace(/\n/g, '<br>');
+/**
+ * Presupuesto REENVIADO desde el panel → { subject, html, text }. Asunto y textos fijos en el idioma del pedido (`lang`); `lines` y `total` son los GUARDADOS en el registro (con los precios que se pactaron,
+ * no los de la tarifa de hoy); `message` (de quien reenvía) y `quoteNote` (nota del propietario) van escapados y con los saltos de línea como <br>. El PDF se adjunta en sendMail, no aquí.
+ */
+export function quoteMail({ number, lang, lines, total, unpriced, quoteNote, message, demo }, items) {
+  const t = { ...(COPY_TEXT[lang] || COPY_TEXT.es), ...(QUOTE_TEXT[lang] || QUOTE_TEXT.es) }, am = (n) => (n == null ? t.ask : money(n, lang));
+  const rows = lines.map((l) => `<tr><td style="font-family:monospace">${esc(l.ref)}</td><td>${esc(items[l.ref]?.n || '')}</td><td style="text-align:right">${esc(l.qty)}</td><td style="text-align:right">${am(l.unit)}</td><td style="text-align:right"><b>${am(l.total)}</b></td></tr>`).join('');
+  const html = `<div style="font-family:Arial,sans-serif;max-width:720px"><h2 style="margin:0;color:#9c520f">${esc(t.title)} ${esc(number)}${demo ? ` ${esc(t.demo)}` : ''}</h2><p>${esc(t.intro)}</p>
+${message ? `<p>${htmlText(message)}</p>` : ''}<table cellpadding="6" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#ddd;width:100%"><tr style="background:#100404;color:#fff"><th>${esc(t.ref)}</th><th>${esc(t.item)}</th><th>${esc(t.qty)}</th><th>${esc(t.unit)}</th><th>${esc(t.amount)}</th></tr>${rows}</table>
+<p style="text-align:right;font-size:18px">${esc(t.total)}: <b>${money(total, lang)}</b>${unpriced ? `<br><small>${esc(t.unpriced(unpriced))}</small>` : ''}</p>
+${quoteNote ? `<p><b>${esc(t.note)}:</b><br>${htmlText(quoteNote)}</p>` : ''}<p style="color:#777;font-size:12px">${esc(t.outro)}</p></div>`;
+  const text = [`${t.title} ${number}${demo ? ` ${t.demo}` : ''}`, '', t.intro, '', message ? `${message}\n` : '', ...lines.map((l) => `${l.ref}\t${items[l.ref]?.n || ''}\tx${l.qty}\t${am(l.total)}`), '', `${t.total}: ${money(total, lang)}`, unpriced ? t.unpriced(unpriced) : '', quoteNote ? `\n${t.note}:\n${quoteNote}` : '', '', t.outro].join('\n');
+  return { subject: t.subject(number), html, text };
 }
 
 // ───────────────────────────────────────── [CONTACTO] mensaje del formulario → equipo, y prueba del panel

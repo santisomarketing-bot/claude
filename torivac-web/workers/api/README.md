@@ -12,7 +12,9 @@ usa `site/assets/js/quote-page.js`.
 | Enviar pedido | `POST /api/order` | público (límite por visitante y global, Turnstile opcional) |
 | Enviar contacto | `POST /api/contact` | público |
 | Login / sesión / cerrar sesión | `POST /api/auth/login`, `GET /api/auth/me`, `POST /api/auth/logout` | público / sesión |
-| Pedidos | `GET /api/orders` | manager: los 300 más recientes (últimos 120 días) · cliente: los suyos (hasta 100), sin IP |
+| Presupuestos recibidos | `GET /api/orders` | manager y cliente (= el **propietario** de la web): los 300 más recientes (últimos 120 días); el cliente, sin IP ni `emailed.error` |
+| Ver / editar un presupuesto | `GET`·`PUT /api/orders/:número` | manager y cliente. `PUT` lleva `rev` (409 `conflict` si otra persona lo cambió), precios manuales y guarda `original`, `edited` e `history` (≤ 50) |
+| Reenviar un presupuesto por correo | `POST /api/orders/:número/send` | manager y cliente: 1 a 3 destinatarios, PDF validado, topes de 20/h por persona y `ORDER_SEND_DAILY_MAX`/día; 409 `mail_off` si no hay correo |
 | Refrescar precios ahora | `POST /api/prices/refresh` | manager |
 | Subir hoja de precios (vista previa/aplicar) | `POST /api/prices/upload` | manager |
 | Usuarios | `GET/POST /api/users`, `DELETE /api/users/:email` | manager |
@@ -44,6 +46,7 @@ Cron: `0 3 * * *` (UTC) sincroniza precios cada 24 h y limpia los registros de l
 | `ADMIN_API_TOKEN` (secreto) | ≥ 32 caracteres. Si es más corto el token maestro queda desactivado (siempre 401). `GET /api/health` los marca con el **nombre** del ajuste, nunca el valor: `"config":{"ok":false,"problems":["SESSION_SECRET"]}` (si todo está bien, no hay clave `config`) |
 | `ORDER_COPY` | `capped` (por defecto) o `off`; cualquier otro valor cuenta como `off` |
 | `ORDER_COPY_DAILY_MAX` | copias totales al día (150 por defecto); además, **2 copias por destinatario cada 24 h** (clave con hash del correo) |
+| `ORDER_SEND_DAILY_MAX` | reenvíos de presupuestos desde el panel por día en total (150 por defecto; `0` = sin tope diario), además de **20 por hora y persona** → 429 |
 | `ORDERS_PER_HOUR_MAX` | pedidos globales por hora (120 por defecto), además de 8 por visitante cada 10 min → 429 |
 | `FORM_MIN_FILL_MS` | milisegundos mínimos entre cargar la página y enviar un formulario (1200 por defecto; `0` = no se exige). Un robot que envía sin cargar la página queda fuera |
 | `TURNSTILE_SECRET` | recomendado en producción (sin él, la protección contra bots descansa solo en los topes) |

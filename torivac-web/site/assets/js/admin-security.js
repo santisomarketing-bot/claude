@@ -39,9 +39,9 @@
     if (u.reinforced_until) t.push('<span class="tag" title="Tras intentos repetidos, pide el código por correo en dispositivos nuevos">Protección reforzada hasta ' + esc(when(u.reinforced_until).slice(0, 10)) + '</span>');
     return t.length ? t.join(' ') : '<span class="muted small">—</span>';
   }
-  /** La casilla «código por correo» de una cuenta de manager (los clientes no la usan salvo tras ataques repetidos). */
+  /** La casilla «código por correo» de una cuenta de manager (los propietarios no la usan salvo tras ataques repetidos). */
   function codeCell(u, meta) {
-    if (u.role !== 'manager' || meta.enabled === undefined) return '<span class="muted small"' + (u.role !== 'manager' ? ' title="Los clientes solo lo piden si hay intentos repetidos contra su cuenta"' : '') + '>—</span>';
+    if (u.role !== 'manager' || meta.enabled === undefined) return '<span class="muted small"' + (u.role !== 'manager' ? ' title="Los propietarios solo lo piden si hay intentos repetidos contra su cuenta"' : '') + '>—</span>';
     if (meta.enabled === false) return '<span class="muted small">Desactivado en el servidor</span>';
     return '<select data-sec-two-step="' + esc(u.email) + '" aria-label="Código por correo de ' + esc(u.email) + '"><option value="1"' + (u.code === 'required' ? ' selected' : '') + '>Sí, lo pide</option><option value="0"' + (u.code === 'exempt' ? ' selected' : '') + '>No (cuenta de confianza)</option></select>';
   }
@@ -52,7 +52,7 @@
       var me = (ctx.session() || {}).email, meta = r.two_step || {}, users = r.users || [];
       var rows = users.map(function (u) {
         var canUnlock = u.locked_for > 0 || u.reinforced_until;
-        return '<tr><td>' + esc(u.name) + '</td><td class="mono">' + esc(u.email) + '</td><td>' + (u.role === 'manager' ? 'Manager' : 'Cliente') + '</td><td>' + esc(when(u.last_login)) + '</td><td>' + codeCell(u, meta) + '</td><td>' + stateTags(u) + '</td><td class="bl-actions">' +
+        return '<tr><td>' + esc(u.name) + '</td><td class="mono">' + esc(u.email) + '</td><td>' + (u.role === 'manager' ? 'Manager' : 'Propietario') + '</td><td>' + esc(when(u.last_login)) + '</td><td>' + codeCell(u, meta) + '</td><td>' + stateTags(u) + '</td><td class="bl-actions">' +
           (canUnlock ? '<button class="btn sm ghost" data-sec-unlock="' + esc(u.email) + '"' + (u.reinforced_until ? ' data-sec-clear="1"' : '') + '>Desbloquear<span class="vh"> ' + esc(u.email) + '</span></button> ' : '') +
           (u.email !== me ? '<button class="btn sm ghost" data-sec-del-user="' + esc(u.email) + '">Borrar<span class="vh"> ' + esc(u.email) + '</span></button>' : '<span class="muted small">(tú)</span>') + '</td></tr>';
       }).join('');
@@ -61,7 +61,7 @@
       return '<div data-sec-root data-sec-mode="users"><h1>Usuarios</h1>' + warn +
         '<p class="muted small">«Código por correo»: al entrar con la contraseña, a los managers se les manda un código de 6 cifras que hay que escribir; si marcan «recordar este dispositivo», no se les vuelve a pedir en él durante ' + Number(meta.remember_days || 30) + ' días. Una <strong>cuenta de confianza</strong> (la de quien administra la web) no lo pide de rutina. Si cualquier cuenta, también esa, acumula bloqueos repetidos, se avisa por correo y se le pide el código en dispositivos nuevos durante 7 días.</p>' +
         '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Último acceso</th><th>Código por correo</th><th>Estado</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-        '<section class="panel"><h2>Nuevo usuario</h2><form class="form" data-sec-new-user><div class="grid2"><label>Nombre<input name="name" type="text" required autocomplete="off"></label><label>Correo<input name="email" type="email" required></label></div><div class="grid2"><label>Rol<select name="role"><option value="client">Cliente</option><option value="manager">Manager</option></select></label><label>Contraseña (mín. 12)<input name="password" type="password" minlength="12" required autocomplete="new-password"></label></div><p><button class="btn" type="submit">Crear usuario</button></p></form></section>' +
+        '<section class="panel"><h2>Nuevo usuario</h2><form class="form" data-sec-new-user><div class="grid2"><label>Nombre<input name="name" type="text" required autocomplete="off"></label><label>Correo<input name="email" type="email" required></label></div><div class="grid2"><label>Rol<select name="role"><option value="client">Propietario (dueño de la web: ve todos los presupuestos recibidos)</option><option value="manager">Manager (equipo técnico)</option></select></label><label>Contraseña (mín. 12)<input name="password" type="password" minlength="12" required autocomplete="new-password"></label></div><p><button class="btn" type="submit">Crear usuario</button></p></form></section>' +
         '<section class="panel"><h2>Poner una contraseña nueva a una cuenta</h2><p class="muted small">Sirve si alguien la olvidó o si sospechas que la conocen otras personas (la tuya se cambia en Ajustes). Se cierran todas sus sesiones y se olvidan sus dispositivos recordados. Díselo por un canal seguro: no la mandes por correo.</p><form class="form" data-sec-reset-pw><div class="grid2"><label>Cuenta<select name="email">' + opts + '</select></label><label>Contraseña nueva (mín. 12)<input name="password" type="password" minlength="12" required autocomplete="new-password"></label></div><p><button class="btn" type="submit">Guardar la contraseña nueva</button></p></form></section></div>';
     });
   };
@@ -113,7 +113,7 @@
     if (code === 'required') return 'Al entrar con tu contraseña te mandamos un código por correo. Marcando «recordar este dispositivo» no te lo pide en ese navegador durante 30 días.';
     if (code === 'exempt') return 'Tu cuenta es de confianza: entras solo con la contraseña (otro manager puede cambiarlo en Usuarios). Solo si alguien la ataca de forma repetida te pedirá el código, en dispositivos nuevos, durante 7 días.';
     if (code === 'off') return 'La verificación por correo está desactivada en el servidor: se entra solo con la contraseña.';
-    return 'Los clientes entran con su contraseña; solo si hay intentos repetidos contra una cuenta se pide un código por correo en dispositivos nuevos.';
+    return 'Los propietarios entran con su contraseña; solo si hay intentos repetidos contra una cuenta se pide un código por correo en dispositivos nuevos.';
   }
   /** Panel «Tu cuenta y tu seguridad» de Ajustes: estado del código, olvidar dispositivos y cambiar la contraseña propia. */
   function accountPanel(me) {

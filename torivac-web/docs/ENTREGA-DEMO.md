@@ -12,7 +12,7 @@
 
 ### B) Subdominio de pruebas en tu hosting con Plesk o cPanel (real)
 `python3 -I scripts/package_cpanel.py --base=https://pruebas.grupotorivac.com --staging` genera un `.zip` **verificado** (sin claves, sin tests, sin precios, PHP válido) con la web y el API PHP. Pasos de subida, configuración, correo, precios y cron: **[`DESPLIEGUE-PLESK.md`](DESPLIEGUE-PLESK.md)** (Plesk, con el paso posterior a cPanel) o **[`DESPLIEGUE-CPANEL.md`](DESPLIEGUE-CPANEL.md)**; el paquete es el mismo. El subdominio sale con `noindex` y cinta «entorno de pruebas».
-Aquí **sí** funciona todo de verdad: pedidos por correo a `info@grupotorivac.com` y `mzamora@torivac.com` con el PDF adjunto (y copia al cliente), contacto, login real del panel, precios desde tu Drive.
+Aquí **sí** funciona todo de verdad: pedidos por correo a `info@grupotorivac.com` y `mzamora@torivac.com` con el PDF adjunto (y copia al solicitante), contacto, login real del panel, precios desde tu Drive.
 
 ## Qué puedes probar
 - **Dos aspectos de la web**: **«Ficha técnica»** (identidad nueva, por defecto) y **«Clásico»** (el de la web original). Se alternan con el selector **Aspecto** de la cinta superior o del pie (o con `?tema=clasico` / `?tema=ficha` al final de la dirección) y el navegador recuerda la elección. Qué es cada uno y cómo se elige para producción: [`DISENO-TEMAS.md`](DISENO-TEMAS.md).
@@ -34,7 +34,8 @@ Aquí **sí** funciona todo de verdad: pedidos por correo a `info@grupotorivac.c
 | Envío del pedido / contacto | Simulado (PDF + borrador de correo) | **Real** (Resend → info@ y mzamora@) cuando se configura el correo |
 | Login del panel | Solo demostración (credenciales en el código) | **Real** (usuarios con contraseña, sesiones firmadas) |
 | Estadísticas (Google Business, Ads, Search Console, GA4) | Sin conectar | Sin conectar: faltan las credenciales de Torivac; el panel no muestra cifras inventadas |
-| Medición de Google (GA4, Ads) y aviso de cookies | En el paquete de pruebas: aviso **de prueba** con IDs ficticios, sin enviar nada a Google | Preparada y probada, **apagada** hasta tener los IDs de Torivac ([`GOOGLE.md`](GOOGLE.md)) |
+| **Presupuestos recibidos** (panel → *Presupuestos recibidos*, para el manager y el **Propietario**) | Solo el panel de demostración | **Real**: ver, **editar**, **descargar en PDF** y **reenviar por correo** (con el PDF adjunto y copia a quien lo envía); queda historial y lo que llegó de la web se conserva ([`PRESUPUESTOS-RECIBIDOS.md`](PRESUPUESTOS-RECIBIDOS.md)) |
+| Medición de Google (GA4, Ads) y aviso de cookies | En el paquete de pruebas: aviso **de prueba** con IDs ficticios, sin enviar nada a Google | Preparada y probada, **apagada** hasta tener los IDs de Torivac, que se ponen en *Ajustes → Google* del panel, sin recompilar ([`GOOGLE.md`](GOOGLE.md)) |
 
 ## Cómo se ha comprobado (todo reproducible y sin red)
 - `cd workers/api && npm test` · `php backend-php/api/tests/run.php`: pedidos, precios, hojas, lectura de `.xlsx`, login, IA, CORS… (el mismo contrato en Worker y en PHP).

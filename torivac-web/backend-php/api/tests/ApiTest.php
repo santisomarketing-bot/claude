@@ -282,7 +282,7 @@ function test_manager_upload_roles_and_cron()
     T::same(200, Router::handle($q)->status, 'cron con token');
 }
 
-/** Un manager ve todos los pedidos y cada cliente solo los suyos; alta y baja de usuarios por el API. */
+/** Un manager y un propietario (rol client) ven todos los presupuestos; alta y baja de usuarios por el API. */
 function test_orders_visibility_and_users_api()
 {
     fresh(); seedPrices();
@@ -293,7 +293,7 @@ function test_orders_visibility_and_users_api()
     $tJ = Router::handle(req('POST', '/auth/login', ['email' => 'jefe@torivac.com', 'password' => PW_JEFE]))->body['token'];
     $tA = Router::handle(req('POST', '/auth/login', ['email' => 'ana@acme.es', 'password' => PW_ANA]))->body['token'];
     T::same(2, count(Router::handle(req('GET', '/orders', null, ['Authorization' => 'Bearer ' . $tJ]))->body['orders']), 'el manager ve todos');
-    T::same(1, count(Router::handle(req('GET', '/orders', null, ['Authorization' => 'Bearer ' . $tA]))->body['orders']), 'el cliente solo los suyos');
+    T::same(2, count(Router::handle(req('GET', '/orders', null, ['Authorization' => 'Bearer ' . $tA]))->body['orders']), 'el cliente (propietario de la web) ve todos, no solo los de su correo');
     T::same(201, Router::handle(req('POST', '/users', ['email' => 'nuevo@x.es', 'name' => 'N', 'role' => 'client', 'password' => 'Nueva-Clave-2026!'], ['Authorization' => 'Bearer ' . $tJ]))->status, 'alta de usuario');
     T::same(3, count(Router::handle(req('GET', '/users', null, ['Authorization' => 'Bearer ' . $tJ]))->body['users']), 'lista');
     Router::handle(req('DELETE', '/users/nuevo%40x.es', null, ['Authorization' => 'Bearer ' . $tJ]));

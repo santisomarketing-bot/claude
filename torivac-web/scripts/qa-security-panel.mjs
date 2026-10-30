@@ -276,9 +276,9 @@ try {
   await E.page.fill('[name=code]', d.lastCode(CLIENT)); await E.page.click('[data-code-form] button[type=submit]');
   await panel(E.page);
   const navE = await E.page.$$eval('.side nav a', (a) => a.map((x) => x.textContent.replace(/[^\p{L} ]/gu, '').trim()));
-  ok(navE.join() === 'Presupuestador,Mis presupuestos,Lista de precios,Estadísticas', `el cliente entra a su panel (${navE.join(' · ')})`);
+  ok(navE.join() === 'Nuevo presupuesto,Presupuestos recibidos,Lista de precios,Estadísticas', `el propietario entra a su panel (${navE.join(' · ')})`);
   await E.page.goto(d.BASE + '/admin/index.html#actividad'); await panel(E.page);
-  ok(await E.page.locator('.side nav a[aria-current=page]').innerText().then((t) => /Presupuestador/.test(t)), 'si un cliente escribe #actividad en la dirección, no ve nada de eso');
+  ok(await E.page.locator('.side nav a[aria-current=page]').innerText().then((t) => /Nuevo presupuesto/.test(t)), 'si un propietario escribe #actividad en la dirección, no ve nada de eso');
   r = await d.api('/activity', { token: (await E.page.evaluate(() => JSON.parse(sessionStorage.getItem('tv_live')).token)) });
   ok(r.s === 403, 'y el servidor le niega el registro de actividad (403)');
   await E.ctx.close();

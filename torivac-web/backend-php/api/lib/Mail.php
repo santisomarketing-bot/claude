@@ -16,6 +16,7 @@
  * orderMail() compone el correo del pedido para el EQUIPO (HTML + texto, con los datos que escribió el visitante y su PDF adjunto).
  * copyMail() compone la copia para el CLIENTE: solo contenido generado por el servidor (texto fijo en el idioma del pedido, número, líneas valoradas, total); NADA escrito
  * por el visitante (ni nombre, ni empresa, ni teléfono, ni notas) y SIN adjunto: si no, el correo corporativo sería un relé de mensajes de cualquiera hacia terceros.
+ * quoteMail() compone el presupuesto que un propietario o manager REENVÍA desde el panel (con el PDF adjunto): texto fijo en el idioma del pedido, líneas y total guardados, su mensaje (texto plano, escapado) y la nota del presupuesto.
  * contactMail() compone el aviso de un mensaje de contacto para el equipo (todo lo del visitante, escapado) y testMail() el correo de prueba del panel.
  */
 namespace Torivac;
@@ -47,6 +48,18 @@ final class Mail
         'de' => ['title' => 'Kopie Ihres Angebots', 'intro' => 'Wir haben Ihre Angebotsanfrage erhalten. Dies ist eine Kopie Ihrer Anfrage mit den von Torivac berechneten Beträgen.',
             'ref' => 'Ref.', 'item' => 'Artikel', 'qty' => 'Menge', 'unit' => 'Einzelpreis', 'amount' => 'Betrag', 'total' => 'Gesamt (ohne MwSt.)',
             'unpriced' => '{n} Position(en) „Auf Anfrage“ sind in der Summe nicht enthalten', 'demo' => '(DEMO-PREISE)', 'ignore' => 'Wenn Sie dieses Angebot nicht angefordert haben, ignorieren Sie diese Nachricht bitte.'],
+    ];
+
+    /** Textos FIJOS del correo de un presupuesto reenviado desde el panel (Quotes), por idioma. {n} = número del presupuesto. Las cabeceras de la tabla y el total salen de COPY. */
+    private const QUOTE = [
+        'es' => ['subject' => 'Torivac · presupuesto {n}', 'title' => 'Presupuesto', 'intro' => 'Te enviamos el presupuesto con los importes de Torivac. Lo encontrarás también adjunto en PDF.',
+            'message' => 'Mensaje', 'note' => 'Nota del presupuesto', 'reply' => 'Si tienes cualquier duda, responde a este correo.'],
+        'en' => ['subject' => 'Torivac · quote {n}', 'title' => 'Quote', 'intro' => 'Here is the quote with the amounts from Torivac. You will also find it attached as a PDF.',
+            'message' => 'Message', 'note' => 'Quote note', 'reply' => 'If you have any questions, just reply to this email.'],
+        'fr' => ['subject' => 'Torivac · devis {n}', 'title' => 'Devis', 'intro' => 'Voici le devis avec les montants de Torivac. Vous le trouverez aussi en pièce jointe au format PDF.',
+            'message' => 'Message', 'note' => 'Note du devis', 'reply' => 'Pour toute question, répondez simplement à cet e-mail.'],
+        'de' => ['subject' => 'Torivac · Angebot {n}', 'title' => 'Angebot', 'intro' => 'Hier ist das Angebot mit den Beträgen von Torivac. Sie finden es auch als PDF im Anhang.',
+            'message' => 'Nachricht', 'note' => 'Hinweis zum Angebot', 'reply' => 'Bei Fragen antworten Sie einfach auf diese E-Mail.'],
     ];
 
 
@@ -461,5 +474,50 @@ final class Mail
             '<p style="text-align:right;font-size:18px">' . $e($t['total']) . ': <b>' . $e(self::money($p['total'], $lang)) . '</b>' . ($unpriced !== '' ? '<br><small>' . $e($unpriced) . '</small>' : '') . '</p>' .
             '<p style="color:#777;font-size:12px">' . $e($t['ignore']) . '</p></div>';
         return ['subject' => 'Torivac · copia de tu presupuesto ' . $number, 'html' => $html, 'text' => implode("\n", $lines)];
+    }
+
+    /**
+     * Correo de un presupuesto REENVIADO desde el panel (POST /orders/:número/send) → ['subject', 'html', 'text']. Asunto y texto fijos del servidor en el idioma del pedido (es, en, fr, de);
+     * la tabla lleva las líneas y el total GUARDADOS en el registro (nunca los de la tarifa de hoy); el mensaje de la persona (`message`) y la nota del presupuesto (`note`) son texto plano
+     * y salen SIEMPRE escapados, con los saltos de línea como <br>. El PDF va como adjunto (lo añade quien llama) y nada de lo que llega es HTML.
+     * @param array{number:string,lang?:string,lines?:array,total?:mixed,unpriced?:mixed,demo?:bool,message?:string,note?:string} $d
+     * @return array{subject:string,html:string,text:string}
+     */
+    public static function quoteMail(array $d, array $items): array
+    {
+        $lang = in_array($d['lang'] ?? 'es', Orders::LANGS, true) ? $d['lang'] : 'es';
+        $c = self::COPY[$lang];
+        $q = self::QUOTE[$lang];
+        $number = (string) $d['number'];
+        $demo = !empty($d['demo']);
+        $message = (string) ($d['message'] ?? '');
+        $note = (string) ($d['note'] ?? '');
+        $e = function ($v) { return Util::esc($v); };
+        $intro = str_replace('{n}', $number, $q['intro']);
+        $rows = '';
+        $lines = [$q['title'] . ' ' . $number . ($demo ? ' ' . $c['demo'] : ''), '', $intro, ''];
+        if ($message !== '') { $lines[] = $q['message'] . ':'; $lines[] = $message; $lines[] = ''; }
+        foreach ((array) ($d['lines'] ?? []) as $l) {
+            $ref = (string) ($l['ref'] ?? '');
+            $name = (string) ($items[$ref]['n'] ?? '');
+            $qty = (int) ($l['qty'] ?? 0);
+            $rows .= '<tr><td style="font-family:monospace">' . $e($ref) . '</td><td>' . $e($name) . '</td><td style="text-align:right">' . $qty . '</td><td style="text-align:right">' . $e(self::money($l['unit'] ?? null, $lang)) . '</td><td style="text-align:right"><b>' . $e(self::money($l['total'] ?? null, $lang)) . '</b></td></tr>';
+            $lines[] = $ref . "\t" . $name . "\tx" . $qty . "\t" . self::money($l['total'] ?? null, $lang);
+        }
+        $unpriced = !empty($d['unpriced']) ? str_replace('{n}', (string) (int) $d['unpriced'], $c['unpriced']) : '';
+        $lines[] = '';
+        $lines[] = $c['total'] . ': ' . self::money($d['total'] ?? 0, $lang);
+        if ($unpriced !== '') $lines[] = $unpriced;
+        if ($note !== '') { $lines[] = ''; $lines[] = $q['note'] . ':'; $lines[] = $note; }
+        $lines[] = '';
+        $lines[] = $q['reply'];
+        $html = '<div style="font-family:Arial,sans-serif;max-width:720px"><h2 style="margin:0;color:#9c520f">' . $e($q['title']) . ' ' . $e($number) . ($demo ? ' ' . $e($c['demo']) : '') . '</h2>' .
+            '<p>' . $e($intro) . '</p>' .
+            ($message !== '' ? '<p style="border-left:3px solid #9c520f;padding-left:10px"><b>' . $e($q['message']) . '</b><br>' . nl2br($e($message), false) . '</p>' : '') .
+            '<table cellpadding="6" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#ddd;width:100%"><tr style="background:#100404;color:#fff"><th>' . $e($c['ref']) . '</th><th>' . $e($c['item']) . '</th><th>' . $e($c['qty']) . '</th><th>' . $e($c['unit']) . '</th><th>' . $e($c['amount']) . '</th></tr>' . $rows . '</table>' .
+            '<p style="text-align:right;font-size:18px">' . $e($c['total']) . ': <b>' . $e(self::money($d['total'] ?? 0, $lang)) . '</b>' . ($unpriced !== '' ? '<br><small>' . $e($unpriced) . '</small>' : '') . '</p>' .
+            ($note !== '' ? '<p><b>' . $e($q['note']) . '</b><br>' . nl2br($e($note), false) . '</p>' : '') .
+            '<p style="color:#777;font-size:12px">' . $e($q['reply']) . '</p></div>';
+        return ['subject' => str_replace('{n}', $number, $q['subject']), 'html' => $html, 'text' => implode("\n", $lines)];
     }
 }

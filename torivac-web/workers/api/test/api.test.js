@@ -113,7 +113,7 @@ test('pedido: límite por IP', async () => {
   for (let i = 0; i < 9; i++) last = await handleOrder(req('/api/order', { method: 'POST' }), env, goodOrder(), { catalog: CATALOG });
   assert.equal(last.status, 429);
 });
-test('API: login, roles, usuarios y pedidos propios', async () => {
+test('API: login, roles, usuarios y presupuestos recibidos (el propietario ve todos, sin IP)', async () => {
   const env = mkEnv();
   await createUser(env, { email: 'jefe@torivac.com', name: 'Jefe', role: 'manager', password: 'Responsable-2026-ok!' });
   await createUser(env, { email: 'ana@acme.es', name: 'Ana', role: 'client', password: 'Cliente-Clave-2026!!' });
@@ -136,8 +136,8 @@ test('API: login, roles, usuarios y pedidos propios', async () => {
   await env.KV.put('order:TV-20261027-0001-BBB', JSON.stringify(rec('TV-20261027-0001-BBB', '2026-10-27T08:00:00.000Z', 'otro@x.es')));
   await env.KV.put((await uorderPrefix('ana@acme.es')) + 'TV-20261028-0001-AAA', '1');          // índice de «mis pedidos» de Ana
   const mine = (await (await as(ct, '/api/orders', {})).json()).orders;
-  assert.equal(mine.length, 1); assert.equal(mine[0].number, 'TV-20261028-0001-AAA');
-  assert.ok(!('ip' in mine[0]) && !('error' in mine[0].emailed), 'el cliente no ve la IP ni el error del correo');
+  assert.deepEqual(mine.map((o) => o.number), ['TV-20261028-0001-AAA', 'TV-20261027-0001-BBB'], 'el propietario (client) ve TODOS los presupuestos, también los de otros correos');
+  assert.ok(mine.every((o) => !('ip' in o) && !('error' in o.emailed)), 'el cliente no ve la IP ni el error del correo');
   const all = (await (await as(mt, '/api/orders')).json()).orders;
   assert.equal(all.length, 2); assert.equal(all[0].ip, '203.0.113.9', 'el manager sí ve la IP'); assert.equal(all[0].emailed.error, 'Resend respondió 403');
   assert.equal((await as(MASTER, '/api/users')).status, 200);        // token maestro = manager

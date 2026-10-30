@@ -2,7 +2,8 @@
 // COPIA al cliente con contenido generado solo por el servidor (sin PDF ni texto del visitante). Número de pedido TV-AAAAMMDD-NNNN-XXX (XXX aleatorio: dos pedidos simultáneos no se pisan).
 // POST /api/contact → guarda SIEMPRE el mensaje (CT-AAAAMMDD-NNNN-XXX, ver messages.js), intenta el correo al equipo y dice la verdad sobre él en `emailed`.
 // Claves KV: order:<nº completo> (400 días) · uorder:<sha256(correo)[:32]>:<nº> (índice de «mis pedidos» del cliente, valor mínimo) · counter:<AAAAMMDD> y counter:ct:<AAAAMMDD> (contadores de «mejor esfuerzo»)
-// · msg:… (mensajes de contacto, 400 días).
+// · msg:… (mensajes de contacto, 400 días). El índice uorder: se sigue escribiendo, pero ya no se usa para listar (el rol «client» es el propietario de la web y ve todos: orderlist.js).
+// Ver, editar y reenviar un presupuesto ya recibido: quotes.js (docs/PRESUPUESTOS-RECIBIDOS.md).
 import { json, clientIp, ipKey, sha256Hex } from './util.js';
 import { parseOrder, minFillMs } from './validate.js';
 import { loadPrices, priceOrder, withSheetItems } from './prices.js';
@@ -12,8 +13,9 @@ import { sendMail, orderMail, customerCopyMail, contactMail, mailReady, teamReci
 import { putMessage, messageExists } from './messages.js';
 import items from './generated/items.js';
 
-const DAY = 24 * 60 * 60 * 1000, HOUR = 60 * 60 * 1000;
-const ORDER_TTL = { expirationTtl: 60 * 60 * 24 * 400 };
+export const DAY = 24 * 60 * 60 * 1000, HOUR = 60 * 60 * 1000;
+/** Plazo de vida de un pedido en KV (400 días); también se renueva con cada edición o reenvío (ver quotes.js). */
+export const ORDER_TTL = { expirationTtl: 60 * 60 * 24 * 400 };
 const TOO_MANY = 'Demasiados pedidos seguidos. Inténtalo en unos minutos.';
 const BASE36 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

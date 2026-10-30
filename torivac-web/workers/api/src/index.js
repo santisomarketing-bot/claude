@@ -1,9 +1,11 @@
 // [INDEX] Router del Worker torivac-api + tarea programada (precios cada 24 h).
-//   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login
+//   PÚBLICO   GET /api/health · GET /api/prices · GET /api/google (qué mide la web: solo IDs públicos) · POST /api/order · POST /api/contact · POST /api/auth/login
 // Acceso: 5 contraseñas erróneas del mismo visitante contra una cuenta (o 15 contra cualquiera, o 30 contra una cuenta de cualquier visitante) = bloqueo de 1 hora; ver handleLogin.
-//   USUARIO   GET /api/auth/me · POST /api/auth/logout · GET /api/orders (manager: los 300 más recientes; client: solo los suyos, hasta 100)
+//   USUARIO   GET /api/auth/me · POST /api/auth/logout
+//   PRESUPUESTOS RECIBIDOS (manager y client = el PROPIETARIO de la web; ver quotes.js y docs/PRESUPUESTOS-RECIBIDOS.md): GET /api/orders (los 300 más recientes de todos; el propietario, sin IP ni emailed.error)
+//             · GET|PUT /api/orders/:número (ver · editar con `rev`/409) · POST /api/orders/:número/send (reenviar por correo con PDF; topes 20/h por persona y 150/día)
 //   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · GET /api/admin/data · /api/blog/… (solo existe en el servidor PHP: aquí responde 501)
-//             GET /api/messages · DELETE /api/messages/:id (mensajes de contacto) · POST /api/mail/test · GET /api/mail/status (correo)
+//             GET /api/messages · DELETE /api/messages/:id (mensajes de contacto) · POST /api/mail/test · GET /api/mail/status (correo) · GET|PUT /api/settings/google (medición de Google)
 // Todo límite por visitante usa ipKey (IPv6 → su /64). Ninguna respuesta 500 lleva texto interno: {"ok":false,"error":"Error interno","id":"<8 hex>"} y el detalle va al registro con ese id.
 import { json, readJson, ApiError, clientIp, ipKey, randomHex } from './util.js';
 import { isOriginAllowed, corsHeaders } from './cors.js';
@@ -14,6 +16,8 @@ import { parseContact, minFillMs } from './validate.js';
 import { proposalEntry } from './proposals.js';
 import { handleOrder, handleContact } from './orders.js';
 import { listOrders } from './orderlist.js';
+import { quoteRoute } from './quotes.js';
+import { handlePublic as googlePublic, handleGet as googleGet, handlePut as googlePut, MAX_BODY as GOOGLE_MAX } from './google.js';
 import { handleMessageList, handleMessageDelete, handleMailTest, handleMailStatus } from './mailapi.js';
 import { mailStatus, mailSettingProblems } from './email.js';
 import { loadPrices, KEY_META, KEY_SYNC, diffPrices, publicView, updateMode } from './prices.js';
@@ -108,6 +112,7 @@ async function route(request, env, deps, { path, cors, nowMs }) {
     if (id.who && id.who.role === 'manager') { const sync = JSON.parse((await env.KV.get(KEY_SYNC)) || 'null'); return json({ prices: p, meta, ...(sync ? { sync } : {}) }, 200, { ...cors, 'Cache-Control': 'private, no-store', ...vary }); }      // un manager ve quién cargó la hoja, de dónde y cómo fue el último intento de sincronización; el público, no
     return json(publicView(p, meta), 200, { ...cors, 'Cache-Control': 'public, max-age=300', ...vary });
   }
+  if (path === '/api/google' && method === 'GET') return await googlePublic(env, { cors });                 // qué mide la web (solo IDs públicos); lo edita un manager en Ajustes → Google
   if (path === '/api/order' && method === 'POST') return await handleOrder(request, env, await readJson(request), { ...deps, cors });
   if (path === '/api/contact' && method === 'POST') { const p = parseContact(await readJson(request), { minFillMs: minFillMs(env) }); if (p.error) return json({ ok: false, error: p.error, ...(p.code ? { code: p.code } : {}), ...(p.field ? { field: p.field } : {}) }, 400, cors); return await handleContact(request, env, p.contact, { ...deps, cors }); }
   if (path === '/api/auth/login' && method === 'POST') return await handleLogin(request, env, { ipk, cors, nowMs });
@@ -120,10 +125,14 @@ async function route(request, env, deps, { path, cors, nowMs }) {
     await logoutUser(env, who.sub, nowMs); return json({ ok: true }, 200, cors);
   }
   if (path === '/api/orders' && method === 'GET') { const r = await listOrders(env, who, { now: nowMs }); return json({ ok: true, orders: r.orders, ...(r.truncated ? { truncated: true } : {}) }, 200, cors); }
+  const quote = await quoteRoute(request, env, { who, path, cors, nowMs, fetchImpl, catalog: deps.catalog });          // ver, editar y reenviar un presupuesto: manager y propietario (client)
+  if (quote) return quote;
   if (!requireRole(who, 'manager')) return json({ ok: false, error: 'Solo para managers' }, 403, cors);
   if (path === '/api/admin/data' && method === 'GET') return json({ ok: true, proposals: Array.isArray(adminData && adminData.proposals) ? adminData.proposals : [], admin: adminData && adminData.admin ? adminData.admin : { products: [], byRef: {} } }, 200, { ...cors, 'Cache-Control': 'no-store' });
   if (path === '/api/messages' && method === 'GET') return await handleMessageList(request, env, { cors });                  // mensajes de contacto (datos personales: solo managers)
   if (path.startsWith('/api/messages/') && method === 'DELETE') return await handleMessageDelete(env, path.slice('/api/messages/'.length), { cors });
+  if (path === '/api/settings/google' && method === 'GET') return await googleGet(env, { cors });          // ajustes de Google del panel (solo managers)
+  if (path === '/api/settings/google' && method === 'PUT') return await googlePut(env, await readJson(request, GOOGLE_MAX), { who, cors, now: new Date(nowMs) });
   if (path === '/api/mail/test' && method === 'POST') return await handleMailTest(request, env, { who, cors, nowMs, fetchImpl });
   if (path === '/api/mail/status' && method === 'GET') return await handleMailStatus(env, { cors });
   if (path === '/api/prices/refresh' && method === 'POST') { const rb = (await readJson(request, 10_000)) || {}; return json({ ok: true, meta: await syncPrices(env, { fetchImpl, reason: `manual:${who.sub}`, force: false, mode: rb.mode, ctx: deps.ctx || catalogCtx(env), now: new Date(nowMs) }) }, 200, cors); }

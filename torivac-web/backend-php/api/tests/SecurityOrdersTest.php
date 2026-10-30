@@ -274,7 +274,7 @@ function test_a9_non_string_fields_are_rejected_without_php_warnings()
     T::same(0, count(Store::keys('order:')) - 1, 'solo se guardó el pedido válido');
 }
 
-/** D7 · A un cliente no se le devuelve la IP del pedido ni el motivo técnico del fallo del correo; un manager (y el token maestro) lo ve todo. */
+/** D7 · A un propietario (rol client) no se le devuelve la IP del pedido ni el motivo técnico del fallo del correo; un manager (y el token maestro) lo ve todo. El propietario ve TODOS los presupuestos, no solo los de su correo. */
 function test_d7_client_orders_hide_ip_and_mail_error()
 {
     fresh(['mail' => ['driver' => 'resend', 'resend_api_key' => 're_test']]); seedPrices();
@@ -286,42 +286,39 @@ function test_d7_client_orders_hide_ip_and_mail_error()
     so_post(goodOrder(['customer' => so_customer(['email' => 'otro@x.es'])]), '198.51.100.45');
     $tA = login_token('ana@acme.es', PW_ANA); $tJ = login_token('jefe@torivac.com', PW_JEFE);
     $ana = Router::handle(req('GET', '/orders', null, bearer($tA)))->body['orders'];
-    T::same(1, count($ana), 'Ana ve solo el suyo');
-    T::true(!array_key_exists('ip', $ana[0]) && !array_key_exists('error', $ana[0]['emailed']), 'sin ip ni emailed.error');
-    T::same([false, 'ana@acme.es', 'TT0020210'], [$ana[0]['emailed']['team'], $ana[0]['customer']['email'], $ana[0]['lines'][0]['ref']], 'el resto del pedido sigue igual (también emailed.team)');
+    T::same(2, count($ana), 'la propietaria ve los dos presupuestos, también el de otro correo');
+    foreach ($ana as $o) T::true(!array_key_exists('ip', $o) && !array_key_exists('error', $o['emailed']), 'sin ip ni emailed.error (' . $o['number'] . ')');
+    $suyo = array_values(array_filter($ana, function ($o) { return $o['customer']['email'] === 'ana@acme.es'; }))[0];
+    T::same([false, 'TT0020210'], [$suyo['emailed']['team'], $suyo['lines'][0]['ref']], 'el resto del pedido sigue igual (también emailed.team)');
     foreach ([['token de sesión de manager', $tJ], ['token maestro', MASTER_TOKEN]] as [$who, $t]) {
         $all = Router::handle(req('GET', '/orders', null, bearer($t)))->body['orders'];
         $mine = array_values(array_filter($all, function ($o) { return $o['customer']['email'] === 'ana@acme.es'; }))[0];
         T::same([2, '198.51.100.44', 'Resend respondió 403'], [count($all), $mine['ip'], $mine['emailed']['error']], "$who: ve todos los pedidos con la IP y el error del correo");
     }
-    // un anónimo que pone el correo de Ana en SU pedido lo ve aparecer en la lista de Ana (la regla no cambia), pero sin IP
-    so_post(goodOrder(['customer' => so_customer(['name' => 'Intruso', 'email' => 'ANA@acme.es'])]), '198.51.100.99');
-    $ana2 = Router::handle(req('GET', '/orders', null, bearer($tA)))->body['orders'];
-    T::same([2, false], [count($ana2), array_key_exists('ip', $ana2[0])], 'un pedido ajeno con su correo aparece en la lista de Ana, pero sin la IP de quien lo hizo');
 }
 
-/** D7 · El listado de pedidos no revienta con miles: un manager recibe los 300 más recientes y un cliente hasta 100 de los suyos, con truncated:true si se cortó. */
+/** D7 · El listado de pedidos no revienta con miles: un manager y un propietario (client) reciben los 300 más recientes, con truncated:true si se cortó. */
 function test_d7_orders_list_is_capped()
 {
     fresh(); seedPrices();
     Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => PW_ANA]);
-    Users::create(['email' => 'bea@acme.es', 'name' => 'Bea', 'role' => 'client', 'password' => 'Clave-Otra-Persona-2026']);
     for ($i = 1; $i <= 470; $i++) {
         $num = 'TV-20261001-' . str_pad((string) $i, 4, '0', STR_PAD_LEFT);
-        $mail = $i % 4 === 0 ? 'ana@acme.es' : ($i === 3 ? 'bea@acme.es' : 'otro@x.es');
+        $mail = $i % 4 === 0 ? 'ana@acme.es' : 'otro@x.es';
         Store::put('order:' . $num, ['number' => $num, 'at' => gmdate('Y-m-d\TH:i:s.000\Z', 1790000000 + $i * 60), 'customer' => ['name' => 'N', 'email' => $mail], 'lines' => [], 'total' => 1, 'ip' => '10.0.0.1', 'emailed' => ['team' => true, 'error' => '']], 86400);
     }
     $tM = login_token('ana@acme.es', PW_ANA);
     $m = Router::handle(req('GET', '/orders', null, master()))->body;
     T::same([300, true, 'TV-20261001-0470', 'TV-20261001-0171'], [count($m['orders']), $m['truncated'] ?? false, $m['orders'][0]['number'], $m['orders'][299]['number']], 'manager: los 300 más recientes, el último primero, y truncated');
     $a = Router::handle(req('GET', '/orders', null, bearer($tM)))->body;
-    T::same([100, true, 'TV-20261001-0468'], [count($a['orders']), $a['truncated'] ?? false, $a['orders'][0]['number']], 'cliente con 117 pedidos: 100 y truncated');
-    $b = Router::handle(req('GET', '/orders', null, bearer(login_token('bea@acme.es', 'Clave-Otra-Persona-2026'))))->body;
-    T::same([1, false], [count($b['orders']), array_key_exists('truncated', $b)], 'cliente con uno solo: sin truncated');
+    T::same([300, true, 'TV-20261001-0470', 'TV-20261001-0171'], [count($a['orders']), $a['truncated'] ?? false, $a['orders'][0]['number'], $a['orders'][299]['number']], 'propietario: la misma lista (300, truncated), venga de quien venga');
+    T::true(!array_key_exists('ip', $a['orders'][0]), 'y sin ip');
     for ($i = 471; $i <= 500; $i++) Store::delete('order:TV-20261001-' . str_pad((string) $i, 4, '0', STR_PAD_LEFT));
     for ($i = 1; $i <= 170; $i++) Store::delete('order:TV-20261001-' . str_pad((string) $i, 4, '0', STR_PAD_LEFT));
     $m2 = Router::handle(req('GET', '/orders', null, master()))->body;
     T::same([300, false], [count($m2['orders']), array_key_exists('truncated', $m2)], 'manager con exactamente 300: sin truncated');
+    $a2 = Router::handle(req('GET', '/orders', null, bearer($tM)))->body;
+    T::same([300, false], [count($a2['orders']), array_key_exists('truncated', $a2)], 'propietario con exactamente 300: sin truncated');
 }
 
 /** D7/W8 · Nombres como «constructor», «__proto__» o «toString» no son referencias del catálogo (en PHP los arrays no tienen el problema; se cubre con una prueba). */

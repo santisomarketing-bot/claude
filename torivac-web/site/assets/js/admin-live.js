@@ -1,9 +1,9 @@
 /**
  * [ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales.
  *
- *  Roles:  manager → Resumen · Pedidos · Mensajes · Precios · Propuestas · Contenido · Blog · Usuarios · Actividad · Estadísticas · Ajustes
- *          cliente → Presupuestador · Mis presupuestos · Lista de precios · Estadísticas
- *  El rol lo decide SIEMPRE el servidor (token firmado); este fichero solo decide qué menús mostrar. Un cliente que llamase a la API de un manager recibiría 403.
+ *  Roles:  manager → Resumen · Presupuestos recibidos · Mensajes · Precios · Propuestas · Contenido · Blog · Usuarios · Actividad · Estadísticas · Ajustes
+ *          Propietario (rol `client` del API: las personas DUEÑAS de la web, no compradores; internamente 'cliente') → Nuevo presupuesto · Presupuestos recibidos · Lista de precios · Estadísticas
+ *  El rol lo decide SIEMPRE el servidor (token firmado); este fichero solo decide qué menús mostrar. Un propietario que llamase a la API de un manager recibiría 403.
  *  Acceso en dos pasos: con la contraseña buena el servidor puede pedir un código que llega por correo (POST /api/auth/login → {step:'code'}); aquí se pinta esa segunda pantalla y se abre la sesión con POST /api/auth/verify.
  *
  *  Se carga en lugar de admin.js cuando la web se compila con TORIVAC_API (ver site/build.mjs). Sin API, el demo (admin.js) sigue funcionando solo.
@@ -96,43 +96,31 @@
 
   // ───────────────────────────────────────── [VIEWS] cada vista devuelve Promise<string> (HTML)
   var NAV = {
-    manager: [['resumen', 'Resumen', '◧'], ['pedidos', 'Pedidos', '☰'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['blog', 'Blog', '✍'], ['usuarios', 'Usuarios', '☺'], ['actividad', 'Actividad', '☷'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
-    cliente: [['presupuestador', 'Presupuestador', '✚'], ['mis', 'Mis presupuestos', '☰'], ['lista', 'Lista de precios', '€'], ['estadisticas', 'Estadísticas', '◔']],
+    manager: [['resumen', 'Resumen', '◧'], ['recibidos', 'Presupuestos recibidos', '☰'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['blog', 'Blog', '✍'], ['usuarios', 'Usuarios', '☺'], ['actividad', 'Actividad', '☷'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
+    cliente: [['presupuestador', 'Nuevo presupuesto', '✚'], ['recibidos', 'Presupuestos recibidos', '☰'], ['lista', 'Lista de precios', '€'], ['estadisticas', 'Estadísticas', '◔']],
   };
   var V = {};
-  var cache = { orders: [] };                       // últimos pedidos cargados (para regenerar su PDF sin volver a pedirlos)
 
   /** Aviso del Resumen cuando el correo no funciona (sin completar o el último envío falló): los pedidos y mensajes se guardan igual, pero nadie recibe el aviso. '' si todo va bien. */
   function mailWarn(ms) {
     if (!ms.ok) return '';
     var bad = !ms.configured || (ms.last && !ms.last.ok);
-    return bad ? '<p class="notice"><strong>El correo no está funcionando.</strong> ' + (!ms.configured ? 'Falta configurar el envío' + (ms.problems && ms.problems.length ? ' (' + ms.problems.map(esc).join(', ') + ')' : '') + '.' : 'El último envío falló' + (ms.last && ms.last.error ? ': ' + esc(ms.last.error) : '') + '.') + ' Los pedidos y los mensajes se guardan igualmente (míralos en Pedidos y Mensajes). <a href="#ajustes">Revisar y enviar una prueba</a></p>' : '';
+    return bad ? '<p class="notice"><strong>El correo no está funcionando.</strong> ' + (!ms.configured ? 'Falta configurar el envío' + (ms.problems && ms.problems.length ? ' (' + ms.problems.map(esc).join(', ') + ')' : '') + '.' : 'El último envío falló' + (ms.last && ms.last.error ? ': ' + esc(ms.last.error) : '') + '.') + ' Los presupuestos y los mensajes se guardan igualmente (míralos en Presupuestos recibidos y Mensajes). <a href="#ajustes">Revisar y enviar una prueba</a></p>' : '';
   }
   /** Vista Resumen (manager): con datos del Worker, KPIs, estado de la hoja de precios y sincronización, y los 5 últimos pedidos. */
   V.resumen = function () {
     return Promise.all([http('GET', '/api/orders'), http('GET', '/api/prices'), http('GET', '/api/proposals/state'), adminData(), http('GET', '/api/mail/status')]).then(function (a) {
       var o = (a[0].orders || []), P = (a[1].prices || {}), meta = a[1].meta || {}, st = (a[2].state || {}), props = TV.proposals || [];
       var pend = props.filter(function (p) { return !st[p.id]; }).length, tot = o.reduce(function (n, x) { return n + (x.total || 0); }, 0);
-      return '<h1>Resumen</h1><div class="kpis">' + kpi('Pedidos', o.length) + kpi('Importe pedido', money(tot)) + kpi('Referencias con precio', Object.keys(P.items || {}).length) + kpi('Propuestas pendientes', pend) + '</div>' + mailWarn(a[4] || {}) +
+      return '<h1>Resumen</h1><div class="kpis">' + kpi('Presupuestos recibidos', o.length) + kpi('Importe recibido', money(tot)) + kpi('Referencias con precio', Object.keys(P.items || {}).length) + kpi('Propuestas pendientes', pend) + '</div>' + mailWarn(a[4] || {}) +
         '<div class="cols"><section class="panel"><h2>Hoja de precios</h2><p>Origen: <strong>' + esc(P.source || '—') + '</strong><br>Modo: <strong>' + esc(P.mode || '—') + '</strong> · actualizada ' + esc(when(P.updated_at)) + '</p>' +
         '<p class="muted small">Última sincronización: ' + esc(when(meta.at)) + ' (' + esc(meta.reason || '—') + ') · ' + esc(meta.changed || 0) + ' cambian, ' + esc(meta.added || 0) + ' nuevas.</p></section>' +
-        '<section class="panel"><h2>Últimos pedidos</h2>' + (o.length ? '<ul>' + o.slice(0, 5).map(function (x) { return '<li><span class="mono">' + esc(x.number) + '</span> · ' + esc(x.customer.name) + ' · ' + money(x.total) + '</li>'; }).join('') + '</ul>' : '<p class="muted">Todavía no hay pedidos.</p>') + '</section></div>';
+        '<section class="panel"><h2>Últimos presupuestos</h2>' + (o.length ? '<ul>' + o.slice(0, 5).map(function (x) { return '<li><a class="mono" href="#recibidos/' + encodeURIComponent(x.number) + '">' + esc(x.number) + '</a> · ' + esc(x.customer.name) + ' · ' + money(x.total) + '</li>'; }).join('') + '</ul>' : '<p class="muted">Todavía no ha llegado ningún presupuesto.</p>') + '</section></div>';
     });
   };
 
-  /** Tabla de pedidos (manager: todos · cliente: solo los suyos, lo filtra el servidor). */
-  function ordersView(title) {
-    return http('GET', '/api/orders').then(function (r) {
-      if (!r.ok) return '<h1>' + esc(title) + '</h1><p class="notice">' + esc(r.error || 'No se pudieron cargar los pedidos') + '</p>';
-      cache.orders = r.orders || [];
-      var rows = cache.orders.map(function (x, i) { return '<tr><td class="mono">' + esc(x.number) + (x.emailed && !x.emailed.team && (session() || {}).role === 'manager' ? '<br><span class="tag" title="' + esc(x.emailed.error || '') + '">sin aviso por correo</span>' : '') + '</td><td>' + esc(when(x.at)) + '</td><td>' + esc(x.customer.name || '') + '<br><span class="muted small">' + esc(x.customer.company || '') + ' ' + esc(x.customer.email || '') + '</span></td><td class="num">' + x.lines.length + '</td><td class="num">' + money(x.total) + (x.prices && x.prices.mode !== 'live' ? ' <span class="tag">DEMO</span>' : '') + '</td><td><button class="btn sm ghost" data-pdf="' + i + '">PDF</button></td></tr>'; }).join('');
-      return '<h1>' + esc(title) + '</h1>' + (cache.orders.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Nº</th><th>Fecha</th><th>Cliente</th><th>Líneas</th><th>Importe</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + rows + '</tbody></table></div><p><button class="btn sm ghost" data-export-orders>Exportar JSON</button></p>' : '<p class="notice">Todavía no hay pedidos.</p>');
-    });
-  }
-  /** Vista Pedidos (manager): tabla de todos los pedidos que devuelve el Worker. */
-  V.pedidos = function () { return ordersView('Pedidos'); };
-  /** Vista «Mis presupuestos» (cliente): sus propios pedidos; el filtro por usuario lo aplica el servidor. */
-  V.mis = function () { return ordersView('Mis presupuestos'); };
+  /** Vista «Presupuestos recibidos» (manager y propietario): lista, detalle, edición, PDF y reenvío por correo (admin-quotes.js; contrato en docs/PRESUPUESTOS-RECIBIDOS.md). */
+  V.recibidos = function (s, arg) { return TV.AdminQuotes.view(PCTX, arg || ''); };
 
   /** Vista Lista de precios (cliente): precios vigentes del Worker, sin IVA, con sus tramos (hasta 600 referencias). */
   V.lista = function () {
@@ -192,12 +180,12 @@
   /** Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), tu cuenta y las copias de seguridad (admin-security.js), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag). */
   V.ajustes = function () {
     return Promise.all([http('GET', '/api/auth/me'), http('GET', '/api/diag'), http('GET', '/api/mail/status')]).then(function (a) {
-      return TV.AdminSecurity.settingsPanels(PCTX, (a[0] || {}).user).then(function (sec) { return a.concat([sec]); });
+      return TV.AdminSecurity.settingsPanels(PCTX, (a[0] || {}).user).then(function (sec) { return TV.AdminGoogle.panel(PCTX).then(function (gg) { return a.concat([sec, gg]); }); });
     }).then(function (a) {
-      var r = a[0], dg = a[1] || {}, u = r.user || {}, ms = a[2] || {}, sec = a[3] || '';
+      var r = a[0], dg = a[1] || {}, u = r.user || {}, ms = a[2] || {}, sec = a[3] || '', gg = a[4] || '';
       var sym = { ok: '✓', warn: '⚠', fail: '✗' };
       var diag = dg.ok && dg.checks ? '<section class="panel"><h2>Diagnóstico del servidor</h2><p class="small ' + (dg.fail ? 'notice' : 'muted') + '">' + (dg.fail ? esc(dg.fail) + ' problema(s) impiden que funcione' : 'Puede funcionar') + (dg.warn ? ' · ' + esc(dg.warn) + ' aviso(s)' : '') + '</p><ul class="diag">' + dg.checks.map(function (c) { return '<li><span aria-hidden="true">' + sym[c.status] + '</span> <span class="vh">' + esc(c.status) + ': </span>' + esc(c.msg) + '</li>'; }).join('') + '</ul></section>' : '';
-      return '<h1>Ajustes</h1><section class="panel"><h2>Tu sesión</h2><p>' + esc(u.name || '') + ' · <span class="mono">' + esc(u.sub || u.email || '') + '</span> · ' + esc(u.role || '') + '</p></section>' + sec + mailPanel(ms) + '<section class="panel"><h2>Destinatarios del pedido</h2><p>Se configuran en el servidor, no en la web: en cPanel, <span class="mono">order_to</span> de <span class="mono">api/config.php</span>; en Cloudflare, la variable <span class="mono">ORDER_TO</span> del Worker. La web pública solo muestra el primero (' + esc(((TV.meta && TV.meta.recipients) || [])[0] || '—') + ') por si falla el envío.</p></section>' + diag;
+      return '<h1>Ajustes</h1><section class="panel"><h2>Tu sesión</h2><p>' + esc(u.name || '') + ' · <span class="mono">' + esc(u.sub || u.email || '') + '</span> · ' + esc(u.role || '') + '</p></section>' + sec + mailPanel(ms) + gg + '<section class="panel"><h2>Destinatarios del pedido</h2><p>Se configuran en el servidor, no en la web: en cPanel, <span class="mono">order_to</span> de <span class="mono">api/config.php</span>; en Cloudflare, la variable <span class="mono">ORDER_TO</span> del Worker. La web pública solo muestra el primero (' + esc(((TV.meta && TV.meta.recipients) || [])[0] || '—') + ') por si falla el envío.</p></section>' + diag;
     });
   };
 
@@ -300,7 +288,7 @@
   V.actividad = function () { return TV.AdminSecurity.activityView(PCTX); };
 
   // ───────────────────────────────────────── [ROUTER]
-  /** Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios, propuestas, usuarios y PDF. */
+  /** Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios y mensajes. Presupuestos, propuestas, blog y usuarios tienen sus propios manejadores. */
   function onClick(e) {
     var b = e.target.closest('button,a'); if (!b) return;
     if (b.hasAttribute('data-logout')) logout();
@@ -310,12 +298,6 @@
     else if (b.hasAttribute('data-apply-upload')) applyUpload();
     else if (b.hasAttribute('data-discard')) { draftRows = null; proposal = null; root.querySelector('[data-draft]').innerHTML = ''; }
     else if (b.hasAttribute('data-del-msg')) { if (confirm('¿Borrar este mensaje? No se puede deshacer.')) http('DELETE', '/api/messages/' + encodeURIComponent(b.getAttribute('data-del-msg'))).then(function (r) { if (!r.ok) return fail(r); toast('Mensaje borrado'); render(); }); }
-    else if (b.hasAttribute('data-export-orders')) download(new Blob([JSON.stringify(cache.orders, null, 1)], { type: 'application/json' }), 'pedidos.json');
-    else if (b.hasAttribute('data-pdf')) {
-      var o = cache.orders[+b.getAttribute('data-pdf')]; if (!o) return;
-      var det = { lines: o.lines.map(function (l) { var it = TV.items[l.ref] || {}; return { ref: l.ref, qty: l.qty, item: it, name: (it.n && it.n.es) || l.ref, spec: it.v || '', generic: !!it.d, unit: l.unit, total: l.total }; }), total: o.total, unpriced: o.lines.filter(function (l) { return l.total == null; }).length };
-      var res = TV.makeQuotePdf({ customer: o.customer, number: o.number, detail: det, date: o.at }); download(res.blob(), res.filename);
-    }
   }
   /** Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista. */
   function bind() {
@@ -343,6 +325,8 @@
     });
     if (root.querySelector('[data-pa-list]')) TV.AdminProposals.bind(root, PCTX);
     if (root.querySelector('[data-bl-root]')) TV.AdminBlog.bind(root, PCTX);
+    if (root.querySelector('[data-qr-root]')) TV.AdminQuotes.bind(root, PCTX);
+    if (root.querySelector('[data-gg-root]')) TV.AdminGoogle.bind(root, PCTX);
     if (root.querySelector('[data-sec-root],[data-sec-account]')) TV.AdminSecurity.bind(root, PCTX);
   }
   /** Logotipo de las pantallas de acceso (el mismo que el menú, sobre fondo oscuro). */
@@ -404,7 +388,7 @@
     var seq = ++renderSeq, s = session(), logo = esc(document.getElementById('logo-src').value);
     if (!s) { if (pending) renderCode(); else renderLogin(); return; }
     var nav = NAV[s.role], raw = (location.hash || '#').slice(1) || nav[0][0], cur = raw.split('/')[0], arg = raw.slice(cur.length + 1); if (!nav.some(function (n) { return n[0] === cur; })) { cur = nav[0][0]; arg = ''; }
-    root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + logo + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : 'Cliente') + '</span></div><nav aria-label="Panel">' +
+    root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + logo + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : 'Propietario') + '</span></div><nav aria-label="Panel">' +
       nav.map(function (n) { return '<a href="#' + n[0] + '"' + (n[0] === cur ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + n[2] + '</span>' + esc(n[1]) + '</a>'; }).join('') + '</nav><div class="side-bot"><a href="../index.html">← Ir a la web</a><button class="btn sm ghost" data-logout type="button">Salir (' + esc(s.name || s.email) + ')</button></div></aside><main class="main" id="main"><p class="notice">Cargando…</p></main></div>';
     V[cur](s, arg).then(function (html) { var m = root.querySelector('#main'); if (!m || seq !== renderSeq) return; m.innerHTML = html; bind(); });       // si mientras tanto se pidió otra vista, esta respuesta se ignora
   }

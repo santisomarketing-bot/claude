@@ -23,7 +23,8 @@ Se hace en tres bloques con commit y entrega cada uno: **21a** ajustes, **21b** 
 | Orígenes permitidos `allowed_origins` | `config.php` · `ALLOWED_ORIGINS` | *Ajustes → Seguridad* | no |
 | Primer manager | `admin_token` + `curl` o `create-user.php` | asistente «Crear el primer manager» (pide el `admin_token` como código de instalación) | — |
 | ¿Precios públicos o solo para registrados? (decisión pendiente) | fijo en código | interruptor en *Ajustes → Precios* | no |
-| Conexión con Google (cuenta de servicio, ID de GA4, sitio de Search Console, informes de Looker Studio) | no existe | *Ajustes → Google* (21b) | cuenta de servicio: **sí** |
+| ID de medición de GA4, ID de Ads y etiquetas de conversión | `site/google.config.json` (al compilar) | ✅ **hecho**: *Ajustes → Google* (sin recompilar; [`GOOGLE.md`](GOOGLE.md) §11) | no (son IDs públicos) |
+| Conexión con Google para **métricas** (cuenta de servicio, sitio de Search Console, informes de Looker Studio) | no existe | *Ajustes → Google* (21b) | cuenta de servicio: **sí** |
 
 **Lo que se queda en `config.php`/variables del Worker, a propósito** (si el panel pudiera cambiarlo, un manager comprometido podría hacerse con el servidor): `storage_dir`, `session_secret`, `settings_key` (la clave con la que se cifran los secretos), `trusted_proxies`, `admin_token`. Son 5 líneas que se escriben una vez.
 

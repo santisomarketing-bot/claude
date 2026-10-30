@@ -212,16 +212,18 @@ const dyn404 = (template) => template === 'notfound';
  * Va en el HTML (oculto): sin JavaScript no se muestra y tampoco se mide nada. Solo salen las categorías que están configuradas (Estadísticas = GA4, Publicidad = Ads). Lo maneja assets/js/consent.js.
  */
 export function cookieBar(ctx) {
-  const { lang, site } = ctx, g = site.google;
+  const { lang, site } = ctx, g = site.google, rt = !!g.runtime;
   const policy = site.cookies?.[lang] ? `<a href="${attr(ctx.href(site.cookies[lang]))}">${esc(t('cookie_more', lang))}</a>` : '';
   /** Casilla de una categoría opcional del aviso (a = estadísticas, p = publicidad) con su explicación. */
   const row = (cat, k) => `<label class="cookie-row"><input type="checkbox" data-cat="${cat}"><span><b>${esc(t(k, lang))}</b> ${esc(t(k + '_d', lang))}</span></label>`;
+  /** Párrafo del aviso (`both` = estadísticas y publicidad · `stats` = solo estadísticas); en runtime salen los dos y consent.js deja visible el que toca. */
+  const text = (kind, k, on) => `<p data-cookie-text="${kind}"${on ? '' : ' hidden'}>${esc(t(k, lang))} ${policy}</p>`;
   return `<div class="cookie-bar no-print" id="tv-cookies" role="region" aria-label="${attr(t('cookie_region', lang))}" data-saved="${attr(t('cookie_saved', lang))}" hidden>
   <div class="container cookie-in">
-    <div class="cookie-txt"><p class="cookie-title">${esc(t('cookie_title', lang))}</p><p>${esc(t(g.ads ? 'cookie_text' : 'cookie_text_stats', lang))} ${policy}</p></div>
+    <div class="cookie-txt"><p class="cookie-title">${esc(t('cookie_title', lang))}</p>${rt ? text('both', 'cookie_text', !!g.ads) + text('stats', 'cookie_text_stats', !g.ads) : text(g.ads ? 'both' : 'stats', g.ads ? 'cookie_text' : 'cookie_text_stats', true)}</div>
     <div class="cookie-set" id="tv-cookies-set" hidden>
       <label class="cookie-row"><input type="checkbox" checked disabled><span><b>${esc(t('cookie_necessary', lang))}</b> ${esc(t('cookie_necessary_d', lang))}</span></label>
-      ${g.ga4 ? row('a', 'cookie_stats') : ''}${g.ads ? row('p', 'cookie_ads') : ''}
+      ${rt || g.ga4 ? row('a', 'cookie_stats') : ''}${rt || g.ads ? row('p', 'cookie_ads') : ''}
     </div>
     <div class="cookie-btns">
       <button class="btn" type="button" data-cookie="reject">${esc(t('cookie_reject', lang))}</button>
@@ -243,13 +245,18 @@ function policyInline(ctx, text) {
 }
 /** Página «Política de cookies»: { hero, body, title } como genericPage. Lo que lista depende de lo configurado (cookieBlocks). */
 export function cookiePage(ctx, title) {
-  const { lang, site } = ctx, g = site.google || {};
-  const blocks = cookieBlocks(lang, { ga4: !!g.active && !!g.ga4, ads: !!g.active && !!g.ads, themeSwitch: !!site.themeSwitch });
+  const { lang, site } = ctx, g = site.google || {}, rt = !!g.runtime;
+  const seed = { a: !!g.ga4, p: !!g.ads };
+  /** ¿Se ve ahora una sección etiquetada `sec`, según lo configurado al compilar? (consent.js la corrige después con los ajustes del servidor). */
+  const on = (sec) => ({ a: seed.a, p: seed.p, any: seed.a || seed.p, none: !(seed.a || seed.p) }[sec]);
+  const blocks = cookieBlocks(lang, { ga4: !!g.active && !!g.ga4, ads: !!g.active && !!g.ads, themeSwitch: !!site.themeSwitch, all: rt });
   const lead = blocks.find((b) => b.t === 'lead');
+  /** Atributos de una sección etiquetada (solo en runtime): `data-cookie-sec` y, si no toca, `hidden`. */
+  const at = (sec) => (rt && sec ? ` data-cookie-sec="${sec}"${on(sec) ? '' : ' hidden'}` : '');
   const html = blocks.filter((b) => b.t !== 'lead').map((b) => {
-    if (b.t === 'h2' || b.t === 'h3') return `<${b.t}>${esc(b.x)}</${b.t}>`;
-    if (b.t === 'p') return `<p>${policyInline(ctx, b.x)}</p>`;
-    return `<div class="tbl-wrap" tabindex="0" role="region" aria-label="${attr(b.cols.join(' · '))}"><table class="spec cookie-table"><thead><tr>${b.cols.map((c) => `<th scope="col">${esc(c)}</th>`).join('')}</tr></thead><tbody>${b.rows.map((r) => `<tr>${r.map((c, i) => (i === 0 ? `<th scope="row">${c.split(', ').map((n) => `<code>${esc(n)}</code>`).join('<br>')}</th>` : `<td>${esc(c)}</td>`)).join('')}</tr>`).join('')}</tbody></table></div>`;
+    if (b.t === 'h2' || b.t === 'h3') return `<${b.t}${at(b.sec)}>${esc(b.x)}</${b.t}>`;
+    if (b.t === 'p') return `<p${at(b.sec)}>${policyInline(ctx, b.x)}</p>`;
+    return `<div class="tbl-wrap"${at(b.sec)} tabindex="0" role="region" aria-label="${attr(b.cols.join(' · '))}"><table class="spec cookie-table"><thead><tr>${b.cols.map((c) => `<th scope="col">${esc(c)}</th>`).join('')}</tr></thead><tbody>${b.rows.map((r) => `<tr${at(r[4])}>${r.slice(0, 4).map((c, i) => (i === 0 ? `<th scope="row">${c.split(', ').map((n) => `<code>${esc(n)}</code>`).join('<br>')}</th>` : `<td>${esc(c)}</td>`)).join('')}</tr>`).join('')}</tbody></table></div>`;
   }).join('\n');
   return {
     title, description: lead ? lead.x : '',

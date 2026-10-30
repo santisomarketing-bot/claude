@@ -1,10 +1,11 @@
 <?php
 /**
  * [ROUTER] Rutas del API (equivalentes a workers/api/src/index.js: la web usa el mismo contrato con el Worker o con este PHP).
- *   PÚBLICO   GET /api/health · GET /api/prices · POST /api/order · POST /api/contact · POST /api/auth/login · POST /api/auth/verify · POST /api/auth/resend (código por correo) · GET /api/backups/<archivo>?t=… (descarga firmada)
- *   USUARIO   GET /api/auth/me · POST /api/auth/logout (cierra TODAS las sesiones de esa persona) · POST /api/auth/password (cambiar la propia) · POST /api/auth/devices/forget · GET /api/orders (manager: los 300 últimos; cliente: los suyos, hasta 100)
+ *   PÚBLICO   GET /api/health · GET /api/prices · GET /api/google (qué mide la web: solo IDs públicos) · POST /api/order · POST /api/contact · POST /api/auth/login · POST /api/auth/verify · POST /api/auth/resend (código por correo) · GET /api/backups/<archivo>?t=… (descarga firmada)
+ *   USUARIO   GET /api/auth/me · POST /api/auth/logout (cierra TODAS las sesiones de esa persona) · POST /api/auth/password (cambiar la propia) · POST /api/auth/devices/forget · PRESUPUESTOS RECIBIDOS (manager y client = propietario, mismo contrato que workers/api: docs/PRESUPUESTOS-RECIBIDOS.md, lógica en Quotes.php):
+ *             GET /api/orders (los 300 últimos; el propietario igual, sin ip ni emailed.error) · GET|PUT /api/orders/:número (ver · editar con rev/409) · POST /api/orders/:número/send (reenviar por correo con PDF; 409 mail_off)
  *   MANAGER   GET /api/diag · GET /api/admin/data · GET /api/messages?limit= · DELETE /api/messages/:id · POST /api/mail/test · GET /api/mail/status · POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
- *             GET|POST /api/proposals/state · GET|POST|DELETE /api/users · POST /api/users/:correo/unlock|two-step|password · GET /api/activity · /api/backups (copias de seguridad) · /api/blog/… (entradas del blog e imágenes: ver BlogApi.php)
+ *             GET|PUT /api/settings/google (medición de Google: IDs y conversiones) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · POST /api/users/:correo/unlock|two-step|password · GET /api/activity · /api/backups (copias de seguridad) · /api/blog/… (entradas del blog e imágenes: ver BlogApi.php)
  *   CRON      GET /api/cron?token=… (alternativa a `php cron.php` si el hosting no deja programar por línea de comandos)
  *
  * [LIMITES] Todo límite por visitante usa Request::ipKey (una IPv6 cuenta por su /64). ACCESO (POST /auth/login), contra la fuerza bruta: 5 contraseñas erróneas desde el mismo visitante contra la misma
@@ -34,12 +35,8 @@ final class Router
     const CRON_FAILS = 10;
     /** Ventana de los fallos de token y de cron: 10 min. */
     const FAIL_WINDOW_MS = 600000;
-    /** Pedidos que se devuelven como máximo a un manager. */
-    const ORDERS_MANAGER = 300;
-    /** Pedidos que se devuelven como máximo a un cliente. */
-    const ORDERS_CLIENT = 100;
-    /** Ficheros de pedidos (los más recientes) que se miran como mucho al listar los de un cliente. */
-    const ORDERS_CLIENT_SCAN = 3000;
+    /** Presupuestos que se devuelven como máximo en la lista (a un manager y a un propietario por igual: el rol client es el dueño de la web y los ve todos). */
+    const ORDERS_MAX = 300;
 
     /** Quién hace la petición que se está atendiendo (lo pone route() al autenticar; handle() lo usa para anotar la acción en el registro de actividad). */
     private static $actor = null;
@@ -295,28 +292,25 @@ final class Router
         return new Response(['ok' => true, 'meta' => self::cron()]);
     }
 
-    /** Un pedido tal como lo ve un cliente: sin la IP desde la que se hizo ni el motivo técnico del fallo del correo (eso es solo para managers). */
-    private static function forClient(array $o): array
+    /** Un pedido tal como lo ve un propietario (rol client): sin la IP desde la que se hizo ni el motivo técnico del fallo del correo (eso es solo para managers). */
+    public static function forClient(array $o): array
     {
         unset($o['ip']);
         if (isset($o['emailed']) && is_array($o['emailed'])) unset($o['emailed']['error']);
         return $o;
     }
 
-    /** GET /orders: un manager recibe los 300 pedidos más recientes; un cliente, los suyos (los que llevan su correo) hasta 100, mirando solo los 3000 más recientes. `truncated:true` si se cortó. */
+    /** GET /orders: los 300 presupuestos más recientes, el último primero, para un manager y también para un propietario (rol client), que los ve todos pero sin `ip` ni `emailed.error`. `truncated:true` si se cortó. */
     private static function orders(array $who): Response
     {
         $mgr = $who['role'] === 'manager';
-        $cap = $mgr ? self::ORDERS_MANAGER : self::ORDERS_CLIENT;
         $names = Store::names('order:');                                                        // solo los nombres: no se lee ningún fichero hasta saber cuáles interesan
         $truncated = false;
-        if (!$mgr && count($names) > self::ORDERS_CLIENT_SCAN) { $names = array_slice($names, 0, self::ORDERS_CLIENT_SCAN); $truncated = true; }
         $out = [];
         foreach ($names as $k) {
             $o = Store::get($k);
             if (!is_array($o)) continue;
-            if (!$mgr && ($o['customer']['email'] ?? '') !== $who['sub']) continue;
-            if (count($out) >= $cap) { $truncated = true; break; }
+            if (count($out) >= self::ORDERS_MAX) { $truncated = true; break; }
             $out[] = $mgr ? $o : self::forClient($o);
         }
         usort($out, function ($a, $b) { return strcmp((string) ($b['at'] ?? ''), (string) ($a['at'] ?? '')); });
@@ -383,6 +377,7 @@ final class Router
         $m = $req->method;
         if ($path === '/health') return self::health();
         if ($path === '/prices' && $m === 'GET') return self::prices($req);
+        if ($path === '/google' && $m === 'GET') return GoogleSettings::handlePublic();                      // qué mide la web (solo IDs públicos); lo edita un manager en Ajustes → Google
         if ($path === '/order' && $m === 'POST') return Orders::handleOrder($req, $req->json(), $catalog);
         if ($path === '/contact' && $m === 'POST') return Orders::handleContact($req, $req->json());
         if ($path === '/auth/login' && $m === 'POST') return self::login($req);
@@ -406,6 +401,7 @@ final class Router
             return Security::forgetDevices((string) $who['sub']) ? new Response(['ok' => true]) : new Response(['ok' => false, 'error' => 'No existe ese usuario'], 404);
         }
         if ($path === '/orders' && $m === 'GET') return self::orders($who);
+        if (strpos($path, '/orders/') === 0) return Quotes::handle($req, $who);                  // ver, editar y reenviar un presupuesto (manager y propietario); un número con forma rara es 404, no 403
         if (!Auth::requireRole($who, 'manager')) return new Response(['ok' => false, 'error' => 'Solo para managers'], 403);
         if ($path === '/diag' && $m === 'GET') return new Response(['ok' => true] + Diag::run(false, null, $req));                            // autodiagnóstico de la instalación (solo managers)
         if ($path === '/admin/data' && $m === 'GET') {                                          // propuestas y datos de cobertura: ya no se publican en la web, solo los ven los managers
@@ -414,6 +410,8 @@ final class Router
         }
         if ($path === '/messages' && $m === 'GET') return self::messages($req);                                // mensajes de contacto (datos personales: solo managers)
         if (strpos($path, '/messages/') === 0 && $m === 'DELETE') return Messages::delete(rawurldecode(substr($path, 10))) ? new Response(['ok' => true]) : new Response(['ok' => false, 'error' => 'No existe ese mensaje'], 404);
+        if ($path === '/settings/google' && $m === 'GET') return GoogleSettings::handleGet();                // ajustes de Google del panel (solo managers)
+        if ($path === '/settings/google' && $m === 'PUT') return GoogleSettings::handlePut($req, $who);
         if ($path === '/mail/test' && $m === 'POST') return self::mailTest($req, $who);
         if ($path === '/mail/status' && $m === 'GET') return new Response(['ok' => true] + Mail::status());
         if ($path === '/prices/refresh' && $m === 'POST') return new Response(['ok' => true, 'meta' => Sheets::sync(['reason' => 'manual:' . $who['sub'], 'mode' => ($req->json() ?? [])['mode'] ?? null])]);

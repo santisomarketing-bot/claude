@@ -2,7 +2,7 @@
 // [QA-ADMIN-LIVE] Sesión 7 · Panel REAL (admin-live.js) contra el backend real (sin red, correo ni IA reales).
 //   node scripts/qa-admin-live.mjs            contra el Worker torivac-api (en memoria)
 //   node scripts/qa-admin-live.mjs --php      contra el API PHP de cPanel (php -S) · ver scripts/lib/backends.mjs
-// Comprueba: login (error y acierto), menús por rol, pedidos (manager ve todos, cliente solo los suyos), precios (estado, subida con vista previa y aplicar,
+// Comprueba: login (error y acierto), menús por rol, presupuestos recibidos (manager y propietario ven todos; ver, editar, descargar y reenviar), precios (estado, subida con vista previa y aplicar,
 // sincronización manual), instrucción por IA (propone → vista previa → confirmar cambios grandes → aplicar), usuarios (alta/baja), propuestas persistentes,
 // que un cliente NO puede llamar a la API de un manager (403) aunque lo intente desde la consola, las propuestas editables (editar, probar en la página real, aplicar, descartar y descargar), los mensajes de contacto (ver, estado del aviso, borrar), el panel de Correo (prueba
 // y fallo explicado) y el bloqueo de una hora tras 5 contraseñas erróneas.
@@ -77,23 +77,31 @@ console.log('\n1) acceso');
   ok(!errs.length, 'sin errores de JS' + (errs.length ? ': ' + errs[0] : ''));
   await ctx.close(); }
 
-console.log('\n2) pedidos: el manager ve todos, cada cliente solo los suyos');
-{ const m = await newPage(); await login(m.page, 'jefa@torivac.com', 'Manager-Clave-2026'); await m.page.click('.side nav a[href="#pedidos"]'); await m.page.waitForSelector('table.spec');
-  ok((await m.page.locator('table.spec tbody tr').count()) === 1 && /Marta Taller/.test(await m.page.locator('table.spec tbody').innerText()), `manager ve el pedido ${order.number}`);
+console.log('\n2) Presupuestos recibidos: el manager y el propietario ven los mismos; el propietario sin datos internos; el PDF sale desde la lista');
+{ const m = await newPage(); await login(m.page, 'jefa@torivac.com', 'Manager-Clave-2026'); await m.page.click('.side nav a[href="#recibidos"]'); await m.page.waitForSelector('table.spec');
+  ok((await m.page.locator('table.spec tbody tr').count()) === 1 && /Marta Taller/.test(await m.page.locator('table.spec tbody').innerText()), `manager ve el presupuesto ${order.number}`);
+  ok(/solicitante/i.test(await m.page.locator('table.spec thead').innerText()) && !/cliente/i.test(await m.page.locator('table.spec thead').innerText()), 'la columna dice «Solicitante» (quien lo pidió), no «Cliente»');
   ok(/sin aviso por correo/i.test(await m.page.locator('table.spec tbody').innerText()), 'el manager ve la marca «sin aviso por correo» (el correo no salió)');
-  const [dl] = await Promise.all([m.page.waitForEvent('download'), m.page.click('[data-pdf]')]); ok(/\.pdf$/.test(dl.suggestedFilename()), `PDF regenerado (${dl.suggestedFilename()})`);
+  const [dl] = await Promise.all([m.page.waitForEvent('download'), m.page.click('[data-qr-pdf]')]); ok(/\.pdf$/.test(dl.suggestedFilename()) && dl.suggestedFilename().includes(order.number), `PDF regenerado desde la lista (${dl.suggestedFilename()})`);
   await m.ctx.close();
   const c = await newPage(); await login(c.page, 'marta@taller.es', 'Cliente-Clave-2026'); await c.page.waitForSelector('.side nav a');
-  ok((await navs(c.page)).length === 4 && !(await navs(c.page)).some((n) => /Usuarios|Precios$|Blog/.test(n)), `cliente: ${(await navs(c.page)).join(' · ')}`);
-  await c.page.click('.side nav a[href="#mis"]'); await c.page.waitForSelector('table.spec');
-  ok((await c.page.locator('table.spec tbody tr').count()) === 1 && !/sin aviso por correo/i.test(await c.page.locator('table.spec tbody').innerText()), 'Marta ve su pedido (sin la marca interna)');
-  // un cliente NO puede usar la API de manager aunque lo intente a mano
+  const cn = (await navs(c.page)).map((n) => n.slice(1).trim());       // sin el icono de cada enlace
+  ok(cn.join(' · ') === 'Nuevo presupuesto · Presupuestos recibidos · Lista de precios · Estadísticas', `propietario: ${cn.join(' · ')}`);
+  ok((await c.page.locator('.side .role').textContent()).trim() === 'Propietario', 'el panel lo llama «Propietario» (es el dueño de la web, no un comprador)');
+  await c.page.click('.side nav a[href="#recibidos"]'); await c.page.waitForSelector('table.spec');
+  ok((await c.page.locator('table.spec tbody tr').count()) === 1 && !/sin aviso por correo/i.test(await c.page.locator('table.spec tbody').innerText()), 'el propietario ve el presupuesto recibido (sin la marca interna del correo)');
+  // un propietario NO puede usar la API de manager aunque lo intente a mano; sí lee los presupuestos, pero sin IP ni error de correo
   const tok = JSON.parse(await c.page.evaluate(() => sessionStorage.getItem('tv_live'))).token;
   const st = await c.page.evaluate(async ([a, t]) => ({ users: (await fetch(a + '/api/users', { headers: { Authorization: 'Bearer ' + t } })).status, refresh: (await fetch(a + '/api/prices/refresh', { method: 'POST', headers: { Authorization: 'Bearer ' + t } })).status, ai: (await fetch(a + '/api/prices/ai', { method: 'POST', headers: { Authorization: 'Bearer ' + t, 'Content-Type': 'application/json' }, body: '{"instruction":"sube todo un 50 %"}' })).status }), [API, tok]);
-  ok(st.users === 403 && st.refresh === 403 && st.ai === 403, `cliente → /api/users ${st.users} · /prices/refresh ${st.refresh} · /prices/ai ${st.ai} (403)`);
+  ok(st.users === 403 && st.refresh === 403 && st.ai === 403, `propietario → /api/users ${st.users} · /prices/refresh ${st.refresh} · /prices/ai ${st.ai} (403)`);
+  const own = await c.page.evaluate(async ([a, t]) => (await (await fetch(a + '/api/orders', { headers: { Authorization: 'Bearer ' + t } })).json()).orders, [API, tok]);
+  ok(own.length === 1 && !('ip' in own[0]) && !(own[0].emailed && 'error' in own[0].emailed), 'la API le da el presupuesto sin la IP del solicitante ni el error del correo');
+  const mgr = (await fetch(API + '/api/orders', { headers: { Authorization: 'Bearer ' + MASTER_TOKEN } }).then((r) => r.json())).orders;
+  ok(mgr.length === 1 && 'ip' in mgr[0], 'y el manager sí ve la IP');
   await c.ctx.close();
-  const o = await newPage(); await login(o.page, 'otro@cliente.es', 'Cliente-Clave-2026'); await o.page.click('.side nav a[href="#mis"]'); await o.page.waitForSelector('main .notice:has-text("Todavía no hay pedidos")', { timeout: 5000 }).catch(() => {});
-  ok(/Todavía no hay pedidos/.test(await o.page.locator('main').innerText()), 'otro cliente no ve el pedido de Marta');
+  // otro propietario (otro correo) ve el MISMO presupuesto: ya no se reparte «por dueño del pedido»
+  const o = await newPage(); await login(o.page, 'otro@cliente.es', 'Cliente-Clave-2026'); await o.page.click('.side nav a[href="#recibidos"]'); await o.page.waitForSelector('table.spec');
+  ok((await o.page.locator('table.spec tbody tr').count()) === 1 && /Marta Taller/.test(await o.page.locator('table.spec tbody').innerText()), 'otro propietario ve también el presupuesto recibido (los propietarios ven todos)');
   await o.ctx.close(); }
 
 console.log('\n3) precios: subir hoja con vista previa y aplicar');
@@ -275,6 +283,153 @@ console.log('\n9) propuestas editables: escribir tu versión, probarla en la pá
   ok(!errs.length, 'sin errores de JS' + (errs.length ? ': ' + errs[0] : ''));
   await ctx.close(); }
 
+console.log('\n10) Ajustes → Google: el manager pone los IDs y las etiquetas de conversión sin recompilar; la web los lee; el propietario no entra');
+{ const { ctx, page, errs } = await newPage(); await login(page, 'jefa@torivac.com', 'Manager-Clave-2026');
+  /** La vista pública de los ajustes de Google (GET /api/google): lo mismo que recibe un visitante. */
+  const pubG = () => fetch(API + '/api/google').then((r) => r.json()).then((j) => j.google);
+  await page.click('.side nav a[href="#ajustes"]'); await page.waitForSelector('[data-gg-root]');
+  ok(/Todavía no se ha guardado ningún ajuste/.test(await page.locator('[data-gg-when]').innerText()) && /GTM-K93FKL89/.test(await page.locator('[data-gg-root]').innerText()), 'la sección sale en Ajustes, sin nada guardado y avisando de que la web antigua mide con GTM-K93FKL89');
+  ok(JSON.stringify(await pubG()) === JSON.stringify({ ga4: '', ads: '', conv: { quote: '', contact: '' } }), 'sin ajustes la web no recibe ningún ID');
+  await page.click('[data-gg-check]'); await page.waitForFunction(() => /no carga nada de Google/.test(document.querySelector('[data-gg-check-out]').textContent), null, { timeout: 5000 });
+  ok(true, '«Comprobar» dice que ahora mismo no carga nada ni enseña aviso de cookies');
+  // a) lo mal escrito se avisa junto al campo, sin llegar a guardar
+  await page.fill('[data-gg=ga4]', 'G-1'); await page.click('[data-gg-save]');
+  ok((await page.locator('[data-gg=ga4]').getAttribute('aria-invalid')) === 'true' && /G-XXXXXXXXXX/.test(await page.locator('[data-gg-msg]').innerText()), 'un ID de Analytics mal escrito se marca con aviso junto al campo');
+  ok((await pubG()).ga4 === '', '… y no se guardó nada');
+  await page.fill('[data-gg=ga4]', 'G-TEST123456'); await page.fill('[data-gg=quote]', 'AbCdEfGhIj12'); await page.click('[data-gg-save]');
+  ok((await page.locator('[data-gg=quote]').getAttribute('aria-invalid')) === 'true' && /ID de Google Ads/.test(await page.locator('[data-gg-msg]').innerText()), 'una etiqueta suelta sin el ID de Ads pide escribir antes el ID de Ads');
+  // b) guardado correcto: etiqueta suelta (se completa) y etiqueta completa
+  await page.fill('[data-gg=ads]', 'AW-123456789'); await page.fill('[data-gg=contact]', 'AW-123456789/AbCdEfGhIj34'); await page.click('[data-gg-save]');
+  await page.waitForFunction(() => /^Guardado\./.test(document.querySelector('[data-gg-msg]').textContent), null, { timeout: 5000 });
+  const g1 = await pubG();
+  ok(g1.ga4 === 'G-TEST123456' && g1.ads === 'AW-123456789' && g1.conv.quote === 'AW-123456789/AbCdEfGhIj12' && g1.conv.contact === 'AW-123456789/AbCdEfGhIj34', 'GET /api/google (lo que lee la web) trae los IDs y las dos etiquetas COMPLETAS');
+  ok(/por jefa@torivac\.com/.test(await page.locator('[data-gg-when]').innerText()), 'el panel dice quién y cuándo guardó');
+  await page.reload(); await page.waitForSelector('[data-gg-root]');
+  ok((await page.locator('[data-gg=ga4]').inputValue()) === 'G-TEST123456' && (await page.locator('[data-gg=quote]').inputValue()) === 'AbCdEfGhIj12', 'tras recargar los campos siguen como se guardaron');
+  await page.click('[data-gg-check]'); await page.waitForFunction(() => /Estadísticas y Publicidad/.test(document.querySelector('[data-gg-check-out]').textContent), null, { timeout: 5000 });
+  const chk = await page.locator('[data-gg-check-out]').innerText();
+  ok(/G-TEST123456/.test(chk) && /AW-123456789/.test(chk) && /presupuesto enviado, contacto enviado/.test(chk), '«Comprobar» enseña qué cargará y qué conversiones medirá');
+  // c) apagar una conversión sin borrar su etiqueta
+  await page.uncheck('[data-gg-on=contact]'); await page.click('[data-gg-save]'); await page.waitForFunction(() => /^Guardado\./.test(document.querySelector('[data-gg-msg]').textContent), null, { timeout: 5000 });
+  const g2 = await pubG();
+  ok(g2.conv.contact === '' && g2.conv.quote !== '', 'una conversión apagada no le llega a la web');
+  await page.reload(); await page.waitForSelector('[data-gg-root]');
+  ok((await page.locator('[data-gg=contact]').inputValue()) === 'AW-123456789/AbCdEfGhIj34' && !(await page.locator('[data-gg-on=contact]').isChecked()), '… pero el panel conserva su etiqueta y la deja sin marcar');
+  // d) vaciar todo apaga todo
+  await page.fill('[data-gg=ga4]', ''); await page.fill('[data-gg=ads]', ''); await page.fill('[data-gg=quote]', ''); await page.fill('[data-gg=contact]', '');
+  await page.click('[data-gg-save]'); await page.waitForFunction(() => /^Guardado\./.test(document.querySelector('[data-gg-msg]').textContent), null, { timeout: 5000 });
+  ok(JSON.stringify(await pubG()) === JSON.stringify({ ga4: '', ads: '', conv: { quote: '', contact: '' } }), 'vaciar los campos apaga toda la medición');
+  // e) una cuenta de Ads distinta en la etiqueta la rechaza el servidor aunque el navegador la deje pasar a mano
+  const tok = JSON.parse(await page.evaluate(() => sessionStorage.getItem('tv_live'))).token;
+  const bad = await page.evaluate(async ([a, t]) => { const r = await fetch(a + '/api/settings/google', { method: 'PUT', headers: { Authorization: 'Bearer ' + t, 'Content-Type': 'application/json' }, body: JSON.stringify({ ga4: '', ads: 'AW-111111111', conversions: { quote: { label: 'AW-222222222/AbCdEfGhIj12' } } }) }); return { s: r.status, j: await r.json() }; }, [API, tok]);
+  ok(bad.s === 400 && bad.j.field === 'conversions.quote', `el servidor rechaza una etiqueta de otra cuenta de Ads (400, campo ${bad.j.field})`);
+  ok(!errs.length, 'sin errores de JS' + (errs.length ? ': ' + errs[0] : ''));
+  await ctx.close();
+  // f) el propietario no ve la sección ni puede tocar los ajustes por la API (la lectura pública sí es de todos)
+  const o = await newPage(); await login(o.page, 'marta@taller.es', 'Cliente-Clave-2026'); await o.page.waitForSelector('.side nav a');
+  ok(!(await navs(o.page)).some((n) => /Ajustes/.test(n)), 'el propietario no tiene «Ajustes» en el menú');
+  const otok = JSON.parse(await o.page.evaluate(() => sessionStorage.getItem('tv_live'))).token;
+  const ost = await o.page.evaluate(async ([a, t]) => ({ get: (await fetch(a + '/api/settings/google', { headers: { Authorization: 'Bearer ' + t } })).status, put: (await fetch(a + '/api/settings/google', { method: 'PUT', headers: { Authorization: 'Bearer ' + t, 'Content-Type': 'application/json' }, body: '{"ga4":"G-HACKED1234"}' })).status, pub: (await fetch(a + '/api/google')).status }), [API, otok]);
+  ok(ost.get === 403 && ost.put === 403 && ost.pub === 200, `propietario → ver ajustes ${ost.get} · guardar ${ost.put} (403) · lectura pública ${ost.pub} (200)`);
+  ok((await fetch(API + '/api/google').then((r) => r.json())).google.ga4 === '', 'y su intento no cambió nada');
+  await o.ctx.close(); }
+
+const mails0 = be.mails.length;                                                    // correos enviados antes de la sección 11
+console.log('\n11) Presupuestos recibidos: detalle, edición (con historial y conflicto), PDF y reenvío por correo');
+{ const { ctx, page, errs } = await newPage(); await login(page, 'jefa@torivac.com', 'Manager-Clave-2026'); await page.waitForSelector('.side nav a');
+  const N = order.number, AUTH = { Authorization: 'Bearer ' + MASTER_TOKEN, 'Content-Type': 'application/json' };
+  const before = await fetch(API + '/api/orders/' + N, { headers: AUTH }).then((r) => r.json()).then((j) => j.order);
+  /** El registro del presupuesto `n` (por defecto el de la prueba), tal como lo ve el manager. */
+  const getO = async (n = N) => (await fetch(API + '/api/orders/' + n, { headers: AUTH }).then((r) => r.json())).order;
+  /** Va a la dirección `hash` del panel y espera a que aparezca el elemento `sel`. */
+  const go = async (hash, sel) => { await page.evaluate((h) => { location.hash = h; }, hash); await page.waitForSelector(sel, { timeout: 8000 }); };
+  /** Texto del aviso de la pantalla de presupuestos (data-qr-msg). */
+  const say = async () => (await page.locator('[data-qr-msg]').innerText()).trim();
+  // a) detalle
+  await go('#recibidos/' + N, '[data-qr-root] h1 .mono');
+  const det = await page.locator('main').innerText();
+  ok(det.includes(N) && /solicitante/i.test(det) && /Marta Taller/.test(det) && det.includes(R_TT) && det.includes(R_BO) && /total \(sin iva\)/i.test(det), 'el detalle enseña el solicitante, las líneas y el total');
+  ok(/Sin cambios ni reenvíos todavía/.test(det), 'y el historial dice que aún no hay cambios');
+  ok((await page.locator('[data-qr-root] a:has-text("Editar")').count()) === 1 && (await page.locator('[data-qr-pdf]').count()) === 1 && (await page.locator('a:has-text("Reenviar por correo")').count()) === 1, 'con los tres botones: Editar · Descargar PDF · Reenviar por correo');
+  const [dl] = await Promise.all([page.waitForEvent('download'), page.click('[data-qr-pdf]')]);
+  const pdfBytes = fs.readFileSync(await dl.path()); ok(pdfBytes.subarray(0, 5).toString() === '%PDF-' && dl.suggestedFilename().includes(N), `Descargar PDF desde el detalle (${dl.suggestedFilename()}, ${pdfBytes.length} bytes)`);
+  // b) editar: nombre, nota, precio de una línea y cantidad de otra
+  await go('#recibidos/' + N + '/editar', '[data-qr-edit]');
+  ok((await page.locator('[data-qr-field=name]').inputValue()) === 'Marta Taller' && (await page.locator('[data-qr-qty="0"]').inputValue()) === '12', 'el formulario sale con los datos del presupuesto');
+  await page.fill('[data-qr-field=name]', 'Marta Taller (editado)'); await page.fill('[data-qr-field=quoteNote]', 'Validez de la oferta: 30 días.\nPortes incluidos.');
+  await page.fill('[data-qr-price="0"]', '90,5'); await page.fill('[data-qr-qty="1"]', '250');
+  await page.fill('[data-qr-field=email]', 'no-es-un-correo'); await page.click('[data-qr-save]');
+  ok(/correo del solicitante no es válido/.test(await say()), 'un correo mal escrito se avisa antes de guardar');
+  await page.fill('[data-qr-field=email]', 'marta@taller.es'); await page.click('[data-qr-save]');
+  await page.waitForSelector('[data-qr-root] h1 .tag', { timeout: 8000 });
+  const o1 = await getO();
+  ok(o1.rev === 1 && o1.customer.name === 'Marta Taller (editado)' && o1.lines[0].unit === 90.5 && o1.lines[0].manual === true && o1.lines[0].total === 1086 && o1.lines[1].qty === 250 && !o1.lines[1].manual && o1.lines[1].unit != null, 'guardado en el servidor: revisión 1, precio manual 90,5 (total 1.086) y la otra línea revalorada con la tarifa');
+  ok(o1.original && o1.original.lines[1].qty === 200 && o1.original.customer.name === 'Marta Taller' && /Portes incluidos/.test(o1.quoteNote) && o1.history.length === 1 && o1.history[0].kind === 'edit' && o1.ip === before.ip && o1.emailed.team === false, 'conserva lo que llegó de la web, la nota, el historial y los datos internos (IP, aviso de correo)');
+  ok(/editado · rev\. 1/i.test(await page.locator('main h1').innerText()) && /manual/i.test(await page.locator('main table').first().innerText()) && (await page.locator('details.prop summary:has-text("Ver lo que llegó de la web")').count()) === 1 && /editado \(revisión 1\)/i.test(await page.locator('main').innerText()), 'el detalle muestra «Editado», el precio manual, el historial y «Ver lo que llegó de la web»');
+  // c) conflicto: otra persona guarda mientras esta edita → se avisa y no se pisa nada
+  await go('#recibidos/' + N + '/editar', '[data-qr-edit]');
+  const other = await fetch(API + '/api/orders/' + N, { method: 'PUT', headers: AUTH, body: JSON.stringify({ rev: 1, lines: o1.lines.map((l) => ({ ref: l.ref, qty: l.qty })), quoteNote: 'Cambiado por otra persona' }) }).then((r) => r.json());
+  ok(other.ok && other.order.rev === 2 && other.order.lines[0].unit === 90.5 && other.order.lines[0].manual === true, 'otra persona guarda la revisión 2 (las líneas sin tocar conservan su precio)');
+  await page.fill('[data-qr-field=quoteNote]', 'Mi versión que pisaría la otra'); await page.click('[data-qr-save]');
+  await page.waitForFunction(() => /Alguien ha modificado/.test((document.querySelector('[data-qr-msg]') || {}).textContent || ''), null, { timeout: 8000 });
+  const o2 = await getO(); ok(o2.rev === 2 && o2.quoteNote === 'Cambiado por otra persona', 'conflicto: el panel avisa «Alguien ha modificado…» y no pisa lo guardado');
+  ok((await page.locator('[data-qr-field=quoteNote]').inputValue()) === 'Mi versión que pisaría la otra', 'y no pierde lo que la persona había escrito');
+  // d) reenviar: validación en el panel, rechazo del servidor, correo caído y envío bueno
+  await go('#recibidos/' + N + '/enviar', '[data-qr-send]');
+  ok((await page.locator('[data-qr-to]').inputValue()) === 'marta@taller.es', 'el primer destinatario es el correo del solicitante');
+  await page.fill('[data-qr-to]', 'a@x.es, b@x.es, c@x.es, d@x.es'); await page.click('[data-qr-dosend]');
+  ok(/entre 1 y 3 correos/.test(await say()), 'más de 3 destinatarios: el panel lo impide');
+  await page.fill('[data-qr-to]', 'marta@taller.es, colega@empresa.es'); await page.fill('[data-qr-message]', 'Mira <b>esto</b>'); await page.click('[data-qr-dosend]');
+  await page.waitForFunction(() => /texto/i.test((document.querySelector('[data-qr-msg]') || {}).textContent || ''), null, { timeout: 8000 });
+  ok(be.mails.length === mails0, `un mensaje con código se rechaza y no sale ningún correo («${await say()}»)`);
+  await page.fill('[data-qr-message]', 'Hola Marta,\nAdjunto el presupuesto revisado.');
+  be.setMailDown(true); await page.click('[data-qr-dosend]');
+  await page.waitForFunction(() => /No se pudo enviar el correo/.test((document.querySelector('[data-qr-msg]') || {}).textContent || ''), null, { timeout: 8000 });
+  const o3 = await getO(); ok(o3.lastSent && o3.lastSent.ok === false && o3.history[o3.history.length - 1].kind === 'send' && o3.history[o3.history.length - 1].ok === false, 'con el correo caído lo dice, no se pierde nada y queda anotado el intento fallido');
+  be.setMailDown(false); await page.click('[data-qr-dosend]');
+  await page.waitForFunction((n) => location.hash === '#recibidos/' + n, N, { timeout: 8000 });
+  const mail = be.mails[be.mails.length - 1], o4 = await getO();
+  ok(be.mails.length === mails0 + 1 && [].concat(mail.to).sort().join() === 'colega@empresa.es,marta@taller.es' && /Torivac · presupuesto TV-/.test(mail.subject) && mail.subject.includes(N), `sale 1 correo a los dos destinatarios: «${mail.subject}»`);
+  ok([].concat(mail.cc || []).includes('jefa@torivac.com'), 'con copia a quien lo envía');
+  const att = (mail.attachments || [])[0]; ok(att && /\.pdf$/i.test(att.filename) && Buffer.from(att.content, 'base64').subarray(0, 5).toString() === '%PDF-', `con el PDF adjunto (${att && att.filename})`);
+  ok(/Adjunto el presupuesto revisado/.test(mail.html) && !/Mira <b>/.test(mail.html) && mail.html.includes(N), 'el texto de la persona y el número van en el cuerpo');
+  ok(o4.lastSent && o4.lastSent.ok === true && o4.history.filter((h) => h.kind === 'send').length === 2 && o4.history.filter((h) => h.kind === 'edit').length === 2, 'el historial guarda las 2 ediciones y los 2 envíos (uno fallido y uno bueno)');
+  const det2 = await page.locator('main').innerText();
+  ok(/Reenviado a marta@taller\.es, colega@empresa\.es/.test(det2) && /No se pudo reenviar a/.test(det2), 'el detalle enseña el historial de reenvíos');
+  // e) la lista: filtros y búsqueda
+  await go('#recibidos', '[data-qr-q]');
+  ok(/editado · rev\. 2/i.test(await page.locator('table.spec tbody').innerText()) && /reenviado/i.test(await page.locator('table.spec tbody').innerText()), 'la lista marca «Editado» y «Reenviado»');
+  await page.selectOption('[data-qr-f]', 'unsent'); ok(/Ningún presupuesto cumple/.test(await page.locator('table.spec tbody').innerText()), 'filtro «Nunca reenviados»: este ya no está');
+  await page.selectOption('[data-qr-f]', 'edited'); ok((await page.locator('table.spec tbody tr').count()) === 1, 'filtro «Editados»: sí está');
+  await page.selectOption('[data-qr-f]', ''); await page.fill('[data-qr-q]', 'colega-inexistente'); ok(/Ningún presupuesto cumple/.test(await page.locator('table.spec tbody').innerText()), 'la búsqueda sin coincidencias lo dice');
+  await page.fill('[data-qr-q]', R_BO.toLowerCase()); ok((await page.locator('table.spec tbody tr').count()) === 1, 'y buscar por referencia lo encuentra');
+  // f) números que no existen o no tienen forma de número
+  await go('#recibidos/TV-20990101-0001', '[data-qr-root] .notice'); ok(/No existe ese presupuesto/.test(await page.locator('main').innerText()), 'un número que no existe → «No existe ese presupuesto»');
+  await go('#recibidos/..%2F..%2Fx', '[data-qr-root] .notice'); ok(/no válido/.test(await page.locator('main').innerText()), 'un número sin forma de número ni se pide al servidor');
+  ok(!errs.length, 'sin errores de JS' + (errs.length ? ': ' + errs[0] : ''));
+  await ctx.close();
+  // g) el propietario puede lo mismo (ver, editar, reenviar) pero la API le oculta lo interno
+  const w = await newPage(); await login(w.page, 'marta@taller.es', 'Cliente-Clave-2026'); await w.page.waitForSelector('.side nav a');
+  await w.page.evaluate((n) => { location.hash = '#recibidos/' + n; }, N); await w.page.waitForSelector('[data-qr-root] h1 .mono');
+  const wt = await w.page.locator('main').innerText();
+  ok(/editado · rev\. 2/i.test(wt) && !/sin aviso por correo/i.test(wt) && (await w.page.locator('a:has-text("Editar")').count()) === 1 && (await w.page.locator('a:has-text("Reenviar por correo")').count()) === 1, 'el propietario ve el detalle con Editar y Reenviar, sin la marca interna del correo');
+  const wo = await w.page.evaluate(async ([a, n, t]) => (await (await fetch(a + '/api/orders/' + n, { headers: { Authorization: 'Bearer ' + t } })).json()).order, [API, N, JSON.parse(await w.page.evaluate(() => sessionStorage.getItem('tv_live'))).token]);
+  ok(wo.number === N && !('ip' in wo) && !(wo.emailed && 'error' in wo.emailed), 'GET /api/orders/<n> del propietario no trae IP ni error de correo');
+  ok(w.errs.length === 0, 'sin errores de JS (propietario)' + (w.errs.length ? ': ' + w.errs[0] : ''));
+  await w.ctx.close();
+  // h) un presupuesto en inglés: el correo sale en inglés (asunto) con su PDF
+  be.setMailDown(false);
+  const en = await fetch(API + '/api/order', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: SITE }, body: JSON.stringify({ customer: { name: 'Jane Buyer', company: 'Buyer Ltd', email: 'jane@buyer.co.uk', privacy: true }, lines: [{ ref: R_RES, qty: 5 }], lang: 'en' }) }).then((r) => r.json());
+  const e = await newPage(); await login(e.page, 'marta@taller.es', 'Cliente-Clave-2026'); await e.page.waitForSelector('.side nav a');
+  await e.page.evaluate((n) => { location.hash = '#recibidos/' + n + '/enviar'; }, en.number); await e.page.waitForSelector('[data-qr-send]');
+  ok(/EN/.test(await e.page.locator('main .muted').first().innerText()), 'el reenvío avisa del idioma del pedido (EN)');
+  const m0 = be.mails.length; await e.page.click('[data-qr-dosend]'); await e.page.waitForFunction((n) => location.hash === '#recibidos/' + n, en.number, { timeout: 8000 });
+  const em = be.mails[be.mails.length - 1];
+  ok(be.mails.length === m0 + 1 && /Torivac · quote TV-/.test(em.subject) && em.attachments && em.attachments.length === 1, `el correo de un pedido en inglés sale en inglés: «${em.subject}»`);
+  const lg = await e.page.evaluate(() => { const Q = window.TV.Quote, a = Q.lang; return [a, Q.withLang('de', () => Q.lang), Q.lang]; });
+  ok(lg[1] === 'de' && lg[0] === lg[2], `el PDF se fabrica en el idioma del pedido y la web del panel vuelve al suyo (${lg.join(' → ')})`);
+  await e.ctx.close(); }
+
 await browser.close(); await be.stop(); fs.rmSync(DIST, { recursive: true, force: true });
-console.log(fails ? `\n✗ ${fails} comprobaciones fallidas` : `\n✓ panel real + ${be.kind}: acceso, roles, pedidos, precios, IA, usuarios y propuestas correctos`);
+console.log(fails ? `\n✗ ${fails} comprobaciones fallidas` : `\n✓ panel real + ${be.kind}: acceso, roles, presupuestos recibidos (ver, editar, PDF, reenviar), precios, IA, usuarios, propuestas y ajustes de Google correctos`);
 process.exit(fails ? 1 : 0);

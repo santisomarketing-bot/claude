@@ -36,7 +36,7 @@ final class Audit
         'alert.repeated' => 'Aviso: intentos repetidos', 'alert.mail_failed' => 'El aviso por correo no se pudo enviar', 'user.create' => 'Usuario creado', 'user.delete' => 'Usuario borrado', 'user.unlock' => 'Cuenta desbloqueada', 'user.two_step' => 'Cambió el código por correo', 'user.password' => 'Cambió una contraseña',
         'prices.upload' => 'Subió una hoja de precios', 'prices.refresh' => 'Sincronizó los precios', 'prices.ai_apply' => 'Aplicó cambios de precios (IA)', 'prices.sync' => 'Sincronización automática de precios',
         'proposal.state' => 'Decidió una propuesta', 'blog.create' => 'Creó una entrada', 'blog.update' => 'Guardó una entrada', 'blog.delete' => 'Borró una entrada', 'blog.image_upload' => 'Subió una imagen',
-        'blog.image_delete' => 'Borró una imagen', 'message.delete' => 'Borró un mensaje', 'mail.test' => 'Envió un correo de prueba', 'backup.create' => 'Creó una copia de seguridad',
+        'blog.image_delete' => 'Borró una imagen', 'message.delete' => 'Borró un mensaje', 'settings.google' => 'Cambió los ajustes de Google', 'order.edit' => 'Editó un presupuesto recibido', 'order.send' => 'Reenvió un presupuesto por correo', 'mail.test' => 'Envió un correo de prueba', 'backup.create' => 'Creó una copia de seguridad',
         'backup.auto' => 'Copia de seguridad automática', 'backup.download' => 'Descargó una copia de seguridad', 'backup.delete' => 'Borró una copia de seguridad', 'limite' => 'Registro lleno por hoy',
     ];
 

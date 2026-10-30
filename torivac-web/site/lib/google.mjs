@@ -1,5 +1,8 @@
 // [GOOGLE] Configuración de Google Analytics 4, Google Ads y Search Console (site/google.config.json) y todo lo que de ella depende en la compilación.
-//   · Con los IDs vacíos NO se añade nada: ni script, ni aviso de cookies, ni ampliación de la política de seguridad (es el estado de entrega).
+//   · MODO «runtime» (compilaciones con servidor, que son todas las que se publican): los IDs de GA4/Ads y las conversiones se guardan en el SERVIDOR y se cambian desde el panel del manager (Ajustes → Google);
+//     la web lleva siempre el aviso (oculto) y consent.js, que pregunta al servidor (GET /api/google) qué hay configurado; sin IDs allí no sale NADA visible, no se pide nada a Google y no se pone ninguna cookie.
+//     google.config.json solo da los valores de ARRANQUE (si el servidor no tiene IDs) y los de Search Console, que sí deben ir en el HTML (la etiqueta) o ser un archivo.
+//   · Sin servidor (demo con doble clic o web estática sola): como antes, solo con los IDs de este archivo; con los IDs vacíos NO se añade nada.
 //   · Los IDs son públicos (salen en el código de cualquier web); aquí no hay claves. Si uno está mal escrito la compilación se detiene con el motivo (un ID roto dejaría la medición muerta sin avisar).
 //   · Producción (--base sin --staging): modo «live». Pruebas (--staging): modo «test» = se enseña el aviso y se registran los eventos en la consola, pero NO se descarga nada de Google.
 //   · Sin --base (demo con doble clic) no hay medición de ningún tipo.
@@ -53,7 +56,7 @@ export function normalize(raw = {}) {
  *   file: ruta de google.config.json · base: --base (vacío = demo sin servidor) · staging: --staging · demo: --google-demo (IDs ficticios, solo con --staging)
  * Devuelve { active, test, ga4, ads, conv, verify: { meta, file }, errors } — `active`: hay algo que medir (aviso + script); `test`: no se descarga nada de Google.
  */
-export function loadGoogle({ file, base = '', staging = false, demo = false, env = process.env }) {
+export function loadGoogle({ file, base = '', staging = false, demo = false, runtime = false, env = process.env }) {
   const path = env.TORIVAC_GOOGLE_CONFIG || file;
   let raw = {};
   try { raw = JSON.parse(fs.readFileSync(path, 'utf8')); } catch (e) { if (e.code !== 'ENOENT') return { ...inactive(), errors: [`${path}: ${e.message}`] }; }
@@ -64,20 +67,22 @@ export function loadGoogle({ file, base = '', staging = false, demo = false, env
   const { cfg, errors } = normalize(raw);
   if (errors.length) return { ...inactive(), errors };
   if (!base) return inactive();                                                                  // demo con doble clic: sin servidor no hay medición
-  const active = !!(cfg.ga4 || cfg.ads);
+  const rt = !!runtime;                                                                           // con servidor: los IDs se leen de él en el navegador; la compilación solo deja lista la maquinaria
+  const active = rt || !!(cfg.ga4 || cfg.ads);
   return {
-    active, test: staging, ga4: cfg.ga4, ads: cfg.ads, conv: cfg.conv, demo,
+    active, runtime: rt, test: staging, ga4: cfg.ga4, ads: cfg.ads, conv: cfg.conv, demo,
+    csp: rt ? { ga4: true, ads: true } : { ga4: !!cfg.ga4, ads: !!cfg.ads },                    // qué dominios de Google abre la política de seguridad (en runtime, los dos conjuntos: lo que se active desde el panel no puede quedar bloqueado)
     verify: staging ? { meta: '', file: '' } : { meta: cfg.meta, file: cfg.htmlFile },           // el entorno de pruebas es noindex: no se verifica en Search Console
     errors: [],
   };
 }
 
 /** Configuración sin nada activo. */
-function inactive() { return { active: false, test: false, ga4: '', ads: '', conv: { quote: '', contact: '' }, demo: false, verify: { meta: '', file: '' }, errors: [] }; }
+function inactive() { return { active: false, runtime: false, csp: { ga4: false, ads: false }, test: false, ga4: '', ads: '', conv: { quote: '', contact: '' }, demo: false, verify: { meta: '', file: '' }, errors: [] }; }
 
-/** Datos que lee consent.js (bloque <script type="application/json" id="tv-google">). Solo IDs públicos y el modo. */
+/** Datos que lee consent.js (bloque <script type="application/json" id="tv-google">). Solo IDs públicos (los de arranque), el modo y si debe preguntar al servidor (`runtime`). */
 export function bootData(g) {
-  return { v: 1, mode: g.test ? 'test' : 'live', ga4: g.ga4, ads: g.ads, conv: g.conv, ttl: 365 };
+  return { v: 2, mode: g.test ? 'test' : 'live', runtime: !!g.runtime, ga4: g.ga4, ads: g.ads, conv: g.conv, ttl: 365 };
 }
 
 /** Etiqueta meta de verificación de Search Console ('' si no hay token). Va en todas las páginas; no mide nada. */
@@ -94,15 +99,15 @@ export const verifyFileBody = (name) => `google-site-verification: ${name}`;
  */
 export function cspHosts(g) {
   const out = { script: [], connect: [], img: [], frame: [] };
-  if (!g.active || g.test) return out;
+  if (!g.active || g.test || !(g.csp.ga4 || g.csp.ads)) return out;
   out.script.push('https://www.googletagmanager.com');
   out.connect.push('https://*.googletagmanager.com');
   out.img.push('https://*.googletagmanager.com');
-  if (g.ga4) {
+  if (g.csp.ga4) {
     out.connect.push('https://*.google-analytics.com', 'https://*.analytics.google.com');
     out.img.push('https://*.google-analytics.com');
   }
-  if (g.ads) {
+  if (g.csp.ads) {
     out.script.push('https://www.googleadservices.com', 'https://*.doubleclick.net', 'https://www.google.com');
     out.connect.push('https://*.doubleclick.net', 'https://www.google.com', 'https://pagead2.googlesyndication.com', ...TLDS.map((x) => `https://www.google.${x}`));
     out.img.push('https://*.doubleclick.net', 'https://www.google.com', 'https://www.googleadservices.com', ...TLDS.map((x) => `https://www.google.${x}`));

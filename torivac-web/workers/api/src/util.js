@@ -108,10 +108,14 @@ export async function readBody(request, maxBytes) {
   const out = new Uint8Array(total); let p = 0; for (const c of chunks) { out.set(c, p); p += c.length; }
   return out;
 }
-/** Cuerpo JSON de la petición, o null si supera maxBytes (contados de verdad), anida más de 32 niveles o no es JSON válido. */
-export async function readJson(request, maxBytes = 6_000_000) {
-  const bytes = await readBody(request, maxBytes); if (!bytes || !bytes.length) return null;
+/** Valor JSON de unos bytes, o null si están vacíos, anidan más de 32 niveles o no son JSON válido. */
+export function jsonOf(bytes) {
+  if (!bytes || !bytes.length) return null;
   const text = new TextDecoder().decode(bytes);
   if (!jsonDepthOk(text, 32)) return null;
   try { return JSON.parse(text); } catch { return null; }
+}
+/** Cuerpo JSON de la petición, o null si supera maxBytes (contados de verdad), anida más de 32 niveles o no es JSON válido. */
+export async function readJson(request, maxBytes = 6_000_000) {
+  return jsonOf(await readBody(request, maxBytes));
 }

@@ -180,7 +180,7 @@ GOOGLE_HOSTS = re.compile(r"googletagmanager|google-analytics|analytics\.google|
 
 
 def check_google(rel: dict, staging: bool) -> list:
-    """Google (Analytics/Ads/Search Console): sin IDs no hay nada de Google (ni aviso, ni script, ni orígenes en la CSP); con IDs, la CSP los abre SOLO en producción; los IDs ficticios del paquete de pruebas no llegan a producción; el entorno de pruebas no se verifica en Search Console."""
+    """Google (Analytics/Ads/Search Console): el paquete lleva el aviso y consent.js en modo «runtime» (los IDs los da el servidor, desde el panel); la CSP abre los dominios de Google SOLO en producción; los IDs ficticios del paquete de pruebas no llegan a producción; el entorno de pruebas no se verifica en Search Console."""
     errs = []
     ht = rel[".htaccess"].read_text(encoding="utf-8") if ".htaccess" in rel else ""
     m = re.search(r'Content-Security-Policy "([^"]+)"', ht)
@@ -196,13 +196,17 @@ def check_google(rel: dict, staging: bool) -> list:
     else:
         if "assets/js/consent.js" not in rel:
             errs.append("las páginas llevan medición pero falta assets/js/consent.js")
-        modes = set()
+        modes, runtimes = set(), set()
         for r, b in boots:
             if b:
                 try:
-                    modes.add(json.loads(b.group(1)).get("mode"))
+                    j = json.loads(b.group(1))
+                    modes.add(j.get("mode"))
+                    runtimes.add(bool(j.get("runtime")))
                 except Exception:  # noqa: BLE001
                     errs.append(f"{r}: el bloque tv-google no es JSON válido")
+        if runtimes != {True}:
+            errs.append("el paquete lleva servidor: todas las páginas con medición deben ser «runtime» (los IDs se leen del servidor, no van fijos en el HTML)")
         if staging and modes != {"test"}:
             errs.append(f"entorno de pruebas con medición en modo {sorted(modes)}: debe ser solo «test» (no se descarga nada de Google)")
         if not staging and modes != {"live"}:
