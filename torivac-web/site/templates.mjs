@@ -6,6 +6,8 @@ import { esc, attr, blocksHtml, inlineHtml, mapLink, plain, fmtDate, hText } fro
 import { t, LANGS, countLabel, refLabel } from './lib/i18n.mjs';
 import { pageGraph, ldScript, jsonScript, ogLocale, clip } from './lib/seo.mjs';
 import { THEMES, themeBootJs } from './lib/themes.mjs';
+import { bootData, verifyMeta } from './lib/google.mjs';
+import { cookieBlocks, cookieTitle } from './lib/cookies.mjs';
 import { FIELDS } from '../shared/plain-text.mjs';
 
 const NAMES = { es: 'Español', en: 'English', fr: 'Français', de: 'Deutsch' };
@@ -140,6 +142,7 @@ export function layout(ctx, { title, description, body, template, alts = {}, scr
 <title>${esc(title)}</title>
 <meta name="description" content="${attr(description || '')}">
 ${noindex || site.staging ? '<meta name="robots" content="noindex,nofollow">' : ''}
+${site.google ? verifyMeta(site.google) : ''}
 ${dyn ? '@@TV:links@@' : canonical + alternates}
 <meta name="theme-color" content="#100404">
 <link rel="icon" href="${ctx.asset('assets/img/favicon.png')}" type="image/png">
@@ -150,6 +153,7 @@ ${dyn ? '@@TV:ld@@' : noindex ? '' : ldScript(pageGraph(ctx, { template, title, 
 </head>
 <body class="tv tv-${template}${bodyClass ? ' ' + bodyClass : ''}" data-path="${dyn ? '@@TV:path@@' : attr(ctx.path)}"${oRedirect ? ` data-o-redirect="${attr(ctx.href(oRedirect))}"` : ''}>
 <a class="skip" href="#content">${t('skip', lang)}</a>
+${site.google?.active && !dyn404(template) ? cookieBar(ctx) : ''}
 ${site.absBase ? '' : cssGuard(t('css_missing', lang))}
 ${site.demo ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('demo_banner', lang))}"><span>${t('demo_banner', lang)} · ${t('demo_prices', lang)}</span>${site.themeSwitch ? themeSwitch(lang, 'ribbon') : ''}</div>` : ''}
 ${site.staging ? `<div class="demo-ribbon no-print" role="region" aria-label="${attr(t('staging_banner', lang))}"><span>${t('staging_banner', lang)}</span>${site.themeSwitch ? themeSwitch(lang, 'ribbon') : ''}</div>` : ''}
@@ -173,7 +177,7 @@ ${headingOrder(`${hero || ''}${body}`)}
       <a class="fact" href="tel:${attr(site.meta.contact.phone.replace(/\s/g, ''))}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>${esc(site.meta.contact.phone)}</a>
       <a class="fact" href="mailto:${attr(site.meta.contact.email)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>${esc(site.meta.contact.email)}</a>
     </div>
-    <p class="legal">${esc(f.copyright)} ${f.links.map((l) => `<a href="${attr(l.href)}">${esc(l.label)}</a>`).join(' | ')}<br>${esc(f.devBy)} <a href="https://santisomarketing.com/" target="_blank" rel="noopener">Santiso Marketing</a></p>
+    <p class="legal">${esc(f.copyright)} ${f.links.map((l) => `<a href="${attr(l.path ? ctx.href(l.path) : l.href)}">${esc(l.label)}</a>`).join(' | ')}${site.google?.active ? ` | <button class="linklike" type="button" data-cookie-settings hidden>${esc(t('cookie_settings', lang))}</button>` : ''}<br>${esc(f.devBy)} <a href="https://santisomarketing.com/" target="_blank" rel="noopener">Santiso Marketing</a></p>
     ${site.themeSwitch ? `<div class="theme-row no-print">${themeSwitch(lang, 'footer')}</div>` : ''}
     <div class="funding"><img src="${ctx.asset(site.funding[lang].img)}" alt="Cofinanciado por la Unión Europea · Ministerio de Hacienda · Fondos Europeos" width="${site.funding[lang].w}" height="${site.funding[lang].h}" loading="lazy">${site.O ? `<span class="${oc(site, 'o-li')}" aria-hidden="true"><svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor" focusable="false"><rect x="1" y="1" width="22" height="22" rx="3"/><g class="in"><circle cx="7.4" cy="7.6" r="1.7"/><rect x="5.9" y="10.2" width="3" height="8"/><path d="M11.2 10.2h2.9v1.1c.5-.8 1.5-1.3 2.7-1.3 2.3 0 3.1 1.5 3.1 3.6v4.6h-3v-4.1c0-1-.3-1.7-1.3-1.7-1.1 0-1.5.8-1.5 1.8v4h-2.9z"/></g></svg></span>` : ''}<p>${esc(f.funding)}</p></div>
   </div>
@@ -195,10 +199,65 @@ ${dyn ? '<script type="application/json" id="tv-boot">@@TV:boot@@</script>' : js
 <script src="${ctx.asset('assets/data/prices.js')}"></script>
 <script src="${ctx.asset('assets/js/quote.js')}"></script>
 <script src="${ctx.asset('assets/js/app.js')}"></script>
-${scripts.map((s) => `<script src="${ctx.asset(s)}"></script>`).join('\n')}
+${site.google?.active ? `${jsonScript('tv-google', bootData(site.google))}\n<script src="${ctx.asset('assets/js/consent.js')}"></script>\n` : ''}${scripts.map((s) => `<script src="${ctx.asset(s)}"></script>`).join('\n')}
 </body>
 </html>`;
 }
+
+// ───────────────────────────────────────────────────────────── [COOKIES] aviso de cookies y política (solo con IDs de Google, ver site/lib/google.mjs)
+/** Las páginas de error no llevan aviso (se sirven en cualquier profundidad y no miden nada). */
+const dyn404 = (template) => template === 'notfound';
+/**
+ * Aviso de cookies: banda inferior sin bloquear la página, con «Rechazar todas» y «Aceptar todas» con el mismo peso visual y «Configurar» para elegir por categoría.
+ * Va en el HTML (oculto): sin JavaScript no se muestra y tampoco se mide nada. Solo salen las categorías que están configuradas (Estadísticas = GA4, Publicidad = Ads). Lo maneja assets/js/consent.js.
+ */
+export function cookieBar(ctx) {
+  const { lang, site } = ctx, g = site.google;
+  const policy = site.cookies?.[lang] ? `<a href="${attr(ctx.href(site.cookies[lang]))}">${esc(t('cookie_more', lang))}</a>` : '';
+  /** Casilla de una categoría opcional del aviso (a = estadísticas, p = publicidad) con su explicación. */
+  const row = (cat, k) => `<label class="cookie-row"><input type="checkbox" data-cat="${cat}"><span><b>${esc(t(k, lang))}</b> ${esc(t(k + '_d', lang))}</span></label>`;
+  return `<div class="cookie-bar no-print" id="tv-cookies" role="region" aria-label="${attr(t('cookie_region', lang))}" data-saved="${attr(t('cookie_saved', lang))}" hidden>
+  <div class="container cookie-in">
+    <div class="cookie-txt"><p class="cookie-title">${esc(t('cookie_title', lang))}</p><p>${esc(t(g.ads ? 'cookie_text' : 'cookie_text_stats', lang))} ${policy}</p></div>
+    <div class="cookie-set" id="tv-cookies-set" hidden>
+      <label class="cookie-row"><input type="checkbox" checked disabled><span><b>${esc(t('cookie_necessary', lang))}</b> ${esc(t('cookie_necessary_d', lang))}</span></label>
+      ${g.ga4 ? row('a', 'cookie_stats') : ''}${g.ads ? row('p', 'cookie_ads') : ''}
+    </div>
+    <div class="cookie-btns">
+      <button class="btn" type="button" data-cookie="reject">${esc(t('cookie_reject', lang))}</button>
+      <button class="btn" type="button" data-cookie="accept">${esc(t('cookie_accept', lang))}</button>
+      <button class="btn ghost" type="button" data-cookie="config" aria-expanded="false" aria-controls="tv-cookies-set">${esc(t('cookie_config', lang))}</button>
+      <button class="btn" type="button" data-cookie="save" hidden>${esc(t('cookie_save', lang))}</button>
+    </div>
+  </div>
+</div>`;
+}
+/** Convierte [texto](destino) de los textos de la política en enlaces: legal/privacy → los del pie del idioma; https://… → externo. Todo lo demás se escapa. */
+function policyInline(ctx, text) {
+  const f = ctx.site.footer[ctx.lang].links;
+  const dest = { legal: f[0]?.href, privacy: f[1]?.href };
+  return esc(text).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (m, label, to) => {
+    const href = dest[to] || (/^https:\/\//.test(to) ? to : '');
+    return href ? `<a href="${attr(href)}"${/^https:\/\/(?!grupotorivac\.com)/.test(href) ? ' target="_blank" rel="noopener"' : ''}>${label}</a>` : label;
+  });
+}
+/** Página «Política de cookies»: { hero, body, title } como genericPage. Lo que lista depende de lo configurado (cookieBlocks). */
+export function cookiePage(ctx, title) {
+  const { lang, site } = ctx, g = site.google || {};
+  const blocks = cookieBlocks(lang, { ga4: !!g.active && !!g.ga4, ads: !!g.active && !!g.ads, themeSwitch: !!site.themeSwitch });
+  const lead = blocks.find((b) => b.t === 'lead');
+  const html = blocks.filter((b) => b.t !== 'lead').map((b) => {
+    if (b.t === 'h2' || b.t === 'h3') return `<${b.t}>${esc(b.x)}</${b.t}>`;
+    if (b.t === 'p') return `<p>${policyInline(ctx, b.x)}</p>`;
+    return `<div class="tbl-wrap" tabindex="0" role="region" aria-label="${attr(b.cols.join(' · '))}"><table class="spec cookie-table"><thead><tr>${b.cols.map((c) => `<th scope="col">${esc(c)}</th>`).join('')}</tr></thead><tbody>${b.rows.map((r) => `<tr>${r.map((c, i) => (i === 0 ? `<th scope="row">${c.split(', ').map((n) => `<code>${esc(n)}</code>`).join('<br>')}</th>` : `<td>${esc(c)}</td>`)).join('')}</tr>`).join('')}</tbody></table></div>`;
+  }).join('\n');
+  return {
+    title, description: lead ? lead.x : '',
+    hero: `<section class="page-hero bp"><div class="container">${crumbs(ctx, [{ label: 'Torivac', href: ctx.href(site.home[lang]) }, { label: title }])}<h1>${esc(title)}</h1>${lead ? `<p class="lead">${esc(lead.x)}</p>` : ''}</div></section>`,
+    body: `<section class="sec"><div class="container prose cookie-doc">${html}</div></section>`,
+  };
+}
+export { cookieTitle };
 
 // ───────────────────────────────────────────────────────────── [SHARED] migas, etiquetas de tensión, tarjeta de producto
 /** Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page. */

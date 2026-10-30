@@ -32,13 +32,15 @@ export const BLOG_RULES = ({ staging = false } = {}) => [
 /** Único origen de terceros que admite la política de seguridad: el CAPTCHA opcional de Cloudflare (Turnstile), que solo se carga si el servidor lo activa y alguien usa un formulario (site/assets/js/captcha.js). */
 const TURNSTILE = 'https://challenges.cloudflare.com';
 /** Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api. */
-export function htaccess({ base, staging = false, aliases = new Map(), pdfRedirects = [], apiOrigin = '', phpApi = false, langs = ['en', 'fr', 'de'], scriptHashes = [] }) {
+export function htaccess({ base, staging = false, aliases = new Map(), pdfRedirects = [], apiOrigin = '', phpApi = false, langs = ['en', 'fr', 'de'], scriptHashes = [], google = { script: [], connect: [], img: [], frame: [] } }) {
   const u = new URL(base), bp = basePathOf(base), https = u.protocol === 'https:';
   const host = u.hostname, www = host.startsWith('www.'), apex = host.split('.').length === 2;
   const origin = u.origin;
   const connect = ["'self'", apiOrigin && apiOrigin !== origin ? apiOrigin : ''].filter(Boolean).join(' ');
   // script-src SIN 'unsafe-inline': los únicos scripts en línea son constantes y entran por su huella SHA-256 (scriptHashes); todo lo demás son archivos de la propia web. Así una inyección de HTML no puede ejecutar código.
-  const csp = `default-src 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'${scriptHashes.map((h) => ` 'sha256-${h}'`).join('')} ${TURNSTILE}; connect-src ${connect}; frame-src 'self' ${TURNSTILE}; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'`;
+  // Google (Analytics/Ads): `google` trae los orígenes extra por directiva y solo viene con IDs configurados en una compilación de producción (site/lib/google.mjs cspHosts); vacío = la política de siempre.
+  const gx = (k) => (google[k] || []).map((h) => ` ${h}`).join('');
+  const csp = `default-src 'self'; img-src 'self' data: blob:${gx('img')}; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'${scriptHashes.map((h) => ` 'sha256-${h}'`).join('')} ${TURNSTILE}${gx('script')}; connect-src ${connect}${gx('connect')}; frame-src 'self' ${TURNSTILE}${gx('frame')}; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'`;
   const L = [];
   L.push(`# GENERADO por site/build.mjs (no editar a mano: se regenera en cada compilación).`);
   L.push(`# Torivac · ${staging ? 'ENTORNO DE PRUEBAS (noindex)' : 'producción'} · ${origin}${bp}/`);

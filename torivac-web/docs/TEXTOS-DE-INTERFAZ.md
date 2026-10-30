@@ -34,7 +34,7 @@ Las filas con ✓ ya existen tal cual en la web original en ese idioma (por ejem
 
 Ojo: la web original no es del todo uniforme: «variador de tensión» aparece como *voltage variators*, *voltage regulator* o *variator* según la ficha, y hay categorías sin traducir o con texto en otro idioma que no se listan aquí (están como propuestas en el panel). Cuando un texto de interfaz nombre uno de estos términos, se usa el de la categoría correspondiente de la tabla, nunca uno inventado.
 
-## Inglés (94 textos a validar; 40 ya existen tal cual en la web original)
+## Inglés (107 textos a validar; 44 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Inglés |
 |---|---|---|
@@ -83,6 +83,19 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `err_too_fast` | El formulario se ha enviado demasiado rápido. Espera un momento y vuelve a intentarlo. | The form was submitted too quickly. Please wait a moment and try again. |
 | `err_rate` | Demasiados envíos seguidos desde tu conexión. Espera unos minutos e inténtalo de nuevo. | Too many submissions from your connection. Please wait a few minutes and try again. |
 | `chars_left` | Quedan {n} caracteres. | {n} characters left. |
+| `cookie_region` | Aviso de cookies | Cookie notice |
+| `cookie_text` | Usamos cookies de Google para medir las visitas a la web y la eficacia de nuestra publicidad. Puedes aceptarlas, rechazarlas o elegir cuáles; la web funciona igual en cualquier caso. | We use Google cookies to measure visits to the website and the effectiveness of our advertising. You can accept them, reject them or choose which ones; the website works the same either way. |
+| `cookie_text_stats` | Usamos cookies de Google Analytics para medir las visitas a la web. Puedes aceptarlas o rechazarlas; la web funciona igual en cualquier caso. | We use Google Analytics cookies to measure visits to the website. You can accept or reject them; the website works the same either way. |
+| `cookie_accept` | Aceptar todas | Accept all |
+| `cookie_reject` | Rechazar todas | Reject all |
+| `cookie_config` | Configurar | Customise |
+| `cookie_save` | Guardar selección | Save selection |
+| `cookie_necessary_d` | Recuerdan tu idioma, tu presupuesto y esta elección. Siempre activas. | They remember your language, your quote and this choice. Always on. |
+| `cookie_stats` | Estadísticas | Statistics |
+| `cookie_stats_d` | Google Analytics: cuántas personas visitan la web y qué páginas ven. | Google Analytics: how many people visit the website and which pages they view. |
+| `cookie_ads_d` | Google Ads: medir qué anuncios te traen a la web y mostrarte publicidad adaptada. | Google Ads: measure which ads bring you to the website and show you adapted advertising. |
+| `cookie_settings` | Configurar cookies | Cookie settings |
+| `cookie_saved` | Preferencias de cookies guardadas | Cookie preferences saved |
 | `captcha_note` | Este sitio está protegido por Cloudflare Turnstile y se aplican la Política de Privacidad y los Términos del Servicio de Cloudflare. | This site is protected by Cloudflare Turnstile and the Cloudflare Privacy Policy and Terms of Service apply. |
 | `captcha_failed` | No hemos podido comprobar que eres una persona. Recarga la página y vuelve a intentarlo; si usas un bloqueador de contenido, desactívalo para esta página. | We could not verify that you are a person. Reload the page and try again; if you use a content blocker, turn it off for this page. |
 | `search_ph` | Buscar por nombre o referencia | Search by name or reference |
@@ -133,7 +146,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Indicative quote subject to confirmation by Torivac. |
 | `quote_slug` | presupuesto | quote |
 
-## Francés (91 textos a validar; 43 ya existen tal cual en la web original)
+## Francés (104 textos a validar; 47 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Francés |
 |---|---|---|
@@ -181,6 +194,19 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `err_too_fast` | El formulario se ha enviado demasiado rápido. Espera un momento y vuelve a intentarlo. | Le formulaire a été envoyé trop rapidement. Patientez un instant et réessayez. |
 | `err_rate` | Demasiados envíos seguidos desde tu conexión. Espera unos minutos e inténtalo de nuevo. | Trop d’envois consécutifs depuis votre connexion. Patientez quelques minutes et réessayez. |
 | `chars_left` | Quedan {n} caracteres. | Il reste {n} caractères. |
+| `cookie_region` | Aviso de cookies | Avis sur les cookies |
+| `cookie_text` | Usamos cookies de Google para medir las visitas a la web y la eficacia de nuestra publicidad. Puedes aceptarlas, rechazarlas o elegir cuáles; la web funciona igual en cualquier caso. | Nous utilisons des cookies de Google pour mesurer les visites du site et l’efficacité de notre publicité. Vous pouvez les accepter, les refuser ou choisir lesquels ; le site fonctionne de la même façon dans tous les cas. |
+| `cookie_text_stats` | Usamos cookies de Google Analytics para medir las visitas a la web. Puedes aceptarlas o rechazarlas; la web funciona igual en cualquier caso. | Nous utilisons des cookies de Google Analytics pour mesurer les visites du site. Vous pouvez les accepter ou les refuser ; le site fonctionne de la même façon dans tous les cas. |
+| `cookie_accept` | Aceptar todas | Tout accepter |
+| `cookie_reject` | Rechazar todas | Tout refuser |
+| `cookie_save` | Guardar selección | Enregistrer la sélection |
+| `cookie_more` | Política de cookies | Politique de cookies |
+| `cookie_necessary_d` | Recuerdan tu idioma, tu presupuesto y esta elección. Siempre activas. | Ils mémorisent votre langue, votre devis et ce choix. Toujours actifs. |
+| `cookie_stats` | Estadísticas | Statistiques |
+| `cookie_stats_d` | Google Analytics: cuántas personas visitan la web y qué páginas ven. | Google Analytics : combien de personnes visitent le site et quelles pages elles consultent. |
+| `cookie_ads_d` | Google Ads: medir qué anuncios te traen a la web y mostrarte publicidad adaptada. | Google Ads : mesurer quelles annonces vous amènent sur le site et vous montrer une publicité adaptée. |
+| `cookie_settings` | Configurar cookies | Paramétrer les cookies |
+| `cookie_saved` | Preferencias de cookies guardadas | Préférences de cookies enregistrées |
 | `captcha_note` | Este sitio está protegido por Cloudflare Turnstile y se aplican la Política de Privacidad y los Términos del Servicio de Cloudflare. | Ce site est protégé par Cloudflare Turnstile et la Politique de confidentialité et les Conditions d’utilisation de Cloudflare s’appliquent. |
 | `captcha_failed` | No hemos podido comprobar que eres una persona. Recarga la página y vuelve a intentarlo; si usas un bloqueador de contenido, desactívalo para esta página. | Nous n’avons pas pu vérifier que vous êtes une personne. Rechargez la page et réessayez ; si vous utilisez un bloqueur de contenu, désactivez-le pour cette page. |
 | `categories` | Categorías | Catégories |
@@ -229,7 +255,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `demo_banner` | Versión de demostración | Version de démonstration |
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Devis indicatif soumis à confirmation par Torivac. |
 
-## Alemán (96 textos a validar; 38 ya existen tal cual en la web original)
+## Alemán (108 textos a validar; 43 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Alemán |
 |---|---|---|
@@ -279,6 +305,18 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `err_too_fast` | El formulario se ha enviado demasiado rápido. Espera un momento y vuelve a intentarlo. | Das Formular wurde zu schnell abgeschickt. Bitte kurz warten und erneut versuchen. |
 | `err_rate` | Demasiados envíos seguidos desde tu conexión. Espera unos minutos e inténtalo de nuevo. | Zu viele Absendungen von Ihrer Verbindung. Bitte einige Minuten warten und erneut versuchen. |
 | `chars_left` | Quedan {n} caracteres. | Noch {n} Zeichen. |
+| `cookie_region` | Aviso de cookies | Cookie-Hinweis |
+| `cookie_text` | Usamos cookies de Google para medir las visitas a la web y la eficacia de nuestra publicidad. Puedes aceptarlas, rechazarlas o elegir cuáles; la web funciona igual en cualquier caso. | Wir verwenden Google-Cookies, um die Besuche der Website und die Wirksamkeit unserer Werbung zu messen. Sie können sie akzeptieren, ablehnen oder auswählen; die Website funktioniert in jedem Fall gleich. |
+| `cookie_text_stats` | Usamos cookies de Google Analytics para medir las visitas a la web. Puedes aceptarlas o rechazarlas; la web funciona igual en cualquier caso. | Wir verwenden Google-Analytics-Cookies, um die Besuche der Website zu messen. Sie können sie akzeptieren oder ablehnen; die Website funktioniert in jedem Fall gleich. |
+| `cookie_accept` | Aceptar todas | Alle akzeptieren |
+| `cookie_reject` | Rechazar todas | Alle ablehnen |
+| `cookie_save` | Guardar selección | Auswahl speichern |
+| `cookie_necessary_d` | Recuerdan tu idioma, tu presupuesto y esta elección. Siempre activas. | Sie merken sich Sprache, Angebot und diese Auswahl. Immer aktiv. |
+| `cookie_stats` | Estadísticas | Statistik |
+| `cookie_stats_d` | Google Analytics: cuántas personas visitan la web y qué páginas ven. | Google Analytics: wie viele Personen die Website besuchen und welche Seiten sie ansehen. |
+| `cookie_ads_d` | Google Ads: medir qué anuncios te traen a la web y mostrarte publicidad adaptada. | Google Ads: messen, welche Anzeigen Sie auf die Website führen, und Ihnen angepasste Werbung zeigen. |
+| `cookie_settings` | Configurar cookies | Cookie-Einstellungen |
+| `cookie_saved` | Preferencias de cookies guardadas | Cookie-Einstellungen gespeichert |
 | `captcha_note` | Este sitio está protegido por Cloudflare Turnstile y se aplican la Política de Privacidad y los Términos del Servicio de Cloudflare. | Diese Website ist durch Cloudflare Turnstile geschützt; es gelten die Datenschutzerklärung und die Nutzungsbedingungen von Cloudflare. |
 | `captcha_failed` | No hemos podido comprobar que eres una persona. Recarga la página y vuelve a intentarlo; si usas un bloqueador de contenido, desactívalo para esta página. | Wir konnten nicht prüfen, ob Sie ein Mensch sind. Laden Sie die Seite neu und versuchen Sie es erneut; wenn Sie einen Inhaltsblocker verwenden, schalten Sie ihn für diese Seite aus. |
 | `categories` | Categorías | Kategorien |

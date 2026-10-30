@@ -85,8 +85,8 @@
 [data-theme="original"] .site-footer .facts{padding:50px 0 24px;gap:50px}
 [data-theme="original"] .site-footer .fact svg{width:32px;height:32px;color:var(--o-brand);stroke-width:2.2}
 [data-theme="original"] .site-footer .legal{font-size:15px;color:#fff}
-[data-theme="original"] .site-footer .legal a{color:var(--o-brand);text-decoration:none}
-[data-theme="original"] .site-footer .legal a:hover{text-decoration:underline}
+[data-theme="original"] .site-footer .legal a,[data-theme="original"] .site-footer .legal .linklike{color:var(--o-brand);text-decoration:none}
+[data-theme="original"] .site-footer .legal a:hover,[data-theme="original"] .site-footer .legal .linklike:hover{text-decoration:underline}
 [data-theme="original"] .site-footer .fact{color:#fff;text-decoration:none}
 [data-theme="original"] .site-footer .funding{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:24px;padding:24px 0 50px}
 [data-theme="original"] .site-footer .funding img{margin:0;width:427px;padding:0;background:#fff}

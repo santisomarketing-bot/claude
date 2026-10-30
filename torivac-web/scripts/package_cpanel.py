@@ -72,9 +72,9 @@ def write_build_info(www: Path, version: str, committed_at: str, clean: bool, ba
     (www / "api" / "generated" / "build.json").write_text(json.dumps(info, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def build_site(base: str, staging: bool, out: Path, theme: str = "ficha", switch=None) -> None:
+def build_site(base: str, staging: bool, out: Path, theme: str = "ficha", switch=None, google_demo: bool = False) -> None:
     """compila la web de producción (la salida se cuenta línea a línea en la consola de build); `switch` None = el valor por defecto del compilador (sí en pruebas, no en producción)"""
-    cmd = ["node", str(ROOT / "site/build.mjs"), f"--base={base}", "--php-api", f"--out={out}", f"--theme={theme}"] + (["--staging"] if staging else []) + ([] if switch is None else ["--theme-switch" if switch else "--no-theme-switch"])
+    cmd = ["node", str(ROOT / "site/build.mjs"), f"--base={base}", "--php-api", f"--out={out}", f"--theme={theme}"] + (["--staging"] if staging else []) + ([] if switch is None else ["--theme-switch" if switch else "--no-theme-switch"]) + (["--google-demo"] if google_demo else [])
     code, txt = run(cmd, cwd=ROOT)
     if code:
         sys.exit("✗ la compilación falló:\n" + txt[-1500:])
@@ -173,6 +173,48 @@ def check_csp(www: Path, rel: dict) -> list:
                 bad += 1
                 if bad <= 3:
                     errs.append(f"script en línea sin huella en la CSP ({r}): {body[:60]!r}")
+    return errs
+
+
+GOOGLE_HOSTS = re.compile(r"googletagmanager|google-analytics|analytics\.google|doubleclick|googleadservices|googlesyndication")
+
+
+def check_google(rel: dict, staging: bool) -> list:
+    """Google (Analytics/Ads/Search Console): sin IDs no hay nada de Google (ni aviso, ni script, ni orígenes en la CSP); con IDs, la CSP los abre SOLO en producción; los IDs ficticios del paquete de pruebas no llegan a producción; el entorno de pruebas no se verifica en Search Console."""
+    errs = []
+    ht = rel[".htaccess"].read_text(encoding="utf-8") if ".htaccess" in rel else ""
+    m = re.search(r'Content-Security-Policy "([^"]+)"', ht)
+    csp_google = bool(m and GOOGLE_HOSTS.search(m.group(1)))
+    htmls = [(r, p.read_text(encoding="utf-8", errors="ignore")) for r, p in rel.items() if p.suffix.lower() == ".html"]
+    boots = [(r, re.search(r'id="tv-google">([^<]*)<', t)) for r, t in htmls]
+    active = [r for r, b in boots if b]
+    if not active:
+        if csp_google:
+            errs.append("la CSP abre orígenes de Google pero ninguna página lleva medición")
+        if any("consent.js" in t for _, t in htmls):
+            errs.append("hay páginas que cargan consent.js sin IDs de Google")
+    else:
+        if "assets/js/consent.js" not in rel:
+            errs.append("las páginas llevan medición pero falta assets/js/consent.js")
+        modes = set()
+        for r, b in boots:
+            if b:
+                try:
+                    modes.add(json.loads(b.group(1)).get("mode"))
+                except Exception:  # noqa: BLE001
+                    errs.append(f"{r}: el bloque tv-google no es JSON válido")
+        if staging and modes != {"test"}:
+            errs.append(f"entorno de pruebas con medición en modo {sorted(modes)}: debe ser solo «test» (no se descarga nada de Google)")
+        if not staging and modes != {"live"}:
+            errs.append(f"producción con medición en modo {sorted(modes)}: debe ser solo «live»")
+        if staging and csp_google:
+            errs.append("el entorno de pruebas abre orígenes de Google en la CSP")
+        if not staging and not csp_google:
+            errs.append("producción con medición pero la CSP no deja pasar a Google")
+        if not staging and any(re.search(r"G-DEMO000000|AW-0000000000", t) for _, t in htmls):
+            errs.append("producción lleva los IDs ficticios de Google del paquete de pruebas")
+    if staging and any("google-site-verification" in t for _, t in htmls):
+        errs.append("el entorno de pruebas lleva la verificación de Search Console (es noindex: no debe)")
     return errs
 
 
@@ -321,6 +363,7 @@ def verify(www: Path, base: str, staging: bool, embed_prices: bool, theme: str =
         errs.append("falta assets/img/original (fotos del aspecto «Original»)")
     errs += check_versions(www, rel, base)
     errs += check_csp(www, rel)
+    errs += check_google(rel, staging)
     errs += check_wp_probes(rel, base)
     errs += check_blog(rel, base, staging)
     try:
@@ -368,6 +411,7 @@ def main():
     ap.add_argument("--out", default="entrega")
     ap.add_argument("--keep", action="store_true")
     ap.add_argument("--embed-prices", action="store_true")
+    ap.add_argument("--google-demo", action="store_true", help="solo con --staging: IDs ficticios de Google para ver el aviso de cookies en el entorno de pruebas (no se envía nada a Google)")
     ap.add_argument("--allow-dirty", action="store_true", help="permite empaquetar PRODUCCIÓN con cambios sin commitear (por defecto no: el paquete no se podría repetir)")
     ap.add_argument("--theme", choices=["ficha", "clasico", "original"], default="ficha", help="aspecto por defecto: ficha (Ficha técnica, el nuevo), clasico (el de la primera versión) u original (la web actual de grupotorivac.com)")
     sw = ap.add_mutually_exclusive_group()
@@ -390,7 +434,7 @@ def main():
     www = tmp / "www"
     try:
         print(f"1/4 compilando {base}{' (PRUEBAS)' if a.staging else ''} · aspecto {a.theme} …")
-        build_site(base, a.staging, www, a.theme, a.switch)
+        build_site(base, a.staging, www, a.theme, a.switch, a.google_demo)
         print("2/4 copiando el API PHP …")
         copy_api(www)
         write_build_info(www, version, committed_at, clean, base, a.staging, a.theme, a.switch)

@@ -34,6 +34,7 @@ Aquí **sí** funciona todo de verdad: pedidos por correo a `info@grupotorivac.c
 | Envío del pedido / contacto | Simulado (PDF + borrador de correo) | **Real** (Resend → info@ y mzamora@) cuando se configura el correo |
 | Login del panel | Solo demostración (credenciales en el código) | **Real** (usuarios con contraseña, sesiones firmadas) |
 | Estadísticas (Google Business, Ads, Search Console, GA4) | Sin conectar | Sin conectar: faltan las credenciales de Torivac; el panel no muestra cifras inventadas |
+| Medición de Google (GA4, Ads) y aviso de cookies | En el paquete de pruebas: aviso **de prueba** con IDs ficticios, sin enviar nada a Google | Preparada y probada, **apagada** hasta tener los IDs de Torivac ([`GOOGLE.md`](GOOGLE.md)) |
 
 ## Cómo se ha comprobado (todo reproducible y sin red)
 - `cd workers/api && npm test` · `php backend-php/api/tests/run.php`: pedidos, precios, hojas, lectura de `.xlsx`, login, IA, CORS… (el mismo contrato en Worker y en PHP).

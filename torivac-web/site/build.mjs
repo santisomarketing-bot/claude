@@ -11,6 +11,8 @@ import { htaccess, langHtaccess, robotsTxt, basePathOf } from './lib/hosting.mjs
 import { LANGS, T, t } from './lib/i18n.mjs';
 import * as TPL from './templates.mjs';
 import { productNode, itemListNode, postNode, jsonScript, clip } from './lib/seo.mjs';
+import { loadGoogle, cspHosts, verifyFileBody } from './lib/google.mjs';
+import { cookieTitle } from './lib/cookies.mjs';
 import { THEMES, themeBootJs } from './lib/themes.mjs';
 import { plainTextScript, blogMarkdownScript } from './lib/shared-client.mjs';
 import { applyApproved } from './lib/proposals-apply.mjs';
@@ -34,6 +36,10 @@ if (!THEMES.includes(THEME)) { console.error(`--theme debe ser uno de: ${THEMES.
 const THEME_SWITCH = process.argv.includes('--theme-switch') || (!process.argv.includes('--no-theme-switch') && (!ABS || STAGING));
 // Aspectos que lleva ESTA compilación: con selector, todos; sin él, solo el elegido (así «Clásico» solo y «Ficha técnica» sola salen exactamente como antes, sin marcado ni hojas de otros aspectos).
 const THEME_LIST = THEME_SWITCH ? THEMES : [THEME];
+// [GOOGLE] IDs de Analytics/Ads/Search Console (site/google.config.json; --google-demo = IDs ficticios solo para el paquete de pruebas). Vacío = la web no carga nada de Google ni enseña aviso de cookies. Ver docs/GOOGLE.md
+const GOOGLE = loadGoogle({ file: path.join(ROOT, 'site', 'google.config.json'), base: ABS, staging: STAGING, demo: process.argv.includes('--google-demo') });
+if (GOOGLE.errors.length) { console.error('✗ site/google.config.json:\n  - ' + GOOGLE.errors.join('\n  - ')); process.exit(2); }
+console.log(GOOGLE.active ? `GOOGLE: ${[GOOGLE.ga4 && 'GA4 ' + GOOGLE.ga4, GOOGLE.ads && 'Ads ' + GOOGLE.ads].filter(Boolean).join(' · ')}${GOOGLE.test ? ' (modo prueba: no se descarga nada de Google)' : ''}${GOOGLE.verify.meta || GOOGLE.verify.file ? ' · Search Console' : ''}` : GOOGLE.verify.meta || GOOGLE.verify.file ? 'GOOGLE: solo verificación de Search Console (sin medición ni aviso de cookies)' : 'GOOGLE: sin IDs (no se carga nada de Google)');
 setCleanUrls(!!ABS);                                                                         // producción: URLs sin index.html; demo (doble clic): con index.html
 setVersionedAssets(!!ABS);                                                                   // producción: CSS y JS con «?v=huella» (actualizar sin caché vieja); demo: sin versión
 // Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
@@ -156,6 +162,7 @@ const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, st
 const QSLUG = { es: '/presupuesto/', en: '/en/quote/', fr: '/fr/devis/', de: '/de/angebot/' };
 const SHOPSLUG = { es: '/tienda/', en: '/en/shop/', fr: '/fr/boutique/', de: '/de/shop/' };          // la tienda (todos los productos): página nueva, no existe en la web original
 meta.catalogHref = {};
+site.cookies = {};                                                                      // política de cookies propia por idioma (la de la web original era un shortcode de Complianz que no se puede copiar)
 for (const l of LANGS) {
   const items = meta.nav[l];
   site.navItems[l] = items.map((n, i) => {
@@ -182,9 +189,10 @@ for (const l of LANGS) {
     links: f.links.slice(0, 3).map((x) => ({ label: x.label, href: x.href })),
   };
   // la web original enlaza la política de cookies solo desde el banner de consentimiento; sin banner (la web nueva no usa cookies de seguimiento) va en el pie
-  { const cp = Object.keys(pages[l] || {}).find((k) => /politica-de-cookies/.test(k)); if (cp) site.footer[l].links.push({ label: (pages[l][cp].title || '').replace(/\s*-\s*Torivac$/, ''), href: 'https://grupotorivac.com' + cp }); }
+  { const cp = Object.keys(pages[l] || {}).find((k) => /politica-de-cookies/.test(k)); if (cp) { site.cookies[l] = cp; site.footer[l].links.push({ label: (pages[l][cp].title || '').replace(/\s*-\s*Torivac$/, '') || cookieTitle(l), path: cp }); } }
 }
 
+site.google = GOOGLE;
 site.prodById = prodById;
 site.catById = catById;
 site.homeMeta = Object.fromEntries(LANGS.map((l) => [l, ((pages[l] || {})[site.home[l]] || {}).meta_description || '']));   // descripción de la portada en cada idioma (texto de la web original): último recurso de <meta description>
@@ -357,6 +365,14 @@ for (const lang of LANGS) {
     emit(pp, TPL.layout(ctx, { title: pg.title || g.title, description: pg.meta_description, template: 'page', hero: g.hero, body: g.body, alts: alts(pp), crumbs: [crumbHome(lang), { name: pg.title || g.title, path: pp }] }));
   }
 }
+// política de cookies propia (misma dirección que la de la web original en cada idioma)
+for (const lang of LANGS) {
+  const cp = site.cookies[lang]; if (!cp) continue;
+  const ctx = mkctx(lang, cp, 'page');
+  const title = (pages[lang][cp].title || '').replace(/\s*-\s*Torivac$/, '') || cookieTitle(lang);
+  const g = TPL.cookiePage(ctx, title);
+  emit(cp, TPL.layout(ctx, { title: `${title} · Torivac`, description: g.description, template: 'page', hero: g.hero, body: g.body, alts: Object.fromEntries(LANGS.filter((l) => site.cookies[l]).map((l) => [l, site.cookies[l]])), crumbs: [crumbHome(lang), { name: title, path: cp }] }));
+}
 // redirecciones de rutas fusionadas / sustituidas
 for (const [from, to] of aliases) {
   if (!from.endsWith('/')) continue;
@@ -365,6 +381,8 @@ for (const [from, to] of aliases) {
   const target = up + to.replace(/^\//, '') + 'index.html';
   emit(from, `<!doctype html><meta charset="utf-8"><title>Redirect</title><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${attr(target)}"><link rel="canonical" href="${attr(ABS + to)}"><a href="${attr(target)}">→</a>`);
 }
+// archivo de verificación de Search Console (alternativa a la etiqueta meta cuando no hay acceso al DNS)
+if (GOOGLE.verify.file) fs.writeFileSync(path.join(DIST, GOOGLE.verify.file), verifyFileBody(GOOGLE.verify.file));
 // raíz de /en, /fr, /de ya emitida como home; portada del demo
 console.log(`HTML emitidos: ${count}`);
 
@@ -502,7 +520,7 @@ if (ABS && !STAGING) {
 if (ABS) {
   const bp = basePathOf(ABS), origin = new URL(ABS).origin;
   fs.writeFileSync(path.join(DIST, 'robots.txt'), robotsTxt({ base: ABS, staging: STAGING }));
-  fs.writeFileSync(path.join(DIST, '.htaccess'), htaccess({ base: ABS, staging: STAGING, aliases, pdfRedirects: [...pdfLocal], apiOrigin: API_URL ? new URL(API_URL).origin : '', phpApi: PHP_API, scriptHashes: THEME_SWITCH ? [crypto.createHash('sha256').update(themeBootJs()).digest('base64')] : [] }));
+  fs.writeFileSync(path.join(DIST, '.htaccess'), htaccess({ base: ABS, staging: STAGING, aliases, pdfRedirects: [...pdfLocal], apiOrigin: API_URL ? new URL(API_URL).origin : '', phpApi: PHP_API, scriptHashes: THEME_SWITCH ? [crypto.createHash('sha256').update(themeBootJs()).digest('base64')] : [], google: cspHosts(GOOGLE) }));
   for (const lang of LANGS) {
     // Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
     const t = (k) => T[k]?.[lang] ?? T[k]?.es ?? k;

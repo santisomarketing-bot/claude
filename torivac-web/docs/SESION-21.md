@@ -39,7 +39,7 @@ Se hace en tres bloques con commit y entrega cada uno: **21a** ajustes, **21b** 
 
 ### 21b · Métricas de Google
 - **Fase 1, con la misma cuenta de servicio que ya lee Drive**: **Search Console** (consultas, clics, impresiones, CTR y posición) y **GA4** (usuarios, sesiones, páginas más vistas) por sus APIs de solo lectura. El gestor añade el correo de la cuenta de servicio como lector en GA4 y en Search Console, pega el ID de la propiedad y la URL del sitio, y pulsa *Probar*. El servidor consulta **una vez al día** (el mismo cron de los precios) y guarda instantáneas agregadas (sin datos personales); el panel las dibuja con gráficos propios en SVG, sin librerías ni cookies de terceros, en el estilo de «Ficha técnica».
-- **Sin etiqueta de analítica en la web**: la web nueva no carga ningún script de Google. Search Console no la necesita. Además se contarán en el servidor, sin cookies, **pedidos, mensajes de contacto y descargas de presupuesto** por día e idioma. **Decisión de Torivac** (§6): si quieren GA4 con visitas y recorrido, hay que añadir la etiqueta con aviso de cookies (RGPD), actualizar la política de privacidad y permitir en la CSP los dominios de Google; cuesta rendimiento y la web hoy no hace ninguna petición externa.
+- **La etiqueta de GA4 y de Ads ya existe** (sesión 27, [`GOOGLE.md`](GOOGLE.md)): aviso de cookies, Consent Mode v2 y conversiones de presupuesto y contacto; se activa con los IDs de `site/google.config.json`. Esta sesión solo **lee** las métricas por API (no añade etiquetas). Quien rechaza las cookies no sale en Analytics, así que además se contarán en el servidor, sin cookies, **pedidos, mensajes de contacto y descargas de presupuesto** por día e idioma, para tener una cifra que no depende del consentimiento.
 - **Fase 2, Google Business Profile y Google Ads**: sus APIs piden un acceso aprobado por Google y la autorización de la cuenta que administra la ficha (OAuth), no una cuenta de servicio. Hasta tenerlo, alternativa inmediata: **incrustar informes de Looker Studio** (se pega la URL en *Ajustes → Google*; quien los ve necesita acceso en Google; la CSP solo admite ese dominio en `/admin/`).
 - Todo lo anterior son **supuestos a confirmar con una prueba real** al empezar la sesión (permisos, cuotas, formato de las respuestas).
 
@@ -66,7 +66,7 @@ Se hace en tres bloques con commit y entrega cada uno: **21a** ajustes, **21b** 
 - En los tres: pruebas de PHP y del Worker en verde, `qa-all` en verde, documentación y entrega como en las sesiones anteriores.
 
 ## 6. Qué hace falta de Torivac / decisiones
-1. **Analítica**: ¿solo Search Console y contadores del servidor (sin cookies), o también GA4 con aviso de cookies?
+1. **Analítica**: decidido: GA4 y Ads con aviso de cookies ([`GOOGLE.md`](GOOGLE.md)). Queda decidir si el panel enseña también los contadores del servidor (sin cookies).
 2. **Accesos de lectura** para el correo de la cuenta de servicio: Search Console (propiedad de grupotorivac.com) y GA4 (si se usa), y el ID de la propiedad. Si ya existe un informe de Looker Studio, su enlace.
 3. **Google Business Profile y Ads**: ¿quién administra la ficha y la cuenta? ¿Informe incrustado ahora y API más adelante?
 4. **Quién ve las métricas**: hoy hay dos roles (manager y client = compradores). ¿Solo managers, o un rol nuevo «propietario» para el equipo de Torivac?

@@ -1,7 +1,7 @@
 # Torivac · documentación para programadores
 
 Guía para quien tenga que **mantener o ampliar** la web nueva de Torivac. Complementa a `ARQUITECTURA.md` (contrato de datos), `PLAN.md` (sesiones),
-`INDICE-CODIGO.md` (índice generado: cada archivo y cada función), `CONVENCIONES.md` (etiquetas del código), `ENTREGA-DEMO.md` (qué es real y qué es simulado), `ACTUALIZAR-SIN-ROMPER.md` (cómo publicar cambios con una vuelta atrás), `SEGURIDAD.md` (medidas, pruebas y límites), `CORREO.md` (SMTP, Brevo o Resend; probar y arreglar el envío), `PROPUESTAS.md` (editar, probar y aplicar las mejoras del panel) y `SESION-21.md` (lo siguiente).
+`INDICE-CODIGO.md` (índice generado: cada archivo y cada función), `CONVENCIONES.md` (etiquetas del código), `ENTREGA-DEMO.md` (qué es real y qué es simulado), `ACTUALIZAR-SIN-ROMPER.md` (cómo publicar cambios con una vuelta atrás), `SEGURIDAD.md` (medidas, pruebas y límites), `GOOGLE.md` (Analytics, Ads y Search Console: aviso de cookies, consentimiento, conversiones y CSP), `CORREO.md` (SMTP, Brevo o Resend; probar y arreglar el envío), `PROPUESTAS.md` (editar, probar y aplicar las mejoras del panel) y `SESION-21.md` (lo siguiente).
 
 ## 1. Qué es
 Una web **100 % estática** (HTML + CSS + JS vanilla, sin frameworks) que replica grupotorivac.com en 4 idiomas (es en la raíz, `/en`, `/fr`, `/de`) y añade:

@@ -89,7 +89,7 @@
 .site-footer .fact{display:flex;gap:var(--s-3);align-items:center;color:#fff;text-decoration:none}
 .site-footer .fact svg{width:30px;height:30px;color:var(--copper-on-dark);flex:none}
 .site-footer .legal{text-align:center;font-size:var(--fs-1);color:#d9d1ca;padding-bottom:var(--s-4)}
-.site-footer .legal a{color:var(--copper-on-dark)}
+.site-footer .legal a,.site-footer .legal .linklike{color:var(--copper-on-dark)}
 .site-footer .funding{text-align:center;padding:var(--s-4) 0 var(--s-7)}
 .site-footer .funding img{margin:0 auto var(--s-4);width:520px;max-width:100%;height:auto;background:#fff;padding:6px}
 .site-footer .funding p{font-size:11px;line-height:1.4;max-width:78ch;margin:0 auto;color:#b8afa8}

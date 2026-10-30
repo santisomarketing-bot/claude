@@ -1,0 +1,13 @@
+{
+  "_ayuda": "IDs de Google de grupotorivac.com. Son identificadores PÚBLICOS (salen en el código de cualquier web): no son claves ni contraseñas. Con todo vacío la web no carga nada de Google ni enseña aviso de cookies. Guía: docs/GOOGLE.md",
+  "ga4": "",
+  "ads": "",
+  "conversions": {
+    "quote": "",
+    "contact": ""
+  },
+  "searchConsole": {
+    "meta": "",
+    "htmlFile": ""
+  }
+}

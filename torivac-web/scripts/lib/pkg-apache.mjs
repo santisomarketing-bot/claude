@@ -1,6 +1,7 @@
 // [PKG-APACHE] Despliega un paquete de la web (producción o pruebas) en un Apache REAL con PHP-FPM y deja a mano lo que hace falta para probarlo: peticiones con el Host y el esquema que se quiera,
 // llamadas al API con la sesión de un manager recién creado y una imagen PNG válida de cualquier tamaño. Lo usan scripts/qa-blog-apache.mjs (peticiones directas) y scripts/qa-blog-panel.mjs (navegador).
 //   const d = await deployPackage({ staging, local })    local = true: la web es http://127.0.0.1:<puerto> (para abrirla con un navegador); si no, https://example.test (o pruebas.example.test) detrás de un «proxy» (cabecera X-Forwarded-Proto)
+//   live: con local, la compilación es de PRODUCCIÓN (no de pruebas) sobre http://127.0.0.1: para probar lo que solo existe en producción (p. ej. los IDs de Google) · buildArgs: argumentos extra de package_cpanel.py
 //   d.req(ruta, { method, headers, body }) → { s, h, t, b }     d.api(ruta, { method, body, token }) → { s, j, h }     d.token (sesión del manager jefa@torivac.com)     d.BASE · d.www · d.ap · await d.stop()
 //   Código por correo: el paquete se despliega con la verificación en dos pasos DESACTIVADA (two_step.enabled = false) para que las pruebas que no hablan de ella entren con la contraseña sola.
 //   Para probarla: deployPackage({ …, config: { two_step: { enabled: true } } }) o, ya desplegado, d.setConfig({ two_step: {…} }) (sustituye ese apartado entero de config.php).
@@ -67,12 +68,12 @@ export const MASTER = 'master-test-' + 'a1b2c3d4e5f6a7b8c9d0'.repeat(2);
 export const MANAGER_PASS = 'Manager-Clave-2026';
 
 /** Despliega el paquete en un Apache real → { www, ap, port, host, BASE, req, api, token, stop } (ver la cabecera). */
-export async function deployPackage({ staging = false, local = false, config = null } = {}) {
+export async function deployPackage({ staging = false, local = false, live = false, config = null, buildArgs = [] } = {}) {
   const port = await freePort();
   const host = local ? `127.0.0.1:${port}` : staging ? 'pruebas.example.test' : 'example.test';
   const BASE = local ? `http://${host}` : `https://${host}`;
   const OUT = fs.mkdtempSync(path.join(os.tmpdir(), 'tv-blog-pkg-')); fs.chmodSync(OUT, 0o755);
-  execFileSync('python3', ['-I', path.join(ROOT, 'scripts/package_cpanel.py'), `--base=${BASE}`, ...(staging || local ? ['--staging'] : []), `--out=${OUT}`, '--keep', '--allow-dirty'], { stdio: 'pipe' });
+  execFileSync('python3', ['-I', path.join(ROOT, 'scripts/package_cpanel.py'), `--base=${BASE}`, ...(staging || (local && !live) ? ['--staging'] : []), ...buildArgs, `--out=${OUT}`, '--keep', '--allow-dirty'], { stdio: 'pipe' });
   const www = path.join(OUT, fs.readdirSync(OUT).find((d) => fs.statSync(path.join(OUT, d)).isDirectory()));
   spawnSync('chmod', ['-R', 'a+rX', www]);
   const ap = await startApache({ docroot: www, port, phpIni: { 'opcache.enable': '0' } });          // sin caché de código: un config.php reescrito vale en la petición siguiente

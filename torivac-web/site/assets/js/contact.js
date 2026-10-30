@@ -29,7 +29,7 @@
         var body = { name: d.name, email: d.email, message: d.message, privacy: !!d.privacy, lang: Q.lang, hp: d.hp || '', _e: F.elapsed() };
         (TV.Captcha ? TV.Captcha.attach(f, body) : Promise.resolve(body)).then(function (b) { return TV.api.post('/api/contact', b); }).then(function (r) {
           btn.disabled = false; btn.textContent = label;
-          if (r && r.ok) { out.hidden = false; out.className = 'notice ok'; out.innerHTML = '<strong>' + TV.esc(Q.t('message_received')) + '</strong>'; out.setAttribute('tabindex', '-1'); out.focus(); f.reset(); return; }
+          if (r && r.ok) { out.hidden = false; out.className = 'notice ok'; out.innerHTML = '<strong>' + TV.esc(Q.t('message_received')) + '</strong>'; out.setAttribute('tabindex', '-1'); out.focus(); f.reset(); if (TV.track) TV.track('contact'); return; }                // conversión: solo con el permiso de cookies (consent.js)
           var why = F.explain(f, r);
           if (why === true) return;                                                     // error de un campo: ya está marcado y enfocado
           var mail = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];

@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 1829/1829 funciones descritas (100 %) · 204/204 archivos con cabecera.
+**Cobertura**: 1880/1880 funciones descritas (100 %) · 208/208 archivos con cabecera.
 
 
 ## `site/`
@@ -11,102 +11,107 @@
 
 [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio] [--out=carpeta] Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS). Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
 
-Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[PROPOSALS-APPLIED]` · `[ORIGINAL]` · `[SEO]` · `[BLOG]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
+Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[GOOGLE]` · `[LIVE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[PROPOSALS-APPLIED]` · `[ORIGINAL]` · `[SEO]` · `[BLOG]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
 
-- `arg0` (l. 23) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `arg` (l. 26) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `jl` (l. 40) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
-- `normName` (l. 63) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
-- `depthOf` (l. 67) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
-- `canon` (l. 70) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
-- `subtreeIds` (l. 117) — Ids de una categoría y de todas sus descendientes.
-- `prodIdsOf` (l. 119) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
-- `visible` (l. 123) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
-- `prune` (l. 125) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
-- `pth` (l. 146) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
-- `pickCats` (l. 199) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
-- `emit` (l. 222) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
-- `mkctx` (l. 224) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
-- `fitTitle` (l. 229) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
-- `crumbHome` (l. 231) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
-- `crumbProducts` (l. 233) — Miga de pan «Productos» del idioma `lang`: { name, path }.
-- `pickAlt` (l. 235) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
-- `absImg` (l. 237) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
-- `alts` (l. 244) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
-- `a` (l. 419) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 437) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `css` (l. 447) — Texto del archivo site/assets/css/<n>.css.
-- `xml` (l. 467) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 469) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 481) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 508) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
-- `hashOf` (l. 526) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
-- `walk` (l. 536) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
+- `arg0` (l. 25) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `arg` (l. 28) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `jl` (l. 46) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
+- `normName` (l. 69) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
+- `depthOf` (l. 73) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
+- `canon` (l. 76) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
+- `subtreeIds` (l. 123) — Ids de una categoría y de todas sus descendientes.
+- `prodIdsOf` (l. 125) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
+- `visible` (l. 129) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
+- `prune` (l. 131) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
+- `pth` (l. 152) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
+- `pickCats` (l. 207) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
+- `emit` (l. 230) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
+- `mkctx` (l. 232) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
+- `fitTitle` (l. 237) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
+- `crumbHome` (l. 239) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
+- `crumbProducts` (l. 241) — Miga de pan «Productos» del idioma `lang`: { name, path }.
+- `pickAlt` (l. 243) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
+- `absImg` (l. 245) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
+- `alts` (l. 252) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
+- `a` (l. 437) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
+- `copyDir` (l. 455) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 465) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 485) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 487) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 499) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 526) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `hashOf` (l. 544) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+- `walk` (l. 554) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
 
 ### `templates.mjs`
 
 [TEMPLATES] Plantillas HTML (funciones puras: datos → string). Cada una devuelve el <main> de su página; `layout()` lo envuelve con cabecera, pie, elementos flotantes y scripts. Datos: data/catalog/*.json (ver docs/ARQUITECTURA.md). Textos de interfaz: site/lib/i18n.mjs.
 
-Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[THEME]` · `[ORIGINAL]` · `[SEO-FILES]` · `[NAV]` · `[SOCIAL]` · `[SHARED]` · `[HOME]` · `[PAGES]` · `[BLOG]` · `[SHOP]` · `[STORE]` · `[PRODUCT]` · `[QUOTE]` · `[CONTACT]`
+Secciones: `[TEMPLATES]` · `[ART]` · `[A11Y]` · `[META]` · `[LAYOUT]` · `[THEME]` · `[ORIGINAL]` · `[SEO-FILES]` · `[NAV]` · `[SOCIAL]` · `[COOKIES]` · `[SHARED]` · `[HOME]` · `[PAGES]` · `[BLOG]` · `[SHOP]` · `[STORE]` · `[PRODUCT]` · `[QUOTE]` · `[CONTACT]`
 
-- `pick` (l. 13) — Valor de un campo traducible en el idioma `lang` (español si falta; '' si no hay objeto).
-- `toroidArt` (l. 20) — Bobinado toroidal visto desde arriba (mismo motivo que el logotipo): 56 espiras que se «dibujan» al entrar en pantalla (CSS + IntersectionObserver en app.js).
-- `waveLab` (l. 29) — Osciloscopio esquemático de un variador de tensión: la onda de salida (cobre) se reduce al mover el mando; la de entrada (230 V) queda fija. JS: assets/js/lab.js
-- `headingOrder` (l. 49) — El contenido original salta de nivel (H1→H4). Se corrige en la ACCESIBILIDAD (aria-level) sin tocar la etiqueta, así el diseño no cambia:
-- `metaDescription` (l. 61) — Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, la descripción de la portada en ese idioma (`fallback`, texto de la web original; sin ella, ninguna).
-- `ok` (l. 63) — Una descripción sirve si tiene al menos 50 caracteres y no es solo signos o cifras.
-- `cssGuard` (l. 74) — Aviso para el demo (solo sin --base): si la página se abre sin sus hojas de estilo (p. ej. index.html dentro del .zip sin extraer), enseña arriba cómo abrirla bien.
-- `oc` (l. 86) — Con selector de aspecto, el HTML lleva los elementos de los tres aspectos y cada hoja de estilos muestra los suyos (los del resto, con `display:none`).
-- `lbl` (l. 88) — Rótulo que cambia según el aspecto: sin «Original», el de siempre; solo «Original», el de la web actual; con selector, los dos (cada hoja muestra uno). Los textos ya vienen escapados.
-- `oHref` (l. 90) — Dirección a la que apunta una tarjeta o un enlace de categoría: en «Original» solo, una categoría hoja con UN producto lleva directa a ese producto (la web actual la redirige).
-- `floatMenu` (l. 92) — Menú flotante «Productos-Torivac»: pestaña en el borde izquierdo que abre un panel oscuro con las categorías (dos niveles, en el orden de la web actual). Nace oculto: app.js lo muestra (sin JS no serviría).
-- `themeSwitch` (l. 111) — Selector de aspecto: dos botones con aria-pressed. Nace oculto (sin JS no serviría de nada); assets/js/app.js lo muestra, marca el activo y guarda la elección. `where` distingue el de la cinta y el del pie.
-- `layout` (l. 114) — Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap.
-- `alt` (l. 118) — selector de idioma: sin traducción cae a la portada de ese idioma
-- `crumbs` (l. 205) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
-- `vtext` (l. 208) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
-- `vtags` (l. 210) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
-- `productCard` (l. 221) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
-- `catTree` (l. 235) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
-- `holds` (l. 238) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
-- `link` (l. 240) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
-- `walk` (l. 242) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
-- `cut` (l. 249) — Texto recortado a `max` caracteres en el último espacio (sin partir palabras) y con «…» si se ha recortado; `max` Infinity = íntegro.
-- `categoryCards` (l. 251) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
-- `fold` (l. 267) — algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
-- `oSecImg` (l. 280) — «Original»: atributo style con la foto de fondo de una sección (los trazos del logotipo de la web actual), en una variable que solo pinta la hoja de ese aspecto. Una URL dentro de una variable se resuelve desde la hoja que la usa (assets/css/site.css), de ahí «../media/…» y no la ruta de la página.
-- `homeBody` (l. 282) — Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla).
-- `text` (l. 286) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
-- `imgs` (l. 288) — Bloques de imagen de una sección.
-- `btn` (l. 290) — Primer bloque de botón de una sección (undefined si no tiene).
-- `oh` (l. 297) — «Original»: clase que engancha cada sección de la portada con la hoja de la web actual (sin «Original» no se emite y el HTML sale idéntico)
-- `oBg` (l. 299) — «Original»: variable con la foto de fondo de una sección de la portada.
-- `eyebrowAndHead` (l. 308) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
-- `paras` (l. 314) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
-- `bt` (l. 316) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
-- `waveSvg` (l. 345) — onda de tensión animada (SVG) — elemento gráfico base del hero
-- `cardsHtml` (l. 353) — «Original»: bloques de una sección de tarjetas (Misión, Visión, Valores…) con cada icono y el texto que le sigue dentro de su propia tarjeta; lo que va antes del primer icono (título) queda fuera. Los otros aspectos ven el mismo flujo, solo con un div más.
-- `isIcon` (l. 355) — Indica si el bloque es un icono pequeño (60 × 60) y no una foto.
-- `sectionsHtml` (l. 364) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. Con «Original», cada sección lleva además clases según cómo la maqueta la web actual (site.oSections, por id de sección de Elementor, igual en los cuatro idiomas).
-- `cls` (l. 369) — Clases de la sección: las de siempre y, con «Original», las del tipo, el lado de la foto y el arte de fondo.
-- `isPhoto` (l. 373) — los iconos pequeños se quedan dentro del texto
-- `genericPage` (l. 399) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
-- `contactBlockO` (l. 421) — «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno).
-- `postCard` (l. 434) — Tarjeta de una entrada en el listado del blog. Con `dyn` (plantilla de las entradas que se crean desde el panel, ver backend-php/api/lib/BlogPage.php) cada dato variable es una marca @@TV:…@@
-- `blogIndexBody` (l. 442) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
-- `postBody` (l. 450) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. Con `dyn` es la plantilla de las entradas que se crean desde el panel: lo variable son marcas
-- `shopBody` (l. 470) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
-- `storeCard` (l. 511) — Tarjeta de un producto en la tienda: foto, categoría, nombre, tensiones, precio y compra (el precio y el «añadir al presupuesto» los pinta shop.js con los precios vigentes; sin JS queda el enlace a la ficha).
-- `storeBody` (l. 528) — Tienda: barra lateral con categorías (de primer nivel), tensiones y búsqueda; barra de orden y contador; y todos los productos como tarjetas de tienda. Filtros y orden: assets/js/shop.js.
-- `topsOf` (l. 531) — Ids de las categorías de primer nivel a las que pertenece el producto `p` (la tienda filtra por ellas).
-- `productBody` (l. 562) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
-- `quoteBody` (l. 626) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
-- `contactForm` (l. 655) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
-- `contactIntro` (l. 671) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
-- `contactPageOriginal` (l. 676) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
-- `plainOf` (l. 681) — Texto de un párrafo sin etiquetas.
-- `li` (l. 688) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
-- `lv2` (l. 691) — Encabezados de un trozo de HTML con aria-level 2.
+- `pick` (l. 15) — Valor de un campo traducible en el idioma `lang` (español si falta; '' si no hay objeto).
+- `toroidArt` (l. 22) — Bobinado toroidal visto desde arriba (mismo motivo que el logotipo): 56 espiras que se «dibujan» al entrar en pantalla (CSS + IntersectionObserver en app.js).
+- `waveLab` (l. 31) — Osciloscopio esquemático de un variador de tensión: la onda de salida (cobre) se reduce al mover el mando; la de entrada (230 V) queda fija. JS: assets/js/lab.js
+- `headingOrder` (l. 51) — El contenido original salta de nivel (H1→H4). Se corrige en la ACCESIBILIDAD (aria-level) sin tocar la etiqueta, así el diseño no cambia:
+- `metaDescription` (l. 63) — Usa la descripción original si es útil; si no, el primer párrafo real de la página (sin inventar nada); como último recurso, la descripción de la portada en ese idioma (`fallback`, texto de la web original; sin ella, ninguna).
+- `ok` (l. 65) — Una descripción sirve si tiene al menos 50 caracteres y no es solo signos o cifras.
+- `cssGuard` (l. 76) — Aviso para el demo (solo sin --base): si la página se abre sin sus hojas de estilo (p. ej. index.html dentro del .zip sin extraer), enseña arriba cómo abrirla bien.
+- `oc` (l. 88) — Con selector de aspecto, el HTML lleva los elementos de los tres aspectos y cada hoja de estilos muestra los suyos (los del resto, con `display:none`).
+- `lbl` (l. 90) — Rótulo que cambia según el aspecto: sin «Original», el de siempre; solo «Original», el de la web actual; con selector, los dos (cada hoja muestra uno). Los textos ya vienen escapados.
+- `oHref` (l. 92) — Dirección a la que apunta una tarjeta o un enlace de categoría: en «Original» solo, una categoría hoja con UN producto lleva directa a ese producto (la web actual la redirige).
+- `floatMenu` (l. 94) — Menú flotante «Productos-Torivac»: pestaña en el borde izquierdo que abre un panel oscuro con las categorías (dos niveles, en el orden de la web actual). Nace oculto: app.js lo muestra (sin JS no serviría).
+- `themeSwitch` (l. 113) — Selector de aspecto: dos botones con aria-pressed. Nace oculto (sin JS no serviría de nada); assets/js/app.js lo muestra, marca el activo y guarda la elección. `where` distingue el de la cinta y el del pie.
+- `layout` (l. 116) — Envuelve `hero` + `body` en la página HTML completa (SEO, cabecera, pie, presupuesto, scripts) y la registra para el sitemap.
+- `alt` (l. 120) — selector de idioma: sin traducción cae a la portada de ese idioma
+- `dyn404` (l. 209) — Las páginas de error no llevan aviso (se sirven en cualquier profundidad y no miden nada).
+- `cookieBar` (l. 214) — Aviso de cookies: banda inferior sin bloquear la página, con «Rechazar todas» y «Aceptar todas» con el mismo peso visual y «Configurar» para elegir por categoría.
+- `row` (l. 218) — Casilla de una categoría opcional del aviso (a = estadísticas, p = publicidad) con su explicación.
+- `policyInline` (l. 236) — Convierte [texto](destino) de los textos de la política en enlaces: legal/privacy → los del pie del idioma; https://… → externo. Todo lo demás se escapa.
+- `cookiePage` (l. 245) — Página «Política de cookies»: { hero, body, title } como genericPage. Lo que lista depende de lo configurado (cookieBlocks).
+- `crumbs` (l. 264) — Migas de pan (nav + ol): todas enlazadas salvo la última, que lleva aria-current=page.
+- `vtext` (l. 267) — Texto de un campo traducible (objeto por idioma o cadena) en el idioma `lang`, con respaldo al español.
+- `vtags` (l. 269) — Fila de etiquetas de tensión (hasta `limit`) de un producto; '' si no hay ninguna conocida.
+- `productCard` (l. 280) — Tarjeta de un producto del listado: foto, nombre, etiquetas de tensión y nº de referencias, con data-* para filtrar.
+- `catTree` (l. 294) — árbol de categorías para la barra lateral. HTML plano (visible sin JS); app.js lo pliega y añade botones accesibles (aria-expanded).
+- `holds` (l. 297) — Indica si la categoría `c` es la activa o contiene a la activa entre sus descendientes.
+- `link` (l. 299) — Enlace a una categoría con su nombre y su nº de productos; marca aria-current si es la activa.
+- `walk` (l. 301) — Lista anidada del árbol de categorías; abre (data-open) las ramas que contienen la activa.
+- `cut` (l. 308) — Texto recortado a `max` caracteres en el último espacio (sin partir palabras) y con «…» si se ha recortado; `max` Infinity = íntegro.
+- `categoryCards` (l. 310) — tarjetas de categorías de primer nivel (página "Productos"): imagen, nombre y arranque de su descripción original
+- `fold` (l. 326) — algunas descripciones originales son copia de otra categoría (ver docs/01-analisis/HALLAZGOS.md #3): en la tarjeta solo se usa si comparte alguna palabra significativa con el nombre
+- `oSecImg` (l. 339) — «Original»: atributo style con la foto de fondo de una sección (los trazos del logotipo de la web actual), en una variable que solo pinta la hoja de ese aspecto. Una URL dentro de una variable se resuelve desde la hoja que la usa (assets/css/site.css), de ahí «../media/…» y no la ruta de la página.
+- `homeBody` (l. 341) — Portada: devuelve { hero, body, heroImg } con el hero, cinco secciones (fotos, servicios, catálogo), el formulario de contacto y la URL de la foto de portada (se precarga en la cabecera: es el elemento más grande de la primera pantalla).
+- `text` (l. 345) — Bloques de título y párrafo de una sección (hoy sin uso en homeBody).
+- `imgs` (l. 347) — Bloques de imagen de una sección.
+- `btn` (l. 349) — Primer bloque de botón de una sección (undefined si no tiene).
+- `oh` (l. 356) — «Original»: clase que engancha cada sección de la portada con la hoja de la web actual (sin «Original» no se emite y el HTML sale idéntico)
+- `oBg` (l. 358) — «Original»: variable con la foto de fondo de una sección de la portada.
+- `eyebrowAndHead` (l. 367) — HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
+- `paras` (l. 373) — HTML de los párrafos de una sección, con los enlaces internos reescritos.
+- `bt` (l. 375) — Enlace-botón (clase btn + `cls`) del botón de una sección; '' si no tiene.
+- `waveSvg` (l. 404) — onda de tensión animada (SVG) — elemento gráfico base del hero
+- `cardsHtml` (l. 412) — «Original»: bloques de una sección de tarjetas (Misión, Visión, Valores…) con cada icono y el texto que le sigue dentro de su propia tarjeta; lo que va antes del primer icono (título) queda fuera. Los otros aspectos ven el mismo flujo, solo con un div más.
+- `isIcon` (l. 414) — Indica si el bloque es un icono pequeño (60 × 60) y no una foto.
+- `sectionsHtml` (l. 423) — Secciones de una página genérica en HTML (texto, foto o carrusel, fondo oscuro, formulario de contacto), alternando el fondo. Con «Original», cada sección lleva además clases según cómo la maqueta la web actual (site.oSections, por id de sección de Elementor, igual en los cuatro idiomas).
+- `cls` (l. 428) — Clases de la sección: las de siempre y, con «Original», las del tipo, el lado de la foto y el arte de fondo.
+- `isPhoto` (l. 432) — los iconos pequeños se quedan dentro del texto
+- `genericPage` (l. 458) — Página genérica (empresa, proyectos, legales…): devuelve { hero, body, title }; el primer encabezado pasa a h1 del hero.
+- `contactBlockO` (l. 480) — «Original»: bloque «Contacta con nosotros» (texto de la portada y formulario) que la web actual repite al pie de cada ficha de producto y de cada entrada del blog; '' si la portada no lo trae. `where` hace únicos los ids del formulario; `wrap` lo mete en un `container` (en las fichas ya va dentro de uno).
+- `postCard` (l. 493) — Tarjeta de una entrada en el listado del blog. Con `dyn` (plantilla de las entradas que se crean desde el panel, ver backend-php/api/lib/BlogPage.php) cada dato variable es una marca @@TV:…@@
+- `blogIndexBody` (l. 501) — Listado del blog: tarjetas con imagen, fecha, título y extracto (150 caracteres) de cada entrada.
+- `postBody` (l. 509) — Entrada de blog: devuelve { hero, body } con migas, h1, fecha y el contenido sin su H1 original. Con `dyn` es la plantilla de las entradas que se crean desde el panel: lo variable son marcas
+- `shopBody` (l. 529) — Listado de productos (tienda o categoría): barra lateral con categorías, tensiones y búsqueda, subcategorías y tarjetas.
+- `storeCard` (l. 570) — Tarjeta de un producto en la tienda: foto, categoría, nombre, tensiones, precio y compra (el precio y el «añadir al presupuesto» los pinta shop.js con los precios vigentes; sin JS queda el enlace a la ficha).
+- `storeBody` (l. 587) — Tienda: barra lateral con categorías (de primer nivel), tensiones y búsqueda; barra de orden y contador; y todos los productos como tarjetas de tienda. Filtros y orden: assets/js/shop.js.
+- `topsOf` (l. 590) — Ids de las categorías de primer nivel a las que pertenece el producto `p` (la tienda filtra por ellas).
+- `productBody` (l. 621) — Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados.
+- `quoteBody` (l. 685) — Página del presupuesto: tabla del pedido, carga de CSV/Excel y formulario de datos para enviarlo o descargar el PDF.
+- `contactForm` (l. 714) — Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids.
+- `contactIntro` (l. 730) — introducción de la página de contacto: textos originales (sin el formulario de WPForms, que se sustituye por el propio)
+- `contactPageOriginal` (l. 735) — «Original»: página de contacto como la de la web actual: recuadro blanco con sombra naranja y el formulario a la izquierda; a la derecha el texto y los datos (dirección, teléfono, correo) con su icono. `blocks` son los textos de la página sin el título (que es el h1); `logo` es la foto del logotipo si la página la trae y `bg` la del fondo de la sección (trazos del logotipo). Con selector de aspecto va aparte del bloque de siempre (el formulario lleva otros ids).
+- `plainOf` (l. 740) — Texto de un párrafo sin etiquetas.
+- `li` (l. 747) — Fila de datos de contacto («Original»): icono, texto y enlace de teléfono o correo según el tipo.
+- `lv2` (l. 750) — Encabezados de un trozo de HTML con aria-level 2.
 
 ## `site/lib/`
 
@@ -121,6 +126,31 @@ Secciones: `[BLOG-SHELL]`
 - `splitIndex` (l. 31) — Parte el HTML del listado del blog (/blog/) en lo que va antes y después de las tarjetas. Falla si la estructura de blogIndexBody cambió (nunca se queda a medias en silencio).
 - `blogShell` (l. 43) — Plantillas del blog de un idioma. `mkctx(lang, ruta, sección)` crea el contexto de render; `posts` son las entradas estáticas de la web original (sus tarjetas se guardan para mezclarlas, por fecha, con las nuevas).
 
+### `cookies.mjs`
+
+[COOKIES] Texto de la «Política de cookies» propia (4 idiomas). La web original la tenía como un shortcode dinámico de Complianz que no se puede copiar, y su dirección (/politica-de-cookies/, en los 4 idiomas) dejaría de existir al publicar esta web: se genera aquí con lo que la web guarda de verdad. BORRADOR escrito por el proyecto: lo valida quien lleve lo legal de Torivac (docs/GOOGLE.md §Textos). · Sin IDs de Google: dice que no hay cookies de estadística ni de publicidad.
+
+Secciones: `[COOKIES]`
+
+- `cookieTitle` (l. 158) — Título de la página en el idioma `lang` (el pie y el h1 usan el de la web original si existe; este es el respaldo).
+- `cookieBlocks` (l. 165) — Bloques de la política en el idioma `lang`, según lo que la web mide de verdad:
+- `row` (l. 169) — Fila de tabla [nombre, dónde, para qué, cuánto dura] de la clave `k`, con «dónde» ya en el idioma.
+
+### `google.mjs`
+
+[GOOGLE] Configuración de Google Analytics 4, Google Ads y Search Console (site/google.config.json) y todo lo que de ella depende en la compilación. · Con los IDs vacíos NO se añade nada: ni script, ni aviso de cookies, ni ampliación de la política de seguridad (es el estado de entrega). · Los IDs son públicos (salen en el código de cualquier web); aquí no hay claves. Si uno está mal escrito la compilación se detiene con el motivo (un ID roto dejaría la medición muerta sin avisar).
+
+Secciones: `[GOOGLE]`
+
+- `s` (l. 22) — Texto limpio de un valor de configuración ('' si no es una cadena).
+- `normalize` (l. 28) — Lee y comprueba la configuración. Devuelve { cfg, errors }: cfg ya normalizado ({ ga4, ads, conv:{quote,contact}, meta, htmlFile }) y la lista de errores (vacía si todo está bien).
+- `loadGoogle` (l. 56) — Configuración efectiva de ESTA compilación.
+- `inactive` (l. 76) — Configuración sin nada activo.
+- `bootData` (l. 79) — Datos que lee consent.js (bloque <script type="application/json" id="tv-google">). Solo IDs públicos y el modo.
+- `verifyMeta` (l. 84) — Etiqueta meta de verificación de Search Console ('' si no hay token). Va en todas las páginas; no mide nada.
+- `verifyFileBody` (l. 89) — Contenido del archivo HTML de verificación de Search Console (Google lo exige exactamente así).
+- `cspHosts` (l. 95) — Orígenes de Google que la política de seguridad (CSP) debe dejar pasar, por directiva. Solo en modo «live» y solo los de lo que está configurado:
+
 ### `hosting.mjs`
 
 [HOSTING] Archivos de servidor para publicar en un hosting con cPanel o Plesk (Apache o LiteSpeed; en Plesk, con PHP servido por Apache): .htaccess, robots.txt de pruebas y 404 por idioma. Se generan solo con --base (producción o dominio de pruebas); la compilación de demostración (doble clic) no los necesita. htaccess({ base, staging, aliases, pdfRedirects, apiOrigin, phpApi, langs })  → texto del .htaccess de la raíz
@@ -132,8 +162,9 @@ Secciones: `[HOSTING]`
 - `basePathOf` (l. 16) — ruta base del sitio: «https://x.com/prueba/» → «/prueba» («» si está en la raíz del dominio)
 - `BLOG_RULES` (l. 23) — Reglas del blog que se escribe en el panel (PHP, api/page.php): las entradas nuevas (/blog/<slug>/ y /en|fr|de/blog/<slug>/), el listado del blog (que mezcla las nuevas con las de la web original), las imágenes
 - `htaccess` (l. 35) — Genera el .htaccess de la raíz: HTTPS, host único, 301 de URLs antiguas, caché, cabeceras de seguridad (CSP), noindex en pruebas y reescritura de /api.
-- `langHtaccess` (l. 84) — .htaccess de /en, /fr, /de: solo cambia la página 404 para que se muestre en el idioma de la sección
-- `robotsTxt` (l. 87) — Genera robots.txt: en pruebas prohíbe todo; en producción permite el sitio, cierra /admin/ y /api/ y enlaza el sitemap.
+- `gx` (l. 42) — script-src SIN 'unsafe-inline': los únicos scripts en línea son constantes y entran por su huella SHA-256 (scriptHashes); todo lo demás son archivos de la propia web. Así una inyección de HTML no puede ejecutar código.
+- `langHtaccess` (l. 86) — .htaccess de /en, /fr, /de: solo cambia la página 404 para que se muestre en el idioma de la sección
+- `robotsTxt` (l. 89) — Genera robots.txt: en pruebas prohíbe todo; en producción permite el sitio, cierra /admin/ y /api/ y enlaza el sitemap.
 
 ### `i18n.mjs`
 
@@ -141,9 +172,9 @@ Secciones: `[HOSTING]`
 
 Secciones: `[I18N]`
 
-- `countLabel` (l. 151) — «1 producto / 2 productos» en los 4 idiomas
-- `refLabel` (l. 153) — «1 referencia / 2 referencias» en los 4 idiomas.
-- `t` (l. 155) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
+- `countLabel` (l. 169) — «1 producto / 2 productos» en los 4 idiomas
+- `refLabel` (l. 171) — «1 referencia / 2 referencias» en los 4 idiomas.
+- `t` (l. 173) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
 
 ### `proposals-apply.mjs`
 
@@ -531,6 +562,26 @@ Secciones: `[CAPTCHA]` · `[SERVIDOR]` · `[SCRIPT]` · `[WIDGET]` · `[API]`
 - `C.init` (l. 105) — Engancha un formulario: si el servidor activó el CAPTCHA, enseña el aviso y precarga el script cuando alguien empieza a usarlo. Sin CAPTCHA no hace nada.
 - `warm` (l. 113) — Primer uso del formulario: se descarga el script (no antes).
 
+### `consent.js`
+
+[CONSENT] Aviso de cookies y medición de Google (Analytics 4 y Google Ads) con Consent Mode v2 en modo «básico». Solo existe en compilaciones con IDs de Google (site/google.config.json → bloque #tv-google de cada página). Sin IDs, la página no carga este archivo ni nada de Google. · NADA de Google se descarga hasta que la persona acepta (analítica y/o publicidad). Antes solo se declara el consentimiento por defecto en «denegado» (una lista en memoria, sin red).
+
+Secciones: `[CONSENT]` · `[GTAG]` · `[EVENTOS]` · `[AVISO]`
+
+- `log` (l. 23) — Mensaje en la consola solo en modo prueba (para ver qué mandaría la web a Google).
+- `read` (l. 27) — Elección guardada {a,p,t} si existe, es de esta versión y no ha caducado; si no, null (hay que preguntar).
+- `write` (l. 34) — Guarda la elección (si el navegador no deja, se recuerda solo en esta página).
+- `gtag` (l. 42) — gtag exige recibir el objeto `arguments`, no un array.
+- `load` (l. 46) — Descarga gtag.js una sola vez (en modo prueba, no).
+- `conf` (l. 56) — Activa la medición de un ID una sola vez por página.
+- `apply` (l. 58) — Aplica la elección: actualiza el consentimiento y, si hay algo permitido, carga Google y activa solo los IDs permitidos.
+- `wipe` (l. 64) — Borra las cookies de Google de esta web (en el dominio y en los de arriba).
+- `TV.track` (l. 73) — Registra una conversión: 'quote' (presupuesto/pedido enviado) o 'contact' (mensaje enviado). Sin elección o sin el permiso de esa categoría, no hace nada.
+- `setConfig` (l. 87) — Abre o cierra el panel de categorías (con «Configurar»); al abrir, las casillas reflejan la elección actual.
+- `open` (l. 92) — Muestra el aviso (con el panel abierto si viene del pie) y lleva el foco a su primera casilla opcional.
+- `close` (l. 97) — Cierra el aviso y devuelve el foco a donde estaba (el botón del pie) o al inicio de la página.
+- `save` (l. 103) — Guarda la elección, cierra el aviso y la aplica; si se retira un permiso que ya estaba en uso, borra las cookies y recarga.
+
 ### `contact.js`
 
 [CONTACT] Formularios de contacto (página Contacto, bloque de la portada y bloque «Contacta con nosotros» de las fichas y entradas de «Original»). Con TV.meta.api (producción): POST /api/contact al servidor (workers/api o backend-php: honeypot, tiempo mínimo de relleno, solo texto plano y con límite de caracteres, límite por IP, Turnstile opcional: captcha.js). El servidor guarda el mensaje SIEMPRE (se ve en el panel) y avisa por correo al equipo; aquí se avisa de lo que no vale en el idioma de la página.
@@ -586,7 +637,7 @@ Secciones: `[QUOTE-PAGE]` · `[TABLE]` · `[IMPORT]` · `[PDF]` · `[SEND]` · `
 - `customer` (l. 77) — Datos del formulario del presupuesto como objeto {campo: valor}, sin el campo honeypot `hp` (antispam).
 - `download` (l. 79) — Descarga el PDF `res` ({blob(), filename}) con un enlace temporal y libera la URL del blob a los 800 ms.
 - `sendLive` (l. 101) — Envía el pedido al servidor (POST /api/order) con el PDF adjunto; los precios y totales los fija el servidor.
-- `sendDemo` (l. 126) — Demo sin servidor: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador de correo (mailto:).
+- `sendDemo` (l. 127) — Demo sin servidor: descarga el PDF, guarda el pedido en localStorage y ofrece un borrador de correo (mailto:).
 
 ### `quote.js`
 
@@ -935,11 +986,12 @@ Sesión 1 · Mapa de traducciones y lotes de trabajo (determinista).    python3 
 - `files` (l. 102) — Todos los ficheros de la carpeta, ordenados (incluye los ocultos como .htaccess).
 - `check_versions` (l. 107) — Actualizar sin caché vieja: todo CSS y JS local de cada página lleva «?v=<10 hex>» igual a la huella (SHA-256) del archivo, y no queda ningún marcador sin resolver.
 - `check_csp` (l. 150) — Política de seguridad de contenido: script-src sin 'unsafe-inline' y cada script en línea ejecutable de cada página con su huella SHA-256 en la cabecera (los bloques de datos application/json y ld+json no se ejecutan).
-- `check_wp_probes` (l. 179) — El .htaccess corta con 410 los sondeos de WordPress (wp-login.php, xmlrpc.php, wp-admin…) sin tocar las fotos y PDF antiguos de wp-content/uploads ni las páginas de la web: se prueba la expresión con rutas de ejemplo.
-- `check_blog` (l. 200) — Blog del panel: las cuatro plantillas del servidor (api/generated/blog-shell.<idioma>.json) se leen, son de ESTA compilación (misma base y mismo modo pruebas/producción), traen todas las marcas que rellena PHP,
-- `verify` (l. 238) — → (errores, avisos). Un error impide entregar el paquete.
-- `make_zip` (l. 351) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
-- `main` (l. 363) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
+- `check_google` (l. 182) — Google (Analytics/Ads/Search Console): sin IDs no hay nada de Google (ni aviso, ni script, ni orígenes en la CSP); con IDs, la CSP los abre SOLO en producción; los IDs ficticios del paquete de pruebas no llegan a producción; el entorno de pruebas no se verifica en Search Console.
+- `check_wp_probes` (l. 221) — El .htaccess corta con 410 los sondeos de WordPress (wp-login.php, xmlrpc.php, wp-admin…) sin tocar las fotos y PDF antiguos de wp-content/uploads ni las páginas de la web: se prueba la expresión con rutas de ejemplo.
+- `check_blog` (l. 242) — Blog del panel: las cuatro plantillas del servidor (api/generated/blog-shell.<idioma>.json) se leen, son de ESTA compilación (misma base y mismo modo pruebas/producción), traen todas las marcas que rellena PHP,
+- `verify` (l. 280) — → (errores, avisos). Un error impide entregar el paquete.
+- `make_zip` (l. 394) — comprime la carpeta (con ficheros ocultos como .htaccess) y devuelve el SHA-256
+- `main` (l. 406) — Compila, copia el API, verifica y comprime; si la verificación falla no genera el .zip.
 
 ### `pdf_jobs.py`
 
@@ -1244,6 +1296,33 @@ Secciones: `[QA-CAPTCHA]`
 - `messages` (l. 97) — Los mensajes de contacto que hay guardados en el servidor (los ve un manager).
 - `axe` (l. 99) — Analiza con axe la pantalla actual y anota las violaciones graves.
 
+### `qa-google.mjs`
+
+[QA-GOOGLE] Medición de Google (Analytics 4, Google Ads) y Search Console: aviso de cookies, consentimiento, eventos de conversión, política de seguridad (CSP) y política de cookies. 1) COMPILACIÓN (sin navegador): sin IDs no sale NADA de Google; con IDs sueltos solo lo que corresponde (solo GA4, solo Ads); un ID mal escrito detiene la compilación; --google-demo solo en pruebas; la etiqueta y el archivo de Search Console solo en producción; la política de cookies existe en los 4 idiomas y dice lo que de verdad se usa.
+
+Secciones: `[QA-GOOGLE]`
+
+- `ok` (l. 31) — Registra una comprobación: muestra el mensaje m como acierto o error según c y, si falla, suma un fallo.
+- `cfgFile` (l. 34) — Escribe un google.config.json de prueba y devuelve su ruta.
+- `build` (l. 40) — ═══════════════════════════════════════════════ 1) COMPILACIÓN
+- `rd` (l. 46) — Texto de un archivo de la compilación ('' si no existe).
+- `csp` (l. 48) — Política de seguridad (CSP) que la compilación `b` escribe en su .htaccess.
+- `SECURITY_INIT` (l. 145) — Script de arranque de cada página de prueba: apunta qué direcciones bloquea la política de seguridad.
+- `open` (l. 147) — Abre una página nueva (contexto limpio) con Google simulado (gtag.js de réplica; el resto de Google se contesta vacío) y registra lo que pide.
+- `DL` (l. 165) — El dataLayer de la página como listas (gtag mete objetos `arguments`).
+- `EV` (l. 167) — Eventos (gtag('event', …)) del dataLayer.
+- `CSP` (l. 169) — Las URLs bloqueadas por la CSP en esta página.
+- `axe` (l. 171) — Analiza la pantalla con axe y devuelve las violaciones graves o críticas (texto breve).
+- `bar` (l. 178) — El aviso de cookies de la página.
+- `btn` (l. 180) — Un botón del aviso (data-cookie = accept, reject, config o save).
+- `gtagReady` (l. 182) — Espera a que la réplica de gtag.js haya cargado.
+- `form` (l. 185) — El formulario de contacto que se ve en la página.
+- `sendContact` (l. 187) — Rellena el formulario de contacto y lo envía (espera al aviso de «enviado»).
+- `sendQuote` (l. 195) — Añade un producto, rellena el presupuesto y lo envía (espera al aviso de «enviado»).
+- `idx` (l. 251) — Posición de una llamada de gtag (['consent','default'], …) en el dataLayer.
+- `m` (l. 340) — Medidas del aviso en móvil: alto, desbordes, botones y si caben en la pantalla.
+- `finish` (l. 420) — Resumen final y código de salida (limpia lo temporal).
+
 ### `qa-lang.mjs`
 
 [QA-LANG] Sesión 13 · Detección de idioma del navegador + selector manual (Playwright, por http). node scripts/qa-lang.mjs Casos: idioma del navegador soportado / no soportado / lista con preferencia secundaria · página interior · enlace directo a /fr/ ·
@@ -1507,25 +1586,25 @@ Secciones: `[BACKENDS]` · `[WORKER]` · `[PHP]`
 
 Secciones: `[PKG-APACHE]`
 
-- `freePort` (l. 23) — Puerto TCP libre en 127.0.0.1.
-- `png` (l. 26) — PNG de colores lisos de w×h píxeles (válido de verdad: con sus sumas de control).
-- `crc` (l. 28) — Suma de control CRC-32 de un trozo de bytes.
-- `chunk` (l. 30) — Trozo de PNG: longitud, tipo, datos y suma de control.
-- `deploy` (l. 38) — Despliega un paquete (producción o pruebas) en un Apache real → { www, ap, port, host, req(), api(), stop() }
-- `req` (l. 51) — Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b }
-- `api` (l. 56) — Llamada JSON al API → { s, j }
-- `deployPackage` (l. 70) — Despliega el paquete en un Apache real → { www, ap, port, host, BASE, req, api, token, stop } (ver la cabecera).
-- `writeCfg` (l. 81) — Escribe api/config.php con `c`.
-- `setConfig` (l. 84) — Cambia apartados de config.php (cada clave de primer nivel que se pase sustituye a la de antes).
-- `outbox` (l. 86) — Correos guardados por el controlador «file», del más antiguo al más reciente (por la hora del fichero: el nombre solo tiene segundos) → [{ file, to, subject, text, html }]
-- `kvFile` (l. 88) — Fichero del almacén de una clave (p. ej. «pin:<id>»): kv/<clave con % >.json.
-- `kvKeys` (l. 90) — Claves del almacén que empiezan por `prefix`, más recientes primero.
-- `kvDrop` (l. 92) — Borra del almacén todas las claves que empiezan por `prefix` (p. ej. 'rl:contact:' para volver a empezar los límites por visitante) → cuántas.
-- `kvGet` (l. 94) — Lee el valor guardado en una clave del almacén, o null.
-- `kvEdit` (l. 96) — Cambia el valor de una clave del almacén con `fn(valor) → valor nuevo` (para adelantar el reloj de un código, por ejemplo).
-- `lastCode` (l. 98) — El último código de acceso (6 cifras, sin espacio) que se mandó a `email`, o null si no se mandó ninguno.
-- `req` (l. 100) — Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b }
-- `api` (l. 105) — Llamada JSON al API → { s, j, h }. `headers` añade cabeceras (p. ej. X-Forwarded-For: 203.0.113.7 para hacerse pasar por otro visitante: el Apache de pruebas confía en la conexión local).
+- `freePort` (l. 24) — Puerto TCP libre en 127.0.0.1.
+- `png` (l. 27) — PNG de colores lisos de w×h píxeles (válido de verdad: con sus sumas de control).
+- `crc` (l. 29) — Suma de control CRC-32 de un trozo de bytes.
+- `chunk` (l. 31) — Trozo de PNG: longitud, tipo, datos y suma de control.
+- `deploy` (l. 39) — Despliega un paquete (producción o pruebas) en un Apache real → { www, ap, port, host, req(), api(), stop() }
+- `req` (l. 52) — Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b }
+- `api` (l. 57) — Llamada JSON al API → { s, j }
+- `deployPackage` (l. 71) — Despliega el paquete en un Apache real → { www, ap, port, host, BASE, req, api, token, stop } (ver la cabecera).
+- `writeCfg` (l. 82) — Escribe api/config.php con `c`.
+- `setConfig` (l. 85) — Cambia apartados de config.php (cada clave de primer nivel que se pase sustituye a la de antes).
+- `outbox` (l. 87) — Correos guardados por el controlador «file», del más antiguo al más reciente (por la hora del fichero: el nombre solo tiene segundos) → [{ file, to, subject, text, html }]
+- `kvFile` (l. 89) — Fichero del almacén de una clave (p. ej. «pin:<id>»): kv/<clave con % >.json.
+- `kvKeys` (l. 91) — Claves del almacén que empiezan por `prefix`, más recientes primero.
+- `kvDrop` (l. 93) — Borra del almacén todas las claves que empiezan por `prefix` (p. ej. 'rl:contact:' para volver a empezar los límites por visitante) → cuántas.
+- `kvGet` (l. 95) — Lee el valor guardado en una clave del almacén, o null.
+- `kvEdit` (l. 97) — Cambia el valor de una clave del almacén con `fn(valor) → valor nuevo` (para adelantar el reloj de un código, por ejemplo).
+- `lastCode` (l. 99) — El último código de acceso (6 cifras, sin espacio) que se mandó a `email`, o null si no se mandó ninguno.
+- `req` (l. 101) — Petición con las cabeceras que se indiquen (incluido Host, que fetch no deja cambiar); por defecto como llega detrás del proxy con https → { s, h, t, b }
+- `api` (l. 106) — Llamada JSON al API → { s, j, h }. `headers` añade cabeceras (p. ej. X-Forwarded-For: 203.0.113.7 para hacerse pasar por otro visitante: el Apache de pruebas confía en la conexión local).
 
 ### `static-server.mjs`
 
