@@ -114,9 +114,12 @@ details.prop [aria-invalid=true]{border-color:var(--err);outline:2px solid var(-
 .qr-f.wide{grid-column:1/-1}
 .qr-f input,.qr-f textarea{width:100%;padding:.5rem .6rem;border:1px solid var(--line-strong);border-radius:var(--radius);font:inherit;font-weight:400}
 .qr-n{width:9rem;max-width:100%;padding:.45rem .6rem;border:1px solid var(--line-strong);border-radius:var(--radius);font:inherit;text-align:right}
+.qr-n.gg-l{width:100%;min-width:15rem;text-align:left}
 .qr-add{display:flex;flex-wrap:wrap;gap:var(--s-3);align-items:flex-end;margin-top:var(--s-3)}
 .qr-add .qr-f{flex:1 1 280px}
 .qr-chk{display:flex;gap:var(--s-2);align-items:center;margin-top:var(--s-2);font-weight:600}
+.form .qr-chk{display:flex;flex-direction:row;gap:var(--s-2);align-items:center}
+.qr-chk input[type=checkbox]{width:auto;flex:none;margin:0}
 .qr-hist{list-style:none;margin:0;padding:0;display:grid;gap:var(--s-2)}
 .qr-hist li{padding-bottom:var(--s-2);border-bottom:1px solid var(--line);font-size:var(--fs-0)}
 .qr-hist li:last-child{border-bottom:0}
