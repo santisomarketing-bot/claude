@@ -96,7 +96,7 @@ try {
   await panel(A.page);
   const navA = await A.page.$$eval('.side nav a', (a) => a.map((x) => x.textContent.replace(/[^\p{L} ]/gu, '').trim()));
   ok(!(await A.page.$('[data-code-form]')), 'no aparece la pantalla del código');
-  ok(navA.includes('Usuarios') && navA.includes('Actividad') && navA.length === 11, `el menú del manager trae Usuarios y Actividad (${navA.join(' · ')})`);
+  ok(navA.includes('Usuarios') && navA.includes('Actividad') && navA.length === 12, `el menú del manager trae Usuarios y Actividad (${navA.join(' · ')})`);
   ok(d.lastCode(OWNER) === null, 'no se le mandó ningún código por correo');
   ok(!(await A.ctx.cookies()).some((c) => c.name.startsWith('tv_dev_')), 'y no se guardó ningún dispositivo');
 

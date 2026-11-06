@@ -34,6 +34,7 @@ const expTotal = round2(R.reduce((s, r) => s + round2(unit(r, Q[r]) * Q[r]), 0))
 
 const be = await startBackend({ kind: 'php', dist: WWW, port });
 await be.seedPrices({ ...demo, mode: 'live', updated_at: new Date().toISOString() });
+await be.setPricing({ anon: 'normal', tiers: { vip5: 0, vip10: 0, normal: 0 } });      // esta prueba mira el precio de la hoja: visitantes ven «Normal» sin recargo (de fábrica es «Consultar»; ver qa-customers.mjs)
 await be.addUser({ email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manager', password: 'Manager-Clave-2026' });
 
 const browser = await chromium.launch();
