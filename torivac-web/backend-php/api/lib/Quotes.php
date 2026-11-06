@@ -1,9 +1,12 @@
 <?php
 /**
- * [QUOTES] Presupuestos recibidos: ver, editar y reenviar por correo desde el panel (contrato único con workers/api: docs/PRESUPUESTOS-RECIBIDOS.md). Las personas con rol `client` son las PROPIETARIAS de la web
- * (no compradores) y, igual que un manager, ven todos los presupuestos; el token maestro cuenta como manager. Todas las rutas exigen sesión (las atiende Router tras autenticar):
- *   GET  /orders/:número        → { ok, order } (un propietario, sin `ip` ni `emailed.error`) · 404 si no existe o el número no tiene la forma TV-AAAAMMDD-NNNN[-XXX]
- *   PUT  /orders/:número        → edita solicitante, líneas (cantidad y precio manual) y nota; `rev` evita pisar el cambio de otra persona (409 conflict); guarda `original` una sola vez, `history` (≤ 50) y `edited`
+ * [QUOTES] Presupuestos recibidos: ver, editar y reenviar por correo desde el panel (contrato único con workers/api: docs/PRESUPUESTOS-RECIBIDOS.md y docs/PRECIOS-Y-CLIENTES.md). Las personas con rol `client` son las PROPIETARIAS de la web
+ * (no compradores) y, igual que un manager, ven todos los presupuestos; el token maestro cuenta como manager. Un cliente con usuario (rol `customer`) solo LEE los suyos (owner = su correo), en versión reducida; editar y reenviar le da 403.
+ * Todas las rutas exigen sesión (las atiende Router tras autenticar):
+ *   GET  /orders/:número        → { ok, order } (un propietario, sin `ip` ni `emailed.error`; un cliente, solo el suyo y reducido: Router::forCustomer) · 404 si no existe, no es suyo o el número no tiene la forma TV-AAAAMMDD-NNNN[-XXX]
+ *   PUT  /orders/:número        → edita solicitante, líneas (cantidad y precio manual) y nota; `rev` evita pisar el cambio de otra persona (409 conflict); guarda `original` una sola vez, `history` (≤ 50) y `edited`;
+ *                                 `tier` opcional (vip|vip5|vip10|normal): valora con esa categoría las líneas sin precio manual aunque no cambien de cantidad y guarda priceTier (sirve para valorar un presupuesto «A consultar»).
+ *                                 Sin `tier`, las líneas nuevas o con otra cantidad se valoran con el priceTier del registro («consult» = sin precio; registro antiguo sin priceTier = VIP) y las que no cambian se conservan
  *   POST /orders/:número/send   → reenvía por correo (1..3 destinatarios) con el PDF del navegador adjunto; topes de 20/hora por persona y 150/día; 409 mail_off si el correo no está configurado
  * [RECORD] order:<número> conserva SIEMPRE lo que ya traía (ip, emailed, prices…): solo se añaden campos opcionales (rev, edited, original, quoteNote, lines[].manual, history, lastSent). El PDF no se guarda.
  * [SEGURIDAD] El número de la URL solo se acepta con ROUTE (nunca toca ficheros); todo texto de una persona pasa por PlainText y sale escapado en el correo; el PDF se valida (Orders::normalizePdf);
@@ -41,17 +44,22 @@ final class Quotes
         return is_numeric($v) ? max(0, (int) $v) : 150;
     }
 
-    /** Atiende cualquier ruta que empiece por /orders/ de una persona ya autenticada: valida la forma del número (404 si no vale) y despacha a ver, editar o reenviar. `$nowMs` solo lo usan las pruebas. */
+    /**
+     * Atiende cualquier ruta que empiece por /orders/ de una persona ya autenticada: valida la forma del número (404 si no vale) y despacha a ver, editar o reenviar. Un cliente (`customer`) solo puede ver (y solo
+     * lo suyo): editar o reenviar es 403 «Solo lectura», sin mirar si el presupuesto existe (así no se averigua cuáles hay). `$nowMs` solo lo usan las pruebas.
+     */
     public static function handle(Request $req, array $who, ?int $nowMs = null): Response
     {
-        if (!Auth::requireRole($who, 'manager', 'client')) return new Response(['ok' => false, 'error' => 'No autorizado'], 403);
+        if (!Auth::requireRole($who, 'manager', 'client', 'customer')) return new Response(['ok' => false, 'error' => 'No autorizado'], 403);
         if (preg_match(self::ROUTE, $req->path, $m) !== 1) return self::missing();                 // forma no válida (../, %2e%2e, vacío…): igual que si no existiera, y jamás se usa para tocar ficheros
         $number = $m[1];
         $send = ($m[2] ?? '') === '/send';
+        $exists = $send ? $req->method === 'POST' : ($req->method === 'GET' || $req->method === 'PUT');
+        if (!$exists) return new Response(['ok' => false, 'error' => 'No encontrado'], 404);
+        if (self::isCustomer($who)) return $req->method === 'GET' ? self::show($number, $who) : new Response(['ok' => false, 'error' => 'Solo lectura'], 403);
         if (!$send && $req->method === 'GET') return self::show($number, $who);
         if (!$send && $req->method === 'PUT') return self::edit($req, $who, $number, $nowMs);
-        if ($send && $req->method === 'POST') return self::send($req, $who, $number, $nowMs);
-        return new Response(['ok' => false, 'error' => 'No encontrado'], 404);
+        return self::send($req, $who, $number, $nowMs);
     }
 
     /** El 404 de un presupuesto que no existe. */
@@ -60,8 +68,15 @@ final class Quotes
     /** ¿Es manager (o el token maestro)? Un propietario (client) no ve la IP ni el motivo técnico del fallo del correo. */
     private static function isManager(array $who): bool { return ($who['role'] ?? '') === 'manager'; }
 
-    /** El registro tal como lo ve quien llama: completo para un manager; sin `ip` ni `emailed.error` para un propietario. */
-    private static function view(array $o, array $who): array { return self::isManager($who) ? $o : Router::forClient($o); }
+    /** ¿Es un cliente con usuario (rol customer)? Solo lee sus propios presupuestos. */
+    private static function isCustomer(array $who): bool { return ($who['role'] ?? '') === 'customer'; }
+
+    /** El registro tal como lo ve quien llama: completo para un manager; sin `ip` ni `emailed.error` para un propietario; reducido (Router::forCustomer) para un cliente. */
+    private static function view(array $o, array $who): array
+    {
+        if (self::isCustomer($who)) return Router::forCustomer($o);
+        return self::isManager($who) ? $o : Router::forClient($o);
+    }
 
     /** Quién firma una edición o un reenvío: el correo de la persona, o «maestro» si entra con el token maestro. */
     private static function by(array $who): string { return !empty($who['master']) ? 'maestro' : Util::line((string) ($who['sub'] ?? ''), 254); }
@@ -96,19 +111,21 @@ final class Quotes
     }
 
     // ───────────────────────────────────────── [VER] GET /orders/:número
-    /** GET /orders/:número → 200 { ok, order } (sin ip ni emailed.error para un propietario) o 404. */
+    /** GET /orders/:número → 200 { ok, order } (sin ip ni emailed.error para un propietario; reducido para un cliente) o 404. Un cliente que pide un presupuesto que no es suyo recibe el mismo 404 que si no existiera. */
     private static function show(string $number, array $who): Response
     {
         $o = Store::get('order:' . $number);
         if (!is_array($o)) return self::missing();
+        if (self::isCustomer($who) && strtolower((string) ($o['owner'] ?? '')) !== strtolower((string) ($who['sub'] ?? ''))) return self::missing();
         return new Response(['ok' => true, 'order' => self::view($o, $who)], 200, ['Cache-Control' => 'private, no-store']);
     }
 
     // ───────────────────────────────────────── [EDITAR] PUT /orders/:número
     /**
-     * Valida el cuerpo de una edición contra el catálogo `$items`, sin tocar el almacén. Devuelve ['rev' => int, 'customer'? => limpio, 'lines' => [{ref, qty, mode: keep|tariff|manual, price?}], 'note'? => texto]
+     * Valida el cuerpo de una edición contra el catálogo `$items`, sin tocar el almacén. Devuelve ['rev' => int, 'customer'? => limpio, 'lines' => [{ref, qty, mode: keep|tariff|manual, price?}], 'note'? => texto, 'tier'? => categoría]
      * o ['error', code?, field?]. `customer` y `quoteNote` solo salen si el cuerpo los trae (si faltan se conservan); si vienen, deben ser: cinco cadenas, y una cadena (vacía = quitar la nota).
-     * @return array{rev?:int,customer?:array,lines?:array,note?:string,error?:string,code?:string,field?:string}
+     * `tier` es opcional (vip|vip5|vip10|normal; null o vacío = no viene): cualquier otro valor es 400 «Categoría no válida» (field tier).
+     * @return array{rev?:int,customer?:array,lines?:array,note?:string,tier?:string,error?:string,code?:string,field?:string}
      */
     public static function parseEdit(array $b, array $items): array
     {
@@ -156,16 +173,24 @@ final class Quotes
             if (!$r['ok']) return Orders::plainError($r['code'], 'quoteNote', self::NOTE_MAX);
             $out['note'] = $r['text'];
         }
+        if (array_key_exists('tier', $b) && $b['tier'] !== null && $b['tier'] !== '') {
+            if (!Pricing::isTier($b['tier'])) return ['error' => 'Categoría no válida', 'field' => 'tier'];
+            $out['tier'] = $b['tier'];
+        }
         return $out;
     }
 
     /**
      * Valora las líneas de una edición. `keep` (sin `price`): si la línea ya estaba con la misma referencia Y la misma cantidad se conserva tal cual (unit, total, manual); si no, tarifa vigente.
      * `tariff` (price:null) y las líneas nuevas o con otra cantidad: tarifa vigente para esa cantidad (puede ser «a consultar»). `manual`: el precio que puso la persona. Devuelve [líneas, total, sin precio, ¿se usó la tarifa?].
+     * Con `$tier` (la edición trae `tier`): TODAS las líneas sin precio manual se valoran con esa categoría, aunque no hayan cambiado de cantidad (y pierden su marca `manual`).
+     * Sin `$tier`, solo se valoran las líneas nuevas, con otra cantidad o con price:null, y lo hacen con la categoría del registro (`$base` = su priceTier: vip|vip5|vip10|normal; «consult» las deja sin precio;
+     * un pedido antiguo sin priceTier es VIP); las líneas que no cambian se conservan tal cual.
      * @return array{0:array,1:float,2:int,3:bool}
      */
-    private static function priceLines(array $parsed, array $stored, array $prices): array
+    private static function priceLines(array $parsed, array $stored, array $prices, ?string $tier = null, ?array $settings = null, string $base = 'vip'): array
     {
+        $cat = $tier ?? $base;
         $old = [];
         foreach ($stored as $l) { if (is_array($l) && isset($l['ref'])) $old[(string) $l['ref']] = $l; }
         $out = [];
@@ -180,12 +205,12 @@ final class Quotes
                 $unit = $l['price'];
                 $t = Util::round2($unit * $qty);
                 $manual = true;
-            } elseif ($l['mode'] === 'keep' && $before !== null && (int) ($before['qty'] ?? 0) === $qty) {
+            } elseif ($tier === null && $l['mode'] === 'keep' && $before !== null && (int) ($before['qty'] ?? 0) === $qty) {
                 $unit = $before['unit'] ?? null;
                 $t = $before['total'] ?? null;
                 $manual = !empty($before['manual']);
             } else {
-                $unit = Prices::unit($prices, $ref, $qty);
+                $unit = $cat === 'consult' ? null : Pricing::unit($prices, $ref, $qty, $cat, $settings);
                 $t = $unit === null ? null : Util::round2($unit * $qty);
                 $manual = false;
                 $revalued = true;
@@ -211,12 +236,16 @@ final class Quotes
         if (isset($p['error'])) return Orders::badRequest($p);
         $by = self::by($who);
         $at = self::at($nowMs);
-        $res = Store::locked('orderedit', function () use ($number, $p, $prices, $by, $at, $who) {
+        $tier = $p['tier'] ?? null;
+        $settings = Pricing::load();
+        $res = Store::locked('orderedit', function () use ($number, $p, $prices, $by, $at, $who, $tier, $settings) {
             $o = Store::get('order:' . $number);
             if (!is_array($o)) return self::missing();
             $cur = (int) ($o['rev'] ?? 0);
             if ($p['rev'] !== $cur) return new Response(['ok' => false, 'code' => 'conflict', 'error' => 'Alguien ha modificado este presupuesto: recarga y vuelve a intentarlo', 'order' => self::view($o, $who)], 409);
-            [$lines, $total, $unpriced, $revalued] = self::priceLines($p['lines'], (array) ($o['lines'] ?? []), $prices);
+            $pt = $o['priceTier'] ?? null;
+            $base = $pt === 'consult' || Pricing::isTier($pt) ? $pt : 'vip';                       // sin tier en el cuerpo, las líneas nuevas o con otra cantidad usan la categoría del registro
+            [$lines, $total, $unpriced, $revalued] = self::priceLines($p['lines'], (array) ($o['lines'] ?? []), $prices, $tier, $settings, $base);
             $new = $o;
             if (!isset($o['original'])) $new['original'] = ['at' => $o['at'] ?? null, 'customer' => $o['customer'] ?? [], 'lines' => $o['lines'] ?? [], 'total' => $o['total'] ?? 0, 'unpriced' => $o['unpriced'] ?? 0];      // lo que llegó de la web: una sola vez
             if (isset($p['customer'])) $new['customer'] = $p['customer'];
@@ -225,6 +254,7 @@ final class Quotes
             $new['unpriced'] = $unpriced;
             if (isset($p['note'])) { if ($p['note'] === '') unset($new['quoteNote']); else $new['quoteNote'] = $p['note']; }
             if ($revalued) $new['prices'] = ['updated_at' => $prices['updated_at'] ?? null, 'mode' => $prices['mode'] ?? null];
+            if ($tier !== null) $new['priceTier'] = $tier;
             $new['rev'] = $cur + 1;
             $new['edited'] = ['at' => $at, 'by' => $by];
             $new['history'] = self::pushHistory($o, ['at' => $at, 'by' => $by, 'kind' => 'edit', 'rev' => $cur + 1]);

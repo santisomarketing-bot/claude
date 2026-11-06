@@ -163,7 +163,7 @@ function test_google_jwt()
 /** Pedido: el servidor valora con sus precios (ignora los del cliente), numera, guarda y envía. */
 function test_order_flow_server_side_pricing()
 {
-    fresh(); seedPrices();
+    fresh(); seedPrices(); publicAtSheetPrice();
     $body = goodOrder(['pdf' => 'JVBERi0xLjQK', 'lines' => [['ref' => 'TT0020210', 'qty' => 12, 'unit' => 0.01, 'total' => 0.12], ['ref' => 'R100', 'qty' => 4]]]);
     $r = Orders::handleOrder(req('POST', '/order', $body), $body, null, 1793170800000);          // 2026-10-28T07:00Z
     T::same([200, 'TV-20261028-0001', 142.8, 1], [$r->status, $r->body['number'], $r->body['total'], $r->body['unpriced']], 'valora con los precios del servidor (ignora los del cliente)');
@@ -246,7 +246,7 @@ function test_contact_and_cors()
 /** GET /prices: precios públicos con ETag (304) y `items` como objeto {} aunque esté vacío. */
 function test_prices_endpoint_etag()
 {
-    fresh(); seedPrices();
+    fresh(); seedPrices(); publicAtSheetPrice();
     $r = Router::handle(req('GET', '/prices'));
     T::same(true, isset($r->headers['ETag']) && wire($r)['prices']['items']['TT0020210']['p'] === 12.37, 'precios públicos');
     T::same(304, Router::handle(req('GET', '/prices', null, ['If-None-Match' => $r->headers['ETag']]))->status, 'ETag → 304');
@@ -257,7 +257,7 @@ function test_prices_endpoint_etag()
 /** Subida de hojas (vista previa y aplicar), permisos por rol, referencia nueva por regla de familia y cron por URL con token. */
 function test_manager_upload_roles_and_cron()
 {
-    fresh(); seedPrices();
+    fresh(); seedPrices(); publicAtSheetPrice();
     $cli = Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => PW_ANA]);
     $tok = Router::handle(req('POST', '/auth/login', ['email' => 'ana@acme.es', 'password' => PW_ANA]))->body['token'];
     T::same(403, Router::handle(req('POST', '/prices/upload', ['csv' => SHEET], ['Authorization' => 'Bearer ' . $tok]))->status, 'cliente no sube precios');
@@ -375,7 +375,7 @@ function test_diag_checks()
 /** GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto solo admite texto plano y su correo escapa el HTML. */
 function test_privacy_session_revocation_and_contact_escaping()
 {
-    fresh();
+    fresh(); publicAtSheetPrice();
     \Torivac\Config::set(['prices' => ['csv_url' => 'https://sheet.test/x.csv'], 'storage_dir' => Store::root(), 'session_secret' => SECRET, 'admin_token' => MASTER_TOKEN, 'allowed_origins' => [], 'order_to' => ['info@grupotorivac.com'], 'mail' => ['driver' => 'file'], 'form_min_fill_ms' => 0, 'two_step' => ['enabled' => false]]);
     Users::create(['email' => 'jefa@torivac.com', 'name' => 'Jefa', 'role' => 'manager', 'password' => 'Manager-Clave-2026']);
     Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => PW_ANA]);

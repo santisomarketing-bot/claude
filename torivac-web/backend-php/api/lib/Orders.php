@@ -5,6 +5,12 @@
  * Defensas: honeypot, límite por visitante (Request::ipKey) y límite global de pedidos por hora, Turnstile opcional, referencias solo del catálogo (o añadidas por la hoja de
  * precios), cantidades enteras 1..1 000 000, todos los campos de texto deben ser cadenas, los de una línea no admiten saltos ni caracteres de control, y el PDF se valida de verdad.
  *
+ * [PRECIOS-Y-SESIÓN] (docs/PRECIOS-Y-CLIENTES.md §6) POST /order puede llevar sesión (Authorization: Bearer): inválida o caducada → 401 {code:'session'} (no se trata como visitante). Quién valora cómo:
+ *   · `customer` (cliente con usuario): con SU categoría, leída de su registro en cada petición; owner = su correo; sin Turnstile, `hp` ni `_e`; cualquier `tier` o `price` del cuerpo se ignora; máximo 3 presupuestos válidos y
+ *     guardados por persona en una ventana móvil de 24 h (customer_orders_per_day / TORIVAC_CUSTOMER_ORDERS_PER_DAY, entero ≥ 1; no válido → 3) → 429 {code:'daily_limit'}; la respuesta añade `remaining`.
+ *   · `manager`/`client` (y el token maestro): VIP, o la categoría del campo `tier` del cuerpo (vip|vip5|vip10|normal; otro valor → 400); owner = su correo (el token maestro no tiene).
+ *   · visitante: según settings:pricing `anon`: «consult» → todas las líneas «A consultar» (unit/total null, priceTier «consult»); «normal» → categoría Normal. Antispam como siempre.
+ * El registro guarda `priceTier` (y `owner` si hubo sesión). El correo al equipo lleva una línea con la cuenta y la categoría.
  * [COPIA-AL-CLIENTE] Hoy cualquiera puede enviar un pedido: la copia no puede llevar nada que haya escrito el visitante (ver Mail::copyMail) ni adjunto. Modo `order_copy`:
  *   'capped' (por defecto) = se envía con topes: 2 copias por destinatario cada 24 h (clave = sha256 del correo) y `order_copy_daily_max` (150) al día en total;
  *   'off' o CUALQUIER otro valor = nunca se envía copia (falla cerrado; «capped» se reconoce sin importar mayúsculas ni espacios). Superado un tope el pedido se registra y se avisa al equipo igual; solo la copia no sale.
@@ -111,12 +117,15 @@ final class Orders
         return ['customer' => $customer];
     }
 
-    /** @return array{order?:array,error?:string,code?:string,field?:string} */
-    public static function parseOrder($raw, array $items): array
+    /**
+     * Valida el cuerpo de un pedido contra el catálogo `$items`. Con `$session` (hay una sesión válida) no se exigen el honeypot `hp` ni el tiempo `_e` (los antispam de quien no ha entrado).
+     * @return array{order?:array,error?:string,code?:string,field?:string}
+     */
+    public static function parseOrder($raw, array $items, bool $session = false): array
     {
         if (!is_array($raw)) return ['error' => 'Petición no válida'];
-        if (!empty($raw['hp'])) return ['error' => 'Solicitud no válida'];                       // honeypot
-        if (($t = self::fillTimeError($raw)) !== null) return $t;
+        if (!$session && !empty($raw['hp'])) return ['error' => 'Solicitud no válida'];          // honeypot
+        if (!$session && ($t = self::fillTimeError($raw)) !== null) return $t;
         $c = is_array($raw['customer'] ?? null) ? $raw['customer'] : [];
         $f = [];
         foreach (['name', 'company', 'email', 'phone', 'notes'] as $k) {
@@ -260,27 +269,119 @@ final class Orders
         return !empty($r['skipped']) ? 'skipped' : 'failed';
     }
 
-    /** POST /order: valida, valora con los precios del servidor, guarda el pedido y envía el correo al equipo (con el PDF del cliente) y, si procede, la copia al cliente. */
-    public static function handleOrder(Request $req, $raw, ?array $catalog = null, ?int $nowMs = null): Response
+    // ───────────────────────────────────────── [CLIENTES CON USUARIO] cupo diario y lectura de lo suyo
+    /** Presupuestos al día que puede crear un cliente con usuario (config customer_orders_per_day / TORIVAC_CUSTOMER_ORDERS_PER_DAY): entero ≥ 1; si falta o no vale, 3. */
+    public static function customerDailyMax(): int
     {
+        $v = Config::get('customer_orders_per_day', 3);
+        if (is_string($v) && preg_match('/^\s*\d{1,6}\s*$/', $v) === 1) $v = (int) trim($v);
+        elseif (is_float($v) && is_finite($v) && floor($v) == $v && $v < 1000000) $v = (int) $v;
+        return is_int($v) && $v >= 1 ? $v : 3;
+    }
+
+    /** Milisegundos desde 1970 de un instante ISO como el que guarda `at` («2026-11-06T10:00:00.123Z»); null si no tiene esa forma. */
+    public static function atMs($iso): ?int
+    {
+        if (!is_string($iso) || preg_match('/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.(\d{1,3}))?Z$/', $iso, $m) !== 1) return null;
+        $t = strtotime($m[1] . ' UTC');
+        return $t === false ? null : $t * 1000 + (int) str_pad($m[2] ?? '0', 3, '0');
+    }
+
+    /**
+     * Los presupuestos de una persona (owner = su correo), el más reciente primero, como mucho `$max`. Con `$sinceMs` solo los creados desde ese instante: como el número lleva el día (TV-AAAAMMDD-…) y se recorre del
+     * más nuevo al más viejo, se deja de leer al pasar de largo la ventana (un día más de margen). Sin `$sinceMs` se recorre todo hasta reunir `$max`.
+     */
+    public static function ownedBy(string $email, int $max = 100, ?int $sinceMs = null): array
+    {
+        $email = strtolower($email);
+        $stop = $sinceMs === null ? null : gmdate('Ymd', intdiv($sinceMs, 1000) - 86400);
+        $out = [];
+        foreach (Store::names('order:') as $k) {
+            if ($stop !== null && preg_match('/^order:TV-(\d{8})-/', $k, $m) === 1 && $m[1] < $stop) break;
+            $o = Store::get($k);
+            if (!is_array($o) || strtolower((string) ($o['owner'] ?? '')) !== $email) continue;
+            if ($sinceMs !== null && ($t = self::atMs($o['at'] ?? null)) !== null && $t < $sinceMs) continue;
+            $out[] = $o;
+            if (count($out) >= $max) break;
+        }
+        usort($out, function ($a, $b) { return strcmp((string) ($b['at'] ?? ''), (string) ($a['at'] ?? '')); });
+        return $out;
+    }
+
+    /** Cuántos presupuestos ha creado esa persona en las últimas 24 h (ventana móvil). */
+    public static function usedIn24h(string $email, ?int $nowMs = null): int
+    {
+        return count(self::ownedBy($email, 1000000, ($nowMs ?? Util::nowMs()) - 86400000));
+    }
+
+    /** El 401 de una sesión no válida o caducada en POST /order (no se trata como visitante: la persona tiene que volver a entrar). */
+    public static function sessionExpired(): Response
+    {
+        return new Response(['ok' => false, 'code' => 'session', 'error' => 'Tu sesión ha caducado. Vuelve a entrar.'], 401);
+    }
+
+    /** El 429 de un cliente que ya creó su máximo de presupuestos en 24 h; el número del texto es el límite configurado. */
+    private static function dailyLimit(int $max): Response
+    {
+        return new Response(['ok' => false, 'code' => 'daily_limit', 'error' => 'Has alcanzado el límite de ' . $max . ' presupuestos al día. Vuelve a intentarlo mañana o escribe al equipo.'], 429);
+    }
+
+    /**
+     * POST /order: valida, valora con los precios del servidor según quién llama (ver [PRECIOS-Y-SESIÓN] arriba), guarda el pedido y envía el correo al equipo (con el PDF del cliente) y, si procede, la copia al cliente.
+     * `$who` es la sesión ya comprobada por Router (null = visitante; si no se da pero la petición trae un Bearer, se comprueba aquí y una sesión que no vale es 401). Orden: límite por IP → catálogo → validación (400) → categoría del staff (400) → Turnstile (solo visitantes) → cupo diario del cliente (429) →
+     * tope global por hora → guardar (el cupo del cliente se vuelve a comprobar y se guarda bajo el mismo bloqueo, así dos peticiones a la vez no se lo saltan). Solo gastan cupo los presupuestos válidos y guardados.
+     */
+    public static function handleOrder(Request $req, $raw, ?array $catalog = null, ?int $nowMs = null, ?array $who = null): Response
+    {
+        if ($who === null && $req->bearer() !== null) {                                            // quien llama directamente con un Bearer (Router ya lo habrá resuelto antes): se comprueba aquí y, si no vale, 401
+            $who = Auth::authenticate($req);
+            if ($who === null) return self::sessionExpired();
+        }
         $rl = RateLimit::hit('order', Request::ipKey($req->ip), 8, 600000, $nowMs);
         if (!$rl['allowed']) return new Response(['ok' => false, 'error' => 'Demasiados pedidos seguidos. Inténtalo en unos minutos.'], 429);
         $prices = Prices::load();
         $cat = Prices::withSheetItems($catalog ?? Catalog::items(), $prices);                      // las referencias que la hoja añadió dentro de un producto también son pedibles
-        $parsed = self::parseOrder($raw, $cat);
+        $parsed = self::parseOrder($raw, $cat, $who !== null);
         if (isset($parsed['error'])) return self::badRequest($parsed);
         $o = $parsed['order'];
-        if (!self::verifyTurnstile($o['turnstile'], $req->ip)) return new Response(['ok' => false, 'error' => 'Verificación anti-spam fallida', 'code' => 'captcha'], 400);
+        $role = (string) ($who['role'] ?? '');
+        $owner = $who !== null && empty($who['master']) ? strtolower((string) ($who['sub'] ?? '')) : '';
+        $settings = Pricing::load();
+        if ($role === 'customer') {
+            $tier = Pricing::tierOf($who['tier'] ?? null);                                         // su categoría, la del registro de la cuenta en esta petición; el cuerpo no cuenta
+        } elseif ($role === 'manager' || $role === 'client') {
+            $tier = 'vip';
+            if (is_array($raw) && array_key_exists('tier', $raw) && $raw['tier'] !== null && $raw['tier'] !== '') {
+                if (!Pricing::isTier($raw['tier'])) return new Response(['ok' => false, 'error' => 'Categoría no válida', 'field' => 'tier'], 400);
+                $tier = $raw['tier'];
+            }
+        } else {
+            $tier = $settings['anon'] === 'normal' ? 'normal' : 'consult';
+        }
+        if ($who === null && !self::verifyTurnstile($o['turnstile'], $req->ip)) return new Response(['ok' => false, 'error' => 'Verificación anti-spam fallida', 'code' => 'captcha'], 400);
+        $max = self::customerDailyMax();
+        if ($role === 'customer' && self::usedIn24h($owner, $nowMs) >= $max) return self::dailyLimit($max);
         $gl = RateLimit::hit('orderhour', 'all', self::ordersPerHourMax(), 3600000, $nowMs);       // tope global: protege la cuota del correo y el buzón del equipo (solo cuentan pedidos válidos)
         if (!$gl['allowed']) return new Response(['ok' => false, 'error' => 'Demasiados pedidos seguidos. Inténtalo en unos minutos.'], 429);
-        $priced = Prices::priceOrder($prices, $o['lines']);                                        // el cliente no puede fijar precios
-        $number = self::nextNumber($nowMs);
+        $priced = $tier === 'consult' ? Pricing::consultOrder($o['lines']) : Pricing::priceOrder($prices, $o['lines'], $tier, $settings);       // el cliente no puede fijar precios
         $demo = ($prices['mode'] ?? '') !== 'live';
-        $record = ['number' => $number, 'at' => Util::iso($nowMs === null ? null : $nowMs / 1000), 'customer' => $o['customer'], 'lines' => $priced['lines'], 'total' => $priced['total'], 'unpriced' => $priced['unpriced'], 'lang' => $o['lang'],
-            'prices' => ['updated_at' => $prices['updated_at'] ?? null, 'mode' => $prices['mode'] ?? null], 'ip' => $req->ip];
-        Store::put('order:' . $number, $record, 400 * 86400);                                     // primero se guarda (si el correo falla, el pedido no se pierde)
+        $save = function () use ($nowMs, $o, $priced, $prices, $req, $tier, $owner) {
+            $number = self::nextNumber($nowMs);
+            $record = ['number' => $number, 'at' => Util::iso($nowMs === null ? null : $nowMs / 1000), 'customer' => $o['customer'], 'lines' => $priced['lines'], 'total' => $priced['total'], 'unpriced' => $priced['unpriced'], 'lang' => $o['lang'],
+                'prices' => ['updated_at' => $prices['updated_at'] ?? null, 'mode' => $prices['mode'] ?? null], 'priceTier' => $tier] + ($owner !== '' ? ['owner' => $owner] : []) + ['ip' => $req->ip];
+            Store::put('order:' . $number, $record, 400 * 86400);                                 // primero se guarda (si el correo falla, el pedido no se pierde)
+            return $record;
+        };
+        if ($role === 'customer') {                                                                // el cupo se mira y se gasta con el pedido ya validado, bajo un bloqueo: dos peticiones a la vez no pasan de $max
+            $record = Store::locked('customerorder', function () use ($save, $owner, $nowMs, $max) { return self::usedIn24h($owner, $nowMs) >= $max ? null : $save(); });
+            if ($record === null) return self::dailyLimit($max);
+        } else {
+            $record = $save();
+        }
+        $number = $record['number'];
         $hasPdf = $o['pdf'] !== null;
-        $mail = Mail::orderMail(['number' => $number, 'customer' => $o['customer'], 'priced' => $priced, 'lang' => $o['lang'], 'demo' => $demo, 'pdf' => $hasPdf], $cat);
+        $mail = Mail::orderMail(['number' => $number, 'customer' => $o['customer'], 'priced' => $priced, 'lang' => $o['lang'], 'demo' => $demo, 'pdf' => $hasPdf, 'priceTier' => $tier,
+            'account' => $owner !== '' ? $owner : ($who !== null ? 'token maestro' : '')], $cat);
         $att = $hasPdf ? [['filename' => $number . '.pdf', 'content' => $o['pdf']]] : [];         // el PDF del visitante solo va al equipo
         $team = Mail::send(['to' => self::team(), 'subject' => '[Web Torivac] Pedido ' . $number . ' · ' . $o['customer']['name'], 'html' => $mail['html'], 'text' => $mail['text'], 'replyTo' => $o['customer']['email'], 'attachments' => $att], 'order', $nowMs);
         $reason = self::sendCopy($o, $number, $priced, $demo, $cat, $nowMs);
@@ -288,7 +389,9 @@ final class Orders
         $why = !empty($team['ok']) ? '' : (!empty($team['skipped']) ? 'correo sin configurar' : mb_substr((string) ($team['error'] ?? 'fallo de envío'), 0, 160));
         $record['emailed'] = $emailed + ['reason' => (string) ($team['reason'] ?? (!empty($team['ok']) ? 'sent' : 'failed')), 'error' => $why];       // reason = sent · off · failed · skipped (aviso al equipo); error, solo para gestores
         Store::put('order:' . $number, $record, 400 * 86400);                                     // el panel marca los pedidos cuyo aviso por correo no salió
-        return new Response(['ok' => true, 'number' => $number, 'total' => $priced['total'], 'unpriced' => $priced['unpriced'], 'emailed' => $emailed]);
+        $body = ['ok' => true, 'number' => $number, 'total' => $priced['total'], 'unpriced' => $priced['unpriced'], 'emailed' => $emailed];
+        if ($role === 'customer') $body['remaining'] = max(0, $max - self::usedIn24h($owner, $nowMs));
+        return new Response($body);
     }
 
     /**

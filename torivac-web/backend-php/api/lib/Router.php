@@ -1,9 +1,12 @@
 <?php
 /**
  * [ROUTER] Rutas del API (equivalentes a workers/api/src/index.js: la web usa el mismo contrato con el Worker o con este PHP).
- *   PÚBLICO   GET /api/health · GET /api/prices · GET /api/google (qué mide la web: solo IDs públicos) · POST /api/order · POST /api/contact · POST /api/auth/login · POST /api/auth/verify · POST /api/auth/resend (código por correo) · GET /api/backups/<archivo>?t=… (descarga firmada)
+ *   PÚBLICO   GET /api/health · GET /api/prices (el servidor decide qué contiene según quién llama: ver prices()) · GET /api/google (qué mide la web: solo IDs públicos) · POST /api/order (con sesión opcional: ver Orders) · POST /api/contact · POST /api/auth/login · POST /api/auth/verify · POST /api/auth/resend (código por correo) · GET /api/backups/<archivo>?t=… (descarga firmada)
  *   USUARIO   GET /api/auth/me · POST /api/auth/logout (cierra TODAS las sesiones de esa persona) · POST /api/auth/password (cambiar la propia) · POST /api/auth/devices/forget · PRESUPUESTOS RECIBIDOS (manager y client = propietario, mismo contrato que workers/api: docs/PRESUPUESTOS-RECIBIDOS.md, lógica en Quotes.php):
  *             GET /api/orders (los 300 últimos; el propietario igual, sin ip ni emailed.error) · GET|PUT /api/orders/:número (ver · editar con rev/409) · POST /api/orders/:número/send (reenviar por correo con PDF; 409 mail_off)
+ *   CLIENTE   (rol `customer`, docs/PRECIOS-Y-CLIENTES.md) GET /api/orders (solo los suyos, reducidos, con `quota`) · GET /api/orders/:número (solo uno suyo) · PUT y send → 403 «Solo lectura» · GET /api/prices con SUS precios · POST /api/order con sesión (3 al día)
+ *   PROPIETARIO Y MANAGER  GET|POST /api/customers · PUT|DELETE /api/customers/:correo · POST /api/customers/:correo/password (cuentas de cliente; lógica en Customers.php) · GET|PUT /api/settings/pricing (porcentajes de las categorías,
+ *             precio de cara al visitante y aproximado) · PUT /api/prices/items/:ref (precio de un producto; la referencia va codificada en la URL) — lógica en Pricing.php
  *   MANAGER   GET /api/diag · GET /api/admin/data · GET /api/messages?limit= · DELETE /api/messages/:id · POST /api/mail/test · GET /api/mail/status · POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
  *             GET|PUT /api/settings/google (medición de Google: IDs y conversiones) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · POST /api/users/:correo/unlock|two-step|password · GET /api/activity · /api/backups (copias de seguridad) · /api/blog/… (entradas del blog e imágenes: ver BlogApi.php)
  *   CRON      GET /api/cron?token=… (alternativa a `php cron.php` si el hosting no deja programar por línea de comandos)
@@ -141,20 +144,38 @@ final class Router
         return new Response($b);
     }
 
-    /** GET /prices: el público ve la lista sin quién la cargó ni de dónde; un manager lo ve todo (y el estado de la última sincronización). Con la IP bloqueada por tokens fallidos se sirve la vista pública. */
+    /**
+     * GET /prices: el servidor decide qué contiene según quién llama (docs/PRECIOS-Y-CLIENTES.md §4). `manager` y `client` ven los precios VIP (base) con las marcas `m` y `a` y `meta.manual_count` (el manager además el detalle de
+     * quién cargó la hoja y el estado de la última sincronización; el propietario, igual que el público, sin quién ni de dónde). Un `customer` ve los precios de SU categoría (p y tramos escalados, sin `m`, `a` ni el nombre de la
+     * categoría). Un visitante, según settings:pricing: anon = normal → precios Normal completos · anon = consult con aproximado → `{ ref: { p: aproximado } }` y `prices.approx: true` · anon = consult sin aproximado → nada
+     * (`prices.mode: 'none'`). El VIP nunca sale a quien no corresponde. Una sesión inválida o caducada se trata como visitante (no es un error). Siempre `Vary: Authorization`; con sesión, `Cache-Control: private, no-store`.
+     */
     private static function prices(Request $req): Response
     {
         $prices = Prices::load();
         $meta = Store::get(Prices::KEY_META);
-        [$me] = self::authenticate($req);                                                       // un manager ve quién cargó la hoja y de dónde; el público, no
-        if ($me && $me['role'] === 'manager') {
-            $body = ['prices' => Prices::forJson($prices), 'meta' => $meta];
+        [$me] = self::authenticate($req);                                                       // con la IP bloqueada por tokens fallidos o un token no válido se sirve la vista de visitante
+        $role = (string) ($me['role'] ?? '');
+        $private = ['Cache-Control' => 'private, no-store', 'Vary' => 'Authorization'];
+        if ($role === 'manager') {                                                              // un manager ve quién cargó la hoja y de dónde; el público, no
+            $m = is_array($meta) ? $meta : [];
+            $body = ['prices' => Prices::forJson($prices), 'meta' => $m + ['manual_count' => Prices::manualCount($prices)]];
             $sync = Store::get(Prices::KEY_SYNC);
             if (is_array($sync)) $body['sync'] = $sync;
-            return new Response($body, 200, ['Cache-Control' => 'private, no-store', 'Vary' => 'Authorization']);
+            return new Response($body, 200, $private);
         }
         $pub = Prices::publicView($prices, $meta);
-        $body = ['prices' => Prices::forJson($pub['prices']), 'meta' => $pub['meta']];
+        if ($role === 'client') {                                                               // precios VIP con las marcas, y los metadatos como el público
+            $pm = is_array($pub['meta']) ? $pub['meta'] : [];
+            return new Response(['prices' => Prices::forJson($pub['prices']), 'meta' => $pm + ['manual_count' => Prices::manualCount($prices)]], 200, $private);
+        }
+        if (is_array($pub['meta'])) unset($pub['meta']['manual_skipped']);                      // dato interno del equipo
+        $settings = Pricing::load();
+        if ($role === 'customer') {
+            $own = Pricing::customerPrices($pub['prices'], Pricing::tierOf($me['tier'] ?? null), $settings);
+            return new Response(['prices' => Prices::forJson($own), 'meta' => $pub['meta']], 200, $private);
+        }
+        $body = ['prices' => Prices::forJson(Pricing::visitorPrices($pub['prices'], $settings)), 'meta' => $pub['meta']];
         $etag = '"' . md5(Util::enc($body)) . '"';
         $h = ['Cache-Control' => 'public, max-age=300', 'ETag' => $etag, 'Vary' => 'Authorization'];
         if ($req->header('if-none-match') === $etag) return new Response([], 304, $h);
@@ -236,7 +257,7 @@ final class Router
         $u = Users::find($v['email']);
         $secret = Auth::sessionSecret();
         if ($u === null || $secret === null || empty($u['sid'])) return new Response(['ok' => false, 'error' => 'Credenciales incorrectas'], 401);
-        $pub = ['email' => $u['email'], 'name' => $u['name'], 'role' => $u['role'], 'created' => $u['created']];
+        $pub = Users::pub($u);
         $res = self::enter($req, $pub, (string) $u['sid'], $secret, 'login.pin_ok', $v['why'] === 'attack' ? 'protección reforzada' : '');
         if (($b['remember'] ?? false) === true && ($dev = Security::issueDevice($u)) !== null) {
             $res->headers['Set-Cookie'] = Security::cookieHeader($dev, $req);
@@ -300,9 +321,28 @@ final class Router
         return $o;
     }
 
-    /** GET /orders: los 300 presupuestos más recientes, el último primero, para un manager y también para un propietario (rol client), que los ve todos pero sin `ip` ni `emailed.error`. `truncated:true` si se cortó. */
+    /**
+     * Un presupuesto tal como lo ve un cliente con usuario (rol customer): solo { number, at, customer, lines, total, unpriced, lang, quoteNote? }. Sin `ip`, `emailed`, `history`, `lastSent`, `original`, `rev`, `edited`,
+     * `owner`, `prices` ni `priceTier` (ni nada interno que se añada al registro en el futuro: se copia solo lo que está en esta lista).
+     */
+    public static function forCustomer(array $o): array
+    {
+        return array_intersect_key($o, array_flip(['number', 'at', 'customer', 'lines', 'total', 'unpriced', 'lang', 'quoteNote']));
+    }
+
+    /** Presupuestos que se devuelven como máximo a un cliente con usuario (los suyos más recientes). */
+    const CUSTOMER_ORDERS_MAX = 100;
+
+    /**
+     * GET /orders: los 300 presupuestos más recientes, el último primero, para un manager y también para un propietario (rol client), que los ve todos pero sin `ip` ni `emailed.error`. `truncated:true` si se cortó.
+     * Un cliente con usuario (rol customer) recibe SOLO los suyos (owner = su correo; los 100 más recientes) reducidos con forCustomer, y `quota: { limit, used }` (cuántos puede crear al día y cuántos lleva en las últimas 24 h).
+     */
     private static function orders(array $who): Response
     {
+        if ($who['role'] === 'customer') {
+            $mine = Orders::ownedBy((string) $who['sub'], self::CUSTOMER_ORDERS_MAX);
+            return new Response(['ok' => true, 'orders' => array_map([self::class, 'forCustomer'], $mine), 'quota' => ['limit' => Orders::customerDailyMax(), 'used' => Orders::usedIn24h((string) $who['sub'])]]);
+        }
         $mgr = $who['role'] === 'manager';
         $names = Store::names('order:');                                                        // solo los nombres: no se lee ningún fichero hasta saber cuáles interesan
         $truncated = false;
@@ -370,6 +410,43 @@ final class Router
         return new Response(['ok' => true]);
     }
 
+    /**
+     * POST /order: un visitante sin sesión, o una persona con sesión (Authorization: Bearer). Con un Bearer que no vale (inválido, caducado, cuenta borrada) NO se trata como visitante: 401 con code «session»; con la IP
+     * bloqueada por tokens fallidos, el mismo 429 de siempre. La valoración según quién llama está en Orders::handleOrder.
+     */
+    private static function order(Request $req, ?array $catalog): Response
+    {
+        $who = null;
+        if ($req->bearer() !== null) {
+            [$who, $blocked] = self::authenticate($req);
+            if ($blocked) return $blocked;
+            if (!$who) return Orders::sessionExpired();
+            self::$actor = $who;
+        }
+        return Orders::handleOrder($req, $req->json(), $catalog, null, $who);
+    }
+
+    /**
+     * Rutas de precios y clientes que atienden un manager y un propietario (rol client): /customers…, /settings/pricing y PUT /prices/items/:ref (la referencia va codificada en la URL). Devuelve null si la ruta no es de este
+     * grupo. Un método que no encaja en una de estas rutas es 404; el resto de roles no llega aquí (Router ya les cierra el paso).
+     */
+    private static function pricingRoutes(Request $req, array $who): ?Response
+    {
+        $path = $req->path;
+        $m = $req->method;
+        if ($path === '/customers' || strpos($path, '/customers/') === 0) return Customers::handle($req, $who);
+        if ($path === '/settings/pricing') {
+            if ($m === 'GET') return Pricing::handleGet();
+            if ($m === 'PUT') return Pricing::handlePut($req, $who);
+            return new Response(['ok' => false, 'error' => 'No encontrado'], 404);
+        }
+        if (preg_match('#^/prices/items/([^/]+)$#D', $path, $x) === 1) {
+            if ($m === 'PUT') return Pricing::handleItem($req, $who, rawurldecode($x[1]));
+            return new Response(['ok' => false, 'error' => 'No encontrado'], 404);
+        }
+        return null;
+    }
+
     /** Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera). */
     private static function route(Request $req, ?array $catalog): Response
     {
@@ -378,7 +455,7 @@ final class Router
         if ($path === '/health') return self::health();
         if ($path === '/prices' && $m === 'GET') return self::prices($req);
         if ($path === '/google' && $m === 'GET') return GoogleSettings::handlePublic();                      // qué mide la web (solo IDs públicos); lo edita un manager en Ajustes → Google
-        if ($path === '/order' && $m === 'POST') return Orders::handleOrder($req, $req->json(), $catalog);
+        if ($path === '/order' && $m === 'POST') return self::order($req, $catalog);
         if ($path === '/contact' && $m === 'POST') return Orders::handleContact($req, $req->json());
         if ($path === '/auth/login' && $m === 'POST') return self::login($req);
         if ($path === '/auth/verify' && $m === 'POST') return self::verifyCode($req);
@@ -401,7 +478,8 @@ final class Router
             return Security::forgetDevices((string) $who['sub']) ? new Response(['ok' => true]) : new Response(['ok' => false, 'error' => 'No existe ese usuario'], 404);
         }
         if ($path === '/orders' && $m === 'GET') return self::orders($who);
-        if (strpos($path, '/orders/') === 0) return Quotes::handle($req, $who);                  // ver, editar y reenviar un presupuesto (manager y propietario); un número con forma rara es 404, no 403
+        if (strpos($path, '/orders/') === 0) return Quotes::handle($req, $who);                  // ver, editar y reenviar un presupuesto (manager y propietario; un cliente solo ve los suyos); un número con forma rara es 404, no 403
+        if (Auth::requireRole($who, 'manager', 'client') && ($pr = self::pricingRoutes($req, $who)) !== null) return $pr;      // clientes, ajustes de precios y precio de un producto: manager y propietario
         if (!Auth::requireRole($who, 'manager')) return new Response(['ok' => false, 'error' => 'Solo para managers'], 403);
         if ($path === '/diag' && $m === 'GET') return new Response(['ok' => true] + Diag::run(false, null, $req));                            // autodiagnóstico de la instalación (solo managers)
         if ($path === '/admin/data' && $m === 'GET') {                                          // propuestas y datos de cobertura: ya no se publican en la web, solo los ven los managers
@@ -424,7 +502,7 @@ final class Router
                 $plan = Sheets::plan($rows, 'upload', $mode);
                 $rep = $plan['report'];
                 return new Response(['ok' => true, 'dry_run' => true, 'mode' => $plan['mode'], 'refs' => count($plan['sheet']['items']), 'total' => count($plan['next']['items']), 'kept' => $plan['kept'],
-                    'needs_force' => (bool) $plan['blockers'], 'blockers' => $plan['blockers'], 'diff' => Prices::diff($plan['prev'], $plan['next']),
+                    'needs_force' => (bool) $plan['blockers'], 'blockers' => $plan['blockers'], 'manual_skipped' => $plan['manual_skipped'], 'diff' => Prices::diff($plan['prev'], $plan['next']),
                     'report' => ['warnings' => $rep['warnings'], 'ignored' => array_slice($rep['ignored'], 0, 40), 'unknown' => array_slice($rep['unknown'], 0, 40), 'extras' => array_slice($rep['extras'], 0, 40), 'retire' => array_slice($rep['retire'], 0, 40), 'columns' => Util::obj($rep['columns']), 'stats' => $rep['stats']]]);
             }
             return new Response(['ok' => true, 'meta' => Sheets::sync(['rows' => $rows, 'source' => 'upload:' . $who['sub'], 'reason' => 'upload:' . $who['sub'], 'force' => ($b['force'] ?? null) === true, 'mode' => $mode])]);

@@ -51,6 +51,7 @@ final class Ai
         $i = 0;
         foreach ($prices['items'] as $ref => $p) {
             if ($i++ >= self::MAX_REFS_IN_PROMPT) break;
+            if (!isset($p['p']) || !is_numeric($p['p'])) continue;                            // una entrada que solo lleva `a`/`m` no tiene precio: la IA no la ve
             $t = $p['t'] ?? [];
             $rows[] = $ref . ' | ' . ($catalog[$ref]['n'] ?? '') . ' | ' . self::n($p['p']) . ($t ? ' | ' . implode('; ', array_map(function ($x) { return 'desde ' . $x[0] . ' uds = ' . self::n($x[1]); }, $t)) : '');
         }
@@ -79,7 +80,7 @@ final class Ai
             if (!isset($prices['items'][$ref]) && !isset($catalog[$ref])) { $out['rejected'][] = ['ref' => $ref, 'why' => 'la referencia no existe']; continue; }
             $p = isset($c['price']) && (is_int($c['price']) || is_float($c['price'])) ? (float) $c['price'] : null;
             if ($p === null || $p < 0 || $p > self::MAX_PRICE) { $out['rejected'][] = ['ref' => $ref, 'why' => 'precio no válido']; continue; }
-            $old = $prices['items'][$ref] ?? null;
+            $old = isset($prices['items'][$ref]) && is_array($prices['items'][$ref]) && isset($prices['items'][$ref]['p']) && is_numeric($prices['items'][$ref]['p']) ? $prices['items'][$ref] : null;      // sin `p` (solo `a`/`m`) no hay precio anterior
             $tiers = null;
             if (isset($c['tiers']) && is_array($c['tiers'])) {
                 $tiers = [];
@@ -104,7 +105,7 @@ final class Ai
         return $out;
     }
 
-    /** aplica cambios ya validados sobre unos precios (devuelve unos nuevos) */
+    /** aplica cambios ya validados sobre unos precios (devuelve unos nuevos); el resto de la entrada —la marca manual `m`, el aproximado `a`, la nota…— se conserva tal cual */
     public static function applyChanges(array $prices, array $changes, string $source = 'ia', ?float $now = null): array
     {
         $next = ['updated_at' => Util::iso($now), 'source' => $source, 'mode' => 'live'] + $prices;
@@ -144,24 +145,26 @@ final class Ai
         return ['summary' => mb_substr((string) ($input['summary'] ?? ''), 0, 400), 'changes' => $v['changes'], 'rejected' => $v['rejected'], 'warnings' => $warnings, 'large' => (bool) array_filter($v['changes'], function ($c) { return $c['large']; }), 'usage' => $data['usage'] ?? null];
     }
 
-    /** Aplica los cambios revisados por la persona; vuelve a validarlo todo en servidor */
+    /** Aplica los cambios revisados por la persona; vuelve a validarlo todo en servidor. Lee y escribe bajo el bloqueo de precios (una edición a mano o una sincronización a la vez no se pisan) y conserva la marca `m` de cada entrada. */
     public static function apply($body, string $who = 'manager', ?array $catalog = null, ?float $now = null): array
     {
-        $prices = Prices::load();
-        $cat = Prices::withSheetItems($catalog ?? Catalog::items(), $prices);
-        $raw = [];
-        foreach (is_array($body['changes'] ?? null) ? $body['changes'] : [] as $c) {
-            $c = is_array($c) ? $c : [];
-            $tiers = null;
-            if (isset($c['next']['t']) && is_array($c['next']['t'])) $tiers = array_map(function ($t) { return ['qty' => $t[0] ?? null, 'price' => $t[1] ?? null]; }, $c['next']['t']);
-            elseif (isset($c['tiers'])) $tiers = $c['tiers'];
-            $raw[] = ['ref' => $c['ref'] ?? '', 'price' => $c['next']['p'] ?? ($c['price'] ?? null), 'tiers' => $tiers];
-        }
-        $v = self::validateChanges($raw, $prices, $cat);
-        if (!$v['changes']) throw new \RuntimeException('No hay cambios válidos que aplicar', 400);
-        if (array_filter($v['changes'], function ($c) { return $c['large']; }) && ($body['confirm_large'] ?? null) !== true) throw new \RuntimeException('Hay cambios muy grandes: confírmalos expresamente (confirm_large)', 409);
-        $next = self::applyChanges($prices, $v['changes'], 'ia:' . $who, $now);
-        $meta = Prices::save($next, $prices, 'ia:' . $who, 'ia:' . $who, $now);
-        return ['meta' => $meta, 'applied' => count($v['changes']), 'rejected' => $v['rejected']];
+        return Store::locked('prices', function () use ($body, $who, $catalog, $now) {
+            $prices = Prices::load();
+            $cat = Prices::withSheetItems($catalog ?? Catalog::items(), $prices);
+            $raw = [];
+            foreach (is_array($body['changes'] ?? null) ? $body['changes'] : [] as $c) {
+                $c = is_array($c) ? $c : [];
+                $tiers = null;
+                if (isset($c['next']['t']) && is_array($c['next']['t'])) $tiers = array_map(function ($t) { return ['qty' => $t[0] ?? null, 'price' => $t[1] ?? null]; }, $c['next']['t']);
+                elseif (isset($c['tiers'])) $tiers = $c['tiers'];
+                $raw[] = ['ref' => $c['ref'] ?? '', 'price' => $c['next']['p'] ?? ($c['price'] ?? null), 'tiers' => $tiers];
+            }
+            $v = self::validateChanges($raw, $prices, $cat);
+            if (!$v['changes']) throw new \RuntimeException('No hay cambios válidos que aplicar', 400);
+            if (array_filter($v['changes'], function ($c) { return $c['large']; }) && ($body['confirm_large'] ?? null) !== true) throw new \RuntimeException('Hay cambios muy grandes: confírmalos expresamente (confirm_large)', 409);
+            $next = self::applyChanges($prices, $v['changes'], 'ia:' . $who, $now);
+            $meta = Prices::save($next, $prices, 'ia:' . $who, 'ia:' . $who, $now);
+            return ['meta' => $meta, 'applied' => count($v['changes']), 'rejected' => $v['rejected']];
+        });
     }
 }

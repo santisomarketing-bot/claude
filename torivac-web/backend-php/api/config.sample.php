@@ -132,6 +132,10 @@ return [
     // Tope global de pedidos por hora (además del de 8 pedidos / 10 min por visitante): protege la cuota del correo (Resend) y el buzón del equipo. Superado: error 429.
     'orders_per_hour_max' => 120,
 
+    // PRESUPUESTOS DE CLIENTES CON USUARIO (rol «customer»): cuántos presupuestos nuevos puede crear cada cliente en el panel en una ventana móvil de 24 h. Entero ≥ 1; si falta o no vale, 3.
+    // Solo cuentan los presupuestos válidos y guardados. Superado: error 429 («Has alcanzado el límite de N presupuestos al día…»). También como variable de entorno TORIVAC_CUSTOMER_ORDERS_PER_DAY.
+    'customer_orders_per_day' => 3,
+
     // REENVÍO DE PRESUPUESTOS desde el panel (Presupuestos recibidos → Reenviar): manda el PDF a hasta 3 destinatarios cualesquiera, así que tiene topes. 20 por hora y persona (fijo) y, en total al día,
     // 'order_send_daily_max' (0 = sin tope). Superado: error 429. Cada reenvío queda en Actividad. Sin correo configurado el panel avisa (409) y no se envía nada.
     'order_send_daily_max' => 150,

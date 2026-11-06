@@ -8,6 +8,7 @@ use Torivac\Catalog;
 use Torivac\Config;
 use Torivac\Http;
 use Torivac\Prices;
+use Torivac\Pricing;
 use Torivac\RateLimit;
 use Torivac\Request;
 use Torivac\Router;
@@ -22,6 +23,8 @@ const CRON_TOKEN = 'cron-de-pruebas-de-al-menos-24-caracteres';
 /** Contraseñas de PRUEBAS que cumplen la política (≥ 12, sin la parte local del correo ni nada trivial). */
 const PW_JEFE = 'Clave-Directiva-2026!';
 const PW_ANA = 'Clave-Cliente-2026!!';
+/** Contraseña de PRUEBAS de los clientes con usuario (rol customer). */
+const PW_CLI = 'Clave-Comprador-2026!';
 
 /** Almacén temporal nuevo, configuración y catálogo sintéticos de las pruebas. */
 function fresh(array $cfg = []): void
@@ -48,6 +51,15 @@ function prices(): array
 
 /** Guarda los precios de ejemplo en el almacén. */
 function seedPrices(): void { Store::put(Prices::KEY_CURRENT, Prices::forJson(prices())); }
+
+/**
+ * Deja que el VISITANTE vea y presupueste a precio de hoja, como antes de las categorías: settings:pricing con anon = normal y 0 % de recargo sobre el VIP (la categoría «Normal» queda igual que la hoja).
+ * Con el ajuste por defecto (anon = consult) el visitante no ve precios y sus presupuestos salen «A consultar»; las pruebas viejas que miran precios de visitante lo llaman tras fresh().
+ */
+function publicAtSheetPrice(): void
+{
+    Store::put(Pricing::KEY, ['tiers' => ['vip5' => 0, 'vip10' => 0, 'normal' => 0], 'anon' => 'normal', 'approx' => ['on' => false, 'pct' => 15], 'updated' => null]);
+}
 
 /** Pedido válido de ejemplo (se puede sobrescribir cualquier campo). */
 function goodOrder(array $over = []): array

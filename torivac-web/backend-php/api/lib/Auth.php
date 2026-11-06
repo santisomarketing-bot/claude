@@ -1,7 +1,8 @@
 <?php
 /**
  * [AUTH] Contraseñas (password_hash: bcrypt/argon2 según el hosting) y sesiones firmadas HMAC-SHA256.
- * Roles: 'manager' (todo) y 'client' (solo lo suyo). Token: base64url(payload).base64url(firma); payload = {sub, iat, exp(ms), sid}; caduca a las 24 h.
+ * Roles: 'manager' (todo), 'client' (el propietario de la web: ve todos los presupuestos recibidos y edita precios y clientes, sin acceso técnico) y 'customer' (cliente con usuario: solo lee SUS presupuestos y puede crear 3 al día;
+ * lleva una categoría de precio `tier` = vip · vip5 · vip10 · normal, por defecto normal, que se lee de su registro en CADA petición; ver docs/PRECIOS-Y-CLIENTES.md). Token: base64url(payload).base64url(firma); payload = {sub, iat, exp(ms), sid}; caduca a las 24 h.
  * El token NO dice qué rol tiene ni qué nombre: al verificarlo se busca a la persona y de su registro salen el rol y el nombre. Además va ligado al registro del usuario:
  *   · sid        identificador de sesión del usuario (16 bytes al azar en hex, se crea al dar de alta; los usuarios antiguos lo reciben en su siguiente acceso correcto);
  *                borrar al usuario y volver a crearlo con el mismo correo da un sid nuevo y los tokens anteriores no resucitan;
@@ -132,8 +133,10 @@ final class Auth
         $u = Users::find($s['sub']);
         if (!is_array($u) || !isset($u['sid']) || !is_string($u['sid']) || $u['sid'] === '' || !hash_equals($u['sid'], $s['sid'])) return null;
         if ($s['iat'] <= (int) ($u['sess_after'] ?? 0)) return null;
-        if (!in_array($u['role'] ?? '', ['manager', 'client'], true)) return null;
-        return ['sub' => (string) $u['email'], 'role' => $u['role'], 'name' => (string) ($u['name'] ?? $u['email'])];
+        if (!in_array($u['role'] ?? '', ['manager', 'client', 'customer'], true)) return null;
+        $who = ['sub' => (string) $u['email'], 'role' => $u['role'], 'name' => (string) ($u['name'] ?? $u['email'])];
+        if ($u['role'] === 'customer') $who['tier'] = Pricing::tierOf($u['tier'] ?? null);                  // la categoría sale del registro de la cuenta en cada petición: cambiarla vale al instante
+        return $who;
     }
 
     /** Dice si la sesión existe y su rol es uno de los permitidos. */
@@ -159,8 +162,13 @@ final class Users
     /** Clave del almacén de un usuario: user:<correo en minúsculas>. */
     private static function key(string $email): string { return 'user:' . strtolower(trim($email)); }
 
-    /** Usuario sin el hash de la contraseña ni los datos de sesión (lo que puede salir al navegador). */
-    private static function pub(array $u): array { return ['email' => $u['email'], 'name' => $u['name'], 'role' => $u['role'], 'created' => $u['created']]; }
+    /** Usuario sin el hash de la contraseña ni los datos de sesión (lo que puede salir al navegador); un cliente (`customer`) lleva además su categoría de precio `tier`. */
+    public static function pub(array $u): array
+    {
+        $p = ['email' => $u['email'], 'name' => $u['name'], 'role' => $u['role'], 'created' => $u['created']];
+        if (($u['role'] ?? '') === 'customer') $p['tier'] = Pricing::tierOf($u['tier'] ?? null);
+        return $p;
+    }
 
     /**
      * Por qué NO vale una contraseña nueva (texto para mostrar) o null si vale: mínimo 12 caracteres, que no contenga la parte local del correo (si tiene 3 o más letras y cifras),
@@ -181,7 +189,10 @@ final class Users
         return null;
     }
 
-    /** @return array{user?:array,error?:string,status?:int} */
+    /**
+     * Crea una cuenta. Roles: manager, client (propietario) y customer (cliente, con `tier` vip|vip5|vip10|normal, por defecto normal; solo se guarda en ese rol). Correo, nombre y contraseña siguen las reglas de siempre.
+     * @return array{user?:array,error?:string,status?:int}
+     */
     public static function create(array $in): array
     {
         $email = $in['email'] ?? '';
@@ -189,7 +200,13 @@ final class Users
         $email = strtolower(trim($email));
         if (!Orders::validEmail($email)) return ['error' => 'Correo no válido'];
         $role = $in['role'] ?? '';
-        if (!in_array($role, ['manager', 'client'], true)) return ['error' => 'Rol no válido'];
+        if (!in_array($role, ['manager', 'client', 'customer'], true)) return ['error' => 'Rol no válido'];
+        $tier = null;
+        if ($role === 'customer') {
+            $tier = $in['tier'] ?? 'normal';
+            if ($tier === null || $tier === '') $tier = 'normal';
+            if (!Pricing::isTier($tier)) return ['error' => 'Categoría no válida'];
+        }
         $pw = $in['password'] ?? '';
         if (!is_string($pw)) return ['error' => 'Contraseña no válida'];
         $name = $in['name'] ?? $email;
@@ -197,6 +214,7 @@ final class Users
         $bad = self::passwordProblem($pw, $email);
         if ($bad !== null) return ['error' => $bad];
         $u = ['email' => $email, 'name' => Util::line($name, 80) ?: $email, 'role' => $role, 'hash' => Auth::hashPassword($pw), 'created' => Util::iso(), 'sid' => bin2hex(random_bytes(16)), 'sess_after' => 0];
+        if ($tier !== null) $u['tier'] = $tier;
         $r = Store::locked('users', function () use ($email, $u) {
             if (Store::get(self::key($email)) !== null) return ['error' => 'Ya existe un usuario con ese correo', 'status' => 409];
             Store::put(self::key($email), $u);
@@ -212,6 +230,34 @@ final class Users
         $out = [];
         foreach (Store::keys('user:') as $k) { $u = Store::get($k); if (is_array($u)) $out[] = self::pub($u); }
         return $out;
+    }
+
+    /** Los registros de las cuentas de cliente (rol `customer`), ordenados por correo. Son registros completos (con hash): solo para uso interno; lo que sale al panel lo da Customers::view. */
+    public static function customers(): array
+    {
+        $out = [];
+        foreach (Store::keys('user:') as $k) {
+            $u = Store::get($k);
+            if (is_array($u) && ($u['role'] ?? '') === 'customer') $out[] = $u;
+        }
+        return $out;
+    }
+
+    /**
+     * Cambia la categoría (`tier`) y/o el nombre (`name`, ya limpio) de una cuenta de CLIENTE bajo el bloqueo de usuarios; devuelve el registro nuevo, o null si no existe o no es un cliente (nunca toca otro rol).
+     * @param array{tier?:string,name?:string} $changes
+     */
+    public static function editCustomer(string $email, array $changes): ?array
+    {
+        $r = Store::locked('users', function () use ($email, $changes) {
+            $u = Store::get(self::key($email));
+            if (!is_array($u) || ($u['role'] ?? '') !== 'customer') return null;
+            if (isset($changes['tier'])) $u['tier'] = $changes['tier'];
+            if (isset($changes['name'])) $u['name'] = $changes['name'];
+            Store::put(self::key($email), $u);
+            return $u;
+        });
+        return is_array($r) ? $r : null;
     }
 
     /** ¿Existe ese usuario? */

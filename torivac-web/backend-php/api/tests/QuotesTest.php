@@ -25,7 +25,7 @@ function qt_pdf(): string { return base64_encode("%PDF-1.4\n% presupuesto de pru
 /** Prepara el almacén con precios, un manager y un propietario con sesión y tres presupuestos de tres correos distintos → ['mgr' => token, 'own' => token, 'n' => [números]]. */
 function qt_setup(array $cfg = []): array
 {
-    fresh($cfg); seedPrices();
+    fresh($cfg); seedPrices(); publicAtSheetPrice();
     Users::create(['email' => 'jefe@torivac.test', 'name' => 'Jefe', 'role' => 'manager', 'password' => PW_JEFE]);
     Users::create(['email' => 'duena@torivac.test', 'name' => 'Dueña', 'role' => 'client', 'password' => PW_ANA]);
     $n = [];

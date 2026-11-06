@@ -38,7 +38,7 @@ function so_warnings(callable $fn): array
 /** A1 · La copia al cliente solo lleva contenido del servidor: nada de lo que escribió el visitante y SIN adjunto; el PDF y los datos del visitante solo van al equipo. */
 function test_a1_copy_to_customer_has_only_server_text_and_no_attachment()
 {
-    fresh(); seedPrices();
+    fresh(); seedPrices(); publicAtSheetPrice();
     $pdf = base64_encode("%PDF-1.4\n% pdf escrito por el atacante\n");
     $b = goodOrder(['customer' => so_customer(['name' => 'Soporte Banco X', 'company' => 'Banco Falso S.A.', 'email' => 'victima@tercero.example', 'phone' => '+34 600 111 222', 'notes' => 'Su cuenta está bloqueada, verifique en http://phishing.example/login (importe < 50 € & envío)']), 'pdf' => $pdf]);
     $r = so_post($b, '203.0.113.9', 1793170800000);
@@ -64,7 +64,7 @@ function test_a1_copy_to_customer_has_only_server_text_and_no_attachment()
 /** A1 · El texto fijo de la copia sale en el idioma del pedido (es, en, fr, de) y el asunto es siempre el mismo. */
 function test_d1_copy_text_follows_the_order_language()
 {
-    fresh(); seedPrices();
+    fresh(); seedPrices(); publicAtSheetPrice();
     $bye = ['es' => 'Si no has pedido tú este presupuesto, ignora este mensaje.', 'en' => 'If you did not request this quote, please ignore this message.', 'fr' => 'Si vous n’avez pas demandé ce devis, ignorez ce message.', 'de' => 'Wenn Sie dieses Angebot nicht angefordert haben, ignorieren Sie diese Nachricht bitte.'];
     $money = ['es' => '345,75', 'en' => '€345.75', 'fr' => '345,75', 'de' => '345,75'];
     foreach ($bye as $lang => $line) {

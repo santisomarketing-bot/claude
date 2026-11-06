@@ -190,7 +190,7 @@ function test_a6_json_failures_throw_instead_of_nulling_data()
     T::throws(function () use ($before) { Prices::save(['items' => ['X' => ['p' => INF]], 'mode' => 'live'] + $before, $before); }, '/No se puede codificar/', 'Prices::save con un precio infinito lanza');
     T::same($before['items'], Prices::load()['items'], 'y no vacía la lista pública');
     // el ataque del informe: un CSV con 1e999
-    fresh(); sd_catalog(3); sd_seed(3);
+    fresh(); sd_catalog(3); sd_seed(3); publicAtSheetPrice();
     $m = Sheets::sync(['rows' => Sheets::parseCsv("Referencia;Precio\nR0;12,5\nR1;1e999\nR2;4\n"), 'ctx' => []]);
     $raw = (string) file_get_contents(Store::root() . '/kv/' . rawurlencode('prices:current') . '.json');
     T::true(strpos($raw, '"v":null') === false && strpos($raw, 'Infinity') === false, 'A6: el CSV con 1e999 no deja un «null» en prices:current');
@@ -206,7 +206,7 @@ function test_a6_json_failures_throw_instead_of_nulling_data()
 /** A8 · La nota pública solo sale de una columna explícita: «Observaciones» (anotaciones internas) no se publica en GET /prices. */
 function test_a8_internal_observations_are_not_published()
 {
-    fresh(); seedPrices();
+    fresh(); seedPrices(); publicAtSheetPrice();
     sd_catalog(2);
     $csv = "Referencia;Precio;Observaciones\nR0;12,50;Margen 45% - coste proveedor 6,90 - NO DIVULGAR\nR1;8;precio especial cliente X\n";
     T::same(200, Router::handle(req('POST', '/prices/upload', ['csv' => $csv, 'force' => true], master()))->status, 'se sube la hoja');

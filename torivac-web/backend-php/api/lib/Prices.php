@@ -3,6 +3,8 @@
  * [PRICES] Precios vigentes, tramos por cantidad, valoración de pedidos en servidor (el cliente nunca fija precios) e histórico.
  *   { updated_at, source, currency, mode:'demo'|'live'|'none', items:{ ref:{ p, t:[[cantMin,precio],…], note?, n?, pid? } } }
  * Importes: el precio unitario conserva hasta 4 decimales; el importe de línea se redondea a 2.
+ * Marcas opcionales por referencia (contrato docs/PRECIOS-Y-CLIENTES.md): `m:true` = editada a mano en el panel, la sincronización con la hoja NO la toca (ni en «merge» ni en «replace»; se cuenta en meta.manual_skipped y las
+ * reglas de cambio masivo la ignoran) · `a` = precio aproximado explícito (número) o `false` (nunca aproximado); `a` se conserva siempre al sincronizar. Una entrada puede llevar solo `a`/`m` y ningún `p`: sigue siendo «A consultar».
  *
  * [SHEETS] Lectura de la hoja de Drive (Google Sheets API con cuenta de servicio, o CSV público con enlace), CSV con comillas y sincronización.
  * MODOS (prices.update_mode · parámetro mode): «merge» (por defecto) = la hoja puede traer SOLO UNA PARTE del catálogo: cada fila reconocida (por referencia, SKU o ID) actualiza su
@@ -51,7 +53,7 @@ final class Prices
         $p = $prices['items'][$ref] ?? null;
         if (!is_array($p) || !isset($p['p']) || !is_numeric($p['p'])) return null;
         $u = (float) $p['p'];
-        foreach ($p['t'] ?? [] as $tier) { if ($qty >= $tier[0]) $u = (float) $tier[1]; }
+        foreach (is_array($p['t'] ?? null) ? $p['t'] : [] as $tier) { if (is_array($tier) && isset($tier[0], $tier[1]) && $qty >= $tier[0]) $u = (float) $tier[1]; }
         return $u;
     }
 
@@ -81,16 +83,73 @@ final class Prices
     /** Modo de actualización válido: «replace» (la hoja sustituye a toda la lista) o «merge» (solo lo que trae la hoja; es lo normal y vale para cualquier otro valor). */
     public static function mode($m): string { return $m === 'replace' ? 'replace' : 'merge'; }
 
+    /** ¿Está esta entrada editada a mano (`m:true`)? La sincronización con la hoja no la toca. */
+    public static function isManual($it): bool { return is_array($it) && ($it['m'] ?? false) === true; }
+
+    /** Referencias editadas a mano de unos precios: [ref => true]. */
+    public static function manualRefs(array $prices): array
+    {
+        $out = [];
+        foreach ($prices['items'] ?? [] as $ref => $it) { if (self::isManual($it)) $out[$ref] = true; }
+        return $out;
+    }
+
+    /** Cuántas referencias están editadas a mano (meta.manual_count de GET /prices para el equipo). */
+    public static function manualCount(array $prices): int { return count(self::manualRefs($prices)); }
+
+    /** Las entradas que la hoja gestiona: con precio (`p`) y sin la marca manual. Es sobre lo que miran las reglas de seguridad de cambios masivos. */
+    public static function autoPriced(array $items): array
+    {
+        $out = [];
+        foreach ($items as $ref => $it) { if (is_array($it) && isset($it['p']) && is_numeric($it['p']) && !self::isManual($it)) $out[$ref] = $it; }
+        return $out;
+    }
+
     /**
-     * Aplica una hoja ya leída (`$sheet`) a los precios vigentes (`$prev`). «merge»: quita las referencias de `$retire` y pone o actualiza las que trae la hoja (si una referencia
-     * sale a la vez para quitar y con precio, gana el precio); el resto se conserva tal cual. «replace»: la hoja sustituye a todo. Los metadatos (fecha, origen) son los de la hoja nueva.
+     * Cuántas referencias editadas a mano se han respetado: las que la hoja habría cambiado o quitado. En «merge», las manuales que la hoja trae o pide retirar (`$retire`); en «replace», todas (la hoja
+     * sustituye a la lista entera, así que habría cambiado o quitado cada una).
+     */
+    public static function manualSkipped(array $prev, array $sheet, array $retire, string $mode = 'merge'): int
+    {
+        $manual = self::manualRefs($prev);
+        if ($mode === 'replace') return count($manual);
+        return count(array_intersect_key($manual, ($sheet['items'] ?? []) + array_fill_keys($retire, true)));
+    }
+
+    /** Lo único que la hoja no trae y no se pierde al sincronizar: el aproximado `a` de la entrada anterior (si había). */
+    private static function carryA($old, array $it): array
+    {
+        if (is_array($old) && array_key_exists('a', $old)) $it['a'] = $old['a'];
+        return $it;
+    }
+
+    /**
+     * Aplica una hoja ya leída (`$sheet`) a los precios vigentes (`$prev`). «merge»: quita las referencias de `$retire` y pone o actualiza las que trae la hoja (si una referencia sale a la vez para quitar y con precio, gana
+     * el precio); el resto se conserva tal cual. «replace»: la hoja sustituye a todo. Los metadatos (fecha, origen) son los de la hoja nueva. En los dos modos una referencia con `m:true` NO se toca (se conserva tal cual,
+     * aunque la hoja la cambie o la quite) y el aproximado `a` de lo que sí se actualiza se conserva (una referencia retirada que tenía `a` se queda solo con `a`).
      */
     public static function merge(array $prev, array $sheet, array $retire, string $mode = 'merge'): array
     {
-        if ($mode === 'replace') return $sheet;
-        $items = $prev['items'] ?? [];
-        foreach ($retire as $ref) unset($items[$ref]);
-        foreach ($sheet['items'] as $ref => $it) $items[$ref] = $it;
+        $prevItems = $prev['items'] ?? [];
+        if ($mode === 'replace') {
+            $items = [];
+            foreach ($sheet['items'] as $ref => $it) $items[$ref] = self::carryA($prevItems[$ref] ?? null, $it);
+            foreach ($prevItems as $ref => $old) {
+                if (self::isManual($old)) $items[$ref] = $old;
+                elseif (!isset($items[$ref]) && is_array($old) && array_key_exists('a', $old)) $items[$ref] = ['a' => $old['a']];
+            }
+            $sheet['items'] = $items;
+            return $sheet;
+        }
+        $items = $prevItems;
+        foreach ($retire as $ref) {
+            if (self::isManual($items[$ref] ?? null)) continue;
+            if (is_array($items[$ref] ?? null) && array_key_exists('a', $items[$ref])) $items[$ref] = ['a' => $items[$ref]['a']]; else unset($items[$ref]);
+        }
+        foreach ($sheet['items'] as $ref => $it) {
+            if (self::isManual($prevItems[$ref] ?? null)) continue;
+            $items[$ref] = self::carryA($prevItems[$ref] ?? null, $it);
+        }
         return ['items' => $items] + $sheet;
     }
 
@@ -121,18 +180,19 @@ final class Prices
     public static function diff(array $a, array $b): array
     {
         $d = ['changed' => [], 'added' => [], 'removed' => [], 'same' => 0];
+        $sig = function ($it) { return Util::enc([$it['p'] ?? null, $it['t'] ?? [], $it['a'] ?? null, $it['m'] ?? null]); };     // lo que se edita de una entrada (puede no tener `p`: solo `a`/`m`)
         foreach ($b['items'] as $k => $y) {
             $x = $a['items'][$k] ?? null;
             if ($x === null) $d['added'][] = (string) $k;
-            elseif ($x['p'] != $y['p'] || Util::enc($x['t'] ?? []) !== Util::enc($y['t'] ?? [])) $d['changed'][] = (string) $k;
+            elseif ($sig($x) !== $sig($y)) $d['changed'][] = (string) $k;
             else $d['same']++;
         }
         foreach ($a['items'] as $k => $_) { if (!isset($b['items'][$k])) $d['removed'][] = (string) $k; }
         return $d;
     }
 
-    /** guarda unos precios nuevos: el anterior pasa al histórico (90 días), se escriben los vigentes y la meta */
-    public static function save(array $next, array $prev, string $reason = 'manual', string $source = 'sheet', ?float $now = null, ?string $mode = null): array
+    /** guarda unos precios nuevos: el anterior pasa al histórico (90 días), se escriben los vigentes y la meta (con `manual_skipped` si es una sincronización: las referencias a mano que se respetaron) */
+    public static function save(array $next, array $prev, string $reason = 'manual', string $source = 'sheet', ?float $now = null, ?string $mode = null, ?int $manualSkipped = null): array
     {
         $diff = self::diff($prev, $next);
         $iso = Util::iso($now);
@@ -140,6 +200,7 @@ final class Prices
         Store::put(self::KEY_CURRENT, self::forJson($next));
         $meta = ['at' => $iso, 'reason' => $reason, 'source' => $source, 'refs' => count($next['items']), 'changed' => count($diff['changed']), 'added' => count($diff['added']), 'removed' => count($diff['removed'])];
         if ($mode !== null) $meta['mode'] = $mode;
+        if ($manualSkipped !== null) $meta['manual_skipped'] = $manualSkipped;
         Store::put(self::KEY_META, $meta);
         return $meta;
     }
@@ -260,7 +321,8 @@ final class Sheets
     /**
      * Plan de una actualización, sin guardar nada: lee las filas, las aplica a los precios vigentes según `$mode` («merge»: solo lo que trae la hoja; «replace»: sustituye todo) y
      * lista lo que exigiría confirmar (`blockers`). Lo usan la vista previa y la sincronización, para que enseñen y hagan exactamente lo mismo.
-     * @return array{next:array,prev:array,sheet:array,report:array,mode:string,kept:int,blockers:string[]}
+     * Las referencias editadas a mano (`m:true`) no se tocan y no cuentan en las reglas de seguridad; `manual_skipped` dice cuántas se respetaron.
+     * @return array{next:array,prev:array,sheet:array,report:array,mode:string,kept:int,blockers:string[],manual_skipped:int}
      */
     public static function plan(array $rows, string $source, $mode, ?array $ctx = null, ?float $now = null): array
     {
@@ -269,19 +331,24 @@ final class Sheets
         $sheet = $res['prices'];
         $report = $res['report'];
         $prev = Prices::load();
+        $manual = Prices::manualRefs($prev);                                                     // lo editado a mano no se toca: las reglas de seguridad miran solo lo que la hoja SÍ puede cambiar
+        $apply = array_diff_key($sheet['items'], $manual);
+        $retire = array_values(array_diff($report['retire'], array_keys($manual)));
+        $prevAuto = Prices::autoPriced($prev['items']);
         $blockers = [];
         foreach ($report['warnings'] as $w) { if ($w['code'] === 'precio_de_relleno') $blockers[] = $w['message']; }
-        $mass = Prices::massChange($prev, $sheet['items'], $report['retire']);
+        $mass = Prices::massChange($prev, $apply, $retire);
         if ($mass) { $report['warnings'][] = $mass; $blockers[] = $mass['message']; }
-        $n = count($sheet['items']); $p = count($prev['items']);
+        $n = count($apply); $p = count($prevAuto);
         if ($mode === 'replace' && $p > 0 && $n < $p * 0.5) $blockers[] = "la hoja nueva tiene $n referencias y había $p (¿hoja vacía o rota?)";
         $next = Prices::merge($prev, $sheet, $report['retire'], $mode);
-        $remain = count($next['items']);                                                         // referencias con precio que habría tras aplicar la hoja
-        $gone = $p - count(array_intersect_key($prev['items'], $next['items']));                 // precios vigentes que desaparecerían (en «merge», solo los que la hoja retira)
+        $nextAuto = Prices::autoPriced($next['items']);
+        $remain = count($nextAuto);                                                              // referencias con precio (no manuales) que habría tras aplicar la hoja
+        $gone = $p - count(array_intersect_key($prevAuto, $nextAuto));                           // precios vigentes que desaparecerían (en «merge», solo los que la hoja retira)
         if ($mode === 'merge' && $gone >= 10 && $gone > $p * 0.3) $blockers[] = 'La hoja retira ' . $gone . ' de ' . $p . ' precios (' . (int) round(100 * $gone / $p) . ' %): confírmalo con force';
         if ($mode === 'merge' && $p >= 10 && $remain < $p * 0.5) $blockers[] = 'Tras aplicar la hoja quedarían ' . $remain . ' de ' . $p . ' precios vigentes (menos de la mitad): confírmalo con force';
-        $kept = $mode === 'replace' ? 0 : $p - count(array_intersect_key($prev['items'], $sheet['items'] + array_fill_keys($report['retire'], 1)));
-        return ['next' => $next, 'prev' => $prev, 'sheet' => $sheet, 'report' => $report, 'mode' => $mode, 'kept' => $kept, 'blockers' => $blockers];
+        $kept = $mode === 'replace' ? 0 : $p - count(array_intersect_key($prevAuto, $apply + array_fill_keys($retire, 1)));
+        return ['next' => $next, 'prev' => $prev, 'sheet' => $sheet, 'report' => $report, 'mode' => $mode, 'kept' => $kept, 'blockers' => $blockers, 'manual_skipped' => Prices::manualSkipped($prev, $sheet, $report['retire'], $mode)];
     }
 
     /**
@@ -294,12 +361,15 @@ final class Sheets
         $state = ['at' => Util::iso($o['now']), 'reason' => (string) $o['reason'], 'ok' => false, 'blocked' => false, 'error' => ''];
         try {
             if ($o['rows'] !== null) { $rows = $o['rows']; $source = $o['source'] ?? 'upload'; }
-            else { [$rows, $source] = self::readRows(); }
-            $plan = self::plan($rows, $source, $o['mode'] ?? Config::get('prices.update_mode', 'merge'), $o['ctx'], $o['now']);
-            if (!$o['force'] && $plan['blockers']) { $state['blocked'] = true; throw new \RuntimeException('Sincronización rechazada: ' . implode('; ', $plan['blockers']) . '. Usa force=true si es intencionado.', 409); }
-            $meta = Prices::save($plan['next'], $plan['prev'], $o['reason'], $source, $o['now'], $plan['mode']);
-            $meta['kept'] = $plan['kept'];
-            $meta['warnings'] = array_slice(array_map(function ($w) { return $w['message']; }, $plan['report']['warnings']), 0, 10);
+            else { [$rows, $source] = self::readRows(); }                                        // la red, fuera del bloqueo
+            $meta = Store::locked('prices', function () use ($rows, $source, $o, &$state) {      // leer los precios vigentes, planear y guardar sin que una edición a mano se cuele entre medias
+                $plan = self::plan($rows, $source, $o['mode'] ?? Config::get('prices.update_mode', 'merge'), $o['ctx'], $o['now']);
+                if (!$o['force'] && $plan['blockers']) { $state['blocked'] = true; throw new \RuntimeException('Sincronización rechazada: ' . implode('; ', $plan['blockers']) . '. Usa force=true si es intencionado.', 409); }
+                $meta = Prices::save($plan['next'], $plan['prev'], $o['reason'], $source, $o['now'], $plan['mode'], $plan['manual_skipped']);
+                $meta['kept'] = $plan['kept'];
+                $meta['warnings'] = array_slice(array_map(function ($w) { return $w['message']; }, $plan['report']['warnings']), 0, 10);
+                return $meta;
+            });
             Prices::recordSync(['ok' => true, 'refs' => $meta['refs']] + $state);
             return $meta;
         } catch (\Throwable $e) {                                                                // los precios vigentes NO se tocan: se anota por qué y se vuelve a lanzar

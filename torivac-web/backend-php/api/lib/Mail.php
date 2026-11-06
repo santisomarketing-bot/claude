@@ -416,12 +416,15 @@ final class Mail
 
     /**
      * Correo del pedido PARA EL EQUIPO. `$d['pdf']` (bool) dice si lleva el PDF del cliente: entonces añade la línea fija de que lo generó el navegador y el importe que vale es el del servidor.
+     * Si trae `$d['priceTier']` (vip|vip5|vip10|normal|consult) añade la línea «Cuenta: <correo de la sesión, «token maestro» o «visitante sin sesión»> · Categoría de precio: <nombre>» (`$d['account']`, escapada).
      * @return array{html:string,text:string}
      */
     public static function orderMail(array $d, array $items): array
     {
         $lang = $d['lang']; $c = $d['customer']; $p = $d['priced']; $number = $d['number']; $demo = !empty($d['demo']); $pdf = !empty($d['pdf']);
         $e = function ($v) { return Util::esc($v); };
+        $tierLine = '';                                                                           // «Cuenta: … · Categoría de precio: …» cuando el pedido se valoró con una categoría (priceTier)
+        if (!empty($d['priceTier'])) $tierLine = 'Cuenta: ' . (($d['account'] ?? '') !== '' ? Util::line($d['account'], 254) : 'visitante sin sesión') . ' · Categoría de precio: ' . Pricing::label((string) $d['priceTier']);
         $rows = '';
         foreach ($p['lines'] as $l) {
             $rows .= '<tr><td style="font-family:monospace">' . $e($l['ref']) . '</td><td>' . $e($items[$l['ref']]['n'] ?? '') . '</td><td style="text-align:right">' . (int) $l['qty'] . '</td><td style="text-align:right">' . $e(self::money($l['unit'], $lang)) . '</td><td style="text-align:right"><b>' . $e(self::money($l['total'], $lang)) . '</b></td></tr>';
@@ -430,13 +433,14 @@ final class Mail
             '<p><b>' . $e($c['name']) . '</b> ' . ($c['company'] !== '' ? '· ' . $e($c['company']) : '') . '<br>' . $e($c['email']) . ($c['phone'] !== '' ? ' · ' . $e($c['phone']) : '') . '</p>' .
             '<table cellpadding="6" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#ddd;width:100%"><tr style="background:#100404;color:#fff"><th>Ref.</th><th>Artículo</th><th>Cant.</th><th>Ud.</th><th>Importe</th></tr>' . $rows . '</table>' .
             '<p style="text-align:right;font-size:18px">Total (sin IVA): <b>' . $e(self::money($p['total'], $lang)) . '</b>' . ($p['unpriced'] ? '<br><small>' . (int) $p['unpriced'] . ' línea(s) «A consultar» no incluidas en el total</small>' : '') . '</p>' .
-            ($c['notes'] !== '' ? '<p><b>Notas:</b> ' . $e($c['notes']) . '</p>' : '') . '<p style="color:#777;font-size:12px">Idioma del cliente: ' . $e($lang) . '</p>' .
+            ($c['notes'] !== '' ? '<p><b>Notas:</b> ' . $e($c['notes']) . '</p>' : '') . '<p style="color:#777;font-size:12px">Idioma del cliente: ' . $e($lang) . '</p>' . ($tierLine !== '' ? '<p style="color:#777;font-size:12px">' . $e($tierLine) . '</p>' : '') .
             ($pdf ? '<p style="color:#9c520f;font-size:12px"><b>' . $e(self::PDF_NOTE) . '</b></p>' : '') . '</div>';
         $lines = ['Nuevo pedido ' . $number . ($demo ? ' (PRECIOS DE DEMOSTRACIÓN)' : ''), $c['name'] . ' <' . $c['email'] . '> ' . $c['phone'], ''];
         foreach ($p['lines'] as $l) $lines[] = $l['ref'] . "\t" . ($items[$l['ref']]['n'] ?? '') . "\tx" . (int) $l['qty'] . "\t" . self::money($l['total'], $lang);
         $lines[] = '';
         $lines[] = 'Total (sin IVA): ' . self::money($p['total'], $lang);
         if ($c['notes'] !== '') { $lines[] = ''; $lines[] = 'Notas: ' . $c['notes']; }
+        if ($tierLine !== '') { $lines[] = ''; $lines[] = $tierLine; }
         if ($pdf) { $lines[] = ''; $lines[] = self::PDF_NOTE; }
         return ['html' => $html, 'text' => implode("\n", $lines)];
     }
