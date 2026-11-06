@@ -1,28 +1,28 @@
 // [ORDERS] POST /api/order → valida, valora en servidor con los precios VIGENTES, guarda y envía por correo: AVISO al equipo (con el PDF que fabricó el navegador) y, según ORDER_COPY y con topes,
 // COPIA al cliente con contenido generado solo por el servidor (sin PDF ni texto del visitante). Número de pedido TV-AAAAMMDD-NNNN-XXX (XXX aleatorio: dos pedidos simultáneos no se pisan).
 // POST /api/contact → guarda SIEMPRE el mensaje (CT-AAAAMMDD-NNNN-XXX, ver messages.js), intenta el correo al equipo y dice la verdad sobre él en `emailed`.
-// Claves KV: order:<nº completo> (400 días) · uorder:<sha256(correo)[:32]>:<nº> (índice de «mis pedidos» del cliente, valor mínimo) · counter:<AAAAMMDD> y counter:ct:<AAAAMMDD> (contadores de «mejor esfuerzo»)
+// Claves KV: order:<nº completo> (400 días) · uorder:<sha256(correo)[:32]>:<nº> (índice de «mis pedidos» del cliente, valor mínimo) · oorder:<correo>:<nº> (índice por PROPIETARIO de la sesión, ver owned.js) · counter:<AAAAMMDD> y counter:ct:<AAAAMMDD> (contadores de «mejor esfuerzo»)
 // · msg:… (mensajes de contacto, 400 días). El índice uorder: se sigue escribiendo, pero ya no se usa para listar (el rol «client» es el propietario de la web y ve todos: orderlist.js).
+// POST /api/order admite una SESIÓN opcional (docs/PRECIOS-Y-CLIENTES.md §6): la categoría de precio sale de quién llama (customer: la de su registro; manager/client: VIP o la que pidan con `tier`; visitante: según settings:pricing.anon) y
+// el cuerpo NUNCA fija precios. Un customer tiene un tope de CUSTOMER_ORDERS_PER_DAY presupuestos al día (429 daily_limit) y se anota como `owner` del pedido; no se le exige Turnstile ni hp ni _e.
 // Ver, editar y reenviar un presupuesto ya recibido: quotes.js (docs/PRESUPUESTOS-RECIBIDOS.md).
-import { json, clientIp, ipKey, sha256Hex } from './util.js';
-import { parseOrder, minFillMs } from './validate.js';
-import { loadPrices, priceOrder, withSheetItems } from './prices.js';
+import { json, clientIp, ipKey, sha256Hex, DAY, HOUR, ymd, intVar } from './util.js';
+import { parseOrder, minFillMs, TIER_ERROR } from './validate.js';
+import { loadPrices, priceOrder, consultOrder, withSheetItems, isTier } from './prices.js';
+import { loadPricing, tierPct, tierLabel } from './pricing.js';
+import { indexOwned, usedLast24h, dailyLimit } from './owned.js';
 import { verifyTurnstile } from './turnstile.js';
 import { hit } from './ratelimit.js';
 import { sendMail, orderMail, customerCopyMail, contactMail, mailReady, teamRecipients } from './email.js';
 import { putMessage, messageExists } from './messages.js';
 import items from './generated/items.js';
 
-export const DAY = 24 * 60 * 60 * 1000, HOUR = 60 * 60 * 1000;
 /** Plazo de vida de un pedido en KV (400 días); también se renueva con cada edición o reenvío (ver quotes.js). */
 export const ORDER_TTL = { expirationTtl: 60 * 60 * 24 * 400 };
+export { DAY, HOUR, ymd, intVar };                                   // viven en util.js (los usa también owned.js, que orders.js importa); se siguen exportando desde aquí
 const TOO_MANY = 'Demasiados pedidos seguidos. Inténtalo en unos minutos.';
 const BASE36 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-/** Fecha en UTC como AAAAMMDD, para el número de pedido y su contador diario. */
-export const ymd = (d) => d.toISOString().slice(0, 10).replace(/-/g, '');
-/** Entero de una variable de entorno (texto de cifras); si falta, no es un entero o es menor que `min`, vale `def`. */
-export const intVar = (v, def, min = 0) => { const s = String(v ?? '').trim(); if (!/^\d{1,9}$/.test(s)) return def; const n = Number(s); return n >= min ? n : def; };
 /** Modo de la copia al cliente: «capped» (por defecto, con topes) u «off» (nunca); cualquier otro valor falla cerrado y cuenta como «off». */
 export const copyMode = (env) => (env.ORDER_COPY == null ? 'capped' : String(env.ORDER_COPY).trim().toLowerCase() === 'capped' ? 'capped' : 'off');
 /** 3 caracteres aleatorios base36 en mayúsculas para cerrar el número de pedido; `rand(n)` devuelve n enteros sin signo (se puede inyectar en las pruebas). */
@@ -54,30 +54,44 @@ async function sendCopy(env, { o, number, priced, demo, cat, nowMs, fetchImpl })
   return r.ok ? 'sent' : 'failed';
 }
 
-/** POST /api/order: límites (por visitante y global), validación, valoración en servidor con los precios vigentes, guardado en KV, aviso al equipo y copia al cliente. */
-export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = new Date(), catalog = items, cors = {}, rand } = {}) {
+/**
+ * POST /api/order: límites (por visitante y global), validación, valoración en servidor con los precios vigentes de la categoría que corresponde a quien llama, guardado en KV, aviso al equipo y copia al cliente.
+ * `who` = la sesión ya comprobada por el router (null = visitante): customer → su categoría (leída de su registro), `owner` = su correo, tope diario y respuesta con `remaining`; manager/client → VIP o la categoría del cuerpo (`tier`);
+ * visitante → «A consultar» o Normal según settings:pricing.anon. Con sesión no se exigen Turnstile, hp ni _e. Cualquier precio del cuerpo se ignora.
+ */
+export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = new Date(), catalog = items, cors = {}, rand, who = null } = {}) {
   const at = now instanceof Date ? now : new Date(now), nowMs = at.getTime();
   const ip = clientIp(request);
   const rl = await hit(env, 'order', ipKey(ip), { max: 8, now: nowMs });                       // por visitante (IPv6: su /64)
   if (!rl.allowed) return json({ ok: false, error: TOO_MANY }, 429, cors);
-  const prices = await loadPrices(env);
+  const prices = await loadPrices(env), pricing = await loadPricing(env);
   const cat = withSheetItems(catalog, prices);                      // las referencias que la hoja añadió dentro de un producto también son pedibles
-  const parsed = parseOrder(raw, cat, { minFillMs: minFillMs(env) });
+  const parsed = parseOrder(raw, cat, { minFillMs: minFillMs(env), session: !!who });
   if (parsed.error) return json({ ok: false, error: parsed.error, ...(parsed.code ? { code: parsed.code } : {}), ...(parsed.field ? { field: parsed.field } : {}) }, 400, cors);
-  const o = parsed.order;
-  if (!(await verifyTurnstile(env, o.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida', code: 'captcha' }, 400, cors);
+  const o = parsed.order, customer = !!who && who.role === 'customer', owner = who && !who.master ? String(who.sub).toLowerCase() : null;
+  let tier;                                                         // vip · vip5 · vip10 · normal, o consult (visitante sin precio público)
+  if (customer) tier = isTier(who.tier) ? who.tier : 'normal';       // la categoría sale del registro de la cuenta; el cuerpo no cuenta
+  else if (who) { const asked = raw.tier != null && raw.tier !== ''; if (asked && !isTier(raw.tier)) return json({ ok: false, ...TIER_ERROR }, 400, cors); tier = asked ? raw.tier : 'vip'; }          // null o vacío = sin tier
+  else tier = pricing.anon === 'normal' ? 'normal' : 'consult';
+  const limit = dailyLimit(env); let used = 0;
+  if (customer) {                                                   // tope de presupuestos por persona en una ventana móvil de 24 h; solo cuentan los válidos y guardados, así que un 400 no gasta cupo
+    used = await usedLast24h(env, owner, nowMs);
+    if (used >= limit) return json({ ok: false, code: 'daily_limit', error: `Has alcanzado el límite de ${limit} presupuestos al día. Vuelve a intentarlo mañana o escribe al equipo.` }, 429, cors);
+  }
+  if (!who && !(await verifyTurnstile(env, o.turnstile, ip, fetchImpl))) return json({ ok: false, error: 'Verificación anti-spam fallida', code: 'captcha' }, 400, cors);
   if (!(await hit(env, 'order-hour', 'all', { max: intVar(env.ORDERS_PER_HOUR_MAX, 120, 0), windowMs: HOUR, now: nowMs })).allowed) return json({ ok: false, error: TOO_MANY }, 429, cors);   // global: protege la cuota de Resend y el buzón
-  const priced = priceOrder(prices, o.lines);                       // el cliente no puede fijar precios
+  const priced = tier === 'consult' ? consultOrder(o.lines) : priceOrder(prices, o.lines, tierPct(pricing, tier));       // el cliente no puede fijar precios
   const base = await baseNumber(env, at);
   let number = `${base}-${randomSuffix(rand)}`;
   for (let i = 0; i < 4 && (await env.KV.get(`order:${number}`)); i++) number = `${base}-${randomSuffix(rand)}`;     // KV no es atómico: si coincide con uno ya guardado, otro sufijo
   if (await env.KV.get(`order:${number}`)) throw new Error('No se pudo asignar un número de pedido libre');
   const demo = prices.mode !== 'live';
-  const record = { number, at: at.toISOString(), customer: o.customer, lines: priced.lines, total: priced.total, unpriced: priced.unpriced, lang: o.lang, prices: { updated_at: prices.updated_at, mode: prices.mode }, ip };
+  const record = { number, at: at.toISOString(), customer: o.customer, lines: priced.lines, total: priced.total, unpriced: priced.unpriced, lang: o.lang, prices: { updated_at: prices.updated_at, mode: prices.mode }, ip, ...(owner ? { owner } : {}), priceTier: tier };
   await env.KV.put(`order:${number}`, JSON.stringify(record), ORDER_TTL);         // primero se guarda (si el correo falla, el pedido no se pierde)
   try { await env.KV.put(`${await uorderPrefix(o.customer.email)}${number}`, '1', ORDER_TTL); }        // índice de «mis pedidos» del cliente
   catch (e) { console.error('No se pudo indexar el pedido', number, e && e.message); }
-  const { html, text } = orderMail({ number, customer: o.customer, priced, lang: o.lang, demo, hasPdf: !!o.pdf }, cat);
+  if (owner) { try { await indexOwned(env, owner, number, record.at, ORDER_TTL); } catch (e) { console.error('No se pudo indexar el pedido por propietario', number, e && e.message); } }          // índice por propietario: listado y tope diario del cliente
+  const { html, text } = orderMail({ number, customer: o.customer, priced, lang: o.lang, demo, hasPdf: !!o.pdf, account: owner || (who && who.master ? 'token maestro' : ''), tierName: tierLabel(tier) }, cat);
   const attachments = o.pdf ? [{ filename: `${number}.pdf`, content: o.pdf }] : undefined;      // el PDF del visitante SOLO va al equipo
   const team = await sendMail(env, { to: teamRecipients(env), subject: `[Web Torivac] Pedido ${number} · ${o.customer.name}`, html, text, replyTo: o.customer.email, attachments }, fetchImpl, { kind: 'order', now: nowMs });
   let reason;
@@ -87,7 +101,7 @@ export async function handleOrder(request, env, raw, { fetchImpl = fetch, now = 
   const why = team.ok ? '' : team.skipped ? 'correo sin configurar' : String(team.error || 'fallo de envío').slice(0, 160);
   try { await env.KV.put(`order:${number}`, JSON.stringify({ ...record, emailed: { ...emailed, reason: team.reason, error: why } }), ORDER_TTL); }   // el panel marca los pedidos cuyo aviso por correo no salió: reason = sent · off · failed · skipped (aviso al equipo); error, solo para managers (forClient lo quita)
   catch (e) { console.error('No se pudo anotar el resultado del correo', number, e && e.message); }
-  return json({ ok: true, number, total: priced.total, unpriced: priced.unpriced, emailed }, 200, cors);
+  return json({ ok: true, number, total: priced.total, unpriced: priced.unpriced, emailed, ...(customer ? { remaining: Math.max(0, limit - used - 1) } : {}) }, 200, cors);
 }
 /** Espera `ms` milisegundos (0 = no espera). */
 const sleep = (ms) => (ms > 0 ? new Promise((res) => setTimeout(res, ms)) : Promise.resolve());

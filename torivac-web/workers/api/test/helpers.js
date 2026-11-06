@@ -39,4 +39,10 @@ export const req = (path, { method = 'GET', body, headers = {} } = {}) => new Re
 export const CATALOG = { 'TT0020210': { n: 'Transformador serie TT 20 VA', pid: 884 }, P16633: { n: 'Variador portátil', pid: 16633 }, R100: { n: 'Resistencia 100 W', pid: 1 } };
 export const PRICES = { updated_at: '2026-10-27T00:00:00Z', source: 'test', currency: 'EUR', mode: 'live', items: { TT0020210: { p: 12.37, t: [[10, 11.9], [50, 11.4]] }, P16633: { p: 67.65 } } };
 export const SHEET = 'ref;price;qty2;price2;qty3;price3;note;active\nTT0020210;12,37;10;11,9;50;11,4;DEMO;1\nP16633;67,65;;;;;;1\nR100;5,5;;;;;;1\nX0;1;;;;;;0\n';
+/** Ajustes de precios con los valores por defecto (settings:pricing): porcentajes 5/10/15, el visitante ve «Consultar precio» y el precio aproximado apagado. */
+export const PRICING = { tiers: { vip5: 5, vip10: 10, normal: 15 }, anon: 'consult', approx: { on: false, pct: 15 } };
+/** Ajustes que dejan las pruebas «de siempre» como estaban: el visitante ve y paga el precio Normal, y Normal no lleva recargo (0 %), así que los importes son los de la hoja. */
+export const PRICING_FLAT = { tiers: { vip5: 0, vip10: 0, normal: 0 }, anon: 'normal' };
+/** Guarda en KV los ajustes de precios (settings:pricing) de las pruebas: los por defecto con `over` por encima (p. ej. { anon: 'normal' } para que el visitante vea y pague el precio Normal). */
+export async function setPricing(env, over = {}) { await env.KV.put('settings:pricing', JSON.stringify({ ...PRICING, ...over })); return env; }
 export const TCTX = { lines: CATALOG, skus: { aaaa00000001: 16633 }, rules: [{ pattern: '^TT\\d{7}$', pid: 884 }] };   // contexto de catálogo de las pruebas (las reglas de verdad salen de generated/items.js)

@@ -8,7 +8,7 @@ import { massChange, diffPrices, withSheetItems, KEY_META, KEY_SYNC } from '../s
 import { syncPrices, savePrices, planPrices, fetchSafe, readBytes, readSheetRows } from '../src/sheets.js';
 import { ApiError } from '../src/util.js';
 import { readXlsx } from '../../../shared/xlsx.mjs';
-import { mkEnv, MASTER, SHEET, TCTX } from './helpers.js';
+import { mkEnv, MASTER, SHEET, TCTX, PRICING_FLAT, setPricing } from './helpers.js';
 import { call, keys } from './kit.js';
 import { mkBook, mkZip, rowXml } from './zip.js';
 
@@ -94,7 +94,7 @@ test('D5 · cifras finitas: nunca se guarda prices:current con valores no finito
   assert.equal(ia.status, 400, 'la IA no puede colar un importe infinito'); assert.equal(await nPrices(env), 3);
 });
 test('D5 · la columna «nota» pública solo sale de cabeceras explícitas (nota, nota web…): «Observaciones» o «Comentario» con anotaciones internas no se publican (A8)', async () => {
-  const env = mkEnv(); const interno = 'Margen 45% - coste proveedor 6,90 - NO DIVULGAR';
+  const env = mkEnv(); await setPricing(env, PRICING_FLAT); const interno = 'Margen 45% - coste proveedor 6,90 - NO DIVULGAR';
   await upload(env, { csv: `ref;price;Observaciones;Comentario;Notas\n${REFS[0]};12,5;${interno};otro comentario interno;nota interna\n` });
   const pub = JSON.stringify(await (await call(env, '/api/prices')).json()); assert.ok(!pub.includes('Margen') && !pub.includes('coste proveedor') && !pub.includes('comentario interno') && !pub.includes('nota interna'), pub);
   const guardado = JSON.parse(await env.KV.get('prices:current')); assert.ok(!('note' in guardado.items[REFS[0]]));

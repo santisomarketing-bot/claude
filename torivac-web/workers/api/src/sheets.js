@@ -10,8 +10,9 @@
 // Seguridad (se rechaza salvo force=true): «precio de relleno», cambio masivo (más de la mitad de las referencias que ya tenían precio cambian más de un 40 % o se retiran), una hoja que RETIRA ≥ 10
 //   referencias y más del 30 % de los precios vigentes, y una hoja tras cuya aplicación quedaría menos de la mitad de los precios vigentes (en replace, con cualquier número). La lectura automática
 //   (cron y botón «Actualizar ahora») NUNCA aplica una hoja con bloqueos: conserva los precios vigentes y deja el motivo en prices:sync (ok / blocked / error).
+// PRECIOS MANUALES (docs/PRECIOS-Y-CLIENTES.md §5.3): una referencia con `m: true` (editada a mano en el panel) no se toca en ningún modo ni la afectan estas reglas de seguridad; se cuenta en `manual_skipped`.
 import { ApiError, toB64Url } from './util.js';
-import { KEY_CURRENT, KEY_META, KEY_SYNC, loadPrices, readPrices, diffPrices, updateMode, mergePrices, massChange, assertFinitePrices } from './prices.js';
+import { KEY_CURRENT, KEY_META, KEY_SYNC, loadPrices, readPrices, diffPrices, updateMode, mergePrices, massChange, manualRefs, manualSkipped, assertFinitePrices } from './prices.js';
 import { readXlsx, pickSheet } from '../../../shared/xlsx.mjs';
 
 const te = new TextEncoder();
@@ -123,37 +124,38 @@ export async function readSheetRows(env, fetchImpl = fetch) {
   }
   throw new ApiError(502, 'Sin origen de precios: define GOOGLE_SERVICE_ACCOUNT + PRICE_SHEET_ID, PRICE_XLSX_URL o PRICE_CSV_URL');
 }
-/** Guarda unos precios nuevos: copia el anterior al histórico (90 días), escribe los vigentes y la meta (que borra el estado de error de un intento anterior). Lo usan la sincronización y los cambios por IA. */
-export async function savePrices(env, next, prev, { now = new Date(), reason = 'manual', source = 'sheet', mode = null } = {}) {
+/** Guarda unos precios nuevos: copia el anterior al histórico (90 días), escribe los vigentes y la meta (que borra el estado de error de un intento anterior). Lo usan la sincronización, los cambios por IA y la edición de un producto; `extra` añade campos a la meta (p. ej. manual_skipped). */
+export async function savePrices(env, next, prev, { now = new Date(), reason = 'manual', source = 'sheet', mode = null, extra = {} } = {}) {
   assertFinitePrices(next);                                                     // nunca se guarda un importe no finito (JSON.stringify lo convertiría en null y vaciaría la lista)
   const diff = diffPrices(prev, next);
   if (Object.keys(prev.items).length > 0) await env.KV.put(`prices:history:${now.toISOString()}`, JSON.stringify(prev), { expirationTtl: 60 * 60 * 24 * 90 });
   await env.KV.put(KEY_CURRENT, JSON.stringify(next));
-  const meta = { at: now.toISOString(), reason, source, refs: Object.keys(next.items).length, changed: diff.changed.length, added: diff.added.length, removed: diff.removed.length, ...(mode ? { mode } : {}) };
+  const meta = { at: now.toISOString(), reason, source, refs: Object.keys(next.items).length, changed: diff.changed.length, added: diff.added.length, removed: diff.removed.length, ...(mode ? { mode } : {}), ...extra };
   await env.KV.put(KEY_META, JSON.stringify(meta));
   return meta;
 }
 /**
  * Plan de una actualización, sin guardar nada: lee las filas, las aplica a los precios vigentes según `mode` («merge»: solo lo que trae la hoja; «replace»: sustituye todo) y lista lo que
- * exigiría confirmar (`blockers`). Lo usan la vista previa y la sincronización, para que enseñen y hagan exactamente lo mismo. → { next, prev, sheet, report, mode, kept, blockers }
+ * exigiría confirmar (`blockers`). Lo usan la vista previa y la sincronización, para que enseñen y hagan exactamente lo mismo. → { next, prev, sheet, report, mode, kept, manual_skipped, blockers }
  */
 export async function planPrices(env, rows, source, mode, { now = new Date(), ctx = null } = {}) {
   mode = updateMode(mode);
   const { prices: sheet, report } = readPrices(rows, source, now, ctx || {});
-  const prev = await loadPrices(env);
+  const prev = await loadPrices(env), manual = manualRefs(prev);                       // las referencias manuales (m:true) no se tocan ni cuentan para los chequeos de seguridad
   const blockers = report.warnings.filter((w) => w.code === 'precio_de_relleno').map((w) => w.message), warnings = [...report.warnings];
-  const mass = massChange(prev, sheet.items, report.retire);
+  const mass = massChange(prev, sheet.items, report.retire);                          // massChange ya ignora las manuales
   if (mass) { warnings.push(mass); blockers.push(mass.message); }
-  const p = Object.keys(prev.items).length;
+  const auto = (items) => new Set(Object.entries(items).filter(([k, it]) => !manual.has(k) && it && typeof it.p === 'number').map(([k]) => k));      // las referencias con precio que la hoja puede cambiar (ni manuales ni sin `p`)
+  const prevAuto = auto(prev.items), p = prevAuto.size;
   const next = mergePrices(prev, sheet, report.retire, mode);
-  const remain = Object.keys(next.items).length;
-  const retired = mode === 'replace' ? [] : report.retire.filter((r) => Object.hasOwn(prev.items, r) && !Object.hasOwn(sheet.items, r));       // referencias con precio que la hoja quita de verdad
+  const remain = auto(next.items).size;
+  const retired = mode === 'replace' ? [] : report.retire.filter((r) => prevAuto.has(r) && !Object.hasOwn(sheet.items, r));       // referencias con precio que la hoja quita de verdad
   if (retired.length >= 10 && retired.length > p * 0.3) blockers.push(`La hoja retira ${retired.length} de ${p} precios (${Math.round((100 * retired.length) / p)} %): confírmalo con force`);
   if (mode === 'replace') { if (p > 0 && remain < p * 0.5) blockers.push(`la hoja nueva tiene ${remain} referencias y había ${p} (¿hoja vacía o rota?)`); }
   else if (p >= 10 && remain < p * 0.5) blockers.push(`Tras aplicar la hoja quedarían ${remain} de ${p} precios vigentes (menos de la mitad): confírmalo con force`);
-  const touched = new Set([...Object.keys(sheet.items), ...report.retire]);
-  const kept = mode === 'replace' ? 0 : Object.keys(prev.items).filter((k) => !touched.has(k)).length;
-  return { next, prev, sheet, report: { ...report, warnings }, mode, kept, blockers };
+  const touched = new Set([...Object.keys(sheet.items), ...report.retire].filter((k) => !manual.has(k)));
+  const kept = mode === 'replace' ? 0 : [...prevAuto].filter((k) => !touched.has(k)).length;                     // precios vigentes (no manuales) que la hoja no trae ni retira
+  return { next, prev, sheet, report: { ...report, warnings }, mode, kept, manual_skipped: manualSkipped(prev, sheet.items, report.retire, mode), blockers };
 }
 /** Anota en prices:sync el resultado del último intento de sincronización { at, reason, ok, blocked, error, refs? } (también el fallido o bloqueado); lo ven los managers en GET /api/prices. Un fallo al anotarlo nunca tapa el resultado real. */
 async function recordSync(env, state) {
@@ -167,7 +169,7 @@ export async function syncPrices(env, { fetchImpl = fetch, now = new Date(), rea
     const read = rows ? { rows, source: source || 'upload' } : await readSheetRows(env, fetchImpl);
     const plan = await planPrices(env, read.rows, read.source, mode ?? env.PRICE_UPDATE_MODE ?? 'merge', { now, ctx });
     if (!force && plan.blockers.length) { state.blocked = true; throw new ApiError(409, `Sincronización rechazada: ${plan.blockers.join('; ')}. Usa force=true si es intencionado.`); }
-    const meta = await savePrices(env, plan.next, plan.prev, { now, reason, source: read.source, mode: plan.mode });
+    const meta = await savePrices(env, plan.next, plan.prev, { now, reason, source: read.source, mode: plan.mode, extra: { manual_skipped: plan.manual_skipped } });
     await recordSync(env, { ...state, ok: true, refs: meta.refs });
     return { ...meta, kept: plan.kept, warnings: plan.report.warnings.map((w) => w.message).slice(0, 10) };
   } catch (e) {

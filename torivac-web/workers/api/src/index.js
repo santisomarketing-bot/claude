@@ -1,26 +1,33 @@
 // [INDEX] Router del Worker torivac-api + tarea programada (precios cada 24 h).
-//   PÚBLICO   GET /api/health · GET /api/prices · GET /api/google (qué mide la web: solo IDs públicos) · POST /api/order · POST /api/contact · POST /api/auth/login
+//   PÚBLICO   GET /api/health · GET /api/prices (el servidor decide qué precios según quién llama: VIP para el equipo, la categoría de un cliente con sesión, y para el visitante nada, aproximados o Normal según Ajustes → Precios)
+//             · GET /api/google (qué mide la web: solo IDs públicos) · POST /api/order (con sesión opcional: un cliente con cuenta paga su categoría y tiene 3 presupuestos al día; sin sesión, «A consultar» o Normal) · POST /api/contact · POST /api/auth/login
 // Acceso: 5 contraseñas erróneas del mismo visitante contra una cuenta (o 15 contra cualquiera, o 30 contra una cuenta de cualquier visitante) = bloqueo de 1 hora; ver handleLogin.
 //   USUARIO   GET /api/auth/me · POST /api/auth/logout
 //   PRESUPUESTOS RECIBIDOS (manager y client = el PROPIETARIO de la web; ver quotes.js y docs/PRESUPUESTOS-RECIBIDOS.md): GET /api/orders (los 300 más recientes de todos; el propietario, sin IP ni emailed.error)
-//             · GET|PUT /api/orders/:número (ver · editar con `rev`/409) · POST /api/orders/:número/send (reenviar por correo con PDF; topes 20/h por persona y 150/día)
+//             · GET|PUT /api/orders/:número (ver · editar con `rev`/409 y `tier` opcional) · POST /api/orders/:número/send (reenviar por correo con PDF; topes 20/h por persona y 150/día)
+//   CLIENTE (rol customer, solo lectura; owned.js): GET /api/orders (solo los suyos, reducidos, con `quota`) · GET /api/orders/:número (si es suyo; si no, 404) · PUT y send → 403 «Solo lectura»
+//   PRECIOS Y CLIENTES (manager y client; docs/PRECIOS-Y-CLIENTES.md): GET|POST /api/customers · PUT|DELETE /api/customers/:correo · POST /api/customers/:correo/password (customers.js)
+//             · GET|PUT /api/settings/pricing (porcentajes de las categorías, qué ve el visitante, precio aproximado) · PUT /api/prices/items/:ref (editar el precio de un producto; pricing.js)
 //   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · GET /api/admin/data · /api/blog/… (solo existe en el servidor PHP: aquí responde 501)
 //             GET /api/messages · DELETE /api/messages/:id (mensajes de contacto) · POST /api/mail/test · GET /api/mail/status (correo) · GET|PUT /api/settings/google (medición de Google)
 // Todo límite por visitante usa ipKey (IPv6 → su /64). Ninguna respuesta 500 lleva texto interno: {"ok":false,"error":"Error interno","id":"<8 hex>"} y el detalle va al registro con ese id.
 import { json, readJson, ApiError, clientIp, ipKey, randomHex } from './util.js';
 import { isOriginAllowed, corsHeaders } from './cors.js';
 import { authenticate, requireRole, signSession, secretOk } from './auth.js';
-import { createUser, listUsers, deleteUser, getUser, verifyUser, ensureSession, logoutUser, publicUser } from './users.js';
+import { createUser, listUsers, deleteUser, getUser, verifyUser, ensureSession, logoutUser, publicUser, touchLogin } from './users.js';
 import { hit, isBlocked, reset, purgeExpired, failLock, lockedFor } from './ratelimit.js';
 import { parseContact, minFillMs } from './validate.js';
 import { proposalEntry } from './proposals.js';
 import { handleOrder, handleContact } from './orders.js';
 import { listOrders } from './orderlist.js';
+import { listOwned, usedLast24h, dailyLimit, forCustomer } from './owned.js';
+import { customerRoute } from './customers.js';
+import { loadPricing, pricesView, handleGet as pricingGet, handlePut as pricingPut, handleItemEdit } from './pricing.js';
 import { quoteRoute } from './quotes.js';
 import { handlePublic as googlePublic, handleGet as googleGet, handlePut as googlePut, MAX_BODY as GOOGLE_MAX } from './google.js';
 import { handleMessageList, handleMessageDelete, handleMailTest, handleMailStatus } from './mailapi.js';
 import { mailStatus, mailSettingProblems } from './email.js';
-import { loadPrices, KEY_META, KEY_SYNC, diffPrices, publicView, updateMode } from './prices.js';
+import { loadPrices, KEY_META, KEY_SYNC, diffPrices, updateMode } from './prices.js';
 import { catalogCtx } from './catalog.js';
 import { syncPrices, planPrices, parseCsv } from './sheets.js';
 import { suggestPriceChanges, applyPriceChanges } from './ai.js';
@@ -93,6 +100,7 @@ async function handleLogin(request, env, { ipk, cors, nowMs }) {
   }
   await reset(env, 'lgpair', pair); await reset(env, 'lgacct', email);
   const user = await ensureSession(env, u);                                              // los usuarios antiguos reciben su sid ahora
+  if (user.role === 'customer') await touchLogin(env, user.email, nowMs);                // último acceso del cliente (lo ve el equipo en la lista de clientes)
   const iat = Math.max(nowMs, (Number(user.sess_after) || 0) + 1);                      // nunca antes del último «cerrar sesión»
   return json({ ok: true, token: await signSession({ sub: user.email, sid: user.sid }, env.SESSION_SECRET, undefined, iat), user: publicUser(user) }, 200, cors);
 }
@@ -106,27 +114,45 @@ async function route(request, env, deps, { path, cors, nowMs }) {
     return json({ ok: true, time: new Date(nowMs).toISOString(), mail: { driver, configured, last: last ? lastPublic : null }, ...(problems.length ? { config: { ok: false, problems } } : {}), ...(String(env.TURNSTILE_SECRET || '').trim() && turnstileSitekey(env) ? { features: { turnstile: { sitekey: turnstileSitekey(env) } } } : {}) }, 200, cors);
   }
   if (path === '/api/prices' && method === 'GET') {
-    const id = await identify(request, env, ipk, nowMs);                                  // con la IP bloqueada por Bearer fallidos no se prueba el token: se sirve la vista pública
-    const p = await loadPrices(env); const meta = JSON.parse((await env.KV.get(KEY_META)) || 'null');
-    const vary = { Vary: 'Origin, Authorization' };
-    if (id.who && id.who.role === 'manager') { const sync = JSON.parse((await env.KV.get(KEY_SYNC)) || 'null'); return json({ prices: p, meta, ...(sync ? { sync } : {}) }, 200, { ...cors, 'Cache-Control': 'private, no-store', ...vary }); }      // un manager ve quién cargó la hoja, de dónde y cómo fue el último intento de sincronización; el público, no
-    return json(publicView(p, meta), 200, { ...cors, 'Cache-Control': 'public, max-age=300', ...vary });
+    const id = await identify(request, env, ipk, nowMs);                                  // con la IP bloqueada por Bearer fallidos no se prueba el token: se sirve la vista de visitante; una sesión no válida o caducada también es un visitante (no un error)
+    const p = await loadPrices(env); const meta = JSON.parse((await env.KV.get(KEY_META)) || 'null'), pricing = await loadPricing(env);
+    const sync = id.who && id.who.role === 'manager' ? JSON.parse((await env.KV.get(KEY_SYNC)) || 'null') : null;       // un manager ve quién cargó la hoja, de dónde y cómo fue el último intento de sincronización; nadie más
+    const cache = id.who ? 'private, no-store' : 'public, max-age=300';                   // con sesión la respuesta es de esa persona (su categoría): nunca se comparte ni se guarda
+    return json(pricesView(id.who, p, meta, sync, pricing), 200, { ...cors, 'Cache-Control': cache, Vary: 'Origin, Authorization' });
   }
   if (path === '/api/google' && method === 'GET') return await googlePublic(env, { cors });                 // qué mide la web (solo IDs públicos); lo edita un manager en Ajustes → Google
-  if (path === '/api/order' && method === 'POST') return await handleOrder(request, env, await readJson(request), { ...deps, cors });
+  if (path === '/api/order' && method === 'POST') {
+    const id = await identify(request, env, ipk, nowMs); if (id.limited) return tooMany(cors);
+    if (!id.who && /^Bearer\s+.+$/.test(request.headers.get('Authorization') || '')) return json({ ok: false, code: 'session', error: 'Tu sesión ha caducado. Vuelve a entrar.' }, 401, cors);        // con sesión no válida NO se trata como visitante
+    return await handleOrder(request, env, await readJson(request), { ...deps, cors, who: id.who });
+  }
   if (path === '/api/contact' && method === 'POST') { const p = parseContact(await readJson(request), { minFillMs: minFillMs(env) }); if (p.error) return json({ ok: false, error: p.error, ...(p.code ? { code: p.code } : {}), ...(p.field ? { field: p.field } : {}) }, 400, cors); return await handleContact(request, env, p.contact, { ...deps, cors }); }
   if (path === '/api/auth/login' && method === 'POST') return await handleLogin(request, env, { ipk, cors, nowMs });
   const id = await identify(request, env, ipk, nowMs); if (id.limited) return tooMany(cors);
   const who = id.who;
-  if (path === '/api/auth/me') return who ? json({ ok: true, user: who }, 200, cors) : json({ ok: false }, 401, cors);
+  if (path === '/api/auth/me') { if (!who) return json({ ok: false }, 401, cors); const { tier: _tier, ...me } = who; return json({ ok: true, user: me }, 200, cors); }          // un cliente nunca ve el nombre de su categoría
   if (!who) return json({ ok: false, error: 'No autorizado' }, 401, cors);
   if (path === '/api/auth/logout' && method === 'POST') {                                // invalida TODOS los tokens anteriores de esta persona
     if (who.master) return json({ ok: false, error: 'El token maestro no tiene sesión que cerrar' }, 400, cors);
     await logoutUser(env, who.sub, nowMs); return json({ ok: true }, 200, cors);
   }
-  if (path === '/api/orders' && method === 'GET') { const r = await listOrders(env, who, { now: nowMs }); return json({ ok: true, orders: r.orders, ...(r.truncated ? { truncated: true } : {}) }, 200, cors); }
+  if (path === '/api/orders' && method === 'GET') {
+    if (who.role === 'customer') {                                                       // solo los suyos (índice por propietario), reducidos, con lo que le queda de cupo
+      const used = await usedLast24h(env, who.sub, nowMs), r = await listOwned(env, who.sub);
+      return json({ ok: true, orders: r.orders.map(forCustomer), quota: { limit: dailyLimit(env), used }, ...(r.truncated ? { truncated: true } : {}) }, 200, cors);
+    }
+    const r = await listOrders(env, who, { now: nowMs }); return json({ ok: true, orders: r.orders, ...(r.truncated ? { truncated: true } : {}) }, 200, cors);
+  }
   const quote = await quoteRoute(request, env, { who, path, cors, nowMs, fetchImpl, catalog: deps.catalog });          // ver, editar y reenviar un presupuesto: manager y propietario (client)
   if (quote) return quote;
+  if (requireRole(who, 'manager', 'client') && (path === '/api/customers' || path.startsWith('/api/customers/') || path === '/api/settings/pricing' || path.startsWith('/api/prices/items/'))) {          // precios y clientes: manager y propietario (client); un customer sigue de largo hasta el 403 «Solo para managers»
+    let r = null;
+    if (path === '/api/customers' || path.startsWith('/api/customers/')) r = await customerRoute(request, env, { path, cors, nowMs });
+    else if (path === '/api/settings/pricing' && method === 'GET') r = await pricingGet(env, { cors });
+    else if (path === '/api/settings/pricing' && method === 'PUT') r = await pricingPut(request, env, { who, cors, now: new Date(nowMs) });
+    else if (path.startsWith('/api/prices/items/') && method === 'PUT') r = await handleItemEdit(request, env, path.slice('/api/prices/items/'.length), { who, cors, now: new Date(nowMs), catalog: deps.catalog });
+    return r || json({ ok: false, error: 'No encontrado' }, 404, cors);
+  }
   if (!requireRole(who, 'manager')) return json({ ok: false, error: 'Solo para managers' }, 403, cors);
   if (path === '/api/admin/data' && method === 'GET') return json({ ok: true, proposals: Array.isArray(adminData && adminData.proposals) ? adminData.proposals : [], admin: adminData && adminData.admin ? adminData.admin : { products: [], byRef: {} } }, 200, { ...cors, 'Cache-Control': 'no-store' });
   if (path === '/api/messages' && method === 'GET') return await handleMessageList(request, env, { cors });                  // mensajes de contacto (datos personales: solo managers)
@@ -142,7 +168,7 @@ async function route(request, env, deps, { path, cors, nowMs }) {
     const sheetCtx = deps.ctx || catalogCtx(env), mode = updateMode(b.mode ?? env.PRICE_UPDATE_MODE);
     if (b.dry_run) {                                                                     // vista previa: nada se guarda; es el mismo plan que aplicará la subida
       const plan = await planPrices(env, rows, 'upload', mode, { ctx: sheetCtx, now: new Date(nowMs) }), rep = plan.report;
-      return json({ ok: true, dry_run: true, mode: plan.mode, refs: Object.keys(plan.sheet.items).length, total: Object.keys(plan.next.items).length, kept: plan.kept, needs_force: plan.blockers.length > 0, blockers: plan.blockers, diff: diffPrices(plan.prev, plan.next),
+      return json({ ok: true, dry_run: true, mode: plan.mode, refs: Object.keys(plan.sheet.items).length, total: Object.keys(plan.next.items).length, kept: plan.kept, manual_skipped: plan.manual_skipped, needs_force: plan.blockers.length > 0, blockers: plan.blockers, diff: diffPrices(plan.prev, plan.next),
         report: { warnings: rep.warnings, ignored: rep.ignored.slice(0, 40), unknown: rep.unknown.slice(0, 40), extras: rep.extras.slice(0, 40), retire: rep.retire.slice(0, 40), columns: rep.columns, stats: rep.stats } }, 200, cors);
     }
     return json({ ok: true, meta: await syncPrices(env, { rows, source: `upload:${who.sub}`, reason: `upload:${who.sub}`, force: b.force === true, ctx: sheetCtx, mode, now: new Date(nowMs) }) }, 200, cors);

@@ -5,7 +5,9 @@
 // { error, code: plain_text | too_long | too_many_links, field }. El navegador manda además `_e` (ms entre cargar la página y enviar): si falta o es < FORM_MIN_FILL_MS (1200), 400 con code too_fast.
 // Presupuestos recibidos (docs/PRESUPUESTOS-RECIBIDOS.md): parseEdit valida la EDICIÓN de un presupuesto (PUT /api/orders/:número: solicitante, líneas con precio manual opcional, nota, `rev`) y parseSend el REENVÍO
 // por correo (POST /api/orders/:número/send: 1 a 3 destinatarios, mensaje, PDF y copia al emisor). Ambas dan los mismos errores de texto que parseOrder; no exigen privacidad, honeypot, `_e` ni Turnstile (hay sesión).
+// parseEdit acepta además `tier` (vip|vip5|vip10|normal): valorar el presupuesto con esa categoría de precio (docs/PRECIOS-Y-CLIENTES.md §6).
 import { checkText, FIELDS, MAX_LINKS } from '../../../shared/plain-text.mjs';
+import { isTier } from './prices.js';
 const LANGS = ['es', 'en', 'fr', 'de'];
 /** Caracteres de control (C0 y C1), separadores de línea/párrafo Unicode y marcas de dirección de texto (igual que el API PHP): nunca van en un campo de una línea. */
 const CONTROL = /[\u0000-\u001f\u007f-\u009f\u2028\u2029\u202a-\u202e\u2066-\u2069]/g;
@@ -70,11 +72,16 @@ function textFields(src, form, spec, limits = {}) {
   return { out };
 }
 
-/** Valida y normaliza el pedido del navegador (cliente, líneas pedibles de items, idioma, PDF) → { order } o { error, code?, field? }. `minFillMs` = tiempo mínimo de relleno (0 = no se exige; quien llama pasa minFillMs(env)). */
-export function parseOrder(raw, items, { minFillMs: min = 0 } = {}) {
+/** Error de una categoría de precio que no es una de las cuatro (vip, vip5, vip10, normal); se usa en el pedido de un empleado y en la edición de un presupuesto. */
+export const TIER_ERROR = { error: 'Categoría no válida', field: 'tier' };
+/**
+ * Valida y normaliza el pedido del navegador (cliente, líneas pedibles de items, idioma, PDF) → { order } o { error, code?, field? }. `minFillMs` = tiempo mínimo de relleno (0 = no se exige; quien llama pasa minFillMs(env)).
+ * `session` = el pedido viene con una sesión válida: entonces no se exigen el campo trampa `hp` ni `_e` (la sesión ya identifica a la persona).
+ */
+export function parseOrder(raw, items, { minFillMs: min = 0, session = false } = {}) {
   if (!isObj(raw)) return { error: 'Petición no válida' };
-  if (raw.hp) return { error: 'Solicitud no válida' };                                // honeypot
-  const tooFast = fillTimeError(raw, min); if (tooFast) return tooFast;
+  if (raw.hp && !session) return { error: 'Solicitud no válida' };                    // honeypot
+  const tooFast = session ? null : fillTimeError(raw, min); if (tooFast) return tooFast;
   const c = isObj(raw.customer) ? raw.customer : {};
   if (!['name', 'company', 'email', 'phone', 'notes'].every((k) => optText(c[k])) || !optText(raw.lang) || !optText(raw.turnstileToken)) return { error: 'Petición no válida' };      // un campo de texto que no es una cadena (lista, objeto, número…) no se acepta
   const t = textFields(c, 'order', { name: false, company: false, phone: false, notes: true }); if (t.error) return t;       // solo texto plano y con el límite de cada campo
@@ -133,13 +140,15 @@ function parseEditLines(raw, items) {
   return { lines };
 }
 /**
- * Valida la EDICIÓN de un presupuesto (cuerpo del PUT /api/orders/:número) → { edit:{ rev, customer?, lines, quoteNote? } } o { error, code?, field? }. `rev` (entero ≥ 0) es obligatorio; `customer` y `quoteNote`
- * son opcionales (si faltan no se tocan; si vienen deben ser válidos, también con null; `quoteNote` '' = quitarla). `items` es el catálogo pedible (el del sitio más las referencias que la hoja de precios añadió).
+ * Valida la EDICIÓN de un presupuesto (cuerpo del PUT /api/orders/:número) → { edit:{ rev, customer?, lines, quoteNote?, tier? } } o { error, code?, field? }. `rev` (entero ≥ 0) es obligatorio; `customer` y `quoteNote`
+ * son opcionales (si faltan no se tocan; si vienen deben ser válidos, también con null; `quoteNote` '' = quitarla); `tier` también (null, vacío o ausente = sin categoría; si viene debe ser vip, vip5, vip10 o normal).
+ * `items` es el catálogo pedible (el del sitio más las referencias que la hoja de precios añadió).
  */
 export function parseEdit(raw, items) {
   if (!isObj(raw)) return { error: 'Petición no válida' };
   if (!Number.isInteger(raw.rev) || raw.rev < 0 || raw.rev > 1_000_000_000) return { error: 'Falta rev: la revisión del presupuesto que cargaste', field: 'rev' };
   const edit = { rev: raw.rev };
+  if (raw.tier != null && raw.tier !== '') { if (!isTier(raw.tier)) return { ...TIER_ERROR }; edit.tier = raw.tier; }                    // null o vacío = no viene
   if (Object.hasOwn(raw, 'customer')) { const c = parseEditCustomer(raw.customer); if (c.error) return c; edit.customer = c.customer; }
   const l = parseEditLines(raw.lines, items); if (l.error) return l;
   edit.lines = l.lines;

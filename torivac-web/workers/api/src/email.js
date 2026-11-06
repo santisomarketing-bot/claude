@@ -120,15 +120,19 @@ export async function sendMail(env, m, fetchImpl = fetch, { kind = 'order', now 
 const money = (n, lang = 'es') => (n == null ? '—' : new Intl.NumberFormat({ es: 'es-ES', en: 'en-GB', fr: 'fr-FR', de: 'de-DE' }[lang] || 'es-ES', { style: 'currency', currency: 'EUR' }).format(n));
 /** Aviso del PDF para el equipo: el PDF lo genera el navegador del cliente y puede no coincidir con lo que valoró el servidor. */
 export const PDF_NOTE = 'El PDF adjunto lo ha generado el navegador del cliente: el importe que vale es el calculado por el servidor (arriba)';
-/** Correo de aviso de un pedido para el equipo → { html, text } con cliente, líneas, total, marca de precios de demostración y, si va PDF adjunto, el aviso de que el importe válido es el del servidor. */
-export function orderMail({ number, customer, priced, lang, demo, hasPdf = false }, items) {
+/**
+ * Correo de aviso de un pedido para el equipo → { html, text } con cliente, líneas, total, marca de precios de demostración y, si va PDF adjunto, el aviso de que el importe válido es el del servidor.
+ * Si el pedido trae `tierName` (el nombre de la categoría con la que se valoró: VIP, VIP +5, VIP +10, Normal o «A consultar»), añade una línea con la cuenta (`account`: el correo de la sesión; vacío = sin cuenta) y esa categoría.
+ */
+export function orderMail({ number, customer, priced, lang, demo, hasPdf = false, account = '', tierName = '' }, items) {
+  const tierLine = tierName ? `Cuenta: ${account || 'visitante sin sesión'} · Categoría de precio: ${tierName}` : '';
   const rows = priced.lines.map((l) => `<tr><td style="font-family:monospace">${esc(l.ref)}</td><td>${esc(items[l.ref]?.n || '')}</td><td style="text-align:right">${l.qty}</td><td style="text-align:right">${money(l.unit, lang)}</td><td style="text-align:right"><b>${money(l.total, lang)}</b></td></tr>`).join('');
   const html = `<div style="font-family:Arial,sans-serif;max-width:720px"><h2 style="margin:0;color:#9c520f">Nuevo pedido ${esc(number)}${demo ? ' (PRECIOS DE DEMOSTRACIÓN)' : ''}</h2>
-<p><b>${esc(customer.name)}</b> ${customer.company ? '· ' + esc(customer.company) : ''}<br>${esc(customer.email)}${customer.phone ? ' · ' + esc(customer.phone) : ''}</p>
+<p><b>${esc(customer.name)}</b> ${customer.company ? '· ' + esc(customer.company) : ''}<br>${esc(customer.email)}${customer.phone ? ' · ' + esc(customer.phone) : ''}</p>${tierLine ? `<p style="color:#555;font-size:13px">${esc(tierLine)}</p>` : ''}
 <table cellpadding="6" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#ddd;width:100%"><tr style="background:#100404;color:#fff"><th>Ref.</th><th>Artículo</th><th>Cant.</th><th>Ud.</th><th>Importe</th></tr>${rows}</table>
 <p style="text-align:right;font-size:18px">Total (sin IVA): <b>${money(priced.total, lang)}</b>${priced.unpriced ? `<br><small>${priced.unpriced} línea(s) «A consultar» no incluidas en el total</small>` : ''}</p>
 ${customer.notes ? `<p><b>Notas:</b> ${esc(customer.notes).replace(/\n/g, '<br>')}</p>` : ''}<p style="color:#777;font-size:12px">Idioma del cliente: ${esc(lang)}${hasPdf ? ` · El PDF del presupuesto va adjunto.</p><p style="color:#9c520f;font-size:12px"><b>${esc(PDF_NOTE)}.</b>` : ''}</p></div>`;
-  const text = [`Nuevo pedido ${number}${demo ? ' (PRECIOS DE DEMOSTRACIÓN)' : ''}`, `${customer.name} <${customer.email}> ${customer.phone || ''}`, '', ...priced.lines.map((l) => `${l.ref}\t${items[l.ref]?.n || ''}\tx${l.qty}\t${money(l.total, lang)}`), '', `Total (sin IVA): ${money(priced.total, lang)}`, customer.notes ? `\nNotas: ${customer.notes}` : '', hasPdf ? `\n${PDF_NOTE}.` : ''].join('\n');
+  const text = [`Nuevo pedido ${number}${demo ? ' (PRECIOS DE DEMOSTRACIÓN)' : ''}`, `${customer.name} <${customer.email}> ${customer.phone || ''}`, ...(tierLine ? [tierLine] : []), '', ...priced.lines.map((l) => `${l.ref}\t${items[l.ref]?.n || ''}\tx${l.qty}\t${money(l.total, lang)}`), '', `Total (sin IVA): ${money(priced.total, lang)}`, customer.notes ? `\nNotas: ${customer.notes}` : '', hasPdf ? `\n${PDF_NOTE}.` : ''].join('\n');
   return { html, text };
 }
 

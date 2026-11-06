@@ -34,6 +34,7 @@ const { SITE, API } = be;
 console.log(`backend: ${be.kind}`);
 be.setCsv(SHEET_CSV);
 await be.seedPrices({ ...prices, mode: 'live', updated_at: '2026-10-28T08:00:00.000Z' });
+await be.setPricing({ anon: 'normal', tiers: { vip5: 0, vip10: 0, normal: 0 } });      // estas pruebas miran los importes de la hoja: visitantes ven el precio «Normal» sin recargo (la categoría por defecto de fábrica es «Consultar»; ver qa-customers.mjs)
 await be.addUser({ email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manager', password: 'Manager-Clave-2026' });
 await be.addUser({ email: 'marta@taller.es', name: 'Marta Taller', role: 'client', password: 'Cliente-Clave-2026' });
 await be.addUser({ email: 'otro@cliente.es', name: 'Otro Cliente', role: 'client', password: 'Cliente-Clave-2026' });
@@ -70,7 +71,7 @@ console.log('\n1) acceso');
   ok(/incorrect/i.test(await page.locator('[data-err]').innerText()), 'contraseña errónea → mensaje del servidor');
   await page.fill('[name=pass]', 'Manager-Clave-2026'); await page.click('button[type=submit]');
   await page.waitForSelector('.side nav a');
-  ok((await navs(page)).length === 11 && (await navs(page)).some((n) => /Blog/.test(n)) && (await navs(page)).some((n) => /Actividad/.test(n)), `manager: ${(await navs(page)).join(' · ')}`);
+  ok((await navs(page)).length === 12 && (await navs(page)).some((n) => /Blog/.test(n)) && (await navs(page)).some((n) => /Actividad/.test(n)), `manager: ${(await navs(page)).join(' · ')}`);
   await page.waitForFunction(() => document.querySelectorAll('.kpi').length === 4, null, { timeout: 5000 }).catch(() => {});      // los indicadores se pintan al llegar los pedidos
   ok(await page.locator('.kpi').count() === 4, 'Resumen con 4 indicadores');
   ok(/1/.test(await page.locator('.kpi').first().innerText()), 'cuenta el pedido hecho desde la web');
@@ -86,7 +87,7 @@ console.log('\n2) Presupuestos recibidos: el manager y el propietario ven los mi
   await m.ctx.close();
   const c = await newPage(); await login(c.page, 'marta@taller.es', 'Cliente-Clave-2026'); await c.page.waitForSelector('.side nav a');
   const cn = (await navs(c.page)).map((n) => n.slice(1).trim());       // sin el icono de cada enlace
-  ok(cn.join(' · ') === 'Nuevo presupuesto · Presupuestos recibidos · Lista de precios · Estadísticas', `propietario: ${cn.join(' · ')}`);
+  ok(cn.join(' · ') === 'Nuevo presupuesto · Presupuestos recibidos · Clientes · Precios · Lista de precios · Estadísticas', `propietario: ${cn.join(' · ')}`);
   ok((await c.page.locator('.side .role').textContent()).trim() === 'Propietario', 'el panel lo llama «Propietario» (es el dueño de la web, no un comprador)');
   await c.page.click('.side nav a[href="#recibidos"]'); await c.page.waitForSelector('table.spec');
   ok((await c.page.locator('table.spec tbody tr').count()) === 1 && !/sin aviso por correo/i.test(await c.page.locator('table.spec tbody').innerText()), 'el propietario ve el presupuesto recibido (sin la marca interna del correo)');

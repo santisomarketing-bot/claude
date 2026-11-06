@@ -42,6 +42,7 @@ const be = await startBackend({ dist: DIST });
 const { SITE, API, mails } = be;
 console.log(`backend: ${be.kind}`);
 await be.seedPrices({ ...prices, mode: 'live', updated_at: '2026-10-28T08:00:00.000Z' });
+await be.setPricing({ anon: 'normal', tiers: { vip5: 0, vip10: 0, normal: 0 } });      // estas pruebas miran los importes de la hoja: visitantes ven el precio «Normal» sin recargo (la categoría por defecto de fábrica es «Consultar»; ver qa-customers.mjs)
 await be.addUser({ email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manager', password: 'Manager-Clave-2026' });
 
 const browser = await chromium.launch();

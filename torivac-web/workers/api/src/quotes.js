@@ -3,9 +3,13 @@
 //   PUT  /api/orders/:número        → (cuerpo ≤ 100 KB; más → 413) edita solicitante, líneas (precio manual opcional) y nota; protegido por `rev`: 409 { code:'conflict', order } si otra persona lo cambió. Guarda `original` una vez, `rev`, `edited` e `history` (≤ 50).
 //   POST /api/orders/:número/send   → (cuerpo ≤ 6 MB; más → 413) reenvía el presupuesto por correo (1 a 3 destinatarios, PDF validado, topes de 20/h por persona y 150/día), lo anota en `history` y `lastSent`; un fallo del proveedor NO es un error HTTP (sent:false).
 // Orden de comprobaciones: 401 (sin sesión, en el router) → 404 (número o presupuesto) → 413/400 (cuerpo) → 409 (rev / correo apagado) → 429 (topes). Un propietario nunca ve la IP del pedido ni emailed.error (forClient).
+// El rol `customer` (cliente con cuenta) solo LEE: GET /api/orders/:número devuelve su versión reducida (forCustomer) y solo si el pedido es suyo (`owner`; si no, 404 igual que uno inexistente); PUT y send → 403 «Solo lectura» antes que nada.
+// PUT admite `tier` (vip|vip5|vip10|normal): las líneas sin `price` explícito se valoran con esa categoría aunque no hayan cambiado de cantidad, y el pedido guarda `priceTier` (docs/PRECIOS-Y-CLIENTES.md §6).
 import { json, readBody, jsonOf, round2 } from './util.js';
 import { parseEdit, parseSend, isEmail } from './validate.js';
 import { loadPrices, unitPrice, withSheetItems } from './prices.js';
+import { loadPricing, tierPct } from './pricing.js';
+import { forCustomer } from './owned.js';
 import { hit } from './ratelimit.js';
 import { sendMail, quoteMail, mailReady, teamRecipients } from './email.js';
 import { forClient } from './orderlist.js';
@@ -30,8 +34,8 @@ async function readCapped(request, max, cors) {
   const bytes = await readBody(request, max);
   return bytes === null ? { res: json({ ok: false, error: 'La petición es demasiado grande' }, 413, cors) } : { body: jsonOf(bytes) };
 }
-/** El pedido tal como lo ve `who`: el manager (y el token maestro) lo ve entero; el propietario, sin la IP ni el texto de error del correo. */
-const view = (who, order) => (who.role === 'manager' ? order : forClient(order));
+/** El pedido tal como lo ve `who`: el manager (y el token maestro) lo ve entero; el propietario, sin la IP ni el texto de error del correo; un cliente con cuenta, su versión reducida. */
+const view = (who, order) => (who.role === 'manager' ? order : who.role === 'customer' ? forCustomer(order) : forClient(order));
 /** Quién figura como autor de un cambio: el correo de la sesión, o «maestro» si es el token maestro. */
 const author = (who) => (who.master ? 'maestro' : String(who.sub));
 /** Revisión guardada de un pedido: `rev` si es un entero ≥ 1; si falta (nunca editado), 0. */
@@ -48,25 +52,28 @@ async function readRecord(env, number) {
 /** Guarda el pedido con el plazo de siempre (400 días desde ahora). */
 const saveRecord = (env, number, rec) => env.KV.put(`order:${number}`, JSON.stringify(rec), ORDER_TTL);
 
-/** GET /api/orders/:número → 200 { ok, order } (según el rol) o 404. */
+/** GET /api/orders/:número → 200 { ok, order } (según el rol) o 404; un customer solo ve los pedidos cuyo `owner` es su correo (los demás son 404, como si no existieran). */
 async function handleGet(env, who, number, { cors }) {
   const rec = await readRecord(env, number); if (!rec) return notFound(cors);
+  if (who.role === 'customer' && rec.owner !== String(who.sub).toLowerCase()) return notFound(cors);
   return json({ ok: true, order: view(who, rec) }, 200, cors);
 }
 
 /**
  * Líneas nuevas del presupuesto editado → { lines, total, unpriced, revalued }. Sin `price`, una línea que ya existía con la misma referencia y la misma cantidad conserva su unit/total/manual tal cual;
  * si cambió la cantidad, la línea es nueva o `price` es null, se valora con la tarifa vigente (puede quedar sin precio) y deja de ser manual; un número en `price` fija el precio unitario (manual:true).
+ * Con `pct` (el porcentaje de la categoría `tier` del PUT) TODAS las líneas sin precio numérico se valoran con esa categoría, hayan cambiado o no. Sin `pct` (null) solo se valoran las nuevas o con la cantidad
+ * cambiada, con la categoría con la que se valoró el presupuesto (`base.pct`; un presupuesto «A consultar» deja esas líneas sin precio: `base.consult`; uno antiguo sin categoría, la tarifa VIP de la hoja).
  */
-function priceLines(edit, rec, prices) {
+function priceLines(edit, rec, prices, pct = null, base = { pct: 0, consult: false }) {
   const before = new Map(rec.lines.filter((l) => l && typeof l.ref === 'string').map((l) => [l.ref, l]));
   let total = 0, unpriced = 0, revalued = false;
   const lines = edit.lines.map(({ ref, qty, price }) => {
-    const prev = before.get(ref), keep = price === undefined && prev && prev.qty === qty;
+    const prev = before.get(ref), keep = pct === null && price === undefined && prev && prev.qty === qty;
     let unit, t, manual = false;
     if (typeof price === 'number') { unit = price; manual = true; }
     else if (keep) { unit = prev.unit ?? null; manual = prev.manual === true; }
-    else { unit = unitPrice(prices, ref, qty); revalued = true; }
+    else { unit = pct === null && base.consult ? null : unitPrice(prices, ref, qty, pct ?? base.pct); revalued = true; }
     t = keep ? (prev.total ?? null) : unit == null ? null : round2(unit * qty);
     if (t == null) unpriced++; else total += t;
     return { ref, qty, unit, total: t, ...(manual ? { manual: true } : {}) };
@@ -83,12 +90,14 @@ async function handleEdit(request, env, who, number, { cors, nowMs, catalog }) {
   if (parsed.error) return badRequest(parsed, cors);
   const e = parsed.edit, rev = revOf(rec);
   if (e.rev !== rev) return json({ ok: false, code: 'conflict', error: CONFLICT, order: view(who, rec) }, 409, cors);
-  const at = new Date(nowMs).toISOString(), p = priceLines(e, rec, prices);
+  const at = new Date(nowMs).toISOString(), recTier = rec.priceTier, settings = e.tier || (recTier && recTier !== 'consult') ? await loadPricing(env) : null;
+  const p = priceLines(e, rec, prices, e.tier ? tierPct(settings, e.tier) : null, { pct: recTier && recTier !== 'consult' ? tierPct(settings, recTier) : 0, consult: recTier === 'consult' });
   const next = {
     ...rec, ...(e.customer ? { customer: e.customer } : {}), lines: p.lines, total: p.total, unpriced: p.unpriced, rev: rev + 1, edited: { at, by: author(who) },
     original: rec.original ?? { at: rec.at, customer: rec.customer, lines: rec.lines, total: rec.total, unpriced: rec.unpriced },       // lo que llegó de la web, solo la primera vez
     history: pushHistory(rec.history, { at, by: author(who), kind: 'edit', rev: rev + 1 }),
     ...(p.revalued ? { prices: { updated_at: prices.updated_at, mode: prices.mode } } : {}),
+    ...(e.tier ? { priceTier: e.tier } : {}),
   };
   if (e.quoteNote !== undefined) { if (e.quoteNote) next.quoteNote = e.quoteNote; else delete next.quoteNote; }
   await saveRecord(env, number, next);
@@ -130,12 +139,14 @@ async function handleSend(request, env, who, number, { cors, nowMs, fetchImpl, c
 }
 
 /**
- * Atiende GET /api/orders/:número · PUT /api/orders/:número · POST /api/orders/:número/send para `who` (ya autenticado como manager o propietario) → Response, o null si la ruta no es de este módulo.
+ * Atiende GET /api/orders/:número · PUT /api/orders/:número · POST /api/orders/:número/send para `who` (ya autenticado: manager, propietario o customer, que solo puede leer) → Response, o null si la ruta no es de este módulo.
  * El número se toma del texto de la URL SIN decodificar y solo se usa si cumple ORDER_NUMBER. `catalog` y `fetchImpl` se inyectan en las pruebas.
  */
 export async function quoteRoute(request, env, { who, path, cors = {}, nowMs = Date.now(), fetchImpl = fetch, catalog = items }) {
   if (!path.startsWith('/api/orders/')) return null;
   const parts = path.slice('/api/orders/'.length).split('/'), number = parts[0], method = request.method;
+  const readOnly = (parts.length === 1 && method === 'PUT') || (parts.length === 2 && parts[1] === 'send' && method === 'POST');
+  if (who.role === 'customer' && readOnly) return json({ ok: false, error: 'Solo lectura' }, 403, cors);          // un cliente con cuenta no edita ni reenvía: ni siquiera se mira si el número existe
   if (parts.length === 1 && method === 'GET') return await handleGet(env, who, number, { cors });
   if (parts.length === 1 && method === 'PUT') return await handleEdit(request, env, who, number, { cors, nowMs, catalog });
   if (parts.length === 2 && parts[1] === 'send' && method === 'POST') return await handleSend(request, env, who, number, { cors, nowMs, fetchImpl, catalog });

@@ -117,7 +117,7 @@ Misma forma de siempre: `{ prices:{ updated_at, source, currency, mode, items:{ 
 - Worker: índice `oorder:<correo>:<nº>` (mismo plazo de 400 días) escrito al crear; PHP: recorrido filtrado por `owner`.
 
 ### `PUT /api/orders/:n` (staff): parámetro `tier`
-Opcional (`vip|vip5|vip10|normal`). Si viene, las líneas **sin `price` explícito** se valoran con esa categoría **aunque no hayan cambiado de cantidad** (`manual` desaparece) y `priceTier` del registro pasa a ese valor; las líneas con `price` numérico quedan `manual`. Sin `tier`, todo como hasta ahora. Sirve para valorar un presupuesto que salió «A consultar».
+Opcional (`vip|vip5|vip10|normal`). Si viene, las líneas **sin `price` explícito** se valoran con esa categoría **aunque no hayan cambiado de cantidad** (`manual` desaparece) y `priceTier` del registro pasa a ese valor; las líneas con `price` numérico quedan `manual`. **Sin `tier`:** las líneas que no cambian (misma referencia y cantidad, sin `price`) se conservan tal cual; las líneas **nuevas o con la cantidad cambiada** se valoran con la categoría con la que se valoró el presupuesto (`priceTier`: `vip|vip5|vip10|normal`), de modo que cambiar una cantidad nunca regala el precio VIP a un cliente Normal. Si el presupuesto salió `consult` («A consultar») esas líneas quedan sin precio, y si es antiguo y no tiene `priceTier`, se valoran VIP como hasta ahora. `tier` sirve para valorar un presupuesto que salió «A consultar».
 
 ## 7. Pruebas que debe tener cada servidor
 

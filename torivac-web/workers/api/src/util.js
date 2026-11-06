@@ -30,6 +30,12 @@ export const toHex = (bytes) => Array.from(bytes).map((b) => b.toString(16).padS
 export const fromHex = (hex) => { const o = new Uint8Array(hex.length / 2); for (let i = 0; i < o.length; i++) o[i] = parseInt(hex.substr(i * 2, 2), 16); return o; };
 /** Redondea a 2 decimales (1.005 → 1.01). */
 export const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
+/** Milisegundos de una hora y de un día (los plazos de los límites, de los pedidos y de la ventana de 24 h de los clientes). */
+export const HOUR = 60 * 60 * 1000, DAY = 24 * HOUR;
+/** Fecha en UTC como AAAAMMDD, para el número de pedido, su contador diario y los índices por día. */
+export const ymd = (d) => d.toISOString().slice(0, 10).replace(/-/g, '');
+/** Entero de una variable de entorno (texto de cifras); si falta, no es un entero o es menor que `min`, vale `def`. */
+export const intVar = (v, def, min = 0) => { const s = String(v ?? '').trim(); if (!/^\d{1,9}$/.test(s)) return def; const n = Number(s); return n >= min ? n : def; };
 /** Identificador aleatorio de n bytes en hexadecimal (p. ej. el id de un error interno: 4 bytes = 8 caracteres). */
 export const randomHex = (n) => toHex(crypto.getRandomValues(new Uint8Array(n)));
 /** IP del cliente que informa Cloudflare (CF-Connecting-IP); 0.0.0.0 si falta. Es la IP COMPLETA: para limitar usa ipKey. */

@@ -119,7 +119,8 @@ details.prop [aria-invalid=true]{border-color:var(--err);outline:2px solid var(-
 .qr-add .qr-f{flex:1 1 280px}
 .qr-chk{display:flex;gap:var(--s-2);align-items:center;margin-top:var(--s-2);font-weight:600}
 .form .qr-chk{display:flex;flex-direction:row;gap:var(--s-2);align-items:center}
-.qr-chk input[type=checkbox]{width:auto;flex:none;margin:0}
+.qr-chk input[type=checkbox],.qr-chk input[type=radio]{width:auto;flex:none;margin:.2rem 0 0}
+.form .qr-chk{align-items:flex-start}
 /* ---- Clientes y precios por categoría (admin-customers.js, admin-prices.js) ---- */
 .cu-pw{display:inline-block;vertical-align:middle}
 .cu-pw summary{display:inline-block;cursor:pointer;list-style:none}
@@ -128,7 +129,13 @@ details.prop [aria-invalid=true]{border-color:var(--err);outline:2px solid var(-
 .cu-pw form label{display:grid;gap:4px;font-size:var(--fs-0);font-weight:600}
 .cu-pw form input{padding:.4rem .5rem;border:1px solid var(--line-strong);border-radius:var(--radius);font:inherit;font-weight:400}
 .pr-approx{display:grid;gap:var(--s-2);margin:var(--s-3) 0;padding:var(--s-3);border:1px solid var(--line-strong);background:#fff}
-.qr-n.pr-t{width:11rem;text-align:left}
+.form input.qr-n{width:6rem;max-width:100%}
+.form input.qr-n.pr-t{width:8.5rem;text-align:left}
+.form input.qr-n.gg-l{width:100%}
+[data-pr-rows] td:nth-child(2){min-width:13rem}
+[data-pr-rows] .bl-actions{white-space:nowrap}
+[data-pr-rows] td:nth-child(1){white-space:nowrap}
+.pr-pct{white-space:nowrap}
 [data-pr-settings] .mode{display:grid;gap:var(--s-2);border:0;padding:0;margin:0 0 var(--s-2)}
 [data-pr-settings] h3{margin:var(--s-4) 0 var(--s-2)}
 .qr-hist{list-style:none;margin:0;padding:0;display:grid;gap:var(--s-2)}

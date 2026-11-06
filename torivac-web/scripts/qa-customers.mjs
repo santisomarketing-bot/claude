@@ -29,7 +29,7 @@ const { SITE, API } = be;
 console.log(`backend: ${be.kind}`);
 // precios base = VIP (la hoja): R_TT 100 € con tramo desde 10 uds. a 90 €, R_RES 20 €, R_BO 40 €; R_NOP no tiene precio
 await be.seedPrices({ updated_at: '2026-10-28T08:00:00.000Z', source: 'sheet', currency: 'EUR', mode: 'live', items: { [R_TT]: { p: 100, t: [[10, 90]] }, [R_RES]: { p: 20 }, [R_BO]: { p: 40 } } });
-const PW = { jefa: 'Manager-Clave-2026', maria: 'Propietaria-Clave-2026', ana: 'Cliente-Ana-Clave-2026', luis: 'Cliente-Luis-Clave-2026' };
+const PW = { jefa: 'Manager-Clave-2026', maria: 'Propietaria-Clave-2026', ana: 'Acceso-Seguro-Uno-2026', luis: 'Acceso-Seguro-Dos-2026' };
 await be.addUser({ email: 'jefa@torivac.com', name: 'Jefa Torivac', role: 'manager', password: PW.jefa });
 await be.addUser({ email: 'maria@torivac.com', name: 'María Torivac', role: 'client', password: PW.maria });
 await be.addUser({ email: 'ana@cliente.es', name: 'Ana Cliente', role: 'customer', password: PW.ana, tier: 'vip5' });
@@ -90,11 +90,11 @@ console.log('\n2) Clientes (API): alta, categoría, contraseña y baja; solo man
 { const un = (await api('/api/customers')).status, cu = (await api('/api/customers', { token: tA })).status; ok(un === 401 && cu === 403, `sin sesión ${un} · un cliente ${cu}`);
   const list = (await api('/api/customers', { token: tM })).j; ok(list.ok && list.customers.length === 2 && list.customers.find((c) => c.email === 'ana@cliente.es').tier === 'vip5' && list.customers.find((c) => c.email === 'luis@cliente.es').tier === 'normal' && list.tiers.vip5.pct === 5, 'el propietario ve las 2 cuentas con su categoría y los porcentajes');
   ok(!list.customers.some((c) => c.email === 'jefa@torivac.com' || c.email === 'maria@torivac.com'), 'las cuentas del equipo no salen en Clientes');
-  const mk = await api('/api/customers', { method: 'POST', token: tM, body: { email: 'nuevo@cliente.es', name: 'Nuevo Cliente', password: 'Cliente-Nuevo-Clave-2026', tier: 'vip10' } });
+  const mk = await api('/api/customers', { method: 'POST', token: tM, body: { email: 'nuevo@cliente.es', name: 'Nuevo Cliente', password: 'Acceso-Seguro-Tres-2026', tier: 'vip10' } });
   ok(mk.status < 300 && mk.j.ok, 'el propietario da de alta un cliente VIP +10');
-  ok((await api('/api/customers', { method: 'POST', token: tM, body: { email: 'nuevo@cliente.es', name: 'Otra', password: 'Cliente-Nuevo-Clave-2026', tier: 'vip' } })).status === 409, 'el mismo correo otra vez → 409');
-  ok((await api('/api/customers', { method: 'POST', token: tM, body: { email: 'x@cliente.es', name: 'X', password: 'corta', tier: 'vip' } })).status === 400 && (await api('/api/customers', { method: 'POST', token: tM, body: { email: 'y@cliente.es', name: 'Y', password: 'Cliente-Nuevo-Clave-2026', tier: 'oro' } })).status === 400, 'contraseña corta y categoría inventada → 400');
-  const tN = await tokenOf('nuevo@cliente.es', 'Cliente-Nuevo-Clave-2026'); const nv = await pr(tN); ok(nv.items[R_TT].p === 110, 'su sesión ve VIP + 10 % al instante');
+  ok((await api('/api/customers', { method: 'POST', token: tM, body: { email: 'nuevo@cliente.es', name: 'Otra', password: 'Acceso-Seguro-Tres-2026', tier: 'vip' } })).status === 409, 'el mismo correo otra vez → 409');
+  ok((await api('/api/customers', { method: 'POST', token: tM, body: { email: 'x@cliente.es', name: 'X', password: 'corta', tier: 'vip' } })).status === 400 && (await api('/api/customers', { method: 'POST', token: tM, body: { email: 'y@cliente.es', name: 'Y', password: 'Acceso-Seguro-Tres-2026', tier: 'oro' } })).status === 400, 'contraseña corta y categoría inventada → 400');
+  const tN = await tokenOf('nuevo@cliente.es', 'Acceso-Seguro-Tres-2026'); const nv = await pr(tN); ok(nv.items[R_TT].p === 110, 'su sesión ve VIP + 10 % al instante');
   ok((await api('/api/customers/nuevo@cliente.es', { method: 'PUT', token: tM, body: { tier: 'vip' } })).j.ok && (await pr(tN)).items[R_TT].p === 100, 'cambiarle la categoría a VIP vale al instante (misma sesión)');
   ok((await api('/api/customers/maria@torivac.com', { method: 'PUT', token: tM, body: { tier: 'vip' } })).status === 404 && (await api('/api/customers/' + encodeURIComponent('jefa@torivac.com'), { method: 'DELETE', token: tM })).status === 404, 'no se puede tocar una cuenta del equipo desde Clientes (404)');
   ok((await api('/api/customers/nuevo@cliente.es/password', { method: 'POST', token: tM, body: { password: 'Otra-Clave-Larga-2026' } })).j.ok && (await api('/api/prices', { token: tN })).status === 200 && (await api('/api/orders', { token: tN })).status === 401, 'contraseña nueva: se cierran sus sesiones');
@@ -112,7 +112,7 @@ console.log('\n4) Panel · el propietario: Clientes y Precios');
 { const { ctx, page, errs } = await newPage(); await login(page, 'maria@torivac.com', PW.maria);
   ok((await navs(page)).join(' · ') === 'Nuevo presupuesto · Presupuestos recibidos · Clientes · Precios · Lista de precios · Estadísticas', `menú del propietario: ${(await navs(page)).join(' · ')}`);
   await go(page, '#clientes', '[data-cu-root]'); ok((await page.locator('[data-cu-root] tbody tr').count()) === 2, 'Clientes: las 2 cuentas');
-  await page.fill('[data-cu-new] [name=name]', 'Nuevo Cliente'); await page.fill('[data-cu-new] [name=email]', 'nuevo@cliente.es'); await page.fill('[data-cu-new] [name=password]', 'Cliente-Nuevo-Clave-2026'); await page.selectOption('[data-cu-new] [name=tier]', 'vip10'); await page.click('[data-cu-new] button[type=submit]');
+  await page.fill('[data-cu-new] [name=name]', 'Nuevo Cliente'); await page.fill('[data-cu-new] [name=email]', 'nuevo@cliente.es'); await page.fill('[data-cu-new] [name=password]', 'Acceso-Seguro-Tres-2026'); await page.selectOption('[data-cu-new] [name=tier]', 'vip10'); await page.click('[data-cu-new] button[type=submit]');
   await page.waitForSelector('[data-cu-tier="nuevo@cliente.es"]', { timeout: 8000 });
   ok((await api('/api/customers', { token: tM })).j.customers.find((c) => c.email === 'nuevo@cliente.es').tier === 'vip10', 'alta desde el panel con su categoría');
   await page.selectOption('[data-cu-tier="nuevo@cliente.es"]', 'normal'); await page.waitForFunction(() => /Normal/.test((document.querySelector('[data-cu-msg]') || {}).textContent || ''), null, { timeout: 5000 });
@@ -205,6 +205,14 @@ console.log('\n6) Panel · el equipo ve la categoría de cada presupuesto y pued
   const ed = (await api('/api/orders/' + global.ANA_NUMBER, { token: tJ })).j.order; ok(ed.priceTier === 'normal' && line(ed, R_TT).unit === 103.5 && ed.total === 1242 && ed.rev === 1, 'editar con «Valorar con Normal» reprecia las líneas sin precio escrito (94,50 → 103,50)');
   await go(page, '#recibidos/' + global.ANON_NUMBER + '/editar', '[data-qr-edit]'); await page.selectOption('[data-qr-tier]', 'vip'); await page.click('[data-qr-save]'); await page.waitForSelector('[data-qr-root] h1 .tag', { timeout: 8000 });
   const an = (await api('/api/orders/' + global.ANON_NUMBER, { token: tJ })).j.order; ok(an.priceTier === 'vip' && line(an, R_TT).unit === 90 && line(an, R_TT).total === 1080 && an.unpriced === 0, 'un presupuesto de visitante «A consultar» se valora con la categoría elegida (VIP: 12 × 90 = 1.080)');
+  // editar sin elegir categoría: lo nuevo se valora con la del presupuesto (nunca regala el VIP) y un presupuesto «A consultar» deja lo nuevo sin precio
+  const cur = (await api('/api/orders/' + global.ANA_NUMBER, { token: tJ })).j.order;
+  const ed2 = await api('/api/orders/' + global.ANA_NUMBER, { method: 'PUT', token: tJ, body: { rev: cur.rev, lines: [...cur.lines.map((l) => ({ ref: l.ref, qty: l.qty })), { ref: R_BO, qty: 1 }] } });
+  ok(ed2.j.ok && line(ed2.j.order, R_BO).unit === 46 && line(ed2.j.order, R_TT).unit === 103.5, 'añadir una línea sin elegir categoría la valora con la del presupuesto (Normal: 40 × 1,15 = 46, no 40) y conserva el resto');
+  const cq = await api('/api/order', { method: 'POST', body: { customer: { name: 'Visita Dos', email: 'visita2@x.es', privacy: true }, lines: [{ ref: R_TT, qty: 2 }], lang: 'es' } });
+  const cc = (await api('/api/orders/' + cq.j.number, { token: tJ })).j.order;
+  const ed3 = await api('/api/orders/' + cq.j.number, { method: 'PUT', token: tJ, body: { rev: cc.rev || 0, lines: [{ ref: R_TT, qty: 3 }, { ref: R_BO, qty: 1 }] } });
+  ok(ed3.j.ok && ed3.j.order.priceTier === 'consult' && ed3.j.order.unpriced === 2 && line(ed3.j.order, R_BO).unit === null, 'en un presupuesto «A consultar», cambiar o añadir líneas sin elegir categoría las deja «A consultar»');
   ok(!errs.length, 'sin errores de JS' + (errs.length ? ': ' + errs[0] : '')); await ctx.close(); }
 
 console.log('\n7) Web pública: precios aproximados y «Consultar», sin precios exactos');

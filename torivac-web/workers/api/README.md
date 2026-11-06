@@ -8,16 +8,19 @@ usa `site/assets/js/quote-page.js`.
 | Función | Ruta | Quién |
 |---|---|---|
 | Salud (y aviso de ajustes inseguros, solo nombres) | `GET /api/health` | público |
-| Precios vigentes | `GET /api/prices` | público (caché 5 min) · un manager ve además quién cargó la hoja y `sync`: el estado del último intento de sincronización |
-| Enviar pedido | `POST /api/order` | público (límite por visitante y global, Turnstile opcional) |
+| Precios vigentes | `GET /api/prices` | **el servidor decide qué precios según quién llama** (ver «Precios por categoría»): manager y propietario, el precio VIP con las marcas `m` y `a` y `meta.manual_count` (el manager, además, quién cargó la hoja y `sync`); un cliente con sesión, los de su categoría; el visitante, nada, aproximados o precios Normal según Ajustes → Precios. `Vary: Authorization`; con sesión `private, no-store`, sin ella caché 5 min. Una sesión no válida cuenta como visitante |
+| Enviar pedido | `POST /api/order` | público (límite por visitante y global, Turnstile opcional) **o con sesión** (`Authorization: Bearer …`): un cliente con cuenta se valora con su categoría y tiene `CUSTOMER_ORDERS_PER_DAY` (3) presupuestos al día; una sesión caducada es 401 `code:'session'` |
 | Enviar contacto | `POST /api/contact` | público |
 | Login / sesión / cerrar sesión | `POST /api/auth/login`, `GET /api/auth/me`, `POST /api/auth/logout` | público / sesión |
-| Presupuestos recibidos | `GET /api/orders` | manager y cliente (= el **propietario** de la web): los 300 más recientes (últimos 120 días); el cliente, sin IP ni `emailed.error` |
-| Ver / editar un presupuesto | `GET`·`PUT /api/orders/:número` | manager y cliente. `PUT` lleva `rev` (409 `conflict` si otra persona lo cambió), precios manuales y guarda `original`, `edited` e `history` (≤ 50) |
-| Reenviar un presupuesto por correo | `POST /api/orders/:número/send` | manager y cliente: 1 a 3 destinatarios, PDF validado, topes de 20/h por persona y `ORDER_SEND_DAILY_MAX`/día; 409 `mail_off` si no hay correo |
+| Presupuestos recibidos | `GET /api/orders` | manager y `client` (= el **propietario** de la web): los 300 más recientes (últimos 120 días); el propietario, sin IP ni `emailed.error`. Un `customer` (cliente con cuenta): **solo los suyos** (`owner` = su correo, índice `oorder:`), los 100 más recientes y en versión reducida, más `quota: { limit, used }` |
+| Ver / editar un presupuesto | `GET`·`PUT /api/orders/:número` | manager y propietario. `PUT` lleva `rev` (409 `conflict` si otra persona lo cambió), precios manuales, `tier` opcional (valorar con esa categoría) y guarda `original`, `edited` e `history` (≤ 50). Un `customer` solo puede `GET` de los suyos (ajeno → 404); `PUT` → 403 «Solo lectura» |
+| Reenviar un presupuesto por correo | `POST /api/orders/:número/send` | manager y propietario: 1 a 3 destinatarios, PDF validado, topes de 20/h por persona y `ORDER_SEND_DAILY_MAX`/día; 409 `mail_off` si no hay correo. Un `customer` → 403 «Solo lectura» |
+| Cuentas de cliente | `GET`·`POST /api/customers`, `PUT`·`DELETE /api/customers/:correo`, `POST /api/customers/:correo/password` | manager y propietario. Crean y gestionan solo cuentas `customer` (categoría de precio, nombre, contraseña, baja); las de otro rol responden 404 |
+| Ajustes de precios | `GET`·`PUT /api/settings/pricing` | manager y propietario: porcentajes de VIP +5 / VIP +10 / Normal, qué ve el visitante (`anon`) y el precio aproximado |
+| Editar el precio de un producto | `PUT /api/prices/items/:ref` | manager y propietario (`:ref` codificada en la URL): `p`, `t`, `a`, `manual`; lo editado queda marcado `m` y la hoja no lo pisa |
 | Refrescar precios ahora | `POST /api/prices/refresh` | manager |
 | Subir hoja de precios (vista previa/aplicar) | `POST /api/prices/upload` | manager |
-| Usuarios | `GET/POST /api/users`, `DELETE /api/users/:email` | manager |
+| Usuarios | `GET/POST /api/users`, `DELETE /api/users/:email` | manager (el rol `customer` y su `tier` también se dan de alta aquí) |
 | Instrucción de precios con IA (propone, no aplica) | `POST /api/prices/ai` `{instruction}` | manager (15 consultas / 10 min) |
 | Aplicar lo propuesto tras revisarlo | `POST /api/prices/ai/apply` `{changes, confirm_large?}` | manager |
 | Decisiones sobre propuestas del panel | `GET/POST /api/proposals/state` | manager |
@@ -48,6 +51,7 @@ Cron: `0 3 * * *` (UTC) sincroniza precios cada 24 h y limpia los registros de l
 | `ORDER_COPY_DAILY_MAX` | copias totales al día (150 por defecto); además, **2 copias por destinatario cada 24 h** (clave con hash del correo) |
 | `ORDER_SEND_DAILY_MAX` | reenvíos de presupuestos desde el panel por día en total (150 por defecto; `0` = sin tope diario), además de **20 por hora y persona** → 429 |
 | `ORDERS_PER_HOUR_MAX` | pedidos globales por hora (120 por defecto), además de 8 por visitante cada 10 min → 429 |
+| `CUSTOMER_ORDERS_PER_DAY` | presupuestos que crea cada cliente con cuenta (rol `customer`) en una **ventana móvil de 24 h** (3 por defecto; entero ≥ 1, si no es válido vale 3) → 429 `{ code:'daily_limit' }`. Solo cuentan los presupuestos válidos y guardados (un 400 no gasta cupo); se cuentan con el índice `oorder:<correo>:<nº>` (mejor esfuerzo, como el resto de límites en KV). No afecta al equipo ni al visitante |
 | `FORM_MIN_FILL_MS` | milisegundos mínimos entre cargar la página y enviar un formulario (1200 por defecto; `0` = no se exige). Un robot que envía sin cargar la página queda fuera |
 | `TURNSTILE_SECRET` | recomendado en producción (sin él, la protección contra bots descansa solo en los topes) |
 
@@ -68,6 +72,15 @@ Cron: `0 3 * * *` (UTC) sincroniza precios cada 24 h y limpia los registros de l
 - Una excepción nunca escapa sin cabeceras CORS. `GET /api/prices` responde con `Vary: Origin, Authorization`.
 - Límites de KV: no es atómico (lectura + escritura) y es eventualmente consistente, así que los topes son de «mejor esfuerzo» (una ráfaga en paralelo puede pasarse unas peticiones). Para topes estrictos,
   además del Worker: regla de **Rate Limiting de Cloudflare** sobre `/api/auth/login` y `/api/order`, `TURNSTILE_SECRET`, `workers_dev = false` si la web usa un dominio propio y `ALLOWED_ORIGINS` sin `localhost` en producción.
+
+## Precios por categoría y cuentas de cliente
+Contrato único con `backend-php/api`: **`docs/PRECIOS-Y-CLIENTES.md`**. Resumen de lo que hace este Worker:
+- **Roles**: `manager`, `client` (el propietario: María y Xavi) y `customer` (cliente con cuenta, solo lectura). El `customer` lleva `tier` (`vip`, `vip5`, `vip10` o `normal`, por defecto `normal`) en su registro `user:<correo>`; se lee **en cada petición**, así que cambiarla vale al instante. El cliente nunca ve el nombre de su categoría (ni en el login ni en `/api/auth/me`).
+- **Categorías**: el precio de la hoja es el VIP; VIP +5 = ×1,05, VIP +10 = ×1,10 y Normal = ×1,15 (porcentajes **globales** y editables en `settings:pricing`), con el último tramo alcanzado escalado igual y redondeo a 4 decimales (`scale4`, aritmética exacta). Una referencia sin precio sigue siendo «A consultar» en todas.
+- **`GET /api/prices`**: manager y propietario ven el VIP con `m` y `a`; un cliente, su categoría sin marcas; el visitante, según `anon`: `normal` → precios Normal completos; `consult` + aproximado → `{ ref: { p } }` sin tramos y `prices.approx: true`; `consult` sin aproximado → `{}` y `mode:'none'`. El VIP nunca sale a quien no corresponde.
+- **`POST /api/order`**: el cuerpo nunca fija precios. Con sesión: `customer` → su categoría, `owner` = su correo, `priceTier`, `remaining` en la respuesta y tope diario; manager/propietario → VIP o la `tier` del cuerpo. Sin sesión: `anon: 'consult'` → todas las líneas «A consultar» (`priceTier: 'consult'`) o `anon: 'normal'` → Normal. Un 401 `code:'session'` si la sesión no vale (no se trata como visitante). Con sesión no se exige Turnstile, `hp` ni `_e`. El correo al equipo añade la cuenta y la categoría.
+- **Precios editados a mano**: `PUT /api/prices/items/:ref` guarda con histórico (`edit:<correo>`) y marca `m: true`; la sincronización con la hoja (`merge` y `replace`, cron y «Actualizar ahora») **no toca** esas referencias, las cuenta en `meta.manual_skipped` y los chequeos de cambio masivo las ignoran. La aplicación de la IA conserva `m` y `a`.
+- **Claves de KV nuevas**: `settings:pricing` (sin caducidad) y `oorder:<correo>:<nº>` (400 días; valor = fecha del pedido).
 
 ## Precios desde Excel / Drive
 Orden de preferencia de la fuente (se usa la primera configurada):
@@ -120,5 +133,5 @@ lectura de hoja y CSV con comillas, **lector de `.xlsx`** (mismos libros que el 
 servicio, flujo de pedido con Resend simulado, roles, límite de login, CORS, subida y cron, y la IA de precios (validación, propuesta, aplicar con
 confirmación, límite de uso, 403 a clientes). Los arreglos de seguridad tienen sus pruebas de regresión (el ataque ya no funciona y lo legítimo sí) en
 `test/security-orders.test.js` (copia al cliente, PDF, topes, `ipKey`, pedidos), `test/security-auth.test.js` (login, Bearer, secretos, sesiones, errores, cuerpo, `/api/admin/data`) y
-`test/security-sheets.test.js` (borrado masivo de precios, cifras, lector `.xlsx` hostil, descargas). El correo veraz (contacto guardado, Resend y Brevo simulados, secretos) está en `test/mail-contact.test.js` y los endpoints de gestión (mensajes, prueba de correo, estado, salud) en `test/mail-admin.test.js`. Extremo a extremo: `node scripts/qa-live.mjs` (pedido/contacto), `qa-admin-live.mjs` (panel real) y `qa-tarifa.mjs` (tarifa Excel real);
+`test/security-sheets.test.js` (borrado masivo de precios, cifras, lector `.xlsx` hostil, descargas). Precios por categoría: `test/pricing.test.js` (cálculo, `GET /api/prices` por llamante, ajustes, edición de producto y sincronización que no pisa lo manual) y `test/customers.test.js` (cuentas de cliente, pedido con y sin sesión, tope diario, lectura del cliente y `PUT` con `tier`). El correo veraz (contacto guardado, Resend y Brevo simulados, secretos) está en `test/mail-contact.test.js` y los endpoints de gestión (mensajes, prueba de correo, estado, salud) en `test/mail-admin.test.js`. Extremo a extremo: `node scripts/qa-live.mjs` (pedido/contacto), `qa-admin-live.mjs` (panel real) y `qa-tarifa.mjs` (tarifa Excel real);
 los tres aceptan `--php` para correr contra `backend-php/api`.

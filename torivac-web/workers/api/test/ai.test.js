@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { validateChanges, buildTable, applyChanges, suggestPriceChanges, applyPriceChanges, TOOL } from '../src/ai.js';
 import api from '../src/index.js';
-import { mkEnv, req, MASTER } from './helpers.js';
+import { mkEnv, req, MASTER, PRICING_FLAT, setPricing } from './helpers.js';
 
 // referencias REALES del catálogo generado (site/build.mjs → src/generated/items.js)
 const PRICES = { updated_at: '2026-10-28T00:00:00Z', source: 'test', currency: 'EUR', mode: 'live', items: { P8339: { p: 15.82, t: [[10, 15.1], [50, 14.4]] }, P8340: { p: 62.93 }, P884: { p: 49.95 } } };
@@ -85,7 +85,7 @@ test('IA · aplicar: valida otra vez en servidor, exige confirmación de cambios
   await assert.rejects(applyPriceChanges(env, { changes: [{ ref: 'FALSA', price: 1 }, { ref: 'P884', price: -1 }] }, {}), (e) => e.status === 400);
 });
 test('API · /api/prices/ai y /apply: solo manager, límite de uso y flujo completo', async () => {
-  const env = await env0();
+  const env = await env0(); await setPricing(env, PRICING_FLAT);
   const real = globalThis.fetch; globalThis.fetch = async () => aiReply({ summary: 'Resistencias +3 %', changes: [{ ref: 'P8339', price: 16.3, tiers: [{ qty: 10, price: 15.55 }] }] });
   try {
     /** POST a la ruta p del Worker con body JSON y cabeceras (por defecto el token maestro); devuelve la Response. */

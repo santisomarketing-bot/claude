@@ -10,7 +10,7 @@ import { parseCsv, syncPrices, getAccessToken } from '../src/sheets.js';
 import { handleOrder, uorderPrefix } from '../src/orders.js';
 import { createUser } from '../src/users.js';
 import api from '../src/index.js';
-import { mkEnv, req, CATALOG, PRICES, SHEET, TCTX, MASTER } from './helpers.js';
+import { mkEnv, req, CATALOG, PRICES, SHEET, TCTX, MASTER, PRICING_FLAT, setPricing } from './helpers.js';
 
 /** Pedido válido de ejemplo { customer, lines, lang }; over sustituye campos para provocar cada error de validación. */
 const goodOrder = (over = {}) => ({ customer: { name: 'Ana Pérez', company: 'ACME', email: 'ana@acme.es', phone: '600', notes: 'urgente', privacy: true }, lines: [{ ref: 'TT0020210', qty: 12 }, { ref: 'P16633', qty: 1 }], lang: 'es', ...over });
@@ -90,7 +90,7 @@ test('cuenta de servicio: JWT RS256 con firma verificable', async () => {
   assert.ok(ok); assert.equal(JSON.parse(Buffer.from(c, 'base64url')).iss, sa.client_email);
 });
 test('pedido: valora en servidor (ignora precios del cliente), guarda y envía a info@ y mzamora@ con PDF', async () => {
-  const env = mkEnv({ RESEND_API_KEY: 're_test' }); await env.KV.put('prices:current', JSON.stringify(PRICES));
+  const env = mkEnv({ RESEND_API_KEY: 're_test' }); await setPricing(env, PRICING_FLAT); await env.KV.put('prices:current', JSON.stringify(PRICES));
   const sent = []; const fetchImpl = async (u, o) => { sent.push(JSON.parse(o.body)); return new Response(JSON.stringify({ id: 'm' + sent.length }), { status: 200 }); };
   const body = goodOrder({ pdf: 'JVBERi0xLjQK', lines: [{ ref: 'TT0020210', qty: 12, unit: 0.01, total: 0.12 }, { ref: 'R100', qty: 4 }] });
   const res = await handleOrder(req('/api/order', { method: 'POST', body }), env, body, { fetchImpl, catalog: CATALOG, now: new Date('2026-10-28T07:00:00Z') });
@@ -152,7 +152,7 @@ test('API: bloqueo de login por intentos y CORS', async () => {
   assert.equal(good.headers.get('Access-Control-Allow-Origin'), 'https://demo.example');
 });
 test('API: subida de hoja (vista previa y aplicar) y cron', async () => {
-  const env = mkEnv({ PRICE_CSV_URL: 'https://sheet.test/x.csv' });
+  const env = mkEnv({ PRICE_CSV_URL: 'https://sheet.test/x.csv' }); await setPricing(env, PRICING_FLAT);
   await env.KV.put('prices:current', JSON.stringify(PRICES));
   const h = { Authorization: `Bearer ${MASTER}` };
   const dry = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv: SHEET, dry_run: true }, headers: h }), env, {}, { ctx: TCTX })).json();
@@ -166,7 +166,7 @@ test('API: subida de hoja (vista previa y aplicar) y cron', async () => {
 });
 
 test('hoja de precios con códigos nuevos (tarifa): se publican dentro de su producto y se pueden pedir', async () => {
-  const env = mkEnv({ RESEND_API_KEY: 're_test' }); await env.KV.put('prices:current', JSON.stringify(PRICES));
+  const env = mkEnv({ RESEND_API_KEY: 're_test' }); await setPricing(env, PRICING_FLAT); await env.KV.put('prices:current', JSON.stringify(PRICES));
   const h = { Authorization: `Bearer ${MASTER}` };
   const csv = 'Artículo,Descripción,Precio venta\nTT0020210,TRAFO TOROID 20VA 230V/2X10V,12.37093203\nTT0099999,TRAFO TOROID 99VA 230V/2X99V,45.5\nQQ1,algo raro,3\n';
   const dry = await (await api.fetch(req('/api/prices/upload', { method: 'POST', body: { csv, dry_run: true }, headers: h }), env, {}, { ctx: TCTX })).json();
@@ -198,7 +198,7 @@ test('sincronización: un precio de relleno en casi todas las filas se rechaza s
 
 // ───────────────────────────────────────── privacidad, sesiones y correo: arreglos tras la revisión
 test('GET /api/prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí', async () => {
-  const env = mkEnv({ PRICE_CSV_URL: 'https://sheet.test/x.csv' });
+  const env = mkEnv({ PRICE_CSV_URL: 'https://sheet.test/x.csv' }); await setPricing(env, PRICING_FLAT);
   await createUser(env, { email: 'jefa@torivac.com', name: 'Jefa', role: 'manager', password: 'Manager-Clave-2026' });
   const tok = (await (await api.fetch(req('/api/auth/login', { method: 'POST', body: { email: 'jefa@torivac.com', password: 'Manager-Clave-2026' } }), env, {})).json()).token;
   const h = { Authorization: `Bearer ${tok}` };
