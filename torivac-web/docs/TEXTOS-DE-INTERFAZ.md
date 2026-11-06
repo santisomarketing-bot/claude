@@ -34,7 +34,7 @@ Las filas con ✓ ya existen tal cual en la web original en ese idioma (por ejem
 
 Ojo: la web original no es del todo uniforme: «variador de tensión» aparece como *voltage variators*, *voltage regulator* o *variator* según la ficha, y hay categorías sin traducir o con texto en otro idioma que no se listan aquí (están como propuestas en el panel). Cuando un texto de interfaz nombre uno de estos términos, se usa el de la categoría correspondiente de la tabla, nunca uno inventado.
 
-## Inglés (107 textos a validar; 44 ya existen tal cual en la web original)
+## Inglés (112 textos a validar; 44 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Inglés |
 |---|---|---|
@@ -54,6 +54,11 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `demo_prices` | Precios de demostración — no son tarifas de Torivac | Demo prices — not Torivac rates |
 | `price_updated` | Precios actualizados | Prices updated |
 | `refresh_prices` | Actualizar precios ahora | Update prices now |
+| `approx_flag` | Precios aproximados | Approximate prices |
+| `approx_note` | Precios aproximados, sin IVA. El precio final se confirma por presupuesto. | Approximate prices, excl. VAT. The final price is confirmed by quote. |
+| `apply_prices` | Aplicar mis precios | Apply my prices |
+| `apply_prices_hint` | Pulsa «Aplicar mis precios» para ver los importes de tu tarifa. | Press “Apply my prices” to see the amounts of your rate. |
+| `quota_left` | Presupuestos que te quedan hoy | Quotes you have left today |
 | `units` | uds. | pcs |
 | `clear` | Vaciar presupuesto | Clear quote |
 | `remove` | Quitar | Remove |
@@ -146,7 +151,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Indicative quote subject to confirmation by Torivac. |
 | `quote_slug` | presupuesto | quote |
 
-## Francés (104 textos a validar; 47 ya existen tal cual en la web original)
+## Francés (109 textos a validar; 47 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Francés |
 |---|---|---|
@@ -165,6 +170,11 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `demo_prices` | Precios de demostración — no son tarifas de Torivac | Prix de démonstration — ne sont pas des tarifs Torivac |
 | `price_updated` | Precios actualizados | Prix mis à jour |
 | `refresh_prices` | Actualizar precios ahora | Mettre à jour les prix |
+| `approx_flag` | Precios aproximados | Prix approximatifs |
+| `approx_note` | Precios aproximados, sin IVA. El precio final se confirma por presupuesto. | Prix approximatifs, hors TVA. Le prix définitif est confirmé par devis. |
+| `apply_prices` | Aplicar mis precios | Appliquer mes prix |
+| `apply_prices_hint` | Pulsa «Aplicar mis precios» para ver los importes de tu tarifa. | Appuyez sur « Appliquer mes prix » pour voir les montants de votre tarif. |
+| `quota_left` | Presupuestos que te quedan hoy | Devis restants aujourd’hui |
 | `units` | uds. | pcs |
 | `clear` | Vaciar presupuesto | Vider le devis |
 | `download_pdf` | Descargar PDF | Télécharger le PDF |
@@ -255,7 +265,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `demo_banner` | Versión de demostración | Version de démonstration |
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Devis indicatif soumis à confirmation par Torivac. |
 
-## Alemán (108 textos a validar; 43 ya existen tal cual en la web original)
+## Alemán (113 textos a validar; 43 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Alemán |
 |---|---|---|
@@ -277,6 +287,11 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `price_updated` | Precios actualizados | Preise aktualisiert |
 | `refresh_prices` | Actualizar precios ahora | Preise jetzt aktualisieren |
 | `tier_from` | desde | ab |
+| `approx_flag` | Precios aproximados | Ungefähre Preise |
+| `approx_note` | Precios aproximados, sin IVA. El precio final se confirma por presupuesto. | Ungefähre Preise, ohne MwSt. Der endgültige Preis wird im Angebot bestätigt. |
+| `apply_prices` | Aplicar mis precios | Meine Preise anwenden |
+| `apply_prices_hint` | Pulsa «Aplicar mis precios» para ver los importes de tu tarifa. | Klicken Sie auf „Meine Preise anwenden“, um die Beträge Ihres Tarifs zu sehen. |
+| `quota_left` | Presupuestos que te quedan hoy | Heute verbleibende Angebote |
 | `units` | uds. | Stk. |
 | `clear` | Vaciar presupuesto | Angebot leeren |
 | `download_pdf` | Descargar PDF | PDF herunterladen |

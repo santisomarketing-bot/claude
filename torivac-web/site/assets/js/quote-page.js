@@ -21,12 +21,27 @@
         return '<tr data-ref="' + esc(l.ref) + '"><td class="thumb">' + (th ? '<img src="' + esc(th) + '" alt="" width="52" height="52">' : '') + '</td>' +
           '<td><a class="name" href="' + esc(url) + '">' + esc(l.name) + '</a><span class="refc">' + esc(Q.shownRef(l.ref)) + (l.spec ? ' · ' + esc(l.spec) : '') + '</span></td>' +
           '<td><div class="qty"><button type="button" data-dec aria-label="−">−</button><input type="number" min="0" value="' + Number(l.qty) + '" data-q aria-label="' + esc(Q.t('qty')) + '"><button type="button" data-inc aria-label="+">+</button></div></td>' +
-          '<td class="num">' + (l.unit == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : esc(Q.unitMoney(l.unit))) + '</td>' +
-          '<td class="num"><strong>' + (l.total == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : esc(Q.money(l.total))) + '</strong></td>' +
+          '<td class="num">' + (!Q.pricesShown() ? '<span class="muted">—</span>' : l.unit == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : esc(Q.unitMoney(l.unit))) + '</td>' +
+          '<td class="num"><strong>' + (!Q.pricesShown() ? '<span class="muted">—</span>' : l.total == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : esc(Q.money(l.total))) + '</strong></td>' +
           '<td><button class="btn sm ghost" type="button" data-rm>' + esc(Q.t('remove')) + '</button></td></tr>';
-      }).join('') + '</tbody></table></div><div class="qtotal"><span>' + esc(Q.t('total')) + '</span><strong class="mono">' + esc(Q.money(d.total)) + '</strong></div>';
-    $('[data-price-note]').textContent = d.unpriced ? Q.t('price_note_request') : '';
+      }).join('') + '</tbody></table></div>' + (Q.pricesShown() ? '<div class="qtotal"><span>' + esc(Q.t('total')) + '</span><strong class="mono">' + esc(Q.money(d.total)) + '</strong></div>' : '');
+    $('[data-price-note]').textContent = Q.pricesShown() && d.unpriced ? Q.t('price_note_request') : '';
   }
+
+  // ───────────────────────────────────────── [CLIENTE] dentro del panel, una cuenta de cliente aplica sus precios con un botón
+  //   Las líneas salen sin importes hasta pulsar «Aplicar mis precios»; el servidor valora SIEMPRE con su categoría al enviar, pulse o no el botón. Nunca se enseña el nombre de la categoría.
+  var sess = TV.api.live() ? TV.api.session() : null, isCustomer = !!sess && sess.role === 'customer';
+  /** Barra con la pista y el botón «Aplicar mis precios» (solo cuentas de cliente en el panel); el botón enseña los importes y desaparece la pista. */
+  function customerBar() {
+    var bar = document.createElement('div'); bar.className = 'notice small'; bar.setAttribute('data-apply-bar', '');
+    bar.innerHTML = '<span data-apply-hint>' + esc(Q.t('apply_prices_hint')) + '</span> <button class="btn sm" type="button" data-apply-prices>' + esc(Q.t('apply_prices')) + '</button>';
+    bar.querySelector('[data-apply-prices]').addEventListener('click', function () { Q.setPricesShown(true); bar.hidden = true; });
+    host.insertAdjacentElement('beforebegin', bar); return bar;
+  }
+  var applyBar = null;
+  if (isCustomer) { Q.setPricesShown(false); applyBar = customerBar(); }
+  /** Vuelve a ocultar los importes y a pedir «Aplicar mis precios» (tras enviar y vaciar el presupuesto de un cliente). */
+  function rearm() { if (!isCustomer) return; Q.setPricesShown(false); if (applyBar) applyBar.hidden = false; }
   host.addEventListener('click', function (e) {
     var tr = e.target.closest('tr[data-ref]'); if (!tr) return; var ref = tr.getAttribute('data-ref');
     var cur = (Q.lines().filter(function (l) { return l.ref === ref; })[0] || { qty: 0 }).qty;
@@ -73,6 +88,12 @@
   var form = $('[data-quote-form]');
   F.counters(form);
   if (TV.Captcha) TV.Captcha.init(form);                                                       // el CAPTCHA solo se activa si el servidor lo anuncia (config.php)
+  /** Dentro del panel, rellena nombre y correo de quien envía con los de su sesión (si el formulario los tiene vacíos). */
+  function fillFromSession() {
+    if (!sess) return;
+    [['name', sess.name], ['email', sess.email]].forEach(function (p) { var el = form.elements[p[0]]; if (el && !el.value && p[1]) el.value = p[1]; });
+  }
+  fillFromSession();
   /** Datos del formulario del presupuesto como objeto {campo: valor}, sin el campo honeypot `hp` (antispam). */
   function customer() { var o = {}; new FormData(form).forEach(function (v, k) { if (k !== 'hp') o[k] = v; }); return o; }
   /** Descarga el PDF `res` ({blob(), filename}) con un enlace temporal y libera la URL del blob a los 800 ms. */
@@ -102,15 +123,16 @@
     var btn = form.querySelector('button[type=submit]'); btn.disabled = true; var label = btn.textContent; btn.textContent = Q.t('sending');
     var pdf = String(res.doc.output('datauristring')).replace(/^data:[^,]*,/, '');
     var body = { customer: { name: c.name, company: c.company, email: c.email, phone: c.phone, notes: c.notes, privacy: !!c.privacy }, lines: d.lines.map(function (l) { return { ref: l.ref, qty: l.qty }; }), lang: Q.lang, pdf: pdf, hp: new FormData(form).get('hp') || '', _e: F.elapsed() };
-    (TV.Captcha ? TV.Captcha.attach(form, body) : Promise.resolve(body)).then(function (b) { return TV.api.post('/api/order', b); }).then(function (r) {
+    (TV.Captcha && !sess ? TV.Captcha.attach(form, body) : Promise.resolve(body)).then(function (b) { return TV.api.post('/api/order', b); }).then(function (r) {      // con sesión (panel) no hay CAPTCHA: el servidor no lo pide
       btn.disabled = false; btn.textContent = label; out.hidden = false; out.setAttribute('tabindex', '-1');
       if (r && r.ok) {
         var copy = !!(r.emailed && r.emailed.customer), mailto = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];      // solo se dice «te hemos enviado una confirmación» si salió (el servidor puede no enviarla: sin correo configurado, tope de envíos…)
         out.className = 'notice ok'; out.innerHTML = '<strong>' + esc(Q.t('order_sent')) + ' · ' + esc(r.number) + '</strong><br>' + (copy ? esc(Q.t('order_received')) : esc(Q.t('order_received_nocopy')) + ' <a href="mailto:' + esc(mailto) + '">' + esc(mailto) + '</a>') +
+          (typeof r.remaining === 'number' ? '<br><span class="small">' + esc(Q.t('quota_left')) + ': ' + Number(r.remaining) + '</span>' : '') +
           '<br><button class="btn sm ghost" type="button" style="margin-top:8px" data-pdf-again>' + esc(Q.t('download_pdf')) + '</button>';
         var again = out.querySelector('[data-pdf-again]'); if (again) again.addEventListener('click', function () { try { download(res); } catch (e) { console.error(e); TV.toast('PDF ⚠'); } });      // la copia por correo NO lleva el PDF: se ofrece aquí, ya generado
         if (TV.track) TV.track('quote', { id: r.number, items: d.lines.length });                          // conversión: solo con el permiso de cookies (consent.js); nunca clics en teléfono ni WhatsApp
-        Q.clear(); form.reset();
+        Q.clear(); form.reset(); fillFromSession(); rearm();
       } else {
         var why = F.explain(form, r);
         if (why === true) { out.hidden = true; return; }                                         // error de un campo: ya está marcado y enfocado

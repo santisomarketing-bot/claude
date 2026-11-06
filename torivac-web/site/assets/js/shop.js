@@ -74,9 +74,9 @@
       var any = false;
       stores.forEach(function (c) {
         var refs = byPid[Number(c.getAttribute('data-pid'))] || [], ps = [];
-        refs.forEach(function (r) { var u = Q.priceOf(r, 1); if (u != null) ps.push(u); });
+        refs.forEach(function (r) { var u = Q.displayPrice(r, 1); if (u != null) ps.push(u); });
         var lo = ps.length ? Math.min.apply(null, ps) : null, hi = ps.length ? Math.max.apply(null, ps) : null, el = $('[data-price]', c);
-        el.innerHTML = lo == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : (hi > lo ? '<small>' + esc(Q.t('tier_from')) + '</small> ' : '') + '<span class="mono">' + esc(Q.unitMoney(lo)) + '</span>';
+        el.innerHTML = lo == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : (hi > lo ? '<small>' + esc(Q.t('tier_from')) + '</small> ' : '') + '<span class="mono">' + esc(Q.displayMoney(lo)) + '</span>';
         el.hidden = false; c.setAttribute('data-minp', lo == null ? '' : String(lo)); if (lo != null) any = true;
         buyFor(c, refs);
       });
@@ -144,14 +144,14 @@
   /** Actualiza el precio unitario, los tramos y el importe de una fila de la tabla de modelos según la cantidad escrita. */
   function updatePrice(tr) {
     var ref = tr.getAttribute('data-ref'), cell = $('[data-price-for]', tr), q = qtyOf(tr) || 1;
-    var u = Q.priceOf(ref, q), tiers = Q.tiersOf(ref);
+    var u = Q.displayPrice(ref, q), tiers = Q.tiersOf(ref);
     if (!cell) return;
-    var html = u == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : '<span class="mono">' + esc(Q.unitMoney(u)) + '</span>';
+    var html = u == null ? '<span class="muted">' + esc(Q.t('on_request')) + '</span>' : '<span class="mono">' + esc(Q.displayMoney(u)) + '</span>';
     if (tiers.length) html += tiers.map(function (t) { return '<span class="tier">' + esc(Q.t('tier_from')) + ' ' + Number(t[0]) + ' ' + esc(Q.t('units')) + ' · ' + esc(Q.unitMoney(t[1])) + '</span>'; }).join('');
     cell.innerHTML = html;
   }
   /** Actualiza el precio de todas las filas y muestra u oculta el aviso de demo según el modo de la hoja de precios. */
-  function allPrices() { rows.forEach(updatePrice); $$('[data-demo-flag]').forEach(function (e) { e.hidden = !(TV.prices && TV.prices.mode === 'demo'); }); }
+  function allPrices() { rows.forEach(updatePrice); $$('[data-demo-flag]').forEach(function (e) { e.hidden = !(TV.prices && TV.prices.mode === 'demo'); }); $$('[data-approx-flag],[data-approx-note]').forEach(function (e) { e.hidden = !Q.isApprox(); }); }
   /** Rehace las referencias extra y los precios de las filas; corre al cargar y en cada evento tv:prices. */
   function refresh() { renderExtras(); allPrices(); }
   refresh(); document.addEventListener('tv:prices', refresh);

@@ -171,6 +171,7 @@
   function stamp() {
     var P = TV.prices || {};
     $$('[data-demo-flag]').forEach(function (e) { e.hidden = P.mode !== 'demo'; });
+    $$('[data-approx-flag],[data-approx-note]').forEach(function (e) { e.hidden = !Q.isApprox(); });      // precios aproximados (visitante): aviso en la tienda y en la ficha
     $$('[data-price-stamp]').forEach(function (e) { e.textContent = P.updated_at ? Q.t('price_updated') + ': ' + new Date(P.updated_at).toLocaleString(Q.lang === 'en' ? 'en-GB' : Q.lang) : ''; });
   }
   stamp(); document.addEventListener('tv:prices', stamp);

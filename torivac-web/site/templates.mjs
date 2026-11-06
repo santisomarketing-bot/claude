@@ -616,7 +616,8 @@ export function storeBody(ctx, { products }) {
   <div>
     ${crumbsHtml}
     <p class="store-intro">${esc(t('shop_intro', lang))}</p>
-    <div class="toolbar"><div class="tb-l"><button class="btn sm ghost filters-toggle" type="button" data-filters-toggle>☰ ${t('filters', lang)}</button><span class="count" data-count aria-live="polite">${countLabel(list.length, lang)}</span><span class="price-demo" data-demo-flag hidden>DEMO</span></div>${sort}</div>
+    <div class="toolbar"><div class="tb-l"><button class="btn sm ghost filters-toggle" type="button" data-filters-toggle>☰ ${t('filters', lang)}</button><span class="count" data-count aria-live="polite">${countLabel(list.length, lang)}</span><span class="price-demo" data-demo-flag hidden>DEMO</span><span class="price-demo" data-approx-flag hidden>${t('approx_flag', lang)}</span></div>${sort}</div>
+    <p class="muted small" data-approx-note hidden>${t('approx_note', lang)}</p>
     <div class="pgrid store-grid" data-grid>${list.map((p) => storeCard(ctx, p, topsOf(p))).join('')}</div>
     <p class="notice" data-empty hidden>${t('no_results', lang)}</p>
   </div>
@@ -656,7 +657,8 @@ export function productBody(ctx, p, related) {
     <td class="ref" role="cell" data-label="${attr(t('ref_model', lang))}">${v.default ? '—' : v.code ? esc(v.ref) : esc(pick(v.label, lang) || v.ref)}</td>
     ${v.default ? `<td class="generic" role="cell" colspan="${Math.max(1, cols.length)}">${esc(t('default_item', lang))}</td>` : cols.map((c) => `<td role="cell" data-label="${attr(c)}">${esc(v.specs?.[c]?.raw ?? '')}</td>`).join('')}
     <td class="act" role="cell"><div class="act-in"><span class="price-cell" data-price-for="${attr(v.ref)}"></span><div class="qty"><button type="button" data-dec aria-label="−">−</button><input type="number" inputmode="numeric" min="0" step="1" value="0" data-qty aria-label="${attr(t('qty', lang))} ${attr(v.code ? v.ref : pick(v.label, lang) || v.ref)}"><button type="button" data-inc aria-label="+">+</button></div><button class="btn sm" type="button" data-add-row="${attr(v.ref)}">${t('add_to_quote', lang)}</button></div></td></tr>`).join('');
-  const models = `<section id="modelos" aria-labelledby="h-models"><div class="models-bar"><h2 id="h-models" style="margin:0">${t('models', lang)}</h2><span><span class="price-demo" data-demo-flag hidden>DEMO</span></span></div>
+  const models = `<section id="modelos" aria-labelledby="h-models"><div class="models-bar"><h2 id="h-models" style="margin:0">${t('models', lang)}</h2><span><span class="price-demo" data-demo-flag hidden>DEMO</span><span class="price-demo" data-approx-flag hidden>${t('approx_flag', lang)}</span></span></div>
+    <p class="muted small" data-approx-note hidden>${t('approx_note', lang)}</p>
     <p class="muted">${t('models_hint', lang)}</p>
     <div class="tbl-wrap models" tabindex="0"><table class="spec" role="table"><thead><tr role="row"><th class="ref" role="columnheader">${t('ref_model', lang)}</th>${cols.length ? cols.map((c) => `<th role="columnheader">${esc(c)}</th>`).join('') : `<th role="columnheader"><span class="vh">${t('item', lang)}</span></th>`}<th class="act" role="columnheader">${t('unit_price', lang)} · ${t('qty', lang)}</th></tr></thead><tbody role="rowgroup">${rows}</tbody></table></div>
     <p><button class="btn" type="button" data-add-selected>${t('add_selected', lang)}</button> <a class="btn ghost" href="${attr(ctx.href(site.quote[lang]))}">${t('quote', lang)} →</a></p></section>`;

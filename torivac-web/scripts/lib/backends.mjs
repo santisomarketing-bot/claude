@@ -4,7 +4,8 @@
 //   const be = await startBackend({ kind: backendKind(), dist, port? });   (port: solo PHP, cuando la web ya lleva la URL compilada)   kind: 'worker' (por defecto) | 'php' (flag --php o TV_BACKEND=php)
 //   be.SITE   web que ve el navegador            be.API   URL base del API (Worker: otro puerto con CORS · PHP: el mismo origen que la web)
 //   be.mails  correos «enviados» (Resend simulado) · be.setMailDown(true) Resend rechaza los envíos · be.setAi(reply) lo que contestará la IA · be.setCsv(texto) la hoja de Drive
-//   await be.seedPrices(obj) · be.getPrices() · be.addUser({ email, name, role, password }) · be.order(número) · be.historyCount()
+//   await be.seedPrices(obj) · be.getPrices() · be.addUser({ email, name, role, password, tier? }) (role: manager | client | customer; tier: vip | vip5 | vip10 | normal) · be.order(número) · be.historyCount()
+//   await be.setPricing({ tiers?, anon?, approx? }) fija los ajustes de precios por el API (por defecto: 5/10/15 %, visitantes «consult», sin aproximado)
 //   be.setMinFill(ms) tiempo mínimo de relleno de los formularios (0 por defecto en las pruebas, para no esperar; el real es 1200) · await be.messages() los mensajes de contacto guardados
 //   await be.useSource('xlsx', bytes) cambia el origen de los precios de la hoja CSV a un libro .xlsx de Drive (descarga directa)
 //   await be.stop()
@@ -131,7 +132,7 @@ async function startPhp({ dist, orderTo, orderFrom, port: wanted }) {
     useSource: async (kind, bytes) => { if (kind !== 'xlsx') throw new Error('origen no soportado: ' + kind); st.xlsx = Buffer.from(bytes); cfg.prices = { xlsx_url: `${MOCK}/precios.xlsx`, decimals: 4 }; writeCfg(); },
     seedPrices: async (p) => { fs.writeFileSync(kv('prices:current'), JSON.stringify({ v: p })); },
     getPrices: async () => read('prices:current'),
-    addUser: async (u) => { execFileSync('php', [path.join(apiDir, 'tools/create-user.php'), u.email, u.name, u.role, u.password], { stdio: 'pipe' }); },
+    addUser: async (u) => { execFileSync('php', [path.join(apiDir, 'tools/create-user.php'), u.email, u.name, u.role, u.password, ...(u.tier ? [u.tier] : [])], { stdio: 'pipe' }); },
     order: async (num) => read('order:' + num),
     historyCount: async () => fs.readdirSync(path.join(store, 'kv')).filter((f) => f.startsWith(encodeURIComponent('prices:history:'))).length,
     stop: async () => { try { process.kill(-child.pid, 'SIGTERM'); } catch { /* ya parado */ } mock.close(); fs.rmSync(work, { recursive: true, force: true }); },
@@ -140,5 +141,13 @@ async function startPhp({ dist, orderTo, orderFrom, port: wanted }) {
 
 /** Arranca el backend pedido ('worker' o 'php') y devuelve su interfaz común. */
 export async function startBackend({ kind = backendKind(), dist, port, orderTo = 'info@grupotorivac.com,mzamora@torivac.com', orderFrom = 'Torivac Web <pedidos@grupotorivac.com>' }) {
-  return kind === 'php' ? startPhp({ dist, orderTo, orderFrom, port }) : startWorker({ dist, orderTo, orderFrom });
+  const be = kind === 'php' ? await startPhp({ dist, orderTo, orderFrom, port }) : await startWorker({ dist, orderTo, orderFrom });
+  /** Fija los ajustes de precios (PUT /api/settings/pricing con el token maestro): lo que no se diga queda en los valores de fábrica (5/10/15 %, visitantes «consult», sin aproximado). Devuelve los ajustes guardados. */
+  be.setPricing = async (p = {}) => {
+    const body = { tiers: { vip5: 5, vip10: 10, normal: 15 }, anon: 'consult', ...p, approx: { on: false, pct: 15, ...(p.approx || {}) } };
+    const r = await fetch(be.API + '/api/settings/pricing', { method: 'PUT', headers: { Authorization: 'Bearer ' + MASTER_TOKEN, 'Content-Type': 'application/json', Origin: be.SITE }, body: JSON.stringify(body) });
+    const j = await r.json().catch(() => ({})); if (!r.ok) throw new Error('setPricing: ' + r.status + ' ' + JSON.stringify(j));
+    return j.pricing;
+  };
+  return be;
 }

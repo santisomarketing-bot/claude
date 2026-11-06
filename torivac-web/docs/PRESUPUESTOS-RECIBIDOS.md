@@ -79,7 +79,7 @@ Cuerpo JSON (≤ 6 MB):
 
 - **Datos personales**: los ve quien tiene sesión de manager o de propietario; nunca la IP ni el error de correo a un propietario.
 - **Relé de correo**: reenviar permite escribir a terceros con adjunto, a diferencia de la copia automática al comprador. Por eso: solo con sesión (con código por correo si el manager lo tiene activo), máx. 3 destinatarios, topes por persona y diarios, asunto y texto fijos, mensaje solo texto plano escapado, PDF validado, `From` fijo del dominio y `Reply-To` del equipo. Una cuenta de propietario comprometida podría mandar hasta 20 correos/hora: por eso las cuentas se protegen con el código por correo (`SEGURIDAD.md`) y, en PHP, cada reenvío queda en **Actividad**.
-- **Rol «cliente» = propietario**: ve **todos** los presupuestos. No crear cuentas de compradores con ese rol.
+- **Rol `client` = propietario**: ve **todos** los presupuestos. Los **compradores** con cuenta usan el rol propio `customer` (solo lectura, solo sus presupuestos, con categoría de precio): ver [`PRECIOS-Y-CLIENTES.md`](PRECIOS-Y-CLIENTES.md). Nunca se crean cuentas de compradores con el rol `client`.
 
 ## 5. Pruebas que debe tener cada servidor
 

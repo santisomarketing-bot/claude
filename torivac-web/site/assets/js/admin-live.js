@@ -36,7 +36,7 @@
   /** Aviso (una sola vez) en la pantalla de acceso: «Contraseña cambiada…», «El código ha caducado…». */
   var loginNote = '';
   /** Guarda la sesión que devuelve el servidor (token y datos de la persona). El rol del servidor ('client') se muestra como 'cliente'. */
-  function openSession(r) { sessionStorage.setItem('tv_live', JSON.stringify({ token: r.token, email: r.user.email, name: r.user.name, role: r.user.role === 'manager' ? 'manager' : 'cliente' })); }
+  function openSession(r) { sessionStorage.setItem('tv_live', JSON.stringify({ token: r.token, email: r.user.email, name: r.user.name, role: r.user.role === 'manager' ? 'manager' : r.user.role === 'customer' ? 'customer' : 'cliente' })); }
   /**
    * Entra con correo y contraseña. Devuelve Promise<string|null>: null si ha ido bien (sesión abierta) o si el servidor pide un código por correo (queda en `pending` y se pinta la pantalla del código), o el mensaje de error.
    */
@@ -96,8 +96,9 @@
 
   // ───────────────────────────────────────── [VIEWS] cada vista devuelve Promise<string> (HTML)
   var NAV = {
-    manager: [['resumen', 'Resumen', '◧'], ['recibidos', 'Presupuestos recibidos', '☰'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['blog', 'Blog', '✍'], ['usuarios', 'Usuarios', '☺'], ['actividad', 'Actividad', '☷'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
-    cliente: [['presupuestador', 'Nuevo presupuesto', '✚'], ['recibidos', 'Presupuestos recibidos', '☰'], ['lista', 'Lista de precios', '€'], ['estadisticas', 'Estadísticas', '◔']],
+    manager: [['resumen', 'Resumen', '◧'], ['recibidos', 'Presupuestos recibidos', '☰'], ['clientes', 'Clientes', '☻'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['blog', 'Blog', '✍'], ['usuarios', 'Usuarios', '☺'], ['actividad', 'Actividad', '☷'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
+    cliente: [['presupuestador', 'Nuevo presupuesto', '✚'], ['recibidos', 'Presupuestos recibidos', '☰'], ['clientes', 'Clientes', '☻'], ['precios', 'Precios', '€'], ['lista', 'Lista de precios', '≡'], ['estadisticas', 'Estadísticas', '◔']],
+    customer: [['presupuestador', 'Nuevo presupuesto', '✚'], ['recibidos', 'Mis presupuestos', '☰'], ['lista', 'Lista de precios', '€']],
   };
   var V = {};
 
@@ -123,11 +124,12 @@
   V.recibidos = function (s, arg) { return TV.AdminQuotes.view(PCTX, arg || ''); };
 
   /** Vista Lista de precios (cliente): precios vigentes del Worker, sin IVA, con sus tramos (hasta 600 referencias). */
-  V.lista = function () {
+  V.lista = function (s) {
     return http('GET', '/api/prices').then(function (r) {
       var P = r.prices || { items: {} };
       var rows = Object.keys(TV.items).filter(function (k) { return P.items[k]; }).slice(0, 600).map(function (k) { var p = P.items[k]; return '<tr><td class="mono">' + esc(TV.items[k].d ? '—' : k) + '</td><td>' + esc(TV.items[k].n.es) + '</td><td class="num">' + esc(Q.unitMoney(p.p)) + '</td><td class="small">' + (p.t || []).map(function (t) { return 'desde ' + Number(t[0]) + ' uds. · ' + esc(Q.unitMoney(t[1])); }).join('<br>') + '</td></tr>'; }).join('');
-      return '<h1>Lista de precios</h1><p class="muted small">Actualizada ' + esc(when(P.updated_at)) + ' · precios sin IVA</p><div class="tbl-wrap"><table class="spec"><thead><tr><th>Ref.</th><th>Producto</th><th>Precio ud.</th><th>Tramos</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+      var mine = s && s.role === 'customer', empty = !Object.keys(P.items || {}).length;
+      return '<h1>Lista de precios</h1><p class="muted small">Actualizada ' + esc(when(P.updated_at)) + ' · precios sin IVA' + (mine ? ' · tus precios' : ' · precios base (categoría VIP); las demás categorías suman su porcentaje') + '</p>' + (empty ? '<p class="notice">Todavía no hay precios publicados: los productos salen «Consultar».</p>' : '') + '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Ref.</th><th>Producto</th><th>Precio ud.</th><th>Tramos</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
     });
   };
 
@@ -198,14 +200,15 @@
       '<label class="small"><input type="radio" name="upmode" value="replace"' + (uploadMode === 'replace' ? ' checked' : '') + '> <strong>Reemplazar toda la lista</strong>. Lo que no esté en la hoja se queda sin precio («Consultar»).</label></fieldset>';
   }
   /** Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA. */
-  V.precios = function () {
+  V.precios = function (s) {
+    if (s && s.role !== 'manager') return TV.AdminPrices.html(PCTX).then(function (h) { return '<h1>Precios</h1><p class="muted">Los porcentajes de las categorías, el precio que ven los visitantes y el precio de cada producto. La hoja de Drive, la subida de Excel y la IA de precios las lleva el equipo técnico.</p>' + h; });
     return http('GET', '/api/prices').then(function (r) {
       var P = r.prices || { items: {} }, m = r.meta || {};
-      return '<h1>Precios</h1><div class="cols"><section class="panel"><h2>Estado</h2><p>Origen: <strong>' + esc(P.source || '—') + '</strong><br>Modo: <strong>' + esc(P.mode || '—') + '</strong> · ' + Object.keys(P.items || {}).length + ' referencias con precio<br>Última actualización: ' + esc(when(P.updated_at)) + '</p>' +
+      return TV.AdminPrices.html(PCTX).then(function (cat) { return '<h1>Precios</h1>' + cat + '<div class="cols"><section class="panel"><h2>Estado</h2><p>Origen: <strong>' + esc(P.source || '—') + '</strong><br>Modo: <strong>' + esc(P.mode || '—') + '</strong> · ' + Object.keys(P.items || {}).length + ' referencias con precio' + (m.manual_count ? '<br>Editados a mano (la hoja no los pisa): <strong>' + Number(m.manual_count) + '</strong>' : '') + '<br>Última actualización: ' + esc(when(P.updated_at)) + '</p>' +
         '<p class="muted small">Última sincronización: ' + esc(when(m.at)) + ' (' + esc(m.reason || '—') + (m.mode ? ' · ' + (m.mode === 'replace' ? 'reemplazó toda la lista' : 'solo lo que traía la hoja') : '') + ')</p><p><button class="btn" data-refresh>Actualizar ahora (manual)</button></p><p class="muted small">La hoja de Drive se sincroniza sola cada 24 h; este botón fuerza la sincronización al instante.</p></section>' +
         '<section class="panel"><h2>Subir Excel / CSV</h2>' + modeBox() + '<div class="drop" data-drop tabindex="0" role="button"><strong>Arrastra la hoja aquí</strong><br><span class="muted small">.xlsx, .xls o .csv · acepta la plantilla (ref, price, qty2/price2…), una tarifa (Artículo · Descripción · Precio venta), la exportación de WooCommerce (SKU · Producto · Precio) o una hoja por ID de producto (ID · Precio)</span><input type="file" accept=".csv,.xlsx,.xls" hidden data-file></div></section></div>' +
         '<div data-draft></div>' +
-        '<section class="panel"><h2>Actualizar con una instrucción</h2><p class="muted small">Escribe qué cambiar, en castellano. La IA <strong>propone</strong> los cambios; ves la vista previa y solo se aplican si confirmas. Ej.: <em>sube un 3 % las resistencias y redondea a 2 decimales</em></p><textarea data-prompt rows="3" placeholder="sube un 3 % las resistencias"></textarea><p><button class="btn" data-run-prompt>Proponer cambios</button></p></section>';
+        '<section class="panel"><h2>Actualizar con una instrucción</h2><p class="muted small">Escribe qué cambiar, en castellano. La IA <strong>propone</strong> los cambios; ves la vista previa y solo se aplican si confirmas. Ej.: <em>sube un 3 % las resistencias y redondea a 2 decimales</em></p><textarea data-prompt rows="3" placeholder="sube un 3 % las resistencias"></textarea><p><button class="btn" data-run-prompt>Proponer cambios</button></p></section>'; });
     });
   };
   /** Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada). */
@@ -276,6 +279,8 @@
   var PCTX = { http: function (m, p, b) { return http(m, p, b); }, toast: function (m) { toast(m); }, when: function (i) { return when(i); }, adminData: function () { return adminData(); }, session: function () { return session(); }, render: function () { render(); }, relogin: function (m) { relogin(m); } };
   /** Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js). */
   V.propuestas = function () { return TV.AdminProposals.view(PCTX); };
+  /** Vista Clientes (manager y Propietario): cuentas de cliente, su categoría de precio y su contraseña (ver admin-customers.js). */
+  V.clientes = function () { return TV.AdminCustomers.view(PCTX); };
 
   // ───────────────────────────────────────── [BLOG] entradas del blog: lista y editor con vista previa, SEO, imágenes y traducciones (admin-blog.js); solo con el servidor PHP del hosting
   /** Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección. */
@@ -327,6 +332,8 @@
     if (root.querySelector('[data-bl-root]')) TV.AdminBlog.bind(root, PCTX);
     if (root.querySelector('[data-qr-root]')) TV.AdminQuotes.bind(root, PCTX);
     if (root.querySelector('[data-gg-root]')) TV.AdminGoogle.bind(root, PCTX);
+    if (root.querySelector('[data-cu-root]')) TV.AdminCustomers.bind(root, PCTX);
+    if (root.querySelector('[data-pr-root]')) TV.AdminPrices.bind(root, PCTX);
     if (root.querySelector('[data-sec-root],[data-sec-account]')) TV.AdminSecurity.bind(root, PCTX);
   }
   /** Logotipo de las pantallas de acceso (el mismo que el menú, sobre fondo oscuro). */
@@ -388,7 +395,7 @@
     var seq = ++renderSeq, s = session(), logo = esc(document.getElementById('logo-src').value);
     if (!s) { if (pending) renderCode(); else renderLogin(); return; }
     var nav = NAV[s.role], raw = (location.hash || '#').slice(1) || nav[0][0], cur = raw.split('/')[0], arg = raw.slice(cur.length + 1); if (!nav.some(function (n) { return n[0] === cur; })) { cur = nav[0][0]; arg = ''; }
-    root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + logo + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : 'Propietario') + '</span></div><nav aria-label="Panel">' +
+    root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + logo + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : s.role === 'customer' ? 'Cliente' : 'Propietario') + '</span></div><nav aria-label="Panel">' +
       nav.map(function (n) { return '<a href="#' + n[0] + '"' + (n[0] === cur ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + n[2] + '</span>' + esc(n[1]) + '</a>'; }).join('') + '</nav><div class="side-bot"><a href="../index.html">← Ir a la web</a><button class="btn sm ghost" data-logout type="button">Salir (' + esc(s.name || s.email) + ')</button></div></aside><main class="main" id="main"><p class="notice">Cargando…</p></main></div>';
     V[cur](s, arg).then(function (html) { var m = root.querySelector('#main'); if (!m || seq !== renderSeq) return; m.innerHTML = html; bind(); });       // si mientras tanto se pidió otra vista, esta respuesta se ignora
   }

@@ -93,16 +93,30 @@
   function assetUrl(a) { var cur = (document.body.getAttribute('data-path') || '/').split('/').filter(Boolean).length; return (cur ? new Array(cur + 1).join('../') : './') + a; }
 
   // ───────────────────────────────────────── [PRICES]
-  /** precio unitario aplicable a `qty` unidades de `ref` (null = sin precio → "consultar") */
+  //   Con `TV.prices.approx` (visitante sin cuenta: el servidor solo da precios APROXIMADOS) las fichas y la tienda los enseñan con «≈» y el presupuesto NO los valora (queda «Consultar»).
+  //   Con `pricesShown` en false (cliente en el presupuestador, antes de pulsar «Aplicar mis precios») tampoco se valora nada: el servidor siempre valora al enviar.
+  var pricesShown = true;
+  /** ¿Los precios cargados son aproximados (precio público aproximado, sin tramos)? */
+  function isApprox() { return !!(TV.prices && TV.prices.approx); }
+  /** precio unitario aplicable a `qty` unidades de `ref` (null = sin precio → "consultar"); con precios aproximados u ocultos siempre null: el presupuesto no se valora */
   function priceOf(ref, qty) {
+    if (isApprox() || !pricesShown) return null;
     var p = TV.prices && own(TV.prices.items, ref) ? TV.prices.items[ref] : null;
     if (!p || p.p == null) return null;
     var unit = p.p;
     (p.t || []).forEach(function (tier) { if (qty >= tier[0]) unit = tier[1]; });
     return unit;
   }
-  /** Tramos de precio por cantidad de `ref` como [[cantMin, precio], …]; [] si no tiene. */
-  function tiersOf(ref) { var p = TV.prices && own(TV.prices.items, ref) ? TV.prices.items[ref] : null; return (p && p.t) || []; }
+  /** Precio para MOSTRAR en fichas y tienda: el aproximado (para 1 unidad) si los precios son aproximados; si no, el de `priceOf`. null = «Consultar». */
+  function displayPrice(ref, qty) {
+    if (!isApprox()) return priceOf(ref, qty);
+    var p = TV.prices && own(TV.prices.items, ref) ? TV.prices.items[ref] : null;
+    return p && p.p != null ? p.p : null;
+  }
+  /** Importe unitario listo para mostrar: con «≈ » delante si los precios son aproximados. */
+  function displayMoney(n) { return (isApprox() ? '≈ ' : '') + unitMoney(n); }
+  /** Tramos de precio por cantidad de `ref` como [[cantMin, precio], …]; [] si no tiene (o si los precios son aproximados u ocultos). */
+  function tiersOf(ref) { if (isApprox() || !pricesShown) return []; var p = TV.prices && own(TV.prices.items, ref) ? TV.prices.items[ref] : null; return (p && p.t) || []; }
   /** Redondea a 2 decimales compensando el error de coma flotante. */
   function round2(n) { return Math.round((n + Number.EPSILON) * 100) / 100; }
 
@@ -166,6 +180,11 @@
       try { return fn(); } finally { lang = prev.lang; LOCALE = prev.locale; API.lang = prev.shown; buildFormats(); }
     },
     money: money, unitMoney: unitMoney, priceOf: priceOf, tiersOf: tiersOf, t: t, rel: rel, assetUrl: assetUrl, lang: lang,
+    isApprox: isApprox, displayPrice: displayPrice, displayMoney: displayMoney,
+    /** ¿Se están enseñando los importes en el presupuesto? (false = el cliente aún no ha pulsado «Aplicar mis precios») */
+    pricesShown: function () { return pricesShown; },
+    /** Enseña u oculta los importes del presupuesto (el servidor valora siempre al enviar) y avisa a la página (evento tv:prices y cambio «prices»). */
+    setPricesShown: function (v) { v = !!v; if (v === pricesShown) return; pricesShown = v; document.dispatchEvent(new CustomEvent('tv:prices')); emit({ type: 'prices' }); },
     /** nombre de línea listo para mostrar */
     label: function (d) { return d.name + (d.spec ? ' — ' + d.spec : ''); },
     /** referencia visible (las líneas genéricas P#### no se muestran como referencia) */
@@ -190,9 +209,15 @@
     base: function () { return String((TV.meta && TV.meta.api) || '').replace(/\/+$/, ''); },
     /** Indica si hay API de producción configurada (false = modo demo, con el envío simulado). */
     live: function () { return !!TV.api.base(); },
-    /** POST JSON a `path` de la API; devuelve siempre una Promise con la respuesta y su `status` (los fallos vuelven como {ok:false}). */
+    /** Sesión del panel {token, email, name, role} SOLO dentro del panel (iframe ?embed=1, misma pestaña); fuera del panel siempre null: la web pública nunca manda el token. */
+    session: function () {
+      try { if (!/[?&]embed=1/.test(location.search)) return null; var s = JSON.parse(sessionStorage.getItem('tv_live') || 'null'); return s && s.token ? s : null; } catch (e) { return null; }
+    },
+    /** Cabeceras con el token de la sesión del panel (si hay) para pedir precios y enviar presupuestos con la categoría de la persona. */
+    auth: function (h) { var s = TV.api.session(); h = h || {}; if (s) h.Authorization = 'Bearer ' + s.token; return h; },
+    /** POST JSON a `path` de la API; devuelve siempre una Promise con la respuesta y su `status` (los fallos vuelven como {ok:false}). En /api/order y dentro del panel manda la sesión. */
     post: function (path, body) {
-      return fetch(TV.api.base() + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      return fetch(TV.api.base() + path, { method: 'POST', headers: path === '/api/order' ? TV.api.auth({ 'Content-Type': 'application/json' }) : { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
         .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'HTTP ' + r.status }; }).then(function (j) { j.status = r.status; return j; }); })
         .catch(function () { return { ok: false, error: 'network', status: 0 }; });
     }
@@ -202,7 +227,7 @@
   //   El snapshot de la compilación (assets/data/prices.js) es solo el respaldo: con TV.meta.api manda lo que devuelva GET /api/prices (hoja de Drive, cada 24 h o al pulsar «actualizar»).
   TV.loadLivePrices = function () {
     if (!TV.api.live()) return Promise.resolve(false);
-    return fetch(TV.api.base() + '/api/prices', { cache: 'no-cache' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+    return fetch(TV.api.base() + '/api/prices', { cache: 'no-cache', headers: TV.api.auth() }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
       var p = j && j.prices; if (!p || !p.items || p.mode === 'none' || !Object.keys(p.items).length) return false;
       TV._pricesSnapshot = TV._pricesSnapshot || TV.prices; TV.prices = p; mergeSheetItems(); buildFormats();
       document.dispatchEvent(new CustomEvent('tv:prices')); emit({ type: 'prices' }); return true;

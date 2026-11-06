@@ -35,6 +35,7 @@ Aquí **sí** funciona todo de verdad: pedidos por correo a `info@grupotorivac.c
 | Login del panel | Solo demostración (credenciales en el código) | **Real** (usuarios con contraseña, sesiones firmadas) |
 | Estadísticas (Google Business, Ads, Search Console, GA4) | Sin conectar | Sin conectar: faltan las credenciales de Torivac; el panel no muestra cifras inventadas |
 | **Presupuestos recibidos** (panel → *Presupuestos recibidos*, para el manager y el **Propietario**) | Solo el panel de demostración | **Real**: ver, **editar**, **descargar en PDF** y **reenviar por correo** (con el PDF adjunto y copia a quien lo envía); queda historial y lo que llegó de la web se conserva ([`PRESUPUESTOS-RECIBIDOS.md`](PRESUPUESTOS-RECIBIDOS.md)) |
+| **Clientes y precios por categoría** (panel → *Clientes* y *Precios*) | Solo el panel de demostración | **Real**: cuentas de cliente de solo lectura (3 presupuestos al día, «Aplicar mis precios»), categorías VIP / VIP +5 / VIP +10 / Normal con porcentajes masivos, precio de cada producto editable (marca «manual») y la web pública con «Consultar precio» o precio aproximado ([`PRECIOS-Y-CLIENTES.md`](PRECIOS-Y-CLIENTES.md)) |
 | Medición de Google (GA4, Ads) y aviso de cookies | En el paquete de pruebas: aviso **de prueba** con IDs ficticios, sin enviar nada a Google | Preparada y probada, **apagada** hasta tener los IDs de Torivac, que se ponen en *Ajustes → Google* del panel, sin recompilar ([`GOOGLE.md`](GOOGLE.md)) |
 
 ## Cómo se ha comprobado (todo reproducible y sin red)
