@@ -252,7 +252,7 @@ function test_cu_users_route_with_customer_role()
     $me = cu_call('GET', '/auth/me', null, $tok);
     T::same([200, 'customer'], [$me->status, $me->body['user']['role']], 'el cliente entra y /auth/me lo reconoce');
     $login = cu_call('POST', '/auth/login', ['email' => 'ana@acme.es', 'password' => PW_CLI], null, '10.8.7.2');
-    T::same(['customer', 'vip10'], [$login->body['user']['role'], $login->body['user']['tier']], 'el acceso devuelve el usuario con su categoría');
+    T::same(['customer', false], [$login->body['user']['role'], array_key_exists('tier', $login->body['user'])], 'el acceso devuelve el usuario SIN el nombre de su categoría (el cliente no la ve)');
     T::same(200, cu_call('POST', '/users/ana@acme.es/password', ['password' => 'Otra-Clave-Nueva-2027!'], $s['mgr'])->status, 'el manager también puede cambiarle la contraseña por /users');
     T::same(200, cu_call('DELETE', '/users/ana@acme.es', null, $s['mgr'])->status, 'y borrarlo por /users');
     T::same(401, cu_call('GET', '/auth/me', null, $tok)->status, 'sesión cerrada');

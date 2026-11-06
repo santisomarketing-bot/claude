@@ -37,6 +37,7 @@ for B in "" "--php"; do
   paso "Web ↔ backend ${B:-worker}: pedido y contacto"  node scripts/qa-live.mjs $B
   paso "Panel ↔ backend ${B:-worker}"                   node scripts/qa-admin-live.mjs $B
   paso "Tarifa Excel ↔ backend ${B:-worker}"            node scripts/qa-tarifa.mjs $B
+  paso "Clientes y precios por categoría ↔ backend ${B:-worker}" node scripts/qa-customers.mjs $B
 done
 paso "Paquete del hosting tal como se sube"     node scripts/qa-package.mjs
 paso "Apache real + PHP-FPM (.htaccess de verdad)" node scripts/qa-apache.mjs

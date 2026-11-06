@@ -237,7 +237,7 @@ final class Router
         Audit::log($action, $who, $req, $detail);
         try { Users::set($user['email'], ['last_login' => Util::iso()]); } catch (\Throwable $e) { /* el último acceso es informativo */ }
         if ($user['role'] === 'manager') Backup::scheduleWeekly();
-        return new Response(['ok' => true, 'token' => Auth::signSession(['sub' => $user['email'], 'sid' => $sid], $secret), 'user' => $user]);
+        return new Response(['ok' => true, 'token' => Auth::signSession(['sub' => $user['email'], 'sid' => $sid], $secret), 'user' => array_diff_key($user, ['tier' => 1])]);      // un cliente no ve el nombre de su categoría de precio
     }
 
     /**
@@ -465,7 +465,7 @@ final class Router
         [$who, $blocked] = self::authenticate($req);
         if ($blocked) return $blocked;
         self::$actor = $who;
-        if ($path === '/auth/me') return $who ? new Response(['ok' => true, 'user' => $who + (empty($who['master']) ? ['code' => Security::codeStatus((array) Users::find((string) $who['sub']))] : [])]) : new Response(['ok' => false], 401);
+        if ($path === '/auth/me') return $who ? new Response(['ok' => true, 'user' => array_diff_key($who, ['tier' => 1]) + (empty($who['master']) ? ['code' => Security::codeStatus((array) Users::find((string) $who['sub']))] : [])]) : new Response(['ok' => false], 401);
         if (!$who) return new Response(['ok' => false, 'error' => 'No autorizado'], 401);
         if ($path === '/auth/logout' && $m === 'POST') {                                        // invalida TODOS los tokens anteriores de esta persona
             if (!empty($who['master'])) return new Response(['ok' => false, 'error' => 'El token maestro no tiene sesión que cerrar'], 400);

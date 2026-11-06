@@ -21,6 +21,7 @@ execFileSync('node', [path.join(ROOT, 'site/build.mjs'), `--out=${DIST}`], { env
 const sb = { window: {}, document: { getElementById: () => null } }; sb.window = sb; vm.createContext(sb);
 for (const f of ['catalog.js', 'prices.js']) vm.runInContext(fs.readFileSync(path.join(DIST, 'assets/data', f), 'utf8'), sb);
 const { items } = sb.TV;
+/** Primera referencia pedible del producto `pid` (su código real o la línea genérica P<id>). */
 const pick = (pid) => Object.keys(items).find((r) => items[r].pid === pid);
 const R_TT = pick(884), R_RES = pick(8339), R_BO = pick(932), R_NOP = pick(8340);        // R_NOP: sin precio en la hoja de estas pruebas
 
@@ -58,7 +59,9 @@ const navs = async (page) => (await page.$$eval('.side nav a', (a) => a.map((x) 
 /** Va a una dirección del panel y espera a que salga el elemento `sel`. */
 const go = async (page, hash, sel) => { await page.evaluate((h) => { location.hash = h; }, hash); await page.waitForSelector(sel, { timeout: 8000 }); };
 const tJ = await tokenOf('jefa@torivac.com', PW.jefa), tM = await tokenOf('maria@torivac.com', PW.maria), tA = await tokenOf('ana@cliente.es', PW.ana), tL = await tokenOf('luis@cliente.es', PW.luis);
+/** Los precios que recibe quien llama con `token` (sin token: un visitante): el objeto `prices` de GET /api/prices. */
 const pr = async (token) => (await api('/api/prices', { token })).j.prices || {};
+/** La línea de la referencia `ref` en un presupuesto. */
 const line = (order, ref) => order.lines.find((l) => l.ref === ref);
 
 console.log('\n1) GET /api/prices: cada quien ve lo suyo y el VIP no se filtra');
