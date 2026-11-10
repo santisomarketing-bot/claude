@@ -146,8 +146,12 @@ test('Clientes · /users ve y acepta el rol customer y su tier; los guardas de s
   assert.equal((await createUser(env, { email: 'c6@cliente.es', role: 'customer', password: 'Clave-Larga-2026', tier: 'oro' })).error, 'Categoría no válida');
   for (const [method, path, body] of [['GET', '/api/users'], ['POST', '/api/users', { email: 'z@z.es', role: 'customer', password: 'Clave-Larga-2026' }], ['DELETE', '/api/users/luis%40acme.es'], ['GET', '/api/settings/google'], ['GET', '/api/mail/status'], ['GET', '/api/messages'],
     ['POST', '/api/prices/refresh', {}], ['POST', '/api/prices/upload', { csv: 'ref;price\nA;1' }], ['POST', '/api/prices/ai', { instruction: 'sube un 3 % las resistencias' }], ['POST', '/api/prices/ai/apply', { changes: [] }], ['GET', '/api/admin/data'], ['GET', '/api/proposals/state']]) {
-    assert.equal((await api(env, ana, path, { method, body })).status, 403, `customer ${method} ${path}`); assert.equal((await api(env, duena, path, { method, body })).status, 403, `propietario ${method} ${path}`);
+    assert.equal((await api(env, ana, path, { method, body })).status, 403, `customer ${method} ${path}`);
+    if (method === 'POST' && (path === '/api/prices/refresh' || path === '/api/prices/upload')) continue;           // la hoja (subir Excel/CSV y «Actualizar ahora») también la lleva el propietario
+    assert.equal((await api(env, duena, path, { method, body })).status, 403, `propietario ${method} ${path}`);
   }
+  const subida = await api(env, duena, '/api/prices/upload', { method: 'POST', body: { csv: 'ref;price\nA;1', dry_run: true } }); assert.notEqual(subida.status, 403, 'el propietario puede previsualizar una hoja');
+  assert.notEqual((await api(env, duena, '/api/prices/refresh', { method: 'POST', body: {} })).status, 403, 'y pulsar «Actualizar ahora»');
   assert.equal((await api(env, MASTER, '/api/users')).status, 200); assert.equal((await api(env, ana, '/api/auth/logout', { method: 'POST', now: Date.now() })).status, 200, 'un cliente puede cerrar su sesión'); assert.equal((await api(env, ana, '/api/auth/me', { now: Date.now() + 5 })).status, 401);
 });
 

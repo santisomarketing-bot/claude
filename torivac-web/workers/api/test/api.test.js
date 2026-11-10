@@ -128,7 +128,7 @@ test('API: login, roles, usuarios y presupuestos recibidos (el propietario ve to
   const as = (t, p, o = {}) => api.fetch(req(p, { ...o, headers: { Authorization: `Bearer ${t}` } }), env, {}, { purge: false });
   assert.equal((await as(ct, '/api/users')).status, 403);                         // un cliente no gestiona usuarios
   assert.equal((await as(mt, '/api/users')).status, 200);
-  assert.equal((await as(ct, '/api/prices/refresh', { method: 'POST' })).status, 403);
+  assert.equal((await as(ct, '/api/prices/ai', { method: 'POST' })).status, 403);                  // ni la IA de precios (la hoja de Excel sí la lleva el propietario)
   assert.equal((await api.fetch(req('/api/users'), env, {})).status, 401);
   /** Registro de pedido de ejemplo con IP y un error de correo (para comprobar qué ve cada rol). */
   const rec = (number, at, email) => ({ number, at, customer: { email, name: 'x' }, lines: [], ip: '203.0.113.9', emailed: { team: false, customer: false, skipped: false, error: 'Resend respondió 403' } });

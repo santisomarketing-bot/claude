@@ -407,27 +407,27 @@ Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[
 - `V.ajustes` (l. 183) — Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), tu cuenta y las copias de seguridad (admin-security.js), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag).
 - `modeBox` (l. 197) — Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios.
 - `V.precios` (l. 203) — Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA.
-- `previewUpload` (l. 215) — Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada).
-- `list` (l. 221) — Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`.
-- `readUpload` (l. 233) — Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa.
-- `go` (l. 236) — Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo.
-- `applyUpload` (l. 241) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
-- `runPrompt` (l. 255) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
-- `applyProposal` (l. 271) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
-- `V.propuestas` (l. 281) — Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js).
-- `V.clientes` (l. 283) — Vista Clientes (manager y Propietario): cuentas de cliente, su categoría de precio y su contraseña (ver admin-customers.js).
-- `V.blog` (l. 287) — Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección.
-- `V.usuarios` (l. 291) — Vista «Usuarios» (manager): lista con último acceso, código por correo y bloqueos, alta, baja y contraseña nueva a una cuenta.
-- `V.actividad` (l. 293) — Vista «Actividad» (manager): quién entró y quién cambió qué, con filtros y descarga en CSV.
-- `onClick` (l. 297) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios y mensajes. Presupuestos, propuestas, blog y usuarios tienen sus propios manejadores.
-- `bind` (l. 308) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
-- `loginLogo` (l. 340) — Logotipo de las pantallas de acceso (el mismo que el menú, sobre fondo oscuro).
-- `loginError` (l. 342) — Muestra un error en el párrafo [data-err] de la pantalla de acceso (role=alert: lo anuncia el lector de pantalla).
-- `renderLogin` (l. 344) — Pantalla de acceso, primer paso: correo y contraseña. Si el servidor pide un código por correo, `login` deja el reto en `pending` y se repinta con la segunda pantalla.
-- `renderCode` (l. 353) — Segundo paso del acceso: el código de 6 cifras que llegó por correo, «recordar este dispositivo», «Reenviar» (con la espera que marca el servidor) y «Volver».
-- `tick` (l. 363) — Pone en el botón de reenviar la espera que falta (o lo activa); se detiene solo cuando la pantalla se repinta.
-- `back` (l. 371) — Vuelve a la primera pantalla (con un aviso, si lo hay).
-- `render` (l. 394) — Pinta la pantalla de acceso (contraseña, o el código por correo si falta) o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
+- `previewUpload` (l. 216) — Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada).
+- `list` (l. 222) — Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`.
+- `readUpload` (l. 234) — Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa.
+- `go` (l. 237) — Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo.
+- `applyUpload` (l. 242) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
+- `runPrompt` (l. 256) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
+- `applyProposal` (l. 272) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
+- `V.propuestas` (l. 282) — Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js).
+- `V.clientes` (l. 284) — Vista Clientes (manager y Propietario): cuentas de cliente, su categoría de precio y su contraseña (ver admin-customers.js).
+- `V.blog` (l. 288) — Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección.
+- `V.usuarios` (l. 292) — Vista «Usuarios» (manager): lista con último acceso, código por correo y bloqueos, alta, baja y contraseña nueva a una cuenta.
+- `V.actividad` (l. 294) — Vista «Actividad» (manager): quién entró y quién cambió qué, con filtros y descarga en CSV.
+- `onClick` (l. 298) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios y mensajes. Presupuestos, propuestas, blog y usuarios tienen sus propios manejadores.
+- `bind` (l. 309) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
+- `loginLogo` (l. 341) — Logotipo de las pantallas de acceso (el mismo que el menú, sobre fondo oscuro).
+- `loginError` (l. 343) — Muestra un error en el párrafo [data-err] de la pantalla de acceso (role=alert: lo anuncia el lector de pantalla).
+- `renderLogin` (l. 345) — Pantalla de acceso, primer paso: correo y contraseña. Si el servidor pide un código por correo, `login` deja el reto en `pending` y se repinta con la segunda pantalla.
+- `renderCode` (l. 354) — Segundo paso del acceso: el código de 6 cifras que llegó por correo, «recordar este dispositivo», «Reenviar» (con la espera que marca el servidor) y «Volver».
+- `tick` (l. 364) — Pone en el botón de reenviar la espera que falta (o lo activa); se detiene solo cuando la pantalla se repinta.
+- `back` (l. 372) — Vuelve a la primera pantalla (con un aviso, si lo hay).
+- `render` (l. 395) — Pinta la pantalla de acceso (contraseña, o el código por correo si falta) o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
 
 ### `admin-prices.js`
 
@@ -1452,7 +1452,7 @@ Secciones: `[QA-CUSTOMERS]`
 - `go` (l. 60) — Va a una dirección del panel y espera a que salga el elemento `sel`.
 - `pr` (l. 63) — Los precios que recibe quien llama con `token` (sin token: un visitante): el objeto `prices` de GET /api/prices.
 - `line` (l. 65) — La línea de la referencia `ref` en un presupuesto.
-- `post` (l. 181) — 2 más por el API (3 en total) y el 4.º se rechaza
+- `post` (l. 189) — 2 más por el API (3 en total) y el 4.º se rechaza
 
 ### `qa-google.mjs`
 
@@ -1516,8 +1516,8 @@ Secciones: `[QA-PACKAGE]` · `[PAQUETE]`
 - `pick` (l. 27) — Primera referencia pedible de un producto (código real del PDF o línea genérica P<id>).
 - `round2` (l. 30) — Redondea a 2 decimales (importe de línea).
 - `unit` (l. 32) — Precio unitario de una referencia para una cantidad, con los tramos de la hoja.
-- `ok` (l. 42) — Anota una comprobación: la cuenta como fallo si no se cumple y la imprime.
-- `peek` (l. 104) — Pide una ruta del API y devuelve el código HTTP y si la respuesta enseña código PHP.
+- `ok` (l. 43) — Anota una comprobación: la cuenta como fallo si no se cumple y la imprime.
+- `peek` (l. 105) — Pide una ruta del API y devuelve el código HTTP y si la respuesta enseña código PHP.
 
 ### `qa-quote.mjs`
 
@@ -1895,8 +1895,8 @@ Secciones: `[INDEX]`
 - `identify` (l. 69) — Quién llama + control de fallos de Bearer: sin Bearer → anónimo; con Bearer inválido cuenta un FALLO (30 / 10 min por ipKey) y, pasado el tope, responde { limited: true }. Una petición válida no consume cupo.
 - `handleLogin` (l. 82) — POST /api/auth/login, con protección contra la fuerza bruta: 5 contraseñas erróneas del mismo visitante (ipKey) contra una cuenta bloquean ESA pareja 1 HORA desde el 5.º fallo (ni la contraseña
 - `route` (l. 109) — Enruta la petición (ya con CORS resuelto) → Response; las excepciones suben a fetch, que las convierte en «Error interno».
-- `fetch` (l. 207) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
-- `scheduled` (l. 223) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
+- `fetch` (l. 208) — Atiende cada petición HTTP: CORS, rutas públicas, login y rutas de sesión o de manager; deps = { fetchImpl, ctx, now, purge, rand } para pruebas. Una excepción NUNCA escapa sin cabeceras CORS.
+- `scheduled` (l. 224) — Tarea programada (cron): sincroniza los precios con la hoja de origen y limpia los registros de límites caducados; un fallo se anota en prices:meta y en el log, y no se propaga.
 
 ### `mailapi.js`
 
@@ -2256,7 +2256,7 @@ Secciones: `[PRUEBAS-CLIENTES]`
 - `edit` (l. 31) — Cuerpo mínimo válido del PUT de un presupuesto con las líneas de ejemplo y la revisión indicada.
 - `alta` (l. 64) — POST /api/customers como manager con ese cuerpo → { status, j }.
 - `set` (l. 97) — POST /api/customers/<correo>/password como `who` → { status, j }.
-- `ts` (l. 179) — Turnstile simulado: siempre responde que la verificación falla.
+- `ts` (l. 183) — Turnstile simulado: siempre responde que la verificación falla.
 
 ### `google.test.js`
 
@@ -2379,9 +2379,9 @@ Pruebas de los arreglos de seguridad del ACCESO: D3 (límites de login, de Beare
 - `lockShape` (l. 34) — Cuerpo y cabecera de una respuesta de bloqueo: [error, claves, Retry-After === retry_after, retry_after entre 3590 y 3600].
 - `visto` (l. 100) — Origen (source) de la lista de precios que ve quien llama con ese token desde esa IP: completo para un manager, solo «upload» para el público.
 - `con` (l. 256) — Cuerpo de pedido con un nivel de anidamiento de n corchetes en un campo extra.
-- `rnd` (l. 289) — Número pseudoaleatorio en [0, 1) con semilla fija (la prueba es reproducible).
-- `pick` (l. 291) — Elemento al azar de una lista.
-- `gen` (l. 294) — Valor JSON raro al azar: átomos, listas y objetos con las claves que usa el API.
+- `rnd` (l. 291) — Número pseudoaleatorio en [0, 1) con semilla fija (la prueba es reproducible).
+- `pick` (l. 293) — Elemento al azar de una lista.
+- `gen` (l. 296) — Valor JSON raro al azar: átomos, listas y objetos con las claves que usa el API.
 
 ### `security-orders.test.js`
 
@@ -3131,7 +3131,7 @@ Secciones: `[ROUTER]` · `[LIMITES]` · `[ERRORES]`
 - `order` (l. 417) — POST /order: un visitante sin sesión, o una persona con sesión (Authorization: Bearer). Con un Bearer que no vale (inválido, caducado, cuenta borrada) NO se trata como visitante: 401 con code «session»; con la IP
 - `pricingRoutes` (l. 433) — Rutas de precios y clientes que atienden un manager y un propietario (rol client): /customers…, /settings/pricing y PUT /prices/items/:ref (la referencia va codificada en la URL). Devuelve null si la ruta no es de este
 - `route` (l. 451) — Tabla de rutas: públicas, de usuario autenticado y de manager (ver la lista de la cabecera).
-- `cron` (l. 555) — sincroniza los precios (cron diario), hace la copia de seguridad semanal si toca y limpia lo caducado, también si la hoja se rechaza (esa limpieza no depende de la hoja)
+- `cron` (l. 556) — sincroniza los precios (cron diario), hace la copia de seguridad semanal si toca y limpia lo caducado, también si la hoja se rechaza (esa limpieza no depende de la hoja)
 
 ### `Security.php`
 
@@ -3312,14 +3312,14 @@ Pruebas del API en PHP: equivalen a workers/api/test/api.test.js + ai.test.js (s
 - `test_contact_and_cors` (l. 229) — Formulario de contacto y reglas CORS (origen ajeno, el propio sitio y preflight).
 - `test_prices_endpoint_etag` (l. 247) — GET /prices: precios públicos con ETag (304) y `items` como objeto {} aunque esté vacío.
 - `test_manager_upload_roles_and_cron` (l. 258) — Subida de hojas (vista previa y aplicar), permisos por rol, referencia nueva por regla de familia y cron por URL con token.
-- `test_orders_visibility_and_users_api` (l. 286) — Un manager y un propietario (rol client) ven todos los presupuestos; alta y baja de usuarios por el API.
-- `ai_reply` (l. 309) — Servidor de IA simulado: contesta con una propuesta de cambios de precios (uso de herramienta de Anthropic).
-- `test_ai_validation_and_flow` (l. 315) — IA de precios: valida y limita lo que propone; la propuesta no escribe nada y solo se aplica lo confirmado.
-- `test_diag_checks` (l. 349) — Autodiagnóstico: una instalación a medias da errores que dicen qué arreglar, y una completa pasa sin fallos.
-- `test_privacy_session_revocation_and_contact_escaping` (l. 376) — GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto solo admite texto plano y su correo escapa el HTML.
-- `test_http_client_follows_redirects_without_leaking_credentials` (l. 411) — Cliente HTTP real contra un servidor local: sigue redirecciones de los GET a mano, no manda la credencial a otro servidor y corta los bucles.
-- `test_email_status_is_never_overstated` (l. 444) — El correo es parte del resultado: el pedido y el mensaje de contacto se guardan siempre y dicen si el aviso salió (y por qué no).
-- `test_diag_warns_about_orders_without_email` (l. 472) — El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo.
+- `test_orders_visibility_and_users_api` (l. 287) — Un manager y un propietario (rol client) ven todos los presupuestos; alta y baja de usuarios por el API.
+- `ai_reply` (l. 310) — Servidor de IA simulado: contesta con una propuesta de cambios de precios (uso de herramienta de Anthropic).
+- `test_ai_validation_and_flow` (l. 316) — IA de precios: valida y limita lo que propone; la propuesta no escribe nada y solo se aplica lo confirmado.
+- `test_diag_checks` (l. 350) — Autodiagnóstico: una instalación a medias da errores que dicen qué arreglar, y una completa pasa sin fallos.
+- `test_privacy_session_revocation_and_contact_escaping` (l. 377) — GET /prices: el público no ve quién cargó la hoja ni el id de Drive; un manager sí; un usuario borrado pierde la sesión; el contacto solo admite texto plano y su correo escapa el HTML.
+- `test_http_client_follows_redirects_without_leaking_credentials` (l. 412) — Cliente HTTP real contra un servidor local: sigue redirecciones de los GET a mano, no manda la credencial a otro servidor y corta los bucles.
+- `test_email_status_is_never_overstated` (l. 445) — El correo es parte del resultado: el pedido y el mensaje de contacto se guardan siempre y dicen si el aviso salió (y por qué no).
+- `test_diag_warns_about_orders_without_email` (l. 473) — El autodiagnóstico avisa si los últimos pedidos se guardaron sin que saliera su aviso por correo.
 
 ### `BlogMarkdownTest.php`
 

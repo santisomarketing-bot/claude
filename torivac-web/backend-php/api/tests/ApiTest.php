@@ -260,7 +260,8 @@ function test_manager_upload_roles_and_cron()
     fresh(); seedPrices(); publicAtSheetPrice();
     $cli = Users::create(['email' => 'ana@acme.es', 'name' => 'Ana', 'role' => 'client', 'password' => PW_ANA]);
     $tok = Router::handle(req('POST', '/auth/login', ['email' => 'ana@acme.es', 'password' => PW_ANA]))->body['token'];
-    T::same(403, Router::handle(req('POST', '/prices/upload', ['csv' => SHEET], ['Authorization' => 'Bearer ' . $tok]))->status, 'cliente no sube precios');
+    T::same(200, Router::handle(req('POST', '/prices/upload', ['csv' => SHEET, 'dry_run' => true], ['Authorization' => 'Bearer ' . $tok]))->status, 'el propietario (client) sí puede previsualizar una hoja');
+    T::same(403, Router::handle(req('POST', '/prices/ai', ['instruction' => 'sube un 3 %'], ['Authorization' => 'Bearer ' . $tok]))->status, 'pero la IA de precios sigue siendo solo del manager');
     T::same(401, Router::handle(req('GET', '/orders'))->status, 'sin sesión');
     $dry = Router::handle(req('POST', '/prices/upload', ['csv' => SHEET, 'dry_run' => true], master()))->body;
     T::same([true, ['R100'], 'ref'], [$dry['dry_run'], $dry['diff']['added'], $dry['report']['columns']['ref']], 'vista previa con informe');

@@ -94,7 +94,7 @@ console.log('\n2) Presupuestos recibidos: el manager y el propietario ven los mi
   // un propietario NO puede usar la API de manager aunque lo intente a mano; sí lee los presupuestos, pero sin IP ni error de correo
   const tok = JSON.parse(await c.page.evaluate(() => sessionStorage.getItem('tv_live'))).token;
   const st = await c.page.evaluate(async ([a, t]) => ({ users: (await fetch(a + '/api/users', { headers: { Authorization: 'Bearer ' + t } })).status, refresh: (await fetch(a + '/api/prices/refresh', { method: 'POST', headers: { Authorization: 'Bearer ' + t } })).status, ai: (await fetch(a + '/api/prices/ai', { method: 'POST', headers: { Authorization: 'Bearer ' + t, 'Content-Type': 'application/json' }, body: '{"instruction":"sube todo un 50 %"}' })).status }), [API, tok]);
-  ok(st.users === 403 && st.refresh === 403 && st.ai === 403, `propietario → /api/users ${st.users} · /prices/refresh ${st.refresh} · /prices/ai ${st.ai} (403)`);
+  ok(st.users === 403 && st.refresh !== 403 && st.refresh !== 401 && st.ai === 403, `propietario → /api/users ${st.users} (403) · /prices/refresh ${st.refresh} (permitido: la hoja también la lleva el propietario) · /prices/ai ${st.ai} (403)`);
   const own = await c.page.evaluate(async ([a, t]) => (await (await fetch(a + '/api/orders', { headers: { Authorization: 'Bearer ' + t } })).json()).orders, [API, tok]);
   ok(own.length === 1 && !('ip' in own[0]) && !(own[0].emailed && 'error' in own[0].emailed), 'la API le da el presupuesto sin la IP del solicitante ni el error del correo');
   const mgr = (await fetch(API + '/api/orders', { headers: { Authorization: 'Bearer ' + MASTER_TOKEN } }).then((r) => r.json())).orders;

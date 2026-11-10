@@ -583,7 +583,15 @@ function test_pr_ai_apply_keeps_manual_mark()
     pr_prices(['R100' => ['m' => true], 'P16633' => ['a' => 40]]);
     T::same(200, pr_call('POST', '/prices/ai/apply', ['changes' => [['ref' => 'R100', 'price' => 6]]], $s['mgr'])->status, 'la IA aplica sobre una entrada sin precio previo');
     T::same(403, pr_call('POST', '/prices/ai/apply', ['changes' => []], $s['own'])->status, 'la IA y las demás rutas de precios siguen siendo solo del manager (propietario: 403)');
-    foreach (['/prices/ai', '/prices/ai/apply', '/prices/upload', '/prices/refresh'] as $path) {
+    foreach (['/prices/ai', '/prices/ai/apply'] as $path) {
         T::same([403, 403], [pr_call('POST', $path, ['instruction' => 'sube un 3 % las resistencias', 'csv' => SHEET], $s['own'])->status, pr_call('POST', $path, ['instruction' => 'sube un 3 % las resistencias', 'csv' => SHEET], $s['cust']['normal'])->status], "$path: propietario y cliente, 403");
     }
+    foreach (['/prices/upload', '/prices/refresh'] as $path) {                            // la hoja (subir Excel/CSV y «Actualizar ahora») también la lleva el propietario; el cliente final, no
+        T::same(403, pr_call('POST', $path, ['csv' => SHEET, 'dry_run' => true], $s['cust']['normal'])->status, "$path: el cliente final, 403");
+        T::same(401, pr_call('POST', $path, ['csv' => SHEET, 'dry_run' => true])->status, "$path: sin sesión, 401");
+    }
+    $own = pr_call('POST', '/prices/upload', ['csv' => pr_sheet(), 'dry_run' => true], $s['own']);
+    T::same([200, true], [$own->status, $own->body['dry_run'] ?? null], 'el propietario previsualiza la hoja');
+    T::same(200, pr_call('POST', '/prices/upload', ['csv' => pr_sheet(), 'force' => true], $s['own'])->status, 'el propietario aplica la hoja');
+    $rf = pr_call('POST', '/prices/refresh', null, $s['own']); T::true($rf->status !== 403 && $rf->status !== 401, 'y puede pulsar «Actualizar ahora» (nunca 403): ' . $rf->status);
 }

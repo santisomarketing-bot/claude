@@ -277,7 +277,9 @@ test('anónimos y clientes no llegan a ninguna ruta de manager (matriz de rutas 
   const env = mkEnv(); const jefa = await signIn(env, 'jefa@torivac.com', 'manager'), ana = await signIn(env, 'ana.cliente@acme.es', 'client');
   const rutas = [['GET', '/api/users'], ['POST', '/api/users'], ['DELETE', '/api/users/z%40z.es'], ['POST', '/api/prices/refresh'], ['POST', '/api/prices/upload'], ['POST', '/api/prices/ai'], ['POST', '/api/prices/ai/apply'], ['GET', '/api/proposals/state'], ['POST', '/api/proposals/state'], ['GET', '/api/admin/data']];
   for (const [m, p] of rutas) {
-    assert.equal((await call(env, p, { method: m, ip: nextIp() })).status, 401, `anónimo ${m} ${p}`); assert.equal((await call(env, p, { method: m, token: ana.token })).status, 403, `cliente ${m} ${p}`);
+    assert.equal((await call(env, p, { method: m, ip: nextIp() })).status, 401, `anónimo ${m} ${p}`);
+    if (m === 'POST' && (p === '/api/prices/refresh' || p === '/api/prices/upload')) assert.notEqual((await call(env, p, { method: m, token: ana.token, body: {} })).status, 403, `propietario ${m} ${p}`);          // la hoja de precios también la lleva el propietario
+    else assert.equal((await call(env, p, { method: m, token: ana.token })).status, 403, `cliente ${m} ${p}`);
     assert.ok([200, 201, 400, 404, 409, 502, 503].includes((await call(env, p, { method: m, token: jefa.token, body: m === 'GET' || m === 'DELETE' ? undefined : {} })).status), `manager ${m} ${p}`);
   }
 });

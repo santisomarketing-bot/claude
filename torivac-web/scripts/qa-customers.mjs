@@ -158,6 +158,14 @@ console.log('\n4) Panel · el propietario: Clientes y Precios');
   const ap2 = await pr(); ok(!(R_RES in ap2.items) && R_TT in ap2.items && (await pr(tJ)).items[R_RES].m !== true, '«no» en el aproximado de un producto lo deja en «Consultar» para los visitantes, sin marcarlo manual');
   await page.fill(`[data-pr-row="${R_RES}"] [data-pr-a]`, '30'); await page.click(`[data-pr-save="${R_RES}"]`); await page.waitForFunction(() => /Guardado/.test((document.querySelector('[data-pr-edit-msg]') || {}).textContent || ''), null, { timeout: 5000 });
   ok((await pr()).items[R_RES].p === 30, 'y un número es el aproximado de ese producto (30)');
+  // el propietario sube la hoja de Excel/CSV (vista previa → aplicar) y puede actualizar; la instrucción a la IA no es suya
+  await go(page, '#precios', '[data-drop]');
+  ok((await page.locator('[data-refresh]').count()) === 1 && (await page.locator('[data-drop]').count()) === 1 && (await page.locator('[data-prompt]').count()) === 0, 'Precios del propietario: «Actualizar ahora» y «Subir Excel / CSV» sí; la instrucción a la IA no');
+  const csvPath = path.join(os.tmpdir(), `tv-owner-${process.pid}.csv`); fs.writeFileSync(csvPath, `ref;price;qty2;price2\n${R_TT};111;;\n`);
+  await page.setInputFiles('[data-file]', csvPath); await page.waitForSelector('[data-apply-upload]', { timeout: 8000 });
+  ok(/Vista previa/.test(await page.locator('[data-draft]').innerText()) && (await pr(tJ)).items[R_TT].p === 77, 'subir un CSV enseña la vista previa sin cambiar nada todavía');
+  await page.click('[data-apply-upload]'); await page.waitForFunction((r) => /Precios publicados/.test(document.body.innerText), null, { timeout: 8000 }).catch(() => {});
+  ok((await pr(tJ)).items[R_TT].p === 111, 'al aplicar, el precio de la hoja subida por el propietario (111) queda publicado'); fs.rmSync(csvPath, { force: true });
   ok(!errs.length, 'sin errores de JS' + (errs.length ? ': ' + errs[0] : '')); await ctx.close(); }
 await api('/api/prices/items/' + encodeURIComponent(R_RES), { method: 'PUT', token: tM, body: { a: null } });
 be.setCsv(`ref;price;qty2;price2\n${R_TT};100;10;90\n${R_RES};20;;\n${R_BO};40;;\n`); await api('/api/prices/refresh', { method: 'POST', token: MASTER_TOKEN, body: {} });
@@ -199,6 +207,18 @@ console.log('\n5) Panel · el cliente: solo lectura, «Aplicar mis precios» y 3
   ok(other.status === 404 && mineApi.orders.length === 3 && mineApi.quota.limit === 3 && mineApi.quota.used === 3 && mineApi.orders.every((o) => !('ip' in o) && !('emailed' in o) && !('history' in o) && !('owner' in o)), 'el presupuesto de otro cliente es un 404 y lo suyo llega reducido (sin IP, correo ni historial)');
   ok(!errs.length, 'sin errores de JS' + (errs.length ? ': ' + errs[0] : '')); await ctx.close();
   global.ANA_NUMBER = num; global.LUIS_NUMBER = l0.number; }
+
+console.log('\n5b) Panel · un cliente con el navegador en inglés (sin idioma guardado) sigue dentro del panel');
+{ const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 }, locale: 'en-GB' });
+  await ctx.route('**/assets/data/catalog.js', async (route) => { const r = await route.fetch(); await route.fulfill({ response: r, body: (await r.text()).replace('http://api.invalid', API) }); });
+  const page = await ctx.newPage(); await login(page, 'ana@cliente.es', PW.ana); await go(page, '#presupuestador', 'iframe.embed-frame');
+  const frame = await (await page.$('iframe.embed-frame')).contentFrame(); await frame.waitForSelector('[data-quote-form], [data-drop]', { timeout: 10000 });
+  ok(/\/presupuesto\/.*embed=1/.test(frame.url()), `el presupuestador del panel no se redirige al idioma del navegador: ${frame.url().replace(SITE, '')}`);
+  ok((await frame.locator('html.embed').count()) === 1 && (await frame.locator('header.site-header').first().isHidden()), 'y se ve sin la cabecera de la web (modo incrustado)');
+  ok((await frame.evaluate(() => localStorage.getItem('tv_lang'))) === null, 'ni guarda un idioma por su cuenta');
+  await frame.evaluate((r) => window.TV.Quote.add(r, 2), R_RES); await frame.waitForSelector('[data-apply-prices]', { timeout: 8000 });
+  ok((await frame.locator('[data-apply-prices]').count()) === 1, 'conserva «Aplicar mis precios» (la sesión del panel llega a la página)');
+  await ctx.close(); }
 
 console.log('\n6) Panel · el equipo ve la categoría de cada presupuesto y puede valorarlo con otra');
 { const { ctx, page, errs } = await newPage(); await login(page, 'jefa@torivac.com', PW.jefa);

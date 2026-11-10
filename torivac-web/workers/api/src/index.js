@@ -153,7 +153,8 @@ async function route(request, env, deps, { path, cors, nowMs }) {
     else if (path.startsWith('/api/prices/items/') && method === 'PUT') r = await handleItemEdit(request, env, path.slice('/api/prices/items/'.length), { who, cors, now: new Date(nowMs), catalog: deps.catalog });
     return r || json({ ok: false, error: 'No encontrado' }, 404, cors);
   }
-  if (!requireRole(who, 'manager')) return json({ ok: false, error: 'Solo para managers' }, 403, cors);
+  const ownerPrices = method === 'POST' && (path === '/api/prices/refresh' || path === '/api/prices/upload');          // la hoja de precios (actualizar y subir Excel/CSV) también la lleva el propietario; la IA, no
+  if (!requireRole(who, 'manager') && !(ownerPrices && requireRole(who, 'client'))) return json({ ok: false, error: 'Solo para managers' }, 403, cors);
   if (path === '/api/admin/data' && method === 'GET') return json({ ok: true, proposals: Array.isArray(adminData && adminData.proposals) ? adminData.proposals : [], admin: adminData && adminData.admin ? adminData.admin : { products: [], byRef: {} } }, 200, { ...cors, 'Cache-Control': 'no-store' });
   if (path === '/api/messages' && method === 'GET') return await handleMessageList(request, env, { cors });                  // mensajes de contacto (datos personales: solo managers)
   if (path.startsWith('/api/messages/') && method === 'DELETE') return await handleMessageDelete(env, path.slice('/api/messages/'.length), { cors });

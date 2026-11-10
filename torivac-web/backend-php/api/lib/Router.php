@@ -480,7 +480,8 @@ final class Router
         if ($path === '/orders' && $m === 'GET') return self::orders($who);
         if (strpos($path, '/orders/') === 0) return Quotes::handle($req, $who);                  // ver, editar y reenviar un presupuesto (manager y propietario; un cliente solo ve los suyos); un número con forma rara es 404, no 403
         if (Auth::requireRole($who, 'manager', 'client') && ($pr = self::pricingRoutes($req, $who)) !== null) return $pr;      // clientes, ajustes de precios y precio de un producto: manager y propietario
-        if (!Auth::requireRole($who, 'manager')) return new Response(['ok' => false, 'error' => 'Solo para managers'], 403);
+        $ownerPrices = $m === 'POST' && ($path === '/prices/refresh' || $path === '/prices/upload');                // la hoja de precios (actualizar y subir Excel/CSV) también la lleva el propietario; la IA, no
+        if (!Auth::requireRole($who, 'manager') && !($ownerPrices && Auth::requireRole($who, 'client'))) return new Response(['ok' => false, 'error' => 'Solo para managers'], 403);
         if ($path === '/diag' && $m === 'GET') return new Response(['ok' => true] + Diag::run(false, null, $req));                            // autodiagnóstico de la instalación (solo managers)
         if ($path === '/admin/data' && $m === 'GET') {                                          // propuestas y datos de cobertura: ya no se publican en la web, solo los ven los managers
             $d = AdminData::load();

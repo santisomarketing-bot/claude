@@ -21,7 +21,8 @@ Es el **contrato único** de `backend-php/api` y `workers/api`: mismas rutas, mi
 | Cuentas de cliente (`/customers`) | sí | sí | no | — |
 | Porcentajes y ajustes de precios (`/settings/pricing`) | sí | sí | no | — |
 | Editar precios de producto (`/prices/items/:ref`) | sí | sí | no | — |
-| Subir hoja, sincronizar, IA de precios | sí | no | no | — |
+| Subir hoja (Excel/CSV, con vista previa) y «Actualizar ahora» | sí | **sí** | no | — |
+| IA de precios (proponer y aplicar) | sí | no | no | — |
 | Usuarios del equipo, Ajustes, Google, copias… | sí | no | no | — |
 | `GET /prices` | base (VIP) con marcas | base (VIP) con marcas | **precios de su categoría** | según ajuste (§4) |
 
@@ -153,3 +154,4 @@ Donde el contrato dejaba margen, los dos servidores hacen lo mismo (lo comprueba
 - **`PUT /orders/:n` sin `tier`:** lo nuevo o con la cantidad cambiada se valora con el `priceTier` del registro (§6).
 - **Límite conocido (Worker):** KV no es atómico, así que el tope diario de 3 es de mejor esfuerzo bajo carga concurrente; PHP lo protege con el bloqueo del almacén.
 
+- **Hoja de precios del propietario (`client`).** `POST /prices/upload` (con y sin `dry_run`) y `POST /prices/refresh` los pueden usar `manager` y `client`; un `customer` recibe `403 'Solo para managers'` y sin sesión `401`. Las reglas de la hoja no cambian por el rol (modo `merge`/`replace`, `force` si retira más del 50 %, las filas marcadas «manual» no se pisan). La IA de precios (`/prices/ai`, `/prices/ai/apply`) sigue siendo solo del `manager`. Lo comprueban `ApiTest.php`, `PricingTest.php`, `customers.test.js`, `security-auth.test.js` y, en el navegador, el bloque 4 de `scripts/qa-customers.mjs` (el propietario sube un CSV, ve la vista previa y la aplica).

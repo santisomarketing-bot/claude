@@ -113,7 +113,7 @@
   (function detect() {
     var pref = store('tv_lang'), src = store('tv_lang_src');
     var q = location.search || '';
-    if (/nolang/.test(q)) return;
+    if (/nolang/.test(q) || document.documentElement.classList.contains('embed')) return;                      // dentro del panel (?embed=1) no se cambia de idioma ni se guarda nada: el panel está en castellano y la página no debe perder ?embed=1 ni la sesión
     if (pref && src === 'manual') { if (pref !== lang) offer(pref); return; }          // el usuario eligió: solo se ofrece, nunca se fuerza
     var bl = browserLang();
     if (!bl) return;
