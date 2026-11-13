@@ -38,6 +38,7 @@ class Page(HTMLParser):
         self._h = None
         self.imgs = []           # (src, alt|None)
         self.anchors = []        # href
+        self.anchors_content = []  # href de los enlaces del contenido (sin el selector de idioma, que enlaza a propósito a otros idiomas)
         self.ld = []
         self._in_ld = False
         self._ld_buf = ""
@@ -68,6 +69,8 @@ class Page(HTMLParser):
             self.imgs.append((a.get("src"), a.get("alt")))
         elif tag == "a" and a.get("href"):
             self.anchors.append(a["href"])
+            if "data-set-lang" not in a and not a.get("hreflang"):
+                self.anchors_content.append(a["href"])
         elif tag == "script":
             if a.get("type") == "application/ld+json":
                 self._in_ld, self._ld_buf = True, ""
@@ -259,6 +262,24 @@ def main():
     if broken:
         for href, routes in sorted(broken.items(), key=lambda kv: -len(kv[1]))[:30]:
             err("enlace-roto", href, f"desde {len(routes)} páginas, p. ej. {sorted(routes)[:2]}")
+
+    # ---- enlaces de una página traducida a la versión en otro idioma cuando existe la de SU idioma (solo con --base: hace falta hreflang)
+    if base:
+        alts_of = {r: {h: urlparse(u).path for (rel, h, u) in p.links if rel == "alternate" and h and h != "x-default" and u} for r, p in index.items()}
+        wrong = defaultdict(set)
+        for route, p in index.items():
+            lang = lang_of(route)
+            for href in p.anchors_content:
+                if re.match(r"^(#|mailto:|tel:|javascript:|data:|https?://|//)", href):
+                    continue
+                path = unquote(urlparse(href).path)
+                tgt = Path(__import__("os").path.normpath(str((Path(route).parent / path) if not path.startswith("/") else Path(path))))
+                troute = "/" + str(tgt).lstrip("/")
+                troute = troute[: -len("index.html")] if troute.endswith("/index.html") else (troute if troute.endswith("/") else troute + "/")
+                if troute in index and lang_of(troute) != lang and lang in alts_of.get(troute, {}):
+                    wrong[(lang, troute, alts_of[troute][lang])].add(route)
+        for (lang, troute, eq), routes in sorted(wrong.items(), key=lambda kv: -len(kv[1]))[:30]:
+            err("enlace-otro-idioma", f"[{lang}] {troute}", f"debería ir a {eq}; desde {len(routes)} páginas, p. ej. {sorted(routes)[:2]}")
 
     # ---- sitemap / robots / llms
     sm = root / "sitemap.xml"

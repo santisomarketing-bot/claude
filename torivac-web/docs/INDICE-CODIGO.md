@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 2294/2294 funciones descritas (100 %) · 230/230 archivos con cabecera.
+**Cobertura**: 2308/2308 funciones descritas (100 %) · 233/233 archivos con cabecera.
 
 
 ## `site/`
@@ -11,37 +11,38 @@
 
 [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio] [--out=carpeta] Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS). Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
 
-Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[LIVE]` · `[GOOGLE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[PROPOSALS-APPLIED]` · `[ORIGINAL]` · `[SEO]` · `[BLOG]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
+Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[NEWCONTENT]` · `[LIVE]` · `[GOOGLE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[PROPOSALS-APPLIED]` · `[ORIGINAL]` · `[SEO]` · `[BLOG]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
 
-- `arg0` (l. 25) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `arg` (l. 28) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `jl` (l. 42) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
-- `normName` (l. 69) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
-- `depthOf` (l. 73) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
-- `canon` (l. 76) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
-- `subtreeIds` (l. 123) — Ids de una categoría y de todas sus descendientes.
-- `prodIdsOf` (l. 125) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
-- `visible` (l. 129) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
-- `prune` (l. 131) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
-- `pth` (l. 152) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
-- `pickCats` (l. 207) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
-- `emit` (l. 230) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
-- `mkctx` (l. 232) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
-- `fitTitle` (l. 237) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
-- `crumbHome` (l. 239) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
-- `crumbProducts` (l. 241) — Miga de pan «Productos» del idioma `lang`: { name, path }.
-- `pickAlt` (l. 243) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
-- `absImg` (l. 245) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
-- `alts` (l. 252) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
-- `a` (l. 437) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 455) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `css` (l. 465) — Texto del archivo site/assets/css/<n>.css.
-- `xml` (l. 485) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 487) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 499) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 526) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
-- `hashOf` (l. 544) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
-- `walk` (l. 554) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
+- `arg0` (l. 26) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `arg` (l. 29) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `jl` (l. 43) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
+- `normName` (l. 79) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
+- `depthOf` (l. 83) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
+- `canon` (l. 86) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
+- `subtreeIds` (l. 133) — Ids de una categoría y de todas sus descendientes.
+- `prodIdsOf` (l. 135) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
+- `visible` (l. 139) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
+- `prune` (l. 141) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
+- `pth` (l. 162) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
+- `pickCats` (l. 217) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
+- `groupEquiv` (l. 237) — Registra un grupo de páginas equivalentes ({ es, en, fr, de } → ruta): cada ruta del grupo apunta al grupo entero.
+- `emit` (l. 248) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
+- `mkctx` (l. 250) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
+- `fitTitle` (l. 255) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
+- `crumbHome` (l. 257) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
+- `crumbProducts` (l. 259) — Miga de pan «Productos» del idioma `lang`: { name, path }.
+- `pickAlt` (l. 261) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
+- `absImg` (l. 263) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
+- `alts` (l. 270) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
+- `a` (l. 455) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
+- `copyDir` (l. 473) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 483) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 503) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 505) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 517) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 544) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `hashOf` (l. 562) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+- `walk` (l. 572) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
 
 ### `templates.mjs`
 
@@ -180,6 +181,19 @@ Secciones: `[I18N]`
 - `refLabel` (l. 176) — «1 referencia / 2 referencias» en los 4 idiomas.
 - `t` (l. 178) — Texto de interfaz de la clave `key` en el idioma `lang` (español si falta; la propia clave si no existe).
 
+### `newcontent.mjs`
+
+[NEWCONTENT] Páginas NUEVAS (plan 2027): contenido que no viene de la web original y que solo se publica cuando está APROBADO. Cada archivo de data/content-new/*.json describe una página con una versión por idioma. Una versión tiene estado «borrador» (no se publica) o «aprobado» (se publica). Aprobar exige quién, con qué función y cuándo:
+
+Secciones: `[NEWCONTENT]` · `[LOAD]` · `[BUILD]`
+
+- `plain` (l. 22) — ¿Es un texto plano válido? (sin etiquetas ni entidades: el contenido nuevo se escribe en texto y el generador lo escapa).
+- `checkVersion` (l. 25) — Valida una versión (`v`) de la página `id` en el idioma `lang` y devuelve la lista de problemas (vacía si está bien).
+- `loadNewContent` (l. 54) — Lee y valida data/content-new/*.json. `existing` es el conjunto de rutas ya ocupadas por otras páginas.
+- `blocksOf` (l. 87) — Bloques (modelo de página genérica) de una versión: h1, aviso de borrador, párrafo de entrada, secciones y botones.
+- `escapeHtml` (l. 100) — Escapa el texto para HTML.
+- `applyNewContent` (l. 106) — Añade a `pages` (idioma → ruta → página) las versiones que toca publicar: las aprobadas y, con `drafts`, también los borradores.
+
 ### `proposals-apply.mjs`
 
 [PROPOSALS-APPLY] Aplica al contenido de la web las propuestas que el manager aprobó con SU texto desde el panel (data/catalog/proposals.applied.json, que sale de scripts/apply_proposals.mjs a partir del archivo que descarga el panel). La usan site/build.mjs (al compilar) y scripts/apply_proposals.mjs (para probar antes de guardar): la misma función, así lo que se comprueba es lo que se publica.
@@ -211,15 +225,16 @@ Secciones: `[RENDER]`
 - `setVersionedAssets` (l. 32) — Activa (servidor real) o desactiva (demo con file://) el marcador de versión en las URLs de CSS y JS.
 - `asset` (l. 34) — URL relativa a un asset ('assets/css/x.css') desde la página `from`; los .css y .js llevan el marcador de versión si está activado.
 - `mapLink` (l. 50) — Reescribe un enlace de la web original a su equivalente local (página, PDF) o lo deja absoluto.
-- `inlineHtml` (l. 69) — HTML inline de un bloque (los enlaces internos se reescriben).
-- `hText` (l. 78) — Texto de un encabezado. Con «Original» conserva los saltos de línea del original (cuando los tiene); sin «Original», el texto de siempre.
-- `cellText` (l. 81) — Texto de una celda o del título de una tabla. Con «Original» se conserva el salto de línea y la cursiva de la web actual (castellano arriba y la traducción debajo); sin «Original», el texto de siempre.
-- `tbl` (l. 84) — Bloque de tabla → HTML: detecta la cabecera, usa una primera fila de una sola celda como título y añade región con scroll.
-- `cell` (l. 89) — Celda th/td con el texto escapado; las th dentro del cuerpo llevan scope="row".
-- `blocksHtml` (l. 98) — Bloques semánticos → HTML. opts.demote: sube el nivel de los encabezados (h1→h2…) para que la plantilla sea dueña del h1.
-- `plain` (l. 136) — Texto plano de una lista de bloques (encabezados, párrafos sin etiquetas y listas), con los espacios normalizados.
-- `fmtDate` (l. 139) — Fecha ISO → fecha larga localizada según el idioma (p. ej. «12 de marzo de 2024»).
-- `writeFile` (l. 142) — Escribe `content` en root/p creando las carpetas intermedias que falten.
+- `inLang` (l. 63) — Si la página de destino está en otro idioma que la actual y tiene equivalente en el idioma actual, devuelve esa ruta (la web original enlaza muchas veces a la versión española desde las traducidas).
+- `inlineHtml` (l. 75) — HTML inline de un bloque (los enlaces internos se reescriben).
+- `hText` (l. 84) — Texto de un encabezado. Con «Original» conserva los saltos de línea del original (cuando los tiene); sin «Original», el texto de siempre.
+- `cellText` (l. 87) — Texto de una celda o del título de una tabla. Con «Original» se conserva el salto de línea y la cursiva de la web actual (castellano arriba y la traducción debajo); sin «Original», el texto de siempre.
+- `tbl` (l. 90) — Bloque de tabla → HTML: detecta la cabecera, usa una primera fila de una sola celda como título y añade región con scroll.
+- `cell` (l. 95) — Celda th/td con el texto escapado; las th dentro del cuerpo llevan scope="row".
+- `blocksHtml` (l. 104) — Bloques semánticos → HTML. opts.demote: sube el nivel de los encabezados (h1→h2…) para que la plantilla sea dueña del h1.
+- `plain` (l. 142) — Texto plano de una lista de bloques (encabezados, párrafos sin etiquetas y listas), con los espacios normalizados.
+- `fmtDate` (l. 145) — Fecha ISO → fecha larga localizada según el idioma (p. ej. «12 de marzo de 2024»).
+- `writeFile` (l. 148) — Escribe `content` en root/p creando las carpetas intermedias que falten.
 
 ### `seo.mjs`
 
@@ -1137,6 +1152,12 @@ Sesión 1 · Reparto de PDFs en trabajos para agentes. Requiere prepare.py pdf. 
 - `norm_text` (l. 38) — Texto de todas las páginas de un PDF en minúsculas alfanuméricas, para detectar PDF con el mismo texto.
 - `add` (l. 60) — Añade a `jobs` un trabajo `p<nn>-<kind>` numerado con el contador global `n`.
 
+### `plan2027_proposals.py`
+
+Plan de mejora 2027 (12/11/2026) · Datos que Torivac debe confirmar antes de publicar contenido nuevo → PROPUESTAS para el panel. La web NO se modifica: cada punto queda como propuesta «pendiente» (tipo missing_data) para que lo resuelva quien corresponda (equipo comercial o técnico).
+
+- `main` (l. 43) — Genera las propuestas del plan 2027 (datos a confirmar, unidad de potencia y términos a revisar) en plan2027-proposals-raw.json.
+
 ### `prepare.py`
 
 Sesión 1 · Preparación determinista para el análisis.    python3 -I scripts/prepare.py            # todo
@@ -1195,14 +1216,14 @@ Secciones: `[INLINE]` · `[WALK]`
 Sesión 16 · Auditoría SEO/GEO/accesibilidad estática de un build con --base (equivalente al seo-check de Why Not, ampliado a 4 idiomas).    node site/build.mjs --base=https://demo.torivac.example --out=/tmp/seo-dist
 
 - `__init__` (l. 29) — Inicializa el estado del analizador: idioma, título, metas, enlaces, encabezados, imágenes, anclas y bloques JSON-LD.
-- `handle_starttag` (l. 48) — Procesa una etiqueta de apertura: registra lang, metas, link, encabezados, imágenes, anclas y bloques JSON-LD.
-- `handle_endtag` (l. 79) — Procesa una etiqueta de cierre: cierra el título, el encabezado (con su texto), el bloque JSON-LD o el script/style ignorado.
-- `handle_data` (l. 95) — Acumula el texto en el título, en el bloque JSON-LD o en el encabezado abiertos (sin el texto de script/style).
-- `route_of` (l. 105) — Ruta lógica (por ejemplo /en/product/x/) de un index.html generado, relativa a la carpeta de salida `root`.
-- `lang_of` (l. 111) — Idioma de una ruta por su prefijo (en, fr, de); es si no lleva ninguno.
-- `main` (l. 117) — Audita la carpeta de un build estático (páginas, enlaces, sitemap, robots, llms) e imprime el informe; sale con 1 si hay errores.
-- `err` (l. 126) — Registra un error de la auditoría con el código `code` para la ruta `route`.
-- `warn` (l. 130) — Registra un aviso (no hace fallar la auditoría) con el código `code` para la ruta `route`.
+- `handle_starttag` (l. 49) — Procesa una etiqueta de apertura: registra lang, metas, link, encabezados, imágenes, anclas y bloques JSON-LD.
+- `handle_endtag` (l. 82) — Procesa una etiqueta de cierre: cierra el título, el encabezado (con su texto), el bloque JSON-LD o el script/style ignorado.
+- `handle_data` (l. 98) — Acumula el texto en el título, en el bloque JSON-LD o en el encabezado abiertos (sin el texto de script/style).
+- `route_of` (l. 108) — Ruta lógica (por ejemplo /en/product/x/) de un index.html generado, relativa a la carpeta de salida `root`.
+- `lang_of` (l. 114) — Idioma de una ruta por su prefijo (en, fr, de); es si no lleva ninguno.
+- `main` (l. 120) — Audita la carpeta de un build estático (páginas, enlaces, sitemap, robots, llms) e imprime el informe; sale con 1 si hay errores.
+- `err` (l. 129) — Registra un error de la auditoría con el código `code` para la ruta `route`.
+- `warn` (l. 133) — Registra un aviso (no hace fallar la auditoría) con el código `code` para la ruta `route`.
 
 ### `slice.py`
 
@@ -1517,7 +1538,7 @@ Secciones: `[QA-PACKAGE]` · `[PAQUETE]`
 - `round2` (l. 30) — Redondea a 2 decimales (importe de línea).
 - `unit` (l. 32) — Precio unitario de una referencia para una cantidad, con los tramos de la hoja.
 - `ok` (l. 43) — Anota una comprobación: la cuenta como fallo si no se cumple y la imprime.
-- `peek` (l. 105) — Pide una ruta del API y devuelve el código HTTP y si la respuesta enseña código PHP.
+- `peek` (l. 107) — Pide una ruta del API y devuelve el código HTTP y si la respuesta enseña código PHP.
 
 ### `qa-quote.mjs`
 
@@ -1676,6 +1697,18 @@ Secciones: `[TEST-BLOG-MD]`
 - `eq` (l. 20) — Comprueba que `got` es exactamente `want` y, si no, enseña los dos.
 - `audit` (l. 41) — Devuelve la lista de problemas del HTML (vacía si todo es lo permitido).
 - `rnd` (l. 80) — Número pseudoaleatorio en [0,1) con semilla fija: la misma tanda de entradas hostiles en cada ejecución.
+
+### `test-newcontent.mjs`
+
+[TEST-NEWCONTENT] Contenido nuevo (plan 2027): solo se publica lo APROBADO. Comprueba la validación (quién y con qué función aprueba), que un borrador no sale en la web, que las equivalencias entre idiomas solo enlazan versiones publicadas y que una compilación de producción con una versión aprobada pasa la auditoría SEO. node scripts/test-newcontent.mjs
+
+Secciones: `[TEST-NEWCONTENT]`
+
+- `ok` (l. 15) — Anota una comprobación: ✓ o ✗ con su descripción.
+- `sample` (l. 18) — Página de ejemplo válida con el estado y la aprobación indicados por idioma.
+- `dirWith` (l. 26) — Escribe `obj` como data/content-new/<id>.json en una carpeta temporal nueva y devuelve la carpeta.
+- `problems` (l. 28) — Problemas que devuelve la validación para una página.
+- `clone` (l. 30) — Copia profunda para modificar un ejemplo sin tocar el original.
 
 ### `test-plain-text.mjs`
 

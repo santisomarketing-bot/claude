@@ -64,6 +64,8 @@ await page.waitForFunction(() => TV.prices && TV.prices.mode === 'live', null, {
 const shown = await page.locator(`tr[data-ref="${R[0]}"] [data-price-for]`).first().innerText();
 ok(shown.includes(String(demo.items[R[0]].p).replace('.', ',')), `la ficha muestra el precio del servidor (${R[0]}: «${shown.replace(/\s+/g, ' ')}»)`);
 ok(!(await page.locator('[data-demo-flag]').first().isVisible().catch(() => false)), 'sin marca DEMO');
+{ const raw = await (await fetch(BASE + '/presupuesto/')).text();                                          // el HTML tal como llega (sin ejecutar JavaScript): ni rastro del aviso de precios de demostración
+  ok(!/Precios de demostración|Demo prices|Prix de démonstration|Demopreise/.test(raw), 'el HTML de /presupuesto/ no lleva el texto «precios de demostración» (solo existe con una hoja de demostración)'); }
 
 console.log('\n2) presupuesto y pedido contra el API PHP del paquete');
 await page.evaluate(([refs, q]) => { refs.forEach((r) => TV.Quote.add(r, q[r])); }, [R, Q]);

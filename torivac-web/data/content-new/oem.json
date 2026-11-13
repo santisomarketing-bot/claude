@@ -1,0 +1,44 @@
+{
+  "id": "oem",
+  "kind": "landing",
+  "slug": { "es": "/fabricacion-transformadores-oem/", "en": "/en/oem-transformer-manufacturing/" },
+  "notes": [
+    "Origen: Plan de mejora 2027 (12/11/2026), secciones 7 y 8. Texto NUEVO: no existe en la web original.",
+    "Pendiente del usuario comercial: confirmar «fabricante», el tramo «de 100 a 1.000 unidades» y que se mantiene la frase «cantidades mínimas, condiciones y plazos se confirmarán según el producto».",
+    "No incluida a propósito la sección «Integración y seguimiento» (prototipos, ensayos, trazabilidad, control de cambios): solo se añade cuando Torivac lo confirme.",
+    "Sin botón «Adjuntar especificaciones»: el formulario de contacto no admite archivos. Decisión: sin adjuntos por ahora.",
+    "Pendiente del traductor: validar la versión inglesa antes de aprobarla."
+  ],
+  "langs": {
+    "es": {
+      "status": "borrador",
+      "title": "Fabricante de transformadores para OEM | Torivac",
+      "meta_description": "Transformadores para fabricantes de equipos: solicitudes de 100 a 1.000 unidades y proyectos recurrentes. Envía especificaciones y volumen previsto.",
+      "h1": "Fabricante de transformadores para OEM y producción en serie",
+      "lead": "Torivac colabora con fabricantes de equipos que necesitan integrar transformadores y soluciones de regulación eléctrica en sus propios productos. Nuestro objetivo es facilitar la definición técnica, la documentación del componente y la continuidad del suministro conforme a los requisitos acordados.",
+      "sections": [
+        { "h2": "Solicitudes de 100 a 1.000 unidades y proyectos recurrentes", "p": ["Si estás valorando una compra industrial de 100, 500 o 1.000 unidades, envíanos las especificaciones y el volumen previsto. La viabilidad de fabricación, las cantidades mínimas, las condiciones y los plazos se confirmarán según el producto y la configuración solicitada."] },
+        { "h2": "Información para preparar una oferta", "p": ["Potencia (VA), primario, secundarios, frecuencia, número de unidades por pedido, demanda anual estimada, formato de montaje, dimensiones máximas, normas exigidas y archivos de referencia."] }
+      ],
+      "cta": [
+        { "label": "Solicitar presupuesto OEM", "href": "/contacto/" },
+        { "label": "Ver transformadores toroidales", "href": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/" }
+      ]
+    },
+    "en": {
+      "status": "borrador",
+      "title": "OEM Transformer Manufacturing | Torivac",
+      "meta_description": "Transformers for equipment manufacturers: requests from 100 to 1,000 units and recurring projects. Send your specifications and expected volume.",
+      "h1": "Transformer Manufacturer for OEM and Series Production",
+      "lead": "Torivac works with equipment manufacturers that need to integrate transformers and electrical regulation solutions into their own products. Our aim is to make technical definition, component documentation and continuity of supply easier, in line with the agreed requirements.",
+      "sections": [
+        { "h2": "Requests from 100 to 1,000 units and recurring projects", "p": ["If you are considering an industrial purchase of 100, 500 or 1,000 units, send us your specifications and expected volume. Manufacturing feasibility, minimum quantities, conditions and lead times will be confirmed according to the product and the configuration requested."] },
+        { "h2": "Information to prepare a quotation", "p": ["Power rating (VA), primary, secondaries, frequency, number of units per order, estimated annual demand, mounting format, maximum dimensions, required standards and reference files."] }
+      ],
+      "cta": [
+        { "label": "Request an OEM quotation", "href": "/contacto/" },
+        { "label": "View toroidal transformers", "href": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/" }
+      ]
+    }
+  }
+}

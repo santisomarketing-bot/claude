@@ -11,7 +11,7 @@ NUNCA modifica el contenido de la web (nombres, descripciones, imágenes): solo 
   · pdfs[]         fichas técnicas enlazadas (con URL original)
   · proposals.json todo lo dudoso o discrepante, para decidir en el panel (nada de eso se publica)
 REGLA («si no estás seguro, no lo sumes»): solo se publican modelos con confianza «alta» de familias enlazadas con confianza «alta» a la ficha por scripts/link_pdfs.py.
-Entradas: data/analysis/pdf-product-links.json · pdfs/p*.json · web-vs-pdf.json · pdf-contrast-proposals-raw.json · proposals-raw.json · legal/ux-proposals-raw.json
+Entradas: data/analysis/pdf-product-links.json · pdfs/p*.json · web-vs-pdf.json · pdf-contrast-proposals-raw.json · proposals-raw.json · legal/ux/plan2027-proposals-raw.json
           data/catalog/voltage-curated.json · proposals.curated.json · pdf-links.curated.json
 Salidas: products.json · proposals.json · voltage-tags.json
 """
@@ -280,7 +280,7 @@ def main():
             if st in ("missing", "partial", "identical_to_es"):
                 pending.append({"status": "pending", "type": "missing_translation", "product_id": p["id"], "product_name": p["name"]["es"], "lang": l, "field": f"description[{l}]", "title": {"missing": "Falta la traducción", "partial": "Traducción incompleta", "identical_to_es": "Texto sin traducir (idéntico al español)"}[st],
                                 "web_value": st, "pdf_value": None, "severity": "media", "recommendation": "Traducir antes de publicar; mientras tanto la web muestra el texto en español con aviso.", "confidence": "alta"})
-    for src in ("legal-proposals-raw.json", "ux-proposals-raw.json"):
+    for src in ("legal-proposals-raw.json", "ux-proposals-raw.json", "plan2027-proposals-raw.json"):
         for x in jl(AN / src, []) or []:
             pending.append({"status": "pending", **x})
     for c in jl(CAT / "categories.json", []) or []:

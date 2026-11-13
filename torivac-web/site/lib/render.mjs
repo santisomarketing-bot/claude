@@ -59,9 +59,15 @@ export function mapLink(ctx, href) {
     const local = ctx.site.pdfLocal.get(name);
     return local ? ctx.asset('assets/pdf/' + local) : u.toString();
   }
-  if (ctx.site.paths.has(p)) return ctx.href(p, u.hash);
+  /** Si la página de destino está en otro idioma que la actual y tiene equivalente en el idioma actual, devuelve esa ruta (la web original enlaza muchas veces a la versión española desde las traducidas). */
+  const inLang = (q) => {
+    const ql = (/^\/(en|fr|de)\//.exec(q) || [, 'es'])[1];
+    const e = ctx.lang && ql !== ctx.lang && ctx.site.equiv ? ctx.site.equiv.get(q) : null;
+    return e && e[ctx.lang] && ctx.site.paths.has(e[ctx.lang]) ? e[ctx.lang] : q;
+  };
+  if (ctx.site.paths.has(p)) return ctx.href(inLang(p), u.hash);
   const alias = ctx.site.aliases.get(p);
-  if (alias) return ctx.href(alias, u.hash);
+  if (alias) return ctx.href(inLang(alias), u.hash);
   return u.toString(); // lo demás sigue apuntando a la web original
 }
 

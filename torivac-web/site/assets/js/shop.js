@@ -151,7 +151,7 @@
     cell.innerHTML = html;
   }
   /** Actualiza el precio de todas las filas y muestra u oculta el aviso de demo según el modo de la hoja de precios. */
-  function allPrices() { rows.forEach(updatePrice); $$('[data-demo-flag]').forEach(function (e) { e.hidden = !(TV.prices && TV.prices.mode === 'demo'); }); $$('[data-approx-flag],[data-approx-note]').forEach(function (e) { e.hidden = !Q.isApprox(); }); }
+  function allPrices() { rows.forEach(updatePrice); $$('[data-demo-flag]').forEach(function (e) { var on = !!(TV.prices && TV.prices.mode === 'demo'); e.hidden = !on; e.textContent = on ? 'DEMO' : ''; }); $$('[data-approx-flag],[data-approx-note]').forEach(function (e) { e.hidden = !Q.isApprox(); }); }
   /** Rehace las referencias extra y los precios de las filas; corre al cargar y en cada evento tv:prices. */
   function refresh() { renderExtras(); allPrices(); }
   refresh(); document.addEventListener('tv:prices', refresh);

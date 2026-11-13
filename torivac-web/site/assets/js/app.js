@@ -170,7 +170,7 @@
   /** Pinta la marca «DEMO» (solo con precios de demostración) y la fecha de los precios. */
   function stamp() {
     var P = TV.prices || {};
-    $$('[data-demo-flag]').forEach(function (e) { e.hidden = P.mode !== 'demo'; });
+    $$('[data-demo-flag]').forEach(function (e) { var on = P.mode === 'demo'; e.hidden = !on; e.textContent = on ? (e.hasAttribute('data-demo-long') ? Q.t('demo_prices') : 'DEMO') : ''; });      // el texto solo existe en la página cuando los precios son de demostración
     $$('[data-approx-flag],[data-approx-note]').forEach(function (e) { e.hidden = !Q.isApprox(); });      // precios aproximados (visitante): aviso en la tienda y en la ficha
     $$('[data-price-stamp]').forEach(function (e) { e.textContent = P.updated_at ? Q.t('price_updated') + ': ' + new Date(P.updated_at).toLocaleString(Q.lang === 'en' ? 'en-GB' : Q.lang) : ''; });
   }

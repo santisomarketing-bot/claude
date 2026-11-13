@@ -16,6 +16,7 @@ import { cookieTitle } from './lib/cookies.mjs';
 import { THEMES, themeBootJs } from './lib/themes.mjs';
 import { plainTextScript, blogMarkdownScript } from './lib/shared-client.mjs';
 import { applyApproved } from './lib/proposals-apply.mjs';
+import { loadNewContent, applyNewContent } from './lib/newcontent.mjs';
 import { blogShell, splitIndex, llmsHeads } from './lib/blog-shell.mjs';
 import crypto from 'node:crypto';
 
@@ -46,6 +47,15 @@ const meta = jl('meta.json', {});
 const rawCats = jl('categories.json', []);
 const rawProducts = jl('products.json', []);
 const pages = jl('pages.json', {});
+// [NEWCONTENT] páginas nuevas (plan 2027): solo entran las versiones APROBADAS; los borradores solo con --drafts (vista previa interna) y nunca con --base (paquetes)
+const DRAFTS = process.argv.includes('--drafts');
+if (DRAFTS && ABS) { console.error('✗ --drafts es solo para vista previa interna: no se puede combinar con --base (un paquete nunca lleva borradores)'); process.exit(2); }
+{
+  const nc = loadNewContent({ dir: process.env.TORIVAC_CONTENT_NEW || path.join(ROOT, 'data', 'content-new'), langs: LANGS, existing: new Set(LANGS.flatMap((l) => Object.keys(pages[l] || {}))) });
+  if (nc.problems.length) { console.error('✗ data/content-new:\n  - ' + nc.problems.join('\n  - ')); process.exit(2); }
+  const n = applyNewContent(pages, nc.entries, { drafts: DRAFTS });
+  if (nc.entries.length) console.log(`CONTENIDO NUEVO: ${n.published} versión(es) aprobada(s) publicada(s)${DRAFTS ? ` · ${n.drafts} BORRADOR(ES) en vista previa` : ''}${n.pending ? ` · ${n.pending} en borrador sin publicar` : ''}`);
+}
 const vtagList = jl('voltage-tags.json', []);
 // [LIVE] compilación con servidor (TORIVAC_API o meta.api_base): pedidos y precios reales. Los precios DE DEMOSTRACIÓN nunca viajan en una compilación así
 //   (si el servidor no responde, la web dice «Consultar»; jamás enseña un precio de demostración como si fuera real).
@@ -221,6 +231,14 @@ for (const p of products) for (const l of LANGS) site.paths.add(p.pathFor[l]);
 for (const c of flatVisible) for (const l of LANGS) site.paths.add(c.pathFor[l]);
 for (const l of LANGS) { site.paths.add(site.quote[l]); site.paths.add(site.products[l]); site.paths.add(site.shop[l]); }
 for (const [from] of aliases) site.paths.add(from);
+// equivalentes por idioma de cada página: un enlace de una página traducida que apunta a la versión en otro idioma se lleva a la versión de SU idioma (mapLink)
+site.equiv = new Map();
+/** Registra un grupo de páginas equivalentes ({ es, en, fr, de } → ruta): cada ruta del grupo apunta al grupo entero. */
+const groupEquiv = (m) => { for (const a of Object.values(m)) if (a) site.equiv.set(a, m); };
+for (const l of LANGS) for (const [pp, v] of Object.entries(pages[l] || {})) groupEquiv({ ...(v.alternates || {}), [l]: pp });
+for (const p of products) groupEquiv(p.pathFor);
+for (const c of flatVisible) groupEquiv(c.pathFor);
+groupEquiv(site.quote); groupEquiv(site.products); groupEquiv(site.shop);
 // el carrito / tienda de WooCommerce se sustituyen por el presupuesto y el listado
 for (const l of LANGS) for (const old of ['/carrito/', '/en/carrito/', '/fr/carrito/', '/de/carrito/', '/tienda/', '/en/tienda/', '/shop/', '/en/shop/']) if (!site.paths.has(old)) aliases.set(old, old.includes('carrito') ? QSLUG[old.startsWith('/en') ? 'en' : old.startsWith('/fr') ? 'fr' : old.startsWith('/de') ? 'de' : 'es'] : site.shop[old.startsWith('/en') ? 'en' : 'es']);
 

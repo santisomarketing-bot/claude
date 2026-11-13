@@ -139,6 +139,40 @@
   "status": "pending",
   "type": "missing_data",
   "lang": "es",
+  "product_name": "Contenido nuevo (plan 2027)",
+  "field": "fabricacion-europea",
+  "title": "Formulación exacta de las afirmaciones de fabricación europea",
+  "web_value": null,
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Redactar con el equipo comercial la frase que se puede publicar y en qué idiomas.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-17317"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "es",
+  "product_name": "Contenido nuevo (plan 2027)",
+  "field": "planta",
+  "title": "Ubicación exacta de la planta y qué actividades se hacen en cada una",
+  "web_value": null,
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Confirmar dónde se fabrica y qué procesos se realizan internamente. Sin esto no se publican «fabricante europeo», «manufactured in Spain» ni «Torivac Europe».",
+  "confidence": "alta",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-23145"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "es",
   "product_name": "Datos del titular (aviso legal y privacidad)",
   "field": "titular",
   "title": "Falta la razón social completa y los datos registrales del titular",
@@ -148,6 +182,40 @@
   "recommendation": "Indicar la denominación social completa (en el pie de página consta «Torivac S.L.») y los datos del Registro Mercantil. Pendiente de confirmar con el cliente.",
   "confidence": "alta",
   "id": "PR-26932"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "es",
+  "product_name": "Contenido nuevo (plan 2027)",
+  "field": "certificaciones",
+  "title": "Certificaciones, ensayos, documentación y normas aplicables por producto",
+  "web_value": null,
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Listar solo lo realmente acreditado y con documento. No se publica ninguna certificación sin respaldo.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-43579"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "es",
+  "product_name": "Contenido nuevo (plan 2027)",
+  "field": "rangos",
+  "title": "Rangos técnicos reales por familia: potencias, tensiones, frecuencias, aislamiento y montaje",
+  "web_value": null,
+  "pdf_value": null,
+  "severity": "alta",
+  "recommendation": "Aportar los rangos validados por ingeniería. Las tablas comparativas (AVS/BAVS, variadores, resistencias) solo se rellenan con estos datos.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-44021"
  },
  {
   "status": "pending",
@@ -299,6 +367,108 @@
    "source": "data/raw/rest/pages.es.json#id=1117"
   },
   "id": "PR-89205"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "es",
+  "product_name": "Contenido nuevo (plan 2027)",
+  "field": "avs-bavs",
+  "title": "Relación entre los modelos AVS / BAVS y sus aplicaciones",
+  "web_value": null,
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Validar qué aplicación corresponde a cada tecnología (electromecánica frente a electrónica) antes de publicar el comparador.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-18211"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "es",
+  "product_name": "Contenido nuevo (plan 2027)",
+  "field": "responsables",
+  "title": "Responsables de cada idioma: usuario comercial y traductor",
+  "web_value": null,
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Indicar quién aprueba el texto comercial (afirmaciones, condiciones) y quién valida las traducciones EN, FR y DE.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-44096"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "es",
+  "product_name": "Resistencias | Bancos de carga",
+  "field": "potencia",
+  "title": "Rango «50W a 200K W»: confirmar la unidad y el valor máximo",
+  "web_value": "50W a 200K W",
+  "pdf_value": null,
+  "severity": "media",
+  "confidence": "alta",
+  "recommendation": "El texto de la web original dice «50W a 200K W» (aparece en 5 categorías). Confirmar si debe ser «50 W a 200 kW» y unificar. No se modifica nada hasta que Torivac lo confirme.",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-51293"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "es",
+  "product_name": "Contenido nuevo (plan 2027)",
+  "field": "plazos",
+  "title": "Plazos medios y capacidad de fabricación",
+  "web_value": null,
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Indicar solo si pueden comunicarse y mantenerse. Hasta entonces los textos dicen que los plazos se confirman para cada proyecto.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-77343"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "es",
+  "product_name": "Contenido nuevo (plan 2027)",
+  "field": "minimos",
+  "title": "Volumen mínimo por referencia y política de prototipos",
+  "web_value": null,
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Decidir si puede comunicarse públicamente. Mientras tanto, los textos nuevos dicen que se confirma para cada proyecto.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-81527"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "es",
+  "product_name": "Contenido nuevo (plan 2027)",
+  "field": "antiguedad",
+  "title": "Antigüedad: actividad desde 1964, fecha legal de constitución y antigüedad de la gama toroidal",
+  "web_value": null,
+  "pdf_value": null,
+  "severity": "media",
+  "recommendation": "Aclarar la relación entre las tres fechas para redactar la historia de la empresa sin afirmaciones ambiguas.",
+  "confidence": "alta",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-97453"
  },
  {
   "status": "pending",
@@ -1323,6 +1493,57 @@
   "recommendation": "La web nueva las conserva con las mismas direcciones que la original para no romper enlaces. Google ve tres páginas con el mismo título y dos de ellas casi sin contenido. Decidir si se redirigen a la ficha de la categoría (o a «simple»/«doble») o si se completan. No se ha tocado nada.",
   "confidence": "alta",
   "id": "PR-94328"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "en",
+  "product_name": "Terminología (EN): «Toroidal shocks»",
+  "field": "terminología",
+  "title": "Posible traducción ambigua en inglés de «choques toroidales»: confirmar si es deliberado",
+  "web_value": "Toroidal shocks",
+  "pdf_value": null,
+  "severity": "baja",
+  "confidence": "media",
+  "recommendation": "El plan 2027 lo señala solo como punto de revisión semántica. Si Torivac lo usa a propósito se documenta el motivo y se conserva; no se cambia por defecto.",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-73428"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "fr",
+  "product_name": "Terminología (FR): «Portails»",
+  "field": "terminología",
+  "title": "Posible término ambiguo en francés: confirmar si es deliberado",
+  "web_value": "Portails",
+  "pdf_value": null,
+  "severity": "baja",
+  "confidence": "media",
+  "recommendation": "El plan 2027 lo señala solo como punto de revisión semántica. Si Torivac lo usa a propósito se documenta el motivo y se conserva; no se cambia por defecto.",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-88216"
+ },
+ {
+  "status": "pending",
+  "type": "missing_data",
+  "lang": "de",
+  "product_name": "Terminología (DE): «Antrieben»",
+  "field": "terminología",
+  "title": "Posible término ambiguo en alemán: confirmar si es deliberado",
+  "web_value": "Antrieben",
+  "pdf_value": null,
+  "severity": "baja",
+  "confidence": "media",
+  "recommendation": "El plan 2027 lo señala solo como punto de revisión semántica. Si Torivac lo usa a propósito se documenta el motivo y se conserva; no se cambia por defecto.",
+  "evidence": {
+   "source": "Plan de mejora 2027 (12/11/2026)"
+  },
+  "id": "PR-99936"
  },
  {
   "status": "pending",

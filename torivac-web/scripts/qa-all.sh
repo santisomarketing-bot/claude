@@ -23,6 +23,7 @@ paso "Texto plano (navegador = Worker = PHP)"    node scripts/test-plain-text.mj
 paso "Conversor de texto del blog"              node scripts/test-blog-markdown.mjs
 paso "Conversor del blog: JavaScript = PHP"       node scripts/test-blog-markdown-php.mjs
 paso "Propuestas aprobadas con texto propio"    node scripts/test-proposals.mjs
+paso "Contenido nuevo: solo lo aprobado"          node scripts/test-newcontent.mjs
 paso "Textos de interfaz al día (para validar)" node scripts/audit_i18n.mjs --check
 paso "Compilar el demo (precios de demostración)" bash -c 'python3 -I scripts/build_prices.py --demo && node site/build.mjs'
 paso "Compilar producción + auditoría SEO/GEO"  bash -c 'node site/build.mjs --base=https://demo.torivac.example --out=/tmp/tv-prod-dist >/dev/null && python3 -I scripts/seo_check.py /tmp/tv-prod-dist --base=https://demo.torivac.example'
