@@ -8,7 +8,7 @@
 //   CLIENTE (rol customer, solo lectura; owned.js): GET /api/orders (solo los suyos, reducidos, con `quota`) · GET /api/orders/:número (si es suyo; si no, 404) · PUT y send → 403 «Solo lectura»
 //   PRECIOS Y CLIENTES (manager y client; docs/PRECIOS-Y-CLIENTES.md): GET|POST /api/customers · PUT|DELETE /api/customers/:correo · POST /api/customers/:correo/password (customers.js)
 //             · GET|PUT /api/settings/pricing (porcentajes de las categorías, qué ve el visitante, precio aproximado) · PUT /api/prices/items/:ref (editar el precio de un producto; pricing.js)
-//   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · GET /api/admin/data · /api/blog/… (solo existe en el servidor PHP: aquí responde 501)
+//   MANAGER   POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · GET /api/admin/data · /api/blog/… y /api/newcontent/… (solo existen en el servidor PHP: aquí responden 501; el Revisor solo llega a /api/newcontent)
 //             GET /api/messages · DELETE /api/messages/:id (mensajes de contacto) · POST /api/mail/test · GET /api/mail/status (correo) · GET|PUT /api/settings/google (medición de Google)
 // Todo límite por visitante usa ipKey (IPv6 → su /64). Ninguna respuesta 500 lleva texto interno: {"ok":false,"error":"Error interno","id":"<8 hex>"} y el detalle va al registro con ese id.
 import { json, readJson, ApiError, clientIp, ipKey, randomHex } from './util.js';
@@ -136,6 +136,8 @@ async function route(request, env, deps, { path, cors, nowMs }) {
     if (who.master) return json({ ok: false, error: 'El token maestro no tiene sesión que cerrar' }, 400, cors);
     await logoutUser(env, who.sub, nowMs); return json({ ok: true }, 200, cors);
   }
+  if (path === '/api/newcontent' || path.startsWith('/api/newcontent/')) return requireRole(who, 'manager', 'reviewer') ? json({ ok: false, error: 'El contenido nuevo del panel necesita el servidor PHP del hosting (esta instalación usa Cloudflare Workers, que no lo incluye).', code: 'newcontent_unavailable' }, 501, cors) : json({ ok: false, error: 'No autorizado' }, 403, cors);
+  if (who.role === 'reviewer') return json({ ok: false, error: 'No autorizado' }, 403, cors);                 // el Revisor solo tiene su sesión y «Contenido nuevo»: nada de presupuestos, precios, clientes ni ajustes
   if (path === '/api/orders' && method === 'GET') {
     if (who.role === 'customer') {                                                       // solo los suyos (índice por propietario), reducidos, con lo que le queda de cupo
       const used = await usedLast24h(env, who.sub, nowMs), r = await listOwned(env, who.sub);

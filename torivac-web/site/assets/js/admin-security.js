@@ -45,6 +45,8 @@
     if (meta.enabled === false) return '<span class="muted small">Desactivado en el servidor</span>';
     return '<select data-sec-two-step="' + esc(u.email) + '" aria-label="Código por correo de ' + esc(u.email) + '"><option value="1"' + (u.code === 'required' ? ' selected' : '') + '>Sí, lo pide</option><option value="0"' + (u.code === 'exempt' ? ' selected' : '') + '>No (cuenta de confianza)</option></select>';
   }
+  /** Nombre en castellano del rol de una cuenta. */
+  function roleName(r) { return r === 'manager' ? 'Manager' : r === 'customer' ? 'Cliente' : r === 'reviewer' ? 'Revisor' : 'Propietario'; }
   /** Vista Usuarios (manager): la lista con su seguridad, alta de usuarios y contraseña nueva para una cuenta. */
   S.usersView = function (ctx) {
     return ctx.http('GET', '/api/users').then(function (r) {
@@ -52,7 +54,7 @@
       var me = (ctx.session() || {}).email, meta = r.two_step || {}, users = r.users || [];
       var rows = users.map(function (u) {
         var canUnlock = u.locked_for > 0 || u.reinforced_until;
-        return '<tr><td>' + esc(u.name) + '</td><td class="mono">' + esc(u.email) + '</td><td>' + (u.role === 'manager' ? 'Manager' : u.role === 'customer' ? 'Cliente' : 'Propietario') + '</td><td>' + esc(when(u.last_login)) + '</td><td>' + codeCell(u, meta) + '</td><td>' + stateTags(u) + '</td><td class="bl-actions">' +
+        return '<tr><td>' + esc(u.name) + '</td><td class="mono">' + esc(u.email) + '</td><td>' + roleName(u.role) + '</td><td>' + esc(when(u.last_login)) + '</td><td>' + codeCell(u, meta) + '</td><td>' + stateTags(u) + '</td><td class="bl-actions">' +
           (canUnlock ? '<button class="btn sm ghost" data-sec-unlock="' + esc(u.email) + '"' + (u.reinforced_until ? ' data-sec-clear="1"' : '') + '>Desbloquear<span class="vh"> ' + esc(u.email) + '</span></button> ' : '') +
           (u.email !== me ? '<button class="btn sm ghost" data-sec-del-user="' + esc(u.email) + '">Borrar<span class="vh"> ' + esc(u.email) + '</span></button>' : '<span class="muted small">(tú)</span>') + '</td></tr>';
       }).join('');
@@ -61,14 +63,14 @@
       return '<div data-sec-root data-sec-mode="users"><h1>Usuarios</h1>' + warn +
         '<p class="muted small">«Código por correo»: al entrar con la contraseña, a los managers se les manda un código de 6 cifras que hay que escribir; si marcan «recordar este dispositivo», no se les vuelve a pedir en él durante ' + Number(meta.remember_days || 30) + ' días. Una <strong>cuenta de confianza</strong> (la de quien administra la web) no lo pide de rutina. Si cualquier cuenta, también esa, acumula bloqueos repetidos, se avisa por correo y se le pide el código en dispositivos nuevos durante 7 días.</p>' +
         '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Último acceso</th><th>Código por correo</th><th>Estado</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-        '<section class="panel"><h2>Nuevo usuario</h2><form class="form" data-sec-new-user><div class="grid2"><label>Nombre<input name="name" type="text" required autocomplete="off"></label><label>Correo<input name="email" type="email" required></label></div><div class="grid2"><label>Rol<select name="role"><option value="client">Propietario (dueño de la web: ve todos los presupuestos recibidos)</option><option value="manager">Manager (equipo técnico)</option><option value="customer">Cliente (solo lectura; su categoría de precio se cambia en Clientes)</option></select></label><label>Contraseña (mín. 12)<input name="password" type="password" minlength="12" required autocomplete="new-password"></label></div><p><button class="btn" type="submit">Crear usuario</button></p></form></section>' +
+        '<section class="panel"><h2>Nuevo usuario</h2><form class="form" data-sec-new-user><div class="grid2"><label>Nombre<input name="name" type="text" required autocomplete="off"></label><label>Correo<input name="email" type="email" required></label></div><div class="grid2"><label>Rol<select name="role"><option value="client">Propietario (dueño de la web: ve todos los presupuestos recibidos)</option><option value="manager">Manager (equipo técnico)</option><option value="customer">Cliente (solo lectura; su categoría de precio se cambia en Clientes)</option><option value="reviewer">Revisor (la persona que es a la vez comercial y traductora: solo ve y aprueba «Contenido nuevo»)</option></select></label><label>Contraseña (mín. 12)<input name="password" type="password" minlength="12" required autocomplete="new-password"></label></div><p><button class="btn" type="submit">Crear usuario</button></p></form></section>' +
         '<section class="panel"><h2>Poner una contraseña nueva a una cuenta</h2><p class="muted small">Sirve si alguien la olvidó o si sospechas que la conocen otras personas (la tuya se cambia en Ajustes). Se cierran todas sus sesiones y se olvidan sus dispositivos recordados. Díselo por un canal seguro: no la mandes por correo.</p><form class="form" data-sec-reset-pw><div class="grid2"><label>Cuenta<select name="email">' + opts + '</select></label><label>Contraseña nueva (mín. 12)<input name="password" type="password" minlength="12" required autocomplete="new-password"></label></div><p><button class="btn" type="submit">Guardar la contraseña nueva</button></p></form></section></div>';
     });
   };
 
   // ───────────────────────────────────────── [ACTIVIDAD]
   /** Categorías del filtro: lo que va antes del punto de la acción. */
-  var CATS = [['', 'Todo'], ['login', 'Accesos'], ['logout', 'Salidas'], ['user', 'Usuarios'], ['prices', 'Precios'], ['proposal', 'Propuestas'], ['blog', 'Blog'], ['mail', 'Correo'], ['backup', 'Copias'], ['alert', 'Avisos de seguridad'], ['message', 'Mensajes']];
+  var CATS = [['', 'Todo'], ['login', 'Accesos'], ['logout', 'Salidas'], ['user', 'Usuarios'], ['prices', 'Precios'], ['proposal', 'Propuestas'], ['newcontent', 'Contenido nuevo'], ['blog', 'Blog'], ['mail', 'Correo'], ['backup', 'Copias'], ['alert', 'Avisos de seguridad'], ['message', 'Mensajes']];
   /** Acciones que merecen un vistazo (intentos fallidos, bloqueos, avisos): salen marcadas. */
   var WARN = /^(login\.(fail|locked|pin_fail)|alert\.)/;
   /** Filas de la tabla de actividad. */
@@ -76,7 +78,7 @@
     if (!items.length) return '<tr><td colspan="5" class="muted">No hay actividad con esos filtros.</td></tr>';
     return items.map(function (e) {
       var who = e.u || (e.a.indexOf('login.') === 0 ? '(sin cuenta)' : '—');
-      return '<tr><td class="small">' + esc(when(e.t)) + '</td><td class="mono small">' + esc(who) + (e.r ? '<br><span class="muted">' + esc(e.r === 'manager' ? 'manager' : e.r === 'client' ? 'cliente' : e.r) + '</span>' : '') + '</td><td>' +
+      return '<tr><td class="small">' + esc(when(e.t)) + '</td><td class="mono small">' + esc(who) + (e.r ? '<br><span class="muted">' + esc(e.r === 'manager' ? 'manager' : e.r === 'client' ? 'cliente' : e.r === 'reviewer' ? 'revisor' : e.r) + '</span>' : '') + '</td><td>' +
         (WARN.test(e.a) ? '<span class="tag warn">' + esc(e.label) + '</span>' : esc(e.label)) + '</td><td class="small">' + esc(e.d) + '</td><td class="mono small">' + esc(e.ip || '') + (e.ua ? '<br><span class="muted">' + esc(e.ua) + '</span>' : '') + '</td></tr>';
     }).join('');
   }

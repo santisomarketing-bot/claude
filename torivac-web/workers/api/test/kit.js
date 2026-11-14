@@ -4,7 +4,7 @@ import { createUser } from '../src/users.js';
 import { req, mkEnv, PRICES, PRICING_FLAT, setPricing } from './helpers.js';
 
 /** Contraseñas de PRUEBA que cumplen la política de contraseñas nuevas (≥ 12, sin la parte local del correo, nada trivial). */
-export const PW = { manager: 'Manager-Clave-2026', client: 'Cliente-Clave-2026', customer: 'Comprador-Clave-2026' };
+export const PW = { manager: 'Manager-Clave-2026', client: 'Cliente-Clave-2026', customer: 'Comprador-Clave-2026', reviewer: 'Revisor-Clave-2026' };
 /** Llama al Worker: ip → CF-Connecting-IP, token → Bearer, origin, deps (now, fetchImpl, rand, purge…; sin purga aleatoria por defecto) → Response. */
 export const call = (env, path, { method = 'GET', body, headers = {}, ip, token, origin, deps = {} } = {}) =>
   api.fetch(req(path, { method, body, headers: { ...(ip ? { 'CF-Connecting-IP': ip } : {}), ...(token ? { Authorization: `Bearer ${token}` } : {}), ...(origin ? { Origin: origin } : {}), ...headers } }), env, {}, { purge: false, ...deps });

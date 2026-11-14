@@ -1,7 +1,8 @@
 /**
  * [ADMIN-LIVE] Panel de gestión de Torivac CONECTADO AL WORKER (producción). Mismo aspecto que el demo (admin.css), datos y acciones reales.
  *
- *  Roles:  manager → Resumen · Presupuestos recibidos · Mensajes · Precios · Propuestas · Contenido · Blog · Usuarios · Actividad · Estadísticas · Ajustes
+ *  Roles:  manager → Resumen · Presupuestos recibidos · Mensajes · Precios · Propuestas · Contenido · Contenido nuevo · Blog · Usuarios · Actividad · Estadísticas · Ajustes
+ *          Revisor (rol `reviewer`: la persona que es a la vez comercial y traductora) → solo «Contenido nuevo» (ver, proponer, aprobar y registro de cambios)
  *          Propietario (rol `client` del API: las personas DUEÑAS de la web, no compradores; internamente 'cliente') → Nuevo presupuesto · Presupuestos recibidos · Lista de precios · Estadísticas
  *  El rol lo decide SIEMPRE el servidor (token firmado); este fichero solo decide qué menús mostrar. Un propietario que llamase a la API de un manager recibiría 403.
  *  Acceso en dos pasos: con la contraseña buena el servidor puede pedir un código que llega por correo (POST /api/auth/login → {step:'code'}); aquí se pinta esa segunda pantalla y se abre la sesión con POST /api/auth/verify.
@@ -36,7 +37,7 @@
   /** Aviso (una sola vez) en la pantalla de acceso: «Contraseña cambiada…», «El código ha caducado…». */
   var loginNote = '';
   /** Guarda la sesión que devuelve el servidor (token y datos de la persona). El rol del servidor ('client') se muestra como 'cliente'. */
-  function openSession(r) { sessionStorage.setItem('tv_live', JSON.stringify({ token: r.token, email: r.user.email, name: r.user.name, role: r.user.role === 'manager' ? 'manager' : r.user.role === 'customer' ? 'customer' : 'cliente' })); }
+  function openSession(r) { sessionStorage.setItem('tv_live', JSON.stringify({ token: r.token, email: r.user.email, name: r.user.name, role: r.user.role === 'manager' ? 'manager' : r.user.role === 'customer' ? 'customer' : r.user.role === 'reviewer' ? 'reviewer' : 'cliente' })); }
   /**
    * Entra con correo y contraseña. Devuelve Promise<string|null>: null si ha ido bien (sesión abierta) o si el servidor pide un código por correo (queda en `pending` y se pinta la pantalla del código), o el mensaje de error.
    */
@@ -96,8 +97,9 @@
 
   // ───────────────────────────────────────── [VIEWS] cada vista devuelve Promise<string> (HTML)
   var NAV = {
-    manager: [['resumen', 'Resumen', '◧'], ['recibidos', 'Presupuestos recibidos', '☰'], ['clientes', 'Clientes', '☻'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['blog', 'Blog', '✍'], ['usuarios', 'Usuarios', '☺'], ['actividad', 'Actividad', '☷'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
+    manager: [['resumen', 'Resumen', '◧'], ['recibidos', 'Presupuestos recibidos', '☰'], ['clientes', 'Clientes', '☻'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['nuevo', 'Contenido nuevo', '✦'], ['blog', 'Blog', '✍'], ['usuarios', 'Usuarios', '☺'], ['actividad', 'Actividad', '☷'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
     cliente: [['presupuestador', 'Nuevo presupuesto', '✚'], ['recibidos', 'Presupuestos recibidos', '☰'], ['clientes', 'Clientes', '☻'], ['precios', 'Precios', '€'], ['lista', 'Lista de precios', '≡'], ['estadisticas', 'Estadísticas', '◔']],
+    reviewer: [['nuevo', 'Contenido nuevo', '✦']],
     customer: [['presupuestador', 'Nuevo presupuesto', '✚'], ['recibidos', 'Mis presupuestos', '☰'], ['lista', 'Lista de precios', '€']],
   };
   var V = {};
@@ -290,6 +292,8 @@
   // ───────────────────────────────────────── [SECURITY] usuarios (con su código por correo, bloqueos y contraseñas), actividad del panel y, en Ajustes, tu cuenta y las copias de seguridad (admin-security.js)
   /** Vista «Usuarios» (manager): lista con último acceso, código por correo y bloqueos, alta, baja y contraseña nueva a una cuenta. */
   V.usuarios = function () { return TV.AdminSecurity.usersView(PCTX); };
+  /** Vista «Contenido nuevo» (manager y Revisor): borradores, propuestas, aprobación y registro de cambios (admin-newcontent.js; contrato en docs/CONTENIDO-NUEVO.md). */
+  V.nuevo = function (s, arg) { return TV.AdminNewContent.view(PCTX, arg || ''); };
   /** Vista «Actividad» (manager): quién entró y quién cambió qué, con filtros y descarga en CSV. */
   V.actividad = function () { return TV.AdminSecurity.activityView(PCTX); };
 
@@ -330,6 +334,7 @@
       });
     });
     if (root.querySelector('[data-pa-list]')) TV.AdminProposals.bind(root, PCTX);
+    if (root.querySelector('[data-nc-root]')) TV.AdminNewContent.bind(root, PCTX);
     if (root.querySelector('[data-bl-root]')) TV.AdminBlog.bind(root, PCTX);
     if (root.querySelector('[data-qr-root]')) TV.AdminQuotes.bind(root, PCTX);
     if (root.querySelector('[data-gg-root]')) TV.AdminGoogle.bind(root, PCTX);
@@ -396,7 +401,7 @@
     var seq = ++renderSeq, s = session(), logo = esc(document.getElementById('logo-src').value);
     if (!s) { if (pending) renderCode(); else renderLogin(); return; }
     var nav = NAV[s.role], raw = (location.hash || '#').slice(1) || nav[0][0], cur = raw.split('/')[0], arg = raw.slice(cur.length + 1); if (!nav.some(function (n) { return n[0] === cur; })) { cur = nav[0][0]; arg = ''; }
-    root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + logo + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : s.role === 'customer' ? 'Cliente' : 'Propietario') + '</span></div><nav aria-label="Panel">' +
+    root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + logo + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : s.role === 'customer' ? 'Cliente' : s.role === 'reviewer' ? 'Revisor' : 'Propietario') + '</span></div><nav aria-label="Panel">' +
       nav.map(function (n) { return '<a href="#' + n[0] + '"' + (n[0] === cur ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + n[2] + '</span>' + esc(n[1]) + '</a>'; }).join('') + '</nav><div class="side-bot"><a href="../index.html">← Ir a la web</a><button class="btn sm ghost" data-logout type="button">Salir (' + esc(s.name || s.email) + ')</button></div></aside><main class="main" id="main"><p class="notice">Cargando…</p></main></div>';
     V[cur](s, arg).then(function (html) { var m = root.querySelector('#main'); if (!m || seq !== renderSeq) return; m.innerHTML = html; bind(); });       // si mientras tanto se pidió otra vista, esta respuesta se ignora
   }

@@ -31,6 +31,7 @@ test('D1 · la copia al cliente solo lleva contenido del servidor: ni nombre, ni
   for (const s of ['Soporte Torivac', 'Banco Falso', '600 111 222', 'torivac-verifica', 'IMPORTANTE', 'bloqueada', 'Verifique']) assert.ok(!copy.html.includes(s) && !copy.text.includes(s) && !copy.subject.includes(s), `nada del visitante en la copia: ${s}`);
   for (const s of [j.number, REF, REF2, 'Si no has pedido tú este presupuesto, ignora este mensaje.']) assert.ok(copy.text.includes(s), `la copia lleva ${s}`);
   assert.match(copy.html, /67,65/); assert.match(copy.html, /Total \(sin IVA\)/);                 // líneas valoradas por el servidor
+  for (const x of [copy.text, copy.html]) { assert.match(x, /Los archivos no se suben a la web/); assert.ok(x.includes('info@grupotorivac.com') && x.includes(`número de pedido ${j.number}`), 'los archivos técnicos se mandan por correo a info@ con el número de pedido'); }
   assert.equal(team.attachments[0].content, PDF_B64, 'el PDF del visitante solo va al equipo');
   assert.ok(team.text.includes('El PDF adjunto lo ha generado el navegador del cliente: el importe que vale es el calculado por el servidor (arriba)') && team.html.includes('el importe que vale es el calculado por el servidor (arriba)'));
   assert.ok(team.text.includes(phishing), 'el equipo sí ve lo que escribió el visitante');

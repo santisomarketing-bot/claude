@@ -71,7 +71,7 @@ console.log('\n1) acceso');
   ok(/incorrect/i.test(await page.locator('[data-err]').innerText()), 'contraseña errónea → mensaje del servidor');
   await page.fill('[name=pass]', 'Manager-Clave-2026'); await page.click('button[type=submit]');
   await page.waitForSelector('.side nav a');
-  ok((await navs(page)).length === 12 && (await navs(page)).some((n) => /Blog/.test(n)) && (await navs(page)).some((n) => /Actividad/.test(n)), `manager: ${(await navs(page)).join(' · ')}`);
+  ok((await navs(page)).length === 13 && (await navs(page)).some((n) => /Blog/.test(n)) && (await navs(page)).some((n) => /Actividad/.test(n)), `manager: ${(await navs(page)).join(' · ')}`);
   await page.waitForFunction(() => document.querySelectorAll('.kpi').length === 4, null, { timeout: 5000 }).catch(() => {});      // los indicadores se pintan al llegar los pedidos
   ok(await page.locator('.kpi').count() === 4, 'Resumen con 4 indicadores');
   ok(/1/.test(await page.locator('.kpi').first().innerText()), 'cuenta el pedido hecho desde la web');
@@ -395,6 +395,7 @@ console.log('\n11) Presupuestos recibidos: detalle, edición (con historial y co
   const att = (mail.attachments || [])[0]; ok(att && /\.pdf$/i.test(att.filename) && Buffer.from(att.content, 'base64').subarray(0, 5).toString() === '%PDF-', `con el PDF adjunto (${att && att.filename})`);
   ok(/Adjunto el presupuesto revisado/.test(mail.html) && !/Mira <b>/.test(mail.html) && mail.html.includes(N), 'el texto de la persona y el número van en el cuerpo');
   ok(o4.lastSent && o4.lastSent.ok === true && o4.history.filter((h) => h.kind === 'send').length === 2 && o4.history.filter((h) => h.kind === 'edit').length === 2, 'el historial guarda las 2 ediciones y los 2 envíos (uno fallido y uno bueno)');
+  await page.waitForFunction(() => /Reenviado a/.test(document.querySelector('main').innerText), null, { timeout: 5000 }).catch(() => { /* si no sale, la comprobación de abajo lo dice */ });          // el detalle se repinta tras el envío: sin esperar, a veces se lee el texto anterior
   const det2 = await page.locator('main').innerText();
   ok(/Reenviado a marta@taller\.es, colega@empresa\.es/.test(det2) && /No se pudo reenviar a/.test(det2), 'el detalle enseña el historial de reenvíos');
   // e) la lista: filtros y búsqueda

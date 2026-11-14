@@ -129,6 +129,7 @@
         var copy = !!(r.emailed && r.emailed.customer), mailto = ((TV.meta && TV.meta.recipients) || ['info@grupotorivac.com'])[0];      // solo se dice «te hemos enviado una confirmación» si salió (el servidor puede no enviarla: sin correo configurado, tope de envíos…)
         out.className = 'notice ok'; out.innerHTML = '<strong>' + esc(Q.t('order_sent')) + ' · ' + esc(r.number) + '</strong><br>' + (copy ? esc(Q.t('order_received')) : esc(Q.t('order_received_nocopy')) + ' <a href="mailto:' + esc(mailto) + '">' + esc(mailto) + '</a>') +
           (typeof r.remaining === 'number' ? '<br><span class="small">' + esc(Q.t('quota_left')) + ': ' + Number(r.remaining) + '</span>' : '') +
+          '<br><span class="small">' + esc(Q.t('files_after').replace('{mail}', mailto).replace('{n}', r.number)) + '</span>' +                    // los archivos técnicos no se suben: se mandan por correo con este número
           '<br><button class="btn sm ghost" type="button" style="margin-top:8px" data-pdf-again>' + esc(Q.t('download_pdf')) + '</button>';
         var again = out.querySelector('[data-pdf-again]'); if (again) again.addEventListener('click', function () { try { download(res); } catch (e) { console.error(e); TV.toast('PDF ⚠'); } });      // la copia por correo NO lleva el PDF: se ofrece aquí, ya generado
         if (TV.track) TV.track('quote', { id: r.number, items: d.lines.length });                          // conversión: solo con el permiso de cookies (consent.js); nunca clics en teléfono ni WhatsApp

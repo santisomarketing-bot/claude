@@ -66,6 +66,7 @@ const sent = await page.locator('[data-sent]').innerText();
 const num = (sent.match(/TV-\d{8}-\d{4}(?:-[0-9A-Z]{3})?/) || [])[0];
 ok(!!num, `número de pedido del servidor: ${num}`);
 ok(/recibido|copia/i.test(sent), `mensaje de éxito: «${sent.replace(/\s+/g, ' ').slice(0, 90)}»`);
+ok(/no se suben a la web/i.test(sent) && sent.includes('info@grupotorivac.com') && sent.includes(num), 'la confirmación dice que los archivos técnicos no se suben: se mandan por correo a info@ con el número del pedido');
 ok((await page.evaluate(() => TV.Quote.count())) === 0, 'el presupuesto se vacía tras enviarlo');
 ok(mails.length === 2, `2 correos (equipo + copia al cliente): ${mails.length}`);
 const team = mails[0] || {}, copy = mails[1] || {};
@@ -99,6 +100,8 @@ ok(mails.length === 0 && (await page.evaluate(() => TV.Quote.kinds())) === 3, 'n
 console.log('\n4) formulario de contacto');
 await page.goto(SITE + '/contacto/');
 const cf = page.locator('[data-contact-form]').first();
+ok(/no admite archivos adjuntos/i.test(await cf.locator('[data-files-note]').innerText()) && (await cf.locator('[data-files-note] a[href^="mailto:info@"]').count()) === 1, 'el formulario de contacto avisa de que no admite archivos y manda a escribir por correo');
+ok((await cf.locator('input[type=file]').count()) === 0, 'y no tiene ningún campo de archivo');
 await cf.locator('[name=name]').fill('Pedro Contacto'); await cf.locator('[name=email]').fill('pedro@example.com');
 await cf.locator('[name=message]').fill('Necesito un transformador toroidal de 2x12 V y 50 VA.'); await cf.locator('[name=privacy]').check();
 await cf.locator('button[type=submit]').click();

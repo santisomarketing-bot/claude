@@ -49,7 +49,7 @@ async function sendCopy(env, { o, number, priced, demo, cat, nowMs, fetchImpl })
   if (!mailReady(env)) return 'skipped';
   if (!(await hit(env, 'copy-to', o.customer.email, { max: 2, windowMs: DAY, now: nowMs })).allowed) return 'limit';
   if (!(await hit(env, 'copy-day', 'all', { max: intVar(env.ORDER_COPY_DAILY_MAX, 150, 0), windowMs: DAY, now: nowMs })).allowed) return 'limit';
-  const m = customerCopyMail({ number, priced, lang: o.lang, demo }, cat);
+  const m = customerCopyMail({ number, priced, lang: o.lang, demo, mail: teamRecipients(env)[0] || '' }, cat);
   const r = await sendMail(env, { to: [o.customer.email], subject: m.subject, html: m.html, text: m.text }, fetchImpl, { kind: 'order', now: nowMs });          // sin adjuntos y sin reply_to: nada del visitante
   return r.ok ? 'sent' : 'failed';
 }

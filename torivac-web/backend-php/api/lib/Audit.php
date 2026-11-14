@@ -38,7 +38,7 @@ final class Audit
         'proposal.state' => 'Decidió una propuesta', 'blog.create' => 'Creó una entrada', 'blog.update' => 'Guardó una entrada', 'blog.delete' => 'Borró una entrada', 'blog.image_upload' => 'Subió una imagen',
         'blog.image_delete' => 'Borró una imagen', 'message.delete' => 'Borró un mensaje', 'settings.google' => 'Cambió los ajustes de Google', 'settings.pricing' => 'Cambió los ajustes de precios',
         'customer.create' => 'Creó una cuenta de cliente', 'customer.tier' => 'Cambió la categoría de un cliente', 'customer.password' => 'Cambió la contraseña de un cliente', 'customer.delete' => 'Borró una cuenta de cliente', 'price.edit' => 'Editó el precio de un producto', 'order.edit' => 'Editó un presupuesto recibido', 'order.send' => 'Reenvió un presupuesto por correo', 'mail.test' => 'Envió un correo de prueba', 'backup.create' => 'Creó una copia de seguridad',
-        'backup.auto' => 'Copia de seguridad automática', 'backup.download' => 'Descargó una copia de seguridad', 'backup.delete' => 'Borró una copia de seguridad', 'limite' => 'Registro lleno por hoy',
+        'backup.auto' => 'Copia de seguridad automática', 'backup.download' => 'Descargó una copia de seguridad', 'backup.delete' => 'Borró una copia de seguridad', 'newcontent.propose' => 'Propuso un cambio de contenido', 'newcontent.decide' => 'Decidió una propuesta de contenido', 'newcontent.approve' => 'Aprobó contenido nuevo', 'newcontent.withdraw' => 'Retiró la aprobación de contenido', 'limite' => 'Registro lleno por hoy',
     ];
 
     /** Carpeta del registro dentro de la carpeta de datos. */
@@ -131,6 +131,8 @@ final class Audit
         if ($p === '/blog/images' && $m === 'POST') return ['blog.image_upload', $s($b['image']['file'] ?? '', 80)];
         if (preg_match('#^/blog/images/([a-z0-9-]+\.[a-z]+)$#', $p, $x) && $m === 'DELETE') return ['blog.image_delete', $x[1]];
         if (strpos($p, '/messages/') === 0 && $m === 'DELETE') return ['message.delete', $s(rawurldecode(substr($p, 10)), 40)];
+        if (preg_match('#^/newcontent/([a-z0-9-]+)/(es|en|fr|de)/(propose|approve|withdraw)$#', $p, $x) && $m === 'POST') return ['newcontent.' . $x[3], $x[1] . ' [' . $x[2] . ']'];
+        if (preg_match('#^/newcontent/([a-z0-9-]+)/(es|en|fr|de)/proposals/(P[0-9a-f]{8})$#', $p, $x) && $m === 'POST') return ['newcontent.decide', $x[1] . ' [' . $x[2] . '] ' . $x[3] . ' → ' . $s($in['decision'] ?? '', 10)];
         if ($p === '/mail/test' && $m === 'POST') return ['mail.test', $s(implode(', ', (array) ($b['to'] ?? [])), 120) . (!empty($b['sent']) ? ' · enviado' : ' · NO se envió')];
         if ($p === '/backups' && $m === 'POST') return ['backup.create', $s($b['backup']['file'] ?? '', 60)];
         if (preg_match('#^/backups/([A-Za-z0-9._-]+)$#', $p, $x) && $m === 'DELETE') return ['backup.delete', $x[1]];

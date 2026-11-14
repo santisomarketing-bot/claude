@@ -38,16 +38,16 @@ final class Mail
     private const COPY = [
         'es' => ['title' => 'Copia de tu presupuesto', 'intro' => 'Hemos recibido tu solicitud de presupuesto. Esta es la copia de lo que has pedido, con los importes calculados por Torivac.',
             'ref' => 'Ref.', 'item' => 'Artículo', 'qty' => 'Cant.', 'unit' => 'Ud.', 'amount' => 'Importe', 'total' => 'Total (sin IVA)',
-            'unpriced' => '{n} línea(s) «A consultar» no incluidas en el total', 'demo' => '(PRECIOS DE DEMOSTRACIÓN)', 'ignore' => 'Si no has pedido tú este presupuesto, ignora este mensaje.'],
+            'unpriced' => '{n} línea(s) «A consultar» no incluidas en el total', 'demo' => '(PRECIOS DE DEMOSTRACIÓN)', 'files' => 'Los archivos no se suben a la web. Si quieres enviarnos planos o documentación técnica, mándalos por correo como adjunto a {mail} indicando el número de pedido {n}.', 'ignore' => 'Si no has pedido tú este presupuesto, ignora este mensaje.'],
         'en' => ['title' => 'Copy of your quote', 'intro' => 'We have received your quote request. This is a copy of what you asked for, with the amounts calculated by Torivac.',
             'ref' => 'Ref.', 'item' => 'Item', 'qty' => 'Qty', 'unit' => 'Unit', 'amount' => 'Amount', 'total' => 'Total (excl. VAT)',
-            'unpriced' => '{n} line(s) marked “On request” are not included in the total', 'demo' => '(DEMONSTRATION PRICES)', 'ignore' => 'If you did not request this quote, please ignore this message.'],
+            'unpriced' => '{n} line(s) marked “On request” are not included in the total', 'demo' => '(DEMONSTRATION PRICES)', 'files' => 'Files are not uploaded to the website. If you want to send us drawings or technical documents, email them as attachments to {mail} quoting order number {n}.', 'ignore' => 'If you did not request this quote, please ignore this message.'],
         'fr' => ['title' => 'Copie de votre devis', 'intro' => 'Nous avons bien reçu votre demande de devis. Voici une copie de ce que vous avez demandé, avec les montants calculés par Torivac.',
             'ref' => 'Réf.', 'item' => 'Article', 'qty' => 'Qté', 'unit' => 'Prix unit.', 'amount' => 'Montant', 'total' => 'Total (hors TVA)',
-            'unpriced' => '{n} ligne(s) « Sur demande » non incluse(s) dans le total', 'demo' => '(PRIX DE DÉMONSTRATION)', 'ignore' => 'Si vous n’avez pas demandé ce devis, ignorez ce message.'],
+            'unpriced' => '{n} ligne(s) « Sur demande » non incluse(s) dans le total', 'demo' => '(PRIX DE DÉMONSTRATION)', 'files' => 'Les fichiers ne sont pas envoyés via le site. Si vous souhaitez nous transmettre des plans ou de la documentation technique, envoyez-les en pièce jointe par e-mail à {mail} en indiquant le numéro de commande {n}.', 'ignore' => 'Si vous n’avez pas demandé ce devis, ignorez ce message.'],
         'de' => ['title' => 'Kopie Ihres Angebots', 'intro' => 'Wir haben Ihre Angebotsanfrage erhalten. Dies ist eine Kopie Ihrer Anfrage mit den von Torivac berechneten Beträgen.',
             'ref' => 'Ref.', 'item' => 'Artikel', 'qty' => 'Menge', 'unit' => 'Einzelpreis', 'amount' => 'Betrag', 'total' => 'Gesamt (ohne MwSt.)',
-            'unpriced' => '{n} Position(en) „Auf Anfrage“ sind in der Summe nicht enthalten', 'demo' => '(DEMO-PREISE)', 'ignore' => 'Wenn Sie dieses Angebot nicht angefordert haben, ignorieren Sie diese Nachricht bitte.'],
+            'unpriced' => '{n} Position(en) „Auf Anfrage“ sind in der Summe nicht enthalten', 'demo' => '(DEMO-PREISE)', 'files' => 'Dateien werden nicht über die Website hochgeladen. Wenn Sie uns Zeichnungen oder technische Unterlagen senden möchten, schicken Sie sie als Anhang per E-Mail an {mail} und nennen Sie die Bestellnummer {n}.', 'ignore' => 'Wenn Sie dieses Angebot nicht angefordert haben, ignorieren Sie diese Nachricht bitte.'],
     ];
 
     /** Textos FIJOS del correo de un presupuesto reenviado desde el panel (Quotes), por idioma. {n} = número del presupuesto. Las cabeceras de la tabla y el total salen de COPY. */
@@ -457,6 +457,7 @@ final class Mail
         $t = self::COPY[$lang];
         $p = $d['priced'];
         $number = (string) $d['number'];
+        $mailTo = (string) ($d['mail'] ?? '');
         $demo = !empty($d['demo']);
         $e = function ($v) { return Util::esc($v); };
         $rows = '';
@@ -470,12 +471,15 @@ final class Mail
         $lines[] = '';
         $lines[] = $t['total'] . ': ' . self::money($p['total'], $lang);
         if ($unpriced !== '') $lines[] = $unpriced;
+        $files = $mailTo !== '' ? str_replace(['{mail}', '{n}'], [$mailTo, $number], $t['files']) : '';             // los archivos técnicos no se suben a la web: se mandan por correo con el número de pedido
+        if ($files !== '') { $lines[] = ''; $lines[] = $files; }
         $lines[] = '';
         $lines[] = $t['ignore'];
         $html = '<div style="font-family:Arial,sans-serif;max-width:720px"><h2 style="margin:0;color:#9c520f">' . $e($t['title']) . ' ' . $e($number) . ($demo ? ' ' . $e($t['demo']) : '') . '</h2>' .
             '<p>' . $e($t['intro']) . '</p>' .
             '<table cellpadding="6" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#ddd;width:100%"><tr style="background:#100404;color:#fff"><th>' . $e($t['ref']) . '</th><th>' . $e($t['item']) . '</th><th>' . $e($t['qty']) . '</th><th>' . $e($t['unit']) . '</th><th>' . $e($t['amount']) . '</th></tr>' . $rows . '</table>' .
             '<p style="text-align:right;font-size:18px">' . $e($t['total']) . ': <b>' . $e(self::money($p['total'], $lang)) . '</b>' . ($unpriced !== '' ? '<br><small>' . $e($unpriced) . '</small>' : '') . '</p>' .
+            ($files !== '' ? '<p>' . $e($files) . '</p>' : '') .
             '<p style="color:#777;font-size:12px">' . $e($t['ignore']) . '</p></div>';
         return ['subject' => 'Torivac · copia de tu presupuesto ' . $number, 'html' => $html, 'text' => implode("\n", $lines)];
     }

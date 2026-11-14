@@ -8,7 +8,7 @@
  *   PROPIETARIO Y MANAGER  GET|POST /api/customers · PUT|DELETE /api/customers/:correo · POST /api/customers/:correo/password (cuentas de cliente; lógica en Customers.php) · GET|PUT /api/settings/pricing (porcentajes de las categorías,
  *             precio de cara al visitante y aproximado) · PUT /api/prices/items/:ref (precio de un producto; la referencia va codificada en la URL) — lógica en Pricing.php
  *   MANAGER   GET /api/diag · GET /api/admin/data · GET /api/messages?limit= · DELETE /api/messages/:id · POST /api/mail/test · GET /api/mail/status · POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
- *             GET|PUT /api/settings/google (medición de Google: IDs y conversiones) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · POST /api/users/:correo/unlock|two-step|password · GET /api/activity · /api/backups (copias de seguridad) · /api/blog/… (entradas del blog e imágenes: ver BlogApi.php)
+ *             GET|PUT /api/settings/google (medición de Google: IDs y conversiones) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · /api/newcontent/… (contenido nuevo: manager y Revisor; ver NewContent.php) · POST /api/users/:correo/unlock|two-step|password · GET /api/activity · /api/backups (copias de seguridad) · /api/blog/… (entradas del blog e imágenes: ver BlogApi.php)
  *   CRON      GET /api/cron?token=… (alternativa a `php cron.php` si el hosting no deja programar por línea de comandos)
  *
  * [LIMITES] Todo límite por visitante usa Request::ipKey (una IPv6 cuenta por su /64). ACCESO (POST /auth/login), contra la fuerza bruta: 5 contraseñas erróneas desde el mismo visitante contra la misma
@@ -139,7 +139,7 @@ final class Router
         if ($last !== null) unset($last['error']);                                              // /health es público: el texto del error es de GET /mail/status (solo managers)
         $b['mail'] = ['driver' => $st['driver'], 'configured' => $st['configured'], 'last' => $last];
         if ($p) $b['config'] = ['ok' => false, 'problems' => $p];
-        $b['features'] = ['blog' => true, 'activity' => true, 'backups' => true, 'two_step' => Security::twoStepEnabled() && Mail::enabled()];      // el panel enseña estas partes solo si el servidor las trae (el Worker de Cloudflare no)
+        $b['features'] = ['blog' => true, 'activity' => true, 'backups' => true, 'newcontent' => true, 'two_step' => Security::twoStepEnabled() && Mail::enabled()];      // el panel enseña estas partes solo si el servidor las trae (el Worker de Cloudflare no)
         if ($captcha && $siteOk) $b['features']['turnstile'] = ['sitekey' => $site];   // la clave PÚBLICA del CAPTCHA: los formularios cargan el widget solo si hay clave y secreto
         return new Response($b);
     }
@@ -477,6 +477,11 @@ final class Router
             if (!empty($who['master'])) return new Response(['ok' => false, 'error' => 'El token maestro no tiene dispositivos'], 400);
             return Security::forgetDevices((string) $who['sub']) ? new Response(['ok' => true]) : new Response(['ok' => false, 'error' => 'No existe ese usuario'], 404);
         }
+        if ($path === '/newcontent' || strpos($path, '/newcontent/') === 0) {                          // contenido nuevo (plan 2027): el manager y el Revisor; ningún otro rol
+            if (!Auth::requireRole($who, 'manager', 'reviewer')) return new Response(['ok' => false, 'error' => 'No autorizado'], 403);
+            return NewContent::handle($req, $who);
+        }
+        if (($who['role'] ?? '') === 'reviewer') return new Response(['ok' => false, 'error' => 'No autorizado'], 403);      // el Revisor solo tiene su sesión y «Contenido nuevo»: nada de presupuestos, precios, clientes ni ajustes
         if ($path === '/orders' && $m === 'GET') return self::orders($who);
         if (strpos($path, '/orders/') === 0) return Quotes::handle($req, $who);                  // ver, editar y reenviar un presupuesto (manager y propietario; un cliente solo ve los suyos); un número con forma rara es 404, no 403
         if (Auth::requireRole($who, 'manager', 'client') && ($pr = self::pricingRoutes($req, $who)) !== null) return $pr;      // clientes, ajustes de precios y precio de un producto: manager y propietario

@@ -31,7 +31,7 @@ export async function createUser(env, { email, name, role, password, tier } = {}
   if (typeof email !== 'string') return { error: 'Correo no válido' };
   email = email.trim().toLowerCase();
   if (!isEmail(email)) return { error: 'Correo no válido' };
-  if (!['manager', 'client', 'customer'].includes(role)) return { error: 'Rol no válido' };
+  if (!['manager', 'client', 'customer', 'reviewer'].includes(role)) return { error: 'Rol no válido' };
   if (role === 'customer' && tier != null && !isTier(tier)) return { error: 'Categoría no válida' };
   if (typeof password !== 'string') return { error: 'Contraseña no válida' };
   if (name != null && typeof name !== 'string') return { error: 'Nombre no válido' };

@@ -142,3 +142,13 @@ details.prop [aria-invalid=true]{border-color:var(--err);outline:2px solid var(-
 .qr-hist li{padding-bottom:var(--s-2);border-bottom:1px solid var(--line);font-size:var(--fs-0)}
 .qr-hist li:last-child{border-bottom:0}
 @media (max-width:860px){.qr-grid{grid-template-columns:1fr}}
+
+/* [CONTENIDO NUEVO] vista previa del texto vigente, antes/después de una propuesta */
+.nc-prev{border:1px solid var(--line);padding:1rem 1.2rem;background:#fff;border-radius:var(--radius)}
+.nc-prev h3{margin:0 0 .5rem}.nc-prev h4{margin:1rem 0 .3rem}.nc-prev p{margin:.3rem 0}
+.nc-prop{margin:.8rem 0}.nc-diff{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:.6rem 0}.nc-diff>strong{grid-column:1/-1}
+.nc-before,.nc-after{padding:.5rem .7rem;border-radius:var(--radius);border:1px solid var(--line)}.nc-before{background:#faf3f0}.nc-after{background:#eef7f0}
+.nc-diff pre{white-space:pre-wrap;margin:.2rem 0 0;font:inherit}
+@media (max-width:720px){.nc-diff{grid-template-columns:1fr}}
+[data-nc-root] .panel,[data-nc-root] .nc-prev,[data-nc-root] .nc-diff>div{min-width:0;overflow-wrap:anywhere}
+@media (max-width:860px){[data-nc-root] .cols{grid-template-columns:minmax(0,1fr)}}

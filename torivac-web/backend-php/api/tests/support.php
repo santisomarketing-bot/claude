@@ -38,6 +38,7 @@ function fresh(array $cfg = []): void
     Http::$mock = null;
     Http::$resolver = null;
     AdminData::setFile(null);
+    \Torivac\NewContent::setFile(null);
     RateLimit::$purgeOneIn = 0;                                                           // las pruebas no dejan que una limpieza al azar cambie lo que miran
     Backup::$scheduling = false;                                                          // la copia semanal programada para el final de la petición no se crea al terminar el proceso de pruebas
     Security::$defer = false;                                                             // el aviso por ataque repetido sale al instante (en producción sale al terminar la respuesta)

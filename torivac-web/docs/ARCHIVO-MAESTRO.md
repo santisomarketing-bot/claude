@@ -305,6 +305,7 @@ Los roles los decide **solo el servidor**, que los relee en cada petición. El J
 | `manager` | Manager | Equipo técnico | Todo: resumen, presupuestos recibidos, clientes, mensajes, precios (hoja, Excel, IA, categorías), propuestas, contenido, blog, usuarios, actividad, estadísticas y ajustes |
 | `client` | **Propietario** | El dueño de la web | Nuevo presupuesto; todos los presupuestos recibidos (ver, editar, reenviar, PDF, sin IP ni error de correo); clientes; **precios: categorías, precio de cada producto, subir el Excel y «Actualizar ahora»**; lista de precios; estadísticas. Sin ajustes, Google, usuarios del equipo, copias ni IA de precios |
 | `customer` | Cliente | Comprador con cuenta | Solo lectura: nuevo presupuesto (3 al día), sus presupuestos en versión reducida, y la lista con **su** categoría de precio. Nunca ve el nombre de su categoría |
+| `reviewer` | **Revisor** | La persona que es a la vez comercial y traductora (una sola cuenta, creada desde *Usuarios*) | Solo «Contenido nuevo»: ve los borradores, propone cambios, acepta o descarta propuestas y **aprueba** (castellano como «comercial», idiomas como «traductor»). El servidor le niega todo lo demás (403). Solo existe en el servidor PHP; el Worker crea la cuenta y responde 501 a esa sección |
 | (sin sesión) | Visitante | Cualquiera | Precios «Consultar», aproximados (≈) o de la categoría Normal, según un ajuste |
 
 **Lección de nombres:** `client` se entendió al principio como «comprador» y era el dueño. Hoy se llama «Propietario» en la interfaz y se mantiene `client` en el API. Definir los roles y qué ve cada uno antes de construir.
@@ -617,7 +618,7 @@ Todas las pruebas de bash scripts/qa-all.sh en verde con AXE_PATH definido, más
 Manda el código. Las discrepancias conocidas al escribir este archivo:
 
 - `DISENO-TEMAS.md` dice que `qa-theme` prueba «12 páginas × 4 anchos × 2 aspectos»; el código hace **15 páginas × 5 anchos × 3 aspectos**.
-- `ARQUITECTURA.md` y `DOCUMENTACION.md` hablan de dos aspectos y de dos roles; hay **tres aspectos** (`ficha`, `clasico`, `original`) y **tres roles** (`manager`, `client`, `customer`).
+- `ARQUITECTURA.md` y `DOCUMENTACION.md` hablan de dos aspectos y de dos roles; hay **tres aspectos** (`ficha`, `clasico`, `original`) y **cuatro roles** (`manager`, `client`, `customer`, `reviewer`).
 - Las cifras de pruebas de `SEGURIDAD.md` («5420 comprobaciones PHP», «164 pruebas Worker») están desfasadas: la última pasada dio 6.647 comprobaciones de PHP y 247 pruebas del Worker.
 - No existe `.github/`: los flujos de CI están como plantillas en `ci/ci.yml` y `ci/deploy.yml`.
 - El número de propuestas aparece como 116 o 118 según el documento.

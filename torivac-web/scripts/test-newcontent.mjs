@@ -7,6 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execFileSync } from 'node:child_process';
 import { loadNewContent, applyNewContent } from '../site/lib/newcontent.mjs';
+import { applyExport } from './apply_newcontent.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LANGS = ['es', 'en', 'fr', 'de'];
@@ -84,6 +85,48 @@ console.log('\n4) Los archivos reales de data/content-new');
 { const r = loadNewContent({ dir: path.join(ROOT, 'data', 'content-new'), langs: LANGS }); ok(r.problems.length === 0, `validan sin problemas (${r.entries.length} páginas)${r.problems.length ? ': ' + r.problems[0] : ''}`);
   const pub = r.entries.flatMap((e) => Object.entries(e.langs).filter(([, v]) => v.status === 'aprobado').map(([l]) => `${e.id}[${l}]`));
   console.log(`     aprobadas y publicadas hoy: ${pub.length ? pub.join(', ') : 'ninguna (todo en borrador)'}`); }
+
+console.log('\n5) Anotar en los archivos lo hecho en el panel (scripts/apply_newcontent.mjs)');
+{
+  const base = clone(sample()); base.langs.es.status = 'borrador'; delete base.langs.es.approval; base.history = [];
+  const dir = dirWith(base), file = fs.readdirSync(dir)[0];
+  /** Identificador de un hecho del registro de cambios (L + 12 cifras hexadecimales). */
+  const L = (n) => `L${n.toString(16).padStart(12, '0')}`;
+  const exp = { ok: true, kind: 'torivac-contenido-nuevo', pages: { prueba: {
+    langs: { es: { status: 'aprobado', approval: { by: 'Marta Revisora', email: 'marta@torivac.test', role: 'comercial', at: '2026-11-21' }, text: { ...base.langs.es, title: 'Título aceptado desde el panel | Torivac' } } },
+    history: [{ id: L(2), at: '2026-11-21T10:00:00.000Z', by: 'marta@torivac.test', name: 'Marta Revisora', role: 'reviewer', lang: 'es', action: 'aprobada', detail: 'como comercial' }, { id: L(1), at: '2026-11-21T09:00:00.000Z', by: 'jefa@torivac.test', name: 'Jefa', role: 'manager', lang: 'es', action: 'propuesta_aceptada', detail: 'P1' }] },
+  nada: { langs: { es: { status: 'aprobado', approval: { by: 'X', role: 'comercial', at: '2026-11-21' }, text: base.langs.es } }, history: [] } } };
+  const expFile = path.join(dir, '..', `exp-${path.basename(dir)}.json`); fs.writeFileSync(expFile, JSON.stringify(exp));
+  /** Ejecuta scripts/apply_newcontent.mjs sobre el archivo y la carpeta de la prueba (más las opciones que se pasen); devuelve su salida. */
+  const cli = (...a) => execFileSync('node', [path.join(ROOT, 'scripts/apply_newcontent.mjs'), `--file=${expFile}`, `--dir=${dir}`, ...a], { stdio: 'pipe' }).toString();
+  const before = fs.readFileSync(path.join(dir, file), 'utf8');
+  const dry = cli('--dry');
+  ok(/COMPROBADO/.test(dry) && fs.readFileSync(path.join(dir, file), 'utf8') === before, '--dry comprueba y no escribe nada');
+  ok(/«nada»|nada: no existe/.test(dry), 'una página que no existe en los archivos se omite (no se crea)');
+  cli();
+  const w = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
+  ok(w.langs.es.status === 'aprobado' && w.langs.es.approval.by === 'Marta Revisora' && w.langs.es.approval.role === 'comercial' && w.langs.es.approval.at === '2026-11-21', 'el castellano queda aprobado con quién, función y fecha');
+  ok(!('email' in w.langs.es.approval), 'el correo no se escribe en el archivo (solo quién, función y fecha)');
+  ok(w.langs.es.title === 'Título aceptado desde el panel | Torivac' && w.langs.en.status === 'borrador', 'el texto aceptado se anota y el inglés sigue en borrador');
+  ok(w.history.length === 2 && w.history[0].id === L(2) && w.history[1].action === 'propuesta_aceptada', 'el registro entra ordenado, el más reciente primero');
+  ok(loadNewContent({ dir, langs: LANGS }).problems.length === 0, 'lo escrito pasa la validación del generador');
+  cli();
+  ok(JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')).history.length === 2, 'aplicar dos veces lo mismo no duplica el registro (por id)');
+  const nodir = fs.readdirSync(dir).filter((f) => f.endsWith('.json'));
+  ok(nodir.length === 1, 'no se creó ninguna página nueva');
+  // un archivo que dejaría los datos inválidos no escribe nada
+  const bad = clone(exp); bad.pages.prueba.langs.en = { status: 'aprobado', approval: { by: 'Marta', role: 'traductor', at: '2026-11-21' }, text: sample().langs.en }; bad.pages.prueba.langs.es = { status: 'borrador', approval: null, text: sample().langs.es };
+  fs.writeFileSync(expFile, JSON.stringify(bad));
+  const snap = fs.readFileSync(path.join(dir, file), 'utf8'); let code = 0, err = '';
+  try { cli(); } catch (e) { code = e.status; err = String(e.stderr); }
+  ok(code === 1 && /castellano/.test(err) && fs.readFileSync(path.join(dir, file), 'utf8') === snap, 'una traducción aprobada con el castellano en borrador se rechaza y no se escribe nada');
+  fs.writeFileSync(expFile, JSON.stringify({ kind: 'otra-cosa', pages: {} })); code = 0;
+  try { cli(); } catch (e) { code = e.status; }
+  ok(code === 2, 'un archivo que no es de «Contenido nuevo» se rechaza');
+  const r = applyExport({ pages: { prueba: { langs: { fr: { status: 'borrador', text: {} } }, history: [] } } }, { 'a.json': clone(base) });
+  ok(r.skipped.some((x) => /\[fr\]/.test(x)), 'un idioma que la página no tiene se omite y se dice');
+  fs.rmSync(dir, { recursive: true, force: true }); fs.rmSync(expFile, { force: true });
+}
 
 console.log(fails ? `\n✗ ${fails} comprobaciones fallidas` : '\n✓ contenido nuevo: solo se publica lo aprobado, con quién y con qué función');
 process.exit(fails ? 1 : 0);

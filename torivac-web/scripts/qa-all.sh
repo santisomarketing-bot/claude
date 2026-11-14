@@ -45,6 +45,7 @@ paso "Apache real + PHP-FPM (.htaccess de verdad)" node scripts/qa-apache.mjs
 paso "Blog en Apache real (SEO, sitemap, llms)"   node scripts/qa-blog-apache.mjs
 paso "Blog: editor del panel en un navegador"   node scripts/qa-blog-panel.mjs
 paso "Acceso en dos pasos y seguridad del panel" node scripts/qa-security-panel.mjs
+paso "Contenido nuevo y Revisor: panel, aprobación y registro" node scripts/qa-newcontent-panel.mjs
 paso "CAPTCHA invisible opcional (Turnstile)"   node scripts/qa-captcha.mjs
 paso "Google: aviso de cookies, medición y Search Console" node scripts/qa-google.mjs
 paso "Actualizar sin caché vieja"               node scripts/qa-update.mjs

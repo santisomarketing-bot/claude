@@ -1,12 +1,16 @@
 {
   "id": "a-medida",
   "kind": "landing",
-  "slug": { "es": "/fabricacion-transformadores-a-medida/", "en": "/en/custom-transformer-manufacturing/" },
+  "slug": {
+    "es": "/fabricacion-transformadores-a-medida/",
+    "en": "/en/custom-transformer-manufacturing/"
+  },
   "notes": [
     "Origen: Plan de mejora 2027 (12/11/2026), secciones 6, 8 y 16.2. Texto NUEVO: no existe en la web original.",
     "Pendiente del usuario comercial: confirmar las afirmaciones «diseñamos y fabricamos», los pasos de estudio y que no se prometen plazos, mínimos ni certificaciones.",
     "Pendiente del traductor: validar la versión inglesa (redactada como borrador a partir del castellano) antes de aprobarla.",
-    "Los botones llevan a la página de contacto actual; el formulario técnico por familia llegará después."
+    "Sin archivos adjuntos en la web: los planos y documentos técnicos se envían por correo como adjunto indicando el número de pedido (decisión del 14/11/2026).",
+    "Los botones llevan a la página de contacto actual; el formulario técnico por familia (sin archivos) llegará después."
   ],
   "langs": {
     "es": {
@@ -16,13 +20,34 @@
       "h1": "Fabricación de transformadores a medida",
       "lead": "En Torivac diseñamos y fabricamos soluciones de transformación y regulación eléctrica adaptadas a requisitos técnicos específicos. Trabajamos con fabricantes de equipos, integradores e ingenierías para estudiar la viabilidad de cada aplicación y seleccionar la configuración adecuada.",
       "sections": [
-        { "h2": "Del requisito técnico a la fabricación", "p": ["Cuéntanos la potencia requerida, las tensiones de entrada y salida, la frecuencia, el espacio disponible, el montaje, el entorno de funcionamiento y el volumen previsto. Nuestro equipo revisará las necesidades y propondrá los siguientes pasos para definir el componente."] },
-        { "h2": "Personalización según la aplicación", "p": ["Las soluciones pueden requerir ajustes eléctricos y mecánicos. Las opciones disponibles y los límites de fabricación se confirmarán individualmente para cada referencia, diseño y volumen."] },
-        { "h2": "Solicitar una evaluación", "p": ["Facilita tu aplicación y adjunta la documentación técnica que tengas disponible. Para pedidos recurrentes, indica también el consumo anual estimado. Responderemos con los datos adicionales necesarios para estudiar la propuesta."] }
+        {
+          "h2": "Del requisito técnico a la fabricación",
+          "p": [
+            "Cuéntanos la potencia requerida, las tensiones de entrada y salida, la frecuencia, el espacio disponible, el montaje, el entorno de funcionamiento y el volumen previsto. Nuestro equipo revisará las necesidades y propondrá los siguientes pasos para definir el componente."
+          ]
+        },
+        {
+          "h2": "Personalización según la aplicación",
+          "p": [
+            "Las soluciones pueden requerir ajustes eléctricos y mecánicos. Las opciones disponibles y los límites de fabricación se confirmarán individualmente para cada referencia, diseño y volumen."
+          ]
+        },
+        {
+          "h2": "Solicitar una evaluación",
+          "p": [
+            "Facilita tu aplicación en el formulario de contacto. Si quieres enviarnos planos o documentación técnica, mándalos por correo como adjunto indicando el número de tu pedido. Para pedidos recurrentes, indica también el consumo anual estimado. Responderemos con los datos adicionales necesarios para estudiar la propuesta."
+          ]
+        }
       ],
       "cta": [
-        { "label": "Solicitar estudio técnico", "href": "/contacto/" },
-        { "label": "Ver transformadores toroidales", "href": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/" }
+        {
+          "label": "Solicitar estudio técnico",
+          "href": "/contacto/"
+        },
+        {
+          "label": "Ver transformadores toroidales",
+          "href": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/"
+        }
       ]
     },
     "en": {
@@ -32,13 +57,34 @@
       "h1": "Custom Transformer Manufacturing for OEMs",
       "lead": "At Torivac we design and manufacture electrical transformation and regulation solutions tailored to specific technical requirements. We work with equipment manufacturers, integrators and engineering firms to assess the feasibility of each application and select the right configuration.",
       "sections": [
-        { "h2": "From technical requirement to manufacture", "p": ["Tell us the required power, input and output voltages, frequency, available space, mounting, operating environment and expected volume. Our team will review your needs and propose the next steps to define the component."] },
-        { "h2": "Customisation for your application", "p": ["Solutions may require electrical and mechanical adjustments. The available options and manufacturing limits are confirmed individually for each reference, design and volume."] },
-        { "h2": "Request an assessment", "p": ["Send us your application details and any technical documentation you have available. For recurring orders, include your estimated annual consumption. We will reply with any additional information needed to study the proposal."] }
+        {
+          "h2": "From technical requirement to manufacture",
+          "p": [
+            "Tell us the required power, input and output voltages, frequency, available space, mounting, operating environment and expected volume. Our team will review your needs and propose the next steps to define the component."
+          ]
+        },
+        {
+          "h2": "Customisation for your application",
+          "p": [
+            "Solutions may require electrical and mechanical adjustments. The available options and manufacturing limits are confirmed individually for each reference, design and volume."
+          ]
+        },
+        {
+          "h2": "Request an assessment",
+          "p": [
+            "Describe your application in the contact form. If you want to send drawings or technical documentation, email them as an attachment quoting your order number. For recurring orders, include your estimated annual consumption. We will reply with any additional information needed to study the proposal."
+          ]
+        }
       ],
       "cta": [
-        { "label": "Request a technical study", "href": "/contacto/" },
-        { "label": "View toroidal transformers", "href": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/" }
+        {
+          "label": "Request a technical study",
+          "href": "/contacto/"
+        },
+        {
+          "label": "View toroidal transformers",
+          "href": "/categoria-producto/transformadores/transformadores-toroidales-transformadores/"
+        }
       ]
     }
   }

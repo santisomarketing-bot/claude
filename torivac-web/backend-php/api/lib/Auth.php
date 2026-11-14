@@ -133,7 +133,7 @@ final class Auth
         $u = Users::find($s['sub']);
         if (!is_array($u) || !isset($u['sid']) || !is_string($u['sid']) || $u['sid'] === '' || !hash_equals($u['sid'], $s['sid'])) return null;
         if ($s['iat'] <= (int) ($u['sess_after'] ?? 0)) return null;
-        if (!in_array($u['role'] ?? '', ['manager', 'client', 'customer'], true)) return null;
+        if (!in_array($u['role'] ?? '', ['manager', 'client', 'customer', 'reviewer'], true)) return null;
         $who = ['sub' => (string) $u['email'], 'role' => $u['role'], 'name' => (string) ($u['name'] ?? $u['email'])];
         if ($u['role'] === 'customer') $who['tier'] = Pricing::tierOf($u['tier'] ?? null);                  // la categoría sale del registro de la cuenta en cada petición: cambiarla vale al instante
         return $who;
@@ -190,7 +190,7 @@ final class Users
     }
 
     /**
-     * Crea una cuenta. Roles: manager, client (propietario) y customer (cliente, con `tier` vip|vip5|vip10|normal, por defecto normal; solo se guarda en ese rol). Correo, nombre y contraseña siguen las reglas de siempre.
+     * Crea una cuenta. Roles: manager, client (propietario), reviewer (Revisor: la persona que es a la vez comercial y traductora; solo ve y aprueba «Contenido nuevo») y customer (cliente, con `tier` vip|vip5|vip10|normal, por defecto normal; solo se guarda en ese rol). Correo, nombre y contraseña siguen las reglas de siempre.
      * @return array{user?:array,error?:string,status?:int}
      */
     public static function create(array $in): array
@@ -200,7 +200,7 @@ final class Users
         $email = strtolower(trim($email));
         if (!Orders::validEmail($email)) return ['error' => 'Correo no válido'];
         $role = $in['role'] ?? '';
-        if (!in_array($role, ['manager', 'client', 'customer'], true)) return ['error' => 'Rol no válido'];
+        if (!in_array($role, ['manager', 'client', 'customer', 'reviewer'], true)) return ['error' => 'Rol no válido'];
         $tier = null;
         if ($role === 'customer') {
             $tier = $in['tier'] ?? 'normal';

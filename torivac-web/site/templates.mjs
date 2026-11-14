@@ -711,6 +711,7 @@ export function quoteBody(ctx) {
       <label class="check"><input type="checkbox" name="privacy" required> <span>${t('accept_privacy', lang)}</span></label>
       <div><div class="captcha-slot" data-captcha-slot></div><div class="actions" style="display:flex;gap:var(--s-3);flex-wrap:wrap"><button class="btn" type="submit">${t('send_order', lang)}</button><button class="btn ghost" type="button" data-download-pdf>${t('download_pdf', lang)}</button></div></div>
       <p class="small muted">${t('send_hint', lang)}</p>
+      <p class="small muted" data-files-note>${filesNote(site, lang, 'files_note')}</p>
       <p class="small muted" data-captcha-note hidden>${t('captcha_note', lang)}</p>
       ${site.demo ? `<p class="notice small">${t('demo_send_note', lang)}</p>` : ''}
       <div data-sent hidden class="notice ok" role="status"></div>
@@ -719,6 +720,12 @@ export function quoteBody(ctx) {
 }
 
 // ───────────────────────────────────────────────────────────── [CONTACT] formulario
+/** Aviso de que la web no recibe archivos: el texto `key` en el idioma, con el correo de pedidos como enlace (los archivos técnicos se mandan por correo, nunca por el formulario). */
+function filesNote(site, lang, key) {
+  const mail = ((site.meta.order_recipients || {}).to || [])[0] || site.meta.contact.email;
+  return esc(t(key, lang)).replace('{mail}', `<a href="mailto:${attr(mail)}">${esc(mail)}</a>`);
+}
+
 /** Formulario de contacto accesible (nombre, email, mensaje, privacidad y campo trampa antispam); `where` hace únicos los ids. */
 export function contactForm(ctx, where = 'page') {
   const { lang, site } = ctx;
@@ -729,6 +736,7 @@ export function contactForm(ctx, where = 'page') {
     <input class="hp" type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <label class="check"><input type="checkbox" name="privacy" required><span>${t('accept_privacy', lang)}</span></label>
     <div><div class="captcha-slot" data-captcha-slot></div><button class="btn" type="submit">${t('send', lang)}</button></div>
+    <p class="small muted" data-files-note>${filesNote(site, lang, 'files_note_contact')}</p>
     <p class="small muted" data-captcha-note hidden>${t('captcha_note', lang)}</p>
     ${site.demo ? `<p class="notice small">${t('demo_send_note', lang)}</p>` : ''}
     <div data-sent hidden class="notice ok" role="status"></div>

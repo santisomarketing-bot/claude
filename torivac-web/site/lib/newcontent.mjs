@@ -47,6 +47,24 @@ function checkVersion(id, lang, v, problems) {
   }
 }
 
+/** Valida el registro de cambios (`history`) de una página: cada hecho lleva id único, fecha ISO, quién, idioma, acción y un detalle corto. */
+function checkHistory(id, h, problems) {
+  if (h == null) return;
+  if (!Array.isArray(h)) { problems.push(`${id}: «history» debe ser una lista`); return; }
+  const seen = new Set();
+  for (const [i, e] of h.entries()) {
+    const at = `${id} history[${i}]`;
+    if (!e || typeof e !== 'object') { problems.push(`${at}: no es un objeto`); continue; }
+    if (typeof e.id !== 'string' || !/^L[0-9a-f]{12}$/.test(e.id)) problems.push(`${at}: id no válido`);
+    else if (seen.has(e.id)) problems.push(`${at}: id repetido`); else seen.add(e.id);
+    if (!/^\d{4}-\d\d-\d\dT/.test(e.at || '')) problems.push(`${at}: fecha no válida`);
+    if (!plain(e.by)) problems.push(`${at}: sin autor`);
+    if (!['es', 'en', 'fr', 'de'].includes(e.lang)) problems.push(`${at}: idioma no válido`);
+    if (!plain(e.action)) problems.push(`${at}: sin acción`);
+    if (e.detail != null && typeof e.detail !== 'string') problems.push(`${at}: detalle no válido`);
+  }
+}
+
 /**
  * Lee y valida data/content-new/*.json. `existing` es el conjunto de rutas ya ocupadas por otras páginas.
  * Devuelve { entries, problems }: cada entrada lleva su id, rutas por idioma y versiones por idioma.
@@ -77,7 +95,8 @@ export function loadNewContent({ dir, langs, existing = new Set() }) {
     }
     const es = (d.langs || {}).es;
     for (const l of Object.keys(d.langs || {})) if (l !== 'es' && d.langs[l] && d.langs[l].status === 'aprobado' && !(es && es.status === 'aprobado')) problems.push(`${id} [${l}]: no se puede aprobar una traducción mientras el castellano no esté aprobado`);
-    entries.push({ id, kind: d.kind || 'landing', slug: d.slug || {}, langs: d.langs || {}, notes: d.notes || [] });
+    checkHistory(id, d.history, problems);
+    entries.push({ id, kind: d.kind || 'landing', slug: d.slug || {}, langs: d.langs || {}, notes: d.notes || [], history: d.history || [] });
   }
   return { entries, problems };
 }

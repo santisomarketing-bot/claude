@@ -263,7 +263,7 @@ final class Orders
         $to = $o['customer']['email'];
         if (!RateLimit::hit('copyto', $to, self::COPY_PER_RECIPIENT, 86400000, $nowMs)['allowed']) return 'limit';                  // clave = sha256 del correo, nunca el correo
         if (!RateLimit::hit('copyday', 'all', self::copyDailyMax(), 86400000, $nowMs)['allowed']) return 'limit';
-        $c = Mail::copyMail(['number' => $number, 'priced' => $priced, 'lang' => $o['lang'], 'demo' => $demo], $cat);
+        $c = Mail::copyMail(['number' => $number, 'priced' => $priced, 'lang' => $o['lang'], 'demo' => $demo, 'mail' => (self::team()[0] ?? '')], $cat);
         $r = Mail::send(['to' => [$to], 'subject' => $c['subject'], 'html' => $c['html'], 'text' => $c['text']], 'order', $nowMs);       // sin adjunto y sin nada del visitante
         if (!empty($r['ok'])) return 'sent';
         return !empty($r['skipped']) ? 'skipped' : 'failed';

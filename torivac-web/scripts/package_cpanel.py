@@ -37,7 +37,7 @@ import secret_scan  # noqa: E402  (reutiliza los patrones de claves)
 
 REQUIRED = ["index.html", ".htaccess", "404.html", "robots.txt", "en/index.html", "en/404.html", "en/.htaccess", "fr/index.html", "de/index.html",
             "admin/index.html", "presupuesto/index.html", "contacto/index.html", "assets/data/catalog.js", "assets/data/prices.js", "assets/css/site.css",
-            "api/index.php", "api/page.php", "api/.htaccess", "api/cron.php", "api/config.sample.php", "api/generated/catalog.json", "api/generated/admin-data.json", "api/generated/build.json", "api/lib/Router.php", "api/lib/BlogPage.php", "api/tools/create-user.php",
+            "api/index.php", "api/page.php", "api/.htaccess", "api/cron.php", "api/config.sample.php", "api/generated/catalog.json", "api/generated/admin-data.json", "api/generated/newcontent.json", "api/generated/build.json", "api/lib/Router.php", "api/lib/BlogPage.php", "api/tools/create-user.php",
             "api/generated/blog-shell.es.json", "api/generated/blog-shell.en.json", "api/generated/blog-shell.fr.json", "api/generated/blog-shell.de.json"]
 # material de demostración o de gestión interna que NO debe ser público en una web con servidor: el panel de demo (lleva credenciales de ejemplo), las hojas de precios de demostración
 # y las propuestas/cobertura del catálogo (solo las sirve el servidor a un manager: GET /api/admin/data)
@@ -46,7 +46,7 @@ FORBIDDEN_DIRS = ("api/tests/", "api/storage/", "node_modules/", ".git/")
 FORBIDDEN_EXT = {".py", ".sh", ".md", ".map", ".log", ".mjs", ".ts"}
 TEXT_EXT = {".html", ".js", ".css", ".json", ".php", ".txt", ".xml", ".htaccess", ".svg", ""}
 # LISTA BLANCA del API: dentro de api/ solo estos archivos pueden ir en el paquete (un config.php.bak, un volcado o un .env olvidados no llegan jamás al servidor)
-API_ALLOWED = re.compile(r"^api/(index\.php|page\.php|\.htaccess|cron\.php|config\.sample\.php|lib/[A-Za-z0-9_]+\.php|tools/[a-z0-9\-]+\.php|generated/(catalog|admin-data|build)\.json|generated/blog-shell\.(es|en|fr|de)\.json)$")
+API_ALLOWED = re.compile(r"^api/(index\.php|page\.php|\.htaccess|cron\.php|config\.sample\.php|lib/[A-Za-z0-9_]+\.php|tools/[a-z0-9\-]+\.php|generated/(catalog|admin-data|build|newcontent)\.json|generated/blog-shell\.(es|en|fr|de)\.json)$")
 
 
 def run(cmd, **kw):

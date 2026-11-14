@@ -34,7 +34,7 @@ Las filas con ✓ ya existen tal cual en la web original en ese idioma (por ejem
 
 Ojo: la web original no es del todo uniforme: «variador de tensión» aparece como *voltage variators*, *voltage regulator* o *variator* según la ficha, y hay categorías sin traducir o con texto en otro idioma que no se listan aquí (están como propuestas en el panel). Cuando un texto de interfaz nombre uno de estos términos, se usa el de la categoría correspondiente de la tabla, nunca uno inventado.
 
-## Inglés (112 textos a validar; 44 ya existen tal cual en la web original)
+## Inglés (115 textos a validar; 44 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Inglés |
 |---|---|---|
@@ -74,6 +74,9 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `lab_aria` | Osciloscopio esquemático: la onda de salida se reduce al bajar la tensión con el mando. | Schematic oscilloscope: the output wave shrinks as the knob lowers the voltage. |
 | `sending` | Enviando… | Sending… |
 | `send_failed` | No hemos podido enviarlo. Inténtalo de nuevo o escríbenos a | We could not send it. Please try again or write to |
+| `files_note` | Los archivos no se suben a la web. Si quieres enviarnos planos o documentación técnica, mándalos por correo como adjunto a {mail} indicando el número de tu pedido. | Files are not uploaded to this website. If you want to send us drawings or technical documents, email them as attachments to {mail} quoting your order number. |
+| `files_note_contact` | Esta web no admite archivos adjuntos. Si necesitas enviarnos documentación técnica, escríbenos por correo a {mail} y adjunta allí los archivos. | This website does not accept file attachments. If you need to send us technical documents, email {mail} and attach the files there. |
+| `files_after` | ¿Planos o documentación técnica? No se suben a la web: envíalos por correo como adjunto a {mail} indicando el número {n}. | Drawings or technical documents? They are not uploaded to the website: email them as attachments to {mail} quoting number {n}. |
 | `order_received` | Hemos recibido tu pedido y te hemos enviado una confirmación por correo. | We received your order and emailed you a confirmation. |
 | `order_received_nocopy` | Hemos registrado tu pedido, pero no hemos podido enviarte la confirmación por correo. Guarda el PDF con el botón de abajo y, si no tienes noticias nuestras pronto, escríbenos a | We have recorded your order, but could not email you a confirmation. Save the PDF with the button below and, if you do not hear from us soon, write to |
 | `message_received` | Mensaje recibido. Te responderemos lo antes posible. | Message received. We will get back to you shortly. |
@@ -151,7 +154,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Indicative quote subject to confirmation by Torivac. |
 | `quote_slug` | presupuesto | quote |
 
-## Francés (109 textos a validar; 47 ya existen tal cual en la web original)
+## Francés (112 textos a validar; 47 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Francés |
 |---|---|---|
@@ -189,6 +192,9 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `lab_aria` | Osciloscopio esquemático: la onda de salida se reduce al bajar la tensión con el mando. | Oscilloscope schématique : l’onde de sortie diminue quand la commande abaisse la tension. |
 | `sending` | Enviando… | Envoi… |
 | `send_failed` | No hemos podido enviarlo. Inténtalo de nuevo o escríbenos a | Envoi impossible. Réessayez ou écrivez à |
+| `files_note` | Los archivos no se suben a la web. Si quieres enviarnos planos o documentación técnica, mándalos por correo como adjunto a {mail} indicando el número de tu pedido. | Les fichiers ne sont pas envoyés via ce site. Si vous souhaitez nous transmettre des plans ou de la documentation technique, envoyez-les en pièce jointe par e-mail à {mail} en indiquant votre numéro de commande. |
+| `files_note_contact` | Esta web no admite archivos adjuntos. Si necesitas enviarnos documentación técnica, escríbenos por correo a {mail} y adjunta allí los archivos. | Ce site n’accepte pas de pièces jointes. Si vous devez nous transmettre de la documentation technique, écrivez-nous à {mail} en joignant les fichiers à votre e-mail. |
+| `files_after` | ¿Planos o documentación técnica? No se suben a la web: envíalos por correo como adjunto a {mail} indicando el número {n}. | Des plans ou de la documentation technique ? Ils ne sont pas envoyés via le site : envoyez-les en pièce jointe par e-mail à {mail} en indiquant le numéro {n}. |
 | `order_received` | Hemos recibido tu pedido y te hemos enviado una confirmación por correo. | Nous avons reçu votre commande et vous avons envoyé une confirmation par e-mail. |
 | `order_received_nocopy` | Hemos registrado tu pedido, pero no hemos podido enviarte la confirmación por correo. Guarda el PDF con el botón de abajo y, si no tienes noticias nuestras pronto, escríbenos a | Nous avons enregistré votre commande, mais nous n’avons pas pu vous envoyer la confirmation par e-mail. Enregistrez le PDF avec le bouton ci-dessous et, sans nouvelles de notre part sous peu, écrivez à |
 | `message_received` | Mensaje recibido. Te responderemos lo antes posible. | Message reçu. Nous vous répondrons dans les meilleurs délais. |
@@ -265,7 +271,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `demo_banner` | Versión de demostración | Version de démonstration |
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Devis indicatif soumis à confirmation par Torivac. |
 
-## Alemán (113 textos a validar; 43 ya existen tal cual en la web original)
+## Alemán (116 textos a validar; 43 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Alemán |
 |---|---|---|
@@ -306,6 +312,9 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `lab_aria` | Osciloscopio esquemático: la onda de salida se reduce al bajar la tensión con el mando. | Schematisches Oszilloskop: die Ausgangswelle wird kleiner, wenn der Regler die Spannung senkt. |
 | `sending` | Enviando… | Wird gesendet… |
 | `send_failed` | No hemos podido enviarlo. Inténtalo de nuevo o escríbenos a | Senden fehlgeschlagen. Bitte erneut versuchen oder schreiben an |
+| `files_note` | Los archivos no se suben a la web. Si quieres enviarnos planos o documentación técnica, mándalos por correo como adjunto a {mail} indicando el número de tu pedido. | Über diese Website können keine Dateien hochgeladen werden. Wenn Sie uns Zeichnungen oder technische Unterlagen senden möchten, schicken Sie sie als Anhang per E-Mail an {mail} und geben Sie Ihre Bestellnummer an. |
+| `files_note_contact` | Esta web no admite archivos adjuntos. Si necesitas enviarnos documentación técnica, escríbenos por correo a {mail} y adjunta allí los archivos. | Diese Website nimmt keine Dateianhänge an. Wenn Sie uns technische Unterlagen senden müssen, schreiben Sie uns an {mail} und fügen Sie die Dateien Ihrer E-Mail bei. |
+| `files_after` | ¿Planos o documentación técnica? No se suben a la web: envíalos por correo como adjunto a {mail} indicando el número {n}. | Zeichnungen oder technische Unterlagen? Diese werden nicht über die Website hochgeladen: Senden Sie sie als Anhang per E-Mail an {mail} und nennen Sie die Nummer {n}. |
 | `order_received` | Hemos recibido tu pedido y te hemos enviado una confirmación por correo. | Wir haben Ihre Bestellung erhalten und Ihnen eine Bestätigung per E-Mail gesendet. |
 | `order_received_nocopy` | Hemos registrado tu pedido, pero no hemos podido enviarte la confirmación por correo. Guarda el PDF con el botón de abajo y, si no tienes noticias nuestras pronto, escríbenos a | Wir haben Ihre Bestellung erfasst, konnten Ihnen aber keine Bestätigung per E-Mail senden. Speichern Sie das PDF mit der Schaltfläche unten und schreiben Sie, falls Sie bald nichts von uns hören, an |
 | `message_received` | Mensaje recibido. Te responderemos lo antes posible. | Nachricht erhalten. Wir antworten Ihnen in Kürze. |
