@@ -1,0 +1,254 @@
+{
+ "variador-doble-motorizado-1": {
+  "path": 465,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 47
+ },
+ "variador-doble-motorizado-2": {
+  "path": 532,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 57
+ },
+ "variador-doble-motorizado-3": {
+  "path": 843,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 88
+ },
+ "variador-doble-manual-1": {
+  "path": 215,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 25
+ },
+ "variador-doble-manual-2": {
+  "path": 270,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 34
+ },
+ "variador-doble-manual-3": {
+  "path": 577,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 62
+ },
+ "variador-trifasico-manual-1": {
+  "path": 254,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 30
+ },
+ "variador-trifasico-manual-2": {
+  "path": 353,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 40
+ },
+ "variador-trifasico-manual-3": {
+  "path": 791,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 79
+ },
+ "variador-trifasico-motorizado-1": {
+  "path": 509,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 52
+ },
+ "variador-trifasico-motorizado-2": {
+  "path": 612,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 63
+ },
+ "variador-trifasico-motorizado-3": {
+  "path": 1060,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 104
+ },
+ "variador-monofasico-manual-1": {
+  "path": 127,
+  "char": 12,
+  "skipped_big": 0,
+  "kb": 13
+ },
+ "variador-monofasico-manual-2": {
+  "path": 186,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 29
+ },
+ "variador-monofasico-manual-3": {
+  "path": 265,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 35
+ },
+ "variador-monofasico-motorizado-1": {
+  "path": 420,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 43
+ },
+ "variador-monofasico-motorizado-2": {
+  "path": 466,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 49
+ },
+ "variador-monofasico-motorizado-3": {
+  "path": 662,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 69
+ },
+ "hembrilla-hb4": {
+  "path": 83,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 17
+ },
+ "hembrilla-hr4": {
+  "path": 84,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 17
+ },
+ "hembrilla-hbs4": {
+  "path": 110,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 22
+ },
+ "hembrilla-hsr4": {
+  "path": 97,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 13
+ },
+ "soporte-led-3mm-1": {
+  "path": 65,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 15
+ },
+ "soporte-led-3mm-2": {
+  "path": 60,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 14
+ },
+ "soporte-led-5mm-1": {
+  "path": 63,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 15
+ },
+ "soporte-led-5mm-2": {
+  "path": 60,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 17
+ },
+ "soporte-led-8mm-1": {
+  "path": 62,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 14
+ },
+ "soporte-led-8mm-2": {
+  "path": 56,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 13
+ },
+ "soporte-led-10mm": {
+  "path": 85,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 44
+ },
+ "boton-bo-1": {
+  "path": 104,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 11
+ },
+ "boton-bo-3": {
+  "path": 52,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 6
+ },
+ "boton-bo-5": {
+  "path": 53,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 6
+ },
+ "boton-bm-1": {
+  "path": 57,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 7
+ },
+ "boton-bm-2": {
+  "path": 74,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 8
+ },
+ "boton-bm-5": {
+  "path": 47,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 5
+ },
+ "potenciometro-3w": {
+  "path": 198,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 22
+ },
+ "potenciometro-doble": {
+  "path": 231,
+  "char": 0,
+  "skipped_big": 1,
+  "kb": 25
+ },
+ "potenciometro-5w": {
+  "path": 104,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 16
+ },
+ "reostato-tandem-doble-manual": {
+  "path": 223,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 28
+ },
+ "reostato-tandem-doble-motor": {
+  "path": 355,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 37
+ },
+ "reostato-tandem-triple-manual": {
+  "path": 311,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 35
+ },
+ "reostato-tandem-triple-motor": {
+  "path": 416,
+  "char": 0,
+  "skipped_big": 0,
+  "kb": 43
+ }
+}
