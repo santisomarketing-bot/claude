@@ -87,6 +87,8 @@ Misma forma de siempre: `{ prices:{ updated_at, source, currency, mode, items:{ 
 - Un `customer` o un visitante → `403`/`401`. PHP anota en Actividad: `customer.create`, `customer.tier` (`correo → vip5`), `customer.password`, `customer.delete`.
 - `POST /api/users` del manager acepta además `role:'customer'` con `tier`; `GET /api/users` devuelve `tier` en las cuentas `customer`. `tools/create-user.php` y el alta del Worker aceptan el rol `customer` y un 5.º argumento/campo `tier` opcional.
 
+- **Solicitantes sin cuenta** (solo panel, sin rutas nuevas): *Clientes* cruza `GET /api/orders` (pedidos sin `owner`), `GET /api/messages` y `GET /api/customers` y lista a quien pidió o escribió sin ser cliente, con «Crear cuenta» (formulario prellenado) y «Generar una segura» (16 caracteres con `crypto.getRandomValues`). Ver `PRESUPUESTOS-RECIBIDOS.md`.
+
 ### 5.2 Ajustes de precios
 - `GET /api/settings/pricing` → `{ ok, pricing }` (la forma de §3, con `updated`).
 - `PUT /api/settings/pricing` `{ tiers:{vip5,vip10,normal}, anon, approx:{on,pct} }` → valida y guarda con `updated = { at, by }` → `200 { ok, pricing }`; error → `400 { ok:false, error, field }` con `field` ∈ `tiers.vip5|tiers.vip10|tiers.normal|anon|approx.pct|approx.on`.

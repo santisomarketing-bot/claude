@@ -1,4 +1,4 @@
-// [MAILAPI] Endpoints de gestión de los mensajes de contacto y del correo. SOLO managers (sesión de manager o token maestro): index.js ya comprobó el rol antes de llegar aquí.
+// [MAILAPI] Endpoints de gestión de los mensajes de contacto y del correo. Lo de correo es solo del manager; los mensajes también los ven la propietaria (client) y el comercial (reviewer) sin IP ni motivo técnico (index.js ya comprobó el rol antes de llegar aquí).
 //   GET /api/messages?limit=100        → { ok, items:[{ id, at, name, email, message, lang, ip, emailed:{ sent, reason, error? } }], truncated }   (más recientes primero; limit 1..300)
 //   DELETE /api/messages/:id           → { ok:true } · 404 si no existe (derecho de supresión)
 //   POST /api/mail/test { to? }        → { ok, driver, to:[…], sent, reason, error? }   (200 aunque el proveedor falle; 400 si `to` no es un correo; 10 pruebas / hora por usuario)
@@ -18,6 +18,18 @@ const HOUR = 60 * 60 * 1000;
 export async function handleMessageList(request, env, { cors = {} } = {}) {
   const r = await listMessages(env, { limit: new URL(request.url).searchParams.get('limit') });
   return json({ ok: true, items: r.items, truncated: r.truncated }, 200, priv(cors));
+}
+/** Un mensaje tal como lo ve la propietaria (client) o el comercial (reviewer): sin la IP del visitante ni el motivo técnico del fallo del correo (eso es solo del manager). */
+export function messageForStaff(m) {
+  const { ip: _ip, emailed, ...rest } = m;
+  if (!emailed || typeof emailed !== 'object') return { ...rest, ...(emailed === undefined ? {} : { emailed }) };
+  const { error: _error, ...e } = emailed;
+  return { ...rest, emailed: e };
+}
+/** GET /api/messages para la propietaria y el comercial: lo mismo que handleMessageList pero sin IP ni motivo técnico del correo. */
+export async function handleMessageListStaff(request, env, { cors = {} } = {}) {
+  const r = await listMessages(env, { limit: new URL(request.url).searchParams.get('limit') });
+  return json({ ok: true, items: r.items.map(messageForStaff), truncated: r.truncated }, 200, priv(cors));
 }
 /** DELETE /api/messages/:id (el id llega tal cual viene en la URL, aún codificado): borra el mensaje; 404 si no existe o el id no tiene la forma CT-AAAAMMDD-NNNN-XXX. */
 export async function handleMessageDelete(env, rawId, { cors = {} } = {}) {

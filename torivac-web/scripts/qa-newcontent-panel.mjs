@@ -38,7 +38,7 @@ const login = async (email, pass) => { await page.goto(SITE + '/admin/index.html
 /** Sale del panel. */
 const logout = async () => { await page.click('[data-logout]'); await page.waitForSelector('[name=email]'); };
 /** Textos del menú lateral. */
-const navs = () => page.$$eval('.side nav a', (a) => a.map((x) => x.textContent.replace(/[^\p{L} ]/gu, '').trim()));
+const navs = () => page.$$eval('.side nav a', (a) => a.map((x) => { const c = x.cloneNode(true); c.querySelectorAll('.nb').forEach((n) => n.remove()); return c.textContent.replace(/[^\p{L} ]/gu, '').trim(); }));
 /** Aviso emergente. */
 const toast = async () => { await page.waitForTimeout(350); return page.locator('#toast').innerText(); };
 /** Abre una ruta del panel (#nuevo/…) y espera a que pinte. */
@@ -99,14 +99,18 @@ try {
   ok(/Revisor/.test(await page.locator('tr:has-text("marta.revisora@torivac.com")').innerText()), 'queda en la lista de usuarios con el rol «Revisor»');
   await logout();
 
-  console.log('\n4) la Revisora solo ve «Contenido nuevo» y la API le niega lo demás');
+  console.log('\n4) la Revisora (comercial) ve presupuestos, mensajes y «Contenido nuevo»; la API le niega lo demás');
   await login('marta.revisora@torivac.com', REV_PASS);
-  ok((await navs()).join() === 'Contenido nuevo', `su menú es solo «Contenido nuevo» (${(await navs()).join(' · ')})`);
-  ok(/revisor/i.test(await page.locator('.side .role').innerText()), 'y el rótulo dice «Revisor»');
-  await page.evaluate(() => { location.hash = '#precios'; }); await page.waitForSelector('[data-nc-root]');
-  ok(await page.locator('.side nav a[aria-current=page]').innerText().then((t) => /Contenido nuevo/.test(t)), 'una dirección de otra sección la devuelve a su único menú');
-  const codes = await page.evaluate(async (api) => { const t = JSON.parse(sessionStorage.getItem('tv_live')).token, out = {}; for (const p of ['/api/orders', '/api/messages', '/api/users', '/api/customers', '/api/admin/data', '/api/settings/google', '/api/newcontent/export']) out[p] = (await fetch(api + p, { headers: { Authorization: 'Bearer ' + t } })).status; return out; }, API);
-  ok(Object.values(codes).every((c) => c === 403), `la API le responde 403 en todo lo demás: ${JSON.stringify(codes)}`);
+  ok((await navs()).join() === 'Presupuestos recibidos,Mensajes,Contenido nuevo', `su menú: presupuestos recibidos, mensajes y contenido nuevo (${(await navs()).join(' · ')})`);
+  ok(/revisor/i.test(await page.locator('.side .role').innerText()), 'y el rótulo dice «Comercial · Revisor»');
+  await page.waitForSelector('.side nav .nb', { timeout: 8000 });
+  ok(/^\d+/.test(await page.locator('.side nav a[href="#nuevo"] .nb').innerText()), 'la burbuja de «Contenido nuevo» le dice que hay algo pendiente (propuesta o texto por aprobar)');
+  await page.evaluate(() => { location.hash = '#precios'; }); await page.waitForSelector('main h1');
+  ok(await page.locator('.side nav a[aria-current=page]').innerText().then((t) => /Presupuestos recibidos/.test(t)), 'una dirección de otra sección (Precios) la devuelve a su primera entrada');
+  const codes = await page.evaluate(async (api) => { const t = JSON.parse(sessionStorage.getItem('tv_live')).token, out = {}; for (const p of ['/api/users', '/api/customers', '/api/admin/data', '/api/settings/google', '/api/newcontent/export', '/api/mail/status']) out[p] = (await fetch(api + p, { headers: { Authorization: 'Bearer ' + t } })).status; return out; }, API);
+  ok(Object.values(codes).every((c) => c === 403), `la API le responde 403 en precios, clientes, usuarios, ajustes y exportar: ${JSON.stringify(codes)}`);
+  const ro = await page.evaluate(async (api) => { const t = JSON.parse(sessionStorage.getItem('tv_live')).token, h = { Authorization: 'Bearer ' + t, 'Content-Type': 'application/json' }; return { orders: (await fetch(api + '/api/orders', { headers: h })).status, messages: (await fetch(api + '/api/messages', { headers: h })).status, edit: (await fetch(api + '/api/orders/TV-20260101-0001-ABC', { method: 'PUT', headers: h, body: '{}' })).status, del: (await fetch(api + '/api/messages/CT-20260101-0001-ABC', { method: 'DELETE', headers: h })).status }; }, API);
+  ok(ro.orders === 200 && ro.messages === 200 && ro.edit === 403 && ro.del === 403, `puede leer presupuestos y mensajes pero no editar ni borrar: ${JSON.stringify(ro)}`);
   ok(await page.locator('[data-nc-export]').count() === 0, 'no tiene el botón de descargar (es del manager)');
 
   console.log('\n5) decide la propuesta y aprueba: castellano primero, como «comercial»');

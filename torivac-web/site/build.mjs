@@ -174,6 +174,12 @@ const site = { registry: [], meta, demo: meta.price_mode === 'demo' && !LIVE, st
 const QSLUG = { es: '/presupuesto/', en: '/en/quote/', fr: '/fr/devis/', de: '/de/angebot/' };
 const SHOPSLUG = { es: '/tienda/', en: '/en/shop/', fr: '/fr/boutique/', de: '/de/shop/' };          // la tienda (todos los productos): página nueva, no existe en la web original
 meta.catalogHref = {};
+// [DRAWINGS] dibujos técnicos con cotas de las fichas en PDF (data/catalog/drawings.json, generado por scripts/extract_drawings.py): id de producto → dibujos, en orden. Si falta un archivo, la compilación se detiene.
+{
+  const dw = jl('drawings.json', { items: [], by_product: {} }), byId = new Map(dw.items.map((d) => [d.id, d]));
+  for (const d of dw.items) if (!fs.existsSync(path.join(ROOT, 'site', d.file))) { console.error(`✗ falta ${d.file} (dibujo técnico «${d.id}»): ejecuta python3 -I scripts/extract_drawings.py`); process.exit(2); }
+  site.drawings = new Map(Object.entries(dw.by_product).map(([pid, ids]) => [Number(pid), ids.map((id) => byId.get(id)).filter(Boolean)]));
+}
 site.cookies = {};                                                                      // política de cookies propia por idioma (la de la web original era un shortcode de Complianz que no se puede copiar)
 for (const l of LANGS) {
   const items = meta.nav[l];
@@ -324,7 +330,7 @@ for (const lang of LANGS) {
     const rel = p.related.map((id) => prodById.get(id)).filter(Boolean);
     const alt = Object.fromEntries(LANGS.map((l) => [l, p.pathFor[l]]));
     const seo = p.seo[lang] || p.seo.es || {};
-    emit(pp, TPL.layout(ctx, { title: (seo.title || fitTitle(name)).replace(/&amp;/g, '&'), description: seo.description, template: 'product', body: TPL.productBody(ctx, p, rel), alts: alt, scripts: ['assets/js/shop.js'], ogImage: p.images[0] && (ABS ? ABS + '/' + p.images[0].file : undefined), images: p.images.slice(0, 4).map((im) => ({ file: im.file, alt: pickAlt(im.alt, lang) })), crumbs: [crumbHome(lang), crumbProducts(lang), ...(p.mainCategory ? p.mainCategory.trail.map((x) => ({ name: x.name[lang] || x.name.es, path: x.pathFor[lang] })) : []), { name, path: pp }], ld: [productNode(ABS, { path: pp, name, description: plain(p.short?.[lang] || p.short?.es || []), images: p.images.slice(0, 4).map(absImg).filter(Boolean), category: p.mainCategory ? (p.mainCategory.name[lang] || p.mainCategory.name.es) : null })] }));
+    emit(pp, TPL.layout(ctx, { title: (seo.title || fitTitle(name)).replace(/&amp;/g, '&'), description: seo.description, template: 'product', body: TPL.productBody(ctx, p, rel), alts: alt, scripts: ['assets/js/shop.js'], ogImage: p.images[0] && (ABS ? ABS + '/' + p.images[0].file : undefined), images: [...p.images.slice(0, 4).map((im) => ({ file: im.file, alt: pickAlt(im.alt, lang) })), ...TPL.drawingImages(site, p, name, lang)], crumbs: [crumbHome(lang), crumbProducts(lang), ...(p.mainCategory ? p.mainCategory.trail.map((x) => ({ name: x.name[lang] || x.name.es, path: x.pathFor[lang] })) : []), { name, path: pp }], ld: [productNode(ABS, { path: pp, name, description: plain(p.short?.[lang] || p.short?.es || []), images: p.images.slice(0, 4).map(absImg).filter(Boolean), category: p.mainCategory ? (p.mainCategory.name[lang] || p.mainCategory.name.es) : null })] }));
   }
 
   // blog

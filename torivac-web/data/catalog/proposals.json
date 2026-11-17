@@ -1632,6 +1632,20 @@
  {
   "status": "pending",
   "type": "pdf_family_without_product",
+  "product_id": 918,
+  "product_name": "Bobinas para electroimanes Cuadrada",
+  "field": "dibujos técnicos",
+  "title": "«Bobinas para electroimanes Cuadrada»: el PDF 4.-Bobinas-encapsuladas.pdf trae un dibujo cotado que no se publica porque no está vinculado con confianza alta",
+  "web_value": "La ficha enlaza 4.-Bobinas-encapsuladas.pdf; el análisis no lo asocia a ninguna familia con producto",
+  "pdf_value": "Dibujo cotado de bobina encapsulada parcial y completa (99 × 65 / 64, 2,635 y 2,750 kg)",
+  "severity": "baja",
+  "recommendation": "Confirmar que el PDF corresponde a la bobina cuadrada. Si es así, el dibujo se publica añadiendo la región a data/catalog/drawings.curated.json.",
+  "confidence": "alta",
+  "id": "PR-25203"
+ },
+ {
+  "status": "pending",
+  "type": "pdf_family_without_product",
   "product_id": null,
   "product_name": null,
   "field": "familia de PDF sin producto",
@@ -1702,6 +1716,20 @@
  {
   "status": "pending",
   "type": "pdf_family_without_product",
+  "product_id": 876,
+  "product_name": "Variador de tensión Equipos industriales",
+  "field": "dibujos técnicos",
+  "title": "«Variador de tensión Equipos industriales»: los dibujos de Variador-tension-en-caja-industrial-trifasico.pdf no se publican (vínculo de confianza baja: el PDF mezcla sobremesa y caja industrial trifásico)",
+  "web_value": "La ficha enlaza el PDF, que describe dos familias (sobremesa 1500–11000 VA y caja industrial trifásico 480–33000 VA)",
+  "pdf_value": "Dibujos cotados de cajas de variador, sin indicar a qué familia pertenece cada uno",
+  "severity": "baja",
+  "recommendation": "Confirmar qué familia corresponde a la ficha. Hasta entonces la ficha no lleva dibujos de ese PDF.",
+  "confidence": "alta",
+  "id": "PR-47340"
+ },
+ {
+  "status": "pending",
+  "type": "pdf_family_without_product",
   "product_id": null,
   "product_name": null,
   "field": "familia de PDF sin producto",
@@ -1754,6 +1782,20 @@
   "recommendation": "Valorar crear la ficha de producto (o enlazar el PDF a una existente).",
   "confidence": "alta",
   "id": "PR-70745"
+ },
+ {
+  "status": "pending",
+  "type": "pdf_family_without_product",
+  "product_id": 874,
+  "product_name": "En caja",
+  "field": "dibujos técnicos",
+  "title": "«En caja»: el PDF Variador-tension-sobremesa.pdf trae dibujos cotados que no se publican porque su vínculo con el producto no está confirmado",
+  "web_value": "La ficha enlaza Variador-tension-sobremesa.pdf, pero el análisis no lo vincula a ningún producto (familia «Variador tensión sobremesa» sin ficha)",
+  "pdf_value": "Dibujos cotados (frontal, lateral y planta) de un variador de sobremesa de 160 a 1250 VA",
+  "severity": "baja",
+  "recommendation": "Confirmar si «En caja» es esta familia de variadores de sobremesa. Si lo es, el dibujo se publica añadiendo la región a data/catalog/drawings.curated.json y ejecutando scripts/extract_drawings.py.",
+  "confidence": "alta",
+  "id": "PR-77664"
  },
  {
   "status": "pending",

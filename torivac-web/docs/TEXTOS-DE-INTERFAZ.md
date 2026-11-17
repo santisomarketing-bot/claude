@@ -34,7 +34,7 @@ Las filas con ✓ ya existen tal cual en la web original en ese idioma (por ejem
 
 Ojo: la web original no es del todo uniforme: «variador de tensión» aparece como *voltage variators*, *voltage regulator* o *variator* según la ficha, y hay categorías sin traducir o con texto en otro idioma que no se listan aquí (están como propuestas en el panel). Cuando un texto de interfaz nombre uno de estos términos, se usa el de la categoría correspondiente de la tabla, nunca uno inventado.
 
-## Inglés (115 textos a validar; 44 ya existen tal cual en la web original)
+## Inglés (120 textos a validar; 44 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Inglés |
 |---|---|---|
@@ -126,6 +126,11 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `models_hint` | Indica la cantidad de cada referencia y añádelas al presupuesto. | Enter the quantity of each reference and add them to your quote. |
 | `add_selected` | Añadir selección al presupuesto | Add selection to quote |
 | `datasheet` | Ficha técnica (PDF) | Datasheet (PDF) |
+| `drawings` | Dibujos técnicos | Technical drawings |
+| `drawings_note` | Dibujos con cotas tomados de la ficha técnica en PDF; las tablas de medidas y pesos están en el PDF. | Dimensioned drawings taken from the PDF datasheet; the tables of dimensions and weights are in the PDF. |
+| `drawing_alt` | Dibujo técnico con cotas de {name} | Dimensioned technical drawing of {name} |
+| `drawing_alt_cap` | Dibujo técnico con cotas de {name}: {caption} | Dimensioned technical drawing of {name}: {caption} |
+| `drawing_open` | Ampliar el dibujo (se abre en una pestaña nueva) | Enlarge the drawing (opens in a new tab) |
 | `related` | Explora productos similares | Explore similar products |
 | `default_item` | Producto (consultar modelo) | Product (model on request) |
 | `translation_missing` | Esta ficha aún no está traducida: se muestra el texto en español. | This page is not translated yet: Spanish text is shown. |
@@ -154,7 +159,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Indicative quote subject to confirmation by Torivac. |
 | `quote_slug` | presupuesto | quote |
 
-## Francés (112 textos a validar; 47 ya existen tal cual en la web original)
+## Francés (117 textos a validar; 47 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Francés |
 |---|---|---|
@@ -244,6 +249,11 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `models_hint` | Indica la cantidad de cada referencia y añádelas al presupuesto. | Indiquez la quantité de chaque référence et ajoutez-les au devis. |
 | `add_selected` | Añadir selección al presupuesto | Ajouter la sélection au devis |
 | `datasheet` | Ficha técnica (PDF) | Fiche technique (PDF) |
+| `drawings` | Dibujos técnicos | Dessins techniques |
+| `drawings_note` | Dibujos con cotas tomados de la ficha técnica en PDF; las tablas de medidas y pesos están en el PDF. | Dessins cotés extraits de la fiche technique PDF ; les tableaux de dimensions et de poids figurent dans le PDF. |
+| `drawing_alt` | Dibujo técnico con cotas de {name} | Dessin technique coté de {name} |
+| `drawing_alt_cap` | Dibujo técnico con cotas de {name}: {caption} | Dessin technique coté de {name} : {caption} |
+| `drawing_open` | Ampliar el dibujo (se abre en una pestaña nueva) | Agrandir le dessin (s’ouvre dans un nouvel onglet) |
 | `related` | Explora productos similares | Découvrez des produits similaires |
 | `default_item` | Producto (consultar modelo) | Produit (modèle sur demande) |
 | `translation_missing` | Esta ficha aún no está traducida: se muestra el texto en español. | Cette fiche n’est pas encore traduite : le texte espagnol est affiché. |
@@ -271,7 +281,7 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `demo_banner` | Versión de demostración | Version de démonstration |
 | `pdf_footer` | Presupuesto orientativo sujeto a confirmación por Torivac. | Devis indicatif soumis à confirmation par Torivac. |
 
-## Alemán (116 textos a validar; 43 ya existen tal cual en la web original)
+## Alemán (121 textos a validar; 43 ya existen tal cual en la web original)
 
 | Clave | Español (referencia) | Alemán |
 |---|---|---|
@@ -365,6 +375,11 @@ Ojo: la web original no es del todo uniforme: «variador de tensión» aparece c
 | `models_hint` | Indica la cantidad de cada referencia y añádelas al presupuesto. | Geben Sie die Menge je Artikelnummer ein und fügen Sie sie dem Angebot hinzu. |
 | `add_selected` | Añadir selección al presupuesto | Auswahl zum Angebot hinzufügen |
 | `datasheet` | Ficha técnica (PDF) | Datenblatt (PDF) |
+| `drawings` | Dibujos técnicos | Technische Zeichnungen |
+| `drawings_note` | Dibujos con cotas tomados de la ficha técnica en PDF; las tablas de medidas y pesos están en el PDF. | Bemaßte Zeichnungen aus dem PDF-Datenblatt; die Tabellen mit Maßen und Gewichten stehen im PDF. |
+| `drawing_alt` | Dibujo técnico con cotas de {name} | Bemaßte technische Zeichnung von {name} |
+| `drawing_alt_cap` | Dibujo técnico con cotas de {name}: {caption} | Bemaßte technische Zeichnung von {name}: {caption} |
+| `drawing_open` | Ampliar el dibujo (se abre en una pestaña nueva) | Zeichnung vergrößern (öffnet in einem neuen Tab) |
 | `related` | Explora productos similares | Ähnliche Produkte entdecken |
 | `default_item` | Producto (consultar modelo) | Produkt (Modell auf Anfrage) |
 | `translation_missing` | Esta ficha aún no está traducida: se muestra el texto en español. | Diese Seite ist noch nicht übersetzt: Es wird der spanische Text angezeigt. |

@@ -367,7 +367,7 @@ export function homeBody(ctx, page) {
   <div class="container"><h1 id="h-hero">${esc(h1?.x || '')}</h1>${heroParas.map((p) => `<p>${inlineHtml(ctx, p.h)}</p>`).join('')}
   <div class="actions">${heroBtn ? `<a class="btn" href="${attr(mapLink(ctx, heroBtn.href))}">${esc(heroBtn.x)}</a>` : ''}${site.ONLY_O ? '' : `<a class="btn ghost${oh('o-skip')}" href="${attr(ctx.href(site.quote[lang]))}">${t('quote', lang)} →</a>`}</div></div>
   ${heroBg && !site.ONLY_O ? `<div class="hero-fig" aria-hidden="true"><div class="hero-img" style="background-image:url('${attr(heroBg)}')"></div></div>` : ''}
-  ${site.ONLY_O ? '' : waveSvg()}
+  ${waveSvg()}
 </section>`;
   const s1 = S[1], s2 = S[2], s3 = S[3], s4 = S[4], s5 = S[5];
   // HTML del antetítulo (encabezado de nivel 4 o más) y del título h2 (nivel 3 o menos) de una sección.
@@ -387,7 +387,7 @@ export function homeBody(ctx, page) {
   // «Original»: la web actual enseña un carrusel de una foto cada vez; aquí sale la primera (grande) y, con selector de aspecto, las demás las oculta su hoja
   const car2 = imgs(s2).slice(0, site.ONLY_O ? 1 : undefined).map((i, k) => `<img src="${attr(site.O && k === 0 ? ctx.img(i.img) : ctx.thumb(i.img))}" alt="${attr(i.alt || '')}" loading="lazy">`).join('');
   const s2h = s2.blocks.filter((b) => b.t === 'h');
-  const sec2 = `<section class="sec alt art-host${oh('o-mfg')}"${oBg(s2)}>${site.ONLY_O ? '' : toroidArt()}<div class="container"><h2 class="center">${esc(s2h.find((h) => h.l <= 3)?.x || '')}</h2>
+  const sec2 = `<section class="sec alt art-host${oh('o-mfg')}"${oBg(s2)}>${toroidArt()}<div class="container"><h2 class="center">${esc(s2h.find((h) => h.l <= 3)?.x || '')}</h2>
     <div class="split"><div class="card-shadow"><h3>${esc(s2h.find((h) => h.l >= 4)?.x || '')}</h3>${paras(s2)}${bt(s2)}</div><div class="photo-grid" aria-label="Fotos">${car2}</div></div></div></section>`;
   const tiles = page.services.map((c) => `<a class="tile" href="${attr(mapLink(ctx, c.href))}"><img src="${attr(ctx.img(c.icon))}" alt="" loading="lazy" width="92" height="92"><span>${esc(c.title)}</span></a>`).join('');
   // «Original»: la web actual cierra la rejilla de servicios con una foto que ocupa dos casillas
@@ -624,6 +624,27 @@ export function storeBody(ctx, { products }) {
 </div>`;
 }
 
+/** Dibujos técnicos con cotas de un producto (de data/catalog/drawings.json): lista [{file, w, h, caption}] vacía si no tiene. */
+const drawingsOf = (site, p) => (site.drawings && site.drawings.get(p.id)) || [];
+/** Texto alternativo de un dibujo técnico en `lang`: «Dibujo técnico con cotas de {producto}[: {pie}]». */
+const drawingAlt = (d, name, lang) => (d.caption ? t('drawing_alt_cap', lang).replace('{name}', name).replace('{caption}', d.caption) : t('drawing_alt', lang).replace('{name}', name));
+/** Imágenes de los dibujos de un producto para el sitemap (con su alt). */
+export function drawingImages(site, p, name, lang) { return drawingsOf(site, p).map((d) => ({ file: d.file, alt: drawingAlt(d, name, lang) })); }
+/**
+ * Sección «Dibujos técnicos» de la ficha: una figura por dibujo (un <img> normal con tamaño, alt y carga diferida; funciona sin JS), que se amplía en una pestaña nueva. Vacía si el producto no tiene.
+ * Los dibujos salen de la ficha técnica en PDF (scripts/extract_drawings.py); sus pies («5000 VA x2») son neutros en idioma.
+ */
+function drawingsSection(ctx, p, name) {
+  const { lang, site } = ctx;
+  const list = drawingsOf(site, p);
+  if (!list.length) return '';
+  const figs = list.map((d) => {
+    const alt = drawingAlt(d, name, lang), src = ctx.asset(d.file);
+    return `<figure class="dwg"><a href="${attr(src)}" target="_blank" rel="noopener" aria-label="${attr(`${t('drawing_open', lang)} · ${alt}`)}"><img src="${attr(src)}" alt="${attr(alt)}" width="${d.w}" height="${d.h}" loading="lazy" decoding="async"></a>${d.caption ? `<figcaption>${esc(d.caption)}</figcaption>` : ''}</figure>`;
+  }).join('');
+  return `<section id="dibujos" class="dwg-sec" aria-labelledby="h-drawings"><h2 id="h-drawings">${t('drawings', lang)}</h2><p class="muted small">${t('drawings_note', lang)}</p><div class="dwg-grid">${figs}</div></section>`;
+}
+
 // ───────────────────────────────────────────────────────────── [PRODUCT] ficha
 /** Ficha de producto: galería, etiquetas de tensión, descripción, fichas PDF, tabla de modelos con cantidades y relacionados. */
 export function productBody(ctx, p, related) {
@@ -683,6 +704,7 @@ export function productBody(ctx, p, related) {
     </article>
     <div class="prose wide pdp-desc${leadImg ? ' has-lead' : ''}" style="margin-bottom:var(--s-6)">${blocksHtml(ctx, desc, { demote: 1 })}</div>
     ${models}
+    ${drawingsSection(ctx, p, name)}
     ${contact}
     ${rel}
   </div>

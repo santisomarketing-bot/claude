@@ -55,7 +55,7 @@ const newPage = async () => {
 /** Abre /admin/ y envía el formulario de acceso con el correo y la contraseña dados (no espera al resultado). */
 const login = async (page, email, pass) => { await page.goto(SITE + '/admin/index.html'); await page.fill('[name=email]', email); await page.fill('[name=pass]', pass); await page.click('button[type=submit]'); };
 /** Textos de los enlaces del menú lateral del panel. */
-const navs = (page) => page.$$eval('.side nav a', (a) => a.map((x) => x.textContent.trim()));
+const navs = (page) => page.$$eval('.side nav a', (a) => a.map((x) => { const c = x.cloneNode(true); c.querySelectorAll('.nb').forEach((n) => n.remove()); return c.textContent.trim(); }));          // sin la burbuja de «nuevos»
 /** Texto del aviso emergente (#toast), leído tras una pausa corta para que aparezca. */
 const toastText = async (page) => { await page.waitForTimeout(250); return page.locator('#toast').innerText(); };
 
@@ -87,7 +87,7 @@ console.log('\n2) Presupuestos recibidos: el manager y el propietario ven los mi
   await m.ctx.close();
   const c = await newPage(); await login(c.page, 'marta@taller.es', 'Cliente-Clave-2026'); await c.page.waitForSelector('.side nav a');
   const cn = (await navs(c.page)).map((n) => n.slice(1).trim());       // sin el icono de cada enlace
-  ok(cn.join(' · ') === 'Nuevo presupuesto · Presupuestos recibidos · Clientes · Precios · Lista de precios · Estadísticas', `propietario: ${cn.join(' · ')}`);
+  ok(cn.join(' · ') === 'Nuevo presupuesto · Presupuestos recibidos · Clientes · Mensajes · Precios · Lista de precios · Estadísticas', `propietario: ${cn.join(' · ')}`);
   ok((await c.page.locator('.side .role').textContent()).trim() === 'Propietario', 'el panel lo llama «Propietario» (es el dueño de la web, no un comprador)');
   await c.page.click('.side nav a[href="#recibidos"]'); await c.page.waitForSelector('table.spec');
   ok((await c.page.locator('table.spec tbody tr').count()) === 1 && !/sin aviso por correo/i.test(await c.page.locator('table.spec tbody').innerText()), 'el propietario ve el presupuesto recibido (sin la marca interna del correo)');
@@ -174,7 +174,7 @@ console.log('\n6) mensajes de contacto: el panel los muestra aunque el correo fa
   const cl = await newPage(); await login(cl.page, 'marta@taller.es', 'Cliente-Clave-2026'); await cl.page.waitForSelector('.side nav a');
   const ctok = JSON.parse(await cl.page.evaluate(() => sessionStorage.getItem('tv_live'))).token;
   const cst = await cl.page.evaluate(async ([ap, t]) => ({ list: (await fetch(ap + '/api/messages', { headers: { Authorization: 'Bearer ' + t } })).status, del: (await fetch(ap + '/api/messages/x', { method: 'DELETE', headers: { Authorization: 'Bearer ' + t } })).status, test: (await fetch(ap + '/api/mail/test', { method: 'POST', headers: { Authorization: 'Bearer ' + t } })).status, mail: (await fetch(ap + '/api/mail/status', { headers: { Authorization: 'Bearer ' + t } })).status }), [API, ctok]);
-  ok(cst.list === 403 && cst.del === 403 && cst.test === 403 && cst.mail === 403, `un cliente no ve mensajes ni toca el correo: ${JSON.stringify(cst)}`);
+  ok(cst.list === 200 && cst.del === 404 && cst.test === 403 && cst.mail === 403, `la propietaria lee y borra mensajes (sin IP) pero no toca el correo: ${JSON.stringify(cst)}`);
   const anon = await fetch(API + '/api/messages', { headers: { Origin: SITE } }); ok(anon.status === 401, `sin sesión → ${anon.status}`);
   await cl.ctx.close(); await ctx.close(); }
 

@@ -1,0 +1,882 @@
+{
+ "_doc": "Decisiones humanas sobre qué región de qué PDF es un dibujo técnico y a qué producto pertenece (mismo criterio que pdf-links.curated.json). scripts/extract_drawings.py recorta cada región del PDF original, la verifica (vínculo de confianza alta, dibujo entero, sin tablas) y genera site/assets/drawings/*.webp y data/catalog/drawings.json. bbox = [x0, y0, x1, y1] en puntos PDF, origen arriba a la izquierda; kind = vector (trazos del PDF) o raster (imagen incrustada). products = ids de producto cuyo vínculo con ese PDF es de confianza alta.",
+ "excluded": [
+  {
+   "products": [
+    886,
+    888
+   ],
+   "why": "La descripción de la ficha original ya trae sus dibujos (capturas de la hoja del PDF): publicarlos otra vez los duplicaría."
+  },
+  {
+   "products": [
+    919
+   ],
+   "why": "La descripción de la ficha original ya trae el dibujo (CHOQUES-TOROIDALES.jpg)."
+  },
+  {
+   "products": [
+    916
+   ],
+   "why": "La galería de la ficha original ya incluye el dibujo (bobina_redonda_2.png)."
+  },
+  {
+   "products": [
+    934,
+    936,
+    942
+   ],
+   "why": "La galería de la ficha original ya incluye su dibujo (boton_01.jpg / boton_02.jpg)."
+  },
+  {
+   "products": [
+    884
+   ],
+   "why": "El PDF solo trae un esquema de colores de los bobinados, no un dibujo cotado."
+  },
+  {
+   "products": [
+    921,
+    951
+   ],
+   "why": "El PDF solo trae tablas y fotografías."
+  },
+  {
+   "products": [
+    945
+   ],
+   "why": "«Estators» (web) y «Startors» (PDF) no coinciden en el nombre: el vínculo solo se mantiene por eliminación y ya hay una propuesta abierta para confirmarlo. Su dibujo no se publica hasta entonces."
+  }
+ ],
+ "not_published": [
+  {
+   "products": [
+    874
+   ],
+   "pdf": "Variador-tension-sobremesa.pdf",
+   "why": "Hay dibujos cotados, pero el vínculo del PDF con el producto «En caja» no está confirmado (pdf-product-links: familia sin producto). Va a propuestas."
+  },
+  {
+   "products": [
+    876
+   ],
+   "pdf": "Variador-tension-en-caja-industrial-trifasico.pdf",
+   "why": "Vínculo de confianza baja: el PDF mezcla sobremesa (1500–11000 VA) y caja industrial trifásico (480–33000 VA). Va a propuestas."
+  },
+  {
+   "products": [
+    918
+   ],
+   "pdf": "4.-Bobinas-encapsuladas.pdf",
+   "why": "Hay un dibujo cotado, pero el PDF no está vinculado al producto «Bobinas para electroimanes Cuadrada» con confianza alta. Va a propuestas."
+  }
+ ],
+ "drawings": [
+  {
+   "id": "variador-doble-motorizado-1",
+   "pdf": "Variador-tension-doble-regulacion-motorizada.pdf",
+   "page": 1,
+   "bbox": [
+    353,
+    256,
+    579,
+    425
+   ],
+   "kind": "vector",
+   "products": [
+    308
+   ],
+   "family": "Variador tensión doble regulación motorizada (160 VA x 2 – 4000 VA x 2)",
+   "caption": "160 VA x2 – 4000 VA x2",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-doble-motorizado-2",
+   "pdf": "Variador-tension-doble-regulacion-motorizada.pdf",
+   "page": 1,
+   "bbox": [
+    330,
+    436,
+    435,
+    702
+   ],
+   "kind": "vector",
+   "products": [
+    308
+   ],
+   "family": "Variador tensión doble regulación motorizada (5000 VA x 2 – 11000 VA x 2)",
+   "caption": "5000 VA x2",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-doble-motorizado-3",
+   "pdf": "Variador-tension-doble-regulacion-motorizada.pdf",
+   "page": 1,
+   "bbox": [
+    457,
+    436,
+    589,
+    704
+   ],
+   "kind": "vector",
+   "products": [
+    308
+   ],
+   "family": "Variador tensión doble regulación motorizada (5000 VA x 2 – 11000 VA x 2)",
+   "caption": "6000 VA x2 – 11000 VA x2",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-doble-manual-1",
+   "pdf": "Variador-tension-doble-regulacion-manual.pdf",
+   "page": 1,
+   "bbox": [
+    331,
+    266,
+    559,
+    383
+   ],
+   "kind": "vector",
+   "products": [
+    310
+   ],
+   "family": "Variador tensión doble regulación manual (160 VA x 2 – 4000 VA x 2)",
+   "caption": "160 VA x2 – 4000 VA x2",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-doble-manual-2",
+   "pdf": "Variador-tension-doble-regulacion-manual.pdf",
+   "page": 1,
+   "bbox": [
+    327,
+    416,
+    452,
+    676
+   ],
+   "kind": "vector",
+   "products": [
+    310
+   ],
+   "family": "Variador tensión doble regulación manual (5000 VA x 2 – 11000 VA x 2)",
+   "caption": "5000 VA x2",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-doble-manual-3",
+   "pdf": "Variador-tension-doble-regulacion-manual.pdf",
+   "page": 1,
+   "bbox": [
+    457,
+    444,
+    579,
+    678
+   ],
+   "kind": "vector",
+   "products": [
+    310
+   ],
+   "family": "Variador tensión doble regulación manual (5000 VA x 2 – 11000 VA x 2)",
+   "caption": "6000 VA x2 – 11000 VA x2",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-trifasico-manual-1",
+   "pdf": "Variador-tension-trifasico-regulacion-manual.pdf",
+   "page": 1,
+   "bbox": [
+    344,
+    224,
+    579,
+    423
+   ],
+   "kind": "vector",
+   "products": [
+    326
+   ],
+   "caption": "480 VA – 12000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones.",
+   "family": "Variador tensión trifásico regulación manual"
+  },
+  {
+   "id": "variador-trifasico-manual-2",
+   "pdf": "Variador-tension-trifasico-regulacion-manual.pdf",
+   "page": 1,
+   "bbox": [
+    337,
+    450,
+    431,
+    699
+   ],
+   "kind": "vector",
+   "products": [
+    326
+   ],
+   "caption": "15000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones.",
+   "family": "Variador tensión trifásico regulación manual"
+  },
+  {
+   "id": "variador-trifasico-manual-3",
+   "pdf": "Variador-tension-trifasico-regulacion-manual.pdf",
+   "page": 1,
+   "bbox": [
+    454,
+    477,
+    579,
+    700
+   ],
+   "kind": "vector",
+   "products": [
+    326
+   ],
+   "caption": "18000 VA – 30000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones.",
+   "family": "Variador tensión trifásico regulación manual"
+  },
+  {
+   "id": "variador-trifasico-motorizado-1",
+   "pdf": "Variador-tension-trifasico-regulacion-motorizada-1.pdf",
+   "page": 1,
+   "bbox": [
+    350,
+    244,
+    569,
+    438
+   ],
+   "kind": "vector",
+   "products": [
+    328
+   ],
+   "caption": "480 VA – 12000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones.",
+   "family": "Variador tensión trifásico regulación motorizada"
+  },
+  {
+   "id": "variador-trifasico-motorizado-2",
+   "pdf": "Variador-tension-trifasico-regulacion-motorizada-1.pdf",
+   "page": 1,
+   "bbox": [
+    335,
+    450,
+    423,
+    693
+   ],
+   "kind": "vector",
+   "products": [
+    328
+   ],
+   "caption": "15000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones.",
+   "family": "Variador tensión trifásico regulación motorizada"
+  },
+  {
+   "id": "variador-trifasico-motorizado-3",
+   "pdf": "Variador-tension-trifasico-regulacion-motorizada-1.pdf",
+   "page": 1,
+   "bbox": [
+    448,
+    450,
+    563,
+    698
+   ],
+   "kind": "vector",
+   "products": [
+    328
+   ],
+   "caption": "18000 VA – 30000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones.",
+   "family": "Variador tensión trifásico regulación motorizada"
+  },
+  {
+   "id": "variador-monofasico-manual-1",
+   "pdf": "1.-Variadores-de-tension_monofasicomanual.pdf",
+   "page": 1,
+   "bbox": [
+    304,
+    218,
+    580,
+    335
+   ],
+   "kind": "vector",
+   "products": [
+    866
+   ],
+   "caption": "160 VA – 4000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-monofasico-manual-2",
+   "pdf": "1.-Variadores-de-tension_monofasicomanual.pdf",
+   "page": 1,
+   "bbox": [
+    291,
+    359,
+    413,
+    595
+   ],
+   "kind": "vector",
+   "products": [
+    866
+   ],
+   "caption": "5000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-monofasico-manual-3",
+   "pdf": "1.-Variadores-de-tension_monofasicomanual.pdf",
+   "page": 1,
+   "bbox": [
+    444,
+    359,
+    593,
+    604
+   ],
+   "kind": "vector",
+   "products": [
+    866
+   ],
+   "caption": "6000 VA – 11000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-monofasico-motorizado-1",
+   "pdf": "1.-Variadores-de-tension_monofasicomotorizado.pdf",
+   "page": 1,
+   "bbox": [
+    296,
+    227,
+    577,
+    355
+   ],
+   "kind": "vector",
+   "products": [
+    867
+   ],
+   "caption": "160 VA – 4000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-monofasico-motorizado-2",
+   "pdf": "1.-Variadores-de-tension_monofasicomotorizado.pdf",
+   "page": 1,
+   "bbox": [
+    326,
+    419,
+    434,
+    604
+   ],
+   "kind": "vector",
+   "products": [
+    867
+   ],
+   "caption": "5000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "variador-monofasico-motorizado-3",
+   "pdf": "1.-Variadores-de-tension_monofasicomotorizado.pdf",
+   "page": 1,
+   "bbox": [
+    445,
+    419,
+    566,
+    607
+   ],
+   "kind": "vector",
+   "products": [
+    867
+   ],
+   "caption": "6000 VA – 11000 VA",
+   "why": "Ficha técnica de un solo producto (vínculo de confianza alta): todos sus dibujos cotados son del producto; cada columna del PDF acompaña a su tabla de dimensiones."
+  },
+  {
+   "id": "hembrilla-hb4",
+   "pdf": "HEMBRILLAS.pdf",
+   "page": 1,
+   "bbox": [
+    357,
+    381,
+    473,
+    513
+   ],
+   "kind": "vector",
+   "products": [
+    954
+   ],
+   "caption": "",
+   "expect_text": "HB - 4",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES"
+  },
+  {
+   "id": "hembrilla-hr4",
+   "pdf": "HEMBRILLAS.pdf",
+   "page": 1,
+   "bbox": [
+    354,
+    551,
+    471,
+    685
+   ],
+   "kind": "vector",
+   "products": [
+    956
+   ],
+   "caption": "",
+   "expect_text": "HR - 4",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES"
+  },
+  {
+   "id": "hembrilla-hbs4",
+   "pdf": "HEMBRILLAS2.pdf",
+   "page": 1,
+   "bbox": [
+    364,
+    191,
+    489,
+    299
+   ],
+   "kind": "vector",
+   "products": [
+    955
+   ],
+   "caption": "",
+   "expect_text": "HBS - 4",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES"
+  },
+  {
+   "id": "hembrilla-hsr4",
+   "pdf": "HEMBRILLAS2.pdf",
+   "page": 1,
+   "bbox": [
+    364,
+    386,
+    458,
+    496
+   ],
+   "kind": "vector",
+   "products": [
+    957
+   ],
+   "caption": "",
+   "expect_text": "HSR - 4",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "BORNES HEMBRILLAS Y PORTAFUSIBLES"
+  },
+  {
+   "id": "soporte-led-3mm-1",
+   "pdf": "Soportes-Metalicos.pdf",
+   "page": 1,
+   "bbox": [
+    324,
+    203,
+    426,
+    276
+   ],
+   "kind": "vector",
+   "products": [
+    923
+   ],
+   "caption": "",
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Soportes Metálicos para LED de 3mm."
+  },
+  {
+   "id": "soporte-led-3mm-2",
+   "pdf": "Soportes-Metalicos.pdf",
+   "page": 1,
+   "bbox": [
+    321,
+    356,
+    433,
+    453
+   ],
+   "kind": "vector",
+   "products": [
+    923
+   ],
+   "caption": "",
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Soportes Metálicos para LED de 3mm."
+  },
+  {
+   "id": "soporte-led-5mm-1",
+   "pdf": "Soportes-Metalicos.pdf",
+   "page": 1,
+   "bbox": [
+    332,
+    524,
+    443,
+    608
+   ],
+   "kind": "vector",
+   "products": [
+    925
+   ],
+   "caption": "",
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Soportes Metálicos para LED de 5mm."
+  },
+  {
+   "id": "soporte-led-5mm-2",
+   "pdf": "Soportes-Metalicos.pdf",
+   "page": 1,
+   "bbox": [
+    341,
+    685,
+    444,
+    774
+   ],
+   "kind": "vector",
+   "products": [
+    925
+   ],
+   "caption": "",
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Soportes Metálicos para LED de 5mm."
+  },
+  {
+   "id": "soporte-led-8mm-1",
+   "pdf": "Soportes-Metalicos-para-LED.pdf",
+   "page": 1,
+   "bbox": [
+    306,
+    213,
+    417,
+    285
+   ],
+   "kind": "vector",
+   "products": [
+    927
+   ],
+   "caption": "",
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Soportes Metálicos para LED de 8mm."
+  },
+  {
+   "id": "soporte-led-8mm-2",
+   "pdf": "Soportes-Metalicos-para-LED.pdf",
+   "page": 1,
+   "bbox": [
+    303,
+    371,
+    425,
+    455
+   ],
+   "kind": "vector",
+   "products": [
+    927
+   ],
+   "caption": "",
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Soportes Metálicos para LED de 8mm."
+  },
+  {
+   "id": "soporte-led-10mm",
+   "pdf": "Soportes-Metalicos-para-LED.pdf",
+   "page": 1,
+   "bbox": [
+    285,
+    533,
+    475,
+    678
+   ],
+   "kind": "vector",
+   "products": [
+    929
+   ],
+   "caption": "",
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Soportes Metálicos para LED de 10mm."
+  },
+  {
+   "id": "boton-bo-1",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "page": 1,
+   "bbox": [
+    409,
+    155,
+    514,
+    269
+   ],
+   "kind": "vector",
+   "products": [
+    932
+   ],
+   "caption": "",
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Serie BO (brillante)"
+  },
+  {
+   "id": "boton-bo-3",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "page": 1,
+   "bbox": [
+    391,
+    470,
+    514,
+    527
+   ],
+   "kind": "vector",
+   "products": [
+    938
+   ],
+   "caption": "",
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Tapas"
+  },
+  {
+   "id": "boton-bo-5",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "page": 1,
+   "bbox": [
+    382,
+    704,
+    527,
+    761
+   ],
+   "kind": "vector",
+   "products": [
+    947
+   ],
+   "caption": "",
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Cubretuercas"
+  },
+  {
+   "id": "boton-bm-1",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "page": 1,
+   "bbox": [
+    392,
+    169,
+    525,
+    212
+   ],
+   "kind": "vector",
+   "products": [
+    949
+   ],
+   "caption": "",
+   "min_objects": 25,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Discos con Flecha"
+  },
+  {
+   "id": "boton-bm-2",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "page": 1,
+   "bbox": [
+    392,
+    308,
+    525,
+    351
+   ],
+   "kind": "vector",
+   "products": [
+    943
+   ],
+   "caption": "",
+   "min_objects": 25,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Discos Graduados"
+  },
+  {
+   "id": "boton-bm-5",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "page": 1,
+   "bbox": [
+    389,
+    702,
+    532,
+    777
+   ],
+   "kind": "vector",
+   "products": [
+    940
+   ],
+   "caption": "",
+   "min_objects": 25,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "Tapas para Botón BM (mate)"
+  },
+  {
+   "id": "potenciometro-3w",
+   "pdf": "Potenciometro.pdf",
+   "page": 1,
+   "bbox": [
+    283,
+    322,
+    578,
+    456
+   ],
+   "kind": "vector",
+   "products": [
+    906
+   ],
+   "caption": "",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "POTENCIÓMETRO 3W"
+  },
+  {
+   "id": "potenciometro-doble",
+   "pdf": "Potenciometro.pdf",
+   "page": 1,
+   "bbox": [
+    101,
+    650,
+    511,
+    797
+   ],
+   "kind": "vector",
+   "products": [
+    908
+   ],
+   "caption": "",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "POTENCIÓMETRO DOBLE"
+  },
+  {
+   "id": "potenciometro-5w",
+   "pdf": "POTENCIOMETRO-5W.pdf",
+   "page": 1,
+   "bbox": [
+    104,
+    449,
+    511,
+    743
+   ],
+   "kind": "vector",
+   "products": [
+    907
+   ],
+   "caption": "",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "POTENCIÓMETRO 5W"
+  },
+  {
+   "id": "reostato-tandem-doble-manual",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "page": 2,
+   "bbox": [
+    99,
+    303,
+    276,
+    780
+   ],
+   "kind": "vector",
+   "products": [
+    911
+   ],
+   "caption": "Manual",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "REOSTATO TANDEM DOBLE"
+  },
+  {
+   "id": "reostato-tandem-doble-motor",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "page": 2,
+   "bbox": [
+    336,
+    301,
+    513,
+    782
+   ],
+   "kind": "vector",
+   "products": [
+    911
+   ],
+   "caption": "Motor",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "REOSTATO TANDEM DOBLE"
+  },
+  {
+   "id": "reostato-tandem-triple-manual",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "page": 3,
+   "bbox": [
+    88,
+    276,
+    261,
+    807
+   ],
+   "kind": "vector",
+   "products": [
+    912
+   ],
+   "caption": "Manual",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "REOSTATO TANDEM TRIPLE"
+  },
+  {
+   "id": "reostato-tandem-triple-motor",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "page": 3,
+   "bbox": [
+    369,
+    276,
+    537,
+    813
+   ],
+   "kind": "vector",
+   "products": [
+    912
+   ],
+   "caption": "Motor",
+   "max_chars": 60,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "REOSTATO TANDEM TRIPLE"
+  },
+  {
+   "id": "reostato-pc-anclaje",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "page": 1,
+   "bbox": [
+    61,
+    652,
+    551,
+    777
+   ],
+   "kind": "raster",
+   "products": [
+    910
+   ],
+   "caption": "",
+   "expect_page_text": "REOSTATOS CERÁMICOS",
+   "max_chars": 40,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta.",
+   "family": "REOSTATOS CERÁMICOS (Potenciometros)"
+  },
+  {
+   "id": "cuba-de-aceite",
+   "pdf": "Variador-tension-en-cura-de-aceite.pdf",
+   "page": 1,
+   "bbox": [
+    382,
+    531,
+    533,
+    704
+   ],
+   "kind": "raster",
+   "products": [
+    306
+   ],
+   "caption": "",
+   "max_chars": 40,
+   "why": "Hoja de catálogo con varias familias: cada fila (tabla a la izquierda, dibujo a la derecha) es una familia; el orden de las filas coincide con el de las familias extraídas del PDF (data/analysis/pdfs) y enlazadas al producto con confianza alta."
+  }
+ ]
+}

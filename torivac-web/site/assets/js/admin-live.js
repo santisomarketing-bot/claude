@@ -67,7 +67,7 @@
     });
   }
   /** Borra la sesión de este navegador y vuelve a la pantalla de acceso (sin avisar al servidor: lo usa también un 401, cuando el servidor ya la ha dado por caducada). */
-  function endSession() { sessionStorage.removeItem('tv_live'); pending = null; location.hash = ''; render(); }
+  function endSession() { sessionStorage.removeItem('tv_live'); pending = null; stopBadges(); location.hash = ''; render(); }
   /** Vuelve a la pantalla de acceso con un aviso (tras cambiar la contraseña propia: el servidor ya cerró todas las sesiones). */
   function relogin(msg) { loginNote = msg || ''; endSession(); }
   /** Cierra la sesión: el servidor invalida TODOS los tokens anteriores de esta persona (POST /api/auth/logout; si no responde, igualmente se sale de este navegador). */
@@ -98,8 +98,8 @@
   // ───────────────────────────────────────── [VIEWS] cada vista devuelve Promise<string> (HTML)
   var NAV = {
     manager: [['resumen', 'Resumen', '◧'], ['recibidos', 'Presupuestos recibidos', '☰'], ['clientes', 'Clientes', '☻'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['propuestas', 'Propuestas', '✎'], ['contenido', 'Contenido', '▤'], ['nuevo', 'Contenido nuevo', '✦'], ['blog', 'Blog', '✍'], ['usuarios', 'Usuarios', '☺'], ['actividad', 'Actividad', '☷'], ['estadisticas', 'Estadísticas', '◔'], ['ajustes', 'Ajustes', '⚙']],
-    cliente: [['presupuestador', 'Nuevo presupuesto', '✚'], ['recibidos', 'Presupuestos recibidos', '☰'], ['clientes', 'Clientes', '☻'], ['precios', 'Precios', '€'], ['lista', 'Lista de precios', '≡'], ['estadisticas', 'Estadísticas', '◔']],
-    reviewer: [['nuevo', 'Contenido nuevo', '✦']],
+    cliente: [['presupuestador', 'Nuevo presupuesto', '✚'], ['recibidos', 'Presupuestos recibidos', '☰'], ['clientes', 'Clientes', '☻'], ['mensajes', 'Mensajes', '✉'], ['precios', 'Precios', '€'], ['lista', 'Lista de precios', '≡'], ['estadisticas', 'Estadísticas', '◔']],
+    reviewer: [['recibidos', 'Presupuestos recibidos', '☰'], ['mensajes', 'Mensajes', '✉'], ['nuevo', 'Contenido nuevo', '✦']],
     customer: [['presupuestador', 'Nuevo presupuesto', '✚'], ['recibidos', 'Mis presupuestos', '☰'], ['lista', 'Lista de precios', '€']],
   };
   var V = {};
@@ -159,16 +159,18 @@
     var txt = { sent: 'Avisado por correo', off: 'Sin correo configurado', failed: 'El aviso por correo falló', skipped: 'Correo sin completar' }[em.reason] || (em.sent ? 'Avisado por correo' : 'Sin aviso por correo');
     return '<span class="tag' + (em.sent ? '' : ' warn') + '" title="' + esc(em.error || '') + '">' + (em.sent ? '✓ ' : '⚠ ') + esc(txt) + '</span>' + (em.error && !em.sent ? '<br><span class="muted small">' + esc(em.error) + '</span>' : '');
   }
-  /** Vista Mensajes (manager): los mensajes del formulario de contacto, que el servidor guarda aunque el correo falle, con el estado del aviso por correo y el borrado individual. */
-  V.mensajes = function () {
+  /** Vista Mensajes (manager, propietaria y comercial): los mensajes del formulario de contacto, que el servidor guarda aunque el correo falle, con el estado del aviso por correo. El manager y la propietaria pueden borrarlos y crear la cuenta de cliente de quien escribe; el comercial solo los lee. */
+  V.mensajes = function (s) {
+    var role = (s && s.role) || '', canDel = role === 'manager' || role === 'cliente', canAcc = canDel;
     return http('GET', '/api/messages?limit=200').then(function (r) {
       if (!r.ok) return '<h1>Mensajes</h1><p class="notice">' + esc(r.error || 'No se pudieron cargar los mensajes') + '</p>';
       var items = r.items || [];
       var rows = items.map(function (m) {
-        return '<tr><td>' + esc(when(m.at)) + '<br><span class="mono small">' + esc(m.id) + '</span></td><td>' + esc(m.name) + '<br><a href="mailto:' + esc(m.email) + '">' + esc(m.email) + '</a></td><td class="msg">' + esc(m.message) + '</td><td>' + mailTag(m.emailed) + '</td><td><button class="btn sm ghost" data-del-msg="' + esc(m.id) + '">Borrar</button></td></tr>';
+        return '<tr><td>' + esc(when(m.at)) + '<br><span class="mono small">' + esc(m.id) + '</span></td><td>' + esc(m.name) + '<br><a href="mailto:' + esc(m.email) + '">' + esc(m.email) + '</a></td><td class="msg">' + esc(m.message) + '</td><td>' + mailTag(m.emailed) + '</td>' +
+          (canDel ? '<td class="bl-actions">' + (canAcc && m.email ? '<a class="btn sm ghost" href="#clientes/crear/' + encodeURIComponent(m.email) + '">Crear cliente<span class="vh"> con ' + esc(m.email) + '</span></a> ' : '') + '<button class="btn sm ghost" data-del-msg="' + esc(m.id) + '">Borrar</button></td>' : '') + '</tr>';
       }).join('');
-      return '<h1>Mensajes</h1><p class="muted small">Lo que escriben los visitantes en los formularios de contacto. Se guardan aquí aunque el correo falle; se borran solos a los 400 días.</p>' +
-        (items.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Recibido</th><th>De</th><th>Mensaje</th><th>Aviso</th><th><span class="vh">Acciones</span></th></tr></thead><tbody>' + rows + '</tbody></table></div>' + (r.truncated ? '<p class="muted small">Se muestran los más recientes; hay más.</p>' : '') : '<p class="muted">Todavía no hay mensajes.</p>');
+      return '<h1>Mensajes</h1><p class="muted small">Lo que escriben los visitantes en los formularios de contacto. Se guardan aquí aunque el correo falle; se borran solos a los 400 días.' + (canAcc ? ' Quien escribe no queda como cliente: pulsa «Crear cliente» para darle una cuenta.' : '') + '</p>' +
+        (items.length ? '<div class="tbl-wrap"><table class="spec"><thead><tr><th>Recibido</th><th>De</th><th>Mensaje</th><th>Aviso</th>' + (canDel ? '<th><span class="vh">Acciones</span></th>' : '') + '</tr></thead><tbody>' + rows + '</tbody></table></div>' + (r.truncated ? '<p class="muted small">Se muestran los más recientes; hay más.</p>' : '') : '<p class="muted">Todavía no hay mensajes.</p>');
     });
   };
   /** Panel «Correo» de Ajustes: controlador, si está completo, qué falta, el último intento (también el fallo) y el botón para mandar un correo de prueba. */
@@ -283,7 +285,7 @@
   /** Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js). */
   V.propuestas = function () { return TV.AdminProposals.view(PCTX); };
   /** Vista Clientes (manager y Propietario): cuentas de cliente, su categoría de precio y su contraseña (ver admin-customers.js). */
-  V.clientes = function () { return TV.AdminCustomers.view(PCTX); };
+  V.clientes = function (s, arg) { return TV.AdminCustomers.view(PCTX, arg || ''); };
 
   // ───────────────────────────────────────── [BLOG] entradas del blog: lista y editor con vista previa, SEO, imágenes y traducciones (admin-blog.js); solo con el servidor PHP del hosting
   /** Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección. */
@@ -296,6 +298,60 @@
   V.nuevo = function (s, arg) { return TV.AdminNewContent.view(PCTX, arg || ''); };
   /** Vista «Actividad» (manager): quién entró y quién cambió qué, con filtros y descarga en CSV. */
   V.actividad = function () { return TV.AdminSecurity.activityView(PCTX); };
+
+  // ───────────────────────────────────────── [AVISOS] burbujas de «nuevos» en el menú
+  //   Presupuestos recibidos y Mensajes: lo que llegó DESPUÉS de la última vez que esa persona abrió la sección (se anota en este navegador; la primera vez, lo de los últimos 7 días).
+  //   Contenido nuevo: propuestas sin decidir (y, para el comercial, textos listos para aprobar). Se actualizan al entrar, cada 3 minutos y al volver a la pestaña.
+  var BADGE_SECTIONS = { manager: ['recibidos', 'mensajes', 'nuevo'], cliente: ['recibidos', 'mensajes'], reviewer: ['recibidos', 'mensajes', 'nuevo'] };
+  var badges = {}, badgeTimer = null, badgeAt = 0, badgeBusy = false;
+  /** Clave de localStorage de lo último visto en una sección por esa persona. */
+  function seenKey(s, k) { return 'tv_seen:' + String(s.email || '').toLowerCase() + ':' + k; }
+  /** Lo último visto (ISO) de una sección, o '' si nunca se abrió; nunca falla (sin almacenamiento = ''). */
+  function readSeen(s, k) { try { return localStorage.getItem(seenKey(s, k)) || ''; } catch (e) { return ''; } }
+  /** Anota lo último visto de una sección; si el navegador no deja guardar, se ignora. */
+  function writeSeen(s, k, iso) { try { localStorage.setItem(seenKey(s, k), iso); } catch (e) { /* sin almacenamiento */ } }
+  /** Cuántos elementos (con `at` ISO) son posteriores a lo último visto; con `seeing` (la sección está abierta) lo da todo por visto y lo anota. */
+  function countNew(s, key, items, seeing) {
+    var newest = items.reduce(function (m, x) { return String(x.at || '') > m ? String(x.at) : m; }, '');
+    if (seeing) { if (newest) writeSeen(s, key, newest); return 0; }
+    var seen = readSeen(s, key) || new Date(Date.now() - 7 * 864e5).toISOString();
+    return items.filter(function (x) { return String(x.at || '') > seen; }).length;
+  }
+  /** Pone, quita o actualiza la burbuja de cada enlace del menú con lo que hay guardado en `badges`. */
+  function paintBadges() {
+    Object.keys(badges).forEach(function (k) {
+      var a = root.querySelector('.side nav a[href="#' + k + '"]'); if (!a) return;
+      var n = Number(badges[k]) || 0, b = a.querySelector('.nb');
+      if (!n) { if (b) b.remove(); return; }
+      if (!b) { b = document.createElement('b'); b.className = 'nb'; a.appendChild(b); }
+      b.innerHTML = (n > 99 ? '99+' : n) + '<i class="vh"> ' + (k === 'nuevo' ? 'pendientes' : 'nuevos') + '</i>';
+    });
+  }
+  /** Pide lo necesario al servidor y repinta las burbujas; sin `force` no repite antes de 20 s. Nunca rechaza. */
+  function refreshBadges(force) {
+    var s = session(), secs = s && BADGE_SECTIONS[s.role];
+    if (!secs || badgeBusy || (!force && Date.now() - badgeAt < 20000)) return;
+    badgeBusy = true; badgeAt = Date.now();
+    var cur = (location.hash || '#').slice(1).split('/')[0];
+    Promise.all(secs.map(function (k) {
+      var path = k === 'recibidos' ? '/api/orders' : k === 'mensajes' ? '/api/messages?limit=100' : '/api/newcontent';
+      return http('GET', path).then(function (r) {
+        if (!r || !r.ok) return;
+        if (k === 'nuevo') { var n = 0; (r.pages || []).forEach(function (p) { Object.keys(p.langs || {}).forEach(function (l) { var v = p.langs[l]; n += (v.proposals || []).filter(function (x) { return x.status === 'pendiente'; }).length + (s.role === 'reviewer' && v.status !== 'aprobado' && v.can_approve ? 1 : 0); }); }); badges[k] = n; }
+        else badges[k] = countNew(s, k, r.orders || r.items || [], cur === k);
+      }).catch(function () { /* sin red: se queda la cifra anterior */ });
+    })).then(function () { badgeBusy = false; if (session()) paintBadges(); }, function () { badgeBusy = false; });
+  }
+  /** Arranca el repaso periódico de las burbujas (y al volver a la pestaña); `stopBadges` lo para al salir. */
+  function startBadges() {
+    if (badgeTimer) return;
+    badgeTimer = setInterval(function () { refreshBadges(true); }, 180000);
+    document.addEventListener('visibilitychange', onVisible);
+  }
+  /** Al volver a la pestaña se repasan las burbujas. */
+  function onVisible() { if (!document.hidden) refreshBadges(false); }
+  /** Para el repaso de las burbujas y olvida las cifras (al salir del panel). */
+  function stopBadges() { if (badgeTimer) clearInterval(badgeTimer); badgeTimer = null; badges = {}; badgeAt = 0; document.removeEventListener('visibilitychange', onVisible); }
 
   // ───────────────────────────────────────── [ROUTER]
   /** Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios y mensajes. Presupuestos, propuestas, blog y usuarios tienen sus propios manejadores. */
@@ -401,8 +457,9 @@
     var seq = ++renderSeq, s = session(), logo = esc(document.getElementById('logo-src').value);
     if (!s) { if (pending) renderCode(); else renderLogin(); return; }
     var nav = NAV[s.role], raw = (location.hash || '#').slice(1) || nav[0][0], cur = raw.split('/')[0], arg = raw.slice(cur.length + 1); if (!nav.some(function (n) { return n[0] === cur; })) { cur = nav[0][0]; arg = ''; }
-    root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + logo + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : s.role === 'customer' ? 'Cliente' : s.role === 'reviewer' ? 'Revisor' : 'Propietario') + '</span></div><nav aria-label="Panel">' +
+    root.innerHTML = '<div class="shell"><aside class="side"><div class="side-top"><img src="' + logo + '" alt="Torivac" width="88" height="88"><span class="role">' + esc(s.role === 'manager' ? 'Manager' : s.role === 'customer' ? 'Cliente' : s.role === 'reviewer' ? 'Comercial · Revisor' : 'Propietario') + '</span></div><nav aria-label="Panel">' +
       nav.map(function (n) { return '<a href="#' + n[0] + '"' + (n[0] === cur ? ' aria-current="page"' : '') + '><span aria-hidden="true">' + n[2] + '</span>' + esc(n[1]) + '</a>'; }).join('') + '</nav><div class="side-bot"><a href="../index.html">← Ir a la web</a><button class="btn sm ghost" data-logout type="button">Salir (' + esc(s.name || s.email) + ')</button></div></aside><main class="main" id="main"><p class="notice">Cargando…</p></main></div>';
+    if (BADGE_SECTIONS[s.role]) { if (badges[cur]) badges[cur] = 0; paintBadges(); startBadges(); refreshBadges(BADGE_SECTIONS[s.role].indexOf(cur) >= 0); }                 // burbujas: la sección que abres se da por vista; las demás se repasan cada 20 s como mucho
     V[cur](s, arg).then(function (html) { var m = root.querySelector('#main'); if (!m || seq !== renderSeq) return; m.innerHTML = html; bind(); });       // si mientras tanto se pidió otra vista, esta respuesta se ignora
   }
   root.addEventListener('click', onClick);       // una sola vez (los nodos se repintan, el contenedor no)

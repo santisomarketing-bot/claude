@@ -302,3 +302,12 @@
 .cookie-table th,.cookie-table td{hyphens:manual;overflow-wrap:normal;vertical-align:top}
 .cookie-table tbody th[scope=row]{background:none!important;text-transform:none!important;letter-spacing:0!important;white-space:nowrap!important;font-weight:400!important;border-right:0!important;border-bottom:1px solid var(--line)!important;min-width:11rem}
 .cookie-table code{font-family:var(--font-mono);font-size:var(--fs-0);font-weight:600}
+
+/* [DIBUJOS TÉCNICOS] sección de la ficha de producto: dibujos con cotas de la ficha en PDF (scripts/extract_drawings.py). Fondo blanco: son trazos negros sobre blanco en los tres aspectos. */
+.dwg-sec{margin:var(--s-6,2.5rem) 0}
+.dwg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:var(--s-4,1rem);align-items:start;margin-top:var(--s-4,1rem)}
+.dwg{min-width:0;margin:0;background:#fff;border:1px solid var(--line-strong,#cfc7bb);padding:var(--s-3,.75rem);text-align:center}
+.dwg a{display:block;line-height:0}
+.dwg img{display:block;max-width:100%;width:auto;height:auto;max-height:560px;margin:0 auto;object-fit:contain}
+.dwg figcaption{margin-top:var(--s-2,.5rem);font-size:.9rem;line-height:1.3;color:var(--muted,#5a524d)}
+.dwg a:focus-visible{outline:3px solid var(--copper-strong,#8f4a0d);outline-offset:2px}

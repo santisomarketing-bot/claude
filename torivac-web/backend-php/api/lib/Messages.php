@@ -2,7 +2,7 @@
 /**
  * [MESSAGES] Mensajes del formulario de contacto: se guardan SIEMPRE (antes de intentar el correo) para que nadie pierda un mensaje ni se quede sin saber si salió el aviso.
  * Clave del almacén: msg:<id> con id CT-AAAAMMDD-NNNN-XXX (CT = contacto; NNNN = contador diario; XXX = 3 caracteres aleatorios base36 en mayúsculas, por si dos mensajes coinciden).
- * Retención de 400 días como los pedidos (Store caduca el registro; el cron lo borra). Son DATOS PERSONALES: solo los ve un gestor (GET /api/messages) y la IP completa solo se guarda aquí.
+ * Retención de 400 días como los pedidos (Store caduca el registro; el cron lo borra). Son DATOS PERSONALES: los ven el manager, la propietaria (client) y el comercial (Revisor): GET /api/messages (los dos últimos, sin IP ni motivo técnico del correo; borrar es del manager y de la propietaria) y la IP completa solo se guarda aquí.
  * Registro: { id, at, name, email, message, lang, ip, emailed:{ sent, reason: sent|off|failed|skipped, error? } }; `error` es un texto corto y sin secretos, solo para gestores.
  *   Messages::create()      guarda el mensaje recién llegado (con el correo aún sin confirmar)
  *   Messages::setEmailed()  anota en el registro lo que pasó con el correo
@@ -67,6 +67,14 @@ final class Messages
         $emailed = ['sent' => ($e['sent'] ?? false) === true, 'reason' => $str($e['reason'] ?? '')];
         if ($str($e['error'] ?? '') !== '') $emailed['error'] = $str($e['error']);
         return ['id' => $o['id'], 'at' => $o['at'], 'name' => $str($o['name'] ?? ''), 'email' => $str($o['email'] ?? ''), 'message' => $str($o['message'] ?? ''), 'lang' => $str($o['lang'] ?? ''), 'ip' => $str($o['ip'] ?? ''), 'emailed' => $emailed];
+    }
+
+    /** Un mensaje tal como lo ve la propietaria o el comercial (Revisor): sin la IP del visitante ni el motivo técnico del fallo del correo (eso es solo del manager). */
+    public static function forStaff(array $v): array
+    {
+        unset($v['ip']);
+        if (isset($v['emailed']) && is_array($v['emailed'])) unset($v['emailed']['error']);
+        return $v;
     }
 
     /** `limit` pedido en la URL → entero entre 1 y 300; ausente o ilegible = 100. */

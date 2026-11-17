@@ -53,7 +53,7 @@ Menú lateral → **Contenido nuevo** (`site/assets/js/admin-newcontent.js`, rut
 |---|---|
 | **Manager** | Ver los borradores y su estado, **proponer cambios**, ver el registro y **descargar** lo aprobado para anotarlo en los archivos |
 | **Revisor** | Lo mismo salvo descargar, y además **aceptar o descartar** las propuestas, **aprobar** y **retirar la aprobación** |
-| Propietario, cliente y visitantes | Nada (403). El Revisor, a su vez, solo llega a esta sección: la API le niega presupuestos, precios, clientes, mensajes y ajustes |
+| Propietario, cliente y visitantes | Nada (403). El Revisor es además el **comercial**: lee los presupuestos recibidos y los mensajes (sin IP, solo lectura); la API le niega precios, clientes, usuarios y ajustes |
 
 Flujo:
 
@@ -123,6 +123,6 @@ Todo en borrador: **hoy no se publica ninguna página nueva**. FR y DE no existe
 | Prueba | Qué comprueba |
 |---|---|
 | `node scripts/test-newcontent.mjs` | Validación (quién y con qué función aprueba), que un borrador no sale, que las equivalencias entre idiomas solo enlazan versiones publicadas, que una compilación de producción con una versión aprobada pasa `seo_check.py`, que `--drafts` con `--base` se rechaza y que `apply_newcontent.mjs` anota sin duplicar, valida y no crea páginas |
-| `php backend-php/api/tests/run.php NewContent` | El rol Revisor (solo ve «Contenido nuevo»), listado, proponer (texto plano, solo lo que cambia), decidir, aprobar (función, castellano primero), retirar, exportar, que el archivo gana si cambió, auditoría y `/api/health` |
+| `php backend-php/api/tests/run.php NewContent` | El rol Revisor (comercial: «Contenido nuevo», presupuestos y mensajes en lectura), listado, proponer (texto plano, solo lo que cambia), decidir, aprobar (función, castellano primero), retirar, exportar, que el archivo gana si cambió, auditoría y `/api/health` |
 | `workers/api/test/newcontent.test.js` | En el Worker: el rol Revisor se crea y entra igual, solo llega a `/api/newcontent` y ahí responde 501 con un mensaje claro |
 | `node scripts/qa-newcontent-panel.mjs` | En un navegador contra el servidor PHP: el manager propone, crea al Revisor desde *Usuarios*, ella acepta y aprueba (ES como «comercial», EN como «traductor»), registro, descarga, `apply_newcontent.mjs` y una compilación que publica solo lo aprobado; axe y móvil |

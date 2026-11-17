@@ -139,14 +139,14 @@ async function handleSend(request, env, who, number, { cors, nowMs, fetchImpl, c
 }
 
 /**
- * Atiende GET /api/orders/:número · PUT /api/orders/:número · POST /api/orders/:número/send para `who` (ya autenticado: manager, propietario o customer, que solo puede leer) → Response, o null si la ruta no es de este módulo.
+ * Atiende GET /api/orders/:número · PUT /api/orders/:número · POST /api/orders/:número/send para `who` (ya autenticado: manager, propietario, o customer y reviewer, que solo pueden leer) → Response, o null si la ruta no es de este módulo.
  * El número se toma del texto de la URL SIN decodificar y solo se usa si cumple ORDER_NUMBER. `catalog` y `fetchImpl` se inyectan en las pruebas.
  */
 export async function quoteRoute(request, env, { who, path, cors = {}, nowMs = Date.now(), fetchImpl = fetch, catalog = items }) {
   if (!path.startsWith('/api/orders/')) return null;
   const parts = path.slice('/api/orders/'.length).split('/'), number = parts[0], method = request.method;
   const readOnly = (parts.length === 1 && method === 'PUT') || (parts.length === 2 && parts[1] === 'send' && method === 'POST');
-  if (who.role === 'customer' && readOnly) return json({ ok: false, error: 'Solo lectura' }, 403, cors);          // un cliente con cuenta no edita ni reenvía: ni siquiera se mira si el número existe
+  if ((who.role === 'customer' || who.role === 'reviewer') && readOnly) return json({ ok: false, error: 'Solo lectura' }, 403, cors);          // un cliente con cuenta no edita ni reenvía: ni siquiera se mira si el número existe
   if (parts.length === 1 && method === 'GET') return await handleGet(env, who, number, { cors });
   if (parts.length === 1 && method === 'PUT') return await handleEdit(request, env, who, number, { cors, nowMs, catalog });
   if (parts.length === 2 && parts[1] === 'send' && method === 'POST') return await handleSend(request, env, who, number, { cors, nowMs, fetchImpl, catalog });

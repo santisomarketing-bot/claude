@@ -35,6 +35,12 @@
   function isManager() { var s = ctx.session(); return !!s && s.role === 'manager'; }
   /** ¿Es la persona que entró un cliente (cuenta de solo lectura: ve SOLO sus presupuestos, sin editar ni reenviar)? */
   function isCustomer() { var s = ctx.session(); return !!s && s.role === 'customer'; }
+  /** ¿Es el comercial (rol reviewer, el Revisor)? Ve todos los presupuestos como la propietaria pero solo en lectura. */
+  function isReviewer() { var s = ctx.session(); return !!s && s.role === 'reviewer'; }
+  /** ¿Puede esta persona editar y reenviar presupuestos? (manager y propietaria; no el cliente con cuenta ni el comercial). */
+  function canEdit() { return !isCustomer() && !isReviewer(); }
+  /** ¿Puede crear cuentas de cliente? (manager y propietaria). */
+  function canMakeAccounts() { return canEdit(); }
   /** Nombre de la categoría de precio con la que se valoró un presupuesto (solo lo ve el equipo). */
   var TIER_NAMES = { vip: 'VIP', vip5: 'VIP +5', vip10: 'VIP +10', normal: 'Normal', consult: 'A consultar (visitante)' };
   /** Nombre de una línea en el idioma del pedido (el del catálogo; la propia referencia si no está). */
@@ -110,7 +116,7 @@
     var rows = S.orders.filter(matches).map(function (o) {
       var c = o.customer || {};
       return '<tr><td class="mono"><a href="#recibidos/' + encodeURIComponent(o.number) + '">' + esc(o.number) + '</a></td><td>' + esc(when(o.at)) + '</td><td>' + esc(c.name || '') + '<br><span class="muted small">' + esc(c.company || '') + ' ' + esc(c.email || '') + '</span></td>' +
-        '<td class="num">' + o.lines.length + '</td><td class="num">' + money(o.total) + '</td><td>' + tags(o) + '</td><td class="qr-act"><a class="btn sm ghost" href="#recibidos/' + encodeURIComponent(o.number) + '">Ver</a> <button class="btn sm ghost" type="button" data-qr-pdf="' + esc(o.number) + '">PDF</button>' + (isCustomer() ? '' : ' <a class="btn sm ghost" href="#recibidos/' + encodeURIComponent(o.number) + '/enviar">Reenviar</a>') + '</td></tr>';
+        '<td class="num">' + o.lines.length + '</td><td class="num">' + money(o.total) + '</td><td>' + tags(o) + '</td><td class="qr-act"><a class="btn sm ghost" href="#recibidos/' + encodeURIComponent(o.number) + '">Ver</a> <button class="btn sm ghost" type="button" data-qr-pdf="' + esc(o.number) + '">PDF</button>' + (!canEdit() ? '' : ' <a class="btn sm ghost" href="#recibidos/' + encodeURIComponent(o.number) + '/enviar">Reenviar</a>') + '</td></tr>';
     });
     return rows.length ? rows.join('') : '<tr><td colspan="7" class="muted">Ningún presupuesto cumple ese filtro.</td></tr>';
   }
@@ -151,7 +157,7 @@
       if (!r.ok) return '<div data-qr-root><p><a href="#recibidos">← Presupuestos recibidos</a></p><h1>Presupuesto</h1><p class="notice">' + esc(r.status === 404 ? 'No existe ese presupuesto.' : (r.error || 'No se pudo cargar el presupuesto')) + '</p></div>';
       var o = r.order, c = o.customer || {}, N = encodeURIComponent(o.number), mine = isCustomer();
       return '<div data-qr-root><p><a href="#recibidos">← ' + (mine ? 'Mis presupuestos' : 'Presupuestos recibidos') + '</a></p><h1>Presupuesto <span class="mono">' + esc(o.number) + '</span> ' + tags(o) + '</h1><p class="notice" data-qr-msg hidden></p>' +
-        '<p class="qr-bar">' + (mine ? '' : '<a class="btn" href="#recibidos/' + N + '/editar">Editar</a> ') + '<button class="btn ghost" type="button" data-qr-pdf="' + esc(o.number) + '">Descargar PDF</button>' + (mine ? '' : ' <a class="btn ghost" href="#recibidos/' + N + '/enviar">Reenviar por correo</a>') + '</p>' +
+        '<p class="qr-bar">' + (!canEdit() ? '' : '<a class="btn" href="#recibidos/' + N + '/editar">Editar</a> ') + '<button class="btn ghost" type="button" data-qr-pdf="' + esc(o.number) + '">Descargar PDF</button>' + (!canEdit() ? '' : ' <a class="btn ghost" href="#recibidos/' + N + '/enviar">Reenviar por correo</a>') + (canMakeAccounts() && !mine && !o.owner && c.email ? ' <a class="btn ghost" href="#clientes/crear/' + encodeURIComponent(c.email) + '">Crear cuenta de cliente</a>' : '') + '</p>' +
         '<div class="cols"><section class="panel"><h2>' + (mine ? 'Datos del presupuesto' : 'Solicitante') + '</h2><p><strong>' + esc(c.name || '') + '</strong>' + (c.company ? ' · ' + esc(c.company) : '') + '<br>' + esc(c.email || '') + (c.phone ? ' · ' + esc(c.phone) : '') + '</p>' +
         '<p class="muted small">Pedido el ' + esc(when(o.at)) + ' · idioma ' + esc((o.lang || 'es').toUpperCase()) + (o.edited ? '<br>Editado el ' + esc(when(o.edited.at)) + ' por ' + esc(o.edited.by || '') : '') + (!mine && o.owner ? '<br>Cuenta de cliente: ' + esc(o.owner) : '') + (!mine && o.priceTier ? '<br>Valorado con: <strong>' + esc(TIER_NAMES[o.priceTier] || o.priceTier) + '</strong>' : '') + '</p>' +
         (c.notes ? '<p><strong>Notas del solicitante</strong><br>' + esc(c.notes).replace(/\n/g, '<br>') + '</p>' : '') + (o.quoteNote ? '<p><strong>Nota del presupuesto</strong><br>' + esc(o.quoteNote).replace(/\n/g, '<br>') + '</p>' : '') + '</section>' +
@@ -269,7 +275,7 @@
     var p = String(arg || '').split('/'), n = p[0], mode = p[1] || '';
     if (!n) return listView();
     if (!/^TV-\d{8}-\d{4}(?:-[0-9A-Z]{3})?$/.test(n)) return Promise.resolve('<div data-qr-root><p><a href="#recibidos">← Presupuestos recibidos</a></p><p class="notice">Número de presupuesto no válido.</p></div>');
-    if (isCustomer()) return detailView(n);                                                    // una cuenta de cliente es de solo lectura: ni editar ni reenviar (el servidor también lo impide)
+    if (!canEdit()) return detailView(n);                                                      // una cuenta de cliente o el comercial son de solo lectura: ni editar ni reenviar (el servidor también lo impide)
     return mode === 'editar' ? editView(n) : mode === 'enviar' ? sendView(n) : detailView(n);
   };
   /** Engancha los eventos de la sección una sola vez (el contenedor del panel no se repinta, sus vistas sí). */

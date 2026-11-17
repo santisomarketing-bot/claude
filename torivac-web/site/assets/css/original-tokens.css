@@ -40,4 +40,16 @@
   --radius:4px;
   --shadow-copper:none;
   --header-h:var(--o-header-h);
+  /* [ADORNOS] efectos y diagramas del Clásico en «Original» (pedidos el 17/11/2026) */
+  --o-band:#100404;                 /* fondo de las bandas oscuras (catálogo, proyectos) y del osciloscopio */
+  --o-mark:var(--o-brand);          /* marcas de esquina sobre claro */
+  --o-mark-on-dark:var(--copper-on-dark);   /* y sobre oscuro */
+  --o-mark-size:18px;               /* brazo de cada marca */
+  --o-mark-size-hero:26px;
+  --o-mark-w:2px;
+  --o-mark-inset:12px;              /* separación de las marcas al borde de la foto */
+  --o-wave-1:var(--copper-on-dark); /* onda del héroe: principal, secundaria y fina */
+  --o-wave-2:#f3b868;
+  --o-wave-3:#ffffff;
+  --o-wave-opacity:.75;
 }

@@ -1,7 +1,7 @@
 <?php
 /**
  * [QUOTES] Presupuestos recibidos: ver, editar y reenviar por correo desde el panel (contrato único con workers/api: docs/PRESUPUESTOS-RECIBIDOS.md y docs/PRECIOS-Y-CLIENTES.md). Las personas con rol `client` son las PROPIETARIAS de la web
- * (no compradores) y, igual que un manager, ven todos los presupuestos; el token maestro cuenta como manager. Un cliente con usuario (rol `customer`) solo LEE los suyos (owner = su correo), en versión reducida; editar y reenviar le da 403.
+ * (no compradores) y, igual que un manager, ven todos los presupuestos; el token maestro cuenta como manager. El comercial (rol `reviewer`, el Revisor) ve todos como la propietaria pero solo en lectura (editar y reenviar le da 403). Un cliente con usuario (rol `customer`) solo LEE los suyos (owner = su correo), en versión reducida; editar y reenviar le da 403.
  * Todas las rutas exigen sesión (las atiende Router tras autenticar):
  *   GET  /orders/:número        → { ok, order } (un propietario, sin `ip` ni `emailed.error`; un cliente, solo el suyo y reducido: Router::forCustomer) · 404 si no existe, no es suyo o el número no tiene la forma TV-AAAAMMDD-NNNN[-XXX]
  *   PUT  /orders/:número        → edita solicitante, líneas (cantidad y precio manual) y nota; `rev` evita pisar el cambio de otra persona (409 conflict); guarda `original` una sola vez, `history` (≤ 50) y `edited`;
@@ -50,13 +50,13 @@ final class Quotes
      */
     public static function handle(Request $req, array $who, ?int $nowMs = null): Response
     {
-        if (!Auth::requireRole($who, 'manager', 'client', 'customer')) return new Response(['ok' => false, 'error' => 'No autorizado'], 403);
+        if (!Auth::requireRole($who, 'manager', 'client', 'customer', 'reviewer')) return new Response(['ok' => false, 'error' => 'No autorizado'], 403);
         if (preg_match(self::ROUTE, $req->path, $m) !== 1) return self::missing();                 // forma no válida (../, %2e%2e, vacío…): igual que si no existiera, y jamás se usa para tocar ficheros
         $number = $m[1];
         $send = ($m[2] ?? '') === '/send';
         $exists = $send ? $req->method === 'POST' : ($req->method === 'GET' || $req->method === 'PUT');
         if (!$exists) return new Response(['ok' => false, 'error' => 'No encontrado'], 404);
-        if (self::isCustomer($who)) return $req->method === 'GET' ? self::show($number, $who) : new Response(['ok' => false, 'error' => 'Solo lectura'], 403);
+        if (self::isCustomer($who) || self::isReviewer($who)) return $req->method === 'GET' ? self::show($number, $who) : new Response(['ok' => false, 'error' => 'Solo lectura'], 403);
         if (!$send && $req->method === 'GET') return self::show($number, $who);
         if (!$send && $req->method === 'PUT') return self::edit($req, $who, $number, $nowMs);
         return self::send($req, $who, $number, $nowMs);
@@ -70,6 +70,9 @@ final class Quotes
 
     /** ¿Es un cliente con usuario (rol customer)? Solo lee sus propios presupuestos. */
     private static function isCustomer(array $who): bool { return ($who['role'] ?? '') === 'customer'; }
+
+    /** ¿Es el comercial (rol reviewer)? Ve todos los presupuestos igual que la propietaria (sin IP ni error técnico) pero solo en lectura: ni edita ni reenvía. */
+    private static function isReviewer(array $who): bool { return ($who['role'] ?? '') === 'reviewer'; }
 
     /** El registro tal como lo ve quien llama: completo para un manager; sin `ip` ni `emailed.error` para un propietario; reducido (Router::forCustomer) para un cliente. */
     private static function view(array $o, array $who): array

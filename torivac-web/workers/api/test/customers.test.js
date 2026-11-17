@@ -148,6 +148,7 @@ test('Clientes · /users ve y acepta el rol customer y su tier; los guardas de s
     ['POST', '/api/prices/refresh', {}], ['POST', '/api/prices/upload', { csv: 'ref;price\nA;1' }], ['POST', '/api/prices/ai', { instruction: 'sube un 3 % las resistencias' }], ['POST', '/api/prices/ai/apply', { changes: [] }], ['GET', '/api/admin/data'], ['GET', '/api/proposals/state']]) {
     assert.equal((await api(env, ana, path, { method, body })).status, 403, `customer ${method} ${path}`);
     if (method === 'POST' && (path === '/api/prices/refresh' || path === '/api/prices/upload')) continue;           // la hoja (subir Excel/CSV y «Actualizar ahora») también la lleva el propietario
+    if (method === 'GET' && path === '/api/messages') { assert.equal((await api(env, duena, path, { method, body })).status, 200, 'propietario GET /api/messages: los mensajes de contacto también los ve la propietaria (sin IP; ver staff-view.test.js)'); continue; }
     assert.equal((await api(env, duena, path, { method, body })).status, 403, `propietario ${method} ${path}`);
   }
   const subida = await api(env, duena, '/api/prices/upload', { method: 'POST', body: { csv: 'ref;price\nA;1', dry_run: true } }); assert.notEqual(subida.status, 403, 'el propietario puede previsualizar una hoja');

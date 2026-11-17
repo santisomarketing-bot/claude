@@ -47,7 +47,7 @@ function nc_tokens(): array
 /** Petición al API con token. */
 function nc_call(string $method, string $path, ?string $tok, $body = null): \Torivac\Response { return Router::handle(req($method, $path, $body, $tok ? bearer($tok) : [])); }
 
-/** N1 · El Revisor llega a «Contenido nuevo» y a su sesión, y a nada más; el propietario y el visitante no ven «Contenido nuevo». */
+/** N1 · El Revisor (comercial) llega a «Contenido nuevo», a presupuestos y mensajes (ver StaffViewTest) y a su sesión, y a nada más; el propietario y el visitante no ven «Contenido nuevo». */
 function test_newcontent_the_reviewer_only_reaches_new_content()
 {
     fresh(); nc_pages(); [$tj, $tr, $ta] = nc_tokens();
@@ -55,7 +55,7 @@ function test_newcontent_the_reviewer_only_reaches_new_content()
     T::same(200, nc_call('GET', '/newcontent', $tj)->status, 'el manager también');
     T::same(403, nc_call('GET', '/newcontent', $ta)->status, 'el propietario no');
     T::same(401, nc_call('GET', '/newcontent', null)->status, 'sin sesión, tampoco');
-    foreach (['/orders', '/orders/TV-20260101-0001-ABC', '/messages', '/users', '/prices/items/R100', '/customers', '/admin/data', '/settings/google', '/activity', '/backups', '/blog/posts'] as $p) T::same(403, nc_call('GET', $p, $tr)->status, "el Revisor no entra en $p");
+    foreach (['/users', '/prices/items/R100', '/customers', '/admin/data', '/settings/google', '/activity', '/backups', '/blog/posts'] as $p) T::same(403, nc_call('GET', $p, $tr)->status, "el Revisor no entra en $p");
     T::same(403, nc_call('POST', '/users', $tr, ['email' => 'x@y.test', 'role' => 'manager', 'password' => PW_ANA])->status, 'el Revisor no crea usuarios');
     T::same(200, nc_call('GET', '/auth/me', $tr)->status, 'su sesión funciona');
     T::same('reviewer', nc_call('GET', '/auth/me', $tr)->body['user']['role'], 'el rol que ve el panel');

@@ -25,6 +25,7 @@ paso "Conversor del blog: JavaScript = PHP"       node scripts/test-blog-markdow
 paso "Propuestas aprobadas con texto propio"    node scripts/test-proposals.mjs
 paso "Contenido nuevo: solo lo aprobado"          node scripts/test-newcontent.mjs
 paso "Textos de interfaz al día (para validar)" node scripts/audit_i18n.mjs --check
+paso "Dibujos técnicos de las fichas (PDF → web)"  node scripts/qa-drawings.mjs
 paso "Compilar el demo (precios de demostración)" bash -c 'python3 -I scripts/build_prices.py --demo && node site/build.mjs'
 paso "Compilar producción + auditoría SEO/GEO"  bash -c 'node site/build.mjs --base=https://demo.torivac.example --out=/tmp/tv-prod-dist >/dev/null && python3 -I scripts/seo_check.py /tmp/tv-prod-dist --base=https://demo.torivac.example'
 paso "Humo del demo (file://)"                  node scripts/smoke.mjs
@@ -39,6 +40,7 @@ for B in "" "--php"; do
   paso "Panel ↔ backend ${B:-worker}"                   node scripts/qa-admin-live.mjs $B
   paso "Tarifa Excel ↔ backend ${B:-worker}"            node scripts/qa-tarifa.mjs $B
   paso "Clientes y precios por categoría ↔ backend ${B:-worker}" node scripts/qa-customers.mjs $B
+  paso "Propietaria y comercial: mensajes, burbujas y solicitantes ↔ backend ${B:-worker}" node scripts/qa-staff-panel.mjs $B
 done
 paso "Paquete del hosting tal como se sube"     node scripts/qa-package.mjs
 paso "Apache real + PHP-FPM (.htaccess de verdad)" node scripts/qa-apache.mjs

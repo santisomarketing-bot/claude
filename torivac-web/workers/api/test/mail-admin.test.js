@@ -26,8 +26,11 @@ test('M2 · todas las rutas de gestión: anónimo 401, cliente 403, gestor y tok
   const rutas = [['GET', '/api/messages'], ['DELETE', `/api/messages/${id}`], ['POST', '/api/mail/test'], ['GET', '/api/mail/status']];
   for (const [method, path] of rutas) {
     assert.equal((await call(env, path, { method, body: method === 'POST' ? {} : undefined })).status, 401, `anónimo ${method} ${path}`);
+    if (path.startsWith('/api/messages')) continue;                                    // los mensajes también los ve y borra la propietaria (rol client): su prueba está en staff-view.test.js; aquí el 403 es el de un cliente con cuenta
     assert.equal((await call(env, path, { method, token: cli, body: method === 'POST' ? {} : undefined })).status, 403, `cliente ${method} ${path}`);
   }
+  const comprador = (await signIn(env, 'luis.cliente@acme.test', 'customer', { ip: '10.8.9.77' })).token;
+  assert.equal((await call(env, '/api/messages', { token: comprador })).status, 403, 'un cliente con cuenta (customer) no ve los mensajes');
   assert.equal((await call(env, '/api/messages', { token: mgr })).status, 200);
   assert.equal((await call(env, '/api/mail/status', { token: MASTER })).status, 200, 'el token maestro vale');
   assert.equal((await call(env, '/api/messages', { token: 'x'.repeat(40) })).status, 401, 'un token inventado no');

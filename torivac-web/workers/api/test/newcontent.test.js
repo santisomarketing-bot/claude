@@ -23,7 +23,7 @@ test('NC1 · /api/newcontent/… responde 501 al manager y al Revisor, 401 sin s
   assert.equal(h.features, undefined, 'el Worker no anuncia el contenido nuevo');
 });
 
-test('NC2 · el Revisor se crea y entra como cualquier cuenta, y solo tiene su sesión: nada de presupuestos, precios, clientes, mensajes ni usuarios', async () => {
+test('NC2 · el Revisor se crea y entra como cualquier cuenta, y solo tiene su sesión, «Contenido nuevo», presupuestos y mensajes (ver staff-view.test.js): nada de precios, clientes ni usuarios', async () => {
   const env = mkEnv();
   const tj = (await signIn(env, 'jefa@torivac.test', 'manager', { ip: '10.8.9.4' })).token;
   const r = await call(env, '/api/users', { token: tj, method: 'POST', body: { email: 'marta.revisora@torivac.test', name: 'Marta Revisora', role: 'reviewer', password: 'Clave-Revision-2026!' } });
@@ -35,6 +35,6 @@ test('NC2 · el Revisor se crea y entra como cualquier cuenta, y solo tiene su s
   assert.equal(login.user.role, 'reviewer');
   const tr = login.token;
   assert.equal((await (await call(env, '/api/auth/me', { token: tr })).json()).user.role, 'reviewer');
-  for (const p of ['/api/orders', '/api/orders/TV-20260101-0001-ABC', '/api/messages', '/api/users', '/api/prices/items/R100', '/api/customers', '/api/admin/data', '/api/settings/google', '/api/blog/posts']) assert.equal((await call(env, p, { token: tr })).status, 403, `el Revisor no entra en ${p}`);
+  for (const p of ['/api/users', '/api/prices/items/R100', '/api/customers', '/api/admin/data', '/api/settings/google', '/api/blog/posts']) assert.equal((await call(env, p, { token: tr })).status, 403, `el Revisor no entra en ${p}`);
   assert.equal((await call(env, '/api/users', { token: tr, method: 'POST', body: { email: 'z@torivac.test', role: 'manager', password: 'Clave-Revision-2026!' } })).status, 403, 'no crea usuarios');
 });

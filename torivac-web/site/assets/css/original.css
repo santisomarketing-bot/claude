@@ -1,7 +1,7 @@
 /* [ORIGINAL] Aspecto «Original»: la web actual de grupotorivac.com tal como es (cabecera y pie negros, naranja cobre, Advent Pro, Archivo, tarjetas blancas, fichas con galería y tablas naranjas),
-   a la que solo se suman las etiquetas de voltaje, los precios y un acceso discreto al presupuesto. Va en la capa `original` y se activa con <html data-theme="original">; el HTML es el de los otros aspectos.
+   a la que se suman las etiquetas de voltaje, los precios, un acceso discreto al presupuesto y (pedido por el cliente el 17/11/2026) los adornos y diagramas del Clásico: ver [ADORNOS]. Va en la capa `original` y se activa con <html data-theme="original">; el HTML es el de los otros aspectos.
    Medidas tomadas de la web real (capturas a 1440 y 390 px). Colores, fuentes y medidas: solo desde original-tokens.css.
-   Secciones: [BASE] [HEADER] [FOOTER] [BUTTONS] [FLOAT] [SHOP-ROOT] [CATEGORY] [LISTING] [PRODUCT] [TABLES] [RELATED] [CONTACT] [HOME] [PAGES] [QUOTE] [MOBILE]
+   Secciones: [BASE] [HEADER] [FOOTER] [BUTTONS] [FLOAT] [SHOP-ROOT] [CATEGORY] [LISTING] [PRODUCT] [TABLES] [RELATED] [CONTACT] [HOME] [PAGES] [QUOTE] [MOBILE] [ADORNOS]
    Documentación del diseño: docs/DISENO-TEMAS.md */
 
 /* ───── [BASE] */
@@ -220,7 +220,6 @@
 [data-theme="original"] .tv-shop-cat .page-hero::before{display:none}
 [data-theme="original"] .tv-shop-cat .page-hero .container{width:100%;padding:0}
 [data-theme="original"] .tv-shop-cat .page-hero h1{margin:0 0 20px;padding-bottom:14px;color:#000;font:600 44px/1.2 var(--o-font-title);border-bottom:1px solid var(--o-accent)}
-[data-theme="original"] .wave-lab{display:none}                                                      /* el osciloscopio es un añadido nuestro: la web actual no lo tiene */
 [data-theme="original"] .cat-split.no-media{grid-template-columns:1fr}
 [data-theme="original"] .cat-split{order:3;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}
 [data-theme="original"] .cat-media{display:block;margin:0;overflow:hidden;background:none;position:relative}
@@ -283,7 +282,6 @@
 [data-theme="original"] .gallery{border:0;background:none}
 [data-theme="original"] .gallery:has(.thumbs){border:1px solid var(--o-accent)}   /* la web actual solo enmarca la galería cuando hay varias fotos; con una sola, la foto va sin marco */
 [data-theme="original"] .gallery .main{border:0;padding:0;aspect-ratio:1/1;background:none;position:relative}
-[data-theme="original"] .gallery .main::before,[data-theme="original"] .gallery .main::after{display:none}
 [data-theme="original"] .gallery .zoom{position:absolute;top:14px;right:14px;width:36px;height:36px;display:inline-grid;place-items:center;border-radius:50%;background:#fff;color:#111;box-shadow:0 1px 4px rgba(0,0,0,.2);text-decoration:none}
 [data-theme="original"] .gallery .zoom:hover{background:var(--o-accent);color:#fff}
 [data-theme="original"] .gallery .main img{width:100%;height:100%;object-fit:contain}
@@ -366,8 +364,7 @@
 /* ───── [HOME] portada, medida en la web actual a 1440 px: hero de 594 px con velo degradado, «Fabricación a medida» con la foto a sangre, «Somos Fabricantes» (recuadro con sombra naranja sólida y foto), servicios en casillas oscuras, banda del catálogo, presencia internacional y contacto */
 [data-theme="original"] .hero{min-height:594px;box-sizing:border-box;padding:100px 0 50px;display:flex;align-items:center;justify-content:center;background-size:cover;background-position:50% 50%;background-repeat:no-repeat}
 [data-theme="original"] .hero::before{background:linear-gradient(rgba(0,0,0,.65) 60%,rgba(186,107,30,.65) 100%);opacity:.65}
-[data-theme="original"] .hero.bp::after,[data-theme="original"] .hero .container::before,[data-theme="original"] .hero .container::after{display:none}
-[data-theme="original"] :is(.hero .wave,.hero-fig,.hero .o-skip,.art-host>svg){display:none}
+[data-theme="original"] :is(.hero-fig,.hero .o-skip){display:none}                                   /* la foto en recuadro es de «Ficha técnica»; el botón «Presupuesto →» no está en la web actual (la onda, la cuadrícula y las marcas del héroe sí se ven: ver [ADORNOS]) */
 [data-theme="original"] .hero .container{width:min(710px,100% - 40px);padding:0;margin-inline:auto;text-align:center}
 [data-theme="original"] .hero h1{max-width:none;margin:0 0 20px;font:400 60px/60px var(--o-font-title);letter-spacing:1px;color:#fff;text-align:center}
 [data-theme="original"] .hero p{max-width:none;margin:0 0 15px;font:400 20px/32px var(--o-font-body);color:#fff;text-align:center}
@@ -378,7 +375,6 @@
 [data-theme="original"] .o-fab{padding:50px 0 100px;background:none}
 [data-theme="original"] .o-fab .container{width:100%;max-width:none;margin:0;padding:0;display:grid;grid-template-columns:50% minmax(0,546px);column-gap:50px;align-items:start}
 [data-theme="original"] .o-fab .photo-frame.crop{margin:0;padding:0;background:none;border:0;box-shadow:none}
-[data-theme="original"] .o-fab .photo-frame::before,[data-theme="original"] .o-fab .photo-frame::after{display:none}
 [data-theme="original"] .o-fab .photo-frame img{width:100%;height:auto;display:block}
 [data-theme="original"] .o-fab .container>div:last-child{padding-top:50px}
 [data-theme="original"] .o-fab .eyebrow{margin:0 0 20px;font:500 24px/24px var(--o-font-title);letter-spacing:0;text-transform:none;color:#100404}
@@ -466,7 +462,6 @@
 [data-theme="original"] .o-sec .prose p{margin:0 0 15px;font:400 15px/25px var(--o-font-body);color:#54595f}
 [data-theme="original"] .o-sec .container.split{display:grid;align-items:center;column-gap:60px}
 [data-theme="original"] .o-sec .photo-frame.crop{margin:0;padding:0;background:none;border:0;box-shadow:none}
-[data-theme="original"] .o-sec .photo-frame::before,[data-theme="original"] .o-sec .photo-frame::after{display:none}
 [data-theme="original"] .o-sec .photo-frame img{display:block;width:100%;height:auto}
 [data-theme="original"] .o-sec .carousel{display:block;overflow:hidden;padding:0}
 [data-theme="original"] .o-sec .carousel img{display:block;width:100%;height:auto;aspect-ratio:auto}
@@ -680,3 +675,68 @@
 @media (max-width:520px){
   [data-theme="original"] .related .pgrid,[data-theme="original"] .tv-shop-cat .pgrid,[data-theme="original"] .tv-shop-store .pgrid{grid-template-columns:minmax(0,1fr)}
 }
+
+/* ───── [ADORNOS] efectos visuales y diagramas técnicos del Clásico en «Original» (pedidos por el cliente el 17/11/2026)
+   Son decoración: no cambian la maqueta medida (ninguno ocupa sitio en el flujo salvo el osciloscopio, que es un bloque nuevo entre la introducción y las subcategorías de «Variadores de tensión»).
+   Todo sale de los tokens `--o-mark*`, `--o-wave*` y `--o-band` de original-tokens.css; sin JS (el bobinado toroidal se «dibuja» con el JS de siempre si lo hay) y con `prefers-reduced-motion` respetado. */
+
+/* Portada: onda de cobre al pie del héroe (tres senoidales a distinta velocidad), cuadrícula fina sobre el velo y marcas de esquina en el héroe */
+[data-theme="original"] .hero .wave{display:block;opacity:var(--o-wave-opacity)}
+[data-theme="original"] .hero .wave .w1 path{stroke:var(--o-wave-1)}
+[data-theme="original"] .hero .wave .w2 path{stroke:var(--o-wave-2)}
+[data-theme="original"] .hero .wave .w3 path{stroke:var(--o-wave-3)}
+[data-theme="original"] .hero.bp::after{display:block}
+[data-theme="original"] .hero .container{position:static}                                              /* las marcas de esquina se colocan respecto al héroe entero, no respecto a la columna de texto de 710 px */
+[data-theme="original"] .hero .container::before,[data-theme="original"] .hero .container::after{display:block;width:var(--o-mark-size-hero);height:var(--o-mark-size-hero);border-color:var(--o-mark-on-dark);opacity:.8}
+[data-theme="original"] .hero .container::before{left:clamp(16px,4vw,64px);top:clamp(28px,5vw,64px)}
+[data-theme="original"] .hero .container::after{right:clamp(16px,4vw,64px);bottom:clamp(96px,9vw,128px)}
+
+/* Marcos de foto: marcas de registro de cobre en dos esquinas (arriba a la izquierda y abajo a la derecha) */
+[data-theme="original"] :is(.o-fab,.o-sec) .photo-frame,[data-theme="original"] .gallery .main{position:relative}
+[data-theme="original"] :is(.o-fab,.o-sec) .photo-frame::before,[data-theme="original"] :is(.o-fab,.o-sec) .photo-frame::after,[data-theme="original"] .gallery .main::before,[data-theme="original"] .gallery .main::after{display:block;content:"";position:absolute;z-index:1;width:var(--o-mark-size);height:var(--o-mark-size);border:0 solid var(--o-mark);pointer-events:none}
+[data-theme="original"] :is(.o-fab,.o-sec) .photo-frame::before,[data-theme="original"] .gallery .main::before{top:var(--o-mark-inset);left:var(--o-mark-inset);border-top-width:var(--o-mark-w);border-left-width:var(--o-mark-w)}
+[data-theme="original"] :is(.o-fab,.o-sec) .photo-frame::after,[data-theme="original"] .gallery .main::after{right:var(--o-mark-inset);bottom:var(--o-mark-inset);border-bottom-width:var(--o-mark-w);border-right-width:var(--o-mark-w)}
+[data-theme="original"] .gallery .main::after{content:"";font-size:0}                                    /* la ficha clásica pinta aquí la cota «data-dim»: en «Original» solo la marca */
+
+/* Bandas oscuras: la cuadrícula fina de siempre (el fondo #100404 no cambia) */
+[data-theme="original"] :is(.o-cat,.o-dark-cta,.o-dark-photo){background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:var(--grid-size) var(--grid-size);background-position:-1px -1px}
+
+/* Bobinado toroidal decorativo (arte de la portada): las espiras se dibujan al entrar en pantalla; en la sección «Fabricación…» queda a la izquierda para no pisar el dibujo de fondo de la web actual */
+[data-theme="original"] .art-host>.toroid-art{display:block;left:-150px;right:auto;top:auto;bottom:-170px;width:min(480px,56vw);opacity:.14;color:var(--o-mark)}
+@media (max-width:760px){[data-theme="original"] .art-host>.toroid-art{left:-110px;bottom:-130px;width:min(480px,72vw);opacity:.1}}      /* en móvil queda a la vista lo bastante (≥ 15 %) para que el JS la dibuje al entrar */
+
+/* Osciloscopio del variador («Así regula un variador de tensión», en «Variadores de tensión»): entre la introducción y las subcategorías, con el ancho del resto del contenido */
+[data-theme="original"] .tv-shop-cat .wave-lab{order:3;display:block;margin-top:34px;margin-bottom:0;padding:28px;border:0;border-radius:var(--radius);background:var(--o-band);box-shadow:var(--o-shadow)}
+[data-theme="original"] .wave-lab::before,[data-theme="original"] .wave-lab::after{border-color:var(--o-mark-on-dark)}
+[data-theme="original"] .wave-lab .wl-head h2{color:#fff;font:600 32px/1.15 var(--o-font-title);letter-spacing:1px;margin:0 0 6px}
+[data-theme="original"] .wave-lab .wl-head p{color:var(--o-on-dark);font:400 15px/1.6 var(--o-font-body);margin:0 0 20px}
+[data-theme="original"] .wave-lab .wl-ctl label{color:#fff;font:700 15px/1.3 var(--o-font-ui);letter-spacing:.04em}
+[data-theme="original"] .wave-lab .wl-ctl dt{color:var(--o-on-dark);font-size:15px}
+[data-theme="original"] .wave-lab .wl-ctl dd{font-family:var(--o-font-body);font-variant-numeric:tabular-nums;color:var(--o-mark-on-dark)}
+[data-theme="original"] .wave-lab .wl-ctl .muted{color:var(--o-on-dark);font-size:13px}
+[data-theme="original"] .wave-lab input[type=range]:focus-visible{outline:3px solid var(--o-mark-on-dark);outline-offset:3px}
+
+/* Efecto al pasar el ratón o enfocar: marcas de esquina que se dibujan en las casillas de servicios y en las tarjetas de categoría y de producto (la tarjeta ya se eleva: no cambia de sitio) */
+[data-theme="original"] .tile:not(.tile-photo),[data-theme="original"] :is(.ccard,.pcard.store){position:relative}
+[data-theme="original"] .tile:not(.tile-photo)::before,[data-theme="original"] .tile:not(.tile-photo)::after,[data-theme="original"] :is(.ccard,.pcard.store)::before,[data-theme="original"] :is(.ccard,.pcard.store)::after{content:"";position:absolute;width:0;height:0;border:0 solid var(--o-mark);opacity:0;pointer-events:none;transition:width .25s,height .25s,opacity .25s}
+[data-theme="original"] .tile:not(.tile-photo)::before,[data-theme="original"] .tile:not(.tile-photo)::after{border-color:#fff}
+[data-theme="original"] :is(.tile:not(.tile-photo),.ccard,.pcard.store)::before{top:10px;left:10px;border-top-width:var(--o-mark-w);border-left-width:var(--o-mark-w)}
+[data-theme="original"] :is(.tile:not(.tile-photo),.ccard,.pcard.store)::after{right:10px;bottom:10px;border-bottom-width:var(--o-mark-w);border-right-width:var(--o-mark-w)}
+[data-theme="original"] :is(.tile:not(.tile-photo),.ccard,.pcard.store):is(:hover,:focus-visible,:focus-within)::before,[data-theme="original"] :is(.tile:not(.tile-photo),.ccard,.pcard.store):is(:hover,:focus-visible,:focus-within)::after{width:var(--o-mark-size);height:var(--o-mark-size);opacity:1}
+
+/* Marcas que se dibujan al entrar en pantalla (solo navegadores con animaciones por scroll; en los demás están dibujadas desde el principio) */
+@supports (animation-timeline:view()){
+  @media (prefers-reduced-motion:no-preference){
+    [data-theme="original"] :is(.o-fab,.o-sec) .photo-frame::before,[data-theme="original"] :is(.o-fab,.o-sec) .photo-frame::after{animation:o-mark-draw linear both;animation-timeline:view();animation-range:entry 10% entry 70%}
+    @keyframes o-mark-draw{from{width:0;height:0;opacity:0}to{width:var(--o-mark-size);height:var(--o-mark-size);opacity:1}}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  [data-theme="original"] .tile:not(.tile-photo)::before,[data-theme="original"] .tile:not(.tile-photo)::after,[data-theme="original"] :is(.ccard,.pcard.store)::before,[data-theme="original"] :is(.ccard,.pcard.store)::after{transition:none}
+}
+@media (max-width:760px){
+  [data-theme="original"] .tv-shop-cat .wave-lab{padding:20px}
+  [data-theme="original"] .wave-lab .wl-head h2{font-size:26px}
+  [data-theme="original"] .hero .container::before,[data-theme="original"] .hero .container::after{width:calc(var(--o-mark-size-hero) * .75);height:calc(var(--o-mark-size-hero) * .75)}
+}
+@media print{[data-theme="original"] .hero .wave,[data-theme="original"] .art-host>.toroid-art{display:none}}

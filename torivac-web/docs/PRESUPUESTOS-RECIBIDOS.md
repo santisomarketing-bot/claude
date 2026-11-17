@@ -9,6 +9,7 @@ Este documento es el **contrato único** de los dos servidores (`backend-php/api
 | Antes | Ahora |
 |---|---|
 | `GET /api/orders` con rol `client` = solo los pedidos hechos con **su propio correo** (pensado para compradores) | `client` (Propietario) ve **todos** los presupuestos recibidos, igual que un manager (sin la IP ni el texto de error del correo) |
+| Solo la propietaria y el manager | También el **comercial** (rol `reviewer`, el Revisor): lista y detalle de **todos** los presupuestos, sin `ip` ni `emailed.error`, en **solo lectura** (`PUT` y `/send` → `403 «Solo lectura»` sin mirar si existe el número; el PDF se descarga). El panel esconde Editar, Reenviar y «Crear cuenta de cliente» |
 | Solo se podía listar y regenerar el PDF | Ver uno, **editarlo**, **reenviarlo por correo** desde la plataforma, **descargarlo** en PDF; queda un historial |
 
 ## 2. Modelo del registro (`order:<número>`)
@@ -130,3 +131,12 @@ Los escribió el proyecto (no vienen de la web original); son **borrador** hasta
 
 Los textos del **panel** (en castellano) no se traducen: el panel es solo para el equipo.
 
+
+
+## Quien pide sin cuenta no queda como cliente (17/11/2026)
+
+Un presupuesto hecho desde la web por alguien **sin cuenta** guarda sus datos (nombre, empresa, correo, teléfono) **dentro del pedido**, pero no crea ninguna cuenta: las cuentas de cliente se crean a mano (contraseña y categoría de precio). Para no perder a esas personas:
+
+- En el **detalle** de un presupuesto sin cuenta (`owner` vacío) el manager y la propietaria ven **«Crear cuenta de cliente»**: lleva a *Clientes* (`#clientes/crear/<correo>`) con el formulario ya relleno.
+- *Clientes* lista los **«Solicitantes sin cuenta»**: personas con pedidos sin cuenta o mensajes de Contacto cuyo correo no es cliente (pedidos y mensajes por persona, último contacto), con **Crear cuenta**. «Generar una segura» propone una contraseña de 16 caracteres (se muestra una sola vez; decírsela al cliente por un canal seguro).
+- Todo se calcula en el navegador con `GET /api/orders`, `GET /api/messages` y `GET /api/customers`: no hay rutas nuevas y vale igual con el Worker y con PHP.

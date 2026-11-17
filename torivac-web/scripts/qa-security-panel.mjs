@@ -275,8 +275,8 @@ try {
   ok(/intentos repetidos/.test(d.outbox().filter((m) => [].concat(m.to).includes(CLIENT)).pop().text), 'un cliente con la cuenta reforzada recibe el código (y el correo explica por qué)');
   await E.page.fill('[name=code]', d.lastCode(CLIENT)); await E.page.click('[data-code-form] button[type=submit]');
   await panel(E.page);
-  const navE = await E.page.$$eval('.side nav a', (a) => a.map((x) => x.textContent.replace(/[^\p{L} ]/gu, '').trim()));
-  ok(navE.join() === 'Nuevo presupuesto,Presupuestos recibidos,Clientes,Precios,Lista de precios,Estadísticas', `el propietario entra a su panel (${navE.join(' · ')})`);
+  const navE = await E.page.$$eval('.side nav a', (a) => a.map((x) => { const c = x.cloneNode(true); c.querySelectorAll('.nb').forEach((n) => n.remove()); return c.textContent.replace(/[^\p{L} ]/gu, '').trim(); }));
+  ok(navE.join() === 'Nuevo presupuesto,Presupuestos recibidos,Clientes,Mensajes,Precios,Lista de precios,Estadísticas', `el propietario entra a su panel (${navE.join(' · ')})`);
   await E.page.goto(d.BASE + '/admin/index.html#actividad'); await panel(E.page);
   ok(await E.page.locator('.side nav a[aria-current=page]').innerText().then((t) => /Nuevo presupuesto/.test(t)), 'si un propietario escribe #actividad en la dirección, no ve nada de eso');
   r = await d.api('/activity', { token: (await E.page.evaluate(() => JSON.parse(sessionStorage.getItem('tv_live')).token)) });

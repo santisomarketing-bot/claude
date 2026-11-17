@@ -6,7 +6,7 @@ La web tiene **tres aspectos** que comparten el mismo HTML y el mismo contenido;
 |---|---|---|
 | **Ficha técnica** (`ficha`) | Identidad nueva: la web como una hoja de datos impresa | **Por defecto** |
 | **Clásico** (`clasico`) | El aspecto de la web original de Torivac (cabecera y héroe oscuros, Advent Pro fino, cobre y ámbar), sin tocar | Segunda opción, siempre disponible |
-| **Original** (`original`) | La web actual de grupotorivac.com **tal como es hoy** (catálogo, fichas y páginas con su maqueta), a la que solo se suman las etiquetas de tensión, los precios y un presupuesto discreto | Para quien quiere conservar la identidad que ya tiene |
+| **Original** (`original`) | La web actual de grupotorivac.com **tal como es hoy** (catálogo, fichas y páginas con su maqueta), a la que se suman las etiquetas de tensión, los precios, un presupuesto discreto y (desde el 17/11/2026) los adornos y diagramas técnicos del Clásico | Para quien quiere conservar la identidad que ya tiene |
 
 Quien visita el demo o el subdominio de pruebas los alterna con el selector **Aspecto** (cinta superior y pie) o con `?tema=ficha` / `?tema=clasico` / `?tema=original`; el navegador recuerda la elección. En producción se publica uno solo (o se deja el selector si Torivac lo prefiere): ver §2.
 
@@ -45,7 +45,20 @@ Quien visita el demo o el subdominio de pruebas los alterna con el selector **As
 
 **Idea.** No es un rediseño: es la web de hoy (WordPress + Betheme + Elementor + WooCommerce) reconstruida con la plantilla estática, con las **mismas pantallas, el mismo orden y la misma presentación de los productos**. Se midió a 1440 px y a 390 px con navegador real (`scripts/probe_original_page.mjs`, `probe_original_layout.mjs`, `probe_original_heroes.mjs`: solo lectura, una carga por página) y se comparó con capturas lado a lado.
 
-**Lo único que se suma** (lo pidió el cliente): ① **etiquetas de tensión** (alterna, continua, rango) en fichas y listados; ② **precios** (tarifa del Drive) en la tabla «Modelos y referencias» de cada ficha; ③ **presupuesto discreto**: un botón flotante «Presupuesto», «Añadir al presupuesto» en la ficha y la tabla por referencia y cantidad. Todo lo demás sale de la web actual.
+**Lo único que se suma** (lo pidió el cliente): ① **etiquetas de tensión** (alterna, continua, rango) en fichas y listados; ② **precios** (tarifa del Drive) en la tabla «Modelos y referencias» de cada ficha; ③ **presupuesto discreto**: un botón flotante «Presupuesto», «Añadir al presupuesto» en la ficha y la tabla por referencia y cantidad. Todo lo demás sale de la web actual, **salvo los adornos de abajo**.
+
+**Adornos y diagramas técnicos del Clásico en «Original» (pedidos por el cliente el 17/11/2026).** Cambian la decisión anterior («solo se suma…»): el cliente quiere que «Original» lleve también los efectos visuales y los dibujos técnicos que ya tenían «Clásico» y «Ficha técnica». Son **decoración que no mueve la maqueta medida** (la única pieza nueva con sitio propio es el osciloscopio) y viven todos en el bloque **`[ADORNOS]`** al final de `original.css`, con sus variables `--o-mark*`, `--o-wave*` y `--o-band` en `original-tokens.css`:
+
+| Pieza | Dónde sale | Qué es |
+|---|---|---|
+| **Onda de cobre** | pie del héroe de la portada | tres senoidales a distinta velocidad (la de siempre, `waveSvg()`); queda quieta con movimiento reducido |
+| **Cuadrícula fina + marcas de esquina** | héroe de la portada y bandas oscuras (catálogo, proyectos) | papel milimetrado sobre el velo y dos esquinas (arriba a la izquierda y abajo a la derecha) respecto al héroe entero |
+| **Marcas de registro** | foto de «Fabricación a medida», fotos de las páginas con foto+texto y foto de la ficha | dos esquinas de cobre; en los navegadores con animaciones por scroll se dibujan al entrar en pantalla, en los demás están dibujadas desde el principio |
+| **Bobinado toroidal** | sección «Transformadores toroidales y todo tipo de productos…» de la portada | las 56 espiras se dibujan al entrar en pantalla (JS de siempre, `app.js`); sin JS se ven completas; a la izquierda, para no pisar el dibujo de fondo de la web actual |
+| **Osciloscopio «Así regula un variador de tensión»** | categoría «Variadores de tensión», entre la introducción y «Explora las subcategorías» | el diagrama interactivo de `lab.js` (mando, entrada y salida de 230 V), en fondo `--o-band`, con la tipografía de «Original» |
+| **Marcas que se dibujan al pasar el ratón o enfocar** | casillas de servicios, tarjetas de categoría y de producto | dos esquinas que crecen; la tarjeta ya se eleva, no cambia de sitio |
+
+No se añadió el botón «Presupuesto →» del héroe de «Clásico»: no está en la web actual y «Original» ya tiene su botón flotante. Todos los adornos respetan `prefers-reduced-motion`, se ocultan al imprimir y la web sigue funcionando sin JS. **Compilando solo «Original» (`site.ONLY_O`) la onda del héroe y el bobinado toroidal también salen en el HTML** (antes se omitían).
 
 **Qué reproduce** (valores medidos):
 
@@ -146,6 +159,7 @@ El HTML sirve a los tres aspectos y cada hoja muestra lo suyo. Con selector, lo 
 ## 4. Cómo se prueba
 
 - **`node scripts/qa-theme.mjs`** (≈ 2 min; compila 5 variantes en una carpeta temporal): reglas de diseño de las fuentes CSS (selectores acotados, sin colores sueltos, sin `!important` de más, solo variables en los tokens) · banderas y qué lleva cada compilación (capas, fuentes base64/archivo, precargas, selector) · selector por clic, teclado y `?tema=` (valor desconocido ignorado), persistencia entre páginas y sin almacenamiento · sin JavaScript · fuentes realmente cargadas en cada aspecto (producción por http con gzip: 200 y sin errores de consola) · la foto de portada se pide **una sola vez** · **12 páginas × 4 anchos × 2 aspectos sin desborde horizontal**.
+- **`node scripts/qa-art.mjs`**: además del osciloscopio y el bobinado en «Ficha técnica», comprueba los adornos en «Original» (escritorio, móvil y movimiento reducido): onda, marcas de esquina, cuadrícula, bobinado que se dibuja, osciloscopio entre la introducción y las subcategorías con su mando y sin desbordes; `qa-theme.mjs` vigila que el bloque `[ADORNOS]` use solo variables.
 - **`qa-ux`** (758 páginas × escritorio y móvil) y **`qa-a11y`** (axe-core AA) con la Ficha técnica por defecto; `qa-all.sh` los repite con «Clásico» (muestra de 80 páginas en UX, axe completo).
 - **Clásico no cambia**: se comparó píxel a píxel con las capturas de antes de este trabajo (11 páginas de escritorio, mismo navegador). Diferencias, todas declaradas: (a) la cinta de demo lleva el selector y su texto se desplaza para dejarle sitio; (b) el pie del demo lleva la fila del selector; (c) el botón «Categorías/Filtros» ya **no aparece en escritorio** (era un fallo: `.btn{display:inline-flex}` anulaba `.filters-toggle{display:none}`; en pantallas estrechas se ve igual que antes).
 - **Rendimiento** (`perf.mjs`, móvil con CPU ×4 y red 4G lenta): LCP de la portada ≈ 2,0 s (el elemento más grande ahora es la foto del recuadro; en «Clásico» el LCP lo marca el texto, ≈ 1,0 s). Objetivo del proyecto ≤ 2,5 s; con brotli/CDN de un hosting real será menor.

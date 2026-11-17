@@ -152,3 +152,7 @@ details.prop [aria-invalid=true]{border-color:var(--err);outline:2px solid var(-
 @media (max-width:720px){.nc-diff{grid-template-columns:1fr}}
 [data-nc-root] .panel,[data-nc-root] .nc-prev,[data-nc-root] .nc-diff>div{min-width:0;overflow-wrap:anywhere}
 @media (max-width:860px){[data-nc-root] .cols{grid-template-columns:minmax(0,1fr)}}
+
+/* [AVISOS] burbuja de «nuevos» en el menú lateral */
+.side nav a .nb{margin-left:auto;min-width:1.55em;padding:0 .5em;border-radius:1em;background:#c2410c;color:#fff;font:700 .72rem/1.6 var(--font-mono,monospace);text-align:center;font-style:normal}
+.side nav a .nb i{font-style:normal}

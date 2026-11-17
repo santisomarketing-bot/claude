@@ -55,7 +55,7 @@ const newPage = async () => {
 /** Abre /admin/ y entra con el correo y la contraseña dados; espera al menú. */
 const login = async (page, email, pass) => { await page.goto(SITE + '/admin/index.html'); await page.fill('[name=email]', email); await page.fill('[name=pass]', pass); await page.click('button[type=submit]'); await page.waitForSelector('.side nav a'); };
 /** Textos de los enlaces del menú lateral sin el icono. */
-const navs = async (page) => (await page.$$eval('.side nav a', (a) => a.map((x) => x.textContent.trim()))).map((n) => n.slice(1).trim());
+const navs = async (page) => (await page.$$eval('.side nav a', (a) => a.map((x) => { const c = x.cloneNode(true); c.querySelectorAll('.nb').forEach((n) => n.remove()); return c.textContent.trim(); }))).map((n) => n.slice(1).trim());          // sin la burbuja de «nuevos»
 /** Va a una dirección del panel y espera a que salga el elemento `sel`. */
 const go = async (page, hash, sel) => { await page.evaluate((h) => { location.hash = h; }, hash); await page.waitForSelector(sel, { timeout: 8000 }); };
 const tJ = await tokenOf('jefa@torivac.com', PW.jefa), tM = await tokenOf('maria@torivac.com', PW.maria), tA = await tokenOf('ana@cliente.es', PW.ana), tL = await tokenOf('luis@cliente.es', PW.luis);
@@ -113,8 +113,8 @@ console.log('\n3) Ajustes de precios (API)');
 
 console.log('\n4) Panel · el propietario: Clientes y Precios');
 { const { ctx, page, errs } = await newPage(); await login(page, 'maria@torivac.com', PW.maria);
-  ok((await navs(page)).join(' · ') === 'Nuevo presupuesto · Presupuestos recibidos · Clientes · Precios · Lista de precios · Estadísticas', `menú del propietario: ${(await navs(page)).join(' · ')}`);
-  await go(page, '#clientes', '[data-cu-root]'); ok((await page.locator('[data-cu-root] tbody tr').count()) === 2, 'Clientes: las 2 cuentas');
+  ok((await navs(page)).join(' · ') === 'Nuevo presupuesto · Presupuestos recibidos · Clientes · Mensajes · Precios · Lista de precios · Estadísticas', `menú del propietario: ${(await navs(page)).join(' · ')}`);
+  await go(page, '#clientes', '[data-cu-root]'); ok((await page.locator('[data-cu-root] table[data-cu-accounts] tbody tr').count()) === 2, 'Clientes: las 2 cuentas');
   await page.fill('[data-cu-new] [name=name]', 'Nuevo Cliente'); await page.fill('[data-cu-new] [name=email]', 'nuevo@cliente.es'); await page.fill('[data-cu-new] [name=password]', 'Acceso-Seguro-Tres-2026'); await page.selectOption('[data-cu-new] [name=tier]', 'vip10'); await page.click('[data-cu-new] button[type=submit]');
   await page.waitForSelector('[data-cu-tier="nuevo@cliente.es"]', { timeout: 8000 });
   ok((await api('/api/customers', { token: tM })).j.customers.find((c) => c.email === 'nuevo@cliente.es').tier === 'vip10', 'alta desde el panel con su categoría');

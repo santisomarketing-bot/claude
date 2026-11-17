@@ -7,7 +7,7 @@
  *   CLIENTE   (rol `customer`, docs/PRECIOS-Y-CLIENTES.md) GET /api/orders (solo los suyos, reducidos, con `quota`) · GET /api/orders/:número (solo uno suyo) · PUT y send → 403 «Solo lectura» · GET /api/prices con SUS precios · POST /api/order con sesión (3 al día)
  *   PROPIETARIO Y MANAGER  GET|POST /api/customers · PUT|DELETE /api/customers/:correo · POST /api/customers/:correo/password (cuentas de cliente; lógica en Customers.php) · GET|PUT /api/settings/pricing (porcentajes de las categorías,
  *             precio de cara al visitante y aproximado) · PUT /api/prices/items/:ref (precio de un producto; la referencia va codificada en la URL) — lógica en Pricing.php
- *   MANAGER   GET /api/diag · GET /api/admin/data · GET /api/messages?limit= · DELETE /api/messages/:id · POST /api/mail/test · GET /api/mail/status · POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
+ *   MANAGER   GET /api/diag · GET /api/admin/data · GET /api/messages?limit= · DELETE /api/messages/:id (también la propietaria y, solo GET, el comercial/Revisor, sin IP) · POST /api/mail/test · GET /api/mail/status · POST /api/prices/refresh · POST /api/prices/upload · POST /api/prices/ai (propone) · POST /api/prices/ai/apply (aplica)
  *             GET|PUT /api/settings/google (medición de Google: IDs y conversiones) · GET|POST /api/proposals/state · GET|POST|DELETE /api/users · /api/newcontent/… (contenido nuevo: manager y Revisor; ver NewContent.php) · POST /api/users/:correo/unlock|two-step|password · GET /api/activity · /api/backups (copias de seguridad) · /api/blog/… (entradas del blog e imágenes: ver BlogApi.php)
  *   CRON      GET /api/cron?token=… (alternativa a `php cron.php` si el hosting no deja programar por línea de comandos)
  *
@@ -359,6 +359,23 @@ final class Router
         return new Response($body);
     }
 
+    /**
+     * /messages para la propietaria (client) y el comercial (reviewer): GET ve los mensajes sin `ip` ni `emailed.error` (Messages::forStaff); DELETE solo lo hace la propietaria (el comercial lee, no borra). Otra ruta o método → 404.
+     */
+    private static function staffMessages(Request $req, array $who): Response
+    {
+        $path = $req->path;
+        if ($path === '/messages' && $req->method === 'GET') {
+            $r = Messages::recent(Messages::limit($req->query['limit'] ?? null));
+            return new Response(['ok' => true, 'items' => array_map([Messages::class, 'forStaff'], $r['items']), 'truncated' => $r['truncated']], 200, ['Cache-Control' => 'no-store', 'X-Content-Type-Options' => 'nosniff']);
+        }
+        if (strpos($path, '/messages/') === 0 && $req->method === 'DELETE') {
+            if (($who['role'] ?? '') !== 'client') return new Response(['ok' => false, 'error' => 'Solo lectura'], 403);
+            return Messages::delete(rawurldecode(substr($path, 10))) ? new Response(['ok' => true]) : new Response(['ok' => false, 'error' => 'No existe ese mensaje'], 404);
+        }
+        return new Response(['ok' => false, 'error' => 'No encontrado'], 404);
+    }
+
     /** GET /messages?limit=N: los mensajes de contacto más recientes primero (1..300, 100 por defecto) con la IP y el estado del correo; un registro dañado se omite. */
     private static function messages(Request $req): Response
     {
@@ -481,7 +498,8 @@ final class Router
             if (!Auth::requireRole($who, 'manager', 'reviewer')) return new Response(['ok' => false, 'error' => 'No autorizado'], 403);
             return NewContent::handle($req, $who);
         }
-        if (($who['role'] ?? '') === 'reviewer') return new Response(['ok' => false, 'error' => 'No autorizado'], 403);      // el Revisor solo tiene su sesión y «Contenido nuevo»: nada de presupuestos, precios, clientes ni ajustes
+        if (($path === '/messages' || strpos($path, '/messages/') === 0) && Auth::requireRole($who, 'client', 'reviewer')) return self::staffMessages($req, $who);      // mensajes de contacto: también la propietaria y el comercial (Revisor), sin IP ni motivo técnico del correo
+        if (($who['role'] ?? '') === 'reviewer' && $path !== '/orders' && strpos($path, '/orders/') !== 0) return new Response(['ok' => false, 'error' => 'No autorizado'], 403);      // el Revisor (comercial) solo tiene su sesión, «Contenido nuevo», los presupuestos recibidos (solo lectura) y los mensajes: nada de precios, clientes, usuarios ni ajustes
         if ($path === '/orders' && $m === 'GET') return self::orders($who);
         if (strpos($path, '/orders/') === 0) return Quotes::handle($req, $who);                  // ver, editar y reenviar un presupuesto (manager y propietario; un cliente solo ve los suyos); un número con forma rara es 404, no 403
         if (Auth::requireRole($who, 'manager', 'client') && ($pr = self::pricingRoutes($req, $who)) !== null) return $pr;      // clientes, ajustes de precios y precio de un producto: manager y propietario

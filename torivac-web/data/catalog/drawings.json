@@ -1,0 +1,721 @@
+{
+ "_doc": "GENERADO por scripts/extract_drawings.py desde drawings.curated.json (no editar a mano). items = dibujos (archivo en site/assets/drawings, tamaño, pie, PDF y página de origen); by_product = id de producto → ids de dibujo, en orden.",
+ "items": [
+  {
+   "id": "variador-doble-motorizado-1",
+   "file": "assets/drawings/variador-doble-motorizado-1.webp",
+   "w": 998,
+   "h": 744,
+   "bytes": 15946,
+   "sha": "158110dc6abe",
+   "caption": "160 VA x2 – 4000 VA x2",
+   "pdf": "Variador-tension-doble-regulacion-motorizada.pdf",
+   "page": 1,
+   "products": [
+    308
+   ]
+  },
+  {
+   "id": "variador-doble-motorizado-2",
+   "file": "assets/drawings/variador-doble-motorizado-2.webp",
+   "w": 566,
+   "h": 1400,
+   "bytes": 48796,
+   "sha": "f0ff786d8c29",
+   "caption": "5000 VA x2",
+   "pdf": "Variador-tension-doble-regulacion-motorizada.pdf",
+   "page": 1,
+   "products": [
+    308
+   ]
+  },
+  {
+   "id": "variador-doble-motorizado-3",
+   "file": "assets/drawings/variador-doble-motorizado-3.webp",
+   "w": 755,
+   "h": 1250,
+   "bytes": 27710,
+   "sha": "2abbfaf3834f",
+   "caption": "6000 VA x2 – 11000 VA x2",
+   "pdf": "Variador-tension-doble-regulacion-motorizada.pdf",
+   "page": 1,
+   "products": [
+    308
+   ]
+  },
+  {
+   "id": "variador-doble-manual-1",
+   "file": "assets/drawings/variador-doble-manual-1.webp",
+   "w": 997,
+   "h": 518,
+   "bytes": 9356,
+   "sha": "b142f4f30e3d",
+   "caption": "160 VA x2 – 4000 VA x2",
+   "pdf": "Variador-tension-doble-regulacion-manual.pdf",
+   "page": 1,
+   "products": [
+    310
+   ]
+  },
+  {
+   "id": "variador-doble-manual-2",
+   "file": "assets/drawings/variador-doble-manual-2.webp",
+   "w": 718,
+   "h": 1343,
+   "bytes": 16576,
+   "sha": "797c698bf73d",
+   "caption": "5000 VA x2",
+   "pdf": "Variador-tension-doble-regulacion-manual.pdf",
+   "page": 1,
+   "products": [
+    310
+   ]
+  },
+  {
+   "id": "variador-doble-manual-3",
+   "file": "assets/drawings/variador-doble-manual-3.webp",
+   "w": 704,
+   "h": 1151,
+   "bytes": 21412,
+   "sha": "fcfad049138b",
+   "caption": "6000 VA x2 – 11000 VA x2",
+   "pdf": "Variador-tension-doble-regulacion-manual.pdf",
+   "page": 1,
+   "products": [
+    310
+   ]
+  },
+  {
+   "id": "variador-trifasico-manual-1",
+   "file": "assets/drawings/variador-trifasico-manual-1.webp",
+   "w": 1000,
+   "h": 843,
+   "bytes": 12670,
+   "sha": "7d3c0100cc2a",
+   "caption": "480 VA – 12000 VA",
+   "pdf": "Variador-tension-trifasico-regulacion-manual.pdf",
+   "page": 1,
+   "products": [
+    326
+   ]
+  },
+  {
+   "id": "variador-trifasico-manual-2",
+   "file": "assets/drawings/variador-trifasico-manual-2.webp",
+   "w": 544,
+   "h": 1399,
+   "bytes": 16074,
+   "sha": "d521c282ccee",
+   "caption": "15000 VA",
+   "pdf": "Variador-tension-trifasico-regulacion-manual.pdf",
+   "page": 1,
+   "products": [
+    326
+   ]
+  },
+  {
+   "id": "variador-trifasico-manual-3",
+   "file": "assets/drawings/variador-trifasico-manual-3.webp",
+   "w": 711,
+   "h": 1140,
+   "bytes": 19612,
+   "sha": "1b4591672a0f",
+   "caption": "18000 VA – 30000 VA",
+   "pdf": "Variador-tension-trifasico-regulacion-manual.pdf",
+   "page": 1,
+   "products": [
+    326
+   ]
+  },
+  {
+   "id": "variador-trifasico-motorizado-1",
+   "file": "assets/drawings/variador-trifasico-motorizado-1.webp",
+   "w": 997,
+   "h": 878,
+   "bytes": 15626,
+   "sha": "4e22d0659bcc",
+   "caption": "480 VA – 12000 VA",
+   "pdf": "Variador-tension-trifasico-regulacion-motorizada-1.pdf",
+   "page": 1,
+   "products": [
+    328
+   ]
+  },
+  {
+   "id": "variador-trifasico-motorizado-2",
+   "file": "assets/drawings/variador-trifasico-motorizado-2.webp",
+   "w": 508,
+   "h": 1329,
+   "bytes": 18592,
+   "sha": "132d416a77b7",
+   "caption": "15000 VA",
+   "pdf": "Variador-tension-trifasico-regulacion-motorizada-1.pdf",
+   "page": 1,
+   "products": [
+    328
+   ]
+  },
+  {
+   "id": "variador-trifasico-motorizado-3",
+   "file": "assets/drawings/variador-trifasico-motorizado-3.webp",
+   "w": 658,
+   "h": 1133,
+   "bytes": 24624,
+   "sha": "d25855cd0ab2",
+   "caption": "18000 VA – 30000 VA",
+   "pdf": "Variador-tension-trifasico-regulacion-motorizada-1.pdf",
+   "page": 1,
+   "products": [
+    328
+   ]
+  },
+  {
+   "id": "variador-monofasico-manual-1",
+   "file": "assets/drawings/variador-monofasico-manual-1.webp",
+   "w": 1000,
+   "h": 434,
+   "bytes": 18480,
+   "sha": "f396efcdd229",
+   "caption": "160 VA – 4000 VA",
+   "pdf": "1.-Variadores-de-tension_monofasicomanual.pdf",
+   "page": 1,
+   "products": [
+    866
+   ]
+  },
+  {
+   "id": "variador-monofasico-manual-2",
+   "file": "assets/drawings/variador-monofasico-manual-2.webp",
+   "w": 697,
+   "h": 1265,
+   "bytes": 20288,
+   "sha": "b0092870f3a3",
+   "caption": "5000 VA",
+   "pdf": "1.-Variadores-de-tension_monofasicomanual.pdf",
+   "page": 1,
+   "products": [
+    866
+   ]
+  },
+  {
+   "id": "variador-monofasico-manual-3",
+   "file": "assets/drawings/variador-monofasico-manual-3.webp",
+   "w": 850,
+   "h": 1217,
+   "bytes": 22292,
+   "sha": "23d4f47038c6",
+   "caption": "6000 VA – 11000 VA",
+   "pdf": "1.-Variadores-de-tension_monofasicomanual.pdf",
+   "page": 1,
+   "products": [
+    866
+   ]
+  },
+  {
+   "id": "variador-monofasico-motorizado-1",
+   "file": "assets/drawings/variador-monofasico-motorizado-1.webp",
+   "w": 1000,
+   "h": 458,
+   "bytes": 26656,
+   "sha": "04677a332510",
+   "caption": "160 VA – 4000 VA",
+   "pdf": "1.-Variadores-de-tension_monofasicomotorizado.pdf",
+   "page": 1,
+   "products": [
+    867
+   ]
+  },
+  {
+   "id": "variador-monofasico-motorizado-2",
+   "file": "assets/drawings/variador-monofasico-motorizado-2.webp",
+   "w": 621,
+   "h": 978,
+   "bytes": 15856,
+   "sha": "78b891bcf44d",
+   "caption": "5000 VA",
+   "pdf": "1.-Variadores-de-tension_monofasicomotorizado.pdf",
+   "page": 1,
+   "products": [
+    867
+   ]
+  },
+  {
+   "id": "variador-monofasico-motorizado-3",
+   "file": "assets/drawings/variador-monofasico-motorizado-3.webp",
+   "w": 694,
+   "h": 899,
+   "bytes": 23604,
+   "sha": "44b93686e18c",
+   "caption": "6000 VA – 11000 VA",
+   "pdf": "1.-Variadores-de-tension_monofasicomotorizado.pdf",
+   "page": 1,
+   "products": [
+    867
+   ]
+  },
+  {
+   "id": "hembrilla-hb4",
+   "file": "assets/drawings/hembrilla-hb4.webp",
+   "w": 661,
+   "h": 746,
+   "bytes": 11626,
+   "sha": "3aa73baff5cb",
+   "caption": "",
+   "pdf": "HEMBRILLAS.pdf",
+   "page": 1,
+   "products": [
+    954
+   ]
+  },
+  {
+   "id": "hembrilla-hr4",
+   "file": "assets/drawings/hembrilla-hr4.webp",
+   "w": 667,
+   "h": 756,
+   "bytes": 11938,
+   "sha": "ca8772dee16e",
+   "caption": "",
+   "pdf": "HEMBRILLAS.pdf",
+   "page": 1,
+   "products": [
+    956
+   ]
+  },
+  {
+   "id": "hembrilla-hbs4",
+   "file": "assets/drawings/hembrilla-hbs4.webp",
+   "w": 718,
+   "h": 614,
+   "bytes": 10258,
+   "sha": "bd967bd9ccce",
+   "caption": "",
+   "pdf": "HEMBRILLAS2.pdf",
+   "page": 1,
+   "products": [
+    955
+   ]
+  },
+  {
+   "id": "hembrilla-hsr4",
+   "file": "assets/drawings/hembrilla-hsr4.webp",
+   "w": 541,
+   "h": 620,
+   "bytes": 7870,
+   "sha": "2770bce3eb64",
+   "caption": "",
+   "pdf": "HEMBRILLAS2.pdf",
+   "page": 1,
+   "products": [
+    957
+   ]
+  },
+  {
+   "id": "soporte-led-3mm-1",
+   "file": "assets/drawings/soporte-led-3mm-1.webp",
+   "w": 588,
+   "h": 421,
+   "bytes": 6536,
+   "sha": "dbfd3d7e2f33",
+   "caption": "",
+   "pdf": "Soportes-Metalicos.pdf",
+   "page": 1,
+   "products": [
+    923
+   ]
+  },
+  {
+   "id": "soporte-led-3mm-2",
+   "file": "assets/drawings/soporte-led-3mm-2.webp",
+   "w": 645,
+   "h": 551,
+   "bytes": 6602,
+   "sha": "036428c33831",
+   "caption": "",
+   "pdf": "Soportes-Metalicos.pdf",
+   "page": 1,
+   "products": [
+    923
+   ]
+  },
+  {
+   "id": "soporte-led-5mm-1",
+   "file": "assets/drawings/soporte-led-5mm-1.webp",
+   "w": 637,
+   "h": 483,
+   "bytes": 7188,
+   "sha": "91152781dc58",
+   "caption": "",
+   "pdf": "Soportes-Metalicos.pdf",
+   "page": 1,
+   "products": [
+    925
+   ]
+  },
+  {
+   "id": "soporte-led-5mm-2",
+   "file": "assets/drawings/soporte-led-5mm-2.webp",
+   "w": 595,
+   "h": 511,
+   "bytes": 6472,
+   "sha": "f80ada9492dc",
+   "caption": "",
+   "pdf": "Soportes-Metalicos.pdf",
+   "page": 1,
+   "products": [
+    925
+   ]
+  },
+  {
+   "id": "soporte-led-8mm-1",
+   "file": "assets/drawings/soporte-led-8mm-1.webp",
+   "w": 636,
+   "h": 410,
+   "bytes": 6850,
+   "sha": "605527b7658f",
+   "caption": "",
+   "pdf": "Soportes-Metalicos-para-LED.pdf",
+   "page": 1,
+   "products": [
+    927
+   ]
+  },
+  {
+   "id": "soporte-led-8mm-2",
+   "file": "assets/drawings/soporte-led-8mm-2.webp",
+   "w": 703,
+   "h": 480,
+   "bytes": 6288,
+   "sha": "bcffeb2befcc",
+   "caption": "",
+   "pdf": "Soportes-Metalicos-para-LED.pdf",
+   "page": 1,
+   "products": [
+    927
+   ]
+  },
+  {
+   "id": "soporte-led-10mm",
+   "file": "assets/drawings/soporte-led-10mm.webp",
+   "w": 991,
+   "h": 685,
+   "bytes": 11110,
+   "sha": "fe7837b9ec63",
+   "caption": "",
+   "pdf": "Soportes-Metalicos-para-LED.pdf",
+   "page": 1,
+   "products": [
+    929
+   ]
+  },
+  {
+   "id": "boton-bo-1",
+   "file": "assets/drawings/boton-bo-1.webp",
+   "w": 607,
+   "h": 644,
+   "bytes": 10480,
+   "sha": "1c173bfdf1a2",
+   "caption": "",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "page": 1,
+   "products": [
+    932
+   ]
+  },
+  {
+   "id": "boton-bo-3",
+   "file": "assets/drawings/boton-bo-3.webp",
+   "w": 706,
+   "h": 330,
+   "bytes": 4516,
+   "sha": "3cbf60e165e1",
+   "caption": "",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "page": 1,
+   "products": [
+    938
+   ]
+  },
+  {
+   "id": "boton-bo-5",
+   "file": "assets/drawings/boton-bo-5.webp",
+   "w": 828,
+   "h": 329,
+   "bytes": 5394,
+   "sha": "39b73d8a732d",
+   "caption": "",
+   "pdf": "BOTONES-DE-MANDO.pdf",
+   "page": 1,
+   "products": [
+    947
+   ]
+  },
+  {
+   "id": "boton-bm-1",
+   "file": "assets/drawings/boton-bm-1.webp",
+   "w": 764,
+   "h": 254,
+   "bytes": 4094,
+   "sha": "3b0a88c1d90f",
+   "caption": "",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "page": 1,
+   "products": [
+    949
+   ]
+  },
+  {
+   "id": "boton-bm-2",
+   "file": "assets/drawings/boton-bm-2.webp",
+   "w": 764,
+   "h": 255,
+   "bytes": 4156,
+   "sha": "0c5031fd862b",
+   "caption": "",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "page": 1,
+   "products": [
+    943
+   ]
+  },
+  {
+   "id": "boton-bm-5",
+   "file": "assets/drawings/boton-bm-5.webp",
+   "w": 818,
+   "h": 430,
+   "bytes": 4460,
+   "sha": "fedd1dbe8a54",
+   "caption": "",
+   "pdf": "BOTONES-DE-MANDO2.pdf",
+   "page": 1,
+   "products": [
+    940
+   ]
+  },
+  {
+   "id": "potenciometro-3w",
+   "file": "assets/drawings/potenciometro-3w.webp",
+   "w": 1000,
+   "h": 457,
+   "bytes": 32628,
+   "sha": "9b3d7bce4d75",
+   "caption": "",
+   "pdf": "Potenciometro.pdf",
+   "page": 1,
+   "products": [
+    906
+   ]
+  },
+  {
+   "id": "potenciometro-doble",
+   "file": "assets/drawings/potenciometro-doble.webp",
+   "w": 1000,
+   "h": 364,
+   "bytes": 25808,
+   "sha": "e1890787931b",
+   "caption": "",
+   "pdf": "Potenciometro.pdf",
+   "page": 1,
+   "products": [
+    908
+   ]
+  },
+  {
+   "id": "potenciometro-5w",
+   "file": "assets/drawings/potenciometro-5w.webp",
+   "w": 1000,
+   "h": 720,
+   "bytes": 26398,
+   "sha": "483c4546e8e5",
+   "caption": "",
+   "pdf": "POTENCIOMETRO-5W.pdf",
+   "page": 1,
+   "products": [
+    907
+   ]
+  },
+  {
+   "id": "reostato-tandem-doble-manual",
+   "file": "assets/drawings/reostato-tandem-doble-manual.webp",
+   "w": 551,
+   "h": 1400,
+   "bytes": 22858,
+   "sha": "1f770767d716",
+   "caption": "Manual",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "page": 2,
+   "products": [
+    911
+   ]
+  },
+  {
+   "id": "reostato-tandem-doble-motor",
+   "file": "assets/drawings/reostato-tandem-doble-motor.webp",
+   "w": 557,
+   "h": 1400,
+   "bytes": 28474,
+   "sha": "d020dc377a6a",
+   "caption": "Motor",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "page": 2,
+   "products": [
+    911
+   ]
+  },
+  {
+   "id": "reostato-tandem-triple-manual",
+   "file": "assets/drawings/reostato-tandem-triple-manual.webp",
+   "w": 481,
+   "h": 1400,
+   "bytes": 22926,
+   "sha": "39aad2a288aa",
+   "caption": "Manual",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "page": 3,
+   "products": [
+    912
+   ]
+  },
+  {
+   "id": "reostato-tandem-triple-motor",
+   "file": "assets/drawings/reostato-tandem-triple-motor.webp",
+   "w": 466,
+   "h": 1400,
+   "bytes": 28184,
+   "sha": "e8cd207f55cc",
+   "caption": "Motor",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "page": 3,
+   "products": [
+    912
+   ]
+  },
+  {
+   "id": "reostato-pc-anclaje",
+   "file": "assets/drawings/reostato-pc-anclaje.webp",
+   "w": 1000,
+   "h": 262,
+   "bytes": 18234,
+   "sha": "e4cfc69e5976",
+   "caption": "",
+   "pdf": "REOSTATOS-CERAMICOS.pdf",
+   "page": 1,
+   "products": [
+    910
+   ]
+  },
+  {
+   "id": "cuba-de-aceite",
+   "file": "assets/drawings/cuba-de-aceite.webp",
+   "w": 723,
+   "h": 857,
+   "bytes": 11340,
+   "sha": "c31cc63d1175",
+   "caption": "",
+   "pdf": "Variador-tension-en-cura-de-aceite.pdf",
+   "page": 1,
+   "products": [
+    306
+   ]
+  }
+ ],
+ "by_product": {
+  "308": [
+   "variador-doble-motorizado-1",
+   "variador-doble-motorizado-2",
+   "variador-doble-motorizado-3"
+  ],
+  "310": [
+   "variador-doble-manual-1",
+   "variador-doble-manual-2",
+   "variador-doble-manual-3"
+  ],
+  "326": [
+   "variador-trifasico-manual-1",
+   "variador-trifasico-manual-2",
+   "variador-trifasico-manual-3"
+  ],
+  "328": [
+   "variador-trifasico-motorizado-1",
+   "variador-trifasico-motorizado-2",
+   "variador-trifasico-motorizado-3"
+  ],
+  "866": [
+   "variador-monofasico-manual-1",
+   "variador-monofasico-manual-2",
+   "variador-monofasico-manual-3"
+  ],
+  "867": [
+   "variador-monofasico-motorizado-1",
+   "variador-monofasico-motorizado-2",
+   "variador-monofasico-motorizado-3"
+  ],
+  "954": [
+   "hembrilla-hb4"
+  ],
+  "956": [
+   "hembrilla-hr4"
+  ],
+  "955": [
+   "hembrilla-hbs4"
+  ],
+  "957": [
+   "hembrilla-hsr4"
+  ],
+  "923": [
+   "soporte-led-3mm-1",
+   "soporte-led-3mm-2"
+  ],
+  "925": [
+   "soporte-led-5mm-1",
+   "soporte-led-5mm-2"
+  ],
+  "927": [
+   "soporte-led-8mm-1",
+   "soporte-led-8mm-2"
+  ],
+  "929": [
+   "soporte-led-10mm"
+  ],
+  "932": [
+   "boton-bo-1"
+  ],
+  "938": [
+   "boton-bo-3"
+  ],
+  "947": [
+   "boton-bo-5"
+  ],
+  "949": [
+   "boton-bm-1"
+  ],
+  "943": [
+   "boton-bm-2"
+  ],
+  "940": [
+   "boton-bm-5"
+  ],
+  "906": [
+   "potenciometro-3w"
+  ],
+  "908": [
+   "potenciometro-doble"
+  ],
+  "907": [
+   "potenciometro-5w"
+  ],
+  "911": [
+   "reostato-tandem-doble-manual",
+   "reostato-tandem-doble-motor"
+  ],
+  "912": [
+   "reostato-tandem-triple-manual",
+   "reostato-tandem-triple-motor"
+  ],
+  "910": [
+   "reostato-pc-anclaje"
+  ],
+  "306": [
+   "cuba-de-aceite"
+  ]
+ }
+}

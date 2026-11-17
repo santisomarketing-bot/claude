@@ -214,13 +214,16 @@ function test_order_plain_text_and_limits_over_the_api()
     T::same(0, count(Store::names('order:')) - 1, 'solo se guardó el pedido válido');
 }
 
-/** M2 · GET /messages: solo gestor (anónimo 401, cliente 403), más recientes primero, todos los campos, sin caché y límite acotado a 1..300 (100 por defecto). */
+/** M2 · GET /messages: manager (completo) y propietaria o comercial (sin IP ni error del correo); anónimo 401 y cliente con cuenta 403, más recientes primero, todos los campos, sin caché y límite acotado a 1..300 (100 por defecto). */
 function test_messages_list_permissions_order_and_limit()
 {
     fresh(); [$mgr, $cli] = ms_tokens();
     $ids = ms_seed(5);
     T::same(401, Router::handle(req('GET', '/messages'))->status, 'anónimo → 401');
-    T::same(403, Router::handle(req('GET', '/messages', null, bearer($cli)))->status, 'cliente → 403');
+    Users::create(['email' => 'luis.cliente@acme.test', 'name' => 'Comprador', 'role' => 'customer', 'password' => PW_CLI]);
+    T::same(403, Router::handle(req('GET', '/messages', null, bearer((string) login_token('luis.cliente@acme.test', PW_CLI, '10.9.9.3'))))->status, 'un cliente con cuenta (customer) → 403');
+    $own = Router::handle(req('GET', '/messages', null, bearer($cli)));
+    T::same([200, 5, false, false], [$own->status, count($own->body['items']), isset($own->body['items'][0]['ip']), isset($own->body['items'][0]['emailed']['error'])], 'la propietaria (client) los ve, sin IP ni error técnico del correo');
     T::same(200, Router::handle(req('GET', '/messages', null, master()))->status, 'el token maestro vale');
     $r = Router::handle(req('GET', '/messages', null, bearer($mgr)));
     T::same([200, 'no-store', 'nosniff'], [$r->status, $r->headers['Cache-Control'], $r->headers['X-Content-Type-Options']], 'sin caché');
@@ -260,13 +263,14 @@ function test_messages_list_returns_visitor_text_as_data()
     T::true(strpos(\Torivac\Util::enc($r->body), '</script>') !== false && $rec['id'] === $r->body['items'][0]['id'], 'y no se interpreta');
 }
 
-/** M2 · DELETE /messages/:id borra uno (derecho de supresión); 404 si no existe, ya se borró o el id no tiene forma de id; nunca alcanza otras claves; cliente 403. */
+/** M2 · DELETE /messages/:id borra uno (derecho de supresión); 404 si no existe, ya se borró o el id no tiene forma de id; nunca alcanza otras claves; un cliente con cuenta 403. */
 function test_messages_delete_and_cannot_reach_other_keys()
 {
     fresh(); [$mgr, $cli] = ms_tokens();
     [$a, $b] = ms_seed(2);
     T::same(401, Router::handle(req('DELETE', "/messages/$a"))->status, 'anónimo → 401');
-    T::same(403, Router::handle(req('DELETE', "/messages/$a", null, bearer($cli)))->status, 'cliente → 403');
+    Users::create(['email' => 'luis.cliente@acme.test', 'name' => 'Comprador', 'role' => 'customer', 'password' => PW_CLI]);
+    T::same(403, Router::handle(req('DELETE', "/messages/$a", null, bearer((string) login_token('luis.cliente@acme.test', PW_CLI, '10.9.9.3'))))->status, 'un cliente con cuenta (customer) → 403');
     T::same(1, count(array_filter([Store::get("msg:$a")])), 'y no se borró');
     $r = Router::handle(req('DELETE', "/messages/$a", null, bearer($mgr)));
     T::same([200, ['ok' => true], null, true], [$r->status, $r->body, Store::get("msg:$a"), Store::get("msg:$b") !== null], 'borra uno');

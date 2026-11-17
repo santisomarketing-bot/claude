@@ -25,7 +25,7 @@ import { customerRoute } from './customers.js';
 import { loadPricing, pricesView, handleGet as pricingGet, handlePut as pricingPut, handleItemEdit } from './pricing.js';
 import { quoteRoute } from './quotes.js';
 import { handlePublic as googlePublic, handleGet as googleGet, handlePut as googlePut, MAX_BODY as GOOGLE_MAX } from './google.js';
-import { handleMessageList, handleMessageDelete, handleMailTest, handleMailStatus } from './mailapi.js';
+import { handleMessageList, handleMessageListStaff, handleMessageDelete, handleMailTest, handleMailStatus } from './mailapi.js';
 import { mailStatus, mailSettingProblems } from './email.js';
 import { loadPrices, KEY_META, KEY_SYNC, diffPrices, updateMode } from './prices.js';
 import { catalogCtx } from './catalog.js';
@@ -137,7 +137,12 @@ async function route(request, env, deps, { path, cors, nowMs }) {
     await logoutUser(env, who.sub, nowMs); return json({ ok: true }, 200, cors);
   }
   if (path === '/api/newcontent' || path.startsWith('/api/newcontent/')) return requireRole(who, 'manager', 'reviewer') ? json({ ok: false, error: 'El contenido nuevo del panel necesita el servidor PHP del hosting (esta instalación usa Cloudflare Workers, que no lo incluye).', code: 'newcontent_unavailable' }, 501, cors) : json({ ok: false, error: 'No autorizado' }, 403, cors);
-  if (who.role === 'reviewer') return json({ ok: false, error: 'No autorizado' }, 403, cors);                 // el Revisor solo tiene su sesión y «Contenido nuevo»: nada de presupuestos, precios, clientes ni ajustes
+  if ((path === '/api/messages' || path.startsWith('/api/messages/')) && requireRole(who, 'client', 'reviewer')) {                  // mensajes de contacto: también la propietaria y el comercial (Revisor), sin IP ni motivo técnico del correo; borrar solo la propietaria
+    if (path === '/api/messages' && method === 'GET') return await handleMessageListStaff(request, env, { cors });
+    if (path.startsWith('/api/messages/') && method === 'DELETE') return who.role === 'client' ? await handleMessageDelete(env, path.slice('/api/messages/'.length), { cors }) : json({ ok: false, error: 'Solo lectura' }, 403, cors);
+    return json({ ok: false, error: 'No encontrado' }, 404, cors);
+  }
+  if (who.role === 'reviewer' && path !== '/api/orders' && !path.startsWith('/api/orders/')) return json({ ok: false, error: 'No autorizado' }, 403, cors);                 // el Revisor (comercial) solo tiene su sesión, «Contenido nuevo», los presupuestos recibidos (solo lectura) y los mensajes
   if (path === '/api/orders' && method === 'GET') {
     if (who.role === 'customer') {                                                       // solo los suyos (índice por propietario), reducidos, con lo que le queda de cupo
       const used = await usedLast24h(env, who.sub, nowMs), r = await listOwned(env, who.sub);
