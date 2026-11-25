@@ -405,66 +405,66 @@ Secciones: `[ADMIN-LIVE]` · `[HTTP]` · `[AUTH]` · `[UTIL]` · `[VIEWS]` · `[
 - `esc` (l. 19) — Escapa & < > " para insertar texto en HTML; null y undefined dan cadena vacía.
 - `money` (l. 21) — Importe formateado con la divisa y el idioma de la página (Q.money); un valor vacío cuenta como 0.
 - `http` (l. 25) — method + ruta + cuerpo → Promise<{ok, status, …}>. Un 401 cierra la sesión (token caducado). Nunca rechaza: los errores de red vuelven como {ok:false}.
-- `session` (l. 34) — Sesión actual {token, email, name, role} o null. El rol del servidor ('client') se muestra como 'cliente'.
-- `openSession` (l. 40) — Guarda la sesión que devuelve el servidor (token y datos de la persona). El rol del servidor ('client') se muestra como 'cliente'.
-- `login` (l. 44) — Entra con correo y contraseña. Devuelve Promise<string|null>: null si ha ido bien (sesión abierta) o si el servidor pide un código por correo (queda en `pending` y se pinta la pantalla del código), o el mensaje de error.
-- `verifyCode` (l. 53) — Comprueba el código escrito (POST /api/auth/verify). Promise<{done}|{back,msg}|{msg}>: sesión abierta · el código ya no sirve (se vuelve a la contraseña con el aviso) · error para mostrar sin salir de la pantalla.
-- `resendCode` (l. 62) — Pide otro código por correo (el anterior deja de valer). Promise<{ok}|{back,msg}|{msg}>.
-- `endSession` (l. 70) — Borra la sesión de este navegador y vuelve a la pantalla de acceso (sin avisar al servidor: lo usa también un 401, cuando el servidor ya la ha dado por caducada).
-- `relogin` (l. 72) — Vuelve a la pantalla de acceso con un aviso (tras cambiar la contraseña propia: el servidor ya cerró todas las sesiones).
-- `logout` (l. 74) — Cierra la sesión: el servidor invalida TODOS los tokens anteriores de esta persona (POST /api/auth/logout; si no responde, igualmente se sale de este navegador).
-- `adminData` (l. 79) — Propuestas de cambio y datos de cobertura del catálogo, solo para managers (GET /api/admin/data); se piden una vez y se guardan en TV.proposals y TV.admin. Nunca rechaza.
-- `toast` (l. 86) — Muestra un aviso breve (3,2 s) en pantalla.
-- `kpi` (l. 88) — HTML de una tarjeta KPI con la etiqueta `l` y el valor `v`, ambos escapados.
-- `itemName` (l. 90) — Nombre legible de una referencia (nombre ES + ref si es un modelo concreto).
-- `when` (l. 92) — Fecha y hora local (es-ES) de una fecha ISO; «—» si viene vacía.
-- `download` (l. 94) — Descarga `blob` como archivo `name` con un enlace temporal y libera la URL a los 800 ms.
-- `fail` (l. 96) — Aviso de error del servidor con el mensaje devuelto.
-- `mailWarn` (l. 108) — Aviso del Resumen cuando el correo no funciona (sin completar o el último envío falló): los pedidos y mensajes se guardan igual, pero nadie recibe el aviso. '' si todo va bien.
-- `V.resumen` (l. 114) — Vista Resumen (manager): con datos del Worker, KPIs, estado de la hoja de precios y sincronización, y los 5 últimos pedidos.
-- `V.recibidos` (l. 126) — Vista «Presupuestos recibidos» (manager y propietario): lista, detalle, edición, PDF y reenvío por correo (admin-quotes.js; contrato en docs/PRESUPUESTOS-RECIBIDOS.md).
-- `V.lista` (l. 129) — Vista Lista de precios (cliente): precios vigentes del Worker, sin IVA, con sus tramos (hasta 600 referencias).
-- `V.presupuestador` (l. 139) — Vista Presupuestador (cliente): incrusta la página del presupuesto en un iframe con ?embed=1.
-- `V.contenido` (l. 142) — Vista Contenido (manager): estado de traducción por idioma, referencias y etiquetas de voltaje de cada producto.
-- `cell` (l. 145) — Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir).
-- `V.estadisticas` (l. 151) — Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras.
-- `mailTag` (l. 157) — Etiqueta con el estado del aviso por correo de un mensaje o de un pedido (emailed.sent / reason; el texto del error solo lo trae el servidor a los gestores).
-- `V.mensajes` (l. 163) — Vista Mensajes (manager, propietaria y comercial): los mensajes del formulario de contacto, que el servidor guarda aunque el correo falle, con el estado del aviso por correo. El manager y la propietaria pueden borrarlos y crear la cuenta de cliente de quien escribe; el comercial solo los lee.
-- `mailPanel` (l. 177) — Panel «Correo» de Ajustes: controlador, si está completo, qué falta, el último intento (también el fallo) y el botón para mandar un correo de prueba.
-- `V.ajustes` (l. 187) — Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), tu cuenta y las copias de seguridad (admin-security.js), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag).
-- `modeBox` (l. 201) — Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios.
-- `V.precios` (l. 207) — Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA.
-- `previewUpload` (l. 220) — Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada).
-- `list` (l. 226) — Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`.
-- `readUpload` (l. 238) — Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa.
-- `go` (l. 241) — Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo.
-- `applyUpload` (l. 246) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
-- `runPrompt` (l. 260) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
-- `applyProposal` (l. 276) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
-- `V.propuestas` (l. 286) — Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js).
-- `V.clientes` (l. 288) — Vista Clientes (manager y Propietario): cuentas de cliente, su categoría de precio y su contraseña (ver admin-customers.js).
-- `V.blog` (l. 292) — Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección.
-- `V.usuarios` (l. 296) — Vista «Usuarios» (manager): lista con último acceso, código por correo y bloqueos, alta, baja y contraseña nueva a una cuenta.
-- `V.nuevo` (l. 298) — Vista «Contenido nuevo» (manager y Revisor): borradores, propuestas, aprobación y registro de cambios (admin-newcontent.js; contrato en docs/CONTENIDO-NUEVO.md).
-- `V.actividad` (l. 300) — Vista «Actividad» (manager): quién entró y quién cambió qué, con filtros y descarga en CSV.
-- `seenKey` (l. 308) — Clave de localStorage de lo último visto en una sección por esa persona.
-- `readSeen` (l. 310) — Lo último visto (ISO) de una sección, o '' si nunca se abrió; nunca falla (sin almacenamiento = '').
-- `writeSeen` (l. 312) — Anota lo último visto de una sección; si el navegador no deja guardar, se ignora.
-- `countNew` (l. 314) — Cuántos elementos (con `at` ISO) son posteriores a lo último visto; con `seeing` (la sección está abierta) lo da todo por visto y lo anota.
-- `paintBadges` (l. 321) — Pone, quita o actualiza la burbuja de cada enlace del menú con lo que hay guardado en `badges`.
-- `refreshBadges` (l. 331) — Pide lo necesario al servidor y repinta las burbujas; sin `force` no repite antes de 20 s. Nunca rechaza.
-- `startBadges` (l. 346) — Arranca el repaso periódico de las burbujas (y al volver a la pestaña); `stopBadges` lo para al salir.
-- `onVisible` (l. 352) — Al volver a la pestaña se repasan las burbujas.
-- `stopBadges` (l. 354) — Para el repaso de las burbujas y olvida las cifras (al salir del panel).
-- `onClick` (l. 358) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios y mensajes. Presupuestos, propuestas, blog y usuarios tienen sus propios manejadores.
-- `bind` (l. 369) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
-- `loginLogo` (l. 402) — Logotipo de las pantallas de acceso (el mismo que el menú, sobre fondo oscuro).
-- `loginError` (l. 404) — Muestra un error en el párrafo [data-err] de la pantalla de acceso (role=alert: lo anuncia el lector de pantalla).
-- `renderLogin` (l. 406) — Pantalla de acceso, primer paso: correo y contraseña. Si el servidor pide un código por correo, `login` deja el reto en `pending` y se repinta con la segunda pantalla.
-- `renderCode` (l. 415) — Segundo paso del acceso: el código de 6 cifras que llegó por correo, «recordar este dispositivo», «Reenviar» (con la espera que marca el servidor) y «Volver».
-- `tick` (l. 425) — Pone en el botón de reenviar la espera que falta (o lo activa); se detiene solo cuando la pantalla se repinta.
-- `back` (l. 433) — Vuelve a la primera pantalla (con un aviso, si lo hay).
-- `render` (l. 456) — Pinta la pantalla de acceso (contraseña, o el código por correo si falta) o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
+- `session` (l. 37) — Sesión actual {token, email, name, role} o null. El rol del servidor ('client') se muestra como 'cliente'.
+- `openSession` (l. 43) — Guarda la sesión que devuelve el servidor (token y datos de la persona). El rol del servidor ('client') se muestra como 'cliente'.
+- `login` (l. 47) — Entra con correo y contraseña. Devuelve Promise<string|null>: null si ha ido bien (sesión abierta) o si el servidor pide un código por correo (queda en `pending` y se pinta la pantalla del código), o el mensaje de error.
+- `verifyCode` (l. 56) — Comprueba el código escrito (POST /api/auth/verify). Promise<{done}|{back,msg}|{msg}>: sesión abierta · el código ya no sirve (se vuelve a la contraseña con el aviso) · error para mostrar sin salir de la pantalla.
+- `resendCode` (l. 65) — Pide otro código por correo (el anterior deja de valer). Promise<{ok}|{back,msg}|{msg}>.
+- `endSession` (l. 73) — Borra la sesión de este navegador y vuelve a la pantalla de acceso (sin avisar al servidor: lo usa también un 401, cuando el servidor ya la ha dado por caducada).
+- `relogin` (l. 75) — Vuelve a la pantalla de acceso con un aviso (tras cambiar la contraseña propia: el servidor ya cerró todas las sesiones).
+- `logout` (l. 77) — Cierra la sesión: el servidor invalida TODOS los tokens anteriores de esta persona (POST /api/auth/logout; si no responde, igualmente se sale de este navegador).
+- `adminData` (l. 82) — Propuestas de cambio y datos de cobertura del catálogo, solo para managers (GET /api/admin/data); se piden una vez y se guardan en TV.proposals y TV.admin. Nunca rechaza.
+- `toast` (l. 89) — Muestra un aviso breve (3,2 s) en pantalla.
+- `kpi` (l. 91) — HTML de una tarjeta KPI con la etiqueta `l` y el valor `v`, ambos escapados.
+- `itemName` (l. 93) — Nombre legible de una referencia (nombre ES + ref si es un modelo concreto).
+- `when` (l. 95) — Fecha y hora local (es-ES) de una fecha ISO; «—» si viene vacía.
+- `download` (l. 97) — Descarga `blob` como archivo `name` con un enlace temporal y libera la URL a los 800 ms.
+- `fail` (l. 99) — Aviso de error del servidor con el mensaje devuelto.
+- `mailWarn` (l. 111) — Aviso del Resumen cuando el correo no funciona (sin completar o el último envío falló): los pedidos y mensajes se guardan igual, pero nadie recibe el aviso. '' si todo va bien.
+- `V.resumen` (l. 117) — Vista Resumen (manager): con datos del Worker, KPIs, estado de la hoja de precios y sincronización, y los 5 últimos pedidos.
+- `V.recibidos` (l. 129) — Vista «Presupuestos recibidos» (manager y propietario): lista, detalle, edición, PDF y reenvío por correo (admin-quotes.js; contrato en docs/PRESUPUESTOS-RECIBIDOS.md).
+- `V.lista` (l. 132) — Vista Lista de precios (cliente): precios vigentes del Worker, sin IVA, con sus tramos (hasta 600 referencias).
+- `V.presupuestador` (l. 142) — Vista Presupuestador (cliente): incrusta la página del presupuesto en un iframe con ?embed=1.
+- `V.contenido` (l. 145) — Vista Contenido (manager): estado de traducción por idioma, referencias y etiquetas de voltaje de cada producto.
+- `cell` (l. 148) — Celda con la insignia del estado de traducción `s` (OK, Parcial, Falta o Sin traducir).
+- `V.estadisticas` (l. 154) — Vista Estadísticas: tarjetas de las fuentes aún sin conectar (Business Profile, Ads, Search Console, GA4), sin cifras.
+- `mailTag` (l. 160) — Etiqueta con el estado del aviso por correo de un mensaje o de un pedido (emailed.sent / reason; el texto del error solo lo trae el servidor a los gestores).
+- `V.mensajes` (l. 166) — Vista Mensajes (manager, propietaria y comercial): los mensajes del formulario de contacto, que el servidor guarda aunque el correo falle, con el estado del aviso por correo. El manager y la propietaria pueden borrarlos y crear la cuenta de cliente de quien escribe; el comercial solo los lee.
+- `mailPanel` (l. 180) — Panel «Correo» de Ajustes: controlador, si está completo, qué falta, el último intento (también el fallo) y el botón para mandar un correo de prueba.
+- `V.ajustes` (l. 190) — Vista Ajustes (manager): datos de la sesión (GET /api/auth/me), tu cuenta y las copias de seguridad (admin-security.js), dónde se configuran los destinatarios del pedido y, con el API PHP, su autodiagnóstico (GET /api/diag).
+- `modeBox` (l. 204) — Selector de lo que hace la hoja subida: actualizar solo lo que trae (por defecto; puede ser una parte del catálogo) o reemplazar toda la lista de precios.
+- `V.precios` (l. 210) — Vista Precios (manager): estado y sincronización de la hoja, subida de Excel/CSV con vista previa e instrucción a la IA.
+- `previewUpload` (l. 223) — Filas (cabecera + datos) → vista previa de diferencias contra los precios vigentes (el servidor calcula la diferencia con el modo elegido; no se aplica nada).
+- `list` (l. 229) — Filas HTML (máx. 60) de las referencias `arr`, cada una con su producto y la etiqueta `kind`.
+- `readUpload` (l. 241) — Lee el archivo subido (Excel o CSV) en el navegador y pide la vista previa.
+- `go` (l. 244) — Pide la vista previa de las filas leídas, etiquetándola con el nombre del archivo.
+- `applyUpload` (l. 249) — Publica la hoja subida (POST /api/prices/upload, con `force` si se marcó la casilla) y repinta; sin borrador no hace nada.
+- `runPrompt` (l. 263) — Envía la instrucción a la IA (POST /api/prices/ai) y muestra la propuesta de cambios para confirmarla; no aplica nada.
+- `applyProposal` (l. 279) — Aplica la propuesta vigente de la IA (POST /api/prices/ai/apply, confirmando los cambios grandes si se marcó) y repinta.
+- `V.propuestas` (l. 289) — Vista Propuestas (manager): editar, probar y aplicar cada propuesta de mejora (ver admin-proposals.js).
+- `V.clientes` (l. 291) — Vista Clientes (manager y Propietario): cuentas de cliente, su categoría de precio y su contraseña (ver admin-customers.js).
+- `V.blog` (l. 295) — Vista Blog (manager): listado (#blog), entrada nueva (#blog/nueva) o edición (#blog/<id>); `arg` es lo que sigue a «blog/» en la dirección.
+- `V.usuarios` (l. 299) — Vista «Usuarios» (manager): lista con último acceso, código por correo y bloqueos, alta, baja y contraseña nueva a una cuenta.
+- `V.nuevo` (l. 301) — Vista «Contenido nuevo» (manager y Revisor): borradores, propuestas, aprobación y registro de cambios (admin-newcontent.js; contrato en docs/CONTENIDO-NUEVO.md).
+- `V.actividad` (l. 303) — Vista «Actividad» (manager): quién entró y quién cambió qué, con filtros y descarga en CSV.
+- `seenKey` (l. 311) — Clave de localStorage de lo último visto en una sección por esa persona.
+- `readSeen` (l. 313) — Lo último visto (ISO) de una sección, o '' si nunca se abrió; nunca falla (sin almacenamiento = '').
+- `writeSeen` (l. 315) — Anota lo último visto de una sección; si el navegador no deja guardar, se ignora.
+- `countNew` (l. 317) — Cuántos elementos (con `at` ISO) son posteriores a lo último visto; con `seeing` (la sección está abierta) lo da todo por visto y lo anota.
+- `paintBadges` (l. 324) — Pone, quita o actualiza la burbuja de cada enlace del menú con lo que hay guardado en `badges`.
+- `refreshBadges` (l. 334) — Pide lo necesario al servidor y repinta las burbujas; sin `force` no repite antes de 20 s. Nunca rechaza.
+- `startBadges` (l. 349) — Arranca el repaso periódico de las burbujas (y al volver a la pestaña); `stopBadges` lo para al salir.
+- `onVisible` (l. 355) — Al volver a la pestaña se repasan las burbujas.
+- `stopBadges` (l. 357) — Para el repaso de las burbujas y olvida las cifras (al salir del panel).
+- `onClick` (l. 361) — Manejador único de clics del panel (delegación de eventos): salir, sincronizar precios, aplicar o descartar cambios y mensajes. Presupuestos, propuestas, blog y usuarios tienen sus propios manejadores.
+- `bind` (l. 372) — Eventos de la vista Precios (subida por arrastre) y del formulario de usuarios; se enlazan tras pintar cada vista.
+- `loginLogo` (l. 405) — Logotipo de las pantallas de acceso (el mismo que el menú, sobre fondo oscuro).
+- `loginError` (l. 407) — Muestra un error en el párrafo [data-err] de la pantalla de acceso (role=alert: lo anuncia el lector de pantalla).
+- `renderLogin` (l. 409) — Pantalla de acceso, primer paso: correo y contraseña. Si el servidor pide un código por correo, `login` deja el reto en `pending` y se repinta con la segunda pantalla.
+- `renderCode` (l. 418) — Segundo paso del acceso: el código de 6 cifras que llegó por correo, «recordar este dispositivo», «Reenviar» (con la espera que marca el servidor) y «Volver».
+- `tick` (l. 428) — Pone en el botón de reenviar la espera que falta (o lo activa); se detiene solo cuando la pantalla se repinta.
+- `back` (l. 436) — Vuelve a la primera pantalla (con un aviso, si lo hay).
+- `render` (l. 459) — Pinta la pantalla de acceso (contraseña, o el código por correo si falta) o el panel (menú lateral + la vista de la ruta #hash); `renderSeq` descarta la respuesta de una vista si entretanto se pidió otra.
 
 ### `admin-newcontent.js`
 
@@ -893,10 +893,10 @@ Secciones: `[QUOTE-ENGINE]` · `[STATE]` · `[FORMAT]` · `[PRICES]` · `[API]` 
 - `auth` (l. 217) — Cabeceras con el token de la sesión del panel (si hay) para pedir precios y enviar presupuestos con la categoría de la persona.
 - `post` (l. 219) — POST JSON a `path` de la API; devuelve siempre una Promise con la respuesta y su `status` (los fallos vuelven como {ok:false}). En /api/order y dentro del panel manda la sesión.
 - `TV.loadLivePrices` (l. 228) — El snapshot de la compilación (assets/data/prices.js) es solo el respaldo: con TV.meta.api manda lo que devuelva GET /api/prices (hoja de Drive, cada 24 h o al pulsar «actualizar»).
-- `TV.csvParse` (l. 239) — Lector CSV (RFC 4180): texto → filas de celdas; detecta el separador , o ; en la 1.ª línea, admite comillas y quita el BOM.
-- `TV.refreshPrices` (l. 257) — Recarga los precios a mano: del servidor si hay API; en la demo, volviendo a cargar assets/data/prices.js.
-- `n.onload` (l. 264) — Al cargar el script de precios recién pedido: reaplica el override, rehace formatos, avisa del cambio y resuelve con true.
-- `n.onerror` (l. 266) — Si falla la carga del script de precios, resuelve la promesa con false.
+- `TV.csvParse` (l. 240) — Lector CSV (RFC 4180): texto → filas de celdas; detecta el separador , o ; en la 1.ª línea, admite comillas y quita el BOM.
+- `TV.refreshPrices` (l. 258) — Recarga los precios a mano: del servidor si hay API; en la demo, volviendo a cargar assets/data/prices.js.
+- `n.onload` (l. 265) — Al cargar el script de precios recién pedido: reaplica el override, rehace formatos, avisa del cambio y resuelve con true.
+- `n.onerror` (l. 267) — Si falla la carga del script de precios, resuelve la promesa con false.
 
 ### `shop.js`
 
