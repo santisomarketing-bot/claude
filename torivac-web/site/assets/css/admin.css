@@ -1,11 +1,11 @@
 /* [ADMIN-CSS] Panel de gestión (demo). Usa los tokens de tokens.css. Menú lateral fijo a la izquierda. */
 body.admin{background:var(--bg)}
 .shell{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
-.side{background:var(--ink);color:#f4efe9;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:var(--s-4);gap:var(--s-4);border-right:1px solid rgba(255,255,255,.08)}
+.side{background:var(--ink);color:#f4efe9;position:sticky;top:0;height:100vh;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;display:flex;flex-direction:column;padding:var(--s-4);gap:var(--s-4);border-right:1px solid rgba(255,255,255,.08)}
 .side-top{display:flex;flex-direction:column;gap:var(--s-2)}
 .side-top img{background:transparent}
 .role{align-self:flex-start;background:var(--amber);color:var(--ink);font-weight:700;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:2px}
-.side nav{display:flex;flex-direction:column;gap:2px;flex:1}
+.side nav{display:flex;flex-direction:column;gap:2px;flex:1 0 auto}
 .side nav a{display:flex;gap:var(--s-3);align-items:center;color:#e8e1da;text-decoration:none;padding:10px 12px;border-left:3px solid transparent;font-weight:600;font-size:var(--fs-1)}
 .side nav a span{width:20px;text-align:center;color:var(--copper-on-dark)}
 .side nav a:hover{background:rgba(255,255,255,.07)}
