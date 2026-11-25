@@ -227,7 +227,8 @@
   //   El snapshot de la compilación (assets/data/prices.js) es solo el respaldo: con TV.meta.api manda lo que devuelva GET /api/prices (hoja de Drive, cada 24 h o al pulsar «actualizar»).
   TV.loadLivePrices = function () {
     if (!TV.api.live()) return Promise.resolve(false);
-    return fetch(TV.api.base() + '/api/prices', { cache: 'no-cache', headers: TV.api.auth() }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+    var h = TV.api.auth(), bust = h.Authorization ? '?_=' + Date.now() : '';                     // con sesión, nunca la respuesta de visitante que un servidor intermedio pudiera tener guardada
+    return fetch(TV.api.base() + '/api/prices' + bust, { cache: 'no-cache', headers: h }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
       var p = j && j.prices; if (!p || !p.items || p.mode === 'none' || !Object.keys(p.items).length) return false;
       TV._pricesSnapshot = TV._pricesSnapshot || TV.prices; TV.prices = p; mergeSheetItems(); buildFormats();
       document.dispatchEvent(new CustomEvent('tv:prices')); emit({ type: 'prices' }); return true;

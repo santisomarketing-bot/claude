@@ -24,7 +24,10 @@
   /** method + ruta + cuerpo → Promise<{ok, status, …}>. Un 401 cierra la sesión (token caducado). Nunca rechaza: los errores de red vuelven como {ok:false}. */
   function http(method, path, body) {
     var s = session();
-    return fetch(TV.api.base() + path, { method: method, headers: Object.assign({ 'Content-Type': 'application/json' }, s ? { Authorization: 'Bearer ' + s.token } : {}), body: body === undefined ? undefined : JSON.stringify(body) })
+    // Las lecturas del panel nunca se sirven de una caché: ni la del navegador ni la de un servidor intermedio que no distinga por la cabecera Authorization (algunos hostings cachean por dirección
+    // y entonces el panel enseñaría la respuesta vieja de visitante). El parámetro `_` no lo mira el API; la respuesta de un manager ya va con Cache-Control: private, no-store.
+    var url = TV.api.base() + path + (method === 'GET' ? (path.indexOf('?') < 0 ? '?' : '&') + '_=' + Date.now() : '');
+    return fetch(url, { method: method, cache: method === 'GET' ? 'no-store' : undefined, headers: Object.assign({ 'Content-Type': 'application/json' }, s ? { Authorization: 'Bearer ' + s.token } : {}), body: body === undefined ? undefined : JSON.stringify(body) })
       .then(function (r) { return r.json().catch(function () { return { ok: false, error: 'HTTP ' + r.status }; }).then(function (j) { j.status = r.status; if (r.status === 401 && s && path !== '/api/auth/login') { endSession(); } return j; }); })
       .catch(function () { return { ok: false, error: 'No hay conexión con el servidor', status: 0 }; });
   }
