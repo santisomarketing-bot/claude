@@ -23,6 +23,7 @@ paso "Texto plano (navegador = Worker = PHP)"    node scripts/test-plain-text.mj
 paso "Conversor de texto del blog"              node scripts/test-blog-markdown.mjs
 paso "Conversor del blog: JavaScript = PHP"       node scripts/test-blog-markdown-php.mjs
 paso "Propuestas aprobadas con texto propio"    node scripts/test-proposals.mjs
+paso "Terminología (variadores de tensión)"        node scripts/test-terminology.mjs
 paso "Contenido nuevo: solo lo aprobado"          node scripts/test-newcontent.mjs
 paso "Textos de interfaz al día (para validar)" node scripts/audit_i18n.mjs --check
 paso "Dibujos técnicos de las fichas (PDF → web)"  node scripts/qa-drawings.mjs

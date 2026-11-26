@@ -34,6 +34,7 @@ jobs:
           node scripts/test-blog-markdown.mjs
           node scripts/test-blog-markdown-php.mjs
           node scripts/test-proposals.mjs
+          node scripts/test-terminology.mjs
           node scripts/audit_i18n.mjs --check
       - name: Compilar la web (demo, sin base) y con dominio (producción)
         run: |

@@ -1,0 +1,379 @@
+{
+ "_doc": "Correcciones de TERMINOLOGÍA solo en inglés, aplicadas en memoria al compilar (site/lib/terminology.mjs). Nacen de una traducción automática que dejó «variador de tensión» como «inverter» o «variable speed drive»: un variador de tensión es un autotransformador variable. Cada regla cita el texto en castellano del que parte. Los inversores de frecuencia, los fotovoltaicos y los variadores de velocidad de verdad (frequency inverters, PV inverters, variable speed drives) NO se tocan. Las URL y los slugs tampoco. Francés y alemán tienen el mismo error y esperan validación: ver docs/TERMINOLOGIA.md. Se revierte borrando la regla.",
+ "rules": [
+  {
+   "scope": "product",
+   "id": 866,
+   "lang": "en",
+   "fields": [
+    "name",
+    "seo.title"
+   ],
+   "pairs": [
+    [
+     "Single-phase manual variable speed drive",
+     "Single-phase manual voltage variator"
+    ]
+   ],
+   "why": "ES «Variador Monofásico manual». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "product",
+   "id": 867,
+   "lang": "en",
+   "fields": [
+    "name",
+    "seo.title"
+   ],
+   "pairs": [
+    [
+     "Single-phase motorized inverter",
+     "Single-phase motorized voltage variator"
+    ]
+   ],
+   "why": "ES «Variador Monofásico motorizado». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "product",
+   "id": 326,
+   "lang": "en",
+   "fields": [
+    "name",
+    "seo.title"
+   ],
+   "pairs": [
+    [
+     "Manual Three-Phase Inverter",
+     "Manual three-phase voltage variator"
+    ]
+   ],
+   "why": "ES «Variador Trifásico manual». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "product",
+   "id": 328,
+   "lang": "en",
+   "fields": [
+    "name",
+    "seo.title",
+    "seo.description",
+    "description"
+   ],
+   "pairs": [
+    [
+     "Motorized three-phase inverter",
+     "Motorized three-phase voltage variator"
+    ],
+    [
+     "Torivac three-phase motorized inverter",
+     "Torivac three-phase motorized voltage variator"
+    ],
+    [
+     "What is a motorized three-phase drive used for?",
+     "What is a motorized three-phase voltage variator used for?"
+    ],
+    [
+     "The motorized three-phase drive allows",
+     "The motorized three-phase voltage variator allows"
+    ],
+    [
+     "This drive protects the system",
+     "This voltage variator protects the system"
+    ],
+    [
+     "Inverters usually have an efficiency",
+     "Voltage variators usually have an efficiency"
+    ],
+    [
+     "Torivac's three-phase motorized drives control the speed",
+     "Torivac's three-phase motorized voltage variators control the speed"
+    ]
+   ],
+   "why": "ES «Variador Trifásico motorizado». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "product",
+   "id": 874,
+   "lang": "en",
+   "fields": [
+    "short",
+    "seo.description"
+   ],
+   "pairs": [
+    [
+     "All our inverters can be supplied as a boxed unit.",
+     "All our voltage variators can be supplied as a boxed unit."
+    ]
+   ],
+   "why": "ES «Todos nuestros variadores se pueden suministrar como un equipo acabado en caja». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "product",
+   "id": 882,
+   "lang": "en",
+   "fields": [
+    "short"
+   ],
+   "pairs": [
+    [
+     "allowing to act on the inverter motor",
+     "allowing to act on the variator motor"
+    ]
+   ],
+   "why": "ES «actuar sobre el motor del variador». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "product",
+   "id": 886,
+   "lang": "en",
+   "fields": [
+    "description"
+   ],
+   "pairs": [
+    [
+     "such as variable voltage drives",
+     "such as voltage variators"
+    ],
+    [
+     "manufacturers of variable voltage drives",
+     "manufacturers of voltage variators"
+    ],
+    [
+     "Voltage drives used by European integrators",
+     "Voltage variators used by European integrators"
+    ]
+   ],
+   "why": "ES «variadores de tensión». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "product",
+   "id": 888,
+   "lang": "en",
+   "fields": [
+    "description"
+   ],
+   "pairs": [
+    [
+     "Voltage drives used by European integrators",
+     "Voltage variators used by European integrators"
+    ]
+   ],
+   "why": "ES «Los variadores de tensión utilizados por integradores europeos». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "product",
+   "id": 965,
+   "lang": "en",
+   "fields": [
+    "description"
+   ],
+   "pairs": [
+    [
+     "three-phase motors and variable voltage drives",
+     "three-phase motors and voltage variators"
+    ]
+   ],
+   "why": "ES «motores trifásicos y variadores de tensión». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "category",
+   "id": 37,
+   "lang": "en",
+   "fields": [
+    "name",
+    "description"
+   ],
+   "pairs": [
+    [
+     "Single Phase Inverters",
+     "Single-phase voltage variators"
+    ],
+    [
+     "The single-phase AC drives are designed",
+     "The single-phase voltage variators are designed"
+    ],
+    [
+     "single-phase voltage inverters with regulation",
+     "single-phase voltage variators with regulation"
+    ]
+   ],
+   "why": "ES «Variadores Monofasicos». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive. El slug de la URL no se cambia."
+  },
+  {
+   "scope": "category",
+   "id": 40,
+   "lang": "en",
+   "fields": [
+    "name",
+    "description"
+   ],
+   "pairs": [
+    [
+     "Three-phase drives",
+     "Three-phase voltage variators"
+    ],
+    [
+     "The standard three-phase AC drives are designed",
+     "The standard three-phase voltage variators are designed"
+    ],
+    [
+     "three-phase AC drives with regulation",
+     "three-phase voltage variators with regulation"
+    ],
+    [
+     "we can manufacture drives with any voltage and power range",
+     "we can manufacture voltage variators with any voltage and power range"
+    ]
+   ],
+   "why": "ES «Variadores Trifásicos». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive. El slug de la URL no se cambia."
+  },
+  {
+   "scope": "category",
+   "id": 33,
+   "lang": "en",
+   "fields": [
+    "description"
+   ],
+   "pairs": [
+    [
+     "coils with which we manufacture single-phase drives",
+     "coils with which we manufacture single-phase voltage variators"
+    ]
+   ],
+   "why": "ES «las mismas bobinas con las que fabricamos los variadores monofásicos». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "category",
+   "id": 19,
+   "lang": "en",
+   "fields": [
+    "description"
+   ],
+   "pairs": [
+    [
+     "voltage and stepless variable speed drives",
+     "voltage variators with stepless regulation"
+    ],
+    [
+     "adjustment of the variable voltage drive",
+     "adjustment of the voltage variator"
+    ]
+   ],
+   "why": "ES «variadores de tensión y de regulación continua». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "category",
+   "id": 45,
+   "lang": "en",
+   "fields": [
+    "description"
+   ],
+   "pairs": [
+    [
+     "All our inverters can be supplied as a complete enclosed unit",
+     "All our voltage variators can be supplied as a complete enclosed unit"
+    ]
+   ],
+   "why": "ES «Todos nuestros variadores se pueden suministrar como un equipo acabado en caja». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "page",
+   "path": "/en/",
+   "lang": "en",
+   "fields": [
+    "*"
+   ],
+   "pairs": [
+    [
+     "toroidal transformers, drives and voltage stabilizers",
+     "toroidal transformers, voltage variators and voltage stabilizers"
+    ],
+    [
+     "Variable voltage drives",
+     "Voltage variators"
+    ],
+    [
+     "Toroidal shocks",
+     "Toroidal chokes"
+    ]
+   ],
+   "why": "Portada. ES «variadores y estabilizadores de tensión», «Variadores de tensión» y «Choques toroidales» (choke = reactancia, no «shock»)."
+  },
+  {
+   "scope": "page",
+   "path": "/en/aplicaciones-de-los-transformadores-en-la-industria-actual/",
+   "lang": "en",
+   "fields": [
+    "*"
+   ],
+   "pairs": [
+    [
+     "Asian drives and components",
+     "Asian voltage variators and components"
+    ]
+   ],
+   "why": "ES «variadores y componentes asiáticos». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "page",
+   "path": "/en/funcionamiento-de-un-transformador-en-la-industria/",
+   "lang": "en",
+   "fields": [
+    "*"
+   ],
+   "pairs": [
+    [
+     "The drives and solutions developed by Torivac",
+     "The voltage variators and solutions developed by Torivac"
+    ],
+    [
+     "incorporating drives that optimize energy efficiency",
+     "incorporating voltage variators that optimize energy efficiency"
+    ]
+   ],
+   "why": "ES «Los variadores y soluciones desarrollados por Torivac», «incorporando variadores». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "page",
+   "path": "/en/normativas-sobre-transformadores-electricos-en-europa/",
+   "lang": "en",
+   "fields": [
+    "*"
+   ],
+   "pairs": [
+    [
+     "Torivac drives stand out",
+     "Torivac voltage variators stand out"
+    ],
+    [
+     "Its line of drives has been",
+     "Its line of voltage variators has been"
+    ]
+   ],
+   "why": "ES «los variadores de Torivac destacan», «Su línea de variadores». variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  },
+  {
+   "scope": "page",
+   "path": "/en/torivac-products/",
+   "lang": "en",
+   "fields": [
+    "*"
+   ],
+   "pairs": [
+    [
+     "Single Phase Inverters",
+     "Single-phase voltage variators"
+    ],
+    [
+     "Three-phase drives",
+     "Three-phase voltage variators"
+    ],
+    [
+     "voltage and stepless variable speed drives",
+     "voltage variators with stepless regulation"
+    ]
+   ],
+   "why": "Listado de productos: textos de las categorías 37, 40 y 19. variador de tensión = voltage variator (variable autotransformer), no inverter ni variable speed drive"
+  }
+ ]
+}

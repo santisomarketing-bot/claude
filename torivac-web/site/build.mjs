@@ -16,6 +16,7 @@ import { cookieTitle } from './lib/cookies.mjs';
 import { THEMES, themeBootJs } from './lib/themes.mjs';
 import { plainTextScript, blogMarkdownScript } from './lib/shared-client.mjs';
 import { applyApproved } from './lib/proposals-apply.mjs';
+import { applyTerminology } from './lib/terminology.mjs';
 import { loadNewContent, applyNewContent } from './lib/newcontent.mjs';
 import { blogShell, splitIndex, llmsHeads } from './lib/blog-shell.mjs';
 import crypto from 'node:crypto';
@@ -112,6 +113,12 @@ for (const o of jl('content-overrides.json', { overrides: [] }).overrides) {
     p[o.field][lang] = bl.filter((b) => { const hit = b.t === 'table' && [].concat(o.first_cell).some((f) => (b.rows?.[0]?.[0]?.x || '').startsWith(f)); if (hit) hidden++; return !hit; });
   }
   console.log(`[OVERRIDE] ${p.name.es}: tabla oculta en ${hidden} idioma(s) · ${o.why.slice(0, 70)}…`);
+}
+// [TERMINOLOGY] correcciones de terminología por idioma (data/catalog/terminology.curated.json): «variador de tensión» no es «inverter» ni «variable speed drive». Se aplican en memoria; las URL y los slugs no cambian.
+{
+  const rep = applyTerminology({ rules: jl('terminology.curated.json', { rules: [] }).rules, products, categories: [...byId.values()], pages });
+  console.log(`[TERMINOLOGÍA] ${rep.applied.length} regla(s), ${rep.applied.reduce((n, a) => n + a.hits, 0)} sustitución(es)`);
+  for (const m of rep.missing) console.warn(`[TERMINOLOGÍA] sin efecto: ${m.rule} · «${m.from}»`);
 }
 // [PROPOSALS-APPLIED] propuestas aprobadas con SU texto desde el panel (data/catalog/proposals.applied.json, que sale de scripts/apply_proposals.mjs): sustituyen un párrafo, traducen una ficha o cambian
 //   el título de la portada. Se aplica sobre los datos en memoria (los JSON de data/catalog no se tocan) y todo lo escrito se escapa. Lo que no encaja se avisa aquí y en apply_proposals.mjs.

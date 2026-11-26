@@ -2,7 +2,7 @@
 
 > Generado por `scripts/gen_code_index.py`. **No editar a mano**: se rehace con `python3 -I scripts/gen_code_index.py`.
 > Cada archivo se describe por su cabecera; las secciones `[ETIQUETA]` marcan los bloques; cada función lleva su descripción (⚠ = falta describirla).
-**Cobertura**: 2455/2455 funciones descritas (100 %) · 244/244 archivos con cabecera.
+**Cobertura**: 2462/2462 funciones descritas (100 %) · 246/246 archivos con cabecera.
 
 
 ## `site/`
@@ -11,38 +11,38 @@
 
 [BUILD] Generador del sitio estático Torivac (demo).  Uso:  node site/build.mjs [--base=https://dominio] [--out=carpeta] Lee data/catalog/*.json (fuente única de verdad) y escribe dist/ (HTML por idioma + assets + datos para JS). Secciones: [LOAD] [CATS] [PRODUCTS] [SITE] [EMIT] [DATA] [ASSETS]
 
-Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[NEWCONTENT]` · `[LIVE]` · `[GOOGLE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[PROPOSALS-APPLIED]` · `[DRAWINGS]` · `[ORIGINAL]` · `[SEO]` · `[BLOG]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
+Secciones: `[BUILD]` · `[LOAD]` · `[CATS]` · `[PRODUCTS]` · `[SITE]` · `[EMIT]` · `[DATA]` · `[ASSETS]` · `[THEME]` · `[NEWCONTENT]` · `[LIVE]` · `[GOOGLE]` · `[SEO-OVERRIDES]` · `[OVERRIDES]` · `[TERMINOLOGY]` · `[PROPOSALS-APPLIED]` · `[DRAWINGS]` · `[ORIGINAL]` · `[SEO]` · `[BLOG]` · `[WORKER]` · `[ADMIN]` · `[PRICE-SHEET]` · `[PLAIN-TEXT]` · `[CSS]` · `[SEO-FILES]` · `[HOSTING]` · `[VERSIONES]`
 
-- `arg0` (l. 26) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `arg` (l. 29) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
-- `jl` (l. 43) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
-- `normName` (l. 81) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
-- `depthOf` (l. 85) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
-- `canon` (l. 88) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
-- `subtreeIds` (l. 135) — Ids de una categoría y de todas sus descendientes.
-- `prodIdsOf` (l. 137) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
-- `visible` (l. 141) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
-- `prune` (l. 143) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
-- `pth` (l. 164) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
-- `pickCats` (l. 225) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
-- `groupEquiv` (l. 245) — Registra un grupo de páginas equivalentes ({ es, en, fr, de } → ruta): cada ruta del grupo apunta al grupo entero.
-- `emit` (l. 256) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
-- `mkctx` (l. 258) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
-- `fitTitle` (l. 263) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
-- `crumbHome` (l. 265) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
-- `crumbProducts` (l. 267) — Miga de pan «Productos» del idioma `lang`: { name, path }.
-- `pickAlt` (l. 269) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
-- `absImg` (l. 271) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
-- `alts` (l. 278) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
-- `a` (l. 464) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
-- `copyDir` (l. 482) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
-- `css` (l. 492) — Texto del archivo site/assets/css/<n>.css.
-- `xml` (l. 512) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
-- `url` (l. 514) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
-- `sec` (l. 526) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
-- `t` (l. 553) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
-- `hashOf` (l. 571) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
-- `walk` (l. 581) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
+- `arg0` (l. 27) — Valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `arg` (l. 30) — Igual que arg0: valor de la opción `--k=valor` de la línea de comandos ('' si no se pasó).
+- `jl` (l. 44) — Lee data/catalog/<f> como JSON; devuelve `d` si el archivo no existe o no es JSON válido.
+- `normName` (l. 82) — Normaliza un nombre de categoría para detectar duplicados: minúsculas, sin tildes ni signos y con las palabras en singular.
+- `depthOf` (l. 86) — Profundidad de una categoría en el árbol (0 = raíz), subiendo por `parent`.
+- `canon` (l. 89) — Id de la categoría que se conserva tras fusionar duplicados (el mismo `id` si no se fusionó).
+- `subtreeIds` (l. 142) — Ids de una categoría y de todas sus descendientes.
+- `prodIdsOf` (l. 144) — Ids de los productos asignados a una categoría o a cualquiera de sus subcategorías.
+- `visible` (l. 148) — Una categoría se muestra si tiene productos y su slug no está en la lista de ocultas (HIDE).
+- `prune` (l. 150) — Quita (recursivo) las categorías no visibles y ordena cada nivel por nombre en español.
+- `pth` (l. 171) — Ruta de una URL de grupotorivac.com con barra final, salvo que termine en una extensión de archivo.
+- `pickCats` (l. 232) — Categorías visibles (ya fusionadas) de una lista de ids, en el mismo orden y sin repetir.
+- `groupEquiv` (l. 252) — Registra un grupo de páginas equivalentes ({ es, en, fr, de } → ruta): cada ruta del grupo apunta al grupo entero.
+- `emit` (l. 263) — Escribe en dist el HTML de la ruta lógica `p` (como p/index.html si termina en barra) y suma una página al contador.
+- `mkctx` (l. 265) — Contexto de render (Ctx) de la página `p` en el idioma `lang`; `section` marca el ítem activo del menú.
+- `fitTitle` (l. 270) — título ≤ 65: «Nombre · Torivac» si cabe; si no, solo el nombre (recortado). Las categorías homónimas llevan el nombre del padre.
+- `crumbHome` (l. 272) — Miga de pan «Inicio» del idioma `lang`: { name, path }.
+- `crumbProducts` (l. 274) — Miga de pan «Productos» del idioma `lang`: { name, path }.
+- `pickAlt` (l. 276) — Texto alt de una imagen en el idioma `lang` (español si falta; '' si no hay).
+- `absImg` (l. 278) — URL absoluta de una imagen (solo con --base); null si no hay base o la imagen no tiene archivo.
+- `alts` (l. 285) — Traducciones de la página `pagePath` ({ idioma: ruta }), solo las que existen en el sitio generado.
+- `a` (l. 471) — Ruta relativa al recurso `s` desde /admin/ (assets del panel).
+- `copyDir` (l. 489) — Copia recursivamente la carpeta `a` en `b`, creando los directorios que falten.
+- `css` (l. 499) — Texto del archivo site/assets/css/<n>.css.
+- `xml` (l. 519) — Escapa &, <, > y comillas para el XML del sitemap (null/undefined → '').
+- `url` (l. 521) — Entrada <url> del sitemap de una página registrada: loc, enlaces hreflang (con x-default) e imágenes con alt.
+- `sec` (l. 533) — Sección Markdown de llms.txt: encabezado `## título` y una línea por fila.
+- `t` (l. 560) — Texto de interfaz `k` en el idioma del bucle (español si falta la traducción; la propia clave si no existe).
+- `hashOf` (l. 578) — Huella (10 hex) del contenido del archivo `p` de dist/ (con caché); aborta si el archivo no existe.
+- `walk` (l. 588) — Recorre dist/ y resuelve los marcadores de versión de cada .html.
 
 ### `templates.mjs`
 
@@ -266,6 +266,16 @@ Secciones: `[SHARED-CLIENT]`
 - `classicScript` (l. 9) — Texto del script clásico generado desde shared/<file>. `expose` es la expresión del objeto que se publica (p. ej. `{ check: checkText }`) en TV.<global>.
 - `plainTextScript` (l. 21) — Script del validador de texto plano: TV.PlainText.check(valor, { max, multiline }) y los límites de cada campo. En un navegador sin lookbehind en las expresiones regulares (Safari < 16.4) se omiten las reglas que no entiende: el aviso es solo una cortesía y el servidor las aplica todas siempre.
 - `blogMarkdownScript` (l. 31) — Script del conversor de texto del blog: TV.BlogMarkdown.render(texto, { tableLabel }) y compañía (la vista previa del editor del panel usa EXACTAMENTE el código que publica la página). En un navegador sin lookbehind (Safari < 16.4) el script no carga: el panel lo detecta y avisa de que no hay vista previa.
+
+### `terminology.mjs`
+
+[TERMINOLOGY] Correcciones de terminología por idioma, aplicadas en memoria al compilar (los JSON de data/catalog no se tocan; se revierte borrando la regla). Nacen de una traducción automática que dejó «variador de tensión» como «inverter» o «variable speed drive» (un variador de tensión es un autotransformador variable, no un inversor ni un variador de velocidad). Cada regla dice DÓNDE se aplica (un producto, una categoría o una página, en un idioma) y QUÉ frases cambian; una frase que
+
+Secciones: `[TERMINOLOGY]`
+
+- `replaceDeep` (l. 13) — Sustituye `de` por `a` en todas las cadenas de `v` (cadena, lista u objeto); devuelve [nuevoValor, número de sustituciones].
+- `slot` (l. 21) — Lee el campo `field` de `target` en el idioma `lang` → { get(), set(valor) } (null si no existe).
+- `applyTerminology` (l. 28) — Aplica las reglas sobre los datos en memoria y cuenta las sustituciones de cada una.
 
 ### `themes.mjs`
 
@@ -1578,10 +1588,10 @@ Secciones: `[QA-CUSTOMERS]`
 
 Secciones: `[QA-DRAWINGS]`
 
-- `ok` (l. 20) — Anota una comprobación: ✓ o ✗ con su descripción.
-- `pathOf` (l. 33) — Ruta de la ficha de un producto en un idioma (la misma regla que site/build.mjs: la de la web original o /<idioma>/product/<slug>/).
-- `unesc` (l. 36) — Deshace las entidades HTML básicas (&quot; &amp; &lt; &gt; &#39;) del atributo alt para compararlo con el texto plano.
-- `pick` (l. 72) — Rutas de la ficha del producto `id` en cada idioma, para abrirla en el navegador.
+- `ok` (l. 21) — Anota una comprobación: ✓ o ✗ con su descripción.
+- `pathOf` (l. 36) — Ruta de la ficha de un producto en un idioma (la misma regla que site/build.mjs: la de la web original o /<idioma>/product/<slug>/).
+- `unesc` (l. 39) — Deshace las entidades HTML básicas (&quot; &amp; &lt; &gt; &#39;) del atributo alt para compararlo con el texto plano.
+- `pick` (l. 75) — Rutas de la ficha del producto `id` en cada idioma, para abrirla en el navegador.
 
 ### `qa-google.mjs`
 
@@ -1872,6 +1882,17 @@ Secciones: `[TEST-PROPOSALS]`
 - `synth` (l. 30) — Datos de prueba sintéticos: una página con título, párrafo, lista y tabla, una ficha de producto, una categoría y los títulos SEO.
 - `real` (l. 72) — Copia del catálogo real (páginas, productos, categorías y títulos SEO) para aplicar propuestas sin tocar los JSON.
 - `has` (l. 84) — Texto JSON de un objeto, para comparar datos completos.
+
+### `test-terminology.mjs`
+
+[TEST-TERMINOLOGY] Pruebas de las correcciones de terminología (site/lib/terminology.mjs y data/catalog/terminology.curated.json): una regla solo toca su idioma, su destino y sus frases; avisa de lo que ya no aparece; y con el catálogo real todas las reglas surten efecto, el castellano, el francés, el alemán y las URL quedan como estaban, y en inglés ya no hay «inverter» ni «variable speed drive» donde el castellano dice «variador de tensión».
+
+Secciones: `[TEST-TERMINOLOGY]`
+
+- `load` (l. 14) — Lee un JSON de data/catalog.
+- `clone` (l. 16) — Copia profunda de datos JSON.
+- `ok` (l. 19) — Anota una comprobación: correcta, o fallo con su mensaje.
+- `byId` (l. 55) — Elemento de una lista de productos o categorías por su id.
 
 ### `qa-all.sh`
 

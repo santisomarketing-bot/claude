@@ -12,6 +12,7 @@ import os from 'node:os';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { serve } from './lib/static-server.mjs';
+import { applyTerminology } from '../site/lib/terminology.mjs';
 const { chromium } = createRequire(import.meta.url)('playwright');
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const LANGS = ['es', 'en', 'fr', 'de'];
@@ -28,6 +29,8 @@ const DIST = arg ? path.resolve(arg.slice(7)) : fs.mkdtempSync(path.join(os.tmpd
 if (!arg) execFileSync('node', [path.join(ROOT, 'site/build.mjs'), `--out=${DIST}`], { cwd: ROOT, env: { ...process.env, TORIVAC_API: '' }, stdio: 'pipe' });
 const dw = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/catalog/drawings.json'), 'utf8'));
 const products = JSON.parse(fs.readFileSync(path.join(ROOT, 'data/catalog/products.json'), 'utf8'));
+// Los nombres que muestra la web llevan las correcciones de terminología (data/catalog/terminology.curated.json), igual que en el build: el alt se compara con ese nombre, no con el del catálogo en bruto.
+applyTerminology({ rules: JSON.parse(fs.readFileSync(path.join(ROOT, 'data/catalog/terminology.curated.json'), 'utf8')).rules, products });
 const byId = new Map(dw.items.map((d) => [d.id, d]));
 /** Ruta de la ficha de un producto en un idioma (la misma regla que site/build.mjs: la de la web original o /<idioma>/product/<slug>/). */
 const pathOf = (p, l) => p.path[l] || (l === 'es' ? `/product/${p.slug.es}/` : `/${l}/product/${p.slug.es}/`);
